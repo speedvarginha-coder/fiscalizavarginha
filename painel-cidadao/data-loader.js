@@ -66,9 +66,12 @@
   async function carregar() {
     window.ZELA_DATA = window.ZELA_DATA || {};
 
-    // Páginas sem dados (sobre, cobrar) só carregam app.js (ou nem isso)
+    // Páginas sem dados (sobre, cobrar) só carregam utils+app.js (ou nem isso)
     if (chunks.length === 0) {
-      try { await loadScript("app.js"); } catch (e) { /* sobre.html tem seu próprio script */ }
+      try {
+        await loadScript("modules/utils.js");
+        await loadScript("app.js");
+      } catch (e) { /* sobre.html tem seu próprio script */ }
       window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks: [] } }));
       return;
     }
@@ -78,6 +81,7 @@
     if (location.protocol === "file:") {
       try {
         await loadScript("data.js");
+        await loadScript("modules/utils.js");
         await loadScript("app.js");
         window.dispatchEvent(new CustomEvent("zela:ready", { detail: { fallback: true } }));
       } catch (e) {
@@ -92,6 +96,8 @@
       resultados.forEach(({ key, data }) => {
         window.ZELA_DATA[key] = data;
       });
+      // utils.js precisa vir ANTES de app.js (app.js faz destructuring de window.ZELA.utils)
+      await loadScript("modules/utils.js");
       await loadScript("app.js");
       window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks } }));
     } catch (err) {
@@ -99,6 +105,7 @@
       // Fallback: carrega data.js monolítico
       try {
         await loadScript("data.js");
+        await loadScript("modules/utils.js");
         await loadScript("app.js");
         window.dispatchEvent(new CustomEvent("zela:ready", { detail: { fallback: true } }));
       } catch (err2) {

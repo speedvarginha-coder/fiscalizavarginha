@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v4 (chunks JSON + data-loader) */
-const CACHE = "zela-v4";
+/* Zela Varginha — Service Worker v5 (modules/utils.js extraído) */
+const CACHE = "zela-v5";
 const STATIC = [
   "./",
   "./index.html",
@@ -14,6 +14,7 @@ const STATIC = [
   "./app.js",
   "./app-glossario.js",
   "./data-loader.js",
+  "./modules/utils.js",
   "./favicon.svg",
 ];
 
