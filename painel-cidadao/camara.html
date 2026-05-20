@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Câmara · Zela Varginha</title>
+<meta name="description" content="O que a Câmara Municipal de Varginha está produzindo: vereadores, indicações, emendas impositivas.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Zela Varginha">
+<meta property="og:title"       content="Câmara Municipal · Zela Varginha">
+<meta property="og:description" content="Vereadores, emendas impositivas e produção legislativa da Câmara de Varginha-MG.">
+<meta property="og:locale"      content="pt_BR">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Câmara Municipal · Zela Varginha">
+<meta name="twitter:description" content="Vereadores, emendas e produção legislativa de Varginha-MG.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="camara">
+<div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
+  <div class="loading-spinner"></div>
+  <p>Carregando dados…</p>
+</div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Zela Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"      class="nav__link">Início</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="camara.html"     class="nav__link nav__link--active">Câmara</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
+      <a href="sobre.html"      class="nav__link">Sobre</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<section class="section section--camara">
+  <div class="container">
+    <p class="breadcrumb">
+      <a href="index.html">← Voltar ao início</a>
+    </p>
+
+    <header class="bigheader">
+      <span class="bigheader__kicker">PODER LEGISLATIVO</span>
+      <h2 class="bigheader__title">Câmara Municipal</h2>
+      <p class="bigheader__lead">
+        18 vereadores eleitos para 4 anos. Eles aprovam as leis, votam o orçamento
+        e cobram o Prefeito. Os dados abaixo são da produção legislativa de
+        <strong>2025 inteiro</strong>, extraídos do SAPL (sistema oficial da Câmara).
+      </p>
+      <p id="atualizado" class="muted small" style="margin-top:8px"></p>
+      <div class="civic-actions" aria-label="Ações rápidas da Câmara">
+        <a href="#gastosPalavraChaveCamara">Perguntar aos dados</a>
+        <a href="#vereadores">Ver vereadores</a>
+        <a href="#emendas">Emendas e CNPJs</a>
+        <a href="#diariasCamaraBlock">Diárias</a>
+      </div>
+    </header>
+
+    <!-- PLACAR DO DINHEIRO -->
+    <div id="placarCamara" class="placar" aria-label="Placar do dinheiro da Câmara"></div>
+
+    <!-- FILTROS RÁPIDOS POR CATEGORIA -->
+    <div id="catChipsCamara" class="cat-chips" aria-label="Filtrar emendas por categoria"></div>
+
+    <div id="camaraLive" class="block" hidden>
+      <h3 class="block__title">Execução Orçamentária — Câmara</h3>
+      <p class="block__lead">
+        Quanto a Câmara pagou a fornecedores externos no ano. Fonte: Portal de
+        Transparência da Câmara (Betha), atualizado a cada coleta.
+      </p>
+      <div class="stats" id="statsCamaraBetha"></div>
+
+      <h4 style="margin:24px 0 8px">Top fornecedores <span id="anoCamaraBetha"></span></h4>
+      <div id="topFornecedoresCamara" class="forn-list"></div>
+
+      <div id="contratosCamaraBlock" class="block" style="margin-top:24px">
+        <h4>Contratos vigentes</h4>
+        <div class="filterbar">
+          <input id="filtroContratoCamara" type="search" placeholder="Buscar empresa, objeto…">
+          <span id="contratosContadorCamara" class="filterbar__count"></span>
+        </div>
+        <div id="contratosCamara" class="contratos-list"></div>
+        <div id="contratosCamaraMais" class="loadmore" hidden>
+          <button type="button" onclick="ZELA.maisContratosCamara()">Mostrar mais</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">O ano em números</h3>
+      <div class="stats" id="stats"></div>
+
+      <div class="card highlight">
+        <span class="highlight__tag">Destaque</span>
+        <p id="destaque" class="highlight__body"></p>
+      </div>
+
+      <div id="gastosPalavraChaveCamara" class="keyword-audit"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Os vereadores</h3>
+      <p class="block__lead">
+        Veja o que cada um produziu em 2025: quanto pediu para o bairro (indicações),
+        quanto fiscalizou a Prefeitura (requerimentos), quantos projetos de lei
+        e quantas emendas direcionou ao orçamento.
+      </p>
+
+      <div class="method-card">
+        <div>
+          <span class="method-card__tag">Observatório Público de Varginha</span>
+          <h4>Como o painel deve medir o trabalho parlamentar</h4>
+          <p>
+            O objetivo não é contar volume por volume. O painel diferencia pedido,
+            fiscalização, projeto, emenda com dinheiro público e homenagem. Quanto
+            mais dados forem coletados, o ranking deve considerar resposta do Executivo,
+            prazo, execução, resolução e impacto real na cidade.
+          </p>
+        </div>
+        <ul>
+          <li><strong>Quantidade</strong><span>matérias, indicações, requerimentos e emendas.</span></li>
+          <li><strong>Qualidade</strong><span>tema, tipo, impacto estimado e relevância.</span></li>
+          <li><strong>Resultado</strong><span>resposta, prazo, pagamento, entrega e comprovação.</span></li>
+        </ul>
+      </div>
+
+      <div class="filterbar">
+        <select id="filtroAnoCamara" aria-label="Escolher ano da avaliação da Câmara">
+          <option value="2025">Ano 2025</option>
+          <option value="2026">Ano 2026</option>
+        </select>
+        <input id="filtroVer" type="search" placeholder="Filtrar por nome…">
+        <select id="ordenarVer">
+          <option value="total">Mais ativos</option>
+          <option value="emendas">Mais emendas</option>
+          <option value="indicacoes">Mais indicações</option>
+          <option value="requerimentos">Mais requerimentos</option>
+          <option value="projetos_lei">Mais projetos de lei</option>
+          <option value="mocoes">Mais moções/homenagens</option>
+        </select>
+      </div>
+
+      <div id="vereadores" class="grid grid--vereadores"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Emendas Impositivas — promessa × pagamento</h3>
+      <p class="block__lead">
+        Cada vereador tem cota fixa do orçamento para destinar a entidades, obras
+        e serviços. Para cada emenda, cruzamos o CNPJ beneficiário com os
+        pagamentos reais da Prefeitura no Portal de Transparência.
+        <br><a href="relatorios.html#ranking-entidades">Ver ranking das entidades que mais recebem emendas →</a>
+      </p>
+
+      <div id="cruzamentoStats" class="cruzamento" hidden></div>
+
+      <div id="emendasAtencaoBlock" hidden></div>
+
+      <div id="execucaoVereadorBlock" class="block" hidden style="margin-bottom:18px;">
+        <h4 class="block__title" style="font-size:1rem;">% de execução por vereador — pago ÷ destinado</h4>
+        <p class="block__lead" style="font-size:.85rem;">
+          O vereador destinou R$ X em emendas. Quanto disso a Prefeitura realmente pagou ao beneficiário?
+          Verde ≥ 70% executado, amarelo 30–70%, vermelho &lt; 30%.
+        </p>
+        <div id="execucaoVereador" class="exec-grid"></div>
+      </div>
+
+      <div id="graficoEmendasBlock" class="block" hidden style="margin-bottom:18px;">
+        <h4 class="block__title" style="font-size:1rem;">Emendas por vereador — valor total destinado</h4>
+        <p class="block__lead" style="font-size:.85rem;">Top 15 vereadores por valor total de emendas impositivas. Clique no nome para filtrar abaixo.</p>
+        <div id="graficoEmendas" class="em-chart" aria-label="Gráfico de emendas por vereador"></div>
+      </div>
+
+      <div class="filterbar">
+        <select id="filtroAnoEmendas" aria-label="Filtrar emendas por ano">
+          <option value="">Todos os anos</option>
+          <option value="2025">Ano 2025</option>
+          <option value="2026">Ano 2026</option>
+        </select>
+        <select id="filtroAnoPagamentosCnpj" aria-label="Filtrar pagamentos ao CNPJ por ano">
+          <option value="">Pagamentos: todos os anos</option>
+          <option value="2025">Pagamentos: 2025</option>
+          <option value="2026">Pagamentos: 2026</option>
+        </select>
+        <select id="filtroVereador" aria-label="Escolher vereador ativo">
+          <option value="">Todos os vereadores</option>
+        </select>
+        <select id="filtroEntidade" aria-label="Escolher ONG ou entidade beneficiada">
+          <option value="">Todas as ONGs/entidades</option>
+        </select>
+        <input id="filtroEm" type="search" placeholder="Buscar entidade, autor ou CNPJ…">
+        <select id="ordenarEm">
+          <option value="valor_desc">Maior valor</option>
+          <option value="valor_asc">Menor valor</option>
+          <option value="autor">Por vereador</option>
+          <option value="numero">Mais recentes</option>
+          <option value="pago">Maior pago pela Prefeitura</option>
+        </select>
+        <select id="filtroStatus">
+          <option value="">Todos os status</option>
+          <option value="encontrado">Com pagamento</option>
+          <option value="execucao_direta">Execução direta</option>
+          <option value="sem_pagamento">Sem pagamento</option>
+          <option value="sem_cnpj">Sem CNPJ</option>
+        </select>
+        <span id="emendasContador" class="filterbar__count"></span>
+      </div>
+
+      <div id="perfilVereador" class="ver-profile" hidden></div>
+      <div id="entidadeResumo" class="entity-profile" hidden></div>
+      <div id="emendas" class="emendas"></div>
+      <div id="emendasMais" class="loadmore" hidden>
+        <button type="button" onclick="ZELA.maisEmendas()">Mostrar mais 30</button>
+      </div>
+    </div>
+
+    <div id="diariasCamaraBlock" class="block">
+      <h3 class="block__title">Diárias de viagem - Câmara</h3>
+      <p class="block__lead">
+        Levantamento separado das diárias pagas a vereadores e servidores da
+        Câmara: funcionário, cargo, destino, quantidade, valor unitário e total.
+      </p>
+      <div class="stats" id="statsDiariasCamara"></div>
+      <div class="filterbar">
+        <select id="filtroAnoDiariasCamara" aria-label="Filtrar diarias por ano">
+          <option value="">Todos os anos</option>
+          <option value="2026" selected>Ano 2026</option>
+          <option value="2025">Ano 2025</option>
+        </select>
+        <select id="filtroSecretariaDiariasCamara" aria-label="Filtrar por setor ou cargo">
+          <option value="">Todos os cargos/setores</option>
+        </select>
+        <input id="filtroFuncionarioDiariasCamara" type="search" placeholder="Buscar vereador, servidor, destino ou finalidade...">
+        <select id="filtroValorDiariasCamara" aria-label="Filtrar por faixa de valor">
+          <option value="">Todos os valores</option>
+          <option value="1000">Acima de R$ 1.000</option>
+          <option value="500-999">De R$ 500 a R$ 999</option>
+          <option value="0-499">Ate R$ 499</option>
+        </select>
+        <select id="ordenarDiariasCamara" aria-label="Ordenar diarias">
+          <option value="valor_desc">Maior valor total</option>
+          <option value="qtd_desc">Maior quantidade</option>
+          <option value="valor_unit_desc">Maior valor por diária</option>
+          <option value="data_desc">Mais recentes</option>
+          <option value="secretaria">Por cargo/setor</option>
+        </select>
+        <span id="contadorDiariasCamara" class="filterbar__count"></span>
+      </div>
+      <div id="rankingDiariasCamara" class="diarias-ranking"></div>
+      <div id="listaDiariasCamara" class="diarias-list"></div>
+    </div>
+
+    <p class="muted">
+      Fonte: <a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Sistema de Apoio ao Processo Legislativo da Câmara de Varginha</a>
+    </p>
+  </div>
+</section>
+
+</main>
+
+<dialog id="modalVer" class="modal">
+  <button class="modal__close" onclick="document.getElementById('modalVer').close()" aria-label="Fechar">×</button>
+  <div id="modalVerContent"></div>
+</dialog>
+
+<dialog id="modalFiscaliza" class="modal modal--wide">
+  <button class="modal__close" onclick="document.getElementById('modalFiscaliza').close()" aria-label="Fechar">&times;</button>
+  <div id="modalFiscalizaContent"></div>
+</dialog>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <strong>Zela Varginha</strong> · Painel Cidadão de Fiscalização<br>
+      <span class="muted">Ferramenta independente, sem fins lucrativos.</span>
+    </div>
+    <div class="footer__sources">
+      <strong>Fontes oficiais:</strong>
+      <ul>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Câmara de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Site oficial da Câmara</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var ts = Date.now();
+  function load(src, cb) {
+    var s = document.createElement("script");
+    s.src = src + "?v=" + ts;
+    s.charset = "UTF-8";
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+  load("data.js", function () { load("app.js"); });
+})();
+</script>
+</body>
+</html>
+
+
+

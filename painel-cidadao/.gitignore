@@ -1,0 +1,29 @@
+# ============================================================
+# painel-cidadao/.gitignore — proteção local
+# Regras gerais estão em ../.gitignore
+# ============================================================
+
+# Segredos (caso reapareçam aqui por engano)
+.betha-token*.json
+.env
+
+# Logs
+*.log
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Backups locais
+*.bak
+*.backup
+
+# Scripts temporários
+_fix_*.py
+_check*.py
+_find_*.py
+
+# Dados brutos grandes (regenerados pelo coletor)
+data/camara_anos.json
+data/diarias.json
+data/pessoal.json

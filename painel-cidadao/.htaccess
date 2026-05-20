@@ -1,0 +1,18 @@
+# Zela Varginha — proteção de arquivos sensíveis
+# Bloqueia acesso direto a tokens, logs, scripts Python e cache
+
+<FilesMatch "\.(json|log|py|pyc|bat|txt)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Libera apenas os arquivos JSON públicos necessários
+<FilesMatch "^data\.js$">
+  Order deny,allow
+  Allow from all
+</FilesMatch>
+
+# Bloqueia pastas internas
+RedirectMatch 403 ^/__pycache__/
+RedirectMatch 403 ^/data/
+RedirectMatch 403 ^/\.

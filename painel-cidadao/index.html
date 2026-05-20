@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zela Varginha · Painel Cidadão</title>
+<meta name="description" content="Plataforma independente de fiscalização cidadã e transparência pública de Varginha-MG.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Zela Varginha">
+<meta property="og:title"       content="Zela Varginha · Painel Cidadão">
+<meta property="og:description" content="Plataforma independente de fiscalização cidadã e transparência pública de Varginha-MG.">
+<meta property="og:locale"      content="pt_BR">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Zela Varginha · Painel Cidadão">
+<meta name="twitter:description" content="Fiscalização cidadã independente de Varginha-MG.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+<div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
+  <div class="loading-spinner"></div>
+  <p>Carregando dados…</p>
+</div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Zela Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"      class="nav__link nav__link--active">Início</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
+      <a href="sobre.html"      class="nav__link">Sobre</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<section class="hero hero--modern">
+  <div class="container">
+    <div class="hero__content animate-in">
+      <span class="hero__kicker">FISCALIZAÇÃO CIDADÃ &bull; VARGINHA-MG</span>
+      <p id="atualizado" class="muted small" style="margin-top:4px;margin-bottom:0"></p>
+      <h1 class="hero__title">A cidade é sua. <br><span>Saiba o que ela está fazendo.</span></h1>
+      <p class="hero__lead">
+        Em Varginha existem <strong>duas instituições</strong> distintas: a <strong>Prefeitura</strong> (gasta o dinheiro) 
+        e a <strong>Câmara</strong> (fiscaliza e cria leis). Este painel separa as duas para você entender onde seu dinheiro está indo.
+      </p>
+      
+      <div class="search-box">
+        <div class="search">
+          <input type="search" id="buscaHome" placeholder="O que você quer descobrir hoje" aria-label="Buscar no painel">
+          <button type="button" onclick="ZELA.smartAudit()">PERGUNTAR AO AGENTE</button>
+        </div>
+        <div class="audit-chips">
+          <button onclick="ZELA.smartAudit('Quem são os maiores fornecedores')">Maiores fornecedores</button>
+          <button onclick="ZELA.smartAudit('Quanto foi gasto com asfalto')">Obras de Asfalto</button>
+          <button onclick="ZELA.smartAudit('Quem recebeu mais diárias')">Ranking de Diárias</button>
+          <button onclick="ZELA.smartAudit('Quais emendas não foram pagas')">Emendas pendentes</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hub-v2 animate-in-delayed">
+      <h3 class="hub-v2__title">O QUE VOCÊ DESEJA FISCALIZAR HOJE</h3>
+      <div class="hub-grid">
+        <a href="prefeitura.html?q=saude" class="hub-item">
+          <div class="hub-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+          <span>Saúde</span>
+        </a>
+        <a href="prefeitura.html?q=educacao" class="hub-item">
+          <div class="hub-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <span>Educação</span>
+        </a>
+        <a href="prefeitura.html?tab=contratos&q=obra" class="hub-item">
+          <div class="hub-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="8" rx="1"/><path d="M17 14v7"/><path d="M7 14v7"/><path d="M17 3v3"/><path d="M7 3v3"/><path d="M10 14 2.3 6.3"/><path d="m14 14 7.7-7.7"/><path d="m8 6 8 8"/></svg>
+          </div>
+          <span>Obras</span>
+        </a>
+        <a href="pessoal.html?tipo=comissionado" class="hub-item">
+          <div class="hub-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span>Comissionados</span>
+        </a>
+        <a href="prefeitura.html?tab=alugueis" class="hub-item">
+          <div class="hub-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4"/><path d="M5 21V10.85"/><path d="M19 21V10.85"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg>
+          </div>
+          <span>Aluguéis</span>
+        </a>
+        <a href="prefeitura.html?tab=eventos" class="hub-item">
+          <div class="hub-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><path d="M7 2a2 2 0 0 1 2 2v1"/><path d="M15 2a2 2 0 0 1 2 2v1"/><path d="M2 12h20"/><path d="M7 12v5"/><path d="M17 12v5"/><path d="M12 12v8"/></svg>
+          </div>
+          <span>Shows</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="hero__scroll">
+    <div class="mouse"></div>
+    <span>Role para explorar</span>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <header class="section__header animate-on-scroll">
+      <h2 class="section__title">Auditômetro de Transparência</h2>
+      <p class="section__lead">Avaliamos a qualidade dos dados públicos oficiais para que você saiba o quanto pode confiar na transparência atual da cidade.</p>
+    </header>
+
+    <div class="audit-scores animate-in">
+      <div class="score-card" id="scorePrefeitura">
+        <div class="score-card__circle">
+          <svg viewBox="0 0 36 36" class="circular-chart">
+            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <path class="circle" id="circlePref" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <text x="18" y="20.35" class="percentage" id="valPref">0</text>
+          </svg>
+        </div>
+        <div class="score-card__info">
+          <h3>Prefeitura de Varginha</h3>
+          <p id="descPref">Analisando integridade dos contratos e pagamentos...</p>
+          <ul id="listPref" class="score-list"></ul>
+        </div>
+      </div>
+
+      <div class="score-card" id="scoreCamara">
+        <div class="score-card__circle">
+          <svg viewBox="0 0 36 36" class="circular-chart">
+            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <path class="circle" id="circleCam" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+            <text x="18" y="20.35" class="percentage" id="valCam">0</text>
+          </svg>
+        </div>
+        <div class="score-card__info">
+          <h3>Câmara Municipal</h3>
+          <p id="descCam">Analisando produção legislativa e emendas...</p>
+          <ul id="listCam" class="score-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <section class="home-ops animate-on-scroll" aria-label="Painel rapido de fiscalizacao">
+      <div class="home-ops__head">
+        <span>Central de fiscalização</span>
+        <h2>Comece pelos sinais que mais importam.</h2>
+        <p>Resumo direto de dinheiro, contratos, diárias, emendas e canais oficiais para conferir tudo na fonte.</p>
+        <div class="home-ops__brief" aria-label="Roteiro rapido">
+          <strong>Roteiro rápido</strong>
+          <a href="prefeitura.html?tab=contratos">1. Abra contratos acima de R$ 1 mi</a>
+          <a href="prefeitura.html?tab=diarias">2. Confira diárias por pessoa e finalidade</a>
+          <a href="camara.html">3. Compare emenda, CNPJ e pagamento</a>
+        </div>
+        <div id="homeOpsFreshness" class="home-ops__freshness">Dados locais carregados no navegador</div>
+      </div>
+
+      <div id="homeOpsStats" class="home-ops__stats">
+        <a href="prefeitura.html" class="home-stat">
+          <strong>Prefeitura</strong>
+          <span>Contratos, pagamentos, licitações e diárias</span>
+        </a>
+        <a href="camara.html" class="home-stat">
+          <strong>Câmara</strong>
+          <span>Vereadores, matérias e emendas</span>
+        </a>
+        <a href="relatorios.html" class="home-stat">
+          <strong>Relatórios</strong>
+          <span>Sinais de atenção para investigar</span>
+        </a>
+      </div>
+
+      <div id="homeOpsPriorities" class="home-ops__priorities">
+        <a href="prefeitura.html?tab=contratos" class="priority-row">
+          <span>1</span>
+          <strong>Contratos de alto valor</strong>
+          <small>Leia objeto, vigência, modalidade e fornecedor.</small>
+        </a>
+        <a href="prefeitura.html?tab=diarias" class="priority-row">
+          <span>2</span>
+          <strong>Diárias e viagens</strong>
+          <small>Confira pessoa, destino, valor e finalidade.</small>
+        </a>
+        <a href="camara.html" class="priority-row">
+          <span>3</span>
+          <strong>Emendas parlamentares</strong>
+          <small>Compare promessa, CNPJ beneficiado e pagamento.</small>
+        </a>
+      </div>
+
+      <div class="home-ops__actions">
+        <a href="prefeitura.html" class="home-action home-action--primary">
+          <span>Executivo</span>
+          <strong>Fiscalizar Prefeitura</strong>
+          <small>Dinheiro gasto, contratos, licitações, diárias e fontes oficiais.</small>
+        </a>
+        <a href="camara.html" class="home-action">
+          <span>Legislativo</span>
+          <strong>Acompanhar Câmara</strong>
+          <small>Produção dos vereadores, emendas, matérias e transparência.</small>
+        </a>
+        <a href="cobrar.html" class="home-action home-action--gold">
+          <span>Ação cidadã</span>
+          <strong>Como cobrar</strong>
+          <small>Canais oficiais para pedir informação, protocolar e denunciar.</small>
+        </a>
+      </div>
+    </section>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <strong>Zela Varginha</strong>
+      <span>Fiscalização Cidadã Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Este painel não possui vínculo governamental. <br>
+        Todos os dados são extraídos de fontes oficiais de transparência.
+      </p>
+    </div>
+    <div class="footer__links">
+      <strong>Acesso Rápido</strong>
+      <nav>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Sinais de Atenção</a>
+        <a href="cobrar.html">Como Protocolar</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Zela Varginha &copy; 2026 &middot; Varginha-MG</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+(function () {
+  var ts = Date.now();
+  function load(src, cb) {
+    var s = document.createElement("script");
+    s.src = src + "?v=" + ts;
+    s.charset = "UTF-8";
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
+  load("data.js", function () { load("app.js"); });
+})();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prefeitura · Zela Varginha</title>
+<meta name="description" content="O que a Prefeitura de Varginha está executando: contratos, licitações, fornecedores, Diário Oficial.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Zela Varginha">
+<meta property="og:title"       content="Prefeitura · Zela Varginha">
+<meta property="og:description" content="Contratos, licitações, diárias e fornecedores da Prefeitura de Varginha-MG.">
+<meta property="og:locale"      content="pt_BR">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Prefeitura · Zela Varginha">
+<meta name="twitter:description" content="Contratos, licitações, diárias e fornecedores da Prefeitura de Varginha-MG.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="prefeitura">
+<div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
+  <div class="loading-spinner"></div>
+  <p>Carregando dados…</p>
+</div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Zela Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"      class="nav__link">Início</a>
+      <a href="prefeitura.html" class="nav__link nav__link--active">Prefeitura</a>
+      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
+      <a href="sobre.html"      class="nav__link">Sobre</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<!-- BIG HEADER -->
+<section class="section section--alt section--prefeitura">
+  <div class="container">
+    <p class="breadcrumb">
+      <a href="index.html">← Voltar ao início</a>
+    </p>
+
+    <header class="bigheader">
+      <span class="bigheader__kicker">PODER EXECUTIVO</span>
+      <h2 class="bigheader__title">Prefeitura</h2>
+      <p class="bigheader__lead">
+        Aqui é onde o dinheiro é executado: contratos, folha, licitações, obras.
+        O painel oficial completo é o <strong>Portal de Transparência Betha</strong>
+        (sem login, atualizado diariamente).
+      </p>
+      <p id="atualizado" class="muted small" style="margin-top:8px"></p>
+      <div id="prefeituraResumoTopo" class="reader-summary"></div>
+      <div class="civic-actions" aria-label="Ações rápidas da Prefeitura">
+        <button type="button" data-pref-tab="visao">Perguntar aos dados</button>
+        <button type="button" data-pref-tab="contratos">Maiores contratos</button>
+        <button type="button" data-pref-tab="diarias">Diárias</button>
+        <a href="relatorios.html">Relatórios de fiscalização</a>
+        <a href="#" id="btnBaixarPagina" class="btn-pdf">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Baixar página
+        </a>
+      </div>
+    </header>
+
+    <!-- PLACAR DO DINHEIRO -->
+    <div id="placarPrefeitura" class="placar" aria-label="Placar do dinheiro da Prefeitura"></div>
+
+    <!-- FILTROS RÁPIDOS POR CATEGORIA -->
+    <div id="catChipsPrefeitura" class="cat-chips" aria-label="Filtrar contratos por categoria"></div>
+
+    <nav class="pref-tabs" aria-label="Areas de fiscalizacao da Prefeitura">
+      <button type="button" class="pref-tab is-active" data-pref-tab="visao">Visão geral <span id="badgeVisao"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="contratos">Contratos <span id="badgeContratos"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="diarias">Diárias <span id="badgeDiarias"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="alugueis">Aluguéis <span id="badgeAlugueis"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="eventos">Eventos <span id="badgeEventos"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="licitacoes">Licitações <span id="badgeLicitacoes"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="fontes">Fontes</button>
+    </nav>
+
+    <div class="pref-panels">
+    <section class="pref-panel is-active" data-pref-panel="visao">
+
+    <div id="prefeituraOverview" class="audit-overview"></div>
+    <div id="prefeituraResumoBase" class="reader-summary reader-summary--wide"></div>
+    <div id="gastosPalavraChave" class="keyword-audit"></div>
+    <div id="prefeituraAtencao" class="citizen-alerts"></div>
+
+    <div id="graficoMensalBlock" class="block" hidden>
+      <h3 class="block__title">Evolução mensal de contratos assinados</h3>
+      <p class="block__lead">Valor total dos contratos assinados por mês — identifica picos de gasto e sazonalidade.</p>
+      <div id="graficoMensal" class="chart-bars" aria-label="Gráfico de barras mensais"></div>
+    </div>
+
+    <div id="secretariasBlock" class="block" hidden>
+      <h3 class="block__title">Distribuição de contratos por secretaria</h3>
+      <p class="block__lead">
+        Quanto cada secretaria/órgão assinou em contratos. Clique numa barra para filtrar
+        a lista de contratos por essa secretaria.
+      </p>
+      <div id="secretariasBars" class="sec-bars" aria-label="Distribuição de gastos por secretaria"></div>
+    </div>
+
+    <div id="prefeituraAtalhos" class="audit-shortcuts" aria-label="Atalhos de fiscalizacao">
+      <button type="button" data-pref-tab="contratos">
+        <strong>Contratos caros</strong>
+        <span>Ver compromissos assinados, valores e objetos fracos.</span>
+      </button>
+      <button type="button" data-pref-tab="diarias">
+        <strong>Diárias</strong>
+        <span>Conferir quem recebeu, valor, destino e finalidade.</span>
+      </button>
+      <button type="button" data-pref-tab="alugueis">
+        <strong>Imóveis alugados</strong>
+        <span>Somar aluguel mensal estimado e vigência dos contratos.</span>
+      </button>
+      <button type="button" data-pref-tab="eventos">
+        <strong>Eventos e shows</strong>
+        <span>Rankear empresas, artistas e estrutura contratada.</span>
+      </button>
+    </div>
+
+    <!-- Live: Total executado e Top fornecedores -->
+    <div id="prefeituraLive" class="block" hidden>
+      <h3 class="block__title">Para onde vai o dinheiro — dados ao vivo</h3>
+      <p class="block__lead">
+        Pagamentos extraídos do Portal de Transparência. Excluímos transferências
+        internas (para fundos, autarquias e a própria Prefeitura) — o que está
+        listado é dinheiro que saiu para <strong>fornecedores externos</strong>.
+      </p>
+
+      <div class="stats" id="statsPrefeitura"></div>
+
+      <h4 class="subblock__title">Top 20 fornecedores neste ano</h4>
+      <p class="muted small">
+        Agrupados por raiz do CNPJ (8 primeiros dígitos), pois o portal mascara os 4 últimos por LGPD.
+      </p>
+      <div id="topFornecedores" class="forn"></div>
+    </div>
+    </section>
+
+    <section class="pref-panel" data-pref-panel="contratos">
+
+    <!-- Live: Contratos vigentes -->
+    <div id="contratosBlock" class="block" hidden>
+      <h3 class="block__title">Contratos vigentes</h3>
+      <p class="block__lead">
+        Cada contrato é um compromisso assinado entre a Prefeitura e uma empresa
+        (obras, serviços, fornecimentos). 
+        O <strong>Auditômetro</strong> analisa se o objeto é claro e se os valores e datas 
+        estão corretos conforme a lei.
+      </p>
+      <div id="contratosLegalContext" class="legal-context"></div>
+      <div id="transparenciaHealth" class="block--warn" style="display:none; margin-bottom:20px; border-left-color: var(--teal); background:#e6fffa; border-color:#b2f5ea">
+         <strong>Diagnóstico de Transparência</strong>
+         <p id="healthSummary"></p>
+      </div>
+      <div id="contratosVencendoBlock"></div>
+      <div class="filterbar">
+        <select id="filtroAnoContrato" aria-label="Filtrar por ano" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
+          <option value="">Todos os anos</option>
+          <option value="2026" selected>2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+        <select id="filtroSecretaria" aria-label="Filtrar por secretaria/órgão" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
+          <option value="">Todas as secretarias</option>
+        </select>
+        <input id="filtroContrato" type="search" placeholder="Buscar contratado, objeto, modalidade..." oninput="ZELA.filtrarContratos && ZELA.filtrarContratos()">
+        <select id="filtroValorContrato" aria-label="Filtrar por valor mínimo" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
+          <option value="">Qualquer valor</option>
+          <option value="100000">Acima de R$ 100 mil</option>
+          <option value="500000">Acima de R$ 500 mil</option>
+          <option value="1000000">Acima de R$ 1 milhão</option>
+          <option value="5000000">Acima de R$ 5 milhões</option>
+        </select>
+        <span id="contratosContador" class="filterbar__count"></span>
+      </div>
+      <div id="contratos" class="contratos"></div>
+      <div id="contratosMais" class="loadmore" hidden>
+        <button type="button" onclick="ZELA.maisContratos()">Mostrar mais 20</button>
+      </div>
+    </div>
+
+    <!-- Live: Licitações em andamento -->
+    </section>
+
+    <section class="pref-panel" data-pref-panel="licitacoes">
+    <div id="licitacoesBlock" class="block" hidden>
+      <h3 class="block__title">Licitações em andamento</h3>
+      <p class="block__lead">
+        Processos de compra abertos: o que a Prefeitura quer comprar agora.
+        Acompanhar isso é a forma de fiscalizar <em>antes</em> do dinheiro sair.
+      </p>
+      <div class="filterbar">
+        <input id="filtroLicitacao" type="search" placeholder="Buscar objeto ou modalidade…">
+        <select id="filtroValorLicitacao" aria-label="Filtrar por valor mínimo">
+          <option value="">Qualquer valor</option>
+          <option value="50000">Acima de R$ 50 mil</option>
+          <option value="100000">Acima de R$ 100 mil</option>
+          <option value="500000">Acima de R$ 500 mil</option>
+          <option value="1000000">Acima de R$ 1 milhão</option>
+        </select>
+        <span id="licitacoesContador" class="filterbar__count"></span>
+      </div>
+      <div id="licitacoes" class="licitacoes"></div>
+      <div id="licitacoesMais" class="loadmore" hidden>
+        <button type="button" id="btnLicitacoesMais">Mostrar mais</button>
+      </div>
+    </div>
+
+    <!-- Shows e Eventos -->
+    </section>
+
+    <section class="pref-panel" data-pref-panel="eventos">
+    <div id="eventosBlock" class="block" hidden>
+      <h3 class="block__title">Shows, eventos e cachês</h3>
+      <p class="block__lead">
+        Mapeamento de gastos com festas, shows, estrutura de eventos, segurança e 
+        contratação de artistas. Use o filtro para ver gastos por evento específico.
+      </p>
+      <div class="stats" id="statsEventos"></div>
+      <div class="filterbar">
+        <select id="filtroAnoEvento" aria-label="Filtrar por ano">
+          <option value="">Todos os anos</option>
+          <option value="2026" selected>2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+        <select id="filtroNomeEvento" aria-label="Filtrar por evento">
+          <option value="">Todos os eventos</option>
+        </select>
+        <input id="filtroBuscaEvento" type="search" placeholder="Buscar artista, empresa ou objeto…">
+        <span id="eventosContador" class="filterbar__count"></span>
+      </div>
+      <div id="eventosRanking" class="block block--alt" style="margin-top:20px; padding:20px; border-radius:12px; background: #fdfdfd; border: 1px solid #eee;">
+        <h4 class="subblock__title">Ranking de empresas e artistas</h4>
+        <p class="muted small">As empresas que mais receberam recursos em eventos mapeados.</p>
+        <div id="listaRankingEventos" class="forn"></div>
+      </div>
+
+      <div id="listaEventos" class="contratos" style="margin-top:20px;"></div>
+    </div>
+
+    <!-- Aluguéis e Locações -->
+    </section>
+
+    <section class="pref-panel" data-pref-panel="alugueis">
+    <div id="alugueisBlock" class="block" hidden>
+      <h3 class="block__title">Imóveis alugados</h3>
+      <p class="block__lead">
+        Monitoramento de prédios e terrenos locados pela Prefeitura. 
+        Fiscalize o valor do aluguel, o endereço e a utilidade de cada local.
+      </p>
+      <div class="stats" id="statsAlugueis"></div>
+      <div class="filterbar">
+        <input id="filtroAluguel" type="search" placeholder="Buscar por endereço, secretaria ou proprietário…">
+        <span id="alugueisContador" class="filterbar__count"></span>
+      </div>
+      <div id="listaAlugueis" class="contratos"></div>
+    </div>
+
+    </section>
+
+    <section class="pref-panel" data-pref-panel="diarias">
+    <div id="diariasPrefeituraBlock" class="block">
+      <h3 class="block__title">Diárias de viagem — Prefeitura</h3>
+      <p class="block__lead">
+        Levantamento de despesas classificadas como diárias na Prefeitura:
+        secretaria, funcionário, cargo, valor, data e finalidade informada.
+        Ranking por pessoa com total acumulado e média por diária.
+      </p>
+      <div class="stats" id="statsDiariasPrefeitura"></div>
+      <div class="filterbar">
+        <select id="filtroAnoDiariasPrefeitura" aria-label="Filtrar diarias por ano">
+          <option value="">Todos os anos</option>
+          <option value="2026" selected>Ano 2026</option>
+          <option value="2025">Ano 2025</option>
+        </select>
+        <select id="filtroSecretariaDiariasPrefeitura" aria-label="Filtrar por secretaria">
+          <option value="">Todas as secretarias</option>
+        </select>
+        <input id="filtroFuncionarioDiariasPrefeitura" type="search" placeholder="Buscar funcionário, destino ou finalidade...">
+        <select id="filtroValorDiariasPrefeitura" aria-label="Filtrar por faixa de valor">
+          <option value="">Todos os valores</option>
+          <option value="1000">Acima de R$ 1.000</option>
+          <option value="500-999">De R$ 500 a R$ 999</option>
+          <option value="0-499">Até R$ 499</option>
+        </select>
+        <select id="ordenarDiariasPrefeitura" aria-label="Ordenar diarias">
+          <option value="valor_desc">Maior valor total</option>
+          <option value="qtd_desc">Maior quantidade</option>
+          <option value="valor_unit_desc">Maior valor por diária</option>
+          <option value="data_desc">Mais recentes</option>
+          <option value="secretaria">Por secretaria</option>
+        </select>
+        <span id="contadorDiariasPrefeitura" class="filterbar__count"></span>
+      </div>
+      <div id="rankingDiariasPrefeitura" class="diarias-ranking"></div>
+      <div id="listaDiariasPrefeitura" class="diarias-list"></div>
+    </div>
+
+    <!-- Diário Oficial -->
+    </section>
+
+    <section class="pref-panel" data-pref-panel="fontes">
+    <div class="block">
+      <h3 class="block__title">Diário Oficial — últimas edições</h3>
+      <p class="block__lead">
+        Tudo que a Prefeitura publica oficialmente. Cliques abrem o PDF completo.
+      </p>
+      <div id="diarioLista" class="diario"></div>
+      <p class="muted">
+        Fonte: <a href="https://www.varginha.mg.gov.br/portal/diario-oficial" target="_blank" rel="noopener">varginha.mg.gov.br/portal/diario-oficial</a>
+      </p>
+    </div>
+
+    <!-- Atalhos Portal Transparência -->
+    <div class="block">
+      <h3 class="block__title">Mais módulos no Portal de Transparência</h3>
+      <p class="block__lead">
+        Cada cartão abre o módulo oficial completo. Não há login — qualquer
+        cidadão pode consultar.
+      </p>
+      <div class="modules" id="modulos"></div>
+      <p class="muted">
+        Fonte oficial:
+        <a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">
+          Portal de Transparência da Prefeitura de Varginha (Betha)
+        </a>
+      </p>
+    </div>
+
+    <!-- Visão TCE -->
+    <div class="block">
+      <h3 class="block__title">Visão oficial do TCE-MG</h3>
+      <p class="block__lead">
+        O Tribunal de Contas do Estado já avalia a transparência e o balanço
+        financeiro da Prefeitura. Veja o que eles dizem sobre Varginha.
+      </p>
+      <div class="tce-cards">
+        <a class="tce-card" href="https://fiscalizandocomtce.tce.mg.gov.br/" target="_blank" rel="noopener">
+          <h4>Fiscalizando com TCE</h4>
+          <p>"O caminho do dinheiro público" — balanço, despesas e prestação de contas por exercício.</p>
+          <span class="cta">Buscar Varginha →</span>
+        </a>
+        <a class="tce-card" href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">
+          <h4>Lupa de Minas</h4>
+          <p>App oficial do TCE-MG para acompanhar contas dos 853 municípios do estado.</p>
+          <span class="cta">Conhecer →</span>
+        </a>
+      </div>
+    </div>
+    </section>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <strong>Zela Varginha</strong> · Painel Cidadão de Fiscalização<br>
+      <span class="muted">Ferramenta independente, sem fins lucrativos.</span>
+    </div>
+    <div class="footer__sources">
+      <strong>Fontes oficiais:</strong>
+      <ul>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal Transparência</a></li>
+        <li><a href="https://www.varginha.mg.gov.br/portal/diario-oficial" target="_blank" rel="noopener">Diário Oficial</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var ts = Date.now();
+  function load(src, cb) {
+    var s = document.createElement("script");
+    s.src = src + "?v=" + ts;
+    s.charset = "UTF-8";
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+  load("data.js", function () { load("app.js"); });
+})();
+</script>
+</body>
+</html>
+

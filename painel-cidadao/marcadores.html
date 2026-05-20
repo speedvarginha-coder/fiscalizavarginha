@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meus Marcadores · Zela Varginha</title>
+<meta name="description" content="Contratos e emendas que você está acompanhando — Zela Varginha.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Zela Varginha">
+<meta property="og:title"       content="Meus Marcadores · Zela Varginha">
+<meta property="og:description" content="Sua lista pessoal de contratos e emendas em acompanhamento.">
+<meta property="og:locale"      content="pt_BR">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="marcadores">
+<div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
+  <div class="loading-spinner"></div>
+  <p>Carregando dados…</p>
+</div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Zela Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"      class="nav__link">Início</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="marcadores.html" class="nav__link nav__link--active">★ Marcadores <span id="watchCount" class="cat-chip__count" style="margin-left:4px;"></span></a>
+      <a href="sobre.html"      class="nav__link">Sobre</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<section class="section section--alt">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">← Voltar ao início</a></p>
+
+    <header class="bigheader">
+      <span class="bigheader__kicker">FISCALIZAÇÃO PESSOAL</span>
+      <h2 class="bigheader__title">★ Meus Marcadores</h2>
+      <p class="bigheader__lead">
+        Sua lista pessoal de contratos e emendas em acompanhamento. Os dados ficam salvos
+        apenas no seu navegador — ninguém mais vê. Use para acompanhar casos específicos
+        ao longo do tempo.
+      </p>
+    </header>
+
+    <div id="marcadoresArea"></div>
+
+    <div class="block" style="margin-top:24px;">
+      <h3 class="block__title">Como usar marcadores</h3>
+      <p style="font-size:.9rem; line-height:1.6;">
+        Em qualquer contrato ou emenda, clique no botão <strong>☆</strong> para adicionar à sua lista.
+        Clique novamente em <strong>★</strong> para remover. Os marcadores são salvos no seu navegador
+        (localStorage) e ficam disponíveis enquanto você não limpar o cache.
+      </p>
+      <p style="font-size:.9rem; line-height:1.6;">
+        <strong>Útil para:</strong> jornalistas acompanhando uma investigação, vereadores monitorando
+        execução de emendas próprias, cidadãos seguindo obras no bairro.
+      </p>
+      <div style="margin-top:14px;">
+        <button id="btnExportarMarcadores" class="btn-csv">↓ Exportar lista (JSON)</button>
+        <button id="btnLimparMarcadores" class="btn-csv" style="background:#c62828; color:#fff; margin-left:8px;">🗑 Limpar tudo</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <strong>Zela Varginha</strong> · Painel Cidadão de Fiscalização<br>
+      <span class="muted">Marcadores salvos localmente no seu navegador.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+(function () {
+  var ts = Date.now();
+  function load(src, cb) {
+    var s = document.createElement("script");
+    s.src = src + "?v=" + ts;
+    s.charset = "UTF-8";
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
+  load("data.js", function () { load("app.js", function () {
+    // Render dos marcadores após app.js carregar
+    renderMarcadores();
+  }); });
+})();
+
+function renderMarcadores() {
+  if (!window.ZELA || !window.ZELA.watchlist) return;
+  if (!window.ZELA_DATA) return;
+
+  var area = document.getElementById("marcadoresArea");
+  var w = window.ZELA.watchlist.obter();
+  var dataPref = window.ZELA_DATA.prefeitura || {};
+  var contratosAll = (dataPref.contratos || []);
+  var emendasAll = (window.ZELA_DATA.emendas || []);
+
+  // Mapeia ID → item
+  var contratosMarcados = w.contratos.map(function(id) {
+    if (id.indexOf("CAM-") === 0) return null; // Câmara
+    var parts = id.split("/");
+    var match = contratosAll.find(function(c) {
+      return String(c.numero || "") === parts[0] && String(c.ano || "") === parts[1];
+    });
+    return match ? Object.assign({}, match, { _id: id, _origem: "Prefeitura" }) : { _id: id, _origem: "Prefeitura", _orfao: true };
+  }).filter(Boolean);
+
+  var emendasMarcadas = w.emendas.map(function(id) {
+    var parts = id.split("/");
+    var match = emendasAll.find(function(e) {
+      return String(e.numero || "") === parts[0] && String(e.ano || "") === parts[1];
+    });
+    return match ? Object.assign({}, match, { _id: id }) : { _id: id, _orfao: true };
+  }).filter(Boolean);
+
+  var total = contratosMarcados.length + emendasMarcadas.length;
+
+  if (total === 0) {
+    area.innerHTML = '<div class="marcadores-vazio">' +
+      '<strong>Nenhum marcador ainda</strong>' +
+      '<p>Vá em <a href="prefeitura.html">Prefeitura</a> ou <a href="camara.html">Câmara</a>, encontre um contrato ou emenda que queira acompanhar e clique na estrela ☆.</p>' +
+      '</div>';
+    return;
+  }
+
+  var html = "";
+
+  if (contratosMarcados.length) {
+    html += '<div class="block"><h3 class="block__title">Contratos marcados (' + contratosMarcados.length + ')</h3>';
+    html += '<div class="contratos">';
+    contratosMarcados.forEach(function(c) {
+      if (c._orfao) {
+        html += '<article class="contrato"><div class="contrato__valor">—</div><div><p class="contrato__nome">Contrato ' + c._id + '</p><p class="muted small">Não encontrado nos dados atuais. Pode ter sido removido do portal.</p>' +
+          window.ZELA.watchlist.botao("contratos", c._id) + '</div></article>';
+        return;
+      }
+      var valor = (c.valor || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      html += '<article class="contrato"><div class="contrato__valor">' + valor + '<div style="margin-top:8px;">' + window.ZELA.watchlist.botao("contratos", c._id) + '</div></div>' +
+        '<div><p class="contrato__nome">' + (c.contratado || "—") + '</p>' +
+        '<p class="contrato__obj">' + (c.objeto || "—") + '</p>' +
+        '<div class="contrato__meta"><span><strong>Nº</strong> ' + c.numero + '/' + c.ano + '</span><span>' + (c.modalidade || "") + '</span><span>' + (c.data_assinatura || "") + ' → ' + (c.data_fim || "") + '</span></div>' +
+        '<div style="margin-top:8px;"><a href="prefeitura.html?q=' + encodeURIComponent(c.contratado || "") + '" class="btn-link" style="text-decoration:none;padding:4px 10px;background:#e8f4fd;color:#1565c0;border-radius:4px;font-size:0.85em;">Ver detalhes →</a></div></div></article>';
+    });
+    html += '</div></div>';
+  }
+
+  if (emendasMarcadas.length) {
+    html += '<div class="block" style="margin-top:18px;"><h3 class="block__title">Emendas marcadas (' + emendasMarcadas.length + ')</h3>';
+    html += '<div class="emendas">';
+    emendasMarcadas.forEach(function(e) {
+      if (e._orfao) {
+        html += '<article class="em"><div class="em__valor">—</div><div class="em__body"><p class="em__benef">Emenda ' + e._id + '</p><p class="muted small">Não encontrada nos dados atuais.</p>' +
+          window.ZELA.watchlist.botao("emendas", e._id) + '</div></article>';
+        return;
+      }
+      var valor = (e.valor_brl || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      html += '<article class="em"><div class="em__valor">' + valor + '<div style="margin-top:8px;">' + window.ZELA.watchlist.botao("emendas", e._id) + '</div></div>' +
+        '<div class="em__body"><p class="em__benef">' + (e.beneficiario || "—") + '</p>' +
+        '<div class="em__meta"><span><strong>Autor(a):</strong> ' + (e.autor || "—") + '</span><span>Emenda nº ' + e.numero + '/' + e.ano + '</span></div>' +
+        '<div style="margin-top:8px;"><a href="camara.html?q=' + encodeURIComponent(e.beneficiario || "") + '" class="btn-link" style="text-decoration:none;padding:4px 10px;background:#e8f4fd;color:#1565c0;border-radius:4px;font-size:0.85em;">Ver na Câmara →</a></div></div></article>';
+    });
+    html += '</div></div>';
+  }
+
+  area.innerHTML = html;
+
+  // Atualiza contador
+  var cnt = document.getElementById("watchCount");
+  if (cnt) cnt.textContent = total > 0 ? String(total) : "";
+
+  // Botão exportar
+  var btnExp = document.getElementById("btnExportarMarcadores");
+  if (btnExp) btnExp.addEventListener("click", function() {
+    var data = { contratos: contratosMarcados, emendas: emendasMarcadas, exportado_em: new Date().toISOString() };
+    var blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "zela-marcadores-" + new Date().toISOString().slice(0,10) + ".json";
+    a.click();
+  });
+  var btnLimp = document.getElementById("btnLimparMarcadores");
+  if (btnLimp) btnLimp.addEventListener("click", function() {
+    if (!confirm("Apagar TODOS os seus marcadores? Esta ação não pode ser desfeita.")) return;
+    localStorage.removeItem("zela.watchlist.v1");
+    location.reload();
+  });
+}
+</script>
+</body>
+</html>

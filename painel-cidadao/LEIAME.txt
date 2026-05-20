@@ -1,0 +1,126 @@
+═══════════════════════════════════════════════════════════════
+  ZELA VARGINHA — Painel Cidadão
+  Para acompanhar e fiscalizar a Prefeitura e a Câmara
+  Municipal de Varginha-MG
+═══════════════════════════════════════════════════════════════
+
+
+► QUEM SOU EU?
+──────────────
+Não sou um canal oficial da Prefeitura nem da Câmara. Sou uma
+ferramenta INDEPENDENTE e GRATUITA que reúne em UM SÓ LUGAR
+dados públicos que já existem em vários portais difíceis de
+navegar.
+
+Tudo o que mostro vem de fontes oficiais:
+  • SAPL — Câmara Municipal de Varginha
+  • Portal de Transparência da Prefeitura (Betha)
+  • Diário Oficial Eletrônico (varginha.mg.gov.br)
+  • Portal de Transparência da Câmara (Betha)
+  • Portal Nacional de Contratações Públicas (PNCP)
+  • Dados públicos de CNPJ para apoio cadastral
+  • Tribunal de Contas do Estado de MG (TCE-MG)
+
+
+
+► COMO USAR (CIDADÃO COMUM)
+───────────────────────────
+1) Abra o arquivo "index.html" — duplo clique.
+2) Você cai numa tela inicial com 4 portas grandes:
+     [ Prefeitura ]   [ Câmara ]   [ Relatórios ]   [ Como cobrar ]
+3) Clique na que te interessa — abre uma página dedicada,
+   focada e leve, com tudo daquela instituição.
+
+PRA ATUALIZAR COM DADOS NOVOS:
+  Duplo clique em "atualizar.bat"
+  (precisa rodar "INSTALAR.bat" UMA vez antes)
+
+
+► ESTRUTURA DAS PÁGINAS
+───────────────────────
+  index.html       Tela inicial com 4 portas
+  prefeitura.html  Tudo da Prefeitura (Executivo)
+  camara.html      Tudo da Câmara (Legislativo)
+  relatorios.html  Sinais de atenção e trilhas de fiscalização
+  cobrar.html      8 canais oficiais para agir
+
+A barra de navegação no topo é igual em todas as páginas —
+você sempre pode voltar pra qualquer uma com um clique.
+
+
+
+► PRIMEIRA INSTALAÇÃO (UMA VEZ SÓ)
+──────────────────────────────────
+Pra atualizar os dados automaticamente, faça uma vez:
+
+1) Tenha o Python instalado:
+   https://www.python.org/downloads/
+   IMPORTANTE: marque "Add Python to PATH" na instalação.
+
+2) Duplo clique em "INSTALAR.bat"
+   Ele instala tudo (Playwright + navegador headless ~150 MB).
+   Pode demorar uns 5 minutos só na primeira vez.
+
+
+
+► O QUE VOCÊ ENCONTRA NO PAINEL
+───────────────────────────────
+
+═══ GUIA: QUEM É QUEM ═══
+Mini-explicação para quem nunca parou pra pensar.
+A PREFEITURA gasta o dinheiro (Executivo).
+A CÂMARA aprova as leis e fiscaliza (Legislativo).
+
+═══ ▣ PREFEITURA — Poder Executivo ═══
+► Diário Oficial          Últimas 24 edições com PDF.
+► Total executado         Pago a fornecedores externos no ano
+                          (R$ 110+ milhões em 2026).
+► Top fornecedores        Ranking dos 20 maiores do ano.
+► Contratos vigentes      804 contratos com busca por empresa,
+                          objeto ou modalidade.
+► Licitações em andamento O que está sendo licitado AGORA
+                          (acompanhe ANTES do dinheiro sair).
+► Atalhos                 12 cartões para módulos do Portal
+                          de Transparência (Despesas, Folha,
+                          Diárias, Servidores, Frotas, etc).
+► TCE-MG                  Visão oficial agregada.
+
+═══ ▣ CÂMARA — Poder Legislativo ═══
+► Resumo 2025             Total de matérias, emendas, etc.
+► Os vereadores           Os 18 cards: o que cada um produziu.
+► Emendas Impositivas     As 357 emendas com CRUZAMENTO
+                          PROMESSA × PAGAMENTO. Cada emenda
+                          recebe um badge:
+                            verde  = CNPJ recebeu pagamento
+                            vermelho = sem pagamento detectado
+                          Filtro por status disponível.
+
+═══ COMO COBRAR ═══
+8 ações concretas, separadas por destinatário:
+► Cobrar a Prefeitura: e-SIC, Transparência, Ouvidoria
+► Cobrar a Câmara: SAPL, site oficial
+► Denunciar irregularidade: TCE-MG, Fiscalizando, MP-MG
+
+
+
+► PRIVACIDADE
+─────────────
+Todos os dados aqui são PÚBLICOS. Você não precisa fazer
+login. O painel não coleta nem envia nada — roda só no seu
+computador.
+
+
+
+► DICAS RÁPIDAS
+───────────────
+• Quer ver o que sua entidade favorita recebeu? Use a busca
+  do hero (no topo) e digite o nome ou CNPJ.
+
+• Suspeita de algum CNPJ? Cole no filtro de Emendas e veja
+  o status de pagamento. Cole também no filtro de Contratos
+  pra ver se há contrato vigente.
+
+• Algo não fez sentido? A seção "Como cobrar" tem o canal
+  certo pra cada tipo de pergunta.
+
+═══════════════════════════════════════════════════════════════

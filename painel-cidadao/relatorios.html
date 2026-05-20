@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatórios · Zela Varginha</title>
+<meta name="description" content="Relatórios independentes de sinais de atenção em dados públicos da Prefeitura e da Câmara Municipal de Varginha-MG.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Zela Varginha">
+<meta property="og:title"       content="Relatórios e Sinais de Atenção · Zela Varginha">
+<meta property="og:description" content="Sinais automáticos de atenção nos dados públicos de Varginha-MG — contratos, emendas e diárias.">
+<meta property="og:locale"      content="pt_BR">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Relatórios · Zela Varginha">
+<meta name="twitter:description" content="Sinais de atenção nos dados públicos de Varginha-MG.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="relatorios">
+<div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
+  <div class="loading-spinner"></div>
+  <p>Carregando dados…</p>
+</div>
+<a class="skip-link" href="#conteúdo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Zela Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"      class="nav__link">Início</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="relatorios.html" class="nav__link nav__link--active">Relatórios</a>
+      <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
+      <a href="sobre.html"      class="nav__link">Sobre</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteúdo" tabindex="-1">
+<section class="section section--alt">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">Voltar ao início</a></p>
+
+    <header class="bigheader">
+      <span class="bigheader__kicker">FISCALIZAÇÃO INDEPENDENTE</span>
+      <h2 class="bigheader__title">Relatórios e sinais de atenção</h2>
+      <p class="bigheader__lead">
+        Esta página não acusa pessoas ou empresas. Ela traduz os dados públicos em
+        prioridades simples: onde há mais dinheiro, quais documentos pedir e por
+        onde qualquer cidadão pode começar a fiscalizar.
+      </p>
+      <p id="atualizado" class="muted small" style="margin-top:8px"></p>
+      <div class="civic-actions" aria-label="Ações rápidas dos relatórios">
+        <a href="#relatorioCidadao">Resumo cidadão</a>
+        <a href="#prioridades-fiscalização">Prioridades</a>
+        <a href="#ranking-entidades">ONGs e entidades</a>
+        <a href="#educação-fundeb">Educação e FUNDEB</a>
+        <a href="cobrar.html">Como cobrar</a>
+        <button type="button" onclick="ZELA.baixarPdfSecao && ZELA.baixarPdfSecao('#conteudo', 'Relatorio Zela Varginha')" style="background:#004b8d; color:#fff; border:none; border-radius:6px; padding:8px 16px; font-size:0.9em; font-weight:600; cursor:pointer;">↓ Baixar relatório PDF</button>
+      </div>
+    </header>
+
+    <div class="report-note">
+      <strong>Como ler:</strong> um sinal de atenção e um convite para verificar
+      a fonte oficial, pedir informação pela LAI ou acompanhar a execução. Não é
+      prova de irregularidade.
+    </div>
+
+    <section id="relatorioCidadao" class="citizen-report" aria-label="Resumo para o cidadão"></section>
+
+    <div id="relatorioResumo" class="stats"></div>
+
+    <div id="fragmentacaoBlock" class="block" hidden>
+      <h3 class="block__title">🔍 Detector de fragmentação suspeita</h3>
+      <p class="block__lead">
+        Lei 14.133/2021 estabelece limite de <strong>R$ 17.600</strong> para dispensa de licitação em
+        compras gerais. Este detector agrupa contratos do mesmo fornecedor, no mesmo mês, com
+        valor unitário abaixo desse limite. Se a soma do grupo ultrapassa R$ 17.600, é um sinal
+        clássico de possível fracionamento — divisão artificial de uma compra única em várias
+        menores para evitar licitação. <strong>Não é prova de irregularidade</strong>, mas é exatamente o
+        padrão que o TCE-MG procura em fiscalizações.
+      </p>
+      <div id="fragmentacaoLista"></div>
+    </div>
+
+    <div id="comparativoAnosBlock" class="block" hidden>
+      <h3 class="block__title">📊 Comparativo de gastos entre anos</h3>
+      <p class="block__lead">
+        Valor contratado por categoria, ano a ano. Variação percentual em relação ao ano anterior
+        em destaque — crescimento muito acima da inflação pede explicação.
+      </p>
+      <div id="comparativoAnosTabela"></div>
+    </div>
+
+    <div id="timelineSinaisBlock" class="block" hidden>
+      <h3 class="block__title">Linha do tempo dos sinais de atenção</h3>
+      <p class="block__lead">
+        Eventos relevantes em ordem cronológica reversa (mais recente primeiro): contratos
+        de alto valor com objeto vago, emendas sem pagamento comprovado e cruzamentos CNPJ.
+        Útil para construir uma narrativa de fiscalização ao longo do tempo.
+      </p>
+      <div id="timelineSinais" class="timeline-sinais"></div>
+    </div>
+
+    <div class="block" id="prioridades-fiscalização">
+      <h3 class="block__title">O que fiscalizar primeiro</h3>
+      <p class="block__lead">
+        Atalhos para temas com maior chance de gerar cobrança objetiva: valores,
+        contratos, beneficiários, pagamentos e documentos que qualquer cidadão pode conferir.
+      </p>
+      <div id="prioridadesFiscalizacao" class="signals"></div>
+    </div>
+
+    <div class="block" id="fontes-emendas-2026">
+      <h3 class="block__title">Emendas impositivas 2026: fontes verificadas</h3>
+      <p class="block__lead">
+        O painel procura uma lista pública consolidada de emendas de 2026. Quando
+        não encontra entidade, CNPJ, valor e execução juntos, mostra como pista e
+        indica o que pedir por LAI.
+      </p>
+      <div id="fontesEmendas2026Resumo" class="stats"></div>
+      <div id="fontesEmendas2026Achados" class="signals"></div>
+    </div>
+
+    <div class="block" id="educação-fundeb">
+      <h3 class="block__title">FUNDEB, Educação e investimentos em escolas</h3>
+      <p class="block__lead">
+        Triagem dos contratos ligados a educação, escolas, creches, transporte
+        escolar, merenda e possíveis aplicações com recursos do FUNDEB.
+      </p>
+      <div id="fundebResumo" class="stats"></div>
+      <div id="fundebInvestimentos" class="signals"></div>
+    </div>
+
+    <div class="block" id="ranking-entidades">
+      <h3 class="block__title">Ranking de entidades, ONGs e similares que recebem emendas</h3>
+      <p class="block__lead">
+        Soma por CNPJ ou beneficiário das emendas impositivas localizadas, com
+        vereadores autores, quantidade de emendas, pagamentos encontrados e pontos
+        de checagem.
+      </p>
+      <div class="filterbar">
+        <select id="anoEntidadeEmenda" aria-label="Filtrar ranking de entidades por ano">
+          <option value="">Todos os anos</option>
+          <option value="2025">Ano 2025</option>
+          <option value="2026">Ano 2026</option>
+        </select>
+        <select id="anoPagamentoEntidade" aria-label="Filtrar pagamentos ao CNPJ por ano">
+          <option value="">Pagamentos: todos os anos</option>
+          <option value="2025">Pagamentos: 2025</option>
+          <option value="2026">Pagamentos: 2026</option>
+        </select>
+        <input id="filtroEntidadeEmenda" type="search" placeholder="Buscar entidade, ONG, CNPJ ou vereador">
+        <select id="ordenarEntidadeEmenda" aria-label="Ordenar ranking de entidades">
+          <option value="valor">Maior valor em emendas</option>
+          <option value="qtd">Mais emendas recebidas</option>
+          <option value="pagamento">Maior pagamento localizado</option>
+          <option value="pendencia">Mais emendas sem pagamento localizado</option>
+          <option value="vereadores">Mais vereadores destinando</option>
+        </select>
+        <select id="limiteEntidadeEmenda" aria-label="Quantidade de entidades no ranking">
+          <option value="20">Top 20</option>
+          <option value="50">Top 50</option>
+          <option value="999">Todas</option>
+        </select>
+        <span id="entidadesEmendasContador" class="filterbar__count"></span>
+      </div>
+      <div id="rankingEntidadesEmendas" class="signals"></div>
+    </div>
+
+    <div class="report-divider">
+      <span>Detalhes técnicos</span>
+      <p>Os blocos abaixo mostram as trilhas completas para quem quiser aprofundar a conferência.</p>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Sinais prioritários</h3>
+      <p class="block__lead">Lista automática ordenada por impacto potencial e facilidade de conferência.</p>
+      <div id="sinaisAtencao" class="signals"></div>
+    </div>
+
+    <div class="block" id="camara-financeiro">
+      <h3 class="block__title">Câmara Municipal — Execução Orçamentária</h3>
+      <p class="block__lead">
+        Dados financeiros da Câmara extraídos do Portal de Transparência (Betha).
+        Alertas gerados automaticamente e incluídos nos Sinais Prioritários acima.
+      </p>
+      <div class="stats" id="statsCamaraRel"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Pessoal, comissionados e remuneração</h3>
+      <p class="block__lead">Quantidade de cargos comissionados ou similares e valores informados nas fontes oficiais.</p>
+      <div id="pessoalResumo" class="personnel"></div>
+      <div id="pessoalTop" class="signals"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Fornecedores, CNPJ e qualidade dos contratos</h3>
+      <p class="block__lead">Cruzamento para identificar fornecedores recorrentes e contratos cujo objeto merece explicação mais clara.</p>
+      <div id="fornecedoresRecorrentes" class="signals"></div>
+      <div id="qualidadeContratos" class="signals"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Due diligence jurídica dos fornecedores</h3>
+      <p class="block__lead">
+        Para verificar sanções ou processos anteriores, a análise precisa consultar fontes oficiais.
+        O painel prepara a trilha de checagem, mas só deve marcar ocorrência quando houver fonte pública confirmada.
+      </p>
+      <div id="dueDiligenceFornecedores" class="source-grid"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Recursos Federais: União para Varginha</h3>
+      <p class="block__lead">Mapeamento de transferências, convênios e emendas parlamentares federais.</p>
+      <div id="federalResumo" class="stats"></div>
+      <div id="federalLinks" class="source-grid"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Fontes públicas complementares</h3>
+      <p class="block__lead">Bases externas adicionadas para cruzar informações e orientar a conferência.</p>
+      <div id="fontesComplementares" class="source-grid"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Futuras integrações e expansão</h3>
+      <p class="block__lead">Bases que podem ser conectadas para aumentar o poder de fiscalização.</p>
+      <div id="fontesExpansao" class="expansão-grid"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Trilhas de fiscalização da Câmara</h3>
+      <p class="block__lead">Links oficiais mapeados para conferir gastos do Legislativo.</p>
+      <div id="trilhasCamara" class="source-links"></div>
+    </div>
+
+    <div class="block">
+      <h3 class="block__title">Critérios usados</h3>
+      <div class="criteria">
+        <article>
+          <h4>Emenda sem pagamento localizado</h4>
+          <p>Existe emenda com CNPJ, mas o cruzamento não localizou pagamento da Prefeitura para esse CNPJ.</p>
+        </article>
+        <article>
+          <h4>Emenda sem CNPJ</h4>
+          <p>A emenda não trouxe CNPJ estruturado, dificultando a conferência por cidadão comum.</p>
+        </article>
+        <article>
+          <h4>Concentração por fornecedor ou beneficiário</h4>
+          <p>Um mesmo CNPJ ou fornecedor aparece com valor agregado alto, o que merece transparência reforçada.</p>
+        </article>
+        <article>
+          <h4>Contrato ou licitação de alto valor</h4>
+          <p>Processos acima de R$ 1 milhão são destacados para acompanhamento público.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <strong>Zela Varginha</strong> · Painel Cidadão de Fiscalização<br>
+      <span class="muted">Relatórios independentes baseados em dados públicos.</span>
+    </div>
+    <div class="footer__sources">
+      <strong>Fontes oficiais:</strong>
+      <ul>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal Transparência</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL Câmara</a></li>
+        <li><a href="https://www.varginha.mg.gov.br/portal/diario-oficial" target="_blank" rel="noopener">Diário Oficial</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var ts = Date.now();
+  function load(src, cb) {
+    var s = document.createElement("script");
+    s.src = src + "?v=" + ts;
+    s.charset = "UTF-8";
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+  load("data.js", function () { load("app.js"); });
+})();
+</script>
+</body>
+</html>
+
+
+

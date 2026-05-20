@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pessoal e Cargos · Zela Varginha</title>
+<meta name="description" content="Servidores, comissionados e folha de pagamento da Prefeitura e Câmara de Varginha-MG.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Zela Varginha">
+<meta property="og:title"       content="Pessoal e Cargos · Zela Varginha">
+<meta property="og:description" content="Servidores, comissionados e folha de pagamento da Prefeitura e Câmara de Varginha-MG.">
+<meta property="og:locale"      content="pt_BR">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Pessoal e Cargos · Zela Varginha">
+<meta name="twitter:description" content="Servidores e comissionados de Varginha-MG.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="pessoal">
+<div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
+  <div class="loading-spinner"></div>
+  <p>Carregando dados…</p>
+</div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Zela Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"      class="nav__link">Início</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="pessoal.html"    class="nav__link nav__link--active">Pessoal</a>
+      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
+      <a href="sobre.html"      class="nav__link">Sobre</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" class="container section">
+  <div class="bigheader">
+    <span class="bigheader__kicker">Transparência na Folha</span>
+    <p id="atualizado" class="muted small" style="margin-bottom:4px"></p>
+    <h1 class="bigheader__title">Pessoal e Cargos</h1>
+    <p class="bigheader__lead">
+      Fiscalização de servidores, cargos comissionados e remuneração da Prefeitura e da Câmara de Varginha.
+    </p>
+  </div>
+
+  <!-- Dashboard de Pessoal -->
+  <div class="stats" id="statsPessoal">
+    <div class="signal">
+      <span class="signal__lbl">Total de Servidores</span>
+      <span class="signal__val" id="totServidores">...</span>
+      <span class="signal__sub">Prefeitura + Câmara</span>
+    </div>
+    <div class="signal">
+      <span class="signal__lbl">Cargos Comissionados</span>
+      <span class="signal__val" id="totComissionados">...</span>
+      <span class="signal__sub" id="pctComissionados">... do total</span>
+    </div>
+    <div class="signal">
+      <span class="signal__lbl">Custo Mensal Estimado</span>
+      <span class="signal__val" id="custoFolha">...</span>
+      <span class="signal__sub">Apenas comissionados</span>
+    </div>
+  </div>
+
+  <!-- Comparativo Câmara × Prefeitura -->
+  <div id="bloco-comparativo-comissionados" class="block" hidden>
+    <h3 class="block__title">Câmara vs Prefeitura — proporção de comissionados</h3>
+    <p class="block__lead">
+      Cargos comissionados são de livre nomeação, sem concurso público. Uma proporção
+      muito alta pode indicar uso político da estrutura de pessoal.
+    </p>
+    <div id="comparativoComissionados"></div>
+    <p class="report-note" style="margin-top:12px">
+      Fonte: Portal de Transparência (Betha). Competência mais recente disponível.
+      Verifique sempre a fonte oficial antes de tirar conclusões.
+    </p>
+  </div>
+
+  <div id="pessoalFonteNota" class="report-note" style="margin:18px 0;"></div>
+
+  <!-- Ranking top-10 comissionados por salário -->
+  <div class="block">
+    <h3 class="block__title">Top 10 comissionados — maiores vencimentos</h3>
+    <p class="block__lead">
+      Ranking dos servidores comissionados (de livre nomeação, sem concurso) com maior remuneração bruta.
+      Barra vermelha = Câmara, azul = Prefeitura.
+    </p>
+    <div id="rankingComissionados" class="contratos"></div>
+  </div>
+
+  <div class="block">
+    <h3 class="block__title">Auditoria de cargos</h3>
+    <p class="block__lead">
+      Use os filtros para identificar funcionários por nome, órgão ou tipo de vínculo.
+    </p>
+
+    <div class="filterbar">
+      <select id="filtroOrgao" aria-label="Filtrar por órgão">
+        <option value="">Todos os Órgãos</option>
+        <option value="prefeitura">Prefeitura</option>
+        <option value="camara">Câmara</option>
+      </select>
+      <select id="filtroTipo" aria-label="Filtrar por tipo de cargo">
+        <option value="">Todos os Vínculos</option>
+        <option value="comissionado">Apenas Comissionados</option>
+        <option value="concursado">Apenas Concursados/Outros</option>
+      </select>
+      <input id="buscaServidor" type="search" placeholder="Buscar por nome ou cargo…">
+      <span id="pessoalContador" class="filterbar__count"></span>
+    </div>
+
+    <div id="listaPessoal" class="contratos">
+      <!-- Lista de servidores via JS -->
+    </div>
+    
+    <div id="pessoalEmpty" class="block--warn" style="display:none;">
+      <strong>Coleta em andamento</strong>
+      <p>Os dados da folha de pagamento são extraídos periodicamente. Se a lista estiver vazia, tente atualizar os dados via coletor.</p>
+    </div>
+  </div>
+</main>
+
+<script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");</script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,83 @@
+{
+  "$schema": "./categoriasGasto.real.schema.md",
+  "atualizadoEm": "2026-05-15T21:24:06.238Z",
+  "fontePadrao": "Portal da Transparência — Betha Sistemas",
+  "observacao": "Dados extraídos diretamente do Portal da Transparência Betha via script Playwright. Cada entrada tem `fonteUrl` que reproduz o número quando aberta no navegador.",
+  "dados": {
+    "prefeitura": {
+      "total-geral": {
+        "valorTotalAno": 257769608.28,
+        "valorFormatado": "R$ 257.769.608,28",
+        "ano": 2026,
+        "periodo": "Jan–mai. 2026 (parcial)",
+        "qtdEmpenhos": 4707,
+        "fonteUrl": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995",
+        "atualizadoEm": "2026-05-15"
+      },
+      "saude": {
+        "valorTotalAno": 133740612.7,
+        "valorFormatado": "R$ 133.740.612,70",
+        "ano": 2026,
+        "periodo": "Jan–mai. 2026 (parcial)",
+        "qtdEmpenhos": 2155,
+        "fonteUrl": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995",
+        "atualizadoEm": "2026-05-15"
+      },
+      "educacao": {
+        "valorTotalAno": 47887882.2,
+        "valorFormatado": "R$ 47.887.882,20",
+        "ano": 2026,
+        "periodo": "Jan–mai. 2026 (parcial)",
+        "qtdEmpenhos": 390,
+        "fonteUrl": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995",
+        "atualizadoEm": "2026-05-15"
+      },
+      "urbanismo": {
+        "valorTotalAno": 14373379.08,
+        "valorFormatado": "R$ 14.373.379,08",
+        "ano": 2026,
+        "periodo": "Jan–mai. 2026 (parcial)",
+        "qtdEmpenhos": 302,
+        "fonteUrl": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995",
+        "atualizadoEm": "2026-05-15"
+      },
+      "combustivel": {
+        "valorTotalAno": 818508,
+        "valorFormatado": "R$ 818.508,00",
+        "ano": 2026,
+        "periodo": "Jan–mai. 2026 (parcial)",
+        "qtdEmpenhos": 19,
+        "fonteUrl": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995",
+        "atualizadoEm": "2026-05-15"
+      },
+      "medicamentos": {
+        "valorTotalAno": 3451483.69,
+        "valorFormatado": "R$ 3.451.483,69",
+        "ano": 2026,
+        "periodo": "Jan–mai. 2026 (parcial)",
+        "qtdEmpenhos": 188,
+        "fonteUrl": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995",
+        "atualizadoEm": "2026-05-15"
+      },
+      "lanches": {
+        "valorTotalAno": 1387065.84,
+        "valorFormatado": "R$ 1.387.065,84",
+        "ano": 2026,
+        "periodo": "Jan–mai. 2026 (parcial)",
+        "qtdEmpenhos": 127,
+        "fonteUrl": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995",
+        "atualizadoEm": "2026-05-15"
+      },
+      "asfalto": {
+        "valorTotalAno": 702400.34,
+        "valorFormatado": "R$ 702.400,34",
+        "ano": 2026,
+        "periodo": "Jan–mai. 2026 (parcial)",
+        "qtdEmpenhos": 5,
+        "fonteUrl": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995",
+        "atualizadoEm": "2026-05-15"
+      }
+    },
+    "camara": {}
+  }
+}

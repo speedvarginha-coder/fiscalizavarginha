@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre e Metodologia · Zela Varginha</title>
+<meta name="description" content="O que é o Zela Varginha, como os dados são coletados, limitações e disclaimer legal.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Zela Varginha">
+<meta property="og:title"       content="Sobre e Metodologia · Zela Varginha">
+<meta property="og:description" content="Ferramenta independente de fiscalização cidadã de Varginha-MG — metodologia, fontes e limitações.">
+<meta property="og:locale"      content="pt_BR">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Sobre · Zela Varginha">
+<meta name="twitter:description" content="O que é o Zela Varginha e como os dados são coletados.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+  }
+  .sobre-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--navy);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+  }
+  .sobre-card--gold { border-top-color: var(--gold); }
+  .sobre-card--teal { border-top-color: var(--teal); }
+  .sobre-card--red  { border-top-color: var(--red);  }
+  .sobre-card h3 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    color: var(--navy);
+  }
+  .sobre-card p, .sobre-card li {
+    font-size: .9rem;
+    color: var(--ink);
+    line-height: 1.6;
+    margin: 0 0 6px;
+  }
+  .sobre-card ul { padding-left: 18px; margin: 8px 0 0; }
+  .fonte-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88rem; }
+  .fonte-table th { background: var(--navy); color: #fff; padding: 9px 14px; text-align: left; }
+  .fonte-table td { padding: 8px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .fonte-table tr:nth-child(even) td { background: var(--cream); }
+  .fonte-table a { color: var(--navy); word-break: break-all; }
+  .disclaimer-box {
+    background: #fff8e1;
+    border: 1px solid #f9a825;
+    border-left: 5px solid #f57f17;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+  .disclaimer-box strong { display: block; margin-bottom: 8px; color: #6d3800; font-size: 1rem; }
+  .disclaimer-box p { margin: 0 0 8px; font-size: .88rem; color: #5d4037; line-height: 1.6; }
+  .timeline { list-style: none; padding: 0; margin: 16px 0; }
+  .timeline li {
+    display: flex; gap: 14px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: .88rem;
+  }
+  .timeline li:last-child { border-bottom: 0; }
+  .timeline__step {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    background: var(--navy); color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: .75rem;
+  }
+  .timeline__txt strong { display: block; color: var(--ink); margin-bottom: 2px; }
+  .timeline__txt span { color: var(--muted); }
+  @media (prefers-color-scheme: dark) {
+    .sobre-card { background: var(--white); border-color: var(--line); }
+    .disclaimer-box { background: #2a1f00; border-color: #a07000; border-left-color: #e09000; }
+    .disclaimer-box strong { color: #ffd54f; }
+    .disclaimer-box p { color: #ffcc80; }
+    .fonte-table td { border-color: var(--line); }
+    .fonte-table tr:nth-child(even) td { background: var(--cream); }
+    .fonte-table th { background: #0d2a4a; }
+  }
+</style>
+</head>
+<body data-page="sobre">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Zela Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"      class="nav__link">Início</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
+      <a href="sobre.html"      class="nav__link nav__link--active">Sobre</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<section class="section section--alt">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">← Voltar ao início</a></p>
+
+    <h2 class="section__title">Sobre e Metodologia</h2>
+    <p class="section__lead">
+      O <strong>Zela Varginha</strong> é uma ferramenta independente de fiscalização cidadã
+      que agrega dados públicos da Prefeitura e da Câmara Municipal de Varginha-MG em um painel
+      único, legível e auditável.
+    </p>
+
+    <div class="disclaimer-box">
+      <strong>⚠️ Aviso legal importante</strong>
+      <p>Este painel <strong>não acusa ninguém</strong>. Os dados são extraídos de fontes oficiais
+      e apresentados como estão, com alertas automáticos baseados em critérios documentais
+      (ausência de objeto claro, falta de data, valor zerado). Um alerta <strong>não é prova
+      de irregularidade</strong> — é um ponto de partida para fiscalização com fontes primárias.</p>
+      <p>Antes de divulgar qualquer dado, consulte o documento original no
+      <a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener" style="color:inherit;font-weight:700;">Portal Betha</a>
+      ou solicite via LAI (e-SIC). Ferramenta sem fins lucrativos, sem vínculo partidário.</p>
+    </div>
+
+    <div class="sobre-grid">
+      <div class="sobre-card">
+        <h3>🎯 Objetivo</h3>
+        <p>
+          Facilitar a fiscalização cidadã colocando dados de contratos, licitações,
+          diárias, emendas, folha de pagamento e aluguéis em um único painel,
+          com alertas automáticos e links diretos para as fontes oficiais.
+        </p>
+        <p>
+          Qualquer cidadão, jornalista, vereador ou servidor pode usar livremente.
+        </p>
+      </div>
+
+      <div class="sobre-card sobre-card--teal">
+        <h3>🔄 Atualização dos dados</h3>
+        <p>
+          Os dados são coletados periodicamente por um script Python
+          (<code>coletor.py</code>) que consulta a API REST do Portal Betha
+          e o SAPL da Câmara.
+        </p>
+        <ul>
+          <li>Contratos e licitações: semanalmente</li>
+          <li>Emendas: mensalmente</li>
+          <li>Folha de pagamento: conforme disponibilidade</li>
+          <li>Diárias: conforme disponibilidade</li>
+        </ul>
+      </div>
+
+      <div class="sobre-card sobre-card--gold">
+        <h3>⚙️ Auditômetro</h3>
+        <p>
+          Cada contrato recebe uma pontuação de 0 a 100 baseada em critérios documentais:
+        </p>
+        <ul>
+          <li>Objeto com descrição clara (mín. 25 caracteres)</li>
+          <li>Valor preenchido e positivo</li>
+          <li>Data de assinatura presente</li>
+          <li>Data de término preenchida</li>
+        </ul>
+        <p style="margin-top:8px;">
+          <strong>Não avalia legalidade</strong> — apenas completude documental.
+        </p>
+      </div>
+
+      <div class="sobre-card sobre-card--red">
+        <h3>⚠️ Cruzamento CNPJ</h3>
+        <p>
+          Quando uma empresa contratada pela Prefeitura também recebeu emenda
+          impositiva de algum vereador, o painel exibe um alerta no card do contrato.
+        </p>
+        <p>
+          O cruzamento usa os <strong>8 primeiros dígitos do CNPJ</strong>
+          (raiz), pois o portal mascara os últimos 4 dígitos por LGPD.
+          Um cruzamento positivo pede verificação — não indica irregularidade por si só.
+        </p>
+      </div>
+    </div>
+
+    <div class="block" style="margin-top:28px;">
+      <h3 class="block__title">Fontes de dados</h3>
+      <table class="fonte-table">
+        <thead>
+          <tr>
+            <th>Dado</th>
+            <th>Fonte</th>
+            <th>Acesso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Contratos, licitações, diárias, aluguéis</td>
+            <td>Portal Betha — Prefeitura de Varginha</td>
+            <td><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Acessar</a></td>
+          </tr>
+          <tr>
+            <td>Emendas impositivas, vereadores, leis</td>
+            <td>SAPL — Câmara Municipal de Varginha</td>
+            <td><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">Acessar</a></td>
+          </tr>
+          <tr>
+            <td>Contratos da Câmara</td>
+            <td>Portal Betha — Câmara Municipal</td>
+            <td><a href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812" target="_blank" rel="noopener">Acessar</a></td>
+          </tr>
+          <tr>
+            <td>Folha de pagamento / pessoal</td>
+            <td>Portal Betha (Prefeitura e Câmara)</td>
+            <td><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/servidor" target="_blank" rel="noopener">Acessar</a></td>
+          </tr>
+          <tr>
+            <td>Licitações — nível nacional</td>
+            <td>PNCP — Portal Nacional de Contratações Públicas</td>
+            <td><a href="https://pncp.gov.br/" target="_blank" rel="noopener">Acessar</a></td>
+          </tr>
+          <tr>
+            <td>Balanço consolidado do município</td>
+            <td>Fiscalizando com TCE-MG</td>
+            <td><a href="https://fiscalizandocomtce.tce.mg.gov.br/" target="_blank" rel="noopener">Acessar</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block" style="margin-top:24px;">
+      <h3 class="block__title">Como os dados chegam ao painel</h3>
+      <ol class="timeline">
+        <li>
+          <span class="timeline__step">1</span>
+          <div class="timeline__txt">
+            <strong>Coleta automática</strong>
+            <span>Script Python consulta APIs REST do Portal Betha e SAPL. Salva os dados em arquivos JSON locais.</span>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__step">2</span>
+          <div class="timeline__txt">
+            <strong>Geração do bundle</strong>
+            <span>Um segundo script compila os JSONs num único arquivo <code>data.js</code> (variável global <code>ZELA_DATA</code>).</span>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__step">3</span>
+          <div class="timeline__txt">
+            <strong>Renderização no browser</strong>
+            <span><code>app.js</code> lê <code>ZELA_DATA</code>, aplica os filtros, alertas e formatações e preenche as páginas HTML com JavaScript puro — sem servidor.</span>
+          </div>
+        </li>
+        <li>
+          <span class="timeline__step">4</span>
+          <div class="timeline__txt">
+            <strong>Cache local (Service Worker)</strong>
+            <span>Na segunda visita, o browser usa a versão em cache. O painel funciona offline com os dados da última coleta.</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="block" style="margin-top:24px;">
+      <h3 class="block__title">Limitações conhecidas</h3>
+      <ul style="font-size:.9rem; line-height:1.7; color:var(--ink); padding-left:20px;">
+        <li><strong>CNPJ mascarado:</strong> o portal oculta os últimos 4 dígitos por LGPD. O cruzamento usa apenas os 8 primeiros.</li>
+        <li><strong>Dados históricos:</strong> a API Betha retorna dados a partir do ano configurado. Anos anteriores podem estar incompletos.</li>
+        <li><strong>Folha de pagamento:</strong> nomes e cargos refletem a competência mais recente disponível.</li>
+        <li><strong>Defasagem:</strong> pode haver lag de alguns dias entre o ato oficial e a publicação no portal.</li>
+        <li><strong>Correspondência de emendas:</strong> algumas emendas não têm CNPJ registrado e não entram no cruzamento.</li>
+        <li><strong>Sem acesso a documentos físicos:</strong> o painel não substitui o pedido LAI para documentos completos.</li>
+      </ul>
+    </div>
+
+    <div class="block" style="margin-top:24px;">
+      <h3 class="block__title">Glossário cidadão</h3>
+      <p style="font-size:.9rem; line-height:1.6; margin-bottom:8px;">
+        Dicionário dos termos técnicos que aparecem nos portais oficiais e como o painel
+        traduz cada um em linguagem comum. Estes mesmos termos aparecem com pontilhado azul
+        nas páginas — passe o mouse para ver a explicação.
+      </p>
+      <div style="overflow-x:auto;">
+        <table class="glossario-tabela" id="tabelaGlossario">
+          <thead><tr>
+            <th>Termo oficial</th>
+            <th>O que o painel chama</th>
+            <th>O que significa</th>
+          </tr></thead>
+          <tbody><!-- preenchido por app.js --></tbody>
+        </table>
+      </div>
+      <p style="font-size:.82rem; color:var(--muted); margin-top:4px;">
+        Faltou algum termo? Mande um e-mail para
+        <a href="mailto:speed.varginha@gmail.com">speed.varginha@gmail.com</a> com a sugestão.
+      </p>
+    </div>
+
+    <div class="block" style="margin-top:24px;">
+      <h3 class="block__title">Atalhos de teclado</h3>
+      <p style="font-size:.9rem; line-height:1.6;">
+        O painel suporta navegação por teclado — útil para quem usa muito:
+      </p>
+      <table class="glossario-tabela" style="margin-top:8px;">
+        <thead><tr><th>Tecla</th><th>Ação</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>/</kbd></td><td>Focar campo de busca da página</td></tr>
+          <tr><td><kbd>Esc</kbd></td><td>Limpar busca ativa</td></tr>
+          <tr><td><kbd>g</kbd> + <kbd>p</kbd></td><td>Ir para Prefeitura</td></tr>
+          <tr><td><kbd>g</kbd> + <kbd>c</kbd></td><td>Ir para Câmara</td></tr>
+          <tr><td><kbd>g</kbd> + <kbd>r</kbd></td><td>Ir para Relatórios</td></tr>
+          <tr><td><kbd>g</kbd> + <kbd>e</kbd></td><td>Ir para Pessoal</td></tr>
+          <tr><td><kbd>g</kbd> + <kbd>m</kbd></td><td>Ir para Marcadores</td></tr>
+          <tr><td><kbd>g</kbd> + <kbd>s</kbd></td><td>Ir para Sobre</td></tr>
+          <tr><td><kbd>g</kbd> + <kbd>k</kbd></td><td>Ir para "Como cobrar"</td></tr>
+          <tr><td><kbd>g</kbd> + <kbd>h</kbd></td><td>Voltar ao Início</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="block" style="margin-top:24px;">
+      <h3 class="block__title">Contato e contribuição</h3>
+      <p style="font-size:.9rem; line-height:1.6;">
+        Encontrou dado incorreto, link quebrado ou quer contribuir com a ferramenta?<br>
+        E-mail: <a href="mailto:speed.varginha@gmail.com">speed.varginha@gmail.com</a>
+      </p>
+      <p style="font-size:.9rem; line-height:1.6;">
+        Para solicitar dados adicionais ou reportar irregularidade, use os
+        <a href="cobrar.html">canais oficiais</a> — o painel não substitui o e-SIC,
+        a Ouvidoria ou o TCE-MG.
+      </p>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <strong>Zela Varginha</strong> · Painel Cidadão de Fiscalização<br>
+      <span class="muted">Ferramenta independente, sem fins lucrativos.</span>
+    </div>
+    <div class="footer__sources">
+      <strong>Canais oficiais:</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  // Nav hamburger
+  const toggle = document.querySelector(".nav__toggle");
+  const nav = document.getElementById("mainNav");
+  if (!toggle || !nav) return;
+  toggle.addEventListener("click", function() {
+    const open = nav.classList.toggle("nav--open");
+    toggle.setAttribute("aria-expanded", open);
+    toggle.textContent = open ? "✕ Fechar" : "☰ Menu";
+  });
+  nav.querySelectorAll("a").forEach(function(a) {
+    a.addEventListener("click", function() {
+      nav.classList.remove("nav--open");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.textContent = "☰ Menu";
+    });
+  });
+  // Scroll navbar
+  const topbar = document.querySelector(".topbar");
+  if (topbar) window.addEventListener("scroll", function() {
+    topbar.classList.toggle("topbar--scrolled", window.scrollY > 50);
+  }, { passive: true });
+})();
+
+// Glossário standalone (sem precisar carregar data.js de 6 MB)
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
+(function () {
+  var s = document.createElement("script");
+  s.src = "app-glossario.js?v=" + Date.now();
+  s.onload = function () {
+    var tbody = document.querySelector("#tabelaGlossario tbody");
+    if (!tbody || !window.ZELA || !window.ZELA.glossario) return;
+    var g = window.ZELA.glossario;
+    var rows = Object.keys(g).map(function (k) {
+      var label = k.charAt(0).toUpperCase() + k.slice(1);
+      return "<tr><td>" + label + "</td><td>" + g[k].simples + "</td><td>" + g[k].explica + "</td></tr>";
+    });
+    tbody.innerHTML = rows.join("");
+  };
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

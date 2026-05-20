@@ -1,0 +1,759 @@
+{
+  "ano_atual": 2026,
+  "ano_anterior": 2025,
+  "total_externo_atual": 5825771.34,
+  "total_externo_anterior": 8404647.51,
+  "empenhos_qtd": 2984,
+  "top_fornecedores_atual": [
+    {
+      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
+      "valor_total": 1393222.92,
+      "qtd": 1
+    },
+    {
+      "nome": "VEROCHEQUE REFEICOES LTDA",
+      "valor_total": 1062359.18,
+      "qtd": 3
+    },
+    {
+      "nome": "BETHA SISTEMAS LTDA",
+      "valor_total": 491715.9,
+      "qtd": 2
+    },
+    {
+      "nome": "UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO",
+      "valor_total": 451030.0,
+      "qtd": 1
+    },
+    {
+      "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
+      "valor_total": 316429.1,
+      "qtd": 5
+    },
+    {
+      "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
+      "valor_total": 294701.58,
+      "qtd": 2
+    },
+    {
+      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "valor_total": 288603.36,
+      "qtd": 2
+    },
+    {
+      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+      "valor_total": 225248.03,
+      "qtd": 21
+    },
+    {
+      "nome": "RONALDO MENDES-ME",
+      "valor_total": 214999.2,
+      "qtd": 2
+    },
+    {
+      "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
+      "valor_total": 104380.6,
+      "qtd": 2
+    },
+    {
+      "nome": "49.906.995 FABIOLA SEBASTIANA KELLY SILVA",
+      "valor_total": 103989.11,
+      "qtd": 1
+    },
+    {
+      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+      "valor_total": 89590.93,
+      "qtd": 11
+    },
+    {
+      "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
+      "valor_total": 86934.36,
+      "qtd": 3
+    },
+    {
+      "nome": "TELEVISAO SUL DE MINAS S/A",
+      "valor_total": 73654.32,
+      "qtd": 1
+    },
+    {
+      "nome": "NASSER MOHAMAD HAMZE",
+      "valor_total": 73449.6,
+      "qtd": 2
+    },
+    {
+      "nome": "CEMIG DISTRIBUICAO S/A",
+      "valor_total": 70000.0,
+      "qtd": 1
+    },
+    {
+      "nome": "ONOFRA NARCISO DE NOVAIS VARELA DA SILVA",
+      "valor_total": 64583.1,
+      "qtd": 5
+    },
+    {
+      "nome": "PANIFICADORA PRINCESA LTDA",
+      "valor_total": 63000.0,
+      "qtd": 2
+    },
+    {
+      "nome": "TARGET CONSULTORIAS E SOLUCOES LTDA",
+      "valor_total": 40500.0,
+      "qtd": 1
+    },
+    {
+      "nome": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+      "valor_total": 30000.0,
+      "qtd": 1
+    }
+  ],
+  "top_fornecedores_anterior": [
+    {
+      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
+      "valor_total": 2141180.91,
+      "qtd": 2
+    },
+    {
+      "nome": "VEROCHEQUE REFEICOES LTDA",
+      "valor_total": 1409701.94,
+      "qtd": 3
+    },
+    {
+      "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
+      "valor_total": 671310.09,
+      "qtd": 4
+    },
+    {
+      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+      "valor_total": 471622.86,
+      "qtd": 40
+    },
+    {
+      "nome": "BETHA SISTEMAS LTDA",
+      "valor_total": 443199.36,
+      "qtd": 2
+    },
+    {
+      "nome": "UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO",
+      "valor_total": 433577.72,
+      "qtd": 2
+    },
+    {
+      "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
+      "valor_total": 382658.52,
+      "qtd": 7
+    },
+    {
+      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+      "valor_total": 291437.51,
+      "qtd": 39
+    },
+    {
+      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "valor_total": 282363.39,
+      "qtd": 3
+    },
+    {
+      "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
+      "valor_total": 216463.76,
+      "qtd": 2
+    },
+    {
+      "nome": "RONALDO MENDES",
+      "valor_total": 201483.15,
+      "qtd": 2
+    },
+    {
+      "nome": "FUNDACAO JOAO PINHEIRO",
+      "valor_total": 187985.1,
+      "qtd": 1
+    },
+    {
+      "nome": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
+      "valor_total": 178854.53,
+      "qtd": 13
+    },
+    {
+      "nome": "49.906.995 FABIOLA SEBASTIANA KELLY SILVA",
+      "valor_total": 109010.32,
+      "qtd": 2
+    },
+    {
+      "nome": "TELEVISAO SUL DE MINAS S/A",
+      "valor_total": 68512.5,
+      "qtd": 2
+    },
+    {
+      "nome": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
+      "valor_total": 67990.45,
+      "qtd": 4
+    },
+    {
+      "nome": "CEMIG DISTRIBUICAO S/A",
+      "valor_total": 60000.0,
+      "qtd": 1
+    },
+    {
+      "nome": "NASSER MOHAMAD HAMZE 01954400640",
+      "valor_total": 57600.0,
+      "qtd": 1
+    },
+    {
+      "nome": "PANIFICADORA PRINCESA LTDA",
+      "valor_total": 57410.51,
+      "qtd": 5
+    },
+    {
+      "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
+      "valor_total": 48050.0,
+      "qtd": 2
+    }
+  ],
+  "contratos": [
+    {
+      "numero": "5",
+      "ano": "2026",
+      "data_assinatura": "2026-03-09",
+      "data_fim": "2027-03-09",
+      "modalidade": "Pregão eletrônico",
+      "tipo": "Prestação de serviços",
+      "objeto": "Contratação de empresa especializada para prestação de serviços de áudio, filmagem, captura e controle de som, gravação e edição das sessões ordinárias, extraordinárias, solenes, audiências públicas, matérias jornalísticas, programas de TV, eventos externos e demais eventos promovidos pela Câmara Municipal e Escola do Legislativo da Câmara Municipal de Varginha/MG.",
+      "contratado": "RONALDO MENDES",
+      "cnpj": "21.541.418/****-**",
+      "valor": 164025.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "4",
+      "ano": "2026",
+      "data_assinatura": "2026-03-02",
+      "data_fim": "2027-03-19",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de combustível compreendido por gasolina comum",
+      "contratado": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
+      "cnpj": "34.390.392/****-**",
+      "valor": 94805.46,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-01-15",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de serviço de fornecimento de energia elétrica.",
+      "contratado": "CEMIG DISTRIBUICAO S.A",
+      "cnpj": "06.981.180/****-**",
+      "valor": 70000.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "1",
+      "ano": "2026",
+      "data_assinatura": "2026-02-11",
+      "data_fim": "2027-02-10",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de lanches destinados ao Vereadores e Escola do Legislativo",
+      "contratado": "PANIFICADORA PRINCESA LTDA",
+      "cnpj": "19.310.200/****-**",
+      "valor": 63000.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-01-15",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de serviços postais, disponibilizados em unidades de atendimento da Empresa Brasileira de Correios - ECT.",
+      "contratado": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+      "cnpj": "34.028.316/****-**",
+      "valor": 30000.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "8",
+      "ano": "2026",
+      "data_assinatura": "2026-03-20",
+      "data_fim": "2027-03-31",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de água mineral natural, a ser realizada de forma parcelada, conforme as necessidades da Câmara Municipal.",
+      "contratado": "ONOFRA NARCISO DE NOVAIS VARELA DA SILVA",
+      "cnpj": "07.225.411/****-**",
+      "valor": 28052.5,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-01-15",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de serviços para abastecimento de água potável e coleta de esgoto sanitário.",
+      "contratado": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS COPASA MG",
+      "cnpj": "17.281.106/****-**",
+      "valor": 18000.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-03-30",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Prestação de serviços de fornecimento de vales transportes para atender o deslocamento dos estudantes dos projetos de educação para a cidadania da Escola do Legislativo.",
+      "contratado": "VIACAO REAL TRANSPORTE URBANO E RODOVIARIO LTDA",
+      "cnpj": "77.930.956/****-**",
+      "valor": 17000.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "6",
+      "ano": "2026",
+      "data_assinatura": "2026-03-11",
+      "data_fim": "2027-03-11",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Prestação de serviços",
+      "objeto": "Contratação de serviços de confecção de quadros com moldura de alumínio e vidro.",
+      "contratado": "PAULO CLEBER AZEVEDO",
+      "cnpj": "17.569.815/****-**",
+      "valor": 13050.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-02-11",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de produto alimentício, bebida e descartável.",
+      "contratado": "ONOFRA NARCISO DE NOVAIS VARELA DA SILVA",
+      "cnpj": "07.225.411/****-**",
+      "valor": 11837.8,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-05-06",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para prestação de serviço de transporte mediante locação/fretamento de veículo tipo ônibus para transporte de alunos matriculados na Escola do Legislativo da Câmara Municipal de Varginha/MG.",
+      "contratado": "MENDEL E SILVA TRANSPORTES LTDA",
+      "cnpj": "56.948.100/****-**",
+      "valor": 10200.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-03-19",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais de limpeza, higiene e descartável.",
+      "contratado": "ORLA DISTRIBUIDORA DE PRODUTOS LTDA",
+      "cnpj": "04.013.164/****-**",
+      "valor": 9600.37,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-03-31",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de medalhas para entrega de homenagens",
+      "contratado": "ADONAI COMUNICACAO VISUAL LIMITADA",
+      "cnpj": "03.432.188/****-**",
+      "valor": 9500.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "2",
+      "ano": "2026",
+      "data_assinatura": "2026-03-02",
+      "data_fim": "2027-03-01",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Prestação de serviços",
+      "objeto": "Contratação de serviço de lavagem automotiva completa (exceto motor).",
+      "contratado": "EZIQUIEL BATISTA DOS SANTOS",
+      "cnpj": "05.877.230/****-**",
+      "valor": 9000.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "3",
+      "ano": "2026",
+      "data_assinatura": "2026-03-02",
+      "data_fim": "2027-03-01",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Prestação de serviços",
+      "objeto": "Contratação de serviços elétricos prediais destinados à manutenção preventiva e corretiva das instalações elétrica da Câmara Municipal",
+      "contratado": "PAULO SERGIO ROSA 66250080600",
+      "cnpj": "20.408.808/****-**",
+      "valor": 7500.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-04-14",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE (ESCRITÓRIO)",
+      "contratado": "PAPELARIA E COPIADORA COPYSUL LTDA.",
+      "cnpj": "68.533.967/****-**",
+      "valor": 6245.0,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "9",
+      "ano": "2026",
+      "data_assinatura": "2026-03-31",
+      "data_fim": "2026-04-02",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para prestação de serviços de manutenção preventiva e corretiva em 02 (dois) condicionadores de ar.",
+      "contratado": "TECNO TERMICA COMERCIO E SERVICOS LTDA",
+      "cnpj": "33.015.917/****-**",
+      "valor": 4560.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-01-20",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Peças para Elevador de passageiros.",
+      "contratado": "ELEVADORES OTIS LTDA",
+      "cnpj": "29.739.737/****-**",
+      "valor": 3045.88,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-01-15",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Inexigibilidade de Licitação nos termos do art. 74, inciso I, da lei Federal nº 14.133/2021.",
+      "contratado": "VIACAO REAL TRANSPORTE URBANO E RODOVIARIO LTDA",
+      "cnpj": "77.930.956/****-**",
+      "valor": 3000.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-05-04",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para prestação de seguro para veículo",
+      "contratado": "GENTE SEGURADORA SA",
+      "cnpj": "90.180.605/****-**",
+      "valor": 2871.67,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-05-07",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de concessionária autorizada Toyota para revisão de 120 mil km, incluindo mão e obra mecânica, fornecimento de peças/componentes genuínos e originais e lubrificantes para o veículo oficial Toyota Corolla XEI 2.0, Ano/Modelo 2021/2022",
+      "contratado": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
+      "cnpj": "07.215.045/****-**",
+      "valor": 2578.6,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-03-19",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais de limpeza, higiene e descartável.",
+      "contratado": "ONOFRA NARCISO DE NOVAIS VARELA DA SILVA",
+      "cnpj": "07.225.411/****-**",
+      "valor": 2452.8,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-03-23",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Pagamento da Anualidade da Associação Brasileira das Escolas do Legislativo e de Contas - ABEL.",
+      "contratado": "ASSOCIACAO BRASILEIRA DAS ESCOLAS DO LEGISLATIVO",
+      "cnpj": "05.801.353/****-**",
+      "valor": 2000.0,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-03-19",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais de limpeza, higiene e descartável.",
+      "contratado": "GM PLASTICOS INDUSTRIA E COMERCIO LTDA",
+      "cnpj": "00.538.257/****-**",
+      "valor": 1800.0,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-03-19",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais de limpeza, higiene e descartável.",
+      "contratado": "ANGELICA APARECIDA COMUNIAN ROQUIM",
+      "cnpj": "17.431.452/****-**",
+      "valor": 1561.5,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-02-11",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de produto alimentício, bebida e descartável.",
+      "contratado": "RP COMERCIO DE ALIMENTOS LTDA",
+      "cnpj": "54.832.815/****-**",
+      "valor": 1535.1,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-04-14",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE (ESCRITÓRIO)",
+      "contratado": "MAK COMERCIO E DISTRIBUIDORA LTDA",
+      "cnpj": "49.506.420/****-**",
+      "valor": 1499.0,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-02-11",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de produto alimentício, bebida e descartável.",
+      "contratado": "MR ALIMENTOS SAUDAVEIS LTDA",
+      "cnpj": "22.077.561/****-**",
+      "valor": 1437.6,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-05-05",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "INSCRIÇÃO NO PROJETO MINIONU PROMOVIDO PELA PUC MINAS - CAMPOS POÇOS DE CALDAS, DESTINADA AOS ALUNOS MATRICULADOS NA ESCOLA DO LEGISLATIVO MUNICIPAL.",
+      "contratado": "SOCIEDADE MINEIRA DE CULTURA",
+      "cnpj": "17.178.195/****-**",
+      "valor": 1258.6,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-04-06",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para prestação de seguro predial.",
+      "contratado": "PORTO SEGURO COMPANHIA DE SEGUROS GERAIS",
+      "cnpj": "61.198.164/****-**",
+      "valor": 1169.63,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "7",
+      "ano": "2026",
+      "data_assinatura": "2026-03-17",
+      "data_fim": "2027-03-16",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Prestação de serviços",
+      "objeto": "Contratação de serviço de emissão e fornecimento de certificados digitais.",
+      "contratado": "ISSACAR SOLUCOES EMPRESARIAIS LTDA",
+      "cnpj": "36.005.556/****-**",
+      "valor": 1086.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-02-12",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para prestação de serviço de seguro predial",
+      "contratado": "GENTE SEGURADORA SA",
+      "cnpj": "90.180.605/****-**",
+      "valor": 1072.5,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-04-10",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "CARGA DE GÁS LIQUEFEITO DE PETRÓLEO (GLP), PARA BOTIJÃO DE 13 KG.",
+      "contratado": "NATAL DE SOUZA PAZOTI - ME",
+      "cnpj": "21.701.655/****-**",
+      "valor": 660.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-05-04",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de serviço de voz e internet móvel.",
+      "contratado": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
+      "cnpj": "23.131.342/****-**",
+      "valor": 478.8,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-03-19",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais de limpeza, higiene e descartável.",
+      "contratado": "HIGILOG COMERCIO E DISTRIBUICAO DE PRODUTOS DE LIMPEZA LTDA",
+      "cnpj": "36.447.719/****-**",
+      "valor": 48.0,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-04-14",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE (ESCRITÓRIO)",
+      "contratado": "MC PAPELARIA LTDA",
+      "cnpj": "00.407.572/****-**",
+      "valor": 45.88,
+      "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    }
+  ],
+  "licitacoes": [
+    {
+      "numero": "12",
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de empresa especializada para prestação de serviços de áudio, filmagem, captura e controle de som, gravação e edição das sessões ordinárias, extraordinárias, solenes, audiências públicas, matérias jornalísticas, programas de TV, eventos externos e demais eventos promovidos pela Câmara Municipal e Escola do Legislativo da Câmara Municipal de Varginha/MG.",
+      "data": "2026-02-11",
+      "valor": 248229.36,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "2",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Contratação de serviço de fornecimento de energia elétrica.",
+      "data": "2026-01-15",
+      "valor": 70000.0,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "26",
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de água mineral natural, a ser realizada de forma parcelada, conforme as necessidades da Câmara Municipal.",
+      "data": "2026-03-23",
+      "valor": 32442.8,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "3",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Contratação de serviços para abastecimento de água potável e coleta de esgoto sanitário.",
+      "data": "2026-01-15",
+      "valor": 18000.0,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    }
+  ]
+}
