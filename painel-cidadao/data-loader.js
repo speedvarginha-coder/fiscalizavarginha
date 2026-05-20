@@ -24,6 +24,15 @@
     "cobrar":      [],
   };
 
+  // ============ MÓDULOS DE CÓDIGO ============
+  // Carregados em ordem, ANTES de app.js. app.js destrutura window.ZELA.utils etc.
+  const MODULOS = [
+    "modules/utils.js",
+    "modules/glossario.js",
+    "modules/categorias.js",
+    "modules/watchlist.js",
+  ];
+
   const ts = Date.now();
   const body = document.body;
   const page = (body && body.dataset.page) || "home";
@@ -66,10 +75,15 @@
   async function carregar() {
     window.ZELA_DATA = window.ZELA_DATA || {};
 
-    // Páginas sem dados (sobre, cobrar) só carregam utils+app.js (ou nem isso)
+    // Carrega lista de módulos em sequência (ordem importa)
+    async function carregarModulos() {
+      for (const m of MODULOS) await loadScript(m);
+    }
+
+    // Páginas sem dados (sobre, cobrar) só carregam módulos + app.js
     if (chunks.length === 0) {
       try {
-        await loadScript("modules/utils.js");
+        await carregarModulos();
         await loadScript("app.js");
       } catch (e) { /* sobre.html tem seu próprio script */ }
       window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks: [] } }));
@@ -77,11 +91,10 @@
     }
 
     // Em file:// fetch falha — pula direto para fallback (data.js monolítico).
-    // Isso evita 6+ mensagens de erro no console quando alguém abre sem servidor.
     if (location.protocol === "file:") {
       try {
         await loadScript("data.js");
-        await loadScript("modules/utils.js");
+        await carregarModulos();
         await loadScript("app.js");
         window.dispatchEvent(new CustomEvent("zela:ready", { detail: { fallback: true } }));
       } catch (e) {
@@ -90,22 +103,20 @@
       return;
     }
 
-    // Tenta carregar chunks em paralelo
+    // Tenta carregar chunks em paralelo + módulos
     try {
       const resultados = await Promise.all(chunks.map(fetchChunk));
       resultados.forEach(({ key, data }) => {
         window.ZELA_DATA[key] = data;
       });
-      // utils.js precisa vir ANTES de app.js (app.js faz destructuring de window.ZELA.utils)
-      await loadScript("modules/utils.js");
+      await carregarModulos();
       await loadScript("app.js");
       window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks } }));
     } catch (err) {
       console.warn("[data-loader] fallback para data.js completo. Motivo:", err.message);
-      // Fallback: carrega data.js monolítico
       try {
         await loadScript("data.js");
-        await loadScript("modules/utils.js");
+        await carregarModulos();
         await loadScript("app.js");
         window.dispatchEvent(new CustomEvent("zela:ready", { detail: { fallback: true } }));
       } catch (err2) {

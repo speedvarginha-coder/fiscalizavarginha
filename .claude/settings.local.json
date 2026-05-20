@@ -102,7 +102,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code} | %{size_download} bytes\\\\n\" http://localhost:8765/data/chunks/prefeitura.json)",
       "Bash(kill %1)",
       "Bash(py -X utf8 _extract_utils.py)",
-      "Bash(py -X utf8 _extract_utils2.py)"
+      "Bash(py -X utf8 _extract_utils2.py)",
+      "Bash(py -X utf8 _extract_fase2.py)"
     ]
   }
 }
