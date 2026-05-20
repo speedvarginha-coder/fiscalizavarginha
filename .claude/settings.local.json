@@ -94,7 +94,13 @@
       "Bash(git check-ignore *)",
       "Bash(git add *)",
       "Bash(git commit -m 'chore: initial commit \\(sanitized\\) *)",
-      "Bash(git commit -m 'test: add Playwright smoke tests \\(30 testes\\) *)"
+      "Bash(git commit -m 'test: add Playwright smoke tests \\(30 testes\\) *)",
+      "Bash(py -X utf8 _inspect_data.py)",
+      "Bash(py -X utf8 _split_data.py)",
+      "Bash(py -m http.server 8765)",
+      "Bash(curl -s http://localhost:8765/data/chunks/atualizado_em.json)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} | %{size_download} bytes\\\\n\" http://localhost:8765/data/chunks/prefeitura.json)",
+      "Bash(kill %1)"
     ]
   }
 }

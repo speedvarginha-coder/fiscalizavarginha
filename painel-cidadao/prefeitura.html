@@ -388,20 +388,7 @@
   </div>
 </footer>
 
-<script>
-(function () {
-  var ts = Date.now();
-  function load(src, cb) {
-    var s = document.createElement("script");
-    s.src = src + "?v=" + ts;
-    s.charset = "UTF-8";
-    s.onload = cb;
-    document.head.appendChild(s);
-  }
-  if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
-  load("data.js", function () { load("app.js"); });
-})();
-</script>
+<script src="data-loader.js?v=20260520"></script>
 </body>
 </html>
 

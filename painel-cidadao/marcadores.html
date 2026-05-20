@@ -89,22 +89,9 @@
   </div>
 </footer>
 
+<script src="data-loader.js?v=20260520"></script>
 <script>
-if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
-(function () {
-  var ts = Date.now();
-  function load(src, cb) {
-    var s = document.createElement("script");
-    s.src = src + "?v=" + ts;
-    s.charset = "UTF-8";
-    s.onload = cb;
-    document.head.appendChild(s);
-  }
-  load("data.js", function () { load("app.js", function () {
-    // Render dos marcadores após app.js carregar
-    renderMarcadores();
-  }); });
-})();
+window.addEventListener("zela:ready", function () { renderMarcadores(); });
 
 function renderMarcadores() {
   if (!window.ZELA || !window.ZELA.watchlist) return;

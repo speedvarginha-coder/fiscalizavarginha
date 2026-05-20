@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v3 (fix identifiers JS quebrados) */
-const CACHE = "zela-v3";
+/* Zela Varginha — Service Worker v4 (chunks JSON + data-loader) */
+const CACHE = "zela-v4";
 const STATIC = [
   "./",
   "./index.html",
@@ -13,6 +13,7 @@ const STATIC = [
   "./style.css",
   "./app.js",
   "./app-glossario.js",
+  "./data-loader.js",
   "./favicon.svg",
 ];
 
@@ -41,7 +42,42 @@ self.addEventListener("fetch", function (e) {
 
   const url = new URL(req.url);
 
-  // data.js — stale-while-revalidate: serve cache imediatamente, atualiza em bg
+  // Chunks JSON em data/chunks/ — mesma estratégia stale-while-revalidate
+  // Quando o conteúdo do chunk muda, notifica os clientes para recarregar
+  if (url.pathname.includes("/data/chunks/") && url.pathname.endsWith(".json")) {
+    e.respondWith(
+      caches.open(CACHE).then(function (cache) {
+        return cache.match(req).then(function (cached) {
+          const networkFetch = fetch(req).then(function (res) {
+            if (res && res.ok) {
+              if (cached) {
+                res.clone().text().then(function (newText) {
+                  cache.match(req).then(function (old) {
+                    if (!old) return;
+                    old.text().then(function (oldText) {
+                      if (newText !== oldText) {
+                        self.clients.matchAll().then(function (clients) {
+                          clients.forEach(function (c) {
+                            c.postMessage({ type: "DATA_UPDATED", chunk: url.pathname });
+                          });
+                        });
+                      }
+                    });
+                  });
+                });
+              }
+              cache.put(req, res.clone());
+            }
+            return res;
+          }).catch(function () { return cached; });
+          return cached || networkFetch;
+        });
+      })
+    );
+    return;
+  }
+
+  // data.js (fallback legado) — stale-while-revalidate
   if (url.pathname.endsWith("data.js")) {
     e.respondWith(
       caches.open(CACHE).then(function (cache) {
