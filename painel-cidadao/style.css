@@ -5170,6 +5170,21 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   }
 }
 
+/* ================== Ícones SVG (modules/icons.js) ================== */
+.zv-icon {
+  display: inline-block;
+  vertical-align: -3px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+}
+/* Quando o ícone está dentro de um span/div container com altura definida,
+   alinha melhor. */
+.placar-card__icon .zv-icon,
+.cat-chip .zv-icon {
+  vertical-align: middle;
+}
+
 /* ================== PLACAR DO DINHEIRO ================== */
 .placar {
   display: grid;
@@ -5197,7 +5212,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   border-radius: 10px;
   display: inline-flex; align-items: center; justify-content: center;
   margin-bottom: 4px;
+  color: var(--navy);
 }
+.placar-card--money .placar-card__icon { background: rgba(7,138,75,.10); color: var(--teal); }
+.placar-card--top   .placar-card__icon { background: rgba(184,135,11,.12); color: var(--gold-dk); }
+.placar-card--count .placar-card__icon { background: rgba(0,75,141,.10); color: var(--navy); }
+.placar-card--warn  .placar-card__icon { background: rgba(201,54,50,.10); color: var(--red); }
 .placar-card__valor {
   font-family: var(--font-h);
   font-size: 1.7rem;

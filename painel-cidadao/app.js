@@ -2600,7 +2600,8 @@
 
     const catLabel = (id) => {
       const cat = window.ZELA.categorias.find(c => c.id === id);
-      return cat ? `${cat.icone} ${cat.label}` : "📦 Outros";
+      if (cat) return `${window.ZELA.icon(cat.iconKey, { size: 14 })} ${cat.label}`;
+      return "Outros";
     };
 
     const anoFinal = anos[anos.length - 1];
@@ -2683,9 +2684,9 @@
           <div class="forn-row__nome">${esc(f.nome)}</div>
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / max) * 100}%"></span></div>
           <div class="forn-row__actions">
-            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener" title="Validar no Portal Betha da Prefeitura — cole o nome ou CNPJ no campo de busca">🔍 Betha</a>
-            <a class="forn-row__btn forn-row__btn--filtro" href="prefeitura.html?q=${nomeBusca}" title="Ver contratos desta empresa">📋 Ver contratos</a>
-            ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">🏢 Consultar CNPJ</a>` : ""}
+            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener" title="Validar no Portal Betha da Prefeitura — cole o nome ou CNPJ no campo de busca">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+            <a class="forn-row__btn forn-row__btn--filtro" href="prefeitura.html?q=${nomeBusca}" title="Ver contratos desta empresa">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
+            ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.ZELA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
         <div class="forn-row__cnpj">${esc(f.cnpj)}</div>
@@ -2729,9 +2730,9 @@
           <div class="forn-row__nome">${esc(f.nome)}</div>
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / maxCam) * 100}%"></span></div>
           <div class="forn-row__actions">
-            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812" target="_blank" rel="noopener" title="Validar no Portal Betha da Câmara — cole o nome no campo de busca">🔍 Betha</a>
-            <a class="forn-row__btn forn-row__btn--filtro" href="camara.html?q=${nomeBusca}" title="Ver contratos desta empresa na Câmara">📋 Ver contratos</a>
-            ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">🏢 Consultar CNPJ</a>` : ""}
+            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812" target="_blank" rel="noopener" title="Validar no Portal Betha da Câmara — cole o nome no campo de busca">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+            <a class="forn-row__btn forn-row__btn--filtro" href="camara.html?q=${nomeBusca}" title="Ver contratos desta empresa na Câmara">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
+            ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.ZELA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
         <div class="forn-row__cnpj">${esc(f.cnpj)}</div>
@@ -3368,7 +3369,7 @@ ${baseLegalTxt}
               ${data ? `<span>${data}</span>` : ""}
             </div>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
-              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/licitacoes" target="_blank" rel="noopener" title="Ver licitações no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">🔍 Betha</a>
+              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/licitacoes" target="_blank" rel="noopener" title="Ver licitações no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
               <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" title="Buscar no Portal Nacional de Contratações Públicas" style="text-decoration:none; padding: 3px 9px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">📋 PNCP</a>
             </div>
           </article>`;
@@ -3631,7 +3632,7 @@ ${baseLegalTxt}
                 ${data ? `<span>Data: ${data}</span>` : ""}
               </div>
               <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
-                <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">🔍 Betha</a>
+                <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
                 <a class="btn-link" href="https://transparência.varginha.mg.gov.br/portal-transparência/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 3px 9px; background: #eee; border-radius: 4px; color: #555; font-size: 0.78em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
               </div>
             </div>
@@ -4259,7 +4260,7 @@ ${baseLegalTxt}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratosAluguel.indexOf(c)})">Ver relatorio</button>
               <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}')">Compartilhar</button>
-              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">🔍 Betha</a>
+              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
               <a class="btn-link" href="https://transparência.varginha.mg.gov.br/portal-transparência/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 5px 10px; background: #eee; border-radius: 4px; color: #555; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
             </div>
           </div>
@@ -4385,7 +4386,7 @@ ${baseLegalTxt}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratosAluguel.indexOf(c)})">Ver Dossie</button>
               <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)} · estimado ${fmtBRL(mensal)}/mes por ${meses || ""} meses')">Zap</button>
-              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">🔍 Betha</a>
+              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
               <a class="btn-link" href="https://transparência.varginha.mg.gov.br/portal-transparência/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 5px 10px; background: #eee; border-radius: 4px; color: #555; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
             </div>
           </div>
@@ -4691,25 +4692,25 @@ ${baseLegalTxt}
 
     el.innerHTML = `
       <div class="placar-card placar-card--money">
-        <span class="placar-card__icon">💰</span>
+        <span class="placar-card__icon">${window.ZELA.icon("cifrao", { size: 24 })}</span>
         <span class="placar-card__valor">${fmtBRL(total)}</span>
         <span class="placar-card__label">Total contratado ${window.ZELA.carimboColeta()}</span>
         <span class="placar-card__sub">Em <strong>${anoAtual}</strong> · ${contratosAno.length} contrato${contratosAno.length !== 1 ? "s" : ""}</span>
       </div>
       <div class="placar-card placar-card--top">
-        <span class="placar-card__icon">🏆</span>
+        <span class="placar-card__icon">${window.ZELA.icon("trofeu", { size: 24 })}</span>
         <span class="placar-card__valor">${topForn ? esc(cleanText(topForn.nome.split(" ").slice(0, 4).join(" "))) : "—"}</span>
         <span class="placar-card__label">Maior fornecedor</span>
         <span class="placar-card__sub">${topForn ? `<strong>${fmtBRL(topForn.valor)}</strong> · ${topForn.qtd} contrato${topForn.qtd > 1 ? "s" : ""}` : "Sem dados"}</span>
       </div>
       <div class="placar-card placar-card--count">
-        <span class="placar-card__icon">📋</span>
+        <span class="placar-card__icon">${window.ZELA.icon("documentos", { size: 24 })}</span>
         <span class="placar-card__valor">${fmtNum(contratos.length)}</span>
         <span class="placar-card__label">Contratos no painel</span>
         <span class="placar-card__sub">Todos os anos disponíveis</span>
       </div>
       <div class="placar-card placar-card--warn">
-        <span class="placar-card__icon">⚠️</span>
+        <span class="placar-card__icon">${window.ZELA.icon("alerta", { size: 24 })}</span>
         <span class="placar-card__valor">${fmtNum(alertasObj)}</span>
         <span class="placar-card__label">Contratos com objeto vago</span>
         <span class="placar-card__sub">Descrição menor que 25 caracteres</span>
@@ -4736,11 +4737,11 @@ ${baseLegalTxt}
       `<span class="cat-chips__label">Filtrar por categoria:</span>` +
       cats.map(cat => `
         <button type="button" class="cat-chip" data-cat="${cat.id}">
-          ${cat.icone} ${cat.label}
+          ${window.ZELA.icon(cat.iconKey, { size: 16 })} ${cat.label}
           <span class="cat-chip__count">${contagem[cat.id]}</span>
         </button>
       `).join("") +
-      `<button type="button" class="cat-chip cat-chip--clear" data-cat="">✕ Limpar</button>`;
+      `<button type="button" class="cat-chip cat-chip--clear" data-cat="">Limpar filtro</button>`;
 
     let catAtiva = "";
     const aplicarCat = (cat) => {
@@ -4793,25 +4794,25 @@ ${baseLegalTxt}
 
     el.innerHTML = `
       <div class="placar-card placar-card--money">
-        <span class="placar-card__icon">💰</span>
+        <span class="placar-card__icon">${window.ZELA.icon("cifrao", { size: 24 })}</span>
         <span class="placar-card__valor">${fmtBRL(total)}</span>
         <span class="placar-card__label">Total em emendas ${window.ZELA.carimboColeta()}</span>
         <span class="placar-card__sub">Destinado por <strong>vereadores</strong></span>
       </div>
       <div class="placar-card placar-card--top">
-        <span class="placar-card__icon">🏆</span>
+        <span class="placar-card__icon">${window.ZELA.icon("trofeu", { size: 24 })}</span>
         <span class="placar-card__valor">${topBen ? esc(cleanText(topBen.nome.split(" ").slice(0, 4).join(" "))) : "—"}</span>
         <span class="placar-card__label">Maior beneficiário</span>
         <span class="placar-card__sub">${topBen ? `<strong>${fmtBRL(topBen.valor)}</strong> · ${topBen.qtd} emenda${topBen.qtd > 1 ? "s" : ""}` : "Sem dados"}</span>
       </div>
       <div class="placar-card placar-card--count">
-        <span class="placar-card__icon">✅</span>
+        <span class="placar-card__icon">${window.ZELA.icon("cheque", { size: 24 })}</span>
         <span class="placar-card__valor">${pctPago}%</span>
         <span class="placar-card__label">Foi efetivamente pago</span>
         <span class="placar-card__sub"><strong>${fmtBRL(totalPago)}</strong> conferidos no portal</span>
       </div>
       <div class="placar-card placar-card--warn">
-        <span class="placar-card__icon">⚠️</span>
+        <span class="placar-card__icon">${window.ZELA.icon("alerta", { size: 24 })}</span>
         <span class="placar-card__valor">${fmtNum(semPag)}</span>
         <span class="placar-card__label">Sem pagamento localizado</span>
         <span class="placar-card__sub">Promessas que ainda não viraram dinheiro</span>
@@ -4837,11 +4838,11 @@ ${baseLegalTxt}
       `<span class="cat-chips__label">Filtrar emendas por categoria:</span>` +
       cats.map(cat => `
         <button type="button" class="cat-chip" data-cat="${cat.id}">
-          ${cat.icone} ${cat.label}
+          ${window.ZELA.icon(cat.iconKey, { size: 16 })} ${cat.label}
           <span class="cat-chip__count">${contagem[cat.id]}</span>
         </button>
       `).join("") +
-      `<button type="button" class="cat-chip cat-chip--clear" data-cat="">✕ Limpar</button>`;
+      `<button type="button" class="cat-chip cat-chip--clear" data-cat="">Limpar filtro</button>`;
 
     const aplicarCat = (cat) => {
       el.querySelectorAll(".cat-chip").forEach(b => {

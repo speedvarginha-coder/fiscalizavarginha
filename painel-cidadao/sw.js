@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v6 (modules: utils, glossario, categorias, watchlist) */
-const CACHE = "zela-v6";
+/* Zela Varginha — Service Worker v7 (ícones SVG + visual profissional) */
+const CACHE = "zela-v7";
 const STATIC = [
   "./",
   "./index.html",
@@ -15,6 +15,7 @@ const STATIC = [
   "./app-glossario.js",
   "./data-loader.js",
   "./modules/utils.js",
+  "./modules/icons.js",
   "./modules/glossario.js",
   "./modules/categorias.js",
   "./modules/watchlist.js",

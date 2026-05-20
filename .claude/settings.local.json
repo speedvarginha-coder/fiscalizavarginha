@@ -103,7 +103,8 @@
       "Bash(kill %1)",
       "Bash(py -X utf8 _extract_utils.py)",
       "Bash(py -X utf8 _extract_utils2.py)",
-      "Bash(py -X utf8 _extract_fase2.py)"
+      "Bash(py -X utf8 _extract_fase2.py)",
+      "Bash(git commit -m 'feat: substitui emojis por ícones SVG profissionais \\(Heroicons\\) *)"
     ]
   }
 }

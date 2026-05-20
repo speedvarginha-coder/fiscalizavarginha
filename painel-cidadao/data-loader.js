@@ -28,6 +28,7 @@
   // Carregados em ordem, ANTES de app.js. app.js destrutura window.ZELA.utils etc.
   const MODULOS = [
     "modules/utils.js",
+    "modules/icons.js",
     "modules/glossario.js",
     "modules/categorias.js",
     "modules/watchlist.js",
