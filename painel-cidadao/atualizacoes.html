@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atualizações diárias · Zela Varginha</title>
+<meta name="description" content="Feed cronológico de contratos, aditivos, dispensas e licitações da Prefeitura e Câmara de Varginha-MG.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Zela Varginha">
+<meta property="og:title"       content="Atualizações diárias · Zela Varginha">
+<meta property="og:description" content="Tudo que a Prefeitura e a Câmara publicaram hoje. Atualizado diariamente.">
+<meta property="og:locale"      content="pt_BR">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Atualizações diárias · Zela Varginha">
+<meta name="twitter:description" content="Feed de contratações de Varginha-MG.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="atualizacoes" data-chunks="atualizacoes,atualizado_em">
+<div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
+  <div class="loading-spinner"></div>
+  <p>Carregando atualizações…</p>
+</div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Zela Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">☰ Menu</button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"        class="nav__link">Início</a>
+      <a href="atualizacoes.html" class="nav__link nav__link--active">Atualizações</a>
+      <a href="prefeitura.html"   class="nav__link">Prefeitura</a>
+      <a href="camara.html"       class="nav__link">Câmara</a>
+      <a href="relatorios.html"   class="nav__link">Relatórios</a>
+      <a href="pessoal.html"      class="nav__link">Pessoal</a>
+      <a href="marcadores.html"   class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
+      <a href="sobre.html"        class="nav__link">Sobre</a>
+      <a href="cobrar.html"       class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<section class="section section--alt">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">← Voltar ao início</a></p>
+
+    <header class="bigheader">
+      <span class="bigheader__kicker">FEED CRONOLÓGICO</span>
+      <h2 class="bigheader__title">Atualizações diárias</h2>
+      <p class="bigheader__lead">
+        Tudo que a Prefeitura e a Câmara publicaram nos últimos dias: contratos,
+        aditivos, dispensas, compras diretas e licitações. Cada ato vem com sinais
+        de atenção, valores envolvidos e link para a publicação oficial.
+      </p>
+      <p id="atualizado" class="muted small" style="margin-top:8px"></p>
+    </header>
+
+    <!-- Stats topo -->
+    <div id="atualizacoesStats" class="placar" aria-label="Resumo das atualizações"></div>
+
+    <!-- Filtros -->
+    <div id="atualizacoesFiltros" class="cat-chips" aria-label="Filtrar atualizações">
+      <span class="cat-chips__label">Filtrar por:</span>
+      <button type="button" class="cat-chip" data-filtro="orgao" data-valor="Prefeitura">Prefeitura</button>
+      <button type="button" class="cat-chip" data-filtro="orgao" data-valor="Câmara">Câmara</button>
+      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="contrato">Contratos</button>
+      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="aditivo">Aditivos</button>
+      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="dispensa">Dispensas</button>
+      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="compra_direta">Compras diretas</button>
+      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="licitacao">Licitações</button>
+      <button type="button" class="cat-chip" data-filtro="relevancia" data-valor="alta">Só relevância ALTA</button>
+      <button type="button" class="cat-chip cat-chip--clear" data-filtro="" data-valor="">Limpar tudo</button>
+    </div>
+
+    <!-- Busca -->
+    <div class="filterbar" style="margin-top:14px;">
+      <input id="filtroAtualizacoes" type="search" placeholder="Buscar por título, empresa, CNPJ ou tema…" style="flex:1;">
+      <span id="atualizacoesContador" class="filterbar__count"></span>
+    </div>
+
+    <!-- Aviso de fonte em construção -->
+    <div class="report-note" style="margin:18px 0; background:#fff8e1; border-left:5px solid var(--gold);">
+      <strong>⚠ Fonte em construção</strong>
+      <p>
+        A coleta automática do Diário Oficial está sendo desenvolvida. Os atos
+        listados aqui são exemplos baseados em publicações reais. Quando a coleta
+        estiver ativa, este feed será atualizado diariamente.
+      </p>
+    </div>
+
+    <!-- Lista de atos agrupada por data -->
+    <div id="atualizacoesFeed" class="timeline-sinais" style="margin-top:18px;"></div>
+
+    <div id="atualizacoesEmpty" class="empty" hidden>
+      <strong>Nenhuma atualização encontrada</strong>
+      <p>Tente remover algum filtro ou limpar a busca.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <strong>Zela Varginha</strong> · Painel Cidadão de Fiscalização<br>
+      <span class="muted">Atualizações coletadas do Diário Oficial Municipal.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="data-loader.js?v=20260521"></script>
+</body>
+</html>

@@ -57,6 +57,13 @@
       abrirFiscalizacaoDiaria: function () {},
     };
   }
+  if (!window.ZELA.atualizacoes) {
+    window.ZELA.atualizacoes = {
+      init:      function () {},
+      render:    function () {},
+      copiarLAI: function () {},
+    };
+  }
   // utils.js é crítico — sem ele, app.js não funciona (destructuring abaixo)
   if (!window.ZELA.utils) {
     console.error("[app.js] CRÍTICO: modules/utils.js não carregou. Mostrando erro ao usuário.");
@@ -3474,7 +3481,16 @@
         const sec = params.get("sec");
         if (sec && $("filtroSecretaria")) $("filtroSecretaria").value = sec;
         renderContratos(true);
-        scrollToEl($("contratosBlock"));
+        // Força mudança para aba "Contratos" — senão usuário não vê o filtro aplicado
+        // (página abre na aba "Visão geral" por padrão)
+        const tabContratos = document.querySelector('.pref-tab[data-pref-tab="contratos"]');
+        if (tabContratos) {
+          tabContratos.click();
+          // Scroll só depois do clique processar
+          setTimeout(() => scrollToEl($("contratosBlock")), 100);
+        } else {
+          scrollToEl($("contratosBlock"));
+        }
       }
     }
   })();
@@ -4750,6 +4766,7 @@
   if (PAGE === "prefeitura") initPrefeituraTabs();
   if (PAGE === "camara") renderPlacarCamara();
   if (PAGE === "camara") renderCategoriasCamara();
+  if (PAGE === "atualizacoes" && window.ZELA.atualizacoes) window.ZELA.atualizacoes.init();
   if (PAGE === "prefeitura") renderAlugueisV2();
   if (PAGE === "prefeitura") initDiarias("Prefeitura", (D.diarias || {}).prefeitura || []);
   if (PAGE === "camara") initDiarias("Camara", (D.diarias || {}).camara || []);

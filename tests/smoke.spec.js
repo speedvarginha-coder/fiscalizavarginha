@@ -51,6 +51,7 @@ const PAGINAS = [
   { arquivo: "sobre.html",      titulo: /Sobre/,                   bloco: "#tabelaGlossario" },
   { arquivo: "cobrar.html",     titulo: /Como cobrar/,             bloco: ".cobrar-blocks" },
   { arquivo: "marcadores.html", titulo: /Marcadores/,              bloco: "#marcadoresArea" },
+  { arquivo: "atualizacoes.html", titulo: /Atualizações/,           bloco: "#atualizacoesFeed" },
 ];
 
 for (const p of PAGINAS) {
@@ -89,7 +90,7 @@ test.describe("Navegação", () => {
     const links = [
       "index.html", "prefeitura.html", "camara.html",
       "relatorios.html", "pessoal.html", "marcadores.html",
-      "sobre.html", "cobrar.html",
+      "atualizacoes.html", "sobre.html", "cobrar.html",
     ];
     for (const href of links) {
       await expect(page.locator(`nav a[href="${href}"]`).first()).toBeAttached();
@@ -132,6 +133,32 @@ test.describe("Placar do dinheiro", () => {
     await page.waitForTimeout(2000);
     const cards = page.locator("#placarCamara .placar-card");
     await expect(cards).toHaveCount(4);
+  });
+});
+
+test.describe("Atualizações diárias (feed)", () => {
+  test("Cards aparecem com dados mock", async ({ page }) => {
+    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    const cards = page.locator("#atualizacoesFeed .tline-item");
+    await expect(cards.first()).toBeAttached();
+  });
+
+  test("Stats no topo mostram 4 cards", async ({ page }) => {
+    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    const stats = page.locator("#atualizacoesStats .placar-card");
+    await expect(stats).toHaveCount(4);
+  });
+
+  test("Filtro de busca responde", async ({ page }) => {
+    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    const busca = page.locator("#filtroAtualizacoes");
+    await busca.fill("inexistente_xyz_123");
+    await page.waitForTimeout(300);
+    const empty = page.locator("#atualizacoesEmpty");
+    await expect(empty).toBeVisible();
   });
 });
 

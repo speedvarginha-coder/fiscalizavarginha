@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v11 (modules/relatorios + diarias extraídos) */
-const CACHE = "zela-v11";
+/* Zela Varginha — Service Worker v12 (feed de atualizações diárias) */
+const CACHE = "zela-v12";
 const STATIC = [
   "./",
   "./index.html",
@@ -10,6 +10,7 @@ const STATIC = [
   "./cobrar.html",
   "./sobre.html",
   "./marcadores.html",
+  "./atualizacoes.html",
   "./style.css",
   "./app.js",
   "./app-glossario.js",
@@ -23,6 +24,7 @@ const STATIC = [
   "./modules/dashboard.js",
   "./modules/relatorios.js",
   "./modules/diarias.js",
+  "./modules/atualizacoes.js",
   "./favicon.svg",
 ];
 

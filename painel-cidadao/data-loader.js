@@ -14,14 +14,15 @@
   // ============ CHUNKS POR PÁGINA ============
   // Mapeia data-page → chunks necessários. Body também pode sobrescrever via data-chunks.
   const CHUNKS_POR_PAGINA = {
-    "home":        ["resumo", "atualizado_em", "prefeitura", "emendas", "vereadores", "pncp"],
-    "prefeitura":  ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "vereadores", "atualizado_em"],
-    "camara":      ["prefeitura", "emendas", "vereadores", "camara_anos", "camara_transparencia", "diarias", "atualizado_em"],
-    "relatorios":  ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos"],
-    "pessoal":     ["pessoal", "atualizado_em"],
-    "marcadores":  ["prefeitura", "emendas", "atualizado_em"],
-    "sobre":       [],
-    "cobrar":      [],
+    "home":         ["resumo", "atualizado_em", "prefeitura", "emendas", "vereadores", "pncp"],
+    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "vereadores", "atualizado_em"],
+    "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "camara_transparencia", "diarias", "atualizado_em"],
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos"],
+    "pessoal":      ["pessoal", "atualizado_em"],
+    "marcadores":   ["prefeitura", "emendas", "atualizado_em"],
+    "atualizacoes": ["atualizacoes", "prefeitura", "emendas", "atualizado_em"],
+    "sobre":        [],
+    "cobrar":       [],
   };
 
   // ============ MÓDULOS DE CÓDIGO ============
@@ -36,6 +37,7 @@
     "modules/dashboard.js",
     "modules/relatorios.js",
     "modules/diarias.js",
+    "modules/atualizacoes.js",
   ];
 
   const ts = Date.now();
