@@ -56,6 +56,10 @@
     "vereadores": {
       "arquivo": "data/chunks/vereadores.json",
       "bytes": 4775
+    },
+    "camara_betha": {
+      "arquivo": "data/chunks/camara_betha.json",
+      "bytes": 25724
     }
   }
 }

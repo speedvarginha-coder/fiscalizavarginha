@@ -125,17 +125,11 @@
       .map(c => contratoParaAto(c, "Prefeitura"))
       .filter(Boolean);
 
-    // Câmara: tenta extrair contratos do chunk camara_anos
-    const camAnos = D.camara_anos || {};
-    let contratosCam = [];
-    Object.keys(camAnos).forEach(ano => {
-      const dadosAno = camAnos[ano];
-      if (dadosAno && Array.isArray(dadosAno.contratos)) {
-        contratosCam = contratosCam.concat(
-          dadosAno.contratos.map(c => contratoParaAto(c, "Câmara")).filter(Boolean)
-        );
-      }
-    });
+    // Câmara: contratos vêm do chunk camara_betha (coletado pelo coletor_betha.py)
+    const cb = D.camara_betha || {};
+    const contratosCam = (cb.contratos || [])
+      .map(c => contratoParaAto(c, "Câmara"))
+      .filter(Boolean);
 
     return [...mocks, ...contratosPref, ...contratosCam];
   }

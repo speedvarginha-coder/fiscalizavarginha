@@ -152,6 +152,20 @@ test.describe("Atualizações diárias (feed)", () => {
     await expect(stats).toHaveCount(4);
   });
 
+  test("Filtro Câmara mostra contratos (regressão: chunk camara_betha)", async ({ page }) => {
+    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    // Clica no chip Câmara
+    await page.locator('#atualizacoesFiltros .cat-chip[data-valor="Câmara"]').click();
+    await page.waitForTimeout(300);
+    // Espera pelo menos 1 card de Câmara aparecer (deveria ter 36 contratos reais)
+    const cards = page.locator("#atualizacoesFeed .tline-item");
+    await expect(cards.first()).toBeAttached();
+    // Empty state NÃO deve aparecer
+    const empty = page.locator("#atualizacoesEmpty");
+    await expect(empty).toBeHidden();
+  });
+
   test("Filtro de busca responde", async ({ page }) => {
     await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
