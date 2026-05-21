@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v9 (modules/dossie extraído) */
-const CACHE = "zela-v9";
+/* Zela Varginha — Service Worker v10 (modules/dashboard extraído) */
+const CACHE = "zela-v10";
 const STATIC = [
   "./",
   "./index.html",
@@ -20,6 +20,7 @@ const STATIC = [
   "./modules/categorias.js",
   "./modules/watchlist.js",
   "./modules/dossie.js",
+  "./modules/dashboard.js",
   "./favicon.svg",
 ];
 

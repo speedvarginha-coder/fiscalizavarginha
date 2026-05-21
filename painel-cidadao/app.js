@@ -35,6 +35,14 @@
       gerarTxtContrato: function () { alert("Módulo de dossiê não carregou."); },
     };
   }
+  if (!window.ZELA.dashboard) {
+    window.ZELA.dashboard = {
+      renderPlacarPrefeitura:     function () {},
+      renderCategoriasPrefeitura: function () {},
+      renderPlacarCamara:         function () {},
+      renderCategoriasCamara:     function () {},
+    };
+  }
   // utils.js é crítico — sem ele, app.js não funciona (destructuring abaixo)
   if (!window.ZELA.utils) {
     console.error("[app.js] CRÍTICO: modules/utils.js não carregou. Mostrando erro ao usuário.");
@@ -4557,195 +4565,11 @@
   }
 
   // ============= PLACAR DO DINHEIRO (prefeitura.html) =============
-  function renderPlacarPrefeitura() {
-    const el = $("placarPrefeitura");
-    if (!el) return;
-    const contratos = pf.contratos || [];
-    const anoAtual = String(pf.ano_atual || new Date().getFullYear());
-    const contratosAno = contratos.filter(c => String(c.ano || "") === anoAtual);
-    const total = contratosAno.reduce((s, c) => s + (Number(c.valor) || 0), 0);
-
-    // Top fornecedor
-    const porForn = new Map();
-    contratosAno.forEach(c => {
-      const k = (c.contratado || "—").trim();
-      const cur = porForn.get(k) || { nome: k, valor: 0, qtd: 0 };
-      cur.valor += Number(c.valor) || 0;
-      cur.qtd += 1;
-      porForn.set(k, cur);
-    });
-    const topForn = [...porForn.values()].sort((a, b) => b.valor - a.valor)[0];
-
-    // Alertas
-    const alertasObj = contratos.filter(c => ((c.objeto || "").trim().length < 25)).length;
-
-    el.innerHTML = `
-      <div class="placar-card placar-card--money">
-        <span class="placar-card__icon">${window.ZELA.icon("cifrao", { size: 24 })}</span>
-        <span class="placar-card__valor">${fmtBRL(total)}</span>
-        <span class="placar-card__label">Total contratado ${window.ZELA.carimboColeta()}</span>
-        <span class="placar-card__sub">Em <strong>${anoAtual}</strong> · ${contratosAno.length} contrato${contratosAno.length !== 1 ? "s" : ""}</span>
-      </div>
-      <div class="placar-card placar-card--top">
-        <span class="placar-card__icon">${window.ZELA.icon("trofeu", { size: 24 })}</span>
-        <span class="placar-card__valor">${topForn ? esc(cleanText(topForn.nome.split(" ").slice(0, 4).join(" "))) : "—"}</span>
-        <span class="placar-card__label">Maior fornecedor</span>
-        <span class="placar-card__sub">${topForn ? `<strong>${fmtBRL(topForn.valor)}</strong> · ${topForn.qtd} contrato${topForn.qtd > 1 ? "s" : ""}` : "Sem dados"}</span>
-      </div>
-      <div class="placar-card placar-card--count">
-        <span class="placar-card__icon">${window.ZELA.icon("documentos", { size: 24 })}</span>
-        <span class="placar-card__valor">${fmtNum(contratos.length)}</span>
-        <span class="placar-card__label">Contratos no painel</span>
-        <span class="placar-card__sub">Todos os anos disponíveis</span>
-      </div>
-      <div class="placar-card placar-card--warn">
-        <span class="placar-card__icon">${window.ZELA.icon("alerta", { size: 24 })}</span>
-        <span class="placar-card__valor">${fmtNum(alertasObj)}</span>
-        <span class="placar-card__label">Contratos com objeto vago</span>
-        <span class="placar-card__sub">Descrição menor que 25 caracteres</span>
-      </div>
-    `;
-  }
-
-  // ============= CHIPS DE CATEGORIA (prefeitura.html) =============
-  function renderCategoriasPrefeitura() {
-    const el = $("catChipsPrefeitura");
-    if (!el) return;
-    const contratos = pf.contratos || [];
-
-    // Conta por categoria
-    const contagem = {};
-    contratos.forEach(c => {
-      const cat = window.ZELA.classificarItem(c);
-      if (cat) contagem[cat] = (contagem[cat] || 0) + 1;
-    });
-    const cats = window.ZELA.categorias.filter(c => (contagem[c.id] || 0) > 0);
-    if (!cats.length) { el.style.display = "none"; return; }
-
-    el.innerHTML =
-      `<span class="cat-chips__label">Filtrar por categoria:</span>` +
-      cats.map(cat => `
-        <button type="button" class="cat-chip" data-cat="${cat.id}">
-          ${window.ZELA.icon(cat.iconKey, { size: 16 })} ${cat.label}
-          <span class="cat-chip__count">${contagem[cat.id]}</span>
-        </button>
-      `).join("") +
-      `<button type="button" class="cat-chip cat-chip--clear" data-cat="">Limpar filtro</button>`;
-
-    let catAtiva = "";
-    const aplicarCat = (cat) => {
-      catAtiva = cat;
-      el.querySelectorAll(".cat-chip").forEach(b => {
-        b.classList.toggle("is-active", b.dataset.cat === cat && cat !== "");
-      });
-      // Aplica filtro no campo de busca de contratos
-      if (window.ZELA.filtrarContratosPorCategoria) {
-        window.ZELA.filtrarContratosPorCategoria(cat);
-      }
-      // Vai para a aba contratos
-      if (cat) {
-        document.querySelectorAll('.pref-tab[data-pref-tab="contratos"]').forEach(t => t.click());
-      }
-    };
-    el.querySelectorAll(".cat-chip").forEach(btn => {
-      btn.addEventListener("click", () => aplicarCat(btn.dataset.cat));
-    });
-    window.ZELA.aplicarCategoriaPrefeitura = aplicarCat;
-  }
-
-  // ============= PLACAR DO DINHEIRO (camara.html) =============
-  function renderPlacarCamara() {
-    const el = $("placarCamara");
-    if (!el) return;
-    const emendas = D.emendas || [];
-    const total = emendas.reduce((s, e) => s + (Number(e.valor_brl) || 0), 0);
-
-    // Cruzamento map (reaproveita o ja construído no escopo se possível)
-    const cruzMapLocal = {};
-    ((pf.emendas_cruzadas) || []).forEach(c => { cruzMapLocal[c.numero + "/" + c.ano] = c; });
-    const totalPago = emendas.reduce((s, e) =>
-      s + (Number((cruzMapLocal[e.numero + "/" + e.ano] || {}).valor_pago_total) || 0), 0);
-    const pctPago = total > 0 ? Math.round((totalPago / total) * 100) : 0;
-
-    // Top beneficiário
-    const porBen = new Map();
-    emendas.forEach(e => {
-      const k = (e.beneficiario || "—").trim();
-      const cur = porBen.get(k) || { nome: k, valor: 0, qtd: 0 };
-      cur.valor += Number(e.valor_brl) || 0;
-      cur.qtd += 1;
-      porBen.set(k, cur);
-    });
-    const topBen = [...porBen.values()].sort((a, b) => b.valor - a.valor)[0];
-
-    // Sem pagamento
-    const semPag = emendas.filter(e => (cruzMapLocal[e.numero + "/" + e.ano] || {}).status === "sem_pagamento").length;
-
-    el.innerHTML = `
-      <div class="placar-card placar-card--money">
-        <span class="placar-card__icon">${window.ZELA.icon("cifrao", { size: 24 })}</span>
-        <span class="placar-card__valor">${fmtBRL(total)}</span>
-        <span class="placar-card__label">Total em emendas ${window.ZELA.carimboColeta()}</span>
-        <span class="placar-card__sub">Destinado por <strong>vereadores</strong></span>
-      </div>
-      <div class="placar-card placar-card--top">
-        <span class="placar-card__icon">${window.ZELA.icon("trofeu", { size: 24 })}</span>
-        <span class="placar-card__valor">${topBen ? esc(cleanText(topBen.nome.split(" ").slice(0, 4).join(" "))) : "—"}</span>
-        <span class="placar-card__label">Maior beneficiário</span>
-        <span class="placar-card__sub">${topBen ? `<strong>${fmtBRL(topBen.valor)}</strong> · ${topBen.qtd} emenda${topBen.qtd > 1 ? "s" : ""}` : "Sem dados"}</span>
-      </div>
-      <div class="placar-card placar-card--count">
-        <span class="placar-card__icon">${window.ZELA.icon("cheque", { size: 24 })}</span>
-        <span class="placar-card__valor">${pctPago}%</span>
-        <span class="placar-card__label">Foi efetivamente pago</span>
-        <span class="placar-card__sub"><strong>${fmtBRL(totalPago)}</strong> conferidos no portal</span>
-      </div>
-      <div class="placar-card placar-card--warn">
-        <span class="placar-card__icon">${window.ZELA.icon("alerta", { size: 24 })}</span>
-        <span class="placar-card__valor">${fmtNum(semPag)}</span>
-        <span class="placar-card__label">Sem pagamento localizado</span>
-        <span class="placar-card__sub">Promessas que ainda não viraram dinheiro</span>
-      </div>
-    `;
-  }
-
-  // ============= CHIPS DE CATEGORIA (camara.html) =============
-  function renderCategoriasCamara() {
-    const el = $("catChipsCamara");
-    if (!el) return;
-    const emendas = D.emendas || [];
-    const contagem = {};
-    emendas.forEach(e => {
-      const item = { objeto: e.objeto, beneficiario: e.beneficiario };
-      const cat = window.ZELA.classificarItem(item);
-      if (cat) contagem[cat] = (contagem[cat] || 0) + 1;
-    });
-    const cats = window.ZELA.categorias.filter(c => (contagem[c.id] || 0) > 0);
-    if (!cats.length) { el.style.display = "none"; return; }
-
-    el.innerHTML =
-      `<span class="cat-chips__label">Filtrar emendas por categoria:</span>` +
-      cats.map(cat => `
-        <button type="button" class="cat-chip" data-cat="${cat.id}">
-          ${window.ZELA.icon(cat.iconKey, { size: 16 })} ${cat.label}
-          <span class="cat-chip__count">${contagem[cat.id]}</span>
-        </button>
-      `).join("") +
-      `<button type="button" class="cat-chip cat-chip--clear" data-cat="">Limpar filtro</button>`;
-
-    const aplicarCat = (cat) => {
-      el.querySelectorAll(".cat-chip").forEach(b => {
-        b.classList.toggle("is-active", b.dataset.cat === cat && cat !== "");
-      });
-      if (window.ZELA.filtrarEmendasPorCategoria) {
-        window.ZELA.filtrarEmendasPorCategoria(cat);
-      }
-    };
-    el.querySelectorAll(".cat-chip").forEach(btn => {
-      btn.addEventListener("click", () => aplicarCat(btn.dataset.cat));
-    });
-    window.ZELA.aplicarCategoriaCamara = aplicarCat;
-  }
+  // Placar e Categorias delegados para modules/dashboard.js
+  function renderPlacarPrefeitura()     { window.ZELA.dashboard.renderPlacarPrefeitura(); }
+  function renderCategoriasPrefeitura() { window.ZELA.dashboard.renderCategoriasPrefeitura(); }
+  function renderPlacarCamara()         { window.ZELA.dashboard.renderPlacarCamara(); }
+  function renderCategoriasCamara()     { window.ZELA.dashboard.renderCategoriasCamara(); }
 
   function renderPrefeituraOverview() {
     if (!$("prefeituraOverview")) return;

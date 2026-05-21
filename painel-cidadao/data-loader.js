@@ -33,6 +33,7 @@
     "modules/categorias.js",
     "modules/watchlist.js",
     "modules/dossie.js",
+    "modules/dashboard.js",
   ];
 
   const ts = Date.now();
