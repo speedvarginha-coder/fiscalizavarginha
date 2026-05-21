@@ -86,6 +86,69 @@
     if (tipo === "dispensa" && valor > 17600) pontos.push("Dispensa de licitação acima de R$ 17.600 (limite Lei 14.133/2021) pede justificativa formal.");
     if (!c.data_fim) pontos.push("Sem data de fim/vigência registrada.");
 
+    // Links contextuais — múltiplos caminhos pro cidadão chegar na publicação
+    const cnpjLimpo = (c.cnpj || "").replace(/[^\d]/g, "");
+    const cnpjValido = cnpjLimpo.length >= 8 && !(c.cnpj || "").includes("*");
+    const empresa = cleanText(c.contratado || "");
+    const numAno = `${c.numero || "s/n"}/${c.ano || ""}`;
+    const orgaoQuery = orgao === "Prefeitura" ? "Prefeitura Varginha" : "Câmara Varginha";
+
+    const links = [];
+
+    // 1) Portal Betha (filtro de busca)
+    links.push({
+      tipo: "betha",
+      label: "Portal Betha",
+      url: orgao === "Prefeitura"
+        ? "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos"
+        : "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812",
+      tooltip: `Abre o Portal Betha. Cole o número ${numAno} ou o nome "${empresa}" no campo de busca.`,
+    });
+
+    // 2) Diário Oficial de Varginha (busca manual)
+    links.push({
+      tipo: "diario",
+      label: "Diário Oficial",
+      url: "https://www.varginha.mg.gov.br/diario-oficial-eletronico/",
+      tooltip: `Busque a edição que publicou o contrato ${numAno}.`,
+    });
+
+    // 3) Portal de Transparência oficial da Prefeitura
+    if (orgao === "Prefeitura") {
+      links.push({
+        tipo: "prefeitura",
+        label: "Portal oficial",
+        url: "https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos",
+        tooltip: "Portal oficial da Prefeitura (pode estar temporariamente indisponível).",
+      });
+    } else {
+      links.push({
+        tipo: "camara",
+        label: "Site da Câmara",
+        url: "https://www.varginha.mg.leg.br/transparencia",
+        tooltip: "Site oficial da Câmara Municipal de Varginha.",
+      });
+    }
+
+    // 4) Casa dos Dados (CNPJ) — só se CNPJ não estiver mascarado
+    if (cnpjValido) {
+      links.push({
+        tipo: "cnpj",
+        label: "Consultar CNPJ",
+        url: `https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}`,
+        tooltip: "Consultar empresa na Receita Federal (situação cadastral, sócios, abertura).",
+      });
+    }
+
+    // 5) Google search inteligente
+    const gQuery = `"${numAno}" OR "${empresa}" ${orgaoQuery} contrato site:gov.br`;
+    links.push({
+      tipo: "google",
+      label: "Buscar no Google",
+      url: `https://www.google.com/search?q=${encodeURIComponent(gQuery)}`,
+      tooltip: "Pesquisa Google restrita a sites .gov.br.",
+    });
+
     return {
       id: `${orgao.toUpperCase()}-${c.ano || ""}-${c.numero || "?"}`,
       data,
@@ -93,10 +156,10 @@
       tipo,
       categoria,
       relevancia,
-      titulo: `Contrato ${c.numero || "s/n"}/${c.ano || ""} — ${cleanText(c.contratado || "—")}`,
+      titulo: `Contrato ${numAno} — ${empresa || "—"}`,
       resumo: cleanText(obj || "Objeto não informado"),
       envolvidos: c.contratado ? [{
-        nome: cleanText(c.contratado),
+        nome: empresa,
         cnpj: c.cnpj || "",
         papel: "contratada",
       }] : [],
@@ -105,9 +168,9 @@
         ...(c.modalidade ? [{ rotulo: "Modalidade", valor: 0, _raw: cleanText(c.modalidade) }] : []),
       ].filter(v => !v._raw || v._raw.length > 0),
       pontos_atencao: pontos,
-      publicacao_url: orgao === "Prefeitura"
-        ? "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos"
-        : "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812",
+      publicacao_url: links[0].url, // mantém compat com atos do Diário (mocks)
+      links_contexto: links,
+      copia_numero: numAno,
       _fonte: "betha",
     };
   }
@@ -346,15 +409,79 @@
         </details>
       ` : ""}
 
-      <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
-        ${ato.publicacao_url ? `<a class="btn-link" href="${esc(ato.publicacao_url)}" target="_blank" rel="noopener" style="padding:6px 12px; background:#e8f4fd; color:#1565c0; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; border:1px solid #90caf9; display:inline-flex; align-items:center; gap:6px;">${icon("lupa", { size: 14 })} Ver publicação oficial</a>` : ""}
-        ${ato.anexo_pdf ? `<a class="btn-link" href="${esc(ato.anexo_pdf)}" target="_blank" rel="noopener" style="padding:6px 12px; background:#fff3e0; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; border:1px solid #ffd54f; display:inline-flex; align-items:center; gap:6px;">${icon("anexo", { size: 14 })} PDF do ato</a>` : ""}
+      <!-- Botão copiar nº do contrato — fica em destaque -->
+      ${ato.copia_numero ? `
+        <div style="margin-top:14px; padding:10px 12px; background:var(--cream); border-radius:6px; border:1px dashed var(--line); display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <span style="font-size:.82rem; color:var(--muted);">Pesquisar a publicação? Copie o número:</span>
+          <code style="background:#fff; padding:3px 10px; border-radius:4px; font-weight:700; color:var(--navy); border:1px solid var(--line);">${esc(ato.copia_numero)}</code>
+          <button type="button" onclick="window.ZELA.atualizacoes.copiarNumero('${esc(ato.copia_numero).replace(/'/g, "\\'")}', this)" style="padding:4px 10px; background:var(--navy); color:#fff; border:none; border-radius:4px; font-size:.78rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">${icon("copiar", { size: 12 })} Copiar</button>
+        </div>
+      ` : ""}
+
+      <!-- Links contextuais — múltiplos caminhos -->
+      <div style="margin-top:10px;">
+        <span class="muted small" style="display:block; margin-bottom:6px;">Onde verificar este ato:</span>
+        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+          ${(ato.links_contexto || []).map(l => `
+            <a class="btn-link" href="${esc(l.url)}" target="_blank" rel="noopener" title="${esc(l.tooltip || "")}"
+               style="padding:5px 10px; background:${linkBg(l.tipo)}; color:${linkColor(l.tipo)}; border-radius:4px; font-size:.78em; font-weight:600; text-decoration:none; border:1px solid ${linkBorder(l.tipo)}; display:inline-flex; align-items:center; gap:5px;">
+              ${icon(linkIcon(l.tipo), { size: 13 })} ${esc(l.label)}
+            </a>`).join("") ||
+            (ato.publicacao_url ? `<a class="btn-link" href="${esc(ato.publicacao_url)}" target="_blank" rel="noopener" style="padding:5px 10px; background:#e8f4fd; color:#1565c0; border-radius:4px; font-size:.78em; font-weight:600; text-decoration:none; border:1px solid #90caf9;">${icon("lupa", { size: 13 })} Ver publicação</a>` : "")}
+          ${ato.anexo_pdf ? `<a class="btn-link" href="${esc(ato.anexo_pdf)}" target="_blank" rel="noopener" style="padding:5px 10px; background:#fff3e0; color:#6d4c00; border-radius:4px; font-size:.78em; font-weight:600; text-decoration:none; border:1px solid #ffd54f; display:inline-flex; align-items:center; gap:5px;">${icon("anexo", { size: 13 })} PDF do ato</a>` : ""}
+        </div>
+      </div>
+
+      <!-- Ações principais -->
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
         <a class="btn-link" href="${linkWa}" target="_blank" rel="noopener" style="padding:6px 12px; background:#0b5f3a; color:white; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">${icon("compartilhar", { size: 14 })} Compartilhar</a>
-        <button type="button" class="btn-link" onclick="window.ZELA.atualizacoes.copiarLAI('${idAto.replace(/'/g, "\\'")}')" style="padding:6px 12px; background:#fff8e1; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; border:1px solid #ffd54f; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">${icon("copiar", { size: 14 })} Copiar pergunta LAI</button>
+        <button type="button" class="btn-link" onclick="window.ZELA.atualizacoes.copiarLAI('${idAto.replace(/'/g, "\\'")}', this)" style="padding:6px 12px; background:#fff8e1; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; border:1px solid #ffd54f; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">${icon("copiar", { size: 14 })} Copiar pergunta LAI</button>
       </div>
 
       <textarea class="dossier-lai-pergunta" data-id="${esc(idAto)}" readonly hidden>${esc(perguntaLAI(ato))}</textarea>
     </article>`;
+  }
+
+  // Paletas dos botões de link contextual
+  function linkBg(tipo) {
+    return {
+      betha:      "#e8f4fd",
+      diario:     "#f3e5f5",
+      prefeitura: "#eee",
+      camara:     "#eee",
+      cnpj:       "#fff3e0",
+      google:     "#f1f8e9",
+    }[tipo] || "#eee";
+  }
+  function linkColor(tipo) {
+    return {
+      betha:      "#1565c0",
+      diario:     "#6a1b9a",
+      prefeitura: "#333",
+      camara:     "#333",
+      cnpj:       "#6d4c00",
+      google:     "#33691e",
+    }[tipo] || "#333";
+  }
+  function linkBorder(tipo) {
+    return {
+      betha:      "#90caf9",
+      diario:     "#ce93d8",
+      prefeitura: "#ccc",
+      camara:     "#ccc",
+      cnpj:       "#ffd54f",
+      google:     "#aed581",
+    }[tipo] || "#ccc";
+  }
+  function linkIcon(tipo) {
+    return {
+      betha:      "lupa",
+      diario:     "documentos",
+      prefeitura: "predio",
+      camara:     "predio",
+      cnpj:       "predio",
+      google:     "lupa",
+    }[tipo] || "lupa";
   }
 
   function relevanciaCor(r) {
@@ -432,23 +559,41 @@
   }
 
   // ============================================================
-  // Copiar pergunta LAI
+  // Helpers de cópia
   // ============================================================
-  function copiarLAI(id) {
+  function feedback(btn, txt) {
+    if (!btn) return;
+    const old = btn.innerHTML;
+    btn.innerHTML = "✓ " + txt;
+    setTimeout(() => { btn.innerHTML = old; }, 1600);
+  }
+
+  function copiarLAI(id, btn) {
     const ta = document.querySelector(`textarea.dossier-lai-pergunta[data-id="${id}"]`);
     if (!ta) return;
     navigator.clipboard.writeText(ta.value).then(() => {
-      if (typeof event !== "undefined" && event.currentTarget) {
-        const btn = event.currentTarget;
-        const old = btn.textContent;
-        btn.textContent = "Copiado";
-        setTimeout(() => { btn.textContent = old; }, 1600);
-      }
+      feedback(btn, "Copiado");
     }).catch(() => {
       ta.hidden = false;
       ta.select();
       try { document.execCommand("copy"); } catch (e) {}
       ta.hidden = true;
+      feedback(btn, "Copiado");
+    });
+  }
+
+  function copiarNumero(num, btn) {
+    if (!num) return;
+    navigator.clipboard.writeText(num).then(() => {
+      feedback(btn, "Copiado");
+    }).catch(() => {
+      const ta = document.createElement("textarea");
+      ta.value = num;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(ta);
+      feedback(btn, "Copiado");
     });
   }
 
@@ -521,5 +666,6 @@
     init,
     render,
     copiarLAI,
+    copiarNumero,
   });
 })();

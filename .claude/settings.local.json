@@ -113,7 +113,8 @@
       "Bash(git commit -m 'feat: feed de atualizações diárias \\(estilo FISCALIZO\\) + fix Ver contratos *)",
       "Bash(git commit -m 'feat: contratos reais no feed + filtros ano/mês + SVGs profissionais *)",
       "Bash(git commit -m 'fix\\(crítico\\): remove dados ficticios de outras cidades do feed *)",
-      "Bash(git commit -m 'fix: filtro Câmara no feed estava vazio \\(chunk camara_betha faltante\\) *)"
+      "Bash(git commit -m 'fix: filtro Câmara no feed estava vazio \\(chunk camara_betha faltante\\) *)",
+      "Bash(git commit -m 'feat: links contextuais no feed \\(cidadão chega mais perto da publicação\\) *)"
     ]
   }
 }

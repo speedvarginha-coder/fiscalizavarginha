@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v15 (fix: chunk camara_betha + filtro Câmara) */
-const CACHE = "zela-v15";
+/* Zela Varginha — Service Worker v16 (links contextuais no feed) */
+const CACHE = "zela-v16";
 const STATIC = [
   "./",
   "./index.html",

@@ -59,9 +59,10 @@
   }
   if (!window.ZELA.atualizacoes) {
     window.ZELA.atualizacoes = {
-      init:      function () {},
-      render:    function () {},
-      copiarLAI: function () {},
+      init:          function () {},
+      render:        function () {},
+      copiarLAI:     function () {},
+      copiarNumero:  function () {},
     };
   }
   // utils.js é crítico — sem ele, app.js não funciona (destructuring abaixo)
