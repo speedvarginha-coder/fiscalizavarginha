@@ -39,6 +39,34 @@
     convenio:       { icone: "predio",     label: "Convênio",       cor: "teal"   },
   };
 
+  // Hashes dos portais Betha de Varginha (mesma fonte que o coletor usa)
+  const BETHA_HASH = {
+    prefeitura: "y7mn01LGqd_HCvGtj6VPwA==",
+    camara:     "-iAWLe1kr2VQcrW9k2AUBg==",
+  };
+
+  // IDs de consulta do Betha por tipo (descobertos via coletor_betha.py)
+  const BETHA_CONSULTA_PREFEITURA = {
+    contrato:       83043,
+    dispensa:       83062,
+    compra_direta:  83045,
+    licitacao:      82967,  // em andamento
+    diaria:         83059,
+    aditivo:        83043,  // aditivos ficam na consulta de contratos
+    convenio:       83043,  // fallback contratos
+  };
+  // Câmara: só temos um endpoint de contratos
+  const BETHA_CONSULTA_CAMARA_CONTRATOS = 324812;
+
+  // Constrói URL deep-link para a tabela específica no Betha
+  function urlBetha(orgao, tipo) {
+    if (orgao === "Câmara") {
+      return `https://transparencia.betha.cloud/#/${BETHA_HASH.camara}/consulta/${BETHA_CONSULTA_CAMARA_CONTRATOS}`;
+    }
+    const id = BETHA_CONSULTA_PREFEITURA[tipo] || BETHA_CONSULTA_PREFEITURA.contrato;
+    return `https://transparencia.betha.cloud/#/${BETHA_HASH.prefeitura}/consulta/${id}`;
+  }
+
   const MESES_BR = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
 
   // Estado dos filtros
@@ -95,14 +123,12 @@
 
     const links = [];
 
-    // 1) Portal Betha (filtro de busca)
+    // 1) Portal Betha — URL deep-link para a TABELA exata onde a info foi coletada
     links.push({
       tipo: "betha",
-      label: "Portal Betha",
-      url: orgao === "Prefeitura"
-        ? "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos"
-        : "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812",
-      tooltip: `Abre o Portal Betha. Cole o número ${numAno} ou o nome "${empresa}" no campo de busca.`,
+      label: "Tabela do Betha",
+      url: urlBetha(orgao, tipo),
+      tooltip: `Abre direto a tabela do Portal Betha de Varginha. Use a busca interna para localizar ${numAno} ou "${empresa}".`,
     });
 
     // 2) Diário Oficial de Varginha (busca manual)
@@ -168,7 +194,7 @@
         ...(c.modalidade ? [{ rotulo: "Modalidade", valor: 0, _raw: cleanText(c.modalidade) }] : []),
       ].filter(v => !v._raw || v._raw.length > 0),
       pontos_atencao: pontos,
-      publicacao_url: links[0].url, // mantém compat com atos do Diário (mocks)
+      publicacao_url: urlBetha(orgao, tipo), // deep-link direto para a tabela de Varginha
       links_contexto: links,
       copia_numero: numAno,
       _fonte: "betha",

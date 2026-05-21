@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v16 (links contextuais no feed) */
-const CACHE = "zela-v16";
+/* Zela Varginha — Service Worker v17 (deep-link Betha por tipo de ato) */
+const CACHE = "zela-v17";
 const STATIC = [
   "./",
   "./index.html",
