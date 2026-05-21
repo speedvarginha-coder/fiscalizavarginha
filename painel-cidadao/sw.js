@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v7 (ícones SVG + visual profissional) */
-const CACHE = "zela-v7";
+/* Zela Varginha — Service Worker v8 (shims defensivos + fix IDs diarias) */
+const CACHE = "zela-v8";
 const STATIC = [
   "./",
   "./index.html",

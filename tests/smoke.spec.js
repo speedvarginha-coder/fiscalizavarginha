@@ -135,6 +135,25 @@ test.describe("Placar do dinheiro", () => {
   });
 });
 
+test.describe("Aba Diárias (regressão)", () => {
+  test("Prefeitura — aba Diárias mostra bloco no DOM", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    await page.locator('.pref-tab[data-pref-tab="diarias"]').first().click();
+    await page.waitForTimeout(500);
+    // Bloco principal de diárias precisa estar no DOM (ID sem acento)
+    const block = page.locator("#diariasPrefeituraBlock");
+    await expect(block).toBeAttached();
+  });
+
+  test("Câmara — aba Diárias mostra bloco no DOM", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    const block = page.locator("#diariasCamaraBlock");
+    await expect(block).toBeAttached();
+  });
+});
+
 test.describe("Watchlist", () => {
   test("estado vazio aparece quando localStorage não tem nada", async ({ page }) => {
     await page.goto(fileUrl("marcadores.html"), { waitUntil: "domcontentloaded" });

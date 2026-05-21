@@ -7,6 +7,37 @@
   "use strict";
   try {
 
+  // ============================================================
+  // SHIMS DEFENSIVOS — toleram módulo ausente (cache antigo, fetch falho, etc.)
+  // App continua funcionando mesmo se algum module.js não carregou,
+  // só sem o recurso específico. Evita TypeError fatal por window.ZELA.X.
+  // ============================================================
+  window.ZELA = window.ZELA || {};
+  if (!window.ZELA.icon) window.ZELA.icon = function () { return ""; };
+  if (!window.ZELA.simplificarTermo) window.ZELA.simplificarTermo = function (t) { return t; };
+  if (!window.ZELA.termoCidadao) window.ZELA.termoCidadao = function (t) { return String(t || ""); };
+  if (!window.ZELA.classificarItem) window.ZELA.classificarItem = function () { return null; };
+  if (!window.ZELA.categorias) window.ZELA.categorias = [];
+  if (!window.ZELA.watchlist) {
+    window.ZELA.watchlist = {
+      obter: function () { return { contratos: [], emendas: [] }; },
+      has:    function () { return false; },
+      toggle: function () { return false; },
+      botao:  function () { return ""; },
+    };
+  }
+  // utils.js é crítico — sem ele, app.js não funciona (destructuring abaixo)
+  if (!window.ZELA.utils) {
+    console.error("[app.js] CRÍTICO: modules/utils.js não carregou. Mostrando erro ao usuário.");
+    document.body.innerHTML =
+      '<div style="padding:60px;text-align:center;font-family:sans-serif;">' +
+      '<h2>Módulos não carregados</h2>' +
+      '<p>O painel precisa ser servido via HTTP (não direto do file://).</p>' +
+      '<p><strong>Solução:</strong> rode <code style="background:#eee;padding:2px 6px;border-radius:3px">python -m http.server 8000</code> ' +
+      'na pasta do painel e abra <code>http://localhost:8000</code></p></div>';
+    return;
+  }
+
   if (!window.ZELA_DATA) {
     document.body.innerHTML =
       '<div style="padding:60px;text-align:center;font-family:sans-serif;">' +
@@ -19,9 +50,6 @@
   const pf   = D.prefeitura || {};
   const PAGE = document.body.dataset.page || "hub";
   const $    = (id) => document.getElementById(id);
-
-  // Inicializa objeto global para funções chamadas pelo HTML
-  window.ZELA = window.ZELA || {};
 
   // ============= UTILS (extraídos para modules/utils.js) =============
   // Aliases locais para retrocompatibilidade. Definições reais em window.ZELA.utils.
@@ -139,7 +167,7 @@
     $("homeOpsStats").innerHTML = [
       { href: "prefeitura.html", value: fmtMi(pf.total_externo_atual || totalContratos), label: `pagos em ${pf.ano_atual || "ano atual"}`, title: "Prefeitura" },
       { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos" },
-      { href: "prefeitura.html?tab=diárias", value: fmtNum(diariasPref.length), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias" },
+      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasPref.length), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias" },
       { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)} vereadores monitorados`, title: "Camara" },
       { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} para conferir`, title: "Emendas" },
       { href: "prefeitura.html?tab=licitacoes", value: fmtNum(licitacoes.length), label: "acompanhar antes do gasto", title: "Licitacoes" },
@@ -152,7 +180,7 @@
 
     $("homeOpsPriorities").innerHTML = [
       { href: "prefeitura.html?tab=contratos", n: "1", title: "Contratos de alto valor", text: `${fmtNum(contratosMilhao)} contratos acima de R$ 1 milhao para ler primeiro.` },
-      { href: "prefeitura.html?tab=diárias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasPref.length)} registros com pessoa, finalidade e valor.` },
+      { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasPref.length)} registros com pessoa, finalidade e valor.` },
       { href: "camara.html", n: "3", title: "Emendas parlamentares", text: `${fmtNum(resumoCam.emendas_qtd || 0)} emendas; confira CNPJ, objeto e pagamento.` },
     ].map(item => `
       <a href="${item.href}" class="priority-row">
@@ -4112,7 +4140,7 @@ ${baseLegalTxt}
         return;
       }
       if (hasAny(qN, ["diaria", "viagem", "hospedagem"])) {
-        window.location.href = "prefeitura.html?tab=diárias";
+        window.location.href = "prefeitura.html?tab=diarias";
         return;
       }
       if (hasAny(qN, ["emenda", "vereador", "destinou", "promessa"])) {
@@ -4403,7 +4431,7 @@ ${baseLegalTxt}
   }
 
   function initDiarias(prefix, dados) {
-    const block = $(`diárias${prefix}Block`);
+    const block = $(`diarias${prefix}Block`);
     if (!block) return;
 
     const lista = Array.isArray(dados) ? dados : [];

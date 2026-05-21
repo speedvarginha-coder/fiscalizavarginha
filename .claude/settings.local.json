@@ -104,7 +104,9 @@
       "Bash(py -X utf8 _extract_utils.py)",
       "Bash(py -X utf8 _extract_utils2.py)",
       "Bash(py -X utf8 _extract_fase2.py)",
-      "Bash(git commit -m 'feat: substitui emojis por ícones SVG profissionais \\(Heroicons\\) *)"
+      "Bash(git commit -m 'feat: substitui emojis por ícones SVG profissionais \\(Heroicons\\) *)",
+      "Bash(grep -n \"diárias\\\\${prefix}\\\\|diáriasPrefeitura\\\\|diáriasCamara\" app.js)",
+      "Bash(git commit -m 'fix: aba Diárias vazia + shims defensivos contra módulos faltantes *)"
     ]
   }
 }
