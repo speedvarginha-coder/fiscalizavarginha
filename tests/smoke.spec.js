@@ -137,10 +137,11 @@ test.describe("Placar do dinheiro", () => {
 });
 
 test.describe("Atualizações diárias (feed)", () => {
-  test("Cards aparecem com dados mock", async ({ page }) => {
+  test("Feed renderiza contratos reais coletados do Betha", async ({ page }) => {
     await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const cards = page.locator("#atualizacoesFeed .tline-item");
+    // Espera pelo menos 1 ato (contratos reais de Varginha vindos dos dados Betha)
     await expect(cards.first()).toBeAttached();
   });
 
