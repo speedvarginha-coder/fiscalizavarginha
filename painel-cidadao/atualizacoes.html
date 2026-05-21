@@ -66,7 +66,7 @@
     <!-- Stats topo -->
     <div id="atualizacoesStats" class="placar" aria-label="Resumo das atualizações"></div>
 
-    <!-- Filtros -->
+    <!-- Filtros de tipo, órgão e relevância -->
     <div id="atualizacoesFiltros" class="cat-chips" aria-label="Filtrar atualizações">
       <span class="cat-chips__label">Filtrar por:</span>
       <button type="button" class="cat-chip" data-filtro="orgao" data-valor="Prefeitura">Prefeitura</button>
@@ -76,9 +76,15 @@
       <button type="button" class="cat-chip" data-filtro="tipo" data-valor="dispensa">Dispensas</button>
       <button type="button" class="cat-chip" data-filtro="tipo" data-valor="compra_direta">Compras diretas</button>
       <button type="button" class="cat-chip" data-filtro="tipo" data-valor="licitacao">Licitações</button>
-      <button type="button" class="cat-chip" data-filtro="relevancia" data-valor="alta">Só relevância ALTA</button>
+      <button type="button" class="cat-chip" data-filtro="relevancia" data-valor="alta">Só relevância alta</button>
       <button type="button" class="cat-chip cat-chip--clear" data-filtro="" data-valor="">Limpar tudo</button>
     </div>
+
+    <!-- Filtros por ano (dinâmicos) -->
+    <div id="atualizacoesFiltrosAno" class="cat-chips" style="margin-top:8px;" aria-label="Filtrar por ano"></div>
+
+    <!-- Filtros por mês (dinâmicos, aparecem quando ano selecionado) -->
+    <div id="atualizacoesFiltrosMes" class="cat-chips" style="margin-top:8px; display:none;" aria-label="Filtrar por mês"></div>
 
     <!-- Busca -->
     <div class="filterbar" style="margin-top:14px;">
@@ -88,11 +94,11 @@
 
     <!-- Aviso de fonte em construção -->
     <div class="report-note" style="margin:18px 0; background:#fff8e1; border-left:5px solid var(--gold);">
-      <strong>⚠ Fonte em construção</strong>
+      <strong>Fonte em construção</strong>
       <p>
-        A coleta automática do Diário Oficial está sendo desenvolvida. Os atos
-        listados aqui são exemplos baseados em publicações reais. Quando a coleta
-        estiver ativa, este feed será atualizado diariamente.
+        Os contratos da Prefeitura e da Câmara são coletados do Portal Betha e
+        listados aqui automaticamente. A coleta do Diário Oficial Municipal
+        (para aditivos, dispensas e atos formais publicados) está em desenvolvimento.
       </p>
     </div>
 

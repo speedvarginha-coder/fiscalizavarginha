@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v12 (feed de atualizações diárias) */
-const CACHE = "zela-v12";
+/* Zela Varginha — Service Worker v13 (contratos reais no feed + filtros ano/mês) */
+const CACHE = "zela-v13";
 const STATIC = [
   "./",
   "./index.html",

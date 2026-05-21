@@ -3,14 +3,14 @@
  * Feed cronológico de atos administrativos (contratos, aditivos, dispensas,
  * compras diretas, licitações) da Prefeitura e Câmara.
  *
- * Lê window.ZELA_DATA.atualizacoes (chunk JSON gerado pelo coletor do Diário).
- * Renderiza: dashboard de stats, filtros, cards agrupados por data.
+ * Fontes:
+ *   1. data/chunks/atualizacoes.json — atos publicados no Diário Oficial
+ *      (em construção; hoje contém alguns exemplos de aditivos/dispensas)
+ *   2. data/chunks/prefeitura.json + camara_anos.json — contratos coletados
+ *      do Portal Betha, convertidos automaticamente em atos do feed
  *
  * Disponível em window.ZELA.atualizacoes.
- * Dependências:
- *   - window.ZELA.utils (esc, cleanText, fmtBRL, fmtNum, norm)
- *   - window.ZELA.icon
- *   - window.ZELA.watchlist (para estrela de acompanhar)
+ * Dependências: utils, icons, watchlist, categorias.
  */
 (function () {
   "use strict";
@@ -39,16 +39,109 @@
     convenio:       { icone: "predio",     label: "Convênio",       cor: "teal"   },
   };
 
+  const MESES_BR = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+
   // Estado dos filtros
   let filtros = {
     orgao: "",
     tipo: "",
     relevancia: "",
+    ano: "",
+    mes: "",
     busca: "",
   };
 
   // ============================================================
-  // Stats topo
+  // Conversão de contratos reais → atos do feed
+  // ============================================================
+  function contratoParaAto(c, orgao) {
+    const valor = Number(c.valor) || 0;
+    const obj = (c.objeto || "").trim();
+    const data = c.data_assinatura || "";
+    if (!data) return null;
+
+    // Relevância automática por valor
+    let relevancia;
+    if (valor >= 500000) relevancia = "alta";
+    else if (valor >= 100000) relevancia = "media";
+    else relevancia = "baixa";
+
+    // Categoria automática
+    const cat = (window.ZELA.classificarItem || (() => null))(c);
+    const categorias = (window.ZELA.categorias || []);
+    const catObj = categorias.find(x => x.id === cat);
+    const categoria = catObj ? catObj.label : "Administração";
+
+    // Tipo: dispense se modalidade contiver "dispensa", senão "contrato"
+    const mod = (c.modalidade || "").toLowerCase();
+    let tipo = "contrato";
+    if (/dispens/i.test(mod)) tipo = "dispensa";
+    else if (/compra.?direta/i.test(mod)) tipo = "compra_direta";
+    else if (/preg[aã]o|concorr[eê]ncia|leil[aã]o/i.test(mod)) tipo = "licitacao";
+
+    // Pontos de atenção automáticos
+    const pontos = [];
+    if (obj.length < 25) pontos.push("Objeto muito curto (" + obj.length + " caracteres): pedir Termo de Referência por LAI.");
+    if (valor >= 1000000 && (!c.cnpj || c.cnpj.includes("*"))) pontos.push("Contrato de alto valor com CNPJ mascarado por LGPD — pedir cópia integral.");
+    if (tipo === "dispensa" && valor > 17600) pontos.push("Dispensa de licitação acima de R$ 17.600 (limite Lei 14.133/2021) pede justificativa formal.");
+    if (!c.data_fim) pontos.push("Sem data de fim/vigência registrada.");
+
+    return {
+      id: `${orgao.toUpperCase()}-${c.ano || ""}-${c.numero || "?"}`,
+      data,
+      orgao,
+      tipo,
+      categoria,
+      relevancia,
+      titulo: `Contrato ${c.numero || "s/n"}/${c.ano || ""} — ${cleanText(c.contratado || "—")}`,
+      resumo: cleanText(obj || "Objeto não informado"),
+      envolvidos: c.contratado ? [{
+        nome: cleanText(c.contratado),
+        cnpj: c.cnpj || "",
+        papel: "contratada",
+      }] : [],
+      valores: [
+        { rotulo: "Valor total", valor },
+        ...(c.modalidade ? [{ rotulo: "Modalidade", valor: 0, _raw: cleanText(c.modalidade) }] : []),
+      ].filter(v => !v._raw || v._raw.length > 0),
+      pontos_atencao: pontos,
+      publicacao_url: orgao === "Prefeitura"
+        ? "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos"
+        : "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812",
+      _fonte: "betha",
+    };
+  }
+
+  // ============================================================
+  // Carrega todos os atos: mocks do diário + contratos reais
+  // ============================================================
+  function carregarAtos() {
+    const D = window.ZELA_DATA || {};
+    const mockData = D.atualizacoes || {};
+    const mocks = (mockData.atos || []).map(a => ({ ...a, _fonte: "diario" }));
+
+    const pf = D.prefeitura || {};
+    const contratosPref = (pf.contratos || [])
+      .map(c => contratoParaAto(c, "Prefeitura"))
+      .filter(Boolean);
+
+    // Câmara: tenta extrair contratos do chunk camara_anos
+    const camAnos = D.camara_anos || {};
+    let contratosCam = [];
+    Object.keys(camAnos).forEach(ano => {
+      const dadosAno = camAnos[ano];
+      if (dadosAno && Array.isArray(dadosAno.contratos)) {
+        contratosCam = contratosCam.concat(
+          dadosAno.contratos.map(c => contratoParaAto(c, "Câmara")).filter(Boolean)
+        );
+      }
+    });
+
+    return [...mocks, ...contratosPref, ...contratosCam];
+  }
+
+  // ============================================================
+  // Dashboard topo
   // ============================================================
   function renderStats(atos) {
     const el = $("atualizacoesStats");
@@ -96,9 +189,55 @@
   }
 
   // ============================================================
+  // Filtros dinâmicos de ano e mês
+  // ============================================================
+  function renderFiltrosTempo(atos) {
+    const elAno = $("atualizacoesFiltrosAno");
+    const elMes = $("atualizacoesFiltrosMes");
+    if (!elAno) return;
+
+    // Anos disponíveis
+    const anos = [...new Set(atos.map(a => (a.data || "").slice(0, 4)).filter(Boolean))]
+      .sort((a, b) => Number(b) - Number(a));
+
+    if (anos.length) {
+      elAno.innerHTML =
+        `<span class="cat-chips__label">${icon("calendario", { size: 14 })} Ano:</span>` +
+        anos.map(ano =>
+          `<button type="button" class="cat-chip${filtros.ano === ano ? " is-active" : ""}" data-filtro="ano" data-valor="${ano}">${ano}</button>`
+        ).join("") +
+        (filtros.ano ? `<button type="button" class="cat-chip cat-chip--clear" data-filtro="ano" data-valor="">Limpar ano</button>` : "");
+    }
+
+    // Mês — só se ano selecionado
+    if (!elMes) return;
+    if (!filtros.ano) {
+      elMes.innerHTML = "";
+      elMes.style.display = "none";
+      return;
+    }
+
+    const mesesNoAno = [...new Set(
+      atos
+        .filter(a => (a.data || "").startsWith(filtros.ano))
+        .map(a => (a.data || "").slice(5, 7))
+        .filter(Boolean)
+    )].sort();
+
+    elMes.style.display = "flex";
+    elMes.innerHTML =
+      `<span class="cat-chips__label">Mês:</span>` +
+      mesesNoAno.map(mm => {
+        const idx = parseInt(mm, 10) - 1;
+        const label = MESES_BR[idx] || mm;
+        return `<button type="button" class="cat-chip${filtros.mes === mm ? " is-active" : ""}" data-filtro="mes" data-valor="${mm}">${label}</button>`;
+      }).join("") +
+      (filtros.mes ? `<button type="button" class="cat-chip cat-chip--clear" data-filtro="mes" data-valor="">Limpar mês</button>` : "");
+  }
+
+  // ============================================================
   // Cruzamento com dados existentes
   // ============================================================
-  // Procura quantas vezes a empresa (raiz do CNPJ) aparece em contratos/emendas
   function cruzar(envolvido) {
     if (!envolvido || !envolvido.cnpj) return null;
     const raiz = envolvido.cnpj.replace(/[^\d]/g, "").slice(0, 8);
@@ -116,7 +255,7 @@
   }
 
   // ============================================================
-  // Pergunta LAI por tipo de ato
+  // Pergunta LAI por tipo
   // ============================================================
   function perguntaLAI(ato) {
     const e0 = (ato.envolvidos || [])[0];
@@ -137,11 +276,11 @@
   }
 
   // ============================================================
-  // Card de ato
+  // Card de ato — sem emojis, usando SVGs profissionais
   // ============================================================
   function renderCard(ato) {
     const t = TIPOS[ato.tipo] || TIPOS.contrato;
-    const dataBr = ato.data.split("-").reverse().join("/");
+    const dataBr = (ato.data || "").split("-").reverse().join("/");
 
     const envolvidosHtml = (ato.envolvidos || []).map(e => {
       const cruz = cruzar(e);
@@ -157,17 +296,17 @@
     }).join("");
 
     const valoresHtml = (ato.valores || []).map(v => {
-      const valorFmt = typeof v.valor === "number" && v.rotulo && /quantidad|qtd/i.test(v.rotulo)
-        ? fmtNum(v.valor)
-        : fmtBRL(v.valor || 0);
-      return `<li><span class="muted small">${esc(v.rotulo || "")}:</span> <strong>${valorFmt}</strong></li>`;
+      let display;
+      if (v._raw) display = esc(v._raw);
+      else if (typeof v.valor === "number" && v.rotulo && /quantidad|qtd/i.test(v.rotulo)) display = fmtNum(v.valor);
+      else display = fmtBRL(v.valor || 0);
+      return `<li><span class="muted small">${esc(v.rotulo || "")}:</span> <strong>${display}</strong></li>`;
     }).join("");
 
     const atencaoHtml = (ato.pontos_atencao || []).map(p =>
       `<li>${esc(cleanText(p))}</li>`
     ).join("");
 
-    // Botão watchlist
     const idAto = ato.id || `${ato.data}-${ato.titulo}`;
     const btnWatch = (window.ZELA.watchlist || {}).botao
       ? window.ZELA.watchlist.botao("atualizacoes", idAto)
@@ -175,11 +314,9 @@
 
     // Compartilhar WhatsApp
     const msgWa = encodeURIComponent(
-      `🚨 *${ato.titulo}*\n📅 ${dataBr} — ${ato.orgao}\n${ato.resumo}\n\nVer mais: ${window.location.href}#${idAto}`
+      `${ato.titulo}\nData: ${dataBr} — ${ato.orgao}\n${ato.resumo}\n\nVer mais: ${window.location.href}#${idAto}`
     );
     const linkWa = `https://api.whatsapp.com/send?text=${msgWa}`;
-
-    const pergunta = perguntaLAI(ato);
 
     return `<article class="tline-item tline-item--${t.cor}" id="${esc(idAto)}">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
@@ -196,33 +333,33 @@
 
       ${envolvidosHtml ? `
         <details style="margin:10px 0;">
-          <summary style="cursor:pointer; font-weight:600; font-size:.88rem;">🏢 Envolvidos</summary>
+          <summary style="cursor:pointer; font-weight:600; font-size:.88rem; display:flex; align-items:center; gap:6px;">${icon("pessoas", { size: 14 })} Envolvidos</summary>
           <ul style="margin:8px 0 0 18px; font-size:.88rem;">${envolvidosHtml}</ul>
         </details>
       ` : ""}
 
       ${valoresHtml ? `
         <details style="margin:10px 0;" open>
-          <summary style="cursor:pointer; font-weight:600; font-size:.88rem;">💰 Valores identificados</summary>
+          <summary style="cursor:pointer; font-weight:600; font-size:.88rem; display:flex; align-items:center; gap:6px;">${icon("cifrao", { size: 14 })} Valores identificados</summary>
           <ul style="margin:8px 0 0 18px; font-size:.88rem;">${valoresHtml}</ul>
         </details>
       ` : ""}
 
       ${atencaoHtml ? `
         <details style="margin:10px 0;" open>
-          <summary style="cursor:pointer; font-weight:600; font-size:.88rem; color:var(--red);">🚨 Pontos de atenção</summary>
+          <summary style="cursor:pointer; font-weight:600; font-size:.88rem; color:var(--red); display:flex; align-items:center; gap:6px;">${icon("alerta", { size: 14 })} Pontos de atenção</summary>
           <ul style="margin:8px 0 0 18px; font-size:.88rem; color:var(--ink);">${atencaoHtml}</ul>
         </details>
       ` : ""}
 
       <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
-        ${ato.publicacao_url ? `<a class="btn-link" href="${esc(ato.publicacao_url)}" target="_blank" rel="noopener" style="padding:6px 12px; background:#e8f4fd; color:#1565c0; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; border:1px solid #90caf9;">${icon("lupa", { size: 14 })} Ver publicação oficial</a>` : ""}
-        ${ato.anexo_pdf ? `<a class="btn-link" href="${esc(ato.anexo_pdf)}" target="_blank" rel="noopener" style="padding:6px 12px; background:#fff3e0; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; border:1px solid #ffd54f;">📎 PDF do ato</a>` : ""}
-        <a class="btn-link" href="${linkWa}" target="_blank" rel="noopener" style="padding:6px 12px; background:#0b5f3a; color:white; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none;">📱 Compartilhar</a>
-        <button type="button" class="btn-link" onclick="window.ZELA.atualizacoes.copiarLAI('${idAto.replace(/'/g, "\\'")}')" style="padding:6px 12px; background:#fff8e1; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; border:1px solid #ffd54f; cursor:pointer;">📋 Copiar pergunta LAI</button>
+        ${ato.publicacao_url ? `<a class="btn-link" href="${esc(ato.publicacao_url)}" target="_blank" rel="noopener" style="padding:6px 12px; background:#e8f4fd; color:#1565c0; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; border:1px solid #90caf9; display:inline-flex; align-items:center; gap:6px;">${icon("lupa", { size: 14 })} Ver publicação oficial</a>` : ""}
+        ${ato.anexo_pdf ? `<a class="btn-link" href="${esc(ato.anexo_pdf)}" target="_blank" rel="noopener" style="padding:6px 12px; background:#fff3e0; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; border:1px solid #ffd54f; display:inline-flex; align-items:center; gap:6px;">${icon("anexo", { size: 14 })} PDF do ato</a>` : ""}
+        <a class="btn-link" href="${linkWa}" target="_blank" rel="noopener" style="padding:6px 12px; background:#0b5f3a; color:white; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">${icon("compartilhar", { size: 14 })} Compartilhar</a>
+        <button type="button" class="btn-link" onclick="window.ZELA.atualizacoes.copiarLAI('${idAto.replace(/'/g, "\\'")}')" style="padding:6px 12px; background:#fff8e1; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; border:1px solid #ffd54f; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">${icon("copiar", { size: 14 })} Copiar pergunta LAI</button>
       </div>
 
-      <textarea class="dossier-lai-pergunta" data-id="${esc(idAto)}" readonly hidden>${esc(pergunta)}</textarea>
+      <textarea class="dossier-lai-pergunta" data-id="${esc(idAto)}" readonly hidden>${esc(perguntaLAI(ato))}</textarea>
     </article>`;
   }
 
@@ -232,7 +369,7 @@
     return "gold";
   }
   function relevanciaLabel(r) {
-    if (r === "alta") return "⚠ Alta relevância";
+    if (r === "alta") return "Alta relevância";
     if (r === "media") return "Relevância média";
     return "Relevância baixa";
   }
@@ -241,19 +378,20 @@
   // Render principal
   // ============================================================
   function render() {
-    const dados = (window.ZELA_DATA || {}).atualizacoes || {};
-    const atos = dados.atos || [];
+    const todos = carregarAtos();
 
     // Aplica filtros
     const q = norm(filtros.busca);
-    const view = atos.filter(a => {
+    const view = todos.filter(a => {
       if (filtros.orgao && a.orgao !== filtros.orgao) return false;
       if (filtros.tipo && a.tipo !== filtros.tipo) return false;
       if (filtros.relevancia && a.relevancia !== filtros.relevancia) return false;
+      if (filtros.ano && !(a.data || "").startsWith(filtros.ano)) return false;
+      if (filtros.mes && (a.data || "").slice(5, 7) !== filtros.mes) return false;
       if (q) {
         const hay = norm(
           [a.titulo, a.resumo, a.categoria, a.tipo, a.orgao,
-           ...(a.envolvidos || []).map(e => e.nome + " " + e.cnpj),
+           ...(a.envolvidos || []).map(e => (e.nome || "") + " " + (e.cnpj || "")),
            ...(a.pontos_atencao || [])
           ].filter(Boolean).join(" ")
         );
@@ -262,12 +400,15 @@
       return true;
     });
 
-    // Stats
-    renderStats(atos);
+    // Stats sempre baseado em TODOS (visão global)
+    renderStats(todos);
+
+    // Filtros de tempo (anos/meses) baseados em todos
+    renderFiltrosTempo(todos);
 
     // Contador
     const contador = $("atualizacoesContador");
-    if (contador) contador.textContent = `${view.length} ato${view.length !== 1 ? "s" : ""}`;
+    if (contador) contador.textContent = `${fmtNum(view.length)} ato${view.length !== 1 ? "s" : ""}`;
 
     // Empty state
     const feedEl = $("atualizacoesFeed");
@@ -279,13 +420,12 @@
     }
     if (emptyEl) emptyEl.hidden = true;
 
-    // Ordena por data decrescente
-    const sorted = [...view].sort((a, b) => (b.data || "").localeCompare(a.data || ""));
+    // Ordena por data decrescente, limita a 200 para não explodir DOM
+    const sorted = [...view].sort((a, b) => (b.data || "").localeCompare(a.data || "")).slice(0, 200);
 
-    // Renderiza cards
     if (feedEl) feedEl.innerHTML = sorted.map(renderCard).join("");
 
-    // Atualiza visual dos chips ativos
+    // Atualiza visual dos chips de tipo/orgão/relevância
     document.querySelectorAll("#atualizacoesFiltros .cat-chip").forEach(chip => {
       const filtro = chip.dataset.filtro;
       const valor = chip.dataset.valor;
@@ -304,24 +444,27 @@
     const ta = document.querySelector(`textarea.dossier-lai-pergunta[data-id="${id}"]`);
     if (!ta) return;
     navigator.clipboard.writeText(ta.value).then(() => {
-      const btn = event.currentTarget;
-      const old = btn.textContent;
-      btn.textContent = "✓ Copiado";
-      setTimeout(() => { btn.textContent = old; }, 1600);
+      if (typeof event !== "undefined" && event.currentTarget) {
+        const btn = event.currentTarget;
+        const old = btn.textContent;
+        btn.textContent = "Copiado";
+        setTimeout(() => { btn.textContent = old; }, 1600);
+      }
     }).catch(() => {
       ta.hidden = false;
       ta.select();
-      document.execCommand("copy");
+      try { document.execCommand("copy"); } catch (e) {}
       ta.hidden = true;
     });
   }
 
   // ============================================================
-  // Init — chamado quando a página atualizacoes.html carrega
+  // Init
   // ============================================================
   function init() {
     if (document.body.dataset.page !== "atualizacoes") return;
 
+    // Delegação de clique nos chips (orgão, tipo, relevância)
     const filtrosEl = $("atualizacoesFiltros");
     if (filtrosEl) {
       filtrosEl.addEventListener("click", e => {
@@ -329,9 +472,8 @@
         if (!chip) return;
         const filtro = chip.dataset.filtro;
         const valor = chip.dataset.valor;
-        if (!filtro || !valor) {
-          // Limpar tudo
-          filtros = { orgao: "", tipo: "", relevancia: "", busca: filtros.busca };
+        if (!filtro && !valor) {
+          filtros = { orgao: "", tipo: "", relevancia: "", ano: filtros.ano, mes: filtros.mes, busca: filtros.busca };
         } else {
           filtros[filtro] = filtros[filtro] === valor ? "" : valor;
         }
@@ -339,6 +481,37 @@
       });
     }
 
+    // Delegação de clique nos chips de ano
+    const filtrosAnoEl = $("atualizacoesFiltrosAno");
+    if (filtrosAnoEl) {
+      filtrosAnoEl.addEventListener("click", e => {
+        const chip = e.target.closest(".cat-chip");
+        if (!chip) return;
+        const novoAno = chip.dataset.valor || "";
+        if (filtros.ano === novoAno && novoAno !== "") {
+          filtros.ano = "";
+          filtros.mes = "";
+        } else {
+          filtros.ano = novoAno;
+          filtros.mes = ""; // reseta mês ao trocar ano
+        }
+        render();
+      });
+    }
+
+    // Delegação de clique nos chips de mês
+    const filtrosMesEl = $("atualizacoesFiltrosMes");
+    if (filtrosMesEl) {
+      filtrosMesEl.addEventListener("click", e => {
+        const chip = e.target.closest(".cat-chip");
+        if (!chip) return;
+        const novoMes = chip.dataset.valor || "";
+        filtros.mes = filtros.mes === novoMes ? "" : novoMes;
+        render();
+      });
+    }
+
+    // Busca textual
     const buscaEl = $("filtroAtualizacoes");
     if (buscaEl) {
       buscaEl.addEventListener("input", () => {
