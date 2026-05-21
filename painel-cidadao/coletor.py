@@ -62,6 +62,20 @@ def _save(name: str, payload) -> None:
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  ✓ {name}  ({out.stat().st_size // 1024} KB)")
 
+    # Also save to chunks directory if it's a chunk file
+    chunk_names = {
+        "resumo.json", "atualizado_em.json", "prefeitura.json", "emendas.json",
+        "vereadores.json", "pncp.json", "diarias.json", "cnpjs.json",
+        "camara_anos.json", "camara_transparencia.json", "fontes_emendas_2026.json",
+        "federal.json", "pessoal.json", "diario.json"
+    }
+    if name in chunk_names:
+        chunks_dir = DATA / "chunks"
+        chunks_dir.mkdir(exist_ok=True)
+        chunk_out = chunks_dir / name
+        chunk_out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
 
 def _load_existing(name: str, default):
     path = DATA / name
@@ -1052,6 +1066,22 @@ def main() -> int:
         "federal": federal,
         "atualizado_em": atualizado,
     })
+
+    # Update/Write manifest.json
+    chunks_dir = DATA / "chunks"
+    chunks_dir.mkdir(exist_ok=True)
+    manifest = {
+        "gerado_em": dt.datetime.now().isoformat(timespec="seconds"),
+        "chunks": {}
+    }
+    for chunk_file in chunks_dir.glob("*.json"):
+        manifest["chunks"][chunk_file.stem] = {
+            "arquivo": f"data/chunks/{chunk_file.name}",
+            "bytes": chunk_file.stat().st_size
+        }
+    manifest_out = DATA / "manifest.json"
+    manifest_out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  ✓ manifest.json  ({manifest_out.stat().st_size} bytes)")
 
     print("\n✓ Pronto. Abra index.html no navegador.\n")
     return 0

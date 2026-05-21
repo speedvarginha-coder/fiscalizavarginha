@@ -1,61 +1,61 @@
 {
-  "gerado_em": "2026-05-19T10:20:01",
+  "gerado_em": "2026-05-21T14:02:32",
   "chunks": {
-    "resumo": {
-      "arquivo": "data/chunks/resumo.json",
-      "bytes": 1321
-    },
-    "vereadores": {
-      "arquivo": "data/chunks/vereadores.json",
-      "bytes": 3209
-    },
-    "emendas": {
-      "arquivo": "data/chunks/emendas.json",
-      "bytes": 166075
+    "atualizado_em": {
+      "arquivo": "data/chunks/atualizado_em.json",
+      "bytes": 76
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
-      "bytes": 1168364
-    },
-    "diario": {
-      "arquivo": "data/chunks/diario.json",
-      "bytes": 9081
-    },
-    "prefeitura": {
-      "arquivo": "data/chunks/prefeitura.json",
-      "bytes": 659417
-    },
-    "pncp": {
-      "arquivo": "data/chunks/pncp.json",
-      "bytes": 32427
+      "bytes": 1453627
     },
     "camara_transparencia": {
       "arquivo": "data/chunks/camara_transparencia.json",
-      "bytes": 8112
+      "bytes": 10387
     },
     "cnpjs": {
       "arquivo": "data/chunks/cnpjs.json",
-      "bytes": 11865
-    },
-    "pessoal": {
-      "arquivo": "data/chunks/pessoal.json",
-      "bytes": 1815073
+      "bytes": 13481
     },
     "diarias": {
       "arquivo": "data/chunks/diarias.json",
-      "bytes": 2648867
+      "bytes": 3523574
     },
-    "fontes_emendas_2026": {
-      "arquivo": "data/chunks/fontes_emendas_2026.json",
-      "bytes": 4671
+    "diario": {
+      "arquivo": "data/chunks/diario.json",
+      "bytes": 12517
+    },
+    "emendas": {
+      "arquivo": "data/chunks/emendas.json",
+      "bytes": 191424
     },
     "federal": {
       "arquivo": "data/chunks/federal.json",
-      "bytes": 1714
+      "bytes": 1969
     },
-    "atualizado_em": {
-      "arquivo": "data/chunks/atualizado_em.json",
-      "bytes": 64
+    "fontes_emendas_2026": {
+      "arquivo": "data/chunks/fontes_emendas_2026.json",
+      "bytes": 5447
+    },
+    "pessoal": {
+      "arquivo": "data/chunks/pessoal.json",
+      "bytes": 2606370
+    },
+    "pncp": {
+      "arquivo": "data/chunks/pncp.json",
+      "bytes": 38972
+    },
+    "prefeitura": {
+      "arquivo": "data/chunks/prefeitura.json",
+      "bytes": 838129
+    },
+    "resumo": {
+      "arquivo": "data/chunks/resumo.json",
+      "bytes": 2301
+    },
+    "vereadores": {
+      "arquivo": "data/chunks/vereadores.json",
+      "bytes": 4775
     }
   }
 }

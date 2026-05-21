@@ -1,1 +1,39 @@
-{"fonte":"Portal da Transparência Federal / Dados.gov.br","atualizado_em":"2026-05-19T10:20:01.603291","resumo":{"status":"Monitoramento Ativo","municipio":"Varginha-MG","codigo_ibge":"3170701","cnpj_alvo":"18.240.380/0001-38","fontes_mapeadas":4,"conclusao":"O rastreio federal está configurado. O cidadão pode auditar os links oficiais que já possuem os filtros de Varginha aplicados."},"links_auditoria":[{"titulo":"Transferências para Varginha (Geral 2026)","url":"https://portaldatransparencia.gov.br/localidades/3170701-varginha?ano=2026","desc":"Resumo de todos os recursos federais que entraram no município em 2026."},{"titulo":"Convênios Federais em Varginha","url":"https://portaldatransparencia.gov.br/convenios/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha","desc":"Acordos específicos para obras e projetos (asfalto, prédios, equipamentos)."},{"titulo":"Emendas Parlamentares Federais para Varginha","url":"https://portaldatransparencia.gov.br/emendas/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha","desc":"Verbas enviadas por Deputados Federais e Senadores para a cidade."},{"titulo":"Programas Sociais (Bolsa Família, etc)","url":"https://portaldatransparencia.gov.br/beneficios/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha","desc":"Pagamentos diretos aos cidadãos de Varginha via programas federais."}],"pistas_investigacao":["Verificar se o valor 'Conveniado' de grandes obras bate com o que a Prefeitura anuncia.","Acompanhar se as emendas federais de saúde estão sendo aplicadas no Hospital Regional ou em custeio.","Fiscalizar convênios com 'vencimento próximo' para evitar perda de recurso federal."]}
+{
+  "fonte": "Portal da Transparência Federal / Dados.gov.br",
+  "atualizado_em": "2026-05-19T10:20:01.603291",
+  "resumo": {
+    "status": "Monitoramento Ativo",
+    "municipio": "Varginha-MG",
+    "codigo_ibge": "3170701",
+    "cnpj_alvo": "18.240.380/0001-38",
+    "fontes_mapeadas": 4,
+    "conclusao": "O rastreio federal está configurado. O cidadão pode auditar os links oficiais que já possuem os filtros de Varginha aplicados."
+  },
+  "links_auditoria": [
+    {
+      "titulo": "Transferências para Varginha (Geral 2026)",
+      "url": "https://portaldatransparencia.gov.br/localidades/3170701-varginha?ano=2026",
+      "desc": "Resumo de todos os recursos federais que entraram no município em 2026."
+    },
+    {
+      "titulo": "Convênios Federais em Varginha",
+      "url": "https://portaldatransparencia.gov.br/convenios/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha",
+      "desc": "Acordos específicos para obras e projetos (asfalto, prédios, equipamentos)."
+    },
+    {
+      "titulo": "Emendas Parlamentares Federais para Varginha",
+      "url": "https://portaldatransparencia.gov.br/emendas/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha",
+      "desc": "Verbas enviadas por Deputados Federais e Senadores para a cidade."
+    },
+    {
+      "titulo": "Programas Sociais (Bolsa Família, etc)",
+      "url": "https://portaldatransparencia.gov.br/beneficios/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha",
+      "desc": "Pagamentos diretos aos cidadãos de Varginha via programas federais."
+    }
+  ],
+  "pistas_investigacao": [
+    "Verificar se o valor 'Conveniado' de grandes obras bate com o que a Prefeitura anuncia.",
+    "Acompanhar se as emendas federais de saúde estão sendo aplicadas no Hospital Regional ou em custeio.",
+    "Fiscalizar convênios com 'vencimento próximo' para evitar perda de recurso federal."
+  ]
+}

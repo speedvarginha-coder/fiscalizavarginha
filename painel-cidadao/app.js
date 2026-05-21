@@ -26,6 +26,15 @@
       botao:  function () { return ""; },
     };
   }
+  if (!window.ZELA.dossie) {
+    window.ZELA.dossie = {
+      criarModal:       function () { return null; },
+      abrirComHtml:     function () { alert("Módulo de dossiê não carregou."); },
+      templateEmenda:   function () { return ""; },
+      templateDiaria:   function () { return ""; },
+      gerarTxtContrato: function () { alert("Módulo de dossiê não carregou."); },
+    };
+  }
   // utils.js é crítico — sem ele, app.js não funciona (destructuring abaixo)
   if (!window.ZELA.utils) {
     console.error("[app.js] CRÍTICO: modules/utils.js não carregou. Mostrando erro ao usuário.");
@@ -999,69 +1008,17 @@
       const dig = cnpjDigits(cnpj);
       return ((D.cnpjs || {}).empresas || []).find(e => cnpjDigits(e.cnpj) === dig);
     };
+    // Dossiê de emenda (CNPJ cross-ref) — renderização delegada para modules/dossie.js
     const abrirFiscalizacao = (idx) => {
       const e = camEmendas()[idx];
       if (!e) return;
-      const c = cruzMap[e.numero + "/" + e.ano] || {};
-      const contratos = encontrarContratosCnpj(e.cnpj);
-      const cnpjInfo = encontrarCnpjInfo(e.cnpj);
-      const modal = $("modalFiscaliza");
-      const content = $("modalFiscalizaContent");
-      const pergunta = `Solicito cópia integral do processo administrativo, empenhos, notas fiscais, liquidações, comprovantes de pagamento e relatório de execução referentes à emenda nº ${e.numero}/${e.ano}, de autoria de ${e.autor || "vereador(a)"}, destinada ao CNPJ ${e.cnpj || "não informado"}, no valor de ${fmtBRL(e.valor_brl || 0)}, incluindo justificativa do objeto, local de aplicação e etapa atual de execução.`;
-      content.innerHTML = `
-        <p class="label">DOSSIÊ DE FISCALIZAÇÃO</p>
-        <h3>${esc(e.beneficiario || "Beneficiário nao identificado")}</h3>
-        <div class="dossier-grid">
-          <section>
-            <h4>1. Emenda indicada</h4>
-            <table>
-              <tr><td>Vereador(a)</td><td>${esc(e.autor)}</td></tr>
-              <tr><td>Emenda</td><td>${esc(e.numero)}/${esc(e.ano)}</td></tr>
-              <tr><td>Valor</td><td>${fmtBRL(e.valor_brl || 0)}</td></tr>
-              <tr><td>CNPJ</td><td>${esc(e.cnpj || "não informado")}</td></tr>
-            </table>
-            ${e.objeto ? `<p class="dossier-text">${esc(e.objeto)}</p>` : ""}
-            ${e.pdf ? `<p><a href="${esc(e.pdf)}" target="_blank" rel="noopener">Abrir PDF oficial da emenda →</a></p>` : ""}
-          </section>
-          <section>
-            <h4>2. Pagamento localizado</h4>
-            ${c.status === "encontrado" ? `
-              <p class="dossier-ok">Pagamento encontrado para o CNPJ.</p>
-              <table>
-                <tr><td>Total pago localizado</td><td>${fmtBRL(c.valor_pago_total || 0)}</td></tr>
-                <tr><td>Relação com a emenda</td><td>${e.valor_brl ? Math.round(((c.valor_pago_total || 0) / e.valor_brl) * 100) : 0}%</td></tr>
-              </table>` : c.status === "execucao_direta" ? `
-              <p class="dossier-info" style="color:#004d40; background:#e0f2f1; padding:8px 12px; border-radius:4px; margin-bottom:8px; font-size:0.85rem;"><strong>Execução Direta (Prefeitura):</strong> Destinada a um órgão, secretaria, escola ou UPA municipal (CNPJ da Prefeitura). Os pagamentos de execucao ocorrem internamente ou via contratos de compras/servicos da respectiva secretaria.</p>` : c.status === "sem_pagamento" ? `
-              <p class="dossier-warn">Não localizamos pagamento da Prefeitura para este CNPJ nos dados carregados.</p>` : `
-              <p class="dossier-warn">Sem CNPJ suficiente para cruzamento automático.</p>`}
-          </section>
-          <section>
-            <h4>3. Contratos do mesmo CNPJ/raiz</h4>
-            ${contratos.length ? contratos.map(ct => `
-              <div class="dossier-item">
-                <strong>${fmtBRL(ct.valor || 0)} · ${esc(ct.contratado || "Contratado")}</strong>
-                <span>${esc(ct.modalidade || "modalidade não informada")} · contrato ${esc(ct.numero || "s/n")}/${esc(ct.ano || "")}</span>
-                <p>${esc(ct.objeto || "Objeto não informado")}</p>
-              </div>`).join("") : '<p class="muted">Nenhum contrato do mesmo CNPJ/raiz foi localizado nos dados carregados.</p>'}
-          </section>
-          <section>
-            <h4>4. Situação cadastral</h4>
-            ${cnpjInfo ? `
-              <table>
-                <tr><td>Razão social</td><td>${esc(cnpjInfo.razao_social || "")}</td></tr>
-                <tr><td>Situação</td><td>${esc(cnpjInfo.situacao || "não informada")}</td></tr>
-                <tr><td>Abertura</td><td>${esc(cnpjInfo.abertura || "não informada")}</td></tr>
-                <tr><td>Município/UF</td><td>${esc([cnpjInfo.municipio, cnpjInfo.uf].filter(Boolean).join("/") || "não informado")}</td></tr>
-              </table>` : '<p class="muted">CNPJ ainda não consultado na base cadastral auxiliar.</p>'}
-          </section>
-        </div>
-        <section class="dossier-lai">
-          <h4>5. Pergunta pronta para LAI/e-SIC</h4>
-          <textarea readonly>${esc(pergunta)}</textarea>
-        </section>
-        <p class="muted">Este dossiê é uma triagem. Não é acusação: confira as fontes oficiais antes de qualquer denúncia.</p>`;
-      if (typeof modal.showModal === "function") modal.showModal();
-      else modal.setAttribute("open", "");
+      const html = window.ZELA.dossie.templateEmenda({
+        emenda: e,
+        cruz: cruzMap[e.numero + "/" + e.ano] || {},
+        contratos: encontrarContratosCnpj(e.cnpj),
+        cnpjInfo: encontrarCnpjInfo(e.cnpj),
+      });
+      window.ZELA.dossie.abrirComHtml(html);
     };
 
     let categoriaAtivaEmendas = "";
@@ -3033,54 +2990,16 @@
 
     renderBaseLegalContratos();
 
+    // Delega geração e download do TXT para modules/dossie.js
     window.ZELA.gerarDossie = (idx) => {
       const c = pf.contratos[idx];
+      if (!c) return;
       const audit = diagnosticarContrato(c);
-      const data = new Date().toLocaleDateString("pt-BR");
-      const achadosTxt = audit.achados.length
-        ? audit.achados.map(a => `- [${a.nivel.toUpperCase()}] ${a.titulo}\n  Base: ${a.base}\n  Por que importa: ${a.detalhe}\n  Pedido recomendado: ${a.pedido}`).join("\n")
-        : "- Nenhum alerta juridico automatico nos dados carregados.";
-      const baseLegalTxt = baseLegalContratos.map(b => `- ${b.lei}: ${b.uso}`).join("\n");
-      const doc = `
-============================================================
-       ZELA VARGINHA - RELATÓRIO DE AUDITORIA CIDADÃ
-       Gerado em: ${data}
-============================================================
-
-1. IDENTIFICAÇÃO DO CONTRATO
-------------------------------------------------------------
-CONTRATADO: ${c.contratado || "NÃO INFORMADO"}
-CNPJ: ${c.cnpj || "NÃO INFORMADO"}
-NÚMERO: ${c.numero}/${c.ano}
-VALOR TOTAL: ${fmtBRL(c.valor)}
-OBJETO: ${c.objeto || "OBJETO NÃO DESCRITO"}
-VIGÊNCIA: ${c.data_assinatura} até ${c.data_fim}
-
-2. LEITURA DE TRANSPARÊNCIA
-------------------------------------------------------------
-NIVEL: ${audit.nivel.toUpperCase()}
-INDICE DE COMPLETUDE DOCUMENTAL: ${audit.score}/100
-PONTOS DE ATENÇÃO:
-${achadosTxt}
-
-BASE LEGAL USADA:
-${baseLegalTxt}
-
-3. COMO CONFERIR
-------------------------------------------------------------
-- Abra a fonte oficial do contrato no Portal de Transparência.
-- Confira contrato integral, anexos, Termo de Referencia, proposta, empenho, liquidacao, nota fiscal e relatorio do fiscal.
-- Compare a entrega descrita com o serviço/material efetivamente recebido.
-- Em eventos, verifique se receitas privadas foram consideradas no preco publico.
-- Se algo não fizer sentido, use a pagina "Como cobrar" deste painel.
-`;
-
-      const blob = new Blob([doc], { type: "text/plain;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `dossie-varginha-${c.numero}-${c.ano}.txt`;
-      a.click();
+      window.ZELA.dossie.gerarTxtContrato({
+        contrato: c,
+        audit,
+        baseLegal: baseLegalContratos,
+      });
     };
 
     let categoriaAtivaContratos = "";
@@ -3758,7 +3677,7 @@ ${baseLegalTxt}
     // prefeitura.servidores é removido do bundle data.js para economizar ~2MB.
     // Carrega pessoal.json completo via fetch apenas quando a página pessoal é aberta.
     const hasPrefServs = (pesSlim.prefeitura?.servidores?.length || 0) > 0;
-    if (!hasPrefServs) {
+    if (!hasPrefServs && location.protocol !== "file:") {
       fetch("data/pessoal.json")
         .then(r => r.json())
         .then(fullPes => _runInitPessoal(fullPes))
@@ -4045,84 +3964,26 @@ ${baseLegalTxt}
     printable.document.close();
   }
 
+  // Helper local — delega criação do <dialog> para modules/dossie.js
   function modalFiscalizacao() {
-    let modal = $("modalFiscaliza");
-    if (modal) return modal;
-
-    modal = document.createElement("dialog");
-    modal.id = "modalFiscaliza";
-    modal.className = "modal modal--wide";
-    modal.innerHTML = `
-      <button class="modal__close" type="button" aria-label="Fechar">&times;</button>
-      <div id="modalFiscalizaContent"></div>`;
-    modal.querySelector(".modal__close").addEventListener("click", () => modal.close());
-    document.body.appendChild(modal);
-    return modal;
+    return window.ZELA.dossie.criarModal();
   }
 
+  // Dossiê de diária — renderização delegada para modules/dossie.js
   function abrirFiscalizacaoDiaria(prefix, idx) {
     const lista = (window.ZELA_DIARIAS || {})[prefix] || [];
     const d = lista[idx];
     if (!d) return;
-
     const isPrefeitura = prefix === "Prefeitura";
-    const qtdLabel = isPrefeitura ? "registro/empenho" : "diaria";
     const fonte = isPrefeitura
       ? ((D.diarias || {}).fontes || {}).prefeitura
       : ((D.diarias || {}).fontes || {}).camara;
-    const periodo = d.data_inicial
-      ? `${d.data_inicial.split("-").reverse().join("/")}${d.data_final && d.data_final !== d.data_inicial ? " a " + d.data_final.split("-").reverse().join("/") : ""}`
-      : "não informado";
-    const setor = isPrefeitura ? (d.secretaria || d.unidade || "não informado") : (d.cargo || d.secretaria || "não informado");
-    const pergunta = isPrefeitura
-      ? `Solicito copia integral do processo administrativo, empenho, liquidacao, comprovante de pagamento, ordem de pagamento, justificativa, autorizacao e documentos que expliquem a despesa classificada como diária em nome de ${d.funcionario || "servidor/credor nao informado"}, no valor de ${fmtBRL(d.valor_total || 0)}, vinculada a ${setor}, período ${período}, incluindo finalidade, destino quando houver, quantidade de diárias se aplicavel e relatorio de resultado/necessidade pública.`
-      : `Solicito copia integral da solicitacao, autorizacao, ato de concessao, roteiro/destino, motivo da viagem, comprovantes, relatorio de viagem, certificado/participacao quando houver e prestacao de contas da diária paga a ${d.funcionario || "servidor/vereador nao informado"}, cargo ${setor}, no valor de ${fmtBRL(d.valor_total || 0)}, quantidade ${fmtNum(d.quantidade || 0)}, período ${período}, informando qual beneficio concreto a atividade trouxe para Varginha.`;
-
-    const modal = modalFiscalizacao();
-    const content = modal.querySelector("#modalFiscalizaContent");
-    content.innerHTML = `
-      <p class="label">ROTEIRO DE FISCALIZACAO</p>
-      <h3>${isPrefeitura ? "Despesa/empenho de diaria - Prefeitura" : "Diária de viagem - Camara"}</h3>
-      <div class="dossier-grid">
-        <section>
-          <h4>1. O que foi pago</h4>
-          <table>
-            <tr><td>Nome</td><td>${esc(d.funcionario || "não informado")}</td></tr>
-            <tr><td>${isPrefeitura ? "Secretaria/unidade" : "Cargo/setor"}</td><td>${esc(setor)}</td></tr>
-            <tr><td>Valor total</td><td>${fmtBRL(d.valor_total || 0)}</td></tr>
-            <tr><td>${isPrefeitura ? "Registros" : "Quantidade"}</td><td>${fmtNum(d.quantidade || 0)} ${qtdLabel}(s)</td></tr>
-            <tr><td>Valor unitario</td><td>${fmtBRL(d.valor_unitario || 0)}</td></tr>
-            <tr><td>Período</td><td>${esc(periodo)}</td></tr>
-            ${d.destino ? `<tr><td>Destino</td><td>${esc(d.destino)}</td></tr>` : ""}
-            ${d.numero ? `<tr><td>Numero</td><td>${esc(d.numero)}</td></tr>` : ""}
-          </table>
-        </section>
-        <section>
-          <h4>2. Como interpretar</h4>
-          <p class="dossier-text">
-            ${isPrefeitura
-              ? "Na Prefeitura, a base carregada parece ser contabil: mostra despesas/empenhos classificados como diarias. Isso nao garante, sozinho, que cada linha seja uma viagem individual."
-              : "Na Camara, diaria e verba indenizatoria para viagem oficial. Ela nao e salario, mas precisa ter necessidade pública, autorizacao, destino, finalidade e prestacao de contas."}
-          </p>
-          <ul class="dossier-checklist">
-            <li>Existe autorizacao formal</li>
-            <li>O destino e a finalidade estao claros</li>
-            <li>O valor bate com a norma de diárias</li>
-            <li>Houve relatorio ou comprovação do resultado</li>
-            <li>O gasto trouxe utilidade concreta para Varginha</li>
-          </ul>
-        </section>
-      </div>
-      <section class="dossier-lai">
-        <h4>3. Pedido pronto para LAI/e-SIC</h4>
-        <textarea readonly>${esc(pergunta)}</textarea>
-        <div class="diária-actions">
-          <button type="button" class="btn-dossie" onclick="navigator.clipboard && navigator.clipboard.writeText(this.closest('.dossier-lai').querySelector('textarea').value)">Copiar pergunta</button>
-          ${fonte ? `<a class="btn-link" href="${esc(fonte)}" target="_blank" rel="noopener">Abrir fonte oficial</a>` : ""}
-          <button type="button" class="btn-dossie" onclick="ZELA.baixarPdfSecao('#modalFiscalizaContent', 'Fiscalizacao de diária')">Baixar PDF</button>
-        </div>
-      </section>`;
-    if (modal.showModal) modal.showModal();
+    const html = window.ZELA.dossie.templateDiaria({
+      diaria: d,
+      prefix,
+      fonte,
+    });
+    window.ZELA.dossie.abrirComHtml(html);
   }
 
   window.ZELA = {

@@ -107,7 +107,9 @@
       "Bash(git commit -m 'feat: substitui emojis por ícones SVG profissionais \\(Heroicons\\) *)",
       "Bash(grep -n \"diárias\\\\${prefix}\\\\|diáriasPrefeitura\\\\|diáriasCamara\" app.js)",
       "Bash(git commit -m 'fix: aba Diárias vazia + shims defensivos contra módulos faltantes *)",
-      "Bash(git commit -m 'docs: documentação completa \\(item 12 Codex\\) *)"
+      "Bash(git commit -m 'docs: documentação completa \\(item 12 Codex\\) *)",
+      "Bash(py -X utf8 _check_ids.py)",
+      "Bash(git checkout *)"
     ]
   }
 }

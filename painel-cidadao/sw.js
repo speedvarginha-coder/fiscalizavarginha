@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v8 (shims defensivos + fix IDs diarias) */
-const CACHE = "zela-v8";
+/* Zela Varginha — Service Worker v9 (modules/dossie extraído) */
+const CACHE = "zela-v9";
 const STATIC = [
   "./",
   "./index.html",
@@ -19,6 +19,7 @@ const STATIC = [
   "./modules/glossario.js",
   "./modules/categorias.js",
   "./modules/watchlist.js",
+  "./modules/dossie.js",
   "./favicon.svg",
 ];
 
