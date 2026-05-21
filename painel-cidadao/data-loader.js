@@ -34,6 +34,8 @@
     "modules/watchlist.js",
     "modules/dossie.js",
     "modules/dashboard.js",
+    "modules/relatorios.js",
+    "modules/diarias.js",
   ];
 
   const ts = Date.now();
