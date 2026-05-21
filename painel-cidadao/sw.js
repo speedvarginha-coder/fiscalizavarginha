@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v17 (deep-link Betha por tipo de ato) */
-const CACHE = "zela-v17";
+/* Zela Varginha — Service Worker v18 (deep-link Betha Câmara também por tipo) */
+const CACHE = "zela-v18";
 const STATIC = [
   "./",
   "./index.html",

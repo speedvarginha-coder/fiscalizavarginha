@@ -45,26 +45,36 @@
     camara:     "-iAWLe1kr2VQcrW9k2AUBg==",
   };
 
-  // IDs de consulta do Betha por tipo (descobertos via coletor_betha.py)
+  // IDs de consulta do Betha por tipo — descobertos via coletor.py / coletor_betha.py
+  // Aplicam-se tanto à Prefeitura quanto à Câmara (cada órgão tem seus próprios IDs).
   const BETHA_CONSULTA_PREFEITURA = {
     contrato:       83043,
+    aditivo:        83043,  // aditivos ficam na consulta de contratos
     dispensa:       83062,
     compra_direta:  83045,
     licitacao:      82967,  // em andamento
     diaria:         83059,
-    aditivo:        83043,  // aditivos ficam na consulta de contratos
+    despesa:        83034,
     convenio:       83043,  // fallback contratos
   };
-  // Câmara: só temos um endpoint de contratos
-  const BETHA_CONSULTA_CAMARA_CONTRATOS = 324812;
+  const BETHA_CONSULTA_CAMARA = {
+    contrato:       324812,
+    aditivo:        324812,
+    dispensa:       324812,  // Câmara não tem endpoint separado de dispensa
+    compra_direta:  324812,
+    licitacao:      324786,
+    diaria:         324755,
+    despesa:        324767,
+    convenio:       324812,
+  };
 
-  // Constrói URL deep-link para a tabela específica no Betha
+  // Constrói URL deep-link para a tabela exata no Betha de Varginha
   function urlBetha(orgao, tipo) {
-    if (orgao === "Câmara") {
-      return `https://transparencia.betha.cloud/#/${BETHA_HASH.camara}/consulta/${BETHA_CONSULTA_CAMARA_CONTRATOS}`;
-    }
-    const id = BETHA_CONSULTA_PREFEITURA[tipo] || BETHA_CONSULTA_PREFEITURA.contrato;
-    return `https://transparencia.betha.cloud/#/${BETHA_HASH.prefeitura}/consulta/${id}`;
+    const isCamara = orgao === "Câmara";
+    const hash = isCamara ? BETHA_HASH.camara : BETHA_HASH.prefeitura;
+    const mapa = isCamara ? BETHA_CONSULTA_CAMARA : BETHA_CONSULTA_PREFEITURA;
+    const id = mapa[tipo] || mapa.contrato;
+    return `https://transparencia.betha.cloud/#/${hash}/consulta/${id}`;
   }
 
   const MESES_BR = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
