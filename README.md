@@ -1,119 +1,117 @@
-# Opensquad
+# Zela Varginha — Painel Cidadão
 
-Crie squads de agentes de IA que trabalham juntos — direto do seu IDE.
+Painel independente de fiscalização da Prefeitura e Câmara Municipal de Varginha-MG.
 
-## Como Usar
+Dados extraídos dos portais oficiais (Betha, SAPL, PNCP, TCE-MG), apresentados em linguagem cidadã com triagem automática de sinais de atenção.
 
-Abra esta pasta no seu IDE e digite:
-
-```
-/opensquad
-```
-
-Isso abre o menu principal. De lá você pode criar squads, executá-los e mais.
-
-Você também pode ser direto — descreva o que quer em linguagem natural:
-
-```
-/opensquad crie um squad para escrever posts no LinkedIn sobre IA
-/opensquad execute o squad meu-squad
-```
-
-## Criar um Squad
-
-Digite `/opensquad` e escolha "Criar squad" no menu, ou seja direto:
-
-```
-/opensquad crie um squad para [o que você precisa]
-```
-
-O Arquiteto fará algumas perguntas, projetará o squad e configurará tudo automaticamente.
-
-## Executar um Squad
-
-Digite `/opensquad` e escolha "Executar squad" no menu, ou seja direto:
-
-```
-/opensquad execute o squad <nome-do-squad>
-```
-
-O squad executa automaticamente, pausando apenas nos checkpoints de decisão.
-
-## Escritório Virtual
-
-O Escritório Virtual é uma interface visual 2D que mostra seus agentes trabalhando em tempo real.
-
-**Passo 1 — Gere o dashboard** (no seu IDE):
-
-```
-/opensquad dashboard
-```
-
-**Passo 2 — Sirva localmente** (no terminal):
-
-```bash
-npx serve squads/<nome-do-squad>/dashboard
-```
-
-**Passo 3 —** Abra `http://localhost:3000` no seu navegador.
+**Não é prova de irregularidade** — é um ponto de partida para fiscalização com fontes primárias.
 
 ---
 
-# Opensquad (English)
+## Começando
 
-Create AI squads that work together — right from your IDE.
+### Para usar o painel (cidadão)
 
-## How to Use
-
-Open this folder in your IDE and type:
-
-```
-/opensquad
-```
-
-This opens the main menu. From there you can create squads, run them, and more.
-
-You can also be direct — describe what you want in plain language:
-
-```
-/opensquad create a squad for writing LinkedIn posts about AI
-/opensquad run my-squad
-```
-
-## Create a Squad
-
-Type `/opensquad` and choose "Create squad" from the menu, or be direct:
-
-```
-/opensquad create a squad for [what you need]
-```
-
-The Architect will ask a few questions, design the squad, and set everything up automatically.
-
-## Run a Squad
-
-Type `/opensquad` and choose "Run squad" from the menu, or be direct:
-
-```
-/opensquad run the <squad-name> squad
-```
-
-The squad runs automatically, pausing only at decision checkpoints.
-
-## Virtual Office
-
-The Virtual Office is a 2D visual interface that shows your agents working in real time.
-
-**Step 1 — Generate the dashboard** (in your IDE):
-
-```
-/opensquad dashboard
-```
-
-**Step 2 — Serve it locally** (in terminal):
+Abra `painel-cidadao/index.html` num servidor web. Para rodar local:
 
 ```bash
-npx serve squads/<squad-name>/dashboard
+cd painel-cidadao
+python -m http.server 8000
+# abra http://localhost:8000
 ```
 
-**Step 3 —** Open `http://localhost:3000` in your browser.
+### Para desenvolver
+
+```bash
+# instalar dependências de teste
+npm install
+npx playwright install chromium
+
+# rodar testes
+npm test
+
+# atualizar dados (precisa de Python + tokens Betha)
+cd painel-cidadao
+py coletor.py
+py _split_data.py
+```
+
+---
+
+## Estrutura do projeto
+
+```
+3_Fiscaliza Varginha/
+├── painel-cidadao/   Pasta pública (vai para servidor)
+├── private/          Tokens e logs (NUNCA publica)
+├── tests/            32 testes Playwright
+├── docs/             Documentação interna
+└── .gitignore        Proteção contra commit de segredos
+```
+
+---
+
+## Documentação
+
+| Doc | Para que serve |
+|-----|----------------|
+| [docs/arquitetura.md](docs/arquitetura.md) | Como o código funciona por dentro |
+| [docs/fontes-de-dados.md](docs/fontes-de-dados.md) | De onde vem cada número |
+| [docs/como-atualizar.md](docs/como-atualizar.md) | Rodar o coletor e gerar novos dados |
+| [docs/como-publicar.md](docs/como-publicar.md) | Deploy em Hostinger/Netlify/GitHub Pages |
+| [docs/checklist-publicacao.md](docs/checklist-publicacao.md) | Conferir antes de cada deploy |
+
+---
+
+## Recursos do painel
+
+- **8 páginas:** Início, Prefeitura, Câmara, Relatórios, Pessoal, Marcadores, Sobre, Como cobrar
+- **Placar do Dinheiro** com ícones SVG profissionais
+- **Filtros por categoria** (Saúde, Educação, Obras, Transporte, Cultura, Assistência, Administração, Segurança)
+- **Cruzamento CNPJ** entre fornecedores da Prefeitura e emendas da Câmara
+- **Detector de fragmentação** de contratos (Lei 14.133/2021)
+- **Comparativo entre anos** por categoria
+- **Linha do tempo** de sinais de atenção
+- **Watchlist pessoal** (marcadores salvos no navegador)
+- **Glossário cidadão** (jargão técnico → linguagem comum)
+- **Dark mode** automático (segue `prefers-color-scheme`)
+- **Mobile responsivo**
+- **Atalhos de teclado** (`/` foca busca, `g+letra` navega)
+- **Service Worker** com cache offline
+- **Acessibilidade** WCAG AA básico
+
+---
+
+## Stack técnica
+
+- HTML/CSS/JS vanilla — sem framework, sem build step
+- Service Worker para cache e atualização em background
+- Service de dados: chunks JSON carregados sob demanda
+- Python 3 para coletores (requests, beautifulsoup4)
+- Playwright para testes E2E
+
+---
+
+## Contato
+
+E-mail: speed.varginha@gmail.com
+
+Para reportar dado incorreto, sugerir feature, ou contribuir.
+
+---
+
+## Disclaimer
+
+Ferramenta independente, sem fins lucrativos, sem vínculo partidário.
+
+Os dados são extraídos de fontes oficiais com triagem automática baseada em critérios documentais (objeto claro, valor preenchido, datas presentes).
+
+**Antes de divulgar qualquer dado, conferir a fonte primária** (Portal Betha, SAPL, ou ofício LAI/e-SIC).
+
+---
+
+## Licença
+
+Código MIT. Dados são públicos por definição (Lei 12.527/2011 — LAI).
+
+Heroicons (ícones SVG): MIT License, copyright Tailwind Labs.
