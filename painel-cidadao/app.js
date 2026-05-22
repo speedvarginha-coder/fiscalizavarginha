@@ -2488,8 +2488,8 @@
           <div class="forn-row__nome">${esc(f.nome)}</div>
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / max) * 100}%"></span></div>
           <div class="forn-row__actions">
-            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener" title="Validar no Portal Betha da Prefeitura — cole o nome ou CNPJ no campo de busca">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
-            <a class="forn-row__btn forn-row__btn--filtro" href="prefeitura.html?q=${nomeBusca}" title="Ver contratos desta empresa">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
+            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83034" target="_blank" rel="noopener" title="Despesas da Prefeitura no Portal Betha — onde estes pagamentos estão registrados">${window.ZELA.icon("lupa", { size: 14 })} Despesas Betha</a>
+            <a class="forn-row__btn forn-row__btn--filtro" href="prefeitura.html?q=${nomeBusca}" title="Ver contratos vigentes desta empresa (pode não existir se for pagamento sem contrato)">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
             ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.ZELA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
@@ -2534,8 +2534,8 @@
           <div class="forn-row__nome">${esc(f.nome)}</div>
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / maxCam) * 100}%"></span></div>
           <div class="forn-row__actions">
-            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812" target="_blank" rel="noopener" title="Validar no Portal Betha da Câmara — cole o nome no campo de busca">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
-            <a class="forn-row__btn forn-row__btn--filtro" href="camara.html?q=${nomeBusca}" title="Ver contratos desta empresa na Câmara">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
+            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767" target="_blank" rel="noopener" title="Despesas da Câmara no Portal Betha — onde estes pagamentos estão registrados">${window.ZELA.icon("lupa", { size: 14 })} Despesas Betha</a>
+            <a class="forn-row__btn forn-row__btn--filtro" href="camara.html?q=${nomeBusca}" title="Ver contratos vigentes desta empresa na Câmara (pode não existir se for pagamento sem contrato)">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
             ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.ZELA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
@@ -3465,13 +3465,22 @@
     const q = params.get("q");
     if (!q) return;
     if (PAGE === "camara") {
+      // Aplica busca no campo de contratos da Câmara também
+      if (renderContratosCamara && $("filtroContratoCamara")) {
+        $("filtroContratoCamara").value = q;
+        renderContratosCamara(true);
+      }
       if (renderVereadores && $("filtroVer")) {
         $("filtroVer").value = q; renderVereadores();
       }
       if (renderEmendas && $("filtroEm")) {
         $("filtroEm").value = q; renderEmendas(true);
-        scrollToEl($("emendas"));
       }
+      // Rola para o bloco de contratos primeiro (mais relevante p/ "Ver contratos")
+      setTimeout(() => {
+        const targetCam = $("contratosCamaraBlock") || $("contratosCamara") || $("emendas");
+        if (targetCam) scrollToEl(targetCam);
+      }, 100);
     } else if (PAGE === "prefeitura") {
       if (renderContratos && $("filtroContrato")) {
         $("filtroContrato").value = q;

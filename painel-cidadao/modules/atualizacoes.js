@@ -37,6 +37,7 @@
     licitacao:      { icone: "lupa",       label: "Licitação",      cor: "gold"   },
     diaria:         { icone: "transporte", label: "Diária",         cor: "navy"   },
     convenio:       { icone: "predio",     label: "Convênio",       cor: "teal"   },
+    despesa:        { icone: "cifrao",     label: "Pagamentos",     cor: "orange" },
   };
 
   // Hashes dos portais Betha de Varginha (mesma fonte que o coletor usa)
@@ -230,7 +231,70 @@
       .map(c => contratoParaAto(c, "Câmara"))
       .filter(Boolean);
 
-    return [...mocks, ...contratosPref, ...contratosCam];
+    // ============================================================
+    // Top fornecedores sem contrato formal — gerar ato sintético
+    // ============================================================
+    // Empresas que aparecem em Top Fornecedores (= recebem pagamentos)
+    // mas NÃO têm contrato vigente no portal. Útil para o cidadão saber
+    // que existe relação financeira, mesmo sem contrato formal.
+    function fornecedorParaAto(f, orgao, contratosExistentes) {
+      const nome = cleanText(f.nome || "");
+      if (!nome) return null;
+      // Já existe contrato para essa empresa? Se sim, não gera duplicata
+      const nomeNorm = norm(nome);
+      const jaTem = contratosExistentes.some(a =>
+        (a.envolvidos || []).some(e => norm(e.nome).includes(nomeNorm) || nomeNorm.includes(norm(e.nome || "")))
+      );
+      if (jaTem) return null;
+
+      const valor = Number(f.valor_total) || 0;
+      const ano = orgao === "Câmara"
+        ? ((window.ZELA_DATA.camara_betha || {}).ano_atual)
+        : ((window.ZELA_DATA.prefeitura || {}).ano_atual);
+      const dataRef = ano ? `${ano}-12-31` : "";
+      const idAto = `${orgao.toUpperCase()}-FORN-${(nomeNorm.replace(/[^a-z0-9]/g, "")).slice(0, 24)}`;
+
+      return {
+        id: idAto,
+        data: dataRef,
+        orgao,
+        tipo: "despesa",
+        categoria: "Administração",
+        relevancia: valor >= 500000 ? "alta" : valor >= 100000 ? "media" : "baixa",
+        titulo: `Pagamentos a ${nome} (sem contrato formal)`,
+        resumo: `Empresa recebeu ${fmtBRL(valor)} em pagamentos da ${orgao} de Varginha em ${ano || "ano atual"}, mas não há contrato vigente registrado no portal. Pode ser compra direta, dispensa, ou pagamento via emenda.`,
+        envolvidos: [{ nome, cnpj: f.cnpj || "", papel: "fornecedora" }],
+        valores: [{ rotulo: "Total pago no ano", valor }],
+        pontos_atencao: [
+          "Empresa recebe da " + orgao + " mas não consta na tabela de contratos vigentes.",
+          "Pedir LAI: detalhamento dos pagamentos, número dos empenhos e motivo da ausência de contrato formal.",
+        ],
+        publicacao_url: urlBetha(orgao, "despesa"),
+        links_contexto: [
+          { tipo: "betha", label: "Tabela de despesas", url: urlBetha(orgao, "despesa"),
+            tooltip: `Abre a tabela de despesas da ${orgao} no Betha. Cole o nome "${nome}" na busca.` },
+          ...((f.cnpj || "").replace(/[^\d]/g, "").length >= 8 && !(f.cnpj || "").includes("*") ? [{
+            tipo: "cnpj", label: "Consultar CNPJ",
+            url: `https://casadosdados.com.br/solucao/cnpj/${(f.cnpj || "").replace(/[^\d]/g, "")}`,
+            tooltip: "Situação cadastral na Receita Federal.",
+          }] : []),
+          { tipo: "google", label: "Buscar no Google",
+            url: `https://www.google.com/search?q=${encodeURIComponent('"' + nome + '" ' + orgao + ' Varginha pagamento site:gov.br')}`,
+            tooltip: "Pesquisa Google restrita a .gov.br." },
+        ],
+        copia_numero: "",
+        _fonte: "top_fornecedores",
+      };
+    }
+
+    const fornPref = (pf.top_fornecedores_atual || [])
+      .map(f => fornecedorParaAto(f, "Prefeitura", contratosPref))
+      .filter(Boolean);
+    const fornCam = (cb.top_fornecedores_atual || [])
+      .map(f => fornecedorParaAto(f, "Câmara", contratosCam))
+      .filter(Boolean);
+
+    return [...mocks, ...contratosPref, ...contratosCam, ...fornPref, ...fornCam];
   }
 
   // ============================================================
