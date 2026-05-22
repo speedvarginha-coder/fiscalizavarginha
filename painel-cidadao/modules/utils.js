@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/utils.js
+/* Fiscaliza Varginha — modules/utils.js
  *
  * Utilitários puros extraídos do app.js (Fase 1 do refactor Codex):
  *   fmtBRL, fmtBRLnb, fmtMi, fmtNum — formatadores

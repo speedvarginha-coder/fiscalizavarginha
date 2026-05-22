@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/dossie.js
+/* Fiscaliza Varginha — modules/dossie.js
  *
  * Modal/dialog de fiscalização cidadã + geração de relatório TXT.
  * Templates de:
@@ -226,7 +226,7 @@
 
     const doc = `
 ============================================================
-       ZELA VARGINHA — RELATÓRIO DE AUDITORIA CIDADÃ
+       FISCALIZA VARGINHA — RELATÓRIO DE AUDITORIA CIDADÃ
        Gerado em: ${data}
 ============================================================
 

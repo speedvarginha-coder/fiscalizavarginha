@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/diarias.js
+/* Fiscaliza Varginha — modules/diarias.js
  *
  * Painel de diárias para Prefeitura e Câmara.
  * Renderiza: filtros, stats, ranking por pessoa, lista detalhada.

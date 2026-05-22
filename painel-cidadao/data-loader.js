@@ -1,4 +1,4 @@
-/* Zela Varginha — Data Loader
+/* Fiscaliza Varginha — Data Loader
  *
  * Substitui o data.js monolítico (~9 MB) por chunks JSON carregados sob demanda.
  * Cada HTML especifica os chunks que precisa via <body data-chunks="a,b,c">.

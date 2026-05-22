@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/dashboard.js
+/* Fiscaliza Varginha — modules/dashboard.js
  *
  * Placar do Dinheiro + Chips de Categoria das páginas Prefeitura e Câmara.
  * Lê window.ZELA_DATA diretamente. Cria os 4 cards de cada placar e os

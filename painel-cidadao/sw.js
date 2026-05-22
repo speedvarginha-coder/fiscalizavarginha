@@ -1,5 +1,5 @@
-/* Zela Varginha — Service Worker v19 (fornecedores sem contrato + filtro contratos Câmara) */
-const CACHE = "zela-v19";
+/* Fiscaliza Varginha — Service Worker v20 (rebrand: Zela -> Fiscaliza) */
+const CACHE = "fiscaliza-v20";
 const STATIC = [
   "./",
   "./index.html",

@@ -115,7 +115,9 @@
       "Bash(git commit -m 'fix\\(crítico\\): remove dados ficticios de outras cidades do feed *)",
       "Bash(git commit -m 'fix: filtro Câmara no feed estava vazio \\(chunk camara_betha faltante\\) *)",
       "Bash(git commit -m 'feat: links contextuais no feed \\(cidadão chega mais perto da publicação\\) *)",
-      "Bash(git commit -m 'fix: busca encontra fornecedores sem contrato + Ver contratos rola para a Câmara *)"
+      "Bash(git commit -m 'fix: busca encontra fornecedores sem contrato + Ver contratos rola para a Câmara *)",
+      "Bash(py -X utf8 _rename.py)",
+      "Bash(git commit -m 'rebrand: Zela Varginha → Fiscaliza Varginha *)"
     ]
   }
 }

@@ -1,4 +1,4 @@
-# Zela Varginha — Painel Cidadão
+# Fiscaliza Varginha — Painel Cidadão
 
 Painel independente de fiscalização da Prefeitura e Câmara Municipal de Varginha-MG.
 

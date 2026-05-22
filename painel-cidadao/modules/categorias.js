@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/categorias.js
+/* Fiscaliza Varginha — modules/categorias.js
  *
  * Categorias cidadãs — classifica itens (contratos/emendas) por área.
  *

@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/glossario.js
+/* Fiscaliza Varginha — modules/glossario.js
  *
  * Glossário cidadão — traduz jargão técnico em linguagem comum.
  *

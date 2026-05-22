@@ -1,4 +1,4 @@
-# Fontes de dados — Zela Varginha
+# Fontes de dados — Fiscaliza Varginha
 
 De onde vem cada número que aparece no painel. **Sempre** que algo for divulgado publicamente, conferir a fonte oficial primeiro.
 

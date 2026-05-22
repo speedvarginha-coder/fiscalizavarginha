@@ -1,4 +1,4 @@
-/* Zela Varginha - Painel Cidadão (multi-página).
+/* Fiscaliza Varginha - Painel Cidadão (multi-página).
    Cada página HTML tem `<body data-page="...">` e contém apenas os
    elementos da sua seção. Este script renderiza somente os blocos cujos
    IDs existem no DOM, então o mesmo arquivo serve index.html,
@@ -117,7 +117,7 @@
 
   const cnpjRoot = (s) => ((s || "").match(/\d/g) || []).join("").slice(0, 8);
   const hasAny   = (text, terms) => terms.some(t => norm(text).includes(norm(t)));
-  const pageTitle = () => (document.title || "Zela Varginha").replace(/\s+[·-]\s+.*/, "").trim();
+  const pageTitle = () => (document.title || "Fiscaliza Varginha").replace(/\s+[·-]\s+.*/, "").trim();
   const baseHref = () => location.href.replace(/[#].*$/, "").replace(/[^/\\]+$/, "");
   const anoCamara = () => $("filtroAnoCamara")?.value || "2025";
   const camaraAno = () => {
@@ -1497,7 +1497,7 @@
         </div>
         <div class="citizen-report__lai">
           <strong>Pergunta pronta para pedir informação</strong>
-          <p>Solicito copia dos contratos, anexos, termos de referencia, empenhos, liquidacoes, notas fiscais, comprovantes de pagamento e relatorios de fiscalizacao dos itens destacados no Painel Zela Varginha, informando objeto, fornecedor, valor, secretaria responsável, local de execução e situação atual.</p>
+          <p>Solicito copia dos contratos, anexos, termos de referencia, empenhos, liquidacoes, notas fiscais, comprovantes de pagamento e relatorios de fiscalizacao dos itens destacados no Painel Fiscaliza Varginha, informando objeto, fornecedor, valor, secretaria responsável, local de execução e situação atual.</p>
         </div>`;
     };
     emendas
@@ -3770,7 +3770,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="${esc(baseHref())}">
-  <title>${esc(cleanTitle)} - Zela Varginha</title>
+  <title>${esc(cleanTitle)} - Fiscaliza Varginha</title>
   ${styles}
   <style>
     body { background:#fff !important; color:#152131; }
@@ -3788,7 +3788,7 @@
   <main class="pdf-document">
     <header class="pdf-cover">
       <h1>${esc(cleanTitle)}</h1>
-      <p>Zela Varginha - Painel Cidadao de Fiscalizacao</p>
+      <p>Fiscaliza Varginha - Painel Cidadao de Fiscalizacao</p>
       <p>Gerado em ${esc(now)}. Confira sempre a fonte oficial antes de concluir irregularidade.</p>
     </header>
     ${clone.outerHTML}
@@ -3894,7 +3894,7 @@
       scrollToEl($("emendas"));
     },
     compartilharZap: (quem, oque, quanto) => {
-      const msg = `*ZELA VARGINHA - RELATÓRIO DE FISCALIZAÇÃO*\n\n` +
+      const msg = `*FISCALIZA VARGINHA - RELATÓRIO DE FISCALIZAÇÃO*\n\n` +
                   `*Entidade/Pessoa:* ${quem}\n` +
                   `*Objeto:* ${oque}\n` +
                   `*Valor:* ${quanto}\n\n` +

@@ -1,4 +1,4 @@
-# Checklist de Publicação — Zela Varginha
+# Checklist de Publicação — Fiscaliza Varginha
 
 Lista única para conferir antes de cada deploy. Copie e cole no commit/PR.
 
@@ -128,7 +128,7 @@ Lista única para conferir antes de cada deploy. Copie e cole no commit/PR.
 
 **Modelo de mensagem:**
 
-> Lançamos o **Zela Varginha** — painel cidadão de fiscalização independente
+> Lançamos o **Fiscaliza Varginha** — painel cidadão de fiscalização independente
 > da Prefeitura e da Câmara Municipal.
 >
 > Tudo aberto, sem login, dados extraídos dos portais oficiais.

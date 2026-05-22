@@ -1,4 +1,4 @@
-# Como atualizar os dados — Zela Varginha
+# Como atualizar os dados — Fiscaliza Varginha
 
 Processo manual para coletar dados novos do portal Betha e gerar os chunks JSON que o painel usa.
 

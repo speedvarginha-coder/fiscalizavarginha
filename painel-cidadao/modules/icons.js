@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/icons.js
+/* Fiscaliza Varginha — modules/icons.js
  *
  * Biblioteca de ícones SVG inline (estilo Heroicons outline, MIT License).
  * Substitui emojis para um visual mais profissional e institucional.

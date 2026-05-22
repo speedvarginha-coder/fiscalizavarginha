@@ -1,4 +1,4 @@
-# Arquitetura — Zela Varginha
+# Arquitetura — Fiscaliza Varginha
 
 Este documento descreve **como o painel funciona** por dentro: onde os dados vivem, como são carregados, quais módulos existem, e como tudo se conecta.
 

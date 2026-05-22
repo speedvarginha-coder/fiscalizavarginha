@@ -1,4 +1,4 @@
-# Testes — Zela Varginha
+# Testes — Fiscaliza Varginha
 
 Smoke tests em Playwright para garantir que cada página HTML abre, executa
 `app.js` sem erro crítico, e renderiza pelo menos um bloco principal.

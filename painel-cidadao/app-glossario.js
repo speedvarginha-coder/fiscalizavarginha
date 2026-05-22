@@ -1,4 +1,4 @@
-/* Zela Varginha — Glossário cidadão (versão standalone para sobre.html)
+/* Fiscaliza Varginha — Glossário cidadão (versão standalone para sobre.html)
    Espelho do GLOSSARIO em app.js. Mantenha sincronizado. */
 window.ZELA = window.ZELA || {};
 window.ZELA.glossario = {

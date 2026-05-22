@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/atualizacoes.js
+/* Fiscaliza Varginha — modules/atualizacoes.js
  *
  * Feed cronológico de atos administrativos (contratos, aditivos, dispensas,
  * compras diretas, licitações) da Prefeitura e Câmara.

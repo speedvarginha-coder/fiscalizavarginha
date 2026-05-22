@@ -1,4 +1,4 @@
-# Como publicar — Zela Varginha
+# Como publicar — Fiscaliza Varginha
 
 Processo para subir o painel para um servidor web (Hostinger, Netlify, GitHub Pages, ou qualquer hospedagem estática).
 

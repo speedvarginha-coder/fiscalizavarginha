@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/watchlist.js
+/* Fiscaliza Varginha — modules/watchlist.js
  *
  * Watchlist cidadã — marcadores pessoais em localStorage.
  *

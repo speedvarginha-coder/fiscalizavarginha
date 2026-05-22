@@ -1,6 +1,6 @@
 // @ts-check
 /**
- * Smoke tests — Zela Varginha
+ * Smoke tests — Fiscaliza Varginha
  *
  * Objetivo: garantir que cada página HTML abre, executa app.js sem erro
  * crítico no console, e renderiza pelo menos um bloco principal.
@@ -43,7 +43,7 @@ function setupConsoleListener(page) {
 }
 
 const PAGINAS = [
-  { arquivo: "index.html",      titulo: /Zela Varginha/,           bloco: "footer" },
+  { arquivo: "index.html",      titulo: /Fiscaliza Varginha/,           bloco: "footer" },
   { arquivo: "prefeitura.html", titulo: /Prefeitura/,              bloco: "#placarPrefeitura" },
   { arquivo: "camara.html",     titulo: /Câmara/,                  bloco: "#placarCamara" },
   { arquivo: "relatorios.html", titulo: /Relatórios/,              bloco: "#prioridades-fiscalização" },

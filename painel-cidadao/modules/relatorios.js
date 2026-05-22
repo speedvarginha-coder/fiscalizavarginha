@@ -1,4 +1,4 @@
-/* Zela Varginha — modules/relatorios.js
+/* Fiscaliza Varginha — modules/relatorios.js
  *
  * Blocos auto-contidos da página de Relatórios:
  *   - Timeline de sinais (eventos cronológicos)
