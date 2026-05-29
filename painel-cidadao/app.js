@@ -137,10 +137,6 @@
 
   // ============= "ATUALIZADO EM" + aviso de dados desatualizados =============
   const upd = D.atualizado_em || {};
-  if ($("atualizado")) {
-    $("atualizado").textContent =
-      upd.data_humana ? "Dados atualizados em " + cleanText(upd.data_humana) : "";
-  }
   // Helper público para gerar carimbo "coletado há X dias"
   window.ZELA.carimboColeta = function () {
     if (!upd.iso) return "";
@@ -149,8 +145,17 @@
     if (dias <= 7)       { texto = dias === 0 ? "Coletado hoje" : `Há ${dias}d`;          cls = "fresh"; }
     else if (dias <= 21) { texto = `Há ${dias} dias`;                                    cls = "okay";  }
     else                 { texto = `Há ${dias}d · pode estar desatualizado`;             cls = "stale"; }
-    return `<span class="carimbo-coleta carimbo-coleta--${cls}" title="Última coleta: ${esc(cleanText(upd.data_humana || ""))}">📡 ${texto}</span>`;
+    return `<span class="carimbo-coleta carimbo-coleta--${cls}" title="Última coleta: ${esc(cleanText(upd.data_humana || ""))}">${window.ZELA.icon ? window.ZELA.icon("sinal", { size: 13 }) : ""} ${texto}</span>`;
   };
+  // Carimbo de frescor no cabeçalho de toda página
+  if ($("atualizado")) {
+    if (upd.data_humana) {
+      $("atualizado").innerHTML =
+        "Dados atualizados em " + esc(cleanText(upd.data_humana)) + " " + window.ZELA.carimboColeta();
+    } else {
+      $("atualizado").textContent = "";
+    }
+  }
   if (upd.iso) {
     const diasDesde = Math.floor((Date.now() - new Date(upd.iso).getTime()) / 86_400_000);
     if (diasDesde >= 30) {
@@ -1287,7 +1292,7 @@
         $("emendasAtencaoBlock").innerHTML = `
           <div class="atencao-emendas">
             <div class="atencao-emendas__head">
-              ⚠️ Emendas comprometidas sem pagamento comprovado
+              ${window.ZELA.icon ? window.ZELA.icon("alerta", { size: 16 }) : ""} Emendas comprometidas sem pagamento comprovado
             </div>
             <p style="margin:0 0 10px; font-size:.88rem; color:#5d4037;">
               Valor total destinado por vereadores que <strong>não tem pagamento localizado</strong> no Portal de Transparência da Prefeitura.
@@ -1312,7 +1317,7 @@
                 Ver lista filtrada
               </button>
               <a class="atencao-emendas__cta" href="cobrar.html#templates-emenda" style="background:#6d3800;">
-                📋 Protocolar LAI sobre execução
+                ${window.ZELA.icon ? window.ZELA.icon("anexo", { size: 16 }) : ""} Protocolar LAI sobre execução
               </a>
             </div>
           </div>`;
@@ -2991,7 +2996,7 @@
           const vereadores = [...new Set(emCruzadas.map(e => e.vereador || e.autor || "").filter(Boolean))];
           const totalEm = emCruzadas.reduce((s, e) => s + (Number(e.valor) || 0), 0);
           return `<div class="cnpj-cruzado">
-            <span class="cnpj-cruzado__icon">⚠️</span>
+            <span class="cnpj-cruzado__icon">${window.ZELA.icon ? window.ZELA.icon("alerta", { size: 18 }) : ""}</span>
             <div class="cnpj-cruzado__txt">
               <strong>Empresa também recebeu emenda da Câmara</strong>
               <em>${emCruzadas.length} emenda${emCruzadas.length > 1 ? "s" : ""} · ${fmtBRL(totalEm)}${vereadores.length ? " · " + vereadores.slice(0,2).map(v => esc(v)).join(", ") + (vereadores.length > 2 ? "…" : "") : ""} — <a href="camara.html?q=${encodeURIComponent((c.cnpj||"").replace(/[^\d]/g,"").slice(0,8))}" style="color:inherit;font-weight:700;">Ver na Câmara →</a></em>
@@ -3018,7 +3023,7 @@
             <div class="contrato__meta">
               <span>
                 <strong>Contrato nº</strong> ${c.numero}/${c.ano}
-                ${c.numero ? `<button class="btn-copiar-num" title="Copiar número para buscar no portal" onclick="(function(b){var t='${jsSafe(c.numero + '/' + c.ano)}';navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=o},1500)}).catch(function(){});b.blur();})(this)">📋 Copiar nº</button>` : ""}
+                ${c.numero ? `<button class="btn-copiar-num" title="Copiar número para buscar no portal" onclick="(function(b){var t='${jsSafe(c.numero + '/' + c.ano)}';navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=o},1500)}).catch(function(){});b.blur();})(this)">${window.ZELA.icon ? window.ZELA.icon("copiar", { size: 13 }) : ""} Copiar nº</button>` : ""}
               </span>
               <span><span class="glossario-termo" tabindex="0" data-explica="Como a Prefeitura comprou (pregão, dispensa, concorrência…).">Tipo de compra:</span> ${esc(cleanText(c.modalidade))}</span>
               ${dataIni ? `<span><span class="glossario-termo" tabindex="0" data-explica="Período em que o contrato está em vigor.">Período:</span> ${dataIni} ${dataFim ? "até " + dataFim : ""}</span>` : ""}
@@ -3037,7 +3042,7 @@
               <button class="btn-dossie" onclick="ZELA.abrirContrato(${contratos.indexOf(c)})">Ver detalhes e fonte</button>
               <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratos.indexOf(c)})">Baixar relatório</button>
               <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}${custoDiario ? " (Custo: " + fmtBRL(custoDiario) + "/dia)" : ""}')">Compartilhar</button>
-              <a class="btn-link" href="${BETHA_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Cole o nº do contrato no campo de busca do Betha para localizar este contrato" style="text-decoration:none; padding: 6px 12px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.85em; font-weight: 500; border: 1px solid #90caf9;">🔍 Betha</a>
+              <a class="btn-link" href="${BETHA_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Cole o nº do contrato no campo de busca do Betha para localizar este contrato" style="text-decoration:none; padding: 6px 12px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.85em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon ? window.ZELA.icon("lupa", { size: 13 }) : ""} Betha</a>
               <a class="btn-link" href="${PORTAL_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 6px 12px; background: #eee; border-radius: 4px; color: #555; font-size: 0.85em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
               <a class="btn-link" href="${contratoPncpUrl(c)}" target="_blank" rel="noopener" title="Buscar este fornecedor/contrato no PNCP" style="text-decoration:none; padding: 6px 12px; background: #fff8e1; border-radius: 4px; color: #6d4c00; font-size: 0.85em; font-weight: 500; border: 1px solid #ffd54f;">PNCP</a>
             </div>
@@ -3190,7 +3195,7 @@
             </div>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
               <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82967" target="_blank" rel="noopener" title="Ver licitações no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
-              <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" title="Buscar no Portal Nacional de Contratações Públicas" style="text-decoration:none; padding: 3px 9px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">📋 PNCP</a>
+              <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" title="Buscar no Portal Nacional de Contratações Públicas" style="text-decoration:none; padding: 3px 9px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">${window.ZELA.icon ? window.ZELA.icon("documentos", { size: 12 }) : ""} PNCP</a>
             </div>
           </article>`;
       }).join("");
@@ -4870,7 +4875,7 @@
       const toast = document.createElement("div");
       toast.id = "sw-toast";
       toast.setAttribute("role", "status");
-      toast.innerHTML = `📡 Dados atualizados <button onclick="window.location.reload()">Recarregar</button>`;
+      toast.innerHTML = `${window.ZELA.icon ? window.ZELA.icon("sinal", { size: 16 }) : ""} Dados atualizados <button onclick="window.location.reload()">Recarregar</button>`;
       document.body.appendChild(toast);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () { toast.classList.add("show"); });

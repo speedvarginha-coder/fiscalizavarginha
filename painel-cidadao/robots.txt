@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Bloqueia artefatos que não devem ser indexados
+Disallow: /data/
+Allow: /data/chunks/
+
+Sitemap: https://SEU-DOMINIO/sitemap.xml

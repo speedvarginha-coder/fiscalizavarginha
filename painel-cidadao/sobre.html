@@ -129,7 +129,7 @@
     </p>
 
     <div class="disclaimer-box">
-      <strong>⚠️ Aviso legal importante</strong>
+      <strong>Aviso legal importante</strong>
       <p>Este painel <strong>não acusa ninguém</strong>. Os dados são extraídos de fontes oficiais
       e apresentados como estão, com alertas automáticos baseados em critérios documentais
       (ausência de objeto claro, falta de data, valor zerado). Um alerta <strong>não é prova
@@ -141,7 +141,7 @@
 
     <div class="sobre-grid">
       <div class="sobre-card">
-        <h3>🎯 Objetivo</h3>
+        <h3>Objetivo</h3>
         <p>
           Facilitar a fiscalização cidadã colocando dados de contratos, licitações,
           diárias, emendas, folha de pagamento e aluguéis em um único painel,
@@ -153,7 +153,7 @@
       </div>
 
       <div class="sobre-card sobre-card--teal">
-        <h3>🔄 Atualização dos dados</h3>
+        <h3>Atualização dos dados</h3>
         <p>
           Os dados são coletados periodicamente por um script Python
           (<code>coletor.py</code>) que consulta a API REST do Portal Betha
@@ -168,7 +168,7 @@
       </div>
 
       <div class="sobre-card sobre-card--gold">
-        <h3>⚙️ Auditômetro</h3>
+        <h3>Auditômetro</h3>
         <p>
           Cada contrato recebe uma pontuação de 0 a 100 baseada em critérios documentais:
         </p>
@@ -184,7 +184,7 @@
       </div>
 
       <div class="sobre-card sobre-card--red">
-        <h3>⚠️ Cruzamento CNPJ</h3>
+        <h3>Cruzamento CNPJ</h3>
         <p>
           Quando uma empresa contratada pela Prefeitura também recebeu emenda
           impositiva de algum vereador, o painel exibe um alerta no card do contrato.
@@ -193,6 +193,21 @@
           O cruzamento usa os <strong>8 primeiros dígitos do CNPJ</strong>
           (raiz), pois o portal mascara os últimos 4 dígitos por LGPD.
           Um cruzamento positivo pede verificação — não indica irregularidade por si só.
+        </p>
+      </div>
+
+      <div class="sobre-card">
+        <h3>Sinais de atenção</h3>
+        <p>
+          Cada registro recebe uma etiqueta simples, sem jargão:
+        </p>
+        <ul>
+          <li><strong>Registro completo</strong> — todos os campos documentais preenchidos (objeto, valor, datas).</li>
+          <li><strong>Confira</strong> — falta alguma informação básica no documento. Vale conferir na fonte oficial.</li>
+        </ul>
+        <p style="margin-top:8px;">
+          A etiqueta reflete apenas a <strong>completude do registro</strong>,
+          nunca um juízo sobre a legalidade ou o mérito do gasto.
         </p>
       </div>
     </div>
