@@ -26,6 +26,15 @@
   }
   const { fmtBRL, fmtNum, esc, cleanText } = u;
 
+  // População de Varginha-MG (Censo IBGE 2022). Usada para traduzir
+  // totais em "quanto representa por morador" — número que o cidadão sente.
+  const POP_VARGINHA = 135159;
+  function perCapita(total) {
+    const v = Number(total) || 0;
+    if (v <= 0) return "";
+    return `≈ ${fmtBRL(v / POP_VARGINHA)} por morador de Varginha`;
+  }
+
   function $(id) { return document.getElementById(id); }
   function icon(nome, opts) {
     return (window.ZELA.icon || function () { return ""; })(nome, opts);
@@ -65,6 +74,7 @@
         <span class="placar-card__valor">${fmtBRL(total)}</span>
         <span class="placar-card__label">Total contratado ${carimboColeta()}</span>
         <span class="placar-card__sub">Em <strong>${anoAtual}</strong> · ${contratosAno.length} contrato${contratosAno.length !== 1 ? "s" : ""}</span>
+        <span class="placar-card__percapita">${perCapita(total)}</span>
       </div>
       <div class="placar-card placar-card--top">
         <span class="placar-card__icon">${icon("trofeu", { size: 24 })}</span>
@@ -170,6 +180,7 @@
         <span class="placar-card__valor">${fmtBRL(total)}</span>
         <span class="placar-card__label">Total em emendas ${carimboColeta()}</span>
         <span class="placar-card__sub">Destinado por <strong>vereadores</strong></span>
+        <span class="placar-card__percapita">${perCapita(total)}</span>
       </div>
       <div class="placar-card placar-card--top">
         <span class="placar-card__icon">${icon("trofeu", { size: 24 })}</span>

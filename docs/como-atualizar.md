@@ -1,6 +1,8 @@
 # Como atualizar os dados — Fiscaliza Varginha
 
-Processo manual para coletar dados novos do portal Betha e gerar os chunks JSON que o painel usa.
+Processo para coletar dados novos dos portais oficiais e gerar os chunks JSON que o painel usa.
+
+Recomendação operacional: atualizar **todo dia**. Quando a Prefeitura, a Câmara ou outro sistema oficial publicar documentos fora desse horário, usar o modo **vigia** para checar em intervalos menores.
 
 ---
 
@@ -13,7 +15,7 @@ Processo manual para coletar dados novos do portal Betha e gerar os chunks JSON 
 
 ---
 
-## Processo padrão (semanal)
+## Processo padrão manual
 
 ### Passo 1 — Coletar dados frescos
 
@@ -53,27 +55,28 @@ ERRO Federal: timeout em api.portaldatransparencia.gov.br
 
 Se algum coletor falhar, o dado **anterior é preservado** — só não fica atualizado. O painel mostra "última coleta há X dias" no carimbo.
 
-### Passo 3 — Gerar chunks JSON
+### Passo 3 — Conferir chunks JSON
 
 ```bash
-py _split_data.py
+dir data\chunks
 ```
 
-Isso:
-- Lê `data.js` (bundle monolítico gerado pelo `coletor.py`)
-- Divide em `data/chunks/*.json` (14 arquivos)
-- Atualiza `data/manifest.json`
+O `coletor.py` já grava:
+- `data.js` (fallback monolítico para uso via `file://`)
+- `data/chunks/*.json` (16 arquivos públicos carregados sob demanda)
+- `data/manifest.json`
 
-**Tempo:** ~5 segundos.
+Se algum chunk esperado não aparecer, conferir o log em `private/logs/debug.log`.
 
 ### Passo 4 — Testar localmente
 
 ```bash
 cd ..   # voltar para raiz
+npm run validate:data
 npm test
 ```
 
-Se os 32 testes passarem, o painel renderiza os novos dados sem erro JS.
+Se `validate:data` e os 41 testes passarem, os dados estão estruturalmente íntegros e o painel renderiza sem erro JS.
 
 Para inspecionar visualmente:
 
@@ -92,7 +95,7 @@ Abrir `http://localhost:8000` no browser. Conferir:
 ```bash
 cd ..
 git add painel-cidadao/data/
-git commit -m "data: coleta semanal $(date +%Y-%m-%d)"
+git commit -m "data: coleta diaria $(date +%Y-%m-%d)"
 ```
 
 ### Passo 6 — Publicar (se for o caso)
@@ -166,7 +169,7 @@ Carimbo vermelho aparece quando `atualizado_em` > 21 dias. Rodar coleta:
 
 ```bash
 py coletor.py
-py _split_data.py
+# o coletor já atualiza data.js, data/chunks/ e data/manifest.json
 ```
 
 ---
@@ -205,30 +208,67 @@ Os arquivos intermediários (raw) **não vão para o browser**. Só os `chunks/`
 
 ---
 
-## Automatizar (futuro)
+## Automatização recomendada
 
-Quando for hora:
+### Opção A — Diário local (Windows Task Scheduler)
 
-### Opção A — Cron local (Windows Task Scheduler)
+Na raiz do projeto:
 
-Criar `.bat` que roda semanalmente:
-
-```batch
-cd "C:\Users\Desktop\Desktop\Ações Prefeitura Varginha\3_Fiscaliza Varginha\painel-cidadao"
-py coletor.py >> ..\private\logs\cron.log 2>&1
-py _split_data.py >> ..\private\logs\cron.log 2>&1
-git -C .. add painel-cidadao/data/
-git -C .. commit -m "data: coleta automatica"
+```powershell
+npm run data:schedule:daily
 ```
 
-### Opção B — GitHub Actions (se repo for público)
+Isso instala/atualiza a tarefa **Fiscaliza Varginha - Atualizar dados** para rodar todos os dias às 06:30.
+
+A rotina executa:
+
+1. `painel-cidadao/coletor.py`
+2. `npm run validate:data`
+3. `npm test`
+4. `npm run deploy:zip`
+5. `npm run validate:deploy`
+
+Logs ficam em `private/logs/coleta-YYYY-MM-DD.log`.
+
+Para rodar agora, sem esperar o agendamento:
+
+```powershell
+npm run data:update
+```
+
+### Opção B — Modo vigia por intervalo
+
+Se a prioridade for capturar documentos assim que os sistemas da Prefeitura/Câmara publicarem novidades, instale o modo vigia:
+
+```powershell
+npm run data:schedule:watch
+```
+
+Por padrão ele roda a cada 180 minutos. Para outro intervalo:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts/install-data-task.ps1 -Mode Watch -IntervalMinutes 60
+```
+
+Observação: isso é uma aproximação por polling. Só seria "em tempo real" se os sistemas oficiais oferecessem webhook/feed confiável, o que normalmente não acontece nesses portais.
+
+### Opção C — Cron local manual
+
+Criar `.bat` que roda diariamente:
+
+```batch
+cd "C:\Users\Desktop\Desktop\Ações Prefeitura Varginha\3_Fiscaliza Varginha"
+npm run data:update
+```
+
+### Opção D — GitHub Actions ou servidor
 
 `.github/workflows/coleta.yml`:
 
 ```yaml
 on:
   schedule:
-    - cron: '0 6 * * 1'  # Segunda 6h
+    - cron: '30 9 * * *'  # Todo dia 06:30 em America/Sao_Paulo, ajustar UTC conforme horario de verao/politica
 jobs:
   coletar:
     runs-on: ubuntu-latest
@@ -236,12 +276,13 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
       - run: pip install -r requirements.txt
-      - run: cd painel-cidadao && python coletor.py && python _split_data.py
+      - run: cd painel-cidadao && python coletor.py
+      - run: npm run validate:data
       - run: git add painel-cidadao/data/ && git commit -m "data: coleta cron"
       - run: git push
 ```
 
-**Atenção:** tokens do Betha precisam estar em GitHub Secrets, não no repo.
+**Atenção:** tokens do Betha precisam estar em GitHub Secrets, não no repo. Se a autenticação exigir navegador/sessão interativa, prefira um servidor próprio ou o Windows Task Scheduler local.
 
 ---
 

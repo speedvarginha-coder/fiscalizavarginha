@@ -83,7 +83,7 @@ PIPELINE DE DADOS (offline, roda no servidor de quem mantém o painel):
 │   └── coletor*.py             Scripts Python que populam o data/
 │
 ├── tests/
-│   ├── smoke.spec.js           32 testes Playwright
+│   ├── smoke.spec.js           41 testes Playwright
 │   └── README.md
 │
 └── docs/                       Esta pasta
@@ -368,16 +368,19 @@ O `app.js` escuta e mostra um toast no canto superior direito convidando o usuá
 npm install              # primeira vez
 npx playwright install   # primeira vez (baixa Chromium)
 
-npm test                 # roda 32 testes em ~40s
+npm run validate:data    # valida manifest, chunks e sanidade dos dados
+npm test                 # roda 41 testes em ~1min
+npm run release          # valida dados + testes + zip limpo + valida pacote
 npm run test:headed      # vê o browser executando
 npm run test:ui          # modo interativo Playwright UI
 npm run test:report      # vê relatório HTML do último run
 ```
 
 **Cobertura:**
-- 8 páginas × 3 verificações (abre, título, bloco principal)
+- 9 páginas × 3 verificações (abre, título, bloco principal)
 - Navegação completa
 - Filtros básicos (contratos, emendas)
+- Busca de contrato por número com modal de fonte oficial
 - Placar do dinheiro
 - Aba Diárias (regressão)
 - Watchlist vazio
@@ -394,6 +397,6 @@ npm run test:report      # vê relatório HTML do último run
 - **`app.js` ainda monolítico** (5677 linhas). Refactor incremental em curso (fases 3-5 pendentes: dossiê, renderizações de Prefeitura/Câmara/Relatórios/Pessoal).
 - **`style.css` único** (5000+ linhas). Plano: dividir em `css/base.css`, `css/components.css`, `css/pages/*.css`.
 - **Sem schemas dos JSONs.** Coletor pode produzir JSON inválido que quebra o painel silenciosamente. Plano: validação Pydantic no coletor.
-- **Sem coleta agendada.** Coletor roda manualmente. Plano: cron semanal + GitHub Actions.
+- **Coleta automatizável.** `scripts/update-data.ps1` executa coleta, validação, testes e pacote limpo; `scripts/install-data-task.ps1` registra a rotina diária ou em modo vigia no Windows Task Scheduler.
 
 Veja `docs/como-atualizar.md` para o processo atual de coleta.

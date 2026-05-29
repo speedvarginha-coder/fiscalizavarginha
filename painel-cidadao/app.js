@@ -32,6 +32,7 @@
       abrirComHtml:     function () { alert("Módulo de dossiê não carregou."); },
       templateEmenda:   function () { return ""; },
       templateDiaria:   function () { return ""; },
+      templateContrato: function () { return ""; },
       gerarTxtContrato: function () { alert("Módulo de dossiê não carregou."); },
     };
   }
@@ -2554,12 +2555,19 @@
     const listaEl  = $("contratosCamara");
     const maisEl   = $("contratosCamaraMais");
     const contEl   = $("contratosContadorCamara");
+    const BETHA_CONTRATOS_CAMARA = "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812";
+    const PORTAL_CONTRATOS_CAMARA = "https://www.varginha.mg.leg.br/transparencia";
+    const baseLegalCamara = [
+      { lei: "CF/88, art. 37", uso: "publicidade, legalidade e eficiência nos atos públicos" },
+      { lei: "Lei 14.133/2021, art. 92", uso: "cláusulas essenciais do contrato" },
+      { lei: "Lei 12.527/2011, art. 8", uso: "transparência ativa de despesas e contratos" },
+    ];
 
     renderContratosCamara = function (reset) {
       if (reset) contratosCamaraShown = 20;
       const q = norm(filtroEl ? filtroEl.value : "");
       const filtrados = contratosCam.filter(c =>
-        !q || norm(c.objeto + c.contratado + c.cnpj).includes(q)
+        !q || norm([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.modalidade].filter(Boolean).join(" ")).includes(q)
       );
       if (contEl) contEl.textContent = `${filtrados.length} contratos`;
       listaEl.innerHTML = filtrados.slice(0, contratosCamaraShown).map(c => `
@@ -2574,12 +2582,24 @@
             <p class="muted small">${esc(c.modalidade || "")} · ${esc(c.data_assinatura || "")} → ${esc(c.data_fim || "")}${c.numero ? ` · Nº ${esc(c.numero)}` : ""}</p>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
               ${c.numero ? `<button type="button" class="btn-copiar-num" onclick="(function(b){var t=b.closest('.contrato').querySelector('.muted.small');var m=t&&t.textContent.match(/N[°º]\s*([\w\/\-]+)/);var n=m?m[1]:'${jsSafe(String(c.numero || ""))}';navigator.clipboard&&navigator.clipboard.writeText(n).then(function(){var o=b.textContent;b.textContent='✓ Copiado';setTimeout(function(){b.textContent=o;},1400);}).catch(function(){});b.title=n;})(this)" title="Copiar número do contrato">📋 Copiar nº</button>` : ""}
-              <a class="btn-link" href="https://transparência.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812" target="_blank" rel="noopener" title="Ver todos os contratos da Câmara no Portal Betha" style="text-decoration:none; padding: 4px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">Portal Betha (Câmara)</a>
-              <a class="btn-link" href="https://www.varginha.mg.leg.br/transparência" target="_blank" rel="noopener" title="Portal de Transparência oficial da Câmara Municipal" style="text-decoration:none; padding: 4px 10px; background: #eee; border-radius: 4px; color: #333; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Site da Câmara</a>
+              <button type="button" class="btn-dossie" onclick="ZELA.abrirContratoCamara(${contratosCam.indexOf(c)})">Ver detalhes e fonte</button>
+              <a class="btn-link" href="${BETHA_CONTRATOS_CAMARA}" target="_blank" rel="noopener" title="Ver todos os contratos da Câmara no Portal Betha" style="text-decoration:none; padding: 4px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">Portal Betha (Câmara)</a>
+              <a class="btn-link" href="${PORTAL_CONTRATOS_CAMARA}" target="_blank" rel="noopener" title="Portal de Transparência oficial da Câmara Municipal" style="text-decoration:none; padding: 4px 10px; background: #eee; border-radius: 4px; color: #333; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Site da Câmara</a>
             </div>
           </div>
         </article>`).join("");
       if (maisEl) maisEl.hidden = filtrados.length <= contratosCamaraShown;
+    };
+    window.ZELA.abrirContratoCamara = (idx) => {
+      const c = contratosCam[idx];
+      if (!c) return;
+      const html = window.ZELA.dossie.templateContrato({
+        contrato: c,
+        audit: { nivel: "ok", score: 100, achados: [] },
+        baseLegal: baseLegalCamara,
+        orgao: "Câmara",
+      });
+      window.ZELA.dossie.abrirComHtml(html);
     };
     if (filtroEl) filtroEl.addEventListener("input", () => renderContratosCamara(true));
     renderContratosCamara(true);
@@ -2687,6 +2707,27 @@
       { lei: "Lei 12.527/2011, art. 8", uso: "transparência ativa de despesas, licitacoes e contratos" },
       { lei: "Lei 4.320/1964, art. 35", uso: "despesa pertence ao exercicio em que foi legalmente empenhada" },
     ];
+
+    const BETHA_CONTRATOS_PREFEITURA = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043";
+    const PORTAL_CONTRATOS_PREFEITURA = "https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos";
+
+    const contratoSearchText = (c) => [
+      c.numero && c.ano ? `${c.numero}/${c.ano}` : (c.numero || ""),
+      c.contratado || "",
+      c.cnpj || "",
+      c.objeto || "",
+      c.modalidade || "",
+      c.entidade || "",
+      c.situacao || "",
+    ].filter(Boolean).join(" ");
+
+    const contratoPncpUrl = (c) => {
+      const cnpj = (c.cnpj || "").replace(/[^\d]/g, "");
+      const q = cnpj.length >= 8
+        ? cnpj
+        : [c.contratado, c.numero, c.ano, "Varginha"].filter(Boolean).join(" ");
+      return "https://pncp.gov.br/app/contratos?q=" + encodeURIComponent(q);
+    };
 
     const addAchado = (lista, nivel, titulo, detalhe, base, pedido) => {
       lista.push({ nivel, titulo, detalhe, base, pedido });
@@ -2821,6 +2862,19 @@
       });
     };
 
+    window.ZELA.abrirContrato = (idx) => {
+      const c = pf.contratos[idx];
+      if (!c) return;
+      const audit = diagnosticarContrato(c);
+      const html = window.ZELA.dossie.templateContrato({
+        contrato: { ...c, __idx: idx },
+        audit,
+        baseLegal: baseLegalContratos,
+        orgao: "Prefeitura",
+      });
+      window.ZELA.dossie.abrirComHtml(html);
+    };
+
     let categoriaAtivaContratos = "";
     window.ZELA.filtrarContratosPorCategoria = (cat) => {
       categoriaAtivaContratos = cat || "";
@@ -2839,9 +2893,7 @@
         (!secFiltro || (c.entidade || "").trim() === secFiltro) &&
         (!categoriaAtivaContratos || window.ZELA.classificarItem(c) === categoriaAtivaContratos) &&
         (!q ||
-          norm(c.contratado).includes(q) ||
-          norm(c.objeto).includes(q) ||
-          norm(c.modalidade).includes(q) ||
+          norm(contratoSearchText(c)).includes(q) ||
           (q.replace(/[^\d]/g, "").length >= 3 && (c.cnpj || "").replace(/[^\d]/g, "").includes(q.replace(/[^\d]/g, "")))
         )
       );
@@ -2952,8 +3004,8 @@
         <article class="contrato">
           <div class="contrato__valor">
             ${fmtBRL(c.valor)}
-            <div class="score-mini score-mini--${audit.nivel}" title="Indice documental: ${audit.score}/100">
-              ${audit.nivel === "ok" ? "Sem alerta" : audit.nivel}: ${audit.score}%
+            <div class="score-mini score-mini--${audit.nivel}" title="${audit.nivel === "ok" ? "Registro completo: objeto, valores e datas preenchidos." : "Faltam informações no registro (objeto vago, valor ou data ausente). Veja os motivos abaixo e confira a fonte oficial."} Índice documental: ${audit.score}/100">
+              ${audit.nivel === "ok" ? "Registro completo" : "Confira"}: ${audit.score}%
             </div>
           </div>
           <div>
@@ -2982,10 +3034,12 @@
             ` : ""}
             ${cruzadoHtml}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap; align-items:center;">
-              <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratos.indexOf(c)})">Gerar relatorio</button>
+              <button class="btn-dossie" onclick="ZELA.abrirContrato(${contratos.indexOf(c)})">Ver detalhes e fonte</button>
+              <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratos.indexOf(c)})">Baixar relatório</button>
               <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}${custoDiario ? " (Custo: " + fmtBRL(custoDiario) + "/dia)" : ""}')">Compartilhar</button>
-              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Cole o nº do contrato no campo de busca do Betha para localizar este contrato" style="text-decoration:none; padding: 6px 12px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.85em; font-weight: 500; border: 1px solid #90caf9;">🔍 Buscar no Betha</a>
-              <a class="btn-link" href="https://transparência.varginha.mg.gov.br/portal-transparência/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 6px 12px; background: #eee; border-radius: 4px; color: #555; font-size: 0.85em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
+              <a class="btn-link" href="${BETHA_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Cole o nº do contrato no campo de busca do Betha para localizar este contrato" style="text-decoration:none; padding: 6px 12px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.85em; font-weight: 500; border: 1px solid #90caf9;">🔍 Betha</a>
+              <a class="btn-link" href="${PORTAL_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 6px 12px; background: #eee; border-radius: 4px; color: #555; font-size: 0.85em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
+              <a class="btn-link" href="${contratoPncpUrl(c)}" target="_blank" rel="noopener" title="Buscar este fornecedor/contrato no PNCP" style="text-decoration:none; padding: 6px 12px; background: #fff8e1; border-radius: 4px; color: #6d4c00; font-size: 0.85em; font-weight: 500; border: 1px solid #ffd54f;">PNCP</a>
             </div>
           </div>
           ${c.cnpj && !c.cnpj.includes("*") ? `<a class="contrato__cnpj" href="https://casadosdados.com.br/solucao/cnpj/${c.cnpj.replace(/[^\d]/g,"")}" target="_blank" rel="noopener" title="Consultar empresa no CNPJ" style="text-decoration:none; color:inherit;">${esc(c.cnpj)} 🔗</a>` : `<div class="contrato__cnpj">${esc(c.cnpj)}</div>`}
@@ -3135,7 +3189,7 @@
               ${data ? `<span>${data}</span>` : ""}
             </div>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
-              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/licitacoes" target="_blank" rel="noopener" title="Ver licitações no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82967" target="_blank" rel="noopener" title="Ver licitações no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
               <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" title="Buscar no Portal Nacional de Contratações Públicas" style="text-decoration:none; padding: 3px 9px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">📋 PNCP</a>
             </div>
           </article>`;
@@ -3398,8 +3452,8 @@
                 ${data ? `<span>Data: ${data}</span>` : ""}
               </div>
               <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
-                <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
-                <a class="btn-link" href="https://transparência.varginha.mg.gov.br/portal-transparência/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 3px 9px; background: #eee; border-radius: 4px; color: #555; font-size: 0.78em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
+                <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+                <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 3px 9px; background: #eee; border-radius: 4px; color: #555; font-size: 0.78em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
               </div>
             </div>
             <div class="contrato__cnpj">${esc(f.cnpj || "")}</div>
@@ -3894,11 +3948,20 @@
       scrollToEl($("emendas"));
     },
     compartilharZap: (quem, oque, quanto) => {
+      // Monta link da própria página já filtrado por ?q= no fornecedor, para
+      // que quem recebe caia direto neste registro.
+      const base = window.location.origin + window.location.pathname;
+      const linkPainel = quem ? `${base}?q=${encodeURIComponent(quem)}` : base;
       const msg = `*FISCALIZA VARGINHA - RELATÓRIO DE FISCALIZAÇÃO*\n\n` +
                   `*Entidade/Pessoa:* ${quem}\n` +
                   `*Objeto:* ${oque}\n` +
                   `*Valor:* ${quanto}\n\n` +
-                  `Link para consulta e fiscalização oficial:`;
+                  `Confira no painel cidadão:\n${linkPainel}`;
+      // Mobile: usa folha de compartilhamento nativa (WhatsApp, Telegram, etc.)
+      if (navigator.share) {
+        navigator.share({ title: "Fiscaliza Varginha", text: msg }).catch(() => {});
+        return;
+      }
       const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`;
       window.open(url, "_blank");
     },
@@ -3974,8 +4037,8 @@
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratosAluguel.indexOf(c)})">Ver relatorio</button>
               <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}')">Compartilhar</button>
-              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
-              <a class="btn-link" href="https://transparência.varginha.mg.gov.br/portal-transparência/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 5px 10px; background: #eee; border-radius: 4px; color: #555; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
+              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+              <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 5px 10px; background: #eee; border-radius: 4px; color: #555; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
             </div>
           </div>
         </article>`;
@@ -4100,8 +4163,8 @@
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratosAluguel.indexOf(c)})">Ver Dossie</button>
               <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)} · estimado ${fmtBRL(mensal)}/mes por ${meses || ""} meses')">Zap</button>
-              <a class="btn-link" href="https://transparência.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/contratos" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
-              <a class="btn-link" href="https://transparência.varginha.mg.gov.br/portal-transparência/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 5px 10px; background: #eee; border-radius: 4px; color: #555; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
+              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+              <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 5px 10px; background: #eee; border-radius: 4px; color: #555; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
             </div>
           </div>
         </article>`;
@@ -4306,7 +4369,7 @@
     ];
 
     const baseGastos = [
-      ...contratos.map(c => ({
+      ...contratos.map((c, idx) => ({
         origem: "Contrato",
         fornecedor: c.contratado || "Não informado",
         cnpj: c.cnpj || "",
@@ -4314,6 +4377,7 @@
         valor: Number(c.valor || 0),
         ano: c.ano || c.ano_publicacao || "",
         link: "contratos",
+        contratoIdx: idx,
       })),
       ...licitacoes.map(l => ({
         origem: "Licitacao",
@@ -4349,17 +4413,18 @@
       const texto = norm(`${item.origem} ${item.fornecedor} ${item.cnpj} ${item.objeto}`);
       return termos.some(t => texto.includes(norm(t)));
     };
-    const agrupaFornecedor = (lista) => {
-      const grupos = new Map();
-      lista.forEach(item => {
-        const key = cnpjRoot(item.cnpj) || norm(item.fornecedor) || "não informado";
-        const cur = grupos.get(key) || { nome: item.fornecedor || "Não informado", valor: 0, qtd: 0 };
-        cur.valor += item.valor || 0;
-        cur.qtd += 1;
-        grupos.set(key, cur);
-      });
-      return [...grupos.values()].sort((a, b) => (b.valor - a.valor) || (b.qtd - a.qtd));
-    };
+      const agrupaFornecedor = (lista) => {
+        const grupos = new Map();
+        lista.forEach(item => {
+          const key = cnpjRoot(item.cnpj) || norm(item.fornecedor) || "não informado";
+        const cur = grupos.get(key) || { nome: item.fornecedor || "Não informado", valor: 0, qtd: 0, contratoIdx: null };
+          cur.valor += item.valor || 0;
+          cur.qtd += 1;
+          if (cur.contratoIdx == null && Number.isInteger(item.contratoIdx)) cur.contratoIdx = item.contratoIdx;
+          grupos.set(key, cur);
+        });
+        return [...grupos.values()].sort((a, b) => (b.valor - a.valor) || (b.qtd - a.qtd));
+      };
 
     const renderGastosPalavra = () => {
       const box = $("gastosPalavraChave");
@@ -4415,19 +4480,30 @@
             <h4>Principais fornecedores</h4>
             ${fornecedores.length ? fornecedores.map(f => `
               <div class="keyword-row">
-                <span>${esc(f.nome)}</span>
+                <span>${esc(f.nome)}
+                  ${Number.isInteger(f.contratoIdx) ? `<button type="button" class="keyword-row__action" onclick="ZELA.abrirContrato(${f.contratoIdx})">Ver contrato</button>` : ""}
+                </span>
                 <strong>${fmtBRL(f.valor)}</strong>
                 <small>${fmtNum(f.qtd)} registro(s)</small>
               </div>`).join("") : `<p class="muted">Nenhum fornecedor encontrado para estes termos.</p>`}
           </div>
           <div>
             <h4>Maiores registros</h4>
-            ${encontrados.slice(0, 5).map(item => `
-              <div class="keyword-row">
-                <span>${esc(item.origem)} - ${esc(item.fornecedor)}</span>
+            ${encontrados.slice(0, 5).map(item => {
+              const isContrato = item.origem === "Contrato" && Number.isInteger(item.contratoIdx);
+              const tag = isContrato ? "button" : "div";
+              const attrs = isContrato
+                ? ` type="button" class="keyword-row keyword-row--button" onclick="ZELA.abrirContrato(${item.contratoIdx})"`
+                : ` class="keyword-row"`;
+              return `
+              <${tag}${attrs}>
+                <span>${esc(item.origem)} - ${esc(item.fornecedor)}
+                  ${isContrato ? `<em>Ver contrato</em>` : ""}
+                </span>
                 <strong>${fmtBRL(item.valor)}</strong>
                 <small>${esc(String(item.objeto || "").slice(0, 120))}</small>
-              </div>`).join("") || `<p class="muted">Nenhum registro encontrado.</p>`}
+              </${tag}>`;
+            }).join("") || `<p class="muted">Nenhum registro encontrado.</p>`}
           </div>
         </div>
         <p class="keyword-audit__note">Observacao: busca por palavra-chave e uma triagem. O resultado pode incluir registros parecidos e deve ser conferido no documento oficial antes de qualquer conclusao.</p>

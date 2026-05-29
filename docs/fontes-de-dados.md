@@ -10,17 +10,19 @@ Cada arquivo em `painel-cidadao/data/chunks/*.json` vem de uma fonte específica
 
 | Chunk | Fonte oficial | Coletor | Atualiza |
 |-------|---------------|---------|----------|
-| `prefeitura.json` | [Betha — Prefeitura](https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==) | `coletor_betha.py` | Semanal |
-| `camara_anos.json` | [Betha — Câmara](https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812) | `coletor_betha.py` | Semanal |
+| `prefeitura.json` | [Betha — Prefeitura](https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==) | `coletor_betha.py` | Diário |
+| `camara_anos.json` | [Betha — Câmara](https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812) | `coletor_betha.py` | Diário |
+| `camara_betha.json` | Betha — Câmara | `coletor_betha.py` | Diário |
 | `camara_transparencia.json` | Site da Câmara | `coletor_camara_transparencia.py` | Quando muda |
 | `emendas.json` | [SAPL Câmara](https://sapl.varginha.mg.leg.br/) | `coletor_emendas_2026.py` + manual | Mensal |
-| `diarias.json` | Betha (consulta 83059) | `coletor_betha.py` | Semanal |
+| `diarias.json` | Betha (consulta 83059) | `coletor_betha.py` | Diário |
 | `pessoal.json` | Betha (folha de pagamento) | `coletor_pessoal.py` | Conforme disp. |
 | `vereadores.json` | SAPL + manual | `coletor.py` | Anual |
 | `cnpjs.json` | [Casa dos Dados](https://casadosdados.com.br/) + Receita Federal | `coletor_cnpj.py` | Sob demanda |
 | `pncp.json` | [PNCP](https://pncp.gov.br/) | `coletor_pncp.py` | Mensal |
 | `federal.json` | Portal da Transparência Federal | `coletor_federal.py` | Mensal |
 | `resumo.json` | Calculado a partir de outros chunks | `coletor.py` | A cada coleta |
+| `atualizacoes.json` | Índice do feed de atualizações | `coletor.py` | A cada coleta |
 | `fontes_emendas_2026.json` | Múltiplas fontes (em construção) | `coletor.py` | Sob demanda |
 | `diario.json` | Diário Oficial do Município | manual (futuro) | Diário |
 | `atualizado_em.json` | Timestamp da última coleta | `coletor.py` | A cada coleta |
@@ -153,9 +155,10 @@ Exemplo: integrar SIOPE (Educação) ou SIOPS (Saúde).
    coletar_siope()
    ```
 
-3. **Adicionar ao `_split_data.py` ou ao bundle:**
-   - Se for chunk novo, adicionar key no `data.js` antes do split.
-   - O script `_split_data.py` gera automaticamente `data/chunks/siope.json`.
+3. **Adicionar ao `coletor.py`:**
+   - Salvar o novo arquivo com `_save("siope.json", dados)`.
+   - Incluir a chave em `_save_data_js(...)` se ela também precisar funcionar no fallback `file://`.
+   - Adicionar o nome do arquivo à lista de chunks dentro de `_save(...)`, para ele ser replicado em `data/chunks/`.
 
 4. **Mapear no `data-loader.js`** quais páginas precisam:
    ```js

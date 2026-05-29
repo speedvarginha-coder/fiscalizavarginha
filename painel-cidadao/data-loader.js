@@ -38,6 +38,7 @@
     "modules/relatorios.js",
     "modules/diarias.js",
     "modules/atualizacoes.js",
+    "modules/onboarding.js",
   ];
 
   const ts = Date.now();

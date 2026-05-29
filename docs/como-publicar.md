@@ -42,9 +42,9 @@ data/*.json         ❌ Intermediários (só os de `chunks/`)
 Antes de subir qualquer coisa, rodar:
 
 ```bash
-# 1. Testes verdes
-npm test
-# → 32 passed (esperado)
+# 1. Release local verde
+npm run release
+# → valida dados, roda 41 testes, gera zip e valida pacote
 
 # 2. Verificar que tokens NÃO estão na pasta
 ls painel-cidadao/.betha* 2>/dev/null
@@ -78,7 +78,14 @@ Ver também: `docs/checklist-publicacao.md`.
 
 ### A cada publicação
 
-1. **Comprimir a pasta limpa:**
+1. **Gerar pacote limpo:**
+   ```powershell
+   npm run release
+   ```
+
+   O pacote fica em `dist/fiscaliza-varginha-painel.zip` e contém apenas arquivos públicos.
+
+   Alternativa manual, se necessário:
    ```bash
    cd "3_Fiscaliza Varginha"
    # Cria zip só com arquivos públicos
@@ -155,6 +162,7 @@ Após publicar, testar:
 - [ ] `https://seudominio/relatorios.html`
 - [ ] `https://seudominio/pessoal.html`
 - [ ] `https://seudominio/marcadores.html`
+- [ ] `https://seudominio/atualizacoes.html`
 - [ ] `https://seudominio/sobre.html`
 - [ ] `https://seudominio/cobrar.html`
 
@@ -179,13 +187,14 @@ Cole `https://seudominio/relatorios.html` no WhatsApp — deve aparecer preview 
 
 Se só os dados mudaram (coleta nova):
 
-1. **Rodar coleta + split local** (ver `como-atualizar.md`).
-2. **Upload só de `painel-cidadao/data/chunks/`** (resto não mudou).
-3. **Bumpar `sw.js`** versão do cache para força refresh:
+1. **Rodar coleta local**: `npm run data:update` (ver `como-atualizar.md`).
+2. **Conferir logs em `private/logs/`**.
+3. **Upload só de `painel-cidadao/data/chunks/`** (resto não mudou).
+4. **Bumpar `sw.js`** versão do cache para força refresh:
    ```js
    const CACHE = "zela-v9";  // ou próximo número
    ```
-4. **Upload `sw.js` atualizado.**
+5. **Upload `sw.js` atualizado.**
 
 Usuários verão o toast "📡 Dados atualizados — recarregar" automaticamente.
 
@@ -196,23 +205,24 @@ Usuários verão o toast "📡 Dados atualizados — recarregar" automaticamente
 O arquivo `painel-cidadao/.htaccess` já bloqueia:
 
 ```apache
-# Bloqueia arquivos sensíveis se vazarem
-<FilesMatch "\.(json|log|py|pyc|bat|txt)$">
-    Order deny,allow
+Options -Indexes
+RewriteEngine On
+
+# Bloqueia scripts e arquivos locais
+<FilesMatch "\.(log|py|pyc|bat|txt)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
     Deny from all
+  </IfModule>
 </FilesMatch>
 
-# Mas permite os JSONs públicos
-<FilesMatch "data/chunks/.*\.json$">
-    Order allow,deny
-    Allow from all
-</FilesMatch>
-
-# Permite data.js (legado)
-<Files "data.js">
-    Order allow,deny
-    Allow from all
-</Files>
+# Bloqueia JSONs intermediários em /data/, mas libera:
+# - /data/manifest.json
+# - /data/chunks/*.json
+RewriteRule ^data/(?!manifest\.json$|chunks/[^/]+\.json$) - [F,L]
 ```
 
 **Conferir após publicar** se o `.htaccess` está ativo. Testar:

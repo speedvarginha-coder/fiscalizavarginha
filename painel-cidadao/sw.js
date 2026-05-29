@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v20 (rebrand: Zela -> Fiscaliza) */
-const CACHE = "fiscaliza-v20";
+/* Fiscaliza Varginha — Service Worker v21 (per-capita + onboarding + share) */
+const CACHE = "fiscaliza-v21";
 const STATIC = [
   "./",
   "./index.html",
@@ -25,6 +25,7 @@ const STATIC = [
   "./modules/relatorios.js",
   "./modules/diarias.js",
   "./modules/atualizacoes.js",
+  "./modules/onboarding.js",
   "./favicon.svg",
 ];
 

@@ -30,10 +30,19 @@ npx playwright install chromium
 # rodar testes
 npm test
 
+# validar dados + testes + gerar pacote limpo de publicação
+npm run release
+
+# atualizar dados agora, com log, validação e pacote limpo
+npm run data:update
+
+# instalar atualização automática diária (Windows Task Scheduler)
+npm run data:schedule:daily
+
 # atualizar dados (precisa de Python + tokens Betha)
 cd painel-cidadao
 py coletor.py
-py _split_data.py
+# o coletor já atualiza data.js, data/chunks/ e data/manifest.json
 ```
 
 ---
@@ -44,7 +53,7 @@ py _split_data.py
 3_Fiscaliza Varginha/
 ├── painel-cidadao/   Pasta pública (vai para servidor)
 ├── private/          Tokens e logs (NUNCA publica)
-├── tests/            32 testes Playwright
+├── tests/            41 testes Playwright
 ├── docs/             Documentação interna
 └── .gitignore        Proteção contra commit de segredos
 ```
@@ -65,10 +74,11 @@ py _split_data.py
 
 ## Recursos do painel
 
-- **8 páginas:** Início, Prefeitura, Câmara, Relatórios, Pessoal, Marcadores, Sobre, Como cobrar
+- **9 páginas:** Início, Prefeitura, Câmara, Relatórios, Pessoal, Marcadores, Atualizações, Sobre, Como cobrar
 - **Placar do Dinheiro** com ícones SVG profissionais
 - **Filtros por categoria** (Saúde, Educação, Obras, Transporte, Cultura, Assistência, Administração, Segurança)
 - **Cruzamento CNPJ** entre fornecedores da Prefeitura e emendas da Câmara
+- **Conferência de procedência** de contratos com clique direto em listas, Betha, portal oficial e PNCP
 - **Detector de fragmentação** de contratos (Lei 14.133/2021)
 - **Comparativo entre anos** por categoria
 - **Linha do tempo** de sinais de atenção
@@ -79,6 +89,7 @@ py _split_data.py
 - **Atalhos de teclado** (`/` foca busca, `g+letra` navega)
 - **Service Worker** com cache offline
 - **Acessibilidade** WCAG AA básico
+- **Atualização automatizável** diária ou em modo vigia por intervalo
 
 ---
 
@@ -89,6 +100,8 @@ py _split_data.py
 - Service de dados: chunks JSON carregados sob demanda
 - Python 3 para coletores (requests, beautifulsoup4)
 - Playwright para testes E2E
+- Scripts de validação/release em Node + PowerShell
+- Agendamento local via Windows Task Scheduler
 
 ---
 

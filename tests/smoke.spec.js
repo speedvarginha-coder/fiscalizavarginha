@@ -110,6 +110,34 @@ test.describe("Filtros básicos", () => {
     await expect(busca).toHaveValue("teste");
   });
 
+  test("Prefeitura — busca por número abre detalhes e fonte", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    await page.locator('[data-pref-tab="contratos"]').first().click();
+    const busca = page.locator("#filtroContrato");
+    await busca.fill("2/2026");
+    await expect(busca).toHaveValue("2/2026");
+    await expect(page.locator("#contratos .contrato").first()).toBeAttached();
+    await page.locator("#contratos .btn-dossie", { hasText: "Ver detalhes e fonte" }).first().click();
+    const modal = page.locator("#modalFiscaliza");
+    await expect(modal).toBeAttached();
+    await expect(modal.locator("text=CONFERÊNCIA DE PROCEDÊNCIA")).toBeVisible();
+    await expect(modal.locator("text=Abrir tabela Betha")).toBeVisible();
+    await expect(modal.locator("text=Buscar no PNCP")).toBeVisible();
+  });
+
+  test("Prefeitura — maiores registros da visão geral abrem contrato", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    const row = page.locator("#gastosPalavraChave .keyword-row--button").first();
+    await expect(row).toBeVisible();
+    await expect(row.locator("text=Ver contrato")).toBeVisible();
+    await row.click();
+    const modal = page.locator("#modalFiscaliza");
+    await expect(modal).toBeAttached();
+    await expect(modal.locator("text=CONFERÊNCIA DE PROCEDÊNCIA")).toBeVisible();
+  });
+
   test("Câmara — filtro de emendas aceita texto", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
@@ -193,6 +221,33 @@ test.describe("Aba Diárias (regressão)", () => {
     await page.waitForTimeout(2000);
     const block = page.locator("#diariasCamaraBlock");
     await expect(block).toBeAttached();
+  });
+});
+
+test.describe("Per-capita no placar", () => {
+  test("Prefeitura mostra valor por morador no card de total", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    const pc = page.locator("#placarPrefeitura .placar-card__percapita").first();
+    await expect(pc).toContainText("por morador");
+  });
+});
+
+test.describe("Banner de boas-vindas (onboarding)", () => {
+  test("aparece na primeira visita e some ao fechar", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.evaluate(() => localStorage.removeItem("fiscaliza.onboarding.v1"));
+    await page.reload();
+    await page.waitForTimeout(2000);
+    const banner = page.locator("#onboarding-banner");
+    await expect(banner).toBeVisible();
+    await banner.locator(".onboarding__close").click();
+    await page.waitForTimeout(400);
+    await expect(banner).toHaveCount(0);
+    // Não reaparece após recarregar (flag persistida)
+    await page.reload();
+    await page.waitForTimeout(2000);
+    await expect(page.locator("#onboarding-banner")).toHaveCount(0);
   });
 });
 

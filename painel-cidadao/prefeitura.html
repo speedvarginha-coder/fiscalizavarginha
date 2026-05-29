@@ -162,8 +162,9 @@
       <p class="block__lead">
         Cada contrato é um compromisso assinado entre a Prefeitura e uma empresa
         (obras, serviços, fornecimentos). 
-        O <strong>Auditômetro</strong> analisa se o objeto é claro e se os valores e datas 
-        estão corretos conforme a lei.
+        O <strong>Auditômetro</strong> analisa se o objeto é claro e se os valores e datas
+        estão completos. Use <strong>Ver detalhes e fonte</strong> para copiar o número
+        do contrato e conferir se o registro procede no Betha, portal oficial ou PNCP.
       </p>
       <div id="contratosLegalContext" class="legal-context"></div>
       <div id="transparenciaHealth" class="block--warn" style="display:none; margin-bottom:20px; border-left-color: var(--teal); background:#e6fffa; border-color:#b2f5ea">
@@ -181,7 +182,7 @@
         <select id="filtroSecretaria" aria-label="Filtrar por secretaria/órgão" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
           <option value="">Todas as secretarias</option>
         </select>
-        <input id="filtroContrato" type="search" placeholder="Buscar contratado, objeto, modalidade..." oninput="ZELA.filtrarContratos && ZELA.filtrarContratos()">
+        <input id="filtroContrato" type="search" placeholder="Buscar nº do contrato, empresa, CNPJ, objeto..." oninput="ZELA.filtrarContratos && ZELA.filtrarContratos()">
         <select id="filtroValorContrato" aria-label="Filtrar por valor mínimo" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
           <option value="">Qualquer valor</option>
           <option value="100000">Acima de R$ 100 mil</option>

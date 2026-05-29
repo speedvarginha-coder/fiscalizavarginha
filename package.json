@@ -4,10 +4,17 @@
   "private": true,
   "description": "Painel Cidadão de Fiscalização — Varginha-MG",
   "scripts": {
+    "data:schedule:daily": "powershell -ExecutionPolicy Bypass -File scripts/install-data-task.ps1 -Mode Daily -At 06:30",
+    "data:schedule:watch": "powershell -ExecutionPolicy Bypass -File scripts/install-data-task.ps1 -Mode Watch -IntervalMinutes 180",
+    "data:update": "powershell -ExecutionPolicy Bypass -File scripts/update-data.ps1",
+    "deploy:zip": "powershell -ExecutionPolicy Bypass -File scripts/package-deploy.ps1",
+    "release": "npm run validate:data && npm test && npm run deploy:zip && npm run validate:deploy",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
-    "test:report": "playwright show-report"
+    "test:report": "playwright show-report",
+    "validate:data": "node scripts/validate-release.mjs data",
+    "validate:deploy": "node scripts/validate-release.mjs deploy"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0"

@@ -4,6 +4,7 @@
  * Templates de:
  *   - Emenda impositiva (cruzamento CNPJ Câmara × Prefeitura)
  *   - Diária de viagem (Prefeitura ou Câmara)
+ *   - Contrato (conferência de procedência na fonte oficial)
  *   - Relatório TXT de contrato (download)
  *
  * Disponível em window.ZELA.dossie.
@@ -46,6 +47,133 @@
     content.innerHTML = html;
     if (typeof modal.showModal === "function") modal.showModal();
     else modal.setAttribute("open", "");
+  }
+
+  // ============================================================
+  // HELPERS — Fonte oficial / busca de contrato
+  // ============================================================
+  function digits(s) {
+    return String(s || "").replace(/[^\d]/g, "");
+  }
+
+  function bethaContratoUrl(orgao) {
+    return orgao === "Câmara"
+      ? "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812"
+      : "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043";
+  }
+
+  function portalContratoUrl(orgao) {
+    return orgao === "Câmara"
+      ? "https://www.varginha.mg.leg.br/transparencia"
+      : "https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos";
+  }
+
+  function pncpUrl(c) {
+    const cnpj = digits(c.cnpj);
+    const q = cnpj.length >= 8
+      ? cnpj
+      : [c.contratado, c.numero, c.ano, "Varginha"].filter(Boolean).join(" ");
+    return "https://pncp.gov.br/app/contratos?q=" + encodeURIComponent(q);
+  }
+
+  function contratoBuscaTexto(c) {
+    return [
+      c.numero && c.ano ? `Contrato ${c.numero}/${c.ano}` : "",
+      c.contratado || "",
+      c.cnpj || "",
+    ].filter(Boolean).join(" | ");
+  }
+
+  // ============================================================
+  // TEMPLATE — Contrato (procedência e conferência)
+  // ============================================================
+  // params: { contrato, audit, baseLegal, orgao }
+  function templateContrato(params) {
+    const c = params.contrato || {};
+    const audit = params.audit || { nivel: "ok", score: 100, achados: [] };
+    const baseLegal = params.baseLegal || [];
+    const orgao = params.orgao || "Prefeitura";
+    const busca = contratoBuscaTexto(c);
+    const numero = c.numero && c.ano ? `${c.numero}/${c.ano}` : (c.numero || "não informado");
+    const cnpj = c.cnpj || "não informado";
+    const dataIni = c.data_assinatura ? String(c.data_assinatura).split("-").reverse().join("/") : "não informada";
+    const dataFim = c.data_fim ? String(c.data_fim).split("-").reverse().join("/") : "não informada";
+    const betha = bethaContratoUrl(orgao);
+    const portal = portalContratoUrl(orgao);
+    const pncp = pncpUrl(c);
+    const canDownloadTxt = orgao === "Prefeitura" && Number.isInteger(Number(c.__idx));
+
+    const pergunta =
+      `Solicito cópia integral do processo administrativo referente ao contrato ${numero}, ` +
+      `firmado com ${c.contratado || "contratado não informado"}${c.cnpj ? " (" + c.cnpj + ")" : ""}, ` +
+      `no valor de ${fmtBRL(c.valor || 0)}, incluindo contrato assinado, anexos, termo de referência, ` +
+      `edital ou ato de contratação direta, proposta vencedora, pesquisa de preços, parecer jurídico, ` +
+      `empenhos, liquidações, notas fiscais, comprovantes de pagamento, aditivos e relatório do fiscal do contrato.`;
+
+    const achadosHtml = audit.achados && audit.achados.length
+      ? audit.achados.map(a => `
+        <div class="dossier-item">
+          <strong>${esc(a.titulo)}</strong>
+          <span>${esc(a.base || "")}</span>
+          <p>${esc(a.detalhe || a.pedido || "")}</p>
+        </div>`).join("")
+      : '<p class="dossier-ok">Nenhum alerta automático nos dados carregados.</p>';
+
+    const baseLegalHtml = baseLegal.length
+      ? `<ul class="dossier-checklist">${baseLegal.slice(0, 5).map(b => `<li><strong>${esc(b.lei)}</strong>: ${esc(b.uso)}</li>`).join("")}</ul>`
+      : '<p class="muted">Base legal não carregada.</p>';
+
+    return `
+      <p class="label">CONFERÊNCIA DE PROCEDÊNCIA</p>
+      <h3>Contrato ${esc(numero)} — ${esc(c.contratado || "Contratado não informado")}</h3>
+      <div class="dossier-grid">
+        <section>
+          <h4>1. Dados carregados no painel</h4>
+          <table>
+            <tr><td>Órgão</td><td>${esc(orgao)}</td></tr>
+            <tr><td>Contrato</td><td>${esc(numero)}</td></tr>
+            <tr><td>Contratado</td><td>${esc(c.contratado || "não informado")}</td></tr>
+            <tr><td>CNPJ</td><td>${esc(cnpj)}</td></tr>
+            <tr><td>Valor</td><td>${fmtBRL(c.valor || 0)}</td></tr>
+            <tr><td>Modalidade</td><td>${esc(c.modalidade || "não informada")}</td></tr>
+            <tr><td>Vigência</td><td>${esc(dataIni)} até ${esc(dataFim)}</td></tr>
+            ${c.entidade ? `<tr><td>Secretaria/órgão</td><td>${esc(c.entidade)}</td></tr>` : ""}
+          </table>
+          <p class="dossier-text">${esc(c.objeto || "Objeto não informado")}</p>
+        </section>
+        <section>
+          <h4>2. Como conferir na fonte</h4>
+          <p class="dossier-text">Copie um dos termos abaixo e pesquise na tabela oficial. Se o número não aparecer, pesquise pelo CNPJ ou nome da empresa.</p>
+          <div class="source-search">
+            <code>${esc(busca || numero)}</code>
+            <button type="button" class="btn-dossie" onclick="navigator.clipboard && navigator.clipboard.writeText(this.previousElementSibling.textContent)">Copiar busca</button>
+          </div>
+          <div class="source-actions">
+            <a class="btn-link" href="${esc(betha)}" target="_blank" rel="noopener">Abrir tabela Betha</a>
+            <a class="btn-link" href="${esc(portal)}" target="_blank" rel="noopener">Abrir portal oficial</a>
+            <a class="btn-link" href="${esc(pncp)}" target="_blank" rel="noopener">Buscar no PNCP</a>
+          </div>
+          <p class="muted small">O painel facilita a busca, mas a confirmação final deve ser feita na fonte primária.</p>
+        </section>
+        <section>
+          <h4>3. Triagem automática</h4>
+          <p><strong>Índice documental:</strong> ${esc(audit.nivel || "ok")} · ${fmtNum(audit.score || 0)}/100</p>
+          ${achadosHtml}
+        </section>
+        <section>
+          <h4>4. Base legal para pedir documentos</h4>
+          ${baseLegalHtml}
+        </section>
+      </div>
+      <section class="dossier-lai">
+        <h4>5. Pedido pronto para LAI/e-SIC</h4>
+        <textarea readonly>${esc(pergunta)}</textarea>
+        <div class="diaria-actions">
+          <button type="button" class="btn-dossie" onclick="navigator.clipboard && navigator.clipboard.writeText(this.closest('.dossier-lai').querySelector('textarea').value)">Copiar pergunta</button>
+          ${canDownloadTxt ? `<button type="button" class="btn-dossie" onclick="ZELA.gerarDossie && ZELA.gerarDossie(${Number(c.__idx)})">Baixar relatório TXT</button>` : ""}
+        </div>
+      </section>
+      <p class="muted">Procedência significa conferir se o registro do painel bate com a fonte oficial. Não é conclusão automática sobre legalidade.</p>`;
   }
 
   // ============================================================
@@ -275,6 +403,7 @@ ${baseLegalTxt}
     abrirComHtml,
     templateEmenda,
     templateDiaria,
+    templateContrato,
     gerarTxtContrato,
   });
 })();

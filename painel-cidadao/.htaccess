@@ -1,18 +1,36 @@
-# Zela Varginha — proteção de arquivos sensíveis
-# Bloqueia acesso direto a tokens, logs, scripts Python e cache
+# Fiscaliza Varginha — proteção de arquivos sensíveis
+# Permite apenas os dados públicos necessários ao navegador.
 
-<FilesMatch "\.(json|log|py|pyc|bat|txt)$">
-  Order allow,deny
-  Deny from all
+Options -Indexes
+RewriteEngine On
+
+# Scripts e arquivos locais nunca devem ser servidos.
+<FilesMatch "\.(log|py|pyc|bat|txt)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
 
-# Libera apenas os arquivos JSON públicos necessários
-<FilesMatch "^data\.js$">
-  Order deny,allow
-  Allow from all
+# Tokens Betha, caso apareçam por engano dentro da pasta pública.
+<FilesMatch "^\.betha-token.*\.json$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
 
-# Bloqueia pastas internas
-RedirectMatch 403 ^/__pycache__/
-RedirectMatch 403 ^/data/
-RedirectMatch 403 ^/\.
+# Bloqueia dotfiles e cache Python.
+RewriteRule ^\. - [F,L]
+RewriteRule ^__pycache__/ - [F,L]
+
+# Bloqueia JSONs intermediários em /data/, mas libera:
+# - /data/manifest.json
+# - /data/chunks/*.json
+RewriteRule ^data/(?!manifest\.json$|chunks/[^/]+\.json$) - [F,L]

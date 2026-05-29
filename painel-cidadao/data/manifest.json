@@ -1,6 +1,10 @@
 {
   "gerado_em": "2026-05-21T14:02:32",
   "chunks": {
+    "atualizacoes": {
+      "arquivo": "data/chunks/atualizacoes.json",
+      "bytes": 397
+    },
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
       "bytes": 76
