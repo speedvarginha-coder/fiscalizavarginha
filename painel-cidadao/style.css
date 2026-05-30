@@ -4581,9 +4581,9 @@ body[data-page="home"] .hub-grid-18 .hub-item {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: none;
-  padding: 28px 16px;
-  gap: 12px;
-  border-radius: 14px;
+  padding: 14px 12px;
+  gap: 8px;
+  border-radius: 12px;
 }
 body[data-page="home"] .hub-grid-18 .hub-item:hover {
   background: rgba(255,255,255,0.15);
@@ -4592,8 +4592,8 @@ body[data-page="home"] .hub-grid-18 .hub-item:hover {
   box-shadow: 0 16px 32px rgba(0,0,0,0.25);
 }
 body[data-page="home"] .hub-grid-18 .hub-item__icon svg {
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   stroke: rgba(255,255,255,0.85);
 }
 body[data-page="home"] .hub-grid-18 .hub-item:hover .hub-item__icon svg {
@@ -4602,7 +4602,7 @@ body[data-page="home"] .hub-grid-18 .hub-item:hover .hub-item__icon svg {
 }
 body[data-page="home"] .hub-grid-18 .hub-item span {
   color: rgba(255,255,255,0.92);
-  font-size: .88rem;
+  font-size: .78rem;
   font-weight: 600;
   line-height: 1.3;
 }
