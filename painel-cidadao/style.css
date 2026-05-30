@@ -4570,8 +4570,8 @@ body[data-page="home"] .hub-full__title {
 }
 body[data-page="home"] .hub-grid-18 {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
 /* Glass cards */
@@ -4581,28 +4581,28 @@ body[data-page="home"] .hub-grid-18 .hub-item {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: none;
-  padding: 20px 10px;
-  gap: 10px;
-  border-radius: 12px;
+  padding: 28px 16px;
+  gap: 12px;
+  border-radius: 14px;
 }
 body[data-page="home"] .hub-grid-18 .hub-item:hover {
   background: rgba(255,255,255,0.15);
   border-color: var(--gold);
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.25);
 }
 body[data-page="home"] .hub-grid-18 .hub-item__icon svg {
-  width: 30px;
-  height: 30px;
-  stroke: rgba(255,255,255,0.82);
+  width: 36px;
+  height: 36px;
+  stroke: rgba(255,255,255,0.85);
 }
 body[data-page="home"] .hub-grid-18 .hub-item:hover .hub-item__icon svg {
   stroke: var(--gold);
-  transform: scale(1.1) rotate(4deg);
+  transform: scale(1.12) rotate(4deg);
 }
 body[data-page="home"] .hub-grid-18 .hub-item span {
-  color: rgba(255,255,255,0.9);
-  font-size: .78rem;
+  color: rgba(255,255,255,0.92);
+  font-size: .88rem;
   font-weight: 600;
   line-height: 1.3;
 }
