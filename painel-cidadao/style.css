@@ -380,19 +380,20 @@ a.brand:hover { text-decoration: none; }
 .audit-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 8px;
+  margin-top: 16px;
 }
 .audit-chips button {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: white;
-  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255,255,255,0.92);
+  padding: 7px 14px;
   border-radius: 100px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background .18s, color .18s, border-color .18s, transform .15s;
   font-family: var(--font-b);
+  white-space: nowrap;
 }
 .audit-chips button:hover {
   background: var(--gold);
