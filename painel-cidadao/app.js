@@ -317,6 +317,22 @@
   renderStatsCamara();
   renderDestaqueCamara();
 
+  // Chips de ano no bloco "O ano em números" — controlam filtroAnoCamara
+  document.querySelectorAll(".ano-chip[data-ano]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var ano = btn.dataset.ano;
+      document.querySelectorAll(".ano-chip").forEach(function (b) {
+        b.classList.toggle("ano-chip--active", b.dataset.ano === ano);
+      });
+      // Sincroniza o select de ano (que dispara o change event completo)
+      var sel = $("filtroAnoCamara");
+      if (sel && sel.value !== ano) {
+        sel.value = ano;
+        sel.dispatchEvent(new Event("change"));
+      }
+    });
+  });
+
   function initGastosPalavraCamara() {
     const box = $("gastosPalavraChaveCamara");
     if (!box) return;
@@ -1383,7 +1399,10 @@
         if (PAGE === "relatorios" && typeof renderRelatorios === "function") renderRelatorios();
         if (PAGE === "pessoal") initPessoal();
         renderEmendas(true);
-        document.dispatchEvent(new Event("camara:anoMudou"));
+        // Mantém chips do bloco "O ano em números" em sincronia
+        document.querySelectorAll(".ano-chip[data-ano]").forEach(function (b) {
+          b.classList.toggle("ano-chip--active", b.dataset.ano === anoCamara());
+        });
       });
     }
     atualizarFiltroEntidades();

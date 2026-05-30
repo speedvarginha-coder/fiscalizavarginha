@@ -103,7 +103,13 @@
     </div>
 
     <div class="block">
-      <h3 class="block__title">O ano em números</h3>
+      <div class="block__titlerow">
+        <h3 class="block__title">O ano em números</h3>
+        <div class="ano-chips" role="group" aria-label="Escolher ano">
+          <button type="button" class="ano-chip ano-chip--active" data-ano="2025">2025</button>
+          <button type="button" class="ano-chip" data-ano="2026">2026</button>
+        </div>
+      </div>
       <div class="stats" id="stats"></div>
 
       <div class="card highlight">
