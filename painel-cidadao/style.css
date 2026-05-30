@@ -5629,6 +5629,114 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .cat-chip:hover { background: #2a3548; }
 }
 
+/* ===== Resumo Semanal — sistema rs-* ===== */
+.rs-filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.rs-filtros__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+.rs-filtros__row--bottom {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+.rs-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rs-grupo--grow { flex: 1; min-width: 180px; }
+.rs-grupo__label {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.rs-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rs-chip {
+  padding: 5px 14px;
+  font-size: .82rem;
+  font-weight: 600;
+  border: 1.5px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+  white-space: nowrap;
+}
+.rs-chip:hover { background: var(--cream); border-color: var(--navy); }
+.rs-chip--active {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+/* Impacto chips — colored dot accent, activate changes border+bg tint */
+.rs-chip--alto  { border-left: 4px solid #b71c1c; }
+.rs-chip--medio { border-left: 4px solid #bf8600; }
+.rs-chip--baixo { border-left: 4px solid var(--muted); }
+.rs-chip--alto.rs-chip--active  { background: #ffebee; color: #b71c1c; border-color: #b71c1c; }
+.rs-chip--medio.rs-chip--active { background: #fff8e1; color: #6d4c00; border-color: #bf8600; }
+.rs-chip--baixo.rs-chip--active { background: var(--cream); color: var(--muted); border-color: var(--muted); }
+.rs-select {
+  padding: 5px 10px;
+  font-size: .85rem;
+  font-family: var(--font-b);
+  border: 1.5px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  width: 100%;
+}
+.rs-select:focus { outline: none; border-color: var(--navy); }
+.rs-contador {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-left: auto;
+  padding-left: 8px;
+}
+/* Custom date range */
+.resumo-custom-range {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 8px 12px;
+  background: var(--cream);
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+/* Mobile */
+@media (max-width: 640px) {
+  .rs-filtros__row { gap: 12px; }
+  .rs-grupo--grow { min-width: 100%; }
+  .rs-contador { margin-left: 0; }
+}
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .rs-chip { background: #1a2535; border-color: #3a4f6a; color: #c8d8eb; }
+  .rs-chip:hover { background: #1e2e42; }
+  .rs-chip--active { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .rs-chip--alto.rs-chip--active  { background: #3b0a0a; color: #ff8a80; border-color: #b71c1c; }
+  .rs-chip--medio.rs-chip--active { background: #2a1f00; color: #ffd54f; border-color: #bf8600; }
+  .rs-chip--baixo.rs-chip--active { background: #1e2535; color: #90a4ae; border-color: #607084; }
+  .rs-select { background: #1a2535; border-color: #3a4f6a; color: #c8d8eb; }
+  .rs-grupo__label { color: #7a9bbf; }
+  .rs-filtros__row--bottom { border-top-color: #2a3f5a; }
+}
+
 /* ================== Tooltip glossário cidadão ================== */
 .glossario-termo {
   border-bottom: 1.5px dotted var(--navy);

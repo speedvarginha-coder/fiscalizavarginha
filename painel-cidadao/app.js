@@ -700,7 +700,7 @@
 
   // ============= RESUMO SEMANAL (camara.html) =============
   if ($("resumoSemanalBlock")) {
-    var _rsEstado = { periodo: "semana", grau: "", vereador: "", dataIni: "", dataFim: "" };
+    var _rsEstado = { periodo: "semana", grau: "", vereador: "", ano: "", dataIni: "", dataFim: "" };
 
     function _rsDatasParaPeriodo(periodo) {
       var hoje = new Date();
@@ -771,7 +771,10 @@
         });
       };
 
-      var mats = _rsFiltrarBase(_rsTodosMaterias());
+      var base = _rsEstado.ano
+        ? (_rsTodosMaterias().filter(function (m) { return (m.ano || "") === _rsEstado.ano; }))
+        : _rsTodosMaterias();
+      var mats = _rsFiltrarBase(base);
       var avisoFallback = "";
 
       // Fallback: período solicitado sem dados → exibe última sessão disponível
@@ -834,29 +837,53 @@
       feedEl.innerHTML = html;
     }
 
-    // Chips período
-    var periodChips = document.querySelectorAll("#resumoPeriodoChips .cat-chip");
-    periodChips.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        periodChips.forEach(function (b) { b.classList.remove("cat-chip--active"); });
-        btn.classList.add("cat-chip--active");
-        _rsEstado.periodo = btn.dataset.periodo;
-        var customRange = $("resumoCustomRange");
-        if (customRange) customRange.hidden = _rsEstado.periodo !== "custom";
-        if (_rsEstado.periodo !== "custom") _rsRenderizar();
+    // Helper: ativa chip exclusivo num grupo
+    function _rsSetChip(grupo, attrName, valor) {
+      grupo.querySelectorAll(".rs-chip").forEach(function (b) {
+        b.classList.toggle("rs-chip--active", (b.dataset[attrName] || "") === valor);
       });
-    });
+    }
 
-    // Chips grau
-    var grauChips = document.querySelectorAll("#resumoGrauChips .cat-chip");
-    grauChips.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        grauChips.forEach(function (b) { b.classList.remove("cat-chip--active"); });
-        btn.classList.add("cat-chip--active");
-        _rsEstado.grau = btn.dataset.grau || "";
-        _rsRenderizar();
+    // Chips ANO
+    var anoChipsEl = $("resumoAnoChips");
+    if (anoChipsEl) {
+      anoChipsEl.querySelectorAll(".rs-chip").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          _rsEstado.ano = btn.dataset.rsano || "";
+          _rsSetChip(anoChipsEl, "rsano", _rsEstado.ano);
+          _rsRenderizar();
+        });
       });
-    });
+    }
+
+    // Chips PERÍODO
+    var periodoChipsEl = $("resumoPeriodoChips");
+    if (periodoChipsEl) {
+      periodoChipsEl.querySelectorAll(".rs-chip").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          _rsEstado.periodo = btn.dataset.periodo;
+          _rsSetChip(periodoChipsEl, "periodo", _rsEstado.periodo);
+          var customRange = $("resumoCustomRange");
+          if (customRange) customRange.hidden = _rsEstado.periodo !== "custom";
+          if (_rsEstado.periodo !== "custom") _rsRenderizar();
+        });
+      });
+    }
+
+    // Chips GRAU — toggle: clicar no ativo deseleciona
+    var grauChipsEl = $("resumoGrauChips");
+    if (grauChipsEl) {
+      grauChipsEl.querySelectorAll(".rs-chip").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var novo = btn.dataset.grau;
+          _rsEstado.grau = (_rsEstado.grau === novo) ? "" : novo; // toggle
+          grauChipsEl.querySelectorAll(".rs-chip").forEach(function (b) {
+            b.classList.toggle("rs-chip--active", b.dataset.grau === _rsEstado.grau);
+          });
+          _rsRenderizar();
+        });
+      });
+    }
 
     // Custom date range
     var aplicarCustom = $("resumoAplicarCustom");
@@ -868,17 +895,19 @@
       });
     }
 
-    // Vereador filter — popula de todos os anos e escuta
+    // Vereador — popula de todos os anos
     var resumoFiltroVer = $("resumoFiltroVer");
     if (resumoFiltroVer) {
       var _rsNomesSet = {};
-      var _rsAnos = (D && D.camara_anos) || {};
-      Object.keys(_rsAnos).forEach(function (a) {
-        (_rsAnos[a].vereadores || []).forEach(function (v) { if (v.nome) _rsNomesSet[v.nome] = 1; });
+      Object.keys((D && D.camara_anos) || {}).forEach(function (a) {
+        ((D.camara_anos[a] && D.camara_anos[a].vereadores) || []).forEach(function (v) {
+          if (v.nome) _rsNomesSet[v.nome] = 1;
+        });
       });
-      var vereNames = Object.keys(_rsNomesSet).sort();
-      resumoFiltroVer.innerHTML = '<option value="">Todos os vereadores</option>' +
-        vereNames.map(function (n) { return '<option value="' + esc(n) + '">' + esc(n) + '</option>'; }).join("");
+      resumoFiltroVer.innerHTML = '<option value="">Todos</option>' +
+        Object.keys(_rsNomesSet).sort().map(function (n) {
+          return '<option value="' + esc(n) + '">' + esc(n) + '</option>';
+        }).join("");
       resumoFiltroVer.addEventListener("change", function () {
         _rsEstado.vereador = resumoFiltroVer.value;
         _rsRenderizar();

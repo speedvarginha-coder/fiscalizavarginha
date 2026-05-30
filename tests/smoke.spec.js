@@ -290,7 +290,7 @@ test.describe("Resumo Semanal", () => {
   test("filtro de período 'Este mês' retorna matérias", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
-    await page.locator('#resumoPeriodoChips .cat-chip[data-periodo="mes"]').click();
+    await page.locator('#resumoPeriodoChips .rs-chip[data-periodo="mes"]').click();
     await page.waitForTimeout(300);
     const counter = page.locator("#resumoContador");
     await expect(counter).toBeAttached();
@@ -300,10 +300,10 @@ test.describe("Resumo Semanal", () => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     // Primeiro expande para 'Este mês' para ter dados
-    await page.locator('#resumoPeriodoChips .cat-chip[data-periodo="mes"]').click();
+    await page.locator('#resumoPeriodoChips .rs-chip[data-periodo="mes"]').click();
     await page.waitForTimeout(300);
     // Filtra só ALTO
-    await page.locator('#resumoGrauChips .cat-chip[data-grau="alto"]').click();
+    await page.locator('#resumoGrauChips .rs-chip[data-grau="alto"]').click();
     await page.waitForTimeout(300);
     // Não deve haver erro no console (já coberto por smoke geral)
     const counter = page.locator("#resumoContador");
