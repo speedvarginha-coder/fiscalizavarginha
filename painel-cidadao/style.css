@@ -4574,6 +4574,25 @@ body[data-page="home"] .hub-grid-18 {
   gap: 12px;
 }
 
+/* Zigue-zague: cards wide ocupam 2 colunas, alternando posição */
+body[data-page="home"] .hub-grid-18 .hub-item--wide {
+  grid-column: span 2;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+  padding: 28px 24px !important;
+}
+body[data-page="home"] .hub-grid-18 .hub-item--wide .hub-item__icon svg {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+body[data-page="home"] .hub-grid-18 .hub-item--wide span {
+  font-size: .98rem !important;
+  text-align: left;
+  align-self: center;
+}
+
 /* Glass cards */
 body[data-page="home"] .hub-grid-18 .hub-item {
   background: rgba(255,255,255,0.08);
@@ -4612,11 +4631,22 @@ body[data-page="home"] .hub-grid-18 .hub-item span {
   body[data-page="home"] .hub-grid-18 {
     grid-template-columns: repeat(3, 1fr);
   }
+  body[data-page="home"] .hub-grid-18 .hub-item--wide {
+    grid-column: span 2;
+  }
 }
-@media (max-width: 480px) {
+@media (max-width: 580px) {
   body[data-page="home"] .hub-grid-18 {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
+  }
+  body[data-page="home"] .hub-grid-18 .hub-item--wide {
+    grid-column: span 2;
+    flex-direction: column;
+    padding: 20px 14px !important;
+  }
+  body[data-page="home"] .hub-grid-18 .hub-item--wide span {
+    text-align: center;
   }
 }
 
