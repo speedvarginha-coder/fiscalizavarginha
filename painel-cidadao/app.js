@@ -710,6 +710,18 @@
       return { ini: toISO(ini), fim: toISO(fim) };
     }
 
+    // Usa TODAS as matérias de todos os anos — o filtro é por data real,
+    // não pelo ano selecionado no dropdown de vereadores/emendas.
+    function _rsTodosMaterias() {
+      var anos = (D && D.camara_anos) || {};
+      var todas = [];
+      Object.keys(anos).forEach(function (a) {
+        var mats = (anos[a] && anos[a].materias) || [];
+        mats.forEach(function (m) { todas.push(m); });
+      });
+      return todas;
+    }
+
     function _rsRenderizar() {
       var feedEl = $("resumoSemanalFeed");
       var emptyEl = $("resumoSemanalEmpty");
@@ -717,11 +729,11 @@
       if (!feedEl) return;
 
       var intervalo = _rsDatasParaPeriodo(_rsEstado.periodo);
-      var mats = camMaterias().filter(function (m) {
+      var mats = _rsTodosMaterias().filter(function (m) {
         if (!m.data) return false;
         if (m.data < intervalo.ini || m.data > intervalo.fim) return false;
         if (_rsEstado.grau && m.grau !== _rsEstado.grau) return false;
-        if (_rsEstado.vereador && !m.autor.includes(_rsEstado.vereador)) return false;
+        if (_rsEstado.vereador && !(m.autor || "").includes(_rsEstado.vereador)) return false;
         return true;
       });
 
@@ -793,10 +805,15 @@
       });
     }
 
-    // Vereador filter — popula e escuta
+    // Vereador filter — popula de todos os anos e escuta
     var resumoFiltroVer = $("resumoFiltroVer");
     if (resumoFiltroVer) {
-      var vereNames = camVereadores().map(function (v) { return v.nome; }).sort();
+      var _rsNomesSet = {};
+      var _rsAnos = (D && D.camara_anos) || {};
+      Object.keys(_rsAnos).forEach(function (a) {
+        (_rsAnos[a].vereadores || []).forEach(function (v) { if (v.nome) _rsNomesSet[v.nome] = 1; });
+      });
+      var vereNames = Object.keys(_rsNomesSet).sort();
       resumoFiltroVer.innerHTML = '<option value="">Todos os vereadores</option>' +
         vereNames.map(function (n) { return '<option value="' + esc(n) + '">' + esc(n) + '</option>'; }).join("");
       resumoFiltroVer.addEventListener("change", function () {
@@ -804,9 +821,6 @@
         _rsRenderizar();
       });
     }
-
-    // Re-renderiza quando muda o ano global
-    document.addEventListener("camara:anoMudou", _rsRenderizar);
 
     _rsRenderizar();
   }
