@@ -4570,7 +4570,7 @@ body[data-page="home"] .hub-full__title {
 }
 body[data-page="home"] .hub-grid-18 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
@@ -4608,11 +4608,6 @@ body[data-page="home"] .hub-grid-18 .hub-item span {
 }
 
 /* ── Mobile ── */
-@media (max-width: 960px) {
-  body[data-page="home"] .hub-grid-18 {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
 @media (max-width: 480px) {
   body[data-page="home"] .hub-grid-18 {
     grid-template-columns: repeat(2, 1fr);
