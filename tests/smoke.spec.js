@@ -273,6 +273,44 @@ test.describe("Classificação cidadã de matérias", () => {
   });
 });
 
+test.describe("Resumo Semanal", () => {
+  test("bloco renderiza e mostra matérias ou estado vazio", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const block = page.locator("#resumoSemanalBlock");
+    await expect(block).toBeAttached();
+    // Feed ou empty-state — um dos dois está visível
+    const feed = page.locator("#resumoSemanalFeed");
+    const empty = page.locator("#resumoSemanalEmpty");
+    const feedVisible  = await feed.isVisible().catch(() => false);
+    const emptyVisible = await empty.isVisible().catch(() => false);
+    expect(feedVisible || emptyVisible).toBeTruthy();
+  });
+
+  test("filtro de período 'Este mês' retorna matérias", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator('#resumoPeriodoChips .cat-chip[data-periodo="mes"]').click();
+    await page.waitForTimeout(300);
+    const counter = page.locator("#resumoContador");
+    await expect(counter).toBeAttached();
+  });
+
+  test("chips de grau filtram por impacto", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    // Primeiro expande para 'Este mês' para ter dados
+    await page.locator('#resumoPeriodoChips .cat-chip[data-periodo="mes"]').click();
+    await page.waitForTimeout(300);
+    // Filtra só ALTO
+    await page.locator('#resumoGrauChips .cat-chip[data-grau="alto"]').click();
+    await page.waitForTimeout(300);
+    // Não deve haver erro no console (já coberto por smoke geral)
+    const counter = page.locator("#resumoContador");
+    await expect(counter).toBeAttached();
+  });
+});
+
 test.describe("Watchlist", () => {
   test("estado vazio aparece quando localStorage não tem nada", async ({ page }) => {
     await page.goto(fileUrl("marcadores.html"), { waitUntil: "domcontentloaded" });

@@ -159,6 +159,45 @@
       <div id="vereadores" class="grid grid--vereadores"></div>
     </div>
 
+    <!-- ===== RESUMO SEMANAL ===== -->
+    <div class="block" id="resumoSemanalBlock">
+      <h3 class="block__title">Resumo Semanal — O que a Câmara fez</h3>
+      <p class="block__lead">
+        O cidadão vota a cada 4 anos, mas deve fiscalizar toda semana.
+        Veja as matérias apresentadas no período escolhido, classificadas por grau de impacto.
+      </p>
+
+      <div class="filterbar filterbar--semanal">
+        <div id="resumoPeriodoChips" class="cat-chips" role="group" aria-label="Filtrar por período">
+          <button type="button" class="cat-chip cat-chip--active" data-periodo="semana">Esta semana</button>
+          <button type="button" class="cat-chip" data-periodo="2semanas">Últimas 2 semanas</button>
+          <button type="button" class="cat-chip" data-periodo="mes">Este mês</button>
+          <button type="button" class="cat-chip" data-periodo="custom">Período livre</button>
+        </div>
+        <div id="resumoCustomRange" class="resumo-custom-range" hidden>
+          <label>De <input type="date" id="resumoDataInicio" aria-label="Data início"></label>
+          <label>até <input type="date" id="resumoDataFim" aria-label="Data fim"></label>
+          <button type="button" id="resumoAplicarCustom" class="btn-small">Filtrar</button>
+        </div>
+        <div id="resumoGrauChips" class="cat-chips" role="group" aria-label="Filtrar por grau de impacto">
+          <button type="button" class="cat-chip cat-chip--active" data-grau="">Todos os graus</button>
+          <button type="button" class="cat-chip cat-chip--alto" data-grau="alto">ALTO impacto</button>
+          <button type="button" class="cat-chip cat-chip--medio" data-grau="medio">MÉDIO impacto</button>
+          <button type="button" class="cat-chip cat-chip--baixo" data-grau="baixo">Simbólicos</button>
+        </div>
+        <select id="resumoFiltroVer" aria-label="Filtrar por vereador">
+          <option value="">Todos os vereadores</option>
+        </select>
+        <span id="resumoContador" class="filterbar__count"></span>
+      </div>
+
+      <div id="resumoSemanalFeed" class="resumo-semanal-feed"></div>
+      <div id="resumoSemanalEmpty" class="empty-state" hidden>
+        <p>Nenhuma matéria encontrada neste período. Tente ampliar o intervalo ou escolher "Período livre".</p>
+      </div>
+    </div>
+    <!-- ===== FIM RESUMO SEMANAL ===== -->
+
     <div class="block">
       <h3 class="block__title">Emendas Impositivas — promessa × pagamento</h3>
       <p class="block__lead">

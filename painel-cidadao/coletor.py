@@ -129,6 +129,7 @@ def _impacto_zero(tipo: str, ementa: str) -> tuple[bool, str]:
 
 def _linha_padrao_sapl(r: dict) -> dict:
     return {
+        "id": str(r.get("ID") or r.get("id") or ""),
         "ano": r.get("Ano") or r.get("ano") or "",
         "numero": r.get("NÃºmero") or r.get("Número") or r.get("numero") or "",
         "tipo_sigla": r.get("Tipo de MatÃ©ria Legislativa/Sigla") or r.get("Tipo de Matéria Legislativa/Sigla") or r.get("tipo__sigla") or "",
@@ -137,6 +138,32 @@ def _linha_padrao_sapl(r: dict) -> dict:
         "texto_original": r.get("Texto Original") or r.get("texto_original") or "",
         "ementa": r.get("Ementa") or r.get("ementa") or "",
     }
+
+
+def _fetch_datas_sapl(anos: list[int]) -> dict[str, str]:
+    """Pagina a API SAPL e retorna {id: data_apresentacao} para os anos pedidos.
+    Tolerante a falha de rede — retorna o que conseguiu."""
+    BASE = "http://sapl.varginha.mg.leg.br/api/materia/materialegislativa/"
+    datas: dict[str, str] = {}
+    for ano in anos:
+        url: str | None = f"{BASE}?ano={ano}&page=1"
+        paginas = 0
+        while url:
+            try:
+                d = _http_get_json(url, timeout=20)
+            except Exception as e:
+                print(f"  ! SAPL API {ano} p{paginas+1}: {e}")
+                break
+            for item in d.get("results", []):
+                iid = str(item.get("id", ""))
+                data = item.get("data_apresentacao") or item.get("data_publicacao") or ""
+                if iid and data:
+                    datas[iid] = data[:10]  # YYYY-MM-DD
+            pag = d.get("pagination", {})
+            url = pag.get("links", {}).get("next")
+            paginas += 1
+        print(f"  ✓ SAPL API {ano}: {paginas} páginas, {len(datas)} datas acumuladas")
+    return datas
 
 
 def _load_sapl_rows(path: Path) -> list[dict]:
@@ -165,16 +192,19 @@ def _autor_excluido(nome: str) -> bool:
     )
 
 
-def _processa_sapl_rows(ano: int, rows: list[dict]) -> dict:
+def _processa_sapl_rows(ano: int, rows: list[dict],
+                        datas_sapl: dict[str, str] | None = None) -> dict:
     tipos = Counter(r["tipo_descricao"] for r in rows)
     ver_tipo: dict[str, Counter] = defaultdict(Counter)
     ver_zero: dict[str, Counter] = defaultdict(Counter)
     materias = []
+    datas_sapl = datas_sapl or {}
 
     for r in rows:
         tipo = r["tipo_descricao"]
         zero, motivo = _impacto_zero(tipo, r["ementa"])
         materia = {
+            "id": r.get("id", ""),
             "ano": r["ano"],
             "numero": r["numero"],
             "tipo": tipo,
@@ -182,6 +212,7 @@ def _processa_sapl_rows(ano: int, rows: list[dict]) -> dict:
             "autor": r["autoria"],
             "pdf": r["texto_original"],
             "ementa": r["ementa"],
+            "data": datas_sapl.get(r.get("id", ""), ""),
             "impacto_zero": zero,
             "motivo_impacto_zero": motivo,
         }
@@ -387,11 +418,22 @@ def _processa_sapl() -> dict:
         "temas_top": temas,
     }
 
-    ano_2025 = _processa_sapl_rows(2025, [_linha_padrao_sapl(r) for r in rows])
-    camara_anos = {"2025": ano_2025}
+    rows_2025 = [_linha_padrao_sapl(r) for r in rows]
     rows_2026 = _load_sapl_rows(JSON_SAPL_2026)
+
+    # Busca datas na API SAPL (falha silenciosa — dado offline continua funcionando)
+    anos_com_dados = [2025] + ([2026] if rows_2026 else [])
+    datas_sapl: dict[str, str] = {}
+    try:
+        datas_sapl = _fetch_datas_sapl(anos_com_dados)
+        print(f"  ✓ {len(datas_sapl)} datas obtidas da API SAPL")
+    except Exception as e:
+        print(f"  ! API SAPL indisponível, materias sem data: {e}")
+
+    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl)
+    camara_anos = {"2025": ano_2025}
     if rows_2026:
-        camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026)
+        camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026, datas_sapl)
         print(f"  {len(rows_2026)} materias de 2026 carregadas.")
 
     return {

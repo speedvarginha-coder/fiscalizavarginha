@@ -5467,12 +5467,54 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   background: var(--gold);
   color: var(--navy-dk);
 }
+/* alias used by Resumo Semanal chips */
+.cat-chip--active {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy-dk);
+}
+.cat-chip--alto  { border-left: 3px solid #ef9a9a; }
+.cat-chip--medio { border-left: 3px solid #ffd54f; }
+.cat-chip--baixo { border-left: 3px solid #cfd8dc; }
 .cat-chip--clear {
   background: transparent;
   border-style: dashed;
   color: var(--muted);
 }
 .cat-chip--clear:hover { color: var(--red); border-color: var(--red); }
+
+/* ===== Resumo Semanal ===== */
+.filterbar--semanal { flex-direction: column; align-items: flex-start; gap: 10px; }
+.btn-small {
+  padding: 4px 12px; font-size: .82rem; font-weight: 600;
+  border-radius: 6px; border: 1px solid var(--navy); background: var(--navy);
+  color: #fff; cursor: pointer;
+}
+.btn-small:hover { background: var(--navy-dk); }
+.resumo-custom-range {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  font-size: .88rem; color: var(--text);
+}
+.resumo-custom-range input[type="date"] {
+  border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px;
+  font-size: .88rem; background: var(--white);
+}
+.resumo-semanal-feed { display: flex; flex-direction: column; gap: 0; }
+.resumo-semanal__grau-titulo {
+  font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: 10px 0 6px; margin: 16px 0 0; color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+.resumo-semanal__grau-titulo:first-child { border-top: none; margin-top: 0; }
+.resumo-semanal__grau-titulo--alto  { color: #b71c1c; }
+.resumo-semanal__grau-titulo--medio { color: #6d4c00; }
+.resumo-semanal__grau-titulo--baixo { color: var(--muted); }
+@media (prefers-color-scheme: dark) {
+  .cat-chip--active { background: var(--navy); }
+  .resumo-semanal__grau-titulo--alto  { color: #ff8a80; }
+  .resumo-semanal__grau-titulo--medio { color: #ffd54f; }
+  .resumo-custom-range input[type="date"] { background: var(--cream); }
+}
 @media (prefers-color-scheme: dark) {
   .cat-chips { background: var(--white); border-color: var(--line); }
   .cat-chip { background: var(--cream); }

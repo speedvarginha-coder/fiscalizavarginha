@@ -682,6 +682,135 @@
     renderVereadores();
   }
 
+  // ============= RESUMO SEMANAL (camara.html) =============
+  if ($("resumoSemanalBlock")) {
+    var _rsEstado = { periodo: "semana", grau: "", vereador: "", dataIni: "", dataFim: "" };
+
+    function _rsDatasParaPeriodo(periodo) {
+      var hoje = new Date();
+      var ini, fim;
+      if (periodo === "semana") {
+        var dow = hoje.getDay(); // 0=dom
+        var diasAtras = dow === 0 ? 6 : dow - 1; // segunda-feira
+        ini = new Date(hoje); ini.setDate(hoje.getDate() - diasAtras);
+        fim = hoje;
+      } else if (periodo === "2semanas") {
+        ini = new Date(hoje); ini.setDate(hoje.getDate() - 13);
+        fim = hoje;
+      } else if (periodo === "mes") {
+        ini = new Date(hoje.getFullYear(), hoje.getMonth(), 1);
+        fim = hoje;
+      } else {
+        // custom — usa _rsEstado
+        ini = _rsEstado.dataIni ? new Date(_rsEstado.dataIni) : new Date(hoje.getFullYear(), 0, 1);
+        fim = _rsEstado.dataFim ? new Date(_rsEstado.dataFim) : hoje;
+      }
+      // YYYY-MM-DD strings para comparação direta
+      var toISO = function (d) { return d.toISOString().slice(0, 10); };
+      return { ini: toISO(ini), fim: toISO(fim) };
+    }
+
+    function _rsRenderizar() {
+      var feedEl = $("resumoSemanalFeed");
+      var emptyEl = $("resumoSemanalEmpty");
+      var contEl = $("resumoContador");
+      if (!feedEl) return;
+
+      var intervalo = _rsDatasParaPeriodo(_rsEstado.periodo);
+      var mats = camMaterias().filter(function (m) {
+        if (!m.data) return false;
+        if (m.data < intervalo.ini || m.data > intervalo.fim) return false;
+        if (_rsEstado.grau && m.grau !== _rsEstado.grau) return false;
+        if (_rsEstado.vereador && !m.autor.includes(_rsEstado.vereador)) return false;
+        return true;
+      });
+
+      // Ordena: alto → medio → baixo, depois por data desc
+      var ordemGrau = { alto: 0, medio: 1, baixo: 2 };
+      mats.sort(function (a, b) {
+        var gd = (ordemGrau[a.grau] || 2) - (ordemGrau[b.grau] || 2);
+        if (gd !== 0) return gd;
+        return (b.data || "") < (a.data || "") ? -1 : 1;
+      });
+
+      if (contEl) contEl.textContent = mats.length + " matéria" + (mats.length !== 1 ? "s" : "");
+      emptyEl.hidden = mats.length > 0;
+      feedEl.hidden = mats.length === 0;
+
+      if (mats.length === 0) { feedEl.innerHTML = ""; return; }
+
+      var html = "";
+      var grauAtual = null;
+      mats.forEach(function (m) {
+        if (m.grau !== grauAtual) {
+          grauAtual = m.grau;
+          var tituloGrau = grauAtual === "alto" ? "ALTO impacto — Projetos de lei estruturantes"
+                         : grauAtual === "medio" ? "MÉDIO impacto — Pedidos práticos e leis gerais"
+                         : "Simbólicos / administrativos";
+          html += '<h4 class="resumo-semanal__grau-titulo resumo-semanal__grau-titulo--' + grauAtual + '">' + tituloGrau + '</h4>';
+        }
+        if (window.ZELA.materiaCard) {
+          html += window.ZELA.materiaCard(m, esc);
+        } else {
+          // fallback mínimo
+          html += '<article class="mat-card"><span class="mat-ementa">' + esc(m.ementa || "") + '</span></article>';
+        }
+      });
+      feedEl.innerHTML = html;
+    }
+
+    // Chips período
+    var periodChips = document.querySelectorAll("#resumoPeriodoChips .cat-chip");
+    periodChips.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        periodChips.forEach(function (b) { b.classList.remove("cat-chip--active"); });
+        btn.classList.add("cat-chip--active");
+        _rsEstado.periodo = btn.dataset.periodo;
+        var customRange = $("resumoCustomRange");
+        if (customRange) customRange.hidden = _rsEstado.periodo !== "custom";
+        if (_rsEstado.periodo !== "custom") _rsRenderizar();
+      });
+    });
+
+    // Chips grau
+    var grauChips = document.querySelectorAll("#resumoGrauChips .cat-chip");
+    grauChips.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        grauChips.forEach(function (b) { b.classList.remove("cat-chip--active"); });
+        btn.classList.add("cat-chip--active");
+        _rsEstado.grau = btn.dataset.grau || "";
+        _rsRenderizar();
+      });
+    });
+
+    // Custom date range
+    var aplicarCustom = $("resumoAplicarCustom");
+    if (aplicarCustom) {
+      aplicarCustom.addEventListener("click", function () {
+        _rsEstado.dataIni = ($("resumoDataInicio") || {}).value || "";
+        _rsEstado.dataFim = ($("resumoDataFim") || {}).value || "";
+        _rsRenderizar();
+      });
+    }
+
+    // Vereador filter — popula e escuta
+    var resumoFiltroVer = $("resumoFiltroVer");
+    if (resumoFiltroVer) {
+      var vereNames = camVereadores().map(function (v) { return v.nome; }).sort();
+      resumoFiltroVer.innerHTML = '<option value="">Todos os vereadores</option>' +
+        vereNames.map(function (n) { return '<option value="' + esc(n) + '">' + esc(n) + '</option>'; }).join("");
+      resumoFiltroVer.addEventListener("change", function () {
+        _rsEstado.vereador = resumoFiltroVer.value;
+        _rsRenderizar();
+      });
+    }
+
+    // Re-renderiza quando muda o ano global
+    document.addEventListener("camara:anoMudou", _rsRenderizar);
+
+    _rsRenderizar();
+  }
+
   // ============= EMENDAS (camara.html) com cruzamento =============
   let renderEmendas = null;
   let emendasShown  = 30;
@@ -1240,6 +1369,7 @@
         if (PAGE === "relatorios" && typeof renderRelatorios === "function") renderRelatorios();
         if (PAGE === "pessoal") initPessoal();
         renderEmendas(true);
+        document.dispatchEvent(new Event("camara:anoMudou"));
       });
     }
     atualizarFiltroEntidades();
