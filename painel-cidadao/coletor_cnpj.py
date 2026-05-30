@@ -12,35 +12,68 @@ import re
 import time
 import urllib.request
 
-OPEN_CNPJ = "https://publica.cnpj.ws/cnpj/{cnpj}"
+# Fontes públicas com schemas distintos; tentadas em ordem. Se a primeira
+# falhar (timeout, rate-limit, WinError 10060), cai para a próxima.
+FONTES_CNPJ = [
+    ("cnpj.ws",   "https://publica.cnpj.ws/cnpj/{cnpj}"),
+    ("brasilapi", "https://brasilapi.com.br/api/cnpj/v1/{cnpj}"),
+]
 
 
 def _digits(cnpj: str) -> str:
     return re.sub(r"\D", "", cnpj or "")
 
 
-def _get_json(url: str, timeout: int = 30):
-    req = urllib.request.Request(
-        url,
-        headers={"Accept": "application/json", "User-Agent": "ZelaVarginha/1.0 (controle-social)"},
-    )
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8", errors="replace"))
+def _get_json(url: str, timeout: int = 30, tentativas: int = 3):
+    """GET JSON com retry e backoff exponencial — sobrevive a timeout transitório."""
+    erro = None
+    for i in range(tentativas):
+        try:
+            req = urllib.request.Request(
+                url,
+                headers={"Accept": "application/json", "User-Agent": "FiscalizaVarginha/1.0 (controle-social)"},
+            )
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8", errors="replace"))
+        except Exception as e:  # noqa: BLE001 — relança após esgotar tentativas
+            erro = e
+            if i < tentativas - 1:
+                time.sleep(2 ** i)  # 1s, 2s, 4s
+    raise erro
 
 
-def _normaliza(cnpj: str, payload: dict) -> dict:
-    # cnpj.ws retorna: razao_social, nome_fantasia, descricao_situacao_cadastral,
-    # data_inicio_atividade, cnae_fiscal_principal{codigo,descricao}, municipio, uf
+def _consulta(cnpj: str) -> dict:
+    """Tenta cada fonte em ordem; retorna o payload normalizado da primeira que responder."""
+    ultimo_erro = None
+    for nome, tpl in FONTES_CNPJ:
+        try:
+            return _normaliza(cnpj, _get_json(tpl.format(cnpj=cnpj)), fonte=nome)
+        except Exception as e:  # noqa: BLE001
+            ultimo_erro = e
+    raise ultimo_erro
+
+
+def _normaliza(cnpj: str, payload: dict, fonte: str = "cnpj.ws") -> dict:
+    # cnpj.ws:   razao_social, nome_fantasia, descricao_situacao_cadastral,
+    #            data_inicio_atividade, cnae_fiscal_principal{codigo,descricao}, municipio, uf
+    # brasilapi: razao_social, nome_fantasia, descricao_situacao_cadastral,
+    #            data_inicio_atividade, cnae_fiscal_descricao, municipio, uf
+    cnae = (payload.get("cnae_fiscal_principal") or {}).get("descricao") \
+        or payload.get("cnae_fiscal_descricao") or ""
+    rotulo = {
+        "cnpj.ws":   "CNPJ.ws / base pública da Receita Federal",
+        "brasilapi": "BrasilAPI / base pública da Receita Federal",
+    }.get(fonte, "base pública da Receita Federal")
     return {
         "cnpj": cnpj,
         "razao_social":  payload.get("razao_social")  or "",
         "nome_fantasia": payload.get("nome_fantasia")  or "",
         "situacao":      payload.get("descricao_situacao_cadastral") or "",
         "abertura":      payload.get("data_inicio_atividade") or "",
-        "cnae":          (payload.get("cnae_fiscal_principal") or {}).get("descricao") or "",
+        "cnae":          cnae,
         "municipio":     payload.get("municipio") or "",
         "uf":            payload.get("uf") or "",
-        "fonte":         "CNPJ.ws / base pública da Receita Federal",
+        "fonte":         rotulo,
     }
 
 
@@ -59,9 +92,8 @@ def coletar(emendas: list[dict], limite: int = 40) -> dict:
     erros = []
     for cnpj in cnpjs:
         try:
-            payload = _get_json(OPEN_CNPJ.format(cnpj=cnpj))
             empresas.append({
-                **_normaliza(cnpj, payload),
+                **_consulta(cnpj),
                 "valor_emendas": round(valores[cnpj], 2),
                 "nomes_no_sapl": sorted(x for x in nomes.get(cnpj, set()) if x)[:5],
             })
