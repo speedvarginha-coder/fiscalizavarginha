@@ -5743,6 +5743,98 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .rs-filtros__row--bottom { border-top-color: #2a3f5a; }
 }
 
+/* ================== Faixa LOA 2026 ================== */
+.loa-strip {
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 0;
+}
+.loa-strip__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.loa-strip__titulo {
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--navy);
+}
+.loa-strip__fonte {
+  font-size: .7rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.loa-strip__fonte:hover { text-decoration: underline; color: var(--navy); }
+.loa-strip__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+.loa-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 12px;
+  border-left: 4px solid var(--navy);
+}
+.loa-card__valor {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--ink);
+  font-family: var(--font-h);
+  line-height: 1.2;
+}
+.loa-card__label {
+  display: block;
+  font-size: .7rem;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+.loa-card__pct {
+  font-weight: 700;
+  color: var(--navy);
+}
+.loa-card__pct--alerta { color: #c93632; }
+
+.loa-card--total  { border-left-color: var(--navy); }
+.loa-card--saude  { border-left-color: #c62828; }
+.loa-card--edu    { border-left-color: #1565c0; }
+.loa-card--pessoal{ border-left-color: #bf8600; }
+.loa-card--camara { border-left-color: var(--teal); }
+.loa-card--inv    { border-left-color: #c93632; }
+
+.loa-card--total .loa-card__valor  { color: var(--navy); }
+.loa-card--saude .loa-card__valor  { color: #c62828; }
+.loa-card--edu .loa-card__valor    { color: #1565c0; }
+.loa-card--pessoal .loa-card__valor{ color: #bf8600; }
+.loa-card--camara .loa-card__valor { color: var(--teal); }
+
+@media (max-width: 960px) {
+  .loa-strip__grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .loa-strip__grid { grid-template-columns: repeat(2, 1fr); }
+  .loa-card__valor { font-size: .95rem; }
+}
+@media (prefers-color-scheme: dark) {
+  .loa-strip { background: #111d2a; border-color: #1e3048; }
+  .loa-card { background: #15243a; border-color: #1e3048; }
+  .loa-card__valor { color: #e0ecff; }
+  .loa-card--total .loa-card__valor  { color: #7ab0f5; }
+  .loa-card--saude .loa-card__valor  { color: #ff8a80; }
+  .loa-card--edu .loa-card__valor    { color: #82b1ff; }
+  .loa-card--pessoal .loa-card__valor{ color: #ffd54f; }
+  .loa-card--camara .loa-card__valor { color: #69f0ae; }
+}
+
 /* ================== Tooltip glossário cidadão ================== */
 .glossario-termo {
   border-bottom: 1.5px dotted var(--navy);
