@@ -4532,21 +4532,100 @@ body {
 
 body[data-page="home"] .hero--modern {
   min-height: auto;
-  padding: 44px 0 48px;
+  padding: 52px 0 56px;
 }
 
+/* ── Duas colunas: conteúdo ← → hub ── */
+body[data-page="home"] .hero--modern .container {
+  display: flex;
+  align-items: flex-start;
+  gap: 52px;
+}
+body[data-page="home"] .hero__content {
+  flex: 1;
+  min-width: 0;
+}
 body[data-page="home"] .hero__title {
-  font-size: clamp(2.1rem, 4.8vw, 3.7rem);
-  max-width: 860px;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  max-width: 560px;
+  margin-bottom: 16px;
 }
-
 body[data-page="home"] .hero__lead {
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+body[data-page="home"] .search-box {
+  margin-top: 0;
+}
+body[data-page="home"] .search {
+  max-width: 100%;
+}
+body[data-page="home"] .audit-chips {
+  max-width: 100%;
 }
 
+/* ── Hub — coluna direita ── */
 body[data-page="home"] .hub-v2 {
-  margin-top: 28px;
+  flex: 0 0 400px;
+  margin-top: 32px;  /* alinha visualmente com o título */
+}
+body[data-page="home"] .hub-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+/* Glass cards — integram com fundo hero */
+body[data-page="home"] .hub-item {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: none;
+  padding: 26px 14px;
+  gap: 12px;
+}
+body[data-page="home"] .hub-item:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: var(--gold);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.25);
+}
+body[data-page="home"] .hub-item__icon svg {
+  width: 38px;
+  height: 38px;
+  stroke: rgba(255,255,255,0.85);
+}
+body[data-page="home"] .hub-item:hover .hub-item__icon svg {
+  stroke: var(--gold);
+  transform: scale(1.12) rotate(4deg);
+}
+body[data-page="home"] .hub-item span {
+  color: rgba(255,255,255,0.92);
+  font-size: .92rem;
+}
+body[data-page="home"] .hub-v2__title {
+  color: rgba(255,255,255,0.55);
+  font-size: .72rem;
+  letter-spacing: 2.5px;
+  margin-bottom: 16px;
+}
+
+/* ── Mobile: volta a coluna única ── */
+@media (max-width: 960px) {
+  body[data-page="home"] .hero--modern .container {
+    flex-direction: column;
+    gap: 32px;
+  }
+  body[data-page="home"] .hub-v2 {
+    flex: none;
+    width: 100%;
+    margin-top: 0;
+  }
+  body[data-page="home"] .hub-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 body[data-page="home"] .section--alt {
