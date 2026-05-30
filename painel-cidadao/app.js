@@ -738,6 +738,22 @@
       return todas;
     }
 
+    // Acha a data mais recente com matéria no dataset inteiro.
+    function _rsUltimaDataDisponivel() {
+      var ultima = "";
+      _rsTodosMaterias().forEach(function (m) {
+        if ((m.data || "") > ultima) ultima = m.data;
+      });
+      return ultima;
+    }
+
+    // Formata data ISO para dd/mm/aaaa
+    function _rsFmtData(iso) {
+      if (!iso) return "";
+      var p = iso.split("-");
+      return p[2] + "/" + p[1] + "/" + p[0];
+    }
+
     function _rsRenderizar() {
       var feedEl = $("resumoSemanalFeed");
       var emptyEl = $("resumoSemanalEmpty");
@@ -745,13 +761,41 @@
       if (!feedEl) return;
 
       var intervalo = _rsDatasParaPeriodo(_rsEstado.periodo);
-      var mats = _rsTodosMaterias().filter(function (m) {
-        if (!m.data) return false;
-        if (m.data < intervalo.ini || m.data > intervalo.fim) return false;
-        if (_rsEstado.grau && m.grau !== _rsEstado.grau) return false;
-        if (_rsEstado.vereador && !(m.autor || "").includes(_rsEstado.vereador)) return false;
-        return true;
-      });
+      var _rsFiltrarBase = function (lista) {
+        return lista.filter(function (m) {
+          if (!m.data) return false;
+          if (m.data < intervalo.ini || m.data > intervalo.fim) return false;
+          if (_rsEstado.grau && m.grau !== _rsEstado.grau) return false;
+          if (_rsEstado.vereador && !(m.autor || "").includes(_rsEstado.vereador)) return false;
+          return true;
+        });
+      };
+
+      var mats = _rsFiltrarBase(_rsTodosMaterias());
+      var avisoFallback = "";
+
+      // Fallback: período solicitado sem dados → exibe última sessão disponível
+      // (não esconde trabalho da Câmara por lacuna de coleta)
+      if (mats.length === 0 && _rsEstado.periodo !== "custom") {
+        var ultimaData = _rsUltimaDataDisponivel();
+        if (ultimaData) {
+          // Janela de 7 dias terminando na última data disponível
+          var fimFb = ultimaData;
+          var iniFbD = new Date(ultimaData);
+          iniFbD.setDate(iniFbD.getDate() - 6);
+          var iniFb = iniFbD.toISOString().slice(0, 10);
+          // Aplica só o filtro de grau e vereador, não de data (período de fallback)
+          mats = _rsTodosMaterias().filter(function (m) {
+            if (!m.data || m.data < iniFb || m.data > fimFb) return false;
+            if (_rsEstado.grau && m.grau !== _rsEstado.grau) return false;
+            if (_rsEstado.vereador && !(m.autor || "").includes(_rsEstado.vereador)) return false;
+            return true;
+          });
+          if (mats.length > 0) {
+            avisoFallback = "Nenhuma sessão no período escolhido. Exibindo a última sessão disponível (" + _rsFmtData(ultimaData) + ").";
+          }
+        }
+      }
 
       // Ordena: alto → medio → baixo, depois por data desc
       var ordemGrau = { alto: 0, medio: 1, baixo: 2 };
@@ -768,6 +812,10 @@
       if (mats.length === 0) { feedEl.innerHTML = ""; return; }
 
       var html = "";
+      // Aviso quando período escolhido não tem dados — fallback para última sessão
+      if (avisoFallback) {
+        html += '<div class="resumo-semanal__aviso">' + esc(avisoFallback) + '</div>';
+      }
       var grauAtual = null;
       mats.forEach(function (m) {
         if (m.grau !== grauAtual) {
@@ -780,7 +828,6 @@
         if (window.ZELA.materiaCard) {
           html += window.ZELA.materiaCard(m, esc);
         } else {
-          // fallback mínimo
           html += '<article class="mat-card"><span class="mat-ementa">' + esc(m.ementa || "") + '</span></article>';
         }
       });

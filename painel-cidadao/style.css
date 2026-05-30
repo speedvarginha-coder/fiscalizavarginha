@@ -5521,6 +5521,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   font-size: .88rem; background: var(--white);
 }
 .resumo-semanal-feed { display: flex; flex-direction: column; gap: 0; }
+.resumo-semanal__aviso {
+  background: #fff8e1; border-left: 4px solid #ffd54f; border-radius: 4px;
+  padding: 8px 12px; font-size: .85rem; color: #5a4500;
+  margin-bottom: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  .resumo-semanal__aviso { background: #2a2300; color: #ffd54f; border-color: #ffd54f; }
+}
 .resumo-semanal__grau-titulo {
   font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
   padding: 10px 0 6px; margin: 16px 0 0; color: var(--muted);
