@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v21 (per-capita + onboarding + share) */
-const CACHE = "fiscaliza-v21";
+/* Fiscaliza Varginha — Service Worker v22 (classificação cidadã de matérias) */
+const CACHE = "fiscaliza-v22";
 const STATIC = [
   "./",
   "./index.html",
@@ -25,6 +25,7 @@ const STATIC = [
   "./modules/relatorios.js",
   "./modules/diarias.js",
   "./modules/atualizacoes.js",
+  "./modules/materia-cidada.js",
   "./modules/onboarding.js",
   "./favicon.svg",
 ];

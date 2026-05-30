@@ -605,7 +605,7 @@
         </div>
         ${itens.length ? `<div class="detail-stack detail-stack--list">
           <section><h4>Itens relacionados em ${anoCamara()}</h4>
-            ${itens.map(m => `<article class="matter-mini">
+            ${itens.map(m => window.ZELA.materiaCard ? window.ZELA.materiaCard(m, esc) : `<article class="matter-mini">
               <strong>${esc(m.tipo)} nº ${esc(m.numero)}/${esc(m.ano)}</strong>
               <p>${esc(m.ementa || "Ementa nao informada")}</p>
               ${m.impacto_zero ? `<span>Impacto zero: ${esc(m.motivo_impacto_zero || "classificação simbolica")}</span>` : ""}

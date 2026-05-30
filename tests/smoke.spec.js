@@ -251,6 +251,28 @@ test.describe("Banner de boas-vindas (onboarding)", () => {
   });
 });
 
+test.describe("Classificação cidadã de matérias", () => {
+  test("dados têm grau/tema e materiaCard rendeza selo + por que acompanhar", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const r = await page.evaluate(() => {
+      const anos = (window.ZELA_DATA && window.ZELA_DATA.camara_anos) || {};
+      const ano = Object.keys(anos)[0];
+      const mats = (anos[ano] && anos[ano].materias) || [];
+      const classificadas = mats.filter((m) => m.grau && m.tema).length;
+      // Card de uma matéria de alto impacto, se houver
+      const esc = (s) => String(s == null ? "" : s);
+      const alta = mats.find((m) => m.grau === "alto") || mats[0];
+      const html = window.ZELA.materiaCard ? window.ZELA.materiaCard(alta, esc) : "";
+      return { total: mats.length, classificadas, grau: alta && alta.grau, html };
+    });
+    expect(r.total).toBeGreaterThan(0);
+    expect(r.classificadas).toBe(r.total); // todas classificadas
+    expect(r.html).toContain("mat-selo");
+    expect(r.html).toMatch(/Por que acompanhar|Classificada como simbólica/);
+  });
+});
+
 test.describe("Watchlist", () => {
   test("estado vazio aparece quando localStorage não tem nada", async ({ page }) => {
     await page.goto(fileUrl("marcadores.html"), { waitUntil: "domcontentloaded" });

@@ -38,6 +38,7 @@
     "modules/relatorios.js",
     "modules/diarias.js",
     "modules/atualizacoes.js",
+    "modules/materia-cidada.js",
     "modules/onboarding.js",
   ];
 
