@@ -78,6 +78,10 @@ _opensquad/_investigations/
 painel-cidadao/data/*.json
 !painel-cidadao/data/manifest.json
 
+# data.js (monolito ~6,6MB, fallback file://) é gerado pelo coletor.py.
+# Regenerável e copiado ao empacotar — não versionar (evita diff diário de MBs).
+painel-cidadao/data.js
+
 # ---- Screenshots de QA (não publicáveis em prod) ----
 *.png
 !painel-cidadao/favicon.svg
