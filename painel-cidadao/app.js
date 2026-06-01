@@ -224,7 +224,7 @@
       </a>`).join("");
 
     $("homeOpsPriorities").innerHTML = [
-      { href: "prefeitura.html?tab=contratos", n: "1", title: "Contratos de alto valor", text: `${fmtNum(contratosMilhao)} contratos acima de R$ 1 milhao para ler primeiro.` },
+      { href: "prefeitura.html?tab=contratos", n: "1", title: "Contratos de alto valor", text: `${fmtNum(contratosMilhao)} contratos acima de R$ 1 milhão para ler primeiro.` },
       { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasPref.length)} registros com pessoa, finalidade e valor.` },
       { href: "camara.html", n: "3", title: "Emendas parlamentares", text: `${fmtNum(resumoCam.emendas_qtd || 0)} emendas; confira CNPJ, objeto e pagamento.` },
     ].map(item => `
@@ -480,7 +480,7 @@
               </div>`).join("") || `<p class="muted">Nenhum registro encontrado.</p>`}
           </div>
         </div>
-        <p class="keyword-audit__note">Observacao: na Camara, a busca mistura dois mundos: gasto direto, como diária, e producao legislativa, como requerimento, indicacao, mocao e projeto. A leitura correta e separar dinheiro publico de acao parlamentar.</p>
+        <p class="keyword-audit__note">Observacao: na Camara, a busca mistura dois mundos: gasto direto, como diária, e producao legislativa, como requerimento, indicacao, mocao e projeto. A leitura correta é separar dinheiro publico de acao parlamentar.</p>
       `;
 
       const nextSelect = $("categoriaCamaraSelect");
@@ -623,7 +623,7 @@
           <section><h4>Itens relacionados em ${anoCamara()}</h4>
             ${itens.map(m => window.ZELA.materiaCard ? window.ZELA.materiaCard(m, esc) : `<article class="matter-mini">
               <strong>${esc(m.tipo)} nº ${esc(m.numero)}/${esc(m.ano)}</strong>
-              <p>${esc(m.ementa || "Ementa nao informada")}</p>
+              <p>${esc(m.ementa || "Ementa não informada")}</p>
               ${m.impacto_zero ? `<span>Impacto zero: ${esc(m.motivo_impacto_zero || "classificação simbolica")}</span>` : ""}
               ${m.pdf ? `<a href="${esc(m.pdf)}" target="_blank" rel="noopener">Abrir documento oficial</a>` : ""}
             </article>`).join("")}
@@ -1029,7 +1029,7 @@
       filtroEntidade.innerHTML = '<option value="">Todas as ONGs/entidades</option>' +
         grupos.map(g => {
           const e = g.itens[0] || {};
-          const label = `${g.nome === entidadeKey(e) ? (e.beneficiario || "Beneficiário nao identificado") : g.nome} · ${fmtNum(g.qtd)} emenda(s) · ${fmtBRL(g.valor)}`;
+          const label = `${g.nome === entidadeKey(e) ? (e.beneficiario || "Beneficiário não identificado") : g.nome} · ${fmtNum(g.qtd)} emenda(s) · ${fmtBRL(g.valor)}`;
           return `<option value="${esc(g.nome)}">${esc(label)}</option>`;
         }).join("");
       filtroEntidade.value = grupos.some(g => g.nome === atual) ? atual : "";
@@ -1176,7 +1176,7 @@
                 <span>${esc(cleanText(c.modalidade || "modalidade não informada"))} · contrato ${esc(c.numero || "s/n")}/${esc(c.ano || "")}</span>
                 <p>${esc(cleanText(c.objeto || "Objeto não informado"))}</p>
               </div>`).join("") : '<p class="muted">Nenhum contrato com o mesmo CNPJ/raiz das emendas foi localizado nos dados carregados.</p>'}
-            ${contratosRel.length ? `<p class="muted small">Total relacionado: ${fmtBRL(contratosValor)}. Relação por CNPJ nao prova irregularidade; serve para priorizar verificacao.</p>` : ""}
+            ${contratosRel.length ? `<p class="muted small">Total relacionado: ${fmtBRL(contratosValor)}. Relação por CNPJ não prova irregularidade; serve para priorizar verificacao.</p>` : ""}
           </section>
           <section>
             <h5>Homenagens x impacto real</h5>
@@ -1236,7 +1236,7 @@
           <div>
             <span class="entity-profile__label">EXTRATO DA ONG/ENTIDADE</span>
             <h4>${esc(nome)}</h4>
-            <p>${esc(cnpj || "CNPJ nao informado")} · ${fmtNum(autores.length)} vereador${autores.length === 1 ? "" : "es"} destinaram emenda</p>
+            <p>${esc(cnpj || "CNPJ não informado")} · ${fmtNum(autores.length)} vereador${autores.length === 1 ? "" : "es"} destinaram emenda</p>
           </div>
           <button type="button" onclick="ZELA.limparEntidade()">Limpar entidade</button>
         </div>
@@ -1690,14 +1690,14 @@
           href: "camara.html",
         },
         {
-          titulo: "2. Olhe contratos acima de R$ 1 milhao",
+          titulo: "2. Olhe contratos acima de R$ 1 milhão",
           texto: `${fmtNum(contratosMilhao.length)} contratos somam ${fmtBRL(valorContratosMilhao)} e merecem conferência de objeto, aditivos e notas fiscais.`,
           acao: "Abrir contrato integral, anexos e relatorio do fiscal.",
           href: "prefeitura.html?tab=contratos",
         },
         {
           titulo: "3. Confira entidades que receberam muitas emendas",
-          texto: `${fmtNum(emendas.length)} emendas somam ${fmtBRL(valorEmendas)}. A prioridade e entender quem recebeu, para qual finalidade e se houve entrega.`,
+          texto: `${fmtNum(emendas.length)} emendas somam ${fmtBRL(valorEmendas)}. A prioridade é entender quem recebeu, para qual finalidade e se houve entrega.`,
           acao: "Filtrar por entidade, CNPJ ou vereador no ranking abaixo.",
           href: "#ranking-entidades",
         },
@@ -1752,8 +1752,8 @@
       .forEach(e => addSignal(
         "Câmara + Prefeitura",
         "alto",
-        `Emenda sem pagamento localizado: ${e.beneficiario || "beneficiário nao identificado"}`,
-        `A emenda ${e.numero}/${e.ano}, de ${e.autor || "autor nao identificado"}, tem CNPJ informado, mas o cruzamento não encontrou pagamento da Prefeitura para esse CNPJ nos dados carregados.`,
+        `Emenda sem pagamento localizado: ${e.beneficiario || "beneficiário não identificado"}`,
+        `A emenda ${e.numero}/${e.ano}, de ${e.autor || "autor não identificado"}, tem CNPJ informado, mas o cruzamento não encontrou pagamento da Prefeitura para esse CNPJ nos dados carregados.`,
         `${fmtBRL(e.valor_brl)} · CNPJ ${e.cnpj || "não informado"}`,
         e.pdf
       ));
@@ -1765,7 +1765,7 @@
       .forEach(e => addSignal(
         "Câmara",
         "medio",
-        `Emenda dificulta conferência por falta de CNPJ: ${e.beneficiario || "beneficiário nao identificado"}`,
+        `Emenda dificulta conferência por falta de CNPJ: ${e.beneficiario || "beneficiário não identificado"}`,
         `Sem CNPJ estruturado, o cidadão não consegue cruzar promessa e pagamento com segurança usando o Portal de Transparência.`,
         `${fmtBRL(e.valor_brl)} · Sem CNPJ`,
         e.pdf
@@ -1813,8 +1813,8 @@
       .forEach(c => addSignal(
         "Prefeitura",
         /dispensa/i.test(c.modalidade || "") ? "alto" : "medio",
-        `Contrato de alto valor: ${c.contratado || "contratado nao informado"}`,
-        `${c.modalidade || "Modalidade nao informada"}. Confira objeto, vigência, aditivos e pagamentos relacionados.`,
+        `Contrato de alto valor: ${c.contratado || "contratado não informado"}`,
+        `${c.modalidade || "Modalidade não informada"}. Confira objeto, vigência, aditivos e pagamentos relacionados.`,
         `${fmtBRL(c.valor)} · Contrato ${c.numero || "s/n"}/${c.ano || ""}`,
         "prefeitura.html"
       ));
@@ -1826,9 +1826,9 @@
       .forEach(c => addSignal(
         "Prefeitura",
         "alto",
-        `Dispensa relevante: ${c.contratado || "contratado nao informado"}`,
+        `Dispensa relevante: ${c.contratado || "contratado não informado"}`,
         `Dispensas podem ser legais, mas valores altos exigem justificativa clara, prazo, objeto e documentação pública.`,
-        `${fmtBRL(c.valor)} · ${c.objeto || "Objeto nao informado"}`,
+        `${fmtBRL(c.valor)} · ${c.objeto || "Objeto não informado"}`,
         "prefeitura.html"
       ));
 
@@ -1839,9 +1839,9 @@
       .forEach(l => addSignal(
         "Prefeitura",
         (l.valor || 0) >= 1_000_000 ? "alto" : "medio",
-        `Licitação em andamento: ${l.modalidade || "modalidade nao informada"} ${l.numero || ""}`,
+        `Licitação em andamento: ${l.modalidade || "modalidade não informada"} ${l.numero || ""}`,
         `Processo ainda em andamento ou aguardando abertura. Este é o melhor momento para acompanhar edital, impugnações, participantes e resultado final.`,
-        `${fmtBRL(l.valor)} · ${l.situacao || "situação nao informada"}`,
+        `${fmtBRL(l.valor)} · ${l.situacao || "situação não informada"}`,
         "prefeitura.html"
       ));
 
@@ -1857,9 +1857,9 @@
         addSignal(
           "PNCP",
           "medio",
-          `Registro nacional: ${x.modalidade || "modalidade nao informada"}`,
+          `Registro nacional: ${x.modalidade || "modalidade não informada"}`,
           `O PNCP registra contratação pública ligada a Varginha. Compare objeto, valor e situação com os dados do portal municipal.`,
-          `${fmtBRL(x.valor_estimado)} · ${x.situacao || "situação nao informada"}`,
+          `${fmtBRL(x.valor_estimado)} · ${x.situacao || "situação não informada"}`,
           pncpUrl
         );
       });
@@ -1872,7 +1872,7 @@
         "alto",
         `CNPJ de beneficiário com situação diferente de ativa`,
         `O apoio cadastral retornou situação "${e.situação}". Antes de concluir qualquer coisa, confirme no comprovante oficial da Receita Federal.`,
-        `${e.cnpj} · ${e.razao_social || e.nomes_no_sapl?.[0] || "nome nao informado"} · emendas: ${fmtBRL(e.valor_emendas || 0)}`,
+        `${e.cnpj} · ${e.razao_social || e.nomes_no_sapl?.[0] || "nome não informado"} · emendas: ${fmtBRL(e.valor_emendas || 0)}`,
         "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
       ));
 
@@ -1951,9 +1951,9 @@
       .forEach(c => addSignal(
         "Prefeitura",
         "alto",
-        `Contrato emergencial: ${c.contratado || "contratado nao informado"}`,
+        `Contrato emergencial: ${c.contratado || "contratado não informado"}`,
         `Contratos emergenciais dispensam licitação e exigem urgência comprovada. Verifique a justificativa publicada no Diário Oficial, prazo, valor e execução real do serviço.`,
-        `${fmtBRL(c.valor)} · ${c.objeto || "Objeto nao informado"} · ${c.numero || "s/n"}/${c.ano || ""}`,
+        `${fmtBRL(c.valor)} · ${c.objeto || "Objeto não informado"} · ${c.numero || "s/n"}/${c.ano || ""}`,
         "prefeitura.html"
       ));
 
@@ -1970,7 +1970,7 @@
       addSignal(
         "Prefeitura · Contrato",
         (c.valor || 0) >= 1_000_000 ? "critico" : "alto",
-        `Contrato vencido em execução: ${cleanText(c.contratado || "Empresa nao informada")}`,
+        `Contrato vencido em execução: ${cleanText(c.contratado || "Empresa não informada")}`,
         `Contrato com ${cleanText(c.contratado || "empresa")} (${fmtBRL(c.valor || 0)}) tinha encerramento previsto para ${c.data_fim} mas ainda aparece como "em execução" há ${diasVencido} dia(s). Contratos vencidos sem aditivo publicado podem configurar irregularidade. Verifique se houve prorrogação no Diário Oficial.`,
         `${fmtBRL(c.valor || 0)} · Venceu ${c.data_fim} (${diasVencido}d atrás) · ${cleanText(c.objeto || "").slice(0, 80)}`,
         "prefeitura.html"
@@ -2135,7 +2135,7 @@
         },
         {
           kind: "Contratos",
-          title: "Contratos acima de R$ 1 milhao",
+          title: "Contratos acima de R$ 1 milhão",
           body: "Confira objeto, aditivos, vigência, notas fiscais, liquidacoes e entrega real do serviço.",
           meta: `${fmtNum(contratosAltosQtd)} contratos de alto valor`,
           href: "prefeitura.html",
@@ -2227,7 +2227,7 @@
               <span class="signal__kind">Conclusao da busca</span>
               <span class="signal__level">${listaEstruturada ? "Importar com conferência" : "Pedir por LAI"}</span>
             </div>
-            <h4>${listaEstruturada ? "Ha candidato de lista estruturada" : "Lista aberta consolidada ainda nao localizada"}</h4>
+            <h4>${listaEstruturada ? "Há candidato de lista estruturada" : "Lista aberta consolidada ainda não localizada"}</h4>
             <p>${esc(conclusao)}</p>
             <div class="signal__meta">Pergunta pronta: ${esc(perguntaEmendas2026)}</div>
           </article>
@@ -2643,8 +2643,8 @@
             <span class="signal__kind">Qualidade do contrato</span>
             <span class="signal__level">Nota ${c.qualidade}/100</span>
           </div>
-          <h4>${esc(c.contratado || "Contratado nao informado")}</h4>
-          <p>${esc(c.objeto || "Objeto nao informado")}</p>
+          <h4>${esc(c.contratado || "Contratado não informado")}</h4>
+          <p>${esc(c.objeto || "Objeto não informado")}</p>
           <div class="signal__meta">${fmtBRL(c.valor || 0)} · Problemas: ${esc(c.problemas.join(", "))}</div>
           <a href="prefeitura.html">Ver contratos da Prefeitura</a>
         </article>`).join("") : '<div class="empty">Nenhum contrato de alto valor com descrição fraca foi identificado nos dados atuais.</div>';
@@ -2655,7 +2655,7 @@
         {
           nome: "CEIS/CNEP",
           valor: "Sanções",
-          desc: "Verifica empresas inidoneas, suspensas ou punidas. E a primeira checagem oficial antes de falar em impedimento.",
+          desc: "Verifica empresas inidoneas, suspensas ou punidas. É a primeira checagem oficial antes de falar em impedimento.",
           url: "https://portaldatransparencia.gov.br/sancoes/consulta",
         },
         {
@@ -3985,7 +3985,7 @@
             </div>
             <div>
               <p class="contrato__nome">${i + 1}. ${esc(s.nome || "Sem nome")}</p>
-              <p class="contrato__obj">${esc(s.cargo || s.lotacao || "Cargo nao informado")}</p>
+              <p class="contrato__obj">${esc(s.cargo || s.lotacao || "Cargo não informado")}</p>
               <div class="contrato__meta">
                 <span>Líquido: <strong>${fmtBRL(s.liquido || 0)}</strong></span>
                 ${s.matricula ? `<span>Mat. ${s.matricula}</span>` : ""}
@@ -4567,7 +4567,7 @@
         </p>
         <p>
           Para fiscalizar sem se perder, comece pelos blocos de maior valor: contratos acima de
-          R$ 1 milhao, diárias com valor diario alto, alugueis recorrentes e eventos. Em cada caso,
+          R$ 1 milhão, diárias com valor diario alto, alugueis recorrentes e eventos. Em cada caso,
           confira objeto, prazo, fornecedor, empenho, liquidacao, pagamento e se a entrega aconteceu.
         </p>
       `;
@@ -4787,7 +4787,7 @@
       maiorContrato && {
         valor: fmtBRL(maiorContrato.valor || 0),
         titulo: "Maior contrato carregado",
-        desc: `${maiorContrato.contratado || "Contratado nao informado"} - ${String(maiorContrato.objeto || "").slice(0, 140)}`,
+        desc: `${maiorContrato.contratado || "Contratado não informado"} - ${String(maiorContrato.objeto || "").slice(0, 140)}`,
         tab: "contratos",
       },
       maiorDiariaPessoa && {
@@ -4799,13 +4799,13 @@
       maiorAluguel && {
         valor: fmtBRL(maiorAluguel.valor || 0),
         titulo: "Maior contrato de aluguel",
-        desc: `${maiorAluguel.contratado || "Contratado nao informado"} - ${String(maiorAluguel.objeto || "").slice(0, 140)}`,
+        desc: `${maiorAluguel.contratado || "Contratado não informado"} - ${String(maiorAluguel.objeto || "").slice(0, 140)}`,
         tab: "alugueis",
       },
       maiorEvento && {
         valor: fmtBRL(maiorEvento.valor_analise || 0),
         titulo: "Maior item de evento/show",
-        desc: `${maiorEvento.contratado || "Contratado nao informado"} - ${String(maiorEvento.objeto || "").slice(0, 140)}`,
+        desc: `${maiorEvento.contratado || "Contratado não informado"} - ${String(maiorEvento.objeto || "").slice(0, 140)}`,
         tab: "eventos",
       },
       contratosMilhao.length && {
