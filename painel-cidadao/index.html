@@ -51,26 +51,30 @@
 <section class="hero hero--modern">
   <div class="container">
     <div class="hero__content animate-in">
-      <span class="hero__kicker">FISCALIZAÇÃO CIDADÃ &bull; VARGINHA-MG</span>
+      <span class="hero__kicker">Transparência pública em linguagem simples</span>
       <p id="atualizado" class="muted small" style="margin-top:4px;margin-bottom:0"></p>
-      <h1 class="hero__title">A cidade é sua. <br><span>Saiba o que ela está fazendo.</span></h1>
+      <h1 class="hero__title">Fiscalize Varginha sem se perder nos portais.</h1>
       <p class="hero__lead">
-        Em Varginha existem <strong>duas instituições</strong> distintas: a <strong>Prefeitura</strong> (gasta o dinheiro) 
-        e a <strong>Câmara</strong> (fiscaliza e cria leis). Este painel separa as duas para você entender onde seu dinheiro está indo.
+        Todo ano, mais de R$ 1,2 bilhão passa pela Prefeitura e pela Câmara — em contratos, folha, obras e diárias. Aqui você vê para onde vai esse dinheiro, encontra os pontos de atenção e descobre como cobrar resposta. Sem juridiquês, sem login, sem se perder em dez portais.
       </p>
+      <div class="hero__proof" aria-label="Destaques do painel">
+        <span>LOA 2026</span>
+        <span>Prefeitura + Câmara</span>
+        <span>Dados públicos</span>
+      </div>
       
       <div class="search-box">
         <div class="search">
-          <input type="search" id="buscaHome" placeholder="O que você quer descobrir hoje" aria-label="Buscar no painel">
-          <button type="button" onclick="ZELA.smartAudit()">PERGUNTAR AO AGENTE</button>
+          <input type="search" id="buscaHome" placeholder="Digite um tema, obra, contrato ou vereador" aria-label="Buscar no painel">
+          <button type="button" onclick="ZELA.smartAudit()">Investigar agora</button>
         </div>
       </div>
 
       <!-- B: alerta investimentos -->
       <div class="hero-alert">
         <span class="hero-alert__icon">⚠</span>
-        <span>Apenas <strong>1,7%</strong> do orçamento 2026 vai para investimentos em Varginha</span>
-        <a href="#loa-strip" class="hero-alert__link">Ver LOA ↓</a>
+        <span>Ponto de atenção: só <strong>1,7%</strong> do orçamento 2026 vai para investimentos.</span>
+        <a href="#loa-strip" class="hero-alert__link">Entender orçamento ↓</a>
       </div>
 
       <!-- A: Esta semana na Câmara (populado por JS após zela:ready) -->
@@ -84,7 +88,7 @@
     </div>
 
     <div class="hub-full animate-in-delayed">
-      <h3 class="hub-full__title">O QUE VOCÊ DESEJA FISCALIZAR HOJE</h3>
+      <h3 class="hub-full__title">Atalhos de fiscalização</h3>
       <div class="hub-grid-18">
 
         <a href="prefeitura.html?q=saude" class="hub-item">
@@ -259,22 +263,6 @@
         <div id="lvbGrid" class="lvb-grid" hidden></div>
 
         <p class="lvb-empty" id="lvbEmpty" hidden>Nenhuma secretaria encontrada.</p>
-      </div>
-
-      <!-- Você sabia? -->
-      <div class="lvb-sabia-col">
-        <p class="lvb-col-title">Você sabia?</p>
-        <div class="lvb-sabia-card lvb-sabia-card--red">
-          <strong class="lvb-sabia-card__cat">Câmara Municipal</strong>
-          <strong class="lvb-sabia-card__val">R$ 19,8 milhões</strong>
-          <p>Isso representa<br><strong>R$ 141 por morador</strong></p>
-          <span class="lvb-sabia-badge">1,6% do orçamento</span>
-        </div>
-        <div class="lvb-sabia-card lvb-sabia-card--gold">
-          <strong class="lvb-sabia-card__cat">Folha de pagamento</strong>
-          <strong class="lvb-sabia-card__val">R$ 554 milhões</strong>
-          <p>Consome<br><strong>45%</strong> do orçamento total</p>
-        </div>
       </div>
 
     </div><!-- /lvb-mid__inner -->
