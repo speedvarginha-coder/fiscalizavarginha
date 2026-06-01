@@ -72,10 +72,11 @@ _opensquad/_browser_profile/
 _opensquad/_investigations/
 
 # ---- Dados brutos grandes (regeneráveis pelo coletor) ----
-# Os JSONs em painel-cidadao/data/ são regenerados; só commitar se necessário.
-painel-cidadao/data/camara_anos.json
-painel-cidadao/data/diarias.json
-painel-cidadao/data/pessoal.json
+# JSONs em painel-cidadao/data/ (raiz) são staging do coletor e duplicam
+# painel-cidadao/data/chunks/ (única pasta publicada no deploy). Não versionar
+# a raiz — só os chunks e o manifest.json.
+painel-cidadao/data/*.json
+!painel-cidadao/data/manifest.json
 
 # ---- Screenshots de QA (não publicáveis em prod) ----
 *.png
