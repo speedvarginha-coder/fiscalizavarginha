@@ -645,7 +645,7 @@
       lista.sort((a, b) => (b[sortBy] || 0) - (a[sortBy] || 0));
 
       if (!lista.length) {
-        vereadoresEl.innerHTML = '<div class="empty">Nenhum vereador encontrado.</div>';
+        vereadoresEl.innerHTML = '<div class="empty">Nenhum vereador com esse nome. Tente outro termo ou limpe a busca.</div>';
         return;
       }
       const max = Math.max(...vereadores.map(v => v.total));
