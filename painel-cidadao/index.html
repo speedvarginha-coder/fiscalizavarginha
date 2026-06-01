@@ -65,6 +65,22 @@
           <button type="button" onclick="ZELA.smartAudit()">PERGUNTAR AO AGENTE</button>
         </div>
       </div>
+
+      <!-- B: alerta investimentos -->
+      <div class="hero-alert">
+        <span class="hero-alert__icon">⚠</span>
+        <span>Apenas <strong>1,7%</strong> do orçamento 2026 vai para investimentos em Varginha</span>
+        <a href="#loa-strip" class="hero-alert__link">Ver LOA ↓</a>
+      </div>
+
+      <!-- A: Esta semana na Câmara (populado por JS após zela:ready) -->
+      <div id="semana-camara-hero" class="semana-hero" style="display:none">
+        <div class="semana-hero__inner">
+          <span class="semana-hero__label">📋 Câmara esta semana</span>
+          <span id="semanaHeroResume" class="semana-hero__resume">…</span>
+        </div>
+        <a href="camara.html" class="semana-hero__link">Ver tudo →</a>
+      </div>
     </div>
 
     <div class="hub-full animate-in-delayed">
@@ -83,7 +99,7 @@
           <div class="hub-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="8" rx="1"/><path d="M17 14v7"/><path d="M7 14v7"/><path d="M17 3v3"/><path d="M7 3v3"/><path d="m8 6 8 8"/></svg></div>
           <span>Obras</span>
         </a>
-        <a href="prefeitura.html?tab=contratos" class="hub-item">
+        <a href="prefeitura.html?tab=contratos" class="hub-item" data-hub-badge>
           <div class="hub-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <span>Contratos</span>
         </a>
@@ -117,40 +133,183 @@
   </div>
 </section>
 
-<!-- ===== Faixa LOA 2026 ===== -->
-<section class="loa-strip">
-  <div class="container">
-    <div class="loa-strip__header">
-      <span class="loa-strip__titulo">📋 Para onde vai o seu dinheiro em 2026</span>
-      <a href="https://varginha.mg.gov.br" target="_blank" rel="noopener" class="loa-strip__fonte">Fonte: Lei 7.510/2025 — LOA Varginha</a>
-    </div>
-    <div class="loa-strip__grid">
-      <div class="loa-card loa-card--total">
-        <span class="loa-card__valor">R$ 1,22 bi</span>
-        <span class="loa-card__label">Orçamento total</span>
+<!-- ===== LOA 2026 — Dobra Orçamentária Rica ===== -->
+<section class="loa-strip" id="loa-strip">
+
+  <!-- ── HERO ── -->
+  <div class="lvb-hero">
+    <div class="container lvb-hero__inner">
+      <div class="lvb-hero__left">
+        <p class="lvb-eye">O seu dinheiro, a nossa cidade.</p>
+        <h2 class="lvb-hero__title">Para onde vai<br>R$ 1,22 bilhão<br>em 2026?</h2>
+        <p class="lvb-hero__sub">Acompanhe como o orçamento de Varginha será aplicado e transforme informação em participação.</p>
+        <a href="relatorios.html" class="lvb-hero__cta">Entenda em 1 minuto</a>
       </div>
-      <div class="loa-card loa-card--saude">
-        <span class="loa-card__valor">R$ 481 mi</span>
-        <span class="loa-card__label">Saúde <span class="loa-card__pct">39%</span></span>
-      </div>
-      <div class="loa-card loa-card--edu">
-        <span class="loa-card__valor">R$ 210 mi</span>
-        <span class="loa-card__label">Educação <span class="loa-card__pct">17%</span></span>
-      </div>
-      <div class="loa-card loa-card--pessoal">
-        <span class="loa-card__valor">R$ 554 mi</span>
-        <span class="loa-card__label">Pessoal &amp; cargos <span class="loa-card__pct">45%</span></span>
-      </div>
-      <div class="loa-card loa-card--camara">
-        <span class="loa-card__valor">R$ 19,8 mi</span>
-        <span class="loa-card__label">Câmara Municipal</span>
-      </div>
-      <div class="loa-card loa-card--inv">
-        <span class="loa-card__valor">R$ 20,5 mi</span>
-        <span class="loa-card__label">Investimentos <span class="loa-card__pct loa-card__pct--alerta">⚠ 1,7%</span></span>
+      <div class="lvb-hero__cards">
+        <div class="lvb-stat lvb-stat--navy">
+          <span class="lvb-stat__cat">Orçamento total</span>
+          <strong class="lvb-stat__val">R$ 1,22 bilhão</strong>
+          <span class="lvb-stat__sub">R$ 8.737 por habitante</span>
+        </div>
+        <div class="lvb-stat lvb-stat--orange">
+          <span class="lvb-stat__cat">Pessoal &amp; cargos</span>
+          <strong class="lvb-stat__val">R$ 554 mi</strong>
+          <span class="lvb-stat__sub">45% do orçamento</span>
+        </div>
+        <div class="lvb-stat lvb-stat--red">
+          <span class="lvb-stat__cat">Total em saúde pública</span>
+          <strong class="lvb-stat__val">R$ 481 mi</strong>
+          <span class="lvb-stat__sub">39% do orçamento</span>
+        </div>
+        <div class="lvb-stat lvb-stat--blue">
+          <span class="lvb-stat__cat">Total em educação</span>
+          <strong class="lvb-stat__val">R$ 210 mi</strong>
+          <span class="lvb-stat__sub">17% do orçamento</span>
+        </div>
+        <div class="lvb-stat lvb-stat--teal">
+          <span class="lvb-stat__cat">Investimentos reais</span>
+          <strong class="lvb-stat__val">R$ 20,5 mi</strong>
+          <span class="lvb-stat__sub">1,7% do orçamento</span>
+        </div>
+        <div class="lvb-stat lvb-stat--gold">
+          <span class="lvb-stat__cat">Câmara Municipal</span>
+          <strong class="lvb-stat__val">R$ 19,8 mi</strong>
+          <span class="lvb-stat__sub">1,6% do orçamento</span>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- ── MIDDLE: donut | ranking | você sabia ── -->
+  <div class="lvb-mid">
+    <div class="container lvb-mid__inner">
+
+      <!-- Donut -->
+      <div class="lvb-donut-col">
+        <p class="lvb-col-title">Para onde vai cada R$ 100</p>
+        <div class="lvb-donut-wrap">
+          <div class="lvb-donut">
+            <div class="lvb-donut__center">R$&nbsp;100<br><small>reais</small></div>
+          </div>
+          <ul class="lvb-legend">
+            <li><span class="lvb-dot" style="background:#e53935"></span><b>39%</b> Saúde</li>
+            <li><span class="lvb-dot" style="background:#1976d2"></span><b>17%</b> Educação</li>
+            <li><span class="lvb-dot" style="background:#7b1fa2"></span><b>14%</b> Previdência — IPREV</li>
+            <li><span class="lvb-dot" style="background:#f57c00"></span><b>10%</b> Fund. Hospitalar</li>
+            <li><span class="lvb-dot" style="background:#43a047"></span><b>20%</b> Outras áreas</li>
+          </ul>
+        </div>
+        <div class="lvb-percapita-box">
+          <div>
+            <p>Cada morador contribui indiretamente com</p>
+            <strong>R$ 8.737</strong>
+            <p>para o orçamento de 2026</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ranking -->
+      <div class="lvb-ranking-col">
+        <div class="lvb-ranking-hd">
+          <p class="lvb-col-title">Explore as 22 secretarias</p>
+        </div>
+        <!-- Barra de controle -->
+        <div class="lvb-ctrl">
+          <input type="search" id="lvbSearch" class="lvb-search" placeholder="Pesquisar secretaria…" aria-label="Pesquisar secretaria">
+          <label class="lvb-sort">
+            <span>Ordenar:</span>
+            <select id="lvbSort" aria-label="Ordenar secretarias">
+              <option value="val-desc">Maior valor</option>
+              <option value="val-asc">Menor valor</option>
+              <option value="abc">Ordem alfabética</option>
+            </select>
+          </label>
+          <div class="lvb-views" role="group" aria-label="Modo de visualização">
+            <button type="button" class="lvb-view-btn is-active" data-view="table" id="lvbViewTable" aria-pressed="true" title="Lista">☰</button>
+            <button type="button" class="lvb-view-btn" data-view="grid" id="lvbViewGrid" aria-pressed="false" title="Cards">▦</button>
+          </div>
+        </div>
+
+        <!-- Chips de área -->
+        <div class="lvb-chips" id="lvbChips" role="group" aria-label="Filtrar por área">
+          <button type="button" class="lvb-chip is-active" data-area="all">Todas as áreas</button>
+          <button type="button" class="lvb-chip" data-area="saude">Saúde &amp; Hospitais</button>
+          <button type="button" class="lvb-chip" data-area="educacao">Educação &amp; Cultura</button>
+          <button type="button" class="lvb-chip" data-area="infra">Infra/Obras &amp; Meio Amb.</button>
+          <button type="button" class="lvb-chip" data-area="financas">Finanças &amp; Administração</button>
+          <button type="button" class="lvb-chip" data-area="social">Segurança &amp; Social</button>
+          <button type="button" class="lvb-chip" data-area="legislativo">Poder Legislativo</button>
+        </div>
+        <p class="lvb-count" id="lvbCount" aria-live="polite">Mostrando 22 de 22 secretarias</p>
+
+        <!-- Visão tabela -->
+        <div id="lvbTable">
+          <div class="lvb-rank-head">
+            <span>#</span><span></span>
+            <span>Secretaria</span>
+            <span class="lvb-ta-r">Valor</span>
+            <span class="lvb-ta-r">%</span>
+            <span class="lvb-ta-r lvb-hide-sm">R$/hab.</span>
+          </div>
+          <div id="lvbRows"></div>
+          <button class="lvb-expand-btn" id="lvbExpandBtn">Ver todas as 22 secretarias ∨</button>
+        </div>
+
+        <!-- Visão cards -->
+        <div id="lvbGrid" class="lvb-grid" hidden></div>
+
+        <p class="lvb-empty" id="lvbEmpty" hidden>Nenhuma secretaria encontrada.</p>
+      </div>
+
+      <!-- Você sabia? -->
+      <div class="lvb-sabia-col">
+        <p class="lvb-col-title">Você sabia?</p>
+        <div class="lvb-sabia-card lvb-sabia-card--red">
+          <strong class="lvb-sabia-card__cat">Câmara Municipal</strong>
+          <strong class="lvb-sabia-card__val">R$ 19,8 milhões</strong>
+          <p>Isso representa<br><strong>R$ 141 por morador</strong></p>
+          <span class="lvb-sabia-badge">1,6% do orçamento</span>
+        </div>
+        <div class="lvb-sabia-card lvb-sabia-card--gold">
+          <strong class="lvb-sabia-card__cat">Folha de pagamento</strong>
+          <strong class="lvb-sabia-card__val">R$ 554 milhões</strong>
+          <p>Consome<br><strong>45%</strong> do orçamento total</p>
+        </div>
+      </div>
+
+    </div><!-- /lvb-mid__inner -->
+  </div><!-- /lvb-mid -->
+
+  <!-- ── TRANSPARÊNCIA + DOWNLOAD ── -->
+  <div class="lvb-dl-strip">
+    <div class="container lvb-dl-strip__inner">
+      <div class="lvb-dl-strip__txt">
+        <strong>Transparência é um direito seu.</strong>
+        <p>Acompanhe, fiscalize e participe. Uma cidade melhor começa com informação e participação cidadã.</p>
+      </div>
+      <div class="lvb-dl-strip__center">
+        <strong>Baixe os dados completos</strong>
+        <p>Acesse a Lei Orçamentária Anual (LOA) e os dados detalhados do orçamento 2026.</p>
+      </div>
+      <div class="lvb-dl-strip__btns">
+        <a href="https://varginha.mg.gov.br" target="_blank" rel="noopener" class="lvb-dl-btn lvb-dl-btn--red">
+          <span>LOA completa (PDF)<br><small>Baixar arquivo</small></span>
+        </a>
+        <a href="relatorios.html" class="lvb-dl-btn lvb-dl-btn--green">
+          <span>Dados abertos (CSV)<br><small>Baixar arquivo</small></span>
+        </a>
+        <a href="relatorios.html" class="lvb-dl-btn lvb-dl-btn--blue">
+          <span>Relatório resumido<br><small>Ver relatório</small></span>
+        </a>
+      </div>
+    </div>
+    <div class="lvb-footnote">
+      <div class="container">
+        Fonte: Lei 7.510/2025 — LOA Varginha 2026. Dados referentes ao exercício financeiro 2026. População estimada: 140 mil habitantes.
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <section class="section section--alt">
@@ -190,6 +349,12 @@
           <ul id="listCam" class="score-list"></ul>
         </div>
       </div>
+    </div>
+
+    <!-- D: CTA Auditômetro -->
+    <div class="audit-cta animate-on-scroll">
+      <a href="cobrar.html" class="audit-cta__btn">⚡ Viu algo preocupante? Saiba como cobrar</a>
+      <span class="audit-cta__sub">Canais oficiais, LAI, ouvidoria e como protocolar uma denúncia.</span>
     </div>
 
     <section class="home-ops animate-on-scroll" aria-label="Painel rapido de fiscalizacao">
@@ -289,6 +454,205 @@
 </footer>
 
 <script src="data-loader.js?v=20260520"></script>
+<script>
+/* ── A: Widget "Esta semana na Câmara" ─────────────────────────── */
+document.addEventListener('zela:ready', function () {
+  var widget = document.getElementById('semana-camara-hero');
+  var resumeEl = document.getElementById('semanaHeroResume');
+  if (!widget || !resumeEl) return;
+  try {
+    var anos = (window.ZELA_DATA && window.ZELA_DATA.camara_anos) || {};
+    var anoAtual = Object.keys(anos).sort().reverse()[0];
+    if (!anoAtual) return;
+    var mats = (anos[anoAtual] && anos[anoAtual].materias) || [];
+    if (!mats.length) return;
+
+    // "Esta semana": 7 dias atrás
+    var limiar = new Date();
+    limiar.setDate(limiar.getDate() - 7);
+    var recentes = mats.filter(function (m) {
+      return m.data && new Date(m.data) >= limiar;
+    });
+    var base = recentes.length ? recentes : mats.slice(0, 20); // fallback: 20 mais recentes
+    var total = base.length;
+    var altos = base.filter(function (m) { return m.grau === 'alto'; }).length;
+    var medios = base.filter(function (m) { return m.grau === 'medio'; }).length;
+
+    var txt = total + ' matéria' + (total !== 1 ? 's' : '');
+    if (recentes.length) txt += ' esta semana';
+    if (altos > 0) txt += ' · ' + altos + ' de alto impacto';
+    else if (medios > 0) txt += ' · ' + medios + ' de médio impacto';
+
+    resumeEl.textContent = txt;
+    widget.style.display = '';
+  } catch (e) { /* silencioso */ }
+});
+
+/* ── E: Badges "hoje" nos hub items com dados recentes ─────────── */
+document.addEventListener('zela:ready', function () {
+  var temDados = !!(window.ZELA_DATA && (
+    window.ZELA_DATA.prefeitura_betha ||
+    window.ZELA_DATA.camara_betha ||
+    (window.ZELA_DATA.prefeitura && window.ZELA_DATA.prefeitura.length)
+  ));
+  if (!temDados) return;
+  document.querySelectorAll('[data-hub-badge]').forEach(function (item) {
+    var badge = document.createElement('span');
+    badge.className = 'hub-badge';
+    badge.textContent = 'hoje';
+    badge.setAttribute('aria-label', 'Atualizado hoje');
+    item.appendChild(badge);
+  });
+});
+
+/* ── LOA: explorador de secretarias (busca, ordenar, filtrar, visão) ── */
+(function () {
+  var rows = document.getElementById('lvbRows');
+  if (!rows) return;
+
+  var AREA = {
+    saude:       { label: 'Saúde & Hospitais',        color: '#e53935' },
+    educacao:    { label: 'Educação & Cultura',       color: '#1976d2' },
+    infra:       { label: 'Infra/Obras & Meio Amb.',  color: '#078A4B' },
+    financas:    { label: 'Finanças & Administração', color: '#b8870b' },
+    social:      { label: 'Segurança & Social',       color: '#7b1fa2' },
+    legislativo: { label: 'Poder Legislativo',        color: '#004B8D' }
+  };
+  var MAX = 356.8;
+  var DATA = [
+    { rank: 1,  nome: 'Saúde',               n: 356.8, val: 'R$ 356,8 mi', pct: '29%',  hab: 'R$ 2.548', area: 'saude' },
+    { rank: 2,  nome: 'Educação',            n: 210.2, val: 'R$ 210,2 mi', pct: '17%',  hab: 'R$ 1.501', area: 'educacao' },
+    { rank: 3,  nome: 'Previdência — IPREV', n: 168.0, val: 'R$ 168,0 mi', pct: '14%',  hab: 'R$ 1.200', area: 'social' },
+    { rank: 4,  nome: 'Fund. Hospitalar',    n: 124.7, val: 'R$ 124,7 mi', pct: '10%',  hab: 'R$ 891',   area: 'saude' },
+    { rank: 5,  nome: 'Fazenda',             n: 78.7,  val: 'R$ 78,7 mi',  pct: '6,4%', hab: 'R$ 562',   area: 'financas' },
+    { rank: 6,  nome: 'Administração',       n: 66.4,  val: 'R$ 66,4 mi',  pct: '5,4%', hab: 'R$ 474',   area: 'financas' },
+    { rank: 7,  nome: 'Hab. e Social',       n: 37.7,  val: 'R$ 37,7 mi',  pct: '3,1%', hab: 'R$ 269',   area: 'social' },
+    { rank: 8,  nome: 'Obras Urbanas',       n: 33.7,  val: 'R$ 33,7 mi',  pct: '2,8%', hab: 'R$ 241',   area: 'infra' },
+    { rank: 9,  nome: 'Meio Ambiente',       n: 27.0,  val: 'R$ 27,0 mi',  pct: '2,2%', hab: 'R$ 193',   area: 'infra' },
+    { rank: 10, nome: 'Câmara Municipal',    n: 19.8,  val: 'R$ 19,8 mi',  pct: '1,6%', hab: 'R$ 141',   area: 'legislativo' },
+    { rank: 11, nome: 'Planejamento',        n: 19.0,  val: 'R$ 19,0 mi',  pct: '1,5%', hab: 'R$ 135',   area: 'financas' },
+    { rank: 12, nome: 'Guarda Municipal',    n: 14.5,  val: 'R$ 14,5 mi',  pct: '1,2%', hab: 'R$ 104',   area: 'social' },
+    { rank: 13, nome: 'Esportes e Lazer',    n: 12.7,  val: 'R$ 12,7 mi',  pct: '1,0%', hab: 'R$ 91',    area: 'educacao' },
+    { rank: 14, nome: 'Fund. Cultural',      n: 10.9,  val: 'R$ 10,9 mi',  pct: '0,9%', hab: 'R$ 78',    area: 'educacao' },
+    { rank: 15, nome: 'Turismo',             n: 9.2,   val: 'R$ 9,2 mi',   pct: '0,7%', hab: 'R$ 65',    area: 'educacao' },
+    { rank: 16, nome: 'Procuradoria',        n: 7.7,   val: 'R$ 7,7 mi',   pct: '0,6%', hab: 'R$ 55',    area: 'financas' },
+    { rank: 17, nome: 'Tecnologia',          n: 7.3,   val: 'R$ 7,3 mi',   pct: '0,6%', hab: 'R$ 52',    area: 'financas' },
+    { rank: 18, nome: 'Governo',             n: 6.8,   val: 'R$ 6,8 mi',   pct: '0,6%', hab: 'R$ 48',    area: 'financas' },
+    { rank: 19, nome: 'SEMUL',               n: 6.2,   val: 'R$ 6,2 mi',   pct: '0,5%', hab: 'R$ 44',    area: 'infra' },
+    { rank: 20, nome: 'Agricultura',         n: 4.4,   val: 'R$ 4,4 mi',   pct: '0,4%', hab: 'R$ 31',    area: 'infra' },
+    { rank: 21, nome: 'Controle Interno',    n: 1.0,   val: 'R$ 1,0 mi',   pct: '0,1%', hab: 'R$ 7',     area: 'financas' },
+    { rank: 22, nome: 'Desenv. Econômico',   n: 0.7,   val: 'R$ 0,7 mi',   pct: '0,1%', hab: 'R$ 5',     area: 'financas' }
+  ];
+
+  var grid    = document.getElementById('lvbGrid');
+  var tableW  = document.getElementById('lvbTable');
+  var countEl = document.getElementById('lvbCount');
+  var emptyEl = document.getElementById('lvbEmpty');
+  var expand  = document.getElementById('lvbExpandBtn');
+  var searchI = document.getElementById('lvbSearch');
+  var sortS   = document.getElementById('lvbSort');
+  var chips   = document.getElementById('lvbChips');
+  var viewT   = document.getElementById('lvbViewTable');
+  var viewG   = document.getElementById('lvbViewGrid');
+
+  var state = { q: '', sort: 'val-desc', area: 'all', view: 'table', expanded: false };
+
+  function width(d) { return (d.n / MAX * 100).toFixed(1) + '%'; }
+  function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+
+  function compute() {
+    var list = DATA.filter(function (d) {
+      if (state.area !== 'all' && d.area !== state.area) return false;
+      if (state.q && norm(d.nome).indexOf(norm(state.q)) === -1) return false;
+      return true;
+    });
+    if (state.sort === 'val-asc') list.sort(function (a, b) { return a.n - b.n; });
+    else if (state.sort === 'abc') list.sort(function (a, b) { return a.nome.localeCompare(b.nome, 'pt'); });
+    else list.sort(function (a, b) { return b.n - a.n; });
+    return list;
+  }
+
+  function rowEl(d) {
+    var c = AREA[d.area].color;
+    var r = document.createElement('div');
+    r.className = 'lvb-rank-row';
+    r.innerHTML =
+      '<span class="lvb-rn">' + d.rank + '</span>' +
+      '<span class="lvb-ri" style="background:' + c + '"></span>' +
+      '<div class="lvb-rnome"><span>' + d.nome + '</span><div class="lvb-bar"><div class="lvb-bar-f" style="width:' + width(d) + ';background:' + c + '"></div></div></div>' +
+      '<span class="lvb-ta-r lvb-rv">' + d.val + '</span>' +
+      '<span class="lvb-ta-r lvb-rp" style="color:' + c + '">' + d.pct + '</span>' +
+      '<span class="lvb-ta-r lvb-rh lvb-hide-sm">' + d.hab + '</span>';
+    return r;
+  }
+
+  function cardEl(d) {
+    var c = AREA[d.area].color;
+    var a = document.createElement('article');
+    a.className = 'lvb-card';
+    a.style.borderTopColor = c;
+    a.innerHTML =
+      '<span class="lvb-card__eye" style="color:' + c + '">' + AREA[d.area].label + '</span>' +
+      '<h4 class="lvb-card__name">' + d.nome + '</h4>' +
+      '<strong class="lvb-card__val">' + d.val + '</strong>' +
+      '<div class="lvb-bar"><div class="lvb-bar-f" style="width:' + width(d) + ';background:' + c + '"></div></div>' +
+      '<div class="lvb-card__foot"><span>Fração do orçamento<b>' + d.pct + '</b></span><span>Méd. por habitante<b>' + d.hab + '</b></span></div>' +
+      '<a class="lvb-card__link" href="relatorios.html">Fiscalizar recursos →</a>';
+    return a;
+  }
+
+  function render() {
+    var list = compute();
+    var filtered = state.q !== '' || state.area !== 'all';
+
+    // contador
+    countEl.textContent = 'Mostrando ' + list.length + ' de ' + DATA.length + ' secretarias';
+    emptyEl.hidden = list.length !== 0;
+
+    // visão
+    tableW.hidden = state.view !== 'table';
+    grid.hidden = state.view !== 'grid';
+
+    if (state.view === 'table') {
+      rows.innerHTML = '';
+      var collapse = !filtered && !state.expanded;
+      list.forEach(function (d, i) {
+        var el = rowEl(d);
+        if (collapse && i >= 5) el.style.display = 'none';
+        rows.appendChild(el);
+      });
+      var hideExpand = filtered || list.length <= 5;
+      expand.style.display = hideExpand ? 'none' : 'block';
+      expand.textContent = state.expanded ? 'Mostrar menos ∧' : 'Ver todas as ' + list.length + ' secretarias ∨';
+    } else {
+      grid.innerHTML = '';
+      list.forEach(function (d) { grid.appendChild(cardEl(d)); });
+    }
+  }
+
+  searchI.addEventListener('input', function () { state.q = this.value; state.expanded = false; render(); });
+  sortS.addEventListener('change', function () { state.sort = this.value; render(); });
+  chips.addEventListener('click', function (e) {
+    var b = e.target.closest('.lvb-chip'); if (!b) return;
+    state.area = b.getAttribute('data-area'); state.expanded = false;
+    chips.querySelectorAll('.lvb-chip').forEach(function (c) { c.classList.toggle('is-active', c === b); });
+    render();
+  });
+  function setView(v) {
+    state.view = v;
+    viewT.classList.toggle('is-active', v === 'table');
+    viewG.classList.toggle('is-active', v === 'grid');
+    viewT.setAttribute('aria-pressed', v === 'table' ? 'true' : 'false');
+    viewG.setAttribute('aria-pressed', v === 'grid' ? 'true' : 'false');
+    render();
+  }
+  viewT.addEventListener('click', function () { setView('table'); });
+  viewG.addEventListener('click', function () { setView('grid'); });
+  expand.addEventListener('click', function () { state.expanded = !state.expanded; render(); });
+
+  render();
+})();
+</script>
 </body>
 </html>
 

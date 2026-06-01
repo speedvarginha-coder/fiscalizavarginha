@@ -218,7 +218,7 @@ a.brand:hover { text-decoration: none; }
 }
 .nav__toggle:hover { background: rgba(0,75,141,.08); }
 
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
   .topbar__inner { flex-wrap: wrap; gap: 8px; padding: 10px 16px; }
   .nav__toggle { display: flex; }
   .nav {
@@ -5743,6 +5743,175 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .rs-filtros__row--bottom { border-top-color: #2a3f5a; }
 }
 
+/* ================== B — Alerta hero investimentos ================== */
+.hero-alert {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,100,80,.14);
+  border: 1px solid rgba(255,120,100,.35);
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-top: 16px;
+  font-size: .82rem;
+  color: #ff8a80;
+  font-weight: 600;
+}
+.hero-alert__icon { font-size: 1rem; flex-shrink: 0; }
+.hero-alert strong { color: #ffb0a0; }
+.hero-alert__link {
+  color: #ffb0a0; font-weight: 700;
+  text-decoration: underline; margin-left: 4px; white-space: nowrap;
+}
+.hero-alert__link:hover { color: #fff; }
+
+/* ================== A — Widget "Esta semana na Câmara" ================== */
+.semana-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  transition: background .15s;
+}
+.semana-hero:hover { background: rgba(255,255,255,.13); }
+.semana-hero__inner { display: flex; flex-direction: column; gap: 2px; }
+.semana-hero__label {
+  font-size: .62rem; font-weight: 800;
+  color: rgba(255,255,255,.5);
+  text-transform: uppercase; letter-spacing: .09em;
+}
+.semana-hero__resume {
+  font-size: .84rem; font-weight: 600;
+  color: rgba(255,255,255,.9);
+}
+.semana-hero__link {
+  font-size: .78rem; font-weight: 700;
+  color: var(--gold); white-space: nowrap;
+  text-decoration: none; flex-shrink: 0;
+}
+.semana-hero__link:hover { text-decoration: underline; }
+
+/* ================== D — CTA Auditômetro ================== */
+.audit-cta {
+  text-align: center;
+  margin-top: 32px;
+  padding: 4px 0 8px;
+}
+.audit-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--navy-dk);
+  font-weight: 700;
+  font-size: .9rem;
+  padding: 12px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(242,194,48,.35);
+  transition: background .15s, box-shadow .15s, transform .1s;
+}
+.audit-cta__btn:hover {
+  background: var(--gold-dk);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(242,194,48,.45);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+.audit-cta__sub {
+  display: block;
+  font-size: .74rem;
+  color: var(--muted);
+  margin-top: 9px;
+}
+
+/* ================== E — Hub badge "hoje" ================== */
+body[data-page="home"] .hub-grid-18 .hub-item { position: relative; }
+.hub-badge {
+  position: absolute;
+  top: 6px; right: 6px;
+  background: var(--gold);
+  color: var(--navy-dk);
+  font-size: .55rem;
+  font-weight: 900;
+  padding: 2px 5px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+/* ================== F — LOA per capita ================== */
+.loa-card__percapita {
+  display: block;
+  font-size: .62rem;
+  color: var(--muted);
+  margin-top: 4px;
+  font-weight: 500;
+}
+@media (prefers-color-scheme: dark) {
+  .loa-card__percapita { color: rgba(180,200,230,.55); }
+}
+
+/* ================== LOA — Por Órgão / Secretaria ================== */
+.loa-orgaos { margin-bottom: 22px; }
+
+.loa-orgaos__header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.loa-orgaos__titulo {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.loa-orgaos__sub {
+  font-size: .68rem;
+  color: var(--muted);
+}
+
+/* Grade 6 por linha — igual ao loa-strip__grid */
+.loa-org-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+@media (max-width: 960px) { .loa-org-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 640px) { .loa-org-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 400px) { .loa-org-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Número de ranking no canto superior esquerdo */
+.loa-card__rank {
+  display: block;
+  font-size: .58rem;
+  font-weight: 900;
+  color: currentColor;
+  opacity: .35;
+  margin-bottom: 3px;
+  letter-spacing: .04em;
+}
+
+/* Cor nova — Previdência (roxo) */
+.loa-card--prev { border-left-color: #6a1a9a; }
+.loa-card--prev .loa-card__valor { color: #6a1a9a; }
+
+@media (prefers-color-scheme: dark) {
+  .loa-card--prev .loa-card__valor { color: #ce93d8; }
+  .loa-orgaos__titulo { color: #7ab0f5; }
+}
+
 /* ================== Faixa LOA 2026 ================== */
 .loa-strip {
   background: var(--cream);
@@ -6074,3 +6243,317 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 /* ================== Licitações filterbar ================== */
 #licitacoesContador { margin-left: auto; }
 #licitacoesMais { margin-top: 16px; }
+
+
+/* ============================================================
+   LVB — LOA Varginha Dobra Rica (lvb-* prefix)
+   ============================================================ */
+
+/* Outer section reset */
+.loa-strip { padding: 0; background: #f4f6f9; }
+
+/* ── HERO ───────────────────────────────────────────────────── */
+.lvb-hero { background: var(--navy); padding: 56px 0 48px; }
+.lvb-hero__inner { display: flex; gap: 48px; align-items: flex-start; flex-wrap: wrap; }
+.lvb-hero__left { flex: 1; min-width: 260px; }
+
+/* Eyebrow — mesma família da kicker do hero principal */
+.lvb-eye {
+  font-size: .75rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--gold); margin: 0 0 12px;
+}
+
+/* Título — mesmo peso do hero principal, só cor diferente */
+.lvb-hero__title {
+  font-size: 2.2rem; font-weight: 800;
+  color: #fff; line-height: 1.15; margin: 0 0 16px;
+  letter-spacing: -.01em;
+}
+.lvb-hero__sub {
+  font-size: .95rem; color: rgba(255,255,255,.7);
+  line-height: 1.65; margin: 0 0 28px; max-width: 420px;
+}
+.lvb-hero__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--gold); color: var(--navy-dk);
+  font-weight: 700; font-size: .88rem; padding: 11px 22px;
+  border-radius: 6px; text-decoration: none;
+  box-shadow: 0 2px 10px rgba(242,194,48,.35);
+  transition: background .15s, transform .1s;
+}
+.lvb-hero__cta:hover { background: #e8b800; transform: translateY(-1px); }
+
+/* Stat cards — borda superior colorida, sem ícone */
+.lvb-hero__cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px; flex: 1; min-width: 280px; align-items: start;
+}
+.lvb-stat {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  border-top-width: 3px;
+  border-radius: 10px; padding: 16px 14px;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.lvb-stat--navy  { border-top-color: var(--gold); }
+.lvb-stat--teal  { border-top-color: #4dd0e1; }
+.lvb-stat--orange{ border-top-color: #ffb74d; }
+.lvb-stat--red   { border-top-color: #ef9a9a; }
+.lvb-stat--blue  { border-top-color: #64b5f6; }
+.lvb-stat--gold  { border-top-color: var(--gold); }
+
+.lvb-stat__cat {
+  font-size: .68rem; font-weight: 600;
+  color: rgba(255,255,255,.5); letter-spacing: .03em;
+}
+.lvb-stat__val {
+  font-size: 1.2rem; font-weight: 800; color: #fff;
+  line-height: 1.2; margin-top: 2px;
+}
+.lvb-stat--teal  .lvb-stat__val { color: #4dd0e1; }
+.lvb-stat--orange .lvb-stat__val { color: #ffb74d; }
+.lvb-stat--red   .lvb-stat__val { color: #ef9a9a; }
+.lvb-stat--blue  .lvb-stat__val { color: #64b5f6; }
+.lvb-stat__sub { font-size: .7rem; color: rgba(255,255,255,.4); }
+
+/* ── MIDDLE ─────────────────────────────────────────────────── */
+.lvb-mid { background: #fff; padding: 48px 0; }
+.lvb-mid__inner {
+  display: grid; grid-template-columns: 1fr 1.6fr 1fr;
+  gap: 36px; align-items: start;
+}
+
+/* Labels de coluna — mesmo peso dos labels da página */
+.lvb-col-title {
+  font-size: .7rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--muted); margin: 0 0 16px;
+}
+
+/* Donut */
+.lvb-donut-col { display: flex; flex-direction: column; }
+.lvb-donut-wrap { display: flex; gap: 20px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+.lvb-donut {
+  width: 140px; height: 140px; border-radius: 50%; flex-shrink: 0;
+  background: conic-gradient(
+    #e53935 0% 29%,
+    #1976d2 29% 46%,
+    #7b1fa2 46% 60%,
+    #f57c00 60% 70%,
+    #43a047 70% 100%
+  );
+  display: flex; align-items: center; justify-content: center;
+}
+.lvb-donut__center {
+  width: 80px; height: 80px; background: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .7rem; font-weight: 800; color: var(--navy);
+  text-align: center; line-height: 1.25;
+}
+.lvb-legend {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 7px;
+  font-size: .82rem; color: var(--text);
+}
+.lvb-legend li { display: flex; align-items: center; gap: 8px; }
+.lvb-dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+.lvb-percapita-box {
+  display: flex; gap: 12px; align-items: center;
+  background: #f0f7ff; border: 1px solid #c3d9f8; border-radius: 8px;
+  padding: 14px 16px; width: 100%; box-sizing: border-box;
+}
+.lvb-percapita-box p { margin: 2px 0; font-size: .78rem; color: var(--muted); line-height: 1.4; }
+.lvb-percapita-box strong { font-size: 1.25rem; font-weight: 800; color: var(--navy); display: block; }
+
+/* Ranking */
+.lvb-ranking-hd {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px; flex-wrap: wrap; gap: 8px;
+}
+.lvb-ranking-hd .lvb-col-title { margin: 0; }
+.lvb-ver-link {
+  background: none; border: none; cursor: pointer;
+  font-size: .78rem; color: var(--blue); font-weight: 600;
+  padding: 0; text-decoration: underline;
+}
+.lvb-rank-head {
+  display: grid; grid-template-columns: 20px 14px 1fr 78px 44px 60px;
+  gap: 0 8px; padding: 6px 8px;
+  background: #f6f7f9; border-radius: 6px;
+  font-size: .6rem; font-weight: 700; letter-spacing: .06em;
+  color: var(--muted); text-transform: uppercase; margin-bottom: 2px;
+}
+.lvb-rank-row {
+  display: grid; grid-template-columns: 20px 14px 1fr 78px 44px 60px;
+  gap: 0 8px; padding: 8px 8px;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: center; font-size: .82rem;
+  transition: background .1s;
+}
+.lvb-rank-row:hover { background: #fafbfc; }
+.lvb-rank-row--hidden { display: none; }
+.lvb-rn { font-size: .62rem; font-weight: 700; color: var(--muted); }
+
+/* Quadrado de cor — sem emoji */
+.lvb-ri {
+  width: 10px; height: 10px; border-radius: 2px;
+  flex-shrink: 0; display: block;
+}
+
+.lvb-rnome { display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
+.lvb-rnome span {
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  font-weight: 600; font-size: .8rem; color: var(--text);
+}
+.lvb-bar { height: 3px; background: #eee; border-radius: 2px; width: 100%; }
+.lvb-bar-f { height: 3px; border-radius: 2px; }
+.lvb-ta-r { text-align: right; }
+.lvb-rv { font-size: .78rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+.lvb-rp { font-size: .75rem; font-weight: 800; }
+.lvb-rh { font-size: .7rem; color: var(--muted); }
+.lvb-expand-btn {
+  display: block; width: 100%; margin-top: 12px;
+  background: none; border: 1px solid var(--blue); color: var(--blue);
+  font-size: .8rem; font-weight: 600; padding: 9px; border-radius: 6px;
+  cursor: pointer; transition: background .15s, color .15s;
+}
+.lvb-expand-btn:hover { background: var(--blue); color: #fff; }
+
+/* ── Explorador: controles, chips, grade ───────────────────── */
+.lvb-ctrl {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.lvb-search {
+  flex: 1; min-width: 180px;
+  border: 1px solid #d7dde6; border-radius: 7px;
+  padding: 9px 12px; font-size: .82rem; font-family: inherit;
+  color: var(--text); background: #fff;
+}
+.lvb-search:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 2px rgba(0,75,141,.12); }
+.lvb-sort { display: flex; align-items: center; gap: 6px; font-size: .72rem; color: var(--muted); font-weight: 600; }
+.lvb-sort select {
+  border: 1px solid #d7dde6; border-radius: 7px;
+  padding: 8px 10px; font-size: .8rem; font-family: inherit;
+  color: var(--text); background: #fff; cursor: pointer;
+}
+.lvb-views { display: flex; gap: 4px; }
+.lvb-view-btn {
+  border: 1px solid #d7dde6; background: #fff; cursor: pointer;
+  width: 36px; height: 36px; border-radius: 7px;
+  font-size: 1rem; color: var(--muted); line-height: 1;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.lvb-view-btn.is-active { background: var(--navy); border-color: var(--navy); color: #fff; }
+
+.lvb-chips { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 10px; }
+.lvb-chip {
+  border: 1px solid #d7dde6; background: #fff; cursor: pointer;
+  font-family: inherit; font-size: .72rem; font-weight: 600;
+  color: var(--text); padding: 6px 12px; border-radius: 999px;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.lvb-chip:hover { border-color: var(--blue); }
+.lvb-chip.is-active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.lvb-count { font-size: .72rem; color: var(--muted); margin: 0 0 12px; }
+.lvb-empty { font-size: .85rem; color: var(--muted); padding: 24px 0; text-align: center; }
+
+/* Grade de cards */
+.lvb-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.lvb-card {
+  background: #fff; border: 1px solid #eceff3;
+  border-top: 3px solid var(--navy); border-radius: 10px;
+  padding: 14px 16px; display: flex; flex-direction: column; gap: 6px;
+}
+.lvb-card__eye {
+  font-size: .6rem; font-weight: 700; letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.lvb-card__name { margin: 0; font-size: .92rem; font-weight: 700; color: var(--navy); }
+.lvb-card__val { font-size: 1.15rem; font-weight: 800; color: var(--text); }
+.lvb-card .lvb-bar { margin: 2px 0 4px; }
+.lvb-card__foot { display: flex; gap: 12px; }
+.lvb-card__foot span {
+  flex: 1; font-size: .62rem; color: var(--muted);
+  display: flex; flex-direction: column; gap: 2px;
+}
+.lvb-card__foot b { font-size: .82rem; color: var(--text); font-weight: 800; }
+.lvb-card__link {
+  margin-top: 4px; font-size: .72rem; font-weight: 700;
+  color: var(--blue); text-decoration: none;
+}
+.lvb-card__link:hover { text-decoration: underline; }
+
+/* Você sabia */
+.lvb-sabia-card {
+  border-radius: 10px; padding: 20px 18px; margin-bottom: 14px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.lvb-sabia-card--red  { background: #e53935; color: #fff; }
+.lvb-sabia-card--gold { background: var(--gold); color: var(--navy-dk); }
+.lvb-sabia-card__cat {
+  font-size: .65rem; font-weight: 700; letter-spacing: .07em;
+  text-transform: uppercase; opacity: .8; display: block;
+}
+.lvb-sabia-card__val { font-size: 1.5rem; font-weight: 800; line-height: 1.15; }
+.lvb-sabia-card p { font-size: .85rem; line-height: 1.55; margin: 0; opacity: .92; }
+.lvb-sabia-badge {
+  display: inline-block; background: rgba(0,0,0,.15); border-radius: 20px;
+  font-size: .65rem; font-weight: 700; padding: 3px 10px; margin-top: 4px;
+}
+
+/* ── DOWNLOAD STRIP ─────────────────────────────────────────── */
+.lvb-dl-strip { background: #12172b; padding: 40px 0 0; }
+.lvb-dl-strip__inner {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px; align-items: start; padding-bottom: 32px;
+}
+.lvb-dl-strip__txt strong,
+.lvb-dl-strip__center strong {
+  font-size: .7rem; letter-spacing: .07em;
+  color: rgba(255,255,255,.4); text-transform: uppercase;
+  display: block; margin-bottom: 10px; font-weight: 700;
+}
+.lvb-dl-strip__txt p,
+.lvb-dl-strip__center p {
+  font-size: .88rem; color: rgba(255,255,255,.65);
+  line-height: 1.6; margin: 0;
+}
+.lvb-dl-strip__btns { display: flex; flex-direction: column; gap: 10px; }
+.lvb-dl-btn {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-radius: 8px;
+  text-decoration: none; font-size: .84rem; font-weight: 700;
+  transition: opacity .15s, transform .1s;
+}
+.lvb-dl-btn:hover { opacity: .88; transform: translateX(2px); }
+.lvb-dl-btn--red   { background: #c62828; color: #fff; }
+.lvb-dl-btn--green { background: #2e7d32; color: #fff; }
+.lvb-dl-btn--blue  { background: #1565c0; color: #fff; }
+.lvb-dl-btn small  { display: block; font-weight: 400; opacity: .75; font-size: .72rem; }
+.lvb-footnote {
+  border-top: 1px solid rgba(255,255,255,.07);
+  padding: 12px 0; font-size: .72rem;
+  color: rgba(255,255,255,.3);
+}
+
+/* ── RESPONSIVE ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .lvb-hero__cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .lvb-hero__title { font-size: 1.75rem; }
+  .lvb-mid__inner { grid-template-columns: 1fr; }
+  .lvb-rank-head,
+  .lvb-rank-row { grid-template-columns: 20px 14px 1fr 72px 44px; }
+  .lvb-hide-sm { display: none; }
+  .lvb-grid { grid-template-columns: 1fr; }
+  .lvb-dl-strip__inner { grid-template-columns: 1fr; }
+}
+@media (max-width: 540px) {
+  .lvb-hero__title { font-size: 1.45rem; }
+  .lvb-hero__cards { grid-template-columns: 1fr 1fr; }
+  .lvb-rank-head,
+  .lvb-rank-row { grid-template-columns: 20px 14px 1fr 68px 40px; }
+}
