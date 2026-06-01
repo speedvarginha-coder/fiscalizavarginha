@@ -480,7 +480,7 @@
               </div>`).join("") || `<p class="muted">Nenhum registro encontrado.</p>`}
           </div>
         </div>
-        <p class="keyword-audit__note">Observacao: na Camara, a busca mistura dois mundos: gasto direto, como diária, e producao legislativa, como requerimento, indicacao, mocao e projeto. A leitura correta é separar dinheiro publico de acao parlamentar.</p>
+        <p class="keyword-audit__note">Observação: na Câmara, a busca mistura dois mundos: gasto direto, como diária, e produção legislativa, como requerimento, indicação, moção e projeto. A leitura correta é separar dinheiro público de ação parlamentar.</p>
       `;
 
       const nextSelect = $("categoriaCamaraSelect");
@@ -1042,11 +1042,11 @@
       const plPct = pct(v.projetos_lei, total);
       const execPct = pct(pagos, lista.length);
       return [
-        `${fmtNum(v.indicacoes)} indicacoes representam ${indPct}% da producao registrada; isso sugere uma atuacao forte em demandas locais enviadas ao Executivo, mas o impacto real depende de resposta e execução pela Prefeitura.`,
-        `${fmtNum(v.requerimentos)} requerimentos (${reqPct}% da producao) indicam o volume de fiscalizacao formal. Quanto maior esse bloco, mais material existe para cobrar respostas documentadas.`,
+        `${fmtNum(v.indicacoes)} indicacoes representam ${indPct}% da produção registrada; isso sugere uma atuação forte em demandas locais enviadas ao Executivo, mas o impacto real depende de resposta e execução pela Prefeitura.`,
+        `${fmtNum(v.requerimentos)} requerimentos (${reqPct}% da produção) indicam o volume de fiscalização formal. Quanto maior esse bloco, mais material existe para cobrar respostas documentadas.`,
         `${fmtNum(v.projetos_lei)} projetos de lei (${plPct}%) mostram iniciativa normativa. A próxima etapa e conferir tramitação, aprovação e aplicacao pratica.`,
-        `${fmtNum(v.mocoes || 0)} mocoes/homenagens e ${fmtNum(v.outros || 0)} outras materias aparecem como producao de menor impacto fiscal direto. Podem ser legitimas, mas devem ficar separadas de acoes que cobram, legislam ou movimentam dinheiro publico.`,
-        `Nas emendas, ${fmtNum(pagos)} de ${fmtNum(lista.length)} aparecem com pagamento localizado para o CNPJ (${execPct}%). ${semPagamento ? `${fmtNum(semPagamento)} ainda merecem pedido de comprovacao de execucao.` : "O foco passa a ser conferir notas, metas e entrega ao publico."}`,
+        `${fmtNum(v.mocoes || 0)} moções/homenagens e ${fmtNum(v.outros || 0)} outras matérias aparecem como produção de menor impacto fiscal direto. Podem ser legítimas, mas devem ficar separadas de ações que cobram, legislam ou movimentam dinheiro público.`,
+        `Nas emendas, ${fmtNum(pagos)} de ${fmtNum(lista.length)} aparecem com pagamento localizado para o CNPJ (${execPct}%). ${semPagamento ? `${fmtNum(semPagamento)} ainda merecem pedido de comprovação de execução.` : "O foco passa a ser conferir notas, metas e entrega ao público."}`,
       ];
     };
 
@@ -1103,7 +1103,7 @@
           <div class="ver-profile__main">
             <span class="ver-profile__label">PAINEL COMPLETO DO(A) VEREADOR(A)</span>
             <h4>${esc(v.nome)}</h4>
-            <p>${fmtNum(v.total)} materias em ${ano} · ${fmtNum(v.indicacoes)} indicacoes · ${fmtNum(v.requerimentos)} requerimentos · ${fmtNum(v.projetos_lei)} projetos de lei · ${fmtNum(v.mocoes || 0)} mocoes/homenagens · ${fmtNum(v.impacto_zero || 0)} itens de impacto zero · posicao ${rankingTotal || "-"} por volume de producao</p>
+            <p>${fmtNum(v.total)} matérias em ${ano} · ${fmtNum(v.indicacoes)} indicações · ${fmtNum(v.requerimentos)} requerimentos · ${fmtNum(v.projetos_lei)} projetos de lei · ${fmtNum(v.mocoes || 0)} moções/homenagens · ${fmtNum(v.impacto_zero || 0)} itens de impacto zero · posição ${rankingTotal || "-"} por volume de produção</p>
           </div>
           <button type="button" onclick="ZELA.limparVereador()">Limpar filtro</button>
         </div>
@@ -1124,7 +1124,7 @@
             <ul>${leituras.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
           </section>
           <section>
-            <h5>Classificação das acoes</h5>
+            <h5>Classificação das ações</h5>
             <div class="impact-bars">
               ${[
                 ["Demandas ao Executivo", v.indicacoes, "Pedidos de bairro/serviços; precisam de resposta da Prefeitura."],
@@ -1146,11 +1146,11 @@
               <strong>${fmtNum(score100)}/100</strong>
               <span>Nota comparativa dentro da Câmara, calculada com os dados já carregados.</span>
             </div>
-            <p class="muted">Formula publica atual: indicacao x1, requerimento x3, projeto de lei estrutural x5, emenda com pagamento localizado x4 e emenda pendente x1. Mocao, homenagem a terceiro e nome de rua/logradouro entram com peso zero. Ainda não inclui presenca, votacoes, respostas do Executivo ou qualidade da resposta.</p>
+            <p class="muted">Fórmula pública atual: indicação x1, requerimento x3, projeto de lei estrutural x5, emenda com pagamento localizado x4 e emenda pendente x1. Moção, homenagem a terceiro e nome de rua/logradouro entram com peso zero. Ainda não inclui presença, votações, respostas do Executivo ou qualidade da resposta.</p>
           </section>
           <section>
             <h5>Classificação por IA - próxima etapa</h5>
-            <p class="muted">Quando os textos completos de projetos, requerimentos e respostas forem coletados, a IA deve classificar categoria, tipo, impacto estimado e relevancia de 0 a 10. Exemplos: saúde, educação, mobilidade, transparência, infraestrutura, social, fiscalizacao, homenagem, nomeacao ou utilidade publica.</p>
+            <p class="muted">Quando os textos completos de projetos, requerimentos e respostas forem coletados, a IA deve classificar categoria, tipo, impacto estimado e relevância de 0 a 10. Exemplos: saúde, educação, mobilidade, transparência, infraestrutura, social, fiscalização, homenagem, nomeação ou utilidade pública.</p>
           </section>
           <section>
             <h5>Para onde vao as emendas</h5>
@@ -1176,11 +1176,11 @@
                 <span>${esc(cleanText(c.modalidade || "modalidade não informada"))} · contrato ${esc(c.numero || "s/n")}/${esc(c.ano || "")}</span>
                 <p>${esc(cleanText(c.objeto || "Objeto não informado"))}</p>
               </div>`).join("") : '<p class="muted">Nenhum contrato com o mesmo CNPJ/raiz das emendas foi localizado nos dados carregados.</p>'}
-            ${contratosRel.length ? `<p class="muted small">Total relacionado: ${fmtBRL(contratosValor)}. Relação por CNPJ não prova irregularidade; serve para priorizar verificacao.</p>` : ""}
+            ${contratosRel.length ? `<p class="muted small">Total relacionado: ${fmtBRL(contratosValor)}. Relação por CNPJ não prova irregularidade; serve para priorizar verificação.</p>` : ""}
           </section>
           <section>
             <h5>Homenagens x impacto real</h5>
-            <p class="muted">Varginha registra esse tipo de acao legislativa com frequencia. O painel separa mocoes, aplausos e homenagens porque elas podem reconhecer pessoas ou entidades, mas não equivalem automaticamente a fiscalizacao, execução de obra, melhoria de serviço público ou economia de recurso.</p>
+            <p class="muted">Varginha registra esse tipo de ação legislativa com frequência. O painel separa moções, aplausos e homenagens porque elas podem reconhecer pessoas ou entidades, mas não equivalem automaticamente a fiscalização, execução de obra, melhoria de serviço público ou economia de recurso.</p>
             <div class="impact-row">
               <div><strong>Mocoes/homenagens</strong><span>Contagem direta por vereador nos dados carregados.</span></div>
               <b>${fmtNum(v.mocoes || 0)}</b>
@@ -1686,13 +1686,13 @@
         {
           titulo: "1. Comece pelas emendas sem pagamento localizado",
           texto: `${fmtNum(semPagamento.length)} emendas tem CNPJ, mas o painel ainda não localizou pagamento correspondente nos dados carregados.`,
-          acao: "Pedir empenho, liquidacao, pagamento e estagio de execução.",
+          acao: "Pedir empenho, liquidação, pagamento e estágio de execução.",
           href: "camara.html",
         },
         {
           titulo: "2. Olhe contratos acima de R$ 1 milhão",
           texto: `${fmtNum(contratosMilhao.length)} contratos somam ${fmtBRL(valorContratosMilhao)} e merecem conferência de objeto, aditivos e notas fiscais.`,
-          acao: "Abrir contrato integral, anexos e relatorio do fiscal.",
+          acao: "Abrir contrato integral, anexos e relatório do fiscal.",
           href: "prefeitura.html?tab=contratos",
         },
         {
@@ -1703,7 +1703,7 @@
         },
         {
           titulo: "4. Separe educação e eventos",
-          texto: `${fmtNum(educacao.length)} contratos ligados a educação e ${fmtNum(eventos.length)} ligados a eventos foram classificados para leitura especifica.`,
+          texto: `${fmtNum(educacao.length)} contratos ligados a educação e ${fmtNum(eventos.length)} ligados a eventos foram classificados para leitura específica.`,
           acao: "Não misturar assuntos: cada trilha pede documentos diferentes.",
           href: "#educacao-fundeb",
         },
@@ -1711,7 +1711,7 @@
       el.innerHTML = `
         <div class="citizen-report__intro">
           <span>Resumo para o cidadao</span>
-          <h3>Onde vale comecar a fiscalizacao</h3>
+          <h3>Onde vale começar a fiscalização</h3>
           <p>Esta leitura prioriza o que um morador consegue cobrar com clareza: dinheiro envolvido, documento que falta e pergunta objetiva para a Prefeitura ou Camara.</p>
         </div>
         <div class="citizen-report__numbers">
@@ -1742,7 +1742,7 @@
         </div>
         <div class="citizen-report__lai">
           <strong>Pergunta pronta para pedir informação</strong>
-          <p>Solicito copia dos contratos, anexos, termos de referencia, empenhos, liquidacoes, notas fiscais, comprovantes de pagamento e relatorios de fiscalizacao dos itens destacados no Painel Fiscaliza Varginha, informando objeto, fornecedor, valor, secretaria responsável, local de execução e situação atual.</p>
+          <p>Solicito cópia dos contratos, anexos, termos de referência, empenhos, liquidações, notas fiscais, comprovantes de pagamento e relatórios de fiscalização dos itens destacados no Painel Fiscaliza Varginha, informando objeto, fornecedor, valor, secretaria responsável, local de execução e situação atual.</p>
         </div>`;
     };
     emendas
@@ -2655,7 +2655,7 @@
         {
           nome: "CEIS/CNEP",
           valor: "Sanções",
-          desc: "Verifica empresas inidoneas, suspensas ou punidas. É a primeira checagem oficial antes de falar em impedimento.",
+          desc: "Verifica empresas inidôneas, suspensas ou punidas. É a primeira checagem oficial antes de falar em impedimento.",
           url: "https://portaldatransparencia.gov.br/sancoes/consulta",
         },
         {
@@ -2945,8 +2945,8 @@
 
     const baseLegalContratos = [
       { lei: "CF/88, art. 37", uso: "legalidade, publicidade, moralidade, eficiencia e impessoalidade" },
-      { lei: "Lei 14.133/2021, arts. 11, 18 e 23", uso: "planejamento, justificativa do preco e compatibilidade com mercado" },
-      { lei: "Lei 14.133/2021, art. 92", uso: "clausulas essenciais do contrato: objeto, preco, prazo, credito orçamentário, direitos e sanções" },
+      { lei: "Lei 14.133/2021, arts. 11, 18 e 23", uso: "planejamento, justificativa do preço e compatibilidade com mercado" },
+      { lei: "Lei 14.133/2021, art. 92", uso: "cláusulas essenciais do contrato: objeto, preço, prazo, crédito orçamentário, direitos e sanções" },
       { lei: "Lei 14.133/2021, arts. 96 e 122", uso: "garantia contratual e subcontratacao quando previstas e justificadas" },
       { lei: "Lei 12.527/2011, art. 8", uso: "transparência ativa de despesas, licitacoes e contratos" },
       { lei: "Lei 4.320/1964, art. 35", uso: "despesa pertence ao exercicio em que foi legalmente empenhada" },
@@ -3010,9 +3010,9 @@
       if (!c.valor || c.valor <= 0) {
         problemas.push("Valor não informado ou zero");
         addAchado(achados, "relevante", "Valor ausente",
-          "Sem valor publico não ha como medir economicidade nem comparar mercado.",
+          "Sem valor público não há como medir economicidade nem comparar mercado.",
           "Lei 14.133/2021, arts. 23 e 92; LAI, art. 8",
-          "Solicitar valor global, planilha de composicao e empenho.");
+          "Solicitar valor global, planilha de composição e empenho.");
       }
       if (!c.data_assinatura) {
         problemas.push("Sem data de assinatura");
@@ -3031,9 +3031,9 @@
 
       const keywordsVagas = ["prestacao de serviços", "aquisição de materiais", "atender as necessidades", "diversas secretarias"];
       if (keywordsVagas.some(k => norm(obj).includes(k)) && obj.length < 90) {
-        problemas.push("Descrição generica: depende de anexos");
-        addAchado(achados, "atencao", "Descrição generica",
-          "O objeto pode estar formalmente correto, mas a fiscalizacao depende dos quantitativos e especificacoes dos anexos.",
+        problemas.push("Descrição genérica: depende de anexos");
+        addAchado(achados, "atencao", "Descrição genérica",
+          "O objeto pode estar formalmente correto, mas a fiscalização depende dos quantitativos e especificações dos anexos.",
           "Lei 14.133/2021, arts. 18, 23 e 92",
           "Solicitar TR, ETP quando houver, pesquisa de precos e memoria de calculo.");
       }
@@ -3052,13 +3052,13 @@
       }
       if (cls.evento && cls.exploracaoPrivada) {
         addAchado(achados, "relevante", "Possivel receita privada vinculada ao evento",
-          "Quando ha barracas, camarotes, estacionamento, publicidade ou praca de alimentacao, a analise deve verificar se a receita privada foi considerada no preco publico.",
+          "Quando há barracas, camarotes, estacionamento, publicidade ou praça de alimentação, a análise deve verificar se a receita privada foi considerada no preço público.",
           "Lei 14.133/2021, arts. 11 e 23; CF/88, art. 37",
           "Solicitar estudo economico, regras de exploracao comercial, autorizacoes e prestacao de contas.");
       }
       if (cls.barry002) {
         addAchado(achados, "relevante", "Checklist especifico do Contrato 002/2026",
-          "Pelo contexto do Banho da Doroteia, a triagem deve conferir anexos, proposta, empenho do exercicio, subcontratacao, eventual garantia e receitas privadas. O painel marca como ponto de verificacao, não como condenacao automatica.",
+          "Pelo contexto do Banho da Doroteia, a triagem deve conferir anexos, proposta, empenho do exercício, subcontratação, eventual garantia e receitas privadas. O painel marca como ponto de verificação, não como condenação automática.",
           "Lei 14.133/2021, arts. 18, 23, 92, 96 e 122; Lei 4.320/1964, art. 35",
           "Solicitar contrato integral com anexos, nota de empenho, parecer juridico, publicacao, proposta e relatorio pos-evento.");
       }
@@ -3081,7 +3081,7 @@
       el.innerHTML = `
         <div>
           <strong>Base juridica da triagem</strong>
-          <p>O painel não declara irregularidade sozinho. Ele cruza dados publicos e indica quais documentos devem ser conferidos antes de qualquer conclusao.</p>
+          <p>O painel não declara irregularidade sozinho. Ele cruza dados públicos e indica quais documentos devem ser conferidos antes de qualquer conclusão.</p>
         </div>
         <div class="legal-context__grid">
           ${baseLegalContratos.map(b => `
@@ -3563,7 +3563,7 @@
       "varginha e show", "roca cidade", "marcha para jesus", "reveillon",
       "revelion", "virada", "festa do peao", "festa do peão", "queima de fogos",
       "evento anual", "evento do dia", "dia da cidade", "dia do trabalhador",
-      "corpus christi", "festival", "feira", "exposicao agropecuaria"
+      "corpus christi", "festival", "feira", "exposição agropecuaria"
     ];
     const estruturaEvento = [
       "palco", "sonorizacao", "sonorização", "iluminacao cenica", "iluminação cenica",
@@ -4497,7 +4497,7 @@
       <div>
         <div class="reader-summary__label">Painel da Prefeitura</div>
         <p>
-          Dados oficiais transformados em trilhas de fiscalizacao: quem recebeu,
+          Dados oficiais transformados em trilhas de fiscalização: quem recebeu,
           quanto recebeu, por qual objeto e onde conferir a fonte.
         </p>
       </div>
@@ -4750,7 +4750,7 @@
             }).join("") || `<p class="muted">Nenhum registro encontrado.</p>`}
           </div>
         </div>
-        <p class="keyword-audit__note">Observacao: busca por palavra-chave e uma triagem. O resultado pode incluir registros parecidos e deve ser conferido no documento oficial antes de qualquer conclusao.</p>
+        <p class="keyword-audit__note">Observação: busca por palavra-chave é uma triagem. O resultado pode incluir registros parecidos e deve ser conferido no documento oficial antes de qualquer conclusão.</p>
       `;
 
       const nextSelect = $("categoriaGastoSelect");
