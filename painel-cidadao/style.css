@@ -3,6 +3,15 @@
    Paleta: Civic Navy + Gold (mesma da apresentação)
 ================================================================ */
 
+/* Inter — auto-hospedada (sem CDN externo; funciona offline) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("fonts/Inter-Variable.woff2") format("woff2");
+}
+
 :root {
   --navy:      #004B8D;
   --navy-dk:   #00376B;
@@ -20,7 +29,7 @@
   --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --radius:    12px;
 
-  --font-b:    "Segoe UI", "Inter", Arial, sans-serif;
+  --font-b:    "Inter", "Segoe UI", Arial, sans-serif;
   --font-h:    var(--font-b);
   --font-mono: "Cascadia Mono", "Consolas", monospace;
 }
