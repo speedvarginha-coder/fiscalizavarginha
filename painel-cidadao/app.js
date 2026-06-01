@@ -3813,7 +3813,7 @@
     // Carrega pessoal.json completo via fetch apenas quando a página pessoal é aberta.
     const hasPrefServs = (pesSlim.prefeitura?.servidores?.length || 0) > 0;
     if (!hasPrefServs && location.protocol !== "file:") {
-      fetch("data/pessoal.json")
+      fetch("data/chunks/pessoal.json")
         .then(r => r.json())
         .then(fullPes => _runInitPessoal(fullPes))
         .catch(() => _runInitPessoal(pesSlim));
