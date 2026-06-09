@@ -787,9 +787,11 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
     com_pagamento  = sum(1 for e in cruzadas if e["status"] == "encontrado")
     sem_pagamento  = sum(1 for e in cruzadas if e["status"] == "sem_pagamento")
     sem_cnpj       = sum(1 for e in cruzadas if e["status"] == "sem_cnpj")
+    execucao_direta = sum(1 for e in cruzadas if e["status"] == "execucao_direta")
 
     print(f"  Cruzamento: {com_pagamento} com pagamento, "
-          f"{sem_pagamento} sem encontrar pagamento, {sem_cnpj} sem CNPJ")
+          f"{sem_pagamento} sem encontrar pagamento, {sem_cnpj} sem CNPJ, "
+          f"{execucao_direta} execução direta (órgão público)")
 
     # ===== Dados Abertos (Onda 3): contratos, licitações, compras diretas e obras =====
     contratos       = _baixar_dados_abertos_safe(cb, token, "Contratos",               cb.CONSULTA_CONTRATOS,          ano_atual)
@@ -815,9 +817,10 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
         "top_fornecedores_anterior": top_anterior,
         "emendas_cruzadas": cruzadas,
         "stats_cruzamento": {
-            "com_pagamento":  com_pagamento,
-            "sem_pagamento":  sem_pagamento,
-            "sem_cnpj":       sem_cnpj,
+            "com_pagamento":   com_pagamento,
+            "sem_pagamento":   sem_pagamento,
+            "sem_cnpj":        sem_cnpj,
+            "execucao_direta": execucao_direta,
         },
         "contratos":        _normaliza_contratos(contratos),
         "licit_andamento":  _normaliza_licitacoes(licit_andamento),

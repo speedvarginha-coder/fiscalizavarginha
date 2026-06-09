@@ -49,7 +49,7 @@ test.describe("Integridade dos cálculos (miolo)", () => {
     expect(tipoEmenda.qtd).toBe(emendas.length);
   });
 
-  test("cruzamento de emendas: contagens válidas e dentro do total", () => {
+  test("cruzamento de emendas: resumo reconcilia com o total (sem emenda perdida)", () => {
     const pref = load("prefeitura");
     const emendas = load("emendas");
     const cs = pref.stats_cruzamento || {};
@@ -59,8 +59,10 @@ test.describe("Integridade dos cálculos (miolo)", () => {
     const direta = Number(cs.execucao_direta) || 0;
     // nenhuma contagem negativa
     [com, semPag, semCnpj, direta].forEach((n) => expect(n).toBeGreaterThanOrEqual(0));
-    // o que foi cruzado nunca pode exceder o total de emendas
-    expect(com + semPag + semCnpj + direta).toBeLessThanOrEqual(emendas.length);
+    // o resumo do cruzamento DEVE incluir execução direta (órgão público)
+    expect(cs).toHaveProperty("execucao_direta");
+    // soma dos status == total de emendas: nenhuma fica fora do placar do cidadão
+    expect(com + semPag + semCnpj + direta).toBe(emendas.length);
   });
 
   test("LOA 2026: per-capita publicado bate com orçamento / população", () => {
