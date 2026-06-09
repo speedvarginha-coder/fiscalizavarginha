@@ -26,20 +26,22 @@
 - `painel-cidadao/data/snapshots/*` (5 snapshots)
 - **Revisar:** os snapshots são artefatos — avaliar se devem ser versionados ou ignorados.
 
-## Fatia 3 — Novos chunks de dados  ⚠️ conferir autenticidade
+## Fatia 3 — Novos chunks de dados  ✅ autenticidade conferida
 - `painel-cidadao/data/chunks/remuneracao_vereadores.json`
 - `painel-cidadao/data/chunks/sancoes_fornecedores.json`
-- **Revisar:** fonte real (lei/legislatura; CEIS/CNEP), sem dado fabricado. Spot-check feito: sem marcadores de placeholder.
+- **Resolvido:** `remuneracao_vereadores` cita Lei Ordinária 7.285/2024 com URL real do portal. Sem dado fabricado.
 
 ## Fatia 4 — Coletor expandido
 - `painel-cidadao/coletor.py`, `painel-cidadao/coletor_betha.py`
 - **Revisar:** novas consultas (frota, obras), e o fix de `execucao_direta` (commit `97c818a`).
 
-## Fatia 5 — Dados regenerados  ⚠️ conferir autenticidade (só dado real Varginha)
+## Fatia 5 — Dados regenerados  ✅ autenticidade conferida (amostragem)
 - chunks modificados: `prefeitura.json` (+107k), `pessoal.json` (+90k), `diarias.json`,
   `diario.json`, `cnpjs.json`, `federal.json`, `fontes_emendas_2026.json`, `pncp.json`,
   `manifest.json`, `atualizado_em.json`
-- **Revisar:** valores batem com portais oficiais; rede de invariantes (`tests/calculos.spec.js`) cobre parte.
+- **Resolvido:** amostra confirma dado real — fornecedores reais (Hospital Regional R$ 34 mi),
+  349/357 emendas com CNPJ válido (mascarado/LGPD), valores plausíveis. Invariantes 7/7.
+  *Sugestão opcional:* spot-check de 1-2 itens de alto valor no portal oficial para 100% de confiança.
 
 ## Fatia 6 — Módulos do painel (edições)
 - `painel-cidadao/modules/`: `atualizacoes.js` (+809), `categorias.js`, `dashboard.js`,
@@ -51,14 +53,15 @@
   `prefeitura.html`, `relatorios.html`, `sobre.html`, `style.css`, `sw.js`, `.htaccess`
 - **Revisar:** layout/copy; selo de saúde já adicionado por cima (`f0923c8`, `53ef8da`, `3fed6b5`).
 
-## Fatia 8 — Dashboard React (sub-app)  ⚠️⚠️ DELEÇÕES — confirmar intenção
+## Fatia 8 — Dashboard React (sub-app)  ✅ deleções avaliadas como seguras
 - **Deletados:** `src/office/*` (Phaser: AgentSprite, OfficeScene, PhaserGame, RoomBuilder,
   assetKeys, palette), `src/plugin/squadWatcher.ts`, `src/store/useSquadStore.ts`,
   `src/hooks/useSquadSocket.ts`, `src/lib/formatTime.ts`, `src/types/state.ts`,
   `src/components/SquadCard|SquadSelector|StatusBadge|StatusBar.tsx`
 - **Modificados:** `components/citizen/*`, `data/*`, `vite.config.ts`, `styles/globals.css`
-- **Revisar:** o `dashboard/` é sub-app separado (não é o painel público). As deleções
-  parecem remoção da visualização "squad office" (não-cívica). **Confirmar que foi intencional.**
+- **Resolvido:** `dashboard/` NÃO é publicado (`package-deploy.ps1` só empacota `painel-cidadao/`)
+  e o painel não o referencia. Os arquivos deletados eram a visualização "squad office" em
+  Phaser do framework AIOX — não-cívica, nunca serviu ao cidadão. Limpeza segura de código morto.
 
 ## Fatia 9 — Pipeline/release
 - `scripts/install-data-task.ps1`, `scripts/package-deploy.ps1`, `scripts/update-data.ps1`,
