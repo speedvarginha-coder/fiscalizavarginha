@@ -55,6 +55,27 @@
     <p class="bigheader__lead">
       Quanto custa a folha da Prefeitura e da Câmara, quantos cargos são comissionados e como se distribui a remuneração do serviço público de Varginha. Números oficiais, sem julgamento — a leitura é sua.
     </p>
+    <div id="dataHealthStrip" class="data-health-strip" hidden></div>
+    <script>
+    (function () {
+      var box = document.getElementById("dataHealthStrip");
+      if (!box || !window.fetch || location.protocol === "file:") return;
+      var RE = /pessoal/i;
+      function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+      fetch("data/chunks/auditoria_dados.json?v=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (a) {
+          if (!a || !a.items) return;
+          var its = a.items.filter(function (i) { return i.severity === "warning" && RE.test(i.source || ""); });
+          if (!its.length) return;
+          box.hidden = false;
+          box.innerHTML = '<strong>⚠ Limites conhecidos desta base</strong><ul>' +
+            its.map(function (i) { return '<li>' + esc(i.detail) + '</li>'; }).join("") +
+            '</ul>';
+        })
+        .catch(function () {});
+    })();
+    </script>
   </div>
 
   <!-- Dashboard de Pessoal -->

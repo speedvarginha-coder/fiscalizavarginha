@@ -64,6 +64,27 @@
         do SAPL (sistema oficial da Câmara).
       </p>
       <p id="atualizado" class="muted small" style="margin-top:8px"></p>
+      <div id="dataHealthStrip" class="data-health-strip" hidden></div>
+      <script>
+      (function () {
+        var box = document.getElementById("dataHealthStrip");
+        if (!box || !window.fetch || location.protocol === "file:") return;
+        var RE = /camara|emenda|indice/i;
+        function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+        fetch("data/chunks/auditoria_dados.json?v=" + Date.now(), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (a) {
+            if (!a || !a.items) return;
+            var its = a.items.filter(function (i) { return i.severity === "warning" && RE.test(i.source || ""); });
+            if (!its.length) return;
+            box.hidden = false;
+            box.innerHTML = '<strong>⚠ Limites conhecidos desta base</strong><ul>' +
+              its.map(function (i) { return '<li>' + esc(i.detail) + '</li>'; }).join("") +
+              '</ul>';
+          })
+          .catch(function () {});
+      })();
+      </script>
       <div class="civic-actions" aria-label="Ações rápidas da Câmara">
         <a href="#gastosPalavraChaveCamara">Perguntar aos dados</a>
         <a href="#indiceRelevancia">Índice de relevância</a>
