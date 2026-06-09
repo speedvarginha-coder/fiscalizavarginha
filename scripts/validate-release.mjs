@@ -13,6 +13,7 @@ const zipPath = path.join(root, "dist", "fiscaliza-varginha-painel.zip");
 const expectedChunks = [
   "atualizacoes",
   "atualizado_em",
+  "auditoria_dados",
   "camara_anos",
   "camara_betha",
   "camara_transparencia",
@@ -22,10 +23,14 @@ const expectedChunks = [
   "emendas",
   "federal",
   "fontes_emendas_2026",
+  "indice_relevancia",
+  "mudancas_coleta",
   "pessoal",
   "pncp",
   "prefeitura",
+  "remuneracao_vereadores",
   "resumo",
+  "sancoes_fornecedores",
   "vereadores",
 ];
 
@@ -57,6 +62,9 @@ const requiredPublicFiles = [
   "modules/relatorios.js",
   "modules/diarias.js",
   "modules/atualizacoes.js",
+  "modules/materia-cidada.js",
+  "modules/indice-relevancia.js",
+  "modules/onboarding.js",
   "data/manifest.json",
   ...expectedChunks.map((name) => `data/chunks/${name}.json`),
 ];
@@ -233,6 +241,35 @@ function validateDomainShapes(chunks) {
     assert(vereadores.every((v) => isObject(v) && typeof v.nome === "string"), "vereadores devem ter nome");
   }
 
+  const remuneracao = chunks.get("remuneracao_vereadores");
+  assertObject(remuneracao, "remuneracao_vereadores");
+  if (isObject(remuneracao)) {
+    assertObject(remuneracao.lei, "remuneracao_vereadores.lei");
+    assertNumber(remuneracao.subsidio_bruto_mensal_brl, "remuneracao_vereadores.subsidio_bruto_mensal_brl", 1);
+    assertNumber(remuneracao.quantidade_lei, "remuneracao_vereadores.quantidade_lei", 1);
+    assertNumber(remuneracao.impacto_mensal_estimado_brl, "remuneracao_vereadores.impacto_mensal_estimado_brl", 1);
+    assertNumber(remuneracao.impacto_anual_estimado_brl, "remuneracao_vereadores.impacto_anual_estimado_brl", 1);
+    if (isObject(remuneracao.lei)) {
+      assert(typeof remuneracao.lei.url === "string" && /^https?:\/\//.test(remuneracao.lei.url), "remuneracao_vereadores.lei.url deve ser URL oficial");
+    }
+  }
+
+  const indice = chunks.get("indice_relevancia");
+  assertObject(indice, "indice_relevancia");
+  if (isObject(indice)) {
+    assertObject(indice.metodologia, "indice_relevancia.metodologia");
+    assertObject(indice.anos, "indice_relevancia.anos");
+    if (isObject(indice.anos)) {
+      for (const [ano, bloco] of Object.entries(indice.anos)) {
+        assertObject(bloco, `indice_relevancia.anos.${ano}`);
+        if (isObject(bloco)) {
+          assertArray(bloco.ranking, `indice_relevancia.anos.${ano}.ranking`, 1);
+          assertNumber(bloco.cobertura_pct, `indice_relevancia.anos.${ano}.cobertura_pct`, 0);
+        }
+      }
+    }
+  }
+
   const resumo = chunks.get("resumo");
   assertObject(resumo, "resumo");
   if (isObject(resumo)) {
@@ -285,7 +322,7 @@ function validateDeploy() {
     if (path.basename(file).startsWith(".betha-token")) fail(`Token Betha no pacote: ${rel}`);
 
     if (rel.startsWith("data/") && ext === ".json") {
-      const allowed = rel === "data/manifest.json" || /^data\/chunks\/[^/]+\.json$/.test(rel);
+      const allowed = rel === "data/manifest.json" || /^data\/chunks\/[^/]+\.json$/.test(rel) || /^data\/snapshots\/[^/]+\.json$/.test(rel);
       if (!allowed) fail(`JSON intermediario no pacote: ${rel}`);
     }
   }
@@ -295,6 +332,7 @@ function validateDeploy() {
     const htaccess = fs.readFileSync(htaccessPath, "utf8");
     assert(htaccess.includes("RewriteRule ^data/"), ".htaccess deve bloquear JSONs intermediarios em data/");
     assert(htaccess.includes("chunks/[^/]+\\.json"), ".htaccess deve liberar chunks JSON publicos");
+    assert(htaccess.includes("snapshots/[^/]+\\.json"), ".htaccess deve liberar snapshots JSON publicos");
   }
 
   validateManifest(path.join(stageDir, "data", "manifest.json"), path.join(stageDir, "data", "chunks"));

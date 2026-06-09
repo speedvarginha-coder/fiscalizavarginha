@@ -1,4 +1,4 @@
-// @ts-check
+﻿// @ts-check
 /**
  * Smoke tests — Fiscaliza Varginha
  *
@@ -45,13 +45,13 @@ function setupConsoleListener(page) {
 const PAGINAS = [
   { arquivo: "index.html",      titulo: /Fiscaliza Varginha/,           bloco: "footer" },
   { arquivo: "prefeitura.html", titulo: /Prefeitura/,              bloco: "#placarPrefeitura" },
-  { arquivo: "camara.html",     titulo: /Câmara/,                  bloco: "#placarCamara" },
-  { arquivo: "relatorios.html", titulo: /Relatórios/,              bloco: "#prioridades-fiscalização" },
+  { arquivo: "camara.html",     titulo: /C.mara/,                  bloco: "#placarCamara" },
+  { arquivo: "relatorios.html", titulo: /Relat.rios/,              bloco: "#prioridadesFiscalizacao" },
   { arquivo: "pessoal.html",    titulo: /Pessoal/,                 bloco: "#listaPessoal" },
   { arquivo: "sobre.html",      titulo: /Sobre/,                   bloco: "#tabelaGlossario" },
   { arquivo: "cobrar.html",     titulo: /Como cobrar/,             bloco: ".cobrar-blocks" },
   { arquivo: "marcadores.html", titulo: /Marcadores/,              bloco: "#marcadoresArea" },
-  { arquivo: "atualizacoes.html", titulo: /Atualizações/,           bloco: "#atualizacoesFeed" },
+  { arquivo: "atualizacoes.html", titulo: /Atualiza..es/,           bloco: "#atualizacoesFeed" },
 ];
 
 for (const p of PAGINAS) {
@@ -98,6 +98,97 @@ test.describe("Navegação", () => {
   });
 });
 
+test.describe("Legenda de leitura dos dados", () => {
+  test("legenda fixa explica fato, cruzamento, inferência e pendência", async ({ page }) => {
+    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+    const legend = page.locator("#dataReadingLegend");
+    await expect(legend).toBeAttached();
+    await expect(legend.locator(".data-legend__toggle")).toHaveAttribute("aria-expanded", "false");
+    await legend.locator(".data-legend__toggle").click();
+    await expect(legend.locator(".data-legend__toggle")).toHaveAttribute("aria-expanded", "true");
+    await expect(legend).toContainText("Fato oficial");
+    await expect(legend).toContainText("Cruzamento");
+    await expect(legend).toContainText("Inferência");
+    await expect(legend).toContainText("Pendência");
+    await expect(legend).toContainText("Atenção");
+  });
+});
+
+test.describe("Mapa cidadao do dinheiro", () => {
+  test("home mostra guia para quem não sabe por onde começar", async ({ page }) => {
+    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const guia = page.locator("#homeStartGuide");
+    await expect(guia).toContainText("Não sei por onde começar");
+    await expect(guia).toContainText("Obras e buracos");
+    await expect(guia).toContainText("Você vai ver");
+    await guia.locator('[data-start-key="diario"]').click();
+    await expect(guia).toContainText("Quero ver o que saiu no Diário Oficial");
+    const link = guia.locator('a', { hasText: "Abrir Diário Oficial" });
+    await expect(link).toHaveAttribute("href", "atualizacoes.html?tab=diario");
+  });
+
+  test("home mostra destinos do dinheiro e abre explicacao", async ({ page }) => {
+    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    await expect(page.locator("#homeMoneyMap .money-topic").first()).toBeAttached();
+    await expect(page.locator("#homeMoneyMap")).toContainText("Para onde foi o dinheiro");
+    await page.locator("#homeMoneyMap .money-topic__actions button").first().click();
+    const modal = page.locator("#modalFiscaliza");
+    await expect(modal).toBeAttached();
+    await expect(modal.locator("text=EXPLICACAO CIDADA")).toBeVisible();
+    await expect(modal.locator("text=O que perguntar")).toBeVisible();
+  });
+});
+
+test.describe("Tendencia cidada do dinheiro", () => {
+  test("home compara anos e abre explicacao", async ({ page }) => {
+    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    await expect(page.locator("#homeTrendWatch .trend-card").first()).toBeAttached();
+    await expect(page.locator("#homeTrendWatch")).toContainText("Esta melhorando ou piorando");
+    await page.locator("#homeTrendWatch .money-topic__actions button").first().click();
+    const modal = page.locator("#modalFiscaliza");
+    await expect(modal).toBeAttached();
+    await expect(modal.locator("text=TENDENCIA CIDADA")).toBeVisible();
+    await expect(modal.locator("text=Confianca do dado")).toBeVisible();
+  });
+});
+
+test.describe("Auditor inteligente", () => {
+  test("home sugere caminhos de busca enquanto o cidadão digita", async ({ page }) => {
+    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator("#buscaHome").fill("as");
+    const sugestoes = page.locator("#homeSmartSuggest");
+    await expect(sugestoes).toContainText("Asfalto e buracos");
+    await expect(sugestoes).toContainText("Ver gastos com pavimentação");
+    await page.locator('#homeSmartSuggest [data-smart-pick="asfalto"]').click();
+    await expect(sugestoes).toContainText("Resultado guiado");
+    await expect(sugestoes).toContainText("Você vai abrir");
+    await expect(sugestoes).toContainText("Pergunta pronta");
+    await page.locator('#homeSmartSuggest [data-smart-q="asfalto"]').click();
+    await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=asfalto/);
+  });
+});
+
+test.describe("Como cobrar", () => {
+  test("fila de cobranca renderiza fornecedores priorizados", async ({ page }) => {
+    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    await expect(page.locator("#filaCobrancaLista .risk-queue-card").first()).toBeAttached();
+    await expect(page.locator("#filaCobrancaStats")).toContainText(/vermelho|amarelo|fornecedores/i);
+    await expect(page.locator("#filaCobrancaLista")).toContainText("Pendencias oficiais");
+    await expect(page.locator("#filaCobrancaLista")).toContainText("CEIS/CNEP");
+    await expect(page.locator("#filaCobrancaLista")).toContainText("PNCP / origem");
+    await page.locator("#filaCobrancaLista [data-fila-status]").first().selectOption("aguardando");
+    await expect(page.locator("#filaCobrancaLista")).toContainText("Atualizado em");
+    await page.locator("#filaCobrancaRisco").selectOption("red");
+    await expect(page.locator("#filaCobrancaLista")).toContainText(/Vermelho|Nenhum item/);
+  });
+});
+
 test.describe("Filtros básicos", () => {
   test("Prefeitura — filtro de busca aceita texto", async ({ page }) => {
     await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
@@ -121,7 +212,12 @@ test.describe("Filtros básicos", () => {
     await page.locator("#contratos .btn-dossie", { hasText: "Ver detalhes e fonte" }).first().click();
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();
-    await expect(modal.locator("text=CONFERÊNCIA DE PROCEDÊNCIA")).toBeVisible();
+    await expect(modal).toContainText(/CONFER.*NCIA DE PROCED.*NCIA/i);
+    await expect(modal.locator("text=Entender este dado")).toBeVisible();
+    await expect(modal.locator("text=Checklist cidadão")).toBeVisible();
+    const primeiroCheck = modal.locator(".citizen-checklist input").first();
+    await primeiroCheck.check();
+    await expect(primeiroCheck).toBeChecked();
     await expect(modal.locator("text=Abrir tabela Betha")).toBeVisible();
     await expect(modal.locator("text=Buscar no PNCP")).toBeVisible();
   });
@@ -135,16 +231,84 @@ test.describe("Filtros básicos", () => {
     await row.click();
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();
-    await expect(modal.locator("text=CONFERÊNCIA DE PROCEDÊNCIA")).toBeVisible();
+    await expect(modal).toContainText(/CONFER.*NCIA DE PROCED.*NCIA/i);
   });
 
   test("Câmara — filtro de emendas aceita texto", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
+    await page.locator('.csec-btn[data-go="emendas"]').click();
     const busca = page.locator("#filtroEm");
     await expect(busca).toBeAttached();
     await busca.fill("teste");
     await expect(busca).toHaveValue("teste");
+  });
+
+  test("Câmara — chip de categoria abre popup de emendas com fonte SAPL", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator('.csec-btn[data-go="emendas"]').click();
+    const chip = page.locator("#catChipsCamara .cat-chip:not(.cat-chip--clear)").first();
+    await expect(chip).toBeVisible();
+    await chip.click();
+    const modal = page.locator("#modalFiscaliza");
+    await expect(modal).toBeAttached();
+    await expect(modal).toContainText(/emendas/i);
+    await expect(modal.getByRole("link", { name: /Ver no SAPL/ }).first()).toBeVisible();
+  });
+
+  test("Camara - busca por cafe nao relaciona emendas como despesa", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator("#categoriaCamaraSelect").selectOption("Cafe");
+    await page.waitForTimeout(300);
+    const bloco = page.locator("#gastosPalavraChaveCamara");
+    await expect(bloco).toContainText(/falsos positivos|Nenhum registro|registros encontrados/i);
+    await expect(bloco.locator(".keyword-audit__grid")).not.toContainText("Emenda impositiva");
+  });
+
+  test("Selo de confiança do dado aparece em blocos críticos", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    await expect(page.locator("#gastosPalavraChaveCamara")).toContainText("Selo de confiança do dado");
+    await expect(page.locator("#remuneracaoVereadores")).toContainText("Selo de confiança do dado");
+    await expect(page.locator("#topFornecedoresCamara")).toContainText("Selo de confiança do dado");
+    await expect(page.locator(".diaria-card").first()).toContainText("Selo de confiança do dado");
+  });
+
+  test("Glossário contextual marca termos técnicos renderizados", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    const termos = page.locator(".glossario-termo[data-explica]");
+    await expect(termos.first()).toBeAttached();
+    const achouTermoTecnico = await page.evaluate(() =>
+      Array.from(document.querySelectorAll(".glossario-termo[data-explica]"))
+        .some((el) => /di[aá]ria|empenho|liquida|dispensa|modalidade/i.test(el.textContent || ""))
+    );
+    expect(achouTermoTecnico).toBeTruthy();
+  });
+
+  test("Câmara — top fornecedor explica busca de contrato", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const btn = page.locator("#topFornecedoresCamara .forn-row__btn--filtro").first();
+    await expect(btn).toBeAttached();
+    await btn.click();
+    await expect(page.locator("#contratosCamaraAviso")).toBeVisible();
+    await expect(page.locator("#contratosCamaraAviso")).toContainText(/contrato vigente|Nenhum contrato vigente/);
+  });
+
+  test("Câmara — top fornecedor abre dossie consolidado", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const btn = page.locator("#topFornecedoresCamara .forn-row__btn--dossie").first();
+    await expect(btn).toBeAttached();
+    await btn.click();
+    const modal = page.locator("#modalFiscaliza");
+    await expect(modal).toBeAttached();
+    await expect(modal.locator("text=DOSSIE DO FORNECEDOR")).toBeVisible();
+    await expect(modal.locator("text=Pergunta LAI pronta")).toBeVisible();
+    await expect(modal.locator("text=Abrir contratos Betha")).toBeVisible();
   });
 });
 
@@ -153,7 +317,36 @@ test.describe("Placar do dinheiro", () => {
     await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const cards = page.locator("#placarPrefeitura .placar-card");
+    await expect(cards.first()).toBeAttached({ timeout: 15_000 });
     await expect(cards).toHaveCount(4);
+  });
+
+  test("Prefeitura mostra recorte de asfalto, tapa-buraco e custo unitário", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator('.pref-tab[data-pref-tab="asfalto"]').first().click();
+    const painel = page.locator("#asfaltoPainel");
+    await expect(painel).toContainText(/Recorte vi.rio|Asfalto/i);
+    await expect(painel).toContainText(/custo m.dio por m.|Sem m./i);
+    await expect(painel).toContainText(/Fila de cobran.a|Faltam dados para auditar/i);
+    await expect(painel).toContainText(/Rua\/bairro|Metragem\/quantidade|Fiscal respons.vel/i);
+    await expect(painel).toContainText(/Data:/);
+    await expect(painel).toContainText(/obra\(s\) oficiais Betha|consulta Betha 83026|Obra p.blica Betha/i);
+    await expect(painel).toContainText(/Situa..o:|.ltima medi..o|Respons.vel:/i);
+    await expect(painel.locator(".asfalto-card").first()).toBeAttached();
+    await expect(painel).toContainText(/Copiar pergunta LAI|Abrir Betha/);
+  });
+
+  test("Prefeitura mostra frota municipal com gastos e fonte Betha", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator('.pref-tab[data-pref-tab="frota"]').first().click();
+    const painel = page.locator("#frotaBlock");
+    await expect(painel).toContainText(/Frota municipal/i);
+    await expect(painel).toContainText(/gastos vinculados auditáveis|gastos vinculados/i);
+    await expect(painel).toContainText(/combustível|combustivel|manutenção|manutencao/i);
+    await expect(painel.locator(".frota-card").first()).toBeAttached();
+    await expect(painel).toContainText(/Centro de custo|Copiar pergunta LAI|Abrir Betha/i);
   });
 
   test("Câmara mostra 4 cards no placar", async ({ page }) => {
@@ -161,6 +354,33 @@ test.describe("Placar do dinheiro", () => {
     await page.waitForTimeout(2000);
     const cards = page.locator("#placarCamara .placar-card");
     await expect(cards).toHaveCount(4);
+  });
+
+  test("Câmara mostra índice de relevância auditável", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await expect(page.locator("#indiceRelevancia .indice-card").first()).toBeAttached();
+    await expect(page.locator("#indiceRelevancia")).toContainText("confianca/cobertura");
+    await expect(page.locator('#indiceRelevancia [data-indice-perfil="fiscalizador"]')).toBeAttached();
+  });
+
+  test("Câmara mostra remuneração dos vereadores com fonte", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator('.csec-btn[data-go="vereadores"]').click();
+    await expect(page.locator("#remuneracaoVereadores")).toContainText("Subsidio bruto mensal");
+    await expect(page.locator("#remuneracaoVereadores")).toContainText("R$ 10.384,06");
+    await expect(page.locator("#remuneracaoVereadores")).toContainText("Folha nominal localizada");
+    await expect(page.locator("#remuneracaoVereadores .salary-payroll__row").nth(1)).toBeAttached();
+    await expect(page.locator("#remuneracaoVereadores a", { hasText: "Ver lei" })).toBeAttached();
+    await page.locator("#remuneracaoVereadores .salary-payroll__row button").first().click();
+    await expect(page.locator("#modalFiscaliza")).toContainText("FOLHA NOMINAL");
+    await page.locator("#modalFiscaliza .modal__close").click();
+    await page.locator("#remuneracaoVereadores button", { hasText: "Entender" }).click();
+    const modal = page.locator("#modalFiscaliza");
+    await expect(modal).toBeAttached();
+    await expect(modal.locator("text=REMUNERACAO PARLAMENTAR")).toBeVisible();
+    await expect(modal.locator("text=O que pedir via LAI")).toBeVisible();
   });
 });
 
@@ -180,11 +400,38 @@ test.describe("Atualizações diárias (feed)", () => {
     await expect(stats).toHaveCount(4);
   });
 
+  test("Mostra resumo do que mudou desde a última atualização", async ({ page }) => {
+    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const digest = page.locator("#mudancasRecentes");
+    await expect(digest).toBeAttached();
+    await expect(digest).toContainText(/O que mudou desde a .ltima atualiza..o/);
+    await expect(digest).toContainText(/COMPARA..O REAL DE COLETAS|Recorte autom.tico/);
+    await expect(digest).toContainText(/mudan.as detectadas|atos no recorte/);
+    await expect(digest).toContainText(/Principais mudan.as detectadas|Prioridade cidad./);
+    await expect(digest.locator(".change-digest__item").first()).toBeAttached();
+  });
+
+  test("Aba Diário Oficial mostra edições resumidas da fonte oficial", async ({ page }) => {
+    await page.goto(fileUrl("atualizacoes.html") + "?tab=diario", { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    await expect(page.locator("#atualizacoesTabs .update-tab").filter({ hasText: /Di.rio Oficial/ })).toHaveClass(/is-active/);
+    await expect(page.locator("#mudancasRecentes")).toContainText(/O que mudou no Di.rio Oficial/);
+    await expect(page.locator("#mudancasRecentes")).toContainText(/Abrir PDF da edi..o/);
+    await expect(page.locator("#atualizacoesFeed .diario-oficial-card").first()).toBeAttached();
+    await expect(page.locator("#atualizacoesFeed .diario-oficial-card").first()).toContainText(/Edi..o/);
+    await expect(page.locator("#atualizacoesFeed .diario-oficial-card").first()).toContainText(/Resumo cidad.o desta edi..o/);
+    await expect(page.locator("#atualizacoesFeed .diario-oficial-card").first()).toContainText(/Compras\/contrata..es|Cargos|Leis|dado aberto/i);
+    const pdf = page.locator("#atualizacoesFeed .diario-oficial-card").first().locator("a", { hasText: /Abrir PDF da edi..o/ });
+    await expect(pdf).toBeVisible();
+    await expect(pdf).toHaveAttribute("href", /\/portal\/diario-oficial\/ver\/\d+\//);
+  });
+
   test("Filtro Câmara mostra contratos (regressão: chunk camara_betha)", async ({ page }) => {
     await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     // Clica no chip Câmara
-    await page.locator('#atualizacoesFiltros .cat-chip[data-valor="Câmara"]').click();
+    await page.locator('#atualizacoesFiltros .cat-chip').filter({ hasText: /C.mara/ }).click();
     await page.waitForTimeout(300);
     // Espera pelo menos 1 card de Câmara aparecer (deveria ter 36 contratos reais)
     const cards = page.locator("#atualizacoesFeed .tline-item");
@@ -254,7 +501,7 @@ test.describe("Banner de boas-vindas (onboarding)", () => {
 test.describe("Classificação cidadã de matérias", () => {
   test("dados têm grau/tema e materiaCard rendeza selo + por que acompanhar", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2500);
+    await page.waitForFunction(() => Boolean(window.ZELA && window.ZELA.materiaCard && window.ZELA_DATA?.camara_anos), null, { timeout: 15_000 });
     const r = await page.evaluate(() => {
       const anos = (window.ZELA_DATA && window.ZELA_DATA.camara_anos) || {};
       const ano = Object.keys(anos)[0];
@@ -277,6 +524,7 @@ test.describe("Resumo Semanal", () => {
   test("bloco renderiza e mostra matérias ou estado vazio", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
+    await page.locator('.csec-btn[data-go="atividade"]').click();
     const block = page.locator("#resumoSemanalBlock");
     await expect(block).toBeAttached();
     // Feed ou empty-state — um dos dois está visível
@@ -290,6 +538,7 @@ test.describe("Resumo Semanal", () => {
   test("filtro de período 'Este mês' retorna matérias", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
+    await page.locator('.csec-btn[data-go="atividade"]').click();
     await page.locator('#resumoPeriodoChips .rs-chip[data-periodo="mes"]').click();
     await page.waitForTimeout(300);
     const counter = page.locator("#resumoContador");
@@ -299,6 +548,7 @@ test.describe("Resumo Semanal", () => {
   test("chips de grau filtram por impacto", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
+    await page.locator('.csec-btn[data-go="atividade"]').click();
     // Primeiro expande para 'Este mês' para ter dados
     await page.locator('#resumoPeriodoChips .rs-chip[data-periodo="mes"]').click();
     await page.waitForTimeout(300);

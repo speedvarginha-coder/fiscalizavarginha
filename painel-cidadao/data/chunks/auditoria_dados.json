@@ -1,0 +1,81 @@
+{
+  "gerado_em": "2026-06-09T19:19:50.567Z",
+  "level": "attention",
+  "summary": {
+    "errors": 0,
+    "warnings": 6,
+    "info": 1,
+    "ok": 1,
+    "total": 8
+  },
+  "atualizado_base": {
+    "iso": "2026-06-09T16:19:48",
+    "data_humana": "09/06/2026 - 16:19"
+  },
+  "items": [
+    {
+      "severity": "ok",
+      "id": "base-recente",
+      "title": "Base principal recente",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "action": "Manter rotina automatica ativa.",
+      "source": "atualizado_em.json"
+    },
+    {
+      "severity": "warning",
+      "id": "chunk-camara_betha-defasado",
+      "title": "Camara/Betha com coleta defasada",
+      "detail": "Arquivo camara_betha.json foi atualizado ha 18.8 dias.",
+      "action": "Rodar a coleta Betha da Camara ou conferir manualmente no portal antes de divulgar top fornecedores e contratos.",
+      "source": "camara_betha.json"
+    },
+    {
+      "severity": "warning",
+      "id": "fonte-emenda-2026-erro",
+      "title": "Fonte de emendas 2026 com erro",
+      "detail": "1 fonte(s) retornaram erro. Exemplo: Camara - solicitacao de emenda impositiva municipal - HTTP Error 404: Componente não encontrado.",
+      "action": "Revisar URL da Camara e, se necessario, substituir por fonte oficial vigente ou LAI.",
+      "source": "fontes_emendas_2026.json"
+    },
+    {
+      "severity": "warning",
+      "id": "emendas-2026-sem-lista",
+      "title": "Emendas 2026 sem lista consolidada",
+      "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
+      "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
+      "source": "fontes_emendas_2026.json"
+    },
+    {
+      "severity": "warning",
+      "id": "pessoal-prefeitura-parcial",
+      "title": "Pessoal da Prefeitura com escopo parcial",
+      "detail": "A base indica coleta parcial de Educacao/FUNDEB, nao folha completa da Prefeitura.",
+      "action": "Exibir essa limitacao junto dos numeros e buscar consulta completa por competencia.",
+      "source": "pessoal.json"
+    },
+    {
+      "severity": "warning",
+      "id": "indice-parcial",
+      "title": "Indice parlamentar parcial",
+      "detail": "A menor cobertura automatica do indice e 60%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.",
+      "action": "Nao tratar o ranking como definitivo; publicar sempre a cobertura junto da nota.",
+      "source": "indice_relevancia.json"
+    },
+    {
+      "severity": "info",
+      "id": "pncp-apoio",
+      "title": "PNCP usado como fonte auxiliar",
+      "detail": "A base PNCP serve para cruzamento e pode nao retornar todos os registros do municipio.",
+      "action": "Conferir manualmente no PNCP quando o contrato for sensivel.",
+      "source": "pncp.json"
+    },
+    {
+      "severity": "warning",
+      "id": "camara-despesa-sem-contrato",
+      "title": "Fornecedores da Camara sem contrato vinculado automaticamente",
+      "detail": "14 dos 20 maiores fornecedores de despesas nao bateram com contratos vigentes por nome. Exemplos: VERSÃO BR COMUNICAÇÃO E MARKETING LTDA; VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO.",
+      "action": "Cruzar por CNPJ quando a fonte permitir e manter botao de conferencia direta no Betha.",
+      "source": "camara_betha.json"
+    }
+  ]
+}

@@ -54,6 +54,7 @@ DIARIO_URLS = {
     2025: "https://www.varginha.mg.gov.br/portal/dados-abertos/diario-oficial/2025",
     2026: "https://www.varginha.mg.gov.br/portal/dados-abertos/diario-oficial/2026",
 }
+DIARIO_EDICAO_OFFSET = 1593
 
 # ----------------------------- helpers --------------------------------- #
 
@@ -67,7 +68,9 @@ def _save(name: str, payload) -> None:
         "resumo.json", "atualizado_em.json", "prefeitura.json", "emendas.json",
         "vereadores.json", "pncp.json", "diarias.json", "cnpjs.json",
         "camara_anos.json", "camara_transparencia.json", "fontes_emendas_2026.json",
-        "federal.json", "pessoal.json", "diario.json"
+        "federal.json", "pessoal.json", "diario.json",
+        "remuneracao_vereadores.json", "sancoes_fornecedores.json",
+        "auditoria_dados.json", "atualizacoes.json", "indice_relevancia.json",
     }
     if name in chunk_names:
         chunks_dir = DATA / "chunks"
@@ -79,6 +82,8 @@ def _save(name: str, payload) -> None:
 
 def _load_existing(name: str, default):
     path = DATA / name
+    if not path.exists():
+        path = DATA / "chunks" / name
     if not path.exists():
         return default
     try:
@@ -455,15 +460,24 @@ def _processa_diario() -> dict:
             print(f"  {ano}: {len(j.get('dados', []))} edições")
             for d in j.get("dados", []):
                 ed = d.get("edicao") or d.get("Edicao") or ""
+                try:
+                    publicacao_id = int(str(ed).strip()) - DIARIO_EDICAO_OFFSET
+                except Exception:
+                    publicacao_id = 0
+                url_leitor = (
+                    f"https://www.varginha.mg.gov.br/portal/diario-oficial/ver/{publicacao_id}/"
+                    if publicacao_id > 0 else ""
+                )
                 edicoes_all.append({
                     "ano": ano,
                     "edicao": ed,
                     "data": d.get("data") or d.get("Data") or "",
+                    "data_atualizacao": d.get("dataAtualizacao") or d.get("DataAtualizacao") or "",
+                    "descricao": d.get("descricao") or d.get("Descricao") or "",
                     "extra": (d.get("edicaoExtra") or d.get("EdicaoExtra") or "N") == "S",
-                    "url_pdf": (
-                        f"https://www.varginha.mg.gov.br/portal/diario-oficial/ver/{ano}/{ed}"
-                        if ed else ""
-                    ),
+                    "publicacao_id": publicacao_id or "",
+                    "url_pdf": url_leitor,
+                    "url_leitor": url_leitor,
                 })
         except Exception as e:
             print(f"  ✗ {ano}: {e}")
@@ -596,6 +610,31 @@ def _save_data_js(payload: dict) -> None:
         encoding="utf-8",
     )
     print(f"  ✓ data.js  ({out.stat().st_size // 1024} KB)")
+
+
+def _enriquece_materias_cidadas(camara_anos: dict) -> None:
+    """Aplica tema/grau no mesmo formato usado pela interface cidada."""
+    try:
+        import classificador_materia
+    except Exception as e:
+        print(f"  ! Classificador de materias indisponivel: {e}")
+        return
+
+    total = 0
+    contagem = Counter()
+    for bloco in (camara_anos or {}).values():
+        for materia in bloco.get("materias", []):
+            c = classificador_materia.classificar(materia)
+            materia["tema"] = c["tema"]
+            materia["tema_label"] = c["tema_label"]
+            materia["grau"] = c["grau"]
+            contagem[c["grau"]] += 1
+            total += 1
+    if total:
+        print(
+            f"  ✓ materias classificadas: {total} "
+            f"(alto {contagem['alto']}, medio {contagem['medio']}, baixo {contagem['baixo']})"
+        )
 
 
 # ----------------- 3) Câmara (Betha) ------------------------------------ #
@@ -752,13 +791,19 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
     print(f"  Cruzamento: {com_pagamento} com pagamento, "
           f"{sem_pagamento} sem encontrar pagamento, {sem_cnpj} sem CNPJ")
 
-    # ===== Dados Abertos (Onda 3): contratos, licitações, compras diretas =====
+    # ===== Dados Abertos (Onda 3): contratos, licitações, compras diretas e obras =====
     contratos       = _baixar_dados_abertos_safe(cb, token, "Contratos",               cb.CONSULTA_CONTRATOS,          ano_atual)
     contratos_ant   = _baixar_dados_abertos_safe(cb, token, "Contratos (ano anterior)", cb.CONSULTA_CONTRATOS,          ano_atual - 1)
     contratos      += contratos_ant  # junta os 2 anos pra ter base mais rica
     licit_andamento = _baixar_dados_abertos_safe(cb, token, "Licitações em andamento", cb.CONSULTA_LICITACOES_ABERTAS, ano_atual)
     licit_finaliz   = _baixar_dados_abertos_safe(cb, token, "Licitações finalizadas",  cb.CONSULTA_LICITACOES_FECHADAS, ano_atual)
     compras_diretas = _baixar_dados_abertos_safe(cb, token, "Compras diretas",         cb.CONSULTA_COMPRAS_DIRETAS,    ano_atual - 1)
+    obras_rows, obras_linked, _ = _baixar_dados_abertos_full_safe(
+        cb, token, "Obras públicas", cb.CONSULTA_OBRAS_PUBLICAS, ano_atual
+    )
+    frota_rows, frota_linked, frota_linked_rows = _baixar_dados_abertos_full_safe(
+        cb, token, "Veículos municipais", cb.CONSULTA_VEICULOS_MUNICIPAIS, ano_atual
+    )
 
     return {
         "ano_atual":     ano_atual,
@@ -778,6 +823,8 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
         "licit_andamento":  _normaliza_licitacoes(licit_andamento),
         "licit_finalizadas": _normaliza_licitacoes(licit_finaliz),
         "compras_diretas":  _normaliza_compras(compras_diretas),
+        "obras_publicas":   _normaliza_obras_publicas(obras_rows, obras_linked),
+        "frota":            _normaliza_frota(frota_rows, frota_linked, frota_linked_rows),
     }
 
 
@@ -794,8 +841,44 @@ def _baixar_dados_abertos_safe(cb, token: str, label: str, consulta_id: int,
         return []
 
 
+def _baixar_dados_abertos_full_safe(cb, token: str, label: str, consulta_id: int,
+                                    ano: int) -> tuple[list[dict], dict, dict]:
+    print(f"  baixando {label} ({ano})…")
+    try:
+        res = cb.baixar_dados_abertos(token, consulta_id, ano=ano)
+        rows = res.get("main", [])
+        linked = res.get("linked", {})
+        linked_rows = res.get("linked_rows", {})
+        print(f"  ✓ {len(rows)} registros ({res.get('files_in_zip', 0)} arquivos no ZIP)")
+        return rows, linked, linked_rows
+    except Exception as e:
+        print(f"  ✗ {label}: {e}")
+        return [], {}, {}
+
+
 # Os CSVs Betha vêm com colunas diferentes por consulta. Normalizamos para o
 # painel só os campos relevantes ao cidadão.
+
+def _cell(value) -> str:
+    s = str(value or "").strip()
+    return "" if s in {"-", "--"} else s
+
+
+def _linked(linked: dict, ref: str) -> dict:
+    key = _cell(ref)
+    if not key or not key.lower().endswith(".csv"):
+        return {}
+    item = linked.get(key)
+    return item if isinstance(item, dict) else {}
+
+
+def _linked_rows(linked_rows: dict, ref: str) -> list[dict]:
+    key = _cell(ref)
+    if not key or not key.lower().endswith(".csv"):
+        return []
+    rows = linked_rows.get(key)
+    return rows if isinstance(rows, list) else []
+
 
 def _f(s) -> float:
     """Converte string monetária do CSV para float."""
@@ -863,6 +946,246 @@ def _normaliza_compras(rows: list[dict]) -> list[dict]:
             "entidade":    r.get("nomeEntidade", ""),
         })
     out.sort(key=lambda x: -x["valor"])
+    return out
+
+
+def _normaliza_obras_publicas(rows: list[dict], linked: dict) -> list[dict]:
+    out = []
+    fonte_url = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026"
+    for r in rows:
+        endereco = _linked(linked, r.get("endereco", ""))
+        geo = _linked(linked, r.get("geolocalizacao", ""))
+        medicao = _linked(linked, r.get("medicoes", ""))
+        responsavel = _linked(linked, r.get("responsaveis", ""))
+        contrato = _linked(linked, r.get("contratos", ""))
+        licitacao = _linked(linked, r.get("licitacoes", ""))
+        situacao = _linked(linked, r.get("situacoes", ""))
+
+        logradouro = _cell(endereco.get("logradouro", ""))
+        numero_endereco = _cell(endereco.get("numeroEndereço", "") or endereco.get("numeroEndereco", ""))
+        bairro = _cell(endereco.get("bairro", ""))
+        cidade = _cell(endereco.get("municipio", ""))
+        endereco_partes = [
+            p for p in [
+                logradouro,
+                f"nº {numero_endereco}" if numero_endereco else "",
+                bairro,
+                cidade,
+            ] if p
+        ]
+
+        valor_previsto = _f(r.get("valorPrevisto", 0))
+        valor_atualizado = _f(r.get("valorAtualizado", 0))
+        valor_efetivo = _f(r.get("valorEfetivo", 0))
+        valor_contrato = _f(contrato.get("valor", 0))
+        valor_medicao = _f(medicao.get("valor", 0))
+        valor = valor_efetivo or valor_atualizado or valor_previsto or valor_contrato or valor_medicao
+        data_inicio = _cell(r.get("dataInicio", ""))
+        ano = data_inicio[:4] or _cell(contrato.get("ano", "")) or _cell(r.get("dataPrevistaConclusao", ""))[:4]
+        percentual = _f(r.get("percentualExecutado", 0) or situacao.get("percentualExecucao", 0))
+        fornecedor = _cell(r.get("nomeFornecedor", "")) or _cell(contrato.get("nomeContratado", ""))
+
+        out.append({
+            "id_obra": _cell(r.get("idObra", "")),
+            "numero": _cell(r.get("idObra", "")),
+            "ano": ano,
+            "matricula_obra": _cell(r.get("matriculaObra", "")),
+            "entidade": _cell(r.get("nomeEntidade", "")),
+            "tipo_obra": _cell(r.get("tipoObra", "")),
+            "categoria": _cell(r.get("categoria", "")),
+            "objeto": _cell(r.get("descricaoObra", "")),
+            "situacao": _cell(r.get("situacaoAtual", "")) or _cell(situacao.get("situacao", "")),
+            "data_inicio": data_inicio,
+            "data_prevista_conclusao": _cell(r.get("dataPrevistaConclusao", "")),
+            "data_efetiva_conclusao": _cell(r.get("dataEfetivaConclusao", "")),
+            "data_ordem_servico": _cell(r.get("dataOrdemServico", "")),
+            "data_ultima_medicao": _cell(r.get("dataUltimaMedicao", "")) or _cell(medicao.get("data", "")),
+            "fornecedor": fornecedor,
+            "contratado": fornecedor,
+            "cnpj": _cell(r.get("CnpjCpfFornecedor", "")) or _cell(r.get("cnpjCpfFornecedor", "")),
+            "valor": valor,
+            "valor_previsto": valor_previsto,
+            "valor_atualizado": valor_atualizado,
+            "valor_efetivo": valor_efetivo,
+            "valor_contrato": valor_contrato,
+            "valor_medicao": valor_medicao,
+            "percentual_executado": percentual,
+            "area_m2": _f(r.get("tamanhoMetrosQuadrados", 0)),
+            "extensao": _f(r.get("tamanhoDistanciaPercorrida", 0)),
+            "tipo_empreitada": _cell(r.get("tipoEmpreitada", "")),
+            "tipo_execucao": _cell(r.get("tipoExecucao", "")),
+            "tipo_recurso": _cell(r.get("tipoRecurso", "")),
+            "endereco": ", ".join(endereco_partes),
+            "logradouro": logradouro,
+            "bairro": bairro,
+            "municipio": cidade,
+            "latitude": _cell(geo.get("latitude", "")),
+            "longitude": _cell(geo.get("longitude", "")),
+            "responsavel": _cell(responsavel.get("nome", "")) or _cell(situacao.get("responsavel", "")),
+            "responsavel_registro": _cell(responsavel.get("registroProfissional", "")),
+            "responsavel_funcao": _cell(responsavel.get("funcao", "")),
+            "medicao_responsavel": _cell(medicao.get("responsavel", "")),
+            "medicao_observacao": _cell(medicao.get("observacao", "")),
+            "contrato_numero": _cell(contrato.get("numero", "")),
+            "contrato_ano": _cell(contrato.get("ano", "")),
+            "contrato_data_assinatura": _cell(contrato.get("dataAssinatura", "")),
+            "licitacao_numero": _cell(licitacao.get("numeroLicitacao", "")) or _cell(licitacao.get("numeroProcesso", "")),
+            "licitacao_modalidade": _cell(licitacao.get("modalidade", "")),
+            "fonte_url": fonte_url,
+        })
+    out.sort(key=lambda x: -x["valor"])
+    return out
+
+
+def _normaliza_frota(rows: list[dict], linked: dict, linked_rows: dict) -> list[dict]:
+    out = []
+    fonte_url = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83061"
+
+    def _is_combustivel(txt: str) -> bool:
+        t = _norm_txt(txt)
+        return any(k in t for k in ["abastecimento", "combustivel", "gasolina", "diesel", "etanol", "arla"])
+
+    def _is_manutencao(txt: str) -> bool:
+        t = _norm_txt(txt)
+        return any(k in t for k in ["manutencao", "peca", "pecas", "servico", "revisao", "oficina", "lubrificante", "oleo"])
+
+    for r in rows:
+        hist_cc = _linked(linked, r.get("historicoCentroDeCustos", ""))
+        gastos_raw = _linked_rows(linked_rows, r.get("gastos", ""))
+        if not gastos_raw:
+            gasto_unico = _linked(linked, r.get("gastos", ""))
+            gastos_raw = [gasto_unico] if gasto_unico else []
+
+        gastos = []
+        total_gastos = 0.0
+        total_gastos_bruto = 0.0
+        total_atipico = 0.0
+        total_combustivel = 0.0
+        total_manutencao = 0.0
+        litros_combustivel = 0.0
+        tipos = Counter()
+        fornecedores = Counter()
+        gastos_atipicos = []
+
+        for g in gastos_raw:
+            tipo = _cell(g.get("tipoDespesa", ""))
+            fornecedor = _cell(g.get("nomeFornecedor", ""))
+            valor = _f(g.get("valorDespesa", 0))
+            itens = _linked_rows(linked_rows, g.get("itensDespesa", ""))
+            itens_resumo = []
+            litros_gasto = 0.0
+            for item in itens[:4]:
+                desc = _cell(item.get("descricao", ""))
+                unidade = _cell(item.get("unidadeMedida", ""))
+                qtd = _f(item.get("quantidade", 0))
+                valor_item = _f(item.get("valorTotal", 0))
+                if unidade.upper() == "L" and _is_combustivel(f"{tipo} {desc}"):
+                    litros_gasto += qtd
+                if desc:
+                    prefix = f"{qtd:g} {unidade}".strip() if qtd else ""
+                    itens_resumo.append({
+                        "descricao": desc,
+                        "quantidade": qtd,
+                        "unidade": unidade,
+                        "valor_total": valor_item,
+                        "resumo": f"{prefix} - {desc}" if prefix else desc,
+                    })
+
+            texto_gasto = f"{tipo} {' '.join(i.get('descricao', '') for i in itens_resumo)}"
+            combustivel = _is_combustivel(texto_gasto)
+            manutencao = _is_manutencao(texto_gasto)
+            valor_por_litro = valor / litros_gasto if litros_gasto else 0
+            atipico = valor > 500_000 or (combustivel and (valor > 100_000 or (litros_gasto and valor_por_litro > 50)))
+            total_gastos_bruto += valor
+            if not atipico:
+                total_gastos += valor
+                tipos[tipo or "Nao informado"] += valor
+                if combustivel:
+                    total_combustivel += valor
+                    litros_combustivel += litros_gasto
+                if manutencao:
+                    total_manutencao += valor
+            else:
+                total_atipico += valor
+            if fornecedor and not atipico:
+                fornecedores[fornecedor] += valor
+
+            gasto_norm = {
+                "data": _cell(g.get("data", "")),
+                "tipo": tipo,
+                "fornecedor": fornecedor,
+                "descricao": _cell(g.get("descricaoGasto", "")),
+                "forma_aquisicao": _cell(g.get("formaAquisicao", "")),
+                "documento": _cell(g.get("documentoDespesa", "")),
+                "empenho": _cell(g.get("numeroEmpenho", "")),
+                "centro_custo": _cell(g.get("centroCustoDespesa", "")),
+                "valor": valor,
+                "valor_atipico": atipico,
+                "motivo_atipico": "valor fora de escala; conferir lançamento original" if atipico else "",
+                "itens": itens_resumo,
+            }
+            gastos.append(gasto_norm)
+            if atipico:
+                gastos_atipicos.append(gasto_norm)
+
+        gastos.sort(key=lambda x: x.get("data", ""), reverse=True)
+        centro_custo = _cell(r.get("centroCusto", "")) or _cell(hist_cc.get("centroDeCustos", ""))
+        alertas = []
+        if not centro_custo:
+            alertas.append("Centro de custo nao informado")
+        if _cell(r.get("situacao", "")).upper() == "INATIVO" and total_gastos > 0:
+            alertas.append("Veiculo inativo com gasto vinculado")
+        if _cell(r.get("tipoAquisicao", "")).upper() == "LOCADO":
+            alertas.append("Veiculo locado: conferir contrato e custo mensal")
+        if total_atipico > 0:
+            alertas.append("Possui lançamento atípico separado do total principal")
+        if total_gastos > 50_000:
+            alertas.append("Gasto acumulado alto")
+
+        out.append({
+            "placa": _cell(r.get("placa", "")),
+            "tipo": _cell(r.get("tipo", "")),
+            "descricao": _cell(r.get("descricao", "")),
+            "ano_fabricacao": _cell(r.get("anoFabricacao", "")),
+            "ano_modelo": _cell(r.get("anoModelo", "")),
+            "data_aquisicao": _cell(r.get("dataAquisicao", "")),
+            "tipo_aquisicao": _cell(r.get("tipoAquisicao", "")),
+            "valor_aquisicao": _f(r.get("valorAquisicao", 0)),
+            "centro_custo": centro_custo,
+            "situacao": _cell(r.get("situacao", "")),
+            "renavam": _cell(r.get("renavam", "")),
+            "chassi": _cell(r.get("chassi", "")),
+            "gastos_total": round(total_gastos, 2),
+            "gastos_total_bruto": round(total_gastos_bruto, 2),
+            "gastos_atipicos_total": round(total_atipico, 2),
+            "gastos_atipicos_qtd": len(gastos_atipicos),
+            "gastos_qtd": len(gastos),
+            "gastos_auditaveis_qtd": len(gastos) - len(gastos_atipicos),
+            "combustivel_total": round(total_combustivel, 2),
+            "manutencao_total": round(total_manutencao, 2),
+            "litros_combustivel": round(litros_combustivel, 3),
+            "ultimo_gasto_data": gastos[0]["data"] if gastos else "",
+            "ultimo_gasto_tipo": gastos[0]["tipo"] if gastos else "",
+            "ultimo_gasto_valor": gastos[0]["valor"] if gastos else 0,
+            "gastos_recentes": gastos[:6],
+            "gastos_atipicos": gastos_atipicos[:5],
+            "gastos_por_tipo": [
+                {"tipo": tipo, "valor": round(valor, 2)}
+                for tipo, valor in tipos.most_common(6)
+            ],
+            "fornecedores_gastos": [
+                {"nome": nome, "valor": round(valor, 2)}
+                for nome, valor in fornecedores.most_common(6)
+            ],
+            "historico_centro_custo": {
+                "centro_custo": _cell(hist_cc.get("centroDeCustos", "")),
+                "data_inicial": _cell(hist_cc.get("dataInicial", "")),
+                "data_final": _cell(hist_cc.get("dataFinal", "")),
+            } if hist_cc else {},
+            "alertas": alertas,
+            "fonte_url": fonte_url,
+        })
+    out.sort(key=lambda x: (-x["gastos_total"], x["placa"]))
     return out
 
 
@@ -996,6 +1319,7 @@ def main() -> int:
     sem_fontes_emendas = "--sem-fontes-emendas" in sys.argv
 
     sapl = _processa_sapl()
+    _enriquece_materias_cidadas(sapl.get("camara_anos", {}))
     _save("resumo.json", sapl["resumo"])
     _save("vereadores.json", sapl["vereadores"])
     _save("emendas.json", sapl["emendas"])
@@ -1009,6 +1333,12 @@ def main() -> int:
     pncp = {}
     camara_transparencia = {}
     cnpjs = {}
+    remuneracao_vereadores = _load_existing("remuneracao_vereadores.json", {})
+    sancoes_fornecedores = _load_existing("sancoes_fornecedores.json", {})
+    auditoria_dados = _load_existing("auditoria_dados.json", {})
+    atualizacoes = _load_existing("atualizacoes.json", {})
+    fontes_emendas_2026 = _load_existing("fontes_emendas_2026.json", {})
+    indice_relevancia = _load_existing("indice_relevancia.json", {})
     if not so_sapl and not sem_pncp:
         pncp = _processa_pncp()
         _save("pncp.json", pncp)
@@ -1029,6 +1359,11 @@ def main() -> int:
 
         fontes_emendas_2026 = _processa_fontes_emendas_2026()
         _save("fontes_emendas_2026.json", fontes_emendas_2026)
+    elif sem_pessoal:
+        pessoal = _load_existing("pessoal.json", {})
+        fontes_emendas_2026 = _load_existing("fontes_emendas_2026.json", fontes_emendas_2026)
+        if pessoal:
+            print("  ✓ pessoal.json existente preservado no data.js")
 
     diarias = {}
     if not so_sapl and not sem_betha:
@@ -1066,6 +1401,11 @@ def main() -> int:
         diarias = _load_existing("diarias.json", {})
         prefeitura = _load_existing("prefeitura.json", {})
         camara_betha = _load_existing("camara_betha.json", {})
+        remuneracao_vereadores = _load_existing("remuneracao_vereadores.json", {})
+        sancoes_fornecedores = _load_existing("sancoes_fornecedores.json", {})
+        auditoria_dados = _load_existing("auditoria_dados.json", {})
+        atualizacoes = _load_existing("atualizacoes.json", {})
+        indice_relevancia = _load_existing("indice_relevancia.json", {})
         print("  bases existentes preservadas no data.js")
 
     atualizado = {
@@ -1106,6 +1446,11 @@ def main() -> int:
         "diarias": diarias,
         "fontes_emendas_2026": fontes_emendas_2026,
         "federal": federal,
+        "remuneracao_vereadores": remuneracao_vereadores,
+        "sancoes_fornecedores": sancoes_fornecedores,
+        "auditoria_dados": auditoria_dados,
+        "atualizacoes": atualizacoes,
+        "indice_relevancia": indice_relevancia,
         "atualizado_em": atualizado,
     })
 

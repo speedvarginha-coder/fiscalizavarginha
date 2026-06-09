@@ -181,7 +181,7 @@ Utilitários puros, sem efeito colateral.
 | `fmtBRL(n)` | Formata número como "R$ 1.234,56" |
 | `fmtMi(n)` | "R$ 1,2 mi" |
 | `fmtNum(n)` | Localiza número pt-BR |
-| `cleanText(s)` | Corrige mojibake (Ã§ → ç) e caracteres corrompidos |
+| `cleanText(s)` | Corrige mojibake e caracteres corrompidos |
 | `esc(s)` | Escape HTML (`<` → `&lt;`) |
 | `jsSafe(s)` | Escape para uso em `onclick="...'$s'..."` |
 | `norm(s)` | Lowercase sem acentos (para busca) |

@@ -39,6 +39,7 @@ Get-ChildItem -LiteralPath $source -File |
 Copy-IfExists (Join-Path $source "modules") (Join-Path $stage "modules")
 Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
 Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
+Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snapshots")
 Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
 
 if (Test-Path $zipPath) {

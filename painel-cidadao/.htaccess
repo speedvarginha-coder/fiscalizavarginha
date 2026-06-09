@@ -33,4 +33,5 @@ RewriteRule ^__pycache__/ - [F,L]
 # Bloqueia JSONs intermediários em /data/, mas libera:
 # - /data/manifest.json
 # - /data/chunks/*.json
-RewriteRule ^data/(?!manifest\.json$|chunks/[^/]+\.json$) - [F,L]
+# - /data/snapshots/*.json
+RewriteRule ^data/(?!manifest\.json$|chunks/[^/]+\.json$|snapshots/[^/]+\.json$) - [F,L]

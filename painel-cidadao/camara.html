@@ -66,6 +66,7 @@
       <p id="atualizado" class="muted small" style="margin-top:8px"></p>
       <div class="civic-actions" aria-label="Ações rápidas da Câmara">
         <a href="#gastosPalavraChaveCamara">Perguntar aos dados</a>
+        <a href="#indiceRelevancia">Índice de relevância</a>
         <a href="#vereadores">Ver vereadores</a>
         <a href="#emendas">Emendas e CNPJs</a>
         <a href="#diariasCamaraBlock">Diárias</a>
@@ -75,10 +76,21 @@
     <!-- PLACAR DO DINHEIRO -->
     <div id="placarCamara" class="placar" aria-label="Placar do dinheiro da Câmara"></div>
 
-    <!-- FILTROS RÁPIDOS POR CATEGORIA -->
-    <div id="catChipsCamara" class="cat-chips" aria-label="Filtrar emendas por categoria"></div>
+    <!-- SUB-NAVEGAÇÃO POR SEÇÃO (reduz o scroll: mostra uma seção por vez) -->
+    <nav class="camara-subnav" aria-label="Seções da Câmara">
+      <button type="button" class="csec-btn csec-btn--active" data-go="geral">Visão geral</button>
+      <button type="button" class="csec-btn" data-go="vereadores">Vereadores</button>
+      <button type="button" class="csec-btn" data-go="emendas">Emendas</button>
+      <button type="button" class="csec-btn" data-go="atividade">Atividade</button>
+      <button type="button" class="csec-btn" data-go="diarias">Diárias</button>
+    </nav>
 
-    <div id="camaraLive" class="block" hidden>
+    <section id="remuneracaoVereadores" class="salary-transparency" aria-label="Subsídio e remuneração dos vereadores" data-csec="vereadores"></section>
+
+    <!-- FILTROS RÁPIDOS POR CATEGORIA -->
+    <div id="catChipsCamara" class="cat-chips" aria-label="Filtrar emendas por categoria" data-csec="emendas"></div>
+
+    <div id="camaraLive" class="block" hidden data-csec="geral">
       <h3 class="block__title">Execução Orçamentária — Câmara</h3>
       <p class="block__lead">
         Quanto a Câmara pagou a fornecedores externos no ano. Fonte: Portal de
@@ -103,7 +115,7 @@
       </div>
     </div>
 
-    <div class="block">
+    <div class="block" data-csec="geral">
       <div class="block__titlerow">
         <h3 class="block__title">O ano em números</h3>
         <div class="ano-chips" role="group" aria-label="Escolher ano">
@@ -121,7 +133,7 @@
       <div id="gastosPalavraChaveCamara" class="keyword-audit"></div>
     </div>
 
-    <div class="block">
+    <div class="block" data-csec="vereadores">
       <h3 class="block__title">Os vereadores</h3>
       <p class="block__lead">
         Veja o que cada um produziu em 2025: quanto pediu para o bairro (indicações),
@@ -147,6 +159,8 @@
         </ul>
       </div>
 
+      <div id="indiceRelevancia" class="indice-relevancia" aria-live="polite"></div>
+
       <div class="filterbar">
         <select id="filtroAnoCamara" aria-label="Escolher ano da avaliação da Câmara">
           <option value="2025">Ano 2025</option>
@@ -167,7 +181,7 @@
     </div>
 
     <!-- ===== RESUMO SEMANAL ===== -->
-    <div class="block" id="resumoSemanalBlock">
+    <div class="block" id="resumoSemanalBlock" data-csec="atividade">
       <h3 class="block__title">Resumo Semanal — O que a Câmara fez</h3>
       <p class="block__lead">
         O cidadão vota a cada 4 anos, mas deve fiscalizar toda semana.
@@ -230,7 +244,7 @@
     </div>
     <!-- ===== FIM RESUMO SEMANAL ===== -->
 
-    <div class="block">
+    <div class="block" data-csec="emendas">
       <h3 class="block__title">Emendas Impositivas — promessa × pagamento</h3>
       <p class="block__lead">
         Cada vereador tem cota fixa do orçamento para destinar a entidades, obras
@@ -301,8 +315,8 @@
       </div>
     </div>
 
-    <div id="diariasCamaraBlock" class="block">
-      <h3 class="block__title">Diárias de viagem - Câmara</h3>
+    <div id="diariasCamaraBlock" class="block" data-csec="diarias">
+      <h3 class="block__title">Diárias de viagem — Câmara</h3>
       <p class="block__lead">
         Levantamento separado das diárias pagas a vereadores e servidores da
         Câmara: funcionário, cargo, destino, quantidade, valor unitário e total.
@@ -371,7 +385,55 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260520"></script>
+<script src="data-loader.js?v=20260608l"></script>
+<script>
+/* Sub-navegação da Câmara: mostra uma seção por vez (reduz scroll gigante).
+   Não interfere na renderização async — só alterna a classe csec-hidden. */
+(function () {
+  var nav = document.querySelector(".camara-subnav");
+  if (!nav) return;
+  var blocos = document.querySelectorAll("[data-csec]");
+  var botoes = nav.querySelectorAll(".csec-btn");
+
+  function mostrar(sec) {
+    blocos.forEach(function (b) {
+      b.classList.toggle("csec-hidden", b.getAttribute("data-csec") !== sec);
+    });
+    botoes.forEach(function (btn) {
+      btn.classList.toggle("csec-btn--active", btn.getAttribute("data-go") === sec);
+    });
+    try { history.replaceState(null, "", "#" + sec); } catch (e) {}
+  }
+
+  botoes.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      mostrar(btn.getAttribute("data-go"));
+      nav.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
+  });
+
+  // Os atalhos do cabeçalho (civic-actions) apontam para IDs que agora vivem
+  // dentro das abas. Ao clicar, troca para a aba do alvo e então rola até ele.
+  document.querySelectorAll('.civic-actions a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (ev) {
+      var alvo = document.getElementById(a.getAttribute("href").slice(1));
+      if (!alvo) return;
+      var cont = alvo.closest("[data-csec]");
+      if (!cont) return;
+      ev.preventDefault();
+      mostrar(cont.getAttribute("data-csec"));
+      requestAnimationFrame(function () {
+        alvo.scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+    });
+  });
+
+  // Seção inicial: hash da URL (se válido) ou "geral"
+  var inicial = (location.hash || "").replace("#", "");
+  var valido = ["geral", "vereadores", "emendas", "atividade", "diarias"];
+  mostrar(valido.indexOf(inicial) >= 0 ? inicial : "geral");
+})();
+</script>
 </body>
 </html>
 

@@ -50,7 +50,7 @@ const APP_CONTEXT_CAMARA = Buffer.from(JSON.stringify({ portal: CAMARA_HASH })).
  * Quando ambos estão vazios, captura o TOTAL GERAL do ano.
  */
 // IDs confirmados via API /filtro/{campo}/mais em 15/05/2026
-const MAPEAMENTO = {
+const MAPEAMENTO_PREFEITURA = {
   "total-geral": { funcao: null, elementos: [] },
   saude:         { funcao: "Saúde",    elementos: [] },
   educacao:      { funcao: "Educação", elementos: [] },
@@ -60,6 +60,27 @@ const MAPEAMENTO = {
   lanches:       { funcao: null, elementos: ["Gêneros de Alimentação","GENEROS DE ALIMENTACAO","Fornecimento de Alimentação","FORNECIMENTO DE ALIMENTACAO"] },
   asfalto:       { funcao: null, elementos: ["Obras e Instalações de Domínio Público","OBRAS E INSTALACOES DE DOMINIO PUBLICO","Obras e Instalações","OBRAS E INSTALACOES"] },
 };
+
+// Câmara — consulta ID 324767 (Execução Detalhada de Despesas)
+// Câmara tem estrutura menor: Legislativa é a única função; filtra por elemento.
+const MAPEAMENTO_CAMARA = {
+  "total-geral": { funcao: null, elementos: [] },
+  combustivel:   { funcao: null, elementos: ["Combustíveis Automotivos","COMBUSTIVEIS AUTOMOTIVOS","COMBUSTIVEIS E LUBRIFICANTES P/OUTRAS FINALIDADES"] },
+  lanches:       { funcao: null, elementos: ["Gêneros de Alimentação","GENEROS DE ALIMENTACAO","Fornecimento de Alimentação","FORNECIMENTO DE ALIMENTACAO"] },
+  veiculos:      { funcao: null, elementos: ["Locação de Veículos","LOCACAO DE VEICULOS","Locação de Outros Meios de Transporte","LOCACAO DE OUTROS MEIOS DE TRANSPORTE"] },
+  publicidade:   { funcao: null, elementos: ["Serviços de Publicidade","SERVICOS DE PUBLICIDADE","Publicidade e Propaganda","PUBLICIDADE E PROPAGANDA"] },
+  software:      { funcao: null, elementos: ["Locação de Softwares","LOCACAO DE SOFTWARES","Serviços de Tecnologia da Informação","SERVICOS DE TECNOLOGIA DA INFORMACAO"] },
+};
+
+// Consulta dedicada de Diárias da Câmara (ID 324755)
+// Usa campo "ano" (não "anoExercicio") e campo "valorTotal" (sem totalizadores configurados).
+const CONSULTA_DIARIAS_CAMARA_ID = 324755;
+
+// Listas da Câmara (registros individuais via busca-textual com body {})
+const CONSULTA_LICITACOES_CAMARA_ID = 324786;
+const CONSULTA_CONTRATOS_CAMARA_ID = 324812;
+// Limite de registros persistidos por lista (evita inchar o bundle). Ordenados por valor desc.
+const LIMITE_REGISTROS_LISTA = 200;
 
 const args = process.argv.slice(2);
 const isDryRun = args.includes("--dry");
@@ -360,7 +381,8 @@ function parseTotalizadores(data, consultaId, portalHash) {
     warn(`Campos disponíveis: ${data.map(t => t.campo).join(', ')}`);
     return null;
   }
-  const valor = typeof pago.valor === 'number' ? pago.valor : parseBRL(String(pago.valor));
+  const valorRaw = typeof pago.valor === 'number' ? pago.valor : parseBRL(String(pago.valor));
+  const valor = Math.round(valorRaw * 100) / 100;
   if (!Number.isFinite(valor)) return null;
   return {
     valorTotalAno: valor,
@@ -392,6 +414,102 @@ async function chamarContagem(consultaId, filtros, token, appContext) {
   return json.totalHits ?? json.total ?? json.count ?? json.totalElements ?? 0;
 }
 
+/**
+ * Consulta 324755 — Diárias Câmara — não tem totalizadores configurados.
+ * Busca até 2000 registros do ano e soma valorTotal client-side.
+ */
+async function scrapeDiariasCamara(token) {
+  const filtros = { ano: [String(ANO_ATUAL)] };
+  const resp = await fetch(
+    `${API_BASE}/busca-textual/${CONSULTA_DIARIAS_CAMARA_ID}?sortBy=null&sortDirection=null&offset=0&limit=2000&hiperlink=false`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization': token,
+        'app-context': APP_CONTEXT_CAMARA,
+      },
+      body: JSON.stringify(filtros),
+    }
+  );
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  const json = await resp.json();
+  const hits = json.hits ?? [];
+  const total = Math.round(hits.reduce((acc, h) => acc + (h.sourceAsMap?.valorTotal ?? 0), 0) * 100) / 100;
+
+  // Persiste cada diária individual (dado público — LAI). Ordena por valor desc.
+  const registros = hits
+    .map(h => {
+      const s = h.sourceAsMap ?? {};
+      const valor = Math.round((s.valorTotal ?? 0) * 100) / 100;
+      return {
+        credor: (s.credor ?? '').trim(),
+        cargo: (s.cargoCredor ?? '').trim(),
+        destino: (s.localDestino ?? '').trim(),
+        finalidade: (s.finalidade ?? '').trim(),
+        periodo: (s.periodoDiarias ?? '').trim(),
+        valor,
+        valorFormatado: valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+      };
+    })
+    .sort((a, b) => b.valor - a.valor);
+
+  return {
+    valorTotalAno: total,
+    valorFormatado: total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+    ano: ANO_ATUAL,
+    periodo: `Jan–${new Date().toLocaleString('pt-BR', { month: 'short' })} ${ANO_ATUAL} (parcial)`,
+    qtdEmpenhos: json.totalHits ?? hits.length,
+    fonteUrl: `https://transparencia.betha.cloud/#/${CAMARA_HASH}/consulta/${CONSULTA_DIARIAS_CAMARA_ID}`,
+    atualizadoEm: new Date().toISOString().slice(0, 10),
+    registros,
+  };
+}
+
+function trim(s, n = 400) {
+  s = (s ?? '').trim();
+  return s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s;
+}
+
+/**
+ * Busca uma lista de registros individuais (licitações, contratos) da Câmara
+ * via busca-textual com body vazio. `mapper(sourceAsMap)` traduz cada registro
+ * para o formato persistido; `valorDe(r)` extrai o número usado na ordenação.
+ */
+async function scrapeListaCamara(token, consultaId, mapper, valorDe) {
+  const resp = await fetch(
+    `${API_BASE}/busca-textual/${consultaId}?sortBy=null&sortDirection=null&offset=0&limit=2000&hiperlink=false`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization': token,
+        'app-context': APP_CONTEXT_CAMARA,
+      },
+      body: JSON.stringify({}),
+    }
+  );
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+  const json = await resp.json();
+  const hits = json.hits ?? [];
+  const registros = hits
+    .map(h => mapper(h.sourceAsMap ?? {}))
+    .sort((a, b) => valorDe(b) - valorDe(a))
+    .slice(0, LIMITE_REGISTROS_LISTA);
+  return {
+    totalHits: json.totalHits ?? hits.length,
+    mostrando: registros.length,
+    fonteUrl: `https://transparencia.betha.cloud/#/${CAMARA_HASH}/consulta/${consultaId}`,
+    atualizadoEm: new Date().toISOString().slice(0, 10),
+    registros,
+  };
+}
+
+function brl(n) {
+  const v = Number.isFinite(n) ? n : 0;
+  return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
 async function main() {
   log(`Início — ${new Date().toISOString()}`);
   log(`Modo: ${isDryRun ? 'DRY-RUN' : 'produção'}`);
@@ -404,14 +522,32 @@ async function main() {
   log(`Token obtido: ${token.slice(0, 20)}...`);
 
   // Permite rodar 1 categoria por execução para depuração
-  let categorias = Object.entries(MAPEAMENTO);
   if (filtroFuncao || filtroElemento) {
-    categorias = [['custom', { funcao: filtroFuncao, elementos: filtroElemento ? [filtroElemento] : [] }]];
+    const categorias = [['custom', { funcao: filtroFuncao, elementos: filtroElemento ? [filtroElemento] : [] }]];
+    for (const [catId, mapping] of categorias) {
+      log(`\n[custom] funcao=${mapping.funcao ?? '—'} elemento=${mapping.elementos?.[0] ?? '—'}`);
+      try {
+        const filtros = { anoExercicio: [String(ANO_ATUAL)] };
+        if (mapping.funcao) filtros.descricaoFuncao = [mapping.funcao];
+        if (mapping.elementos?.length) filtros.descricaoElemento = mapping.elementos;
+        const data = await chamarTotalizadores(CONSULTA_DESPESAS_ID, filtros, token, APP_CONTEXT_PREFEITURA);
+        const r = parseTotalizadores(data, CONSULTA_DESPESAS_ID, PREFEITURA_HASH);
+        if (r) {
+          r.qtdEmpenhos = await chamarContagem(CONSULTA_DESPESAS_ID, filtros, token, APP_CONTEXT_PREFEITURA);
+          log(`  ✓ ${r.valorFormatado} (${r.qtdEmpenhos} registros)`);
+        }
+      } catch (err) {
+        warn(`Falhou: ${err.message}`);
+      }
+    }
+    return;
   }
 
-  for (const [catId, mapping] of categorias) {
+  // --- PREFEITURA ---
+  log('\n=== PREFEITURA ===');
+  for (const [catId, mapping] of Object.entries(MAPEAMENTO_PREFEITURA)) {
     const elLabel = mapping.elementos?.length ? mapping.elementos[0] : '—';
-    log(`\n[${catId}] funcao=${mapping.funcao ?? '—'} elemento=${elLabel}`);
+    log(`\n[prefeitura/${catId}] funcao=${mapping.funcao ?? '—'} elemento=${elLabel}`);
     try {
       const filtros = { anoExercicio: [String(ANO_ATUAL)] };
       if (mapping.funcao) filtros.descricaoFuncao = [mapping.funcao];
@@ -422,13 +558,99 @@ async function main() {
       if (r) {
         r.qtdEmpenhos = await chamarContagem(CONSULTA_DESPESAS_ID, filtros, token, APP_CONTEXT_PREFEITURA);
         log(`  ✓ ${r.valorFormatado} (${r.qtdEmpenhos} registros)`);
-        if (catId !== 'custom') dados.dados.prefeitura[catId] = r;
+        dados.dados.prefeitura[catId] = r;
       } else {
-        warn(`Não foi possível parsear totalizadores para ${catId}`);
+        warn(`Não foi possível parsear totalizadores para prefeitura/${catId}`);
       }
     } catch (err) {
-      warn(`Falhou categoria ${catId}: ${err.message}`);
+      warn(`Falhou prefeitura/${catId}: ${err.message}`);
     }
+  }
+
+  // --- CÂMARA ---
+  log('\n=== CÂMARA ===');
+  for (const [catId, mapping] of Object.entries(MAPEAMENTO_CAMARA)) {
+    const elLabel = mapping.elementos?.length ? mapping.elementos[0] : '—';
+    log(`\n[camara/${catId}] funcao=${mapping.funcao ?? '—'} elemento=${elLabel}`);
+    try {
+      const filtros = { anoExercicio: [String(ANO_ATUAL)] };
+      if (mapping.funcao) filtros.descricaoFuncao = [mapping.funcao];
+      if (mapping.elementos?.length) filtros.descricaoElemento = mapping.elementos;
+
+      const data = await chamarTotalizadores(CONSULTA_CAMARA_ID, filtros, token, APP_CONTEXT_CAMARA);
+      const r = parseTotalizadores(data, CONSULTA_CAMARA_ID, CAMARA_HASH);
+      if (r) {
+        r.qtdEmpenhos = await chamarContagem(CONSULTA_CAMARA_ID, filtros, token, APP_CONTEXT_CAMARA);
+        log(`  ✓ ${r.valorFormatado} (${r.qtdEmpenhos} registros)`);
+        dados.dados.camara[catId] = r;
+      } else {
+        warn(`Não foi possível parsear totalizadores para camara/${catId}`);
+      }
+    } catch (err) {
+      warn(`Falhou camara/${catId}: ${err.message}`);
+    }
+  }
+
+  // Diárias Câmara — consulta dedicada 324755
+  log('\n[camara/diarias] consulta dedicada 324755');
+  try {
+    const r = await scrapeDiariasCamara(token);
+    log(`  ✓ ${r.valorFormatado} (${r.qtdEmpenhos} registros)`);
+    dados.dados.camara.diarias = r;
+  } catch (err) {
+    warn(`Falhou camara/diarias: ${err.message}`);
+  }
+
+  // --- LISTAS DA CÂMARA: licitações e contratos (registros individuais) ---
+  dados.listas ??= { camara: {} };
+  dados.listas.camara ??= {};
+
+  log('\n[camara/licitacoes] consulta 324786');
+  try {
+    const lic = await scrapeListaCamara(
+      token,
+      CONSULTA_LICITACOES_CAMARA_ID,
+      (s) => ({
+        numero: `${s.modalidade ?? 'Licitação'} ${s.numeroLicitacao ?? ''}/${s.anoLicitacao ?? ''}`.trim(),
+        modalidade: (s.modalidade ?? '').trim(),
+        situacao: (s.situacao ?? '').trim(),
+        objeto: trim(s.objeto),
+        valorEstimado: Number(s.valorEstimado) || 0,
+        valorHomologado: Number(s.valorHomologado) || 0,
+        valorEstimadoFormatado: brl(Number(s.valorEstimado) || 0),
+        valorHomologadoFormatado: brl(Number(s.valorHomologado) || 0),
+        data: (s.dataAberturaEnvelopes ?? '').slice(0, 10),
+      }),
+      (r) => r.valorHomologado || r.valorEstimado,
+    );
+    log(`  ✓ ${lic.totalHits} licitações (persistidas ${lic.mostrando})`);
+    dados.listas.camara.licitacoes = lic;
+  } catch (err) {
+    warn(`Falhou camara/licitacoes: ${err.message}`);
+  }
+
+  log('\n[camara/contratos] consulta 324812');
+  try {
+    const con = await scrapeListaCamara(
+      token,
+      CONSULTA_CONTRATOS_CAMARA_ID,
+      (s) => ({
+        numero: (s.numeroProcessoCompra ? `Processo ${s.numeroProcessoCompra}` : (s.numero ?? '')).trim(),
+        tipo: (s.tipo ?? '').trim(),
+        situacao: (s.situacao ?? '').trim(),
+        objeto: trim(s.objeto),
+        contratado: (s.nomeContratado ?? '').trim(),
+        cnpjCpf: (s.cnpjCpfContratado ?? '').trim(),
+        valorFinal: Number(s.valorFinal) || 0,
+        valorFinalFormatado: brl(Number(s.valorFinal) || 0),
+        data: (s.dataAssinatura ?? '').slice(0, 10),
+      }),
+      (r) => r.valorFinal,
+    );
+    log(`  ✓ ${con.totalHits} contratos (persistidos ${con.mostrando})`);
+    dados.listas.camara.contratos = con;
+  } catch (err) {
+    warn(`Falhou camara/contratos: ${err.message}`);
   }
 
   dados.atualizadoEm = new Date().toISOString();

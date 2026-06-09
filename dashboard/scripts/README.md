@@ -17,8 +17,11 @@ A partir da pasta raiz do projeto (`3_Fiscaliza Varginha/`):
 # Todas as categorias, Prefeitura + Câmara
 node dashboard/scripts/scrape-betha.mjs
 
-# Só uma categoria (ex: combustível)
-node dashboard/scripts/scrape-betha.mjs combustivel
+# Só uma categoria por função (depuração)
+node dashboard/scripts/scrape-betha.mjs --funcao Saúde
+
+# Só uma categoria por elemento (depuração)
+node dashboard/scripts/scrape-betha.mjs --elemento "Combustíveis Automotivos"
 
 # Modo dry-run (não grava, só mostra o resultado)
 node dashboard/scripts/scrape-betha.mjs --dry
@@ -28,62 +31,77 @@ node dashboard/scripts/scrape-betha.mjs --dry
 
 - Node.js 18+
 - `playwright` instalado (já está no `package.json` da raiz)
-- Primeira execução com browser visível (`headless: false` por padrão)
 
-### Primeira execução — calibragem
+### Como funciona (API direta, não UI)
 
-O portal Betha é uma SPA pesada. Os seletores CSS no script (`SELECTOR_BUSCA`,
-`SELECTOR_TOTAL`, `SELECTOR_LINHAS`) são **placeholders** que você precisa
-conferir na primeira rodada.
+O script **não** clica na interface do portal. Ele:
 
-**Passo a passo:**
+1. Abre o portal Betha uma vez com Playwright (`headless: true`) só para
+   **capturar o token OAuth** (`Authorization: Bearer …`) das requisições.
+2. Chama a **API REST** do Betha diretamente
+   (`api.transparencia.betha.cloud`), que é muito mais rápida e confiável que
+   manipular a SPA Vue.
 
-1. Abra manualmente no navegador a URL de consulta de despesas:
-   - Prefeitura: `https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==`
-   - Câmara: `https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==`
+Endpoints usados (descobertos por inspeção de rede):
 
-2. Encontre a tela de **Despesas / Empenhos**.
+- `POST /busca-textual/{consultaId}/totalizadores` — soma por filtro
+- `POST /busca-textual/{consultaId}?…&limit=1` — contagem (`totalHits`)
+- Header obrigatório `app-context: base64({"portal": HASH})` por entidade
 
-3. Abra o DevTools (F12) e inspecione:
-   - O **campo de busca** (input onde você digita o filtro)
-   - O **valor total** exibido após filtrar
-   - As **linhas da tabela** de resultado
+IDs de consulta confirmados:
 
-4. Copie os seletores CSS reais e atualize as constantes no topo de
-   `consultarTermo()`:
+| Consulta | ID |
+|---|---|
+| Prefeitura — Execução de Despesas | `82995` |
+| Câmara — Execução de Despesas | `324767` |
+| Câmara — Diárias (consulta dedicada) | `324755` |
+| Câmara — Licitações | `324786` |
+| Câmara — Contratos | `324812` |
 
-   ```js
-   const SELECTOR_BUSCA  = 'SELETOR_REAL_AQUI';
-   const SELECTOR_TOTAL  = 'SELETOR_REAL_AQUI';
-   const SELECTOR_LINHAS = 'SELETOR_REAL_AQUI';
-   ```
+> **Listas de registros individuais** (diárias, licitações, contratos) são
+> gravadas em `categoriasGasto.real.json`:
+> - Diárias: em `dados.camara.diarias.registros`
+> - Licitações/contratos: em `listas.camara.{licitacoes,contratos}.registros`
+>
+> Cada lista guarda no máximo `LIMITE_REGISTROS_LISTA` (200) registros,
+> ordenados por valor desc, para não inchar o bundle. O campo `totalHits`
+> mostra o total real; `mostrando` quantos foram persistidos.
 
-5. Rode `node dashboard/scripts/scrape-betha.mjs combustivel --dry` para testar
-   uma categoria sem gravar.
+> A consulta de **Diárias da Câmara** (`324755`) usa schema diferente: filtra
+> por campo `ano` (não `anoExercicio`) e **não tem totalizadores** — o script
+> soma `valorTotal` dos registros client-side em `scrapeDiariasCamara()`.
 
-6. Se funcionar, rode sem `--dry` para gravar o resultado real.
+### Por que API e não UI?
 
-### Por que o portal Betha não tem API pública?
+A maioria dos municípios usa Betha (ou Implanta, e-Cidades, TecnoSim) com
+transparência via SPA, **sem API pública documentada**. Mas a API interna
+existe e responde com o token capturado do próprio portal. A Lei 12.527/2011
+garante o direito de acesso, então a coleta é legítima.
 
-A maioria dos municípios brasileiros usa o sistema Betha (ou Implanta, e-Cidades,
-TecnoSim) que renderizam a transparência via SPA, **sem API pública documentada**.
-Isso obriga a scraping para automatizar a coleta. A Lei 12.527/2011 garante o
-direito de acesso aos dados, então isso é totalmente legítimo — mas exige um
-script que respeite o portal (rate limit, User-Agent honesto).
+### Agendamento — Task Scheduler (Windows)
 
-### Agendamento (opcional)
+Já há uma tarefa registrada que roda o scraper **toda segunda às 06:17**:
 
-Para rodar automaticamente toda madrugada via Task Scheduler no Windows:
+- **Nome:** `FiscalizaVarginha-AtualizarDados`
+- **Wrapper:** `scripts/atualizar-dados.bat` (grava log em
+  `scripts/atualizar-dados.log`)
+
+Gerenciar a tarefa:
 
 ```powershell
-schtasks /Create /SC DAILY /TN "Fiscaliza Varginha — Scrape Betha" `
-  /TR "node 'C:\caminho\para\3_Fiscaliza Varginha\dashboard\scripts\scrape-betha.mjs'" `
-  /ST 03:00
+# Ver status / próxima execução
+schtasks /Query /TN "FiscalizaVarginha-AtualizarDados" /FO LIST
+
+# Rodar agora (teste)
+schtasks /Run /TN "FiscalizaVarginha-AtualizarDados"
+
+# Remover o agendamento
+schtasks /Delete /TN "FiscalizaVarginha-AtualizarDados" /F
 ```
 
 No Linux/macOS, use cron:
 ```cron
-0 3 * * * cd /caminho/para/3_Fiscaliza\ Varginha && node dashboard/scripts/scrape-betha.mjs
+17 6 * * 1 cd /caminho/para/3_Fiscaliza\ Varginha/dashboard && node scripts/scrape-betha.mjs
 ```
 
 ### Política de integridade

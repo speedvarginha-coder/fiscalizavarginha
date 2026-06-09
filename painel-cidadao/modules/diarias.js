@@ -209,6 +209,14 @@
       const fonteOficialDiaria = ((D.diarias || {}).fontes || {})[prefix.toLowerCase()] || "https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/diarias";
       listaEl.innerHTML = view.slice(0, 80).map(d => {
         const funcao = funcaoDiaria(d);
+        const seloConfianca = window.ZELA.dataTrustSeal
+          ? window.ZELA.dataTrustSeal("diaria", {
+              fonte: prefix === "Prefeitura" ? "despesas/diarias da Prefeitura" : "diarias da Camara",
+              escopo: isPrefeituraCard ? "registro contabil classificado" : "diaria individual estruturada",
+              risco: isPrefeituraCard ? "pode nao ser uma viagem individual" : "nao comprova resultado publico da viagem",
+              acao: "conferir autorizacao, finalidade e prestacao de contas",
+            })
+          : "";
         return `
         <article class="diaria-card">
           <div class="diaria-card__value">
@@ -228,6 +236,7 @@
               ${d.numero ? `<span>Nº ${esc(d.numero)}</span>` : ""}
               ${d.data_inicial ? `<span>${dataBR(d.data_inicial)}${d.data_final && d.data_final !== d.data_inicial ? " a " + dataBR(d.data_final) : ""}</span>` : ""}
             </div>
+            ${seloConfianca}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(d.funcionario)}', '${jsSafe(d.finalidade || d.historico)}', '${fmtBRL(d.valor_total)} (${fmtNum(d.quantidade)} dias)')" style="padding: 4px 8px; background: #0b5f3a; color: white; border: none; border-radius: 4px; font-size: 0.75em; cursor: pointer;">Compartilhar</button>
               <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/diarias" target="_blank" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 4px 8px; background: #eee; border-radius: 4px; color: #333; font-size: 0.75em; font-weight: 500; border: 1px solid #ccc; display: inline-block;">Fonte oficial</a>

@@ -68,7 +68,24 @@
           <input type="search" id="buscaHome" placeholder="Digite um tema, obra, contrato ou vereador" aria-label="Buscar no painel">
           <button type="button" onclick="ZELA.smartAudit()">Investigar agora</button>
         </div>
+        <div id="homeSmartSuggest" class="smart-suggest" aria-live="polite"></div>
       </div>
+
+      <section id="homeStartGuide" class="start-guide" aria-label="Guia para começar a fiscalizar">
+        <div class="start-guide__head">
+          <span>Não sei por onde começar</span>
+          <strong>Escolha uma pergunta simples</strong>
+        </div>
+        <div class="start-guide__choices" role="group" aria-label="Perguntas iniciais">
+          <button type="button" data-start-key="obras">Obras e buracos</button>
+          <button type="button" data-start-key="dinheiro">Quem recebeu?</button>
+          <button type="button" data-start-key="diario">Diário de hoje</button>
+          <button type="button" data-start-key="salarios">Salários e cargos</button>
+          <button type="button" data-start-key="camara">Vereadores</button>
+          <button type="button" data-start-key="cobrar">Quero cobrar</button>
+        </div>
+        <div id="homeStartGuideDetail" class="start-guide__detail" aria-live="polite"></div>
+      </section>
 
       <!-- B: alerta investimentos -->
       <div class="hero-alert">
@@ -344,6 +361,7 @@
           <a href="camara.html">3. Compare emenda, CNPJ e pagamento</a>
         </div>
         <div id="homeOpsFreshness" class="home-ops__freshness">Dados locais carregados no navegador</div>
+        <div id="homeDataHealth" class="home-data-health" hidden></div>
       </div>
 
       <div id="homeOpsStats" class="home-ops__stats">
@@ -378,6 +396,11 @@
           <small>Compare promessa, CNPJ beneficiado e pagamento.</small>
         </a>
       </div>
+
+      <section id="homeMoneyMap" class="home-money-map" aria-label="Para onde foi o dinheiro publico"></section>
+      <section id="homeTrendWatch" class="home-trend-watch" aria-label="Comparativo de tendencia do dinheiro publico"></section>
+
+      <div id="homeDataBacklog" class="home-data-backlog" hidden></div>
 
       <div class="home-ops__actions">
         <a href="prefeitura.html" class="home-action home-action--primary">
@@ -428,7 +451,7 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260520"></script>
+<script src="data-loader.js?v=20260608l"></script>
 <script>
 /* ── A: Widget "Esta semana na Câmara" ─────────────────────────── */
 document.addEventListener('zela:ready', function () {

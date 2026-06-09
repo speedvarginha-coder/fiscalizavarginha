@@ -762,7 +762,7 @@
   },
   "consultas": [
     "/consulta/v1/contratacoes/publicacao: HTTP Error 400: ",
-    "/consulta/v1/contratacoes/publicacao: The read operation timed out",
+    "/consulta/v1/contratacoes/publicacao: HTTP Error 400: ",
     "https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20261231&codigoMunicipioIbge=3170701&pagina=1&tamanhoPagina=50"
   ],
   "observacao": "Dados usados para conferência cruzada. Se a API pública não retornar registros, consulte manualmente o PNCP pelo município ou CNPJ do órgão."

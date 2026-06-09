@@ -38,6 +38,7 @@ CONSULTA_LICITACOES_ABERTAS   = 82967  # Em andamento
 CONSULTA_LICITACOES_FECHADAS  = 82965  # Finalizadas
 CONSULTA_COMPRAS_DIRETAS      = 83045
 CONSULTA_OBRAS_PUBLICAS       = 83026
+CONSULTA_VEICULOS_MUNICIPAIS  = 83061
 CONSULTA_DIARIAS              = 83059
 CONSULTA_INEXIGIBILIDADE      = 83022
 CONSULTA_DISPENSADA           = 83062
@@ -160,6 +161,7 @@ ANO_FIELD = {
     CONSULTA_INEXIGIBILIDADE:      "anoLicitacao",
     CONSULTA_DISPENSADA:           "anoLicitacao",
     CONSULTA_OBRAS_PUBLICAS:       None,         # sem filtro de ano
+    CONSULTA_VEICULOS_MUNICIPAIS:  None,         # sem filtro de ano
     CONSULTA_DIARIAS:              "anoExercicio",
 }
 
@@ -224,6 +226,7 @@ def baixar_dados_abertos(token: str, consulta_id: int,
     csv_text = zf.read(main_name).decode("utf-8", errors="ignore")
     rows = list(csvmod.DictReader(io.StringIO(csv_text)))
     linked = {}
+    linked_rows = {}
     for name in zf.namelist():
         if name == main_name or not name.lower().endswith(".csv"):
             continue
@@ -232,10 +235,12 @@ def baixar_dados_abertos(token: str, consulta_id: int,
             sub = list(csvmod.DictReader(io.StringIO(txt)))
             if sub:
                 linked[name] = sub[0]
+                linked_rows[name] = sub
         except Exception:
             pass
     return {"main": rows, "main_filename": main_name,
-            "files_in_zip": len(zf.namelist()), "linked": linked}
+            "files_in_zip": len(zf.namelist()), "linked": linked,
+            "linked_rows": linked_rows}
 
 
 # ============================================================

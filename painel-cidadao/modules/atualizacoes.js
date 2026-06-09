@@ -79,8 +79,11 @@
   }
 
   const MESES_BR = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+  const DIARIO_PORTAL_URL = "https://www.varginha.mg.gov.br/portal/diario-oficial/1/0/0/fios/0/";
+  const DIARIO_EDICAO_OFFSET = 1593;
 
   // Estado dos filtros
+  let abaAtual = "atos";
   let filtros = {
     orgao: "",
     tipo: "",
@@ -89,6 +92,114 @@
     mes: "",
     busca: "",
   };
+
+  function hojeISO() {
+    const d = new Date();
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().slice(0, 10);
+  }
+
+  function dataISO(valor) {
+    return String(valor || "").slice(0, 10);
+  }
+
+  function formatarDataHora(valor) {
+    if (!valor) return "Data não informada";
+    const normalizada = String(valor).replace(" ", "T");
+    const d = new Date(normalizada);
+    if (Number.isNaN(d.getTime())) return cleanText(valor);
+    return d.toLocaleDateString("pt-BR") + " às " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  function idPublicacaoDiario(edicao) {
+    const n = Number(String(edicao || "").replace(/[^\d]/g, ""));
+    if (!Number.isFinite(n) || n <= DIARIO_EDICAO_OFFSET) return "";
+    return String(n - DIARIO_EDICAO_OFFSET);
+  }
+
+  function urlPdfDiario(item, edicao) {
+    const id = cleanText(item.publicacao_id || item.id_publicacao || idPublicacaoDiario(edicao));
+    if (item.url_pdf_direta) return cleanText(item.url_pdf_direta);
+    if (id) return `https://www.varginha.mg.gov.br/portal/diario-oficial/ver/${id}/`;
+    if (item.url_pdf && !/\/ver\/\d{4}\//.test(String(item.url_pdf))) return cleanText(item.url_pdf);
+    return DIARIO_PORTAL_URL;
+  }
+
+  function valorAto(ato) {
+    return (ato.valores || []).reduce((s, v) => s + Number(v.valor || 0), 0);
+  }
+
+  function ehCompraOuContratacao(ato) {
+    const txt = norm([ato.tipo, ato.categoria, ato.titulo, ato.resumo].filter(Boolean).join(" "));
+    return ["contrato", "compra_direta", "dispensa", "licitacao"].includes(ato.tipo) ||
+      /(contrato|compra|aquisi|fornecimento|servico|serviço|dispensa|licitacao|licitação|pregao|pregão|contrat)/.test(txt);
+  }
+
+  function ehCargoComissionado(ato) {
+    const txt = norm([ato.tipo, ato.categoria, ato.titulo, ato.resumo].filter(Boolean).join(" "));
+    return /(comissionado|cargo em comissao|cargo em comissão|nomeacao|nomeação|exoneracao|exoneração|servidor|folha|pessoal)/.test(txt);
+  }
+
+  function ehLeiOuAlteracao(ato) {
+    const txt = norm([ato.tipo, ato.categoria, ato.titulo, ato.resumo].filter(Boolean).join(" "));
+    return /(lei|projeto de lei|alteracao de lei|alteração de lei|decreto|portaria|resolucao|resolução|norma|legislativo)/.test(txt);
+  }
+
+  function resumoDiarioCidadao(edicao) {
+    const itens = [];
+    const descricao = cleanText(edicao.descricao || "");
+    if (descricao) {
+      descricao
+        .split(/[\n;•]+/)
+        .map(p => cleanText(p))
+        .filter(Boolean)
+        .slice(0, 5)
+        .forEach(p => itens.push(p));
+    }
+
+    const atosDia = carregarAtos().filter(a => dataISO(a.data) === edicao.data);
+    if (atosDia.length) {
+      const compras = atosDia.filter(ehCompraOuContratacao);
+      const cargos = atosDia.filter(ehCargoComissionado);
+      const leis = atosDia.filter(ehLeiOuAlteracao);
+      const outros = atosDia.filter(a => !compras.includes(a) && !cargos.includes(a) && !leis.includes(a));
+      const porTipo = atosDia.reduce((acc, ato) => {
+        const key = cleanText((TIPOS[ato.tipo] && TIPOS[ato.tipo].label) || ato.tipo || "Ato");
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+      const tipos = Object.entries(porTipo).map(([tipo, qtd]) => `${fmtNum(qtd)} ${tipo.toLowerCase()}`).join(", ");
+      itens.push(`No painel, há ${fmtNum(atosDia.length)} ato(s) da mesma data para conferir junto da edição: ${tipos}.`);
+      if (compras.length) {
+        const totalCompras = compras.reduce((s, ato) => s + valorAto(ato), 0);
+        const maiorCompra = compras.slice().sort((a, b) => valorAto(b) - valorAto(a))[0];
+        itens.push(`Compras/contratações: ${fmtNum(compras.length)} ato(s) localizado(s), somando ${fmtBRL(totalCompras)}${maiorCompra ? `; maior item: ${cleanText(maiorCompra.titulo || "")}` : ""}.`);
+      }
+      if (cargos.length) {
+        itens.push(`Cargos, servidores ou folha: ${fmtNum(cargos.length)} ato(s) para conferir nomeação, exoneração, vínculo ou remuneração.`);
+      }
+      if (leis.length) {
+        itens.push(`Leis, decretos ou alterações normativas: ${fmtNum(leis.length)} ato(s) para ler no PDF antes de interpretar impacto.`);
+      }
+      if (outros.length && !compras.length && !cargos.length && !leis.length) {
+        itens.push(`Outros atos administrativos relacionados no painel: ${fmtNum(outros.length)} registro(s).`);
+      }
+      const maior = atosDia
+        .map(a => ({ ato: a, valor: valorAto(a) }))
+        .sort((a, b) => b.valor - a.valor)[0];
+      if (maior && maior.valor > 0) {
+        itens.push(`Maior valor relacionado no painel nessa data: ${fmtBRL(maior.valor)} em ${cleanText(maior.ato.titulo || "ato administrativo")}.`);
+      }
+    }
+
+    if (!itens.length) {
+      itens.push("O dado aberto informa a edição, data e tipo, mas ainda não entrega o texto interno em formato estruturado.");
+      itens.push("Clique em “Abrir PDF da edição” para ler o inteiro teor oficial sem precisar procurar no portal da Prefeitura.");
+      itens.push("Para divulgar ou cobrar algum ponto, use o PDF oficial como fonte primária.");
+    }
+
+    return itens.slice(0, 6);
+  }
 
   // ============================================================
   // Conversão de contratos reais → atos do feed
@@ -240,10 +351,20 @@
     function fornecedorParaAto(f, orgao, contratosExistentes) {
       const nome = cleanText(f.nome || "");
       if (!nome) return null;
-      // Já existe contrato para essa empresa? Se sim, não gera duplicata
+      // Já existe contrato para essa empresa? Se sim, não gera duplicata.
+      // Match por CNPJ (raiz de 8 dígitos — visível mesmo com máscara LGPD)
+      // tem prioridade; nome é só fallback. Evita acusar de "sem contrato"
+      // empresa cujo nome está grafado diferente nas duas bases.
       const nomeNorm = norm(nome);
+      const cnpjRoot = (s) => (s || "").replace(/[^\d]/g, "").slice(0, 8);
+      const fRoot = cnpjRoot(f.cnpj);
       const jaTem = contratosExistentes.some(a =>
-        (a.envolvidos || []).some(e => norm(e.nome).includes(nomeNorm) || nomeNorm.includes(norm(e.nome || "")))
+        (a.envolvidos || []).some(e => {
+          const eRoot = cnpjRoot(e.cnpj);
+          if (fRoot.length === 8 && fRoot === eRoot) return true; // mesmo CNPJ
+          const en = norm(e.nome || "");
+          return en.length > 0 && (en.includes(nomeNorm) || nomeNorm.includes(en));
+        })
       );
       if (jaTem) return null;
 
@@ -257,6 +378,10 @@
       return {
         id: idAto,
         data: dataRef,
+        // Rótulo de exibição: este ato agrega o TOTAL do ano, não tem data
+        // de evento. Mostrar "Acumulado no ano" evita o cidadão ler 31/12
+        // como se fosse a data de um pagamento específico.
+        data_rotulo: `Acumulado em ${ano || "ano atual"}`,
         orgao,
         tipo: "despesa",
         categoria: "Administração",
@@ -304,7 +429,7 @@
     const el = $("atualizacoesStats");
     if (!el) return;
 
-    const hoje = new Date().toISOString().slice(0, 10);
+    const hoje = hojeISO();
     const seteDias = new Date(Date.now() - 7 * 86400000).toISOString().slice(0, 10);
 
     const atosHoje = atos.filter(a => a.data === hoje).length;
@@ -343,6 +468,624 @@
         <span class="placar-card__sub">Todos os atos disponíveis</span>
       </div>
     `;
+  }
+
+  function carregarDiario() {
+    const D = window.ZELA_DATA || {};
+    const diario = D.diario || {};
+    return (diario.ultimas || []).map((item, idx) => {
+      const edicao = cleanText(item.edicao || item.numero || "");
+      const data = dataISO(item.data);
+      const ano = String(item.ano || data.slice(0, 4) || "");
+      const url = urlPdfDiario(item, edicao);
+      return {
+        id: `diario-${ano}-${edicao || idx}`,
+        data,
+        sortKey: cleanText(item.data || data),
+        ano,
+        edicao,
+        extra: Boolean(item.extra),
+        descricao: cleanText(item.descricao || item.resumo || ""),
+        publicacaoId: cleanText(item.publicacao_id || item.id_publicacao || idPublicacaoDiario(edicao)),
+        url,
+        urlPortal: DIARIO_PORTAL_URL,
+        titulo: `Diário Oficial - Edição ${edicao || "sem número"}`,
+        resumo: `${item.extra ? "Edição extra" : "Edição ordinária"} publicada em ${formatarDataHora(item.data)}.`,
+      };
+    });
+  }
+
+  function renderStatsDiario(edicoes) {
+    const el = $("atualizacoesStats");
+    if (!el) return;
+
+    const diario = (window.ZELA_DATA || {}).diario || {};
+    const hoje = hojeISO();
+    const edicoesHoje = edicoes.filter(e => e.data === hoje).length;
+    const extras = edicoes.filter(e => e.extra).length;
+    const ultima = edicoes[0];
+
+    el.innerHTML = `
+      <div class="placar-card placar-card--count">
+        <span class="placar-card__icon">${icon("documentos", { size: 24 })}</span>
+        <span class="placar-card__valor">${ultima ? esc(ultima.edicao || "-") : "-"}</span>
+        <span class="placar-card__label">Última edição</span>
+        <span class="placar-card__sub">${ultima ? esc(formatarDataHora(ultima.sortKey)) : "Aguardando coleta"}</span>
+      </div>
+      <div class="placar-card placar-card--money">
+        <span class="placar-card__icon">${icon("relogio", { size: 24 })}</span>
+        <span class="placar-card__valor">${fmtNum(edicoesHoje)}</span>
+        <span class="placar-card__label">Edições hoje</span>
+        <span class="placar-card__sub">${edicoesHoje ? "Nova publicação oficial" : "Sem nova edição hoje"}</span>
+      </div>
+      <div class="placar-card placar-card--warn">
+        <span class="placar-card__icon">${icon("alerta", { size: 24 })}</span>
+        <span class="placar-card__valor">${fmtNum(extras)}</span>
+        <span class="placar-card__label">Edições extras</span>
+        <span class="placar-card__sub">Publicações fora da rotina comum</span>
+      </div>
+      <div class="placar-card placar-card--top">
+        <span class="placar-card__icon">${icon("trofeu", { size: 24 })}</span>
+        <span class="placar-card__valor">${fmtNum(diario.total || edicoes.length)}</span>
+        <span class="placar-card__label">Total coletado</span>
+        <span class="placar-card__sub">${fmtNum(edicoes.length)} no resumo recente</span>
+      </div>
+    `;
+  }
+
+  function isoDateLocal(d) {
+    const dt = new Date(d);
+    dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset());
+    return dt.toISOString().slice(0, 10);
+  }
+
+  function dataAtoValida(ato) {
+    const iso = dataISO(ato && ato.data);
+    if (!iso || ato.data_rotulo) return "";
+    const d = new Date(iso + "T00:00:00");
+    if (Number.isNaN(d.getTime())) return "";
+    if (iso > hojeISO()) return "";
+    return iso;
+  }
+
+  function dataCurta(iso) {
+    return iso ? iso.split("-").reverse().join("/") : "data não informada";
+  }
+
+  function textoAtoBusca(ato) {
+    return norm([
+      ato.titulo,
+      ato.resumo,
+      ato.categoria,
+      ato.tipo,
+      ato.orgao,
+      ...(ato.envolvidos || []).map(e => e.nome || ""),
+      ...(ato.pontos_atencao || []),
+    ].filter(Boolean).join(" "));
+  }
+
+  function ehAtoAsfalto(ato) {
+    const txt = textoAtoBusca(ato);
+    return /(asfalto|asfaltica|asfaltico|cbuq|tapa buraco|tapa-buraco|recape|pavimentacao|pavimenta|buraco)/.test(txt);
+  }
+
+  function rotuloMudanca(ato) {
+    const labels = {
+      contrato: "Novo contrato",
+      aditivo: "Aditivo",
+      dispensa: "Dispensa",
+      compra_direta: "Compra direta",
+      licitacao: "Licitação",
+      diaria: "Diária",
+      convenio: "Convênio",
+      despesa: "Despesa sem contrato localizado",
+    };
+    return labels[ato.tipo] || "Ato novo";
+  }
+
+  function pontuarMudanca(ato) {
+    const valor = valorAto(ato);
+    let score = 0;
+    if (ato.relevancia === "alta") score += 5;
+    else if (ato.relevancia === "media") score += 2;
+    if (valor >= 1000000) score += 5;
+    else if (valor >= 100000) score += 2;
+    if ((ato.pontos_atencao || []).length) score += 3;
+    if (ehAtoAsfalto(ato)) score += 3;
+    if (ato.tipo === "dispensa") score += 2;
+    return score;
+  }
+
+  function dataColetaCurta(valor) {
+    if (!valor) return "data não informada";
+    const d = new Date(String(valor).replace(" ", "T"));
+    if (Number.isNaN(d.getTime())) return cleanText(valor);
+    return d.toLocaleDateString("pt-BR") + " às " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  }
+
+  function labelMudancaColeta(tipo) {
+    const labels = {
+      novo_contrato: "Novo contrato",
+      valor_alterado: "Valor alterado",
+      novo_fornecedor_relevante: "Novo fornecedor relevante",
+      nova_edicao_diario: "Nova edição do Diário",
+      pendencia_nova: "Pendência nova",
+      pendencia_resolvida: "Pendência resolvida",
+      asfalto_novo: "Asfalto/obra viária",
+    };
+    return labels[tipo] || "Mudança";
+  }
+
+  function classeMudancaColeta(item) {
+    if (item.tipo === "pendencia_nova" || item.prioridade === "alta") return "change-digest__badge--red";
+    if (item.tipo === "asfalto_novo" || item.tipo === "nova_edicao_diario") return "change-digest__badge--gold";
+    return "";
+  }
+
+  function renderMudancasComparacao(diff) {
+    const r = diff.resumo || {};
+    const atual = diff.atual || {};
+    const anterior = diff.anterior || null;
+    const itens = Array.isArray(diff.itens) ? diff.itens.slice(0, 6) : [];
+    const comparacao = anterior
+      ? `Comparado com a coleta de ${esc(dataColetaCurta(anterior.coleta_iso || anterior.data_humana))}.`
+      : "Histórico de snapshots iniciado agora; a próxima coleta já mostrará comparação completa com este retrato.";
+
+    return `
+      <div class="change-digest__head">
+        <span>COMPARAÇÃO REAL DE COLETAS</span>
+        <h3>O que mudou desde a última atualização</h3>
+        <p>
+          ${comparacao}
+          Coleta atual: ${esc(dataColetaCurta(atual.coleta_iso || atual.data_humana))}.
+        </p>
+      </div>
+      <div class="change-digest__metrics" aria-label="Resumo comparativo das coletas">
+        <article>
+          <strong>${fmtNum(r.total_mudancas || 0)}</strong>
+          <span>mudanças detectadas</span>
+        </article>
+        <article>
+          <strong>${fmtBRL(r.valor_novo_brl || 0)}</strong>
+          <span>novos contratos</span>
+        </article>
+        <article>
+          <strong>${fmtNum((r.pendencias_novas || 0) + (r.pendencias_resolvidas || 0))}</strong>
+          <span>pendências mudaram</span>
+        </article>
+        <article>
+          <strong>${fmtNum(r.asfalto_novos || 0)}</strong>
+          <span>asfalto/obras novas</span>
+        </article>
+      </div>
+      <div class="change-digest__body">
+        <section class="change-digest__main">
+          <h4>Principais mudanças detectadas</h4>
+          <ol class="change-digest__list">
+            ${itens.length ? itens.map(item => {
+              const target = item.alvo_id ? `#${esc(item.alvo_id)}` : "";
+              return `<li class="change-digest__item">
+                <div>
+                  <span class="change-digest__badge ${classeMudancaColeta(item)}">${esc(labelMudancaColeta(item.tipo))}</span>
+                  ${item.prioridade ? `<span class="change-digest__badge">${esc(item.prioridade)}</span>` : ""}
+                </div>
+                <strong>${esc(cleanText(item.titulo || "Mudança detectada"))}</strong>
+                <small>${[item.orgao, item.data ? dataCurta(item.data) : "", item.valor_brl ? fmtBRL(item.valor_brl) : ""].filter(Boolean).map(esc).join(" · ")}</small>
+                ${item.detalhe ? `<p>${esc(cleanText(item.detalhe))}</p>` : ""}
+                ${target ? `<a href="${target}">Ver no feed</a>` : (item.url ? `<a href="${esc(item.url)}" target="_blank" rel="noopener">Abrir fonte</a>` : "")}
+              </li>`;
+            }).join("") : `<li class="change-digest__item">
+              <strong>Nenhuma mudança estrutural apareceu entre as coletas comparadas.</strong>
+              <small>O histórico segue ativo para detectar alterações futuras.</small>
+            </li>`}
+          </ol>
+        </section>
+        <aside class="change-digest__side">
+          <h4>Resumo da comparação</h4>
+          <ul>
+            <li><b>Contratos novos:</b> ${fmtNum(r.novos_contratos || 0)}.</li>
+            <li><b>Valores alterados:</b> ${fmtNum(r.contratos_valor_alterado || 0)} contrato(s).</li>
+            <li><b>Fornecedores novos:</b> ${fmtNum(r.novos_fornecedores_relevantes || 0)} acima do corte de relevância.</li>
+            <li><b>Diário Oficial:</b> ${fmtNum(r.novas_edicoes_diario || 0)} nova(s) edição(ões).</li>
+            <li><b>Pendências:</b> ${fmtNum(r.pendencias_novas || 0)} nova(s), ${fmtNum(r.pendencias_resolvidas || 0)} resolvida(s).</li>
+          </ul>
+        </aside>
+      </div>`;
+  }
+
+  function recorteAtosRecentes(atos) {
+    const datas = atos.map(dataAtoValida).filter(Boolean).sort();
+    const fim = datas[datas.length - 1] || hojeISO();
+    const inicioDate = new Date(fim + "T00:00:00");
+    inicioDate.setDate(inicioDate.getDate() - 7);
+    const inicio = isoDateLocal(inicioDate);
+    const recentes = atos.filter(a => {
+      const d = dataAtoValida(a);
+      return d && d >= inicio && d <= fim;
+    });
+    return { inicio, fim, recentes };
+  }
+
+  function renderMudancasAtos(atos) {
+    const el = $("mudancasRecentes");
+    if (!el) return;
+
+    const diff = (window.ZELA_DATA || {}).mudancas_coleta;
+    if (diff && diff.resumo && (diff.modo === "comparacao" || diff.modo === "baseline")) {
+      el.innerHTML = renderMudancasComparacao(diff);
+      return;
+    }
+
+    const { inicio, fim, recentes } = recorteAtosRecentes(atos);
+    const edicoesPeriodo = carregarDiario().filter(e => e.data >= inicio && e.data <= fim);
+    const valorRecente = recentes.reduce((s, ato) => s + valorAto(ato), 0);
+    const contratos = recentes.filter(a => ["contrato", "dispensa", "compra_direta", "licitacao", "aditivo"].includes(a.tipo));
+    const asfalto = recentes.filter(ehAtoAsfalto);
+    const alta = recentes.filter(a => a.relevancia === "alta" || pontuarMudanca(a) >= 7);
+    const pendencias = atos
+      .filter(a => (a.pontos_atencao || []).length || a._fonte === "top_fornecedores")
+      .sort((a, b) => pontuarMudanca(b) - pontuarMudanca(a))
+      .slice(0, 3);
+    const destaques = recentes
+      .slice()
+      .sort((a, b) => {
+        const score = pontuarMudanca(b) - pontuarMudanca(a);
+        if (score) return score;
+        return (b.data || "").localeCompare(a.data || "");
+      })
+      .slice(0, 5);
+    const coleta = cleanText((window.ZELA_DATA || {}).atualizado_em?.data_humana || "");
+
+    if (!recentes.length) {
+      el.innerHTML = `
+        <div class="change-digest__head">
+          <span>LEITURA RÁPIDA</span>
+          <h3>O que mudou desde a última atualização</h3>
+          <p>Não há ato com data recente suficiente para montar um recorte automático. Use os filtros abaixo para conferir o histórico disponível.</p>
+        </div>`;
+      return;
+    }
+
+    el.innerHTML = `
+      <div class="change-digest__head">
+        <span>LEITURA RÁPIDA</span>
+        <h3>O que mudou desde a última atualização</h3>
+        <p>
+          Recorte automático de ${esc(dataCurta(inicio))} a ${esc(dataCurta(fim))}
+          ${coleta ? `, com coleta em ${esc(coleta)}` : ""}. Quando não há snapshot anterior, o painel usa a data oficial do ato para indicar o que entrou no período.
+        </p>
+      </div>
+      <div class="change-digest__metrics" aria-label="Resumo numérico das mudanças">
+        <article>
+          <strong>${fmtNum(recentes.length)}</strong>
+          <span>atos no recorte</span>
+        </article>
+        <article>
+          <strong>${fmtBRL(valorRecente)}</strong>
+          <span>valor localizado</span>
+        </article>
+        <article>
+          <strong>${fmtNum(alta.length)}</strong>
+          <span>prioridades</span>
+        </article>
+        <article>
+          <strong>${fmtNum(edicoesPeriodo.length)}</strong>
+          <span>edições do Diário</span>
+        </article>
+      </div>
+      <div class="change-digest__body">
+        <section class="change-digest__main">
+          <h4>Prioridade cidadã</h4>
+          <ol class="change-digest__list">
+            ${destaques.map(ato => {
+              const id = esc(ato.id || `${ato.data}-${ato.titulo}`);
+              const valor = valorAto(ato);
+              return `<li class="change-digest__item">
+                <div>
+                  <span class="change-digest__badge">${esc(rotuloMudanca(ato))}</span>
+                  ${ehAtoAsfalto(ato) ? `<span class="change-digest__badge change-digest__badge--gold">Asfalto/obra viária</span>` : ""}
+                  ${(ato.pontos_atencao || []).length ? `<span class="change-digest__badge change-digest__badge--red">Pendência</span>` : ""}
+                </div>
+                <strong>${esc(cleanText(ato.titulo || "Ato administrativo"))}</strong>
+                <small>${esc(dataCurta(dataAtoValida(ato)))} · ${esc(ato.orgao || "")}${valor ? ` · ${fmtBRL(valor)}` : ""}</small>
+                <a href="#${id}">Ver no feed</a>
+              </li>`;
+            }).join("")}
+          </ol>
+        </section>
+        <aside class="change-digest__side">
+          <h4>O que merece atenção</h4>
+          <ul>
+            <li><b>Contratos/compras:</b> ${fmtNum(contratos.length)} ato(s) no período.</li>
+            <li><b>Asfalto e buracos:</b> ${fmtNum(asfalto.length)} item(ns) para conferir local, medição e fiscal.</li>
+            <li><b>Diário Oficial:</b> ${fmtNum(edicoesPeriodo.length)} edição(ões) para ler na fonte oficial.</li>
+            <li><b>Pendências antigas:</b> ${fmtNum(pendencias.length)} item(ns) continuam na fila de cobrança.</li>
+          </ul>
+        </aside>
+      </div>`;
+  }
+
+  function renderMudancasDiario(edicoes) {
+    const el = $("mudancasRecentes");
+    if (!el) return;
+
+    if (!edicoes.length) {
+      el.innerHTML = `
+        <div class="change-digest__head">
+          <span>LEITURA RÁPIDA</span>
+          <h3>O que mudou no Diário Oficial</h3>
+          <p>Nenhuma edição do Diário Oficial foi encontrada no pacote de dados atual.</p>
+        </div>`;
+      return;
+    }
+
+    const ordenadas = edicoes.slice().sort((a, b) => (b.sortKey || "").localeCompare(a.sortKey || ""));
+    const ultimas = ordenadas.slice(0, 4);
+    const atos = carregarAtos();
+    const dataUltima = ultimas[0]?.data || "";
+    const atosUltima = atos.filter(a => dataISO(a.data) === dataUltima);
+    const compras = atosUltima.filter(ehCompraOuContratacao);
+    const cargos = atosUltima.filter(ehCargoComissionado);
+    const leis = atosUltima.filter(ehLeiOuAlteracao);
+    const extras = edicoes.filter(e => e.extra).length;
+
+    el.innerHTML = `
+      <div class="change-digest__head">
+        <span>LEITURA RÁPIDA</span>
+        <h3>O que mudou no Diário Oficial</h3>
+        <p>Últimas edições coletadas da fonte oficial. Cada linha abre direto o PDF ou leitor oficial, sem o cidadão precisar procurar no portal.</p>
+      </div>
+      <div class="change-digest__metrics" aria-label="Resumo do Diário Oficial">
+        <article>
+          <strong>${esc(ultimas[0]?.edicao || "-")}</strong>
+          <span>última edição</span>
+        </article>
+        <article>
+          <strong>${fmtNum(edicoes.length)}</strong>
+          <span>edições no painel</span>
+        </article>
+        <article>
+          <strong>${fmtNum(extras)}</strong>
+          <span>edições extras</span>
+        </article>
+        <article>
+          <strong>${fmtNum(atosUltima.length)}</strong>
+          <span>atos relacionados</span>
+        </article>
+      </div>
+      <div class="change-digest__body">
+        <section class="change-digest__main">
+          <h4>Últimas edições para ler</h4>
+          <ol class="change-digest__list">
+            ${ultimas.map(edicao => {
+              const resumo = resumoDiarioCidadao(edicao).slice(0, 2).join(" ");
+              return `<li class="change-digest__item">
+                <div>
+                  <span class="change-digest__badge">${edicao.extra ? "Edição extra" : "Edição ordinária"}</span>
+                  <span class="change-digest__badge change-digest__badge--gold">${esc(edicao.ano || "")}</span>
+                </div>
+                <strong>${esc(edicao.titulo)}</strong>
+                <small>${esc(formatarDataHora(edicao.sortKey || edicao.data))}</small>
+                <p>${esc(cleanText(resumo))}</p>
+                <a href="${esc(edicao.url)}" target="_blank" rel="noopener">Abrir PDF da edição</a>
+              </li>`;
+            }).join("")}
+          </ol>
+        </section>
+        <aside class="change-digest__side">
+          <h4>Na edição mais recente</h4>
+          <ul>
+            <li><b>Compras/contratações:</b> ${fmtNum(compras.length)} item(ns) relacionado(s).</li>
+            <li><b>Cargos, servidores ou folha:</b> ${fmtNum(cargos.length)} item(ns) para conferir.</li>
+            <li><b>Leis, decretos ou alterações:</b> ${fmtNum(leis.length)} item(ns) para ler no PDF.</li>
+            <li><b>Fonte:</b> sempre abrir o PDF oficial antes de divulgar ou cobrar.</li>
+          </ul>
+        </aside>
+      </div>`;
+  }
+
+  function renderDiarioCard(edicao) {
+    const dataDisplay = formatarDataHora(edicao.sortKey || edicao.data);
+    const tipo = edicao.extra ? "Edição Extra" : "Edição Ordinária";
+    
+    // Buscar atos do dia correspondente à edição
+    const atos = carregarAtos();
+    const atosDia = atos.filter(a => dataISO(a.data) === edicao.data);
+    
+    // Somar valores de compras/contratações do dia
+    const compras = atosDia.filter(ehCompraOuContratacao);
+    const totalCompras = compras.reduce((s, a) => s + valorAto(a), 0);
+    const totalDisplay = totalCompras > 0 ? fmtBRL(totalCompras) : "R$ 0,00";
+    
+    // Obter lista de empresas envolvidas
+    const envolvidos = [];
+    atosDia.forEach(ato => {
+      (ato.envolvidos || []).forEach(e => {
+        if (e.nome && !envolvidos.includes(e.nome)) {
+          envolvidos.push(e.nome);
+        }
+      });
+    });
+    const envolvidosHtml = envolvidos.length
+      ? envolvidos.map(env => `<li>• ${esc(cleanText(env))}</li>`).join("")
+      : "<li>• <em>Nenhum fornecedor/empresa mapeado diretamente nesta data</em></li>";
+
+    // Determinar relevância
+    let relevanciaClass = "baixa";
+    let relevanciaText = "baixa";
+    if (atosDia.some(a => a.relevancia === "alta") || totalCompras >= 200000) {
+      relevanciaClass = "alta";
+      relevanciaText = "alta";
+    } else if (atosDia.some(a => a.relevancia === "media") || totalCompras > 0 || edicao.extra) {
+      relevanciaClass = "media";
+      relevanciaText = "média";
+    }
+
+    // Determinar tema principal
+    let temaText = "diário oficial";
+    if (atosDia.some(a => a.tipo === "contrato")) temaText = "contrato";
+    else if (atosDia.some(a => a.tipo === "dispensa")) temaText = "dispensa";
+    else if (atosDia.some(a => a.tipo === "licitacao")) temaText = "licitação";
+    else if (atosDia.some(ehCargoComissionado)) temaText = "pessoal";
+    else if (atosDia.some(ehLeiOuAlteracao)) temaText = "legislação";
+
+    // Resumo descritivo da edição
+    let resumoDesc = "";
+    if (edicao.descricao) {
+      resumoDesc = edicao.descricao;
+    } else {
+      resumoDesc = `Foi publicada a edição ${edicao.edicao} (${edicao.extra ? "extra" : "ordinária"}) do Diário Oficial do Município de Varginha. `;
+      if (atosDia.length > 0) {
+        const comprasCount = compras.length;
+        const pessoalCount = atosDia.filter(ehCargoComissionado).length;
+        resumoDesc += `No painel, localizamos ${atosDia.length} ato(s) nesta data, sendo ${comprasCount} de compras/contratações e ${pessoalCount} relacionado(s) a servidores/cargos.`;
+      } else {
+        resumoDesc += `O sistema não identificou contratos ou contratações diretas vinculadas a esta data específica no Portal da Transparência de Varginha.`;
+      }
+    }
+
+    // Pontos de atenção
+    const pontosAtencao = [];
+    atosDia.forEach(ato => {
+      (ato.pontos_atencao || []).forEach(p => {
+        if (!pontosAtencao.includes(p)) {
+          pontosAtencao.push(p);
+        }
+      });
+    });
+    if (edicao.extra) {
+      pontosAtencao.push("Edição extra publicada fora do calendário rotineiro. Recomenda-se analisar a urgência das publicações.");
+    }
+    if (pontosAtencao.length === 0) {
+      pontosAtencao.push("Nenhum alerta crítico pré-identificado no cruzamento automático de dados para esta edição.");
+    }
+    const pontosAtencaoHtml = pontosAtencao.map(p => `<li>• ${esc(cleanText(p))}</li>`).join("");
+
+    // Construção da mensagem para compartilhamento no WhatsApp
+    const resumoZapTxt = `*DIÁRIO OFICIAL | VARGINHA*\n` +
+      `*Edição ${edicao.edicao} (${edicao.extra ? 'Extra' : 'Ordinária'})*\n` +
+      `*Data:* ${dataDisplay}\n` +
+      `*Categoria:* Diário Oficial\n` +
+      `*Relevância:* ${relevanciaText.toUpperCase()}\n` +
+      `*Tema:* ${temaText}\n\n` +
+      `*Resumo:*\n${resumoDesc}\n\n` +
+      `*Valores identificados:*\n- Total: ${totalDisplay}\n\n` +
+      `*Pontos de atenção:*\n${pontosAtencao.map(p => `- ${p}`).join("\n")}\n\n` +
+      `*Link PDF oficial:* ${edicao.url}`;
+    const resumoWhats = encodeURIComponent(resumoZapTxt);
+
+    return `<article class="diario-whats-card" id="${esc(edicao.id)}">
+      <div class="diario-whats-card__header">
+        <div class="diario-whats-card__title-block">
+          <h4 class="diario-whats-card__title" style="display:flex; align-items:center; gap:8px;">
+            ${icon("documentos", { size: 18 })} DIÁRIO OFICIAL · VARGINHA
+          </h4>
+          <div class="diario-whats-card__subtitle">${esc(edicao.titulo)}</div>
+        </div>
+        <span class="diario-relevancia-badge diario-relevancia-badge--${relevanciaClass}">
+          ${relevanciaText}
+        </span>
+      </div>
+
+      <div class="diario-whats-card__meta-grid">
+        <div class="diario-whats-card__meta-item">${icon("documentos", { size: 14 })} Categoria: <strong>Diário Oficial</strong></div>
+        <div class="diario-whats-card__meta-item">${icon("calendario", { size: 14 })} Data: <strong>${esc(dataDisplay)}</strong></div>
+        <div class="diario-whats-card__meta-item">${icon("predio", { size: 14 })} Órgão: <strong>Prefeitura de Varginha</strong></div>
+        <div class="diario-whats-card__meta-item">${icon("alerta", { size: 14 })} Relevância: <strong>${relevanciaText}</strong></div>
+        <div class="diario-whats-card__meta-item">${icon("lupa", { size: 14 })} Tema: <strong>${temaText}</strong></div>
+      </div>
+
+      <div class="diario-whats-card__section">
+        <div class="diario-whats-card__section-title">${icon("documentos", { size: 14 })} Resumo da Edição</div>
+        <div class="diario-whats-card__resumo">
+          ${esc(resumoDesc)}
+        </div>
+      </div>
+
+      <div class="diario-whats-card__section">
+        <div class="diario-whats-card__section-title">${icon("pessoas", { size: 14 })} Envolvidos</div>
+        <ul class="diario-whats-card__list">
+          ${envolvidosHtml}
+        </ul>
+      </div>
+
+      <div class="diario-whats-card__section">
+        <div class="diario-whats-card__section-title">${icon("cifrao", { size: 14 })} Valores identificados</div>
+        <ul class="diario-whats-card__list">
+          <li>• Total: <strong>${totalDisplay}</strong></li>
+          <li>• Unitário: <em>não identificado no trecho analisado</em></li>
+          <li>• Quantidade: <em>não identificado no trecho analisado</em></li>
+        </ul>
+      </div>
+
+      <div class="diario-whats-card__section">
+        <div class="diario-whats-card__section-title">${icon("alerta", { size: 14 })} Pontos de atenção</div>
+        <ul class="diario-whats-card__list">
+          ${pontosAtencaoHtml}
+        </ul>
+      </div>
+
+      <div class="diario-whats-card__section">
+        <div class="diario-whats-card__section-title">${icon("anexo", { size: 14 })} Publicação</div>
+        <a href="${esc(edicao.url)}" target="_blank" rel="noopener" style="font-size: 0.9rem; word-break: break-all;">${esc(edicao.url)}</a>
+      </div>
+
+      <div class="diario-whats-card__section">
+        <div class="diario-whats-card__section-title">${icon("predio", { size: 14 })} Portal de Origem</div>
+        <a href="${esc(edicao.urlPortal || DIARIO_PORTAL_URL)}" target="_blank" rel="noopener" style="font-size: 0.9rem; word-break: break-all;">${esc(edicao.urlPortal || DIARIO_PORTAL_URL)}</a>
+      </div>
+
+      <div class="diario-whats-card__actions">
+        <div class="diario-whats-card__buttons">
+          <a class="diario-whats-card__btn-zap" href="https://api.whatsapp.com/send?text=${resumoWhats}" target="_blank" rel="noopener">
+            ${icon("compartilhar", { size: 14 })} Compartilhar resumo
+          </a>
+          <a class="diario-whats-card__btn-link" href="${esc(edicao.url)}" target="_blank" rel="noopener">
+            ${icon("documentos", { size: 14 })} Abrir PDF da edição
+          </a>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  function renderDiario() {
+    const edicoes = carregarDiario();
+    const q = norm(filtros.busca);
+    const view = edicoes.filter(e => {
+      if (filtros.ano && !(e.data || "").startsWith(filtros.ano)) return false;
+      if (filtros.mes && (e.data || "").slice(5, 7) !== filtros.mes) return false;
+      if (q) {
+        const hay = norm([e.titulo, e.resumo, e.edicao, e.ano, e.extra ? "extra" : "ordinaria"].filter(Boolean).join(" "));
+        if (!hay.includes(q)) return false;
+      }
+      return true;
+    });
+
+    renderStatsDiario(edicoes);
+    renderMudancasDiario(edicoes);
+    renderFiltrosTempo(edicoes);
+
+    const contador = $("atualizacoesContador");
+    if (contador) contador.textContent = `${fmtNum(view.length)} edição${view.length !== 1 ? "ões" : ""}`;
+
+    const feedEl = $("atualizacoesFeed");
+    if (feedEl) {
+      feedEl.classList.add("diario-list-whats");
+    }
+    const emptyEl = $("atualizacoesEmpty");
+    if (!view.length) {
+      if (feedEl) feedEl.innerHTML = "";
+      if (emptyEl) {
+        emptyEl.hidden = false;
+        emptyEl.querySelector("strong").textContent = "Nenhuma edição encontrada";
+        emptyEl.querySelector("p").textContent = "Tente remover algum filtro ou limpar a busca.";
+      }
+      return;
+    }
+    if (emptyEl) emptyEl.hidden = true;
+
+    const sorted = [...view].sort((a, b) => (b.sortKey || "").localeCompare(a.sortKey || "")).slice(0, 120);
+    if (feedEl) feedEl.innerHTML = sorted.map(renderDiarioCard).join("");
   }
 
   // ============================================================
@@ -438,6 +1181,9 @@
   function renderCard(ato) {
     const t = TIPOS[ato.tipo] || TIPOS.contrato;
     const dataBr = (ato.data || "").split("-").reverse().join("/");
+    // Atos agregados (ex.: "sem contrato formal") trazem data_rotulo —
+    // exibição amigável que não confunde o cidadão com uma data de evento.
+    const dataDisplay = ato.data_rotulo || dataBr;
 
     const envolvidosHtml = (ato.envolvidos || []).map(e => {
       const cruz = cruzar(e);
@@ -471,13 +1217,13 @@
 
     // Compartilhar WhatsApp
     const msgWa = encodeURIComponent(
-      `${ato.titulo}\nData: ${dataBr} — ${ato.orgao}\n${ato.resumo}\n\nVer mais: ${window.location.href}#${idAto}`
+      `${ato.titulo}\n${dataDisplay} — ${ato.orgao}\n${ato.resumo}\n\nVer mais: ${window.location.href}#${idAto}`
     );
     const linkWa = `https://api.whatsapp.com/send?text=${msgWa}`;
 
     return `<article class="tline-item tline-item--${t.cor}" id="${esc(idAto)}">
       <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
-        <div class="tline-data">${dataBr} · ${ato.orgao}</div>
+        <div class="tline-data">${esc(dataDisplay)} · ${ato.orgao}</div>
         ${btnWatch}
       </div>
       <h4 class="tline-titulo">${esc(cleanText(ato.titulo))}</h4>
@@ -598,7 +1344,38 @@
   // ============================================================
   // Render principal
   // ============================================================
+  function atualizarTabs() {
+    document.querySelectorAll("#atualizacoesTabs .update-tab").forEach(btn => {
+      const ativo = btn.dataset.tab === abaAtual;
+      btn.classList.toggle("is-active", ativo);
+      btn.setAttribute("aria-selected", ativo ? "true" : "false");
+    });
+  }
+
   function render() {
+    atualizarTabs();
+
+    const filtrosEl = $("atualizacoesFiltros");
+    if (filtrosEl) filtrosEl.hidden = abaAtual === "diario";
+
+    const buscaEl = $("filtroAtualizacoes");
+    if (buscaEl) {
+      buscaEl.placeholder = abaAtual === "diario"
+        ? "Buscar por edição, ano, data ou tipo..."
+        : "Buscar por título, empresa, CNPJ ou tema...";
+    }
+
+    const emptyState = $("atualizacoesEmpty");
+    if (emptyState) {
+      emptyState.querySelector("strong").textContent = "Nenhuma atualização encontrada";
+      emptyState.querySelector("p").textContent = "Tente remover algum filtro ou limpar a busca.";
+    }
+
+    if (abaAtual === "diario") {
+      renderDiario();
+      return;
+    }
+
     const todos = carregarAtos();
 
     // Aplica filtros
@@ -623,6 +1400,7 @@
 
     // Stats sempre baseado em TODOS (visão global)
     renderStats(todos);
+    renderMudancasAtos(todos);
 
     // Filtros de tempo (anos/meses) baseados em todos
     renderFiltrosTempo(todos);
@@ -644,7 +1422,10 @@
     // Ordena por data decrescente, limita a 200 para não explodir DOM
     const sorted = [...view].sort((a, b) => (b.data || "").localeCompare(a.data || "")).slice(0, 200);
 
-    if (feedEl) feedEl.innerHTML = sorted.map(renderCard).join("");
+    if (feedEl) {
+      feedEl.classList.remove("diario-list-whats");
+      feedEl.innerHTML = sorted.map(renderCard).join("");
+    }
 
     // Atualiza visual dos chips de tipo/orgão/relevância
     document.querySelectorAll("#atualizacoesFiltros .cat-chip").forEach(chip => {
@@ -702,6 +1483,22 @@
   // ============================================================
   function init() {
     if (document.body.dataset.page !== "atualizacoes") return;
+    const params = new URLSearchParams(window.location.search);
+    const tabParam = params.get("tab") || params.get("aba") || "";
+    if (["atos", "diario"].includes(tabParam)) abaAtual = tabParam;
+
+    const tabsEl = $("atualizacoesTabs");
+    if (tabsEl) {
+      tabsEl.addEventListener("click", e => {
+        const tab = e.target.closest(".update-tab");
+        if (!tab) return;
+        abaAtual = tab.dataset.tab || "atos";
+        filtros.orgao = "";
+        filtros.tipo = "";
+        filtros.relevancia = "";
+        render();
+      });
+    }
 
     // Delegação de clique nos chips (orgão, tipo, relevância)
     const filtrosEl = $("atualizacoesFiltros");

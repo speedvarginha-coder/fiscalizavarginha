@@ -88,10 +88,12 @@
       <button type="button" class="pref-tab is-active" data-pref-tab="visao">Visão geral <span id="badgeVisao"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="contratos">Contratos <span id="badgeContratos"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="diarias">Diárias <span id="badgeDiarias"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="frota">Frota <span id="badgeFrota"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="asfalto">Asfalto e buracos <span id="badgeAsfalto"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="alugueis">Aluguéis <span id="badgeAlugueis"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="eventos">Eventos <span id="badgeEventos"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="licitacoes">Licitações <span id="badgeLicitacoes"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="fontes">Fontes</button>
+      <button type="button" class="pref-tab" data-pref-tab="fontes">Diário Oficial</button>
     </nav>
 
     <div class="pref-panels">
@@ -318,6 +320,50 @@
     </div>
 
     <!-- Diário Oficial -->
+    </section>
+
+    <section class="pref-panel" data-pref-panel="asfalto">
+    <div id="asfaltoBlock" class="block">
+      <h3 class="block__title">Asfalto, tapa-buraco e pavimentação</h3>
+      <p class="block__lead">
+        Recorte de obras públicas, contratos, licitações e compras com termos de CBUQ,
+        recapeamento, pavimentação, drenagem, tapa-buraco e itens próximos.
+      </p>
+      <div id="asfaltoPainel"></div>
+    </div>
+    </section>
+
+    <section class="pref-panel" data-pref-panel="frota">
+    <div id="frotaBlock" class="block">
+      <h3 class="block__title">Frota municipal</h3>
+      <p class="block__lead">
+        Veículos da Prefeitura: placa, tipo, modelo, próprio/locado, secretaria/centro de custo,
+        situação e gastos vinculados de combustível, manutenção, peças e serviços.
+      </p>
+      <div id="frotaStats" class="stats"></div>
+      <div class="filterbar">
+        <input id="filtroFrota" type="search" placeholder="Buscar placa, modelo, secretaria, fornecedor ou tipo de gasto...">
+        <select id="filtroSituacaoFrota" aria-label="Filtrar frota por situação">
+          <option value="">Todas as situações</option>
+        </select>
+        <select id="filtroAquisicaoFrota" aria-label="Filtrar por tipo de aquisição">
+          <option value="">Próprios, locados e cedidos</option>
+        </select>
+        <select id="filtroCentroFrota" aria-label="Filtrar por centro de custo">
+          <option value="">Todos os centros de custo</option>
+        </select>
+        <select id="ordenarFrota" aria-label="Ordenar frota">
+          <option value="gasto_desc">Maior gasto vinculado</option>
+          <option value="combustivel_desc">Maior gasto com combustível</option>
+          <option value="manutencao_desc">Maior gasto com manutenção</option>
+          <option value="modelo">Modelo/descrição</option>
+          <option value="centro">Centro de custo</option>
+        </select>
+        <span id="frotaContador" class="filterbar__count"></span>
+      </div>
+      <div id="frotaAudit" class="frota-audit"></div>
+      <div id="frotaLista" class="frota-list"></div>
+    </div>
     </section>
 
     <section class="pref-panel" data-pref-panel="fontes">

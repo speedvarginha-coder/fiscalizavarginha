@@ -1,0 +1,2496 @@
+{
+  "gerado_em": "2026-06-09T19:19:49.560Z",
+  "fonte": {
+    "principal": "camara_anos.json",
+    "origem": "SAPL Camara Municipal de Varginha",
+    "observacao": "O indice e recalculado a partir das materias legislativas ja coletadas. Campos sem fonte automatica permanecem como pendencia auditavel."
+  },
+  "metodologia": {
+    "pesos": {
+      "legislar": 30,
+      "fiscalizar": 30,
+      "representar": 15,
+      "presenca": 25
+    },
+    "subpesos": {
+      "projeto_autoria_propria": 3,
+      "alteracao_relevante": 2,
+      "proposicao_simbolica": 0,
+      "emenda_relevante": 1.5,
+      "relatoria_processante": 3,
+      "requerimento_info": 1.5,
+      "audiencia_contas": 1,
+      "oficio_fiscalizacao": 1,
+      "indicacao_atendida": 1,
+      "audiencia_publica_diligencia": 1.5,
+      "comenda_titulo": 0,
+      "presenca_sessoes": 0.4,
+      "presenca_comissoes": 0.6
+    },
+    "regra": "Atividades simbolicas ficam registradas para transparencia, mas nao pontuam. Indicacoes so pontuam quando houver atendimento ou resposta efetiva comprovada; enquanto isso, aparecem apenas como evidencia. Como parte dos campos depende de atas ou fonte estruturada ainda nao automatizada, a nota informa a cobertura automatica disponivel.",
+    "campos_automaticos": [
+      "projeto_autoria_propria",
+      "emenda_relevante",
+      "requerimento_info",
+      "proposicao_simbolica"
+    ],
+    "campos_pendentes": [
+      "alteracao_relevante",
+      "relatoria_processante",
+      "audiencia_contas",
+      "oficio_fiscalizacao",
+      "indicacao_atendida",
+      "audiencia_publica_diligencia",
+      "presenca_sessoes",
+      "presenca_comissoes"
+    ]
+  },
+  "anos": {
+    "2025": {
+      "ano": 2025,
+      "status": "parcial_auditavel",
+      "cobertura_pct": 60,
+      "confianca_dados_pct": 60,
+      "vereadores_monitorados": 17,
+      "rankings_perfil": {
+        "geral": [
+          {
+            "nome": "Dandan",
+            "posicao": 1,
+            "valor": 84.6
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 2,
+            "valor": 68.4
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 3,
+            "valor": 60.4
+          },
+          {
+            "nome": "Alexandre Prado",
+            "posicao": 4,
+            "valor": 57.4
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 5,
+            "valor": 54.2
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 6,
+            "valor": 50.3
+          },
+          {
+            "nome": "Marquinho da Cooperativa",
+            "posicao": 7,
+            "valor": 42
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 8,
+            "valor": 41.9
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 9,
+            "valor": 39.6
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 10,
+            "valor": 38.4
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 11,
+            "valor": 38.1
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 12,
+            "valor": 38
+          },
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 13,
+            "valor": 23.3
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 14,
+            "valor": 19.1
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 15,
+            "valor": 18.9
+          },
+          {
+            "nome": "Dr. Guedes",
+            "posicao": 16,
+            "valor": 18.5
+          },
+          {
+            "nome": "Dr. Lucas",
+            "posicao": 17,
+            "valor": 9.2
+          }
+        ],
+        "legislador": [
+          {
+            "nome": "Alexandre Prado",
+            "posicao": 1,
+            "valor": 100
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 2,
+            "valor": 94.1
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 3,
+            "valor": 80.9
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 4,
+            "valor": 76.5
+          },
+          {
+            "nome": "Dandan",
+            "posicao": 5,
+            "valor": 69.1
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 6,
+            "valor": 69.1
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 7,
+            "valor": 66.2
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 8,
+            "valor": 64.7
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 9,
+            "valor": 60.3
+          },
+          {
+            "nome": "Marquinho da Cooperativa",
+            "posicao": 10,
+            "valor": 54.4
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 11,
+            "valor": 52.9
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 12,
+            "valor": 41.2
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 13,
+            "valor": 38.2
+          },
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 14,
+            "valor": 36.8
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 15,
+            "valor": 27.9
+          },
+          {
+            "nome": "Dr. Guedes",
+            "posicao": 16,
+            "valor": 20.6
+          },
+          {
+            "nome": "Dr. Lucas",
+            "posicao": 17,
+            "valor": 11.8
+          }
+        ],
+        "fiscalizador": [
+          {
+            "nome": "Dandan",
+            "posicao": 1,
+            "valor": 100
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 2,
+            "valor": 44.3
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 3,
+            "valor": 42.6
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 4,
+            "valor": 42.6
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 5,
+            "valor": 39.3
+          },
+          {
+            "nome": "Marquinho da Cooperativa",
+            "posicao": 6,
+            "valor": 29.5
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 7,
+            "valor": 26.2
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 8,
+            "valor": 19.7
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 9,
+            "valor": 16.4
+          },
+          {
+            "nome": "Dr. Guedes",
+            "posicao": 10,
+            "valor": 16.4
+          },
+          {
+            "nome": "Alexandre Prado",
+            "posicao": 11,
+            "valor": 14.8
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 12,
+            "valor": 11.5
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 13,
+            "valor": 9.8
+          },
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 14,
+            "valor": 9.8
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 15,
+            "valor": 9.8
+          },
+          {
+            "nome": "Dr. Lucas",
+            "posicao": 16,
+            "valor": 6.6
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 17,
+            "valor": 0
+          }
+        ],
+        "simbolico": [
+          {
+            "nome": "Dr. Guedes",
+            "posicao": 1,
+            "valor": 36.1
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 2,
+            "valor": 34.4
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 3,
+            "valor": 32.3
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 4,
+            "valor": 30.5
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 5,
+            "valor": 27
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 6,
+            "valor": 26.2
+          },
+          {
+            "nome": "Alexandre Prado",
+            "posicao": 7,
+            "valor": 25.4
+          },
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 8,
+            "valor": 22.4
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 9,
+            "valor": 20.8
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 10,
+            "valor": 19.1
+          },
+          {
+            "nome": "Dandan",
+            "posicao": 11,
+            "valor": 17.4
+          },
+          {
+            "nome": "Dr. Lucas",
+            "posicao": 12,
+            "valor": 14.8
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 13,
+            "valor": 14
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 14,
+            "valor": 12.6
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 15,
+            "valor": 11.6
+          },
+          {
+            "nome": "Marquinho da Cooperativa",
+            "posicao": 16,
+            "valor": 8.1
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 17,
+            "valor": 6.7
+          }
+        ],
+        "efetividade": []
+      },
+      "ranking": [
+        {
+          "nome": "Dandan",
+          "indice": 84.6,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 69.1,
+            "fiscalizar": 100,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 70.5,
+            "fiscalizar": 91.5,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 5,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 20,
+            "emenda_relevante": 37,
+            "relatoria_processante": 0,
+            "requerimento_info": 61,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 6,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 21
+          },
+          "perfil": {
+            "simbolico_pct": 17.4
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "puxou a nota por requerimentos de fiscalizacao acima da media da Casa",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 1
+        },
+        {
+          "nome": "Zilda Silva",
+          "indice": 68.4,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 94.1,
+            "fiscalizar": 42.6,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 96,
+            "fiscalizar": 39,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 14,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 34,
+            "emenda_relevante": 36,
+            "relatoria_processante": 0,
+            "requerimento_info": 26,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 42,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 43
+          },
+          "perfil": {
+            "simbolico_pct": 26.2
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "tambem aparece forte em producao legislativa de merito e emendas",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 2
+        },
+        {
+          "nome": "Joãozinho Enfermeiro",
+          "indice": 60.4,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 76.5,
+            "fiscalizar": 44.3,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 78,
+            "fiscalizar": 40.5,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 13,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 22,
+            "emenda_relevante": 26,
+            "relatoria_processante": 0,
+            "requerimento_info": 27,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 37,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 25
+          },
+          "perfil": {
+            "simbolico_pct": 20.8
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "tambem aparece forte em producao legislativa de merito e emendas",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 3
+        },
+        {
+          "nome": "Alexandre Prado",
+          "indice": 57.4,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 100,
+            "fiscalizar": 14.8,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 102,
+            "fiscalizar": 13.5,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 10,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 32,
+            "emenda_relevante": 48,
+            "relatoria_processante": 0,
+            "requerimento_info": 9,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 52,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 38
+          },
+          "perfil": {
+            "simbolico_pct": 25.4
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "tambem aparece forte em producao legislativa de merito e emendas",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 4
+        },
+        {
+          "nome": "Rogério Bueno",
+          "indice": 54.2,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 69.1,
+            "fiscalizar": 39.3,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 70.5,
+            "fiscalizar": 36,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 4,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 15,
+            "emenda_relevante": 39,
+            "relatoria_processante": 0,
+            "requerimento_info": 24,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 36,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 16
+          },
+          "perfil": {
+            "simbolico_pct": 14
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 5
+        },
+        {
+          "nome": "Ana Rios Fontoura",
+          "indice": 50.3,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 80.9,
+            "fiscalizar": 19.7,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 82.5,
+            "fiscalizar": 18,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 14,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 36,
+            "emenda_relevante": 27,
+            "relatoria_processante": 0,
+            "requerimento_info": 12,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 58,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 39
+          },
+          "perfil": {
+            "simbolico_pct": 30.5
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "tambem aparece forte em producao legislativa de merito e emendas",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 6
+        },
+        {
+          "nome": "Marquinho da Cooperativa",
+          "indice": 42,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 54.4,
+            "fiscalizar": 29.5,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 55.5,
+            "fiscalizar": 27,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 6,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 7,
+            "emenda_relevante": 25,
+            "relatoria_processante": 0,
+            "requerimento_info": 18,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 35,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 7
+          },
+          "perfil": {
+            "simbolico_pct": 8.1
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 7
+        },
+        {
+          "nome": "Bruno Leandro Coletor",
+          "indice": 41.9,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 41.2,
+            "fiscalizar": 42.6,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 42,
+            "fiscalizar": 39,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 2,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 12,
+            "emenda_relevante": 24,
+            "relatoria_processante": 0,
+            "requerimento_info": 26,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 41,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 14
+          },
+          "perfil": {
+            "simbolico_pct": 12.6
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 8
+        },
+        {
+          "nome": "Thulyo Paiva",
+          "indice": 39.6,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 52.9,
+            "fiscalizar": 26.2,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 54,
+            "fiscalizar": 24,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 12,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 17,
+            "emenda_relevante": 12,
+            "relatoria_processante": 0,
+            "requerimento_info": 16,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 45,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 18
+          },
+          "perfil": {
+            "simbolico_pct": 19.1
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 9
+        },
+        {
+          "nome": "Dudu Ottoni",
+          "indice": 38.4,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 60.3,
+            "fiscalizar": 16.4,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 61.5,
+            "fiscalizar": 15,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 8,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 31,
+            "emenda_relevante": 25,
+            "relatoria_processante": 0,
+            "requerimento_info": 10,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 49,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 33
+          },
+          "perfil": {
+            "simbolico_pct": 32.3
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 10
+        },
+        {
+          "nome": "Davi Martins",
+          "indice": 38.1,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 64.7,
+            "fiscalizar": 11.5,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 66,
+            "fiscalizar": 10.5,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 7,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 30,
+            "emenda_relevante": 30,
+            "relatoria_processante": 0,
+            "requerimento_info": 7,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 56,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 37
+          },
+          "perfil": {
+            "simbolico_pct": 27
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 11
+        },
+        {
+          "nome": "Zé Morais",
+          "indice": 38,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 66.2,
+            "fiscalizar": 9.8,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 67.5,
+            "fiscalizar": 9,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 2,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 7,
+            "emenda_relevante": 41,
+            "relatoria_processante": 0,
+            "requerimento_info": 6,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 56,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 7
+          },
+          "perfil": {
+            "simbolico_pct": 6.7
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 12
+        },
+        {
+          "nome": "Cássio Chiodi",
+          "indice": 23.3,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 36.8,
+            "fiscalizar": 9.8,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 37.5,
+            "fiscalizar": 9,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 4,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 11,
+            "emenda_relevante": 17,
+            "relatoria_processante": 0,
+            "requerimento_info": 6,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 16,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 17
+          },
+          "perfil": {
+            "simbolico_pct": 22.4
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 13
+        },
+        {
+          "nome": "Pastor Faustinho",
+          "indice": 19.1,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 38.2,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 39,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 1,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 32,
+            "emenda_relevante": 24,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 62,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 36
+          },
+          "perfil": {
+            "simbolico_pct": 34.4
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
+          ],
+          "posicao": 14
+        },
+        {
+          "nome": "Miguel da Saúde",
+          "indice": 18.9,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 27.9,
+            "fiscalizar": 9.8,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 28.5,
+            "fiscalizar": 9,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 1,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 5,
+            "emenda_relevante": 17,
+            "relatoria_processante": 0,
+            "requerimento_info": 6,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 17,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 6
+          },
+          "perfil": {
+            "simbolico_pct": 11.6
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 15
+        },
+        {
+          "nome": "Dr. Guedes",
+          "indice": 18.5,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 20.6,
+            "fiscalizar": 16.4,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 21,
+            "fiscalizar": 15,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 7,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 13,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 10,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 16,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 14
+          },
+          "perfil": {
+            "simbolico_pct": 36.1
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 16
+        },
+        {
+          "nome": "Dr. Lucas",
+          "indice": 9.2,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 11.8,
+            "fiscalizar": 6.6,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 12,
+            "fiscalizar": 6,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 4,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 4,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 4,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 16,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 4
+          },
+          "perfil": {
+            "simbolico_pct": 14.8
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 17
+        }
+      ]
+    },
+    "2026": {
+      "ano": 2026,
+      "status": "parcial_auditavel",
+      "cobertura_pct": 60,
+      "confianca_dados_pct": 60,
+      "vereadores_monitorados": 17,
+      "rankings_perfil": {
+        "geral": [
+          {
+            "nome": "Dandan",
+            "posicao": 1,
+            "valor": 83.4
+          },
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 2,
+            "valor": 81.8
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 3,
+            "valor": 63.7
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 4,
+            "valor": 47
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 5,
+            "valor": 43.9
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 6,
+            "valor": 39.4
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 7,
+            "valor": 39.4
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 8,
+            "valor": 37.1
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 9,
+            "valor": 36.4
+          },
+          {
+            "nome": "Alexandre Prado",
+            "posicao": 10,
+            "valor": 34.9
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 11,
+            "valor": 31.8
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 12,
+            "valor": 21.2
+          },
+          {
+            "nome": "Marquinho da Cooperativa",
+            "posicao": 13,
+            "valor": 4.6
+          },
+          {
+            "nome": "Dr. Guedes",
+            "posicao": 14,
+            "valor": 0
+          },
+          {
+            "nome": "Dr. Lucas",
+            "posicao": 15,
+            "valor": 0
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 16,
+            "valor": 0
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 17,
+            "valor": 0
+          }
+        ],
+        "legislador": [
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 1,
+            "valor": 100
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 2,
+            "valor": 100
+          },
+          {
+            "nome": "Dandan",
+            "posicao": 3,
+            "valor": 66.7
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 4,
+            "valor": 66.7
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 5,
+            "valor": 50
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 6,
+            "valor": 50
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 7,
+            "valor": 33.3
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 8,
+            "valor": 33.3
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 9,
+            "valor": 33.3
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 10,
+            "valor": 33.3
+          },
+          {
+            "nome": "Alexandre Prado",
+            "posicao": 11,
+            "valor": 33.3
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 12,
+            "valor": 33.3
+          },
+          {
+            "nome": "Marquinho da Cooperativa",
+            "posicao": 13,
+            "valor": 0
+          },
+          {
+            "nome": "Dr. Guedes",
+            "posicao": 14,
+            "valor": 0
+          },
+          {
+            "nome": "Dr. Lucas",
+            "posicao": 15,
+            "valor": 0
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 16,
+            "valor": 0
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 17,
+            "valor": 0
+          }
+        ],
+        "fiscalizador": [
+          {
+            "nome": "Dandan",
+            "posicao": 1,
+            "valor": 100
+          },
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 2,
+            "valor": 63.6
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 3,
+            "valor": 54.5
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 4,
+            "valor": 45.5
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 5,
+            "valor": 45.5
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 6,
+            "valor": 40.9
+          },
+          {
+            "nome": "Alexandre Prado",
+            "posicao": 7,
+            "valor": 36.4
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 8,
+            "valor": 27.3
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 9,
+            "valor": 27.3
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 10,
+            "valor": 22.7
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 11,
+            "valor": 13.6
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 12,
+            "valor": 9.1
+          },
+          {
+            "nome": "Marquinho da Cooperativa",
+            "posicao": 13,
+            "valor": 9.1
+          },
+          {
+            "nome": "Dr. Guedes",
+            "posicao": 14,
+            "valor": 0
+          },
+          {
+            "nome": "Dr. Lucas",
+            "posicao": 15,
+            "valor": 0
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 16,
+            "valor": 0
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 17,
+            "valor": 0
+          }
+        ],
+        "simbolico": [
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 1,
+            "valor": 52
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 2,
+            "valor": 45.5
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 3,
+            "valor": 42.9
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 4,
+            "valor": 33.3
+          },
+          {
+            "nome": "Dandan",
+            "posicao": 5,
+            "valor": 28.6
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 6,
+            "valor": 28
+          },
+          {
+            "nome": "Alexandre Prado",
+            "posicao": 7,
+            "valor": 26.9
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 8,
+            "valor": 25.9
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 9,
+            "valor": 24.1
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 10,
+            "valor": 22.2
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 11,
+            "valor": 19.4
+          },
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 12,
+            "valor": 15.6
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 13,
+            "valor": 15.4
+          },
+          {
+            "nome": "Marquinho da Cooperativa",
+            "posicao": 14,
+            "valor": 0
+          },
+          {
+            "nome": "Dr. Guedes",
+            "posicao": 15,
+            "valor": 0
+          },
+          {
+            "nome": "Dr. Lucas",
+            "posicao": 16,
+            "valor": 0
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 17,
+            "valor": 0
+          }
+        ],
+        "efetividade": []
+      },
+      "ranking": [
+        {
+          "nome": "Dandan",
+          "indice": 83.4,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 66.7,
+            "fiscalizar": 100,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 12,
+            "fiscalizar": 33,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 4,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 8,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 22,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 1,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 8
+          },
+          "perfil": {
+            "simbolico_pct": 28.6
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "puxou a nota por requerimentos de fiscalizacao acima da media da Casa",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 1
+        },
+        {
+          "nome": "Cássio Chiodi",
+          "indice": 81.8,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 100,
+            "fiscalizar": 63.6,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 18,
+            "fiscalizar": 21,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 6,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 5,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 14,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 6,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 10
+          },
+          "perfil": {
+            "simbolico_pct": 15.6
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "tambem aparece forte em producao legislativa de merito e emendas",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 2
+        },
+        {
+          "nome": "Zilda Silva",
+          "indice": 63.7,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 100,
+            "fiscalizar": 27.3,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 18,
+            "fiscalizar": 9,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 6,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 15,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 6,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 18,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 18
+          },
+          "perfil": {
+            "simbolico_pct": 45.5
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "tambem aparece forte em producao legislativa de merito e emendas",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 3
+        },
+        {
+          "nome": "Dudu Ottoni",
+          "indice": 47,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 66.7,
+            "fiscalizar": 27.3,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 12,
+            "fiscalizar": 9,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 4,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 7,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 6,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 12,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 10
+          },
+          "perfil": {
+            "simbolico_pct": 28
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 4
+        },
+        {
+          "nome": "Joãozinho Enfermeiro",
+          "indice": 43.9,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 33.3,
+            "fiscalizar": 54.5,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 6,
+            "fiscalizar": 18,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 2,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 12,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 12,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 11,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 15
+          },
+          "perfil": {
+            "simbolico_pct": 42.9
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 5
+        },
+        {
+          "nome": "Bruno Leandro Coletor",
+          "indice": 39.4,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 33.3,
+            "fiscalizar": 45.5,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 6,
+            "fiscalizar": 15,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 2,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 6,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 10,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 14,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 7
+          },
+          "perfil": {
+            "simbolico_pct": 19.4
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 6
+        },
+        {
+          "nome": "Miguel da Saúde",
+          "indice": 39.4,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 33.3,
+            "fiscalizar": 45.5,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 6,
+            "fiscalizar": 15,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 2,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 6,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 10,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 13,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 8
+          },
+          "perfil": {
+            "simbolico_pct": 22.2
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 7
+        },
+        {
+          "nome": "Thulyo Paiva",
+          "indice": 37.1,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 33.3,
+            "fiscalizar": 40.9,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 6,
+            "fiscalizar": 13.5,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 2,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 7,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 9,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 13,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 10
+          },
+          "perfil": {
+            "simbolico_pct": 25.9
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 8
+        },
+        {
+          "nome": "Davi Martins",
+          "indice": 36.4,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 50,
+            "fiscalizar": 22.7,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 9,
+            "fiscalizar": 7.5,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 3,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 9,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 5,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 17,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 10
+          },
+          "perfil": {
+            "simbolico_pct": 33.3
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 9
+        },
+        {
+          "nome": "Alexandre Prado",
+          "indice": 34.9,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 33.3,
+            "fiscalizar": 36.4,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 6,
+            "fiscalizar": 12,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 2,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 7,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 8,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 15,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 8
+          },
+          "perfil": {
+            "simbolico_pct": 26.9
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 10
+        },
+        {
+          "nome": "Ana Rios Fontoura",
+          "indice": 31.8,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 50,
+            "fiscalizar": 13.6,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 9,
+            "fiscalizar": 4.5,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 3,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 7,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 3,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 21,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 9
+          },
+          "perfil": {
+            "simbolico_pct": 24.1
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 11
+        },
+        {
+          "nome": "Zé Morais",
+          "indice": 21.2,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 33.3,
+            "fiscalizar": 9.1,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 6,
+            "fiscalizar": 3,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 2,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 4,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 2,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 22,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 4
+          },
+          "perfil": {
+            "simbolico_pct": 15.4
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 12
+        },
+        {
+          "nome": "Marquinho da Cooperativa",
+          "indice": 4.6,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 0,
+            "fiscalizar": 9.1,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 0,
+            "fiscalizar": 3,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 0,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 0,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 2,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 7,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 0
+          },
+          "perfil": {
+            "simbolico_pct": 0
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento"
+          ],
+          "posicao": 13
+        },
+        {
+          "nome": "Dr. Guedes",
+          "indice": 0,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 0,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 0,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 0,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 0,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 0,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 0
+          },
+          "perfil": {
+            "simbolico_pct": 0
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
+          ],
+          "posicao": 14
+        },
+        {
+          "nome": "Dr. Lucas",
+          "indice": 0,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 0,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 0,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 0,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 0,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 0,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 0
+          },
+          "perfil": {
+            "simbolico_pct": 0
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
+          ],
+          "posicao": 15
+        },
+        {
+          "nome": "Pastor Faustinho",
+          "indice": 0,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 0,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 0,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 0,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 13,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 23,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 15
+          },
+          "perfil": {
+            "simbolico_pct": 52
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
+          ],
+          "posicao": 16
+        },
+        {
+          "nome": "Rogério Bueno",
+          "indice": 0,
+          "cobertura_pct": 60,
+          "confianca_dados_pct": 60,
+          "dimensoes": {
+            "legislar": 0,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "dimensoes_brutas": {
+            "legislar": 0,
+            "fiscalizar": 0,
+            "representar": null,
+            "presenca": null
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 0,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 0,
+            "emenda_relevante": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 0,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 0
+          },
+          "perfil": {
+            "simbolico_pct": 0
+          },
+          "pendencias": [
+            "alteracao_relevante",
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "indicacao_atendida",
+            "audiencia_publica_diligencia",
+            "presenca_sessoes",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
+          ],
+          "posicao": 17
+        }
+      ]
+    }
+  }
+}

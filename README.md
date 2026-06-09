@@ -39,6 +39,9 @@ npm run data:update
 # instalar atualização automática diária (Windows Task Scheduler)
 npm run data:schedule:daily
 
+# instalar modo vigia: checa fontes a cada 180 minutos e coleta se mudou
+npm run data:schedule:watch
+
 # atualizar dados (precisa de Python + tokens Betha)
 cd painel-cidadao
 py coletor.py
@@ -67,6 +70,7 @@ py coletor.py
 | [docs/arquitetura.md](docs/arquitetura.md) | Como o código funciona por dentro |
 | [docs/fontes-de-dados.md](docs/fontes-de-dados.md) | De onde vem cada número |
 | [docs/como-atualizar.md](docs/como-atualizar.md) | Rodar o coletor e gerar novos dados |
+| [docs/automacao-de-dados.md](docs/automacao-de-dados.md) | Atualizacao automatica, vigia, logs e rollback |
 | [docs/como-publicar.md](docs/como-publicar.md) | Deploy em Hostinger/Netlify/GitHub Pages |
 | [docs/checklist-publicacao.md](docs/checklist-publicacao.md) | Conferir antes de cada deploy |
 

@@ -17,13 +17,17 @@ Cada arquivo em `painel-cidadao/data/chunks/*.json` vem de uma fonte específica
 | `emendas.json` | [SAPL Câmara](https://sapl.varginha.mg.leg.br/) | `coletor_emendas_2026.py` + manual | Mensal |
 | `diarias.json` | Betha (consulta 83059) | `coletor_betha.py` | Diário |
 | `pessoal.json` | Betha (folha de pagamento) | `coletor_pessoal.py` | Conforme disp. |
+| `remuneracao_vereadores.json` | [Lei Ordinaria 7.285/2024](https://www.varginha.mg.gov.br/portal/leis_decretos/39702/) + Betha Camara | manual auditado | Revisar quando houver lei/revisao |
 | `vereadores.json` | SAPL + manual | `coletor.py` | Anual |
 | `cnpjs.json` | [Casa dos Dados](https://casadosdados.com.br/) + Receita Federal | `coletor_cnpj.py` | Sob demanda |
 | `pncp.json` | [PNCP](https://pncp.gov.br/) | `coletor_pncp.py` | Mensal |
+| `sancoes_fornecedores.json` | [CEIS/CNEP](https://portaldatransparencia.gov.br/sancoes/consulta) + dados.gov.br | futuro coletor | Sob demanda |
 | `federal.json` | Portal da Transparência Federal | `coletor_federal.py` | Mensal |
 | `resumo.json` | Calculado a partir de outros chunks | `coletor.py` | A cada coleta |
+| `auditoria_dados.json` | Auditoria automatica dos chunks publicados | `scripts/audit-data-quality.mjs` | A cada validacao/release |
 | `atualizacoes.json` | Índice do feed de atualizações | `coletor.py` | A cada coleta |
 | `fontes_emendas_2026.json` | Múltiplas fontes (em construção) | `coletor.py` | Sob demanda |
+| `indice_relevancia.json` | Calculado a partir do SAPL em `camara_anos.json` | `scripts/generate-indice-relevancia.mjs` | A cada coleta/release |
 | `diario.json` | Diário Oficial do Município | manual (futuro) | Diário |
 | `atualizado_em.json` | Timestamp da última coleta | `coletor.py` | A cada coleta |
 
@@ -72,7 +76,20 @@ OAuth implícito — token JWT cacheado em `private/tokens/.betha-token.json` (v
 
 ## Validações que o painel faz
 
-### Critérios do "Auditômetro" (contratos)
+### Auditoria automatica da coleta
+
+O comando `npm run data:audit` gera `auditoria_dados.json` e atualiza o manifesto. Ele nao substitui a validacao estrutural; serve para expor qualidade e limites da coleta:
+- base principal defasada;
+- fontes com `status: erro`;
+- bases declaradamente parciais;
+- ranking parlamentar com cobertura menor que 100%;
+- diario oficial defasado;
+- fornecedores da Camara sem contrato vinculado automaticamente;
+- falhas auxiliares de CNPJ.
+
+O comando `npm run validate:data` roda essa auditoria antes da validacao estrutural. Avisos nao impedem a publicacao, mas devem aparecer na metodologia e orientar conferencia antes de divulgacao publica.
+
+### Criterios do "Auditometro" (contratos)
 
 Pontua de 0 a 100 baseado em:
 - ✓ Objeto com ≥25 caracteres
@@ -90,6 +107,23 @@ Para cada contrato da Prefeitura:
 3. Se sim, exibe banner amarelo no card
 
 Pré-requisito: o CNPJ não pode estar mascarado (`*` na string).
+
+### Índice de Relevância Parlamentar
+
+O chunk `indice_relevancia.json` é derivado de `camara_anos.json` e não substitui a conferência da fonte primária. A primeira versão usa dimensões com fonte automatizada no SAPL:
+- legislar: projetos de lei e emendas;
+- fiscalizar: requerimentos;
+- representar: só pontua quando houver indicação com atendimento/resposta comprovada;
+- simbólico: registrado para transparência, mas com peso zero.
+
+Indicações apenas protocoladas aparecem como evidência, mas não pontuam como resultado até haver confirmação. Presença em sessões, presença em comissões, relatorias, audiências de contas, ofícios de fiscalização, audiência pública/diligência e alterações legislativas relevantes ficam marcadas como pendências auditáveis até haver coleta confiável em atas ou fonte estruturada. Por isso, a nota publicada informa a cobertura automática da metodologia.
+
+O mesmo chunk também publica:
+- confiança/cobertura dos dados usados na nota;
+- explicação textual do que puxou cada nota para cima ou para baixo;
+- rankings por perfil: geral, legislador, fiscalizador, simbólico e efetividade.
+
+O perfil "efetividade" fica vazio até haver evidência oficial de resultado, como indicação atendida, emenda executada, resposta completa ou problema resolvido.
 
 ### Detector de fragmentação
 
