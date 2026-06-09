@@ -74,3 +74,51 @@ test.describe("Integridade dos cálculos (miolo)", () => {
     expect(Math.abs(calculado - perCapitaPublicado)).toBeLessThanOrEqual(1);
   });
 });
+
+test.describe("Integridade — Pessoal e Cargos", () => {
+  for (const org of ["camara", "prefeitura"]) {
+    test(`pessoal/${org}: resumo bate com a lista de servidores`, () => {
+      const ps = load("pessoal");
+      const o = ps[org];
+      const r = o.resumo;
+      const s = o.servidores;
+      const com = s.filter((x) => x.comissionado_ou_similar);
+      const somaTotal = s.reduce((a, x) => a + (Number(x.vencimentos) || 0), 0);
+      const somaCom = com.reduce((a, x) => a + (Number(x.vencimentos) || 0), 0);
+
+      expect(r.servidores_qtd).toBe(s.length);
+      expect(r.comissionados_qtd).toBe(com.length);
+      expect(com.length).toBeLessThanOrEqual(s.length);
+      expect(Math.abs(r.folha_bruta_total - somaTotal)).toBeLessThan(0.05);
+      expect(Math.abs(r.folha_bruta_comissionados - somaCom)).toBeLessThan(0.05);
+      expect(r.folha_bruta_comissionados).toBeLessThanOrEqual(r.folha_bruta_total);
+      if (com.length) {
+        const maxCom = Math.max(...com.map((x) => Number(x.vencimentos) || 0));
+        expect(r.maior_vencimento_comissionado).toBe(maxCom);
+      }
+    });
+  }
+});
+
+test.describe("Integridade — Diárias", () => {
+  for (const org of ["prefeitura", "camara"]) {
+    test(`diárias/${org}: resumo bate com os registros`, () => {
+      const d = load("diarias");
+      const arr = d[org];
+      const r = d.resumo[org];
+      const soma = arr.reduce((a, x) => a + (Number(x.valor_total) || 0), 0);
+      expect(r.registros).toBe(arr.length);
+      expect(Math.abs(r.valor_total - soma)).toBeLessThan(0.05);
+      arr.forEach((x) => expect(Number(x.valor_total) || 0).toBeGreaterThanOrEqual(0));
+    });
+  }
+
+  test("privacidade (LGPD): nenhum CPF completo exposto nas diárias", () => {
+    const d = load("diarias");
+    const todos = [...d.prefeitura, ...d.camara].filter((x) => x.cpf);
+    const expostos = todos.filter((x) =>
+      /^\d{3}\.\d{3}\.\d{3}-\d{2}$/.test(String(x.cpf).trim())
+    );
+    expect(expostos.length).toBe(0);
+  });
+});
