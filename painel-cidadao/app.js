@@ -5004,11 +5004,11 @@ ${url}
       const valor = Number(v.gastos_total || 0);
       const atipico = Number(v.gastos_atipicos_total || 0);
       const pend = [];
-      if (atipico > 0) pend.push("valor atipico separado para conferencia");
+      if (atipico > 0) pend.push("valor atípico separado para conferência");
       if (!v.centro_custo) pend.push("sem centro de custo claro");
-      if (norm(v.tipo_aquisicao).includes("locado") && valor >= 30000) pend.push("veiculo locado com gasto vinculado alto");
+      if (norm(v.tipo_aquisicao).includes("locado") && valor >= 30000) pend.push("veículo locado com gasto vinculado alto");
       if (valor >= 100000) pend.push("gasto acumulado alto");
-      if (valor > 0) pend.push("pedir odometro/diario de bordo");
+      if (valor > 0) pend.push("pedir odômetro/diário de bordo");
       if (atipico > 0 || valor >= 100000 || pend.length >= 3) {
         add({
           tipo: "frota",
@@ -5186,7 +5186,7 @@ ${url}
           ${item.resumo ? `<p>${esc(item.resumo)}</p>` : ""}
           <div class="official-pending">
             <div>
-              <strong>Pendencias oficiais</strong>
+              <strong>Pendências oficiais</strong>
               <p>${esc((item.pendencias || []).join("; ") || "Conferir documentos de origem.")}</p>
             </div>
             <div class="official-pending__chips">
@@ -5196,7 +5196,7 @@ ${url}
             </div>
           </div>
           <div class="followup-status">
-            <label>Status da cobranca
+            <label>Status da cobrança
               <select data-fila-status="${esc(item.id)}">
                 ${["novo", "aguardando", "respondido", "encerrado"].map((op) => `<option value="${op}" ${op === status ? "selected" : ""}>${esc(filaStatusLabel(op))}</option>`).join("")}
               </select>

@@ -179,7 +179,7 @@ test.describe("Como cobrar", () => {
     await page.waitForTimeout(3000);
     await expect(page.locator("#filaCobrancaLista .risk-queue-card").first()).toBeAttached();
     await expect(page.locator("#filaCobrancaStats")).toContainText(/vermelho|amarelo|fornecedores/i);
-    await expect(page.locator("#filaCobrancaLista")).toContainText("Pendencias oficiais");
+    await expect(page.locator("#filaCobrancaLista")).toContainText("Pendências oficiais");
     await expect(page.locator("#filaCobrancaLista")).toContainText("CEIS/CNEP");
     await expect(page.locator("#filaCobrancaLista")).toContainText("PNCP / origem");
     await page.locator("#filaCobrancaLista [data-fila-status]").first().selectOption("aguardando");
