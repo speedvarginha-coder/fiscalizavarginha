@@ -1272,7 +1272,7 @@
           </section>
           <section>
             <h5>Pergunta pronta para fiscalizar impacto real</h5>
-            <textarea readonly>${esc(pergunta)}</textarea>
+            <textarea readonly aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)">${esc(pergunta)}</textarea>
           </section>
           <section>
             <h5>Indice de resposta do Executivo</h5>
@@ -4051,11 +4051,11 @@ ${url}
             <div class="diario-whats-card__actions">
               <div class="diario-whats-card__buttons">
                 <button type="button" class="diario-whats-card__btn-zap" onclick="window.ZELA.${shareId}()" aria-label="Compartilhar resumo da edição nº ${d.edicao} no WhatsApp">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.27-4.103c1.623.963 3.238 1.468 4.873 1.469 5.585-.001 10.13-4.549 10.133-10.139.002-2.709-1.051-5.253-2.962-7.168C16.46 2.14 13.918.99 11.996.99c-5.59 0-10.136 4.547-10.14 10.138-.001 1.762.477 3.486 1.385 5.011l-.946 3.454 3.543-.929zm13.111-7.795c-.32-.16-1.89-.933-2.185-1.041-.295-.108-.51-.16-.723.16-.214.32-.828 1.042-1.015 1.258-.187.215-.374.242-.693.083-.32-.16-1.349-.497-2.57-1.587-.949-.846-1.59-1.892-1.777-2.213-.187-.32-.02-.493.14-.653.143-.144.32-.373.48-.56.16-.188.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.723-1.741-.99-2.382-.26-.628-.525-.544-.723-.554-.187-.01-.4-.012-.613-.012s-.56.08-.853.4c-.293.32-1.12 1.093-1.12 2.667 0 1.573 1.147 3.093 1.307 3.307.16.213 2.257 3.447 5.467 4.833.763.33 1.36.527 1.823.674.767.244 1.466.21 2.018.128.614-.092 1.89-.773 2.157-1.48.267-.707.267-1.314.187-1.44-.08-.127-.295-.213-.615-.373z"/></svg>
+                  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.27-4.103c1.623.963 3.238 1.468 4.873 1.469 5.585-.001 10.13-4.549 10.133-10.139.002-2.709-1.051-5.253-2.962-7.168C16.46 2.14 13.918.99 11.996.99c-5.59 0-10.136 4.547-10.14 10.138-.001 1.762.477 3.486 1.385 5.011l-.946 3.454 3.543-.929zm13.111-7.795c-.32-.16-1.89-.933-2.185-1.041-.295-.108-.51-.16-.723.16-.214.32-.828 1.042-1.015 1.258-.187.215-.374.242-.693.083-.32-.16-1.349-.497-2.57-1.587-.949-.846-1.59-1.892-1.777-2.213-.187-.32-.02-.493.14-.653.143-.144.32-.373.48-.56.16-.188.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.723-1.741-.99-2.382-.26-.628-.525-.544-.723-.554-.187-.01-.4-.012-.613-.012s-.56.08-.853.4c-.293.32-1.12 1.093-1.12 2.667 0 1.573 1.147 3.093 1.307 3.307.16.213 2.257 3.447 5.467 4.833.763.33 1.36.527 1.823.674.767.244 1.466.21 2.018.128.614-.092 1.89-.773 2.157-1.48.267-.707.267-1.314.187-1.44-.08-.127-.295-.213-.615-.373z"/></svg>
                   Copiar WhatsApp
                 </button>
                 <a class="diario-whats-card__btn-link" href="${url}" target="_blank" rel="noopener">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
                   Ver PDF
                 </a>
               </div>
@@ -5209,7 +5209,7 @@ ${url}
           </div>
           <details class="risk-lai">
             <summary>Ver pergunta pronta</summary>
-            <textarea readonly>${esc(pergunta)}</textarea>
+            <textarea readonly aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)">${esc(pergunta)}</textarea>
           </details>
         </div>
       </article>`;

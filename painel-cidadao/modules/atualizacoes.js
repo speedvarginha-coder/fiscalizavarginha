@@ -1284,7 +1284,7 @@
         <button type="button" class="btn-link" onclick="window.ZELA.atualizacoes.copiarLAI('${idAto.replace(/'/g, "\\'")}', this)" style="padding:6px 12px; background:#fff8e1; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; border:1px solid #ffd54f; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">${icon("copiar", { size: 14 })} Copiar pergunta LAI</button>
       </div>
 
-      <textarea class="dossier-lai-pergunta" data-id="${esc(idAto)}" readonly hidden>${esc(perguntaLAI(ato))}</textarea>
+      <textarea class="dossier-lai-pergunta" data-id="${esc(idAto)}" readonly hidden aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)">${esc(perguntaLAI(ato))}</textarea>
     </article>`;
   }
 
