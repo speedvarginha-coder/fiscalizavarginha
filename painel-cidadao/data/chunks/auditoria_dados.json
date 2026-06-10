@@ -1,16 +1,16 @@
 {
-  "gerado_em": "2026-06-09T19:19:50.567Z",
+  "gerado_em": "2026-06-10T07:18:54.510Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 6,
+    "warnings": 5,
     "info": 1,
     "ok": 1,
-    "total": 8
+    "total": 7
   },
   "atualizado_base": {
-    "iso": "2026-06-09T16:19:48",
-    "data_humana": "09/06/2026 - 16:19"
+    "iso": "2026-06-10T04:18:52",
+    "data_humana": "10/06/2026 - 04:18"
   },
   "items": [
     {
@@ -25,7 +25,7 @@
       "severity": "warning",
       "id": "chunk-camara_betha-defasado",
       "title": "Camara/Betha com coleta defasada",
-      "detail": "Arquivo camara_betha.json foi atualizado ha 18.8 dias.",
+      "detail": "Arquivo camara_betha.json foi atualizado ha 19.3 dias.",
       "action": "Rodar a coleta Betha da Camara ou conferir manualmente no portal antes de divulgar top fornecedores e contratos.",
       "source": "camara_betha.json"
     },
@@ -44,14 +44,6 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
-    },
-    {
-      "severity": "warning",
-      "id": "pessoal-prefeitura-parcial",
-      "title": "Pessoal da Prefeitura com escopo parcial",
-      "detail": "A base indica coleta parcial de Educacao/FUNDEB, nao folha completa da Prefeitura.",
-      "action": "Exibir essa limitacao junto dos numeros e buscar consulta completa por competencia.",
-      "source": "pessoal.json"
     },
     {
       "severity": "warning",

@@ -275,6 +275,54 @@ def totalizadores_credores(token: str) -> dict:
     )
 
 
+def filtro_max(token: str, consulta_id: int, campo: str,
+               portal_hash: str = PORTAL_HASH) -> Optional[str]:
+    """Maior valor disponível de um campo filtrável (ex.: competência mais
+    recente da folha). Endpoint: GET /busca-textual/{id}/filtro/{campo}/MAX."""
+    res = _api("GET", f"/busca-textual/{consulta_id}/filtro/{campo}/MAX",
+               token, portal_hash=portal_hash)
+    buckets = res.get("buckets") or []
+    return buckets[0].get("id") if buckets else None
+
+
+def baixar_busca_textual(token: str, consulta_id: int,
+                         body: Optional[dict] = None,
+                         sort_by: str = "id",
+                         portal_hash: str = PORTAL_HASH,
+                         batch: int = 200) -> list[dict]:
+    """Baixa todas as páginas de uma consulta via busca-textual, com filtro
+    opcional no body (formato Betha: {"campo": ["valor", ...]})."""
+    out: list[dict] = []
+    offset = 0
+    total: Optional[int] = None
+    while True:
+        res = _api(
+            "POST",
+            f"/busca-textual/{consulta_id}",
+            token,
+            body=body or {},
+            params={
+                "sortBy": sort_by,
+                "sortDirection": "ASC",
+                "offset": offset,
+                "limit": batch,
+                "hiperlink": "false",
+            },
+            portal_hash=portal_hash,
+        )
+        if total is None:
+            total = res.get("totalHits", 0)
+            print(f"  -> Total de registros: {total:,}")
+        hits = res.get("hits", [])
+        if not hits:
+            break
+        out.extend(h["sourceAsMap"] for h in hits)
+        offset += batch
+        if offset >= total:
+            break
+    return out
+
+
 def todos_credores_generico(token: str, consulta_id: int,
                              portal_hash: str = PORTAL_HASH,
                              batch: int = 200) -> list[dict]:
