@@ -257,8 +257,7 @@ test.describe("Filtros básicos", () => {
     await expect(modal.getByRole("link", { name: /Ver no SAPL/ }).first()).toBeVisible();
   });
 
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("Camara - busca por cafe nao relaciona emendas como despesa", async ({ page }) => {
+  test("Camara - busca por cafe nao relaciona emendas como despesa", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator("#categoriaCamaraSelect").selectOption("Cafe");
@@ -268,8 +267,7 @@ test.describe("Filtros básicos", () => {
     await expect(bloco.locator(".keyword-audit__grid")).not.toContainText("Emenda impositiva");
   });
 
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("Selo de confiança do dado aparece em blocos críticos", async ({ page }) => {
+  test("Selo de confiança do dado aparece em blocos críticos", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await expect(page.locator("#gastosPalavraChaveCamara")).toContainText("Selo de confiança do dado");
@@ -290,27 +288,25 @@ test.describe("Filtros básicos", () => {
     expect(achouTermoTecnico).toBeTruthy();
   });
 
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("Câmara — top fornecedor explica busca de contrato", async ({ page }) => {
+  test("Câmara — top fornecedor explica busca de contrato", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const btn = page.locator("#topFornecedoresCamara .forn-row__btn--filtro").first();
-    await expect(btn).toBeAttached();
+    await expect(btn).toBeAttached({ timeout: 15_000 });
     await btn.click();
     await expect(page.locator("#contratosCamaraAviso")).toBeVisible();
     await expect(page.locator("#contratosCamaraAviso")).toContainText(/contrato vigente|Nenhum contrato vigente/);
   });
 
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("Câmara — top fornecedor abre dossie consolidado", async ({ page }) => {
+  test("Câmara — top fornecedor abre dossie consolidado", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const btn = page.locator("#topFornecedoresCamara .forn-row__btn--dossie").first();
-    await expect(btn).toBeAttached();
+    await expect(btn).toBeAttached({ timeout: 15_000 });
     await btn.click();
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();
-    await expect(modal.locator("text=DOSSIE DO FORNECEDOR")).toBeVisible();
+    await expect(modal.locator("text=DOSSIÊ DO FORNECEDOR")).toBeVisible();
     await expect(modal.locator("text=Pergunta LAI pronta")).toBeVisible();
     await expect(modal.locator("text=Abrir contratos Betha")).toBeVisible();
   });
@@ -504,8 +500,7 @@ test.describe("Banner de boas-vindas (onboarding)", () => {
 });
 
 test.describe("Classificação cidadã de matérias", () => {
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("dados têm grau/tema e materiaCard rendeza selo + por que acompanhar", async ({ page }) => {
+  test("dados têm grau/tema e materiaCard rendeza selo + por que acompanhar", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => Boolean(window.ZELA && window.ZELA.materiaCard && window.ZELA_DATA?.camara_anos), null, { timeout: 15_000 });
     const r = await page.evaluate(() => {

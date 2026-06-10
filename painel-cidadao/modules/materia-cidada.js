@@ -128,6 +128,7 @@
               iconHelper("documentos", { size: 18 }) + ' CÂMARA DE VARGINHA · PROJETO EM ANÁLISE' +
             '</h4>' +
             '<div class="diario-whats-card__subtitle">' + esc(tituloTexto) + '</div>' +
+            selo(m, esc) +
           '</div>' +
           '<span class="diario-relevancia-badge diario-relevancia-badge--' + relevanciaClass + '">' +
             esc(relevanciaText.toLowerCase()) +

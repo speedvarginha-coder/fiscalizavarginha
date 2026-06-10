@@ -451,6 +451,18 @@
       { nome: "Emendas/ONGs", termos: ["emenda", "ong", "entidade", "associacao", "termo de fomento", "subvencao"] },
     ];
 
+    // Categorias que são GASTO DIRETO: nelas, matérias e emendas não entram na
+    // conta — emenda é ação parlamentar, não despesa da Câmara (evita falso positivo).
+    const CATEGORIAS_DESPESA = new Set([
+      "Cafe", "Alimentacao", "Lanche", "Combustivel", "Diárias",
+      "Cotas/verba indenizatória", "Passagens e hospedagem", "Aluguel de veiculos",
+      "Aluguel de imoveis", "Publicidade e comunicacao", "Material de escritorio",
+      "Informatica e software", "Telefonia e internet", "Terceirizados",
+      "Consultoria", "Manutenção predial", "Manutenção de veiculos", "Pneus",
+      "Moveis e equipamentos",
+    ]);
+    const ehGastoDireto = (item) => item.origem === "Diária" || item.origem === "Fonte oficial";
+
     const despesasLinks = (D.camara_transparencia.links || []).map(l => ({
       origem: "Fonte oficial",
       responsavel: l.categoria || "Transparência",
@@ -505,7 +517,11 @@
       const categoria = categoriasCamara.find(c => c.nome === (select?.value || "Diárias")) || categoriasCamara[0];
       const extra = (busca?.value || "").split(",").map(t => t.trim()).filter(Boolean);
       const termos = extra.length ? extra : categoria.termos;
-      const encontrados = baseCamara.filter(item => combina(item, termos)).sort((a, b) => (b.valor - a.valor));
+      const modoDespesa = !extra.length && CATEGORIAS_DESPESA.has(categoria.nome);
+      const candidatos = baseCamara.filter(item => combina(item, termos));
+      const encontrados = (modoDespesa ? candidatos.filter(ehGastoDireto) : candidatos)
+        .sort((a, b) => (b.valor - a.valor));
+      const foraDespesa = modoDespesa ? candidatos.length - encontrados.length : 0;
       const total = encontrados.reduce((s, item) => s + (item.valor || 0), 0);
       const responsaveis = agrupaResponsavel(encontrados).slice(0, 5);
       const categoriasComQtd = categoriasCamara.map(cat => ({
@@ -555,6 +571,8 @@
               </div>`).join("") || `<p class="muted">Nenhum registro encontrado.</p>`}
           </div>
         </div>
+        ${modoDespesa ? `<p class="keyword-audit__note"><strong>${fmtNum(foraDespesa)}</strong> menção(ões) em ações parlamentares (emendas e matérias) ficaram fora desta conta — separamos gasto direto de atuação legislativa para evitar falsos positivos.</p>` : ""}
+        ${dataTrustSeal("palavra")}
         <p class="keyword-audit__note">Observação: na Câmara, a busca mistura dois mundos: gasto direto, como diária, e produção legislativa, como requerimento, indicação, moção e projeto. A leitura correta é separar dinheiro público de ação parlamentar.</p>
       `;
 
@@ -2860,14 +2878,87 @@
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / maxCam) * 100}%"></span></div>
           <div class="forn-row__actions">
             <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767" target="_blank" rel="noopener" title="Despesas da Câmara no Portal Betha — onde estes pagamentos estão registrados">${window.ZELA.icon("lupa", { size: 14 })} Despesas Betha</a>
-            <a class="forn-row__btn forn-row__btn--filtro" href="camara.html?q=${nomeBusca}" title="Ver contratos vigentes desta empresa na Câmara (pode não existir se for pagamento sem contrato)">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
+            <button type="button" class="forn-row__btn forn-row__btn--filtro" data-forn-filtro="${i}" title="Ver contratos vigentes desta empresa na Câmara (pode não existir se for pagamento sem contrato)">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</button>
+            <button type="button" class="forn-row__btn forn-row__btn--dossie" data-forn-dossie="${i}" title="Dossiê consolidado: pagamentos, contratos e pergunta LAI pronta">${window.ZELA.icon("lupa", { size: 14 })} Dossiê</button>
             ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.ZELA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
         <div class="forn-row__cnpj">${esc(f.cnpj)}</div>
         <div class="forn-row__valor">${fmtBRL(f.valor_total)}</div>
       </div>`;
-    }).join("");
+    }).join("") + dataTrustSeal("palavra", {
+      fonte: "despesas por credor da Câmara (Betha)",
+      escopo: "maiores fornecedores por valor pago",
+      risco: "pagamento não detalha objeto nem contrato",
+      acao: "abrir o dossiê e conferir empenhos na fonte",
+      tone: "ok",
+    });
+
+    // Interações dos fornecedores: filtro de contratos + dossiê consolidado
+    const raizCnpj = (c) => String(c || "").replace(/[^\d]/g, "").slice(0, 8);
+    const contratosDoFornecedor = (f) => {
+      const r = raizCnpj(f.cnpj);
+      const nomeChave = norm(cleanText(f.nome || "")).split(" ").slice(0, 2).join(" ");
+      return (cb.contratos || []).filter((c) =>
+        (r.length === 8 && raizCnpj(c.cnpj) === r) ||
+        (nomeChave.length > 4 && norm(c.contratado || "").includes(nomeChave))
+      );
+    };
+    const BETHA_CONTRATOS_CAM = "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812";
+
+    $("topFornecedoresCamara").querySelectorAll("[data-forn-filtro]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = topCam[Number(btn.dataset.fornFiltro)];
+        if (!f) return;
+        const rel = contratosDoFornecedor(f);
+        const nome = cleanText(f.nome || "");
+        if ($("filtroContratoCamara")) {
+          $("filtroContratoCamara").value = rel.length ? nome.split(" ").slice(0, 2).join(" ") : "";
+        }
+        if (typeof renderContratosCamara === "function") renderContratosCamara(true);
+        const aviso = $("contratosCamaraAviso");
+        if (aviso) {
+          aviso.hidden = false;
+          aviso.innerHTML = rel.length
+            ? `<strong>Contrato vigente localizado</strong> (${fmtNum(rel.length)}) para ${esc(nome)} — a lista de contratos abaixo já está filtrada.`
+            : `<strong>Nenhum contrato vigente</strong> localizado para ${esc(nome)} — o pagamento pode ser por empenho direto, sem contrato formal. Vale pedir os empenhos pela LAI.`;
+          scrollToEl(aviso);
+        }
+      });
+    });
+
+    $("topFornecedoresCamara").querySelectorAll("[data-forn-dossie]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = topCam[Number(btn.dataset.fornDossie)];
+        if (!f || !window.ZELA.dossie || !window.ZELA.dossie.abrirComHtml) return;
+        const rel = contratosDoFornecedor(f);
+        const nome = cleanText(f.nome || "");
+        const pergunta = `Solicito, com fundamento na Lei de Acesso à Informação (Lei 12.527/2011), os empenhos, liquidações, notas fiscais e comprovantes de pagamento da Câmara Municipal de Varginha ao fornecedor ${nome}${f.cnpj ? ", CNPJ " + f.cnpj : ""}, no exercício ${cb.ano_atual || ""}, bem como os contratos correspondentes ou a justificativa de contratação sem contrato formal.`;
+        window.ZELA.dossie.abrirComHtml(
+          '<div class="cat-modal">' +
+            '<p style="margin:0;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--gold-dk);">DOSSIÊ DO FORNECEDOR</p>' +
+            '<h3 style="margin:4px 0 2px;">' + esc(nome) + '</h3>' +
+            (f.cnpj ? '<p class="muted small" style="margin:0 0 10px;">CNPJ ' + esc(f.cnpj) + '</p>' : '') +
+            '<p>Recebeu <strong>' + fmtBRL(f.valor_total) + '</strong> da Câmara em ' + esc(String(cb.ano_atual || "")) + ' (despesas por credor — fato oficial).</p>' +
+            '<h4 style="margin:14px 0 6px;">Contratos vigentes relacionados</h4>' +
+            (rel.length
+              ? '<ul style="list-style:none;padding:0;margin:0;">' + rel.slice(0, 5).map((c) =>
+                  '<li style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:6px;">' +
+                    '<strong>' + fmtBRL(Number(c.valor) || 0) + '</strong> · ' + esc(cleanText(String(c.objeto || "Objeto não informado")).slice(0, 140)) +
+                    '<span class="muted small"> · ' + esc(c.data_assinatura || "") + (c.data_fim ? " → " + esc(c.data_fim) : "") + '</span>' +
+                  '</li>').join("") + '</ul>'
+              : '<p class="muted">Nenhum contrato vigente localizado por CNPJ/nome — o pagamento pode ser por empenho direto. É exatamente o caso de pedir os documentos.</p>') +
+            '<h4 style="margin:14px 0 6px;">Pergunta LAI pronta</h4>' +
+            '<textarea readonly aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)" style="width:100%;min-height:110px;font-size:.85rem;padding:10px;border:1px solid var(--line);border-radius:8px;">' + esc(pergunta) + '</textarea>' +
+            '<p style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">' +
+              '<a class="btn-small" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767" target="_blank" rel="noopener">Abrir despesas Betha</a>' +
+              '<a class="btn-small" href="' + BETHA_CONTRATOS_CAM + '" target="_blank" rel="noopener">Abrir contratos Betha</a>' +
+              '<a class="btn-small" href="cobrar.html">Como cobrar</a>' +
+            '</p>' +
+          '</div>'
+        );
+      });
+    });
   }
 
   // ============= CONTRATOS CÂMARA (camara.html) =============
