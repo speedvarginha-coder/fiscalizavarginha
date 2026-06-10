@@ -35,6 +35,7 @@
     "modules/watchlist.js",
     "modules/dossie.js",
     "modules/dashboard.js",
+    "modules/home-cidadao.js",
     "modules/relatorios.js",
     "modules/diarias.js",
     "modules/atualizacoes.js",

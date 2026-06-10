@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v58 (frota municipal Betha) */
-const CACHE = "fiscaliza-v58";
+/* Fiscaliza Varginha — Service Worker v59 (blocos cidadaos da home) */
+const CACHE = "fiscaliza-v59";
 const STATIC = [
   "./",
   "./index.html",
@@ -22,6 +22,7 @@ const STATIC = [
   "./modules/watchlist.js",
   "./modules/dossie.js",
   "./modules/dashboard.js",
+  "./modules/home-cidadao.js",
   "./modules/relatorios.js",
   "./modules/diarias.js",
   "./modules/atualizacoes.js",

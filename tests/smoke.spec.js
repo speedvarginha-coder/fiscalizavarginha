@@ -99,8 +99,7 @@ test.describe("Navegação", () => {
 });
 
 test.describe("Legenda de leitura dos dados", () => {
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("legenda fixa explica fato, cruzamento, inferência e pendência", async ({ page }) => {
+  test("legenda fixa explica fato, cruzamento, inferência e pendência", async ({ page }) => {
     await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(1500);
     const legend = page.locator("#dataReadingLegend");
@@ -117,8 +116,7 @@ test.describe("Legenda de leitura dos dados", () => {
 });
 
 test.describe("Mapa cidadao do dinheiro", () => {
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("home mostra guia para quem não sabe por onde começar", async ({ page }) => {
+  test("home mostra guia para quem não sabe por onde começar", async ({ page }) => {
     await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const guia = page.locator("#homeStartGuide");
@@ -131,8 +129,7 @@ test.describe("Mapa cidadao do dinheiro", () => {
     await expect(link).toHaveAttribute("href", "atualizacoes.html?tab=diario");
   });
 
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("home mostra destinos do dinheiro e abre explicacao", async ({ page }) => {
+  test("home mostra destinos do dinheiro e abre explicacao", async ({ page }) => {
     await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await expect(page.locator("#homeMoneyMap .money-topic").first()).toBeAttached();
@@ -140,29 +137,27 @@ test.describe("Mapa cidadao do dinheiro", () => {
     await page.locator("#homeMoneyMap .money-topic__actions button").first().click();
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();
-    await expect(modal.locator("text=EXPLICACAO CIDADA")).toBeVisible();
+    await expect(modal.locator("text=EXPLICAÇÃO CIDADÃ")).toBeVisible();
     await expect(modal.locator("text=O que perguntar")).toBeVisible();
   });
 });
 
 test.describe("Tendencia cidada do dinheiro", () => {
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("home compara anos e abre explicacao", async ({ page }) => {
+  test("home compara anos e abre explicacao", async ({ page }) => {
     await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await expect(page.locator("#homeTrendWatch .trend-card").first()).toBeAttached();
-    await expect(page.locator("#homeTrendWatch")).toContainText("Esta melhorando ou piorando");
+    await expect(page.locator("#homeTrendWatch")).toContainText("Está melhorando ou piorando");
     await page.locator("#homeTrendWatch .money-topic__actions button").first().click();
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();
-    await expect(modal.locator("text=TENDENCIA CIDADA")).toBeVisible();
-    await expect(modal.locator("text=Confianca do dado")).toBeVisible();
+    await expect(modal.locator("text=TENDÊNCIA CIDADÃ")).toBeVisible();
+    await expect(modal.locator("text=Confiança do dado")).toBeVisible();
   });
 });
 
 test.describe("Auditor inteligente", () => {
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("home sugere caminhos de busca enquanto o cidadão digita", async ({ page }) => {
+  test("home sugere caminhos de busca enquanto o cidadão digita", async ({ page }) => {
     await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator("#buscaHome").fill("as");
