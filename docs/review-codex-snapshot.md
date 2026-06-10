@@ -71,9 +71,20 @@
 ## Fatia 10 — Docs
 - `README.md`, `docs/arquitetura.md`, `docs/automacao-de-dados.md`, `docs/fontes-de-dados.md`
 
-## Fatia 11 — Testes
+## Fatia 11 — Testes  ⚠️ 11 testes para features NÃO implementadas (marcados fixme)
 - `tests/smoke.spec.js` (+266; novos testes de selo de confiança, Diário Oficial, dossiê)
-- **Revisar:** asserts batem com a UI (1 ajuste de acento feito em `fa8eb55`).
+- **Achado (auditoria pós-snapshot):** 11 dos testes novos falhavam desde o snapshot —
+  testam features que nunca saíram do papel (containers vazios / seletores inexistentes).
+  As falhas ficaram mascaradas por `| tail` nos runs (exit code do pipe + linha "failed"
+  cortada). Marcados como `test.fixme` até decisão de implementar ou remover.
+- **Backlog de features-fantasma do Codex** (slot e/ou teste existem; renderer não):
+  1. Legenda de leitura dos dados (`#dataReadingLegend`) — fato/cruzamento/inferência/pendência
+  2. Mapa cidadão do dinheiro (`#homeMoneyMap`) — destinos + explicação cidadã (2 testes)
+  3. Tendência cidadã (`#homeTrendWatch`) — comparativo entre anos
+  4. Auditor inteligente (`#homeSmartSuggest`) — sugestões enquanto digita
+  5. Câmara: dossiê de fornecedor / aviso de busca / filtro café (3 testes)
+  6. Diário Oficial: cards resumidos (`.diario-oficial-card`) + selo em matérias (2 testes)
+- **Decisão pendente:** implementar as features ou remover containers + testes.
 
 ## Fatia 12 — Config pessoal / artefatos  ⚠️ considerar remover do versionamento
 - `.claude/launch.json`, `.claude/settings.local.json`, `_opensquad/_memory/company.md`,
