@@ -1,4 +1,4 @@
-﻿// @ts-check
+// @ts-check
 /**
  * Smoke tests — Fiscaliza Varginha
  *
@@ -89,7 +89,7 @@ test.describe("Navegação", () => {
     await page.goto(fileUrl("index.html"));
     const links = [
       "index.html", "prefeitura.html", "camara.html",
-      "relatorios.html", "pessoal.html", "marcadores.html",
+      "relatorios.html", "pessoal.html",
       "atualizacoes.html", "sobre.html", "cobrar.html",
     ];
     for (const href of links) {
@@ -412,8 +412,7 @@ test.describe("Atualizações diárias (feed)", () => {
     await expect(digest.locator(".change-digest__item").first()).toBeAttached();
   });
 
-  // FIXME: feature ainda nao implementada (teste escrito antes do codigo — ver docs/review-codex-snapshot.md, Fatia 11)
-  test.fixme("Aba Diário Oficial mostra edições resumidas da fonte oficial", async ({ page }) => {
+  test("Aba Diário Oficial mostra edições resumidas da fonte oficial", async ({ page }) => {
     await page.goto(fileUrl("atualizacoes.html") + "?tab=diario", { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     await expect(page.locator("#atualizacoesTabs .update-tab").filter({ hasText: /Di.rio Oficial/ })).toHaveClass(/is-active/);

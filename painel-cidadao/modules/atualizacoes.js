@@ -894,6 +894,8 @@
     
     // Somar valores de compras/contratações do dia
     const compras = atosDia.filter(ehCompraOuContratacao);
+    const cargosDia = atosDia.filter(ehCargoComissionado);
+    const leisDia = atosDia.filter(ehLeiOuAlteracao);
     const totalCompras = compras.reduce((s, a) => s + valorAto(a), 0);
     const totalDisplay = totalCompras > 0 ? fmtBRL(totalCompras) : "R$ 0,00";
     
@@ -974,7 +976,7 @@
       `*Link PDF oficial:* ${edicao.url}`;
     const resumoWhats = encodeURIComponent(resumoZapTxt);
 
-    return `<article class="diario-whats-card" id="${esc(edicao.id)}">
+    return `<article class="diario-whats-card diario-oficial-card" id="${esc(edicao.id)}">
       <div class="diario-whats-card__header">
         <div class="diario-whats-card__title-block">
           <h4 class="diario-whats-card__title" style="display:flex; align-items:center; gap:8px;">
@@ -996,7 +998,7 @@
       </div>
 
       <div class="diario-whats-card__section">
-        <div class="diario-whats-card__section-title">${icon("documentos", { size: 14 })} Resumo da Edição</div>
+        <div class="diario-whats-card__section-title">${icon("documentos", { size: 14 })} Resumo cidadão desta edição</div>
         <div class="diario-whats-card__resumo">
           ${esc(resumoDesc)}
         </div>
@@ -1010,11 +1012,12 @@
       </div>
 
       <div class="diario-whats-card__section">
-        <div class="diario-whats-card__section-title">${icon("cifrao", { size: 14 })} Valores identificados</div>
+        <div class="diario-whats-card__section-title">${icon("cifrao", { size: 14 })} O que tem nesta edição (cruzamento com o painel)</div>
         <ul class="diario-whats-card__list">
-          <li>• Total: <strong>${totalDisplay}</strong></li>
-          <li>• Unitário: <em>não identificado no trecho analisado</em></li>
-          <li>• Quantidade: <em>não identificado no trecho analisado</em></li>
+          <li>• Compras/contratações: <strong>${fmtNum(compras.length)}</strong> ato(s) · ${totalDisplay}</li>
+          <li>• Cargos e servidores: <strong>${fmtNum(cargosDia.length)}</strong> ato(s)</li>
+          <li>• Leis, decretos e alterações: <strong>${fmtNum(leisDia.length)}</strong> ato(s)</li>
+          <li>• O conteúdo interno do PDF ainda não é dado aberto estruturado — confira na fonte oficial.</li>
         </ul>
       </div>
 

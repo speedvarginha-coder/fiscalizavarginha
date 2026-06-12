@@ -71,20 +71,24 @@
 ## Fatia 10 — Docs
 - `README.md`, `docs/arquitetura.md`, `docs/automacao-de-dados.md`, `docs/fontes-de-dados.md`
 
-## Fatia 11 — Testes  ⚠️ 11 testes para features NÃO implementadas (marcados fixme)
+## Fatia 11 — Testes  ✅ RESOLVIDA: as 6 features foram implementadas e os 11 testes religados
 - `tests/smoke.spec.js` (+266; novos testes de selo de confiança, Diário Oficial, dossiê)
 - **Achado (auditoria pós-snapshot):** 11 dos testes novos falhavam desde o snapshot —
   testam features que nunca saíram do papel (containers vazios / seletores inexistentes).
   As falhas ficaram mascaradas por `| tail` nos runs (exit code do pipe + linha "failed"
   cortada). Marcados como `test.fixme` até decisão de implementar ou remover.
-- **Backlog de features-fantasma do Codex** (slot e/ou teste existem; renderer não):
-  1. Legenda de leitura dos dados (`#dataReadingLegend`) — fato/cruzamento/inferência/pendência
-  2. Mapa cidadão do dinheiro (`#homeMoneyMap`) — destinos + explicação cidadã (2 testes)
-  3. Tendência cidadã (`#homeTrendWatch`) — comparativo entre anos
-  4. Auditor inteligente (`#homeSmartSuggest`) — sugestões enquanto digita
-  5. Câmara: dossiê de fornecedor / aviso de busca / filtro café (3 testes)
-  6. Diário Oficial: cards resumidos (`.diario-oficial-card`) + selo em matérias (2 testes)
-- **Decisão pendente:** implementar as features ou remover containers + testes.
+- **Implementação concluída** (decisão do mantenedor: implementar):
+  1. Legenda de leitura dos dados — `modules/home-cidadao.js`
+  2. Mapa cidadão do dinheiro — `modules/home-cidadao.js`
+  3. Tendência cidadã — `modules/home-cidadao.js`
+  4. Auditor inteligente — `modules/home-cidadao.js`
+  5. Câmara: selo de confiança ×2, filtro café sem falso positivo, botão
+     Ver contratos + aviso, dossiê do fornecedor — `app.js` + `camara.html`;
+     `mat-selo` religado em `modules/materia-cidada.js`
+  6. Diário Oficial: cards `.diario-oficial-card` com resumo cidadão e
+     cruzamento de conteúdo — `modules/atualizacoes.js`
+- Os 11 testes voltaram de `fixme` para ativos (asserts acentuados junto
+  com a UI). Suite final: 77 passed, 0 skipped, exit 0 real.
 
 ## Fatia 12 — Config pessoal / artefatos  ⚠️ considerar remover do versionamento
 - `.claude/launch.json`, `.claude/settings.local.json`, `_opensquad/_memory/company.md`,
