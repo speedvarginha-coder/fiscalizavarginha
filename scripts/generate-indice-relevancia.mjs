@@ -82,8 +82,12 @@ function motivo(item) {
     partes.push("teve producao legislativa, mas com menor peso relativo no ano");
   }
 
+  if ((ev.leis_aprovadas || 0) > 0) {
+    partes.push(`teve ${ev.leis_aprovadas} materia(s) que viraram lei — efetividade comprovada na fonte oficial`);
+  }
+
   if (ev.indicacao_protocolada_sem_confirmacao > 0) {
-    partes.push("indicacoes protocoladas aparecem como evidencia, mas ainda nao pontuam sem comprovacao de atendimento");
+    partes.push("indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota");
   }
 
   if (ev.proposicao_simbolica > 0) {
@@ -110,15 +114,27 @@ function calcularAno(ano, bloco) {
     const nomeRua = num(v.nome_rua);
     const homenagens = num(v.homenagens_terceiros);
 
+    const leis = num(v.leis_aprovadas);
     const simbolicos = impactoZero;
     const total = num(v.total);
+    // Indicação com teto progressivo (evita "metralhadora de papel"):
+    // 1-10 = 1pt, 11-20 = 0,5pt, >20 = 0,25pt; teto 15 pontos.
+    const indicacaoPontos = Math.min(15,
+      Math.min(indicacoes, 10) * 1 +
+      Math.min(Math.max(indicacoes - 10, 0), 10) * 0.5 +
+      Math.max(indicacoes - 20, 0) * 0.25);
+    // Substantivo = trabalho que legisla/fiscaliza/destina; cerimonial = simbólico.
+    const substantivo = projetos + emendas + requerimentos + indicacoes;
+    const cerimonial = simbolicos;
     return {
       nome: String(v.nome || ""),
       total,
+      leis_aprovadas: leis,
       dimensoes_brutas: {
         legislar: projetos * SUBPESOS.projeto_autoria_propria + emendas * SUBPESOS.emenda_relevante,
         fiscalizar: requerimentos * SUBPESOS.requerimento_info,
-        representar: null,
+        representar: indicacaoPontos,
+        efetividade: leis,
         presenca: null,
       },
       evidencias: {
@@ -126,6 +142,7 @@ function calcularAno(ano, bloco) {
         alteracao_relevante: 0,
         proposicao_simbolica: impactoZero,
         emenda_relevante: emendas,
+        leis_aprovadas: leis,
         relatoria_processante: 0,
         requerimento_info: requerimentos,
         audiencia_contas: 0,
@@ -135,6 +152,12 @@ function calcularAno(ano, bloco) {
         audiencia_publica_diligencia: 0,
         comenda_titulo: mocoes + pdl + homenagens + nomeRua,
       },
+      composicao: {
+        substantivo: substantivo,
+        cerimonial: cerimonial,
+        cerimonial_pct: total > 0 ? pct((cerimonial / total) * 100) : 0,
+        substantivo_pct: total > 0 ? pct((substantivo / total) * 100) : 0,
+      },
       perfil: {
         simbolico_pct: total > 0 ? pct((simbolicos / total) * 100) : 0,
       },
@@ -143,30 +166,39 @@ function calcularAno(ano, bloco) {
 
   const maxLeg = Math.max(0, ...base.map((v) => v.dimensoes_brutas.legislar));
   const maxFisc = Math.max(0, ...base.map((v) => v.dimensoes_brutas.fiscalizar));
-  const pesoDisponivel = PESOS.legislar + PESOS.fiscalizar;
+  const maxRep = Math.max(0, ...base.map((v) => v.dimensoes_brutas.representar));
+  const maxEfet = Math.max(0, ...base.map((v) => v.dimensoes_brutas.efetividade));
+  // Representar (indicação) agora tem fonte; presença segue pendente.
+  const pesoDisponivel = PESOS.legislar + PESOS.fiscalizar + PESOS.representar;
 
   const ranking = base.map((v) => {
     const dimensoes = {
       legislar: pct(scoreRelativo(v.dimensoes_brutas.legislar, maxLeg)),
       fiscalizar: pct(scoreRelativo(v.dimensoes_brutas.fiscalizar, maxFisc)),
-      representar: null,
+      representar: pct(scoreRelativo(v.dimensoes_brutas.representar, maxRep)),
       presenca: null,
     };
+    // ATIVIDADE: o que produziu (legislar + fiscalizar + representar)
     const indice =
       (dimensoes.legislar * PESOS.legislar +
        dimensoes.fiscalizar * PESOS.fiscalizar +
        dimensoes.representar * PESOS.representar) / pesoDisponivel;
+    // EFETIVIDADE: o que virou resultado (matérias que viraram lei). Dado SAPL.
+    const efetividade = pct(scoreRelativo(v.dimensoes_brutas.efetividade, maxEfet));
 
     const item = {
       nome: v.nome,
       indice: pct(indice),
+      efetividade: efetividade,
+      leis_aprovadas: v.leis_aprovadas,
       cobertura_pct: pct(pesoDisponivel),
       confianca_dados_pct: pct(pesoDisponivel),
       dimensoes,
       dimensoes_brutas: v.dimensoes_brutas,
       evidencias: v.evidencias,
+      composicao: v.composicao,
       perfil: v.perfil,
-      pendencias: ["alteracao_relevante", "relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "indicacao_atendida", "audiencia_publica_diligencia", "presenca_sessoes", "presenca_comissoes"],
+      pendencias: ["relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "audiencia_publica_diligencia", "presenca_sessoes", "presenca_comissoes"],
     };
     item.explicacao = motivo(item);
     return item;
@@ -187,7 +219,8 @@ function calcularAno(ano, bloco) {
       legislador: posicoes(ranking, (v) => v.dimensoes.legislar),
       fiscalizador: posicoes(ranking, (v) => v.dimensoes.fiscalizar),
       simbolico: posicoes(ranking, (v) => (v.perfil || {}).simbolico_pct),
-      efetividade: [],
+      representar: posicoes(ranking, (v) => v.dimensoes.representar),
+      efetividade: posicoes(ranking, (v) => v.leis_aprovadas || 0),
     },
     ranking,
   };
@@ -229,11 +262,18 @@ const indice = {
     observacao: "O indice e recalculado a partir das materias legislativas ja coletadas. Campos sem fonte automatica permanecem como pendencia auditavel.",
   },
   metodologia: {
+    versao: "Experimental v2",
+    revisao: "anual",
+    transparencia: "O Score Legislativo nao mede popularidade, ideologia ou amizade politica. Mede atividade parlamentar documentada, priorizando leis estruturais, fiscalizacao formal, emendas efetivamente pagas e acoes com resultado comprovado. Atos simbolicos sao exibidos por transparencia, mas nao pontuam.",
+    duas_notas: {
+      atividade: "O que o vereador produziu: legislar (projetos/emendas), fiscalizar (requerimentos) e representar (indicacoes, com teto progressivo).",
+      efetividade: "O que virou resultado: materias que viraram lei (desfecho oficial do SAPL). Volume nao e merito.",
+    },
     pesos: PESOS,
     subpesos: SUBPESOS,
-    regra: "Atividades simbolicas ficam registradas para transparencia, mas nao pontuam. Indicacoes so pontuam quando houver atendimento ou resposta efetiva comprovada; enquanto isso, aparecem apenas como evidencia. Como parte dos campos depende de atas ou fonte estruturada ainda nao automatizada, a nota informa a cobertura automatica disponivel.",
-    campos_automaticos: ["projeto_autoria_propria", "emenda_relevante", "requerimento_info", "proposicao_simbolica"],
-    campos_pendentes: ["alteracao_relevante", "relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "indicacao_atendida", "audiencia_publica_diligencia", "presenca_sessoes", "presenca_comissoes"],
+    regra: "Atividades simbolicas (mocao, homenagem, nome de rua) ficam registradas para transparencia, mas pesam zero. Indicacoes entram com teto progressivo para nao inflar a nota por volume. A Efetividade usa o desfecho real das materias (virou lei). Campos sem fonte automatica permanecem como pendencia auditavel.",
+    campos_automaticos: ["projeto_autoria_propria", "emenda_relevante", "requerimento_info", "indicacao_com_teto", "leis_aprovadas", "proposicao_simbolica"],
+    campos_pendentes: ["relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "audiencia_publica_diligencia", "presenca_sessoes", "presenca_comissoes"],
   },
   anos,
 };

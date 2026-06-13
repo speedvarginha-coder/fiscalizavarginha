@@ -16,11 +16,12 @@
 
   let perfilAtual = "geral";
   const PERFIS = {
-    geral: { label: "Geral", desc: "nota parcial auditavel" },
+    geral: { label: "Atividade", desc: "o que produziu (volume)" },
+    efetividade: { label: "Efetividade", desc: "o que virou lei" },
     legislador: { label: "Legislador", desc: "projetos e emendas" },
     fiscalizador: { label: "Fiscalizador", desc: "requerimentos" },
-    simbolico: { label: "Mais simbolico", desc: "perfil sem pontuar" },
-    efetividade: { label: "Efetividade", desc: "pendente de comprovacao" },
+    representar: { label: "Representar", desc: "indicacoes (com teto)" },
+    simbolico: { label: "Cerimonial", desc: "moção/homenagem (peso 0)" },
   };
 
   function $(id) {
@@ -203,13 +204,13 @@
   function valorPerfil(item, perfil) {
     if (perfil === "legislador") return (item.dimensoes || {}).legislar;
     if (perfil === "fiscalizador") return (item.dimensoes || {}).fiscalizar;
+    if (perfil === "representar") return (item.dimensoes || {}).representar;
     if (perfil === "simbolico") return (item.perfil || {}).simbolico_pct;
-    if (perfil === "efetividade") return null;
+    if (perfil === "efetividade") return num(item.leis_aprovadas);
     return item.indice;
   }
 
   function ordenarRanking(ranking, perfil) {
-    if (perfil === "efetividade") return ranking.slice();
     return ordenarPorValor(ranking, function (item) { return valorPerfil(item, perfil); });
   }
 
@@ -219,15 +220,16 @@
     const dim = item.dimensoes || {};
     const perfil = item.perfil || {};
     const exp = Array.isArray(item.explicacao) ? item.explicacao : [];
-    const scoreLabel = perfilAtual === "simbolico" ? "simbolico" : "indice";
-    const scoreValue = perfilAtual === "simbolico"
-      ? Number(perfil.simbolico_pct || 0).toFixed(1) + "%"
-      : Number(item.indice || 0).toFixed(1);
+    const comp = item.composicao || {};
+    let scoreLabel = "atividade", scoreValue = Number(item.indice || 0).toFixed(1);
+    if (perfilAtual === "efetividade") { scoreLabel = "viraram lei"; scoreValue = fmtNum(item.leis_aprovadas || 0); }
+    else if (perfilAtual === "simbolico") { scoreLabel = "cerimonial"; scoreValue = Number(perfil.simbolico_pct || 0).toFixed(0) + "%"; }
     return `<article class="indice-card">
       <div class="indice-card__rank">#${fmtNum(item.posicao)}</div>
       <div class="indice-card__main">
         <h4>${esc(nome)}</h4>
-        <p>${fmtNum(ev.projeto_autoria_propria || 0)} projetos de lei - ${fmtNum(ev.requerimento_info || 0)} requerimentos - ${fmtNum(ev.indicacao_protocolada_sem_confirmacao || 0)} indicacoes aguardando resposta - ${fmtNum(ev.proposicao_simbolica || 0)} simbolicos sem peso</p>
+        <p class="indice-card__compo"><strong>${fmtNum(comp.substantivo || 0)}</strong> atos substantivos · <strong>${fmtNum(comp.cerimonial || 0)}</strong> cerimoniais (${Number(comp.cerimonial_pct || 0).toFixed(0)}% moção/homenagem, peso 0) · <strong>${fmtNum(item.leis_aprovadas || 0)}</strong> viraram lei</p>
+        <p>${fmtNum(ev.projeto_autoria_propria || 0)} projetos de lei - ${fmtNum(ev.requerimento_info || 0)} requerimentos - ${fmtNum(ev.indicacao_protocolada_sem_confirmacao || 0)} indicações (teto progressivo) - ${fmtNum(ev.proposicao_simbolica || 0)} simbólicos sem peso</p>
         <div class="indice-card__dims">
           ${barra("Legislar", dim.legislar, "indice-dim--leg")}
           ${barra("Fiscalizar", dim.fiscalizar, "indice-dim--fisc")}
@@ -251,7 +253,7 @@
       return Object.assign({}, item, { posicao: index + 1 });
     });
     const top = rankingPerfil[0];
-    const topList = perfilAtual === "efetividade" ? [] : rankingPerfil.slice(0, 5);
+    const topList = rankingPerfil.slice(0, 5);
     const restante = Math.max(0, rankingPerfil.length - topList.length);
     const simbolicos = ranking.reduce(function (sum, item) {
       return sum + Number((item.evidencias || {}).proposicao_simbolica || 0);
@@ -262,11 +264,13 @@
     el.innerHTML = `
       <div class="indice-head">
         <div>
-          <span class="method-card__tag">NOVO NO FISCALIZA - INDICE AUDITAVEL</span>
-          <h3 class="block__title">Indice de Relevancia Parlamentar</h3>
+          <span class="method-card__tag">SCORE LEGISLATIVO · EXPERIMENTAL v2 · METODOLOGIA PÚBLICA</span>
+          <h3 class="block__title">Produção &amp; Efetividade Legislativa</h3>
           <p class="block__lead">
-            Mede o mandato por funcao publica: legislar, fiscalizar, gerar resultado, participar
-            de comissoes e prestar contas. O ranking atual e parcial porque so pontua o que ja tem fonte automatica confiavel.
+            Duas notas, não uma: <strong>Atividade</strong> (o que o vereador produziu) e
+            <strong>Efetividade</strong> (o que virou lei). Não mede popularidade, ideologia ou
+            amizade política — só atividade documentada na fonte oficial. Atos simbólicos
+            (moção, homenagem, nome de rua) aparecem por transparência, mas <strong>pesam zero</strong>.
           </p>
         </div>
         <div class="indice-head__seal">
@@ -298,13 +302,11 @@
       <div class="indice-profile-note">
         <strong>${esc(perfilInfo.label)}:</strong>
         ${perfilAtual === "efetividade"
-          ? "resultado/efetividade ainda depende de comprovacao externa: indicacao atendida, emenda executada, resposta completa ou problema resolvido."
-          : esc(perfilInfo.desc) + ". Use este recorte para entender o perfil do mandato, sem substituir o ranking geral."}
+          ? "ordena por matérias que viraram lei (desfecho oficial do SAPL). Produzir muito não é o mesmo que aprovar — aqui só conta o que virou resultado."
+          : esc(perfilInfo.desc) + ". Escolha uma lente para ver o perfil do mandato; o painel mostra a composição, você tira a conclusão."}
       </div>
 
-      ${topList.length
-        ? `<div class="indice-list">${topList.map(renderCard).join("")}</div>`
-        : `<div class="empty">Ranking de efetividade ainda nao publicado: faltam evidencias oficiais de atendimento, execucao ou resultado.</div>`}
+      <div class="indice-list">${topList.map(renderCard).join("")}</div>
 
       ${restante && topList.length ? `<details class="indice-full">
         <summary>Ver ranking completo (${fmtNum(rankingPerfil.length)} vereadores)</summary>
