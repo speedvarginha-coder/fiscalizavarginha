@@ -218,13 +218,13 @@
     {
       "cnpj": "08035444000174",
       "razao_social": "ASSOCIACAO DE PROMOCAO E ASSISTENCIA NOSSA SENHORA DE GUADALUPE - ASPAS",
-      "nome_fantasia": "",
-      "situacao": "",
-      "abertura": "",
-      "cnae": "",
-      "municipio": "",
-      "uf": "",
-      "fonte": "CNPJ.ws / base pública da Receita Federal",
+      "nome_fantasia": "ASPAS",
+      "situacao": "ATIVA",
+      "abertura": "2006-05-18",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 284000.0,
       "nomes_no_sapl": [
         "Associação de Promoção e Assistência Nossa Senhora de Guadalupe"
@@ -400,13 +400,13 @@
     {
       "cnpj": "41513999000150",
       "razao_social": "ASSOCIACAO AFETO DE AMPARO A GESTANTE - RAEL E OS PEQUENOS GUERREIROS - A G E V A",
-      "nome_fantasia": "",
-      "situacao": "",
-      "abertura": "",
-      "cnae": "",
-      "municipio": "",
-      "uf": "",
-      "fonte": "CNPJ.ws / base pública da Receita Federal",
+      "nome_fantasia": "AGEVA",
+      "situacao": "ATIVA",
+      "abertura": "2021-04-08",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 145000.0,
       "nomes_no_sapl": [
         "Associação AFETO de Amparo a Gestante - Rael e os pequenos Guerreiros"

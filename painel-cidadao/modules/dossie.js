@@ -360,6 +360,9 @@
       <section class="dossier-lai">
         <h4>5. Pergunta pronta para LAI/e-SIC</h4>
         <textarea readonly>${esc(pergunta)}</textarea>
+        <div class="diaria-actions">
+          <button type="button" class="btn-dossie" onclick="navigator.clipboard && navigator.clipboard.writeText(this.closest('.dossier-lai').querySelector('textarea').value)">Copiar pergunta</button>
+        </div>
       </section>
       <p class="muted">Este dossiê é uma triagem. Não é acusação: confira as fontes oficiais antes de qualquer denúncia.</p>`;
   }

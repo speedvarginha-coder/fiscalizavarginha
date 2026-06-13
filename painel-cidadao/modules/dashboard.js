@@ -29,11 +29,13 @@
   // População de Varginha-MG (Censo IBGE 2022). Usada para traduzir
   // totais em "quanto representa por morador" — número que o cidadão sente.
   const POP_VARGINHA = 135159;
+  window.ZELA.POP_VARGINHA = POP_VARGINHA;
   function perCapita(total) {
     const v = Number(total) || 0;
     if (v <= 0) return "";
     return `≈ ${fmtBRL(v / POP_VARGINHA)} por morador de Varginha`;
   }
+  window.ZELA.perCapita = perCapita;
 
   function $(id) { return document.getElementById(id); }
   function icon(nome, opts) {

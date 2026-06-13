@@ -221,6 +221,7 @@
         <article class="diaria-card">
           <div class="diaria-card__value">
             <strong>${fmtBRL(d.valor_total || 0)}</strong>
+            ${Number(d.valor_total) >= 1000 ? `<div class="percapita-mini" style="font-size: 0.72em; color: var(--muted); margin-top: 4px;" title="Este valor de diárias dividido por cada morador de Varginha">≈ ${fmtBRL(Number(d.valor_total) / 135159)} por morador</div>` : ''}
             <span>${isPrefeituraCard ? "1 registro/empenho" : `${fmtNum(d.quantidade || 0)} diária(s)`} · ${fmtBRL(d.valor_unitario || 0)} ${isPrefeituraCard ? "no registro" : "cada"}</span>
           </div>
           <div class="diaria-card__body">

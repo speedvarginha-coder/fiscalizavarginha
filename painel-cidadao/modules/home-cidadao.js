@@ -113,8 +113,10 @@
         b.classList.toggle("is-active", b.dataset.startKey === key);
       });
       detail.innerHTML =
-        '<strong>' + esc(g.titulo) + '</strong>' +
-        '<p><b>Você vai ver:</b> ' + esc(g.voce) + '</p>' +
+        '<div>' +
+          '<strong>' + esc(g.titulo) + '</strong>' +
+          '<p><b>Você vai ver:</b> ' + esc(g.voce) + '</p>' +
+        '</div>' +
         '<a href="' + esc(g.href) + '">' + esc(g.rotulo) + ' →</a>';
     }
     guia.querySelectorAll("[data-start-key]").forEach((b) => {
@@ -155,6 +157,14 @@
       termos: ["merenda", "alimentacao", "escola", "creche"],
       href: "prefeitura.html?q=merenda", abre: "a busca da Prefeitura filtrada em merenda e alimentação escolar",
       pergunta: "Solicito os contratos de fornecimento de alimentação escolar, com fornecedor, itens, quantidades, preços unitários e cronograma de entrega." },
+    { id: "combustivel", rotulo: "Combustíveis", dica: "Ver gastos com gasolina e diesel",
+      termos: ["combustivel", "gasolina", "diesel", "abastecimento", "posto", "frota"],
+      href: "prefeitura.html?q=combustivel", abre: "a busca de contratos da Prefeitura filtrada em combustíveis e abastecimento",
+      pergunta: "Solicito a relação detalhada de despesas com combustíveis da frota municipal, informando o posto contratado, valores faturados, volume em litros e controle de quilometragem por veículo." },
+    { id: "obras", rotulo: "Obras públicas", dica: "Construções, reformas e asfalto",
+      termos: ["obra", "reforma", "construcao", "calcamento", "drenagem", "ponte"],
+      href: "prefeitura.html?tab=asfalto", abre: "a aba de Obras/Asfalto da Prefeitura, com as obras municipais e medições oficiais",
+      pergunta: "Solicito a relação de todas as obras de engenharia civil, reformas e edificações contratadas em andamento, detalhando o valor total, empresa contratada, cronograma físico-financeiro e medição acumulada." },
   ];
 
   function renderSmartSuggest() {

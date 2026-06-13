@@ -1,43 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-06-09T19:19:51.230Z",
+  "gerado_em": "2026-06-13T10:19:21.747Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-06-09T16-19-48-b627dad5",
-    "coleta_iso": "2026-06-09T16:19:48",
-    "data_humana": "09/06/2026 - 16:19",
-    "arquivo": "data/snapshots/2026-06-09T16-19-48-b627dad5.json"
+    "snapshot_id": "2026-06-13T07-19-19-645d12bb",
+    "coleta_iso": "2026-06-13T07:19:19",
+    "data_humana": "13/06/2026 - 07:19",
+    "arquivo": "data/snapshots/2026-06-13T07-19-19-645d12bb.json"
   },
   "anterior": {
-    "snapshot_id": "2026-06-09T15-18-34-d32e93b9",
-    "coleta_iso": "2026-06-09T15:18:34",
-    "data_humana": "09/06/2026 - 15:18",
+    "snapshot_id": "2026-06-13T06-37-19-581fbb5b",
+    "coleta_iso": "2026-06-13T06:37:19",
+    "data_humana": "13/06/2026 - 06:37",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 1,
+    "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 472500,
+    "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 1
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 54/2026 - DEVA VEICULOS LTDA",
-      "detalhe": "CAMINHÃO COM CABINE SUPLEMENTAR PARA O SETOR DE PODA",
-      "orgao": "Prefeitura",
-      "data": "2026-06-03",
-      "valor_brl": 472500,
-      "alvo_id": "PREFEITURA-2026-54"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }

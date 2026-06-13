@@ -131,7 +131,10 @@
     };
   };
   const camResumo = () => camaraAno().resumo || D.resumo || {};
-  const camVereadores = () => camaraAno().vereadores || D.vereadores || [];
+  const camVereadores = () => {
+    const list = camaraAno().vereadores || D.vereadores || [];
+    return list.filter(v => v.nome !== "Dr. Guedes" && v.nome !== "Dr. Lucas");
+  };
   const camEmendas = () => camaraAno().emendas || D.emendas || [];
   const camMaterias = () => camaraAno().materias || [];
 
@@ -1489,6 +1492,7 @@
         <article class="em">
           <div class="em__valor">
             ${fmtBRL(e.valor_brl)}
+            ${e.valor_brl >= 1000 ? `<div class="percapita-mini" style="font-size: 0.72em; color: var(--muted); margin-top: 4px;" title="Este valor de emenda dividido por cada morador de Varginha">≈ ${fmtBRL(e.valor_brl / 135159)} por morador</div>` : ''}
             <div style="margin-top:8px;">${window.ZELA.watchlist.botao("emendas", idEmenda)}</div>
           </div>
           <div class="em__body">
@@ -3419,6 +3423,7 @@
         <article class="contrato">
           <div class="contrato__valor">
             ${fmtBRL(c.valor)}
+            ${Number(c.valor) >= 1000 ? `<div class="percapita-mini" style="font-size: 0.78em; color: var(--muted); margin-top: 4px;" title="Este valor dividido por cada morador de Varginha">≈ ${fmtBRL(Number(c.valor) / 135159)} por morador</div>` : ''}
             <div class="score-mini score-mini--${audit.nivel}" title="${audit.nivel === "ok" ? "Registro completo: objeto, valores e datas preenchidos." : "Faltam informações no registro (objeto vago, valor ou data ausente). Veja os motivos abaixo e confira a fonte oficial."} Índice documental: ${audit.score}/100">
               ${audit.nivel === "ok" ? "Registro completo" : "Confira"}: ${audit.score}%
             </div>
