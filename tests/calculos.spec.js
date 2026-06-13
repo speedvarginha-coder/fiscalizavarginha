@@ -73,6 +73,28 @@ test.describe("Integridade dos cálculos (miolo)", () => {
     const calculado = Math.round(orcamento / populacao);
     expect(Math.abs(calculado - perCapitaPublicado)).toBeLessThanOrEqual(1);
   });
+
+  test("desfecho legislativo: tally do resumo reconcilia com as matérias", () => {
+    const fs = require("fs");
+    const path = require("path");
+    const camara = JSON.parse(
+      fs.readFileSync(path.join(__dirname, "..", "painel-cidadao", "data", "chunks", "camara_anos.json"), "utf8")
+    );
+    const VALIDOS = new Set(["lei", "arquivado", "tramitando", "encerrado", ""]);
+    for (const ano of Object.keys(camara)) {
+      const bloco = camara[ano];
+      const mats = bloco.materias || [];
+      if (!mats.length || !bloco.resumo || !bloco.resumo.desfechos) continue; // só anos já enriquecidos
+      // todo desfecho é de um vocabulário fechado (nada inventado)
+      mats.forEach((m) => expect(VALIDOS.has(m.desfecho || "")).toBe(true));
+      const d = bloco.resumo.desfechos;
+      const soma = (d.lei || 0) + (d.arquivado || 0) + (d.tramitando || 0) + (d.encerrado || 0) + (d.sem_dado || 0);
+      // o placar de desfechos cobre todas as matérias — nenhuma some
+      expect(soma).toBe(mats.length);
+      // contagem de "lei" no resumo == matérias marcadas como lei
+      expect(d.lei).toBe(mats.filter((m) => m.desfecho === "lei").length);
+    }
+  });
 });
 
 test.describe("Integridade — Pessoal e Cargos", () => {

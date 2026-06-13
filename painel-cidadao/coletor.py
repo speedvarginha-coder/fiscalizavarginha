@@ -171,6 +171,88 @@ def _fetch_datas_sapl(anos: list[int]) -> dict[str, str]:
     return datas
 
 
+# Desfecho legislativo a partir da sigla do status de tramitação do SAPL.
+# Mecânico, da fonte oficial — sem atribuição subjetiva.
+SAPL_STATUS_APROVADO = {
+    "TRANSFLEI", "LEIPROMUL", "NORMPROMUL", "NORPU", "APROVAD2", "APROVADU",
+    "AGPROMLEI", "AGPROMNOR", "AGSANCAO", "AGPN", "REDFIN", "AGPROMVET", "PROMULVETO",
+}
+SAPL_STATUS_NEGADO = {
+    "ARQUIVADA", "REJEITADA", "INAD", "PREJUD", "RETAUTOR", "PARARQ", "VETOMANT",
+}
+SAPL_API = "http://sapl.varginha.mg.leg.br/api/materia"
+
+
+def _sapl_status_map() -> dict:
+    """{id_status: (sigla, indicador)} do vocabulário statustramitacao do SAPL."""
+    out: dict = {}
+    try:
+        d = _http_get_json(f"{SAPL_API}/statustramitacao/?page=1&page_size=200", timeout=20)
+        for s in (d.get("results") or []):
+            out[s.get("id")] = (s.get("sigla") or "", s.get("indicador") or "")
+    except Exception as e:
+        print(f"  ! SAPL statustramitacao: {e}")
+    return out
+
+
+def _classifica_desfecho(sigla: str, indicador: str) -> str:
+    if sigla in SAPL_STATUS_APROVADO:
+        return "lei"          # aprovado / virou lei
+    if sigla in SAPL_STATUS_NEGADO:
+        return "arquivado"    # arquivado / rejeitado / retirado
+    if indicador == "F":
+        return "encerrado"    # fim de tramitação, desfecho neutro
+    return "tramitando"
+
+
+def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 2500) -> dict[str, str]:
+    """{id_materia: desfecho} via API SAPL. desfecho ∈ lei|arquivado|encerrado|tramitando.
+    Em tramitação não custa request (vem na lista). Tolerante a falha de rede."""
+    status_map = _sapl_status_map()
+    if not status_map:
+        return {}
+    desfechos: dict[str, str] = {}
+    decididos: list[str] = []
+    for ano in anos:
+        url = f"{SAPL_API}/materialegislativa/?ano={ano}&page=1"
+        while url:
+            try:
+                d = _http_get_json(url, timeout=20)
+            except Exception as e:
+                print(f"  ! SAPL lista {ano}: {e}")
+                break
+            for item in d.get("results", []):
+                iid = str(item.get("id", ""))
+                if not iid:
+                    continue
+                if item.get("em_tramitacao"):
+                    desfechos[iid] = "tramitando"
+                else:
+                    decididos.append(iid)
+            url = (d.get("pagination", {}) or {}).get("links", {}).get("next")
+    consultas = 0
+    for iid in decididos:
+        if consultas >= max_consultas:
+            desfechos.setdefault(iid, "")
+            continue
+        try:
+            t = _http_get_json(f"{SAPL_API}/tramitacao/?materia={iid}", timeout=15)
+            consultas += 1
+            tl = t.get("results", []) or []
+            tl.sort(key=lambda x: x.get("data_tramitacao") or "", reverse=True)
+            ult = tl[0] if tl else None
+            sigla, ind = status_map.get(ult.get("status"), ("", "")) if ult else ("", "")
+            desfechos[iid] = _classifica_desfecho(sigla, ind)
+        except Exception:
+            desfechos[iid] = ""  # sem dado — degrada sem quebrar
+    leis = sum(1 for v in desfechos.values() if v == "lei")
+    arq = sum(1 for v in desfechos.values() if v == "arquivado")
+    tram = sum(1 for v in desfechos.values() if v == "tramitando")
+    print(f"  ✓ SAPL desfechos: {leis} viraram lei, {arq} arquivados/rejeitados, "
+          f"{tram} em tramitação ({consultas} consultas)")
+    return desfechos
+
+
 def _load_sapl_rows(path: Path) -> list[dict]:
     if not path.exists():
         print(f"  ! Arquivo SAPL nao encontrado: {path}")
@@ -198,16 +280,20 @@ def _autor_excluido(nome: str) -> bool:
 
 
 def _processa_sapl_rows(ano: int, rows: list[dict],
-                        datas_sapl: dict[str, str] | None = None) -> dict:
+                        datas_sapl: dict[str, str] | None = None,
+                        desfechos: dict[str, str] | None = None) -> dict:
     tipos = Counter(r["tipo_descricao"] for r in rows)
     ver_tipo: dict[str, Counter] = defaultdict(Counter)
     ver_zero: dict[str, Counter] = defaultdict(Counter)
+    ver_lei: dict[str, int] = defaultdict(int)  # matérias do vereador que viraram lei
     materias = []
     datas_sapl = datas_sapl or {}
+    desfechos = desfechos or {}
 
     for r in rows:
         tipo = r["tipo_descricao"]
         zero, motivo = _impacto_zero(tipo, r["ementa"])
+        desfecho = desfechos.get(str(r.get("id", "")), "")
         materia = {
             "id": r.get("id", ""),
             "ano": r["ano"],
@@ -220,8 +306,13 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
             "data": datas_sapl.get(r.get("id", ""), ""),
             "impacto_zero": zero,
             "motivo_impacto_zero": motivo,
+            "desfecho": desfecho,
         }
         materias.append(materia)
+        if desfecho == "lei" and not zero:
+            for nome in (x.strip() for x in r["autoria"].split(",")):
+                if not _autor_excluido(nome):
+                    ver_lei[nome] += 1
         for nome in (x.strip() for x in r["autoria"].split(",")):
             if _autor_excluido(nome):
                 continue
@@ -240,6 +331,7 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
             "requerimentos": _tipo_count(c, "Requerimento"),
             "projetos_lei": _tipo_count(c, "Projeto de Lei OrdinÃ¡ria do Legislativo", "Projeto de Lei Ordinária do Legislativo"),
             "emendas": _tipo_count(c, "Emenda Impositiva ao OrÃ§amento", "Emenda Impositiva ao Orçamento"),
+            "leis_aprovadas": ver_lei.get(nome, 0),
             "mocoes": mocoes,
             "pdl": pdl,
             "impacto_zero": sum(ver_zero[nome].values()),
@@ -268,7 +360,7 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
             continue
         vereadores.append({
             "nome": nome, "total": 0, "indicacoes": 0, "requerimentos": 0,
-            "projetos_lei": 0, "emendas": 0, "mocoes": 0, "pdl": 0,
+            "projetos_lei": 0, "emendas": 0, "leis_aprovadas": 0, "mocoes": 0, "pdl": 0,
             "impacto_zero": 0, "nome_rua": 0, "homenagens_terceiros": 0,
             "outros": 0,
         })
@@ -303,6 +395,13 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
         "emendas_qtd": len(emendas),
         "emendas_valor_total_brl": round(valor_total, 2),
         "impacto_zero_qtd": sum(1 for m in materias if m["impacto_zero"]),
+        "desfechos": {
+            "lei": sum(1 for m in materias if m.get("desfecho") == "lei"),
+            "arquivado": sum(1 for m in materias if m.get("desfecho") == "arquivado"),
+            "tramitando": sum(1 for m in materias if m.get("desfecho") == "tramitando"),
+            "encerrado": sum(1 for m in materias if m.get("desfecho") == "encerrado"),
+            "sem_dado": sum(1 for m in materias if not m.get("desfecho")),
+        },
         "tipos": [{"tipo": k, "qtd": v} for k, v in tipos.most_common()],
         "temas_top": temas,
     }
@@ -435,10 +534,18 @@ def _processa_sapl() -> dict:
     except Exception as e:
         print(f"  ! API SAPL indisponível, materias sem data: {e}")
 
-    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl)
+    # Desfecho legislativo (aprovado/virou lei vs arquivado) — fonte oficial SAPL.
+    # Falha silenciosa: sem rede, materias ficam com desfecho vazio.
+    desfechos_sapl: dict[str, str] = {}
+    try:
+        desfechos_sapl = _fetch_desfechos_sapl(anos_com_dados)
+    except Exception as e:
+        print(f"  ! Desfechos SAPL indisponíveis: {e}")
+
+    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl, desfechos_sapl)
     camara_anos = {"2025": ano_2025}
     if rows_2026:
-        camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026, datas_sapl)
+        camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026, datas_sapl, desfechos_sapl)
         print(f"  {len(rows_2026)} materias de 2026 carregadas.")
 
     return {
