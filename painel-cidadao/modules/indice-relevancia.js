@@ -214,6 +214,130 @@
     return ordenarPorValor(ranking, function (item) { return valorPerfil(item, perfil); });
   }
 
+  function metodologiaPesos() {
+    const m = (D.indice_relevancia || {}).metodologia || {};
+    return m.pesos || { legislar: 30, fiscalizar: 30, representar: 15, presenca: 25 };
+  }
+
+  // Decimais com ponto p/ casar com o resto do indice (barras usam toFixed(1)).
+  function fmt1(v) { return (Number(v) || 0).toFixed(1); }
+  function fmt0(v) { return Math.round(Number(v) || 0).toLocaleString("pt-BR"); }
+
+  // Garante o dialog #modalFiscaliza (reusa o do camara.html ou cria um).
+  function obterModal() {
+    let modal = document.getElementById("modalFiscaliza");
+    if (modal) return modal;
+    modal = document.createElement("dialog");
+    modal.id = "modalFiscaliza";
+    modal.className = "modal modal--wide";
+    modal.innerHTML =
+      '<button class="modal__close" type="button" aria-label="Fechar">&times;</button>' +
+      '<div id="modalFiscalizaContent"></div>';
+    modal.querySelector(".modal__close").addEventListener("click", function () { modal.close(); });
+    document.body.appendChild(modal);
+    return modal;
+  }
+
+  // Monta a explicacao personalizada da nota de UM vereador (os pesos e a conta).
+  function explicacaoNotaHtml(item) {
+    const nome = cleanText(item.nome);
+    const dim = item.dimensoes || {};
+    const comp = item.composicao || {};
+    const ev = item.evidencias || {};
+    const pesos = metodologiaPesos();
+    const transp = ((D.indice_relevancia || {}).metodologia || {}).transparencia || "";
+
+    const linhas = [
+      { k: "Legislar", sub: "projetos de lei e emendas", v: dim.legislar, p: pesos.legislar },
+      { k: "Fiscalizar", sub: "requerimentos de fiscalizacao", v: dim.fiscalizar, p: pesos.fiscalizar },
+      { k: "Representar", sub: "indicacoes (com teto progressivo)", v: dim.representar, p: pesos.representar },
+    ];
+    let soma = 0;
+    let pesoSoma = 0;
+    linhas.forEach(function (l) {
+      if (l.v != null) {
+        l.contrib = (Number(l.v) || 0) * l.p;
+        soma += l.contrib;
+        pesoSoma += l.p;
+      }
+    });
+    const nota = pesoSoma > 0 ? soma / pesoSoma : 0;
+
+    const linhasHtml = linhas.map(function (l) {
+      if (l.v == null) {
+        return `<tr class="is-pending"><td>${esc(l.k)}<small>${esc(l.sub)}</small></td><td>—</td><td>×${l.p}</td><td>pendente</td></tr>`;
+      }
+      return `<tr>
+        <td>${esc(l.k)}<small>${esc(l.sub)}</small></td>
+        <td>${fmt1(l.v)}</td>
+        <td>×${l.p}</td>
+        <td>${fmt0(l.contrib)}</td>
+      </tr>`;
+    }).join("");
+
+    const leis = num(item.leis_aprovadas);
+
+    return `<div class="nota-modal">
+      <span class="method-card__tag">SCORE LEGISLATIVO · EXPERIMENTAL v2</span>
+      <h3 class="nota-modal__nome">${esc(nome)}</h3>
+      <p class="nota-modal__lead">Esta e a conta exata da nota de <strong>Atividade</strong>, do jeito que o
+      painel calcula para todos os vereadores — sem ajuste manual.</p>
+
+      <div class="nota-modal__big">
+        <div><strong>${fmt1(item.indice)}</strong><span>Atividade</span></div>
+        <div><strong>${fmt0(leis)}</strong><span>viraram lei (Efetividade)</span></div>
+        <div><strong>${fmt0(item.confianca_dados_pct || item.cobertura_pct || pesoSoma)}%</strong><span>cobertura dos dados</span></div>
+      </div>
+
+      <h4 class="nota-modal__h">1. Como cada dimensao foi medida</h4>
+      <p class="nota-modal__p">Em cada dimensao, <strong>quem mais produziu na Camara recebe 100</strong>;
+      os demais ficam proporcionais. Nao e nota absoluta — e comparacao com os colegas no mesmo ano.</p>
+
+      <table class="nota-modal__tbl">
+        <thead><tr><th>Dimensao</th><th>Nota (0–100)</th><th>Peso</th><th>Contribuicao</th></tr></thead>
+        <tbody>
+          ${linhasHtml}
+          <tr class="is-pending"><td>Presenca<small>em sessoes e comissoes</small></td><td>—</td><td>×${pesos.presenca}</td><td>em coleta</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="3">Soma das contribuicoes</td><td>${fmt0(soma)}</td></tr>
+          <tr><td colspan="3">÷ soma dos pesos disponiveis (cobertura ${fmt0(pesoSoma)} de 100)</td><td>÷ ${fmt0(pesoSoma)}</td></tr>
+          <tr class="is-total"><td colspan="3"><strong>= Nota de Atividade</strong></td><td><strong>${fmt1(nota)}</strong></td></tr>
+        </tfoot>
+      </table>
+      <p class="nota-modal__note">Presenca pesa ${pesos.presenca} pontos, mas ainda nao tem coleta confiavel —
+      por isso fica de fora e a nota usa ${fmt0(pesoSoma)}% do total. E honestidade, nao erro de calculo.</p>
+
+      <h4 class="nota-modal__h">2. O que NAO contou (e por que)</h4>
+      <ul class="nota-modal__list">
+        <li><strong>${fmt0(comp.cerimonial || 0)} atos cerimoniais</strong> (mocao, homenagem, titulo, nome de rua)
+        aparecem por transparencia, mas <strong>pesam zero</strong> — nao sobem nem descem a nota.</li>
+        <li><strong>${fmt0(ev.indicacao_protocolada_sem_confirmacao || 0)} indicacoes</strong> entram com teto progressivo:
+        as 10 primeiras valem 1 ponto; da 11a a 20a, meio ponto; acima disso, 1/4. Volume nao "fura a fila".</li>
+      </ul>
+
+      <h4 class="nota-modal__h">3. Efetividade e uma nota separada</h4>
+      <p class="nota-modal__p">A Atividade mede o que o vereador <em>produziu</em>. A Efetividade mede o que
+      <strong>virou lei</strong> (desfecho oficial do SAPL). ${esc(nome)} teve <strong>${fmt0(leis)}</strong>
+      materia(s) que viraram lei. Produzir muito nao e o mesmo que aprovar.</p>
+
+      ${transp ? `<p class="nota-modal__transp">${esc(transp)}</p>` : ""}
+    </div>`;
+  }
+
+  function abrirModalScore(nome) {
+    const ano = anoAtual();
+    const anoData = getAnoData(ano);
+    const ranking = (anoData && Array.isArray(anoData.ranking)) ? anoData.ranking : [];
+    const item = ranking.find(function (v) { return cleanText(v.nome) === cleanText(nome); });
+    if (!item) return;
+    const modal = obterModal();
+    const content = modal.querySelector("#modalFiscalizaContent");
+    if (content) content.innerHTML = explicacaoNotaHtml(item);
+    if (typeof modal.showModal === "function") modal.showModal();
+    else modal.setAttribute("open", "");
+  }
+
   function renderCard(item) {
     const nome = cleanText(item.nome);
     const ev = item.evidencias || {};
@@ -239,9 +363,12 @@
         ${exp.length ? `<ul class="indice-why">${exp.map(function (x) { return `<li>${esc(x)}</li>`; }).join("")}</ul>` : ""}
       </div>
       <div class="indice-card__score">
-        <strong>${scoreValue}</strong>
-        <span>${scoreLabel}</span>
-        <em>${Number(item.confianca_dados_pct || item.cobertura_pct || 0).toFixed(0)}% confianca</em>
+        <button type="button" class="indice-score-open" data-score="${esc(nome)}" title="Entender como esta nota foi calculada">
+          <strong>${scoreValue}</strong>
+          <span>${scoreLabel}</span>
+          <em>${Number(item.confianca_dados_pct || item.cobertura_pct || 0).toFixed(0)}% confianca</em>
+          <small class="indice-score-open__hint">entender a nota ›</small>
+        </button>
         <button type="button" data-ver="${esc(nome)}">Ver no painel</button>
       </div>
     </article>`;
@@ -260,6 +387,49 @@
     }, 0);
     const pendentes = ((D.indice_relevancia || {}).metodologia || {}).campos_pendentes ||
       ["alteracao_relevante", "relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "indicacao_atendida", "audiencia_publica_diligencia", "presenca_sessoes", "presenca_comissoes"];
+    const metodo = (D.indice_relevancia || {}).metodologia || {};
+    const pesos = metodo.pesos || { legislar: 30, fiscalizar: 30, representar: 15, presenca: 25 };
+    const coberturaPct = Number((top && top.cobertura_pct) || anoData.cobertura_pct || 0);
+    const explicador = `
+      <details class="indice-method">
+        <summary>Como esta nota e calculada <span aria-hidden="true">+</span></summary>
+        <div class="indice-method__body">
+          <p>A nota nao e um placar de popularidade. E uma media ponderada de
+          <strong>quanto cada vereador produziu</strong>, comparada com o restante da Casa
+          no mesmo ano (quem mais produziu numa dimensao recebe 100; os demais, proporcional).</p>
+
+          <p class="indice-method__step"><strong>1. Quatro dimensoes, pesos fixos:</strong></p>
+          <table class="indice-method__tbl">
+            <tr><td>Legislar <small>(projetos, emendas)</small></td><td>${pesos.legislar}%</td></tr>
+            <tr><td>Fiscalizar <small>(requerimentos)</small></td><td>${pesos.fiscalizar}%</td></tr>
+            <tr><td>Representar <small>(indicacoes, com teto)</small></td><td>${pesos.representar}%</td></tr>
+            <tr class="is-pending"><td>Presenca <small>(em coleta)</small></td><td>${pesos.presenca}% <em>pendente</em></td></tr>
+          </table>
+          <p class="indice-method__note">Como Presenca ainda nao tem coleta confiavel, a nota
+          de <strong>Atividade</strong> usa so as 3 primeiras (${coberturaPct.toFixed(0)}% do total).
+          Por isso aparece <strong>${coberturaPct.toFixed(0)}% de cobertura</strong> ao lado de cada nota —
+          e honestidade, nao margem de erro.</p>
+
+          <p class="indice-method__step"><strong>2. Indicacao tem teto progressivo:</strong>
+          as 10 primeiras valem 1 ponto cada; da 11a a 20a, meio ponto; acima disso, 1/4 de ponto
+          (teto 15). Quem dispara 80 indicacoes nao "fura a fila" de quem fez 3 projetos de lei.</p>
+
+          <p class="indice-method__step"><strong>3. Ato simbolico pesa zero:</strong>
+          mocao, homenagem, titulo e nome de rua aparecem no card por transparencia,
+          mas <strong>nao somam nenhum ponto</strong>.</p>
+
+          <p class="indice-method__step"><strong>4. Efetividade e uma nota separada:</strong>
+          conta quantas materias do vereador <strong>viraram lei</strong> (desfecho oficial do SAPL).
+          Volume de propostas nao e merito — virar lei e.</p>
+
+          ${top ? `<p class="indice-method__example"><strong>Exemplo (${esc(top.nome)}, maior nota ${Number(top.indice || 0).toFixed(1)}):</strong>
+          Legislar ${Number((top.dimensoes || {}).legislar || 0).toFixed(0)} · Fiscalizar ${Number((top.dimensoes || {}).fiscalizar || 0).toFixed(0)} · Representar ${Number((top.dimensoes || {}).representar || 0).toFixed(0)}
+          → media ponderada = <strong>${Number(top.indice || 0).toFixed(1)}</strong> de Atividade,
+          com <strong>${fmtNum(top.leis_aprovadas || 0)}</strong> materia(s) que viraram lei (Efetividade).</p>` : ""}
+
+          <p class="indice-method__transp">${esc(metodo.transparencia || "")}</p>
+        </div>
+      </details>`;
 
     el.innerHTML = `
       <div class="indice-head">
@@ -289,6 +459,8 @@
         Fonte principal: SAPL, via <code>camara_anos.json</code>. Campos ainda pendentes de coleta confiavel:
         ${pendentes.map(function (p) { return `<span>${esc(p.replace(/_/g, " "))}</span>`; }).join("")}
       </div>
+
+      ${explicador}
 
       <div class="indice-perfis" role="tablist" aria-label="Rankings por perfil">
         ${Object.keys(PERFIS).map(function (key) {
@@ -337,6 +509,12 @@
       btn.addEventListener("click", function (event) {
         event.stopPropagation();
         selecionarVereador(btn.dataset.ver || "");
+      });
+    });
+    el.querySelectorAll("button[data-score]").forEach(function (btn) {
+      btn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        abrirModalScore(btn.dataset.score || "");
       });
     });
     el.querySelectorAll("button[data-indice-perfil]").forEach(function (btn) {

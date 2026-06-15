@@ -2766,6 +2766,54 @@ a.brand:hover { text-decoration: none; }
   font-size: .78rem;
   font-weight: 700;
 }
+.indice-method {
+  border: 1px solid var(--border, #e3e8ef);
+  border-radius: 10px;
+  background: var(--surface-2, #f8fafc);
+  overflow: hidden;
+}
+.indice-method > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 13px 16px;
+  font-weight: 700;
+  font-size: .95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--ink, #1f2937);
+}
+.indice-method > summary::-webkit-details-marker { display: none; }
+.indice-method > summary span { font-size: 1.25rem; font-weight: 400; opacity: .55; }
+.indice-method[open] > summary span { transform: rotate(45deg); }
+.indice-method__body {
+  padding: 4px 16px 16px;
+  font-size: .9rem;
+  line-height: 1.55;
+  color: var(--ink-soft, #475467);
+}
+.indice-method__body p { margin: 0 0 10px; }
+.indice-method__step { margin-top: 12px; }
+.indice-method__tbl {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4px 0 6px;
+}
+.indice-method__tbl td {
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--border, #e3e8ef);
+}
+.indice-method__tbl td:last-child { text-align: right; font-weight: 700; white-space: nowrap; }
+.indice-method__tbl small { font-weight: 400; opacity: .7; }
+.indice-method__tbl .is-pending { opacity: .6; }
+.indice-method__tbl .is-pending em { font-style: normal; font-size: .72rem; text-transform: uppercase; letter-spacing: .03em; }
+.indice-method__note,
+.indice-method__example,
+.indice-method__transp {
+  border-left: 3px solid var(--gold, #d4a017);
+  padding-left: 12px;
+}
+.indice-method__transp { font-style: italic; opacity: .85; margin-top: 12px; }
 .indice-list {
   display: grid;
   gap: 10px;
@@ -2960,6 +3008,75 @@ a.brand:hover { text-decoration: none; }
 .indice-card__score button:focus-visible {
   background: var(--navy);
   color: var(--white);
+}
+/* Nota clicavel: parece o score, mas convida ao clique (abre o modal explicativo) */
+.indice-card__score .indice-score-open {
+  margin: 0 0 2px;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  text-align: right;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.indice-card__score .indice-score-open:hover,
+.indice-card__score .indice-score-open:focus-visible {
+  background: var(--cream);
+  border-color: rgba(0, 75, 141, .18);
+  color: inherit;
+}
+.indice-score-open__hint {
+  display: block;
+  margin-top: 5px;
+  color: var(--teal);
+  font-size: .7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  opacity: .85;
+}
+
+/* Modal "entender a nota" — explicacao personalizada por vereador */
+.nota-modal { max-width: 640px; }
+.nota-modal__nome {
+  margin: 8px 0 4px;
+  font-family: var(--font-h);
+  color: var(--navy);
+  font-size: 1.5rem;
+}
+.nota-modal__lead { margin: 0 0 14px; color: var(--muted); font-size: .92rem; line-height: 1.5; }
+.nota-modal__big {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.nota-modal__big > div {
+  border: 1px solid var(--border, #e3e8ef);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  background: var(--cream);
+}
+.nota-modal__big strong { display: block; font-family: var(--font-h); font-size: 1.7rem; color: var(--navy); line-height: 1; }
+.nota-modal__big span { display: block; margin-top: 5px; font-size: .72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; }
+.nota-modal__h { margin: 18px 0 6px; font-size: 1.02rem; color: var(--navy); }
+.nota-modal__p { margin: 0 0 10px; font-size: .9rem; line-height: 1.55; color: var(--ink-soft, #475467); }
+.nota-modal__tbl { width: 100%; border-collapse: collapse; font-size: .9rem; margin: 6px 0 4px; }
+.nota-modal__tbl th { text-align: left; font-size: .74rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); padding: 6px 8px; border-bottom: 2px solid var(--border, #e3e8ef); }
+.nota-modal__tbl th:not(:first-child), .nota-modal__tbl td:not(:first-child) { text-align: right; white-space: nowrap; }
+.nota-modal__tbl td { padding: 7px 8px; border-bottom: 1px solid var(--border, #e3e8ef); vertical-align: top; }
+.nota-modal__tbl td small { display: block; font-weight: 400; color: var(--muted); font-size: .76rem; margin-top: 2px; }
+.nota-modal__tbl .is-pending { opacity: .55; }
+.nota-modal__tbl tfoot td { border-bottom: none; color: var(--muted); }
+.nota-modal__tbl tfoot .is-total td { border-top: 2px solid var(--navy); padding-top: 10px; color: var(--navy); font-size: 1.05rem; }
+.nota-modal__note { margin: 4px 0 0; padding: 10px 12px; border-left: 3px solid var(--gold, #d4a017); background: #fff8e1; border-radius: 0 8px 8px 0; font-size: .84rem; line-height: 1.5; color: #5d4700; }
+.nota-modal__list { margin: 4px 0 0; padding-left: 18px; font-size: .9rem; line-height: 1.55; color: var(--ink-soft, #475467); }
+.nota-modal__list li { margin-bottom: 7px; }
+.nota-modal__transp { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--border, #e3e8ef); font-style: italic; font-size: .85rem; color: var(--muted); line-height: 1.55; }
+@media (max-width: 560px) {
+  .nota-modal__big { grid-template-columns: 1fr; }
 }
 
 .contract-search-note {
@@ -6562,6 +6679,33 @@ body[data-page="pessoal"] #listaPessoal.contratos {
   margin-top: 14px;
 }
 
+body[data-page="pessoal"] .contrato {
+  grid-template-columns: 200px 1fr;
+}
+body[data-page="pessoal"] .contrato__valor {
+  white-space: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 2px;
+}
+body[data-page="pessoal"] .vencimento-titulo {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.2;
+}
+body[data-page="pessoal"] .vencimento-valor {
+  font-size: 1.25rem;
+  color: var(--navy);
+  margin: 2px 0;
+}
+@media (max-width: 720px) {
+  body[data-page="pessoal"] .contrato {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Como cobrar */
 body[data-page="cobrar"] .section--alt {
   background:
@@ -9565,6 +9709,7 @@ body[data-page="home"] .hub-grid-18 .hub-item { position: relative; }
 
 
 /* Selo de saude do dado — aviso contextual de limite/defasagem por pagina */
+/* Selo de saude do dado — aviso contextual de limite/defasagem por pagina */
 .data-health-strip {
   background: #fff8e1; border: 1px solid #ffe082; border-left: 4px solid var(--gold-dk);
   border-radius: 8px; padding: 12px 16px; margin: 16px 0;
@@ -9574,3 +9719,247 @@ body[data-page="home"] .hub-grid-18 .hub-item { position: relative; }
 .data-health-strip ul { margin:0; padding-left:18px; }
 .data-health-strip li { margin:3px 0; line-height:1.45; }
 .data-health-strip a { color:var(--navy); font-weight:600; }
+
+/* ================== AJUSTES DE DESIGN PREMIUM E RECOMENDAÇÕES ================== */
+.nav__link--cta {
+  background: linear-gradient(135deg, var(--gold) 0%, #f39c12 100%) !important;
+  color: var(--navy) !important;
+  box-shadow: 0 4px 6px rgba(243, 156, 18, 0.2);
+  border: 1px solid rgba(243, 156, 18, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s !important;
+  animation: pulse-cta 3s infinite alternate;
+}
+.nav__link--cta:hover {
+  background: var(--navy) !important;
+  color: var(--white) !important;
+  box-shadow: 0 4px 10px rgba(0, 75, 141, 0.3);
+  transform: translateY(-1px);
+}
+@keyframes pulse-cta {
+  0% { box-shadow: 0 4px 6px rgba(243, 156, 18, 0.2); }
+  100% { box-shadow: 0 4px 12px rgba(243, 156, 18, 0.45); }
+}
+
+/* Efeitos de Hover para os cards da Timeline */
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: var(--navy) !important;
+}
+
+/* Filtros Responsivos - Gaveta de Filtros */
+@media (max-width: 768px) {
+  .filterbar {
+    display: none !important;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--white);
+    box-shadow: 0 -10px 25px rgba(0,0,0,0.15);
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    z-index: 1001;
+    flex-direction: column;
+    gap: 12px !important;
+    align-items: stretch !important;
+    animation: slide-up-drawer 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .filterbar.is-open {
+    display: flex !important;
+  }
+  .filterbar__count {
+    order: -1;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  .filter-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+    display: none;
+    animation: fade-in-overlay 0.2s ease-out;
+  }
+  .filter-overlay.is-active {
+    display: block;
+  }
+  .btn-filter-trigger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #f1f5f9;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    color: var(--navy);
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-filter-trigger:hover {
+    background: #e2e8f0;
+  }
+  .btn-filter-close {
+    display: block !important;
+    background: var(--navy);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+}
+
+@keyframes slide-up-drawer {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes fade-in-overlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.btn-filter-close { display: none; }
+.btn-filter-trigger { display: none; }
+
+/* ================== DARK THEME (MODO ESCURO) ================== */
+body.dark-theme {
+  --bg:        #0b1329;
+  --ink:       #ecf0f1;
+  --cream:     #1c2541;
+  --muted:     #94a3b8;
+  --line:      #1e293b;
+  --white:     #1c2541;
+  --shadow:    0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.24);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  
+  --navy:      #3b82f6;
+  --navy-dk:   #60a5fa;
+  --teal:      #10b981;
+}
+
+body.dark-theme {
+  background:
+    linear-gradient(180deg, rgba(59,130,246,0.1), transparent 260px),
+    var(--bg);
+}
+
+body.dark-theme .topbar {
+  background: rgba(11, 19, 41, 0.9);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+}
+body.dark-theme .topbar--scrolled {
+  background: rgba(11, 19, 41, 0.95);
+}
+
+body.dark-theme .brand__mark {
+  background: #1c2541;
+  border-color: #3b82f6;
+}
+body.dark-theme .brand__mark::after {
+  color: #ecf0f1;
+}
+
+body.dark-theme .btn-link, 
+body.dark-theme .csec-btn, 
+body.dark-theme .start-guide__choices button, 
+body.dark-theme .btn-filter-trigger {
+  background: #1c2541;
+  border-color: #3b82f6;
+  color: #ecf0f1;
+}
+
+body.dark-theme .csec-btn--active, 
+body.dark-theme .btn-filter-trigger:hover, 
+body.dark-theme .start-guide__choices button:hover {
+  background: #3b82f6;
+  color: #ecf0f1;
+}
+
+body.dark-theme .block, 
+body.dark-theme .card, 
+body.dark-theme .stat, 
+body.dark-theme .signal,
+body.dark-theme .legal-context {
+  background: #1c2541 !important;
+  border-color: #1e293b !important;
+}
+
+body.dark-theme input, 
+body.dark-theme select, 
+body.dark-theme textarea {
+  background-color: #0b1329;
+  border-color: #1e293b;
+  color: #ecf0f1;
+}
+
+body.dark-theme .empty {
+  background: #1c2541;
+  border-color: #1e293b;
+}
+
+body.dark-theme .ranking-fornecedores, 
+body.dark-theme .block--warn {
+  background: rgba(59, 130, 246, 0.05) !important;
+  border-color: rgba(59, 130, 246, 0.2) !important;
+  color: #ecf0f1 !important;
+}
+
+body.dark-theme .timeline-card:hover {
+  border-color: var(--navy) !important;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+/* Botao de Alternancia de Tema */
+.theme-toggle-btn {
+  background: transparent;
+  border: 1.5px solid rgba(0,75,141,.28);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 6px 10px;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  transition: all 0.2s;
+}
+.theme-toggle-btn:hover {
+  background: rgba(0,75,141,.08);
+}
+body.dark-theme .theme-toggle-btn {
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+}
+body.dark-theme .theme-toggle-btn:hover {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+/* Tag de periodo dos vencimentos no pessoal */
+.tag-periodo-alerta {
+  background: #f1f5f9;
+  color: var(--navy);
+  border: 1px solid #cbd5e1;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.78em;
+  font-weight: 700;
+  margin-top: 4px;
+  display: inline-block;
+  vertical-align: middle;
+}
+body.dark-theme .tag-periodo-alerta {
+  background: rgba(59, 130, 246, 0.1);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+

@@ -364,6 +364,27 @@ test.describe("Placar do dinheiro", () => {
     await expect(page.locator('#indiceRelevancia [data-indice-perfil="fiscalizador"]')).toBeAttached();
   });
 
+  test("Câmara - clicar na nota abre modal explicando os pesos (a conta bate)", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator('.csec-btn[data-go="vereadores"]').click();
+    const card = page.locator("#indiceRelevancia .indice-card").first();
+    const nome = (await card.locator("h4").innerText()).trim();
+    const scoreBtn = card.locator(".indice-score-open");
+    const score = (await scoreBtn.locator("strong").innerText()).trim();
+    await scoreBtn.click();
+    const nm = page.locator("#modalFiscaliza .nota-modal");
+    await expect(nm).toBeVisible();
+    await expect(nm.locator(".nota-modal__nome")).toContainText(nome);
+    // a nota grande do modal == a nota do card (a conta dos pesos fecha no mesmo valor)
+    await expect(nm.locator(".nota-modal__big strong").first()).toHaveText(score);
+    await expect(nm).toContainText("Como cada dimensao foi medida");
+    await expect(nm).toContainText("= Nota de Atividade");
+    await expect(nm).toContainText("pesam zero");
+    await page.locator("#modalFiscaliza .modal__close").click();
+    await expect(page.locator("#modalFiscaliza")).toBeHidden();
+  });
+
   test("Câmara mostra remuneração dos vereadores com fonte", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
