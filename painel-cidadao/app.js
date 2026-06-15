@@ -6665,65 +6665,30 @@ ${url}
 
     function initFiltrosTemplates() {
       const grid = document.querySelector(".template-grid");
-      if (!grid) return;
+      const searchInput = document.getElementById("laiBusca");
+      const filterBtns = document.querySelectorAll(".lai-filter");
+      if (!grid || !searchInput || !filterBtns.length) return;
 
-      const ctrlDiv = document.createElement("div");
-      ctrlDiv.className = "template-controls";
-
-      const searchWrapper = document.createElement("div");
-      searchWrapper.className = "template-search";
-      const searchInput = document.createElement("input");
-      searchInput.type = "search";
-      searchInput.placeholder = "Buscar modelo por palavra-chave...";
-      searchInput.setAttribute("aria-label", "Buscar nos modelos");
-      searchWrapper.appendChild(searchInput);
-
-      const filterWrapper = document.createElement("div");
-      filterWrapper.className = "template-filters";
-      filterWrapper.setAttribute("role", "group");
-      filterWrapper.setAttribute("aria-label", "Filtrar modelos por categoria");
-
-      const categorias = [
-        { id: "todos", label: "📋 Todos os Modelos" },
-        { id: "contratos", label: "💼 Licitações & Contratos" },
-        { id: "obras", label: "🚧 Obras & Frota" },
-        { id: "pessoal", label: "👥 Pessoal & Viagens" },
-        { id: "denuncias", label: "⚖️ Denúncias TCE/MP" }
-      ];
-
-      let activeCat = "todos";
-
+      let activeCat = "all";
       const cards = grid.querySelectorAll(".template-card");
-      cards.forEach((card) => {
-        const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
-        let cat = "contratos";
-        if (title.includes("denúncia") || title.includes("representação") || title.includes("tce-mg") || title.includes("mp-mg") || title.includes("⚖️")) {
-          cat = "denuncias";
-        } else if (title.includes("asfalto") || title.includes("obra") || title.includes("frota") || title.includes("combustível")) {
-          cat = "obras";
-        } else if (title.includes("nepotismo") || title.includes("frequência") || title.includes("função") || title.includes("cargo") || title.includes("cargos") || title.includes("diárias") || title.includes("viagens")) {
-          cat = "pessoal";
-        }
-        card.setAttribute("data-template-categoria", cat);
-      });
 
-      categorias.forEach(cat => {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "template-filter-btn" + (cat.id === "todos" ? " is-active" : "");
-        btn.textContent = cat.label;
+      filterBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-          filterWrapper.querySelectorAll(".template-filter-btn").forEach(b => b.classList.remove("is-active"));
-          btn.classList.add("is-active");
-          activeCat = cat.id;
+          filterBtns.forEach(b => {
+             b.classList.remove("active");
+             b.style.background = "#fff";
+             b.style.color = "var(--ink)";
+             b.style.borderColor = "var(--line)";
+          });
+          btn.classList.add("active");
+          btn.style.background = "var(--navy)";
+          btn.style.color = "#fff";
+          btn.style.borderColor = "var(--navy)";
+          
+          activeCat = btn.getAttribute("data-cat");
           aplicarFiltro();
         });
-        filterWrapper.appendChild(btn);
       });
-
-      ctrlDiv.appendChild(searchWrapper);
-      ctrlDiv.appendChild(filterWrapper);
-      grid.parentNode.insertBefore(ctrlDiv, grid);
 
       function aplicarFiltro() {
         const term = searchInput.value.toLowerCase().trim();
@@ -6732,16 +6697,16 @@ ${url}
         cards.forEach(card => {
           const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
           const desc = (card.querySelector("textarea")?.value || "").toLowerCase();
-          const cardCat = card.getAttribute("data-template-categoria");
+          const cardCat = card.getAttribute("data-cat");
 
           const matchTerm = !term || title.includes(term) || desc.includes(term);
-          const matchCat = activeCat === "todos" || cardCat === activeCat;
+          const matchCat = activeCat === "all" || cardCat === activeCat;
 
           if (matchTerm && matchCat) {
-            card.classList.remove("is-hidden");
+            card.style.display = "";
             visibleCount++;
           } else {
-            card.classList.add("is-hidden");
+            card.style.display = "none";
           }
         });
 
