@@ -50,27 +50,81 @@
     </p>
 
     <h1 class="section__title">Como cobrar</h1>
-    <p class="section__lead" style="font-size: 1.25rem; color: var(--navy); margin-bottom: 24px; font-weight: 500;">
-      Fiscalize como auditor. Mesmo sem ser.<br>
-      <span style="font-size: 1.1rem; color: var(--ink); font-weight: 400;">Os instrumentos legais que todo cidadão de Varginha tem direito de usar — e as perguntas que o poder público não quer responder.</span>
+    <p class="section__lead">
+      Saber é o primeiro passo. Cobrar é o que muda as coisas. Pela Lei de Acesso à
+      Informação, o órgão tem até <strong>20 dias</strong> para responder seu pedido — e
+      leva cerca de <strong>2 minutos</strong> para enviar. Use os canais oficiais abaixo
+      para cobrar a <strong>Prefeitura</strong> e a <strong>Câmara</strong> separadamente.
     </p>
 
-    <div class="grid grid--cobrar" style="margin-bottom: 40px;">
-      <div class="trend-card" style="text-align: center; padding: 20px;">
-        <strong style="font-size: 2.5rem; color: var(--navy); display: block;">7</strong>
-        <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">mecanismos legais</small>
+    <div id="filaCobranca" class="cobrar-block cobrar-risk">
+      <div class="templates-head">
+        <div>
+          <span class="bigheader__kicker">FILA DE COBRANÇA</span>
+          <h3 class="cobrar-block__title">Comece pelas pendências com maior prioridade</h3>
+          <p>
+            O semáforo junta contratos, obras/asfalto, frota, emendas, Diário Oficial,
+            folha e fornecedores. Ele não acusa irregularidade; apenas organiza o que
+            falta conferir e já entrega a pergunta para cobrar pelo canal oficial.
+          </p>
+        </div>
+        <div id="filaCobrancaStats" class="risk-stats" aria-live="polite"></div>
       </div>
-      <div class="trend-card" style="text-align: center; padding: 20px;">
-        <strong style="font-size: 2.5rem; color: var(--navy); display: block;">20 dias</strong>
-        <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">prazo de resposta LAI</small>
+      <div class="filterbar risk-filterbar">
+        <select id="filaCobrancaOrgao" aria-label="Filtrar por órgão">
+          <option value="">Todos os órgãos</option>
+          <option value="prefeitura">Prefeitura</option>
+          <option value="camara">Câmara</option>
+        </select>
+        <select id="filaCobrancaTipo" aria-label="Filtrar por tipo de pendência">
+          <option value="">Todos os tipos</option>
+          <option value="contrato">Contratos</option>
+          <option value="asfalto">Asfalto e obras</option>
+          <option value="frota">Frota</option>
+          <option value="emenda">Emendas</option>
+          <option value="fornecedor">Fornecedores</option>
+          <option value="diario">Diário Oficial</option>
+          <option value="pessoal">Pessoal e remuneração</option>
+        </select>
+        <select id="filaCobrancaRisco" aria-label="Filtrar por risco">
+          <option value="">Todos os riscos</option>
+          <option value="red">Vermelho</option>
+          <option value="yellow">Amarelo</option>
+          <option value="green">Verde</option>
+        </select>
       </div>
-      <div class="trend-card" style="text-align: center; padding: 20px;">
-        <strong style="font-size: 2.5rem; color: var(--navy); display: block;">5</strong>
-        <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">LAIs prontas para protocolar</small>
+      <div id="filaCobrancaLista" class="risk-queue" aria-live="polite">
+        <div class="empty"><p>Carregando fila de cobrança...</p></div>
       </div>
-      <div class="trend-card" style="text-align: center; padding: 20px;">
-        <strong style="font-size: 2.5rem; color: var(--teal); display: block;">R$ 0</strong>
-        <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">custo para o cidadão</small>
+      <p class="template-note">
+        Base legal e fonte auxiliar: o PNCP centraliza dados de contratações públicas e disponibiliza
+        informações em dados abertos. Confirme sempre nos portais oficiais antes de concluir qualquer coisa.
+      </p>
+    </div>
+
+    <div class="cobrar-block" style="margin-top: 60px; padding-top: 40px; border-top: 2px solid var(--line);">
+      <h2 style="font-size: 2.2rem; color: var(--navy); margin-bottom: 8px;">Fiscalize como auditor. Mesmo sem ser.</h2>
+      <p style="font-size: 1.1rem; color: var(--ink); margin-bottom: 40px; max-width: 800px;">
+        Os instrumentos legais que todo cidadão de Varginha tem direito de usar — e as perguntas que o poder público não quer responder.
+      </p>
+
+      <div class="grid grid--cobrar" style="margin-bottom: 40px;">
+        <div class="trend-card" style="text-align: center; padding: 20px;">
+          <strong style="font-size: 2.5rem; color: var(--navy); display: block;">7</strong>
+          <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">mecanismos legais</small>
+        </div>
+        <div class="trend-card" style="text-align: center; padding: 20px;">
+          <strong style="font-size: 2.5rem; color: var(--navy); display: block;">20 dias</strong>
+          <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">prazo de resposta LAI</small>
+        </div>
+        <div class="trend-card" style="text-align: center; padding: 20px;">
+          <strong style="font-size: 2.5rem; color: var(--navy); display: block;">5</strong>
+          <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">LAIs prontas para protocolar</small>
+        </div>
+        <div class="trend-card" style="text-align: center; padding: 20px;">
+          <strong style="font-size: 2.5rem; color: var(--teal); display: block;">R$ 0</strong>
+          <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">custo para o cidadão</small>
+        </div>
       </div>
     </div>
 
@@ -127,15 +181,15 @@
         </div>
       </div>
       <div style="background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--line);">
-        <h4 style="color: var(--navy); margin-top: 0;">Passo a passo completo</h4>
+        <h4 style="color: var(--navy); margin-top: 0; margin-bottom: 20px;">Passo a passo completo</h4>
         <ol style="padding-left: 20px; color: var(--ink); line-height: 1.6;">
-          <li style="margin-bottom: 12px;"><strong>Identifique o órgão responsável:</strong> Câmara Municipal para dados dos vereadores. Prefeitura e secretarias para dados do Executivo. Cada órgão tem seu canal próprio de LAI.</li>
-          <li style="margin-bottom: 12px;"><strong>Escreva o pedido de forma específica:</strong> Defina: período, tipo de dado, formato desejado (Excel, PDF, CSV). Pedidos vagos como "mande tudo sobre obras" geram respostas incompletas.<br>
-          <span style="display: inline-block; background: #eff5fb; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-top: 4px;">💡 Use os modelos prontos na seção 5 desta página</span></li>
-          <li style="margin-bottom: 12px;"><strong>Protocole e guarde o comprovante:</strong> Prefira protocolo presencial com cópia carimbada, ou e-mail com confirmação de recebimento. Isso inicia a contagem dos 20 dias legais.</li>
-          <li style="margin-bottom: 12px;"><strong>Aguarde até 20 dias corridos:</strong> Prorrogável por mais 10 com justificativa. Silêncio após esse prazo já é irregularidade denunciável ao Ministério Público.</li>
-          <li style="margin-bottom: 12px;"><strong>Se a resposta for negada ou incompleta, recorra:</strong> Recurso à autoridade superior do mesmo órgão em até 10 dias. Se ainda insuficiente, denúncia ao MP-MG ou à CGU.<br>
-          <span style="display: inline-block; background: #fff0f0; color: #c62828; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-top: 4px;">⚠️ Guarde todos os protocolos e respostas recebidas</span></li>
+          <li style="margin-bottom: 16px;"><strong>Identifique o órgão responsável:</strong> Câmara Municipal para dados dos vereadores. Prefeitura e secretarias para dados do Executivo. Cada órgão tem seu canal próprio de LAI.</li>
+          <li style="margin-bottom: 16px;"><strong>Escreva o pedido de forma específica:</strong> Defina: período, tipo de dado, formato desejado (Excel, PDF, CSV). Pedidos vagos como "mande tudo sobre obras" geram respostas incompletas.<br>
+          <span style="display: inline-block; background: #eff5fb; padding: 6px 10px; border-radius: 6px; font-size: 0.9em; margin-top: 8px;">💡 Use os modelos prontos na seção 5 desta página</span></li>
+          <li style="margin-bottom: 16px;"><strong>Protocole e guarde o comprovante:</strong> Prefira protocolo presencial com cópia carimbada, ou e-mail com confirmação de recebimento. Isso inicia a contagem dos 20 dias legais.</li>
+          <li style="margin-bottom: 16px;"><strong>Aguarde até 20 dias corridos:</strong> Prorrogável por mais 10 com justificativa. Silêncio após esse prazo já é irregularidade denunciável ao Ministério Público.</li>
+          <li style="margin-bottom: 16px;"><strong>Se a resposta for negada ou incompleta, recorra:</strong> Recurso à autoridade superior do mesmo órgão em até 10 dias. Se ainda insuficiente, denúncia ao MP-MG ou à CGU.<br>
+          <span style="display: inline-block; background: #fff0f0; color: #c62828; padding: 6px 10px; border-radius: 6px; font-size: 0.9em; margin-top: 8px;">⚠️ Guarde todos os protocolos e respostas recebidas</span></li>
           <li><strong>Analise os dados e publique com responsabilidade:</strong> Transforme em gráficos, rankings e comparações. Dados brutos não comunicam — interpretação com linguagem certa é o que gera impacto.</li>
         </ol>
       </div>
@@ -152,36 +206,36 @@
       </div>
       
       <div class="grid grid--cobrar">
-        <div class="template-card" style="background: #fff; padding: 20px; border: 1px solid var(--line); border-radius: 12px;">
-          <h4 style="color: var(--navy); margin-top: 0;">Tema: Asfalto e obras</h4>
-          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px;"><strong>Cidadão comum pergunta:</strong></p>
-          <p style="background: #f8f9fa; padding: 8px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 12px;">Quais ruas foram asfaltadas em 2024?</p>
-          <p style="font-size: 0.85rem; color: var(--navy); margin-bottom: 4px;"><strong>Auditor pergunta:</strong></p>
-          <p style="background: #eff5fb; padding: 12px; border-radius: 6px; font-size: 0.95rem; border-left: 4px solid var(--navy);">Encaminhe as planilhas de composição de custos unitários de cada contrato de pavimentação dos últimos 3 anos, os laudos de controle tecnológico realizados por laboratório independente e os boletins de medição assinados pelo fiscal.</p>
+        <div class="template-card" style="background: #fff; padding: 24px; border: 1px solid var(--line); border-radius: 12px;">
+          <h4 style="color: var(--navy); margin-top: 0; margin-bottom: 16px;">Tema: Asfalto e obras</h4>
+          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; font-weight: 700;">Cidadão comum pergunta:</p>
+          <p style="background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 0.95rem; margin-bottom: 16px; border-left: 3px solid #ccc;">Quais ruas foram asfaltadas em 2024?</p>
+          <p style="font-size: 0.85rem; color: var(--navy); margin-bottom: 4px; text-transform: uppercase; font-weight: 700;">Auditor pergunta:</p>
+          <p style="background: #eff5fb; padding: 16px; border-radius: 6px; font-size: 0.95rem; border-left: 4px solid var(--navy); line-height: 1.5;">Encaminhe as planilhas de composição de custos unitários de cada contrato de pavimentação dos últimos 3 anos, os laudos de controle tecnológico realizados por laboratório independente e os boletins de medição assinados pelo fiscal.</p>
         </div>
 
-        <div class="template-card" style="background: #fff; padding: 20px; border: 1px solid var(--line); border-radius: 12px;">
-          <h4 style="color: var(--navy); margin-top: 0;">Tema: Licitações</h4>
-          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px;"><strong>Cidadão comum pergunta:</strong></p>
-          <p style="background: #f8f9fa; padding: 8px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 12px;">Quais empresas ganharam licitações?</p>
-          <p style="font-size: 0.85rem; color: var(--navy); margin-bottom: 4px;"><strong>Auditor pergunta:</strong></p>
-          <p style="background: #eff5fb; padding: 12px; border-radius: 6px; font-size: 0.95rem; border-left: 4px solid var(--navy);">Encaminhe as atas das sessões de licitação dos últimos 3 anos, informando: número de empresas participantes, desclassificadas e motivo, recursos e decisões, e data de abertura do CNPJ dos vencedores em relação ao contrato.</p>
+        <div class="template-card" style="background: #fff; padding: 24px; border: 1px solid var(--line); border-radius: 12px;">
+          <h4 style="color: var(--navy); margin-top: 0; margin-bottom: 16px;">Tema: Licitações</h4>
+          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; font-weight: 700;">Cidadão comum pergunta:</p>
+          <p style="background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 0.95rem; margin-bottom: 16px; border-left: 3px solid #ccc;">Quais empresas ganharam licitações?</p>
+          <p style="font-size: 0.85rem; color: var(--navy); margin-bottom: 4px; text-transform: uppercase; font-weight: 700;">Auditor pergunta:</p>
+          <p style="background: #eff5fb; padding: 16px; border-radius: 6px; font-size: 0.95rem; border-left: 4px solid var(--navy); line-height: 1.5;">Encaminhe as atas das sessões de licitação dos últimos 3 anos, informando: número de empresas participantes, desclassificadas e motivo, recursos e decisões, e data de abertura do CNPJ dos vencedores em relação ao contrato.</p>
         </div>
 
-        <div class="template-card" style="background: #fff; padding: 20px; border: 1px solid var(--line); border-radius: 12px;">
-          <h4 style="color: var(--navy); margin-top: 0;">Tema: Shows e eventos</h4>
-          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px;"><strong>Cidadão comum pergunta:</strong></p>
-          <p style="background: #f8f9fa; padding: 8px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 12px;">Quanto foi gasto nos shows da festa municipal?</p>
-          <p style="font-size: 0.85rem; color: var(--navy); margin-bottom: 4px;"><strong>Auditor pergunta:</strong></p>
-          <p style="background: #eff5fb; padding: 12px; border-radius: 6px; font-size: 0.95rem; border-left: 4px solid var(--navy);">Encaminhe: nota fiscal da produtora com discriminação, cachê individual de cada artista do contrato, modalidade de contratação, data de abertura do CNPJ e relação de outros contratos com o mesmo CNPJ.</p>
+        <div class="template-card" style="background: #fff; padding: 24px; border: 1px solid var(--line); border-radius: 12px;">
+          <h4 style="color: var(--navy); margin-top: 0; margin-bottom: 16px;">Tema: Shows e eventos</h4>
+          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; font-weight: 700;">Cidadão comum pergunta:</p>
+          <p style="background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 0.95rem; margin-bottom: 16px; border-left: 3px solid #ccc;">Quanto foi gasto nos shows da festa municipal?</p>
+          <p style="font-size: 0.85rem; color: var(--navy); margin-bottom: 4px; text-transform: uppercase; font-weight: 700;">Auditor pergunta:</p>
+          <p style="background: #eff5fb; padding: 16px; border-radius: 6px; font-size: 0.95rem; border-left: 4px solid var(--navy); line-height: 1.5;">Encaminhe: nota fiscal da produtora com discriminação, cachê individual de cada artista do contrato, modalidade de contratação, data de abertura do CNPJ e relação de outros contratos com o mesmo CNPJ.</p>
         </div>
 
-        <div class="template-card" style="background: #fff; padding: 20px; border: 1px solid var(--line); border-radius: 12px;">
-          <h4 style="color: var(--navy); margin-top: 0;">Tema: Diárias de vereadores</h4>
-          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px;"><strong>Cidadão comum pergunta:</strong></p>
-          <p style="background: #f8f9fa; padding: 8px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 12px;">Quanto cada vereador recebeu em diárias?</p>
-          <p style="font-size: 0.85rem; color: var(--navy); margin-bottom: 4px;"><strong>Auditor pergunta:</strong></p>
-          <p style="background: #eff5fb; padding: 12px; border-radius: 6px; font-size: 0.95rem; border-left: 4px solid var(--navy);">Para cada diária paga nos últimos 24 meses, informe: nome, destino, data de saída/retorno, valor diário, finalidade declarada, comprovante de participação no evento e prestação de contas comprobatória.</p>
+        <div class="template-card" style="background: #fff; padding: 24px; border: 1px solid var(--line); border-radius: 12px;">
+          <h4 style="color: var(--navy); margin-top: 0; margin-bottom: 16px;">Tema: Diárias de vereadores</h4>
+          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; font-weight: 700;">Cidadão comum pergunta:</p>
+          <p style="background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 0.95rem; margin-bottom: 16px; border-left: 3px solid #ccc;">Quanto cada vereador recebeu em diárias?</p>
+          <p style="font-size: 0.85rem; color: var(--navy); margin-bottom: 4px; text-transform: uppercase; font-weight: 700;">Auditor pergunta:</p>
+          <p style="background: #eff5fb; padding: 16px; border-radius: 6px; font-size: 0.95rem; border-left: 4px solid var(--navy); line-height: 1.5;">Para cada diária paga nos últimos 24 meses, informe: nome, destino, data de saída/retorno, valor diário, finalidade declarada, comprovante de participação no evento e prestação de contas comprobatória.</p>
         </div>
       </div>
     </div>
@@ -196,25 +250,25 @@
         </div>
       </div>
       <div class="grid grid--cobrar">
-        <div class="action" style="cursor: default;">
+        <div class="action" style="cursor: default; pointer-events: none;">
           <h3 class="action__title">Asfalto × Reincidência</h3>
           <p class="action__desc">Cruze histórico de tapa-buracos por rua. Mais de 3 vezes em 5 anos sem solução indica problema.</p>
-          <div style="background: #f0f4f8; padding: 8px; border-radius: 4px; font-size: 0.8rem; margin-top: 10px; color: var(--navy);">LAI Obras <strong>×</strong> Portal Transparência</div>
+          <div style="background: #f0f4f8; padding: 10px; border-radius: 6px; font-size: 0.85rem; margin-top: 16px; color: var(--navy); font-weight: 600;">LAI Obras <strong>×</strong> Portal Transparência</div>
         </div>
-        <div class="action" style="cursor: default;">
+        <div class="action" style="cursor: default; pointer-events: none;">
           <h3 class="action__title">Contrato × CNPJ</h3>
           <p class="action__desc">Cruze o CNPJ da empresa com a data de abertura na Receita. Empresa aberta há menos de 6 meses é alerta clássico.</p>
-          <div style="background: #f0f4f8; padding: 8px; border-radius: 4px; font-size: 0.8rem; margin-top: 10px; color: var(--navy);">LAI <strong>×</strong> Receita Federal</div>
+          <div style="background: #f0f4f8; padding: 10px; border-radius: 6px; font-size: 0.85rem; margin-top: 16px; color: var(--navy); font-weight: 600;">LAI <strong>×</strong> Receita Federal</div>
         </div>
-        <div class="action" style="cursor: default;">
+        <div class="action" style="cursor: default; pointer-events: none;">
           <h3 class="action__title">Diária × Agenda pública</h3>
           <p class="action__desc">Diária paga em dia de sessão ordinária na própria cidade é contradição imediata.</p>
-          <div style="background: #f0f4f8; padding: 8px; border-radius: 4px; font-size: 0.8rem; margin-top: 10px; color: var(--navy);">LAI Câmara <strong>×</strong> Atas de sessão</div>
+          <div style="background: #f0f4f8; padding: 10px; border-radius: 6px; font-size: 0.85rem; margin-top: 16px; color: var(--navy); font-weight: 600;">LAI Câmara <strong>×</strong> Atas de sessão</div>
         </div>
-        <div class="action" style="cursor: default;">
+        <div class="action" style="cursor: default; pointer-events: none;">
           <h3 class="action__title">Medição × Nota Fiscal</h3>
           <p class="action__desc">Pagamento antes da medição ou sem medição aprovada é irregularidade direta.</p>
-          <div style="background: #f0f4f8; padding: 8px; border-radius: 4px; font-size: 0.8rem; margin-top: 10px; color: var(--navy);">LAI (boletins) <strong>×</strong> Portal Transparência</div>
+          <div style="background: #f0f4f8; padding: 10px; border-radius: 6px; font-size: 0.85rem; margin-top: 16px; color: var(--navy); font-weight: 600;">LAI (boletins) <strong>×</strong> Portal Transparência</div>
         </div>
       </div>
     </div>
@@ -231,7 +285,7 @@
       <div class="template-grid">
         <article class="template-card" style="grid-column: 1 / -1; border-left: 4px solid var(--navy);">
           <h4>LAI 1 · Câmara Municipal: Frequência vereadores</h4>
-          <textarea readonly style="height: 300px;" aria-label="Modelo pronto LAI 1">À Câmara Municipal de Varginha – Setor de Protocolo
+          <textarea readonly style="height: 320px;" aria-label="Modelo pronto LAI 1">À Câmara Municipal de Varginha – Setor de Protocolo
 
 PEDIDO DE ACESSO À INFORMAÇÃO – Lei nº 12.527/2011
 
@@ -254,10 +308,10 @@ Informo que não é necessário justificar este pedido (art. 10, § 3º, Lei 12.
 
 Data: [DATA]
 Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
-          <div style="background: #f8fbfe; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: var(--navy);">
+          <div style="background: #f8fbfe; padding: 16px; margin-bottom: 16px; border-radius: 8px; font-size: 0.95rem; color: var(--navy); line-height: 1.5;">
             <strong>Por que essa versão é mais forte:</strong> pede o percentual calculado (obriga a Câmara a fazer a conta), o sistema de registro (expõe se não há controle formal) e o procedimento de justificativa (verifica se ausências são validadas ou apenas declaradas).
           </div>
-          <button type="button" class="copy-template">Copiar modelo</button>
+          <button type="button" class="copy-template" style="width: 100%;">Copiar modelo</button>
         </article>
       </div>
     </div>
@@ -281,25 +335,25 @@ Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           </thead>
           <tbody>
             <tr>
-              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem;">"Esse vereador é corrupto"</td>
-              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem;">"Esse vereador faltou a 63% das sessões em 2024, conforme dados da própria Câmara Municipal"</td>
+              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem; vertical-align: top;">"Esse vereador é corrupto"</td>
+              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem; vertical-align: top;">"Esse vereador faltou a 63% das sessões em 2024, conforme dados da própria Câmara Municipal"</td>
             </tr>
             <tr>
-              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem;">"A Prefeitura está roubando"</td>
-              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem;">"O contrato recebeu 4 aditivos e aumentou 47% acima do valor original sem nova licitação"</td>
+              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem; vertical-align: top;">"A Prefeitura está roubando"</td>
+              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem; vertical-align: top;">"O contrato recebeu 4 aditivos e aumentou 47% acima do valor original sem nova licitação"</td>
             </tr>
             <tr>
-              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem;">"Esse show foi superfaturado"</td>
-              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem;">"O valor pago por artista foi 3,2× maior do que o cachê médio em cidades de porte similar"</td>
+              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem; vertical-align: top;">"Esse show foi superfaturado"</td>
+              <td style="padding: 16px; border-bottom: 1px solid #edf2f7; font-size: 0.95rem; vertical-align: top;">"O valor pago por artista foi 3,2× maior do que o cachê médio em cidades de porte similar"</td>
             </tr>
             <tr>
-              <td style="padding: 16px; font-size: 0.95rem;">"Empresa laranja ganhou a licitação"</td>
-              <td style="padding: 16px; font-size: 0.95rem;">"A empresa vencedora foi aberta 47 dias antes da assinatura do contrato, conforme Receita Federal"</td>
+              <td style="padding: 16px; font-size: 0.95rem; vertical-align: top;">"Empresa laranja ganhou a licitação"</td>
+              <td style="padding: 16px; font-size: 0.95rem; vertical-align: top;">"A empresa vencedora foi aberta 47 dias antes da assinatura do contrato, conforme Receita Federal"</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p style="margin-top: 16px; font-size: 0.95rem; color: var(--ink);">
+      <p style="margin-top: 16px; font-size: 0.95rem; color: var(--ink); line-height: 1.6;">
         <strong>Regra de ouro:</strong> Apresente os dados e deixe o leitor tirar as conclusões. Dados objetivos com fontes identificadas são praticamente inexpugnáveis juridicamente. Quem analisa os fatos decide o que fazer com eles.
       </p>
     </div>
@@ -331,7 +385,6 @@ Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
         </a>
       </div>
     </div>
-
   </div>
 </section>
 
