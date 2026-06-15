@@ -235,7 +235,7 @@
       .filter((c) => ag[c.id] && ag[c.id].valor > 0)
       .map((c) => ({ id: c.id, label: c.label, valor: ag[c.id].valor, qtd: ag[c.id].qtd }))
       .sort((a, b) => b.valor - a.valor)
-      .slice(0, 6);
+      .slice(0, 8);
     if (!topo.length) return;
     const max = topo[0].valor;
 

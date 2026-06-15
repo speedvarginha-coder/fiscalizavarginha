@@ -6217,12 +6217,12 @@ ${url}
         return [...grupos.values()].sort((a, b) => (b.valor - a.valor) || (b.qtd - a.qtd));
       };
 
-    const renderGastosPalavra = () => {
+    const renderGastosPalavra = (forcarCat) => {
       const box = $("gastosPalavraChave");
       if (!box) return;
       const select = $("categoriaGastoSelect");
       const busca = $("categoriaGastoBusca");
-      const categoria = categoriaPorNome(select?.value || "Combustivel");
+      const categoria = categoriaPorNome(forcarCat || select?.value || "Combustivel");
       const extra = (busca?.value || "").split(",").map(t => t.trim()).filter(Boolean);
       const termos = extra.length ? extra : categoria.termos;
       const encontrados = baseGastos
@@ -6311,9 +6311,14 @@ ${url}
       }
       box.querySelectorAll("[data-gasto-cat]").forEach(btn => {
         btn.addEventListener("click", () => {
-          if ($("categoriaGastoSelect")) $("categoriaGastoSelect").value = btn.dataset.gastoCat || "";
+          const catNome = btn.dataset.gastoCat || "";
+          if ($("categoriaGastoSelect")) {
+             $("categoriaGastoSelect").value = catNome;
+             const matched = Array.from($("categoriaGastoSelect").options).find(o => o.value === catNome);
+             if (matched) matched.selected = true;
+          }
           if ($("categoriaGastoBusca")) $("categoriaGastoBusca").value = "";
-          renderGastosPalavra();
+          renderGastosPalavra(catNome);
         });
       });
     };
@@ -6657,6 +6662,107 @@ ${url}
       const el = $(id);
       if (el) el.addEventListener("change", renderFilaCobrancaPublica);
     });
+
+    function initFiltrosTemplates() {
+      const grid = document.querySelector(".template-grid");
+      if (!grid) return;
+
+      const ctrlDiv = document.createElement("div");
+      ctrlDiv.className = "template-controls";
+
+      const searchWrapper = document.createElement("div");
+      searchWrapper.className = "template-search";
+      const searchInput = document.createElement("input");
+      searchInput.type = "search";
+      searchInput.placeholder = "Buscar modelo por palavra-chave...";
+      searchInput.setAttribute("aria-label", "Buscar nos modelos");
+      searchWrapper.appendChild(searchInput);
+
+      const filterWrapper = document.createElement("div");
+      filterWrapper.className = "template-filters";
+      filterWrapper.setAttribute("role", "group");
+      filterWrapper.setAttribute("aria-label", "Filtrar modelos por categoria");
+
+      const categorias = [
+        { id: "todos", label: "📋 Todos os Modelos" },
+        { id: "contratos", label: "💼 Licitações & Contratos" },
+        { id: "obras", label: "🚧 Obras & Frota" },
+        { id: "pessoal", label: "👥 Pessoal & Viagens" },
+        { id: "denuncias", label: "⚖️ Denúncias TCE/MP" }
+      ];
+
+      let activeCat = "todos";
+
+      const cards = grid.querySelectorAll(".template-card");
+      cards.forEach((card) => {
+        const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
+        let cat = "contratos";
+        if (title.includes("denúncia") || title.includes("representação") || title.includes("tce-mg") || title.includes("mp-mg") || title.includes("⚖️")) {
+          cat = "denuncias";
+        } else if (title.includes("asfalto") || title.includes("obra") || title.includes("frota") || title.includes("combustível")) {
+          cat = "obras";
+        } else if (title.includes("nepotismo") || title.includes("frequência") || title.includes("função") || title.includes("cargo") || title.includes("cargos") || title.includes("diárias") || title.includes("viagens")) {
+          cat = "pessoal";
+        }
+        card.setAttribute("data-template-categoria", cat);
+      });
+
+      categorias.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "template-filter-btn" + (cat.id === "todos" ? " is-active" : "");
+        btn.textContent = cat.label;
+        btn.addEventListener("click", () => {
+          filterWrapper.querySelectorAll(".template-filter-btn").forEach(b => b.classList.remove("is-active"));
+          btn.classList.add("is-active");
+          activeCat = cat.id;
+          aplicarFiltro();
+        });
+        filterWrapper.appendChild(btn);
+      });
+
+      ctrlDiv.appendChild(searchWrapper);
+      ctrlDiv.appendChild(filterWrapper);
+      grid.parentNode.insertBefore(ctrlDiv, grid);
+
+      function aplicarFiltro() {
+        const term = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
+          const desc = (card.querySelector("textarea")?.value || "").toLowerCase();
+          const cardCat = card.getAttribute("data-template-categoria");
+
+          const matchTerm = !term || title.includes(term) || desc.includes(term);
+          const matchCat = activeCat === "todos" || cardCat === activeCat;
+
+          if (matchTerm && matchCat) {
+            card.classList.remove("is-hidden");
+            visibleCount++;
+          } else {
+            card.classList.add("is-hidden");
+          }
+        });
+
+        let emptyMsg = document.getElementById("template-empty-message");
+        if (visibleCount === 0) {
+          if (!emptyMsg) {
+            emptyMsg = document.createElement("div");
+            emptyMsg.id = "template-empty-message";
+            emptyMsg.className = "empty";
+            emptyMsg.innerHTML = "<p>Nenhum modelo forense encontrado para os filtros selecionados.</p>";
+            grid.parentNode.insertBefore(emptyMsg, grid.nextSibling);
+          }
+        } else {
+          if (emptyMsg) emptyMsg.remove();
+        }
+      }
+
+      searchInput.addEventListener("input", aplicarFiltro);
+    }
+
+    initFiltrosTemplates();
   }
   if (PAGE === "atualizacoes" && window.ZELA.atualizacoes) window.ZELA.atualizacoes.init();
   if (PAGE === "prefeitura") renderAlugueisV2();
