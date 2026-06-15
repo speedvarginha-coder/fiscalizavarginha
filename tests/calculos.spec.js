@@ -144,3 +144,41 @@ test.describe("Integridade — Diárias", () => {
     expect(expostos.length).toBe(0);
   });
 });
+
+test.describe("Integridade — Presença e Score", () => {
+  test("presença: pct = presentes/elegíveis, presentes ≤ elegíveis, pct em 0–100", () => {
+    const idx = load("indice_relevancia");
+    let comDado = 0;
+    for (const ano of Object.keys(idx.anos || {})) {
+      for (const v of idx.anos[ano].ranking || []) {
+        if (v.presenca_pct == null) continue;
+        comDado++;
+        expect(v.presenca_pct).toBeGreaterThanOrEqual(0);
+        expect(v.presenca_pct).toBeLessThanOrEqual(100);
+        // presente nunca pode exceder o nº de sessões elegíveis (janela de mandato)
+        expect(v.presenca_presentes).toBeLessThanOrEqual(v.presenca_elegiveis);
+        expect(v.presenca_elegiveis).toBeGreaterThan(0);
+        const calc = Math.round((v.presenca_presentes / v.presenca_elegiveis) * 1000) / 10;
+        expect(Math.abs(calc - v.presenca_pct)).toBeLessThanOrEqual(0.1);
+      }
+    }
+    expect(comDado).toBeGreaterThan(0); // a coleta de presença está viva
+  });
+
+  test("score: nota de Atividade reconcilia com a média ponderada das dimensões", () => {
+    const idx = load("indice_relevancia");
+    const P = idx.metodologia.pesos;
+    for (const ano of Object.keys(idx.anos || {})) {
+      for (const v of idx.anos[ano].ranking || []) {
+        const d = v.dimensoes;
+        let soma = d.legislar * P.legislar + d.fiscalizar * P.fiscalizar + d.representar * P.representar;
+        let peso = P.legislar + P.fiscalizar + P.representar;
+        if (d.presenca != null) { soma += d.presenca * P.presenca; peso += P.presenca; }
+        const calc = Math.round((soma / peso) * 10) / 10;
+        expect(Math.abs(calc - v.indice)).toBeLessThanOrEqual(0.15);
+        // cobertura coerente: 100% com presença, 75% sem
+        expect(v.cobertura_pct).toBe(d.presenca != null ? 100 : 75);
+      }
+    }
+  });
+});

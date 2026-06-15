@@ -253,6 +253,96 @@ def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 2500) -> dict[st
     return desfechos
 
 
+def _sapl_paginate(url: str, timeout: int = 20) -> list[dict]:
+    """Segue pagination.links.next do SAPL e devolve todos os results. Tolerante a falha."""
+    out: list[dict] = []
+    nxt: str | None = url
+    while nxt:
+        try:
+            d = _http_get_json(nxt, timeout=timeout)
+        except Exception as e:
+            print(f"  ! SAPL paginate: {e}")
+            break
+        out += d.get("results", [])
+        nxt = d.get("pagination", {}).get("links", {}).get("next")
+    return out
+
+
+# Presença em plenário — fonte oficial SAPL, denominador por JANELA DE MANDATO
+# (titular que saiu / suplente que entrou no meio do ano não é penalizado).
+# Conta sessões deliberativas: Ordinária (tipo 1) e Extraordinária (tipo 2).
+SAPL_TIPOS_DELIBERATIVOS = {1, 2}
+
+
+def _fetch_presenca_sapl(anos: list[int]) -> dict[int, dict[str, dict]]:
+    """{ano: {nome_parlamentar: {presentes, elegiveis, pct, janela}}}.
+    Tolerante a falha — sem dado, devolve {} e a presença segue pendente no índice."""
+    base = "http://sapl.varginha.mg.leg.br/api"
+    resultado: dict[int, dict[str, dict]] = {}
+
+    # id -> nome do parlamentar (mapeamento que destrava a presença)
+    parl = _sapl_paginate(f"{base}/parlamentares/parlamentar/?page_size=200")
+    if not parl:
+        print("  ! SAPL presença: lista de parlamentares vazia — pulando")
+        return {}
+    id2nome = {p.get("id"): (p.get("nome_parlamentar") or "") for p in parl}
+
+    # mandatos: janela de serviço por parlamentar (intersectada ao ano)
+    mandatos = _sapl_paginate(f"{base}/parlamentares/mandato/?page_size=200")
+
+    for ano in anos:
+        ini_ano, fim_ano = f"{ano}-01-01", f"{ano}-12-31"
+        # janela [inicio, fim] de cada parlamentar dentro do ano
+        janela: dict[int, tuple[str, str]] = {}
+        for m in mandatos:
+            ini = (m.get("data_inicio_mandato") or "")[:10]
+            fim = (m.get("data_fim_mandato") or "")[:10]
+            if not ini or ini > fim_ano or (fim and fim < ini_ano):
+                continue
+            pid = m.get("parlamentar")
+            ini_c = max(ini, ini_ano)
+            fim_c = min(fim or fim_ano, fim_ano)
+            if pid not in janela or ini_c < janela[pid][0]:
+                janela[pid] = (ini_c, fim_c)
+
+        # sessões deliberativas do ano, com data
+        sess = _sapl_paginate(f"{base}/sessao/sessaoplenaria/?data_inicio__year={ano}&page_size=200")
+        delib = [s for s in sess if s.get("tipo") in SAPL_TIPOS_DELIBERATIVOS]
+        sess_data = {s.get("id"): (s.get("data_inicio") or "")[:10] for s in delib}
+        if not delib:
+            print(f"  ! SAPL presença {ano}: nenhuma sessão deliberativa — pulando ano")
+            continue
+
+        # presença registrada por sessão (set de ids presentes)
+        presentes_por_sessao: dict[int, set] = {}
+        for sid in sess_data:
+            rows = _sapl_paginate(f"{base}/sessao/sessaoplenariapresenca/?sessao_plenaria={sid}&page_size=200")
+            presentes_por_sessao[sid] = {r.get("parlamentar") for r in rows}
+
+        # tally por parlamentar dentro da janela — só quem teve mandato vigente no ano
+        por_nome: dict[str, dict] = {}
+        for pid, janela_pid in janela.items():
+            nome = id2nome.get(pid)
+            if not nome:
+                continue
+            ji, jf = janela_pid
+            elegiveis = [sid for sid, dt in sess_data.items() if dt and ji <= dt <= jf]
+            if not elegiveis:
+                continue
+            pres = sum(1 for sid in elegiveis if pid in presentes_por_sessao.get(sid, set()))
+            por_nome[nome] = {
+                "presentes": pres,
+                "elegiveis": len(elegiveis),
+                "pct": round(pres / len(elegiveis) * 100, 1),
+                "janela": f"{ji} a {jf}",
+            }
+        resultado[ano] = por_nome
+        print(f"  ✓ SAPL presença {ano}: {len(delib)} sessões deliberativas, "
+              f"{len(por_nome)} parlamentares com presença apurada")
+
+    return resultado
+
+
 def _load_sapl_rows(path: Path) -> list[dict]:
     if not path.exists():
         print(f"  ! Arquivo SAPL nao encontrado: {path}")
@@ -281,7 +371,8 @@ def _autor_excluido(nome: str) -> bool:
 
 def _processa_sapl_rows(ano: int, rows: list[dict],
                         datas_sapl: dict[str, str] | None = None,
-                        desfechos: dict[str, str] | None = None) -> dict:
+                        desfechos: dict[str, str] | None = None,
+                        presenca: dict[str, dict] | None = None) -> dict:
     tipos = Counter(r["tipo_descricao"] for r in rows)
     ver_tipo: dict[str, Counter] = defaultdict(Counter)
     ver_zero: dict[str, Counter] = defaultdict(Counter)
@@ -289,6 +380,16 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
     materias = []
     datas_sapl = datas_sapl or {}
     desfechos = desfechos or {}
+    # presença por nome normalizado (case/acento-insensível) — destrava a 4ª dimensão
+    presenca_norm = {_norm_txt(k): v for k, v in (presenca or {}).items()}
+
+    def _presenca_de(nome: str) -> dict:
+        p = presenca_norm.get(_norm_txt(nome))
+        if not p:
+            return {"presenca_pct": None, "presenca_presentes": None,
+                    "presenca_elegiveis": None, "presenca_janela": ""}
+        return {"presenca_pct": p.get("pct"), "presenca_presentes": p.get("presentes"),
+                "presenca_elegiveis": p.get("elegiveis"), "presenca_janela": p.get("janela", "")}
 
     for r in rows:
         tipo = r["tipo_descricao"]
@@ -346,6 +447,7 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
                 _norm_txt("Emenda Impositiva ao Orçamento"),
                 _norm_txt("MoÃ§Ã£o"), _norm_txt("Moção"),
             }),
+            **_presenca_de(nome),
         })
 
     presentes = {_norm_txt(v["nome"]) for v in vereadores}
@@ -363,6 +465,7 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
             "projetos_lei": 0, "emendas": 0, "leis_aprovadas": 0, "mocoes": 0, "pdl": 0,
             "impacto_zero": 0, "nome_rua": 0, "homenagens_terceiros": 0,
             "outros": 0,
+            **_presenca_de(nome),
         })
 
     emendas_raw = [r for r in rows if _norm_txt(r["tipo_descricao"]) == _norm_txt("Emenda Impositiva ao Orçamento")]
@@ -542,10 +645,18 @@ def _processa_sapl() -> dict:
     except Exception as e:
         print(f"  ! Desfechos SAPL indisponíveis: {e}")
 
-    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl, desfechos_sapl)
+    # Presença em plenário por janela de mandato (4ª dimensão do índice).
+    # Falha silenciosa: sem rede, presença fica pendente e o índice usa cobertura 75%.
+    presenca_sapl: dict[int, dict[str, dict]] = {}
+    try:
+        presenca_sapl = _fetch_presenca_sapl(anos_com_dados)
+    except Exception as e:
+        print(f"  ! Presença SAPL indisponível: {e}")
+
+    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl, desfechos_sapl, presenca_sapl.get(2025))
     camara_anos = {"2025": ano_2025}
     if rows_2026:
-        camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026, datas_sapl, desfechos_sapl)
+        camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026, datas_sapl, desfechos_sapl, presenca_sapl.get(2026))
         print(f"  {len(rows_2026)} materias de 2026 carregadas.")
 
     return {

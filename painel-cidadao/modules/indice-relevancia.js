@@ -21,6 +21,7 @@
     legislador: { label: "Legislador", desc: "projetos e emendas" },
     fiscalizador: { label: "Fiscalizador", desc: "requerimentos" },
     representar: { label: "Representar", desc: "indicacoes (com teto)" },
+    presenca: { label: "Presença", desc: "comparecimento às sessões" },
     simbolico: { label: "Cerimonial", desc: "moção/homenagem (peso 0)" },
   };
 
@@ -205,6 +206,7 @@
     if (perfil === "legislador") return (item.dimensoes || {}).legislar;
     if (perfil === "fiscalizador") return (item.dimensoes || {}).fiscalizar;
     if (perfil === "representar") return (item.dimensoes || {}).representar;
+    if (perfil === "presenca") return (item.dimensoes || {}).presenca;
     if (perfil === "simbolico") return (item.perfil || {}).simbolico_pct;
     if (perfil === "efetividade") return num(item.leis_aprovadas);
     return item.indice;
@@ -247,10 +249,16 @@
     const pesos = metodologiaPesos();
     const transp = ((D.indice_relevancia || {}).metodologia || {}).transparencia || "";
 
+    const presPct = (item.presenca_pct === null || item.presenca_pct === undefined) ? null : item.presenca_pct;
+    const presSub = presPct == null
+      ? "em comissoes ainda nao coletada"
+      : fmt0(item.presenca_presentes) + "/" + fmt0(item.presenca_elegiveis) + " sessoes deliberativas" +
+        (item.presenca_janela ? " · " + esc(item.presenca_janela) : "");
     const linhas = [
-      { k: "Legislar", sub: "projetos de lei e emendas", v: dim.legislar, p: pesos.legislar },
-      { k: "Fiscalizar", sub: "requerimentos de fiscalizacao", v: dim.fiscalizar, p: pesos.fiscalizar },
-      { k: "Representar", sub: "indicacoes (com teto progressivo)", v: dim.representar, p: pesos.representar },
+      { k: "Legislar", sub: "projetos de lei e emendas", v: dim.legislar, p: pesos.legislar, rel: true },
+      { k: "Fiscalizar", sub: "requerimentos de fiscalizacao", v: dim.fiscalizar, p: pesos.fiscalizar, rel: true },
+      { k: "Representar", sub: "indicacoes (com teto progressivo)", v: dim.representar, p: pesos.representar, rel: true },
+      { k: "Presenca", sub: presSub, v: presPct, p: pesos.presenca, rel: false },
     ];
     let soma = 0;
     let pesoSoma = 0;
@@ -290,23 +298,24 @@
       </div>
 
       <h4 class="nota-modal__h">1. Como cada dimensao foi medida</h4>
-      <p class="nota-modal__p">Em cada dimensao, <strong>quem mais produziu na Camara recebe 100</strong>;
-      os demais ficam proporcionais. Nao e nota absoluta — e comparacao com os colegas no mesmo ano.</p>
+      <p class="nota-modal__p">Nas tres primeiras, <strong>quem mais produziu na Camara recebe 100</strong> e os
+      demais ficam proporcionais (comparacao com os colegas no mesmo ano). A <strong>Presenca</strong> e
+      absoluta: e o proprio percentual de comparecimento as sessoes deliberativas.</p>
 
       <table class="nota-modal__tbl">
         <thead><tr><th>Dimensao</th><th>Nota (0–100)</th><th>Peso</th><th>Contribuicao</th></tr></thead>
         <tbody>
           ${linhasHtml}
-          <tr class="is-pending"><td>Presenca<small>em sessoes e comissoes</small></td><td>—</td><td>×${pesos.presenca}</td><td>em coleta</td></tr>
         </tbody>
         <tfoot>
           <tr><td colspan="3">Soma das contribuicoes</td><td>${fmt0(soma)}</td></tr>
-          <tr><td colspan="3">÷ soma dos pesos disponiveis (cobertura ${fmt0(pesoSoma)} de 100)</td><td>÷ ${fmt0(pesoSoma)}</td></tr>
+          <tr><td colspan="3">÷ soma dos pesos com dado (cobertura ${fmt0(pesoSoma)} de 100)</td><td>÷ ${fmt0(pesoSoma)}</td></tr>
           <tr class="is-total"><td colspan="3"><strong>= Nota de Atividade</strong></td><td><strong>${fmt1(nota)}</strong></td></tr>
         </tfoot>
       </table>
-      <p class="nota-modal__note">Presenca pesa ${pesos.presenca} pontos, mas ainda nao tem coleta confiavel —
-      por isso fica de fora e a nota usa ${fmt0(pesoSoma)}% do total. E honestidade, nao erro de calculo.</p>
+      <p class="nota-modal__note">${presPct == null
+        ? "Presenca ainda sem dado para este parlamentar — a nota usa " + fmt0(pesoSoma) + "% dos pesos. E honestidade, nao erro de calculo."
+        : "Presenca = comparecimento as sessoes deliberativas (Ordinaria + Extraordinaria), com denominador pela <strong>janela de mandato</strong>: quem assumiu ou saiu no meio do ano so e medido nas sessoes em que tinha assento. Fonte: registro oficial do SAPL."}</p>
 
       <h4 class="nota-modal__h">2. O que NAO contou (e por que)</h4>
       <ul class="nota-modal__list">
@@ -348,6 +357,7 @@
     let scoreLabel = "atividade", scoreValue = Number(item.indice || 0).toFixed(1);
     if (perfilAtual === "efetividade") { scoreLabel = "viraram lei"; scoreValue = fmtNum(item.leis_aprovadas || 0); }
     else if (perfilAtual === "simbolico") { scoreLabel = "cerimonial"; scoreValue = Number(perfil.simbolico_pct || 0).toFixed(0) + "%"; }
+    else if (perfilAtual === "presenca") { scoreLabel = "presença"; scoreValue = (item.presenca_pct == null ? "—" : Number(item.presenca_pct).toFixed(0) + "%"); }
     return `<article class="indice-card">
       <div class="indice-card__rank">#${fmtNum(item.posicao)}</div>
       <div class="indice-card__main">
@@ -403,12 +413,12 @@
             <tr><td>Legislar <small>(projetos, emendas)</small></td><td>${pesos.legislar}%</td></tr>
             <tr><td>Fiscalizar <small>(requerimentos)</small></td><td>${pesos.fiscalizar}%</td></tr>
             <tr><td>Representar <small>(indicacoes, com teto)</small></td><td>${pesos.representar}%</td></tr>
-            <tr class="is-pending"><td>Presenca <small>(em coleta)</small></td><td>${pesos.presenca}% <em>pendente</em></td></tr>
+            <tr><td>Presenca <small>(sessoes deliberativas)</small></td><td>${pesos.presenca}%</td></tr>
           </table>
-          <p class="indice-method__note">Como Presenca ainda nao tem coleta confiavel, a nota
-          de <strong>Atividade</strong> usa so as 3 primeiras (${coberturaPct.toFixed(0)}% do total).
-          Por isso aparece <strong>${coberturaPct.toFixed(0)}% de cobertura</strong> ao lado de cada nota —
-          e honestidade, nao margem de erro.</p>
+          <p class="indice-method__note">As tres primeiras sao relativas a Casa (o maior recebe 100).
+          A <strong>Presenca</strong> e absoluta — o proprio % de comparecimento as sessoes deliberativas,
+          com denominador pela <strong>janela de mandato</strong> (quem entrou ou saiu no meio do ano so e
+          medido nas sessoes em que tinha assento). Cobertura atual: <strong>${coberturaPct.toFixed(0)}%</strong>.</p>
 
           <p class="indice-method__step"><strong>2. Indicacao tem teto progressivo:</strong>
           as 10 primeiras valem 1 ponto cada; da 11a a 20a, meio ponto; acima disso, 1/4 de ponto
@@ -423,7 +433,7 @@
           Volume de propostas nao e merito — virar lei e.</p>
 
           ${top ? `<p class="indice-method__example"><strong>Exemplo (${esc(top.nome)}, maior nota ${Number(top.indice || 0).toFixed(1)}):</strong>
-          Legislar ${Number((top.dimensoes || {}).legislar || 0).toFixed(0)} · Fiscalizar ${Number((top.dimensoes || {}).fiscalizar || 0).toFixed(0)} · Representar ${Number((top.dimensoes || {}).representar || 0).toFixed(0)}
+          Legislar ${Number((top.dimensoes || {}).legislar || 0).toFixed(0)} · Fiscalizar ${Number((top.dimensoes || {}).fiscalizar || 0).toFixed(0)} · Representar ${Number((top.dimensoes || {}).representar || 0).toFixed(0)}${(top.dimensoes || {}).presenca == null ? "" : " · Presenca " + Number((top.dimensoes || {}).presenca).toFixed(0)}
           → media ponderada = <strong>${Number(top.indice || 0).toFixed(1)}</strong> de Atividade,
           com <strong>${fmtNum(top.leis_aprovadas || 0)}</strong> materia(s) que viraram lei (Efetividade).</p>` : ""}
 

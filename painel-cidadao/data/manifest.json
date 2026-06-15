@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-13T16:27:33.333Z",
+  "gerado_em": "2026-06-15T10:26:05.305Z",
   "chunks": {
     "atualizacoes": {
       "arquivo": "data/chunks/atualizacoes.json",
@@ -15,7 +15,7 @@
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
-      "bytes": 1823408
+      "bytes": 1824714
     },
     "camara_betha": {
       "arquivo": "data/chunks/camara_betha.json",
@@ -51,19 +51,19 @@
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
-      "bytes": 91526
+      "bytes": 100391
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
-      "bytes": 2969
+      "bytes": 857
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
-      "bytes": 2432613
+      "bytes": 160938
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
-      "bytes": 714
+      "bytes": 38960
     },
     "prefeitura": {
       "arquivo": "data/chunks/prefeitura.json",
@@ -88,7 +88,7 @@
   },
   "snapshots": {
     "diretorio": "data/snapshots",
-    "total": 26,
-    "ultimo": "2026-06-13T13-27-30-7aa075ec.json"
+    "total": 30,
+    "ultimo": "2026-06-15T07-26-03-7aa075ec.json"
   }
 }

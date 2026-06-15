@@ -117,6 +117,10 @@ function calcularAno(ano, bloco) {
     const leis = num(v.leis_aprovadas);
     const simbolicos = impactoZero;
     const total = num(v.total);
+    // Presença em plenário (% das sessões deliberativas elegíveis, por janela de mandato).
+    // Dado oficial SAPL. null = sem dado (não exerceu mandato / não coletado) → fica pendente.
+    const presencaPct = (v.presenca_pct === null || v.presenca_pct === undefined)
+      ? null : num(v.presenca_pct);
     // Indicação com teto progressivo (evita "metralhadora de papel"):
     // 1-10 = 1pt, 11-20 = 0,5pt, >20 = 0,25pt; teto 15 pontos.
     const indicacaoPontos = Math.min(15,
@@ -135,8 +139,12 @@ function calcularAno(ano, bloco) {
         fiscalizar: requerimentos * SUBPESOS.requerimento_info,
         representar: indicacaoPontos,
         efetividade: leis,
-        presenca: null,
+        presenca: presencaPct,
       },
+      presenca_pct: presencaPct,
+      presenca_presentes: (v.presenca_presentes == null ? null : num(v.presenca_presentes)),
+      presenca_elegiveis: (v.presenca_elegiveis == null ? null : num(v.presenca_elegiveis)),
+      presenca_janela: String(v.presenca_janela || ""),
       evidencias: {
         projeto_autoria_propria: projetos,
         alteracao_relevante: 0,
@@ -168,21 +176,27 @@ function calcularAno(ano, bloco) {
   const maxFisc = Math.max(0, ...base.map((v) => v.dimensoes_brutas.fiscalizar));
   const maxRep = Math.max(0, ...base.map((v) => v.dimensoes_brutas.representar));
   const maxEfet = Math.max(0, ...base.map((v) => v.dimensoes_brutas.efetividade));
-  // Representar (indicação) agora tem fonte; presença segue pendente.
-  const pesoDisponivel = PESOS.legislar + PESOS.fiscalizar + PESOS.representar;
 
   const ranking = base.map((v) => {
+    // Presença é ABSOLUTA (% de comparecimento), não relativa à Casa.
+    const presenca = (v.presenca_pct === null) ? null : pct(v.presenca_pct);
     const dimensoes = {
       legislar: pct(scoreRelativo(v.dimensoes_brutas.legislar, maxLeg)),
       fiscalizar: pct(scoreRelativo(v.dimensoes_brutas.fiscalizar, maxFisc)),
       representar: pct(scoreRelativo(v.dimensoes_brutas.representar, maxRep)),
-      presenca: null,
+      presenca: presenca,
     };
-    // ATIVIDADE: o que produziu (legislar + fiscalizar + representar)
-    const indice =
-      (dimensoes.legislar * PESOS.legislar +
-       dimensoes.fiscalizar * PESOS.fiscalizar +
-       dimensoes.representar * PESOS.representar) / pesoDisponivel;
+    // ATIVIDADE: média ponderada das dimensões com dado. Cobertura é POR VEREADOR:
+    // quem tem presença usa os 4 pesos (100%); sem presença, usa 3 (75%).
+    let soma = dimensoes.legislar * PESOS.legislar +
+               dimensoes.fiscalizar * PESOS.fiscalizar +
+               dimensoes.representar * PESOS.representar;
+    let pesoV = PESOS.legislar + PESOS.fiscalizar + PESOS.representar;
+    if (presenca !== null) {
+      soma += presenca * PESOS.presenca;
+      pesoV += PESOS.presenca;
+    }
+    const indice = pesoV > 0 ? soma / pesoV : 0;
     // EFETIVIDADE: o que virou resultado (matérias que viraram lei). Dado SAPL.
     const efetividade = pct(scoreRelativo(v.dimensoes_brutas.efetividade, maxEfet));
 
@@ -191,14 +205,20 @@ function calcularAno(ano, bloco) {
       indice: pct(indice),
       efetividade: efetividade,
       leis_aprovadas: v.leis_aprovadas,
-      cobertura_pct: pct(pesoDisponivel),
-      confianca_dados_pct: pct(pesoDisponivel),
+      cobertura_pct: pct(pesoV),
+      confianca_dados_pct: pct(pesoV),
+      presenca_pct: presenca,
+      presenca_presentes: v.presenca_presentes,
+      presenca_elegiveis: v.presenca_elegiveis,
+      presenca_janela: v.presenca_janela,
       dimensoes,
       dimensoes_brutas: v.dimensoes_brutas,
       evidencias: v.evidencias,
       composicao: v.composicao,
       perfil: v.perfil,
-      pendencias: ["relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "audiencia_publica_diligencia", "presenca_sessoes", "presenca_comissoes"],
+      pendencias: (presenca === null
+        ? ["relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "audiencia_publica_diligencia", "presenca_plenario", "presenca_comissoes"]
+        : ["relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "audiencia_publica_diligencia", "presenca_comissoes"]),
     };
     item.explicacao = motivo(item);
     return item;
@@ -208,18 +228,27 @@ function calcularAno(ano, bloco) {
     v.posicao = index + 1;
   });
 
+  // Cobertura do ano = média da cobertura individual (varia se algum vereador
+  // não tem presença). Com presença de toda a Casa, chega a 100%.
+  const coberturaAno = ranking.length
+    ? pct(ranking.reduce((s, v) => s + (v.cobertura_pct || 0), 0) / ranking.length)
+    : pct(PESOS.legislar + PESOS.fiscalizar + PESOS.representar);
+  const comPresenca = ranking.filter((v) => v.presenca_pct !== null).length;
+
   return {
     ano: Number(ano),
     status: "parcial_auditavel",
-    cobertura_pct: pct(pesoDisponivel),
-    confianca_dados_pct: pct(pesoDisponivel),
+    cobertura_pct: coberturaAno,
+    confianca_dados_pct: coberturaAno,
     vereadores_monitorados: ranking.length,
+    vereadores_com_presenca: comPresenca,
     rankings_perfil: {
       geral: posicoes(ranking, (v) => v.indice),
       legislador: posicoes(ranking, (v) => v.dimensoes.legislar),
       fiscalizador: posicoes(ranking, (v) => v.dimensoes.fiscalizar),
       simbolico: posicoes(ranking, (v) => (v.perfil || {}).simbolico_pct),
       representar: posicoes(ranking, (v) => v.dimensoes.representar),
+      presenca: posicoes(ranking, (v) => (v.presenca_pct == null ? -1 : v.presenca_pct)),
       efetividade: posicoes(ranking, (v) => v.leis_aprovadas || 0),
     },
     ranking,
@@ -266,14 +295,15 @@ const indice = {
     revisao: "anual",
     transparencia: "O Score Legislativo nao mede popularidade, ideologia ou amizade politica. Mede atividade parlamentar documentada, priorizando leis estruturais, fiscalizacao formal, emendas efetivamente pagas e acoes com resultado comprovado. Atos simbolicos sao exibidos por transparencia, mas nao pontuam.",
     duas_notas: {
-      atividade: "O que o vereador produziu: legislar (projetos/emendas), fiscalizar (requerimentos) e representar (indicacoes, com teto progressivo).",
+      atividade: "O que o vereador produziu e como compareceu: legislar (projetos/emendas), fiscalizar (requerimentos), representar (indicacoes, com teto progressivo) e presenca em plenario.",
       efetividade: "O que virou resultado: materias que viraram lei (desfecho oficial do SAPL). Volume nao e merito.",
     },
     pesos: PESOS,
     subpesos: SUBPESOS,
-    regra: "Atividades simbolicas (mocao, homenagem, nome de rua) ficam registradas para transparencia, mas pesam zero. Indicacoes entram com teto progressivo para nao inflar a nota por volume. A Efetividade usa o desfecho real das materias (virou lei). Campos sem fonte automatica permanecem como pendencia auditavel.",
-    campos_automaticos: ["projeto_autoria_propria", "emenda_relevante", "requerimento_info", "indicacao_com_teto", "leis_aprovadas", "proposicao_simbolica"],
-    campos_pendentes: ["relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "audiencia_publica_diligencia", "presenca_sessoes", "presenca_comissoes"],
+    presenca: "Presenca = % de comparecimento as sessoes deliberativas (Ordinaria + Extraordinaria), com denominador por JANELA DE MANDATO: titular que saiu ou suplente que entrou no meio do ano so e medido nas sessoes em que tinha assento. Fonte oficial: SAPL (registro de presenca). Presenca em comissoes ainda nao e coletada.",
+    regra: "Atividades simbolicas (mocao, homenagem, nome de rua) ficam registradas para transparencia, mas pesam zero. Indicacoes entram com teto progressivo para nao inflar a nota por volume. A Efetividade usa o desfecho real das materias (virou lei). A presenca usa o denominador por janela de mandato. Campos sem fonte automatica permanecem como pendencia auditavel.",
+    campos_automaticos: ["projeto_autoria_propria", "emenda_relevante", "requerimento_info", "indicacao_com_teto", "leis_aprovadas", "proposicao_simbolica", "presenca_plenario"],
+    campos_pendentes: ["relatoria_processante", "audiencia_contas", "oficio_fiscalizacao", "audiencia_publica_diligencia", "presenca_comissoes"],
   },
   anos,
 };
