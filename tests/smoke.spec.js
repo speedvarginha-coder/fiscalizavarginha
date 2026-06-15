@@ -234,6 +234,44 @@ test.describe("Filtros básicos", () => {
     await expect(modal).toContainText(/CONFER.*NCIA DE PROCED.*NCIA/i);
   });
 
+  test("Prefeitura — filtro de ano de contratos refina a lista", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    await page.locator('[data-pref-tab="contratos"]').first().click();
+    const select = page.locator("#filtroAnoContrato");
+    await expect(select).toBeAttached();
+    await select.selectOption("2025");
+    await page.waitForTimeout(500);
+    const count = await page.locator("#contratosContador").innerText();
+    expect(count).toContain("contratos");
+  });
+
+  test("Prefeitura — filtro de ano de licitação e busca funcionam", async ({ page }) => {
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    await page.locator('.pref-tab[data-pref-tab="licitacoes"]').first().click();
+    const select = page.locator("#filtroAnoLicitacao");
+    await expect(select).toBeVisible();
+    await select.selectOption("2026");
+    await page.waitForTimeout(500);
+    const count = await page.locator("#licitacoesContador").innerText();
+    expect(count).toContain("licitações");
+  });
+
+  test("Pessoal — ranking de comissionados explica e exibe período", async ({ page }) => {
+    await page.goto(fileUrl("pessoal.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2000);
+    const ranking = page.locator("#rankingComissionados");
+    await expect(ranking).toBeAttached();
+    await expect(ranking.locator("article").first()).toBeAttached();
+    const period = page.locator("#rankingPeriodoInfo");
+    await expect(period).toBeAttached();
+    await expect(period).toContainText(/Prefeitura|Câmara/i);
+    const lead = page.locator(".block__lead").filter({ hasText: "Quem são os comissionados?" });
+    await expect(lead).toContainText("Quem são os comissionados?");
+    await expect(lead).toContainText("Salário Bruto Mensal");
+  });
+
   test("Câmara — filtro de emendas aceita texto", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);

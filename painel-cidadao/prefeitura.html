@@ -38,7 +38,6 @@
       <a href="atualizacoes.html" class="nav__link">Atualizações</a>
       <a href="prefeitura.html" class="nav__link nav__link--active">Prefeitura</a>
       <a href="camara.html"     class="nav__link">Câmara</a>
-      <a href="camara.html#indiceRelevancia" class="nav__link">Relevância Vereadores</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
@@ -175,7 +174,8 @@
          <p id="healthSummary"></p>
       </div>
       <div id="contratosVencendoBlock"></div>
-      <div class="filterbar">
+      <button type="button" class="btn-filter-trigger" onclick="ZELA.toggleMobileFilters('contratosFilterbar')">🔍 Filtrar e Buscar Contratos</button>
+      <div id="contratosFilterbar" class="filterbar">
         <select id="filtroAnoContrato" aria-label="Filtrar por ano" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
           <option value="">Todos os anos</option>
           <option value="2026" selected>2026</option>
@@ -194,6 +194,7 @@
           <option value="5000000">Acima de R$ 5 milhões</option>
         </select>
         <span id="contratosContador" class="filterbar__count"></span>
+        <button type="button" class="btn-filter-close" onclick="ZELA.toggleMobileFilters('contratosFilterbar')">Aplicar Filtros</button>
       </div>
       <div id="contratos" class="contratos"></div>
       <div id="contratosMais" class="loadmore" hidden>
@@ -211,9 +212,31 @@
         Processos de compra abertos: o que a Prefeitura quer comprar agora.
         Acompanhar isso é a forma de fiscalizar <em>antes</em> do dinheiro sair.
       </p>
-      <div class="filterbar">
-        <input id="filtroLicitacao" type="search" placeholder="Buscar objeto ou modalidade…">
-        <select id="filtroValorLicitacao" aria-label="Filtrar por valor mínimo">
+
+      <div class="legal-context" style="margin-bottom: 20px; background: #fafafa; border-left: 4px solid var(--accent); padding: 15px; border-radius: 4px;">
+        <strong>📋 Portais Oficiais de Editais e Contratações Públicas:</strong>
+        <p class="muted small" style="margin: 5px 0 10px 0;">Consulte os editais e acompanhe os processos de compras em andamento diretamente nas fontes oficiais:</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <a class="btn-link" href="https://www.varginha.mg.gov.br/portal/editais" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">Portal de Editais</a>
+          <a class="btn-link" href="https://www.varginha.mg.gov.br/portal/editais/1" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">Licitações e Compras</a>
+          <a class="btn-link" href="https://www.varginha.mg.gov.br/transparencia" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">Portal Transparência</a>
+          <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">PNCP Editais</a>
+          <a class="btn-link" href="https://pncp.gov.br/app/contratacoes-diretas?q=varginha" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">PNCP Diretas</a>
+          <a class="btn-link" href="https://fiscalizandocomtce.tce.mg.gov.br" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #efebe9; border-radius: 4px; color: #4e342e; font-size: 0.78em; font-weight: 500; border: 1px solid #bcaaa4;">Painel TCE-MG</a>
+          <a class="btn-link" href="https://www.tce.mg.gov.br/radarcompras" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #efebe9; border-radius: 4px; color: #4e342e; font-size: 0.78em; font-weight: 500; border: 1px solid #bcaaa4;">Radar TCE-MG</a>
+        </div>
+      </div>
+
+      <button type="button" class="btn-filter-trigger" onclick="ZELA.toggleMobileFilters('licitacoesFilterbar')">🔍 Filtrar e Buscar Licitações</button>
+      <div id="licitacoesFilterbar" class="filterbar">
+        <select id="filtroAnoLicitacao" aria-label="Filtrar por ano" onchange="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
+          <option value="" selected>Todos os anos</option>
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+        <input id="filtroLicitacao" type="search" placeholder="Buscar objeto ou modalidade…" oninput="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
+        <select id="filtroValorLicitacao" aria-label="Filtrar por valor mínimo" onchange="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
           <option value="">Qualquer valor</option>
           <option value="50000">Acima de R$ 50 mil</option>
           <option value="100000">Acima de R$ 100 mil</option>
@@ -221,6 +244,7 @@
           <option value="1000000">Acima de R$ 1 milhão</option>
         </select>
         <span id="licitacoesContador" class="filterbar__count"></span>
+        <button type="button" class="btn-filter-close" onclick="ZELA.toggleMobileFilters('licitacoesFilterbar')">Aplicar Filtros</button>
       </div>
       <div id="licitacoes" class="licitacoes"></div>
       <div id="licitacoesMais" class="loadmore" hidden>
@@ -329,6 +353,16 @@
         Recorte de obras públicas, contratos, licitações e compras com termos de CBUQ,
         recapeamento, pavimentação, drenagem, tapa-buraco e itens próximos.
       </p>
+      <div class="filterbar">
+        <select id="filtroAnoAsfalto" aria-label="Filtrar asfalto por ano">
+          <option value="" selected>Todos os anos</option>
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+        <input id="filtroBuscaAsfalto" type="search" placeholder="Buscar por rua, bairro, empresa, objeto..." oninput="ZELA.renderAsfaltoPrefeitura && ZELA.renderAsfaltoPrefeitura()">
+        <span id="asfaltoContador" class="filterbar__count"></span>
+      </div>
       <div id="asfaltoPainel"></div>
     </div>
     </section>

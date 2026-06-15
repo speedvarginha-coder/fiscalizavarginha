@@ -3040,6 +3040,53 @@
 
   if ($("contratosBlock")) {
     const contratos          = pf.contratos || [];
+
+    const extrairAnoSimplesContratos = (dataStr) => {
+      if (!dataStr) return null;
+      const match = dataStr.match(/^(\d{4})/);
+      return match ? Number(match[1]) : null;
+    };
+
+    const estaContratoAtivoNoAno = (c, anoAlvoStr) => {
+      if (!anoAlvoStr) return true;
+      const anoAlvo = Number(anoAlvoStr);
+
+      let _anoInicio = extrairAnoSimplesContratos(c.data_assinatura || c.data);
+      if (!_anoInicio && c.ano) {
+        _anoInicio = Number(c.ano);
+      }
+
+      if (!_anoInicio) return false;
+
+      // Se começou depois do ano alvo, não estava ativo no ano alvo
+      if (_anoInicio > anoAlvo) return false;
+
+      // Se começou exatamente no ano alvo, está ativo
+      if (_anoInicio === anoAlvo) return true;
+
+      // Se começou antes do ano alvo:
+      // Verificamos data de término (data_fim)
+      const dataFimStr = c.data_fim || "";
+      let _anoFim = extrairAnoSimplesContratos(dataFimStr);
+
+      if (_anoFim) {
+        if (_anoFim < anoAlvo) return false;
+        return true;
+      }
+
+      // Verificamos a situação
+      const situacao = (c.situacao || "").toLowerCase();
+      if (situacao === "em andamento" || situacao === "vigente" || situacao === "ativo" || situacao === "homologado") {
+        return true;
+      }
+
+      // Se concluído ou rescindido e começou antes do ano alvo, assumimos inativo
+      if (situacao === "concluido" || situacao === "concluído" || situacao === "rescindido" || situacao === "finalizado") {
+        return false;
+      }
+
+      return false;
+    };
     const filtroContrato     = $("filtroContrato");
     const filtroAnoContrato  = $("filtroAnoContrato");
     const filtroValorContrato = $("filtroValorContrato");
@@ -3307,7 +3354,7 @@
       const valorMin = filtroValorContrato ? Number(filtroValorContrato.value || 0) : 0;
       const secFiltro = filtroSecretaria ? filtroSecretaria.value : "";
       const view = contratos.filter(c =>
-        (!anoFiltro || String(c.ano || "") === anoFiltro) &&
+        estaContratoAtivoNoAno(c, anoFiltro) &&
         (!valorMin || (Number(c.valor) || 0) >= valorMin) &&
         (!secFiltro || (c.entidade || "").trim() === secFiltro) &&
         (!categoriaAtivaContratos || window.ZELA.classificarItem(c) === categoriaAtivaContratos) &&
@@ -3535,7 +3582,7 @@
         const ano = filtroAnoContrato.value || "";
         const vmin = filtroValorContrato ? Number(filtroValorContrato.value || 0) : 0;
         const view = contratos.filter(c =>
-          (!ano || String(c.ano || "") === ano) &&
+          estaContratoAtivoNoAno(c, ano) &&
           (!vmin || (Number(c.valor) || 0) >= vmin) &&
           (!q || norm(c.contratado).includes(q) || norm(c.objeto).includes(q) || norm(c.modalidade).includes(q))
         );
@@ -3569,6 +3616,7 @@
     const licitacoes = pf.licit_andamento || [];
     const filtroLic     = $("filtroLicitacao");
     const filtroValLic  = $("filtroValorLicitacao");
+    const filtroAnoLic  = $("filtroAnoLicitacao");
     const licContador   = $("licitacoesContador");
     const licMaisBtn    = $("btnLicitacoesMais");
     const licMaisWrap   = $("licitacoesMais");
@@ -3578,18 +3626,22 @@
       if (reset) licShown = 12;
       const q    = norm(filtroLic ? filtroLic.value : "");
       const vmin = filtroValLic ? Number(filtroValLic.value || 0) : 0;
-      const filtrados = licitacoes.filter(l =>
-        (!vmin || (Number(l.valor) || 0) >= vmin) &&
-        (!q    || norm((l.objeto || "") + (l.modalidade || "")).includes(q))
-      );
+      const anoFiltro = filtroAnoLic ? filtroAnoLic.value : "";
+      const filtrados = licitacoes.filter(l => {
+        const anoLicitacao = l.ano || (l.data ? l.data.substring(0, 4) : "");
+        return (!anoFiltro || String(anoLicitacao) === anoFiltro) &&
+          (!vmin || (Number(l.valor) || 0) >= vmin) &&
+          (!q    || norm((l.objeto || "") + (l.modalidade || "") + (l.numero || "")).includes(q));
+      });
       if (licContador) licContador.textContent = `${filtrados.length} licitações`;
       if (!filtrados.length) {
         $("licitacoes").innerHTML = `<div class="empty">
           <strong>Nenhuma licitação encontrada</strong>
-          <p>Tente remover o filtro de valor ou limpar a busca.</p>
+          <p>Tente remover o filtro de valor, mudar o ano ou limpar a busca.</p>
           <button class="btn-limpar" onclick="
             if(document.getElementById('filtroLicitacao')) document.getElementById('filtroLicitacao').value='';
             if(document.getElementById('filtroValorLicitacao')) document.getElementById('filtroValorLicitacao').value='';
+            if(document.getElementById('filtroAnoLicitacao')) document.getElementById('filtroAnoLicitacao').value='';
             window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true);
           ">Limpar filtros</button>
         </div>`;
@@ -3621,6 +3673,7 @@
         const p = new URLSearchParams(window.location.search);
         if (q) p.set("lic_q", filtroLic.value.trim()); else p.delete("lic_q");
         if (vmin) p.set("lic_v", String(vmin)); else p.delete("lic_v");
+        if (anoFiltro) p.set("lic_ano", anoFiltro); else p.delete("lic_ano");
         const str = p.toString();
         history.replaceState(null, "", str ? "?" + str + window.location.hash : window.location.pathname + window.location.hash);
       })();
@@ -3631,6 +3684,7 @@
       window.ZELA.renderLicitacoes = renderLicitacoes;
       if (filtroLic)    filtroLic.addEventListener("input",  () => renderLicitacoes(true));
       if (filtroValLic) filtroValLic.addEventListener("change", () => renderLicitacoes(true));
+      if (filtroAnoLic) filtroAnoLic.addEventListener("change", () => renderLicitacoes(true));
       if (licMaisBtn)   licMaisBtn.addEventListener("click", () => { licShown += 12; renderLicitacoes(false); });
 
       // restore URL params
@@ -3638,6 +3692,7 @@
         const p = new URLSearchParams(window.location.search);
         if (filtroLic    && p.get("lic_q")) filtroLic.value    = p.get("lic_q");
         if (filtroValLic && p.get("lic_v")) filtroValLic.value = p.get("lic_v");
+        if (filtroAnoLic && p.get("lic_ano")) filtroAnoLic.value = p.get("lic_ano");
       })();
 
       renderLicitacoes(true);
@@ -3652,10 +3707,13 @@
       licCsvBtn.addEventListener("click", () => {
         const q    = norm(filtroLic ? filtroLic.value : "");
         const vmin = filtroValLic ? Number(filtroValLic.value || 0) : 0;
-        const view = licitacoes.filter(l =>
-          (!vmin || (Number(l.valor) || 0) >= vmin) &&
-          (!q    || norm((l.objeto || "") + (l.modalidade || "")).includes(q))
-        );
+        const anoFiltro = filtroAnoLic ? filtroAnoLic.value : "";
+        const view = licitacoes.filter(l => {
+          const anoLicitacao = l.ano || (l.data ? l.data.substring(0, 4) : "");
+          return (!anoFiltro || String(anoLicitacao) === anoFiltro) &&
+            (!vmin || (Number(l.valor) || 0) >= vmin) &&
+            (!q    || norm((l.objeto || "") + (l.modalidade || "") + (l.numero || "")).includes(q));
+        });
         exportCSV(view.map(l => ({
           numero:      `${l.numero || ""}/${l.ano || ""}`,
           objeto:      cleanText(l.objeto || ""),
@@ -4273,9 +4331,53 @@ ${url}
     const camaraServ = (pes.camara || {}).servidores || [];
     const prefServ   = (pes.prefeitura || {}).servidores || [];
     
+    let compPref = "";
+    let compCam = "";
+    const prefStatusText = (pes.prefeitura && pes.prefeitura.status) || "";
+    const camStatusText = (pes.camara && pes.camara.status) || "";
+    const mPref = prefStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i);
+    if (mPref) compPref = mPref[1];
+    const mCam = camStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i);
+    if (mCam) compCam = mCam[1];
+
+    const processarEConsolidar = (servidores, orgao) => {
+      const grupos = {};
+      servidores.forEach(s => {
+        const chave = s.matricula ? `${s.matricula}` : `${s.nome}-${s.cargo}`;
+        if (!grupos[chave]) {
+          grupos[chave] = [];
+        }
+        grupos[chave].push(s);
+      });
+
+      const consolidados = [];
+      Object.keys(grupos).forEach(chave => {
+        const historico = grupos[chave];
+        const maisRecente = { ...historico[historico.length - 1], orgao };
+        
+        const vencimentosValidos = historico
+          .map(h => Number(h.vencimentos) || 0)
+          .filter(v => v > 0);
+        
+        if (vencimentosValidos.length > 1) {
+          const vencNormal = Math.min(...vencimentosValidos);
+          const vencAtual = Number(maisRecente.vencimentos) || 0;
+          if (vencAtual > vencNormal * 1.25) {
+            maisRecente.isAtipico = true;
+            maisRecente.vencimentoNormal = vencNormal;
+          }
+        }
+        consolidados.push(maisRecente);
+      });
+      return consolidados;
+    };
+
+    const camaraConsolidado = processarEConsolidar(camaraServ, "Câmara");
+    const prefeituraConsolidado = processarEConsolidar(prefServ, "Prefeitura");
+
     const todos = [
-      ...camaraServ.map(s => ({ ...s, orgao: "Câmara" })),
-      ...prefServ.map(s => ({ ...s, orgao: "Prefeitura" }))
+      ...camaraConsolidado,
+      ...prefeituraConsolidado
     ];
 
     const buscaEl    = $("buscaServidor");
@@ -4300,21 +4402,28 @@ ${url}
 
     const _renderServCard = (s) => {
       const isCom = s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "");
+      const comp = s.orgao === "Câmara" ? compCam : compPref;
+      const tagAtipico = s.isAtipico
+        ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ Contém 13º/Férias (Base estimada: ${fmtBRL(s.vencimentoNormal)})</div>`
+        : "";
       return `<article class="contrato">
-        <div class="contrato__valor">
-          ${fmtBRL(s.vencimentos)}
-          <div class="small muted">Bruto/Vencimento</div>
+        <div class="contrato__valor" style="min-width: 140px;">
+          <span class="vencimento-titulo">Salário Bruto (Sem Descontos)</span>
+          <strong class="vencimento-valor">${fmtBRL(s.vencimentos)}</strong>
+          <div class="small muted">Mensal (${comp || 'ref. mês'})</div>
         </div>
         <div>
           <p class="contrato__nome">
             ${highlight(s.nome, _pessoalQ)}
             ${isCom ? '<span class="em__status em__status--no">Comissionado</span>' : '<span class="em__status em__status--ok">Servidor</span>'}
+            <span class="tag-orgao-${s.orgao === "Câmara" ? "camara" : "prefeitura"}">${esc(s.orgao)}</span>
           </p>
           <p class="contrato__obj"><strong>Cargo/Lotação:</strong> ${highlight(s.lotacao, _pessoalQ)}</p>
           <div class="contrato__meta">
-            <span><strong>Órgão:</strong> ${esc(cleanText(s.orgao))}</span>
+            <span><strong>Salário Líquido (Dinheiro na Conta):</strong> <strong>${fmtBRL(s.liquido || 0)}</strong></span>
             ${s.matricula ? `<span><strong>Matrícula:</strong> ${s.matricula}</span>` : ""}
           </div>
+          ${tagAtipico}
         </div>
       </article>`;
     };
@@ -4424,21 +4533,43 @@ ${url}
         .sort((a, b) => (b.vencimentos || 0) - (a.vencimentos || 0))
         .slice(0, 10);
       if (todosComissionados.length) {
-        rankingEl.innerHTML = todosComissionados.map((s, i) => `
+        rankingEl.innerHTML = todosComissionados.map((s, i) => {
+          const comp = s.orgao === "Câmara" ? compCam : compPref;
+          const tagAtipico = s.isAtipico
+            ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ Contém 13º/Férias (Base estimada: ${fmtBRL(s.vencimentoNormal)})</div>`
+            : "";
+          return `
           <article class="contrato" style="border-left:4px solid ${s.orgao === "Câmara" ? "#c0392b" : "#2980b9"}">
-            <div class="contrato__valor">
-              ${fmtBRL(s.vencimentos || 0)}
-              <div class="small muted">${esc(s.orgao)}</div>
+            <div class="contrato__valor" style="min-width: 140px;">
+              <span class="vencimento-titulo">Salário Bruto (Sem Descontos)</span>
+              <strong class="vencimento-valor">${fmtBRL(s.vencimentos || 0)}</strong>
+              <div class="small muted">Mensal (${comp || 'ref. mês'})</div>
             </div>
             <div>
-              <p class="contrato__nome">${i + 1}. ${esc(s.nome || "Sem nome")}</p>
-              <p class="contrato__obj">${esc(s.cargo || s.lotacao || "Cargo não informado")}</p>
+              <p class="contrato__nome">
+                ${i + 1}. ${esc(s.nome || "Sem nome")}
+                <span class="tag-orgao-${s.orgao === "Câmara" ? "camara" : "prefeitura"}">${esc(s.orgao)}</span>
+              </p>
+              <p class="contrato__obj"><strong>Cargo:</strong> ${esc(s.cargo || s.lotacao || "Cargo não informado")}</p>
               <div class="contrato__meta">
-                <span>Líquido: <strong>${fmtBRL(s.liquido || 0)}</strong></span>
-                ${s.matricula ? `<span>Mat. ${s.matricula}</span>` : ""}
+                <span><strong>Salário Líquido (Dinheiro na Conta):</strong> <strong>${fmtBRL(s.liquido || 0)}</strong></span>
+                ${s.matricula ? `<span>Matrícula ${s.matricula}</span>` : ""}
               </div>
+              ${tagAtipico}
             </div>
-          </article>`).join("");
+          </article>`;
+        }).join("");
+
+        const infoEl = $("rankingPeriodoInfo");
+        if (infoEl) {
+          const partes = [];
+          if (compPref) partes.push(`Prefeitura: ref. ${compPref}`);
+          if (compCam) partes.push(`Câmara: ref. ${compCam}`);
+          if (partes.length) {
+            infoEl.textContent = `(Valores mensais de referência — ${partes.join(" | ")})`;
+            infoEl.style.display = "inline-block";
+          }
+        }
       }
     }
 
@@ -4490,7 +4621,27 @@ ${url}
   function renderAsfaltoPrefeitura() {
     const root = $("asfaltoPainel");
     if (!root) return;
-    const termos = ["asfalto", "asfaltica", "asfaltico", "cbuq", "pavimentacao", "pavimenta", "recape", "tapa buraco", "tapa-buraco", "buraco", "drenagem", "meio fio", "sarjeta"];
+
+    window.ZELA.renderAsfaltoPrefeitura = renderAsfaltoPrefeitura;
+
+    const select = $("filtroAnoAsfalto");
+    const buscaInput = $("filtroBuscaAsfalto");
+    if (select && !window.ZELA._asfaltoInit) {
+      window.ZELA._asfaltoInit = true;
+      select.addEventListener("change", () => renderAsfaltoPrefeitura());
+      if (buscaInput) {
+        buscaInput.addEventListener("input", () => renderAsfaltoPrefeitura());
+      }
+    }
+
+    const anoSelecionado = select ? select.value : "";
+    const buscaTexto = buscaInput ? norm(buscaInput.value.trim()) : "";
+
+    const termos = [
+      "asfalto", "asfaltica", "asfaltico", "cbuq", "pavimentacao", "pavimenta", "recape", 
+      "tapa buraco", "tapa-buraco", "buraco", "drenagem", "meio fio", "sarjeta",
+      "recapeamento", "recapeamento asfaltico", "recapeamento asfáltico", "asfaltamento", "pavimento"
+    ];
     const textoItem = (i) => cleanText([i.origem, i.objeto, i.descricao, i.categoria, i.tipo_obra, i.contratado, i.fornecedor, i.endereco, i.bairro, i.situacao].filter(Boolean).join(" "));
     const ehAsfalto = (i) => {
       const txt = norm(textoItem(i));
@@ -4506,6 +4657,67 @@ ${url}
     };
     const locais = (i) => cleanText(i.endereco || [i.logradouro, i.bairro].filter(Boolean).join(", ")) || "Local não informado no objeto";
     const dataItem = (i) => dataCurtaBR(i.data_inicio || i.data_ordem_servico || i.data_ultima_medicao || i.data_assinatura || i.data || "");
+    
+    const extrairAnoSimples = (dataStr) => {
+      if (!dataStr) return null;
+      const match = dataStr.match(/^(\d{4})/);
+      return match ? Number(match[1]) : null;
+    };
+
+    const estaAtivoNoAno = (i, anoAlvoStr) => {
+      if (!anoAlvoStr) return true;
+      const anoAlvo = Number(anoAlvoStr);
+
+      const dataInicioStr = i.data_inicio || i.data_ordem_servico || i.data_assinatura || i.data || "";
+      let anoInicio = extrairAnoSimples(dataInicioStr);
+      if (!anoInicio && i.ano) {
+        anoInicio = Number(i.ano);
+      }
+
+      if (!anoInicio) return false;
+
+      // Se começou depois do ano alvo, não estava ativo no ano alvo
+      if (anoInicio > anoAlvo) return false;
+
+      // Se começou exatamente no ano alvo, está ativo
+      if (anoInicio === anoAlvo) return true;
+
+      // Se começou antes do ano alvo:
+      // 1. Verificamos data de término (efetiva ou prevista) ou vigência
+      const dataFimStr = i.data_efetiva_conclusao || i.data_prevista_conclusao || i.data_fim || "";
+      let anoFim = extrairAnoSimples(dataFimStr);
+
+      if (anoFim) {
+        if (anoFim < anoAlvo) return false;
+        return true;
+      }
+
+      // 2. Verificamos se há medição recente no ano alvo ou posterior
+      const dataUltimaMedStr = i.data_ultima_medicao || "";
+      const anoUltimaMed = extrairAnoSimples(dataUltimaMedStr);
+      if (anoUltimaMed && anoUltimaMed >= anoAlvo) {
+        return true;
+      }
+
+      // 3. Verificamos se está explícito em andamento, ativo ou vigente
+      const situacao = (i.situacao || "").toLowerCase();
+      if (situacao === "em andamento" || situacao === "vigente" || situacao === "ativo" || situacao === "homologado") {
+        return true;
+      }
+
+      const situacaoObra = (i.situacao_obra || "").toLowerCase();
+      if (situacaoObra === "em andamento" || situacaoObra === "vigente" || situacaoObra === "ativa") {
+        return true;
+      }
+
+      // Se concluída e começou antes, e não temos nenhuma evidência de que avançou, assumimos concluída no ano de início
+      if (situacao === "concluida" || situacao === "concluído") {
+        return false;
+      }
+
+      return false;
+    };
+
     const bases = [
       ...(pf.obras_publicas || []).map(i => ({ ...i, origem: "Obra pública Betha", valor_asfalto: Number(i.valor || 0), obra_publica: true })),
       ...(pf.contratos || []).map((i, idx) => ({ ...i, origem: "Contrato", valor_asfalto: Number(i.valor || 0), contratoIdx: idx })),
@@ -4528,29 +4740,42 @@ ${url}
       };
     }).sort((a, b) => Number(b.valor_asfalto || 0) - Number(a.valor_asfalto || 0));
 
-    const total = bases.reduce((s, i) => s + Number(i.valor_asfalto || 0), 0);
-    const oficiais = bases.filter(i => i.obra_publica).length;
-    const fila = bases.filter(i => i.pendencias.length).slice(0, 4);
+    let basesFiltradas = bases.filter(i => estaAtivoNoAno(i, anoSelecionado));
+    if (buscaTexto) {
+      basesFiltradas = basesFiltradas.filter(i => {
+        const txt = norm(`${i.origem} ${i.contratado || i.fornecedor || ""} ${i.objeto || i.descricao || ""} ${i.local_asfalto || ""} ${i.tipo_asfalto || ""}`);
+        return txt.includes(buscaTexto);
+      });
+    }
+
+    const total = basesFiltradas.reduce((s, i) => s + Number(i.valor_asfalto || 0), 0);
+    const oficiais = basesFiltradas.filter(i => i.obra_publica).length;
+    const fila = basesFiltradas.filter(i => i.pendencias.length).slice(0, 4);
     window.ZELA._asfaltoLAI = {};
+
+    const contadorEl = $("asfaltoContador");
+    if (contadorEl) {
+      contadorEl.textContent = `${basesFiltradas.length} registro(s) exibido(s)`;
+    }
 
     root.innerHTML = `
       <div class="asfalto-dashboard">
         <article class="asfalto-hero">
           <span class="reader-summary__label">Recorte viário</span>
           <h4>${fmtBRL(total)}</h4>
-          <p>${fmtNum(bases.length)} registro(s) localizados. Inclui ${fmtNum(oficiais)} obra(s) oficiais da consulta Betha 83026.</p>
+          <p>${fmtNum(basesFiltradas.length)} registro(s) localizados. Inclui ${fmtNum(oficiais)} obra(s) oficiais da consulta Betha 83026.</p>
         </article>
         <div class="asfalto-metrics">
-          <article><strong>${fmtNum(bases.length)}</strong><span>registro(s)</span></article>
+          <article><strong>${fmtNum(basesFiltradas.length)}</strong><span>registro(s)</span></article>
           <article><strong>${fmtNum(oficiais)}</strong><span>obra(s) oficiais Betha</span></article>
-          <article><strong>${bases.some(i => i.custo_m2) ? fmtBRL(total / bases.reduce((s, i) => s + Number(i.area_m2 || 0), 0)) : "Sem m²"}</strong><span>custo médio por m²</span></article>
+          <article><strong>${basesFiltradas.some(i => i.custo_m2) ? fmtBRL(total / basesFiltradas.reduce((s, i) => s + Number(i.area_m2 || 0), 0)) : "Sem m²"}</strong><span>custo médio por m²</span></article>
           <article><strong>${fmtNum(fila.length)}</strong><span>Faltam dados para auditar</span></article>
         </div>
       </div>
       ${fila.length ? `<section class="asfalto-pendencias"><div class="asfalto-pendencias__head"><span>Fila de cobrança</span><strong>Faltam dados para auditar ${fmtNum(fila.length)} item(ns)</strong></div>${fila.map((i, idx) => `<article><div><strong>${esc(i.contratado || i.fornecedor || i.categoria || "Item viário")}</strong><p>${esc(i.tipo_asfalto)} · ${fmtBRL(i.valor_asfalto || 0)} · Data: ${esc(dataItem(i))}</p><span class="asfalto-pending-chips">${i.pendencias.map(p => `<i>${esc(p)}</i>`).join("")}</span></div></article>`).join("")}</section>` : ""}
       <div class="report-note asfalto-note"><strong>Como ler este recorte</strong><p>Valor contratado não prova execução. Para saber onde foi feito e quanto custou por rua, peça medição por trecho, metragem, notas, fotos e fiscal responsável.</p></div>
       <div class="asfalto-lista">
-        ${bases.slice(0, 40).map((i, idx) => {
+        ${basesFiltradas.slice(0, 40).map((i, idx) => {
           const id = `asfalto-${idx}`;
           window.ZELA._asfaltoLAI[id] = `Solicito documentos do ${i.origem} relacionado a asfalto/pavimentação: objeto, local por rua/bairro, metragem, medição, notas fiscais, fiscal responsável e fotos antes/depois. Item: ${i.numero || i.id_obra || "s/n"} - ${i.objeto || i.descricao || ""}`;
           const url = i.obra_publica ? "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026" : "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043";
@@ -5906,7 +6131,11 @@ ${url}
       { nome: "Informatica e software", termos: ["software", "sistema", "licenca", "informatica", "computador", "notebook", "impressora"] },
       { nome: "Consultoria", termos: ["consultoria", "assessoria", "apoio tecnico", "serviços tecnicos especializados"] },
       { nome: "Obras e reforma", termos: ["obra", "reforma", "construcao", "ampliacao", "engenharia", "empreitada"] },
-      { nome: "Asfalto e pavimentacao", termos: ["asfalto", "pavimentacao", "recapeamento", "tapa buraco", "massa asfaltica", "CBUQ"] },
+      { nome: "Asfalto e pavimentacao", termos: [
+        "asfalto", "asfaltica", "asfaltico", "cbuq", "pavimentacao", "pavimenta", "recape", 
+        "tapa buraco", "tapa-buraco", "buraco", "drenagem", "meio fio", "sarjeta",
+        "recapeamento", "recapeamento asfaltico", "recapeamento asfáltico", "asfaltamento", "pavimento"
+      ] },
       { nome: "Saúde/medicamentos", termos: ["medicamento", "remedio", "farmacia", "insumo hospitalar", "material hospitalar", "saude"] },
       { nome: "Exames e consultas", termos: ["exame", "consulta", "laboratorial", "diagnostico", "ultrassom", "tomografia"] },
       { nome: "Merenda escolar", termos: ["merenda", "alimentacao escolar", "generos alimenticios", "escola", "creche"] },
@@ -6590,6 +6819,66 @@ ${url}
       });
     });
   })();
+
+  // ============= GAVETA DE FILTROS RESPONSIVA MOBILE =============
+  window.ZELA.toggleMobileFilters = function(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    let overlay = document.getElementById("filterOverlay");
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.id = "filterOverlay";
+      overlay.className = "filter-overlay";
+      document.body.appendChild(overlay);
+      overlay.addEventListener("click", () => {
+        const openFilters = document.querySelectorAll(".filterbar.is-open");
+        openFilters.forEach(f => f.classList.remove("is-open"));
+        overlay.classList.remove("is-active");
+      });
+    }
+    const isOpen = el.classList.toggle("is-open");
+    if (isOpen) {
+      overlay.classList.add("is-active");
+    } else {
+      overlay.classList.remove("is-active");
+    }
+  };
+
+  // ============= MODO ESCURO (DARK THEME) =============
+  window.ZELA.initTheme = function() {
+    const isDark = localStorage.getItem("zela-theme") === "dark";
+    if (isDark) {
+      document.body.classList.add("dark-theme");
+    }
+    
+    const topbarInner = document.querySelector(".topbar__inner");
+    if (topbarInner && !document.querySelector(".theme-toggle-btn")) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "theme-toggle-btn";
+      btn.setAttribute("aria-label", "Alternar tema escuro/claro");
+      btn.innerHTML = isDark ? "☀️ Claro" : "🌙 Escuro";
+      btn.addEventListener("click", () => {
+        const isCurrentlyDark = document.body.classList.toggle("dark-theme");
+        localStorage.setItem("zela-theme", isCurrentlyDark ? "dark" : "light");
+        btn.innerHTML = isCurrentlyDark ? "☀️ Claro" : "🌙 Escuro";
+      });
+      const navToggle = document.querySelector(".nav__toggle");
+      if (navToggle) {
+        navToggle.before(btn);
+      } else {
+        topbarInner.appendChild(btn);
+      }
+    }
+  };
+
+  // Garante a execucao apos o DOM estar pronto
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", window.ZELA.initTheme);
+  } else {
+    window.ZELA.initTheme();
+  }
+
 
   } catch (err) {
     const _ov = document.getElementById("loading-overlay");
