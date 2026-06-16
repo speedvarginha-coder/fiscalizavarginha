@@ -20,6 +20,8 @@ Legenda: ✅ já integrado · 🆕 novo (vale integrar) · 🔎 verificar link/e
 | Receita — CNPJ (dados abertos) | **QSA/sócios, capital, data abertura, CNAE** | 🆕 (hoje só stub) | https://dados.gov.br/dataset/cnpj |
 | CEIS/CNEP (sanções) | fornecedor punido/inidôneo | ✅ | https://portaldatransparencia.gov.br/sancoes |
 | CNJ Improbidade | sócio/agente já condenado | 🆕🔎 | https://www.cnj.jus.br/improbidade_adm/consultar_requerido.php |
+| CGU — Acordos de leniência / PAR | fornecedor em leniência/sanção CGU-PJ | 🆕🔎 baixa | https://www.gov.br/cgu/ (download em dados.gov.br, não a Central de Painéis/SPA) |
+| CGU — Escala Brasil Transparente (EBT) | nota externa de transparência do município | 🆕🔎 baixa | https://www.gov.br/cgu/ (avaliação de transparência) |
 | PEP (COAF) | agente exposto + parentes (parentesco) | 🆕🔎 | https://www.gov.br/coaf/pt-br/assuntos/pessoas-expostas-politicamente |
 | TSE — DivulgaCandContas | **doadores de campanha + bens** | 🆕 | https://divulgacandcontas.tse.jus.br/ |
 | TSE — Dados Abertos | candidatos/partidos/resultados | 🆕🔎 | https://dadosabertos.tse.jus.br/ |
