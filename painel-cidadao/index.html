@@ -14,7 +14,7 @@
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Fiscaliza Varginha · Painel Cidadão">
 <meta name="twitter:description" content="Fiscalização cidadã independente de Varginha-MG.">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=20260616-central">
 </head>
 <body data-page="home">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -398,7 +398,7 @@
       <div class="home-ops__head">
         <span>Central de fiscalização</span>
         <h2>Comece pelos sinais que mais importam.</h2>
-        <p>Resumo direto de dinheiro, contratos, diárias, emendas e canais oficiais para conferir tudo na fonte.</p>
+        <p>Resumo direto de dinheiro público: contratos, emendas, canais oficiais e diárias para conferir tudo na fonte.</p>
         <div class="home-ops__brief" aria-label="Roteiro rapido">
           <strong>Roteiro rápido</strong>
           <a href="prefeitura.html?tab=contratos">1. Abra contratos acima de R$ 1 mi</a>
@@ -406,7 +406,7 @@
           <a href="camara.html">3. Compare emenda, CNPJ e pagamento</a>
         </div>
         <div id="homeOpsFreshness" class="home-ops__freshness">Dados locais carregados no navegador</div>
-        <div id="homeDataHealth" class="home-data-health" hidden></div>
+        <div id="homeDataHealthInline" class="home-data-health" hidden></div>
         <script>
         (function () {
           var box = document.getElementById("homeDataHealth");
@@ -438,6 +438,7 @@
         </script>
       </div>
 
+      <div class="home-ops__side">
       <div id="homeOpsStats" class="home-ops__stats">
         <a href="prefeitura.html" class="home-stat">
           <strong>Prefeitura</strong>
@@ -471,6 +472,10 @@
         </a>
       </div>
 
+      </div>
+
+      <section id="homeDataHealth" class="home-data-health home-data-health--home" hidden></section>
+
       <section id="homeMoneyMap" class="home-money-map" aria-label="Para onde foi o dinheiro público"></section>
       <section id="homeTrendWatch" class="home-trend-watch" aria-label="Comparativo de tendência do dinheiro público"></section>
       <section id="dataReadingLegend" class="data-legend" aria-label="Como ler os dados deste painel" hidden></section>
@@ -503,25 +508,47 @@
   <div class="container footer__inner">
     <div class="footer__brand">
       <strong>Fiscaliza Varginha</strong>
-      <span>Fiscalização Cidadã Independente</span>
+      <span>Painel Cidadão · Fiscalização Independente</span>
       <p class="muted small" style="margin-top:10px">
-        Este painel não possui vínculo governamental. <br>
-        Todos os dados são extraídos de fontes oficiais de transparência.
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
       </p>
     </div>
-    <div class="footer__links">
-      <strong>Acesso Rápido</strong>
-      <nav>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
         <a href="prefeitura.html">Prefeitura</a>
         <a href="camara.html">Câmara</a>
-        <a href="relatorios.html">Sinais de Atenção</a>
-        <a href="cobrar.html">Como Protocolar</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
       </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
     </div>
   </div>
   <div class="footer__bottom">
     <div class="container">
-      <span>Fiscaliza Varginha &copy; 2026 &middot; Varginha-MG</span>
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
     </div>
   </div>
 </footer>

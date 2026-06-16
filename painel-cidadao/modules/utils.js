@@ -140,6 +140,35 @@
            esc(t.slice(idx + q.length));
   };
 
+  // Sigla oficial da secretaria a partir do nome (qualquer grafia/acentuação).
+  // Casa por palavra-chave normalizada; retorna o nome limpo se não reconhecer.
+  const SIGLAS_SECRETARIA = [
+    [/habitacao/,                         "SEHAD"],
+    [/economico/,                         "SEDEC"],
+    [/saude/,                             "SEMUS"],
+    [/educacao/,                          "SEDUC"],
+    [/esporte/,                           "SEMEL"],
+    [/agricultura|pecuaria/,              "SEAGRI"],
+    [/meio ambiente/,                     "SEMEA"],
+    [/turismo|comercio/,                  "SETEC"],
+    [/planejamento/,                      "SEPLA"],
+    [/obras/,                             "SOSUB"],
+    [/fazenda/,                           "SEMFA"],
+    [/controle interno/,                  "SECON"],
+    [/tecnologia/,                        "SETINF"],
+    [/administracao/,                     "SEMAD"],
+    [/vice-?prefeito|gabiv/,              "GABIV"],
+    [/gabinete do prefeito|\bgabip\b/,    "GABIP"],
+    [/governo/,                           "SEGOV"],
+  ];
+  const siglaSecretaria = (nome) => {
+    const limpo = cleanText(nome);
+    const n = norm(limpo);
+    if (!n) return limpo;
+    for (const [re, sigla] of SIGLAS_SECRETARIA) if (re.test(n)) return sigla;
+    return limpo;
+  };
+
   const exportCSV = (rows, cols, filename) => {
     const header = cols.map(c => `"${c.label}"`).join(",");
     const body = rows.map(r =>
@@ -152,6 +181,6 @@
   };
 
   window.ZELA.utils = Object.freeze({
-    fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, exportCSV,
+    fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, siglaSecretaria, exportCSV,
   });
 })();

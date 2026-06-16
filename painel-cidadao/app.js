@@ -141,6 +141,12 @@
   // ============= "ATUALIZADO EM" + aviso de dados desatualizados =============
   const upd = D.atualizado_em || {};
 
+  // Rodapé padrão: data da última coleta (elemento presente em todas as páginas).
+  (() => {
+    const el = document.getElementById("footerAtualizado");
+    if (el && upd.data_humana) el.textContent = upd.data_humana;
+  })();
+
   const diasDesdeColeta = () => {
     if (!upd.iso) return null;
     const dias = Math.floor((Date.now() - new Date(upd.iso).getTime()) / 86_400_000);
@@ -299,6 +305,7 @@
         <span>${item.title}</span>
         <strong>${item.value}</strong>
         <small>${item.label}</small>
+        <em>Consultar</em>
       </a>`).join("");
 
     $("homeOpsPriorities").innerHTML = [
@@ -310,6 +317,7 @@
         <span>${item.n}</span>
         <strong>${item.title}</strong>
         <small>${item.text}</small>
+        <em>Ver agora</em>
       </a>`).join("");
 
     if ($("homeOpsFreshness")) {
@@ -6690,10 +6698,10 @@ ${url}
     const sorted = items.slice().sort((a, b) => {
       const rank = { error: 0, warning: 1, info: 2 };
       return (rank[a.severity] ?? 3) - (rank[b.severity] ?? 3);
-    }).slice(0, 4);
+    }).slice(0, PAGE === "home" ? 2 : 4);
     const label = level === "critical" ? "Atenção crítica" : level === "attention" ? "Atenção aos limites dos dados" : "Dados sem alerta crítico";
 
-    box.className = `data-health-strip data-health-strip--${esc(level)}`;
+    box.className = `data-health-strip data-health-strip--${esc(level)}${PAGE === "home" ? " data-health-strip--compact" : ""}`;
     box.hidden = false;
     box.innerHTML = `
       <div class="data-health-strip__head">

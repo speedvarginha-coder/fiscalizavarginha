@@ -93,6 +93,34 @@
       </div>
     </header>
 
+    <section class="block camara-index-spotlight" aria-label="Índice de relevância dos vereadores">
+      <h3 class="block__title">Índice de relevância dos vereadores</h3>
+      <p class="block__lead">
+        Este bloco aparece primeiro porque ajuda o cidadão a entender, de forma rápida,
+        quem produziu, fiscalizou e gerou atos com maior efeito público. A nota é
+        comparativa e auditável: não mede popularidade, partido ou opinião.
+      </p>
+      <div class="method-card">
+        <div>
+          <span class="method-card__tag">Observatório Público de Varginha</span>
+          <h4>Como o painel deve medir o trabalho parlamentar</h4>
+          <p>
+            O objetivo não é contar volume por volume. O painel diferencia pedido,
+            fiscalização, projeto, emenda com dinheiro público e homenagem. Quanto
+            mais dados forem coletados, o ranking deve considerar resposta do Executivo,
+            prazo, execução, resolução e impacto real na cidade.
+          </p>
+        </div>
+        <ul>
+          <li><strong>Quantidade</strong><span>matérias, indicações, requerimentos e emendas.</span></li>
+          <li><strong>Qualidade</strong><span>tema, tipo, impacto estimado e relevância.</span></li>
+          <li><strong>Resultado</strong><span>resposta, prazo, pagamento, entrega e comprovação.</span></li>
+        </ul>
+      </div>
+
+      <div id="indiceRelevancia" class="indice-relevancia" aria-live="polite"></div>
+    </section>
+
     <!-- PLACAR DO DINHEIRO -->
     <div id="placarCamara" class="placar" aria-label="Placar do dinheiro da Câmara"></div>
 
@@ -161,26 +189,6 @@
         quanto fiscalizou a Prefeitura (requerimentos), quantos projetos de lei
         e quantas emendas direcionou ao orçamento.
       </p>
-
-      <div class="method-card">
-        <div>
-          <span class="method-card__tag">Observatório Público de Varginha</span>
-          <h4>Como o painel deve medir o trabalho parlamentar</h4>
-          <p>
-            O objetivo não é contar volume por volume. O painel diferencia pedido,
-            fiscalização, projeto, emenda com dinheiro público e homenagem. Quanto
-            mais dados forem coletados, o ranking deve considerar resposta do Executivo,
-            prazo, execução, resolução e impacto real na cidade.
-          </p>
-        </div>
-        <ul>
-          <li><strong>Quantidade</strong><span>matérias, indicações, requerimentos e emendas.</span></li>
-          <li><strong>Qualidade</strong><span>tema, tipo, impacto estimado e relevância.</span></li>
-          <li><strong>Resultado</strong><span>resposta, prazo, pagamento, entrega e comprovação.</span></li>
-        </ul>
-      </div>
-
-      <div id="indiceRelevancia" class="indice-relevancia" aria-live="polite"></div>
 
       <div class="filterbar">
         <select id="filtroAnoCamara" aria-label="Escolher ano da avaliação da Câmara">
@@ -340,7 +348,7 @@
       <h3 class="block__title">Diárias de viagem — Câmara</h3>
       <p class="block__lead">
         Levantamento separado das diárias pagas a vereadores e servidores da
-        Câmara: funcionário, cargo, destino, quantidade, valor unitário e total.
+        Câmara: funcionário, cargo, destino, quantidade, valor unitário, acumulado anual e ranking mensal.
       </p>
       <div class="stats" id="statsDiariasCamara"></div>
       <div class="filterbar">
@@ -348,6 +356,9 @@
           <option value="">Todos os anos</option>
           <option value="2026" selected>Ano 2026</option>
           <option value="2025">Ano 2025</option>
+        </select>
+        <select id="filtroMesDiariasCamara" aria-label="Filtrar diarias por mês">
+          <option value="">Todos os meses</option>
         </select>
         <select id="filtroSecretariaDiariasCamara" aria-label="Filtrar por setor ou cargo">
           <option value="">Todos os cargos/setores</option>
@@ -392,16 +403,49 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
-      <strong>Fiscaliza Varginha</strong> · Painel Cidadão de Fiscalização<br>
-      <span class="muted">Ferramenta independente, sem fins lucrativos.</span>
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
     </div>
-    <div class="footer__sources">
-      <strong>Fontes oficiais:</strong>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
       <ul>
-        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Câmara de Varginha</a></li>
-        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Site oficial da Câmara</a></li>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
       </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
     </div>
   </div>
 </footer>
@@ -455,7 +499,7 @@
   function verificarHash(hash) {
     var h = (hash || "").replace("#", "");
     if (h === "indiceRelevancia") {
-      mostrar("vereadores");
+      mostrar("geral");
       requestAnimationFrame(function () {
         var alvo = document.getElementById("indiceRelevancia");
         if (alvo) alvo.scrollIntoView({ block: "start", behavior: "smooth" });

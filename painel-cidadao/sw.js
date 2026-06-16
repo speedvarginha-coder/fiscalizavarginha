@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v60 (avisos de qualidade dos dados) */
-const CACHE = "fiscaliza-v60";
+/* Fiscaliza Varginha — Service Worker v64 (fix layout ranking de diarias) */
+const CACHE = "fiscaliza-v64";
 const STATIC = [
   "./",
   "./index.html",

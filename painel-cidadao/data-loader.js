@@ -21,7 +21,7 @@
     "pessoal":      ["pessoal", "atualizado_em", "auditoria_dados"],
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados"],
-    "sobre":        [],
+    "sobre":        ["atualizado_em", "auditoria_dados"],
     "cobrar":       ["prefeitura", "camara_betha", "emendas", "pncp", "sancoes_fornecedores", "diario", "pessoal", "remuneracao_vereadores", "atualizado_em", "auditoria_dados"],
   };
 
