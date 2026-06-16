@@ -840,3 +840,30 @@ test.describe("Diárias — ranking não invade a coluna e usa sigla", () => {
     expect((r.title || "").length).toBeGreaterThan(r.sigla.length); // nome completo no hover
   });
 });
+
+test.describe("Sinais de fiscalização — redes de sócios (CNPJ/QSA)", () => {
+  test("se há sócio em 2+ beneficiários, gera sinal 'Redes de sócios' (tom neutro)", async ({ page }) => {
+    const fs = require("fs");
+    const path = require("path");
+    const cnpjs = JSON.parse(fs.readFileSync(path.join(PAINEL, "data", "chunks", "cnpjs.json"), "utf8"));
+    const idx = {};
+    (cnpjs.empresas || []).forEach((e) =>
+      (e.socios || []).forEach((s) => { const n = (s || "").trim(); if (n) (idx[n] = idx[n] || []).push(e.cnpj); })
+    );
+    const comuns = Object.values(idx).filter((v) => v.length > 1).length;
+
+    setupConsoleListener(page);
+    await page.goto(fileUrl("relatorios.html"), { waitUntil: "domcontentloaded" });
+    await page.locator("#sinaisAtencao .signals-group").first().waitFor({ timeout: 10000 });
+    const txt = (await page.locator("#sinaisAtencao").innerText()).toLowerCase();
+
+    if (comuns > 0) {
+      expect(txt).toContain("redes de sócios");
+      expect(txt).toContain("quadro societário");
+      // tom neutro: não acusa
+      expect(txt).not.toContain("fraude");
+    } else {
+      test.skip(true, "Sem sócio em comum nos dados atuais — nada a afirmar.");
+    }
+  });
+});

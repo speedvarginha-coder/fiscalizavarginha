@@ -19,6 +19,7 @@ const keys = [
   "camara_betha",
   "diario",
   "mudancas_coleta",
+  "cnpjs",
 ];
 
 function readJson(filePath) {

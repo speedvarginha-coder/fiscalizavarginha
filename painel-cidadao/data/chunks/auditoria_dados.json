@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-06-16T19:46:00.100Z",
+  "gerado_em": "2026-06-16T23:48:45.052Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 5,
+    "warnings": 6,
     "info": 1,
     "ok": 1,
-    "total": 7
+    "total": 8
   },
   "atualizado_base": {
     "iso": "2026-06-16T06:48:15",
@@ -17,7 +17,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.4 dias.",
+      "detail": "Ultima coleta principal ha 0.6 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -60,6 +60,14 @@
       "detail": "A base PNCP serve para cruzamento e pode nao retornar todos os registros do municipio.",
       "action": "Conferir manualmente no PNCP quando o contrato for sensivel.",
       "source": "pncp.json"
+    },
+    {
+      "severity": "warning",
+      "id": "cnpj-falhas",
+      "title": "Falhas de consulta CNPJ",
+      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
+      "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
+      "source": "cnpjs.json"
     },
     {
       "severity": "warning",

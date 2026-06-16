@@ -15,8 +15,8 @@ import urllib.request
 # Fontes públicas com schemas distintos; tentadas em ordem. Se a primeira
 # falhar (timeout, rate-limit, WinError 10060), cai para a próxima.
 FONTES_CNPJ = [
-    ("cnpj.ws",   "https://publica.cnpj.ws/cnpj/{cnpj}"),
     ("brasilapi", "https://brasilapi.com.br/api/cnpj/v1/{cnpj}"),
+    ("cnpj.ws",   "https://publica.cnpj.ws/cnpj/{cnpj}"),
 ]
 
 
@@ -90,7 +90,7 @@ def _normaliza(cnpj: str, payload: dict, fonte: str = "cnpj.ws") -> dict:
     }
 
 
-def coletar(emendas: list[dict], limite: int = 40) -> dict:
+def coletar(emendas: list[dict], limite: int = 90) -> dict:
     valores: dict[str, float] = {}
     nomes: dict[str, set[str]] = {}
     for e in emendas:

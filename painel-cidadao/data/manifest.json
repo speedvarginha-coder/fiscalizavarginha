@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-16T19:46:00.677Z",
+  "gerado_em": "2026-06-16T23:48:47.259Z",
   "chunks": {
     "atualizacoes": {
       "arquivo": "data/chunks/atualizacoes.json",
@@ -13,8 +13,8 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 3118,
-      "atualizado_em": "2026-06-16T19:46:00.101Z"
+      "bytes": 3416,
+      "atualizado_em": "2026-06-16T23:48:45.053Z"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -33,8 +33,8 @@
     },
     "cnpjs": {
       "arquivo": "data/chunks/cnpjs.json",
-      "bytes": 22124,
-      "atualizado_em": "2026-06-16T09:45:38.230Z"
+      "bytes": 45577,
+      "atualizado_em": "2026-06-16T23:39:35.838Z"
     },
     "diarias": {
       "arquivo": "data/chunks/diarias.json",
@@ -69,7 +69,7 @@
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
       "bytes": 1311,
-      "atualizado_em": "2026-06-16T19:46:00.677Z"
+      "atualizado_em": "2026-06-16T23:48:47.256Z"
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",

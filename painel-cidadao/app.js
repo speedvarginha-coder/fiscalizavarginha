@@ -1986,6 +1986,29 @@
         "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
       ));
 
+    // CNPJ · Redes de sócios — mesmo nome no QSA (quadro societário público) de
+    // mais de um beneficiário de emenda. SINAL PARA CONFERIR: sócio em comum é
+    // comum no terceiro setor e não indica irregularidade por si só.
+    const socioMap = {};
+    (cnpjs.empresas || []).forEach(e =>
+      (e.socios || []).forEach(s => {
+        const nome = (s || "").trim();
+        if (nome) (socioMap[nome] = socioMap[nome] || []).push(e);
+      })
+    );
+    Object.entries(socioMap)
+      .filter(([, emps]) => emps.length > 1)
+      .sort((a, b) => b[1].length - a[1].length)
+      .slice(0, 6)
+      .forEach(([nome, emps]) => addSignal(
+        "CNPJ · Redes de sócios",
+        "medio",
+        `Mesma pessoa no quadro societário de ${emps.length} beneficiários de emenda`,
+        `O nome "${nome}" consta no QSA público da Receita de ${emps.length} entidades que receberam emenda. Sócio em comum é frequente no terceiro setor e não indica irregularidade — é um ponto para conferir vínculos e governança junto às entidades e ao gestor da parceria.`,
+        emps.map(e => e.razao_social || e.cnpj).slice(0, 4).join(" · "),
+        "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
+      ));
+
     // ---- CÂMARA: alertas cívicos baseados em camara_betha + pessoal ----
     const cb2 = D.camara_betha || {};
     const camPessoal = (D.pessoal || {}).camara || {};
