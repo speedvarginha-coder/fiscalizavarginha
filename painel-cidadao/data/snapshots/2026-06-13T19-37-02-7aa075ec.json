@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "snapshot_id": "2026-06-13T07-19-19-645d12bb",
+  "snapshot_id": "2026-06-13T19-37-02-7aa075ec",
   "source": "chunks",
-  "gerado_em": "2026-06-15T23:58:03.689Z",
-  "coleta_iso": "2026-06-13T07:19:19",
-  "data_humana": "13/06/2026 - 07:19",
+  "gerado_em": "2026-06-13T22:37:04.737Z",
+  "coleta_iso": "2026-06-13T19:37:02",
+  "data_humana": "13/06/2026 - 19:37",
   "totais": {
-    "contratos_qtd": 882,
-    "contratos_valor_brl": 196274463.09000012,
+    "contratos_qtd": 885,
+    "contratos_valor_brl": 196344073.1300001,
     "obras_publicas_qtd": 130,
     "obras_publicas_valor_brl": 244093758.1399999,
     "fornecedores_qtd": 50,
@@ -1520,7 +1520,7 @@
       "fornecedor": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
       "cnpj_raiz": "37943080",
       "data": "2025-05-08",
-      "valor_brl": 279768.96,
+      "valor_brl": 284589,
       "modalidade": "Pregão eletrônico",
       "objeto": "Contratação de empresa especializada para prestação de serviços de Portaria, com fornecimento de mão-de-obra, equipamentos e insumos a serem executados de forma contínua no Parque Zoobotânico Dr. Mário Frota",
       "objeto_hash": "85aaa55e130a"
@@ -2956,19 +2956,6 @@
       "objeto_hash": "5be5e88e2be4"
     },
     {
-      "id": "Prefeitura:sem-numero:16581530:c05b643efcc1",
-      "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
-      "fornecedor": "FEDERACAO AQUATICA MINEIRA",
-      "cnpj_raiz": "16581530",
-      "data": "2026-05-20",
-      "valor_brl": 95000,
-      "modalidade": "Inexigibilidade de licitação",
-      "objeto": "Pagamento de Taxas e Despesas junto a Federação Aquática Mineira",
-      "objeto_hash": "6cd854a035fe"
-    },
-    {
       "id": "Prefeitura:2026:18:44420116",
       "orgao": "Prefeitura",
       "numero": "18",
@@ -2980,6 +2967,19 @@
       "modalidade": "Inexigibilidade de licitação",
       "objeto": "Contratação para apresentação de show artístico musical da dupla DOUGLAS & VINÍCIUS, por ocasião do evento anual DIA DO TRABALHADOR, a realizar-se no dia 01/05/2026.",
       "objeto_hash": "7215e353c395"
+    },
+    {
+      "id": "Prefeitura:sem-numero:16581530:c05b643efcc1",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "FEDERACAO AQUATICA MINEIRA",
+      "cnpj_raiz": "16581530",
+      "data": "2026-05-20",
+      "valor_brl": 95000,
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Pagamento de Taxas e Despesas junto a Federação Aquática Mineira",
+      "objeto_hash": "6cd854a035fe"
     },
     {
       "id": "Prefeitura:2026:161:18695651",
@@ -3890,6 +3890,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Contratação de empresa especializada para fornecimento de materiais para manutenção geral e construção civil.",
       "objeto_hash": "bbbf8dd257df"
+    },
+    {
+      "id": "Prefeitura:sem-numero:65289613:c0662f075e08",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
+      "cnpj_raiz": "65289613",
+      "data": "2026-06-12",
+      "valor_brl": 57090,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "O objeto da presente solicitação de compras é aquisição de cadeiras, longarinas e mesas, destinadas ao atendimento das demandas administrativas e operacionais da Secretaria Municipal de Esporte e Lazer – SEMEL",
+      "objeto_hash": "0120f2d43a2c"
     },
     {
       "id": "Prefeitura:2026:8:36827096",
@@ -6206,19 +6219,6 @@
       "objeto_hash": "5cc2f30401ce"
     },
     {
-      "id": "Prefeitura:sem-numero:04470103:8eb08b9f7e97",
-      "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
-      "fornecedor": "BIOTECNO INDUSTRIA E COMERCIO LTDA",
-      "cnpj_raiz": "04470103",
-      "data": "2026-05-08",
-      "valor_brl": 15000,
-      "modalidade": "Dispensa eletrônica",
-      "objeto": "Aquisição de Refrigerador Vertical para conservação de vacinas, com capacidade mínima de 500 litros",
-      "objeto_hash": "595b7afce814"
-    },
-    {
       "id": "Prefeitura:sem-numero:18231415:73180e0494fe",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -6243,6 +6243,19 @@
       "modalidade": "Inexigibilidade de licitação",
       "objeto": "Disputar Campeonatos Internacionais, Brasileiros, Mineiros e Regionais nos Naipes. Feminino e Masculino nas diversas categorias realizadas ou chanceladas pela a Federação Mineira de Ciclismo.",
       "objeto_hash": "4b4751667b08"
+    },
+    {
+      "id": "Prefeitura:sem-numero:04470103:8eb08b9f7e97",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "BIOTECNO INDUSTRIA E COMERCIO LTDA",
+      "cnpj_raiz": "04470103",
+      "data": "2026-05-08",
+      "valor_brl": 15000,
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de Refrigerador Vertical para conservação de vacinas, com capacidade mínima de 500 litros",
+      "objeto_hash": "595b7afce814"
     },
     {
       "id": "Prefeitura:sem-numero:30012651:cc3355d1d70b",
@@ -7285,19 +7298,6 @@
       "objeto_hash": "f2b6e73b4aa4"
     },
     {
-      "id": "Prefeitura:sem-numero:44599311:7396f80e1bf5",
-      "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
-      "fornecedor": "44.599.311 SEBASTIAO MENDES DE OLIVEIRA",
-      "cnpj_raiz": "44599311",
-      "data": "2026-01-27",
-      "valor_brl": 8500,
-      "modalidade": "Inexigibilidade de licitação",
-      "objeto": "Palestra com o professor Sebastião Mendes de Oliveira, com o tema FORMAÇÃO INCLUSIVA",
-      "objeto_hash": "920bfc558e81"
-    },
-    {
       "id": "Prefeitura:sem-numero:59632632:5dcb1c4cedfb",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -7309,6 +7309,19 @@
       "modalidade": "Dispensa eletrônica",
       "objeto": "O objeto da presente solicitação é a aquisição de Pulverizador para quadriciclo para ser acoplado a tratores HUSQVARNA TS148",
       "objeto_hash": "1777396e6f9f"
+    },
+    {
+      "id": "Prefeitura:sem-numero:44599311:7396f80e1bf5",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "44.599.311 SEBASTIAO MENDES DE OLIVEIRA",
+      "cnpj_raiz": "44599311",
+      "data": "2026-01-27",
+      "valor_brl": 8500,
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Palestra com o professor Sebastião Mendes de Oliveira, com o tema FORMAÇÃO INCLUSIVA",
+      "objeto_hash": "920bfc558e81"
     },
     {
       "id": "Prefeitura:sem-numero:27349370:be1914d5b1a4",
@@ -8390,6 +8403,19 @@
       "objeto_hash": "b73c27773a4f"
     },
     {
+      "id": "Prefeitura:sem-numero:53438403:329188fd9bf1",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CONVE COMERCIO DE MOVEIS E UTILIDADES LTDA",
+      "cnpj_raiz": "53438403",
+      "data": "2026-06-12",
+      "valor_brl": 3900,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "O objeto da presente solicitação de compras é aquisição de cadeiras, longarinas e mesas, destinadas ao atendimento das demandas administrativas e operacionais da Secretaria Municipal de Esporte e Lazer – SEMEL",
+      "objeto_hash": "0120f2d43a2c"
+    },
+    {
       "id": "Prefeitura:sem-numero:29689057:7bdae520b135",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -8427,6 +8453,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
       "objeto_hash": "5d33bc0b7f97"
+    },
+    {
+      "id": "Prefeitura:sem-numero:06294390:a248e179e0f6",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CAROLINA DE SIQUEIRA COUTINHO SOCIEDADE SIMPLES UNIPESSOAL LTDA",
+      "cnpj_raiz": "06294390",
+      "data": "2026-06-12",
+      "valor_brl": 3800,
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Contratação de empresa especializada para a prestação de serviços de palestra e debate com o tema \"Saúde Mental nas escolas: inclusão, inserção e diversidade na coletividade\". A execução do serviço contempla a preparação teórica do conteúdo, a realização do evento e todos os custos logísticos inclusos (deslocamento, hospedagem e alimentação)",
+      "objeto_hash": "3f836a253cff"
     },
     {
       "id": "Prefeitura:sem-numero:52891153:f6ff454fde15",
@@ -10964,19 +11003,6 @@
       "objeto_hash": "17a7252342e1"
     },
     {
-      "id": "Prefeitura:2025:64:14505252",
-      "orgao": "Prefeitura",
-      "numero": "64",
-      "ano": "2025",
-      "fornecedor": "EPICO EVENTOS LTDA",
-      "cnpj_raiz": "14505252",
-      "data": "2025-07-14",
-      "valor_brl": 0.01,
-      "modalidade": "Pregão eletrônico",
-      "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA REALIZAÇÃO DO EVENTO FEIRA DA PAZ",
-      "objeto_hash": "e27857e18306"
-    },
-    {
       "id": "Prefeitura:2025:43:31160361",
       "orgao": "Prefeitura",
       "numero": "43",
@@ -10988,6 +11014,19 @@
       "modalidade": "Dispensa eletrônica",
       "objeto": "Contratação de serviços técnicos especializados para organização e execução de Concursos Públicos e Processos Seletivos para provimento de cargos no quadro permanente de servidores da Administração Direta do Município de Varginha, abrangendo todas as fases do certame, desde a elaboração do Edital, conteúdo programático, caderno de questões, aplicação de provas, recebimento, análise e pontuação de títulos, apreciação/julgamento de recursos e avaliação final.",
       "objeto_hash": "f691599aa8ad"
+    },
+    {
+      "id": "Prefeitura:2025:64:14505252",
+      "orgao": "Prefeitura",
+      "numero": "64",
+      "ano": "2025",
+      "fornecedor": "EPICO EVENTOS LTDA",
+      "cnpj_raiz": "14505252",
+      "data": "2025-07-14",
+      "valor_brl": 0.01,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA REALIZAÇÃO DO EVENTO FEIRA DA PAZ",
+      "objeto_hash": "e27857e18306"
     },
     {
       "id": "Prefeitura:2026:173:68533967",

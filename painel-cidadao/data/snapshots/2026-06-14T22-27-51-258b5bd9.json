@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "snapshot_id": "2026-06-11T06-38-07-8f445249",
+  "snapshot_id": "2026-06-14T22-27-51-258b5bd9",
   "source": "chunks",
-  "gerado_em": "2026-06-11T09:38:09.794Z",
-  "coleta_iso": "2026-06-11T06:38:07",
-  "data_humana": "11/06/2026 - 06:38",
+  "gerado_em": "2026-06-15T01:27:53.155Z",
+  "coleta_iso": "2026-06-14T22:27:51",
+  "data_humana": "14/06/2026 - 22:27",
   "totais": {
-    "contratos_qtd": 874,
-    "contratos_valor_brl": 192729819.43000016,
+    "contratos_qtd": 885,
+    "contratos_valor_brl": 196344073.1300001,
     "obras_publicas_qtd": 130,
-    "obras_publicas_valor_brl": 243216210.2699999,
+    "obras_publicas_valor_brl": 244093758.1399999,
     "fornecedores_qtd": 50,
     "diario_edicoes_qtd": 60,
     "pendencias_qtd": 0,
     "asfalto_qtd": 62,
-    "asfalto_valor_brl": 162146317.98000002
+    "asfalto_valor_brl": 162562822.29000002
   },
   "contratos": [
     {
@@ -564,6 +564,19 @@
       "objeto_hash": "b43e1f1622af"
     },
     {
+      "id": "Prefeitura:sem-numero:02794555:8e059315f018",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "COLOPLAST DO BRASIL LTDA",
+      "cnpj_raiz": "02794555",
+      "data": "2026-06-09",
+      "valor_brl": 952532.1,
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Registro de Preços para a futura e eventual aquisição de insumos para reabilitação pulmonar da marca PROVOX",
+      "objeto_hash": "1186731296db"
+    },
+    {
       "id": "Prefeitura:2026:15:02537890",
       "orgao": "Prefeitura",
       "numero": "15",
@@ -679,6 +692,32 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de preços para o futuro e eventual fornecimento de carnes",
       "objeto_hash": "40ea7a6f8601"
+    },
+    {
+      "id": "Prefeitura:sem-numero:66488719:49b445260e1c",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "LOJA PET LTDA",
+      "cnpj_raiz": "66488719",
+      "data": "2026-06-02",
+      "valor_brl": 765050,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preço de rações destinada aos animais abrigados no canil",
+      "objeto_hash": "d8aba0d61792"
+    },
+    {
+      "id": "Prefeitura:sem-numero:48320928:003b6cb05d1f",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CIMENTAO DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "48320928",
+      "data": "2026-06-02",
+      "valor_brl": 763264,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de cimento, argamassa e cal.",
+      "objeto_hash": "ecd4f71ee6d1"
     },
     {
       "id": "Prefeitura:2025:47:50598837",
@@ -1097,6 +1136,19 @@
       "objeto_hash": "c5f07c2b0983"
     },
     {
+      "id": "Prefeitura:sem-numero:50085681:7654020145db",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "LICITAR DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "50085681",
+      "data": "2026-06-02",
+      "valor_brl": 462026.6,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de cimento, argamassa e cal.",
+      "objeto_hash": "ecd4f71ee6d1"
+    },
+    {
       "id": "Prefeitura:2026:47:40256910",
       "orgao": "Prefeitura",
       "numero": "47",
@@ -1305,6 +1357,19 @@
       "objeto_hash": "0fdff5451276"
     },
     {
+      "id": "Prefeitura:2025:23:24757040",
+      "orgao": "Prefeitura",
+      "numero": "23",
+      "ano": "2025",
+      "fornecedor": "APROVA DIGITAL S/A",
+      "cnpj_raiz": "24757040",
+      "data": "2025-04-07",
+      "valor_brl": 345436.37,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de empresa para fornecimento de um sistema de informações destinado à oferta de permissões para edificar e certificações para estruturas urbanas através da municipalidade.",
+      "objeto_hash": "71fb124e5642"
+    },
+    {
       "id": "Prefeitura:2025:357:23864942",
       "orgao": "Prefeitura",
       "numero": "357",
@@ -1344,17 +1409,17 @@
       "objeto_hash": "5d33bc0b7f97"
     },
     {
-      "id": "Prefeitura:2025:23:24757040",
+      "id": "Prefeitura:sem-numero:39327884:25c048c98afd",
       "orgao": "Prefeitura",
-      "numero": "23",
-      "ano": "2025",
-      "fornecedor": "APROVA DIGITAL S/A",
-      "cnpj_raiz": "24757040",
-      "data": "2025-04-07",
-      "valor_brl": 332000.01,
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+      "cnpj_raiz": "39327884",
+      "data": "2026-06-02",
+      "valor_brl": 331774.6,
       "modalidade": "Pregão eletrônico",
-      "objeto": "Contratação de empresa para fornecimento de um sistema de informações destinado à oferta de permissões para edificar e certificações para estruturas urbanas através da municipalidade.",
-      "objeto_hash": "71fb124e5642"
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de cimento, argamassa e cal.",
+      "objeto_hash": "ecd4f71ee6d1"
     },
     {
       "id": "Prefeitura:2025:345:02816696",
@@ -1455,7 +1520,7 @@
       "fornecedor": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
       "cnpj_raiz": "37943080",
       "data": "2025-05-08",
-      "valor_brl": 279768.96,
+      "valor_brl": 284589,
       "modalidade": "Pregão eletrônico",
       "objeto": "Contratação de empresa especializada para prestação de serviços de Portaria, com fornecimento de mão-de-obra, equipamentos e insumos a serem executados de forma contínua no Parque Zoobotânico Dr. Mário Frota",
       "objeto_hash": "85aaa55e130a"
@@ -2306,6 +2371,19 @@
       "objeto_hash": "19ce857ce841"
     },
     {
+      "id": "Prefeitura:sem-numero:06878489:98002bf57c34",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "REAL-PET SHOP E PRODUTOS AGROVETERINARIOS LTDA",
+      "cnpj_raiz": "06878489",
+      "data": "2026-06-02",
+      "valor_brl": 146700,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preço de rações destinada aos animais abrigados no canil",
+      "objeto_hash": "d8aba0d61792"
+    },
+    {
       "id": "Prefeitura:2025:238:50085681",
       "orgao": "Prefeitura",
       "numero": "238",
@@ -2954,6 +3032,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Contratação de empresa especializada para prestação de serviços de manutenção preventiva e corretiva com fornecimento de peças de reposição, em aparelhos condicionadores de ar tipo Split e Cortinas de ar desta Secretaria,",
       "objeto_hash": "48b56573d996"
+    },
+    {
+      "id": "Prefeitura:sem-numero:46666044:a4d796f29c08",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "DNS EMPREENDIMENTOS LTDA",
+      "cnpj_raiz": "46666044",
+      "data": "2026-06-02",
+      "valor_brl": 89760,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preço de rações destinada aos animais abrigados no canil",
+      "objeto_hash": "d8aba0d61792"
     },
     {
       "id": "Prefeitura:2025:96:56607185",
@@ -3799,6 +3890,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Contratação de empresa especializada para fornecimento de materiais para manutenção geral e construção civil.",
       "objeto_hash": "bbbf8dd257df"
+    },
+    {
+      "id": "Prefeitura:sem-numero:65289613:c0662f075e08",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
+      "cnpj_raiz": "65289613",
+      "data": "2026-06-12",
+      "valor_brl": 57090,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "O objeto da presente solicitação de compras é aquisição de cadeiras, longarinas e mesas, destinadas ao atendimento das demandas administrativas e operacionais da Secretaria Municipal de Esporte e Lazer – SEMEL",
+      "objeto_hash": "0120f2d43a2c"
     },
     {
       "id": "Prefeitura:2026:8:36827096",
@@ -4782,7 +4886,7 @@
       "ano": "2026",
       "fornecedor": "INSTITUTO AVANCA SAO PAULO",
       "cnpj_raiz": "31160361",
-      "data": "2026-06-08",
+      "data": "2026-06-01",
       "valor_brl": 31900,
       "modalidade": "Dispensa eletrônica",
       "objeto": "Contratação de instituição especializada para o planejamento, organização e execução do Exame Seletivo de Provas Objetivas Teóricas, destinado à certificação prévia de profissionais da educação que pretendam concorrer à eleição para as funções de Diretor Escolar, Coordenador de Escola Municipal do Campo e Vice-Diretor Escolar da Rede Municipal de Ensino de Varginha/MG, nos termos da Lei Municipal nº 7.477/2025.",
@@ -5658,6 +5762,19 @@
       "modalidade": "Dispensa eletrônica",
       "objeto": "Aquisição emergencial de medicamentos, destinados a atender a um processo judicial da Secretaria Municipal de Saúde do Município de Varginha/MG e as emergências da Unidade de Pronto Atendimento - UPA visando garantir a continuidade do tratamento dos pacientes atendidos pela rede pública municipal.",
       "objeto_hash": "cfc34b749d64"
+    },
+    {
+      "id": "Prefeitura:sem-numero:90495946:e6115e95b4b2",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "ELECTRIC CONSULTORIA E SERVICOS SOCIEDADE SIMPLES",
+      "cnpj_raiz": "90495946",
+      "data": "2026-06-10",
+      "valor_brl": 20100,
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Contratação de empresa especializada na prestação de serviços de medições ocupacionais destinadas à avaliação e verificação da exposição de trabalhadores a campos eletromagnéticos oriundos de operações com equipamentos de Diatermia por Ondas Curtas, com aplicação de metodologias reconhecidas e observância das normas técnicas e legais cabíveis, notadamente a NHO-06 da FUNDACENTRO (Avaliação da Exposição Ocupacional a Campos Eletromagnéticos), as diretrizes da ICNIRP (International Commission on N",
+      "objeto_hash": "5d651bf7bc2b"
     },
     {
       "id": "Prefeitura:sem-numero:18205112:e87be98053fe",
@@ -8286,6 +8403,19 @@
       "objeto_hash": "b73c27773a4f"
     },
     {
+      "id": "Prefeitura:sem-numero:53438403:329188fd9bf1",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CONVE COMERCIO DE MOVEIS E UTILIDADES LTDA",
+      "cnpj_raiz": "53438403",
+      "data": "2026-06-12",
+      "valor_brl": 3900,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "O objeto da presente solicitação de compras é aquisição de cadeiras, longarinas e mesas, destinadas ao atendimento das demandas administrativas e operacionais da Secretaria Municipal de Esporte e Lazer – SEMEL",
+      "objeto_hash": "0120f2d43a2c"
+    },
+    {
       "id": "Prefeitura:sem-numero:29689057:7bdae520b135",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -8323,6 +8453,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
       "objeto_hash": "5d33bc0b7f97"
+    },
+    {
+      "id": "Prefeitura:sem-numero:06294390:a248e179e0f6",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CAROLINA DE SIQUEIRA COUTINHO SOCIEDADE SIMPLES UNIPESSOAL LTDA",
+      "cnpj_raiz": "06294390",
+      "data": "2026-06-12",
+      "valor_brl": 3800,
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Contratação de empresa especializada para a prestação de serviços de palestra e debate com o tema \"Saúde Mental nas escolas: inclusão, inserção e diversidade na coletividade\". A execução do serviço contempla a preparação teórica do conteúdo, a realização do evento e todos os custos logísticos inclusos (deslocamento, hospedagem e alimentação)",
+      "objeto_hash": "3f836a253cff"
     },
     {
       "id": "Prefeitura:sem-numero:52891153:f6ff454fde15",
@@ -11388,7 +11531,7 @@
       "ano": "2023",
       "fornecedor": "WIZZER INCORPORADORA E CONSTRUTORA LTDA",
       "data": "2023-07-06",
-      "valor_brl": 21436801.23,
+      "valor_brl": 21897844.79,
       "objeto": "Construção do Novo Mercado Municipal de Varginha",
       "objeto_hash": "35b6bf26c15e",
       "categoria": "Construção do Novo Mercado Municipal de Varginha",
@@ -12147,6 +12290,23 @@
       "source": "Obras Publicas Betha 83026"
     },
     {
+      "id": "Prefeitura:obra:134",
+      "orgao": "Prefeitura",
+      "numero": "134",
+      "ano": "2025",
+      "fornecedor": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
+      "data": "2025-10-21",
+      "valor_brl": 1186402.33,
+      "objeto": "Serviços de infraestrutura na Av. Sanitária",
+      "objeto_hash": "8096377fb273",
+      "categoria": "Serviços de infraestrutura",
+      "tipo_obra": "01.02 - Construção",
+      "situacao": "em andamento",
+      "percentual_executado": 19.97,
+      "endereco": "Avenida Sanitária, Santana, Varginha",
+      "source": "Obras Publicas Betha 83026"
+    },
+    {
       "id": "Prefeitura:obra:47",
       "orgao": "Prefeitura",
       "numero": "47",
@@ -12416,23 +12576,6 @@
       "situacao": "em andamento",
       "percentual_executado": 98.43,
       "endereco": "Rua Antônio Bernardes Pereira, Jardim Corcetti I, Varginha",
-      "source": "Obras Publicas Betha 83026"
-    },
-    {
-      "id": "Prefeitura:obra:134",
-      "orgao": "Prefeitura",
-      "numero": "134",
-      "ano": "2025",
-      "fornecedor": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
-      "data": "2025-10-21",
-      "valor_brl": 769898.02,
-      "objeto": "Serviços de infraestrutura na Av. Sanitária",
-      "objeto_hash": "8096377fb273",
-      "categoria": "Serviços de infraestrutura",
-      "tipo_obra": "01.02 - Construção",
-      "situacao": "em andamento",
-      "percentual_executado": 12.96,
-      "endereco": "Avenida Sanitária, Santana, Varginha",
       "source": "Obras Publicas Betha 83026"
     },
     {
@@ -13631,7 +13774,7 @@
       "rank": 5,
       "nome": "RECEITA FEDERAL",
       "cnpj_raiz": "00394460",
-      "valor_brl": 5360775.46
+      "valor_brl": 5360915.74
     },
     {
       "id": "Prefeitura:00874813",
@@ -13711,7 +13854,7 @@
       "rank": 15,
       "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "cnpj_raiz": "17155730",
-      "valor_brl": 2074687.55
+      "valor_brl": 2212768.31
     },
     {
       "id": "Prefeitura:07146352",
@@ -13810,9 +13953,17 @@
       "valor_brl": 926224.24
     },
     {
-      "id": "Prefeitura:00530493",
+      "id": "Prefeitura:35537390",
       "orgao": "Prefeitura",
       "rank": 28,
+      "nome": "CASSERV - CAIXA DE ASSIST. A SAÚDE DOS SERV. PÚBL. DA PREFEI",
+      "cnpj_raiz": "35537390",
+      "valor_brl": 910287.24
+    },
+    {
+      "id": "Prefeitura:00530493",
+      "orgao": "Prefeitura",
+      "rank": 29,
       "nome": "FUNDO NACIONAL DE SAUDE",
       "cnpj_raiz": "00530493",
       "valor_brl": 879772.6
@@ -13820,18 +13971,10 @@
     {
       "id": "Prefeitura:05549049",
       "orgao": "Prefeitura",
-      "rank": 29,
+      "rank": 30,
       "nome": "ASSOCIAÇAO BENEFICENTE KERIGMA",
       "cnpj_raiz": "05549049",
       "valor_brl": 836000
-    },
-    {
-      "id": "Prefeitura:31772291",
-      "orgao": "Prefeitura",
-      "rank": 30,
-      "nome": "DIGIPLAN TECNOLOGIA LTDA",
-      "cnpj_raiz": "31772291",
-      "valor_brl": 829031.95
     },
     {
       "id": "Camara:versao br comunicacao e marketing ltda",
@@ -13995,6 +14138,24 @@
     }
   ],
   "diario": [
+    {
+      "id": "diario:2026:1821",
+      "edicao": "1821",
+      "ano": "2026",
+      "data": "2026-06-12",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1821",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/228/"
+    },
+    {
+      "id": "diario:2026:1820",
+      "edicao": "1820",
+      "ano": "2026",
+      "data": "2026-06-11",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1820",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/227/"
+    },
     {
       "id": "diario:2026:1819",
       "edicao": "1819",
@@ -14516,24 +14677,6 @@
       "extra": true,
       "titulo": "Diario Oficial - Edicao 1762",
       "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/169/"
-    },
-    {
-      "id": "diario:2026:1761",
-      "edicao": "1761",
-      "ano": "2026",
-      "data": "2026-03-18",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1761",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/168/"
-    },
-    {
-      "id": "diario:2026:1760",
-      "edicao": "1760",
-      "ano": "2026",
-      "data": "2026-03-17",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1760",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/167/"
     }
   ],
   "pendencias": [],
@@ -14924,6 +15067,17 @@
       "source": "Obras Publicas Betha 83026"
     },
     {
+      "id": "Prefeitura:obra:134",
+      "orgao": "Prefeitura",
+      "numero": "134",
+      "ano": "2025",
+      "fornecedor": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
+      "data": "2025-10-21",
+      "valor_brl": 1186402.33,
+      "objeto": "Serviços de infraestrutura na Av. Sanitária",
+      "source": "Obras Publicas Betha 83026"
+    },
+    {
       "id": "Prefeitura:obra:47",
       "orgao": "Prefeitura",
       "numero": "47",
@@ -14998,17 +15152,6 @@
       "data": "2025-06-16",
       "valor_brl": 780009.24,
       "objeto": "Prestação de serviços de drenagem na antiga área do Aterro Sanitário - Bairro Corcetti",
-      "source": "Obras Publicas Betha 83026"
-    },
-    {
-      "id": "Prefeitura:obra:134",
-      "orgao": "Prefeitura",
-      "numero": "134",
-      "ano": "2025",
-      "fornecedor": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
-      "data": "2025-10-21",
-      "valor_brl": 769898.02,
-      "objeto": "Serviços de infraestrutura na Av. Sanitária",
       "source": "Obras Publicas Betha 83026"
     },
     {
