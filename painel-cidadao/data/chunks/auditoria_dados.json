@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-16T09:48:17.244Z",
+  "gerado_em": "2026-06-16T19:46:00.100Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -17,7 +17,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.4 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
