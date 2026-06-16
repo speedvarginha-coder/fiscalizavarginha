@@ -67,7 +67,7 @@ def _save(name: str, payload) -> None:
     chunk_names = {
         "resumo.json", "atualizado_em.json", "prefeitura.json", "emendas.json",
         "vereadores.json", "pncp.json", "diarias.json", "cnpjs.json",
-        "camara_anos.json", "camara_transparencia.json", "fontes_emendas_2026.json",
+        "camara_anos.json", "camara_betha.json", "camara_transparencia.json", "fontes_emendas_2026.json",
         "federal.json", "pessoal.json", "diario.json",
         "remuneracao_vereadores.json", "sancoes_fornecedores.json",
         "auditoria_dados.json", "atualizacoes.json", "indice_relevancia.json",
@@ -760,6 +760,26 @@ def _processa_pessoal() -> dict:
     try:
         import coletor_pessoal
         payload = coletor_pessoal.coletar()
+        existente = _load_existing("pessoal.json", {})
+        novos_pref = payload.get("prefeitura", {}).get("servidores", [])
+        antigos_pref = existente.get("prefeitura", {}).get("servidores", []) if isinstance(existente, dict) else []
+        if (
+            isinstance(novos_pref, list)
+            and isinstance(antigos_pref, list)
+            and len(antigos_pref) >= 1000
+            and len(novos_pref) < max(100, int(len(antigos_pref) * 0.5))
+        ):
+            payload["prefeitura"] = existente.get("prefeitura", {})
+            payload["prefeitura"]["status_cobertura"] = "preservada_por_cobertura"
+            payload["observacao"] = (
+                f"{payload.get('observacao', '')} "
+                f"Prefeitura: a nova coleta trouxe apenas {len(novos_pref)} registro(s); "
+                f"foi preservada a ultima base completa com {len(antigos_pref)} servidores para evitar regressao de cobertura."
+            ).strip()
+            print(
+                f"  ! Prefeitura: coleta parcial ({len(novos_pref)} registro[s]); "
+                f"preservando base completa anterior ({len(antigos_pref)} servidores)"
+            )
         cr = payload.get("camara", {}).get("resumo", {})
         pr = payload.get("prefeitura", {}).get("resumo", {})
         print(f"  ✓ Câmara: {cr.get('comissionados_qtd', 0)} comissionados/similares")

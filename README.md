@@ -61,6 +61,9 @@ py coletor.py
 └── .gitignore        Proteção contra commit de segredos
 ```
 
+**Produto oficial:** a versão publicada é sempre `painel-cidadao/`, empacotada por `npm run deploy:zip`.
+O diretório `dashboard/`, quando existir, deve ser tratado como laboratório/migração futura e não entra no pacote oficial enquanto não houver plano de migração documentado.
+
 ---
 
 ## Documentação
@@ -94,6 +97,7 @@ py coletor.py
 - **Service Worker** com cache offline
 - **Acessibilidade** WCAG AA básico
 - **Atualização automatizável** diária ou em modo vigia por intervalo
+- **Avisos de qualidade dos dados** nas páginas públicas quando uma fonte estiver defasada, parcial ou sem cruzamento automático confiável
 
 ---
 

@@ -16,6 +16,7 @@ const keys = [
   "sancoes_fornecedores",
   "atualizacoes",
   "atualizado_em",
+  "camara_betha",
   "diario",
   "mudancas_coleta",
 ];

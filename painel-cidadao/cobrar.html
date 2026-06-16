@@ -65,8 +65,8 @@
         <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">prazo de resposta LAI</small>
       </div>
       <div class="trend-card" style="text-align: center; padding: 20px;">
-        <strong style="font-size: 2.5rem; color: var(--navy); display: block;">5</strong>
-        <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">LAIs prontas para protocolar</small>
+        <strong style="font-size: 2.5rem; color: var(--navy); display: block;">20</strong>
+        <small style="color: var(--muted); font-weight: 700; text-transform: uppercase;">temas de auditoria cobertos</small>
       </div>
       <div class="trend-card" style="text-align: center; padding: 20px;">
         <strong style="font-size: 2.5rem; color: var(--teal); display: block;">R$ 0</strong>
@@ -225,24 +225,36 @@
       <div class="templates-head">
         <div>
           <span class="bigheader__kicker">5</span>
-          <h3 class="cobrar-block__title">21 LAIs prontas para protocolar</h3>
-          <p>Textos formais com linguagem técnica de auditor — prontos para copiar e protocolar na Câmara ou Prefeitura. Você tem total autoridade para exigir informações completas.</p>
+          <h3 class="cobrar-block__title">Modelos de LAI por nível e categoria</h3>
+          <p>Os <strong>20 temas de auditoria municipal</strong> em modelos formais com linguagem técnica de auditor — prontos para copiar e protocolar na Câmara ou Prefeitura. Cada modelo traz o <strong>nível de prioridade</strong> (1 a 4) e a <strong>categoria</strong>. Filtre pelos dois, ou busque por palavra. Você tem total autoridade para exigir informações completas — sem custo, sem justificativa.</p>
         </div>
       </div>
 
-      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
-        <button type="button" class="lai-filter active" data-cat="all" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--navy); background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; letter-spacing: 0.02em;">Todos</button>
-        <button type="button" class="lai-filter" data-cat="licitacao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Licitações e Contratos</button>
-        <button type="button" class="lai-filter" data-cat="obras" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Obras e Frota</button>
-        <button type="button" class="lai-filter" data-cat="pessoal" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Pessoal e Viagens</button>
-        <button type="button" class="lai-filter" data-cat="denuncia" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Denúncias TCE/MP</button>
+      <p style="margin: 0 0 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);">Filtrar por nível de prioridade</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <button type="button" class="lai-filter-nivel active" data-nivel="all" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--navy); background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; letter-spacing: 0.02em;">Todos os níveis</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="1" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 1 · Alto impacto</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="2" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 2 · Muito relevante</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="3" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 3 · Onde poucos olham</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="4" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 4 · Avançada</button>
       </div>
 
-      <input type="text" id="laiBusca" placeholder="Buscar modelo por palavra..." style="width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.95rem; margin-bottom: 20px;">
+      <p style="margin: 0 0 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);">Filtrar por categoria</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+        <button type="button" class="lai-filter active" data-cat="all" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--navy); background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; letter-spacing: 0.02em;">Todas</button>
+        <button type="button" class="lai-filter" data-cat="licitacao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Contratos &amp; Compras</button>
+        <button type="button" class="lai-filter" data-cat="obras" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Obras &amp; Asfalto</button>
+        <button type="button" class="lai-filter" data-cat="servicos" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Saúde, Educação &amp; Social</button>
+        <button type="button" class="lai-filter" data-cat="pessoal" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Pessoal &amp; Câmara</button>
+        <button type="button" class="lai-filter" data-cat="patrimonio" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Patrimônio, Frota &amp; Imóveis</button>
+        <button type="button" class="lai-filter" data-cat="gestao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Gestão, Repasses &amp; Cidade</button>
+      </div>
+
+      <input type="text" id="laiBusca" placeholder="Buscar modelo por palavra (ex.: medicamento, merenda, diária)..." style="width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.95rem; margin-bottom: 20px;">
 
       <div class="template-grid" style="display: grid; gap: 20px;">
 
-        <article class="template-card" data-cat="pessoal" style="grid-column: 1 / -1; border-left: 4px solid var(--navy);">
+        <article class="template-card" data-cat="pessoal" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #1f3a5f;">
           <h4>LAI 1 · Câmara: Frequência de vereadores</h4>
           <textarea readonly style="height: 320px;" aria-label="LAI 1">À Câmara Municipal de Varginha – Setor de Protocolo / Ouvidoria
 
@@ -266,12 +278,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #f8fbfe; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: var(--navy);">
-            <strong>Onde encontra corrupção:</strong> Vereador que falta mas recebe salário integral. Ausências em série sem punição. Sessões extraordinárias convocadas e canceladas para mascarar quórum.
+            <strong>O que este pedido ajuda a conferir:</strong> Presença em sessões, justificativas de ausência, eventual desconto legal e coerência entre agenda, folha e registros oficiais.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="licitacao" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
+        <article class="template-card" data-cat="licitacao" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
           <h4>LAI 2 · Prefeitura: Contratos com dispensas e inexigibilidades</h4>
           <textarea readonly style="height: 320px;" aria-label="LAI 2">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
@@ -284,7 +296,7 @@ Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípi
    b) Cópias das pesquisas de preços de mercado que balizaram os valores das contratações diretas superiores a R$ 20.000,00 (mínimo de 3 orçamentos idôneos por processo, com respectivas datas e CNPJs cotantes).
    c) Cópia do parecer da Assessoria Jurídica e da justificativa técnica da secretaria que aprovaram a contratação direta.
 
-2. FRAUDE E FRACIONAMENTO DE COMPRAS
+2. CRUZAMENTO E FRACIONAMENTO DE COMPRAS
    a) Relação de notas fiscais emitidas e liquidadas para fornecedores cujos pagamentos acumulados no mesmo exercício fiscal, para serviços/bens da mesma natureza, ultrapassaram os limites legais de dispensa licitatória (R$ 50.000,00 e R$ 100.000,00).
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
@@ -295,13 +307,13 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
-            <strong>Onde encontra corrupção:</strong> Fracionamento de despesa é o esquema mais comum — dividir uma compra grande em várias pequenas para fugir da licitação. Mesmo CNPJ recebendo múltiplos contratos no limite exato da dispensa.
+            <strong>O que este pedido ajuda a conferir:</strong> Se compras parecidas foram divididas em vários processos, se houve pesquisa de preços e se a contratação direta foi justificada com documento.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="licitacao" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
-          <h4>LAI 3 · Prefeitura: Aditivos contratuais suspeitos</h4>
+        <article class="template-card" data-cat="licitacao" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
+          <h4>LAI 3 · Prefeitura: Aditivos contratuais para conferência</h4>
           <textarea readonly style="height: 320px;" aria-label="LAI 3">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
@@ -324,12 +336,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
-            <strong>Onde encontra corrupção:</strong> Contrato vence licitação com preço baixo e depois recebe aditivos que dobram ou triplicam o valor — sem nova concorrência. Aditivo sem parecer jurídico é irregularidade grave.
+            <strong>O que este pedido ajuda a conferir:</strong> Se os aditivos tiveram justificativa técnica, parecer jurídico, planilha de custos e fiscalização compatível com o aumento de valor ou prazo.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="obras" style="grid-column: 1 / -1; border-left: 4px solid #e65100;">
+        <article class="template-card" data-cat="obras" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #e65100;">
           <h4>LAI 4 · Prefeitura: Obras públicas e medições</h4>
           <textarea readonly style="height: 320px;" aria-label="LAI 4">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
@@ -354,12 +366,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
-            <strong>Onde encontra corrupção:</strong> Obra fantasma (paga mas não executada), sobrepreço (custo/m² acima do SINAPI), medição falsa (fiscal atesta serviço não realizado), obra paralisada com 100% pago.
+            <strong>O que este pedido ajuda a conferir:</strong> Se a obra foi executada no local informado, se a medição bate com fotos, diário de obra, metragem, notas fiscais e referência de preço.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="obras" style="grid-column: 1 / -1; border-left: 4px solid #e65100;">
+        <article class="template-card" data-cat="patrimonio" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
           <h4>LAI 5 · Prefeitura: Combustível e frota municipal</h4>
           <textarea readonly style="height: 320px;" aria-label="LAI 5">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
@@ -383,12 +395,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
-            <strong>Onde encontra corrupção:</strong> Abastecimento fantasma (litros incompatíveis com tanque), veículo que roda 200km/dia sem justificativa, manutenção superfaturada, locação mais cara que compra.
+            <strong>O que este pedido ajuda a conferir:</strong> Compatibilidade entre litros, odômetro, rota, diário de bordo, manutenção, notas fiscais e contrato de locação ou aquisição do veículo.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="licitacao" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
+        <article class="template-card" data-cat="gestao" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 6 · Prefeitura: Shows, festas e eventos</h4>
           <textarea readonly style="height: 280px;" aria-label="LAI 6">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
@@ -416,12 +428,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
-            <strong>Onde encontra corrupção:</strong> Inexigibilidade fraudulenta (artista contratado via empresa intermediária), cachê 3x acima do mercado, CNPJ da produtora aberto dias antes do contrato, evento que gera receita privada com dinheiro público.
+            <strong>O que este pedido ajuda a conferir:</strong> Critério de contratação, composição do cachê, empresa intermediária, data do CNPJ, custos de estrutura e eventual receita vinculada ao evento.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="pessoal" style="grid-column: 1 / -1; border-left: 4px solid var(--navy);">
+        <article class="template-card" data-cat="pessoal" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #1f3a5f;">
           <h4>LAI 7 · Prefeitura/Câmara: Cargos comissionados e nepotismo</h4>
           <textarea readonly style="height: 280px;" aria-label="LAI 7">À [PREFEITURA / CÂMARA] Municipal de Varginha – Setor de Protocolo
 
@@ -447,12 +459,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #f8fbfe; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: var(--navy);">
-            <strong>Onde encontra corrupção:</strong> Parente de político em cargo sem atribuição real, comissionado fantasma (nomeado mas não comparece), nepotismo cruzado (prefeito nomeia parente do vereador e vice-versa).
+            <strong>O que este pedido ajuda a conferir:</strong> Atribuição formal do cargo, frequência, lotação, declaração de parentesco e compatibilidade entre função, remuneração e presença.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="pessoal" style="grid-column: 1 / -1; border-left: 4px solid var(--navy);">
+        <article class="template-card" data-cat="pessoal" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #1f3a5f;">
           <h4>LAI 8 · Câmara: Diárias, viagens e verbas de gabinete</h4>
           <textarea readonly style="height: 280px;" aria-label="LAI 8">À Câmara Municipal de Varginha – Setor de Protocolo
 
@@ -482,12 +494,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #f8fbfe; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: var(--navy);">
-            <strong>Onde encontra corrupção:</strong> Diária paga em dia de sessão (vereador não viajou), viagem sem comprovante, verba de gabinete usada para fins pessoais, combustível em veículo particular.
+            <strong>O que este pedido ajuda a conferir:</strong> Data da viagem, presença em sessão, relatório de atividade, comprovantes, finalidade pública e compatibilidade dos gastos apresentados.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="licitacao" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
+        <article class="template-card" data-cat="gestao" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 9 · Prefeitura: Publicidade e propaganda institucional</h4>
           <textarea readonly style="height: 260px;" aria-label="LAI 9">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
@@ -516,12 +528,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
-            <strong>Onde encontra corrupção:</strong> Verba de publicidade direcionada a veículos aliados sem critério técnico, promoção pessoal do prefeito com dinheiro público, assessoria de imprensa contratada sem licitação para blindagem política.
+            <strong>O que este pedido ajuda a conferir:</strong> Critério técnico de distribuição da verba, mídia contratada, campanha executada, relatório de entrega e separação entre informação pública e promoção pessoal.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="denuncia" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
+        <article class="template-card" data-cat="patrimonio" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
           <h4>LAI 10 · Prefeitura: Aluguel de imóveis e cessões</h4>
           <textarea readonly style="height: 260px;" aria-label="LAI 10">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
@@ -550,25 +562,35 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
-            <strong>Onde encontra corrupção:</strong> Aluguel acima do mercado para imóvel de aliado político, imóvel público ocioso enquanto se aluga de terceiro, cessão de terreno público sem contrapartida, proprietário parente de servidor.
+            <strong>O que este pedido ajuda a conferir:</strong> Avaliação do imóvel, pesquisa de mercado, justificativa da locação, existência de imóvel público disponível e vínculo do proprietário quando declarado.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
-        <article class="template-card" data-cat="denuncia" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
+        </article>
+
+        <article class="template-card" data-cat="servicos" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #2e7d32;">
           <h4>LAI 11 · Prefeitura: Saúde Municipal (Contratos, Medicamentos e Filas)</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 11">À Secretaria Municipal de Saúde de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 460px;" aria-label="LAI 11">À Secretaria Municipal de Saúde de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2023, 2024 e 2025:
 
-1. TERCEIRIZAÇÕES E CONTRATOS MÉDICOS
-   a) Relação de todos os contratos vigentes com empresas médicas, clínicas e hospitais privados
-   b) Tabela de valores pagos por tipo de exame, consulta terceirizada e plantão médico
-   c) Relatório de escalas de plantão (previstas vs. executadas) dos últimos 6 meses
+1. CONTRATOS MÉDICOS, ORGANIZAÇÕES SOCIAIS (OS) E TERCEIRIZAÇÕES
+   a) Relação de todos os contratos, convênios e contratos de gestão vigentes com empresas médicas, cooperativas, clínicas, laboratórios, hospitais privados e Organizações Sociais (OS/OSCIP), com: CNPJ, objeto, valor mensal, vigência, modalidade de contratação (pregão, dispensa, inexigibilidade ou chamamento) e número do processo
+   b) Para cada OS/contrato de gestão: as metas pactuadas (quantitativas e qualitativas), o valor repassado e o percentual de cumprimento das metas aferido pela comissão de monitoramento
+   c) Tabela dos valores pagos por procedimento (consulta, exame, plantão, cirurgia), confrontada com a Tabela SUS e a tabela CBHPM, indicando o índice de reajuste aplicado sobre a tabela base
 
-2. MEDICAMENTOS E FILA DE ESPERA
-   a) Lista atualizada de medicamentos em falta na rede de farmácias municipais
-   b) Relatório contendo o número total de pacientes na fila de espera para consultas com especialistas, exames de alta complexidade e cirurgias eletivas, com respectivo tempo médio de espera
+2. PRODUÇÃO FATURADA × PRODUÇÃO REALIZADA
+   a) Relatório comparando a produção faturada por cada contratado (consultas, exames e plantões pagos) com a produção efetivamente registrada nos sistemas (BPA/SIA/SIH ou prontuário eletrônico), por mês
+   b) Escalas de plantão previstas em contrato × escalas efetivamente cumpridas (folha-ponto/registro de presença dos profissionais) nas unidades de pronto atendimento e hospital, nos últimos 12 meses
+
+3. MEDICAMENTOS E INSUMOS
+   a) Relação de compras de medicamentos e insumos por princípio ativo, quantidade, preço unitário, fornecedor (CNPJ) e nº do processo, confrontada com o Banco de Preços em Saúde (BPS) do Ministério da Saúde
+   b) Posição atual de estoque da farmácia central e das UBS, lista de itens da REMUME em desabastecimento e relatório de medicamentos perdidos por vencimento (quantidade e valor) nos últimos 24 meses
+
+4. FILAS, REGULAÇÃO E TRANSPORTE DE PACIENTES (TFD)
+   a) Número de pacientes em fila de espera por especialidade, exame de alta complexidade e cirurgia eletiva, com tempo médio e tempo máximo de espera, extraído do sistema de regulação (SISREG ou equivalente)
+   b) Gastos com Tratamento Fora do Domicílio (TFD): nº de pacientes encaminhados, destinos, custo de transporte e de diárias, e empresa contratada quando houver
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -578,27 +600,36 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
-            <strong>O que pode revelar:</strong> Contratos terceirizados superfaturados, plantões fantasmas pagos sem execução real e desvio de verbas destinadas a insumos básicos.
+            <strong>Documentos que podem esclarecer:</strong> Escalas previstas e executadas, notas fiscais, produção entregue, tabela de preços, filas de espera e entrega de insumos básicos.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="denuncia" style="grid-column: 1 / -1; border-left: 4px solid #e65100;">
+        <article class="template-card" data-cat="servicos" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #2e7d32;">
           <h4>LAI 12 · Prefeitura: Educação (Merenda, Transporte e Materiais)</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 12">À Secretaria Municipal de Educação de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 440px;" aria-label="LAI 12">À Secretaria Municipal de Educação de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2023, 2024 e 2025:
 
-1. MERENDA ESCOLAR
-   a) Notas fiscais e contratos de compra de gêneros alimentícios para merenda
-   b) Relatório de controle de entrega de alimentos nas escolas municipais
+1. MERENDA ESCOLAR (PNAE)
+   a) Contratos e notas fiscais de compra de gêneros alimentícios, por fornecedor (CNPJ), item, quantidade e preço unitário, confrontados com os preços de referência da chamada pública
+   b) Percentual dos recursos do PNAE aplicado na aquisição direta da agricultura familiar (mínimo legal de 30%) e a relação das chamadas públicas realizadas
+   c) Valor per capita repassado por aluno/dia, número de alunos atendidos por escola e os cardápios assinados pela nutricionista responsável (RT)
+   d) Relatório de recebimento da merenda nas escolas (datas e quantidades) e atas do Conselho de Alimentação Escolar (CAE)
 
-2. TRANSPORTE E UNIFORMES
-   a) Cópia do contrato de transporte escolar (empresas, rotas e valores pagos por km rodado)
-   b) Planilha de rotas diárias com número de alunos transportados por veículo
-   c) Contratos e comprovantes de entrega de uniformes e kits escolares
+2. TRANSPORTE ESCOLAR
+   a) Contratos vigentes (empresas, CNPJ, valor pago por km e por aluno), rotas diárias com quilometragem e número de alunos transportados por veículo
+   b) Relação dos veículos (placa, ano, capacidade), certificados de vistoria do DETRAN e documentação dos condutores
+   c) Confronto entre a quilometragem contratada/paga e a quilometragem efetivamente percorrida (controle de rotas, diário de bordo ou rastreamento)
+
+3. UNIFORMES, MATERIAL DIDÁTICO E KITS
+   a) Contratos, modalidade de licitação e notas fiscais de uniformes, material didático e kits escolares, com quantidade adquirida × número de alunos matriculados
+   b) Comprovantes de entrega por escola e relatório de sobras/estoque não distribuído
+
+4. APLICAÇÃO DE RECURSOS VINCULADOS
+   a) Demonstrativo de aplicação do FUNDEB e do percentual constitucional mínimo em manutenção e desenvolvimento do ensino (MDE), com a relação das principais despesas
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -608,23 +639,34 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
-            <strong>O que pode revelar:</strong> Pagamento por rotas escolares não rodadas, superfaturamento em alimentos e entrega parcial de uniformes ou kits de materiais.
+            <strong>Documentos que podem esclarecer:</strong> Rotas executadas, quilometragem, lista de escolas atendidas, notas fiscais, comprovantes de entrega da merenda, uniformes e kits.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="denuncia" style="grid-column: 1 / -1; border-left: 4px solid #e65100;">
+        <article class="template-card" data-cat="gestao" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 13 · Prefeitura: Emendas Parlamentares</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 13">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 420px;" aria-label="LAI 13">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2021 a 2025:
 
-1. RECEBIMENTO E DESTINAÇÃO DE EMENDAS
-   a) Relação de emendas parlamentares (estaduais e federais) recebidas de 2023 a 2025
-   b) Para cada emenda: parlamentar autor, valor total, data de repasse e destinação legal (objeto)
-   c) Status atual de aplicação física e financeira dos recursos (obras contratadas, em execução ou paralisadas)
+1. RECEBIMENTO E DESTINAÇÃO
+   a) Relação de todas as emendas parlamentares (federais e estaduais) e transferências especiais/voluntárias recebidas, com: parlamentar autor, nº da proposta/transferência (Transferegov/SICONV ou SIGCON-MG), valor, data do repasse, fonte e objeto/finalidade legal
+   b) Para cada emenda: classificação entre transferência com finalidade definida e transferência especial ("emenda Pix"), e o ente/fundo de destino
+
+2. EXECUÇÃO FÍSICA E FINANCEIRA
+   a) Situação de cada recurso: empenhado, liquidado, pago, em execução, concluído ou paralisado, com o percentual físico executado
+   b) Saldo em conta específica de cada emenda e rendimentos de aplicação financeira não utilizados
+   c) Recursos devolvidos por não execução ou bloqueados, com a justificativa
+
+3. CONTRATAÇÕES VINCULADAS (rastreabilidade do dinheiro)
+   a) Para cada emenda, a relação dos contratos/empenhos vinculados: empresa contratada (CNPJ), modalidade de licitação, valor e objeto
+   b) Confronto entre o objeto aprovado na emenda e o objeto efetivamente entregue à população
+
+4. EMENDAS IMPOSITIVAS DA CÂMARA (LOA municipal)
+   a) Relação das emendas impositivas dos vereadores ao orçamento municipal, por autor, valor, destinação e percentual efetivamente executado pelo Executivo
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -634,23 +676,34 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
-            <strong>O que pode revelar:</strong> Recursos de emendas parados em conta gerando rendimentos sem execução pública, e desvio ou descaracterização do objeto original acordado.
+            <strong>Documentos que podem esclarecer:</strong> Plano de trabalho, empenho, pagamento, execução física, saldo em conta e compatibilidade entre objeto aprovado e entrega realizada.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="licitacao" style="grid-column: 1 / -1; border-left: 4px solid #e65100;">
+        <article class="template-card" data-cat="gestao" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 14 · Prefeitura: Convênios e Repasses ao Terceiro Setor</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 14">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 420px;" aria-label="LAI 14">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2021 a 2025:
 
-1. PARCERIAS E TERMO DE FOMENTO
-   a) Relação de convênios, termos de colaboração ou fomento vigentes com ONGs, associações e entidades sociais
-   b) Valores repassados no último ano fiscal, com as respectivas metas estabelecidas no plano de trabalho
-   c) Cópias das prestações de contas finais homologadas e pareceres do órgão de controle interno
+1. PARCERIAS COM O TERCEIRO SETOR (Lei 13.019/2014)
+   a) Relação de todos os termos de colaboração, termos de fomento e acordos de cooperação com OSCs/ONGs/associações, com: entidade, CNPJ, objeto, valor total, vigência e secretaria responsável
+   b) Para cada parceria: se foi precedida de chamamento público ou se houve dispensa/inexigibilidade, com a respectiva justificativa
+   c) Plano de trabalho com as metas pactuadas e os indicadores de aferição
+
+2. CONVÊNIOS COM ESTADO E UNIÃO
+   a) Relação de convênios e instrumentos congêneres firmados com o Estado e a União, com nº (Transferegov/SIGCON), objeto, valor, contrapartida do município e situação
+
+3. EXECUÇÃO, PRESTAÇÃO DE CONTAS E CONTROLE
+   a) Valores repassados por parceria/convênio por exercício × metas efetivamente cumpridas
+   b) Cópias das prestações de contas apresentadas, dos pareceres técnicos do gestor da parceria e dos pareceres do controle interno, indicando as aprovadas, as reprovadas e as pendentes
+   c) Relação de entidades inadimplentes na prestação de contas e eventuais Tomadas de Contas Especiais instauradas
+
+4. GOVERNANÇA (conflito de interesse)
+   a) Vínculo, quando declarado, entre dirigentes das entidades parceiras e agentes públicos municipais (dirigentes, secretários, vereadores)
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -660,23 +713,32 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
-            <strong>O que pode revelar:</strong> Repasses para ONGs "de fachada" geridas por parentes ou cabos eleitorais, ausência de prestação de contas e desvio de fins sociais.
+            <strong>Documentos que podem esclarecer:</strong> Plano de trabalho, metas, diretoria da entidade, prestações de contas, parecer técnico e comprovação das entregas ao público atendido.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="pessoal" style="grid-column: 1 / -1; border-left: 4px solid #1565c0;">
+        <article class="template-card" data-cat="pessoal" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #1f3a5f;">
           <h4>LAI 15 · Prefeitura: Processos Seletivos e Contratações Temporárias</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 15">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 400px;" aria-label="LAI 15">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, na posição atual e a evolução desde 2023:
 
-1. CONTRATAÇÕES EXCEPCIONAIS
-   a) Relação de servidores sob contratação temporária atualizada, dividida por secretaria e função
-   b) Justificativa legal individual ou coletiva que embase a excepcionalidade do interesse público
-   c) Lista de terceirizados por empresa atuando em atividades-fim da administração pública
+1. CONTRATAÇÕES TEMPORÁRIAS (art. 37, IX, CF)
+   a) Relação de servidores temporários por secretaria e função, com data de admissão, prazo do contrato e nº de prorrogações
+   b) Lei autorizativa e a justificativa da necessidade temporária de excepcional interesse público de cada contratação
+   c) Quantitativo de temporários em relação ao total de servidores (efetivos + comissionados + temporários), por secretaria
+
+2. PROCESSOS SELETIVOS SIMPLIFICADOS
+   a) Editais dos processos seletivos, critérios de classificação e a lista de classificados
+   b) Ordem de convocação e a relação dos efetivamente convocados, para verificar respeito à ordem classificatória
+   c) Concursos públicos vigentes com candidatos aprovados dentro do número de vagas ainda não nomeados, e o prazo de validade
+
+3. TERCEIRIZAÇÃO
+   a) Contratos de terceirização de mão de obra (empresa, CNPJ, nº de postos, função, custo por posto e valor mensal)
+   b) Indicação das funções terceirizadas que correspondem a atividade-fim e a respectiva fundamentação
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -686,22 +748,31 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #e3f2fd; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #1565c0;">
-            <strong>O que pode revelar:</strong> Uso político de contratações temporárias em detrimento de concurso público, favorecimento de correligionários e fraude na excepcionalidade legal.
+            <strong>Documentos que podem esclarecer:</strong> Justificativa da contratação temporária, processo seletivo, prazo, função exercida, necessidade excepcional e relação com vagas efetivas.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="denuncia" style="grid-column: 1 / -1; border-left: 4px solid #1565c0;">
+        <article class="template-card" data-cat="servicos" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #2e7d32;">
           <h4>LAI 16 · Prefeitura: Assistência Social (Cestas Básicas e Benefícios)</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 16">À Secretaria Municipal de Assistência Social de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 420px;" aria-label="LAI 16">À Secretaria Municipal de Assistência Social de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a jan/2023 até a presente data:
 
-1. CONCESSÃO DE BENEFÍCIOS EVENTUAIS
-   a) Lista de distribuição mensal de cestas básicas, cobertores e auxílios de jan/2024 até a presente data (sem nomes, apenas quantitativos e critérios de elegibilidade)
-   b) Notas fiscais de compra dos suprimentos alimentícios e comprovantes de entrada/saída no almoxarifado central da secretaria
+1. BENEFÍCIOS EVENTUAIS (critérios e volume)
+   a) Quantitativo mensal de cestas básicas, cobertores, auxílio-natalidade, auxílio-funeral e demais benefícios eventuais concedidos (apenas números e critérios, sem dados pessoais)
+   b) Lei/decreto que define os critérios de elegibilidade e o fluxo de concessão
+   c) Cruzamento entre beneficiários e o CadÚnico (em forma estatística), para aferir focalização
+
+2. AQUISIÇÃO E ESTOQUE DOS SUPRIMENTOS
+   a) Contratos e notas fiscais de compra dos itens (fornecedor/CNPJ, quantidade, preço unitário), confrontados com o preço de referência da licitação
+   b) Comprovantes de entrada e saída do almoxarifado e a posição atual de estoque, com itens vencidos ou perdidos
+
+3. EQUIPAMENTOS E PROGRAMAS
+   a) Relação de serviços executados por CRAS e CREAS, e os contratos/parcerias vinculados
+   b) Demonstrativo de aplicação dos recursos do Fundo Municipal de Assistência Social (FMAS) e das transferências do FNAS/estaduais, com as principais despesas
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -711,23 +782,31 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #e3f2fd; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #1565c0;">
-            <strong>O que pode revelar:</strong> Distribuição indevida de benefícios para fins eleitorais/pessoais e desvio de materiais comprados com recursos de assistência social.
+            <strong>Documentos que podem esclarecer:</strong> Critérios de elegibilidade, quantitativos por período, notas fiscais, entrada e saída de estoque e relatórios sem exposição de dados pessoais.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="licitacao" style="grid-column: 1 / -1; border-left: 4px solid #1565c0;">
+        <article class="template-card" data-cat="gestao" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 17 · Prefeitura: Tecnologia e Sistemas (Licenciamentos e Softwares)</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 17">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 420px;" aria-label="LAI 17">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes aos contratos vigentes e a 2023–2025:
 
-1. CONTRATOS DE SOFTWARE E CONSULTORIA DE TI
-   a) Relação de todos os softwares licitados ou adquiridos por inexigibilidade em uso pela administração municipal
-   b) Valores mensais pagos e vigência dos contratos de licenciamento
-   c) Relatório ou ateste de conformidade de execução do sistema em cada secretaria
+1. SOFTWARES E LICENCIAMENTO
+   a) Relação de todos os sistemas e softwares em uso (contábil, folha, saúde, educação, protocolo etc.), com: fornecedor (CNPJ), módulos, secretarias usuárias, valor mensal/anual, vigência e nº do processo
+   b) Modalidade de contratação de cada um e, nas inexigibilidades/dispensas, a justificativa de inviabilidade de competição e a comprovação de exclusividade
+   c) Atesto de execução/conformidade e relação de chamados de suporte por sistema
+
+2. INFRAESTRUTURA E CONSULTORIAS
+   a) Contratos de hospedagem (data center/nuvem), com volume contratado e valor
+   b) Contratos de consultoria e fábrica de software, com objeto, horas/produtos contratados e entregas atestadas
+
+3. DADOS, PROPRIEDADE E SAÍDA (lock-in)
+   a) Cláusulas sobre propriedade dos dados e do código-fonte, e a forma de exportação dos dados em formato aberto ao término do contrato
+   b) Medidas de proteção de dados pessoais (LGPD) e o encarregado (DPO) designado
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -737,22 +816,30 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #e3f2fd; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #1565c0;">
-            <strong>O que pode revelar:</strong> Compra de sistemas nunca utilizados ("softwares fantasmas") e contratações repetitivas sem concorrência real.
+            <strong>Documentos que podem esclarecer:</strong> Sistemas contratados, usuários ativos, ateste de funcionamento, licenças pagas, relatórios de suporte e justificativa da modalidade.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="obras" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
+        <article class="template-card" data-cat="patrimonio" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
           <h4>LAI 18 · Prefeitura: Controle do Patrimônio Público e Leilões</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 18">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 400px;" aria-label="LAI 18">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. INVENTÁRIO E LEILÃO DE BENS
-   a) Cópia do relatório consolidado de bens móveis e máquinas pesadas do município
-   b) Lista de veículos leiloados nos últimos 24 meses, incluindo laudo de avaliação prévia que determinou o preço mínimo de arremate e valor final de venda
+1. INVENTÁRIO PATRIMONIAL
+   a) Relatório consolidado do inventário de bens móveis, máquinas pesadas e equipamentos, com nº de tombamento, descrição, localização, estado de conservação e valor contábil
+   b) Relação de bens não localizados ou baixados por extravio/obsolescência nos últimos 24 meses, com o respectivo processo de apuração
+
+2. LEILÕES E ALIENAÇÕES
+   a) Lista de bens alienados/leiloados nos últimos 24 meses, com laudo de avaliação prévia, valor mínimo, valor de arremate e identificação do arrematante (CPF/CNPJ parcial)
+   b) Editais dos leilões e ata de homologação, para confronto entre avaliação e preço final
+
+3. CESSÕES E USO DE BENS
+   a) Relação de veículos e equipamentos cedidos ou em uso por terceiros, com finalidade, prazo e instrumento que autoriza
+   b) Bens imóveis públicos ocupados sem instrumento formal, quando houver registro
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -762,12 +849,12 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
-            <strong>O que pode revelar:</strong> Subavaliação criminosa de bens públicos para leilão favorecendo arrematantes privados, e sucateamento intencional de frotas e equipamentos.
+            <strong>Documentos que podem esclarecer:</strong> Laudo de avaliação, estado de conservação, valor mínimo, valor final, lista de bens e justificativa para leilão ou baixa patrimonial.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="obras" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
+        <article class="template-card" data-cat="gestao" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 19 · Prefeitura: Meio Ambiente e Limpeza Urbana</h4>
           <textarea readonly style="height: 320px;" aria-label="LAI 19">À Secretaria Municipal de Meio Ambiente de Varginha – Setor de Protocolo / e-SIC
 
@@ -775,7 +862,7 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. PESAGENS E MÁFIA DO LIXO
+1. PESAGENS E MEDIÇÃO DO LIXO
    a) Cópia digital integral de todos os tíquetes de pesagem (tickets de balança homologada pelo INMETRO) que fundamentaram os pagamentos à empresa concessionária de coleta de lixo e destinação final de resíduos sólidos.
    b) Relatório de medição dos serviços de varrição manual e mecanizada, capina de vias públicas e poda de árvores, indicando as ruas exatas atendidas e metros lineares medidos por dia de serviço.
    c) Parecer técnico de aprovação das pesagens elaborado pela equipe de fiscalização de contratos da prefeitura.
@@ -788,23 +875,31 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
-            <strong>O que pode revelar:</strong> Fraude no peso de resíduos para superestimar pagamento, e cobrança por serviços de capina e limpeza que nunca foram de fato prestados.
+            <strong>Documentos que podem esclarecer:</strong> Tíquetes de pesagem, medição de capina e limpeza, ruas atendidas, fiscal responsável e comparação entre serviço medido e serviço executado.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="denuncia" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
+        <article class="template-card" data-cat="gestao" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 20 · Prefeitura: Concessionárias e Contribuição de Iluminação Pública</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 20">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 420px;" aria-label="LAI 20">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes aos últimos 36 meses:
 
-1. ILUMINAÇÃO PÚBLICA E DÉBITOS
-   a) Extrato das arrecadações mensais da COSIP (Contribuição de Iluminação Pública) dos últimos 12 meses
-   b) Extrato detalhado de despesas, manutenções e investimentos custeados com recursos da COSIP
-   c) Relação de débitos ou faturas pendentes da prefeitura junto à concessionária de energia e água
+1. COSIP — ARRECADAÇÃO × DESTINAÇÃO (vinculação obrigatória)
+   a) Arrecadação mensal da Contribuição de Iluminação Pública (COSIP/CIP)
+   b) Demonstrativo das despesas custeadas com a COSIP (manutenção, expansão, eficientização, energia da rede), confrontando arrecadado × gasto, e o saldo acumulado não aplicado
+   c) Contrato de iluminação pública vigente (inclusive PPP, se houver): objeto, valor, metas de modernização (ex.: LED) e indicadores de desempenho
+
+2. RELAÇÃO COM AS CONCESSIONÁRIAS (energia, água/esgoto, telecom)
+   a) Débitos e faturas pendentes do município junto a cada concessionária, com valores e vencimentos
+   b) Convênios/contratos e contrapartidas acordadas com cada concessionária
+
+3. REPAROS URBANOS E RECOMPOSIÇÃO DE VIAS
+   a) Relação de intervenções das concessionárias em vias públicas (abertura de valas) e a comprovação de recomposição do pavimento (responsável e prazo)
+   b) Reclamações registradas sobre buracos/valas não recompostos e o encaminhamento dado
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -814,23 +909,31 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
-            <strong>O que pode revelar:</strong> Desvio do saldo da taxa de iluminação pública (COSIP) para outras áreas não autorizadas e maquiagem contábil em dívidas com concessionárias.
+            <strong>Documentos que podem esclarecer:</strong> Arrecadação da COSIP, despesas custeadas, faturas, débitos, conciliação contábil e autorização legal para cada aplicação do recurso.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <article class="template-card" data-cat="denuncia" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
+        <article class="template-card" data-cat="gestao" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 21 · Prefeitura: Planejamento Orçamentário e Controladoria Interna</h4>
-          <textarea readonly style="height: 280px;" aria-label="LAI 21">À Controladoria Geral do Município de Varginha – Setor de Protocolo / e-SIC
+          <textarea readonly style="height: 440px;" aria-label="LAI 21">À Controladoria Geral do Município de Varginha – Setor de Protocolo / e-SIC
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. EXECUÇÃO FÍSICA DAS METAS ORÇAMENTÁRIAS
-   a) Relatório de avaliação das metas físicas da LOA (Lei Orçamentária Anual) relativas ao ano anterior
-   b) Cópia de todos os relatórios finais de auditoria interna elaborados pela Controladoria nos últimos 12 meses
-   c) Recomendações vigentes expedidas pelo TCE-MG referentes a irregularidades orçamentárias
+1. PLANEJAMENTO (PPA, LDO, LOA)
+   a) Relação dos programas do PPA vigente com as metas físicas e financeiras previstas e a execução acumulada de cada um
+   b) Metas e prioridades da LDO do exercício e a LOA aprovada, com o demonstrativo de execução por função/programa
+
+2. EXECUÇÃO E METAS FÍSICAS
+   a) Relatório de avaliação das metas físicas do exercício anterior (previsto × realizado), por programa
+   b) Demonstrativo dos créditos adicionais (suplementares e especiais) abertos no exercício e o percentual de remanejamento sobre o orçamento inicial
+   c) Relatórios de Gestão Fiscal (RGF) e Resumido da Execução Orçamentária (RREO) mais recentes, com os limites de pessoal e endividamento
+
+3. CONTROLE INTERNO
+   a) Relação dos relatórios de auditoria interna concluídos nos últimos 24 meses (título, área auditada e situação das recomendações)
+   b) Recomendações e determinações vigentes do TCE-MG e o respectivo plano de providências adotado pela administração
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -840,7 +943,7 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
-            <strong>O que pode revelar:</strong> Omissão ou arquivamento de auditorias internas que encontraram falhas de gestão, e descumprimento intencional das metas de gastos legais.
+            <strong>Documentos que podem esclarecer:</strong> Metas do PPA/LDO/LOA previstas × executadas, créditos adicionais e remanejamentos, relatórios de auditoria interna e a situação das recomendações do TCE-MG.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>

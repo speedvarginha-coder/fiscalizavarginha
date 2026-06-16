@@ -5228,7 +5228,7 @@ ${url}
   }
 
   function filaScoreHtml(item) {
-    const label = item.tipo === "frota" ? "nao e quantidade" : item.tipoLabel;
+    const label = item.tipo === "frota" ? "não é quantidade" : item.tipoLabel;
     return `
       <span class="risk-chip risk-chip--${esc(item.level)}">${esc(filaLabel(item.level))}</span>
       <div class="risk-priority">
@@ -5245,31 +5245,31 @@ ${url}
     const valorBase = Number(meta.valorBase || item.valor || 0);
     const valorAtipico = Number(meta.valorAtipico || 0);
     const fatos = [
-      ["Veiculo neste card", "1"],
-      ["Veiculos na base", meta.totalFrota ? fmtNum(meta.totalFrota) : "nao informado"],
-      ["Placa/identificacao", meta.placa || "nao informada"],
-      ["Descricao", meta.descricao || item.titulo || "veiculo municipal"],
-      ["Lotacao", meta.centro || "centro de custo nao informado"],
-      ["Aquisicao", meta.aquisicao || "nao informada"],
-      ["Data da aquisicao", meta.dataAquisicao || "nao informada"],
+      ["Veículo neste card", "1"],
+      ["Veículos na base", meta.totalFrota ? fmtNum(meta.totalFrota) : "não informado"],
+      ["Placa/identificação", meta.placa || "não informada"],
+      ["Descrição", meta.descricao || item.titulo || "veículo municipal"],
+      ["Lotação", meta.centro || "centro de custo não informado"],
+      ["Aquisição", meta.aquisicao || "não informada"],
+      ["Data da aquisição", meta.dataAquisicao || "não informada"],
       ["Gasto vinculado", fmtBRL(valorBase)],
     ];
-    if (valorAtipico > 0) fatos.push(["Valor atipico separado", fmtBRL(valorAtipico)]);
-    if (Number(meta.combustivel || 0) > 0) fatos.push(["Combustivel", `${fmtBRL(meta.combustivel)}${meta.litros ? ` / ${fmtNum(meta.litros)} L` : ""}`]);
-    if (Number(meta.manutencao || 0) > 0) fatos.push(["Manutencao/pecas", fmtBRL(meta.manutencao)]);
+    if (valorAtipico > 0) fatos.push(["Valor atípico separado", fmtBRL(valorAtipico)]);
+    if (Number(meta.combustivel || 0) > 0) fatos.push(["Combustível", `${fmtBRL(meta.combustivel)}${meta.litros ? ` / ${fmtNum(meta.litros)} L` : ""}`]);
+    if (Number(meta.manutencao || 0) > 0) fatos.push(["Manutenção/peças", fmtBRL(meta.manutencao)]);
 
     return `
       <div class="risk-context risk-context--frota">
         <div class="risk-context__intro">
           <strong>Como ler este card de frota</strong>
-          <p>Este card representa 1 veiculo especifico da frota municipal. A nota de prioridade mostra o que deve ser conferido primeiro; ela nao e a quantidade de veiculos.</p>
+          <p>Este card representa 1 veículo específico da frota municipal. A nota de prioridade mostra o que deve ser conferido primeiro; ela não é a quantidade de veículos.</p>
         </div>
         <div class="risk-context__facts">
           ${fatos.map(([label, value]) => `<span><b>${esc(label)}:</b> ${esc(value)}</span>`).join("")}
         </div>
         <div class="risk-context__ask">
-          <strong>O que o cidadao pode pedir</strong>
-          <p>Diario de bordo, odometro, notas de combustivel, manutencao, pneus, responsavel pelo uso, secretaria de lotacao e contrato de locacao, cessao ou aquisicao.</p>
+          <strong>O que o cidadão pode pedir</strong>
+          <p>Diário de bordo, odômetro, notas de combustível, manutenção, pneus, responsável pelo uso, secretaria de lotação e contrato de locação, cessão ou aquisição.</p>
         </div>
       </div>`;
   }
@@ -6664,6 +6664,51 @@ ${url}
     actions.appendChild(button);
   }
 
+  function renderGlobalDataHealthNotice() {
+    const audit = D.auditoria_dados || {};
+    const items = (audit.items || []).filter((item) => item.severity && item.severity !== "ok");
+    if (!items.length) return;
+
+    const header = document.querySelector(".bigheader");
+    const container = header?.parentElement || document.querySelector("main .container") || document.querySelector(".container");
+    if (!container) return;
+
+    let box = document.getElementById("dataHealthStrip") || document.getElementById("globalDataHealthNotice");
+    if (!box && PAGE === "home") box = document.getElementById("homeDataHealth");
+    if (!box) {
+      box = document.createElement("section");
+      box.id = "globalDataHealthNotice";
+      box.className = "data-health-strip";
+      box.setAttribute("aria-label", "Limites conhecidos da base de dados");
+      if (header && header.parentNode) header.insertAdjacentElement("afterend", box);
+      else container.prepend(box);
+    }
+
+    const level = audit.level || "attention";
+    const summary = audit.summary || {};
+    const base = audit.atualizado_base?.data_humana || D.atualizado_em?.data_humana || "data não informada";
+    const sorted = items.slice().sort((a, b) => {
+      const rank = { error: 0, warning: 1, info: 2 };
+      return (rank[a.severity] ?? 3) - (rank[b.severity] ?? 3);
+    }).slice(0, 4);
+    const label = level === "critical" ? "Atenção crítica" : level === "attention" ? "Atenção aos limites dos dados" : "Dados sem alerta crítico";
+
+    box.className = `data-health-strip data-health-strip--${esc(level)}`;
+    box.hidden = false;
+    box.innerHTML = `
+      <div class="data-health-strip__head">
+        <div>
+          <strong>${esc(label)}</strong>
+          <p>Base principal: ${esc(base)}. Use estes números como trilha de fiscalização e confirme a fonte oficial antes de divulgar conclusão.</p>
+        </div>
+        <span>${fmtNum(summary.warnings || 0)} aviso(s)</span>
+      </div>
+      <ul>
+        ${sorted.map((item) => `<li><b>${esc(item.title)}:</b> ${esc(item.detail)} <em>${esc(item.action || "")}</em></li>`).join("")}
+      </ul>
+      <a href="sobre.html#auditoriaDados">Ver auditoria completa e limitações das fontes</a>`;
+  }
+
   // ============= AUDITÔMETRO (index.html) =============
   function initScorecard() {
     if (!$("scorePrefeitura")) return;
@@ -6702,6 +6747,7 @@ ${url}
     listEl.innerHTML = list.map(li => `<li>${li}</li>`).join("");
   }
 
+  renderGlobalDataHealthNotice();
   if (PAGE === "home") initScorecard();
   if (PAGE === "pessoal") initPessoal();
   if (PAGE === "prefeitura") renderPlacarPrefeitura();
@@ -6725,44 +6771,91 @@ ${url}
 
     function initFiltrosTemplates() {
       const grid = document.querySelector(".template-grid");
+      if (!grid) return;
       const searchInput = document.getElementById("laiBusca");
-      const filterBtns = document.querySelectorAll(".lai-filter");
-      if (!grid || !searchInput || !filterBtns.length) return;
-
-      let activeCat = "all";
       const cards = grid.querySelectorAll(".template-card");
+      if (!cards.length) return;
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-          filterBtns.forEach(b => {
-             b.classList.remove("active");
-             b.style.background = "#fff";
-             b.style.color = "var(--ink)";
-             b.style.borderColor = "var(--line)";
-          });
-          btn.classList.add("active");
-          btn.style.background = "var(--navy)";
-          btn.style.color = "#fff";
-          btn.style.borderColor = "var(--navy)";
-          
-          activeCat = btn.getAttribute("data-cat");
-          aplicarFiltro();
-        });
+      // Rótulo/cor de cada categoria e nível — usados nos chips e (implicitamente) nos filtros.
+      const CATS = {
+        licitacao:  { rotulo: "Contratos & Compras",         cor: "#c62828", bg: "#fdeaea" },
+        obras:      { rotulo: "Obras & Asfalto",             cor: "#e65100", bg: "#fff3e0" },
+        servicos:   { rotulo: "Saúde, Educação & Social",    cor: "#2e7d32", bg: "#e8f5e9" },
+        pessoal:    { rotulo: "Pessoal & Câmara",            cor: "#1f3a5f", bg: "#eef3f8" },
+        patrimonio: { rotulo: "Patrimônio, Frota & Imóveis", cor: "#6a1b9a", bg: "#f3e5f5" },
+        gestao:     { rotulo: "Gestão, Repasses & Cidade",   cor: "#37474f", bg: "#eceff1" }
+      };
+      const NIVEIS = {
+        "1": { rotulo: "Nível 1 · Alto impacto",     cor: "#c62828" },
+        "2": { rotulo: "Nível 2 · Muito relevante",  cor: "#e65100" },
+        "3": { rotulo: "Nível 3 · Onde poucos olham", cor: "#1565c0" },
+        "4": { rotulo: "Nível 4 · Avançada",         cor: "#6a1b9a" }
+      };
+
+      // Injeta os chips (nível + categoria) uma única vez por card, antes do título.
+      cards.forEach(card => {
+        if (card.querySelector(".lai-chips")) return;
+        const h4 = card.querySelector("h4");
+        if (!h4) return;
+        const niv = card.getAttribute("data-nivel");
+        const cat = card.getAttribute("data-cat");
+        const wrap = document.createElement("div");
+        wrap.className = "lai-chips";
+        wrap.style.cssText = "display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;";
+        if (niv && NIVEIS[niv]) {
+          const n = NIVEIS[niv];
+          wrap.insertAdjacentHTML("beforeend",
+            '<span style="font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff;background:' + n.cor + ';">' + n.rotulo + '</span>');
+        }
+        if (cat && CATS[cat]) {
+          const c = CATS[cat];
+          wrap.insertAdjacentHTML("beforeend",
+            '<span style="font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;color:' + c.cor + ';background:' + c.bg + ';border:1px solid ' + c.cor + '33;">' + c.rotulo + '</span>');
+        }
+        h4.parentNode.insertBefore(wrap, h4);
       });
 
+      const catBtns = document.querySelectorAll(".lai-filter");
+      const nivBtns = document.querySelectorAll(".lai-filter-nivel");
+      let activeCat = "all";
+      let activeNivel = "all";
+
+      function pintar(btns, active, attr) {
+        btns.forEach(b => {
+          const on = b.getAttribute(attr) === active;
+          b.classList.toggle("active", on);
+          b.style.background = on ? "var(--navy)" : "#fff";
+          b.style.color = on ? "#fff" : "var(--ink)";
+          b.style.borderColor = on ? "var(--navy)" : "var(--line)";
+        });
+      }
+
+      catBtns.forEach(btn => btn.addEventListener("click", () => {
+        activeCat = btn.getAttribute("data-cat");
+        pintar(catBtns, activeCat, "data-cat");
+        aplicarFiltro();
+      }));
+      nivBtns.forEach(btn => btn.addEventListener("click", () => {
+        activeNivel = btn.getAttribute("data-nivel");
+        pintar(nivBtns, activeNivel, "data-nivel");
+        aplicarFiltro();
+      }));
+
       function aplicarFiltro() {
-        const term = searchInput.value.toLowerCase().trim();
+        const term = (searchInput ? searchInput.value : "").toLowerCase().trim();
         let visibleCount = 0;
 
         cards.forEach(card => {
           const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
           const desc = (card.querySelector("textarea")?.value || "").toLowerCase();
           const cardCat = card.getAttribute("data-cat");
+          const cardNiv = card.getAttribute("data-nivel");
 
           const matchTerm = !term || title.includes(term) || desc.includes(term);
           const matchCat = activeCat === "all" || cardCat === activeCat;
+          const matchNiv = activeNivel === "all" || cardNiv === activeNivel;
 
-          if (matchTerm && matchCat) {
+          if (matchTerm && matchCat && matchNiv) {
             card.style.display = "";
             visibleCount++;
           } else {
@@ -6776,7 +6869,7 @@ ${url}
             emptyMsg = document.createElement("div");
             emptyMsg.id = "template-empty-message";
             emptyMsg.className = "empty";
-            emptyMsg.innerHTML = "<p>Nenhum modelo forense encontrado para os filtros selecionados.</p>";
+            emptyMsg.innerHTML = "<p>Nenhum modelo encontrado para os filtros selecionados.</p>";
             grid.parentNode.insertBefore(emptyMsg, grid.nextSibling);
           }
         } else {
@@ -6784,7 +6877,7 @@ ${url}
         }
       }
 
-      searchInput.addEventListener("input", aplicarFiltro);
+      if (searchInput) searchInput.addEventListener("input", aplicarFiltro);
     }
 
     initFiltrosTemplates();

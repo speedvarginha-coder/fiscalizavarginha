@@ -48,6 +48,8 @@ playwright/.cache/
 *.backup
 *.orig
 *.tmp
+old_*.html
+temp_*.html
 *~
 .DS_Store
 Thumbs.db
@@ -84,6 +86,7 @@ painel-cidadao/data.js
 
 # ---- Screenshots de QA (não publicáveis em prod) ----
 *.png
+__fc.png
 !painel-cidadao/favicon.svg
 !painel-cidadao/assets/**/*.png
 

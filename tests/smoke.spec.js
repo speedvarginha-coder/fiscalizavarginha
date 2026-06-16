@@ -115,6 +115,18 @@ test.describe("Legenda de leitura dos dados", () => {
   });
 });
 
+test.describe("Avisos de qualidade dos dados", () => {
+  test("paginas publicas exibem limitacoes quando a auditoria aponta alerta", async ({ page }) => {
+    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const aviso = page.locator(".data-health-strip").first();
+    await expect(aviso).toBeVisible();
+    await expect(aviso).toContainText(/limites dos dados|alerta critico/i);
+    await expect(aviso).toContainText(/fonte oficial/i);
+    await expect(aviso.locator('a[href="sobre.html#auditoriaDados"]')).toContainText(/auditoria completa/i);
+  });
+});
+
 test.describe("Mapa cidadao do dinheiro", () => {
   test("home mostra guia para quem não sabe por onde começar", async ({ page }) => {
     await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
@@ -186,6 +198,20 @@ test.describe("Como cobrar", () => {
     await expect(page.locator("#filaCobrancaLista")).toContainText("Atualizado em");
     await page.locator("#filaCobrancaRisco").selectOption("red");
     await expect(page.locator("#filaCobrancaLista")).toContainText(/Vermelho|Nenhum item/);
+  });
+
+  test("fila de cobranca explica que frota e veiculo individual, nao quantidade", async ({ page }) => {
+    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    await page.locator("#filaCobrancaTipo").selectOption("frota");
+    const lista = page.locator("#filaCobrancaLista");
+    await expect(lista.locator(".risk-queue-card").first()).toBeAttached();
+    await expect(lista).toContainText("Prioridade");
+    await expect(lista).toContainText(/não é quantidade|nao e quantidade/i);
+    await expect(lista).toContainText(/Este card representa 1 veículo específico|Este card representa 1 veiculo especifico/i);
+    await expect(lista).toContainText(/Veículos na base|Veiculos na base/i);
+    await expect(lista).toContainText(/O que o cidadão pode pedir|O que o cidadao pode pedir/i);
+    await expect(lista).toContainText(/diário de bordo|diario de bordo|odômetro|odometro/i);
   });
 });
 

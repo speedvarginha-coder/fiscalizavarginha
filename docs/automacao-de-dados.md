@@ -39,6 +39,21 @@ npm run data:schedule:watch
 
 Nome da tarefa criada: `Fiscaliza Varginha - Vigia de dados`.
 
+## Rotina recomendada
+
+Para manter o painel com qualidade de dados, use as duas rotinas juntas:
+
+1. **Coleta diaria, 06:30:** garante uma atualizacao completa mesmo quando nenhuma fonte informa mudanca em tempo real.
+2. **Modo vigia, a cada 180 minutos:** consulta sinais de mudanca na Prefeitura, Camara, Diario Oficial e bases auxiliares. Quando houver mudanca detectada, ou quando uma base passar da janela de frescor, o coletor roda novamente.
+
+Antes de publicar ou divulgar um recorte, rode:
+
+```powershell
+npm run release
+```
+
+Se a auditoria detectar fonte defasada, emenda parcial, 404 em fonte oficial ou cruzamento incompleto, o site deve continuar publicando o aviso para o cidadao. O dado pode ser util para fiscalizacao, mas nao deve parecer definitivo.
+
 ## O que o modo vigia observa
 
 - SAPL Camara: compara a assinatura da primeira pagina da API do ano atual.

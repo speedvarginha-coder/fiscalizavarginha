@@ -221,13 +221,37 @@ if (chunks.fontesEmendas2026?.resumo && chunks.fontesEmendas2026.resumo.lista_es
 }
 
 const pessoalObs = `${chunks.pessoal?.observacao || ""} ${chunks.pessoal?.prefeitura?.status || ""}`;
-if (/parcial|escopo/i.test(pessoalObs)) {
+const pessoalStatusCobertura = `${chunks.pessoal?.prefeitura?.status_cobertura || ""}`;
+if (pessoalStatusCobertura !== "preservada_por_cobertura" && /parcial|escopo/i.test(pessoalObs)) {
   add(
     "warning",
     "pessoal-prefeitura-parcial",
     "Pessoal da Prefeitura com escopo parcial",
     "A base indica coleta parcial de Educacao/FUNDEB, nao folha completa da Prefeitura.",
     "Exibir essa limitacao junto dos numeros e buscar consulta completa por competencia.",
+    "pessoal.json",
+  );
+}
+
+const prefeituraServidoresQtd = Array.isArray(chunks.pessoal?.prefeitura?.servidores)
+  ? chunks.pessoal.prefeitura.servidores.length
+  : null;
+if (pessoalStatusCobertura === "preservada_por_cobertura") {
+  add(
+    "warning",
+    "pessoal-prefeitura-preservada",
+    "Pessoal da Prefeitura preservado da ultima base completa",
+    `A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (${prefeituraServidoresQtd || "sem contagem"} servidores) para nao reduzir a cobertura.`,
+    "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
+    "pessoal.json",
+  );
+} else if (Number.isFinite(prefeituraServidoresQtd) && prefeituraServidoresQtd > 0 && prefeituraServidoresQtd < 1000) {
+  add(
+    "warning",
+    "pessoal-prefeitura-cobertura-baixa",
+    "Pessoal da Prefeitura com cobertura baixa",
+    `A base de pessoal da Prefeitura tem apenas ${prefeituraServidoresQtd} servidor(es), abaixo do esperado para folha completa.`,
+    "Preservar a ultima base completa ou corrigir o coletor antes de divulgar numeros de pessoal.",
     "pessoal.json",
   );
 }

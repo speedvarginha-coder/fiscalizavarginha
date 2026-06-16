@@ -120,6 +120,12 @@ test.describe("Integridade — Pessoal e Cargos", () => {
       }
     });
   }
+
+  test("pessoal/prefeitura: cobertura nao pode regredir para amostra minima", () => {
+    const ps = load("pessoal");
+    const servidores = ps.prefeitura?.servidores || [];
+    expect(servidores.length).toBeGreaterThan(1000);
+  });
 });
 
 test.describe("Integridade — Diárias", () => {
