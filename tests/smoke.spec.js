@@ -128,6 +128,27 @@ test.describe("Avisos de qualidade dos dados", () => {
 });
 
 test.describe("Mapa cidadao do dinheiro", () => {
+  test("home usa central de fiscalizacao compacta", async ({ page }) => {
+    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const layout = await page.evaluate(() => {
+      const heights = (sel) => Array.from(document.querySelectorAll(sel)).map((el) =>
+        Math.round(el.getBoundingClientRect().height)
+      );
+      const rect = (sel) => document.querySelector(sel)?.getBoundingClientRect();
+      return {
+        sideExists: Boolean(document.querySelector(".home-ops__side")),
+        headHeight: Math.round(rect(".home-ops__head")?.height || 0),
+        statMax: Math.max(...heights(".home-stat")),
+        priorityMax: Math.max(...heights(".priority-row")),
+      };
+    });
+    expect(layout.sideExists).toBeTruthy();
+    expect(layout.headHeight).toBeLessThan(340);
+    expect(layout.statMax).toBeLessThan(160);
+    expect(layout.priorityMax).toBeLessThan(140);
+  });
+
   test("home mostra guia para quem não sabe por onde começar", async ({ page }) => {
     await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
@@ -186,6 +207,16 @@ test.describe("Auditor inteligente", () => {
 });
 
 test.describe("Como cobrar", () => {
+  test("mostra caminhos guiados para o cidadao comum", async ({ page }) => {
+    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const guia = page.locator(".cobrar-quick");
+    await expect(guia).toContainText("O que você quer entender agora?");
+    await expect(guia).toContainText("Quero fiscalizar asfalto e buracos");
+    await expect(guia).toContainText("Quero copiar um pedido LAI");
+    await expect(page.locator(".cobrar-kpis")).toContainText("20 dias");
+  });
+
   test("fila de cobranca renderiza fornecedores priorizados", async ({ page }) => {
     await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
@@ -420,6 +451,29 @@ test.describe("Placar do dinheiro", () => {
     await expect(cards).toHaveCount(4);
   });
 
+  test("Câmara mostra indice de relevancia logo apos a apresentacao", async ({ page }) => {
+    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    const layout = await page.evaluate(() => {
+      const header = document.querySelector(".bigheader");
+      const spotlight = document.querySelector(".camara-index-spotlight");
+      const indice = document.querySelector("#indiceRelevancia");
+      const placar = document.querySelector("#placarCamara");
+      return {
+        hasSpotlight: Boolean(spotlight),
+        indiceInsideSpotlight: Boolean(indice?.closest(".camara-index-spotlight")),
+        indiceDataSection: indice?.closest("[data-csec]")?.getAttribute("data-csec") || "",
+        afterHeader: Boolean(header && spotlight && (header.compareDocumentPosition(spotlight) & Node.DOCUMENT_POSITION_FOLLOWING)),
+        beforePlacar: Boolean(spotlight && placar && (spotlight.compareDocumentPosition(placar) & Node.DOCUMENT_POSITION_FOLLOWING)),
+      };
+    });
+    expect(layout.hasSpotlight).toBeTruthy();
+    expect(layout.indiceInsideSpotlight).toBeTruthy();
+    expect(layout.indiceDataSection).toBe("");
+    expect(layout.afterHeader).toBeTruthy();
+    expect(layout.beforePlacar).toBeTruthy();
+  });
+
   test("Câmara mostra índice de relevância auditável", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
@@ -546,13 +600,21 @@ test.describe("Aba Diárias (regressão)", () => {
     // Bloco principal de diárias precisa estar no DOM (ID sem acento)
     const block = page.locator("#diariasPrefeituraBlock");
     await expect(block).toBeAttached();
+    await expect(page.locator("#filtroMesDiariasPrefeitura")).toBeAttached();
+    await expect(page.locator("#rankingDiariasPrefeitura")).toContainText("Ranking acumulado anual");
+    await expect(page.locator("#rankingDiariasPrefeitura")).toContainText("Ranking mensal");
   });
 
   test("Câmara — aba Diárias mostra bloco no DOM", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
+    await page.locator('.csec-btn[data-go="diarias"]').click();
+    await page.waitForTimeout(500);
     const block = page.locator("#diariasCamaraBlock");
     await expect(block).toBeAttached();
+    await expect(page.locator("#filtroMesDiariasCamara")).toBeAttached();
+    await expect(page.locator("#rankingDiariasCamara")).toContainText("Ranking acumulado anual");
+    await expect(page.locator("#rankingDiariasCamara")).toContainText("Ranking mensal");
   });
 });
 
