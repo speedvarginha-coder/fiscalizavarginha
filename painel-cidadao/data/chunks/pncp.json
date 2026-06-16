@@ -13,7 +13,7 @@
     "/consulta/v1/contratacoes/publicacao: The read operation timed out",
     "/consulta/v1/contratacoes/publicacao: The read operation timed out",
     "/consulta/v1/contratos: The read operation timed out",
-    "/consulta/v1/contratos: The read operation timed out"
+    "/consulta/v1/contratos: HTTP Error 503: Service Unavailable"
   ],
   "observacao": "Dados usados para conferência cruzada. Se a API pública não retornar registros, consulte manualmente o PNCP pelo município ou CNPJ do órgão."
 }

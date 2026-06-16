@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 5825771.34,
-  "total_externo_anterior": 8404647.51,
-  "empenhos_qtd": 2984,
+  "total_externo_atual": 5925295.01,
+  "total_externo_anterior": 8392805.43,
+  "empenhos_qtd": 3030,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -27,8 +27,8 @@
     },
     {
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
-      "valor_total": 316429.1,
-      "qtd": 5
+      "valor_total": 316929.0,
+      "qtd": 6
     },
     {
       "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
@@ -42,13 +42,18 @@
     },
     {
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 225248.03,
-      "qtd": 21
+      "valor_total": 279888.35,
+      "qtd": 23
     },
     {
       "nome": "RONALDO MENDES-ME",
       "valor_total": 214999.2,
       "qtd": 2
+    },
+    {
+      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+      "valor_total": 111773.45,
+      "qtd": 13
     },
     {
       "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
@@ -59,11 +64,6 @@
       "nome": "49.906.995 FABIOLA SEBASTIANA KELLY SILVA",
       "valor_total": 103989.11,
       "qtd": 1
-    },
-    {
-      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 89590.93,
-      "qtd": 11
     },
     {
       "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
@@ -139,8 +139,8 @@
     },
     {
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
-      "valor_total": 382658.52,
-      "qtd": 7
+      "valor_total": 379158.52,
+      "qtd": 6
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
@@ -224,20 +224,6 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
-      "numero": "4",
-      "ano": "2026",
-      "data_assinatura": "2026-03-02",
-      "data_fim": "2027-03-19",
-      "modalidade": "Dispensa eletrônica",
-      "tipo": "Compras e Serviços",
-      "objeto": "Aquisição de combustível compreendido por gasolina comum",
-      "contratado": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
-      "cnpj": "34.390.392/****-**",
-      "valor": 94805.46,
-      "situacao": "EXECUCAO",
-      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
-    },
-    {
       "numero": "0",
       "ano": "0",
       "data_assinatura": "2026-01-15",
@@ -262,6 +248,20 @@
       "contratado": "PANIFICADORA PRINCESA LTDA",
       "cnpj": "19.310.200/****-**",
       "valor": 63000.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "4",
+      "ano": "2026",
+      "data_assinatura": "2026-03-02",
+      "data_fim": "2027-03-19",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de combustível compreendido por gasolina comum",
+      "contratado": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
+      "cnpj": "34.390.392/****-**",
+      "valor": 62402.73,
       "situacao": "EXECUCAO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
@@ -360,7 +360,7 @@
       "contratado": "MENDEL E SILVA TRANSPORTES LTDA",
       "cnpj": "56.948.100/****-**",
       "valor": 10200.0,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
@@ -486,7 +486,7 @@
       "contratado": "GENTE SEGURADORA SA",
       "cnpj": "90.180.605/****-**",
       "valor": 2871.67,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
@@ -500,7 +500,7 @@
       "contratado": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
       "cnpj": "07.215.045/****-**",
       "valor": 2578.6,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {

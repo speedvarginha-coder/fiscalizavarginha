@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-13T10:19:21.114Z",
+  "gerado_em": "2026-06-16T09:48:17.244Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -9,8 +9,8 @@
     "total": 7
   },
   "atualizado_base": {
-    "iso": "2026-06-13T07:19:19",
-    "data_humana": "13/06/2026 - 07:19"
+    "iso": "2026-06-16T06:48:15",
+    "data_humana": "16/06/2026 - 06:48"
   },
   "items": [
     {
@@ -20,14 +20,6 @@
       "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
-    },
-    {
-      "severity": "warning",
-      "id": "chunk-camara_betha-defasado",
-      "title": "Camara/Betha com coleta defasada",
-      "detail": "Arquivo camara_betha.json foi atualizado ha 22.5 dias.",
-      "action": "Rodar a coleta Betha da Camara ou conferir manualmente no portal antes de divulgar top fornecedores e contratos.",
-      "source": "camara_betha.json"
     },
     {
       "severity": "warning",
@@ -47,9 +39,17 @@
     },
     {
       "severity": "warning",
+      "id": "pessoal-prefeitura-preservada",
+      "title": "Pessoal da Prefeitura preservado da ultima base completa",
+      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (3990 servidores) para nao reduzir a cobertura.",
+      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
+      "source": "pessoal.json"
+    },
+    {
+      "severity": "warning",
       "id": "indice-parcial",
       "title": "Indice parlamentar parcial",
-      "detail": "A menor cobertura automatica do indice e 60%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.",
+      "detail": "A menor cobertura automatica do indice e 97.1%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.",
       "action": "Nao tratar o ranking como definitivo; publicar sempre a cobertura junto da nota.",
       "source": "indice_relevancia.json"
     },

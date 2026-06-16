@@ -5,6 +5,13 @@
   "emendas_qtd": 357,
   "emendas_valor_total_brl": 17841369.18,
   "impacto_zero_qtd": 328,
+  "desfechos": {
+    "lei": 25,
+    "arquivado": 882,
+    "tramitando": 666,
+    "encerrado": 11,
+    "sem_dado": 0
+  },
   "tipos": [
     {
       "tipo": "Indicação",
