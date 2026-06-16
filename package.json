@@ -18,6 +18,7 @@
     "lint:accents": "node scripts/check-accents.mjs",
     "release": "npm run data:indice && npm run lint:syntax && npm run lint:accents && npm run validate:data && npm test && npm run deploy:zip && npm run validate:deploy",
     "test": "playwright test",
+    "test:data": "node scripts/check-syntax.mjs && playwright test tests/calculos.spec.js",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report",

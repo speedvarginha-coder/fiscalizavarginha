@@ -182,9 +182,17 @@ try {
       Remove-Item Env:\FISCALIZA_PREVIOUS_CHUNKS -ErrorAction SilentlyContinue
     }
 
+    # Gate rápido de integridade dos dados — roda SEMPRE, mesmo com -SkipTests,
+    # para que o vigia (watch) nunca publique chunks com formato/cálculo quebrado.
+    Invoke-AndLog `
+      -Label "Gate rápido de dados (sintaxe + cálculos)." `
+      -FilePath "npm.cmd" `
+      -Arguments @("run", "test:data") `
+      -WorkingDirectory $root
+
     if (-not $SkipTests) {
       Invoke-AndLog `
-        -Label "Rodando testes Playwright." `
+        -Label "Rodando testes Playwright (suíte completa)." `
         -FilePath "npm.cmd" `
         -Arguments @("test") `
         -WorkingDirectory $root

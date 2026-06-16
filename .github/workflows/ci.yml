@@ -1,0 +1,25 @@
+name: CI
+
+# Checagens estáticas em cada push/PR. NÃO roda a suíte Playwright completa:
+# os testes carregam window.ZELA_DATA do painel-cidadao/data.js, que é gitignored
+# (6,6MB, gerado pelo coletor.py a partir da API do Betha). Sem esses dados o
+# gate completo não roda no CI — ele permanece local (npm test) e no release.
+# Aqui validamos o que independe de dados: sintaxe JS e integridade de acentos.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  checagens-estaticas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Sintaxe dos scripts e HTML (check-syntax)
+        run: node scripts/check-syntax.mjs
+      - name: Integridade de acentos/encoding (check-accents)
+        run: node scripts/check-accents.mjs
