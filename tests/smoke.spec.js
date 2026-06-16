@@ -718,3 +718,125 @@ test.describe("Watchlist", () => {
     await expect(vazio).toBeAttached();
   });
 });
+
+// ============================================================================
+// Rede de proteção das features construídas (rodapé, LAIs, diárias, siglas).
+// Travam estrutura/comportamento — não valores da coleta diária.
+// ============================================================================
+
+test.describe("Siglas de secretaria (utils.siglaSecretaria)", () => {
+  test("mapeia nomes oficiais para a sigla certa e mantém desconhecidos", async ({ page }) => {
+    setupConsoleListener(page);
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
+    const r = await page.evaluate(() => {
+      const f = window.ZELA.utils.siglaSecretaria;
+      return {
+        saude: f("SECRETARIA MUNICIPAL DE SAUDE"),
+        saudeAcento: f("Secretaria Municipal da Saúde"),
+        adm: f("SECRETARIA MUNICIPAL DE ADMINISTRACAO"),
+        obras: f("Secretaria de Obras e Serviços Urbanos"),
+        economico: f("Secretaria Municipal de Desenvolvimento Econômico"),
+        habitacao: f("Secretaria Municipal de Habitação e Desenvolvimento Social"),
+        vice: f("GABIV – Gabinete do Vice-Prefeito"),
+        governo: f("Secretaria Municipal de Governo"),
+        desconhecida: f("Fundação Qualquer Coisa"),
+      };
+    });
+    expect(r.saude).toBe("SEMUS");
+    expect(r.saudeAcento).toBe("SEMUS");
+    expect(r.adm).toBe("SEMAD");
+    expect(r.obras).toBe("SOSUB");
+    expect(r.economico).toBe("SEDEC");   // não pode cair em SEHAD
+    expect(r.habitacao).toBe("SEHAD");
+    expect(r.vice).toBe("GABIV");
+    expect(r.governo).toBe("SEGOV");
+    expect(r.desconhecida).toMatch(/Funda..o Qualquer Coisa/); // fallback = nome limpo
+  });
+});
+
+test.describe("Como cobrar — LAIs (estrutura e filtro duplo)", () => {
+  test("20 temas, chips por card, filtro nível+categoria e busca", async ({ page }) => {
+    const erros = setupConsoleListener(page);
+    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1800);
+
+    const cards = page.locator(".template-card");
+    const total = await cards.count();
+    expect(total).toBeGreaterThanOrEqual(20);
+
+    // todo card tem chip (nível + categoria) injetado pelo app.js
+    await expect(page.locator(".lai-chips")).toHaveCount(total);
+    await expect(cards.first().locator(".lai-chips")).toContainText("Nível");
+
+    // filtro por nível 1 reduz e mantém pelo menos um
+    await page.locator('.lai-filter-nivel[data-nivel="1"]').click();
+    await page.waitForTimeout(250);
+    const nivel1 = await page.locator(".template-card:visible").count();
+    expect(nivel1).toBeGreaterThan(0);
+    expect(nivel1).toBeLessThan(total);
+
+    // somar categoria (filtro duplo) não pode aumentar a contagem
+    await page.locator('.lai-filter[data-cat="licitacao"]').click();
+    await page.waitForTimeout(250);
+    const dual = await page.locator(".template-card:visible").count();
+    expect(dual).toBeLessThanOrEqual(nivel1);
+
+    // reset + busca
+    await page.locator('.lai-filter-nivel[data-nivel="all"]').click();
+    await page.locator('.lai-filter[data-cat="all"]').click();
+    await page.locator("#laiBusca").fill("merenda");
+    await page.waitForTimeout(250);
+    expect(await page.locator(".template-card:visible").count()).toBeGreaterThanOrEqual(1);
+
+    expect(erros).toEqual([]);
+  });
+});
+
+test.describe("Rodapé padronizado", () => {
+  const PAGS = ["index","atualizacoes","prefeitura","camara","relatorios","sobre","cobrar","marcadores","pessoal"];
+  for (const p of PAGS) {
+    test(`${p}: navegação, fontes e data dinâmica`, async ({ page }) => {
+      setupConsoleListener(page);
+      await page.goto(fileUrl(p + ".html"), { waitUntil: "domcontentloaded" });
+      await expect(page.locator(".footer__inner")).toHaveCount(1);
+      await expect(page.locator(".footer__nav a")).toHaveCount(8);
+      await expect(page.locator(".footer__sources a")).toHaveCount(7);
+      await expect(page.locator("#footerAtualizado")).not.toHaveText("—", { timeout: 15000 });
+      await expect(page.locator("#footerAtualizado")).not.toHaveText("", { timeout: 15000 });
+    });
+  }
+});
+
+test.describe("Diárias — ranking não invade a coluna e usa sigla", () => {
+  test("Prefeitura: valor dentro do painel e secretaria abreviada", async ({ page }) => {
+    setupConsoleListener(page);
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    const tab = page.locator('[data-pref-tab]').filter({ hasText: /Di.rias/ }).first();
+    if (await tab.count()) await tab.click();
+    await page.locator(".diaria-rank-row__function").first().waitFor({ timeout: 8000 });
+
+    const r = await page.evaluate(() => {
+      const rows = Array.from(document.querySelectorAll(".diaria-rank-row--compact"));
+      let overflow = 0;
+      rows.forEach((row) => {
+        const b = row.querySelector("b");
+        const panel = row.closest(".diarias-ranking__panel") || row.parentElement;
+        if (b && panel && b.getBoundingClientRect().right > panel.getBoundingClientRect().right + 1) overflow++;
+        if (row.scrollWidth > row.clientWidth + 1) overflow++;
+      });
+      const cell = document.querySelector(".diaria-rank-row__function");
+      return {
+        rows: rows.length,
+        overflow,
+        sigla: cell ? cell.childNodes[0].textContent.trim() : "",
+        title: cell ? cell.getAttribute("title") : "",
+      };
+    });
+    expect(r.rows).toBeGreaterThan(0);
+    expect(r.overflow).toBe(0);                 // nada invadindo a coluna direita
+    expect(r.sigla.length).toBeLessThanOrEqual(8); // sigla curta, não o nome inteiro
+    expect((r.title || "").length).toBeGreaterThan(r.sigla.length); // nome completo no hover
+  });
+});
