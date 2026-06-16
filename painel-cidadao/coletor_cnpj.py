@@ -60,6 +60,18 @@ def _normaliza(cnpj: str, payload: dict, fonte: str = "cnpj.ws") -> dict:
     #            data_inicio_atividade, cnae_fiscal_descricao, municipio, uf
     cnae = (payload.get("cnae_fiscal_principal") or {}).get("descricao") \
         or payload.get("cnae_fiscal_descricao") or ""
+    # QSA (sócios) — base do cruzamento "sócio em comum / sócio doador (TSE)".
+    # Só NOMES (públicos no QSA da Receita); nunca CPF (LGPD).
+    qsa = payload.get("qsa") or payload.get("socios") or []
+    socios = []
+    for s in qsa if isinstance(qsa, list) else []:
+        if not isinstance(s, dict):
+            continue
+        nome = s.get("nome_socio") or s.get("nome") \
+            or (s.get("pessoa") or {}).get("nome") or ""
+        nome = (nome or "").strip()
+        if nome:
+            socios.append(nome)
     rotulo = {
         "cnpj.ws":   "CNPJ.ws / base pública da Receita Federal",
         "brasilapi": "BrasilAPI / base pública da Receita Federal",
@@ -73,6 +85,7 @@ def _normaliza(cnpj: str, payload: dict, fonte: str = "cnpj.ws") -> dict:
         "cnae":          cnae,
         "municipio":     payload.get("municipio") or "",
         "uf":            payload.get("uf") or "",
+        "socios":        socios[:10],
         "fonte":         rotulo,
     }
 
