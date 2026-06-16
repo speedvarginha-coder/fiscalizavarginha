@@ -5227,6 +5227,53 @@ ${url}
     ].filter(Boolean).join("\n\n");
   }
 
+  function filaScoreHtml(item) {
+    const label = item.tipo === "frota" ? "nao e quantidade" : item.tipoLabel;
+    return `
+      <span class="risk-chip risk-chip--${esc(item.level)}">${esc(filaLabel(item.level))}</span>
+      <div class="risk-priority">
+        <span class="risk-priority__label">Prioridade</span>
+        <strong>${fmtNum(item.score)}/100</strong>
+        <small>${esc(label)}</small>
+      </div>
+      <span class="risk-queue-card__orgao">${esc(item.orgaoLabel)}</span>`;
+  }
+
+  function filaContextoHtml(item) {
+    if (item.tipo !== "frota") return "";
+    const meta = item.meta || {};
+    const valorBase = Number(meta.valorBase || item.valor || 0);
+    const valorAtipico = Number(meta.valorAtipico || 0);
+    const fatos = [
+      ["Veiculo neste card", "1"],
+      ["Veiculos na base", meta.totalFrota ? fmtNum(meta.totalFrota) : "nao informado"],
+      ["Placa/identificacao", meta.placa || "nao informada"],
+      ["Descricao", meta.descricao || item.titulo || "veiculo municipal"],
+      ["Lotacao", meta.centro || "centro de custo nao informado"],
+      ["Aquisicao", meta.aquisicao || "nao informada"],
+      ["Data da aquisicao", meta.dataAquisicao || "nao informada"],
+      ["Gasto vinculado", fmtBRL(valorBase)],
+    ];
+    if (valorAtipico > 0) fatos.push(["Valor atipico separado", fmtBRL(valorAtipico)]);
+    if (Number(meta.combustivel || 0) > 0) fatos.push(["Combustivel", `${fmtBRL(meta.combustivel)}${meta.litros ? ` / ${fmtNum(meta.litros)} L` : ""}`]);
+    if (Number(meta.manutencao || 0) > 0) fatos.push(["Manutencao/pecas", fmtBRL(meta.manutencao)]);
+
+    return `
+      <div class="risk-context risk-context--frota">
+        <div class="risk-context__intro">
+          <strong>Como ler este card de frota</strong>
+          <p>Este card representa 1 veiculo especifico da frota municipal. A nota de prioridade mostra o que deve ser conferido primeiro; ela nao e a quantidade de veiculos.</p>
+        </div>
+        <div class="risk-context__facts">
+          ${fatos.map(([label, value]) => `<span><b>${esc(label)}:</b> ${esc(value)}</span>`).join("")}
+        </div>
+        <div class="risk-context__ask">
+          <strong>O que o cidadao pode pedir</strong>
+          <p>Diario de bordo, odometro, notas de combustivel, manutencao, pneus, responsavel pelo uso, secretaria de lotacao e contrato de locacao, cessao ou aquisicao.</p>
+        </div>
+      </div>`;
+  }
+
   function gerarFilaCobrancaPublica() {
     const itens = [];
     const vistos = new Set();
@@ -5252,6 +5299,7 @@ ${url}
         fonte: raw.fonte || "",
         url: raw.url || "",
         pergunta: raw.pergunta || "",
+        meta: raw.meta || {},
       });
     };
 
@@ -5344,6 +5392,20 @@ ${url}
           fonte: "Betha veiculos municipais",
           url: `prefeitura.html?tab=frota&q=${encodeURIComponent(v.placa || v.descricao || "")}`,
           pergunta: perguntaLAIFrota(v),
+          meta: {
+            totalFrota: (pf.frota || []).length,
+            placa: v.placa || "",
+            descricao: v.descricao || v.tipo || "",
+            centro: v.centro_custo || "",
+            aquisicao: v.tipo_aquisicao || "",
+            situacao: v.situacao || "",
+            dataAquisicao: dataCurtaBR(v.data_aquisicao || ""),
+            valorBase: valor,
+            valorAtipico: atipico,
+            combustivel: Number(v.combustivel_total || 0),
+            litros: Number(v.litros_combustivel || 0),
+            manutencao: Number(v.manutencao_total || 0),
+          },
         });
       }
     });
@@ -5491,10 +5553,7 @@ ${url}
       const fonte = item.fonte || "Fonte oficial";
       return `<article class="risk-queue-card risk-queue-card--${esc(item.level)}">
         <div class="risk-queue-card__score">
-          <span class="risk-chip risk-chip--${esc(item.level)}">${esc(filaLabel(item.level))}</span>
-          <strong>${fmtNum(item.score)}</strong>
-          <small>${esc(item.tipoLabel)}</small>
-          <span class="risk-queue-card__orgao">${esc(item.orgaoLabel)}</span>
+          ${filaScoreHtml(item)}
         </div>
         <div class="risk-queue-card__body">
           <div class="risk-queue-card__head">
@@ -5505,6 +5564,7 @@ ${url}
             <strong>${item.valor ? fmtBRL(item.valor) : "Sem valor"}</strong>
           </div>
           ${item.resumo ? `<p>${esc(item.resumo)}</p>` : ""}
+          ${filaContextoHtml(item)}
           <div class="official-pending">
             <div>
               <strong>Pendências oficiais</strong>

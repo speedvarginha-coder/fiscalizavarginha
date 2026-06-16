@@ -49,7 +49,7 @@ const PAGINAS = [
   { arquivo: "relatorios.html", titulo: /Relat.rios/,              bloco: "#prioridadesFiscalizacao" },
   { arquivo: "pessoal.html",    titulo: /Pessoal/,                 bloco: "#listaPessoal" },
   { arquivo: "sobre.html",      titulo: /Sobre/,                   bloco: "#tabelaGlossario" },
-  { arquivo: "cobrar.html",     titulo: /Como cobrar/,             bloco: ".cobrar-blocks" },
+  { arquivo: "cobrar.html",     titulo: /Como cobrar/,             bloco: ".cobrar-block" },
   { arquivo: "marcadores.html", titulo: /Marcadores/,              bloco: "#marcadoresArea" },
   { arquivo: "atualizacoes.html", titulo: /Atualiza..es/,           bloco: "#atualizacoesFeed" },
 ];
