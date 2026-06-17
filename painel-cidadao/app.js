@@ -2009,6 +2009,44 @@
         "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
       ));
 
+    // CNPJ · Fornecedores Betha — situação irregular (raiz/0001 reconstruída)
+    const fornCnpjs = cnpjs.fornecedores || [];
+    fornCnpjs
+      .filter(f => f.situacao && !/ativa/i.test(f.situacao) && !f.erro)
+      .slice(0, 5)
+      .forEach(f => addSignal(
+        "CNPJ · Fornecedor",
+        "alto",
+        `Fornecedor com situação cadastral diferente de ativa`,
+        `O CNPJ reconstruído (filial 0001) retornou situação "${f.situacao}". CNPJ reconstruído — confirme o CNPJ real e a situação na Receita Federal antes de concluir qualquer coisa.`,
+        `${f.nome} · raiz ${f.cnpj_raiz} · ${fmtBRL(f.valor_total || 0)}`,
+        "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
+      ));
+
+    // CNPJ · Redes cruzadas — sócio aparece em beneficiário de emenda E em fornecedor Betha
+    const socioFornMap = {};
+    fornCnpjs
+      .filter(f => !f.erro)
+      .forEach(f => (f.socios || []).forEach(s => {
+        const nome = (s || "").trim();
+        if (nome) (socioFornMap[nome] = socioFornMap[nome] || []).push(f);
+      }));
+    Object.entries(socioMap)
+      .filter(([nome]) => socioFornMap[nome])
+      .sort((a, b) => b[1].length - a[1].length)
+      .slice(0, 4)
+      .forEach(([nome, emps]) => {
+        const forns = socioFornMap[nome];
+        addSignal(
+          "CNPJ · Rede cruzada",
+          "alto",
+          `Pessoa no QSA de beneficiário de emenda e de fornecedor top da Prefeitura`,
+          `"${nome}" consta no quadro societário público de ${emps.length} beneficiário(s) de emenda e de ${forns.length} fornecedor(es) entre os maiores pagamentos da Prefeitura. CNPJs dos fornecedores são reconstruídos (filial 0001) — confirme a situação real na Receita Federal.`,
+          emps.map(e => e.razao_social || e.cnpj).concat(forns.map(f => f.nome)).slice(0, 5).join(" · "),
+          "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
+        );
+      });
+
     // ---- CÂMARA: alertas cívicos baseados em camara_betha + pessoal ----
     const cb2 = D.camara_betha || {};
     const camPessoal = (D.pessoal || {}).camara || {};
