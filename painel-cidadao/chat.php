@@ -226,15 +226,36 @@ curl_close($ch);
 
 if (!$resp) {
     http_response_code(500);
-    echo json_encode(['erro' => 'Erro de conexão com a IA']);
+    echo json_encode(['erro' => 'Erro de conexão com a IA. Tente novamente.']);
     exit;
 }
 
 $json  = json_decode($resp, true);
+
+// Detecta quota esgotada (429)
+if ($status === 429) {
+    http_response_code(503);
+    echo json_encode(['erro' => 'IA temporariamente indisponível. Tente novamente em alguns minutos.']);
+    exit;
+}
+
+// Detecta erro da API Gemini
+if (!empty($json['error'])) {
+    $code = $json['error']['code'] ?? 0;
+    if ($code === 429) {
+        http_response_code(503);
+        echo json_encode(['erro' => 'IA temporariamente indisponível. Tente novamente em alguns minutos.']);
+    } else {
+        http_response_code(500);
+        echo json_encode(['erro' => 'Erro na IA. Tente novamente.']);
+    }
+    exit;
+}
+
 $texto = $json['candidates'][0]['content']['parts'][0]['text'] ?? '';
 if (!$texto) {
     http_response_code(500);
-    echo json_encode(['erro' => 'Sem resposta da IA. Tente novamente.']);
+    echo json_encode(['erro' => 'Sem resposta da IA. Tente novamente em instantes.']);
     exit;
 }
 
