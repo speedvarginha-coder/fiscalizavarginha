@@ -290,7 +290,7 @@
     if (/fornecedor|empresa|contrato|cnpj|recebeu|receberam/.test(t)) {
       const top = (pf.top_fornecedores_atual || []).slice(0, 5);
       const linhas = top.map((f) =>
-        '<li><strong>' + esc(f.credor) + '</strong> — ' + brl(f.valor) + '</li>'
+        '<li><strong>' + esc(f.nome || f.credor) + '</strong> — ' + brl(f.valor_total || f.valor) + '</li>'
       ).join("");
       return {
         msg:

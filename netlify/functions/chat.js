@@ -110,9 +110,15 @@ function chamarGemini(pergunta) {
         try {
           const json = JSON.parse(data);
           const texto = json?.candidates?.[0]?.content?.parts?.[0]?.text || "";
-          if (!texto) return reject(new Error("Resposta vazia do Gemini"));
+          if (!texto) {
+            console.error("[chat] Gemini sem texto. Status:", res.statusCode, "Body:", data.slice(0, 500));
+            return reject(new Error("Resposta vazia: " + data.slice(0, 200)));
+          }
           resolve(texto);
-        } catch (e) { reject(e); }
+        } catch (e) {
+          console.error("[chat] Parse error. Body:", data.slice(0, 500));
+          reject(e);
+        }
       });
     });
     req.on("error", reject);
