@@ -8,7 +8,9 @@ module.exports = defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  // 1 worker sempre: a suite carrega bases pesadas via file:// e 2 workers
+  // disputando CPU geravam falhas intermitentes (timeouts falsos).
+  workers: 1,
   reporter: [["list"], ["html", { open: "never" }]],
 
   use: {

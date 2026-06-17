@@ -1,0 +1,12 @@
+{
+  "fonte": "CEIS/CNEP - Portal da Transparencia / dados.gov.br",
+  "status": "pendente_coleta",
+  "gerado_em": "2026-06-08T00:00:00-03:00",
+  "sancoes": [],
+  "consultas": {
+    "portal_transparencia": "https://portaldatransparencia.gov.br/sancoes/consulta",
+    "cnep_dados_abertos": "https://dados.gov.br/dados/conjuntos-dados/cnep",
+    "ceis_dados_abertos": "https://dados.gov.br/dados/conjuntos-dados/ceis"
+  },
+  "observacao": "Chunk preparado para receber consulta automatica CEIS/CNEP por CNPJ/razao social. Enquanto vazio, o painel marca a verificacao como pendente e direciona para a fonte oficial."
+}

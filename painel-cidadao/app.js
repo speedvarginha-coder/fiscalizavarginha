@@ -131,12 +131,96 @@
     };
   };
   const camResumo = () => camaraAno().resumo || D.resumo || {};
-  const camVereadores = () => camaraAno().vereadores || D.vereadores || [];
+  const camVereadores = () => {
+    const list = camaraAno().vereadores || D.vereadores || [];
+    return list.filter(v => v.nome !== "Dr. Guedes" && v.nome !== "Dr. Lucas");
+  };
   const camEmendas = () => camaraAno().emendas || D.emendas || [];
   const camMaterias = () => camaraAno().materias || [];
 
   // ============= "ATUALIZADO EM" + aviso de dados desatualizados =============
   const upd = D.atualizado_em || {};
+
+  // Rodapé padrão: data da última coleta (elemento presente em todas as páginas).
+  (() => {
+    const el = document.getElementById("footerAtualizado");
+    if (el && upd.data_humana) el.textContent = upd.data_humana;
+  })();
+
+  const diasDesdeColeta = () => {
+    if (!upd.iso) return null;
+    const dias = Math.floor((Date.now() - new Date(upd.iso).getTime()) / 86_400_000);
+    return Number.isFinite(dias) ? dias : null;
+  };
+  const dataTrustSeal = (tipo, opts = {}) => {
+    const perfis = {
+      contrato: {
+        fonte: "Betha/portal oficial",
+        escopo: "contrato estruturado",
+        risco: "não comprova entrega sozinho",
+        acao: "conferir fiscal, nota e execução",
+        tone: "ok",
+      },
+      fornecedor: {
+        fonte: "despesas Betha",
+        escopo: "ranking por pagamentos",
+        risco: "contrato pode não estar vinculado",
+        acao: "abrir dossiê e cobrar documentos",
+        tone: "warn",
+      },
+      emenda: {
+        fonte: "emendas + cruzamento por CNPJ",
+        escopo: "execução parcial",
+        risco: "pagamento ao CNPJ não prova objeto",
+        acao: "pedir plano, empenho e notas",
+        tone: "warn",
+      },
+      diaria: {
+        fonte: "portal de diárias",
+        escopo: "valor estruturado",
+        risco: "não comprova resultado da viagem",
+        acao: "conferir autorização e prestação de contas",
+        tone: "ok",
+      },
+      remuneracao: {
+        fonte: "lei oficial + folha",
+        escopo: "folha nominal parcial",
+        risco: "competência mensal pode faltar",
+        acao: "conferir descontos e verbas",
+        tone: "warn",
+      },
+      palavra: {
+        fonte: "triagem por palavra-chave",
+        escopo: "resultado classificado",
+        risco: "termo parecido pode confundir",
+        acao: "abrir a fonte antes de concluir",
+        tone: "warn",
+      },
+    };
+    const p = { ...(perfis[tipo] || perfis.palavra), ...opts };
+    const dias = diasDesdeColeta();
+    const frescor = dias == null
+      ? "coleta sem data"
+      : dias <= 7 ? `coleta recente (${dias}d)`
+      : dias <= 21 ? `coleta em atenção (${dias}d)`
+      : `coleta defasada (${dias}d)`;
+    const tone = p.tone || (dias != null && dias > 21 ? "warn" : "ok");
+    const chips = [
+      ["Fonte", p.fonte],
+      ["Atualização", frescor],
+      ["Escopo", p.escopo],
+      ["Cuidado", p.risco],
+      ["Próximo passo", p.acao],
+    ].filter(([, v]) => v);
+    return `<div class="data-trust data-trust--${esc(tone)}">
+      <strong>Selo de confiança do dado</strong>
+      <div class="data-trust__chips">
+        ${chips.map(([k, v]) => `<span><b>${esc(k)}:</b> ${esc(v)}</span>`).join("")}
+      </div>
+    </div>`;
+  };
+  window.ZELA.dataTrustSeal = dataTrustSeal;
+
   // Helper público para gerar carimbo "coletado há X dias"
   window.ZELA.carimboColeta = function () {
     if (!upd.iso) return "";
@@ -221,10 +305,11 @@
         <span>${item.title}</span>
         <strong>${item.value}</strong>
         <small>${item.label}</small>
+        <em>Consultar</em>
       </a>`).join("");
 
     $("homeOpsPriorities").innerHTML = [
-      { href: "prefeitura.html?tab=contratos", n: "1", title: "Contratos de alto valor", text: `${fmtNum(contratosMilhao)} contratos acima de R$ 1 milhao para ler primeiro.` },
+      { href: "prefeitura.html?tab=contratos", n: "1", title: "Contratos de alto valor", text: `${fmtNum(contratosMilhao)} contratos acima de R$ 1 milhão para ler primeiro.` },
       { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasPref.length)} registros com pessoa, finalidade e valor.` },
       { href: "camara.html", n: "3", title: "Emendas parlamentares", text: `${fmtNum(resumoCam.emendas_qtd || 0)} emendas; confira CNPJ, objeto e pagamento.` },
     ].map(item => `
@@ -232,6 +317,7 @@
         <span>${item.n}</span>
         <strong>${item.title}</strong>
         <small>${item.text}</small>
+        <em>Ver agora</em>
       </a>`).join("");
 
     if ($("homeOpsFreshness")) {
@@ -376,6 +462,18 @@
       { nome: "Emendas/ONGs", termos: ["emenda", "ong", "entidade", "associacao", "termo de fomento", "subvencao"] },
     ];
 
+    // Categorias que são GASTO DIRETO: nelas, matérias e emendas não entram na
+    // conta — emenda é ação parlamentar, não despesa da Câmara (evita falso positivo).
+    const CATEGORIAS_DESPESA = new Set([
+      "Cafe", "Alimentacao", "Lanche", "Combustivel", "Diárias",
+      "Cotas/verba indenizatória", "Passagens e hospedagem", "Aluguel de veiculos",
+      "Aluguel de imoveis", "Publicidade e comunicacao", "Material de escritorio",
+      "Informatica e software", "Telefonia e internet", "Terceirizados",
+      "Consultoria", "Manutenção predial", "Manutenção de veiculos", "Pneus",
+      "Moveis e equipamentos",
+    ]);
+    const ehGastoDireto = (item) => item.origem === "Diária" || item.origem === "Fonte oficial";
+
     const despesasLinks = (D.camara_transparencia.links || []).map(l => ({
       origem: "Fonte oficial",
       responsavel: l.categoria || "Transparência",
@@ -430,7 +528,11 @@
       const categoria = categoriasCamara.find(c => c.nome === (select?.value || "Diárias")) || categoriasCamara[0];
       const extra = (busca?.value || "").split(",").map(t => t.trim()).filter(Boolean);
       const termos = extra.length ? extra : categoria.termos;
-      const encontrados = baseCamara.filter(item => combina(item, termos)).sort((a, b) => (b.valor - a.valor));
+      const modoDespesa = !extra.length && CATEGORIAS_DESPESA.has(categoria.nome);
+      const candidatos = baseCamara.filter(item => combina(item, termos));
+      const encontrados = (modoDespesa ? candidatos.filter(ehGastoDireto) : candidatos)
+        .sort((a, b) => (b.valor - a.valor));
+      const foraDespesa = modoDespesa ? candidatos.length - encontrados.length : 0;
       const total = encontrados.reduce((s, item) => s + (item.valor || 0), 0);
       const responsaveis = agrupaResponsavel(encontrados).slice(0, 5);
       const categoriasComQtd = categoriasCamara.map(cat => ({
@@ -480,7 +582,9 @@
               </div>`).join("") || `<p class="muted">Nenhum registro encontrado.</p>`}
           </div>
         </div>
-        <p class="keyword-audit__note">Observacao: na Camara, a busca mistura dois mundos: gasto direto, como diária, e producao legislativa, como requerimento, indicacao, mocao e projeto. A leitura correta e separar dinheiro publico de acao parlamentar.</p>
+        ${modoDespesa ? `<p class="keyword-audit__note"><strong>${fmtNum(foraDespesa)}</strong> menção(ões) em ações parlamentares (emendas e matérias) ficaram fora desta conta — separamos gasto direto de atuação legislativa para evitar falsos positivos.</p>` : ""}
+        ${dataTrustSeal("palavra")}
+        <p class="keyword-audit__note">Observação: na Câmara, a busca mistura dois mundos: gasto direto, como diária, e produção legislativa, como requerimento, indicação, moção e projeto. A leitura correta é separar dinheiro público de ação parlamentar.</p>
       `;
 
       const nextSelect = $("categoriaCamaraSelect");
@@ -623,7 +727,7 @@
           <section><h4>Itens relacionados em ${anoCamara()}</h4>
             ${itens.map(m => window.ZELA.materiaCard ? window.ZELA.materiaCard(m, esc) : `<article class="matter-mini">
               <strong>${esc(m.tipo)} nº ${esc(m.numero)}/${esc(m.ano)}</strong>
-              <p>${esc(m.ementa || "Ementa nao informada")}</p>
+              <p>${esc(m.ementa || "Ementa não informada")}</p>
               ${m.impacto_zero ? `<span>Impacto zero: ${esc(m.motivo_impacto_zero || "classificação simbolica")}</span>` : ""}
               ${m.pdf ? `<a href="${esc(m.pdf)}" target="_blank" rel="noopener">Abrir documento oficial</a>` : ""}
             </article>`).join("")}
@@ -645,7 +749,7 @@
       lista.sort((a, b) => (b[sortBy] || 0) - (a[sortBy] || 0));
 
       if (!lista.length) {
-        vereadoresEl.innerHTML = '<div class="empty">Nenhum vereador encontrado.</div>';
+        vereadoresEl.innerHTML = '<div class="empty">Nenhum vereador com esse nome. Tente outro termo ou limpe a busca.</div>';
         return;
       }
       const max = Math.max(...vereadores.map(v => v.total));
@@ -812,7 +916,12 @@
       emptyEl.hidden = mats.length > 0;
       feedEl.hidden = mats.length === 0;
 
-      if (mats.length === 0) { feedEl.innerHTML = ""; return; }
+      if (mats.length === 0) {
+        feedEl.classList.remove("diario-list-whats");
+        feedEl.innerHTML = "";
+        return;
+      }
+      feedEl.classList.add("diario-list-whats");
 
       var html = "";
       // Aviso quando período escolhido não tem dados — fallback para última sessão
@@ -1029,7 +1138,7 @@
       filtroEntidade.innerHTML = '<option value="">Todas as ONGs/entidades</option>' +
         grupos.map(g => {
           const e = g.itens[0] || {};
-          const label = `${g.nome === entidadeKey(e) ? (e.beneficiario || "Beneficiário nao identificado") : g.nome} · ${fmtNum(g.qtd)} emenda(s) · ${fmtBRL(g.valor)}`;
+          const label = `${g.nome === entidadeKey(e) ? (e.beneficiario || "Beneficiário não identificado") : g.nome} · ${fmtNum(g.qtd)} emenda(s) · ${fmtBRL(g.valor)}`;
           return `<option value="${esc(g.nome)}">${esc(label)}</option>`;
         }).join("");
       filtroEntidade.value = grupos.some(g => g.nome === atual) ? atual : "";
@@ -1042,11 +1151,11 @@
       const plPct = pct(v.projetos_lei, total);
       const execPct = pct(pagos, lista.length);
       return [
-        `${fmtNum(v.indicacoes)} indicacoes representam ${indPct}% da producao registrada; isso sugere uma atuacao forte em demandas locais enviadas ao Executivo, mas o impacto real depende de resposta e execução pela Prefeitura.`,
-        `${fmtNum(v.requerimentos)} requerimentos (${reqPct}% da producao) indicam o volume de fiscalizacao formal. Quanto maior esse bloco, mais material existe para cobrar respostas documentadas.`,
+        `${fmtNum(v.indicacoes)} indicacoes representam ${indPct}% da produção registrada; isso sugere uma atuação forte em demandas locais enviadas ao Executivo, mas o impacto real depende de resposta e execução pela Prefeitura.`,
+        `${fmtNum(v.requerimentos)} requerimentos (${reqPct}% da produção) indicam o volume de fiscalização formal. Quanto maior esse bloco, mais material existe para cobrar respostas documentadas.`,
         `${fmtNum(v.projetos_lei)} projetos de lei (${plPct}%) mostram iniciativa normativa. A próxima etapa e conferir tramitação, aprovação e aplicacao pratica.`,
-        `${fmtNum(v.mocoes || 0)} mocoes/homenagens e ${fmtNum(v.outros || 0)} outras materias aparecem como producao de menor impacto fiscal direto. Podem ser legitimas, mas devem ficar separadas de acoes que cobram, legislam ou movimentam dinheiro publico.`,
-        `Nas emendas, ${fmtNum(pagos)} de ${fmtNum(lista.length)} aparecem com pagamento localizado para o CNPJ (${execPct}%). ${semPagamento ? `${fmtNum(semPagamento)} ainda merecem pedido de comprovacao de execucao.` : "O foco passa a ser conferir notas, metas e entrega ao publico."}`,
+        `${fmtNum(v.mocoes || 0)} moções/homenagens e ${fmtNum(v.outros || 0)} outras matérias aparecem como produção de menor impacto fiscal direto. Podem ser legítimas, mas devem ficar separadas de ações que cobram, legislam ou movimentam dinheiro público.`,
+        `Nas emendas, ${fmtNum(pagos)} de ${fmtNum(lista.length)} aparecem com pagamento localizado para o CNPJ (${execPct}%). ${semPagamento ? `${fmtNum(semPagamento)} ainda merecem pedido de comprovação de execução.` : "O foco passa a ser conferir notas, metas e entrega ao público."}`,
       ];
     };
 
@@ -1103,7 +1212,7 @@
           <div class="ver-profile__main">
             <span class="ver-profile__label">PAINEL COMPLETO DO(A) VEREADOR(A)</span>
             <h4>${esc(v.nome)}</h4>
-            <p>${fmtNum(v.total)} materias em ${ano} · ${fmtNum(v.indicacoes)} indicacoes · ${fmtNum(v.requerimentos)} requerimentos · ${fmtNum(v.projetos_lei)} projetos de lei · ${fmtNum(v.mocoes || 0)} mocoes/homenagens · ${fmtNum(v.impacto_zero || 0)} itens de impacto zero · posicao ${rankingTotal || "-"} por volume de producao</p>
+            <p>${fmtNum(v.total)} matérias em ${ano} · ${fmtNum(v.indicacoes)} indicações · ${fmtNum(v.requerimentos)} requerimentos · ${fmtNum(v.projetos_lei)} projetos de lei · ${fmtNum(v.mocoes || 0)} moções/homenagens · ${fmtNum(v.impacto_zero || 0)} itens de impacto zero · posição ${rankingTotal || "-"} por volume de produção</p>
           </div>
           <button type="button" onclick="ZELA.limparVereador()">Limpar filtro</button>
         </div>
@@ -1124,7 +1233,7 @@
             <ul>${leituras.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
           </section>
           <section>
-            <h5>Classificação das acoes</h5>
+            <h5>Classificação das ações</h5>
             <div class="impact-bars">
               ${[
                 ["Demandas ao Executivo", v.indicacoes, "Pedidos de bairro/serviços; precisam de resposta da Prefeitura."],
@@ -1146,11 +1255,11 @@
               <strong>${fmtNum(score100)}/100</strong>
               <span>Nota comparativa dentro da Câmara, calculada com os dados já carregados.</span>
             </div>
-            <p class="muted">Formula publica atual: indicacao x1, requerimento x3, projeto de lei estrutural x5, emenda com pagamento localizado x4 e emenda pendente x1. Mocao, homenagem a terceiro e nome de rua/logradouro entram com peso zero. Ainda não inclui presenca, votacoes, respostas do Executivo ou qualidade da resposta.</p>
+            <p class="muted">Fórmula pública atual: indicação x1, requerimento x3, projeto de lei estrutural x5, emenda com pagamento localizado x4 e emenda pendente x1. Moção, homenagem a terceiro e nome de rua/logradouro entram com peso zero. Ainda não inclui presença, votações, respostas do Executivo ou qualidade da resposta.</p>
           </section>
           <section>
             <h5>Classificação por IA - próxima etapa</h5>
-            <p class="muted">Quando os textos completos de projetos, requerimentos e respostas forem coletados, a IA deve classificar categoria, tipo, impacto estimado e relevancia de 0 a 10. Exemplos: saúde, educação, mobilidade, transparência, infraestrutura, social, fiscalizacao, homenagem, nomeacao ou utilidade publica.</p>
+            <p class="muted">Quando os textos completos de projetos, requerimentos e respostas forem coletados, a IA deve classificar categoria, tipo, impacto estimado e relevância de 0 a 10. Exemplos: saúde, educação, mobilidade, transparência, infraestrutura, social, fiscalização, homenagem, nomeação ou utilidade pública.</p>
           </section>
           <section>
             <h5>Para onde vao as emendas</h5>
@@ -1176,11 +1285,11 @@
                 <span>${esc(cleanText(c.modalidade || "modalidade não informada"))} · contrato ${esc(c.numero || "s/n")}/${esc(c.ano || "")}</span>
                 <p>${esc(cleanText(c.objeto || "Objeto não informado"))}</p>
               </div>`).join("") : '<p class="muted">Nenhum contrato com o mesmo CNPJ/raiz das emendas foi localizado nos dados carregados.</p>'}
-            ${contratosRel.length ? `<p class="muted small">Total relacionado: ${fmtBRL(contratosValor)}. Relação por CNPJ nao prova irregularidade; serve para priorizar verificacao.</p>` : ""}
+            ${contratosRel.length ? `<p class="muted small">Total relacionado: ${fmtBRL(contratosValor)}. Relação por CNPJ não prova irregularidade; serve para priorizar verificação.</p>` : ""}
           </section>
           <section>
             <h5>Homenagens x impacto real</h5>
-            <p class="muted">Varginha registra esse tipo de acao legislativa com frequencia. O painel separa mocoes, aplausos e homenagens porque elas podem reconhecer pessoas ou entidades, mas não equivalem automaticamente a fiscalizacao, execução de obra, melhoria de serviço público ou economia de recurso.</p>
+            <p class="muted">Varginha registra esse tipo de ação legislativa com frequência. O painel separa moções, aplausos e homenagens porque elas podem reconhecer pessoas ou entidades, mas não equivalem automaticamente a fiscalização, execução de obra, melhoria de serviço público ou economia de recurso.</p>
             <div class="impact-row">
               <div><strong>Mocoes/homenagens</strong><span>Contagem direta por vereador nos dados carregados.</span></div>
               <b>${fmtNum(v.mocoes || 0)}</b>
@@ -1192,7 +1301,7 @@
           </section>
           <section>
             <h5>Pergunta pronta para fiscalizar impacto real</h5>
-            <textarea readonly>${esc(pergunta)}</textarea>
+            <textarea readonly aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)">${esc(pergunta)}</textarea>
           </section>
           <section>
             <h5>Indice de resposta do Executivo</h5>
@@ -1236,7 +1345,7 @@
           <div>
             <span class="entity-profile__label">EXTRATO DA ONG/ENTIDADE</span>
             <h4>${esc(nome)}</h4>
-            <p>${esc(cnpj || "CNPJ nao informado")} · ${fmtNum(autores.length)} vereador${autores.length === 1 ? "" : "es"} destinaram emenda</p>
+            <p>${esc(cnpj || "CNPJ não informado")} · ${fmtNum(autores.length)} vereador${autores.length === 1 ? "" : "es"} destinaram emenda</p>
           </div>
           <button type="button" onclick="ZELA.limparEntidade()">Limpar entidade</button>
         </div>
@@ -1391,6 +1500,7 @@
         <article class="em">
           <div class="em__valor">
             ${fmtBRL(e.valor_brl)}
+            ${e.valor_brl >= 1000 ? `<div class="percapita-mini" style="font-size: 0.72em; color: var(--muted); margin-top: 4px;" title="Este valor de emenda dividido por cada morador de Varginha">≈ ${fmtBRL(e.valor_brl / 135159)} por morador</div>` : ''}
             <div style="margin-top:8px;">${window.ZELA.watchlist.botao("emendas", idEmenda)}</div>
           </div>
           <div class="em__body">
@@ -1686,24 +1796,24 @@
         {
           titulo: "1. Comece pelas emendas sem pagamento localizado",
           texto: `${fmtNum(semPagamento.length)} emendas tem CNPJ, mas o painel ainda não localizou pagamento correspondente nos dados carregados.`,
-          acao: "Pedir empenho, liquidacao, pagamento e estagio de execução.",
+          acao: "Pedir empenho, liquidação, pagamento e estágio de execução.",
           href: "camara.html",
         },
         {
-          titulo: "2. Olhe contratos acima de R$ 1 milhao",
+          titulo: "2. Olhe contratos acima de R$ 1 milhão",
           texto: `${fmtNum(contratosMilhao.length)} contratos somam ${fmtBRL(valorContratosMilhao)} e merecem conferência de objeto, aditivos e notas fiscais.`,
-          acao: "Abrir contrato integral, anexos e relatorio do fiscal.",
+          acao: "Abrir contrato integral, anexos e relatório do fiscal.",
           href: "prefeitura.html?tab=contratos",
         },
         {
           titulo: "3. Confira entidades que receberam muitas emendas",
-          texto: `${fmtNum(emendas.length)} emendas somam ${fmtBRL(valorEmendas)}. A prioridade e entender quem recebeu, para qual finalidade e se houve entrega.`,
+          texto: `${fmtNum(emendas.length)} emendas somam ${fmtBRL(valorEmendas)}. A prioridade é entender quem recebeu, para qual finalidade e se houve entrega.`,
           acao: "Filtrar por entidade, CNPJ ou vereador no ranking abaixo.",
           href: "#ranking-entidades",
         },
         {
           titulo: "4. Separe educação e eventos",
-          texto: `${fmtNum(educacao.length)} contratos ligados a educação e ${fmtNum(eventos.length)} ligados a eventos foram classificados para leitura especifica.`,
+          texto: `${fmtNum(educacao.length)} contratos ligados a educação e ${fmtNum(eventos.length)} ligados a eventos foram classificados para leitura específica.`,
           acao: "Não misturar assuntos: cada trilha pede documentos diferentes.",
           href: "#educacao-fundeb",
         },
@@ -1711,7 +1821,7 @@
       el.innerHTML = `
         <div class="citizen-report__intro">
           <span>Resumo para o cidadao</span>
-          <h3>Onde vale comecar a fiscalizacao</h3>
+          <h3>Onde vale começar a fiscalização</h3>
           <p>Esta leitura prioriza o que um morador consegue cobrar com clareza: dinheiro envolvido, documento que falta e pergunta objetiva para a Prefeitura ou Camara.</p>
         </div>
         <div class="citizen-report__numbers">
@@ -1742,7 +1852,7 @@
         </div>
         <div class="citizen-report__lai">
           <strong>Pergunta pronta para pedir informação</strong>
-          <p>Solicito copia dos contratos, anexos, termos de referencia, empenhos, liquidacoes, notas fiscais, comprovantes de pagamento e relatorios de fiscalizacao dos itens destacados no Painel Fiscaliza Varginha, informando objeto, fornecedor, valor, secretaria responsável, local de execução e situação atual.</p>
+          <p>Solicito cópia dos contratos, anexos, termos de referência, empenhos, liquidações, notas fiscais, comprovantes de pagamento e relatórios de fiscalização dos itens destacados no Painel Fiscaliza Varginha, informando objeto, fornecedor, valor, secretaria responsável, local de execução e situação atual.</p>
         </div>`;
     };
     emendas
@@ -1752,8 +1862,8 @@
       .forEach(e => addSignal(
         "Câmara + Prefeitura",
         "alto",
-        `Emenda sem pagamento localizado: ${e.beneficiario || "beneficiário nao identificado"}`,
-        `A emenda ${e.numero}/${e.ano}, de ${e.autor || "autor nao identificado"}, tem CNPJ informado, mas o cruzamento não encontrou pagamento da Prefeitura para esse CNPJ nos dados carregados.`,
+        `Emenda sem pagamento localizado: ${e.beneficiario || "beneficiário não identificado"}`,
+        `A emenda ${e.numero}/${e.ano}, de ${e.autor || "autor não identificado"}, tem CNPJ informado, mas o cruzamento não encontrou pagamento da Prefeitura para esse CNPJ nos dados carregados.`,
         `${fmtBRL(e.valor_brl)} · CNPJ ${e.cnpj || "não informado"}`,
         e.pdf
       ));
@@ -1765,7 +1875,7 @@
       .forEach(e => addSignal(
         "Câmara",
         "medio",
-        `Emenda dificulta conferência por falta de CNPJ: ${e.beneficiario || "beneficiário nao identificado"}`,
+        `Emenda dificulta conferência por falta de CNPJ: ${e.beneficiario || "beneficiário não identificado"}`,
         `Sem CNPJ estruturado, o cidadão não consegue cruzar promessa e pagamento com segurança usando o Portal de Transparência.`,
         `${fmtBRL(e.valor_brl)} · Sem CNPJ`,
         e.pdf
@@ -1813,8 +1923,8 @@
       .forEach(c => addSignal(
         "Prefeitura",
         /dispensa/i.test(c.modalidade || "") ? "alto" : "medio",
-        `Contrato de alto valor: ${c.contratado || "contratado nao informado"}`,
-        `${c.modalidade || "Modalidade nao informada"}. Confira objeto, vigência, aditivos e pagamentos relacionados.`,
+        `Contrato de alto valor: ${c.contratado || "contratado não informado"}`,
+        `${c.modalidade || "Modalidade não informada"}. Confira objeto, vigência, aditivos e pagamentos relacionados.`,
         `${fmtBRL(c.valor)} · Contrato ${c.numero || "s/n"}/${c.ano || ""}`,
         "prefeitura.html"
       ));
@@ -1826,9 +1936,9 @@
       .forEach(c => addSignal(
         "Prefeitura",
         "alto",
-        `Dispensa relevante: ${c.contratado || "contratado nao informado"}`,
+        `Dispensa relevante: ${c.contratado || "contratado não informado"}`,
         `Dispensas podem ser legais, mas valores altos exigem justificativa clara, prazo, objeto e documentação pública.`,
-        `${fmtBRL(c.valor)} · ${c.objeto || "Objeto nao informado"}`,
+        `${fmtBRL(c.valor)} · ${c.objeto || "Objeto não informado"}`,
         "prefeitura.html"
       ));
 
@@ -1839,9 +1949,9 @@
       .forEach(l => addSignal(
         "Prefeitura",
         (l.valor || 0) >= 1_000_000 ? "alto" : "medio",
-        `Licitação em andamento: ${l.modalidade || "modalidade nao informada"} ${l.numero || ""}`,
+        `Licitação em andamento: ${l.modalidade || "modalidade não informada"} ${l.numero || ""}`,
         `Processo ainda em andamento ou aguardando abertura. Este é o melhor momento para acompanhar edital, impugnações, participantes e resultado final.`,
-        `${fmtBRL(l.valor)} · ${l.situacao || "situação nao informada"}`,
+        `${fmtBRL(l.valor)} · ${l.situacao || "situação não informada"}`,
         "prefeitura.html"
       ));
 
@@ -1857,9 +1967,9 @@
         addSignal(
           "PNCP",
           "medio",
-          `Registro nacional: ${x.modalidade || "modalidade nao informada"}`,
+          `Registro nacional: ${x.modalidade || "modalidade não informada"}`,
           `O PNCP registra contratação pública ligada a Varginha. Compare objeto, valor e situação com os dados do portal municipal.`,
-          `${fmtBRL(x.valor_estimado)} · ${x.situacao || "situação nao informada"}`,
+          `${fmtBRL(x.valor_estimado)} · ${x.situacao || "situação não informada"}`,
           pncpUrl
         );
       });
@@ -1872,9 +1982,70 @@
         "alto",
         `CNPJ de beneficiário com situação diferente de ativa`,
         `O apoio cadastral retornou situação "${e.situação}". Antes de concluir qualquer coisa, confirme no comprovante oficial da Receita Federal.`,
-        `${e.cnpj} · ${e.razao_social || e.nomes_no_sapl?.[0] || "nome nao informado"} · emendas: ${fmtBRL(e.valor_emendas || 0)}`,
+        `${e.cnpj} · ${e.razao_social || e.nomes_no_sapl?.[0] || "nome não informado"} · emendas: ${fmtBRL(e.valor_emendas || 0)}`,
         "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
       ));
+
+    // CNPJ · Redes de sócios — mesmo nome no QSA (quadro societário público) de
+    // mais de um beneficiário de emenda. SINAL PARA CONFERIR: sócio em comum é
+    // comum no terceiro setor e não indica irregularidade por si só.
+    const socioMap = {};
+    (cnpjs.empresas || []).forEach(e =>
+      (e.socios || []).forEach(s => {
+        const nome = (s || "").trim();
+        if (nome) (socioMap[nome] = socioMap[nome] || []).push(e);
+      })
+    );
+    Object.entries(socioMap)
+      .filter(([, emps]) => emps.length > 1)
+      .sort((a, b) => b[1].length - a[1].length)
+      .slice(0, 6)
+      .forEach(([nome, emps]) => addSignal(
+        "CNPJ · Redes de sócios",
+        "medio",
+        `Mesma pessoa no quadro societário de ${emps.length} beneficiários de emenda`,
+        `O nome "${nome}" consta no QSA público da Receita de ${emps.length} entidades que receberam emenda. Sócio em comum é frequente no terceiro setor e não indica irregularidade — é um ponto para conferir vínculos e governança junto às entidades e ao gestor da parceria.`,
+        emps.map(e => e.razao_social || e.cnpj).slice(0, 4).join(" · "),
+        "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
+      ));
+
+    // CNPJ · Fornecedores Betha — situação irregular (raiz/0001 reconstruída)
+    const fornCnpjs = cnpjs.fornecedores || [];
+    fornCnpjs
+      .filter(f => f.situacao && !/ativa/i.test(f.situacao) && !f.erro)
+      .slice(0, 5)
+      .forEach(f => addSignal(
+        "CNPJ · Fornecedor",
+        "alto",
+        `Fornecedor com situação cadastral diferente de ativa`,
+        `O CNPJ reconstruído (filial 0001) retornou situação "${f.situacao}". CNPJ reconstruído — confirme o CNPJ real e a situação na Receita Federal antes de concluir qualquer coisa.`,
+        `${f.nome} · raiz ${f.cnpj_raiz} · ${fmtBRL(f.valor_total || 0)}`,
+        "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
+      ));
+
+    // CNPJ · Redes cruzadas — sócio aparece em beneficiário de emenda E em fornecedor Betha
+    const socioFornMap = {};
+    fornCnpjs
+      .filter(f => !f.erro)
+      .forEach(f => (f.socios || []).forEach(s => {
+        const nome = (s || "").trim();
+        if (nome) (socioFornMap[nome] = socioFornMap[nome] || []).push(f);
+      }));
+    Object.entries(socioMap)
+      .filter(([nome]) => socioFornMap[nome])
+      .sort((a, b) => b[1].length - a[1].length)
+      .slice(0, 4)
+      .forEach(([nome, emps]) => {
+        const forns = socioFornMap[nome];
+        addSignal(
+          "CNPJ · Rede cruzada",
+          "alto",
+          `Pessoa no QSA de beneficiário de emenda e de fornecedor top da Prefeitura`,
+          `"${nome}" consta no quadro societário público de ${emps.length} beneficiário(s) de emenda e de ${forns.length} fornecedor(es) entre os maiores pagamentos da Prefeitura. CNPJs dos fornecedores são reconstruídos (filial 0001) — confirme a situação real na Receita Federal.`,
+          emps.map(e => e.razao_social || e.cnpj).concat(forns.map(f => f.nome)).slice(0, 5).join(" · "),
+          "https://solucoes.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp"
+        );
+      });
 
     // ---- CÂMARA: alertas cívicos baseados em camara_betha + pessoal ----
     const cb2 = D.camara_betha || {};
@@ -1951,9 +2122,9 @@
       .forEach(c => addSignal(
         "Prefeitura",
         "alto",
-        `Contrato emergencial: ${c.contratado || "contratado nao informado"}`,
+        `Contrato emergencial: ${c.contratado || "contratado não informado"}`,
         `Contratos emergenciais dispensam licitação e exigem urgência comprovada. Verifique a justificativa publicada no Diário Oficial, prazo, valor e execução real do serviço.`,
-        `${fmtBRL(c.valor)} · ${c.objeto || "Objeto nao informado"} · ${c.numero || "s/n"}/${c.ano || ""}`,
+        `${fmtBRL(c.valor)} · ${c.objeto || "Objeto não informado"} · ${c.numero || "s/n"}/${c.ano || ""}`,
         "prefeitura.html"
       ));
 
@@ -1970,7 +2141,7 @@
       addSignal(
         "Prefeitura · Contrato",
         (c.valor || 0) >= 1_000_000 ? "critico" : "alto",
-        `Contrato vencido em execução: ${cleanText(c.contratado || "Empresa nao informada")}`,
+        `Contrato vencido em execução: ${cleanText(c.contratado || "Empresa não informada")}`,
         `Contrato com ${cleanText(c.contratado || "empresa")} (${fmtBRL(c.valor || 0)}) tinha encerramento previsto para ${c.data_fim} mas ainda aparece como "em execução" há ${diasVencido} dia(s). Contratos vencidos sem aditivo publicado podem configurar irregularidade. Verifique se houve prorrogação no Diário Oficial.`,
         `${fmtBRL(c.valor || 0)} · Venceu ${c.data_fim} (${diasVencido}d atrás) · ${cleanText(c.objeto || "").slice(0, 80)}`,
         "prefeitura.html"
@@ -2135,7 +2306,7 @@
         },
         {
           kind: "Contratos",
-          title: "Contratos acima de R$ 1 milhao",
+          title: "Contratos acima de R$ 1 milhão",
           body: "Confira objeto, aditivos, vigência, notas fiscais, liquidacoes e entrega real do serviço.",
           meta: `${fmtNum(contratosAltosQtd)} contratos de alto valor`,
           href: "prefeitura.html",
@@ -2227,7 +2398,7 @@
               <span class="signal__kind">Conclusao da busca</span>
               <span class="signal__level">${listaEstruturada ? "Importar com conferência" : "Pedir por LAI"}</span>
             </div>
-            <h4>${listaEstruturada ? "Ha candidato de lista estruturada" : "Lista aberta consolidada ainda nao localizada"}</h4>
+            <h4>${listaEstruturada ? "Há candidato de lista estruturada" : "Lista aberta consolidada ainda não localizada"}</h4>
             <p>${esc(conclusao)}</p>
             <div class="signal__meta">Pergunta pronta: ${esc(perguntaEmendas2026)}</div>
           </article>
@@ -2643,8 +2814,8 @@
             <span class="signal__kind">Qualidade do contrato</span>
             <span class="signal__level">Nota ${c.qualidade}/100</span>
           </div>
-          <h4>${esc(c.contratado || "Contratado nao informado")}</h4>
-          <p>${esc(c.objeto || "Objeto nao informado")}</p>
+          <h4>${esc(c.contratado || "Contratado não informado")}</h4>
+          <p>${esc(c.objeto || "Objeto não informado")}</p>
           <div class="signal__meta">${fmtBRL(c.valor || 0)} · Problemas: ${esc(c.problemas.join(", "))}</div>
           <a href="prefeitura.html">Ver contratos da Prefeitura</a>
         </article>`).join("") : '<div class="empty">Nenhum contrato de alto valor com descrição fraca foi identificado nos dados atuais.</div>';
@@ -2655,7 +2826,7 @@
         {
           nome: "CEIS/CNEP",
           valor: "Sanções",
-          desc: "Verifica empresas inidoneas, suspensas ou punidas. E a primeira checagem oficial antes de falar em impedimento.",
+          desc: "Verifica empresas inidôneas, suspensas ou punidas. É a primeira checagem oficial antes de falar em impedimento.",
           url: "https://portaldatransparencia.gov.br/sancoes/consulta",
         },
         {
@@ -2780,14 +2951,87 @@
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / maxCam) * 100}%"></span></div>
           <div class="forn-row__actions">
             <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767" target="_blank" rel="noopener" title="Despesas da Câmara no Portal Betha — onde estes pagamentos estão registrados">${window.ZELA.icon("lupa", { size: 14 })} Despesas Betha</a>
-            <a class="forn-row__btn forn-row__btn--filtro" href="camara.html?q=${nomeBusca}" title="Ver contratos vigentes desta empresa na Câmara (pode não existir se for pagamento sem contrato)">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
+            <button type="button" class="forn-row__btn forn-row__btn--filtro" data-forn-filtro="${i}" title="Ver contratos vigentes desta empresa na Câmara (pode não existir se for pagamento sem contrato)">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</button>
+            <button type="button" class="forn-row__btn forn-row__btn--dossie" data-forn-dossie="${i}" title="Dossiê consolidado: pagamentos, contratos e pergunta LAI pronta">${window.ZELA.icon("lupa", { size: 14 })} Dossiê</button>
             ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.ZELA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
         <div class="forn-row__cnpj">${esc(f.cnpj)}</div>
         <div class="forn-row__valor">${fmtBRL(f.valor_total)}</div>
       </div>`;
-    }).join("");
+    }).join("") + dataTrustSeal("palavra", {
+      fonte: "despesas por credor da Câmara (Betha)",
+      escopo: "maiores fornecedores por valor pago",
+      risco: "pagamento não detalha objeto nem contrato",
+      acao: "abrir o dossiê e conferir empenhos na fonte",
+      tone: "ok",
+    });
+
+    // Interações dos fornecedores: filtro de contratos + dossiê consolidado
+    const raizCnpj = (c) => String(c || "").replace(/[^\d]/g, "").slice(0, 8);
+    const contratosDoFornecedor = (f) => {
+      const r = raizCnpj(f.cnpj);
+      const nomeChave = norm(cleanText(f.nome || "")).split(" ").slice(0, 2).join(" ");
+      return (cb.contratos || []).filter((c) =>
+        (r.length === 8 && raizCnpj(c.cnpj) === r) ||
+        (nomeChave.length > 4 && norm(c.contratado || "").includes(nomeChave))
+      );
+    };
+    const BETHA_CONTRATOS_CAM = "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812";
+
+    $("topFornecedoresCamara").querySelectorAll("[data-forn-filtro]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = topCam[Number(btn.dataset.fornFiltro)];
+        if (!f) return;
+        const rel = contratosDoFornecedor(f);
+        const nome = cleanText(f.nome || "");
+        if ($("filtroContratoCamara")) {
+          $("filtroContratoCamara").value = rel.length ? nome.split(" ").slice(0, 2).join(" ") : "";
+        }
+        if (typeof renderContratosCamara === "function") renderContratosCamara(true);
+        const aviso = $("contratosCamaraAviso");
+        if (aviso) {
+          aviso.hidden = false;
+          aviso.innerHTML = rel.length
+            ? `<strong>Contrato vigente localizado</strong> (${fmtNum(rel.length)}) para ${esc(nome)} — a lista de contratos abaixo já está filtrada.`
+            : `<strong>Nenhum contrato vigente</strong> localizado para ${esc(nome)} — o pagamento pode ser por empenho direto, sem contrato formal. Vale pedir os empenhos pela LAI.`;
+          scrollToEl(aviso);
+        }
+      });
+    });
+
+    $("topFornecedoresCamara").querySelectorAll("[data-forn-dossie]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const f = topCam[Number(btn.dataset.fornDossie)];
+        if (!f || !window.ZELA.dossie || !window.ZELA.dossie.abrirComHtml) return;
+        const rel = contratosDoFornecedor(f);
+        const nome = cleanText(f.nome || "");
+        const pergunta = `Solicito, com fundamento na Lei de Acesso à Informação (Lei 12.527/2011), os empenhos, liquidações, notas fiscais e comprovantes de pagamento da Câmara Municipal de Varginha ao fornecedor ${nome}${f.cnpj ? ", CNPJ " + f.cnpj : ""}, no exercício ${cb.ano_atual || ""}, bem como os contratos correspondentes ou a justificativa de contratação sem contrato formal.`;
+        window.ZELA.dossie.abrirComHtml(
+          '<div class="cat-modal">' +
+            '<p style="margin:0;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--gold-dk);">DOSSIÊ DO FORNECEDOR</p>' +
+            '<h3 style="margin:4px 0 2px;">' + esc(nome) + '</h3>' +
+            (f.cnpj ? '<p class="muted small" style="margin:0 0 10px;">CNPJ ' + esc(f.cnpj) + '</p>' : '') +
+            '<p>Recebeu <strong>' + fmtBRL(f.valor_total) + '</strong> da Câmara em ' + esc(String(cb.ano_atual || "")) + ' (despesas por credor — fato oficial).</p>' +
+            '<h4 style="margin:14px 0 6px;">Contratos vigentes relacionados</h4>' +
+            (rel.length
+              ? '<ul style="list-style:none;padding:0;margin:0;">' + rel.slice(0, 5).map((c) =>
+                  '<li style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:6px;">' +
+                    '<strong>' + fmtBRL(Number(c.valor) || 0) + '</strong> · ' + esc(cleanText(String(c.objeto || "Objeto não informado")).slice(0, 140)) +
+                    '<span class="muted small"> · ' + esc(c.data_assinatura || "") + (c.data_fim ? " → " + esc(c.data_fim) : "") + '</span>' +
+                  '</li>').join("") + '</ul>'
+              : '<p class="muted">Nenhum contrato vigente localizado por CNPJ/nome — o pagamento pode ser por empenho direto. É exatamente o caso de pedir os documentos.</p>') +
+            '<h4 style="margin:14px 0 6px;">Pergunta LAI pronta</h4>' +
+            '<textarea readonly aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)" style="width:100%;min-height:110px;font-size:.85rem;padding:10px;border:1px solid var(--line);border-radius:8px;">' + esc(pergunta) + '</textarea>' +
+            '<p style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">' +
+              '<a class="btn-small" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767" target="_blank" rel="noopener">Abrir despesas Betha</a>' +
+              '<a class="btn-small" href="' + BETHA_CONTRATOS_CAM + '" target="_blank" rel="noopener">Abrir contratos Betha</a>' +
+              '<a class="btn-small" href="cobrar.html">Como cobrar</a>' +
+            '</p>' +
+          '</div>'
+        );
+      });
+    });
   }
 
   // ============= CONTRATOS CÂMARA (camara.html) =============
@@ -2865,6 +3109,53 @@
 
   if ($("contratosBlock")) {
     const contratos          = pf.contratos || [];
+
+    const extrairAnoSimplesContratos = (dataStr) => {
+      if (!dataStr) return null;
+      const match = dataStr.match(/^(\d{4})/);
+      return match ? Number(match[1]) : null;
+    };
+
+    const estaContratoAtivoNoAno = (c, anoAlvoStr) => {
+      if (!anoAlvoStr) return true;
+      const anoAlvo = Number(anoAlvoStr);
+
+      let _anoInicio = extrairAnoSimplesContratos(c.data_assinatura || c.data);
+      if (!_anoInicio && c.ano) {
+        _anoInicio = Number(c.ano);
+      }
+
+      if (!_anoInicio) return false;
+
+      // Se começou depois do ano alvo, não estava ativo no ano alvo
+      if (_anoInicio > anoAlvo) return false;
+
+      // Se começou exatamente no ano alvo, está ativo
+      if (_anoInicio === anoAlvo) return true;
+
+      // Se começou antes do ano alvo:
+      // Verificamos data de término (data_fim)
+      const dataFimStr = c.data_fim || "";
+      let _anoFim = extrairAnoSimplesContratos(dataFimStr);
+
+      if (_anoFim) {
+        if (_anoFim < anoAlvo) return false;
+        return true;
+      }
+
+      // Verificamos a situação
+      const situacao = (c.situacao || "").toLowerCase();
+      if (situacao === "em andamento" || situacao === "vigente" || situacao === "ativo" || situacao === "homologado") {
+        return true;
+      }
+
+      // Se concluído ou rescindido e começou antes do ano alvo, assumimos inativo
+      if (situacao === "concluido" || situacao === "concluído" || situacao === "rescindido" || situacao === "finalizado") {
+        return false;
+      }
+
+      return false;
+    };
     const filtroContrato     = $("filtroContrato");
     const filtroAnoContrato  = $("filtroAnoContrato");
     const filtroValorContrato = $("filtroValorContrato");
@@ -2945,8 +3236,8 @@
 
     const baseLegalContratos = [
       { lei: "CF/88, art. 37", uso: "legalidade, publicidade, moralidade, eficiencia e impessoalidade" },
-      { lei: "Lei 14.133/2021, arts. 11, 18 e 23", uso: "planejamento, justificativa do preco e compatibilidade com mercado" },
-      { lei: "Lei 14.133/2021, art. 92", uso: "clausulas essenciais do contrato: objeto, preco, prazo, credito orçamentário, direitos e sanções" },
+      { lei: "Lei 14.133/2021, arts. 11, 18 e 23", uso: "planejamento, justificativa do preço e compatibilidade com mercado" },
+      { lei: "Lei 14.133/2021, art. 92", uso: "cláusulas essenciais do contrato: objeto, preço, prazo, crédito orçamentário, direitos e sanções" },
       { lei: "Lei 14.133/2021, arts. 96 e 122", uso: "garantia contratual e subcontratacao quando previstas e justificadas" },
       { lei: "Lei 12.527/2011, art. 8", uso: "transparência ativa de despesas, licitacoes e contratos" },
       { lei: "Lei 4.320/1964, art. 35", uso: "despesa pertence ao exercicio em que foi legalmente empenhada" },
@@ -3010,9 +3301,9 @@
       if (!c.valor || c.valor <= 0) {
         problemas.push("Valor não informado ou zero");
         addAchado(achados, "relevante", "Valor ausente",
-          "Sem valor publico não ha como medir economicidade nem comparar mercado.",
+          "Sem valor público não há como medir economicidade nem comparar mercado.",
           "Lei 14.133/2021, arts. 23 e 92; LAI, art. 8",
-          "Solicitar valor global, planilha de composicao e empenho.");
+          "Solicitar valor global, planilha de composição e empenho.");
       }
       if (!c.data_assinatura) {
         problemas.push("Sem data de assinatura");
@@ -3031,9 +3322,9 @@
 
       const keywordsVagas = ["prestacao de serviços", "aquisição de materiais", "atender as necessidades", "diversas secretarias"];
       if (keywordsVagas.some(k => norm(obj).includes(k)) && obj.length < 90) {
-        problemas.push("Descrição generica: depende de anexos");
-        addAchado(achados, "atencao", "Descrição generica",
-          "O objeto pode estar formalmente correto, mas a fiscalizacao depende dos quantitativos e especificacoes dos anexos.",
+        problemas.push("Descrição genérica: depende de anexos");
+        addAchado(achados, "atencao", "Descrição genérica",
+          "O objeto pode estar formalmente correto, mas a fiscalização depende dos quantitativos e especificações dos anexos.",
           "Lei 14.133/2021, arts. 18, 23 e 92",
           "Solicitar TR, ETP quando houver, pesquisa de precos e memoria de calculo.");
       }
@@ -3052,13 +3343,13 @@
       }
       if (cls.evento && cls.exploracaoPrivada) {
         addAchado(achados, "relevante", "Possivel receita privada vinculada ao evento",
-          "Quando ha barracas, camarotes, estacionamento, publicidade ou praca de alimentacao, a analise deve verificar se a receita privada foi considerada no preco publico.",
+          "Quando há barracas, camarotes, estacionamento, publicidade ou praça de alimentação, a análise deve verificar se a receita privada foi considerada no preço público.",
           "Lei 14.133/2021, arts. 11 e 23; CF/88, art. 37",
           "Solicitar estudo economico, regras de exploracao comercial, autorizacoes e prestacao de contas.");
       }
       if (cls.barry002) {
         addAchado(achados, "relevante", "Checklist especifico do Contrato 002/2026",
-          "Pelo contexto do Banho da Doroteia, a triagem deve conferir anexos, proposta, empenho do exercicio, subcontratacao, eventual garantia e receitas privadas. O painel marca como ponto de verificacao, não como condenacao automatica.",
+          "Pelo contexto do Banho da Doroteia, a triagem deve conferir anexos, proposta, empenho do exercício, subcontratação, eventual garantia e receitas privadas. O painel marca como ponto de verificação, não como condenação automática.",
           "Lei 14.133/2021, arts. 18, 23, 92, 96 e 122; Lei 4.320/1964, art. 35",
           "Solicitar contrato integral com anexos, nota de empenho, parecer juridico, publicacao, proposta e relatorio pos-evento.");
       }
@@ -3081,7 +3372,7 @@
       el.innerHTML = `
         <div>
           <strong>Base juridica da triagem</strong>
-          <p>O painel não declara irregularidade sozinho. Ele cruza dados publicos e indica quais documentos devem ser conferidos antes de qualquer conclusao.</p>
+          <p>O painel não declara irregularidade sozinho. Ele cruza dados públicos e indica quais documentos devem ser conferidos antes de qualquer conclusão.</p>
         </div>
         <div class="legal-context__grid">
           ${baseLegalContratos.map(b => `
@@ -3132,7 +3423,7 @@
       const valorMin = filtroValorContrato ? Number(filtroValorContrato.value || 0) : 0;
       const secFiltro = filtroSecretaria ? filtroSecretaria.value : "";
       const view = contratos.filter(c =>
-        (!anoFiltro || String(c.ano || "") === anoFiltro) &&
+        estaContratoAtivoNoAno(c, anoFiltro) &&
         (!valorMin || (Number(c.valor) || 0) >= valorMin) &&
         (!secFiltro || (c.entidade || "").trim() === secFiltro) &&
         (!categoriaAtivaContratos || window.ZELA.classificarItem(c) === categoriaAtivaContratos) &&
@@ -3248,6 +3539,7 @@
         <article class="contrato">
           <div class="contrato__valor">
             ${fmtBRL(c.valor)}
+            ${Number(c.valor) >= 1000 ? `<div class="percapita-mini" style="font-size: 0.78em; color: var(--muted); margin-top: 4px;" title="Este valor dividido por cada morador de Varginha">≈ ${fmtBRL(Number(c.valor) / 135159)} por morador</div>` : ''}
             <div class="score-mini score-mini--${audit.nivel}" title="${audit.nivel === "ok" ? "Registro completo: objeto, valores e datas preenchidos." : "Faltam informações no registro (objeto vago, valor ou data ausente). Veja os motivos abaixo e confira a fonte oficial."} Índice documental: ${audit.score}/100">
               ${audit.nivel === "ok" ? "Registro completo" : "Confira"}: ${audit.score}%
             </div>
@@ -3359,7 +3651,7 @@
         const ano = filtroAnoContrato.value || "";
         const vmin = filtroValorContrato ? Number(filtroValorContrato.value || 0) : 0;
         const view = contratos.filter(c =>
-          (!ano || String(c.ano || "") === ano) &&
+          estaContratoAtivoNoAno(c, ano) &&
           (!vmin || (Number(c.valor) || 0) >= vmin) &&
           (!q || norm(c.contratado).includes(q) || norm(c.objeto).includes(q) || norm(c.modalidade).includes(q))
         );
@@ -3393,6 +3685,7 @@
     const licitacoes = pf.licit_andamento || [];
     const filtroLic     = $("filtroLicitacao");
     const filtroValLic  = $("filtroValorLicitacao");
+    const filtroAnoLic  = $("filtroAnoLicitacao");
     const licContador   = $("licitacoesContador");
     const licMaisBtn    = $("btnLicitacoesMais");
     const licMaisWrap   = $("licitacoesMais");
@@ -3402,18 +3695,22 @@
       if (reset) licShown = 12;
       const q    = norm(filtroLic ? filtroLic.value : "");
       const vmin = filtroValLic ? Number(filtroValLic.value || 0) : 0;
-      const filtrados = licitacoes.filter(l =>
-        (!vmin || (Number(l.valor) || 0) >= vmin) &&
-        (!q    || norm((l.objeto || "") + (l.modalidade || "")).includes(q))
-      );
+      const anoFiltro = filtroAnoLic ? filtroAnoLic.value : "";
+      const filtrados = licitacoes.filter(l => {
+        const anoLicitacao = l.ano || (l.data ? l.data.substring(0, 4) : "");
+        return (!anoFiltro || String(anoLicitacao) === anoFiltro) &&
+          (!vmin || (Number(l.valor) || 0) >= vmin) &&
+          (!q    || norm((l.objeto || "") + (l.modalidade || "") + (l.numero || "")).includes(q));
+      });
       if (licContador) licContador.textContent = `${filtrados.length} licitações`;
       if (!filtrados.length) {
         $("licitacoes").innerHTML = `<div class="empty">
           <strong>Nenhuma licitação encontrada</strong>
-          <p>Tente remover o filtro de valor ou limpar a busca.</p>
+          <p>Tente remover o filtro de valor, mudar o ano ou limpar a busca.</p>
           <button class="btn-limpar" onclick="
             if(document.getElementById('filtroLicitacao')) document.getElementById('filtroLicitacao').value='';
             if(document.getElementById('filtroValorLicitacao')) document.getElementById('filtroValorLicitacao').value='';
+            if(document.getElementById('filtroAnoLicitacao')) document.getElementById('filtroAnoLicitacao').value='';
             window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true);
           ">Limpar filtros</button>
         </div>`;
@@ -3445,6 +3742,7 @@
         const p = new URLSearchParams(window.location.search);
         if (q) p.set("lic_q", filtroLic.value.trim()); else p.delete("lic_q");
         if (vmin) p.set("lic_v", String(vmin)); else p.delete("lic_v");
+        if (anoFiltro) p.set("lic_ano", anoFiltro); else p.delete("lic_ano");
         const str = p.toString();
         history.replaceState(null, "", str ? "?" + str + window.location.hash : window.location.pathname + window.location.hash);
       })();
@@ -3455,6 +3753,7 @@
       window.ZELA.renderLicitacoes = renderLicitacoes;
       if (filtroLic)    filtroLic.addEventListener("input",  () => renderLicitacoes(true));
       if (filtroValLic) filtroValLic.addEventListener("change", () => renderLicitacoes(true));
+      if (filtroAnoLic) filtroAnoLic.addEventListener("change", () => renderLicitacoes(true));
       if (licMaisBtn)   licMaisBtn.addEventListener("click", () => { licShown += 12; renderLicitacoes(false); });
 
       // restore URL params
@@ -3462,6 +3761,7 @@
         const p = new URLSearchParams(window.location.search);
         if (filtroLic    && p.get("lic_q")) filtroLic.value    = p.get("lic_q");
         if (filtroValLic && p.get("lic_v")) filtroValLic.value = p.get("lic_v");
+        if (filtroAnoLic && p.get("lic_ano")) filtroAnoLic.value = p.get("lic_ano");
       })();
 
       renderLicitacoes(true);
@@ -3476,10 +3776,13 @@
       licCsvBtn.addEventListener("click", () => {
         const q    = norm(filtroLic ? filtroLic.value : "");
         const vmin = filtroValLic ? Number(filtroValLic.value || 0) : 0;
-        const view = licitacoes.filter(l =>
-          (!vmin || (Number(l.valor) || 0) >= vmin) &&
-          (!q    || norm((l.objeto || "") + (l.modalidade || "")).includes(q))
-        );
+        const anoFiltro = filtroAnoLic ? filtroAnoLic.value : "";
+        const view = licitacoes.filter(l => {
+          const anoLicitacao = l.ano || (l.data ? l.data.substring(0, 4) : "");
+          return (!anoFiltro || String(anoLicitacao) === anoFiltro) &&
+            (!vmin || (Number(l.valor) || 0) >= vmin) &&
+            (!q    || norm((l.objeto || "") + (l.modalidade || "") + (l.numero || "")).includes(q));
+        });
         exportCSV(view.map(l => ({
           numero:      `${l.numero || ""}/${l.ano || ""}`,
           objeto:      cleanText(l.objeto || ""),
@@ -3563,7 +3866,7 @@
       "varginha e show", "roca cidade", "marcha para jesus", "reveillon",
       "revelion", "virada", "festa do peao", "festa do peão", "queima de fogos",
       "evento anual", "evento do dia", "dia da cidade", "dia do trabalhador",
-      "corpus christi", "festival", "feira", "exposicao agropecuaria"
+      "corpus christi", "festival", "feira", "exposição agropecuaria"
     ];
     const estruturaEvento = [
       "palco", "sonorizacao", "sonorização", "iluminacao cenica", "iluminação cenica",
@@ -3721,17 +4024,288 @@
         'Acesse <a href="https://www.varginha.mg.gov.br/portal/diario-oficial">' +
         'varginha.mg.gov.br/portal/diario-oficial</a></div>';
     } else {
+      // Ajusta classe do container para usar o design de cards
+      $("diarioLista").className = "diario-list-whats";
+
+      // Coleta dados adicionais para cruzamento
+      const diarias = (D.diarias || {}).prefeitura || [];
+      const contratos = pf.contratos || [];
+      const licitAndamento = pf.licit_andamento || [];
+      const licitFinalizadas = pf.licit_finalizadas || [];
+
       $("diarioLista").innerHTML = ultimas.slice(0, 24).map(d => {
-        const data = (d.data || "").split(" ")[0];
-        const formatted = data ? data.split("-").reverse().join("/") : "";
-        const url = `https://www.varginha.mg.gov.br/portal/diario-oficial/ver/${d.ano}/${d.edicao}`;
+        const dateStr = (d.data || "").split(" ")[0]; // YYYY-MM-DD
+        const formattedDate = dateStr ? dateStr.split("-").reverse().join("/") : "";
+        const url = d.url_pdf || `https://www.varginha.mg.gov.br/portal/diario-oficial/ver/${d.ano}/${d.edicao}`;
+
+        // 1. Cruzamento
+        const matchingContratos = contratos.filter(c => c.data_assinatura && c.data_assinatura.split(" ")[0] === dateStr);
+        const matchingLicitAndamento = licitAndamento.filter(l => l.data && l.data.split(" ")[0] === dateStr);
+        const matchingLicitFinalizadas = licitFinalizadas.filter(l => l.data && l.data.split(" ")[0] === dateStr);
+        const matchingDiarias = diarias.filter(di => di.data_inicial && di.data_inicial.split(" ")[0] === dateStr);
+
+        // 2. Estatísticas de Valores
+        const sumContracts = matchingContratos.reduce((sum, c) => sum + (Number(c.valor) || 0), 0);
+        const sumLicit = matchingLicitAndamento.reduce((sum, l) => sum + (Number(l.valor) || 0), 0) +
+                         matchingLicitFinalizadas.reduce((sum, l) => sum + (Number(l.valor) || 0), 0);
+        const sumDiarias = matchingDiarias.reduce((sum, di) => sum + (Number(di.valor_total) || 0), 0);
+        const sumTotal = sumContracts + sumLicit + sumDiarias;
+
+        // 3. Atos mapeados
+        const atos = [];
+        if (matchingContratos.length > 0) atos.push(`Contratos (${matchingContratos.length})`);
+        if (matchingLicitAndamento.length > 0 || matchingLicitFinalizadas.length > 0) {
+          atos.push(`Licitações (${matchingLicitAndamento.length + matchingLicitFinalizadas.length})`);
+        }
+        if (matchingDiarias.length > 0) atos.push(`Diárias (${matchingDiarias.length})`);
+        const atosMapeadosText = atos.length > 0 ? atos.join(", ") : "Atos Gerais / Portarias";
+
+        // 4. Heurística de Relevância (Alta, Média, Baixa)
+        let relevance = "baixa";
+        if (sumTotal > 500000 || matchingContratos.some(c => (Number(c.valor) || 0) > 200000)) {
+          relevance = "alta";
+        } else if (sumTotal > 50000 || matchingContratos.length > 0 || matchingLicitAndamento.length > 0 || matchingLicitFinalizadas.length > 0) {
+          relevance = "média";
+        }
+
+        // 5. Heurística de Tema
+        let theme = "Geral";
+        const allObjects = [
+          ...matchingContratos.map(c => c.objeto || ""),
+          ...matchingLicitAndamento.map(l => l.objeto || ""),
+          ...matchingLicitFinalizadas.map(l => l.objeto || "")
+        ].join(" ");
+
+        if (hasAny(allObjects, ["asfalt", "cbuq", "paviment", "recape", "buraco", "brita", "drenagem", "obras"])) {
+          theme = "Infraestrutura / Obras";
+        } else if (hasAny(allObjects, ["medic", "saude", "hospital", "ambulatorial", "ubs", "semus"])) {
+          theme = "Saúde";
+        } else if (hasAny(allObjects, ["escol", "creche", "cemei", "ensino", "alimentacao escolar", "merenda"])) {
+          theme = "Educação";
+        } else if (hasAny(allObjects, ["festa", "show", "evento", "natal", "revelion", "carnaval", "cache"])) {
+          theme = "Eventos / Cultura";
+        } else if (hasAny(allObjects, ["veiculo", "locacao de veiculos", "frota", "transporte"])) {
+          theme = "Transporte / Frota";
+        } else if (hasAny(allObjects, ["combustivel", "gasolina", "diesel"])) {
+          theme = "Combustível";
+        } else if (matchingDiarias.length > 0 && sumTotal === sumDiarias) {
+          theme = "Diárias de Viagem";
+        } else if (atos.length > 0) {
+          theme = atos[0].split(" ")[0];
+        }
+
+        // 6. Resumo Executivo Cidadão
+        let resumo = "";
+        if (atos.length === 0) {
+          resumo = "Publicação de portarias ordinárias, decretos regulamentares ou atos gerais sem impacto financeiro direto mapeado no painel.";
+        } else {
+          const parts = [];
+          if (matchingContratos.length > 0) {
+            parts.push(`Assinatura de <strong>${matchingContratos.length} contrato(s)</strong> somando <strong>${fmtBRL(sumContracts)}</strong>`);
+          }
+          if (matchingLicitAndamento.length > 0 || matchingLicitFinalizadas.length > 0) {
+            parts.push(`Abertura/conclusão de <strong>${matchingLicitAndamento.length + matchingLicitFinalizadas.length} processo(s) licitatório(s)</strong> no valor estimado de <strong>${fmtBRL(sumLicit)}</strong>`);
+          }
+          if (matchingDiarias.length > 0) {
+            parts.push(`Concessão de <strong>${matchingDiarias.length} diária(s) de viagem</strong> a servidores no total de <strong>${fmtBRL(sumDiarias)}</strong>`);
+          }
+          resumo = parts.join(", ") + " sob a responsabilidade dos órgãos da administração pública de Varginha.";
+        }
+
+        // 7. Envolvidos Mapeados
+        const envolvidosSet = new Set();
+        matchingContratos.forEach(c => {
+          if (c.contratado) envolvidosSet.add(c.contratado.trim().toUpperCase());
+          if (c.entidade) envolvidosSet.add(c.entidade.trim());
+        });
+        matchingLicitAndamento.forEach(l => {
+          if (l.entidade) envolvidosSet.add(l.entidade.trim());
+        });
+        matchingLicitFinalizadas.forEach(l => {
+          if (l.entidade) envolvidosSet.add(l.entidade.trim());
+        });
+        matchingDiarias.forEach(di => {
+          if (di.funcionario) envolvidosSet.add(`Servidor: ${di.funcionario.trim().toUpperCase()}`);
+        });
+
+        const envolvidosList = Array.from(envolvidosSet);
+        const envolvidosHtml = envolvidosList.length > 0
+          ? envolvidosList.map(env => `<li>🏢 ${esc(env)}</li>`).join("")
+          : "<li>🏛️ Prefeitura Municipal de Varginha (atos internos)</li>";
+
+        // 8. Valores Identificados
+        const valoresHtml = `
+          <li>• Total da Edição Mapeado: <strong>${fmtBRL(sumTotal)}</strong></li>
+          ${sumContracts > 0 ? `<li>• Contratos: ${fmtBRL(sumContracts)}</li>` : ""}
+          ${sumLicit > 0 ? `<li>• Processos Licitatórios: ${fmtBRL(sumLicit)}</li>` : ""}
+          ${sumDiarias > 0 ? `<li>• Diárias de Viagem: ${fmtBRL(sumDiarias)}</li>` : ""}
+        `;
+
+        // 9. Pontos de Atenção (Heurísticas)
+        const atencao = [];
+        matchingContratos.forEach(c => {
+          const val = Number(c.valor) || 0;
+          if (val > 1000000) {
+            atencao.push(`• Contrato milionário: Nº ${c.numero || "s/n"} com ${c.contratado} no valor de ${fmtBRL(val)}`);
+          }
+          const mod = norm(c.modalidade || "");
+          if (mod.includes("dispensa") || mod.includes("inexig")) {
+            atencao.push(`• Contratação Direta (sem licitação): Contrato Nº ${c.numero || "s/n"} (${c.modalidade}) para ${c.objeto}`);
+          }
+          if ((c.objeto || "").length < 25) {
+            atencao.push(`• Descrição muito curta/vaga no Contrato Nº ${c.numero || "s/n"}: "${c.objeto}"`);
+          }
+        });
+
+        matchingDiarias.forEach(di => {
+          const val = Number(di.valor_total) || 0;
+          const qtd = Number(di.quantidade) || 1;
+          const unit = val / qtd;
+          if (unit >= 1000) {
+            atencao.push(`• Diária individual de alto valor: R$ ${fmtBRL(val)} para ${di.funcionario} (Destino/Finalidade: ${di.finalidade || di.historico || "não informada"})`);
+          }
+        });
+
+        if (hasAny(allObjects, ["judicial", "mandado", "liminar"])) {
+          atencao.push("• Aquisição de medicamentos/insumos por mandado judicial ou liminar (judicialização da saúde)");
+        }
+
+        const atencaoHtml = atencao.length > 0
+          ? atencao.map(ate => `<li>⚠️ ${esc(ate)}</li>`).join("")
+          : "<li>✅ Nenhum ponto de atenção crítico ou dispensa de alto valor mapeado automaticamente nesta edição.</li>";
+
+        // Texto formatado para o WhatsApp
+        const textZapMsg = `📢 *DIÁRIO OFICIAL | VARGINHA*
+📌 *Edição Nº ${d.edicao}${d.extra ? " (EXTRA)" : ""}*
+📅 *Data:* ${formattedDate}
+
+🗂️ *Atos Mapeados:* ${atos.length > 0 ? atos.join(", ") : "Atos Gerais / Portarias"}
+🏛️ *Órgão:* Prefeitura Municipal de Varginha
+⚠️ *Relevância:* ${relevance.toUpperCase()}
+🧠 *Tema:* ${theme}
+
+📝 *Resumo Executivo:*
+${atos.length === 0 ? "Publicação de portarias ordinárias, decretos regulamentares ou atos gerais sem impacto financeiro direto mapeado no painel." : resumo.replace(/<\/?strong>/g, "*")}
+
+🏢 *Envolvidos:*
+${envolvidosList.length > 0 ? envolvidosList.map(e => `• ${e}`).join("\n") : "• Prefeitura Municipal de Varginha (atos internos)"}
+
+💰 *Valores identificados:*
+• Total Mapeado: ${fmtBRL(sumTotal)}
+${sumContracts > 0 ? `• Contratos: ${fmtBRL(sumContracts)}` : ""}${sumLicit > 0 ? `• Licitações: ${fmtBRL(sumLicit)}` : ""}${sumDiarias > 0 ? `• Diárias: ${fmtBRL(sumDiarias)}` : ""}
+
+🚨 *Pontos de atenção:*
+${atencao.length > 0 ? atencao.join("\n") : "• Nenhum ponto de atenção crítico ou dispensa de alto valor mapeado automaticamente."}
+
+🔗 *Publicação original:*
+${url}
+
+---
+🔎 _Enviado via Fiscaliza Varginha - Painel Cidadão_`;
+
+        // Atribui função de clique para compartilhamento dinâmico
+        const shareId = `share_diario_${d.edicao}`;
+        window.ZELA[shareId] = function() {
+          if (navigator.share) {
+            navigator.share({ title: `Diário Oficial nº ${d.edicao}`, text: textZapMsg }).catch(() => {});
+          } else {
+            const urlZap = `https://api.whatsapp.com/send?text=${encodeURIComponent(textZapMsg)}`;
+            window.open(urlZap, "_blank");
+          }
+        };
+
         return `
-          <a class="diario__item" href="${url}" target="_blank" rel="noopener">
-            <div class="diario__edicao">Nº ${d.edicao}</div>
-            <div class="diario__data">${formatted}</div>
-            ${d.extra ? '<span class="diario__extra">EXTRA</span>' : ""}
-          </a>`;
+          <article class="diario-whats-card" id="diario-card-${d.edicao}">
+            <div class="diario-whats-card__header">
+              <div class="diario-whats-card__title-block">
+                <h4 class="diario-whats-card__title">
+                  📢 DIÁRIO OFICIAL | VARGINHA
+                </h4>
+                <div class="diario-whats-card__subtitle">
+                  Edição Nº ${d.edicao} ${d.extra ? '<span class="diario__extra">EXTRA</span>' : ""}
+                </div>
+              </div>
+              <span class="diario-relevancia-badge diario-relevancia-badge--${relevance}">
+                Relevância: ${relevance}
+              </span>
+            </div>
+
+            <div class="diario-whats-card__meta-grid">
+              <div class="diario-whats-card__meta-item">
+                <strong>📅 Data da Edição:</strong> ${formattedDate}
+              </div>
+              <div class="diario-whats-card__meta-item">
+                <strong>🗂️ Atos Mapeados:</strong> ${atosMapeadosText}
+              </div>
+              <div class="diario-whats-card__meta-item">
+                <strong>🏛️ Órgão Emissor:</strong> Prefeitura Municipal de Varginha
+              </div>
+              <div class="diario-whats-card__meta-item">
+                <strong>🧠 Tema Heurístico:</strong> ${theme}
+              </div>
+            </div>
+
+            <div class="diario-whats-card__section">
+              <div class="diario-whats-card__section-title">📝 Resumo Executivo</div>
+              <div class="diario-whats-card__resumo">${resumo}</div>
+            </div>
+
+            <div class="diario-whats-card__section">
+              <div class="diario-whats-card__section-title">🏢 Envolvidos Mapeados</div>
+              <ul class="diario-whats-card__list">
+                ${envolvidosHtml}
+              </ul>
+            </div>
+
+            <div class="diario-whats-card__section">
+              <div class="diario-whats-card__section-title">💰 Valores Identificados</div>
+              <ul class="diario-whats-card__list">
+                ${valoresHtml}
+              </ul>
+            </div>
+
+            <div class="diario-whats-card__section">
+              <div class="diario-whats-card__section-title">🚨 Pontos de Atenção (Heurísticas Zela)</div>
+              <ul class="diario-whats-card__list">
+                ${atencaoHtml}
+              </ul>
+            </div>
+
+            <div class="diario-whats-card__actions">
+              <div class="diario-whats-card__buttons">
+                <button type="button" class="diario-whats-card__btn-zap" onclick="window.ZELA.${shareId}()" aria-label="Compartilhar resumo da edição nº ${d.edicao} no WhatsApp">
+                  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.27-4.103c1.623.963 3.238 1.468 4.873 1.469 5.585-.001 10.13-4.549 10.133-10.139.002-2.709-1.051-5.253-2.962-7.168C16.46 2.14 13.918.99 11.996.99c-5.59 0-10.136 4.547-10.14 10.138-.001 1.762.477 3.486 1.385 5.011l-.946 3.454 3.543-.929zm13.111-7.795c-.32-.16-1.89-.933-2.185-1.041-.295-.108-.51-.16-.723.16-.214.32-.828 1.042-1.015 1.258-.187.215-.374.242-.693.083-.32-.16-1.349-.497-2.57-1.587-.949-.846-1.59-1.892-1.777-2.213-.187-.32-.02-.493.14-.653.143-.144.32-.373.48-.56.16-.188.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.723-1.741-.99-2.382-.26-.628-.525-.544-.723-.554-.187-.01-.4-.012-.613-.012s-.56.08-.853.4c-.293.32-1.12 1.093-1.12 2.667 0 1.573 1.147 3.093 1.307 3.307.16.213 2.257 3.447 5.467 4.833.763.33 1.36.527 1.823.674.767.244 1.466.21 2.018.128.614-.092 1.89-.773 2.157-1.48.267-.707.267-1.314.187-1.44-.08-.127-.295-.213-.615-.373z"/></svg>
+                  Copiar WhatsApp
+                </button>
+                <a class="diario-whats-card__btn-link" href="${url}" target="_blank" rel="noopener">
+                  <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle; margin-right:4px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                  Ver PDF
+                </a>
+              </div>
+              <div class="data-trust-seal-container" id="seal-container-${d.edicao}"></div>
+            </div>
+          </article>
+        `;
       }).join("");
+
+      // Injeta selos de confiança
+      ultimas.slice(0, 24).forEach(d => {
+        const sealContainer = $(`seal-container-${d.edicao}`);
+        if (sealContainer && window.ZELA.dataTrustSeal) {
+          sealContainer.innerHTML = window.ZELA.dataTrustSeal("diaria", {
+            fonte: "Diário Oficial / Betha Transparência",
+            escopo: "cruzamento automatizado",
+            risco: "não dispensa a leitura da publicação completa no PDF oficial",
+            acao: "auditar com base nas leis de responsabilidade fiscal",
+            tone: "ok"
+          });
+        }
+      });
+
+      // Enriquece com tooltips do glossário
+      if (window.ZELA.enriquecerGlossario) {
+        window.ZELA.enriquecerGlossario($("diarioLista"));
+      }
     }
   }
 
@@ -3813,7 +4387,7 @@
     // Carrega pessoal.json completo via fetch apenas quando a página pessoal é aberta.
     const hasPrefServs = (pesSlim.prefeitura?.servidores?.length || 0) > 0;
     if (!hasPrefServs && location.protocol !== "file:") {
-      fetch("data/pessoal.json")
+      fetch("data/chunks/pessoal.json")
         .then(r => r.json())
         .then(fullPes => _runInitPessoal(fullPes))
         .catch(() => _runInitPessoal(pesSlim));
@@ -3826,9 +4400,53 @@
     const camaraServ = (pes.camara || {}).servidores || [];
     const prefServ   = (pes.prefeitura || {}).servidores || [];
     
+    let compPref = "";
+    let compCam = "";
+    const prefStatusText = (pes.prefeitura && pes.prefeitura.status) || "";
+    const camStatusText = (pes.camara && pes.camara.status) || "";
+    const mPref = prefStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i);
+    if (mPref) compPref = mPref[1];
+    const mCam = camStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i);
+    if (mCam) compCam = mCam[1];
+
+    const processarEConsolidar = (servidores, orgao) => {
+      const grupos = {};
+      servidores.forEach(s => {
+        const chave = s.matricula ? `${s.matricula}` : `${s.nome}-${s.cargo}`;
+        if (!grupos[chave]) {
+          grupos[chave] = [];
+        }
+        grupos[chave].push(s);
+      });
+
+      const consolidados = [];
+      Object.keys(grupos).forEach(chave => {
+        const historico = grupos[chave];
+        const maisRecente = { ...historico[historico.length - 1], orgao };
+        
+        const vencimentosValidos = historico
+          .map(h => Number(h.vencimentos) || 0)
+          .filter(v => v > 0);
+        
+        if (vencimentosValidos.length > 1) {
+          const vencNormal = Math.min(...vencimentosValidos);
+          const vencAtual = Number(maisRecente.vencimentos) || 0;
+          if (vencAtual > vencNormal * 1.25) {
+            maisRecente.isAtipico = true;
+            maisRecente.vencimentoNormal = vencNormal;
+          }
+        }
+        consolidados.push(maisRecente);
+      });
+      return consolidados;
+    };
+
+    const camaraConsolidado = processarEConsolidar(camaraServ, "Câmara");
+    const prefeituraConsolidado = processarEConsolidar(prefServ, "Prefeitura");
+
     const todos = [
-      ...camaraServ.map(s => ({ ...s, orgao: "Câmara" })),
-      ...prefServ.map(s => ({ ...s, orgao: "Prefeitura" }))
+      ...camaraConsolidado,
+      ...prefeituraConsolidado
     ];
 
     const buscaEl    = $("buscaServidor");
@@ -3853,21 +4471,28 @@
 
     const _renderServCard = (s) => {
       const isCom = s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "");
+      const comp = s.orgao === "Câmara" ? compCam : compPref;
+      const tagAtipico = s.isAtipico
+        ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ Contém 13º/Férias (Base estimada: ${fmtBRL(s.vencimentoNormal)})</div>`
+        : "";
       return `<article class="contrato">
-        <div class="contrato__valor">
-          ${fmtBRL(s.vencimentos)}
-          <div class="small muted">Bruto/Vencimento</div>
+        <div class="contrato__valor" style="min-width: 140px;">
+          <span class="vencimento-titulo">Salário Bruto (Sem Descontos)</span>
+          <strong class="vencimento-valor">${fmtBRL(s.vencimentos)}</strong>
+          <div class="small muted">Mensal (${comp || 'ref. mês'})</div>
         </div>
         <div>
           <p class="contrato__nome">
             ${highlight(s.nome, _pessoalQ)}
             ${isCom ? '<span class="em__status em__status--no">Comissionado</span>' : '<span class="em__status em__status--ok">Servidor</span>'}
+            <span class="tag-orgao-${s.orgao === "Câmara" ? "camara" : "prefeitura"}">${esc(s.orgao)}</span>
           </p>
           <p class="contrato__obj"><strong>Cargo/Lotação:</strong> ${highlight(s.lotacao, _pessoalQ)}</p>
           <div class="contrato__meta">
-            <span><strong>Órgão:</strong> ${esc(cleanText(s.orgao))}</span>
+            <span><strong>Salário Líquido (Dinheiro na Conta):</strong> <strong>${fmtBRL(s.liquido || 0)}</strong></span>
             ${s.matricula ? `<span><strong>Matrícula:</strong> ${s.matricula}</span>` : ""}
           </div>
+          ${tagAtipico}
         </div>
       </article>`;
     };
@@ -3977,21 +4602,43 @@
         .sort((a, b) => (b.vencimentos || 0) - (a.vencimentos || 0))
         .slice(0, 10);
       if (todosComissionados.length) {
-        rankingEl.innerHTML = todosComissionados.map((s, i) => `
+        rankingEl.innerHTML = todosComissionados.map((s, i) => {
+          const comp = s.orgao === "Câmara" ? compCam : compPref;
+          const tagAtipico = s.isAtipico
+            ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ Contém 13º/Férias (Base estimada: ${fmtBRL(s.vencimentoNormal)})</div>`
+            : "";
+          return `
           <article class="contrato" style="border-left:4px solid ${s.orgao === "Câmara" ? "#c0392b" : "#2980b9"}">
-            <div class="contrato__valor">
-              ${fmtBRL(s.vencimentos || 0)}
-              <div class="small muted">${esc(s.orgao)}</div>
+            <div class="contrato__valor" style="min-width: 140px;">
+              <span class="vencimento-titulo">Salário Bruto (Sem Descontos)</span>
+              <strong class="vencimento-valor">${fmtBRL(s.vencimentos || 0)}</strong>
+              <div class="small muted">Mensal (${comp || 'ref. mês'})</div>
             </div>
             <div>
-              <p class="contrato__nome">${i + 1}. ${esc(s.nome || "Sem nome")}</p>
-              <p class="contrato__obj">${esc(s.cargo || s.lotacao || "Cargo nao informado")}</p>
+              <p class="contrato__nome">
+                ${i + 1}. ${esc(s.nome || "Sem nome")}
+                <span class="tag-orgao-${s.orgao === "Câmara" ? "camara" : "prefeitura"}">${esc(s.orgao)}</span>
+              </p>
+              <p class="contrato__obj"><strong>Cargo:</strong> ${esc(s.cargo || s.lotacao || "Cargo não informado")}</p>
               <div class="contrato__meta">
-                <span>Líquido: <strong>${fmtBRL(s.liquido || 0)}</strong></span>
-                ${s.matricula ? `<span>Mat. ${s.matricula}</span>` : ""}
+                <span><strong>Salário Líquido (Dinheiro na Conta):</strong> <strong>${fmtBRL(s.liquido || 0)}</strong></span>
+                ${s.matricula ? `<span>Matrícula ${s.matricula}</span>` : ""}
               </div>
+              ${tagAtipico}
             </div>
-          </article>`).join("");
+          </article>`;
+        }).join("");
+
+        const infoEl = $("rankingPeriodoInfo");
+        if (infoEl) {
+          const partes = [];
+          if (compPref) partes.push(`Prefeitura: ref. ${compPref}`);
+          if (compCam) partes.push(`Câmara: ref. ${compCam}`);
+          if (partes.length) {
+            infoEl.textContent = `(Valores mensais de referência — ${partes.join(" | ")})`;
+            infoEl.style.display = "inline-block";
+          }
+        }
       }
     }
 
@@ -4039,7 +4686,1021 @@
     }
   }
 
+  // ============= ASFALTO E OBRAS VIARIAS (prefeitura.html) =============
+  function renderAsfaltoPrefeitura() {
+    const root = $("asfaltoPainel");
+    if (!root) return;
+
+    window.ZELA.renderAsfaltoPrefeitura = renderAsfaltoPrefeitura;
+
+    const select = $("filtroAnoAsfalto");
+    const buscaInput = $("filtroBuscaAsfalto");
+    if (select && !window.ZELA._asfaltoInit) {
+      window.ZELA._asfaltoInit = true;
+      select.addEventListener("change", () => renderAsfaltoPrefeitura());
+      if (buscaInput) {
+        buscaInput.addEventListener("input", () => renderAsfaltoPrefeitura());
+      }
+    }
+
+    const anoSelecionado = select ? select.value : "";
+    const buscaTexto = buscaInput ? norm(buscaInput.value.trim()) : "";
+
+    const termos = [
+      "asfalto", "asfaltica", "asfaltico", "cbuq", "pavimentacao", "pavimenta", "recape", 
+      "tapa buraco", "tapa-buraco", "buraco", "drenagem", "meio fio", "sarjeta",
+      "recapeamento", "recapeamento asfaltico", "recapeamento asfáltico", "asfaltamento", "pavimento"
+    ];
+    const textoItem = (i) => cleanText([i.origem, i.objeto, i.descricao, i.categoria, i.tipo_obra, i.contratado, i.fornecedor, i.endereco, i.bairro, i.situacao].filter(Boolean).join(" "));
+    const ehAsfalto = (i) => {
+      const txt = norm(textoItem(i));
+      return termos.some(t => txt.includes(norm(t))) && !["pneu", "pneus", "pista de pouso"].some(t => txt.includes(norm(t)));
+    };
+    const tipo = (i) => {
+      const txt = norm(textoItem(i));
+      if (hasAny(txt, ["tapa buraco", "tapa-buraco", "buraco"])) return "Tapa-buraco";
+      if (hasAny(txt, ["recape"])) return "Recapeamento";
+      if (hasAny(txt, ["cbuq", "massa asfaltica", "concreto betuminoso"])) return "Massa asfaltica/CBUQ";
+      if (hasAny(txt, ["drenagem", "meio fio", "sarjeta"])) return "Drenagem/meio-fio";
+      return "Pavimentacao/obra viaria";
+    };
+    const locais = (i) => cleanText(i.endereco || [i.logradouro, i.bairro].filter(Boolean).join(", ")) || "Local não informado no objeto";
+    const dataItem = (i) => dataCurtaBR(i.data_inicio || i.data_ordem_servico || i.data_ultima_medicao || i.data_assinatura || i.data || "");
+    
+    const extrairAnoSimples = (dataStr) => {
+      if (!dataStr) return null;
+      const match = dataStr.match(/^(\d{4})/);
+      return match ? Number(match[1]) : null;
+    };
+
+    const estaAtivoNoAno = (i, anoAlvoStr) => {
+      if (!anoAlvoStr) return true;
+      const anoAlvo = Number(anoAlvoStr);
+
+      const dataInicioStr = i.data_inicio || i.data_ordem_servico || i.data_assinatura || i.data || "";
+      let anoInicio = extrairAnoSimples(dataInicioStr);
+      if (!anoInicio && i.ano) {
+        anoInicio = Number(i.ano);
+      }
+
+      if (!anoInicio) return false;
+
+      // Se começou depois do ano alvo, não estava ativo no ano alvo
+      if (anoInicio > anoAlvo) return false;
+
+      // Se começou exatamente no ano alvo, está ativo
+      if (anoInicio === anoAlvo) return true;
+
+      // Se começou antes do ano alvo:
+      // 1. Verificamos data de término (efetiva ou prevista) ou vigência
+      const dataFimStr = i.data_efetiva_conclusao || i.data_prevista_conclusao || i.data_fim || "";
+      let anoFim = extrairAnoSimples(dataFimStr);
+
+      if (anoFim) {
+        if (anoFim < anoAlvo) return false;
+        return true;
+      }
+
+      // 2. Verificamos se há medição recente no ano alvo ou posterior
+      const dataUltimaMedStr = i.data_ultima_medicao || "";
+      const anoUltimaMed = extrairAnoSimples(dataUltimaMedStr);
+      if (anoUltimaMed && anoUltimaMed >= anoAlvo) {
+        return true;
+      }
+
+      // 3. Verificamos se está explícito em andamento, ativo ou vigente
+      const situacao = (i.situacao || "").toLowerCase();
+      if (situacao === "em andamento" || situacao === "vigente" || situacao === "ativo" || situacao === "homologado") {
+        return true;
+      }
+
+      const situacaoObra = (i.situacao_obra || "").toLowerCase();
+      if (situacaoObra === "em andamento" || situacaoObra === "vigente" || situacaoObra === "ativa") {
+        return true;
+      }
+
+      // Se concluída e começou antes, e não temos nenhuma evidência de que avançou, assumimos concluída no ano de início
+      if (situacao === "concluida" || situacao === "concluído") {
+        return false;
+      }
+
+      return false;
+    };
+
+    const bases = [
+      ...(pf.obras_publicas || []).map(i => ({ ...i, origem: "Obra pública Betha", valor_asfalto: Number(i.valor || 0), obra_publica: true })),
+      ...(pf.contratos || []).map((i, idx) => ({ ...i, origem: "Contrato", valor_asfalto: Number(i.valor || 0), contratoIdx: idx })),
+      ...(pf.licit_andamento || []).map(i => ({ ...i, origem: "Licitação em andamento", valor_asfalto: Number(i.valor || 0) })),
+      ...(pf.licit_finalizadas || []).map(i => ({ ...i, origem: "Licitação finalizada", valor_asfalto: Number(i.valor || 0) })),
+      ...(pf.compras_diretas || []).map(i => ({ ...i, origem: "Compra direta", valor_asfalto: Number(i.valor || 0) })),
+    ].filter(ehAsfalto).map(i => {
+      const area = Number(i.area_m2 || 0);
+      return {
+        ...i,
+        tipo_asfalto: tipo(i),
+        local_asfalto: locais(i),
+        custo_m2: area && i.valor_asfalto ? i.valor_asfalto / area : 0,
+        pendencias: [
+          ...(locais(i).startsWith("Local não") ? ["Rua/bairro"] : []),
+          ...(!area ? ["Metragem/quantidade", "Custo unitário"] : []),
+          ...(!(i.responsavel || i.medicao_responsavel) ? ["Fiscal responsável"] : []),
+          ...(!i.data_ultima_medicao ? ["Medição"] : []),
+        ],
+      };
+    }).sort((a, b) => Number(b.valor_asfalto || 0) - Number(a.valor_asfalto || 0));
+
+    let basesFiltradas = bases.filter(i => estaAtivoNoAno(i, anoSelecionado));
+    if (buscaTexto) {
+      basesFiltradas = basesFiltradas.filter(i => {
+        const txt = norm(`${i.origem} ${i.contratado || i.fornecedor || ""} ${i.objeto || i.descricao || ""} ${i.local_asfalto || ""} ${i.tipo_asfalto || ""}`);
+        return txt.includes(buscaTexto);
+      });
+    }
+
+    const total = basesFiltradas.reduce((s, i) => s + Number(i.valor_asfalto || 0), 0);
+    const oficiais = basesFiltradas.filter(i => i.obra_publica).length;
+    const fila = basesFiltradas.filter(i => i.pendencias.length).slice(0, 4);
+    window.ZELA._asfaltoLAI = {};
+
+    const contadorEl = $("asfaltoContador");
+    if (contadorEl) {
+      contadorEl.textContent = `${basesFiltradas.length} registro(s) exibido(s)`;
+    }
+
+    root.innerHTML = `
+      <div class="asfalto-dashboard">
+        <article class="asfalto-hero">
+          <span class="reader-summary__label">Recorte viário</span>
+          <h4>${fmtBRL(total)}</h4>
+          <p>${fmtNum(basesFiltradas.length)} registro(s) localizados. Inclui ${fmtNum(oficiais)} obra(s) oficiais da consulta Betha 83026.</p>
+        </article>
+        <div class="asfalto-metrics">
+          <article><strong>${fmtNum(basesFiltradas.length)}</strong><span>registro(s)</span></article>
+          <article><strong>${fmtNum(oficiais)}</strong><span>obra(s) oficiais Betha</span></article>
+          <article><strong>${basesFiltradas.some(i => i.custo_m2) ? fmtBRL(total / basesFiltradas.reduce((s, i) => s + Number(i.area_m2 || 0), 0)) : "Sem m²"}</strong><span>custo médio por m²</span></article>
+          <article><strong>${fmtNum(fila.length)}</strong><span>Faltam dados para auditar</span></article>
+        </div>
+      </div>
+      ${fila.length ? `<section class="asfalto-pendencias"><div class="asfalto-pendencias__head"><span>Fila de cobrança</span><strong>Faltam dados para auditar ${fmtNum(fila.length)} item(ns)</strong></div>${fila.map((i, idx) => `<article><div><strong>${esc(i.contratado || i.fornecedor || i.categoria || "Item viário")}</strong><p>${esc(i.tipo_asfalto)} · ${fmtBRL(i.valor_asfalto || 0)} · Data: ${esc(dataItem(i))}</p><span class="asfalto-pending-chips">${i.pendencias.map(p => `<i>${esc(p)}</i>`).join("")}</span></div></article>`).join("")}</section>` : ""}
+      <div class="report-note asfalto-note"><strong>Como ler este recorte</strong><p>Valor contratado não prova execução. Para saber onde foi feito e quanto custou por rua, peça medição por trecho, metragem, notas, fotos e fiscal responsável.</p></div>
+      <div class="asfalto-lista">
+        ${basesFiltradas.slice(0, 40).map((i, idx) => {
+          const id = `asfalto-${idx}`;
+          window.ZELA._asfaltoLAI[id] = `Solicito documentos do ${i.origem} relacionado a asfalto/pavimentação: objeto, local por rua/bairro, metragem, medição, notas fiscais, fiscal responsável e fotos antes/depois. Item: ${i.numero || i.id_obra || "s/n"} - ${i.objeto || i.descricao || ""}`;
+          const url = i.obra_publica ? "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026" : "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043";
+          return `<article class="asfalto-card">
+            <div class="asfalto-card__valor">${fmtBRL(i.valor_asfalto || 0)}</div>
+            <div class="asfalto-card__body">
+              <div class="asfalto-card__head"><strong>${esc(i.contratado || i.fornecedor || i.categoria || "Obra viária")}</strong><span>${esc(i.tipo_asfalto)}</span></div>
+              <div class="asfalto-card__grid">
+                <span><b>Origem:</b> ${esc(i.origem)}</span>
+                <span><b>Data:</b> ${esc(dataItem(i))}</span>
+                ${i.situacao ? `<span><b>Situação:</b> ${esc(i.situacao)}${i.percentual_executado ? ` · ${fmtNum(i.percentual_executado)}% executado` : ""}</span>` : ""}
+                ${i.data_ultima_medicao ? `<span><b>Última medição:</b> ${esc(dataCurtaBR(i.data_ultima_medicao))}${i.valor_medicao ? ` · ${fmtBRL(i.valor_medicao)}` : ""}</span>` : ""}
+                ${i.responsavel || i.medicao_responsavel ? `<span><b>Responsável:</b> ${esc(i.responsavel || i.medicao_responsavel)}</span>` : ""}
+                <span><b>Local:</b> ${esc(i.local_asfalto)}</span>
+                <span><b>Metragem/quantidade:</b> ${i.area_m2 ? `${fmtNum(i.area_m2)} m²` : "Metragem/quantidade não publicada"}</span>
+                <span><b>Custo unitário:</b> ${i.custo_m2 ? `${fmtBRL(i.custo_m2)}/m²` : "Não calculável"}</span>
+              </div>
+              <p>${esc(i.objeto || i.descricao || "Objeto não informado")}</p>
+              <div class="asfalto-card__actions"><button type="button" class="btn-dossie" onclick="ZELA.copiarAsfaltoLAI('${id}', this)">Copiar pergunta LAI</button><a class="btn-link" href="${url}" target="_blank" rel="noopener">Abrir Betha</a></div>
+            </div>
+          </article>`;
+        }).join("")}
+      </div>`;
+  }
+
+  window.ZELA.copiarAsfaltoLAI = (id, btn) => {
+    const texto = (window.ZELA._asfaltoLAI || {})[id] || "";
+    if (!texto) return;
+    const old = btn ? btn.textContent : "";
+    navigator.clipboard.writeText(texto).then(() => {
+      if (btn) {
+        btn.textContent = "Pergunta copiada";
+        setTimeout(() => { btn.textContent = old; }, 1600);
+      }
+    }).catch(() => {});
+  };
+
+  // ============= FROTA MUNICIPAL (prefeitura.html) =============
+  function dataCurtaBR(raw) {
+    const s = cleanText(raw || "");
+    const m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (m) return `${m[3]}/${m[2]}/${m[1]}`;
+    return s || "Data não informada";
+  }
+
+  function perguntaLAIFrota(item) {
+    return [
+      `Solicito, com base na Lei de Acesso à Informação, os documentos de controle do veículo ${item.placa || "sem placa"} (${item.descricao || item.tipo || "veículo municipal"}).`,
+      [
+        "Dados localizados no painel:",
+        `- Centro de custo/secretaria: ${item.centro_custo || "não informado"}.`,
+        `- Situação: ${item.situacao || "não informada"}.`,
+        `- Tipo de aquisição: ${item.tipo_aquisicao || "não informado"}.`,
+        `- Gasto vinculado localizado: ${fmtBRL(item.gastos_total || 0)} em ${fmtNum(item.gastos_qtd || 0)} lançamento(s).`,
+        `- Combustível: ${fmtBRL(item.combustivel_total || 0)}${item.litros_combustivel ? ` (${fmtNum(item.litros_combustivel)} L)` : ""}.`,
+        `- Manutenção/peças/serviços: ${fmtBRL(item.manutencao_total || 0)}.`,
+      ].join("\n"),
+      "Peço envio de: contrato ou termo de locação/cessão/aquisição, controle de quilometragem, diário de bordo, ordens de abastecimento, notas fiscais, empenhos/liquidações/pagamentos, manutenções realizadas, responsável pelo uso, secretaria de lotação e justificativa de permanência na frota.",
+      "Caso o veículo seja locado, informar valor mensal, contrato vigente, vigência, quilometragem incluída e custos adicionais pagos fora do contrato.",
+    ].join("\n\n");
+  }
+
+  function renderFrotaPrefeitura() {
+    const block = $("frotaBlock");
+    if (!block) return;
+    const frota = pf.frota || [];
+    const statsEl = $("frotaStats");
+    const auditEl = $("frotaAudit");
+    const listaEl = $("frotaLista");
+    const countEl = $("frotaContador");
+    if (!frota.length) {
+      if (listaEl) listaEl.innerHTML = `<div class="empty"><strong>Frota não carregada</strong><p>Rode a coleta Betha para baixar a consulta 83061 - Veículos Municipais.</p></div>`;
+      return;
+    }
+
+    const fillSelect = (id, values, label) => {
+      const el = $(id);
+      if (!el) return;
+      const atual = el.value;
+      el.innerHTML = `<option value="">${esc(label)}</option>` + values.map(v => `<option value="${esc(v)}">${esc(v)}</option>`).join("");
+      if (values.includes(atual)) el.value = atual;
+    };
+
+    const centros = [...new Set(frota.map(v => cleanText(v.centro_custo)).filter(Boolean))].sort();
+    const situacoes = [...new Set(frota.map(v => cleanText(v.situacao)).filter(Boolean))].sort();
+    const aquisicoes = [...new Set(frota.map(v => cleanText(v.tipo_aquisicao)).filter(Boolean))].sort();
+    fillSelect("filtroCentroFrota", centros, "Todos os centros de custo");
+    fillSelect("filtroSituacaoFrota", situacoes, "Todas as situações");
+    fillSelect("filtroAquisicaoFrota", aquisicoes, "Próprios, locados e cedidos");
+
+    const state = {
+      q: norm($("filtroFrota")?.value || ""),
+      situacao: $("filtroSituacaoFrota")?.value || "",
+      aquisicao: $("filtroAquisicaoFrota")?.value || "",
+      centro: $("filtroCentroFrota")?.value || "",
+      ordem: $("ordenarFrota")?.value || "gasto_desc",
+    };
+
+    let view = frota.filter(v => {
+      if (state.situacao && v.situacao !== state.situacao) return false;
+      if (state.aquisicao && v.tipo_aquisicao !== state.aquisicao) return false;
+      if (state.centro && v.centro_custo !== state.centro) return false;
+      if (!state.q) return true;
+      const texto = norm([
+        v.placa, v.tipo, v.descricao, v.centro_custo, v.situacao, v.tipo_aquisicao,
+        ...(v.fornecedores_gastos || []).map(f => f.nome),
+        ...(v.gastos_recentes || []).map(g => `${g.tipo} ${g.fornecedor} ${g.descricao}`),
+      ].join(" "));
+      return texto.includes(state.q);
+    });
+
+    const sorter = {
+      gasto_desc: (a, b) => Number(b.gastos_total || 0) - Number(a.gastos_total || 0),
+      combustivel_desc: (a, b) => Number(b.combustivel_total || 0) - Number(a.combustivel_total || 0),
+      manutencao_desc: (a, b) => Number(b.manutencao_total || 0) - Number(a.manutencao_total || 0),
+      modelo: (a, b) => cleanText(a.descricao).localeCompare(cleanText(b.descricao), "pt-BR"),
+      centro: (a, b) => cleanText(a.centro_custo).localeCompare(cleanText(b.centro_custo), "pt-BR"),
+    }[state.ordem] || ((a, b) => Number(b.gastos_total || 0) - Number(a.gastos_total || 0));
+    view = view.slice().sort(sorter);
+
+    const totalGastos = view.reduce((s, v) => s + Number(v.gastos_total || 0), 0);
+    const totalAtipico = view.reduce((s, v) => s + Number(v.gastos_atipicos_total || 0), 0);
+    const totalComb = view.reduce((s, v) => s + Number(v.combustivel_total || 0), 0);
+    const totalManut = view.reduce((s, v) => s + Number(v.manutencao_total || 0), 0);
+    const ativos = view.filter(v => norm(v.situacao) === "ativo").length;
+    const locados = view.filter(v => norm(v.tipo_aquisicao) === "locado").length;
+    const semCentro = view.filter(v => !cleanText(v.centro_custo)).length;
+    const inativosComGasto = view.filter(v => norm(v.situacao) === "inativo" && Number(v.gastos_total || 0) > 0).length;
+    const veiculosAtipicos = view.filter(v => Number(v.gastos_atipicos_total || 0) > 0).length;
+    const gastoMedio = view.length ? totalGastos / view.length : 0;
+
+    if (statsEl) {
+      statsEl.innerHTML = `
+        <div class="stat stat--navy"><div class="stat__value">${fmtNum(view.length)}</div><div class="stat__label">veículo(s) no filtro</div><p>${fmtNum(ativos)} ativo(s)</p></div>
+        <div class="stat stat--green"><div class="stat__value">${fmtBRL(totalGastos)}</div><div class="stat__label">gastos vinculados auditáveis</div><p>${fmtBRL(gastoMedio)} por veículo${totalAtipico ? ` · ${fmtBRL(totalAtipico)} atípico separado` : ""}</p></div>
+        <div class="stat stat--gold"><div class="stat__value">${fmtBRL(totalComb)}</div><div class="stat__label">combustível</div><p>${fmtNum(view.reduce((s, v) => s + Number(v.litros_combustivel || 0), 0))} L localizados</p></div>
+        <div class="stat stat--red"><div class="stat__value">${fmtBRL(totalManut)}</div><div class="stat__label">manutenção/peças</div><p>${fmtNum(locados)} veículo(s) locado(s)</p></div>`;
+    }
+
+    if (auditEl) {
+      const topCentros = centros.map(c => ({
+        nome: c,
+        qtd: view.filter(v => v.centro_custo === c).length,
+        valor: view.filter(v => v.centro_custo === c).reduce((s, v) => s + Number(v.gastos_total || 0), 0),
+      })).filter(c => c.qtd).sort((a, b) => b.valor - a.valor).slice(0, 6);
+      auditEl.innerHTML = `
+        <article class="${semCentro ? "is-warn" : ""}"><strong>${fmtNum(semCentro)}</strong><span>sem centro de custo</span></article>
+        <article class="${inativosComGasto ? "is-warn" : ""}"><strong>${fmtNum(inativosComGasto)}</strong><span>inativos com gasto</span></article>
+        <article class="${veiculosAtipicos ? "is-warn" : ""}"><strong>${fmtNum(veiculosAtipicos)}</strong><span>com valor atípico separado</span></article>
+        <article><strong>${fmtNum(locados)}</strong><span>locados para conferir contrato</span></article>
+        <article><strong>${fmtNum(topCentros.length)}</strong><span>centros de custo no filtro</span></article>
+        <div class="frota-centros">
+          ${topCentros.map(c => `<button type="button" data-frota-centro="${esc(c.nome)}"><strong>${esc(c.nome || "Sem centro")}</strong><span>${fmtNum(c.qtd)} · ${fmtBRL(c.valor)}</span></button>`).join("")}
+        </div>`;
+    }
+
+    window.ZELA._frotaLAI = {};
+    if (countEl) countEl.textContent = `${fmtNum(view.length)} veículo(s) · ${fmtBRL(totalGastos)}`;
+    if (listaEl) {
+      listaEl.innerHTML = view.slice(0, 80).map((v, idx) => {
+        const id = `frota-${idx}`;
+        window.ZELA._frotaLAI[id] = perguntaLAIFrota(v);
+        const alertas = (v.alertas || []).slice(0, 4);
+        const gastosRecentes = (v.gastos_recentes || []).slice(0, 3);
+        const fornecedores = (v.fornecedores_gastos || []).slice(0, 3);
+        return `<article class="frota-card">
+          <div class="frota-card__placa">${esc(v.placa || "Sem placa")}</div>
+          <div class="frota-card__body">
+            <div class="frota-card__head">
+              <strong>${esc(v.descricao || v.tipo || "Veículo municipal")}</strong>
+              <span>${esc(v.tipo || "Tipo não informado")} · ${esc(v.situacao || "Situação não informada")} · ${esc(v.tipo_aquisicao || "Aquisição não informada")}</span>
+            </div>
+            <div class="frota-card__grid">
+              <span><b>Centro de custo:</b> ${esc(v.centro_custo || "Não informado")}</span>
+              <span><b>Ano:</b> ${esc(v.ano_fabricacao || "?")}/${esc(v.ano_modelo || "?")}</span>
+              <span><b>Aquisição:</b> ${esc(dataCurtaBR(v.data_aquisicao))}</span>
+              <span><b>Gasto total:</b> ${fmtBRL(v.gastos_total || 0)}</span>
+              <span><b>Combustível:</b> ${fmtBRL(v.combustivel_total || 0)}${v.litros_combustivel ? ` · ${fmtNum(v.litros_combustivel)} L` : ""}</span>
+              <span><b>Manutenção/peças:</b> ${fmtBRL(v.manutencao_total || 0)}</span>
+              <span><b>Último gasto:</b> ${v.ultimo_gasto_data ? `${esc(dataCurtaBR(v.ultimo_gasto_data))} · ${esc(v.ultimo_gasto_tipo || "")} · ${fmtBRL(v.ultimo_gasto_valor || 0)}` : "Não localizado"}</span>
+            </div>
+            ${alertas.length ? `<div class="frota-alertas">${alertas.map(a => `<i>${esc(a)}</i>`).join("")}</div>` : ""}
+            ${v.gastos_atipicos_total ? `<div class="frota-mini frota-mini--warn"><b>Valor atípico separado:</b> ${fmtBRL(v.gastos_atipicos_total)} em ${fmtNum(v.gastos_atipicos_qtd || 0)} lançamento(s). Conferir no Betha antes de qualquer conclusão.</div>` : ""}
+            ${fornecedores.length ? `<div class="frota-mini"><b>Fornecedores:</b> ${fornecedores.map(f => `${esc(f.nome)} (${fmtBRL(f.valor)})`).join(" · ")}</div>` : ""}
+            ${gastosRecentes.length ? `<div class="frota-mini"><b>Gastos recentes:</b> ${gastosRecentes.map(g => `${esc(dataCurtaBR(g.data))} ${esc(g.tipo || "")} ${fmtBRL(g.valor || 0)}`).join(" · ")}</div>` : ""}
+            ${dataTrustSeal("contrato", {
+              fonte: "Betha Frotas 83061",
+              escopo: "veículo e gastos vinculados",
+              risco: "gasto vinculado não mostra quilometragem nem finalidade sozinho",
+              acao: "pedir diário de bordo, notas, empenhos e contrato de locação",
+              tone: alertas.length ? "warn" : "ok",
+            })}
+            <div class="frota-card__actions">
+              <button type="button" class="btn-dossie" onclick="ZELA.copiarFrotaLAI('${id}', this)">Copiar pergunta LAI</button>
+              <a class="btn-link" href="${esc(v.fonte_url || "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83061")}" target="_blank" rel="noopener">Abrir Betha</a>
+            </div>
+          </div>
+        </article>`;
+      }).join("") || `<div class="empty"><strong>Nenhum veículo encontrado</strong><p>Tente limpar filtros ou buscar por placa/modelo.</p></div>`;
+    }
+
+    ["filtroFrota", "filtroSituacaoFrota", "filtroAquisicaoFrota", "filtroCentroFrota", "ordenarFrota"].forEach(id => {
+      const el = $(id);
+      if (!el || el.dataset.frotaReady) return;
+      el.dataset.frotaReady = "1";
+      el.addEventListener(id === "filtroFrota" ? "input" : "change", renderFrotaPrefeitura);
+    });
+    document.querySelectorAll("[data-frota-centro]").forEach(btn => {
+      if (btn.dataset.ready) return;
+      btn.dataset.ready = "1";
+      btn.addEventListener("click", () => {
+        const sel = $("filtroCentroFrota");
+        if (sel) sel.value = btn.dataset.frotaCentro || "";
+        renderFrotaPrefeitura();
+      });
+    });
+  }
+
+  window.ZELA.copiarFrotaLAI = (id, btn) => {
+    const texto = (window.ZELA._frotaLAI || {})[id] || "";
+    if (!texto) return;
+    const old = btn ? btn.textContent : "";
+    navigator.clipboard.writeText(texto).then(() => {
+      if (btn) {
+        btn.textContent = "Pergunta copiada";
+        setTimeout(() => { btn.textContent = old; }, 1600);
+      }
+    }).catch(() => {
+      const ta = document.createElement("textarea");
+      ta.value = texto;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (_) {}
+      document.body.removeChild(ta);
+    });
+  };
+
   // ============= API pública =============
+  function linhasFolhaVereadores() {
+    const servidores = ((((D.pessoal || {}).camara || {}).servidores) || []);
+    const grupos = new Map();
+    servidores.forEach((row) => {
+      const alvo = norm([row.cargo, row.lotacao].filter(Boolean).join(" "));
+      if (!alvo.includes("vereador")) return;
+      const nome = cleanText(row.nome || "Nome nao informado").trim();
+      if (!nome) return;
+      const key = (row.matricula || nome) + "|" + nome;
+      const g = grupos.get(key) || {
+        nome,
+        matricula: row.matricula || "",
+        cargo: cleanText(row.cargo || "Vereador"),
+        vinculo: cleanText(row.vinculo || ""),
+        ano: Number(row.ano || 0),
+        registros: [],
+        bruto_total: 0,
+        liquido_total: 0,
+        descontos_total: 0,
+        maior_bruto: 0,
+        maior_liquido: 0,
+      };
+      g.registros.push(row);
+      g.ano = Math.max(g.ano || 0, Number(row.ano || 0));
+      g.bruto_total += Number(row.vencimentos || 0);
+      g.liquido_total += Number(row.liquido || 0);
+      g.descontos_total += Number(row.descontos || 0);
+      g.maior_bruto = Math.max(g.maior_bruto, Number(row.vencimentos || 0));
+      g.maior_liquido = Math.max(g.maior_liquido, Number(row.liquido || 0));
+      grupos.set(key, g);
+    });
+    return Array.from(grupos.values()).sort((a, b) => cleanText(a.nome).localeCompare(cleanText(b.nome), "pt-BR"));
+  }
+
+  function renderRemuneracaoVereadores() {
+    const el = $("remuneracaoVereadores");
+    if (!el) return;
+    const rem = D.remuneracao_vereadores || {};
+    const lei = rem.lei || {};
+    const links = Array.isArray(rem.links_conferencia) ? rem.links_conferencia : [];
+    const folha = linhasFolhaVereadores();
+    const folhaTotal = folha.reduce((sum, item) => sum + Number(item.bruto_total || 0), 0);
+    const folhaLinhas = folha.slice(0, 18);
+    const leiUrl = lei.url || (links[0] && links[0].url) || "#";
+
+    window.ZELA._folhaVereadores = folha;
+
+    el.innerHTML = `
+      <div class="salary-transparency__head">
+        <span>REMUNERACAO PARLAMENTAR</span>
+        <strong>Subsidio e folha nominal dos vereadores</strong>
+        <small>Mostra o valor fixado em lei e os registros nominais localizados no portal de transparencia da Camara. O valor liquido pode variar por descontos, faltas, renuncia formal ou rubricas da folha.</small>
+      </div>
+      ${dataTrustSeal("remuneracao", {
+        fonte: "Lei 7.285/2024 + Betha Camara",
+        escopo: folha.length ? "subsidio legal + folha nominal localizada" : "subsidio legal",
+        risco: "folha pode ter varias competencias no recorte",
+        acao: "conferir competencia, descontos e verbas",
+        tone: folha.length ? "ok" : "warn",
+      })}
+      <div class="salary-transparency__grid">
+        <article class="salary-card salary-card--main">
+          <span>Subsidio bruto mensal</span>
+          <strong>${fmtBRL(Number(rem.subsidio_bruto_mensal_brl || 0))}</strong>
+          <small>${esc(cleanText(lei.numero || "Lei municipal"))}${lei.data ? " - " + esc(dataCurtaBR(lei.data)) : ""}</small>
+        </article>
+        <article class="salary-card">
+          <span>Impacto mensal pela lei</span>
+          <strong>${fmtBRL(Number(rem.impacto_mensal_estimado_brl || 0))}</strong>
+          <small>${fmtNum(Number(rem.quantidade_lei || 0))} cargo(s) previstos na lei</small>
+        </article>
+        <article class="salary-card">
+          <span>Folha nominal localizada</span>
+          <strong>${fmtNum(folha.length)}</strong>
+          <small>${fmtBRL(folhaTotal)} em registro(s) carregado(s)</small>
+        </article>
+      </div>
+
+      <div class="salary-payroll${folha.length ? "" : " salary-payroll--empty"}">
+        <div class="salary-payroll__head">
+          <div>
+            <span>Folha nominal localizada</span>
+            <strong>Vereadores encontrados na folha da Camara</strong>
+            <small>Use o botao "Detalhes" para ver o que foi encontrado e o que pedir via LAI quando faltar competencia, descontos ou verbas indenizatorias.</small>
+          </div>
+          <div class="salary-payroll__sum">
+            <strong>${fmtBRL(folhaTotal)}</strong>
+            <span>total bruto dos registros</span>
+          </div>
+        </div>
+        ${folha.length ? `
+          <div class="salary-payroll__table">
+            <div class="salary-payroll__row salary-payroll__row--head">
+              <span>Nome</span><span>Ano</span><span>Maior bruto</span><span>Maior liquido</span><span>Registros</span><span>Acao</span>
+            </div>
+            ${folhaLinhas.map((item, idx) => `
+              <div class="salary-payroll__row">
+                <span><strong>${esc(item.nome)}</strong><small>${esc(item.cargo || "Vereador")} ${item.matricula ? "- mat. " + esc(item.matricula) : ""}</small></span>
+                <span>${esc(item.ano || "")}</span>
+                <span>${fmtBRL(item.maior_bruto || 0)}</span>
+                <span>${fmtBRL(item.maior_liquido || 0)}</span>
+                <span>${fmtNum(item.registros.length)}</span>
+                <span><button type="button" onclick="ZELA.abrirDetalheRemuneracao(${idx})">Detalhes</button></span>
+              </div>`).join("")}
+          </div>
+          ${folha.length > folhaLinhas.length ? `<p class="salary-payroll__warn">Mostrando ${fmtNum(folhaLinhas.length)} de ${fmtNum(folha.length)} nomes. Abra o portal Betha para conferir a folha completa.</p>` : ""}
+        ` : `<p>Folha nominal nao localizada nesta coleta. O painel mostra a lei e deixa os links oficiais para conferencia.</p>`}
+      </div>
+
+      <div class="salary-transparency__note">
+        <div>
+          <strong>Como ler este dado</strong>
+          <p>O subsidio e o valor bruto definido por lei. A folha nominal mostra pagamentos efetivamente registrados, mas precisa ser lida por competencia e rubrica.</p>
+        </div>
+        <div class="salary-transparency__actions">
+          <a href="${esc(leiUrl)}" target="_blank" rel="noopener">Ver lei</a>
+          ${links.slice(1, 3).map((link) => `<a href="${esc(link.url)}" target="_blank" rel="noopener">${esc(cleanText(link.titulo || "Fonte oficial"))}</a>`).join("")}
+          <button type="button" onclick="ZELA.entenderRemuneracao()">Entender</button>
+        </div>
+      </div>`;
+  }
+
+  window.ZELA.abrirDetalheRemuneracao = (idx) => {
+    const item = (window.ZELA._folhaVereadores || [])[idx];
+    if (!item) return;
+    const rows = (item.registros || []).slice(0, 12);
+    window.ZELA.dossie.abrirComHtml(`
+      <p class="label">FOLHA NOMINAL</p>
+      <h3>${esc(item.nome)}</h3>
+      <p class="muted">Cargo: ${esc(item.cargo || "Vereador")} ${item.matricula ? "- matricula " + esc(item.matricula) : ""}</p>
+      <div class="salary-modal-list">
+        ${rows.map((r) => `<article>
+          <strong>${fmtBRL(Number(r.vencimentos || 0))} bruto - ${fmtBRL(Number(r.liquido || 0))} liquido</strong>
+          <span>${esc(cleanText(r.cargo || ""))} - ${esc(cleanText(r.vinculo || ""))}</span>
+          <small>Ano ${esc(r.ano || "")}. Descontos informados: ${fmtBRL(Number(r.descontos || 0))}. Fonte: ${esc(cleanText(r.escopo || "Folha nominal da Camara"))}.</small>
+        </article>`).join("")}
+      </div>
+      <h4>O que conferir na fonte oficial</h4>
+      <ul class="dossier-checklist">
+        <li>Competencia de cada registro da folha.</li>
+        <li>Descontos, faltas, renuncia formal e rubricas indenizatorias.</li>
+        <li>Se ha verbas de gabinete, diaria ou cota indenizatoria fora do subsidio.</li>
+      </ul>`);
+  };
+
+  window.ZELA.entenderRemuneracao = () => {
+    window.ZELA.dossie.abrirComHtml(`
+      <p class="label">REMUNERACAO PARLAMENTAR</p>
+      <h3>Como entender salario/subsidio de vereador</h3>
+      <div class="citizen-explain">
+        <div class="citizen-explain__grid">
+          <article><b>Subsidio</b><span>Valor bruto mensal fixado em lei para o cargo politico.</span></article>
+          <article><b>Folha nominal</b><span>Registro de pagamento por pessoa, com vencimentos, descontos e liquido.</span></article>
+          <article><b>O que nao prova sozinho</b><span>Nao mostra automaticamente presenca, produtividade ou eventual verba indenizatoria.</span></article>
+          <article><b>Fonte primaria</b><span>Lei municipal e Portal Betha da Camara.</span></article>
+        </div>
+      </div>
+      <h4>O que pedir via LAI</h4>
+      <p>Solicite a folha analitica por competencia, demonstrativo de descontos, registro de faltas, eventual renuncia de subsidio, diarias, cotas/verbas indenizatorias e ato legal que autorizou cada pagamento.</p>`);
+  };
+
+  const FILA_COBRANCA_STORE = "zela.filaCobranca.v2";
+
+  function filaReadStore() {
+    try { return JSON.parse(localStorage.getItem(FILA_COBRANCA_STORE) || "{}") || {}; }
+    catch (_) { return {}; }
+  }
+
+  function filaWriteStore(store) {
+    try { localStorage.setItem(FILA_COBRANCA_STORE, JSON.stringify(store || {})); }
+    catch (_) {}
+  }
+
+  function filaId(parts) {
+    return norm((parts || []).filter(Boolean).join("|"))
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 96) || "item";
+  }
+
+  function filaNivel(score) {
+    const n = Number(score || 0);
+    if (n >= 78) return "red";
+    if (n >= 45) return "yellow";
+    return "green";
+  }
+
+  function filaLabel(level) {
+    return level === "red" ? "Vermelho" : level === "yellow" ? "Amarelo" : "Verde";
+  }
+
+  function filaStatusLabel(value) {
+    return ({
+      novo: "Novo",
+      aguardando: "Aguardando resposta",
+      respondido: "Respondido",
+      encerrado: "Encerrado",
+    })[value || "novo"] || "Novo";
+  }
+
+  function filaPerguntaPadrao(item) {
+    return [
+      "Solicito, com fundamento na Lei de Acesso a Informacao (Lei Federal 12.527/2011), documentos e esclarecimentos sobre o item abaixo.",
+      `Assunto: ${item.titulo}.`,
+      `Orgao: ${item.orgaoLabel}.`,
+      item.valor ? `Valor relacionado no painel: ${fmtBRL(item.valor)}.` : "",
+      item.data ? `Data relacionada: ${item.data}.` : "",
+      item.resumo ? `Resumo: ${item.resumo}` : "",
+      `Pendencias a esclarecer: ${(item.pendencias || []).join("; ")}.`,
+      "Solicito copia dos documentos de origem, contrato/processo administrativo quando existir, empenhos, liquidacoes, pagamentos, notas fiscais, responsavel/fiscal, criterios de medicao e resposta em formato aberto quando possivel.",
+    ].filter(Boolean).join("\n\n");
+  }
+
+  function filaScoreHtml(item) {
+    const label = item.tipo === "frota" ? "não é quantidade" : item.tipoLabel;
+    return `
+      <span class="risk-chip risk-chip--${esc(item.level)}">${esc(filaLabel(item.level))}</span>
+      <div class="risk-priority">
+        <span class="risk-priority__label">Prioridade</span>
+        <strong>${fmtNum(item.score)}/100</strong>
+        <small>${esc(label)}</small>
+      </div>
+      <span class="risk-queue-card__orgao">${esc(item.orgaoLabel)}</span>`;
+  }
+
+  function filaContextoHtml(item) {
+    if (item.tipo !== "frota") return "";
+    const meta = item.meta || {};
+    const valorBase = Number(meta.valorBase || item.valor || 0);
+    const valorAtipico = Number(meta.valorAtipico || 0);
+    const fatos = [
+      ["Veículo neste card", "1"],
+      ["Veículos na base", meta.totalFrota ? fmtNum(meta.totalFrota) : "não informado"],
+      ["Placa/identificação", meta.placa || "não informada"],
+      ["Descrição", meta.descricao || item.titulo || "veículo municipal"],
+      ["Lotação", meta.centro || "centro de custo não informado"],
+      ["Aquisição", meta.aquisicao || "não informada"],
+      ["Data da aquisição", meta.dataAquisicao || "não informada"],
+      ["Gasto vinculado", fmtBRL(valorBase)],
+    ];
+    if (valorAtipico > 0) fatos.push(["Valor atípico separado", fmtBRL(valorAtipico)]);
+    if (Number(meta.combustivel || 0) > 0) fatos.push(["Combustível", `${fmtBRL(meta.combustivel)}${meta.litros ? ` / ${fmtNum(meta.litros)} L` : ""}`]);
+    if (Number(meta.manutencao || 0) > 0) fatos.push(["Manutenção/peças", fmtBRL(meta.manutencao)]);
+
+    return `
+      <div class="risk-context risk-context--frota">
+        <div class="risk-context__intro">
+          <strong>Como ler este card de frota</strong>
+          <p>Este card representa 1 veículo específico da frota municipal. A nota de prioridade mostra o que deve ser conferido primeiro; ela não é a quantidade de veículos.</p>
+        </div>
+        <div class="risk-context__facts">
+          ${fatos.map(([label, value]) => `<span><b>${esc(label)}:</b> ${esc(value)}</span>`).join("")}
+        </div>
+        <div class="risk-context__ask">
+          <strong>O que o cidadão pode pedir</strong>
+          <p>Diário de bordo, odômetro, notas de combustível, manutenção, pneus, responsável pelo uso, secretaria de lotação e contrato de locação, cessão ou aquisição.</p>
+        </div>
+      </div>`;
+  }
+
+  function gerarFilaCobrancaPublica() {
+    const itens = [];
+    const vistos = new Set();
+    const add = (raw) => {
+      const id = raw.id || filaId([raw.tipo, raw.orgao, raw.titulo, raw.valor, raw.data]);
+      if (vistos.has(id)) return;
+      vistos.add(id);
+      const score = Math.max(0, Math.min(100, Math.round(Number(raw.score || 0))));
+      const level = raw.level || filaNivel(score);
+      itens.push({
+        id,
+        score,
+        level,
+        tipo: raw.tipo || "contrato",
+        tipoLabel: raw.tipoLabel || "Contrato",
+        orgao: raw.orgao || "prefeitura",
+        orgaoLabel: raw.orgaoLabel || (raw.orgao === "camara" ? "Camara" : "Prefeitura"),
+        titulo: cleanText(raw.titulo || "Item sem titulo"),
+        valor: Number(raw.valor || 0),
+        data: raw.data || "",
+        resumo: cleanText(raw.resumo || ""),
+        pendencias: (raw.pendencias || []).filter(Boolean).slice(0, 6),
+        fonte: raw.fonte || "",
+        url: raw.url || "",
+        pergunta: raw.pergunta || "",
+        meta: raw.meta || {},
+      });
+    };
+
+    const contratos = pf.contratos || [];
+    contratos.forEach((c) => {
+      const valor = Number(c.valor || 0);
+      const obj = cleanText(c.objeto || "");
+      const pend = [];
+      if (obj.length < 80) pend.push("objeto pouco detalhado");
+      if (valor >= 500000 && !/(rua|bairro|escola|ubs|unidade|secretaria|setor|local|creche|cemei|hospital)/i.test(obj)) {
+        pend.push("local de aplicacao nao claro");
+      }
+      if (!c.cnpj || String(c.cnpj).includes("*")) pend.push("CNPJ mascarado ou incompleto");
+      if (!c.data_assinatura) pend.push("data do contrato nao localizada");
+      if (valor >= 1000000 || pend.length >= 2) {
+        add({
+          tipo: "contrato",
+          tipoLabel: "Contrato",
+          orgao: "prefeitura",
+          titulo: c.contratado || `Contrato ${c.numero || ""}/${c.ano || ""}`,
+          valor,
+          data: dataCurtaBR(c.data_assinatura || ""),
+          resumo: obj || `Contrato ${c.numero || ""}/${c.ano || ""}`,
+          pendencias: pend.length ? pend : ["valor alto pede conferencia documental"],
+          score: Math.min(96, 35 + Math.log10(Math.max(valor, 1)) * 7 + pend.length * 12),
+          fonte: "Betha contratos Prefeitura",
+          url: `prefeitura.html?tab=contratos&q=${encodeURIComponent(c.contratado || c.numero || "")}`,
+          pergunta: [
+            `Solicito copia integral do processo administrativo do contrato ${c.numero || "s/n"}/${c.ano || ""}, firmado com ${c.contratado || "contratado nao informado"}, no valor de ${fmtBRL(valor)}.`,
+            `Objeto informado: ${obj || "nao informado"}.`,
+            `Pontos a esclarecer: ${(pend.length ? pend : ["valor alto"]).join("; ")}.`,
+            "Enviar termo de referencia, edital ou justificativa, pesquisa de precos, proposta vencedora, contrato, aditivos, empenhos, liquidacoes, notas fiscais, pagamentos e relatorio do fiscal do contrato.",
+          ].join("\n\n"),
+        });
+      }
+    });
+
+    const asfaltoTerms = ["asfalto", "paviment", "recape", "tapa buraco", "tapa-buraco", "buraco", "massa asfalt", "cbuq", "base/brita", "bica corrida", "drenagem"];
+    const obras = (pf.obras_publicas || []).filter((o) => hasAny([o.objeto, o.categoria, o.tipo_obra, o.endereco].join(" "), asfaltoTerms));
+    obras.forEach((o) => {
+      const valor = Number(o.valor_efetivo || o.valor_atualizado || o.valor_contrato || o.valor || 0);
+      const pend = [];
+      if (!Number(o.area_m2 || 0) && !Number(o.extensao || 0)) pend.push("sem metragem/quantidade auditavel");
+      if (!(o.endereco || o.logradouro || o.bairro)) pend.push("sem rua/bairro identificado");
+      if (!(o.responsavel || o.medicao_responsavel)) pend.push("sem fiscal/responsavel claro");
+      if (!o.data_ultima_medicao) pend.push("sem ultima medicao publicada");
+      if (pend.length || valor >= 500000) {
+        add({
+          tipo: "asfalto",
+          tipoLabel: "Asfalto/obra",
+          orgao: "prefeitura",
+          titulo: o.contratado || o.fornecedor || o.categoria || "Obra viaria",
+          valor,
+          data: dataCurtaBR(o.data_inicio || o.data_ordem_servico || o.contrato_data_assinatura || ""),
+          resumo: o.objeto || o.categoria || "Obra publica",
+          pendencias: pend.length ? pend : ["valor alto em obra viaria"],
+          score: Math.min(98, 45 + pend.length * 13 + (valor >= 1000000 ? 18 : 0)),
+          fonte: "Betha obras publicas",
+          url: "prefeitura.html?tab=asfalto&q=asfalto",
+          pergunta: [
+            `Solicito documentos da obra/servico viario ${o.numero || o.id_obra || "s/n"}, fornecedor ${o.contratado || o.fornecedor || "nao informado"}, valor ${fmtBRL(valor)}.`,
+            `Objeto: ${o.objeto || o.categoria || "nao informado"}.`,
+            `Pontos a esclarecer: ${(pend.length ? pend : ["metragem, local, fiscal e medicao"]).join("; ")}.`,
+            "Enviar contrato, projeto basico/executivo, planilha orcamentaria, ruas/bairros atendidos, metragem por trecho, medicao, notas fiscais, fiscal responsavel e fotos antes/depois.",
+          ].join("\n\n"),
+        });
+      }
+    });
+
+    (pf.frota || []).forEach((v) => {
+      const valor = Number(v.gastos_total || 0);
+      const atipico = Number(v.gastos_atipicos_total || 0);
+      const pend = [];
+      if (atipico > 0) pend.push("valor atípico separado para conferência");
+      if (!v.centro_custo) pend.push("sem centro de custo claro");
+      if (norm(v.tipo_aquisicao).includes("locado") && valor >= 30000) pend.push("veículo locado com gasto vinculado alto");
+      if (valor >= 100000) pend.push("gasto acumulado alto");
+      if (valor > 0) pend.push("pedir odômetro/diário de bordo");
+      if (atipico > 0 || valor >= 100000 || pend.length >= 3) {
+        add({
+          tipo: "frota",
+          tipoLabel: "Frota",
+          orgao: "prefeitura",
+          titulo: `${v.placa || "Sem placa"} - ${v.descricao || v.tipo || "veiculo"}`,
+          valor: valor + atipico,
+          data: dataCurtaBR(v.ultimo_gasto_data || v.data_aquisicao || ""),
+          resumo: `${v.centro_custo || "centro nao informado"} - ${v.tipo_aquisicao || "aquisicao nao informada"}`,
+          pendencias: pend,
+          score: Math.min(98, 42 + pend.length * 10 + (atipico > 0 ? 25 : 0) + (valor >= 100000 ? 12 : 0)),
+          fonte: "Betha veiculos municipais",
+          url: `prefeitura.html?tab=frota&q=${encodeURIComponent(v.placa || v.descricao || "")}`,
+          pergunta: perguntaLAIFrota(v),
+          meta: {
+            totalFrota: (pf.frota || []).length,
+            placa: v.placa || "",
+            descricao: v.descricao || v.tipo || "",
+            centro: v.centro_custo || "",
+            aquisicao: v.tipo_aquisicao || "",
+            situacao: v.situacao || "",
+            dataAquisicao: dataCurtaBR(v.data_aquisicao || ""),
+            valorBase: valor,
+            valorAtipico: atipico,
+            combustivel: Number(v.combustivel_total || 0),
+            litros: Number(v.litros_combustivel || 0),
+            manutencao: Number(v.manutencao_total || 0),
+          },
+        });
+      }
+    });
+
+    const cam = D.camara_betha || {};
+    const contratosCamara = cam.contratos || [];
+    (cam.top_fornecedores_atual || []).forEach((f) => {
+      const nome = cleanText(f.nome || "");
+      const n = norm(nome);
+      const valor = Number(f.valor_total || 0);
+      const temContrato = contratosCamara.some((c) => {
+        const cn = norm(c.contratado || "");
+        return cn && n && (cn.includes(n.slice(0, 18)) || n.includes(cn.slice(0, 18)));
+      });
+      if (!temContrato && valor >= 100000) {
+        add({
+          tipo: "fornecedor",
+          tipoLabel: "Fornecedor",
+          orgao: "camara",
+          orgaoLabel: "Camara",
+          titulo: nome || "Fornecedor da Camara",
+          valor,
+          data: cam.ano_atual ? `Ano ${cam.ano_atual}` : "",
+          resumo: "Fornecedor com despesa relevante sem contrato vinculado automaticamente pelo nome.",
+          pendencias: ["contrato nao vinculado automaticamente", "conferir empenho e origem da despesa", "CEIS/CNEP pendente"],
+          score: Math.min(96, 50 + Math.log10(Math.max(valor, 1)) * 7),
+          fonte: "Betha despesas Camara",
+          url: `camara.html?q=${encodeURIComponent(nome)}`,
+          pergunta: [
+            `Solicito documentos das despesas da Camara com ${nome}, no total localizado de ${fmtBRL(valor)} no recorte do painel.`,
+            "Informar contrato/processo de origem, empenhos, liquidacoes, notas fiscais, pagamentos, justificativa da contratacao e fiscal/responsavel.",
+          ].join("\n\n"),
+        });
+      }
+    });
+
+    (D.emendas || []).forEach((e) => {
+      const valor = Number(e.valor_brl || e.valor || 0);
+      const pend = [];
+      if (!e.cnpj) pend.push("beneficiario sem CNPJ estruturado");
+      if (String(e.ano) === "2026") pend.push("emendas 2026 ainda sem lista consolidada");
+      if (valor >= 150000) pend.push("valor alto pede plano de trabalho e execucao");
+      if (pend.length && valor >= 20000) {
+        add({
+          tipo: "emenda",
+          tipoLabel: "Emenda",
+          orgao: "camara",
+          orgaoLabel: "Camara",
+          titulo: `${e.autor || "Vereador"} - ${e.beneficiario || "beneficiario nao informado"}`,
+          valor,
+          data: e.ano ? `Ano ${e.ano}` : "",
+          resumo: e.objeto || "Emenda impositiva",
+          pendencias: pend,
+          score: Math.min(92, 38 + pend.length * 13 + (valor >= 100000 ? 18 : 0)),
+          fonte: "SAPL/emendas",
+          url: `camara.html?q=${encodeURIComponent(e.beneficiario || e.autor || "")}`,
+          pergunta: [
+            `Solicito documentos da emenda de ${e.autor || "autoria nao informada"} destinada a ${e.beneficiario || "beneficiario nao informado"}, no valor de ${fmtBRL(valor)}.`,
+            `Objeto: ${e.objeto || "nao informado"}.`,
+            "Enviar plano de trabalho, CNPJ, secretaria responsavel, empenhos, liquidacoes, pagamentos, notas fiscais, comprovantes de execucao, fotos/relatorio de entrega e situacao atual.",
+          ].join("\n\n"),
+        });
+      }
+    });
+
+    const ultimasDiario = (((D.diario || {}).ultimas) || []).slice(0, 4);
+    ultimasDiario.forEach((d) => {
+      if (!d.descricao) {
+        add({
+          tipo: "diario",
+          tipoLabel: "Diario Oficial",
+          orgao: "prefeitura",
+          titulo: `Diario Oficial - Edicao ${d.edicao || "s/n"}`,
+          valor: 0,
+          data: dataCurtaBR(d.data || ""),
+          resumo: "Edicao publicada, mas sem texto interno estruturado no painel.",
+          pendencias: ["abrir PDF oficial", "resumir compras/contratacoes", "verificar cargos e alteracoes de lei"],
+          score: 48,
+          fonte: "Diario Oficial do Municipio",
+          url: d.url_pdf || "atualizacoes.html",
+          pergunta: "Solicito disponibilizacao, em formato aberto e pesquisavel, do texto integral e anexos desta edicao do Diario Oficial, com identificacao de compras, contratacoes, nomeacoes, exoneracoes, leis, decretos e atos com impacto financeiro.",
+        });
+      }
+    });
+
+    const rem = D.remuneracao_vereadores || {};
+    const folhaVereadores = linhasFolhaVereadores();
+    if (rem.subsidio_bruto_mensal_brl || folhaVereadores.length) {
+      const maior = folhaVereadores.reduce((m, x) => Math.max(m, Number(x.maior_bruto || 0)), 0);
+      add({
+        tipo: "pessoal",
+        tipoLabel: "Pessoal",
+        orgao: "camara",
+        orgaoLabel: "Camara",
+        titulo: "Subsidio e folha nominal dos vereadores",
+        valor: maior || Number(rem.subsidio_bruto_mensal_brl || 0),
+        data: rem.vigencia_inicio ? dataCurtaBR(rem.vigencia_inicio) : "",
+        resumo: "Valor fixado em lei precisa ser lido junto da folha nominal, descontos, faltas, diarias e verbas indenizatorias.",
+        pendencias: ["conferir competencia da folha", "conferir descontos/faltas", "conferir cotas e verbas indenizatorias"],
+        score: 55,
+        fonte: "Lei municipal + Betha Camara",
+        url: "camara.html#vereadores",
+        pergunta: "Solicito folha analitica dos vereadores por competencia, demonstrativo de descontos, registro de faltas, eventual renuncia de subsidio, diarias, cotas/verbas indenizatorias e ato legal que autorizou cada pagamento.",
+      });
+    }
+
+    return itens.sort((a, b) => b.score - a.score || b.valor - a.valor || a.titulo.localeCompare(b.titulo, "pt-BR"));
+  }
+
+  function renderFilaCobrancaPublica() {
+    const lista = $("filaCobrancaLista");
+    if (!lista) return;
+    const stats = $("filaCobrancaStats");
+    const orgao = $("filaCobrancaOrgao")?.value || "";
+    const risco = $("filaCobrancaRisco")?.value || "";
+    const tipo = $("filaCobrancaTipo")?.value || "";
+    const store = filaReadStore();
+    const all = gerarFilaCobrancaPublica();
+    const filtrados = all.filter((item) =>
+      (!orgao || item.orgao === orgao) &&
+      (!risco || item.level === risco) &&
+      (!tipo || item.tipo === tipo)
+    ).slice(0, 28);
+
+    if (stats) {
+      const count = (level) => all.filter((item) => item.level === level).length;
+      stats.innerHTML = [
+        ["vermelho", count("red")],
+        ["amarelo", count("yellow")],
+        ["verde", count("green")],
+        ["pendencias", all.length],
+      ].map(([label, value]) => `<span><strong>${fmtNum(value)}</strong><small>${esc(label)}</small></span>`).join("");
+    }
+
+    if (!filtrados.length) {
+      lista.innerHTML = '<div class="empty"><p>Nenhum item encontrado para este filtro.</p></div>';
+      return;
+    }
+
+    lista.innerHTML = filtrados.map((item) => {
+      const saved = store[item.id] || {};
+      const status = saved.status || "novo";
+      const updated = saved.updated ? `Atualizado em ${dataCurtaBR(saved.updated)}` : "Ainda nao cobrado";
+      const pergunta = item.pergunta || filaPerguntaPadrao(item);
+      const fonte = item.fonte || "Fonte oficial";
+      return `<article class="risk-queue-card risk-queue-card--${esc(item.level)}">
+        <div class="risk-queue-card__score">
+          ${filaScoreHtml(item)}
+        </div>
+        <div class="risk-queue-card__body">
+          <div class="risk-queue-card__head">
+            <div>
+              <h4>${esc(item.titulo)}</h4>
+              <span class="risk-queue-card__orgao">${esc(fonte)}${item.data ? " - " + esc(item.data) : ""}</span>
+            </div>
+            <strong>${item.valor ? fmtBRL(item.valor) : "Sem valor"}</strong>
+          </div>
+          ${item.resumo ? `<p>${esc(item.resumo)}</p>` : ""}
+          ${filaContextoHtml(item)}
+          <div class="official-pending">
+            <div>
+              <strong>Pendências oficiais</strong>
+              <p>${esc((item.pendencias || []).join("; ") || "Conferir documentos de origem.")}</p>
+            </div>
+            <div class="official-pending__chips">
+              <span>CEIS/CNEP: ${esc(((D.sancoes_fornecedores || {}).status || "pendente").replace(/_/g, " "))}</span>
+              <span>PNCP / origem</span>
+              <span>Fonte primaria</span>
+            </div>
+          </div>
+          <div class="followup-status">
+            <label>Status da cobrança
+              <select data-fila-status="${esc(item.id)}">
+                ${["novo", "aguardando", "respondido", "encerrado"].map((op) => `<option value="${op}" ${op === status ? "selected" : ""}>${esc(filaStatusLabel(op))}</option>`).join("")}
+              </select>
+            </label>
+            <small data-fila-updated="${esc(item.id)}">${esc(updated)}</small>
+          </div>
+          <div class="risk-queue-card__actions">
+            ${item.url ? `<a class="btn-link" href="${esc(item.url)}" target="${/^https?:/i.test(item.url) ? "_blank" : "_self"}" rel="noopener">Abrir fonte/painel</a>` : ""}
+            <button type="button" class="copy-template" data-fila-copy="${esc(item.id)}">Copiar pergunta LAI</button>
+          </div>
+          <details class="risk-lai">
+            <summary>Ver pergunta pronta</summary>
+            <textarea readonly aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)">${esc(pergunta)}</textarea>
+          </details>
+        </div>
+      </article>`;
+    }).join("");
+
+    lista.querySelectorAll("[data-fila-status]").forEach((sel) => {
+      sel.addEventListener("change", () => {
+        const id = sel.dataset.filaStatus;
+        const next = filaReadStore();
+        next[id] = { status: sel.value, updated: new Date().toISOString() };
+        filaWriteStore(next);
+        const target = Array.from(lista.querySelectorAll("[data-fila-updated]"))
+          .find((el) => el.dataset.filaUpdated === id);
+        if (target) target.textContent = `Atualizado em ${dataCurtaBR(next[id].updated)}`;
+      });
+    });
+    lista.querySelectorAll("[data-fila-copy]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const card = btn.closest(".risk-queue-card");
+        const text = card?.querySelector(".risk-lai textarea")?.value || "";
+        if (!text) return;
+        const done = () => {
+          const old = btn.textContent;
+          btn.textContent = "Pergunta copiada";
+          setTimeout(() => { btn.textContent = old; }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(done);
+        } else {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); } catch (_) {}
+          document.body.removeChild(ta);
+          done();
+        }
+      });
+    });
+  }
+
   function baixarPdfSecao(target, titulo) {
     const source = typeof target === "string" ? document.querySelector(target) : target;
     if (!source) return;
@@ -4127,6 +5788,10 @@
         window.location.href = "prefeitura.html?tab=diarias";
         return;
       }
+      if (hasAny(qN, ["frota", "veiculo", "veiculos", "placa", "combustivel", "gasolina", "diesel", "pneu", "manutencao de veiculo", "oficina"])) {
+        window.location.href = "prefeitura.html?tab=frota";
+        return;
+      }
       if (hasAny(qN, ["emenda", "vereador", "destinou", "promessa"])) {
         if (hasAny(qN, ["pendente", "não paga", "não localizada", "atencao"])) {
            window.location.href = "relatorios.html";
@@ -4136,7 +5801,7 @@
         return;
       }
       if (hasAny(qN, ["asfalto", "obra", "reforma", "pavimentacao", "buraco"])) {
-        window.location.href = "prefeitura.html?tab=contratos&q=" + encodeURIComponent(q);
+        window.location.href = "prefeitura.html?tab=asfalto&q=" + encodeURIComponent(q);
         return;
       }
       if (hasAny(qN, ["comissionado", "cargo comissionado", "cargos de confianca"])) {
@@ -4441,6 +6106,7 @@
     const licitacoes = pf.licit_andamento || [];
     const diarias = (D.diarias || {}).prefeitura || [];
     const compras = pf.compras_diretas || [];
+    const frota = pf.frota || [];
 
     if (!contratos.length && !licitacoes.length && !diarias.length && !pf.total_externo_atual) {
       const emptyState = `
@@ -4488,6 +6154,7 @@
     const totalDiarias = diarias.reduce((s, d) => s + Number(d.valor_total || 0), 0);
     const totalAlugueis = alugueis.reduce((s, c) => s + Number(c.valor || 0), 0);
     const totalEventos = eventosBase.reduce((s, e) => s + Number(e.valor_analise || 0), 0);
+    const totalFrota = frota.reduce((s, v) => s + Number(v.gastos_total || 0), 0);
     const contratosMilhao = contratos.filter(c => Number(c.valor || 0) >= 1_000_000);
     const diariasAltas = diarias.filter(d => (Number(d.valor_total || 0) / (Number(d.quantidade || 1))) >= 1000);
     const fornecedoresUnicos = new Set(contratos.map(c => cnpjRoot(c.cnpj) || norm(c.contratado)).filter(Boolean)).size;
@@ -4497,7 +6164,7 @@
       <div>
         <div class="reader-summary__label">Painel da Prefeitura</div>
         <p>
-          Dados oficiais transformados em trilhas de fiscalizacao: quem recebeu,
+          Dados oficiais transformados em trilhas de fiscalização: quem recebeu,
           quanto recebeu, por qual objeto e onde conferir a fonte.
         </p>
       </div>
@@ -4506,6 +6173,7 @@
         <span><strong>${fmtNum(contratos.length)}</strong><small>contratos</small></span>
         <span><strong>${fmtNum(licitacoes.length)}</strong><small>licitacoes abertas</small></span>
         <span><strong>${fmtNum(diarias.length)}</strong><small>diárias</small></span>
+        <span><strong>${fmtNum(frota.length)}</strong><small>veículos na frota</small></span>
       </div>`;
 
     if ($("prefeituraResumoTopo")) {
@@ -4522,6 +6190,7 @@
     setBadge("badgeAlugueis", alugueis.length);
     setBadge("badgeEventos", eventosBase.length);
     setBadge("badgeLicitacoes", licitacoes.length);
+    setBadge("badgeFrota", frota.length);
 
     const pctVariacao = pf.total_externo_anterior ? (((pf.total_externo_atual / pf.total_externo_anterior) - 1) * 100).toFixed(1) : 0;
     const trendLabel = pctVariacao > 0 ? `+${pctVariacao}% em relacao a ${pf.ano_anterior}` : `${pctVariacao}% em relacao a ${pf.ano_anterior}`;
@@ -4531,6 +6200,7 @@
       { cls: "", v: fmtNum(contratos.length), l: "Contratos", s: `${fmtBRL(totalContratos)} em registros carregados`, tab: "contratos" },
       { cls: "audit-metric--red", v: fmtNum(contratosMilhao.length), l: "Acima de R$ 1 mi", s: "Primeira fila para conferir objeto e prazo", tab: "contratos" },
       { cls: "audit-metric--gold", v: fmtNum(diarias.length), l: "Diárias", s: `${fmtBRL(totalDiarias)} em registros contabeis`, tab: "diarias" },
+      { cls: "", v: fmtNum(frota.length), l: "Frota municipal", s: `${fmtBRL(totalFrota)} em gastos vinculados`, tab: "frota" },
       { cls: "", v: fmtNum(alugueis.length), l: "Imoveis alugados", s: `${fmtBRL(totalAlugueis)} classificados por palavra-chave`, tab: "alugueis" },
       { cls: "audit-metric--gold", v: fmtNum(eventosBase.length), l: "Eventos e shows", s: `${fmtBRL(totalEventos)} em itens localizados`, tab: "eventos" },
       { cls: "", v: fmtNum(licitacoes.length), l: "Licitacoes abertas", s: "Fiscalizar antes do pagamento", tab: "licitacoes" },
@@ -4545,6 +6215,7 @@
       $("prefeituraAtalhos").innerHTML = [
         { tab: "contratos", value: fmtNum(contratosMilhao.length), title: "Contratos caros", text: "Compromissos acima de R$ 1 mi, objetos fracos e prazos." },
         { tab: "diarias", value: fmtNum(diariasAltas.length), title: "Diárias altas", text: "Registros com valor diario estimado acima de R$ 1.000." },
+        { tab: "frota", value: fmtNum(frota.length), title: "Frota municipal", text: "Veiculos, lotacao e gastos de combustivel/manutencao." },
         { tab: "alugueis", value: fmtNum(alugueis.length), title: "Imoveis alugados", text: `${fmtBRL(totalAlugueis)} somados em contratos classificados.` },
         { tab: "eventos", value: fmtNum(eventosBase.length), title: "Eventos e shows", text: "Empresas, artistas e estruturas contratadas." },
       ].map(a => `
@@ -4562,12 +6233,13 @@
           A primeira leitura mostra que a base tem ${fmtNum(contratos.length)} contratos somando
           ${fmtBRL(totalContratos)}, ${fmtNum(licitacoes.length)} licitacoes para acompanhar antes
           do pagamento, ${fmtNum(diarias.length)} diárias pagas a ${fmtNum(servidoresDiarias)}
-          pessoas/servidores identificados, ${fmtNum(alugueis.length)} contratos classificados
+          pessoas/servidores identificados, ${fmtNum(frota.length)} veiculos municipais,
+          ${fmtNum(alugueis.length)} contratos classificados
           como aluguel de imovel e ${fmtNum(eventosBase.length)} itens ligados a eventos ou shows.
         </p>
         <p>
           Para fiscalizar sem se perder, comece pelos blocos de maior valor: contratos acima de
-          R$ 1 milhao, diárias com valor diario alto, alugueis recorrentes e eventos. Em cada caso,
+          R$ 1 milhão, diárias com valor diario alto, alugueis recorrentes e eventos. Em cada caso,
           confira objeto, prazo, fornecedor, empenho, liquidacao, pagamento e se a entrega aconteceu.
         </p>
       `;
@@ -4588,7 +6260,11 @@
       { nome: "Informatica e software", termos: ["software", "sistema", "licenca", "informatica", "computador", "notebook", "impressora"] },
       { nome: "Consultoria", termos: ["consultoria", "assessoria", "apoio tecnico", "serviços tecnicos especializados"] },
       { nome: "Obras e reforma", termos: ["obra", "reforma", "construcao", "ampliacao", "engenharia", "empreitada"] },
-      { nome: "Asfalto e pavimentacao", termos: ["asfalto", "pavimentacao", "recapeamento", "tapa buraco", "massa asfaltica", "CBUQ"] },
+      { nome: "Asfalto e pavimentacao", termos: [
+        "asfalto", "asfaltica", "asfaltico", "cbuq", "pavimentacao", "pavimenta", "recape", 
+        "tapa buraco", "tapa-buraco", "buraco", "drenagem", "meio fio", "sarjeta",
+        "recapeamento", "recapeamento asfaltico", "recapeamento asfáltico", "asfaltamento", "pavimento"
+      ] },
       { nome: "Saúde/medicamentos", termos: ["medicamento", "remedio", "farmacia", "insumo hospitalar", "material hospitalar", "saude"] },
       { nome: "Exames e consultas", termos: ["exame", "consulta", "laboratorial", "diagnostico", "ultrassom", "tomografia"] },
       { nome: "Merenda escolar", termos: ["merenda", "alimentacao escolar", "generos alimenticios", "escola", "creche"] },
@@ -4670,12 +6346,12 @@
         return [...grupos.values()].sort((a, b) => (b.valor - a.valor) || (b.qtd - a.qtd));
       };
 
-    const renderGastosPalavra = () => {
+    const renderGastosPalavra = (forcarCat) => {
       const box = $("gastosPalavraChave");
       if (!box) return;
       const select = $("categoriaGastoSelect");
       const busca = $("categoriaGastoBusca");
-      const categoria = categoriaPorNome(select?.value || "Combustivel");
+      const categoria = categoriaPorNome(forcarCat || select?.value || "Combustivel");
       const extra = (busca?.value || "").split(",").map(t => t.trim()).filter(Boolean);
       const termos = extra.length ? extra : categoria.termos;
       const encontrados = baseGastos
@@ -4750,7 +6426,7 @@
             }).join("") || `<p class="muted">Nenhum registro encontrado.</p>`}
           </div>
         </div>
-        <p class="keyword-audit__note">Observacao: busca por palavra-chave e uma triagem. O resultado pode incluir registros parecidos e deve ser conferido no documento oficial antes de qualquer conclusao.</p>
+        <p class="keyword-audit__note">Observação: busca por palavra-chave é uma triagem. O resultado pode incluir registros parecidos e deve ser conferido no documento oficial antes de qualquer conclusão.</p>
       `;
 
       const nextSelect = $("categoriaGastoSelect");
@@ -4764,9 +6440,14 @@
       }
       box.querySelectorAll("[data-gasto-cat]").forEach(btn => {
         btn.addEventListener("click", () => {
-          if ($("categoriaGastoSelect")) $("categoriaGastoSelect").value = btn.dataset.gastoCat || "";
+          const catNome = btn.dataset.gastoCat || "";
+          if ($("categoriaGastoSelect")) {
+             $("categoriaGastoSelect").value = catNome;
+             const matched = Array.from($("categoriaGastoSelect").options).find(o => o.value === catNome);
+             if (matched) matched.selected = true;
+          }
           if ($("categoriaGastoBusca")) $("categoriaGastoBusca").value = "";
-          renderGastosPalavra();
+          renderGastosPalavra(catNome);
         });
       });
     };
@@ -4787,7 +6468,7 @@
       maiorContrato && {
         valor: fmtBRL(maiorContrato.valor || 0),
         titulo: "Maior contrato carregado",
-        desc: `${maiorContrato.contratado || "Contratado nao informado"} - ${String(maiorContrato.objeto || "").slice(0, 140)}`,
+        desc: `${maiorContrato.contratado || "Contratado não informado"} - ${String(maiorContrato.objeto || "").slice(0, 140)}`,
         tab: "contratos",
       },
       maiorDiariaPessoa && {
@@ -4799,13 +6480,13 @@
       maiorAluguel && {
         valor: fmtBRL(maiorAluguel.valor || 0),
         titulo: "Maior contrato de aluguel",
-        desc: `${maiorAluguel.contratado || "Contratado nao informado"} - ${String(maiorAluguel.objeto || "").slice(0, 140)}`,
+        desc: `${maiorAluguel.contratado || "Contratado não informado"} - ${String(maiorAluguel.objeto || "").slice(0, 140)}`,
         tab: "alugueis",
       },
       maiorEvento && {
         valor: fmtBRL(maiorEvento.valor_analise || 0),
         titulo: "Maior item de evento/show",
-        desc: `${maiorEvento.contratado || "Contratado nao informado"} - ${String(maiorEvento.objeto || "").slice(0, 140)}`,
+        desc: `${maiorEvento.contratado || "Contratado não informado"} - ${String(maiorEvento.objeto || "").slice(0, 140)}`,
         tab: "eventos",
       },
       contratosMilhao.length && {
@@ -4935,6 +6616,10 @@
       listaAlugueis: "alugueis",
       diariasPrefeituraBlock: "diarias",
       listaDiariasPrefeitura: "diarias",
+      frotaBlock: "frota",
+      frotaLista: "frota",
+      asfaltoBlock: "asfalto",
+      asfaltoPainel: "asfalto",
       diarioLista: "fontes",
       modulos: "fontes",
     };
@@ -5048,6 +6733,51 @@
     actions.appendChild(button);
   }
 
+  function renderGlobalDataHealthNotice() {
+    const audit = D.auditoria_dados || {};
+    const items = (audit.items || []).filter((item) => item.severity && item.severity !== "ok");
+    if (!items.length) return;
+
+    const header = document.querySelector(".bigheader");
+    const container = header?.parentElement || document.querySelector("main .container") || document.querySelector(".container");
+    if (!container) return;
+
+    let box = document.getElementById("dataHealthStrip") || document.getElementById("globalDataHealthNotice");
+    if (!box && PAGE === "home") box = document.getElementById("homeDataHealth");
+    if (!box) {
+      box = document.createElement("section");
+      box.id = "globalDataHealthNotice";
+      box.className = "data-health-strip";
+      box.setAttribute("aria-label", "Limites conhecidos da base de dados");
+      if (header && header.parentNode) header.insertAdjacentElement("afterend", box);
+      else container.prepend(box);
+    }
+
+    const level = audit.level || "attention";
+    const summary = audit.summary || {};
+    const base = audit.atualizado_base?.data_humana || D.atualizado_em?.data_humana || "data não informada";
+    const sorted = items.slice().sort((a, b) => {
+      const rank = { error: 0, warning: 1, info: 2 };
+      return (rank[a.severity] ?? 3) - (rank[b.severity] ?? 3);
+    }).slice(0, PAGE === "home" ? 2 : 4);
+    const label = level === "critical" ? "Atenção crítica" : level === "attention" ? "Atenção aos limites dos dados" : "Dados sem alerta crítico";
+
+    box.className = `data-health-strip data-health-strip--${esc(level)}${PAGE === "home" ? " data-health-strip--compact" : ""}`;
+    box.hidden = false;
+    box.innerHTML = `
+      <div class="data-health-strip__head">
+        <div>
+          <strong>${esc(label)}</strong>
+          <p>Base principal: ${esc(base)}. Use estes números como trilha de fiscalização e confirme a fonte oficial antes de divulgar conclusão.</p>
+        </div>
+        <span>${fmtNum(summary.warnings || 0)} aviso(s)</span>
+      </div>
+      <ul>
+        ${sorted.map((item) => `<li><b>${esc(item.title)}:</b> ${esc(item.detail)} <em>${esc(item.action || "")}</em></li>`).join("")}
+      </ul>
+      <a href="sobre.html#auditoriaDados">Ver auditoria completa e limitações das fontes</a>`;
+  }
+
   // ============= AUDITÔMETRO (index.html) =============
   function initScorecard() {
     if (!$("scorePrefeitura")) return;
@@ -5086,6 +6816,7 @@
     listEl.innerHTML = list.map(li => `<li>${li}</li>`).join("");
   }
 
+  renderGlobalDataHealthNotice();
   if (PAGE === "home") initScorecard();
   if (PAGE === "pessoal") initPessoal();
   if (PAGE === "prefeitura") renderPlacarPrefeitura();
@@ -5094,8 +6825,132 @@
   if (PAGE === "prefeitura") initGraficoMensal();
   if (PAGE === "prefeitura") initSecretariasChart();
   if (PAGE === "prefeitura") initPrefeituraTabs();
+  if (PAGE === "prefeitura") renderAsfaltoPrefeitura();
+  if (PAGE === "prefeitura") renderFrotaPrefeitura();
   if (PAGE === "camara") renderPlacarCamara();
+  if (PAGE === "camara") renderRemuneracaoVereadores();
+  if (PAGE === "camara" && window.ZELA.indiceRelevancia) window.ZELA.indiceRelevancia.render();
   if (PAGE === "camara") renderCategoriasCamara();
+  if (PAGE === "cobrar") {
+    renderFilaCobrancaPublica();
+    ["filaCobrancaOrgao", "filaCobrancaTipo", "filaCobrancaRisco"].forEach((id) => {
+      const el = $(id);
+      if (el) el.addEventListener("change", renderFilaCobrancaPublica);
+    });
+
+    function initFiltrosTemplates() {
+      const grid = document.querySelector(".template-grid");
+      if (!grid) return;
+      const searchInput = document.getElementById("laiBusca");
+      const cards = grid.querySelectorAll(".template-card");
+      if (!cards.length) return;
+
+      // Rótulo/cor de cada categoria e nível — usados nos chips e (implicitamente) nos filtros.
+      const CATS = {
+        licitacao:  { rotulo: "Contratos & Compras",         cor: "#c62828", bg: "#fdeaea" },
+        obras:      { rotulo: "Obras & Asfalto",             cor: "#e65100", bg: "#fff3e0" },
+        servicos:   { rotulo: "Saúde, Educação & Social",    cor: "#2e7d32", bg: "#e8f5e9" },
+        pessoal:    { rotulo: "Pessoal & Câmara",            cor: "#1f3a5f", bg: "#eef3f8" },
+        patrimonio: { rotulo: "Patrimônio, Frota & Imóveis", cor: "#6a1b9a", bg: "#f3e5f5" },
+        gestao:     { rotulo: "Gestão, Repasses & Cidade",   cor: "#37474f", bg: "#eceff1" }
+      };
+      const NIVEIS = {
+        "1": { rotulo: "Nível 1 · Alto impacto",     cor: "#c62828" },
+        "2": { rotulo: "Nível 2 · Muito relevante",  cor: "#e65100" },
+        "3": { rotulo: "Nível 3 · Onde poucos olham", cor: "#1565c0" },
+        "4": { rotulo: "Nível 4 · Avançada",         cor: "#6a1b9a" }
+      };
+
+      // Injeta os chips (nível + categoria) uma única vez por card, antes do título.
+      cards.forEach(card => {
+        if (card.querySelector(".lai-chips")) return;
+        const h4 = card.querySelector("h4");
+        if (!h4) return;
+        const niv = card.getAttribute("data-nivel");
+        const cat = card.getAttribute("data-cat");
+        const wrap = document.createElement("div");
+        wrap.className = "lai-chips";
+        wrap.style.cssText = "display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;";
+        if (niv && NIVEIS[niv]) {
+          const n = NIVEIS[niv];
+          wrap.insertAdjacentHTML("beforeend",
+            '<span style="font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff;background:' + n.cor + ';">' + n.rotulo + '</span>');
+        }
+        if (cat && CATS[cat]) {
+          const c = CATS[cat];
+          wrap.insertAdjacentHTML("beforeend",
+            '<span style="font-size:.72rem;font-weight:700;padding:3px 9px;border-radius:999px;color:' + c.cor + ';background:' + c.bg + ';border:1px solid ' + c.cor + '33;">' + c.rotulo + '</span>');
+        }
+        h4.parentNode.insertBefore(wrap, h4);
+      });
+
+      const catBtns = document.querySelectorAll(".lai-filter");
+      const nivBtns = document.querySelectorAll(".lai-filter-nivel");
+      let activeCat = "all";
+      let activeNivel = "all";
+
+      function pintar(btns, active, attr) {
+        btns.forEach(b => {
+          const on = b.getAttribute(attr) === active;
+          b.classList.toggle("active", on);
+          b.style.background = on ? "var(--navy)" : "#fff";
+          b.style.color = on ? "#fff" : "var(--ink)";
+          b.style.borderColor = on ? "var(--navy)" : "var(--line)";
+        });
+      }
+
+      catBtns.forEach(btn => btn.addEventListener("click", () => {
+        activeCat = btn.getAttribute("data-cat");
+        pintar(catBtns, activeCat, "data-cat");
+        aplicarFiltro();
+      }));
+      nivBtns.forEach(btn => btn.addEventListener("click", () => {
+        activeNivel = btn.getAttribute("data-nivel");
+        pintar(nivBtns, activeNivel, "data-nivel");
+        aplicarFiltro();
+      }));
+
+      function aplicarFiltro() {
+        const term = (searchInput ? searchInput.value : "").toLowerCase().trim();
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+          const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
+          const desc = (card.querySelector("textarea")?.value || "").toLowerCase();
+          const cardCat = card.getAttribute("data-cat");
+          const cardNiv = card.getAttribute("data-nivel");
+
+          const matchTerm = !term || title.includes(term) || desc.includes(term);
+          const matchCat = activeCat === "all" || cardCat === activeCat;
+          const matchNiv = activeNivel === "all" || cardNiv === activeNivel;
+
+          if (matchTerm && matchCat && matchNiv) {
+            card.style.display = "";
+            visibleCount++;
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        let emptyMsg = document.getElementById("template-empty-message");
+        if (visibleCount === 0) {
+          if (!emptyMsg) {
+            emptyMsg = document.createElement("div");
+            emptyMsg.id = "template-empty-message";
+            emptyMsg.className = "empty";
+            emptyMsg.innerHTML = "<p>Nenhum modelo encontrado para os filtros selecionados.</p>";
+            grid.parentNode.insertBefore(emptyMsg, grid.nextSibling);
+          }
+        } else {
+          if (emptyMsg) emptyMsg.remove();
+        }
+      }
+
+      if (searchInput) searchInput.addEventListener("input", aplicarFiltro);
+    }
+
+    initFiltrosTemplates();
+  }
   if (PAGE === "atualizacoes" && window.ZELA.atualizacoes) window.ZELA.atualizacoes.init();
   if (PAGE === "prefeitura") renderAlugueisV2();
   if (PAGE === "prefeitura") initDiarias("Prefeitura", (D.diarias || {}).prefeitura || []);
@@ -5171,6 +7026,7 @@
     const BUSCA_IDS = [
       "filtroContrato", "filtroEm", "filtroVer", "buscaServidor",
       "filtroLicitacao", "filtroEvento", "filtroAluguel", "filtroDiaria",
+      "filtroFrota",
     ];
     document.addEventListener("keydown", function (e) {
       const tag = document.activeElement ? document.activeElement.tagName : "";
@@ -5256,6 +7112,66 @@
       });
     });
   })();
+
+  // ============= GAVETA DE FILTROS RESPONSIVA MOBILE =============
+  window.ZELA.toggleMobileFilters = function(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    let overlay = document.getElementById("filterOverlay");
+    if (!overlay) {
+      overlay = document.createElement("div");
+      overlay.id = "filterOverlay";
+      overlay.className = "filter-overlay";
+      document.body.appendChild(overlay);
+      overlay.addEventListener("click", () => {
+        const openFilters = document.querySelectorAll(".filterbar.is-open");
+        openFilters.forEach(f => f.classList.remove("is-open"));
+        overlay.classList.remove("is-active");
+      });
+    }
+    const isOpen = el.classList.toggle("is-open");
+    if (isOpen) {
+      overlay.classList.add("is-active");
+    } else {
+      overlay.classList.remove("is-active");
+    }
+  };
+
+  // ============= MODO ESCURO (DARK THEME) =============
+  window.ZELA.initTheme = function() {
+    const isDark = localStorage.getItem("zela-theme") === "dark";
+    if (isDark) {
+      document.body.classList.add("dark-theme");
+    }
+    
+    const topbarInner = document.querySelector(".topbar__inner");
+    if (topbarInner && !document.querySelector(".theme-toggle-btn")) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "theme-toggle-btn";
+      btn.setAttribute("aria-label", "Alternar tema escuro/claro");
+      btn.innerHTML = isDark ? "☀️ Claro" : "🌙 Escuro";
+      btn.addEventListener("click", () => {
+        const isCurrentlyDark = document.body.classList.toggle("dark-theme");
+        localStorage.setItem("zela-theme", isCurrentlyDark ? "dark" : "light");
+        btn.innerHTML = isCurrentlyDark ? "☀️ Claro" : "🌙 Escuro";
+      });
+      const navToggle = document.querySelector(".nav__toggle");
+      if (navToggle) {
+        navToggle.before(btn);
+      } else {
+        topbarInner.appendChild(btn);
+      }
+    }
+  };
+
+  // Garante a execucao apos o DOM estar pronto
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", window.ZELA.initTheme);
+  } else {
+    window.ZELA.initTheme();
+  }
+
 
   } catch (err) {
     const _ov = document.getElementById("loading-overlay");

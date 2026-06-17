@@ -21,7 +21,66 @@
     console.error("[dossie] window.ZELA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
-  const esc = u.esc, fmtBRL = u.fmtBRL, fmtNum = u.fmtNum;
+  const esc = u.esc, fmtBRL = u.fmtBRL, fmtNum = u.fmtNum, norm = u.norm;
+
+  const CHECK_STORE = "zela.dossie.checklist.v1";
+  function readChecklistStore() {
+    try { return JSON.parse(localStorage.getItem(CHECK_STORE) || "{}") || {}; }
+    catch (_) { return {}; }
+  }
+  function writeChecklistStore(store) {
+    try { localStorage.setItem(CHECK_STORE, JSON.stringify(store || {})); }
+    catch (_) {}
+  }
+  function stableId(parts) {
+    return norm((parts || []).filter(Boolean).join("|")).replace(/[^a-z0-9]+/g, "-").slice(0, 90) || "item";
+  }
+  function entenderHtml(cfg) {
+    return `<section class="citizen-explain">
+      <div class="citizen-explain__head">
+        <span>Entender este dado</span>
+        <strong>${esc(cfg.titulo || "Dado publico")}</strong>
+      </div>
+      <div class="citizen-explain__grid">
+        <article><b>O que significa</b><span>${esc(cfg.significa || "")}</span></article>
+        <article><b>O que nao significa</b><span>${esc(cfg.naoSignifica || "")}</span></article>
+        <article><b>Documento que confirma</b><span>${esc(cfg.confirma || "")}</span></article>
+        <article><b>Fonte usada</b><span>${esc(cfg.fonte || "")}</span></article>
+      </div>
+    </section>`;
+  }
+  function checklistHtml(id, itens) {
+    return `<section class="citizen-checklist" data-dossie-checklist="${esc(id)}">
+      <div class="citizen-checklist__head">
+        <span>Checklist cidadão</span>
+        <strong>Marque o que você já conferiu</strong>
+      </div>
+      <div class="citizen-checklist__items">
+        ${(itens || []).map((item, idx) => `
+          <label>
+            <input type="checkbox" data-check-idx="${idx}">
+            <span>${esc(item)}</span>
+          </label>`).join("")}
+      </div>
+      <small>Salvo apenas neste navegador. Serve para organizar sua fiscalizacao, nao altera os dados oficiais.</small>
+    </section>`;
+  }
+  function initChecklist(content) {
+    const store = readChecklistStore();
+    content.querySelectorAll("[data-dossie-checklist]").forEach(section => {
+      const id = section.dataset.dossieChecklist;
+      const state = store[id] || {};
+      section.querySelectorAll("[data-check-idx]").forEach(input => {
+        input.checked = !!state[input.dataset.checkIdx];
+        input.addEventListener("change", () => {
+          const next = readChecklistStore();
+          next[id] = next[id] || {};
+          next[id][input.dataset.checkIdx] = input.checked;
+          writeChecklistStore(next);
+        });
+      });
+    });
+  }
 
   // ============================================================
   // MODAL — cria <dialog> reusável uma única vez
@@ -45,6 +104,7 @@
     const modal = criarModal();
     const content = modal.querySelector("#modalFiscalizaContent");
     content.innerHTML = html;
+    initChecklist(content);
     if (typeof modal.showModal === "function") modal.showModal();
     else modal.setAttribute("open", "");
   }
@@ -102,6 +162,7 @@
     const portal = portalContratoUrl(orgao);
     const pncp = pncpUrl(c);
     const canDownloadTxt = orgao === "Prefeitura" && Number.isInteger(Number(c.__idx));
+    const checklistId = stableId(["contrato", orgao, numero, c.cnpj, c.contratado]);
 
     const pergunta =
       `Solicito cópia integral do processo administrativo referente ao contrato ${numero}, ` +
@@ -126,6 +187,21 @@
     return `
       <p class="label">CONFERÊNCIA DE PROCEDÊNCIA</p>
       <h3>Contrato ${esc(numero)} — ${esc(c.contratado || "Contratado não informado")}</h3>
+      ${entenderHtml({
+        titulo: "Contrato público",
+        significa: "Mostra uma obrigação contratada pelo poder público, com fornecedor, objeto, valor e vigência.",
+        naoSignifica: "Não prova sozinho que o serviço foi entregue, que tudo foi pago ou que o preço está correto.",
+        confirma: "Contrato integral, termo de referência, empenho, liquidação, nota fiscal e relatório do fiscal.",
+        fonte: `Portal/Betha de ${orgao} e, quando existir, PNCP.`,
+      })}
+      ${checklistHtml(checklistId, [
+        "Li o objeto e entendi o que foi contratado",
+        "Abri a fonte oficial/Betha e conferi o número",
+        "Conferi vigência, valor e modalidade",
+        "Procurei empenho, liquidação e nota fiscal",
+        "Procurei fiscal do contrato e comprovação da entrega",
+        "Copiei ou enviei a pergunta pronta via LAI/e-SIC",
+      ])}
       <div class="dossier-grid">
         <section>
           <h4>1. Dados carregados no painel</h4>
@@ -185,6 +261,7 @@
     const c = params.cruz || {};
     const contratos = params.contratos || [];
     const cnpjInfo = params.cnpjInfo;
+    const checklistId = stableId(["emenda", e.numero, e.ano, e.autor, e.cnpj, e.beneficiario]);
 
     const pergunta =
       "Solicito cópia integral do processo administrativo, empenhos, " +
@@ -240,6 +317,21 @@
     return `
       <p class="label">DOSSIÊ DE FISCALIZAÇÃO</p>
       <h3>${esc(e.beneficiario || "Beneficiário não identificado")}</h3>
+      ${entenderHtml({
+        titulo: "Emenda impositiva",
+        significa: "Mostra uma indicação de recurso feita por vereador para uma entidade, órgão ou finalidade.",
+        naoSignifica: "Não prova sozinho que o dinheiro foi pago, que a obra/serviço foi executado ou que houve irregularidade.",
+        confirma: "Empenho, liquidação, pagamento, plano de trabalho, nota fiscal, relatório de execução e prestação de contas.",
+        fonte: "Documentos da Câmara, Prefeitura, pagamentos municipais e bases auxiliares de CNPJ.",
+      })}
+      ${checklistHtml(checklistId, [
+        "Entendi quem indicou a emenda e quem recebeu",
+        "Conferi se existe CNPJ ou órgão responsável",
+        "Procurei empenho, liquidação e pagamento",
+        "Conferi se o objeto combina com a finalidade pública",
+        "Procurei relatório, foto, nota fiscal ou prestação de contas",
+        "Copiei a pergunta pronta para pedir documentos oficiais",
+      ])}
       <div class="dossier-grid">
         <section>
           <h4>1. Emenda indicada</h4>
@@ -268,6 +360,9 @@
       <section class="dossier-lai">
         <h4>5. Pergunta pronta para LAI/e-SIC</h4>
         <textarea readonly>${esc(pergunta)}</textarea>
+        <div class="diaria-actions">
+          <button type="button" class="btn-dossie" onclick="navigator.clipboard && navigator.clipboard.writeText(this.closest('.dossier-lai').querySelector('textarea').value)">Copiar pergunta</button>
+        </div>
       </section>
       <p class="muted">Este dossiê é uma triagem. Não é acusação: confira as fontes oficiais antes de qualquer denúncia.</p>`;
   }
@@ -289,6 +384,7 @@
     const setor = isPrefeitura
       ? (d.secretaria || d.unidade || "não informado")
       : (d.cargo || d.secretaria || "não informado");
+    const checklistId = stableId(["diaria", prefix, d.funcionario, d.numero, periodo, d.valor_total]);
 
     const pergunta = isPrefeitura
       ? `Solicito cópia integral do processo administrativo, empenho, liquidação, comprovante de pagamento, ordem de pagamento, justificativa, autorização e documentos que expliquem a despesa classificada como diária em nome de ${d.funcionario || "servidor/credor não informado"}, no valor de ${fmtBRL(d.valor_total || 0)}, vinculada a ${setor}, período ${periodo}, incluindo finalidade, destino quando houver, quantidade de diárias se aplicável e relatório de resultado/necessidade pública.`
@@ -297,6 +393,23 @@
     return `
       <p class="label">ROTEIRO DE FISCALIZAÇÃO</p>
       <h3>${isPrefeitura ? "Despesa/empenho de diária — Prefeitura" : "Diária de viagem — Câmara"}</h3>
+      ${entenderHtml({
+        titulo: isPrefeitura ? "Despesa classificada como diária" : "Diária de viagem",
+        significa: isPrefeitura
+          ? "Mostra despesa contábil ligada a diárias, adiantamento ou indenização de deslocamento."
+          : "Mostra verba para custear viagem oficial de servidor ou vereador em atividade pública.",
+        naoSignifica: "Não é salário e não prova, sozinho, que a viagem ocorreu corretamente ou que trouxe resultado para a cidade.",
+        confirma: "Autorização, destino, motivo, comprovantes, relatório de viagem, certificado e prestação de contas.",
+        fonte: fonte ? `Fonte oficial de ${prefix}.` : `Base carregada de ${prefix}, com fonte oficial a conferir quando disponível.`,
+      })}
+      ${checklistHtml(checklistId, [
+        "Conferi nome, cargo/setor e valor",
+        "Procurei destino, motivo e período da viagem",
+        "Verifiquei se existe autorização formal",
+        "Procurei comprovantes e relatório de resultado",
+        "Comparei se o gasto tem utilidade pública clara",
+        "Copiei a pergunta pronta para cobrar a documentação",
+      ])}
       <div class="dossier-grid">
         <section>
           <h4>1. O que foi pago</h4>

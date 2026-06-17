@@ -60,6 +60,62 @@
   }
   .disclaimer-box strong { display: block; margin-bottom: 8px; color: #6d3800; font-size: 1rem; }
   .disclaimer-box p { margin: 0 0 8px; font-size: .88rem; color: #5d4037; line-height: 1.6; }
+  .data-health {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--teal);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 24px 0;
+    box-shadow: var(--shadow);
+  }
+  .data-health--attention { border-left-color: var(--gold); }
+  .data-health--critical { border-left-color: var(--red); }
+  .data-health__head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+  .data-health__head h3 { margin: 0 0 4px; color: var(--navy); font-size: 1rem; }
+  .data-health__head p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+  .data-health__badge {
+    flex-shrink: 0;
+    border-radius: 999px;
+    padding: 6px 12px;
+    background: #e8f5f0;
+    color: #006b4f;
+    font-size: .78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+  .data-health--attention .data-health__badge { background: #fff8e1; color: #8a5b00; }
+  .data-health--critical .data-health__badge { background: #ffebee; color: #9b1c1c; }
+  .data-health__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .data-health__stat {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: var(--cream);
+  }
+  .data-health__stat strong { display: block; color: var(--ink); font-size: 1.2rem; }
+  .data-health__stat span { color: var(--muted); font-size: .78rem; }
+  .data-health__list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+  .data-health__item {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: #fff;
+  }
+  .data-health__item strong { display: block; color: var(--ink); font-size: .88rem; margin-bottom: 3px; }
+  .data-health__item p { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+  .data-health__source { display: block; margin-top: 4px; color: var(--navy); font-size: .76rem; font-weight: 700; }
   .timeline { list-style: none; padding: 0; margin: 16px 0; }
   .timeline li {
     display: flex; gap: 14px;
@@ -83,6 +139,7 @@
     .disclaimer-box { background: #2a1f00; border-color: #a07000; border-left-color: #e09000; }
     .disclaimer-box strong { color: #ffd54f; }
     .disclaimer-box p { color: #ffcc80; }
+    .data-health__item { background: var(--white); }
     .fonte-table td { border-color: var(--line); }
     .fonte-table tr:nth-child(even) td { background: var(--cream); }
     .fonte-table th { background: #0d2a4a; }
@@ -109,7 +166,6 @@
       <a href="camara.html"     class="nav__link">Câmara</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
-      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
       <a href="sobre.html"      class="nav__link nav__link--active">Sobre</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
     </nav>
@@ -121,11 +177,12 @@
   <div class="container">
     <p class="breadcrumb"><a href="index.html">← Voltar ao início</a></p>
 
-    <h2 class="section__title">Sobre e Metodologia</h2>
+    <h1 class="section__title">Sobre e Metodologia</h1>
     <p class="section__lead">
-      O <strong>Fiscaliza Varginha</strong> é uma ferramenta independente de fiscalização cidadã
-      que agrega dados públicos da Prefeitura e da Câmara Municipal de Varginha-MG em um painel
-      único, legível e auditável.
+      O <strong>Fiscaliza Varginha</strong> é uma ferramenta independente de fiscalização cidadã.
+      Não tem vínculo com partido, candidato ou órgão público: apenas reúne dados oficiais da
+      Prefeitura e da Câmara de Varginha-MG num painel único, legível e auditável — para que
+      qualquer pessoa confira a fonte e tire as próprias conclusões.
     </p>
 
     <div class="disclaimer-box">
@@ -138,6 +195,8 @@
       <a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener" style="color:inherit;font-weight:700;">Portal Betha</a>
       ou solicite via LAI (e-SIC). Ferramenta sem fins lucrativos, sem vínculo partidário.</p>
     </div>
+
+    <div id="auditoriaDados" class="data-health" hidden></div>
 
     <div class="sobre-grid">
       <div class="sobre-card">
@@ -253,6 +312,11 @@
             <td><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Acessar</a></td>
           </tr>
           <tr>
+            <td>Editais e Compras Municipais</td>
+            <td>Portal de Editais / Licitações da Prefeitura</td>
+            <td><a href="https://www.varginha.mg.gov.br/portal/editais" target="_blank" rel="noopener">Editais</a> · <a href="https://www.varginha.mg.gov.br/portal/editais/1" target="_blank" rel="noopener">Compras</a></td>
+          </tr>
+          <tr>
             <td>Emendas impositivas, vereadores, leis</td>
             <td>SAPL — Câmara Municipal de Varginha</td>
             <td><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">Acessar</a></td>
@@ -268,14 +332,19 @@
             <td><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/servidor" target="_blank" rel="noopener">Acessar</a></td>
           </tr>
           <tr>
-            <td>Licitações — nível nacional</td>
+            <td>Licitações, Contratos e Diretas (Nacional)</td>
             <td>PNCP — Portal Nacional de Contratações Públicas</td>
-            <td><a href="https://pncp.gov.br/" target="_blank" rel="noopener">Acessar</a></td>
+            <td><a href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener">Editais</a> · <a href="https://pncp.gov.br/app/contratos?q=varginha" target="_blank" rel="noopener">Contratos</a></td>
           </tr>
           <tr>
-            <td>Balanço consolidado do município</td>
-            <td>Fiscalizando com TCE-MG</td>
-            <td><a href="https://fiscalizandocomtce.tce.mg.gov.br/" target="_blank" rel="noopener">Acessar</a></td>
+            <td>Recursos Federais e Emendas PIX</td>
+            <td>Portal da Transparência da União (Varginha)</td>
+            <td><a href="https://portaldatransparencia.gov.br/localidades/3170701-varginha" target="_blank" rel="noopener">União</a> · <a href="https://portaldatransparencia.gov.br/transferencias-especiais" target="_blank" rel="noopener">Emendas PIX</a></td>
+          </tr>
+          <tr>
+            <td>Balanço e Obras Municipais</td>
+            <td>Fiscalizando com TCE-MG / Painel de Obras</td>
+            <td><a href="https://fiscalizandocomtce.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a> · <a href="https://www.tce.mg.gov.br/radarcompras" target="_blank" rel="noopener">Radar Compras</a></td>
           </tr>
         </tbody>
       </table>
@@ -391,18 +460,49 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
-      <strong>Fiscaliza Varginha</strong> · Painel Cidadão de Fiscalização<br>
-      <span class="muted">Ferramenta independente, sem fins lucrativos.</span>
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
     </div>
-    <div class="footer__sources">
-      <strong>Canais oficiais:</strong>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
         <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
         <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
       </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
     </div>
   </div>
 </footer>
@@ -433,6 +533,75 @@
 })();
 
 // Glossário standalone (sem precisar carregar data.js de 6 MB)
+(function () {
+  var box = document.getElementById("auditoriaDados");
+  if (!box || !window.fetch) return;
+  if (window.location.protocol === "file:") return;
+
+  function esc(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function levelLabel(level) {
+    if (level === "critical") return "Crítico";
+    if (level === "attention") return "Atenção";
+    return "OK";
+  }
+
+  function severityRank(item) {
+    return item.severity === "error" ? 0 : item.severity === "warning" ? 1 : item.severity === "info" ? 2 : 3;
+  }
+
+  fetch("data/chunks/auditoria_dados.json?v=" + Date.now(), { cache: "no-store" })
+    .then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    })
+    .then(function (audit) {
+      var summary = audit.summary || {};
+      var items = (audit.items || [])
+        .filter(function (item) { return item.severity !== "ok"; })
+        .sort(function (a, b) { return severityRank(a) - severityRank(b); })
+        .slice(0, 6);
+      var level = audit.level || "ok";
+      var generated = audit.gerado_em ? new Date(audit.gerado_em).toLocaleString("pt-BR") : "sem data";
+      var base = audit.atualizado_base && audit.atualizado_base.data_humana ? audit.atualizado_base.data_humana : "pendente";
+
+      box.className = "data-health data-health--" + esc(level);
+      box.hidden = false;
+      box.innerHTML = [
+        '<div class="data-health__head">',
+          '<div>',
+            '<h3>Saúde da coleta de dados</h3>',
+            '<p>Resumo automático das fontes, defasagens e limites conhecidos. Gerado em ' + esc(generated) + '. Base principal: ' + esc(base) + '.</p>',
+          '</div>',
+          '<span class="data-health__badge">' + esc(levelLabel(level)) + '</span>',
+        '</div>',
+        '<div class="data-health__stats">',
+          '<div class="data-health__stat"><strong>' + esc(summary.errors || 0) + '</strong><span>erros críticos</span></div>',
+          '<div class="data-health__stat"><strong>' + esc(summary.warnings || 0) + '</strong><span>avisos</span></div>',
+          '<div class="data-health__stat"><strong>' + esc(summary.info || 0) + '</strong><span>observações</span></div>',
+        '</div>',
+        items.length ? '<ul class="data-health__list">' + items.map(function (item) {
+          return '<li class="data-health__item">' +
+            '<strong>' + esc(item.title) + '</strong>' +
+            '<p>' + esc(item.detail) + '</p>' +
+            '<p>' + esc(item.action) + '</p>' +
+            (item.source ? '<span class="data-health__source">' + esc(item.source) + '</span>' : '') +
+          '</li>';
+        }).join("") + '</ul>' : '<p style="margin:10px 0 0;color:var(--muted);font-size:.88rem;">Nenhum alerta ativo na auditoria automática.</p>',
+      ].join("");
+    })
+    .catch(function () {
+      box.hidden = true;
+    });
+})();
+
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
 (function () {
   var s = document.createElement("script");
@@ -450,5 +619,6 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
   document.head.appendChild(s);
 })();
 </script>
+<script src="data-loader.js?v=20260608l"></script>
 </body>
 </html>

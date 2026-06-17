@@ -14,15 +14,15 @@
   // ============ CHUNKS POR PÁGINA ============
   // Mapeia data-page → chunks necessários. Body também pode sobrescrever via data-chunks.
   const CHUNKS_POR_PAGINA = {
-    "home":         ["resumo", "atualizado_em", "prefeitura", "emendas", "vereadores", "pncp"],
-    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "vereadores", "atualizado_em"],
-    "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "camara_betha", "camara_transparencia", "diarias", "atualizado_em"],
-    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos"],
-    "pessoal":      ["pessoal", "atualizado_em"],
-    "marcadores":   ["prefeitura", "emendas", "atualizado_em"],
-    "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "atualizado_em"],
-    "sobre":        [],
-    "cobrar":       [],
+    "home":         ["resumo", "atualizado_em", "auditoria_dados", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
+    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados"],
+    "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados"],
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados"],
+    "pessoal":      ["pessoal", "atualizado_em", "auditoria_dados"],
+    "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
+    "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados"],
+    "sobre":        ["atualizado_em", "auditoria_dados"],
+    "cobrar":       ["prefeitura", "camara_betha", "emendas", "pncp", "sancoes_fornecedores", "diario", "pessoal", "remuneracao_vereadores", "atualizado_em", "auditoria_dados"],
   };
 
   // ============ MÓDULOS DE CÓDIGO ============
@@ -35,10 +35,12 @@
     "modules/watchlist.js",
     "modules/dossie.js",
     "modules/dashboard.js",
+    "modules/home-cidadao.js",
     "modules/relatorios.js",
     "modules/diarias.js",
     "modules/atualizacoes.js",
     "modules/materia-cidada.js",
+    "modules/indice-relevancia.js",
     "modules/onboarding.js",
   ];
 
@@ -89,7 +91,7 @@
       for (const m of MODULOS) await loadScript(m);
     }
 
-    // Páginas sem dados (sobre, cobrar) só carregam módulos + app.js
+    // Páginas sem dados só carregam módulos + app.js
     if (chunks.length === 0) {
       try {
         await carregarModulos();

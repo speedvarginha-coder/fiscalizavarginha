@@ -36,9 +36,28 @@ Get-ChildItem -LiteralPath $source -File |
     Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $stage $_.Name) -Force
   }
 
-Copy-IfExists (Join-Path $source "modules") (Join-Path $stage "modules")
+New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Null
+@(
+  "utils.js",
+  "icons.js",
+  "glossario.js",
+  "categorias.js",
+  "watchlist.js",
+  "dossie.js",
+  "dashboard.js",
+  "home-cidadao.js",
+  "relatorios.js",
+  "diarias.js",
+  "atualizacoes.js",
+  "materia-cidada.js",
+  "indice-relevancia.js",
+  "onboarding.js"
+) | ForEach-Object {
+  Copy-IfExists (Join-Path $source "modules\$_") (Join-Path $stage "modules\$_")
+}
 Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
 Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
+Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snapshots")
 Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
 
 if (Test-Path $zipPath) {

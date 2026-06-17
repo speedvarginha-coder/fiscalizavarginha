@@ -40,7 +40,6 @@
       <a href="camara.html"     class="nav__link">Câmara</a>
       <a href="relatorios.html" class="nav__link nav__link--active">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
-      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
     </nav>
@@ -54,13 +53,33 @@
 
     <header class="bigheader">
       <span class="bigheader__kicker">FISCALIZAÇÃO INDEPENDENTE</span>
-      <h2 class="bigheader__title">Relatórios e sinais de atenção</h2>
+      <h1 class="bigheader__title">Relatórios e sinais de atenção</h1>
       <p class="bigheader__lead">
-        Esta página não acusa pessoas ou empresas. Ela traduz os dados públicos em
-        prioridades simples: onde há mais dinheiro, quais documentos pedir e por
-        onde qualquer cidadão pode começar a fiscalizar.
+        Esta página não acusa pessoas nem empresas. Ela traduz milhões em reais de
+        dados públicos em prioridades simples: onde está o maior dinheiro, quais
+        documentos pedir e por onde qualquer cidadão começa a fiscalizar hoje.
       </p>
       <p id="atualizado" class="muted small" style="margin-top:8px"></p>
+      <div id="dataHealthStrip" class="data-health-strip" hidden></div>
+      <script>
+      (function () {
+        var box = document.getElementById("dataHealthStrip");
+        if (!box || !window.fetch || location.protocol === "file:") return;
+        function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+        fetch("data/chunks/auditoria_dados.json?v=" + Date.now(), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (a) {
+            if (!a || !a.items) return;
+            var its = a.items.filter(function (i) { return i.severity === "warning"; });
+            if (!its.length) return;
+            box.hidden = false;
+            box.innerHTML = '<strong>⚠ Limites dos dados que alimentam estes sinais</strong><ul>' +
+              its.map(function (i) { return '<li>' + esc(i.detail) + '</li>'; }).join("") +
+              '</ul>';
+          })
+          .catch(function () {});
+      })();
+      </script>
       <div class="civic-actions" aria-label="Ações rápidas dos relatórios">
         <a href="#relatorioCidadao">Resumo cidadão</a>
         <a href="#prioridades-fiscalização">Prioridades</a>
@@ -274,22 +293,54 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
-      <strong>Fiscaliza Varginha</strong> · Painel Cidadão de Fiscalização<br>
-      <span class="muted">Relatórios independentes baseados em dados públicos.</span>
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
     </div>
-    <div class="footer__sources">
-      <strong>Fontes oficiais:</strong>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
       <ul>
-        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal Transparência</a></li>
-        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL Câmara</a></li>
-        <li><a href="https://www.varginha.mg.gov.br/portal/diario-oficial" target="_blank" rel="noopener">Diário Oficial</a></li>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
       </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
     </div>
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260520"></script>
+<script src="data-loader.js?v=20260608l"></script>
 </body>
 </html>
 

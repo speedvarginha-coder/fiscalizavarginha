@@ -40,7 +40,6 @@
       <a href="camara.html"     class="nav__link">Câmara</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
-      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
     </nav>
@@ -57,9 +56,10 @@
 
     <header class="bigheader">
       <span class="bigheader__kicker">PODER EXECUTIVO</span>
-      <h2 class="bigheader__title">Prefeitura</h2>
+      <h1 class="bigheader__title">Prefeitura</h1>
       <p class="bigheader__lead">
-        Aqui é onde o dinheiro é executado: contratos, folha, licitações, obras.
+        Aqui é onde o dinheiro vira contrato, folha, licitação e obra. Comece por um
+        contrato de alto valor — ele costuma puxar uma diária, um aluguel, um aditivo.
         O painel oficial completo é o <strong>Portal de Transparência Betha</strong>
         (sem login, atualizado diariamente).
       </p>
@@ -71,7 +71,7 @@
         <button type="button" data-pref-tab="diarias">Diárias</button>
         <a href="relatorios.html">Relatórios de fiscalização</a>
         <a href="#" id="btnBaixarPagina" class="btn-pdf">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
           Baixar página
         </a>
       </div>
@@ -87,10 +87,12 @@
       <button type="button" class="pref-tab is-active" data-pref-tab="visao">Visão geral <span id="badgeVisao"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="contratos">Contratos <span id="badgeContratos"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="diarias">Diárias <span id="badgeDiarias"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="frota">Frota <span id="badgeFrota"></span></button>
+      <button type="button" class="pref-tab" data-pref-tab="asfalto">Asfalto e buracos <span id="badgeAsfalto"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="alugueis">Aluguéis <span id="badgeAlugueis"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="eventos">Eventos <span id="badgeEventos"></span></button>
       <button type="button" class="pref-tab" data-pref-tab="licitacoes">Licitações <span id="badgeLicitacoes"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="fontes">Fontes</button>
+      <button type="button" class="pref-tab" data-pref-tab="fontes">Diário Oficial</button>
     </nav>
 
     <div class="pref-panels">
@@ -172,7 +174,8 @@
          <p id="healthSummary"></p>
       </div>
       <div id="contratosVencendoBlock"></div>
-      <div class="filterbar">
+      <button type="button" class="btn-filter-trigger" onclick="ZELA.toggleMobileFilters('contratosFilterbar')">🔍 Filtrar e Buscar Contratos</button>
+      <div id="contratosFilterbar" class="filterbar">
         <select id="filtroAnoContrato" aria-label="Filtrar por ano" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
           <option value="">Todos os anos</option>
           <option value="2026" selected>2026</option>
@@ -191,6 +194,7 @@
           <option value="5000000">Acima de R$ 5 milhões</option>
         </select>
         <span id="contratosContador" class="filterbar__count"></span>
+        <button type="button" class="btn-filter-close" onclick="ZELA.toggleMobileFilters('contratosFilterbar')">Aplicar Filtros</button>
       </div>
       <div id="contratos" class="contratos"></div>
       <div id="contratosMais" class="loadmore" hidden>
@@ -208,9 +212,31 @@
         Processos de compra abertos: o que a Prefeitura quer comprar agora.
         Acompanhar isso é a forma de fiscalizar <em>antes</em> do dinheiro sair.
       </p>
-      <div class="filterbar">
-        <input id="filtroLicitacao" type="search" placeholder="Buscar objeto ou modalidade…">
-        <select id="filtroValorLicitacao" aria-label="Filtrar por valor mínimo">
+
+      <div class="legal-context" style="margin-bottom: 20px; background: #fafafa; border-left: 4px solid var(--accent); padding: 15px; border-radius: 4px;">
+        <strong>📋 Portais Oficiais de Editais e Contratações Públicas:</strong>
+        <p class="muted small" style="margin: 5px 0 10px 0;">Consulte os editais e acompanhe os processos de compras em andamento diretamente nas fontes oficiais:</p>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <a class="btn-link" href="https://www.varginha.mg.gov.br/portal/editais" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">Portal de Editais</a>
+          <a class="btn-link" href="https://www.varginha.mg.gov.br/portal/editais/1" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">Licitações e Compras</a>
+          <a class="btn-link" href="https://www.varginha.mg.gov.br/transparencia" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">Portal Transparência</a>
+          <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">PNCP Editais</a>
+          <a class="btn-link" href="https://pncp.gov.br/app/contratacoes-diretas?q=varginha" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">PNCP Diretas</a>
+          <a class="btn-link" href="https://fiscalizandocomtce.tce.mg.gov.br" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #efebe9; border-radius: 4px; color: #4e342e; font-size: 0.78em; font-weight: 500; border: 1px solid #bcaaa4;">Painel TCE-MG</a>
+          <a class="btn-link" href="https://www.tce.mg.gov.br/radarcompras" target="_blank" rel="noopener" style="text-decoration:none; padding: 4px 8px; background: #efebe9; border-radius: 4px; color: #4e342e; font-size: 0.78em; font-weight: 500; border: 1px solid #bcaaa4;">Radar TCE-MG</a>
+        </div>
+      </div>
+
+      <button type="button" class="btn-filter-trigger" onclick="ZELA.toggleMobileFilters('licitacoesFilterbar')">🔍 Filtrar e Buscar Licitações</button>
+      <div id="licitacoesFilterbar" class="filterbar">
+        <select id="filtroAnoLicitacao" aria-label="Filtrar por ano" onchange="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
+          <option value="" selected>Todos os anos</option>
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+        <input id="filtroLicitacao" type="search" placeholder="Buscar objeto ou modalidade…" oninput="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
+        <select id="filtroValorLicitacao" aria-label="Filtrar por valor mínimo" onchange="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
           <option value="">Qualquer valor</option>
           <option value="50000">Acima de R$ 50 mil</option>
           <option value="100000">Acima de R$ 100 mil</option>
@@ -218,6 +244,7 @@
           <option value="1000000">Acima de R$ 1 milhão</option>
         </select>
         <span id="licitacoesContador" class="filterbar__count"></span>
+        <button type="button" class="btn-filter-close" onclick="ZELA.toggleMobileFilters('licitacoesFilterbar')">Aplicar Filtros</button>
       </div>
       <div id="licitacoes" class="licitacoes"></div>
       <div id="licitacoesMais" class="loadmore" hidden>
@@ -284,7 +311,7 @@
       <p class="block__lead">
         Levantamento de despesas classificadas como diárias na Prefeitura:
         secretaria, funcionário, cargo, valor, data e finalidade informada.
-        Ranking por pessoa com total acumulado e média por diária.
+        Ranking por pessoa com acumulado anual e maior valor mensal registrado.
       </p>
       <div class="stats" id="statsDiariasPrefeitura"></div>
       <div class="filterbar">
@@ -292,6 +319,9 @@
           <option value="">Todos os anos</option>
           <option value="2026" selected>Ano 2026</option>
           <option value="2025">Ano 2025</option>
+        </select>
+        <select id="filtroMesDiariasPrefeitura" aria-label="Filtrar diarias por mês">
+          <option value="">Todos os meses</option>
         </select>
         <select id="filtroSecretariaDiariasPrefeitura" aria-label="Filtrar por secretaria">
           <option value="">Todas as secretarias</option>
@@ -317,6 +347,60 @@
     </div>
 
     <!-- Diário Oficial -->
+    </section>
+
+    <section class="pref-panel" data-pref-panel="asfalto">
+    <div id="asfaltoBlock" class="block">
+      <h3 class="block__title">Asfalto, tapa-buraco e pavimentação</h3>
+      <p class="block__lead">
+        Recorte de obras públicas, contratos, licitações e compras com termos de CBUQ,
+        recapeamento, pavimentação, drenagem, tapa-buraco e itens próximos.
+      </p>
+      <div class="filterbar">
+        <select id="filtroAnoAsfalto" aria-label="Filtrar asfalto por ano">
+          <option value="" selected>Todos os anos</option>
+          <option value="2026">2026</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+        </select>
+        <input id="filtroBuscaAsfalto" type="search" placeholder="Buscar por rua, bairro, empresa, objeto..." oninput="ZELA.renderAsfaltoPrefeitura && ZELA.renderAsfaltoPrefeitura()">
+        <span id="asfaltoContador" class="filterbar__count"></span>
+      </div>
+      <div id="asfaltoPainel"></div>
+    </div>
+    </section>
+
+    <section class="pref-panel" data-pref-panel="frota">
+    <div id="frotaBlock" class="block">
+      <h3 class="block__title">Frota municipal</h3>
+      <p class="block__lead">
+        Veículos da Prefeitura: placa, tipo, modelo, próprio/locado, secretaria/centro de custo,
+        situação e gastos vinculados de combustível, manutenção, peças e serviços.
+      </p>
+      <div id="frotaStats" class="stats"></div>
+      <div class="filterbar">
+        <input id="filtroFrota" type="search" placeholder="Buscar placa, modelo, secretaria, fornecedor ou tipo de gasto...">
+        <select id="filtroSituacaoFrota" aria-label="Filtrar frota por situação">
+          <option value="">Todas as situações</option>
+        </select>
+        <select id="filtroAquisicaoFrota" aria-label="Filtrar por tipo de aquisição">
+          <option value="">Próprios, locados e cedidos</option>
+        </select>
+        <select id="filtroCentroFrota" aria-label="Filtrar por centro de custo">
+          <option value="">Todos os centros de custo</option>
+        </select>
+        <select id="ordenarFrota" aria-label="Ordenar frota">
+          <option value="gasto_desc">Maior gasto vinculado</option>
+          <option value="combustivel_desc">Maior gasto com combustível</option>
+          <option value="manutencao_desc">Maior gasto com manutenção</option>
+          <option value="modelo">Modelo/descrição</option>
+          <option value="centro">Centro de custo</option>
+        </select>
+        <span id="frotaContador" class="filterbar__count"></span>
+      </div>
+      <div id="frotaAudit" class="frota-audit"></div>
+      <div id="frotaLista" class="frota-list"></div>
+    </div>
     </section>
 
     <section class="pref-panel" data-pref-panel="fontes">
@@ -376,16 +460,49 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
-      <strong>Fiscaliza Varginha</strong> · Painel Cidadão de Fiscalização<br>
-      <span class="muted">Ferramenta independente, sem fins lucrativos.</span>
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
     </div>
-    <div class="footer__sources">
-      <strong>Fontes oficiais:</strong>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
       <ul>
-        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal Transparência</a></li>
-        <li><a href="https://www.varginha.mg.gov.br/portal/diario-oficial" target="_blank" rel="noopener">Diário Oficial</a></li>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
       </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
     </div>
   </div>
 </footer>

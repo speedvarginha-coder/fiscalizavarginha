@@ -29,11 +29,13 @@
   // População de Varginha-MG (Censo IBGE 2022). Usada para traduzir
   // totais em "quanto representa por morador" — número que o cidadão sente.
   const POP_VARGINHA = 135159;
+  window.ZELA.POP_VARGINHA = POP_VARGINHA;
   function perCapita(total) {
     const v = Number(total) || 0;
     if (v <= 0) return "";
     return `≈ ${fmtBRL(v / POP_VARGINHA)} por morador de Varginha`;
   }
+  window.ZELA.perCapita = perCapita;
 
   function $(id) { return document.getElementById(id); }
   function icon(nome, opts) {
@@ -98,6 +100,70 @@
   }
 
   // ============================================================
+  // MODAL DE CATEGORIA — popup focado com os contratos da categoria
+  // ============================================================
+  function abrirModalCategoria(catId) {
+    if (!window.ZELA.dossie || !window.ZELA.dossie.abrirComHtml) return;
+    const pf = (window.ZELA_DATA || {}).prefeitura || {};
+    const contratos = pf.contratos || [];
+    const meta = (window.ZELA.categorias || []).find(c => c.id === catId);
+    const label = meta ? meta.label : catId;
+
+    // Mantém o índice original para abrir o dossiê completo (ZELA.abrirContrato)
+    const lista = contratos
+      .map((c, idx) => ({ c, idx }))
+      .filter(o => window.ZELA.classificarItem(o.c) === catId)
+      .sort((a, b) => (Number(b.c.valor) || 0) - (Number(a.c.valor) || 0));
+
+    const total = lista.reduce((s, o) => s + (Number(o.c.valor) || 0), 0);
+    const LIMITE = 60;
+    const exibidos = lista.slice(0, LIMITE);
+
+    const linhas = exibidos.map(o => {
+      const c = o.c;
+      const objeto = cleanText(c.objeto || "Objeto não informado");
+      const empresa = cleanText(c.contratado || "Empresa não informada");
+      const ano = c.ano ? " · " + esc(String(c.ano)) : "";
+      const mod = c.modalidade ? " · " + esc(cleanText(c.modalidade)) : "";
+      return (
+        '<li style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--white);">' +
+          '<div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;">' +
+            '<strong style="font-size:.98rem;">' + esc(empresa) + '</strong>' +
+            '<strong style="color:var(--navy);white-space:nowrap;">' + fmtBRL(Number(c.valor) || 0) + '</strong>' +
+          '</div>' +
+          '<div style="font-size:.86rem;color:var(--muted);margin:4px 0 8px;line-height:1.4;">' +
+            esc(objeto.length > 160 ? objeto.slice(0, 159) + "…" : objeto) +
+            '<span style="color:var(--muted);">' + ano + mod + '</span>' +
+          '</div>' +
+          '<button type="button" class="btn-small" onclick="ZELA.abrirContrato(' + o.idx + ')">Ver detalhes e fonte</button>' +
+        '</li>'
+      );
+    }).join("");
+
+    const maisNota = lista.length > LIMITE
+      ? '<p class="muted small" style="margin-top:10px;">Mostrando os ' + LIMITE +
+        ' maiores de ' + fmtNum(lista.length) + '. Use a busca na aba Contratos para os demais.</p>'
+      : "";
+
+    const html =
+      '<div class="cat-modal">' +
+        '<h3 style="margin:0 0 4px;display:flex;align-items:center;gap:8px;">' +
+          icon(meta ? meta.iconKey : "documentos", { size: 22 }) + ' ' + esc(label) +
+        '</h3>' +
+        '<p class="muted" style="margin:0 0 14px;">' +
+          fmtNum(lista.length) + ' contrato' + (lista.length === 1 ? "" : "s") +
+          ' · total ' + fmtBRL(total) +
+          ' · clique em um contrato para ver a fonte oficial.' +
+        '</p>' +
+        (lista.length
+          ? '<ul style="list-style:none;padding:0;margin:0;">' + linhas + '</ul>' + maisNota
+          : '<p>Nenhum contrato encontrado nesta categoria.</p>') +
+      '</div>';
+
+    window.ZELA.dossie.abrirComHtml(html);
+  }
+
+  // ============================================================
   // CATEGORIAS — PREFEITURA
   // ============================================================
   function renderCategoriasPrefeitura() {
@@ -128,11 +194,14 @@
       el.querySelectorAll(".cat-chip").forEach(b => {
         b.classList.toggle("is-active", b.dataset.cat === cat && cat !== "");
       });
+      // Deixa a aba Contratos já filtrada por baixo (para quando fechar o popup)
       if (window.ZELA.filtrarContratosPorCategoria) {
         window.ZELA.filtrarContratosPorCategoria(cat);
       }
+      // Abre o popup focado só com os contratos da categoria escolhida.
+      // "Limpar filtro" (cat vazio) não abre popup.
       if (cat) {
-        document.querySelectorAll('.pref-tab[data-pref-tab="contratos"]').forEach(t => t.click());
+        abrirModalCategoria(cat);
       }
     };
     el.querySelectorAll(".cat-chip").forEach(btn => {
@@ -155,9 +224,14 @@
     // Cruzamento map
     const cruzMapLocal = {};
     ((pf.emendas_cruzadas) || []).forEach(c => { cruzMapLocal[c.numero + "/" + c.ano] = c; });
-    const totalPago = emendas.reduce((s, e) =>
-      s + (Number((cruzMapLocal[e.numero + "/" + e.ano] || {}).valor_pago_total) || 0), 0);
-    const pctPago = total > 0 ? Math.round((totalPago / total) * 100) : 0;
+    // Métrica honesta: quantas emendas têm o beneficiário recebendo pagamentos
+    // localizados no portal (status "encontrado"). NÃO somamos valor_pago_total
+    // porque ele é o total pago ao CNPJ — não a fração da emenda paga. Somá-lo
+    // contava o mesmo beneficiário várias vezes e gerava % > 100% (bug).
+    const localizadas = emendas.reduce((n, e) =>
+      n + (((cruzMapLocal[e.numero + "/" + e.ano] || {}).status === "encontrado") ? 1 : 0), 0);
+    const pctLocalizado = emendas.length > 0
+      ? Math.round((localizadas / emendas.length) * 100) : 0;
 
     // Top beneficiário
     const porBen = new Map();
@@ -190,9 +264,9 @@
       </div>
       <div class="placar-card placar-card--count">
         <span class="placar-card__icon">${icon("cheque", { size: 24 })}</span>
-        <span class="placar-card__valor">${pctPago}%</span>
-        <span class="placar-card__label">Foi efetivamente pago</span>
-        <span class="placar-card__sub"><strong>${fmtBRL(totalPago)}</strong> conferidos no portal</span>
+        <span class="placar-card__valor">${pctLocalizado}%</span>
+        <span class="placar-card__label">Beneficiário com pagamento localizado</span>
+        <span class="placar-card__sub"><strong>${fmtNum(localizadas)}</strong> de ${fmtNum(emendas.length)} emendas no portal</span>
       </div>
       <div class="placar-card placar-card--warn">
         <span class="placar-card__icon">${icon("alerta", { size: 24 })}</span>
@@ -201,6 +275,68 @@
         <span class="placar-card__sub">Promessas que ainda não viraram dinheiro</span>
       </div>
     `;
+  }
+
+  // ============================================================
+  // MODAL DE CATEGORIA — popup focado com as EMENDAS da categoria (Câmara)
+  // ============================================================
+  function abrirModalCategoriaEmendas(catId) {
+    if (!window.ZELA.dossie || !window.ZELA.dossie.abrirComHtml) return;
+    const emendas = (window.ZELA_DATA || {}).emendas || [];
+    const meta = (window.ZELA.categorias || []).find(c => c.id === catId);
+    const label = meta ? meta.label : catId;
+
+    const lista = emendas
+      .filter(e => window.ZELA.classificarItem({ objeto: e.objeto, beneficiario: e.beneficiario }) === catId)
+      .sort((a, b) => (Number(b.valor_brl) || 0) - (Number(a.valor_brl) || 0));
+
+    const total = lista.reduce((s, e) => s + (Number(e.valor_brl) || 0), 0);
+    const LIMITE = 60;
+    const exibidos = lista.slice(0, LIMITE);
+
+    const linhas = exibidos.map(e => {
+      const benef = cleanText(e.beneficiario || "Beneficiário não informado");
+      const autor = e.autor ? esc(cleanText(e.autor)) : "";
+      const objeto = cleanText(e.objeto || "");
+      const fonte = e.pdf
+        ? '<a href="' + esc(e.pdf) + '" target="_blank" rel="noopener" class="btn-small" style="text-decoration:none;display:inline-block;">Ver no SAPL (fonte oficial)</a>'
+        : '';
+      return (
+        '<li style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;background:var(--white);">' +
+          '<div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;">' +
+            '<strong style="font-size:.98rem;">' + esc(benef) + '</strong>' +
+            '<strong style="color:var(--navy);white-space:nowrap;">' + fmtBRL(Number(e.valor_brl) || 0) + '</strong>' +
+          '</div>' +
+          (autor ? '<div style="font-size:.8rem;color:var(--muted);margin-top:2px;">Emenda de <strong>' + autor + '</strong></div>' : '') +
+          (objeto ? '<div style="font-size:.86rem;color:var(--muted);margin:6px 0 8px;line-height:1.4;">' +
+            esc(objeto.length > 160 ? objeto.slice(0, 159) + "…" : objeto) + '</div>' : '<div style="margin-bottom:8px;"></div>') +
+          fonte +
+        '</li>'
+      );
+    }).join("");
+
+    const maisNota = lista.length > LIMITE
+      ? '<p class="muted small" style="margin-top:10px;">Mostrando as ' + LIMITE +
+        ' maiores de ' + fmtNum(lista.length) + '.</p>'
+      : "";
+
+    const html =
+      '<div class="cat-modal">' +
+        '<h3 style="margin:0 0 4px;display:flex;align-items:center;gap:8px;">' +
+          icon(meta ? meta.iconKey : "documentos", { size: 22 }) + ' ' + esc(label) +
+          ' <span style="font-weight:600;color:var(--muted);font-size:.9rem;">· emendas</span>' +
+        '</h3>' +
+        '<p class="muted" style="margin:0 0 14px;">' +
+          fmtNum(lista.length) + ' emenda' + (lista.length === 1 ? "" : "s") +
+          ' · total ' + fmtBRL(total) +
+          ' · clique em "Ver no SAPL" para a fonte oficial.' +
+        '</p>' +
+        (lista.length
+          ? '<ul style="list-style:none;padding:0;margin:0;">' + linhas + '</ul>' + maisNota
+          : '<p>Nenhuma emenda encontrada nesta categoria.</p>') +
+      '</div>';
+
+    window.ZELA.dossie.abrirComHtml(html);
   }
 
   // ============================================================
@@ -233,8 +369,13 @@
       el.querySelectorAll(".cat-chip").forEach(b => {
         b.classList.toggle("is-active", b.dataset.cat === cat && cat !== "");
       });
+      // Deixa a lista de emendas filtrada por baixo (para quando fechar o popup)
       if (window.ZELA.filtrarEmendasPorCategoria) {
         window.ZELA.filtrarEmendasPorCategoria(cat);
+      }
+      // Abre o popup focado só com as emendas da categoria. "Limpar" não abre.
+      if (cat) {
+        abrirModalCategoriaEmendas(cat);
       }
     };
     el.querySelectorAll(".cat-chip").forEach(btn => {

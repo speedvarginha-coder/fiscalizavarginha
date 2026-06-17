@@ -1,13 +1,26 @@
 import type { Entidade } from "@/data/entidades";
+import { rateioFuncoesReais, periodoReal } from "@/data/loaderDadosReais";
 
 interface Props {
   entidade: Entidade;
 }
 
+interface Fatia {
+  area: string;
+  percentual: number;
+  descricao: string;
+  cor: string;
+  valorFormatado?: string;
+}
+
 export function OndeVaiDinheiro({ entidade }: Props) {
-  const areas = [...entidade.areasGasto].sort(
-    (a, b) => b.percentual - a.percentual,
-  );
+  const real = rateioFuncoesReais(entidade.id);
+  const usandoReal = real !== null;
+  const periodo = usandoReal ? periodoReal(entidade.id) : null;
+
+  const fatias: Fatia[] = usandoReal
+    ? real
+    : [...entidade.areasGasto].sort((a, b) => b.percentual - a.percentual);
 
   return (
     <section
@@ -23,12 +36,34 @@ export function OndeVaiDinheiro({ entidade }: Props) {
       }}
     >
       <div style={{ marginBottom: 18 }}>
-        <h3
-          id="ovd-title"
-          style={{ fontSize: 22, fontWeight: 800, margin: 0 }}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            flexWrap: "wrap",
+          }}
         >
-          Para onde vai o dinheiro
-        </h3>
+          <h3 id="ovd-title" style={{ fontSize: 22, fontWeight: 800, margin: 0 }}>
+            Para onde vai o dinheiro
+          </h3>
+          <span
+            style={{
+              fontSize: 10,
+              fontWeight: 800,
+              textTransform: "uppercase",
+              letterSpacing: 1,
+              padding: "3px 8px",
+              borderRadius: 999,
+              background: usandoReal
+                ? "var(--color-success)"
+                : "var(--color-warning)",
+              color: "#ffffff",
+            }}
+          >
+            {usandoReal ? "✓ Dado real" : "≈ Estimativa"}
+          </span>
+        </div>
         <p
           style={{
             color: "var(--color-text-muted)",
@@ -36,13 +71,23 @@ export function OndeVaiDinheiro({ entidade }: Props) {
             marginTop: 4,
           }}
         >
-          Distribuição estimada do orçamento por área. Passe o mouse sobre cada
-          barra para entender o que está incluído.
+          {usandoReal ? (
+            <>
+              Distribuição <strong>real</strong> das despesas pagas por função
+              orçamentária{periodo ? ` (${periodo})` : ""}, extraída do Portal da
+              Transparência. Passe o mouse sobre cada barra para detalhes.
+            </>
+          ) : (
+            <>
+              Distribuição estimada do orçamento por área. Passe o mouse sobre
+              cada barra para entender o que está incluído.
+            </>
+          )}
         </p>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-        {areas.map((area) => (
+        {fatias.map((area) => (
           <div key={area.area}>
             <div
               style={{
@@ -50,6 +95,7 @@ export function OndeVaiDinheiro({ entidade }: Props) {
                 justifyContent: "space-between",
                 alignItems: "baseline",
                 marginBottom: 6,
+                gap: 10,
               }}
             >
               <span
@@ -63,12 +109,26 @@ export function OndeVaiDinheiro({ entidade }: Props) {
               </span>
               <span
                 style={{
-                  fontWeight: 800,
-                  fontSize: 14,
-                  color: area.cor,
+                  display: "flex",
+                  alignItems: "baseline",
+                  gap: 8,
+                  flexShrink: 0,
                 }}
               >
-                {area.percentual}%
+                {area.valorFormatado && (
+                  <span
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 600,
+                      color: "var(--color-text-muted)",
+                    }}
+                  >
+                    {area.valorFormatado}
+                  </span>
+                )}
+                <span style={{ fontWeight: 800, fontSize: 14, color: area.cor }}>
+                  {area.percentual}%
+                </span>
               </span>
             </div>
             <div
@@ -122,10 +182,21 @@ export function OndeVaiDinheiro({ entidade }: Props) {
           borderLeft: "4px solid var(--color-primary)",
         }}
       >
-        <strong>📊 Dado oficial:</strong> os percentuais reais estão no Portal
-        da Transparência da {entidade.nome}. Esta página apresenta estimativas
-        baseadas em médias de municípios similares — use-as como ponto de
-        partida e confirme nos dados oficiais.
+        {usandoReal ? (
+          <>
+            <strong>📊 Por função, não por área administrativa:</strong> aqui o
+            salário de cada setor já está somado à sua função (ex.: salário de
+            médico entra em Saúde). É o valor efetivamente <em>pago</em> no
+            período, conferível no Portal da Transparência da {entidade.nome}.
+          </>
+        ) : (
+          <>
+            <strong>📊 Dado oficial:</strong> os percentuais reais estão no
+            Portal da Transparência da {entidade.nome}. Esta página apresenta
+            estimativas baseadas em médias de municípios similares — use-as como
+            ponto de partida e confirme nos dados oficiais.
+          </>
+        )}
       </div>
     </section>
   );

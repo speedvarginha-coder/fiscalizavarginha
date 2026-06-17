@@ -1,3 +1,12 @@
+/* Inter — auto-hospedada, mesma fonte do painel-cidadao (unificação visual) */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Inter-Variable.woff2") format("woff2");
+}
+
 *,
 *::before,
 *::after {
@@ -7,34 +16,34 @@
 }
 
 :root {
-  /* Cores institucionais */
-  --color-primary: #003a70;
-  --color-primary-dark: #002a55;
-  --color-primary-light: #e8f0fb;
-  --color-accent: #fcc419;
-  --color-accent-dark: #e0a800;
+  /* Cores institucionais — alinhadas ao painel-cidadao (paleta canônica) */
+  --color-primary: #004b8d;
+  --color-primary-dark: #00376b;
+  --color-primary-light: #e6eff8;
+  --color-accent: #f2c230;
+  --color-accent-dark: #b8870b;
 
   /* Superfícies */
-  --color-bg: #f5f7fa;
+  --color-bg: #f7fafd;
   --color-surface: #ffffff;
-  --color-surface-alt: #fafbfc;
+  --color-surface-alt: #f4f8fc;
 
   /* Texto */
-  --color-text: #1a1a1a;
-  --color-text-muted: #5a6a7a;
-  --color-border: #d8dee4;
+  --color-text: #152131;
+  --color-text-muted: #607084;
+  --color-border: #dce6f0;
   --color-border-strong: #b8c2cc;
 
   /* Status */
-  --color-success: #2b8a3e;
-  --color-warning: #e67700;
-  --color-danger: #c92a2a;
+  --color-success: #078a4b;
+  --color-warning: #b8870b;
+  --color-danger: #c93632;
 
-  /* Entidades — cores próprias para distinguir visualmente */
-  --color-prefeitura: #1864ab;
-  --color-prefeitura-light: #e7f1fb;
-  --color-camara: #2b8a3e;
-  --color-camara-light: #e7f5ec;
+  /* Entidades — Prefeitura (navy) e Câmara (teal), alinhadas à paleta */
+  --color-prefeitura: #004b8d;
+  --color-prefeitura-light: #e6eff8;
+  --color-camara: #078a4b;
+  --color-camara-light: #e3f3ea;
 
   /* Layout */
   --radius-sm: 4px;
@@ -55,7 +64,7 @@ body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;

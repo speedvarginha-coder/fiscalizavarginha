@@ -1,0 +1,81 @@
+{
+  "gerado_em": "2026-06-17T14:26:23.113Z",
+  "level": "attention",
+  "summary": {
+    "errors": 0,
+    "warnings": 6,
+    "info": 1,
+    "ok": 1,
+    "total": 8
+  },
+  "atualizado_base": {
+    "iso": "2026-06-17T11:25:35",
+    "data_humana": "17/06/2026 - 11:25"
+  },
+  "items": [
+    {
+      "severity": "ok",
+      "id": "base-recente",
+      "title": "Base principal recente",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "action": "Manter rotina automatica ativa.",
+      "source": "atualizado_em.json"
+    },
+    {
+      "severity": "warning",
+      "id": "fonte-emenda-2026-erro",
+      "title": "Fonte de emendas 2026 com erro",
+      "detail": "1 fonte(s) retornaram erro. Exemplo: Camara - solicitacao de emenda impositiva municipal - HTTP Error 404: Componente não encontrado.",
+      "action": "Revisar URL da Camara e, se necessario, substituir por fonte oficial vigente ou LAI.",
+      "source": "fontes_emendas_2026.json"
+    },
+    {
+      "severity": "warning",
+      "id": "emendas-2026-sem-lista",
+      "title": "Emendas 2026 sem lista consolidada",
+      "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
+      "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
+      "source": "fontes_emendas_2026.json"
+    },
+    {
+      "severity": "warning",
+      "id": "pessoal-prefeitura-preservada",
+      "title": "Pessoal da Prefeitura preservado da ultima base completa",
+      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (3990 servidores) para nao reduzir a cobertura.",
+      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
+      "source": "pessoal.json"
+    },
+    {
+      "severity": "warning",
+      "id": "indice-parcial",
+      "title": "Indice parlamentar parcial",
+      "detail": "A menor cobertura automatica do indice e 97.1%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.",
+      "action": "Nao tratar o ranking como definitivo; publicar sempre a cobertura junto da nota.",
+      "source": "indice_relevancia.json"
+    },
+    {
+      "severity": "info",
+      "id": "pncp-apoio",
+      "title": "PNCP usado como fonte auxiliar",
+      "detail": "A base PNCP serve para cruzamento e pode nao retornar todos os registros do municipio.",
+      "action": "Conferir manualmente no PNCP quando o contrato for sensivel.",
+      "source": "pncp.json"
+    },
+    {
+      "severity": "warning",
+      "id": "cnpj-falhas",
+      "title": "Falhas de consulta CNPJ",
+      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
+      "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
+      "source": "cnpjs.json"
+    },
+    {
+      "severity": "warning",
+      "id": "camara-despesa-sem-contrato",
+      "title": "Fornecedores da Camara sem contrato vinculado automaticamente",
+      "detail": "14 dos 20 maiores fornecedores de despesas nao bateram com contratos vigentes por nome. Exemplos: VERSÃO BR COMUNICAÇÃO E MARKETING LTDA; VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO.",
+      "action": "Cruzar por CNPJ quando a fonte permitir e manter botao de conferencia direta no Betha.",
+      "source": "camara_betha.json"
+    }
+  ]
+}

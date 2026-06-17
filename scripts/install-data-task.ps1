@@ -8,6 +8,10 @@ param(
 
   [switch]$SkipTests,
   [switch]$SkipPackage,
+  [switch]$OnlyIfChanged,
+
+  [ValidateSet("Full", "Sapl", "NoHeavy")]
+  [string]$CollectorMode = "Full",
 
   [string]$TaskName = "Fiscaliza Varginha - Atualizar dados"
 )
@@ -29,6 +33,11 @@ $argList = @(
 
 if ($SkipTests) { $argList += "-SkipTests" }
 if ($SkipPackage) { $argList += "-SkipPackage" }
+if ($OnlyIfChanged) { $argList += "-OnlyIfChanged" }
+if ($CollectorMode -ne "Full") {
+  $argList += "-CollectorMode"
+  $argList += $CollectorMode
+}
 
 $action = New-ScheduledTaskAction `
   -Execute "powershell.exe" `
@@ -38,7 +47,7 @@ $action = New-ScheduledTaskAction `
 if ($Mode -eq "Daily") {
   $trigger = New-ScheduledTaskTrigger -Daily -At $At
 } else {
-  $start = (Get-Date).Date.AddMinutes(5)
+  $start = (Get-Date).AddMinutes(5)
   $trigger = New-ScheduledTaskTrigger -Once -At $start `
     -RepetitionInterval (New-TimeSpan -Minutes $IntervalMinutes) `
     -RepetitionDuration (New-TimeSpan -Days 3650)
@@ -69,3 +78,5 @@ if ($Mode -eq "Daily") {
 }
 Write-Host "Logs:"
 Write-Host "  $(Join-Path $root 'private\logs')"
+Write-Host "Script:"
+Write-Host "  powershell.exe $($argList -join ' ')"

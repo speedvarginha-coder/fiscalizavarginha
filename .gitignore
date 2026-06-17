@@ -48,6 +48,8 @@ playwright/.cache/
 *.backup
 *.orig
 *.tmp
+old_*.html
+temp_*.html
 *~
 .DS_Store
 Thumbs.db
@@ -72,13 +74,19 @@ _opensquad/_browser_profile/
 _opensquad/_investigations/
 
 # ---- Dados brutos grandes (regeneráveis pelo coletor) ----
-# Os JSONs em painel-cidadao/data/ são regenerados; só commitar se necessário.
-painel-cidadao/data/camara_anos.json
-painel-cidadao/data/diarias.json
-painel-cidadao/data/pessoal.json
+# JSONs em painel-cidadao/data/ (raiz) são staging do coletor e duplicam
+# painel-cidadao/data/chunks/ (única pasta publicada no deploy). Não versionar
+# a raiz — só os chunks e o manifest.json.
+painel-cidadao/data/*.json
+!painel-cidadao/data/manifest.json
+
+# data.js (monolito ~6,6MB, fallback file://) é gerado pelo coletor.py.
+# Regenerável e copiado ao empacotar — não versionar (evita diff diário de MBs).
+painel-cidadao/data.js
 
 # ---- Screenshots de QA (não publicáveis em prod) ----
 *.png
+__fc.png
 !painel-cidadao/favicon.svg
 !painel-cidadao/assets/**/*.png
 

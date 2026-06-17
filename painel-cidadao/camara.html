@@ -40,7 +40,6 @@
       <a href="camara.html"     class="nav__link nav__link--active">Câmara</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
-      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
     </nav>
@@ -56,78 +55,51 @@
 
     <header class="bigheader">
       <span class="bigheader__kicker">PODER LEGISLATIVO</span>
-      <h2 class="bigheader__title">Câmara Municipal</h2>
+      <h1 class="bigheader__title">Câmara Municipal</h1>
       <p class="bigheader__lead">
-        18 vereadores eleitos para 4 anos. Eles aprovam as leis, votam o orçamento
-        e cobram o Prefeito. Os dados abaixo são da produção legislativa de
-        <strong>2025 inteiro</strong>, extraídos do SAPL (sistema oficial da Câmara).
+        18 vereadores que você elegeu decidem as leis, votam o orçamento e deveriam
+        cobrar o Prefeito. Veja o que cada um produziu — presença, matérias e para onde
+        foram as emendas. Os dados abaixo cobrem <strong>2025 inteiro</strong>, extraídos
+        do SAPL (sistema oficial da Câmara).
       </p>
       <p id="atualizado" class="muted small" style="margin-top:8px"></p>
+      <div id="dataHealthStrip" class="data-health-strip" hidden></div>
+      <script>
+      (function () {
+        var box = document.getElementById("dataHealthStrip");
+        if (!box || !window.fetch || location.protocol === "file:") return;
+        var RE = /camara|emenda|indice/i;
+        function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+        fetch("data/chunks/auditoria_dados.json?v=" + Date.now(), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (a) {
+            if (!a || !a.items) return;
+            var its = a.items.filter(function (i) { return i.severity === "warning" && RE.test(i.source || ""); });
+            if (!its.length) return;
+            box.hidden = false;
+            box.innerHTML = '<strong>⚠ Limites conhecidos desta base</strong><ul>' +
+              its.map(function (i) { return '<li>' + esc(i.detail) + '</li>'; }).join("") +
+              '</ul>';
+          })
+          .catch(function () {});
+      })();
+      </script>
       <div class="civic-actions" aria-label="Ações rápidas da Câmara">
         <a href="#gastosPalavraChaveCamara">Perguntar aos dados</a>
+        <a href="#indiceRelevancia">Índice de relevância</a>
         <a href="#vereadores">Ver vereadores</a>
         <a href="#emendas">Emendas e CNPJs</a>
         <a href="#diariasCamaraBlock">Diárias</a>
       </div>
     </header>
 
-    <!-- PLACAR DO DINHEIRO -->
-    <div id="placarCamara" class="placar" aria-label="Placar do dinheiro da Câmara"></div>
-
-    <!-- FILTROS RÁPIDOS POR CATEGORIA -->
-    <div id="catChipsCamara" class="cat-chips" aria-label="Filtrar emendas por categoria"></div>
-
-    <div id="camaraLive" class="block" hidden>
-      <h3 class="block__title">Execução Orçamentária — Câmara</h3>
+    <section class="block camara-index-spotlight" aria-label="Índice de relevância dos vereadores">
+      <h3 class="block__title">Índice de relevância dos vereadores</h3>
       <p class="block__lead">
-        Quanto a Câmara pagou a fornecedores externos no ano. Fonte: Portal de
-        Transparência da Câmara (Betha), atualizado a cada coleta.
+        Este bloco aparece primeiro porque ajuda o cidadão a entender, de forma rápida,
+        quem produziu, fiscalizou e gerou atos com maior efeito público. A nota é
+        comparativa e auditável: não mede popularidade, partido ou opinião.
       </p>
-      <div class="stats" id="statsCamaraBetha"></div>
-
-      <h4 style="margin:24px 0 8px">Top fornecedores <span id="anoCamaraBetha"></span></h4>
-      <div id="topFornecedoresCamara" class="forn-list"></div>
-
-      <div id="contratosCamaraBlock" class="block" style="margin-top:24px">
-        <h4>Contratos vigentes</h4>
-        <p class="muted small">Busque pelo número, empresa, CNPJ ou objeto e use <strong>Ver detalhes e fonte</strong> para conferir a procedência no Betha e no site da Câmara.</p>
-        <div class="filterbar">
-          <input id="filtroContratoCamara" type="search" placeholder="Buscar nº do contrato, empresa, CNPJ, objeto...">
-          <span id="contratosContadorCamara" class="filterbar__count"></span>
-        </div>
-        <div id="contratosCamara" class="contratos-list"></div>
-        <div id="contratosCamaraMais" class="loadmore" hidden>
-          <button type="button" onclick="ZELA.maisContratosCamara()">Mostrar mais</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="block">
-      <div class="block__titlerow">
-        <h3 class="block__title">O ano em números</h3>
-        <div class="ano-chips" role="group" aria-label="Escolher ano">
-          <button type="button" class="ano-chip ano-chip--active" data-ano="2025">2025</button>
-          <button type="button" class="ano-chip" data-ano="2026">2026</button>
-        </div>
-      </div>
-      <div class="stats" id="stats"></div>
-
-      <div class="card highlight">
-        <span class="highlight__tag">Destaque</span>
-        <p id="destaque" class="highlight__body"></p>
-      </div>
-
-      <div id="gastosPalavraChaveCamara" class="keyword-audit"></div>
-    </div>
-
-    <div class="block">
-      <h3 class="block__title">Os vereadores</h3>
-      <p class="block__lead">
-        Veja o que cada um produziu em 2025: quanto pediu para o bairro (indicações),
-        quanto fiscalizou a Prefeitura (requerimentos), quantos projetos de lei
-        e quantas emendas direcionou ao orçamento.
-      </p>
-
       <div class="method-card">
         <div>
           <span class="method-card__tag">Observatório Público de Varginha</span>
@@ -146,17 +118,89 @@
         </ul>
       </div>
 
+      <div id="indiceRelevancia" class="indice-relevancia" aria-live="polite"></div>
+    </section>
+
+    <!-- PLACAR DO DINHEIRO -->
+    <div id="placarCamara" class="placar" aria-label="Placar do dinheiro da Câmara"></div>
+
+    <!-- SUB-NAVEGAÇÃO POR SEÇÃO (reduz o scroll: mostra uma seção por vez) -->
+    <nav class="camara-subnav" aria-label="Seções da Câmara">
+      <button type="button" class="csec-btn csec-btn--active" data-go="geral">Visão geral</button>
+      <button type="button" class="csec-btn" data-go="vereadores">Vereadores</button>
+      <button type="button" class="csec-btn" data-go="emendas">Emendas</button>
+      <button type="button" class="csec-btn" data-go="atividade">Atividade</button>
+      <button type="button" class="csec-btn" data-go="diarias">Diárias</button>
+    </nav>
+
+    <section id="remuneracaoVereadores" class="salary-transparency" aria-label="Subsídio e remuneração dos vereadores" data-csec="vereadores"></section>
+
+    <!-- FILTROS RÁPIDOS POR CATEGORIA -->
+    <div id="catChipsCamara" class="cat-chips" aria-label="Filtrar emendas por categoria" data-csec="emendas"></div>
+
+    <div id="camaraLive" class="block" hidden data-csec="geral">
+      <h3 class="block__title">Execução Orçamentária — Câmara</h3>
+      <p class="block__lead">
+        Quanto a Câmara pagou a fornecedores externos no ano. Fonte: Portal de
+        Transparência da Câmara (Betha), atualizado a cada coleta.
+      </p>
+      <div class="stats" id="statsCamaraBetha"></div>
+
+      <h4 style="margin:24px 0 8px">Top fornecedores <span id="anoCamaraBetha"></span></h4>
+      <div id="topFornecedoresCamara" class="forn-list"></div>
+      <div id="contratosCamaraAviso" class="report-note" style="margin-top:12px" hidden aria-live="polite"></div>
+
+      <div id="contratosCamaraBlock" class="block" style="margin-top:24px">
+        <h4>Contratos vigentes</h4>
+        <p class="muted small">Busque pelo número, empresa, CNPJ ou objeto e use <strong>Ver detalhes e fonte</strong> para conferir a procedência no Betha e no site da Câmara.</p>
+        <div class="filterbar">
+          <input id="filtroContratoCamara" type="search" placeholder="Buscar nº do contrato, empresa, CNPJ, objeto...">
+          <span id="contratosContadorCamara" class="filterbar__count"></span>
+        </div>
+        <div id="contratosCamara" class="contratos-list"></div>
+        <div id="contratosCamaraMais" class="loadmore" hidden>
+          <button type="button" onclick="ZELA.maisContratosCamara()">Mostrar mais</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="block" data-csec="geral">
+      <div class="block__titlerow">
+        <h3 class="block__title">O ano em números</h3>
+        <div class="ano-chips" role="group" aria-label="Escolher ano">
+          <button type="button" class="ano-chip ano-chip--active" data-ano="2025">2025</button>
+          <button type="button" class="ano-chip" data-ano="2026">2026</button>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+
+      <div class="card highlight">
+        <span class="highlight__tag">Destaque</span>
+        <p id="destaque" class="highlight__body"></p>
+      </div>
+
+      <div id="gastosPalavraChaveCamara" class="keyword-audit"></div>
+    </div>
+
+    <div class="block" data-csec="vereadores">
+      <h3 class="block__title">Os vereadores</h3>
+      <p class="block__lead">
+        Veja o que cada um produziu em 2025: quanto pediu para o bairro (indicações),
+        quanto fiscalizou a Prefeitura (requerimentos), quantos projetos de lei
+        e quantas emendas direcionou ao orçamento.
+      </p>
+
       <div class="filterbar">
         <select id="filtroAnoCamara" aria-label="Escolher ano da avaliação da Câmara">
           <option value="2025">Ano 2025</option>
           <option value="2026">Ano 2026</option>
         </select>
         <input id="filtroVer" type="search" placeholder="Filtrar por nome…">
-        <select id="ordenarVer">
+        <select id="ordenarVer" aria-label="Ordenar vereadores">
+          <option value="requerimentos" selected>Mais requerimentos</option>
           <option value="total">Mais ativos</option>
           <option value="emendas">Mais emendas</option>
           <option value="indicacoes">Mais indicações</option>
-          <option value="requerimentos">Mais requerimentos</option>
           <option value="projetos_lei">Mais projetos de lei</option>
           <option value="mocoes">Mais moções/homenagens</option>
         </select>
@@ -166,7 +210,7 @@
     </div>
 
     <!-- ===== RESUMO SEMANAL ===== -->
-    <div class="block" id="resumoSemanalBlock">
+    <div class="block" id="resumoSemanalBlock" data-csec="atividade">
       <h3 class="block__title">Resumo Semanal — O que a Câmara fez</h3>
       <p class="block__lead">
         O cidadão vota a cada 4 anos, mas deve fiscalizar toda semana.
@@ -229,7 +273,7 @@
     </div>
     <!-- ===== FIM RESUMO SEMANAL ===== -->
 
-    <div class="block">
+    <div class="block" data-csec="emendas">
       <h3 class="block__title">Emendas Impositivas — promessa × pagamento</h3>
       <p class="block__lead">
         Cada vereador tem cota fixa do orçamento para destinar a entidades, obras
@@ -275,14 +319,14 @@
           <option value="">Todas as ONGs/entidades</option>
         </select>
         <input id="filtroEm" type="search" placeholder="Buscar entidade, autor ou CNPJ…">
-        <select id="ordenarEm">
+        <select id="ordenarEm" aria-label="Ordenar emendas">
           <option value="valor_desc">Maior valor</option>
           <option value="valor_asc">Menor valor</option>
           <option value="autor">Por vereador</option>
           <option value="numero">Mais recentes</option>
           <option value="pago">Maior pago pela Prefeitura</option>
         </select>
-        <select id="filtroStatus">
+        <select id="filtroStatus" aria-label="Filtrar emendas por status de pagamento">
           <option value="">Todos os status</option>
           <option value="encontrado">Com pagamento</option>
           <option value="execucao_direta">Execução direta</option>
@@ -300,11 +344,11 @@
       </div>
     </div>
 
-    <div id="diariasCamaraBlock" class="block">
-      <h3 class="block__title">Diárias de viagem - Câmara</h3>
+    <div id="diariasCamaraBlock" class="block" data-csec="diarias">
+      <h3 class="block__title">Diárias de viagem — Câmara</h3>
       <p class="block__lead">
         Levantamento separado das diárias pagas a vereadores e servidores da
-        Câmara: funcionário, cargo, destino, quantidade, valor unitário e total.
+        Câmara: funcionário, cargo, destino, quantidade, valor unitário, acumulado anual e ranking mensal.
       </p>
       <div class="stats" id="statsDiariasCamara"></div>
       <div class="filterbar">
@@ -312,6 +356,9 @@
           <option value="">Todos os anos</option>
           <option value="2026" selected>Ano 2026</option>
           <option value="2025">Ano 2025</option>
+        </select>
+        <select id="filtroMesDiariasCamara" aria-label="Filtrar diarias por mês">
+          <option value="">Todos os meses</option>
         </select>
         <select id="filtroSecretariaDiariasCamara" aria-label="Filtrar por setor ou cargo">
           <option value="">Todos os cargos/setores</option>
@@ -356,21 +403,121 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
-      <strong>Fiscaliza Varginha</strong> · Painel Cidadão de Fiscalização<br>
-      <span class="muted">Ferramenta independente, sem fins lucrativos.</span>
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
     </div>
-    <div class="footer__sources">
-      <strong>Fontes oficiais:</strong>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
       <ul>
-        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Câmara de Varginha</a></li>
-        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Site oficial da Câmara</a></li>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
       </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
     </div>
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260520"></script>
+<script src="data-loader.js?v=20260608l"></script>
+<script>
+/* Sub-navegação da Câmara: mostra uma seção por vez (reduz scroll gigante).
+   Não interfere na renderização async — só alterna a classe csec-hidden. */
+(function () {
+  var nav = document.querySelector(".camara-subnav");
+  if (!nav) return;
+  var blocos = document.querySelectorAll("[data-csec]");
+  var botoes = nav.querySelectorAll(".csec-btn");
+
+  function mostrar(sec) {
+    blocos.forEach(function (b) {
+      b.classList.toggle("csec-hidden", b.getAttribute("data-csec") !== sec);
+    });
+    botoes.forEach(function (btn) {
+      btn.classList.toggle("csec-btn--active", btn.getAttribute("data-go") === sec);
+    });
+    try { history.replaceState(null, "", "#" + sec); } catch (e) {}
+  }
+
+  botoes.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      mostrar(btn.getAttribute("data-go"));
+      nav.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
+  });
+
+  // Os atalhos do cabeçalho (civic-actions) apontam para IDs que agora vivem
+  // dentro das abas. Ao clicar, troca para a aba do alvo e então rola até ele.
+  document.querySelectorAll('.civic-actions a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (ev) {
+      var alvo = document.getElementById(a.getAttribute("href").slice(1));
+      if (!alvo) return;
+      var cont = alvo.closest("[data-csec]");
+      if (!cont) return;
+      ev.preventDefault();
+      mostrar(cont.getAttribute("data-csec"));
+      requestAnimationFrame(function () {
+        alvo.scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+    });
+  });
+
+  // Seção inicial: hash da URL (se válido) ou "geral"
+  var valido = ["geral", "vereadores", "emendas", "atividade", "diarias"];
+  
+  function verificarHash(hash) {
+    var h = (hash || "").replace("#", "");
+    if (h === "indiceRelevancia") {
+      mostrar("geral");
+      requestAnimationFrame(function () {
+        var alvo = document.getElementById("indiceRelevancia");
+        if (alvo) alvo.scrollIntoView({ block: "start", behavior: "smooth" });
+      });
+    } else if (valido.indexOf(h) >= 0) {
+      mostrar(h);
+    } else {
+      mostrar("geral");
+    }
+  }
+
+  verificarHash(location.hash);
+
+  window.addEventListener("hashchange", function () {
+    verificarHash(location.hash);
+  });
+})();
+</script>
 </body>
 </html>
 

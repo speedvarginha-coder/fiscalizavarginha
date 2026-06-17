@@ -94,6 +94,12 @@ PIPELINE DE DADOS (offline, roda no servidor de quem mantém o painel):
     └── checklist-publicacao.md
 ```
 
+### Produto publicado
+
+O produto oficial e a pasta `painel-cidadao/`. O pacote de publicacao deve ser gerado por `npm run deploy:zip`, que copia apenas arquivos publicos permitidos, chunks de dados, snapshots e modulos autorizados.
+
+Se houver um `dashboard/` React/Vite no repositorio, ele deve ser considerado laboratorio ou futura migracao. Ele nao deve ser publicado junto com o painel estatico sem uma decisao explicita de migracao, checklist proprio e testes equivalentes.
+
 ---
 
 ## 3. O ciclo de vida de um carregamento
@@ -181,7 +187,7 @@ Utilitários puros, sem efeito colateral.
 | `fmtBRL(n)` | Formata número como "R$ 1.234,56" |
 | `fmtMi(n)` | "R$ 1,2 mi" |
 | `fmtNum(n)` | Localiza número pt-BR |
-| `cleanText(s)` | Corrige mojibake (Ã§ → ç) e caracteres corrompidos |
+| `cleanText(s)` | Corrige mojibake e caracteres corrompidos |
 | `esc(s)` | Escape HTML (`<` → `&lt;`) |
 | `jsSafe(s)` | Escape para uso em `onclick="...'$s'..."` |
 | `norm(s)` | Lowercase sem acentos (para busca) |

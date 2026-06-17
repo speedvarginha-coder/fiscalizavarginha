@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Como cobrar · Fiscaliza Varginha</title>
-<meta name="description" content="Os 8 canais oficiais para o cidadão cobrar a Prefeitura, a Câmara e denunciar irregularidades.">
+<meta name="description" content="Canais oficiais para o cidadão pedir documentos, acompanhar dados públicos e cobrar respostas da Prefeitura e da Câmara.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Como cobrar · Fiscaliza Varginha">
-<meta property="og:description" content="8 canais oficiais para o cidadão cobrar a Prefeitura, a Câmara e denunciar irregularidades em Varginha-MG.">
+<meta property="og:description" content="Canais oficiais para o cidadão pedir documentos, acompanhar dados públicos e cobrar respostas em Varginha-MG.">
 <meta property="og:locale"      content="pt_BR">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Como cobrar · Fiscaliza Varginha">
-<meta name="twitter:description" content="Canais oficiais para cobrar a Prefeitura e denunciar irregularidades em Varginha-MG.">
+<meta name="twitter:description" content="Canais oficiais para pedir documentos e cobrar respostas da Prefeitura e da Câmara em Varginha-MG.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="cobrar">
@@ -36,7 +36,6 @@
       <a href="camara.html"     class="nav__link">Câmara</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
-      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta nav__link--active">Como cobrar</a>
     </nav>
@@ -50,161 +49,965 @@
       <a href="index.html">← Voltar ao início</a>
     </p>
 
-    <h2 class="section__title">Como cobrar</h2>
-    <p class="section__lead">
-      Saber é o primeiro passo. O segundo é agir. Estes são os canais oficiais
-      para cobrar a <strong>Prefeitura</strong> e a <strong>Câmara</strong> separadamente.
-    </p>
+    <section class="cobrar-hero" aria-labelledby="cobrarTitulo">
+      <div class="cobrar-hero__copy">
+        <span class="cobrar-hero__eyebrow">Roteiro cidadão</span>
+        <h1 id="cobrarTitulo" class="section__title">Como cobrar sem se perder</h1>
+        <p class="section__lead">
+          Você não precisa ser vereador, advogado ou especialista para pedir documento público.
+          O caminho é simples: escolha um fato, abra a fonte oficial, faça uma pergunta objetiva e guarde o protocolo.
+        </p>
+      </div>
+      <div class="cobrar-kpis" aria-label="Resumo dos direitos do cidadão">
+        <article><strong>R$ 0</strong><span>para pedir informação</span></article>
+        <article><strong>20 dias</strong><span>prazo legal de resposta</span></article>
+        <article><strong>7</strong><span>caminhos de cobrança</span></article>
+        <article><strong>20</strong><span>modelos prontos</span></article>
+      </div>
+    </section>
 
-    <div class="cobrar-block cobrar-templates">
+    <section class="cobrar-quick" aria-labelledby="caminhoCidadao">
+      <div class="cobrar-quick__head">
+        <span class="bigheader__kicker">COMECE PELA SUA DÚVIDA</span>
+        <h2 id="caminhoCidadao">O que você quer entender agora?</h2>
+        <p>Escolha um caminho. O painel mostra o dado, a fonte e a próxima pergunta que pode ser protocolada.</p>
+      </div>
+      <div class="cobrar-path-grid">
+        <a class="cobrar-path" href="#filaCobranca">
+          <span>1</span>
+          <strong>Quero saber o que cobrar primeiro</strong>
+          <small>Abre a fila de prioridades com pergunta pronta.</small>
+        </a>
+        <a class="cobrar-path" href="prefeitura.html?tab=asfalto&q=asfalto">
+          <span>2</span>
+          <strong>Quero fiscalizar asfalto e buracos</strong>
+          <small>Mostra contratos, datas, valores e pendências.</small>
+        </a>
+        <a class="cobrar-path" href="prefeitura.html?tab=frota">
+          <span>3</span>
+          <strong>Quero entender gastos com frota</strong>
+          <small>Ajuda a pedir diário de bordo, combustível e manutenção.</small>
+        </a>
+        <a class="cobrar-path" href="atualizacoes.html?tab=diario">
+          <span>4</span>
+          <strong>Quero ver o Diário Oficial</strong>
+          <small>Mostra edições resumidas e botão para o PDF oficial.</small>
+        </a>
+        <a class="cobrar-path" href="#lais">
+          <span>5</span>
+          <strong>Quero copiar um pedido LAI</strong>
+          <small>Vai direto aos modelos prontos por tema.</small>
+        </a>
+      </div>
+    </section>
+
+    <div id="filaCobranca" class="cobrar-block cobrar-risk">
       <div class="templates-head">
         <div>
-          <span class="bigheader__kicker">TEXTOS PRONTOS</span>
-          <h3 class="cobrar-block__title">Copie, complete e envie pelo canal oficial</h3>
+          <span class="bigheader__kicker">FILA DE COBRANÇA</span>
+          <h3 class="cobrar-block__title">Comece pelas pendências com maior prioridade</h3>
           <p>
-            Use estes modelos para pedir documentos sem acusar ninguém antes da conferência.
-            Troque os campos entre colchetes pelos dados do contrato, diária, emenda ou aluguel.
+            O semáforo junta contratos, obras/asfalto, frota, emendas, Diário Oficial,
+            folha e fornecedores. Ele não afirma problema; apenas organiza o que
+            falta conferir e já entrega a pergunta para cobrar pelo canal oficial.
           </p>
         </div>
-        <a class="btn-link" href="https://www.varginha.mg.gov.br/portal/servicos_online" target="_blank" rel="noopener">Abrir e-SIC</a>
+        <div id="filaCobrancaStats" class="risk-stats" aria-live="polite"></div>
       </div>
-
-      <div class="template-grid">
-        <article class="template-card">
-          <h4>Contrato</h4>
-          <textarea readonly>Solicito, com fundamento na Lei de Acesso à Informação (Lei Federal nº 12.527/2011), cópia integral do processo administrativo referente ao contrato [NÚMERO/ANO], firmado com [CONTRATADA], no valor de [VALOR], incluindo termo de referência, edital ou justificativa da contratação, proposta vencedora, pesquisa de preços, parecer jurídico, nota de empenho, notas fiscais, liquidações, comprovantes de pagamento, aditivos, publicações oficiais e relatório do fiscal do contrato.</textarea>
-          <button type="button" class="copy-template">Copiar modelo</button>
-        </article>
-
-        <article class="template-card">
-          <h4>Diária</h4>
-          <textarea readonly>Solicito informações e documentos referentes à diária paga a [NOME], cargo/função [CARGO], no valor de [VALOR], para deslocamento a [DESTINO], incluindo ato de autorização, justificativa da viagem, período, quantidade de diárias, valor unitário, finalidade pública, relatório de atividades, comprovantes de participação e prestação de contas.</textarea>
-          <button type="button" class="copy-template">Copiar modelo</button>
-        </article>
-
-        <article class="template-card">
-          <h4>Emenda</h4>
-          <textarea readonly>Solicito a relação de documentos da emenda impositiva nº [NÚMERO/ANO], de autoria de [VEREADOR(A)], destinada a [ENTIDADE/ÓRGÃO], CNPJ [CNPJ], no valor de [VALOR], incluindo objeto, plano de trabalho, secretaria responsável, empenhos, liquidações, pagamentos, notas fiscais, comprovantes de execução, fotos ou relatório de entrega, e estágio atual da aplicação do recurso.</textarea>
-          <button type="button" class="copy-template">Copiar modelo</button>
-        </article>
-
-        <article class="template-card">
-          <h4>Evento ou show</h4>
-          <textarea readonly>Solicito cópia integral dos documentos relativos ao evento/show [NOME DO EVENTO], contratado junto a [EMPRESA], no valor de [VALOR], incluindo termo de referência, planilha detalhada de itens, pesquisa de preços, proposta vencedora, autorizações, estrutura contratada, número de banheiros, segurança, palco, som, iluminação, artistas, notas fiscais, comprovantes de pagamento, relatório pós-evento e eventual previsão de exploração comercial de camarotes, barracas, estacionamento ou publicidade.</textarea>
-          <button type="button" class="copy-template">Copiar modelo</button>
-        </article>
-
-        <article class="template-card">
-          <h4>Aluguel</h4>
-          <textarea readonly>Solicito documentos referentes ao imóvel alugado pela Administração no contrato [NÚMERO/ANO], incluindo endereço completo, finalidade do uso público, proprietário, valor mensal, prazo, laudo de avaliação ou justificativa do preço, pesquisa de mercado, vistoria do imóvel, contrato integral, aditivos, empenhos, pagamentos e justificativa para locação em vez de uso de imóvel público próprio.</textarea>
-          <button type="button" class="copy-template">Copiar modelo</button>
-        </article>
+      <div class="filterbar risk-filterbar">
+        <select id="filaCobrancaOrgao" aria-label="Filtrar por órgão">
+          <option value="">Todos os órgãos</option>
+          <option value="prefeitura">Prefeitura</option>
+          <option value="camara">Câmara</option>
+        </select>
+        <select id="filaCobrancaTipo" aria-label="Filtrar por tipo de pendência">
+          <option value="">Todos os tipos</option>
+          <option value="contrato">Contratos</option>
+          <option value="asfalto">Asfalto e obras</option>
+          <option value="frota">Frota</option>
+          <option value="emenda">Emendas</option>
+          <option value="fornecedor">Fornecedores</option>
+          <option value="diario">Diário Oficial</option>
+          <option value="pessoal">Pessoal e remuneração</option>
+        </select>
+        <select id="filaCobrancaRisco" aria-label="Filtrar por risco">
+          <option value="">Todos os riscos</option>
+          <option value="red">Vermelho</option>
+          <option value="yellow">Amarelo</option>
+          <option value="green">Verde</option>
+        </select>
       </div>
-      <p class="template-note">Dica: peça documentos, datas e responsáveis. Evite afirmar irregularidade sem antes conferir a fonte oficial.</p>
+      <div id="filaCobrancaLista" class="risk-queue" aria-live="polite">
+        <div class="empty"><p>Carregando fila de cobrança...</p></div>
+      </div>
+      <p class="template-note">
+        Base legal e fonte auxiliar: o PNCP centraliza dados de contratações públicas e disponibiliza
+        informações em dados abertos. Confirme sempre nos portais oficiais antes de concluir qualquer coisa.
+      </p>
     </div>
 
-    <div class="cobrar-blocks">
-
-      <!-- Prefeitura -->
-      <div class="cobrar-block">
-        <h3 class="cobrar-block__title">Para cobrar a Prefeitura</h3>
-        <div class="grid grid--cobrar">
-          <a class="action" href="https://www.varginha.mg.gov.br/portal/servicos_online" target="_blank" rel="noopener">
-            <span class="action__num">01</span>
-            <h3 class="action__title">e-SIC — Lei de Acesso à Informação</h3>
-            <p class="action__desc">
-              Pela LAI (Lei nº 12.527/2011) você pode pedir <em>qualquer</em> documento
-              ou dado público. A Prefeitura tem 20 dias para responder.
-            </p>
-            <span class="action__cta">Abrir serviços online →</span>
-          </a>
-
-          <a class="action" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/acesso-informacao" target="_blank" rel="noopener">
-            <span class="action__num">02</span>
-            <h3 class="action__title">Portal da Transparência</h3>
-            <p class="action__desc">
-              Contratos, despesas, servidores, licitações, obras, folha. Tudo aberto,
-              em tempo real, sem login.
-            </p>
-            <span class="action__cta">Acessar Betha Transparência →</span>
-          </a>
-
-          <a class="action" href="mailto:contato@varginha.mg.gov.br">
-            <span class="action__num">03</span>
-            <h3 class="action__title">Ouvidoria Municipal</h3>
-            <p class="action__desc">
-              Reclamações, sugestões, denúncias e elogios diretos à Prefeitura.<br>
-              Telefone: (35) 3690-2000<br>
-              E-mail: contato@varginha.mg.gov.br
-            </p>
-            <span class="action__cta">Falar com a Prefeitura →</span>
-          </a>
+    <!-- Seção 1 -->
+    <div class="cobrar-block">
+      <div class="templates-head" style="margin-bottom: 24px;">
+        <div>
+          <span class="bigheader__kicker">1</span>
+          <h3 class="cobrar-block__title">Lei de Acesso à Informação</h3>
+          <p>Todo órgão público é obrigado a responder em até 20 dias. Sem custo, sem justificativa, sem advogado.</p>
         </div>
       </div>
-
-      <!-- Câmara -->
-      <div class="cobrar-block">
-        <h3 class="cobrar-block__title">Para cobrar a Câmara</h3>
-        <div class="grid grid--cobrar">
-          <a class="action" href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">
-            <span class="action__num">04</span>
-            <h3 class="action__title">SAPL — sistema oficial</h3>
-            <p class="action__desc">
-              Texto integral das leis, projetos em tramitação, atas das sessões,
-              vídeos e contato direto com cada vereador.
-            </p>
-            <span class="action__cta">Acessar SAPL →</span>
-          </a>
-
-          <a class="action" href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">
-            <span class="action__num">05</span>
-            <h3 class="action__title">Site oficial da Câmara</h3>
-            <p class="action__desc">
-              Notícias, ordem do dia, transmissão ao vivo das sessões e contatos
-              dos gabinetes dos 18 vereadores.
-            </p>
-            <span class="action__cta">Visitar site →</span>
-          </a>
-        </div>
+      <div class="grid grid--cobrar">
+        <a class="action" href="#lais">
+          <h3 class="action__title">Contratos e licitações</h3>
+          <p class="action__desc">Contratos, aditivos, dispensas e pregões — por empresa, período ou secretaria.</p>
+          <span class="action__cta">Ver como pedir →</span>
+        </a>
+        <a class="action" href="#lais">
+          <h3 class="action__title">Vereadores: frequência e projetos</h3>
+          <p class="action__desc">Quantos foram às sessões? Quantos projetos apresentaram? Quanto custa cada gabinete?</p>
+          <span class="action__cta">Ver como pedir →</span>
+        </a>
+        <a class="action" href="#lais">
+          <h3 class="action__title">Obras públicas</h3>
+          <p class="action__desc">Quais estão em andamento, quem executou, quanto custou, qual percentual concluído.</p>
+          <span class="action__cta">Ver como pedir →</span>
+        </a>
+        <a class="action" href="#lais">
+          <h3 class="action__title">Saúde: filas e esperas</h3>
+          <p class="action__desc">Quantos aguardam consultas, exames e cirurgias? Qual o tempo médio de espera?</p>
+          <span class="action__cta">Ver como pedir →</span>
+        </a>
+        <a class="action" href="#lais">
+          <h3 class="action__title">Eventos e shows</h3>
+          <p class="action__desc">Qual empresa organizou? Quanto foi pago? Houve licitação? Quem assinou?</p>
+          <span class="action__cta">Ver como pedir →</span>
+        </a>
+        <a class="action" href="#lais">
+          <h3 class="action__title">Publicidade institucional</h3>
+          <p class="action__desc">Quanto vai para cada veículo? Quais são os critérios de distribuição da verba?</p>
+          <span class="action__cta">Ver como pedir →</span>
+        </a>
       </div>
-
-      <!-- Externo / TCE -->
-      <div class="cobrar-block">
-        <h3 class="cobrar-block__title">Para denunciar irregularidade</h3>
-        <div class="grid grid--cobrar">
-          <a class="action" href="https://www.tce.mg.gov.br/Denuncia" target="_blank" rel="noopener">
-            <span class="action__num">06</span>
-            <h3 class="action__title">Denúncia ao TCE-MG</h3>
-            <p class="action__desc">
-              Suspeita de irregularidade no uso do dinheiro público O Tribunal
-              de Contas recebe denúncias formais — pode ser anônima.
-            </p>
-            <span class="action__cta">Fazer denúncia →</span>
-          </a>
-
-          <a class="action" href="https://fiscalizandocomtce.tce.mg.gov.br/" target="_blank" rel="noopener">
-            <span class="action__num">07</span>
-            <h3 class="action__title">Fiscalizando com TCE</h3>
-            <p class="action__desc">
-              "O caminho do dinheiro público" — visão oficial agregada do
-              balanço de Varginha por exercício.
-            </p>
-            <span class="action__cta">Buscar Varginha →</span>
-          </a>
-
-          <a class="action" href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">
-            <span class="action__num">08</span>
-            <h3 class="action__title">Ministério Público (MP-MG)</h3>
-            <p class="action__desc">
-              Para denúncias de improbidade administrativa, desvio de verba ou
-              outras condutas criminosas. Atendimento on-line e presencial.
-            </p>
-            <span class="action__cta">Abrir MP-MG →</span>
-          </a>
-        </div>
-      </div>
-
     </div>
+
+    <!-- Seção 2 -->
+    <div class="cobrar-block" style="margin-top: 40px;">
+      <div class="templates-head" style="margin-bottom: 24px;">
+        <div>
+          <span class="bigheader__kicker">2</span>
+          <h3 class="cobrar-block__title">Como protocolar um pedido LAI</h3>
+          <p>Sem advogado, sem taxa, sem obrigação de dar justificativa. Apenas o seu CPF e o pedido por escrito.</p>
+        </div>
+      </div>
+      <div style="background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--line);">
+        <h4 style="color: var(--navy); margin-top: 0;">Passo a passo completo</h4>
+        <ol style="padding-left: 20px; color: var(--ink); line-height: 1.6;">
+          <li style="margin-bottom: 12px;"><strong>Identifique o órgão responsável:</strong> Câmara Municipal para dados dos vereadores. Prefeitura e secretarias para dados do Executivo. Cada órgão tem seu canal próprio de LAI.</li>
+          <li style="margin-bottom: 12px;"><strong>Escreva o pedido de forma específica:</strong> Defina: período, tipo de dado, formato desejado (Excel, PDF, CSV). Pedidos vagos como "mande tudo sobre obras" geram respostas incompletas.<br>
+          <span style="display: inline-block; background: #eff5fb; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-top: 4px;">💡 Use os modelos prontos na seção 5 desta página</span></li>
+          <li style="margin-bottom: 12px;"><strong>Protocole e guarde o comprovante:</strong> Prefira protocolo presencial com cópia carimbada, ou e-mail com confirmação de recebimento. Isso inicia a contagem dos 20 dias legais.</li>
+          <li style="margin-bottom: 12px;"><strong>Aguarde até 20 dias corridos:</strong> Prorrogável por mais 10 com justificativa. Sem resposta após esse prazo, o cidadão pode recorrer e pedir providência ao órgão de controle.</li>
+          <li style="margin-bottom: 12px;"><strong>Se a resposta for negada ou incompleta, recorra:</strong> Recurso à autoridade superior do mesmo órgão em até 10 dias. Se ainda insuficiente, denúncia ao MP-MG ou à CGU.<br>
+          <span style="display: inline-block; background: #fff0f0; color: #c62828; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-top: 4px;">⚠️ Guarde todos os protocolos e respostas recebidas</span></li>
+          <li><strong>Analise os dados e publique com responsabilidade:</strong> Transforme em gráficos, rankings e comparações. Dados brutos não comunicam — interpretação com linguagem certa é o que gera impacto.</li>
+        </ol>
+      </div>
+    </div>
+
+
+    <!-- Seção 4 -->
+    <div class="cobrar-block" style="margin-top: 40px;">
+      <div class="templates-head" style="margin-bottom: 24px;">
+        <div>
+          <span class="bigheader__kicker">4</span>
+          <h3 class="cobrar-block__title">Cruzamentos que ajudam a esclarecer</h3>
+          <p>Cruzar dados de fontes diferentes ajuda o cidadão a transformar dúvida em pergunta objetiva.</p>
+        </div>
+      </div>
+      <div class="grid grid--cobrar">
+        <div class="action" style="cursor: default;">
+          <h3 class="action__title">Asfalto × Reincidência</h3>
+          <p class="action__desc">Cruze histórico de tapa-buracos por rua. Mais de 3 vezes em 5 anos sem solução indica problema.</p>
+          <div style="background: #f0f4f8; padding: 8px; border-radius: 4px; font-size: 0.8rem; margin-top: 10px; color: var(--navy);">LAI Obras <strong>×</strong> Portal Transparência</div>
+        </div>
+        <div class="action" style="cursor: default;">
+          <h3 class="action__title">Contrato × CNPJ</h3>
+          <p class="action__desc">Cruze o CNPJ da empresa com a data de abertura na Receita. Empresa aberta há menos de 6 meses é alerta clássico.</p>
+          <div style="background: #f0f4f8; padding: 8px; border-radius: 4px; font-size: 0.8rem; margin-top: 10px; color: var(--navy);">LAI <strong>×</strong> Receita Federal</div>
+        </div>
+        <div class="action" style="cursor: default;">
+          <h3 class="action__title">Diária × Agenda pública</h3>
+          <p class="action__desc">Diária paga em dia de sessão ordinária na própria cidade é contradição imediata.</p>
+          <div style="background: #f0f4f8; padding: 8px; border-radius: 4px; font-size: 0.8rem; margin-top: 10px; color: var(--navy);">LAI Câmara <strong>×</strong> Atas de sessão</div>
+        </div>
+        <div class="action" style="cursor: default;">
+          <h3 class="action__title">Medição × Nota Fiscal</h3>
+          <p class="action__desc">Pagamento antes da medição, ou sem medição aprovada, é ponto importante para pedir documento.</p>
+          <div style="background: #f0f4f8; padding: 8px; border-radius: 4px; font-size: 0.8rem; margin-top: 10px; color: var(--navy);">LAI (boletins) <strong>×</strong> Portal Transparência</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seção 5 -->
+    <div id="lais" class="cobrar-block cobrar-templates" style="margin-top: 40px;">
+      <div class="templates-head">
+        <div>
+          <span class="bigheader__kicker">5</span>
+          <h3 class="cobrar-block__title">Modelos de LAI por nível e categoria</h3>
+          <p>Os <strong>20 temas de fiscalização cidadã</strong> em modelos formais, claros e prontos para copiar e protocolar na Câmara ou Prefeitura. Cada modelo traz o <strong>nível de prioridade</strong> (1 a 4) e a <strong>categoria</strong>. Filtre pelos dois, ou busque por palavra. Todo cidadão tem direito de pedir informação pública — sem custo, sem justificar o motivo.</p>
+        </div>
+      </div>
+
+      <p style="margin: 0 0 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);">Filtrar por nível de prioridade</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <button type="button" class="lai-filter-nivel active" data-nivel="all" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--navy); background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; letter-spacing: 0.02em;">Todos os níveis</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="1" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 1 · Alto impacto</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="2" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 2 · Muito relevante</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="3" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 3 · Onde poucos olham</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="4" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 4 · Avançada</button>
+      </div>
+
+      <p style="margin: 0 0 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);">Filtrar por categoria</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
+        <button type="button" class="lai-filter active" data-cat="all" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--navy); background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; letter-spacing: 0.02em;">Todas</button>
+        <button type="button" class="lai-filter" data-cat="licitacao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Contratos &amp; Compras</button>
+        <button type="button" class="lai-filter" data-cat="obras" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Obras &amp; Asfalto</button>
+        <button type="button" class="lai-filter" data-cat="servicos" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Saúde, Educação &amp; Social</button>
+        <button type="button" class="lai-filter" data-cat="pessoal" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Pessoal &amp; Câmara</button>
+        <button type="button" class="lai-filter" data-cat="patrimonio" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Patrimônio, Frota &amp; Imóveis</button>
+        <button type="button" class="lai-filter" data-cat="gestao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Gestão, Repasses &amp; Cidade</button>
+      </div>
+
+      <input type="text" id="laiBusca" placeholder="Buscar modelo por palavra (ex.: medicamento, merenda, diária)..." style="width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.95rem; margin-bottom: 20px;">
+
+      <div class="template-grid" style="display: grid; gap: 20px;">
+
+        <article class="template-card" data-cat="pessoal" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #1f3a5f;">
+          <h4>LAI 1 · Câmara: Frequência de vereadores</h4>
+          <textarea readonly style="height: 320px;" aria-label="LAI 1">À Câmara Municipal de Varginha – Setor de Protocolo / Ouvidoria
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. FREQUÊNCIA EM SESSÕES
+   a) Planilha contendo a lista nominal de todos os vereadores, indicando por sessão ordinária e extraordinária (período de 2023 a 2025): data da sessão, presença (confirmada via painel eletrônico/assinatura), ausência e tipo de justificativa apresentada.
+   b) Cópia digital integral das folhas de presença (livro físico de ponto) e dos logs do sistema de votação eletrônica (biometria/painel).
+   c) Cópias dos atestados médicos ou documentos oficiais que fundamentaram o abono de faltas de cada parlamentar.
+
+2. IMPACTO FINANCEIRO E DESCONTOS
+   a) Relação detalhada de descontos efetuados no subsídio de cada vereador em virtude de ausências não justificadas às sessões plenárias, informando mês a mês, valor descontado e nome do parlamentar. Caso não tenha havido descontos, requer-se certidão declarando o fato e a fundamentação legal para o não desconto.
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #f8fbfe; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: var(--navy);">
+            <strong>O que este pedido ajuda a conferir:</strong> Presença em sessões, justificativas de ausência, eventual desconto legal e coerência entre agenda, folha e registros oficiais.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="licitacao" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
+          <h4>LAI 2 · Prefeitura: Contratos com dispensas e inexigibilidades</h4>
+          <textarea readonly style="height: 320px;" aria-label="LAI 2">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. DISPENSAS E INEXIGIBILIDADES (2023–2025)
+   a) Relação em formato de planilha contendo todas as contratações diretas realizadas com base nos arts. 74 e 75 da Lei nº 14.133/2021 (ou correlatos da Lei 8.666/93), indicando: número do processo administrativo, razão social e CNPJ/CPF do contratado, objeto, valor total contratado, valor total pago, secretaria demandante e nome do ordenador da despesa.
+   b) Cópias das pesquisas de preços de mercado que balizaram os valores das contratações diretas superiores a R$ 20.000,00 (mínimo de 3 orçamentos idôneos por processo, com respectivas datas e CNPJs cotantes).
+   c) Cópia do parecer da Assessoria Jurídica e da justificativa técnica da secretaria que aprovaram a contratação direta.
+
+2. CRUZAMENTO E FRACIONAMENTO DE COMPRAS
+   a) Relação de notas fiscais emitidas e liquidadas para fornecedores cujos pagamentos acumulados no mesmo exercício fiscal, para serviços/bens da mesma natureza, ultrapassaram os limites legais de dispensa licitatória (R$ 50.000,00 e R$ 100.000,00).
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
+            <strong>O que este pedido ajuda a conferir:</strong> Se compras parecidas foram divididas em vários processos, se houve pesquisa de preços e se a contratação direta foi justificada com documento.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="licitacao" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #c62828;">
+          <h4>LAI 3 · Prefeitura: Aditivos contratuais para conferência</h4>
+          <textarea readonly style="height: 320px;" aria-label="LAI 3">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. ADITIVOS DE VALOR E PRAZO (2022–2025)
+   a) Relação de todos os termos aditivos contratuais firmados, indicando: número do contrato de origem, objeto contratual, CNPJ da contratada, valor inicial, valor de cada aditivo de acréscimo ou supressão (em reais e em %), justificativa técnica apresentada pelo fiscal da obra/serviço e parecer da assessoria jurídica.
+   b) Cotações e planilhas de composição de custos unitários de insumos e serviços acrescidos via aditivo (para checagem do jogo de planilhas).
+   c) Relação de contratos de prestação de serviços continuados que sofreram aditivos de prazo que excederam o limite geral de 60 meses.
+
+2. FISCALIZAÇÃO E RESPONSABILIDADE
+   a) Nome completo, cargo, CPF e portaria de nomeação do fiscal do contrato e da comissão de recebimento de cada contrato que sofreu aditivo superior a 20%.
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
+            <strong>O que este pedido ajuda a conferir:</strong> Se os aditivos tiveram justificativa técnica, parecer jurídico, planilha de custos e fiscalização compatível com o aumento de valor ou prazo.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="obras" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #e65100;">
+          <h4>LAI 4 · Prefeitura: Obras públicas e medições</h4>
+          <textarea readonly style="height: 320px;" aria-label="LAI 4">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. EXECUÇÃO TÉCNICA E FISCALIZAÇÃO DE OBRAS
+   a) Cópias das Anotações de Responsabilidade Técnica (ART) do projeto e da execução de todas as obras iniciadas de 2023 a 2025.
+   b) Diários de Obra completos (com preenchimento diário das condições climáticas, efetivo de pessoal e maquinário utilizado) de contratos de pavimentação e construções civis.
+   c) Registro fotográfico completo, datado e georreferenciado anexado a cada boletim de medição que embasou as medições liquidadas e pagas.
+
+2. LAUDOS TECNOLÓGICOS E GARANTIAS
+   a) Relatórios de controle tecnológico de asfalto (ensaios de teor de ligante, granulometria e grau de compactação) e concreto (resistência à compressão Fck) fornecidos pelas executoras ou fiscais.
+   b) Termos de Recebimento Provisório e Definitivo assinados pela comissão técnica e notificações enviadas a empreiteiras para reparos em garantia.
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+            <strong>O que este pedido ajuda a conferir:</strong> Se a obra foi executada no local informado, se a medição bate com fotos, diário de obra, metragem, notas fiscais e referência de preço.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="patrimonio" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
+          <h4>LAI 5 · Prefeitura: Combustível e frota municipal</h4>
+          <textarea readonly style="height: 320px;" aria-label="LAI 5">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. ABASTECIMENTO E CONTROLE DE TELEMETRIA
+   a) Relatório bruto de transações eletrônicas do sistema de gerenciamento de frotas (ex: Ticket Log, Prime, ou similar), indicando: placa do veículo, data/hora, posto de combustível (CNPJ), quantidade (litros), tipo de combustível, hodômetro no momento do abastecimento, valor unitário e total.
+   b) Relação de todos os cartões de abastecimento ativos, contendo o nome e o cargo do servidor autorizado e responsável pelo uso do cartão.
+   c) Dados consolidados dos trajetos de GPS (histórico de telemetria) dos veículos oficiais que registraram médias de consumo de combustível fora do padrão técnico estabelecido pelo fabricante.
+
+2. VEÍCULOS ALUGADOS
+   a) Cópia do contrato de locação de veículos, com diários de bordo/controle de quilometragem rodada mensal por carro alugado.
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+            <strong>O que este pedido ajuda a conferir:</strong> Compatibilidade entre litros, odômetro, rota, diário de bordo, manutenção, notas fiscais e contrato de locação ou aquisição do veículo.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="gestao" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
+          <h4>LAI 6 · Prefeitura: Shows, festas e eventos</h4>
+          <textarea readonly style="height: 280px;" aria-label="LAI 6">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. EVENTOS E SHOWS (2023–2025)
+   a) Lista de todos os eventos realizados com recurso público: nome, data, local, valor total
+   b) Para cada evento: empresa contratada (CNPJ), data de abertura do CNPJ, modalidade de contratação (licitação, dispensa, inexigibilidade), número do processo
+   c) Nota fiscal da produtora com discriminação de serviços
+   d) Cachê individual de cada artista constante do contrato
+   e) Outros contratos celebrados com o mesmo CNPJ nos últimos 5 anos
+
+2. ESTRUTURA E RECEITA
+   a) Custo da estrutura (palco, som, iluminação, segurança, banheiros)
+   b) Receita gerada: venda de espaços, camarotes, barracas, estacionamento, patrocínios
+   c) Balanço financeiro do evento (receita − despesa)
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
+            <strong>O que este pedido ajuda a conferir:</strong> Critério de contratação, composição do cachê, empresa intermediária, data do CNPJ, custos de estrutura e eventual receita vinculada ao evento.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="pessoal" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #1f3a5f;">
+          <h4>LAI 7 · Prefeitura/Câmara: Cargos comissionados e nepotismo</h4>
+          <textarea readonly style="height: 280px;" aria-label="LAI 7">À [PREFEITURA / CÂMARA] Municipal de Varginha – Setor de Protocolo
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. CARGOS COMISSIONADOS (posição atual)
+   a) Lista de todos os ocupantes de cargos em comissão e funções gratificadas: nome, CPF (4 últimos dígitos), cargo, secretaria/gabinete, data de nomeação, remuneração total (salário + gratificações)
+   b) Atribuições formais de cada cargo comissionado conforme lei de criação
+   c) Comprovação de frequência dos últimos 6 meses
+
+2. CONTROLE DE NEPOTISMO
+   a) Declaração de parentesco exigida no ato da posse (formulário anti-nepotismo)
+   b) Grau de parentesco declarado com qualquer membro da administração, secretários, prefeito ou vereadores
+   c) Servidores comissionados nomeados nos últimos 90 dias antes e após cada eleição
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #f8fbfe; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: var(--navy);">
+            <strong>O que este pedido ajuda a conferir:</strong> Atribuição formal do cargo, frequência, lotação, declaração de parentesco e compatibilidade entre função, remuneração e presença.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="pessoal" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #1f3a5f;">
+          <h4>LAI 8 · Câmara: Diárias, viagens e verbas de gabinete</h4>
+          <textarea readonly style="height: 280px;" aria-label="LAI 8">À Câmara Municipal de Varginha – Setor de Protocolo
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. DIÁRIAS (2023–2025)
+   a) Para cada diária paga: nome do beneficiário, destino, data de saída e retorno, valor diário, valor total, finalidade declarada
+   b) Comprovante de participação no evento ou reunião que justificou a viagem
+   c) Prestação de contas com documento comprobatório (passagem, hospedagem, relatório)
+
+2. VERBAS DE GABINETE
+   a) Valor mensal disponibilizado para cada gabinete de vereador
+   b) Detalhamento de gastos por gabinete: materiais, serviços, contratações, assessoria
+   c) Notas fiscais dos 3 maiores gastos de cada gabinete por semestre
+
+3. TELEFONIA E COMBUSTÍVEL
+   a) Valor mensal gasto com telefonia por gabinete
+   b) Cotas de combustível por vereador: litros/mês, placa do veículo abastecido
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #f8fbfe; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: var(--navy);">
+            <strong>O que este pedido ajuda a conferir:</strong> Data da viagem, presença em sessão, relatório de atividade, comprovantes, finalidade pública e compatibilidade dos gastos apresentados.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="gestao" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
+          <h4>LAI 9 · Prefeitura: Publicidade e propaganda institucional</h4>
+          <textarea readonly style="height: 260px;" aria-label="LAI 9">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. GASTOS COM PUBLICIDADE (2023–2025)
+   a) Valor total gasto com publicidade institucional por ano
+   b) Relação de todos os veículos de comunicação contratados: nome, CNPJ, valor pago, período, tipo de mídia (TV, rádio, jornal, internet, outdoor)
+   c) Critérios técnicos utilizados para distribuição da verba entre os veículos
+   d) Processo licitatório ou justificativa de contratação direta para cada veículo
+
+2. REDES SOCIAIS E ASSESSORIA
+   a) Empresa ou profissional contratado para gestão de redes sociais: CNPJ, valor mensal, escopo do serviço
+   b) Assessoria de imprensa: empresa contratada, valor, modalidade
+
+3. PROMOÇÃO PESSOAL
+   a) Peças publicitárias que contenham nome, imagem ou símbolo que caracterize promoção pessoal de autoridade (art. 37, §1º, CF)
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
+            <strong>O que este pedido ajuda a conferir:</strong> Critério técnico de distribuição da verba, mídia contratada, campanha executada, relatório de entrega e separação entre informação pública e promoção pessoal.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="patrimonio" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
+          <h4>LAI 10 · Prefeitura: Aluguel de imóveis e cessões</h4>
+          <textarea readonly style="height: 260px;" aria-label="LAI 10">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. IMÓVEIS LOCADOS PELA ADMINISTRAÇÃO (2023–2025)
+   a) Relação de todos os imóveis alugados: endereço, proprietário (nome e CPF/CNPJ), valor mensal, finalidade do uso público, prazo do contrato
+   b) Laudo de avaliação ou justificativa do preço de cada locação
+   c) Pesquisa de mercado que fundamentou o valor
+   d) Existência de imóvel público próprio disponível para a mesma finalidade
+
+2. CESSÕES E CONCESSÕES
+   a) Lista de imóveis públicos cedidos a terceiros: endereço, cessionário, finalidade, valor (se onerosa), prazo, contrapartida exigida
+   b) Imóveis públicos ocupados sem contrato formal
+
+3. PARENTESCO
+   a) Grau de parentesco entre o proprietário do imóvel locado e qualquer agente público municipal
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
+            <strong>O que este pedido ajuda a conferir:</strong> Avaliação do imóvel, pesquisa de mercado, justificativa da locação, existência de imóvel público disponível e vínculo do proprietário quando declarado.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="servicos" data-nivel="1" style="grid-column: 1 / -1; border-left: 4px solid #2e7d32;">
+          <h4>LAI 11 · Prefeitura: Saúde Municipal (Contratos, Medicamentos e Filas)</h4>
+          <textarea readonly style="height: 460px;" aria-label="LAI 11">À Secretaria Municipal de Saúde de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2023, 2024 e 2025:
+
+1. CONTRATOS MÉDICOS, ORGANIZAÇÕES SOCIAIS (OS) E TERCEIRIZAÇÕES
+   a) Relação de todos os contratos, convênios e contratos de gestão vigentes com empresas médicas, cooperativas, clínicas, laboratórios, hospitais privados e Organizações Sociais (OS/OSCIP), com: CNPJ, objeto, valor mensal, vigência, modalidade de contratação (pregão, dispensa, inexigibilidade ou chamamento) e número do processo
+   b) Para cada OS/contrato de gestão: as metas pactuadas (quantitativas e qualitativas), o valor repassado e o percentual de cumprimento das metas aferido pela comissão de monitoramento
+   c) Tabela dos valores pagos por procedimento (consulta, exame, plantão, cirurgia), confrontada com a Tabela SUS e a tabela CBHPM, indicando o índice de reajuste aplicado sobre a tabela base
+
+2. PRODUÇÃO FATURADA × PRODUÇÃO REALIZADA
+   a) Relatório comparando a produção faturada por cada contratado (consultas, exames e plantões pagos) com a produção efetivamente registrada nos sistemas (BPA/SIA/SIH ou prontuário eletrônico), por mês
+   b) Escalas de plantão previstas em contrato × escalas efetivamente cumpridas (folha-ponto/registro de presença dos profissionais) nas unidades de pronto atendimento e hospital, nos últimos 12 meses
+
+3. MEDICAMENTOS E INSUMOS
+   a) Relação de compras de medicamentos e insumos por princípio ativo, quantidade, preço unitário, fornecedor (CNPJ) e nº do processo, confrontada com o Banco de Preços em Saúde (BPS) do Ministério da Saúde
+   b) Posição atual de estoque da farmácia central e das UBS, lista de itens da REMUME em desabastecimento e relatório de medicamentos perdidos por vencimento (quantidade e valor) nos últimos 24 meses
+
+4. FILAS, REGULAÇÃO E TRANSPORTE DE PACIENTES (TFD)
+   a) Número de pacientes em fila de espera por especialidade, exame de alta complexidade e cirurgia eletiva, com tempo médio e tempo máximo de espera, extraído do sistema de regulação (SISREG ou equivalente)
+   b) Gastos com Tratamento Fora do Domicílio (TFD): nº de pacientes encaminhados, destinos, custo de transporte e de diárias, e empresa contratada quando houver
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff0f0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #c62828;">
+            <strong>Documentos que podem esclarecer:</strong> Escalas previstas e executadas, notas fiscais, produção entregue, tabela de preços, filas de espera e entrega de insumos básicos.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="servicos" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #2e7d32;">
+          <h4>LAI 12 · Prefeitura: Educação (Merenda, Transporte e Materiais)</h4>
+          <textarea readonly style="height: 440px;" aria-label="LAI 12">À Secretaria Municipal de Educação de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2023, 2024 e 2025:
+
+1. MERENDA ESCOLAR (PNAE)
+   a) Contratos e notas fiscais de compra de gêneros alimentícios, por fornecedor (CNPJ), item, quantidade e preço unitário, confrontados com os preços de referência da chamada pública
+   b) Percentual dos recursos do PNAE aplicado na aquisição direta da agricultura familiar (mínimo legal de 30%) e a relação das chamadas públicas realizadas
+   c) Valor per capita repassado por aluno/dia, número de alunos atendidos por escola e os cardápios assinados pela nutricionista responsável (RT)
+   d) Relatório de recebimento da merenda nas escolas (datas e quantidades) e atas do Conselho de Alimentação Escolar (CAE)
+
+2. TRANSPORTE ESCOLAR
+   a) Contratos vigentes (empresas, CNPJ, valor pago por km e por aluno), rotas diárias com quilometragem e número de alunos transportados por veículo
+   b) Relação dos veículos (placa, ano, capacidade), certificados de vistoria do DETRAN e documentação dos condutores
+   c) Confronto entre a quilometragem contratada/paga e a quilometragem efetivamente percorrida (controle de rotas, diário de bordo ou rastreamento)
+
+3. UNIFORMES, MATERIAL DIDÁTICO E KITS
+   a) Contratos, modalidade de licitação e notas fiscais de uniformes, material didático e kits escolares, com quantidade adquirida × número de alunos matriculados
+   b) Comprovantes de entrega por escola e relatório de sobras/estoque não distribuído
+
+4. APLICAÇÃO DE RECURSOS VINCULADOS
+   a) Demonstrativo de aplicação do FUNDEB e do percentual constitucional mínimo em manutenção e desenvolvimento do ensino (MDE), com a relação das principais despesas
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+            <strong>Documentos que podem esclarecer:</strong> Rotas executadas, quilometragem, lista de escolas atendidas, notas fiscais, comprovantes de entrega da merenda, uniformes e kits.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="gestao" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
+          <h4>LAI 13 · Prefeitura: Emendas Parlamentares</h4>
+          <textarea readonly style="height: 420px;" aria-label="LAI 13">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2021 a 2025:
+
+1. RECEBIMENTO E DESTINAÇÃO
+   a) Relação de todas as emendas parlamentares (federais e estaduais) e transferências especiais/voluntárias recebidas, com: parlamentar autor, nº da proposta/transferência (Transferegov/SICONV ou SIGCON-MG), valor, data do repasse, fonte e objeto/finalidade legal
+   b) Para cada emenda: classificação entre transferência com finalidade definida e transferência especial ("emenda Pix"), e o ente/fundo de destino
+
+2. EXECUÇÃO FÍSICA E FINANCEIRA
+   a) Situação de cada recurso: empenhado, liquidado, pago, em execução, concluído ou paralisado, com o percentual físico executado
+   b) Saldo em conta específica de cada emenda e rendimentos de aplicação financeira não utilizados
+   c) Recursos devolvidos por não execução ou bloqueados, com a justificativa
+
+3. CONTRATAÇÕES VINCULADAS (rastreabilidade do dinheiro)
+   a) Para cada emenda, a relação dos contratos/empenhos vinculados: empresa contratada (CNPJ), modalidade de licitação, valor e objeto
+   b) Confronto entre o objeto aprovado na emenda e o objeto efetivamente entregue à população
+
+4. EMENDAS IMPOSITIVAS DA CÂMARA (LOA municipal)
+   a) Relação das emendas impositivas dos vereadores ao orçamento municipal, por autor, valor, destinação e percentual efetivamente executado pelo Executivo
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+            <strong>Documentos que podem esclarecer:</strong> Plano de trabalho, empenho, pagamento, execução física, saldo em conta e compatibilidade entre objeto aprovado e entrega realizada.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="gestao" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
+          <h4>LAI 14 · Prefeitura: Convênios e Repasses ao Terceiro Setor</h4>
+          <textarea readonly style="height: 420px;" aria-label="LAI 14">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2021 a 2025:
+
+1. PARCERIAS COM O TERCEIRO SETOR (Lei 13.019/2014)
+   a) Relação de todos os termos de colaboração, termos de fomento e acordos de cooperação com OSCs/ONGs/associações, com: entidade, CNPJ, objeto, valor total, vigência e secretaria responsável
+   b) Para cada parceria: se foi precedida de chamamento público ou se houve dispensa/inexigibilidade, com a respectiva justificativa
+   c) Plano de trabalho com as metas pactuadas e os indicadores de aferição
+
+2. CONVÊNIOS COM ESTADO E UNIÃO
+   a) Relação de convênios e instrumentos congêneres firmados com o Estado e a União, com nº (Transferegov/SIGCON), objeto, valor, contrapartida do município e situação
+
+3. EXECUÇÃO, PRESTAÇÃO DE CONTAS E CONTROLE
+   a) Valores repassados por parceria/convênio por exercício × metas efetivamente cumpridas
+   b) Cópias das prestações de contas apresentadas, dos pareceres técnicos do gestor da parceria e dos pareceres do controle interno, indicando as aprovadas, as reprovadas e as pendentes
+   c) Relação de entidades inadimplentes na prestação de contas e eventuais Tomadas de Contas Especiais instauradas
+
+4. GOVERNANÇA (conflito de interesse)
+   a) Vínculo, quando declarado, entre dirigentes das entidades parceiras e agentes públicos municipais (dirigentes, secretários, vereadores)
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+            <strong>Documentos que podem esclarecer:</strong> Plano de trabalho, metas, diretoria da entidade, prestações de contas, parecer técnico e comprovação das entregas ao público atendido.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="pessoal" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #1f3a5f;">
+          <h4>LAI 15 · Prefeitura: Processos Seletivos e Contratações Temporárias</h4>
+          <textarea readonly style="height: 400px;" aria-label="LAI 15">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, na posição atual e a evolução desde 2023:
+
+1. CONTRATAÇÕES TEMPORÁRIAS (art. 37, IX, CF)
+   a) Relação de servidores temporários por secretaria e função, com data de admissão, prazo do contrato e nº de prorrogações
+   b) Lei autorizativa e a justificativa da necessidade temporária de excepcional interesse público de cada contratação
+   c) Quantitativo de temporários em relação ao total de servidores (efetivos + comissionados + temporários), por secretaria
+
+2. PROCESSOS SELETIVOS SIMPLIFICADOS
+   a) Editais dos processos seletivos, critérios de classificação e a lista de classificados
+   b) Ordem de convocação e a relação dos efetivamente convocados, para verificar respeito à ordem classificatória
+   c) Concursos públicos vigentes com candidatos aprovados dentro do número de vagas ainda não nomeados, e o prazo de validade
+
+3. TERCEIRIZAÇÃO
+   a) Contratos de terceirização de mão de obra (empresa, CNPJ, nº de postos, função, custo por posto e valor mensal)
+   b) Indicação das funções terceirizadas que correspondem a atividade-fim e a respectiva fundamentação
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #e3f2fd; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #1565c0;">
+            <strong>Documentos que podem esclarecer:</strong> Justificativa da contratação temporária, processo seletivo, prazo, função exercida, necessidade excepcional e relação com vagas efetivas.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="servicos" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #2e7d32;">
+          <h4>LAI 16 · Prefeitura: Assistência Social (Cestas Básicas e Benefícios)</h4>
+          <textarea readonly style="height: 420px;" aria-label="LAI 16">À Secretaria Municipal de Assistência Social de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a jan/2023 até a presente data:
+
+1. BENEFÍCIOS EVENTUAIS (critérios e volume)
+   a) Quantitativo mensal de cestas básicas, cobertores, auxílio-natalidade, auxílio-funeral e demais benefícios eventuais concedidos (apenas números e critérios, sem dados pessoais)
+   b) Lei/decreto que define os critérios de elegibilidade e o fluxo de concessão
+   c) Cruzamento entre beneficiários e o CadÚnico (em forma estatística), para aferir focalização
+
+2. AQUISIÇÃO E ESTOQUE DOS SUPRIMENTOS
+   a) Contratos e notas fiscais de compra dos itens (fornecedor/CNPJ, quantidade, preço unitário), confrontados com o preço de referência da licitação
+   b) Comprovantes de entrada e saída do almoxarifado e a posição atual de estoque, com itens vencidos ou perdidos
+
+3. EQUIPAMENTOS E PROGRAMAS
+   a) Relação de serviços executados por CRAS e CREAS, e os contratos/parcerias vinculados
+   b) Demonstrativo de aplicação dos recursos do Fundo Municipal de Assistência Social (FMAS) e das transferências do FNAS/estaduais, com as principais despesas
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #e3f2fd; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #1565c0;">
+            <strong>Documentos que podem esclarecer:</strong> Critérios de elegibilidade, quantitativos por período, notas fiscais, entrada e saída de estoque e relatórios sem exposição de dados pessoais.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="gestao" data-nivel="3" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
+          <h4>LAI 17 · Prefeitura: Tecnologia e Sistemas (Licenciamentos e Softwares)</h4>
+          <textarea readonly style="height: 420px;" aria-label="LAI 17">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes aos contratos vigentes e a 2023–2025:
+
+1. SOFTWARES E LICENCIAMENTO
+   a) Relação de todos os sistemas e softwares em uso (contábil, folha, saúde, educação, protocolo etc.), com: fornecedor (CNPJ), módulos, secretarias usuárias, valor mensal/anual, vigência e nº do processo
+   b) Modalidade de contratação de cada um e, nas inexigibilidades/dispensas, a justificativa de inviabilidade de competição e a comprovação de exclusividade
+   c) Atesto de execução/conformidade e relação de chamados de suporte por sistema
+
+2. INFRAESTRUTURA E CONSULTORIAS
+   a) Contratos de hospedagem (data center/nuvem), com volume contratado e valor
+   b) Contratos de consultoria e fábrica de software, com objeto, horas/produtos contratados e entregas atestadas
+
+3. DADOS, PROPRIEDADE E SAÍDA (lock-in)
+   a) Cláusulas sobre propriedade dos dados e do código-fonte, e a forma de exportação dos dados em formato aberto ao término do contrato
+   b) Medidas de proteção de dados pessoais (LGPD) e o encarregado (DPO) designado
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #e3f2fd; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #1565c0;">
+            <strong>Documentos que podem esclarecer:</strong> Sistemas contratados, usuários ativos, ateste de funcionamento, licenças pagas, relatórios de suporte e justificativa da modalidade.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="patrimonio" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #6a1b9a;">
+          <h4>LAI 18 · Prefeitura: Controle do Patrimônio Público e Leilões</h4>
+          <textarea readonly style="height: 400px;" aria-label="LAI 18">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. INVENTÁRIO PATRIMONIAL
+   a) Relatório consolidado do inventário de bens móveis, máquinas pesadas e equipamentos, com nº de tombamento, descrição, localização, estado de conservação e valor contábil
+   b) Relação de bens não localizados ou baixados por extravio/obsolescência nos últimos 24 meses, com o respectivo processo de apuração
+
+2. LEILÕES E ALIENAÇÕES
+   a) Lista de bens alienados/leiloados nos últimos 24 meses, com laudo de avaliação prévia, valor mínimo, valor de arremate e identificação do arrematante (CPF/CNPJ parcial)
+   b) Editais dos leilões e ata de homologação, para confronto entre avaliação e preço final
+
+3. CESSÕES E USO DE BENS
+   a) Relação de veículos e equipamentos cedidos ou em uso por terceiros, com finalidade, prazo e instrumento que autoriza
+   b) Bens imóveis públicos ocupados sem instrumento formal, quando houver registro
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
+            <strong>Documentos que podem esclarecer:</strong> Laudo de avaliação, estado de conservação, valor mínimo, valor final, lista de bens e justificativa para leilão ou baixa patrimonial.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="gestao" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
+          <h4>LAI 19 · Prefeitura: Meio Ambiente e Limpeza Urbana</h4>
+          <textarea readonly style="height: 320px;" aria-label="LAI 19">À Secretaria Municipal de Meio Ambiente de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. PESAGENS E MEDIÇÃO DO LIXO
+   a) Cópia digital integral de todos os tíquetes de pesagem (tickets de balança homologada pelo INMETRO) que fundamentaram os pagamentos à empresa concessionária de coleta de lixo e destinação final de resíduos sólidos.
+   b) Relatório de medição dos serviços de varrição manual e mecanizada, capina de vias públicas e poda de árvores, indicando as ruas exatas atendidas e metros lineares medidos por dia de serviço.
+   c) Parecer técnico de aprovação das pesagens elaborado pela equipe de fiscalização de contratos da prefeitura.
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
+            <strong>Documentos que podem esclarecer:</strong> Tíquetes de pesagem, medição de capina e limpeza, ruas atendidas, fiscal responsável e comparação entre serviço medido e serviço executado.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="gestao" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
+          <h4>LAI 20 · Prefeitura: Concessionárias e Contribuição de Iluminação Pública</h4>
+          <textarea readonly style="height: 420px;" aria-label="LAI 20">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes aos últimos 36 meses:
+
+1. COSIP — ARRECADAÇÃO × DESTINAÇÃO (vinculação obrigatória)
+   a) Arrecadação mensal da Contribuição de Iluminação Pública (COSIP/CIP)
+   b) Demonstrativo das despesas custeadas com a COSIP (manutenção, expansão, eficientização, energia da rede), confrontando arrecadado × gasto, e o saldo acumulado não aplicado
+   c) Contrato de iluminação pública vigente (inclusive PPP, se houver): objeto, valor, metas de modernização (ex.: LED) e indicadores de desempenho
+
+2. RELAÇÃO COM AS CONCESSIONÁRIAS (energia, água/esgoto, telecom)
+   a) Débitos e faturas pendentes do município junto a cada concessionária, com valores e vencimentos
+   b) Convênios/contratos e contrapartidas acordadas com cada concessionária
+
+3. REPAROS URBANOS E RECOMPOSIÇÃO DE VIAS
+   a) Relação de intervenções das concessionárias em vias públicas (abertura de valas) e a comprovação de recomposição do pavimento (responsável e prazo)
+   b) Reclamações registradas sobre buracos/valas não recompostos e o encaminhamento dado
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
+            <strong>Documentos que podem esclarecer:</strong> Arrecadação da COSIP, despesas custeadas, faturas, débitos, conciliação contábil e autorização legal para cada aplicação do recurso.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+        <article class="template-card" data-cat="gestao" data-nivel="4" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
+          <h4>LAI 21 · Prefeitura: Planejamento Orçamentário e Controladoria Interna</h4>
+          <textarea readonly style="height: 440px;" aria-label="LAI 21">À Controladoria Geral do Município de Varginha – Setor de Protocolo / e-SIC
+
+REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
+
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
+
+1. PLANEJAMENTO (PPA, LDO, LOA)
+   a) Relação dos programas do PPA vigente com as metas físicas e financeiras previstas e a execução acumulada de cada um
+   b) Metas e prioridades da LDO do exercício e a LOA aprovada, com o demonstrativo de execução por função/programa
+
+2. EXECUÇÃO E METAS FÍSICAS
+   a) Relatório de avaliação das metas físicas do exercício anterior (previsto × realizado), por programa
+   b) Demonstrativo dos créditos adicionais (suplementares e especiais) abertos no exercício e o percentual de remanejamento sobre o orçamento inicial
+   c) Relatórios de Gestão Fiscal (RGF) e Resumido da Execução Orçamentária (RREO) mais recentes, com os limites de pessoal e endividamento
+
+3. CONTROLE INTERNO
+   a) Relação dos relatórios de auditoria interna concluídos nos últimos 24 meses (título, área auditada e situação das recomendações)
+   b) Recomendações e determinações vigentes do TCE-MG e o respectivo plano de providências adotado pela administração
+
+DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
+1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
+2. Na impossibilidade de fornecer os dados consolidados, solicito que seja disponibilizado o dump bruto do banco de dados (microdados) com respectivo dicionário.
+3. Não é necessária a indicação de qualquer motivo justificante para a presente solicitação (Art. 10, §3º da LAI).
+4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
+
+Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
+          <div style="background: #f3e5f5; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #6a1b9a;">
+            <strong>Documentos que podem esclarecer:</strong> Metas do PPA/LDO/LOA previstas × executadas, créditos adicionais e remanejamentos, relatórios de auditoria interna e a situação das recomendações do TCE-MG.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
+      </div>
+    </div>
+
+
+
+    <!-- Seção 7 -->
+    <div class="cobrar-block" style="margin-top: 40px;">
+      <div class="templates-head" style="margin-bottom: 24px;">
+        <div>
+          <span class="bigheader__kicker">7</span>
+          <h3 class="cobrar-block__title">Quando escalar: MP, TCE e Ação Popular</h3>
+          <p>Quando a LAI não responde, responde de forma incompleta ou os documentos deixam dúvida relevante, estes são os canais de escalada.</p>
+        </div>
+      </div>
+      <div class="grid grid--cobrar">
+        <a class="action" href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">
+          <h3 class="action__title">Ministério Público de MG</h3>
+          <p class="action__desc">Para omissões, LAIs sem resposta e indícios documentados que precisam ser apurados.</p>
+          <span class="action__cta">Acionar MP-MG →</span>
+        </a>
+        <a class="action" href="https://www.tce.mg.gov.br/Denuncia" target="_blank" rel="noopener">
+          <h3 class="action__title">Tribunal de Contas de MG</h3>
+          <p class="action__desc">Para dúvidas documentadas sobre contratos, gastos, medições, pagamentos e execução.</p>
+          <span class="action__cta">Denunciar TCE-MG →</span>
+        </a>
+        <a class="action" href="#">
+          <h3 class="action__title">Ação Popular</h3>
+          <p class="action__desc">Qualquer eleitor pode pedir judicialmente a anulação de ato lesivo ao patrimônio público.</p>
+          <span class="action__cta">Entender requisitos →</span>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -212,18 +1015,49 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
-      <strong>Fiscaliza Varginha</strong> · Painel Cidadão de Fiscalização<br>
-      <span class="muted">Ferramenta independente, sem fins lucrativos.</span>
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
     </div>
-    <div class="footer__sources">
-      <strong>Canais oficiais:</strong>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
         <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
         <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
       </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
     </div>
   </div>
 </footer>
@@ -266,6 +1100,7 @@
   });
 })();
 </script>
+<script src="data-loader.js?v=20260608l"></script>
 </body>
 </html>
 

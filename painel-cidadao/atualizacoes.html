@@ -16,7 +16,7 @@
 <meta name="twitter:description" content="Feed de contratações de Varginha-MG.">
 <link rel="stylesheet" href="style.css">
 </head>
-<body data-page="atualizacoes" data-chunks="atualizacoes,atualizado_em">
+<body data-page="atualizacoes">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
   <div class="loading-spinner"></div>
   <p>Carregando atualizações…</p>
@@ -40,7 +40,6 @@
       <a href="camara.html"       class="nav__link">Câmara</a>
       <a href="relatorios.html"   class="nav__link">Relatórios</a>
       <a href="pessoal.html"      class="nav__link">Pessoal</a>
-      <a href="marcadores.html"   class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
       <a href="sobre.html"        class="nav__link">Sobre</a>
       <a href="cobrar.html"       class="nav__link nav__link--cta">Como cobrar</a>
     </nav>
@@ -54,17 +53,25 @@
 
     <header class="bigheader">
       <span class="bigheader__kicker">FEED CRONOLÓGICO</span>
-      <h2 class="bigheader__title">Atualizações diárias</h2>
+      <h1 class="bigheader__title">Atualizações diárias</h1>
       <p class="bigheader__lead">
-        Tudo que a Prefeitura e a Câmara publicaram nos últimos dias: contratos,
-        aditivos, dispensas, compras diretas e licitações. Cada ato vem com sinais
-        de atenção, valores envolvidos e link para a publicação oficial.
+        O que a Prefeitura e a Câmara publicaram nos últimos dias: contratos, aditivos,
+        dispensas, compras diretas, licitações e edições do Diário Oficial. Volte sempre
+        para conferir o resumo, a data e o link da fonte oficial.
       </p>
       <p id="atualizado" class="muted small" style="margin-top:8px"></p>
     </header>
 
+    <div id="atualizacoesTabs" class="update-tabs" role="tablist" aria-label="Tipo de atualização">
+      <button type="button" class="update-tab is-active" role="tab" aria-selected="true" data-tab="atos">Contratações e despesas</button>
+      <button type="button" class="update-tab" role="tab" aria-selected="false" data-tab="diario">Diário Oficial</button>
+    </div>
+
     <!-- Stats topo -->
     <div id="atualizacoesStats" class="placar" aria-label="Resumo das atualizações"></div>
+
+    <!-- Resumo de mudanças recentes -->
+    <section id="mudancasRecentes" class="change-digest" aria-label="O que mudou desde a última atualização"></section>
 
     <!-- Filtros de tipo, órgão e relevância -->
     <div id="atualizacoesFiltros" class="cat-chips" aria-label="Filtrar atualizações">
@@ -97,15 +104,15 @@
       <strong>Sobre as fontes deste feed</strong>
       <p>
         <strong>O que você vê:</strong> contratos da Prefeitura e da Câmara de
-        Varginha-MG coletados diretamente do Portal Betha de Transparência.
-        Cada ato vem com link para a publicação oficial — sempre confira na fonte
+        Varginha-MG coletados diretamente do Portal Betha de Transparência e
+        edições do Diário Oficial coletadas da fonte oficial do Município.
+        Cada item vem com link para a publicação oficial — sempre confira na fonte
         antes de divulgar.
       </p>
       <p>
-        <strong>O que falta:</strong> aditivos, dispensas formais e atos publicados
-        no Diário Oficial Municipal. A coleta automática do Diário está em
-        desenvolvimento. Até lá, este feed mostra apenas contratos do Betha
-        — <strong>nenhum dado de outra cidade ou fictício é exibido</strong>.
+        <strong>Limite atual:</strong> a aba do Diário resume a edição, data,
+        tipo e link oficial. O conteúdo interno do PDF ainda deve ser conferido na
+        fonte primária antes de publicação ou cobrança.
       </p>
     </div>
 
@@ -122,13 +129,53 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
-      <strong>Fiscaliza Varginha</strong> · Painel Cidadão de Fiscalização<br>
-      <span class="muted">Atualizações coletadas do Diário Oficial Municipal.</span>
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
+    </div>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
     </div>
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260521"></script>
+<script src="data-loader.js?v=20260608l"></script>
 </body>
 </html>

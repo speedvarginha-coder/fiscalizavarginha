@@ -39,6 +39,9 @@ npm run data:update
 # instalar atualização automática diária (Windows Task Scheduler)
 npm run data:schedule:daily
 
+# instalar modo vigia: checa fontes a cada 180 minutos e coleta se mudou
+npm run data:schedule:watch
+
 # atualizar dados (precisa de Python + tokens Betha)
 cd painel-cidadao
 py coletor.py
@@ -58,6 +61,9 @@ py coletor.py
 └── .gitignore        Proteção contra commit de segredos
 ```
 
+**Produto oficial:** a versão publicada é sempre `painel-cidadao/`, empacotada por `npm run deploy:zip`.
+O diretório `dashboard/`, quando existir, deve ser tratado como laboratório/migração futura e não entra no pacote oficial enquanto não houver plano de migração documentado.
+
 ---
 
 ## Documentação
@@ -67,6 +73,7 @@ py coletor.py
 | [docs/arquitetura.md](docs/arquitetura.md) | Como o código funciona por dentro |
 | [docs/fontes-de-dados.md](docs/fontes-de-dados.md) | De onde vem cada número |
 | [docs/como-atualizar.md](docs/como-atualizar.md) | Rodar o coletor e gerar novos dados |
+| [docs/automacao-de-dados.md](docs/automacao-de-dados.md) | Atualizacao automatica, vigia, logs e rollback |
 | [docs/como-publicar.md](docs/como-publicar.md) | Deploy em Hostinger/Netlify/GitHub Pages |
 | [docs/checklist-publicacao.md](docs/checklist-publicacao.md) | Conferir antes de cada deploy |
 
@@ -90,6 +97,7 @@ py coletor.py
 - **Service Worker** com cache offline
 - **Acessibilidade** WCAG AA básico
 - **Atualização automatizável** diária ou em modo vigia por intervalo
+- **Avisos de qualidade dos dados** nas páginas públicas quando uma fonte estiver defasada, parcial ou sem cruzamento automático confiável
 
 ---
 

@@ -54,6 +54,7 @@ DIARIO_URLS = {
     2025: "https://www.varginha.mg.gov.br/portal/dados-abertos/diario-oficial/2025",
     2026: "https://www.varginha.mg.gov.br/portal/dados-abertos/diario-oficial/2026",
 }
+DIARIO_EDICAO_OFFSET = 1593
 
 # ----------------------------- helpers --------------------------------- #
 
@@ -66,8 +67,10 @@ def _save(name: str, payload) -> None:
     chunk_names = {
         "resumo.json", "atualizado_em.json", "prefeitura.json", "emendas.json",
         "vereadores.json", "pncp.json", "diarias.json", "cnpjs.json",
-        "camara_anos.json", "camara_transparencia.json", "fontes_emendas_2026.json",
-        "federal.json", "pessoal.json", "diario.json"
+        "camara_anos.json", "camara_betha.json", "camara_transparencia.json", "fontes_emendas_2026.json",
+        "federal.json", "pessoal.json", "diario.json",
+        "remuneracao_vereadores.json", "sancoes_fornecedores.json",
+        "auditoria_dados.json", "atualizacoes.json", "indice_relevancia.json",
     }
     if name in chunk_names:
         chunks_dir = DATA / "chunks"
@@ -79,6 +82,8 @@ def _save(name: str, payload) -> None:
 
 def _load_existing(name: str, default):
     path = DATA / name
+    if not path.exists():
+        path = DATA / "chunks" / name
     if not path.exists():
         return default
     try:
@@ -166,6 +171,178 @@ def _fetch_datas_sapl(anos: list[int]) -> dict[str, str]:
     return datas
 
 
+# Desfecho legislativo a partir da sigla do status de tramitação do SAPL.
+# Mecânico, da fonte oficial — sem atribuição subjetiva.
+SAPL_STATUS_APROVADO = {
+    "TRANSFLEI", "LEIPROMUL", "NORMPROMUL", "NORPU", "APROVAD2", "APROVADU",
+    "AGPROMLEI", "AGPROMNOR", "AGSANCAO", "AGPN", "REDFIN", "AGPROMVET", "PROMULVETO",
+}
+SAPL_STATUS_NEGADO = {
+    "ARQUIVADA", "REJEITADA", "INAD", "PREJUD", "RETAUTOR", "PARARQ", "VETOMANT",
+}
+SAPL_API = "http://sapl.varginha.mg.leg.br/api/materia"
+
+
+def _sapl_status_map() -> dict:
+    """{id_status: (sigla, indicador)} do vocabulário statustramitacao do SAPL."""
+    out: dict = {}
+    try:
+        d = _http_get_json(f"{SAPL_API}/statustramitacao/?page=1&page_size=200", timeout=20)
+        for s in (d.get("results") or []):
+            out[s.get("id")] = (s.get("sigla") or "", s.get("indicador") or "")
+    except Exception as e:
+        print(f"  ! SAPL statustramitacao: {e}")
+    return out
+
+
+def _classifica_desfecho(sigla: str, indicador: str) -> str:
+    if sigla in SAPL_STATUS_APROVADO:
+        return "lei"          # aprovado / virou lei
+    if sigla in SAPL_STATUS_NEGADO:
+        return "arquivado"    # arquivado / rejeitado / retirado
+    if indicador == "F":
+        return "encerrado"    # fim de tramitação, desfecho neutro
+    return "tramitando"
+
+
+def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 2500) -> dict[str, str]:
+    """{id_materia: desfecho} via API SAPL. desfecho ∈ lei|arquivado|encerrado|tramitando.
+    Em tramitação não custa request (vem na lista). Tolerante a falha de rede."""
+    status_map = _sapl_status_map()
+    if not status_map:
+        return {}
+    desfechos: dict[str, str] = {}
+    decididos: list[str] = []
+    for ano in anos:
+        url = f"{SAPL_API}/materialegislativa/?ano={ano}&page=1"
+        while url:
+            try:
+                d = _http_get_json(url, timeout=20)
+            except Exception as e:
+                print(f"  ! SAPL lista {ano}: {e}")
+                break
+            for item in d.get("results", []):
+                iid = str(item.get("id", ""))
+                if not iid:
+                    continue
+                if item.get("em_tramitacao"):
+                    desfechos[iid] = "tramitando"
+                else:
+                    decididos.append(iid)
+            url = (d.get("pagination", {}) or {}).get("links", {}).get("next")
+    consultas = 0
+    for iid in decididos:
+        if consultas >= max_consultas:
+            desfechos.setdefault(iid, "")
+            continue
+        try:
+            t = _http_get_json(f"{SAPL_API}/tramitacao/?materia={iid}", timeout=15)
+            consultas += 1
+            tl = t.get("results", []) or []
+            tl.sort(key=lambda x: x.get("data_tramitacao") or "", reverse=True)
+            ult = tl[0] if tl else None
+            sigla, ind = status_map.get(ult.get("status"), ("", "")) if ult else ("", "")
+            desfechos[iid] = _classifica_desfecho(sigla, ind)
+        except Exception:
+            desfechos[iid] = ""  # sem dado — degrada sem quebrar
+    leis = sum(1 for v in desfechos.values() if v == "lei")
+    arq = sum(1 for v in desfechos.values() if v == "arquivado")
+    tram = sum(1 for v in desfechos.values() if v == "tramitando")
+    print(f"  ✓ SAPL desfechos: {leis} viraram lei, {arq} arquivados/rejeitados, "
+          f"{tram} em tramitação ({consultas} consultas)")
+    return desfechos
+
+
+def _sapl_paginate(url: str, timeout: int = 20) -> list[dict]:
+    """Segue pagination.links.next do SAPL e devolve todos os results. Tolerante a falha."""
+    out: list[dict] = []
+    nxt: str | None = url
+    while nxt:
+        try:
+            d = _http_get_json(nxt, timeout=timeout)
+        except Exception as e:
+            print(f"  ! SAPL paginate: {e}")
+            break
+        out += d.get("results", [])
+        nxt = d.get("pagination", {}).get("links", {}).get("next")
+    return out
+
+
+# Presença em plenário — fonte oficial SAPL, denominador por JANELA DE MANDATO
+# (titular que saiu / suplente que entrou no meio do ano não é penalizado).
+# Conta sessões deliberativas: Ordinária (tipo 1) e Extraordinária (tipo 2).
+SAPL_TIPOS_DELIBERATIVOS = {1, 2}
+
+
+def _fetch_presenca_sapl(anos: list[int]) -> dict[int, dict[str, dict]]:
+    """{ano: {nome_parlamentar: {presentes, elegiveis, pct, janela}}}.
+    Tolerante a falha — sem dado, devolve {} e a presença segue pendente no índice."""
+    base = "http://sapl.varginha.mg.leg.br/api"
+    resultado: dict[int, dict[str, dict]] = {}
+
+    # id -> nome do parlamentar (mapeamento que destrava a presença)
+    parl = _sapl_paginate(f"{base}/parlamentares/parlamentar/?page_size=200")
+    if not parl:
+        print("  ! SAPL presença: lista de parlamentares vazia — pulando")
+        return {}
+    id2nome = {p.get("id"): (p.get("nome_parlamentar") or "") for p in parl}
+
+    # mandatos: janela de serviço por parlamentar (intersectada ao ano)
+    mandatos = _sapl_paginate(f"{base}/parlamentares/mandato/?page_size=200")
+
+    for ano in anos:
+        ini_ano, fim_ano = f"{ano}-01-01", f"{ano}-12-31"
+        # janela [inicio, fim] de cada parlamentar dentro do ano
+        janela: dict[int, tuple[str, str]] = {}
+        for m in mandatos:
+            ini = (m.get("data_inicio_mandato") or "")[:10]
+            fim = (m.get("data_fim_mandato") or "")[:10]
+            if not ini or ini > fim_ano or (fim and fim < ini_ano):
+                continue
+            pid = m.get("parlamentar")
+            ini_c = max(ini, ini_ano)
+            fim_c = min(fim or fim_ano, fim_ano)
+            if pid not in janela or ini_c < janela[pid][0]:
+                janela[pid] = (ini_c, fim_c)
+
+        # sessões deliberativas do ano, com data
+        sess = _sapl_paginate(f"{base}/sessao/sessaoplenaria/?data_inicio__year={ano}&page_size=200")
+        delib = [s for s in sess if s.get("tipo") in SAPL_TIPOS_DELIBERATIVOS]
+        sess_data = {s.get("id"): (s.get("data_inicio") or "")[:10] for s in delib}
+        if not delib:
+            print(f"  ! SAPL presença {ano}: nenhuma sessão deliberativa — pulando ano")
+            continue
+
+        # presença registrada por sessão (set de ids presentes)
+        presentes_por_sessao: dict[int, set] = {}
+        for sid in sess_data:
+            rows = _sapl_paginate(f"{base}/sessao/sessaoplenariapresenca/?sessao_plenaria={sid}&page_size=200")
+            presentes_por_sessao[sid] = {r.get("parlamentar") for r in rows}
+
+        # tally por parlamentar dentro da janela — só quem teve mandato vigente no ano
+        por_nome: dict[str, dict] = {}
+        for pid, janela_pid in janela.items():
+            nome = id2nome.get(pid)
+            if not nome:
+                continue
+            ji, jf = janela_pid
+            elegiveis = [sid for sid, dt in sess_data.items() if dt and ji <= dt <= jf]
+            if not elegiveis:
+                continue
+            pres = sum(1 for sid in elegiveis if pid in presentes_por_sessao.get(sid, set()))
+            por_nome[nome] = {
+                "presentes": pres,
+                "elegiveis": len(elegiveis),
+                "pct": round(pres / len(elegiveis) * 100, 1),
+                "janela": f"{ji} a {jf}",
+            }
+        resultado[ano] = por_nome
+        print(f"  ✓ SAPL presença {ano}: {len(delib)} sessões deliberativas, "
+              f"{len(por_nome)} parlamentares com presença apurada")
+
+    return resultado
+
+
 def _load_sapl_rows(path: Path) -> list[dict]:
     if not path.exists():
         print(f"  ! Arquivo SAPL nao encontrado: {path}")
@@ -193,16 +370,31 @@ def _autor_excluido(nome: str) -> bool:
 
 
 def _processa_sapl_rows(ano: int, rows: list[dict],
-                        datas_sapl: dict[str, str] | None = None) -> dict:
+                        datas_sapl: dict[str, str] | None = None,
+                        desfechos: dict[str, str] | None = None,
+                        presenca: dict[str, dict] | None = None) -> dict:
     tipos = Counter(r["tipo_descricao"] for r in rows)
     ver_tipo: dict[str, Counter] = defaultdict(Counter)
     ver_zero: dict[str, Counter] = defaultdict(Counter)
+    ver_lei: dict[str, int] = defaultdict(int)  # matérias do vereador que viraram lei
     materias = []
     datas_sapl = datas_sapl or {}
+    desfechos = desfechos or {}
+    # presença por nome normalizado (case/acento-insensível) — destrava a 4ª dimensão
+    presenca_norm = {_norm_txt(k): v for k, v in (presenca or {}).items()}
+
+    def _presenca_de(nome: str) -> dict:
+        p = presenca_norm.get(_norm_txt(nome))
+        if not p:
+            return {"presenca_pct": None, "presenca_presentes": None,
+                    "presenca_elegiveis": None, "presenca_janela": ""}
+        return {"presenca_pct": p.get("pct"), "presenca_presentes": p.get("presentes"),
+                "presenca_elegiveis": p.get("elegiveis"), "presenca_janela": p.get("janela", "")}
 
     for r in rows:
         tipo = r["tipo_descricao"]
         zero, motivo = _impacto_zero(tipo, r["ementa"])
+        desfecho = desfechos.get(str(r.get("id", "")), "")
         materia = {
             "id": r.get("id", ""),
             "ano": r["ano"],
@@ -215,8 +407,13 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
             "data": datas_sapl.get(r.get("id", ""), ""),
             "impacto_zero": zero,
             "motivo_impacto_zero": motivo,
+            "desfecho": desfecho,
         }
         materias.append(materia)
+        if desfecho == "lei" and not zero:
+            for nome in (x.strip() for x in r["autoria"].split(",")):
+                if not _autor_excluido(nome):
+                    ver_lei[nome] += 1
         for nome in (x.strip() for x in r["autoria"].split(",")):
             if _autor_excluido(nome):
                 continue
@@ -235,6 +432,7 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
             "requerimentos": _tipo_count(c, "Requerimento"),
             "projetos_lei": _tipo_count(c, "Projeto de Lei OrdinÃ¡ria do Legislativo", "Projeto de Lei Ordinária do Legislativo"),
             "emendas": _tipo_count(c, "Emenda Impositiva ao OrÃ§amento", "Emenda Impositiva ao Orçamento"),
+            "leis_aprovadas": ver_lei.get(nome, 0),
             "mocoes": mocoes,
             "pdl": pdl,
             "impacto_zero": sum(ver_zero[nome].values()),
@@ -249,6 +447,7 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
                 _norm_txt("Emenda Impositiva ao Orçamento"),
                 _norm_txt("MoÃ§Ã£o"), _norm_txt("Moção"),
             }),
+            **_presenca_de(nome),
         })
 
     presentes = {_norm_txt(v["nome"]) for v in vereadores}
@@ -263,9 +462,10 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
             continue
         vereadores.append({
             "nome": nome, "total": 0, "indicacoes": 0, "requerimentos": 0,
-            "projetos_lei": 0, "emendas": 0, "mocoes": 0, "pdl": 0,
+            "projetos_lei": 0, "emendas": 0, "leis_aprovadas": 0, "mocoes": 0, "pdl": 0,
             "impacto_zero": 0, "nome_rua": 0, "homenagens_terceiros": 0,
             "outros": 0,
+            **_presenca_de(nome),
         })
 
     emendas_raw = [r for r in rows if _norm_txt(r["tipo_descricao"]) == _norm_txt("Emenda Impositiva ao Orçamento")]
@@ -298,6 +498,13 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
         "emendas_qtd": len(emendas),
         "emendas_valor_total_brl": round(valor_total, 2),
         "impacto_zero_qtd": sum(1 for m in materias if m["impacto_zero"]),
+        "desfechos": {
+            "lei": sum(1 for m in materias if m.get("desfecho") == "lei"),
+            "arquivado": sum(1 for m in materias if m.get("desfecho") == "arquivado"),
+            "tramitando": sum(1 for m in materias if m.get("desfecho") == "tramitando"),
+            "encerrado": sum(1 for m in materias if m.get("desfecho") == "encerrado"),
+            "sem_dado": sum(1 for m in materias if not m.get("desfecho")),
+        },
         "tipos": [{"tipo": k, "qtd": v} for k, v in tipos.most_common()],
         "temas_top": temas,
     }
@@ -430,10 +637,26 @@ def _processa_sapl() -> dict:
     except Exception as e:
         print(f"  ! API SAPL indisponível, materias sem data: {e}")
 
-    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl)
+    # Desfecho legislativo (aprovado/virou lei vs arquivado) — fonte oficial SAPL.
+    # Falha silenciosa: sem rede, materias ficam com desfecho vazio.
+    desfechos_sapl: dict[str, str] = {}
+    try:
+        desfechos_sapl = _fetch_desfechos_sapl(anos_com_dados)
+    except Exception as e:
+        print(f"  ! Desfechos SAPL indisponíveis: {e}")
+
+    # Presença em plenário por janela de mandato (4ª dimensão do índice).
+    # Falha silenciosa: sem rede, presença fica pendente e o índice usa cobertura 75%.
+    presenca_sapl: dict[int, dict[str, dict]] = {}
+    try:
+        presenca_sapl = _fetch_presenca_sapl(anos_com_dados)
+    except Exception as e:
+        print(f"  ! Presença SAPL indisponível: {e}")
+
+    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl, desfechos_sapl, presenca_sapl.get(2025))
     camara_anos = {"2025": ano_2025}
     if rows_2026:
-        camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026, datas_sapl)
+        camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026, datas_sapl, desfechos_sapl, presenca_sapl.get(2026))
         print(f"  {len(rows_2026)} materias de 2026 carregadas.")
 
     return {
@@ -455,15 +678,24 @@ def _processa_diario() -> dict:
             print(f"  {ano}: {len(j.get('dados', []))} edições")
             for d in j.get("dados", []):
                 ed = d.get("edicao") or d.get("Edicao") or ""
+                try:
+                    publicacao_id = int(str(ed).strip()) - DIARIO_EDICAO_OFFSET
+                except Exception:
+                    publicacao_id = 0
+                url_leitor = (
+                    f"https://www.varginha.mg.gov.br/portal/diario-oficial/ver/{publicacao_id}/"
+                    if publicacao_id > 0 else ""
+                )
                 edicoes_all.append({
                     "ano": ano,
                     "edicao": ed,
                     "data": d.get("data") or d.get("Data") or "",
+                    "data_atualizacao": d.get("dataAtualizacao") or d.get("DataAtualizacao") or "",
+                    "descricao": d.get("descricao") or d.get("Descricao") or "",
                     "extra": (d.get("edicaoExtra") or d.get("EdicaoExtra") or "N") == "S",
-                    "url_pdf": (
-                        f"https://www.varginha.mg.gov.br/portal/diario-oficial/ver/{ano}/{ed}"
-                        if ed else ""
-                    ),
+                    "publicacao_id": publicacao_id or "",
+                    "url_pdf": url_leitor,
+                    "url_leitor": url_leitor,
                 })
         except Exception as e:
             print(f"  ✗ {ano}: {e}")
@@ -528,6 +760,26 @@ def _processa_pessoal() -> dict:
     try:
         import coletor_pessoal
         payload = coletor_pessoal.coletar()
+        existente = _load_existing("pessoal.json", {})
+        novos_pref = payload.get("prefeitura", {}).get("servidores", [])
+        antigos_pref = existente.get("prefeitura", {}).get("servidores", []) if isinstance(existente, dict) else []
+        if (
+            isinstance(novos_pref, list)
+            and isinstance(antigos_pref, list)
+            and len(antigos_pref) >= 1000
+            and len(novos_pref) < max(100, int(len(antigos_pref) * 0.5))
+        ):
+            payload["prefeitura"] = existente.get("prefeitura", {})
+            payload["prefeitura"]["status_cobertura"] = "preservada_por_cobertura"
+            payload["observacao"] = (
+                f"{payload.get('observacao', '')} "
+                f"Prefeitura: a nova coleta trouxe apenas {len(novos_pref)} registro(s); "
+                f"foi preservada a ultima base completa com {len(antigos_pref)} servidores para evitar regressao de cobertura."
+            ).strip()
+            print(
+                f"  ! Prefeitura: coleta parcial ({len(novos_pref)} registro[s]); "
+                f"preservando base completa anterior ({len(antigos_pref)} servidores)"
+            )
         cr = payload.get("camara", {}).get("resumo", {})
         pr = payload.get("prefeitura", {}).get("resumo", {})
         print(f"  ✓ Câmara: {cr.get('comissionados_qtd', 0)} comissionados/similares")
@@ -596,6 +848,31 @@ def _save_data_js(payload: dict) -> None:
         encoding="utf-8",
     )
     print(f"  ✓ data.js  ({out.stat().st_size // 1024} KB)")
+
+
+def _enriquece_materias_cidadas(camara_anos: dict) -> None:
+    """Aplica tema/grau no mesmo formato usado pela interface cidada."""
+    try:
+        import classificador_materia
+    except Exception as e:
+        print(f"  ! Classificador de materias indisponivel: {e}")
+        return
+
+    total = 0
+    contagem = Counter()
+    for bloco in (camara_anos or {}).values():
+        for materia in bloco.get("materias", []):
+            c = classificador_materia.classificar(materia)
+            materia["tema"] = c["tema"]
+            materia["tema_label"] = c["tema_label"]
+            materia["grau"] = c["grau"]
+            contagem[c["grau"]] += 1
+            total += 1
+    if total:
+        print(
+            f"  ✓ materias classificadas: {total} "
+            f"(alto {contagem['alto']}, medio {contagem['medio']}, baixo {contagem['baixo']})"
+        )
 
 
 # ----------------- 3) Câmara (Betha) ------------------------------------ #
@@ -748,17 +1025,25 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
     com_pagamento  = sum(1 for e in cruzadas if e["status"] == "encontrado")
     sem_pagamento  = sum(1 for e in cruzadas if e["status"] == "sem_pagamento")
     sem_cnpj       = sum(1 for e in cruzadas if e["status"] == "sem_cnpj")
+    execucao_direta = sum(1 for e in cruzadas if e["status"] == "execucao_direta")
 
     print(f"  Cruzamento: {com_pagamento} com pagamento, "
-          f"{sem_pagamento} sem encontrar pagamento, {sem_cnpj} sem CNPJ")
+          f"{sem_pagamento} sem encontrar pagamento, {sem_cnpj} sem CNPJ, "
+          f"{execucao_direta} execução direta (órgão público)")
 
-    # ===== Dados Abertos (Onda 3): contratos, licitações, compras diretas =====
+    # ===== Dados Abertos (Onda 3): contratos, licitações, compras diretas e obras =====
     contratos       = _baixar_dados_abertos_safe(cb, token, "Contratos",               cb.CONSULTA_CONTRATOS,          ano_atual)
     contratos_ant   = _baixar_dados_abertos_safe(cb, token, "Contratos (ano anterior)", cb.CONSULTA_CONTRATOS,          ano_atual - 1)
     contratos      += contratos_ant  # junta os 2 anos pra ter base mais rica
     licit_andamento = _baixar_dados_abertos_safe(cb, token, "Licitações em andamento", cb.CONSULTA_LICITACOES_ABERTAS, ano_atual)
     licit_finaliz   = _baixar_dados_abertos_safe(cb, token, "Licitações finalizadas",  cb.CONSULTA_LICITACOES_FECHADAS, ano_atual)
     compras_diretas = _baixar_dados_abertos_safe(cb, token, "Compras diretas",         cb.CONSULTA_COMPRAS_DIRETAS,    ano_atual - 1)
+    obras_rows, obras_linked, _ = _baixar_dados_abertos_full_safe(
+        cb, token, "Obras públicas", cb.CONSULTA_OBRAS_PUBLICAS, ano_atual
+    )
+    frota_rows, frota_linked, frota_linked_rows = _baixar_dados_abertos_full_safe(
+        cb, token, "Veículos municipais", cb.CONSULTA_VEICULOS_MUNICIPAIS, ano_atual
+    )
 
     return {
         "ano_atual":     ano_atual,
@@ -770,14 +1055,17 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
         "top_fornecedores_anterior": top_anterior,
         "emendas_cruzadas": cruzadas,
         "stats_cruzamento": {
-            "com_pagamento":  com_pagamento,
-            "sem_pagamento":  sem_pagamento,
-            "sem_cnpj":       sem_cnpj,
+            "com_pagamento":   com_pagamento,
+            "sem_pagamento":   sem_pagamento,
+            "sem_cnpj":        sem_cnpj,
+            "execucao_direta": execucao_direta,
         },
         "contratos":        _normaliza_contratos(contratos),
         "licit_andamento":  _normaliza_licitacoes(licit_andamento),
         "licit_finalizadas": _normaliza_licitacoes(licit_finaliz),
         "compras_diretas":  _normaliza_compras(compras_diretas),
+        "obras_publicas":   _normaliza_obras_publicas(obras_rows, obras_linked),
+        "frota":            _normaliza_frota(frota_rows, frota_linked, frota_linked_rows),
     }
 
 
@@ -794,8 +1082,44 @@ def _baixar_dados_abertos_safe(cb, token: str, label: str, consulta_id: int,
         return []
 
 
+def _baixar_dados_abertos_full_safe(cb, token: str, label: str, consulta_id: int,
+                                    ano: int) -> tuple[list[dict], dict, dict]:
+    print(f"  baixando {label} ({ano})…")
+    try:
+        res = cb.baixar_dados_abertos(token, consulta_id, ano=ano)
+        rows = res.get("main", [])
+        linked = res.get("linked", {})
+        linked_rows = res.get("linked_rows", {})
+        print(f"  ✓ {len(rows)} registros ({res.get('files_in_zip', 0)} arquivos no ZIP)")
+        return rows, linked, linked_rows
+    except Exception as e:
+        print(f"  ✗ {label}: {e}")
+        return [], {}, {}
+
+
 # Os CSVs Betha vêm com colunas diferentes por consulta. Normalizamos para o
 # painel só os campos relevantes ao cidadão.
+
+def _cell(value) -> str:
+    s = str(value or "").strip()
+    return "" if s in {"-", "--"} else s
+
+
+def _linked(linked: dict, ref: str) -> dict:
+    key = _cell(ref)
+    if not key or not key.lower().endswith(".csv"):
+        return {}
+    item = linked.get(key)
+    return item if isinstance(item, dict) else {}
+
+
+def _linked_rows(linked_rows: dict, ref: str) -> list[dict]:
+    key = _cell(ref)
+    if not key or not key.lower().endswith(".csv"):
+        return []
+    rows = linked_rows.get(key)
+    return rows if isinstance(rows, list) else []
+
 
 def _f(s) -> float:
     """Converte string monetária do CSV para float."""
@@ -863,6 +1187,246 @@ def _normaliza_compras(rows: list[dict]) -> list[dict]:
             "entidade":    r.get("nomeEntidade", ""),
         })
     out.sort(key=lambda x: -x["valor"])
+    return out
+
+
+def _normaliza_obras_publicas(rows: list[dict], linked: dict) -> list[dict]:
+    out = []
+    fonte_url = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026"
+    for r in rows:
+        endereco = _linked(linked, r.get("endereco", ""))
+        geo = _linked(linked, r.get("geolocalizacao", ""))
+        medicao = _linked(linked, r.get("medicoes", ""))
+        responsavel = _linked(linked, r.get("responsaveis", ""))
+        contrato = _linked(linked, r.get("contratos", ""))
+        licitacao = _linked(linked, r.get("licitacoes", ""))
+        situacao = _linked(linked, r.get("situacoes", ""))
+
+        logradouro = _cell(endereco.get("logradouro", ""))
+        numero_endereco = _cell(endereco.get("numeroEndereço", "") or endereco.get("numeroEndereco", ""))
+        bairro = _cell(endereco.get("bairro", ""))
+        cidade = _cell(endereco.get("municipio", ""))
+        endereco_partes = [
+            p for p in [
+                logradouro,
+                f"nº {numero_endereco}" if numero_endereco else "",
+                bairro,
+                cidade,
+            ] if p
+        ]
+
+        valor_previsto = _f(r.get("valorPrevisto", 0))
+        valor_atualizado = _f(r.get("valorAtualizado", 0))
+        valor_efetivo = _f(r.get("valorEfetivo", 0))
+        valor_contrato = _f(contrato.get("valor", 0))
+        valor_medicao = _f(medicao.get("valor", 0))
+        valor = valor_efetivo or valor_atualizado or valor_previsto or valor_contrato or valor_medicao
+        data_inicio = _cell(r.get("dataInicio", ""))
+        ano = data_inicio[:4] or _cell(contrato.get("ano", "")) or _cell(r.get("dataPrevistaConclusao", ""))[:4]
+        percentual = _f(r.get("percentualExecutado", 0) or situacao.get("percentualExecucao", 0))
+        fornecedor = _cell(r.get("nomeFornecedor", "")) or _cell(contrato.get("nomeContratado", ""))
+
+        out.append({
+            "id_obra": _cell(r.get("idObra", "")),
+            "numero": _cell(r.get("idObra", "")),
+            "ano": ano,
+            "matricula_obra": _cell(r.get("matriculaObra", "")),
+            "entidade": _cell(r.get("nomeEntidade", "")),
+            "tipo_obra": _cell(r.get("tipoObra", "")),
+            "categoria": _cell(r.get("categoria", "")),
+            "objeto": _cell(r.get("descricaoObra", "")),
+            "situacao": _cell(r.get("situacaoAtual", "")) or _cell(situacao.get("situacao", "")),
+            "data_inicio": data_inicio,
+            "data_prevista_conclusao": _cell(r.get("dataPrevistaConclusao", "")),
+            "data_efetiva_conclusao": _cell(r.get("dataEfetivaConclusao", "")),
+            "data_ordem_servico": _cell(r.get("dataOrdemServico", "")),
+            "data_ultima_medicao": _cell(r.get("dataUltimaMedicao", "")) or _cell(medicao.get("data", "")),
+            "fornecedor": fornecedor,
+            "contratado": fornecedor,
+            "cnpj": _cell(r.get("CnpjCpfFornecedor", "")) or _cell(r.get("cnpjCpfFornecedor", "")),
+            "valor": valor,
+            "valor_previsto": valor_previsto,
+            "valor_atualizado": valor_atualizado,
+            "valor_efetivo": valor_efetivo,
+            "valor_contrato": valor_contrato,
+            "valor_medicao": valor_medicao,
+            "percentual_executado": percentual,
+            "area_m2": _f(r.get("tamanhoMetrosQuadrados", 0)),
+            "extensao": _f(r.get("tamanhoDistanciaPercorrida", 0)),
+            "tipo_empreitada": _cell(r.get("tipoEmpreitada", "")),
+            "tipo_execucao": _cell(r.get("tipoExecucao", "")),
+            "tipo_recurso": _cell(r.get("tipoRecurso", "")),
+            "endereco": ", ".join(endereco_partes),
+            "logradouro": logradouro,
+            "bairro": bairro,
+            "municipio": cidade,
+            "latitude": _cell(geo.get("latitude", "")),
+            "longitude": _cell(geo.get("longitude", "")),
+            "responsavel": _cell(responsavel.get("nome", "")) or _cell(situacao.get("responsavel", "")),
+            "responsavel_registro": _cell(responsavel.get("registroProfissional", "")),
+            "responsavel_funcao": _cell(responsavel.get("funcao", "")),
+            "medicao_responsavel": _cell(medicao.get("responsavel", "")),
+            "medicao_observacao": _cell(medicao.get("observacao", "")),
+            "contrato_numero": _cell(contrato.get("numero", "")),
+            "contrato_ano": _cell(contrato.get("ano", "")),
+            "contrato_data_assinatura": _cell(contrato.get("dataAssinatura", "")),
+            "licitacao_numero": _cell(licitacao.get("numeroLicitacao", "")) or _cell(licitacao.get("numeroProcesso", "")),
+            "licitacao_modalidade": _cell(licitacao.get("modalidade", "")),
+            "fonte_url": fonte_url,
+        })
+    out.sort(key=lambda x: -x["valor"])
+    return out
+
+
+def _normaliza_frota(rows: list[dict], linked: dict, linked_rows: dict) -> list[dict]:
+    out = []
+    fonte_url = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83061"
+
+    def _is_combustivel(txt: str) -> bool:
+        t = _norm_txt(txt)
+        return any(k in t for k in ["abastecimento", "combustivel", "gasolina", "diesel", "etanol", "arla"])
+
+    def _is_manutencao(txt: str) -> bool:
+        t = _norm_txt(txt)
+        return any(k in t for k in ["manutencao", "peca", "pecas", "servico", "revisao", "oficina", "lubrificante", "oleo"])
+
+    for r in rows:
+        hist_cc = _linked(linked, r.get("historicoCentroDeCustos", ""))
+        gastos_raw = _linked_rows(linked_rows, r.get("gastos", ""))
+        if not gastos_raw:
+            gasto_unico = _linked(linked, r.get("gastos", ""))
+            gastos_raw = [gasto_unico] if gasto_unico else []
+
+        gastos = []
+        total_gastos = 0.0
+        total_gastos_bruto = 0.0
+        total_atipico = 0.0
+        total_combustivel = 0.0
+        total_manutencao = 0.0
+        litros_combustivel = 0.0
+        tipos = Counter()
+        fornecedores = Counter()
+        gastos_atipicos = []
+
+        for g in gastos_raw:
+            tipo = _cell(g.get("tipoDespesa", ""))
+            fornecedor = _cell(g.get("nomeFornecedor", ""))
+            valor = _f(g.get("valorDespesa", 0))
+            itens = _linked_rows(linked_rows, g.get("itensDespesa", ""))
+            itens_resumo = []
+            litros_gasto = 0.0
+            for item in itens[:4]:
+                desc = _cell(item.get("descricao", ""))
+                unidade = _cell(item.get("unidadeMedida", ""))
+                qtd = _f(item.get("quantidade", 0))
+                valor_item = _f(item.get("valorTotal", 0))
+                if unidade.upper() == "L" and _is_combustivel(f"{tipo} {desc}"):
+                    litros_gasto += qtd
+                if desc:
+                    prefix = f"{qtd:g} {unidade}".strip() if qtd else ""
+                    itens_resumo.append({
+                        "descricao": desc,
+                        "quantidade": qtd,
+                        "unidade": unidade,
+                        "valor_total": valor_item,
+                        "resumo": f"{prefix} - {desc}" if prefix else desc,
+                    })
+
+            texto_gasto = f"{tipo} {' '.join(i.get('descricao', '') for i in itens_resumo)}"
+            combustivel = _is_combustivel(texto_gasto)
+            manutencao = _is_manutencao(texto_gasto)
+            valor_por_litro = valor / litros_gasto if litros_gasto else 0
+            atipico = valor > 500_000 or (combustivel and (valor > 100_000 or (litros_gasto and valor_por_litro > 50)))
+            total_gastos_bruto += valor
+            if not atipico:
+                total_gastos += valor
+                tipos[tipo or "Nao informado"] += valor
+                if combustivel:
+                    total_combustivel += valor
+                    litros_combustivel += litros_gasto
+                if manutencao:
+                    total_manutencao += valor
+            else:
+                total_atipico += valor
+            if fornecedor and not atipico:
+                fornecedores[fornecedor] += valor
+
+            gasto_norm = {
+                "data": _cell(g.get("data", "")),
+                "tipo": tipo,
+                "fornecedor": fornecedor,
+                "descricao": _cell(g.get("descricaoGasto", "")),
+                "forma_aquisicao": _cell(g.get("formaAquisicao", "")),
+                "documento": _cell(g.get("documentoDespesa", "")),
+                "empenho": _cell(g.get("numeroEmpenho", "")),
+                "centro_custo": _cell(g.get("centroCustoDespesa", "")),
+                "valor": valor,
+                "valor_atipico": atipico,
+                "motivo_atipico": "valor fora de escala; conferir lançamento original" if atipico else "",
+                "itens": itens_resumo,
+            }
+            gastos.append(gasto_norm)
+            if atipico:
+                gastos_atipicos.append(gasto_norm)
+
+        gastos.sort(key=lambda x: x.get("data", ""), reverse=True)
+        centro_custo = _cell(r.get("centroCusto", "")) or _cell(hist_cc.get("centroDeCustos", ""))
+        alertas = []
+        if not centro_custo:
+            alertas.append("Centro de custo nao informado")
+        if _cell(r.get("situacao", "")).upper() == "INATIVO" and total_gastos > 0:
+            alertas.append("Veiculo inativo com gasto vinculado")
+        if _cell(r.get("tipoAquisicao", "")).upper() == "LOCADO":
+            alertas.append("Veiculo locado: conferir contrato e custo mensal")
+        if total_atipico > 0:
+            alertas.append("Possui lançamento atípico separado do total principal")
+        if total_gastos > 50_000:
+            alertas.append("Gasto acumulado alto")
+
+        out.append({
+            "placa": _cell(r.get("placa", "")),
+            "tipo": _cell(r.get("tipo", "")),
+            "descricao": _cell(r.get("descricao", "")),
+            "ano_fabricacao": _cell(r.get("anoFabricacao", "")),
+            "ano_modelo": _cell(r.get("anoModelo", "")),
+            "data_aquisicao": _cell(r.get("dataAquisicao", "")),
+            "tipo_aquisicao": _cell(r.get("tipoAquisicao", "")),
+            "valor_aquisicao": _f(r.get("valorAquisicao", 0)),
+            "centro_custo": centro_custo,
+            "situacao": _cell(r.get("situacao", "")),
+            "renavam": _cell(r.get("renavam", "")),
+            "chassi": _cell(r.get("chassi", "")),
+            "gastos_total": round(total_gastos, 2),
+            "gastos_total_bruto": round(total_gastos_bruto, 2),
+            "gastos_atipicos_total": round(total_atipico, 2),
+            "gastos_atipicos_qtd": len(gastos_atipicos),
+            "gastos_qtd": len(gastos),
+            "gastos_auditaveis_qtd": len(gastos) - len(gastos_atipicos),
+            "combustivel_total": round(total_combustivel, 2),
+            "manutencao_total": round(total_manutencao, 2),
+            "litros_combustivel": round(litros_combustivel, 3),
+            "ultimo_gasto_data": gastos[0]["data"] if gastos else "",
+            "ultimo_gasto_tipo": gastos[0]["tipo"] if gastos else "",
+            "ultimo_gasto_valor": gastos[0]["valor"] if gastos else 0,
+            "gastos_recentes": gastos[:6],
+            "gastos_atipicos": gastos_atipicos[:5],
+            "gastos_por_tipo": [
+                {"tipo": tipo, "valor": round(valor, 2)}
+                for tipo, valor in tipos.most_common(6)
+            ],
+            "fornecedores_gastos": [
+                {"nome": nome, "valor": round(valor, 2)}
+                for nome, valor in fornecedores.most_common(6)
+            ],
+            "historico_centro_custo": {
+                "centro_custo": _cell(hist_cc.get("centroDeCustos", "")),
+                "data_inicial": _cell(hist_cc.get("dataInicial", "")),
+                "data_final": _cell(hist_cc.get("dataFinal", "")),
+            } if hist_cc else {},
+            "alertas": alertas,
+            "fonte_url": fonte_url,
+        })
+    out.sort(key=lambda x: (-x["gastos_total"], x["placa"]))
     return out
 
 
@@ -996,6 +1560,7 @@ def main() -> int:
     sem_fontes_emendas = "--sem-fontes-emendas" in sys.argv
 
     sapl = _processa_sapl()
+    _enriquece_materias_cidadas(sapl.get("camara_anos", {}))
     _save("resumo.json", sapl["resumo"])
     _save("vereadores.json", sapl["vereadores"])
     _save("emendas.json", sapl["emendas"])
@@ -1009,6 +1574,12 @@ def main() -> int:
     pncp = {}
     camara_transparencia = {}
     cnpjs = {}
+    remuneracao_vereadores = _load_existing("remuneracao_vereadores.json", {})
+    sancoes_fornecedores = _load_existing("sancoes_fornecedores.json", {})
+    auditoria_dados = _load_existing("auditoria_dados.json", {})
+    atualizacoes = _load_existing("atualizacoes.json", {})
+    fontes_emendas_2026 = _load_existing("fontes_emendas_2026.json", {})
+    indice_relevancia = _load_existing("indice_relevancia.json", {})
     if not so_sapl and not sem_pncp:
         pncp = _processa_pncp()
         _save("pncp.json", pncp)
@@ -1029,6 +1600,11 @@ def main() -> int:
 
         fontes_emendas_2026 = _processa_fontes_emendas_2026()
         _save("fontes_emendas_2026.json", fontes_emendas_2026)
+    elif sem_pessoal:
+        pessoal = _load_existing("pessoal.json", {})
+        fontes_emendas_2026 = _load_existing("fontes_emendas_2026.json", fontes_emendas_2026)
+        if pessoal:
+            print("  ✓ pessoal.json existente preservado no data.js")
 
     diarias = {}
     if not so_sapl and not sem_betha:
@@ -1048,6 +1624,21 @@ def main() -> int:
         camara_betha = _processa_camara_betha()
         if camara_betha:
             _save("camara_betha.json", camara_betha)
+
+        # Enriquece top fornecedores Betha (CNPJs mascarados → reconstruídos via raiz)
+        if not sem_cnpj and prefeitura:
+            top = prefeitura.get("top_fornecedores_atual", [])
+            if top:
+                try:
+                    import coletor_cnpj
+                    print("⇣ CNPJ — enriquecendo top fornecedores Betha (raiz→0001)…")
+                    fornecedores = coletor_cnpj.coletar_fornecedores(top)
+                    ok = sum(1 for f in fornecedores if "razao_social" in f)
+                    print(f"  ✓ {ok}/{len(fornecedores)} fornecedores enriquecidos")
+                    cnpjs["fornecedores"] = fornecedores
+                    _save("cnpjs.json", cnpjs)
+                except Exception as _e:
+                    print(f"  ✗ enriquecimento fornecedores: {_e}")
     elif sem_betha:
         prefeitura = _load_existing("prefeitura.json", {})
         if prefeitura:
@@ -1066,6 +1657,11 @@ def main() -> int:
         diarias = _load_existing("diarias.json", {})
         prefeitura = _load_existing("prefeitura.json", {})
         camara_betha = _load_existing("camara_betha.json", {})
+        remuneracao_vereadores = _load_existing("remuneracao_vereadores.json", {})
+        sancoes_fornecedores = _load_existing("sancoes_fornecedores.json", {})
+        auditoria_dados = _load_existing("auditoria_dados.json", {})
+        atualizacoes = _load_existing("atualizacoes.json", {})
+        indice_relevancia = _load_existing("indice_relevancia.json", {})
         print("  bases existentes preservadas no data.js")
 
     atualizado = {
@@ -1106,6 +1702,11 @@ def main() -> int:
         "diarias": diarias,
         "fontes_emendas_2026": fontes_emendas_2026,
         "federal": federal,
+        "remuneracao_vereadores": remuneracao_vereadores,
+        "sancoes_fornecedores": sancoes_fornecedores,
+        "auditoria_dados": auditoria_dados,
+        "atualizacoes": atualizacoes,
+        "indice_relevancia": indice_relevancia,
         "atualizado_em": atualizado,
     })
 

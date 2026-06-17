@@ -26,6 +26,12 @@ PREFEITURA_EDUCACAO_REMUNERACOES_ID = 82991
 PREFEITURA_EDUCACAO_URL = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82991"
 PREFEITURA_BETHA_URL = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA=="
 
+# Folha COMPLETA da Prefeitura (todas as secretarias). Consulta sem dados
+# abertos (CSV); baixada via busca-textual filtrando a competencia mais
+# recente — body {"competencia": ["MM/AAAA"]}.
+PREFEITURA_FOLHA_COMPLETA_ID = 97583
+PREFEITURA_FOLHA_COMPLETA_URL = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/97583"
+
 
 def _br_money(value: str) -> float:
     if not value:
@@ -190,6 +196,27 @@ def _coletar_prefeitura_educacao_betha(ano: int) -> list[dict]:
     return _normaliza_betha(res.get("main", []), "Prefeitura", "Educacao/FUNDEB")
 
 
+def _coletar_prefeitura_folha_completa() -> tuple[list[dict], str]:
+    """Folha completa da Prefeitura (todas as secretarias) na competencia
+    mais recente. Retorna (servidores, competencia)."""
+    token = betha.get_token()
+    comp = betha.filtro_max(token, PREFEITURA_FOLHA_COMPLETA_ID, "competencia")
+    if not comp:
+        raise RuntimeError("Nao foi possivel descobrir a competencia mais recente da folha.")
+    rows = betha.baixar_busca_textual(
+        token,
+        PREFEITURA_FOLHA_COMPLETA_ID,
+        body={"competencia": [comp]},
+        sort_by="nomeServidor",
+    )
+    escopo = f"Folha completa da Prefeitura (competencia {comp})"
+    servidores = _normaliza_betha(rows, "Prefeitura", escopo)
+    # campo extra: secretaria de origem (ajuda filtros futuros no painel)
+    for s, r in zip(servidores, rows):
+        s["orgao"] = r.get("orgao", "")
+    return servidores, comp
+
+
 def coletar() -> dict:
     ano = dt.datetime.now().year
     payload = {
@@ -226,13 +253,29 @@ def coletar() -> dict:
             payload["camara"]["erro"] = f"Betha: {e}; alternativa: {e2}"
             payload["camara"]["status"] = "Falha na coleta automatica"
 
+    # 1a opcao: folha completa (todas as secretarias, competencia mais recente)
     try:
-        servidores = _coletar_prefeitura_educacao_betha(ano)
+        servidores, comp = _coletar_prefeitura_folha_completa()
         payload["prefeitura"]["servidores"] = servidores
         payload["prefeitura"]["resumo"] = _resumo("Prefeitura", servidores)
-        payload["prefeitura"]["status"] = "Coletado automaticamente via Betha (escopo Educacao/FUNDEB)"
+        payload["prefeitura"]["fonte"] = PREFEITURA_FOLHA_COMPLETA_URL
+        payload["prefeitura"]["competencia"] = comp
+        payload["prefeitura"]["status"] = f"Coletado automaticamente via Betha (folha completa, competencia {comp})"
+        payload["observacao"] = (
+            f"Valores sao remuneracao bruta informada na fonte publica, competencia {comp} "
+            "para a Prefeitura (folha completa, todas as secretarias). Camara segue folha "
+            "nominal propria. Conferir mes de referencia no portal oficial."
+        )
     except Exception as e:
-        payload["prefeitura"]["erro"] = str(e)
+        # fallback: escopo parcial Educacao/FUNDEB (consulta antiga)
+        try:
+            servidores = _coletar_prefeitura_educacao_betha(ano)
+            payload["prefeitura"]["servidores"] = servidores
+            payload["prefeitura"]["resumo"] = _resumo("Prefeitura", servidores)
+            payload["prefeitura"]["status"] = "Coletado automaticamente via Betha (escopo Educacao/FUNDEB)"
+            payload["prefeitura"]["erro_folha_completa"] = str(e)
+        except Exception as e2:
+            payload["prefeitura"]["erro"] = f"folha completa: {e}; educacao: {e2}"
 
     return payload
 

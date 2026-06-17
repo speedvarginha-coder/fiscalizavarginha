@@ -38,6 +38,7 @@ CONSULTA_LICITACOES_ABERTAS   = 82967  # Em andamento
 CONSULTA_LICITACOES_FECHADAS  = 82965  # Finalizadas
 CONSULTA_COMPRAS_DIRETAS      = 83045
 CONSULTA_OBRAS_PUBLICAS       = 83026
+CONSULTA_VEICULOS_MUNICIPAIS  = 83061
 CONSULTA_DIARIAS              = 83059
 CONSULTA_INEXIGIBILIDADE      = 83022
 CONSULTA_DISPENSADA           = 83062
@@ -160,6 +161,7 @@ ANO_FIELD = {
     CONSULTA_INEXIGIBILIDADE:      "anoLicitacao",
     CONSULTA_DISPENSADA:           "anoLicitacao",
     CONSULTA_OBRAS_PUBLICAS:       None,         # sem filtro de ano
+    CONSULTA_VEICULOS_MUNICIPAIS:  None,         # sem filtro de ano
     CONSULTA_DIARIAS:              "anoExercicio",
 }
 
@@ -224,6 +226,7 @@ def baixar_dados_abertos(token: str, consulta_id: int,
     csv_text = zf.read(main_name).decode("utf-8", errors="ignore")
     rows = list(csvmod.DictReader(io.StringIO(csv_text)))
     linked = {}
+    linked_rows = {}
     for name in zf.namelist():
         if name == main_name or not name.lower().endswith(".csv"):
             continue
@@ -232,10 +235,12 @@ def baixar_dados_abertos(token: str, consulta_id: int,
             sub = list(csvmod.DictReader(io.StringIO(txt)))
             if sub:
                 linked[name] = sub[0]
+                linked_rows[name] = sub
         except Exception:
             pass
     return {"main": rows, "main_filename": main_name,
-            "files_in_zip": len(zf.namelist()), "linked": linked}
+            "files_in_zip": len(zf.namelist()), "linked": linked,
+            "linked_rows": linked_rows}
 
 
 # ============================================================
@@ -268,6 +273,54 @@ def totalizadores_credores(token: str) -> dict:
         token,
         body={},
     )
+
+
+def filtro_max(token: str, consulta_id: int, campo: str,
+               portal_hash: str = PORTAL_HASH) -> Optional[str]:
+    """Maior valor disponível de um campo filtrável (ex.: competência mais
+    recente da folha). Endpoint: GET /busca-textual/{id}/filtro/{campo}/MAX."""
+    res = _api("GET", f"/busca-textual/{consulta_id}/filtro/{campo}/MAX",
+               token, portal_hash=portal_hash)
+    buckets = res.get("buckets") or []
+    return buckets[0].get("id") if buckets else None
+
+
+def baixar_busca_textual(token: str, consulta_id: int,
+                         body: Optional[dict] = None,
+                         sort_by: str = "id",
+                         portal_hash: str = PORTAL_HASH,
+                         batch: int = 200) -> list[dict]:
+    """Baixa todas as páginas de uma consulta via busca-textual, com filtro
+    opcional no body (formato Betha: {"campo": ["valor", ...]})."""
+    out: list[dict] = []
+    offset = 0
+    total: Optional[int] = None
+    while True:
+        res = _api(
+            "POST",
+            f"/busca-textual/{consulta_id}",
+            token,
+            body=body or {},
+            params={
+                "sortBy": sort_by,
+                "sortDirection": "ASC",
+                "offset": offset,
+                "limit": batch,
+                "hiperlink": "false",
+            },
+            portal_hash=portal_hash,
+        )
+        if total is None:
+            total = res.get("totalHits", 0)
+            print(f"  -> Total de registros: {total:,}")
+        hits = res.get("hits", [])
+        if not hits:
+            break
+        out.extend(h["sourceAsMap"] for h in hits)
+        offset += batch
+        if offset >= total:
+            break
+    return out
 
 
 def todos_credores_generico(token: str, consulta_id: int,

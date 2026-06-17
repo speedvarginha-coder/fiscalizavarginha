@@ -40,7 +40,6 @@
       <a href="camara.html"     class="nav__link">Câmara</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link nav__link--active">Pessoal</a>
-      <a href="marcadores.html" class="nav__link">★ <span id="watchCount" class="cat-chip__count"></span></a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
     </nav>
@@ -53,8 +52,29 @@
     <p id="atualizado" class="muted small" style="margin-bottom:4px"></p>
     <h1 class="bigheader__title">Pessoal e Cargos</h1>
     <p class="bigheader__lead">
-      Fiscalização de servidores, cargos comissionados e remuneração da Prefeitura e da Câmara de Varginha.
+      Quanto custa a folha da Prefeitura e da Câmara, quantos cargos são comissionados e como se distribui a remuneração do serviço público de Varginha. Números oficiais, sem julgamento — a leitura é sua.
     </p>
+    <div id="dataHealthStrip" class="data-health-strip" hidden></div>
+    <script>
+    (function () {
+      var box = document.getElementById("dataHealthStrip");
+      if (!box || !window.fetch || location.protocol === "file:") return;
+      var RE = /pessoal/i;
+      function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+      fetch("data/chunks/auditoria_dados.json?v=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (a) {
+          if (!a || !a.items) return;
+          var its = a.items.filter(function (i) { return i.severity === "warning" && RE.test(i.source || ""); });
+          if (!its.length) return;
+          box.hidden = false;
+          box.innerHTML = '<strong>⚠ Limites conhecidos desta base</strong><ul>' +
+            its.map(function (i) { return '<li>' + esc(i.detail) + '</li>'; }).join("") +
+            '</ul>';
+        })
+        .catch(function () {});
+    })();
+    </script>
   </div>
 
   <!-- Dashboard de Pessoal -->
@@ -96,8 +116,9 @@
   <div class="block">
     <h3 class="block__title">Top 10 comissionados — maiores vencimentos</h3>
     <p class="block__lead">
-      Ranking dos servidores comissionados (de livre nomeação, sem concurso) com maior remuneração bruta.
-      Barra vermelha = Câmara, azul = Prefeitura.
+      <strong>Quem são os comissionados?</strong> São funcionários indicados para cargos de confiança (pelo Prefeito ou Vereadores), ou seja, não precisaram passar em concurso público.<br>
+      <strong>O que são estes valores?</strong> O valor destacado em cada card é o <strong>Salário Bruto Mensal</strong> (o valor total que o município paga, antes dos descontos). Abaixo dele, você vê o <strong>Salário na Conta (Líquido)</strong>, que é o dinheiro que de fato entra na conta bancária do funcionário.<br>
+      <span id="rankingPeriodoInfo" class="tag-periodo-alerta" style="margin-top: 8px;"></span>
     </p>
     <div id="rankingComissionados" class="contratos"></div>
   </div>
@@ -134,7 +155,56 @@
   </div>
 </main>
 
-<script src="data-loader.js?v=20260520"></script>
+<script src="data-loader.js?v=20260608l"></script>
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
+    </div>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
 
