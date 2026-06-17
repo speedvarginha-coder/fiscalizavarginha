@@ -29,7 +29,7 @@
       '<div class="chat-cidadao__header">' +
         '<div class="chat-cidadao__header-info">' +
           '<strong>Assistente Fiscaliza</strong>' +
-          '<small>Dados públicos de Varginha · sem IA</small>' +
+          '<small id="chatSubtitle">Dados públicos de Varginha</small>' +
         '</div>' +
         '<button id="chatClose" class="chat-cidadao__close" aria-label="Fechar">&#x2715;</button>' +
       '</div>' +
@@ -101,6 +101,8 @@
 
   const FUNC_URL = "/.netlify/functions/chat";
   const USA_IA = location.hostname.includes("netlify.app") || location.hostname.includes("fiscaliza");
+  const subtitle = document.getElementById("chatSubtitle");
+  if (subtitle) subtitle.textContent = USA_IA ? "🤖 Gemini · dados de Varginha" : "📋 Respostas automáticas";
 
   async function chamarIA(pergunta) {
     const res = await fetch(FUNC_URL, {
