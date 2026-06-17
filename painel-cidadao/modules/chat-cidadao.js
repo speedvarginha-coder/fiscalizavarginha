@@ -99,8 +99,9 @@
     });
   }
 
-  const FUNC_URL = "/.netlify/functions/chat";
-  const USA_IA = location.hostname.includes("netlify.app") || location.hostname.includes("fiscaliza");
+  const EM_NETLIFY = location.hostname.includes("netlify.app");
+  const FUNC_URL = EM_NETLIFY ? "/.netlify/functions/chat" : "/chat.php";
+  const USA_IA = EM_NETLIFY || location.hostname.includes("fiscaliza");
   const subtitle = document.getElementById("chatSubtitle");
   if (subtitle) subtitle.textContent = USA_IA ? "🤖 Gemini · dados de Varginha" : "📋 Respostas automáticas";
 
