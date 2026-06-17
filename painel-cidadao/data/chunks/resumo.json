@@ -7,10 +7,10 @@
   "impacto_zero_qtd": 328,
   "desfechos": {
     "lei": 25,
-    "arquivado": 882,
+    "arquivado": 881,
     "tramitando": 666,
     "encerrado": 11,
-    "sem_dado": 0
+    "sem_dado": 1
   },
   "tipos": [
     {

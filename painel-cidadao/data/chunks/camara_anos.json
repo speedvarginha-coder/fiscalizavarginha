@@ -9,10 +9,10 @@
       "impacto_zero_qtd": 328,
       "desfechos": {
         "lei": 25,
-        "arquivado": 882,
+        "arquivado": 881,
         "tramitando": 666,
         "encerrado": 11,
-        "sem_dado": 0
+        "sem_dado": 1
       },
       "tipos": [
         {
@@ -24640,7 +24640,7 @@
         "data": "2025-10-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "arquivado",
+        "desfecho": "",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -31471,9 +31471,9 @@
         "nome_rua": 12,
         "homenagens_terceiros": 3,
         "outros": 3,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31490,9 +31490,9 @@
         "nome_rua": 0,
         "homenagens_terceiros": 5,
         "outros": 6,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31509,9 +31509,9 @@
         "nome_rua": 3,
         "homenagens_terceiros": 1,
         "outros": 3,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31528,9 +31528,9 @@
         "nome_rua": 5,
         "homenagens_terceiros": 2,
         "outros": 2,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31547,9 +31547,9 @@
         "nome_rua": 9,
         "homenagens_terceiros": 3,
         "outros": 3,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31566,9 +31566,9 @@
         "nome_rua": 7,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31585,9 +31585,9 @@
         "nome_rua": 4,
         "homenagens_terceiros": 3,
         "outros": 3,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31604,9 +31604,9 @@
         "nome_rua": 4,
         "homenagens_terceiros": 2,
         "outros": 2,
-        "presenca_pct": 97.6,
+        "presenca_pct": 95.2,
         "presenca_presentes": 40,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31623,9 +31623,9 @@
         "nome_rua": 7,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31642,9 +31642,9 @@
         "nome_rua": 4,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31661,9 +31661,9 @@
         "nome_rua": 6,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 100.0,
+        "presenca_pct": 97.6,
         "presenca_presentes": 41,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31680,9 +31680,9 @@
         "nome_rua": 11,
         "homenagens_terceiros": 2,
         "outros": 2,
-        "presenca_pct": 97.6,
+        "presenca_pct": 95.2,
         "presenca_presentes": 40,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31699,9 +31699,9 @@
         "nome_rua": 4,
         "homenagens_terceiros": 3,
         "outros": 3,
-        "presenca_pct": 97.6,
+        "presenca_pct": 95.2,
         "presenca_presentes": 40,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31739,7 +31739,7 @@
         "outros": 0,
         "presenca_pct": 2.4,
         "presenca_presentes": 1,
-        "presenca_elegiveis": 41,
+        "presenca_elegiveis": 42,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {

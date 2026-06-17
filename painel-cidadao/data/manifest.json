@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-17T12:34:54.346Z",
+  "gerado_em": "2026-06-17T14:26:25.046Z",
   "chunks": {
     "atualizacoes": {
       "arquivo": "data/chunks/atualizacoes.json",
@@ -9,57 +9,57 @@
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
       "bytes": 76,
-      "atualizado_em": "2026-06-17T09:44:37.678Z"
+      "atualizado_em": "2026-06-17T14:25:35.190Z"
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
       "bytes": 3416,
-      "atualizado_em": "2026-06-17T12:34:53.645Z"
+      "atualizado_em": "2026-06-17T14:26:23.114Z"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
-      "bytes": 1828687,
-      "atualizado_em": "2026-06-17T09:39:46.280Z"
+      "bytes": 1828668,
+      "atualizado_em": "2026-06-17T14:19:49.378Z"
     },
     "camara_betha": {
       "arquivo": "data/chunks/camara_betha.json",
       "bytes": 25728,
-      "atualizado_em": "2026-06-17T09:44:37.674Z"
+      "atualizado_em": "2026-06-17T14:24:43.509Z"
     },
     "camara_transparencia": {
       "arquivo": "data/chunks/camara_transparencia.json",
       "bytes": 10387,
-      "atualizado_em": "2026-06-17T09:39:49.347Z"
+      "atualizado_em": "2026-06-17T14:20:08.607Z"
     },
     "cnpjs": {
       "arquivo": "data/chunks/cnpjs.json",
-      "bytes": 50049,
-      "atualizado_em": "2026-06-17T09:42:11.136Z"
+      "bytes": 71321,
+      "atualizado_em": "2026-06-17T14:25:35.189Z"
     },
     "diarias": {
       "arquivo": "data/chunks/diarias.json",
       "bytes": 3702487,
-      "atualizado_em": "2026-06-17T09:43:17.333Z"
+      "atualizado_em": "2026-06-17T14:22:55.742Z"
     },
     "diario": {
       "arquivo": "data/chunks/diario.json",
       "bytes": 23557,
-      "atualizado_em": "2026-06-17T09:39:46.484Z"
+      "atualizado_em": "2026-06-17T14:19:49.600Z"
     },
     "emendas": {
       "arquivo": "data/chunks/emendas.json",
       "bytes": 191424,
-      "atualizado_em": "2026-06-17T09:39:46.240Z"
+      "atualizado_em": "2026-06-17T14:19:49.335Z"
     },
     "federal": {
       "arquivo": "data/chunks/federal.json",
       "bytes": 1969,
-      "atualizado_em": "2026-06-17T09:43:17.335Z"
+      "atualizado_em": "2026-06-17T14:22:55.744Z"
     },
     "fontes_emendas_2026": {
       "arquivo": "data/chunks/fontes_emendas_2026.json",
       "bytes": 5447,
-      "atualizado_em": "2026-06-17T09:42:37.007Z"
+      "atualizado_em": "2026-06-17T14:22:12.578Z"
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
@@ -68,23 +68,23 @@
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
-      "bytes": 894,
-      "atualizado_em": "2026-06-17T12:34:54.346Z"
+      "bytes": 9120,
+      "atualizado_em": "2026-06-17T14:26:25.046Z"
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
       "bytes": 2429531,
-      "atualizado_em": "2026-06-17T09:42:33.968Z"
+      "atualizado_em": "2026-06-17T14:22:09.031Z"
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
       "bytes": 38960,
-      "atualizado_em": "2026-06-17T09:39:47.673Z"
+      "atualizado_em": "2026-06-17T14:20:06.899Z"
     },
     "prefeitura": {
       "arquivo": "data/chunks/prefeitura.json",
-      "bytes": 4431428,
-      "atualizado_em": "2026-06-17T09:44:32.594Z"
+      "bytes": 4442134,
+      "atualizado_em": "2026-06-17T14:24:37.785Z"
     },
     "remuneracao_vereadores": {
       "arquivo": "data/chunks/remuneracao_vereadores.json",
@@ -94,7 +94,7 @@
     "resumo": {
       "arquivo": "data/chunks/resumo.json",
       "bytes": 2429,
-      "atualizado_em": "2026-06-17T09:39:46.233Z"
+      "atualizado_em": "2026-06-17T14:19:49.328Z"
     },
     "sancoes_fornecedores": {
       "arquivo": "data/chunks/sancoes_fornecedores.json",
@@ -104,12 +104,12 @@
     "vereadores": {
       "arquivo": "data/chunks/vereadores.json",
       "bytes": 7603,
-      "atualizado_em": "2026-06-17T09:39:46.234Z"
+      "atualizado_em": "2026-06-17T14:19:49.329Z"
     }
   },
   "snapshots": {
     "diretorio": "data/snapshots",
     "total": 30,
-    "ultimo": "2026-06-17T06-44-37-8bb8ad1b.json"
+    "ultimo": "2026-06-17T11-25-35-0cd9b6d4.json"
   }
 }

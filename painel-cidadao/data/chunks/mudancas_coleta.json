@@ -1,32 +1,206 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-06-17T12:34:54.345Z",
+  "gerado_em": "2026-06-17T14:26:25.044Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-06-17T11-25-35-0cd9b6d4",
+    "coleta_iso": "2026-06-17T11:25:35",
+    "data_humana": "17/06/2026 - 11:25",
+    "arquivo": "data/snapshots/2026-06-17T11-25-35-0cd9b6d4.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-06-17T06-44-37-8bb8ad1b",
     "coleta_iso": "2026-06-17T06:44:37",
     "data_humana": "17/06/2026 - 06:44",
-    "arquivo": "data/snapshots/2026-06-17T06-44-37-8bb8ad1b.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-06-17T01-20-03-718e74b2",
-    "coleta_iso": "2026-06-17T01:20:03",
-    "data_humana": "17/06/2026 - 01:20",
-    "arquivo": "data/snapshots/2026-06-17T01-20-03-718e74b2.json",
+    "arquivo": "data/snapshots/2026-06-17T06-44-37-8bb8ad1b.json",
     "origem": "chunks"
   },
   "resumo": {
-    "novos_contratos": 0,
-    "contratos_valor_alterado": 0,
+    "novos_contratos": 14,
+    "contratos_valor_alterado": 3,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 0,
-    "valor_delta_brl": 0,
-    "total_mudancas": 0
+    "valor_novo_brl": 2717788.7199999993,
+    "valor_delta_brl": 1003408.78,
+    "total_mudancas": 17
   },
-  "itens": [],
+  "itens": [
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 84/2025",
+      "detalhe": "SHIMADZU DO BRASIL COMERCIO LTDA.: antes R$ 1.015.708,00, agora R$ 2.031.416,00.",
+      "orgao": "Prefeitura",
+      "data": "2025-10-08",
+      "valor_brl": 2031416,
+      "delta_brl": 1015708,
+      "alvo_id": "PREFEITURA-2025-84"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "alta",
+      "titulo": "Novo contrato 55/2026 - PAIM RADIO LTDA",
+      "detalhe": "Contratação de empresa especializada para fornecimento, instalação e homologação do Sistema PAPI para o Aeroporto Major Brigadeiro Trompowky nas cabeceiras designadas 22/04.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-08",
+      "valor_brl": 1103817.53,
+      "alvo_id": "PREFEITURA-2026-55"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "alta",
+      "titulo": "Novo contrato 0/0 - MPS DISTRIBUIDORA LTDA",
+      "detalhe": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
+      "orgao": "Prefeitura",
+      "data": "2026-06-15",
+      "valor_brl": 1016256.2,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 38/2025",
+      "detalhe": "HABILIDADE ESPORTE SERVICOS LTDA: antes R$ 816.354,00, agora R$ 540.901,50.",
+      "orgao": "Prefeitura",
+      "data": "2025-05-22",
+      "valor_brl": 540901.5,
+      "delta_brl": -275452.5,
+      "alvo_id": "PREFEITURA-2025-38"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 58/2025",
+      "detalhe": "A & G SERVICOS MEDICOS LTDA: antes R$ 252.162,56, agora R$ 515.315,84.",
+      "orgao": "Prefeitura",
+      "data": "2025-07-04",
+      "valor_brl": 515315.84,
+      "delta_brl": 263153.28,
+      "alvo_id": "PREFEITURA-2025-58"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 0/0 - AMM LICITACOES LTDA",
+      "detalhe": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
+      "orgao": "Prefeitura",
+      "data": "2026-06-15",
+      "valor_brl": 558266.92,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - RIPERS COMERCIO DE MATERIAIS HIDRAULICOS LTDA",
+      "detalhe": "Registro de preços para o futuro e eventual fornecimento de carimbos",
+      "orgao": "Prefeitura",
+      "data": "2026-06-10",
+      "valor_brl": 12158.86,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - JT COMERCIO DE PRODUTOS MEDICOS LTDA",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 6793.8,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - DM SERVICOS DE CLIMATIZACAO E AQUECIMENTO LTDA",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 6599.98,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - INDUSTRIA DE MOVEIS RIO VERDE LTDA",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 5528,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - GORGEN DISTRIBUIDORA LTDA",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 2150.8,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - MIDAS COMERCIO ATACADISTA DE PRODUTOS HOSPITALARES LTDA",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 2097,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - CONVE COMERCIO DE MOVEIS E UTILIDADES LTDA",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 1606.8,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - ORISVALDO SILVA JUNIOR",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 1489,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - VERTICE LICITA LTDA",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 740,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
+      "detalhe": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 283.83,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - STAMP PRODUTOS E SERVICOS LTDA",
+      "detalhe": "Registro de preços para o futuro e eventual fornecimento de carimbos",
+      "orgao": "Prefeitura",
+      "data": "2026-06-10",
+      "valor_brl": 0,
+      "alvo_id": "PREFEITURA-0-0"
+    }
+  ],
   "avisos": []
 }

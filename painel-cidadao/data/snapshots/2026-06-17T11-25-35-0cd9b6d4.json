@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "snapshot_id": "2026-06-12T19-19-44-f630114c",
+  "snapshot_id": "2026-06-17T11-25-35-0cd9b6d4",
   "source": "chunks",
-  "gerado_em": "2026-06-12T22:28:37.554Z",
-  "coleta_iso": "2026-06-12T19:19:44",
-  "data_humana": "12/06/2026 - 19:19",
+  "gerado_em": "2026-06-17T14:26:24.897Z",
+  "coleta_iso": "2026-06-17T11:25:35",
+  "data_humana": "17/06/2026 - 11:25",
   "totais": {
-    "contratos_qtd": 882,
-    "contratos_valor_brl": 196274463.09000012,
+    "contratos_qtd": 922,
+    "contratos_valor_brl": 207425185.66000018,
     "obras_publicas_qtd": 130,
     "obras_publicas_valor_brl": 244093758.1399999,
     "fornecedores_qtd": 50,
@@ -213,6 +213,19 @@
       "objeto_hash": "5d33bc0b7f97"
     },
     {
+      "id": "Prefeitura:2026:127:03945035",
+      "orgao": "Prefeitura",
+      "numero": "127",
+      "ano": "2026",
+      "fornecedor": "ACACIA COMERCIO DE MEDICAMENTOS LTDA",
+      "cnpj_raiz": "03945035",
+      "data": "2026-06-09",
+      "valor_brl": 2475221.78,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:2025:326:49851154",
       "orgao": "Prefeitura",
       "numero": "326",
@@ -239,6 +252,19 @@
       "objeto_hash": "32b40bc26c86"
     },
     {
+      "id": "Prefeitura:2026:137:12889035",
+      "orgao": "Prefeitura",
+      "numero": "137",
+      "ano": "2026",
+      "fornecedor": "INOVAMED HOSPITALAR LTDA",
+      "cnpj_raiz": "12889035",
+      "data": "2026-06-09",
+      "valor_brl": 2201664,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:2025:226:42317980",
       "orgao": "Prefeitura",
       "numero": "226",
@@ -250,6 +276,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de preços - fornecimento de Concreto Usinado FCK, para atendimento aos órgãos da administração direta e indireta do município de Varginha/MG",
       "objeto_hash": "f4bcd593817f"
+    },
+    {
+      "id": "Prefeitura:2025:84:58752460",
+      "orgao": "Prefeitura",
+      "numero": "84",
+      "ano": "2025",
+      "fornecedor": "SHIMADZU DO BRASIL COMERCIO LTDA.",
+      "cnpj_raiz": "58752460",
+      "data": "2025-10-08",
+      "valor_brl": 2031416,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Aparelho de Raios-X fixo, com tecnologia digital tipo conversão indireta (DR) para radiologia geral para radiografias de pacientes adultos (incluindo obesos), infantis e pediátricos",
+      "objeto_hash": "154258b035ec"
     },
     {
       "id": "Prefeitura:2025:311:67729178",
@@ -473,6 +512,19 @@
       "objeto_hash": "d4e85eedf738"
     },
     {
+      "id": "Prefeitura:2026:55:09571822",
+      "orgao": "Prefeitura",
+      "numero": "55",
+      "ano": "2026",
+      "fornecedor": "PAIM RADIO LTDA",
+      "cnpj_raiz": "09571822",
+      "data": "2026-06-08",
+      "valor_brl": 1103817.53,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de empresa especializada para fornecimento, instalação e homologação do Sistema PAPI para o Aeroporto Major Brigadeiro Trompowky nas cabeceiras designadas 22/04.",
+      "objeto_hash": "802dadbdfd2b"
+    },
+    {
       "id": "Prefeitura:2026:19:12802616",
       "orgao": "Prefeitura",
       "numero": "19",
@@ -538,17 +590,17 @@
       "objeto_hash": "4db1f73a0855"
     },
     {
-      "id": "Prefeitura:2025:84:58752460",
+      "id": "Prefeitura:sem-numero:53029830:8cd826a626ec",
       "orgao": "Prefeitura",
-      "numero": "84",
-      "ano": "2025",
-      "fornecedor": "SHIMADZU DO BRASIL COMERCIO LTDA.",
-      "cnpj_raiz": "58752460",
-      "data": "2025-10-08",
-      "valor_brl": 1015708,
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "MPS DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "53029830",
+      "data": "2026-06-15",
+      "valor_brl": 1016256.2,
       "modalidade": "Pregão eletrônico",
-      "objeto": "Aquisição de Aparelho de Raios-X fixo, com tecnologia digital tipo conversão indireta (DR) para radiologia geral para radiografias de pacientes adultos (incluindo obesos), infantis e pediátricos",
-      "objeto_hash": "154258b035ec"
+      "objeto": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
+      "objeto_hash": "96814c50d73e"
     },
     {
       "id": "Prefeitura:2025:195:31673254",
@@ -564,10 +616,10 @@
       "objeto_hash": "b43e1f1622af"
     },
     {
-      "id": "Prefeitura:sem-numero:02794555:8e059315f018",
+      "id": "Prefeitura:2026:119:02794555",
       "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
+      "numero": "119",
+      "ano": "2026",
       "fornecedor": "COLOPLAST DO BRASIL LTDA",
       "cnpj_raiz": "02794555",
       "data": "2026-06-09",
@@ -603,6 +655,19 @@
       "objeto_hash": "aa076ec367c9"
     },
     {
+      "id": "Prefeitura:2026:135:17700763",
+      "orgao": "Prefeitura",
+      "numero": "135",
+      "ano": "2026",
+      "fornecedor": "MEDFUTURA DISTRIBUIDORA DE MEDICAMENTOS E PRODUTOS DE SAUDE LTDA",
+      "cnpj_raiz": "17700763",
+      "data": "2026-06-09",
+      "valor_brl": 869352,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:2026:108:11061411",
       "orgao": "Prefeitura",
       "numero": "108",
@@ -627,19 +692,6 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Contratação de empresa especializada para prestação de serviços de chaveiro",
       "objeto_hash": "5ec1eb865a0a"
-    },
-    {
-      "id": "Prefeitura:2025:38:26961485",
-      "orgao": "Prefeitura",
-      "numero": "38",
-      "ano": "2025",
-      "fornecedor": "HABILIDADE ESPORTE SERVICOS LTDA",
-      "cnpj_raiz": "26961485",
-      "data": "2025-05-22",
-      "valor_brl": 816354,
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Contratação de Serviços de Coordenação e Arbitragem ( quadro de árbitros, anotador, apontador, mesários, fornecimento de súmulas, alimentação e gerenciamento de site e/ou apps e grupos de whatsapp relacionados a competição, fornecimento de troféu destaque da partida, dentre outros ), inscrições de atletas, e organização geral, para campeonatos amadores de futebol veterano, adulto, juvenil ou infantil e também para jogos festivos e amistosos.",
-      "objeto_hash": "e671b0aae650"
     },
     {
       "id": "Prefeitura:2025:334:21681325",
@@ -694,10 +746,10 @@
       "objeto_hash": "40ea7a6f8601"
     },
     {
-      "id": "Prefeitura:sem-numero:66488719:49b445260e1c",
+      "id": "Prefeitura:2026:114:66488719",
       "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
+      "numero": "114",
+      "ano": "2026",
       "fornecedor": "LOJA PET LTDA",
       "cnpj_raiz": "66488719",
       "data": "2026-06-02",
@@ -707,10 +759,10 @@
       "objeto_hash": "d8aba0d61792"
     },
     {
-      "id": "Prefeitura:sem-numero:48320928:003b6cb05d1f",
+      "id": "Prefeitura:2026:116:48320928",
       "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
+      "numero": "116",
+      "ano": "2026",
       "fornecedor": "CIMENTAO DISTRIBUIDORA LTDA",
       "cnpj_raiz": "48320928",
       "data": "2026-06-02",
@@ -783,6 +835,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
       "objeto_hash": "5d33bc0b7f97"
+    },
+    {
+      "id": "Prefeitura:sem-numero:20657155:16bbbaeca357",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "ILG COMERCIAL LTDA",
+      "cnpj_raiz": "20657155",
+      "data": "2026-06-09",
+      "valor_brl": 697905.5,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:2025:317:34771531",
@@ -928,6 +993,19 @@
       "objeto_hash": "e18259f3802a"
     },
     {
+      "id": "Prefeitura:sem-numero:57012146:041097ad600c",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "AMM LICITACOES LTDA",
+      "cnpj_raiz": "57012146",
+      "data": "2026-06-15",
+      "valor_brl": 558266.92,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
+      "objeto_hash": "96814c50d73e"
+    },
+    {
       "id": "Prefeitura:2025:82:10372200",
       "orgao": "Prefeitura",
       "numero": "82",
@@ -993,6 +1071,19 @@
       "objeto_hash": "bf99f1dbfce4"
     },
     {
+      "id": "Prefeitura:2025:38:26961485",
+      "orgao": "Prefeitura",
+      "numero": "38",
+      "ano": "2025",
+      "fornecedor": "HABILIDADE ESPORTE SERVICOS LTDA",
+      "cnpj_raiz": "26961485",
+      "data": "2025-05-22",
+      "valor_brl": 540901.5,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de Serviços de Coordenação e Arbitragem ( quadro de árbitros, anotador, apontador, mesários, fornecimento de súmulas, alimentação e gerenciamento de site e/ou apps e grupos de whatsapp relacionados a competição, fornecimento de troféu destaque da partida, dentre outros ), inscrições de atletas, e organização geral, para campeonatos amadores de futebol veterano, adulto, juvenil ou infantil e também para jogos festivos e amistosos.",
+      "objeto_hash": "e671b0aae650"
+    },
+    {
       "id": "Prefeitura:2025:182:25031668",
       "orgao": "Prefeitura",
       "numero": "182",
@@ -1030,6 +1121,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para Futura e Eventual Aquisição de materiais para o serviço ambulatorial em sala de curativos e afins",
       "objeto_hash": "c60524d15342"
+    },
+    {
+      "id": "Prefeitura:2025:58:12532358",
+      "orgao": "Prefeitura",
+      "numero": "58",
+      "ano": "2025",
+      "fornecedor": "A & G SERVICOS MEDICOS LTDA",
+      "cnpj_raiz": "12532358",
+      "data": "2025-07-04",
+      "valor_brl": 515315.84,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "O objeto é Contratação de Empresa Especializada em Serviços de Socorrista em Urgência e Emergência médica, com disponibilização de Ambulância Básica Tripulada por Condutor Socorrista e Enfermagem. Serviços esses, a serem prestados em diversos Evento Esportivos, com organização e participação direta ou indireta da SEMEL. A contratação será realizada referente a Horas de Serviços prestados.",
+      "objeto_hash": "b1d57c2ba62c"
     },
     {
       "id": "Prefeitura:2025:241:17592525",
@@ -1136,10 +1240,10 @@
       "objeto_hash": "c5f07c2b0983"
     },
     {
-      "id": "Prefeitura:sem-numero:50085681:7654020145db",
+      "id": "Prefeitura:2026:118:50085681",
       "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
+      "numero": "118",
+      "ano": "2026",
       "fornecedor": "LICITAR DISTRIBUIDORA LTDA",
       "cnpj_raiz": "50085681",
       "data": "2026-06-02",
@@ -1409,10 +1513,10 @@
       "objeto_hash": "5d33bc0b7f97"
     },
     {
-      "id": "Prefeitura:sem-numero:39327884:25c048c98afd",
+      "id": "Prefeitura:2026:117:39327884",
       "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
+      "numero": "117",
+      "ano": "2026",
       "fornecedor": "HERICON FELIPE TRISTAO NASCIMENTO",
       "cnpj_raiz": "39327884",
       "data": "2026-06-02",
@@ -1520,7 +1624,7 @@
       "fornecedor": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
       "cnpj_raiz": "37943080",
       "data": "2025-05-08",
-      "valor_brl": 279768.96,
+      "valor_brl": 284589,
       "modalidade": "Pregão eletrônico",
       "objeto": "Contratação de empresa especializada para prestação de serviços de Portaria, com fornecimento de mão-de-obra, equipamentos e insumos a serem executados de forma contínua no Parque Zoobotânico Dr. Mário Frota",
       "objeto_hash": "85aaa55e130a"
@@ -1630,19 +1734,6 @@
       "objeto_hash": "c60524d15342"
     },
     {
-      "id": "Prefeitura:2025:58:12532358",
-      "orgao": "Prefeitura",
-      "numero": "58",
-      "ano": "2025",
-      "fornecedor": "A & G SERVICOS MEDICOS LTDA",
-      "cnpj_raiz": "12532358",
-      "data": "2025-07-04",
-      "valor_brl": 252162.56,
-      "modalidade": "Pregão eletrônico",
-      "objeto": "O objeto é Contratação de Empresa Especializada em Serviços de Socorrista em Urgência e Emergência médica, com disponibilização de Ambulância Básica Tripulada por Condutor Socorrista e Enfermagem. Serviços esses, a serem prestados em diversos Evento Esportivos, com organização e participação direta ou indireta da SEMEL. A contratação será realizada referente a Horas de Serviços prestados.",
-      "objeto_hash": "b1d57c2ba62c"
-    },
-    {
       "id": "Prefeitura:2025:82:46586767",
       "orgao": "Prefeitura",
       "numero": "82",
@@ -1732,6 +1823,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
       "objeto_hash": "5d33bc0b7f97"
+    },
+    {
+      "id": "Prefeitura:sem-numero:44734671:614536712dd8",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CRISTALIA PRODUTOS QUIMICOS FARMACEUTICOS LTDA",
+      "cnpj_raiz": "44734671",
+      "data": "2026-06-09",
+      "valor_brl": 229322,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:2026:109:21013054",
@@ -1940,6 +2044,19 @@
       "modalidade": "Inexigibilidade de licitação",
       "objeto": "Contratação de empresa especializada para realizar prestação de erviços de manutenção preventiva e corretiva - Equipamentos das marcas Mindray e Insighters - Fornecimento de Peças - UPA - Processo de Inexigibilidade",
       "objeto_hash": "fa6d3ec65f78"
+    },
+    {
+      "id": "Prefeitura:2026:134:40455009",
+      "orgao": "Prefeitura",
+      "numero": "134",
+      "ano": "2026",
+      "fornecedor": "ALMEIDA FARMACEUTICA LTDA",
+      "cnpj_raiz": "40455009",
+      "data": "2026-06-09",
+      "valor_brl": 194048.4,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:2025:256:24496565",
@@ -2163,6 +2280,19 @@
       "objeto_hash": "38a6e8bb1606"
     },
     {
+      "id": "Prefeitura:2026:129:26401571",
+      "orgao": "Prefeitura",
+      "numero": "129",
+      "ano": "2026",
+      "fornecedor": "TRES PHARMA DISTRIBUIDORA E SERVICOS LTDA",
+      "cnpj_raiz": "26401571",
+      "data": "2026-06-09",
+      "valor_brl": 165888,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:2025:223:21880786",
       "orgao": "Prefeitura",
       "numero": "223",
@@ -2371,10 +2501,10 @@
       "objeto_hash": "19ce857ce841"
     },
     {
-      "id": "Prefeitura:sem-numero:06878489:98002bf57c34",
+      "id": "Prefeitura:2026:115:06878489",
       "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
+      "numero": "115",
+      "ano": "2026",
       "fornecedor": "REAL-PET SHOP E PRODUTOS AGROVETERINARIOS LTDA",
       "cnpj_raiz": "06878489",
       "data": "2026-06-02",
@@ -2631,6 +2761,19 @@
       "objeto_hash": "840167e676f0"
     },
     {
+      "id": "Prefeitura:2026:123:02520829",
+      "orgao": "Prefeitura",
+      "numero": "123",
+      "ano": "2026",
+      "fornecedor": "DIMASTER - COMERCIO DE PRODUTOS HOSPITALARES LTDA.",
+      "cnpj_raiz": "02520829",
+      "data": "2026-06-09",
+      "valor_brl": 120150,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:2025:2:02316711",
       "orgao": "Prefeitura",
       "numero": "2",
@@ -2839,6 +2982,19 @@
       "objeto_hash": "73a6b0f51aac"
     },
     {
+      "id": "Prefeitura:2025:40:37943080",
+      "orgao": "Prefeitura",
+      "numero": "40",
+      "ano": "2025",
+      "fornecedor": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+      "cnpj_raiz": "37943080",
+      "data": "2025-05-22",
+      "valor_brl": 106254.96,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "O objeto do presente termo de referência é a contratação de empresa especializada para prestação de serviços de limpeza, conservação e serviço de copa, conforme as especificações, definição das obrigações das partes e descrição dos serviços, os quais deverão observar os padrões mínimos de qualidade exigíveis e, ainda, de acordo com o disposto neste Termo de Referência.",
+      "objeto_hash": "bcb7bfd73ae4"
+    },
+    {
       "id": "Prefeitura:2025:295:03655629",
       "orgao": "Prefeitura",
       "numero": "295",
@@ -2956,19 +3112,6 @@
       "objeto_hash": "5be5e88e2be4"
     },
     {
-      "id": "Prefeitura:2026:18:44420116",
-      "orgao": "Prefeitura",
-      "numero": "18",
-      "ano": "2026",
-      "fornecedor": "FUTURE PRODUCOES ARTISTICAS LTDA",
-      "cnpj_raiz": "44420116",
-      "data": "2026-02-13",
-      "valor_brl": 95000,
-      "modalidade": "Inexigibilidade de licitação",
-      "objeto": "Contratação para apresentação de show artístico musical da dupla DOUGLAS & VINÍCIUS, por ocasião do evento anual DIA DO TRABALHADOR, a realizar-se no dia 01/05/2026.",
-      "objeto_hash": "7215e353c395"
-    },
-    {
       "id": "Prefeitura:sem-numero:16581530:c05b643efcc1",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -2980,6 +3123,19 @@
       "modalidade": "Inexigibilidade de licitação",
       "objeto": "Pagamento de Taxas e Despesas junto a Federação Aquática Mineira",
       "objeto_hash": "6cd854a035fe"
+    },
+    {
+      "id": "Prefeitura:2026:18:44420116",
+      "orgao": "Prefeitura",
+      "numero": "18",
+      "ano": "2026",
+      "fornecedor": "FUTURE PRODUCOES ARTISTICAS LTDA",
+      "cnpj_raiz": "44420116",
+      "data": "2026-02-13",
+      "valor_brl": 95000,
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Contratação para apresentação de show artístico musical da dupla DOUGLAS & VINÍCIUS, por ocasião do evento anual DIA DO TRABALHADOR, a realizar-se no dia 01/05/2026.",
+      "objeto_hash": "7215e353c395"
     },
     {
       "id": "Prefeitura:2026:161:18695651",
@@ -3034,10 +3190,10 @@
       "objeto_hash": "48b56573d996"
     },
     {
-      "id": "Prefeitura:sem-numero:46666044:a4d796f29c08",
+      "id": "Prefeitura:2026:113:46666044",
       "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
+      "numero": "113",
+      "ano": "2026",
       "fornecedor": "DNS EMPREENDIMENTOS LTDA",
       "cnpj_raiz": "46666044",
       "data": "2026-06-02",
@@ -3136,6 +3292,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de preços para fornecimento de materiais elétricos",
       "objeto_hash": "5be5e88e2be4"
+    },
+    {
+      "id": "Prefeitura:2026:128:22862531",
+      "orgao": "Prefeitura",
+      "numero": "128",
+      "ano": "2026",
+      "fornecedor": "TOP NORTE COMERCIO DE MATERIAL MEDICO HOSPITALAR LTDA",
+      "cnpj_raiz": "22862531",
+      "data": "2026-06-09",
+      "valor_brl": 80560,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:sem-numero:55836281:70fec083d6b7",
@@ -3346,6 +3515,19 @@
       "objeto_hash": "897f4c17d37e"
     },
     {
+      "id": "Prefeitura:2026:138:21595464",
+      "orgao": "Prefeitura",
+      "numero": "138",
+      "ano": "2026",
+      "fornecedor": "UNI HOSPITALAR CEARA LTDA",
+      "cnpj_raiz": "21595464",
+      "data": "2026-06-09",
+      "valor_brl": 71214,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:2025:206:25031668",
       "orgao": "Prefeitura",
       "numero": "206",
@@ -3383,6 +3565,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para Futura e Eventual Aquisição de Material Ambulatorial",
       "objeto_hash": "0fdff5451276"
+    },
+    {
+      "id": "Prefeitura:2026:121:36325157",
+      "orgao": "Prefeitura",
+      "numero": "121",
+      "ano": "2026",
+      "fornecedor": "COSTA CAMARGO COM. DE PRODUTOS HOSPITALARES LTDA",
+      "cnpj_raiz": "36325157",
+      "data": "2026-06-09",
+      "valor_brl": 70176,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:2025:319:58635830",
@@ -3461,6 +3656,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para Futura e Eventual Aquisição de Material Ambulatorial",
       "objeto_hash": "0fdff5451276"
+    },
+    {
+      "id": "Prefeitura:2026:131:34771531",
+      "orgao": "Prefeitura",
+      "numero": "131",
+      "ano": "2026",
+      "fornecedor": "DISTRIBEM MED. E MAT. HOSP. LTDA",
+      "cnpj_raiz": "34771531",
+      "data": "2026-06-09",
+      "valor_brl": 67226,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:sem-numero:08245855:2b19e520fa50",
@@ -3892,6 +4100,19 @@
       "objeto_hash": "bbbf8dd257df"
     },
     {
+      "id": "Prefeitura:sem-numero:65289613:c0662f075e08",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
+      "cnpj_raiz": "65289613",
+      "data": "2026-06-12",
+      "valor_brl": 57090,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "O objeto da presente solicitação de compras é aquisição de cadeiras, longarinas e mesas, destinadas ao atendimento das demandas administrativas e operacionais da Secretaria Municipal de Esporte e Lazer – SEMEL",
+      "objeto_hash": "0120f2d43a2c"
+    },
+    {
       "id": "Prefeitura:2026:8:36827096",
       "orgao": "Prefeitura",
       "numero": "8",
@@ -3981,19 +4202,6 @@
       "modalidade": "Dispensa eletrônica",
       "objeto": "Contratação de empresa especializada para fornecimento de pão do tipo “FRANCÊS” (50g), besuntado com manteiga com sal, de primeira qualidade, sem adição de corantes e/ou aromatizantes, em embalagens individuais de material não reciclado.",
       "objeto_hash": "354bf3a737bb"
-    },
-    {
-      "id": "Prefeitura:2025:40:37943080",
-      "orgao": "Prefeitura",
-      "numero": "40",
-      "ano": "2025",
-      "fornecedor": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-      "cnpj_raiz": "37943080",
-      "data": "2025-05-22",
-      "valor_brl": 53127.48,
-      "modalidade": "Pregão eletrônico",
-      "objeto": "O objeto do presente termo de referência é a contratação de empresa especializada para prestação de serviços de limpeza, conservação e serviço de copa, conforme as especificações, definição das obrigações das partes e descrição dos serviços, os quais deverão observar os padrões mínimos de qualidade exigíveis e, ainda, de acordo com o disposto neste Termo de Referência.",
-      "objeto_hash": "bcb7bfd73ae4"
     },
     {
       "id": "Prefeitura:2026:10:19848316",
@@ -5777,6 +5985,19 @@
       "objeto_hash": "d421875cc203"
     },
     {
+      "id": "Prefeitura:2026:140:64117995",
+      "orgao": "Prefeitura",
+      "numero": "140",
+      "ano": "2026",
+      "fornecedor": "AMA COMERCIO DE ALIMENTOS LTDA",
+      "cnpj_raiz": "64117995",
+      "data": "2026-06-09",
+      "valor_brl": 19896,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:sem-numero:19400787:66847ee9e716",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -6206,6 +6427,19 @@
       "objeto_hash": "5cc2f30401ce"
     },
     {
+      "id": "Prefeitura:sem-numero:04470103:8eb08b9f7e97",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "BIOTECNO INDUSTRIA E COMERCIO LTDA",
+      "cnpj_raiz": "04470103",
+      "data": "2026-05-08",
+      "valor_brl": 15000,
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de Refrigerador Vertical para conservação de vacinas, com capacidade mínima de 500 litros",
+      "objeto_hash": "595b7afce814"
+    },
+    {
       "id": "Prefeitura:sem-numero:18231415:73180e0494fe",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -6230,19 +6464,6 @@
       "modalidade": "Inexigibilidade de licitação",
       "objeto": "Disputar Campeonatos Internacionais, Brasileiros, Mineiros e Regionais nos Naipes. Feminino e Masculino nas diversas categorias realizadas ou chanceladas pela a Federação Mineira de Ciclismo.",
       "objeto_hash": "4b4751667b08"
-    },
-    {
-      "id": "Prefeitura:sem-numero:04470103:8eb08b9f7e97",
-      "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
-      "fornecedor": "BIOTECNO INDUSTRIA E COMERCIO LTDA",
-      "cnpj_raiz": "04470103",
-      "data": "2026-05-08",
-      "valor_brl": 15000,
-      "modalidade": "Dispensa eletrônica",
-      "objeto": "Aquisição de Refrigerador Vertical para conservação de vacinas, com capacidade mínima de 500 litros",
-      "objeto_hash": "595b7afce814"
     },
     {
       "id": "Prefeitura:sem-numero:30012651:cc3355d1d70b",
@@ -6427,6 +6648,19 @@
       "objeto_hash": "98b83178b542"
     },
     {
+      "id": "Prefeitura:2026:122:94389400",
+      "orgao": "Prefeitura",
+      "numero": "122",
+      "ano": "2026",
+      "fornecedor": "MCW PRODUTOS MEDICOS E HOSPITALARES LTDA",
+      "cnpj_raiz": "94389400",
+      "data": "2026-06-09",
+      "valor_brl": 14240,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:sem-numero:57025960:50e6bf90f6e9",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -6609,6 +6843,19 @@
       "objeto_hash": "d0a7caa792fe"
     },
     {
+      "id": "Prefeitura:2026:139:12420164",
+      "orgao": "Prefeitura",
+      "numero": "139",
+      "ano": "2026",
+      "fornecedor": "CM HOSPITALAR S.A.",
+      "cnpj_raiz": "12420164",
+      "data": "2026-06-09",
+      "valor_brl": 12870,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:sem-numero:12927876:9af9f27239cc",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -6724,6 +6971,19 @@
       "modalidade": "Dispensa de licitação",
       "objeto": "AQUISIÇÃO DE MATERIAIS DE ESCRITÓRIO E SUPRIMENTOS DE INFORMÁTICA",
       "objeto_hash": "ea942ba09849"
+    },
+    {
+      "id": "Prefeitura:sem-numero:11412110:6aee0cba9fc7",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "RIPERS COMERCIO DE MATERIAIS HIDRAULICOS LTDA",
+      "cnpj_raiz": "11412110",
+      "data": "2026-06-10",
+      "valor_brl": 12158.86,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de carimbos",
+      "objeto_hash": "5fa03877def4"
     },
     {
       "id": "Prefeitura:sem-numero:36839023:d485f5b0bdc9",
@@ -7064,6 +7324,32 @@
       "objeto_hash": "31c25be58ee6"
     },
     {
+      "id": "Prefeitura:2026:136:43025186",
+      "orgao": "Prefeitura",
+      "numero": "136",
+      "ano": "2026",
+      "fornecedor": "WF DISTRIBUIDORA DE MEDICAMENTOS LTDA",
+      "cnpj_raiz": "43025186",
+      "data": "2026-06-09",
+      "valor_brl": 9973.6,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
+      "id": "Prefeitura:2026:125:67729178",
+      "orgao": "Prefeitura",
+      "numero": "125",
+      "ano": "2026",
+      "fornecedor": "COMERCIAL CIRURGICA RIOCLARENSE LTDA",
+      "cnpj_raiz": "67729178",
+      "data": "2026-06-09",
+      "valor_brl": 9879,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:sem-numero:23762552:688561cc0589",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -7088,6 +7374,19 @@
       "modalidade": "Dispensa eletrônica",
       "objeto": "Aquisição de Forno micro-ondas e Geladeiras para atender às necessidades da Secretaria Municipal de Esportes e Lazer",
       "objeto_hash": "1f019f89b75a"
+    },
+    {
+      "id": "Prefeitura:2026:124:76386283",
+      "orgao": "Prefeitura",
+      "numero": "124",
+      "ano": "2026",
+      "fornecedor": "DIMEVA DISTRIBUIDORA E IMPORTADORA LTDA",
+      "cnpj_raiz": "76386283",
+      "data": "2026-06-09",
+      "valor_brl": 9480,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:2025:155:37844479",
@@ -7285,19 +7584,6 @@
       "objeto_hash": "f2b6e73b4aa4"
     },
     {
-      "id": "Prefeitura:sem-numero:59632632:5dcb1c4cedfb",
-      "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "0",
-      "fornecedor": "PRIMUM COMERCIO DE IMPLEMENTOS LTDA",
-      "cnpj_raiz": "59632632",
-      "data": "2026-02-10",
-      "valor_brl": 8500,
-      "modalidade": "Dispensa eletrônica",
-      "objeto": "O objeto da presente solicitação é a aquisição de Pulverizador para quadriciclo para ser acoplado a tratores HUSQVARNA TS148",
-      "objeto_hash": "1777396e6f9f"
-    },
-    {
       "id": "Prefeitura:sem-numero:44599311:7396f80e1bf5",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -7309,6 +7595,19 @@
       "modalidade": "Inexigibilidade de licitação",
       "objeto": "Palestra com o professor Sebastião Mendes de Oliveira, com o tema FORMAÇÃO INCLUSIVA",
       "objeto_hash": "920bfc558e81"
+    },
+    {
+      "id": "Prefeitura:sem-numero:59632632:5dcb1c4cedfb",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "PRIMUM COMERCIO DE IMPLEMENTOS LTDA",
+      "cnpj_raiz": "59632632",
+      "data": "2026-02-10",
+      "valor_brl": 8500,
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "O objeto da presente solicitação é a aquisição de Pulverizador para quadriciclo para ser acoplado a tratores HUSQVARNA TS148",
+      "objeto_hash": "1777396e6f9f"
     },
     {
       "id": "Prefeitura:sem-numero:27349370:be1914d5b1a4",
@@ -7649,6 +7948,32 @@
       "objeto_hash": "0462a6cf541b"
     },
     {
+      "id": "Prefeitura:sem-numero:54647123:8b24406a6e78",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "JT COMERCIO DE PRODUTOS MEDICOS LTDA",
+      "cnpj_raiz": "54647123",
+      "data": "2026-06-16",
+      "valor_brl": 6793.8,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
+    },
+    {
+      "id": "Prefeitura:sem-numero:65942303:495a1905ecca",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "LICITPRINT COMUNICACAO VISUAL LTDA",
+      "cnpj_raiz": "65942303",
+      "data": "2026-06-15",
+      "valor_brl": 6712,
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de lavadora de alta pressão 127V para atendimento das demandas da Secretaria Municipal de Esporte e Lazer",
+      "objeto_hash": "ff197a9b7c1b"
+    },
+    {
       "id": "Prefeitura:sem-numero:26290146:c36bdc50d60d",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -7660,6 +7985,19 @@
       "modalidade": "Dispensa eletrônica",
       "objeto": "Aquisição de Redes esportivas",
       "objeto_hash": "a66ae5df369f"
+    },
+    {
+      "id": "Prefeitura:sem-numero:47257471:e29a60367a59",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "DM SERVICOS DE CLIMATIZACAO E AQUECIMENTO LTDA",
+      "cnpj_raiz": "47257471",
+      "data": "2026-06-16",
+      "valor_brl": 6599.98,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
     },
     {
       "id": "Prefeitura:sem-numero:34412925:74db0a24a1d3",
@@ -7909,6 +8247,32 @@
       "objeto_hash": "1e25601f29a6"
     },
     {
+      "id": "Prefeitura:2026:120:05194502",
+      "orgao": "Prefeitura",
+      "numero": "120",
+      "ano": "2026",
+      "fornecedor": "ALFALAGOS LTDA.",
+      "cnpj_raiz": "05194502",
+      "data": "2026-06-09",
+      "valor_brl": 5560,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
+      "id": "Prefeitura:sem-numero:08003034:a71471618774",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "INDUSTRIA DE MOVEIS RIO VERDE LTDA",
+      "cnpj_raiz": "08003034",
+      "data": "2026-06-16",
+      "valor_brl": 5528,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
+    },
+    {
       "id": "Prefeitura:sem-numero:23940290:cc4d8d8ff9e8",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -7920,6 +8284,19 @@
       "modalidade": "Dispensa eletrônica",
       "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA REVISÃO, (EXECUÇÃO DOS SERVIÇOS NECESSÁRIOS) DO VEÍCULO RENAULT SANDERO ZEN 16 M, ANO 2020/21, PLACA RFT2I02, ATUALMENTE EM USO NA SECRETARIA MUNICIPAL DE EDUCAÇÃO.",
       "objeto_hash": "bfc741a8b031"
+    },
+    {
+      "id": "Prefeitura:2026:132:56081482",
+      "orgao": "Prefeitura",
+      "numero": "132",
+      "ano": "2026",
+      "fornecedor": "DIMEBRAS COMERCIAL HOSPITALAR LTDA",
+      "cnpj_raiz": "56081482",
+      "data": "2026-06-09",
+      "valor_brl": 5424,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:2025:230:55442589",
@@ -8390,6 +8767,19 @@
       "objeto_hash": "b73c27773a4f"
     },
     {
+      "id": "Prefeitura:sem-numero:53438403:329188fd9bf1",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CONVE COMERCIO DE MOVEIS E UTILIDADES LTDA",
+      "cnpj_raiz": "53438403",
+      "data": "2026-06-12",
+      "valor_brl": 3900,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "O objeto da presente solicitação de compras é aquisição de cadeiras, longarinas e mesas, destinadas ao atendimento das demandas administrativas e operacionais da Secretaria Municipal de Esporte e Lazer – SEMEL",
+      "objeto_hash": "0120f2d43a2c"
+    },
+    {
       "id": "Prefeitura:sem-numero:29689057:7bdae520b135",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -8427,6 +8817,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
       "objeto_hash": "5d33bc0b7f97"
+    },
+    {
+      "id": "Prefeitura:sem-numero:06294390:a248e179e0f6",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CAROLINA DE SIQUEIRA COUTINHO SOCIEDADE SIMPLES UNIPESSOAL LTDA",
+      "cnpj_raiz": "06294390",
+      "data": "2026-06-12",
+      "valor_brl": 3800,
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Contratação de empresa especializada para a prestação de serviços de palestra e debate com o tema \"Saúde Mental nas escolas: inclusão, inserção e diversidade na coletividade\". A execução do serviço contempla a preparação teórica do conteúdo, a realização do evento e todos os custos logísticos inclusos (deslocamento, hospedagem e alimentação)",
+      "objeto_hash": "3f836a253cff"
     },
     {
       "id": "Prefeitura:sem-numero:52891153:f6ff454fde15",
@@ -9248,6 +9651,19 @@
       "objeto_hash": "014e14a73b55"
     },
     {
+      "id": "Prefeitura:2026:141:41604536",
+      "orgao": "Prefeitura",
+      "numero": "141",
+      "ano": "2026",
+      "fornecedor": "ICT FARMACEUTICA LTDA",
+      "cnpj_raiz": "41604536",
+      "data": "2026-06-09",
+      "valor_brl": 2200,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
+    },
+    {
       "id": "Prefeitura:2025:173:17915708",
       "orgao": "Prefeitura",
       "numero": "173",
@@ -9259,6 +9675,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "RP IMPRESSOS GRÁFICOS",
       "objeto_hash": "8665269183c4"
+    },
+    {
+      "id": "Prefeitura:sem-numero:48192048:23f023079878",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "GORGEN DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "48192048",
+      "data": "2026-06-16",
+      "valor_brl": 2150.8,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
     },
     {
       "id": "Prefeitura:sem-numero:54361487:856ad2597328",
@@ -9285,6 +9714,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "AQUISIÇÃO DE MEDICAMENTOS ESPECÍFICOS.",
       "objeto_hash": "c12d65a8b2e0"
+    },
+    {
+      "id": "Prefeitura:sem-numero:09012033:5349a66d4f17",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "MIDAS COMERCIO ATACADISTA DE PRODUTOS HOSPITALARES LTDA",
+      "cnpj_raiz": "09012033",
+      "data": "2026-06-16",
+      "valor_brl": 2097,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
     },
     {
       "id": "Prefeitura:sem-numero:53158335:6840999ec215",
@@ -9625,6 +10067,19 @@
       "objeto_hash": "cfc34b749d64"
     },
     {
+      "id": "Prefeitura:sem-numero:53438403:2d2e04f9bf8b",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "CONVE COMERCIO DE MOVEIS E UTILIDADES LTDA",
+      "cnpj_raiz": "53438403",
+      "data": "2026-06-16",
+      "valor_brl": 1606.8,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
+    },
+    {
       "id": "Prefeitura:sem-numero:17094914:fa6681eab020",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -9714,6 +10169,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "Registro de Preços para futura e eventual Aquisição de materiais de artesanato para o desenvolvimento de atividades terapêuticas nos Centros de Atenção Psicossocial (CAPS) da Secretaria Municipal de Saúde",
       "objeto_hash": "40edfc67d6ba"
+    },
+    {
+      "id": "Prefeitura:sem-numero:11169061:5ed2a870fc77",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "ORISVALDO SILVA JUNIOR",
+      "cnpj_raiz": "11169061",
+      "data": "2026-06-16",
+      "valor_brl": 1489,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
     },
     {
       "id": "Prefeitura:sem-numero:00874929:f0504bc951dc",
@@ -10379,6 +10847,19 @@
       "objeto_hash": "1f7fbde2e727"
     },
     {
+      "id": "Prefeitura:sem-numero:59993209:3e5ad1134686",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "VERTICE LICITA LTDA",
+      "cnpj_raiz": "59993209",
+      "data": "2026-06-16",
+      "valor_brl": 740,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
+    },
+    {
       "id": "Prefeitura:sem-numero:49551374:60a42a9ba915",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -10782,6 +11263,19 @@
       "objeto_hash": "8665269183c4"
     },
     {
+      "id": "Prefeitura:sem-numero:65289613:d945e1e3e289",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
+      "cnpj_raiz": "65289613",
+      "data": "2026-06-16",
+      "valor_brl": 283.83,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
+      "objeto_hash": "2d482437ac2d"
+    },
+    {
       "id": "Prefeitura:2025:214:22355622",
       "orgao": "Prefeitura",
       "numero": "214",
@@ -10819,6 +11313,19 @@
       "modalidade": "Dispensa eletrônica",
       "objeto": "O objeto do presente termo de referência é a aquisição emergencial de medicamentos para atender EXCLUSIVAMENTE mandado judicial.",
       "objeto_hash": "e7ed8abc43f9"
+    },
+    {
+      "id": "Prefeitura:2026:130:18917657",
+      "orgao": "Prefeitura",
+      "numero": "130",
+      "ano": "2026",
+      "fornecedor": "MEDH DISTRIBUIDORA DE MEDICAMENTOS LTDA",
+      "cnpj_raiz": "18917657",
+      "data": "2026-06-09",
+      "valor_brl": 228,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para fornecimento de medicamentos para manutenção dos serviços de saúde do Município e cumprimento aos processos judicializados atendendo aos serviços da assistência básica e urgência e emergência do Município de Varginha através da Secretaria Municipal de Saúde (SEMUS) bem como aos serviços do bem estar animal através da Secretaria Municipal de Meio Ambiente (SEMEA).",
+      "objeto_hash": "b06064c5326c"
     },
     {
       "id": "Prefeitura:sem-numero:08157293:5007b9e6f7ba",
@@ -10964,19 +11471,6 @@
       "objeto_hash": "17a7252342e1"
     },
     {
-      "id": "Prefeitura:2025:64:14505252",
-      "orgao": "Prefeitura",
-      "numero": "64",
-      "ano": "2025",
-      "fornecedor": "EPICO EVENTOS LTDA",
-      "cnpj_raiz": "14505252",
-      "data": "2025-07-14",
-      "valor_brl": 0.01,
-      "modalidade": "Pregão eletrônico",
-      "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA REALIZAÇÃO DO EVENTO FEIRA DA PAZ",
-      "objeto_hash": "e27857e18306"
-    },
-    {
       "id": "Prefeitura:2025:43:31160361",
       "orgao": "Prefeitura",
       "numero": "43",
@@ -10990,6 +11484,19 @@
       "objeto_hash": "f691599aa8ad"
     },
     {
+      "id": "Prefeitura:2025:64:14505252",
+      "orgao": "Prefeitura",
+      "numero": "64",
+      "ano": "2025",
+      "fornecedor": "EPICO EVENTOS LTDA",
+      "cnpj_raiz": "14505252",
+      "data": "2025-07-14",
+      "valor_brl": 0.01,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA REALIZAÇÃO DO EVENTO FEIRA DA PAZ",
+      "objeto_hash": "e27857e18306"
+    },
+    {
       "id": "Prefeitura:2026:173:68533967",
       "orgao": "Prefeitura",
       "numero": "173",
@@ -11001,6 +11508,19 @@
       "modalidade": "Pregão eletrônico",
       "objeto": "AQUISIÇÃO DE MATERIAIS DE ESCRITÓRIO E SUPRIMENTOS DE INFORMÁTICA",
       "objeto_hash": "ea942ba09849"
+    },
+    {
+      "id": "Prefeitura:sem-numero:47305688:b1a67af0bb9a",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "0",
+      "fornecedor": "STAMP PRODUTOS E SERVICOS LTDA",
+      "cnpj_raiz": "47305688",
+      "data": "2026-06-10",
+      "valor_brl": 0,
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de carimbos",
+      "objeto_hash": "77da2c592f5e"
     },
     {
       "id": "Prefeitura:2025:207:65308835",
@@ -11029,19 +11549,6 @@
       "objeto_hash": "6d242ae0dc81"
     },
     {
-      "id": "Camara:2026:4:34390392",
-      "orgao": "Camara",
-      "numero": "4",
-      "ano": "2026",
-      "fornecedor": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
-      "cnpj_raiz": "34390392",
-      "data": "2026-03-02",
-      "valor_brl": 94805.46,
-      "modalidade": "Dispensa eletrônica",
-      "objeto": "Aquisição de combustível compreendido por gasolina comum",
-      "objeto_hash": "9d0d01516bbb"
-    },
-    {
       "id": "Camara:sem-numero:06981180:1fa43d3b3b0c",
       "orgao": "Camara",
       "numero": "0",
@@ -11066,6 +11573,19 @@
       "modalidade": "Dispensa de licitação",
       "objeto": "Aquisição de lanches destinados ao Vereadores e Escola do Legislativo",
       "objeto_hash": "19269381cc9b"
+    },
+    {
+      "id": "Camara:2026:4:34390392",
+      "orgao": "Camara",
+      "numero": "4",
+      "ano": "2026",
+      "fornecedor": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
+      "cnpj_raiz": "34390392",
+      "data": "2026-03-02",
+      "valor_brl": 62402.73,
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de combustível compreendido por gasolina comum",
+      "objeto_hash": "9d0d01516bbb"
     },
     {
       "id": "Camara:sem-numero:34028316:6413fc1530dd",
@@ -13735,12 +14255,20 @@
       "rank": 5,
       "nome": "RECEITA FEDERAL",
       "cnpj_raiz": "00394460",
-      "valor_brl": 5360915.74
+      "valor_brl": 5432273.38
+    },
+    {
+      "id": "Prefeitura:57437279",
+      "orgao": "Prefeitura",
+      "rank": 6,
+      "nome": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
+      "cnpj_raiz": "57437279",
+      "valor_brl": 4181962.22
     },
     {
       "id": "Prefeitura:00874813",
       "orgao": "Prefeitura",
-      "rank": 6,
+      "rank": 7,
       "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
       "cnpj_raiz": "00874813",
       "valor_brl": 3766863.16
@@ -13748,7 +14276,7 @@
     {
       "id": "Prefeitura:29979036",
       "orgao": "Prefeitura",
-      "rank": 7,
+      "rank": 8,
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
       "cnpj_raiz": "29979036",
       "valor_brl": 3406069.03
@@ -13756,18 +14284,10 @@
     {
       "id": "Prefeitura:17281106",
       "orgao": "Prefeitura",
-      "rank": 8,
+      "rank": 9,
       "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
       "cnpj_raiz": "17281106",
-      "valor_brl": 3274516.73
-    },
-    {
-      "id": "Prefeitura:57437279",
-      "orgao": "Prefeitura",
-      "rank": 9,
-      "nome": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
-      "cnpj_raiz": "57437279",
-      "valor_brl": 3188239.65
+      "valor_brl": 3280942.68
     },
     {
       "id": "Prefeitura:09182496",
@@ -13807,7 +14327,7 @@
       "rank": 14,
       "nome": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
       "cnpj_raiz": "26001891",
-      "valor_brl": 2421306
+      "valor_brl": 2423086.21
     },
     {
       "id": "Prefeitura:17155730",
@@ -13842,28 +14362,28 @@
       "valor_brl": 1685255.51
     },
     {
-      "id": "Prefeitura:42317980",
-      "orgao": "Prefeitura",
-      "rank": 19,
-      "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
-      "cnpj_raiz": "42317980",
-      "valor_brl": 1211983.6
-    },
-    {
       "id": "Prefeitura:02999757",
       "orgao": "Prefeitura",
-      "rank": 20,
+      "rank": 19,
       "nome": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
       "cnpj_raiz": "02999757",
-      "valor_brl": 1175148.16
+      "valor_brl": 1630678.39
     },
     {
-      "id": "Prefeitura:00360305",
+      "id": "Prefeitura:58499094",
+      "orgao": "Prefeitura",
+      "rank": 20,
+      "nome": "BRAVO LOCACOES E SERVICOS LTDA",
+      "cnpj_raiz": "58499094",
+      "valor_brl": 1469690.73
+    },
+    {
+      "id": "Prefeitura:42317980",
       "orgao": "Prefeitura",
       "rank": 21,
-      "nome": "CAIXA ECONOMICA FEDERAL",
-      "cnpj_raiz": "00360305",
-      "valor_brl": 1082519.84
+      "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
+      "cnpj_raiz": "42317980",
+      "valor_brl": 1335190.6
     },
     {
       "id": "Prefeitura:23593720",
@@ -13871,12 +14391,20 @@
       "rank": 22,
       "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
       "cnpj_raiz": "23593720",
-      "valor_brl": 1035211.72
+      "valor_brl": 1279503.86
+    },
+    {
+      "id": "Prefeitura:00360305",
+      "orgao": "Prefeitura",
+      "rank": 23,
+      "nome": "CAIXA ECONOMICA FEDERAL",
+      "cnpj_raiz": "00360305",
+      "valor_brl": 1082519.84
     },
     {
       "id": "Prefeitura:16524054",
       "orgao": "Prefeitura",
-      "rank": 23,
+      "rank": 24,
       "nome": "AGENCIA ADVENTISTA DESENV.E REC.ASSIST. ADRA",
       "cnpj_raiz": "16524054",
       "valor_brl": 1010200
@@ -13884,7 +14412,7 @@
     {
       "id": "Prefeitura:00456865",
       "orgao": "Prefeitura",
-      "rank": 24,
+      "rank": 25,
       "nome": "BETHA SISTEMAS LTDA",
       "cnpj_raiz": "00456865",
       "valor_brl": 981937.56
@@ -13892,50 +14420,42 @@
     {
       "id": "Prefeitura:00730595",
       "orgao": "Prefeitura",
-      "rank": 25,
+      "rank": 26,
       "nome": "CISSUL - CONSÓRCIO INTERMUNICIPAL DE SAÚDE SUL MINEIRO",
       "cnpj_raiz": "00730595",
       "valor_brl": 964286.03
     },
     {
-      "id": "Prefeitura:58499094",
+      "id": "Prefeitura:29045348",
       "orgao": "Prefeitura",
-      "rank": 26,
-      "nome": "BRAVO LOCACOES E SERVICOS LTDA",
-      "cnpj_raiz": "58499094",
-      "valor_brl": 940212.07
+      "rank": 27,
+      "nome": "IOT- INSTITUTO DE ORTOPEDIA E TRAUMATOLOGIA DE VARGINHA LTDA",
+      "cnpj_raiz": "29045348",
+      "valor_brl": 951980.93
     },
     {
       "id": "Prefeitura:81057247",
       "orgao": "Prefeitura",
-      "rank": 27,
+      "rank": 28,
       "nome": "FUNDO NACIONAL DE DESENVOLVIMENTO DA EDUCACAO",
       "cnpj_raiz": "81057247",
       "valor_brl": 926224.24
     },
     {
+      "id": "Prefeitura:35537390",
+      "orgao": "Prefeitura",
+      "rank": 29,
+      "nome": "CASSERV - CAIXA DE ASSIST. A SAÚDE DOS SERV. PÚBL. DA PREFEI",
+      "cnpj_raiz": "35537390",
+      "valor_brl": 910287.24
+    },
+    {
       "id": "Prefeitura:00530493",
       "orgao": "Prefeitura",
-      "rank": 28,
+      "rank": 30,
       "nome": "FUNDO NACIONAL DE SAUDE",
       "cnpj_raiz": "00530493",
       "valor_brl": 879772.6
-    },
-    {
-      "id": "Prefeitura:05549049",
-      "orgao": "Prefeitura",
-      "rank": 29,
-      "nome": "ASSOCIAÇAO BENEFICENTE KERIGMA",
-      "cnpj_raiz": "05549049",
-      "valor_brl": 836000
-    },
-    {
-      "id": "Prefeitura:31772291",
-      "orgao": "Prefeitura",
-      "rank": 30,
-      "nome": "DIGIPLAN TECNOLOGIA LTDA",
-      "cnpj_raiz": "31772291",
-      "valor_brl": 829031.95
     },
     {
       "id": "Camara:versao br comunicacao e marketing ltda",
@@ -13975,7 +14495,7 @@
       "rank": 5,
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
       "cnpj_raiz": "",
-      "valor_brl": 316429.1
+      "valor_brl": 316929
     },
     {
       "id": "Camara:domino vigilancia patrimonial ltda",
@@ -13999,7 +14519,7 @@
       "rank": 8,
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
       "cnpj_raiz": "",
-      "valor_brl": 225248.03
+      "valor_brl": 279888.35
     },
     {
       "id": "Camara:ronaldo mendes-me",
@@ -14010,9 +14530,17 @@
       "valor_brl": 214999.2
     },
     {
-      "id": "Camara:printec tecnologia da impressa0 ltda",
+      "id": "Camara:inprev-inst.de prev.dos serv.publ.mun.varginh",
       "orgao": "Camara",
       "rank": 10,
+      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+      "cnpj_raiz": "",
+      "valor_brl": 111773.45
+    },
+    {
+      "id": "Camara:printec tecnologia da impressa0 ltda",
+      "orgao": "Camara",
+      "rank": 11,
       "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
       "cnpj_raiz": "",
       "valor_brl": 104380.6
@@ -14020,18 +14548,10 @@
     {
       "id": "Camara:49.906.995 fabiola sebastiana kelly silva",
       "orgao": "Camara",
-      "rank": 11,
+      "rank": 12,
       "nome": "49.906.995 FABIOLA SEBASTIANA KELLY SILVA",
       "cnpj_raiz": "",
       "valor_brl": 103989.11
-    },
-    {
-      "id": "Camara:inprev-inst.de prev.dos serv.publ.mun.varginh",
-      "orgao": "Camara",
-      "rank": 12,
-      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "cnpj_raiz": "",
-      "valor_brl": 89590.93
     },
     {
       "id": "Camara:comercio de combustiveis nova alianca varginha l",
@@ -14099,6 +14619,24 @@
     }
   ],
   "diario": [
+    {
+      "id": "diario:2026:1823",
+      "edicao": "1823",
+      "ano": "2026",
+      "data": "2026-06-16",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1823",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/230/"
+    },
+    {
+      "id": "diario:2026:1822",
+      "edicao": "1822",
+      "ano": "2026",
+      "data": "2026-06-15",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1822",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/229/"
+    },
     {
       "id": "diario:2026:1821",
       "edicao": "1821",
@@ -14620,24 +15158,6 @@
       "extra": false,
       "titulo": "Diario Oficial - Edicao 1764",
       "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/171/"
-    },
-    {
-      "id": "diario:2026:1763",
-      "edicao": "1763",
-      "ano": "2026",
-      "data": "2026-03-19",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1763",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/170/"
-    },
-    {
-      "id": "diario:2026:1762",
-      "edicao": "1762",
-      "ano": "2026",
-      "data": "2026-03-18",
-      "extra": true,
-      "titulo": "Diario Oficial - Edicao 1762",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/169/"
     }
   ],
   "pendencias": [],
