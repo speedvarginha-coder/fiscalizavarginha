@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-16T23:48:45.052Z",
+  "gerado_em": "2026-06-17T12:34:53.644Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -9,15 +9,15 @@
     "total": 8
   },
   "atualizado_base": {
-    "iso": "2026-06-16T06:48:15",
-    "data_humana": "16/06/2026 - 06:48"
+    "iso": "2026-06-17T06:44:37",
+    "data_humana": "17/06/2026 - 06:44"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.6 dias.",
+      "detail": "Ultima coleta principal ha 0.1 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },

@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 5925295.01,
-  "total_externo_anterior": 8392805.43,
-  "empenhos_qtd": 3030,
+  "total_externo_atual": 5925535.01,
+  "total_externo_anterior": 8404647.51,
+  "empenhos_qtd": 3031,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -139,8 +139,8 @@
     },
     {
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
-      "valor_total": 379158.52,
-      "qtd": 6
+      "valor_total": 382658.52,
+      "qtd": 7
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",

@@ -31338,10 +31338,10 @@
       "impacto_zero_qtd": 118,
       "desfechos": {
         "lei": 19,
-        "arquivado": 307,
+        "arquivado": 308,
         "tramitando": 142,
         "encerrado": 0,
-        "sem_dado": 2
+        "sem_dado": 1
       },
       "tipos": [
         {
@@ -34260,7 +34260,7 @@
         "data": "2026-03-11",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "medio"

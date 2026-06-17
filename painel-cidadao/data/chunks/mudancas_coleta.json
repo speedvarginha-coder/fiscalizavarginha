@@ -1,44 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-06-16T23:48:47.255Z",
+  "gerado_em": "2026-06-17T12:34:54.345Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-06-16T06-48-15-0c4bf63c",
-    "coleta_iso": "2026-06-16T06:48:15",
-    "data_humana": "16/06/2026 - 06:48",
-    "arquivo": "data/snapshots/2026-06-16T06-48-15-0c4bf63c.json"
+    "snapshot_id": "2026-06-17T06-44-37-8bb8ad1b",
+    "coleta_iso": "2026-06-17T06:44:37",
+    "data_humana": "17/06/2026 - 06:44",
+    "arquivo": "data/snapshots/2026-06-17T06-44-37-8bb8ad1b.json"
   },
   "anterior": {
-    "snapshot_id": "2026-06-15T21-47-06-c1753de3",
-    "coleta_iso": "2026-06-15T21:47:06",
-    "data_humana": "15/06/2026 - 21:47",
-    "arquivo": "data/snapshots/2026-06-15T21-47-06-c1753de3.json",
+    "snapshot_id": "2026-06-17T01-20-03-718e74b2",
+    "coleta_iso": "2026-06-17T01:20:03",
+    "data_humana": "17/06/2026 - 01:20",
+    "arquivo": "data/snapshots/2026-06-17T01-20-03-718e74b2.json",
     "origem": "chunks"
   },
   "resumo": {
     "novos_contratos": 0,
-    "contratos_valor_alterado": 1,
+    "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
-    "valor_delta_brl": -32402.730000000003,
-    "total_mudancas": 1
+    "valor_delta_brl": 0,
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "media",
-      "titulo": "Valor alterado no contrato 4/2026",
-      "detalhe": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA: antes R$ 94.805,46, agora R$ 62.402,73.",
-      "orgao": "Camara",
-      "data": "2026-03-02",
-      "valor_brl": 62402.73,
-      "delta_brl": -32402.730000000003,
-      "alvo_id": "CAMARA-2026-4"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }
