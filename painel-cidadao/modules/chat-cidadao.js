@@ -1,6 +1,6 @@
 /* Fiscaliza Varginha — modules/chat-cidadao.js
- * Widget de chat baseado em palavras-chave. Zero backend, zero custo.
- * Responde com dados reais de window.ZELA_DATA.
+ * Widget de chat com IA (Gemini via Netlify Function) + fallback por palavras-chave.
+ * A chave da API nunca chega ao navegador.
  */
 (function () {
   "use strict";
@@ -99,21 +99,71 @@
     });
   }
 
+  // Detecta se está no Netlify (tem a função disponível) ou local (fallback)
+  const FUNC_URL = "/.netlify/functions/chat";
+  const USA_IA = location.hostname.includes("netlify.app") || location.hostname.includes("fiscaliza");
+
+  async function chamarIA(pergunta) {
+    const res = await fetch(FUNC_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pergunta }),
+    });
+    if (res.status === 429) throw new Error("rate_limit");
+    if (!res.ok) throw new Error("api_error");
+    const data = await res.json();
+    if (data.erro) throw new Error(data.erro);
+    return data.resposta || "";
+  }
+
+  function renderMarkdown(txt) {
+    return txt
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\*(.*?)\*/g, "<em>$1</em>")
+      .replace(/^- (.+)$/gm, "<li>$1</li>")
+      .replace(/(<li>.*<\/li>)/s, "<ul>$1</ul>")
+      .replace(/\n{2,}/g, "<br><br>")
+      .replace(/\n/g, "<br>");
+  }
+
   function responder(texto) {
     const loader = addMsg('<span class="chat-typing"><i></i><i></i><i></i></span>', "bot");
-    setTimeout(() => {
-      loader.remove();
-      const r = gerarResposta(texto);
-      addMsg(r.msg, "bot");
-      if (r.chips && r.chips.length) addChips(r.chips);
-    }, 500 + Math.random() * 350);
+
+    if (USA_IA) {
+      chamarIA(texto)
+        .then((resposta) => {
+          loader.remove();
+          addMsg(renderMarkdown(resposta), "bot");
+        })
+        .catch((err) => {
+          loader.remove();
+          if (err.message === "rate_limit") {
+            addMsg("Muitas perguntas seguidas — aguarde alguns minutos e tente novamente.", "bot");
+            return;
+          }
+          // Fallback para palavras-chave se a IA falhar
+          const r = gerarResposta(texto);
+          addMsg(r.msg + '<br><small style="opacity:.55;font-size:.7rem">⚠️ IA indisponível — resposta automática</small>', "bot");
+          if (r.chips && r.chips.length) addChips(r.chips);
+        });
+    } else {
+      // Local: fallback por palavras-chave
+      setTimeout(() => {
+        loader.remove();
+        const r = gerarResposta(texto);
+        addMsg(r.msg, "bot");
+        if (r.chips && r.chips.length) addChips(r.chips);
+      }, 500 + Math.random() * 350);
+    }
   }
 
   function boasVindas() {
+    const iaAtiva = USA_IA;
     addMsg(
       'Olá! Sou o assistente do <strong>Fiscaliza Varginha</strong>.<br>' +
-      'Pergunto sobre contratos, gastos, vereadores ou obras — com os dados públicos coletados hoje.<br>' +
-      '<small style="opacity:.65;font-size:.72rem">Não sou IA: respondo com dados reais da Prefeitura e Câmara.</small>',
+      'Pergunte sobre contratos, gastos, vereadores ou obras — respondo com os dados públicos de Varginha.<br>' +
+      '<small style="opacity:.65;font-size:.72rem">' + (iaAtiva ? '🤖 Powered by Gemini · dados coletados hoje' : '📋 Modo local — respostas automáticas') + '</small>',
       "bot"
     );
     addChips([
