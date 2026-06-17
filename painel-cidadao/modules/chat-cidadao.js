@@ -286,8 +286,8 @@
       };
     }
 
-    // Fornecedores / contratos / empresas
-    if (/fornecedor|empresa|contrato|cnpj|recebeu|receberam/.test(t)) {
+    // Fornecedores / contratos / empresas (recebeu só se não for diária)
+    if (/fornecedor|empresa|contrato|cnpj/.test(t) || (/recebeu|receberam/.test(t) && !/diaria|viagem/.test(t))) {
       const top = (pf.top_fornecedores_atual || []).slice(0, 5);
       const linhas = top.map((f) =>
         '<li><strong>' + esc(f.nome || f.credor) + '</strong> — ' + brl(f.valor_total || f.valor) + '</li>'
