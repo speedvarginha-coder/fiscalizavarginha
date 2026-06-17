@@ -271,7 +271,7 @@
     // Câmara / vereadores / emendas
     if (/camara|vereador|emenda|mandato|legislativo|sessao|plenario|sapl/.test(t)) {
       const lista = Array.isArray(em) ? em : (em.lista || []);
-      const totalEm = lista.reduce((s, e) => s + (Number(e.valor) || 0), 0);
+      const totalEm = lista.reduce((s, e) => s + (Number(e.valor_brl) || Number(e.valor) || 0), 0);
       const qtdEm   = lista.length;
       return {
         msg:
@@ -306,8 +306,9 @@
 
     // Diárias
     if (/diaria|viagem|hospedagem|deslocamento|passagem/.test(t)) {
-      const dpf = (di.prefeitura || []).filter((d) => String(d.ano) === String(pf.ano_atual || 2026));
-      const totalD = dpf.reduce((s, d) => s + (Number(d.valor) || 0), 0);
+      const anoAtual = String(pf.ano_atual || 2026);
+      const dpf = (di.prefeitura || []).filter((d) => String(d.ano) === anoAtual);
+      const totalD = dpf.reduce((s, d) => s + (Number(d.valor_total) || Number(d.valor) || 0), 0);
       return {
         msg:
           'Em 2026 a Prefeitura pagou <strong>' + num(dpf.length) + ' diárias</strong>' +
