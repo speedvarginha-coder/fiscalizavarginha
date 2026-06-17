@@ -4693,18 +4693,22 @@ ${url}
 
     window.ZELA.renderAsfaltoPrefeitura = renderAsfaltoPrefeitura;
 
-    const select = $("filtroAnoAsfalto");
-    const buscaInput = $("filtroBuscaAsfalto");
+    const select      = $("filtroAnoAsfalto");
+    const buscaInput  = $("filtroBuscaAsfalto");
+    const ordemSelect = $("filtroOrdemAsfalto");
+    const tipoSelect  = $("filtroTipoAsfalto");
     if (select && !window.ZELA._asfaltoInit) {
       window.ZELA._asfaltoInit = true;
       select.addEventListener("change", () => renderAsfaltoPrefeitura());
-      if (buscaInput) {
-        buscaInput.addEventListener("input", () => renderAsfaltoPrefeitura());
-      }
+      if (buscaInput)  buscaInput.addEventListener("input",   () => renderAsfaltoPrefeitura());
+      if (ordemSelect) ordemSelect.addEventListener("change", () => renderAsfaltoPrefeitura());
+      if (tipoSelect)  tipoSelect.addEventListener("change",  () => renderAsfaltoPrefeitura());
     }
 
-    const anoSelecionado = select ? select.value : "";
-    const buscaTexto = buscaInput ? norm(buscaInput.value.trim()) : "";
+    const anoSelecionado = select      ? select.value      : "";
+    const buscaTexto     = buscaInput  ? norm(buscaInput.value.trim()) : "";
+    const ordem          = ordemSelect ? ordemSelect.value : "recente";
+    const tipoFiltro     = tipoSelect  ? tipoSelect.value  : "";
 
     const termos = [
       "asfalto", "asfaltica", "asfaltico", "cbuq", "pavimentacao", "pavimenta", "recape", 
@@ -4807,9 +4811,18 @@ ${url}
           ...(!i.data_ultima_medicao ? ["Medição"] : []),
         ],
       };
-    }).sort((a, b) => Number(b.valor_asfalto || 0) - Number(a.valor_asfalto || 0));
+    }).sort((a, b) => {
+      if (ordem === "valor") return Number(b.valor_asfalto || 0) - Number(a.valor_asfalto || 0);
+      // mais recente: data mais relevante disponível (última medição > início > assinatura)
+      const da = a.data_ultima_medicao || a.data_inicio || a.data_ordem_servico || a.data_assinatura || a.data || "";
+      const db = b.data_ultima_medicao || b.data_inicio || b.data_ordem_servico || b.data_assinatura || b.data || "";
+      return db.localeCompare(da) || Number(b.valor_asfalto || 0) - Number(a.valor_asfalto || 0);
+    });
 
     let basesFiltradas = bases.filter(i => estaAtivoNoAno(i, anoSelecionado));
+    if (tipoFiltro === "obra")      basesFiltradas = basesFiltradas.filter(i => i.obra_publica);
+    if (tipoFiltro === "contrato")  basesFiltradas = basesFiltradas.filter(i => i.origem === "Contrato");
+    if (tipoFiltro === "licitacao") basesFiltradas = basesFiltradas.filter(i => (i.origem || "").includes("Licita"));
     if (buscaTexto) {
       basesFiltradas = basesFiltradas.filter(i => {
         const txt = norm(`${i.origem} ${i.contratado || i.fornecedor || ""} ${i.objeto || i.descricao || ""} ${i.local_asfalto || ""} ${i.tipo_asfalto || ""}`);

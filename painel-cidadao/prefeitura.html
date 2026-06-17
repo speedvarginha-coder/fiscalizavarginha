@@ -363,6 +363,16 @@
           <option value="2025">2025</option>
           <option value="2024">2024</option>
         </select>
+        <select id="filtroTipoAsfalto" aria-label="Filtrar por tipo">
+          <option value="">Todos os tipos</option>
+          <option value="obra">Obras oficiais</option>
+          <option value="contrato">Contratos</option>
+          <option value="licitacao">Licitações</option>
+        </select>
+        <select id="filtroOrdemAsfalto" aria-label="Ordenar por">
+          <option value="recente">Mais recente primeiro</option>
+          <option value="valor">Maior valor primeiro</option>
+        </select>
         <input id="filtroBuscaAsfalto" type="search" placeholder="Buscar por rua, bairro, empresa, objeto..." oninput="ZELA.renderAsfaltoPrefeitura && ZELA.renderAsfaltoPrefeitura()">
         <span id="asfaltoContador" class="filterbar__count"></span>
       </div>
