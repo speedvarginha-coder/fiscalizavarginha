@@ -99,9 +99,8 @@
     });
   }
 
-  // IA desativada até chave Gemini ser configurada — chat usa respostas automáticas
   const FUNC_URL = "/.netlify/functions/chat";
-  const USA_IA = false;
+  const USA_IA = location.hostname.includes("netlify.app") || location.hostname.includes("fiscaliza");
 
   async function chamarIA(pergunta) {
     const res = await fetch(FUNC_URL, {
