@@ -95,7 +95,7 @@ function chamarGemini(pergunta) {
       ],
     });
 
-    const model = "gemini-2.0-flash";
+    const model = "gemini-2.5-flash";
     const options = {
       hostname: "generativelanguage.googleapis.com",
       path: `/v1beta/models/${model}:generateContent?key=${apiKey}`,
