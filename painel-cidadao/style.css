@@ -6676,6 +6676,59 @@ body[data-page="home"] .hub-grid-18 .hub-item__cue {
 }
 body[data-page="home"] .hub-grid-18 .hub-item:hover .hub-item__cue { opacity: 1; }
 
+/* ── Card números ao vivo ── */
+body[data-page="home"] .hub-numeros {
+  margin-top: 12px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 8px;
+  padding: 16px;
+}
+body[data-page="home"] .hub-numeros__titulo {
+  color: rgba(255,255,255,.66);
+  font-size: .7rem;
+  font-weight: 750;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  font-family: var(--font-b);
+}
+body[data-page="home"] .hub-numeros__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+body[data-page="home"] .hub-numeros__item {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+body[data-page="home"] .hub-numeros__item strong {
+  color: var(--gold);
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+body[data-page="home"] .hub-numeros__item span {
+  color: rgba(255,255,255,.65);
+  font-size: .72rem;
+  line-height: 1.3;
+}
+body[data-page="home"] .hub-numeros__link {
+  display: block;
+  color: rgba(255,255,255,.7);
+  font-size: .78rem;
+  text-decoration: none;
+  text-align: right;
+  transition: color .2s;
+}
+body[data-page="home"] .hub-numeros__link:hover { color: var(--gold); }
+
 /* ── Mobile: coluna única ── */
 @media (max-width: 960px) {
   body[data-page="home"] .hero--modern .container {

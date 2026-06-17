@@ -159,6 +159,31 @@
         </a>
 
       </div>
+
+      <!-- Card de números ao vivo -->
+      <div class="hub-numeros" id="hubNumeros">
+        <p class="hub-numeros__titulo">📊 Números de 2026</p>
+        <div class="hub-numeros__grid">
+          <div class="hub-numeros__item">
+            <strong id="hnTotal">—</strong>
+            <span>pago a fornecedores</span>
+          </div>
+          <div class="hub-numeros__item">
+            <strong id="hnContratos">—</strong>
+            <span>contratos ativos</span>
+          </div>
+          <div class="hub-numeros__item">
+            <strong id="hnObras">—</strong>
+            <span>obras registradas</span>
+          </div>
+          <div class="hub-numeros__item">
+            <strong id="hnSinais">—</strong>
+            <span>sinais de atenção</span>
+          </div>
+        </div>
+        <a href="relatorios.html" class="hub-numeros__link">Ver relatório completo →</a>
+      </div>
+
     </div>
   </div>
 </section>
@@ -586,6 +611,26 @@ document.addEventListener('zela:ready', function () {
     resumeEl.textContent = txt;
     widget.style.display = '';
   } catch (e) { /* silencioso */ }
+});
+
+/* ── Hub números ao vivo ── */
+document.addEventListener('zela:ready', function () {
+  var D  = window.ZELA_DATA || {};
+  var pf = D.prefeitura || {};
+  var cb = D.camara_betha || {};
+  function brl(v) {
+    if (!v) return '—';
+    return 'R$ ' + (Number(v)/1e6).toFixed(1).replace('.',',') + ' mi';
+  }
+  function n(v) { return v ? Number(v).toLocaleString('pt-BR') : '—'; }
+  var total = pf.total_externo_atual;
+  document.getElementById('hnTotal').textContent     = total ? brl(total) : '—';
+  document.getElementById('hnContratos').textContent = n((pf.contratos || []).length || pf.total_contratos);
+  document.getElementById('hnObras').textContent     = n((pf.obras || []).length || pf.total_obras);
+  // Sinais: conta registros com sinais
+  var sinais = 0;
+  (pf.top_fornecedores_atual || []).forEach(function(f){ if(f.sinais && f.sinais.length) sinais += f.sinais.length; });
+  document.getElementById('hnSinais').textContent = sinais || '—';
 });
 
 /* ── E: Badges "hoje" nos hub items com dados recentes ─────────── */
