@@ -1624,6 +1624,21 @@ def main() -> int:
         camara_betha = _processa_camara_betha()
         if camara_betha:
             _save("camara_betha.json", camara_betha)
+
+        # Enriquece top fornecedores Betha (CNPJs mascarados → reconstruídos via raiz)
+        if not sem_cnpj and prefeitura:
+            top = prefeitura.get("top_fornecedores_atual", [])
+            if top:
+                try:
+                    import coletor_cnpj
+                    print("⇣ CNPJ — enriquecendo top fornecedores Betha (raiz→0001)…")
+                    fornecedores = coletor_cnpj.coletar_fornecedores(top)
+                    ok = sum(1 for f in fornecedores if "razao_social" in f)
+                    print(f"  ✓ {ok}/{len(fornecedores)} fornecedores enriquecidos")
+                    cnpjs["fornecedores"] = fornecedores
+                    _save("cnpjs.json", cnpjs)
+                except Exception as _e:
+                    print(f"  ✗ enriquecimento fornecedores: {_e}")
     elif sem_betha:
         prefeitura = _load_existing("prefeitura.json", {})
         if prefeitura:

@@ -1,9 +1,9 @@
 """
 Coletor de dados cadastrais públicos de CNPJ.
 
-Consulta apenas CNPJs completos já presentes nas emendas, em pequeno volume, e
-usa os dados como apoio de conferência. Fornecedores da Prefeitura aparecem
-mascarados no Betha, então não são consultados nesta etapa.
+Consulta CNPJs completos das emendas (SAPL) e reconstrói CNPJs de fornecedores
+Betha a partir da raiz (8 dígitos) — calcula dígitos verificadores para filial
+0001, que é a mais comum. O resultado é marcado como "reconstruído/conferir".
 """
 from __future__ import annotations
 
@@ -22,6 +22,33 @@ FONTES_CNPJ = [
 
 def _digits(cnpj: str) -> str:
     return re.sub(r"\D", "", cnpj or "")
+
+
+def _calc_digitos(raiz12: str) -> str:
+    """Dada uma string de 12 dígitos (CNPJ sem os 2 verificadores), calcula e
+    acrescenta os 2 dígitos verificadores conforme algoritmo da Receita Federal."""
+    nums = [int(c) for c in raiz12]
+    # primeiro dígito
+    pesos1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+    s = sum(n * p for n, p in zip(nums, pesos1))
+    r = s % 11
+    d1 = 0 if r < 2 else 11 - r
+    # segundo dígito
+    pesos2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+    nums13 = nums + [d1]
+    s = sum(n * p for n, p in zip(nums13, pesos2))
+    r = s % 11
+    d2 = 0 if r < 2 else 11 - r
+    return raiz12 + str(d1) + str(d2)
+
+
+def _cnpj_de_raiz(raiz: str, filial: str = "0001") -> str:
+    """Reconstrói CNPJ completo (14 dígitos) a partir da raiz de 8 dígitos.
+    Assume filial 0001 (matriz), a mais comum. Retorna '' se raiz inválida."""
+    r = _digits(raiz)[:8]
+    if len(r) < 8:
+        return ""
+    return _calc_digitos(r + filial.zfill(4))
 
 
 def _get_json(url: str, timeout: int = 30, tentativas: int = 3):
@@ -125,6 +152,51 @@ def coletar(emendas: list[dict], limite: int = 90) -> dict:
         },
         "observacao": "Uso auxiliar. Para documento oficial, conferir comprovante de inscrição no site da Receita Federal.",
     }
+
+
+def coletar_fornecedores(top: list[dict], limite: int = 30) -> list[dict]:
+    """Enriquece top fornecedores Betha cujo CNPJ chega mascarado (raiz/****-**).
+    Reconstrói como RAIZ/0001-XX (filial mais comum) e consulta BrasilAPI para
+    obter razão social, CNAE e sócios. Marca 'cnpj_reconstruido=True' para que
+    a UI avise que é inferido e deve ser conferido."""
+    resultado = []
+    for item in top[:limite]:
+        cnpj_raw = _digits(item.get("cnpj", ""))
+        raiz = cnpj_raw[:8]
+        if len(raiz) < 8:
+            resultado.append({
+                "nome": item.get("nome", ""),
+                "cnpj_raiz": raiz or "",
+                "cnpj_completo": "",
+                "cnpj_reconstruido": False,
+                "valor_total": item.get("valor_total", 0),
+                "erro": "raiz indisponível",
+            })
+            continue
+        cnpj14 = _cnpj_de_raiz(raiz)
+        try:
+            dados = _consulta(cnpj14)
+            resultado.append({
+                "nome": item.get("nome", ""),
+                "cnpj_raiz": raiz,
+                "cnpj_completo": cnpj14,
+                "cnpj_reconstruido": True,
+                "valor_total": item.get("valor_total", 0),
+                **{k: dados[k] for k in ("razao_social", "nome_fantasia", "situacao",
+                                          "abertura", "cnae", "municipio", "uf",
+                                          "socios", "fonte")},
+            })
+            time.sleep(1.2)
+        except Exception as e:  # noqa: BLE001
+            resultado.append({
+                "nome": item.get("nome", ""),
+                "cnpj_raiz": raiz,
+                "cnpj_completo": cnpj14,
+                "cnpj_reconstruido": True,
+                "valor_total": item.get("valor_total", 0),
+                "erro": str(e),
+            })
+    return resultado
 
 
 if __name__ == "__main__":
