@@ -42,6 +42,7 @@
     "modules/materia-cidada.js",
     "modules/indice-relevancia.js",
     "modules/onboarding.js",
+    "modules/chat-cidadao.js",
   ];
 
   const ts = Date.now();
