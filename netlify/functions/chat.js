@@ -109,14 +109,23 @@ function chamarGemini(pergunta) {
       res.on("end", () => {
         try {
           const json = JSON.parse(data);
+          console.log("[chat] Gemini status:", res.statusCode, "keys:", Object.keys(json).join(","));
+          if (json.error) {
+            console.error("[chat] Gemini error:", JSON.stringify(json.error));
+            return reject(new Error("Gemini error: " + json.error.message));
+          }
+          if (json.promptFeedback) {
+            console.error("[chat] Safety block:", JSON.stringify(json.promptFeedback));
+          }
           const texto = json?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+          const finishReason = json?.candidates?.[0]?.finishReason || "?";
           if (!texto) {
-            console.error("[chat] Gemini sem texto. Status:", res.statusCode, "Body:", data.slice(0, 500));
-            return reject(new Error("Resposta vazia: " + data.slice(0, 200)));
+            console.error("[chat] Sem texto. finishReason:", finishReason, "candidates:", JSON.stringify(json.candidates || []).slice(0, 300));
+            return reject(new Error("Sem resposta do Gemini (finishReason: " + finishReason + ")"));
           }
           resolve(texto);
         } catch (e) {
-          console.error("[chat] Parse error. Body:", data.slice(0, 500));
+          console.error("[chat] Parse error. Body:", data.slice(0, 400));
           reject(e);
         }
       });
