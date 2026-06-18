@@ -105,13 +105,20 @@
   const subtitle = document.getElementById("chatSubtitle");
   if (subtitle) subtitle.textContent = USA_IA ? "🤖 Gemini · dados de Varginha" : "📋 Respostas automáticas";
 
-  async function chamarIA(pergunta) {
+  async function chamarIA(pergunta, tentativa) {
+    tentativa = tentativa || 1;
     const res = await fetch(FUNC_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ pergunta }),
     });
-    if (res.status === 429) throw new Error("rate_limit");
+    // 429 ou 503 = rate limit/quota — tenta de novo após delay
+    if ((res.status === 429 || res.status === 503) && tentativa < 3) {
+      const delay = tentativa === 1 ? 8000 : 20000; // 8s, depois 20s
+      await new Promise(r => setTimeout(r, delay));
+      return chamarIA(pergunta, tentativa + 1);
+    }
+    if (res.status === 429 || res.status === 503) throw new Error("rate_limit");
     if (!res.ok) throw new Error("api_error");
     const data = await res.json();
     if (data.erro) throw new Error(data.erro);
