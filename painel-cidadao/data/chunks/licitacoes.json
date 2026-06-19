@@ -1,0 +1,682 @@
+{
+  "gerado_em": "2026-06-18T13:35:06.305535Z",
+  "processos_licitatorios": {
+    "total": 7407,
+    "total_homologado": 2040122553.93,
+    "por_situacao": {
+      "HOMOLOGADO": 7026,
+      "REVOGADO": 213,
+      "AGUARDANDO ABERTURA": 40,
+      "FRACASSADO": 35,
+      "ANULADO": 35,
+      "DESERTO": 33,
+      "EM ANDAMENTO": 15,
+      "RATIFICADO": 4,
+      "DESCARTADO": 3,
+      "NÃO AUTORIZADO": 2
+    },
+    "por_ano": {
+      "2020": 1424,
+      "2021": 1343,
+      "2022": 1360,
+      "2023": 1257,
+      "2024": 353,
+      "2025": 338,
+      "2026": 105
+    },
+    "em_andamento": [
+      {
+        "ano": 2020,
+        "valor": 17380000,
+        "objeto": "CONTRAT. INSTITUICAO FINANCEIRA FOLHADE PAGAMENTO",
+        "dataPublicacao": "2020-07-30",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2017,
+        "valor": 9741120,
+        "objeto": "DESP. COM LOCACAO DE VEICULOS",
+        "dataPublicacao": "2017-03-28",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2026,
+        "valor": 6531932.46,
+        "objeto": "Registro de preços para o futuro e eventual fornecimento de  cobertura de policarbonato, instalada",
+        "dataPublicacao": "2026-05-14",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2026,
+        "valor": 3984955.2,
+        "objeto": "Registro de Preço para aquisição de medicamentos veterinários e materiais afins, para os animais que",
+        "dataPublicacao": "2026-04-29",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2023,
+        "valor": 2955012.24,
+        "objeto": "CONTRATACAO EMPRESA ESPEC. P/ FORNECIMENTO DE LICENC.SISTEMA INTE.GESTAO PUBLICA",
+        "dataPublicacao": "2023-01-19",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2019,
+        "valor": 1680003,
+        "objeto": "CONTRATACAO DE OBRA DE ENGENHARIA",
+        "dataPublicacao": "2019-05-16",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2026,
+        "valor": 1267949.16,
+        "objeto": "Contratação de serviços contínuos de Remoção Terrestre Inter-Hospitalar com Ambulâncias, com o devid",
+        "dataPublicacao": "2026-05-20",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2025,
+        "valor": 1159357.2,
+        "objeto": "AQUISIÇÃO DE TUBOS PEAD",
+        "dataPublicacao": "2025-10-17",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2025,
+        "valor": 858627.17,
+        "objeto": "Contratação de serviços comuns de engenharia incluindo o fornecimento de mão-de-obra, materiais e di",
+        "dataPublicacao": "2025-11-06",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2024,
+        "valor": 750000,
+        "objeto": "A PRESENTE CONTRATAÇÃO TEM POR OBJETIVO A CONTRATAÇÃO DE BANDA PARA A REALIZAÇÃO DE EVENTO REVEILLON",
+        "dataPublicacao": "",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2026,
+        "valor": 655960,
+        "objeto": "Registro de preços para o futuro e eventual fornecimento de grama esmeralda",
+        "dataPublicacao": "2026-05-18",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2026,
+        "valor": 620160,
+        "objeto": "Registro de Preços de profissionais ou empresas para a realização de exames de videolaringoscopia e ",
+        "dataPublicacao": "2026-06-01",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2026,
+        "valor": 589499.57,
+        "objeto": "Contratação de serviços comuns de engenharia necessários à execução do sistema de aquecimento das pi",
+        "dataPublicacao": "2026-06-01",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2021,
+        "valor": 588000,
+        "objeto": "FORNEC. EQUIPOS P/ SOLUCOES,COM COMODATODE BOMBAS DE INFUSAO",
+        "dataPublicacao": "2021-04-15",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2026,
+        "valor": 560000,
+        "objeto": "RP - AQUISIÇÃO DE PEÇAS AUTOMOTIVAS",
+        "dataPublicacao": "2026-02-10",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2026,
+        "valor": 508122.8,
+        "objeto": "Registro de Preços para eventual aquisição de Leitores e Sensores de glicemia Freestyle Libre 2 Plus",
+        "dataPublicacao": "2026-06-17",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2026,
+        "valor": 465657.8,
+        "objeto": "Aquisição emergencial de medicamentos, destinados a atender a ausência temporária de estoque na Secr",
+        "dataPublicacao": "2026-06-09",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2018,
+        "valor": 436000,
+        "objeto": "FORNEC. DE VEICULOS,  MOTOS,  CAMINHOES,MAQUINAS E TRATORES.",
+        "dataPublicacao": "2018-09-27",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2025,
+        "valor": 398000,
+        "objeto": "A PRESENTE CONTRATAÇÃO TEM POR OBJETIVO A CONTRATAÇÃO DE BANDA PARA A REALIZAÇÃO DE EVENTO 1º DE MAI",
+        "dataPublicacao": "",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 286240,
+        "objeto": "DESP. LOCACAO ESCAVADEIRA HIDRAULICA",
+        "dataPublicacao": "2020-03-05",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 191372.4,
+        "objeto": "FORNEC. DE MOVEIS E EQUIPAMENTOS ESCOLA-RES.",
+        "dataPublicacao": "2020-09-30",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2024,
+        "valor": 173870,
+        "objeto": "Contratação de empresa especializada para fornecimento de sotware as a service (SaaS)",
+        "dataPublicacao": "2024-09-09",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2026,
+        "valor": 144533.28,
+        "objeto": "Aquisição de Kits Completos para Exames de Gasometria - Laboratório UPA",
+        "dataPublicacao": "2026-04-23",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2026,
+        "valor": 133005.96,
+        "objeto": "Contratação de serviços comuns de engenharia para execução da obra de reforço estrutural da edificaç",
+        "dataPublicacao": "2026-06-11",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2026,
+        "valor": 128614.32,
+        "objeto": "Contratação de empresa para prestação de serviços de portaria com 2 (dois) funcionários, 44 horas se",
+        "dataPublicacao": "2026-05-21",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2019,
+        "valor": 81180,
+        "objeto": "FORNEC. DE VEICULOS,  MOTOS,  CAMINHOES,MAQUINAS E TRATORES.",
+        "dataPublicacao": "2019-06-10",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2023,
+        "valor": 64152,
+        "objeto": "Prestação de Serviços de Manutenção Preventiva e Corretiva - Equipamentos da CME - Cisa",
+        "dataPublicacao": "",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2024,
+        "valor": 54531.9,
+        "objeto": "compra de medicamento Dupilumabe 200mg para fornecimento de mandado judicial",
+        "dataPublicacao": "2024-04-17",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2019,
+        "valor": 53629.96,
+        "objeto": "FORNEC. MATERIAL CONCRETINA E SENSOR",
+        "dataPublicacao": "2019-07-15",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2021,
+        "valor": 44427.6,
+        "objeto": "FORNEC. DE MAT. DE LIMPEZA, HIGIENE EUTENS. DE COZINHA E DO LAR EM GERAL",
+        "dataPublicacao": "2021-07-01",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2025,
+        "valor": 31350.06,
+        "objeto": "AQUISIÇAO DE TINTAS E MATERIAIS AFINS PARA MANUTENÇAO NA SECRETARIA DE TURISMO",
+        "dataPublicacao": "2025-08-11",
+        "situacao": "EM ANDAMENTO"
+      },
+      {
+        "ano": 2025,
+        "valor": 28806.07,
+        "objeto": "Aquisição de peças para manutenção de  ônibus Volvo.",
+        "dataPublicacao": "",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2025,
+        "valor": 27001.4,
+        "objeto": "contratação da concessionária de distribuição de energia elétrica CEMIG para modificação da rede na ",
+        "dataPublicacao": "",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2019,
+        "valor": 9350,
+        "objeto": "FORNEC. LAJE PRE FABRICADA",
+        "dataPublicacao": "2019-12-30",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2024,
+        "valor": 2671.76,
+        "objeto": "A aquisição da vacina meningocócica B",
+        "dataPublicacao": "2024-05-22",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2019,
+        "valor": 1700,
+        "objeto": "CONTRAT. DE SERVICOS TECNICOS ESPECIALI-ZADOS",
+        "dataPublicacao": "2019-12-31",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 1560,
+        "objeto": "DESP. LAVANDERIA HOSPITALAR",
+        "dataPublicacao": "2020-07-16",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2023,
+        "valor": 1200,
+        "objeto": "FORNEC. DE PIPOCA E ALGODAO DOCE",
+        "dataPublicacao": "2023-03-30",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2021,
+        "valor": 1198.4,
+        "objeto": "FORNEC. DE FERRAMENTAS",
+        "dataPublicacao": "2021-06-28",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2021,
+        "valor": 1000,
+        "objeto": "DESP. FUNILARIA E PINTURA",
+        "dataPublicacao": "2021-03-09",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2021,
+        "valor": 800,
+        "objeto": "DESP. RELARORIO DE TESTE DE CONSTNCIA ECONTROLE DE QUALIDADE",
+        "dataPublicacao": "2021-04-22",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2021,
+        "valor": 520,
+        "objeto": "DESP. MUNUTENCAO RELOGIO DE PONTO ELETRONICO",
+        "dataPublicacao": "2021-05-31",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2022,
+        "valor": 60,
+        "objeto": "CONCESSAO DE USO DA AREA DE ESTACIONAMENTO DA POLICLINICA CENTRAL",
+        "dataPublicacao": "2022-12-22",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2022,
+        "valor": 1.9,
+        "objeto": "AUTORIZACAO DE USO DE ESPACO PUBLICO",
+        "dataPublicacao": "2022-09-01",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2023,
+        "valor": 1,
+        "objeto": "OUTORGA DE PERMISSAO",
+        "dataPublicacao": "2023-06-01",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2023,
+        "valor": 0.01,
+        "objeto": "OUTORGA DE CONCESSAO",
+        "dataPublicacao": "2023-03-30",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 0.01,
+        "objeto": "RECAPEAMENTO ASFALTICO A BASE DE CBUQ",
+        "dataPublicacao": "2020-06-25",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2018,
+        "valor": 0,
+        "objeto": "CONTRAT. DE SERV. DE ENGENHARIA",
+        "dataPublicacao": "2018-10-11",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 0,
+        "objeto": "FORNEC. PLACAS DE INAUGURACAO",
+        "dataPublicacao": "2020-05-07",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 0,
+        "objeto": "DESP. SERVICOS DE REGARGA EXTINTORES",
+        "dataPublicacao": "2020-06-10",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 0,
+        "objeto": "DESP. SERVICOS DE REGARGA EXTINTORES",
+        "dataPublicacao": "2020-07-02",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 0,
+        "objeto": "FORNECIMENTO DE MEDICAMENTOS",
+        "dataPublicacao": "2020-07-15",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2019,
+        "valor": 0,
+        "objeto": "SERVICOS TECNICOS ESPECIALIZADOS",
+        "dataPublicacao": "2019-12-12",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2020,
+        "valor": 0,
+        "objeto": "FORNEC. CALHAS, RUFOS E MATERIAIS AFINS",
+        "dataPublicacao": "2020-09-30",
+        "situacao": "AGUARDANDO ABERTURA"
+      },
+      {
+        "ano": 2023,
+        "valor": 0,
+        "objeto": "FORNEC. DE SUPRIMENTOS DE INFORMATICA",
+        "dataPublicacao": "2023-11-09",
+        "situacao": "AGUARDANDO"
+      },
+      {
+        "ano": 2020,
+        "valor": 0,
+        "objeto": "DESP. COM ACESSO A INTERNET",
+        "dataPublicacao": "2020-11-17",
+        "situacao": "AGUARDANDO ABERTURA"
+      }
+    ],
+    "maiores_contratos": [
+      {
+        "ano": 2022,
+        "numero": 3,
+        "situacao": "HOMOLOGADO",
+        "valor": 231032953.09,
+        "objeto": "OUTORGA CONCESSAO PREST.SERV. TRANSPORTE COLETIVO PASSAGEIROS DO MUNICIPIO",
+        "tipo": ""
+      },
+      {
+        "ano": 2023,
+        "numero": 90001,
+        "situacao": "HOMOLOGADO",
+        "valor": 92523052.96,
+        "objeto": "SERV. EM DRENAGEM, REDE ESGOTO, ABASTECIMENTO DE AGUA - CONSORCIO CIMBASP",
+        "tipo": ""
+      },
+      {
+        "ano": 2023,
+        "numero": 51,
+        "situacao": "HOMOLOGADO",
+        "valor": 92523052.96,
+        "objeto": "PRESTAÇÃO DE SERVIÇOS DE DRENAGEM, REDE ESGOTO E ABASTECIMENTO DE ÁGUA - CIMBASP",
+        "tipo": ""
+      },
+      {
+        "ano": 2023,
+        "numero": 90002,
+        "situacao": "HOMOLOGADO",
+        "valor": 90775627.18,
+        "objeto": "SERV. NA AREA DE ENGENHARIA EM INFRAESTRUTURA URBANA - CONSORCIO CIMBASP",
+        "tipo": ""
+      },
+      {
+        "ano": 2023,
+        "numero": 49,
+        "situacao": "HOMOLOGADO",
+        "valor": 90775627.18,
+        "objeto": "SERV. NA AREA DE ENGENHARIA EM INFRAESTRUTURA URBANA - CONSORCIO CIMBASP",
+        "tipo": ""
+      },
+      {
+        "ano": 2021,
+        "numero": 5,
+        "situacao": "HOMOLOGADO",
+        "valor": 85170000,
+        "objeto": "DESP. LOCACAO ESCAVADEIRA HIDRAULICA",
+        "tipo": ""
+      },
+      {
+        "ano": 2022,
+        "numero": 140,
+        "situacao": "HOMOLOGADO",
+        "valor": 49948042.8,
+        "objeto": "SERVICOS NO PREPARO E DISTRIBUICAO DA MERENDA ESCOLAR",
+        "tipo": ""
+      },
+      {
+        "ano": 2025,
+        "numero": 97,
+        "situacao": "HOMOLOGADO",
+        "valor": 47101000.74,
+        "objeto": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento ao",
+        "tipo": ""
+      },
+      {
+        "ano": 2024,
+        "numero": 22,
+        "situacao": "HOMOLOGADO",
+        "valor": 33088685.12,
+        "objeto": "O objeto da presente demanda é o registro de preços para Fornecimento de Medicamentos para manutenção dos Serviços de Sa",
+        "tipo": ""
+      },
+      {
+        "ano": 2025,
+        "numero": 34,
+        "situacao": "HOMOLOGADO",
+        "valor": 32192270.0,
+        "objeto": "Credenciamento de Pessoas Jurídicas prestadoras de serviços de saúde para procedimentos clínicos e cirúrgicos ambulatori",
+        "tipo": ""
+      }
+    ]
+  },
+  "dispensadas": {
+    "total": 4665,
+    "total_valor": 63845403.32,
+    "top10": [
+      {
+        "ano": 2021,
+        "numero": 160,
+        "situacao": "HOMOLOGADO",
+        "valor": 5164797.6,
+        "objeto": "SERV. CONTRATACAO MEDICO, ENFERMEIRO ETECNICOS DE ENFERMAGEM PARA COVID 19",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2021,
+        "numero": 61,
+        "situacao": "HOMOLOGADO",
+        "valor": 4500000,
+        "objeto": "CONT. DE EMPRESA ESPECIALIZADA",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2022,
+        "numero": 801,
+        "situacao": "HOMOLOGADO",
+        "valor": 4171968,
+        "objeto": "SERVICOS COM UTILIZACAO DE MAO DE OBRA PARA ATENDIMENTO PEDIATRICO",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2020,
+        "numero": 479,
+        "situacao": "HOMOLOGADO",
+        "valor": 2990811.6,
+        "objeto": "CONT. DE SERV. DE LIMPEZA E CONSERVACAO",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2023,
+        "numero": 327,
+        "situacao": "HOMOLOGADO",
+        "valor": 2446260,
+        "objeto": "SERVICOS MEDICOS",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2023,
+        "numero": 799,
+        "situacao": "HOMOLOGADO",
+        "valor": 2160960,
+        "objeto": "CONTRATAÇÃO DE MÉDICOS PLANTONISTAS PARA A UNIDADE DE PRONTO ATENDIMENTO",
+        "tipo": "Prestação de serviços"
+      },
+      {
+        "ano": 2020,
+        "numero": 951,
+        "situacao": "HOMOLOGADO",
+        "valor": 1834305.75,
+        "objeto": "DESPESAS REFERENTE A ALUGUEL DE IMOVEL",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2025,
+        "numero": 11,
+        "situacao": "HOMOLOGADO",
+        "valor": 1245075.65,
+        "objeto": "Chamada pública para aquisição de gêneros alimentícios para abastecimento das escolas e creches municipais por um períod",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2024,
+        "numero": 32,
+        "situacao": "HOMOLOGADO",
+        "valor": 1228482.0,
+        "objeto": "Chamada Pública para hortifruti para o Setor de Merenda Escolar do municipio de Varginha",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2025,
+        "numero": 4,
+        "situacao": "HOMOLOGADO",
+        "valor": 1194534.8,
+        "objeto": "Chamada pública para aquisição  de gêneros alimentícios para abastecimento das escolas e creches municipais por um perío",
+        "tipo": "Compras e Serviços"
+      }
+    ]
+  },
+  "inexigibilidades": {
+    "total": 260,
+    "total_valor": 363505145.68,
+    "top10": [
+      {
+        "ano": 2023,
+        "numero": 51,
+        "situacao": "HOMOLOGADO",
+        "valor": 92523052.96,
+        "objeto": "PRESTAÇÃO DE SERVIÇOS DE DRENAGEM, REDE ESGOTO E ABASTECIMENTO DE ÁGUA - CIMBASP",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2023,
+        "numero": 49,
+        "situacao": "HOMOLOGADO",
+        "valor": 90775627.18,
+        "objeto": "SERV. NA AREA DE ENGENHARIA EM INFRAESTRUTURA URBANA - CONSORCIO CIMBASP",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2021,
+        "numero": 5,
+        "situacao": "HOMOLOGADO",
+        "valor": 85170000,
+        "objeto": "DESP. LOCACAO ESCAVADEIRA HIDRAULICA",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2021,
+        "numero": 16,
+        "situacao": "HOMOLOGADO",
+        "valor": 27771440.68,
+        "objeto": "DESP. SERVICOS DE SAUDE",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2023,
+        "numero": 23,
+        "situacao": "HOMOLOGADO",
+        "valor": 12386480.16,
+        "objeto": "CONTRATACAO DE SERVICOS EDUCACIONAIS",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2023,
+        "numero": 2,
+        "situacao": "HOMOLOGADO",
+        "valor": 4875000,
+        "objeto": "SERVICOS DE SAUDE - CONSULTAS, EXAMES PARA ATENDIMENTO A USUARIOS DO SUS",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2023,
+        "numero": 42,
+        "situacao": "HOMOLOGADO",
+        "valor": 3954039.65,
+        "objeto": "Adesão à ata de Registro de Preços. Material escolar devidamente montado para formação de módulos padronizados com logom",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2021,
+        "numero": 19,
+        "situacao": "HOMOLOGADO",
+        "valor": 2385000,
+        "objeto": "CONTRAT. DE SERVICOS P/ EXAMES MEDICOS",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2023,
+        "numero": 3,
+        "situacao": "HOMOLOGADO",
+        "valor": 2375000,
+        "objeto": "SERVICOS DE SAUDE - CONSULTAS, EXAMES PARA ATENDIMENTO A USUARIOS DO SUS",
+        "tipo": "Compras e Serviços"
+      },
+      {
+        "ano": 2023,
+        "numero": 21,
+        "situacao": "HOMOLOGADO",
+        "valor": 2081823.8,
+        "objeto": "DESP. VALE TRANSPORTE",
+        "tipo": "Compras e Serviços"
+      }
+    ]
+  },
+  "links": {
+    "processos": "https://transparencia.varginha.mg.gov.br/transparencia/licitacao.html",
+    "em_andamento": "https://transparencia.varginha.mg.gov.br/transparencia/licitacao-aberta.html",
+    "inexigibilidades": "https://transparencia.varginha.mg.gov.br/transparencia/licitacao-inexigibilidade.html",
+    "dispensadas": "https://transparencia.varginha.mg.gov.br/transparencia/licitacao-dispensada.html"
+  }
+}

@@ -1,8 +1,46 @@
-# Fiscaliza Varginha — proteção de arquivos sensíveis
-# Permite apenas os dados públicos necessários ao navegador.
+# Fiscaliza Varginha — Segurança + Performance
 
 Options -Indexes
 RewriteEngine On
+
+# ── Compressão ────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml font/woff font/woff2
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/javascript
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml font/woff font/woff2
+</IfModule>
+
+# ── Cache do navegador ────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2             "access plus 1 year"
+  ExpiresByType font/woff              "access plus 1 year"
+  ExpiresByType image/svg+xml          "access plus 1 month"
+  ExpiresByType image/png              "access plus 1 month"
+  ExpiresByType text/css               "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType text/javascript        "access plus 7 days"
+  ExpiresByType application/json       "access plus 0 seconds"
+  ExpiresByType text/html              "access plus 0 seconds"
+</IfModule>
+
+<FilesMatch "\.json$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, must-revalidate"
+  </IfModule>
+</FilesMatch>
+
+<IfModule mod_headers.c>
+  Header set Connection keep-alive
+</IfModule>
+
+AddDefaultCharset UTF-8
 
 # Scripts e arquivos locais nunca devem ser servidos.
 <FilesMatch "\.(log|py|pyc|bat|txt)$">

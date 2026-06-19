@@ -1,0 +1,344 @@
+{
+  "fonte": "Portal Betha — Prefeitura de Varginha / Consulta 83015",
+  "atualizado_em": "2026-06-18T09:50:47.518936",
+  "aviso": "Valores históricos acumulados de múltiplos anos. Para 2026 específico, acessar portal Betha.",
+  "top_50": [
+    {
+      "nome": "ISSQN - IMPOSTO S/SERVICO QUALQUER NATUREZA",
+      "arrecadado": 2105467348.51,
+      "orcado": 379020000.0
+    },
+    {
+      "nome": "IPTU - IMPOSTO PREDIAL",
+      "arrecadado": 1473148894.35,
+      "orcado": 269675400.0
+    },
+    {
+      "nome": "IPTU - IMPOSTO TERRITORIAL",
+      "arrecadado": 964612331.73,
+      "orcado": 126951500.0
+    },
+    {
+      "nome": "ISS - IMP.S/SERVICOS DE QUALQUER NATUREZA",
+      "arrecadado": 785925120.33,
+      "orcado": 115885000
+    },
+    {
+      "nome": "IRRF - OUTROS RENDIMENTOS",
+      "arrecadado": 555306484.05,
+      "orcado": 47817000
+    },
+    {
+      "nome": "ITBI - IMP S/TR.INTER VIVOS BENS IMOV.DIR.REAIS",
+      "arrecadado": 431318323.58,
+      "orcado": 71870000
+    },
+    {
+      "nome": "IRRF - TRABALHO",
+      "arrecadado": 367009468.71,
+      "orcado": 113745000
+    },
+    {
+      "nome": "I.R. RETIDO NA FONTE - TRABALHO",
+      "arrecadado": 263136227.97,
+      "orcado": 35676000
+    },
+    {
+      "nome": "CONTRIB. P/ CUSTEIO SERVICO ILUM. PUBLICA",
+      "arrecadado": 233970909.45,
+      "orcado": 45893000.0
+    },
+    {
+      "nome": "CONTRIB.P/CUSTEIO SERVICO ILUM PUBLICA",
+      "arrecadado": 171620635.32,
+      "orcado": 24580000
+    },
+    {
+      "nome": "ITBI - IMP.S/TR.INTER VIVOS-BENS IMOV.E DIR.REAIS",
+      "arrecadado": 169788849.77,
+      "orcado": 25154000
+    },
+    {
+      "nome": "DIVIDA ATIVA DO IPTU PREDIAL",
+      "arrecadado": 169189653.06,
+      "orcado": 22974850.0
+    },
+    {
+      "nome": "TAXA DE LIMPEZA PUBLICA",
+      "arrecadado": 165452140.31,
+      "orcado": 26238050.0
+    },
+    {
+      "nome": "CONCESSAO SERV. SANEAMENTO BASICO",
+      "arrecadado": 97788453.21,
+      "orcado": 18413000
+    },
+    {
+      "nome": "DIVIDA ATIVA DO IPTU TERRITORIAL",
+      "arrecadado": 74603267.63,
+      "orcado": 12883575.0
+    },
+    {
+      "nome": "DIVIDA ATIVA DO ISSQN",
+      "arrecadado": 46235287.15,
+      "orcado": 10609875.0
+    },
+    {
+      "nome": "DIV. ATIVA MULTAS/JUROS DO IPTU",
+      "arrecadado": 44232843.27,
+      "orcado": 10800925.0
+    },
+    {
+      "nome": "MULTAS/JUROS DO ISSQN",
+      "arrecadado": 38738858.36,
+      "orcado": 7620875.0
+    },
+    {
+      "nome": "TAXA DE LICENC. FUNC. EST. COM. IND. PREST.",
+      "arrecadado": 38632956.61,
+      "orcado": 8053990.0
+    },
+    {
+      "nome": "CONCESSAO SERVICOS DE SANEAMENTO BASICO",
+      "arrecadado": 38139840.22,
+      "orcado": 5788000
+    },
+    {
+      "nome": "MULTAS E JUROS DIVIDA ATIVA DO IPTU",
+      "arrecadado": 29993238.61,
+      "orcado": 3275000
+    },
+    {
+      "nome": "MULTAS E JUROS DE MORA DO ISS IMP.S/SERV.QUALQ.NAT",
+      "arrecadado": 19058332.78,
+      "orcado": 2785000
+    },
+    {
+      "nome": "I.R. RETIDO NA FONTE - OUTROS RENDIMENTOS",
+      "arrecadado": 18663788.78,
+      "orcado": 2059000
+    },
+    {
+      "nome": "DIV.AT. CONC.PERM.AUT.CES.DIR. USO BENS IMOV PUB",
+      "arrecadado": 12577021.48,
+      "orcado": 22385
+    },
+    {
+      "nome": "TAXA DE APROVACAO DE PROJETO DE CONSTR. CIVIL",
+      "arrecadado": 12396994.54,
+      "orcado": 2985500
+    },
+    {
+      "nome": "TAXA DE LICENC. FUNC. EST. COM. IND. PREST",
+      "arrecadado": 11892001.39,
+      "orcado": 3421000
+    },
+    {
+      "nome": "DIV. ATIVA MULTAS/JUROS DO ISSQN",
+      "arrecadado": 11750977.79,
+      "orcado": 2649805.0
+    },
+    {
+      "nome": "OUTRAS TAXAS PELA PRESTACAO DE SERVICOS",
+      "arrecadado": 9646732.41,
+      "orcado": 2091000.0
+    },
+    {
+      "nome": "TAXA DE EMISSAO DE GUIA",
+      "arrecadado": 8587231.15,
+      "orcado": 1716723.0
+    },
+    {
+      "nome": "DIV. ATIVA AT. MONET. DO IPTU",
+      "arrecadado": 8322542.17,
+      "orcado": 430000
+    },
+    {
+      "nome": "DIVIDA ATIVA TAXA DE LIMPEZA PUBLICA",
+      "arrecadado": 7981065.31,
+      "orcado": 986870.0
+    },
+    {
+      "nome": "AT. MONET. DIVIDA ATIVA DO IPTU",
+      "arrecadado": 7868156.46,
+      "orcado": 650000
+    },
+    {
+      "nome": "TAXA DE SERVICOS DE VIGILANCIA SANITARIA",
+      "arrecadado": 7363842.47,
+      "orcado": 1480125.0
+    },
+    {
+      "nome": "MULTAS E JUROS DIVIDA ATIVA DO ISSQN",
+      "arrecadado": 6703568.29,
+      "orcado": 1180000
+    },
+    {
+      "nome": "MULTAS/JUROS DO IPTU",
+      "arrecadado": 5826416.62,
+      "orcado": 2534475.0
+    },
+    {
+      "nome": "TAXA DE UTILIZACAO DE AREA DE DOMINIO PUBLICO",
+      "arrecadado": 5646899.66,
+      "orcado": 908000
+    },
+    {
+      "nome": "MULTAS E JUROS DE MORA DO IPTU",
+      "arrecadado": 5290402.83,
+      "orcado": 1182000
+    },
+    {
+      "nome": "REND CEF MOVIMENTO",
+      "arrecadado": 5075516.9,
+      "orcado": 420000
+    },
+    {
+      "nome": "DIVIDA ATIVA DEMAIS TAXAS PRESTACAO SERVICOS",
+      "arrecadado": 4548855.49,
+      "orcado": 1524900
+    },
+    {
+      "nome": "REND BRASIL FPM",
+      "arrecadado": 4449298.44,
+      "orcado": 217000
+    },
+    {
+      "nome": "DIVIDA ATIVA TAXA LICENC. FUNC. COM. IND.",
+      "arrecadado": 4331817.68,
+      "orcado": 1327490
+    },
+    {
+      "nome": "DIVIDA ATIVA TAXA DE LIC. FUNC. COM. IND.",
+      "arrecadado": 4067574.45,
+      "orcado": 496000
+    },
+    {
+      "nome": "DIVIDA ATIVA DEMAIS TAXAS",
+      "arrecadado": 3919708.92,
+      "orcado": 300000
+    },
+    {
+      "nome": "DIV.AT. MULTAS/JUROS TAXA LIC. FUNC. COM. IND.",
+      "arrecadado": 3703715.61,
+      "orcado": 1075490
+    },
+    {
+      "nome": "TAXA DE EXPEDICAO DE ALVARA",
+      "arrecadado": 3532485.82,
+      "orcado": 522685.0
+    },
+    {
+      "nome": "AT. MONET. DIVIDA ATIVA DO ISSQN",
+      "arrecadado": 3507977.79,
+      "orcado": 290000
+    },
+    {
+      "nome": "div. ativa at. monet. do IPTU",
+      "arrecadado": 3314631.03,
+      "orcado": 2843825.0
+    },
+    {
+      "nome": "DIV.AT. MULTAS/JUROS DEMAIS TAXAS PREST. SERV.",
+      "arrecadado": 3288274.42,
+      "orcado": 827025.0
+    },
+    {
+      "nome": "DIV.AT. MULTAS/JUROS TAXA LIMPEZA PUBLICA",
+      "arrecadado": 3096166.39,
+      "orcado": 328860.0
+    },
+    {
+      "nome": "MULTAS E JUROS DIV.AT. TAXA LIC. FUNC. COM. IND.",
+      "arrecadado": 2921623.58,
+      "orcado": 370000
+    }
+  ],
+  "educacao_federal": [
+    {
+      "nome": "REND BRASIL FUNDEB",
+      "arrecadado": 2400426.31,
+      "orcado": 250000
+    },
+    {
+      "nome": "REND BRASIL FNDE SALARIO EDUCACAO",
+      "arrecadado": 385342.18,
+      "orcado": 11000
+    },
+    {
+      "nome": "REND BRASIL FNDE PNAE MERENDA",
+      "arrecadado": 152044.72,
+      "orcado": 20000
+    },
+    {
+      "nome": "REND BRASIL FNDE CONSTR CRECHES",
+      "arrecadado": 136388.96,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE AUX FIN MUNI",
+      "arrecadado": 43552.96,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE PNATE",
+      "arrecadado": 21616.39,
+      "orcado": 3000
+    },
+    {
+      "nome": "REND BRASIL FNDE AP CRECHE BRASL CARINHOSO",
+      "arrecadado": 16355.23,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE MOB CRECHES",
+      "arrecadado": 15138.8,
+      "orcado": 0
+    },
+    {
+      "nome": "REDN BRASIL FNDE BB CARINHOSO",
+      "arrecadado": 11379.31,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE TC 2161528",
+      "arrecadado": 9192.93,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE EQUIP CRECHES",
+      "arrecadado": 5762.65,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE APOIO CRECHES BRASIL CARINHOSOS",
+      "arrecadado": 5354.16,
+      "orcado": 0
+    },
+    {
+      "nome": "RENDIMENTO BRASIL FNDE PDDE",
+      "arrecadado": 2959.44,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE AUC FINANC AOS MUNICIPIOS",
+      "arrecadado": 1752.09,
+      "orcado": 0
+    },
+    {
+      "nome": "RENDIMENTO BRASIL FNDE TC 200782/11 CONST QUADRA",
+      "arrecadado": 1082.16,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE MOBILIARIO CRECHE SAG CORACAO",
+      "arrecadado": 1015.25,
+      "orcado": 0
+    },
+    {
+      "nome": "REND BRASIL FNDE TC 201601528 MOB CRECHE NOVA VGA",
+      "arrecadado": 112.6,
+      "orcado": 0
+    }
+  ]
+}

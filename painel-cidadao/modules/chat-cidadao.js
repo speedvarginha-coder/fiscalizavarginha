@@ -126,7 +126,15 @@
   }
 
   function renderMarkdown(txt) {
-    return txt
+    // Extract links before HTML escaping to preserve URLs
+    const links = [];
+    txt = txt.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (_, label, url) => {
+      const ph = `__LINK_${links.length}__`;
+      links.push(`<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`);
+      return ph;
+    });
+
+    txt = txt
       .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
@@ -134,6 +142,9 @@
       .replace(/(<li>.*<\/li>)/s, "<ul>$1</ul>")
       .replace(/\n{2,}/g, "<br><br>")
       .replace(/\n/g, "<br>");
+
+    links.forEach((a, i) => { txt = txt.replace(`__LINK_${i}__`, a); });
+    return txt;
   }
 
   function responder(texto) {

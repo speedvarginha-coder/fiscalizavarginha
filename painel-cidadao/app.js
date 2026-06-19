@@ -294,18 +294,19 @@
     const totalDiarias = diariasPref.reduce((s, d) => s + Number(d.valor_total || 0), 0);
 
     $("homeOpsStats").innerHTML = [
-      { href: "prefeitura.html", value: fmtMi(pf.total_externo_atual || totalContratos), label: `pagos em ${pf.ano_atual || "ano atual"}`, title: "Prefeitura" },
-      { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos" },
-      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasPref.length), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias" },
-      { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)} vereadores monitorados`, title: "Camara" },
-      { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} para conferir`, title: "Emendas" },
-      { href: "prefeitura.html?tab=licitacoes", value: fmtNum(licitacoes.length), label: "acompanhar antes do gasto", title: "Licitacoes" },
+      { href: "prefeitura.html", value: fmtMi(pf.total_externo_atual || totalContratos), label: `pagos em ${pf.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
+      { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos", cidada: "Quem recebeu mais? Por qual serviço?" },
+      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasPref.length), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
+      { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)} vereadores monitorados`, title: "Câmara", cidada: "O que cada vereador propôs e votou?" },
+      { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} para conferir`, title: "Emendas", cidada: "O dinheiro chegou ao beneficiário?" },
+      { href: "prefeitura.html?tab=licitacoes", value: fmtNum(licitacoes.length), label: "acompanhar antes do gasto", title: "Licitações", cidada: "Qual empresa vai ganhar este contrato?" },
     ].map(item => `
       <a href="${item.href}" class="home-stat">
-        <span>${item.title}</span>
+        <span>${esc(item.title)}</span>
         <strong>${item.value}</strong>
         <small>${item.label}</small>
         <em>Consultar</em>
+        ${item.cidada ? `<q>${esc(item.cidada)}</q>` : ""}
       </a>`).join("");
 
     $("homeOpsPriorities").innerHTML = [
@@ -2482,6 +2483,151 @@
               <p>${esc(item.objeto || "Objeto não informado")}</p>
               <div class="signal__meta">${fmtBRL(item.valor_analise || 0)} · ${esc(item.modalidade || item.situacao || "modalidade/situação não informada")}</div>
             </article>`).join("")}`;
+
+        // Obras em Unidades Educacionais (Betha 83025)
+        if ($("obrasEducacaoBlock")) {
+          const oe = D.obras_educacao;
+          if (oe && oe.obras && oe.obras.length) {
+            const tipoLabel = { "Construção": "🏗️", "01.02 - Construção": "🏗️", "Reforma": "🔧", "Projeto de Segurança e Combate a Incêndio e Pânico": "🔥" };
+            $("obrasEducacaoBlock").innerHTML = `
+              <article class="signal signal--teal signal--wide" style="grid-column:1/-1">
+                <div class="signal__top">
+                  <span class="signal__kind">Portal Betha — Consulta 83025</span>
+                  <span class="signal__level">${oe.total} obras registradas</span>
+                </div>
+                <h4>Obras em Unidades Educacionais — ${fmtMi(oe.total_valor)}</h4>
+                <p>Construções, reformas e projetos de segurança em escolas e CEMEIs. Não inclui campo de fonte de recurso (FUNDEB, FNDE ou recurso próprio).</p>
+                <div class="signal__meta">
+                  ${Object.entries(oe.por_tipo || {}).map(([t, n]) => `${tipoLabel[t] || "📋"} ${t.replace("Projeto de Segurança e Combate a Incêndio e Pânico", "Segurança Incêndio")}: ${n}`).join(" · ")}
+                  · <a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83025" target="_blank" rel="noopener">Ver no Betha ↗</a>
+                </div>
+              </article>
+              ${oe.obras.filter(o => o.valor_previsto > 0).sort((a, b) => (b.valor_atualizado || b.valor_previsto) - (a.valor_atualizado || a.valor_previsto)).slice(0, 8).map(o => `
+                <article class="signal signal--medio">
+                  <div class="signal__top">
+                    <span class="signal__kind">${tipoLabel[o.tipo] || "📋"} ${esc(o.tipo.replace("Projeto de Segurança e Combate a Incêndio e Pânico", "Seg. Incêndio"))}</span>
+                    <span class="signal__level">${o.data_inicio ? "Início " + o.data_inicio : ""}</span>
+                  </div>
+                  <h4>${esc(o.descricao)}</h4>
+                  <div class="signal__meta">${fmtBRL(o.valor_atualizado || o.valor_previsto)}${o.data_conclusao_prevista ? " · prevista " + o.data_conclusao_prevista : ""}</div>
+                </article>`).join("")}`;
+          } else {
+            $("obrasEducacaoBlock").innerHTML = `<p class="muted">Dados de obras educacionais não carregados.</p>`;
+          }
+        }
+
+        // Complemento: Gastos por Programa (Betha 83036)
+        const educacaoBruta = D.educacao;
+        if (educacaoBruta && educacaoBruta.acoes && educacaoBruta.acoes.length) {
+          const container = document.createElement("div");
+          container.className = "signals";
+          container.style.marginTop = "16px";
+          container.innerHTML = `
+            <article class="signal signal--teal signal--wide" style="grid-column:1/-1">
+              <div class="signal__top">
+                <span class="signal__kind">Fonte: Portal Betha — Consulta 83036</span>
+                <span class="signal__level">Dados históricos consolidados</span>
+              </div>
+              <h4>Gastos por Programa — Educação (histórico acumulado)</h4>
+              <p>Valores pagos por programa/ação ao longo dos anos disponíveis no sistema. A maior fatia vai para valorização de professores — exigência do FUNDEB (mínimo 70%).</p>
+              <div class="signal__meta">${fmtBRL(educacaoBruta.total_historico_pago || 0)} pago histórico total · orçado atual ${fmtBRL(educacaoBruta.total_orcado_atual || 0)} · <a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83036" target="_blank" rel="noopener">Ver no portal Betha ↗</a></div>
+            </article>
+            ${educacaoBruta.acoes.slice(0, 10).map(a => `
+              <article class="signal signal--medio">
+                <div class="signal__top">
+                  <span class="signal__kind">Ação orçamentária</span>
+                  <span class="signal__level">Educação</span>
+                </div>
+                <h4>${esc(a.nome)}</h4>
+                <div class="signal__meta">${fmtBRL(a.pago || 0)} pago histórico</div>
+              </article>`).join("")}`;
+          $("fundebInvestimentos").appendChild(container);
+        }
+      }
+    }
+
+    // Processos Licitatórios (D.licitacoes — Betha 83021/82967/83022/83062)
+    if ($("licitacoesResumoStats") || $("licitacoesEmAndamento")) {
+      const lic = D.licitacoes;
+      if (lic) {
+        const pl = lic.processos_licitatorios || {};
+        if ($("licitacoesResumoStats")) {
+          $("licitacoesResumoStats").innerHTML = [
+            { v: fmtNum(pl.total || 0), l: "Processos licitatórios (histórico)", s: `${fmtNum(pl.por_situacao && pl.por_situacao.HOMOLOGADO || 0)} homologados`, cls: "stat--teal" },
+            { v: fmtMi(pl.total_homologado || 0), l: "Total homologado (histórico)", s: "Processos com contrato assinado", cls: "stat--navy" },
+            { v: fmtNum((lic.dispensadas || {}).total || 0), l: "Dispensas de licitação", s: fmtBRL((lic.dispensadas || {}).total_valor || 0), cls: "stat--gold" },
+            { v: fmtNum((lic.inexigibilidades || {}).total || 0), l: "Inexigibilidades", s: fmtBRL((lic.inexigibilidades || {}).total_valor || 0), cls: "stat--red" },
+          ].map(s => `<div class="stat ${s.cls}"><div class="stat__value">${s.v}</div><div class="stat__label">${s.l}</div><div class="stat__sub">${s.s}</div></div>`).join("");
+        }
+        if ($("licitacoesEmAndamento")) {
+          const emand = (pl.em_andamento || []).slice(0, 10);
+          const top5  = (pl.maiores_contratos || []).slice(0, 5);
+          $("licitacoesEmAndamento").innerHTML = `
+            <article class="signal signal--teal signal--wide" style="grid-column:1/-1">
+              <div class="signal__top">
+                <span class="signal__kind">Licitações em Andamento</span>
+                <span class="signal__level">${(pl.em_andamento || []).length} processos abertos</span>
+              </div>
+              <h4>Processos aguardando proposta ou homologação</h4>
+              <p>Estes processos ainda podem ser acompanhados antes da contratação.</p>
+              <div class="signal__meta"><a href="${(lic.links || {}).em_andamento || '#'}" target="_blank" rel="noopener">Ver todos no Portal Betha ↗</a></div>
+            </article>
+            ${emand.map(l => `
+              <article class="signal signal--medio">
+                <div class="signal__top">
+                  <span class="signal__kind">${esc(l.situacao || "Em andamento")}</span>
+                  <span class="signal__level">${l.ano || ""}</span>
+                </div>
+                <h4>${esc(l.objeto || "Objeto não informado")}</h4>
+                <div class="signal__meta">${l.valor ? fmtBRL(l.valor) : "Valor não informado"}${l.dataPublicacao ? " · publicado " + l.dataPublicacao : ""}</div>
+              </article>`).join("")}
+            <article class="signal signal--wide" style="grid-column:1/-1; background:#f9f9f9">
+              <div class="signal__top">
+                <span class="signal__kind">Top 5 maiores contratos (histórico)</span>
+                <span class="signal__level">Inexigibilidades e licitações</span>
+              </div>
+              <h4>Maiores valores homologados</h4>
+              <div style="display:flex;flex-direction:column;gap:6px;margin-top:8px">
+                ${top5.map((c, i) => `<div style="font-size:0.85em"><strong>${i+1}.</strong> ${fmtBRL(c.valor)} <span style="color:#555">— ${esc((c.objeto||"").substring(0,80))}</span> <span style="color:#999">(${c.ano})</span></div>`).join("")}
+              </div>
+              <div class="signal__meta" style="margin-top:8px"><a href="${(lic.links || {}).processos || '#'}" target="_blank" rel="noopener">Ver todos os processos ↗</a> · <a href="${(lic.links || {}).inexigibilidades || '#'}" target="_blank" rel="noopener">Inexigibilidades ↗</a> · <a href="${(lic.links || {}).dispensadas || '#'}" target="_blank" rel="noopener">Dispensadas ↗</a></div>
+            </article>`;
+        }
+      }
+    }
+
+    // Convênios Municipais (D.convenios — Betha 82970/83024)
+    if ($("conveniosBlock")) {
+      const cv = D.convenios;
+      if (cv && cv.recebidos && cv.recebidos.length) {
+        $("conveniosBlock").innerHTML = `
+          <article class="signal signal--teal signal--wide" style="grid-column:1/-1">
+            <div class="signal__top">
+              <span class="signal__kind">Convênios Recebidos</span>
+              <span class="signal__level">${cv.total_recebidos} convênios</span>
+            </div>
+            <h4>Verbas recebidas de outros entes — ${fmtMi(cv.total_valor_recebidos || 0)}</h4>
+            <p>Convênios formais onde Varginha é beneficiária. Emendas parlamentares e programas como FNDE entram por outros canais.</p>
+            <div class="signal__meta"><a href="${cv.link || '#'}" target="_blank" rel="noopener">Ver no Portal Betha ↗</a></div>
+          </article>
+          ${cv.recebidos.map(c => `
+            <article class="signal signal--medio">
+              <div class="signal__top">
+                <span class="signal__kind">${esc((c.concedente || "").substring(0, 40))}</span>
+                <span class="signal__level">${c.vigencia_ini ? c.vigencia_ini.substring(0,4) : ""}</span>
+              </div>
+              <h4>${esc((c.objeto || "").substring(0, 100))}</h4>
+              <div class="signal__meta">${fmtBRL(c.valor)}${c.vigencia_fim ? " · até " + c.vigencia_fim : ""}</div>
+            </article>`).join("")}
+          <article class="signal signal--wide" style="grid-column:1/-1; background:#f9f9f9">
+            <div class="signal__top">
+              <span class="signal__kind">Convênios Repassados</span>
+              <span class="signal__level">${cv.repassados_total || 0} parcerias</span>
+            </div>
+            <h4>Prefeitura repassa ${fmtMi(cv.repassados_valor || 0)} a entidades (SUS, educação especial e outros)</h4>
+            ${(cv.repassados_sample || []).map((r, i) => `<div style="font-size:0.85em;margin-top:4px"><strong>${i+1}.</strong> ${fmtBRL(r.valor)} — ${esc((r.objeto||"").substring(0,90))}</div>`).join("")}
+            <div class="signal__meta" style="margin-top:8px"><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83024" target="_blank" rel="noopener">Ver parcerias repassadas ↗</a></div>
+          </article>`;
       }
     }
 
@@ -2696,10 +2842,10 @@
       }
       if ($("federalLinks")) {
         $("federalLinks").innerHTML = fl.map(link => `
-          <a class="source-card" href="${esc(link.url)}" target="_blank" rel="noopener">
-            <span class="source-card__value">Abrir</span>
+          <a class="source-card source-card--link" href="${esc(link.url)}" target="_blank" rel="noopener">
             <h4>${esc(link.titulo)}</h4>
             <p>${esc(link.desc)}</p>
+            <span class="source-card__cta">Abrir fonte →</span>
           </a>`).join("");
       }
     }
@@ -2856,10 +3002,10 @@
         { nome: "Redes de Sócios", desc: "Mapeamento de parentesco e conexões entre donos de empresas e agentes públicos.", status: "Em Estudo" }
       ];
       $("fontesExpansao").innerHTML = proximas.map(f => `
-        <div style="padding:10px; border-bottom:1px solid #eee;">
-          <span style="font-size:0.7em; background:#eee; padding:2px 5px; border-radius:3px; float:right;">${f.status}</span>
-          <strong style="display:block; font-size:0.9em;">${f.nome}</strong>
-          <p style="margin:5px 0 0; font-size:0.8em; color:#666;">${f.desc}</p>
+        <div class="source-card source-card--future">
+          <span class="source-card__badge">${esc(f.status)}</span>
+          <h4>${esc(f.nome)}</h4>
+          <p>${esc(f.desc)}</p>
         </div>
       `).join("");
     }
@@ -5868,6 +6014,14 @@ ${url}
       if ($("filtroEm")) $("filtroEm").value = "";
       renderEmendas && renderEmendas(true);
       scrollToEl($("emendas"));
+    },
+    compartilharWhatsApp: (texto) => {
+      const msg = texto + `\n\nFonte: ${window.location.href}`;
+      if (navigator.share) {
+        navigator.share({ title: "Fiscaliza Varginha", text: msg }).catch(() => {});
+        return;
+      }
+      window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(msg)}`, "_blank");
     },
     compartilharZap: (quem, oque, quanto) => {
       // Monta link da própria página já filtrado por ?q= no fornecedor, para

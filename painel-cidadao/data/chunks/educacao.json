@@ -1,0 +1,121 @@
+{
+  "fonte": "Portal Betha — Prefeitura de Varginha / Consulta 83036",
+  "atualizado_em": "2026-06-18T09:50:21.508889",
+  "aviso": "Valores históricos acumulados (todos os anos disponíveis no sistema). Não filtrado por ano específico.",
+  "total_historico_pago": 947226685.4,
+  "total_orcado_atual": 1266268438.06,
+  "programas": [
+    {
+      "nome": "EDUCACAO BASICA COM QUALIDADE E EQUIDADE",
+      "pago": 616726422.08,
+      "orcado": 686791758.11
+    },
+    {
+      "nome": "EDUCACAO BASICA COM QUALIDADE",
+      "pago": 211733173.53,
+      "orcado": 289824800.44
+    },
+    {
+      "nome": "GESTÃO DO ENSINO PARA TODOS",
+      "pago": 65913064.77,
+      "orcado": 208702008.07
+    },
+    {
+      "nome": "MERENDA ESCOLAR",
+      "pago": 46626155.6,
+      "orcado": 64611190.46
+    },
+    {
+      "nome": "GESTAO DO SISTEMA DE ENSINO",
+      "pago": 3722602.97,
+      "orcado": 4721346.57
+    },
+    {
+      "nome": "GESTÃO DA ALIMENTAÇÃO E NUTRIÇÃO ESCOLAR: DA CANTINA À SALA DE AULA, NUTRIÇÃO QUE TRANFORMA",
+      "pago": 2505266.45,
+      "orcado": 11614858.03
+    }
+  ],
+  "acoes": [
+    {
+      "nome": "VALORIZACAO DOS PROFISSIONAIS DO MAGISTERIO",
+      "pago": 245155488.68,
+      "orcado": 290711972.83
+    },
+    {
+      "nome": "VALORIZACAO DA EDUCACAO INFANTIL",
+      "pago": 225637656.3,
+      "orcado": 274366726.16
+    },
+    {
+      "nome": "GESTAO DO ENSINO",
+      "pago": 170518629.09,
+      "orcado": 229244486.55
+    },
+    {
+      "nome": "VALORIZACAO DO ENSINO FUNDAMENTAL",
+      "pago": 152798144.62,
+      "orcado": 218464615.25
+    },
+    {
+      "nome": "ADMINISTRACAO E FORNECIMENTO DE MERENDA ESCOLAR",
+      "pago": 46626155.6,
+      "orcado": 64611190.46
+    },
+    {
+      "nome": "CONSTRUCAO, REFORMA E AMPLIACAO DE UNID. EDUCAC.",
+      "pago": 33641015.73,
+      "orcado": 47568647.77
+    },
+    {
+      "nome": "PARCERIA C/ENTID.EDUCACIONAIS PUBL.,PRIV.E FILANT.",
+      "pago": 28262000.0,
+      "orcado": 28284000
+    },
+    {
+      "nome": "GERENCIAMENTO DO ENSINO",
+      "pago": 19333038.43,
+      "orcado": 54595430.45
+    },
+    {
+      "nome": "TRANSPORTE ESCOLAR",
+      "pago": 9084434.63,
+      "orcado": 11779033.66
+    },
+    {
+      "nome": "CONSERV. DAS UNID. E MANUT. DO ENSINO FUNDAMENTAL",
+      "pago": 3913571.83,
+      "orcado": 18059307.49
+    },
+    {
+      "nome": "GESTAO DO EDUCACAO INFANTIL",
+      "pago": 3673555.93,
+      "orcado": 6403383.32
+    },
+    {
+      "nome": "APOIO A ENTID. EDUCACIONAIS PUBLICAS, PRIVADAS E",
+      "pago": 3056315.11,
+      "orcado": 3821754.15
+    },
+    {
+      "nome": "GERENCIAMENTO DA ALIMENTAÇÃO NUTRICIONAL ESCOLAR",
+      "pago": 2505266.45,
+      "orcado": 11614858.03
+    },
+    {
+      "nome": "MANUT. DO POLO DA UNIVERSIDADE ABERTA DO BRASIL",
+      "pago": 1162712.64,
+      "orcado": 1745942.42
+    },
+    {
+      "nome": "CONSERV. DAS UNID. E MANUT. DO EDUCACAO INFANTIL",
+      "pago": 1036730.07,
+      "orcado": 3587703.94
+    },
+    {
+      "nome": "GESTAO DO FUNDEB",
+      "pago": 709909.2,
+      "orcado": 731909.2
+    }
+  ]
+}

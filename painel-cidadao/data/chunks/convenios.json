@@ -1,0 +1,122 @@
+{
+  "gerado_em": "2026-06-18T13:35:06.305535Z",
+  "recebidos": [
+    {
+      "numero": "0000000205/2009",
+      "concedente": "Ministério da Justiça e Segurança Pública",
+      "valor": 781030,
+      "repasse": 762993.4,
+      "objeto": "Implantação do gabinete de gestão integrada",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2009-12-31",
+      "vigencia_fim": "2025-12-31"
+    },
+    {
+      "numero": "1301003324/2022",
+      "concedente": "Secretaria de Estado de Infraestrutura e Mobilidade de MG",
+      "valor": 754969.59,
+      "repasse": 586500,
+      "objeto": "Execução de melhorias - cercamento do aeroporto de Varginha para atender legislação aeronáutica vigente",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2022-12-30",
+      "vigencia_fim": "2025-04-20"
+    },
+    {
+      "numero": "0000001528/2016",
+      "concedente": "Fundo Nacional de Desenvolvimento da Educação - FNDE",
+      "valor": 340096.19,
+      "repasse": 340096.19,
+      "objeto": "Aquisição de móveis e equipamentos para creches",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2017-02-15",
+      "vigencia_fim": "2025-12-31"
+    },
+    {
+      "numero": "149000892/2019",
+      "concedente": "Secretaria de Estado de Governo de MG",
+      "valor": 242454.75,
+      "repasse": 200000,
+      "objeto": "Pavimentação, construção de sarjeta, meio fio e boca de lobo no jardim Áurea",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2019-12-20",
+      "vigencia_fim": "2021-09-30"
+    },
+    {
+      "numero": "29785505/2016",
+      "concedente": "MINISTERIO DAS CIDADES",
+      "valor": 233633.24,
+      "repasse": 233633.24,
+      "objeto": "Construção de 431 unidades habitacionais na Rua Marlene Pieve de Miranda, no bairro Carvalhos",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2016-12-28",
+      "vigencia_fim": "2025-12-31"
+    },
+    {
+      "numero": "0000001059/2022",
+      "concedente": "Secretaria de Estado da Educação de Minas Gerais",
+      "valor": 103114.86,
+      "repasse": 103114.86,
+      "objeto": "Aquisição de Mobiliário e Material permanente para a Escola Municipal São José",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2022-05-03",
+      "vigencia_fim": "2024-05-03"
+    },
+    {
+      "numero": "0000000952/2022",
+      "concedente": "Secretaria de Estado da Educação de Minas Gerais",
+      "valor": 100000,
+      "repasse": 100000,
+      "objeto": "Programa de Fortalecimento das escolas municipais - Aquisição de mobiliário e equipamentos",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2022-04-25",
+      "vigencia_fim": "2024-04-25"
+    },
+    {
+      "numero": "0000001013/2022",
+      "concedente": "Secretaria de Estado da Educação de Minas Gerais",
+      "valor": 99603.98,
+      "repasse": 99603.98,
+      "objeto": "Programa de fortalecimento das escolas municipais - Aquisição de mobiliário e equipamentos",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2022-04-28",
+      "vigencia_fim": "2024-04-28"
+    },
+    {
+      "numero": "0000001037/2022",
+      "concedente": "Secretaria de Estado da Educação de Minas Gerais",
+      "valor": 50000,
+      "repasse": 50000,
+      "objeto": "Aquisição de mobiliário e equipamentos para a Escola Municipal Wanderley Bueno",
+      "tipo": "Termo de Convênio",
+      "vigencia_ini": "2022-04-29",
+      "vigencia_fim": "2024-04-29"
+    }
+  ],
+  "total_recebidos": 9,
+  "total_valor_recebidos": 2704902.61,
+  "link": "https://transparencia.varginha.mg.gov.br/transparencia/convenios-recebidos.html",
+  "repassados_total": 540,
+  "repassados_valor": 161185709.18,
+  "repassados_sample": [
+    {
+      "objeto": "Execução de atividades e serviços referentes ao Sistema Único de Saúde - SUS pela CONVENIADA, nas mo",
+      "valor": 42336338.44
+    },
+    {
+      "objeto": "Execução de atividades e serviços  referentes ao Sistema Único de Saúde – SUS pelo CONVENIADO, nas m",
+      "valor": 41853792.36
+    },
+    {
+      "objeto": "Execução das atividades do Centro Especializado em Reabilitação Intelectual e Física - CER tipo II d",
+      "valor": 8400000
+    },
+    {
+      "objeto": "SERVICO DE APOIO E ACOMPANHAMENTO A INCLUSAO, SAAI - ATENDIMENTO ESTUDANTES NECESSIDADES ESPECIAIS",
+      "valor": 8315000
+    },
+    {
+      "objeto": "serviço de apoio e acompanhamento à inclusão estudantes com necessidades especiais da rede municipal",
+      "valor": 6574000
+    }
+  ]
+}

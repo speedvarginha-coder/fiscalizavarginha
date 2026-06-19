@@ -919,7 +919,7 @@ a.brand:hover { text-decoration: none; }
 .section--camara .bigheader { border-left-color: var(--gold); }
 
 /* Inner blocks within an institutional section */
-.block { margin-top: 56px; }
+.block { margin-top: 36px; }
 .block:first-of-type { margin-top: 8px; }
 .block__head {
   display: grid;
@@ -3770,14 +3770,16 @@ a.brand:hover { text-decoration: none; }
   display: block;
   background: var(--white);
   border: 1px solid var(--line);
+  border-left: 5px solid var(--navy);
   border-radius: var(--radius);
   padding: 18px;
   transition: transform .15s, box-shadow .15s, border-color .15s;
+  position: relative;
 }
 .source-card:hover {
   text-decoration: none;
   transform: translateY(-2px);
-  border-color: var(--gold);
+  border-left-color: var(--gold);
   box-shadow: var(--shadow);
 }
 .source-card__value {
@@ -3791,12 +3793,42 @@ a.brand:hover { text-decoration: none; }
   font-family: var(--font-h);
   color: var(--navy);
   margin: 10px 0 6px;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 .source-card p {
   margin: 0;
   color: var(--muted);
-  font-size: .94rem;
+  font-size: .92rem;
+}
+.source-card--link {
+  border-left-color: var(--teal);
+}
+.source-card--link h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.source-card__cta {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--teal);
+  font-size: .88rem;
+  font-weight: 700;
+}
+.source-card--future {
+  border-left-color: var(--muted);
+  opacity: .85;
+}
+.source-card__badge {
+  display: inline-block;
+  background: #eef2f7;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
 }
 
 .source-links {
@@ -8408,6 +8440,123 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   color: var(--muted);
 }
 .cat-chip--clear:hover { color: var(--red); border-color: var(--red); }
+
+/* ================== CITIZEN TOOLS ================== */
+
+/* WhatsApp share button */
+.btn-wpp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #25D366;
+  color: #fff !important;
+  border: none;
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: .84rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none !important;
+  transition: background .15s, transform .1s;
+  white-space: nowrap;
+}
+.btn-wpp:hover {
+  background: #1EBE58;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+/* "Como ler esta página" collapsible */
+.page-howto {
+  margin-top: 14px;
+  border: 1px solid rgba(0,75,141,.12);
+  border-radius: 8px;
+  background: rgba(247,250,253,.85);
+}
+.page-howto summary {
+  padding: 9px 14px;
+  cursor: pointer;
+  font-size: .86rem;
+  font-weight: 700;
+  color: var(--navy);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  user-select: none;
+}
+.page-howto summary::-webkit-details-marker { display: none; }
+.page-howto summary::before {
+  content: "ℹ";
+  font-size: 1rem;
+  opacity: .6;
+  flex: 0 0 auto;
+}
+.page-howto[open] summary { border-bottom: 1px solid var(--line); }
+.page-howto[open] summary::before { content: "✕"; opacity: .5; }
+.page-howto__body {
+  padding: 12px 16px 14px;
+  font-size: .88rem;
+  color: var(--ink);
+}
+.page-howto__body p { margin: 0 0 8px; line-height: 1.55; }
+.page-howto__body p:last-child { margin: 0; }
+.page-howto__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.page-howto__chips span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.page-howto__chips span.ok   { border-color: #a5d6a7; color: #2e7d32; background: #f0faf4; }
+.page-howto__chips span.warn { border-color: #ffcc80; color: #b76e00; background: #fffbe6; }
+.page-howto__chips span.info { border-color: #90caf9; color: var(--navy); background: #e8f4fc; }
+
+/* Citizen question slot in home-stat cards */
+.home-stat {
+  grid-template-areas:
+    "label cta"
+    "value value"
+    "note  note"
+    "cidada cidada";
+}
+.home-stat q {
+  grid-area: cidada;
+  display: block;
+  font-style: italic;
+  font-size: .78rem;
+  color: var(--teal);
+  quotes: none;
+  padding-top: 6px;
+  margin-top: 4px;
+  border-top: 1px dashed var(--line);
+  line-height: 1.4;
+}
+
+/* Mobile: cat-chips horizontal scroll instead of wrapping */
+@media (max-width: 560px) {
+  .cat-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 6px;
+  }
+  .cat-chips::-webkit-scrollbar { display: none; }
+  .cat-chips__label { display: none; }
+  .cat-chip { flex: 0 0 auto; }
+}
 
 /* ===== Resumo Semanal ===== */
 .filterbar--semanal { flex-direction: column; align-items: flex-start; gap: 10px; }

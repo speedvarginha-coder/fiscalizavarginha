@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v64 (fix layout ranking de diarias) */
-const CACHE = "fiscaliza-v64";
+/* Fiscaliza Varginha — Service Worker v66 (gzip + minificação) */
+const CACHE = "fiscaliza-v66";
 const STATIC = [
   "./",
   "./index.html",
@@ -29,6 +29,7 @@ const STATIC = [
   "./modules/materia-cidada.js",
   "./modules/indice-relevancia.js",
   "./modules/onboarding.js",
+  "./modules/chat-cidadao.js",
   "./favicon.svg",
 ];
 

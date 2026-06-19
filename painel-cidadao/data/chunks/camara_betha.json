@@ -2,7 +2,7 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "total_externo_atual": 5925535.01,
-  "total_externo_anterior": 8403919.53,
+  "total_externo_anterior": 7918885.45,
   "empenhos_qtd": 3031,
   "top_fornecedores_atual": [
     {
@@ -118,19 +118,9 @@
       "qtd": 3
     },
     {
-      "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
-      "valor_total": 671310.09,
-      "qtd": 4
-    },
-    {
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 471622.86,
-      "qtd": 40
-    },
-    {
-      "nome": "BETHA SISTEMAS LTDA",
-      "valor_total": 443199.36,
-      "qtd": 2
+      "valor_total": 491871.79,
+      "qtd": 41
     },
     {
       "nome": "UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO",
@@ -143,9 +133,19 @@
       "qtd": 7
     },
     {
+      "nome": "BETHA SISTEMAS LTDA",
+      "valor_total": 315519.8,
+      "qtd": 1
+    },
+    {
+      "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
+      "valor_total": 294010.2,
+      "qtd": 3
+    },
+    {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 291437.51,
-      "qtd": 39
+      "valor_total": 293710.07,
+      "qtd": 40
     },
     {
       "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
