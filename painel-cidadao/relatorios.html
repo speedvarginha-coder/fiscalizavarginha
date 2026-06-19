@@ -80,14 +80,30 @@
           .catch(function () {});
       })();
       </script>
-      <div class="civic-actions" aria-label="Ações rápidas dos relatórios">
+      <div class="civic-actions" aria-label="Índice de seções dos relatórios">
         <a href="#relatorioCidadao">Resumo cidadão</a>
         <a href="#prioridades-fiscalização">Prioridades</a>
+        <a href="#processos-licitatorios">Licitações</a>
+        <a href="#convenios-municipais">Convênios</a>
+        <a href="#obras-educacao">Obras ed.</a>
+        <a href="#educação-fundeb">FUNDEB</a>
         <a href="#ranking-entidades">ONGs e entidades</a>
-        <a href="#educação-fundeb">Educação e FUNDEB</a>
+        <a href="#camara-financeiro">Câmara</a>
         <a href="cobrar.html">Como cobrar</a>
-        <button type="button" onclick="ZELA.baixarPdfSecao && ZELA.baixarPdfSecao('#conteudo', 'Relatorio Fiscaliza Varginha')" style="background:#004b8d; color:#fff; border:none; border-radius:6px; padding:8px 16px; font-size:0.9em; font-weight:600; cursor:pointer;">↓ Baixar relatório PDF</button>
       </div>
+      <details class="page-howto">
+        <summary>Como ler esta página</summary>
+        <div class="page-howto__body">
+          <p>Os sinais são gerados por cruzamento automático de dados públicos. Um sinal <strong>não é prova de irregularidade</strong> — é um convite para verificar o documento original e, se necessário, protocolar uma LAI.</p>
+          <p>Sempre confirme na fonte oficial antes de compartilhar qualquer informação.</p>
+          <div class="page-howto__chips">
+            <span class="ok">✓ Dados de fontes públicas</span>
+            <span class="warn">⚠ Sinal ≠ irregularidade</span>
+            <span class="warn">⚠ Cruzamento automático</span>
+            <span class="info">ℹ Verifique o documento antes de concluir</span>
+          </div>
+        </div>
+      </details>
     </header>
 
     <div class="report-note">
@@ -160,6 +176,34 @@
       </p>
       <div id="fundebResumo" class="stats"></div>
       <div id="fundebInvestimentos" class="signals"></div>
+    </div>
+
+    <div class="block" id="processos-licitatorios">
+      <h3 class="block__title">Processos Licitatórios</h3>
+      <p class="block__lead">
+        Visão geral de licitações, dispensas e inexigibilidades registradas no Portal Betha.
+        Inclui processos em andamento, maiores contratos e modalidades sem licitação.
+      </p>
+      <div id="licitacoesResumoStats" class="stats"></div>
+      <div id="licitacoesEmAndamento" class="signals" style="margin-top:12px"></div>
+    </div>
+
+    <div class="block" id="convenios-municipais">
+      <h3 class="block__title">Convênios Municipais</h3>
+      <p class="block__lead">
+        Convênios formais recebidos de outros entes (Estado e União) e parcerias repassadas
+        pela Prefeitura a entidades como hospitais e organizações de educação especial.
+      </p>
+      <div id="conveniosBlock" class="signals"></div>
+    </div>
+
+    <div class="block" id="obras-educacao">
+      <h3 class="block__title">Obras em Unidades Educacionais</h3>
+      <p class="block__lead">
+        Construções, reformas e adaptações em escolas e creches registradas na seção
+        "Educação Transparente" do Portal Betha — separado da lista geral de obras.
+      </p>
+      <div id="obrasEducacaoBlock" class="signals"></div>
     </div>
 
     <div class="block" id="ranking-entidades">

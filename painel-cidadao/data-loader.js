@@ -15,9 +15,9 @@
   // Mapeia data-page → chunks necessários. Body também pode sobrescrever via data-chunks.
   const CHUNKS_POR_PAGINA = {
     "home":         ["resumo", "atualizado_em", "auditoria_dados", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
-    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados"],
+    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "licitacoes"],
     "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados"],
-    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados"],
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "pessoal"],
     "pessoal":      ["pessoal", "atualizado_em", "auditoria_dados"],
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados"],
@@ -67,13 +67,23 @@
     });
   }
 
+  // Chunks opcionais (novos): falha silenciosa, não derruba toda a página
+  const CHUNKS_OPCIONAIS = new Set(["educacao", "receitas", "licitacoes", "convenios", "obras_educacao"]);
+
   function fetchChunk(key) {
     return fetch("data/chunks/" + key + ".json?v=" + ts, { cache: "default" })
       .then((r) => {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.json();
       })
-      .then((data) => ({ key, data }));
+      .then((data) => ({ key, data }))
+      .catch((err) => {
+        if (CHUNKS_OPCIONAIS.has(key)) {
+          console.info("[data-loader] chunk opcional ausente:", key, err.message);
+          return { key, data: null };
+        }
+        throw err;
+      });
   }
 
   function removerOverlay() {

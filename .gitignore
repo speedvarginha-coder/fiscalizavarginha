@@ -9,6 +9,8 @@
 .env.*
 *.pem
 *.key
+gemini_key.php
+*_key.php
 private/
 secrets/
 
@@ -94,3 +96,6 @@ __fc.png
 _fix_*.py
 _check*.py
 _find_*.py
+
+# Local Netlify folder
+.netlify

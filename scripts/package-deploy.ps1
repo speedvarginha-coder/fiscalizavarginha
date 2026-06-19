@@ -51,7 +51,8 @@ New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Nul
   "atualizacoes.js",
   "materia-cidada.js",
   "indice-relevancia.js",
-  "onboarding.js"
+  "onboarding.js",
+  "chat-cidadao.js"
 ) | ForEach-Object {
   Copy-IfExists (Join-Path $source "modules\$_") (Join-Path $stage "modules\$_")
 }
