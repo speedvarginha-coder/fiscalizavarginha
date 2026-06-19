@@ -7340,6 +7340,18 @@ ${url}
   }
 
 
+  // Atualização progressiva: chunks pesados chegam em 2ª fase após o render inicial
+  window.addEventListener("zela:chunk", function (e) {
+    var key = (e.detail || {}).key;
+    if (key === "prefeitura" && PAGE === "home") {
+      // prefeitura.json chegou: re-renderiza scorecard e seção ao vivo
+      initScorecard();
+      if ($("prefeituraLive") && pf.top_fornecedores_atual && pf.top_fornecedores_atual.length) {
+        $("prefeituraLive").hidden = false;
+      }
+    }
+  });
+
   } catch (err) {
     const _ov = document.getElementById("loading-overlay");
     if (_ov) _ov.remove();

@@ -18,11 +18,17 @@
     "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "licitacoes"],
     "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados"],
     "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "pessoal"],
-    "pessoal":      ["pessoal", "atualizado_em", "auditoria_dados"],
+    "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados"],
     "sobre":        ["atualizado_em", "auditoria_dados"],
     "cobrar":       ["prefeitura", "camara_betha", "emendas", "pncp", "sancoes_fornecedores", "diario", "pessoal", "remuneracao_vereadores", "atualizado_em", "auditoria_dados"],
+  };
+
+  // Chunks pesados adiados para 2ª fase por página: carregam APÓS app.js renderizar
+  // app.js escuta "zela:chunk" e re-renderiza as seções afetadas
+  const CHUNKS_FASE2 = {
+    "home": ["prefeitura"],  // 4.4 MB — home usa só resumo; prefeitura.json chega depois
   };
 
   // ============ MÓDULOS DE CÓDIGO ============
@@ -127,13 +133,29 @@
 
     // Tenta carregar chunks em paralelo + módulos
     try {
-      const resultados = await Promise.all(chunks.map(fetchChunk));
-      resultados.forEach(({ key, data }) => {
-        window.ZELA_DATA[key] = data;
-      });
+      // Separa chunks críticos (fase 1) dos pesados adiados (fase 2)
+      const fase2Keys = new Set(CHUNKS_FASE2[page] || []);
+      const chunksFase1 = chunks.filter(k => !fase2Keys.has(k));
+      const chunksFase2 = chunks.filter(k => fase2Keys.has(k));
+
+      const resultados = await Promise.all(chunksFase1.map(fetchChunk));
+      resultados.forEach(({ key, data }) => { window.ZELA_DATA[key] = data; });
+
       await carregarModulos();
       await loadScript("app.js");
       window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks } }));
+
+      // Fase 2: chunks pesados carregam em background sem bloquear o render inicial
+      if (chunksFase2.length > 0) {
+        Promise.allSettled(chunksFase2.map(fetchChunk)).then(results => {
+          results.forEach(r => {
+            if (r.status === "fulfilled" && r.value && r.value.data !== null) {
+              window.ZELA_DATA[r.value.key] = r.value.data;
+              window.dispatchEvent(new CustomEvent("zela:chunk", { detail: { key: r.value.key } }));
+            }
+          });
+        });
+      }
     } catch (err) {
       console.warn("[data-loader] fallback para data.js completo. Motivo:", err.message);
       try {
