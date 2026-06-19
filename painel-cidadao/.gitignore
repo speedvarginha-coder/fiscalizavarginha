@@ -27,3 +27,7 @@ _find_*.py
 data/camara_anos.json
 data/diarias.json
 data/pessoal.json
+
+# Build artifacts (minificados gerados localmente)
+app.min.js
+style.min.css
