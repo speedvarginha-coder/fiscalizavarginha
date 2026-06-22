@@ -175,7 +175,7 @@ def _monta_publicacao(materia: dict, autores_map: dict) -> dict | None:
 
 def coletar_camara(ano: int, limite: int = 0) -> list[dict]:
     print(f"→ Coletando matérias SAPL {ano} (IA: {'ON' if enriquecedor_ia.tem_ia() else 'OFF (fallback)'})")
-    materias = _paginate(f"{SAPL}/materia/materialegislativa/?ano={ano}&page=1")
+    materias = _paginate(f"{SAPL}/materia/materialegislativa/?ano={ano}&page=1&page_size=100")
     # mais recentes primeiro
     materias.sort(key=lambda m: (m.get("data_apresentacao") or ""), reverse=True)
     if limite > 0:

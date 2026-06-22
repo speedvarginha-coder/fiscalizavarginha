@@ -17,8 +17,11 @@ gemini_key.local
 private/
 secrets/
 
-# ---- Cache da IA (Gemini) — regenerável, pode conter trechos de atos ----
+# ---- Cache da IA (Gemini) e do Diário — regeneráveis ----
 painel-cidadao/data/cache_ia/
+painel-cidadao/data/cache_diario/
+painel-cidadao/data/_log_*.txt
+painel-cidadao/_teste_*.py
 
 # ---- Logs e diagnóstico ----
 *.log

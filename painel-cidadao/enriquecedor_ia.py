@@ -18,6 +18,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import time
 import hashlib
 import urllib.request
 import urllib.error
@@ -35,6 +36,16 @@ CACHE_DIR = ROOT / "data" / "cache_ia"
 # Versão do enriquecimento. Suba quando mudar o prompt/schema para invalidar o
 # cache antigo sem apagar arquivos na mão.
 ENRICH_VERSION = "v1"
+
+# Rate limiting. Free tier do Gemini limita a ~20 req/min (intervalo 3.3s ≈
+# 18/min). No paid tier o limite sobe muito — passe GEMINI_RATE=0.4 (ou menos)
+# para acelerar o backfill. _cota_acabou só liga após várias 429 seguidas
+# (cota diária real), não por um pico isolado do limite por minuto.
+_MIN_INTERVALO = float(os.getenv("GEMINI_RATE", "3.3"))
+_ultima_chamada = [0.0]
+_cota_acabou = [False]
+_falhas_429 = [0]
+_MAX_FALHAS_429 = 5
 
 
 def _api_key() -> str:
@@ -147,7 +158,28 @@ def _prompt(item: dict) -> str:
     )
 
 
-def _chamar_gemini(item: dict, key: str) -> dict:
+def _rate_limit() -> None:
+    dt = _MIN_INTERVALO - (time.time() - _ultima_chamada[0])
+    if dt > 0:
+        time.sleep(dt)
+    _ultima_chamada[0] = time.time()
+
+
+def _retry_delay(err: urllib.error.HTTPError) -> float:
+    """Segundos sugeridos pela API no corpo do 429 (campo retryDelay)."""
+    try:
+        body = json.loads(err.read().decode("utf-8"))
+        for d in body.get("error", {}).get("details", []):
+            if "RetryInfo" in d.get("@type", ""):
+                m = re.match(r"(\d+)", str(d.get("retryDelay", "")))
+                if m:
+                    return float(m.group(1))
+    except Exception:
+        pass
+    return 0.0
+
+
+def _chamar_gemini(item: dict, key: str, _tentativa: int = 0) -> dict:
     payload = {
         "contents": [{"parts": [{"text": _prompt(item)}]}],
         "generationConfig": {
@@ -163,8 +195,18 @@ def _chamar_gemini(item: dict, key: str) -> dict:
         headers={"Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=60) as r:
-        resp = json.loads(r.read().decode("utf-8"))
+    _rate_limit()
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            resp = json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as ex:
+        # 429 = limite por minuto: espera o delay sugerido e tenta 1× mais.
+        if ex.code == 429 and _tentativa == 0:
+            delay = _retry_delay(ex)
+            if 0 < delay <= 65:
+                time.sleep(delay + 1)
+                return _chamar_gemini(item, key, _tentativa=1)
+        raise
     texto = (
         resp.get("candidates", [{}])[0]
         .get("content", {})
@@ -235,11 +277,20 @@ def enriquecer(item: dict, usar_cache: bool = True) -> dict:
         if cached is not None:
             return cached
     key = _api_key()
-    if not key:
+    if not key or _cota_acabou[0]:
         res = _fallback(item)
     else:
         try:
             res = _chamar_gemini(item, key)
+            _falhas_429[0] = 0  # sucesso reseta o contador de falhas
+        except urllib.error.HTTPError as e:
+            # Conta 429 seguidas. Só desiste após várias (cota diária real) —
+            # um pico isolado do limite por minuto não derruba a execução toda.
+            if e.code == 429:
+                _falhas_429[0] += 1
+                if _falhas_429[0] >= _MAX_FALHAS_429:
+                    _cota_acabou[0] = True
+            res = _fallback(item, erro=f"HTTP {e.code}")
         except Exception as e:
             res = _fallback(item, erro=str(e))
     # Só cacheia resultado de IA real. Fallback é degradado e deve ser
