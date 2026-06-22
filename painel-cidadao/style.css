@@ -7935,7 +7935,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .timeline-sinais { padding-left: 28px; }
   .tline-titulo { font-size: .92rem; }
 }
-@media (max-width: 480px) {
+@media (max-width: 360px) {
   .placar { grid-template-columns: 1fr; }
   .exec-grid { grid-template-columns: 1fr; }
 }

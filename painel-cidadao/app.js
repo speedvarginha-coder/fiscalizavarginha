@@ -6940,7 +6940,11 @@ ${url}
         <span>${fmtNum(summary.warnings || 0)} aviso(s)</span>
       </div>
       <ul>
-        ${sorted.map((item) => `<li><b>${esc(item.title)}:</b> ${esc(item.detail)} <em>${esc(item.action || "")}</em></li>`).join("")}
+        ${sorted.map((item) => {
+          const srcMap = { "fontes_emendas_2026.json": "Emendas 2026", "pessoal.json": "Folha de pessoal", "indice_relevancia.json": "Índice de relevância", "cnpjs.json": "CNPJs", "camara_betha.json": "Câmara/Betha", "pncp.json": "PNCP", "atualizado_em.json": "Atualização" };
+          const title = item.title || srcMap[item.source] || (item.source || "").replace(/\.json$/, "");
+          return `<li><b>${esc(title)}:</b> ${esc(item.detail)} <em>${esc(item.action || "")}</em></li>`;
+        }).join("")}
       </ul>
       <a href="sobre.html#auditoriaDados">Ver auditoria completa e limitações das fontes</a>`;
   }
