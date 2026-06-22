@@ -1355,27 +1355,43 @@
     });
   }
 
+  function atualizarContagemFiltros() {
+    const badge = $("filtroContagem");
+    const btn = $("btnFiltroToggle");
+    if (!badge) return;
+    const ativos = [filtros.orgao, filtros.tipo, filtros.relevancia, filtros.ano].filter(Boolean).length;
+    if (ativos > 0) {
+      badge.textContent = ativos;
+      badge.hidden = false;
+      // se há filtro ativo, garante painel aberto
+      const panel = $("filtrosPanel");
+      if (panel && panel.hidden) {
+        panel.hidden = false;
+        if (btn) btn.setAttribute("aria-expanded", "true");
+      }
+    } else {
+      badge.hidden = true;
+    }
+  }
+
   function render() {
     atualizarTabs();
 
     const isDiario = abaAtual === "diario";
 
-    const filtrosEl = $("atualizacoesFiltros");
-    if (filtrosEl) filtrosEl.hidden = isDiario;
+    // Barra de busca + botão filtrar: visível só na aba atos
+    const filtrosBarraEl = $("filtrosBarra");
+    if (filtrosBarraEl) filtrosBarraEl.hidden = isDiario;
 
-    const filtrosAnoEl = $("atualizacoesFiltrosAno");
-    if (filtrosAnoEl) filtrosAnoEl.hidden = isDiario;
-
-    const filtrosMesEl = $("atualizacoesFiltrosMes");
-    if (filtrosMesEl) filtrosMesEl.hidden = isDiario;
-
-    const buscaEl = $("filtroAtualizacoes");
-    const buscaWrapEl = buscaEl ? buscaEl.closest(".filterbar") : null;
-    if (buscaWrapEl) buscaWrapEl.hidden = isDiario;
-
-    if (buscaEl && !isDiario) {
-      buscaEl.placeholder = "Buscar por título, empresa, CNPJ ou tema...";
+    // Ao trocar para diário: colapsa painel de filtros
+    if (isDiario) {
+      const panel = $("filtrosPanel");
+      if (panel) panel.hidden = true;
+      const btn = $("btnFiltroToggle");
+      if (btn) btn.setAttribute("aria-expanded", "false");
     }
+
+    atualizarContagemFiltros();
 
     const emptyState = $("atualizacoesEmpty");
     if (emptyState) {
@@ -1510,6 +1526,23 @@
         filtros.relevancia = "";
         render();
       });
+    }
+
+    // Toggle painel de filtros
+    const btnToggle = $("btnFiltroToggle");
+    if (btnToggle) {
+      btnToggle.addEventListener("click", () => {
+        const panel = $("filtrosPanel");
+        const aberto = btnToggle.getAttribute("aria-expanded") === "true";
+        btnToggle.setAttribute("aria-expanded", String(!aberto));
+        if (panel) panel.hidden = aberto;
+      });
+      // Desktop (≥760px): abre por padrão
+      if (window.innerWidth >= 760) {
+        btnToggle.setAttribute("aria-expanded", "true");
+        const panel = $("filtrosPanel");
+        if (panel) panel.hidden = false;
+      }
     }
 
     // Delegação de clique nos chips (orgão, tipo, relevância)

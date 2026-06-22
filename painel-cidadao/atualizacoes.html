@@ -80,37 +80,41 @@
       <button type="button" class="update-tab" role="tab" aria-selected="false" data-tab="diario">Diário Oficial</button>
     </div>
 
+    <!-- Barra de busca + toggle filtros (sempre visível na aba atos) -->
+    <div id="filtrosBarra" class="filtros-barra" hidden>
+      <input id="filtroAtualizacoes" type="search" placeholder="Buscar por título, empresa, CNPJ ou tema…" class="filtros-barra__input">
+      <button type="button" id="btnFiltroToggle" class="filtros-barra__btn" aria-expanded="false" aria-controls="filtrosPanel">
+        🔍 Filtrar <span id="filtroContagem" class="filtros-barra__badge" hidden></span>
+      </button>
+      <span id="atualizacoesContador" class="filterbar__count"></span>
+    </div>
+
+    <!-- Painel colapsável de filtros -->
+    <div id="filtrosPanel" class="filtros-panel" hidden>
+      <!-- Filtros de tipo, órgão e relevância -->
+      <div id="atualizacoesFiltros" class="cat-chips" aria-label="Filtrar atualizações">
+        <span class="cat-chips__label">Filtrar por:</span>
+        <button type="button" class="cat-chip" data-filtro="orgao" data-valor="Prefeitura">Prefeitura</button>
+        <button type="button" class="cat-chip" data-filtro="orgao" data-valor="Câmara">Câmara</button>
+        <button type="button" class="cat-chip" data-filtro="tipo" data-valor="contrato">Contratos</button>
+        <button type="button" class="cat-chip" data-filtro="tipo" data-valor="aditivo">Aditivos</button>
+        <button type="button" class="cat-chip" data-filtro="tipo" data-valor="dispensa">Dispensas</button>
+        <button type="button" class="cat-chip" data-filtro="tipo" data-valor="compra_direta">Compras diretas</button>
+        <button type="button" class="cat-chip" data-filtro="tipo" data-valor="licitacao">Licitações</button>
+        <button type="button" class="cat-chip" data-filtro="relevancia" data-valor="alta">Só relevância alta</button>
+        <button type="button" class="cat-chip cat-chip--clear" data-filtro="" data-valor="">Limpar tudo</button>
+      </div>
+      <!-- Filtros por ano (dinâmicos) -->
+      <div id="atualizacoesFiltrosAno" class="cat-chips" style="margin-top:8px;" aria-label="Filtrar por ano"></div>
+      <!-- Filtros por mês (dinâmicos) -->
+      <div id="atualizacoesFiltrosMes" class="cat-chips" style="margin-top:8px; display:none;" aria-label="Filtrar por mês"></div>
+    </div>
+
     <!-- Stats topo -->
     <div id="atualizacoesStats" class="placar" aria-label="Resumo das atualizações"></div>
 
     <!-- Resumo de mudanças recentes -->
     <section id="mudancasRecentes" class="change-digest" aria-label="O que mudou desde a última atualização"></section>
-
-    <!-- Filtros de tipo, órgão e relevância -->
-    <div id="atualizacoesFiltros" class="cat-chips" aria-label="Filtrar atualizações">
-      <span class="cat-chips__label">Filtrar por:</span>
-      <button type="button" class="cat-chip" data-filtro="orgao" data-valor="Prefeitura">Prefeitura</button>
-      <button type="button" class="cat-chip" data-filtro="orgao" data-valor="Câmara">Câmara</button>
-      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="contrato">Contratos</button>
-      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="aditivo">Aditivos</button>
-      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="dispensa">Dispensas</button>
-      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="compra_direta">Compras diretas</button>
-      <button type="button" class="cat-chip" data-filtro="tipo" data-valor="licitacao">Licitações</button>
-      <button type="button" class="cat-chip" data-filtro="relevancia" data-valor="alta">Só relevância alta</button>
-      <button type="button" class="cat-chip cat-chip--clear" data-filtro="" data-valor="">Limpar tudo</button>
-    </div>
-
-    <!-- Filtros por ano (dinâmicos) -->
-    <div id="atualizacoesFiltrosAno" class="cat-chips" style="margin-top:8px;" aria-label="Filtrar por ano"></div>
-
-    <!-- Filtros por mês (dinâmicos, aparecem quando ano selecionado) -->
-    <div id="atualizacoesFiltrosMes" class="cat-chips" style="margin-top:8px; display:none;" aria-label="Filtrar por mês"></div>
-
-    <!-- Busca -->
-    <div class="filterbar" style="margin-top:14px;">
-      <input id="filtroAtualizacoes" type="search" placeholder="Buscar por título, empresa, CNPJ ou tema…" style="flex:1;">
-      <span id="atualizacoesContador" class="filterbar__count"></span>
-    </div>
 
     <!-- Aviso de fonte -->
     <div class="report-note" style="margin:18px 0; background:#fff8e1; border-left:5px solid var(--gold);">

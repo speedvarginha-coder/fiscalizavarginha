@@ -9013,6 +9013,66 @@ body[data-page="home"] .hub-grid-18 .hub-item { position: relative; }
   background: var(--navy);
   color: var(--white);
 }
+
+/* ── Barra de filtros (busca + toggle) ── */
+.filtros-barra {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.filtros-barra__input {
+  flex: 1;
+  min-width: 160px;
+  padding: 9px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: .95rem;
+  background: var(--white);
+}
+.filtros-barra__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: 2px solid var(--navy);
+  background: var(--white);
+  color: var(--navy);
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.filtros-barra__btn[aria-expanded="true"] {
+  background: var(--navy);
+  color: var(--white);
+}
+.filtros-barra__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--red, #d32f2f);
+  color: #fff;
+  border-radius: 10px;
+  font-size: .72rem;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+}
+
+/* ── Painel colapsável de filtros ── */
+.filtros-panel {
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: var(--cream, #f8f9fb);
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
 .change-digest {
   margin: 0 0 18px;
   padding: 18px 20px;
