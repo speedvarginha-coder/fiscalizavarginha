@@ -6887,7 +6887,7 @@ ${url}
   }
 
   function initPagePdfButton() {
-    const header = document.querySelector(".bigheader");
+    const header = document.querySelector(".bigheader, .cobrar-hero");
     if (!header || header.querySelector(".pdf-action")) return;
 
     const actions = header.querySelector(".civic-actions") || header;
@@ -7269,13 +7269,17 @@ ${url}
     toggle.addEventListener("click", function() {
       const open = nav.classList.toggle("nav--open");
       toggle.setAttribute("aria-expanded", open);
-      toggle.textContent = open ? "✕ Fechar" : "☰ Menu";
+      toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+      toggle.setAttribute("title", open ? "Fechar menu" : "Abrir menu");
+      toggle.innerHTML = open ? '<span aria-hidden="true">✕</span>' : '<span aria-hidden="true">☰</span>';
     });
     nav.querySelectorAll("a").forEach(function(a) {
       a.addEventListener("click", function() {
         nav.classList.remove("nav--open");
         toggle.setAttribute("aria-expanded", "false");
-        toggle.textContent = "☰ Menu";
+        toggle.setAttribute("aria-label", "Abrir menu");
+        toggle.setAttribute("title", "Abrir menu");
+        toggle.innerHTML = '<span aria-hidden="true">☰</span>';
       });
     });
   })();
@@ -7306,6 +7310,10 @@ ${url}
 
   // ============= MODO ESCURO (DARK THEME) =============
   window.ZELA.initTheme = function() {
+    document.body.classList.remove("dark-theme");
+    try { localStorage.removeItem("zela-theme"); } catch (_) {}
+    document.querySelector(".theme-toggle-btn")?.remove();
+    return;
     const isDark = localStorage.getItem("zela-theme") === "dark";
     if (isDark) {
       document.body.classList.add("dark-theme");
@@ -7316,12 +7324,16 @@ ${url}
       const btn = document.createElement("button");
       btn.type = "button";
       btn.className = "theme-toggle-btn";
-      btn.setAttribute("aria-label", "Alternar tema escuro/claro");
-      btn.innerHTML = isDark ? "☀️ Claro" : "🌙 Escuro";
+      btn.setAttribute("aria-label", isDark ? "Usar tema claro" : "Usar tema escuro");
+      btn.setAttribute("title", isDark ? "Usar tema claro" : "Usar tema escuro");
+      btn.innerHTML = isDark ? "☀" : "☾";
       btn.addEventListener("click", () => {
         const isCurrentlyDark = document.body.classList.toggle("dark-theme");
         localStorage.setItem("zela-theme", isCurrentlyDark ? "dark" : "light");
-        btn.innerHTML = isCurrentlyDark ? "☀️ Claro" : "🌙 Escuro";
+        const label = isCurrentlyDark ? "Usar tema claro" : "Usar tema escuro";
+        btn.setAttribute("aria-label", label);
+        btn.setAttribute("title", label);
+        btn.innerHTML = isCurrentlyDark ? "☀" : "☾";
       });
       const navToggle = document.querySelector(".nav__toggle");
       if (navToggle) {

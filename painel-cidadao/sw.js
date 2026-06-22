@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v66 (gzip + minificação) */
-const CACHE = "fiscaliza-v66";
+/* Fiscaliza Varginha — Service Worker v67 (home refinada) */
+const CACHE = "fiscaliza-v68";
 const STATIC = [
   "./",
   "./index.html",
