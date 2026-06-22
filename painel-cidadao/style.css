@@ -11306,8 +11306,11 @@ body[data-page="home"] .hub-grid-18 .hub-item__icon svg { stroke: var(--navy); }
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 4px;
+    padding-right: 32px;
     scrollbar-width: none;
     gap: 8px;
+    mask-image: linear-gradient(to right, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
   }
   .civic-actions::-webkit-scrollbar { display: none; }
 

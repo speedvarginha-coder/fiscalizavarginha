@@ -145,7 +145,7 @@
     return /(lei|projeto de lei|alteracao de lei|alteração de lei|decreto|portaria|resolucao|resolução|norma|legislativo)/.test(txt);
   }
 
-  function resumoDiarioCidadao(edicao) {
+  function resumoDiarioCidadao(edicao, atosCache) {
     const itens = [];
     const descricao = cleanText(edicao.descricao || "");
     if (descricao) {
@@ -157,7 +157,7 @@
         .forEach(p => itens.push(p));
     }
 
-    const atosDia = carregarAtos().filter(a => dataISO(a.data) === edicao.data);
+    const atosDia = (atosCache || carregarAtos()).filter(a => dataISO(a.data) === edicao.data);
     if (atosDia.length) {
       const compras = atosDia.filter(ehCompraOuContratacao);
       const cargos = atosDia.filter(ehCargoComissionado);
@@ -858,7 +858,7 @@
           <h4>Últimas edições para ler</h4>
           <ol class="change-digest__list">
             ${ultimas.map(edicao => {
-              const resumo = resumoDiarioCidadao(edicao).slice(0, 2).join(" ");
+              const resumo = resumoDiarioCidadao(edicao, atos).slice(0, 2).join(" ");
               return `<li class="change-digest__item">
                 <div>
                   <span class="change-digest__badge">${edicao.extra ? "Edição extra" : "Edição ordinária"}</span>
@@ -884,12 +884,12 @@
       </div>`;
   }
 
-  function renderDiarioCard(edicao) {
+  function renderDiarioCard(edicao, atosCache) {
     const dataDisplay = formatarDataHora(edicao.sortKey || edicao.data);
     const tipo = edicao.extra ? "Edição Extra" : "Edição Ordinária";
-    
+
     // Buscar atos do dia correspondente à edição
-    const atos = carregarAtos();
+    const atos = atosCache || carregarAtos();
     const atosDia = atos.filter(a => dataISO(a.data) === edicao.data);
     
     // Somar valores de compras/contratações do dia
@@ -1066,7 +1066,6 @@
 
     renderStatsDiario(edicoes);
     renderMudancasDiario(edicoes);
-    renderFiltrosTempo(edicoes);
 
     const contador = $("atualizacoesContador");
     if (contador) contador.textContent = `${fmtNum(view.length)} edição${view.length !== 1 ? "ões" : ""}`;
@@ -1088,7 +1087,8 @@
     if (emptyEl) emptyEl.hidden = true;
 
     const sorted = [...view].sort((a, b) => (b.sortKey || "").localeCompare(a.sortKey || "")).slice(0, 120);
-    if (feedEl) feedEl.innerHTML = sorted.map(renderDiarioCard).join("");
+    const atosCache = carregarAtos();
+    if (feedEl) feedEl.innerHTML = sorted.map(e => renderDiarioCard(e, atosCache)).join("");
   }
 
   // ============================================================
@@ -1358,14 +1358,23 @@
   function render() {
     atualizarTabs();
 
+    const isDiario = abaAtual === "diario";
+
     const filtrosEl = $("atualizacoesFiltros");
-    if (filtrosEl) filtrosEl.hidden = abaAtual === "diario";
+    if (filtrosEl) filtrosEl.hidden = isDiario;
+
+    const filtrosAnoEl = $("atualizacoesFiltrosAno");
+    if (filtrosAnoEl) filtrosAnoEl.hidden = isDiario;
+
+    const filtrosMesEl = $("atualizacoesFiltrosMes");
+    if (filtrosMesEl) filtrosMesEl.hidden = isDiario;
 
     const buscaEl = $("filtroAtualizacoes");
-    if (buscaEl) {
-      buscaEl.placeholder = abaAtual === "diario"
-        ? "Buscar por edição, ano, data ou tipo..."
-        : "Buscar por título, empresa, CNPJ ou tema...";
+    const buscaWrapEl = buscaEl ? buscaEl.closest(".filterbar") : null;
+    if (buscaWrapEl) buscaWrapEl.hidden = isDiario;
+
+    if (buscaEl && !isDiario) {
+      buscaEl.placeholder = "Buscar por título, empresa, CNPJ ou tema...";
     }
 
     const emptyState = $("atualizacoesEmpty");
