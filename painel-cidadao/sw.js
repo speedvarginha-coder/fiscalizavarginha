@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v67 (home refinada) */
-const CACHE = "fiscaliza-v68";
+/* Fiscaliza Varginha — Service Worker v69 (vereadores eleitos + placar mobile) */
+const CACHE = "fiscaliza-v69";
 const STATIC = [
   "./",
   "./index.html",

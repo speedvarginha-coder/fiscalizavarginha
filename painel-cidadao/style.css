@@ -8268,6 +8268,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   .placar-card { padding: 14px 16px; min-height: 120px; }
   .placar-card__valor { font-size: 1.4rem; }
 }
+/* Placar no mobile: 2 colunas. Precisa vir DEPOIS da regra base .placar
+   (auto-fit minmax 220px), senao o auto-fit colapsa para 1 coluna em <440px. */
+@media (max-width: 720px) {
+  .placar { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 360px) {
+  .placar { grid-template-columns: 1fr; }
+}
 
 /* ================== CHIPS DE CATEGORIA ================== */
 .cat-chips {

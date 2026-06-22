@@ -148,7 +148,7 @@ def _linha_padrao_sapl(r: dict) -> dict:
 def _fetch_datas_sapl(anos: list[int]) -> dict[str, str]:
     """Pagina a API SAPL e retorna {id: data_apresentacao} para os anos pedidos.
     Tolerante a falha de rede — retorna o que conseguiu."""
-    BASE = "http://sapl.varginha.mg.leg.br/api/materia/materialegislativa/"
+    BASE = "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/"
     datas: dict[str, str] = {}
     for ano in anos:
         url: str | None = f"{BASE}?ano={ano}&page=1"
@@ -180,7 +180,7 @@ SAPL_STATUS_APROVADO = {
 SAPL_STATUS_NEGADO = {
     "ARQUIVADA", "REJEITADA", "INAD", "PREJUD", "RETAUTOR", "PARARQ", "VETOMANT",
 }
-SAPL_API = "http://sapl.varginha.mg.leg.br/api/materia"
+SAPL_API = "https://sapl.varginha.mg.leg.br/api/materia"
 
 
 def _sapl_status_map() -> dict:
@@ -277,7 +277,7 @@ SAPL_TIPOS_DELIBERATIVOS = {1, 2}
 def _fetch_presenca_sapl(anos: list[int]) -> dict[int, dict[str, dict]]:
     """{ano: {nome_parlamentar: {presentes, elegiveis, pct, janela}}}.
     Tolerante a falha — sem dado, devolve {} e a presença segue pendente no índice."""
-    base = "http://sapl.varginha.mg.leg.br/api"
+    base = "https://sapl.varginha.mg.leg.br/api"
     resultado: dict[int, dict[str, dict]] = {}
 
     # id -> nome do parlamentar (mapeamento que destrava a presença)

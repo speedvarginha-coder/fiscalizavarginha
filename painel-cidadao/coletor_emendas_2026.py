@@ -39,8 +39,8 @@ FONTES = [
         "tipo": "json",
     },
     {
-        "nome": "Camara - solicitacao de emenda impositiva municipal",
-        "url": "https://www.varginha.mg.leg.br/comunicacao/solicitacao-emenda",
+        "nome": "Camara - emendas impositivas",
+        "url": "https://www.varginha.mg.leg.br/atividade-legislativa/emendas/emendas-impositivas",
         "tipo": "html",
     },
     {

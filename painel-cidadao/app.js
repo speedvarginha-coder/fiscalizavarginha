@@ -5244,10 +5244,17 @@ ${url}
   // ============= API pública =============
   function linhasFolhaVereadores() {
     const servidores = ((((D.pessoal || {}).camara || {}).servidores) || []);
+    // Subsidio fixado em lei. Vereador eleito recebe ~este valor; assessores de
+    // gabinete recebem muito menos (~R$1.621). Usamos 70% como piso de seguranca.
+    const subsidioLegal = Number((D.remuneracao_vereadores || {}).subsidio_bruto_mensal_brl || 0);
+    const pisoVereador = subsidioLegal > 0 ? subsidioLegal * 0.7 : 5000;
     const grupos = new Map();
     servidores.forEach((row) => {
-      const alvo = norm([row.cargo, row.lotacao].filter(Boolean).join(" "));
-      if (!alvo.includes("vereador")) return;
+      // Apenas vereadores ELEITOS: lotacao no colegiado "VEREADORES" (exato).
+      // Exclui "GABINETE VEREADOR X" e "VEREADORA Y" (assessorias individuais),
+      // que sao staff e nao parlamentares eleitos.
+      const lot = norm(row.lotacao || "").trim();
+      if (lot !== "vereadores") return;
       const nome = cleanText(row.nome || "Nome nao informado").trim();
       if (!nome) return;
       const key = (row.matricula || nome) + "|" + nome;
@@ -5273,7 +5280,11 @@ ${url}
       g.maior_liquido = Math.max(g.maior_liquido, Number(row.liquido || 0));
       grupos.set(key, g);
     });
-    return Array.from(grupos.values()).sort((a, b) => cleanText(a.nome).localeCompare(cleanText(b.nome), "pt-BR"));
+    // Mantem so quem tem subsidio compativel com vereador eleito. Exclui
+    // assessores lotados no setor "VEREADORES" que recebem ~R$1.621.
+    return Array.from(grupos.values())
+      .filter((g) => g.maior_bruto >= pisoVereador)
+      .sort((a, b) => cleanText(a.nome).localeCompare(cleanText(b.nome), "pt-BR"));
   }
 
   function renderRemuneracaoVereadores() {
@@ -6905,7 +6916,7 @@ ${url}
     const items = (audit.items || []).filter((item) => item.severity && item.severity !== "ok");
     if (!items.length) return;
 
-    const header = document.querySelector(".bigheader");
+    const header = document.querySelector(".bigheader, .cobrar-hero");
     const container = header?.parentElement || document.querySelector("main .container") || document.querySelector(".container");
     if (!container) return;
 
