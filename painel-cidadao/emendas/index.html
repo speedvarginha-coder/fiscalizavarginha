@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emendas municipais, estaduais e federais · Fiscaliza Varginha</title>
+    <meta name="description" content="Consulta de emendas municipais, estaduais e federais destinadas a Varginha-MG: quem recebeu, valor, objeto e situação." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow"><a href="../index.html" style="color:inherit">← Fiscaliza Varginha</a> · Publicidade e transparência</p>
+        <h1>Emendas para Varginha</h1>
+        <p class="lead">Consulte emendas municipais, estaduais e federais destinadas a Varginha. Dados extraídos dos relatórios oficiais; os links levam à fonte para conferência.</p>
+      </div>
+      <div class="source-note">
+        <span>Atualizado em</span>
+        <strong id="lastUpdate">carregando...</strong>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="summary-grid" aria-label="Resumo das emendas">
+        <article class="metric">
+          <span>Emendas encontradas</span>
+          <strong id="metricCount">0</strong>
+        </article>
+        <article class="metric">
+          <span>Valor total</span>
+          <strong id="metricTotal">R$ 0,00</strong>
+        </article>
+        <article class="metric">
+          <span>Quem recebeu</span>
+          <strong id="metricBeneficiaries">0</strong>
+        </article>
+        <article class="metric">
+          <span>Maior emenda</span>
+          <strong id="metricMax">R$ 0,00</strong>
+        </article>
+      </section>
+
+      <section class="filters" aria-label="Filtros de consulta">
+        <div class="citizen-guide">
+          <strong>Para conferir uma emenda, olhe nesta ordem:</strong>
+          <span>quem recebeu, quanto recebeu, para quê o dinheiro foi indicado e se o PDF original confirma a informação.</span>
+        </div>
+
+        <div class="search-row">
+          <label class="field field-wide">
+            <span>Buscar</span>
+            <input id="searchInput" type="search" placeholder="exemplo: hospital, esporte, escola, associação ou número da emenda" />
+          </label>
+          <button id="clearFilters" class="button secondary" type="button">Limpar</button>
+          <button id="exportCsv" class="button primary" type="button">Baixar CSV</button>
+        </div>
+
+        <div class="filter-grid">
+          <label class="field">
+            <span>Tipo</span>
+            <select id="typeFilter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Ano da emenda</span>
+            <select id="yearFilter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Ano do recurso</span>
+            <select id="resourceYearFilter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Órgão</span>
+            <select id="orgFilter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Partido</span>
+            <select id="partyFilter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Parlamentar (autor)</span>
+            <select id="authorFilter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Quem recebeu</span>
+            <input id="beneficiaryFilter" list="beneficiaryOptions" type="search" placeholder="Digite parte do nome" autocomplete="off" />
+            <datalist id="beneficiaryOptions"></datalist>
+          </label>
+          <label class="field">
+            <span>Aprovado</span>
+            <select id="approvalFilter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Emenda individual</span>
+            <select id="individualFilter">
+              <option value="">Todas</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Ordenar</span>
+            <select id="sortFilter">
+              <option value="valor-desc">Maior valor</option>
+              <option value="valor-asc">Menor valor</option>
+              <option value="tipo">Tipo</option>
+              <option value="beneficiario">Quem recebeu</option>
+              <option value="ano-desc">Ano mais recente</option>
+              <option value="data-desc">Data do recurso</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Valor mínimo</span>
+            <input id="minValue" type="number" min="0" step="1000" placeholder="0" />
+          </label>
+          <label class="field">
+            <span>Valor máximo</span>
+            <input id="maxValue" type="number" min="0" step="1000" placeholder="sem limite" />
+          </label>
+        </div>
+
+        <div class="quick-filters" aria-label="Consultas rápidas">
+          <button class="chip" data-quick="saude" type="button">Saúde</button>
+          <button class="chip" data-quick="associacoes" type="button">Associações</button>
+          <button class="chip" data-quick="federal" type="button">Federais</button>
+          <button class="chip" data-quick="estadual" type="button">Estaduais</button>
+          <button class="chip" data-quick="municipal" type="button">Municipais</button>
+          <button class="chip" data-quick="individual" type="button">Individuais</button>
+          <button class="chip" data-quick="pendente" type="button">Não aprovadas</button>
+          <button class="chip" data-quick="alto-valor" type="button">Acima de R$ 100 mil</button>
+          <button class="chip" data-quick="sem-data" type="button">Sem data do recurso</button>
+          <button class="chip" data-quick="sem-ano-emenda" type="button">Sem ano da emenda</button>
+          <button class="chip" data-quick="sem-ano-recurso" type="button">Sem ano do recurso</button>
+          <button class="chip" data-quick="valor-zero" type="button">Valor zerado</button>
+        </div>
+      </section>
+
+      <section class="insights" aria-label="Visões resumidas">
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Por tipo</h2>
+            <span id="typeTotal">0 registros</span>
+          </div>
+          <div id="typeChart" class="bar-chart"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Principais órgãos</h2>
+            <span>por valor</span>
+          </div>
+          <div id="orgChart" class="bar-chart compact"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Quem mais recebeu</h2>
+            <span id="recipientTotal">por valor</span>
+          </div>
+          <div id="recipientRanking" class="ranking-list"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Ranking das associações</h2>
+            <span id="associationTotal">por valor</span>
+          </div>
+          <div id="associationRanking" class="ranking-list"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Quem mais enviou emendas</h2>
+            <span id="authorTotal">parlamentares</span>
+          </div>
+          <div id="authorRanking" class="ranking-list"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Pontos de atenção</h2>
+            <span>registros filtrados</span>
+          </div>
+          <div id="transparencyFlags" class="flag-grid"></div>
+        </article>
+        <article class="panel wide-panel">
+          <div class="panel-title">
+            <h2>Situação das não aprovadas</h2>
+            <span id="notApprovedTotal">0 registros</span>
+          </div>
+          <p class="panel-note">
+            “Não aprovada” é a situação exibida no relatório. Pode indicar plano, execução ou prestação de contas ainda sem aprovação registrada. Confira o PDF antes de concluir que há irregularidade.
+          </p>
+          <div id="notApprovedSituation" class="situation-grid"></div>
+        </article>
+        <article class="panel wide-panel">
+          <div class="panel-title">
+            <h2>Maiores valores para conferir</h2>
+            <span>atalhos de fiscalizaÃ§Ã£o</span>
+          </div>
+          <div id="topValuePanels" class="top-value-grid"></div>
+        </article>
+      </section>
+
+      <section class="results-section" aria-label="Resultados">
+        <div class="results-header">
+          <div>
+            <h2>Emendas</h2>
+            <p id="resultSummary">0 resultados</p>
+          </div>
+          <div class="pagination">
+            <button id="prevPage" class="icon-button" type="button" aria-label="Página anterior">‹</button>
+            <span id="pageInfo">1 de 1</span>
+            <button id="nextPage" class="icon-button" type="button" aria-label="Próxima página">›</button>
+          </div>
+        </div>
+        <aside class="pdf-guide" aria-label="Como conferir na fonte oficial">
+          <strong>Como conferir na fonte oficial:</strong>
+          o botão "Ver na fonte oficial" abre o portal de transparência da esfera correspondente (Câmara para municipais; Portal Betha para estaduais e federais). Lá, use Ctrl+F e procure pelo número da emenda ou pelo nome de quem recebeu para confirmar o valor e o objeto.
+        </aside>
+        <div id="results" class="results"></div>
+      </section>
+
+      <section class="glossary" aria-label="Entenda os termos">
+        <h2>Entenda os termos</h2>
+        <dl>
+          <div>
+            <dt>Quem recebeu</dt>
+            <dd>Quem recebe ou executa o recurso informado no relatório.</dd>
+          </div>
+          <div>
+            <dt>Objeto</dt>
+            <dd>Finalidade declarada para uso do dinheiro público.</dd>
+          </div>
+          <div>
+            <dt>Emenda individual</dt>
+            <dd>Indicação feita individualmente por parlamentar ou vereador, quando marcada no relatório.</dd>
+          </div>
+          <div>
+            <dt>Prestação de contas</dt>
+            <dd>Etapa de comprovação da aplicação do recurso após a execução.</dd>
+          </div>
+          <div>
+            <dt>Aprovado</dt>
+            <dd>O relatÃ³rio indica aprovaÃ§Ã£o registrada para aquela etapa.</dd>
+          </div>
+          <div>
+            <dt>NÃ£o aprovado</dt>
+            <dd>Indica que a aprovaÃ§Ã£o ainda nÃ£o consta no relatÃ³rio. NÃ£o significa, sozinho, irregularidade.</dd>
+          </div>
+          <div>
+            <dt>Valor zerado</dt>
+            <dd>Registro sem valor financeiro informado no relatÃ³rio; precisa de conferÃªncia no PDF.</dd>
+          </div>
+          <div>
+            <dt>Sem data do recurso</dt>
+            <dd>O relatÃ³rio nÃ£o mostra quando o recurso foi disponibilizado.</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <dialog id="detailDialog" class="dialog">
+      <div class="dialog-header">
+        <div>
+          <p id="detailType" class="eyebrow">Emenda</p>
+          <h2 id="detailTitle">Detalhes</h2>
+        </div>
+        <div class="dialog-actions">
+          <button id="shareDetail" class="button secondary" type="button">Copiar link</button>
+          <button id="closeDialog" class="icon-button" type="button" aria-label="Fechar">×</button>
+        </div>
+      </div>
+      <div id="detailBody" class="detail-body"></div>
+    </dialog>
+
+    <script src="data/emendas.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
