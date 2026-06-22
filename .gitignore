@@ -11,8 +11,14 @@
 *.key
 gemini_key.php
 *_key.php
+gemini_key.txt
+gemini_key.local
+*.local
 private/
 secrets/
+
+# ---- Cache da IA (Gemini) — regenerável, pode conter trechos de atos ----
+painel-cidadao/data/cache_ia/
 
 # ---- Logs e diagnóstico ----
 *.log
