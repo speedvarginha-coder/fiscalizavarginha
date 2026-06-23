@@ -20,7 +20,7 @@
     "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "pessoal"],
     "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
-    "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados"],
+    "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
     "sobre":        ["atualizado_em", "auditoria_dados"],
     "cobrar":       ["prefeitura", "camara_betha", "emendas", "pncp", "sancoes_fornecedores", "diario", "pessoal", "remuneracao_vereadores", "atualizado_em", "auditoria_dados"],
   };
@@ -49,6 +49,7 @@
     "modules/indice-relevancia.js",
     "modules/onboarding.js",
     "modules/chat-cidadao.js",
+    "modules/publicacoes.js",
   ];
 
   const ts = Date.now();
@@ -74,7 +75,7 @@
   }
 
   // Chunks opcionais (novos): falha silenciosa, não derruba toda a página
-  const CHUNKS_OPCIONAIS = new Set(["educacao", "receitas", "licitacoes", "convenios", "obras_educacao"]);
+  const CHUNKS_OPCIONAIS = new Set(["educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "publicacoes_estruturadas", "publicacoes_diario"]);
 
   function fetchChunk(key) {
     return fetch("data/chunks/" + key + ".json?v=" + ts, { cache: "default" })

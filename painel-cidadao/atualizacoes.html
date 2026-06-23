@@ -76,6 +76,25 @@
       </details>
     </header>
 
+    <!-- Resumos das publicações com IA (atos do Diário + matérias da Câmara) -->
+    <section id="publicacoesSecao" class="pub-secao" aria-label="Resumos das publicações com IA">
+      <div class="pub-secao__head">
+        <h2>Resumos das publicações <span class="pub-secao__tag">explicado com IA</span></h2>
+        <p class="muted">Cada ato do Diário Oficial e cada matéria da Câmara em linguagem simples: o que é, quem está envolvido, valores e pontos de atenção. Confira sempre na fonte oficial antes de divulgar.</p>
+      </div>
+      <div class="pub-filtros">
+        <input id="publicacoesBusca" type="search" placeholder="Buscar por título, tema, autor…" class="pub-busca" aria-label="Buscar publicações">
+        <div class="pub-chips" role="group" aria-label="Filtrar por fonte">
+          <button type="button" class="pub-chip is-active" data-pub-fonte="">Tudo</button>
+          <button type="button" class="pub-chip" data-pub-fonte="camara">Câmara</button>
+          <button type="button" class="pub-chip" data-pub-fonte="diario">Diário Oficial</button>
+        </div>
+        <span id="publicacoesContador" class="muted small"></span>
+      </div>
+      <div id="publicacoesFeed" class="pub-feed"></div>
+      <button id="publicacoesMais" type="button" class="btn-load-more" hidden></button>
+    </section>
+
     <div id="atualizacoesTabs" class="update-tabs" role="tablist" aria-label="Tipo de atualização">
       <button type="button" class="update-tab is-active" role="tab" aria-selected="true" data-tab="atos">Contratações e despesas</button>
       <button type="button" class="update-tab" role="tab" aria-selected="false" data-tab="diario">Diário Oficial</button>
