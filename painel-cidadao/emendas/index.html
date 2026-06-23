@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Emendas municipais, estaduais e federais · Fiscaliza Varginha</title>
     <meta name="description" content="Consulta de emendas municipais, estaduais e federais destinadas a Varginha-MG: quem recebeu, valor, objeto e situação." />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260623b" />
   </head>
   <body>
+    <header class="site-nav">
+      <a href="../index.html" class="site-nav__brand">
+        <span class="site-nav__mark">FV</span>
+        <span class="site-nav__name"><strong>Fiscaliza Varginha</strong><small>Painel Cidadão</small></span>
+      </a>
+      <input type="checkbox" id="navToggle" class="site-nav__toggle-cb">
+      <label for="navToggle" class="site-nav__toggle" aria-label="Abrir menu">☰</label>
+      <nav class="site-nav__menu" aria-label="Seções">
+        <a href="../index.html">Início</a>
+        <a href="../atualizacoes.html">Atualizações</a>
+        <a href="../prefeitura.html">Prefeitura</a>
+        <a href="../camara.html">Câmara</a>
+        <a href="index.html" class="is-active">Emendas</a>
+        <a href="../relatorios.html">Relatórios</a>
+        <a href="../pessoal.html">Pessoal</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../cobrar.html" class="site-nav__cta">Como cobrar</a>
+      </nav>
+    </header>
     <header class="topbar">
       <div>
-        <p class="eyebrow"><a href="../index.html" style="color:inherit">← Fiscaliza Varginha</a> · Publicidade e transparência</p>
+        <p class="eyebrow">Publicidade e transparência · emendas para Varginha</p>
         <h1>Emendas para Varginha</h1>
         <p class="lead">Consulte emendas municipais, estaduais e federais destinadas a Varginha. Dados extraídos dos relatórios oficiais; os links levam à fonte para conferência.</p>
       </div>
@@ -202,7 +221,7 @@
         <article class="panel wide-panel">
           <div class="panel-title">
             <h2>Maiores valores para conferir</h2>
-            <span>atalhos de fiscalizaÃ§Ã£o</span>
+            <span>atalhos de fiscalização</span>
           </div>
           <div id="topValuePanels" class="top-value-grid"></div>
         </article>
@@ -248,19 +267,19 @@
           </div>
           <div>
             <dt>Aprovado</dt>
-            <dd>O relatÃ³rio indica aprovaÃ§Ã£o registrada para aquela etapa.</dd>
+            <dd>O relatório indica aprovação registrada para aquela etapa.</dd>
           </div>
           <div>
-            <dt>NÃ£o aprovado</dt>
-            <dd>Indica que a aprovaÃ§Ã£o ainda nÃ£o consta no relatÃ³rio. NÃ£o significa, sozinho, irregularidade.</dd>
+            <dt>Não aprovado</dt>
+            <dd>Indica que a aprovação ainda não consta no relatório. Não significa, sozinho, irregularidade.</dd>
           </div>
           <div>
             <dt>Valor zerado</dt>
-            <dd>Registro sem valor financeiro informado no relatÃ³rio; precisa de conferÃªncia no PDF.</dd>
+            <dd>Registro sem valor financeiro informado no relatório; precisa de conferência no PDF.</dd>
           </div>
           <div>
             <dt>Sem data do recurso</dt>
-            <dd>O relatÃ³rio nÃ£o mostra quando o recurso foi disponibilizado.</dd>
+            <dd>O relatório não mostra quando o recurso foi disponibilizado.</dd>
           </div>
         </dl>
       </section>
@@ -279,6 +298,26 @@
       </div>
       <div id="detailBody" class="detail-body"></div>
     </dialog>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__brand">
+          <strong>Fiscaliza Varginha</strong>
+          <span>Painel Cidadão · Fiscalização Independente</span>
+          <p>Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos oficiais e mostramos como conferir — informamos, não acusamos.</p>
+        </div>
+        <nav class="site-footer__links" aria-label="Rodapé">
+          <a href="../index.html">Início</a>
+          <a href="../atualizacoes.html">Atualizações</a>
+          <a href="../prefeitura.html">Prefeitura</a>
+          <a href="../camara.html">Câmara</a>
+          <a href="index.html">Emendas</a>
+          <a href="../relatorios.html">Relatórios</a>
+          <a href="../cobrar.html">Como cobrar</a>
+        </nav>
+      </div>
+      <div class="site-footer__bottom">Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</div>
+    </footer>
 
     <script src="data/emendas.js"></script>
     <script src="app.js"></script>

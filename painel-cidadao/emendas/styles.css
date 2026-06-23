@@ -1,14 +1,23 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/Inter-Variable.woff2") format("woff2");
+}
+
 :root {
-  --bg: #f6f7f4;
+  /* Paleta alinhada ao Fiscaliza Varginha (Civic Navy + Gold) */
+  --bg: #F7FAFD;
   --surface: #ffffff;
-  --text: #17211b;
-  --muted: #617066;
-  --line: #d9dfd7;
-  --green: #23624a;
-  --blue: #235b83;
-  --amber: #956d1c;
-  --red: #93443f;
-  --shadow: 0 16px 40px rgba(23, 33, 27, 0.08);
+  --text: #152131;
+  --muted: #607084;
+  --line: #DCE6F0;
+  --green: #004B8D;   /* navy — cor principal/municipais */
+  --blue: #078A4B;    /* teal — tipo estadual */
+  --amber: #B8870B;   /* gold escuro — tipo federal */
+  --red: #C93632;
+  --shadow: 0 16px 40px rgba(0, 75, 141, 0.08);
 }
 
 * {
@@ -19,7 +28,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
   line-height: 1.5;
 }
 
@@ -31,7 +40,7 @@ select {
 
 .topbar {
   align-items: end;
-  background: #17382f;
+  background: #004B8D;
   color: #fff;
   display: flex;
   gap: 24px;
@@ -53,12 +62,12 @@ select {
 }
 
 .lead {
-  color: #dfe8e2;
+  color: #D6E4F5;
   max-width: 680px;
 }
 
 .eyebrow {
-  color: #b9d0c4;
+  color: #AAC4E3;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -78,7 +87,7 @@ select {
 }
 
 .source-note span {
-  color: #b9d0c4;
+  color: #AAC4E3;
   font-size: 0.82rem;
 }
 
@@ -136,11 +145,11 @@ select {
 }
 
 .citizen-guide {
-  background: #f4f7f5;
-  border: 1px solid #cbd4ce;
+  background: #F4F8FC;
+  border: 1px solid #DCE6F0;
   border-left: 4px solid var(--blue);
   border-radius: 8px;
-  color: #35453b;
+  color: #607084;
   display: grid;
   gap: 2px;
   padding: 12px 14px;
@@ -182,8 +191,8 @@ select {
 
 .field input,
 .field select {
-  background: #fbfcfa;
-  border: 1px solid #cbd4ce;
+  background: #FFFFFF;
+  border: 1px solid #DCE6F0;
   border-radius: 6px;
   color: var(--text);
   min-height: 42px;
@@ -194,7 +203,7 @@ select {
 .field input:focus,
 .field select:focus {
   border-color: var(--green);
-  outline: 3px solid rgba(35, 98, 74, 0.15);
+  outline: 3px solid rgba(0, 75, 141, 0.15);
 }
 
 .button,
@@ -217,9 +226,9 @@ select {
 }
 
 .button.secondary {
-  background: #eef2ef;
-  border-color: #cbd4ce;
-  color: #21352b;
+  background: #F4F8FC;
+  border-color: #DCE6F0;
+  color: #152131;
 }
 
 .quick-filters {
@@ -229,14 +238,14 @@ select {
 }
 
 .chip {
-  background: #f6f8f7;
-  border-color: #cbd4ce;
-  color: #21352b;
+  background: #F4F8FC;
+  border-color: #DCE6F0;
+  color: #152131;
   padding: 0 12px;
 }
 
 .chip.active {
-  background: #e2efe9;
+  background: #E6F0FB;
   border-color: var(--green);
   color: var(--green);
 }
@@ -312,7 +321,7 @@ select {
 }
 
 .bar-track {
-  background: #e7ece8;
+  background: #EEF3F9;
   border-radius: 999px;
   height: 12px;
   overflow: hidden;
@@ -348,7 +357,7 @@ select {
 
 .ranking-item {
   align-items: center;
-  background: #fbfcfa;
+  background: #FFFFFF;
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--text);
@@ -363,12 +372,12 @@ select {
 
 .ranking-item:hover {
   border-color: var(--green);
-  box-shadow: 0 8px 20px rgba(35, 98, 74, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 75, 141, 0.08);
 }
 
 .ranking-position {
   align-items: center;
-  background: #e2efe9;
+  background: #E6F0FB;
   border-radius: 999px;
   color: var(--green);
   display: inline-flex;
@@ -405,7 +414,7 @@ select {
 }
 
 .flag-card {
-  background: #fbfcfa;
+  background: #FFFFFF;
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--text);
@@ -449,7 +458,7 @@ button.flag-card:hover {
 }
 
 .situation-card {
-  background: #fbfcfa;
+  background: #FFFFFF;
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--text);
@@ -463,11 +472,11 @@ button.flag-card:hover {
 
 .situation-card:hover {
   border-color: var(--green);
-  box-shadow: 0 8px 20px rgba(35, 98, 74, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 75, 141, 0.08);
 }
 
 .situation-card.active {
-  background: #e2efe9;
+  background: #E6F0FB;
   border-color: var(--green);
 }
 
@@ -512,7 +521,7 @@ button.flag-card:hover {
 }
 
 .top-value-item {
-  background: #fbfcfa;
+  background: #FFFFFF;
   border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--text);
@@ -525,7 +534,7 @@ button.flag-card:hover {
 
 .top-value-item:hover {
   border-color: var(--green);
-  box-shadow: 0 8px 20px rgba(35, 98, 74, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 75, 141, 0.08);
 }
 
 .top-value-item strong {
@@ -552,11 +561,11 @@ button.flag-card:hover {
 }
 
 .pdf-guide {
-  background: #f4f7f5;
-  border: 1px solid #cbd4ce;
+  background: #F4F8FC;
+  border: 1px solid #DCE6F0;
   border-left: 4px solid var(--green);
   border-radius: 8px;
-  color: #35453b;
+  color: #607084;
   font-size: 0.92rem;
   margin-top: 14px;
   padding: 12px 14px;
@@ -578,9 +587,9 @@ button.flag-card:hover {
 
 .icon-button {
   align-items: center;
-  background: #eef2ef;
-  border-color: #cbd4ce;
-  color: #21352b;
+  background: #F4F8FC;
+  border-color: #DCE6F0;
+  color: #152131;
   display: inline-flex;
   font-size: 1.3rem;
   height: 40px;
@@ -629,9 +638,9 @@ button.flag-card:hover {
 }
 
 .tag {
-  background: #eef2ef;
+  background: #F4F8FC;
   border-radius: 999px;
-  color: #35453b;
+  color: #607084;
   font-size: 0.78rem;
   font-weight: 700;
   padding: 4px 8px;
@@ -648,7 +657,7 @@ button.flag-card:hover {
 }
 
 .tag.municipal {
-  background: #e2efe9;
+  background: #E6F0FB;
   color: var(--green);
 }
 
@@ -843,4 +852,35 @@ button.flag-card:hover {
   .ranking-meta {
     grid-column: auto;
   }
+}
+
+/* ===== Cabecalho e rodape alinhados ao Fiscaliza ===== */
+.site-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px max(20px, calc((100vw - 1180px) / 2)); background: #fff; border-bottom: 1px solid var(--line); flex-wrap: wrap; position: sticky; top: 0; z-index: 50; }
+.site-nav__brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.site-nav__mark { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 9px; background: var(--green); color: #fff; font-weight: 800; font-size: .95rem; }
+.site-nav__name { display: flex; flex-direction: column; line-height: 1.1; }
+.site-nav__name strong { color: var(--green); font-size: 1rem; }
+.site-nav__name small { color: var(--muted); font-size: .72rem; }
+.site-nav__menu { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.site-nav__menu a { color: #152131; text-decoration: none; font-weight: 600; font-size: .92rem; padding: 8px 12px; border-radius: 8px; }
+.site-nav__menu a:hover { background: var(--bg); }
+.site-nav__menu a.is-active { color: var(--green); background: #E6F0FB; }
+.site-nav__cta { background: #F2C230; color: #152131 !important; }
+.site-nav__cta:hover { filter: brightness(1.06); }
+.site-nav__toggle, .site-nav__toggle-cb { display: none; }
+.site-footer { background: #00376B; color: #D6E4F5; margin-top: 40px; }
+.site-footer__inner { max-width: 1180px; margin: 0 auto; padding: 32px 20px; display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+.site-footer__brand strong { color: #fff; font-size: 1.1rem; display: block; }
+.site-footer__brand span { color: #F2C230; font-size: .85rem; }
+.site-footer__brand p { color: #AAC4E3; font-size: .85rem; line-height: 1.5; margin: 10px 0 0; }
+.site-footer__links { display: flex; flex-direction: column; gap: 6px; }
+.site-footer__links a { color: #D6E4F5; text-decoration: none; font-size: .9rem; }
+.site-footer__links a:hover { color: #fff; text-decoration: underline; }
+.site-footer__bottom { border-top: 1px solid rgba(255,255,255,.12); padding: 14px 20px; text-align: center; font-size: .82rem; color: #AAC4E3; }
+@media (max-width: 760px) {
+  .site-nav__toggle { display: inline-block; cursor: pointer; font-size: 1.4rem; color: var(--green); padding: 4px 8px; }
+  .site-nav__menu { display: none; width: 100%; flex-direction: column; align-items: stretch; }
+  .site-nav__toggle-cb:checked ~ .site-nav__menu { display: flex; }
+  .site-nav__menu a { padding: 12px; }
+  .site-footer__inner { grid-template-columns: 1fr; }
 }

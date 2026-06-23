@@ -16,9 +16,12 @@ from __future__ import annotations
 import argparse
 import io
 import json
+import os
 import re
 import sys
+import threading
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -215,9 +218,10 @@ def coletar_diario(limite_edicoes: int = 3) -> list[dict]:
     if limite_edicoes > 0:
         edicoes = edicoes[:limite_edicoes]
     print(f"→ Diário: {len(edicoes)} edição(ões) "
-          f"(IA: {'ON' if enriquecedor_ia.tem_ia() else 'OFF (fallback)'})")
+          f"(IA: {'ON' if enriquecedor_ia.tem_ia() else 'OFF (fallback)'})", flush=True)
 
-    pubs: list[dict] = []
+    # Fase 1: baixa o texto de cada edição (cacheado) e junta todos os atos aceitos.
+    tarefas: list[tuple] = []
     for e in edicoes:
         pid = e.get("publicacao_id")
         if not pid:
@@ -225,17 +229,37 @@ def coletar_diario(limite_edicoes: int = 3) -> list[dict]:
         try:
             texto, url_pdf, leitor = _baixar_texto(pid)
         except Exception as ex:
-            print(f"  ! edição {e.get('edicao')}: download falhou ({ex})")
+            print(f"  ! edição {e.get('edicao')}: download falhou ({ex})", flush=True)
             continue
         if not texto:
-            print(f"  ! edição {e.get('edicao')}: sem texto")
+            print(f"  ! edição {e.get('edicao')}: sem texto", flush=True)
             continue
         atos = _segmentar(texto)
         aceitos = [a for a in atos if a[0] in TIPOS_ACEITOS]
-        print(f"  edição {e.get('edicao')}: {len(atos)} ato(s), {len(aceitos)} aceito(s)")
+        print(f"  edição {e.get('edicao')}: {len(atos)} ato(s), {len(aceitos)} aceito(s)", flush=True)
         for tipo, rotulo, titulo, trecho in aceitos:
-            pubs.append(_monta_ato(tipo, rotulo, titulo, trecho, e, url_pdf, leitor))
-    print(f"  ✓ {len(pubs)} publicação(ões) do Diário")
+            tarefas.append((tipo, rotulo, titulo, trecho, e, url_pdf, leitor))
+
+    # Fase 2: enriquece os atos (IA) — em paralelo quando GEMINI_WORKERS>1.
+    total = len(tarefas)
+    feito = [0]
+    trava = threading.Lock()
+
+    def _proc(t):
+        pub = _monta_ato(*t)
+        with trava:
+            feito[0] += 1
+            if feito[0] % 25 == 0 or feito[0] == total:
+                print(f"    {feito[0]}/{total} atos…", flush=True)
+        return pub
+
+    workers = max(1, int(os.getenv("GEMINI_WORKERS", "1")))
+    if workers > 1 and tarefas:
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            pubs = list(ex.map(_proc, tarefas))
+    else:
+        pubs = [_proc(t) for t in tarefas]
+    print(f"  ✓ {len(pubs)} publicação(ões) do Diário", flush=True)
     return pubs
 
 

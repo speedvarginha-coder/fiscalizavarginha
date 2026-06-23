@@ -14,9 +14,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
+import threading
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -185,14 +188,28 @@ def coletar_camara(ano: int, limite: int = 0) -> list[dict]:
     autores_map = _mapa_autores()
     print(f"  autores resolvidos: {len(autores_map)}")
 
-    pubs: list[dict] = []
-    for i, m in enumerate(materias, 1):
+    total = len(materias)
+    feito = [0]
+    trava = threading.Lock()
+
+    def _proc(m):
         pub = _monta_publicacao(m, autores_map)
-        if pub:
-            pubs.append(pub)
-        if i % 10 == 0:
-            print(f"    {i}/{len(materias)}…")
-    print(f"  ✓ {len(pubs)} publicação(ões) estruturada(s)")
+        with trava:
+            feito[0] += 1
+            if feito[0] % 25 == 0 or feito[0] == total:
+                print(f"    {feito[0]}/{total}…", flush=True)
+        return pub
+
+    # GEMINI_WORKERS>1 processa em paralelo (paid tier aguenta). map preserva ordem.
+    workers = max(1, int(os.getenv("GEMINI_WORKERS", "1")))
+    if workers > 1:
+        with ThreadPoolExecutor(max_workers=workers) as ex:
+            resultados = list(ex.map(_proc, materias))
+    else:
+        resultados = [_proc(m) for m in materias]
+
+    pubs = [p for p in resultados if p]
+    print(f"  ✓ {len(pubs)} publicação(ões) estruturada(s)", flush=True)
     return pubs
 
 
