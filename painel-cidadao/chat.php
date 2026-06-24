@@ -6,6 +6,19 @@
 
 // Rate limit simples via sessão PHP
 session_start();
+
+// Streaming-friendly: sem buffering/compressão
+@ini_set('zlib.output_compression', '0');
+@ini_set('output_buffering', '0');
+@ini_set('implicit_flush', '1');
+
+// Emite um evento SSE (Server-Sent Events) para o navegador
+function sse($obj) {
+    echo 'data: ' . json_encode($obj, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . "\n\n";
+    @ob_flush();
+    @flush();
+}
+
 $JANELA = 15 * 60; // 15 minutos
 $MAX    = 10;      // máx 10 perguntas por janela
 
@@ -17,8 +30,9 @@ if (!isset($_SESSION['rl_inicio']) || ($agora - $_SESSION['rl_inicio']) > $JANEL
 $_SESSION['rl_count']++;
 if ($_SESSION['rl_count'] > $MAX) {
     http_response_code(429);
-    header('Content-Type: application/json');
-    echo json_encode(['erro' => 'Muitas perguntas em pouco tempo. Aguarde alguns minutos.']);
+    header('Content-Type: text/event-stream; charset=utf-8');
+    sse(['erro' => 'Muitas perguntas em pouco tempo. Aguarde alguns minutos.', 'rate' => true]);
+    sse(['fim' => true]);
     exit;
 }
 
@@ -45,7 +59,9 @@ if (file_exists($configFile)) {
 }
 if (empty($apiKey)) {
     http_response_code(500);
-    echo json_encode(['erro' => 'Chave não configurada']);
+    header('Content-Type: text/event-stream; charset=utf-8');
+    sse(['erro' => 'Chave não configurada']);
+    sse(['fim' => true]);
     exit;
 }
 
@@ -54,19 +70,26 @@ $body    = json_decode(file_get_contents('php://input'), true);
 $pergunta = trim(substr($body['pergunta'] ?? '', 0, 500));
 if (!$pergunta) {
     http_response_code(400);
-    echo json_encode(['erro' => 'Pergunta vazia']);
+    header('Content-Type: text/event-stream; charset=utf-8');
+    sse(['erro' => 'Pergunta vazia']);
+    sse(['fim' => true]);
     exit;
 }
 
 // Contexto fixo
 $contexto = "Você é o assistente do painel Fiscaliza Varginha, ferramenta de transparência pública municipal.
 Responda SEMPRE em português brasileiro, de forma clara, direta e acessível ao cidadão comum.
+Você está em uma CONVERSA contínua: use as mensagens anteriores para entender perguntas curtas ou de acompanhamento (ex: \"e a câmara?\", \"e em 2025?\", \"quem é o segundo?\", \"quanto dá por mês?\"). Não repita o que já explicou — complemente.
 Tom: neutro, honesto, empático. Dados são pistas, não provas de irregularidade. Nunca acuse.
 Nunca invente dados. Se não souber ou o dado não estiver aqui, diga isso claramente e oriente onde buscar (portal oficial ou LAI).
 Respostas curtas (máx 3 parágrafos). Use bullet points quando ajudar.
 
 REGRAS IMPORTANTES:
-1. Sempre termine a resposta sugerindo 1 pergunta de acompanhamento que o cidadão provavelmente quer fazer — MAS SOMENTE se você conseguir responder com os dados disponíveis aqui. NUNCA sugira perguntas sobre dados que você não tem (ex: obras por bairro, destinos de viagem, detalhes de licitação específica). Nesse caso, sugira algo que VOCÊ SÁ RESPONDER, como: quem mais recebeu, qual o total gasto, comparações entre vereadores, outros fornecedores, como cobrar via LAI. Formato: \"🔎 Próxima pergunta sugerida: [pergunta]\"
+1. Ao FINAL de TODA resposta, gere de 2 a 3 perguntas de acompanhamento que o cidadão provavelmente quer fazer A SEGUIR. Coloque cada uma em sua própria linha, começando EXATAMENTE com \"::\" (dois-pontos duplos), sem numeração, sem markdown e sem escrever mais nada depois delas. Exemplo do formato final:
+::Quem mais recebeu da Prefeitura em 2026?
+::Quanto a Câmara gastou no mesmo período?
+::Como peço isso via LAI?
+Só proponha perguntas que VOCÊ CONSEGUE responder com os dados deste contexto — NUNCA sugira algo que você não tem (ex: destino específico de uma diária, obra de um bairro não listado). Escreva-as como a pergunta que o cidadão faria, curta e direta. Essas linhas \"::\" viram botões clicáveis no painel.
 2. Quando usar termos técnicos (diária, emenda impositiva, comissionado, PNCP, LAI), explique brevemente entre parênteses.
 3. Quando indicar onde verificar, inclua o link direto no formato markdown [texto](url) — o painel renderiza esses links clicáveis.
 4. Se o dado pedido não estiver nos dados abaixo, diga \"Esse dado não está disponível no sistema\" e ofereça o modelo LAI correspondente em [Modelos LAI](https://fiscalizavarginha.com.br/painel-cidadao/cobrar.html).
@@ -289,7 +312,7 @@ NOTA FUNDEB: Os valores de repasse principal do FUNDEB (quota municipal + estadu
 [Ver gastos educação no portal Betha](https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83036)
 
 ── OBRAS EM UNIDADES EDUCACIONAIS (base Betha — 21 obras identificadas) ──
-LIMITAÇÃO IMPORTANTE: O sistema Betha NÃO expõe a fonte de recurso (FUNDEB, FNDE federal ou recursos próprios) nas obras públicas. O campo existe na estrutura mas vem vazio. Para saber se uma obra específica usou dinheiro do FUNDEB, o cidadão deve pedir via LAI a "nota de empenho com fonte de recurso de cada contrato de obra em unidade educacional".
+LIMITAÇÃO IMPORTANTE: O sistema Betha NÃO expõe a fonte de recurso (FUNDEB, FNDE federal ou recursos próprios) nas obras públicas. O campo existe na estrutura mas vem vazio. Para saber se uma obra específica usou dinheiro do FUNDEB, o cidadão deve pedir via LAI a \"nota de empenho com fonte de recurso de cada contrato de obra em unidade educacional\".
 
 Obras educacionais EM ANDAMENTO:
 1. Construção de Escola + CEINF — Rua José Guimarães, Santa Luzia — ROCHA CONSTR. — R\$ 9.309.076 — 53% executado
@@ -298,7 +321,7 @@ Obras educacionais EM ANDAMENTO:
 4. Serviços prediais em escolas — Av. Ruth Carvalho, Jardim Sion — GW ENGENHARIA — R\$ 1.279.998 — 61% executado
 
 Obra educacional PARALISADA:
-- Construção CEMEI Canaã — Av. Estados Unidos, Jardim Canaã — LF CONSTRUTORA — R\$ 3.836.018 — 52% executado — parada desde dez/2022 (nota: mesma obra tem contrato "remanescente" com outro fornecedor)
+- Construção CEMEI Canaã — Av. Estados Unidos, Jardim Canaã — LF CONSTRUTORA — R\$ 3.836.018 — 52% executado — parada desde dez/2022 (nota: mesma obra tem contrato \"remanescente\" com outro fornecedor)
 
 Obras educacionais CONCLUÍDAS (principais):
 - Construção Escola bairro Belo Horizonte — R\$ 8.158.246 — LBD ENGENHARIA
@@ -439,17 +462,38 @@ PROJETOS SEGURANÇA CONTRA INCÊNDIO E PÂNICO (obrigatório por lei):
 LIMITAÇÃO: Este consulta (83025) NÃO inclui campo de fonte de recurso. Não é possível confirmar via API se obra usou FUNDEB, FNDE ou recurso próprio.
 [Ver obras educação no portal (Betha)](https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83025)
 
+── PUBLICAÇÕES ESTRUTURADAS (Diário Oficial + Câmara) ──
+O painel resume automaticamente, com IA, cada ato do Diário Oficial de Varginha e cada matéria da Câmara (SAPL). São cerca de 1.700 publicações com: tipo (lei, decreto, portaria, edital, extrato de contrato, licitação, indicação, requerimento, projeto de lei), resumo em linguagem simples, o que propõe, por que acompanhar, envolvidos e valores quando há.
+Se o cidadão perguntar sobre uma lei, decreto, portaria, edital ou publicação recente do Diário/Câmara, oriente a abrir a página de Atualizações e buscar pelo número ou tema.
+[Ver publicações (Diário + Câmara)](https://fiscalizavarginha.com.br/painel-cidadao/atualizacoes.html)
+
+── PORTAL DE EMENDAS (municipais, estaduais e federais) ──
+Página dedicada com 295 emendas destinadas a Varginha, total aprox. R\$ 28 milhões (73 beneficiários; maior emenda R\$ 2,57 milhões). Mostra quem recebeu, valor, finalidade, ano e órgão, com link para a fonte oficial (Câmara para municipais; Portal Betha para estaduais/federais). Permite buscar por entidade, esfera e ano, e baixar CSV.
+[Ver Portal de Emendas](https://fiscalizavarginha.com.br/painel-cidadao/emendas/)
+
 ── IDENTIFICAÇÃO OFICIAL ──
 CNPJ Prefeitura de Varginha: 18.240.380/0001-38 | CNPJ-IBGE: 3170701
 Status sanções CEIS/CNEP: nenhuma registrada para fornecedores ativos (verificado jun/2026)";
 
-// Chamar Gemini
+// ---- Histórico da conversa (multi-turn) ----
+$historico = $body['historico'] ?? [];
+$contents  = [];
+if (is_array($historico)) {
+    foreach (array_slice($historico, -8) as $msg) {
+        $papel = (($msg['papel'] ?? '') === 'model') ? 'model' : 'user';
+        $txt   = trim(substr($msg['texto'] ?? '', 0, 1200));
+        if ($txt === '') continue;
+        $contents[] = ['role' => $papel, 'parts' => [['text' => $txt]]];
+    }
+}
+// Pergunta atual (último turno)
+$contents[] = ['role' => 'user', 'parts' => [['text' => $pergunta]]];
+
 $payload = json_encode([
-    'contents' => [[
-        'parts' => [['text' => $contexto . "\n\nPergunta do cidadão: " . $pergunta]]
-    ]],
+    'system_instruction' => ['parts' => [['text' => $contexto]]],
+    'contents'           => $contents,
     'generationConfig' => [
-        'maxOutputTokens' => 800,
+        'maxOutputTokens' => 1000,
         'temperature'     => 0.3,
         'thinkingConfig'  => ['thinkingBudget' => 0],
     ],
@@ -462,53 +506,52 @@ $payload = json_encode([
 ]);
 
 $model = 'gemini-2.5-flash';
-$url   = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:generateContent?key={$apiKey}";
+$url   = "https://generativelanguage.googleapis.com/v1beta/models/{$model}:streamGenerateContent?alt=sse&key={$apiKey}";
+
+// Resposta em streaming (SSE) para o navegador
+header('Content-Type: text/event-stream; charset=utf-8');
+header('Cache-Control: no-cache');
+header('X-Accel-Buffering: no'); // desliga buffering de proxy
+while (ob_get_level() > 0) { @ob_end_flush(); }
+
+$buffer  = '';
+$gotText = false;
 
 $ch = curl_init($url);
 curl_setopt_array($ch, [
-    CURLOPT_POST           => true,
-    CURLOPT_POSTFIELDS     => $payload,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
-    CURLOPT_TIMEOUT        => 30,
+    CURLOPT_POST          => true,
+    CURLOPT_POSTFIELDS    => $payload,
+    CURLOPT_HTTPHEADER    => ['Content-Type: application/json'],
+    CURLOPT_TIMEOUT       => 60,
+    // Repassa cada trecho de texto da Gemini ao navegador assim que chega
+    CURLOPT_WRITEFUNCTION => function ($ch, $data) use (&$buffer, &$gotText) {
+        $buffer .= $data;
+        while (($pos = strpos($buffer, "\n")) !== false) {
+            $line   = trim(substr($buffer, 0, $pos));
+            $buffer = substr($buffer, $pos + 1);
+            if ($line === '' || strpos($line, 'data:') !== 0) continue;
+            $jsonStr = trim(substr($line, 5));
+            if ($jsonStr === '' || $jsonStr === '[DONE]') continue;
+            $obj   = json_decode($jsonStr, true);
+            $delta = $obj['candidates'][0]['content']['parts'][0]['text'] ?? '';
+            if ($delta !== '') {
+                $gotText = true;
+                sse(['delta' => $delta]);
+            }
+        }
+        return strlen($data);
+    },
 ]);
-$resp   = curl_exec($ch);
+curl_exec($ch);
 $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
-if (!$resp) {
-    http_response_code(500);
-    echo json_encode(['erro' => 'Erro de conexão com a IA. Tente novamente.']);
-    exit;
-}
-
-$json  = json_decode($resp, true);
-
-// Detecta quota esgotada (429)
-if ($status === 429) {
-    http_response_code(503);
-    echo json_encode(['erro' => 'IA temporariamente indisponível. Tente novamente em alguns minutos.']);
-    exit;
-}
-
-// Detecta erro da API Gemini
-if (!empty($json['error'])) {
-    $code = $json['error']['code'] ?? 0;
-    if ($code === 429) {
-        http_response_code(503);
-        echo json_encode(['erro' => 'IA temporariamente indisponível. Tente novamente em alguns minutos.']);
+if (!$gotText) {
+    if ($status === 429) {
+        sse(['erro' => 'IA temporariamente indisponível. Tente novamente em alguns minutos.', 'rate' => true]);
     } else {
-        http_response_code(500);
-        echo json_encode(['erro' => 'Erro na IA. Tente novamente.']);
+        sse(['erro' => 'Não consegui responder agora. Tente novamente em instantes.']);
     }
-    exit;
 }
-
-$texto = $json['candidates'][0]['content']['parts'][0]['text'] ?? '';
-if (!$texto) {
-    http_response_code(500);
-    echo json_encode(['erro' => 'Sem resposta da IA. Tente novamente em instantes.']);
-    exit;
-}
-
-echo json_encode(['resposta' => $texto]);
+sse(['fim' => true]);
+exit;

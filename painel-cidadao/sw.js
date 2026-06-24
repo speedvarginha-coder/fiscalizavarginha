@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v70 (publicações IA + emendas + transparência) */
-const CACHE = "fiscaliza-v70";
+/* Fiscaliza Varginha — Service Worker v71 (chat conversacional: memória + streaming + sugestões) */
+const CACHE = "fiscaliza-v71";
 const STATIC = [
   "./",
   "./index.html",

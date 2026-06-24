@@ -105,24 +105,67 @@
   const subtitle = document.getElementById("chatSubtitle");
   if (subtitle) subtitle.textContent = USA_IA ? "🤖 Gemini · dados de Varginha" : "📋 Respostas automáticas";
 
-  async function chamarIA(pergunta, tentativa) {
-    tentativa = tentativa || 1;
+  // Histórico da conversa (multi-turn). Cada item: {papel:"user"|"model", texto}
+  const historico = [];
+
+  // Chama a IA em streaming (SSE). onDelta(textoAcumulado) é chamado a cada trecho.
+  async function chamarIAStream(pergunta, onDelta) {
     const res = await fetch(FUNC_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ pergunta }),
+      body: JSON.stringify({ pergunta, historico }),
     });
-    // 429 ou 503 = rate limit/quota — tenta de novo após delay
-    if ((res.status === 429 || res.status === 503) && tentativa < 3) {
-      const delay = tentativa === 1 ? 8000 : 20000; // 8s, depois 20s
-      await new Promise(r => setTimeout(r, delay));
-      return chamarIA(pergunta, tentativa + 1);
+
+    // Navegador sem streaming de fetch — degrada para leitura completa
+    if (!res.body || !res.body.getReader) {
+      const txt = await res.text();
+      let full = "";
+      txt.split("\n\n").forEach((bloco) => {
+        const linha = bloco.split("\n").find((l) => l.startsWith("data:"));
+        if (!linha) return;
+        try {
+          const p = JSON.parse(linha.slice(5).trim());
+          if (p.erro) throw new Error(p.rate ? "rate_limit" : "api_error");
+          if (p.delta) full += p.delta;
+        } catch (e) { if (e.message === "rate_limit") throw e; }
+      });
+      if (!full) throw new Error("vazio");
+      if (onDelta) onDelta(full);
+      return full;
     }
-    if (res.status === 429 || res.status === 503) throw new Error("rate_limit");
-    if (!res.ok) throw new Error("api_error");
-    const data = await res.json();
-    if (data.erro) throw new Error(data.erro);
-    return data.resposta || "";
+
+    const reader  = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = "", full = "";
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      let i;
+      while ((i = buf.indexOf("\n\n")) >= 0) {
+        const bloco = buf.slice(0, i);
+        buf = buf.slice(i + 2);
+        const linha = bloco.split("\n").find((l) => l.startsWith("data:"));
+        if (!linha) continue;
+        let p;
+        try { p = JSON.parse(linha.slice(5).trim()); } catch (e) { continue; }
+        if (p.erro)  throw new Error(p.rate ? "rate_limit" : "api_error");
+        if (p.delta) { full += p.delta; if (onDelta) onDelta(full); }
+      }
+    }
+    if (!full) throw new Error("vazio");
+    return full;
+  }
+
+  // Separa o texto visível das linhas de sugestão "::"
+  function separarSugestoes(full) {
+    const linhas    = String(full || "").split("\n");
+    const sugestoes = linhas
+      .filter((l) => l.trim().startsWith("::"))
+      .map((l) => l.trim().slice(2).trim())
+      .filter(Boolean);
+    const visivel = linhas.filter((l) => !l.trim().startsWith("::")).join("\n").trim();
+    return { visivel, sugestoes };
   }
 
   function renderMarkdown(txt) {
@@ -151,12 +194,25 @@
     const loader = addMsg('<span class="chat-typing"><i></i><i></i><i></i></span>', "bot");
 
     if (USA_IA) {
-      chamarIA(texto)
-        .then((resposta) => {
-          loader.remove();
-          addMsg(renderMarkdown(resposta), "bot");
+      let botEl = null;
+      const onDelta = (full) => {
+        if (!botEl) { loader.remove(); botEl = addMsg("", "bot"); }
+        botEl.innerHTML = renderMarkdown(separarSugestoes(full).visivel);
+        msgs.scrollTop = msgs.scrollHeight;
+      };
+      chamarIAStream(texto, onDelta)
+        .then((full) => {
+          if (!botEl) { loader.remove(); botEl = addMsg("", "bot"); }
+          const { visivel, sugestoes } = separarSugestoes(full);
+          botEl.innerHTML = renderMarkdown(visivel);
+          historico.push({ papel: "user",  texto: texto });
+          historico.push({ papel: "model", texto: visivel });
+          if (historico.length > 12) historico.splice(0, historico.length - 12);
+          if (sugestoes.length) addChips(sugestoes.slice(0, 3).map((s) => ({ label: s, q: s })));
+          msgs.scrollTop = msgs.scrollHeight;
         })
         .catch((err) => {
+          if (botEl) botEl.remove();
           loader.remove();
           if (err.message === "rate_limit") {
             addMsg("Muitas perguntas seguidas — aguarde alguns minutos e tente novamente.", "bot");
