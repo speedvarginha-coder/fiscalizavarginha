@@ -1032,9 +1032,18 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
           f"{execucao_direta} execução direta (órgão público)")
 
     # ===== Dados Abertos (Onda 3): contratos, licitações, compras diretas e obras =====
+    # A consulta de contratos filtra por anoLicitacao. Os 2 anos correntes vêm
+    # inteiros; dos anteriores resgatamos só os plurianuais AINDA vigentes —
+    # ex.: agência de publicidade (VERSAO BR, R$ 8,9 mi) assinada em 2024 e
+    # vigente até 2026, que sem isto ficava de fora da base.
+    hoje_iso        = dt.date.today().isoformat()
     contratos       = _baixar_dados_abertos_safe(cb, token, "Contratos",               cb.CONSULTA_CONTRATOS,          ano_atual)
-    contratos_ant   = _baixar_dados_abertos_safe(cb, token, "Contratos (ano anterior)", cb.CONSULTA_CONTRATOS,          ano_atual - 1)
-    contratos      += contratos_ant  # junta os 2 anos pra ter base mais rica
+    contratos      += _baixar_dados_abertos_safe(cb, token, "Contratos (ano anterior)", cb.CONSULTA_CONTRATOS,          ano_atual - 1)
+    for ano_old in (ano_atual - 2, ano_atual - 3):
+        brutos   = _baixar_dados_abertos_safe(cb, token, f"Contratos vigentes ({ano_old})", cb.CONSULTA_CONTRATOS, ano_old)
+        vigentes = [r for r in brutos if _contrato_vigente(r, hoje_iso)]
+        print(f"    → {len(vigentes)}/{len(brutos)} ainda vigentes")
+        contratos += vigentes
     licit_andamento = _baixar_dados_abertos_safe(cb, token, "Licitações em andamento", cb.CONSULTA_LICITACOES_ABERTAS, ano_atual)
     licit_finaliz   = _baixar_dados_abertos_safe(cb, token, "Licitações finalizadas",  cb.CONSULTA_LICITACOES_FECHADAS, ano_atual)
     compras_diretas = _baixar_dados_abertos_safe(cb, token, "Compras diretas",         cb.CONSULTA_COMPRAS_DIRETAS,    ano_atual - 1)
@@ -1080,6 +1089,18 @@ def _baixar_dados_abertos_safe(cb, token: str, label: str, consulta_id: int,
     except Exception as e:
         print(f"  ✗ {label}: {e}")
         return []
+
+
+def _contrato_vigente(r: dict, hoje_iso: str) -> bool:
+    """Contrato de ano anterior que ainda vale: em execução ou com vigência
+    final no futuro. Resgata plurianuais ativos (ex.: agência de publicidade
+    assinada em 2024 e vigente até 2026). dataVigenciaFinal vem em ISO
+    (YYYY-MM-DD), então a comparação lexicográfica equivale à cronológica."""
+    sit = str(r.get("situacao", "")).strip().upper()
+    if sit in ("EXECUCAO", "EXECUÇÃO", "EM EXECUCAO", "VIGENTE", "ATIVO"):
+        return True
+    fim = str(r.get("dataVigenciaFinal", ""))[:10]
+    return bool(fim) and fim >= hoje_iso
 
 
 def _baixar_dados_abertos_full_safe(cb, token: str, label: str, consulta_id: int,
