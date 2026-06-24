@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-23T20:33:32.539Z",
+  "gerado_em": "2026-06-24T18:17:05.936Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -17,7 +17,7 @@
       "severity": "warning",
       "id": "base-defasada",
       "title": "Base principal defasada",
-      "detail": "Ultima coleta principal ha 4.4 dias.",
+      "detail": "Ultima coleta principal ha 5.3 dias.",
       "action": "Atualizar antes de divulgar dado sensivel ou publicar chamada nas redes.",
       "source": "atualizado_em.json"
     },
@@ -72,16 +72,16 @@
     {
       "severity": "warning",
       "id": "camara-despesa-sem-contrato",
-      "title": "Fornecedores da Camara sem contrato vinculado automaticamente",
-      "detail": "14 dos 20 maiores fornecedores de despesas nao bateram com contratos vigentes por nome. Exemplos: VERSÃO BR COMUNICAÇÃO E MARKETING LTDA; VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO.",
-      "action": "Cruzar por CNPJ quando a fonte permitir e manter botao de conferencia direta no Betha.",
+      "title": "Fornecedores sem contrato vinculado automaticamente",
+      "detail": "12 dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: VERSÃO BR COMUNICAÇÃO E MARKETING LTDA; VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA. Os outros 2 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 1 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
+      "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "source": "camara_betha.json"
     },
     {
       "severity": "warning",
       "id": "diario-defasado",
       "title": "Diario Oficial defasado",
-      "detail": "Ultima edicao registrada: 1825, ha 5.1 dias.",
+      "detail": "Ultima edicao registrada: 1825, ha 6.0 dias.",
       "action": "Atualizar diario antes de usar o feed de atos recentes.",
       "source": "diario.json"
     }

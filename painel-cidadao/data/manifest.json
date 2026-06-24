@@ -11,7 +11,7 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 3748
+      "bytes": 3963
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",

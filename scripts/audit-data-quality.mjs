@@ -125,6 +125,17 @@ function supplierHasContract(supplier, contracts) {
   });
 }
 
+// Um pagamento sem contrato vinculado nem sempre e falha: tributos/encargos e
+// repasses a entidades (saude/assistencia) ou concessionarias nao passam por
+// contrato. Classifica para nao alarmar o cidadao com "R$ X sem contrato"
+// quando e repasse SUS legitimo ou recolhimento de imposto.
+function gapKind(name) {
+  const n = normalizeText(name);
+  if (/\b(RECEITA FEDERAL|INSS|SEGURO SOCIAL|PREVIDENCIA|FGTS|PASEP|FAZENDA|TESOURO|IPSEMG|CONTRIBUICAO)\b/.test(n)) return "tributo";
+  if (/\b(HOSPITAL|SANTA CASA|MISERICORDIA|UNIMED|CLINICA|FUNDACAO|ASSOCIACAO|INSTITUTO|APAE|NEFRO|RENAIS|CRIANCA|ADOLESCENTE|DESENVOLVIMENTO INTEGRADO|COPASA|CEMIG|SANEAMENTO)\b/.test(n)) return "repasse";
+  return "fornecedor";
+}
+
 const chunks = {
   atualizado: readJson("atualizado_em"),
   prefeitura: readJson("prefeitura"),
@@ -300,13 +311,22 @@ const camaraTop = (chunks.camaraBetha?.top_fornecedores_atual || []).slice(0, 20
 const camaraContracts = chunks.camaraBetha?.contratos || [];
 if (camaraTop.length && camaraContracts.length) {
   const unmatched = camaraTop.filter((supplier) => !supplierHasContract(supplier, camaraContracts));
-  if (unmatched.length) {
+  const semContrato = unmatched.filter((f) => gapKind(f.nome) === "fornecedor");
+  const tributos = unmatched.filter((f) => gapKind(f.nome) === "tributo");
+  const repasses = unmatched.filter((f) => gapKind(f.nome) === "repasse");
+  if (semContrato.length) {
+    const notas = [];
+    if (tributos.length) notas.push(`${tributos.length} sao tributos/encargos (ex.: Receita Federal, INSS)`);
+    if (repasses.length) notas.push(`${repasses.length} sao repasses a entidades de saude/assistencia ou concessionarias`);
+    const cauda = notas.length
+      ? ` Os outros ${tributos.length + repasses.length} nao sao falha: ${notas.join("; ")} — nao passam por contrato.`
+      : "";
     add(
       "warning",
       "camara-despesa-sem-contrato",
-      "Fornecedores da Camara sem contrato vinculado automaticamente",
-      `${unmatched.length} dos 20 maiores fornecedores de despesas nao bateram com contratos vigentes por nome. Exemplos: ${unmatched.slice(0, 4).map((f) => f.nome).join("; ")}.`,
-      "Cruzar por CNPJ quando a fonte permitir e manter botao de conferencia direta no Betha.",
+      "Fornecedores sem contrato vinculado automaticamente",
+      `${semContrato.length} dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: ${semContrato.slice(0, 4).map((f) => f.nome).join("; ")}.${cauda}`,
+      "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "camara_betha.json",
     );
   }
