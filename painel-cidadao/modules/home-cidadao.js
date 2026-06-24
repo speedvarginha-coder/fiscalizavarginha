@@ -363,4 +363,13 @@
   renderSmartSuggest();
   renderMoneyMap();
   renderTrendWatch();
+
+  // Listen to deferred chunks loading (like "prefeitura" on home page)
+  window.addEventListener("zela:chunk", function (e) {
+    const key = (e.detail || {}).key;
+    if (key === "prefeitura") {
+      renderMoneyMap();
+      renderTrendWatch();
+    }
+  });
 })();

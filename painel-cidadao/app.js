@@ -1786,9 +1786,9 @@
       const semPagamento = emendas.filter(e => (cruzMap[e.numero + "/" + e.ano] || {}).status === "sem_pagamento");
       const semCnpj = emendas.filter(e => (cruzMap[e.numero + "/" + e.ano] || {}).status === "sem_cnpj" || !e.cnpj);
       const contratosMilhao = contratos.filter(c => (c.valor || 0) >= 1_000_000);
-      const maiorContrato = [...contratos].sort((a, b) => (b.valor || 0) - (a.valor || 0))[0];
+      const maiorContrato = [...contratos].sort((a, b) => (b.valor || 0) - (a.valor || 0))[0] || { contratado: "Não informado", valor: 0, numero: "s/n", ano: "" };
       const fornecedores = agruparRelatorio(contratos, c => c.contratado || "Fornecedor não informado", c => Number(c.valor) || 0);
-      const maiorFornecedor = fornecedores[0];
+      const maiorFornecedor = fornecedores[0] || { nome: "Não informado", valor: 0, qtd: 0 };
       const valorEmendas = emendas.reduce((s, e) => s + (Number(e.valor_brl) || 0), 0);
       const valorContratosMilhao = contratosMilhao.reduce((s, c) => s + (Number(c.valor) || 0), 0);
       const eventos = contratos.filter(c => /show|evento|artista|palco|sonorizacao|iluminacao|carnaval|rodeio|banho da doroteia/i.test(norm(c.objeto || "")));
@@ -4115,8 +4115,8 @@
           .sort((a, b) => b.valor - a.valor)
           .slice(0, 10);
 
-        const maxRanking = ranking[0].valor || 1;
-        $("listaRankingEventos").innerHTML = ranking.map((f, i) => `
+        const maxRanking = (ranking[0] && ranking[0].valor) || 1;
+        $("listaRankingEventos").innerHTML = ranking.length > 0 ? ranking.map((f, i) => `
           <div class="forn-row">
             <span class="forn-row__rank">${i + 1}</span>
             <div>
@@ -4124,7 +4124,7 @@
               <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor / maxRanking) * 100}%"></span></div>
             </div>
             <div class="forn-row__valor">${fmtBRL(f.valor)}</div>
-          </div>`).join("");
+          </div>`).join("") : `<div class="empty">Nenhum fornecedor de evento.</div>`;
 
         listaEl.innerHTML = view.sort((a,b) => b.valor_analise - a.valor_analise).map(f => {
           const data = (f.data_assinatura || f.data || "").split("-").reverse().join("/");
