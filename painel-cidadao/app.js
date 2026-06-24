@@ -6508,7 +6508,12 @@ ${url}
 
     const categoriaPorNome = (nome) => categoriasGasto.find(c => c.nome === nome) || categoriasGasto[0];
     const gastoCombina = (item, termos) => {
-      const texto = norm(`${item.origem} ${item.fornecedor} ${item.cnpj} ${item.objeto}`);
+      // Classifica pelo OBJETO (o que foi comprado), não pela razão social do
+      // fornecedor. Evita que empresas com "marketing/publicidade/eventos" no
+      // nome caiam na categoria errada — ex.: show da banda Biquini Cavadão,
+      // contratado de uma "...ENTRETENIMENTO E MARKETING LTDA", virava
+      // "Publicidade e propaganda" em vez de "Show/eventos festivos".
+      const texto = norm(`${item.objeto}`);
       return termos.some(t => texto.includes(norm(t)));
     };
       const agrupaFornecedor = (lista) => {
