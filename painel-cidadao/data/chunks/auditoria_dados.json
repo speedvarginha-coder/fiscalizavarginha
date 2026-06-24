@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-06-19T10:16:49.926Z",
+  "gerado_em": "2026-06-23T20:33:32.539Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 6,
+    "warnings": 8,
     "info": 1,
-    "ok": 1,
-    "total": 8
+    "ok": 0,
+    "total": 9
   },
   "atualizado_base": {
     "iso": "2026-06-19T07:16:47",
@@ -14,11 +14,11 @@
   },
   "items": [
     {
-      "severity": "ok",
-      "id": "base-recente",
-      "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
-      "action": "Manter rotina automatica ativa.",
+      "severity": "warning",
+      "id": "base-defasada",
+      "title": "Base principal defasada",
+      "detail": "Ultima coleta principal ha 4.4 dias.",
+      "action": "Atualizar antes de divulgar dado sensivel ou publicar chamada nas redes.",
       "source": "atualizado_em.json"
     },
     {
@@ -76,6 +76,14 @@
       "detail": "14 dos 20 maiores fornecedores de despesas nao bateram com contratos vigentes por nome. Exemplos: VERSÃO BR COMUNICAÇÃO E MARKETING LTDA; VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO.",
       "action": "Cruzar por CNPJ quando a fonte permitir e manter botao de conferencia direta no Betha.",
       "source": "camara_betha.json"
+    },
+    {
+      "severity": "warning",
+      "id": "diario-defasado",
+      "title": "Diario Oficial defasado",
+      "detail": "Ultima edicao registrada: 1825, ha 5.1 dias.",
+      "action": "Atualizar diario antes de usar o feed de atos recentes.",
+      "source": "diario.json"
     }
   ]
 }

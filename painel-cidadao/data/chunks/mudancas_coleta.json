@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-06-19T10:16:50.663Z",
+  "gerado_em": "2026-06-23T19:38:18.910Z",
   "modo": "comparacao",
   "atual": {
     "snapshot_id": "2026-06-19T07-16-47-4c39be16",
@@ -12,8 +12,8 @@
     "snapshot_id": "2026-06-18T22-18-13-4c39be16",
     "coleta_iso": "2026-06-18T22:18:13",
     "data_humana": "18/06/2026 - 22:18",
-    "arquivo": "",
-    "origem": "backup_pre_coleta"
+    "arquivo": "data/snapshots/2026-06-18T22-18-13-4c39be16.json",
+    "origem": "chunks"
   },
   "resumo": {
     "novos_contratos": 0,

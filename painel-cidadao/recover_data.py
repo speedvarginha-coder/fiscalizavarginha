@@ -30,12 +30,15 @@ def rebuild():
     prefeitura = load_json("prefeitura.json")
     pncp = load_json("pncp.json")
     camara_transparencia = load_json("camara_transparencia.json")
+    camara_betha = load_json("camara_betha.json")
     cnpjs = load_json("cnpjs.json")
     pessoal = load_json("pessoal.json")
     diarias = load_json("diarias.json")
     fontes_emendas_2026 = load_json("fontes_emendas_2026.json")
     federal = load_json("federal.json")
     atualizado_em = load_json("atualizado_em.json")
+    auditoria_dados = load_json("auditoria_dados.json")
+    remuneracao_vereadores = load_json("remuneracao_vereadores.json")
 
     # 1. Save chunks to data/chunks/
     chunks_dir = DATA_DIR / "chunks"
@@ -50,12 +53,15 @@ def rebuild():
         "prefeitura.json": prefeitura,
         "pncp.json": pncp,
         "camara_transparencia.json": camara_transparencia,
+        "camara_betha.json": camara_betha,
         "cnpjs.json": cnpjs,
         "pessoal.json": pessoal,
         "diarias.json": diarias,
         "fontes_emendas_2026.json": fontes_emendas_2026,
         "federal.json": federal,
         "atualizado_em.json": atualizado_em,
+        "auditoria_dados.json": auditoria_dados,
+        "remuneracao_vereadores.json": remuneracao_vereadores,
     }
     
     for filename, payload in chunk_mapping.items():
@@ -100,6 +106,7 @@ def rebuild():
         "camara_anos": camara_anos,
         "diario": diario,
         "prefeitura": prefeitura,
+        "camara_betha": camara_betha,
         "pncp": pncp,
         "camara_transparencia": camara_transparencia,
         "cnpjs": cnpjs,
@@ -108,6 +115,8 @@ def rebuild():
         "fontes_emendas_2026": fontes_emendas_2026,
         "federal": federal,
         "atualizado_em": atualizado_em,
+        "auditoria_dados": auditoria_dados,
+        "remuneracao_vereadores": remuneracao_vereadores,
     }
     content = "/* Gerado por recover_data.py — não editar à mão. */\n"
     content += "window.ZELA_DATA = " + json.dumps(js_payload, ensure_ascii=False, indent=2) + ";\n"

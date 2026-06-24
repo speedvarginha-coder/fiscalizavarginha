@@ -12,8 +12,8 @@
   "cargo": "Vereador",
   "quantidade_lei": 15,
   "subsidio_bruto_mensal_brl": 10384.06,
-  "impacto_mensal_estimado_brl": 155760.90,
-  "impacto_anual_estimado_brl": 2024891.70,
+  "impacto_mensal_estimado_brl": 155760.9,
+  "impacto_anual_estimado_brl": 2024891.7,
   "observacoes": [
     "Valor bruto fixado em lei para o cargo de vereador, nao necessariamente o valor liquido recebido por pessoa em cada mes.",
     "A propria lei preve desconto por falta a sessao ordinaria nao justificada.",
