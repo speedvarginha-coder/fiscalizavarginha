@@ -106,5 +106,15 @@ _fix_*.py
 _check*.py
 _find_*.py
 
+# ---- Bundles de deploy (regeneráveis pelo empacotador) ----
+*.zip
+
+# ---- Helpers de dev/QA locais (não publicáveis) ----
+take_screenshot.js
+painel-cidadao/encode_deploy.js
+
+# ---- Config local do Claude Code ----
+.claude/
+
 # Local Netlify folder
 .netlify
