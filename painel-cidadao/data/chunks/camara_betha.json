@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 5925535.01,
-  "total_externo_anterior": 7918885.45,
-  "empenhos_qtd": 3031,
+  "total_externo_atual": 5933002.41,
+  "total_externo_anterior": 8280367.95,
+  "empenhos_qtd": 3042,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -42,8 +42,8 @@
     },
     {
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 279888.35,
-      "qtd": 23
+      "valor_total": 281862.14,
+      "qtd": 25
     },
     {
       "nome": "RONALDO MENDES-ME",
@@ -118,9 +118,14 @@
       "qtd": 3
     },
     {
+      "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
+      "valor_total": 671310.09,
+      "qtd": 4
+    },
+    {
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 491871.79,
-      "qtd": 41
+      "valor_total": 471622.86,
+      "qtd": 40
     },
     {
       "nome": "UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO",
@@ -138,14 +143,9 @@
       "qtd": 1
     },
     {
-      "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
-      "valor_total": 294010.2,
-      "qtd": 3
-    },
-    {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 293710.07,
-      "qtd": 40
+      "valor_total": 291437.51,
+      "qtd": 39
     },
     {
       "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",

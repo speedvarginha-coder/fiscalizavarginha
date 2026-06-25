@@ -1,24 +1,24 @@
 {
-  "gerado_em": "2026-06-24T18:17:05.936Z",
+  "gerado_em": "2026-06-25T13:20:13.900Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 8,
+    "warnings": 6,
     "info": 1,
-    "ok": 0,
-    "total": 9
+    "ok": 1,
+    "total": 8
   },
   "atualizado_base": {
-    "iso": "2026-06-19T07:16:47",
-    "data_humana": "19/06/2026 - 07:16"
+    "iso": "2026-06-25T10:17:36",
+    "data_humana": "25/06/2026 - 10:17"
   },
   "items": [
     {
-      "severity": "warning",
-      "id": "base-defasada",
-      "title": "Base principal defasada",
-      "detail": "Ultima coleta principal ha 5.3 dias.",
-      "action": "Atualizar antes de divulgar dado sensivel ou publicar chamada nas redes.",
+      "severity": "ok",
+      "id": "base-recente",
+      "title": "Base principal recente",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
     {
@@ -73,17 +73,9 @@
       "severity": "warning",
       "id": "camara-despesa-sem-contrato",
       "title": "Fornecedores sem contrato vinculado automaticamente",
-      "detail": "12 dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: VERSÃO BR COMUNICAÇÃO E MARKETING LTDA; VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA. Os outros 2 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 1 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
+      "detail": "7 dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 2 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 1 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
       "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "source": "camara_betha.json"
-    },
-    {
-      "severity": "warning",
-      "id": "diario-defasado",
-      "title": "Diario Oficial defasado",
-      "detail": "Ultima edicao registrada: 1825, ha 6.0 dias.",
-      "action": "Atualizar diario antes de usar o feed de atos recentes.",
-      "source": "diario.json"
     }
   ]
 }

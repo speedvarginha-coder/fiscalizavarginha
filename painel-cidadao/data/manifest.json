@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-23T17:06:37",
+  "gerado_em": "2026-06-25T13:19:13.827Z",
   "chunks": {
     "atualizacoes": {
       "arquivo": "data/chunks/atualizacoes.json",
@@ -11,7 +11,7 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 3963
+      "bytes": 3634
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -19,7 +19,7 @@
     },
     "camara_betha": {
       "arquivo": "data/chunks/camara_betha.json",
-      "bytes": 25726
+      "bytes": 25727
     },
     "camara_transparencia": {
       "arquivo": "data/chunks/camara_transparencia.json",
@@ -35,7 +35,7 @@
     },
     "diarias": {
       "arquivo": "data/chunks/diarias.json",
-      "bytes": 3720534
+      "bytes": 3800731
     },
     "diario": {
       "arquivo": "data/chunks/diario.json",
@@ -67,7 +67,7 @@
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
-      "bytes": 894
+      "bytes": 32218
     },
     "obras_educacao": {
       "arquivo": "data/chunks/obras_educacao.json",
@@ -83,7 +83,7 @@
     },
     "prefeitura": {
       "arquivo": "data/chunks/prefeitura.json",
-      "bytes": 4442088
+      "bytes": 4791664
     },
     "publicacoes_diario": {
       "arquivo": "data/chunks/publicacoes_diario.json",
@@ -113,5 +113,10 @@
       "arquivo": "data/chunks/vereadores.json",
       "bytes": 7603
     }
+  },
+  "snapshots": {
+    "diretorio": "data/snapshots",
+    "total": 30,
+    "ultimo": "2026-06-25T10-17-36-f123b68c.json"
   }
 }
