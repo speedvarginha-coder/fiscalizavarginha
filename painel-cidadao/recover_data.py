@@ -12,11 +12,18 @@ ROOT = pathlib.Path(".")
 DATA_DIR = ROOT / "data"
 
 def load_json(name):
+    # Tenta carregar da raiz de data/ primeiro
     path = DATA_DIR / name
-    if not path.exists():
-        print(f"Warning: {name} not found in data/")
-        return {}
-    return json.loads(path.read_text(encoding="utf-8"))
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
+    
+    # Se nao existir em data/, tenta em data/chunks/
+    chunk_path = DATA_DIR / "chunks" / name
+    if chunk_path.exists():
+        return json.loads(chunk_path.read_text(encoding="utf-8"))
+        
+    print(f"Warning: {name} not found in data/ or data/chunks/")
+    return {}
 
 def rebuild():
     print("Rebuilding data.js and data/chunks/ from data/*.json files...")
@@ -39,6 +46,24 @@ def rebuild():
     atualizado_em = load_json("atualizado_em.json")
     auditoria_dados = load_json("auditoria_dados.json")
     remuneracao_vereadores = load_json("remuneracao_vereadores.json")
+    publicacoes_diario = load_json("publicacoes_diario.json")
+    publicacoes_estruturadas = load_json("publicacoes_estruturadas.json")
+    convenios = load_json("convenios.json")
+    educacao = load_json("educacao.json")
+    licitacoes = load_json("licitacoes.json")
+    obras_educacao = load_json("obras_educacao.json")
+    receitas = load_json("receitas.json")
+    sancoes_fornecedores = load_json("sancoes_fornecedores.json")
+    indice_relevancia = load_json("indice_relevancia.json")
+    # mudancas_coleta é gerado pelo pipeline JS (generate-data-snapshots.mjs);
+    # não existe em data/ — ler de data/chunks/ para preservar caso já exista.
+    _mudancas_chunk = DATA_DIR / "chunks" / "mudancas_coleta.json"
+    mudancas_coleta = (
+        json.loads(_mudancas_chunk.read_text(encoding="utf-8"))
+        if _mudancas_chunk.exists()
+        else {}
+    )
+
 
     # 1. Save chunks to data/chunks/
     chunks_dir = DATA_DIR / "chunks"
@@ -62,6 +87,16 @@ def rebuild():
         "atualizado_em.json": atualizado_em,
         "auditoria_dados.json": auditoria_dados,
         "remuneracao_vereadores.json": remuneracao_vereadores,
+        "publicacoes_diario.json": publicacoes_diario,
+        "publicacoes_estruturadas.json": publicacoes_estruturadas,
+        "convenios.json": convenios,
+        "educacao.json": educacao,
+        "licitacoes.json": licitacoes,
+        "obras_educacao.json": obras_educacao,
+        "receitas.json": receitas,
+        "sancoes_fornecedores.json": sancoes_fornecedores,
+        "mudancas_coleta.json": mudancas_coleta,
+        "indice_relevancia.json": indice_relevancia,
     }
     
     for filename, payload in chunk_mapping.items():
@@ -117,6 +152,16 @@ def rebuild():
         "atualizado_em": atualizado_em,
         "auditoria_dados": auditoria_dados,
         "remuneracao_vereadores": remuneracao_vereadores,
+        "publicacoes_diario": publicacoes_diario,
+        "publicacoes_estruturadas": publicacoes_estruturadas,
+        "convenios": convenios,
+        "educacao": educacao,
+        "licitacoes": licitacoes,
+        "obras_educacao": obras_educacao,
+        "receitas": receitas,
+        "sancoes_fornecedores": sancoes_fornecedores,
+        "mudancas_coleta": mudancas_coleta,
+        "indice_relevancia": indice_relevancia,
     }
     content = "/* Gerado por recover_data.py — não editar à mão. */\n"
     content += "window.ZELA_DATA = " + json.dumps(js_payload, ensure_ascii=False, indent=2) + ";\n"

@@ -32,6 +32,8 @@ const expectedChunks = [
   "pessoal",
   "pncp",
   "prefeitura",
+  "publicacoes_diario",
+  "publicacoes_estruturadas",
   "receitas",
   "remuneracao_vereadores",
   "resumo",
@@ -282,6 +284,26 @@ function validateDomainShapes(chunks) {
   if (isObject(resumo)) {
     assertNumber(resumo.ano, "resumo.ano", 2020);
     assertNumber(resumo.total_materias, "resumo.total_materias", 0);
+  }
+
+  // Validações leves para novos chunks grandes
+  const pubDiario = chunks.get("publicacoes_diario");
+  if (pubDiario !== undefined) {
+    assert(
+      isObject(pubDiario) || Array.isArray(pubDiario),
+      "publicacoes_diario deve ser objeto ou array",
+    );
+    if (isObject(pubDiario)) {
+      assertArray(pubDiario.publicacoes, "publicacoes_diario.publicacoes");
+    }
+  }
+
+  const pubEstruturadas = chunks.get("publicacoes_estruturadas");
+  if (pubEstruturadas !== undefined) {
+    assert(
+      isObject(pubEstruturadas) || Array.isArray(pubEstruturadas),
+      "publicacoes_estruturadas deve ser objeto ou array",
+    );
   }
 }
 
