@@ -5277,7 +5277,7 @@ ${url}
     // titulares da legislatura 2025-2028 constam na lista oficial da Camara.
     const NAO_TITULARES = new Map([
       ["monica junqueira cardoso", { rotulo: "Suplente", nota: "Suplente — substitui Rogério Bueno (em licença de saúde)" }],
-      ["marco antonio de souza", { rotulo: "Ex-vereador", nota: "Ex-presidente da Câmara; mandato encerrado em 2026. Não consta entre os 15 titulares atuais." }],
+      ["marco antonio de souza", { rotulo: "Ex-vereador", nota: "Ex-presidente da Câmara; mandato cassado em 2026 por quebra de decoro parlamentar. Não é titular atual." }],
     ]);
     const grupos = new Map();
     servidores.forEach((row) => {
