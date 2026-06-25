@@ -110,7 +110,17 @@ function meaningfulTokens(value) {
     .filter((token) => token.length >= 3 && !stop.has(token));
 }
 
+// Raiz do CNPJ (8 primeiros dígitos) — visível mesmo com a mascara
+// "04.491.116/****-**". Casar por raiz é exato e independe de variação de nome.
+function cnpjRoot(value) {
+  const digits = String(value || "").split("/")[0].replace(/\D/g, "");
+  return digits.length >= 8 ? digits.slice(0, 8) : "";
+}
+
 function supplierHasContract(supplier, contracts) {
+  const root = cnpjRoot(supplier?.cnpj);
+  if (root && contracts.some((c) => cnpjRoot(c.cnpj) === root)) return true;
+
   const name = normalizeText(supplier?.nome);
   const tokens = meaningfulTokens(supplier?.nome);
   if (!name || !tokens.length) return false;
