@@ -318,7 +318,13 @@ if (cnpjErrors.length) {
 }
 
 const camaraTop = (chunks.camaraBetha?.top_fornecedores_atual || []).slice(0, 20);
-const camaraContracts = chunks.camaraBetha?.contratos || [];
+// Os maiores pagadores incluem fornecedores da Prefeitura; cruza contra os
+// contratos das duas esferas para não acusar "sem contrato" um fornecedor que
+// tem contrato na Prefeitura (ex.: a agência VERSAO BR, contrato plurianual).
+const camaraContracts = [
+  ...(chunks.camaraBetha?.contratos || []),
+  ...(chunks.prefeitura?.contratos || []),
+];
 if (camaraTop.length && camaraContracts.length) {
   const unmatched = camaraTop.filter((supplier) => !supplierHasContract(supplier, camaraContracts));
   const semContrato = unmatched.filter((f) => gapKind(f.nome) === "fornecedor");
