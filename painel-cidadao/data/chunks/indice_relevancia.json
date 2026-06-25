@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-25T18:56:01.757Z",
+  "gerado_em": "2026-06-25T19:13:56.411Z",
   "fonte": {
     "principal": "camara_anos.json",
     "origem": "SAPL Camara Municipal de Varginha",
@@ -59,8 +59,8 @@
       "status": "parcial_auditavel",
       "cobertura_pct": 100,
       "confianca_dados_pct": 100,
-      "vereadores_monitorados": 15,
-      "vereadores_com_presenca": 15,
+      "vereadores_monitorados": 14,
+      "vereadores_com_presenca": 14,
       "rankings_perfil": {
         "geral": [
           {
@@ -94,48 +94,43 @@
             "valor": 69.9
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 7,
-            "valor": 64.6
-          },
-          {
             "nome": "Bruno Leandro Coletor",
-            "posicao": 8,
+            "posicao": 7,
             "valor": 64
           },
           {
             "nome": "Thulyo Paiva",
-            "posicao": 9,
+            "posicao": 8,
             "valor": 63.7
           },
           {
             "nome": "Davi Martins",
-            "posicao": 10,
+            "posicao": 9,
             "valor": 62.9
           },
           {
             "nome": "Dudu Ottoni",
-            "posicao": 11,
+            "posicao": 10,
             "valor": 61.6
           },
           {
             "nome": "Zé Morais",
-            "posicao": 12,
+            "posicao": 11,
             "valor": 61.6
           },
           {
             "nome": "Cássio Chiodi",
-            "posicao": 13,
+            "posicao": 12,
             "valor": 52
           },
           {
             "nome": "Pastor Faustinho",
-            "posicao": 14,
+            "posicao": 13,
             "valor": 50.9
           },
           {
             "nome": "Miguel da Saúde",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 49
           }
         ],
@@ -186,33 +181,28 @@
             "valor": 60.3
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 10,
-            "valor": 54.4
-          },
-          {
             "nome": "Thulyo Paiva",
-            "posicao": 11,
+            "posicao": 10,
             "valor": 52.9
           },
           {
             "nome": "Bruno Leandro Coletor",
-            "posicao": 12,
+            "posicao": 11,
             "valor": 41.2
           },
           {
             "nome": "Pastor Faustinho",
-            "posicao": 13,
+            "posicao": 12,
             "valor": 38.2
           },
           {
             "nome": "Cássio Chiodi",
-            "posicao": 14,
+            "posicao": 13,
             "valor": 36.8
           },
           {
             "nome": "Miguel da Saúde",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 27.9
           }
         ],
@@ -243,53 +233,48 @@
             "valor": 39.3
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 6,
-            "valor": 29.5
-          },
-          {
             "nome": "Thulyo Paiva",
-            "posicao": 7,
+            "posicao": 6,
             "valor": 26.2
           },
           {
             "nome": "Ana Rios Fontoura",
-            "posicao": 8,
+            "posicao": 7,
             "valor": 19.7
           },
           {
             "nome": "Dudu Ottoni",
-            "posicao": 9,
+            "posicao": 8,
             "valor": 16.4
           },
           {
             "nome": "Alexandre Prado",
-            "posicao": 10,
+            "posicao": 9,
             "valor": 14.8
           },
           {
             "nome": "Davi Martins",
-            "posicao": 11,
+            "posicao": 10,
             "valor": 11.5
           },
           {
             "nome": "Zé Morais",
-            "posicao": 12,
+            "posicao": 11,
             "valor": 9.8
           },
           {
             "nome": "Cássio Chiodi",
-            "posicao": 13,
+            "posicao": 12,
             "valor": 9.8
           },
           {
             "nome": "Miguel da Saúde",
-            "posicao": 14,
+            "posicao": 13,
             "valor": 9.8
           },
           {
             "nome": "Pastor Faustinho",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 0
           }
         ],
@@ -360,13 +345,8 @@
             "valor": 11.6
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 14,
-            "valor": 8.1
-          },
-          {
             "nome": "Zé Morais",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 6.7
           }
         ],
@@ -397,53 +377,48 @@
             "valor": 100
           },
           {
-            "nome": "Marquinho da Cooperativa",
+            "nome": "Bruno Leandro Coletor",
             "posicao": 6,
             "valor": 100
           },
           {
-            "nome": "Bruno Leandro Coletor",
+            "nome": "Thulyo Paiva",
             "posicao": 7,
             "valor": 100
           },
           {
-            "nome": "Thulyo Paiva",
+            "nome": "Davi Martins",
             "posicao": 8,
             "valor": 100
           },
           {
-            "nome": "Davi Martins",
+            "nome": "Dudu Ottoni",
             "posicao": 9,
             "valor": 100
           },
           {
-            "nome": "Dudu Ottoni",
+            "nome": "Zé Morais",
             "posicao": 10,
             "valor": 100
           },
           {
-            "nome": "Zé Morais",
+            "nome": "Pastor Faustinho",
             "posicao": 11,
             "valor": 100
           },
           {
-            "nome": "Pastor Faustinho",
-            "posicao": 12,
-            "valor": 100
-          },
-          {
             "nome": "Miguel da Saúde",
-            "posicao": 13,
+            "posicao": 12,
             "valor": 90
           },
           {
             "nome": "Cássio Chiodi",
-            "posicao": 14,
+            "posicao": 13,
             "valor": 86.7
           },
           {
             "nome": "Dandan",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 40
           }
         ],
@@ -479,48 +454,43 @@
             "valor": 98.8
           },
           {
-            "nome": "Marquinho da Cooperativa",
+            "nome": "Pastor Faustinho",
             "posicao": 7,
             "valor": 97.7
           },
           {
-            "nome": "Pastor Faustinho",
-            "posicao": 8,
-            "valor": 97.7
-          },
-          {
             "nome": "Miguel da Saúde",
-            "posicao": 9,
+            "posicao": 8,
             "valor": 96.9
           },
           {
             "nome": "Dandan",
-            "posicao": 10,
+            "posicao": 9,
             "valor": 96.5
           },
           {
             "nome": "Alexandre Prado",
-            "posicao": 11,
+            "posicao": 10,
             "valor": 95.3
           },
           {
             "nome": "Bruno Leandro Coletor",
-            "posicao": 12,
+            "posicao": 11,
             "valor": 95.3
           },
           {
             "nome": "Zé Morais",
-            "posicao": 13,
+            "posicao": 12,
             "valor": 95.3
           },
           {
             "nome": "Rogério Bueno",
-            "posicao": 14,
+            "posicao": 13,
             "valor": 94.2
           },
           {
             "nome": "Dudu Ottoni",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 94.2
           }
         ],
@@ -576,28 +546,23 @@
             "valor": 0
           },
           {
-            "nome": "Marquinho da Cooperativa",
+            "nome": "Dudu Ottoni",
             "posicao": 11,
             "valor": 0
           },
           {
-            "nome": "Dudu Ottoni",
+            "nome": "Zé Morais",
             "posicao": 12,
             "valor": 0
           },
           {
-            "nome": "Zé Morais",
+            "nome": "Pastor Faustinho",
             "posicao": 13,
             "valor": 0
           },
           {
-            "nome": "Pastor Faustinho",
-            "posicao": 14,
-            "valor": 0
-          },
-          {
             "nome": "Miguel da Saúde",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 0
           }
         ]
@@ -976,68 +941,6 @@
           "posicao": 6
         },
         {
-          "nome": "Marquinho da Cooperativa",
-          "indice": 64.6,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 97.7,
-          "presenca_presentes": 84,
-          "presenca_elegiveis": 86,
-          "presenca_janela": "2025-01-01 a 2025-12-31",
-          "dimensoes": {
-            "legislar": 54.4,
-            "fiscalizar": 29.5,
-            "representar": 100,
-            "presenca": 97.7
-          },
-          "dimensoes_brutas": {
-            "legislar": 55.5,
-            "fiscalizar": 27,
-            "representar": 15,
-            "efetividade": 0,
-            "presenca": 97.7
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 6,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 7,
-            "emenda_relevante": 25,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 18,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 35,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 7
-          },
-          "composicao": {
-            "substantivo": 84,
-            "cerimonial": 7,
-            "cerimonial_pct": 8.1,
-            "substantivo_pct": 97.7
-          },
-          "perfil": {
-            "simbolico_pct": 8.1
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 7
-        },
-        {
           "nome": "Bruno Leandro Coletor",
           "indice": 64,
           "efetividade": 33.3,
@@ -1097,7 +1000,7 @@
             "teve producao legislativa, mas com menor peso relativo no ano",
             "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
           ],
-          "posicao": 8
+          "posicao": 7
         },
         {
           "nome": "Thulyo Paiva",
@@ -1159,7 +1062,7 @@
             "teve producao legislativa, mas com menor peso relativo no ano",
             "teve 2 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
           ],
-          "posicao": 9
+          "posicao": 8
         },
         {
           "nome": "Davi Martins",
@@ -1221,7 +1124,7 @@
             "teve producao legislativa, mas com menor peso relativo no ano",
             "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
           ],
-          "posicao": 10
+          "posicao": 9
         },
         {
           "nome": "Dudu Ottoni",
@@ -1283,7 +1186,7 @@
             "teve producao legislativa, mas com menor peso relativo no ano",
             "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
           ],
-          "posicao": 11
+          "posicao": 10
         },
         {
           "nome": "Zé Morais",
@@ -1345,7 +1248,7 @@
             "teve producao legislativa, mas com menor peso relativo no ano",
             "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
           ],
-          "posicao": 12
+          "posicao": 11
         },
         {
           "nome": "Cássio Chiodi",
@@ -1407,7 +1310,7 @@
             "teve producao legislativa, mas com menor peso relativo no ano",
             "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
           ],
-          "posicao": 13
+          "posicao": 12
         },
         {
           "nome": "Pastor Faustinho",
@@ -1469,7 +1372,7 @@
             "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota",
             "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
-          "posicao": 14
+          "posicao": 13
         },
         {
           "nome": "Miguel da Saúde",
@@ -1531,7 +1434,7 @@
             "teve producao legislativa, mas com menor peso relativo no ano",
             "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
           ],
-          "posicao": 15
+          "posicao": 14
         }
       ]
     },
@@ -1540,8 +1443,8 @@
       "status": "parcial_auditavel",
       "cobertura_pct": 100,
       "confianca_dados_pct": 100,
-      "vereadores_monitorados": 15,
-      "vereadores_com_presenca": 15,
+      "vereadores_monitorados": 14,
+      "vereadores_com_presenca": 14,
       "rankings_perfil": {
         "geral": [
           {
@@ -1610,13 +1513,8 @@
             "valor": 39.4
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 14,
-            "valor": 33.3
-          },
-          {
             "nome": "Rogério Bueno",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 0.6
           }
         ],
@@ -1687,13 +1585,8 @@
             "valor": 0
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 14,
-            "valor": 0
-          },
-          {
             "nome": "Rogério Bueno",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 0
           }
         ],
@@ -1759,18 +1652,13 @@
             "valor": 9.1
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 13,
-            "valor": 9.1
-          },
-          {
             "nome": "Pastor Faustinho",
-            "posicao": 14,
+            "posicao": 13,
             "valor": 0
           },
           {
             "nome": "Rogério Bueno",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 0
           }
         ],
@@ -1841,13 +1729,8 @@
             "valor": 15.4
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 14,
-            "valor": 0
-          },
-          {
             "nome": "Rogério Bueno",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 0
           }
         ],
@@ -1908,23 +1791,18 @@
             "valor": 70
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 12,
-            "valor": 46.7
-          },
-          {
             "nome": "Cássio Chiodi",
-            "posicao": 13,
+            "posicao": 12,
             "valor": 40
           },
           {
             "nome": "Dandan",
-            "posicao": 14,
+            "posicao": 13,
             "valor": 6.7
           },
           {
             "nome": "Rogério Bueno",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 0
           }
         ],
@@ -1995,13 +1873,8 @@
             "valor": 97.6
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 14,
-            "valor": 94.4
-          },
-          {
             "nome": "Rogério Bueno",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 2.4
           }
         ],
@@ -2072,13 +1945,8 @@
             "valor": 0
           },
           {
-            "nome": "Marquinho da Cooperativa",
-            "posicao": 14,
-            "valor": 0
-          },
-          {
             "nome": "Rogério Bueno",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 0
           }
         ]
@@ -2890,67 +2758,6 @@
           "posicao": 13
         },
         {
-          "nome": "Marquinho da Cooperativa",
-          "indice": 33.3,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 94.4,
-          "presenca_presentes": 17,
-          "presenca_elegiveis": 18,
-          "presenca_janela": "2026-01-01 a 2026-03-27",
-          "dimensoes": {
-            "legislar": 0,
-            "fiscalizar": 9.1,
-            "representar": 46.7,
-            "presenca": 94.4
-          },
-          "dimensoes_brutas": {
-            "legislar": 0,
-            "fiscalizar": 3,
-            "representar": 7,
-            "efetividade": 0,
-            "presenca": 94.4
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 0,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 0,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 2,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 7,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 0
-          },
-          "composicao": {
-            "substantivo": 9,
-            "cerimonial": 0,
-            "cerimonial_pct": 0,
-            "substantivo_pct": 100
-          },
-          "perfil": {
-            "simbolico_pct": 0
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 14
-        },
-        {
           "nome": "Rogério Bueno",
           "indice": 0.6,
           "efetividade": 0,
@@ -3008,7 +2815,7 @@
           "explicacao": [
             "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
           ],
-          "posicao": 15
+          "posicao": 14
         }
       ]
     }

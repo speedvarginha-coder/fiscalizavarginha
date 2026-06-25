@@ -15,7 +15,7 @@
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
-      "bytes": 1826658
+      "bytes": 1825600
     },
     "camara_betha": {
       "arquivo": "data/chunks/camara_betha.json",
@@ -59,7 +59,7 @@
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
-      "bytes": 89454
+      "bytes": 83649
     },
     "licitacoes": {
       "arquivo": "data/chunks/licitacoes.json",
@@ -111,7 +111,7 @@
     },
     "vereadores": {
       "arquivo": "data/chunks/vereadores.json",
-      "bytes": 6722
+      "bytes": 6267
     }
   },
   "snapshots": {

@@ -516,18 +516,19 @@ EXCLUI_AUTOR = {
     "Legislação e Redação Final",
 }
 
+# Os 15 vereadores TITULARES da legislatura 2025-2028 (lista oficial da Câmara).
+# Não inclui suplentes (ex.: Mônica Junqueira substitui Rogério Bueno, em licença
+# de saúde, mas o titular é o Rogério) nem ex-vereadores que saíram (Dr. Guedes,
+# Dr. Lucas, Marco Antônio "Marquinho da Cooperativa"). Afonso Monticeli é
+# titular e entra no ranking quando o CSV do SAPL trouxer matérias dele.
 PARLAMENTARES_DISPLAY = [
         "Zilda Silva", "Alexandre Prado", "Ana Rios Fontoura", "Dandan",
         "Davi Martins", "Rogerio Bueno", "Rogério Bueno",
         "Joaozinho Enfermeiro", "Joãozinho Enfermeiro", "Ze Morais",
         "Zé Morais", "Dudu Ottoni", "Bruno Leandro Coletor",
-        "Pastor Faustinho", "Thulyo Paiva", "Marquinho da Cooperativa",
+        "Pastor Faustinho", "Thulyo Paiva",
         "Cassio Chiodi", "Cássio Chiodi", "Miguel da Saude",
-        "Miguel da Saúde",
-        # Afonso Monticeli e Mônica Junqueira assumiram no lugar de Dr. Guedes e
-        # Dr. Lucas (suplentes que deixaram o cargo). Os dois novos já constam na
-        # folha; entram no ranking quando o CSV do SAPL trouxer suas matérias.
-        "Afonso Monticeli", "Monica Junqueira", "Mônica Junqueira",
+        "Miguel da Saúde", "Afonso Monticeli",
 ]
 PARLAMENTARES_MONITORADOS = {_norm_txt(n) for n in PARLAMENTARES_DISPLAY}
 
