@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v72 (folha: competência/mês de referência no painel) */
-const CACHE = "fiscaliza-v72";
+/* Fiscaliza Varginha — Service Worker v73 (folha: rótulo "Suplente" para não-titulares) */
+const CACHE = "fiscaliza-v73";
 const STATIC = [
   "./",
   "./index.html",
