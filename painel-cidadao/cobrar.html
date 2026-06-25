@@ -711,6 +711,16 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
+        <!-- Rascunho Dinâmico da LAI de Emendas Impositivas 2026 -->
+        <article id="lai2026Card" class="template-card" data-cat="gestao" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #009688; display: none;">
+          <h4>LAI 13-B · Prefeitura/Câmara: Emendas Impositivas 2026 (Rascunho Automatizado)</h4>
+          <textarea id="lai2026Textarea" readonly style="height: 320px;" aria-label="LAI 13-B">Carregando rascunho forense personalizado...</textarea>
+          <div style="background: #e0f2f1; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #00796b;">
+            <strong>Rascunho Forense Personalizado:</strong> Este rascunho foi gerado automaticamente cruzando as emendas do SAPL que ainda carecem de CNPJ ou valor confirmado nos portais de transparência de Varginha.
+          </div>
+          <button type="button" class="copy-template">Copiar modelo</button>
+        </article>
+
         <article class="template-card" data-cat="gestao" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #37474f;">
           <h4>LAI 14 · Prefeitura: Convênios e Repasses ao Terceiro Setor</h4>
           <textarea readonly style="height: 420px;" aria-label="LAI 14">À Prefeitura Municipal de Varginha – Setor de Protocolo / e-SIC
@@ -1101,6 +1111,27 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
       copyText(textarea.value, button);
     });
   });
+
+  // Carrega dinamicamente o rascunho de emendas 2026 se disponível
+  if (location.protocol !== "file:") {
+    fetch("data/lai_emendas_2026.txt?v=" + Date.now())
+      .then(function (r) {
+        if (r.ok) return r.text();
+        throw new Error("indisponível");
+      })
+      .then(function (text) {
+        if (!text || !text.trim()) return;
+        var card = document.getElementById("lai2026Card");
+        var ta = document.getElementById("lai2026Textarea");
+        if (card && ta) {
+          ta.value = text;
+          card.style.display = "";
+        }
+      })
+      .catch(function (e) {
+        console.info("Rascunho LAI 2026 não disponível para exibição.");
+      });
+  }
 })();
 </script>
 <script src="data-loader.js?v=20260608l"></script>
