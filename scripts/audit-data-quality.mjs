@@ -348,6 +348,63 @@ if (camaraTop.length && camaraContracts.length) {
   }
 }
 
+// --- NOVOS CHECKS DE QUALIDADE FORENSE ---
+const prefeituraTop = (chunks.prefeitura?.top_fornecedores_atual || []).slice(0, 30);
+const prefeituraContracts = [
+  ...(chunks.prefeitura?.contratos || []),
+  ...(chunks.camaraBetha?.contratos || []),
+];
+if (prefeituraTop.length && prefeituraContracts.length) {
+  const unmatched = prefeituraTop.filter((supplier) => !supplierHasContract(supplier, prefeituraContracts));
+  const semContrato = unmatched.filter((f) => gapKind(f.nome) === "fornecedor" && Number(f.valor_total || 0) > 1000000);
+  if (semContrato.length) {
+    add(
+      "warning",
+      "prefeitura-despesa-sem-contrato",
+      "Fornecedores de grande porte sem contrato vinculado automaticamente",
+      `${semContrato.length} fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: ${semContrato.slice(0, 4).map((f) => `${f.nome} (R$ ${(f.valor_total/1000000).toFixed(1)}M)`).join("; ")}.`,
+      "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
+      "prefeitura.json",
+    );
+  }
+}
+
+const prefeituraContratosTotal = (chunks.prefeitura?.contratos || []).reduce((sum, c) => sum + Number(c.valor || 0), 0);
+const prefeituraInexDispTotal = (chunks.prefeitura?.contratos || [])
+  .filter((c) => {
+    const mod = String(c.modalidade || "").toUpperCase();
+    return mod.includes("INEXIG") || mod.includes("DISPENSA");
+  })
+  .reduce((sum, c) => sum + Number(c.valor || 0), 0);
+
+if (prefeituraContratosTotal > 0) {
+  const pctInexDisp = (prefeituraInexDispTotal / prefeituraContratosTotal) * 100;
+  if (pctInexDisp > 20) {
+    add(
+      "warning",
+      "prefeitura-contratos-sem-competicao",
+      "Alto indice de contratacao sem competicao licitatoria",
+      `Contratos por Inexigibilidade ou Dispensa somam ${pctInexDisp.toFixed(1)}% (R$ ${(prefeituraInexDispTotal / 1000000).toFixed(1)}M de R$ ${(prefeituraContratosTotal / 1000000).toFixed(1)}M).`,
+      "Auditar as maiores inexigibilidades (ex. IPD, Viacao Real, CNEC) e verificar a regularidade das justificativas de preco.",
+      "prefeitura.json",
+    );
+  }
+}
+
+const emendasSemPagamentoAlto = (chunks.prefeitura?.emendas_cruzadas || [])
+  .filter((e) => e.status === "sem_pagamento" && Number(e.valor_brl || e.valor || 0) >= 50000);
+
+if (emendasSemPagamentoAlto.length) {
+  add(
+    "warning",
+    "emendas-sem-repasses",
+    "Emendas de alto valor sem repasse identificado",
+    `${emendasSemPagamentoAlto.length} emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: ${emendasSemPagamentoAlto.slice(0, 3).map((e) => `${e.beneficiario} (R$ ${(Number(e.valor_brl || e.valor)/1000).toFixed(0)}k - ${e.autor})`).join("; ")}.`,
+    "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
+    "prefeitura.json",
+  );
+}
+
 const latestDiary = (chunks.diario?.ultimas || [])
   .map((item) => ({ item, date: parseDate(item.data) }))
   .filter((entry) => entry.date)
