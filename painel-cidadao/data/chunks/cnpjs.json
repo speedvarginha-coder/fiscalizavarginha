@@ -1489,5 +1489,607 @@
     "falhas": 1,
     "cnpjs_candidatos": 82
   },
-  "observacao": "Uso auxiliar. Para documento oficial, conferir comprovante de inscrição no site da Receita Federal."
+  "observacao": "Uso auxiliar. Para documento oficial, conferir comprovante de inscrição no site da Receita Federal.",
+  "fornecedores": [
+    {
+      "nome": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "cnpj_raiz": "25863390",
+      "cnpj_completo": "25863390000154",
+      "cnpj_reconstruido": true,
+      "valor_total": 40229077.16,
+      "razao_social": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "nome_fantasia": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "situacao": "ATIVA",
+      "abertura": "1966-11-10",
+      "cnae": "Atividades de atendimento hospitalar, exceto pronto-socorro e unidades para atendimento a urgências",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "JOAO CARLOS OTTONI ADELL"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
+      "cnpj_raiz": "03091412",
+      "cnpj_completo": "03091412000172",
+      "cnpj_reconstruido": true,
+      "valor_total": 12961739.17,
+      "razao_social": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
+      "nome_fantasia": "PAVICAN",
+      "situacao": "ATIVA",
+      "abertura": "1999-04-12",
+      "cnae": "Obras de terraplenagem",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "AMAURY LIMA DE ANDRADE JUNIOR",
+        "BRITO CANDIDO PARTICIPACOES LTDA",
+        "CANDIDO TOSI PARTICIPACOES LTDA",
+        "DANIELA BRITO CANDIDO TOSI",
+        "DONIZETI CANDIDO PARTICIPACOES LTDA",
+        "ROBERTO DONIZETI CANDIDO",
+        "ROGERIO DE BRITO CANDIDO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "VIAÇÃO REAL TRANSPORTE URBANO E RODOVIÁRIO LTDA",
+      "cnpj_raiz": "77930956",
+      "cnpj_completo": "77930956000117",
+      "cnpj_reconstruido": true,
+      "valor_total": 9953202.01,
+      "razao_social": "VIACAO REAL TRANSPORTE URBANO E RODOVIARIO LTDA",
+      "nome_fantasia": "VIACAO REAL",
+      "situacao": "ATIVA",
+      "abertura": "1979-09-26",
+      "cnae": "Transporte rodoviário coletivo de passageiros, com itinerário fixo, intermunicipal em região metropolitana",
+      "municipio": "CIANORTE",
+      "uf": "PR",
+      "socios": [
+        "AUGUSTO DE CARVALHO GANEM",
+        "SARAH LAGE LESSA CARVALHO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "VARIAN MEDICAL SYSTEMS INC",
+      "cnpj_raiz": "05712722",
+      "cnpj_completo": "05712722000192",
+      "cnpj_reconstruido": true,
+      "valor_total": 7819347.76,
+      "razao_social": "VARIAN MEDICAL SYSTEMS INC",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2003-06-25",
+      "cnae": "Holdings de instituições não-financeiras",
+      "municipio": "EXTERIOR",
+      "uf": "EX",
+      "socios": [],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "RECEITA FEDERAL",
+      "cnpj_raiz": "00394460",
+      "cnpj_completo": "00394460000141",
+      "cnpj_reconstruido": true,
+      "valor_total": 6590382.01,
+      "razao_social": "MINISTERIO DA FAZENDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1974-11-29",
+      "cnae": "Administração pública em geral",
+      "municipio": "BRASILIA",
+      "uf": "DF",
+      "socios": [],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
+      "cnpj_raiz": "57437279",
+      "cnpj_completo": "57437279000192",
+      "cnpj_reconstruido": true,
+      "valor_total": 4549185.77,
+      "razao_social": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1987-05-18",
+      "cnae": "Transporte rodoviário coletivo de passageiros, com itinerário fixo, municipal",
+      "municipio": "PORTO FERREIRA",
+      "uf": "SP",
+      "socios": [
+        "JOSE ALBERTO DA SILVA VINHAS",
+        "PAMELA VINHAS"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+      "cnpj_raiz": "29979036",
+      "cnpj_completo": "29979036000140",
+      "cnpj_reconstruido": true,
+      "valor_total": 4404213.7,
+      "razao_social": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+      "nome_fantasia": "COORDENACAO GERAL DE ORCAMENTO FINANCAS E CONTABILIDADE",
+      "situacao": "ATIVA",
+      "abertura": "1978-04-13",
+      "cnae": "Seguridade social obrigatória",
+      "municipio": "BRASILIA",
+      "uf": "DF",
+      "socios": [],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
+      "cnpj_raiz": "17281106",
+      "cnpj_completo": "17281106000103",
+      "cnpj_reconstruido": true,
+      "valor_total": 3776883.74,
+      "razao_social": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS COPASA MG",
+      "nome_fantasia": "COPASA MG",
+      "situacao": "ATIVA",
+      "abertura": "1966-08-24",
+      "cnae": "Captação, tratamento e distribuição de água",
+      "municipio": "BELO HORIZONTE",
+      "uf": "MG",
+      "socios": [
+        "ADRIANO RUDEK DE MOURA",
+        "CLEYSON JACOMINI DE SOUSA",
+        "LAURA PETRI GERALDINO",
+        "MARILIA CARVALHO DE MELO",
+        "PABLO FERRACO ANDREAO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
+      "cnpj_raiz": "00874813",
+      "cnpj_completo": "00874813000100",
+      "cnpj_reconstruido": true,
+      "valor_total": 3766863.16,
+      "razao_social": "SEFE - SISTEMA EDUCACIONAL FAMILIA E ESCOLA LTDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1995-08-15",
+      "cnae": "Edição de livros",
+      "municipio": "CURITIBA",
+      "uf": "PR",
+      "socios": [
+        "DANIELE VERISSIMO KARAM",
+        "EDITORA OPET LTDA",
+        "LUCIANO VERISSIMO KARAM",
+        "MARIA REGINA VERISSIMO KARAM"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
+      "cnpj_raiz": "09182496",
+      "cnpj_completo": "09182496000136",
+      "cnpj_reconstruido": true,
+      "valor_total": 3070000.0,
+      "razao_social": "CENTRO DE DESENVOLVIMENTO INTEGRADO - CDI",
+      "nome_fantasia": "CDI",
+      "situacao": "ATIVA",
+      "abertura": "2007-11-01",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "SAMYA ALESSANDRA TAVARES RIBEIRO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
+      "cnpj_raiz": "16565111",
+      "cnpj_completo": "16565111000185",
+      "cnpj_reconstruido": true,
+      "valor_total": 3057970.59,
+      "razao_social": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1972-05-29",
+      "cnae": "Coleta de resíduos não-perigosos",
+      "municipio": "BELO HORIZONTE",
+      "uf": "MG",
+      "socios": [
+        "FLAVIO COSTA DINIZ",
+        "HELDER FILIPE TEIXEIRA BESSA",
+        "MARIANA MIRANDA MAIA LOPES",
+        "NORBERTO JORGE RODRIGUES ALVES DA COSTA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "CENTRO DE DESENV.DA CRIANCA E DO ADOLECENTE=CDC",
+      "cnpj_raiz": "19127760",
+      "cnpj_completo": "19127760000192",
+      "cnpj_reconstruido": true,
+      "valor_total": 3014250.0,
+      "razao_social": "CENTRO DE DESENVOLVIMENTO DA CRIANCA E DO ADOLESCENTE",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1984-06-01",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "JORDALIO FLORENCIO DE OLIVEIRA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+      "cnpj_raiz": "37943080",
+      "cnpj_completo": "37943080000129",
+      "cnpj_reconstruido": true,
+      "valor_total": 2870431.07,
+      "razao_social": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+      "nome_fantasia": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS",
+      "situacao": "ATIVA",
+      "abertura": "2020-08-03",
+      "cnae": "Seleção e agenciamento de mão-de-obra",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "THALES MAIA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
+      "cnpj_raiz": "26001891",
+      "cnpj_completo": "26001891000194",
+      "cnpj_reconstruido": true,
+      "valor_total": 2428096.32,
+      "razao_social": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1989-08-24",
+      "cnae": "Laboratórios de anatomia patológica e citológica",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ANTONIO JANINI NETO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
+      "cnpj_raiz": "17155730",
+      "cnpj_completo": "17155730000164",
+      "cnpj_reconstruido": true,
+      "valor_total": 2214188.79,
+      "razao_social": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1952-05-27",
+      "cnae": "Comércio atacadista de energia elétrica",
+      "municipio": "BELO HORIZONTE",
+      "uf": "MG",
+      "socios": [
+        "ALEXANDRE RAMOS PEIXOTO",
+        "ANDREA MARQUES DE ALMEIDA",
+        "LUIS CLAUDIO CORREA VILLANI",
+        "MARCO DA CAMINO ANCONA LOPEZ SOLIGO",
+        "MARCOS MONTES CORDEIRO",
+        "MARNEY TADEU ANTUNES",
+        "SERGIO LOPES CABRAL",
+        "SERGIO PESSOA DE PAULA CASTRO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SERVICOS CFC LTDA",
+      "cnpj_raiz": "05165851",
+      "cnpj_completo": "05165851000108",
+      "cnpj_reconstruido": true,
+      "valor_total": 2151797.07,
+      "razao_social": "SERVICOS CFC LTDA",
+      "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
+      "situacao": "ATIVA",
+      "abertura": "2002-07-02",
+      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ROBERTO ANDERE"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SUCAFINA BRASIL IND.COM.E EXP.LTDA",
+      "cnpj_raiz": "07146352",
+      "cnpj_completo": "07146352000107",
+      "cnpj_reconstruido": true,
+      "valor_total": 1789133.01,
+      "razao_social": "SUCAFINA BRASIL INDUSTRIA, COMERCIO E EXPORTACAO LTDA.",
+      "nome_fantasia": "SUCAFINA BRASIL",
+      "situacao": "ATIVA",
+      "abertura": "2004-12-13",
+      "cnae": "Comércio atacadista de café em grão",
+      "municipio": "SANTOS",
+      "uf": "SP",
+      "socios": [
+        "DANIEL MONTES BASTOS",
+        "DINO RODRIGUES MODERNO JUNIOR",
+        "LUCIO DAVID DE CARVALHO",
+        "SUCAFINA SA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SHA COMERCIO DE ALIMENTOS LTDA",
+      "cnpj_raiz": "61980272",
+      "cnpj_completo": "61980272000190",
+      "cnpj_reconstruido": true,
+      "valor_total": 1716696.97,
+      "razao_social": "SHA COMERCIO DE ALIMENTOS LTDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1989-12-01",
+      "cnae": "Fornecimento de alimentos preparados preponderantemente para empresas",
+      "municipio": "JACAREI",
+      "uf": "SP",
+      "socios": [
+        "FELIX DOS SANTOS RIBEIRO",
+        "MAURO JOSE CARRARA",
+        "PAULO RENATO BARROS DE SOUZA",
+        "RUI SERGIO AZEVEDO",
+        "SORAIA MIGIYAMA AZEVEDO BARROS",
+        "YUMIKO MIGIYAMA AZEVEDO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
+      "cnpj_raiz": "02999757",
+      "cnpj_completo": "02999757000166",
+      "cnpj_reconstruido": true,
+      "valor_total": 1643845.8,
+      "razao_social": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1999-02-12",
+      "cnae": "Serviços de diálise e nefrologia",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ADRIANA ALKMIM REZENDE BARATTI",
+        "BETANIA FROTA DO PRADO",
+        "CONSUELO VELOSO DE CARVALHO",
+        "RAIMUNDO NONATO DE CASTRO ANDRADE",
+        "RODOLFO FROTA DO PRADO",
+        "VINICIUS FROTA DO PRADO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
+      "cnpj_raiz": "23593720",
+      "cnpj_completo": "23593720000103",
+      "cnpj_reconstruido": true,
+      "valor_total": 1581175.97,
+      "razao_social": "EXXCELENCIA SERVICOS TERCEIRIZADOS LTDA",
+      "nome_fantasia": "EXXCELENCIA SERVICOS",
+      "situacao": "ATIVA",
+      "abertura": "2015-11-04",
+      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
+      "municipio": "TEIXEIRAS",
+      "uf": "MG",
+      "socios": [
+        "MARIA DAS GRACAS REZENDE FRAGOSO FLORESTA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "CAIXA ECONOMICA FEDERAL",
+      "cnpj_raiz": "00360305",
+      "cnpj_completo": "00360305000104",
+      "cnpj_reconstruido": true,
+      "valor_total": 1545830.42,
+      "razao_social": "CAIXA ECONOMICA FEDERAL",
+      "nome_fantasia": "CEF MATRIZ",
+      "situacao": "ATIVA",
+      "abertura": "1971-02-03",
+      "cnae": "Caixas econômicas",
+      "municipio": "BRASILIA",
+      "uf": "DF",
+      "socios": [
+        "ADRIANE VELLOSO FERREIRA",
+        "ADRIANO ASSIS MATIAS",
+        "ALEXANDRE GONCALVES DE AMORIM",
+        "ANDERSON AORIVAN DA CUNHA POSSA",
+        "CARLOS ANTONIO VIEIRA FERNANDES",
+        "CARLOS AUGUSTO DE ANDRADE JENIER",
+        "CINTIA LIMA GONCALVES TEIXEIRA",
+        "CIRO MENEZES BARREIROS",
+        "CRISTIANO BOAVENTURA DE MEDEIROS",
+        "CRISTINA MARIA DA SILVA PERES"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "BRAVO LOCACOES E SERVICOS LTDA",
+      "cnpj_raiz": "58499094",
+      "cnpj_completo": "58499094000175",
+      "cnpj_reconstruido": true,
+      "valor_total": 1469690.73,
+      "razao_social": "BRAVO LOCACOES E SERVICOS LTDA",
+      "nome_fantasia": "BRAVO ENGENHARIA",
+      "situacao": "ATIVA",
+      "abertura": "2024-12-18",
+      "cnae": "Serviços de engenharia",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ANA CAROLINA PEREIRA ROQUIM",
+        "ELDER DE BRITO MARQUES",
+        "FERNANDO GUIMARAES FONSECA NETO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "CISSUL - CONSÓRCIO INTERMUNICIPAL DE SAÚDE SUL MINEIRO",
+      "cnpj_raiz": "00730595",
+      "cnpj_completo": "00730595000130",
+      "cnpj_reconstruido": true,
+      "valor_total": 1403556.4,
+      "razao_social": "CONS.INTERMUN.SAUDE DOS MUNICIPIOS SUL MINEIROS",
+      "nome_fantasia": "CISSUL",
+      "situacao": "ATIVA",
+      "abertura": "1995-06-28",
+      "cnae": "Outras atividades de atenção à saúde humana não especificadas anteriormente",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "LUIS CARLOS DA SILVA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
+      "cnpj_raiz": "42317980",
+      "cnpj_completo": "42317980000109",
+      "cnpj_reconstruido": true,
+      "valor_total": 1335190.6,
+      "razao_social": "SAO DOMINGOS CONSTRUTORA LTDA",
+      "nome_fantasia": "CONSTRUTORA SAO DOMINGOS",
+      "situacao": "ATIVA",
+      "abertura": "2021-06-14",
+      "cnae": "Construção de rodovias e ferrovias",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "DOMINGOS PINTO FERREIRA NETO",
+        "DOMINGOS PINTO FILHO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "AGENCIA ADVENTISTA DESENV.E REC.ASSIST. ADRA",
+      "cnpj_raiz": "16524054",
+      "cnpj_completo": "16524054000196",
+      "cnpj_reconstruido": true,
+      "valor_total": 1262750.0,
+      "razao_social": "AGENCIA ADVENTISTA DE DESENVOLVIMENTO E RECURSOS ASSISTENCIAIS SUDESTE BRASILEIRA",
+      "nome_fantasia": "ADRA SUDESTE",
+      "situacao": "ATIVA",
+      "abertura": "2012-06-04",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "PETROPOLIS",
+      "uf": "RJ",
+      "socios": [
+        "FERNANDO BATISTA DA SILVA JUNIOR",
+        "HIRAM RAFAEL SILVEIRA KALBERMATTER",
+        "WILIAN CARVALHO FERREIRA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "ASSOCIAÇAO BENEFICENTE KERIGMA",
+      "cnpj_raiz": "05549049",
+      "cnpj_completo": "05549049000111",
+      "cnpj_reconstruido": true,
+      "valor_total": 1045000.0,
+      "razao_social": "ASSOCIACAO BENEFICIENTE KERYGMA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2003-02-20",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "SEBASTIAO DINIZ"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "LAR SAO VICENTE DE PAULO",
+      "cnpj_raiz": "05019043",
+      "cnpj_completo": "05019043000132",
+      "cnpj_reconstruido": true,
+      "valor_total": 1002561.96,
+      "razao_social": "LAR SAO VICENTE DE PAULO",
+      "nome_fantasia": "LAR SAO VICENTE DE PAULO OBRA UNIDA A S S V P",
+      "situacao": "ATIVA",
+      "abertura": "2002-04-22",
+      "cnae": "Instituições de longa permanência para idosos",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "FLAVIO PRADO DE CASTRO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "IOT- INSTITUTO DE ORTOPEDIA E TRAUMATOLOGIA DE VARGINHA LTDA",
+      "cnpj_raiz": "29045348",
+      "cnpj_completo": "29045348000187",
+      "cnpj_reconstruido": true,
+      "valor_total": 993381.75,
+      "razao_social": "IOT- INSTITUTO DE ORTOPEDIA E TRAUMATOLOGIA DE VARGINHA LTDA",
+      "nome_fantasia": "IOT INSTITUTO DE ORTOPEDIA E TRAUMATOLOGIA DE VARGINHA",
+      "situacao": "ATIVA",
+      "abertura": "2017-11-10",
+      "cnae": "Atividade médica ambulatorial com recursos para realização de procedimentos cirúrgicos",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "EMPRESARIAL FREIRE MELO HOLDING E PARTICIPACOES LTDA",
+        "EMPRESARIAL GOMES HOLDING E PARTICIPACOES LTDA",
+        "EMPRESARIAL MORAES HOLDING E PARTICIPACOES LTDA",
+        "EMPRESARIAL POYARES HOLDING E PARTICIPACOES LTDA",
+        "EMPRESARIAL PROCOPIO HOLDING E PARTICIPACOES LTDA",
+        "ERNANI LUIZ GOMES",
+        "FABIO FREIRE SANTOS MELO",
+        "HENRIQUE PEREIRA PROCOPIO BUENO",
+        "LUCAS DEL FRARO XIMENES",
+        "LUCILIO AMORELLI PEREIRA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "BETHA SISTEMAS LTDA",
+      "cnpj_raiz": "00456865",
+      "cnpj_completo": "00456865000167",
+      "cnpj_reconstruido": true,
+      "valor_total": 981937.56,
+      "razao_social": "BETHA SISTEMAS LTDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1995-03-01",
+      "cnae": "Desenvolvimento e licenciamento de programas de computador customizáveis",
+      "municipio": "CRICIUMA",
+      "uf": "SC",
+      "socios": [
+        "CESAR SMIELEVSKI",
+        "GUILHERME KAASTRUP BALSINI",
+        "OSCAR KAASTRUP BALSINI",
+        "TATIANE DEZIDERIO COSTA",
+        "WELLINGTON ROGERIO BIAGIO SILVA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
+      "cnpj_raiz": "04491116",
+      "cnpj_completo": "04491116000121",
+      "cnpj_reconstruido": true,
+      "valor_total": 956017.98,
+      "razao_social": "VERSAO BR COMUNICACAO E MARKETING LTDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2001-05-25",
+      "cnae": "Agências de publicidade",
+      "municipio": "RIBEIRAO PRETO",
+      "uf": "SP",
+      "socios": [
+        "GUSTAVO HENRIQUE TEIXEIRA DE CASTRO",
+        "SUELI MERI NEVES TEIXEIRA DE CASTRO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    }
+  ]
 }

@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-06-25T13:20:13.900Z",
+  "gerado_em": "2026-06-25T13:30:13.291Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 6,
+    "warnings": 5,
     "info": 1,
     "ok": 1,
-    "total": 8
+    "total": 7
   },
   "atualizado_base": {
     "iso": "2026-06-25T10:17:36",
@@ -36,14 +36,6 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
-    },
-    {
-      "severity": "warning",
-      "id": "pessoal-prefeitura-preservada",
-      "title": "Pessoal da Prefeitura preservado da ultima base completa",
-      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (3990 servidores) para nao reduzir a cobertura.",
-      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
-      "source": "pessoal.json"
     },
     {
       "severity": "warning",

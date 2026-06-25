@@ -11,7 +11,7 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 3634
+      "bytes": 3171
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -27,7 +27,7 @@
     },
     "cnpjs": {
       "arquivo": "data/chunks/cnpjs.json",
-      "bytes": 50049
+      "bytes": 71621
     },
     "convenios": {
       "arquivo": "data/chunks/convenios.json",
@@ -75,7 +75,7 @@
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
-      "bytes": 2288074
+      "bytes": 2434262
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
