@@ -81,22 +81,34 @@ def _grab_token_via_browser(portal_hash: str = PORTAL_HASH) -> dict:
             "  python -m playwright install chromium"
         ) from e
 
+    # Mesma extração de sempre: o objeto cujo valor base64 decodifica num JSON
+    # com accessToken. So muda que agora navegamos numa consulta (forca o grant
+    # anonimo) e aguardamos o token surgir, em vez de ler uma unica vez no root.
+    extrair = """
+        () => {
+          for (const store of [sessionStorage, localStorage]) {
+            for (const k of Object.keys(store)) {
+              try {
+                const v = JSON.parse(atob(store.getItem(k)));
+                if (v && v.accessToken) return v;
+              } catch (_) {}
+            }
+          }
+          return null;
+        }
+    """
+    consulta = f"https://transparencia.betha.cloud/#/{portal_hash}/consulta/{CONSULTA_CONTRATOS}"
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
         ctx = browser.new_context()
         page = ctx.new_page()
-        page.goto(f"https://transparencia.betha.cloud/#/{portal_hash}", wait_until="networkidle", timeout=45000)
-        tok = page.evaluate("""
-            () => {
-              for (const k of Object.keys(sessionStorage)) {
-                try {
-                  const v = JSON.parse(atob(sessionStorage.getItem(k)));
-                  if (v && v.accessToken) return v;
-                } catch (_) {}
-              }
-              return null;
-            }
-        """)
+        page.goto(consulta, wait_until="networkidle", timeout=45000)
+        tok = None
+        for _ in range(25):  # o grant pode levar alguns segundos
+            tok = page.evaluate(extrair)
+            if tok and tok.get("accessToken"):
+                break
+            page.wait_for_timeout(1000)
         browser.close()
     if not tok or not tok.get("accessToken"):
         raise RuntimeError("Não foi possível capturar token Betha (sessionStorage vazio).")
