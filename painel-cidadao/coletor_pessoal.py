@@ -196,19 +196,44 @@ def _coletar_prefeitura_educacao_betha(ano: int) -> list[dict]:
     return _normaliza_betha(res.get("main", []), "Prefeitura", "Educacao/FUNDEB")
 
 
+def _competencia_anterior(comp: str) -> str:
+    """'06/2026' -> '05/2026'. Retorna '' se o formato nao for MM/AAAA."""
+    try:
+        mes, ano = comp.split("/")
+        mes, ano = int(mes), int(ano)
+    except Exception:
+        return ""
+    mes -= 1
+    if mes == 0:
+        mes, ano = 12, ano - 1
+    return f"{mes:02d}/{ano}"
+
+
 def _coletar_prefeitura_folha_completa() -> tuple[list[dict], str]:
     """Folha completa da Prefeitura (todas as secretarias) na competencia
-    mais recente. Retorna (servidores, competencia)."""
+    completa mais recente. Retorna (servidores, competencia)."""
     token = betha.get_token()
     comp = betha.filtro_max(token, PREFEITURA_FOLHA_COMPLETA_ID, "competencia")
     if not comp:
         raise RuntimeError("Nao foi possivel descobrir a competencia mais recente da folha.")
-    rows = betha.baixar_busca_textual(
-        token,
-        PREFEITURA_FOLHA_COMPLETA_ID,
-        body={"competencia": [comp]},
-        sort_by="nomeServidor",
-    )
+    # A competencia mais recente costuma vir incompleta (folha do mes ainda nao
+    # publicada — vinha so 2 registros). Recua mes a mes ate achar um mes com a
+    # folha completa (~4 mil servidores).
+    rows: list[dict] = []
+    for _ in range(4):
+        rows = betha.baixar_busca_textual(
+            token,
+            PREFEITURA_FOLHA_COMPLETA_ID,
+            body={"competencia": [comp]},
+            sort_by="nomeServidor",
+        )
+        if len(rows) >= 500:
+            break
+        anterior = _competencia_anterior(comp)
+        if not anterior:
+            break
+        print(f"  ! Folha {comp}: so {len(rows)} registro(s); tentando competencia anterior {anterior}…")
+        comp = anterior
     escopo = f"Folha completa da Prefeitura (competencia {comp})"
     servidores = _normaliza_betha(rows, "Prefeitura", escopo)
     # campo extra: secretaria de origem (ajuda filtros futuros no painel)
