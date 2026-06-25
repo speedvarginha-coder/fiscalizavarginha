@@ -5276,8 +5276,8 @@ ${url}
     // Vereadores pagos que NAO sao titulares (suplentes em exercicio). Os 15
     // titulares da legislatura 2025-2028 constam na lista oficial da Camara.
     const NAO_TITULARES = new Map([
-      ["monica junqueira cardoso", "Suplente — substitui Rogério Bueno (em licença de saúde)"],
-      ["marco antonio de souza", "Suplente — não consta entre os 15 vereadores titulares"],
+      ["monica junqueira cardoso", { rotulo: "Suplente", nota: "Suplente — substitui Rogério Bueno (em licença de saúde)" }],
+      ["marco antonio de souza", { rotulo: "Ex-vereador", nota: "Ex-presidente da Câmara; mandato encerrado em 2026. Não consta entre os 15 titulares atuais." }],
     ]);
     const grupos = new Map();
     servidores.forEach((row) => {
@@ -5292,7 +5292,8 @@ ${url}
       const g = grupos.get(key) || {
         nome,
         suplente: NAO_TITULARES.has(norm(nome)),
-        suplenteNota: NAO_TITULARES.get(norm(nome)) || "",
+        suplenteRotulo: (NAO_TITULARES.get(norm(nome)) || {}).rotulo || "",
+        suplenteNota: (NAO_TITULARES.get(norm(nome)) || {}).nota || "",
         matricula: row.matricula || "",
         cargo: cleanText(row.cargo || "Vereador"),
         vinculo: cleanText(row.vinculo || ""),
@@ -5383,7 +5384,7 @@ ${url}
             </div>
             ${folhaLinhas.map((item, idx) => `
               <div class="salary-payroll__row">
-                <span><strong>${esc(item.nome)}</strong>${item.suplente ? ` <span class="em__status em__status--no" title="${esc(item.suplenteNota)}">Suplente</span>` : ""}<small>${esc(item.cargo || "Vereador")} ${item.matricula ? "- mat. " + esc(item.matricula) : ""}</small></span>
+                <span><strong>${esc(item.nome)}</strong>${item.suplente ? ` <span class="em__status em__status--no" title="${esc(item.suplenteNota)}">${esc(item.suplenteRotulo)}</span>` : ""}<small>${esc(item.cargo || "Vereador")} ${item.matricula ? "- mat. " + esc(item.matricula) : ""}</small></span>
                 <span>${esc(item.ano || "")}</span>
                 <span>${fmtBRL(item.maior_bruto || 0)}</span>
                 <span>${fmtBRL(item.maior_liquido || 0)}</span>

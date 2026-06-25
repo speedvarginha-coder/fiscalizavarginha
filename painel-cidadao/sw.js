@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v73 (folha: rótulo "Suplente" para não-titulares) */
-const CACHE = "fiscaliza-v73";
+/* Fiscaliza Varginha — Service Worker v74 (folha: rótulo Suplente/Ex-vereador) */
+const CACHE = "fiscaliza-v74";
 const STATIC = [
   "./",
   "./index.html",
