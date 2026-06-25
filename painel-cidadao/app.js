@@ -5279,7 +5279,7 @@ ${url}
       // Exclui "GABINETE VEREADOR X" e "VEREADORA Y" (assessorias individuais),
       // que sao staff e nao parlamentares eleitos.
       const lot = norm(row.lotacao || "").trim();
-      if (lot !== "vereadores") return;
+      if (!lot.endsWith("vereadores") && !lot.endsWith("presidente da camara")) return;
       const nome = cleanText(row.nome || "Nome nao informado").trim();
       if (!nome) return;
       const key = (row.matricula || nome) + "|" + nome;
