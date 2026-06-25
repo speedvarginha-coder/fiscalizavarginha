@@ -133,6 +133,30 @@ def get_token(force: bool = False, portal_hash: str = PORTAL_HASH) -> str:
     return tok["accessToken"]
 
 
+def _dados_abertos_sem_token(consulta_id: int, body: dict,
+                              portal_hash: str = PORTAL_HASH,
+                              timeout: int = 120) -> str:
+    """Tenta baixar o endpoint dados-abertos SEM token de autenticação.
+
+    Os portais Betha de transparência são públicos (anonymousMode=true). Em
+    muitos casos o endpoint dados-abertos aceita requisições sem Bearer,
+    evitando a dependência do Playwright para capturar o token.
+
+    Retorna a string base64 do ZIP ou lança exceção se o servidor exigir auth.
+    """
+    url = f"{DADOS_ABERTOS_BASE}/consulta/{consulta_id}?formato=CSV"
+    rq = urllib.request.Request(
+        url, data=json.dumps(body).encode(), method="POST",
+        headers={
+            "Content-Type": "application/json",
+            "app-context": _app_context(portal_hash),
+            "User-Agent": "Mozilla/5.0",
+        },
+    )
+    with urllib.request.urlopen(rq, timeout=timeout) as r:
+        return r.read().decode("utf-8")
+
+
 # ============================================================
 # HTTP
 # ============================================================
@@ -216,15 +240,38 @@ def baixar_dados_abertos(token: str, consulta_id: int,
         with urllib.request.urlopen(rq, timeout=180) as r:
             return r.read().decode("utf-8")
 
+    # Estratégia de 3 tentativas em ordem de menor para maior custo:
+    # 1. Sem token (funciona em portais públicos Betha — sem Playwright)
+    # 2. Com token cacheado (se 1 falhar com 401)
+    # 3. Renovação de token via Playwright (se 2 falhar com 401)
+    raw = None
     try:
-        raw = _do_request(token)
-    except urllib.error.HTTPError as e:
-        if e.code == 401:
-            print(f"  AVISO: 401 em dados-abertos/{consulta_id} - renovando token...")
-            fresh = get_token(force=True, portal_hash=portal_hash)
-            raw = _do_request(fresh)
-        else:
+        raw = _dados_abertos_sem_token(consulta_id, body, portal_hash=portal_hash)
+        print(f"  (dados-abertos/{consulta_id}: acesso público ok — sem token necessário)")
+    except urllib.error.HTTPError as e_pub:
+        if e_pub.code not in (401, 403):
             raise
+        # Servidor exige auth — tentar com token existente
+        try:
+            raw = _do_request(token)
+        except urllib.error.HTTPError as e:
+            if e.code == 401:
+                print(f"  AVISO: 401 em dados-abertos/{consulta_id} - renovando token...")
+                fresh = get_token(force=True, portal_hash=portal_hash)
+                raw = _do_request(fresh)
+            else:
+                raise
+    except Exception:
+        # Qualquer outro erro (timeout, SSL) — cai para o token
+        try:
+            raw = _do_request(token)
+        except urllib.error.HTTPError as e:
+            if e.code == 401:
+                print(f"  AVISO: 401 em dados-abertos/{consulta_id} - renovando token...")
+                fresh = get_token(force=True, portal_hash=portal_hash)
+                raw = _do_request(fresh)
+            else:
+                raise
     if raw.startswith('"') and raw.endswith('"'):
         raw = raw[1:-1]
     zb = base64.b64decode(raw)
@@ -508,7 +555,16 @@ def cruzar_emendas(emendas: list[dict], credores: list[dict]) -> list[dict]:
                        "pagamentos": [], "valor_pago_total": 0})
             continue
         
-        if raiz == "18240119":
+        beneficiario_lower = (e.get("beneficiario") or "").lower()
+        eh_publico = (
+            raiz in ("18240119", "06204990") or
+            "guarda civil" in beneficiario_lower or
+            "camara municipal" in beneficiario_lower or
+            "prefeitura" in beneficiario_lower or
+            "secretaria municipal" in beneficiario_lower or
+            "fundo municipal" in beneficiario_lower
+        )
+        if eh_publico:
             out.append({
                 **e,
                 "pagamentos": [],
