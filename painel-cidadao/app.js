@@ -4546,14 +4546,15 @@ ${url}
     const camaraServ = (pes.camara || {}).servidores || [];
     const prefServ   = (pes.prefeitura || {}).servidores || [];
     
-    let compPref = "";
-    let compCam = "";
+    // Competência (mês) da folha: prefere o campo dedicado e cai no texto do
+    // status como fallback. A folha pode ser de um mês fechado anterior, então
+    // é importante deixar claro a qual mês os valores se referem.
+    let compPref = (pes.prefeitura && pes.prefeitura.competencia) || "";
+    let compCam = (pes.camara && pes.camara.competencia) || "";
     const prefStatusText = (pes.prefeitura && pes.prefeitura.status) || "";
     const camStatusText = (pes.camara && pes.camara.status) || "";
-    const mPref = prefStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i);
-    if (mPref) compPref = mPref[1];
-    const mCam = camStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i);
-    if (mCam) compCam = mCam[1];
+    if (!compPref) { const m = prefStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i); if (m) compPref = m[1]; }
+    if (!compCam) { const m = camStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i); if (m) compCam = m[1]; }
 
     const processarEConsolidar = (servidores, orgao) => {
       const grupos = {};
@@ -4600,6 +4601,30 @@ ${url}
     const tipoEl     = $("filtroTipo");
     const listaEl    = $("listaPessoal");
     const contadorEl = $("pessoalContador");
+
+    // Banner deixando explícito a qual mês (competência) a folha se refere.
+    const _mesesPt = ["janeiro", "fevereiro", "março", "abril", "maio", "junho",
+      "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+    const fmtComp = (c) => {
+      const m = /^(\d{2})\/(\d{4})$/.exec(c || "");
+      return m ? `${_mesesPt[+m[1] - 1] || m[1]}/${m[2]}` : (c || "");
+    };
+    if (listaEl) {
+      let refEl = document.getElementById("pessoalCompetencia");
+      if (!refEl) {
+        refEl = document.createElement("p");
+        refEl.id = "pessoalCompetencia";
+        refEl.style.cssText = "margin:0 0 14px;padding:9px 13px;background:#eef4fb;border-left:3px solid #1565c0;border-radius:4px;font-size:0.92em;color:#23405c;line-height:1.45;";
+        listaEl.before(refEl);
+      }
+      const partes = [];
+      if (compPref) partes.push(`Prefeitura: <strong>${fmtComp(compPref)}</strong>`);
+      if (compCam) partes.push(`Câmara: <strong>${fmtComp(compCam)}</strong>`);
+      refEl.innerHTML = partes.length
+        ? `📅 <strong>Folha de referência</strong> — ${partes.join(" · ")}. Os valores são do mês indicado (último fechado disponível), não necessariamente o mês corrente. Confira no portal oficial.`
+        : "📅 Confira a competência (mês) da folha no portal oficial — os valores podem se referir a um mês fechado anterior.";
+    }
+
     if ($("pessoalFonteNota")) {
       const prefStatus = pes.prefeitura.status || "";
       const camStatus = pes.camara.status || "";
