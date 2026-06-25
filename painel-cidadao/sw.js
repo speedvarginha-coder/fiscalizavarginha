@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v75 (folha: motivo da cassação no rótulo ex-vereador) */
-const CACHE = "fiscaliza-v75";
+/* Fiscaliza Varginha — Service Worker v76 (corrige texto: 15 vereadores) */
+const CACHE = "fiscaliza-v76";
 const STATIC = [
   "./",
   "./index.html",
