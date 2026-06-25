@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-25T13:19:12.362Z",
+  "gerado_em": "2026-06-25T18:56:01.757Z",
   "fonte": {
     "principal": "camara_anos.json",
     "origem": "SAPL Camara Municipal de Varginha",
@@ -59,8 +59,8 @@
       "status": "parcial_auditavel",
       "cobertura_pct": 100,
       "confianca_dados_pct": 100,
-      "vereadores_monitorados": 17,
-      "vereadores_com_presenca": 17,
+      "vereadores_monitorados": 15,
+      "vereadores_com_presenca": 15,
       "rankings_perfil": {
         "geral": [
           {
@@ -137,16 +137,6 @@
             "nome": "Miguel da Saúde",
             "posicao": 15,
             "valor": 49
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 48.2
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
-            "valor": 43.5
           }
         ],
         "legislador": [
@@ -224,16 +214,6 @@
             "nome": "Miguel da Saúde",
             "posicao": 15,
             "valor": 27.9
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 20.6
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
-            "valor": 11.8
           }
         ],
         "fiscalizador": [
@@ -283,130 +263,110 @@
             "valor": 16.4
           },
           {
-            "nome": "Dr. Guedes",
-            "posicao": 10,
-            "valor": 16.4
-          },
-          {
             "nome": "Alexandre Prado",
-            "posicao": 11,
+            "posicao": 10,
             "valor": 14.8
           },
           {
             "nome": "Davi Martins",
-            "posicao": 12,
+            "posicao": 11,
             "valor": 11.5
           },
           {
             "nome": "Zé Morais",
-            "posicao": 13,
+            "posicao": 12,
             "valor": 9.8
           },
           {
             "nome": "Cássio Chiodi",
-            "posicao": 14,
+            "posicao": 13,
             "valor": 9.8
           },
           {
             "nome": "Miguel da Saúde",
-            "posicao": 15,
+            "posicao": 14,
             "valor": 9.8
           },
           {
-            "nome": "Dr. Lucas",
-            "posicao": 16,
-            "valor": 6.6
-          },
-          {
             "nome": "Pastor Faustinho",
-            "posicao": 17,
+            "posicao": 15,
             "valor": 0
           }
         ],
         "simbolico": [
           {
-            "nome": "Dr. Guedes",
-            "posicao": 1,
-            "valor": 36.1
-          },
-          {
             "nome": "Pastor Faustinho",
-            "posicao": 2,
+            "posicao": 1,
             "valor": 34.4
           },
           {
             "nome": "Dudu Ottoni",
-            "posicao": 3,
+            "posicao": 2,
             "valor": 32.3
           },
           {
             "nome": "Ana Rios Fontoura",
-            "posicao": 4,
+            "posicao": 3,
             "valor": 30.5
           },
           {
             "nome": "Davi Martins",
-            "posicao": 5,
+            "posicao": 4,
             "valor": 27
           },
           {
             "nome": "Zilda Silva",
-            "posicao": 6,
+            "posicao": 5,
             "valor": 26.2
           },
           {
             "nome": "Alexandre Prado",
-            "posicao": 7,
+            "posicao": 6,
             "valor": 25.4
           },
           {
             "nome": "Cássio Chiodi",
-            "posicao": 8,
+            "posicao": 7,
             "valor": 22.4
           },
           {
             "nome": "Joãozinho Enfermeiro",
-            "posicao": 9,
+            "posicao": 8,
             "valor": 20.8
           },
           {
             "nome": "Thulyo Paiva",
-            "posicao": 10,
+            "posicao": 9,
             "valor": 19.1
           },
           {
             "nome": "Dandan",
-            "posicao": 11,
+            "posicao": 10,
             "valor": 17.4
           },
           {
-            "nome": "Dr. Lucas",
-            "posicao": 12,
-            "valor": 14.8
-          },
-          {
             "nome": "Rogério Bueno",
-            "posicao": 13,
+            "posicao": 11,
             "valor": 14
           },
           {
             "nome": "Bruno Leandro Coletor",
-            "posicao": 14,
+            "posicao": 12,
             "valor": 12.6
           },
           {
             "nome": "Miguel da Saúde",
-            "posicao": 15,
+            "posicao": 13,
             "valor": 11.6
           },
           {
             "nome": "Marquinho da Cooperativa",
-            "posicao": 16,
+            "posicao": 14,
             "valor": 8.1
           },
           {
             "nome": "Zé Morais",
-            "posicao": 17,
+            "posicao": 15,
             "valor": 6.7
           }
         ],
@@ -482,18 +442,8 @@
             "valor": 86.7
           },
           {
-            "nome": "Dr. Guedes",
-            "posicao": 15,
-            "valor": 86.7
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 16,
-            "valor": 86.7
-          },
-          {
             "nome": "Dandan",
-            "posicao": 17,
+            "posicao": 15,
             "valor": 40
           }
         ],
@@ -524,63 +474,53 @@
             "valor": 100
           },
           {
-            "nome": "Dr. Lucas",
-            "posicao": 6,
-            "valor": 100
-          },
-          {
             "nome": "Ana Rios Fontoura",
-            "posicao": 7,
+            "posicao": 6,
             "valor": 98.8
           },
           {
             "nome": "Marquinho da Cooperativa",
-            "posicao": 8,
+            "posicao": 7,
             "valor": 97.7
           },
           {
             "nome": "Pastor Faustinho",
-            "posicao": 9,
+            "posicao": 8,
             "valor": 97.7
           },
           {
             "nome": "Miguel da Saúde",
-            "posicao": 10,
+            "posicao": 9,
             "valor": 96.9
           },
           {
             "nome": "Dandan",
-            "posicao": 11,
+            "posicao": 10,
             "valor": 96.5
           },
           {
-            "nome": "Dr. Guedes",
-            "posicao": 12,
-            "valor": 96.3
-          },
-          {
             "nome": "Alexandre Prado",
-            "posicao": 13,
+            "posicao": 11,
             "valor": 95.3
           },
           {
             "nome": "Bruno Leandro Coletor",
-            "posicao": 14,
+            "posicao": 12,
             "valor": 95.3
           },
           {
             "nome": "Zé Morais",
-            "posicao": 15,
+            "posicao": 13,
             "valor": 95.3
           },
           {
             "nome": "Rogério Bueno",
-            "posicao": 16,
+            "posicao": 14,
             "valor": 94.2
           },
           {
             "nome": "Dudu Ottoni",
-            "posicao": 17,
+            "posicao": 15,
             "valor": 94.2
           }
         ],
@@ -658,16 +598,6 @@
           {
             "nome": "Miguel da Saúde",
             "posicao": 15,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
             "valor": 0
           }
         ]
@@ -1602,139 +1532,15 @@
             "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
           ],
           "posicao": 15
-        },
-        {
-          "nome": "Dr. Guedes",
-          "indice": 48.2,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 96.3,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 54,
-          "presenca_janela": "2025-01-01 a 2025-08-22",
-          "dimensoes": {
-            "legislar": 20.6,
-            "fiscalizar": 16.4,
-            "representar": 86.7,
-            "presenca": 96.3
-          },
-          "dimensoes_brutas": {
-            "legislar": 21,
-            "fiscalizar": 15,
-            "representar": 13,
-            "efetividade": 0,
-            "presenca": 96.3
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 7,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 13,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 10,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 16,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 14
-          },
-          "composicao": {
-            "substantivo": 33,
-            "cerimonial": 13,
-            "cerimonial_pct": 36.1,
-            "substantivo_pct": 91.7
-          },
-          "perfil": {
-            "simbolico_pct": 36.1
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 16
-        },
-        {
-          "nome": "Dr. Lucas",
-          "indice": 43.5,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 100,
-          "presenca_presentes": 54,
-          "presenca_elegiveis": 54,
-          "presenca_janela": "2025-01-01 a 2025-08-22",
-          "dimensoes": {
-            "legislar": 11.8,
-            "fiscalizar": 6.6,
-            "representar": 86.7,
-            "presenca": 100
-          },
-          "dimensoes_brutas": {
-            "legislar": 12,
-            "fiscalizar": 6,
-            "representar": 13,
-            "efetividade": 0,
-            "presenca": 100
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 4,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 4,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 4,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 16,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 4
-          },
-          "composicao": {
-            "substantivo": 24,
-            "cerimonial": 4,
-            "cerimonial_pct": 14.8,
-            "substantivo_pct": 88.9
-          },
-          "perfil": {
-            "simbolico_pct": 14.8
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 17
         }
       ]
     },
     "2026": {
       "ano": 2026,
       "status": "parcial_auditavel",
-      "cobertura_pct": 97.1,
-      "confianca_dados_pct": 97.1,
-      "vereadores_monitorados": 17,
+      "cobertura_pct": 100,
+      "confianca_dados_pct": 100,
+      "vereadores_monitorados": 15,
       "vereadores_com_presenca": 15,
       "rankings_perfil": {
         "geral": [
@@ -1812,16 +1618,6 @@
             "nome": "Rogério Bueno",
             "posicao": 15,
             "valor": 0.6
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
-            "valor": 0
           }
         ],
         "legislador": [
@@ -1898,16 +1694,6 @@
           {
             "nome": "Rogério Bueno",
             "posicao": 15,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
             "valor": 0
           }
         ],
@@ -1986,16 +1772,6 @@
             "nome": "Rogério Bueno",
             "posicao": 15,
             "valor": 0
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
-            "valor": 0
           }
         ],
         "simbolico": [
@@ -2072,16 +1848,6 @@
           {
             "nome": "Rogério Bueno",
             "posicao": 15,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
             "valor": 0
           }
         ],
@@ -2160,16 +1926,6 @@
             "nome": "Rogério Bueno",
             "posicao": 15,
             "valor": 0
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
-            "valor": 0
           }
         ],
         "presenca": [
@@ -2247,16 +2003,6 @@
             "nome": "Rogério Bueno",
             "posicao": 15,
             "valor": 2.4
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": -1
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
-            "valor": -1
           }
         ],
         "efetividade": [
@@ -2333,16 +2079,6 @@
           {
             "nome": "Rogério Bueno",
             "posicao": 15,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Guedes",
-            "posicao": 16,
-            "valor": 0
-          },
-          {
-            "nome": "Dr. Lucas",
-            "posicao": 17,
             "valor": 0
           }
         ]
@@ -3273,128 +3009,6 @@
             "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
           ],
           "posicao": 15
-        },
-        {
-          "nome": "Dr. Guedes",
-          "indice": 0,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 75,
-          "confianca_dados_pct": 75,
-          "presenca_pct": null,
-          "presenca_presentes": null,
-          "presenca_elegiveis": null,
-          "presenca_janela": "",
-          "dimensoes": {
-            "legislar": 0,
-            "fiscalizar": 0,
-            "representar": 0,
-            "presenca": null
-          },
-          "dimensoes_brutas": {
-            "legislar": 0,
-            "fiscalizar": 0,
-            "representar": 0,
-            "efetividade": 0,
-            "presenca": null
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 0,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 0,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 0,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 0,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 0
-          },
-          "composicao": {
-            "substantivo": 0,
-            "cerimonial": 0,
-            "cerimonial_pct": 0,
-            "substantivo_pct": 0
-          },
-          "perfil": {
-            "simbolico_pct": 0
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_plenario",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
-          ],
-          "posicao": 16
-        },
-        {
-          "nome": "Dr. Lucas",
-          "indice": 0,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 75,
-          "confianca_dados_pct": 75,
-          "presenca_pct": null,
-          "presenca_presentes": null,
-          "presenca_elegiveis": null,
-          "presenca_janela": "",
-          "dimensoes": {
-            "legislar": 0,
-            "fiscalizar": 0,
-            "representar": 0,
-            "presenca": null
-          },
-          "dimensoes_brutas": {
-            "legislar": 0,
-            "fiscalizar": 0,
-            "representar": 0,
-            "efetividade": 0,
-            "presenca": null
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 0,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 0,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 0,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 0,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 0
-          },
-          "composicao": {
-            "substantivo": 0,
-            "cerimonial": 0,
-            "cerimonial_pct": 0,
-            "substantivo_pct": 0
-          },
-          "perfil": {
-            "simbolico_pct": 0
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_plenario",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
-          ],
-          "posicao": 17
         }
       ]
     }

@@ -523,7 +523,11 @@ PARLAMENTARES_DISPLAY = [
         "Zé Morais", "Dudu Ottoni", "Bruno Leandro Coletor",
         "Pastor Faustinho", "Thulyo Paiva", "Marquinho da Cooperativa",
         "Cassio Chiodi", "Cássio Chiodi", "Miguel da Saude",
-        "Miguel da Saúde", "Dr. Guedes", "Dr. Lucas",
+        "Miguel da Saúde",
+        # Afonso Monticeli e Mônica Junqueira assumiram no lugar de Dr. Guedes e
+        # Dr. Lucas (suplentes que deixaram o cargo). Os dois novos já constam na
+        # folha; entram no ranking quando o CSV do SAPL trouxer suas matérias.
+        "Afonso Monticeli", "Monica Junqueira", "Mônica Junqueira",
 ]
 PARLAMENTARES_MONITORADOS = {_norm_txt(n) for n in PARLAMENTARES_DISPLAY}
 
