@@ -20,6 +20,7 @@ from __future__ import annotations
 import base64
 import json
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from collections import defaultdict
@@ -380,19 +381,28 @@ def todos_credores(token: str, batch: int = 200) -> list[dict]:
     offset = 0
     total: Optional[int] = None
     while True:
-        res = _api(
-            "POST",
-            f"/busca-textual/{CONSULTA_DESPESAS_POR_CREDOR}",
-            token,
-            body={},
-            params={
-                "sortBy": "valorPagamentoAno",
-                "sortDirection": "DESC",
-                "offset": offset,
-                "limit": batch,
-                "hiperlink": "false",
-            },
-        )
+        try:
+            res = _api(
+                "POST",
+                f"/busca-textual/{CONSULTA_DESPESAS_POR_CREDOR}",
+                token,
+                body={},
+                params={
+                    "sortBy": "valorPagamentoAno",
+                    "sortDirection": "DESC",
+                    "offset": offset,
+                    "limit": batch,
+                    "hiperlink": "false",
+                },
+            )
+        except urllib.error.HTTPError as e:
+            # O token expira durante o download longo (10k+ registros). Renova
+            # e retenta o mesmo offset em vez de abortar a coleta inteira.
+            if e.code == 401:
+                print("  AVISO: 401 na paginacao de credores - renovando token Betha…")
+                token = get_token(force=True)
+                continue
+            raise
         if total is None:
             total = res.get("totalHits", 0)
             print(f"  -> Total de registros: {total:,}")

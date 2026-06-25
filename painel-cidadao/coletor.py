@@ -550,6 +550,17 @@ def _parse_emenda(ementa: str) -> dict:
 
 def _processa_sapl() -> dict:
     print("⇣ Lendo SAPL (Câmara de Varginha)…")
+    # O SAPL depende de um CSV exportado manualmente da Câmara. Se ele não
+    # estiver presente, preserva os dados SAPL já coletados e segue com o resto
+    # da coleta (Betha, diário etc.) em vez de abortar tudo.
+    if not CSV_SAPL.exists():
+        print(f"  ! CSV do SAPL ausente ({CSV_SAPL}); preservando dados SAPL existentes.")
+        return {
+            "resumo": _load_existing("resumo.json", {}),
+            "vereadores": _load_existing("vereadores.json", []),
+            "emendas": _load_existing("emendas.json", []),
+            "camara_anos": _load_existing("camara_anos.json", {}),
+        }
     with CSV_SAPL.open(encoding="utf-8") as f:
         rows = list(csv.DictReader(f, delimiter=";"))
     print(f"  {len(rows)} matérias carregadas.")
