@@ -1,41 +1,25 @@
 {
-  "gerado_em": "2026-06-25T13:30:13.291Z",
+  "gerado_em": "2026-06-25T18:16:52.096Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 5,
+    "warnings": 6,
     "info": 1,
     "ok": 1,
-    "total": 7
+    "total": 8
   },
   "atualizado_base": {
-    "iso": "2026-06-25T10:17:36",
-    "data_humana": "25/06/2026 - 10:17"
+    "iso": "2026-06-25T12:10:35",
+    "data_humana": "25/06/2026 - 12:10"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.1 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
-    },
-    {
-      "severity": "warning",
-      "id": "fonte-emenda-2026-erro",
-      "title": "Fonte de emendas 2026 com erro",
-      "detail": "1 fonte(s) retornaram erro. Exemplo: Camara - solicitacao de emenda impositiva municipal - HTTP Error 404: Componente não encontrado.",
-      "action": "Revisar URL da Camara e, se necessario, substituir por fonte oficial vigente ou LAI.",
-      "source": "fontes_emendas_2026.json"
-    },
-    {
-      "severity": "warning",
-      "id": "emendas-2026-sem-lista",
-      "title": "Emendas 2026 sem lista consolidada",
-      "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
-      "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
-      "source": "fontes_emendas_2026.json"
     },
     {
       "severity": "warning",
@@ -68,6 +52,30 @@
       "detail": "7 dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 2 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 1 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
       "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "source": "camara_betha.json"
+    },
+    {
+      "severity": "warning",
+      "id": "prefeitura-despesa-sem-contrato",
+      "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
+      "detail": "6 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); SHA COMERCIO DE ALIMENTOS LTDA (R$ 1.7M); CAIXA ECONOMICA FEDERAL (R$ 1.5M); BRAVO LOCACOES E SERVICOS LTDA (R$ 1.5M).",
+      "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
+      "source": "prefeitura.json"
+    },
+    {
+      "severity": "warning",
+      "id": "prefeitura-contratos-sem-competicao",
+      "title": "Alto indice de contratacao sem competicao licitatoria",
+      "detail": "Contratos por Inexigibilidade ou Dispensa somam 22.3% (R$ 138.4M de R$ 622.0M).",
+      "action": "Auditar as maiores inexigibilidades (ex. IPD, Viacao Real, CNEC) e verificar a regularidade das justificativas de preco.",
+      "source": "prefeitura.json"
+    },
+    {
+      "severity": "warning",
+      "id": "emendas-sem-repasses",
+      "title": "Emendas de alto valor sem repasse identificado",
+      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura (R$ 105k - Zilda Silva); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 93k - Cássio Chiodi); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 50k - Rogério Bueno).",
+      "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
+      "source": "prefeitura.json"
     }
   ]
 }

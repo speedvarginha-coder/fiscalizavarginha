@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-25T13:19:13.827Z",
+  "gerado_em": "2026-06-25T17:18:38.439Z",
   "chunks": {
     "atualizacoes": {
       "arquivo": "data/chunks/atualizacoes.json",
@@ -11,7 +11,7 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 3171
+      "bytes": 4039
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -55,11 +55,11 @@
     },
     "fontes_emendas_2026": {
       "arquivo": "data/chunks/fontes_emendas_2026.json",
-      "bytes": 5447
+      "bytes": 44591
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
-      "bytes": 100403
+      "bytes": 103803
     },
     "licitacoes": {
       "arquivo": "data/chunks/licitacoes.json",
@@ -67,7 +67,7 @@
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
-      "bytes": 32218
+      "bytes": 894
     },
     "obras_educacao": {
       "arquivo": "data/chunks/obras_educacao.json",
@@ -79,19 +79,19 @@
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
-      "bytes": 38960
+      "bytes": 666
     },
     "prefeitura": {
       "arquivo": "data/chunks/prefeitura.json",
-      "bytes": 4791664
+      "bytes": 4790784
     },
     "publicacoes_diario": {
       "arquivo": "data/chunks/publicacoes_diario.json",
-      "bytes": 1400317
+      "bytes": 1513944
     },
     "publicacoes_estruturadas": {
       "arquivo": "data/chunks/publicacoes_estruturadas.json",
-      "bytes": 1314914
+      "bytes": 1386669
     },
     "receitas": {
       "arquivo": "data/chunks/receitas.json",
@@ -107,7 +107,7 @@
     },
     "sancoes_fornecedores": {
       "arquivo": "data/chunks/sancoes_fornecedores.json",
-      "bytes": 626
+      "bytes": 624
     },
     "vereadores": {
       "arquivo": "data/chunks/vereadores.json",
@@ -117,6 +117,6 @@
   "snapshots": {
     "diretorio": "data/snapshots",
     "total": 30,
-    "ultimo": "2026-06-25T10-17-36-f123b68c.json"
+    "ultimo": "2026-06-25T12-10-35-55b10f89.json"
   }
 }
