@@ -7231,13 +7231,19 @@ ${url}
       ].map(s => `<div class="stat ${s.cls}"><div class="stat__value">${s.v}</div><div class="stat__label">${s.l}</div><div class="stat__sub">${s.s}</div></div>`).join("");
     }
     if ($("fundacaoServidoresLista")) {
-      const servidores = ((fc.pessoal || {}).servidores || []).slice(0, 24);
-      $("fundacaoServidoresLista").innerHTML = servidores.map(s => `
+      const servidores = ((fc.pessoal || {}).servidores || [])
+        .slice()
+        .sort((a, b) => (Number(b.remuneracao_contratual) || 0) - (Number(a.remuneracao_contratual) || 0))
+        .slice(0, 24);
+      $("fundacaoServidoresLista").innerHTML = servidores.map(s => {
+        const rem = Number(s.remuneracao_contratual) || 0;
+        return `
         <article class="lic">
-          <div class="lic__num">${esc(s.nome || "Servidor não informado")}</div>
+          <div class="lic__num">${esc(s.nome || "Servidor não informado")}${rem ? ` <span class="lic__val">${fmtBRL(rem)}</span>` : ""}</div>
           <p class="lic__obj">${esc(s.cargo || "Cargo não informado")}</p>
-          <div class="lic__meta"><span>${esc(s.vinculo || "Vínculo não informado")}</span><span>${esc(s.situacao || "")}</span><span>${esc(s.carga_horaria_semanal || "")}h semanais</span></div>
-        </article>`).join("") || `<div class="empty">Nenhum servidor carregado.</div>`;
+          <div class="lic__meta"><span>${esc(s.vinculo || "Vínculo não informado")}</span><span>${esc(s.situacao || "")}</span><span>${rem ? "salário-base de contrato" : (esc(s.carga_horaria_semanal || "") + "h semanais")}</span></div>
+        </article>`;
+      }).join("") || `<div class="empty">Nenhum servidor carregado.</div>`;
     }
 
     if ($("fundacaoStatsDiarias")) {

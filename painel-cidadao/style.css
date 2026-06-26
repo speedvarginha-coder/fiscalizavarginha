@@ -1749,6 +1749,18 @@ a.brand:hover { text-decoration: none; }
   font-size: 1rem; font-weight: bold;
   color: var(--navy);
 }
+.lic__val {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: #eef4fb;
+  color: var(--navy);
+  font-family: var(--font-h);
+  font-size: .82rem;
+  font-weight: 800;
+  vertical-align: middle;
+}
 .lic__obj {
   color: var(--ink);
   font-size: 0.9rem;
