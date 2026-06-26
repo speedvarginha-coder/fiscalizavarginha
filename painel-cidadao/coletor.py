@@ -68,6 +68,7 @@ def _save(name: str, payload) -> None:
         "resumo.json", "atualizado_em.json", "prefeitura.json", "emendas.json",
         "vereadores.json", "pncp.json", "diarias.json", "cnpjs.json",
         "camara_anos.json", "camara_betha.json", "camara_transparencia.json", "fontes_emendas_2026.json",
+        "fundacao_cultural.json",
         "federal.json", "pessoal.json", "diario.json",
         "remuneracao_vereadores.json", "sancoes_fornecedores.json",
         "auditoria_dados.json", "atualizacoes.json", "indice_relevancia.json",
@@ -998,6 +999,336 @@ def _processa_camara_betha() -> dict:
     }
 
 
+# ----------------- 3b) Fundacao Cultural (Betha) ------------------------- #
+
+PORTAL_HASH_FUNDACAO = "Y3P0PCFbAxmzg0qvgnMnYw=="
+CONSULTA_FUNDACAO_DESPESAS_CREDOR = 80528
+CONSULTA_FUNDACAO_EXEC_DETALHADA = 80382
+CONSULTA_FUNDACAO_CONTRATOS = 80579
+CONSULTA_FUNDACAO_PROCESSOS = 80466
+CONSULTA_FUNDACAO_LICIT_ABERTAS = 80317
+CONSULTA_FUNDACAO_DISPENSAS = 80477
+CONSULTA_FUNDACAO_INEXIGIBILIDADES = 80471
+CONSULTA_FUNDACAO_DIARIAS_ORC = 83072
+CONSULTA_FUNDACAO_DIARIAS_DET = 211697
+CONSULTA_FUNDACAO_SERVIDORES_ATIVOS = 80361
+CONSULTA_FUNDACAO_TRANSFERENCIAS = 80403
+
+_INTERNOS_FUNDACAO = (
+    "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
+    "FUNDAÇÃO CULTURAL DO MUNICÍPIO DE VARGINHA",
+    "FUNDACAO CULTURAL MUNICIPIO DE VARGINHA",
+    "INPREV",
+    "INSS",
+    "MINISTERIO DA FAZENDA",
+    "MINISTÉRIO DA FAZENDA",
+    "SECRETARIA DA RECEITA",
+    "MUNICIPIO DE VARGINHA",
+    "MUNICÍPIO DE VARGINHA",
+    "PREFEITURA",
+    "CAIXA ECONOMICA FEDERAL",
+)
+
+
+def _eh_externo_fundacao(nome: str) -> bool:
+    n = (nome or "").upper().strip()
+    return bool(n) and not any(p in n for p in _INTERNOS_FUNDACAO)
+
+
+def _agrega_despesas_fundacao(rows: list[dict], ano: int, n: int = 20) -> tuple[float, float, list[dict]]:
+    grupos: dict[str, dict] = {}
+    total = 0.0
+    total_externo = 0.0
+    for r in rows:
+        if int(r.get("ano") or 0) != ano:
+            continue
+        nome = r.get("nomeCredor") or ""
+        valor = _f(r.get("valorPagamentoAno", 0))
+        total += valor
+        if not _eh_externo_fundacao(nome):
+            continue
+        total_externo += valor
+        cnpj = r.get("cnpjCpf") or ""
+        chave = (cnpj or nome).upper()
+        g = grupos.setdefault(chave, {
+            "nome": nome,
+            "cnpj": cnpj,
+            "valor_total": 0.0,
+            "registros": 0,
+        })
+        g["valor_total"] += valor
+        g["registros"] += 1
+        if len(nome) > len(g["nome"]):
+            g["nome"] = nome
+    top = sorted(grupos.values(), key=lambda x: -x["valor_total"])[:n]
+    for it in top:
+        it["valor_total"] = round(it["valor_total"], 2)
+    return round(total, 2), round(total_externo, 2), top
+
+
+def _normaliza_execucao_fundacao(rows: list[dict], ano: int, n: int = 80) -> list[dict]:
+    out = []
+    for r in rows:
+        data = (r.get("dataEmpenho") or "")[:10]
+        if data[:4] != str(ano):
+            continue
+        credor = r.get("credor") or {}
+        nome_credor = credor.get("nomeCredor", "") if isinstance(credor, dict) else str(credor or "")
+        out.append({
+            "data": data,
+            "numero": r.get("numeroEmpenho", ""),
+            "orgao": r.get("descricaoOrgao", ""),
+            "credor": nome_credor,
+            "historico": (r.get("historicoEmpenho", "") or "").strip(),
+            "valor_empenhado": _f(r.get("valorEmpenho", 0)),
+            "valor_liquidado": _f(r.get("valorLiquidadoEmpenho", 0)),
+            "valor_pago": _f(r.get("valorPagoEmpenho", 0)),
+            "saldo_a_pagar": _f(r.get("saldoAPagar", 0)),
+        })
+    out.sort(key=lambda x: -x["valor_empenhado"])
+    return out[:n]
+
+
+def _normaliza_diarias_fundacao(rows: list[dict], fonte: str) -> list[dict]:
+    out = []
+    for r in rows:
+        credor_obj = r.get("credor") or {}
+        credor = r.get("credor") if isinstance(r.get("credor"), str) else (
+            credor_obj.get("nomeCredor", "") if isinstance(credor_obj, dict) else ""
+        )
+        valor = _f(r.get("valorTotal") or r.get("valorPagoEmpenho") or r.get("valorEmpenho"))
+        out.append({
+            "ano": str(r.get("ano") or (r.get("dataEmpenho", "")[:4]) or ""),
+            "funcionario": credor or "",
+            "cargo": r.get("cargoCredor", ""),
+            "numero": r.get("numeroDiaria") or r.get("numeroEmpenho", ""),
+            "quantidade": _f(r.get("quantidade")) or 1,
+            "valor_total": valor,
+            "periodo": r.get("periodoDiarias", ""),
+            "destino": r.get("localDestino", ""),
+            "finalidade": (r.get("finalidade", "") or r.get("descricaoProjetoAtividade", "") or "").strip(),
+            "fonte": fonte,
+        })
+    out.sort(key=lambda x: -x["valor_total"])
+    return out
+
+
+def _normaliza_servidores_fundacao(rows: list[dict]) -> list[dict]:
+    out = []
+    for r in rows:
+        out.append({
+            "nome": r.get("nomeServidor", ""),
+            "cargo": r.get("cargoAtual", ""),
+            "orgao": r.get("orgao", ""),
+            "data_admissao": r.get("dataAdmissao", ""),
+            "tipo_matricula": r.get("tipoMatricula", ""),
+            "vinculo": r.get("vinculoEmpregaticio", ""),
+            "carga_horaria_mensal": r.get("cargaHorariaMensal", ""),
+            "carga_horaria_semanal": r.get("cargaHorariaSemanal", ""),
+            "remuneracao_contratual": _f(r.get("valorRemuneracaoContratual", 0)),
+            "situacao": r.get("situacao", ""),
+        })
+    out.sort(key=lambda x: (x["nome"] or "").upper())
+    return out
+
+
+def _normaliza_transferencias_fundacao(rows: list[dict]) -> list[dict]:
+    out = []
+    for r in rows:
+        out.append({
+            "numero": r.get("numero", ""),
+            "data": r.get("data", ""),
+            "ano": (r.get("data", "") or "")[:4],
+            "orgao_concedente": r.get("orgaoConcedente", ""),
+            "fonte_recurso": r.get("fonteRecurso", ""),
+            "finalidade": r.get("finalidade", ""),
+            "valor": _f(r.get("valor", 0)),
+        })
+    out.sort(key=lambda x: x["data"], reverse=True)
+    return out
+
+
+def _processa_fundacao_cultural() -> dict:
+    """Puxa dados do Portal Betha proprio da Fundacao Cultural de Varginha."""
+    print("⇣ Fundação Cultural — Portal Transparência Betha…")
+    try:
+        import coletor_betha as cb
+    except ImportError as e:
+        print(f"  ✗ módulo coletor_betha indisponível: {e}")
+        return {}
+
+    try:
+        token = cb.get_token(portal_hash=PORTAL_HASH_FUNDACAO)
+    except Exception as e:
+        print(f"  ✗ não foi possível obter token Fundação Cultural: {e}")
+        return {}
+
+    ano_atual = dt.datetime.now().year
+    ano_anterior = ano_atual - 1
+    portal_url = f"https://transparencia.betha.cloud/#/{PORTAL_HASH_FUNDACAO}"
+
+    def baixar_busca(label: str, consulta_id: int, body: dict | None = None,
+                     sort_by: str = "id", batch: int = 500) -> list[dict]:
+        print(f"  baixando {label}…")
+        try:
+            rows = cb.baixar_busca_textual(
+                token, consulta_id, body=body or {}, sort_by=sort_by,
+                portal_hash=PORTAL_HASH_FUNDACAO, batch=batch,
+            )
+            print(f"  ✓ {label}: {len(rows)} registros")
+            return rows
+        except Exception as e:
+            print(f"  ✗ {label}: {e}")
+            return []
+
+    despesas_atual = baixar_busca(
+        f"Despesas por credor ({ano_atual})",
+        CONSULTA_FUNDACAO_DESPESAS_CREDOR,
+        {"ano": [str(ano_atual)]},
+        sort_by="valorPagamentoAno",
+    )
+    despesas_anterior = baixar_busca(
+        f"Despesas por credor ({ano_anterior})",
+        CONSULTA_FUNDACAO_DESPESAS_CREDOR,
+        {"ano": [str(ano_anterior)]},
+        sort_by="valorPagamentoAno",
+    )
+    despesas = despesas_atual + despesas_anterior
+    total_atual, total_externo_atual, top_atual = _agrega_despesas_fundacao(despesas, ano_atual)
+    total_anterior, total_externo_anterior, top_anterior = _agrega_despesas_fundacao(despesas, ano_anterior)
+
+    exec_atual = baixar_busca(
+        f"Execução detalhada ({ano_atual})",
+        CONSULTA_FUNDACAO_EXEC_DETALHADA,
+    )
+    exec_norm_full = _normaliza_execucao_fundacao(exec_atual, ano_atual, n=10_000)
+    exec_norm = exec_norm_full[:80]
+    exec_resumo = {
+        "registros": len(exec_norm_full),
+        "empenhado": round(sum(i["valor_empenhado"] for i in exec_norm_full), 2),
+        "liquidado": round(sum(i["valor_liquidado"] for i in exec_norm_full), 2),
+        "pago": round(sum(i["valor_pago"] for i in exec_norm_full), 2),
+    }
+
+    contratos_raw = baixar_busca("Contratos", CONSULTA_FUNDACAO_CONTRATOS)
+    contratos = _normaliza_contratos(contratos_raw)
+    hoje_iso = dt.date.today().isoformat()
+    contratos_vigentes = [
+        c for c in contratos
+        if (c.get("data_fim") and c["data_fim"] >= hoje_iso)
+        or "EXECU" in (c.get("situacao", "") or "").upper()
+    ]
+    contratos_futuros = [
+        c for c in contratos
+        if c.get("data_fim") and c["data_fim"] >= hoje_iso
+    ]
+
+    licitacoes = _normaliza_licitacoes(baixar_busca("Processos licitatórios", CONSULTA_FUNDACAO_PROCESSOS))
+    licit_abertas = _normaliza_licitacoes(baixar_busca("Licitações abertas/em andamento", CONSULTA_FUNDACAO_LICIT_ABERTAS))
+    dispensas = _normaliza_licitacoes(baixar_busca("Dispensas", CONSULTA_FUNDACAO_DISPENSAS))
+    inexigibilidades = _normaliza_licitacoes(baixar_busca("Inexigibilidades", CONSULTA_FUNDACAO_INEXIGIBILIDADES))
+
+    diarias_detalhe = _normaliza_diarias_fundacao(
+        baixar_busca("Diárias detalhadas", CONSULTA_FUNDACAO_DIARIAS_DET),
+        "Betha Fundação Cultural - Diárias",
+    )
+    diarias_orc = _normaliza_diarias_fundacao(
+        baixar_busca(f"Diárias orçamentárias ({ano_atual})", CONSULTA_FUNDACAO_DIARIAS_ORC, {"ano": [str(ano_atual)]}),
+        "Betha Fundação Cultural - Diárias orçamentárias",
+    )
+    servidores = _normaliza_servidores_fundacao(
+        baixar_busca("Servidores públicos ativos", CONSULTA_FUNDACAO_SERVIDORES_ATIVOS)
+    )
+    transferencias = _normaliza_transferencias_fundacao(
+        baixar_busca("Transferências financeiras recebidas", CONSULTA_FUNDACAO_TRANSFERENCIAS)
+    )
+
+    def soma_ano(lista: list[dict], campo: str, ano: int) -> float:
+        return round(sum(_f(i.get(campo, 0)) for i in lista if str(i.get("ano", "")) == str(ano)), 2)
+
+    print(f"  ✓ Fundação Cultural: {len(contratos)} contratos, {len(servidores)} servidores ativos")
+    return {
+        "fonte": "Portal Betha da Fundação Cultural de Varginha",
+        "portal_hash": PORTAL_HASH_FUNDACAO,
+        "portal_url": portal_url,
+        "cnpj": "18.987.735/0001-16",
+        "nome": "Fundação Cultural de Varginha",
+        "ano_atual": ano_atual,
+        "ano_anterior": ano_anterior,
+        "despesas": {
+            "total_atual": total_atual,
+            "total_anterior": total_anterior,
+            "total_externo_atual": total_externo_atual,
+            "total_externo_anterior": total_externo_anterior,
+            "credores_atual_qtd": len(despesas_atual),
+            "credores_anterior_qtd": len(despesas_anterior),
+            "top_fornecedores_atual": top_atual,
+            "top_fornecedores_anterior": top_anterior,
+            "fonte_url": f"{portal_url}/consulta/{CONSULTA_FUNDACAO_DESPESAS_CREDOR}",
+        },
+        "execucao": {
+            "resumo_atual": exec_resumo,
+            "maiores_empenhos_atual": exec_norm,
+            "fonte_url": f"{portal_url}/consulta/{CONSULTA_FUNDACAO_EXEC_DETALHADA}",
+        },
+        "contratos": contratos,
+        "contratos_vigentes": contratos_vigentes,
+        "contratos_futuros": contratos_futuros,
+        "contratos_resumo": {
+            "qtd_total": len(contratos),
+            "valor_total": round(sum(c.get("valor", 0) for c in contratos), 2),
+            "qtd_vigentes": len(contratos_vigentes),
+            "valor_vigentes": round(sum(c.get("valor", 0) for c in contratos_vigentes), 2),
+            "qtd_vigencia_futura": len(contratos_futuros),
+            "valor_vigencia_futura": round(sum(c.get("valor", 0) for c in contratos_futuros), 2),
+            "fonte_url": f"{portal_url}/consulta/{CONSULTA_FUNDACAO_CONTRATOS}",
+        },
+        "licitacoes": licitacoes,
+        "licit_abertas": licit_abertas,
+        "dispensas": dispensas,
+        "inexigibilidades": inexigibilidades,
+        "licitacoes_resumo": {
+            "processos_qtd": len(licitacoes),
+            "processos_valor": round(sum(l.get("valor", 0) for l in licitacoes), 2),
+            "dispensas_qtd": len(dispensas),
+            "inexigibilidades_qtd": len(inexigibilidades),
+            "abertas_qtd": len(licit_abertas),
+            "fonte_url": f"{portal_url}/consulta/{CONSULTA_FUNDACAO_PROCESSOS}",
+        },
+        "diarias": {
+            "detalhadas": diarias_detalhe,
+            "orcamentarias": diarias_orc,
+            "resumo": {
+                "detalhadas_qtd": len(diarias_detalhe),
+                "detalhadas_valor_total": round(sum(d.get("valor_total", 0) for d in diarias_detalhe), 2),
+                "atual_qtd": len([d for d in diarias_detalhe if d.get("ano") == str(ano_atual)]),
+                "atual_valor": soma_ano(diarias_detalhe, "valor_total", ano_atual),
+                "orcamentarias_atual_valor": soma_ano(diarias_orc, "valor_total", ano_atual),
+            },
+            "fonte_url": f"{portal_url}/consulta/{CONSULTA_FUNDACAO_DIARIAS_DET}",
+        },
+        "pessoal": {
+            "servidores": servidores,
+            "resumo": {
+                "ativos_qtd": len(servidores),
+                "comissionados_qtd": sum(1 for s in servidores if "COMISSION" in (s.get("vinculo", "") or "").upper()),
+                "efetivos_qtd": sum(1 for s in servidores if "EFETIVO" in (s.get("vinculo", "") or "").upper()),
+            },
+            "fonte_url": f"{portal_url}/consulta/{CONSULTA_FUNDACAO_SERVIDORES_ATIVOS}",
+        },
+        "transferencias": {
+            "itens": transferencias,
+            "resumo": {
+                "qtd": len(transferencias),
+                "valor_total": round(sum(t.get("valor", 0) for t in transferencias), 2),
+                "valor_atual": soma_ano(transferencias, "valor", ano_atual),
+                "valor_anterior": soma_ano(transferencias, "valor", ano_anterior),
+            },
+            "fonte_url": f"{portal_url}/consulta/{CONSULTA_FUNDACAO_TRANSFERENCIAS}",
+        },
+    }
+
+
 # ----------------- 4) Prefeitura (Betha) -------------------------------- #
 
 def _processa_prefeitura(emendas: list[dict]) -> dict:
@@ -1653,6 +1984,7 @@ def main() -> int:
 
     prefeitura = {}
     camara_betha = {}
+    fundacao_cultural = {}
     if not so_sapl and not sem_betha:
         prefeitura = _processa_prefeitura(sapl["emendas"])
         if prefeitura:
@@ -1661,6 +1993,10 @@ def main() -> int:
         camara_betha = _processa_camara_betha()
         if camara_betha:
             _save("camara_betha.json", camara_betha)
+
+        fundacao_cultural = _processa_fundacao_cultural()
+        if fundacao_cultural:
+            _save("fundacao_cultural.json", fundacao_cultural)
 
         # Enriquece top fornecedores Betha (CNPJs mascarados → reconstruídos via raiz)
         if not sem_cnpj and prefeitura:
@@ -1684,6 +2020,10 @@ def main() -> int:
         if camara_betha:
             print("  ✓ camara_betha.json existente preservado no data.js")
 
+        fundacao_cultural = _load_existing("fundacao_cultural.json", {})
+        if fundacao_cultural:
+            print("  ✓ fundacao_cultural.json existente preservado no data.js")
+
     if so_sapl:
         diario = _load_existing("diario.json", {"total": 0, "ultimas": []})
         pncp = _load_existing("pncp.json", {})
@@ -1694,6 +2034,7 @@ def main() -> int:
         diarias = _load_existing("diarias.json", {})
         prefeitura = _load_existing("prefeitura.json", {})
         camara_betha = _load_existing("camara_betha.json", {})
+        fundacao_cultural = _load_existing("fundacao_cultural.json", {})
         remuneracao_vereadores = _load_existing("remuneracao_vereadores.json", {})
         sancoes_fornecedores = _load_existing("sancoes_fornecedores.json", {})
         auditoria_dados = _load_existing("auditoria_dados.json", {})
@@ -1732,6 +2073,7 @@ def main() -> int:
         "diario": diario,
         "prefeitura": prefeitura,
         "camara_betha": camara_betha,
+        "fundacao_cultural": fundacao_cultural,
         "pncp": pncp,
         "camara_transparencia": camara_transparencia,
         "cnpjs": cnpjs,

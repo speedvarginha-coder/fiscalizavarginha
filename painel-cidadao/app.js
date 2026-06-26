@@ -7042,9 +7042,243 @@ ${url}
     listEl.innerHTML = list.map(li => `<li>${li}</li>`).join("");
   }
 
+  function renderFundacaoCultural() {
+    const fc = D.fundacao_cultural || {};
+    if (!$("fundacaoResumo")) return;
+
+    const portal = fc.portal_url || "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==";
+    const despesas = fc.despesas || {};
+    const contratosResumo = fc.contratos_resumo || {};
+    const licResumo = fc.licitacoes_resumo || {};
+    const pessoal = (fc.pessoal || {}).resumo || {};
+    const diarias = fc.diarias || {};
+    const trans = fc.transferencias || {};
+    const ano = fc.ano_atual || new Date().getFullYear();
+
+    if (!Object.keys(fc).length) {
+      $("fundacaoResumo").innerHTML = `<div class="empty"><strong>Dados da Fundação ainda não carregados</strong><p>Rode a coleta Betha para gerar fundacao_cultural.json.</p></div>`;
+      return;
+    }
+
+    const card = (cls, icon, valor, label, sub) => `
+      <article class="placar-card ${cls}">
+        <div class="placar-card__icon">${icon}</div>
+        <div>
+          <div class="placar-card__valor">${valor}</div>
+          <div class="placar-card__label">${label}</div>
+          <div class="placar-card__sub">${sub || ""}</div>
+        </div>
+      </article>`;
+
+    $("fundacaoResumo").innerHTML = [
+      card("placar-card--money", window.ZELA.icon("cifrao", { size: 20 }), fmtMi(despesas.total_atual || 0), `Pago em ${ano}`, "Despesas por credor no Betha"),
+      card("placar-card--top", window.ZELA.icon("predio", { size: 20 }), fmtMi(despesas.total_externo_atual || 0), "Pago a externos", "Sem folha/encargos internos"),
+      card("placar-card--count", window.ZELA.icon("documentos", { size: 20 }), fmtNum(contratosResumo.qtd_vigencia_futura || 0), "Contratos com vigência futura", fmtBRL(contratosResumo.valor_vigencia_futura || 0)),
+      card("placar-card--warn", window.ZELA.icon("alerta", { size: 20 }), fmtNum(licResumo.dispensas_qtd || 0), "Dispensas no histórico", "Priorize justificativas e publicações"),
+    ].join("");
+
+    if ($("fundacaoMapa")) {
+      $("fundacaoMapa").innerHTML = [
+        { href: "#fundacaoContratos", title: "Contratos de eventos e estrutura", text: `${fmtNum(contratosResumo.qtd_total || 0)} contratos no histórico Betha.` },
+        { href: "#fundacaoFornecedores", title: "Quem recebeu em 2026", text: `${fmtBRL(despesas.total_externo_atual || 0)} para fornecedores/beneficiários externos.` },
+        { href: "#fundacaoLicitacoes", title: "Dispensas e inexigibilidades", text: "Conferir justificativa, cotação, parecer e publicação." },
+        { href: "#fundacaoTransferencias", title: "Transferências recebidas", text: `${fmtBRL((trans.resumo || {}).valor_atual || 0)} recebido no ano.` },
+      ].map(i => `
+        <a href="${i.href}">
+          <strong>${esc(i.title)}</strong>
+          <span>${esc(i.text)}</span>
+        </a>`).join("");
+    }
+
+    if ($("fundacaoStatsDespesas")) {
+      $("fundacaoStatsDespesas").innerHTML = [
+        { v: fmtBRL(despesas.total_atual || 0), l: `Total pago em ${ano}`, s: `${fmtNum(despesas.credores_atual_qtd || 0)} credores`, cls: "stat--teal" },
+        { v: fmtBRL(despesas.total_externo_atual || 0), l: "Pago a externos", s: "Sem credores internos/encargos", cls: "stat--navy" },
+        { v: fmtBRL(despesas.total_externo_anterior || 0), l: `Externos em ${fc.ano_anterior || ano - 1}`, s: "Comparativo", cls: "stat--gold" },
+      ].map(s => `<div class="stat ${s.cls}"><div class="stat__value">${s.v}</div><div class="stat__label">${s.l}</div><div class="stat__sub">${s.s}</div></div>`).join("");
+    }
+
+    if ($("fundacaoTopFornecedores")) {
+      const top = despesas.top_fornecedores_atual || [];
+      const max = (top[0] || {}).valor_total || 1;
+      $("fundacaoTopFornecedores").innerHTML = top.length ? top.slice(0, 20).map((f, i) => `
+        <div class="forn-row">
+          <span class="forn-row__rank">${i + 1}</span>
+          <div>
+            <div class="forn-row__nome">${esc(f.nome || "Credor não informado")}</div>
+            <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${((f.valor_total || 0) / max) * 100}%"></span></div>
+            <div class="forn-row__actions">
+              <a class="forn-row__btn forn-row__btn--betha" href="${portal}/consulta/80528" target="_blank" rel="noopener">${window.ZELA.icon("lupa", { size: 14 })} Despesas Betha</a>
+              <a class="forn-row__btn forn-row__btn--filtro" href="fundacao.html?q=${encodeURIComponent(f.nome || "")}#fundacaoContratos">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
+            </div>
+          </div>
+          <div class="forn-row__cnpj">${esc(f.cnpj || "")}</div>
+          <div class="forn-row__valor">${fmtBRL(f.valor_total || 0)}</div>
+        </div>`).join("") : `<div class="empty">Nenhum fornecedor externo localizado para ${ano}.</div>`;
+    }
+
+    let contratosShownFundacao = 20;
+    const contratos = fc.contratos || [];
+    const filtroContrato = $("fundacaoFiltroContrato");
+    const filtroTipo = $("fundacaoFiltroContratoTipo");
+    const contadorContratos = $("fundacaoContratosContador");
+    const listaContratos = $("fundacaoContratosLista");
+    const maisContratos = $("fundacaoContratosMais");
+    const hojeIso = new Date().toISOString().slice(0, 10);
+    const termosEvento = ["evento", "show", "cultura", "cultural", "teatro", "theatro", "radio", "rádio", "museu", "biblioteca", "patrimonio", "patrimônio", "tenda", "sonorizacao", "sonorização", "iluminacao", "iluminação", "palco", "banheiro", "coffee break"];
+
+    function contratoPassaTipo(c, tipo) {
+      const txt = norm([c.objeto, c.contratado, c.tipo, c.modalidade].join(" "));
+      if (tipo === "futuros") return c.data_fim && c.data_fim >= hojeIso;
+      if (tipo === "execucao") return /execu/.test(norm(c.situacao || ""));
+      if (tipo === "eventos") return termosEvento.some(t => txt.includes(norm(t)));
+      return true;
+    }
+
+    function renderContratosFundacao(reset) {
+      if (!listaContratos) return;
+      if (reset) contratosShownFundacao = 20;
+      const q = norm(filtroContrato ? filtroContrato.value : "");
+      const tipo = filtroTipo ? filtroTipo.value : "";
+      const view = contratos.filter(c =>
+        contratoPassaTipo(c, tipo) &&
+        (!q || norm([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.situacao].join(" ")).includes(q))
+      );
+      if (contadorContratos) contadorContratos.textContent = `${fmtNum(view.length)} contrato(s)`;
+      listaContratos.innerHTML = view.length ? view.slice(0, contratosShownFundacao).map((c, idx) => `
+        <article class="contrato">
+          <div class="contrato__valor">${fmtBRL(c.valor || 0)}</div>
+          <div class="contrato__body">
+            <p class="contrato__nome">${esc(c.contratado || "Contratado não informado")} ${c.situacao ? `<span class="contrato__sit">${esc(c.situacao)}</span>` : ""}</p>
+            <p class="contrato__obj">${esc(cleanText(c.objeto || "Objeto não informado"))}</p>
+            <p class="muted small">Nº ${esc(c.numero || "—")}${c.ano ? "/" + esc(c.ano) : ""} · ${esc(c.data_assinatura || "")}${c.data_fim ? " → " + esc(c.data_fim) : ""} · ${esc(c.tipo || c.modalidade || "")}</p>
+            <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
+              <button type="button" class="btn-dossie" onclick="ZELA.abrirContratoFundacao(${contratos.indexOf(c)})">Ver detalhes</button>
+              <a class="btn-link" href="${portal}/consulta/80579" target="_blank" rel="noopener" style="text-decoration:none; padding:4px 10px; background:#e8f4fd; border-radius:4px; color:#1565c0; font-size:.8em; font-weight:600; border:1px solid #90caf9;">Betha contratos</a>
+            </div>
+          </div>
+          <div class="contrato__cnpj">${esc(c.cnpj || "")}</div>
+        </article>`).join("") : `<div class="empty"><strong>Nenhum contrato encontrado</strong><p>Tente limpar a busca ou mudar o filtro.</p></div>`;
+      if (maisContratos) maisContratos.hidden = view.length <= contratosShownFundacao;
+    }
+
+    window.ZELA.maisContratosFundacao = function () {
+      contratosShownFundacao += 20;
+      renderContratosFundacao(false);
+    };
+    window.ZELA.abrirContratoFundacao = function (idx) {
+      const c = contratos[idx];
+      if (!c || !window.ZELA.dossie) return;
+      window.ZELA.dossie.abrirComHtml(`
+        <div class="cat-modal">
+          <p style="margin:0;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--gold-dk);">CONTRATO DA FUNDAÇÃO</p>
+          <h3 style="margin:4px 0 2px;">${esc(c.contratado || "Contratado não informado")}</h3>
+          <p class="muted small">Nº ${esc(c.numero || "—")}${c.ano ? "/" + esc(c.ano) : ""} · CNPJ ${esc(c.cnpj || "não informado")}</p>
+          <p><strong>${fmtBRL(c.valor || 0)}</strong></p>
+          <p>${esc(cleanText(c.objeto || "Objeto não informado"))}</p>
+          <p class="muted">Vigência: ${esc(c.data_assinatura || "sem data inicial")} ${c.data_fim ? "até " + esc(c.data_fim) : ""}. Situação: ${esc(c.situacao || "não informada")}.</p>
+          <h4>Pedido LAI sugerido</h4>
+          <textarea readonly style="width:100%;min-height:110px;font-size:.85rem;padding:10px;border:1px solid var(--line);border-radius:8px;">Solicito cópia do contrato nº ${esc(c.numero || "")}, processo de contratação, empenhos, liquidações, notas fiscais, comprovantes de pagamento e documentos de recebimento/execução referentes ao objeto: ${esc(cleanText(c.objeto || ""))}.</textarea>
+          <p style="margin-top:12px"><a class="btn-small" href="${portal}/consulta/80579" target="_blank" rel="noopener">Abrir consulta no Betha</a></p>
+        </div>`);
+    };
+    if (filtroContrato) filtroContrato.addEventListener("input", () => renderContratosFundacao(true));
+    if (filtroTipo) filtroTipo.addEventListener("change", () => renderContratosFundacao(true));
+    const qInicial = new URLSearchParams(location.search).get("q");
+    if (qInicial && filtroContrato) filtroContrato.value = qInicial;
+    renderContratosFundacao(true);
+
+    if ($("fundacaoStatsLicitacoes")) {
+      $("fundacaoStatsLicitacoes").innerHTML = [
+        { v: fmtNum(licResumo.processos_qtd || 0), l: "Processos no histórico", s: fmtBRL(licResumo.processos_valor || 0), cls: "stat--navy" },
+        { v: fmtNum(licResumo.dispensas_qtd || 0), l: "Dispensas", s: "Conferir justificativa", cls: "stat--gold" },
+        { v: fmtNum(licResumo.inexigibilidades_qtd || 0), l: "Inexigibilidades", s: "Conferir exclusividade/artista", cls: "stat--teal" },
+      ].map(s => `<div class="stat ${s.cls}"><div class="stat__value">${s.v}</div><div class="stat__label">${s.l}</div><div class="stat__sub">${s.s}</div></div>`).join("");
+    }
+    if ($("fundacaoLicitacoesLista")) {
+      const lic = [...(fc.licit_abertas || []), ...(fc.dispensas || []), ...(fc.inexigibilidades || [])]
+        .sort((a, b) => (Number(b.valor) || 0) - (Number(a.valor) || 0))
+        .slice(0, 18);
+      $("fundacaoLicitacoesLista").innerHTML = lic.map(l => `
+        <article class="lic">
+          <div class="lic__num">${esc(l.modalidade || "Processo")} ${l.numero ? "nº " + esc(l.numero) : ""}</div>
+          <p class="lic__obj">${esc(cleanText(l.objeto || "Objeto não informado"))}</p>
+          <div class="lic__meta">${l.valor ? `<span>${fmtBRL(l.valor)}</span>` : ""}${l.situacao ? `<span>${esc(l.situacao)}</span>` : ""}${l.data ? `<span>${esc(l.data)}</span>` : ""}</div>
+        </article>`).join("") || `<div class="empty">Nenhuma licitação carregada.</div>`;
+    }
+
+    if ($("fundacaoEmpenhosLista")) {
+      const empenhos = ((fc.execucao || {}).maiores_empenhos_atual || []).slice(0, 20);
+      $("fundacaoEmpenhosLista").innerHTML = empenhos.map(e => `
+        <article class="contrato">
+          <div class="contrato__valor">${fmtBRL(e.valor_empenhado || 0)}</div>
+          <div class="contrato__body">
+            <p class="contrato__nome">${esc(e.credor || "Credor não informado")}</p>
+            <p class="contrato__obj">${esc(cleanText(e.historico || "Histórico não informado"))}</p>
+            <p class="muted small">Empenho ${esc(e.numero || "—")} · ${esc(e.data || "")} · Liquidado ${fmtBRL(e.valor_liquidado || 0)} · Pago ${fmtBRL(e.valor_pago || 0)}</p>
+          </div>
+        </article>`).join("") || `<div class="empty">Nenhum empenho carregado.</div>`;
+    }
+
+    if ($("fundacaoStatsPessoal")) {
+      $("fundacaoStatsPessoal").innerHTML = [
+        { v: fmtNum(pessoal.ativos_qtd || 0), l: "Servidores ativos", s: "Betha Fundação", cls: "stat--navy" },
+        { v: fmtNum(pessoal.efetivos_qtd || 0), l: "Efetivos", s: "Vínculo informado", cls: "stat--teal" },
+        { v: fmtNum(pessoal.comissionados_qtd || 0), l: "Comissionados", s: "Vínculo informado", cls: "stat--gold" },
+      ].map(s => `<div class="stat ${s.cls}"><div class="stat__value">${s.v}</div><div class="stat__label">${s.l}</div><div class="stat__sub">${s.s}</div></div>`).join("");
+    }
+    if ($("fundacaoServidoresLista")) {
+      const servidores = ((fc.pessoal || {}).servidores || []).slice(0, 24);
+      $("fundacaoServidoresLista").innerHTML = servidores.map(s => `
+        <article class="lic">
+          <div class="lic__num">${esc(s.nome || "Servidor não informado")}</div>
+          <p class="lic__obj">${esc(s.cargo || "Cargo não informado")}</p>
+          <div class="lic__meta"><span>${esc(s.vinculo || "Vínculo não informado")}</span><span>${esc(s.situacao || "")}</span><span>${esc(s.carga_horaria_semanal || "")}h semanais</span></div>
+        </article>`).join("") || `<div class="empty">Nenhum servidor carregado.</div>`;
+    }
+
+    if ($("fundacaoStatsDiarias")) {
+      const r = diarias.resumo || {};
+      $("fundacaoStatsDiarias").innerHTML = [
+        { v: fmtBRL(r.atual_valor || 0), l: `Diárias detalhadas em ${ano}`, s: `${fmtNum(r.atual_qtd || 0)} registro(s)`, cls: "stat--teal" },
+        { v: fmtBRL(r.detalhadas_valor_total || 0), l: "Total detalhado", s: `${fmtNum(r.detalhadas_qtd || 0)} diárias`, cls: "stat--navy" },
+      ].map(s => `<div class="stat ${s.cls}"><div class="stat__value">${s.v}</div><div class="stat__label">${s.l}</div><div class="stat__sub">${s.s}</div></div>`).join("");
+    }
+    if ($("fundacaoDiariasLista")) {
+      const lista = (diarias.detalhadas || []).slice(0, 18);
+      $("fundacaoDiariasLista").innerHTML = lista.map(d => `
+        <article class="contrato">
+          <div class="contrato__valor">${fmtBRL(d.valor_total || 0)}</div>
+          <div class="contrato__body">
+            <p class="contrato__nome">${esc(d.funcionario || "Pessoa não informada")}</p>
+            <p class="contrato__obj">${esc(cleanText(d.finalidade || "Finalidade não informada"))}</p>
+            <p class="muted small">${esc(d.destino || "Destino não informado")} · ${esc(d.periodo || "")} · ${esc(d.cargo || "")}</p>
+          </div>
+        </article>`).join("") || `<div class="empty">Nenhuma diária carregada.</div>`;
+    }
+
+    if ($("fundacaoStatsTransferencias")) {
+      const r = trans.resumo || {};
+      $("fundacaoStatsTransferencias").innerHTML = [
+        { v: fmtBRL(r.valor_atual || 0), l: `Recebido em ${ano}`, s: "Transferências financeiras", cls: "stat--teal" },
+        { v: fmtBRL(r.valor_total || 0), l: "Total histórico", s: `${fmtNum(r.qtd || 0)} registro(s)`, cls: "stat--navy" },
+      ].map(s => `<div class="stat ${s.cls}"><div class="stat__value">${s.v}</div><div class="stat__label">${s.l}</div><div class="stat__sub">${s.s}</div></div>`).join("");
+    }
+    if ($("fundacaoTransferenciasLista")) {
+      const lista = ((trans || {}).itens || []).slice(0, 16);
+      $("fundacaoTransferenciasLista").innerHTML = lista.map(t => `
+        <article class="lic">
+          <div class="lic__num">${fmtBRL(t.valor || 0)}</div>
+          <p class="lic__obj">${esc(cleanText(t.finalidade || "Finalidade não informada"))}</p>
+          <div class="lic__meta"><span>${esc(t.data || "")}</span><span>${esc(t.orgao_concedente || "")}</span><span>${esc(t.fonte_recurso || "")}</span></div>
+        </article>`).join("") || `<div class="empty">Nenhuma transferência carregada.</div>`;
+    }
+  }
+
   renderGlobalDataHealthNotice();
   if (PAGE === "home") initScorecard();
   if (PAGE === "pessoal") initPessoal();
+  if (PAGE === "fundacao") renderFundacaoCultural();
   if (PAGE === "prefeitura") renderPlacarPrefeitura();
   if (PAGE === "prefeitura") renderCategoriasPrefeitura();
   if (PAGE === "prefeitura") renderPrefeituraOverview();

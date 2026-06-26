@@ -13,11 +13,13 @@ const keys = [
   "auditoria_dados",
   "indice_relevancia",
   "remuneracao_vereadores",
+  "resumo",
   "sancoes_fornecedores",
   "atualizacoes",
   "atualizado_em",
   "camara_betha",
   "diario",
+  "fundacao_cultural",
   "mudancas_coleta",
   "cnpjs",
 ];

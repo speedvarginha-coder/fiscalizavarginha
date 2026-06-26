@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundação Cultural · Fiscaliza Varginha</title>
+<meta name="description" content="Contratos, despesas, licitações, diárias, pessoal e transferências da Fundação Cultural de Varginha-MG.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Fiscaliza Varginha">
+<meta property="og:title"       content="Fundação Cultural · Fiscaliza Varginha">
+<meta property="og:description" content="Acompanhe gastos, contratos, editais, pessoal e diárias da Fundação Cultural de Varginha-MG.">
+<meta property="og:locale"      content="pt_BR">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Fundação Cultural · Fiscaliza Varginha">
+<meta name="twitter:description" content="Contratos, despesas e execução da Fundação Cultural de Varginha-MG.">
+<link rel="stylesheet" href="style.css?v=20260623">
+</head>
+<body data-page="fundacao">
+<div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
+  <div class="loading-spinner"></div>
+  <p>Carregando dados...</p>
+</div>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Fiscaliza Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" type="button" title="Abrir menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span aria-hidden="true">☰</span></button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html" class="nav__link">Início</a>
+      <a href="atualizacoes.html" class="nav__link">Atualizações</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="fundacao.html" class="nav__link nav__link--active">Fundação</a>
+      <a href="camara.html" class="nav__link">Câmara</a>
+      <a href="emendas/index.html" class="nav__link">Emendas</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="pessoal.html" class="nav__link">Pessoal</a>
+      <a href="sobre.html" class="nav__link">Sobre</a>
+      <a href="cobrar.html" class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<section class="section section--alt section--fundacao">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">← Voltar ao início</a></p>
+
+    <header class="bigheader">
+      <span class="bigheader__kicker">ADMINISTRAÇÃO INDIRETA</span>
+      <h1 class="bigheader__title">Fundação Cultural</h1>
+      <p class="bigheader__lead">
+        A Fundação Cultural tem CNPJ e Portal Betha próprios. Aqui ficam contratos,
+        despesas, diárias, pessoal, transferências recebidas e trilhas ligadas a
+        patrimônio, rádio, museu, biblioteca, Theatro Capitólio, TV Princesa e editais culturais.
+      </p>
+      <p id="atualizado" class="muted small" style="margin-top:8px"></p>
+      <div class="civic-actions" aria-label="Ações rápidas da Fundação Cultural">
+        <a href="#fundacaoContratos">Contratos</a>
+        <a href="#fundacaoFornecedores">Fornecedores</a>
+        <a href="#fundacaoLicitacoes">Licitações</a>
+        <a href="#fundacaoPessoal">Pessoal</a>
+        <a href="#fundacaoDiarias">Diárias</a>
+        <a href="https://fundacaoculturaldevarginha.com.br/transparencia/" target="_blank" rel="noopener">Transparência oficial</a>
+      </div>
+      <details class="page-howto">
+        <summary>Como ler esta página</summary>
+        <div class="page-howto__body">
+          <p>Os dados vêm do Portal Betha da Fundação Cultural. Eles ajudam a priorizar conferências, mas não provam irregularidade por si só.</p>
+          <p>Contrato assinado não é entrega comprovada. Para confirmar execução, peça empenho, liquidação, nota fiscal, relatório de evento, termo de recebimento e prestação de contas do edital.</p>
+          <div class="page-howto__chips">
+            <span class="ok">✓ Fonte oficial Betha</span>
+            <span class="warn">⚠ CNPJ mascarado no portal</span>
+            <span class="warn">⚠ Contrato ≠ execução</span>
+            <span class="info">ℹ Verifique edital e prestação de contas</span>
+          </div>
+        </div>
+      </details>
+    </header>
+
+    <div id="fundacaoResumo" class="placar" aria-label="Resumo financeiro da Fundação Cultural"></div>
+
+    <section class="block">
+      <h3 class="block__title">Mapa de fiscalização</h3>
+      <p class="block__lead">Comece pelos blocos que ligam dinheiro público a documentos verificáveis.</p>
+      <div id="fundacaoMapa" class="audit-shortcuts"></div>
+    </section>
+
+    <section id="fundacaoFornecedores" class="block">
+      <h3 class="block__title">Fornecedores e beneficiários externos</h3>
+      <p class="block__lead">Pagamentos por credor no ano, separando folha, encargos e transferências internas.</p>
+      <div class="stats" id="fundacaoStatsDespesas"></div>
+      <div id="fundacaoTopFornecedores" class="forn-list"></div>
+    </section>
+
+    <section id="fundacaoContratos" class="block">
+      <h3 class="block__title">Contratos da Fundação</h3>
+      <p class="block__lead">Filtre por empresa, objeto, número ou situação. Use o link Betha para conferir a fonte primária.</p>
+      <div class="filterbar">
+        <input id="fundacaoFiltroContrato" type="search" placeholder="Buscar contrato, empresa, CNPJ, objeto...">
+        <select id="fundacaoFiltroContratoTipo" aria-label="Filtrar contratos">
+          <option value="">Todos os contratos</option>
+          <option value="futuros">Com vigência futura</option>
+          <option value="execucao">Status execução</option>
+          <option value="eventos">Eventos, estrutura e cultura</option>
+        </select>
+        <span id="fundacaoContratosContador" class="filterbar__count"></span>
+      </div>
+      <div id="fundacaoContratosLista" class="contratos-list"></div>
+      <div id="fundacaoContratosMais" class="loadmore" hidden>
+        <button type="button" onclick="ZELA.maisContratosFundacao()">Mostrar mais</button>
+      </div>
+    </section>
+
+    <section id="fundacaoLicitacoes" class="block">
+      <h3 class="block__title">Licitações, dispensas e inexigibilidades</h3>
+      <p class="block__lead">Use como triagem para conferir justificativa, orçamento estimado, parecer e publicação.</p>
+      <div class="stats" id="fundacaoStatsLicitacoes"></div>
+      <div id="fundacaoLicitacoesLista" class="lic-list"></div>
+    </section>
+
+    <section id="fundacaoExecucao" class="block">
+      <h3 class="block__title">Maiores empenhos do ano</h3>
+      <p class="block__lead">Empenho é a reserva do gasto. Para verificar entrega, confira liquidação, pagamento e documento fiscal.</p>
+      <div id="fundacaoEmpenhosLista" class="contratos-list"></div>
+    </section>
+
+    <section id="fundacaoPessoal" class="block">
+      <h3 class="block__title">Pessoal e cargos</h3>
+      <p class="block__lead">Quadro de servidores ativos informado no Betha da Fundação.</p>
+      <div class="stats" id="fundacaoStatsPessoal"></div>
+      <div id="fundacaoServidoresLista" class="people-mini"></div>
+    </section>
+
+    <section id="fundacaoDiarias" class="block">
+      <h3 class="block__title">Diárias</h3>
+      <p class="block__lead">Valores, pessoas, destinos e finalidades declaradas. Itens repetidos merecem conferência de agenda, evento e relatório.</p>
+      <div class="stats" id="fundacaoStatsDiarias"></div>
+      <div id="fundacaoDiariasLista" class="contratos-list"></div>
+    </section>
+
+    <section id="fundacaoTransferencias" class="block">
+      <h3 class="block__title">Transferências recebidas</h3>
+      <p class="block__lead">Entradas financeiras registradas no portal da Fundação.</p>
+      <div class="stats" id="fundacaoStatsTransferencias"></div>
+      <div id="fundacaoTransferenciasLista" class="lic-list"></div>
+    </section>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <strong>Fiscaliza Varginha</strong>
+      <p>Painel cidadão independente. Dados são ponto de partida para conferência, não conclusão automática.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Rodapé">
+      <a href="prefeitura.html">Prefeitura</a>
+      <a href="fundacao.html">Fundação Cultural</a>
+      <a href="camara.html">Câmara</a>
+      <a href="cobrar.html">Como cobrar</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="data-loader.js?v=20260623"></script>
+</body>
+</html>

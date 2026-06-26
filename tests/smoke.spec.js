@@ -800,7 +800,7 @@ test.describe("Rodapé padronizado", () => {
       setupConsoleListener(page);
       await page.goto(fileUrl(p + ".html"), { waitUntil: "domcontentloaded" });
       await expect(page.locator(".footer__inner")).toHaveCount(1);
-      await expect(page.locator(".footer__nav a")).toHaveCount(8);
+      await expect(page.locator(".footer__nav a")).toHaveCount(9);
       await expect(page.locator(".footer__sources a")).toHaveCount(7);
       await expect(page.locator("#footerAtualizado")).not.toHaveText("—", { timeout: 15000 });
       await expect(page.locator("#footerAtualizado")).not.toHaveText("", { timeout: 15000 });

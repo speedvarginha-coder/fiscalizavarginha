@@ -918,6 +918,8 @@ a.brand:hover { text-decoration: none; }
 /* Color accents for the two institutional sections */
 .section--prefeitura .bigheader { border-left-color: var(--teal); }
 .section--prefeitura .bigheader__kicker { color: var(--teal); }
+.section--fundacao .bigheader { border-left-color: var(--navy); }
+.section--fundacao .bigheader__kicker { color: var(--navy); }
 .section--camara .bigheader { border-left-color: var(--gold); }
 
 /* Inner blocks within an institutional section */
@@ -2493,7 +2495,8 @@ a.brand:hover { text-decoration: none; }
   gap: 12px;
   margin: 18px 0 8px;
 }
-.audit-shortcuts button {
+.audit-shortcuts button,
+.audit-shortcuts a {
   min-height: 112px;
   text-align: left;
   border: 1px solid var(--line);
@@ -2503,8 +2506,11 @@ a.brand:hover { text-decoration: none; }
   padding: 15px;
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(0, 75, 141, 0.06);
+  text-decoration: none;
+  color: inherit;
 }
-.audit-shortcuts button:hover {
+.audit-shortcuts button:hover,
+.audit-shortcuts a:hover {
   border-left-color: var(--gold);
   transform: translateY(-1px);
 }
@@ -5235,7 +5241,8 @@ body[data-page="relatorios"] .breadcrumb {
   gap: 12px;
 }
 
-.audit-shortcuts button {
+.audit-shortcuts button,
+.audit-shortcuts a {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 4px 12px;

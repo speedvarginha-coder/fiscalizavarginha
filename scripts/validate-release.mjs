@@ -25,6 +25,7 @@ const expectedChunks = [
   "emendas",
   "federal",
   "fontes_emendas_2026",
+  "fundacao_cultural",
   "indice_relevancia",
   "licitacoes",
   "mudancas_coleta",
@@ -51,6 +52,7 @@ const requiredPublicFiles = [
   "data-loader.js",
   "data.js",
   "favicon.svg",
+  "fundacao.html",
   "index.html",
   "marcadores.html",
   "pessoal.html",
@@ -217,6 +219,15 @@ function validateDomainShapes(chunks) {
   if (isObject(camaraBetha)) {
     assertNumber(camaraBetha.ano_atual, "camara_betha.ano_atual", 2020);
     assertArray(camaraBetha.contratos, "camara_betha.contratos", 1);
+  }
+
+  const fundacao = chunks.get("fundacao_cultural");
+  assertObject(fundacao, "fundacao_cultural");
+  if (isObject(fundacao)) {
+    assertNumber(fundacao.ano_atual, "fundacao_cultural.ano_atual", 2020);
+    assertObject(fundacao.despesas, "fundacao_cultural.despesas");
+    assertObject(fundacao.contratos_resumo, "fundacao_cultural.contratos_resumo");
+    assertArray(fundacao.contratos, "fundacao_cultural.contratos", 1);
   }
 
   const diarias = chunks.get("diarias");

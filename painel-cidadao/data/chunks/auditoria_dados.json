@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-06-25T18:16:52.096Z",
+  "gerado_em": "2026-06-26T16:02:56.783Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 6,
+    "warnings": 5,
     "info": 1,
     "ok": 1,
-    "total": 8
+    "total": 7
   },
   "atualizado_base": {
     "iso": "2026-06-25T12:10:35",
@@ -17,17 +17,9 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 1.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
-    },
-    {
-      "severity": "warning",
-      "id": "indice-parcial",
-      "title": "Indice parlamentar parcial",
-      "detail": "A menor cobertura automatica do indice e 97.1%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.",
-      "action": "Nao tratar o ranking como definitivo; publicar sempre a cobertura junto da nota.",
-      "source": "indice_relevancia.json"
     },
     {
       "severity": "info",

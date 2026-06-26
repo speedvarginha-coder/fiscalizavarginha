@@ -16,6 +16,7 @@
   const CHUNKS_POR_PAGINA = {
     "home":         ["resumo", "atualizado_em", "auditoria_dados", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
     "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "licitacoes"],
+    "fundacao":     ["fundacao_cultural", "atualizado_em", "auditoria_dados", "diario"],
     "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados"],
     "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "pessoal"],
     "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
