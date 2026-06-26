@@ -102,14 +102,14 @@
 
     <section id="fundacaoContratos" class="block">
       <h3 class="block__title">Contratos da Fundação</h3>
-      <p class="block__lead">Filtre por empresa, objeto, número ou situação. Use o link Betha para conferir a fonte primária.</p>
+      <p class="block__lead">Mostra os contratos <strong>em vigor</strong> por padrão. Troque para "Todos" para ver o histórico completo. Use o link Betha para conferir a fonte primária.</p>
       <div class="filterbar">
         <input id="fundacaoFiltroContrato" type="search" placeholder="Buscar contrato, empresa, CNPJ, objeto...">
         <select id="fundacaoFiltroContratoTipo" aria-label="Filtrar contratos">
-          <option value="">Todos os contratos</option>
-          <option value="futuros">Com vigência futura</option>
-          <option value="execucao">Status execução</option>
+          <option value="">Vigentes (em vigor)</option>
+          <option value="historico">Todos os contratos (histórico)</option>
           <option value="eventos">Eventos, estrutura e cultura</option>
+          <option value="execucao">Status execução</option>
         </select>
         <span id="fundacaoContratosContador" class="filterbar__count"></span>
       </div>

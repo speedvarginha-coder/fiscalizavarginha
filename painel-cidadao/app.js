@@ -7119,20 +7119,21 @@ ${url}
 
     let contratosShownFundacao = 20;
     const contratos = fc.contratos || [];
+    const contratosVig = fc.contratos_vigentes || [];
     const filtroContrato = $("fundacaoFiltroContrato");
     const filtroTipo = $("fundacaoFiltroContratoTipo");
     const contadorContratos = $("fundacaoContratosContador");
     const listaContratos = $("fundacaoContratosLista");
     const maisContratos = $("fundacaoContratosMais");
-    const hojeIso = new Date().toISOString().slice(0, 10);
     const termosEvento = ["evento", "show", "cultura", "cultural", "teatro", "theatro", "radio", "rádio", "museu", "biblioteca", "patrimonio", "patrimônio", "tenda", "sonorizacao", "sonorização", "iluminacao", "iluminação", "palco", "banheiro", "coffee break"];
 
     function contratoPassaTipo(c, tipo) {
-      const txt = norm([c.objeto, c.contratado, c.tipo, c.modalidade].join(" "));
-      if (tipo === "futuros") return c.data_fim && c.data_fim >= hojeIso;
       if (tipo === "execucao") return /execu/.test(norm(c.situacao || ""));
-      if (tipo === "eventos") return termosEvento.some(t => txt.includes(norm(t)));
-      return true;
+      if (tipo === "eventos") {
+        const txt = norm([c.objeto, c.contratado, c.tipo, c.modalidade].join(" "));
+        return termosEvento.some(t => txt.includes(norm(t)));
+      }
+      return true; // "" (vigentes, padrão) e "historico" não filtram por tipo
     }
 
     function renderContratosFundacao(reset) {
@@ -7140,7 +7141,9 @@ ${url}
       if (reset) contratosShownFundacao = 20;
       const q = norm(filtroContrato ? filtroContrato.value : "");
       const tipo = filtroTipo ? filtroTipo.value : "";
-      const view = contratos.filter(c =>
+      // Por padrão mostra só os vigentes (precomputados); "historico" abre os 901.
+      const base = (tipo === "historico") ? contratos : contratosVig;
+      const view = base.filter(c =>
         contratoPassaTipo(c, tipo) &&
         (!q || norm([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.situacao].join(" ")).includes(q))
       );
