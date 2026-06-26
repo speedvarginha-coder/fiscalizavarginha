@@ -1,6 +1,6 @@
 {
   "fonte": "Investigacao de fontes abertas sobre emendas impositivas 2026",
-  "atualizado_em": "2026-06-25T12:46:17",
+  "atualizado_em": "2026-06-26T14:39:18",
   "resumo": {
     "fontes_verificadas": 9,
     "fontes_ok": 8,
@@ -602,7 +602,7 @@
       "origem": "SAPL - materias legislativas 2026 (API)",
       "titulo": "Emenda Impositiva 35/2026 — autor nao identificado",
       "tipo": "emenda_sapl",
-      "url": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5923/projetodelei35-2026.pdf",
+      "url": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5923/projetodelei35-2026_-executivo.pdf",
       "termo": "emenda impositiva",
       "trecho": "ALTERA A NOMENCLATURA, REQUISITOS E ATRIBUIÇÕES DOS CARGOS QUE ESPECIFICA DA FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA - FHOMUV, E DÁ OUTRAS PROVIDÊNCIAS.",
       "sinal": "Emenda impositiva registrada no SAPL 2026 com numero e autor. CNPJ e valor dependem de consulta LAI.",

@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-26T16:02:56.783Z",
+  "gerado_em": "2026-06-26T18:46:55.418Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -9,15 +9,15 @@
     "total": 7
   },
   "atualizado_base": {
-    "iso": "2026-06-25T12:10:35",
-    "data_humana": "25/06/2026 - 12:10"
+    "iso": "2026-06-26T14:43:30",
+    "data_humana": "26/06/2026 - 14:43"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 1.0 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -57,7 +57,7 @@
       "severity": "warning",
       "id": "prefeitura-contratos-sem-competicao",
       "title": "Alto indice de contratacao sem competicao licitatoria",
-      "detail": "Contratos por Inexigibilidade ou Dispensa somam 22.3% (R$ 138.4M de R$ 622.0M).",
+      "detail": "Contratos por Inexigibilidade ou Dispensa somam 21.6% (R$ 138.4M de R$ 640.0M).",
       "action": "Auditar as maiores inexigibilidades (ex. IPD, Viacao Real, CNEC) e verificar a regularidade das justificativas de preco.",
       "source": "prefeitura.json"
     },

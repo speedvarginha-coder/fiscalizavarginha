@@ -1496,7 +1496,7 @@
       "cnpj_raiz": "25863390",
       "cnpj_completo": "25863390000154",
       "cnpj_reconstruido": true,
-      "valor_total": 40229077.16,
+      "valor_total": 41029077.16,
       "razao_social": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "nome_fantasia": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "situacao": "ATIVA",
@@ -1949,6 +1949,25 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "MED CENTER COMERCIAL LTDA",
+      "cnpj_raiz": "00874929",
+      "cnpj_completo": "00874929000140",
+      "cnpj_reconstruido": true,
+      "valor_total": 1397771.9,
+      "razao_social": "MED CENTER COMERCIAL LTDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1995-10-23",
+      "cnae": "Comércio atacadista de instrumentos e materiais para uso médico, cirúrgico, hospitalar e de laboratórios",
+      "municipio": "POUSO ALEGRE",
+      "uf": "MG",
+      "socios": [
+        "GABRIELLE DANIEL NERY",
+        "MARCIA PEREIRA DANIEL NERY"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
       "cnpj_raiz": "42317980",
       "cnpj_completo": "42317980000109",
@@ -2069,25 +2088,6 @@
         "OSCAR KAASTRUP BALSINI",
         "TATIANE DEZIDERIO COSTA",
         "WELLINGTON ROGERIO BIAGIO SILVA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
-      "cnpj_raiz": "04491116",
-      "cnpj_completo": "04491116000121",
-      "cnpj_reconstruido": true,
-      "valor_total": 956017.98,
-      "razao_social": "VERSAO BR COMUNICACAO E MARKETING LTDA",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2001-05-25",
-      "cnae": "Agências de publicidade",
-      "municipio": "RIBEIRAO PRETO",
-      "uf": "SP",
-      "socios": [
-        "GUSTAVO HENRIQUE TEIXEIRA DE CASTRO",
-        "SUELI MERI NEVES TEIXEIRA DE CASTRO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     }
