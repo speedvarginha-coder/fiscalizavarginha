@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v77 (mobile: caixa de avisos recolhível) */
-const CACHE = "fiscaliza-v77";
+/* Fiscaliza Varginha — Service Worker v78 (mobile: banner some ao rolar + intro enxuta) */
+const CACHE = "fiscaliza-v78";
 const STATIC = [
   "./",
   "./index.html",

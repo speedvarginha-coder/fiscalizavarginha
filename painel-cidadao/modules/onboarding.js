@@ -39,11 +39,22 @@
 
     main.insertBefore(banner, main.firstChild);
 
-    banner.querySelector(".onboarding__close").addEventListener("click", function () {
+    var fechado = false;
+    function fechar() {
+      if (fechado) return;
+      fechado = true;
       marcarVisto();
       banner.classList.add("is-leaving");
       setTimeout(function () { banner.remove(); }, 250);
-    });
+      window.removeEventListener("scroll", aoRolar);
+    }
+    // Some ao rolar: quem já está usando o painel não precisa mais do aviso.
+    function aoRolar() {
+      if ((window.scrollY || document.documentElement.scrollTop || 0) > 160) fechar();
+    }
+
+    banner.querySelector(".onboarding__close").addEventListener("click", fechar);
+    window.addEventListener("scroll", aoRolar, { passive: true });
   }
 
   if (document.readyState === "loading") {
