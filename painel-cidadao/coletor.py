@@ -495,7 +495,7 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
     resumo = {
         "ano": ano,
         "total_materias": len(rows),
-        "vereadores_ativos": len(vereadores),
+        "vereadores_ativos": sum(1 for v in vereadores if _norm_txt(v["nome"]) in PARLAMENTARES_MONITORADOS),
         "emendas_qtd": len(emendas),
         "emendas_valor_total_brl": round(valor_total, 2),
         "impacto_zero_qtd": sum(1 for m in materias if m["impacto_zero"]),
@@ -632,7 +632,7 @@ def _processa_sapl() -> dict:
 
     resumo = {
         "total_materias": len(rows),
-        "vereadores_ativos": len(vereadores),
+        "vereadores_ativos": sum(1 for v in vereadores if _norm_txt(v["nome"]) in PARLAMENTARES_MONITORADOS),
         "emendas_qtd": len(emendas),
         "emendas_valor_total_brl": round(valor_total, 2),
         "tipos": [
