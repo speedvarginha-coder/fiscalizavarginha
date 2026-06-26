@@ -10408,6 +10408,28 @@ body[data-page="home"] .hub-grid-18 .hub-item { position: relative; }
   gap: 12px;
   align-items: start;
 }
+/* Recolhível: a barra de avisos vira um <details> tocável. */
+.data-health-strip__det > summary.data-health-strip__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  cursor: pointer;
+}
+.data-health-strip__det > summary::-webkit-details-marker { display: none; }
+.data-health-strip__det > summary strong { margin-bottom: 0; flex: 1; }
+.data-health-strip__det > summary::after {
+  content: "⌄";
+  font-size: 1.2em;
+  line-height: 1;
+  color: var(--gold-dk);
+  transition: transform .2s ease;
+}
+.data-health-strip__det[open] > summary::after { transform: rotate(180deg); }
+.data-health-strip__body { margin-top: 10px; }
+/* O pai .data-health-strip é grid e atrapalha o collapse nativo do <details>;
+   escondemos o corpo explicitamente quando fechado. */
+.data-health-strip__det:not([open]) > .data-health-strip__body { display: none; }
 .data-health-strip strong {
   display: block;
   font-size: .76rem;

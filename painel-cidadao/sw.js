@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v76 (corrige texto: 15 vereadores) */
-const CACHE = "fiscaliza-v76";
+/* Fiscaliza Varginha — Service Worker v77 (mobile: caixa de avisos recolhível) */
+const CACHE = "fiscaliza-v77";
 const STATIC = [
   "./",
   "./index.html",

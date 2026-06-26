@@ -6981,22 +6981,27 @@ ${url}
 
     box.className = `data-health-strip data-health-strip--${esc(level)}${PAGE === "home" ? " data-health-strip--compact" : ""}`;
     box.hidden = false;
+    // Recolhível: no celular abre fechado (só título + contador) para não comer
+    // a tela; no desktop já vem aberto. O cidadão toca para ver os detalhes.
+    const healthAberta = window.innerWidth >= 768;
     box.innerHTML = `
-      <div class="data-health-strip__head">
-        <div>
+      <details class="data-health-strip__det"${healthAberta ? " open" : ""}>
+        <summary class="data-health-strip__head">
           <strong>${esc(label)}</strong>
+          <span>${fmtNum(summary.warnings || 0)} aviso(s)</span>
+        </summary>
+        <div class="data-health-strip__body">
           <p>Base principal: ${esc(base)}. Use estes números como trilha de fiscalização e confirme a fonte oficial antes de divulgar conclusão.</p>
+          <ul>
+            ${sorted.map((item) => {
+              const srcMap = { "fontes_emendas_2026.json": "Emendas 2026", "pessoal.json": "Folha de pessoal", "indice_relevancia.json": "Índice de relevância", "cnpjs.json": "CNPJs", "camara_betha.json": "Câmara/Betha", "pncp.json": "PNCP", "atualizado_em.json": "Atualização" };
+              const title = item.title || srcMap[item.source] || (item.source || "").replace(/\.json$/, "");
+              return `<li><b>${esc(title)}:</b> ${esc(item.detail)} <em>${esc(item.action || "")}</em></li>`;
+            }).join("")}
+          </ul>
+          <a href="sobre.html#auditoriaDados">Ver auditoria completa e limitações das fontes</a>
         </div>
-        <span>${fmtNum(summary.warnings || 0)} aviso(s)</span>
-      </div>
-      <ul>
-        ${sorted.map((item) => {
-          const srcMap = { "fontes_emendas_2026.json": "Emendas 2026", "pessoal.json": "Folha de pessoal", "indice_relevancia.json": "Índice de relevância", "cnpjs.json": "CNPJs", "camara_betha.json": "Câmara/Betha", "pncp.json": "PNCP", "atualizado_em.json": "Atualização" };
-          const title = item.title || srcMap[item.source] || (item.source || "").replace(/\.json$/, "");
-          return `<li><b>${esc(title)}:</b> ${esc(item.detail)} <em>${esc(item.action || "")}</em></li>`;
-        }).join("")}
-      </ul>
-      <a href="sobre.html#auditoriaDados">Ver auditoria completa e limitações das fontes</a>`;
+      </details>`;
   }
 
   // ============= AUDITÔMETRO (index.html) =============
