@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v83 (LAI: links e-SIC Prefeitura e Câmara no chat e em cobrar) */
-const CACHE = "fiscaliza-v83";
+/* Fiscaliza Varginha — Service Worker v84 (cobrar: fila de cobrança movida para o fim da página) */
+const CACHE = "fiscaliza-v84";
 const STATIC = [
   "./",
   "./index.html",

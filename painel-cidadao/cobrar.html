@@ -104,51 +104,6 @@
       </div>
     </section>
 
-    <div id="filaCobranca" class="cobrar-block cobrar-risk">
-      <div class="templates-head">
-        <div>
-          <span class="bigheader__kicker">FILA DE COBRANÇA</span>
-          <h3 class="cobrar-block__title">Comece pelas pendências com maior prioridade</h3>
-          <p>
-            O semáforo junta contratos, obras/asfalto, frota, emendas, Diário Oficial,
-            folha e fornecedores. Ele não afirma problema; apenas organiza o que
-            falta conferir e já entrega a pergunta para cobrar pelo canal oficial.
-          </p>
-        </div>
-        <div id="filaCobrancaStats" class="risk-stats" aria-live="polite"></div>
-      </div>
-      <div class="filterbar risk-filterbar">
-        <select id="filaCobrancaOrgao" aria-label="Filtrar por órgão">
-          <option value="">Todos os órgãos</option>
-          <option value="prefeitura">Prefeitura</option>
-          <option value="camara">Câmara</option>
-        </select>
-        <select id="filaCobrancaTipo" aria-label="Filtrar por tipo de pendência">
-          <option value="">Todos os tipos</option>
-          <option value="contrato">Contratos</option>
-          <option value="asfalto">Asfalto e obras</option>
-          <option value="frota">Frota</option>
-          <option value="emenda">Emendas</option>
-          <option value="fornecedor">Fornecedores</option>
-          <option value="diario">Diário Oficial</option>
-          <option value="pessoal">Pessoal e remuneração</option>
-        </select>
-        <select id="filaCobrancaRisco" aria-label="Filtrar por risco">
-          <option value="">Todos os riscos</option>
-          <option value="red">Vermelho</option>
-          <option value="yellow">Amarelo</option>
-          <option value="green">Verde</option>
-        </select>
-      </div>
-      <div id="filaCobrancaLista" class="risk-queue" aria-live="polite">
-        <div class="empty"><p>Carregando fila de cobrança...</p></div>
-      </div>
-      <p class="template-note">
-        Base legal e fonte auxiliar: o PNCP centraliza dados de contratações públicas e disponibiliza
-        informações em dados abertos. Confirme sempre nos portais oficiais antes de concluir qualquer coisa.
-      </p>
-    </div>
-
     <!-- Seção 1 -->
     <div class="cobrar-block">
       <div class="templates-head" style="margin-bottom: 24px;">
@@ -1028,6 +983,51 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <span class="action__cta">Entender requisitos →</span>
         </a>
       </div>
+    </div>
+
+    <div id="filaCobranca" class="cobrar-block cobrar-risk" style="margin-top: 40px;">
+      <div class="templates-head">
+        <div>
+          <span class="bigheader__kicker">FILA DE COBRANÇA</span>
+          <h3 class="cobrar-block__title">Comece pelas pendências com maior prioridade</h3>
+          <p>
+            O semáforo junta contratos, obras/asfalto, frota, emendas, Diário Oficial,
+            folha e fornecedores. Ele não afirma problema; apenas organiza o que
+            falta conferir e já entrega a pergunta para cobrar pelo canal oficial.
+          </p>
+        </div>
+        <div id="filaCobrancaStats" class="risk-stats" aria-live="polite"></div>
+      </div>
+      <div class="filterbar risk-filterbar">
+        <select id="filaCobrancaOrgao" aria-label="Filtrar por órgão">
+          <option value="">Todos os órgãos</option>
+          <option value="prefeitura">Prefeitura</option>
+          <option value="camara">Câmara</option>
+        </select>
+        <select id="filaCobrancaTipo" aria-label="Filtrar por tipo de pendência">
+          <option value="">Todos os tipos</option>
+          <option value="contrato">Contratos</option>
+          <option value="asfalto">Asfalto e obras</option>
+          <option value="frota">Frota</option>
+          <option value="emenda">Emendas</option>
+          <option value="fornecedor">Fornecedores</option>
+          <option value="diario">Diário Oficial</option>
+          <option value="pessoal">Pessoal e remuneração</option>
+        </select>
+        <select id="filaCobrancaRisco" aria-label="Filtrar por risco">
+          <option value="">Todos os riscos</option>
+          <option value="red">Vermelho</option>
+          <option value="yellow">Amarelo</option>
+          <option value="green">Verde</option>
+        </select>
+      </div>
+      <div id="filaCobrancaLista" class="risk-queue" aria-live="polite">
+        <div class="empty"><p>Carregando fila de cobrança...</p></div>
+      </div>
+      <p class="template-note">
+        Base legal e fonte auxiliar: o PNCP centraliza dados de contratações públicas e disponibiliza
+        informações em dados abertos. Confirme sempre nos portais oficiais antes de concluir qualquer coisa.
+      </p>
     </div>
 
   </div>
