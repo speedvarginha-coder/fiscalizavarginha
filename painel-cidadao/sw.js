@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v81 (fundação: cruzamento de fornecedores entre esferas) */
-const CACHE = "fiscaliza-v81";
+/* Fiscaliza Varginha — Service Worker v82 (legenda "como ler": botão fechar + altura responsiva) */
+const CACHE = "fiscaliza-v82";
 const STATIC = [
   "./",
   "./index.html",

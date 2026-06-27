@@ -8093,18 +8093,46 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
   background: var(--navy-dk);
 }
 .data-legend__panel {
+  position: relative;
   margin-top: 8px;
   padding: 14px 16px 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--white);
   box-shadow: 0 18px 42px rgba(21, 33, 49, .18);
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.data-legend__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--navy);
+  font-size: 1.25rem;
+  line-height: 1;
+  font-weight: 800;
+  cursor: pointer;
+}
+.data-legend__close:hover,
+.data-legend__close:focus-visible {
+  background: var(--navy);
+  color: #fff;
 }
 .data-legend__panel > strong {
   display: block;
   color: var(--navy);
   font-size: 1rem;
   margin-bottom: 4px;
+  padding-right: 36px;
 }
 .data-legend__panel p {
   margin: 0;
@@ -11542,6 +11570,8 @@ body[data-page="home"] .hub-grid-18 .hub-item__icon svg { stroke: var(--navy); }
   }
 
   .data-legend__toggle { width: 100%; justify-content: center; }
+  /* No fluxo (static) a página rola normalmente — painel expande livre, sem scroll aninhado */
+  .data-legend__panel { max-height: none; overflow: visible; }
 
   .chat-cidadao { right: 14px; bottom: 14px; }
   .chat-cidadao__toggle {

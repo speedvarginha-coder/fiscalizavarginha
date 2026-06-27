@@ -41,6 +41,7 @@
         'Como ler os dados deste painel <span aria-hidden="true">▾</span>' +
       '</button>' +
       '<div class="data-legend__panel" id="dataReadingLegendPanel" hidden>' +
+        '<button class="data-legend__close" type="button" aria-label="Fechar legenda">×</button>' +
         '<strong>Cada informação do painel tem um grau de certeza.</strong>' +
         '<p>O painel nunca acusa: ele organiza dados públicos. Esta legenda diz o quanto cada número aguenta antes de precisar de conferência.</p>' +
         '<dl class="data-legend__list">' +
@@ -53,11 +54,14 @@
       '</div>';
     const btn = el.querySelector(".data-legend__toggle");
     const panel = el.querySelector(".data-legend__panel");
+    const fechar = el.querySelector(".data-legend__close");
+    function abrir() { btn.setAttribute("aria-expanded", "true"); panel.hidden = false; }
+    function recolher() { btn.setAttribute("aria-expanded", "false"); panel.hidden = true; btn.focus(); }
     btn.addEventListener("click", () => {
-      const aberto = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", aberto ? "false" : "true");
-      panel.hidden = aberto;
+      if (btn.getAttribute("aria-expanded") === "true") recolher(); else abrir();
     });
+    fechar.addEventListener("click", recolher);
+    panel.addEventListener("keydown", (e) => { if (e.key === "Escape") recolher(); });
   }
 
   // ============================================================
