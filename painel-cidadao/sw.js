@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v80 (fundação: salário-base dos servidores) */
-const CACHE = "fiscaliza-v80";
+/* Fiscaliza Varginha — Service Worker v81 (fundação: cruzamento de fornecedores entre esferas) */
+const CACHE = "fiscaliza-v81";
 const STATIC = [
   "./",
   "./index.html",

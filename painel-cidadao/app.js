@@ -7284,10 +7284,50 @@ ${url}
     }
   }
 
+  // Cruzamento: fornecedores da Fundação que também atendem Prefeitura/Câmara.
+  // Concentração entre esferas é sinal de fiscalização (não é irregularidade).
+  function renderCruzamentoFundacao() {
+    const el = $("fundacaoCruzamentoLista");
+    if (!el) return;
+    const fc = D.fundacao_cultural || {};
+    const pf = D.prefeitura || {};
+    const cam = D.camara_betha || {};
+    if (!(pf.contratos && pf.contratos.length) && !(cam.contratos && cam.contratos.length)) {
+      el.innerHTML = '<div class="empty">Carregando contratos da Prefeitura e da Câmara para cruzar…</div>';
+      return;
+    }
+    const raizCnpj = (c) => { const d = String(c || "").split("/")[0].replace(/\D/g, ""); return d.length >= 8 ? d.slice(0, 8) : null; };
+    const idx = {};
+    (pf.contratos || []).forEach((c) => { const r = raizCnpj(c.cnpj); if (!r) return; (idx[r] = idx[r] || {}).pref = (idx[r].pref || 0) + (Number(c.valor) || 0); });
+    (cam.contratos || []).forEach((c) => { const r = raizCnpj(c.cnpj); if (!r) return; (idx[r] = idx[r] || {}).cam = (idx[r].cam || 0) + (Number(c.valor) || 0); });
+    const map = {};
+    (fc.contratos || []).forEach((c) => {
+      const r = raizCnpj(c.cnpj); if (!r || !idx[r]) return;
+      const m = map[r] = map[r] || { nome: c.contratado || "", fund: 0, pref: idx[r].pref || 0, cam: idx[r].cam || 0 };
+      m.fund += Number(c.valor) || 0;
+    });
+    const lista = Object.values(map)
+      .map((m) => ({ ...m, total: m.fund + m.pref + m.cam, esferas: 1 + (m.pref > 0 ? 1 : 0) + (m.cam > 0 ? 1 : 0) }))
+      .sort((a, b) => b.total - a.total)
+      .slice(0, 12);
+    if (!lista.length) {
+      el.innerHTML = '<div class="empty">Nenhum fornecedor da Fundação também localizado em Prefeitura ou Câmara.</div>';
+      return;
+    }
+    el.innerHTML = lista.map((m) => `
+      <article class="forn-row">
+        <div>
+          <p class="forn-row__nome">${esc(m.nome || "Não informado")}${m.esferas === 3 ? ' <span class="em__status em__status--no">Nas 3 esferas</span>' : ""}</p>
+          <p class="muted small">Fundação ${fmtBRL(m.fund)}${m.pref > 0 ? " · Prefeitura " + fmtBRL(m.pref) : ""}${m.cam > 0 ? " · Câmara " + fmtBRL(m.cam) : ""}</p>
+        </div>
+        <div class="forn-row__valor">${fmtBRL(m.total)}</div>
+      </article>`).join("");
+  }
+
   renderGlobalDataHealthNotice();
   if (PAGE === "home") initScorecard();
   if (PAGE === "pessoal") initPessoal();
-  if (PAGE === "fundacao") renderFundacaoCultural();
+  if (PAGE === "fundacao") { renderFundacaoCultural(); renderCruzamentoFundacao(); }
   if (PAGE === "prefeitura") renderPlacarPrefeitura();
   if (PAGE === "prefeitura") renderCategoriasPrefeitura();
   if (PAGE === "prefeitura") renderPrefeituraOverview();
@@ -7663,6 +7703,10 @@ ${url}
       if ($("prefeituraLive") && pf.top_fornecedores_atual && pf.top_fornecedores_atual.length) {
         $("prefeituraLive").hidden = false;
       }
+    }
+    if ((key === "prefeitura" || key === "camara_betha") && PAGE === "fundacao") {
+      // chegaram os contratos das outras esferas: monta o cruzamento.
+      renderCruzamentoFundacao();
     }
   });
 
