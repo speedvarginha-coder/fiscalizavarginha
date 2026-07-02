@@ -912,15 +912,15 @@ button.flag-card:hover {
 .fed-tipos { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); }
 .fed-tipos__head h3 { margin: 0 0 2px; color: var(--amber); font-size: 1.1rem; }
 .fed-tipos__head p { margin: 0 0 14px; color: var(--muted); }
-.fed-tipos__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.fed-tipos__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
 .fed-tipo {
   display: flex; flex-direction: column; gap: 7px; padding: 15px 16px;
   border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
 }
 .fed-tipo.risco-alto { border-top: 4px solid var(--red); }
 .fed-tipo.risco-medio { border-top: 4px solid var(--amber); }
-.fed-tipo__top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.fed-tipo__nome { font-weight: 800; color: var(--text); font-size: .95rem; }
+.fed-tipo__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.fed-tipo__nome { font-weight: 800; color: var(--text); font-size: .92rem; line-height: 1.3; }
 .fed-tipo__risco { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .03em;
   padding: 3px 8px; border-radius: 999px; background: #FBE9E7; color: var(--red); white-space: nowrap; }
 .fed-tipo.risco-medio .fed-tipo__risco { background: #FDF3E0; color: var(--amber); }
@@ -930,9 +930,9 @@ button.flag-card:hover {
 .fed-tipo__ben { font-size: .8rem; }
 .fed-tipo__ben > span { color: var(--muted); font-weight: 700; }
 .fed-tipo__ben ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 2px; }
-.fed-tipo__ben li { display: flex; justify-content: space-between; gap: 8px; }
-.fed-tipo__ben li span { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.fed-tipo__ben li em { color: var(--muted); font-style: normal; white-space: nowrap; }
+.fed-tipo__ben li { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; min-width: 0; }
+.fed-tipo__ben li span { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1; }
+.fed-tipo__ben li em { color: var(--muted); font-style: normal; white-space: nowrap; flex-shrink: 0; font-size: .78rem; }
 .fed-tipo__fonte { margin-top: auto; font-size: .82rem; font-weight: 700; color: var(--green); text-decoration: none; }
 .fed-tipo__fonte:hover { text-decoration: underline; }
 @media (max-width: 680px) {
