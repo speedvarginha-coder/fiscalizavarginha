@@ -1,13 +1,132 @@
 window.EMENDAS_FEDERAIS = {
   "metadata": {
-    "fonte": "Portal da Transparência (CGU) — Emendas Individuais / Transferências Especiais (Pix)",
-    "favorecido": "Município de Varginha (CNPJ 18.240.119/0001-05)",
+    "fonte": "Portal da Transparência (CGU) — Emendas parlamentares federais recebidas por Varginha",
+    "favorecido": "Município de Varginha e entidades locais",
     "extraidoEm": "2026-06-25",
-    "totalRegistros": 8,
-    "totalValor": 3561727.0,
-    "totalValorTexto": "3.561.727,00",
-    "observacao": "Emendas Pix não têm finalidade definida; o município decide a aplicação. Confira sempre na fonte oficial."
+    "codigoIbge": "3170701",
+    "totalFederal": 53425935.41,
+    "totalFederalTexto": "53.425.935,41",
+    "pixItemizadas": 8,
+    "observacao": "Pix itemizadas emenda a emenda. Demais tipos: total e maiores beneficiários (resumo CGU); itemização completa via API (Fase 2)."
   },
+  "resumoTipos": [
+    {
+      "categoria": "Transferência Especial (Pix)",
+      "total": 3561727.0,
+      "totalTexto": "3.561.727,00",
+      "itemizado": true,
+      "qtd": 8,
+      "explicacao": "Vai direto para a conta da Prefeitura, SEM destino definido — o próprio município decide onde aplicar (art. 166-A da Constituição). É a que mais exige acompanhamento.",
+      "risco": "alto",
+      "topBeneficiarios": [
+        {
+          "nome": "Município de Varginha",
+          "valor": 3561727.0
+        }
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha"
+    },
+    {
+      "categoria": "Individual com Finalidade Definida",
+      "total": 31722574.32,
+      "totalTexto": "31.722.574,32",
+      "itemizado": false,
+      "explicacao": "Deputado ou senador indica para um objeto específico (ex.: equipamento de saúde). Execução obrigatória.",
+      "risco": "medio",
+      "topBeneficiarios": [
+        {
+          "nome": "Philips Medical Systems Ltda",
+          "valor": 15074140.16
+        },
+        {
+          "nome": "Fundo Municipal de Saúde",
+          "valor": 10585757.0
+        },
+        {
+          "nome": "Município de Varginha",
+          "valor": 2512307.87
+        },
+        {
+          "nome": "FHOMUV (Fundação Hospitalar)",
+          "valor": 1065025.41
+        },
+        {
+          "nome": "Hospital Regional do Sul de Minas",
+          "valor": 541000.0
+        },
+        {
+          "nome": "Fundo Municipal de Assistência Social",
+          "valor": 350000.0
+        }
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha"
+    },
+    {
+      "categoria": "Bancada",
+      "total": 14045652.27,
+      "totalTexto": "14.045.652,27",
+      "itemizado": false,
+      "explicacao": "Apresentada em conjunto pela bancada de MG para obras/projetos estruturantes. Execução obrigatória.",
+      "risco": "medio",
+      "topBeneficiarios": [
+        {
+          "nome": "Philips Medical Systems Ltda",
+          "valor": 9741783.28
+        },
+        {
+          "nome": "Saint Emilion Automóveis",
+          "valor": 2829000.0
+        },
+        {
+          "nome": "Fundo Municipal de Saúde",
+          "valor": 1300000.0
+        },
+        {
+          "nome": "Orient Automóveis",
+          "valor": 125000.0
+        }
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha"
+    },
+    {
+      "categoria": "Comissão",
+      "total": 1979071.23,
+      "totalTexto": "1.979.071,23",
+      "itemizado": false,
+      "explicacao": "Sugerida por uma comissão temática do Congresso para uma política pública. NÃO tem execução obrigatória.",
+      "risco": "medio",
+      "topBeneficiarios": [
+        {
+          "nome": "Fundo Municipal de Saúde",
+          "valor": 1950000.0
+        }
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha"
+    },
+    {
+      "categoria": "Relator",
+      "total": 2116910.59,
+      "totalTexto": "2.116.910,59",
+      "itemizado": false,
+      "explicacao": "Do relator-geral do orçamento (o antigo 'orçamento secreto', RP9). Historicamente o tipo menos transparente — merece atenção redobrada.",
+      "risco": "alto",
+      "topBeneficiarios": [
+        {
+          "nome": "Município de Varginha",
+          "valor": 1061828.79
+        },
+        {
+          "nome": "Philips Medical Systems Ltda",
+          "valor": 747710.96
+        },
+        {
+          "nome": "Associação Novo Caminho",
+          "valor": 150323.95
+        }
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha"
+    }
+  ],
   "emendas": [
     {
       "tipo": "Federal",

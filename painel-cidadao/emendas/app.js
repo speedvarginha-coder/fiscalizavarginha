@@ -286,6 +286,74 @@ function fillDatalist(datalist, values) {
   });
 }
 
+// ---- Resumo "3 esferas": de onde vem o dinheiro ----
+function renderEsferas() {
+  const box = document.querySelector("#esferasCards");
+  if (!box) return;
+  const federalTotal = (window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata &&
+    window.EMENDAS_FEDERAIS.metadata.totalFederal) || 0;
+  const somaTipo = (t) => allRecords
+    .filter((r) => r.tipo === t)
+    .reduce((s, r) => s + Number(r.valor || 0), 0);
+  const contaTipo = (t) => allRecords.filter((r) => r.tipo === t).length;
+  const esferas = [
+    { tipo: "Federal", nome: "Federal", desc: "Deputados e senadores", cls: "is-federal",
+      total: federalTotal, sub: "Pix + 4 tipos (CGU)" },
+    { tipo: "Estadual", nome: "Estadual", desc: "Deputados estaduais (ALMG)", cls: "is-estadual",
+      total: somaTipo("Estadual"), sub: contaTipo("Estadual") + " emendas" },
+    { tipo: "Municipal", nome: "Municipal", desc: "Vereadores de Varginha", cls: "is-municipal",
+      total: somaTipo("Municipal"), sub: contaTipo("Municipal") + " emendas" },
+  ];
+  box.innerHTML = esferas.map((e) => `
+    <button type="button" class="esfera-card ${e.cls}" data-tipo="${e.tipo}">
+      <span class="esfera-card__tag">${e.nome}</span>
+      <strong class="esfera-card__valor">${moneyFormatter.format(e.total)}</strong>
+      <span class="esfera-card__sub">${e.sub}</span>
+      <span class="esfera-card__desc">${e.desc}</span>
+    </button>`).join("");
+  box.querySelectorAll(".esfera-card").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      elements.typeFilter.value = btn.dataset.tipo;
+      state.quick = "";
+      document.querySelectorAll(".chip.active").forEach((c) => c.classList.remove("active"));
+      applyFilters();
+      document.querySelector(".results-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+// ---- Detalhe federal por tipo (Pix + Finalidade + Bancada + Comissão + Relator) ----
+function renderFederalPorTipo() {
+  const box = document.querySelector("#federalPorTipo");
+  const dados = window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.resumoTipos;
+  if (!box || !dados) return;
+  const riscoLabel = { alto: "Vigie de perto", medio: "Acompanhe" };
+  box.innerHTML = `
+    <div class="fed-tipos__head">
+      <h3>Federal em detalhe — por tipo de emenda</h3>
+      <p>Total federal para Varginha: <strong>${moneyFormatter.format(window.EMENDAS_FEDERAIS.metadata.totalFederal)}</strong>. Fonte: Portal da Transparência (CGU).</p>
+    </div>
+    <div class="fed-tipos__grid">
+      ${dados.map((t) => `
+        <article class="fed-tipo risco-${t.risco}">
+          <div class="fed-tipo__top">
+            <span class="fed-tipo__nome">${escapeHtml(t.categoria)}</span>
+            <span class="fed-tipo__risco">${riscoLabel[t.risco] || ""}</span>
+          </div>
+          <strong class="fed-tipo__valor">${moneyFormatter.format(t.total)}</strong>
+          <span class="fed-tipo__flag">${t.itemizado ? "✓ " + t.qtd + " emendas itemizadas na lista" : "resumo — itemização na fonte"}</span>
+          <p class="fed-tipo__exp">${escapeHtml(t.explicacao)}</p>
+          ${(t.topBeneficiarios && t.topBeneficiarios.length) ? `
+            <div class="fed-tipo__ben">
+              <span>Maiores beneficiários:</span>
+              <ul>${t.topBeneficiarios.slice(0, 4).map((b) =>
+                `<li><span>${escapeHtml(b.nome)}</span><em>${moneyFormatter.format(b.valor)}</em></li>`).join("")}</ul>
+            </div>` : ""}
+          <a class="fed-tipo__fonte" href="${t.fonteUrl}" target="_blank" rel="noopener">Conferir no Portal da Transparência →</a>
+        </article>`).join("")}
+    </div>`;
+}
+
 function setupFilters() {
   fillSelect(elements.typeFilter, uniqueSorted("tipo"));
   fillSelect(elements.yearFilter, allYears());
@@ -665,7 +733,7 @@ function renderTopValuePanels() {
       records: topRecords(state.filtered),
     },
     {
-      title: "Maiores nÃ£o aprovadas",
+      title: "Maiores não aprovadas",
       records: topRecords(state.filtered, (record) => normalize(record.aprovado) === "nao"),
     },
     {
@@ -673,7 +741,7 @@ function renderTopValuePanels() {
       records: topRecords(state.filtered, (record) => !record.dataRecurso),
     },
     {
-      title: "Maiores associaÃ§Ãµes",
+      title: "Maiores associações",
       records: topRecords(state.filtered, isAssociation),
     },
   ];
@@ -689,7 +757,7 @@ function renderTopValuePanels() {
                   <button class="top-value-item" data-id="${record.id}" type="button">
                     <strong>${moneyFormatter.format(Number(record.valor || 0))}</strong>
                     <span>${escapeHtml(canonicalBeneficiaryLabel(record))}</span>
-                    <small>${escapeHtml(record.tipo)} Â· Emenda ${escapeHtml(record.emenda)} Â· ${escapeHtml(record.aprovado || "situaÃ§Ã£o nÃ£o informada")}</small>
+                    <small>${escapeHtml(record.tipo)} · Emenda ${escapeHtml(record.emenda)} · ${escapeHtml(record.aprovado || "situação não informada")}</small>
                   </button>
                 `)
                 .join("")
@@ -1026,6 +1094,8 @@ function setupEvents() {
 }
 
 setupFilters();
+renderEsferas();
+renderFederalPorTipo();
 setupEvents();
 applyFilters();
 openDetailFromHash();

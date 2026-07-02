@@ -889,3 +889,52 @@ button.flag-card:hover {
   .site-nav__menu a { padding: 12px; }
   .site-footer__inner { grid-template-columns: 1fr; }
 }
+/* ===== 3 esferas + Federal por tipo (Fase 1 emendas federais) ===== */
+.esferas { margin: 8px 0 4px; }
+.esferas__head h2 { font-size: 1.25rem; color: var(--green); margin: 0 0 4px; }
+.esferas__head p { margin: 0 0 14px; color: var(--muted); max-width: 70ch; }
+.esferas__cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.esfera-card {
+  display: flex; flex-direction: column; gap: 3px; text-align: left;
+  padding: 16px 18px; border: 1px solid var(--line); border-left: 5px solid var(--muted);
+  border-radius: 12px; background: var(--surface); cursor: pointer; transition: .15s;
+  box-shadow: var(--shadow);
+}
+.esfera-card:hover { transform: translateY(-2px); border-color: var(--green); }
+.esfera-card.is-federal { border-left-color: var(--amber); }
+.esfera-card.is-estadual { border-left-color: var(--blue); }
+.esfera-card.is-municipal { border-left-color: var(--green); }
+.esfera-card__tag { font-weight: 800; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.esfera-card__valor { font-size: 1.5rem; color: var(--text); line-height: 1.1; }
+.esfera-card__sub { font-size: .82rem; color: var(--green); font-weight: 700; }
+.esfera-card__desc { font-size: .82rem; color: var(--muted); }
+
+.fed-tipos { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); }
+.fed-tipos__head h3 { margin: 0 0 2px; color: var(--amber); font-size: 1.1rem; }
+.fed-tipos__head p { margin: 0 0 14px; color: var(--muted); }
+.fed-tipos__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.fed-tipo {
+  display: flex; flex-direction: column; gap: 7px; padding: 15px 16px;
+  border: 1px solid var(--line); border-radius: 12px; background: var(--surface);
+}
+.fed-tipo.risco-alto { border-top: 4px solid var(--red); }
+.fed-tipo.risco-medio { border-top: 4px solid var(--amber); }
+.fed-tipo__top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.fed-tipo__nome { font-weight: 800; color: var(--text); font-size: .95rem; }
+.fed-tipo__risco { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .03em;
+  padding: 3px 8px; border-radius: 999px; background: #FBE9E7; color: var(--red); white-space: nowrap; }
+.fed-tipo.risco-medio .fed-tipo__risco { background: #FDF3E0; color: var(--amber); }
+.fed-tipo__valor { font-size: 1.35rem; color: var(--text); line-height: 1; }
+.fed-tipo__flag { font-size: .76rem; color: var(--green); font-weight: 700; }
+.fed-tipo__exp { margin: 0; font-size: .84rem; color: var(--muted); line-height: 1.4; }
+.fed-tipo__ben { font-size: .8rem; }
+.fed-tipo__ben > span { color: var(--muted); font-weight: 700; }
+.fed-tipo__ben ul { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 2px; }
+.fed-tipo__ben li { display: flex; justify-content: space-between; gap: 8px; }
+.fed-tipo__ben li span { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fed-tipo__ben li em { color: var(--muted); font-style: normal; white-space: nowrap; }
+.fed-tipo__fonte { margin-top: auto; font-size: .82rem; font-weight: 700; color: var(--green); text-decoration: none; }
+.fed-tipo__fonte:hover { text-decoration: underline; }
+@media (max-width: 680px) {
+  .esferas__cards { grid-template-columns: 1fr; }
+}
