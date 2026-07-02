@@ -35,6 +35,8 @@ const elements = {
   yearFilter: document.querySelector("#yearFilter"),
   resourceYearFilter: document.querySelector("#resourceYearFilter"),
   orgFilter: document.querySelector("#orgFilter"),
+  categoryFilter: document.querySelector("#categoryFilter"),
+  activeFilter: document.querySelector("#activeFilter"),
   partyFilter: document.querySelector("#partyFilter"),
   authorFilter: document.querySelector("#authorFilter"),
   beneficiaryFilter: document.querySelector("#beneficiaryFilter"),
@@ -55,6 +57,8 @@ const elements = {
   associationRanking: document.querySelector("#associationRanking"),
   authorTotal: document.querySelector("#authorTotal"),
   authorRanking: document.querySelector("#authorRanking"),
+  deputyTotal: document.querySelector("#deputyTotal"),
+  deputyRanking: document.querySelector("#deputyRanking"),
   transparencyFlags: document.querySelector("#transparencyFlags"),
   notApprovedTotal: document.querySelector("#notApprovedTotal"),
   notApprovedSituation: document.querySelector("#notApprovedSituation"),
@@ -84,6 +88,84 @@ function normalize(value) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .toLowerCase();
+}
+
+const LOCAL_COUNCILLORS = {
+  "zilda silva": { name: "ZILDA SILVA", party: "PP", active: true },
+  "zilda maria da silva": { name: "ZILDA SILVA", party: "PP", active: true },
+  "alexandre prado": { name: "ALEXANDRE PRADO", party: "AVANTE", active: true },
+  "ana rios fontoura": { name: "ANA RIOS", party: "UNIÃO BRASIL", active: true },
+  "ana rios": { name: "ANA RIOS", party: "UNIÃO BRASIL", active: true },
+  "dandan": { name: "DANDAN", party: "PL", active: true },
+  "daniel rodrigues de farias": { name: "DANDAN", party: "PL", active: true },
+  "davi martins": { name: "DAVI MARTINS", party: "PL", active: true },
+  "rogerio bueno": { name: "ROGÉRIO BUENO", party: "PV", active: true },
+  "rogerio bueno machado": { name: "ROGÉRIO BUENO", party: "PV", active: true },
+  "joaozinho enfermeiro": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true },
+  "joao jamil de oliveira": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true },
+  "ze morais": { name: "ZÉ MORAIS", party: "AVANTE", active: true },
+  "jose morais neto": { name: "ZÉ MORAIS", party: "AVANTE", active: true },
+  "dudu ottoni": { name: "DUDU OTTONI", party: "AVANTE", active: true },
+  "eduardo ottoni": { name: "DUDU OTTONI", party: "AVANTE", active: true },
+  "bruno leandro coletor": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true },
+  "bruno leandro": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true },
+  "pastor faustinho": { name: "PASTOR FAUSTINHO", party: "PSD", active: true },
+  "faustinho": { name: "PASTOR FAUSTINHO", party: "PSD", active: true },
+  "thulyo paiva": { name: "THULYO PAIVA", party: "UNIÃO BRASIL", active: true },
+  "thulyo paiva machado": { name: "THULYO PAIVA", party: "UNIÃO BRASIL", active: true },
+  "cassio chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: false },
+  "miguel da saude": { name: "MIGUEL DA SAÚDE", party: "PSD", active: false },
+  "miguel jose de lima": { name: "MIGUEL DA SAÚDE", party: "PSD", active: false },
+  "afonso monticeli": { name: "AFONSO MONTICELI", party: "MOBILIZA", active: false },
+  "marquinho da cooperativa": { name: "MARQUINHO DA COOPERATIVA", party: "MOBILIZA", active: false },
+  "marco antonio": { name: "MARQUINHO DA COOPERATIVA", party: "MOBILIZA", active: false },
+  "dr lucas": { name: "DR. LUCAS", party: "PRD", active: false },
+  "dr guedes": { name: "DR. GUEDES", party: "PRD", active: false }
+};
+
+const DEPUTY_PARTIES = {
+  "greyce de queiroz elias": { party: "AVANTE" },
+  "bruno engler": { party: "PL" },
+  "mauro tramonte": { party: "REPUBLICANOS" },
+  "noraldino junior": { party: "PSB" },
+  "diego andrade": { party: "PSD" },
+  "mario henrique caixa": { party: "PV" },
+  "charles evangelista": { party: "PP" },
+  "lafayette de andrada": { party: "REPUBLICANOS" },
+  "dimas fabiano": { party: "PP" },
+  "damares alves": { party: "REPUBLICANOS" },
+  "rodrigo pacheco": { party: "PSD" },
+  "nikolas ferreira": { party: "PL" },
+  "cleitinho": { party: "REPUBLICANOS" },
+  "reginaldo lopes": { party: "PT" },
+  "odair cunha": { party: "PT" }
+};
+
+function getAuthorMeta(record) {
+  const authorLabel = canonicalAuthorLabel(record);
+  const authorKey = normalize(authorLabel);
+  
+  let party = canonicalPartyLabel(record);
+  let active = true;
+  let role = parliamentaryRole(record.tipo);
+  let name = authorLabel;
+
+  if (record.tipo === "Municipal") {
+    const lookupKey = Object.keys(LOCAL_COUNCILLORS).find(k => authorKey.includes(k));
+    if (lookupKey) {
+      const meta = LOCAL_COUNCILLORS[lookupKey];
+      name = meta.name;
+      party = meta.party;
+      active = meta.active;
+    }
+  } else {
+    const lookupKey = Object.keys(DEPUTY_PARTIES).find(k => authorKey.includes(k));
+    if (lookupKey) {
+      party = DEPUTY_PARTIES[lookupKey].party;
+    }
+  }
+
+  return { name, party, active, role };
 }
 
 function dateToNumber(value) {
@@ -268,11 +350,11 @@ function uniqueSorted(field) {
     .sort((a, b) => String(a).localeCompare(String(b), "pt-BR"));
 }
 
-function fillSelect(select, values) {
+function fillSelect(select, values, displayMap = null) {
   values.forEach((value) => {
     const option = document.createElement("option");
     option.value = value;
-    option.textContent = value;
+    option.textContent = displayMap ? (displayMap[value] || value) : value;
     select.appendChild(option);
   });
 }
@@ -355,17 +437,35 @@ function renderFederalPorTipo() {
 }
 
 function setupFilters() {
-  fillSelect(elements.typeFilter, uniqueSorted("tipo"));
+  fillSelect(elements.typeFilter, uniqueSorted("tipo"), {
+    "Federal": "Deputado Federal / Senador",
+    "Estadual": "Deputado Estadual",
+    "Municipal": "Vereador(a)"
+  });
   fillSelect(elements.yearFilter, allYears());
   fillSelect(elements.resourceYearFilter, allResourceYears());
   fillSelect(elements.orgFilter, uniqueSorted("orgao"));
-  fillSelect(elements.partyFilter, uniqueCanonical(canonicalPartyLabel));
-  fillSelect(elements.authorFilter, uniqueCanonical(canonicalAuthorLabel));
+
+  const uniqueCategories = [...new Set(allRecords.map(r => r.categoria || "Emenda Impositiva Municipal"))].sort();
+  fillSelect(elements.categoryFilter, uniqueCategories);
+
+  const uniqueParties = [...new Set(allRecords.map(r => getAuthorMeta(r).party).filter(Boolean))].sort();
+  fillSelect(elements.partyFilter, uniqueParties);
+
+  const uniqueAuthors = [...new Set(allRecords.map(r => getAuthorMeta(r).name).filter(Boolean))]
+    .filter(name => !isInstitutionalOrGenericAuthor(normalize(name)))
+    .sort((a, b) => a.localeCompare(b, "pt-BR"));
+  fillSelect(elements.authorFilter, uniqueAuthors);
+
   fillDatalist(elements.beneficiaryOptions, uniqueSorted("beneficiario"));
   fillSelect(elements.approvalFilter, uniqueSorted("aprovado"));
   fillSelect(elements.individualFilter, uniqueSorted("emendaIndividual"));
 
-  const generatedAt = payload.metadata?.geradoEm ? new Date(payload.metadata.geradoEm) : null;
+  // Usa a data mais recente entre o payload federal e o municipal
+  const federalDate = window.EMENDAS_FEDERAIS?.metadata?.extraidoEm || "";
+  const municipalDate = payload.metadata?.geradoEm || "";
+  const lastDateStr = [federalDate, municipalDate].filter(Boolean).sort().at(-1) || "";
+  const generatedAt = lastDateStr ? new Date(lastDateStr) : null;
   elements.lastUpdate.textContent = generatedAt
     ? generatedAt.toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" })
     : "base carregada";
@@ -404,9 +504,14 @@ function applyFilters() {
     const matchesYear = !elements.yearFilter.value || amendmentYearsForRecord(record).includes(elements.yearFilter.value);
     const matchesResourceYear =
       !elements.resourceYearFilter.value || resourceYearsForRecord(record).includes(elements.resourceYearFilter.value);
+    const authorMeta = getAuthorMeta(record);
     const matchesOrg = !elements.orgFilter.value || record.orgao === elements.orgFilter.value;
-    const matchesParty = !elements.partyFilter.value || canonicalPartyLabel(record) === elements.partyFilter.value;
-    const matchesAuthor = !elements.authorFilter.value || canonicalAuthorLabel(record) === elements.authorFilter.value;
+    const matchesParty = !elements.partyFilter.value || authorMeta.party === elements.partyFilter.value;
+    const matchesAuthor = !elements.authorFilter.value || authorMeta.name === elements.authorFilter.value;
+    const matchesCategory = !elements.categoryFilter.value || (record.categoria || "Emenda Impositiva Municipal") === elements.categoryFilter.value;
+    const matchesActive = !elements.activeFilter.value || (
+      elements.activeFilter.value === "ativo" ? authorMeta.active : !authorMeta.active
+    );
     const beneficiaryTerm = normalize(elements.beneficiaryFilter.value);
     const matchesBeneficiary =
       !beneficiaryTerm ||
@@ -425,6 +530,8 @@ function applyFilters() {
       matchesOrg &&
       matchesParty &&
       matchesAuthor &&
+      matchesCategory &&
+      matchesActive &&
       matchesBeneficiary &&
       matchesApproval &&
       matchesIndividual &&
@@ -552,19 +659,29 @@ function renderAssociationRanking() {
     .join("");
 }
 
+function isInstitutionalOrGenericAuthor(key) {
+  return key === "sem informacao" || 
+         key === "sem registro" || 
+         key === "relator geral" || 
+         key.includes("comissao") || 
+         key.startsWith("com.") || 
+         key.includes("bancada");
+}
+
 function renderAuthorRanking() {
   const map = new Map();
   state.filtered.forEach((record) => {
-    const label = canonicalAuthorLabel(record);
+    const authorMeta = getAuthorMeta(record);
+    const label = authorMeta.name;
     if (!label) return;
     const key = normalize(label);
+    if (isInstitutionalOrGenericAuthor(key)) return;
     const entry =
-      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set() };
+      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), active: authorMeta.active };
     entry.count += 1;
     entry.total += Number(record.valor || 0);
     entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
-    const party = canonicalPartyLabel(record);
-    if (party) entry.partidos.add(party);
+    if (authorMeta.party) entry.partidos.add(authorMeta.party);
     map.set(key, entry);
   });
 
@@ -584,12 +701,59 @@ function renderAuthorRanking() {
       const dominantTipo = [...group.tipos.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
       const role = parliamentaryRole(dominantTipo);
       const party = [...group.partidos].join(", ");
+      const statusText = dominantTipo === "Municipal" ? (group.active ? " · Ativo(a)" : " · Inativo(a)") : "";
       return `
         <button class="ranking-item" data-author="${escapeHtml(group.label)}" type="button">
           <span class="ranking-position">${index + 1}</span>
           <span class="ranking-name" title="${escapeHtml(group.label)}">${escapeHtml(group.label)}</span>
           <span class="ranking-money">${numberFormatter.format(group.count)} emenda${group.count === 1 ? "" : "s"}</span>
-          <span class="ranking-meta">${escapeHtml(role)}${party ? ` · ${escapeHtml(party)}` : ""} · ${moneyFormatter.format(group.total)}</span>
+          <span class="ranking-meta">${escapeHtml(role)}${party ? ` · ${escapeHtml(party)}` : ""}${statusText} · ${moneyFormatter.format(group.total)}</span>
+        </button>
+      `;
+    })
+    .join("");
+}
+
+function renderDeputyRanking() {
+  const map = new Map();
+  state.filtered.forEach((record) => {
+    if (record.tipo !== "Federal" && record.tipo !== "Estadual") return;
+    const authorMeta = getAuthorMeta(record);
+    const label = authorMeta.name;
+    if (!label) return;
+    const key = normalize(label);
+    if (isInstitutionalOrGenericAuthor(key)) return;
+    const entry =
+      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set() };
+    entry.count += 1;
+    entry.total += Number(record.valor || 0);
+    entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
+    if (authorMeta.party) entry.partidos.add(authorMeta.party);
+    map.set(key, entry);
+  });
+
+  const groups = [...map.values()]
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 10);
+
+  elements.deputyTotal.textContent = `${numberFormatter.format(map.size)} deputados`;
+
+  if (!groups.length) {
+    elements.deputyRanking.innerHTML = `<div class="empty compact-empty">Nenhum deputado federal ou estadual encontrado com os filtros atuais.</div>`;
+    return;
+  }
+
+  elements.deputyRanking.innerHTML = groups
+    .map((group, index) => {
+      const dominantTipo = [...group.tipos.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
+      const role = parliamentaryRole(dominantTipo);
+      const party = [...group.partidos].join(", ");
+      return `
+        <button class="ranking-item" data-author="${escapeHtml(group.label)}" type="button">
+          <span class="ranking-position">${index + 1}</span>
+          <span class="ranking-name" title="${escapeHtml(group.label)}">${escapeHtml(group.label)}</span>
+          <span class="ranking-money">${moneyFormatter.format(group.total)}</span>
+          <span class="ranking-meta">${escapeHtml(role)}${party ? ` · ${escapeHtml(party)}` : ""} · ${numberFormatter.format(group.count)} emenda${group.count === 1 ? "" : "s"}</span>
         </button>
       `;
     })
@@ -775,6 +939,7 @@ function renderInsights() {
   renderRecipientRanking();
   renderAssociationRanking();
   renderAuthorRanking();
+  renderDeputyRanking();
   renderTransparencyFlags();
   renderNotApprovedSituation();
   renderTopValuePanels();
@@ -859,7 +1024,7 @@ function openDetails(id, updateUrl = true) {
   elements.detailTitle.textContent = record.beneficiario || "Detalhes da emenda";
   const pdfUrl = fonteOficialUrl(record);
   const sourceCount = record.fontes?.length || 1;
-
+  const authorMeta = getAuthorMeta(record);
   elements.detailBody.innerHTML = `
     <div class="pdf-guide detail-guide">
       <strong>Como conferir na fonte oficial:</strong>
@@ -871,7 +1036,7 @@ function openDetails(id, updateUrl = true) {
       ${detailItem("Ano do recurso", resourceYearsForRecord(record).join(", "))}
       ${detailItem("Anos relacionados", yearsForRecord(record).join(", ") || record.ano)}
       ${detailItem("Órgão", record.orgao)}
-      ${detailItem("Autor", [record.autor, record.partido].filter(Boolean).join(" - "))}
+      ${detailItem("Autor", [authorMeta.name, authorMeta.party, record.tipo === "Municipal" ? (authorMeta.active ? "Ativo(a)" : "Inativo(a) / Ex-vereador(a)") : ""].filter(Boolean).join(" · "))}
       ${detailItem("Quem recebeu", record.beneficiario)}
       ${detailItem("Documento", record.documentoBeneficiario)}
       ${detailItem("Função", record.funcao)}
@@ -927,6 +1092,8 @@ function clearFilters() {
   [
     elements.searchInput,
     elements.typeFilter,
+    elements.categoryFilter,
+    elements.activeFilter,
     elements.yearFilter,
     elements.resourceYearFilter,
     elements.orgFilter,
@@ -1005,6 +1172,8 @@ function setupEvents() {
   [
     elements.searchInput,
     elements.typeFilter,
+    elements.categoryFilter,
+    elements.activeFilter,
     elements.yearFilter,
     elements.resourceYearFilter,
     elements.orgFilter,
@@ -1055,6 +1224,13 @@ function setupEvents() {
     applyFilters();
   });
   elements.authorRanking.addEventListener("click", (event) => {
+    const button = event.target.closest(".ranking-item");
+    if (!button) return;
+    elements.authorFilter.value = button.dataset.author;
+    state.page = 1;
+    applyFilters();
+  });
+  elements.deputyRanking.addEventListener("click", (event) => {
     const button = event.target.closest(".ranking-item");
     if (!button) return;
     elements.authorFilter.value = button.dataset.author;

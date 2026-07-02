@@ -1,15 +1,25 @@
+# -*- coding: utf-8 -*-
 """
-Zela Varginha — Coletor Federal
-================================
-Rastreador de recursos da União destinados a Varginha-MG.
-Foca em transferências constitucionais, convênios e emendas parlamentares federais.
+Coletor Federal — Fiscaliza Varginha
+=====================================
+Coleta dados reais de fontes federais oficiais sobre Varginha-MG (IBGE 3170701).
 
-Fontes principais:
-  - Portal da Transparência (CGU)
-  - Transferegov / Dados.gov.br
+Fontes:
+  1. API CGU — /emendas?codigoMunicipio=3170701  (chave ativa)
+  2. API CGU — /convenios?uf=MG (filtra por município)
+  3. API CGU — /ceis (dataset sancionados, cruza com Betha)
+  4. Dataset aberto — emendas-parlamentares/UNICO (sem token, redundante com /emendas)
+
+Saída: painel-cidadao/data/federal.json
 """
+from __future__ import annotations
+
 import datetime as dt
 import json
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -17,70 +27,328 @@ DATA = ROOT / "data"
 DATA.mkdir(exist_ok=True)
 
 # Identificadores de Varginha
-CODIGO_IBGE = "3170701"
-SIAFI_MUNICIPIO = "5415"
-CNPJ_PREFEITURA = "18.240.380/0001-38"
+IBGE = "3170701"
+CNPJ_PREFEITURA_RAIZ = "18240380"  # primeiros 8 dígitos
+
+# Chave API CGU (gratuita, sem escopo restrito para emendas/convenios/ceis)
+_TOKEN_FILE = ROOT.parent / "private" / "tokens" / ".portal-transparencia.json"
+API_BASE = "https://api.portaldatransparencia.gov.br/api-de-dados"
+
+MUNICIPIO_LABEL = "Varginha/MG"
+
+
+def _to_float(v) -> float:
+    """Converte valores monetários brasileiros (1.234,56 ou 1234.56) para float."""
+    if v is None or v == "":
+        return 0.0
+    s = str(v).replace(".", "").replace(",", ".")
+    try:
+        return float(s)
+    except ValueError:
+        return 0.0
+
+
+# ── Helpers ───────────────────────────────────────────────────────────────────
+
+def _load_token() -> str:
+    """Lê a chave da API CGU do arquivo de tokens (fora do repositório)."""
+    if _TOKEN_FILE.exists():
+        try:
+            data = json.loads(_TOKEN_FILE.read_text(encoding="utf-8"))
+            tok = data.get("chave-api-dados") or data.get("token") or data.get("key") or ""
+            if tok:
+                return tok
+        except Exception:
+            pass
+    raise RuntimeError(
+        f"Chave API CGU não encontrada em {_TOKEN_FILE}\n"
+        "Cadastre em https://portaldatransparencia.gov.br/api e salve "
+        'em private/tokens/.portal-transparencia.json como {"chave-api-dados": "SUA_CHAVE"}'
+    )
+
+
+def _api_get(path: str, params: dict, token: str, timeout: int = 30) -> list[dict]:
+    """GET paginado na API CGU. Retorna todos os registros."""
+    out: list[dict] = []
+    pagina = 1
+    while pagina <= 50:
+        params_pg = {**params, "pagina": pagina}
+        url = API_BASE + path + "?" + urllib.parse.urlencode(params_pg)
+        req = urllib.request.Request(url, headers={
+            "chave-api-dados": token,
+            "Accept": "application/json",
+            "User-Agent": "FiscalizaVarginha/2.0",
+        })
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                data = json.loads(r.read())
+                if not isinstance(data, list) or not data:
+                    break
+                out.extend(data)
+                if len(data) < 15:
+                    break  # última página (a API CGU retorna 15 registros por página)
+                pagina += 1
+                time.sleep(0.3)  # respeita rate-limit da CGU
+        except urllib.error.HTTPError as e:
+            print(f"  ! HTTP {e.code} em {path}: {e.reason}")
+            break
+        except Exception as e:
+            print(f"  ! Erro em {path}: {e}")
+            break
+    return out
+
+
+# ── 1) Emendas federais via API CGU ──────────────────────────────────────────
+
+def _coletar_emendas_api(token: str) -> list[dict]:
+    """Busca emendas parlamentares federais destinadas a Varginha via API CGU.
+    Retorna campos: codigoEmenda, tipoEmenda, nomeAutor, funcao, subfuncao,
+    valorEmpenhado, valorLiquidado, valorPago."""
+    print("  -> API CGU /emendas (Varginha)...")
+    rows = _api_get("/emendas", {"codigoMunicipio": IBGE}, token)
+    print(f"     {len(rows)} registros obtidos")
+    out = []
+    for r in rows:
+        out.append({
+            "codigo": str(r.get("codigoEmenda", "")),
+            "ano": str(r.get("ano", "")),
+            "tipo": str(r.get("tipoEmenda", "")),
+            "autor": str(r.get("nomeAutor", "") or r.get("autor", "")),
+            "funcao": str(r.get("funcao", "")),
+            "subfuncao": str(r.get("subfuncao", "")),
+            "localidade": str(r.get("localidadeDoGasto", MUNICIPIO_LABEL)),
+            "valorEmpenhado": _to_float(r.get("valorEmpenhado")),
+            "valorLiquidado": _to_float(r.get("valorLiquidado")),
+            "valorPago": _to_float(r.get("valorPago")),
+            "fonte": "API CGU /emendas",
+            "linkFonte": f"https://portaldatransparencia.gov.br/emendas/consulta?codigoEmenda={r.get('codigoEmenda', '')}",
+        })
+    return out
+
+
+# ── 2) Convênios via API CGU ──────────────────────────────────────────────────
+
+def _coletar_convenios(token: str) -> list[dict]:
+    """Busca convênios federais destinados a Varginha via API CGU."""
+    print("  -> API CGU /convenios (Varginha)...")
+    rows = _api_get("/convenios", {"codigoIBGE": IBGE}, token)
+    print(f"     {len(rows)} registros obtidos")
+    out = []
+    for r in rows:
+        convenente_raw = r.get("convenente") or {}
+        convenente_nome = (
+            convenente_raw.get("nome") if isinstance(convenente_raw, dict)
+            else str(convenente_raw or "")
+        )
+        orgao_raw = r.get("orgao") or {}
+        orgao_nome = (
+            orgao_raw.get("nome") if isinstance(orgao_raw, dict)
+            else str(orgao_raw or "")
+        )
+        situacao = (r.get("situacao") or {}).get("descricao") if isinstance(r.get("situacao"), dict) else str(r.get("situacao") or "")
+        out.append({
+            "id": str(r.get("id") or r.get("dimConvenio") or ""),
+            "numeroProcesso": str(r.get("numeroProcesso") or ""),
+            "orgaoConcedenteNome": str(orgao_nome),
+            "convenente": str(convenente_nome),
+            "situacao": str(situacao),
+            "dataInicioVigencia": str(r.get("dataInicioVigencia") or ""),
+            "dataFinalVigencia": str(r.get("dataFinalVigencia") or ""),
+            "valor": _to_float(r.get("valor")),
+            "valorLiberado": _to_float(r.get("valorLiberado")),
+            "subfuncao": str(r.get("subfuncao") or ""),
+            "fonte": "API CGU /convenios",
+            "linkFonte": f"https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio={IBGE}",
+        })
+    return out
+
+
+# ── 3) Sancionados (CEIS) ─────────────────────────────────────────────────────
+
+def _coletar_ceis(token: str, cnpjs_alvo: set[str]) -> list[dict]:
+    """Busca no CEIS (sancionados) por CNPJ raiz dos fornecedores de Varginha.
+    Retorna apenas empresas que constam como sancionadas E receberam de Varginha."""
+    if not cnpjs_alvo:
+        return []
+    print(f"  -> API CGU /ceis ({len(cnpjs_alvo)} CNPJs para verificar)...")
+    alertas = []
+    consultados = 0
+    for cnpj in list(cnpjs_alvo)[:50]:  # limita para não sobrecarregar a API
+        rows = _api_get("/ceis", {"cnpjSancionado": cnpj}, token, timeout=20)
+        consultados += 1
+        for r in rows:
+            sancionado = r.get("sancionado") or {}
+            nome = sancionado.get("nome") if isinstance(sancionado, dict) else str(sancionado)
+            alertas.append({
+                "cnpj": cnpj,
+                "nome": str(nome or ""),
+                "tipoSancao": str(r.get("tipoSancao") or ""),
+                "dataInicioSancao": str(r.get("dataInicioSancao") or ""),
+                "dataFimSancao": str(r.get("dataFimSancao") or ""),
+                "orgaoSancionador": str((r.get("orgaoSancionador") or {}).get("nome") if isinstance(r.get("orgaoSancionador"), dict) else r.get("orgaoSancionador") or ""),
+                "fundamentacao": str(r.get("fundamentacao") or ""),
+                "fonte": "CGU CEIS",
+                "linkFonte": "https://portaldatransparencia.gov.br/sancoes/consulta?tipoPessoa=J",
+            })
+        time.sleep(0.2)
+    print(f"     {consultados} CNPJs consultados -> {len(alertas)} sanções encontradas")
+    return alertas
+
+
+# ── Carrega CNPJs dos fornecedores Betha (para cruzamento CEIS) ───────────────
+
+def _load_cnpjs_betha() -> set[str]:
+    """Lê os CNPJs raiz dos top fornecedores da Prefeitura (chunk gerado pelo coletor_betha)."""
+    candidatos: set[str] = set()
+    for nome_chunk in ("prefeitura.json", "federal.json"):
+        chunk = DATA / "chunks" / nome_chunk
+        if not chunk.exists():
+            chunk = DATA / nome_chunk
+        if not chunk.exists():
+            continue
+        try:
+            payload = json.loads(chunk.read_text(encoding="utf-8"))
+            top = payload.get("topFornecedores") or []
+            for item in top:
+                cnpj = str(item.get("cnpj") or "")
+                raiz = "".join(c for c in cnpj if c.isdigit())[:14]
+                if len(raiz) >= 8:
+                    candidatos.add(raiz)
+        except Exception:
+            pass
+    return candidatos
+
+
+# ── Resumo ─────────────────────────────────────────────────────────────────────
+
+def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]) -> dict:
+    total_empenhado = sum(e["valorEmpenhado"] for e in emendas)
+    total_pago = sum(e["valorPago"] for e in emendas)
+    total_convenios = sum(c["valor"] for c in convenios)
+    convenios_ativos = [c for c in convenios if "execuc" in (c.get("situacao") or "").lower() or "vigente" in (c.get("situacao") or "").lower()]
+
+    return {
+        "municipio": "Varginha-MG",
+        "codigoIbge": IBGE,
+        "atualizadoEm": dt.datetime.now().strftime("%d/%m/%Y %H:%M"),
+        "emendas": {
+            "qtd": len(emendas),
+            "totalEmpenhado": round(total_empenhado, 2),
+            "totalPago": round(total_pago, 2),
+        },
+        "convenios": {
+            "qtd": len(convenios),
+            "qtdAtivos": len(convenios_ativos),
+            "totalValor": round(total_convenios, 2),
+        },
+        "alertasCeis": {
+            "qtd": len(alertas_ceis),
+            "descricao": "Fornecedores de Varginha com sanção federal (CEIS/CGU)",
+        },
+        "fontes": [
+            "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
+            "CEIS — Cadastro de Empresas Inidôneas e Suspensas (CGU)",
+        ],
+        "nota": (
+            "Dados obtidos diretamente da API oficial do Portal da Transparência (CGU). "
+            "Valores em Reais. Emenda = pago pelo Governo Federal para Varginha. "
+            "Convênio = acordo específico (obra, equipamento, programa). "
+            "CEIS = empresa sancionada que recebeu recursos municipais (alerta para conferência)."
+        ),
+    }
+
+
+# ── Principal ──────────────────────────────────────────────────────────────────
 
 def coletar() -> dict:
-    print("⇣ Iniciando monitoramento de recursos federais para Varginha...")
-    
-    # Links diretos para auditoria cidadã (filtros prontos)
-    links_auditoria = [
-        {
-            "titulo": "Transferências para Varginha (Geral 2026)",
-            "url": f"https://portaldatransparencia.gov.br/localidades/{CODIGO_IBGE}-varginha?ano=2026",
-            "desc": "Resumo de todos os recursos federais que entraram no município em 2026."
-        },
-        {
-            "titulo": "Convênios Federais em Varginha",
-            "url": f"https://portaldatransparencia.gov.br/convenios/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha",
-            "desc": "Acordos específicos para obras e projetos (asfalto, prédios, equipamentos)."
-        },
-        {
-            "titulo": "Emendas Parlamentares Federais para Varginha",
-            "url": f"https://portaldatransparencia.gov.br/emendas/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha",
-            "desc": "Verbas enviadas por Deputados Federais e Senadores para a cidade."
-        },
-        {
-            "titulo": "Programas Sociais (Bolsa Família, etc)",
-            "url": f"https://portaldatransparencia.gov.br/beneficios/consulta?paginacaoSimples=true&tamanhopagina=50&nomeMunicipio=Varginha",
-            "desc": "Pagamentos diretos aos cidadãos de Varginha via programas federais."
-        }
-    ]
+    print("⇣ Coletor Federal — Portal da Transparência (CGU)...")
+    try:
+        token = _load_token()
+        print(f"  Token CGU carregado: {token[:8]}...")
+    except RuntimeError as e:
+        print(f"  ! {e}")
+        return _fallback()
 
-    # Como o acesso via API exige chave pessoal (API-Key), 
-    # fornecemos a estrutura para o cidadão fiscalizar diretamente na fonte.
-    # Em uma versão futura, se o usuário fornecer a chave, a coleta se torna automática.
-    
-    resumo = {
-        "status": "Monitoramento Ativo",
-        "municipio": "Varginha-MG",
-        "codigo_ibge": CODIGO_IBGE,
-        "cnpj_alvo": CNPJ_PREFEITURA,
-        "fontes_mapeadas": len(links_auditoria),
-        "conclusao": "O rastreio federal está configurado. O cidadão pode auditar os links oficiais que já possuem os filtros de Varginha aplicados."
-    }
+    emendas = _coletar_emendas_api(token)
+    convenios = _coletar_convenios(token)
+
+    # Cruzamento CEIS apenas com CNPJs reais dos fornecedores Betha
+    cnpjs_betha = _load_cnpjs_betha()
+    alertas_ceis = _coletar_ceis(token, cnpjs_betha) if cnpjs_betha else []
 
     payload = {
-        "fonte": "Portal da Transparência Federal / Dados.gov.br",
+        "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
         "atualizado_em": dt.datetime.now().isoformat(),
-        "resumo": resumo,
-        "links_auditoria": links_auditoria,
-        "pistas_investigacao": [
-            "Verificar se o valor 'Conveniado' de grandes obras bate com o que a Prefeitura anuncia.",
-            "Acompanhar se as emendas federais de saúde estão sendo aplicadas no Hospital Regional ou em custeio.",
-            "Fiscalizar convênios com 'vencimento próximo' para evitar perda de recurso federal."
-        ]
+        "resumo": _resumo(emendas, convenios, alertas_ceis),
+        "emendas_api": emendas,
+        "convenios": convenios,
+        "alertas_ceis": alertas_ceis,
+        "links_auditoria": [
+            {
+                "titulo": "Transferências para Varginha (Portal da Transparência)",
+                "url": f"https://portaldatransparencia.gov.br/localidades/{IBGE}",
+                "desc": "Resumo de todos os recursos federais que entraram no município.",
+            },
+            {
+                "titulo": "Convênios Federais em Varginha",
+                "url": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701",
+                "desc": "Acordos específicos para obras e projetos (asfalto, prédios, equipamentos).",
+            },
+            {
+                "titulo": "Emendas Parlamentares Federais para Varginha",
+                "url": "https://portaldatransparencia.gov.br/emendas/consulta?codigoMunicipio=3170701",
+                "desc": "Verbas enviadas por Deputados Federais e Senadores para a cidade.",
+            },
+            {
+                "titulo": "Emendas Pix (Transferências Especiais) para Varginha",
+                "url": f"https://portaldatransparencia.gov.br/transferencias-especiais?codigoMunicipio={IBGE}",
+                "desc": "Emendas sem destinação obrigatória — Pix direto para a Prefeitura.",
+            },
+        ],
+    }
+    return payload
+
+
+def _fallback() -> dict:
+    """Retorna payload mínimo quando a API não está disponível, preservando dados existentes."""
+    existente_path = DATA / "chunks" / "federal.json"
+    if not existente_path.exists():
+        existente_path = DATA / "federal.json"
+    if existente_path.exists():
+        try:
+            existente = json.loads(existente_path.read_text(encoding="utf-8"))
+            existente["_preservado"] = True
+            existente["_motivo"] = "API CGU indisponível — dado preservado da última coleta"
+            print("  ! Retornando dado preservado da última coleta federal.")
+            return existente
+        except Exception:
+            pass
+    return {
+        "fonte": "Portal da Transparência Federal (CGU)",
+        "atualizado_em": dt.datetime.now().isoformat(),
+        "resumo": {"erro": "API CGU indisponível. Verifique a chave em private/tokens/.portal-transparencia.json"},
+        "emendas_api": [],
+        "convenios": [],
+        "alertas_ceis": [],
+        "links_auditoria": [],
     }
 
-    return payload
 
 def salvar(payload: dict | None = None) -> dict:
     payload = payload or coletar()
     out = DATA / "federal.json"
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  ✓ federal.json salvo.")
+    chunks_dir = DATA / "chunks"
+    chunks_dir.mkdir(exist_ok=True)
+    (chunks_dir / "federal.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("  OK: federal.json salvo.")
     return payload
 
+
 if __name__ == "__main__":
+    import sys
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
     salvar()

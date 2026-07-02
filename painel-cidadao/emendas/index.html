@@ -31,7 +31,7 @@
       <div>
         <p class="eyebrow">Publicidade e transparência · emendas para Varginha</p>
         <h1>Emendas para Varginha</h1>
-        <p class="lead">Consulte emendas municipais, estaduais e federais destinadas a Varginha. Dados extraídos dos relatórios oficiais; os links levam à fonte para conferência.</p>
+        <p class="lead">Consulte emendas municipais, estaduais e federais destinadas a Varginha. <strong>Os dados referem-se aos respectivos anos de 2015 a 2026 (federais) e a partir de 2025 (municipais e estaduais)</strong>, extraídos de relatórios oficiais; os links levam à fonte para conferência.</p>
       </div>
       <div class="source-note">
         <span>Atualizado em</span>
@@ -88,6 +88,20 @@
             <span>Tipo</span>
             <select id="typeFilter">
               <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Tipo de emenda</span>
+            <select id="categoryFilter">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Status do parlamentar</span>
+            <select id="activeFilter">
+              <option value="">Todos</option>
+              <option value="ativo">Ativo(a)</option>
+              <option value="inativo">Inativo(a) / Ex-vereador(a)</option>
             </select>
           </label>
           <label class="field">
@@ -209,6 +223,13 @@
             <span id="authorTotal">parlamentares</span>
           </div>
           <div id="authorRanking" class="ranking-list"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Deputados (Federal/Estadual)</h2>
+            <span id="deputyTotal">por valor total</span>
+          </div>
+          <div id="deputyRanking" class="ranking-list"></div>
         </article>
         <article class="panel">
           <div class="panel-title">

@@ -44,10 +44,10 @@ DATA = ROOT / "data"
 DATA.mkdir(exist_ok=True)
 
 CSV_SAPL = Path(
-    r"C:/Users/Desktop/Desktop/Camara De Varginha/Ano 2025/sapl_pesquisar_materia (2).csv"
+    r"C:/Users/Desktop/Desktop/Ações Prefeitura Varginha/Camara De Varginha/Ano 2025/sapl_pesquisar_materia (2).csv"
 )
 JSON_SAPL_2026 = Path(
-    r"C:/Users/Desktop/Desktop/Camara De Varginha/Ano 2026/sapl_pesquisar_materia.json"
+    r"C:/Users/Desktop/Desktop/Ações Prefeitura Varginha/Camara De Varginha/Ano 2026/sapl_pesquisar_materia.json"
 )
 
 DIARIO_URLS = {
@@ -556,28 +556,44 @@ def _parse_emenda(ementa: str) -> dict:
 
 def _processa_sapl() -> dict:
     print("⇣ Lendo SAPL (Câmara de Varginha)…")
-    # O SAPL depende de um CSV exportado manualmente da Câmara. Se ele não
-    # estiver presente, preserva os dados SAPL já coletados e segue com o resto
-    # da coleta (Betha, diário etc.) em vez de abortar tudo.
-    if not CSV_SAPL.exists():
-        print(f"  ! CSV do SAPL ausente ({CSV_SAPL}); preservando dados SAPL existentes.")
-        return {
-            "resumo": _load_existing("resumo.json", {}),
-            "vereadores": _load_existing("vereadores.json", []),
-            "emendas": _load_existing("emendas.json", []),
-            "camara_anos": _load_existing("camara_anos.json", {}),
-        }
-    with CSV_SAPL.open(encoding="utf-8") as f:
-        rows = list(csv.DictReader(f, delimiter=";"))
-    print(f"  {len(rows)} matérias carregadas.")
 
-    tipos = Counter(r["Tipo de Matéria Legislativa/Descrição"] for r in rows)
+    # ── 1. Coleta matérias diretamente via API REST do SAPL ─────────────────
+    # Elimina a dependência do CSV exportado manualmente.
+    rows_api: list[dict] = []
+    if "--offline-sapl" not in sys.argv:
+        for ano in [2025, 2026]:
+            url = f"https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano={ano}&page_size=200"
+            tentativa = _sapl_paginate(url, timeout=20)
+            if tentativa:
+                print(f"  ✓ SAPL API {ano}: {len(tentativa)} matérias")
+                rows_api.extend([_linha_padrao_sapl(r) for r in tentativa])
+            else:
+                print(f"  ! SAPL API {ano}: sem resposta")
+
+    # ── 2. Fallback: CSV manual (contingência offline) ────────────────────────
+    if not rows_api:
+        if not CSV_SAPL.exists():
+            print(f"  ! CSV do SAPL ausente ({CSV_SAPL}); preservando dados existentes.")
+            return {
+                "resumo": _load_existing("resumo.json", {}),
+                "vereadores": _load_existing("vereadores.json", []),
+                "emendas": _load_existing("emendas.json", []),
+                "camara_anos": _load_existing("camara_anos.json", {}),
+            }
+        with CSV_SAPL.open(encoding="utf-8") as f:
+            rows_api = [_linha_padrao_sapl(r) for r in csv.DictReader(f, delimiter=";")]
+        print(f"  (fallback CSV): {len(rows_api)} matérias do arquivo local.")
+
+    rows = rows_api
+    print(f"  {len(rows)} matérias carregadas no total.")
+
+    tipos = Counter(r["tipo_descricao"] for r in rows)
 
     # Por vereador
     ver_tipo: dict[str, Counter] = defaultdict(Counter)
     for r in rows:
-        tipo = r["Tipo de Matéria Legislativa/Descrição"]
-        for nome in (x.strip() for x in r["Autorias"].split(",")):
+        tipo = r["tipo_descricao"]
+        for nome in (x.strip() for x in r["autoria"].split(",")):
             if (
                 not nome
                 or nome in EXCLUI_AUTOR
@@ -593,35 +609,37 @@ def _processa_sapl() -> dict:
         vereadores.append({
             "nome": nome,
             "total": sum(c.values()),
-            "indicacoes": c.get("Indicação", 0),
+            "indicacoes": c.get("Indicação", 0) or c.get("IndicaÃ§Ã£o", 0),
             "requerimentos": c.get("Requerimento", 0),
-            "projetos_lei": c.get("Projeto de Lei Ordinária do Legislativo", 0),
-            "emendas": c.get("Emenda Impositiva ao Orçamento", 0),
-            "mocoes": c.get("Moção", 0),
-            "outros": sum(v for k, v in c.items() if k not in {
-                "Indicação", "Requerimento",
-                "Projeto de Lei Ordinária do Legislativo",
-                "Emenda Impositiva ao Orçamento", "Moção"
+            "projetos_lei": c.get("Projeto de Lei Ordinária do Legislativo", 0) or c.get("Projeto de Lei OrdinÃ¡ria do Legislativo", 0),
+            "emendas": c.get("Emenda Impositiva ao Orçamento", 0) or c.get("Emenda Impositiva ao OrÃ§amento", 0),
+            "mocoes": c.get("Moção", 0) or c.get("MoÃ§Ã£o", 0),
+            "outros": sum(v for k, v in c.items() if _norm_txt(k) not in {
+                _norm_txt("Indicação"), _norm_txt("IndicaÃ§Ã£o"),
+                _norm_txt("Requerimento"),
+                _norm_txt("Projeto de Lei Ordinária do Legislativo"), _norm_txt("Projeto de Lei OrdinÃ¡ria do Legislativo"),
+                _norm_txt("Emenda Impositiva ao Orçamento"), _norm_txt("Emenda Impositiva ao OrÃ§amento"),
+                _norm_txt("Moção"), _norm_txt("MoÃ§Ã£o")
             }),
         })
 
     # Emendas detalhadas
-    emendas_raw = [r for r in rows if r["Tipo de Matéria Legislativa/Descrição"] == "Emenda Impositiva ao Orçamento"]
+    emendas_raw = [r for r in rows if _norm_txt(r["tipo_descricao"]) == _norm_txt("Emenda Impositiva ao Orçamento")]
     emendas = []
     valor_total = 0.0
     for r in emendas_raw:
-        parsed = _parse_emenda(r["Ementa"])
+        parsed = _parse_emenda(r["ementa"])
         valor_total += parsed["valor_brl"]
         emendas.append({
-            "ano": r["Ano"],
-            "numero": r["Número"],
-            "autor": r["Autorias"],
-            "pdf": r["Texto Original"],
+            "ano": r["ano"],
+            "numero": r["numero"],
+            "autor": r["autoria"],
+            "pdf": r["texto_original"],
             **parsed,
         })
 
     # Top temas (palavras‐chave nas ementas)
-    texto_all = " ".join(r["Ementa"].lower() for r in rows)
+    texto_all = " ".join(r["ementa"].lower() for r in rows)
     palavras = [
         "saúde", "educação", "segurança", "iluminação", "asfalto",
         "pavimentação", "transporte", "criança", "idoso", "mulher",
@@ -642,33 +660,36 @@ def _processa_sapl() -> dict:
         "temas_top": temas,
     }
 
-    rows_2025 = [_linha_padrao_sapl(r) for r in rows]
+    rows_2025 = rows
     rows_2026 = _load_sapl_rows(JSON_SAPL_2026)
 
     # Busca datas na API SAPL (falha silenciosa — dado offline continua funcionando)
     anos_com_dados = [2025] + ([2026] if rows_2026 else [])
     datas_sapl: dict[str, str] = {}
-    try:
-        datas_sapl = _fetch_datas_sapl(anos_com_dados)
-        print(f"  ✓ {len(datas_sapl)} datas obtidas da API SAPL")
-    except Exception as e:
-        print(f"  ! API SAPL indisponível, materias sem data: {e}")
+    if "--offline-sapl" not in sys.argv:
+        try:
+            datas_sapl = _fetch_datas_sapl(anos_com_dados)
+            print(f"  ✓ {len(datas_sapl)} datas obtidas da API SAPL")
+        except Exception as e:
+            print(f"  ! API SAPL indisponível, materias sem data: {e}")
 
     # Desfecho legislativo (aprovado/virou lei vs arquivado) — fonte oficial SAPL.
     # Falha silenciosa: sem rede, materias ficam com desfecho vazio.
     desfechos_sapl: dict[str, str] = {}
-    try:
-        desfechos_sapl = _fetch_desfechos_sapl(anos_com_dados)
-    except Exception as e:
-        print(f"  ! Desfechos SAPL indisponíveis: {e}")
+    if "--offline-sapl" not in sys.argv:
+        try:
+            desfechos_sapl = _fetch_desfechos_sapl(anos_com_dados)
+        except Exception as e:
+            print(f"  ! Desfechos SAPL indisponíveis: {e}")
 
     # Presença em plenário por janela de mandato (4ª dimensão do índice).
     # Falha silenciosa: sem rede, presença fica pendente e o índice usa cobertura 75%.
     presenca_sapl: dict[int, dict[str, dict]] = {}
-    try:
-        presenca_sapl = _fetch_presenca_sapl(anos_com_dados)
-    except Exception as e:
-        print(f"  ! Presença SAPL indisponível: {e}")
+    if "--offline-sapl" not in sys.argv:
+        try:
+            presenca_sapl = _fetch_presenca_sapl(anos_com_dados)
+        except Exception as e:
+            print(f"  ! Presença SAPL indisponível: {e}")
 
     ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl, desfechos_sapl, presenca_sapl.get(2025))
     camara_anos = {"2025": ano_2025}

@@ -13,7 +13,7 @@ Legenda: ✅ já integrado · 🆕 novo (vale integrar) · 🔎 verificar link/e
 | Fonte | Uso no cruzamento | Status | Link |
 |---|---|---|---|
 | PNCP | editais/atas/contratos do município | ✅ | https://pncp.gov.br/ |
-| Transparência Federal | recursos federais por município (3170701) | 🔎 | https://portaldatransparencia.gov.br/municipios/3170701 |
+| Transparência Federal | recursos federais por município (3170701) | ✅ | https://api.portaldatransparencia.gov.br/swagger-ui/index.html |
 | Transferegov | convênios União×Varginha antes da obra | 🆕 | https://www.gov.br/transferegov/pt-br |
 | Compras.gov.br | compras federais (referência) | 🆕🔎 | https://www.gov.br/compras/pt-br |
 | Painel de Preços | preço de referência → sobrepreço | 🆕🔎 | https://paineldeprecos.planejamento.gov.br/ |

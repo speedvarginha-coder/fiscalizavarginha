@@ -1,103 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-06-26T17:43:33.756Z",
+  "gerado_em": "2026-07-02T20:52:18.978Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-06-26T14-43-30-0ee948fb",
-    "coleta_iso": "2026-06-26T14:43:30",
-    "data_humana": "26/06/2026 - 14:43",
-    "arquivo": "data/snapshots/2026-06-26T14-43-30-0ee948fb.json"
+    "snapshot_id": "2026-07-02T17-52-10-8eddd184",
+    "coleta_iso": "2026-07-02T17:52:10",
+    "data_humana": "02/07/2026 - 17:52",
+    "arquivo": "data/snapshots/2026-07-02T17-52-10-8eddd184.json"
   },
   "anterior": {
-    "snapshot_id": "2026-06-25T12-10-35-55b10f89",
-    "coleta_iso": "2026-06-25T12:10:35",
-    "data_humana": "25/06/2026 - 12:10",
-    "arquivo": "",
-    "origem": "backup_pre_coleta"
+    "snapshot_id": "2026-07-02T16-55-10-8eddd184",
+    "coleta_iso": "2026-07-02T16:55:10",
+    "data_humana": "02/07/2026 - 16:55",
+    "arquivo": "data/snapshots/2026-07-02T16-55-10-8eddd184.json",
+    "origem": "chunks"
   },
   "resumo": {
-    "novos_contratos": 1,
-    "contratos_valor_alterado": 4,
-    "novos_fornecedores_relevantes": 1,
-    "novas_edicoes_diario": 1,
+    "novos_contratos": 0,
+    "contratos_valor_alterado": 0,
+    "novos_fornecedores_relevantes": 0,
+    "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 422730,
-    "valor_delta_brl": 17615814.78,
-    "total_mudancas": 7
+    "valor_novo_brl": 0,
+    "valor_delta_brl": 0,
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "alta",
-      "titulo": "Valor alterado no contrato 166/2023",
-      "detalhe": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA: antes R$ 31.591.951,19, agora R$ 50.542.959,97.",
-      "orgao": "Prefeitura",
-      "data": "2023-11-30",
-      "valor_brl": 50542959.97,
-      "delta_brl": 18951008.779999997,
-      "alvo_id": "PREFEITURA-2023-166"
-    },
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "alta",
-      "titulo": "Valor alterado no contrato 124/2023",
-      "detalhe": "COLMEIA RH TECNOLOGIA SERVICOS LTDA: antes R$ 3.248.911,22, agora R$ 2.590.315,52.",
-      "orgao": "Prefeitura",
-      "data": "2023-08-21",
-      "valor_brl": 2590315.52,
-      "delta_brl": -658595.7000000002,
-      "alvo_id": "PREFEITURA-2023-124"
-    },
-    {
-      "tipo": "novo_fornecedor_relevante",
-      "prioridade": "alta",
-      "titulo": "Fornecedor entrou no ranking: MED CENTER COMERCIAL LTDA",
-      "detalhe": "Prefeitura - rank 24, R$ 1.397.771,90 no recorte atual.",
-      "orgao": "Prefeitura",
-      "valor_brl": 1397771.9
-    },
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "alta",
-      "titulo": "Valor alterado no contrato 101/2025",
-      "detalhe": "COLMEIA RH TECNOLOGIA SERVICOS LTDA: antes R$ 1.337.703,36, agora R$ 668.851,62.",
-      "orgao": "Prefeitura",
-      "data": "2025-11-17",
-      "valor_brl": 668851.62,
-      "delta_brl": -668851.7400000001,
-      "alvo_id": "PREFEITURA-2025-101"
-    },
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "media",
-      "titulo": "Valor alterado no contrato 15/2024",
-      "detalhe": "COLMEIA RH TECNOLOGIA SERVICOS LTDA: antes R$ 1.125.345,25, agora R$ 1.117.598,69.",
-      "orgao": "Prefeitura",
-      "data": "2024-01-31",
-      "valor_brl": 1117598.69,
-      "delta_brl": -7746.560000000056,
-      "alvo_id": "PREFEITURA-2024-15"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 0/0 - GABRIEL REIS DE ALBUQUERQUE REGINA",
-      "detalhe": "Registro de preços para o futuro e eventual fornecimento de grama esmeralda",
-      "orgao": "Prefeitura",
-      "data": "2026-06-24",
-      "valor_brl": 422730,
-      "alvo_id": "PREFEITURA-0-0"
-    },
-    {
-      "tipo": "nova_edicao_diario",
-      "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1830",
-      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-06-25",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/237/"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }

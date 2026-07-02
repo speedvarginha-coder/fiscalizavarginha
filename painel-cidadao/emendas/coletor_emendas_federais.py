@@ -11,7 +11,7 @@ Enriquecimento (opcional, precisa token em ../../private/tokens/.portal-transpar
 Uso:  python coletor_emendas_federais.py
 Gera data/emendas_federais.js (itemizado: 1 registro por favorecido) + resumoTipos.
 """
-import json, io, os, csv, time, zipfile, tempfile, urllib.request, urllib.parse, urllib.error
+import json, io, os, csv, time, zipfile, tempfile, urllib.request, urllib.parse, urllib.error, unicodedata
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 FED_JS = os.path.join(AQUI, "data", "emendas_federais.js")
@@ -29,7 +29,22 @@ def money(s):
 def money_txt(v):
     return f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
+def remove_accents(input_str):
+    nfkd_form = unicodedata.normalize('NFKD', input_str)
+    return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
+
 def baixar_zip():
+    # 1. Tenta usar o arquivo baixado localmente pelo usuário no Google Drive (prioridade/cache)
+    paths_possiveis = [
+        r"L:\Meu Drive\Rotina Diaria\Recebimento de Arquivos\EmendasParlamentares (1).zip",
+        r"L:\Meu Drive\Rotina Diaria\Recebimento de Arquivos\EmendasParlamentares.zip"
+    ]
+    for p in paths_possiveis:
+        if os.path.exists(p):
+            print(f"Usando arquivo local encontrado em: {p}")
+            return p
+
+    # 2. Se não achar, tenta baixar da URL
     dest = os.path.join(tempfile.gettempdir(), "emendas_cgu_varginha.zip")
     print("Baixando dataset CGU (UNICO)...")
     req = urllib.request.Request(ZIP_URL, headers={"User-Agent": "FiscalizaVarginha/1.0"})
@@ -51,15 +66,61 @@ def objeto_por_codigo(z):
         mp[cod] = " · ".join(p for p in partes if p and p != "Sem informação")
     return mp
 
-def registros_varginha(z, objetos):
-    """1 registro por linha favorecido em Varginha-MG."""
+def targets_por_codigo(z):
+    """Mapa código -> (Target Município, Target UF) do CSV principal."""
+    txt = io.TextIOWrapper(z.open("EmendasParlamentares.csv"), encoding="latin-1")
+    r = csv.reader(txt, delimiter=";"); next(r)
+    mp = {}
+    for row in r:
+        if len(row) < 11: continue
+        cod = row[0].strip()
+        target_mun = row[8].strip()
+        target_uf = row[10].strip()
+        mp[cod] = (target_mun, target_uf)
+    return mp
+
+VALID_NATURE_SUBSTRINGS = [
+    "MUNICIPIO",
+    "FUNDO PUBLICO DA ADMINISTRACAO DIRETA MUNICIPAL",
+    "FUNDACAO PUBLICA DE DIREITO PUBLICO MUNICIPAL",
+    "ASSOCIACAO PRIVADA",
+    "FUNDACAO PRIVADA"
+]
+
+def registros_varginha(z, objetos, targets):
+    """Filtra favorecidos em Varginha-MG garantindo destinação local legítima (pública/social)."""
     txt = io.TextIOWrapper(z.open("EmendasParlamentares_PorFavorecido.csv"), encoding="latin-1")
     r = csv.reader(txt, delimiter=";"); next(r)
     regs = []
     for row in r:
         if len(row) < 13: continue
-        if row[11].strip().upper() != "VARGINHA" or row[10].strip().upper() != "MG": continue
+        
+        mun_fav = remove_accents(row[11].strip().upper())
+        uf_fav = remove_accents(row[10].strip().upper())
+        if mun_fav != "VARGINHA" or uf_fav != "MG": continue
+        
         cod = row[0].strip()
+        
+        # Cross-reference destination from EmendasParlamentares.csv
+        target = targets.get(cod, ("", ""))
+        t_mun, t_uf = target
+        t_mun_norm = remove_accents(t_mun.upper())
+        
+        # Rule 1: Target municipality is explicitly Varginha
+        is_varginha_target = "VARGINHA" in t_mun_norm
+        
+        # Rule 2: Multi-municipal, national, or unspecified target
+        is_multi_or_national = any(x in t_mun_norm for x in ["MULTIPLO", "NACIONAL", "SEM INFORMACAO"]) or t_mun_norm == ""
+        
+        # Rule 3: Legal nature must be a local public or social/non-profit organization (excluding vendors)
+        nat_jur = row[8].strip()
+        nat_jur_norm = remove_accents(nat_jur.upper())
+        is_valid_nature = any(vn in nat_jur_norm for vn in VALID_NATURE_SUBSTRINGS)
+        
+        # Keep record ONLY if targeted at Varginha OR is multi/national and has valid public/social nature
+        if not (is_varginha_target or (is_multi_or_national and is_valid_nature)):
+            continue
+            
         tipo_emenda = row[4].strip()
         ano = (row[5] or "")[:4]
         autor = row[2].strip()
@@ -170,8 +231,10 @@ def main():
     z = zipfile.ZipFile(zpath)
     print("Lendo objetos (função/ação)...")
     objetos = objeto_por_codigo(z)
-    print("Filtrando favorecidos em Varginha-MG...")
-    regs = registros_varginha(z, objetos)
+    print("Lendo destinos das emendas...")
+    targets = targets_por_codigo(z)
+    print("Filtrando favorecidos em Varginha-MG com regras de destinação...")
+    regs = registros_varginha(z, objetos, targets)
     print(f"  {len(regs)} registros federais itemizados ({len(set(r['emenda'] for r in regs))} emendas únicas)")
     enriquecer_pix(regs, token())
     resumo = gerar_resumo_tipos(regs)

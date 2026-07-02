@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-06-26T18:46:55.418Z",
+  "gerado_em": "2026-07-02T20:52:18.083Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -9,8 +9,8 @@
     "total": 7
   },
   "atualizado_base": {
-    "iso": "2026-06-26T14:43:30",
-    "data_humana": "26/06/2026 - 14:43"
+    "iso": "2026-07-02T17:52:10",
+    "data_humana": "02/07/2026 - 17:52"
   },
   "items": [
     {
@@ -22,20 +22,20 @@
       "source": "atualizado_em.json"
     },
     {
+      "severity": "warning",
+      "id": "emendas-2026-sem-lista",
+      "title": "Emendas 2026 sem lista consolidada",
+      "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
+      "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
+      "source": "fontes_emendas_2026.json"
+    },
+    {
       "severity": "info",
       "id": "pncp-apoio",
       "title": "PNCP usado como fonte auxiliar",
       "detail": "A base PNCP serve para cruzamento e pode nao retornar todos os registros do municipio.",
       "action": "Conferir manualmente no PNCP quando o contrato for sensivel.",
       "source": "pncp.json"
-    },
-    {
-      "severity": "warning",
-      "id": "cnpj-falhas",
-      "title": "Falhas de consulta CNPJ",
-      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
-      "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
-      "source": "cnpjs.json"
     },
     {
       "severity": "warning",
