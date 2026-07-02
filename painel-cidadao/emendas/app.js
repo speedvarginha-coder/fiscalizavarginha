@@ -298,7 +298,7 @@ function renderEsferas() {
   const contaTipo = (t) => allRecords.filter((r) => r.tipo === t).length;
   const esferas = [
     { tipo: "Federal", nome: "Federal", desc: "Deputados e senadores", cls: "is-federal",
-      total: federalTotal, sub: "Pix + 4 tipos (CGU)" },
+      total: federalTotal, sub: ((window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata && window.EMENDAS_FEDERAIS.metadata.emendasUnicas) || "") + " emendas (CGU)" },
     { tipo: "Estadual", nome: "Estadual", desc: "Deputados estaduais (ALMG)", cls: "is-estadual",
       total: somaTipo("Estadual"), sub: contaTipo("Estadual") + " emendas" },
     { tipo: "Municipal", nome: "Municipal", desc: "Vereadores de Varginha", cls: "is-municipal",

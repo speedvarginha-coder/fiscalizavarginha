@@ -23,17 +23,20 @@ soma_tipos = sum(t["total"] for t in resumo)
 if abs(soma_tipos - f["metadata"]["totalFederal"]) > 0.01:
     problemas.append(f"totalFederal != soma dos tipos ({soma_tipos:.2f})")
 
-# 2. Pix itemizado == total do tipo Pix
-pix_item = sum(e["valor"] for e in pix)
-pix_tipo = next(t for t in resumo if "Pix" in t["categoria"])["total"]
-if abs(pix_item - pix_tipo) > 0.01:
-    problemas.append(f"Pix itemizado ({pix_item:.2f}) != total tipo ({pix_tipo:.2f})")
+# 2. cada tipo do resumo == soma dos registros itemizados daquela categoria
+por_cat = collections.defaultdict(float)
+for e in pix:  # pix = f["emendas"] = TODAS as federais itemizadas
+    por_cat[e.get("categoria")] += e.get("valor", 0)
+for t in resumo:
+    itemizado = por_cat.get(t["categoria"], 0)
+    if abs(itemizado - t["total"]) > 0.01:
+        problemas.append(f"{t['categoria']}: itemizado ({itemizado:.2f}) != resumo ({t['total']:.2f})")
 
-# 3. campos obrigatórios nas Pix
+# 3. campos obrigatórios em todas as federais
 for e in pix:
-    for c in ("autor","valor","ano","emenda","beneficiario","objeto","fonteUrl"):
+    for c in ("autor","valor","ano","emenda","beneficiario","objeto","fonteUrl","categoria"):
         if not e.get(c):
-            problemas.append(f"Pix {e.get('emenda','?')}: campo '{c}' vazio")
+            problemas.append(f"Federal {e.get('emenda','?')}: campo '{c}' vazio")
 
 # 4. maiores beneficiários não somam mais que o total
 for t in resumo:
