@@ -661,6 +661,11 @@ button.flag-card:hover {
   color: var(--green);
 }
 
+.tag-federal {
+  background: #eee7f7;
+  color: #6b3fa0;
+}
+
 .value-box {
   align-content: start;
   display: grid;

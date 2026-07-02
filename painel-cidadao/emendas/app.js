@@ -1,9 +1,13 @@
 const payload = window.EMENDAS_DATA || { metadata: {}, emendas: [] };
-const allRecords = payload.emendas || [];
+// Emendas federais do Portal da Transparência (CGU), carregadas de data/emendas_federais.js
+const federais = (window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.emendas) || [];
+const allRecords = [...(payload.emendas || []), ...federais];
 
 // Os PDFs não são hospedados aqui (versão leve). Os links levam à fonte oficial
 // de cada esfera: municipais à Câmara; estaduais/federais ao Portal Betha.
 function fonteOficialUrl(record) {
+  // Registro pode trazer link direto da fonte (ex.: emendas federais → Portal da Transparência)
+  if (record && record.fonteUrl) return record.fonteUrl;
   const tipo = (record && record.tipo ? record.tipo : "").toLowerCase();
   if (tipo.includes("municip")) {
     return "https://www.varginha.mg.leg.br/atividade-legislativa/emendas/emendas-impositivas";
@@ -741,6 +745,7 @@ function renderResults() {
             <p>${escapeHtml(object)}</p>
             <div class="tags">
               <span class="tag ${typeClass(record.tipo)}">${escapeHtml(record.tipo)}</span>
+              ${record.categoria ? `<span class="tag tag-federal">${escapeHtml(record.categoria)}</span>` : ""}
               <span class="tag">Ano da emenda: ${escapeHtml(amendmentYearsForRecord(record).join(", ") || "Não informado")}</span>
               <span class="tag">Emenda ${escapeHtml(record.emenda)}</span>
               <span class="tag">${escapeHtml(record.aprovado || "Aprovação não informada")}</span>
