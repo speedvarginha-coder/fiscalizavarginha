@@ -331,7 +331,7 @@ function renderFederalPorTipo() {
   box.innerHTML = `
     <div class="fed-tipos__head">
       <h3>Federal em detalhe — por tipo de emenda</h3>
-      <p>Total federal para Varginha: <strong>${moneyFormatter.format(window.EMENDAS_FEDERAIS.metadata.totalFederal)}</strong>. Fonte: Portal da Transparência (CGU).</p>
+      <p>Total federal para Varginha: <strong>${moneyFormatter.format(window.EMENDAS_FEDERAIS.metadata.totalFederal)}</strong>. Fonte: Portal da Transparência (CGU) · extraído em ${escapeHtml((window.EMENDAS_FEDERAIS.metadata.extraidoEm || "").split("-").reverse().join("/"))}. Cada valor tem link para conferir na fonte oficial.</p>
     </div>
     <div class="fed-tipos__grid">
       ${dados.map((t) => `
