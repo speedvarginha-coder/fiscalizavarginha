@@ -819,6 +819,7 @@ function renderResults() {
               <span class="tag">${escapeHtml(record.aprovado || "Aprovação não informada")}</span>
               <span class="tag">Individual: ${escapeHtml(record.emendaIndividual || "Não informado")}</span>
             </div>
+            ${record.execucao ? `<p class="exec-trail"><span>Execução (CGU):</span> ${escapeHtml(record.execucao)}${record.qtdDocumentos ? ` · ${record.qtdDocumentos} documentos` : ""}</p>` : ""}
           </div>
           <div class="value-box">
             <strong>${moneyFormatter.format(Number(record.valor || 0))}</strong>

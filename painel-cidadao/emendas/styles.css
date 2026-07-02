@@ -938,3 +938,10 @@ button.flag-card:hover {
 @media (max-width: 680px) {
   .esferas__cards { grid-template-columns: 1fr; }
 }
+
+/* Rastro de execução (empenho/liquidação/pagamento) — emendas Pix via API CGU */
+.exec-trail {
+  margin: 8px 0 0; padding: 7px 10px; font-size: .82rem; line-height: 1.4;
+  background: #EAF4EC; border-left: 3px solid var(--blue); border-radius: 6px; color: var(--text);
+}
+.exec-trail span { font-weight: 800; color: var(--blue); }
