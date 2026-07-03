@@ -57,6 +57,14 @@ New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Nul
   Copy-IfExists (Join-Path $source "modules\$_") (Join-Path $stage "modules\$_")
 }
 Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
+Copy-IfExists (Join-Path $source "emendas") (Join-Path $stage "emendas")
+$emendasStage = Join-Path $stage "emendas"
+if (Test-Path $emendasStage) {
+  Get-ChildItem -LiteralPath $emendasStage -Recurse -File -Filter "*.py" |
+    Remove-Item -Force
+  Get-ChildItem -LiteralPath $emendasStage -Recurse -Directory -Filter "__pycache__" |
+    Remove-Item -Recurse -Force
+}
 Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
 Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snapshots")
 Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
