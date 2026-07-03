@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Emendas municipais, estaduais e federais · Fiscaliza Varginha</title>
     <meta name="description" content="Consulta de emendas municipais, estaduais e federais destinadas a Varginha-MG: quem recebeu, valor, objeto e situação." />
-    <link rel="stylesheet" href="styles.css?v=20260703c" />
+    <link rel="stylesheet" href="styles.css?v=20260703d" />
   </head>
   <body>
     <header class="site-nav">
@@ -83,6 +83,8 @@
           <button id="exportCsv" class="button primary" type="button">Baixar CSV</button>
         </div>
 
+        <details class="adv-filters" open>
+        <summary class="adv-filters__toggle">Filtros avançados <span aria-hidden="true">▾</span></summary>
         <div class="filter-grid">
           <label class="field">
             <span>Tipo</span>
@@ -171,6 +173,7 @@
             <input id="maxValue" type="number" min="0" step="1000" placeholder="sem limite" />
           </label>
         </div>
+        </details>
 
         <div class="quick-filters" aria-label="Consultas rápidas">
           <button class="chip" data-quick="saude" type="button">Saúde</button>
@@ -362,8 +365,8 @@
       <div class="site-footer__bottom">Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</div>
     </footer>
 
-    <script src="data/emendas.js?v=20260703c"></script>
-    <script src="data/emendas_federais.js?v=20260703c"></script>
-    <script src="app.js?v=20260703c"></script>
+    <script src="data/emendas.js?v=20260703d"></script>
+    <script src="data/emendas_federais.js?v=20260703d"></script>
+    <script src="app.js?v=20260703d"></script>
   </body>
 </html>

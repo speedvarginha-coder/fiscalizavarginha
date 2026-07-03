@@ -995,3 +995,27 @@ button.flag-card:hover {
   color: #ffffff;
 }
 
+
+/* Nota de critério (qualidade) na seção federal */
+.fed-tipos__criterio {
+  margin: 14px 0 0; padding: 10px 14px; font-size: .82rem; line-height: 1.5;
+  color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: 8px;
+}
+.fed-tipos__criterio strong { color: var(--green); }
+
+/* Filtros avançados colapsáveis (mobile) */
+.adv-filters { border: 0; }
+.adv-filters__toggle {
+  display: none; cursor: pointer; list-style: none; user-select: none;
+  padding: 10px 14px; margin: 0 0 10px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface); font-weight: 700; color: var(--green); font-size: .9rem;
+}
+.adv-filters__toggle::-webkit-details-marker { display: none; }
+.adv-filters[open] .adv-filters__toggle span { display: inline-block; transform: rotate(180deg); }
+@media (max-width: 700px) {
+  .adv-filters__toggle { display: block; }
+  .esfera-card__valor, .fed-tipo__valor { font-size: 1.2rem; word-break: break-word; }
+  .fed-tipos__grid { grid-template-columns: 1fr; }
+  .quick-filters { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+  .quick-filters .chip { white-space: nowrap; flex: 0 0 auto; }
+}

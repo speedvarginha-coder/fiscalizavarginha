@@ -433,7 +433,13 @@ function renderFederalPorTipo() {
             </div>` : ""}
           <a class="fed-tipo__fonte" href="${t.fonteUrl}" target="_blank" rel="noopener">Conferir no Portal da Transparência →</a>
         </article>`).join("")}
-    </div>`;
+    </div>
+    <p class="fed-tipos__criterio">
+      <strong>Critério de qualidade:</strong> contamos apenas emendas destinadas ao poder público e a
+      entidades sociais de Varginha. Pagamentos de emendas de outros estados a <em>empresas com sede na
+      cidade</em> (ex.: fábricas que venderam equipamentos para outros municípios) não entram — é venda
+      comercial, não verba destinada a Varginha.
+    </p>`;
 }
 
 function setupFilters() {
@@ -1301,6 +1307,10 @@ function setupEvents() {
 }
 
 setupFilters();
+// Mobile: filtros avançados começam recolhidos (menos rolagem até o conteúdo)
+if (window.innerWidth < 700) {
+  document.querySelector(".adv-filters")?.removeAttribute("open");
+}
 renderEsferas();
 renderFederalPorTipo();
 setupEvents();
