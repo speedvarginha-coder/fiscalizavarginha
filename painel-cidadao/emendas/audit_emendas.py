@@ -32,11 +32,15 @@ for t in resumo:
     if abs(itemizado - t["total"]) > 0.01:
         problemas.append(f"{t['categoria']}: itemizado ({itemizado:.2f}) != resumo ({t['total']:.2f})")
 
-# 3. campos obrigatórios em todas as federais
+# 3. campos obrigatórios em todas as federais.
+# Registros somenteNoBetha (pendentes de repasse) legitimamente têm valor 0.
 for e in pix:
-    for c in ("autor","valor","ano","emenda","beneficiario","objeto","fonteUrl","categoria"):
+    obrig = ("autor","ano","emenda","beneficiario","objeto","fonteUrl","categoria")
+    for c in obrig:
         if not e.get(c):
             problemas.append(f"Federal {e.get('emenda','?')}: campo '{c}' vazio")
+    if "valor" not in e:
+        problemas.append(f"Federal {e.get('emenda','?')}: campo 'valor' ausente")
 
 # 4. maiores beneficiários não somam mais que o total
 for t in resumo:

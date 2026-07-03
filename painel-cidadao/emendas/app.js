@@ -91,54 +91,40 @@ function normalize(value) {
     .toLowerCase();
 }
 
-// Os 15 vereadores TITULARES do mandato 2025–2028 (fonte: varginha.mg.leg.br/vereadores).
-// active:true = mandato atual. Quem NÃO está aqui e tem emenda municipal é ex-vereador
-// (mandatos anteriores) e recebe active:false pelo default em getAuthorMeta.
+// Titulares em exercício na 20ª Legislatura (2025-2028), consultados no SAPL
+// em 03/07/2026. O ID permite conferir cada cadastro na fonte oficial.
+const CURRENT_COUNCILLORS_SOURCE = "https://sapl.varginha.mg.leg.br/parlamentar/";
 const LOCAL_COUNCILLORS = {
-  "zilda silva": { name: "ZILDA SILVA", party: "PP", active: true },
-  "zilda maria da silva": { name: "ZILDA SILVA", party: "PP", active: true },
-  "alexandre prado": { name: "ALEXANDRE PRADO", party: "AVANTE", active: true },
-  "ana rios fontoura": { name: "ANA RIOS", party: "UNIÃO BRASIL", active: true },
-  "ana rios": { name: "ANA RIOS", party: "UNIÃO BRASIL", active: true },
-  "dandan": { name: "DANDAN", party: "PL", active: true },
-  "daniel rodrigues de farias": { name: "DANDAN", party: "PL", active: true },
-  "davi martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true },
-  "carlos davi de sousa martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true },
-  "carlos davi de souza martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true },
-  "rogerio bueno": { name: "ROGÉRIO BUENO", party: "PV", active: true },
-  "rogerio bernardes bueno": { name: "ROGÉRIO BUENO", party: "PV", active: true },
-  "joaozinho enfermeiro": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true },
-  "joao martins ribeiro": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true },
-  "ze morais": { name: "ZÉ MORAIS", party: "AVANTE", active: true },
-  "jose vicente de morais": { name: "ZÉ MORAIS", party: "AVANTE", active: true },
-  "dudu ottoni": { name: "DUDU OTTONI", party: "AVANTE", active: true },
-  "eduardo benedito ottoni filho": { name: "DUDU OTTONI", party: "AVANTE", active: true },
-  "bruno leandro coletor": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true },
-  "bruno leandro de souza": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true },
-  "pastor faustinho": { name: "PASTOR FAUSTINHO", party: "PSD", active: true },
-  "fausto da silva franca junior": { name: "PASTOR FAUSTINHO", party: "PSD", active: true },
-  "thulyo paiva": { name: "THULYO PAIVA", party: "UNIÃO BRASIL", active: true },
-  "thulyo paiva machado": { name: "THULYO PAIVA", party: "UNIÃO BRASIL", active: true },
-  "cassio chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: true },
-  "cassio mendonca bosque chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: true },
-  "miguel da saude": { name: "MIGUEL DA SAÚDE", party: "PSD", active: true },
-  "miguel jose de lima": { name: "MIGUEL DA SAÚDE", party: "PSD", active: true },
-  "afonso monticeli": { name: "AFONSO MONTICELI", party: "MOBILIZA", active: true },
-  "afonso celso monticeli filho": { name: "AFONSO MONTICELI", party: "MOBILIZA", active: true },
-  // Ex-vereadores (mandatos anteriores) — explícitos para rótulo correto
-  "marquinho da cooperativa": { name: "MARQUINHO DA COOPERATIVA", party: "MOBILIZA", active: false },
-  "marco antonio de souza": { name: "MARQUINHO DA COOPERATIVA", party: "MOBILIZA", active: false },
-  "marco antonio": { name: "MARQUINHO DA COOPERATIVA", party: "MOBILIZA", active: false },
-  "dr lucas": { name: "DR. LUCAS", party: "PRD", active: false },
-  "lucas gabriel ribeiro": { name: "DR. LUCAS", party: "PRD", active: false },
-  "dr guedes": { name: "DR. GUEDES", party: "PRD", active: false },
-  "fernando guedes oliveira": { name: "DR. GUEDES", party: "PRD", active: false },
-  "rodrigo silva naves": { name: "RODRIGO SILVA NAVES", party: "", active: false },
-  "cristovao vilas boas sandi": { name: "CRISTOVÃO SANDI", party: "", active: false },
-  "alberto dias valerio": { name: "ALBERTO DIAS VALÉRIO", party: "", active: false },
-  "carlos roberto rodrigues": { name: "CARLOS ROBERTO RODRIGUES", party: "", active: false },
-  "jose roberto batista": { name: "JOSÉ ROBERTO BATISTA", party: "", active: false },
-  "reginaldo de oliveira tristao": { name: "REGINALDO TRISTÃO", party: "", active: false }
+  "afonso monticeli": { name: "AFONSO MONTICELI", party: "MOBILIZA", active: true, saplId: 159 },
+  "afonso celso monticeli filho": { name: "AFONSO MONTICELI", party: "MOBILIZA", active: true, saplId: 159 },
+  "alexandre prado": { name: "ALEXANDRE PRADO", party: "AVANTE", active: true, saplId: 161 },
+  "ana rios fontoura": { name: "ANA RIOS", party: "UNIÃO BRASIL", active: true, saplId: 162 },
+  "ana rios": { name: "ANA RIOS", party: "UNIÃO BRASIL", active: true, saplId: 162 },
+  "bruno leandro coletor": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true, saplId: 164 },
+  "bruno leandro de souza": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true, saplId: 164 },
+  "cassio chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: true, saplId: 166 },
+  "cassio mendonca bosque chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: true, saplId: 166 },
+  "dandan": { name: "DANDAN", party: "PL", active: true, saplId: 6 },
+  "daniel rodrigues de farias": { name: "DANDAN", party: "PL", active: true, saplId: 6 },
+  "davi martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true, saplId: 163 },
+  "carlos davi de sousa martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true, saplId: 163 },
+  "carlos davi de souza martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true, saplId: 163 },
+  "dudu ottoni": { name: "DUDU OTTONI", party: "AVANTE", active: true, saplId: 9 },
+  "eduardo benedito ottoni filho": { name: "DUDU OTTONI", party: "AVANTE", active: true, saplId: 9 },
+  "joaozinho enfermeiro": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true, saplId: 10 },
+  "joao martins ribeiro": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true, saplId: 10 },
+  "miguel da saude": { name: "MIGUEL DA SAÚDE", party: "PSD", active: true, saplId: 167 },
+  "miguel jose de lima": { name: "MIGUEL DA SAÚDE", party: "PSD", active: true, saplId: 167 },
+  "pastor faustinho": { name: "PASTOR FAUSTINHO", party: "PSD", active: true, saplId: 165 },
+  "fausto da silva franca junior": { name: "PASTOR FAUSTINHO", party: "PSD", active: true, saplId: 165 },
+  "rogerio bueno": { name: "ROGÉRIO BUENO", party: "PV", active: true, saplId: 28 },
+  "rogerio bernardes bueno": { name: "ROGÉRIO BUENO", party: "PV", active: true, saplId: 28 },
+  "thulyo paiva": { name: "THULYO PAIVA", party: "UNIÃO BRASIL", active: true, saplId: 14 },
+  "thulyo paiva machado": { name: "THULYO PAIVA", party: "UNIÃO BRASIL", active: true, saplId: 14 },
+  "ze morais": { name: "ZÉ MORAIS", party: "AVANTE", active: true, saplId: 48 },
+  "jose vicente de morais": { name: "ZÉ MORAIS", party: "AVANTE", active: true, saplId: 48 },
+  "zilda silva": { name: "ZILDA SILVA", party: "PP", active: true, saplId: 15 },
+  "zilda maria da silva": { name: "ZILDA SILVA", party: "PP", active: true, saplId: 15 }
 };
 
 const DEPUTY_PARTIES = {
@@ -164,7 +150,8 @@ function getAuthorMeta(record) {
   const authorKey = normalize(authorLabel);
   
   let party = canonicalPartyLabel(record);
-  let active = true;
+  // Para registros municipais, ausência no cadastro oficial nunca significa "ativo".
+  let active = record.tipo !== "Municipal";
   let role = parliamentaryRole(record.tipo);
   let name = authorLabel;
 
@@ -175,9 +162,6 @@ function getAuthorMeta(record) {
       name = meta.name;
       party = meta.party;
       active = meta.active;
-    } else {
-      // Autor municipal fora da lista dos 15 titulares = ex-vereador (mandato anterior)
-      active = false;
     }
   } else {
     const lookupKey = Object.keys(DEPUTY_PARTIES).find(k => authorKey.includes(k));
@@ -186,7 +170,7 @@ function getAuthorMeta(record) {
     }
   }
 
-  return { name, party, active, role };
+  return { name, party, active, role: authorRole(record) };
 }
 
 function dateToNumber(value) {
@@ -347,19 +331,44 @@ function parliamentaryRole(tipo) {
   return "Parlamentar";
 }
 
-// Senadores por MG nas legislaturas cobertas pelos dados (2015–2026).
-// O dataset CGU não traz o cargo do autor — distinguimos por lista.
-const SENADORES_MG = ["rodrigo pacheco", "antonio anastasia", "carlos viana", "cleitinho", "aecio neves", "zeze perrella"];
+// Mandatos no Senado por MG no período coberto. O ano é o da emenda, não o do pagamento.
+const SENATOR_TERMS_MG = {
+  "aecio neves": [2011, 2018],
+  "antonio anastasia": [2015, 2022],
+  "zeze perrella": [2011, 2018],
+  "rodrigo pacheco": [2019, 2026],
+  "carlos viana": [2019, 2026],
+  "cleitinho": [2023, 2026],
+};
+// Exceções confirmadas em fonte oficial quando a esfera administrativa do
+// documento difere do cargo do autor (ex.: resolução estadual que executa recurso federal).
+const AUTHOR_ROLE_OVERRIDES = {
+  "dimas fabiano": "Dep. Federal",
+  "dimas fabiano toledo junior": "Dep. Federal",
+  "greyce de queiroz elias": "Dep. Federal",
+  "greyce elias": "Dep. Federal",
+  "diego andrade": "Dep. Federal",
+  "lafayette de andrada": "Dep. Federal",
+  "reginaldo lopes": "Dep. Federal",
+  "odair cunha": "Dep. Federal",
+  "nikolas ferreira": "Dep. Federal",
+  "charles evangelista": "Dep. Federal",
+};
 const AUTOR_INSTITUCIONAL = ["bancada", "relator geral", "com. da saude", "comissao", "sem informacao"];
 
 // Cargo REAL do autor de um registro (Senador ≠ Dep. Federal; coletivos à parte)
 function authorRole(record) {
   const a = normalize(record.autor || "");
   if (record.tipo === "Municipal") return "Vereador(a)";
-  if (record.tipo === "Estadual") return "Dep. Estadual";
   if (AUTOR_INSTITUCIONAL.some((t) => a.includes(t))) return "Bancada / Comissão / Relator";
-  if (SENADORES_MG.some((s) => a.includes(s))) return "Senador(a)";
-  return "Dep. Federal";
+  const override = Object.entries(AUTHOR_ROLE_OVERRIDES).find(([name]) => a.includes(name));
+  if (override) return override[1];
+  if (record.tipo === "Estadual") return "Dep. Estadual";
+  const year = Number(amendmentYearsForRecord(record)[0] || 0);
+  const senator = Object.entries(SENATOR_TERMS_MG).find(([name, term]) =>
+    a.includes(name) && year >= term[0] && year <= term[1]
+  );
+  return senator ? "Senador(a)" : "Dep. Federal";
 }
 
 function uniqueCanonical(labelFn) {
@@ -415,9 +424,9 @@ function renderEsferas() {
     .reduce((s, r) => s + Number(r.valor || 0), 0);
   const contaTipo = (t) => allRecords.filter((r) => r.tipo === t).length;
   const esferas = [
-    { tipo: "Federal", nome: "Federal", desc: "Deputados e senadores", cls: "is-federal",
+    { tipo: "Federal", nome: "Federal", desc: "Dados abertos da CGU", cls: "is-federal",
       total: federalTotal, sub: ((window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata && window.EMENDAS_FEDERAIS.metadata.emendasUnicas) || "") + " emendas (CGU)" },
-    { tipo: "Estadual", nome: "Estadual", desc: "Deputados estaduais (ALMG)", cls: "is-estadual",
+    { tipo: "Estadual", nome: "Estadual", desc: "Documentos de execução estadual", cls: "is-estadual",
       total: somaTipo("Estadual"), sub: contaTipo("Estadual") + " emendas" },
     { tipo: "Municipal", nome: "Municipal", desc: "Vereadores de Varginha", cls: "is-municipal",
       total: somaTipo("Municipal"), sub: contaTipo("Municipal") + " emendas" },
@@ -432,6 +441,7 @@ function renderEsferas() {
   box.querySelectorAll(".esfera-card").forEach((btn) => {
     btn.addEventListener("click", () => {
       elements.typeFilter.value = btn.dataset.tipo;
+      state.rankRole = "";
       state.quick = "";
       document.querySelectorAll(".chip.active").forEach((c) => c.classList.remove("active"));
       applyFilters();
@@ -446,10 +456,13 @@ function renderFederalPorTipo() {
   const dados = window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.resumoTipos;
   if (!box || !dados) return;
   const riscoLabel = { alto: "Vigie de perto", medio: "Acompanhe" };
+  const metadata = window.EMENDAS_FEDERAIS.metadata;
+  const sourceDate = (metadata.fonteAtualizadaEm || "").slice(0, 10).split("-").reverse().join("/") || "não informada";
+  const collectedDate = (metadata.coletadoEm || metadata.extraidoEm || "").slice(0, 10).split("-").reverse().join("/") || "não informada";
   box.innerHTML = `
     <div class="fed-tipos__head">
       <h3>Federal em detalhe — por tipo de emenda</h3>
-      <p>Total federal para Varginha: <strong>${moneyFormatter.format(window.EMENDAS_FEDERAIS.metadata.totalFederal)}</strong>. Fonte: Portal da Transparência (CGU) · extraído em ${escapeHtml((window.EMENDAS_FEDERAIS.metadata.extraidoEm || "").split("-").reverse().join("/"))}. Cada valor tem link para conferir na fonte oficial.</p>
+      <p>Total recebido em repasses federais para favorecidos de Varginha: <strong>${moneyFormatter.format(metadata.totalFederal)}</strong>. ${numberFormatter.format(metadata.emendasUnicas || 0)} emendas únicas e ${numberFormatter.format(metadata.repasses || metadata.registros || 0)} repasses. Fonte atualizada em ${escapeHtml(sourceDate)}; coleta realizada em ${escapeHtml(collectedDate)}.</p>
     </div>
     <div class="fed-tipos__grid">
       ${dados.map((t) => `
@@ -459,7 +472,7 @@ function renderFederalPorTipo() {
             <span class="fed-tipo__risco">${riscoLabel[t.risco] || ""}</span>
           </div>
           <strong class="fed-tipo__valor">${moneyFormatter.format(t.total)}</strong>
-          <span class="fed-tipo__flag">${t.itemizado ? "✓ " + t.qtd + " emendas itemizadas na lista" : "resumo — itemização na fonte"}</span>
+          <span class="fed-tipo__flag">${t.itemizado ? `✓ ${numberFormatter.format(t.qtdEmendas || t.qtd)} emendas · ${numberFormatter.format(t.qtdRepasses || t.qtd)} repasses` : "resumo — itemização na fonte"}</span>
           <p class="fed-tipo__exp">${escapeHtml(t.explicacao)}</p>
           ${(t.topBeneficiarios && t.topBeneficiarios.length) ? `
             <div class="fed-tipo__ben">
@@ -480,9 +493,9 @@ function renderFederalPorTipo() {
 
 function setupFilters() {
   fillSelect(elements.typeFilter, uniqueSorted("tipo"), {
-    "Federal": "Deputado Federal / Senador",
-    "Estadual": "Deputado Estadual",
-    "Municipal": "Vereador(a)"
+    "Federal": "Fonte federal (CGU)",
+    "Estadual": "Fonte estadual",
+    "Municipal": "Fonte municipal"
   });
   fillSelect(elements.yearFilter, allYears());
   fillSelect(elements.resourceYearFilter, allResourceYears());
@@ -571,6 +584,7 @@ function applyFilters() {
     const matchesIndividual = !elements.individualFilter.value || record.emendaIndividual === elements.individualFilter.value;
     const matchesMin = Number(record.valor || 0) >= minValue;
     const matchesMax = !maxValue || Number(record.valor || 0) <= maxValue;
+    const matchesRankRole = !state.rankRole || authorRole(record) === state.rankRole;
     return (
       matchesSearch &&
       matchesType &&
@@ -586,6 +600,7 @@ function applyFilters() {
       matchesIndividual &&
       matchesMin &&
       matchesMax &&
+      matchesRankRole &&
       quickMatch(record)
     );
   });
@@ -596,11 +611,13 @@ function applyFilters() {
   render();
 
   // Sincroniza chips do ranking com tipo + cargo (rankRole)
-  const tf = elements.typeFilter.value;
-  let currentCargo = "todos";
-  if (tf === "Municipal") currentCargo = "Vereador";
-  else if (tf === "Estadual") currentCargo = "DepEstadual";
-  else if (tf === "Federal") currentCargo = state.rankRole === "Senador(a)" ? "Senador" : "DepFederal";
+  const roleToCargo = {
+    "Vereador(a)": "Vereador",
+    "Dep. Estadual": "DepEstadual",
+    "Dep. Federal": "DepFederal",
+    "Senador(a)": "Senador",
+  };
+  const currentCargo = roleToCargo[state.rankRole] || "todos";
   document.querySelectorAll("#authorCargoFilters .rank-chip").forEach((c) => {
     c.classList.toggle("active", c.dataset.cargo === currentCargo);
   });
@@ -1043,24 +1060,33 @@ function renderResults() {
       const title = record.beneficiario || "Quem recebeu não informado";
       const object = record.objeto || record.descricao || "Objeto não informado";
       const pdfUrl = fonteOficialUrl(record);
-      const pdfHint = `Confira na fonte oficial a emenda ${record.emenda}, quem recebeu e o valor ${moneyFormatter.format(Number(record.valor || 0))}.`;
+      
+      const pdfHintValue = record.somenteNoBetha ? (record.dadosBetha?.valorBetha || 0) : record.valor;
+      const pdfHint = `Confira na fonte oficial a emenda ${record.emenda}, quem recebeu e o valor ${moneyFormatter.format(Number(pdfHintValue || 0))}.`;
+      
+      const valHtml = record.somenteNoBetha
+        ? `<strong>R$ 0,00</strong>
+           <span style="font-size:0.78em; color:#d63301; font-weight:bold; display:block; margin-top:2px;">Pendente na CGU</span>
+           <span style="font-size:0.78em; color:#1a73e8; font-weight:500; display:block; margin-top:1px;">Prefeitura: ${moneyFormatter.format(Number(record.dadosBetha?.valorBetha || 0))}</span>`
+        : `<strong>${moneyFormatter.format(Number(record.valor || 0))}</strong>`;
+
       return `
         <article class="result-card">
           <div>
             <h3>${escapeHtml(title)}</h3>
             <p>${escapeHtml(object)}</p>
             <div class="tags">
-              <span class="tag ${typeClass(record.tipo)}">${escapeHtml(record.tipo)}</span>
+              <span class="tag ${typeClass(record.tipo)}">Fonte ${escapeHtml(record.tipo)}</span>
               ${record.categoria ? `<span class="tag tag-federal">${escapeHtml(record.categoria)}</span>` : ""}
               <span class="tag">Ano da emenda: ${escapeHtml(amendmentYearsForRecord(record).join(", ") || "Não informado")}</span>
               <span class="tag">Emenda ${escapeHtml(record.emenda)}</span>
-              <span class="tag">${escapeHtml(record.aprovado || "Aprovação não informada")}</span>
+              <span class="tag">${escapeHtml(record.statusFinanceiro || record.aprovado || "Situação não informada")}</span>
               <span class="tag">Individual: ${escapeHtml(record.emendaIndividual || "Não informado")}</span>
             </div>
             ${record.execucao ? `<p class="exec-trail"><span>Execução (CGU):</span> ${escapeHtml(record.execucao)}${record.qtdDocumentos ? ` · ${record.qtdDocumentos} documentos` : ""}</p>` : ""}
           </div>
           <div class="value-box">
-            <strong>${moneyFormatter.format(Number(record.valor || 0))}</strong>
+            ${valHtml}
             <button class="link-button detail-link" data-id="${record.id}" type="button">Ver detalhes</button>
             <a class="link-button" href="${pdfUrl}" target="_blank" rel="noreferrer">Ver na fonte oficial</a>
             <small class="pdf-card-hint">${escapeHtml(pdfHint)}</small>
@@ -1098,18 +1124,70 @@ function openDetails(id, updateUrl = true) {
   const pdfUrl = fonteOficialUrl(record);
   const sourceCount = record.fontes?.length || 1;
   const authorMeta = getAuthorMeta(record);
+
+  let warningBanner = "";
+  if (record.somenteNoBetha) {
+    warningBanner = `
+      <div class="warning-banner" style="background-color: #fff9db; border-left: 4px solid #fcc419; padding: 12px; margin-bottom: 15px; border-radius: 4px; color: #664d03; font-size: 0.95em; line-height: 1.4;">
+        <strong>Pendente na CGU:</strong> Esta emenda foi cadastrada nos sistemas da Prefeitura de Varginha (Betha), mas ainda não possui registro de repasse financeiro pago na base de dados federal (CGU). O valor da CGU é exibido como R$ 0,00 até que o repasse seja oficializado.
+      </div>
+    `;
+  }
+
+  let bethaSection = "";
+  if (record.dadosBetha) {
+    const db = record.dadosBetha;
+    const bethaPdfUrl = db.arquivoUrl ? `./${db.arquivoUrl}` : "";
+    bethaSection = `
+      <div class="betha-execution-section" style="margin-top: 20px; padding-top: 15px; border-top: 2px dashed #e2e8f0;">
+        <h4 style="margin: 0 0 12px 0; color: #1a73e8; font-size: 1.05em; display: flex; align-items: center; gap: 8px;">
+          <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24"><path fill="currentColor" d="M12,3L2,12h3v8h6v-6h2v6h6v-8h3L12,3z"/></svg>
+          Execução Municipal Relacionada (Prefeitura de Varginha)
+        </h4>
+        <div class="detail-grid" style="margin-bottom: 12px;">
+          ${detailItem("Valor Registrado no Município", db.valorBetha ? moneyFormatter.format(Number(db.valorBetha)) : "Não informado")}
+          ${detailItem("Situação / Aprovado", db.aprovado)}
+          ${detailItem("Data do Plano", db.dataPlano)}
+          ${detailItem("Data Disponibilização", db.dataRecurso)}
+          ${detailItem("Prazo Execução", db.prazoExecucao ? `${db.prazoExecucao} meses` : "")}
+          ${detailItem("Responsável Local", db.responsavel)}
+          ${detailItem("Banco Local", db.banco)}
+          ${detailItem("Conta Local", db.conta)}
+        </div>
+        ${db.objeto ? detailItem("Objeto do Plano de Trabalho", db.objeto) : ""}
+        ${bethaPdfUrl ? `
+          <p style="margin-top: 12px;">
+            <a class="button secondary compact" href="${escapeHtml(bethaPdfUrl)}" target="_blank" rel="noreferrer" style="font-size: 0.9em; padding: 6px 12px; display: inline-flex; align-items: center; gap: 6px; border: 1px solid #1a73e8; color: #1a73e8; background: transparent; border-radius: 4px; text-decoration: none;">
+              <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24"><path fill="currentColor" d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/></svg>
+              Ver PDF do Plano de Trabalho (Pág. ${db.pagina})
+            </a>
+          </p>
+        ` : ""}
+      </div>
+    `;
+  }
+
+  const confiraValue = record.somenteNoBetha ? (record.dadosBetha?.valorBetha || 0) : record.valor;
+
   elements.detailBody.innerHTML = `
+    ${warningBanner}
     <div class="pdf-guide detail-guide">
       <strong>Como conferir na fonte oficial:</strong>
-      abra o portal de transparência da fonte e pesquise pelo número da emenda ${escapeHtml(record.emenda)}, pelo nome de quem recebeu (${escapeHtml(record.beneficiario || "—")}) ou pelo valor ${moneyFormatter.format(Number(record.valor || 0))} para confirmar os dados.
+      abra o portal de transparência da fonte e pesquise pelo número da emenda ${escapeHtml(record.emenda)}, pelo nome de quem recebeu (${escapeHtml(record.beneficiario || "—")}) ou pelo valor ${moneyFormatter.format(Number(confiraValue || 0))} para confirmar os dados.
     </div>
     <div class="detail-grid">
-      ${detailItem("Valor", moneyFormatter.format(Number(record.valor || 0)))}
+      ${record.somenteNoBetha
+        ? `
+          ${detailItem("Valor Federal Recebido", "R$ 0,00 (Repasse pendente)")}
+          ${detailItem("Valor Declarado no Município", moneyFormatter.format(Number(record.dadosBetha?.valorBetha || 0)))}
+        `
+        : detailItem("Valor", moneyFormatter.format(Number(record.valor || 0)))
+      }
       ${detailItem("Ano da emenda", amendmentYearsForRecord(record).join(", "))}
       ${detailItem("Ano do recurso", resourceYearsForRecord(record).join(", "))}
       ${detailItem("Anos relacionados", yearsForRecord(record).join(", ") || record.ano)}
       ${detailItem("Órgão", record.orgao)}
-      ${detailItem("Autor", [authorMeta.name, authorMeta.party, record.tipo === "Municipal" ? (authorMeta.active ? "Ativo(a)" : "Inativo(a) / Ex-vereador(a)") : ""].filter(Boolean).join(" · "))}
+      ${detailItem("Autor", [authorMeta.name, authorMeta.role, authorMeta.party, record.tipo === "Municipal" ? (authorMeta.active ? "Ativo(a)" : "Inativo(a) / Ex-vereador(a)") : ""].filter(Boolean).join(" · "))}
       ${detailItem("Quem recebeu", record.beneficiario)}
       ${detailItem("Documento", record.documentoBeneficiario)}
       ${detailItem("Função", record.funcao)}
@@ -1117,14 +1195,18 @@ function openDetails(id, updateUrl = true) {
       ${detailItem("Data do plano", record.dataPlano)}
       ${detailItem("Responsável", record.responsavel)}
       ${detailItem("Prazo de execução", record.prazoExecucao)}
-      ${detailItem("Aprovado", record.aprovado)}
+      ${record.tipo === "Federal"
+        ? detailItem("Situação financeira", record.statusFinanceiro)
+        : detailItem("Aprovado", record.aprovado)}
+      ${record.competenciaPagamento ? detailItem("Competência do repasse", record.competenciaPagamento) : ""}
       ${detailItem("Emenda individual", record.emendaIndividual)}
       ${detailItem("Banco", record.banco)}
       ${detailItem("Conta", record.conta)}
     </div>
     ${detailItem("Objeto", record.objeto)}
     ${detailItem("Descrição", record.descricao)}
-    <p><a class="button primary" href="${pdfUrl}" target="_blank" rel="noreferrer">Abrir na fonte oficial</a></p>
+    ${bethaSection}
+    <p style="margin-top: 15px;"><a class="button primary" href="${pdfUrl}" target="_blank" rel="noreferrer">Abrir na fonte oficial</a></p>
     <p class="muted">Registro consolidado a partir de ${numberFormatter.format(sourceCount)} ocorrência${sourceCount === 1 ? "" : "s"} nos relatórios oficiais.</p>
   `;
 
@@ -1261,6 +1343,7 @@ function setupEvents() {
   ].forEach((element) => {
     element.addEventListener("input", () => {
       if (element === elements.beneficiaryFilter) state.beneficiaryCanonical = "";
+      if (element === elements.typeFilter) state.rankRole = "";
       state.page = 1;
       applyFilters();
     });
@@ -1344,16 +1427,15 @@ function setupEvents() {
 
   // Chips de cargo: Vereador / Dep. Estadual / Dep. Federal / Senador
   const CARGO_MAP = {
-    todos:       { tipo: "",          role: "" },
-    Vereador:    { tipo: "Municipal", role: "" },
-    DepEstadual: { tipo: "Estadual",  role: "" },
-    DepFederal:  { tipo: "Federal",   role: "Dep. Federal" },
-    Senador:     { tipo: "Federal",   role: "Senador(a)" },
+    todos:       { role: "" },
+    Vereador:    { role: "Vereador(a)" },
+    DepEstadual: { role: "Dep. Estadual" },
+    DepFederal:  { role: "Dep. Federal" },
+    Senador:     { role: "Senador(a)" },
   };
   document.querySelectorAll("#authorCargoFilters .rank-chip").forEach((btn) => {
     btn.addEventListener("click", () => {
       const m = CARGO_MAP[btn.dataset.cargo] || CARGO_MAP.todos;
-      elements.typeFilter.value = m.tipo;
       state.rankRole = m.role;
       state.page = 1;
       applyFilters();
