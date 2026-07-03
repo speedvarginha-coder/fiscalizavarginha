@@ -545,6 +545,18 @@ function applyFilters() {
   state.page = Math.min(state.page, getPageCount());
   state.page = Math.max(state.page, 1);
   render();
+
+  // Sincroniza chips do ranking com o filtro de Tipo de cargo
+  const currentCargo = elements.typeFilter.value || "todos";
+  document.querySelectorAll("#authorCargoFilters .rank-chip").forEach((c) => {
+    c.classList.toggle("active", c.dataset.cargo === currentCargo);
+  });
+
+  // Sincroniza chips de categoria
+  const currentCategory = elements.categoryFilter.value || "todos";
+  document.querySelectorAll("#deputyCategoryFilters .rank-chip").forEach((c) => {
+    c.classList.toggle("active", c.dataset.categoria === currentCategory);
+  });
 }
 
 function sortRecords() {
@@ -1265,6 +1277,24 @@ function setupEvents() {
       state.quick = state.quick === selected ? "" : selected;
       state.page = 1;
       document.querySelectorAll(".chip").forEach((item) => item.classList.toggle("active", item.dataset.quick === state.quick));
+      applyFilters();
+    });
+  });
+
+  document.querySelectorAll("#authorCargoFilters .rank-chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const cargo = btn.dataset.cargo;
+      elements.typeFilter.value = cargo === "todos" ? "" : cargo;
+      state.page = 1;
+      applyFilters();
+    });
+  });
+
+  document.querySelectorAll("#deputyCategoryFilters .rank-chip").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const categoria = btn.dataset.categoria;
+      elements.categoryFilter.value = categoria === "todos" ? "" : categoria;
+      state.page = 1;
       applyFilters();
     });
   });

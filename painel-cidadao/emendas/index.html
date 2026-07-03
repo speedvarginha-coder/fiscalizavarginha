@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Emendas municipais, estaduais e federais · Fiscaliza Varginha</title>
     <meta name="description" content="Consulta de emendas municipais, estaduais e federais destinadas a Varginha-MG: quem recebeu, valor, objeto e situação." />
-    <link rel="stylesheet" href="styles.css?v=20260702g" />
+    <link rel="stylesheet" href="styles.css?v=20260703c" />
   </head>
   <body>
     <header class="site-nav">
@@ -222,12 +222,25 @@
             <h2>Quem mais enviou emendas</h2>
             <span id="authorTotal">parlamentares</span>
           </div>
+          <div class="panel-filters" id="authorCargoFilters">
+            <button class="rank-chip active" data-cargo="todos" type="button">Todos</button>
+            <button class="rank-chip" data-cargo="Federal" type="button">Federais</button>
+            <button class="rank-chip" data-cargo="Estadual" type="button">Estaduais</button>
+            <button class="rank-chip" data-cargo="Municipal" type="button">Vereadores</button>
+          </div>
           <div id="authorRanking" class="ranking-list"></div>
         </article>
         <article class="panel">
           <div class="panel-title">
             <h2>Deputados (Federal/Estadual)</h2>
             <span id="deputyTotal">por valor total</span>
+          </div>
+          <div class="panel-filters" id="deputyCategoryFilters">
+            <button class="rank-chip active" data-categoria="todos" type="button">Todos os tipos</button>
+            <button class="rank-chip" data-categoria="Transferência Especial (Pix)" type="button">Transferência Especial (Pix)</button>
+            <button class="rank-chip" data-categoria="Individual com Finalidade Definida" type="button">Individual</button>
+            <button class="rank-chip" data-categoria="Relator" type="button">Relator</button>
+            <button class="rank-chip" data-categoria="Comissão" type="button">Comissão</button>
           </div>
           <div id="deputyRanking" class="ranking-list"></div>
         </article>
@@ -349,8 +362,8 @@
       <div class="site-footer__bottom">Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</div>
     </footer>
 
-    <script src="data/emendas.js?v=20260702e"></script>
-    <script src="data/emendas_federais.js?v=20260702e"></script>
-    <script src="app.js?v=20260702e"></script>
+    <script src="data/emendas.js?v=20260703c"></script>
+    <script src="data/emendas_federais.js?v=20260703c"></script>
+    <script src="app.js?v=20260703c"></script>
   </body>
 </html>

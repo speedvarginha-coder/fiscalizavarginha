@@ -962,3 +962,36 @@ button.flag-card:hover {
   background: #EAF4EC; border-left: 3px solid var(--blue); border-radius: 6px; color: var(--text);
 }
 .exec-trail span { font-weight: 800; color: var(--blue); }
+
+/* Filtros e chips rápidos de ranking */
+.panel-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: 10px;
+}
+.rank-chip {
+  background: #F4F8FC;
+  border: 1px solid #DCE6F0;
+  border-radius: 20px;
+  color: #152131;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  transition: all 0.15s ease;
+  min-height: auto;
+}
+.rank-chip:hover {
+  background: #E6F0FB;
+  border-color: var(--green);
+}
+.rank-chip.active {
+  background: #004B8D;
+  border-color: #004B8D;
+  color: #ffffff;
+}
+
