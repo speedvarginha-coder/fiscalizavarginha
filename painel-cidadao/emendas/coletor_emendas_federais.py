@@ -196,6 +196,95 @@ def enriquecer_pix(regs, tok):
             f"pagamento {pg}" if pg else ""] if x)
         time.sleep(0.3)
 
+def _norm_cod(raw):
+    """Normaliza código p/ casar Betha ('50410002/2025') com CGU ('202550410002')."""
+    s = str(raw or "")
+    parts = s.split("/")
+    num = "".join(c for c in parts[0] if c.isdigit())
+    ano = "".join(c for c in (parts[1] if len(parts) > 1 else "") if c.isdigit())[:4]
+    cands = {num}
+    if ano and num:
+        cands.add(ano + num)
+    if num:
+        cands.add(num.lstrip("0"))
+    return {c for c in cands if c}
+
+
+def cruzar_betha(regs):
+    """Cruza repasses CGU com execução municipal (Betha) por código de emenda.
+    Fonte bruta: '../../Publicidade Emendas/data/emendas.js' (gitignored). Se ausente,
+    PRESERVA o dadosBetha já existente no output (não regride na automação semanal)."""
+    src = os.path.join(AQUI, "..", "..", "Publicidade Emendas", "data", "emendas.js")
+    if not os.path.exists(src):
+        try:
+            t = io.open(FED_JS, encoding="utf-8").read()
+            atual = json.loads(t[t.index("{"):t.rindex("}")+1])["emendas"]
+        except Exception:
+            print("  cruzamento Betha: fonte ausente e sem output anterior — pulando"); return regs
+        db_por_cod, somente = {}, []
+        for e in atual:
+            if e.get("dadosBetha"):
+                for c in _norm_cod(e.get("emenda")):
+                    db_por_cod[c] = e["dadosBetha"]
+            if e.get("somenteNoBetha"):
+                somente.append(e)
+        casados = 0
+        for r in regs:
+            for c in _norm_cod(r.get("emenda")):
+                if c in db_por_cod:
+                    r["dadosBetha"] = db_por_cod[c]; casados += 1; break
+        regs.extend(somente)
+        print(f"  cruzamento Betha (preservado do output): {casados} + {len(somente)} pendentes")
+        return regs
+    t = io.open(src, encoding="utf-8").read()
+    d = json.loads(t[t.index("{"):t.rindex("}")+1])
+    fonte = d.get("emendas", d)
+    betha_fed = [e for e in fonte if e.get("tipo") == "Federal"]
+    cgu_index = {}
+    for r in regs:
+        for c in _norm_cod(r.get("emenda")):
+            cgu_index.setdefault(c, r)
+    casados, somente = 0, []
+    for b in betha_fed:
+        db = {
+            "valorBetha": b.get("valor", 0), "objeto": b.get("objeto", ""),
+            "banco": b.get("banco", ""), "conta": b.get("conta", ""),
+            "dataRecurso": b.get("dataRecurso", ""), "dataPlano": b.get("dataPlano", ""),
+            "responsavel": b.get("responsavel", ""), "prazoExecucao": b.get("prazoExecucao", ""),
+            "aprovado": b.get("aprovado", ""), "arquivoUrl": b.get("arquivoUrl", ""),
+            "pagina": b.get("pagina", ""),
+        }
+        alvo = None
+        for c in _norm_cod(b.get("emenda")):
+            if c in cgu_index:
+                alvo = cgu_index[c]; break
+        if alvo is not None:
+            alvo["dadosBetha"] = db; casados += 1
+        else:
+            ano = (b.get("emenda", "").split("/")[-1] or "")[:4]
+            benef = (b.get("beneficiario", "") or "").strip() or "Não informado (ver plano de trabalho)"
+            obj = (b.get("objeto", "") or "").strip() or "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago — conferir plano de trabalho."
+            somente.append({
+                "tipo": "Federal", "categoria": "Individual com Finalidade Definida",
+                "ano": ano, "emenda": b.get("emenda", ""),
+                "autor": b.get("autor", "") or "Não informado", "partido": "",
+                "valor": 0.0, "valorTexto": "0,00",
+                "beneficiario": benef,
+                "documentoBeneficiario": b.get("documentoBeneficiario", ""),
+                "orgao": benef, "localidade": "VARGINHA",
+                "objeto": obj, "aprovado": b.get("aprovado", ""),
+                "emendaIndividual": "Sim", "somenteNoBetha": True, "dadosBetha": db,
+                "descricao": f"Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: {b.get('beneficiario','')}.",
+                "textoBusca": " ".join(str(x).lower() for x in ["federal betha pendente", b.get("emenda",""), b.get("beneficiario",""), b.get("objeto","")]),
+                "anosRelacionados": [ano] if ano else [],
+                "fonteUrl": CONSULTA,
+                "id": "betha_" + (sorted(_norm_cod(b.get("emenda")))[0] if _norm_cod(b.get("emenda")) else str(len(somente))),
+            })
+    regs.extend(somente)
+    print(f"  cruzamento Betha (fonte bruta): {casados} casados + {len(somente)} somenteNoBetha")
+    return regs
+
+
 def gerar_resumo_tipos(regs):
     from collections import defaultdict
     agg = defaultdict(lambda: {"total": 0.0, "ben": defaultdict(float), "n": 0})
@@ -237,6 +326,8 @@ def main():
     regs = registros_varginha(z, objetos, targets)
     print(f"  {len(regs)} registros federais itemizados ({len(set(r['emenda'] for r in regs))} emendas únicas)")
     enriquecer_pix(regs, token())
+    print("Cruzando com execução municipal (Betha)...")
+    regs = cruzar_betha(regs)
     resumo = gerar_resumo_tipos(regs)
     total = sum(r["valor"] for r in regs)
     out = {

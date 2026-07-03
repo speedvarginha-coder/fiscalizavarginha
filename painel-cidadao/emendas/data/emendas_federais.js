@@ -6,10 +6,9 @@ window.EMENDAS_FEDERAIS = {
     "codigoIbge": "3170701",
     "totalFederal": 23270041.99,
     "totalFederalTexto": "23.270.041,99",
-    "registros": 102,
-    "emendasUnicas": 57,
-    "observacao": "Emendas federais (CGU) cruzadas com execução municipal (Betha) via dadosBetha. somenteNoBetha = cadastradas na prefeitura sem repasse federal pago (valor 0, não inflam total).",
-    "cruzamentoBetha": 21
+    "registros": 103,
+    "emendasUnicas": 63,
+    "observacao": "Cada registro = um favorecido de uma emenda federal recebida em Varginha. Datas de execução (empenho/pagamento) nas Pix via API CGU."
   },
   "resumoTipos": [
     {
@@ -33,7 +32,7 @@ window.EMENDAS_FEDERAIS = {
       "total": 15204090.28,
       "totalTexto": "15.204.090,28",
       "itemizado": true,
-      "qtd": 63,
+      "qtd": 69,
       "risco": "medio",
       "explicacao": "Deputado ou senador indica para um objeto específico. Execução obrigatória.",
       "topBeneficiarios": [
@@ -572,6 +571,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202550410002_15",
       "dadosBetha": {
+        "valorBetha": 450000.0,
         "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ASSISTÊNCIA HOSPITALAR E AMBULATORIAL PARA CUMPRIMENTO DAS METAS - NACIONAL",
         "banco": "104",
         "conta": "5741239214",
@@ -581,11 +581,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 17,
-        "valorBetha": 450000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "",
-        "idBetha": "3bf74942422d0d4b"
+        "pagina": 17
       }
     },
     {
@@ -618,6 +614,7 @@ window.EMENDAS_FEDERAIS = {
       "qtdDocumentos": 127,
       "execucao": "empenho 02/09/2025 · liquidação 08/09/2025 · pagamento 09/09/2025",
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "",
         "banco": "",
         "conta": "",
@@ -627,11 +624,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 6,
-        "valorBetha": 0.0,
-        "autorBetha": "Diego Andrade",
-        "beneficiarioBetha": "",
-        "idBetha": "467e53f8705b49f4"
+        "pagina": 28
       }
     },
     {
@@ -662,6 +655,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202571140001_17",
       "dadosBetha": {
+        "valorBetha": 400000.0,
         "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ASSITÊNCIA HOSPITALAR E AMBULATORIAL",
         "banco": "",
         "conta": "",
@@ -671,11 +665,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 19,
-        "valorBetha": 400000.0,
-        "autorBetha": "Marcelo Henrique Teixeira Dias",
-        "beneficiarioBetha": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-        "idBetha": "9332067490408a51"
+        "pagina": 19
       }
     },
     {
@@ -704,23 +694,7 @@ window.EMENDAS_FEDERAIS = {
         "2025"
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202550410002_18",
-      "dadosBetha": {
-        "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ASSISTÊNCIA HOSPITALAR E AMBULATORIAL PARA CUMPRIMENTO DAS METAS - NACIONAL",
-        "banco": "104",
-        "conta": "5741239214",
-        "dataRecurso": "10/11/2025",
-        "dataPlano": "10/11/2025",
-        "responsavel": "HERON ATAIDE MARTINS",
-        "prazoExecucao": "24",
-        "aprovado": "Não",
-        "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 17,
-        "valorBetha": 450000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "",
-        "idBetha": "3bf74942422d0d4b"
-      }
+      "id": "fed_202550410002_18"
     },
     {
       "tipo": "Federal",
@@ -750,6 +724,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202550410001_19",
       "dadosBetha": {
+        "valorBetha": 200000.0,
         "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ATENÇÃO PRIMÁRIA EM SAÚDE PARA CUMPRIMENTO DAS METAS - NACIONAL",
         "banco": "104",
         "conta": "5739253256",
@@ -759,11 +734,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Sim",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 16,
-        "valorBetha": 200000.0,
-        "autorBetha": "DIEGO LEONARDO DE ANDRADE CARVALHO",
-        "beneficiarioBetha": "SEMUS - SETOR DE ATENCAO BASICAS",
-        "idBetha": "caa03588a4eeaeb7"
+        "pagina": 16
       }
     },
     {
@@ -794,6 +765,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202544390001_20",
       "dadosBetha": {
+        "valorBetha": 472000.0,
         "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ASSISTÊNCIA HOSPITALAR E AMBULATORIAL PARA CUMPRIMENTO DAS METAS - NACIONAL",
         "banco": "104",
         "conta": "5749021870",
@@ -803,11 +775,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 14,
-        "valorBetha": 472000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "HOSPITAL REGIONAL DO SUL DE MINAS",
-        "idBetha": "d885ed6171365974"
+        "pagina": 14
       }
     },
     {
@@ -838,6 +806,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202527590005_21",
       "dadosBetha": {
+        "valorBetha": 300000.0,
         "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ASSISTÊNCIA HOSPITALAR E AMBULATORIAL PARA CUMPRIMENTO DAS METAS - NACIONAL",
         "banco": "104",
         "conta": "0066240271",
@@ -847,11 +816,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 8,
-        "valorBetha": 300000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "HOSPITAL REGIONAL DO SUL DE MINAS",
-        "idBetha": "ab8427ef68b85f8e"
+        "pagina": 8
       }
     },
     {
@@ -882,6 +847,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202571140002_22",
       "dadosBetha": {
+        "valorBetha": 300000.0,
         "objeto": "INCREMENTO AO CUSTEIO DE SERVIÇOS DA ATENÇÃO PRIMÁRIA À SAÚDE",
         "banco": "104",
         "conta": "5741622336",
@@ -891,11 +857,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 21,
-        "valorBetha": 300000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "SEMUS - SETOR DE ATENCAO BASICAS",
-        "idBetha": "c2a924067e56fd9a"
+        "pagina": 21
       }
     },
     {
@@ -924,23 +886,7 @@ window.EMENDAS_FEDERAIS = {
         "2025"
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202550410001_23",
-      "dadosBetha": {
-        "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ATENÇÃO PRIMÁRIA EM SAÚDE PARA CUMPRIMENTO DAS METAS - NACIONAL",
-        "banco": "104",
-        "conta": "5739253256",
-        "dataRecurso": "30/10/2025",
-        "dataPlano": "30/10/2025",
-        "responsavel": "HERON ATAIDE MARTINS",
-        "prazoExecucao": "24",
-        "aprovado": "Sim",
-        "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 16,
-        "valorBetha": 200000.0,
-        "autorBetha": "DIEGO LEONARDO DE ANDRADE CARVALHO",
-        "beneficiarioBetha": "SEMUS - SETOR DE ATENCAO BASICAS",
-        "idBetha": "caa03588a4eeaeb7"
-      }
+      "id": "fed_202550410001_23"
     },
     {
       "tipo": "Federal",
@@ -970,6 +916,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202539760005_24",
       "dadosBetha": {
+        "valorBetha": 650000.0,
         "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ASSISTÊNCIA HOSPITALAR E AMBULATORIAL PARA CUMPRIMENTO DAS METAS - NACIONAL",
         "banco": "104",
         "conta": "0066240255",
@@ -979,11 +926,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 10,
-        "valorBetha": 650000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "HOSPITAL REGIONAL DO SUL DE MINAS",
-        "idBetha": "38d44acae8225801"
+        "pagina": 10
       }
     },
     {
@@ -1014,6 +957,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202541000005_25",
       "dadosBetha": {
+        "valorBetha": 400000.0,
         "objeto": "CUSTEIO DOS SERVIÇOS DE ASSITÊNCIA HOSPITALAR E AMBULATORIAL",
         "banco": "BRASIL",
         "conta": "104734-5",
@@ -1023,11 +967,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 13,
-        "valorBetha": 400000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-        "idBetha": "0136a512478c1f4c"
+        "pagina": 13
       }
     },
     {
@@ -1058,6 +998,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202514070001_26",
       "dadosBetha": {
+        "valorBetha": 507792.0,
         "objeto": "INCREMENTO DA MÉDIA E ALTA COMPLEXIDADE",
         "banco": "104",
         "conta": "0066240280",
@@ -1067,11 +1008,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 4,
-        "valorBetha": 507792.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "HOSPITAL REGIONAL DO SUL DE MINAS",
-        "idBetha": "c5f3163a73a6522c"
+        "pagina": 4
       }
     },
     {
@@ -1102,6 +1039,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202539990006_27",
       "dadosBetha": {
+        "valorBetha": 500000.0,
         "objeto": "INCREMENTO TEMPORARIO AO CUSTEIO DO SERVIÇOS DE ATENÇÃO PRIMARIA EM SAÚDE PARA CUMPRIMENTO DAS METAS - NACIONAL",
         "banco": "104",
         "conta": "0066240247",
@@ -1111,11 +1049,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 11,
-        "valorBetha": 500000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "SEMUS - SETOR DE ATENCAO BASICAS",
-        "idBetha": "0d220d8c63d7e898"
+        "pagina": 11
       }
     },
     {
@@ -1146,6 +1080,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202527540004_28",
       "dadosBetha": {
+        "valorBetha": 100000.0,
         "objeto": "INCREMENTO TEMPORÁRIO AO CUSTEIO DOS SERVIÇOS DE ASSITÊNCIA HOSPITALAR E AMBULATORIAL",
         "banco": "",
         "conta": "",
@@ -1155,11 +1090,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Sim",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 7,
-        "valorBetha": 100000.0,
-        "autorBetha": "DIEGO LEONARDO DE ANDRADE CARVALHO",
-        "beneficiarioBetha": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-        "idBetha": "4293ca27156056b1"
+        "pagina": 7
       }
     },
     {
@@ -1190,6 +1121,7 @@ window.EMENDAS_FEDERAIS = {
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
       "id": "fed_202439600010_29",
       "dadosBetha": {
+        "valorBetha": 469260.0,
         "objeto": "CUSTEIO PARA INCREMENTO DO TETO MAC (MÉDIA E ALTA COMLEXIDADE).",
         "banco": "BRASIL",
         "conta": "",
@@ -1199,11 +1131,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "23",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 9,
-        "valorBetha": 469260.0,
-        "autorBetha": "Frederico De Castro Escaleira",
-        "beneficiarioBetha": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-        "idBetha": "0b8cfc82e7adf6a2"
+        "pagina": 9
       }
     },
     {
@@ -1264,6 +1192,7 @@ window.EMENDAS_FEDERAIS = {
       "qtdDocumentos": 107,
       "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "",
         "banco": "",
         "conta": "",
@@ -1273,11 +1202,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 24,
-        "valorBetha": 0.0,
-        "autorBetha": "Reginaldo Lopes",
-        "beneficiarioBetha": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-        "idBetha": "bebb3ebcc4259577"
+        "pagina": 24
       }
     },
     {
@@ -1310,6 +1235,7 @@ window.EMENDAS_FEDERAIS = {
       "qtdDocumentos": 95,
       "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "",
         "banco": "",
         "conta": "",
@@ -1319,11 +1245,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 27,
-        "valorBetha": 0.0,
-        "autorBetha": "Rafael Simões",
-        "beneficiarioBetha": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-        "idBetha": "8ed59d002b32fbd1"
+        "pagina": 27
       }
     },
     {
@@ -1356,6 +1278,7 @@ window.EMENDAS_FEDERAIS = {
       "qtdDocumentos": 50,
       "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "",
         "banco": "",
         "conta": "",
@@ -1365,11 +1288,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 25,
-        "valorBetha": 0.0,
-        "autorBetha": "Padre João",
-        "beneficiarioBetha": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-        "idBetha": "9449e01be6d355ea"
+        "pagina": 25
       }
     },
     {
@@ -1514,6 +1433,7 @@ window.EMENDAS_FEDERAIS = {
       "qtdDocumentos": 92,
       "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "",
         "banco": "",
         "conta": "",
@@ -1523,11 +1443,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 26,
-        "valorBetha": 0.0,
-        "autorBetha": "Marcelo Álvaro Antônio",
-        "beneficiarioBetha": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-        "idBetha": "cd4cf580724f43ae"
+        "pagina": 26
       }
     },
     {
@@ -1784,6 +1700,7 @@ window.EMENDAS_FEDERAIS = {
       "qtdDocumentos": 65,
       "execucao": "empenho 17/05/2022 · liquidação 28/06/2022 · pagamento 01/07/2022",
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "",
         "banco": "",
         "conta": "",
@@ -1793,11 +1710,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 23,
-        "valorBetha": 0.0,
-        "autorBetha": "Patrus Ananias",
-        "beneficiarioBetha": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-        "idBetha": "d8185c8665b694b2"
+        "pagina": 23
       }
     },
     {
@@ -2390,6 +2303,7 @@ window.EMENDAS_FEDERAIS = {
       "qtdDocumentos": 144,
       "execucao": "empenho 18/05/2020 · liquidação 25/06/2020 · pagamento 26/06/2020",
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "",
         "banco": "",
         "conta": "",
@@ -2399,11 +2313,7 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 22,
-        "valorBetha": 0.0,
-        "autorBetha": "DIMAS FABIANO TOLEDO JUNIOR",
-        "beneficiarioBetha": "",
-        "idBetha": "1c91d5f1abaeacb5"
+        "pagina": 22
       }
     },
     {
@@ -3192,38 +3102,23 @@ window.EMENDAS_FEDERAIS = {
     },
     {
       "tipo": "Federal",
-      "categoria": "Somente Registrado na Prefeitura",
+      "categoria": "Individual com Finalidade Definida",
       "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "competenciaPagamento": "202501",
-      "emenda": "202514070012",
-      "emendaOriginal": "14070012/2025",
+      "emenda": "14070012/2025",
       "autor": "Odair José Da Cunha",
-      "partido": "PT",
+      "partido": "",
       "valor": 0.0,
       "valorTexto": "0,00",
       "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
       "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
+      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
       "localidade": "VARGINHA",
       "objeto": "AQUISIÇÃO DE 01 (UM) GARROTE PNEUMÁTICO ELETRÔNICO, 01 (UM) AGITADOR DE PLAQUETAS E 03 (TRÊS) VENTILADORES PULMONARES PRESSOMÉTRICOS E VOLUMÉTRICOS.",
-      "dataRecurso": "",
-      "statusFinanceiro": "Pendente de repasse na CGU",
-      "aprovado": "",
+      "aprovado": "Não",
       "emendaIndividual": "Sim",
-      "naturezaJuridica": "",
-      "tipoFavorecido": "",
-      "descricao": "Emenda federal cadastrada na prefeitura (Betha). Código: 14070012/2025. Autor: Odair José Da Cunha.",
-      "textoBusca": "federal somente registrado na prefeitura 202514070012 2025 odair josé da cunha fundação hospitalar do município de varginha aquisição de 01 (um) garrote pneumático eletrônico, 01 (um) agitador de plaquetas e 03 (três) ventiladores pulmonares pressométricos e volumétricos.",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202514070012",
-      "fonteDadosUrl": "",
-      "id": "fed_betha_2c35ab843787715240ee",
       "somenteNoBetha": true,
       "dadosBetha": {
+        "valorBetha": 300000.0,
         "objeto": "AQUISIÇÃO DE 01 (UM) GARROTE PNEUMÁTICO ELETRÔNICO, 01 (UM) AGITADOR DE PLAQUETAS E 03 (TRÊS) VENTILADORES PULMONARES PRESSOMÉTRICOS E VOLUMÉTRICOS.",
         "banco": "BRASIL",
         "conta": "",
@@ -3233,47 +3128,35 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "45",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 5,
-        "valorBetha": 300000.0,
-        "autorBetha": "Odair José Da Cunha",
-        "beneficiarioBetha": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-        "idBetha": "60ea2f64ad7a6a48"
-      }
+        "pagina": 5
+      },
+      "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA.",
+      "textoBusca": "federal betha pendente 14070012/2025 fundação hospitalar do município de varginha aquisição de 01 (um) garrote pneumático eletrônico, 01 (um) agitador de plaquetas e 03 (três) ventiladores pulmonares pressométricos e volumétricos.",
+      "anosRelacionados": [
+        "2025"
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "id": "betha_14070012"
     },
     {
       "tipo": "Federal",
-      "categoria": "Somente Registrado na Prefeitura",
+      "categoria": "Individual com Finalidade Definida",
       "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "competenciaPagamento": "202501",
-      "emenda": "8.383",
-      "emendaOriginal": "8.383/2025",
-      "autor": "Autor não identificado",
+      "emenda": "8.383/2025",
+      "autor": "Não informado",
       "partido": "",
       "valor": 0.0,
       "valorTexto": "0,00",
       "beneficiario": "SEMUS - SETOR DE REGULACAO",
       "documentoBeneficiario": "",
-      "orgao": "SECRETARIA MUNICIPAL DE SAÚDE DE VARGINHA",
+      "orgao": "SEMUS - SETOR DE REGULACAO",
       "localidade": "VARGINHA",
       "objeto": "ATENÇÃO À SAÚDE DA POPULAÇÃO PARA PROCEDIMENTOS NO MAC",
-      "dataRecurso": "30/10/2025",
-      "statusFinanceiro": "Pendente de repasse na CGU",
-      "aprovado": "",
+      "aprovado": "Não",
       "emendaIndividual": "Sim",
-      "naturezaJuridica": "",
-      "tipoFavorecido": "",
-      "descricao": "Emenda federal cadastrada na prefeitura (Betha). Código: 8.383/2025. Autor: .",
-      "textoBusca": "federal somente registrado na prefeitura 8.383 2025  semus - setor de regulacao atenção à saúde da população para procedimentos no mac",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=8.383",
-      "fonteDadosUrl": "",
-      "id": "fed_betha_37feecc70f783c9dc53b",
       "somenteNoBetha": true,
       "dadosBetha": {
+        "valorBetha": 250000.0,
         "objeto": "ATENÇÃO À SAÚDE DA POPULAÇÃO PARA PROCEDIMENTOS NO MAC",
         "banco": "104",
         "conta": "0066240204",
@@ -3283,47 +3166,35 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "24",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 2,
-        "valorBetha": 250000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "SEMUS - SETOR DE REGULACAO",
-        "idBetha": "98948a2ecfaf0a3d"
-      }
+        "pagina": 2
+      },
+      "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: SEMUS - SETOR DE REGULACAO.",
+      "textoBusca": "federal betha pendente 8.383/2025 semus - setor de regulacao atenção à saúde da população para procedimentos no mac",
+      "anosRelacionados": [
+        "2025"
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "id": "betha_20258383"
     },
     {
       "tipo": "Federal",
-      "categoria": "Somente Registrado na Prefeitura",
+      "categoria": "Individual com Finalidade Definida",
       "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "competenciaPagamento": "202501",
-      "emenda": "6.916",
-      "emendaOriginal": "6.916/2025",
-      "autor": "Autor não identificado",
+      "emenda": "6.916/2025",
+      "autor": "Não informado",
       "partido": "",
       "valor": 0.0,
       "valorTexto": "0,00",
       "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
       "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
+      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
       "localidade": "VARGINHA",
       "objeto": "Custeio para Quimioterápicos e Agentes Antineoplásicos Padronizados na CONITEC",
-      "dataRecurso": "18/07/2025",
-      "statusFinanceiro": "Pendente de repasse na CGU",
-      "aprovado": "",
-      "emendaIndividual": "Não",
-      "naturezaJuridica": "",
-      "tipoFavorecido": "",
-      "descricao": "Emenda federal cadastrada na prefeitura (Betha). Código: 6.916/2025. Autor: .",
-      "textoBusca": "federal somente registrado na prefeitura 6.916 2025  fundação hospitalar do município de varginha custeio para quimioterápicos e agentes antineoplásicos padronizados na conitec",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=6.916",
-      "fonteDadosUrl": "",
-      "id": "fed_betha_15f7abe4ad9a671dad0b",
+      "aprovado": "Não",
+      "emendaIndividual": "Sim",
       "somenteNoBetha": true,
       "dadosBetha": {
+        "valorBetha": 150000.0,
         "objeto": "Custeio para Quimioterápicos e Agentes Antineoplásicos Padronizados na CONITEC",
         "banco": "",
         "conta": "",
@@ -3333,47 +3204,35 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 1,
-        "valorBetha": 150000.0,
-        "autorBetha": "",
-        "beneficiarioBetha": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-        "idBetha": "3434db021723d411"
-      }
+        "pagina": 1
+      },
+      "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA.",
+      "textoBusca": "federal betha pendente 6.916/2025 fundação hospitalar do município de varginha custeio para quimioterápicos e agentes antineoplásicos padronizados na conitec",
+      "anosRelacionados": [
+        "2025"
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "id": "betha_20256916"
     },
     {
       "tipo": "Federal",
-      "categoria": "Somente Registrado na Prefeitura",
+      "categoria": "Individual com Finalidade Definida",
       "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "competenciaPagamento": "202501",
-      "emenda": "2025050768",
-      "emendaOriginal": "050768/2025",
+      "emenda": "050768/2025",
       "autor": "Greyce Elias",
-      "partido": "AVANTE",
+      "partido": "",
       "valor": 0.0,
       "valorTexto": "0,00",
       "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA",
       "documentoBeneficiario": "18.240.119/0001-05",
       "orgao": "PREFEITURA DO MUNICIPIO DE VARGINHA",
       "localidade": "VARGINHA",
-      "objeto": "Registrado apenas na Prefeitura (Betha). Sem repasses federais identificados na CGU.",
-      "dataRecurso": "",
-      "statusFinanceiro": "Pendente de repasse na CGU",
-      "aprovado": "",
-      "emendaIndividual": "Não",
-      "naturezaJuridica": "",
-      "tipoFavorecido": "",
-      "descricao": "Emenda federal cadastrada na prefeitura (Betha). Código: 050768/2025. Autor: Greyce Elias.",
-      "textoBusca": "federal somente registrado na prefeitura 2025050768 2025 greyce elias prefeitura do municipio de varginha ",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=2025050768",
-      "fonteDadosUrl": "",
-      "id": "fed_betha_234f9650fd8a433a9356",
+      "objeto": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago — conferir plano de trabalho.",
+      "aprovado": "Não",
+      "emendaIndividual": "Sim",
       "somenteNoBetha": true,
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "",
         "banco": "",
         "conta": "",
@@ -3383,47 +3242,73 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "",
         "aprovado": "Não",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 3,
-        "valorBetha": 0.0,
-        "autorBetha": "Greyce Elias",
-        "beneficiarioBetha": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-        "idBetha": "010c867c35774ce3"
-      }
+        "pagina": 3
+      },
+      "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: PREFEITURA DO MUNICIPIO DE VARGINHA.",
+      "textoBusca": "federal betha pendente 050768/2025 prefeitura do municipio de varginha ",
+      "anosRelacionados": [
+        "2025"
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "id": "betha_050768"
     },
     {
       "tipo": "Federal",
-      "categoria": "Somente Registrado na Prefeitura",
+      "categoria": "Individual com Finalidade Definida",
+      "ano": "2754",
+      "emenda": "27540001",
+      "autor": "Diego Andrade",
+      "partido": "",
+      "valor": 0.0,
+      "valorTexto": "0,00",
+      "beneficiario": "Não informado (ver plano de trabalho)",
+      "documentoBeneficiario": "",
+      "orgao": "Não informado (ver plano de trabalho)",
+      "localidade": "VARGINHA",
+      "objeto": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago — conferir plano de trabalho.",
+      "aprovado": "Não",
+      "emendaIndividual": "Sim",
+      "somenteNoBetha": true,
+      "dadosBetha": {
+        "valorBetha": 0.0,
+        "objeto": "",
+        "banco": "",
+        "conta": "",
+        "dataRecurso": "",
+        "dataPlano": "01/01/1800",
+        "responsavel": "",
+        "prazoExecucao": "",
+        "aprovado": "Não",
+        "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
+        "pagina": 6
+      },
+      "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: .",
+      "textoBusca": "federal betha pendente 27540001  ",
+      "anosRelacionados": [
+        "2754"
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "id": "betha_27540001"
+    },
+    {
+      "tipo": "Federal",
+      "categoria": "Individual com Finalidade Definida",
       "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "competenciaPagamento": "202501",
-      "emenda": "202539990010",
-      "emendaOriginal": "39990010/2025",
+      "emenda": "39990010/2025",
       "autor": "DIMAS FABIANO TOLEDO JUNIOR",
-      "partido": "REPUBLICAN",
+      "partido": "",
       "valor": 0.0,
       "valorTexto": "0,00",
       "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "SERETARIA MUNICIPAL DE SAÚDE DE VAGINHA",
+      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "localidade": "VARGINHA",
       "objeto": "Sistema de Vídeo Endoscopia Rígida",
-      "dataRecurso": "",
-      "statusFinanceiro": "Pendente de repasse na CGU",
-      "aprovado": "",
+      "aprovado": "Sim",
       "emendaIndividual": "Sim",
-      "naturezaJuridica": "",
-      "tipoFavorecido": "",
-      "descricao": "Emenda federal cadastrada na prefeitura (Betha). Código: 39990010/2025. Autor: DIMAS FABIANO TOLEDO JUNIOR.",
-      "textoBusca": "federal somente registrado na prefeitura 202539990010 2025 dimas fabiano toledo junior hospital regional do sul de minas sistema de vídeo endoscopia rígida",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202539990010",
-      "fonteDadosUrl": "",
-      "id": "fed_betha_2b67bc0230e1bdc7c24e",
       "somenteNoBetha": true,
       "dadosBetha": {
+        "valorBetha": 0.0,
         "objeto": "Sistema de Vídeo Endoscopia Rígida",
         "banco": "",
         "conta": "",
@@ -3433,12 +3318,15 @@ window.EMENDAS_FEDERAIS = {
         "prazoExecucao": "18",
         "aprovado": "Sim",
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
-        "pagina": 12,
-        "valorBetha": 0.0,
-        "autorBetha": "DIMAS FABIANO TOLEDO JUNIOR",
-        "beneficiarioBetha": "HOSPITAL REGIONAL DO SUL DE MINAS",
-        "idBetha": "e5baa1048615af20"
-      }
+        "pagina": 12
+      },
+      "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: HOSPITAL REGIONAL DO SUL DE MINAS.",
+      "textoBusca": "federal betha pendente 39990010/2025 hospital regional do sul de minas sistema de vídeo endoscopia rígida",
+      "anosRelacionados": [
+        "2025"
+      ],
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "id": "betha_202539990010"
     }
   ]
 };
