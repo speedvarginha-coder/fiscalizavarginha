@@ -91,6 +91,9 @@ function normalize(value) {
     .toLowerCase();
 }
 
+// Os 15 vereadores TITULARES do mandato 2025–2028 (fonte: varginha.mg.leg.br/vereadores).
+// active:true = mandato atual. Quem NÃO está aqui e tem emenda municipal é ex-vereador
+// (mandatos anteriores) e recebe active:false pelo default em getAuthorMeta.
 const LOCAL_COUNCILLORS = {
   "zilda silva": { name: "ZILDA SILVA", party: "PP", active: true },
   "zilda maria da silva": { name: "ZILDA SILVA", party: "PP", active: true },
@@ -99,29 +102,43 @@ const LOCAL_COUNCILLORS = {
   "ana rios": { name: "ANA RIOS", party: "UNIÃO BRASIL", active: true },
   "dandan": { name: "DANDAN", party: "PL", active: true },
   "daniel rodrigues de farias": { name: "DANDAN", party: "PL", active: true },
-  "davi martins": { name: "DAVI MARTINS", party: "PL", active: true },
+  "davi martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true },
+  "carlos davi de sousa martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true },
+  "carlos davi de souza martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true },
   "rogerio bueno": { name: "ROGÉRIO BUENO", party: "PV", active: true },
-  "rogerio bueno machado": { name: "ROGÉRIO BUENO", party: "PV", active: true },
+  "rogerio bernardes bueno": { name: "ROGÉRIO BUENO", party: "PV", active: true },
   "joaozinho enfermeiro": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true },
-  "joao jamil de oliveira": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true },
+  "joao martins ribeiro": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true },
   "ze morais": { name: "ZÉ MORAIS", party: "AVANTE", active: true },
-  "jose morais neto": { name: "ZÉ MORAIS", party: "AVANTE", active: true },
+  "jose vicente de morais": { name: "ZÉ MORAIS", party: "AVANTE", active: true },
   "dudu ottoni": { name: "DUDU OTTONI", party: "AVANTE", active: true },
-  "eduardo ottoni": { name: "DUDU OTTONI", party: "AVANTE", active: true },
+  "eduardo benedito ottoni filho": { name: "DUDU OTTONI", party: "AVANTE", active: true },
   "bruno leandro coletor": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true },
-  "bruno leandro": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true },
+  "bruno leandro de souza": { name: "BRUNO LEANDRO COLETOR", party: "PSDB", active: true },
   "pastor faustinho": { name: "PASTOR FAUSTINHO", party: "PSD", active: true },
-  "faustinho": { name: "PASTOR FAUSTINHO", party: "PSD", active: true },
+  "fausto da silva franca junior": { name: "PASTOR FAUSTINHO", party: "PSD", active: true },
   "thulyo paiva": { name: "THULYO PAIVA", party: "UNIÃO BRASIL", active: true },
   "thulyo paiva machado": { name: "THULYO PAIVA", party: "UNIÃO BRASIL", active: true },
-  "cassio chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: false },
-  "miguel da saude": { name: "MIGUEL DA SAÚDE", party: "PSD", active: false },
-  "miguel jose de lima": { name: "MIGUEL DA SAÚDE", party: "PSD", active: false },
-  "afonso monticeli": { name: "AFONSO MONTICELI", party: "MOBILIZA", active: false },
+  "cassio chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: true },
+  "cassio mendonca bosque chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: true },
+  "miguel da saude": { name: "MIGUEL DA SAÚDE", party: "PSD", active: true },
+  "miguel jose de lima": { name: "MIGUEL DA SAÚDE", party: "PSD", active: true },
+  "afonso monticeli": { name: "AFONSO MONTICELI", party: "MOBILIZA", active: true },
+  "afonso celso monticeli filho": { name: "AFONSO MONTICELI", party: "MOBILIZA", active: true },
+  // Ex-vereadores (mandatos anteriores) — explícitos para rótulo correto
   "marquinho da cooperativa": { name: "MARQUINHO DA COOPERATIVA", party: "MOBILIZA", active: false },
+  "marco antonio de souza": { name: "MARQUINHO DA COOPERATIVA", party: "MOBILIZA", active: false },
   "marco antonio": { name: "MARQUINHO DA COOPERATIVA", party: "MOBILIZA", active: false },
   "dr lucas": { name: "DR. LUCAS", party: "PRD", active: false },
-  "dr guedes": { name: "DR. GUEDES", party: "PRD", active: false }
+  "lucas gabriel ribeiro": { name: "DR. LUCAS", party: "PRD", active: false },
+  "dr guedes": { name: "DR. GUEDES", party: "PRD", active: false },
+  "fernando guedes oliveira": { name: "DR. GUEDES", party: "PRD", active: false },
+  "rodrigo silva naves": { name: "RODRIGO SILVA NAVES", party: "", active: false },
+  "cristovao vilas boas sandi": { name: "CRISTOVÃO SANDI", party: "", active: false },
+  "alberto dias valerio": { name: "ALBERTO DIAS VALÉRIO", party: "", active: false },
+  "carlos roberto rodrigues": { name: "CARLOS ROBERTO RODRIGUES", party: "", active: false },
+  "jose roberto batista": { name: "JOSÉ ROBERTO BATISTA", party: "", active: false },
+  "reginaldo de oliveira tristao": { name: "REGINALDO TRISTÃO", party: "", active: false }
 };
 
 const DEPUTY_PARTIES = {
@@ -158,6 +175,9 @@ function getAuthorMeta(record) {
       name = meta.name;
       party = meta.party;
       active = meta.active;
+    } else {
+      // Autor municipal fora da lista dos 15 titulares = ex-vereador (mandato anterior)
+      active = false;
     }
   } else {
     const lookupKey = Object.keys(DEPUTY_PARTIES).find(k => authorKey.includes(k));
