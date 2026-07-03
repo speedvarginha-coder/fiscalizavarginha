@@ -84,6 +84,11 @@ build/
 _opensquad/_browser_profile/
 _opensquad/_investigations/
 
+# ---- Fonte bruta das emendas (132 MB de PDFs) — NUNCA versionar ----
+# Pasta de trabalho com os PDFs originais das emendas municipais. O portal
+# publicado vive em painel-cidadao/emendas/ (leve). Esta é só a fonte bruta.
+Publicidade Emendas/
+
 # ---- Dados brutos grandes (regeneráveis pelo coletor) ----
 # JSONs em painel-cidadao/data/ (raiz) são staging do coletor e duplicam
 # painel-cidadao/data/chunks/ (única pasta publicada no deploy). Não versionar
