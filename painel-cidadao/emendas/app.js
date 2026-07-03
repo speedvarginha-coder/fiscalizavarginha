@@ -21,6 +21,7 @@ const state = {
   quick: "",
   beneficiaryCanonical: "",
   currentDetailId: "",
+  rankRole: "",           // filtro de cargo dos rankings: "Senador(a)" | "Dep. Federal" | ""
   filtered: [...allRecords],
 };
 
@@ -326,6 +327,21 @@ function parliamentaryRole(tipo) {
   return "Parlamentar";
 }
 
+// Senadores por MG nas legislaturas cobertas pelos dados (2015–2026).
+// O dataset CGU não traz o cargo do autor — distinguimos por lista.
+const SENADORES_MG = ["rodrigo pacheco", "antonio anastasia", "carlos viana", "cleitinho", "aecio neves", "zeze perrella"];
+const AUTOR_INSTITUCIONAL = ["bancada", "relator geral", "com. da saude", "comissao", "sem informacao"];
+
+// Cargo REAL do autor de um registro (Senador ≠ Dep. Federal; coletivos à parte)
+function authorRole(record) {
+  const a = normalize(record.autor || "");
+  if (record.tipo === "Municipal") return "Vereador(a)";
+  if (record.tipo === "Estadual") return "Dep. Estadual";
+  if (AUTOR_INSTITUCIONAL.some((t) => a.includes(t))) return "Bancada / Comissão / Relator";
+  if (SENADORES_MG.some((s) => a.includes(s))) return "Senador(a)";
+  return "Dep. Federal";
+}
+
 function uniqueCanonical(labelFn) {
   return [...new Set(allRecords.map(labelFn).filter(Boolean))].sort((a, b) =>
     a.localeCompare(b, "pt-BR")
@@ -450,6 +466,13 @@ function setupFilters() {
   });
   fillSelect(elements.yearFilter, allYears());
   fillSelect(elements.resourceYearFilter, allResourceYears());
+  // Anos também nos seletores dos rankings
+  ["rankYearAuthor", "rankYearDeputy"].forEach((id) => {
+    const sel = document.querySelector("#" + id);
+    if (sel) allYears().forEach((y) => {
+      const o = document.createElement("option"); o.value = y; o.textContent = y; sel.appendChild(o);
+    });
+  });
   fillSelect(elements.orgFilter, uniqueSorted("orgao"));
 
   const uniqueCategories = [...new Set(allRecords.map(r => r.categoria || "Emenda Impositiva Municipal"))].sort();
@@ -552,8 +575,12 @@ function applyFilters() {
   state.page = Math.max(state.page, 1);
   render();
 
-  // Sincroniza chips do ranking com o filtro de Tipo de cargo
-  const currentCargo = elements.typeFilter.value || "todos";
+  // Sincroniza chips do ranking com tipo + cargo (rankRole)
+  const tf = elements.typeFilter.value;
+  let currentCargo = "todos";
+  if (tf === "Municipal") currentCargo = "Vereador";
+  else if (tf === "Estadual") currentCargo = "DepEstadual";
+  else if (tf === "Federal") currentCargo = state.rankRole === "Senador(a)" ? "Senador" : "DepFederal";
   document.querySelectorAll("#authorCargoFilters .rank-chip").forEach((c) => {
     c.classList.toggle("active", c.dataset.cargo === currentCargo);
   });
@@ -562,6 +589,12 @@ function applyFilters() {
   const currentCategory = elements.categoryFilter.value || "todos";
   document.querySelectorAll("#deputyCategoryFilters .rank-chip").forEach((c) => {
     c.classList.toggle("active", c.dataset.categoria === currentCategory);
+  });
+
+  // Sincroniza selects de ano dos rankings
+  ["rankYearAuthor", "rankYearDeputy"].forEach((id) => {
+    const sel = document.querySelector("#" + id);
+    if (sel && sel.value !== elements.yearFilter.value) sel.value = elements.yearFilter.value;
   });
 }
 
@@ -689,13 +722,14 @@ function isInstitutionalOrGenericAuthor(key) {
 function renderAuthorRanking() {
   const map = new Map();
   state.filtered.forEach((record) => {
+    if (state.rankRole && authorRole(record) !== state.rankRole) return;
     const authorMeta = getAuthorMeta(record);
     const label = authorMeta.name;
     if (!label) return;
     const key = normalize(label);
     if (isInstitutionalOrGenericAuthor(key)) return;
     const entry =
-      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), active: authorMeta.active };
+      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), active: authorMeta.active, role: authorRole(record) };
     entry.count += 1;
     entry.total += Number(record.valor || 0);
     entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
@@ -717,7 +751,7 @@ function renderAuthorRanking() {
   elements.authorRanking.innerHTML = groups
     .map((group, index) => {
       const dominantTipo = [...group.tipos.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
-      const role = parliamentaryRole(dominantTipo);
+      const role = group.role || parliamentaryRole(dominantTipo);
       const party = [...group.partidos].join(", ");
       const statusText = dominantTipo === "Municipal" ? (group.active ? " · Ativo(a)" : " · Inativo(a)") : "";
       return `
@@ -736,13 +770,14 @@ function renderDeputyRanking() {
   const map = new Map();
   state.filtered.forEach((record) => {
     if (record.tipo !== "Federal" && record.tipo !== "Estadual") return;
+    if (state.rankRole && authorRole(record) !== state.rankRole) return;
     const authorMeta = getAuthorMeta(record);
     const label = authorMeta.name;
     if (!label) return;
     const key = normalize(label);
     if (isInstitutionalOrGenericAuthor(key)) return;
     const entry =
-      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set() };
+      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), role: authorRole(record) };
     entry.count += 1;
     entry.total += Number(record.valor || 0);
     entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
@@ -764,7 +799,7 @@ function renderDeputyRanking() {
   elements.deputyRanking.innerHTML = groups
     .map((group, index) => {
       const dominantTipo = [...group.tipos.entries()].sort((a, b) => b[1] - a[1])[0]?.[0];
-      const role = parliamentaryRole(dominantTipo);
+      const role = group.role || parliamentaryRole(dominantTipo);
       const party = [...group.partidos].join(", ");
       return `
         <button class="ranking-item" data-author="${escapeHtml(group.label)}" type="button">
@@ -1287,10 +1322,19 @@ function setupEvents() {
     });
   });
 
+  // Chips de cargo: Vereador / Dep. Estadual / Dep. Federal / Senador
+  const CARGO_MAP = {
+    todos:       { tipo: "",          role: "" },
+    Vereador:    { tipo: "Municipal", role: "" },
+    DepEstadual: { tipo: "Estadual",  role: "" },
+    DepFederal:  { tipo: "Federal",   role: "Dep. Federal" },
+    Senador:     { tipo: "Federal",   role: "Senador(a)" },
+  };
   document.querySelectorAll("#authorCargoFilters .rank-chip").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const cargo = btn.dataset.cargo;
-      elements.typeFilter.value = cargo === "todos" ? "" : cargo;
+      const m = CARGO_MAP[btn.dataset.cargo] || CARGO_MAP.todos;
+      elements.typeFilter.value = m.tipo;
+      state.rankRole = m.role;
       state.page = 1;
       applyFilters();
     });
@@ -1300,6 +1344,17 @@ function setupEvents() {
     btn.addEventListener("click", () => {
       const categoria = btn.dataset.categoria;
       elements.categoryFilter.value = categoria === "todos" ? "" : categoria;
+      state.page = 1;
+      applyFilters();
+    });
+  });
+
+  // Ano nos rankings — espelha o filtro principal de ano da emenda
+  ["rankYearAuthor", "rankYearDeputy"].forEach((id) => {
+    const sel = document.querySelector("#" + id);
+    if (!sel) return;
+    sel.addEventListener("change", () => {
+      elements.yearFilter.value = sel.value;
       state.page = 1;
       applyFilters();
     });

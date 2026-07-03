@@ -1019,3 +1019,9 @@ button.flag-card:hover {
   .quick-filters { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
   .quick-filters .chip { white-space: nowrap; flex: 0 0 auto; }
 }
+
+/* Seletor de ano nos painéis de ranking */
+.rank-year {
+  margin-left: auto; padding: 5px 8px; font-size: .78rem; font-weight: 700;
+  border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--green);
+}
