@@ -221,6 +221,13 @@ try {
     Write-Log "Aviso: registro de assinaturas retornou codigo $recordCode."
   }
 
+  Write-Log "Disparando alertas automatizados para o WhatsApp."
+  try {
+    & python (Join-Path $painel "alertar_whatsapp.py") 2>&1 | ForEach-Object { Write-Log $_ }
+  } catch {
+    Write-Log "Aviso: falha ao enviar alertas do WhatsApp: $_"
+  }
+
   Remove-OldBackups
   Write-Log "Coleta automatica concluida com sucesso."
   exit 0

@@ -46,6 +46,25 @@ Você encontrará o modelo configurável em `private/whatsapp_config.json`. Conf
 
 ---
 
+## 🎯 Como Descobrir o ID do Grupo (JID) usando o seu Link de Convite
+
+Você nos forneceu o link de convite do seu grupo:
+`https://chat.whatsapp.com/ImAaUvQaHgM4WUsHf0SNJc`
+
+O código de convite único do seu grupo é **`ImAaUvQaHgM4WUsHf0SNJc`**. Você pode usar esse código nas APIs de WhatsApp integradas para obter o ID de grupo real (JID) que termina com `@g.us`:
+
+* **Pela Evolution API**:
+  Faça uma requisição `GET` no endpoint da sua instância do Evolution:
+  `GET /group/inviteInfo?inviteCode=ImAaUvQaHgM4WUsHf0SNJc`
+  Ela retornará os metadados do grupo contendo o campo `"id"` (ex: `120363XXXXXXXXXXXX@g.us`). Copie esse ID e cole no campo `"group_id"` do seu `private/whatsapp_config.json`.
+
+* **Pela Z-API**:
+  Faça uma requisição `GET` usando a sua URL da Z-API:
+  `GET /instances/SUA_INSTANCIA/token/SEU_TOKEN/find-group-by-invite-code/ImAaUvQaHgM4WUsHf0SNJc`
+  A resposta retornará o JSON completo com o JID correto do grupo no campo `"id"`.
+
+---
+
 ## 🏃 Como Executar
 
 Após rodar o coletor diário normal do projeto, execute o script de alertas:
