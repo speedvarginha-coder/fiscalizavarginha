@@ -127,3 +127,6 @@ painel-cidadao/encode_deploy.js
 
 # Local Netlify folder
 .netlify
+
+# ---- WhatsApp bridge — chave da API (fora do git) ----
+painel-cidadao/whatsapp-bridge/.apikey

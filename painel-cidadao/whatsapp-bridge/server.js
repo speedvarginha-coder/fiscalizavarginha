@@ -58,7 +58,16 @@ app.use((req, res, next) => {
 });
 
 const PORT = 8080;
-const API_KEY = 'fiscaliza_varginha_secret_key_123';
+// Chave lida de env (WHATSAPP_API_KEY) ou de whatsapp-bridge/.apikey — ambos FORA do git.
+// Fallback antigo só durante a transição; remover quando o .apikey estiver no ar.
+const API_KEY = (() => {
+    if (process.env.WHATSAPP_API_KEY) return process.env.WHATSAPP_API_KEY.trim();
+    try { return fs.readFileSync(path.join(__dirname, '.apikey'), 'utf8').trim(); }
+    catch (e) {
+        console.warn('AVISO: sem WHATSAPP_API_KEY nem .apikey — usando chave de transicao (fraca).');
+        return 'fiscaliza_varginha_secret_key_123';
+    }
+})();
 
 let sock = null;
 let qrCodeDataUrl = null;
@@ -196,9 +205,13 @@ async function connectToWhatsApp() {
 // (Iniciada de forma controlada através da eleição de Master na porta privada)
 
 // API Key Middleware
+// TRANSICAO: aceita a chave forte (API_KEY) e a antiga temporariamente, para não
+// quebrar enquanto o .apikey/config novo não estiver no ar em todos os lados.
+// Depois de tudo migrado, remover 'CHAVE_ANTIGA_TRANSICAO'.
+const CHAVE_ANTIGA_TRANSICAO = 'fiscaliza_varginha_secret_key_123';
 function checkApiKey(req, res, next) {
     const authHeader = req.headers['apikey'];
-    if (authHeader === API_KEY) {
+    if (authHeader === API_KEY || authHeader === CHAVE_ANTIGA_TRANSICAO) {
         return next();
     }
     return res.status(401).json({ error: 'Não autorizado. Chave de API inválida.' });
