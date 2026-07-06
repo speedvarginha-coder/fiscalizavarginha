@@ -84,6 +84,10 @@ build/
 _opensquad/_browser_profile/
 _opensquad/_investigations/
 
+# ---- WhatsApp bridge — credenciais de sessão (chaves Signal) — NUNCA versionar ----
+# Quem tiver esses arquivos controla o WhatsApp conectado.
+painel-cidadao/whatsapp-bridge/auth_info/
+
 # ---- Fonte bruta das emendas (132 MB de PDFs) — NUNCA versionar ----
 # Pasta de trabalho com os PDFs originais das emendas municipais. O portal
 # publicado vive em painel-cidadao/emendas/ (leve). Esta é só a fonte bruta.
