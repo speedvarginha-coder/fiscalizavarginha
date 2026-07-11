@@ -15,6 +15,7 @@ def load(nome):
 
 d = load("emendas.js")
 f = load("emendas_federais.js")
+e_norm = load("emendas_estaduais_normalizadas.js")
 emendas, pix, resumo = d["emendas"], f["emendas"], f["resumoTipos"]
 problemas, avisos = [], []
 
@@ -64,6 +65,23 @@ if dup:
 resid = sum(1 for e in emendas if e.get("tipo") == "Federal")
 if resid:
     problemas.append(f"{resid} 'Federal' residual em emendas.js (esperado 0)")
+
+# 8. camada estadual segura
+estaduais = e_norm["emendas"]
+if len(estaduais) != 30:
+    problemas.append(f"Estaduais normalizadas: {len(estaduais)} registros (esperado 30)")
+if sum(e.get("valorDeclarado") is None for e in estaduais) != 7:
+    problemas.append("Estaduais: esperado 7 valores desconhecidos")
+for e in estaduais:
+    ident = e.get("emenda") or e.get("id")
+    if e.get("classificacaoComprovacao") not in ("confirmado", "parcial", "sem_comprovacao"):
+        problemas.append(f"Estadual {ident}: classificação inválida")
+    if e.get("classificacaoComprovacao") == "sem_comprovacao" and e.get("valorRecebido") is not None:
+        problemas.append(f"Estadual {ident}: sem comprovação incluída no recebido")
+    if e.get("valorDeclarado") is None and e.get("valor") is not None:
+        problemas.append(f"Estadual {ident}: valor desconhecido apresentado como zero")
+    if "esferaDocumento" not in e or "cargoAutor" not in e:
+        problemas.append(f"Estadual {ident}: esfera/cargo não separados")
 
 # avisos de qualidade (não bloqueiam, mas informam)
 avisos.append(f"valor zerado: {sum(1 for e in emendas if not e.get('valor'))}")

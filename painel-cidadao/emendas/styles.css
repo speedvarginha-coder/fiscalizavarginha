@@ -38,6 +38,10 @@ select {
   font: inherit;
 }
 
+.skip-link { background: #fff; color: var(--green); font-weight: 800; left: 12px; padding: 10px 14px; position: fixed; top: -60px; z-index: 100; }
+.skip-link:focus { top: 12px; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #F2C230; outline-offset: 2px; }
+
 .topbar {
   align-items: end;
   background: #004B8D;
@@ -673,9 +677,18 @@ button.flag-card:hover {
   display: grid;
   gap: 8px;
   justify-items: end;
-  max-width: 210px;
-  min-width: 170px;
+  max-width: 340px;
+  min-width: 270px;
 }
+
+.stage-values { display: grid; gap: 5px; width: 100%; }
+.stage-values span { align-items: baseline; display: flex; gap: 12px; justify-content: space-between; }
+.stage-values small { color: var(--muted); }
+.stage-values strong { font-size: .9rem; }
+.tag[class*="evidence-"] { border: 1px solid var(--line); }
+.tag.evidence-confirmado, .tag.evidence-conciliado { background: #eaf4ec; color: #06733d; }
+.tag.evidence-parcial, .tag.evidence-inferido { background: #fff7df; color: #856404; }
+.tag.evidence-sem-comprovacao, .tag.evidence-inconsistente { background: #fbe9e7; color: var(--red); }
 
 .value-box strong {
   font-size: 1.05rem;
@@ -836,6 +849,8 @@ button.flag-card:hover {
     max-width: none;
     min-width: 0;
   }
+
+  .stage-values { max-width: 340px; }
 
   .pdf-card-hint {
     text-align: left;

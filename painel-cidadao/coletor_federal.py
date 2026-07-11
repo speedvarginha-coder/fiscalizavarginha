@@ -20,6 +20,8 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import unicodedata
+from numbers import Real
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -41,11 +43,91 @@ def _to_float(v) -> float:
     """Converte valores monetários brasileiros (1.234,56 ou 1234.56) para float."""
     if v is None or v == "":
         return 0.0
-    s = str(v).replace(".", "").replace(",", ".")
+    if isinstance(v, Real) and not isinstance(v, bool):
+        return float(v)
+    s = str(v).strip().replace("R$", "").replace(" ", "")
+    if "," in s:
+        s = s.replace(".", "").replace(",", ".")
     try:
         return float(s)
     except ValueError:
         return 0.0
+
+
+def _norm(v) -> str:
+    return "".join(
+        c for c in unicodedata.normalize("NFKD", str(v or "")).upper()
+        if not unicodedata.combining(c)
+    ).strip()
+
+
+def _localidade_confirmada(row: dict) -> bool:
+    """Exige evidência explícita de Varginha/MG ou do IBGE no próprio registro."""
+    codigos, municipios, ufs, textos = set(), set(), set(), []
+
+    def visitar(value, key=""):
+        chave = _norm(key).replace("_", "")
+        if isinstance(value, dict):
+            for k, v in value.items():
+                visitar(v, k)
+        elif isinstance(value, list):
+            for item in value:
+                visitar(item, key)
+        else:
+            texto = _norm(value)
+            if not texto:
+                return
+            if "IBGE" in chave or chave in {"CODIGOMUNICIPIO", "CODMUNICIPIO"}:
+                codigos.add("".join(c for c in texto if c.isdigit()))
+            elif "MUNICIP" in chave or "LOCALIDADE" in chave:
+                municipios.add(texto)
+            elif chave in {"UF", "SIGLAUF"} or chave.endswith("UF"):
+                ufs.add(texto)
+            textos.append(texto)
+
+    visitar(row)
+    if IBGE in codigos:
+        return True
+    municipio_ok = any("VARGINHA" in v for v in municipios)
+    uf_ok = "MG" in ufs or any("VARGINHA/MG" in v or "VARGINHA - MG" in v for v in textos)
+    return municipio_ok and uf_ok
+
+
+def _autoria_tipo(tipo) -> str:
+    t = _norm(tipo)
+    for termo, valor in (("INDIVIDUAL", "individual"), ("BANCADA", "bancada"),
+                         ("COMISSAO", "comissao"), ("RELATOR", "relator")):
+        if termo in t:
+            return valor
+    return "desconhecida"
+
+
+def _modalidade(row: dict) -> str:
+    texto = _norm(" ".join(str(row.get(k) or "") for k in
+                           ("tipoEmenda", "modalidade", "tipoTransferencia", "instrumento")))
+    for termos, valor in (
+        (("TRANSFERENCIA ESPECIAL", "PIX"), "especial_pix"),
+        (("FINALIDADE DEFINIDA",), "finalidade_definida"),
+        (("FUNDO A FUNDO",), "fundo_a_fundo"),
+        (("CONVENIO",), "convenio"),
+        (("CONTRATO DE REPASSE",), "contrato_repasse"),
+    ):
+        if any(termo in texto for termo in termos):
+            return valor
+    return "desconhecida"
+
+
+def _campo_confirmado(row: dict, *nomes):
+    for nome in nomes:
+        valor = row.get(nome)
+        if valor not in (None, ""):
+            return str(valor)
+    return None
+
+
+def _situacao_cancelada(situacao) -> bool:
+    s = _norm(situacao)
+    return "CANCELAD" in s or "ANULAD" in s
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
@@ -95,6 +177,8 @@ def _api_get(path: str, params: dict, token: str, timeout: int = 30, max_pages: 
         except Exception as e:
             print(f"  ! Erro em {path}: {e}")
             return out, False, str(e)
+    if pagina > max_pages:
+        return out, False, f"paginação truncada no limite de {max_pages} páginas (partial)"
     return out, True, ""
 
 
@@ -109,20 +193,37 @@ def _coletar_emendas_api(token: str) -> tuple[list[dict], bool, str]:
     print(f"     {len(rows)} registros obtidos")
     out = []
     for r in rows:
-        out.append({
+        if not _localidade_confirmada(r):
+            continue
+        tipo = str(r.get("tipoEmenda", ""))
+        item = {
             "codigo": str(r.get("codigoEmenda", "")),
             "ano": str(r.get("ano", "")),
-            "tipo": str(r.get("tipoEmenda", "")),
+            "tipo": tipo,
             "autor": str(r.get("nomeAutor", "") or r.get("autor", "")),
             "funcao": str(r.get("funcao", "")),
             "subfuncao": str(r.get("subfuncao", "")),
-            "localidade": str(r.get("localidadeDoGasto", MUNICIPIO_LABEL)),
+            "localidade": MUNICIPIO_LABEL,
             "valorEmpenhado": _to_float(r.get("valorEmpenhado")),
             "valorLiquidado": _to_float(r.get("valorLiquidado")),
             "valorPago": _to_float(r.get("valorPago")),
+            "autoria_tipo": _autoria_tipo(tipo),
+            "transferencia_modalidade": _modalidade(r),
+            "destino_confirmado": True,
+            "nivel_confianca": "alto",
+            "granularidade": "emenda_localidade",
             "fonte": "API CGU /emendas",
             "linkFonte": f"https://portaldatransparencia.gov.br/emendas/consulta?codigoEmenda={r.get('codigoEmenda', '')}",
-        })
+        }
+        cargo = _campo_confirmado(r, "cargoAutor", "cargo")
+        uf_autor = _campo_confirmado(r, "ufAutor", "siglaUfAutor")
+        if cargo:
+            item["cargo"] = cargo
+        if uf_autor:
+            item["uf"] = uf_autor
+        out.append(item)
+    if rows and not out:
+        return [], False, "filtro local rejeitou todos os registros sem destino Varginha/MG confirmado (partial)"
     return out, ok, erro
 
 
@@ -135,6 +236,8 @@ def _coletar_convenios(token: str) -> tuple[list[dict], bool, str]:
     print(f"     {len(rows)} registros obtidos")
     out = []
     for r in rows:
+        if not _localidade_confirmada(r):
+            continue
         convenente_raw = r.get("convenente") or {}
         convenente_nome = (
             convenente_raw.get("nome") if isinstance(convenente_raw, dict)
@@ -146,8 +249,10 @@ def _coletar_convenios(token: str) -> tuple[list[dict], bool, str]:
             else str(orgao_raw or "")
         )
         situacao = (r.get("situacao") or {}).get("descricao") if isinstance(r.get("situacao"), dict) else str(r.get("situacao") or "")
+        cancelado = _situacao_cancelada(situacao)
+        identificador = str(r.get("id") or r.get("dimConvenio") or "")
         out.append({
-            "id": str(r.get("id") or r.get("dimConvenio") or ""),
+            "id": identificador,
             "numeroProcesso": str(r.get("numeroProcesso") or ""),
             "orgaoConcedenteNome": str(orgao_nome),
             "convenente": str(convenente_nome),
@@ -156,10 +261,19 @@ def _coletar_convenios(token: str) -> tuple[list[dict], bool, str]:
             "dataFinalVigencia": str(r.get("dataFinalVigencia") or ""),
             "valor": _to_float(r.get("valor")),
             "valorLiberado": _to_float(r.get("valorLiberado")),
+            "valorRecebido": 0.0 if cancelado else _to_float(r.get("valorLiberado")),
             "subfuncao": str(r.get("subfuncao") or ""),
             "fonte": "API CGU /convenios",
-            "linkFonte": f"https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio={IBGE}",
+            "linkFonte": ("https://portaldatransparencia.gov.br/convenios/consulta?" +
+                          urllib.parse.urlencode({"codigoMunicipio": IBGE, "numeroConvenio": identificador})),
+            "transferencia_modalidade": _modalidade({**r, "instrumento": "convenio"}),
+            "destino_confirmado": True,
+            "nivel_confianca": "alto",
+            "granularidade": "convenio",
+            "cancelado_ou_anulado": cancelado,
         })
+    if rows and not out:
+        return [], False, "filtro local rejeitou todos os registros sem destino Varginha/MG confirmado (partial)"
     return out, ok, erro
 
 
@@ -246,9 +360,12 @@ def _load_cnpjs_betha() -> set[str]:
 
 def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]) -> dict:
     total_empenhado = sum(e["valorEmpenhado"] for e in emendas)
+    total_liquidado = sum(e["valorLiquidado"] for e in emendas)
     total_pago = sum(e["valorPago"] for e in emendas)
-    total_convenios = sum(c["valor"] for c in convenios)
-    convenios_ativos = [c for c in convenios if "execuc" in (c.get("situacao") or "").lower() or "vigente" in (c.get("situacao") or "").lower()]
+    validos = [c for c in convenios if not c.get("cancelado_ou_anulado")]
+    total_convenios = sum(c["valor"] for c in validos)
+    total_recebido = sum(c["valorRecebido"] for c in validos)
+    convenios_ativos = [c for c in validos if "EXECUC" in _norm(c.get("situacao")) or "VIGENTE" in _norm(c.get("situacao"))]
 
     return {
         "municipio": "Varginha-MG",
@@ -257,12 +374,14 @@ def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]
         "emendas": {
             "qtd": len(emendas),
             "totalEmpenhado": round(total_empenhado, 2),
+            "totalLiquidado": round(total_liquidado, 2),
             "totalPago": round(total_pago, 2),
         },
         "convenios": {
             "qtd": len(convenios),
             "qtdAtivos": len(convenios_ativos),
             "totalValor": round(total_convenios, 2),
+            "totalRecebido": round(total_recebido, 2),
         },
         "alertasCeis": {
             "qtd": len(alertas_ceis),
@@ -274,8 +393,8 @@ def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]
         ],
         "nota": (
             "Dados obtidos diretamente da API oficial do Portal da Transparência (CGU). "
-            "Valores em Reais. Emenda = pago pelo Governo Federal para Varginha. "
-            "Convênio = acordo específico (obra, equipamento, programa). "
+            "Valores em Reais. Indicação, empenho, liquidação e pagamento são estágios distintos. "
+            "Convênio é acordo específico; valor pactuado e valor liberado são exibidos separadamente. "
             "CEIS = empresa sancionada que recebeu recursos municipais (alerta para conferência)."
         ),
     }
@@ -296,16 +415,39 @@ def coletar() -> dict:
     convenios, convenios_ok, convenios_erro = _coletar_convenios(token)
 
     existente = _fallback(silencioso=True)
-    if (not emendas_ok or (not emendas and existente.get("emendas_api")) or
-            not convenios_ok or (not convenios and existente.get("convenios"))):
-        motivo = "; ".join(x for x in (emendas_erro, convenios_erro) if x) or "coleta vazia com base anterior válida"
-        existente["_preservado"] = True
-        existente["_motivo"] = f"Coleta federal incompleta: {motivo}"
-        existente["status_fontes"] = {
-            "emendas": {"status": "erro" if not emendas_ok else "vazio_suspeito"},
-            "convenios": {"status": "erro" if not convenios_ok else "vazio_suspeito"},
-        }
-        return existente
+    anteriores_emendas = existente.get("emendas_api") or []
+    anteriores_convenios = existente.get("convenios") or []
+    anteriores_emendas_validas = bool(anteriores_emendas) and all(
+        item.get("destino_confirmado") is True for item in anteriores_emendas
+    )
+    anteriores_convenios_validos = bool(anteriores_convenios) and all(
+        item.get("destino_confirmado") is True for item in anteriores_convenios
+    )
+
+    emendas_status = "ok"
+    convenios_status = "ok"
+    if not emendas_ok or not emendas:
+        if anteriores_emendas_validas:
+            emendas = anteriores_emendas
+            emendas_status = "preservado"
+        else:
+            emendas = []
+            emendas_status = "partial" if "partial" in emendas_erro else "erro"
+    if not convenios_ok or not convenios:
+        if anteriores_convenios_validos:
+            convenios = anteriores_convenios
+            convenios_status = "preservado"
+        else:
+            convenios = []
+            convenios_status = "partial" if "partial" in convenios_erro else "erro"
+
+    tinha_dados_emendas = len(anteriores_emendas) > 0
+    if convenios_status in ("erro", "partial") or (emendas_status in ("erro", "partial") and tinha_dados_emendas):
+        raise RuntimeError(
+            f"Falha critica na coleta federal (dados parciais/erro): "
+            f"emendas={emendas_status} (tinha={tinha_dados_emendas}, erro={emendas_erro}), "
+            f"convenios={convenios_status} (erro={convenios_erro})"
+        )
 
     # Cruzamento CEIS apenas com CNPJs reais dos fornecedores Betha
     cnpjs_betha = _load_cnpjs_betha()
@@ -322,8 +464,8 @@ def coletar() -> dict:
         "alertas_ceis": alertas_ceis,
         "sancoes_fornecedores": alertas_ceis,
         "status_fontes": {
-            "emendas": {"status": "ok"},
-            "convenios": {"status": "ok"},
+            "emendas": {"status": emendas_status, "motivo": emendas_erro},
+            "convenios": {"status": convenios_status, "motivo": convenios_erro},
             "ceis": {"status": "ok" if ceis_ok else "preservado", "motivo": ceis_erro},
         },
         "links_auditoria": [

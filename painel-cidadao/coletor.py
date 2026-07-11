@@ -675,7 +675,14 @@ PARLAMENTARES_MONITORADOS = {_norm_txt(n) for n in PARLAMENTARES_DISPLAY}
 def _parse_emenda(ementa: str) -> dict:
     """Extrai campos estruturados de uma ementa de emenda impositiva."""
     def grab(label: str) -> str:
-        m = re.search(rf"{label}\s*:\s*(.+?)(?:\n|$)", ementa, re.IGNORECASE)
+        rotulos = (
+            r"Entidade benefici[áa]ria|CNPJ do recebedor|Munic[íi]pio|Objeto|Valor"
+        )
+        m = re.search(
+            rf"{label}\s*:\s*(.*?)(?=\s*(?:{rotulos})\s*:|\n|$)",
+            ementa,
+            re.IGNORECASE,
+        )
         return m.group(1).strip() if m else ""
 
     valor_raw = grab("Valor")
@@ -993,14 +1000,10 @@ def _processa_pessoal() -> dict:
 
 def _processa_federal() -> dict:
     print("⇣ Federal — recursos da União para Varginha...")
-    try:
-        import coletor_federal
-        payload = coletor_federal.coletar()
-        print(f"  ✓ {len(payload.get('links_auditoria', []))} trilhas de auditoria federais mapeadas")
-        return payload
-    except Exception as e:
-        print(f"  ✗ Federal: {e}")
-        return {"fonte": "Federal", "erro": str(e), "links_auditoria": []}
+    import coletor_federal
+    payload = coletor_federal.coletar()
+    print(f"  ✓ {len(payload.get('links_auditoria', []))} trilhas de auditoria federais mapeadas")
+    return payload
 
 
 def _processa_fontes_emendas_2026() -> dict:

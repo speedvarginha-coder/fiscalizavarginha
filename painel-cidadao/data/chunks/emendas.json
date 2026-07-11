@@ -698,7 +698,7 @@
     "autor": "Zilda Silva",
     "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5006/segmento_065_de_projetodelei57-2025_-_emendas.pdf",
     "beneficiario": "ASSOCIACAO COMUNIDADE TERAPEUTICA DE VARGINHA CTV - CASA DE APOIO DR GILSON BELTRAO",
-    "cnpj": "Município: Varginha, MG",
+    "cnpj": "",
     "municipio": "Varginha, MG",
     "objeto": "Salários e encargos de colaboradores essenciais; Aquisição de material de limpeza e higiene.",
     "valor_brl": 140000.0
@@ -852,7 +852,7 @@
     "autor": "Davi Martins",
     "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5020/segmento_079_de_projetodelei57-2025_-_emendas.pdf",
     "beneficiario": "Associação Eu Escolhi Amar",
-    "cnpj": "Município: Varginha, MG",
+    "cnpj": "",
     "municipio": "Varginha, MG",
     "objeto": "Assegurar a continuidade, qualificação e ampliação das ações de promoção, prevenção, reabilitação, redução de riscos à saúde e garantia de direitos, por meio da manutenção e diversificação dos atendimentos do Projeto Ian, contemplando oficinas terapêuticas e educativas em saúde com enfoque na ciência ABA.",
     "valor_brl": 45000.0
@@ -1523,7 +1523,7 @@
     "autor": "Dudu Ottoni",
     "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5081/segmento_139_de_projetodelei57-2025_-_emendas.pdf",
     "beneficiario": "UPA Francisco Corrêa de Carvalho",
-    "cnpj": "Município: Varginha, MG",
+    "cnpj": "",
     "municipio": "Varginha, MG",
     "objeto": "Aquisição de enxoval para uso hospitalar.",
     "valor_brl": 80000.0
@@ -2339,7 +2339,7 @@
     "beneficiario": "Associação Alegria de Assistência à Criança de Varginha e Região",
     "cnpj": "40.202.736/0001-67",
     "municipio": "Varginha, MG",
-    "objeto": "Valor: R$ 10.000,00",
+    "objeto": "",
     "valor_brl": 10000.0
   },
   {
@@ -2581,7 +2581,7 @@
     "beneficiario": "Associação Levanta-te e Anda",
     "cnpj": "03.045.427/0001-02",
     "municipio": "Varginha, MG",
-    "objeto": "Valor: R$ 15.000,00",
+    "objeto": "",
     "valor_brl": 15000.0
   },
   {
@@ -2592,7 +2592,7 @@
     "beneficiario": "Associação Levanta-te e Anda",
     "cnpj": "03.045.427/0001-02",
     "municipio": "Varginha, MG",
-    "objeto": "Valor: R$ 80.000,00",
+    "objeto": "",
     "valor_brl": 80000.0
   },
   {
@@ -3316,9 +3316,9 @@
     "autor": "Zé Morais",
     "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5244/segmento_303_de_projetodelei57-2025_-_emendas.pdf",
     "beneficiario": "INSTITUTO DE SAUDE, EDUCAÇAO,ESPORTES,CULTURA E TURISMO DO SUL DE MINAS - SEECTUR",
-    "cnpj": "Município: Varginha, MG",
+    "cnpj": "",
     "municipio": "Varginha, MG",
-    "objeto": "Valor: R$ 15.000,00",
+    "objeto": "",
     "valor_brl": 15000.0
   },
   {
@@ -3747,7 +3747,7 @@
     "beneficiario": "Fundação Hospitalar do Município de Varginha",
     "cnpj": "19.110.162/0001-00",
     "municipio": "Varginha, MG",
-    "objeto": "Valor: R$ 100.000,00",
+    "objeto": "",
     "valor_brl": 100000.0
   },
   {
@@ -3780,7 +3780,7 @@
     "beneficiario": "Fundação Hospitalar do Município de Varginha",
     "cnpj": "19.110.162/0001-00",
     "municipio": "Varginha, MG",
-    "objeto": "Valor: R$ 50.000,00",
+    "objeto": "",
     "valor_brl": 50000.0
   },
   {
@@ -3890,7 +3890,7 @@
     "beneficiario": "INSTITUTO DE SAUDE, EDUCAÇAO,ESPORTES,CULTURA E TURISMO DO SUL DE MINAS - SEECTUR",
     "cnpj": "18.240.119/0001-05",
     "municipio": "Varginha, MG",
-    "objeto": "Valor: R$ 10.000,00",
+    "objeto": "",
     "valor_brl": 10000.0
   },
   {

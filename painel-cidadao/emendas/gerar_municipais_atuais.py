@@ -13,9 +13,11 @@ Reprodutível: rode de novo sempre que a coleta atualizar o chunk.
 from __future__ import annotations
 
 import json
+import re
 import sys
 import unicodedata
 from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -39,11 +41,60 @@ def valor_texto(v: float) -> str:
     return f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
+def centavos(value) -> int:
+    try:
+        return int((Decimal(str(value or 0)) * 100).quantize(Decimal("1"), ROUND_HALF_UP))
+    except (InvalidOperation, ValueError):
+        raise ValueError(f"valor inválido: {value!r}")
+
+
+def somente_digitos(value) -> str:
+    return re.sub(r"\D", "", str(value or ""))
+
+
+def cnpj_valido(value) -> bool:
+    digits = somente_digitos(value)
+    if len(digits) != 14 or digits == digits[0] * 14:
+        return False
+    for tamanho in (12, 13):
+        trecho = digits[:tamanho]
+        pesos = list(range(tamanho - 7, 1, -1)) + list(range(9, 1, -1))
+        resto = sum(int(n) * p for n, p in zip(trecho, pesos)) % 11
+        digito = 0 if resto < 2 else 11 - resto
+        if int(digits[tamanho]) != digito:
+            return False
+    return True
+
+
+def fonte_pdf(registro: dict) -> str:
+    url = str(registro.get("pdf") or registro.get("arquivoUrl") or "").strip()
+    if url:
+        return normalize(url)
+    fontes = registro.get("fontes") or []
+    if fontes and isinstance(fontes[0], dict):
+        return normalize(fontes[0].get("arquivoUrl") or fontes[0].get("arquivo"))
+    return ""
+
+
+def chave_forte(registro: dict) -> tuple:
+    numero_ano = str(registro.get("emenda") or "").strip()
+    if not numero_ano:
+        numero = str(registro.get("numero") or "").strip()
+        ano = str(registro.get("ano") or registro.get("anoEmenda") or "").strip()
+        numero_ano = f"{numero.zfill(3)}/{ano}"
+    return (
+        numero_ano,
+        normalize(registro.get("autor")),
+        normalize(registro.get("beneficiario")),
+        somente_digitos(registro.get("cnpj") or registro.get("documentoBeneficiario")),
+        normalize(registro.get("objeto")),
+        centavos(registro.get("valor_brl") if "valor_brl" in registro else registro.get("valor")),
+        fonte_pdf(registro),
+    )
+
+
 def chaves_base_velha() -> set:
-    """(emenda, anoEmenda, valor arredondado) dos municipais já publicados na
-    base de execução (PDFs). A mesma emenda aparece lá com o nome civil do
-    autor e dados bancários; sem este dedup ela contaria em dobro no painel.
-    Números coincidentes com valor diferente são emendas distintas e ficam."""
+    """Chaves completas; coincidência de número/ano/valor não exclui registro."""
     if not BASE_VELHA.exists():
         return set()
     txt = BASE_VELHA.read_text(encoding="utf-8")
@@ -52,7 +103,7 @@ def chaves_base_velha() -> set:
     for r in data.get("emendas", []):
         if r.get("tipo") != "Municipal":
             continue
-        chaves.add((str(r.get("emenda")), str(r.get("anoEmenda")), round(float(r.get("valor") or 0))))
+        chaves.add(chave_forte(r))
     return chaves
 
 
@@ -64,26 +115,43 @@ def main() -> int:
     regs = json.loads(CHUNK.read_text(encoding="utf-8"))
     if isinstance(regs, dict):
         regs = regs.get("emendas") or regs.get("registros") or []
+    if not isinstance(regs, list) or not regs:
+        print("ERRO: chunk vazio ou em formato inesperado; saída preservada")
+        return 1
 
     ja_publicadas = chaves_base_velha()
     puladas = 0
     emendas = []
+    vistas = set()
     for r in regs:
         ano = str(r.get("ano") or "").strip()
         numero = str(r.get("numero") or "").strip()
         autor = str(r.get("autor") or "").strip()
-        valor = float(r.get("valor_brl") or 0)
+        valor_centavos = centavos(r.get("valor_brl"))
+        valor = valor_centavos / 100
         beneficiario = str(r.get("beneficiario") or "").strip()
         cnpj = str(r.get("cnpj") or "").strip()
         objeto = str(r.get("objeto") or "").strip()
         pdf = str(r.get("pdf") or "").strip()
         if not ano or not numero:
-            continue
+            print("ERRO: registro SAPL sem número/ano; saída preservada")
+            return 1
 
         emenda_num = f"{numero.zfill(3)}/{ano}"
-        if (emenda_num, ano, round(valor)) in ja_publicadas:
+        chave = chave_forte(r)
+        if chave in vistas:
             puladas += 1
             continue
+        vistas.add(chave)
+        if chave in ja_publicadas:
+            puladas += 1
+            continue
+        autores = [nome.strip() for nome in autor.split(",") if nome.strip()]
+        status_cnpj = "valido" if cnpj_valido(cnpj) else ("invalido" if cnpj else "ausente")
+        status_pdf = "disponivel" if pdf else "ausente"
+        confianca = "alta" if status_cnpj == "valido" and pdf and all(
+            (autor, beneficiario, objeto, valor_centavos)
+        ) else "media"
         registro = {
             "id": f"MUN-{ano}-{numero.zfill(3)}",
             "tipo": "Municipal",
@@ -101,8 +169,20 @@ def main() -> int:
             "orgao": beneficiario,
             "objeto": objeto,
             "descricao": objeto,
+            "estagio": "indicada/proposta",
+            "financeiro": {"indicado": valor, "pago": None, "recebido": None},
             "aprovado": "",
-            "emendaIndividual": "Sim" if "," not in autor else "Não",
+            "autoria": {"tipo": "individual" if len(autores) == 1 else "coautoria", "autores": autores},
+            "emendaIndividual": "Sim" if len(autores) == 1 else "Não",
+            "cnpjStatus": status_cnpj,
+            "pdfStatus": status_pdf,
+            "confianca": confianca,
+            "proveniencia": {
+                "fonte": "SAPL/Câmara Municipal de Varginha",
+                "chunk": "data/chunks/emendas.json",
+                "pdf": pdf or None,
+                "campos": "ementa e metadados da matéria legislativa",
+            },
             "fontes": ["Câmara Municipal de Varginha (SAPL)"],
             "arquivo": pdf.rsplit("/", 1)[-1] if pdf else "",
             "arquivoUrl": pdf,
@@ -117,6 +197,13 @@ def main() -> int:
         )
         emendas.append(registro)
 
+    if len(emendas) + puladas != len(regs):
+        print("ERRO: nem todos os registros do chunk foram contabilizados; saída preservada")
+        return 1
+    if len(regs) == 357 and len(emendas) != 357:
+        print(f"ERRO: chunk atual tem 357 registros, mas {len(emendas)} seriam publicados; saída preservada")
+        return 1
+
     payload = {
         "metadata": {
             "geradoEm": datetime.now(timezone.utc).isoformat(),
@@ -124,6 +211,12 @@ def main() -> int:
             "legislatura": "20ª (2025-2028)",
             "totalRegistros": len(emendas),
             "valorTotal": round(sum(e["valor"] for e in emendas), 2),
+            "qualidade": {
+                "cnpjValido": sum(e["cnpjStatus"] == "valido" for e in emendas),
+                "cnpjInvalido": sum(e["cnpjStatus"] == "invalido" for e in emendas),
+                "cnpjAusente": sum(e["cnpjStatus"] == "ausente" for e in emendas),
+                "pdfAusente": sum(e["pdfStatus"] == "ausente" for e in emendas),
+            },
         },
         "emendas": emendas,
     }

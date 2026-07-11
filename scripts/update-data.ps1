@@ -15,6 +15,7 @@ $root = Resolve-Path (Join-Path $PSScriptRoot "..")
 $painel = Join-Path $root "painel-cidadao"
 $dataDir = Join-Path $painel "data"
 $dataJs = Join-Path $painel "data.js"
+$emendasDataDir = Join-Path $painel "emendas\data"
 $logDir = Join-Path $root "private\logs"
 $backupRoot = Join-Path $root "private\backups"
 $lockPath = Join-Path $logDir "coleta.lock"
@@ -83,6 +84,9 @@ function New-PublishedDataBackup {
   if (Test-Path $dataJs) {
     Copy-Item -LiteralPath $dataJs -Destination (Join-Path $dest "data.js") -Force
   }
+  if (Test-Path $emendasDataDir) {
+    Copy-Item -LiteralPath $emendasDataDir -Destination (Join-Path $dest "emendas-data") -Recurse -Force
+  }
 
   Write-Log "Backup dos dados publicado em: $dest"
   return $dest
@@ -108,6 +112,9 @@ function Restore-PublishedDataBackup {
     if (Test-Path $dataJs) {
       Copy-Item -LiteralPath $dataJs -Destination (Join-Path $quarentena "data.js") -Force
     }
+    if (Test-Path $emendasDataDir) {
+      Copy-Item -LiteralPath $emendasDataDir -Destination (Join-Path $quarentena "emendas-data") -Recurse -Force
+    }
     Write-Log "Coleta rejeitada preservada em quarentena: $quarentena"
   } catch {
     # Quarentena e melhor-esforco: se falhar, o rollback abaixo continua valendo.
@@ -116,6 +123,7 @@ function Restore-PublishedDataBackup {
 
   $backupData = Join-Path $Backup "data"
   $backupDataJs = Join-Path $Backup "data.js"
+  $backupEmendasData = Join-Path $Backup "emendas-data"
 
   Write-Log "Restaurando dados anteriores a partir do backup."
   if (Test-Path $backupData) {
@@ -126,6 +134,12 @@ function Restore-PublishedDataBackup {
   }
   if (Test-Path $backupDataJs) {
     Copy-Item -LiteralPath $backupDataJs -Destination $dataJs -Force
+  }
+  if (Test-Path $backupEmendasData) {
+    if (Test-Path $emendasDataDir) {
+      Remove-Item -LiteralPath $emendasDataDir -Recurse -Force
+    }
+    Copy-Item -LiteralPath $backupEmendasData -Destination $emendasDataDir -Recurse -Force
   }
 }
 
@@ -247,6 +261,32 @@ try {
       -WorkingDirectory $painel
   }
 
+  Invoke-AndLog `
+    -Label "Regenerando emendas municipais com proveniencia SAPL." `
+    -FilePath "python" `
+    -Arguments @("-u", "gerar_municipais_atuais.py") `
+    -WorkingDirectory (Join-Path $painel "emendas")
+
+  Invoke-AndLog `
+    -Label "Normalizando e auditando emendas estaduais." `
+    -FilePath "python" `
+    -Arguments @("-u", "normalizar_emendas_estaduais.py") `
+    -WorkingDirectory (Join-Path $painel "emendas")
+
+  if ($CollectorMode -eq "Full") {
+    Invoke-AndLog `
+      -Label "Atualizando emendas federais destinadas a Varginha." `
+      -FilePath "python" `
+      -Arguments @("-u", "coletor_emendas_federais.py") `
+      -WorkingDirectory (Join-Path $painel "emendas")
+  }
+
+  Invoke-AndLog `
+    -Label "Auditando consistencia das emendas parlamentares." `
+    -FilePath "python" `
+    -Arguments @("-u", "audit_emendas.py") `
+    -WorkingDirectory (Join-Path $painel "emendas")
+
   Push-Location $root
   try {
     Invoke-AndLog `
@@ -312,12 +352,6 @@ try {
     Pop-Location
   }
 
-  Write-Log "Registrando assinaturas atuais das fontes."
-  $recordCode = Invoke-SourceProbe -Record
-  if ($recordCode -ne 0) {
-    Write-Log "Aviso: registro de assinaturas retornou codigo $recordCode."
-  }
-
   if ($SkipDeploy) {
     Write-Log "Deploy automatico pulado por -SkipDeploy."
   } else {
@@ -333,7 +367,18 @@ try {
     } catch {
       $deployStatus = "FALHA"
       Write-Log "ERRO de deploy: $_"
+      throw $_
     }
+  }
+
+  if ($deployStatus -eq "SUCESSO" -or $SkipDeploy) {
+    Write-Log "Registrando assinaturas atuais das fontes."
+    $recordCode = Invoke-SourceProbe -Record
+    if ($recordCode -ne 0) {
+      Write-Log "Aviso: registro de assinaturas retornou codigo $recordCode."
+    }
+  } else {
+    Write-Log "Assinaturas das fontes NAO registradas devido a falha no deploy. O proximo ciclo tentara novamente."
   }
 
   $collectionStatus = "SUCESSO"

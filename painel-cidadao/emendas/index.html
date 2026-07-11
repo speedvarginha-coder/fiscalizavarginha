@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="styles.css?v=20260708" />
   </head>
   <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header class="site-nav">
       <a href="../index.html" class="site-nav__brand">
         <span class="site-nav__mark">FV</span>
@@ -33,7 +34,7 @@
       <div>
         <p class="eyebrow">Publicidade e transparência · emendas para Varginha</p>
         <h1>Emendas para Varginha</h1>
-        <p class="lead">Consulte emendas municipais, estaduais e federais destinadas a Varginha. <strong>Nos dados federais, uma emenda pode aparecer em vários repasses mensais</strong>; por isso, o portal informa separadamente emendas únicas e repasses recebidos. Os links levam à fonte oficial para conferência.</p>
+        <p class="lead">Consulte indicações e transferências relacionadas a Varginha. O portal separa proposta, empenho, pagamento, recebimento e execução; um registro agregado por emenda e favorecido não é tratado como repasse individual. Confira sempre o estágio e a fonte exibidos.</p>
       </div>
       <div class="source-note">
         <span>Atualizado em</span>
@@ -41,30 +42,38 @@
       </div>
     </header>
 
-    <main class="layout">
-      <section class="summary-grid" aria-label="Resumo das emendas">
+    <main id="conteudo" class="layout">
+      <section class="summary-grid" aria-label="Resumo por estágio financeiro" aria-live="polite">
         <article class="metric">
           <span>Registros encontrados</span>
           <strong id="metricCount">0</strong>
         </article>
         <article class="metric">
-          <span>Valor total</span>
-          <strong id="metricTotal">R$ 0,00</strong>
+          <span>Indicado</span>
+          <strong id="metricIndicated">N/D</strong>
         </article>
         <article class="metric">
-          <span>Quem recebeu</span>
-          <strong id="metricBeneficiaries">0</strong>
+          <span>Empenhado</span>
+          <strong id="metricCommitted">N/D</strong>
         </article>
         <article class="metric">
-          <span>Maior emenda</span>
-          <strong id="metricMax">R$ 0,00</strong>
+          <span>Pago / transferido</span>
+          <strong id="metricPaid">N/D</strong>
+        </article>
+        <article class="metric">
+          <span>Recebido confirmado</span>
+          <strong id="metricReceived">N/D</strong>
+        </article>
+        <article class="metric">
+          <span>Executado</span>
+          <strong id="metricExecuted">N/D</strong>
         </article>
       </section>
 
       <section class="esferas" aria-label="De onde vem o dinheiro">
         <div class="esferas__head">
           <h2>De onde vem o dinheiro das emendas?</h2>
-          <p>Emendas são verbas que parlamentares destinam para a cidade. Elas vêm de três esferas — clique numa para filtrar a lista. Os valores por esfera são o <strong>total recebido</strong> (o federal soma os 5 tipos da CGU); a lista abaixo traz cada emenda itemizada.</p>
+           <p>Emendas são indicações orçamentárias, não pagamentos. Clique numa esfera para filtrar. O valor só aparece quando há <strong>recebimento confirmado</strong>; na ausência dessa comprovação, aparece N/D.</p>
         </div>
         <div id="esferasCards" class="esferas__cards"></div>
         <div id="federalPorTipo" class="fed-tipos"></div>
@@ -73,7 +82,7 @@
       <section class="filters" aria-label="Filtros de consulta">
         <div class="citizen-guide">
           <strong>Para conferir uma emenda, olhe nesta ordem:</strong>
-          <span>quem recebeu, quanto recebeu, para quê o dinheiro foi indicado e se o PDF original confirma a informação.</span>
+          <span><strong>Indicação não é pagamento.</strong> Confira o estágio, quem recebeu, o objeto e a comprovação na fonte oficial.</span>
         </div>
 
         <div class="search-row">
@@ -98,6 +107,24 @@
             <span>Tipo de emenda</span>
             <select id="categoryFilter">
               <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Tipo de autoria</span>
+            <select id="authorshipFilter"><option value="">Todos</option></select>
+          </label>
+          <label class="field">
+            <span>Modalidade</span>
+            <select id="modalityFilter"><option value="">Todas</option></select>
+          </label>
+          <label class="field">
+            <span>Comprovação</span>
+            <select id="evidenceFilter"><option value="">Todas</option></select>
+          </label>
+          <label class="field">
+            <span>Estágio com valor</span>
+            <select id="stageFilter">
+              <option value="">Todos</option><option value="indicado">Indicado</option><option value="empenhado">Empenhado</option><option value="pago">Pago / transferido</option><option value="recebido">Recebido confirmado</option><option value="executado">Executado</option>
             </select>
           </label>
           <label class="field">
@@ -271,6 +298,11 @@
           <div id="deputyRanking" class="ranking-list"></div>
         </article>
         <article class="panel">
+          <div class="panel-title"><h2>Autorias institucionais</h2><span id="institutionalTotal">bancada, comissão e relator</span></div>
+          <p class="panel-note">Ranking separado, sem atribuir autoria coletiva a uma pessoa.</p>
+          <div id="institutionalRanking" class="ranking-list" role="list"></div>
+        </article>
+        <article class="panel">
           <div class="panel-title">
             <h2>Pontos de atenção</h2>
             <span>registros filtrados</span>
@@ -299,6 +331,10 @@
       <section class="results-section" aria-label="Resultados">
         <div class="results-header">
           <div>
+            <dt>Indicação não é pagamento</dt>
+            <dd>Indicar reserva a finalidade no orçamento. O dinheiro só chega após os estágios financeiros correspondentes.</dd>
+          </div>
+          <div>
             <h2>Emendas</h2>
             <p id="resultSummary">0 resultados</p>
           </div>
@@ -312,7 +348,7 @@
           <strong>Como conferir na fonte oficial:</strong>
           o botão "Ver na fonte oficial" abre o portal de transparência da esfera correspondente (Câmara para municipais; Portal Betha para estaduais e federais). Lá, use Ctrl+F e procure pelo número da emenda ou pelo nome de quem recebeu para confirmar o valor e o objeto.
         </aside>
-        <div id="results" class="results"></div>
+        <div id="results" class="results" aria-live="polite" aria-busy="false"></div>
       </section>
 
       <section class="glossary" aria-label="Entenda os termos">
@@ -344,7 +380,7 @@
           </div>
           <div>
             <dt>Valor zerado</dt>
-            <dd>Registro sem valor financeiro informado no relatório; precisa de conferência no PDF.</dd>
+            <dd>Registro cujo valor é desconhecido ou não foi informado; não entra nos totais financeiros até ser comprovado.</dd>
           </div>
           <div>
             <dt>Sem data do recurso</dt>
@@ -354,7 +390,7 @@
       </section>
     </main>
 
-    <dialog id="detailDialog" class="dialog">
+    <dialog id="detailDialog" class="dialog" aria-labelledby="detailTitle">
       <div class="dialog-header">
         <div>
           <p id="detailType" class="eyebrow">Emenda</p>
@@ -389,6 +425,7 @@
     </footer>
 
     <script src="data/emendas.js?v=20260708a"></script>
+    <script src="data/emendas_estaduais_normalizadas.js?v=20260711"></script>
     <script src="data/emendas_municipais_atuais.js?v=20260708a"></script>
     <script src="data/emendas_federais.js?v=20260708a"></script>
     <script src="app.js?v=20260708a"></script>

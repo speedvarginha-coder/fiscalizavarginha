@@ -2,13 +2,13 @@ window.EMENDAS_FEDERAIS = {
   "metadata": {
     "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
     "favorecido": "Favorecidos em Varginha-MG",
-    "extraidoEm": "2026-07-06",
+    "extraidoEm": "2026-07-11",
     "codigoIbge": "3170701",
-    "totalFederal": 23270041.99,
-    "totalFederalTexto": "23.270.041,99",
-    "registros": 103,
-    "emendasUnicas": 63,
-    "observacao": "Cada registro = um favorecido de uma emenda federal recebida em Varginha. Datas de execução (empenho/pagamento) nas Pix via API CGU."
+    "totalFederal": 22595441.99,
+    "totalFederalTexto": "22.595.441,99",
+    "registros": 101,
+    "emendasUnicas": 61,
+    "observacao": "Cada registro é um agregado emenda/favorecido, não um repasse individual. Totais excluem valores não positivos (estornos/anulações). Datas de execução das Pix vêm da API CGU."
   },
   "resumoTipos": [
     {
@@ -29,10 +29,10 @@ window.EMENDAS_FEDERAIS = {
     },
     {
       "categoria": "Individual com Finalidade Definida",
-      "total": 15204090.28,
-      "totalTexto": "15.204.090,28",
+      "total": 14529490.28,
+      "totalTexto": "14.529.490,28",
       "itemizado": true,
-      "qtd": 69,
+      "qtd": 67,
       "risco": "medio",
       "explicacao": "Deputado ou senador indica para um objeto específico. Execução obrigatória.",
       "topBeneficiarios": [
@@ -42,7 +42,7 @@ window.EMENDAS_FEDERAIS = {
         },
         {
           "nome": "MUNICIPIO DE VARGINHA",
-          "valor": 2512307.87
+          "valor": 1837707.87
         },
         {
           "nome": "FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
@@ -141,12 +141,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "comissao",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Comissão. Autor: COM. DA SAUDE. Código 202650410001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal comissão 202650410001 2026 com. da saude fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202650410001",
       "id": "fed_202650410001_0"
     },
     {
@@ -169,12 +176,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: RODRIGO PACHECO. Código 202641400004. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202641400004 2026 rodrigo pacheco fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202641400004",
       "id": "fed_202641400004_1"
     },
     {
@@ -197,14 +211,24 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "especial_pix",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências Especiais. Autor: DIEGO ANDRADE. Código 202627540001. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal transferência especial (pix) 202627540001 2026 diego andrade municipio de varginha encargos especiais · outras transferências · transferencias especiais",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627540001",
       "id": "fed_202627540001_2",
       "qtdDocumentos": 73,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
       "execucao": "empenho 08/05/2026 · liquidação 11/05/2026 · pagamento 12/05/2026"
     },
     {
@@ -227,12 +251,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: ZE SILVA. Código 202627690005. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202627690005 2026 ze silva fundo municipal de saude saúde · atenção básica · incremento temporario ao custeio dos servicos de atencao primaria a saude para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627690005",
       "id": "fed_202627690005_3"
     },
     {
@@ -255,12 +286,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 202627550004. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202627550004 2026 dimas fabiano fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627550004",
       "id": "fed_202627550004_4"
     },
     {
@@ -283,12 +321,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIEGO ANDRADE. Código 202627540004. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202627540004 2026 diego andrade fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627540004",
       "id": "fed_202627540004_5"
     },
     {
@@ -311,12 +356,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EMIDINHO MADEIRA. Código 202639760006. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202639760006 2026 emidinho madeira fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202639760006",
       "id": "fed_202639760006_6"
     },
     {
@@ -339,12 +391,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: NIKOLAS FERREIRA. Código 202644390001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202644390001 2026 nikolas ferreira fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202644390001",
       "id": "fed_202644390001_7"
     },
     {
@@ -367,12 +426,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EROS BIONDINI. Código 202627590011. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202627590011 2026 eros biondini fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627590011",
       "id": "fed_202627590011_8"
     },
     {
@@ -395,12 +461,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "bancada",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Bancada. Autor: BANCADA DE MINAS GERAIS. Código 202671140001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal bancada 202671140001 2026 bancada de minas gerais fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202671140001",
       "id": "fed_202671140001_9"
     },
     {
@@ -423,12 +496,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DUDA SALABERT. Código 202643660023. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202643660023 2026 duda salabert fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202643660023",
       "id": "fed_202643660023_10"
     },
     {
@@ -451,12 +531,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: GILBERTO ABRAMO. Código 202639990001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202639990001 2026 gilberto abramo fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202639990001",
       "id": "fed_202639990001_11"
     },
     {
@@ -479,12 +566,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DELEGADA IONE. Código 202643430007. Favorecido: FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL.",
       "textoBusca": "federal individual com finalidade definida 202643430007 2026 delegada ione fundo municipal de assistencia social assistência social · servicos socioassistenciais · estruturacao da rede de servicos e fortalecimento da gestao do sistema unico de assistencia social (suas)",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202643430007",
       "id": "fed_202643430007_12"
     },
     {
@@ -507,12 +601,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: GREYCE ELIAS. Código 202641000003. Favorecido: FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL.",
       "textoBusca": "federal individual com finalidade definida 202641000003 2026 greyce elias fundo municipal de assistencia social assistência social · servicos socioassistenciais · estruturacao da rede de servicos e fortalecimento da gestao do sistema unico de assistencia social (suas)",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202641000003",
       "id": "fed_202641000003_13"
     },
     {
@@ -535,12 +636,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 202627550003. Favorecido: FUNDO MUNICIPAL DE ASSISTENCIA SOCIAL.",
       "textoBusca": "federal individual com finalidade definida 202627550003 2026 dimas fabiano fundo municipal de assistencia social assistência social · servicos socioassistenciais · estruturacao da rede de servicos e fortalecimento da gestao do sistema unico de assistencia social (suas)",
       "anosRelacionados": [
         "2026"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627550003",
       "id": "fed_202627550003_14"
     },
     {
@@ -563,12 +671,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "comissao",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Comissão. Autor: COM. DA SAUDE. Código 202550410002. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal comissão 202550410002 2025 com. da saude fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202550410002",
       "id": "fed_202550410002_15",
       "dadosBetha": {
         "valorBetha": 450000.0,
@@ -604,14 +719,24 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "especial_pix",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências Especiais. Autor: DIEGO ANDRADE. Código 202527540001. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal transferência especial (pix) 202527540001 2025 diego andrade municipio de varginha encargos especiais · outras transferências · transferencias especiais",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202527540001",
       "id": "fed_202527540001_16",
       "qtdDocumentos": 127,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
       "execucao": "empenho 02/09/2025 · liquidação 08/09/2025 · pagamento 09/09/2025",
       "dadosBetha": {
         "valorBetha": 0.0,
@@ -647,12 +772,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "bancada",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Bancada. Autor: BANCADA DE MINAS GERAIS. Código 202571140001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal bancada 202571140001 2025 bancada de minas gerais fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202571140001",
       "id": "fed_202571140001_17",
       "dadosBetha": {
         "valorBetha": 400000.0,
@@ -688,12 +820,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "comissao",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Comissão. Autor: COM. DA SAUDE. Código 202550410002. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal comissão 202550410002 2025 com. da saude fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202550410002",
       "id": "fed_202550410002_18"
     },
     {
@@ -716,12 +855,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "comissao",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Comissão. Autor: COM. DA SAUDE. Código 202550410001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal comissão 202550410001 2025 com. da saude fundo municipal de saude saúde · atenção básica · incremento temporario ao custeio dos servicos de atencao primaria a saude para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202550410001",
       "id": "fed_202550410001_19",
       "dadosBetha": {
         "valorBetha": 200000.0,
@@ -757,12 +903,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: NIKOLAS FERREIRA. Código 202544390001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202544390001 2025 nikolas ferreira fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202544390001",
       "id": "fed_202544390001_20",
       "dadosBetha": {
         "valorBetha": 472000.0,
@@ -798,12 +951,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EROS BIONDINI. Código 202527590005. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202527590005 2025 eros biondini fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202527590005",
       "id": "fed_202527590005_21",
       "dadosBetha": {
         "valorBetha": 300000.0,
@@ -839,12 +999,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "bancada",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Bancada. Autor: BANCADA DE MINAS GERAIS. Código 202571140002. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal bancada 202571140002 2025 bancada de minas gerais fundo municipal de saude saúde · atenção básica · incremento temporario ao custeio dos servicos de atencao primaria a saude para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202571140002",
       "id": "fed_202571140002_22",
       "dadosBetha": {
         "valorBetha": 300000.0,
@@ -880,12 +1047,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "comissao",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Comissão. Autor: COM. DA SAUDE. Código 202550410001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal comissão 202550410001 2025 com. da saude fundo municipal de saude saúde · atenção básica · incremento temporario ao custeio dos servicos de atencao primaria a saude para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202550410001",
       "id": "fed_202550410001_23"
     },
     {
@@ -908,12 +1082,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EMIDINHO MADEIRA. Código 202539760005. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202539760005 2025 emidinho madeira fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202539760005",
       "id": "fed_202539760005_24",
       "dadosBetha": {
         "valorBetha": 650000.0,
@@ -949,12 +1130,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: GREYCE ELIAS. Código 202541000005. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202541000005 2025 greyce elias fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202541000005",
       "id": "fed_202541000005_25",
       "dadosBetha": {
         "valorBetha": 400000.0,
@@ -990,12 +1178,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: ODAIR CUNHA. Código 202514070001. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202514070001 2025 odair cunha fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202514070001",
       "id": "fed_202514070001_26",
       "dadosBetha": {
         "valorBetha": 507792.0,
@@ -1031,12 +1226,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: GILBERTO ABRAMO. Código 202539990006. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202539990006 2025 gilberto abramo fundo municipal de saude saúde · atenção básica · incremento temporario ao custeio dos servicos de atencao primaria a saude para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202539990006",
       "id": "fed_202539990006_27",
       "dadosBetha": {
         "valorBetha": 500000.0,
@@ -1072,12 +1274,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIEGO ANDRADE. Código 202527540004. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202527540004 2025 diego andrade fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2025"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202527540004",
       "id": "fed_202527540004_28",
       "dadosBetha": {
         "valorBetha": 100000.0,
@@ -1113,12 +1322,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DR. FREDERICO. Código 202439600010. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 202439600010 2024 dr. frederico fundo municipal de saude saúde · assistência hospitalar e ambulatorial · incremento temporario ao custeio dos servicos de assistencia hospitalar e ambulatorial para cumprimento de metas",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202439600010",
       "id": "fed_202439600010_29",
       "dadosBetha": {
         "valorBetha": 469260.0,
@@ -1154,12 +1370,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: CELIA XAKRIABA. Código 202443220004. Favorecido: INSTITUTO NACIONAL DE EDUCACAO, CULTURA E ATIVIDADES PSICOPEDAGOGICAS.",
       "textoBusca": "federal individual com finalidade definida 202443220004 2024 celia xakriaba instituto nacional de educacao, cultura e atividades psicopedagogicas direitos da cidadania · direitos individuais, coletivos e difusos · apoio a implementacao de politicas para quilombolas, comunidades tradicionais de matriz africana, povos de terreiro e ciganos",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202443220004",
       "id": "fed_202443220004_30"
     },
     {
@@ -1182,14 +1405,24 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "especial_pix",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências Especiais. Autor: REGINALDO LOPES. Código 202414110024. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal transferência especial (pix) 202414110024 2024 reginaldo lopes municipio de varginha encargos especiais · outras transferências · transferencias especiais",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202414110024",
       "id": "fed_202414110024_31",
       "qtdDocumentos": 107,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
       "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
         "valorBetha": 0.0,
@@ -1225,14 +1458,24 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "especial_pix",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências Especiais. Autor: RAFAEL SIMOES. Código 202444540004. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal transferência especial (pix) 202444540004 2024 rafael simoes municipio de varginha encargos especiais · outras transferências · transferencias especiais",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202444540004",
       "id": "fed_202444540004_32",
       "qtdDocumentos": 95,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
       "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
         "valorBetha": 0.0,
@@ -1268,14 +1511,24 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "especial_pix",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências Especiais. Autor: PADRE JOAO. Código 202427640015. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal transferência especial (pix) 202427640015 2024 padre joao municipio de varginha encargos especiais · outras transferências · transferencias especiais",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202427640015",
       "id": "fed_202427640015_33",
       "qtdDocumentos": 50,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
       "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
         "valorBetha": 0.0,
@@ -1311,12 +1564,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: ODAIR CUNHA. Código 202414070008. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 202414070008 2024 odair cunha municipio de varginha educação · ensino superior · reestruturacao e modernizacao das instituicoes federais de ensino superior",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202414070008",
       "id": "fed_202414070008_34"
     },
     {
@@ -1339,12 +1599,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: REGINALDO LOPES. Código 202314110006. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 202314110006 2024 reginaldo lopes municipio de varginha educação · ensino superior · reestruturacao e modernizacao das instituicoes federais de ensino superior",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202314110006",
       "id": "fed_202314110006_35"
     },
     {
@@ -1367,12 +1634,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: ODAIR CUNHA. Código 202414070008. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 202414070008 2024 odair cunha municipio de varginha educação · ensino superior · reestruturacao e modernizacao das instituicoes federais de ensino superior",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202414070008",
       "id": "fed_202414070008_36"
     },
     {
@@ -1395,12 +1669,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "bancada",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Bancada. Autor: BANCADA DE MINAS GERAIS. Código 202271140003. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal bancada 202271140003 2024 bancada de minas gerais municipio de varginha educação · ensino superior · apoio a consolidacao, reestruturacao e modernizacao das instituicoes federais de ensino superior",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202271140003",
       "id": "fed_202271140003_37"
     },
     {
@@ -1423,14 +1704,24 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "especial_pix",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências Especiais. Autor: MARCELO ALVARO ANTONIO. Código 202437130005. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal transferência especial (pix) 202437130005 2024 marcelo alvaro antonio municipio de varginha encargos especiais · outras transferências · transferencias especiais",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202437130005",
       "id": "fed_202437130005_38",
       "qtdDocumentos": 92,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
       "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
         "valorBetha": 0.0,
@@ -1466,12 +1757,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000215. Favorecido: HOSPITAL REGIONAL DO SUL DE MINAS.",
       "textoBusca": "federal relator 202081000215 2024 relator geral hospital regional do sul de minas saúde · assistência hospitalar e ambulatorial · múltiplo",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000215",
       "id": "fed_202081000215_39"
     },
     {
@@ -1494,12 +1792,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202181000740. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal relator 202181000740 2024 relator geral municipio de varginha urbanismo · infra-estrutura urbana · múltiplo",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202181000740",
       "id": "fed_202181000740_40"
     },
     {
@@ -1522,12 +1827,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "bancada",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Bancada. Autor: BANCADA DE MINAS GERAIS. Código 202271140003. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal bancada 202271140003 2024 bancada de minas gerais municipio de varginha educação · ensino superior · apoio a consolidacao, reestruturacao e modernizacao das instituicoes federais de ensino superior",
       "anosRelacionados": [
         "2024"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202271140003",
       "id": "fed_202271140003_41"
     },
     {
@@ -1550,12 +1862,19 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: SUBTENENTE GONZAGA. Código 202229940007. Favorecido: FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV.",
       "textoBusca": "federal individual com finalidade definida 202229940007 2023 subtenente gonzaga fundacao hospitalar do municipio de varginha fhomuv saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2023"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202229940007",
       "id": "fed_202229940007_42"
     },
     {
@@ -1578,41 +1897,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: GREYCE ELIAS. Código 202241000002. Favorecido: FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV.",
       "textoBusca": "federal individual com finalidade definida 202241000002 2023 greyce elias fundacao hospitalar do municipio de varginha fhomuv saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2023"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202241000002",
       "id": "fed_202241000002_43"
-    },
-    {
-      "tipo": "Federal",
-      "categoria": "Individual com Finalidade Definida",
-      "ano": "2023",
-      "anoEmenda": "2023",
-      "anoRecurso": "2023",
-      "emenda": "201927920005",
-      "emendaOriginal": "201927920005",
-      "autor": "VITOR PAULO",
-      "partido": "",
-      "valor": 477500.0,
-      "valorTexto": "477.500,00",
-      "beneficiario": "MUNICIPIO DE VARGINHA",
-      "documentoBeneficiario": "18240119000105",
-      "orgao": "MUNICIPIO DE VARGINHA",
-      "localidade": "VARGINHA",
-      "objeto": "Desporto e lazer · Desporto comunitário · IMPLANTACAO E MODERNIZACAO DE INFRAESTRUTURA PARA ESPORTE EDUCACIONAL, RECREATIVO E DE LAZER",
-      "dataRecurso": "",
-      "aprovado": "Sim",
-      "emendaIndividual": "Sim",
-      "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: VITOR PAULO. Código 201927920005. Favorecido: MUNICIPIO DE VARGINHA.",
-      "textoBusca": "federal individual com finalidade definida 201927920005 2023 vitor paulo municipio de varginha desporto e lazer · desporto comunitário · implantacao e modernizacao de infraestrutura para esporte educacional, recreativo e de lazer",
-      "anosRelacionados": [
-        "2023"
-      ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201927920005_44"
     },
     {
       "tipo": "Federal",
@@ -1634,13 +1932,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: GREYCE ELIAS. Código 202241000002. Favorecido: FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV.",
       "textoBusca": "federal individual com finalidade definida 202241000002 2023 greyce elias fundacao hospitalar do municipio de varginha fhomuv saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2023"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202241000002_45"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202241000002",
+      "id": "fed_202241000002_44"
     },
     {
       "tipo": "Federal",
@@ -1662,13 +1967,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: SUBTENENTE GONZAGA. Código 202229940007. Favorecido: FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV.",
       "textoBusca": "federal individual com finalidade definida 202229940007 2023 subtenente gonzaga fundacao hospitalar do municipio de varginha fhomuv saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2023"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202229940007_46"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202229940007",
+      "id": "fed_202229940007_45"
     },
     {
       "tipo": "Federal",
@@ -1690,14 +2002,24 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "especial_pix",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências Especiais. Autor: PATRUS ANANIAS. Código 202214080012. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal transferência especial (pix) 202214080012 2023 patrus ananias municipio de varginha encargos especiais · outras transferências · transferencias especiais",
       "anosRelacionados": [
         "2023"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202214080012_47",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202214080012",
+      "id": "fed_202214080012_46",
       "qtdDocumentos": 65,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
       "execucao": "empenho 17/05/2022 · liquidação 28/06/2022 · pagamento 01/07/2022",
       "dadosBetha": {
         "valorBetha": 0.0,
@@ -1733,13 +2055,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 202127550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 202127550007 2022 dimas fabiano municipio de varginha gestão ambiental · preservação e conservação ambiental · implementacao da agenda nacional de protecao, defesa, bem-estar e direitos animais",
       "anosRelacionados": [
         "2022"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202127550007_48"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202127550007",
+      "id": "fed_202127550007_47"
     },
     {
       "tipo": "Federal",
@@ -1761,13 +2090,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000294. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal relator 202081000294 2022 relator geral municipio de varginha desporto e lazer · desporto comunitário · implantacao e modernizacao de infraestrutura para esporte educacional, recreativo e de lazer",
       "anosRelacionados": [
         "2022"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000294_49"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000294",
+      "id": "fed_202081000294_48"
     },
     {
       "tipo": "Federal",
@@ -1789,13 +2125,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081001557. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal relator 202081001557 2022 relator geral municipio de varginha educação · ensino superior · apoio a consolidacao, reestruturacao e modernizacao das instituicoes federais de ensino superior",
       "anosRelacionados": [
         "2022"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081001557_50"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081001557",
+      "id": "fed_202081001557_49"
     },
     {
       "tipo": "Federal",
@@ -1817,13 +2160,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2022 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2022"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_51"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_50"
     },
     {
       "tipo": "Federal",
@@ -1845,13 +2195,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EROS BIONDINI. Código 201827590004. Favorecido: FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV.",
       "textoBusca": "federal individual com finalidade definida 201827590004 2021 eros biondini fundacao hospitalar do municipio de varginha fhomuv saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2021"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201827590004_52"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201827590004",
+      "id": "fed_201827590004_51"
     },
     {
       "tipo": "Federal",
@@ -1873,13 +2230,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2021 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2021"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_53"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_52"
     },
     {
       "tipo": "Federal",
@@ -1901,13 +2265,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2021 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2021"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_54"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_53"
     },
     {
       "tipo": "Federal",
@@ -1929,13 +2300,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DELEGADO EDSON MOREIRA. Código 201930830006. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201930830006 2021 delegado edson moreira municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2021"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201930830006_55"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201930830006",
+      "id": "fed_201930830006_54"
     },
     {
       "tipo": "Federal",
@@ -1957,13 +2335,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081001557. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal relator 202081001557 2021 relator geral municipio de varginha educação · ensino superior · apoio a consolidacao, reestruturacao e modernizacao das instituicoes federais de ensino superior",
       "anosRelacionados": [
         "2021"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081001557_56"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081001557",
+      "id": "fed_202081001557_55"
     },
     {
       "tipo": "Federal",
@@ -1985,13 +2370,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EROS BIONDINI. Código 201827590004. Favorecido: FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV.",
       "textoBusca": "federal individual com finalidade definida 201827590004 2021 eros biondini fundacao hospitalar do municipio de varginha fhomuv saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2021"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201827590004_57"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201827590004",
+      "id": "fed_201827590004_56"
     },
     {
       "tipo": "Federal",
@@ -2013,13 +2405,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2021 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2021"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_58"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_57"
     },
     {
       "tipo": "Federal",
@@ -2041,13 +2440,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000298. Favorecido: ASSOCIACAO COMUNITARIA DE RECUPERACAO NOVO CAMINHO.",
       "textoBusca": "federal relator 202081000298 2021 relator geral associacao comunitaria de recuperacao novo caminho direitos da cidadania · direitos individuais, coletivos e difusos · reducao da demanda de drogas",
       "anosRelacionados": [
         "2021"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000298_59"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000298",
+      "id": "fed_202081000298_58"
     },
     {
       "tipo": "Federal",
@@ -2069,13 +2475,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000298. Favorecido: ASSOCIACAO COMUNITARIA DE RECUPERACAO NOVO CAMINHO.",
       "textoBusca": "federal relator 202081000298 2020 relator geral associacao comunitaria de recuperacao novo caminho direitos da cidadania · direitos individuais, coletivos e difusos · reducao da demanda de drogas",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000298_60"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000298",
+      "id": "fed_202081000298_59"
     },
     {
       "tipo": "Federal",
@@ -2097,13 +2510,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EROS BIONDINI. Código 201827590004. Favorecido: FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV.",
       "textoBusca": "federal individual com finalidade definida 201827590004 2020 eros biondini fundacao hospitalar do municipio de varginha fhomuv saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201827590004_61"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201827590004",
+      "id": "fed_201827590004_60"
     },
     {
       "tipo": "Federal",
@@ -2125,13 +2545,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EROS BIONDINI. Código 201927590019. Favorecido: FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV.",
       "textoBusca": "federal individual com finalidade definida 201927590019 2020 eros biondini fundacao hospitalar do municipio de varginha fhomuv saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201927590019_62"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201927590019",
+      "id": "fed_201927590019_61"
     },
     {
       "tipo": "Federal",
@@ -2153,13 +2580,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000298. Favorecido: ASSOCIACAO COMUNITARIA DE RECUPERACAO NOVO CAMINHO.",
       "textoBusca": "federal relator 202081000298 2020 relator geral associacao comunitaria de recuperacao novo caminho direitos da cidadania · direitos individuais, coletivos e difusos · reducao da demanda de drogas",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000298_63"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000298",
+      "id": "fed_202081000298_62"
     },
     {
       "tipo": "Federal",
@@ -2181,13 +2615,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000298. Favorecido: ASSOCIACAO COMUNITARIA DE RECUPERACAO NOVO CAMINHO.",
       "textoBusca": "federal relator 202081000298 2020 relator geral associacao comunitaria de recuperacao novo caminho direitos da cidadania · direitos individuais, coletivos e difusos · reducao da demanda de drogas",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000298_64"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000298",
+      "id": "fed_202081000298_63"
     },
     {
       "tipo": "Federal",
@@ -2209,13 +2650,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000298. Favorecido: ASSOCIACAO COMUNITARIA DE RECUPERACAO NOVO CAMINHO.",
       "textoBusca": "federal relator 202081000298 2020 relator geral associacao comunitaria de recuperacao novo caminho direitos da cidadania · direitos individuais, coletivos e difusos · reducao da demanda de drogas",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000298_65"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000298",
+      "id": "fed_202081000298_64"
     },
     {
       "tipo": "Federal",
@@ -2237,13 +2685,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081001503. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal relator 202081001503 2020 relator geral municipio de varginha múltiplo · múltiplo · múltiplo",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081001503_66"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081001503",
+      "id": "fed_202081001503_65"
     },
     {
       "tipo": "Federal",
@@ -2265,13 +2720,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000298. Favorecido: ASSOCIACAO COMUNITARIA DE RECUPERACAO NOVO CAMINHO.",
       "textoBusca": "federal relator 202081000298 2020 relator geral associacao comunitaria de recuperacao novo caminho direitos da cidadania · direitos individuais, coletivos e difusos · reducao da demanda de drogas",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000298_67"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000298",
+      "id": "fed_202081000298_66"
     },
     {
       "tipo": "Federal",
@@ -2293,14 +2755,24 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "especial_pix",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências Especiais. Autor: DIMAS FABIANO. Código 202027550010. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal transferência especial (pix) 202027550010 2020 dimas fabiano municipio de varginha encargos especiais · outras transferências · transferencias especiais",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202027550010_68",
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202027550010",
+      "id": "fed_202027550010_67",
       "qtdDocumentos": 144,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
       "execucao": "empenho 18/05/2020 · liquidação 25/06/2020 · pagamento 26/06/2020",
       "dadosBetha": {
         "valorBetha": 0.0,
@@ -2336,13 +2808,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000298. Favorecido: ASSOCIACAO COMUNITARIA DE RECUPERACAO NOVO CAMINHO.",
       "textoBusca": "federal relator 202081000298 2020 relator geral associacao comunitaria de recuperacao novo caminho direitos da cidadania · direitos individuais, coletivos e difusos · reducao da demanda de drogas",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000298_69"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000298",
+      "id": "fed_202081000298_68"
     },
     {
       "tipo": "Federal",
@@ -2364,13 +2843,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2020 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_70"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_69"
     },
     {
       "tipo": "Federal",
@@ -2392,13 +2878,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000298. Favorecido: ASSOCIACAO COMUNITARIA DE RECUPERACAO NOVO CAMINHO.",
       "textoBusca": "federal relator 202081000298 2020 relator geral associacao comunitaria de recuperacao novo caminho direitos da cidadania · direitos individuais, coletivos e difusos · reducao da demanda de drogas",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000298_71"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000298",
+      "id": "fed_202081000298_70"
     },
     {
       "tipo": "Federal",
@@ -2420,13 +2913,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: RELATOR GERAL. Código 202081000215. Favorecido: HOSPITAL REGIONAL DO SUL DE MINAS.",
       "textoBusca": "federal relator 202081000215 2020 relator geral hospital regional do sul de minas saúde · assistência hospitalar e ambulatorial · múltiplo",
       "anosRelacionados": [
         "2020"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_202081000215_72"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202081000215",
+      "id": "fed_202081000215_71"
     },
     {
       "tipo": "Federal",
@@ -2448,13 +2948,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: SUBTENENTE GONZAGA. Código 201729940012. Favorecido: HOSPITAL REGIONAL DO SUL DE MINAS.",
       "textoBusca": "federal individual com finalidade definida 201729940012 2019 subtenente gonzaga hospital regional do sul de minas saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2019"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201729940012_73"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201729940012",
+      "id": "fed_201729940012_72"
     },
     {
       "tipo": "Federal",
@@ -2476,13 +2983,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2019 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2019"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_74"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_73"
     },
     {
       "tipo": "Federal",
@@ -2504,13 +3018,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2019 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2019"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_75"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_74"
     },
     {
       "tipo": "Federal",
@@ -2532,13 +3053,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2019 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2019"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_76"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_75"
     },
     {
       "tipo": "Federal",
@@ -2560,13 +3088,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2019 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2019"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_77"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_76"
     },
     {
       "tipo": "Federal",
@@ -2588,13 +3123,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2018 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2018"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_78"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_77"
     },
     {
       "tipo": "Federal",
@@ -2616,13 +3158,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2018 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2018"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_79"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_78"
     },
     {
       "tipo": "Federal",
@@ -2644,13 +3193,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550007. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201627550007 2018 dimas fabiano municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2018"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550007_80"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550007",
+      "id": "fed_201627550007_79"
     },
     {
       "tipo": "Federal",
@@ -2672,13 +3228,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2018 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2018"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_81"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_80"
     },
     {
       "tipo": "Federal",
@@ -2700,13 +3263,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2018 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2018"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_82"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_81"
     },
     {
       "tipo": "Federal",
@@ -2728,41 +3298,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2017 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2017"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_83"
-    },
-    {
-      "tipo": "Federal",
-      "categoria": "Individual com Finalidade Definida",
-      "ano": "2017",
-      "anoEmenda": "2017",
-      "anoRecurso": "2017",
-      "emenda": "201629240025",
-      "emendaOriginal": "201629240025",
-      "autor": "STEFANO AGUIAR",
-      "partido": "",
-      "valor": 197100.0,
-      "valorTexto": "197.100,00",
-      "beneficiario": "MUNICIPIO DE VARGINHA",
-      "documentoBeneficiario": "18240119000105",
-      "orgao": "MUNICIPIO DE VARGINHA",
-      "localidade": "VARGINHA",
-      "objeto": "Urbanismo · infra-estrutura urbana · APOIO A POLITICA NACIONAL DE DESENVOLVIMENTO URBANO VOLTADO A IMPLANTACAO E QUALIFICACAO VIARIA",
-      "dataRecurso": "",
-      "aprovado": "Sim",
-      "emendaIndividual": "Sim",
-      "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: STEFANO AGUIAR. Código 201629240025. Favorecido: MUNICIPIO DE VARGINHA.",
-      "textoBusca": "federal individual com finalidade definida 201629240025 2017 stefano aguiar municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
-      "anosRelacionados": [
-        "2017"
-      ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201629240025_84"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_82"
     },
     {
       "tipo": "Federal",
@@ -2784,13 +3333,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EROS BIONDINI. Código 201527590008. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201527590008 2017 eros biondini municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2017"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201527590008_85"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201527590008",
+      "id": "fed_201527590008_83"
     },
     {
       "tipo": "Federal",
@@ -2812,13 +3368,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2017 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2017"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_86"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_84"
     },
     {
       "tipo": "Federal",
@@ -2840,13 +3403,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550012. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 201627550012 2017 dimas fabiano fundo municipal de saude saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2017"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550012_87"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550012",
+      "id": "fed_201627550012_85"
     },
     {
       "tipo": "Federal",
@@ -2868,13 +3438,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2016 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2016"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_88"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_86"
     },
     {
       "tipo": "Federal",
@@ -2896,13 +3473,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: DIMAS FABIANO. Código 201627550012. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida 201627550012 2016 dimas fabiano fundo municipal de saude saúde · assistência hospitalar e ambulatorial · estruturacao de unidades de atencao especializada em saude",
       "anosRelacionados": [
         "2016"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201627550012_89"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201627550012",
+      "id": "fed_201627550012_87"
     },
     {
       "tipo": "Federal",
@@ -2924,13 +3508,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Não",
+      "autoria_tipo": "relator",
+      "transferencia_modalidade": "desconhecida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda de Relator. Autor: Sem informação. Código Sem informação. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal relator sem informação 2016 sem informação municipio de varginha saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2016"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_90"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_88"
     },
     {
       "tipo": "Federal",
@@ -2952,13 +3543,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2016 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2016"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_91"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_89"
     },
     {
       "tipo": "Federal",
@@ -2980,13 +3578,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: EROS BIONDINI. Código 201527590008. Favorecido: MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal individual com finalidade definida 201527590008 2016 eros biondini municipio de varginha urbanismo · infra-estrutura urbana · apoio a politica nacional de desenvolvimento urbano voltado a implantacao e qualificacao viaria",
       "anosRelacionados": [
         "2016"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_201527590008_92"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=201527590008",
+      "id": "fed_201527590008_90"
     },
     {
       "tipo": "Federal",
@@ -3008,13 +3613,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2016 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2016"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_93"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_91"
     },
     {
       "tipo": "Federal",
@@ -3036,13 +3648,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: HOSPITAL REGIONAL DO SUL DE MINAS.",
       "textoBusca": "federal individual com finalidade definida sem informação 2015 sem informação hospital regional do sul de minas saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2015"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_94"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_92"
     },
     {
       "tipo": "Federal",
@@ -3064,13 +3683,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2015 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2015"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_95"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_93"
     },
     {
       "tipo": "Federal",
@@ -3092,13 +3718,20 @@ window.EMENDAS_FEDERAIS = {
       "dataRecurso": "",
       "aprovado": "Sim",
       "emendaIndividual": "Sim",
+      "autoria_tipo": "individual",
+      "transferencia_modalidade": "finalidade_definida",
+      "destino_confirmado": true,
+      "nivel_confianca": "medio",
+      "granularidade": "emenda_favorecido_agregado",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
       "descricao": "Emenda Individual - Transferências com Finalidade Definida. Autor: Sem informação. Código Sem informação. Favorecido: FUNDO MUNICIPAL DE SAUDE.",
       "textoBusca": "federal individual com finalidade definida sem informação 2015 sem informação fundo municipal de saude saúde · atenção básica · estruturacao da rede de servicos de atencao primaria a saude",
       "anosRelacionados": [
         "2015"
       ],
-      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha",
-      "id": "fed_Sem informação_96"
+      "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=Sem%20informa%C3%A7%C3%A3o",
+      "id": "fed_Sem informação_94"
     },
     {
       "tipo": "Federal",

@@ -12,6 +12,7 @@ Uso:  python coletor_emendas_federais.py
 Gera data/emendas_federais.js (itemizado: 1 registro por favorecido) + resumoTipos.
 """
 import json, io, os, csv, time, zipfile, tempfile, urllib.request, urllib.parse, urllib.error, unicodedata
+from numbers import Real
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 FED_JS = os.path.join(AQUI, "data", "emendas_federais.js")
@@ -23,7 +24,10 @@ IBGE_VARGINHA = "3170701"
 CONSULTA = "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha"
 
 def money(s):
-    try: return float(str(s).replace(".", "").replace(",", "."))
+    if isinstance(s, Real) and not isinstance(s, bool): return float(s)
+    text = str(s or "").strip().replace("R$", "").replace(" ", "")
+    if "," in text: text = text.replace(".", "").replace(",", ".")
+    try: return float(text)
     except Exception: return 0.0
 
 def money_txt(v):
@@ -32,6 +36,22 @@ def money_txt(v):
 def remove_accents(input_str):
     nfkd_form = unicodedata.normalize('NFKD', input_str)
     return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
+
+def autoria_tipo(tipo):
+    t = remove_accents(str(tipo or "").upper())
+    for nome, valor in (("INDIVIDUAL", "individual"), ("BANCADA", "bancada"),
+                        ("COMISSAO", "comissao"), ("RELATOR", "relator")):
+        if nome in t: return valor
+    return "desconhecida"
+
+def modalidade(tipo):
+    t = remove_accents(str(tipo or "").upper())
+    if "TRANSFERENCIAS ESPECIAIS" in t or "PIX" in t: return "especial_pix"
+    if "FINALIDADE DEFINIDA" in t: return "finalidade_definida"
+    if "FUNDO A FUNDO" in t: return "fundo_a_fundo"
+    if "CONTRATO DE REPASSE" in t: return "contrato_repasse"
+    if "CONVENIO" in t: return "convenio"
+    return "desconhecida"
 
 def baixar_zip():
     # 1. Tenta usar o arquivo baixado localmente pelo usuário no Google Drive (prioridade/cache)
@@ -61,6 +81,9 @@ def objeto_por_codigo(z):
     for row in r:
         if len(row) < 20: continue
         cod = row[0].strip()
+        # Código de emenda não é documento de pagamento, mas é o identificador
+        # mínimo para que a linha possa ser exibida como alocação federal.
+        if not cod: continue
         if cod in mp: continue
         partes = [row[13].strip(), row[15].strip(), row[19].strip()]  # Função, Subfunção, Ação
         mp[cod] = " · ".join(p for p in partes if p and p != "Sem informação")
@@ -100,6 +123,7 @@ def registros_varginha(z, objetos, targets):
         if mun_fav != "VARGINHA" or uf_fav != "MG": continue
         
         cod = row[0].strip()
+        if not cod: continue
         
         # Cross-reference destination from EmendasParlamentares.csv
         target = targets.get(cod, ("", ""))
@@ -107,7 +131,7 @@ def registros_varginha(z, objetos, targets):
         t_mun_norm = remove_accents(t_mun.upper())
         
         # Rule 1: Target municipality is explicitly Varginha
-        is_varginha_target = "VARGINHA" in t_mun_norm
+        is_varginha_target = "VARGINHA" in t_mun_norm and remove_accents(t_uf.upper()) == "MG"
         
         # Rule 2: Multi-municipal, national, or unspecified target
         is_multi_or_national = any(x in t_mun_norm for x in ["MULTIPLO", "NACIONAL", "SEM INFORMACAO"]) or t_mun_norm == ""
@@ -152,11 +176,18 @@ def registros_varginha(z, objetos, targets):
             "dataRecurso": "",
             "aprovado": "Sim",
             "emendaIndividual": individual,
+            "autoria_tipo": autoria_tipo(tipo_emenda),
+            "transferencia_modalidade": modalidade(tipo_emenda),
+            "destino_confirmado": True,
+            "nivel_confianca": "alto" if is_varginha_target else "medio",
+            "granularidade": "emenda_favorecido_agregado",
+            "identificador_repasse_confirmado": False,
+            "contabilizado_como_repasse_individual": False,
             "descricao": f"{tipo_emenda}. Autor: {autor}. Código {cod}. Favorecido: {favorecido}.",
             "textoBusca": " ".join(str(x).lower() for x in [
                 "federal", categoria, cod, ano, autor, favorecido, objeto]),
             "anosRelacionados": [ano] if ano else [],
-            "fonteUrl": CONSULTA,
+            "fonteUrl": CONSULTA + "&codigoEmenda=" + urllib.parse.quote(cod),
             "id": f"fed_{cod}_{len(regs)}",
         }
         regs.append(reg)
@@ -190,7 +221,13 @@ def enriquecer_pix(regs, tok):
                         key=lambda d: int("".join(reversed(str(d.get("data","")).split("/")))) if d.get("data") else 0)
             return ds[0]["data"] if ds else ""
         emp, liq, pg = primeira("Empenho"), primeira("Liquidação"), primeira("Pagamento")
+        def total_fase(fase):
+            return sum(money(d.get("valor")) for d in docs
+                       if d.get("fase") == fase and not any(x in remove_accents(str(d).upper()) for x in ("CANCELAD", "ANULAD")))
         e["qtdDocumentos"] = len(docs)
+        e["valorEmpenhado"] = round(total_fase("Empenho"), 2)
+        e["valorLiquidado"] = round(total_fase("Liquidação"), 2)
+        e["valorPago"] = round(total_fase("Pagamento"), 2)
         e["execucao"] = " · ".join(x for x in [
             f"empenho {emp}" if emp else "", f"liquidação {liq}" if liq else "",
             f"pagamento {pg}" if pg else ""] if x)
@@ -298,8 +335,9 @@ def gerar_resumo_tipos(regs):
     }
     for r in regs:
         a = agg[r["categoria"]]
-        a["total"] += r["valor"]; a["n"] += 1
-        a["ben"][r["beneficiario"]] += r["valor"]
+        valor = r["valor"] if r["valor"] > 0 else 0.0
+        a["total"] += valor; a["n"] += 1
+        a["ben"][r["beneficiario"]] += valor
     ordem = ["Transferência Especial (Pix)", "Individual com Finalidade Definida", "Bancada", "Comissão", "Relator"]
     out = []
     for cat in ordem:
@@ -329,7 +367,9 @@ def main():
     print("Cruzando com execução municipal (Betha)...")
     regs = cruzar_betha(regs)
     resumo = gerar_resumo_tipos(regs)
-    total = sum(r["valor"] for r in regs)
+    # Valores não positivos podem representar estorno/anulação e nunca entram
+    # no recebido. As linhas continuam visíveis para auditoria.
+    total = sum(r["valor"] for r in regs if r["valor"] > 0)
     out = {
         "metadata": {
             "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
@@ -338,7 +378,7 @@ def main():
             "codigoIbge": IBGE_VARGINHA,
             "totalFederal": round(total, 2), "totalFederalTexto": money_txt(total),
             "registros": len(regs), "emendasUnicas": len(set(r["emenda"] for r in regs)),
-            "observacao": "Cada registro = um favorecido de uma emenda federal recebida em Varginha. Datas de execução (empenho/pagamento) nas Pix via API CGU.",
+            "observacao": "Cada registro é um agregado emenda/favorecido, não um repasse individual. Totais excluem valores não positivos (estornos/anulações). Datas de execução das Pix vêm da API CGU.",
         },
         "resumoTipos": resumo,
         "emendas": regs,

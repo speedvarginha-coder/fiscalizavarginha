@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-11T12:39:37.953Z",
+  "gerado_em": "2026-07-11T15:24:09.674Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-11T12-23-52-e4a30b22",
+    "coleta_iso": "2026-07-11T12:23:52",
+    "data_humana": "11/07/2026 - 12:23",
+    "arquivo": "data/snapshots/2026-07-11T12-23-52-e4a30b22.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-11T09-39-25-719a1bbb",
     "coleta_iso": "2026-07-11T09:39:25",
     "data_humana": "11/07/2026 - 09:39",
-    "arquivo": "data/snapshots/2026-07-11T09-39-25-719a1bbb.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-11T07-41-08-1f32824a",
-    "coleta_iso": "2026-07-11T07:41:08",
-    "data_humana": "11/07/2026 - 07:41",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },

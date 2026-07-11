@@ -3,7 +3,75 @@ const payload = window.EMENDAS_DATA || { metadata: {}, emendas: [] };
 const municipaisAtuais = (window.EMENDAS_MUNICIPAIS_ATUAIS && window.EMENDAS_MUNICIPAIS_ATUAIS.emendas) || [];
 // Emendas federais do Portal da Transparência (CGU), carregadas de data/emendas_federais.js
 const federais = (window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.emendas) || [];
-const allRecords = [...(payload.emendas || []), ...municipaisAtuais, ...federais];
+const estaduaisNormalizadas = (window.EMENDAS_ESTADUAIS_NORMALIZADAS && window.EMENDAS_ESTADUAIS_NORMALIZADAS.emendas) || [];
+const baseSemEstaduais = (payload.emendas || []).filter((record) => record.tipo !== "Estadual");
+const allRecords = [...baseSemEstaduais, ...estaduaisNormalizadas, ...municipaisAtuais, ...federais].map(normalizeRecord);
+
+function knownMoney(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const number = typeof value === "string"
+    ? Number(value.replace(/\./g, "").replace(",", "."))
+    : Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
+function firstMoney(record, keys) {
+  for (const key of keys) {
+    const value = knownMoney(record[key]);
+    if (value !== null) return value;
+  }
+  return null;
+}
+
+function normalizeRecord(record) {
+  const category = normalize(record.categoria || record.modalidade || record.descricao);
+  const author = normalize(record.autor);
+  let autoriaTipo = "Individual";
+  if (category.includes("bancada") || author.includes("bancada")) autoriaTipo = "Bancada";
+  else if (category.includes("comissao") || author.includes("comissao") || author.startsWith("com.")) autoriaTipo = "Comissão";
+  else if (category.includes("relator") || author.includes("relator")) autoriaTipo = "Relator";
+
+  let modalidade = "N/D";
+  if (/pix|transferencia especial/.test(category)) modalidade = "Pix";
+  else if (/finalidade definida/.test(category)) modalidade = "Finalidade definida";
+  else if (/fundo a fundo/.test(category)) modalidade = "Fundo a fundo";
+  else if (/contrato de repasse/.test(category)) modalidade = "Contrato de repasse";
+  else if (/convenio/.test(category)) modalidade = "Convênio";
+
+  const indicadoExplicito = firstMoney(record, ["valorIndicado", "valorEmenda", "valorIndicacao"]);
+  const empenhado = firstMoney(record, ["valorEmpenhado", "empenhado"]);
+  const pago = firstMoney(record, ["valorPago", "valorTransferido", "pago", "transferido"]);
+  const recebidoExplicito = firstMoney(record, ["valorRecebido", "recebido"]);
+  const executado = firstMoney(record, ["valorExecutado", "executado"]);
+  const legado = knownMoney(record.valor);
+  const indicado = indicadoExplicito ?? (record.tipo === "Municipal" ? legado : null);
+  const recebido = recebidoExplicito ?? (
+    record.tipo === "Federal" && !record.somenteNoBetha
+      ? (record.valorPago ?? (record.dadosBetha ? knownMoney(record.dadosBetha.valorBetha) : null))
+      : null
+  );
+  const pagoTransferido = pago ?? (
+    record.tipo === "Federal" && !record.somenteNoBetha
+      ? (record.valorPago ?? (record.dadosBetha ? knownMoney(record.dadosBetha.valorBetha) : null))
+      : null
+  );
+  const stages = { indicado, empenhado, pago: pagoTransferido, recebido, executado };
+  const explicitValues = Object.values(stages).filter((value) => value !== null);
+  const inconsistent = (executado !== null && recebido !== null && executado > recebido) ||
+    (recebido !== null && pagoTransferido !== null && recebido > pagoTransferido);
+  let comprovacao = record.comprovacao || record.selo || record.qualidadeDado || record.classificacaoComprovacao || "";
+  const allowed = ["Confirmado", "Conciliado", "Parcial", "Inferido", "Sem comprovação", "Inconsistente"];
+  comprovacao = allowed.find((label) => normalize(label) === normalize(comprovacao)) || "";
+  if (inconsistent) comprovacao = "Inconsistente";
+  else if (!comprovacao && record.tipo === "Federal" && recebido !== null) {
+    comprovacao = record.dadosBetha ? "Conciliado" : "Confirmado";
+  }
+  else if (!comprovacao && record.dadosBetha && recebido !== null) comprovacao = "Conciliado";
+  else if (!comprovacao && explicitValues.length) comprovacao = record.tipo === "Municipal" ? "Inferido" : "Parcial";
+  else if (!comprovacao) comprovacao = "Sem comprovação";
+
+  return { ...record, autoriaTipo, modalidade, comprovacao, stages };
+}
 
 // Os PDFs não são hospedados aqui (versão leve). Os links levam à fonte oficial
 // de cada esfera: municipais à Câmara; estaduais/federais ao Portal Betha.
@@ -33,15 +101,21 @@ const state = {
 const elements = {
   lastUpdate: document.querySelector("#lastUpdate"),
   metricCount: document.querySelector("#metricCount"),
-  metricTotal: document.querySelector("#metricTotal"),
-  metricBeneficiaries: document.querySelector("#metricBeneficiaries"),
-  metricMax: document.querySelector("#metricMax"),
+  metricIndicated: document.querySelector("#metricIndicated"),
+  metricCommitted: document.querySelector("#metricCommitted"),
+  metricPaid: document.querySelector("#metricPaid"),
+  metricReceived: document.querySelector("#metricReceived"),
+  metricExecuted: document.querySelector("#metricExecuted"),
   searchInput: document.querySelector("#searchInput"),
   typeFilter: document.querySelector("#typeFilter"),
   yearFilter: document.querySelector("#yearFilter"),
   resourceYearFilter: document.querySelector("#resourceYearFilter"),
   orgFilter: document.querySelector("#orgFilter"),
   categoryFilter: document.querySelector("#categoryFilter"),
+  authorshipFilter: document.querySelector("#authorshipFilter"),
+  modalityFilter: document.querySelector("#modalityFilter"),
+  evidenceFilter: document.querySelector("#evidenceFilter"),
+  stageFilter: document.querySelector("#stageFilter"),
   activeFilter: document.querySelector("#activeFilter"),
   partyFilter: document.querySelector("#partyFilter"),
   authorFilter: document.querySelector("#authorFilter"),
@@ -67,6 +141,8 @@ const elements = {
   deputyTotal: document.querySelector("#deputyTotal"),
   deputyRanking: document.querySelector("#deputyRanking"),
   deputySum: document.querySelector("#deputySum"),
+  institutionalTotal: document.querySelector("#institutionalTotal"),
+  institutionalRanking: document.querySelector("#institutionalRanking"),
   transparencyFlags: document.querySelector("#transparencyFlags"),
   notApprovedTotal: document.querySelector("#notApprovedTotal"),
   notApprovedSituation: document.querySelector("#notApprovedSituation"),
@@ -391,7 +467,8 @@ function groupByLabel(records, labelFn) {
     const key = normalize(label);
     const entry = map.get(key) || { key, label, count: 0, total: 0 };
     entry.count += 1;
-    entry.total += Number(record.valor || 0);
+    const value = rankingValue(record);
+    if (value !== null) entry.total += value;
     map.set(key, entry);
   });
   return [...map.values()].sort((a, b) => b.total - a.total);
@@ -424,24 +501,25 @@ function fillDatalist(datalist, values) {
 function renderEsferas() {
   const box = document.querySelector("#esferasCards");
   if (!box) return;
-  const federalTotal = (window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata &&
-    window.EMENDAS_FEDERAIS.metadata.totalFederal) || 0;
   const somaTipo = (t) => allRecords
     .filter((r) => r.tipo === t)
-    .reduce((s, r) => s + Number(r.valor || 0), 0);
+    .map((r) => r.stages.recebido)
+    .filter((value) => value !== null)
+    .reduce((s, value) => s + value, 0);
+  const temRecebido = (t) => allRecords.some((r) => r.tipo === t && r.stages.recebido !== null);
   const contaTipo = (t) => allRecords.filter((r) => r.tipo === t).length;
   const esferas = [
     { tipo: "Federal", nome: "Federal", desc: "Dados abertos da CGU", cls: "is-federal",
-      total: federalTotal, sub: ((window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata && window.EMENDAS_FEDERAIS.metadata.emendasUnicas) || "") + " emendas (CGU)" },
+      total: somaTipo("Federal"), known: temRecebido("Federal"), sub: ((window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata && window.EMENDAS_FEDERAIS.metadata.emendasUnicas) || "") + " emendas (CGU)" },
     { tipo: "Estadual", nome: "Estadual", desc: "Documentos de execução estadual", cls: "is-estadual",
-      total: somaTipo("Estadual"), sub: contaTipo("Estadual") + " emendas" },
+      total: somaTipo("Estadual"), known: temRecebido("Estadual"), sub: contaTipo("Estadual") + " emendas" },
     { tipo: "Municipal", nome: "Municipal", desc: "Vereadores de Varginha", cls: "is-municipal",
-      total: somaTipo("Municipal"), sub: contaTipo("Municipal") + " emendas" },
+      total: somaTipo("Municipal"), known: temRecebido("Municipal"), sub: contaTipo("Municipal") + " emendas" },
   ];
   box.innerHTML = esferas.map((e) => `
     <button type="button" class="esfera-card ${e.cls}" data-tipo="${e.tipo}">
       <span class="esfera-card__tag">${e.nome}</span>
-      <strong class="esfera-card__valor">${moneyFormatter.format(e.total)}</strong>
+       <strong class="esfera-card__valor">${e.known ? moneyFormatter.format(e.total) : "N/D"}</strong>
       <span class="esfera-card__sub">${e.sub}</span>
       <span class="esfera-card__desc">${e.desc}</span>
     </button>`).join("");
@@ -517,6 +595,9 @@ function setupFilters() {
 
   const uniqueCategories = [...new Set(allRecords.map(r => r.categoria || "Emenda Impositiva Municipal"))].sort();
   fillSelect(elements.categoryFilter, uniqueCategories);
+  fillSelect(elements.authorshipFilter, uniqueSorted("autoriaTipo"));
+  fillSelect(elements.modalityFilter, uniqueSorted("modalidade"));
+  fillSelect(elements.evidenceFilter, uniqueSorted("comprovacao"));
 
   const uniqueParties = [...new Set(allRecords.map(r => getAuthorMeta(r).party).filter(Boolean))].sort();
   fillSelect(elements.partyFilter, uniqueParties);
@@ -550,13 +631,13 @@ function quickMatch(record) {
   if (state.quick === "municipal") return record.tipo === "Municipal";
   if (state.quick === "individual") return record.emendaIndividual === "Sim";
   if (state.quick === "pendente") return normalize(record.aprovado) === "nao";
-  if (state.quick === "pendente-com-valor") return normalize(record.aprovado) === "nao" && Number(record.valor || 0) > 0;
-  if (state.quick === "pendente-zero") return normalize(record.aprovado) === "nao" && Number(record.valor || 0) === 0;
+  if (state.quick === "pendente-com-valor") return normalize(record.aprovado) === "nao" && rankingValue(record) !== null && rankingValue(record) > 0;
+  if (state.quick === "pendente-zero") return normalize(record.aprovado) === "nao" && rankingValue(record) === 0;
   if (state.quick === "pendente-sem-data") return normalize(record.aprovado) === "nao" && !record.dataRecurso;
   if (state.quick === "pendente-sem-quem") return normalize(record.aprovado) === "nao" && !record.beneficiario;
-  if (state.quick === "alto-valor") return Number(record.valor || 0) >= 100000;
+  if (state.quick === "alto-valor") return rankingValue(record) !== null && rankingValue(record) >= 100000;
   if (state.quick === "sem-data") return !record.dataRecurso;
-  if (state.quick === "valor-zero") return Number(record.valor || 0) === 0;
+  if (state.quick === "valor-zero") return rankingValue(record) === 0;
   if (state.quick === "sem-ano-emenda") return amendmentYearsForRecord(record).length === 0;
   if (state.quick === "sem-ano-recurso") return resourceYearsForRecord(record).length === 0;
   return true;
@@ -578,6 +659,10 @@ function applyFilters() {
     const matchesParty = !elements.partyFilter.value || authorMeta.party === elements.partyFilter.value;
     const matchesAuthor = !elements.authorFilter.value || authorMeta.name === elements.authorFilter.value;
     const matchesCategory = !elements.categoryFilter.value || (record.categoria || "Emenda Impositiva Municipal") === elements.categoryFilter.value;
+    const matchesAuthorship = !elements.authorshipFilter.value || record.autoriaTipo === elements.authorshipFilter.value;
+    const matchesModality = !elements.modalityFilter.value || record.modalidade === elements.modalityFilter.value;
+    const matchesEvidence = !elements.evidenceFilter.value || record.comprovacao === elements.evidenceFilter.value;
+    const matchesStage = !elements.stageFilter.value || record.stages[elements.stageFilter.value] !== null;
     const matchesActive = !elements.activeFilter.value || (
       elements.activeFilter.value === "ativo" ? authorMeta.active : !authorMeta.active
     );
@@ -589,8 +674,9 @@ function applyFilters() {
         : normalize(record.beneficiario).includes(beneficiaryTerm) || canonicalBeneficiaryKey(record).includes(beneficiaryTerm));
     const matchesApproval = !elements.approvalFilter.value || record.aprovado === elements.approvalFilter.value;
     const matchesIndividual = !elements.individualFilter.value || record.emendaIndividual === elements.individualFilter.value;
-    const matchesMin = Number(record.valor || 0) >= minValue;
-    const matchesMax = !maxValue || Number(record.valor || 0) <= maxValue;
+    const filterValue = rankingValue(record);
+    const matchesMin = !minValue || (filterValue !== null && filterValue >= minValue);
+    const matchesMax = !maxValue || (filterValue !== null && filterValue <= maxValue);
     const matchesRankRole = !state.rankRole || authorRole(record) === state.rankRole;
     return (
       matchesSearch &&
@@ -601,6 +687,10 @@ function applyFilters() {
       matchesParty &&
       matchesAuthor &&
       matchesCategory &&
+      matchesAuthorship &&
+      matchesModality &&
+      matchesEvidence &&
+      matchesStage &&
       matchesActive &&
       matchesBeneficiary &&
       matchesApproval &&
@@ -639,12 +729,14 @@ function applyFilters() {
 function sortRecords() {
   const sort = elements.sortFilter.value;
   state.filtered.sort((a, b) => {
-    if (sort === "valor-asc") return Number(a.valor || 0) - Number(b.valor || 0);
-    if (sort === "tipo") return String(a.tipo).localeCompare(String(b.tipo), "pt-BR") || Number(b.valor || 0) - Number(a.valor || 0);
+    const aValue = rankingValue(a);
+    const bValue = rankingValue(b);
+    if (sort === "valor-asc") return (aValue ?? Infinity) - (bValue ?? Infinity);
+    if (sort === "tipo") return String(a.tipo).localeCompare(String(b.tipo), "pt-BR") || (bValue ?? -Infinity) - (aValue ?? -Infinity);
     if (sort === "beneficiario") return String(a.beneficiario).localeCompare(String(b.beneficiario), "pt-BR");
     if (sort === "ano-desc") return Number(amendmentYearsForRecord(b).at(-1) || 0) - Number(amendmentYearsForRecord(a).at(-1) || 0);
     if (sort === "data-desc") return dateToNumber(b.dataRecurso) - dateToNumber(a.dataRecurso);
-    return Number(b.valor || 0) - Number(a.valor || 0);
+    return (bValue ?? -Infinity) - (aValue ?? -Infinity);
   });
 }
 
@@ -653,10 +745,11 @@ function getPageCount() {
 }
 
 function summarize(records) {
-  const total = records.reduce((sum, record) => sum + Number(record.valor || 0), 0);
-  const beneficiaries = new Set(records.map(canonicalBeneficiaryKey).filter(Boolean)).size;
-  const max = records.reduce((highest, record) => Math.max(highest, Number(record.valor || 0)), 0);
-  return { count: records.length, total, beneficiaries, max };
+  const sumStage = (stage) => {
+    const values = records.map((record) => record.stages[stage]).filter((value) => value !== null);
+    return { value: values.reduce((sum, value) => sum + value, 0), known: values.length > 0 };
+  };
+  return { count: records.length, indicado: sumStage("indicado"), empenhado: sumStage("empenhado"), pago: sumStage("pago"), recebido: sumStage("recebido"), executado: sumStage("executado") };
 }
 
 function groupBy(records, field) {
@@ -665,7 +758,8 @@ function groupBy(records, field) {
     const key = record[field] || "Não informado";
     const entry = map.get(key) || { label: key, count: 0, total: 0 };
     entry.count += 1;
-    entry.total += Number(record.valor || 0);
+    const value = rankingValue(record);
+    if (value !== null) entry.total += value;
     map.set(key, entry);
   });
   return [...map.values()].sort((a, b) => b.total - a.total);
@@ -673,10 +767,13 @@ function groupBy(records, field) {
 
 function renderMetrics() {
   const summary = summarize(state.filtered);
+  const show = (metric) => metric.known ? moneyFormatter.format(metric.value) : "N/D";
   elements.metricCount.textContent = numberFormatter.format(summary.count);
-  elements.metricTotal.textContent = moneyFormatter.format(summary.total);
-  elements.metricBeneficiaries.textContent = numberFormatter.format(summary.beneficiaries);
-  elements.metricMax.textContent = moneyFormatter.format(summary.max);
+  elements.metricIndicated.textContent = show(summary.indicado);
+  elements.metricCommitted.textContent = show(summary.empenhado);
+  elements.metricPaid.textContent = show(summary.pago);
+  elements.metricReceived.textContent = show(summary.recebido);
+  elements.metricExecuted.textContent = show(summary.executado);
   elements.resultSummary.textContent = `${numberFormatter.format(summary.count)} resultado${summary.count === 1 ? "" : "s"} filtrado${summary.count === 1 ? "" : "s"}`;
 }
 
@@ -842,8 +939,9 @@ function renderAuthorRanking() {
         : normalize(record.beneficiario).includes(beneficiaryTerm) || canonicalBeneficiaryKey(record).includes(beneficiaryTerm));
     const matchesApproval = !approvalFilterVal || record.aprovado === approvalFilterVal;
     const matchesIndividual = !individualFilterVal || record.emendaIndividual === individualFilterVal;
-    const matchesMin = Number(record.valor || 0) >= minValue;
-    const matchesMax = !maxValue || Number(record.valor || 0) <= maxValue;
+    const filterValue = rankingValue(record);
+    const matchesMin = !minValue || (filterValue !== null && filterValue >= minValue);
+    const matchesMax = !maxValue || (filterValue !== null && filterValue <= maxValue);
     const roleMatches = !state.rankRole || authorRole(record) === state.rankRole;
 
     if (
@@ -879,7 +977,8 @@ function renderAuthorRanking() {
         const entry =
           map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), active: meta.active, role: authorRole(record) };
         entry.count += 1;
-        entry.total += Number(record.valor || 0) / partes;
+         const value = rankingValue(record);
+         if (value !== null) entry.total += value / partes;
         entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
         if (meta.party) entry.partidos.add(meta.party);
         map.set(key, entry);
@@ -969,8 +1068,9 @@ function renderDeputyRanking() {
         : normalize(record.beneficiario).includes(beneficiaryTerm) || canonicalBeneficiaryKey(record).includes(beneficiaryTerm));
     const matchesApproval = !approvalFilterVal || record.aprovado === approvalFilterVal;
     const matchesIndividual = !individualFilterVal || record.emendaIndividual === individualFilterVal;
-    const matchesMin = Number(record.valor || 0) >= minValue;
-    const matchesMax = !maxValue || Number(record.valor || 0) <= maxValue;
+    const filterValue = rankingValue(record);
+    const matchesMin = !minValue || (filterValue !== null && filterValue >= minValue);
+    const matchesMax = !maxValue || (filterValue !== null && filterValue <= maxValue);
     const roleMatches = !state.rankRole || authorRole(record) === state.rankRole;
 
     if (
@@ -999,7 +1099,8 @@ function renderDeputyRanking() {
       const entry =
         map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), role: authorRole(record) };
       entry.count += 1;
-      entry.total += Number(record.valor || 0);
+      const value = rankingValue(record);
+      if (value !== null) entry.total += value;
       entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
       if (authorMeta.party) entry.partidos.add(authorMeta.party);
       map.set(key, entry);
@@ -1039,6 +1140,32 @@ function renderDeputyRanking() {
     .join("");
 }
 
+function rankingValue(record) {
+  return record.stages.executado ?? record.stages.recebido ?? record.stages.pago ?? record.stages.empenhado ?? record.stages.indicado;
+}
+
+function renderInstitutionalRanking() {
+  const records = state.filtered.filter((record) => record.autoriaTipo !== "Individual");
+  const groups = new Map();
+  records.forEach((record) => {
+    const label = `${record.autoriaTipo}: ${canonicalAuthorLabel(record) || "autoria não identificada"}`;
+    const value = rankingValue(record);
+    const item = groups.get(label) || { label, count: 0, total: 0, known: 0 };
+    item.count += 1;
+    if (value !== null) { item.total += value; item.known += 1; }
+    groups.set(label, item);
+  });
+  const ranked = [...groups.values()].sort((a, b) => b.total - a.total || b.count - a.count).slice(0, 10);
+  elements.institutionalTotal.textContent = `${numberFormatter.format(groups.size)} autorias`;
+  elements.institutionalRanking.innerHTML = ranked.length ? ranked.map((group, index) => `
+    <div class="ranking-item" role="listitem">
+      <span class="ranking-position">${index + 1}</span>
+      <span class="ranking-name">${escapeHtml(group.label)}</span>
+      <span class="ranking-money">${group.known ? moneyFormatter.format(group.total) : "N/D"}</span>
+      <span class="ranking-meta">${numberFormatter.format(group.count)} registro${group.count === 1 ? "" : "s"} · estágio disponível mais avançado</span>
+    </div>`).join("") : `<div class="empty compact-empty">Nenhuma autoria institucional nos filtros atuais.</div>`;
+}
+
 function renderTransparencyFlags() {
   const records = state.filtered;
   const flags = [
@@ -1059,7 +1186,7 @@ function renderTransparencyFlags() {
     },
     {
       label: "Valor zerado",
-      value: records.filter((record) => Number(record.valor || 0) === 0).length,
+      value: records.filter((record) => rankingValue(record) === 0).length,
       quick: "valor-zero",
     },
     {
@@ -1102,26 +1229,27 @@ function renderTransparencyFlags() {
 
 function renderNotApprovedSituation() {
   const records = state.filtered.filter((record) => normalize(record.aprovado) === "nao");
-  const totalValue = records.reduce((sum, record) => sum + Number(record.valor || 0), 0);
-  const withValue = records.filter((record) => Number(record.valor || 0) > 0);
-  const zeroValue = records.filter((record) => Number(record.valor || 0) === 0);
+  const knownValues = records.map(rankingValue).filter((value) => value !== null);
+  const totalValue = knownValues.reduce((sum, value) => sum + value, 0);
+  const withValue = records.filter((record) => rankingValue(record) !== null && rankingValue(record) > 0);
+  const zeroValue = records.filter((record) => rankingValue(record) === 0);
   const withoutResourceDate = records.filter((record) => !record.dataRecurso);
   const withoutReceiver = records.filter((record) => !record.beneficiario);
-  const topValue = records.reduce((max, record) => Math.max(max, Number(record.valor || 0)), 0);
+  const topValue = knownValues.length ? Math.max(...knownValues) : null;
 
   elements.notApprovedTotal.textContent = `${numberFormatter.format(records.length)} registros`;
 
   const cards = [
     {
       label: "Total em não aprovadas",
-      value: moneyFormatter.format(totalValue),
+      value: knownValues.length ? moneyFormatter.format(totalValue) : "N/D",
       helper: `${numberFormatter.format(records.length)} registro${records.length === 1 ? "" : "s"}`,
       quick: "pendente",
     },
     {
       label: "Com valor informado",
       value: numberFormatter.format(withValue.length),
-      helper: `somam ${moneyFormatter.format(withValue.reduce((sum, record) => sum + Number(record.valor || 0), 0))}`,
+      helper: `somam ${moneyFormatter.format(withValue.reduce((sum, record) => sum + rankingValue(record), 0))}`,
       quick: "pendente-com-valor",
     },
     {
@@ -1144,7 +1272,7 @@ function renderNotApprovedSituation() {
     },
     {
       label: "Maior não aprovada",
-      value: moneyFormatter.format(topValue),
+      value: topValue === null ? "N/D" : moneyFormatter.format(topValue),
       helper: "maior valor dentro dos filtros atuais",
       quick: "pendente",
       positive: true,
@@ -1164,8 +1292,8 @@ function renderNotApprovedSituation() {
 
 function topRecords(records, predicate = () => true, limit = 5) {
   return records
-    .filter((record) => predicate(record) && Number(record.valor || 0) > 0)
-    .sort((a, b) => Number(b.valor || 0) - Number(a.valor || 0))
+    .filter((record) => predicate(record) && rankingValue(record) !== null && rankingValue(record) > 0)
+    .sort((a, b) => rankingValue(b) - rankingValue(a))
     .slice(0, limit);
 }
 
@@ -1198,7 +1326,7 @@ function renderTopValuePanels() {
             ? panel.records
                 .map((record) => `
                   <button class="top-value-item" data-id="${record.id}" type="button">
-                    <strong>${moneyFormatter.format(Number(record.valor || 0))}</strong>
+                     <strong>${moneyFormatter.format(rankingValue(record))}</strong>
                     <span>${escapeHtml(canonicalBeneficiaryLabel(record))}</span>
                     <small>${escapeHtml(record.tipo)} · Emenda ${escapeHtml(record.emenda)} · ${escapeHtml(record.aprovado || "situação não informada")}</small>
                   </button>
@@ -1219,6 +1347,7 @@ function renderInsights() {
   renderAssociationRanking();
   renderAuthorRanking();
   renderDeputyRanking();
+  renderInstitutionalRanking();
   renderTransparencyFlags();
   renderNotApprovedSituation();
   renderTopValuePanels();
@@ -1250,14 +1379,10 @@ function renderResults() {
       const object = record.objeto || record.descricao || "Objeto não informado";
       const pdfUrl = fonteOficialUrl(record);
       
-      const pdfHintValue = record.somenteNoBetha ? (record.dadosBetha?.valorBetha || 0) : record.valor;
-      const pdfHint = `Confira na fonte oficial a emenda ${record.emenda}, quem recebeu e o valor ${moneyFormatter.format(Number(pdfHintValue || 0))}.`;
-      
-      const valHtml = record.somenteNoBetha
-        ? `<strong>R$ 0,00</strong>
-           <span style="font-size:0.78em; color:#d63301; font-weight:bold; display:block; margin-top:2px;">Pendente na CGU</span>
-           <span style="font-size:0.78em; color:#1a73e8; font-weight:500; display:block; margin-top:1px;">Prefeitura: ${moneyFormatter.format(Number(record.dadosBetha?.valorBetha || 0))}</span>`
-        : `<strong>${moneyFormatter.format(Number(record.valor || 0))}</strong>`;
+      const pdfHintValue = rankingValue(record);
+      const pdfHint = `Confira na fonte oficial a emenda ${record.emenda}, o beneficiário e os estágios financeiros${pdfHintValue === null ? "" : `, inclusive ${moneyFormatter.format(pdfHintValue)}`} .`;
+      const stageLabels = { indicado: "Indicado", empenhado: "Empenhado", pago: "Pago / transferido", recebido: "Recebido confirmado", executado: "Executado" };
+      const valHtml = `<div class="stage-values">${Object.entries(stageLabels).map(([key, label]) => `<span><small>${label}</small><strong>${record.stages[key] === null ? "N/D" : moneyFormatter.format(record.stages[key])}</strong></span>`).join("")}</div>`;
 
       return `
         <article class="result-card">
@@ -1266,6 +1391,9 @@ function renderResults() {
             <p>${escapeHtml(object)}</p>
             <div class="tags">
               <span class="tag ${typeClass(record.tipo)}">Fonte ${escapeHtml(record.tipo)}</span>
+              <span class="tag">Autoria: ${escapeHtml(record.autoriaTipo)}</span>
+              <span class="tag">Modalidade: ${escapeHtml(record.modalidade)}</span>
+              <span class="tag evidence-${typeClass(record.comprovacao)}">${escapeHtml(record.comprovacao)}</span>
               ${record.categoria ? `<span class="tag tag-federal">${escapeHtml(record.categoria)}</span>` : ""}
               <span class="tag">Ano da emenda: ${escapeHtml(amendmentYearsForRecord(record).join(", ") || "Não informado")}</span>
               <span class="tag">Emenda ${escapeHtml(record.emenda)}</span>
@@ -1365,23 +1493,27 @@ function openDetails(id, updateUrl = true) {
       abra o portal de transparência da fonte e pesquise pelo número da emenda ${escapeHtml(record.emenda)}, pelo nome de quem recebeu (${escapeHtml(record.beneficiario || "—")}) ou pelo valor ${moneyFormatter.format(Number(confiraValue || 0))} para confirmar os dados.
     </div>
     <div class="detail-grid">
-      ${record.somenteNoBetha
-        ? `
-          ${detailItem("Valor Federal Recebido", "R$ 0,00 (Repasse pendente)")}
-          ${detailItem("Valor Declarado no Município", moneyFormatter.format(Number(record.dadosBetha?.valorBetha || 0)))}
-        `
-        : detailItem("Valor", moneyFormatter.format(Number(record.valor || 0)))
-      }
+      ${detailItem("Indicado", record.stages.indicado === null ? "N/D" : moneyFormatter.format(record.stages.indicado))}
+      ${detailItem("Empenhado", record.stages.empenhado === null ? "N/D" : moneyFormatter.format(record.stages.empenhado))}
+      ${detailItem("Pago / transferido", record.stages.pago === null ? "N/D" : moneyFormatter.format(record.stages.pago))}
+      ${detailItem("Recebido confirmado", record.stages.recebido === null ? "N/D" : moneyFormatter.format(record.stages.recebido))}
+      ${detailItem("Executado", record.stages.executado === null ? "N/D" : moneyFormatter.format(record.stages.executado))}
+      ${detailItem("Comprovação", record.comprovacao)}
+      ${detailItem("Tipo de autoria", record.autoriaTipo)}
+      ${detailItem("Modalidade", record.modalidade)}
       ${detailItem("Ano da emenda", amendmentYearsForRecord(record).join(", "))}
       ${detailItem("Ano do recurso", resourceYearsForRecord(record).join(", "))}
       ${detailItem("Anos relacionados", yearsForRecord(record).join(", ") || record.ano)}
       ${detailItem("Órgão", record.orgao)}
       ${detailItem("Autor", [authorMeta.name, authorMeta.role, authorMeta.party, record.tipo === "Municipal" ? (authorMeta.active ? "Ativo(a)" : "Inativo(a) / Ex-vereador(a)") : ""].filter(Boolean).join(" · "))}
       ${detailItem("Quem recebeu", record.beneficiario)}
-      ${detailItem("Documento", record.documentoBeneficiario)}
+      ${detailItem("CNPJ / documento", record.cnpj || record.documentoBeneficiario)}
       ${detailItem("Função", record.funcao)}
       ${detailItem("Data do recurso", record.dataRecurso)}
       ${detailItem("Data do plano", record.dataPlano)}
+      ${detailItem("Data do empenho", record.dataEmpenho)}
+      ${detailItem("Data do pagamento", record.dataPagamento || record.competenciaPagamento)}
+      ${detailItem("Data da execução", record.dataExecucao)}
       ${detailItem("Responsável", record.responsavel)}
       ${detailItem("Prazo de execução", record.prazoExecucao)}
       ${record.tipo === "Federal"
@@ -1394,6 +1526,8 @@ function openDetails(id, updateUrl = true) {
     </div>
     ${detailItem("Objeto", record.objeto)}
     ${detailItem("Descrição", record.descricao)}
+    ${detailItem("Fonte", record.fonte || record.nomeFonte || record.tipo)}
+    ${detailItem("Estágios / observações", record.execucao || record.statusFinanceiro)}
     ${bethaSection}
     <p style="margin-top: 15px;"><a class="button primary" href="${pdfUrl}" target="_blank" rel="noreferrer">Abrir na fonte oficial</a></p>
     <p class="muted">Registro consolidado a partir de ${numberFormatter.format(sourceCount)} ocorrência${sourceCount === 1 ? "" : "s"} nos relatórios oficiais.</p>
@@ -1437,6 +1571,10 @@ function clearFilters() {
     elements.searchInput,
     elements.typeFilter,
     elements.categoryFilter,
+    elements.authorshipFilter,
+    elements.modalityFilter,
+    elements.evidenceFilter,
+    elements.stageFilter,
     elements.activeFilter,
     elements.yearFilter,
     elements.resourceYearFilter,
@@ -1543,6 +1681,10 @@ function setupEvents() {
     elements.searchInput,
     elements.typeFilter,
     elements.categoryFilter,
+    elements.authorshipFilter,
+    elements.modalityFilter,
+    elements.evidenceFilter,
+    elements.stageFilter,
     elements.activeFilter,
     elements.yearFilter,
     elements.resourceYearFilter,
