@@ -1,16 +1,16 @@
 {
-  "gerado_em": "2026-07-02T20:52:18.083Z",
+  "gerado_em": "2026-07-11T12:39:36.843Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 5,
+    "warnings": 7,
     "info": 1,
     "ok": 1,
-    "total": 7
+    "total": 9
   },
   "atualizado_base": {
-    "iso": "2026-07-02T17:52:10",
-    "data_humana": "02/07/2026 - 17:52"
+    "iso": "2026-07-11T09:39:25",
+    "data_humana": "11/07/2026 - 09:39"
   },
   "items": [
     {
@@ -30,6 +30,14 @@
       "source": "fontes_emendas_2026.json"
     },
     {
+      "severity": "warning",
+      "id": "indice-parcial",
+      "title": "Indice parlamentar parcial",
+      "detail": "A menor cobertura automatica do indice e 97.2%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.",
+      "action": "Nao tratar o ranking como definitivo; publicar sempre a cobertura junto da nota.",
+      "source": "indice_relevancia.json"
+    },
+    {
       "severity": "info",
       "id": "pncp-apoio",
       "title": "PNCP usado como fonte auxiliar",
@@ -39,9 +47,17 @@
     },
     {
       "severity": "warning",
+      "id": "cnpj-falhas",
+      "title": "Falhas de consulta CNPJ",
+      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
+      "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
+      "source": "cnpjs.json"
+    },
+    {
+      "severity": "warning",
       "id": "camara-despesa-sem-contrato",
       "title": "Fornecedores sem contrato vinculado automaticamente",
-      "detail": "7 dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 2 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 1 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
+      "detail": "7 dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
       "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "source": "camara_betha.json"
     },
@@ -49,7 +65,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
-      "detail": "6 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); SHA COMERCIO DE ALIMENTOS LTDA (R$ 1.7M); CAIXA ECONOMICA FEDERAL (R$ 1.5M); BRAVO LOCACOES E SERVICOS LTDA (R$ 1.5M).",
+      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); SHA COMERCIO DE ALIMENTOS LTDA (R$ 2.5M); CAIXA ECONOMICA FEDERAL (R$ 1.6M); BRAVO LOCACOES E SERVICOS LTDA (R$ 1.5M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json"
     },
@@ -57,7 +73,7 @@
       "severity": "warning",
       "id": "prefeitura-contratos-sem-competicao",
       "title": "Alto indice de contratacao sem competicao licitatoria",
-      "detail": "Contratos por Inexigibilidade ou Dispensa somam 21.6% (R$ 138.4M de R$ 640.0M).",
+      "detail": "Contratos por Inexigibilidade ou Dispensa somam 21.8% (R$ 140.1M de R$ 641.7M).",
       "action": "Auditar as maiores inexigibilidades (ex. IPD, Viacao Real, CNEC) e verificar a regularidade das justificativas de preco.",
       "source": "prefeitura.json"
     },
@@ -65,7 +81,81 @@
       "severity": "warning",
       "id": "emendas-sem-repasses",
       "title": "Emendas de alto valor sem repasse identificado",
-      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura (R$ 105k - Zilda Silva); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 93k - Cássio Chiodi); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 50k - Rogério Bueno).",
+      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
+      "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
+      "source": "prefeitura.json"
+    }
+  ],
+  "issues": [
+    {
+      "severity": "ok",
+      "id": "base-recente",
+      "title": "Base principal recente",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "action": "Manter rotina automatica ativa.",
+      "source": "atualizado_em.json"
+    },
+    {
+      "severity": "warning",
+      "id": "emendas-2026-sem-lista",
+      "title": "Emendas 2026 sem lista consolidada",
+      "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
+      "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
+      "source": "fontes_emendas_2026.json"
+    },
+    {
+      "severity": "warning",
+      "id": "indice-parcial",
+      "title": "Indice parlamentar parcial",
+      "detail": "A menor cobertura automatica do indice e 97.2%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.",
+      "action": "Nao tratar o ranking como definitivo; publicar sempre a cobertura junto da nota.",
+      "source": "indice_relevancia.json"
+    },
+    {
+      "severity": "info",
+      "id": "pncp-apoio",
+      "title": "PNCP usado como fonte auxiliar",
+      "detail": "A base PNCP serve para cruzamento e pode nao retornar todos os registros do municipio.",
+      "action": "Conferir manualmente no PNCP quando o contrato for sensivel.",
+      "source": "pncp.json"
+    },
+    {
+      "severity": "warning",
+      "id": "cnpj-falhas",
+      "title": "Falhas de consulta CNPJ",
+      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
+      "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
+      "source": "cnpjs.json"
+    },
+    {
+      "severity": "warning",
+      "id": "camara-despesa-sem-contrato",
+      "title": "Fornecedores sem contrato vinculado automaticamente",
+      "detail": "7 dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
+      "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
+      "source": "camara_betha.json"
+    },
+    {
+      "severity": "warning",
+      "id": "prefeitura-despesa-sem-contrato",
+      "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
+      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); SHA COMERCIO DE ALIMENTOS LTDA (R$ 2.5M); CAIXA ECONOMICA FEDERAL (R$ 1.6M); BRAVO LOCACOES E SERVICOS LTDA (R$ 1.5M).",
+      "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
+      "source": "prefeitura.json"
+    },
+    {
+      "severity": "warning",
+      "id": "prefeitura-contratos-sem-competicao",
+      "title": "Alto indice de contratacao sem competicao licitatoria",
+      "detail": "Contratos por Inexigibilidade ou Dispensa somam 21.8% (R$ 140.1M de R$ 641.7M).",
+      "action": "Auditar as maiores inexigibilidades (ex. IPD, Viacao Real, CNEC) e verificar a regularidade das justificativas de preco.",
+      "source": "prefeitura.json"
+    },
+    {
+      "severity": "warning",
+      "id": "emendas-sem-repasses",
+      "title": "Emendas de alto valor sem repasse identificado",
+      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
       "source": "prefeitura.json"
     }

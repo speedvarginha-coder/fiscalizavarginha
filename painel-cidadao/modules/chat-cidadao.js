@@ -1,5 +1,5 @@
 /* Fiscaliza Varginha — modules/chat-cidadao.js
- * Widget de chat com IA (Gemini via Netlify Function) + fallback por palavras-chave.
+ * Widget de chat com IA (Gemini via chat.php na Hostinger) + fallback por palavras-chave.
  * A chave da API nunca chega ao navegador.
  */
 (function () {
@@ -99,9 +99,8 @@
     });
   }
 
-  const EM_NETLIFY = location.hostname.includes("netlify.app");
-  const FUNC_URL = EM_NETLIFY ? "/.netlify/functions/chat" : "chat.php";
-  const USA_IA = EM_NETLIFY || location.hostname.includes("fiscaliza");
+  const FUNC_URL = "chat.php";
+  const USA_IA = location.hostname.includes("fiscaliza");
   const subtitle = document.getElementById("chatSubtitle");
   if (subtitle) subtitle.textContent = USA_IA ? "🤖 Gemini · dados de Varginha" : "📋 Respostas automáticas";
 

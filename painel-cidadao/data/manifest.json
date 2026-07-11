@@ -1,155 +1,257 @@
 {
-  "gerado_em": "2026-07-02T20:52:18.981Z",
+  "gerado_em": "2026-07-11T12:39:38.805Z",
   "chunks": {
-    "atualizacoes": {
-      "arquivo": "data/chunks/atualizacoes.json",
-      "bytes": 397,
-      "atualizado_em": "2026-05-21T21:44:27.931Z"
-    },
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
       "bytes": 76,
-      "atualizado_em": "2026-07-02T20:52:10.728Z"
+      "sha256": "c7c5b2100242eba1a49fe5d85d8d6d7a0caaccf1c4a86bea9aab0dc7b6bfef13"
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 3749,
-      "atualizado_em": "2026-07-02T20:52:18.084Z"
+      "bytes": 8534,
+      "sha256": "5e0b5833d9ea310967142b9b8bcc05d5316b01a0a1d5e1d539be9eece91bb5ac"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
-      "bytes": 1788998,
-      "atualizado_em": "2026-07-02T20:51:48.425Z"
+      "bytes": 2043332,
+      "sha256": "dc35876174317568b8388e8fc18a59bd628b4070b9ba38c4f0a0c8f925245513"
     },
     "camara_betha": {
       "arquivo": "data/chunks/camara_betha.json",
-      "bytes": 25728,
-      "atualizado_em": "2026-06-26T17:42:23.573Z"
+      "bytes": 37597,
+      "sha256": "31d5ce89a6b4c221185038a34aa9fd92059562db06e00d3ff10639965732a7fb"
     },
     "camara_transparencia": {
       "arquivo": "data/chunks/camara_transparencia.json",
       "bytes": 10387,
-      "atualizado_em": "2026-07-02T19:53:17.115Z"
+      "sha256": "35b3044ae36bc8e975d13cc3dbd6770efa2db5dd7699378bfa114b0c0e4c7094"
     },
     "cnpjs": {
       "arquivo": "data/chunks/cnpjs.json",
-      "bytes": 306,
-      "atualizado_em": "2026-07-02T19:53:17.118Z"
-    },
-    "convenios": {
-      "arquivo": "data/chunks/convenios.json",
-      "bytes": 4637,
-      "atualizado_em": "2026-06-25T16:13:05.449Z"
+      "bytes": 71194,
+      "sha256": "9b3e8c8048dff4ec5fb5084953a84a53d31e7ab224c32e1b749c5eb957030e07"
     },
     "diarias": {
       "arquivo": "data/chunks/diarias.json",
-      "bytes": 3823508,
-      "atualizado_em": "2026-06-26T17:40:12.685Z"
+      "bytes": 3957311,
+      "sha256": "49d740228bf564ac79e1d45a741e6fbc0ae61cfd1dfa3ce7fc44856534e2a644"
     },
     "diario": {
       "arquivo": "data/chunks/diario.json",
       "bytes": 23557,
-      "atualizado_em": "2026-07-02T19:53:13.864Z"
-    },
-    "educacao": {
-      "arquivo": "data/chunks/educacao.json",
-      "bytes": 3190,
-      "atualizado_em": "2026-06-25T16:13:05.450Z"
+      "sha256": "d485b85c4a1186f3c23123174c57ece620836c5a318871a27c187d1610bf99bb"
     },
     "emendas": {
       "arquivo": "data/chunks/emendas.json",
-      "bytes": 191424,
-      "atualizado_em": "2026-07-02T20:51:48.386Z"
+      "bytes": 191387,
+      "sha256": "a0fddaa44b0bd78a31880eb8a35964818fd2913b92c9a519e73a94dff6696fc6"
     },
     "federal": {
       "arquivo": "data/chunks/federal.json",
-      "bytes": 507347,
-      "atualizado_em": "2026-07-02T20:52:10.582Z"
+      "bytes": 507770,
+      "sha256": "512e780294a7de1d3862fe9f9ed4b191a1e870a741e99fb16a408857c46908a0"
     },
     "fontes_emendas_2026": {
       "arquivo": "data/chunks/fontes_emendas_2026.json",
-      "bytes": 8954,
-      "atualizado_em": "2026-07-02T19:54:47.716Z"
+      "bytes": 8468,
+      "sha256": "d38d272bca879c571b119d1c3b60003568002ebaa6057a10b3743d07497d5f4c"
     },
     "fundacao_cultural": {
       "arquivo": "data/chunks/fundacao_cultural.json",
-      "bytes": 1203678,
-      "atualizado_em": "2026-06-26T17:42:43.648Z"
+      "bytes": 1205952,
+      "sha256": "f83723b07bb6ff18e52a44a971bb3411ea830c0722ce335c0a57704ab5f47c70"
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
-      "bytes": 86472,
-      "atualizado_em": "2026-06-27T14:11:26.560Z"
-    },
-    "licitacoes": {
-      "arquivo": "data/chunks/licitacoes.json",
-      "bytes": 21815,
-      "atualizado_em": "2026-06-25T16:13:05.451Z"
+      "bytes": 102851,
+      "sha256": "2a1b9e91dd348e162390006f9bf8346f30d3b3fe7f0b0b795ab1625db26fc979"
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
-      "bytes": 894,
-      "atualizado_em": "2026-07-02T20:52:18.980Z"
-    },
-    "obras_educacao": {
-      "arquivo": "data/chunks/obras_educacao.json",
-      "bytes": 6168,
-      "atualizado_em": "2026-06-25T16:13:05.451Z"
+      "bytes": 857,
+      "sha256": "e7ca4447830c06ae5f0191af43a874e8da90904530b166dda24ce60d0b75371a"
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
-      "bytes": 2507724,
-      "atualizado_em": "2026-07-02T19:54:21.715Z"
+      "bytes": 2512622,
+      "sha256": "f4e6b2db57bbea6b049ce736d803af6a18a55f4fbb72f79a6a7413fd0240818c"
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
-      "bytes": 38958,
-      "atualizado_em": "2026-07-02T19:53:15.358Z"
+      "bytes": 8636,
+      "sha256": "6072667c5a1748cf6cafd66cc7600094dbde56d73f05f7256100d05b52fb168e"
     },
     "prefeitura": {
       "arquivo": "data/chunks/prefeitura.json",
-      "bytes": 4793504,
-      "atualizado_em": "2026-06-26T17:42:15.244Z"
+      "bytes": 4822268,
+      "sha256": "0d7d32fdd510b56ec659dc3e0b3ee2a44e83403da83e7dca3c0b1e3e3bc3dbd0"
     },
     "publicacoes_diario": {
       "arquivo": "data/chunks/publicacoes_diario.json",
-      "bytes": 1513944,
-      "atualizado_em": "2026-06-25T16:13:05.431Z"
+      "bytes": 153953,
+      "sha256": "9e6dcfa8daef2e8540a746a11bdeb8136d59b4529b9cd33b8ba76d92be7e4c50"
     },
     "publicacoes_estruturadas": {
       "arquivo": "data/chunks/publicacoes_estruturadas.json",
-      "bytes": 1386669,
-      "atualizado_em": "2026-06-25T16:13:05.448Z"
+      "bytes": 1446421,
+      "sha256": "2ffa24e83a0b1eeed2e9985cf802ef384a17b04b49a41c1fe9e4762ed5ae7d69"
     },
     "receitas": {
       "arquivo": "data/chunks/receitas.json",
       "bytes": 8716,
-      "atualizado_em": "2026-06-25T16:13:05.452Z"
+      "sha256": "a82e5aaaef0d1a0c39751154326dc42690ca88ce1c8e18df1dd736e34ae37fe4"
     },
     "remuneracao_vereadores": {
       "arquivo": "data/chunks/remuneracao_vereadores.json",
       "bytes": 1804,
-      "atualizado_em": "2026-06-25T16:13:05.410Z"
+      "sha256": "b6f42afe20ba0a48608f34125be4d7c5be483c082fca85799cc6df85414284c7"
     },
     "resumo": {
       "arquivo": "data/chunks/resumo.json",
-      "bytes": 2426,
-      "atualizado_em": "2026-07-02T20:51:48.379Z"
+      "bytes": 2429,
+      "sha256": "398bb0ed2df7bb022456512e1d78f82b7a47a001379a12107aa718d9e153ae4d"
     },
     "sancoes_fornecedores": {
       "arquivo": "data/chunks/sancoes_fornecedores.json",
       "bytes": 624,
-      "atualizado_em": "2026-06-25T16:13:05.452Z"
+      "sha256": "978435b0d189fa2740ea9a83d41538dfe0949d508dc92d248cc8f5ef85db46a3"
+    },
+    "status_fontes": {
+      "arquivo": "data/chunks/status_fontes.json",
+      "bytes": 3176,
+      "sha256": "02fbdffd6577b66e5f7dbb4630c1d134ceb4dd4419ad103801974fa05cc2c67c"
     },
     "vereadores": {
       "arquivo": "data/chunks/vereadores.json",
-      "bytes": 7263,
-      "atualizado_em": "2026-07-02T20:51:48.381Z"
+      "bytes": 7592,
+      "sha256": "959722b1bac0c71b70d5b9137eb69382167caadfed7b32ca373c95c159ae2328"
     }
   },
   "snapshots": {
     "diretorio": "data/snapshots",
     "total": 30,
-    "ultimo": "2026-07-02T17-52-10-8eddd184.json"
+    "ultimo": "2026-07-11T09-39-25-719a1bbb.json",
+    "arquivos": {
+      "2026-06-15T06-45-33-7aa075ec.json": {
+        "bytes": 635409,
+        "sha256": "7985bd403e50b4b96a8452ae068b3fd35400e9317d77a48d865e1ca7cd98101f"
+      },
+      "2026-06-15T07-26-03-558fccf6.json": {
+        "bytes": 635410,
+        "sha256": "9dd3ed8865277ecf8b92f39d28ceb2a6a0ac8646885679235088959ab1b07bee"
+      },
+      "2026-06-15T07-26-03-7aa075ec.json": {
+        "bytes": 635409,
+        "sha256": "970646b54e80b66c7627d34384cfb520240929c3e7cf09416c966e24987d941a"
+      },
+      "2026-06-15T21-47-06-8aa92e72.json": {
+        "bytes": 651174,
+        "sha256": "2146c9e9dba4e2a8780233745feead28ef01caedf319db540aa03155f849b77a"
+      },
+      "2026-06-15T21-47-06-c1753de3.json": {
+        "bytes": 651175,
+        "sha256": "9853bf9fa494120db003e4819593d65361bed1db854ed93ede643105ca70df63"
+      },
+      "2026-06-16T06-48-15-0c4bf63c.json": {
+        "bytes": 651174,
+        "sha256": "00bb81b5f15c36714a600ed21f281f7ac8450d3ccfc52ccf71c569565b9290b4"
+      },
+      "2026-06-17T01-20-03-718e74b2.json": {
+        "bytes": 653324,
+        "sha256": "b736cb8e407954a202409ec4661dd200ef3acf18be6d4fed4d140e478834cf9f"
+      },
+      "2026-06-17T06-44-37-8bb8ad1b.json": {
+        "bytes": 653324,
+        "sha256": "72d457dcdbb7475eed0127b41d97afb54ad1232f3c2fce5fb6ad79aabb8a2cb6"
+      },
+      "2026-06-17T11-25-35-0cd9b6d4.json": {
+        "bytes": 661909,
+        "sha256": "275fe30398bd3d10aab74ed263ba4373dfb18ac38725b0c3c93407fcd571cb44"
+      },
+      "2026-06-17T16-21-47-0efb0b1d.json": {
+        "bytes": 646065,
+        "sha256": "c684192b08965931bce5aa1e0625eab4715c84b196e71f2da059857bbcfb8240"
+      },
+      "2026-06-18T06-45-17-9ba5861b.json": {
+        "bytes": 646065,
+        "sha256": "7c7f72e5bc6e5e54cd0ee39986d3a4672364e97bbd5b7c0ec3cca34ffb637a25"
+      },
+      "2026-06-18T19-17-23-4c39be16.json": {
+        "bytes": 646065,
+        "sha256": "3312a971974673ddb257061cf962bebaba9e7fa24d732519edb44fabdb13e36c"
+      },
+      "2026-06-18T22-18-13-4c39be16.json": {
+        "bytes": 646065,
+        "sha256": "1910f8186c6786e0ecdff1c8d65724b1cdb2d0577a337d4a4b7813ca831387a5"
+      },
+      "2026-06-19T07-16-47-4c39be16.json": {
+        "bytes": 646065,
+        "sha256": "d1b3ca8bf82ec879738da45a738da1b7f22dda79f278b0052b785ff49876eacc"
+      },
+      "2026-06-25T10-17-36-f123b68c.json": {
+        "bytes": 950852,
+        "sha256": "fcf598edd10092d7a18a7445b9443cc5721729b70fd479f11c7c0fc6a0366f41"
+      },
+      "2026-06-25T12-10-35-55b10f89.json": {
+        "bytes": 975644,
+        "sha256": "fd81c9d76dc40474017ad0962831a290884f9d5d10c0d9c45e3898dbf7fde69c"
+      },
+      "2026-06-26T14-43-30-0ee948fb.json": {
+        "bytes": 976102,
+        "sha256": "2d952f5ce1a1b8ce39bde76c65172e70052589fc7dd8367aa77e406c985f9b13"
+      },
+      "2026-07-02T16-55-10-8eddd184.json": {
+        "bytes": 951303,
+        "sha256": "a1ccf6e746b5574fed7460817fdf9ed1ddf6174e110061c60decc59df2547b52"
+      },
+      "2026-07-02T17-52-10-8eddd184.json": {
+        "bytes": 951303,
+        "sha256": "76c0ceeb692a71874d8571f7503a45378adc8f853d751e19b1783bc40a66a7b4"
+      },
+      "2026-07-06T14-43-03-d1564643.json": {
+        "bytes": 959123,
+        "sha256": "3e17bab71ce1e733e4cb6810d8238ff5a3fd042375559318e3f0973cfce9a2f5"
+      },
+      "2026-07-06T17-50-03-8a5a45f8.json": {
+        "bytes": 959571,
+        "sha256": "fa85660775357e8a470da498d55403b72b32dd069f271d28a4fc5133b944dbb3"
+      },
+      "2026-07-07T06-42-41-149b5e85.json": {
+        "bytes": 959529,
+        "sha256": "9d769cc16d14f0ebc7950f93157ffe4884c7f39605363dabed445b0eeafb5b6e"
+      },
+      "2026-07-07T14-45-14-70e178b8.json": {
+        "bytes": 959526,
+        "sha256": "12b8a6bde72bee8a606b134075e9fb20d492ef5d3a1769488546b0f68104e189"
+      },
+      "2026-07-08T03-42-50-bdf3db1a.json": {
+        "bytes": 959523,
+        "sha256": "14a9079f541c4a1615eb690d570905eb40c95214f1608402423781dac29bca44"
+      },
+      "2026-07-08T23-43-27-e98621ff.json": {
+        "bytes": 960085,
+        "sha256": "c77d85908effa4c8dd0fd83b89054f4a1adc5c02161581c53413c0bb67c97017"
+      },
+      "2026-07-09T13-43-26-90d0fc68.json": {
+        "bytes": 966170,
+        "sha256": "7c0f3c2427c2c19339ae82e83e1c531e6d268855eb7e3f441ccea7cc39cc771f"
+      },
+      "2026-07-10T18-51-24-40daa078.json": {
+        "bytes": 966572,
+        "sha256": "84d53cc2a265a54a4c03cca64842f899cedb849645d3af2fe525e25ec8af19bc"
+      },
+      "2026-07-10T19-04-29-fad386c9.json": {
+        "bytes": 966569,
+        "sha256": "19d237eea42bd5e2b6f659508c85e756b79b9bb414b9be06fb01e3c7dbdd93ea"
+      },
+      "2026-07-11T07-41-08-1f32824a.json": {
+        "bytes": 966569,
+        "sha256": "2644870ed180ec4b42d31b5a11b0f25123484ba1f83b48dbb40deaea52da5d2b"
+      },
+      "2026-07-11T09-39-25-719a1bbb.json": {
+        "bytes": 966571,
+        "sha256": "3827f4ef822880221f1446d9bdd833d515776488c464193345c9c9ab6ae8b5ea"
+      }
+    }
   }
 }

@@ -45,7 +45,7 @@ npm run data:schedule:watch
 # atualizar dados (precisa de Python + tokens Betha)
 cd painel-cidadao
 py coletor.py
-# o coletor já atualiza data.js, data/chunks/ e data/manifest.json
+# o coletor atualiza data/chunks/ e data/manifest.json
 ```
 
 ---
@@ -61,7 +61,7 @@ py coletor.py
 └── .gitignore        Proteção contra commit de segredos
 ```
 
-**Produto oficial:** a versão publicada é sempre `painel-cidadao/`, empacotada por `npm run deploy:zip`.
+**Produto oficial:** a versão publicada é sempre o pacote `dist/fiscaliza-varginha-painel.zip`, gerado por `npm run deploy:zip` e aprovado por `npm run validate:deploy` (ambos executados por `npm run release`). O destino suportado é Hostinger/Apache.
 O diretório `dashboard/`, quando existir, deve ser tratado como laboratório/migração futura e não entra no pacote oficial enquanto não houver plano de migração documentado.
 
 ---
@@ -74,7 +74,7 @@ O diretório `dashboard/`, quando existir, deve ser tratado como laboratório/mi
 | [docs/fontes-de-dados.md](docs/fontes-de-dados.md) | De onde vem cada número |
 | [docs/como-atualizar.md](docs/como-atualizar.md) | Rodar o coletor e gerar novos dados |
 | [docs/automacao-de-dados.md](docs/automacao-de-dados.md) | Atualizacao automatica, vigia, logs e rollback |
-| [docs/como-publicar.md](docs/como-publicar.md) | Deploy em Hostinger/Netlify/GitHub Pages |
+| [docs/como-publicar.md](docs/como-publicar.md) | Deploy do pacote validado em Hostinger/Apache |
 | [docs/checklist-publicacao.md](docs/checklist-publicacao.md) | Conferir antes de cada deploy |
 
 ---

@@ -18,7 +18,10 @@
     "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "licitacoes"],
     "fundacao":     ["fundacao_cultural", "atualizado_em", "auditoria_dados", "diario", "prefeitura", "camara_betha"],
     "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados"],
-    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "pessoal"],
+    // "receitas" removido: o chunk mistura arrecadação acumulada de vários anos
+    // (ISSQN R$ 2,1 bi vs orçado 379M) e nada na página o renderiza — não publicar
+    // até a coleta filtrar o exercício corrente.
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "educacao", "licitacoes", "convenios", "obras_educacao", "pessoal"],
     "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
@@ -77,7 +80,7 @@
   }
 
   // Chunks opcionais (novos): falha silenciosa, não derruba toda a página
-  const CHUNKS_OPCIONAIS = new Set(["educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "publicacoes_estruturadas", "publicacoes_diario"]);
+  const CHUNKS_OPCIONAIS = new Set(["atualizacoes", "educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "publicacoes_estruturadas", "publicacoes_diario"]);
 
   function fetchChunk(key) {
     return fetch("data/chunks/" + key + ".json?v=" + ts, { cache: "default" })

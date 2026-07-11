@@ -1,6 +1,8 @@
 param(
   [switch]$SkipTests,
   [switch]$SkipPackage,
+  [switch]$SkipDeploy,
+  [switch]$SkipWhatsApp,
   [switch]$OnlyIfChanged,
 
   [ValidateSet("Full", "Sapl", "NoHeavy")]
@@ -18,6 +20,10 @@ $backupRoot = Join-Path $root "private\backups"
 $lockPath = Join-Path $logDir "coleta.lock"
 $logPath = Join-Path $logDir ("coleta-" + (Get-Date -Format "yyyy-MM-dd") + ".log")
 $backupPath = $null
+$lockToken = $null
+$collectionStatus = "NAO_INICIADA"
+$deployStatus = "PULADO"
+$whatsAppStatus = "PULADO"
 
 New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 New-Item -ItemType Directory -Force -Path $backupRoot | Out-Null
@@ -34,18 +40,35 @@ function Invoke-AndLog {
     [string]$Label,
     [string]$FilePath,
     [string[]]$Arguments,
-    [string]$WorkingDirectory
+    [string]$WorkingDirectory,
+    [int]$Retries = 0
   )
 
-  Write-Log $Label
-  Push-Location $WorkingDirectory
-  try {
-    & $FilePath @Arguments 2>&1 | ForEach-Object { Write-Log $_ }
-    if ($LASTEXITCODE -ne 0) {
-      throw "$Label falhou com codigo $LASTEXITCODE"
+  # PS 5.1: com $ErrorActionPreference=Stop, QUALQUER linha de stderr de um exe
+  # nativo vira ErrorRecord terminante e mata o script no meio do pipeline
+  # (foi assim que o aviso do libuv derrubava o vigia). Aqui stderr só loga;
+  # falha de verdade é decidida pelo exit code.
+  $tentativa = 0
+  while ($true) {
+    $tentativa++
+    Write-Log $Label
+    Push-Location $WorkingDirectory
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
+    try {
+      & $FilePath @Arguments 2>&1 | ForEach-Object { Write-Log "$_" }
+      $code = $LASTEXITCODE
+    } finally {
+      $ErrorActionPreference = $prevEAP
+      Pop-Location
     }
-  } finally {
-    Pop-Location
+    if ($code -eq 0) { return }
+    if ($tentativa -le $Retries) {
+      Write-Log "$Label falhou com codigo $code; nova tentativa ($tentativa/$Retries) em 15s (falhas transitorias de arquivo/rede passam na segunda)."
+      Start-Sleep -Seconds 15
+      continue
+    }
+    throw "$Label falhou com codigo $code"
   }
 }
 
@@ -70,6 +93,25 @@ function Restore-PublishedDataBackup {
   if (-not $Backup -or -not (Test-Path $Backup)) {
     Write-Log "Sem backup disponivel para rollback."
     return
+  }
+
+  # Antes de restaurar, preserva a coleta rejeitada em quarentena: o rollback
+  # deixa de DESTRUIR dados novos (em 08/07 uma falha transitoria do audit
+  # descartou uma coleta boa inteira). A quarentena permite inspecionar/reaproveitar.
+  try {
+    $qStamp = Get-Date -Format "yyyyMMdd-HHmmss"
+    $quarentena = Join-Path $backupRoot ("rejeitada-" + $qStamp)
+    New-Item -ItemType Directory -Force -Path $quarentena | Out-Null
+    if (Test-Path $dataDir) {
+      Copy-Item -LiteralPath $dataDir -Destination (Join-Path $quarentena "data") -Recurse -Force
+    }
+    if (Test-Path $dataJs) {
+      Copy-Item -LiteralPath $dataJs -Destination (Join-Path $quarentena "data.js") -Force
+    }
+    Write-Log "Coleta rejeitada preservada em quarentena: $quarentena"
+  } catch {
+    # Quarentena e melhor-esforco: se falhar, o rollback abaixo continua valendo.
+    Write-Log "Aviso: nao foi possivel preservar a coleta rejeitada: $_"
   }
 
   $backupData = Join-Path $Backup "data"
@@ -102,28 +144,62 @@ function Invoke-SourceProbe {
   $args = @("scripts/check-source-updates.mjs")
   if ($Record) { $args += "--record" }
 
+  # Mesmo cuidado do Invoke-AndLog: o node do probe às vezes crasha NA SAÍDA
+  # (assertion libuv async.c) depois de já ter impresso o resultado. O texto do
+  # crash vai para stderr e não pode abortar o vigia — só o exit code decide,
+  # e exit != 0 já cai no caminho seguro "seguir com coleta".
   Push-Location $root
+  $prevEAP = $ErrorActionPreference
+  $ErrorActionPreference = "Continue"
   try {
-    & node @args 2>&1 | ForEach-Object { Write-Log $_ }
+    & node @args 2>&1 | ForEach-Object { Write-Log "$_" }
     return $LASTEXITCODE
   } finally {
+    $ErrorActionPreference = $prevEAP
     Pop-Location
   }
 }
 
-if (Test-Path $lockPath) {
-  $lockAge = (Get-Date) - (Get-Item -LiteralPath $lockPath).LastWriteTime
-  if ($lockAge.TotalHours -lt 6) {
-    Write-Log "Outra coleta parece estar em andamento. Lock: $lockPath"
-    exit 2
+function Acquire-Lock {
+  for ($attempt = 0; $attempt -lt 2; $attempt++) {
+    $token = "{0}|{1}|{2}|{3}" -f $PID, $env:COMPUTERNAME, (Get-Date).ToUniversalTime().ToString("o"), ([guid]::NewGuid())
+    try {
+      $stream = New-Object System.IO.FileStream($lockPath, [System.IO.FileMode]::CreateNew, [System.IO.FileAccess]::Write, [System.IO.FileShare]::Read)
+      try {
+        $bytes = [System.Text.Encoding]::UTF8.GetBytes($token)
+        $stream.Write($bytes, 0, $bytes.Length)
+        $stream.Flush()
+      } finally {
+        $stream.Dispose()
+      }
+      return $token
+    } catch [System.IO.IOException] {
+      if (-not (Test-Path -LiteralPath $lockPath)) { continue }
+      $lockAge = (Get-Date) - (Get-Item -LiteralPath $lockPath).LastWriteTime
+      if ($lockAge.TotalHours -lt 3) {
+        throw "Outra coleta parece estar em andamento. Lock: $lockPath"
+      }
+      Write-Log "Lock antigo detectado; tentando remover com seguranca."
+      $staleStream = New-Object System.IO.FileStream($lockPath, [System.IO.FileMode]::Open, [System.IO.FileAccess]::ReadWrite, [System.IO.FileShare]::None, 4096, [System.IO.FileOptions]::DeleteOnClose)
+      $staleStream.Dispose()
+    }
   }
-  Write-Log "Lock antigo detectado; removendo."
-  Remove-Item -LiteralPath $lockPath -Force
+  throw "Nao foi possivel adquirir lock exclusivo: $lockPath"
 }
 
-Set-Content -LiteralPath $lockPath -Value (Get-Date -Format "o") -Encoding UTF8
+if ($SkipPackage -and -not $SkipDeploy) {
+  throw "Deploy bloqueado: -SkipPackage exige -SkipDeploy, pois somente pacote validado no mesmo ciclo pode ser publicado."
+}
 
 try {
+  $lockToken = Acquire-Lock
+} catch {
+  Write-Log $_.Exception.Message
+  exit 2
+}
+
+try {
+  $collectionStatus = "EM_ANDAMENTO"
   Write-Log "Iniciando coleta automatica."
   Write-Log "Projeto: $root"
   Write-Log "Modo do coletor: $CollectorMode"
@@ -154,6 +230,23 @@ try {
     -Arguments $collectorArgs `
     -WorkingDirectory $painel
 
+  # Os chunks estruturados alimentam o feed cidadão e o WhatsApp, mas são
+  # gerados por coletores próprios. Ambos operam de forma incremental: itens
+  # antigos enriquecidos são reutilizados e apenas novidades usam IA.
+  Invoke-AndLog `
+    -Label "Atualizando publicacoes estruturadas da Camara (incremental)." `
+    -FilePath "python" `
+    -Arguments @("-u", "coletor_publicacoes.py") `
+    -WorkingDirectory $painel
+
+  if ($CollectorMode -ne "Sapl") {
+    Invoke-AndLog `
+      -Label "Atualizando publicacoes estruturadas do Diario Oficial (incremental)." `
+      -FilePath "python" `
+      -Arguments @("-u", "coletor_diario.py", "--edicoes", "3") `
+      -WorkingDirectory $painel
+  }
+
   Push-Location $root
   try {
     Invoke-AndLog `
@@ -176,7 +269,8 @@ try {
       -Label "Validando dados e sincronizando bundle offline." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "validate:data") `
-      -WorkingDirectory $root
+      -WorkingDirectory $root `
+      -Retries 1
 
     if ($previousChunks) {
       Remove-Item Env:\FISCALIZA_PREVIOUS_CHUNKS -ErrorAction SilentlyContinue
@@ -188,7 +282,8 @@ try {
       -Label "Gate rápido de dados (sintaxe + cálculos)." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "test:data") `
-      -WorkingDirectory $root
+      -WorkingDirectory $root `
+      -Retries 1
 
     if (-not $SkipTests) {
       Invoke-AndLog `
@@ -210,6 +305,8 @@ try {
         -FilePath "npm.cmd" `
         -Arguments @("run", "validate:deploy") `
         -WorkingDirectory $root
+
+      $packageValidated = $true
     }
   } finally {
     Pop-Location
@@ -221,22 +318,57 @@ try {
     Write-Log "Aviso: registro de assinaturas retornou codigo $recordCode."
   }
 
-  Write-Log "Disparando alertas automatizados para o WhatsApp."
-  try {
-    & python (Join-Path $painel "alertar_whatsapp.py") 2>&1 | ForEach-Object { Write-Log $_ }
-  } catch {
-    Write-Log "Aviso: falha ao enviar alertas do WhatsApp: $_"
+  if ($SkipDeploy) {
+    Write-Log "Deploy automatico pulado por -SkipDeploy."
+  } else {
+    if (-not $packageValidated) { throw "Deploy bloqueado: pacote nao validado neste ciclo." }
+    Write-Log "Iniciando deploy automatico para o servidor de producao (Hostinger)..."
+    try {
+      Invoke-AndLog `
+        -Label "Publicando exclusivamente dist/painel-cidadao e executando health check." `
+        -FilePath "python" `
+        -Arguments @((Join-Path $root "private\deploy_completo.py")) `
+        -WorkingDirectory $root
+      $deployStatus = "SUCESSO"
+    } catch {
+      $deployStatus = "FALHA"
+      Write-Log "ERRO de deploy: $_"
+    }
+  }
+
+  $collectionStatus = "SUCESSO"
+  if ($SkipWhatsApp) {
+    Write-Log "Disparo de WhatsApp pulado por -SkipWhatsApp."
+  } else {
+    Write-Log "Disparando alertas automatizados para o WhatsApp."
+    try {
+      Invoke-AndLog `
+        -Label "Enviando alertas do WhatsApp." `
+        -FilePath "python" `
+        -Arguments @((Join-Path $painel "alertar_whatsapp.py")) `
+        -WorkingDirectory $painel
+      $whatsAppStatus = "SUCESSO"
+    } catch {
+      $whatsAppStatus = "FALHA"
+      Write-Log "ERRO de WhatsApp: $_"
+    }
   }
 
   Remove-OldBackups
-  Write-Log "Coleta automatica concluida com sucesso."
+  Write-Log "RESUMO: coleta=$collectionStatus deploy=$deployStatus whatsapp=$whatsAppStatus"
+  if ($deployStatus -eq "FALHA" -or $whatsAppStatus -eq "FALHA") { exit 1 }
   exit 0
 } catch {
+  $collectionStatus = "FALHA"
   Write-Log ("ERRO: " + $_.Exception.Message)
   Restore-PublishedDataBackup -Backup $backupPath
+  Write-Log "RESUMO: coleta=$collectionStatus deploy=$deployStatus whatsapp=$whatsAppStatus"
   exit 1
 } finally {
-  if (Test-Path $lockPath) {
-    Remove-Item -LiteralPath $lockPath -Force
+  if ($lockToken -and (Test-Path -LiteralPath $lockPath)) {
+    $currentToken = [System.IO.File]::ReadAllText($lockPath, [System.Text.Encoding]::UTF8)
+    if ($currentToken -eq $lockToken) {
+      Remove-Item -LiteralPath $lockPath -Force
+    }
   }
 }

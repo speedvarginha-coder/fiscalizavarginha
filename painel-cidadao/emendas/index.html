@@ -6,7 +6,7 @@
     <title>Emendas municipais, estaduais e federais · Fiscaliza Varginha</title>
     <meta name="description" content="Consulta de emendas municipais, estaduais e federais destinadas a Varginha-MG: quem recebeu, valor, objeto e situação." />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=20260703h_final" />
+    <link rel="stylesheet" href="styles.css?v=20260708" />
   </head>
   <body>
     <header class="site-nav">
@@ -25,6 +25,7 @@
         <a href="../relatorios.html">Relatórios</a>
         <a href="../pessoal.html">Pessoal</a>
         <a href="../sobre.html">Sobre</a>
+        <a href="../conformidade.html">Conformidade</a>
         <a href="../cobrar.html" class="site-nav__cta">Como cobrar</a>
       </nav>
     </header>
@@ -223,37 +224,50 @@
         </article>
         <article class="panel">
           <div class="panel-title">
-            <h2>Quem mais enviou emendas</h2>
+            <h2>Vereadores de Varginha</h2>
             <span id="authorTotal">parlamentares</span>
           </div>
           <div class="panel-filters" id="authorCargoFilters">
-            <button class="rank-chip active" data-cargo="todos" type="button">Todos</button>
-            <button class="rank-chip" data-cargo="Vereador" type="button">Vereadores</button>
-            <button class="rank-chip" data-cargo="DepEstadual" type="button">Dep. Estaduais</button>
-            <button class="rank-chip" data-cargo="DepFederal" type="button">Dep. Federais</button>
-            <button class="rank-chip" data-cargo="Senador" type="button">Senadores</button>
-            <select id="rankYearAuthor" class="rank-year" aria-label="Filtrar ranking por ano">
+            <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+              <span class="muted" style="font-size: 0.85em;">Ordenar por:</span>
+              <button class="rank-chip active" data-sort="valor" type="button">Valor</button>
+              <button class="rank-chip" data-sort="quantidade" type="button">Quantidade</button>
+            </div>
+            <select id="rankYearAuthor" class="rank-year" aria-label="Filtrar ranking por ano" style="margin-left: auto;">
               <option value="">Todos os anos</option>
             </select>
           </div>
+          <div id="authorSum" class="rank-sum" style="font-size: 0.9em; margin-bottom: 12px; color: #4b5563; background: #f3f4f6; padding: 6px 10px; border-radius: 6px; display: none; align-items: center; gap: 6px;"></div>
           <div id="authorRanking" class="ranking-list"></div>
         </article>
         <article class="panel">
           <div class="panel-title">
-            <h2>Deputados (Federal/Estadual)</h2>
+            <h2>Deputados e Senadores (Estadual/Federal)</h2>
             <span id="deputyTotal">por valor total</span>
           </div>
           <div class="panel-filters" id="deputyCategoryFilters">
+            <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+              <span class="muted" style="font-size: 0.85em;">Ordenar:</span>
+              <button class="rank-chip active" data-sort="valor" type="button">Valor</button>
+              <button class="rank-chip" data-sort="quantidade" type="button">Qtd</button>
+            </div>
+            <div style="width: 1px; height: 16px; background: #e5e7eb; margin: 0 4px;"></div>
+            <button class="rank-chip active" data-cargo="todos" type="button">Todos os cargos</button>
+            <button class="rank-chip" data-cargo="DepFederal" type="button">Dep. Federal</button>
+            <button class="rank-chip" data-cargo="DepEstadual" type="button">Dep. Estadual</button>
+            <button class="rank-chip" data-cargo="Senador" type="button">Senador</button>
+            <div style="width: 1px; height: 16px; background: #e5e7eb; margin: 0 4px;"></div>
             <button class="rank-chip active" data-categoria="todos" type="button">Todos os tipos</button>
             <button class="rank-chip" data-categoria="Transferência Especial (Pix)" type="button">Pix</button>
             <button class="rank-chip" data-categoria="Individual com Finalidade Definida" type="button">Individual</button>
             <button class="rank-chip" data-categoria="Bancada" type="button">Bancada</button>
             <button class="rank-chip" data-categoria="Comissão" type="button">Comissão</button>
             <button class="rank-chip" data-categoria="Relator" type="button">Relator</button>
-            <select id="rankYearDeputy" class="rank-year" aria-label="Filtrar ranking por ano">
+            <select id="rankYearDeputy" class="rank-year" aria-label="Filtrar ranking por ano" style="margin-left: auto;">
               <option value="">Todos os anos</option>
             </select>
           </div>
+          <div id="deputySum" class="rank-sum" style="font-size: 0.9em; margin-bottom: 12px; color: #4b5563; background: #f3f4f6; padding: 6px 10px; border-radius: 6px; display: none; align-items: center; gap: 6px;"></div>
           <div id="deputyRanking" class="ranking-list"></div>
         </article>
         <article class="panel">
@@ -374,8 +388,9 @@
       <div class="site-footer__bottom">Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</div>
     </footer>
 
-    <script src="data/emendas.js?v=20260703h_final"></script>
-    <script src="data/emendas_federais.js?v=20260703h_final"></script>
-    <script src="app.js?v=20260703h_final"></script>
+    <script src="data/emendas.js?v=20260708a"></script>
+    <script src="data/emendas_municipais_atuais.js?v=20260708a"></script>
+    <script src="data/emendas_federais.js?v=20260708a"></script>
+    <script src="app.js?v=20260708a"></script>
   </body>
 </html>

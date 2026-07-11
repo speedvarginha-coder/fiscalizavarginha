@@ -9,6 +9,7 @@ const QRCode = require('qrcode');
 const path = require('path');
 const fs = require('fs');
 const http = require('http'); // Importado para comunicação Master/Réplica
+const crypto = require('crypto');
 
 const app = express();
 app.use(express.json());
@@ -37,7 +38,7 @@ function proxyRequestToMaster(req, res, targetUrl) {
     
     proxyReq.on('error', (err) => {
         console.error('Erro de proxy para o Master:', err.message);
-        res.status(502).json({ error: 'Erro de comunicação interna entre instâncias.', details: err.message });
+        res.status(502).json({ error: 'Erro de comunicação interna entre instâncias.' });
     });
     
     if (req.body && Object.keys(req.body).length > 0) {
@@ -58,16 +59,25 @@ app.use((req, res, next) => {
 });
 
 const PORT = 8080;
-// Chave lida de env (WHATSAPP_API_KEY) ou de whatsapp-bridge/.apikey — ambos FORA do git.
-// Fallback antigo só durante a transição; remover quando o .apikey estiver no ar.
+const HOST = process.env.HOST || '127.0.0.1';
+const MIN_API_KEY_LENGTH = 48;
 const API_KEY = (() => {
-    if (process.env.WHATSAPP_API_KEY) return process.env.WHATSAPP_API_KEY.trim();
-    try { return fs.readFileSync(path.join(__dirname, '.apikey'), 'utf8').trim(); }
-    catch (e) {
-        console.warn('AVISO: sem WHATSAPP_API_KEY nem .apikey — usando chave de transicao (fraca).');
-        return 'fiscaliza_varginha_secret_key_123';
+    let key = process.env.WHATSAPP_API_KEY?.trim();
+    if (!key) {
+        try {
+            key = fs.readFileSync(path.join(__dirname, '.apikey'), 'utf8').trim();
+        } catch (err) {
+            // A mensagem deliberadamente não inclui caminhos ou valores sensíveis.
+        }
     }
+
+    if (!key || key.length < MIN_API_KEY_LENGTH) {
+        console.error(`WHATSAPP_API_KEY ou .apikey deve conter uma chave nova com pelo menos ${MIN_API_KEY_LENGTH} caracteres.`);
+        process.exit(1);
+    }
+    return key;
 })();
+const CSRF_TOKEN = crypto.randomBytes(32).toString('base64url');
 
 let sock = null;
 let qrCodeDataUrl = null;
@@ -204,17 +214,35 @@ async function connectToWhatsApp() {
 // Start WhatsApp Connection
 // (Iniciada de forma controlada através da eleição de Master na porta privada)
 
-// API Key Middleware
-// TRANSICAO: aceita a chave forte (API_KEY) e a antiga temporariamente, para não
-// quebrar enquanto o .apikey/config novo não estiver no ar em todos os lados.
-// Depois de tudo migrado, remover 'CHAVE_ANTIGA_TRANSICAO'.
-const CHAVE_ANTIGA_TRANSICAO = 'fiscaliza_varginha_secret_key_123';
+function safeEqual(candidate, expected) {
+    const candidateBuffer = Buffer.from(candidate || '');
+    const expectedBuffer = Buffer.from(expected);
+    return candidateBuffer.length === expectedBuffer.length && crypto.timingSafeEqual(candidateBuffer, expectedBuffer);
+}
+
 function checkApiKey(req, res, next) {
-    const authHeader = req.headers['apikey'];
-    if (authHeader === API_KEY || authHeader === CHAVE_ANTIGA_TRANSICAO) {
+    const authorization = req.headers.authorization || '';
+    let candidate = req.headers.apikey;
+    if (authorization.startsWith('Bearer ')) candidate = authorization.slice(7);
+    if (authorization.startsWith('Basic ')) {
+        try {
+            candidate = Buffer.from(authorization.slice(6), 'base64').toString('utf8').split(':').slice(1).join(':');
+        } catch (err) {
+            candidate = '';
+        }
+    }
+
+    if (typeof candidate === 'string' && safeEqual(candidate, API_KEY)) {
         return next();
     }
+    res.set('WWW-Authenticate', 'Basic realm="WhatsApp Bridge", charset="UTF-8"');
     return res.status(401).json({ error: 'Não autorizado. Chave de API inválida.' });
+}
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>'"]/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+    })[character]);
 }
 
 // Endpoint compatible with Evolution API v1/v2: POST /message/sendText/:instance
@@ -250,12 +278,12 @@ app.post('/message/sendText/:instance', checkApiKey, async (req, res) => {
         });
     } catch (err) {
         console.error('Erro ao enviar mensagem:', err);
-        return res.status(500).json({ error: 'Falha ao enviar mensagem', details: err.message });
+        return res.status(500).json({ error: 'Falha ao enviar mensagem.' });
     }
 });
 
 // Serve Dashboard HTML
-app.get('/', (req, res) => {
+app.get('/', checkApiKey, (req, res) => {
     let groupsHtml = '';
     if (connectionStatus === 'Conectado') {
         if (groupsList.length === 0) {
@@ -273,10 +301,10 @@ app.get('/', (req, res) => {
                     <tbody>
                         ${groupsList.map(g => `
                             <tr>
-                                <td class="fw-bold">${g.subject}</td>
-                                <td><code>${g.id}</code></td>
+                                <td class="fw-bold">${escapeHtml(g.subject)}</td>
+                                <td><code>${escapeHtml(g.id)}</code></td>
                                 <td>
-                                    <button class="btn btn-sm btn-outline-primary" onclick="copyToClipboard('${g.id}')">
+                                    <button class="btn btn-sm btn-outline-primary copy-group" data-group-id="${escapeHtml(g.id)}">
                                         Copiar ID
                                     </button>
                                 </td>
@@ -315,7 +343,7 @@ app.get('/', (req, res) => {
                         <div class="mb-4">
                             Status da Conexão: 
                             <span class="badge status-badge ${connectionStatus === 'Conectado' ? 'bg-success' : (connectionStatus === 'Desconectado' ? 'bg-danger' : 'bg-warning text-dark')}">
-                                ${connectionStatus}
+                                ${escapeHtml(connectionStatus)}
                             </span>
                             <button class="btn btn-outline-danger btn-sm ms-3" onclick="resetConnection()">
                                 🔄 Resetar Conexão
@@ -326,7 +354,7 @@ app.get('/', (req, res) => {
                             <div class="my-4">
                                 <p class="lead">Abra o seu WhatsApp no celular, vá em <strong>Aparelhos Conectados</strong> e escaneie o código abaixo:</p>
                                 <div class="qr-container my-3">
-                                    <img src="${qrCodeDataUrl}" alt="QR Code" class="img-fluid">
+                                    <img src="${escapeHtml(qrCodeDataUrl)}" alt="QR Code" class="img-fluid">
                                 </div>
                                 <p class="text-muted small">O código é atualizado automaticamente se expirar.</p>
                             </div>
@@ -362,6 +390,7 @@ app.get('/', (req, res) => {
         </div>
 
         <script>
+            const csrfToken = ${JSON.stringify(CSRF_TOKEN)};
             function copyToClipboard(text) {
                 navigator.clipboard.writeText(text).then(() => {
                     alert('ID do grupo copiado para a área de transferência: ' + text);
@@ -372,7 +401,10 @@ app.get('/', (req, res) => {
             
             function resetConnection() {
                 if (confirm('Tem certeza que deseja resetar a conexão? Isso limpará a sessão atual e gerará um novo QR Code.')) {
-                    fetch('/reset-connection', { method: 'POST' })
+                    fetch('/reset-connection', {
+                        method: 'POST',
+                        headers: { 'X-CSRF-Token': csrfToken }
+                    })
                         .then(res => res.json())
                         .then(data => {
                             alert(data.message);
@@ -384,6 +416,10 @@ app.get('/', (req, res) => {
                         });
                 }
             }
+
+            document.querySelectorAll('.copy-group').forEach(button => {
+                button.addEventListener('click', () => copyToClipboard(button.dataset.groupId));
+            });
             
             // Auto reload to update QR or status
             setTimeout(() => {
@@ -397,7 +433,10 @@ app.get('/', (req, res) => {
 });
 
 // Endpoint to reset the WhatsApp connection
-app.post('/reset-connection', async (req, res) => {
+app.post('/reset-connection', checkApiKey, async (req, res) => {
+    if (!safeEqual(req.headers['x-csrf-token'], CSRF_TOKEN)) {
+        return res.status(403).json({ error: 'Token CSRF inválido.' });
+    }
     console.log('Solicitação de reset de conexão recebida.');
     
     await cleanupSocket();
@@ -419,14 +458,14 @@ app.post('/reset-connection', async (req, res) => {
 });
 
 // Get groups API for debugging
-app.get('/groups', (req, res) => {
+app.get('/groups', checkApiKey, (req, res) => {
     res.json(groupsList);
 });
 
 // Start Passenger listener
 const mainPort = process.env.PORT || PORT;
-app.listen(mainPort, () => {
-    console.log(`🚀 Servidor da porta Passenger/Pública ativo em: ${mainPort}`);
+app.listen(mainPort, HOST, () => {
+    console.log(`Servidor HTTP ativo em ${HOST}:${mainPort}`);
 });
 
 // Try to bind private Master port. Replicas keep retrying so one of them
@@ -455,13 +494,19 @@ function attemptMasterElection() {
 
 privateServer.on('error', (err) => {
     if (err.code === 'EADDRINUSE') {
+        // Outro worker já é Master: viramos réplica e encaminhamos a ele.
         console.log(`[Replica] Porta privada ${PRIVATE_PORT} ocupada. Rodando como RÉPLICA passiva.`);
         isMaster = false;
         scheduleMasterElection();
     } else {
-        console.error('Erro no servidor privado Master:', err);
-        isMaster = false;
-        scheduleMasterElection();
+        // Não é conflito de porta (ex.: host bloqueia bind em 127.0.0.1).
+        // Fallback seguro: assume Master SEM porta privada e conecta direto.
+        // Assim o pior caso degrada para "todos conectam" (comportamento
+        // pré-eleição) em vez de deixar todo mundo como réplica órfã -> 502.
+        console.warn(`[Fallback] Nao foi possivel abrir a porta privada (${err.code}). Assumindo Master direto, sem eleicao.`);
+        isMaster = true;
+        if (electionTimeout) { clearTimeout(electionTimeout); electionTimeout = null; }
+        connectToWhatsApp();
     }
 });
 

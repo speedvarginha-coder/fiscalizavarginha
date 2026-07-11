@@ -107,7 +107,7 @@ select {
 .summary-grid {
   display: grid;
   gap: 12px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .metric,
@@ -133,11 +133,10 @@ select {
 
 .metric strong {
   display: block;
-  font-size: clamp(1.1rem, 1.8vw, 1.75rem);
-  letter-spacing: 0;
+  font-size: clamp(1.1rem, 2vw, 1.65rem);
+  letter-spacing: -0.02em;
   margin-top: 4px;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  white-space: nowrap;
   min-width: 0;
 }
 
@@ -922,7 +921,7 @@ button.flag-card:hover {
 .esfera-card.is-estadual { border-left-color: var(--blue); }
 .esfera-card.is-municipal { border-left-color: var(--green); }
 .esfera-card__tag { font-weight: 800; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
-.esfera-card__valor { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text); line-height: 1.1; overflow-wrap: break-word; word-break: break-word; min-width: 0; }
+.esfera-card__valor { font-size: clamp(1.1rem, 2vw, 1.5rem); color: var(--text); line-height: 1.1; white-space: nowrap; min-width: 0; }
 .esfera-card__sub { font-size: .82rem; color: var(--green); font-weight: 700; }
 .esfera-card__desc { font-size: .82rem; color: var(--muted); }
 
@@ -1014,7 +1013,7 @@ button.flag-card:hover {
 .adv-filters[open] .adv-filters__toggle span { display: inline-block; transform: rotate(180deg); }
 @media (max-width: 700px) {
   .adv-filters__toggle { display: block; }
-  .esfera-card__valor, .fed-tipo__valor { font-size: 1.2rem; word-break: break-word; }
+  .esfera-card__valor, .fed-tipo__valor { font-size: 1.2rem; white-space: nowrap; }
   .fed-tipos__grid { grid-template-columns: 1fr; }
   .quick-filters { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
   .quick-filters .chip { white-space: nowrap; flex: 0 0 auto; }

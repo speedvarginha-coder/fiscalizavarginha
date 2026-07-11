@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "gerado_em": "2026-07-11T12:39:36.965Z",
+  "domains": {
+    "atualizado_em": {
+      "label": "Coleta principal",
+      "status": "ok",
+      "source_updated_at": "2026-07-11T12:39:25.000Z",
+      "age_days": 0,
+      "max_age_days": 3,
+      "reason": "Timestamp interno dentro da janela esperada."
+    },
+    "prefeitura": {
+      "label": "Prefeitura/Betha",
+      "status": "partial",
+      "source_updated_at": null,
+      "age_days": null,
+      "max_age_days": 7,
+      "reason": "Metadados indicam cobertura parcial."
+    },
+    "camara_betha": {
+      "label": "Camara/Betha",
+      "status": "manual",
+      "source_updated_at": null,
+      "age_days": null,
+      "max_age_days": 7,
+      "reason": "Sem timestamp interno verificavel; mtime local nao foi usado como freshness."
+    },
+    "pessoal": {
+      "label": "Pessoal",
+      "status": "manual",
+      "source_updated_at": null,
+      "age_days": null,
+      "max_age_days": 31,
+      "reason": "Sem timestamp interno verificavel; mtime local nao foi usado como freshness."
+    },
+    "pncp": {
+      "label": "PNCP",
+      "status": "partial",
+      "source_updated_at": null,
+      "age_days": null,
+      "max_age_days": 15,
+      "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
+    },
+    "cnpjs": {
+      "label": "CNPJs",
+      "status": "partial",
+      "source_updated_at": null,
+      "age_days": null,
+      "max_age_days": 31,
+      "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
+    },
+    "fontes_emendas_2026": {
+      "label": "Fontes de emendas 2026",
+      "status": "partial",
+      "source_updated_at": "2026-07-11T12:34:55.000Z",
+      "age_days": 0,
+      "max_age_days": 31,
+      "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
+    },
+    "indice_relevancia": {
+      "label": "Indice de relevancia",
+      "status": "partial",
+      "source_updated_at": "2026-07-11T12:39:35.637Z",
+      "age_days": 0,
+      "max_age_days": 31,
+      "reason": "Metadados indicam cobertura parcial."
+    },
+    "diario": {
+      "label": "Diario Oficial",
+      "status": "ok",
+      "source_updated_at": "2026-07-10T18:05:47.000Z",
+      "age_days": 0.8,
+      "max_age_days": 5,
+      "reason": "Timestamp interno dentro da janela esperada."
+    },
+    "camara_anos": {
+      "label": "Camara/SAPL",
+      "status": "manual",
+      "source_updated_at": null,
+      "age_days": null,
+      "max_age_days": 7,
+      "reason": "Sem timestamp interno verificavel; mtime local nao foi usado como freshness."
+    },
+    "publicacoes_estruturadas": {
+      "label": "Publicacoes da Camara",
+      "status": "preserved",
+      "source_updated_at": "2026-07-11T12:39:33.000Z",
+      "age_days": 0,
+      "max_age_days": 7,
+      "reason": "Metadados indicam preservacao da ultima base valida."
+    },
+    "publicacoes_diario": {
+      "label": "Publicacoes do Diario",
+      "status": "ok",
+      "source_updated_at": "2026-07-11T12:39:34.000Z",
+      "age_days": 0,
+      "max_age_days": 7,
+      "reason": "Timestamp interno dentro da janela esperada."
+    }
+  }
+}

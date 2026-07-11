@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Conformidade Legal · Fiscaliza Varginha</title>
+<meta name="description" content="Acompanhe o Índice Fiscaliza de Transparência e as exigências legais sobre a publicidade dos gastos públicos em Varginha.">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Fiscaliza Varginha">
+<meta property="og:title"       content="Conformidade Legal · Fiscaliza Varginha">
+<meta property="og:description" content="O Índice Fiscaliza de Transparência mede o cumprimento das leis de acesso à informação e compras públicas.">
+<meta property="og:locale"      content="pt_BR">
+<link rel="stylesheet" href="style.css?v=20260708">
+<style>
+  .conformidade-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 32px 0;
+  }
+  .sobre-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--navy);
+    border-radius: var(--radius);
+    padding: 36px 48px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+  .sobre-card--gold { border-left-color: var(--gold); }
+  .sobre-card--teal { border-left-color: var(--teal); }
+  .sobre-card--red  { border-left-color: var(--red);  }
+  
+  .law-icon {
+    width: 28px;
+    height: 28px;
+    stroke: currentColor;
+    flex-shrink: 0;
+  }
+  
+  .sobre-card h2 {
+    margin: 0 0 8px;
+    font-size: 1.6rem;
+    color: var(--navy);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sobre-card--gold h2 { color: #b07e00; }
+  .sobre-card--teal h2 { color: #007355; }
+  .sobre-card--red h2  { color: #9b1c1c; }
+
+  .sobre-card h3 {
+    margin: 0 0 20px;
+    font-size: 1.15rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  .sobre-card h4 {
+    margin: 28px 0 12px;
+    font-size: 1.05rem;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+  }
+  .sobre-card p, .sobre-card li {
+    font-size: 1.08rem;
+    color: #374151;
+    line-height: 1.7;
+    margin: 0 0 12px;
+    text-align: justify;
+  }
+  .sobre-card ul { padding-left: 0; margin: 12px 0; list-style: none; }
+  .sobre-card ul li { position: relative; padding-left: 24px; margin-bottom: 8px; }
+  .sobre-card ul li::before { 
+    content: ""; 
+    position: absolute; 
+    left: 0; 
+    top: 9px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--navy); 
+    border-radius: 50%;
+  }
+  .sobre-card--gold ul li::before { background-color: var(--gold); }
+  .sobre-card--teal ul li::before { background-color: var(--teal); }
+  
+  .status-box {
+    margin-top: 24px;
+    padding: 16px 24px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #166534;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #166534;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .status-box--alert {
+    background: #fef2f2;
+    border-color: #fecaca;
+    border-left-color: #991b1b;
+    color: #991b1b;
+  }
+  .status-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .ift-panel {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 30px;
+    text-align: center;
+    margin: 30px 0;
+    box-shadow: var(--shadow);
+  }
+  .ift-panel h2 { color: var(--gold); margin-bottom: 10px; font-size: 1.5rem; }
+  .ift-panel p { opacity: 0.9; margin-bottom: 20px; line-height: 1.5; }
+  .ift-score {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .fonte-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .fonte-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88rem; }
+  .fonte-table th { background: var(--cream); color: var(--ink); padding: 9px 14px; text-align: left; border-bottom: 2px solid var(--line); }
+  .fonte-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  
+  .disclaimer-box {
+    background: #fff8e1;
+    border: 1px solid #f9a825;
+    border-left: 5px solid #f57f17;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 32px 0;
+  }
+  .disclaimer-box strong { display: block; margin-bottom: 8px; color: #6d3800; font-size: 1rem; }
+  .disclaimer-box p { margin: 0 0 8px; font-size: .88rem; color: #5d4037; line-height: 1.6; text-align: justify; }
+  
+  .section__lead {
+    max-width: 100%;
+    margin-right: auto;
+  }
+</style>
+</head>
+<body data-page="conformidade">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Fiscaliza Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+    <nav id="mainNav" class="nav">
+      <a href="index.html"      class="nav__link">Início</a>
+      <a href="atualizacoes.html" class="nav__link">Atualizações</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="emendas/index.html" class="nav__link">Emendas</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="sobre.html"      class="nav__link">Sobre</a>
+      <a href="conformidade.html" class="nav__link nav__link--active">Conformidade</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+<section class="section section--alt">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">← Voltar ao início</a></p>
+
+    <h1 class="section__title">Painel de Conformidade Legal</h1>
+    <p class="section__lead" style="text-align: justify;">
+      <strong>A publicidade dos atos públicos não é uma concessão política, é um imperativo constitucional.</strong> 
+      O ordenamento jurídico brasileiro proíbe terminantemente o ocultamento do gasto público e a gestão de dados em "caixas-pretas". 
+      Operando sob inteligência de dados, o <strong>Fiscaliza Varginha</strong> atua como uma malha fina cívica: cruzamos, em tempo real, as exigências da Lei com as bases de dados oficiais da Administração Municipal, revelando matematicamente o grau de conformidade — ou de omissão — da gestão pública.
+    </p>
+
+    <div class="ift-panel">
+      <h2>Índice Fiscaliza de Transparência (IFT)</h2>
+      <p>Mede o grau de conformidade dos órgãos públicos com as principais obrigações legais.<br>
+        <span id="iftAtualizado">Calculado automaticamente a partir da auditoria de dados da última coleta.</span></p>
+
+      <div class="ift-score">
+        <span id="iftValue">—</span>
+        <span style="font-size:1.5rem; opacity:0.6; margin-top:20px;">/ 100</span>
+      </div>
+      <p id="iftMetodologia" class="muted small" style="opacity:0.75; margin-top:8px;">
+        Metodologia: pontuação parte de 100 e desconta 15 pontos por erro e 5 por aviso
+        apontados pela auditoria automática (<code>auditoria_dados.json</code>), executada a cada coleta.
+      </p>
+
+      <div style="margin: 32px auto 0; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.2); text-align: left; max-width: 800px;">
+        <h4 style="color: var(--gold); margin: 0 0 16px; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+          <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Achados da última auditoria automática
+        </h4>
+        <ul id="iftAchados" style="font-size: 0.95rem; opacity: 0.95; margin: 0; padding-left: 0; list-style: none; line-height: 1.6;">
+          <li style="position: relative; padding-left: 20px;">
+            <span style="position: absolute; left: 0; color: var(--gold);">•</span>
+            Carregando os achados da auditoria de dados…
+          </li>
+        </ul>
+        <p class="muted small" style="opacity:0.7; margin-top:14px;">
+          Cada achado traz o botão <strong>“Copiar pedido de informação”</strong>: o texto sai pronto para
+          colar no <a href="https://www.varginha.mg.gov.br/portal/sic" target="_blank" rel="noopener" style="color: var(--gold);">e-SIC da Prefeitura</a> (Lei 12.527/2011 — resposta em até 20 dias).
+        </p>
+      </div>
+    </div>
+
+    <div class="conformidade-grid">
+      <!-- Card CF -->
+      <div class="sobre-card">
+        <h2>
+          <svg class="law-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          Constituição Federal – Art. 37
+        </h2>
+        <h3>Princípio da Publicidade</h3>
+        
+        <h4>O Imperativo Constitucional</h4>
+        <p>A espinha dorsal do Estado Democrático. O caput do Artigo 37 estabelece que o sigilo na administração pública é uma anomalia jurídica. A <strong>Publicidade é regra inegociável</strong>. O gestor não possui a prerrogativa de escolher o que divulgar; ele tem o dever constitucional de submeter cada centavo orçamentário ao escrutínio irrestrito e imediato da sociedade.</p>
+        
+        <h4>Como o Fiscaliza Atua</h4>
+        <ul>
+          <li><strong>Mapeamento Contínuo:</strong> Rastreamos os portais oficiais em busca de falhas ou atrasos na publicação de atos.</li>
+          <li><strong>Garantia do Princípio:</strong> Transformamos dados brutos e planilhas complexas em informação clara, devolvendo o poder de fiscalização ao cidadão.</li>
+        </ul>
+        
+        <div class="status-box">
+          <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Princípio acompanhado
+        </div>
+      </div>
+
+      <!-- Card LC 131 -->
+      <div class="sobre-card sobre-card--teal">
+        <h2>
+          <svg class="law-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          Lei Complementar nº 131/2009
+        </h2>
+        <h3>Lei da Transparência</h3>
+        
+        <h4>A Régua do "Tempo Real"</h4>
+        <p>O fim da contabilidade atrasada. A Lei Complementar 131 exige rastreabilidade financeira imediata. A prefeitura é terminantemente obrigada a expor detalhadamente suas movimentações de despesa em <strong>tempo real</strong>. O crivo da Lei (regulado pelo Decreto Federal 7.185/10) é cristalino: o limite máximo para publicação expira no <strong>primeiro dia útil subsequente</strong> ao lançamento contábil. Atrasar essa divulgação configura violação sistêmica.</p>
+        
+        <h4>O que o Nosso Robô Vigia</h4>
+        <ul>
+          <li><strong>Empenhos e Pagamentos:</strong> Disparamos alertas quando despesas milionárias aparecem sem lastro em contratos públicos.</li>
+          <li><strong>Janela de 24 horas:</strong> Identificamos defasagens e atrasos suspeitos na atualização do Portal da Transparência municipal.</li>
+        </ul>
+        
+        <div class="status-box status-box--alert">
+          <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          Alerta: Despesas identificadas sem contrato base vinculado.
+        </div>
+      </div>
+
+      <!-- Card Lei Licitações -->
+      <div class="sobre-card sobre-card--gold">
+        <h2>
+          <svg class="law-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          Lei nº 14.133/2021
+        </h2>
+        <h3>Nova Lei de Licitações</h3>
+        
+        <h4>O Filtro de Validade Contratual</h4>
+        <p>A publicidade como pressuposto de validade legal. Segundo a Nova Lei de Licitações (Lei 14.133/21), um contrato público assinado <strong>é nulo de eficácia jurídica perante terceiros</strong> enquanto permanecer fora do Portal Nacional de Contratações Públicas (PNCP). O legislador cravou um cronograma inflexível e obrigatório para o gestor:</p>
+        <ul>
+          <li><strong>20 dias úteis:</strong> Prazo limite para publicação de contratos oriundos de licitação padrão.</li>
+          <li><strong>10 dias úteis:</strong> Prazo limite (e redobrado) para compras feitas de forma direta, via dispensa ou inexigibilidade de licitação.</li>
+        </ul>
+        
+        <h4>A Nossa Malha Fina</h4>
+        <ul>
+          <li>Cruzamos a data de assinatura com a data de publicação no PNCP. Se o prazo for quebrado, nosso painel expõe a falha.</li>
+          <li>Monitoramos o abuso de "Dispensa de Licitação", exigindo que a exceção não vire a regra.</li>
+        </ul>
+        
+        <div class="status-box status-box--alert">
+          <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          Alerta: Data de publicação ocultada na base municipal.
+        </div>
+      </div>
+
+      <!-- Card LAI -->
+      <div class="sobre-card">
+        <h2>
+          <svg class="law-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          Lei nº 12.527/2011
+        </h2>
+        <h3>Lei de Acesso à Informação</h3>
+        
+        <h4>O Direito Inalienável de Auditar</h4>
+        <p>A quebra definitiva da burocracia do sigilo. É prerrogativa máxima de qualquer cidadão exigir, <strong>sem qualquer necessidade de justificar o motivo</strong>, o inteiro teor de contratos, empenhos, folhas de pagamento e laudos de medição governamentais. A máquina pública possui o limite legal de <strong>20 dias</strong> para fornecer a documentação irrestrita. O silêncio ou a omissão configuram infração gravíssima.</p>
+      </div>
+    </div>
+
+    <div class="block" style="margin-top:40px;">
+      <h3 class="block__title" style="font-size:1.3rem;">Calendário das Obrigações Legais</h3>
+      <div class="fonte-table-wrap">
+        <table class="fonte-table">
+          <thead>
+            <tr>
+              <th>Obrigação Legal</th>
+              <th>Base Legal</th>
+              <th>Prazo Limite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Atualização financeira no Portal da Transparência</td>
+              <td>Decreto 7.185/10 (LC 131)</td>
+              <td><strong>1 dia útil</strong> após o registro contábil</td>
+            </tr>
+            <tr>
+              <td>Publicação de contratos gerais no PNCP</td>
+              <td>Lei 14.133/21 (Art. 94)</td>
+              <td><strong>20 dias úteis</strong> da assinatura</td>
+            </tr>
+            <tr>
+              <td>Publicação de Dispensa/Inexigibilidade</td>
+              <td>Lei 14.133/21 (Art. 94)</td>
+              <td><strong>10 dias úteis</strong> da assinatura</td>
+            </tr>
+            <tr>
+              <td>Resposta a pedido de informação do cidadão</td>
+              <td>Lei 12.527/11 (LAI)</td>
+              <td><strong>20 dias</strong> (podendo +10 com justificativa)</td>
+            </tr>
+            <tr>
+              <td>Relatório Resumido da Execução Orçamentária (RREO)</td>
+              <td>LC 101/00 (LRF)</td>
+              <td><strong>Bimestral</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="disclaimer-box">
+      <strong style="font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
+        <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        Salva-Guarda Jurídica e Limitação de Responsabilidade
+      </strong>
+      <p>O escopo deste painel é o processamento estrito de metadados extraídos mecanicamente dos repositórios oficiais da Administração Pública Municipal e instâncias federais de controle (PNCP). O <em>Índice Fiscaliza de Transparência (IFT)</em> é um indicativo analítico-sistêmico concebido exclusivamente para fins de educação cívica e balizamento social da informação.</p>
+      <p>Os selos de "Alerta" ou "Desconformidade" refletem unicamente ausências paramétricas nas tabelas de dados abertos (como ocultação de datas-chave, divergência de chaves de ligação de empenhos ou quebras de prazos lógicos de publicidade). <strong>Eles não configuram, sob nenhuma hipótese, julgamento de mérito, imputação de crime, dolo, fraude ou improbidade administrativa</strong> — prerrogativas absolutas do Ministério Público e do Poder Judiciário. A nossa ferramenta expõe a anomalia documental da máquina pública; a presunção de inocência dos agentes públicos permanece intacta até o trânsito em julgado de processos legais correspondentes.</p>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
+    </div>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="fundacao.html">Fundação Cultural</a>
+        <a href="camara.html">Câmara</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="conformidade.html">Conformidade</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector(".nav__toggle");
+  const nav = document.getElementById("mainNav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("nav--open");
+      toggle.setAttribute("aria-expanded", open);
+    });
+  }
+  fetch("data/chunks/atualizado_em.json")
+    .then((r) => r.json())
+    .then((d) => {
+      const el = document.getElementById("footerAtualizado");
+      if (el && d && d.data_humana) el.textContent = d.data_humana;
+    })
+    .catch(() => {});
+
+  // ===== IFT dinâmico: calculado da auditoria automática de dados =====
+  (function () {
+    const ESIC = "https://www.varginha.mg.gov.br/portal/sic";
+
+    function fmtData(iso) {
+      try {
+        const d = new Date(iso);
+        return d.toLocaleDateString("pt-BR") + " às " + d.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+      } catch (e) { return iso; }
+    }
+
+    function pedidoLAI(item) {
+      return (
+        "À Ouvidoria / Serviço de Informação ao Cidadão da Prefeitura de Varginha-MG\n\n" +
+        "Com fundamento na Lei Federal nº 12.527/2011 (Lei de Acesso à Informação), " +
+        "solicito as informações abaixo, em formato aberto e legível por máquina, " +
+        "no prazo legal de 20 dias:\n\n" +
+        "ASSUNTO: " + item.title + "\n\n" +
+        "CONTEXTO IDENTIFICADO EM DADOS PÚBLICOS: " + item.detail + "\n\n" +
+        "SOLICITO: documentação e esclarecimentos que permitam verificar a regularidade " +
+        "do apontamento acima (contratos, empenhos, justificativas e datas de publicação " +
+        "correspondentes), conforme recomendação: " + (item.action || "prestar esclarecimentos") + "\n\n" +
+        "Dispenso a necessidade de justificar este pedido, nos termos do art. 10, §3º, da LAI.\n" +
+        "Fonte do apontamento: painel Fiscaliza Varginha (dados abertos oficiais), auditoria de " + fmtData(item._geradoEm) + "."
+      );
+    }
+
+    fetch("data/chunks/auditoria_dados.json")
+      .then(function (r) { return r.json(); })
+      .then(function (a) {
+        const s = (a && a.summary) || {};
+        const erros = Number(s.errors || 0);
+        const avisos = Number(s.warnings || 0);
+        const nota = Math.max(0, 100 - 15 * erros - 5 * avisos);
+
+        const elV = document.getElementById("iftValue");
+        if (elV) elV.textContent = String(nota).replace(".", ",");
+
+        const elA = document.getElementById("iftAtualizado");
+        if (elA && a.gerado_em) {
+          elA.textContent = "Calculado automaticamente — última auditoria: " + fmtData(a.gerado_em) +
+            " (" + erros + " erro(s), " + avisos + " aviso(s)).";
+        }
+
+        const ul = document.getElementById("iftAchados");
+        if (!ul) return;
+        const items = (a.items || []).filter(function (i) { return i.severity === "warning" || i.severity === "error"; });
+        if (!items.length) {
+          ul.innerHTML = '<li style="position:relative;padding-left:20px;"><span style="position:absolute;left:0;color:var(--gold);">•</span>Nenhum apontamento na última auditoria. ✔</li>';
+          return;
+        }
+        ul.innerHTML = items.map(function (i, idx) {
+          const cor = i.severity === "error" ? "#ff6b6b" : "var(--gold)";
+          return (
+            '<li style="margin-bottom:14px;position:relative;padding-left:20px;">' +
+            '<span style="position:absolute;left:0;color:' + cor + ';">•</span>' +
+            "<strong>" + i.title + ":</strong> " + i.detail + " " +
+            '<button type="button" class="ift-lai-btn" data-idx="' + idx + '" ' +
+            'style="margin-left:6px;padding:2px 10px;border-radius:6px;border:1px solid var(--gold);' +
+            'background:transparent;color:var(--gold);cursor:pointer;font-size:0.85em;">Copiar pedido de informação</button>' +
+            "</li>"
+          );
+        }).join("");
+
+        ul.addEventListener("click", function (ev) {
+          const btn = ev.target.closest(".ift-lai-btn");
+          if (!btn) return;
+          const item = items[Number(btn.dataset.idx)];
+          if (!item) return;
+          item._geradoEm = a.gerado_em;
+          const texto = pedidoLAI(item);
+          navigator.clipboard.writeText(texto).then(function () {
+            btn.textContent = "Copiado! Abra o e-SIC e cole";
+            setTimeout(function () { window.open(ESIC, "_blank", "noopener"); }, 400);
+            setTimeout(function () { btn.textContent = "Copiar pedido de informação"; }, 6000);
+          }).catch(function () {
+            window.prompt("Copie o pedido abaixo e cole no e-SIC:", texto);
+          });
+        });
+      })
+      .catch(function () {
+        const elA = document.getElementById("iftAtualizado");
+        if (elA) elA.textContent = "Não foi possível carregar a auditoria agora — tente recarregar a página.";
+      });
+  })();
+</script>
+</body>
+</html>

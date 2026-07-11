@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import crypto from "node:crypto";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -9,7 +10,9 @@ const painelDir = path.join(root, "painel-cidadao");
 const chunksDir = path.join(painelDir, "data", "chunks");
 const manifestPath = path.join(painelDir, "data", "manifest.json");
 const outPath = path.join(chunksDir, "auditoria_dados.json");
+const statusPath = path.join(chunksDir, "status_fontes.json");
 const strict = process.argv.includes("--strict");
+const noExitCode = process.argv.includes("--no-exit-code");
 
 function readJson(name) {
   const filePath = path.join(chunksDir, `${name}.json`);
@@ -26,7 +29,8 @@ function updateManifest() {
     ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
     : { gerado_em: new Date().toISOString(), chunks: {} };
 
-  manifest.chunks = manifest.chunks || {};
+  manifest.gerado_em = new Date().toISOString();
+  manifest.chunks = {};
   const names = fs.readdirSync(chunksDir)
     .filter((name) => name.endsWith(".json"))
     .map((name) => path.basename(name, ".json"))
@@ -37,8 +41,26 @@ function updateManifest() {
     manifest.chunks[name] = {
       arquivo: `data/chunks/${name}.json`,
       bytes: fs.statSync(filePath).size,
+      sha256: crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex"),
     };
   }
+
+  const snapshotsDir = path.join(painelDir, "data", "snapshots");
+  const snapshots = fs.existsSync(snapshotsDir)
+    ? fs.readdirSync(snapshotsDir).filter((name) => name.endsWith(".json")).sort()
+    : [];
+  manifest.snapshots = {
+    diretorio: "data/snapshots",
+    total: snapshots.length,
+    ultimo: snapshots.at(-1) || "",
+    arquivos: Object.fromEntries(snapshots.map((name) => {
+      const filePath = path.join(snapshotsDir, name);
+      return [name, {
+        bytes: fs.statSync(filePath).size,
+        sha256: crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex"),
+      }];
+    })),
+  };
 
   writeJson(manifestPath, manifest);
 }
@@ -156,7 +178,100 @@ const chunks = {
   fontesEmendas2026: readJson("fontes_emendas_2026"),
   indice: readJson("indice_relevancia"),
   diario: readJson("diario"),
+  camaraAnos: readJson("camara_anos"),
+  publicacoesCamara: readJson("publicacoes_estruturadas"),
+  publicacoesDiario: readJson("publicacoes_diario"),
 };
+
+const domainConfig = [
+  ["atualizado_em", "Coleta principal", chunks.atualizado, 3],
+  ["prefeitura", "Prefeitura/Betha", chunks.prefeitura, 7],
+  ["camara_betha", "Camara/Betha", chunks.camaraBetha, 7],
+  ["pessoal", "Pessoal", chunks.pessoal, 31],
+  ["pncp", "PNCP", chunks.pncp, 15],
+  ["cnpjs", "CNPJs", chunks.cnpjs, 31],
+  ["fontes_emendas_2026", "Fontes de emendas 2026", chunks.fontesEmendas2026, 31],
+  ["indice_relevancia", "Indice de relevancia", chunks.indice, 31],
+  ["diario", "Diario Oficial", chunks.diario, 5],
+  ["camara_anos", "Camara/SAPL", chunks.camaraAnos, 7],
+  ["publicacoes_estruturadas", "Publicacoes da Camara", chunks.publicacoesCamara, 7],
+  ["publicacoes_diario", "Publicacoes do Diario", chunks.publicacoesDiario, 7],
+];
+
+function internalTimestamp(value) {
+  if (!value || typeof value !== "object") return undefined;
+  const timestampKeys = new Set([
+    "iso", "atualizado_em", "ultima_atualizacao", "data_atualizacao",
+    "coleta_iso", "coletado_em", "data_coleta", "gerado_em",
+  ]);
+  const pending = [value];
+  const seen = new Set();
+  while (pending.length) {
+    const current = pending.shift();
+    if (!current || typeof current !== "object" || seen.has(current)) continue;
+    seen.add(current);
+    for (const [key, item] of Object.entries(current)) {
+      if (timestampKeys.has(key)) {
+        const parsed = parseDate(item);
+        if (parsed) return parsed;
+      }
+      if (item && typeof item === "object") pending.push(item);
+    }
+  }
+  return undefined;
+}
+
+function buildSourceStatus() {
+  const domains = {};
+  for (const [name, label, value, maxAgeDays] of domainConfig) {
+    const empty = value === undefined
+      || value === null
+      || (Array.isArray(value) && value.length === 0)
+      || (!Array.isArray(value) && typeof value === "object" && Object.keys(value).length === 0);
+    const text = JSON.stringify(value || {}).toLowerCase();
+    const updatedAt = internalTimestamp(value);
+    const ageDays = daysSince(updatedAt);
+    let status;
+    let reason;
+
+    if (empty) {
+      status = "failed";
+      reason = value === undefined ? "Chunk ausente." : "Chunk vazio; ausencia real de registros nao foi confirmada.";
+    } else if (/preservad[oa]|preservada_por_cobertura/.test(text)) {
+      status = "preserved";
+      reason = "Metadados indicam preservacao da ultima base valida.";
+    } else if (/\"status\"\s*:\s*\"(?:erro|failed|falha)\"|erro de coleta|falha de coleta|http error|http \d{3}/.test(text)) {
+      const pncpSemDados = name === "pncp"
+        && !(value?.compras?.length || value?.contratos?.length);
+      status = pncpSemDados ? "failed" : "partial";
+      reason = pncpSemDados
+        ? "A fonte falhou e nao retornou registros; zero nao significa ausencia de contratacoes."
+        : "Parte da coleta apresentou erro; os registros validos foram preservados.";
+    } else if (/parcial|cobertura baixa|escopo limitado/.test(text)) {
+      status = "partial";
+      reason = "Metadados indicam cobertura parcial.";
+    } else if (!updatedAt) {
+      status = "manual";
+      reason = "Sem timestamp interno verificavel; mtime local nao foi usado como freshness.";
+    } else if (ageDays > maxAgeDays) {
+      status = "stale";
+      reason = `Timestamp interno excede a janela de ${maxAgeDays} dias.`;
+    } else {
+      status = "ok";
+      reason = "Timestamp interno dentro da janela esperada.";
+    }
+
+    domains[name] = {
+      label,
+      status,
+      source_updated_at: updatedAt?.toISOString() || null,
+      age_days: Number.isFinite(ageDays) ? Number(ageDays.toFixed(1)) : null,
+      max_age_days: maxAgeDays,
+      reason,
+    };
+  }
+  return { schema_version: 1, gerado_em: new Date().toISOString(), domains };
+}
 
 const items = [];
 
@@ -421,6 +536,86 @@ if (latestDiary && diaryAge > 5) {
   );
 }
 
+for (const [name, label, value] of domainConfig) {
+  if (value === undefined) {
+    add("error", `chunk-${name}-ausente`, `${label} sem chunk`, `O arquivo ${name}.json esta ausente; isso indica falha, nao zero de registros.`, "Restaurar ou executar somente a etapa responsavel antes da publicacao.", `${name}.json`);
+  }
+}
+
+function latestSnapshot() {
+  const dir = path.join(painelDir, "data", "snapshots");
+  if (!fs.existsSync(dir)) return undefined;
+  const latest = fs.readdirSync(dir).filter((name) => name.endsWith(".json")).sort().at(-1);
+  if (!latest) return undefined;
+  try {
+    return JSON.parse(fs.readFileSync(path.join(dir, latest), "utf8"));
+  } catch {
+    return undefined;
+  }
+}
+
+function checkUnexpectedDrop(id, label, current, previous, source) {
+  if (!Number.isFinite(previous) || previous < 10 || !Number.isFinite(current)) return;
+  const ratio = current / previous;
+  if (ratio > 0.2) return;
+  const zeroDetail = current === 0
+    ? "A coleta retornou zero; trate como possivel erro ate confirmacao da fonte, nao como ausencia real."
+    : `A quantidade caiu ${(100 * (1 - ratio)).toFixed(1)}%.`;
+  add("error", id, `Queda anormal em ${label}`, `${zeroDetail} Atual: ${current}; snapshot anterior: ${previous}.`, "Interromper a publicacao e comparar os logs/metadados da etapa com a fonte oficial.", source);
+}
+
+const previousSnapshot = latestSnapshot();
+if (previousSnapshot?.totais) {
+  const currentContracts = (chunks.prefeitura?.contratos?.length || 0) + (chunks.camaraBetha?.contratos?.length || 0);
+  const currentSuppliers = (chunks.prefeitura?.top_fornecedores_atual?.length || 0) + (chunks.camaraBetha?.top_fornecedores_atual?.length || 0);
+  checkUnexpectedDrop("contratos-queda-anormal", "contratos", currentContracts, Number(previousSnapshot.totais.contratos_qtd), "prefeitura.json + camara_betha.json");
+  checkUnexpectedDrop("fornecedores-queda-anormal", "fornecedores", currentSuppliers, Number(previousSnapshot.totais.fornecedores_qtd), "prefeitura.json + camara_betha.json");
+}
+
+function latestDateFrom(items, field = "data") {
+  return (items || [])
+    .map((item) => parseDate(item?.[field]))
+    .filter(Boolean)
+    .sort((a, b) => b - a)[0];
+}
+
+function dateKey(date) {
+  return date ? date.toISOString().slice(0, 10) : undefined;
+}
+
+// O coletor principal e os enriquecedores estruturados são etapas distintas.
+// Comparar as datas impede que o pipeline pareça saudável enquanto o feed/WhatsApp
+// continua preso a uma versão antiga da Câmara ou do Diário.
+const currentYear = String(new Date().getFullYear());
+const latestCamaraSource = latestDateFrom(chunks.camaraAnos?.[currentYear]?.materias);
+const latestCamaraStructured = latestDateFrom(chunks.publicacoesCamara?.publicacoes);
+const latestCamaraSourceKey = dateKey(latestCamaraSource);
+const latestCamaraStructuredKey = dateKey(latestCamaraStructured);
+if (latestCamaraSourceKey && (!latestCamaraStructuredKey || latestCamaraStructuredKey < latestCamaraSourceKey)) {
+  add(
+    "error",
+    "publicacoes-camara-defasadas",
+    "Publicacoes estruturadas da Camara defasadas",
+    `SAPL consolidado chega a ${latestCamaraSourceKey}, mas o feed estruturado chega a ${latestCamaraStructuredKey || "data ausente"}.`,
+    "Rodar coletor_publicacoes.py e confirmar que a etapa incremental faz parte do update-data.ps1.",
+    "camara_anos.json + publicacoes_estruturadas.json",
+  );
+}
+
+const latestDiarioStructured = latestDateFrom(chunks.publicacoesDiario?.publicacoes);
+const latestDiaryKey = dateKey(latestDiary?.date);
+const latestDiarioStructuredKey = dateKey(latestDiarioStructured);
+if (latestDiaryKey && (!latestDiarioStructuredKey || latestDiarioStructuredKey < latestDiaryKey)) {
+  add(
+    "error",
+    "publicacoes-diario-defasadas",
+    "Publicacoes estruturadas do Diario Oficial defasadas",
+    `A lista de edicoes chega a ${latestDiaryKey}, mas o feed estruturado chega a ${latestDiarioStructuredKey || "data ausente"}.`,
+    "Rodar coletor_diario.py em modo incremental e conferir os PDFs das edicoes pendentes.",
+    "diario.json + publicacoes_diario.json",
+  );
+}
+
 const counts = items.reduce((acc, item) => {
   acc[item.severity] = (acc[item.severity] || 0) + 1;
   return acc;
@@ -439,9 +634,11 @@ const payload = {
   },
   atualizado_base: chunks.atualizado || null,
   items,
+  issues: items,
 };
 
 writeJson(outPath, payload);
+writeJson(statusPath, buildSourceStatus());
 updateManifest();
 
 const label = level === "critical" ? "CRITICO" : level === "attention" ? "ATENCAO" : "OK";
@@ -450,4 +647,4 @@ for (const item of items.filter((item) => item.severity !== "ok")) {
   console.log(`- [${item.severity}] ${item.title}: ${item.detail}`);
 }
 
-if (strict && payload.summary.errors > 0) process.exit(1);
+if ((strict || !noExitCode) && payload.summary.errors > 0) process.exit(1);

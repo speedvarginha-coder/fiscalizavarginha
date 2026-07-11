@@ -243,7 +243,7 @@ function buildSnapshotFromChunks(dir, source = "chunks") {
     ...(chunks.camaraBetha?.top_fornecedores_atual || []).map((item, idx) => supplierToSnapshot(item, "Camara", idx + 1)),
   ];
   const diario = (chunks.diario?.ultimas || []).map(diaryToSnapshot);
-  const issues = (chunks.auditoria?.issues || [])
+  const issues = (chunks.auditoria?.issues || chunks.auditoria?.items || [])
     .filter((issue) => issue && issue.severity !== "ok")
     .map(issueToSnapshot);
   const asfalto = [
@@ -488,7 +488,7 @@ function diffSnapshots(current, previous) {
 function updateManifest() {
   const manifest = readJson(manifestPath, { gerado_em: new Date().toISOString(), chunks: {} });
   manifest.gerado_em = new Date().toISOString();
-  manifest.chunks = manifest.chunks || {};
+  manifest.chunks = {};
   const names = fs.readdirSync(chunksDir)
     .filter((name) => name.endsWith(".json"))
     .map((name) => name.replace(/\.json$/, ""))
@@ -500,6 +500,7 @@ function updateManifest() {
       arquivo: `data/chunks/${name}.json`,
       bytes: fs.statSync(file).size,
       atualizado_em: fs.statSync(file).mtime.toISOString(),
+      sha256: crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"),
     };
   }
 
@@ -510,6 +511,13 @@ function updateManifest() {
     diretorio: "data/snapshots",
     total: snapshotFiles.length,
     ultimo: snapshotFiles[snapshotFiles.length - 1] || "",
+    arquivos: Object.fromEntries(snapshotFiles.map((name) => {
+      const file = path.join(snapshotsDir, name);
+      return [name, {
+        bytes: fs.statSync(file).size,
+        sha256: crypto.createHash("sha256").update(fs.readFileSync(file)).digest("hex"),
+      }];
+    })),
   };
   writeJson(manifestPath, manifest);
 }

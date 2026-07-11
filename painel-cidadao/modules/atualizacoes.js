@@ -1186,7 +1186,11 @@
     const dataBr = (ato.data || "").split("-").reverse().join("/");
     // Atos agregados (ex.: "sem contrato formal") trazem data_rotulo —
     // exibição amigável que não confunde o cidadão com uma data de evento.
-    const dataDisplay = ato.data_rotulo || dataBr;
+    let dataDisplay = ato.data_rotulo || dataBr;
+    const coletaData = (window.ZELA_DATA || {}).atualizado_em?.data_humana || "";
+    if (ato.data_rotulo && coletaData) {
+      dataDisplay += ` (atualizado no site em ${coletaData.replace(" - ", " às ")})`;
+    }
 
     const envolvidosHtml = (ato.envolvidos || []).map(e => {
       const cruz = cruzar(e);

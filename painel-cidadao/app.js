@@ -282,9 +282,11 @@
     ].join("");
   }
 
-  if ($("homeOpsStats")) {
-    const contratos = pf.contratos || [];
-    const licitacoes = pf.licit_andamento || [];
+  function renderHomeOps() {
+    if (!$("homeOpsStats")) return;
+    const pf_data = D.prefeitura || {};
+    const contratos = pf_data.contratos || [];
+    const licitacoes = pf_data.licit_andamento || [];
     const diariasPref = (D.diarias || {}).prefeitura || [];
     const resumoCam = D.resumo || {};
     const emendas = D.emendas || [];
@@ -294,7 +296,7 @@
     const totalDiarias = diariasPref.reduce((s, d) => s + Number(d.valor_total || 0), 0);
 
     $("homeOpsStats").innerHTML = [
-      { href: "prefeitura.html", value: fmtMi(pf.total_externo_atual || totalContratos), label: `pagos em ${pf.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
+      { href: "prefeitura.html", value: fmtMi(pf_data.total_externo_atual || totalContratos), label: `pagos em ${pf_data.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
       { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos", cidada: "Quem recebeu mais? Por qual serviço?" },
       { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasPref.length), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
       { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)} vereadores monitorados`, title: "Câmara", cidada: "O que cada vereador propôs e votou?" },
@@ -328,6 +330,9 @@
         : "Base local carregada no navegador";
     }
   }
+
+  // Render inicial das métricas
+  renderHomeOps();
 
   // ============= STATS (camara.html) =============
   if ($("stats") && D.resumo && PAGE !== "camara") {
@@ -7008,8 +7013,9 @@ ${url}
   function initScorecard() {
     if (!$("scorePrefeitura")) return;
 
+    const pf_data = D.prefeitura || {};
     // Lógica Prefeitura
-    const contratos = pf.contratos || [];
+    const contratos = pf_data.contratos || [];
     const objVagos = contratos.filter(c => (c.objeto || "").length < 25).length;
     const scorePref = Math.max(0, 100 - (objVagos * 3));
     
@@ -7700,7 +7706,9 @@ ${url}
     if (key === "prefeitura" && PAGE === "home") {
       // prefeitura.json chegou: re-renderiza scorecard e seção ao vivo
       initScorecard();
-      if ($("prefeituraLive") && pf.top_fornecedores_atual && pf.top_fornecedores_atual.length) {
+      renderHomeOps();
+      const pf_data = D.prefeitura || {};
+      if ($("prefeituraLive") && pf_data.top_fornecedores_atual && pf_data.top_fornecedores_atual.length) {
         $("prefeituraLive").hidden = false;
       }
     }

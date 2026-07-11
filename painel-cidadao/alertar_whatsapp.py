@@ -1,8 +1,8 @@
-"""Envio de alertas diários de compras, contratos e diário oficial para o WhatsApp.
+"""Envio de alertas e resumos do Fiscaliza Varginha para o WhatsApp.
 
-Este script lê as publicações estruturadas da Câmara e do Diário Oficial da Prefeitura,
-filtra por relevância ou valores mínimos de contratação, formata uma mensagem amigável
-com marcações de negrito do WhatsApp (*texto*) e envia para o grupo/comunidade configurado.
+O emissor preserva os boletins estruturados da Câmara e do Diário Oficial e acrescenta
+monitoramento de qualquer valor financeiro, obras públicas, diárias, atividade legislativa,
+presença disponível, resumos semanais e alertas de transparência.
 
 Previne duplicidade usando um arquivo de controle de histórico em `private/state/whatsapp_sent.json`.
 """
@@ -16,6 +16,12 @@ import urllib.request
 import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
+
+from whatsapp_conteudo import (
+    materias_para_publicacoes,
+    preparar_conteudos_complementares,
+    salvar_estado,
+)
 
 # Console do Windows UTF-8
 try:
@@ -31,6 +37,8 @@ CAMARA_JSON = ROOT / "data" / "chunks" / "publicacoes_estruturadas.json"
 DIARIO_JSON = ROOT / "data" / "chunks" / "publicacoes_diario.json"
 EMENDAS_JSON = ROOT / "data" / "chunks" / "emendas.json"
 PREFEITURA_JSON = ROOT / "data" / "chunks" / "prefeitura.json"
+CAMARA_ANOS_JSON = ROOT / "data" / "chunks" / "camara_anos.json"
+MONITOR_STATE_PATH = ROOT.parent / "private" / "state" / "whatsapp_monitor_state.json"
 
 _emendas_cache = None
 _prefeitura_cache = None
@@ -107,9 +115,17 @@ TEMPLATE_CONFIG = {
     "token": "seu_token_aqui",
     "group_id": "120363XXXXXXXXXXXX@g.us",  # JID do grupo/comunidade do WhatsApp
     "filtrar_relevantes_apenas": True,     # envia apenas com interesse público / relevância alto/médio
-    "valor_minimo_alerta_compras": 10000.0,  # valor mínimo de contrato/dispensa para alertar
+    "valor_minimo_alerta_compras": 0.0,      # qualquer valor financeiro entra no monitoramento
+    "data_minima_envio": "2026-07-01",       # só envia publicações com data >= esta (evita notícia antiga)
+    "intervalo_envio_segundos": 45,          # pausa entre mensagens (0 = sem pausa)
+    "max_por_execucao": 12,                  # teto de mensagens por rodada (0 = sem teto)
     "enviar_legislativo": True,
-    "enviar_diario_oficial": True
+    "enviar_diario_oficial": True,
+    "enviar_obras": True,
+    "enviar_diarias": True,
+    "enviar_alertas_transparencia": True,
+    "enviar_resumo_semanal": True,
+    "dia_resumo_semanal": 5                 # segunda=0; sábado=5
 }
 
 
@@ -137,10 +153,9 @@ def carregar_enviados() -> set[str]:
 
 def salvar_enviados(enviados: set[str]):
     SENT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    enviados_lista = list(enviados)
-    # Limita o histórico aos últimos 1000 registros para otimização
-    if len(enviados_lista) > 1000:
-        enviados_lista = enviados_lista[-1000:]
+    # O monitor agora cobre diversas fontes. Manter todos os IDs evita que um
+    # registro antigo volte ao grupo quando o histórico ultrapassar 1.000 itens.
+    enviados_lista = sorted(enviados)
     with open(SENT_PATH, "w", encoding="utf-8") as f:
         json.dump(enviados_lista, f, indent=2, ensure_ascii=False)
 
@@ -165,6 +180,24 @@ def formatar_data(data_str) -> str:
         return str(data_str)
 
 
+def dentro_da_janela(data_str, data_minima: str) -> bool:
+    """Retorna True se a publicação deve ser enviada considerando o piso de data.
+
+    Com um piso configurado, registros sem data confiável não são enviados: não
+    é possível afirmar que pertencem à janela aprovada pelo usuário."""
+    if not data_minima:
+        return True
+    try:
+        piso = datetime.strptime(data_minima, "%Y-%m-%d").date()
+    except Exception:
+        return True
+    try:
+        dt = datetime.strptime(str(data_str).split("T")[0], "%Y-%m-%d").date()
+    except Exception:
+        return False
+    return dt >= piso
+
+
 def valores_do_texto(*textos) -> list[str]:
     """Extrai valores monetários COM centavos do texto da IA (resumo/pontos).
     São muito mais confiáveis que a extração numérica bruta, que pesca números
@@ -181,6 +214,34 @@ def valores_do_texto(*textos) -> list[str]:
             if v not in achados:
                 achados.append(v)
     return achados
+
+
+def assunto_financeiro_diario(pub: dict) -> bool:
+    """Indica se o ato do Diario tem contexto financeiro claro.
+
+    O valor minimo de compras pode ser zero, mas ainda precisa haver sinal de
+    compra, contrato, licitacao, diaria, credito, orcamento ou repasse. Isso
+    evita que numeros de portarias, CNPJs ou leis sejam publicados como valores
+    de gasto quando a propria publicacao nao trata de despesa/receita.
+    """
+    pontos = pub.get("pontos_atencao") or []
+    partes = [
+        pub.get("titulo", ""),
+        pub.get("tipo_label", ""),
+        pub.get("tema", ""),
+        pub.get("resumo", ""),
+        " ".join(str(p) for p in pontos),
+    ]
+    texto = " ".join(partes).lower()
+    termos = (
+        "licitacao", "licitação", "contrato", "contratacao", "contratação",
+        "dispensa de licitacao", "dispensa de licitação", "inexigibilidade",
+        "compra", "aquisicao", "aquisição",
+        "aditivo", "diaria", "diária", "passagem", "credito", "crédito",
+        "orcamento", "orçamento", "empenho", "convenio", "convênio",
+        "repasse", "subvencao", "subvenção", "recurso", "suplementar", "r$",
+    )
+    return any(termo in texto for termo in termos)
 
 
 def enviar_mensagem(config: dict, texto: str) -> bool:
@@ -253,11 +314,16 @@ def enviar_mensagem(config: dict, texto: str) -> bool:
 
 def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list[tuple[str, str]]:
     filtro_relevante = config.get("filtrar_relevantes_apenas", True)
+    data_minima = config.get("data_minima_envio", "")
     mensagens = []
 
     for pub in pubs:
         pid = pub.get("id")
         if not pid or pid in enviados:
+            continue
+
+        # Piso de data: não reenvia publicação anterior à janela configurada
+        if not dentro_da_janela(pub.get("data", ""), data_minima):
             continue
 
         # Filtro de interesse público / relevância
@@ -297,23 +363,23 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
         if link_consulta:
             msg += f"[{link_consulta}]\n\n"
 
-        msg += f"BOLETIM DE FISCALIZAÇÃO | CÂMARA DE VARGINHA\n"
+        msg += f"🏛️ BOLETIM DE FISCALIZAÇÃO | CÂMARA DE VARGINHA\n"
         msg += f"════════════════════════════════════\n"
-        msg += f"{titulo}\n\n"
+        msg += f"*{titulo}*\n\n"
 
-        msg += f"*Categoria:* {categoria}\n"
-        msg += f"*Data:* {data_formatada}\n"
-        msg += f"*Autor:* {autor}\n"
-        msg += f"*Situação:* {situacao}\n\n"
+        msg += f"📂 *Categoria:* {categoria}\n"
+        msg += f"📅 *Data:* {data_formatada}\n"
+        msg += f"✍️ *Autor:* {autor}\n"
+        msg += f"⏳ *Situação:* {situacao}\n\n"
 
-        msg += f"*Relevância:* {interesse_publico.upper()}\n"
-        msg += f"*Tema:* {tema.upper()}\n\n"
+        msg += f"📌 *Relevância:* {interesse_publico.upper()}\n"
+        msg += f"🏷️ *Tema:* {tema.upper()}\n\n"
 
         if resumo:
-            msg += f"*SÍNTESE DE FISCALIZAÇÃO*\n{resumo}\n\n"
+            msg += f"💡 *SÍNTESE DE FISCALIZAÇÃO*\n{resumo}\n\n"
 
         if o_que_propoe:
-            msg += f"*PROPOSTA DO PROJETO*\n{o_que_propoe}\n\n"
+            msg += f"📄 *PROPOSTA DO PROJETO*\n{o_que_propoe}\n\n"
 
         if por_que:
             if isinstance(por_que, list):
@@ -321,7 +387,7 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
             else:
                 por_que_str = str(por_que).strip()
             if por_que_str:
-                msg += f"*JUSTIFICATIVA DE ACOMPANHAMENTO*\n{por_que_str}\n\n"
+                msg += f"🔎 *JUSTIFICATIVA DE ACOMPANHAMENTO*\n{por_que_str}\n\n"
 
         # Pontos de atenção nativos + alertas IA estruturados
         todos_pontos = []
@@ -333,18 +399,19 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
         todos_pontos.extend(alertas_ia)
 
         if todos_pontos:
-            msg += f"*APONTAMENTOS DE AUDITORIA*\n"
+            msg += f"⚠️ *APONTAMENTOS DE AUDITORIA*\n"
             msg += "\n".join(f"- {p}" for p in todos_pontos if p) + "\n\n"
 
         if link_consulta or link_anexo:
-            msg += f"*FONTES DE VERIFICAÇÃO*\n"
+            msg += f"🔗 *FONTES DE VERIFICAÇÃO*\n"
             if link_consulta:
                 msg += f"Publicação: {link_consulta}\n"
             if link_anexo:
-                msg += f"Documento original: {link_anexo}\n\n"
+                msg += f"Documento original: {link_anexo}\n"
+            msg += "\n"
 
         # Rodapé de Controle Cidadão
-        msg += f"*CONTROLE CIDADÃO*\n"
+        msg += f"🛡️ *CONTROLE CIDADÃO*\n"
         msg += f"Acesse o painel completo e histórico de dados: https://www.fiscalizavarginha.com.br\n"
         msg += f"Para solicitar esclarecimentos oficiais via e-SIC: https://www.varginha.mg.gov.br/portal/sic\n\n"
 
@@ -360,11 +427,16 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
 def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list[tuple[str, str]]:
     filtro_relevante = config.get("filtrar_relevantes_apenas", True)
     val_minimo = config.get("valor_minimo_alerta_compras", 10000.0)
+    data_minima = config.get("data_minima_envio", "")
     mensagens = []
 
     for pub in pubs:
         pid = pub.get("id")
         if not pid or pid in enviados:
+            continue
+
+        # Piso de data: não reenvia publicação anterior à janela configurada
+        if not dentro_da_janela(pub.get("data", ""), data_minima):
             continue
 
         tipo_label = pub.get("tipo_label", "Ato")
@@ -387,13 +459,15 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
         valores = pub.get("valores") or {}
         val_total = valores.get("total")
         valores_encontrados = valores.get("encontrados") or []
+        texto_analise = (titulo + " " + resumo).lower()
+        assunto_financeiro = assunto_financeiro_diario(pub)
         
         # Filtro de relevância ou valor mínimo de compras
         relevante = False
         if relevancia_str in ("alto", "médio", "medio", "sim", "3", "4", "5"):
             relevante = True
         
-        if val_total is not None and float(val_total) >= val_minimo:
+        if assunto_financeiro and val_total is not None and float(val_total) >= val_minimo:
             relevante = True
 
         if filtro_relevante and not relevante:
@@ -404,7 +478,7 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
         vinculos_emendas = []
         historico_fornecedores = []
         
-        envolvidos = pub.get("envolvidos") or []
+        envolvidos = (pub.get("envolvidos") or []) if assunto_financeiro else []
         for env in envolvidos:
             nome = env.get("nome")
             cnpj = env.get("cnpj")
@@ -434,25 +508,25 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
             elif cnpj:
                 envolvidos_str += f"- CNPJ: {cnpj}\n"
 
-        # Análise forense de riscos e termos sensíveis
+        # Sinais textuais para orientar conferência cidadã. Evita afirmar
+        # irregularidade ou congelar no código limites legais que mudam com o tempo.
         alertas_forenses = []
-        texto_analise = (titulo + " " + resumo).lower()
-        
-        # Alerta de limite de dispensa de licitação (Lei 14.133)
-        eh_dispensa = "dispensa" in texto_analise or "inexigibilidade" in texto_analise
-        if eh_dispensa and val_total is not None:
-            val = float(val_total)
-            if 50000.0 <= val <= 61000.0:
-                alertas_forenses.append("Dispensa de licitação com valor próximo ao limite legal (R$ 59,9 mil) para compras/serviços. Risco de fracionamento de despesa.")
-            elif 100000.0 <= val <= 122000.0:
-                alertas_forenses.append("Dispensa de licitação com valor próximo ao limite legal (R$ 119,8 mil) para engenharia/veículos. Risco de fracionamento de despesa.")
+        eh_dispensa = "dispensa de licita" in texto_analise or "inexigibilidade" in texto_analise
+        if assunto_financeiro and eh_dispensa and val_total is not None:
+            alertas_forenses.append(
+                "Contratação direta identificada. Conferir justificativa, pesquisa de preços, fornecedor e eventual repetição de compras semelhantes."
+            )
 
         # Alerta de termos sensíveis
         if "emergencial" in texto_analise or "calamidade" in texto_analise or "emergência" in texto_analise:
-            alertas_forenses.append("Contratação sob alegação de emergência/urgência. Requer fiscalização do nexo causal e prazo máximo de 1 ano.")
+            alertas_forenses.append(
+                "Contratação sob justificativa de emergência ou urgência. Conferir motivação, prazo, preços e entrega efetiva."
+            )
         if "termo aditivo" in texto_analise or "aditivo" in texto_analise:
             if "acréscimo" in texto_analise or "aumento" in texto_analise or "reajuste" in texto_analise:
-                alertas_forenses.append("Termo aditivo de ampliação de valores. O teto legal permitido de acréscimo é de 25% para a maioria dos contratos públicos.")
+                alertas_forenses.append(
+                    "Aditivo com possível alteração de valor. Conferir justificativa técnica, percentual acumulado e regras aplicáveis ao contrato."
+                )
         if eh_compra_camara:
             alertas_forenses.append("Contratação direta realizada pelo Poder Legislativo (Câmara Municipal). Acompanhar a finalidade pública do gasto para o funcionamento da Câmara.")
 
@@ -464,33 +538,33 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
             msg += f"[{link_consulta}]\n\n"
 
         if eh_compra_camara:
-            msg += f"BOLETIM DE FISCALIZAÇÃO | COMPRAS DA CÂMARA MUNICIPAL\n"
+            msg += f"🏛️ BOLETIM DE FISCALIZAÇÃO | COMPRAS DA CÂMARA\n"
         else:
-            msg += f"BOLETIM DE FISCALIZAÇÃO | DIÁRIO OFICIAL DE VARGINHA\n"
+            msg += f"📰 BOLETIM DE FISCALIZAÇÃO | DIÁRIO OFICIAL DE VARGINHA\n"
         msg += f"════════════════════════════════════\n"
-        msg += f"{titulo}\n\n"
+        msg += f"*{titulo}*\n\n"
 
-        msg += f"*Categoria:* {categoria}\n"
-        msg += f"*Data:* {data_formatada}\n"
-        msg += f"*Órgão:* {orgao}\n\n"
+        msg += f"📂 *Categoria:* {categoria}\n"
+        msg += f"📅 *Data:* {data_formatada}\n"
+        msg += f"🏢 *Órgão:* {orgao}\n\n"
 
-        msg += f"*Relevância:* {relevancia_str.upper()}\n"
-        msg += f"*Tema:* {tema.upper()}\n\n"
+        msg += f"📌 *Relevância:* {relevancia_str.upper()}\n"
+        msg += f"🏷️ *Tema:* {tema.upper()}\n\n"
 
         if resumo:
-            msg += f"*SÍNTESE DE FISCALIZAÇÃO*\n{resumo}\n\n"
+            msg += f"💡 *SÍNTESE DE FISCALIZAÇÃO*\n{resumo}\n\n"
 
         if envolvidos_str:
-            msg += f"*PARTES ENVOLVIDAS*\n{envolvidos_str.strip()}\n\n"
+            msg += f"👥 *PARTES ENVOLVIDAS*\n{envolvidos_str.strip()}\n\n"
 
         # Histórico de fornecedores no município
         if historico_fornecedores:
-            msg += f"*HISTÓRICO FINANCEIRO DE CREDORES*\n"
+            msg += f"📈 *HISTÓRICO FINANCEIRO DE CREDORES*\n"
             msg += "\n".join(f"- {h}" for h in historico_fornecedores) + "\n\n"
 
         # Vínculos parlamentares com emendas
         if vinculos_emendas:
-            msg += f"*VÍNCULO PARLAMENTAR IDENTIFICADO*\n"
+            msg += f"🎯 *VÍNCULO PARLAMENTAR IDENTIFICADO*\n"
             msg += "\n".join(f"- {v}" for v in vinculos_emendas) + "\n\n"
 
         # Valores — prioriza o valor do TEXTO da IA (confiável, com centavos).
@@ -508,7 +582,8 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
         else:
             valores_str = "- Valor: não identificado com segurança (confira na fonte)\n"
 
-        msg += f"*VALORES IDENTIFICADOS*\n{valores_str.strip()}\n\n"
+        if assunto_financeiro or vals_texto:
+            msg += f"💰 *VALORES IDENTIFICADOS*\n{valores_str.strip()}\n\n"
 
         # Junta pontos de atenção nativos e os alertas analíticos forenses
         todos_pontos = []
@@ -520,18 +595,19 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
         todos_pontos.extend(alertas_forenses)
 
         if todos_pontos:
-            msg += f"*APONTAMENTOS DE AUDITORIA*\n"
+            msg += f"⚠️ *APONTAMENTOS DE AUDITORIA*\n"
             msg += "\n".join(f"- {p}" for p in todos_pontos if p) + "\n\n"
 
         if link_consulta or link_anexo:
-            msg += f"*FONTES DE VERIFICAÇÃO*\n"
+            msg += f"🔗 *FONTES DE VERIFICAÇÃO*\n"
             if link_consulta:
                 msg += f"Publicação: {link_consulta}\n"
             if link_anexo:
-                msg += f"Documento original: {link_anexo}\n\n"
+                msg += f"Documento original: {link_anexo}\n"
+            msg += "\n"
 
         # Rodapé de Controle Cidadão
-        msg += f"*CONTROLE CIDADÃO*\n"
+        msg += f"🛡️ *CONTROLE CIDADÃO*\n"
         msg += f"Acesse o painel completo e histórico de dados: https://www.fiscalizavarginha.com.br\n"
         msg += f"Para solicitar esclarecimentos oficiais via e-SIC: https://www.varginha.mg.gov.br/portal/sic\n\n"
 
@@ -549,18 +625,39 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
 
 def main():
     print("🚀 Iniciando Bot de Alertas para o WhatsApp - Fiscaliza Varginha")
+    preview = "--preview" in sys.argv
+    forcar_resumo = preview or "--resumo-semanal" in sys.argv
     config = carregar_config()
     enviados = carregar_enviados()
+    hoje = datetime.now().astimezone().date()
 
     todas_mensagens = []
+    proximo_estado = None
 
     # 1. Processa Câmara
-    if config.get("enviar_legislativo", True) and CAMARA_JSON.exists():
+    if config.get("enviar_legislativo", True):
         try:
-            with open(CAMARA_JSON, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                pubs = data.get("publicacoes", [])
-                todas_mensagens += processar_camara(pubs, config, enviados)
+            pubs = []
+            if CAMARA_JSON.exists():
+                with open(CAMARA_JSON, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                    pubs = data.get("publicacoes", [])
+
+            # A base resumida do SAPL costuma atualizar antes da análise detalhada.
+            # Converte matérias novas para o mesmo boletim e mantém o ID compatível,
+            # evitando reenvio quando a versão enriquecida ficar pronta.
+            if CAMARA_ANOS_JSON.exists():
+                with open(CAMARA_ANOS_JSON, "r", encoding="utf-8") as f:
+                    camara_anos = json.load(f)
+                extras = materias_para_publicacoes(
+                    camara_anos,
+                    hoje.year,
+                    config.get("data_minima_envio", ""),
+                )
+                ids_existentes = {pub.get("id") for pub in pubs}
+                pubs.extend(pub for pub in extras if pub.get("id") not in ids_existentes)
+
+            todas_mensagens += processar_camara(pubs, config, enviados)
         except Exception as e:
             print(f"❌ Erro ao ler publicações da Câmara: {e}")
 
@@ -574,24 +671,97 @@ def main():
         except Exception as e:
             print(f"❌ Erro ao ler publicações do Diário Oficial: {e}")
 
+    # 3. Obras, transparência e resumo semanal. Na primeira execução, as obras
+    # e pendências formam apenas uma linha de base, sem avalanche retroativa.
+    try:
+        complementares, proximo_estado = preparar_conteudos_complementares(
+            ROOT,
+            config,
+            enviados,
+            hoje,
+            forcar_resumo=forcar_resumo,
+        )
+        todas_mensagens += complementares
+    except Exception as e:
+        print(f"❌ Erro ao preparar monitoramento complementar: {e}")
+
     if not todas_mensagens:
         print("💡 Nenhuma nova publicação qualificada para envio hoje.")
+        if not preview and proximo_estado is not None:
+            salvar_estado(MONITOR_STATE_PATH, proximo_estado)
+            print("ℹ️ Linha de base de obras e transparência atualizada.")
         return
 
-    print(f"📬 Encontradas {len(todas_mensagens)} novas publicações qualificadas. Enviando...")
-    
-    sucessos = 0
+    mensagens_unicas = []
+    ids_na_execucao = set()
     for pid, msg in todas_mensagens:
+        if pid in enviados:
+            continue
+        if pid in ids_na_execucao:
+            print(f"ℹ️ Publicação duplicada ignorada nesta execução: {pid}")
+            continue
+        ids_na_execucao.add(pid)
+        mensagens_unicas.append((pid, msg))
+
+    todas_mensagens = mensagens_unicas
+
+    if not todas_mensagens:
+        print("💡 Nenhuma nova publicação qualificada para envio hoje após remover duplicidades.")
+        if not preview and proximo_estado is not None:
+            salvar_estado(MONITOR_STATE_PATH, proximo_estado)
+        return
+
+    if preview:
+        print(f"🔎 PRÉVIA LOCAL — {len(todas_mensagens)} mensagem(ns); nada será enviado.")
+        for indice, (pid, msg) in enumerate(todas_mensagens, start=1):
+            print(f"\n{'=' * 72}\nPRÉVIA {indice} | ID: {pid}\n{'=' * 72}\n{msg}\n")
+        return
+
+    import time
+
+    # Ritmo de envio: evita despejar tudo de uma vez no grupo.
+    # intervalo_envio_segundos: pausa entre mensagens (parece conversa, não spam).
+    # max_por_execucao: teto por rodada; o excedente fica na fila e sai no próximo
+    #   ciclo (0 = sem teto). Anti-duplicado garante que nada se perde nem repete.
+    intervalo = float(config.get("intervalo_envio_segundos", 45))
+    max_exec = int(config.get("max_por_execucao", 12))
+
+    total_qualificadas = len(todas_mensagens)
+    if max_exec > 0 and total_qualificadas > max_exec:
+        adiadas = total_qualificadas - max_exec
+        todas_mensagens = todas_mensagens[:max_exec]
+        print(f"📬 {total_qualificadas} qualificadas. Enviando {max_exec} agora "
+              f"(intervalo {intervalo:.0f}s); {adiadas} ficam para o próximo ciclo.")
+    else:
+        print(f"📬 Encontradas {total_qualificadas} novas publicações qualificadas. "
+              f"Enviando (intervalo {intervalo:.0f}s)...")
+
+    sucessos = 0
+    falhas = 0
+    ultimo = len(todas_mensagens) - 1
+    for i, (pid, msg) in enumerate(todas_mensagens):
         print(f"💬 Enviando alerta do ID: {pid}...")
         if enviar_mensagem(config, msg):
             enviados.add(pid)
             salvar_enviados(enviados)  # Salva incrementalmente para garantir resiliência contra falhas
             sucessos += 1
-            # Evita sobrecarga ou bloqueio do WhatsApp
-            import time
-            time.sleep(2)
+            # Espaça os envios (pula a espera após a última mensagem)
+            if intervalo > 0 and i < ultimo:
+                time.sleep(intervalo)
         else:
             print(f"❌ Falha no envio do ID: {pid}")
+            falhas += 1
+
+    truncou = max_exec > 0 and total_qualificadas > max_exec
+    if falhas == 0 and not truncou and proximo_estado is not None:
+        salvar_estado(MONITOR_STATE_PATH, proximo_estado)
+        print("ℹ️ Estado de obras e transparência atualizado com segurança.")
+    elif truncou and proximo_estado is not None:
+        # Alguns alertas (possivelmente de obras) ficaram para o próximo ciclo:
+        # não avança a linha de base, senão os adiados nunca seriam regerados.
+        print("⏳ Estado complementar preservado — há alertas adiados para o próximo ciclo.")
+    elif falhas and proximo_estado is not None:
+        print("⚠️ Estado complementar preservado para repetir os alertas que falharam.")
 
     if sucessos > 0:
         print(f"✅ Concluído: {sucessos} novos alertas transmitidos e registrados.")

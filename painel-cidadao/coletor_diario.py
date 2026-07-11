@@ -6,8 +6,8 @@ dados duros (CNPJ, valores) por regex; resumo cidadão e pontos de atenção pel
 IA (enriquecedor_ia). Mesmo schema da Câmara → alimenta painel + WhatsApp.
 
 Uso:
-    python coletor_diario.py --edicoes 3          # 3 edições mais recentes
-    python coletor_diario.py --edicoes 0          # todas as edições do diario.json
+    python coletor_diario.py --edicoes 3          # mescla 3 edições mais recentes
+    python coletor_diario.py --edicoes 0 --full   # refaz todas as edições
 
 Saída: data/chunks/publicacoes_diario.json
 """
@@ -136,8 +136,59 @@ def _valor_brl(s: str) -> float:
     return float(s.replace(".", "").replace(",", "."))
 
 
+def _parse_ia_valor(val_str: str) -> float | None:
+    if not val_str:
+        return None
+    val_clean = val_str.lower().strip()
+
+    # Se tem palavra de milhão/bilhão
+    multiplicador = 1.0
+    if "milh" in val_clean: # milhão, milhões, milhoes
+        multiplicador = 1000000.0
+    elif "bilh" in val_clean: # bilhão, bilhões, bilhoes
+        multiplicador = 1000000000.0
+    elif "mil" in val_clean and "milh" not in val_clean:
+        multiplicador = 1000.0
+
+    # Remove R$, espaços e caracteres não numéricos. Mantém apenas dígitos, ponto e vírgula.
+    val_clean = re.sub(r"[^\d.,]", "", val_clean)
+    val_clean = val_clean.strip(".,")
+    if not val_clean:
+        return None
+
+    # Se tiver vírgula e ponto, ex: 2.404.755,50
+    if "," in val_clean and "." in val_clean:
+        if val_clean.rfind(",") > val_clean.rfind("."):
+            val_clean = val_clean.replace(".", "").replace(",", ".")
+        else:
+            val_clean = val_clean.replace(",", "")
+    elif "," in val_clean:
+        # Só tem vírgula, ex: 2,4 ou 2404755,50
+        partes = val_clean.split(",")
+        if len(partes) == 2 and len(partes[1]) <= 2:
+            val_clean = val_clean.replace(",", ".")
+        else:
+            val_clean = val_clean.replace(",", "")
+    elif "." in val_clean:
+        # Só tem ponto, ex: 2.404.755 ou 1500.50
+        partes = val_clean.split(".")
+        if len(partes) == 2 and len(partes[1]) <= 2:
+            pass
+        else:
+            val_clean = val_clean.replace(".", "")
+
+    try:
+        val_float = float(val_clean)
+        return round(val_float * multiplicador, 2)
+    except ValueError:
+        return None
+
+
 def _extrai_valores(trecho: str) -> dict:
-    vals = sorted({_valor_brl(v) for v in MONEY_RE.findall(trecho)}, reverse=True)
+    # Remove linhas de tabelas de projeção de faturamento para evitar falsos positivos gigantes
+    # Ex: "2026 R$ 13.000.000,00" ou "2026: R$ 13.000.000,00" ou "2026 - R$ 13.000.000,00"
+    trecho_limpo = re.sub(r"(?im)^\s*(?:20\d{2})\b.*?(?:R\$|R\s*\$)\s*[\d.,]+.*$", "", trecho)
+    vals = sorted({_valor_brl(v) for v in MONEY_RE.findall(trecho_limpo)}, reverse=True)
     return {"total": vals[0] if vals else None, "encontrados": vals[:6]}
 
 
@@ -172,7 +223,6 @@ def _monta_ato(tipo, rotulo, titulo, trecho, edicao, url_pdf, leitor) -> dict:
     ano = edicao.get("ano")
     data = (edicao.get("data") or "")[:10]
     numero = _numero(titulo)
-    valores = _extrai_valores(trecho)
     envolvidos = _extrai_envolvidos(trecho)
 
     ia = enriquecedor_ia.enriquecer({
@@ -183,6 +233,16 @@ def _monta_ato(tipo, rotulo, titulo, trecho, edicao, url_pdf, leitor) -> dict:
         "autor": "Prefeitura de Varginha",
         "data": data,
     })
+
+    # Extrai valores com regex
+    valores = _extrai_valores(trecho)
+    # Refina com o valor principal identificado pela IA
+    valor_ia_str = ia.get("valor_principal")
+    val_ia = _parse_ia_valor(valor_ia_str)
+    if val_ia is not None:
+        valores["total"] = val_ia
+        if val_ia not in valores["encontrados"]:
+            valores["encontrados"].insert(0, val_ia)
 
     slug = re.sub(r"[^a-z0-9]", "", titulo.lower())[:16]
     return {
@@ -266,8 +326,33 @@ def coletar_diario(limite_edicoes: int = 3) -> list[dict]:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--edicoes", type=int, default=3, help="0 = todas")
+    ap.add_argument("--full", action="store_true", help="substitui a base em vez de mesclar")
     args = ap.parse_args()
-    pubs = coletar_diario(args.edicoes)
+    novas = coletar_diario(args.edicoes)
+    pubs = novas
+
+    # No uso diário, troca apenas as edições que foram processadas com sucesso
+    # e preserva todo o histórico anterior. Isso também protege uma edição cuja
+    # página/PDF esteja temporariamente indisponível.
+    if not args.full and SAIDA.exists():
+        try:
+            anterior = json.loads(SAIDA.read_text(encoding="utf-8"))
+            existentes = anterior.get("publicacoes", [])
+            edicoes_atualizadas = {str(pub.get("edicao")) for pub in novas if pub.get("edicao") is not None}
+            preservadas = [
+                pub for pub in existentes
+                if str(pub.get("edicao")) not in edicoes_atualizadas
+            ]
+            pubs = preservadas + novas
+            print(
+                f"  incremental: {len(preservadas)} anterior(es) preservada(s), "
+                f"{len(novas)} registro(s) atualizado(s)",
+                flush=True,
+            )
+        except Exception as exc:
+            print(f"  ! base anterior não pôde ser mesclada: {exc}", flush=True)
+
+    pubs.sort(key=lambda pub: (pub.get("data") or "", str(pub.get("edicao") or ""), pub.get("id") or ""), reverse=True)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "gerado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -275,7 +360,9 @@ def main() -> None:
         "total": len(pubs),
         "publicacoes": pubs,
     }
-    SAIDA.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    temporario = SAIDA.with_suffix(".json.tmp")
+    temporario.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    os.replace(temporario, SAIDA)
     print(f"✓ Salvo: {SAIDA}  ({len(pubs)} publicações)")
 
 

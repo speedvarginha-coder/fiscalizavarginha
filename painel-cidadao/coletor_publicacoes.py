@@ -5,14 +5,16 @@ no schema único do projeto, enriquecida pela IA (enriquecedor_ia). O mesmo JSON
 alimenta depois o painel web e o bot de WhatsApp (canais são só renderizadores).
 
 Uso:
-    python coletor_publicacoes.py --ano 2026 --limite 20
-    python coletor_publicacoes.py --ano 2026            # tudo do ano
+    python coletor_publicacoes.py --ano 2026             # incremental (padrão)
+    python coletor_publicacoes.py --ano 2026 --limite 20 # teste com 20 matérias
+    python coletor_publicacoes.py --ano 2026 --full      # reenriquece tudo
 
 Saída: data/chunks/publicacoes_estruturadas.json
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -121,7 +123,42 @@ def _situacao(materia: dict) -> str:
     return resultado or "tramitação encerrada"
 
 
-def _monta_publicacao(materia: dict, autores_map: dict) -> dict | None:
+def _fonte_hash(tipo_label: str, titulo: str, ementa: str, autor: str, data: str) -> str:
+    base = json.dumps(
+        [tipo_label, titulo, ementa, autor, data],
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
+    return hashlib.sha1(base.encode("utf-8")).hexdigest()
+
+
+def _hash_publicacao_existente(pub: dict) -> str:
+    return pub.get("fonte_hash") or _fonte_hash(
+        str(pub.get("tipo_label") or ""),
+        str(pub.get("titulo") or ""),
+        re.sub(r"\s+", " ", str(pub.get("ementa") or "")).strip(),
+        str(pub.get("autor") or ""),
+        str(pub.get("data") or "")[:10],
+    )
+
+
+def _ia_da_publicacao(pub: dict) -> dict:
+    return {
+        "interesse_publico": pub.get("interesse_publico") or "medio",
+        "tema": pub.get("tema") or "",
+        "resumo": pub.get("resumo") or "",
+        "o_que_propoe": pub.get("o_que_propoe") or "",
+        "por_que_acompanhar": pub.get("por_que_acompanhar") or [],
+        "pontos_atencao": pub.get("pontos_atencao") or [],
+        "_origem_ia": pub.get("origem_ia") or "",
+    }
+
+
+def _monta_publicacao(
+    materia: dict,
+    autores_map: dict,
+    publicacao_existente: dict | None = None,
+) -> dict | None:
     tipo_id = materia.get("tipo")
     info = TIPO_INFO.get(tipo_id)
     if not info:
@@ -138,15 +175,24 @@ def _monta_publicacao(materia: dict, autores_map: dict) -> dict | None:
     data = (materia.get("data_apresentacao") or materia.get("data_publicacao") or "")[:10]
     mid = materia.get("id")
 
-    # Camada de IA — resumo cidadão, pontos de atenção, interesse público.
-    ia = enriquecedor_ia.enriquecer({
-        "fonte": "camara",
-        "tipo": rotulo,
-        "titulo": titulo,
-        "texto": ementa,
-        "autor": autor,
-        "data": data,
-    })
+    hash_atual = _fonte_hash(rotulo, titulo, ementa, autor, data)
+    pode_reusar = bool(
+        publicacao_existente
+        and publicacao_existente.get("origem_ia") == "ia"
+        and _hash_publicacao_existente(publicacao_existente) == hash_atual
+    )
+    if pode_reusar:
+        ia = _ia_da_publicacao(publicacao_existente)
+    else:
+        # Camada de IA — somente itens novos, alterados ou antes degradados.
+        ia = enriquecedor_ia.enriquecer({
+            "fonte": "camara",
+            "tipo": rotulo,
+            "titulo": titulo,
+            "texto": ementa,
+            "autor": autor,
+            "data": data,
+        })
 
     return {
         "id": f"CAMARA-{ano}-{sigla}-{numero}",
@@ -172,11 +218,16 @@ def _monta_publicacao(materia: dict, autores_map: dict) -> dict | None:
             "inteiro_teor": materia.get("texto_original") or "",
         },
         "origem_ia": ia.get("_origem_ia", ""),
-        "gerado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "fonte_hash": hash_atual,
+        "gerado_em": (
+            publicacao_existente.get("gerado_em")
+            if pode_reusar and publicacao_existente
+            else datetime.now(timezone.utc).isoformat(timespec="seconds")
+        ),
     }
 
 
-def coletar_camara(ano: int, limite: int = 0) -> list[dict]:
+def coletar_camara(ano: int, limite: int = 0, full: bool = False) -> list[dict]:
     print(f"→ Coletando matérias SAPL {ano} (IA: {'ON' if enriquecedor_ia.tem_ia() else 'OFF (fallback)'})")
     materias = _paginate(f"{SAPL}/materia/materialegislativa/?ano={ano}&page=1&page_size=100")
     # mais recentes primeiro
@@ -188,13 +239,39 @@ def coletar_camara(ano: int, limite: int = 0) -> list[dict]:
     autores_map = _mapa_autores()
     print(f"  autores resolvidos: {len(autores_map)}")
 
+    existentes: list[dict] = []
+    if not full and SAIDA.exists():
+        try:
+            payload_existente = json.loads(SAIDA.read_text(encoding="utf-8"))
+            existentes = [
+                pub for pub in payload_existente.get("publicacoes", [])
+                if str(pub.get("numero") or "").endswith(f"/{ano}")
+            ]
+        except Exception as exc:
+            print(f"  ! base anterior não pôde ser reutilizada: {exc}")
+    existentes_por_id = {pub.get("id"): pub for pub in existentes if pub.get("id")}
+    if existentes_por_id:
+        print(f"  base incremental: {len(existentes_por_id)} publicação(ões) existente(s)")
+
     total = len(materias)
     feito = [0]
     trava = threading.Lock()
 
+    estatisticas = {"reusadas": 0, "enriquecidas": 0}
+
     def _proc(m):
-        pub = _monta_publicacao(m, autores_map)
+        info = TIPO_INFO.get(m.get("tipo"))
+        pid = None
+        existente = None
+        if info and m.get("numero") and m.get("ano"):
+            pid = f"CAMARA-{m.get('ano')}-{info[0]}-{m.get('numero')}"
+            existente = existentes_por_id.get(pid)
+        pub = _monta_publicacao(m, autores_map, existente)
         with trava:
+            if pub and existente and pub.get("gerado_em") == existente.get("gerado_em"):
+                estatisticas["reusadas"] += 1
+            elif pub:
+                estatisticas["enriquecidas"] += 1
             feito[0] += 1
             if feito[0] % 25 == 0 or feito[0] == total:
                 print(f"    {feito[0]}/{total}…", flush=True)
@@ -209,6 +286,17 @@ def coletar_camara(ano: int, limite: int = 0) -> list[dict]:
         resultados = [_proc(m) for m in materias]
 
     pubs = [p for p in resultados if p]
+    ids_coletados = {p.get("id") for p in pubs}
+    preservadas = [pub for pid, pub in existentes_por_id.items() if pid not in ids_coletados]
+    if preservadas:
+        print(f"  ! {len(preservadas)} publicação(ões) anterior(es) não vieram na consulta; preservadas por segurança")
+        pubs.extend(preservadas)
+    pubs.sort(key=lambda p: (p.get("data") or "", p.get("id") or ""), reverse=True)
+    print(
+        f"  incremental: {estatisticas['reusadas']} reutilizada(s), "
+        f"{estatisticas['enriquecidas']} enriquecida(s)",
+        flush=True,
+    )
     print(f"  ✓ {len(pubs)} publicação(ões) estruturada(s)", flush=True)
     return pubs
 
@@ -217,9 +305,10 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--ano", type=int, default=datetime.now().year)
     ap.add_argument("--limite", type=int, default=0, help="0 = todas")
+    ap.add_argument("--full", action="store_true", help="reenriquece todas as matérias")
     args = ap.parse_args()
 
-    pubs = coletar_camara(args.ano, args.limite)
+    pubs = coletar_camara(args.ano, args.limite, full=args.full)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "gerado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -227,7 +316,9 @@ def main() -> None:
         "total": len(pubs),
         "publicacoes": pubs,
     }
-    SAIDA.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    temporario = SAIDA.with_suffix(".json.tmp")
+    temporario.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    os.replace(temporario, SAIDA)
     print(f"✓ Salvo: {SAIDA}  ({len(pubs)} publicações)")
 
 

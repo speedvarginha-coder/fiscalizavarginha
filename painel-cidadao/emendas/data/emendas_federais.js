@@ -2,7 +2,7 @@ window.EMENDAS_FEDERAIS = {
   "metadata": {
     "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
     "favorecido": "Favorecidos em Varginha-MG",
-    "extraidoEm": "2026-07-03",
+    "extraidoEm": "2026-07-06",
     "codigoIbge": "3170701",
     "totalFederal": 23270041.99,
     "totalFederalTexto": "23.270.041,99",

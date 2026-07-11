@@ -133,17 +133,37 @@ def _impacto_zero(tipo: str, ementa: str) -> tuple[bool, str]:
     return False, ""
 
 
-def _linha_padrao_sapl(r: dict) -> dict:
+def _linha_padrao_sapl(r: dict, tipo_map: dict = None, autor_map: dict = None) -> dict:
+    tipo_id = r.get("tipo")
+    tipo_sigla = ""
+    tipo_descricao = ""
+    if tipo_id is not None and tipo_map:
+        info = tipo_map.get(tipo_id)
+        if info:
+            tipo_sigla = info.get("sigla") or ""
+            tipo_descricao = info.get("descricao") or ""
+
+    autores_ids = r.get("autores") or []
+    autoria = ""
+    if autores_ids and autor_map:
+        nomes = []
+        for aid in autores_ids:
+            nome = autor_map.get(aid)
+            if nome:
+                nomes.append(nome)
+        autoria = ", ".join(nomes)
+
     return {
         "id": str(r.get("ID") or r.get("id") or ""),
-        "ano": r.get("Ano") or r.get("ano") or "",
-        "numero": r.get("NÃºmero") or r.get("Número") or r.get("numero") or "",
-        "tipo_sigla": r.get("Tipo de MatÃ©ria Legislativa/Sigla") or r.get("Tipo de Matéria Legislativa/Sigla") or r.get("tipo__sigla") or "",
-        "tipo_descricao": r.get("Tipo de MatÃ©ria Legislativa/DescriÃ§Ã£o") or r.get("Tipo de Matéria Legislativa/Descrição") or r.get("tipo__descricao") or "",
-        "autoria": r.get("Autorias") or r.get("autoria") or "",
+        "ano": str(r.get("Ano") or r.get("ano") or ""),
+        "numero": str(r.get("Número") or r.get("Nmero") or r.get("numero") or tipo_id or ""),
+        "tipo_sigla": r.get("Tipo de Matéria Legislativa/Sigla") or r.get("Tipo de Matria Legislativa/Sigla") or r.get("tipo__sigla") or tipo_sigla or "",
+        "tipo_descricao": r.get("Tipo de Matéria Legislativa/Descrição") or r.get("Tipo de Matria Legislativa/Descrio") or r.get("tipo__descricao") or tipo_descricao or "",
+        "autoria": r.get("Autorias") or r.get("autoria") or autoria or "",
         "texto_original": r.get("Texto Original") or r.get("texto_original") or "",
         "ementa": r.get("Ementa") or r.get("ementa") or "",
     }
+
 
 
 def _fetch_datas_sapl(anos: list[int]) -> dict[str, str]:
@@ -152,7 +172,7 @@ def _fetch_datas_sapl(anos: list[int]) -> dict[str, str]:
     BASE = "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/"
     datas: dict[str, str] = {}
     for ano in anos:
-        url: str | None = f"{BASE}?ano={ano}&page=1"
+        url: str | None = f"{BASE}?ano={ano}&page_size=200&page=1"
         paginas = 0
         while url:
             try:
@@ -206,21 +226,38 @@ def _classifica_desfecho(sigla: str, indicador: str) -> str:
     return "tramitando"
 
 
-def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 2500) -> dict[str, str]:
+def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 150) -> dict[str, str]:
     """{id_materia: desfecho} via API SAPL. desfecho ∈ lei|arquivado|encerrado|tramitando.
     Em tramitação não custa request (vem na lista). Tolerante a falha de rede."""
     status_map = _sapl_status_map()
     if not status_map:
         return {}
+
+    # Cache local carregado do camara_anos.json existente para evitar requisições redundantes
+    cache: dict[str, str] = {}
+    try:
+        existing = _load_existing("camara_anos.json", {})
+        for ano_key, ano_data in existing.items():
+            if isinstance(ano_data, dict) and "materias" in ano_data:
+                for mat in ano_data["materias"]:
+                    mid = str(mat.get("id", ""))
+                    desf = mat.get("desfecho", "")
+                    if mid and desf and desf in ("lei", "arquivado", "encerrado"):
+                        cache[mid] = desf
+    except Exception as e:
+        print(f"  ! Falha ao carregar cache de desfechos: {e}")
+
     desfechos: dict[str, str] = {}
     decididos: list[str] = []
+    has_errors = False
     for ano in anos:
-        url = f"{SAPL_API}/materialegislativa/?ano={ano}&page=1"
+        url = f"{SAPL_API}/materialegislativa/?ano={ano}&page_size=200&page=1"
         while url:
             try:
                 d = _http_get_json(url, timeout=20)
             except Exception as e:
                 print(f"  ! SAPL lista {ano}: {e}")
+                has_errors = True
                 break
             for item in d.get("results", []):
                 iid = str(item.get("id", ""))
@@ -231,13 +268,22 @@ def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 2500) -> dict[st
                 else:
                     decididos.append(iid)
             url = (d.get("pagination", {}) or {}).get("links", {}).get("next")
+
+    # Se a API de listagem falhou ou apresentou instabilidade, pula as consultas individuais
+    if has_errors:
+        print("  ! API SAPL apresentou instabilidade na listagem; pulando consultas individuais de desfecho.")
+        max_consultas = 0
+
     consultas = 0
     for iid in decididos:
+        if iid in cache:
+            desfechos[iid] = cache[iid]
+            continue
         if consultas >= max_consultas:
             desfechos.setdefault(iid, "")
             continue
         try:
-            t = _http_get_json(f"{SAPL_API}/tramitacao/?materia={iid}", timeout=15)
+            t = _http_get_json(f"{SAPL_API}/tramitacao/?materia={iid}", timeout=3)
             consultas += 1
             tl = t.get("results", []) or []
             tl.sort(key=lambda x: x.get("data_tramitacao") or "", reverse=True)
@@ -250,8 +296,9 @@ def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 2500) -> dict[st
     arq = sum(1 for v in desfechos.values() if v == "arquivado")
     tram = sum(1 for v in desfechos.values() if v == "tramitando")
     print(f"  ✓ SAPL desfechos: {leis} viraram lei, {arq} arquivados/rejeitados, "
-          f"{tram} em tramitação ({consultas} consultas)")
+          f"{tram} em tramitação ({consultas} novas consultas)")
     return desfechos
+
 
 
 def _sapl_paginate(url: str, timeout: int = 20) -> list[dict]:
@@ -344,15 +391,107 @@ def _fetch_presenca_sapl(anos: list[int]) -> dict[int, dict[str, dict]]:
     return resultado
 
 
-def _load_sapl_rows(path: Path) -> list[dict]:
+def _fetch_sessoes_votacoes_sapl(anos: list[int], data_minima: str = "2026-07-01") -> dict[int, list[dict]]:
+    """Coleta sessões, presença registrada e votos nominais desde o piso editorial.
+
+    A API do SAPL relaciona a votação à ordem do dia/expediente. Por isso a
+    coleta percorre somente sessões deliberativas dentro da janela aprovada,
+    evitando baixar novamente todo o histórico legislativo.
+    """
+    base = "https://sapl.varginha.mg.leg.br/api"
+    parl = _sapl_paginate(f"{base}/parlamentares/parlamentar/?page_size=200")
+    id2nome = {p.get("id"): (p.get("nome_parlamentar") or "") for p in parl}
+    tipos = _sapl_paginate(f"{base}/sessao/tiposessaoplenaria/?page_size=100")
+    id2tipo = {t.get("id"): (t.get("nome") or t.get("__str__") or "Sessão") for t in tipos}
+    resultado: dict[int, list[dict]] = {}
+
+    for ano in anos:
+        piso_ano = max(data_minima, f"{ano}-01-01")
+        sessoes = _sapl_paginate(
+            f"{base}/sessao/sessaoplenaria/?data_inicio__year={ano}&page_size=200"
+        )
+        sessoes = [
+            sessao for sessao in sessoes
+            if sessao.get("tipo") in SAPL_TIPOS_DELIBERATIVOS
+            and (sessao.get("data_inicio") or "")[:10] >= piso_ano
+        ]
+        saida_ano: list[dict] = []
+
+        for sessao in sorted(sessoes, key=lambda s: (s.get("data_inicio") or "", s.get("numero") or 0)):
+            sid = sessao.get("id")
+            presentes = _sapl_paginate(
+                f"{base}/sessao/sessaoplenariapresenca/?sessao_plenaria={sid}&page_size=200"
+            )
+            nomes_presentes = sorted(
+                {id2nome.get(item.get("parlamentar"), "") for item in presentes if id2nome.get(item.get("parlamentar"))}
+            )
+            votacoes: list[dict] = []
+
+            pautas = []
+            for endpoint, campo in (("ordemdia", "ordem"), ("expedientemateria", "expediente")):
+                itens = _sapl_paginate(
+                    f"{base}/sessao/{endpoint}/?sessao_plenaria={sid}&page_size=200"
+                )
+                pautas.extend((campo, item) for item in itens)
+
+            for campo, pauta in pautas:
+                registros = _sapl_paginate(
+                    f"{base}/sessao/registrovotacao/?{campo}={pauta.get('id')}&page_size=50"
+                )
+                for registro in registros:
+                    votos_raw = _sapl_paginate(
+                        f"{base}/sessao/votoparlamentar/?votacao={registro.get('id')}&page_size=200"
+                    )
+                    votos = [
+                        {
+                            "parlamentar": id2nome.get(voto.get("parlamentar"), "Não identificado"),
+                            "voto": voto.get("voto") or "Não informado",
+                        }
+                        for voto in votos_raw
+                    ]
+                    votacoes.append({
+                        "id": registro.get("id"),
+                        "materia_id": registro.get("materia") or pauta.get("materia"),
+                        "descricao": registro.get("__str__") or "",
+                        "resultado": pauta.get("resultado") or registro.get("__str__") or "Não informado",
+                        "sim": registro.get("numero_votos_sim", 0),
+                        "nao": registro.get("numero_votos_nao", 0),
+                        "abstencoes": registro.get("numero_abstencoes", 0),
+                        "votos": votos,
+                    })
+
+            # Sessão ainda aberta e sem registro não deve aparecer como ausência
+            # coletiva ou votação inexistente no resumo cidadão.
+            if not sessao.get("finalizada") and not nomes_presentes and not votacoes:
+                continue
+
+            saida_ano.append({
+                "id": sid,
+                "numero": sessao.get("numero"),
+                "tipo": id2tipo.get(sessao.get("tipo"), "Sessão deliberativa"),
+                "data": (sessao.get("data_inicio") or "")[:10],
+                "finalizada": bool(sessao.get("finalizada")),
+                "url_video": sessao.get("url_video") or "",
+                "presentes_qtd": len(nomes_presentes),
+                "presentes": nomes_presentes,
+                "votacoes": votacoes,
+                "fonte": f"https://sapl.varginha.mg.leg.br/sessao/{sid}",
+            })
+        resultado[ano] = saida_ano
+        print(f"  ✓ SAPL sessões/votos {ano}: {len(saida_ano)} sessões desde {piso_ano}")
+    return resultado
+
+
+def _load_sapl_rows(path: Path, tipo_map: dict = None, autor_map: dict = None) -> list[dict]:
     if not path.exists():
         print(f"  ! Arquivo SAPL nao encontrado: {path}")
         return []
     if path.suffix.lower() == ".json":
         payload = json.loads(path.read_text(encoding="utf-8"))
-        return [_linha_padrao_sapl(r) for r in payload.get("results", [])]
+        return [_linha_padrao_sapl(r, tipo_map, autor_map) for r in payload.get("results", [])]
     with path.open(encoding="utf-8") as f:
-        return [_linha_padrao_sapl(r) for r in csv.DictReader(f, delimiter=";")]
+        return [_linha_padrao_sapl(r, tipo_map, autor_map) for r in csv.DictReader(f, delimiter=";")]
+
 
 
 def _autor_excluido(nome: str) -> bool:
@@ -557,115 +696,123 @@ def _parse_emenda(ementa: str) -> dict:
 def _processa_sapl() -> dict:
     print("⇣ Lendo SAPL (Câmara de Varginha)…")
 
-    # ── 1. Coleta matérias diretamente via API REST do SAPL ─────────────────
-    # Elimina a dependência do CSV exportado manualmente.
-    rows_api: list[dict] = []
+    tipo_map = {}
+    autor_map = {}
+
+    # ── 1. Carrega mapeamentos da API do SAPL se online ───────────────────
     if "--offline-sapl" not in sys.argv:
-        for ano in [2025, 2026]:
-            url = f"https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano={ano}&page_size=200"
-            tentativa = _sapl_paginate(url, timeout=20)
-            if tentativa:
-                print(f"  ✓ SAPL API {ano}: {len(tentativa)} matérias")
-                rows_api.extend([_linha_padrao_sapl(r) for r in tentativa])
-            else:
-                print(f"  ! SAPL API {ano}: sem resposta")
+        print("  ⇣ Buscando mapeamentos de tipos e autores do SAPL API…")
+        try:
+            tipos_data = _sapl_paginate("https://sapl.varginha.mg.leg.br/api/materia/tipomaterialegislativa/?page_size=100", timeout=20)
+            for t in tipos_data:
+                tid = t.get("id")
+                if tid is not None:
+                    tipo_map[tid] = {
+                        "sigla": t.get("sigla") or "",
+                        "descricao": t.get("descricao") or ""
+                    }
+        except Exception as e:
+            print(f"  ! Não foi possível carregar tipos do SAPL API: {e}")
 
-    # ── 2. Fallback: CSV manual (contingência offline) ────────────────────────
-    if not rows_api:
-        if not CSV_SAPL.exists():
-            print(f"  ! CSV do SAPL ausente ({CSV_SAPL}); preservando dados existentes.")
-            return {
-                "resumo": _load_existing("resumo.json", {}),
-                "vereadores": _load_existing("vereadores.json", []),
-                "emendas": _load_existing("emendas.json", []),
-                "camara_anos": _load_existing("camara_anos.json", {}),
-            }
-        with CSV_SAPL.open(encoding="utf-8") as f:
-            rows_api = [_linha_padrao_sapl(r) for r in csv.DictReader(f, delimiter=";")]
-        print(f"  (fallback CSV): {len(rows_api)} matérias do arquivo local.")
+        try:
+            autores_data = _sapl_paginate("https://sapl.varginha.mg.leg.br/api/base/autor/?page_size=100", timeout=20)
+            for a in autores_data:
+                aid = a.get("id")
+                if aid is not None:
+                    autor_map[aid] = a.get("nome") or a.get("__str__") or ""
+        except Exception as e:
+            print(f"  ! Não foi possível carregar autores do SAPL API: {e}")
 
-    rows = rows_api
-    print(f"  {len(rows)} matérias carregadas no total.")
-
-    tipos = Counter(r["tipo_descricao"] for r in rows)
-
-    # Por vereador
-    ver_tipo: dict[str, Counter] = defaultdict(Counter)
-    for r in rows:
-        tipo = r["tipo_descricao"]
-        for nome in (x.strip() for x in r["autoria"].split(",")):
-            if (
-                not nome
-                or nome in EXCLUI_AUTOR
-                or "Comissão" in nome
-                or nome.startswith("CJUS")
-                or nome.startswith("CFIN")
-            ):
-                continue
-            ver_tipo[nome][tipo] += 1
-
-    vereadores = []
-    for nome, c in sorted(ver_tipo.items(), key=lambda x: -sum(x[1].values())):
-        vereadores.append({
-            "nome": nome,
-            "total": sum(c.values()),
-            "indicacoes": c.get("Indicação", 0) or c.get("IndicaÃ§Ã£o", 0),
-            "requerimentos": c.get("Requerimento", 0),
-            "projetos_lei": c.get("Projeto de Lei Ordinária do Legislativo", 0) or c.get("Projeto de Lei OrdinÃ¡ria do Legislativo", 0),
-            "emendas": c.get("Emenda Impositiva ao Orçamento", 0) or c.get("Emenda Impositiva ao OrÃ§amento", 0),
-            "mocoes": c.get("Moção", 0) or c.get("MoÃ§Ã£o", 0),
-            "outros": sum(v for k, v in c.items() if _norm_txt(k) not in {
-                _norm_txt("Indicação"), _norm_txt("IndicaÃ§Ã£o"),
-                _norm_txt("Requerimento"),
-                _norm_txt("Projeto de Lei Ordinária do Legislativo"), _norm_txt("Projeto de Lei OrdinÃ¡ria do Legislativo"),
-                _norm_txt("Emenda Impositiva ao Orçamento"), _norm_txt("Emenda Impositiva ao OrÃ§amento"),
-                _norm_txt("Moção"), _norm_txt("MoÃ§Ã£o")
-            }),
-        })
-
-    # Emendas detalhadas
-    emendas_raw = [r for r in rows if _norm_txt(r["tipo_descricao"]) == _norm_txt("Emenda Impositiva ao Orçamento")]
-    emendas = []
-    valor_total = 0.0
-    for r in emendas_raw:
-        parsed = _parse_emenda(r["ementa"])
-        valor_total += parsed["valor_brl"]
-        emendas.append({
-            "ano": r["ano"],
-            "numero": r["numero"],
-            "autor": r["autoria"],
-            "pdf": r["texto_original"],
-            **parsed,
-        })
-
-    # Top temas (palavras‐chave nas ementas)
-    texto_all = " ".join(r["ementa"].lower() for r in rows)
-    palavras = [
-        "saúde", "educação", "segurança", "iluminação", "asfalto",
-        "pavimentação", "transporte", "criança", "idoso", "mulher",
-        "animal", "meio ambiente", "cultura", "esporte", "praça",
-    ]
-    temas = [{"tema": p, "mencoes": texto_all.count(p)} for p in palavras]
-    temas.sort(key=lambda x: -x["mencoes"])
-
-    resumo = {
-        "total_materias": len(rows),
-        "vereadores_ativos": sum(1 for v in vereadores if _norm_txt(v["nome"]) in PARLAMENTARES_MONITORADOS),
-        "emendas_qtd": len(emendas),
-        "emendas_valor_total_brl": round(valor_total, 2),
-        "tipos": [
-            {"tipo": k, "qtd": v}
-            for k, v in tipos.most_common()
-        ],
-        "temas_top": temas,
+    # Fallback estático para tipos caso a API de tipos falhe ou estejamos offline
+    static_tipos = {
+        3: {"sigla": "PLOM", "descricao": "Proposta de Emenda à Lei Orgânica Municipal"},
+        14: {"sigla": "VET", "descricao": "Mensagem de Veto"},
+        20: {"sigla": "PLC", "descricao": "Projeto de Lei Complementar"},
+        17: {"sigla": "PLOE", "descricao": "Projeto de Lei Ordinária do Executivo"},
+        4: {"sigla": "PLOL", "descricao": "Projeto de Lei Ordinária do Legislativo"},
+        6: {"sigla": "PDL", "descricao": "Projeto de Decreto Legislativo"},
+        7: {"sigla": "PRES", "descricao": "Projeto de Resolução"},
+        24: {"sigla": "SUBS", "descricao": "Substitutivo"},
+        25: {"sigla": "PPTCE", "descricao": "Parecer Prévio do TCE"},
+        8: {"sigla": "REQ", "descricao": "Requerimento"},
+        9: {"sigla": "IND", "descricao": "Indicação"},
+        10: {"sigla": "MOC", "descricao": "Moção"},
+        12: {"sigla": "REC", "descricao": "Recurso"},
+        13: {"sigla": "EMEN", "descricao": "Emenda"},
+        26: {"sigla": "EMEIM", "descricao": "Emenda Impositiva ao Orçamento"},
+        11: {"sigla": "PRO", "descricao": "Pronunciamento"},
+        28: {"sigla": "PAR", "descricao": "Parecer"}
     }
+    for k, v in static_tipos.items():
+        if k not in tipo_map:
+            tipo_map[k] = v
 
-    rows_2025 = rows
-    rows_2026 = _load_sapl_rows(JSON_SAPL_2026)
+    # ── 2. Coleta matérias por ano ──────────────────────────────────────────
+    rows_2025 = []
+    rows_2026 = []
 
-    # Busca datas na API SAPL (falha silenciosa — dado offline continua funcionando)
-    anos_com_dados = [2025] + ([2026] if rows_2026 else [])
+    if "--offline-sapl" not in sys.argv:
+        # Coleta 2025 via API
+        url_2025 = "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2025&page_size=200"
+        tentativa_2025 = _sapl_paginate(url_2025, timeout=20)
+        if tentativa_2025:
+            print(f"  ✓ SAPL API 2025: {len(tentativa_2025)} matérias")
+            rows_2025 = [_linha_padrao_sapl(r, tipo_map, autor_map) for r in tentativa_2025]
+        else:
+            print("  ! SAPL API 2025: sem resposta, usando fallback offline")
+
+        # Coleta 2026 via API
+        url_2026 = "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&page_size=200"
+        tentativa_2026 = _sapl_paginate(url_2026, timeout=20)
+        if tentativa_2026:
+            print(f"  ✓ SAPL API 2026: {len(tentativa_2026)} matérias")
+            rows_2026 = [_linha_padrao_sapl(r, tipo_map, autor_map) for r in tentativa_2026]
+        else:
+            print("  ! SAPL API 2026: sem resposta, usando fallback offline")
+
+    # ── 3. Fallbacks Offline ────────────────────────────────────────────────
+    if not rows_2025:
+        if CSV_SAPL.exists():
+            with CSV_SAPL.open(encoding="utf-8") as f:
+                rows_2025 = [_linha_padrao_sapl(r, tipo_map, autor_map) for r in csv.DictReader(f, delimiter=";")]
+            print(f"  (fallback CSV 2025): {len(rows_2025)} matérias do arquivo local.")
+        else:
+            print(f"  ! CSV do SAPL 2025 ausente ({CSV_SAPL})")
+
+    if not rows_2026:
+        if JSON_SAPL_2026.exists():
+            try:
+                with JSON_SAPL_2026.open(encoding="utf-8") as f:
+                    payload = json.load(f)
+                    results_2026 = payload.get("results") or []
+                    rows_2026 = [_linha_padrao_sapl(r, tipo_map, autor_map) for r in results_2026]
+                print(f"  (fallback JSON 2026): {len(rows_2026)} matérias do arquivo local.")
+            except Exception as e:
+                print(f"  ! Falha ao ler JSON 2026 ({JSON_SAPL_2026}): {e}")
+        else:
+            print(f"  ! JSON do SAPL 2026 ausente ({JSON_SAPL_2026})")
+
+    if not rows_2025 and not rows_2026:
+        print("  ! Sem dados do SAPL carregados; preservando dados existentes.")
+        return {
+            "resumo": _load_existing("resumo.json", {}),
+            "vereadores": _load_existing("vereadores.json", []),
+            "emendas": _load_existing("emendas.json", []),
+            "camara_anos": _load_existing("camara_anos.json", {}),
+        }
+
+    # ── 4. Enriquecimento de metadados via API se online ───────────────────
+    anos_com_dados = []
+    if rows_2025:
+        anos_com_dados.append(2025)
+    if rows_2026:
+        anos_com_dados.append(2026)
+
     datas_sapl: dict[str, str] = {}
+    desfechos_sapl: dict[str, str] = {}
+    presenca_sapl: dict[int, dict[str, dict]] = {}
+    sessoes_sapl: dict[int, list[dict]] = {}
+
     if "--offline-sapl" not in sys.argv:
         try:
             datas_sapl = _fetch_datas_sapl(anos_com_dados)
@@ -673,36 +820,49 @@ def _processa_sapl() -> dict:
         except Exception as e:
             print(f"  ! API SAPL indisponível, materias sem data: {e}")
 
-    # Desfecho legislativo (aprovado/virou lei vs arquivado) — fonte oficial SAPL.
-    # Falha silenciosa: sem rede, materias ficam com desfecho vazio.
-    desfechos_sapl: dict[str, str] = {}
-    if "--offline-sapl" not in sys.argv:
         try:
             desfechos_sapl = _fetch_desfechos_sapl(anos_com_dados)
         except Exception as e:
             print(f"  ! Desfechos SAPL indisponíveis: {e}")
 
-    # Presença em plenário por janela de mandato (4ª dimensão do índice).
-    # Falha silenciosa: sem rede, presença fica pendente e o índice usa cobertura 75%.
-    presenca_sapl: dict[int, dict[str, dict]] = {}
-    if "--offline-sapl" not in sys.argv:
         try:
             presenca_sapl = _fetch_presenca_sapl(anos_com_dados)
         except Exception as e:
             print(f"  ! Presença SAPL indisponível: {e}")
 
-    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl, desfechos_sapl, presenca_sapl.get(2025))
-    camara_anos = {"2025": ano_2025}
+        try:
+            sessoes_sapl = _fetch_sessoes_votacoes_sapl(anos_com_dados)
+        except Exception as e:
+            print(f"  ! Sessões e votos SAPL indisponíveis: {e}")
+
+    # ── 5. Processamento dos dados estruturados ─────────────────────────────
+    ano_2025 = _processa_sapl_rows(2025, rows_2025, datas_sapl, desfechos_sapl, presenca_sapl.get(2025)) if rows_2025 else {
+        "resumo": {}, "vereadores": [], "emendas": [], "materias": []
+    }
+
+    camara_anos = {}
+    if rows_2025:
+        camara_anos["2025"] = ano_2025
     if rows_2026:
         camara_anos["2026"] = _processa_sapl_rows(2026, rows_2026, datas_sapl, desfechos_sapl, presenca_sapl.get(2026))
-        print(f"  {len(rows_2026)} materias de 2026 carregadas.")
+        print(f"  {len(rows_2026)} materias de 2026 processadas.")
+
+    for ano, sessoes in sessoes_sapl.items():
+        bloco = camara_anos.get(str(ano))
+        if bloco is not None:
+            bloco["sessoes"] = sessoes
+
+    main_year_data = ano_2025 if rows_2025 else camara_anos.get("2026", {
+        "resumo": {}, "vereadores": [], "emendas": []
+    })
 
     return {
-        "resumo": ano_2025["resumo"],
-        "vereadores": ano_2025["vereadores"],
-        "emendas": ano_2025["emendas"],
+        "resumo": main_year_data["resumo"],
+        "vereadores": main_year_data["vereadores"],
+        "emendas": main_year_data["emendas"],
         "camara_anos": camara_anos,
     }
+
 
 
 # ----------------------- 2) Diário Oficial ----------------------------- #
@@ -2000,14 +2160,25 @@ def main() -> int:
         diarias = _processa_diarias_betha()
         _save("diarias.json", diarias)
 
-    federal = _processa_federal()
-    _save("federal.json", federal)
+    federal = {}
+    if not so_sapl:
+        federal = _processa_federal()
+        _save("federal.json", federal)
+    else:
+        federal = _load_existing("federal.json", {})
 
     prefeitura = {}
     camara_betha = {}
     fundacao_cultural = {}
     if not so_sapl and not sem_betha:
-        prefeitura = _processa_prefeitura(sapl["emendas"])
+        # Fallback: se o SAPL retornou lista vazia (ex: timeout), usa emendas.json
+        # salvo no disco para não quebrar o cruzamento com o Betha.
+        emendas_para_cruzamento = sapl["emendas"]
+        if not emendas_para_cruzamento:
+            emendas_para_cruzamento = _load_existing("emendas.json", [])
+            if emendas_para_cruzamento:
+                print("  ℹ SAPL retornou emendas vazias — usando emendas.json do disco para cruzamento Betha.")
+        prefeitura = _processa_prefeitura(emendas_para_cruzamento)
         if prefeitura:
             _save("prefeitura.json", prefeitura)
 

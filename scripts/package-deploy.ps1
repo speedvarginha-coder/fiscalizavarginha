@@ -52,7 +52,8 @@ New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Nul
   "materia-cidada.js",
   "indice-relevancia.js",
   "onboarding.js",
-  "chat-cidadao.js"
+  "chat-cidadao.js",
+  "publicacoes.js"
 ) | ForEach-Object {
   Copy-IfExists (Join-Path $source "modules\$_") (Join-Path $stage "modules\$_")
 }
@@ -68,6 +69,19 @@ if (Test-Path $emendasStage) {
 Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
 Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snapshots")
 Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
+
+$manifestStage = Join-Path $stage "data\manifest.json"
+if (-not (Test-Path -LiteralPath $manifestStage)) {
+  throw "Manifest obrigatorio ausente no pacote: $manifestStage"
+}
+$manifestHash = (Get-FileHash -LiteralPath $manifestStage -Algorithm SHA256).Hash.ToLowerInvariant()
+$release = [ordered]@{
+  schema = 1
+  gerado_em = (Get-Date).ToUniversalTime().ToString("o")
+  manifest_sha256 = $manifestHash
+}
+$releaseJson = $release | ConvertTo-Json
+[System.IO.File]::WriteAllText((Join-Path $stage "release.json"), $releaseJson, (New-Object System.Text.UTF8Encoding($false)))
 
 if (Test-Path $zipPath) {
   Remove-Item -LiteralPath $zipPath -Force

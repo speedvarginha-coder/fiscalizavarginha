@@ -1,6 +1,6 @@
 # Como publicar — Fiscaliza Varginha
 
-Processo para subir o painel para um servidor web (Hostinger, Netlify, GitHub Pages, ou qualquer hospedagem estática).
+Processo suportado para publicar o pacote validado em Hostinger com Apache.
 
 ---
 
@@ -16,7 +16,6 @@ painel-cidadao/
 ├── *.svg           ✓ Favicon
 ├── modules/        ✓ Módulos JS
 ├── data/chunks/    ✓ JSONs públicos
-├── data.js         ✓ Fallback legado
 └── .htaccess       ✓ Regras Apache
 ```
 
@@ -67,7 +66,7 @@ Ver também: `docs/checklist-publicacao.md`.
 
 ---
 
-## Opção A — Hostinger (FTP)
+## Hostinger / Apache (FTP)
 
 ### Primeira vez
 
@@ -78,28 +77,12 @@ Ver também: `docs/checklist-publicacao.md`.
 
 ### A cada publicação
 
-1. **Gerar pacote limpo:**
+1. **Gerar e validar o pacote:**
    ```powershell
    npm run release
    ```
 
-   O pacote fica em `dist/fiscaliza-varginha-painel.zip` e contém apenas arquivos públicos.
-
-   Alternativa manual, se necessário:
-   ```bash
-   cd "3_Fiscaliza Varginha"
-   # Cria zip só com arquivos públicos
-   zip -r painel-deploy.zip painel-cidadao/ \
-     -x "painel-cidadao/coletor*" \
-     -x "painel-cidadao/_*" \
-     -x "painel-cidadao/*.bak" \
-     -x "painel-cidadao/*.log" \
-     -x "painel-cidadao/.betha*" \
-     -x "painel-cidadao/__pycache__/*" \
-     -x "painel-cidadao/data/*.json" \
-     -i "painel-cidadao/data/chunks/*" \
-     -i "painel-cidadao/data/manifest.json"
-   ```
+   O pacote aprovado fica em `dist/fiscaliza-varginha-painel.zip` e contém apenas arquivos públicos. Não publique uma cópia manual de `painel-cidadao/`: use somente esse ZIP após o `release` concluir sem erros.
 
 2. **Upload via FTP** (FileZilla):
    - Host: `ftp.seudominio.com.br`
@@ -115,39 +98,6 @@ Ver também: `docs/checklist-publicacao.md`.
 ### Configurar HTTPS (obrigatório para Service Worker)
 
 No cPanel → SSL/TLS → ativar Let's Encrypt grátis. Sem HTTPS o SW não funciona.
-
----
-
-## Opção B — Netlify (mais fácil)
-
-1. **Criar conta grátis em [netlify.com](https://netlify.com)**.
-2. **New site → Deploy manually** → arrastar a pasta `painel-cidadao/` direto.
-3. **Configurar domínio custom** (ou usar `*.netlify.app` grátis).
-4. **HTTPS automático** já vem.
-
-### Auto-deploy via GitHub
-
-Se o repo estiver no GitHub:
-
-1. **Netlify → New site → Import from Git**.
-2. **Selecionar o repo.**
-3. **Build settings:**
-   - Base directory: `painel-cidadao`
-   - Publish directory: `painel-cidadao`
-   - Build command: (vazio — site estático)
-4. **Cada `git push` faz deploy automático.**
-
----
-
-## Opção C — GitHub Pages
-
-1. **Repo no GitHub.**
-2. **Settings → Pages.**
-3. **Source: Deploy from branch.**
-4. **Branch: main, folder: `/painel-cidadao`** (precisa estar na raiz, mexer se necessário).
-5. URL: `https://USUARIO.github.io/REPO/`
-
-**Limitação:** GitHub Pages serve com cache agressivo — atualização pode demorar até 10 min para aparecer.
 
 ---
 
@@ -238,17 +188,7 @@ curl https://seudominio/coletor.py
 
 Se algo quebrar em produção:
 
-### Hostinger / FTP
-Manter sempre uma cópia da versão anterior local. Re-upload da versão anterior.
-
-### Netlify
-Deploys → selecionar versão anterior → "Publish deploy".
-
-### GitHub Pages
-```bash
-git revert HEAD
-git push
-```
+Mantenha o último ZIP validado. Para reverter, remova os arquivos da versão com problema no `public_html/`, envie o ZIP anterior e descompacte-o novamente.
 
 ---
 

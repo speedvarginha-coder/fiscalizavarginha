@@ -1,6 +1,6 @@
-# 📲 Como Enviar os Alertas Diários para o WhatsApp
+# Como funcionam os alertas do WhatsApp
 
-Criamos o script `alertar_whatsapp.py` na pasta `painel-cidadao` para fazer a postagem automática de novos contratos, compras públicas relevantes e projetos de leis diretamente em uma comunidade ou grupo do WhatsApp.
+O script `painel-cidadao/alertar_whatsapp.py` publica conteúdos da Prefeitura e da Câmara no grupo configurado. Ele mantém os boletins detalhados e também monitora compras de qualquer valor, obras, diárias, atividade legislativa e pendências de transparência.
 
 ---
 
@@ -8,16 +8,20 @@ Criamos o script `alertar_whatsapp.py` na pasta `painel-cidadao` para fazer a po
 
 ```mermaid
 graph TD
-    A[Coletor Diário / SAPL] -->|Salva novos dados| B[Chunks JSON]
+    A[Coletores públicos] -->|Salvam novos dados| B[Chunks JSON]
     B --> C[alertar_whatsapp.py]
-    C -->|Filtra por Valor e Relevância| D{Qualificados?}
-    D -->|Sim| E{Já enviado?}
+    C --> D{Alerta ou resumo?}
+    D --> E{Já enviado?}
     E -->|Não| F[Dispara via API de WhatsApp]
-    F -->|Registra ID enviado| G[whatsapp_sent.json]
+    F -->|Registra ID e snapshot| G[Estado privado]
 ```
 
-1. **Evita Duplicados**: O bot armazena os IDs dos atos já transmitidos em `private/state/whatsapp_sent.json`. Nunca uma mensagem será enviada duas vezes.
-2. **Filtro de Relevância**: Para evitar spammer no grupo, você pode definir regras de valor mínimo (ex: contratos acima de R$ 10.000,00) ou enviar apenas matérias qualificadas como relevante/interesse público pela inteligência artificial.
+1. **Data mínima:** itens anteriores a `2026-07-01` não são enviados.
+2. **Relevância:** matérias de interesse alto ou médio recebem boletim individual.
+3. **Qualquer valor:** o corte financeiro é zero; compras pequenas também entram no monitoramento.
+4. **Conteúdo rotineiro:** entra no resumo semanal para não poluir o grupo.
+5. **Obras e transparência:** a primeira execução cria uma linha de base. Somente mudanças futuras geram alertas, evitando uma avalanche retroativa.
+6. **Duplicidade:** IDs enviados ficam em `private/state/whatsapp_sent.json`; snapshots ficam em `private/state/whatsapp_monitor_state.json`.
 
 ---
 
@@ -32,12 +36,20 @@ Você encontrará o modelo configurável em `private/whatsapp_config.json`. Conf
   "instance_id": "fiscaliza",           // Nome da instância do WhatsApp Web pareada
   "token": "SEU_TOKEN_API_AQUI",        // Token ou chave de API de autenticação
   "group_id": "120363000000000000@g.us", // ID do grupo (JID) ou telefone destino
-  "filtrar_relevantes_apenas": true,    // Envia apenas o que a IA marcar como interesse público alto/médio
-  "valor_minimo_alerta_compras": 10000.0, // Alerta compras do diário oficial acima desse valor (R$)
+  "filtrar_relevantes_apenas": true,
+  "valor_minimo_alerta_compras": 0.0,
+  "data_minima_envio": "2026-07-01",
   "enviar_legislativo": true,
-  "enviar_diario_oficial": true
+  "enviar_diario_oficial": true,
+  "enviar_obras": true,
+  "enviar_diarias": true,
+  "enviar_alertas_transparencia": true,
+  "enviar_resumo_semanal": true,
+  "dia_resumo_semanal": 5
 }
 ```
+
+`dia_resumo_semanal` usa o padrão do Python: segunda-feira é `0` e sábado é `5`.
 
 ### Provedores de API Suportados:
 * **Evolution API (Recomendado/Open-Source)**: Instância própria rodando em Docker. Suporta envio em massa nativo para grupos.
@@ -71,6 +83,20 @@ Após rodar o coletor diário normal do projeto, execute o script de alertas:
 
 ```powershell
 python painel-cidadao/alertar_whatsapp.py
+```
+
+Antes de qualquer disparo, gere uma prévia completa:
+
+```powershell
+python painel-cidadao/alertar_whatsapp.py --preview
+```
+
+Esse comando força a exibição do resumo da semana, imprime todas as mensagens no terminal e não altera nenhum arquivo de estado.
+
+Para gerar o resumo fora do dia programado:
+
+```powershell
+python painel-cidadao/alertar_whatsapp.py --resumo-semanal
 ```
 
 ### Automação (Execução Diária)

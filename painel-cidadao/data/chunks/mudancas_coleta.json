@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-02T20:52:18.978Z",
+  "gerado_em": "2026-07-11T12:39:37.953Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-07-02T17-52-10-8eddd184",
-    "coleta_iso": "2026-07-02T17:52:10",
-    "data_humana": "02/07/2026 - 17:52",
-    "arquivo": "data/snapshots/2026-07-02T17-52-10-8eddd184.json"
+    "snapshot_id": "2026-07-11T09-39-25-719a1bbb",
+    "coleta_iso": "2026-07-11T09:39:25",
+    "data_humana": "11/07/2026 - 09:39",
+    "arquivo": "data/snapshots/2026-07-11T09-39-25-719a1bbb.json"
   },
   "anterior": {
-    "snapshot_id": "2026-07-02T16-55-10-8eddd184",
-    "coleta_iso": "2026-07-02T16:55:10",
-    "data_humana": "02/07/2026 - 16:55",
-    "arquivo": "data/snapshots/2026-07-02T16-55-10-8eddd184.json",
-    "origem": "chunks"
+    "snapshot_id": "2026-07-11T07-41-08-1f32824a",
+    "coleta_iso": "2026-07-11T07:41:08",
+    "data_humana": "11/07/2026 - 07:41",
+    "arquivo": "",
+    "origem": "backup_pre_coleta"
   },
   "resumo": {
     "novos_contratos": 0,

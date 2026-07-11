@@ -1,7 +1,9 @@
 const payload = window.EMENDAS_DATA || { metadata: {}, emendas: [] };
+// Lote municipal da 20ª Legislatura (2025-2028), gerado por gerar_municipais_atuais.py
+const municipaisAtuais = (window.EMENDAS_MUNICIPAIS_ATUAIS && window.EMENDAS_MUNICIPAIS_ATUAIS.emendas) || [];
 // Emendas federais do Portal da Transparência (CGU), carregadas de data/emendas_federais.js
 const federais = (window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.emendas) || [];
-const allRecords = [...(payload.emendas || []), ...federais];
+const allRecords = [...(payload.emendas || []), ...municipaisAtuais, ...federais];
 
 // Os PDFs não são hospedados aqui (versão leve). Os links levam à fonte oficial
 // de cada esfera: municipais à Câmara; estaduais/federais ao Portal Betha.
@@ -22,6 +24,9 @@ const state = {
   beneficiaryCanonical: "",
   currentDetailId: "",
   rankRole: "",           // filtro de cargo dos rankings: "Senador(a)" | "Dep. Federal" | ""
+  authorSort: "valor",    // ordenação do painel Vereadores: "valor" | "quantidade"
+  deputySort: "valor",    // ordenação do painel Deputados/Senadores: "valor" | "quantidade"
+  deputyRole: "",         // cargo no painel Deputados/Senadores: "Dep. Federal" | "Dep. Estadual" | "Senador(a)" | ""
   filtered: [...allRecords],
 };
 
@@ -58,8 +63,10 @@ const elements = {
   associationRanking: document.querySelector("#associationRanking"),
   authorTotal: document.querySelector("#authorTotal"),
   authorRanking: document.querySelector("#authorRanking"),
+  authorSum: document.querySelector("#authorSum"),
   deputyTotal: document.querySelector("#deputyTotal"),
   deputyRanking: document.querySelector("#deputyRanking"),
+  deputySum: document.querySelector("#deputySum"),
   transparencyFlags: document.querySelector("#transparencyFlags"),
   notApprovedTotal: document.querySelector("#notApprovedTotal"),
   notApprovedSituation: document.querySelector("#notApprovedSituation"),
@@ -106,9 +113,9 @@ const LOCAL_COUNCILLORS = {
   "cassio mendonca bosque chiodi": { name: "CÁSSIO CHIODI", party: "SOLIDARIEDADE", active: true, saplId: 166 },
   "dandan": { name: "DANDAN", party: "PL", active: true, saplId: 6 },
   "daniel rodrigues de farias": { name: "DANDAN", party: "PL", active: true, saplId: 6 },
-  "davi martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true, saplId: 163 },
-  "carlos davi de sousa martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true, saplId: 163 },
-  "carlos davi de souza martins": { name: "DAVI MARTINS", party: "CIDADANIA", active: true, saplId: 163 },
+  "davi martins": { name: "DAVI MARTINS", party: "PL", active: true, saplId: 163 },
+  "carlos davi de sousa martins": { name: "DAVI MARTINS", party: "PL", active: true, saplId: 163 },
+  "carlos davi de souza martins": { name: "DAVI MARTINS", party: "PL", active: true, saplId: 163 },
   "dudu ottoni": { name: "DUDU OTTONI", party: "AVANTE", active: true, saplId: 9 },
   "eduardo benedito ottoni filho": { name: "DUDU OTTONI", party: "AVANTE", active: true, saplId: 9 },
   "joaozinho enfermeiro": { name: "JOÃOZINHO ENFERMEIRO", party: "DC", active: true, saplId: 10 },
@@ -618,20 +625,14 @@ function applyFilters() {
     "Senador(a)": "Senador",
   };
   const currentCargo = roleToCargo[state.rankRole] || "todos";
-  document.querySelectorAll("#authorCargoFilters .rank-chip").forEach((c) => {
+  document.querySelectorAll("#authorCargoFilters .rank-chip[data-cargo]").forEach((c) => {
     c.classList.toggle("active", c.dataset.cargo === currentCargo);
   });
 
   // Sincroniza chips de categoria
   const currentCategory = elements.categoryFilter.value || "todos";
-  document.querySelectorAll("#deputyCategoryFilters .rank-chip").forEach((c) => {
+  document.querySelectorAll("#deputyCategoryFilters .rank-chip[data-categoria]").forEach((c) => {
     c.classList.toggle("active", c.dataset.categoria === currentCategory);
-  });
-
-  // Sincroniza selects de ano dos rankings
-  ["rankYearAuthor", "rankYearDeputy"].forEach((id) => {
-    const sel = document.querySelector("#" + id);
-    if (sel && sel.value !== elements.yearFilter.value) sel.value = elements.yearFilter.value;
   });
 }
 
@@ -756,29 +757,144 @@ function isInstitutionalOrGenericAuthor(key) {
          key.includes("bancada");
 }
 
+const FEDERAL_MG_PARLIAMENTARIANS = new Set([
+  "celia xakriaba",
+  "delegada ione",
+  "delegado edson moreira",
+  "diego andrade",
+  "dimas fabiano",
+  "dimas fabiano toledo junior",
+  "dr frederico",
+  "duda salabert",
+  "emidinho madeira",
+  "eros biondini",
+  "gilberto abramo",
+  "greyce elias",
+  "greyce de queiroz elias",
+  "marcelo alvaro antonio",
+  "nikolas ferreira",
+  "odair cunha",
+  "odair jose da cunha",
+  "padre joao",
+  "patrus ananias",
+  "rafael simoes",
+  "reginaldo lopes",
+  "stefano aguiar",
+  "subtenente gonzaga",
+  "ze silva"
+]);
+
+// Soma reativa exibida abaixo do filtro de ano: total R$ + quantidade dos itens filtrados
+function renderRankSum(el, groups) {
+  if (!el) return;
+  if (!groups.length) {
+    el.style.display = "none";
+    return;
+  }
+  const somaValor = groups.reduce((s, g) => s + Number(g.total || 0), 0);
+  const somaQtd = groups.reduce((s, g) => s + Number(g.count || 0), 0);
+  el.style.display = "flex";
+  el.innerHTML =
+    `<strong>Soma filtrada:</strong> ${moneyFormatter.format(somaValor)}` +
+    ` · ${numberFormatter.format(somaQtd)} emenda${somaQtd === 1 ? "" : "s"}` +
+    ` · ${numberFormatter.format(groups.length)} parlamentar${groups.length === 1 ? "" : "es"}`;
+}
+
 function renderAuthorRanking() {
+  const search = normalize(elements.searchInput.value);
+  const rankYear = document.querySelector("#rankYearAuthor")?.value || "";
+  const typeFilterVal = elements.typeFilter.value;
+  const resourceYearFilterVal = elements.resourceYearFilter.value;
+  const orgFilterVal = elements.orgFilter.value;
+  const partyFilterVal = elements.partyFilter.value;
+  const authorFilterVal = elements.authorFilter.value;
+  const categoryFilterVal = elements.categoryFilter.value;
+  const activeFilterVal = elements.activeFilter.value;
+  const beneficiaryTerm = normalize(elements.beneficiaryFilter.value);
+  const approvalFilterVal = elements.approvalFilter.value;
+  const individualFilterVal = elements.individualFilter.value;
+  const minValue = Number(elements.minValue.value || 0);
+  const maxValue = Number(elements.maxValue.value || 0);
+
   const map = new Map();
-  state.filtered.forEach((record) => {
-    if (state.rankRole && authorRole(record) !== state.rankRole) return;
+  allRecords.forEach((record) => {
+    // Painel "Vereadores de Varginha": apenas emendas municipais (vereadores)
+    if (record.tipo !== "Municipal") return;
+    // Só vereadores da legislatura atual (ativos no cadastro oficial da Câmara).
+    // Ex-vereadores que autoraram emendas no passado não aparecem neste painel.
+    if (!getAuthorMeta(record).active) return;
+    const matchesSearch = !search || (record.textoBusca || "").includes(search);
+    const matchesType = !typeFilterVal || record.tipo === typeFilterVal;
+    const matchesYear = !rankYear || amendmentYearsForRecord(record).includes(rankYear);
+    const matchesResourceYear = !resourceYearFilterVal || resourceYearsForRecord(record).includes(resourceYearFilterVal);
     const authorMeta = getAuthorMeta(record);
-    const label = authorMeta.name;
-    if (!label) return;
-    const key = normalize(label);
-    if (isInstitutionalOrGenericAuthor(key)) return;
-    const entry =
-      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), active: authorMeta.active, role: authorRole(record) };
-    entry.count += 1;
-    entry.total += Number(record.valor || 0);
-    entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
-    if (authorMeta.party) entry.partidos.add(authorMeta.party);
-    map.set(key, entry);
+    const matchesOrg = !orgFilterVal || record.orgao === orgFilterVal;
+    const matchesParty = !partyFilterVal || authorMeta.party === partyFilterVal;
+    const matchesAuthor = !authorFilterVal || authorMeta.name === authorFilterVal;
+    const matchesCategory = !categoryFilterVal || (record.categoria || "Emenda Impositiva Municipal") === categoryFilterVal;
+    const matchesActive = !activeFilterVal || (
+      activeFilterVal === "ativo" ? authorMeta.active : !authorMeta.active
+    );
+    const matchesBeneficiary =
+      !beneficiaryTerm ||
+      (state.beneficiaryCanonical
+        ? canonicalBeneficiaryKey(record) === state.beneficiaryCanonical
+        : normalize(record.beneficiario).includes(beneficiaryTerm) || canonicalBeneficiaryKey(record).includes(beneficiaryTerm));
+    const matchesApproval = !approvalFilterVal || record.aprovado === approvalFilterVal;
+    const matchesIndividual = !individualFilterVal || record.emendaIndividual === individualFilterVal;
+    const matchesMin = Number(record.valor || 0) >= minValue;
+    const matchesMax = !maxValue || Number(record.valor || 0) <= maxValue;
+    const roleMatches = !state.rankRole || authorRole(record) === state.rankRole;
+
+    if (
+      matchesSearch &&
+      matchesType &&
+      matchesYear &&
+      matchesResourceYear &&
+      matchesOrg &&
+      matchesParty &&
+      matchesAuthor &&
+      matchesCategory &&
+      matchesActive &&
+      matchesBeneficiary &&
+      matchesApproval &&
+      matchesIndividual &&
+      matchesMin &&
+      matchesMax &&
+      roleMatches &&
+      quickMatch(record)
+    ) {
+      // Coautoria: credita cada vereador atual; valor rateado entre os coautores
+      // para a soma do painel continuar batendo com o total das emendas.
+      const coautores = String(record.autor || "").split(",").map((s) => s.trim()).filter(Boolean);
+      const partes = coautores.length || 1;
+      coautores.forEach((nomeCoautor) => {
+        const meta = getAuthorMeta({ ...record, autor: nomeCoautor });
+        if (!meta.active) return; // ex-vereadores não entram neste painel
+        const label = meta.name;
+        if (!label) return;
+        const key = normalize(label);
+        if (isInstitutionalOrGenericAuthor(key)) return;
+
+        const entry =
+          map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), active: meta.active, role: authorRole(record) };
+        entry.count += 1;
+        entry.total += Number(record.valor || 0) / partes;
+        entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
+        if (meta.party) entry.partidos.add(meta.party);
+        map.set(key, entry);
+      });
+    }
   });
 
-  const groups = [...map.values()]
-    .sort((a, b) => b.count - a.count || b.total - a.total)
-    .slice(0, 10);
+  const allGroups = [...map.values()];
+  const sortFn = state.authorSort === "quantidade"
+    ? (a, b) => b.count - a.count || b.total - a.total
+    : (a, b) => b.total - a.total || b.count - a.count;
+  const groups = allGroups.slice().sort(sortFn).slice(0, 10);
 
   elements.authorTotal.textContent = `${numberFormatter.format(map.size)} parlamentares`;
+  renderRankSum(elements.authorSum, allGroups);
 
   if (!groups.length) {
     elements.authorRanking.innerHTML = `<div class="empty compact-empty">Nenhum parlamentar encontrado com os filtros atuais.</div>`;
@@ -804,29 +920,102 @@ function renderAuthorRanking() {
 }
 
 function renderDeputyRanking() {
+  const search = normalize(elements.searchInput.value);
+  const rankYear = document.querySelector("#rankYearDeputy")?.value || "";
+  const typeFilterVal = elements.typeFilter.value;
+  const resourceYearFilterVal = elements.resourceYearFilter.value;
+  const orgFilterVal = elements.orgFilter.value;
+  const partyFilterVal = elements.partyFilter.value;
+  const authorFilterVal = elements.authorFilter.value;
+  const categoryFilterVal = elements.categoryFilter.value;
+  const activeFilterVal = elements.activeFilter.value;
+  const beneficiaryTerm = normalize(elements.beneficiaryFilter.value);
+  const approvalFilterVal = elements.approvalFilter.value;
+  const individualFilterVal = elements.individualFilter.value;
+  const minValue = Number(elements.minValue.value || 0);
+  const maxValue = Number(elements.maxValue.value || 0);
+
   const map = new Map();
-  state.filtered.forEach((record) => {
+  allRecords.forEach((record) => {
     if (record.tipo !== "Federal" && record.tipo !== "Estadual") return;
-    if (state.rankRole && authorRole(record) !== state.rankRole) return;
+
+    // Filtro de cargo do painel (chips Dep. Federal / Dep. Estadual / Senador)
+    if (state.deputyRole && authorRole(record) !== state.deputyRole) return;
+
+    if (record.tipo === "Federal") {
+      const authorMeta = getAuthorMeta(record);
+      const key = normalize(authorMeta.name);
+      if (authorRole(record) === "Dep. Federal" && !isInstitutionalOrGenericAuthor(key) && !FEDERAL_MG_PARLIAMENTARIANS.has(key)) {
+        return;
+      }
+    }
+
+    const matchesSearch = !search || (record.textoBusca || "").includes(search);
+    const matchesType = !typeFilterVal || record.tipo === typeFilterVal;
+    const matchesYear = !rankYear || amendmentYearsForRecord(record).includes(rankYear);
+    const matchesResourceYear = !resourceYearFilterVal || resourceYearsForRecord(record).includes(resourceYearFilterVal);
     const authorMeta = getAuthorMeta(record);
-    const label = authorMeta.name;
-    if (!label) return;
-    const key = normalize(label);
-    if (isInstitutionalOrGenericAuthor(key)) return;
-    const entry =
-      map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), role: authorRole(record) };
-    entry.count += 1;
-    entry.total += Number(record.valor || 0);
-    entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
-    if (authorMeta.party) entry.partidos.add(authorMeta.party);
-    map.set(key, entry);
+    const matchesOrg = !orgFilterVal || record.orgao === orgFilterVal;
+    const matchesParty = !partyFilterVal || authorMeta.party === partyFilterVal;
+    const matchesAuthor = !authorFilterVal || authorMeta.name === authorFilterVal;
+    const matchesCategory = !categoryFilterVal || (record.categoria || "Emenda Impositiva Municipal") === categoryFilterVal;
+    const matchesActive = !activeFilterVal || (
+      activeFilterVal === "ativo" ? authorMeta.active : !authorMeta.active
+    );
+    const matchesBeneficiary =
+      !beneficiaryTerm ||
+      (state.beneficiaryCanonical
+        ? canonicalBeneficiaryKey(record) === state.beneficiaryCanonical
+        : normalize(record.beneficiario).includes(beneficiaryTerm) || canonicalBeneficiaryKey(record).includes(beneficiaryTerm));
+    const matchesApproval = !approvalFilterVal || record.aprovado === approvalFilterVal;
+    const matchesIndividual = !individualFilterVal || record.emendaIndividual === individualFilterVal;
+    const matchesMin = Number(record.valor || 0) >= minValue;
+    const matchesMax = !maxValue || Number(record.valor || 0) <= maxValue;
+    const roleMatches = !state.rankRole || authorRole(record) === state.rankRole;
+
+    if (
+      matchesSearch &&
+      matchesType &&
+      matchesYear &&
+      matchesResourceYear &&
+      matchesOrg &&
+      matchesParty &&
+      matchesAuthor &&
+      matchesCategory &&
+      matchesActive &&
+      matchesBeneficiary &&
+      matchesApproval &&
+      matchesIndividual &&
+      matchesMin &&
+      matchesMax &&
+      roleMatches &&
+      quickMatch(record)
+    ) {
+      const label = authorMeta.name;
+      if (!label) return;
+      const key = normalize(label);
+      if (isInstitutionalOrGenericAuthor(key)) return;
+
+      const entry =
+        map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), role: authorRole(record) };
+      entry.count += 1;
+      entry.total += Number(record.valor || 0);
+      entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
+      if (authorMeta.party) entry.partidos.add(authorMeta.party);
+      map.set(key, entry);
+    }
   });
 
-  const groups = [...map.values()]
-    .sort((a, b) => b.total - a.total)
-    .slice(0, 10);
+  const allGroups = [...map.values()];
+  const sortFn = state.deputySort === "quantidade"
+    ? (a, b) => b.count - a.count || b.total - a.total
+    : (a, b) => b.total - a.total || b.count - a.count;
+  const groups = allGroups.slice().sort(sortFn).slice(0, 10);
 
-  elements.deputyTotal.textContent = `${numberFormatter.format(map.size)} deputados`;
+  const singular = state.deputyRole === "Senador(a)" ? "senador" : (state.deputyRole ? "deputado" : "parlamentar");
+  const plural = singular.endsWith("r") ? singular + "es" : singular + "s";
+  elements.deputyTotal.textContent = `${numberFormatter.format(map.size)} ${map.size === 1 ? singular : plural}`;
+  renderRankSum(elements.deputySum, allGroups);
 
   if (!groups.length) {
     elements.deputyRanking.innerHTML = `<div class="empty compact-empty">Nenhum deputado federal ou estadual encontrado com os filtros atuais.</div>`;
@@ -1262,11 +1451,37 @@ function clearFilters() {
   ].forEach((element) => {
     element.value = "";
   });
+
+  ["rankYearAuthor", "rankYearDeputy"].forEach((id) => {
+    const sel = document.querySelector("#" + id);
+    if (sel) sel.value = "";
+  });
+
   elements.sortFilter.value = "valor-desc";
   state.quick = "";
   state.beneficiaryCanonical = "";
   state.page = 1;
   document.querySelectorAll(".chip").forEach((button) => button.classList.remove("active"));
+
+  state.rankRole = "";
+  state.deputyRole = "";
+  document.querySelectorAll("#authorCargoFilters .rank-chip[data-cargo]").forEach((c) => {
+    c.classList.toggle("active", c.dataset.cargo === "todos");
+  });
+  document.querySelectorAll("#deputyCategoryFilters .rank-chip[data-cargo]").forEach((c) => {
+    c.classList.toggle("active", c.dataset.cargo === "todos");
+  });
+  document.querySelectorAll("#deputyCategoryFilters .rank-chip[data-categoria]").forEach((c) => {
+    c.classList.toggle("active", c.dataset.categoria === "todos");
+  });
+
+  // Reseta a ordenação dos rankings para o padrão (Valor)
+  state.authorSort = "valor";
+  state.deputySort = "valor";
+  document.querySelectorAll("#authorCargoFilters .rank-chip[data-sort], #deputyCategoryFilters .rank-chip[data-sort]").forEach((c) => {
+    c.classList.toggle("active", c.dataset.sort === "valor");
+  });
+
   applyFilters();
 }
 
@@ -1433,7 +1648,7 @@ function setupEvents() {
     DepFederal:  { role: "Dep. Federal" },
     Senador:     { role: "Senador(a)" },
   };
-  document.querySelectorAll("#authorCargoFilters .rank-chip").forEach((btn) => {
+  document.querySelectorAll("#authorCargoFilters .rank-chip[data-cargo]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const m = CARGO_MAP[btn.dataset.cargo] || CARGO_MAP.todos;
       state.rankRole = m.role;
@@ -1442,7 +1657,7 @@ function setupEvents() {
     });
   });
 
-  document.querySelectorAll("#deputyCategoryFilters .rank-chip").forEach((btn) => {
+  document.querySelectorAll("#deputyCategoryFilters .rank-chip[data-categoria]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const categoria = btn.dataset.categoria;
       elements.categoryFilter.value = categoria === "todos" ? "" : categoria;
@@ -1451,14 +1666,42 @@ function setupEvents() {
     });
   });
 
-  // Ano nos rankings — espelha o filtro principal de ano da emenda
+  // Chips de cargo do painel Deputados/Senadores (escopo local, não afeta a listagem geral)
+  const deputyCargoChips = document.querySelectorAll("#deputyCategoryFilters .rank-chip[data-cargo]");
+  deputyCargoChips.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const m = CARGO_MAP[btn.dataset.cargo] || CARGO_MAP.todos;
+      state.deputyRole = m.role;
+      deputyCargoChips.forEach((b) => b.classList.toggle("active", b === btn));
+      renderDeputyRanking();
+    });
+  });
+
+  // Botões de ordenação (Valor / Quantidade) — independentes por painel
+  function wireSort(containerId, stateKey, render) {
+    const btns = document.querySelectorAll(`#${containerId} .rank-chip[data-sort]`);
+    btns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        state[stateKey] = btn.dataset.sort === "quantidade" ? "quantidade" : "valor";
+        btns.forEach((b) => b.classList.toggle("active", b === btn));
+        render();
+      });
+    });
+  }
+  wireSort("authorCargoFilters", "authorSort", renderAuthorRanking);
+  wireSort("deputyCategoryFilters", "deputySort", renderDeputyRanking);
+
+  // Ano nos rankings — independente do filtro global
   ["rankYearAuthor", "rankYearDeputy"].forEach((id) => {
     const sel = document.querySelector("#" + id);
     if (!sel) return;
     sel.addEventListener("change", () => {
-      elements.yearFilter.value = sel.value;
       state.page = 1;
-      applyFilters();
+      if (id === "rankYearAuthor") {
+        renderAuthorRanking();
+      } else {
+        renderDeputyRanking();
+      }
     });
   });
 }

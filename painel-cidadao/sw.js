@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v84 (cobrar: fila de cobrança movida para o fim da página) */
-const CACHE = "fiscaliza-v84";
+/* Fiscaliza Varginha — Service Worker v90 (IFT dinâmico + fonte LOA + publicações julho) */
+const CACHE = "fiscaliza-v90";
 const STATIC = [
   "./",
   "./index.html",
@@ -11,6 +11,7 @@ const STATIC = [
   "./sobre.html",
   "./marcadores.html",
   "./atualizacoes.html",
+  "./conformidade.html",
   "./style.css",
   "./app.js",
   "./app-glossario.js",

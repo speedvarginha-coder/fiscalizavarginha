@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 5933002.41,
-  "total_externo_anterior": 8401247.51,
-  "empenhos_qtd": 3042,
+  "total_externo_atual": 6208730.73,
+  "total_externo_anterior": 8402619.09,
+  "empenhos_qtd": 3080,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -26,6 +26,11 @@
       "qtd": 1
     },
     {
+      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+      "valor_total": 333881.91,
+      "qtd": 28
+    },
+    {
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
       "valor_total": 316929.0,
       "qtd": 6
@@ -41,19 +46,19 @@
       "qtd": 2
     },
     {
-      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 281862.14,
-      "qtd": 25
-    },
-    {
       "nome": "RONALDO MENDES-ME",
       "valor_total": 214999.2,
       "qtd": 2
     },
     {
+      "nome": "FUNDACAO JOAO PINHEIRO",
+      "valor_total": 165256.57,
+      "qtd": 1
+    },
+    {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 111773.45,
-      "qtd": 13
+      "valor_total": 158030.56,
+      "qtd": 20
     },
     {
       "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
@@ -99,11 +104,6 @@
       "nome": "TARGET CONSULTORIAS E SOLUCOES LTDA",
       "valor_total": 40500.0,
       "qtd": 1
-    },
-    {
-      "nome": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
-      "valor_total": 30000.0,
-      "qtd": 1
     }
   ],
   "top_fornecedores_anterior": [
@@ -144,8 +144,8 @@
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 291437.51,
-      "qtd": 39
+      "valor_total": 293009.09,
+      "qtd": 40
     },
     {
       "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
@@ -392,6 +392,20 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-07-01",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de Peças de reposição para reparo de elevador de passageiros - Fabricante exclusivo da Marca Otis, Linha Otis Solution, Modelo A-GNC-0610 - 8ª, Máquina nº L9860, Equipamento GEN2, com 05 paradas, tipo de movimentação RN, instalado no Prédio da Câmara Municipal de Varginha/MG.",
+      "contratado": "ELEVADORES OTIS LTDA",
+      "cnpj": "29.739.737/****-**",
+      "valor": 9033.13,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
       "numero": "2",
       "ano": "2026",
       "data_assinatura": "2026-03-02",
@@ -515,6 +529,20 @@
       "cnpj": "07.225.411/****-**",
       "valor": 2452.8,
       "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-07-06",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para prestação de seguro para veículo.",
+      "contratado": "GENTE SEGURADORA SA",
+      "cnpj": "90.180.605/****-**",
+      "valor": 2050.54,
+      "situacao": "EXECUCAO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
@@ -646,6 +674,20 @@
     {
       "numero": "0",
       "ano": "0",
+      "data_assinatura": "2026-07-08",
+      "data_fim": " ",
+      "modalidade": "Dispensa de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de concessionária autorizada Toyota para prestação de serviços de revisão em um veículo marca Toyota, modelo Corolla XEi 2.0, ano/modelo 2025/2025, placa TEJ0E25.",
+      "contratado": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
+      "cnpj": "07.215.045/****-**",
+      "valor": 1081.2,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
       "data_assinatura": "2026-02-12",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -736,12 +778,62 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
+      "numero": "10",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Aquisição de lanches destinados ao Vereadores e Escola do Legislativo",
+      "data": "2026-02-13",
+      "valor": 63000.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
       "numero": "26",
       "ano": "",
       "modalidade": "Dispensa eletrônica",
       "objeto": "Aquisição de água mineral natural, a ser realizada de forma parcelada, conforme as necessidades da Câmara Municipal.",
       "data": "2026-03-23",
       "valor": 32442.8,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "17",
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de combustível compreendido por gasolina comum",
+      "data": "2026-03-03",
+      "valor": 30650.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "4",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Contratação de serviços postais, disponibilizados em unidades de atendimento da Empresa Brasileira de Correios - ECT.",
+      "data": "2026-01-15",
+      "valor": 30000.0,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "24",
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de materiais de limpeza, higiene e descartável.",
+      "data": "2026-03-23",
+      "valor": 23545.2,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "9",
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de produto alimentício, bebida e descartável.",
+      "data": "2026-02-13",
+      "valor": 18920.14,
       "situacao": "HOMOLOGADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
@@ -753,6 +845,226 @@
       "data": "2026-01-15",
       "valor": 18000.0,
       "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "32",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Prestação de serviços de fornecimento de vales transportes para atender o deslocamento dos estudantes dos projetos de educação para a cidadania da Escola do Legislativo.",
+      "data": "2026-03-31",
+      "valor": 17000.0,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "21",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de serviços de confecção de quadros com moldura de alumínio e vidro.",
+      "data": "2026-03-12",
+      "valor": 14100.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "44",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de empresa especializada para prestação de serviço de transporte mediante locação/fretamento de veículo tipo ônibus para transporte de alunos matriculados na Escola do Legislativo da Câmara Municipal de Varginha/MG.",
+      "data": "2026-05-06",
+      "valor": 13466.66,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "15",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de serviço de lavagem automotiva completa (exceto motor).",
+      "data": "2026-03-03",
+      "valor": 12928.8,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "37",
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "AQUISIÇÃO DE MATERIAIS DE EXPEDIENTE (ESCRITÓRIO)",
+      "data": "2026-04-14",
+      "valor": 11952.5,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "33",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Aquisição de medalhas para entrega de homenagens",
+      "data": "2026-04-01",
+      "valor": 10371.5,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "49",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Aquisição de Peças de reposição para reparo de elevador de passageiros - Fabricante exclusivo da Marca Otis, Linha Otis Solution, Modelo A-GNC-0610 - 8ª, Máquina nº L9860, Equipamento GEN2, com 05 paradas, tipo de movimentação RN, instalado no Prédio da Câmara Municipal de Varginha/MG.",
+      "data": "2026-07-06",
+      "valor": 9033.13,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "16",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de serviços elétricos prediais destinados à manutenção preventiva e corretiva das instalações elétrica da Câmara Municipal",
+      "data": "2026-03-03",
+      "valor": 8342.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "34",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de empresa especializada para prestação de serviços de manutenção preventiva e corretiva em 02 (dois) condicionadores de ar.",
+      "data": "2026-04-01",
+      "valor": 4568.16,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "7",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Peças para Elevador de passageiros.",
+      "data": "2026-01-26",
+      "valor": 3045.88,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "23",
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Contratação de serviço de emissão e fornecimento de certificados digitais.",
+      "data": "2026-03-20",
+      "valor": 3039.56,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "5",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Prestação de serviços de fornecimento de Vales transporte para atender o deslocamento dos servidores.",
+      "data": "2026-01-26",
+      "valor": 3000.0,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "48",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de empresa especializada para prestação de seguro para veículo.",
+      "data": "2026-07-06",
+      "valor": 2900.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "41",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de empresa especializada para prestação de seguro para veículo",
+      "data": "2026-05-05",
+      "valor": 2900.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "42",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de concessionária autorizada Toyota para revisão de 120 mil km, incluindo mão e obra mecânica, fornecimento de peças/componentes genuínos e originais e lubrificantes para o veículo oficial Toyota Corolla XEI 2.0, Ano/Modelo 2021/2022",
+      "data": "2026-05-08",
+      "valor": 2578.6,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "27",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Pagamento da Anualidade da Associação Brasileira das Escolas do Legislativo e de Contas - ABEL.",
+      "data": "2026-03-23",
+      "valor": 2000.0,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "45",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "INSCRIÇÃO NO PROJETO MINIONU PROMOVIDO PELA PUC MINAS - CAMPOS POÇOS DE CALDAS, DESTINADA AOS ALUNOS MATRICULADOS NA ESCOLA DO LEGISLATIVO MUNICIPAL.",
+      "data": "2026-05-05",
+      "valor": 1258.6,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "28",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de empresa especializada para prestação de seguro predial.",
+      "data": "2026-04-06",
+      "valor": 1169.64,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "11",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de empresa especializada para prestação de serviço de seguro predial",
+      "data": "2026-02-13",
+      "valor": 1106.1,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "47",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de concessionária autorizada Toyota para prestação de serviços de revisão em um veículo marca Toyota, modelo Corolla XEi 2.0, ano/modelo 2025/2025, placa TEJ0E25.",
+      "data": "2026-07-08",
+      "valor": 1081.2,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "36",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "CARGA DE GÁS LIQUEFEITO DE PETRÓLEO (GLP), PARA BOTIJÃO DE 13 KG.",
+      "data": "2026-04-10",
+      "valor": 737.88,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "40",
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Contratação de serviço de voz e internet móvel.",
+      "data": "2026-05-05",
+      "valor": 478.8,
+      "situacao": "HOMOLOGADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
   ]

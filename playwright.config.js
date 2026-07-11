@@ -1,8 +1,5 @@
 // @ts-check
 const { defineConfig, devices } = require("@playwright/test");
-const path = require("path");
-
-/** Painel Cidadão é estático (file://). Não precisa de webServer. */
 module.exports = defineConfig({
   testDir: "./tests",
   fullyParallel: true,
@@ -12,6 +9,13 @@ module.exports = defineConfig({
   // disputando CPU geravam falhas intermitentes (timeouts falsos).
   workers: 1,
   reporter: [["list"], ["html", { open: "never" }]],
+
+  webServer: {
+    command: "python -m http.server 4173 --directory painel-cidadao",
+    url: "http://127.0.0.1:4173",
+    reuseExistingServer: !process.env.CI,
+    timeout: 15_000,
+  },
 
   use: {
     // Servidos via file:// — o caminho absoluto é construído nos próprios testes.
@@ -25,7 +29,13 @@ module.exports = defineConfig({
   projects: [
     {
       name: "chromium",
+      testIgnore: /http\.spec\.js/,
       use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "http",
+      testMatch: /http\.spec\.js/,
+      use: { baseURL: "http://127.0.0.1:4173" },
     },
   ],
 });

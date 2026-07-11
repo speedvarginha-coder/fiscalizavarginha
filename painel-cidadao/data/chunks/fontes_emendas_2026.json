@@ -1,10 +1,10 @@
 {
   "fonte": "Investigacao de fontes abertas sobre emendas impositivas 2026",
-  "atualizado_em": "2026-07-02T16:54:47",
+  "atualizado_em": "2026-07-11T09:34:55",
   "resumo": {
     "fontes_verificadas": 9,
     "fontes_ok": 8,
-    "achados_qtd": 8,
+    "achados_qtd": 7,
     "lista_estruturada_encontrada": false,
     "emendas_sapl_2026": 0,
     "candidatos_com_valor_cnpj": 0,
@@ -87,17 +87,6 @@
       "sinal": "Documento menciona termo relevante, mas ainda nao e lista completa de emendas.",
       "tem_cnpj": false,
       "tem_valor": false
-    },
-    {
-      "origem": "SAPL - materias legislativas 2026 (API)",
-      "titulo": "Erro ao consultar API SAPL: <urlopen error timed out>",
-      "tipo": "erro_sapl",
-      "url": "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&tipo=17&page_size=100",
-      "termo": "api",
-      "trecho": "<urlopen error timed out>",
-      "sinal": "Falha na consulta — verificar disponibilidade do SAPL.",
-      "tem_cnpj": false,
-      "tem_valor": false
     }
   ],
   "fontes_verificadas": [
@@ -151,9 +140,9 @@
     },
     {
       "nome": "SAPL - materias legislativas 2026 (API)",
-      "url": "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&tipo=17&page_size=100",
+      "url": "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&tipo=26&page_size=100",
       "status": "ok",
-      "resultado": "1 achado(s) relevante(s)"
+      "resultado": "0 achado(s) relevante(s)"
     }
   ],
   "proximos_passos": [

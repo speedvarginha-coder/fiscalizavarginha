@@ -67,7 +67,7 @@ FONTES = [
     },
     {
         "nome": "SAPL - materias legislativas 2026 (API)",
-        "url": "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&tipo=17&page_size=100",
+        "url": "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&tipo=26&page_size=100",
         "tipo": "json_sapl",  # tratamento especial
     },
 ]
@@ -272,7 +272,7 @@ def _dedupe(achados: list[dict]) -> list[dict]:
 
 
 def _scan_sapl_api(origem: str, url: str) -> list[dict]:
-    """Consulta a API SAPL para listar matérias do tipo Emenda Impositiva (tipo=17)
+    """Consulta a API SAPL para listar matérias do tipo Emenda Impositiva (tipo=26)
     do ano 2026. Retorna achados com tipo='emenda_sapl'."""
     achados = []
     nxt: str | None = url
@@ -281,18 +281,7 @@ def _scan_sapl_api(origem: str, url: str) -> list[dict]:
             texto, _ = _fetch(nxt, timeout=20)
             payload = json.loads(texto)
         except Exception as e:
-            achados.append({
-                "origem": origem,
-                "titulo": f"Erro ao consultar API SAPL: {e}",
-                "tipo": "erro_sapl",
-                "url": nxt,
-                "termo": "api",
-                "trecho": str(e),
-                "sinal": "Falha na consulta — verificar disponibilidade do SAPL.",
-                "tem_cnpj": False,
-                "tem_valor": False,
-            })
-            break
+            raise RuntimeError(f"falha na API SAPL: {e}") from e
         for item in payload.get("results", []):
             ementa = _fix_mojibake(item.get("ementa") or "")
             numero = str(item.get("numero") or "")

@@ -125,6 +125,10 @@ painel-cidadao/encode_deploy.js
 # ---- Config local do Claude Code ----
 .claude/
 
+# ---- Antigravity — brain/scratch interno (pode conter senhas hardcoded) ----
+.gemini/
+.antigravity/
+
 # Local Netlify folder
 .netlify
 

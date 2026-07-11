@@ -8,6 +8,8 @@ param(
 
   [switch]$SkipTests,
   [switch]$SkipPackage,
+  [switch]$SkipDeploy,
+  [switch]$SkipWhatsApp,
   [switch]$OnlyIfChanged,
 
   [ValidateSet("Full", "Sapl", "NoHeavy")]
@@ -21,6 +23,10 @@ $ErrorActionPreference = "Stop"
 $root = Resolve-Path (Join-Path $PSScriptRoot "..")
 $updateScript = Join-Path $root "scripts\update-data.ps1"
 
+if ($Mode -eq "Watch" -and $SkipPackage -and -not $SkipDeploy) {
+  throw "Modo Watch com -SkipPackage exige -SkipDeploy; deploy requer pacote validado no mesmo ciclo."
+}
+
 if (-not (Test-Path $updateScript)) {
   throw "Script de atualizacao nao encontrado: $updateScript"
 }
@@ -33,6 +39,8 @@ $argList = @(
 
 if ($SkipTests) { $argList += "-SkipTests" }
 if ($SkipPackage) { $argList += "-SkipPackage" }
+if ($SkipDeploy) { $argList += "-SkipDeploy" }
+if ($SkipWhatsApp) { $argList += "-SkipWhatsApp" }
 if ($OnlyIfChanged) { $argList += "-OnlyIfChanged" }
 if ($CollectorMode -ne "Full") {
   $argList += "-CollectorMode"

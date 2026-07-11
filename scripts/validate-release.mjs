@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -11,25 +12,20 @@ const stageDir = path.join(root, "dist", "painel-cidadao");
 const zipPath = path.join(root, "dist", "fiscaliza-varginha-painel.zip");
 
 const expectedChunks = [
-  "atualizacoes",
   "atualizado_em",
   "auditoria_dados",
   "camara_anos",
   "camara_betha",
   "camara_transparencia",
   "cnpjs",
-  "convenios",
   "diarias",
   "diario",
-  "educacao",
   "emendas",
   "federal",
   "fontes_emendas_2026",
   "fundacao_cultural",
   "indice_relevancia",
-  "licitacoes",
   "mudancas_coleta",
-  "obras_educacao",
   "pessoal",
   "pncp",
   "prefeitura",
@@ -39,8 +35,11 @@ const expectedChunks = [
   "remuneracao_vereadores",
   "resumo",
   "sancoes_fornecedores",
+  "status_fontes",
   "vereadores",
 ];
+
+const optionalChunks = ["atualizacoes", "convenios", "educacao", "licitacoes", "obras_educacao"];
 
 const requiredPublicFiles = [
   ".htaccess",
@@ -53,6 +52,7 @@ const requiredPublicFiles = [
   "data.js",
   "favicon.svg",
   "fundacao.html",
+  "conformidade.html",
   "index.html",
   "marcadores.html",
   "pessoal.html",
@@ -76,7 +76,9 @@ const requiredPublicFiles = [
   "modules/indice-relevancia.js",
   "modules/onboarding.js",
   "modules/chat-cidadao.js",
+  "modules/publicacoes.js",
   "data/manifest.json",
+  "release.json",
   ...expectedChunks.map((name) => `data/chunks/${name}.json`),
 ];
 
@@ -184,6 +186,17 @@ function validateManifest(baseManifestPath = manifestPath, baseChunksDir = chunk
       const size = fs.statSync(filePath).size;
       assert(entry.bytes === size, `Manifest bytes divergente em ${name}: ${entry.bytes} != ${size}`);
       assert(size > 0, `Chunk vazio: ${relative(filePath)}`);
+      if (entry.sha256 !== undefined) {
+        const digest = crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
+        assert(entry.sha256 === digest, `Manifest SHA-256 divergente em ${name}`);
+      }
+    }
+  }
+
+  for (const name of optionalChunks) {
+    const filePath = path.join(baseChunksDir, `${name}.json`);
+    if (exists(filePath) && !manifestNames.includes(name)) {
+      fail(`Manifest nao lista chunk opcional existente: ${name}`);
     }
   }
 }
@@ -346,6 +359,18 @@ function validateDeploy() {
 
   for (const file of requiredPublicFiles) {
     assert(exists(path.join(stageDir, file)), `Arquivo publico ausente no pacote: ${file}`);
+  }
+
+  const releasePath = path.join(stageDir, "release.json");
+  const stagedManifestPath = path.join(stageDir, "data", "manifest.json");
+  if (exists(releasePath) && exists(stagedManifestPath)) {
+    const release = readJson(releasePath);
+    if (release) {
+      const manifestHash = crypto.createHash("sha256").update(fs.readFileSync(stagedManifestPath)).digest("hex");
+      assert(release.schema === 1, "release.schema deve ser 1");
+      assert(release.manifest_sha256 === manifestHash, "release.json nao corresponde ao manifest do pacote");
+      assert(!Number.isNaN(new Date(release.gerado_em).getTime()), "release.gerado_em deve ser data valida");
+    }
   }
 
   const files = walk(stageDir);

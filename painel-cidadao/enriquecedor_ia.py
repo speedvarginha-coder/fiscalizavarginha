@@ -35,7 +35,7 @@ CACHE_DIR = ROOT / "data" / "cache_ia"
 
 # Versão do enriquecimento. Suba quando mudar o prompt/schema para invalidar o
 # cache antigo sem apagar arquivos na mão.
-ENRICH_VERSION = "v1"
+ENRICH_VERSION = "v2"
 
 # Rate limiting. Free tier do Gemini limita a ~20 req/min (intervalo 3.3s ≈
 # 18/min). No paid tier o limite sobe muito — passe GEMINI_RATE=0.4 (ou menos)
@@ -125,8 +125,9 @@ _RESPONSE_SCHEMA = {
         "pontos_atencao": {"type": "array", "items": {"type": "string"}},
         "interesse_publico": {"type": "string", "enum": ["alto", "medio", "baixo"]},
         "tema": {"type": "string"},
+        "valor_principal": {"type": "string"},
     },
-    "required": ["resumo", "interesse_publico", "tema"],
+    "required": ["resumo", "interesse_publico", "tema", "valor_principal"],
 }
 
 
@@ -154,7 +155,10 @@ def _prompt(item: dict) -> str:
         "sem licitação, beneficiário, prazo etc.);\n"
         "- interesse_publico: 'alto', 'medio' ou 'baixo';\n"
         "- tema: uma palavra-chave (ex.: orçamento, saúde, educação, tributos, "
-        "mobilidade, pessoal)."
+        "mobilidade, pessoal);\n"
+        "- valor_principal: o valor monetário principal do ato/contrato (apenas o número "
+        "formatado, ex.: '2.404.755,50' ou '60.000,00'). Ignore tabelas de projeções futuras "
+        "ou valores secundários. Se não houver valor principal ou for ato geral, deixe vazio."
     )
 
 
@@ -261,6 +265,7 @@ def _normaliza(d: dict, fonte: str) -> dict:
         "pontos_atencao": _lista(d.get("pontos_atencao")),
         "interesse_publico": interesse,
         "tema": str(d.get("tema", "")).strip().lower(),
+        "valor_principal": str(d.get("valor_principal", "")).strip(),
         "_origem_ia": fonte,
         **({"_modo": d["_modo"]} if d.get("_modo") else {}),
     }
@@ -284,9 +289,13 @@ def enriquecer(item: dict, usar_cache: bool = True) -> dict:
             res = _chamar_gemini(item, key)
             _falhas_429[0] = 0  # sucesso reseta o contador de falhas
         except urllib.error.HTTPError as e:
+            # Se for erro de permissão (403) ou chave inválida (400), desativa a IA para
+            # o restante da execução para evitar lentidão extrema de timeouts/rate limiting.
+            if e.code in (403, 400):
+                _cota_acabou[0] = True
             # Conta 429 seguidas. Só desiste após várias (cota diária real) —
             # um pico isolado do limite por minuto não derruba a execução toda.
-            if e.code == 429:
+            elif e.code == 429:
                 _falhas_429[0] += 1
                 if _falhas_429[0] >= _MAX_FALHAS_429:
                     _cota_acabou[0] = True

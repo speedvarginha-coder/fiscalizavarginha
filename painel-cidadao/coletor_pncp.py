@@ -12,11 +12,13 @@ import datetime as dt
 import json
 import urllib.parse
 import urllib.request
+from pathlib import Path
 
 API = "https://pncp.gov.br/api"
 PREFEITURA_CNPJ = "18240119000105"
 CAMARA_CNPJ = "04366790000184"
 VARGINHA_IBGE = "3170701"
+DATA = Path(__file__).resolve().parent / "data"
 
 
 def _get_json(url: str, timeout: int = 35):
@@ -43,9 +45,29 @@ def _items(payload) -> list[dict]:
     return []
 
 
-def _query(path: str, params: dict) -> tuple[list[dict], str]:
-    url = API + path + "?" + urllib.parse.urlencode(params)
-    return _items(_get_json(url)), url
+def _query(path: str, params: dict) -> tuple[list[dict], list[str]]:
+    rows: list[dict] = []
+    urls: list[str] = []
+    pagina = 1
+    while True:
+        params_pg = {**params, "pagina": pagina}
+        url = API + path + "?" + urllib.parse.urlencode(params_pg)
+        payload = _get_json(url)
+        page_rows = _items(payload)
+        rows.extend(page_rows)
+        urls.append(url)
+
+        total_paginas = None
+        if isinstance(payload, dict):
+            total_paginas = payload.get("totalPaginas") or payload.get("totalPages")
+            paginacao = payload.get("paginacao") or payload.get("pagination") or {}
+            if isinstance(paginacao, dict):
+                total_paginas = total_paginas or paginacao.get("totalPaginas") or paginacao.get("totalPages")
+        tamanho = int(params.get("tamanhoPagina", 50))
+        if (total_paginas is not None and pagina >= int(total_paginas)) or len(page_rows) < tamanho:
+            break
+        pagina += 1
+    return rows, urls
 
 
 def _periodo(ano: int) -> tuple[str, str]:
@@ -100,70 +122,111 @@ def _normaliza_contrato(x: dict) -> dict:
     }
 
 
-def _coleta_compras(ano: int) -> tuple[list[dict], list[str]]:
+def _dedupe(rows: list[dict]) -> list[dict]:
+    vistos = set()
+    out = []
+    for row in rows:
+        chave = row.get("numero_controle_pncp") or json.dumps(row, sort_keys=True, ensure_ascii=False)
+        if chave not in vistos:
+            vistos.add(chave)
+            out.append(row)
+    return out
+
+
+def _coleta_compras(ano: int) -> tuple[list[dict], list[str], bool]:
     data_inicial, data_final = _periodo(ano)
     tentativas = [
         ("/consulta/v1/contratacoes/publicacao", {
             "dataInicial": data_inicial,
             "dataFinal": data_final,
             "codigoMunicipioIbge": VARGINHA_IBGE,
-            "pagina": 1,
             "tamanhoPagina": 50,
         }),
         ("/consulta/v1/contratacoes/publicacao", {
             "dataInicial": data_inicial,
             "dataFinal": data_final,
             "cnpjOrgao": PREFEITURA_CNPJ,
-            "pagina": 1,
             "tamanhoPagina": 50,
+        }),
+        ("/consulta/v1/contratacoes/publicacao", {
+            "dataInicial": data_inicial, "dataFinal": data_final,
+            "cnpjOrgao": CAMARA_CNPJ, "tamanhoPagina": 50,
         }),
     ]
     erros = []
+    out = []
+    consultas = []
+    sucessos = 0
     for path, params in tentativas:
         try:
-            rows, url = _query(path, params)
-            if rows:
-                return [_normaliza_compra(x) for x in rows], [url]
-            erros.append(f"{path}: retornou 0 registros")
+            rows, urls = _query(path, params)
+            sucessos += 1
+            consultas.extend(urls)
+            out.extend(_normaliza_compra(x) for x in rows)
         except Exception as e:
             erros.append(f"{path}: {e}")
-    return [], erros
+    return _dedupe(out), consultas + erros, sucessos == len(tentativas)
 
 
-def _coleta_contratos(ano: int) -> tuple[list[dict], list[str]]:
+def _coleta_contratos(ano: int) -> tuple[list[dict], list[str], bool]:
     data_inicial, data_final = _periodo(ano)
     tentativas = [
         ("/consulta/v1/contratos", {
             "dataInicial": data_inicial,
             "dataFinal": data_final,
             "codigoMunicipioIbge": VARGINHA_IBGE,
-            "pagina": 1,
             "tamanhoPagina": 50,
         }),
         ("/consulta/v1/contratos", {
             "dataInicial": data_inicial,
             "dataFinal": data_final,
             "cnpjOrgao": PREFEITURA_CNPJ,
-            "pagina": 1,
             "tamanhoPagina": 50,
+        }),
+        ("/consulta/v1/contratos", {
+            "dataInicial": data_inicial, "dataFinal": data_final,
+            "cnpjOrgao": CAMARA_CNPJ, "tamanhoPagina": 50,
         }),
     ]
     erros = []
+    out = []
+    consultas = []
+    sucessos = 0
     for path, params in tentativas:
         try:
-            rows, url = _query(path, params)
-            if rows:
-                return [_normaliza_contrato(x) for x in rows], [url]
-            erros.append(f"{path}: retornou 0 registros")
+            rows, urls = _query(path, params)
+            sucessos += 1
+            consultas.extend(urls)
+            out.extend(_normaliza_contrato(x) for x in rows)
         except Exception as e:
             erros.append(f"{path}: {e}")
-    return [], erros
+    return _dedupe(out), consultas + erros, sucessos == len(tentativas)
+
+
+def _existente() -> dict:
+    for path in (DATA / "chunks" / "pncp.json", DATA / "pncp.json"):
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+    return {}
 
 
 def coletar(ano: int | None = None) -> dict:
     ano = ano or dt.datetime.now().year
-    compras, compras_meta = _coleta_compras(ano)
-    contratos, contratos_meta = _coleta_contratos(ano)
+    compras, compras_meta, compras_ok = _coleta_compras(ano)
+    contratos, contratos_meta, contratos_ok = _coleta_contratos(ano)
+    anterior = _existente()
+    status = {
+        "compras": {"status": "ok" if compras_ok else "erro"},
+        "contratos": {"status": "ok" if contratos_ok else "erro"},
+    }
+    if not compras_ok and anterior.get("compras"):
+        compras = anterior["compras"]
+        status["compras"] = {"status": "preservado", "motivo": "falha na API PNCP"}
+    if not contratos_ok and anterior.get("contratos"):
+        contratos = anterior["contratos"]
+        status["contratos"] = {"status": "preservado", "motivo": "falha na API PNCP"}
     return {
         "fonte": "Portal Nacional de Contratações Públicas (PNCP)",
         "ano": ano,
@@ -176,6 +239,7 @@ def coletar(ano: int | None = None) -> dict:
             "valor_contratos": round(sum(float(x.get("valor") or 0) for x in contratos), 2),
         },
         "consultas": compras_meta + contratos_meta,
+        "status_fontes": status,
         "observacao": (
             "Dados usados para conferência cruzada. Se a API pública não retornar "
             "registros, consulte manualmente o PNCP pelo município ou CNPJ do órgão."

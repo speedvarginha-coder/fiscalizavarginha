@@ -67,11 +67,11 @@ def _load_token() -> str:
     )
 
 
-def _api_get(path: str, params: dict, token: str, timeout: int = 30) -> list[dict]:
+def _api_get(path: str, params: dict, token: str, timeout: int = 30, max_pages: int = 50) -> tuple[list[dict], bool, str]:
     """GET paginado na API CGU. Retorna todos os registros."""
     out: list[dict] = []
     pagina = 1
-    while pagina <= 50:
+    while pagina <= max_pages:
         params_pg = {**params, "pagina": pagina}
         url = API_BASE + path + "?" + urllib.parse.urlencode(params_pg)
         req = urllib.request.Request(url, headers={
@@ -91,21 +91,21 @@ def _api_get(path: str, params: dict, token: str, timeout: int = 30) -> list[dic
                 time.sleep(0.3)  # respeita rate-limit da CGU
         except urllib.error.HTTPError as e:
             print(f"  ! HTTP {e.code} em {path}: {e.reason}")
-            break
+            return out, False, f"HTTP {e.code}: {e.reason}"
         except Exception as e:
             print(f"  ! Erro em {path}: {e}")
-            break
-    return out
+            return out, False, str(e)
+    return out, True, ""
 
 
 # ── 1) Emendas federais via API CGU ──────────────────────────────────────────
 
-def _coletar_emendas_api(token: str) -> list[dict]:
+def _coletar_emendas_api(token: str) -> tuple[list[dict], bool, str]:
     """Busca emendas parlamentares federais destinadas a Varginha via API CGU.
     Retorna campos: codigoEmenda, tipoEmenda, nomeAutor, funcao, subfuncao,
     valorEmpenhado, valorLiquidado, valorPago."""
     print("  -> API CGU /emendas (Varginha)...")
-    rows = _api_get("/emendas", {"codigoMunicipio": IBGE}, token)
+    rows, ok, erro = _api_get("/emendas", {"codigoMunicipio": IBGE}, token)
     print(f"     {len(rows)} registros obtidos")
     out = []
     for r in rows:
@@ -123,15 +123,15 @@ def _coletar_emendas_api(token: str) -> list[dict]:
             "fonte": "API CGU /emendas",
             "linkFonte": f"https://portaldatransparencia.gov.br/emendas/consulta?codigoEmenda={r.get('codigoEmenda', '')}",
         })
-    return out
+    return out, ok, erro
 
 
 # ── 2) Convênios via API CGU ──────────────────────────────────────────────────
 
-def _coletar_convenios(token: str) -> list[dict]:
+def _coletar_convenios(token: str) -> tuple[list[dict], bool, str]:
     """Busca convênios federais destinados a Varginha via API CGU."""
     print("  -> API CGU /convenios (Varginha)...")
-    rows = _api_get("/convenios", {"codigoIBGE": IBGE}, token)
+    rows, ok, erro = _api_get("/convenios", {"codigoIBGE": IBGE}, token)
     print(f"     {len(rows)} registros obtidos")
     out = []
     for r in rows:
@@ -160,39 +160,62 @@ def _coletar_convenios(token: str) -> list[dict]:
             "fonte": "API CGU /convenios",
             "linkFonte": f"https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio={IBGE}",
         })
-    return out
+    return out, ok, erro
 
 
 # ── 3) Sancionados (CEIS) ─────────────────────────────────────────────────────
 
-def _coletar_ceis(token: str, cnpjs_alvo: set[str]) -> list[dict]:
+def _coletar_ceis(token: str, cnpjs_alvo: set[str]) -> tuple[list[dict], bool, str]:
     """Busca no CEIS (sancionados) por CNPJ raiz dos fornecedores de Varginha.
     Retorna apenas empresas que constam como sancionadas E receberam de Varginha."""
     if not cnpjs_alvo:
-        return []
+        return [], True, "nenhum fornecedor com CNPJ disponível"
     print(f"  -> API CGU /ceis ({len(cnpjs_alvo)} CNPJs para verificar)...")
     alertas = []
+    vistos = set()
     consultados = 0
     for cnpj in list(cnpjs_alvo)[:50]:  # limita para não sobrecarregar a API
-        rows = _api_get("/ceis", {"cnpjSancionado": cnpj}, token, timeout=20)
+        # Uma página basta para o alerta. A API já demonstrou ignorar o filtro e
+        # devolver o catálogo inteiro; o filtro local abaixo é a garantia final.
+        rows, ok, erro = _api_get(
+            "/ceis", {"cnpjSancionado": cnpj}, token, timeout=20, max_pages=1
+        )
+        if not ok:
+            return alertas, False, erro
         consultados += 1
         for r in rows:
             sancionado = r.get("sancionado") or {}
+            codigo = str(sancionado.get("codigoFormatado") or "") if isinstance(sancionado, dict) else ""
+            codigo_digits = "".join(c for c in codigo if c.isdigit())
+            alvo_digits = "".join(c for c in cnpj if c.isdigit())
+            # A API pode ignorar cnpjSancionado e devolver o catálogo inteiro.
+            # Nunca aceite uma sanção que não corresponda ao CNPJ consultado.
+            if not codigo_digits or codigo_digits[:8] != alvo_digits[:8]:
+                continue
             nome = sancionado.get("nome") if isinstance(sancionado, dict) else str(sancionado)
-            alertas.append({
-                "cnpj": cnpj,
+            alerta = {
+                "cnpj": codigo or cnpj,
                 "nome": str(nome or ""),
-                "tipoSancao": str(r.get("tipoSancao") or ""),
-                "dataInicioSancao": str(r.get("dataInicioSancao") or ""),
+                "tipoSancao": str((r.get("tipoSancao") or {}).get("descricao") if isinstance(r.get("tipoSancao"), dict) else r.get("tipoSancao") or ""),
+                "dataInicioSancao": str(r.get("dataInicioSancao") or r.get("dataSancao") or ""),
                 "dataFimSancao": str(r.get("dataFimSancao") or ""),
                 "orgaoSancionador": str((r.get("orgaoSancionador") or {}).get("nome") if isinstance(r.get("orgaoSancionador"), dict) else r.get("orgaoSancionador") or ""),
                 "fundamentacao": str(r.get("fundamentacao") or ""),
                 "fonte": "CGU CEIS",
                 "linkFonte": "https://portaldatransparencia.gov.br/sancoes/consulta?tipoPessoa=J",
-            })
+            }
+            chave = (
+                codigo_digits,
+                alerta["tipoSancao"],
+                alerta["dataInicioSancao"],
+                alerta["orgaoSancionador"],
+            )
+            if chave not in vistos:
+                vistos.add(chave)
+                alertas.append(alerta)
         time.sleep(0.2)
     print(f"     {consultados} CNPJs consultados -> {len(alertas)} sanções encontradas")
-    return alertas
+    return alertas, True, ""
 
 
 # ── Carrega CNPJs dos fornecedores Betha (para cruzamento CEIS) ───────────────
@@ -208,7 +231,7 @@ def _load_cnpjs_betha() -> set[str]:
             continue
         try:
             payload = json.loads(chunk.read_text(encoding="utf-8"))
-            top = payload.get("topFornecedores") or []
+            top = payload.get("top_fornecedores_atual") or payload.get("topFornecedores") or payload.get("fornecedores") or []
             for item in top:
                 cnpj = str(item.get("cnpj") or "")
                 raiz = "".join(c for c in cnpj if c.isdigit())[:14]
@@ -264,17 +287,31 @@ def coletar() -> dict:
     print("⇣ Coletor Federal — Portal da Transparência (CGU)...")
     try:
         token = _load_token()
-        print(f"  Token CGU carregado: {token[:8]}...")
+        print("  Token CGU carregado.")
     except RuntimeError as e:
         print(f"  ! {e}")
         return _fallback()
 
-    emendas = _coletar_emendas_api(token)
-    convenios = _coletar_convenios(token)
+    emendas, emendas_ok, emendas_erro = _coletar_emendas_api(token)
+    convenios, convenios_ok, convenios_erro = _coletar_convenios(token)
+
+    existente = _fallback(silencioso=True)
+    if (not emendas_ok or (not emendas and existente.get("emendas_api")) or
+            not convenios_ok or (not convenios and existente.get("convenios"))):
+        motivo = "; ".join(x for x in (emendas_erro, convenios_erro) if x) or "coleta vazia com base anterior válida"
+        existente["_preservado"] = True
+        existente["_motivo"] = f"Coleta federal incompleta: {motivo}"
+        existente["status_fontes"] = {
+            "emendas": {"status": "erro" if not emendas_ok else "vazio_suspeito"},
+            "convenios": {"status": "erro" if not convenios_ok else "vazio_suspeito"},
+        }
+        return existente
 
     # Cruzamento CEIS apenas com CNPJs reais dos fornecedores Betha
     cnpjs_betha = _load_cnpjs_betha()
-    alertas_ceis = _coletar_ceis(token, cnpjs_betha) if cnpjs_betha else []
+    alertas_ceis, ceis_ok, ceis_erro = _coletar_ceis(token, cnpjs_betha)
+    if not ceis_ok and existente.get("alertas_ceis"):
+        alertas_ceis = existente["alertas_ceis"]
 
     payload = {
         "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
@@ -283,6 +320,12 @@ def coletar() -> dict:
         "emendas_api": emendas,
         "convenios": convenios,
         "alertas_ceis": alertas_ceis,
+        "sancoes_fornecedores": alertas_ceis,
+        "status_fontes": {
+            "emendas": {"status": "ok"},
+            "convenios": {"status": "ok"},
+            "ceis": {"status": "ok" if ceis_ok else "preservado", "motivo": ceis_erro},
+        },
         "links_auditoria": [
             {
                 "titulo": "Transferências para Varginha (Portal da Transparência)",
@@ -309,7 +352,7 @@ def coletar() -> dict:
     return payload
 
 
-def _fallback() -> dict:
+def _fallback(silencioso: bool = False) -> dict:
     """Retorna payload mínimo quando a API não está disponível, preservando dados existentes."""
     existente_path = DATA / "chunks" / "federal.json"
     if not existente_path.exists():
@@ -319,7 +362,8 @@ def _fallback() -> dict:
             existente = json.loads(existente_path.read_text(encoding="utf-8"))
             existente["_preservado"] = True
             existente["_motivo"] = "API CGU indisponível — dado preservado da última coleta"
-            print("  ! Retornando dado preservado da última coleta federal.")
+            if not silencioso:
+                print("  ! Retornando dado preservado da última coleta federal.")
             return existente
         except Exception:
             pass

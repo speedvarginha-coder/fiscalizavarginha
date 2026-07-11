@@ -7,17 +7,35 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 2226299.01,
+    "total_atual": 2403464.41,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 228139.83,
+    "total_externo_atual": 330059.76,
     "total_externo_anterior": 3071916.67,
     "credores_atual_qtd": 112,
     "credores_anterior_qtd": 196,
     "top_fornecedores_atual": [
       {
+        "nome": "AUAD CORREA EQUIPAMENTOS ELETRONICOS LTDA",
+        "cnpj": "01.377.889/****-**",
+        "valor_total": 41000.0,
+        "registros": 1
+      },
+      {
         "nome": "BARRY EVENTOS LTDA",
         "cnpj": "12.613.794/****-**",
         "valor_total": 37760.0,
+        "registros": 1
+      },
+      {
+        "nome": "DISTRIBUIDORA RIO BRANCO DE PETROLEO LTDA",
+        "cnpj": "01.256.137/****-**",
+        "valor_total": 23010.4,
+        "registros": 1
+      },
+      {
+        "nome": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
+        "cnpj": "21.650.715/****-**",
+        "valor_total": 19120.0,
         "registros": 1
       },
       {
@@ -27,9 +45,9 @@
         "registros": 1
       },
       {
-        "nome": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
-        "cnpj": "21.650.715/****-**",
-        "valor_total": 10018.88,
+        "nome": "MP ASSESSORIA E TECNOLOGIA LTDA",
+        "cnpj": "64.265.470/****-**",
+        "valor_total": 12300.0,
         "registros": 1
       },
       {
@@ -95,7 +113,13 @@
       {
         "nome": "FW ALIMENTACAO LTDA",
         "cnpj": "09.165.058/****-**",
-        "valor_total": 4998.0,
+        "valor_total": 8324.4,
+        "registros": 1
+      },
+      {
+        "nome": "M&E ALUGUEL DE CARROS LTDA",
+        "cnpj": "17.328.595/****-**",
+        "valor_total": 7020.04,
         "registros": 1
       },
       {
@@ -108,30 +132,6 @@
         "nome": "LOPES & BACHA COMERCIO E PRESTACAO DE SERVICOS LTDA",
         "cnpj": "01.076.618/****-**",
         "valor_total": 3576.0,
-        "registros": 1
-      },
-      {
-        "nome": "FRANCINE MAGANHA TERRA GOULART",
-        "cnpj": "089.318.***-**",
-        "valor_total": 3268.03,
-        "registros": 1
-      },
-      {
-        "nome": "G C LUZ  LTDA",
-        "cnpj": "58.733.880/****-**",
-        "valor_total": 3074.64,
-        "registros": 1
-      },
-      {
-        "nome": "MARIA TERESA PEREIRA COELHO & CIA LTDA",
-        "cnpj": "00.697.364/****-**",
-        "valor_total": 2848.0,
-        "registros": 1
-      },
-      {
-        "nome": "LUMINARIAS N.SRA. DA GUIA LTDA",
-        "cnpj": "01.332.277/****-**",
-        "valor_total": 2600.0,
         "registros": 1
       }
     ],
@@ -263,8 +263,8 @@
     "resumo_atual": {
       "registros": 210,
       "empenhado": 3161309.0,
-      "liquidado": 2410441.96,
-      "pago": 2227110.72
+      "liquidado": 2418453.24,
+      "pago": 2403464.41
     },
     "maiores_empenhos_atual": [
       {
@@ -374,8 +374,8 @@
         "historico": "LOCACAO DE VEICULOS. Aditivo n 005/2026 - 3 Termo Aditivo ao Contrato n 009/2023.",
         "valor_empenhado": 76582.32,
         "valor_liquidado": 7020.04,
-        "valor_pago": 944.5,
-        "saldo_a_pagar": 75637.82
+        "valor_pago": 7020.04,
+        "saldo_a_pagar": 69562.28
       },
       {
         "data": "2026-06-22",
@@ -396,8 +396,8 @@
         "historico": "Aquisição de transmissor de FM , 1000WATTS de potência com excitador digital homologado na ANATEL para a Rádio Melodia FM, demais especificações conforme termo de referência. \nEndereço de entrega: Rua Radialista Gilberto Lima, 50 - Vila Paiva - CEP 37018-650 - Varginha/MG\nHorário de expediente: Segunda a sexta - 07h00 às 17h00",
         "valor_empenhado": 41000.0,
         "valor_liquidado": 41000.0,
-        "valor_pago": 492.0,
-        "saldo_a_pagar": 40508.0
+        "valor_pago": 41000.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-04-01",
@@ -429,8 +429,8 @@
         "historico": "Aditivo n 006/2026 - 2 Termo Aditivo ao Contrato n 003/2024. Locação de banheiros químicos visando atender às demandas da Fundação Cultural de Varginha, incluindo a montagem, desmontagem, transporte, manutenção, higienização e sucção dos dejetos de banheiros químicos temporários, de acordo com as especificações deste documento.",
         "valor_empenhado": 31660.8,
         "valor_liquidado": 1055.36,
-        "valor_pago": 26.7,
-        "saldo_a_pagar": 31634.1
+        "valor_pago": 1055.36,
+        "saldo_a_pagar": 30605.44
       },
       {
         "data": "2026-06-12",
@@ -484,8 +484,8 @@
         "historico": "Registro de preços para fornecimento de combustíveis - gasolina comum e óleo diesel",
         "valor_empenhado": 23010.4,
         "valor_liquidado": 23010.4,
-        "valor_pago": 55.22,
-        "saldo_a_pagar": 22955.18
+        "valor_pago": 23010.4,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-02-26",
@@ -506,8 +506,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 06/2026",
         "valor_empenhado": 21099.22,
         "valor_liquidado": 21099.22,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 21099.22
+        "valor_pago": 21099.22,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-05-25",
@@ -517,8 +517,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 05/2026",
         "valor_empenhado": 21043.04,
         "valor_liquidado": 21043.04,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 21043.04
+        "valor_pago": 21043.04,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-03-27",
@@ -561,8 +561,8 @@
         "historico": "Serviço de atualização e suporte técnico de licença de software de automação de emissora de rádio. Aditivo n 004/2026 - 1 Termo Aditivo ao Contrato n 004/2025.",
         "valor_empenhado": 16349.64,
         "valor_liquidado": 67.01,
-        "valor_pago": 3.22,
-        "saldo_a_pagar": 16346.42
+        "valor_pago": 67.01,
+        "saldo_a_pagar": 16282.63
       },
       {
         "data": "2026-02-26",
@@ -616,8 +616,8 @@
         "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
         "valor_empenhado": 12673.6,
         "valor_liquidado": 1901.04,
-        "valor_pago": 1588.0,
-        "saldo_a_pagar": 11085.6
+        "valor_pago": 1901.04,
+        "saldo_a_pagar": 10772.56
       },
       {
         "data": "2026-04-08",
@@ -627,8 +627,8 @@
         "historico": "Contratação de empresa especializada para fornecimento de licença de uso de sistema informatizado (software), em ambiente web (SaaS), destinado à elaboração, gestão, consolidação e acompanhamento do Plano de Contratações Anual (PCA), com utilização de Inteligência Artificial (IA), incluindo suporte técnico, manutenção corretiva, evolutiva e atualizações normativas. Sendo a contratação do uso do software, suporte técnico, manutenção corretiva, evolutiva e atualizações normativas por 12 meses.",
         "valor_empenhado": 12300.0,
         "valor_liquidado": 12300.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 12300.0
+        "valor_pago": 12300.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-05-25",
@@ -638,8 +638,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 05/2026",
         "valor_empenhado": 11393.81,
         "valor_liquidado": 11393.81,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 11393.81
+        "valor_pago": 11393.81,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-04-28",
@@ -682,8 +682,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 06/2026",
         "valor_empenhado": 10861.08,
         "valor_liquidado": 10861.08,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 10861.08
+        "valor_pago": 10861.08,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-05-25",
@@ -693,8 +693,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 05/2026",
         "valor_empenhado": 10848.32,
         "valor_liquidado": 10848.32,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 10848.32
+        "valor_pago": 10848.32,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-06-22",
@@ -720,10 +720,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 23,
+        "numero": 24,
         "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -775,10 +775,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 24,
+        "numero": 19,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "BLOCO VIUVAS VIRGENS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -786,10 +786,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 19,
+        "numero": 23,
         "orgao": "ADMINISTRACAO",
-        "credor": "BLOCO VIUVAS VIRGENS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -858,8 +858,8 @@
         "historico": "Pagamento de 4 (quatro) inscrições no Curso - Formação Avançada para Agentes de Contratação e Pregoeiros, de 27 a 29 de maio de 2026, em Belo Horizonte/MG.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
         "valor_empenhado": 9560.0,
         "valor_liquidado": 9560.0,
-        "valor_pago": 458.88,
-        "saldo_a_pagar": 9101.12
+        "valor_pago": 9560.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-06-10",
@@ -1000,7 +1000,7 @@
         "credor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
         "historico": "Contratação de empresa especializada no conserto e manutenção de cadeiras de escritório dos órgãos pertencentes a Fundação Cultural de Varginha.\n\nFUNDAÇÃO CULTURAL \nEndereço: Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária).\nHorário de expediente: Segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. \n\nRÁDIO MELODIA FM\nEndereço: Rua Radialista Gilberto Lima, n 50 - Bairro Vila Paiva, Varginha/MG.\nHorário: Segunda a sexta-feira, das 7h às 13h.\n\nTHEATRO MUNICIPAL CAPITÓLIO\nEndereço: Rua Presidente Antônio Carlos, n522  Centro, Varginha/MG.\nHorário de expediente: Segunda a sexta-feira, das 8h às 12h ou de 13h às 17h.\n\nTV PRINCESA \nEndereço: Praça Champagnat, 29, 4 andar, Centro, Varginha/MG.\nHorário de expediente: Segunda a sexta-feira, das 13h às 17h.\n\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
         "valor_empenhado": 4387.0,
-        "valor_liquidado": 0.0,
+        "valor_liquidado": 4387.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 4387.0
       },
@@ -15730,20 +15730,6 @@
       "entidade": ""
     },
     {
-      "numero": "58",
-      "ano": "",
-      "data_assinatura": "2025-07-03",
-      "data_fim": "2026-07-03",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "Registro de preços para o futuro e eventual fornecimento de pães",
-      "contratado": "FW ALIMENTACAO LTDA",
-      "cnpj": "09.165.058/****-**",
-      "valor": 44204.16,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
       "numero": "0",
       "ano": "",
       "data_assinatura": "2026-06-15",
@@ -16365,8 +16351,8 @@
     "valor_total": 10682633.64,
     "qtd_vigentes": 132,
     "valor_vigentes": 4038513.67,
-    "qtd_vigencia_futura": 53,
-    "valor_vigencia_futura": 1037831.48,
+    "qtd_vigencia_futura": 52,
+    "valor_vigencia_futura": 993627.32,
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80579"
   },
   "licitacoes": [
@@ -34383,6 +34369,18 @@
         "ano": "2026",
         "funcionario": "EDER JERONIMO DA SILVA",
         "cargo": "Contador",
+        "numero": 15115,
+        "quantidade": 1.0,
+        "valor_total": 2723.2,
+        "periodo": "06-07-2026 a 10-07-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20\nCOMBUSTÍVEL: R$ 300,00\nPEDÁGIOS/ESTACIONAMENTO: R$ 200,00\nUBER/99: R$ 150,00",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "Contador",
         "numero": 15103,
         "quantidade": 1.0,
         "valor_total": 2645.39,
@@ -34425,6 +34423,42 @@
         "periodo": "26-05-2026 a 29-05-2026",
         "destino": "Belo Horizonte",
         "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de formação avançada para agentes de contratação e pregoeiros na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180,00 = R$720,00\nHOSPEDAGEM: R$ 1.474,20",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "ALBERISSA DE OLIVEIRA SAMUEL",
+        "cargo": "Oficial Administrativo",
+        "numero": 15114,
+        "quantidade": 1.0,
+        "valor_total": 2073.2,
+        "periodo": "06-07-2026 a 10-07-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "FRANCINE MAGANHA TERRA GOULART",
+        "cargo": "Oficial Administrativo",
+        "numero": 15116,
+        "quantidade": 1.0,
+        "valor_total": 2073.2,
+        "periodo": "06-07-2026 a 10-07-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "PAULA REZENDE REIS",
+        "cargo": "Oficial Administrativo",
+        "numero": 15117,
+        "quantidade": 1.0,
+        "valor_total": 2073.2,
+        "periodo": "06-07-2026 a 10-07-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -34676,7 +34710,7 @@
         "valor_total": 895.52,
         "periodo": "19-06-2026 a 20-06-2026",
         "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no III Encontro Estadual de Afromineiridades\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$180,00 = R$360,00\nHOSPEDAGEM: R$297,68\nCOMBUSTÍVEL: R$117,24\nPEDÁGIOS: R$59,60\nESTACIONAMENTO: R$61,00",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Conduzir servidoras para participação no III Encontro Estadual de Afromineiridades\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$180,00 = R$360,00\nHOSPEDAGEM: R$297,68\nCOMBUSTÍVEL: R$117,24\nPEDÁGIOS: R$59,60\nESTACIONAMENTO: R$61,00",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -34710,9 +34744,9 @@
         "numero": 15087,
         "quantidade": 1.0,
         "valor_total": 669.99,
-        "periodo": "24-04-2026 a 26-04-2026",
+        "periodo": "24-04-2026 a 25-04-2026",
         "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Buscar músicos da Orquestra Filarmônica\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 100% X R$ 121,13 = R$121,13\nCombustivel: R$488,86\nPedagio: R$ 60,00",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Buscar músicos da Orquestra Filarmônica, técnico e atleta\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 100% X R$ 121,13 = R$121,13\nCombustivel: R$488,86\nPedagio: R$ 60,00",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -37947,10 +37981,10 @@
       }
     ],
     "resumo": {
-      "detalhadas_qtd": 63,
-      "detalhadas_valor_total": 51173.57,
-      "atual_qtd": 41,
-      "atual_valor": 39494.43,
+      "detalhadas_qtd": 67,
+      "detalhadas_valor_total": 60116.37,
+      "atual_qtd": 45,
+      "atual_valor": 48437.23,
       "orcamentarias_atual_valor": 39463.11
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/211697"
