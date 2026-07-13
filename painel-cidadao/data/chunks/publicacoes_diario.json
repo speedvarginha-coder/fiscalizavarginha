@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-07-12T18:42:48+00:00",
+ "gerado_em": "2026-07-13T18:12:10+00:00",
  "fonte": "diario",
  "total": 123,
  "publicacoes": [
@@ -13,11 +13,12 @@
    "numero": "23.191",
    "data": "2026-07-10",
    "categoria": "Diário Oficial",
-   "relevancia": "baixo",
+   "relevancia": "medio",
    "tema": "pessoal",
-   "resumo": "Esta portaria designa o servidor Julio Cesar dos Reis Nascimento para substituir Maida Pereira Coimbra, Encarregado de Hotelaria e Vigilância Hospitalar, durante seu período de férias.",
+   "resumo": "Esta portaria designa um servidor público para substituir temporariamente outro em período de férias.",
    "pontos_atencao": [
-    "O substituto receberá a diferença entre seu vencimento e o do cargo substituído, sem as vantagens pessoais do substituído."
+    "Acompanhar se a substituição garante a manutenção da qualidade dos serviços de hotelaria e vigilância hospitalar.",
+    "Verificar se o pagamento da diferença salarial ao substituto está em conformidade com as normas e não gera custos indevidos."
    ],
    "envolvidos": [
     {
@@ -42,7 +43,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:37:43+00:00"
+   "gerado_em": "2026-07-13T18:06:34+00:00"
   },
   {
    "id": "DIARIO-2026-1841-pessoal-portarian23189de",
@@ -56,10 +57,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "baixo",
    "tema": "pessoal",
-   "resumo": "Esta portaria designa uma servidora para substituir temporariamente outra que estará de férias, garantindo a continuidade das funções de Assessor de Gabinete.",
+   "resumo": "Esta portaria designa uma servidora para substituir temporariamente outra que estará de férias, na função de Assessor de Gabinete.",
    "pontos_atencao": [
-    "A substituta fará jus ao recebimento da diferença salarial entre seu vencimento e o do cargo de Assessor de Gabinete durante o período da substituição.",
-    "A substituição é por um período específico e curto, de 03/08/2026 a 12/08/2026."
+    "A substituição implica em um custo adicional para o município, referente à diferença salarial.",
+    "A duração da substituição é de 10 dias."
    ],
    "envolvidos": [],
    "valores": {
@@ -72,7 +73,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:37:33+00:00"
+   "gerado_em": "2026-07-13T18:06:25+00:00"
   },
   {
    "id": "DIARIO-2026-1841-pessoal-portarian23177de",
@@ -86,10 +87,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "baixo",
    "tema": "administração",
-   "resumo": "A Prefeitura de Varginha prorrogou por mais 15 dias o prazo estabelecido em uma portaria anterior, a de número 23.136/2026.",
+   "resumo": "A Prefeitura de Varginha prorrogou por mais 15 dias um prazo que havia sido estabelecido na Portaria nº 23.136/2026.",
    "pontos_atencao": [
-    "A portaria não especifica o assunto ou o objetivo da Portaria nº 23.136/2026, o que impede a compreensão do impacto da prorrogação.",
-    "A prorrogação retroage à data de vencimento do prazo anterior, o que pode gerar dúvidas sobre a validade de atos praticados no período."
+    "A portaria não detalha o assunto ou o objeto do prazo que está sendo prorrogado.",
+    "A prorrogação tem efeitos retroativos à data de vencimento do prazo da portaria anterior."
    ],
    "envolvidos": [],
    "valores": {
@@ -102,7 +103,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:37:27+00:00"
+   "gerado_em": "2026-07-13T18:06:20+00:00"
   },
   {
    "id": "DIARIO-2026-1841-pessoal-portarian23176de",
@@ -114,12 +115,13 @@
    "numero": "23.176",
    "data": "2026-07-10",
    "categoria": "Diário Oficial",
-   "relevancia": "medio",
+   "relevancia": "alto",
    "tema": "concessão",
-   "resumo": "A Prefeitura de Varginha prorrogou por mais 15 dias o prazo de um grupo de trabalho responsável por providências para a contratação de consultoria, visando a licitação para a concessão do Novo Mercado Municipal.",
+   "resumo": "A Prefeitura de Varginha prorrogou por 15 dias o prazo de um grupo de trabalho responsável por providências para a contratação de consultoria, visando a licitação da concessão do Novo Mercado Municipal.",
    "pontos_atencao": [
-    "A prorrogação pode indicar que o grupo de trabalho precisa de mais tempo para concluir suas tarefas.",
-    "O processo de concessão do Novo Mercado Municipal é um projeto de grande porte que afetará a cidade."
+    "A prorrogação de prazos pode indicar desafios ou atrasos no cronograma inicial do grupo de trabalho.",
+    "O processo de concessão de um bem público como o Mercado Municipal envolve decisões de longo prazo e impacto na cidade.",
+    "A portaria menciona um contrato administrativo e aditivo (n° 72/2024 e n° 016/2026) sem detalhar seus valores ou escopo."
    ],
    "envolvidos": [],
    "valores": {
@@ -132,7 +134,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:37:21+00:00"
+   "gerado_em": "2026-07-13T18:06:12+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-resoluon262026cm",
@@ -146,11 +148,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "assistência social",
-   "resumo": "Esta resolução do Conselho Municipal dos Direitos da Pessoa Idosa de Varginha (CMDPI) publica o resultado preliminar de um edital de chamamento público. Ele lista as organizações sociais que se candidataram para desenvolver projetos voltados à pessoa idosa e indica se foram habilitadas ou não.",
+   "resumo": "Esta resolução publica o resultado preliminar de um edital de chamamento público que seleciona organizações para receber recursos e desenvolver projetos voltados à pessoa idosa em Varginha.",
    "pontos_atencao": [
-    "Este é um resultado preliminar, o que significa que pode haver recursos e o resultado final pode ser diferente.",
-    "O repasse dos recursos está condicionado à regularidade das entidades junto ao Conselho, exigindo acompanhamento contínuo.",
-    "Uma organização foi considerada \"Não Habilitada\" nesta fase preliminar."
+    "O repasse dos recursos está condicionado à regularidade das entidades junto ao Conselho Municipal dos Direitos da Pessoa Idosa.",
+    "Este é um resultado preliminar, podendo haver etapas futuras ou recursos.",
+    "Os recursos públicos serão direcionados a organizações específicas para a execução de projetos sociais."
    ],
    "envolvidos": [],
    "valores": {
@@ -163,7 +165,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:38:24+00:00"
+   "gerado_em": "2026-07-13T18:07:19+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-resoluo56",
@@ -176,8 +178,8 @@
    "data": "2026-07-10",
    "categoria": "Diário Oficial",
    "relevancia": "baixo",
-   "tema": "administração pública",
-   "resumo": "A Resolução 56 foi publicada no Diário Oficial da Prefeitura de Varginha-MG, sem detalhes sobre seu conteúdo específico.",
+   "tema": "administração",
+   "resumo": "A Resolução 56 foi publicada no Diário Oficial de Varginha-MG em 10 de julho de 2026, mas o texto fornecido não detalha seu conteúdo.",
    "pontos_atencao": [],
    "envolvidos": [],
    "valores": {
@@ -190,7 +192,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:37:16+00:00"
+   "gerado_em": "2026-07-13T18:06:06+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-lein1301914eart1",
@@ -203,12 +205,11 @@
    "data": "2026-07-10",
    "categoria": "Diário Oficial",
    "relevancia": "alto",
-   "tema": "parcerias",
-   "resumo": "Este ato detalha as regras e o cronograma para a seleção de Organizações da Sociedade Civil (OSCs) que desejam firmar parcerias com a Prefeitura de Varginha. Ele estabelece como a Comissão de Seleção deve atuar e as etapas do processo.",
+   "tema": "parcerias públicas",
+   "resumo": "Este ato detalha as regras e o cronograma para o processo de seleção de Organizações da Sociedade Civil (OSCs) que desejam firmar parcerias com a Prefeitura de Varginha. Ele estabelece como a Comissão de Seleção deve atuar e as etapas do chamamento público.",
    "pontos_atencao": [
-    "A substituição de um membro da Comissão de Seleção pode ocorrer sem a necessidade de um novo edital, o que exige atenção para garantir a qualificação do substituto.",
-    "A Comissão pode solicitar assessoramento técnico externo, o que pode trazer expertise, mas também requer transparência sobre quem são esses especialistas.",
-    "A fase de seleção tem um cronograma definido, e é importante que todas as etapas sejam cumpridas dentro dos prazos para evitar atrasos ou prejuízos aos participantes."
+    "A substituição de um membro da Comissão de Seleção pode ocorrer sem a necessidade de divulgar um novo edital, o que exige atenção para manter a transparência.",
+    "A Comissão pode solicitar assessoramento técnico de especialistas externos, o que pode influenciar as decisões."
    ],
    "envolvidos": [],
    "valores": {
@@ -221,7 +222,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:38:04+00:00"
+   "gerado_em": "2026-07-13T18:06:59+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-lein1301914eanoo",
@@ -235,11 +236,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "parcerias",
-   "resumo": "A Prefeitura de Varginha publicou um edital de chamamento público para que Organizações da Sociedade Civil (OSCs) apresentem propostas de projetos para firmar parcerias com o município.",
+   "resumo": "A Prefeitura de Varginha publicou um edital de chamamento público para que Organizações da Sociedade Civil (OSCs) apresentem propostas de parceria com o município, seguindo a Lei nº 13.019/14.",
    "pontos_atencao": [
-    "O prazo final para envio das propostas pelas OSCs é 13 de agosto de 2026.",
-    "A avaliação das propostas tem critérios específicos, e a atribuição de nota zero em alguns deles pode eliminar a proposta.",
-    "É importante acompanhar a aplicação dos critérios de julgamento para garantir a isonomia entre os participantes."
+    "O prazo final para envio das propostas pelas OSCs é 13 de agosto de 2026, até às 17 horas.",
+    "A avaliação das propostas será feita por uma Comissão de Seleção com base em critérios detalhados, como a adequação aos objetivos da política pública e a capacidade técnico-operacional da OSC.",
+    "A atribuição de nota zero em alguns critérios específicos pode resultar na eliminação da proposta."
    ],
    "envolvidos": [],
    "valores": {
@@ -254,7 +255,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:38:11+00:00"
+   "gerado_em": "2026-07-13T18:07:05+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-lein1301914art39",
@@ -267,12 +268,12 @@
    "data": "2026-07-10",
    "categoria": "Diário Oficial",
    "relevancia": "alto",
-   "tema": "parcerias públicas",
-   "resumo": "Este documento detalha as regras para a participação de organizações da sociedade civil em chamamentos públicos e as diretrizes para a atuação da comissão de seleção.",
+   "tema": "transparência",
+   "resumo": "Este ato estabelece regras para a participação de organizações da sociedade civil (OSCs) em chamamentos públicos e define critérios de impedimento para membros da comissão de seleção.",
    "pontos_atencao": [
-    "As organizações com contas de parceria julgadas irregulares ou rejeitadas nos últimos 8 anos são impedidas de participar.",
-    "Dirigentes de organizações com histórico de contas irregulares, inabilitação para cargos públicos ou atos de improbidade também geram impedimento.",
-    "Membros da comissão de seleção devem se declarar impedidos se tiverem participado de organizações concorrentes nos últimos 5 anos ou se houver conflito de interesse."
+    "As regras visam garantir que apenas organizações idôneas e sem histórico de irregularidades possam firmar parcerias com o município.",
+    "A imparcialidade da Comissão de Seleção é crucial para a lisura do processo de escolha das OSCs.",
+    "O período de 8 anos para contas irregulares e 5 anos para impedimento de membros da comissão são prazos importantes a serem observados."
    ],
    "envolvidos": [],
    "valores": {
@@ -285,7 +286,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:37:56+00:00"
+   "gerado_em": "2026-07-13T18:06:50+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-decreton872616qu",
@@ -298,12 +299,12 @@
    "data": "2026-07-10",
    "categoria": "Diário Oficial",
    "relevancia": "alto",
-   "tema": "parcerias",
-   "resumo": "Este documento apresenta os modelos de declarações e o plano de trabalho que as Organizações da Sociedade Civil (OSCs) devem preencher para firmar parcerias com a Prefeitura de Varginha, conforme o Decreto nº 8.726/16.",
+   "tema": "parcerias com oscs",
+   "resumo": "Este decreto estabelece as regras e modelos de declarações e planos de trabalho que Organizações da Sociedade Civil (OSCs) devem seguir para firmar parcerias com a Prefeitura de Varginha, visando a transparência e a boa aplicação dos recursos públicos.",
    "pontos_atencao": [
-    "As declarações exigem que as OSCs atestem a ausência de conflitos de interesse, como a participação de agentes públicos ou seus familiares em sua diretoria ou como contratados/remunerados com recursos da parceria.",
-    "O plano de trabalho detalha a necessidade de apresentar objetivos claros, metas, cronograma de atividades e um plano de aplicação de recursos, incluindo despesas com pessoal, serviços e materiais.",
-    "A observância dessas regras é crucial para a legalidade e a boa gestão dos recursos públicos."
+    "As OSCs devem declarar suas condições materiais para executar os projetos ou a intenção de adquiri-las com os recursos da parceria.",
+    "Há restrições claras sobre a participação de membros do poder público ou seus familiares próximos na diretoria das OSCs ou como beneficiários de remuneração com recursos da parceria.",
+    "O modelo de plano de trabalho exige detalhamento de objetivos, metas, metodologia e um plano de aplicação de recursos, o que demanda rigor na prestação de contas."
    ],
    "envolvidos": [
     {
@@ -339,7 +340,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:38:19+00:00"
+   "gerado_em": "2026-07-13T18:07:13+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-decreton872616",
@@ -353,11 +354,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "parcerias",
-   "resumo": "Este decreto estabelece as condições que impedem Organizações da Sociedade Civil (OSCs) de firmar termos de colaboração com a Prefeitura de Varginha.",
+   "resumo": "Este decreto estabelece as condições sob as quais Organizações da Sociedade Civil (OSCs) ficam impedidas de firmar termos de colaboração com a Prefeitura de Varginha. Ele detalha os requisitos para que essas organizações possam receber recursos públicos e atuar em parceria com o município.",
    "pontos_atencao": [
-    "Impede parcerias com OSCs que não prestarem contas ou tiverem contas rejeitadas anteriormente.",
-    "Proíbe a colaboração com organizações que tenham membros do poder público ou seus parentes próximos em cargos de direção.",
-    "Exclui OSCs punidas com suspensão ou declaração de inidoneidade."
+    "As regras visam evitar conflitos de interesse, impedindo que pessoas ligadas a poderes públicos ou ao Ministério Público sejam dirigentes de OSCs parceiras.",
+    "A exigência de prestação de contas e a vedação a organizações com contas rejeitadas reforçam a necessidade de transparência e responsabilidade no uso de verbas públicas.",
+    "A complexidade das referências a múltiplas leis e decretos pode dificultar a compreensão e fiscalização das exigências."
    ],
    "envolvidos": [],
    "valores": {
@@ -370,7 +371,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20263110144389fb1e6510a34a7332756a3828c9cc63.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:37:49+00:00"
+   "gerado_em": "2026-07-13T18:06:43+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian289de09",
@@ -384,10 +385,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "pessoal",
-   "resumo": "A Corregedora da Guarda Civil Municipal de Varginha determinou a abertura de um Processo Administrativo de Sindicância para investigar um fato relatado em um processo administrativo anterior e outros fatos relacionados. Uma comissão de Guardas Civis Municipais foi nomeada para conduzir essa apuração.",
+   "resumo": "Esta Portaria determina a abertura de um processo administrativo de sindicância para investigar um fato específico e outros relacionados, conforme relatado no Processo Administrativo nº 10.495/2026.",
    "pontos_atencao": [
-    "O prazo inicial de 15 dias para a conclusão dos trabalhos da comissão pode ser prorrogado.",
-    "A portaria não detalha a natureza do \"fato\" que será investigado."
+    "O prazo de 15 dias para a conclusão dos trabalhos da comissão, que pode ser prorrogado.",
+    "A natureza do \"fato relatado\" que motivou a sindicância, que não é detalhada na portaria.",
+    "A composição da comissão por membros da própria Guarda Civil Municipal."
    ],
    "envolvidos": [],
    "valores": {
@@ -400,7 +402,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:44+00:00"
+   "gerado_em": "2026-07-13T18:08:49+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian1202026",
@@ -414,10 +416,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "saúde",
-   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) abriu um processo seletivo simplificado para contratar temporariamente um Médico Infectologista.",
+   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) abriu um processo seletivo simplificado para contratar um Médico Infectologista temporário.",
    "pontos_atencao": [
-    "A contratação é temporária, por excepcional interesse público, e não por concurso público.",
-    "O prazo de inscrição é curto, de 13 a 14 de julho de 2026, e deve ser feita por e-mail."
+    "A contratação é temporária e por excepcional interesse público, sem a realização de concurso público.",
+    "O prazo para inscrições é curto, de apenas dois dias (13 e 14 de julho de 2026).",
+    "A Portaria nº 120/2026, publicada na mesma edição, prorroga por 30 dias o prazo de outra portaria (nº 089/2026), sem detalhar o assunto da portaria original."
    ],
    "envolvidos": [
     {
@@ -439,7 +442,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:40+00:00"
+   "gerado_em": "2026-07-13T18:08:43+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian1192026",
@@ -453,10 +456,9 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "pessoal",
-   "resumo": "A Portaria nº 119/2026 da Prefeitura de Varginha substitui um membro da comissão processante instituída pela Portaria nº 086/2025.",
+   "resumo": "A Prefeitura de Varginha, por meio da Fundação Hospitalar (FHOMUV), alterou a composição de uma comissão processante.",
    "pontos_atencao": [
-    "Acompanhar o andamento do processo nº 308/2025, para o qual a comissão foi criada.",
-    "Observar se a mudança de membro afeta a condução ou o prazo dos trabalhos da comissão."
+    "A portaria não especifica o motivo da substituição do membro da comissão."
    ],
    "envolvidos": [],
    "valores": {
@@ -469,7 +471,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:33+00:00"
+   "gerado_em": "2026-07-13T18:08:33+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian1182026",
@@ -483,10 +485,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "pessoal",
-   "resumo": "Esta portaria informa a substituição de um membro em uma comissão interna da Fundação Hospitalar do Município de Varginha (FHOMUV).",
+   "resumo": "Esta portaria informa a substituição de um membro de uma comissão processante na Fundação Hospitalar do Município de Varginha (FHOMUV).",
    "pontos_atencao": [
-    "O motivo da substituição da servidora não é detalhado na portaria.",
-    "A natureza do 'processo nº 416/2026' não é especificada, impedindo a compreensão do contexto da comissão."
+    "A portaria não especifica o motivo da substituição do membro da comissão.",
+    "A natureza do processo nº 416/2026, que a comissão processante está tratando, não é detalhada na portaria."
    ],
    "envolvidos": [],
    "valores": {
@@ -499,7 +501,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:27+00:00"
+   "gerado_em": "2026-07-13T18:08:27+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian1172026",
@@ -511,13 +513,12 @@
    "numero": "117/2026",
    "data": "2026-07-09",
    "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "saúde",
-   "resumo": "A Portaria nº 117/2026 da Fundação Hospitalar do Município de Varginha (FHOMUV) estende por 30 dias o prazo estabelecido na Portaria nº 105/2026.",
+   "relevancia": "baixo",
+   "tema": "administração",
+   "resumo": "Uma Portaria da Fundação Hospitalar do Município de Varginha (FHOMUV) prorrogou por 30 dias o prazo estabelecido em uma portaria anterior, a de número 105/2026.",
    "pontos_atencao": [
-    "A portaria não detalha o conteúdo da Portaria nº 105/2026, o que impede a compreensão do impacto da prorrogação.",
-    "O motivo da prorrogação é genérico (\"considerando solicitação constante no processo nº 315/2026\"), sem especificar a justificativa.",
-    "A retroatividade da portaria pode gerar questões sobre a validade de atos realizados no período entre as datas."
+    "O texto não especifica o conteúdo da Portaria nº 105/2026, dificultando a compreensão do impacto da prorrogação.",
+    "A portaria retroage à data da portaria anterior, o que pode ter implicações legais ou administrativas."
    ],
    "envolvidos": [],
    "valores": {
@@ -530,7 +531,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:23+00:00"
+   "gerado_em": "2026-07-13T18:08:21+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian1162026",
@@ -544,10 +545,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "saúde",
-   "resumo": "A Portaria nº 116/2026 da Prefeitura de Varginha, emitida pela Fundação Hospitalar do Município de Varginha (FHOMUV), prorroga por 30 dias o prazo estabelecido em uma portaria anterior, a Portaria nº 096/2026.",
+   "resumo": "A Portaria nº 116/2026 da Fundação Hospitalar do Município de Varginha (FHOMUV) estende por mais 30 dias o prazo estabelecido em uma portaria anterior, a Portaria nº 096/2026.",
    "pontos_atencao": [
-    "O conteúdo específico da Portaria nº 096/2026, cujo prazo foi prorrogado, não é detalhado, impedindo a compreensão do impacto da prorrogação.",
-    "A portaria retroage à data da portaria anterior, o que pode gerar questionamentos sobre a validade de atos ou decisões tomadas no período intermediário."
+    "A portaria não especifica o conteúdo da Portaria nº 096/2026, o que impede a avaliação do impacto da prorrogação.",
+    "A retroatividade da portaria pode ter implicações administrativas ou legais que merecem atenção."
    ],
    "envolvidos": [],
    "valores": {
@@ -560,7 +561,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:16+00:00"
+   "gerado_em": "2026-07-13T18:08:16+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian1152026",
@@ -574,10 +575,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "saúde",
-   "resumo": "A Portaria nº 115/2026 da Prefeitura de Varginha prorroga por 30 dias o prazo estabelecido em uma portaria anterior, a Portaria nº 098/2026, relacionada à Fundação Hospitalar do Município de Varginha (FHOMUV).",
+   "resumo": "Esta portaria da Fundação Hospitalar de Varginha prorroga por 30 dias um prazo que havia sido estabelecido em uma portaria anterior, a de número 098/2026.",
    "pontos_atencao": [
-    "O conteúdo exato da Portaria nº 098/2026, que teve seu prazo prorrogado, não é detalhado neste ato.",
-    "A prorrogação tem efeito retroativo, o que pode ter implicações para ações já realizadas ou em andamento."
+    "O motivo exato da prorrogação não é detalhado na portaria, apenas que foi por solicitação em um processo.",
+    "A portaria retroage à data da anterior, o que pode ter implicações para ações já em andamento ou concluídas.",
+    "O conteúdo da Portaria nº 098/2026, que teve o prazo prorrogado, não é especificado neste documento."
    ],
    "envolvidos": [],
    "valores": {
@@ -590,7 +592,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:08+00:00"
+   "gerado_em": "2026-07-13T18:08:09+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian1142026",
@@ -602,12 +604,12 @@
    "numero": "114/2026",
    "data": "2026-07-09",
    "categoria": "Diário Oficial",
-   "relevancia": "baixo",
-   "tema": "administração",
-   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) prorrogou por mais 15 dias o prazo estabelecido em uma portaria anterior, a de número 103/2026.",
+   "relevancia": "medio",
+   "tema": "saúde",
+   "resumo": "A Portaria nº 114/2026 da Fundação Hospitalar do Município de Varginha (FHOMUV) prorroga por mais 15 dias o prazo estabelecido em uma portaria anterior, a Portaria nº 103/2026.",
    "pontos_atencao": [
-    "O conteúdo exato da Portaria nº 103/2026, cujo prazo foi prorrogado, não é detalhado, impedindo a avaliação completa do impacto da extensão.",
-    "A retroatividade da prorrogação pode ter implicações para as partes envolvidas no processo original."
+    "O conteúdo exato da Portaria nº 103/2026, cujo prazo foi prorrogado, não é detalhado, impedindo uma avaliação completa do impacto da extensão.",
+    "A portaria retroage à data da portaria anterior, o que significa que a prorrogação é aplicada a partir do vencimento original."
    ],
    "envolvidos": [],
    "valores": {
@@ -620,7 +622,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:03+00:00"
+   "gerado_em": "2026-07-13T18:08:01+00:00"
   },
   {
    "id": "DIARIO-2026-1840-norma-decreton12561de0",
@@ -634,11 +636,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "orçamento",
-   "resumo": "Este decreto da Prefeitura de Varginha cancela uma série de pagamentos pendentes, conhecidos como 'restos a pagar', referentes ao ano de 2025, que não foram processados.",
+   "resumo": "A Prefeitura de Varginha publicou um decreto que cancela uma série de despesas de 2025, conhecidas como \"restos a pagar\", que não foram processadas.",
    "pontos_atencao": [
-    "A justificativa para o cancelamento é que os pagamentos 'não foram processados', o que pode indicar falhas administrativas ou burocráticas.",
-    "O valor total cancelado é significativo, impactando o planejamento financeiro e a execução orçamentária do município.",
-    "É importante verificar se os serviços ou bens correspondentes a esses empenhos foram de fato prestados ou entregues, e por que o processamento não ocorreu."
+    "A justificativa para o cancelamento é que as despesas \"não foram processadas\", sem detalhar os motivos específicos para cada caso.",
+    "Os fornecedores listados não receberão os pagamentos referentes a esses empenhos, o que pode afetar suas finanças.",
+    "O valor total cancelado é significativo, impactando o orçamento municipal e as empresas envolvidas."
    ],
    "envolvidos": [
     {
@@ -659,9 +661,9 @@
     }
    ],
    "valores": {
-    "total": 746456.66,
+    "total": 741402.77,
     "encontrados": [
-     746456.66
+     741402.77
     ]
    },
    "edicao": "1840",
@@ -670,7 +672,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:38:35+00:00"
+   "gerado_em": "2026-07-13T18:07:36+00:00"
   },
   {
    "id": "DIARIO-2026-1840-licitacao-editaldeconvocao",
@@ -684,16 +686,18 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "saúde",
-   "resumo": "A Prefeitura de Varginha, através da Secretaria Municipal de Saúde, está convocando candidatos aprovados no concurso público de 2025 para preencher duas vagas de Farmacêutico Bioquímico, visando reforçar as equipes de saúde em horário estendido.",
+   "resumo": "A Prefeitura de Varginha, através da Secretaria Municipal de Saúde, convoca dois candidatos aprovados em concurso público para o cargo de Farmacêutico Bioquímico, visando preencher vagas para atuação em horário estendido nas unidades de saúde.",
    "pontos_atencao": [
-    "A contratação é em caráter emergencial e temporário, o que pode indicar uma solução de curto prazo para uma demanda que pode ser contínua.",
-    "O horário de trabalho fixo e noturno (17h às 21h) pode limitar o número de candidatos disponíveis para as vagas.",
-    "O custo mensal total para os dois cargos é de R$ 7.786,96, impactando o orçamento municipal."
+    "As contratações são em caráter temporário, com prazo inicial de seis meses, podendo ser prorrogado.",
+    "A justificativa para a contratação é o caráter emergencial e o excepcional interesse público para atender demandas em horário estendido.",
+    "O horário de trabalho é fixo (17h às 21h) e não pode ser alterado pelo candidato, o que pode limitar a disponibilidade de profissionais."
    ],
    "envolvidos": [],
    "valores": {
-    "total": null,
-    "encontrados": []
+    "total": 3893.48,
+    "encontrados": [
+     3893.48
+    ]
    },
    "edicao": "1840",
    "links": {
@@ -701,7 +705,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:38:43+00:00"
+   "gerado_em": "2026-07-13T18:07:44+00:00"
   },
   {
    "id": "DIARIO-2026-1840-licitacao-editaldeconvocao",
@@ -713,13 +717,13 @@
    "numero": "012/2026",
    "data": "2026-07-09",
    "categoria": "Diário Oficial",
-   "relevancia": "alto",
+   "relevancia": "medio",
    "tema": "pessoal",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um candidato aprovado em concurso público para ocupar temporariamente uma vaga de Farmacêutico Bioquímico.",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um candidato aprovado em concurso público para preencher temporariamente uma vaga de Farmacêutico Bioquímico.",
    "pontos_atencao": [
-    "A contratação é temporária, com duração inicial de seis meses, podendo ser prorrogada.",
-    "O processo exige que o candidato comprove aptidão física e apresente vasta documentação para a contratação.",
-    "A justificativa para a contratação temporária é a substituição de uma servidora afastada por licença maternidade."
+    "A contratação é temporária, com duração inicial de seis meses, podendo ser prorrogada por igual período.",
+    "A vaga é para substituir uma servidora afastada por licença-maternidade, justificando a contratação por excepcional interesse público.",
+    "O candidato convocado deve apresentar uma série de documentos e comprovar aptidão para a função."
    ],
    "envolvidos": [],
    "valores": {
@@ -734,7 +738,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:38:52+00:00"
+   "gerado_em": "2026-07-13T18:07:50+00:00"
   },
   {
    "id": "DIARIO-2026-1840-aditivo-extratodetermoad",
@@ -747,12 +751,12 @@
    "data": "2026-07-09",
    "categoria": "Diário Oficial",
    "relevancia": "alto",
-   "tema": "comunicação",
-   "resumo": "Este é um aditivo ao Contrato nº 11/2024 da Câmara Municipal de Varginha com a empresa Versão BR Comunicação e Marketing Ltda.",
+   "tema": "orçamento",
+   "resumo": "Este é um aditivo a um contrato existente da Câmara Municipal de Varginha com uma empresa de comunicação e marketing.",
    "pontos_atencao": [
     "O acréscimo de R$ 29.900,90 ao valor do contrato.",
     "O novo valor global estimado do contrato, que atinge R$ 2.105.026,50.",
-    "A natureza do serviço (comunicação e marketing) e sua relevância para a Câmara Municipal."
+    "A prorrogação do prazo contratual por mais 12 meses."
    ],
    "envolvidos": [
     {
@@ -773,7 +777,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202637091546b0e0dade6d99839bdfaa92969ba1f5eb.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:38:57+00:00"
+   "gerado_em": "2026-07-13T18:07:56+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portarian23172de",
@@ -787,10 +791,9 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "educação",
-   "resumo": "Esta portaria da Prefeitura de Varginha substitui membros de uma comissão responsável pela organização, acompanhamento e fiscalização do processo de eleição de diretores, coordenadores e vice-diretores das escolas e centros municipais de educação infantil.",
+   "resumo": "A Prefeitura de Varginha publicou uma portaria que altera a composição da comissão responsável por organizar, acompanhar e fiscalizar o processo de eleição de diretores, coordenadores e vice-diretores das escolas e centros municipais de educação infantil.",
    "pontos_atencao": [
-    "Trata-se de uma alteração administrativa de pessoal, sem impacto orçamentário direto ou indicação de irregularidades no texto.",
-    "A portaria não especifica os motivos das substituições, o que é comum em atos administrativos de pessoal."
+    "A portaria não detalha os motivos para as substituições dos membros da comissão."
    ],
    "envolvidos": [
     {
@@ -813,7 +816,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:42:22+00:00"
+   "gerado_em": "2026-07-13T18:11:38+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portarian23158de",
@@ -826,11 +829,11 @@
    "data": "2026-07-08",
    "categoria": "Diário Oficial",
    "relevancia": "medio",
-   "tema": "assistência social",
+   "tema": "pessoal",
    "resumo": "Esta portaria da Prefeitura de Varginha substitui um membro do Conselho Municipal de Assistência Social (CMAS) para o biênio 2025-2027.",
    "pontos_atencao": [
-    "A mudança de um membro pode alterar a dinâmica e as discussões dentro do conselho.",
-    "É importante verificar se o novo membro possui a qualificação e o conhecimento necessários para a função no CMAS."
+    "A mudança se refere a um membro suplente, mantendo os demais representantes inalterados.",
+    "Não há impacto orçamentário direto mencionado nesta portaria."
    ],
    "envolvidos": [],
    "valores": {
@@ -843,7 +846,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:42:16+00:00"
+   "gerado_em": "2026-07-13T18:11:30+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portarian23149de",
@@ -857,10 +860,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "baixo",
    "tema": "pessoal",
-   "resumo": "Esta Portaria designa uma servidora para substituir temporariamente outra em férias na Seção de Controle de Pessoal da Prefeitura de Varginha.",
+   "resumo": "Esta Portaria designa uma servidora para substituir temporariamente outra que estará de férias, na Seção de Controle de Pessoal da Prefeitura de Varginha.",
    "pontos_atencao": [
-    "A substituição implica um custo adicional para a prefeitura, referente à diferença salarial paga à servidora designada.",
-    "A duração da substituição é de 22 de junho a 1º de julho de 2026."
+    "A substituta receberá a diferença entre seu vencimento e o do cargo de Encarregado da Seção de Controle de Pessoal.",
+    "A substituição tem um período específico de duração, de 22 de junho a 1º de julho de 2026."
    ],
    "envolvidos": [],
    "valores": {
@@ -873,7 +876,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:42:10+00:00"
+   "gerado_em": "2026-07-13T18:11:26+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portarian23133de",
@@ -886,9 +889,12 @@
    "data": "2026-07-08",
    "categoria": "Diário Oficial",
    "relevancia": "medio",
-   "tema": "pessoal",
+   "tema": "direitos da mulher",
    "resumo": "Esta portaria substitui um membro suplente do Conselho Municipal dos Direitos da Mulher (CMDM) de Varginha.",
-   "pontos_atencao": [],
+   "pontos_atencao": [
+    "A mudança de um membro pode alterar a dinâmica e as perspectivas dentro do conselho.",
+    "É importante observar a experiência e o alinhamento da nova integrante com os objetivos do CMDM."
+   ],
    "envolvidos": [],
    "valores": {
     "total": null,
@@ -900,7 +906,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:42:05+00:00"
+   "gerado_em": "2026-07-13T18:11:20+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portarian1242026",
@@ -914,10 +920,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "baixo",
    "tema": "pessoal",
-   "resumo": "Esta portaria designa uma empregada pública para substituir temporariamente outra em uma função gratificada, devido ao afastamento por férias da titular.",
+   "resumo": "A Portaria Nº 124/2026 designa a empregada pública Ana Paula de Oliveira Romeiro para substituir temporariamente Tania Maria da Silva Moura na função gratificada de Apoiador(a) de Base, devido ao afastamento por férias.",
    "pontos_atencao": [
-    "A substituta fará jus ao recebimento da gratificação durante o período de substituição.",
-    "A duração da substituição é indeterminada, perdurando até o retorno da funcionária substituída."
+    "A substituta fará jus ao recebimento da gratificação durante o período.",
+    "A substituição é temporária e perdurará até o retorno da empregada substituída."
    ],
    "envolvidos": [
     {
@@ -940,7 +946,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:42:42+00:00"
+   "gerado_em": "2026-07-13T18:12:02+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portarian1232026",
@@ -954,10 +960,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "pessoal",
-   "resumo": "Esta portaria nomeia um médico temporário para o CISSUL/SAMU de Varginha, após aprovação em processo seletivo simplificado.",
+   "resumo": "Esta portaria nomeia Victor Emmanuel de Oliveira Martins como empregado público temporário para o cargo de Médico Intervencionista/Regulador no CISSUL/SAMU, após aprovação em processo seletivo simplificado.",
    "pontos_atencao": [
     "A nomeação é para um emprego público temporário.",
-    "O nomeado deve apresentar a documentação necessária dentro do prazo estabelecido no edital para que a nomeação seja efetivada."
+    "O candidato nomeado deve cumprir o prazo para apresentação de documentos, conforme edital, para que a contratação seja efetivada."
    ],
    "envolvidos": [],
    "valores": {
@@ -970,7 +976,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:42:32+00:00"
+   "gerado_em": "2026-07-13T18:11:50+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portarian1222026",
@@ -984,11 +990,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "pessoal",
-   "resumo": "Esta Portaria nomeia uma nova Técnica de Enfermagem temporária para atuar no CISSUL/SAMU, após aprovação em processo seletivo simplificado.",
+   "resumo": "A Portaria nomeia uma Técnica de Enfermagem temporária para o CISSUL/SAMU, aprovada em processo seletivo simplificado.",
    "pontos_atencao": [
-    "A nomeação é para um emprego público temporário.",
-    "A pessoa nomeada tem um prazo para apresentar os documentos exigidos, sob pena de a nomeação ser cancelada.",
-    "A contratação é resultado de um Processo Seletivo Simplificado, que tem regras específicas."
+    "A nomeação é para um cargo temporário.",
+    "A pessoa nomeada deve apresentar a documentação necessária no prazo estipulado pelo edital, sob pena de a nomeação ser anulada."
    ],
    "envolvidos": [],
    "valores": {
@@ -1001,7 +1006,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:42:27+00:00"
+   "gerado_em": "2026-07-13T18:11:43+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portaria85967091",
@@ -1015,10 +1020,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "saúde",
-   "resumo": "Esta portaria da Prefeitura de Varginha detalha a movimentação de recursos financeiros destinados a diversas ações e estruturas da atenção hospitalar e especializada no município.",
+   "resumo": "Esta Portaria da Prefeitura de Varginha detalha a alocação de recursos financeiros para diversas ações na área da saúde, como estruturação e atenção hospitalar, atenção especializada e investimentos.",
    "pontos_atencao": [
-    "A portaria lista diversas rubricas e valores, mas não detalha os projetos ou aquisições específicas que serão financiados com esses recursos.",
-    "É importante verificar se os valores alocados correspondem às necessidades reais e se serão aplicados de forma eficiente."
+    "O valor total alocado é de R$ 842.653,06, um montante considerável para o orçamento da saúde municipal.",
+    "Os recursos são identificados como 'REND BRASIL SES RES', sugerindo que são verbas repassadas para a Secretaria de Saúde.",
+    "A portaria detalha diversas categorias de atenção hospitalar e especializada, o que requer acompanhamento da execução em cada área."
    ],
    "envolvidos": [],
    "valores": {
@@ -1033,7 +1039,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:32+00:00"
+   "gerado_em": "2026-07-13T18:09:43+00:00"
   },
   {
    "id": "DIARIO-2026-1839-pessoal-portaria82467071",
@@ -1045,12 +1051,12 @@
    "numero": "8.246",
    "data": "2026-07-08",
    "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "orçamento",
-   "resumo": "Esta portaria da Prefeitura de Varginha-MG destina R$ 300.000,00 para custeio, provavelmente relacionado a uma emenda parlamentar para a Média e Alta Complexidade (MAC).",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "Esta portaria da Prefeitura de Varginha-MG registra a movimentação de recursos financeiros no valor de R$ 300.000,00, identificados como 'EMENDA CUSTEIO MAC'.",
    "pontos_atencao": [
-    "A portaria não especifica quais despesas de custeio serão cobertas.",
-    "É necessário acompanhar a prestação de contas para verificar a aplicação dos recursos."
+    "A portaria não especifica os serviços ou unidades de saúde que serão beneficiados com os recursos.",
+    "É importante acompanhar a aplicação desses recursos para garantir que atendam às necessidades da população na área de saúde."
    ],
    "envolvidos": [],
    "valores": {
@@ -1065,7 +1071,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:26+00:00"
+   "gerado_em": "2026-07-13T18:09:36+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12646de2",
@@ -1079,10 +1085,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "educação",
-   "resumo": "Este decreto prorroga o mandato de diretores e vice-diretores das escolas municipais de Varginha por 63 dias ou até a conclusão do processo de escolha de novas equipes gestoras.",
+   "resumo": "Este decreto prorroga o mandato dos diretores e vice-diretores das escolas municipais de Varginha.",
    "pontos_atencao": [
-    "A prorrogação pode indicar um atraso no processo de consulta para a escolha das novas equipes gestoras das escolas.",
-    "A duração da prorrogação é flexível ('até a conclusão do processo'), o que pode gerar incerteza sobre a data exata do fim dos mandatos atuais."
+    "A prorrogação do mandato adia a posse de novas equipes gestoras nas escolas.",
+    "A decisão é uma extensão de um decreto anterior (nº 12.590/2026), indicando que o processo de seleção já estava em andamento."
    ],
    "envolvidos": [],
    "valores": {
@@ -1095,7 +1101,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:57+00:00"
+   "gerado_em": "2026-07-13T18:11:14+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12640de0",
@@ -1109,11 +1115,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "orçamento",
-   "resumo": "Este decreto abre um crédito adicional de R$ 380.000,00 no orçamento da Prefeitura de Varginha para a Secretaria Municipal de Esporte e Lazer. Os recursos são provenientes de um superávit financeiro de um acordo judicial relacionado ao rompimento da barragem de Brumadinho.",
+   "resumo": "Este decreto abre um crédito adicional de R$ 380.000,00 para a Secretaria Municipal de Esporte e Lazer, utilizando recursos de superávit financeiro provenientes de um acordo judicial relacionado ao rompimento da barragem de Brumadinho.",
    "pontos_atencao": [
-    "Os recursos são provenientes de um superávit financeiro de um acordo judicial relacionado ao rompimento da barragem em Brumadinho, o que indica uma origem específica e sensível dos fundos.",
-    "O valor é destinado exclusivamente à Secretaria Municipal de Esporte e Lazer, para a gestão de serviços e áreas esportivas.",
-    "O decreto se baseia em uma lei anterior (Lei nº 7.510/2025) que autoriza a abertura de créditos adicionais suplementares."
+    "Os recursos são provenientes de um acordo judicial relacionado ao rompimento da barragem de Brumadinho, e é importante observar se a aplicação está alinhada com a finalidade original desses fundos.",
+    "Trata-se de um crédito suplementar, o que significa que o valor não estava previsto inicialmente no orçamento da Secretaria de Esporte e Lazer."
    ],
    "envolvidos": [],
    "valores": {
@@ -1128,7 +1133,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:52+00:00"
+   "gerado_em": "2026-07-13T18:11:09+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12639de0",
@@ -1142,11 +1147,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "orçamento",
-   "resumo": "Este decreto da Prefeitura de Varginha abre créditos adicionais suplementares no valor de R$ 1.550.000,00 para ajustar o orçamento municipal. Ele realoca verbas entre diferentes áreas, como a Fundação Hospitalar e a amortização da dívida pública.",
+   "resumo": "Este decreto abre um crédito adicional de R$ 1.550.000,00 no orçamento da Prefeitura de Varginha, realocando recursos já existentes para novas finalidades.",
    "pontos_atencao": [
-    "A realocação de R$ 923.755,37 da gestão da UPA para a manutenção de serviços hospitalares pode indicar uma mudança nas prioridades ou necessidades dentro da área da saúde.",
-    "A mudança da fonte de recurso para a amortização da dívida pública (de recursos não vinculados para recursos vinculados à saúde) merece atenção para garantir a conformidade e a sustentabilidade fiscal.",
-    "O decreto ajusta o orçamento sem aumentar o gasto total, mas altera a destinação de verbas já existentes."
+    "Parte dos recursos realocados para os novos créditos vem da anulação de verbas destinadas à gestão da Unidade de Pronto Atendimento (UPA).",
+    "Outra parte dos recursos realocados vem da anulação de verbas destinadas à amortização da dívida pública municipal, sendo realocada para outra linha de amortização da dívida.",
+    "Apesar de ser uma realocação interna, é importante observar o impacto da retirada de fundos de áreas como a UPA."
    ],
    "envolvidos": [],
    "valores": {
@@ -1161,7 +1166,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:47+00:00"
+   "gerado_em": "2026-07-13T18:11:01+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12638de0",
@@ -1175,11 +1180,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "orçamento",
-   "resumo": "Este decreto da Prefeitura de Varginha abre um crédito adicional de R$ 20 milhões no orçamento municipal. O valor será destinado à Secretaria Municipal de Obras e Serviços Urbanos para o gerenciamento e conservação de vias públicas e praças.",
+   "resumo": "Este decreto da Prefeitura de Varginha abre um crédito adicional de R$ 20 milhões no orçamento municipal, utilizando um superávit financeiro do ano anterior.",
    "pontos_atencao": [
-    "O valor de R$ 20 milhões é um montante considerável, que representa uma realocação significativa de recursos.",
-    "Os recursos vêm de um superávit financeiro do exercício anterior, ou seja, dinheiro que sobrou de anos passados.",
-    "A destinação é para gerenciamento e conservação, o que pode incluir diversos tipos de serviços e obras."
+    "O valor de R$ 20 milhões é um montante considerável, que será realocado para obras e serviços urbanos.",
+    "Os recursos vêm de um superávit financeiro do exercício anterior, ou seja, dinheiro que sobrou do orçamento passado.",
+    "A destinação para 'Gerenciamento e Conservação das Vias Públicas e Praças' é uma categoria ampla, que abrange diversas ações."
    ],
    "envolvidos": [],
    "valores": {
@@ -1194,7 +1199,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:38+00:00"
+   "gerado_em": "2026-07-13T18:10:53+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12637de0",
@@ -1208,11 +1213,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "educação",
-   "resumo": "Este decreto da Prefeitura de Varginha abre um crédito adicional de quase 2 milhões de reais para a Secretaria Municipal de Educação, destinado ao programa de merenda escolar.",
+   "resumo": "Este decreto da Prefeitura de Varginha abre um crédito orçamentário adicional de R$ 1.962.386,44 para a Secretaria Municipal de Educação.",
    "pontos_atencao": [
-    "O valor é significativo e direcionado a uma área essencial (alimentação escolar).",
-    "A origem do recurso é um superávit financeiro, indicando que houve sobra de recursos do Salário-Educação no ano anterior.",
-    "A suplementação orçamentária pode indicar uma necessidade não prevista ou um reforço para a qualidade do serviço."
+    "O recurso provém de um superávit financeiro do Salário-Educação do ano anterior, indicando que houve sobra de verba nessa área.",
+    "A destinação é para um programa específico de alimentação escolar, o que pode gerar debates sobre a prioridade de gastos dentro da educação."
    ],
    "envolvidos": [],
    "valores": {
@@ -1227,7 +1231,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:29+00:00"
+   "gerado_em": "2026-07-13T18:10:44+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12635de2",
@@ -1240,12 +1244,12 @@
    "data": "2026-07-08",
    "categoria": "Diário Oficial",
    "relevancia": "alto",
-   "tema": "saúde",
-   "resumo": "A Prefeitura de Varginha abriu um crédito orçamentário adicional de R$ 11.163.861,81 para a Secretaria Municipal de Saúde. Este valor é proveniente de um excesso de arrecadação do município.",
+   "tema": "orçamento",
+   "resumo": "O Decreto nº 12.635/2026 da Prefeitura de Varginha abre um crédito orçamentário adicional de R$ 11.163.861,81 para a Secretaria Municipal de Saúde, utilizando recursos provenientes do excesso de arrecadação.",
    "pontos_atencao": [
-    "O alto valor de R$ 11.163.861,81 sendo suplementado para a saúde, o que representa uma parcela significativa do orçamento.",
-    "A origem dos recursos é o 'excesso de arrecadação', o que pode indicar uma arrecadação maior que a prevista ou a necessidade de readequar o planejamento orçamentário.",
-    "A descrição 'Gerenciamento das Atividades da Gestão Plena' é ampla e o cidadão pode buscar mais detalhes sobre as ações específicas que serão financiadas."
+    "O valor significativo de mais de R$ 11 milhões é destinado à saúde.",
+    "Os recursos vêm de um \"excesso de arrecadação\", indicando que a prefeitura arrecadou mais do que o esperado.",
+    "A destinação principal é para \"Gerenciamento das Atividades da Gestão Plena\", uma categoria ampla que merece acompanhamento detalhado."
    ],
    "envolvidos": [],
    "valores": {
@@ -1260,7 +1264,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:24+00:00"
+   "gerado_em": "2026-07-13T18:10:37+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12634de2",
@@ -1273,11 +1277,12 @@
    "data": "2026-07-08",
    "categoria": "Diário Oficial",
    "relevancia": "alto",
-   "tema": "orçamento",
-   "resumo": "Este decreto da Prefeitura de Varginha abre créditos orçamentários adicionais para a Secretaria Municipal de Saúde, utilizando um superávit financeiro do ano anterior.",
+   "tema": "saúde",
+   "resumo": "Este decreto da Prefeitura de Varginha abre créditos orçamentários adicionais no valor de R$ 3.087.639,48 para a Secretaria Municipal de Saúde, utilizando superávit financeiro do ano anterior.",
    "pontos_atencao": [
-    "Os recursos são provenientes de superávit financeiro, ou seja, dinheiro que não foi gasto no ano anterior e agora está sendo realocado.",
-    "É importante verificar se os valores estão sendo direcionados para as necessidades mais urgentes da saúde municipal."
+    "Os recursos são provenientes de superávit financeiro de transferências federais e estaduais do SUS e transferências especiais dos estados.",
+    "A suplementação orçamentária destina-se a diversas áreas da saúde, incluindo atenção básica, urgência e emergência (UPA), saúde mental (CAPS) e vigilância em saúde.",
+    "É importante verificar a aplicação desses fundos nas finalidades específicas detalhadas no decreto."
    ],
    "envolvidos": [],
    "valores": {
@@ -1292,7 +1297,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:17+00:00"
+   "gerado_em": "2026-07-13T18:10:31+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12620de2",
@@ -1306,11 +1311,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "orçamento",
-   "resumo": "Este decreto abre créditos adicionais suplementares no orçamento da Prefeitura de Varginha para o ano de 2026, totalizando R$ 757.240,44. Os recursos são remanejados de outras dotações orçamentárias para ajustar os valores estimados às necessidades reais de diversas secretarias.",
+   "resumo": "Este decreto da Prefeitura de Varginha abre créditos adicionais suplementares no orçamento de 2026, realocando fundos entre diferentes secretarias para ajustar os valores estimados às necessidades reais.",
    "pontos_atencao": [
-    "O remanejamento de verbas afeta áreas como a amortização da dívida pública e a valorização da educação infantil, que terão seus orçamentos reduzidos para cobrir outras despesas.",
-    "A Secretaria Municipal de Agricultura e Pecuária recebe a maior parte dos recursos suplementares, principalmente para a gestão do Mercado Municipal.",
-    "A justificativa para a abertura dos créditos é a necessidade de adequar os valores estimados na proposta orçamentária aos valores efetivamente necessários."
+    "A maior parte da suplementação, cerca de R$ 561 mil, é destinada à Secretaria Municipal de Agricultura e Pecuária para a gestão do Mercado Municipal.",
+    "Uma parcela significativa dos recursos para cobrir esses créditos, aproximadamente R$ 577 mil, foi retirada de dotações destinadas à amortização da dívida pública municipal.",
+    "As modificações ocorrem entre dotações de mesma fonte de recurso, o que, segundo o decreto, não afeta o equilíbrio orçamentário geral."
    ],
    "envolvidos": [],
    "valores": {
@@ -1325,7 +1330,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:10+00:00"
+   "gerado_em": "2026-07-13T18:10:22+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12611de2",
@@ -1338,11 +1343,11 @@
    "data": "2026-07-08",
    "categoria": "Diário Oficial",
    "relevancia": "alto",
-   "tema": "educação",
-   "resumo": "Este decreto da Prefeitura de Varginha abre um crédito adicional de R$ 379.412,70 para a Secretaria Municipal de Educação. O valor será destinado à valorização dos profissionais do magistério.",
+   "tema": "orçamento",
+   "resumo": "Este decreto abre um crédito orçamentário adicional de R$ 379.412,70 para a Secretaria Municipal de Educação de Varginha. O valor será usado para a valorização dos profissionais do magistério.",
    "pontos_atencao": [
-    "O valor é proveniente de um superávit financeiro residual do exercício anterior, indicando que são recursos não utilizados previamente.",
-    "A destinação específica é para a valorização dos profissionais do magistério."
+    "O valor é proveniente de um superávit financeiro residual do FUNDEB do exercício anterior, ou seja, são recursos que não foram utilizados no ano fiscal anterior.",
+    "A destinação específica é para a valorização dos profissionais do magistério, o que pode envolver salários, benefícios ou outras formas de reconhecimento."
    ],
    "envolvidos": [],
    "valores": {
@@ -1357,7 +1362,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:41:02+00:00"
+   "gerado_em": "2026-07-13T18:10:13+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12609de2",
@@ -1371,10 +1376,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "orçamento",
-   "resumo": "Este decreto abre um crédito adicional de R$ 6.187.000,00 no orçamento da Prefeitura de Varginha, utilizando o superávit financeiro do ano anterior. Os recursos serão destinados à Secretaria Municipal de Governo e à Secretaria Municipal de Obras e Serviços Urbanos.",
+   "resumo": "Este decreto da Prefeitura de Varginha abre créditos adicionais suplementares no orçamento municipal, utilizando um superávit financeiro do ano anterior.",
    "pontos_atencao": [
-    "O valor significativo de R$ 6.000.000,00 destinado à Secretaria de Obras e Serviços Urbanos para gerenciamento e conservação de vias públicas e praças.",
-    "A origem dos recursos é o superávit financeiro do exercício anterior, ou seja, dinheiro que não foi gasto no ano de 2025."
+    "O decreto realoca um valor significativo de R$ 6.187.000,00.",
+    "Os recursos são provenientes de superávit financeiro do exercício anterior, ou seja, dinheiro que sobrou do orçamento passado.",
+    "A maior parte dos recursos (R$ 6.000.000,00) será destinada à Secretaria Municipal de Obras e Serviços Urbanos para gerenciamento e conservação de vias públicas e praças."
    ],
    "envolvidos": [],
    "valores": {
@@ -1389,7 +1395,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:55+00:00"
+   "gerado_em": "2026-07-13T18:10:05+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12606de1",
@@ -1403,10 +1409,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "educação",
-   "resumo": "Este decreto abre um crédito adicional de R$ 902.700,83 no orçamento da Prefeitura de Varginha para a Secretaria Municipal de Educação. O valor é proveniente de um superávit financeiro de transferências federais vinculadas à educação do ano anterior.",
+   "resumo": "Este decreto abre um crédito adicional de R$ 902.700,83 no orçamento da Prefeitura de Varginha para a Secretaria Municipal de Educação. O valor é proveniente de um superávit financeiro do ano anterior, de recursos federais destinados a convênios de educação.",
    "pontos_atencao": [
-    "Os recursos são um superávit de verbas federais destinadas à construção de creches, mas estão sendo realocados para 'gerenciamento do ensino'.",
-    "É importante verificar como o 'gerenciamento do ensino' será detalhado e executado para garantir o uso eficiente dos recursos."
+    "O valor de R$ 902.700,83 é um superávit de recursos federais do FNDE, originalmente para construção de creches, sendo agora realocado.",
+    "A verba será utilizada para 'Gerenciamento do Ensino Fundamental', o que pode abranger diversas despesas administrativas ou de apoio.",
+    "É importante verificar como essa realocação impacta os projetos originais de construção de creches."
    ],
    "envolvidos": [],
    "valores": {
@@ -1421,7 +1428,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:47+00:00"
+   "gerado_em": "2026-07-13T18:09:57+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12605de1",
@@ -1435,10 +1442,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "orçamento",
-   "resumo": "Este decreto abre créditos adicionais suplementares no orçamento da Prefeitura de Varginha, utilizando um excesso de arrecadação de fundos federais.",
+   "resumo": "Este decreto abre créditos adicionais suplementares no orçamento da Prefeitura de Varginha, utilizando um excesso de arrecadação para reforçar dotações existentes.",
    "pontos_atencao": [
-    "Os recursos são provenientes de excesso de arrecadação de fundos federais específicos para educação (FNDE) e assistência social (FNAS).",
-    "O decreto ajusta o orçamento para permitir gastos em áreas já existentes, sem criar novas despesas."
+    "Os valores são provenientes de excesso de arrecadação, indicando que a receita foi maior que a prevista inicialmente.",
+    "Os recursos são direcionados para despesas de gerenciamento e manutenção de serviços existentes, não para novos investimentos."
    ],
    "envolvidos": [],
    "valores": {
@@ -1453,7 +1460,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:38+00:00"
+   "gerado_em": "2026-07-13T18:09:49+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12604de1",
@@ -1467,11 +1474,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "saúde",
-   "resumo": "Este decreto abre créditos adicionais suplementares no orçamento da Prefeitura de Varginha, destinando R$ 842.653,06 para a Secretaria Municipal de Saúde.",
+   "resumo": "Este decreto abre um crédito adicional suplementar de R$ 842.653,06 para a Secretaria Municipal de Saúde de Varginha, utilizando recursos provenientes do excesso de arrecadação.",
    "pontos_atencao": [
-    "Os recursos são provenientes de \"excesso de arrecadação\", indicando que a prefeitura arrecadou mais do que o previsto inicialmente.",
-    "A maior parte dos valores é destinada a custeio de atividades de atenção básica e gerenciamento da gestão plena da saúde.",
-    "Os valores são distribuídos em diversas fontes de recursos, incluindo emendas e resoluções estaduais."
+    "Os recursos são provenientes de \"excesso de arrecadação\", indicando que a prefeitura arrecadou mais do que o esperado.",
+    "A suplementação orçamentária é destinada exclusivamente à Secretaria Municipal de Saúde, abrangendo diferentes áreas como atenção básica e hospitalar.",
+    "A autorização para a abertura desses créditos adicionais foi dada pela Lei nº 7.510/2025."
    ],
    "envolvidos": [],
    "valores": {
@@ -1486,7 +1493,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:18+00:00"
+   "gerado_em": "2026-07-13T18:09:29+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12603de1",
@@ -1500,11 +1507,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "saúde",
-   "resumo": "Este decreto abre um crédito adicional de mais de quatro milhões de reais para a Secretaria Municipal de Saúde de Varginha. O dinheiro vem de um saldo positivo (superávit) de recursos do SUS e de transferências estaduais do ano anterior.",
+   "resumo": "Este decreto abre créditos adicionais suplementares para a Secretaria Municipal de Saúde de Varginha, utilizando um superávit financeiro do ano anterior.",
    "pontos_atencao": [
-    "O valor expressivo de R$ 4.298.043,26 adicionado ao orçamento da saúde.",
-    "A origem dos recursos ser um superávit financeiro do exercício anterior, indicando que os fundos não foram totalmente utilizados em 2025.",
-    "A destinação específica para a Secretaria Municipal de Saúde, com foco em atenção básica e gestão hospitalar."
+    "O valor significativo de R$ 4.298.043,26 adicionado ao orçamento da saúde.",
+    "A origem dos recursos ser superávit financeiro do ano anterior, indicando que nem todos os fundos foram utilizados como inicialmente previsto.",
+    "A diversidade de fontes de superávit, incluindo cofinanciamento da atenção primária e política de promoção à saúde."
    ],
    "envolvidos": [],
    "valores": {
@@ -1519,7 +1526,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:06+00:00"
+   "gerado_em": "2026-07-13T18:09:14+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12595de0",
@@ -1533,10 +1540,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "saúde",
-   "resumo": "Este decreto abre um crédito orçamentário adicional de R$ 692.366,00 para a Secretaria Municipal de Saúde de Varginha. O valor será destinado ao Fundo Municipal de Saúde para estruturação da atenção hospitalar.",
+   "resumo": "Este decreto abre um crédito orçamentário adicional de R$ 692.366,00 para a Prefeitura de Varginha, destinado ao Fundo Municipal de Saúde.",
    "pontos_atencao": [
-    "O crédito é coberto por excesso de arrecadação de um recurso específico (transferência estadual para estruturação hospitalar), indicando que o dinheiro já estava vinculado a essa área.",
-    "A movimentação orçamentária visa adequar o orçamento à receita efetivamente recebida, sem criar novas despesas não previstas."
+    "O valor é proveniente de excesso de arrecadação de recursos já destinados à estruturação da atenção hospitalar.",
+    "Trata-se de uma suplementação orçamentária, ou seja, um reforço de verba para uma área já existente."
    ],
    "envolvidos": [],
    "valores": {
@@ -1551,7 +1558,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:00+00:00"
+   "gerado_em": "2026-07-13T18:09:07+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreton12556de2",
@@ -1565,11 +1572,11 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "saúde",
-   "resumo": "Este decreto da Prefeitura de Varginha abre um crédito adicional de R$ 10.583.099,54 para a Secretaria Municipal de Saúde e o Fundo Municipal de Saúde. Os recursos são provenientes de um superávit financeiro de verbas federais e estaduais destinadas à saúde que não foram utilizadas no ano anterior.",
+   "resumo": "Este decreto abre créditos orçamentários adicionais para a Secretaria Municipal de Saúde de Varginha, utilizando um superávit financeiro de mais de dez milhões de reais proveniente de fundos federais e estaduais da saúde.",
    "pontos_atencao": [
-    "Os valores são destinados a áreas específicas da saúde, exigindo acompanhamento para garantir que os recursos cheguem a essas finalidades.",
-    "A origem dos recursos é um superávit financeiro do exercício anterior, indicando que houve verbas federais e estaduais para a saúde que não foram totalmente utilizadas.",
-    "Acompanhar a execução desses novos créditos é crucial para garantir que os fundos sejam utilizados de forma eficiente e eficaz para o benefício da população."
+    "O valor total de R$ 10.583.099,54 é significativo e direcionado exclusivamente à saúde.",
+    "A origem dos recursos é superávit financeiro de fundos específicos da saúde, indicando que os recursos já estavam disponíveis, mas não foram utilizados no exercício anterior.",
+    "A diversidade de programas beneficiados exige atenção para a efetiva aplicação em cada área."
    ],
    "envolvidos": [],
    "valores": {
@@ -1584,7 +1591,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:39:52+00:00"
+   "gerado_em": "2026-07-13T18:08:56+00:00"
   },
   {
    "id": "DIARIO-2026-1839-norma-decreto125263107",
@@ -1598,10 +1605,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "orçamento",
-   "resumo": "Este é o Decreto 12.526 da Prefeitura de Varginha, que faz referência a um valor de 3.107.681,00 e indica um saldo remanescente de 0,00.",
+   "resumo": "Este decreto da Prefeitura de Varginha-MG menciona um valor de R$ 3.107.681,00 e indica que não há saldo remanescente relacionado a ele.",
    "pontos_atencao": [
-    "A ausência de informações sobre a finalidade específica do valor de 3.107.681,00.",
-    "A falta de contexto sobre o que o 'saldo remanescente 0,00' significa para este decreto."
+    "A falta de detalhes sobre a finalidade específica do valor de R$ 3.107.681,00.",
+    "A necessidade de mais informações para entender o contexto e o impacto deste decreto."
    ],
    "envolvidos": [],
    "valores": {
@@ -1616,7 +1623,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:40:12+00:00"
+   "gerado_em": "2026-07-13T18:09:20+00:00"
   },
   {
    "id": "DIARIO-2026-1839-dispensa-dispensadelicita",
@@ -1629,12 +1636,12 @@
    "data": "2026-07-08",
    "categoria": "Diário Oficial",
    "relevancia": "medio",
-   "tema": "contratação",
-   "resumo": "A Prefeitura de Varginha vai contratar diretamente, sem licitação, a empresa FELIPE MONTEIRO NOBRE para realizar serviços externos de moto-fretista.",
+   "tema": "serviços",
+   "resumo": "A Prefeitura de Varginha realizou a contratação direta de Felipe Monteiro Nobre para prestar serviços de moto-fretista.",
    "pontos_atencao": [
-    "A contratação é feita por dispensa de licitação, o que significa que não houve concorrência pública entre empresas.",
+    "A contratação foi feita por dispensa de licitação, sem processo competitivo.",
     "O valor total do contrato é de R$ 50.400,00.",
-    "O beneficiário direto desta contratação é a empresa FELIPE MONTEIRO NOBRE."
+    "O beneficiário é um único prestador de serviços."
    ],
    "envolvidos": [
     {
@@ -1660,7 +1667,7 @@
     "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026150815445760a92014ba67b168ed058e1036f1c4.pdf"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-12T18:42:48+00:00"
+   "gerado_em": "2026-07-13T18:12:10+00:00"
   },
   {
    "id": "DIARIO-2026-1838-pessoal-portarian288de07",

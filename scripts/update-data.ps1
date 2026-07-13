@@ -295,16 +295,19 @@ try {
 
   Push-Location $root
   try {
-    Invoke-AndLog `
-      -Label "Gerando indice de relevancia parlamentar." `
-      -FilePath "npm.cmd" `
-      -Arguments @("run", "data:indice") `
-      -WorkingDirectory $root
-
+    # Monitor primeiro: gera monitoramento_coletas.json. O indice roda por ultimo
+    # porque ele reescreve o manifest com sha256 — precisa capturar TODOS os chunks
+    # ja finalizados (senao o hash do monitoramento_coletas fica divergente).
     Invoke-AndLog `
       -Label "Atualizando painel de monitoramento das coletas." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "data:monitor") `
+      -WorkingDirectory $root
+
+    Invoke-AndLog `
+      -Label "Gerando indice de relevancia parlamentar." `
+      -FilePath "npm.cmd" `
+      -Arguments @("run", "data:indice") `
       -WorkingDirectory $root
 
     $previousChunks = $null

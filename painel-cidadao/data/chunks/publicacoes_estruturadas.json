@@ -1,8 +1,143 @@
 {
- "gerado_em": "2026-07-12T18:37:04+00:00",
+ "gerado_em": "2026-07-13T18:05:52+00:00",
  "fonte": "camara",
- "total": 722,
+ "total": 726,
  "publicacoes": [
+  {
+   "id": "CAMARA-2026-PRES-7",
+   "fonte": "camara",
+   "tipo": "resolucao",
+   "tipo_label": "Projeto de Resolução",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Resolução nº 7/2026",
+   "numero": "7/2026",
+   "data": "2026-07-13",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "legislativo",
+   "resumo": "Este projeto de resolução propõe uma mudança nas regras internas de funcionamento da Câmara Municipal de Varginha.",
+   "o_que_propoe": "",
+   "por_que_acompanhar": [
+    "Para entender como as decisões são tomadas e como os vereadores atuam.",
+    "Para garantir que as regras internas promovam a transparência e a eficiência dos trabalhos legislativos.",
+    "Para verificar se as mudanças impactam a participação popular ou o controle social."
+   ],
+   "pontos_atencao": [
+    "A alteração específica no inciso I do Art. 87 não é detalhada na ementa, dificultando a compreensão de seus impactos.",
+    "Mudanças no Regimento Interno podem influenciar a forma como os trabalhos legislativos são conduzidos, incluindo debates e votações."
+   ],
+   "autor": "Mesa Diretora - MDIR",
+   "situacao": "em tramitação",
+   "ementa": "ALTERA O INCISO I DO ART. 87 DA RESOLUÇÃO Nº 5, DE 28 DE NOVEMBRO DE 2018, QUE INSTITUI O REGIMENTO INTERNO DA CÂMARA MUNICIPAL DE VARGINHA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6078",
+    "inteiro_teor": ""
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "65eb19ffb756518bbf9acf55ea295372f1504d43",
+   "gerado_em": "2026-07-13T18:05:42+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PLOE-43",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Executivo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Executivo nº 43/2026",
+   "numero": "43/2026",
+   "data": "2026-07-13",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "orçamento",
+   "resumo": "Este projeto de lei propõe que a prefeitura de Varginha conceda um auxílio financeiro, chamado subvenção social, a uma entidade específica.",
+   "o_que_propoe": "Na prática, o projeto autoriza o Executivo a transferir recursos financeiros do orçamento municipal para uma organização, com o objetivo de apoiar suas atividades sociais.",
+   "por_que_acompanhar": [
+    "Para saber como o dinheiro dos impostos será utilizado e qual o valor envolvido.",
+    "Para verificar se a entidade beneficiada realmente presta serviços relevantes para a comunidade.",
+    "Para garantir que a concessão da subvenção seja transparente e justificada."
+   ],
+   "pontos_atencao": [
+    "O projeto não especifica o valor exato da subvenção, o que impede a avaliação do impacto orçamentário.",
+    "A entidade beneficiada não é nomeada na ementa, sendo importante verificar quem receberá os recursos.",
+    "A finalidade específica da subvenção não é detalhada, sendo crucial entender o propósito do repasse."
+   ],
+   "autor": "Leonardo Vinhas Ciacci",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE SUBVENÇÃO SOCIAL À ENTIDADE QUE ESPECIFICA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6077",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6077/projetodelei43-2026.pdf"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "0809f9a421a8805c8470b27b3b2313fda089b65e",
+   "gerado_em": "2026-07-13T18:05:36+00:00"
+  },
+  {
+   "id": "CAMARA-2026-MOC-14",
+   "fonte": "camara",
+   "tipo": "mocao",
+   "tipo_label": "Moção",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Moção nº 14/2026",
+   "numero": "14/2026",
+   "data": "2026-07-13",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "homenagem",
+   "resumo": "Esta é uma moção que parabeniza o Sr. Marcelo Rennó por sua carreira profissional e por divulgar o nome de Varginha nacionalmente através de seu trabalho na comunicação.",
+   "o_que_propoe": "",
+   "por_que_acompanhar": [
+    "Compreender como os vereadores utilizam as ferramentas legislativas para reconhecer cidadãos.",
+    "Observar os critérios e a frequência com que homenagens públicas são concedidas."
+   ],
+   "pontos_atencao": [
+    "Não há impacto orçamentário direto ou alteração na legislação municipal."
+   ],
+   "autor": "Ana Rios Fontoura",
+   "situacao": "em tramitação",
+   "ementa": "Moção de Aplauso ao Sr. Marcelo Rennó, em reconhecimento à sua destacada trajetória profissional e por levar o nome do município ao reconhecimento nacional por meio de seu trabalho na comunicação.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6076",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6076/mocao_marcelo_renno_revisada_13-07-26.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "2ed5010781328a02f3690c384c77022267025291",
+   "gerado_em": "2026-07-13T18:05:52+00:00"
+  },
+  {
+   "id": "CAMARA-2026-MOC-13",
+   "fonte": "camara",
+   "tipo": "mocao",
+   "tipo_label": "Moção",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Moção nº 13/2026",
+   "numero": "13/2026",
+   "data": "2026-07-13",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "educação",
+   "resumo": "A Moção nº 13/2026 é uma homenagem aos estudantes da Rede Municipal de Ensino de Varginha-MG que se destacaram na Olimpíada Brasileira de Matemática das Escolas Públicas (OBMEP) de 2025. Ela reconhece as conquistas acadêmicas desses alunos e o nome do município.",
+   "o_que_propoe": "",
+   "por_que_acompanhar": [
+    "Valoriza o desempenho acadêmico e o esforço dos estudantes da rede pública.",
+    "Incentiva a participação em competições educacionais e o desenvolvimento intelectual.",
+    "Promove o reconhecimento positivo do município em âmbito nacional."
+   ],
+   "pontos_atencao": [
+    "Trata-se de um ato simbólico de reconhecimento, sem impacto direto no orçamento municipal.",
+    "Não propõe mudanças em políticas públicas educacionais ou investimentos específicos."
+   ],
+   "autor": "Ana Rios Fontoura",
+   "situacao": "em tramitação",
+   "ementa": "Moção de Aplauso aos estudantes da Rede Municipal de Ensino que se destacaram na Olimpíada Brasileira de Matemática das Escolas Públicas – OBMEP 2025, levando o nome do município ao reconhecimento nacional por meio de suas brilhantes conquistas acadêmicas.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6075",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6075/mocao_olimpiada_de_matematica_municipal1_revisada_13-07-26.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "664232304e823d0f6d44f35168aad87d873743de",
+   "gerado_em": "2026-07-13T18:05:47+00:00"
+  },
   {
    "id": "CAMARA-2026-REQ-178",
    "fonte": "camara",

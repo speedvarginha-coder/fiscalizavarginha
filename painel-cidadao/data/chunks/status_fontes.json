@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-11T18:42:50.897Z",
+  "gerado_em": "2026-07-13T18:12:15.224Z",
   "domains": {
     "atualizado_em": {
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-07-11T17:39:53.000Z",
+      "source_updated_at": "2026-07-13T18:05:23.000Z",
       "age_days": 0,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -36,11 +36,11 @@
     },
     "pncp": {
       "label": "PNCP",
-      "status": "preserved",
+      "status": "partial",
       "source_updated_at": null,
       "age_days": null,
       "max_age_days": 15,
-      "reason": "Metadados indicam preservacao da ultima base valida."
+      "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
     "cnpjs": {
       "label": "CNPJs",
@@ -53,15 +53,15 @@
     "fontes_emendas_2026": {
       "label": "Fontes de emendas 2026",
       "status": "partial",
-      "source_updated_at": "2026-07-11T17:35:57.000Z",
-      "age_days": 0,
+      "source_updated_at": "2026-07-11T12:34:55.000Z",
+      "age_days": 2.2,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
     "indice_relevancia": {
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-07-11T17:40:34.340Z",
+      "source_updated_at": "2026-07-13T18:12:12.585Z",
       "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
@@ -70,7 +70,7 @@
       "label": "Diario Oficial",
       "status": "ok",
       "source_updated_at": "2026-07-10T18:05:47.000Z",
-      "age_days": 1,
+      "age_days": 3,
       "max_age_days": 5,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -85,18 +85,18 @@
     "publicacoes_estruturadas": {
       "label": "Publicacoes da Camara",
       "status": "preserved",
-      "source_updated_at": "2026-07-11T17:40:01.000Z",
+      "source_updated_at": "2026-07-13T18:05:52.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam preservacao da ultima base valida."
     },
     "publicacoes_diario": {
       "label": "Publicacoes do Diario",
-      "status": "ok",
-      "source_updated_at": "2026-07-11T17:40:02.000Z",
+      "status": "partial",
+      "source_updated_at": "2026-07-13T18:12:10.000Z",
       "age_days": 0,
       "max_age_days": 7,
-      "reason": "Timestamp interno dentro da janela esperada."
+      "reason": "Metadados indicam cobertura parcial."
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6160581.55,
-  "total_externo_anterior": 8404647.51,
+  "total_externo_atual": 6208730.73,
+  "total_externo_anterior": 8406675.93,
   "empenhos_qtd": 3080,
   "top_fornecedores_atual": [
     {
@@ -57,8 +57,8 @@
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 109881.38,
-      "qtd": 10
+      "valor_total": 158030.56,
+      "qtd": 20
     },
     {
       "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
@@ -144,8 +144,8 @@
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 291437.51,
-      "qtd": 39
+      "valor_total": 289865.93,
+      "qtd": 38
     },
     {
       "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",

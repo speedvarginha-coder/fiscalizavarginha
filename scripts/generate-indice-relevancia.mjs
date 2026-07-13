@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import crypto from "node:crypto";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -268,9 +269,11 @@ function atualizarManifest() {
 
   for (const name of names) {
     const file = path.join(chunksDir, `${name}.json`);
+    const content = fs.readFileSync(file);
     manifest.chunks[name] = {
       arquivo: `data/chunks/${name}.json`,
-      bytes: fs.statSync(file).size,
+      bytes: content.length,
+      sha256: crypto.createHash("sha256").update(content).digest("hex"),
     };
   }
 
