@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Gera data/emendas_municipais_atuais.js a partir da coleta da Câmara.
+"""Gera a base municipal única exibida no portal de emendas.
 
-Fonte: ../data/chunks/emendas.json (emendas impositivas propostas em 2025
-pela 20ª Legislatura, coletadas do SAPL/Câmara). O portal de emendas só
-tinha o lote da legislatura anterior (PDFs de execução, anoEmenda 2024);
-este script publica o lote atual no schema do portal, sem tocar nos
-arquivos gerados pelos outros coletores.
+Escopo publicado:
+* histórico da 19ª legislatura: publicidade oficial Betha, até 2024;
+* 20ª legislatura em diante: coleta estruturada do SAPL/Câmara.
 
-Reprodutível: rode de novo sempre que a coleta atualizar o chunk.
-    python gerar_municipais_atuais.py
+A fonte Betha continua preservada em ``data/emendas.js``. Ela não é carregada
+diretamente pela interface para evitar dupla contagem com o SAPL. A união usa
+o número e o ano da emenda como chave, com preferência para o SAPL no período
+atual.
 """
 from __future__ import annotations
 
@@ -22,8 +22,9 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 CHUNK = HERE.parent / "data" / "chunks" / "emendas.json"
-BASE_VELHA = HERE / "data" / "emendas.js"
-SAIDA = HERE / "data" / "emendas_municipais_atuais.js"
+BASE_LEGADA = HERE / "data" / "emendas.js"
+SAIDA = HERE / "data" / "emendas_municipais_unificadas.js"
+ANO_INICIO_SAPL = 2025
 
 try:
     sys.stdout.reconfigure(encoding="utf-8")
@@ -31,205 +32,230 @@ except Exception:
     pass
 
 
-def normalize(value) -> str:
-    """Espelha o normalize() do app.js (NFD, sem acentos, minúsculas)."""
-    s = unicodedata.normalize("NFD", str(value or ""))
-    return "".join(c for c in s if not unicodedata.combining(c)).lower()
+def normalize(value: object) -> str:
+    texto = unicodedata.normalize("NFD", str(value or ""))
+    return "".join(char for char in texto if not unicodedata.combining(char)).lower().strip()
 
 
-def valor_texto(v: float) -> str:
-    return f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+def valor_texto(valor: float) -> str:
+    return f"{valor:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
-def centavos(value) -> int:
+def centavos(value: object) -> int:
     try:
         return int((Decimal(str(value or 0)) * 100).quantize(Decimal("1"), ROUND_HALF_UP))
-    except (InvalidOperation, ValueError):
-        raise ValueError(f"valor inválido: {value!r}")
+    except (InvalidOperation, ValueError) as exc:
+        raise ValueError(f"valor inválido: {value!r}") from exc
 
 
-def somente_digitos(value) -> str:
+def somente_digitos(value: object) -> str:
     return re.sub(r"\D", "", str(value or ""))
 
 
-def cnpj_valido(value) -> bool:
+def cnpj_valido(value: object) -> bool:
     digits = somente_digitos(value)
     if len(digits) != 14 or digits == digits[0] * 14:
         return False
     for tamanho in (12, 13):
         trecho = digits[:tamanho]
         pesos = list(range(tamanho - 7, 1, -1)) + list(range(9, 1, -1))
-        resto = sum(int(n) * p for n, p in zip(trecho, pesos)) % 11
+        resto = sum(int(numero) * peso for numero, peso in zip(trecho, pesos)) % 11
         digito = 0 if resto < 2 else 11 - resto
         if int(digits[tamanho]) != digito:
             return False
     return True
 
 
-def fonte_pdf(registro: dict) -> str:
-    url = str(registro.get("pdf") or registro.get("arquivoUrl") or "").strip()
-    if url:
-        return normalize(url)
-    fontes = registro.get("fontes") or []
-    if fontes and isinstance(fontes[0], dict):
-        return normalize(fontes[0].get("arquivoUrl") or fontes[0].get("arquivo"))
-    return ""
+def ler_js(caminho: Path) -> dict:
+    texto = caminho.read_text(encoding="utf-8")
+    inicio = texto.find("{")
+    if inicio < 0:
+        raise ValueError(f"JSON não encontrado em {caminho}")
+    valor, _ = json.JSONDecoder().raw_decode(texto[inicio:])
+    return valor
 
 
-def chave_forte(registro: dict) -> tuple:
-    numero_ano = str(registro.get("emenda") or "").strip()
-    if not numero_ano:
-        numero = str(registro.get("numero") or "").strip()
-        ano = str(registro.get("ano") or registro.get("anoEmenda") or "").strip()
-        numero_ano = f"{numero.zfill(3)}/{ano}"
-    return (
-        numero_ano,
-        normalize(registro.get("autor")),
-        normalize(registro.get("beneficiario")),
-        somente_digitos(registro.get("cnpj") or registro.get("documentoBeneficiario")),
-        normalize(registro.get("objeto")),
-        centavos(registro.get("valor_brl") if "valor_brl" in registro else registro.get("valor")),
-        fonte_pdf(registro),
-    )
+def ano_da_emenda(registro: dict) -> int | None:
+    valor = str(registro.get("anoEmenda") or registro.get("ano") or "").strip()
+    match = re.search(r"\b(20\d{2})\b", valor)
+    return int(match.group(1)) if match else None
 
 
-def chaves_base_velha() -> set:
-    """Chaves completas; coincidência de número/ano/valor não exclui registro."""
-    if not BASE_VELHA.exists():
-        return set()
-    txt = BASE_VELHA.read_text(encoding="utf-8")
-    data, _ = json.JSONDecoder().raw_decode(txt[txt.find("{"):])
-    chaves = set()
-    for r in data.get("emendas", []):
-        if r.get("tipo") != "Municipal":
-            continue
-        chaves.add(chave_forte(r))
-    return chaves
+def chave_emenda(registro: dict) -> tuple[str, str]:
+    texto = str(registro.get("emendaOriginal") or registro.get("emenda") or "")
+    match = re.search(r"(\d{1,4})\s*/\s*(20\d{2})", texto)
+    if match:
+        return match.group(1).zfill(3), match.group(2)
+    ano = ano_da_emenda(registro)
+    numero = str(registro.get("numero") or texto).strip()
+    return normalize(numero), str(ano or "")
+
+
+def status_cnpj(valor: object) -> str:
+    if not somente_digitos(valor):
+        return "ausente"
+    return "valido" if cnpj_valido(valor) else "invalido"
+
+
+def transformar_historico(registro: dict) -> dict:
+    """Conserva a evidência Betha, sem tratá-la como pagamento."""
+    item = dict(registro)
+    ano = ano_da_emenda(registro)
+    valor = centavos(registro.get("valor")) / 100
+    cnpj_status = status_cnpj(registro.get("documentoBeneficiario") or registro.get("cnpj"))
+    pdf = str(registro.get("arquivoUrl") or registro.get("arquivo") or "").strip()
+    numero, ano_chave = chave_emenda(registro)
+    emenda_canonica = f"{numero}/{ano_chave}" if numero.isdigit() and ano_chave else str(registro.get("emenda") or "")
+    item.update({
+        "id": f"MUN-HIST-{registro.get('id') or '-'.join(chave_emenda(registro))}",
+        "tipo": "Municipal",
+        "ano": str(ano),
+        "anoEmenda": str(ano),
+        "anosRelacionados": [str(ano)],
+        "emenda": emenda_canonica,
+        "emendaOriginal": str(registro.get("emendaOriginal") or registro.get("emenda") or emenda_canonica),
+        "valor": valor,
+        "valorIndicado": valor,
+        "valorTexto": valor_texto(valor),
+        "estagio": "indicação/proposta histórica",
+        "statusFinanceiro": "Valor histórico publicado; não comprova pagamento ou recebimento.",
+        "classificacaoComprovacao": "Inferido",
+        "origemMunicipal": "historico_betha",
+        "cnpjStatus": cnpj_status,
+        "pdfStatus": "disponivel" if pdf else "ausente",
+        "proveniencia": {
+            "fonte": "Publicidade de emendas da Prefeitura (Betha)",
+            "camada": "histórico municipal",
+            "criterio": "registro publicado na fonte oficial; estágio financeiro não inferido",
+        },
+    })
+    item["textoBusca"] = normalize(" ".join(str(valor or "") for valor in (
+        item.get("emenda"), item.get("autor"), item.get("beneficiario"),
+        item.get("documentoBeneficiario"), item.get("objeto"), item.get("anoEmenda"), "municipal histórico Betha",
+    )))
+    return item
+
+
+def transformar_sapl(registro: dict) -> dict:
+    ano = str(registro.get("ano") or "").strip()
+    numero = str(registro.get("numero") or "").strip()
+    if not ano or not numero:
+        raise ValueError("registro SAPL sem número ou ano")
+    valor = centavos(registro.get("valor_brl")) / 100
+    autor = str(registro.get("autor") or "").strip()
+    beneficiario = str(registro.get("beneficiario") or "").strip()
+    cnpj = str(registro.get("cnpj") or "").strip()
+    objeto = str(registro.get("objeto") or "").strip()
+    pdf = str(registro.get("pdf") or "").strip()
+    autores = [nome.strip() for nome in autor.split(",") if nome.strip()]
+    cnpj_status = status_cnpj(cnpj)
+    confianca = "alta" if cnpj_status == "valido" and pdf and all((autor, beneficiario, objeto, valor)) else "media"
+    emenda = f"{numero.zfill(3)}/{ano}"
+    item = {
+        "id": f"MUN-SAPL-{ano}-{numero.zfill(3)}",
+        "tipo": "Municipal",
+        "ano": ano,
+        "anoEmenda": ano,
+        "anosRelacionados": [ano],
+        "emenda": emenda,
+        "emendaOriginal": emenda,
+        "autor": autor,
+        "partido": "",
+        "valor": valor,
+        "valorIndicado": valor,
+        "valorTexto": valor_texto(valor),
+        "beneficiario": beneficiario,
+        "documentoBeneficiario": cnpj,
+        "orgao": beneficiario,
+        "objeto": objeto,
+        "descricao": objeto,
+        "estagio": "indicação/proposta",
+        "statusFinanceiro": "Indicação/proposta da Câmara; não comprova pagamento ou recebimento.",
+        "classificacaoComprovacao": "Inferido",
+        "aprovado": "",
+        "autoria": {"tipo": "individual" if len(autores) == 1 else "coautoria", "autores": autores},
+        "emendaIndividual": "Sim" if len(autores) == 1 else "Não",
+        "cnpjStatus": cnpj_status,
+        "pdfStatus": "disponivel" if pdf else "ausente",
+        "confianca": confianca,
+        "origemMunicipal": "sapl_camara",
+        "proveniencia": {
+            "fonte": "SAPL/Câmara Municipal de Varginha",
+            "chunk": "data/chunks/emendas.json",
+            "pdf": pdf or None,
+            "campos": "ementa e metadados da matéria legislativa",
+        },
+        "fontes": ["Câmara Municipal de Varginha (SAPL)"],
+        "arquivo": pdf.rsplit("/", 1)[-1] if pdf else "",
+        "arquivoUrl": pdf,
+    }
+    item["textoBusca"] = normalize(" ".join(str(valor or "") for valor in (
+        emenda, autor, beneficiario, cnpj, objeto, ano, "municipal SAPL Câmara",
+    )))
+    return item
 
 
 def main() -> int:
-    if not CHUNK.exists():
-        print(f"❌ Chunk não encontrado: {CHUNK}")
+    if not CHUNK.exists() or not BASE_LEGADA.exists():
+        print("ERRO: fonte municipal ausente; saída preservada")
         return 1
 
-    regs = json.loads(CHUNK.read_text(encoding="utf-8"))
-    if isinstance(regs, dict):
-        regs = regs.get("emendas") or regs.get("registros") or []
-    if not isinstance(regs, list) or not regs:
-        print("ERRO: chunk vazio ou em formato inesperado; saída preservada")
+    chunk = json.loads(CHUNK.read_text(encoding="utf-8"))
+    sapl_bruto = chunk.get("emendas") if isinstance(chunk, dict) else chunk
+    legado = ler_js(BASE_LEGADA).get("emendas", [])
+    if not isinstance(sapl_bruto, list) or not sapl_bruto:
+        print("ERRO: coleta SAPL vazia ou em formato inesperado; saída preservada")
         return 1
 
-    ja_publicadas = chaves_base_velha()
-    puladas = 0
-    emendas = []
-    vistas = set()
-    for r in regs:
-        ano = str(r.get("ano") or "").strip()
-        numero = str(r.get("numero") or "").strip()
-        autor = str(r.get("autor") or "").strip()
-        valor_centavos = centavos(r.get("valor_brl"))
-        valor = valor_centavos / 100
-        beneficiario = str(r.get("beneficiario") or "").strip()
-        cnpj = str(r.get("cnpj") or "").strip()
-        objeto = str(r.get("objeto") or "").strip()
-        pdf = str(r.get("pdf") or "").strip()
-        if not ano or not numero:
-            print("ERRO: registro SAPL sem número/ano; saída preservada")
-            return 1
-
-        emenda_num = f"{numero.zfill(3)}/{ano}"
-        chave = chave_forte(r)
-        if chave in vistas:
-            puladas += 1
-            continue
-        vistas.add(chave)
-        if chave in ja_publicadas:
-            puladas += 1
-            continue
-        autores = [nome.strip() for nome in autor.split(",") if nome.strip()]
-        status_cnpj = "valido" if cnpj_valido(cnpj) else ("invalido" if cnpj else "ausente")
-        status_pdf = "disponivel" if pdf else "ausente"
-        confianca = "alta" if status_cnpj == "valido" and pdf and all(
-            (autor, beneficiario, objeto, valor_centavos)
-        ) else "media"
-        registro = {
-            "id": f"MUN-{ano}-{numero.zfill(3)}",
-            "tipo": "Municipal",
-            "ano": ano,
-            "anoEmenda": ano,
-            "anosRelacionados": [ano],
-            "emenda": emenda_num,
-            "emendaOriginal": emenda_num,
-            "autor": autor,
-            "partido": "",
-            "valor": valor,
-            "valorTexto": valor_texto(valor),
-            "beneficiario": beneficiario,
-            "documentoBeneficiario": cnpj,
-            "orgao": beneficiario,
-            "objeto": objeto,
-            "descricao": objeto,
-            "estagio": "indicada/proposta",
-            "financeiro": {"indicado": valor, "pago": None, "recebido": None},
-            "aprovado": "",
-            "autoria": {"tipo": "individual" if len(autores) == 1 else "coautoria", "autores": autores},
-            "emendaIndividual": "Sim" if len(autores) == 1 else "Não",
-            "cnpjStatus": status_cnpj,
-            "pdfStatus": status_pdf,
-            "confianca": confianca,
-            "proveniencia": {
-                "fonte": "SAPL/Câmara Municipal de Varginha",
-                "chunk": "data/chunks/emendas.json",
-                "pdf": pdf or None,
-                "campos": "ementa e metadados da matéria legislativa",
-            },
-            "fontes": ["Câmara Municipal de Varginha (SAPL)"],
-            "arquivo": pdf.rsplit("/", 1)[-1] if pdf else "",
-            "arquivoUrl": pdf,
-        }
-        registro["textoBusca"] = normalize(
-            " ".join(
-                str(x)
-                for x in (
-                    emenda_num, autor, beneficiario, cnpj, objeto, ano, "municipal",
-                )
-            )
-        )
-        emendas.append(registro)
-
-    if len(emendas) + puladas != len(regs):
-        print("ERRO: nem todos os registros do chunk foram contabilizados; saída preservada")
+    sapl = [transformar_sapl(registro) for registro in sapl_bruto]
+    chaves_sapl = [chave_emenda(registro) for registro in sapl]
+    if len(chaves_sapl) != len(set(chaves_sapl)):
+        print("ERRO: há duplicatas por número/ano na coleta SAPL; saída preservada")
         return 1
-    if len(regs) == 357 and len(emendas) != 357:
-        print(f"ERRO: chunk atual tem 357 registros, mas {len(emendas)} seriam publicados; saída preservada")
+
+    legado_municipal = [registro for registro in legado if registro.get("tipo") == "Municipal"]
+    historico_bruto = [registro for registro in legado_municipal if (ano_da_emenda(registro) or 0) < ANO_INICIO_SAPL]
+    legados_atuais = [registro for registro in legado_municipal if (ano_da_emenda(registro) or 0) >= ANO_INICIO_SAPL]
+    chaves_historico = [chave_emenda(registro) for registro in historico_bruto]
+    if len(chaves_historico) != len(set(chaves_historico)):
+        print("ERRO: há duplicatas por número/ano no histórico Betha; saída preservada")
+        return 1
+
+    duplicatas_legado_sapl = sum(chave_emenda(registro) in set(chaves_sapl) for registro in legados_atuais)
+    historico = [transformar_historico(registro) for registro in historico_bruto]
+    emendas = historico + sapl
+    chaves_publicadas = [chave_emenda(registro) for registro in emendas]
+    if len(chaves_publicadas) != len(set(chaves_publicadas)):
+        print("ERRO: união municipal contém duplicatas por número/ano; saída preservada")
         return 1
 
     payload = {
         "metadata": {
             "geradoEm": datetime.now(timezone.utc).isoformat(),
-            "fonte": "data/chunks/emendas.json (coleta SAPL/Câmara)",
-            "legislatura": "20ª (2025-2028)",
+            "fonte": "Histórico Betha (até 2024) + SAPL/Câmara (2025 em diante)",
+            "criterioDeduplicacao": "número/ano da emenda; SAPL é canônico a partir de 2025",
             "totalRegistros": len(emendas),
-            "valorTotal": round(sum(e["valor"] for e in emendas), 2),
+            "registrosHistoricosBetha": len(historico),
+            "registrosSapl": len(sapl),
+            "registrosLegadoForaDoEscopo": len(legados_atuais),
+            "duplicatasLegadoSapl": duplicatas_legado_sapl,
+            "valorIndicadoTotal": round(sum(registro["valorIndicado"] for registro in emendas), 2),
             "qualidade": {
-                "cnpjValido": sum(e["cnpjStatus"] == "valido" for e in emendas),
-                "cnpjInvalido": sum(e["cnpjStatus"] == "invalido" for e in emendas),
-                "cnpjAusente": sum(e["cnpjStatus"] == "ausente" for e in emendas),
-                "pdfAusente": sum(e["pdfStatus"] == "ausente" for e in emendas),
+                "cnpjValido": sum(registro.get("cnpjStatus") == "valido" for registro in sapl),
+                "cnpjInvalido": sum(registro.get("cnpjStatus") == "invalido" for registro in sapl),
+                "cnpjAusente": sum(registro.get("cnpjStatus") == "ausente" for registro in sapl),
+                "pdfAusente": sum(registro.get("pdfStatus") == "ausente" for registro in sapl),
             },
         },
         "emendas": emendas,
     }
-
     SAIDA.write_text(
-        "window.EMENDAS_MUNICIPAIS_ATUAIS = "
-        + json.dumps(payload, ensure_ascii=False, indent=1)
-        + ";\n",
+        "window.EMENDAS_MUNICIPAIS_UNIFICADAS = " + json.dumps(payload, ensure_ascii=False, indent=1) + ";\n",
         encoding="utf-8",
     )
-    print(f"✅ {len(emendas)} emendas municipais (legislatura atual) → {SAIDA.name}")
-    print(f"   Valor total: R$ {valor_texto(payload['metadata']['valorTotal'])}")
-    print(f"   Dedup: {puladas} já publicadas na base de execução (emendas.js) — puladas")
+    print(f"OK: {len(historico)} históricas + {len(sapl)} SAPL = {len(emendas)} municipais")
+    print(f"Deduplicação: {duplicatas_legado_sapl} legadas de 2025 já cobertas pelo SAPL")
+    print(f"Valor indicado: R$ {valor_texto(payload['metadata']['valorIndicadoTotal'])}")
     return 0
 
 

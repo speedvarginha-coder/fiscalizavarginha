@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monitoramento das coletas | Fiscaliza Varginha</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .monitor-wrap{max-width:1100px;margin:0 auto;padding:36px 18px}.monitor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.monitor-card{background:#fff;border:1px solid #d8e0e7;border-radius:12px;padding:16px}.monitor-card h2{margin:0 0 6px;font-size:1rem}.monitor-card p{margin:6px 0;color:#4b5563}.monitor-table{width:100%;border-collapse:collapse;background:#fff}.monitor-table th,.monitor-table td{padding:12px;border-bottom:1px solid #e5e7eb;text-align:left}.status{display:inline-block;border-radius:999px;padding:3px 8px;font-size:.8rem;font-weight:700}.status-ok{background:#dcfce7;color:#166534}.status-partial,.status-manual,.status-preserved{background:#fef3c7;color:#92400e}.status-failed{background:#fee2e2;color:#991b1b}.status-unknown{background:#e5e7eb;color:#374151}.muted{color:#6b7280}
+  </style>
+</head>
+<body>
+  <main class="monitor-wrap">
+    <p><a href="index.html">← Voltar ao painel</a></p>
+    <h1>Monitoramento das coletas</h1>
+    <p class="muted">Este painel mostra a situação declarada pelas fontes e a última execução concluída. “Parcial” ou “manual” não é falha silenciosa: indica que a fonte precisa de conferência antes de conclusões públicas.</p>
+    <div id="summary" class="monitor-grid" aria-live="polite"></div>
+    <h2>Fontes monitoradas</h2>
+    <div style="overflow:auto"><table class="monitor-table"><thead><tr><th>Fonte</th><th>Situação</th><th>Atualização</th><th>Observação</th></tr></thead><tbody id="sources"></tbody></table></div>
+  </main>
+  <script>
+    const text = (value) => String(value ?? "Não informado");
+    const safe = (value) => text(value).replace(/[&<>"]|'/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[char]);
+    const formatDate = (value) => value ? new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" }).format(new Date(value)) : "Não informada";
+    fetch("data/chunks/monitoramento_coletas.json", { cache: "no-store" }).then((response) => response.json()).then((data) => {
+      const run = data.last_completed_run;
+      document.querySelector("#summary").innerHTML = [
+        ["Última coleta concluída", run ? text(run.coleta) : "Sem registro"],
+        ["Último deploy", run ? text(run.deploy) : "Sem registro"],
+        ["Fontes em alerta", (data.summary.by_status.partial || 0) + (data.summary.by_status.failed || 0)],
+      ].map(([title, value]) => `<article class="monitor-card"><h2>${safe(title)}</h2><p>${safe(value)}</p></article>`).join("");
+      document.querySelector("#sources").innerHTML = data.sources.map((source) => `<tr><td>${safe(source.label)}</td><td><span class="status status-${safe(source.status)}">${safe(source.status)}</span></td><td>${safe(formatDate(source.source_updated_at))}</td><td>${safe(source.reason)}</td></tr>`).join("");
+    }).catch(() => { document.querySelector("#summary").textContent = "Não foi possível carregar o monitoramento."; });
+  </script>
+</body>
+</html>

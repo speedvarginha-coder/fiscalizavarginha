@@ -11,7 +11,7 @@ Enriquecimento (opcional, precisa token em ../../private/tokens/.portal-transpar
 Uso:  python coletor_emendas_federais.py
 Gera data/emendas_federais.js (itemizado: 1 registro por favorecido) + resumoTipos.
 """
-import json, io, os, csv, time, zipfile, tempfile, urllib.request, urllib.parse, urllib.error, unicodedata
+import json, io, os, csv, time, random, zipfile, tempfile, urllib.request, urllib.parse, urllib.error, unicodedata
 from numbers import Real
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -22,6 +22,27 @@ API = "https://api.portaldatransparencia.gov.br/api-de-dados/"
 IBGE_VARGINHA = "3170701"
 
 CONSULTA = "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha"
+
+RETRYABLE_HTTP = {429, 500, 502, 503, 504}
+
+def cgu_json(req, context, attempts=4):
+    """GET com backoff exponencial para documentos da API CGU."""
+    last_error = None
+    for attempt in range(attempts):
+        try:
+            return json.loads(urllib.request.urlopen(req, timeout=45).read())
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in RETRYABLE_HTTP or attempt == attempts - 1:
+                raise
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            last_error = exc
+            if attempt == attempts - 1:
+                raise
+        delay = min(20.0, 1.5 * (2 ** attempt)) + random.uniform(0, 0.5)
+        print(f"  {context}: nova tentativa CGU em {delay:.1f}s ({attempt + 1}/{attempts})")
+        time.sleep(delay)
+    raise last_error or RuntimeError("falha CGU sem detalhe")
 
 def money(s):
     if isinstance(s, Real) and not isinstance(s, bool): return float(s)
@@ -209,7 +230,7 @@ def enriquecer_pix(regs, tok):
             while True:
                 u = API + f"emendas/documentos/{e['emenda']}?" + urllib.parse.urlencode({"pagina": pag})
                 req = urllib.request.Request(u, headers={"chave-api-dados": tok, "Accept": "application/json"})
-                lote = json.loads(urllib.request.urlopen(req, timeout=45).read())
+                lote = cgu_json(req, f"documentos da emenda {e['emenda']}")
                 if not lote: break
                 docs += lote
                 if len(lote) < 15: break
@@ -311,6 +332,10 @@ def cruzar_betha(regs):
                 "orgao": benef, "localidade": "VARGINHA",
                 "objeto": obj, "aprovado": b.get("aprovado", ""),
                 "emendaIndividual": "Sim", "somenteNoBetha": True, "dadosBetha": db,
+                "granularidade": "referencia_betha_sem_repasse",
+                "identificador_repasse_confirmado": False,
+                "contabilizado_como_repasse_individual": False,
+                "classificacaoComprovacao": "Parcial",
                 "descricao": f"Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: {b.get('beneficiario','')}.",
                 "textoBusca": " ".join(str(x).lower() for x in ["federal betha pendente", b.get("emenda",""), b.get("beneficiario",""), b.get("objeto","")]),
                 "anosRelacionados": [ano] if ano else [],

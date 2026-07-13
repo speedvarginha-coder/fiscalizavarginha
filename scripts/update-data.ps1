@@ -282,6 +282,12 @@ try {
   }
 
   Invoke-AndLog `
+    -Label "Normalizando taxonomia e evidências das emendas federais." `
+    -FilePath "python" `
+    -Arguments @("-u", "normalizar_emendas_federais.py") `
+    -WorkingDirectory (Join-Path $painel "emendas")
+
+  Invoke-AndLog `
     -Label "Auditando consistencia das emendas parlamentares." `
     -FilePath "python" `
     -Arguments @("-u", "audit_emendas.py") `
@@ -293,6 +299,12 @@ try {
       -Label "Gerando indice de relevancia parlamentar." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "data:indice") `
+      -WorkingDirectory $root
+
+    Invoke-AndLog `
+      -Label "Atualizando painel de monitoramento das coletas." `
+      -FilePath "npm.cmd" `
+      -Arguments @("run", "data:monitor") `
       -WorkingDirectory $root
 
     $previousChunks = $null

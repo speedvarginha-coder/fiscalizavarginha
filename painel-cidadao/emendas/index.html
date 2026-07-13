@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Emendas municipais, estaduais e federais · Fiscaliza Varginha</title>
-    <meta name="description" content="Consulta de emendas municipais, estaduais e federais destinadas a Varginha-MG: quem recebeu, valor, objeto e situação." />
+    <meta name="description" content="Consulta de emendas municipais, estaduais e federais destinadas a Varginha-MG: beneficiário informado, estágios financeiros, objeto e fontes." />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css?v=20260708" />
   </head>
@@ -82,7 +82,7 @@
       <section class="filters" aria-label="Filtros de consulta">
         <div class="citizen-guide">
           <strong>Para conferir uma emenda, olhe nesta ordem:</strong>
-          <span><strong>Indicação não é pagamento.</strong> Confira o estágio, quem recebeu, o objeto e a comprovação na fonte oficial.</span>
+          <span><strong>Indicação não é pagamento.</strong> Confira o estágio, o beneficiário informado, o objeto e a comprovação na fonte oficial.</span>
         </div>
 
         <div class="search-row">
@@ -166,7 +166,7 @@
             </select>
           </label>
           <label class="field">
-            <span>Quem recebeu</span>
+            <span>Beneficiário informado</span>
             <input id="beneficiaryFilter" list="beneficiaryOptions" type="search" placeholder="Digite parte do nome" autocomplete="off" />
             <datalist id="beneficiaryOptions"></datalist>
           </label>
@@ -188,7 +188,7 @@
               <option value="valor-desc">Maior valor</option>
               <option value="valor-asc">Menor valor</option>
               <option value="tipo">Tipo</option>
-              <option value="beneficiario">Quem recebeu</option>
+              <option value="beneficiario">Beneficiário informado</option>
               <option value="ano-desc">Ano mais recente</option>
               <option value="data-desc">Data do recurso</option>
             </select>
@@ -221,6 +221,20 @@
       </section>
 
       <section class="insights" aria-label="Visões resumidas">
+        <div class="panel wide-panel" style="padding: 12px 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <strong>Estágio usado nos rankings, gráficos e filtros de valor</strong>
+          <label class="field" style="margin-left: auto; min-width: 240px;">
+            <span>Comparar por</span>
+            <select id="rankingStage">
+              <option value="indicado">Indicado</option>
+              <option value="empenhado">Empenhado</option>
+              <option value="pago">Pago / transferido</option>
+              <option value="recebido">Recebido confirmado</option>
+              <option value="executado">Executado</option>
+            </select>
+          </label>
+          <span class="muted" style="font-size: .88em;">Registros sem valor no estágio escolhido ficam fora das somas.</span>
+        </div>
         <article class="panel">
           <div class="panel-title">
             <h2>Por tipo</h2>
@@ -237,15 +251,15 @@
         </article>
         <article class="panel">
           <div class="panel-title">
-            <h2>Quem mais recebeu</h2>
-            <span id="recipientTotal">por valor</span>
+            <h2>Por beneficiário</h2>
+            <span id="recipientTotal">por estágio</span>
           </div>
           <div id="recipientRanking" class="ranking-list"></div>
         </article>
         <article class="panel">
           <div class="panel-title">
-            <h2>Ranking das associações</h2>
-            <span id="associationTotal">por valor</span>
+            <h2>Associações por beneficiário</h2>
+            <span id="associationTotal">por estágio</span>
           </div>
           <div id="associationRanking" class="ranking-list"></div>
         </article>
@@ -346,7 +360,7 @@
         </div>
         <aside class="pdf-guide" aria-label="Como conferir na fonte oficial">
           <strong>Como conferir na fonte oficial:</strong>
-          o botão "Ver na fonte oficial" abre o portal de transparência da esfera correspondente (Câmara para municipais; Portal Betha para estaduais e federais). Lá, use Ctrl+F e procure pelo número da emenda ou pelo nome de quem recebeu para confirmar o valor e o objeto.
+          o botão "Ver na fonte oficial" abre o portal de transparência da esfera correspondente (Câmara para municipais; Portal Betha para estaduais e federais). Lá, use Ctrl+F e procure pelo número da emenda ou pelo beneficiário informado para conferir documentos, valores e estágios.
         </aside>
         <div id="results" class="results" aria-live="polite" aria-busy="false"></div>
       </section>
@@ -355,8 +369,8 @@
         <h2>Entenda os termos</h2>
         <dl>
           <div>
-            <dt>Quem recebeu</dt>
-            <dd>Quem recebe ou executa o recurso informado no relatório.</dd>
+            <dt>Beneficiário informado</dt>
+            <dd>Órgão ou entidade citado na fonte. Isso não prova, sozinho, que houve pagamento ou recebimento.</dd>
           </div>
           <div>
             <dt>Objeto</dt>
@@ -424,10 +438,10 @@
       <div class="site-footer__bottom">Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</div>
     </footer>
 
-    <script src="data/emendas.js?v=20260708a"></script>
-    <script src="data/emendas_estaduais_normalizadas.js?v=20260711"></script>
-    <script src="data/emendas_municipais_atuais.js?v=20260708a"></script>
-    <script src="data/emendas_federais.js?v=20260708a"></script>
-    <script src="app.js?v=20260708a"></script>
+    <script src="data/emendas.js?v=20260711b"></script>
+    <script src="data/emendas_estaduais_normalizadas.js?v=20260711b"></script>
+    <script src="data/emendas_municipais_unificadas.js?v=20260711b"></script>
+    <script src="data/emendas_federais.js?v=20260711b"></script>
+    <script src="app.js?v=20260711b"></script>
   </body>
 </html>

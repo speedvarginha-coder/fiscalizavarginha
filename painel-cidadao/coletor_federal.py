@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import random
 import time
 import urllib.error
 import urllib.parse
@@ -149,6 +150,30 @@ def _load_token() -> str:
     )
 
 
+RETRYABLE_HTTP = {429, 500, 502, 503, 504}
+
+
+def _cgu_json(req: urllib.request.Request, timeout: int, context: str, attempts: int = 4):
+    """Busca CGU com backoff exponencial para falhas transitórias."""
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                return json.loads(response.read())
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in RETRYABLE_HTTP or attempt == attempts - 1:
+                raise
+        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+            last_error = exc
+            if attempt == attempts - 1:
+                raise
+        delay = min(20.0, 1.5 * (2 ** attempt)) + random.uniform(0, 0.5)
+        print(f"  ! CGU instável em {context}; nova tentativa em {delay:.1f}s ({attempt + 1}/{attempts})")
+        time.sleep(delay)
+    raise last_error or RuntimeError(f"falha CGU sem detalhe em {context}")
+
+
 def _api_get(path: str, params: dict, token: str, timeout: int = 30, max_pages: int = 50) -> tuple[list[dict], bool, str]:
     """GET paginado na API CGU. Retorna todos os registros."""
     out: list[dict] = []
@@ -162,15 +187,14 @@ def _api_get(path: str, params: dict, token: str, timeout: int = 30, max_pages: 
             "User-Agent": "FiscalizaVarginha/2.0",
         })
         try:
-            with urllib.request.urlopen(req, timeout=timeout) as r:
-                data = json.loads(r.read())
-                if not isinstance(data, list) or not data:
-                    break
-                out.extend(data)
-                if len(data) < 15:
-                    break  # última página (a API CGU retorna 15 registros por página)
-                pagina += 1
-                time.sleep(0.3)  # respeita rate-limit da CGU
+            data = _cgu_json(req, timeout, f"{path} página {pagina}")
+            if not isinstance(data, list) or not data:
+                break
+            out.extend(data)
+            if len(data) < 15:
+                break  # última página (a API CGU retorna 15 registros por página)
+            pagina += 1
+            time.sleep(0.3)  # respeita rate-limit da CGU
         except urllib.error.HTTPError as e:
             print(f"  ! HTTP {e.code} em {path}: {e.reason}")
             return out, False, f"HTTP {e.code}: {e.reason}"

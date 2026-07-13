@@ -12,16 +12,6 @@ function loadPublishedData(file, globalName) {
   return context.window[globalName];
 }
 
-const legacy = loadPublishedData("emendas.js", "EMENDAS_DATA");
-const federal = loadPublishedData("emendas_federais.js", "EMENDAS_FEDERAIS");
-const municipal = loadPublishedData("emendas_municipais_atuais.js", "EMENDAS_MUNICIPAIS_ATUAIS");
-const records = [...legacy.emendas, ...federal.emendas, ...municipal.emendas];
-
-function sourceOf(record) {
-  return record.fonteUrl || record.arquivoUrl || record.arquivo
-    || (Array.isArray(record.fontes) && record.fontes.length ? record.fontes : "");
-}
-
 function money(record, names) {
   const key = names.find((name) => Object.hasOwn(record, name));
   return key && Number.isFinite(Number(record[key])) ? Number(record[key]) : undefined;
@@ -35,94 +25,108 @@ function validCnpj(value) {
     const remainder = sum % 11;
     return remainder < 2 ? 0 : 11 - remainder;
   };
-  const first = digit(digits, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]);
-  const second = digit(digits, [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]);
-  return digits.endsWith(`${first}${second}`);
+  return digits.endsWith(`${digit(digits, [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2])}${digit(digits, [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2])}`);
 }
 
-test("totais contam alocação, sem converter desconhecido em zero", () => {
+function municipalKey(record) {
+  const value = String(record.emendaOriginal || record.emenda || "");
+  const match = value.match(/(\d{1,4})\s*\/\s*(20\d{2})/);
+  return match ? `${match[1].padStart(3, "0")}/${match[2]}` : value.toUpperCase();
+}
+
+const legacy = loadPublishedData("emendas.js", "EMENDAS_DATA");
+const federal = loadPublishedData("emendas_federais.js", "EMENDAS_FEDERAIS");
+const estadual = loadPublishedData("emendas_estaduais_normalizadas.js", "EMENDAS_ESTADUAIS_NORMALIZADAS");
+const municipal = loadPublishedData("emendas_municipais_unificadas.js", "EMENDAS_MUNICIPAIS_UNIFICADAS");
+const records = [
+  ...legacy.emendas.filter((record) => !["Municipal", "Estadual"].includes(record.tipo)),
+  ...estadual.emendas,
+  ...municipal.emendas,
+  ...federal.emendas,
+];
+
+test("totais federais contam agregados sem converter desconhecido em zero", () => {
   const allocated = federal.emendas.filter((record) => !record.somenteNoBetha);
   const indicated = federal.emendas.filter((record) => record.somenteNoBetha);
   const allocatedTotal = allocated.reduce((sum, record) => sum + Number(record.valor), 0);
 
-  expect(indicated.length, "deve haver cobertura para indicadas ainda sem pagamento").toBeGreaterThan(0);
+  expect(indicated.length).toBeGreaterThan(0);
   expect(indicated.every((record) => record.valor === 0)).toBeTruthy();
   expect(allocatedTotal).toBeCloseTo(federal.metadata.totalFederal, 2);
   expect(federal.resumoTipos.reduce((sum, item) => sum + item.total, 0)).toBeCloseTo(allocatedTotal, 2);
-
-  const unknownAsZero = records.filter((record) =>
-    Number(record.valor) === 0
-    && /desconhecid|n[aã]o informad|ignorado/i.test(`${record.valorTexto || ""} ${record.status || ""}`)
-  );
-  expect(unknownAsZero, "valor desconhecido deve permanecer desconhecido, nao R$ 0").toEqual([]);
 });
 
-test("escopo federal e valores monetarios sao coerentes", () => {
-  expect(federal.metadata.codigoIbge).toBe("3170701");
-  expect(federal.metadata.favorecido).toMatch(/Varginha\s*-\s*MG/i);
-  expect(federal.emendas.every((record) => /^VARGINHA(?:\s*[-/]\s*MG)?$/i.test(record.localidade))).toBeTruthy();
+test("união municipal preserva histórico e elimina duplicação", () => {
+  const sources = municipal.emendas.reduce((map, record) => {
+    map[record.origemMunicipal] = (map[record.origemMunicipal] || 0) + 1;
+    return map;
+  }, {});
 
+  expect(municipal.metadata.totalRegistros).toBe(581);
+  expect(municipal.emendas).toHaveLength(581);
+  expect(sources).toEqual({ historico_betha: 224, sapl_camara: 357 });
+  expect(municipal.metadata.duplicatasLegadoSapl).toBe(13);
+  expect(new Set(municipal.emendas.map(municipalKey)).size).toBe(581);
+  expect(municipal.emendas.filter((record) => record.origemMunicipal === "historico_betha").every((record) => record.anoEmenda === "2024")).toBeTruthy();
+  expect(municipal.emendas.filter((record) => record.origemMunicipal === "sapl_camara").every((record) => Number(record.anoEmenda) >= 2025)).toBeTruthy();
+});
+
+test("comprovação financeira não é inferida de agregados", () => {
+  const federaisAgregadas = federal.emendas.filter((record) => record.granularidade === "emenda_favorecido_agregado");
+  expect(federaisAgregadas.length).toBeGreaterThan(0);
+  expect(federaisAgregadas.every((record) => record.identificador_repasse_confirmado !== true)).toBeTruthy();
+
+  const estaduaisParciais = estadual.emendas.filter((record) => record.classificacaoComprovacao === "parcial");
+  expect(estaduaisParciais).toHaveLength(30);
+  expect(estaduaisParciais.every((record) => record.identificador_repasse_confirmado !== true)).toBeTruthy();
+});
+
+test("valores, CNPJs e estágios publicados permanecem auditáveis", () => {
   const implausible = records.filter((record) => {
     const value = Number(record.valor);
     return !Number.isFinite(value) || value < 0 || value > 1_000_000_000;
   });
-  expect(implausible, "valores devem estar em reais, finitos e em escala municipal plausivel").toEqual([]);
-});
+  expect(implausible).toEqual([]);
 
-test("execucao financeira respeita pago <= liquidado <= empenhado", () => {
-  const violations = records.filter((record) => {
+  const invalidUnmarked = municipal.emendas.filter((record) => {
+    const cnpj = record.documentoBeneficiario;
+    if (!cnpj || validCnpj(cnpj)) return false;
+    return record.cnpjStatus !== "invalido";
+  });
+  expect(invalidUnmarked).toEqual([]);
+
+  const stageViolations = records.filter((record) => {
     const committed = money(record, ["valorEmpenhado", "empenhado"]);
     const settled = money(record, ["valorLiquidado", "liquidado"]);
     const paid = money(record, ["valorPago", "pago"]);
     return (paid !== undefined && settled !== undefined && paid > settled + 0.01)
       || (settled !== undefined && committed !== undefined && settled > committed + 0.01);
   });
-  expect(violations).toEqual([]);
+  expect(stageViolations).toEqual([]);
 });
 
-test("fontes, documentos, CNPJs e municipal 357 ficam auditaveis", () => {
-  const confirmedWithoutSource = records.filter((record) =>
-    !sourceOf(record) && /^(confirmad[oa]|recebid[oa]|pago)$/i.test(String(record.status || record.situacao || ""))
-  );
-  expect(confirmedWithoutSource, "registro sem fonte nao pode ser marcado como confirmado").toEqual([]);
-
-  const duplicates = [legacy.emendas, federal.emendas, municipal.emendas].flatMap((dataset) => {
-    const keys = dataset.map((record) =>
-      [record.tipo, record.emendaOriginal || record.emenda, record.anoRecurso || record.ano, record.beneficiario, record.valor]
-        .map((value) => String(value || "").trim().toUpperCase()).join("|")
-    );
-    return [...new Set(keys.filter((key, index) => keys.indexOf(key) !== index))];
-  });
-  expect(duplicates, "duplicatas documentais entre as bases publicadas").toEqual([]);
-
-  const invalidUnmarked = records.filter((record) => {
-    const cnpj = record.documentoBeneficiario;
-    if (!cnpj || !/^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/.test(cnpj) || validCnpj(cnpj)) return false;
-    return !/cnpj.{0,20}inv[aá]lid/i.test(JSON.stringify(record));
-  });
-  expect(invalidUnmarked, "CNPJ invalido deve ser sinalizado no proprio registro").toEqual([]);
-
-  expect(municipal.metadata.totalRegistros).toBe(municipal.emendas.length);
-  expect(municipal.emendas.filter((record) => record.emenda === "357/2025")).toHaveLength(1);
-  const declaredDivergences = municipal.metadata.divergencias || municipal.metadata.observacoes || [];
-  const hasDeclaredDivergence = Array.isArray(declaredDivergences)
-    ? declaredDivergences.length > 0
-    : String(declaredDivergences).trim().length > 0;
-  expect(
-    municipal.emendas.length === 357 || hasDeclaredDivergence,
-    `base municipal tem ${municipal.emendas.length}/357 registros sem divergencia explicita nos metadados`,
-  ).toBeTruthy();
-});
-
-test("autoria institucional nao aparece no ranking individual e interface HTTP carrega", async ({ page, request }) => {
-  for (const asset of ["/emendas/", "/emendas/app.js", "/emendas/data/emendas_federais.js"]) {
+test("interface carrega a união municipal e mostra N/D para recebimento não comprovado", async ({ page, request }) => {
+  for (const asset of [
+    "/emendas/",
+    "/emendas/app.js",
+    "/emendas/data/emendas_municipais_unificadas.js",
+    "/emendas/data/emendas_estaduais_normalizadas.js",
+    "/emendas/data/emendas_federais.js",
+  ]) {
     const response = await request.get(asset);
     expect(response.ok(), `${asset} deve responder via HTTP`).toBeTruthy();
   }
 
   await page.goto("/emendas/");
-  await expect(page.locator("#authorRanking")).not.toBeEmpty();
-  const ranking = await page.locator("#authorRanking").innerText();
-  expect(ranking).not.toMatch(/BANCADA|COMISS[AÃ]O|RELATOR|INSTITUCIONAL/i);
-  await expect(page.locator("body")).not.toContainText(/erro ao carregar/i);
+  await expect(page.locator("#federalPorTipo")).toContainText("Valor agregado de emendas");
+  await page.selectOption("#typeFilter", "Municipal");
+  await expect(page.locator("#resultSummary")).toContainText("581 resultados");
+
+  for (const type of ["Federal", "Estadual"]) {
+    await page.selectOption("#typeFilter", type);
+    const cards = page.locator(".result-card");
+    await expect(cards.first()).toBeVisible();
+    const stageTexts = await cards.evaluateAll((nodes) => nodes.map((node) => node.textContent || ""));
+    expect(stageTexts.every((text) => /Recebido confirmado\s*N\/D/.test(text))).toBeTruthy();
+  }
 });

@@ -6,11 +6,11 @@
   "emendas_valor_total_brl": 17841369.18,
   "impacto_zero_qtd": 328,
   "desfechos": {
-    "lei": 25,
-    "arquivado": 882,
-    "tramitando": 666,
-    "encerrado": 11,
-    "sem_dado": 0
+    "lei": 0,
+    "arquivado": 0,
+    "tramitando": 0,
+    "encerrado": 0,
+    "sem_dado": 1584
   },
   "tipos": [
     {
@@ -50,11 +50,11 @@
       "qtd": 15
     },
     {
-      "tipo": "Mensagem de Veto",
+      "tipo": "Projeto de Lei Complementar",
       "qtd": 3
     },
     {
-      "tipo": "Projeto de Lei Complementar",
+      "tipo": "Mensagem de Veto",
       "qtd": 3
     },
     {
@@ -66,7 +66,7 @@
       "qtd": 2
     },
     {
-      "tipo": "Substitutivo",
+      "tipo": "Parecer",
       "qtd": 1
     },
     {
@@ -74,7 +74,7 @@
       "qtd": 1
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Substitutivo",
       "qtd": 1
     }
   ],

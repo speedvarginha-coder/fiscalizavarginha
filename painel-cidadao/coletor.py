@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import csv
 import datetime as dt
+import hashlib
 import json
 import re
 import sys
@@ -2292,9 +2293,11 @@ def main() -> int:
         "chunks": {}
     }
     for chunk_file in chunks_dir.glob("*.json"):
+        content = chunk_file.read_bytes()
         manifest["chunks"][chunk_file.stem] = {
             "arquivo": f"data/chunks/{chunk_file.name}",
-            "bytes": chunk_file.stat().st_size
+            "bytes": len(content),
+            "sha256": hashlib.sha256(content).hexdigest(),
         }
     manifest_out = DATA / "manifest.json"
     manifest_out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")

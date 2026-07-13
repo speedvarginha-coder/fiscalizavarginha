@@ -2,7 +2,7 @@ window.EMENDAS_FEDERAIS = {
   "metadata": {
     "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
     "favorecido": "Favorecidos em Varginha-MG",
-    "extraidoEm": "2026-07-11",
+    "extraidoEm": "2026-07-12",
     "codigoIbge": "3170701",
     "totalFederal": 22595441.99,
     "totalFederalTexto": "22.595.441,99",
@@ -3763,6 +3763,10 @@ window.EMENDAS_FEDERAIS = {
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
         "pagina": 5
       },
+      "granularidade": "referencia_betha_sem_repasse",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
+      "classificacaoComprovacao": "Parcial",
       "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA.",
       "textoBusca": "federal betha pendente 14070012/2025 fundação hospitalar do município de varginha aquisição de 01 (um) garrote pneumático eletrônico, 01 (um) agitador de plaquetas e 03 (três) ventiladores pulmonares pressométricos e volumétricos.",
       "anosRelacionados": [
@@ -3801,6 +3805,10 @@ window.EMENDAS_FEDERAIS = {
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
         "pagina": 2
       },
+      "granularidade": "referencia_betha_sem_repasse",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
+      "classificacaoComprovacao": "Parcial",
       "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: SEMUS - SETOR DE REGULACAO.",
       "textoBusca": "federal betha pendente 8.383/2025 semus - setor de regulacao atenção à saúde da população para procedimentos no mac",
       "anosRelacionados": [
@@ -3839,6 +3847,10 @@ window.EMENDAS_FEDERAIS = {
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
         "pagina": 1
       },
+      "granularidade": "referencia_betha_sem_repasse",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
+      "classificacaoComprovacao": "Parcial",
       "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA.",
       "textoBusca": "federal betha pendente 6.916/2025 fundação hospitalar do município de varginha custeio para quimioterápicos e agentes antineoplásicos padronizados na conitec",
       "anosRelacionados": [
@@ -3877,6 +3889,10 @@ window.EMENDAS_FEDERAIS = {
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
         "pagina": 3
       },
+      "granularidade": "referencia_betha_sem_repasse",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
+      "classificacaoComprovacao": "Parcial",
       "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: PREFEITURA DO MUNICIPIO DE VARGINHA.",
       "textoBusca": "federal betha pendente 050768/2025 prefeitura do municipio de varginha ",
       "anosRelacionados": [
@@ -3915,6 +3931,10 @@ window.EMENDAS_FEDERAIS = {
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
         "pagina": 6
       },
+      "granularidade": "referencia_betha_sem_repasse",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
+      "classificacaoComprovacao": "Parcial",
       "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: .",
       "textoBusca": "federal betha pendente 27540001  ",
       "anosRelacionados": [
@@ -3953,6 +3973,10 @@ window.EMENDAS_FEDERAIS = {
         "arquivoUrl": "eMENDAS fEDERAIS/UTF-8''Emendas%2520Federais (1).pdf",
         "pagina": 12
       },
+      "granularidade": "referencia_betha_sem_repasse",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
+      "classificacaoComprovacao": "Parcial",
       "descricao": "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: HOSPITAL REGIONAL DO SUL DE MINAS.",
       "textoBusca": "federal betha pendente 39990010/2025 hospital regional do sul de minas sistema de vídeo endoscopia rígida",
       "anosRelacionados": [

@@ -1,11 +1,13 @@
 const payload = window.EMENDAS_DATA || { metadata: {}, emendas: [] };
-// Lote municipal da 20ª Legislatura (2025-2028), gerado por gerar_municipais_atuais.py
-const municipaisAtuais = (window.EMENDAS_MUNICIPAIS_ATUAIS && window.EMENDAS_MUNICIPAIS_ATUAIS.emendas) || [];
+// Base municipal única: Betha histórico (até 2024) + SAPL/Câmara (2025 em diante).
+const municipaisUnificadas = (window.EMENDAS_MUNICIPAIS_UNIFICADAS && window.EMENDAS_MUNICIPAIS_UNIFICADAS.emendas) || [];
 // Emendas federais do Portal da Transparência (CGU), carregadas de data/emendas_federais.js
 const federais = (window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.emendas) || [];
 const estaduaisNormalizadas = (window.EMENDAS_ESTADUAIS_NORMALIZADAS && window.EMENDAS_ESTADUAIS_NORMALIZADAS.emendas) || [];
-const baseSemEstaduais = (payload.emendas || []).filter((record) => record.tipo !== "Estadual");
-const allRecords = [...baseSemEstaduais, ...estaduaisNormalizadas, ...municipaisAtuais, ...federais].map(normalizeRecord);
+// Municipais e estaduais da base legada são apenas fontes de transformação; não entram
+// diretamente na tela para não somar registros duplicados ou esquemas antigos.
+const baseSemMunicipaisOuEstaduais = (payload.emendas || []).filter((record) => !["Municipal", "Estadual"].includes(record.tipo));
+const allRecords = [...baseSemMunicipaisOuEstaduais, ...estaduaisNormalizadas, ...municipaisUnificadas, ...federais].map(normalizeRecord);
 
 function knownMoney(value) {
   if (value === null || value === undefined || value === "") return null;
@@ -45,32 +47,39 @@ function normalizeRecord(record) {
   const executado = firstMoney(record, ["valorExecutado", "executado"]);
   const legado = knownMoney(record.valor);
   const indicado = indicadoExplicito ?? (record.tipo === "Municipal" ? legado : null);
-  const recebido = recebidoExplicito ?? (
-    record.tipo === "Federal" && !record.somenteNoBetha
-      ? (record.valorPago ?? (record.dadosBetha ? knownMoney(record.dadosBetha.valorBetha) : null))
-      : null
-  );
-  const pagoTransferido = pago ?? (
-    record.tipo === "Federal" && !record.somenteNoBetha
-      ? (record.valorPago ?? (record.dadosBetha ? knownMoney(record.dadosBetha.valorBetha) : null))
-      : null
-  );
+
+  // REGRA DE EVIDÊNCIA — a plataforma só afirma o que prova para aquele registro e estágio.
+  // "Recebido confirmado" só é preenchido quando a fonte marca um repasse individual
+  // confirmado (identificador_repasse_confirmado === true) COM valor recebido explícito.
+  // Agregados federais (emenda+favorecido) e evidências parciais estaduais NÃO comprovam
+  // recebimento individual → estágio fica N/D e nunca soma no total "confirmado".
+  const repasseConfirmado = record.identificador_repasse_confirmado === true;
+  const recebido = (repasseConfirmado && recebidoExplicito !== null) ? recebidoExplicito : null;
+  // "Pago/transferido" só de pagamento oficial explícito; nunca inferido de agregado nem de Betha.
+  const pagoTransferido = pago;
+  // Valor agregado da emenda (informativo), mantido SEPARADO dos 5 estágios financeiros.
+  const valorAgregado = (record.tipo === "Federal" || record.tipo === "Estadual")
+    ? knownMoney(record.valorDeclarado ?? record.valor)
+    : null;
   const stages = { indicado, empenhado, pago: pagoTransferido, recebido, executado };
   const explicitValues = Object.values(stages).filter((value) => value !== null);
   const inconsistent = (executado !== null && recebido !== null && executado > recebido) ||
     (recebido !== null && pagoTransferido !== null && recebido > pagoTransferido);
+
+  // Comprovação vem da EVIDÊNCIA declarada nos dados, não de heurística sobre valores.
   let comprovacao = record.comprovacao || record.selo || record.qualidadeDado || record.classificacaoComprovacao || "";
   const allowed = ["Confirmado", "Conciliado", "Parcial", "Inferido", "Sem comprovação", "Inconsistente"];
   comprovacao = allowed.find((label) => normalize(label) === normalize(comprovacao)) || "";
   if (inconsistent) comprovacao = "Inconsistente";
-  else if (!comprovacao && record.tipo === "Federal" && recebido !== null) {
-    comprovacao = record.dadosBetha ? "Conciliado" : "Confirmado";
+  else if (!comprovacao) {
+    if (repasseConfirmado && recebidoExplicito !== null) comprovacao = "Confirmado";
+    else if (record.tipo === "Federal") comprovacao = record.dadosBetha ? "Conciliado" : "Parcial";
+    else if (record.tipo === "Estadual") comprovacao = "Parcial";
+    else if (record.tipo === "Municipal" && explicitValues.length) comprovacao = "Inferido";
+    else comprovacao = "Sem comprovação";
   }
-  else if (!comprovacao && record.dadosBetha && recebido !== null) comprovacao = "Conciliado";
-  else if (!comprovacao && explicitValues.length) comprovacao = record.tipo === "Municipal" ? "Inferido" : "Parcial";
-  else if (!comprovacao) comprovacao = "Sem comprovação";
 
-  return { ...record, autoriaTipo, modalidade, comprovacao, stages };
+  return { ...record, autoriaTipo, modalidade, comprovacao, stages, valorAgregado };
 }
 
 // Os PDFs não são hospedados aqui (versão leve). Os links levam à fonte oficial
@@ -95,6 +104,7 @@ const state = {
   authorSort: "valor",    // ordenação do painel Vereadores: "valor" | "quantidade"
   deputySort: "valor",    // ordenação do painel Deputados/Senadores: "valor" | "quantidade"
   deputyRole: "",         // cargo no painel Deputados/Senadores: "Dep. Federal" | "Dep. Estadual" | "Senador(a)" | ""
+  rankingStage: "indicado",
   filtered: [...allRecords],
 };
 
@@ -116,6 +126,7 @@ const elements = {
   modalityFilter: document.querySelector("#modalityFilter"),
   evidenceFilter: document.querySelector("#evidenceFilter"),
   stageFilter: document.querySelector("#stageFilter"),
+  rankingStage: document.querySelector("#rankingStage"),
   activeFilter: document.querySelector("#activeFilter"),
   partyFilter: document.querySelector("#partyFilter"),
   authorFilter: document.querySelector("#authorFilter"),
@@ -463,12 +474,13 @@ function uniqueCanonical(labelFn) {
 function groupByLabel(records, labelFn) {
   const map = new Map();
   records.forEach((record) => {
+    const value = rankingValue(record);
+    if (value === null) return;
     const label = labelFn(record);
     const key = normalize(label);
     const entry = map.get(key) || { key, label, count: 0, total: 0 };
     entry.count += 1;
-    const value = rankingValue(record);
-    if (value !== null) entry.total += value;
+    entry.total += value;
     map.set(key, entry);
   });
   return [...map.values()].sort((a, b) => b.total - a.total);
@@ -501,28 +513,45 @@ function fillDatalist(datalist, values) {
 function renderEsferas() {
   const box = document.querySelector("#esferasCards");
   if (!box) return;
-  const somaTipo = (t) => allRecords
+  // Total AGREGADO/INDICADO — valor que a fonte declara (não é prova de recebimento).
+  const somaAgregado = (t) => allRecords
+    .filter((r) => r.tipo === t)
+    .map((r) => t === "Municipal" ? r.stages.indicado : r.valorAgregado)
+    .filter((value) => value !== null)
+    .reduce((s, value) => s + value, 0);
+  // Total RECEBIDO CONFIRMADO — só registros com repasse individual comprovado.
+  const somaConfirmado = (t) => allRecords
     .filter((r) => r.tipo === t)
     .map((r) => r.stages.recebido)
     .filter((value) => value !== null)
     .reduce((s, value) => s + value, 0);
-  const temRecebido = (t) => allRecords.some((r) => r.tipo === t && r.stages.recebido !== null);
+  const confirmados = (t) => allRecords.filter((r) => r.tipo === t && r.stages.recebido !== null).length;
   const contaTipo = (t) => allRecords.filter((r) => r.tipo === t).length;
+  const rotulo = { Federal: "agregado (CGU)", Estadual: "declarado", Municipal: "indicado" };
   const esferas = [
     { tipo: "Federal", nome: "Federal", desc: "Dados abertos da CGU", cls: "is-federal",
-      total: somaTipo("Federal"), known: temRecebido("Federal"), sub: ((window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata && window.EMENDAS_FEDERAIS.metadata.emendasUnicas) || "") + " emendas (CGU)" },
+      sub: ((window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata && window.EMENDAS_FEDERAIS.metadata.emendasUnicas) || "") + " emendas (CGU)" },
     { tipo: "Estadual", nome: "Estadual", desc: "Documentos de execução estadual", cls: "is-estadual",
-      total: somaTipo("Estadual"), known: temRecebido("Estadual"), sub: contaTipo("Estadual") + " emendas" },
+      sub: contaTipo("Estadual") + " emendas" },
     { tipo: "Municipal", nome: "Municipal", desc: "Vereadores de Varginha", cls: "is-municipal",
-      total: somaTipo("Municipal"), known: temRecebido("Municipal"), sub: contaTipo("Municipal") + " emendas" },
+      sub: contaTipo("Municipal") + " emendas" },
   ];
-  box.innerHTML = esferas.map((e) => `
+  box.innerHTML = esferas.map((e) => {
+    const agregado = somaAgregado(e.tipo);
+    const confirmado = somaConfirmado(e.tipo);
+    const nConf = confirmados(e.tipo);
+    const nTot = contaTipo(e.tipo);
+    const confLinha = nConf > 0
+      ? `Recebido confirmado: ${moneyFormatter.format(confirmado)} (${nConf} de ${nTot})`
+      : `Recebido confirmado: N/D (0 de ${nTot} com repasse individual comprovado)`;
+    return `
     <button type="button" class="esfera-card ${e.cls}" data-tipo="${e.tipo}">
       <span class="esfera-card__tag">${e.nome}</span>
-       <strong class="esfera-card__valor">${e.known ? moneyFormatter.format(e.total) : "N/D"}</strong>
-      <span class="esfera-card__sub">${e.sub}</span>
-      <span class="esfera-card__desc">${e.desc}</span>
-    </button>`).join("");
+       <strong class="esfera-card__valor">${agregado > 0 ? moneyFormatter.format(agregado) : "N/D"}</strong>
+      <span class="esfera-card__sub">Valor ${rotulo[e.tipo]} · ${e.sub}</span>
+      <span class="esfera-card__desc">${confLinha}</span>
+    </button>`;
+  }).join("");
   box.querySelectorAll(".esfera-card").forEach((btn) => {
     btn.addEventListener("click", () => {
       elements.typeFilter.value = btn.dataset.tipo;
@@ -547,7 +576,7 @@ function renderFederalPorTipo() {
   box.innerHTML = `
     <div class="fed-tipos__head">
       <h3>Federal em detalhe — por tipo de emenda</h3>
-      <p>Total recebido em repasses federais para favorecidos de Varginha: <strong>${moneyFormatter.format(metadata.totalFederal)}</strong>. ${numberFormatter.format(metadata.emendasUnicas || 0)} emendas únicas e ${numberFormatter.format(metadata.repasses || metadata.registros || 0)} repasses. Fonte atualizada em ${escapeHtml(sourceDate)}; coleta realizada em ${escapeHtml(collectedDate)}.</p>
+      <p>Valor agregado de emendas destinadas a favorecidos de Varginha: <strong>${moneyFormatter.format(metadata.totalFederal)}</strong>. ${numberFormatter.format(metadata.emendasUnicas || 0)} emendas únicas e ${numberFormatter.format(metadata.registros || 0)} registros agregados por emenda e favorecido. Esse total não é comprovante de repasse individual. Fonte atualizada em ${escapeHtml(sourceDate)}; coleta realizada em ${escapeHtml(collectedDate)}.</p>
     </div>
     <div class="fed-tipos__grid">
       ${dados.map((t) => `
@@ -557,11 +586,11 @@ function renderFederalPorTipo() {
             <span class="fed-tipo__risco">${riscoLabel[t.risco] || ""}</span>
           </div>
           <strong class="fed-tipo__valor">${moneyFormatter.format(t.total)}</strong>
-          <span class="fed-tipo__flag">${t.itemizado ? `✓ ${numberFormatter.format(t.qtdEmendas || t.qtd)} emendas · ${numberFormatter.format(t.qtdRepasses || t.qtd)} repasses` : "resumo — itemização na fonte"}</span>
+          <span class="fed-tipo__flag">${t.itemizado ? `✓ ${numberFormatter.format(t.qtdEmendas || t.qtd)} emendas · ${numberFormatter.format(t.qtdRepasses || t.qtd)} registros agregados` : "resumo — itemização na fonte"}</span>
           <p class="fed-tipo__exp">${escapeHtml(t.explicacao)}</p>
           ${(t.topBeneficiarios && t.topBeneficiarios.length) ? `
             <div class="fed-tipo__ben">
-              <span>Maiores beneficiários:</span>
+              <span>Beneficiários informados:</span>
               <ul>${t.topBeneficiarios.slice(0, 4).map((b) =>
                 `<li><span>${escapeHtml(b.nome)}</span><em>${moneyFormatter.format(b.valor)}</em></li>`).join("")}</ul>
             </div>` : ""}
@@ -755,11 +784,12 @@ function summarize(records) {
 function groupBy(records, field) {
   const map = new Map();
   records.forEach((record) => {
+    const value = rankingValue(record);
+    if (value === null) return;
     const key = record[field] || "Não informado";
     const entry = map.get(key) || { label: key, count: 0, total: 0 };
     entry.count += 1;
-    const value = rankingValue(record);
-    if (value !== null) entry.total += value;
+    entry.total += value;
     map.set(key, entry);
   });
   return [...map.values()].sort((a, b) => b.total - a.total);
@@ -892,7 +922,7 @@ function renderRankSum(el, groups) {
   const somaQtd = groups.reduce((s, g) => s + Number(g.count || 0), 0);
   el.style.display = "flex";
   el.innerHTML =
-    `<strong>Soma filtrada:</strong> ${moneyFormatter.format(somaValor)}` +
+    `<strong>Soma filtrada (${rankingStageLabel()}):</strong> ${moneyFormatter.format(somaValor)}` +
     ` · ${numberFormatter.format(somaQtd)} emenda${somaQtd === 1 ? "" : "s"}` +
     ` · ${numberFormatter.format(groups.length)} parlamentar${groups.length === 1 ? "" : "es"}`;
 }
@@ -914,9 +944,10 @@ function renderAuthorRanking() {
   const maxValue = Number(elements.maxValue.value || 0);
 
   const map = new Map();
-  allRecords.forEach((record) => {
+  state.filtered.forEach((record) => {
     // Painel "Vereadores de Varginha": apenas emendas municipais (vereadores)
     if (record.tipo !== "Municipal") return;
+    if (rankingValue(record) === null) return;
     // Só vereadores da legislatura atual (ativos no cadastro oficial da Câmara).
     // Ex-vereadores que autoraram emendas no passado não aparecem neste painel.
     if (!getAuthorMeta(record).active) return;
@@ -1035,8 +1066,9 @@ function renderDeputyRanking() {
   const maxValue = Number(elements.maxValue.value || 0);
 
   const map = new Map();
-  allRecords.forEach((record) => {
+  state.filtered.forEach((record) => {
     if (record.tipo !== "Federal" && record.tipo !== "Estadual") return;
+    if (rankingValue(record) === null) return;
 
     // Filtro de cargo do painel (chips Dep. Federal / Dep. Estadual / Senador)
     if (state.deputyRole && authorRole(record) !== state.deputyRole) return;
@@ -1141,7 +1173,17 @@ function renderDeputyRanking() {
 }
 
 function rankingValue(record) {
-  return record.stages.executado ?? record.stages.recebido ?? record.stages.pago ?? record.stages.empenhado ?? record.stages.indicado;
+  return record.stages[state.rankingStage] ?? null;
+}
+
+function rankingStageLabel() {
+  return {
+    indicado: "Indicado",
+    empenhado: "Empenhado",
+    pago: "Pago / transferido",
+    recebido: "Recebido confirmado",
+    executado: "Executado",
+  }[state.rankingStage] || "Indicado";
 }
 
 function renderInstitutionalRanking() {
@@ -1162,7 +1204,7 @@ function renderInstitutionalRanking() {
       <span class="ranking-position">${index + 1}</span>
       <span class="ranking-name">${escapeHtml(group.label)}</span>
       <span class="ranking-money">${group.known ? moneyFormatter.format(group.total) : "N/D"}</span>
-      <span class="ranking-meta">${numberFormatter.format(group.count)} registro${group.count === 1 ? "" : "s"} · estágio disponível mais avançado</span>
+      <span class="ranking-meta">${numberFormatter.format(group.count)} registro${group.count === 1 ? "" : "s"} · ${escapeHtml(rankingStageLabel())}</span>
     </div>`).join("") : `<div class="empty compact-empty">Nenhuma autoria institucional nos filtros atuais.</div>`;
 }
 
@@ -1375,12 +1417,11 @@ function renderResults() {
 
   elements.results.innerHTML = pageRecords()
     .map((record) => {
-      const title = record.beneficiario || "Quem recebeu não informado";
+      const title = record.beneficiario || "Beneficiário não informado";
       const object = record.objeto || record.descricao || "Objeto não informado";
       const pdfUrl = fonteOficialUrl(record);
       
-      const pdfHintValue = rankingValue(record);
-      const pdfHint = `Confira na fonte oficial a emenda ${record.emenda}, o beneficiário e os estágios financeiros${pdfHintValue === null ? "" : `, inclusive ${moneyFormatter.format(pdfHintValue)}`} .`;
+      const pdfHint = `Confira na fonte oficial a emenda ${record.emenda}, o beneficiário e cada estágio financeiro antes de concluir que houve pagamento ou recebimento.`;
       const stageLabels = { indicado: "Indicado", empenhado: "Empenhado", pago: "Pago / transferido", recebido: "Recebido confirmado", executado: "Executado" };
       const valHtml = `<div class="stage-values">${Object.entries(stageLabels).map(([key, label]) => `<span><small>${label}</small><strong>${record.stages[key] === null ? "N/D" : moneyFormatter.format(record.stages[key])}</strong></span>`).join("")}</div>`;
 
@@ -1490,7 +1531,7 @@ function openDetails(id, updateUrl = true) {
     ${warningBanner}
     <div class="pdf-guide detail-guide">
       <strong>Como conferir na fonte oficial:</strong>
-      abra o portal de transparência da fonte e pesquise pelo número da emenda ${escapeHtml(record.emenda)}, pelo nome de quem recebeu (${escapeHtml(record.beneficiario || "—")}) ou pelo valor ${moneyFormatter.format(Number(confiraValue || 0))} para confirmar os dados.
+      abra o portal de transparência da fonte e pesquise pelo número da emenda ${escapeHtml(record.emenda)} ou pelo beneficiário informado (${escapeHtml(record.beneficiario || "—")}) para conferir o documento e os estágios financeiros.
     </div>
     <div class="detail-grid">
       ${detailItem("Indicado", record.stages.indicado === null ? "N/D" : moneyFormatter.format(record.stages.indicado))}
@@ -1506,7 +1547,7 @@ function openDetails(id, updateUrl = true) {
       ${detailItem("Anos relacionados", yearsForRecord(record).join(", ") || record.ano)}
       ${detailItem("Órgão", record.orgao)}
       ${detailItem("Autor", [authorMeta.name, authorMeta.role, authorMeta.party, record.tipo === "Municipal" ? (authorMeta.active ? "Ativo(a)" : "Inativo(a) / Ex-vereador(a)") : ""].filter(Boolean).join(" · "))}
-      ${detailItem("Quem recebeu", record.beneficiario)}
+      ${detailItem("Beneficiário informado", record.beneficiario)}
       ${detailItem("CNPJ / documento", record.cnpj || record.documentoBeneficiario)}
       ${detailItem("Função", record.funcao)}
       ${detailItem("Data do recurso", record.dataRecurso)}
@@ -1575,6 +1616,7 @@ function clearFilters() {
     elements.modalityFilter,
     elements.evidenceFilter,
     elements.stageFilter,
+    elements.rankingStage,
     elements.activeFilter,
     elements.yearFilter,
     elements.resourceYearFilter,
@@ -1701,6 +1743,7 @@ function setupEvents() {
     element.addEventListener("input", () => {
       if (element === elements.beneficiaryFilter) state.beneficiaryCanonical = "";
       if (element === elements.typeFilter) state.rankRole = "";
+      if (element === elements.rankingStage) state.rankingStage = element.value || "indicado";
       state.page = 1;
       applyFilters();
     });

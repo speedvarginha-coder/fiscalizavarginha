@@ -13,10 +13,10 @@
     "nome_rua": 22,
     "homenagens_terceiros": 9,
     "outros": 9,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 86,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Alexandre Prado",
@@ -32,10 +32,10 @@
     "nome_rua": 25,
     "homenagens_terceiros": 6,
     "outros": 6,
-    "presenca_pct": 95.3,
-    "presenca_presentes": 82,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Ana Rios Fontoura",
@@ -44,17 +44,17 @@
     "requerimentos": 12,
     "projetos_lei": 14,
     "emendas": 27,
-    "leis_aprovadas": 2,
+    "leis_aprovadas": 0,
     "mocoes": 2,
     "pdl": 3,
     "impacto_zero": 36,
     "nome_rua": 31,
     "homenagens_terceiros": 3,
     "outros": 5,
-    "presenca_pct": 98.8,
-    "presenca_presentes": 85,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Dandan",
@@ -63,17 +63,17 @@
     "requerimentos": 61,
     "projetos_lei": 5,
     "emendas": 37,
-    "leis_aprovadas": 3,
+    "leis_aprovadas": 0,
     "mocoes": 2,
     "pdl": 1,
     "impacto_zero": 20,
     "nome_rua": 17,
     "homenagens_terceiros": 1,
     "outros": 4,
-    "presenca_pct": 96.5,
-    "presenca_presentes": 83,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Davi Martins",
@@ -82,17 +82,17 @@
     "requerimentos": 7,
     "projetos_lei": 7,
     "emendas": 30,
-    "leis_aprovadas": 1,
+    "leis_aprovadas": 0,
     "mocoes": 3,
     "pdl": 7,
     "impacto_zero": 30,
     "nome_rua": 20,
     "homenagens_terceiros": 7,
     "outros": 8,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 86,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Rogério Bueno",
@@ -108,10 +108,10 @@
     "nome_rua": 11,
     "homenagens_terceiros": 1,
     "outros": 1,
-    "presenca_pct": 94.2,
-    "presenca_presentes": 81,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Joãozinho Enfermeiro",
@@ -127,10 +127,10 @@
     "nome_rua": 19,
     "homenagens_terceiros": 3,
     "outros": 3,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 86,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Zé Morais",
@@ -146,10 +146,10 @@
     "nome_rua": 7,
     "homenagens_terceiros": 0,
     "outros": 0,
-    "presenca_pct": 95.3,
-    "presenca_presentes": 82,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Dudu Ottoni",
@@ -165,10 +165,10 @@
     "nome_rua": 28,
     "homenagens_terceiros": 2,
     "outros": 3,
-    "presenca_pct": 94.2,
-    "presenca_presentes": 81,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Bruno Leandro Coletor",
@@ -177,17 +177,17 @@
     "requerimentos": 26,
     "projetos_lei": 2,
     "emendas": 24,
-    "leis_aprovadas": 1,
+    "leis_aprovadas": 0,
     "mocoes": 0,
     "pdl": 2,
     "impacto_zero": 12,
     "nome_rua": 10,
     "homenagens_terceiros": 2,
     "outros": 2,
-    "presenca_pct": 95.3,
-    "presenca_presentes": 82,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Pastor Faustinho",
@@ -203,10 +203,10 @@
     "nome_rua": 27,
     "homenagens_terceiros": 4,
     "outros": 5,
-    "presenca_pct": 97.7,
-    "presenca_presentes": 84,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Thulyo Paiva",
@@ -215,17 +215,17 @@
     "requerimentos": 16,
     "projetos_lei": 12,
     "emendas": 12,
-    "leis_aprovadas": 2,
+    "leis_aprovadas": 0,
     "mocoes": 2,
     "pdl": 1,
     "impacto_zero": 17,
     "nome_rua": 14,
     "homenagens_terceiros": 1,
     "outros": 2,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 86,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Cássio Chiodi",
@@ -234,17 +234,17 @@
     "requerimentos": 6,
     "projetos_lei": 4,
     "emendas": 17,
-    "leis_aprovadas": 1,
+    "leis_aprovadas": 0,
     "mocoes": 0,
     "pdl": 6,
     "impacto_zero": 11,
     "nome_rua": 5,
     "homenagens_terceiros": 6,
     "outros": 6,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 32,
-    "presenca_elegiveis": 32,
-    "presenca_janela": "2025-08-25 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Miguel da Saúde",
@@ -260,10 +260,10 @@
     "nome_rua": 4,
     "homenagens_terceiros": 1,
     "outros": 2,
-    "presenca_pct": 96.9,
-    "presenca_presentes": 31,
-    "presenca_elegiveis": 32,
-    "presenca_janela": "2025-08-25 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Marquinho da Cooperativa",
@@ -279,10 +279,10 @@
     "nome_rua": 0,
     "homenagens_terceiros": 0,
     "outros": 0,
-    "presenca_pct": 97.7,
-    "presenca_presentes": 84,
-    "presenca_elegiveis": 86,
-    "presenca_janela": "2025-01-01 a 2025-12-31"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Dr. Guedes",
@@ -298,10 +298,10 @@
     "nome_rua": 0,
     "homenagens_terceiros": 0,
     "outros": 0,
-    "presenca_pct": 96.3,
-    "presenca_presentes": 52,
-    "presenca_elegiveis": 54,
-    "presenca_janela": "2025-01-01 a 2025-08-22"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   },
   {
     "nome": "Dr. Lucas",
@@ -317,9 +317,9 @@
     "nome_rua": 0,
     "homenagens_terceiros": 0,
     "outros": 0,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 54,
-    "presenca_elegiveis": 54,
-    "presenca_janela": "2025-01-01 a 2025-08-22"
+    "presenca_pct": null,
+    "presenca_presentes": null,
+    "presenca_elegiveis": null,
+    "presenca_janela": ""
   }
 ]

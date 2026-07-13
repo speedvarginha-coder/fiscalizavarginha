@@ -1,6 +1,6 @@
 window.EMENDAS_MUNICIPAIS_ATUAIS = {
  "metadata": {
-  "geradoEm": "2026-07-11T15:24:03.834755+00:00",
+  "geradoEm": "2026-07-11T17:40:03.753584+00:00",
   "fonte": "data/chunks/emendas.json (coleta SAPL/Câmara)",
   "legislatura": "20ª (2025-2028)",
   "totalRegistros": 357,

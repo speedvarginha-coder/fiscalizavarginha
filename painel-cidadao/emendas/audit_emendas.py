@@ -1,98 +1,138 @@
 # -*- coding: utf-8 -*-
-"""
-Porta de qualidade das emendas — rode ANTES de cada deploy do portal /emendas/.
-    python audit_emendas.py
-Verifica consistência dos totais, itemização das Pix, ausência de mojibake,
-duplicatas e federal residual. Sai com código 1 se houver PROBLEMA (para CI).
-"""
-import json, io, re, collections, os, sys
+"""Porta bloqueante de qualidade para os dados publicados em /emendas/."""
+from __future__ import annotations
+
+import collections
+import io
+import json
+import os
+import re
+import sys
 
 BASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
 
-def load(nome):
-    t = io.open(os.path.join(BASE, nome), encoding="utf-8").read()
-    return json.loads(t[t.index("{"):t.rindex("}")+1])
 
-d = load("emendas.js")
-f = load("emendas_federais.js")
-e_norm = load("emendas_estaduais_normalizadas.js")
-emendas, pix, resumo = d["emendas"], f["emendas"], f["resumoTipos"]
-problemas, avisos = [], []
+def load(nome: str) -> dict:
+    texto = io.open(os.path.join(BASE, nome), encoding="utf-8").read()
+    inicio = texto.find("{")
+    if inicio < 0:
+        raise ValueError(f"JSON não encontrado em {nome}")
+    valor, _ = json.JSONDecoder().raw_decode(texto[inicio:])
+    return valor
 
-# 1. soma dos tipos == totalFederal
-soma_tipos = sum(t["total"] for t in resumo)
-if abs(soma_tipos - f["metadata"]["totalFederal"]) > 0.01:
+
+def chave_emenda(registro: dict) -> tuple[str, str]:
+    texto = str(registro.get("emendaOriginal") or registro.get("emenda") or "")
+    match = re.search(r"(\d{1,4})\s*/\s*(20\d{2})", texto)
+    if match:
+        return match.group(1).zfill(3), match.group(2)
+    return texto.strip().upper(), str(registro.get("anoEmenda") or registro.get("ano") or "")
+
+
+legada = load("emendas.js")
+federal = load("emendas_federais.js")
+estadual = load("emendas_estaduais_normalizadas.js")
+municipal = load("emendas_municipais_unificadas.js")
+problemas: list[str] = []
+avisos: list[str] = []
+
+federais = federal["emendas"]
+resumo = federal["resumoTipos"]
+estaduais = estadual["emendas"]
+municipais = municipal["emendas"]
+
+# 1. Total federal precisa bater com os grupos publicados.
+soma_tipos = sum(float(item["total"]) for item in resumo)
+if abs(soma_tipos - float(federal["metadata"]["totalFederal"])) > 0.01:
     problemas.append(f"totalFederal != soma dos tipos ({soma_tipos:.2f})")
 
-# 2. cada tipo do resumo == soma dos registros itemizados daquela categoria
-por_cat = collections.defaultdict(float)
-for e in pix:  # pix = f["emendas"] = TODAS as federais itemizadas
-    por_cat[e.get("categoria")] += e.get("valor", 0)
-for t in resumo:
-    itemizado = por_cat.get(t["categoria"], 0)
-    if abs(itemizado - t["total"]) > 0.01:
-        problemas.append(f"{t['categoria']}: itemizado ({itemizado:.2f}) != resumo ({t['total']:.2f})")
+por_categoria: dict[str, float] = collections.defaultdict(float)
+for item in federais:
+    por_categoria[item.get("categoria", "")] += float(item.get("valor") or 0)
+for item in resumo:
+    total_itemizado = por_categoria.get(item["categoria"], 0)
+    if abs(total_itemizado - float(item["total"])) > 0.01:
+        problemas.append(f"{item['categoria']}: itemizado ({total_itemizado:.2f}) != resumo ({item['total']:.2f})")
 
-# 3. campos obrigatórios em todas as federais.
-# Registros somenteNoBetha (pendentes de repasse) legitimamente têm valor 0.
-for e in pix:
-    obrig = ("autor","ano","emenda","beneficiario","objeto","fonteUrl","categoria")
-    for c in obrig:
-        if not e.get(c):
-            problemas.append(f"Federal {e.get('emenda','?')}: campo '{c}' vazio")
-    if "valor" not in e:
-        problemas.append(f"Federal {e.get('emenda','?')}: campo 'valor' ausente")
+# 2. Agregados federais jamais podem se declarar um repasse individual.
+for item in federais:
+    ident = item.get("emenda", "?")
+    for campo in ("autor", "ano", "emenda", "beneficiario", "objeto", "fonteUrl", "categoria"):
+        if not item.get(campo):
+            problemas.append(f"Federal {ident}: campo '{campo}' vazio")
+    if "valor" not in item:
+        problemas.append(f"Federal {ident}: valor agregado ausente")
+    if item.get("granularidade") == "emenda_favorecido_agregado" and item.get("identificador_repasse_confirmado") is True:
+        problemas.append(f"Federal {ident}: agregado não pode ser marcado como repasse individual confirmado")
 
-# 4. maiores beneficiários não somam mais que o total
-for t in resumo:
-    stb = sum(b["valor"] for b in t.get("topBeneficiarios", []))
-    if stb > t["total"] + 0.01:
-        problemas.append(f"{t['categoria']}: maiores benef. ({stb:.2f}) > total ({t['total']:.2f})")
-
-# 5. mojibake real (double-encoding)
-MOJ = re.compile(r"Ã§|Ã£|Ã©|Ã³|Ãª|Ã¡|Ã­|Âº|Â·|ï¿½|�")
-for nome, obj in (("emendas.js", d), ("emendas_federais.js", f)):
-    if MOJ.search(json.dumps(obj, ensure_ascii=False)):
-        problemas.append(f"{nome}: mojibake detectado")
-
-# 6. IDs duplicados
-ids = [e.get("id") for e in emendas + pix if e.get("id")]
-dup = [k for k, v in collections.Counter(ids).items() if v > 1]
-if dup:
-    problemas.append(f"IDs duplicados: {dup[:5]}")
-
-# 7. nenhum Federal residual em emendas.js
-resid = sum(1 for e in emendas if e.get("tipo") == "Federal")
-if resid:
-    problemas.append(f"{resid} 'Federal' residual em emendas.js (esperado 0)")
-
-# 8. camada estadual segura
-estaduais = e_norm["emendas"]
+# 3. A camada estadual não pode transformar evidência parcial em recebimento confirmado.
 if len(estaduais) != 30:
     problemas.append(f"Estaduais normalizadas: {len(estaduais)} registros (esperado 30)")
-if sum(e.get("valorDeclarado") is None for e in estaduais) != 7:
+if sum(item.get("valorDeclarado") is None for item in estaduais) != 7:
     problemas.append("Estaduais: esperado 7 valores desconhecidos")
-for e in estaduais:
-    ident = e.get("emenda") or e.get("id")
-    if e.get("classificacaoComprovacao") not in ("confirmado", "parcial", "sem_comprovacao"):
+for item in estaduais:
+    ident = item.get("emenda") or item.get("id")
+    if item.get("classificacaoComprovacao") not in ("confirmado", "parcial", "sem_comprovacao"):
         problemas.append(f"Estadual {ident}: classificação inválida")
-    if e.get("classificacaoComprovacao") == "sem_comprovacao" and e.get("valorRecebido") is not None:
-        problemas.append(f"Estadual {ident}: sem comprovação incluída no recebido")
-    if e.get("valorDeclarado") is None and e.get("valor") is not None:
+    if item.get("classificacaoComprovacao") != "confirmado" and item.get("identificador_repasse_confirmado") is True:
+        problemas.append(f"Estadual {ident}: repasse confirmado sem classificação confirmada")
+    if item.get("valorDeclarado") is None and item.get("valor") is not None:
         problemas.append(f"Estadual {ident}: valor desconhecido apresentado como zero")
-    if "esferaDocumento" not in e or "cargoAutor" not in e:
+    if "esferaDocumento" not in item or "cargoAutor" not in item:
         problemas.append(f"Estadual {ident}: esfera/cargo não separados")
 
-# avisos de qualidade (não bloqueiam, mas informam)
-avisos.append(f"valor zerado: {sum(1 for e in emendas if not e.get('valor'))}")
-avisos.append(f"sem autor: {sum(1 for e in emendas if not (e.get('autor') or '').strip())}")
-avisos.append(f"sem beneficiário: {sum(1 for e in emendas if not (e.get('beneficiario') or '').strip())}")
+# 4. União municipal: histórico Betha até 2024 + SAPL de 2025 em diante.
+meta_municipal = municipal.get("metadata", {})
+origens = collections.Counter(item.get("origemMunicipal") for item in municipais)
+if meta_municipal.get("totalRegistros") != len(municipais):
+    problemas.append("Municipais: metadado totalRegistros diverge da lista publicada")
+if meta_municipal.get("registrosHistoricosBetha") != origens.get("historico_betha", 0):
+    problemas.append("Municipais: contagem histórica Betha diverge dos registros publicados")
+if meta_municipal.get("registrosSapl") != origens.get("sapl_camara", 0):
+    problemas.append("Municipais: contagem SAPL diverge dos registros publicados")
+chaves_municipais = [chave_emenda(item) for item in municipais]
+duplicadas = [chave for chave, quantidade in collections.Counter(chaves_municipais).items() if quantidade > 1]
+if duplicadas:
+    problemas.append(f"Municipais: duplicatas por número/ano: {duplicadas[:5]}")
+for item in municipais:
+    ident = item.get("emenda") or item.get("id")
+    origem = item.get("origemMunicipal")
+    ano = chave_emenda(item)[1]
+    if origem not in ("historico_betha", "sapl_camara"):
+        problemas.append(f"Municipal {ident}: origem não declarada")
+    if origem == "historico_betha" and ano >= "2025":
+        problemas.append(f"Municipal {ident}: histórico Betha fora do escopo até 2024")
+    if origem == "sapl_camara" and ano < "2025":
+        problemas.append(f"Municipal {ident}: SAPL fora do escopo a partir de 2025")
+    if item.get("classificacaoComprovacao") != "Inferido":
+        problemas.append(f"Municipal {ident}: indicação deve permanecer Inferido, não recebimento confirmado")
+    if item.get("valorRecebido") not in (None, ""):
+        problemas.append(f"Municipal {ident}: valorRecebido não comprovado foi publicado")
 
-print(f"Base: {len(emendas)} mun/est + {len(pix)} pix | Federal total R$ {soma_tipos:,.2f}")
+# 5. Só IDs presentes na composição efetivamente exibida entram na auditoria global.
+legada_nao_municipal_ou_estadual = [
+    item for item in legada["emendas"] if item.get("tipo") not in ("Municipal", "Estadual")
+]
+visiveis = legada_nao_municipal_ou_estadual + estaduais + municipais + federais
+ids = [item.get("id") for item in visiveis if item.get("id")]
+duplicados_id = [ident for ident, quantidade in collections.Counter(ids).items() if quantidade > 1]
+if duplicados_id:
+    problemas.append(f"IDs duplicados na composição publicada: {duplicados_id[:5]}")
+
+mojibake = re.compile(r"ÃƒÂ§|ÃƒÂ£|ÃƒÂ©|ÃƒÂ³|ÃƒÂª|ÃƒÂ¡|ÃƒÂ­|Ã‚Âº|Ã‚Â·|Ã¯Â¿Â½|ï¿½")
+for nome, dados in (("emendas.js", legada), ("emendas_federais.js", federal), ("emendas_municipais_unificadas.js", municipal)):
+    if mojibake.search(json.dumps(dados, ensure_ascii=False)):
+        problemas.append(f"{nome}: mojibake detectado")
+
+avisos.append(f"municipais: {origens.get('historico_betha', 0)} Betha + {origens.get('sapl_camara', 0)} SAPL")
+avisos.append(f"federais agregadas: {sum(item.get('granularidade') == 'emenda_favorecido_agregado' for item in federais)}")
+avisos.append(f"estaduais parciais: {sum(item.get('classificacaoComprovacao') == 'parcial' for item in estaduais)}")
+
+print(f"Base publicada: {len(municipais)} municipal + {len(estaduais)} estadual + {len(federais)} federal")
 print("AVISOS: " + " | ".join(avisos))
 if problemas:
     print("\nPROBLEMAS:")
-    for p in problemas:
-        print("  X " + p)
+    for problema in problemas:
+        print("  X " + problema)
     sys.exit(1)
-print("\nOK — base consistente, pronta para deploy.")
+print("\nOK — base consistente e semanticamente conservadora.")

@@ -19,7 +19,17 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Dependências de validação de dados
+        run: python -m pip install -r requirements.txt
       - name: Sintaxe dos scripts e HTML (check-syntax)
         run: node scripts/check-syntax.mjs
       - name: Integridade de acentos/encoding (check-accents)
         run: node scripts/check-accents.mjs
+      - name: Schemas dos dados publicados
+        run: python painel-cidadao/validar_schemas_dados.py
+      - name: Auditoria bloqueante das emendas
+        run: python painel-cidadao/emendas/audit_emendas.py
