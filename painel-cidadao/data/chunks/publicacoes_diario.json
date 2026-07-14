@@ -1,8 +1,741 @@
 {
- "gerado_em": "2026-07-14T12:53:08+00:00",
+ "gerado_em": "2026-07-14T21:50:38+00:00",
  "fonte": "diario",
- "total": 123,
+ "total": 144,
  "publicacoes": [
+  {
+   "id": "DIARIO-2026-1843-pessoal-portarian23204de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.204, DE 08 DE JULHO DE 2026.",
+   "numero": "23.204",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "administração",
+   "resumo": "A Prefeitura de Varginha prorrogou por mais 15 dias o prazo estabelecido na Portaria nº 23.153/2026.",
+   "pontos_atencao": [
+    "A portaria original (nº 23.153/2026) não é detalhada, impedindo a compreensão completa do impacto da prorrogação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 2781200.0,
+    "encontrados": [
+     2781200.0,
+     955065.0,
+     330133.0,
+     220000.0,
+     130000.0,
+     45955.91
+    ]
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:49:07+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-pessoal-portarian23203de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.203, DE 08 DE JULHO DE 2026.",
+   "numero": "23.203",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "Esta portaria designa novos servidores para fazer parte do Sistema Municipal de Auditoria em Saúde de Varginha.",
+   "pontos_atencao": [
+    "A portaria não detalha as atribuições específicas de cada membro, apenas que exercerão as inerentes ao Sistema.",
+    "Não há menção a custos adicionais, pois as atividades serão realizadas durante a jornada regular de trabalho.",
+    "A portaria revoga uma anterior, indicando uma reestruturação da equipe de auditoria."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:53+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-pessoal-portarian23193de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.193, DE 06 DE JULHO DE 2026.",
+   "numero": "23.193",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Uma Portaria da Prefeitura de Varginha designa uma servidora para substituir temporariamente o Supervisor do Serviço de Fiscalização de Transporte Urbano, Escolares e Táxis, que estará de férias.",
+   "pontos_atencao": [
+    "A substituição implica no pagamento de uma diferença salarial à servidora designada.",
+    "A duração da substituição é de 10 dias."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:47+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-pessoal-portarian23188de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.188, DE 03 DE JULHO DE 2026.",
+   "numero": "23.188",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta portaria designa uma servidora para substituir temporariamente outra em um cargo de chefia, devido a férias regulamentares.",
+   "pontos_atencao": [
+    "A substituta fará jus ao recebimento da diferença salarial entre seu vencimento e o do cargo substituído, gerando um custo adicional temporário.",
+    "A substituição tem um período definido de 06/07/2026 a 15/07/2026."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:40+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-pessoal-portarian23183de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.183, DE 03 DE JULHO DE 2026.",
+   "numero": "23.183",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Uma Portaria da Prefeitura de Varginha designa duas servidoras públicas para exercerem funções gratificadas na Secretaria Municipal de Saúde.",
+   "pontos_atencao": [
+    "O impacto orçamentário das gratificações de 15% sobre os salários das servidoras.",
+    "A justificativa para a designação e a necessidade dessas funções gratificadas."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:35+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-pessoal-portarian23182de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.182, DE 03 DE JULHO DE 2026.",
+   "numero": "23.182",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta portaria da Prefeitura de Varginha dispensa duas servidoras de suas Funções Gratificadas na Secretaria Municipal de Saúde. As servidoras Leticia de Paiva Silva Freitas e Patrícia Lane de Souza Porchat de Assis são desligadas de suas respectivas funções.",
+   "pontos_atencao": [
+    "Acompanhar como as responsabilidades dessas funções serão redistribuídas para garantir a continuidade dos serviços de saúde.",
+    "Verificar se novas designações serão feitas para as funções dispensadas.",
+    "Observar o impacto orçamentário da dispensa das funções gratificadas."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:30+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-pessoal-portarian23181de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.181, DE 03 DE JULHO DE 2026.",
+   "numero": "23.181",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria da Prefeitura de Varginha revoga um Decreto Municipal anterior que havia alterado a carga horária de trabalho da servidora pública municipal Kamila Santos Brito.",
+   "pontos_atencao": [
+    "Acompanhar o motivo da revogação do decreto original, que alterava a carga horária da servidora.",
+    "Verificar se a decisão de revogar o decreto segue os procedimentos administrativos adequados."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:24+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-pessoal-portarian23180de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.180, DE 03 DE JULHO DE 2026.",
+   "numero": "23.180",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta portaria designa um servidor para substituir temporariamente outro em função de férias regulamentares.",
+   "pontos_atencao": [
+    "O substituto receberá a diferença salarial entre seu vencimento e o da função de Encarregado do Serviço de Vigilância Sanitária.",
+    "A substituição é por um período específico de férias, de 22/06/2026 a 10/07/2026.",
+    "O servidor designado é Juliano Braga de Oliveira."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:18+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-norma-lein7599de10deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "LEI N° 7.599 DE 10 DE JULHO DE 2026.",
+   "numero": "7.599",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Lei autoriza a Prefeitura de Varginha a doar um terreno ao Hospital Regional do Sul de Minas (HRSM), uma fundação privada sem fins lucrativos. O objetivo é a construção da sede própria do Centro Oftalmológico do hospital, para ampliar e qualificar a assistência oftalmológica regional pelo SUS.",
+   "pontos_atencao": [
+    "A doação de um bem público a uma fundação privada, mesmo que sem fins lucrativos, requer acompanhamento para garantir o cumprimento das contrapartidas.",
+    "A doação é dispensada de licitação, conforme a Lei nº 14.133/2021, o que destaca a importância da fiscalização dos termos acordados.",
+    "Existem prazos estabelecidos para a lavratura da escritura, início e conclusão das obras, e início das atividades assistenciais, cujo descumprimento pode levar à reversão do imóvel ao município."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Em contrapartida à doação ora autorizada, a FUNDAÇÃO",
+     "papel": "empresa",
+     "cnpj": "25.863.390/0001-54"
+    },
+    {
+     "nome": "Lei e no Protocolo de Intenções , a FUNDAÇÃO",
+     "papel": "empresa"
+    },
+    {
+     "nome": "Art. 10. Para efetivação da doação a que se refere a presente Lei, a FUNDAÇÃO",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": 716358.06,
+    "encontrados": [
+     716358.06
+    ]
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:13+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-norma-lein7597de07deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "LEI N° 7.597 DE 07 DE JULHO DE 2026.",
+   "numero": "7.597",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "patrimônio público",
+   "resumo": "Esta lei altera o nome de um ginásio municipal em Varginha-MG.",
+   "pontos_atencao": [
+    "A lei não especifica os custos envolvidos na alteração da identificação do ginásio.",
+    "Não há informações no texto sobre quem foi Targino Fernandes Valias e qual sua relevância para a homenagem."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:07+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-norma-lein7596de07deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "LEI N° 7.596 DE 07 DE JULHO DE 2026.",
+   "numero": "7.596",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "educação",
+   "resumo": "Esta lei denomina dois imóveis públicos em Varginha-MG: um Centro Municipal de Educação Infantil e um Centro Municipal de Formação de Professores.",
+   "pontos_atencao": [
+    "A lei revoga a Lei Municipal nº 7.212/2023, o que pode indicar uma mudança na denominação anterior ou no propósito desses locais.",
+    "Haverá custos para a prefeitura com a alteração de placas, sinalização e registros cadastrais dos imóveis."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:48:02+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-licitacao-edital012025comd",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Edital 01/2025, com diplomas originais, comprovando habilitação para o cargo.",
+   "numero": "01/2025",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "Este edital convoca candidatos aprovados no Concurso Público 01/2025 para a Secretaria Municipal de Saúde de Varginha, detalhando os documentos necessários para a contratação e as regras para o desligamento.",
+   "pontos_atencao": [
+    "A exigência rigorosa de documentação original e atualizada, incluindo comprovação de escolaridade e registro em conselho de classe, pode gerar exclusões.",
+    "As condições para rescisão de contrato por desempenho inadequado, faltas excessivas ou conduta imprópria são detalhadas.",
+    "Candidatos demitidos por processo administrativo disciplinar ou que tiveram contrato rescindido por certas razões não poderão ser recontratados."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 3711.64,
+    "encontrados": [
+     3711.64
+    ]
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:49:14+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1843-licitacao-edital012025comd",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Edital 01/2025, com diplomas originais, comprovando habilitação para o cargo.",
+   "numero": "01/2025",
+   "data": "2026-07-14",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "Este ato detalha os documentos e requisitos que os candidatos aprovados no Concurso Público Edital 01/2025 da Prefeitura de Varginha devem apresentar para serem contratados, além de estabelecer as regras para a rescisão de seus contratos.",
+   "pontos_atencao": [
+    "A exigência rigorosa de documentação e a pontualidade na apresentação, sob pena de desclassificação.",
+    "As diversas condições para rescisão de contrato, incluindo desempenho inadequado e conduta.",
+    "A proibição de recontratação para servidores demitidos por processo administrativo disciplinar."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Secretário Municipal de Saúde FUNDAÇÃO",
+     "papel": "empresa",
+     "cnpj": "19.110.162/0001-00"
+    },
+    {
+     "nome": "REPRESENTAÇÃO E SERVIÇOS LTDA",
+     "papel": "empresa"
+    },
+    {
+     "nome": "AMPLIAÇÃO DO CTI DA FUNDAÇÃO",
+     "papel": "empresa"
+    },
+    {
+     "nome": "PARA ATENDIMENTO AOS PACIENTES INTERNOS, EXTERNOS E REFERENCIADOS À FUNDAÇÃO",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": 344650.0,
+    "encontrados": [
+     344650.0,
+     176496.09,
+     1650.0,
+     1300.0
+    ]
+   },
+   "edicao": "1843",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026381414361de67f1efd772d400a5da258496b2408.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:49:21+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1842-pessoal-portarian2128202",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 2.128/2026",
+   "numero": "2.128/2026",
+   "data": "2026-07-13",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Portaria concede pensão por morte à dependente de um ex-servidor público municipal de Varginha.",
+   "pontos_atencao": [
+    "A pensão é concedida com base na redação anterior à Emenda Constitucional 103/2019 do artigo 40, § 7º, Inciso I da Constituição Federal.",
+    "O benefício envolve o uso de recursos públicos para um compromisso de longo prazo."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 18000.0,
+    "encontrados": [
+     18000.0
+    ]
+   },
+   "edicao": "1842",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202622131643cf812495c641cd7a8025a88a0423643e.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:50:10+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1842-pessoal-portarian1262026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 126/2026, 10 DE JULHO DE 2026.",
+   "numero": "126/2026",
+   "data": "2026-07-13",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "serviços públicos",
+   "resumo": "A Prefeitura de Varginha, por meio do CISSUL/SAMU, prorrogou um contrato para a prestação de serviços de telefonia fixa, informática e internet com a empresa SEG TECNOLOGIA LTDA.",
+   "pontos_atencao": [
+    "Trata-se de uma prorrogação de contrato existente, não de uma nova licitação, o que é permitido pela Lei nº 14.133/21.",
+    "O valor aditivado de R$ 366.925,68 representa um custo adicional para o orçamento público.",
+    "O reajuste de 3,90% foi aplicado com base no índice INPC/IBGE."
+   ],
+   "envolvidos": [
+    {
+     "nome": "TECNOLOGIA LTDA",
+     "papel": "empresa",
+     "cnpj": "13.985.869/0001-84"
+    },
+    {
+     "nome": "",
+     "cnpj": "05.145.014/0001-17",
+     "papel": "cnpj"
+    }
+   ],
+   "valores": {
+    "total": 366925.68,
+    "encontrados": [
+     366925.68,
+     21073.63,
+     13314.42,
+     11977.77,
+     9294.64,
+     9153.78
+    ]
+   },
+   "edicao": "1842",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202622131643cf812495c641cd7a8025a88a0423643e.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:49:49+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1842-pessoal-portarian1252026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 125/2026, 10 DE JULHO DE 2026.",
+   "numero": "125/2026",
+   "data": "2026-07-13",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta portaria informa que um empregado público foi dispensado de uma função gratificada específica.",
+   "pontos_atencao": [],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1842",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202622131643cf812495c641cd7a8025a88a0423643e.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:49:35+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1842-pessoal-portarian1212026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 121/2026",
+   "numero": "121/2026",
+   "data": "2026-07-13",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha, por meio da Fundação Hospitalar (FHOMUV), institui uma comissão para avaliar tecnicamente uma etapa de um processo licitatório (Concorrência nº 003/2026).",
+   "pontos_atencao": [
+    "A comissão tem a responsabilidade de julgar uma etapa técnica crucial de um processo licitatório, o que pode influenciar a seleção de um fornecedor para um sistema hospitalar.",
+    "Os membros da comissão não receberão gratificação ou vantagem pecuniária, o que pode levantar questões sobre a dedicação e o tempo disponível para a tarefa.",
+    "A vigência da comissão é até o término dos trabalhos, sem um prazo fixo, o que pode gerar incerteza sobre a duração do processo de avaliação."
+   ],
+   "envolvidos": [
+    {
+     "nome": "DIRETORA-GERAL HOSPITALAR INSTITUTO",
+     "papel": "empresa",
+     "cnpj": "19.110.162/0001-00"
+    }
+   ],
+   "valores": {
+    "total": 2936.67,
+    "encontrados": [
+     2936.67,
+     2396.02
+    ]
+   },
+   "edicao": "1842",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202622131643cf812495c641cd7a8025a88a0423643e.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:50:01+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1842-norma-resoluon382026co",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Resolução",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "RESOLUÇÃO Nº 38/2026 – CONSELHO MUNICIPAL DE DEFESA DOS DIREITOS DA CRIANÇA E DO ADOLESCENTE – COMDEDICA",
+   "numero": "38/2026",
+   "data": "2026-07-13",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "direitos da criança e do adolescente",
+   "resumo": "O Conselho Municipal de Defesa dos Direitos da Criança e do Adolescente (COMDEDICA) aprovou uma proposta para alterar a lei municipal que define a política de atendimento a crianças e adolescentes em Varginha.",
+   "pontos_atencao": [
+    "A alteração na composição do conselho pode influenciar o equilíbrio de representação entre o poder público e a sociedade civil.",
+    "A inclusão de órgãos de outras esferas governamentais pode impactar a dinâmica e as decisões do conselho."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Presidente do COMDEDICA FUNDAÇÃO",
+     "papel": "empresa"
+    },
+    {
+     "nome": "INFORMATICA LTDA",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": 570.0,
+    "encontrados": [
+     570.0
+    ]
+   },
+   "edicao": "1842",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202622131643cf812495c641cd7a8025a88a0423643e.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:50:37+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1842-norma-resoluon372026co",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Resolução",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "RESOLUÇÃO Nº 37/2026 – CONSELHO MUNICIPAL DE DEFESA DOS DIREITOS DA CRIANÇA E DO ADOLESCENTE – COMDEDICA",
+   "numero": "37/2026",
+   "data": "2026-07-13",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "assistência social",
+   "resumo": "Esta resolução aprova a solicitação do Centro de Desenvolvimento Integrado (CDI) para estender o prazo de um termo de fomento já existente.",
+   "pontos_atencao": [
+    "A prorrogação de um termo de fomento existente para uma organização específica.",
+    "A ausência de detalhes sobre o valor do fomento prorrogado no texto da resolução.",
+    "A necessidade de verificar os resultados e a prestação de contas do CDI durante o período estendido."
+   ],
+   "envolvidos": [
+    {
+     "nome": "",
+     "cnpj": "09.182.496/0001-36",
+     "papel": "cnpj"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1842",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202622131643cf812495c641cd7a8025a88a0423643e.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:50:25+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1842-norma-resoluon352026co",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Resolução",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "RESOLUÇÃO Nº 35/2026 – CONSELHO MUNICIPAL DE DEFESA DOS DIREITOS DA CRIANÇA E DO ADOLESCENTE - COMDEDICA",
+   "numero": "35/2026",
+   "data": "2026-07-13",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "Esta resolução nomeia os membros que irão compor as comissões temáticas do Conselho Municipal de Defesa dos Direitos da Criança e do Adolescente (COMDEDICA) de Varginha para o biênio 2026-2028.",
+   "pontos_atencao": [
+    "A nomeação de membros para comissões estratégicas do COMDEDICA.",
+    "A responsabilidade dessas comissões na formulação e fiscalização de políticas para crianças e adolescentes."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1842",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202622131643cf812495c641cd7a8025a88a0423643e.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:50:20+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1842-norma-resoluo66",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Resolução",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "RESOLUÇÃO 66 ...........................................................................................................",
+   "numero": "66",
+   "data": "2026-07-13",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "Esta Instrução Normativa estabelece regras para a presença de acompanhantes e a captação de áudio e imagem em atendimentos e perícias médicas realizadas pelo Serviço Especializado em Segurança e Medicina do Trabalho (SESMT) da Prefeitura de Varginha.",
+   "pontos_atencao": [
+    "A proibição de captação de áudio e imagem sem autorização pode limitar a capacidade de registro de eventos durante os atendimentos.",
+    "A norma permite a restrição de acompanhantes em situações excepcionais e fundamentadas, o que pode gerar interpretações."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 2781200.0,
+    "encontrados": [
+     2781200.0,
+     92902.69,
+     65.4
+    ]
+   },
+   "edicao": "1842",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202622131643cf812495c641cd7a8025a88a0423643e.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T21:49:30+00:00"
+  },
   {
    "id": "DIARIO-2026-1841-pessoal-portarian23191de",
    "fonte": "diario",
@@ -43,7 +776,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1841-pessoal-portarian23189de",
@@ -73,7 +806,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1841-pessoal-portarian23177de",
@@ -103,7 +836,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1841-pessoal-portarian23176de",
@@ -134,7 +867,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:37+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-resoluon262026cm",
@@ -165,7 +898,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-resoluo56",
@@ -192,7 +925,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:37+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-lein1301914eart1",
@@ -222,7 +955,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-lein1301914eanoo",
@@ -255,7 +988,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-lein1301914art39",
@@ -286,7 +1019,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-decreton872616qu",
@@ -340,7 +1073,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1841-norma-decreton872616",
@@ -371,7 +1104,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
+   "gerado_em": "2026-07-14T21:50:38+00:00"
   },
   {
    "id": "DIARIO-2026-1840-pessoal-portarian289de09",

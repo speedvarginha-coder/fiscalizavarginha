@@ -1,8 +1,8 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6820295.98,
-  "total_externo_anterior": 8421296.43,
+  "total_externo_atual": 6779221.39,
+  "total_externo_anterior": 8387923.59,
   "empenhos_qtd": 3083,
   "top_fornecedores_atual": [
     {
@@ -56,14 +56,14 @@
       "qtd": 1
     },
     {
-      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 133955.97,
-      "qtd": 15
-    },
-    {
       "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
       "valor_total": 114808.12,
       "qtd": 4
+    },
+    {
+      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+      "valor_total": 109881.38,
+      "qtd": 10
     },
     {
       "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
@@ -124,8 +124,8 @@
     },
     {
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 491871.78,
-      "qtd": 41
+      "valor_total": 451373.94,
+      "qtd": 39
     },
     {
       "nome": "BETHA SISTEMAS LTDA",
@@ -724,6 +724,34 @@
       "contratado": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
       "cnpj": "23.131.342/****-**",
       "valor": 478.8,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-07-14",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE MATERIAIS ELÉTRICO (LÂMPADAS).",
+      "contratado": "HERICON FELIPE TRISTAO NASCIMENTO",
+      "cnpj": "39.327.884/****-**",
+      "valor": 470.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-07-14",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE MATERIAIS ELÉTRICO (LÂMPADAS).",
+      "contratado": "CASA 500 MATERIAIS DE CONSTRUCAO LTDA",
+      "cnpj": "86.573.904/****-**",
+      "valor": 384.0,
       "situacao": "EXECUCAO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },

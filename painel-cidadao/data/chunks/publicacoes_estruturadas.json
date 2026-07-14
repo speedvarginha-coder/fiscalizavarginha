@@ -1,8 +1,43 @@
 {
- "gerado_em": "2026-07-14T12:53:07+00:00",
+ "gerado_em": "2026-07-14T21:47:42+00:00",
  "fonte": "camara",
- "total": 726,
+ "total": 727,
  "publicacoes": [
+  {
+   "id": "CAMARA-2026-SUBS-2",
+   "fonte": "camara",
+   "tipo": "substitutivo",
+   "tipo_label": "Substitutivo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Substitutivo nº 2/2026",
+   "numero": "2/2026",
+   "data": "2026-07-14",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "legislação",
+   "resumo": "Este documento é um substitutivo, ou seja, uma nova versão de um projeto de lei em discussão na Câmara Municipal de Varginha-MG. A ementa do substitutivo é identificada como 'teste'.",
+   "o_que_propoe": "",
+   "por_que_acompanhar": [
+    "Acompanhar o processo legislativo garante a transparência na criação das leis municipais.",
+    "Entender as modificações propostas em projetos de lei é essencial para a participação cívica.",
+    "Mesmo substitutivos com ementas genéricas podem ser etapas importantes na tramitação de um projeto."
+   ],
+   "pontos_atencao": [
+    "A ementa 'teste' não oferece informações sobre o conteúdo ou o impacto real do substitutivo.",
+    "A autoria do substitutivo não foi identificada, o que dificulta a rastreabilidade da proposta.",
+    "É crucial consultar o texto completo do substitutivo para compreender suas implicações."
+   ],
+   "autor": "Autoria não identificada",
+   "situacao": "tramitação encerrada",
+   "ementa": "teste",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6079",
+    "inteiro_teor": ""
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "ef7f36834ae9c04e1a8194c193a7542147295034",
+   "gerado_em": "2026-07-14T21:47:42+00:00"
+  },
   {
    "id": "CAMARA-2026-PRES-7",
    "fonte": "camara",
@@ -98,7 +133,7 @@
    "ementa": "Moção de Aplauso ao Sr. Marcelo Rennó, em reconhecimento à sua destacada trajetória profissional e por levar o nome do município ao reconhecimento nacional por meio de seu trabalho na comunicação.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6076",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6076/mocao_marcelo_renno_revisada_13-07-26.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6076/mocao14-2026.pdf"
    },
    "origem_ia": "ia",
    "fonte_hash": "2ed5010781328a02f3690c384c77022267025291",
@@ -132,7 +167,7 @@
    "ementa": "Moção de Aplauso aos estudantes da Rede Municipal de Ensino que se destacaram na Olimpíada Brasileira de Matemática das Escolas Públicas – OBMEP 2025, levando o nome do município ao reconhecimento nacional por meio de suas brilhantes conquistas acadêmicas.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6075",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6075/mocao_olimpiada_de_matematica_municipal1_revisada_13-07-26.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6075/mocao13-2026.pdf"
    },
    "origem_ia": "ia",
    "fonte_hash": "664232304e823d0f6d44f35168aad87d873743de",

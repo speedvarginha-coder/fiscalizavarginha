@@ -6,11 +6,11 @@
   "emendas_valor_total_brl": 17841369.18,
   "impacto_zero_qtd": 328,
   "desfechos": {
-    "lei": 6,
-    "arquivado": 144,
-    "tramitando": 660,
+    "lei": 15,
+    "arquivado": 579,
+    "tramitando": 662,
     "encerrado": 0,
-    "sem_dado": 774
+    "sem_dado": 328
   },
   "tipos": [
     {
