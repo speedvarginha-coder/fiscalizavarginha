@@ -3,6 +3,7 @@ param(
   [switch]$SkipPackage,
   [switch]$SkipDeploy,
   [switch]$SkipWhatsApp,
+  [switch]$GitSync,
   [switch]$OnlyIfChanged,
 
   [ValidateSet("Full", "Sapl", "NoHeavy")]
@@ -411,6 +412,27 @@ try {
     } catch {
       $whatsAppStatus = "FALHA"
       Write-Log "ERRO de WhatsApp: $_"
+    }
+  }
+
+  # Backup automatico no GitHub (so com -GitSync e coleta validada com sucesso).
+  # Commita apenas os diretorios de dados; push nao-fatal (nao derruba o ciclo).
+  if ($GitSync -and $collectionStatus -eq "SUCESSO") {
+    try {
+      Write-Log "Sincronizando dados com o GitHub (commit + push)."
+      & git -C $root add -- painel-cidadao/data painel-cidadao/emendas/data 2>&1 | Out-Null
+      $pendentes = & git -C $root status --porcelain -- painel-cidadao/data painel-cidadao/emendas/data
+      if ($pendentes) {
+        $carimbo = Get-Date -Format "dd/MM/yyyy HH:mm"
+        & git -C $root commit -q -m "chore(dados): coleta diaria automatica $carimbo" 2>&1 | Out-Null
+        & git -C $root push origin master 2>&1 | Out-Null
+        if ($LASTEXITCODE -eq 0) { Write-Log "GitHub sincronizado (dados commitados e enviados)." }
+        else { Write-Log "AVISO: push para o GitHub falhou (commit local feito; nao bloqueia)." }
+      } else {
+        Write-Log "Sem mudancas de dados para commitar."
+      }
+    } catch {
+      Write-Log "AVISO: sync com GitHub falhou (nao bloqueia o ciclo): $_"
     }
   }
 
