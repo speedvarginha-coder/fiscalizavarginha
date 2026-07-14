@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-13T18:12:15.091Z",
+  "gerado_em": "2026-07-14T12:53:41.291Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -9,8 +9,8 @@
     "total": 9
   },
   "atualizado_base": {
-    "iso": "2026-07-13T15:05:23",
-    "data_humana": "13/07/2026 - 15:05"
+    "iso": "2026-07-14T09:52:54",
+    "data_humana": "14/07/2026 - 09:52"
   },
   "items": [
     {
@@ -49,7 +49,7 @@
       "severity": "warning",
       "id": "cnpj-falhas",
       "title": "Falhas de consulta CNPJ",
-      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
+      "detail": "78 CNPJ(s) nao foram enriquecidos na base auxiliar.",
       "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
       "source": "cnpjs.json"
     },
@@ -81,7 +81,7 @@
       "severity": "warning",
       "id": "emendas-sem-repasses",
       "title": "Emendas de alto valor sem repasse identificado",
-      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
+      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura (R$ 105k - Zilda Silva); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 93k - Cássio Chiodi); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 50k - Rogério Bueno).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
       "source": "prefeitura.json"
     }
@@ -123,7 +123,7 @@
       "severity": "warning",
       "id": "cnpj-falhas",
       "title": "Falhas de consulta CNPJ",
-      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
+      "detail": "78 CNPJ(s) nao foram enriquecidos na base auxiliar.",
       "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
       "source": "cnpjs.json"
     },
@@ -155,7 +155,7 @@
       "severity": "warning",
       "id": "emendas-sem-repasses",
       "title": "Emendas de alto valor sem repasse identificado",
-      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
+      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura (R$ 105k - Zilda Silva); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 93k - Cássio Chiodi); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 50k - Rogério Bueno).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
       "source": "prefeitura.json"
     }

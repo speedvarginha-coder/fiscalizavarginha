@@ -1,62 +1,40 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-13T18:12:16.117Z",
+  "gerado_em": "2026-07-14T12:53:43.007Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-07-13T15-05-23-45a17cf0",
-    "coleta_iso": "2026-07-13T15:05:23",
-    "data_humana": "13/07/2026 - 15:05",
-    "arquivo": "data/snapshots/2026-07-13T15-05-23-45a17cf0.json"
+    "snapshot_id": "2026-07-14T09-52-54-d2977994",
+    "coleta_iso": "2026-07-14T09:52:54",
+    "data_humana": "14/07/2026 - 09:52",
+    "arquivo": "data/snapshots/2026-07-14T09-52-54-d2977994.json"
   },
   "anterior": {
-    "snapshot_id": "2026-07-11T12-23-52-e5221538",
-    "coleta_iso": "2026-07-11T12:23:52",
-    "data_humana": "11/07/2026 - 12:23",
+    "snapshot_id": "2026-07-13T15-05-23-68dadcd5",
+    "coleta_iso": "2026-07-13T15:05:23",
+    "data_humana": "13/07/2026 - 15:05",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 3,
+    "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 0,
+    "novas_edicoes_diario": 1,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 42500,
+    "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 3
+    "total_mudancas": 1
   },
   "itens": [
     {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 0/0 - AUTO PECAS G.L. LTDA",
-      "detalhe": "Registro de Preços para futura e eventual contratação de empresa especializada na prestação de serviços de manutenção de suspensão, com fornecimento e recuperação de feixe de molas",
-      "orgao": "Prefeitura",
-      "data": "2026-07-02",
-      "valor_brl": 29900,
-      "alvo_id": "PREFEITURA-0-0"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 0/0 - FEDERACAO PARANAENSE DE VOLEIBOL",
-      "detalhe": "Contratação, por INEXIGIBILIDADE, da FEDERAÇÃO PARANAENSE DE VOLEIBOL, inscrita no CNPJ n. 76.024.173/0001-01, para participação de duas equipes femininas de voleibol, representantes do município de Varginha/MG, sendo uma na categoria Sub-15 e outra na Sub-17, no campeonato TAÇA PARANÁ 2026, uma das mais tradicionais competições de base do Brasil, que ocorrerá em São José dos Pinhais e Curitiba/PR, com o pagamento de Taxas e Despesas.",
-      "orgao": "Prefeitura",
-      "data": "2026-07-10",
-      "valor_brl": 8000,
-      "alvo_id": "PREFEITURA-0-0"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 0/0 - AEC CAD BIM SOFTWARES COMERCIO E SERVICOS EM INFORMATICA LTDA",
-      "detalhe": "Aquisição de 02 (duas) licenças vitalícias de software GstarCAD LT 2027 da marca Gstarsoft",
-      "orgao": "Prefeitura",
-      "data": "2026-07-13",
-      "valor_brl": 4600,
-      "alvo_id": "PREFEITURA-0-0"
+      "tipo": "nova_edicao_diario",
+      "prioridade": "media",
+      "titulo": "Nova edicao do Diario Oficial 1782",
+      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
+      "data": "2026-04-17",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/189/"
     }
   ],
   "avisos": []

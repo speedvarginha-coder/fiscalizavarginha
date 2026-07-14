@@ -1,14 +1,14 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6208730.73,
-  "total_externo_anterior": 8406675.93,
-  "empenhos_qtd": 3080,
+  "total_externo_atual": 6820295.98,
+  "total_externo_anterior": 8421296.43,
+  "empenhos_qtd": 3083,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
-      "valor_total": 1393222.92,
-      "qtd": 1
+      "valor_total": 2000000.0,
+      "qtd": 2
     },
     {
       "nome": "VEROCHEQUE REFEICOES LTDA",
@@ -57,8 +57,13 @@
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 158030.56,
-      "qtd": 20
+      "valor_total": 133955.97,
+      "qtd": 15
+    },
+    {
+      "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
+      "valor_total": 114808.12,
+      "qtd": 4
     },
     {
       "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
@@ -69,11 +74,6 @@
       "nome": "49.906.995 FABIOLA SEBASTIANA KELLY SILVA",
       "valor_total": 103989.11,
       "qtd": 1
-    },
-    {
-      "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
-      "valor_total": 86934.36,
-      "qtd": 3
     },
     {
       "nome": "TELEVISAO SUL DE MINAS S/A",
@@ -124,8 +124,8 @@
     },
     {
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 471622.86,
-      "qtd": 40
+      "valor_total": 491871.78,
+      "qtd": 41
     },
     {
       "nome": "BETHA SISTEMAS LTDA",
@@ -144,8 +144,8 @@
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 289865.93,
-      "qtd": 38
+      "valor_total": 291437.51,
+      "qtd": 39
     },
     {
       "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
@@ -542,7 +542,7 @@
       "contratado": "GENTE SEGURADORA SA",
       "cnpj": "90.180.605/****-**",
       "valor": 2050.54,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {

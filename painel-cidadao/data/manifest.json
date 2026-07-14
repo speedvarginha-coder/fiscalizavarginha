@@ -1,15 +1,15 @@
 {
-  "gerado_em": "2026-07-13T18:12:17.171Z",
+  "gerado_em": "2026-07-14T12:53:44.323Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
       "bytes": 76,
-      "sha256": "663ea2208109f1fed4f447c79942b84079e3a3d0707b455572b8b4ba878fe15f"
+      "sha256": "8bc7925cb62e76e5f82c60b5ea926521be11f24b09e4b3003e7a5dc8fa539b6b"
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 8534,
-      "sha256": "f7740097fde86e1dcc95909ae473fb5b3d72f2f4e31893251afc6ecb0580f332"
+      "bytes": 8614,
+      "sha256": "87640313b375d526883f1bd8170c6f88ac4a983063b075cc3937f586c1fd751a"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -18,8 +18,8 @@
     },
     "camara_betha": {
       "arquivo": "data/chunks/camara_betha.json",
-      "bytes": 37597,
-      "sha256": "c92d5497e71a106774293acd6390d4d147481a3d7996e051781f735a452c5313"
+      "bytes": 37598,
+      "sha256": "dc1e9e19dcb35f9a4c166a6e76ac6d77ed9893d6f6178e4e85192e447d8d1d68"
     },
     "camara_transparencia": {
       "arquivo": "data/chunks/camara_transparencia.json",
@@ -28,13 +28,13 @@
     },
     "cnpjs": {
       "arquivo": "data/chunks/cnpjs.json",
-      "bytes": 71194,
-      "sha256": "9b3e8c8048dff4ec5fb5084953a84a53d31e7ab224c32e1b749c5eb957030e07"
+      "bytes": 21934,
+      "sha256": "25053e9bf077136859b6b41047726aeb0175be1bee869ee1ab86dc2b09dd6a4a"
     },
     "diarias": {
       "arquivo": "data/chunks/diarias.json",
       "bytes": 3957311,
-      "sha256": "49d740228bf564ac79e1d45a741e6fbc0ae61cfd1dfa3ce7fc44856534e2a644"
+      "sha256": "6aa4ddc44d246a9b086d8211c23107271ee38d358e495c05cea44f055c4c04db"
     },
     "diario": {
       "arquivo": "data/chunks/diario.json",
@@ -48,38 +48,38 @@
     },
     "federal": {
       "arquivo": "data/chunks/federal.json",
-      "bytes": 161004,
-      "sha256": "6c33df493a577351140d8ff5b1a3a21fb812a28fcd97e5f7e6378b7511327a35"
+      "bytes": 160968,
+      "sha256": "f92d3e1bdc3d3ce1e315b3fe2b592d2c62cb939d20cccb5e8dc8ea4a078af6d8"
     },
     "fontes_emendas_2026": {
       "arquivo": "data/chunks/fontes_emendas_2026.json",
       "bytes": 8468,
-      "sha256": "d38d272bca879c571b119d1c3b60003568002ebaa6057a10b3743d07497d5f4c"
+      "sha256": "b5ac204392fb4905469dfb079734643a58ea54118578e56353faa885481b95d1"
     },
     "fundacao_cultural": {
       "arquivo": "data/chunks/fundacao_cultural.json",
       "bytes": 1205952,
-      "sha256": "227cb7c77e18f47e66ed8c82b81b7c63417743fd53e7890957dc95731c2c3a40"
+      "sha256": "6fc59dbe3ef46608089530d8957f399c56dcb76130a86565a42c516e915982a3"
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
       "bytes": 102848,
-      "sha256": "9e235dcc1b78ee540de8bc2b86a8a2b8c9c6c5db277024990565d865b34d69c6"
+      "sha256": "6cc14e9599e54371d7ee0992dc4aad35b8757b44f9813f2adaf3a4fbe23c535a"
     },
     "monitoramento_coletas": {
       "arquivo": "data/chunks/monitoramento_coletas.json",
-      "bytes": 3700,
-      "sha256": "391529f118af334b88544f243c76680d0a6aabbf8df1c9d896366a11f5ded9ce"
+      "bytes": 3695,
+      "sha256": "f58c451a9db20d1aab9945680b9bf72534c9647b055ef4c8883b692b93586a6c"
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
-      "bytes": 2464,
-      "sha256": "43e00db582bdc80ba6d0b8d0456eb2b85944c4bec2060a3d225e078c8db944af"
+      "bytes": 1161,
+      "sha256": "e2bf7dbf948b4950c3fb4286ae6f827fe976185d50a4a1f88f48a74dc778bb2a"
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
       "bytes": 2512622,
-      "sha256": "f4e6b2db57bbea6b049ce736d803af6a18a55f4fbb72f79a6a7413fd0240818c"
+      "sha256": "acba4a19477e205d8fd204973bc6347acd65699fd8ccfee7d836e075f062afec"
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
@@ -88,18 +88,18 @@
     },
     "prefeitura": {
       "arquivo": "data/chunks/prefeitura.json",
-      "bytes": 4826435,
-      "sha256": "f1b83441aac0aebdbfca77b68d979d171848d122b5cd23568079c7409361d540"
+      "bytes": 4826472,
+      "sha256": "6255bbf32e5b3aa3c9071e10e560f044fc6bed54ae91681d93186eba1a2eebdc"
     },
     "publicacoes_diario": {
       "arquivo": "data/chunks/publicacoes_diario.json",
-      "bytes": 159438,
-      "sha256": "414bda9497f2e1ff0894aa3f3ae27ebfb8cfba9840c27307b666136b2342d82c"
+      "bytes": 154738,
+      "sha256": "5e5ba52bdfb36a0ceda9387c121c9284340d752af4a1b0bda0824748ce9824f8"
     },
     "publicacoes_estruturadas": {
       "arquivo": "data/chunks/publicacoes_estruturadas.json",
-      "bytes": 1453452,
-      "sha256": "1935fac6b194a7fb6656d04661f9bae54cac1d42f7d23870a5dfcca5c4aedd90"
+      "bytes": 1453355,
+      "sha256": "ee0645aad10c4967953041e9382ff732f0956a78400fe463737022f0cc14766a"
     },
     "receitas": {
       "arquivo": "data/chunks/receitas.json",
@@ -124,7 +124,7 @@
     "status_fontes": {
       "arquivo": "data/chunks/status_fontes.json",
       "bytes": 3173,
-      "sha256": "1b342c70f01a7ef90320f64223c13fd6226d3ad47863c479d548a4563e113d6c"
+      "sha256": "0ebfef1d1f469fba0989d43eef81881e0fdf3edae15d7f5bc7b295302c22750e"
     },
     "vereadores": {
       "arquivo": "data/chunks/vereadores.json",
@@ -135,12 +135,8 @@
   "snapshots": {
     "diretorio": "data/snapshots",
     "total": 30,
-    "ultimo": "2026-07-13T15-05-23-45a17cf0.json",
+    "ultimo": "2026-07-14T09-52-54-d2977994.json",
     "arquivos": {
-      "2026-06-16T06-48-15-0c4bf63c.json": {
-        "bytes": 651174,
-        "sha256": "00bb81b5f15c36714a600ed21f281f7ac8450d3ccfc52ccf71c569565b9290b4"
-      },
       "2026-06-17T01-20-03-718e74b2.json": {
         "bytes": 653324,
         "sha256": "b736cb8e407954a202409ec4661dd200ef3acf18be6d4fed4d140e478834cf9f"
@@ -256,6 +252,10 @@
       "2026-07-13T15-05-23-45a17cf0.json": {
         "bytes": 968476,
         "sha256": "6c6ae24ecffe70228b644126de89f655562e38e95172e27df6e6e0b8f64c4d00"
+      },
+      "2026-07-14T09-52-54-d2977994.json": {
+        "bytes": 968514,
+        "sha256": "3f37dd6381744fe14cf5b8b57c4c312a121b9c2225eb04ece86023e2e60b6456"
       }
     }
   }

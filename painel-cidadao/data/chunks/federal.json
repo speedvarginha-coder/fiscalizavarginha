@@ -1,10 +1,10 @@
 {
   "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
-  "atualizado_em": "2026-07-13T15:03:00.841800",
+  "atualizado_em": "2026-07-14T09:47:02.210885",
   "resumo": {
     "municipio": "Varginha-MG",
     "codigoIbge": "3170701",
-    "atualizadoEm": "13/07/2026 15:03",
+    "atualizadoEm": "14/07/2026 09:47",
     "emendas": {
       "qtd": 0,
       "totalEmpenhado": 0,
@@ -14,8 +14,8 @@
     "convenios": {
       "qtd": 164,
       "qtdAtivos": 13,
-      "totalValor": 62431972.12,
-      "totalRecebido": 50858806.3
+      "totalValor": 61592056.12,
+      "totalRecebido": 50018890.3
     },
     "alertasCeis": {
       "qtd": 0,
@@ -1017,9 +1017,9 @@
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "2002-07-05",
       "dataFinalVigencia": "2004-03-04",
-      "valor": 250000.0,
-      "valorLiberado": 250000.0,
-      "valorRecebido": 250000.0,
+      "valor": 25.0,
+      "valorLiberado": 25.0,
+      "valorRecebido": 25.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=354145225",
@@ -1057,9 +1057,9 @@
       "situacao": "EXCLUÍDO",
       "dataInicioVigencia": "2007-12-31",
       "dataFinalVigencia": "2013-12-30",
-      "valor": 440000.0,
-      "valorLiberado": 440000.0,
-      "valorRecebido": 440000.0,
+      "valor": 44.0,
+      "valorLiberado": 44.0,
+      "valorRecebido": 44.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=354932292",
@@ -1217,9 +1217,9 @@
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "2008-12-31",
       "dataFinalVigencia": "2014-11-27",
-      "valor": 150000.0,
-      "valorLiberado": 150000.0,
-      "valorRecebido": 150000.0,
+      "valor": 15.0,
+      "valorLiberado": 15.0,
+      "valorRecebido": 15.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=355965314",

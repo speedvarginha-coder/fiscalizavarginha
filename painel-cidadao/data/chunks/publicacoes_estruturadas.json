@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-07-13T18:05:52+00:00",
+ "gerado_em": "2026-07-14T12:53:07+00:00",
  "fonte": "camara",
  "total": 726,
  "publicacoes": [
@@ -558,27 +558,27 @@
    "categoria": "Legislativo",
    "interesse_publico": "baixo",
    "tema": "urbanismo",
-   "resumo": "Este projeto de lei propõe dar um nome oficial a uma rua específica no bairro Terra Nobre, em Varginha-MG.",
-   "o_que_propoe": "A Rua B, localizada no bairro Terra Nobre, passará a ser chamada de Rua Mário Kiser.",
+   "resumo": "Este projeto de lei propõe dar um nome oficial a uma rua no bairro Terra Nobre.",
+   "o_que_propoe": "A Rua B, localizada no bairro Terra Nobre, passará a se chamar Rua Mário Kieser.",
    "por_que_acompanhar": [
-    "Para conhecer as homenagens feitas a personalidades locais e sua relevância para a comunidade.",
-    "Para entender como os espaços públicos são identificados e organizados na cidade.",
-    "Para participar de discussões sobre a identidade e história dos bairros."
+    "Acompanhar a homenagem a Mário Kieser e entender sua relevância para a comunidade.",
+    "Verificar o processo de escolha do nome e se houve participação popular.",
+    "Impacta diretamente os moradores da Rua B, que terão um novo endereço."
    ],
    "pontos_atencao": [
-    "A mudança de nome de uma rua pode gerar custos administrativos para a prefeitura, como a confecção de novas placas de identificação.",
-    "É importante verificar se a comunidade local foi consultada ou se há consenso sobre a homenagem."
+    "Possíveis custos para os moradores da Rua B com a atualização de documentos e cadastros.",
+    "A justificativa para a escolha do nome \"Mário Kieser\" não está detalhada no texto."
    ],
    "autor": "Zilda Silva",
-   "situacao": "em tramitação",
-   "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A RUA B, NO BAIRRO TERRA NOBRE, PASSARÁ A DENOMINAR-SE RUA MÁRIO KISER.",
+   "situacao": "tramitação encerrada",
+   "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A RUA B, NO BAIRRO TERRA NOBRE, PASSARÁ A DENOMINAR-SE RUA MÁRIO KIESER.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6074",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/zilda_p.l.___denominacao_logradouro_mario_kieser_revisado.docx"
    },
    "origem_ia": "ia",
-   "fonte_hash": "933c08991535b37d1a536df41abd3f2852352b8e",
-   "gerado_em": "2026-07-08T20:34:09+00:00"
+   "fonte_hash": "50592ccdcfe638fdf94a251c504ce735c8d8200e",
+   "gerado_em": "2026-07-14T12:53:07+00:00"
   },
   {
    "id": "CAMARA-2026-PLOL-62",
@@ -708,7 +708,7 @@
     "Verificar se a homenagem reflete o desejo da comunidade local."
    ],
    "autor": "Afonso Monticeli",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "DISPÕE SOBRE DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A RUA 12 NO BAIRRO PRAÇA DA MATA, PASSARÁ A DENOMINA-SE RUA LOURIVAL SILVA",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6065",
@@ -810,7 +810,7 @@
     "Observar os custos envolvidos na cerimônia de entrega e na confecção da comenda."
    ],
    "autor": "Dandan",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "CONCEDE COMENDA DO MÉRITO EDUCACIONAL À OLGA PIRES DA SILVA JUNQUEIRA",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6069",
@@ -3359,7 +3359,7 @@
     "Custos de manutenção da nova vegetação em comparação com a atual."
    ],
    "autor": "Dandan",
-   "situacao": "tramitação encerrada",
+   "situacao": "em tramitação",
    "ementa": "Requer informações acerca da viabilidade técnica e operacional de substituição da vegetação/grama existente no canteiro central localizado entre a Avenida Princesa do Sul (nas proximidades do nº 3.300) e a MG-167, nas imediações do Parque de Exposições.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/5967",

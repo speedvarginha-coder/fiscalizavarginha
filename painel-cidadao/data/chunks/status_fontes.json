@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-13T18:12:15.224Z",
+  "gerado_em": "2026-07-14T12:53:41.478Z",
   "domains": {
     "atualizado_em": {
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-07-13T18:05:23.000Z",
+      "source_updated_at": "2026-07-14T12:52:54.000Z",
       "age_days": 0,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -53,15 +53,15 @@
     "fontes_emendas_2026": {
       "label": "Fontes de emendas 2026",
       "status": "partial",
-      "source_updated_at": "2026-07-11T12:34:55.000Z",
-      "age_days": 2.2,
+      "source_updated_at": "2026-07-14T12:45:41.000Z",
+      "age_days": 0,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
     "indice_relevancia": {
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-07-13T18:12:12.585Z",
+      "source_updated_at": "2026-07-14T12:53:37.940Z",
       "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
@@ -70,7 +70,7 @@
       "label": "Diario Oficial",
       "status": "ok",
       "source_updated_at": "2026-07-10T18:05:47.000Z",
-      "age_days": 3,
+      "age_days": 3.8,
       "max_age_days": 5,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -85,7 +85,7 @@
     "publicacoes_estruturadas": {
       "label": "Publicacoes da Camara",
       "status": "preserved",
-      "source_updated_at": "2026-07-13T18:05:52.000Z",
+      "source_updated_at": "2026-07-14T12:53:07.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam preservacao da ultima base valida."
@@ -93,7 +93,7 @@
     "publicacoes_diario": {
       "label": "Publicacoes do Diario",
       "status": "partial",
-      "source_updated_at": "2026-07-13T18:12:10.000Z",
+      "source_updated_at": "2026-07-14T12:53:08.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."

@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-13T18:12:11.931Z",
+  "generated_at": "2026-07-14T12:53:36.743Z",
   "last_completed_run": {
-    "updated_at": "2026-07-13T18:12:11.840Z",
-    "finished_at": "2026-07-13 14:55:22",
+    "updated_at": "2026-07-14T12:53:36.638Z",
+    "finished_at": "2026-07-14 08:52:30",
     "coleta": "FALHA",
     "deploy": "PULADO",
     "whatsapp": "PULADO"
@@ -11,8 +11,8 @@
   "summary": {
     "total_sources": 12,
     "by_status": {
-      "ok": 3,
-      "partial": 5,
+      "ok": 2,
+      "partial": 6,
       "manual": 3,
       "preserved": 1,
       "failed": 0,
@@ -24,8 +24,8 @@
       "id": "atualizado_em",
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-07-11T15:23:52.000Z",
-      "age_days": 2.1,
+      "source_updated_at": "2026-07-13T18:05:23.000Z",
+      "age_days": 0,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -87,7 +87,7 @@
       "id": "indice_relevancia",
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-07-13T17:56:30.793Z",
+      "source_updated_at": "2026-07-13T18:12:12.585Z",
       "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
@@ -114,19 +114,19 @@
       "id": "publicacoes_estruturadas",
       "label": "Publicacoes da Camara",
       "status": "preserved",
-      "source_updated_at": "2026-07-12T18:37:04.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-07-13T18:05:52.000Z",
+      "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam preservacao da ultima base valida."
     },
     {
       "id": "publicacoes_diario",
       "label": "Publicacoes do Diario",
-      "status": "ok",
-      "source_updated_at": "2026-07-12T18:42:48.000Z",
-      "age_days": 1,
+      "status": "partial",
+      "source_updated_at": "2026-07-13T18:12:10.000Z",
+      "age_days": 0,
       "max_age_days": 7,
-      "reason": "Timestamp interno dentro da janela esperada."
+      "reason": "Metadados indicam cobertura parcial."
     }
   ]
 }
