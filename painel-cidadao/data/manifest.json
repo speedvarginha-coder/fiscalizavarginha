@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-17T17:20:09.698Z",
+  "gerado_em": "2026-07-17T17:45:26.066Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
@@ -9,7 +9,7 @@
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
       "bytes": 11524,
-      "sha256": "fde83f3f901a9d7fbc4737b5e45f5a8fb9b34023f041390aedaac4259b94f576"
+      "sha256": "b8363058951b4208d71937d8ee2387738ca04be6a5bdac831097c175b76f8613"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -83,8 +83,8 @@
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
-      "bytes": 2513667,
-      "sha256": "4814e1ca556764830f3cb46f18b0d00b0e7b8a146508cc6a84475255b06b1f95"
+      "bytes": 2559279,
+      "sha256": "a34376798d7ce4cec3d209a8e8c6b0f1ffde090cc3c1906b52d2bbaef5a9e803"
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
@@ -134,7 +134,7 @@
     "status_fontes": {
       "arquivo": "data/chunks/status_fontes.json",
       "bytes": 3165,
-      "sha256": "fe91b9cf9ee5f685faec265cb2dd17fa112e2b390d3fb1c28047f888fb498862"
+      "sha256": "bf55e7d603f58d1a280525eb1515153eda6c5f3682f57cd19b13dd69389489b0"
     },
     "tse_doacoes": {
       "arquivo": "data/chunks/tse_doacoes.json",

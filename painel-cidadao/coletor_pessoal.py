@@ -182,7 +182,26 @@ def _coletar_camara_betha(ano: int) -> list[dict]:
         portal_hash=CAMARA_PORTAL_HASH,
         ano_field="ano",
     )
-    return _normaliza_betha(res.get("main", []), "Camara", "Folha nominal da Camara")
+    rows = res.get("main", [])
+    servidores = _normaliza_betha(rows, "Camara", "Folha nominal da Camara")
+    # A consulta da Camara traz UMA linha por servidor/mes, mas a competencia
+    # mora no CSV linkado (processamentos_*.csv, campo 'competencia' AAAA-MM,
+    # com descricao Mensal/Ferias/13o). Sem ela o painel escolhia o "mes mais
+    # recente" pela ordem das linhas — chute — e nao exibia referencia.
+    linked_rows = res.get("linked_rows") or {}
+    for s, r in zip(servidores, rows):
+        ref = str(r.get("processamentos") or "").strip()
+        procs = linked_rows.get(ref) or []
+        comps = sorted({str(p.get("competencia") or "") for p in procs
+                        if str(p.get("competencia") or "").strip()})
+        if comps:
+            ult = comps[-1]  # 'AAAA-MM'
+            s["competencia"] = f"{ult[5:7]}/{ult[0:4]}"
+        tipos = sorted({str(p.get("descricao") or "").strip() for p in procs
+                        if str(p.get("descricao") or "").strip()})
+        if tipos:
+            s["tipos_folha"] = tipos[:4]
+    return servidores
 
 
 def _coletar_prefeitura_educacao_betha(ano: int) -> list[dict]:
@@ -267,7 +286,19 @@ def coletar() -> dict:
         servidores = _coletar_camara_betha(ano)
         payload["camara"]["servidores"] = servidores
         payload["camara"]["resumo"] = _resumo("Camara", servidores)
-        payload["camara"]["status"] = "Coletado automaticamente via Betha"
+        # Competencia da folha da Camara = mes mais recente entre as linhas
+        # (formato MM/AAAA; ordena por AAAA+MM para nao comparar so o mes).
+        comps = sorted(
+            {s.get("competencia") for s in servidores if s.get("competencia")},
+            key=lambda c: (c[3:7], c[0:2]),
+        )
+        if comps:
+            payload["camara"]["competencia"] = comps[-1]
+            payload["camara"]["status"] = (
+                f"Coletado automaticamente via Betha (competencia {comps[-1]})"
+            )
+        else:
+            payload["camara"]["status"] = "Coletado automaticamente via Betha"
     except Exception as e:
         try:
             servidores = _parse_camara_html(_get_text(CAMARA_REMUNERACAO_URL))

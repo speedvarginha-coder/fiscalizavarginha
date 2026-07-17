@@ -4615,8 +4615,17 @@ ${url}
       });
 
       const consolidados = [];
+      // Ordena o histórico pela competência real (MM/AAAA → AAAAMM) quando o
+      // registro traz o mês; sem ela, mantém a ordem original como fallback.
+      // Antes o "mais recente" era o último da lista — dependia da ordem em
+      // que a API devolvia as linhas.
+      const chaveComp = (s) => {
+        const m = String(s.competencia || "").match(/^(\d{2})\/(\d{4})$/);
+        return m ? m[2] + m[1] : "";
+      };
       Object.keys(grupos).forEach(chave => {
-        const historico = grupos[chave];
+        const historico = grupos[chave].slice()
+          .sort((a, b) => chaveComp(a).localeCompare(chaveComp(b)));
         const maisRecente = { ...historico[historico.length - 1], orgao };
         
         const vencimentosValidos = historico
