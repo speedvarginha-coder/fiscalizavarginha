@@ -457,6 +457,42 @@ if (cnpjErrors.length) {
   );
 }
 
+// --- Sócio em comum entre empresas distintas da base cadastral ---
+// O QSA vem só com o NOME do sócio (sem CPF), então homônimos são possíveis:
+// isto é um indício a verificar, nunca uma conclusão. Duas empresas com sócio
+// em comum recebendo recurso público merecem conferência humana (a lei não
+// proíbe; o risco fiscalizável é participação alternada em licitações).
+{
+  const socioMap = new Map();
+  for (const emp of chunks.cnpjs?.empresas || []) {
+    const raiz = cnpjRoot(emp.cnpj);
+    const nomeEmp = emp.razao_social || emp.nome_fantasia || "";
+    if (!raiz || /MUNICIPIO|PREFEITURA|CAMARA MUNICIPAL|FUNDO MUNICIPAL/.test(normalizeText(nomeEmp))) continue;
+    for (const socio of emp.socios || []) {
+      const key = normalizeText(socio);
+      if (!key || key.split(" ").length < 2) continue;
+      if (!socioMap.has(key)) socioMap.set(key, new Map());
+      socioMap.get(key).set(raiz, nomeEmp);
+    }
+  }
+  const vinculos = [];
+  for (const [socio, empresas] of socioMap) {
+    if (empresas.size >= 2) {
+      vinculos.push({ socio, empresas: [...empresas.values()] });
+    }
+  }
+  if (vinculos.length) {
+    add(
+      "warning",
+      "socios-em-comum",
+      "Empresas da base com socio em comum (indicio a verificar)",
+      `${vinculos.length} nome(s) de socio aparecem em 2+ empresas distintas que receberam recurso publico. Exemplos: ${vinculos.slice(0, 3).map((v) => `${v.socio} (${v.empresas.slice(0, 2).join(" e ")})`).join("; ")}. O QSA nao traz CPF: homonimos sao possiveis e isto NAO e conclusao de irregularidade.`,
+      "Conferir manualmente os quadros societarios e verificar se as empresas disputaram as mesmas licitacoes antes de qualquer divulgacao.",
+      "cnpjs.json",
+    );
+  }
+}
+
 const camaraTop = (chunks.camaraBetha?.top_fornecedores_atual || []).slice(0, 20);
 // Os maiores pagadores incluem fornecedores da Prefeitura; cruza contra os
 // contratos das duas esferas para não acusar "sem contrato" um fornecedor que
