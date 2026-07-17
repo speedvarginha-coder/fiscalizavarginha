@@ -229,10 +229,27 @@ function calcularAno(ano, bloco) {
     v.posicao = index + 1;
   });
 
-  // Cobertura do ano = média da cobertura individual (varia se algum vereador
-  // não tem presença). Com presença de toda a Casa, chega a 100%.
-  const coberturaAno = ranking.length
-    ? pct(ranking.reduce((s, v) => s + (v.cobertura_pct || 0), 0) / ranking.length)
+  // Se a presença do ano foi coletada (alguém tem dado), quem ficou null é
+  // parlamentar SEM mandato vigente no período (a coleta SAPL cobre toda a
+  // Casa pela janela de mandato). Ex-vereador com matérias residuais não pode
+  // rebaixar a cobertura do índice — presença dele é "não aplicável".
+  const presencaColetada = ranking.some((v) => v.presenca_pct !== null);
+  if (presencaColetada) {
+    for (const v of ranking) {
+      if (v.presenca_pct === null) {
+        v.sem_mandato_no_periodo = true;
+        v.pendencias = v.pendencias.filter((p) => !p.startsWith("presenca"));
+      }
+    }
+  }
+  const ativos = presencaColetada
+    ? ranking.filter((v) => !v.sem_mandato_no_periodo)
+    : ranking;
+
+  // Cobertura do ano = média da cobertura individual dos parlamentares com
+  // mandato vigente. Com presença de toda a Casa, chega a 100%.
+  const coberturaAno = ativos.length
+    ? pct(ativos.reduce((s, v) => s + (v.cobertura_pct || 0), 0) / ativos.length)
     : pct(PESOS.legislar + PESOS.fiscalizar + PESOS.representar);
   const comPresenca = ranking.filter((v) => v.presenca_pct !== null).length;
 

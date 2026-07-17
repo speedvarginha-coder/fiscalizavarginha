@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-17T10:09:39.660Z",
+  "gerado_em": "2026-07-17T12:51:46.186Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
@@ -8,8 +8,8 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 8534,
-      "sha256": "d324cb2f811e161d8bcd6ff8882707c393577e157944860be3e5c525676bc74d"
+      "bytes": 7794,
+      "sha256": "6ced4f2995a0d18f83a5a5b3139f3344f9a68b58d99bcb1b03caa84148bdf9df"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -63,8 +63,8 @@
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
-      "bytes": 102774,
-      "sha256": "a850b425a7ce6e8d7af1b5e0fd35472b54be32bc1f70b0e91668971d072c95a4"
+      "bytes": 102722,
+      "sha256": "0e25ff8acff01d4962f2223bd0f19542096050347c4026021a79ea5245173c30"
     },
     "monitoramento_coletas": {
       "arquivo": "data/chunks/monitoramento_coletas.json",
@@ -123,8 +123,13 @@
     },
     "status_fontes": {
       "arquivo": "data/chunks/status_fontes.json",
-      "bytes": 3155,
-      "sha256": "67abee82b7c9e676fb45c781d4a7bfb55e6f018ae5201fd4d5b1dacc559f1efb"
+      "bytes": 3163,
+      "sha256": "f7c3e28565d662710ca9247a8a780e8ccb23531759765f45c429be8a92c682df"
+    },
+    "tse_doacoes": {
+      "arquivo": "data/chunks/tse_doacoes.json",
+      "bytes": 18042,
+      "sha256": "14ec8ec8c7aed58ce13173e56ee481e1041c3245406df97044309f0baf83d2d0"
     },
     "vereadores": {
       "arquivo": "data/chunks/vereadores.json",

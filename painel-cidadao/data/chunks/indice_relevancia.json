@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-17T10:09:35.273Z",
+  "gerado_em": "2026-07-17T12:51:45.516Z",
   "fonte": {
     "principal": "camara_anos.json",
     "origem": "SAPL Camara Municipal de Varginha",
@@ -1726,8 +1726,8 @@
     "2026": {
       "ano": 2026,
       "status": "parcial_auditavel",
-      "cobertura_pct": 97.2,
-      "confianca_dados_pct": 97.2,
+      "cobertura_pct": 100,
+      "confianca_dados_pct": 100,
       "vereadores_monitorados": 18,
       "vereadores_com_presenca": 16,
       "rankings_perfil": {
@@ -3419,14 +3419,13 @@
             "relatoria_processante",
             "audiencia_contas",
             "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_plenario",
-            "presenca_comissoes"
+            "audiencia_publica_diligencia"
           ],
           "explicacao": [
             "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
           ],
-          "posicao": 17
+          "posicao": 17,
+          "sem_mandato_no_periodo": true
         },
         {
           "nome": "Dr. Lucas",
@@ -3480,14 +3479,13 @@
             "relatoria_processante",
             "audiencia_contas",
             "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_plenario",
-            "presenca_comissoes"
+            "audiencia_publica_diligencia"
           ],
           "explicacao": [
             "nota baixa porque nao ha evidencias automaticas suficientes nas dimensoes pontuadas"
           ],
-          "posicao": 18
+          "posicao": 18,
+          "sem_mandato_no_periodo": true
         }
       ]
     }
