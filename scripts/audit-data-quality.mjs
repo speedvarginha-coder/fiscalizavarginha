@@ -583,21 +583,39 @@ if (emendasSemPagamentoAlto.length) {
   );
 }
 
-// --- Sanções CEIS/CNEP: fornecedor sancionado é o alerta máximo ---
+// --- Sanções CEIS/CNEP ---
+// Distinção jurídica (Lei 14.133, art. 156, §4º e §5º; jurisprudência STJ):
+// impedimento/suspensão valem perante o ENTE SANCIONADOR — empresa impedida
+// por outro município pode contratar legalmente com Varginha (aviso
+// informativo). Declaração de INIDONEIDADE vale contra toda a administração
+// pública (erro), assim como qualquer sanção aplicada pelo próprio município.
 if (chunks.sancoes?.sancoes_vigentes > 0) {
-  const exemplos = (chunks.sancoes.achados || [])
-    .filter((a) => a.sancao_vigente)
-    .slice(0, 3)
-    .map((a) => `${a.fornecedor_local} (${a.tipo} — ${a.base}, ${a.orgao_sancionador})`)
-    .join("; ");
-  add(
-    "error",
-    "fornecedor-sancionado",
-    "Fornecedor com sancao vigente no CEIS/CNEP",
-    `${chunks.sancoes.sancoes_vigentes} fornecedor(es)/contratado(s) do municipio constam com sancao vigente nos cadastros federais de empresas punidas. Exemplos: ${exemplos}.`,
-    "Confirmar no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade da contratacao.",
-    "sancoes.json",
-  );
+  const vigentes = (chunks.sancoes.achados || []).filter((a) => a.sancao_vigente);
+  const graves = vigentes.filter((a) => /INIDON/i.test(a.tipo || "")
+    || /VARGINHA/i.test(a.orgao_sancionador || ""));
+  const informativas = vigentes.filter((a) => !graves.includes(a));
+
+  if (graves.length) {
+    add(
+      "error",
+      "fornecedor-inidoneo",
+      "Fornecedor inidoneo ou sancionado pelo proprio municipio",
+      `${graves.length} sancao(oes) vigente(s) com alcance sobre Varginha: ${graves.slice(0, 3).map((a) => `${a.fornecedor_local} (${a.tipo} — ${a.orgao_sancionador})`).join("; ")}. Inidoneidade vale contra toda a administracao publica.`,
+      "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
+      "sancoes.json",
+    );
+  }
+  if (informativas.length) {
+    const fornecedores = [...new Set(informativas.map((a) => a.fornecedor_local))];
+    add(
+      "warning",
+      "fornecedor-sancionado-outro-ente",
+      "Fornecedores com sancao vigente aplicada por outros entes",
+      `${fornecedores.length} fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (${informativas.length} sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.`,
+      "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
+      "sancoes.json",
+    );
+  }
 } else if (chunks.sancoes?.verificados > 0) {
   add(
     "ok",

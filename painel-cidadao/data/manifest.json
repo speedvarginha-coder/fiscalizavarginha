@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-17T12:51:46.186Z",
+  "gerado_em": "2026-07-17T13:00:49.595Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
@@ -8,8 +8,8 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 7794,
-      "sha256": "6ced4f2995a0d18f83a5a5b3139f3344f9a68b58d99bcb1b03caa84148bdf9df"
+      "bytes": 10236,
+      "sha256": "5fc141afe0f6bb18979516cb19d3269cf51764778b644138295de9491317456f"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -64,12 +64,12 @@
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
       "bytes": 102722,
-      "sha256": "0e25ff8acff01d4962f2223bd0f19542096050347c4026021a79ea5245173c30"
+      "sha256": "d8c6c16519977dd46f5bd8f2dd6ba36922502bcf475a8098904c7d68d46797a9"
     },
     "monitoramento_coletas": {
       "arquivo": "data/chunks/monitoramento_coletas.json",
-      "bytes": 3679,
-      "sha256": "6e502fc63f4140a261e597e2799f0e083ee5acdcbcee017d34c76d3c4182f2b3"
+      "bytes": 3689,
+      "sha256": "34aa5b351d97673ac74d48feaf72c420eb818a87a086b4caaae7976691f193b7"
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
@@ -116,6 +116,11 @@
       "bytes": 2429,
       "sha256": "398bb0ed2df7bb022456512e1d78f82b7a47a001379a12107aa718d9e153ae4d"
     },
+    "sancoes": {
+      "arquivo": "data/chunks/sancoes.json",
+      "bytes": 62201,
+      "sha256": "a376bb8dad953825de66c60b36bfc6647e6dd24cf58757ed050f75a0de016f5b"
+    },
     "sancoes_fornecedores": {
       "arquivo": "data/chunks/sancoes_fornecedores.json",
       "bytes": 624,
@@ -124,7 +129,7 @@
     "status_fontes": {
       "arquivo": "data/chunks/status_fontes.json",
       "bytes": 3163,
-      "sha256": "f7c3e28565d662710ca9247a8a780e8ccb23531759765f45c429be8a92c682df"
+      "sha256": "b149e73252d86a8bd7c1b2071fb33a366b8b0f15d1b2bd38059b088c476223ba"
     },
     "tse_doacoes": {
       "arquivo": "data/chunks/tse_doacoes.json",
