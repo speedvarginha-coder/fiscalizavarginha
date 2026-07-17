@@ -1,89 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-14T21:51:25.225Z",
+  "gerado_em": "2026-07-17T10:09:38.831Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-07-14T18-47-19-2d811f04",
-    "coleta_iso": "2026-07-14T18:47:19",
-    "data_humana": "14/07/2026 - 18:47",
-    "arquivo": "data/snapshots/2026-07-14T18-47-19-2d811f04.json"
+    "snapshot_id": "2026-07-17T07-08-58-4f07992d",
+    "coleta_iso": "2026-07-17T07:08:58",
+    "data_humana": "17/07/2026 - 07:08",
+    "arquivo": "data/snapshots/2026-07-17T07-08-58-4f07992d.json"
   },
   "anterior": {
-    "snapshot_id": "2026-07-14T09-52-54-d2977994",
-    "coleta_iso": "2026-07-14T09:52:54",
-    "data_humana": "14/07/2026 - 09:52",
+    "snapshot_id": "2026-07-16T17-41-04-f8b31387",
+    "coleta_iso": "2026-07-16T17:41:04",
+    "data_humana": "16/07/2026 - 17:41",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 4,
+    "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 2,
+    "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 391709.91000000003,
+    "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 6
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 0/0 - ABBOTT LABORATORIOS DO BRASIL LTDA",
-      "detalhe": "Registro de Preços para eventual aquisição de Leitores e Sensores de glicemia Freestyle Libre 2 Plus do fabricante ABBOT",
-      "orgao": "Prefeitura",
-      "data": "2026-07-06",
-      "valor_brl": 344900,
-      "alvo_id": "PREFEITURA-0-0"
-    },
-    {
-      "tipo": "nova_edicao_diario",
-      "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1843",
-      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-07-14",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/"
-    },
-    {
-      "tipo": "nova_edicao_diario",
-      "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1842",
-      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-07-13",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/249/"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 79/2026 - GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
-      "detalhe": "Contratação de serviço de engenharia para construção do muro em concreto armado e alvenaria, com fornecimento de mão de obra, materiais e disponibilização de equipamentos necessários, na Escola Municipal São José – Anexo, na Av. João Martinho da Ponte, n. 555, Jardim Mont Serrat, Varginha/MG,",
-      "orgao": "Prefeitura",
-      "data": "2026-07-07",
-      "valor_brl": 45955.91,
-      "alvo_id": "PREFEITURA-2026-79"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 0/0 - HERICON FELIPE TRISTAO NASCIMENTO",
-      "detalhe": "AQUISIÇÃO DE MATERIAIS ELÉTRICO (LÂMPADAS).",
-      "orgao": "Camara",
-      "data": "2026-07-14",
-      "valor_brl": 470,
-      "alvo_id": "CAMARA-0-0"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 0/0 - CASA 500 MATERIAIS DE CONSTRUCAO LTDA",
-      "detalhe": "AQUISIÇÃO DE MATERIAIS ELÉTRICO (LÂMPADAS).",
-      "orgao": "Camara",
-      "data": "2026-07-14",
-      "valor_brl": 384,
-      "alvo_id": "CAMARA-0-0"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }

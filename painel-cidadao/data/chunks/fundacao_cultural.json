@@ -7,9 +7,9 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 2403486.46,
+    "total_atual": 2412167.1,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 330081.81,
+    "total_externo_atual": 338762.45,
     "total_externo_anterior": 3071916.67,
     "credores_atual_qtd": 112,
     "credores_anterior_qtd": 196,
@@ -41,25 +41,13 @@
       {
         "nome": "EDER JERONIMO DA SILVA",
         "cnpj": "051.299.***-**",
-        "valor_total": 13815.98,
+        "valor_total": 16539.18,
         "registros": 1
       },
       {
         "nome": "MP ASSESSORIA E TECNOLOGIA LTDA",
         "cnpj": "64.265.470/****-**",
         "valor_total": 12300.0,
-        "registros": 1
-      },
-      {
-        "nome": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "cnpj": "05.852.571/****-**",
-        "valor_total": 10000.0,
-        "registros": 1
-      },
-      {
-        "nome": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "cnpj": "14.137.358/****-**",
-        "valor_total": 10000.0,
         "registros": 1
       },
       {
@@ -89,6 +77,18 @@
       {
         "nome": "GREMIO RECREATIVO ESCOLA DE SAMBA UNIDOS DA VILA MENDES",
         "cnpj": "41.885.021/****-**",
+        "valor_total": 10000.0,
+        "registros": 1
+      },
+      {
+        "nome": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "cnpj": "14.137.358/****-**",
+        "valor_total": 10000.0,
+        "registros": 1
+      },
+      {
+        "nome": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "cnpj": "05.852.571/****-**",
         "valor_total": 10000.0,
         "registros": 1
       },
@@ -125,13 +125,13 @@
       {
         "nome": "PAULA REZENDE REIS",
         "cnpj": "014.601.***-**",
-        "valor_total": 4426.07,
+        "valor_total": 6499.27,
         "registros": 1
       },
       {
-        "nome": "LOPES & BACHA COMERCIO E PRESTACAO DE SERVICOS LTDA",
-        "cnpj": "01.076.618/****-**",
-        "valor_total": 3576.0,
+        "nome": "FRANCINE MAGANHA TERRA GOULART",
+        "cnpj": "089.318.***-**",
+        "valor_total": 5341.23,
         "registros": 1
       }
     ],
@@ -261,10 +261,10 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 212,
-      "empenhado": 3164837.0,
-      "liquidado": 2418475.29,
-      "pago": 2403486.46
+      "registros": 216,
+      "empenhado": 3173779.8,
+      "liquidado": 2439833.81,
+      "pago": 2412494.67
     },
     "maiores_empenhos_atual": [
       {
@@ -599,17 +599,6 @@
       },
       {
         "data": "2026-03-20",
-        "numero": 70,
-        "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
-        "credor": "PANIFICADORA PRINCESA LTDA",
-        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
-        "valor_empenhado": 12673.6,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 12673.6
-      },
-      {
-        "data": "2026-03-20",
         "numero": 71,
         "orgao": "ADMINISTRACAO",
         "credor": "PANIFICADORA PRINCESA LTDA",
@@ -618,6 +607,17 @@
         "valor_liquidado": 1901.04,
         "valor_pago": 1901.04,
         "saldo_a_pagar": 10772.56
+      },
+      {
+        "data": "2026-03-20",
+        "numero": 70,
+        "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
+        "credor": "PANIFICADORA PRINCESA LTDA",
+        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
+        "valor_empenhado": 12673.6,
+        "valor_liquidado": 2217.88,
+        "valor_pago": 26.61,
+        "saldo_a_pagar": 12646.99
       },
       {
         "data": "2026-04-08",
@@ -720,10 +720,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 23,
+        "numero": 24,
         "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -775,10 +775,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 24,
+        "numero": 19,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "BLOCO VIUVAS VIRGENS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -786,10 +786,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 19,
+        "numero": 23,
         "orgao": "ADMINISTRACAO",
-        "credor": "BLOCO VIUVAS VIRGENS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -945,9 +945,9 @@
         "credor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
         "historico": "Contratação de prestação de serviços para a aquisição de 03 (três) inscrições no curso Emendas Parlamentares Federais 2026: Captação, Execução e Transparência (Pós Mudanças do STF), a realizar-se no período de 30 de junho a 03 de julho de 2026, na sede do Instituto Plenum Brasil, em Brasília/DF.\n\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
         "valor_empenhado": 6270.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 6270.0
+        "valor_liquidado": 6270.0,
+        "valor_pago": 300.96,
+        "saldo_a_pagar": 5969.04
       },
       {
         "data": "2026-05-14",
@@ -1066,7 +1066,7 @@
         "credor": "JM INFORMATICA LTDA I",
         "historico": "Aquisição de materiais e equipamentos de rede e infraestrutura de TI, destinados à substituição dos equipamentos do Setor de Patrimônio Histórico da Fundação Cultural de Varginha, lotado na antiga estação ferroviária.\nLocal de entrega: Fundação Cultural de Varginha, na Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária). Horário de expediente: segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. Aos cuidados de Danielle.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
         "valor_empenhado": 3620.0,
-        "valor_liquidado": 0.0,
+        "valor_liquidado": 3620.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 3620.0
       },
@@ -1126,6 +1126,17 @@
         "saldo_a_pagar": 2240.0
       },
       {
+        "data": "2026-07-03",
+        "numero": 214,
+        "orgao": "ADMINISTRACAO",
+        "credor": "EDER JERONIMO DA SILVA",
+        "historico": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20\nCOMBUSTÍVEL: R$ 300,00\nPEDÁGIOS/ESTACIONAMENTO: R$ 200,00\nUBER/99: R$ 150,00",
+        "valor_empenhado": 2723.2,
+        "valor_liquidado": 2723.2,
+        "valor_pago": 2723.2,
+        "saldo_a_pagar": 0.0
+      },
+      {
         "data": "2026-06-22",
         "numero": 210,
         "orgao": "ADMINISTRACAO",
@@ -1135,17 +1146,6 @@
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 2713.4
-      },
-      {
-        "data": "2026-05-25",
-        "numero": 165,
-        "orgao": "ADMINISTRACAO",
-        "credor": "EDER JERONIMO DA SILVA",
-        "historico": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de formação avançada para agentes de contratação e pregoeiros na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 350% X R$ 180,00 = R$ 630,00\nHOSPEDAGEM: R$ 1.474,20\nCOMBUSTÍVEL: R$ 300,00\nPEDÁGIOS: R$ 200,00",
-        "valor_empenhado": 2604.2,
-        "valor_liquidado": 2604.2,
-        "valor_pago": 2604.2,
-        "saldo_a_pagar": 0.0
       }
     ],
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80382"
@@ -35223,6 +35223,18 @@
         "ano": "2026",
         "funcionario": "EDER JERONIMO DA SILVA",
         "cargo": "",
+        "numero": 214,
+        "quantidade": 1,
+        "valor_total": 2723.2,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "",
         "numero": 165,
         "quantidade": 1,
         "valor_total": 2604.2,
@@ -35274,6 +35286,42 @@
         "numero": 167,
         "quantidade": 1,
         "valor_total": 2104.2,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "ALBERISSA DE OLIVEIRA SAMUEL",
+        "cargo": "",
+        "numero": 213,
+        "quantidade": 1,
+        "valor_total": 2073.2,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "FRANCINE MAGANHA TERRA GOULART",
+        "cargo": "",
+        "numero": 215,
+        "quantidade": 1,
+        "valor_total": 2073.2,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "PAULA REZENDE REIS",
+        "cargo": "",
+        "numero": 216,
+        "quantidade": 1,
+        "valor_total": 2073.2,
         "periodo": "",
         "destino": "",
         "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
@@ -35484,18 +35532,6 @@
         "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
       },
       {
-        "ano": "2026",
-        "funcionario": "CARLOS DONIZETE CUNHA",
-        "cargo": "",
-        "numero": 196,
-        "quantidade": 1,
-        "valor_total": 1157.68,
-        "periodo": "",
-        "destino": "",
-        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
-        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
-      },
-      {
         "ano": "2025",
         "funcionario": "ANA LUIZA PEREIRA ROMANIELO",
         "cargo": "",
@@ -35613,6 +35649,18 @@
         "periodo": "",
         "destino": "",
         "finalidade": "MANUTENCAO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "CARLOS DONIZETE CUNHA",
+        "cargo": "",
+        "numero": 196,
+        "quantidade": 1,
+        "valor_total": 895.52,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
         "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
       },
       {
@@ -37985,7 +38033,7 @@
       "detalhadas_valor_total": 60116.37,
       "atual_qtd": 45,
       "atual_valor": 48437.23,
-      "orcamentarias_atual_valor": 39463.11
+      "orcamentarias_atual_valor": 48143.75
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/211697"
   },

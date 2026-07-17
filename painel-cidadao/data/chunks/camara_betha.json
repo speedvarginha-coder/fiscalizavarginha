@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6779221.39,
-  "total_externo_anterior": 8387923.59,
-  "empenhos_qtd": 3083,
+  "total_externo_atual": 6828158.23,
+  "total_externo_anterior": 8404990.51,
+  "empenhos_qtd": 3094,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -56,14 +56,14 @@
       "qtd": 1
     },
     {
+      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+      "valor_total": 133955.97,
+      "qtd": 15
+    },
+    {
       "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
       "valor_total": 114808.12,
       "qtd": 4
-    },
-    {
-      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 109881.38,
-      "qtd": 10
     },
     {
       "nome": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
@@ -124,8 +124,8 @@
     },
     {
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 451373.94,
-      "qtd": 39
+      "valor_total": 471622.86,
+      "qtd": 40
     },
     {
       "nome": "BETHA SISTEMAS LTDA",
@@ -224,6 +224,20 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
+      "numero": "4",
+      "ano": "2026",
+      "data_assinatura": "2026-03-02",
+      "data_fim": "2027-03-19",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de combustível compreendido por gasolina comum",
+      "contratado": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
+      "cnpj": "34.390.392/****-**",
+      "valor": 90276.49,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
       "numero": "0",
       "ano": "0",
       "data_assinatura": "2026-01-15",
@@ -248,20 +262,6 @@
       "contratado": "PANIFICADORA PRINCESA LTDA",
       "cnpj": "19.310.200/****-**",
       "valor": 63000.0,
-      "situacao": "EXECUCAO",
-      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
-    },
-    {
-      "numero": "4",
-      "ano": "2026",
-      "data_assinatura": "2026-03-02",
-      "data_fim": "2027-03-19",
-      "modalidade": "Dispensa eletrônica",
-      "tipo": "Compras e Serviços",
-      "objeto": "Aquisição de combustível compreendido por gasolina comum",
-      "contratado": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
-      "cnpj": "34.390.392/****-**",
-      "valor": 62402.73,
       "situacao": "EXECUCAO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
@@ -464,6 +464,20 @@
     {
       "numero": "0",
       "ano": "0",
+      "data_assinatura": "2026-07-15",
+      "data_fim": " ",
+      "modalidade": "Dispensa eletrônica",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE ESCADA DE ALUMÍNIO COM 7 DEGRAUS E REFRIGERADOR DUPLEX.",
+      "contratado": "FABRICA DE LADRILHOS MATERIAIS E SERVICOS NOSSA SENHORA DE FATIMA LTDA",
+      "cnpj": "55.796.672/****-**",
+      "valor": 3418.0,
+      "situacao": "EXECUCAO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
       "data_assinatura": "2026-01-20",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -571,6 +585,20 @@
       "cnpj": "00.538.257/****-**",
       "valor": 1800.0,
       "situacao": "ENCERRADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "0",
+      "data_assinatura": "2026-07-16",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "INSCRIÇÃO PARA CURSO: EMENDAS IMPOSITIVAS: ELABORAÇÃO, TRAMITAÇÃO E EXECUÇÃO ORÇAMENTÁRIA.",
+      "contratado": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
+      "cnpj": "21.650.715/****-**",
+      "valor": 1590.0,
+      "situacao": "EXECUCAO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
@@ -966,6 +994,16 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
+      "numero": "53",
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "AQUISIÇÃO DE ESCADA DE ALUMÍNIO COM 7 DEGRAUS E REFRIGERADOR DUPLEX.",
+      "data": "2026-07-15",
+      "valor": 3576.97,
+      "situacao": "HOMOLOGADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
       "numero": "7",
       "ano": "",
       "modalidade": "Inexigibilidade de licitação",
@@ -1033,6 +1071,16 @@
       "data": "2026-03-23",
       "valor": 2000.0,
       "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
+      "numero": "52",
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "AQUISIÇÃO DE MATERIAIS ELÉTRICO (LÂMPADAS).",
+      "data": "2026-07-15",
+      "valor": 1311.2,
+      "situacao": "HOMOLOGADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {

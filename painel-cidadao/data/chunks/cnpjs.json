@@ -953,7 +953,7 @@
       "cnpj": "23067736000182",
       "razao_social": "ESPORTE CLUBE MINAS RUGBY - ECMR",
       "nome_fantasia": "ESPORTE CLUBE MINAS RUGBY - ECMR",
-      "situacao": "INAPTA",
+      "situacao": "ATIVA",
       "abertura": "2015-07-06",
       "cnae": "Clubes sociais, esportivos e similares",
       "municipio": "VARGINHA",
@@ -1395,7 +1395,7 @@
       "municipio": "JUIZ DE FORA",
       "uf": "MG",
       "socios": [
-        "CHRIS RANDER DE OLIVEIRA LABRE"
+        "RICARDO CIRIBELI DE RESENDE"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 15000.0,
@@ -1538,7 +1538,7 @@
       "cnpj_raiz": "77930956",
       "cnpj_completo": "77930956000117",
       "cnpj_reconstruido": true,
-      "valor_total": 9953202.01,
+      "valor_total": 11923403.09,
       "razao_social": "VIACAO REAL TRANSPORTE URBANO E RODOVIARIO LTDA",
       "nome_fantasia": "VIACAO REAL",
       "situacao": "ATIVA",
@@ -1589,7 +1589,7 @@
       "cnpj_raiz": "57437279",
       "cnpj_completo": "57437279000192",
       "cnpj_reconstruido": true,
-      "valor_total": 4549185.77,
+      "valor_total": 4783243.2,
       "razao_social": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1742,7 +1742,7 @@
       "cnpj_raiz": "26001891",
       "cnpj_completo": "26001891000194",
       "cnpj_reconstruido": true,
-      "valor_total": 2854532.62,
+      "valor_total": 3000322.47,
       "razao_social": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1770,11 +1770,11 @@
       "uf": "MG",
       "socios": [
         "ALEXANDRE RAMOS PEIXOTO",
-        "ANDREA MARQUES DE ALMEIDA",
+        "DEMETRIO ALEXANDRE FERREIRA",
+        "ERNANDO ANTUNES BRAGA",
+        "LEONARDO GEORGE DE MAGALHAES",
         "LUIS CLAUDIO CORREA VILLANI",
-        "MARCO DA CAMINO ANCONA LOPEZ SOLIGO",
         "MARCOS MONTES CORDEIRO",
-        "MARNEY TADEU ANTUNES",
         "SERGIO LOPES CABRAL",
         "SERGIO PESSOA DE PAULA CASTRO"
       ],
@@ -1808,7 +1808,7 @@
       "cnpj_raiz": "05165851",
       "cnpj_completo": "05165851000108",
       "cnpj_reconstruido": true,
-      "valor_total": 2345381.4,
+      "valor_total": 2402568.0,
       "razao_social": "SERVICOS CFC LTDA",
       "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
       "situacao": "ATIVA",
@@ -2047,6 +2047,24 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "CASSERV - CAIXA DE ASSIST. A SAÚDE DOS SERV. PÚBL. DA PREFEI",
+      "cnpj_raiz": "35537390",
+      "cnpj_completo": "35537390000118",
+      "cnpj_reconstruido": true,
+      "valor_total": 1158337.5,
+      "razao_social": "CAIXA DE ASSISTENCIA A SAUDE DOS SERVIDORES PUBLICOS DA PREFEITURA MUNICIPAL DE VARGINHA-MG, DAS FUNDACOES, AUTARQUIAS E CAMARA MUNICIPAL",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2019-11-14",
+      "cnae": "Atividades associativas não especificadas anteriormente",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "CLAUDIO BORGES DO ESPIRITO SANTO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "ASSOCIAÇAO BENEFICENTE KERIGMA",
       "cnpj_raiz": "05549049",
       "cnpj_completo": "05549049000111",
@@ -2061,24 +2079,6 @@
       "uf": "MG",
       "socios": [
         "SEBASTIAO DINIZ"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "CASSERV - CAIXA DE ASSIST. A SAÚDE DOS SERV. PÚBL. DA PREFEI",
-      "cnpj_raiz": "35537390",
-      "cnpj_completo": "35537390000118",
-      "cnpj_reconstruido": true,
-      "valor_total": 1004442.7,
-      "razao_social": "CAIXA DE ASSISTENCIA A SAUDE DOS SERVIDORES PUBLICOS DA PREFEITURA MUNICIPAL DE VARGINHA-MG, DAS FUNDACOES, AUTARQUIAS E CAMARA MUNICIPAL",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2019-11-14",
-      "cnae": "Atividades associativas não especificadas anteriormente",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "CLAUDIO BORGES DO ESPIRITO SANTO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     }

@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-14T21:51:20.578Z",
+  "generated_at": "2026-07-17T10:09:34.326Z",
   "last_completed_run": {
-    "updated_at": "2026-07-14T21:51:20.478Z",
-    "finished_at": "2026-07-14 18:09:32",
-    "coleta": "FALHA",
-    "deploy": "PULADO",
-    "whatsapp": "PULADO"
+    "updated_at": "2026-07-17T02:29:36.715Z",
+    "finished_at": "2026-07-16 17:50:38",
+    "coleta": "SUCESSO",
+    "deploy": "SUCESSO",
+    "whatsapp": "SUCESSO"
   },
   "summary": {
     "total_sources": 12,
     "by_status": {
       "ok": 2,
-      "partial": 6,
+      "partial": 5,
       "manual": 3,
-      "preserved": 1,
+      "preserved": 2,
       "failed": 0,
       "unknown": 0
     }
@@ -24,7 +24,7 @@
       "id": "atualizado_em",
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-07-14T12:52:54.000Z",
+      "source_updated_at": "2026-07-16T20:41:04.000Z",
       "age_days": 0,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -59,11 +59,11 @@
     {
       "id": "pncp",
       "label": "PNCP",
-      "status": "partial",
+      "status": "preserved",
       "source_updated_at": null,
       "age_days": null,
       "max_age_days": 15,
-      "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
+      "reason": "Metadados indicam preservacao da ultima base valida."
     },
     {
       "id": "cnpjs",
@@ -78,7 +78,7 @@
       "id": "fontes_emendas_2026",
       "label": "Fontes de emendas 2026",
       "status": "partial",
-      "source_updated_at": "2026-07-14T12:45:41.000Z",
+      "source_updated_at": "2026-07-16T20:37:09.000Z",
       "age_days": 0,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
@@ -87,7 +87,7 @@
       "id": "indice_relevancia",
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-07-14T12:53:37.940Z",
+      "source_updated_at": "2026-07-16T20:45:00.638Z",
       "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
@@ -96,8 +96,8 @@
       "id": "diario",
       "label": "Diario Oficial",
       "status": "ok",
-      "source_updated_at": "2026-07-10T18:05:47.000Z",
-      "age_days": 3.8,
+      "source_updated_at": "2026-07-16T20:01:39.000Z",
+      "age_days": 0,
       "max_age_days": 5,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -114,7 +114,7 @@
       "id": "publicacoes_estruturadas",
       "label": "Publicacoes da Camara",
       "status": "preserved",
-      "source_updated_at": "2026-07-14T12:53:07.000Z",
+      "source_updated_at": "2026-07-16T20:41:12.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam preservacao da ultima base valida."
@@ -123,7 +123,7 @@
       "id": "publicacoes_diario",
       "label": "Publicacoes do Diario",
       "status": "partial",
-      "source_updated_at": "2026-07-14T12:53:08.000Z",
+      "source_updated_at": "2026-07-16T20:44:34.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."
