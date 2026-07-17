@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-17T13:00:41.061Z",
+  "gerado_em": "2026-07-17T17:20:06.757Z",
   "domains": {
     "atualizado_em": {
       "label": "Coleta principal",
       "status": "ok",
       "source_updated_at": "2026-07-17T10:08:58.000Z",
-      "age_days": 0.1,
+      "age_days": 0.3,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -54,7 +54,7 @@
       "label": "Fontes de emendas 2026",
       "status": "partial",
       "source_updated_at": "2026-07-17T10:05:16.000Z",
-      "age_days": 0.1,
+      "age_days": 0.3,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
@@ -62,7 +62,7 @@
       "label": "Indice de relevancia",
       "status": "partial",
       "source_updated_at": "2026-07-17T12:54:53.775Z",
-      "age_days": 0,
+      "age_days": 0.2,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -70,7 +70,7 @@
       "label": "Diario Oficial",
       "status": "ok",
       "source_updated_at": "2026-07-16T20:01:39.000Z",
-      "age_days": 0.7,
+      "age_days": 0.9,
       "max_age_days": 5,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -86,7 +86,7 @@
       "label": "Publicacoes da Camara",
       "status": "preserved",
       "source_updated_at": "2026-07-17T10:09:07.000Z",
-      "age_days": 0.1,
+      "age_days": 0.3,
       "max_age_days": 7,
       "reason": "Metadados indicam preservacao da ultima base valida."
     },
@@ -94,7 +94,7 @@
       "label": "Publicacoes do Diario",
       "status": "partial",
       "source_updated_at": "2026-07-17T10:09:08.000Z",
-      "age_days": 0.1,
+      "age_days": 0.3,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."
     }

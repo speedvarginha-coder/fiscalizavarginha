@@ -97,6 +97,7 @@ def coletar_universo() -> list[dict]:
     pref = _ler_json(CHUNKS / "prefeitura.json")
     cam = _ler_json(CHUNKS / "camara_betha.json")
     cnpjs = _ler_json(CHUNKS / "cnpjs.json")
+    licit = _ler_json(CHUNKS / "licitacoes_resultados.json")
 
     universo: dict[str, dict] = {}
 
@@ -123,6 +124,9 @@ def coletar_universo() -> list[dict]:
         add(c.get("contratado"), c.get("cnpj"), "contrato_camara")
     for e in cnpjs.get("empresas", []) or []:
         add(e.get("razao_social"), e.get("cnpj"), "base_cadastral")
+    for compra in licit.get("registros", []) or []:
+        for r in compra.get("resultados", []) or []:
+            add(r.get("vencedor"), r.get("cnpj_vencedor"), "vencedor_licitacao")
 
     return list(universo.values())
 

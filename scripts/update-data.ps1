@@ -332,6 +332,12 @@ try {
     -Arguments @("-u", "coletor_tse.py") `
     -WorkingDirectory $painel
 
+  Invoke-AndLog `
+    -Label "Coletando resultados de licitacao (vencedores) no PNCP." `
+    -FilePath "python" `
+    -Arguments @("-u", "coletor_resultados_licitacao.py") `
+    -WorkingDirectory $painel
+
   Push-Location $root
   try {
     # Monitor primeiro: gera monitoramento_coletas.json. O indice roda por ultimo

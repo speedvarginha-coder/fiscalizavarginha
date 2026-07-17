@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-07-17T13:00:40.936Z",
+  "gerado_em": "2026-07-17T17:20:06.569Z",
   "level": "critical",
   "summary": {
     "errors": 1,
-    "warnings": 7,
+    "warnings": 8,
     "info": 1,
     "ok": 1,
-    "total": 10
+    "total": 11
   },
   "atualizado_base": {
     "iso": "2026-07-17T07:08:58",
@@ -17,7 +17,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 0.3 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -92,6 +92,14 @@
       "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (90 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json"
+    },
+    {
+      "severity": "warning",
+      "id": "homologacao-simbolica",
+      "title": "Licitacao homologada por valor simbolico",
+      "detail": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: [Portal de Compras Públicas] - Contratação de empresa para r → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
+      "action": "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
+      "source": "licitacoes_resultados.json"
     }
   ],
   "issues": [
@@ -99,7 +107,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 0.3 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -174,6 +182,14 @@
       "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (90 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json"
+    },
+    {
+      "severity": "warning",
+      "id": "homologacao-simbolica",
+      "title": "Licitacao homologada por valor simbolico",
+      "detail": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: [Portal de Compras Públicas] - Contratação de empresa para r → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
+      "action": "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
+      "source": "licitacoes_resultados.json"
     }
   ]
 }

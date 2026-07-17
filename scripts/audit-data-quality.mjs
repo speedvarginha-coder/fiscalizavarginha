@@ -206,6 +206,7 @@ const chunks = {
   publicacoesDiario: readJson("publicacoes_diario"),
   sancoes: readJson("sancoes"),
   tseDoacoes: readJson("tse_doacoes"),
+  licitacoesResultados: readJson("licitacoes_resultados"),
 };
 
 nameToCnpjRoot = buildNameToCnpjRoot(chunks.cnpjs);
@@ -624,6 +625,22 @@ if (chunks.sancoes?.sancoes_vigentes > 0) {
     `${chunks.sancoes.verificados} fornecedores/contratados verificados; nenhuma sancao vigente localizada (cobertura limitada ao metodo por nome — nao e prova de ausencia).`,
     "Manter a verificacao na rotina da coleta.",
     "sancoes.json",
+  );
+}
+
+// --- Homologações simbólicas (R$ 0,01 etc.) ---
+// Modelo de exploração comercial é legal; o alerta existe porque o valor
+// real do negócio (receita de bar/camarote/patrocínio) fica nos anexos do
+// edital, invisível ao cidadão que só vê o preço homologado.
+const simbolicas = chunks.licitacoesResultados?.homologacoes_simbolicas || [];
+if (simbolicas.length) {
+  add(
+    "warning",
+    "homologacao-simbolica",
+    "Licitacao homologada por valor simbolico",
+    `${simbolicas.length} licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: ${simbolicas.slice(0, 3).map((s) => `${s.objeto.slice(0, 60)} → ${s.vencedor} por R$ ${Number(s.valor_homologado).toFixed(2)} (estimado R$ ${(Number(s.valor_estimado) / 1000).toFixed(0)} mil)`).join("; ")}. No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.`,
+    "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
+    "licitacoes_resultados.json",
   );
 }
 
