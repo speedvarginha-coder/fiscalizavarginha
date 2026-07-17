@@ -623,12 +623,40 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
     return mensagens
 
 
+def checar_bridge(config: dict) -> tuple[bool, str]:
+    """Healthcheck antes de tentar enviar: o painel do bridge expõe o estado
+    da sessão. Detecta 'WhatsApp não conectado' de imediato, em vez de N
+    erros 503 individuais (o bridge devolve 503 por mensagem nesse estado)."""
+    url = (config.get("api_url") or "").rstrip("/")
+    if not url:
+        return False, "api_url não configurada"
+    try:
+        req = urllib.request.Request(url + "/", headers={"User-Agent": "FiscalizaBot/1.0"})
+        with urllib.request.urlopen(req, timeout=15) as r:
+            corpo = r.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        return False, f"bridge inacessível: {e}"
+    if "Desconectado" in corpo:
+        return False, "bridge no ar, mas sessão do WhatsApp desconectada (ver painel/QR Code)"
+    if "Conectado" not in corpo:
+        return False, "bridge respondeu, mas sem estado 'Conectado' no painel"
+    return True, "conectado"
+
+
 def main():
     print("🚀 Iniciando Bot de Alertas para o WhatsApp - Fiscaliza Varginha")
     preview = "--preview" in sys.argv
     forcar_resumo = preview or "--resumo-semanal" in sys.argv
     config = carregar_config()
     enviados = carregar_enviados()
+
+    if not preview:
+        ok_bridge, motivo = checar_bridge(config)
+        if not ok_bridge:
+            print(f"❌ Healthcheck do bridge falhou: {motivo}")
+            print("   Nenhum envio tentado; a fila fica preservada para o próximo ciclo.")
+            sys.exit(1)
+        print(f"✅ Bridge WhatsApp: {motivo}")
     hoje = datetime.now().astimezone().date()
 
     todas_mensagens = []
