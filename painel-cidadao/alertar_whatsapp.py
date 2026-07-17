@@ -768,6 +768,11 @@ def main():
     else:
         print("ℹ️ Nenhum alerta pôde ser enviado com sucesso nesta execução.")
 
+    # Falha total de envio precisa derrubar o exit code, senão o pipeline
+    # marca whatsapp=SUCESSO com o bridge fora do ar (regressão de 15-17/07).
+    if falhas > 0 and sucessos == 0:
+        sys.exit(1)
+
 
 if __name__ == "__main__":
     main()
