@@ -59,7 +59,23 @@ DIARIO_EDICAO_OFFSET = 1593
 
 # ----------------------------- helpers --------------------------------- #
 
+# Chunks sem timestamp interno proprio: o monitor de freshness os marcava
+# como "manual" (sem idade verificavel). Carimbar coletado_em na gravacao
+# da coleta os torna auditaveis — o carimbo so muda quando a coleta roda.
+# camara_anos e dict de blocos por ano (consumidores iteram .values()
+# esperando dicts), entao o carimbo vai DENTRO de cada bloco; o scanner
+# de freshness da auditoria e recursivo e o encontra do mesmo jeito.
+_CHUNKS_CARIMBO = {"camara_betha.json", "pessoal.json"}
+
+
 def _save(name: str, payload) -> None:
+    agora = dt.datetime.now().astimezone().isoformat(timespec="seconds")
+    if name in _CHUNKS_CARIMBO and isinstance(payload, dict) and payload:
+        payload.setdefault("coletado_em", agora)
+    elif name == "camara_anos.json" and isinstance(payload, dict):
+        for bloco in payload.values():
+            if isinstance(bloco, dict) and bloco:
+                bloco.setdefault("coletado_em", agora)
     out = DATA / name
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"  ✓ {name}  ({out.stat().st_size // 1024} KB)")
