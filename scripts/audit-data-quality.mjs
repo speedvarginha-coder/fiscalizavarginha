@@ -204,6 +204,8 @@ const chunks = {
   camaraAnos: readJson("camara_anos"),
   publicacoesCamara: readJson("publicacoes_estruturadas"),
   publicacoesDiario: readJson("publicacoes_diario"),
+  sancoes: readJson("sancoes"),
+  tseDoacoes: readJson("tse_doacoes"),
 };
 
 nameToCnpjRoot = buildNameToCnpjRoot(chunks.cnpjs);
@@ -578,6 +580,44 @@ if (emendasSemPagamentoAlto.length) {
     `${emendasSemPagamentoAlto.length} emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: ${emendasSemPagamentoAlto.slice(0, 3).map((e) => `${e.beneficiario} (R$ ${(Number(e.valor_brl || e.valor)/1000).toFixed(0)}k - ${e.autor})`).join("; ")}.`,
     "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
     "prefeitura.json",
+  );
+}
+
+// --- Sanções CEIS/CNEP: fornecedor sancionado é o alerta máximo ---
+if (chunks.sancoes?.sancoes_vigentes > 0) {
+  const exemplos = (chunks.sancoes.achados || [])
+    .filter((a) => a.sancao_vigente)
+    .slice(0, 3)
+    .map((a) => `${a.fornecedor_local} (${a.tipo} — ${a.base}, ${a.orgao_sancionador})`)
+    .join("; ");
+  add(
+    "error",
+    "fornecedor-sancionado",
+    "Fornecedor com sancao vigente no CEIS/CNEP",
+    `${chunks.sancoes.sancoes_vigentes} fornecedor(es)/contratado(s) do municipio constam com sancao vigente nos cadastros federais de empresas punidas. Exemplos: ${exemplos}.`,
+    "Confirmar no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade da contratacao.",
+    "sancoes.json",
+  );
+} else if (chunks.sancoes?.verificados > 0) {
+  add(
+    "ok",
+    "sancoes-verificadas",
+    "Fornecedores verificados no CEIS/CNEP",
+    `${chunks.sancoes.verificados} fornecedores/contratados verificados; nenhuma sancao vigente localizada (cobertura limitada ao metodo por nome — nao e prova de ausencia).`,
+    "Manter a verificacao na rotina da coleta.",
+    "sancoes.json",
+  );
+}
+
+// --- TSE: doador de campanha que é fornecedor/sócio ---
+if (chunks.tseDoacoes?.cruzamentos_encontrados > 0) {
+  add(
+    "warning",
+    "doador-fornecedor",
+    "Doador de campanha com vinculo em fornecedor do municipio",
+    `${chunks.tseDoacoes.cruzamentos_encontrados} cruzamento(s) entre doadores declarados (TSE 2024) e fornecedores/socios da base. Doacao e legal e publica; o vinculo e informativo e pede conferencia humana antes de qualquer divulgacao.`,
+    "Conferir os detalhes em tse_doacoes.json e validar CPF/CNPJ antes de publicar.",
+    "tse_doacoes.json",
   );
 }
 

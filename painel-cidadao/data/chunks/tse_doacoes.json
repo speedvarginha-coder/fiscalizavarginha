@@ -1,0 +1,618 @@
+{
+  "fonte": "TSE - DivulgaCandContas (prestacao de contas eleicoes 2024)",
+  "gerado_em": "2026-07-17T12:44:40+00:00",
+  "metodo": "Doadores declarados (ranking oficial) dos eleitos de Varginha em 2024, cruzados com fornecedores/contratados (match exato por raiz de CNPJ) e socios do QSA (match por nome identico — homonimos possiveis). Doacao de campanha e legal e publica; o cruzamento e informativo e nao presume irregularidade.",
+  "eleitos": 16,
+  "cruzamentos_encontrados": 0,
+  "candidatos": [
+    {
+      "nome_urna": "ALEXANDRE PRADO",
+      "nome_completo": "ALEXANDRE JOSE PRADO CAMPOS E SILVA",
+      "partido": "AVANTE",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 6303.02,
+      "qtd_doacoes": 5,
+      "doadores": [
+        {
+          "cpf_cnpj": "00915***",
+          "nome": "GUSTAVO OLIVEIRA CHALFUN",
+          "valor": 5000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "45196***",
+          "nome": "DANIEL AUGUSTO MARCAL DOS SANTOS",
+          "valor": 1000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEICAO 2024 LEONARDO VINHAS CIACCI",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "ANA RIOS",
+      "nome_completo": "ANA RIOS FONTOURA",
+      "partido": "UNIÃO",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 5787.02,
+      "qtd_doacoes": 10,
+      "doadores": [
+        {
+          "cpf_cnpj": "71169***",
+          "nome": "NADIA RIOS FONTOURA MORAIS",
+          "valor": 5484.0,
+          "doacoes_qtd": 7,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEICAO 2024 LEONARDO VINHAS CIACCI",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "BRUNO LEANDRO COLETOR DE LIXO",
+      "nome_completo": "BRUNO LEANDRO DE SOUZA",
+      "partido": "PSDB",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 6476.83,
+      "qtd_doacoes": 11,
+      "doadores": [
+        {
+          "cpf_cnpj": "03782***",
+          "nome": "Direção Municipal/Comissão Provisória - PROGRESSISTAS",
+          "valor": 3750.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56526***",
+          "nome": "ZACARIAS ABRÃO PIVA",
+          "valor": 2726.83,
+          "doacoes_qtd": 10,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "CASSIO CHIODI",
+      "nome_completo": "CASSIO MENDONÇA BOSQUE CHIODI",
+      "partido": "SOLIDARIEDADE",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 2101.02,
+      "qtd_doacoes": 14,
+      "doadores": [
+        {
+          "cpf_cnpj": "01138***",
+          "nome": "CASSIO MENDONCA BOSQUE CHIODI",
+          "valor": 1798.0,
+          "doacoes_qtd": 11,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEIÇÕES 2024 LEONARDO VINHAS CIACCI",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "DANDAN",
+      "nome_completo": "DANIEL RODRIGUES DE FARIAS",
+      "partido": "PL",
+      "cargo": "Vereador",
+      "situacao": "Eleito por QP",
+      "total_recebido": 11918.04,
+      "qtd_doacoes": 14,
+      "doadores": [
+        {
+          "cpf_cnpj": "08517***",
+          "nome": "Direção Nacional - Partido Liberal",
+          "valor": 6600.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "09355***",
+          "nome": "DANIEL RODRIGUES DE FARIAS",
+          "valor": 3165.0,
+          "doacoes_qtd": 5,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56526***",
+          "nome": "ZACARIAS ABRÃO PIVA",
+          "valor": 2153.04,
+          "doacoes_qtd": 8,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "DAVI MARTINS",
+      "nome_completo": "CARLOS DAVI DE SOUSA MARTINS",
+      "partido": "PL",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 10845.9,
+      "qtd_doacoes": 10,
+      "doadores": [
+        {
+          "cpf_cnpj": "13674***",
+          "nome": "CARLOS DAVI DE SOUSA MARTINS",
+          "valor": 10845.9,
+          "doacoes_qtd": 10,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "DUDU OTTONI",
+      "nome_completo": "EDUARDO BENEDITO OTTONI FILHO",
+      "partido": "AVANTE",
+      "cargo": "Vereador",
+      "situacao": "Eleito por QP",
+      "total_recebido": 33488.3,
+      "qtd_doacoes": 7,
+      "doadores": [
+        {
+          "cpf_cnpj": "09648***",
+          "nome": "LUCAS LEONARDO MOURA DE QUEIROZ",
+          "valor": 10000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "10233***",
+          "nome": "ALLAN FELIPE MATTOS DUARTE",
+          "valor": 10000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "05242***",
+          "nome": "GLEIDSON JOSE VIEIRA LINHARES",
+          "valor": 10000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "00749***",
+          "nome": "EDUARDO BENEDITO OTTONI",
+          "valor": 3185.28,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEIÇÃO 2024 LEOANARDO VINHAS CIACCI ",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "JOÃOZINHO ENFERMEIRO",
+      "nome_completo": "JOAO MARTINS RIBEIRO",
+      "partido": "DC",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 12303.02,
+      "qtd_doacoes": 5,
+      "doadores": [
+        {
+          "cpf_cnpj": "35422***",
+          "nome": "JOAO MARTINS RIBEIRO",
+          "valor": 7000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "00982***",
+          "nome": "NORALDINO LUCIO DIAS JUNIOR",
+          "valor": 5000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEICAO 2024 LEONARDO VINHAS CIACCI",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "MARQUINHO DA COOPERATIVA",
+      "nome_completo": "MARCO ANTONIO DE SOUZA",
+      "partido": "MOBILIZA",
+      "cargo": "Vereador",
+      "situacao": "Eleito por QP",
+      "total_recebido": 10453.02,
+      "qtd_doacoes": 9,
+      "doadores": [
+        {
+          "cpf_cnpj": "02977***",
+          "nome": "MARCO ANTONIO DE SOUZA",
+          "valor": 7150.0,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "11911***",
+          "nome": "GISLAINE LEMES DE SOUZA",
+          "valor": 1000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "11911***",
+          "nome": "WESLEY SOUZA",
+          "valor": 1000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "02363***",
+          "nome": "RAYNARA OLIVEIRA DE SOUZA",
+          "valor": 1000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEIÇÕES 2024 LEONARDO VINHAS CIACCI",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "MIGUEL DA SAUDE",
+      "nome_completo": "MIGUEL JOSE DE LIMA",
+      "partido": "PSD",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 6803.02,
+      "qtd_doacoes": 12,
+      "doadores": [
+        {
+          "cpf_cnpj": "31834***",
+          "nome": "MIGUEL JOSE DE LIMA",
+          "valor": 6500.0,
+          "doacoes_qtd": 9,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEICAO 2024 LEONARDO VINHAS CIACCI",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "PASTOR FAUSTINHO",
+      "nome_completo": "FAUSTO DA SILVA FRANCA JUNIOR",
+      "partido": "PSD",
+      "cargo": "Vereador",
+      "situacao": "Eleito por QP",
+      "total_recebido": 7773.02,
+      "qtd_doacoes": 6,
+      "doadores": [
+        {
+          "cpf_cnpj": "42853***",
+          "nome": "FAUSTO DA SILVA FRANCA",
+          "valor": 7420.0,
+          "doacoes_qtd": 2,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEICAO 2024 LEONARDO VINHAS CIACCI",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "06773***",
+          "nome": "FAUSTO DA SILVA FRANCA JUNIOR",
+          "valor": 50.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "ROGÉRIO BUENO",
+      "nome_completo": "ROGÉRIO BERNARDES BUENO",
+      "partido": "PV",
+      "cargo": "Vereador",
+      "situacao": "Eleito por QP",
+      "total_recebido": 33389.88,
+      "qtd_doacoes": 9,
+      "doadores": [
+        {
+          "cpf_cnpj": "44894***",
+          "nome": "JANICE DOS ANJOS",
+          "valor": 9000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "00676***",
+          "nome": "Direção Nacional - Partido dos Trabalhadores",
+          "valor": 8812.6,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "10409***",
+          "nome": "AMANDA LUIZA COSTA PAULA",
+          "valor": 4000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "66236***",
+          "nome": "ROGERIO BERNARDES BUENO",
+          "valor": 3577.28,
+          "doacoes_qtd": 2,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "95314***",
+          "nome": "IRLEI JOSE DE SOUZA FONSECA",
+          "valor": 3000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "THULYO PAIVA",
+      "nome_completo": "THULYO PAIVA MACHADO",
+      "partido": "UNIÃO",
+      "cargo": "Vereador",
+      "situacao": "Eleito por QP",
+      "total_recebido": 27422.85,
+      "qtd_doacoes": 9,
+      "doadores": [
+        {
+          "cpf_cnpj": "04687***",
+          "nome": "TIAGO PAIVA MACHADO",
+          "valor": 12519.83,
+          "doacoes_qtd": 4,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "11739***",
+          "nome": "THULYO PAIVA MACHADO",
+          "valor": 7300.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56133***",
+          "nome": "ELEICAO 2024 LEONARDO VINHAS CIACCI",
+          "valor": 303.02,
+          "doacoes_qtd": 3,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "ZÉ MORAIS",
+      "nome_completo": "JOSÉ VICENTE DE MORAIS",
+      "partido": "AVANTE",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 19725.43,
+      "qtd_doacoes": 13,
+      "doadores": [
+        {
+          "cpf_cnpj": "12165***",
+          "nome": "NEIDE DE ABREU MORAIS",
+          "valor": 11067.41,
+          "doacoes_qtd": 2,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "15911***",
+          "nome": "JOSE VICENTE DE MORAIS",
+          "valor": 4500.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "25813***",
+          "nome": "NEUZA DE ABREU SILVA",
+          "valor": 1000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "04975***",
+          "nome": "ROBERTSON RODRIGUES PEREIRA JUNIOR",
+          "valor": 1000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "07300***",
+          "nome": "FLAVIA DE ABREU MORAIS NERI",
+          "valor": 1000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "ZILDA SILVA",
+      "nome_completo": "ZILDA MARIA DA SILVA",
+      "partido": "PP",
+      "cargo": "Vereador",
+      "situacao": "Eleito por média",
+      "total_recebido": 34670.74,
+      "qtd_doacoes": 14,
+      "doadores": [
+        {
+          "cpf_cnpj": "00887***",
+          "nome": "Direção Nacional - PROGRESSISTAS",
+          "valor": 10000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "21952***",
+          "nome": "GENESIO JOSE DE LIMA",
+          "valor": 7000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "83328***",
+          "nome": "ZILDA MARIA DA SILVA",
+          "valor": 5000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "39635***",
+          "nome": "NICOLAU SALVADOR COSTA",
+          "valor": 3500.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "56526***",
+          "nome": "ZACARIAS ABRÃO PIVA",
+          "valor": 2170.74,
+          "doacoes_qtd": 8,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    },
+    {
+      "nome_urna": "LEONARDO CIACCI",
+      "nome_completo": "LEONARDO VINHAS CIACCI",
+      "partido": "PSD",
+      "cargo": "Prefeito",
+      "situacao": "Eleito",
+      "total_recebido": 742162.33,
+      "qtd_doacoes": 63,
+      "doadores": [
+        {
+          "cpf_cnpj": "14545***",
+          "nome": "Direção Estadual/Distrital - Partido Social Democrático",
+          "valor": 100000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "57133***",
+          "nome": "LEONARDO VINHAS CIACCI",
+          "valor": 71542.33,
+          "doacoes_qtd": 2,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "00128***",
+          "nome": "NELSON ANTONIO SENDAS",
+          "valor": 50000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "44551***",
+          "nome": "Direção Nacional - União Brasil",
+          "valor": 39120.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        },
+        {
+          "cpf_cnpj": "66518***",
+          "nome": "JOSE PINTO RIBEIRO",
+          "valor": 35000.0,
+          "doacoes_qtd": 1,
+          "financiamento_coletivo": false,
+          "cruzamentos": []
+        }
+      ]
+    }
+  ],
+  "erros": []
+}

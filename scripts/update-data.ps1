@@ -294,6 +294,19 @@ try {
     -Arguments @("-u", "audit_emendas.py") `
     -WorkingDirectory (Join-Path $painel "emendas")
 
+  # Cruzamentos externos (best effort: preservam o chunk anterior em falha)
+  Invoke-AndLog `
+    -Label "Cruzando fornecedores com CEIS/CNEP (empresas sancionadas)." `
+    -FilePath "python" `
+    -Arguments @("-u", "coletor_sancoes.py") `
+    -WorkingDirectory $painel
+
+  Invoke-AndLog `
+    -Label "Cruzando doadores de campanha (TSE) com fornecedores e QSA." `
+    -FilePath "python" `
+    -Arguments @("-u", "coletor_tse.py") `
+    -WorkingDirectory $painel
+
   Push-Location $root
   try {
     # Monitor primeiro: gera monitoramento_coletas.json. O indice roda por ultimo
