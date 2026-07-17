@@ -2288,6 +2288,7 @@ def main() -> int:
                 "resumo":  val.get("resumo", {}),
                 "status":  val.get("status", ""),
                 "fonte":   val.get("fonte", ""),
+                "competencia": val.get("competencia", ""),
                 # Câmara tem ~262 servidores (pequeno) — mantém para cross-ref.
                 # Prefeitura tem ~5000 (grande) — carregado via fetch em pessoal.html.
                 "servidores": val.get("servidores", []) if org == "camara" else [],
