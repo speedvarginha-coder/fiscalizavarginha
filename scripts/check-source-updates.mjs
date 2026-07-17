@@ -185,5 +185,9 @@ const payload = {
   local: localSignals,
 };
 
+// Resultado tambem em arquivo: o node as vezes crasha NO TEARDOWN da saida
+// (assertion libuv async.c no Windows) depois do trabalho pronto, corrompendo
+// o exit code. O vigia le este arquivo e so usa o exit code como fallback.
+writeJson(path.join(stateDir, "probe-result.json"), payload);
 console.log(JSON.stringify(payload, null, 2));
 process.exit(payload.needs_update && !noExitCode ? 10 : 0);

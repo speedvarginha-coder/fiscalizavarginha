@@ -167,8 +167,33 @@ function Invoke-SourceProbe {
   $prevEAP = $ErrorActionPreference
   $ErrorActionPreference = "Continue"
   try {
+    $probeStart = Get-Date
     & node @args 2>&1 | ForEach-Object { Write-Log "$_" }
-    return $LASTEXITCODE
+    $exitCode = $LASTEXITCODE
+
+    # O crash de teardown corrompe o exit code DEPOIS do trabalho pronto.
+    # Se o probe gravou probe-result.json nesta execucao, o arquivo e a
+    # verdade; o exit code vira mero fallback.
+    if (-not $Record) {
+      $resultPath = Join-Path $root "private\state\probe-result.json"
+      if (Test-Path $resultPath) {
+        $item = Get-Item $resultPath
+        if ($item.LastWriteTime -ge $probeStart) {
+          try {
+            $result = Get-Content $resultPath -Raw | ConvertFrom-Json
+            if ($null -ne $result.needs_update) {
+              if ($exitCode -ne 0 -and $exitCode -ne 10) {
+                Write-Log "Probe crashou na saida (codigo $exitCode), mas o resultado foi gravado; usando needs_update=$($result.needs_update)."
+              }
+              if ($result.needs_update) { return 10 } else { return 0 }
+            }
+          } catch {
+            Write-Log "Falha ao ler probe-result.json: $_ — usando exit code $exitCode."
+          }
+        }
+      }
+    }
+    return $exitCode
   } finally {
     $ErrorActionPreference = $prevEAP
     Pop-Location
