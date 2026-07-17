@@ -3995,11 +3995,25 @@
 
   // ============= SHOWS E EVENTOS (prefeitura.html) =============
   if ($("eventosBlock")) {
-    const itens = [
+    const fcEventos = D.fundacao_cultural || {};
+    const itensBrutos = [
       ...(pf.contratos || []).map(c => ({ ...c, tipo_origem: "Contrato", valor_analise: c.valor || 0 })),
       ...(pf.licit_andamento || []).map(l => ({ ...l, contratado: l.fornecedor || l.contratado || "Andamento", tipo_origem: "Licitação", valor_analise: l.valor || 0 })),
+      ...(pf.licit_finalizadas || []).map(l => ({ ...l, contratado: l.fornecedor || l.contratado || "Homologada", tipo_origem: "Licitação finalizada", valor_analise: l.valor || 0 })),
       ...(pf.compras_diretas || []).map(cd => ({ ...cd, contratado: cd.fornecedor, tipo_origem: "Compra Direta", valor_analise: cd.valor || 0 })),
+      ...((fcEventos.contratos || [])).map(c => ({ ...c, tipo_origem: "Contrato · Fundação Cultural", valor_analise: c.valor || 0 })),
     ];
+    // Dedup de valor: licitação que já virou contrato aparece nas duas listas
+    // com o MESMO valor (ex.: show do Biquini Cavadão, R$ 205 mil na licitação
+    // finalizada E no contrato). Para o total ficar correto, a licitação com
+    // valor idêntico a um contrato já capturado não soma de novo.
+    const valoresContrato = new Set(
+      itensBrutos.filter(i => i.tipo_origem.startsWith("Contrato") && i.valor_analise > 0)
+        .map(i => Math.round(i.valor_analise * 100))
+    );
+    const itens = itensBrutos.filter(i =>
+      !(/^Licitação/.test(i.tipo_origem) && valoresContrato.has(Math.round(i.valor_analise * 100)))
+    );
 
     const eventosConhecidos = [
       { nome: "Aniversário da Cidade", keys: ["aniversario", "aniversario de varginha"] },
@@ -4009,6 +4023,12 @@
       { nome: "Roça Cidade", keys: ["roca cidade"] },
       { nome: "Natal / Iluminação", keys: ["natal", "papai noel"] },
       { nome: "Festa do Peão / Rodeio", keys: ["rodeio", "peao", "exposicao"] },
+      { nome: "Feira da Paz", keys: ["feira da paz"] },
+      { nome: "Seresta na Praça", keys: ["seresta"] },
+      { nome: "FLIV — Feira Literária", keys: ["feira literaria", "fliv"] },
+      { nome: "Folia de Reis", keys: ["folia de reis"] },
+      { nome: "Feira Natalina / Artesanato", keys: ["feira natalina", "feira de artesanato"] },
+      { nome: "Festival de Inverno", keys: ["festival de inverno"] },
     ];
 
     const eventoForte = [
@@ -4040,22 +4060,42 @@
       "material de consumo", "material permanente", "medicamento", "merenda"
     ];
 
+    // Casamento por PALAVRA INTEIRA: "banda" não pode casar "bandalarga",
+    // nem "virada" casar "aviradas". Chaves multi-palavra usam includes.
+    const temTermo = (texto, chave) => {
+      const k = norm(chave);
+      if (k.includes(" ")) return texto.includes(k);
+      return new RegExp("\\b" + k + "\\b").test(texto);
+    };
+
+    // Serviços acessórios que só contam JUNTO de contexto de evento:
+    // segurança, saúde e apoio operacional contratados para o evento também
+    // são gasto do evento — o cachê é só a parte visível.
+    const apoioEvento = [
+      "seguranca", "vigilante", "vigilantes", "brigadista", "brigadistas",
+      "ambulancia", "uti movel", "fogos", "espuma", "box truss", "trio eletrico",
+      "telao", "painel de led", "arquibancada", "locucao", "mestre de cerimonia",
+      "laudo tecnico de incendio", "grama sintetica", "credenciamento de artistas",
+    ];
+
     const extrairEvento = (texto) => {
       const t = norm(texto);
-      const ev = eventosConhecidos.find(e => e.keys.some(k => t.includes(norm(k))));
+      const ev = eventosConhecidos.find(e => e.keys.some(k => temTermo(t, k)));
       return ev ? ev.nome : "Evento/show identificado";
     };
 
     const classificarEvento = (item) => {
       const texto = norm([item.objeto, item.contratado, item.modalidade].filter(Boolean).join(" "));
-      if (excluiOperacional.some(k => texto.includes(norm(k)))) return null;
-      if (eventoForte.some(k => texto.includes(norm(k)))) {
-        return { nome: extrairEvento(item.objeto), confianca: "forte" };
+      if (excluiOperacional.some(k => temTermo(texto, k))) return null;
+      const cacheTermos = ["show", "show artistico", "apresentacao artistica", "artista", "banda", "cache", "grupo profissional do setor artistico"];
+      if (eventoForte.some(k => temTermo(texto, k))) {
+        const ehCache = cacheTermos.some(k => temTermo(texto, k));
+        return { nome: extrairEvento(item.objeto), confianca: "forte", categoria: ehCache ? "cache" : "estrutura_apoio" };
       }
-      const temEstrutura = estruturaEvento.some(k => texto.includes(norm(k)));
-      const temContexto = contextoEvento.some(k => texto.includes(norm(k)));
+      const temEstrutura = estruturaEvento.some(k => temTermo(texto, k)) || apoioEvento.some(k => temTermo(texto, k));
+      const temContexto = contextoEvento.some(k => temTermo(texto, k));
       if (temEstrutura && temContexto) {
-        return { nome: extrairEvento(item.objeto), confianca: "pista" };
+        return { nome: extrairEvento(item.objeto), confianca: "pista", categoria: "estrutura_apoio" };
       }
       return null;
     };
@@ -4067,6 +4107,7 @@
       ...item,
       evento: cls.nome,
       confianca_evento: cls.confianca,
+      categoria_evento: cls.categoria,
       };
     }).filter(Boolean);
 
@@ -4087,19 +4128,21 @@
         const evFiltro = selectEvento.value;
         const q = norm(buscaEvento.value.trim());
         const view = filtrados.filter(f => 
-          (!anoFiltro || String(f.ano || f.data.split("-")[0] || "") === anoFiltro) &&
+          (!anoFiltro || String(f.ano || String(f.data || f.data_assinatura || "").split("-")[0] || "") === anoFiltro) &&
           (!evFiltro || f.evento === evFiltro) &&
           (!q || norm([f.objeto, f.contratado, f.evento].join(" ")).includes(q))
         );
 
         const total = view.reduce((s, f) => s + f.valor_analise, 0);
         const totalGeral = filtrados.reduce((s, f) => s + f.valor_analise, 0);
-        
+        const totalCache = view.filter(f => f.categoria_evento === "cache").reduce((s, f) => s + f.valor_analise, 0);
+        const totalEstrutura = view.filter(f => f.categoria_evento !== "cache").reduce((s, f) => s + f.valor_analise, 0);
+
         statsEl.innerHTML = [
           { v: fmtBRL(total), l: "Valor Filtrado", s: `${fmtNum(view.length)} itens`, cls: "stat--teal" },
-          { v: fmtBRL(totalGeral), l: "Gasto Total Mapeado", s: "Eventos, shows e estrutura", cls: "stat--navy" },
-          { v: fmtNum(nomesEventos.length), l: "Eventos Identificados", s: "Classificação automática cautelosa", cls: "stat--gold" },
-          { v: fmtNum(view.filter(f => f.confianca_evento === "forte").length), l: "Cruzamento forte", s: "Termo específico de evento/show", cls: "stat--teal" },
+          { v: fmtBRL(totalGeral), l: "Gasto Total Mapeado", s: "Prefeitura + Fundação Cultural, sem dupla contagem", cls: "stat--navy" },
+          { v: fmtBRL(totalCache), l: "Cachês e Shows", s: "Artistas, bandas e apresentações", cls: "stat--gold" },
+          { v: fmtBRL(totalEstrutura), l: "Estrutura e Apoio", s: "Palco, som, segurança, sanitários, saúde", cls: "stat--teal" },
         ].map(s => `
           <div class="stat ${s.cls}">
             <div class="stat__value">${s.v}</div>
