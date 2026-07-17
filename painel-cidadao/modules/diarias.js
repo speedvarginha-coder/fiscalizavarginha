@@ -99,8 +99,30 @@
 
     const D = window.ZELA_DATA || {};
     const orgPessoal = prefix === "Camara" ? (D.pessoal || {}).camara : (D.pessoal || {}).prefeitura;
-    const pessoalPorNome = new Map(((orgPessoal || {}).servidores || []).map(s => [norm(s.nome), s]));
+    let pessoalPorNome = new Map(((orgPessoal || {}).servidores || []).map(s => [norm(s.nome), s]));
     const isPrefeitura = prefix === "Prefeitura";
+    // Competência da folha usada no rótulo do salário (ex.: "06/2026").
+    let compFolha = (orgPessoal || {}).competencia || "";
+    if (!compFolha) {
+      const m = String((orgPessoal || {}).status || "").match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i);
+      if (m) compFolha = m[1];
+    }
+    // O bundle slim não carrega os ~4 mil servidores da Prefeitura (peso).
+    // Para exibir o salário ao lado das diárias, busca o pessoal.json completo
+    // em segundo plano e re-renderiza quando chegar.
+    if (isPrefeitura && pessoalPorNome.size === 0 && location.protocol !== "file:") {
+      fetch("data/chunks/pessoal.json")
+        .then(r => r.json())
+        .then(full => {
+          const org = (full || {}).prefeitura || {};
+          if ((org.servidores || []).length) {
+            pessoalPorNome = new Map(org.servidores.map(s => [norm(s.nome), s]));
+            if (org.competencia) compFolha = org.competencia;
+            render();
+          }
+        })
+        .catch(() => {});
+    }
 
     const dimSecretaria = (d) => prefix === "Camara"
       ? (d.secretaria || d.unidade || "Câmara Municipal")
@@ -223,6 +245,9 @@
         vinculo: vinculo.texto,
         vinculoClasse: vinculo.classe,
         comissionado: vinculo.comissionado,
+        // Salário bruto do mês de referência da folha (cruzado por nome).
+        // Exibido SEPARADO das diárias: diária é indenização, não remuneração.
+        salario: Number(vinculo.vencimentos || 0),
         secretaria: dimSecretaria(d),
         periodoKey: periodoKey || "",
         periodoRotulo: periodoKey ? mesRotulo(periodoKey) : "",
@@ -300,7 +325,13 @@
               ${periodo}
               <small>${esc(detalhe)}</small>
             </span>
-            <b>${fmtBRL(g.valor)}</b>
+            <span class="diaria-rank-row__valores">
+              <b>${fmtBRL(g.valor)}</b>
+              <small>em diárias</small>
+              ${g.salario > 0
+                ? `<small title="Salário bruto do mês de referência da folha (${esc(compFolha || "última competência")}). Diária é indenização de viagem, não se soma ao salário.">salário: ${fmtBRL(g.salario)}${compFolha ? ` (${esc(compFolha)})` : ""}</small>`
+                : `<small class="muted">salário não localizado na folha</small>`}
+            </span>
           </div>`;
       }).join("");
     };

@@ -4672,6 +4672,21 @@ mark.hl {
   text-align: right;
   white-space: nowrap;
 }
+/* Coluna de valores: diárias em destaque + salário da folha logo abaixo,
+   separados de propósito (diária é indenização, não remuneração). */
+.diaria-rank-row__valores {
+  display: grid;
+  gap: 1px;
+  justify-items: end;
+  text-align: right;
+  max-width: 170px;
+}
+.diaria-rank-row__valores small {
+  font-size: .72rem;
+  color: var(--muted, #667);
+  white-space: nowrap;
+}
+.diaria-rank-row__valores small.muted { font-style: italic; }
 .diaria-person-tags {
   display: flex;
   flex-wrap: wrap;
