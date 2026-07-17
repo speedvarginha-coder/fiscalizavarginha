@@ -1109,8 +1109,17 @@ def _agrega_empenhos_camara(empenhos: list[dict], ano: int, n: int = 20):
             continue
         valor = float(r.get("valorEmpenho") or 0)
         total += valor
-        g = grupos[nome.upper()]
+        # CNPJ do credor: agrupar pela raiz evita duplicar matriz/filial e
+        # permite ao portão de auditoria casar despesa↔contrato sem depender
+        # do nome (razão social varia entre consultas do Betha).
+        cnpj = ""
+        if isinstance(credor_obj, dict):
+            cnpj = credor_obj.get("cnpjCpf") or credor_obj.get("cnpj") or ""
+        raiz = "".join(c for c in cnpj if c.isdigit())[:8]
+        g = grupos[raiz or nome.upper()]
         g["nome"] = nome
+        if cnpj and not g.get("cnpj"):
+            g["cnpj"] = cnpj
         g["valor_total"] += valor
         g["qtd"] += 1
     top = sorted(grupos.values(), key=lambda x: -x["valor_total"])[:n]
@@ -1571,7 +1580,11 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
     hoje_iso        = dt.date.today().isoformat()
     contratos       = _baixar_dados_abertos_safe(cb, token, "Contratos",               cb.CONSULTA_CONTRATOS,          ano_atual)
     contratos      += _baixar_dados_abertos_safe(cb, token, "Contratos (ano anterior)", cb.CONSULTA_CONTRATOS,          ano_atual - 1)
-    for ano_old in (ano_atual - 2, ano_atual - 3):
+    # Janela longa (ate ano-8): plurianuais antigos renovados por aditivo —
+    # ex.: ERP Betha e vale-refeicao Verocheque — apareciam como "fornecedor
+    # sem contrato" na auditoria porque a licitacao original e anterior a
+    # ano-3. So os AINDA vigentes entram, entao a base nao incha.
+    for ano_old in range(ano_atual - 2, ano_atual - 9, -1):
         brutos   = _baixar_dados_abertos_safe(cb, token, f"Contratos vigentes ({ano_old})", cb.CONSULTA_CONTRATOS, ano_old)
         vigentes = [r for r in brutos if _contrato_vigente(r, hoje_iso)]
         print(f"    → {len(vigentes)}/{len(brutos)} ainda vigentes")
@@ -1628,11 +1641,14 @@ def _contrato_vigente(r: dict, hoje_iso: str) -> bool:
     final no futuro. Resgata plurianuais ativos (ex.: agência de publicidade
     assinada em 2024 e vigente até 2026). dataVigenciaFinal vem em ISO
     (YYYY-MM-DD), então a comparação lexicográfica equivale à cronológica."""
+    fim = str(r.get("dataVigenciaFinal", "")).strip()[:10]
+    if fim:
+        # Data explícita decide: o campo situacao do Betha fica desatualizado
+        # ("EM EXECUÇÃO" em contrato com vigência encerrada ha anos) e, com a
+        # janela longa de resgate, confiar nele traria contratos mortos.
+        return fim >= hoje_iso
     sit = str(r.get("situacao", "")).strip().upper()
-    if sit in ("EXECUCAO", "EXECUÇÃO", "EM EXECUCAO", "VIGENTE", "ATIVO"):
-        return True
-    fim = str(r.get("dataVigenciaFinal", ""))[:10]
-    return bool(fim) and fim >= hoje_iso
+    return sit in ("EXECUCAO", "EXECUÇÃO", "EM EXECUCAO", "VIGENTE", "ATIVO")
 
 
 def _baixar_dados_abertos_full_safe(cb, token: str, label: str, consulta_id: int,

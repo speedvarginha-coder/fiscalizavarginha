@@ -139,8 +139,31 @@ function cnpjRoot(value) {
   return digits.length >= 8 ? digits.slice(0, 8) : "";
 }
 
+// Mapa nome normalizado -> raiz de CNPJ, construído da base cadastral
+// (cnpjs.json). Resolve fornecedores que chegam só com o nome (ex.: top da
+// Câmara) para que o casamento exato por CNPJ funcione mesmo sem o campo.
+let nameToCnpjRoot = new Map();
+function buildNameToCnpjRoot(cnpjsChunk) {
+  const map = new Map();
+  const registrar = (nome, cnpj) => {
+    const key = normalizeText(nome);
+    const root = cnpjRoot(cnpj);
+    if (key && root && !map.has(key)) map.set(key, root);
+  };
+  for (const e of cnpjsChunk?.empresas || []) {
+    registrar(e.razao_social, e.cnpj);
+    registrar(e.nome_fantasia, e.cnpj);
+  }
+  for (const f of cnpjsChunk?.fornecedores || []) {
+    registrar(f.nome, f.cnpj_completo || f.cnpj_raiz);
+    registrar(f.razao_social, f.cnpj_completo || f.cnpj_raiz);
+  }
+  return map;
+}
+
 function supplierHasContract(supplier, contracts) {
-  const root = cnpjRoot(supplier?.cnpj);
+  const root = cnpjRoot(supplier?.cnpj)
+    || nameToCnpjRoot.get(normalizeText(supplier?.nome)) || "";
   if (root && contracts.some((c) => cnpjRoot(c.cnpj) === root)) return true;
 
   const name = normalizeText(supplier?.nome);
@@ -182,6 +205,8 @@ const chunks = {
   publicacoesCamara: readJson("publicacoes_estruturadas"),
   publicacoesDiario: readJson("publicacoes_diario"),
 };
+
+nameToCnpjRoot = buildNameToCnpjRoot(chunks.cnpjs);
 
 const domainConfig = [
   ["atualizado_em", "Coleta principal", chunks.atualizado, 3],
@@ -456,7 +481,7 @@ if (camaraTop.length && camaraContracts.length) {
       "warning",
       "camara-despesa-sem-contrato",
       "Fornecedores sem contrato vinculado automaticamente",
-      `${semContrato.length} dos 20 maiores fornecedores de despesas nao bateram com contrato por nome. Exemplos: ${semContrato.slice(0, 4).map((f) => f.nome).join("; ")}.${cauda}`,
+      `${semContrato.length} dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: ${semContrato.slice(0, 4).map((f) => f.nome).join("; ")}.${cauda}`,
       "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "camara_betha.json",
     );
