@@ -4854,13 +4854,21 @@ ${url}
     // Ranking top-10 comissionados por vencimento
     const rankingEl = $("rankingComissionados");
     if (rankingEl) {
+      // Retrato do quadro ATUAL: quem teve rescisão na última folha se
+      // desligou do órgão e sai do top (a rescisão de R$ 41 mil de um
+      // ex-diretor não é "maior vencimento" de comissionado — é verba de
+      // saída). Os desligados continuam pesquisáveis na lista, com a tag
+      // explicando a rescisão.
+      const desligou = (s) => /rescis/i.test(String(s.tiposFolhaExtra || ""));
       const todosComissionados = todos
-        .filter(s => s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || ""))
+        .filter(s => (s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "")) && !desligou(s))
         .sort((a, b) => (b.vencimentos || 0) - (a.vencimentos || 0))
         .slice(0, 10);
       if (todosComissionados.length) {
         rankingEl.innerHTML = todosComissionados.map((s, i) => {
-          const comp = s.orgao === "Câmara" ? compCam : compPref;
+          // Mês da PRÓPRIA linha quando existir: o rótulo global mentia
+          // quando o valor exibido era de um mês anterior ao de referência.
+          const comp = s.competencia || (s.orgao === "Câmara" ? compCam : compPref);
           const tagOutroOrgao = s.outroOrgao
         ? `<div class="tag-periodo-alerta" style="display:inline-block;margin-top:6px;font-size:0.82em;padding:3px 8px;border-radius:4px;background:#e8f0fe;color:#1a4d8f;border:1px solid #b6d0f5" title="O mesmo nome completo consta na folha dos dois órgãos no ano — em geral indica mudança de órgão (exoneração + nova nomeação). Nome idêntico ainda pode ser homônimo: confira a matrícula na fonte oficial antes de concluir.">↔ Consta também na folha da ${esc(s.outroOrgao)} (mudança de órgão ou homônimo)</div>`
         : "";

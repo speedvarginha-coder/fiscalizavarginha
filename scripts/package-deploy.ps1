@@ -57,6 +57,17 @@ New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Nul
 ) | ForEach-Object {
   Copy-IfExists (Join-Path $source "modules\$_") (Join-Path $stage "modules\$_")
 }
+# Cache-busting do service worker: sem bump da constante CACHE, visitantes
+# antigos ficam com app.js/style.css velhos indefinidamente (o SW serve do
+# cache). Cada pacote recebe uma versao unica por timestamp.
+$swStage = Join-Path $stage "sw.js"
+if (Test-Path -LiteralPath $swStage) {
+  $swVersion = "fiscaliza-" + (Get-Date -Format "yyyyMMddHHmm")
+  (Get-Content -LiteralPath $swStage -Raw) -replace 'const CACHE = "[^"]+";', ('const CACHE = "' + $swVersion + '";') |
+    Set-Content -LiteralPath $swStage -Encoding utf8
+  Write-Host "sw.js: CACHE -> $swVersion"
+}
+
 Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
 Copy-IfExists (Join-Path $source "emendas") (Join-Path $stage "emendas")
 $emendasStage = Join-Path $stage "emendas"
