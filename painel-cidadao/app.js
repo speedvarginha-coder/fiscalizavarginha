@@ -4860,9 +4860,16 @@ ${url}
       // saída). Os desligados continuam pesquisáveis na lista, com a tag
       // explicando a rescisão.
       const desligou = (s) => /rescis/i.test(String(s.tiposFolhaExtra || ""));
+      // Ordena pelo SALÁRIO MENSAL comparável: quem recebeu 13º/férias no mês
+      // tem o bruto inflado e furava fila na frente de salários maiores de
+      // verdade (assessor com base de R$ 6,4 mil aparecia em 2º com R$ 15 mil
+      // de bruto por causa do adiantamento de 13º). O card continua mostrando
+      // o bruto do mês com a tag explicando a verba extra.
+      const salarioComparavel = (s) => (s.isAtipico && s.vencimentoNormal)
+        ? Number(s.vencimentoNormal) : Number(s.vencimentos || 0);
       const todosComissionados = todos
         .filter(s => (s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "")) && !desligou(s))
-        .sort((a, b) => (b.vencimentos || 0) - (a.vencimentos || 0))
+        .sort((a, b) => salarioComparavel(b) - salarioComparavel(a))
         .slice(0, 10);
       if (todosComissionados.length) {
         rankingEl.innerHTML = todosComissionados.map((s, i) => {
