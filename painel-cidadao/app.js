@@ -4660,6 +4660,20 @@ ${url}
     const camaraConsolidado = processarEConsolidar(camaraServ, "Câmara");
     const prefeituraConsolidado = processarEConsolidar(prefServ, "Prefeitura");
 
+    // Mudança de órgão: o MESMO nome completo nas duas folhas ganha aviso —
+    // evita leitura errada de "recebe dos dois". Nome idêntico ainda pode ser
+    // homônimo, então o aviso pede conferência em vez de afirmar vínculo.
+    const nomeKey = (s) => String(s.nome || "").normalize("NFD")
+      .replace(/[̀-ͯ]/g, "").toUpperCase().replace(/\s+/g, " ").trim();
+    const nomesCamara = new Set(camaraConsolidado.map(nomeKey));
+    const nomesPref = new Set(prefeituraConsolidado.map(nomeKey));
+    camaraConsolidado.forEach(s => {
+      if (nomesPref.has(nomeKey(s))) s.outroOrgao = "Prefeitura";
+    });
+    prefeituraConsolidado.forEach(s => {
+      if (nomesCamara.has(nomeKey(s))) s.outroOrgao = "Câmara";
+    });
+
     const todos = [
       ...camaraConsolidado,
       ...prefeituraConsolidado
@@ -4712,8 +4726,11 @@ ${url}
     const _renderServCard = (s) => {
       const isCom = s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "");
       const comp = s.orgao === "Câmara" ? compCam : compPref;
+      const tagOutroOrgao = s.outroOrgao
+        ? `<div class="tag-periodo-alerta" style="display:inline-block;margin-top:6px;font-size:0.82em;padding:3px 8px;border-radius:4px;background:#e8f0fe;color:#1a4d8f;border:1px solid #b6d0f5" title="O mesmo nome completo consta na folha dos dois órgãos no ano — em geral indica mudança de órgão (exoneração + nova nomeação). Nome idêntico ainda pode ser homônimo: confira a matrícula na fonte oficial antes de concluir.">↔ Consta também na folha da ${esc(s.outroOrgao)} (mudança de órgão ou homônimo)</div>`
+        : "";
       const tagAtipico = s.isAtipico
-        ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ ${s.tiposFolhaExtra ? `Inclui ${esc(s.tiposFolhaExtra)} (fonte Betha)` : "Contém 13º/Férias"}${s.vencimentoNormal ? ` — base mensal: ${fmtBRL(s.vencimentoNormal)}` : ""}</div>`
+        ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ ${s.tiposFolhaExtra ? (/rescis/i.test(s.tiposFolhaExtra) ? `${esc(s.tiposFolhaExtra)} — desligamento do órgão; valor inclui verbas indenizatórias, não é salário` : `Inclui ${esc(s.tiposFolhaExtra)} (fonte Betha)`) : "Contém 13º/Férias"}${s.vencimentoNormal ? ` — base mensal: ${fmtBRL(s.vencimentoNormal)}` : ""}</div>`
         : "";
       return `<article class="contrato">
         <div class="contrato__valor" style="min-width: 140px;">
@@ -4732,7 +4749,7 @@ ${url}
             <span><strong>Salário Líquido (Dinheiro na Conta):</strong> <strong>${fmtBRL(s.liquido || 0)}</strong></span>
             ${s.matricula ? `<span><strong>Matrícula:</strong> ${s.matricula}</span>` : ""}
           </div>
-          ${tagAtipico}
+          ${tagAtipico}${tagOutroOrgao}
         </div>
       </article>`;
     };
@@ -4844,8 +4861,11 @@ ${url}
       if (todosComissionados.length) {
         rankingEl.innerHTML = todosComissionados.map((s, i) => {
           const comp = s.orgao === "Câmara" ? compCam : compPref;
-          const tagAtipico = s.isAtipico
-            ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ ${s.tiposFolhaExtra ? `Inclui ${esc(s.tiposFolhaExtra)} (fonte Betha)` : "Contém 13º/Férias"}${s.vencimentoNormal ? ` — base mensal: ${fmtBRL(s.vencimentoNormal)}` : ""}</div>`
+          const tagOutroOrgao = s.outroOrgao
+        ? `<div class="tag-periodo-alerta" style="display:inline-block;margin-top:6px;font-size:0.82em;padding:3px 8px;border-radius:4px;background:#e8f0fe;color:#1a4d8f;border:1px solid #b6d0f5" title="O mesmo nome completo consta na folha dos dois órgãos no ano — em geral indica mudança de órgão (exoneração + nova nomeação). Nome idêntico ainda pode ser homônimo: confira a matrícula na fonte oficial antes de concluir.">↔ Consta também na folha da ${esc(s.outroOrgao)} (mudança de órgão ou homônimo)</div>`
+        : "";
+      const tagAtipico = s.isAtipico
+            ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ ${s.tiposFolhaExtra ? (/rescis/i.test(s.tiposFolhaExtra) ? `${esc(s.tiposFolhaExtra)} — desligamento do órgão; valor inclui verbas indenizatórias, não é salário` : `Inclui ${esc(s.tiposFolhaExtra)} (fonte Betha)`) : "Contém 13º/Férias"}${s.vencimentoNormal ? ` — base mensal: ${fmtBRL(s.vencimentoNormal)}` : ""}</div>`
             : "";
           return `
           <article class="contrato" style="border-left:4px solid ${s.orgao === "Câmara" ? "#c0392b" : "#2980b9"}">
@@ -4864,7 +4884,7 @@ ${url}
                 <span><strong>Salário Líquido (Dinheiro na Conta):</strong> <strong>${fmtBRL(s.liquido || 0)}</strong></span>
                 ${s.matricula ? `<span>Matrícula ${s.matricula}</span>` : ""}
               </div>
-              ${tagAtipico}
+              ${tagAtipico}${tagOutroOrgao}
             </div>
           </article>`;
         }).join("");

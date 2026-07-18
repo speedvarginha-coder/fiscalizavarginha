@@ -99,7 +99,34 @@
 
     const D = window.ZELA_DATA || {};
     const orgPessoal = prefix === "Camara" ? (D.pessoal || {}).camara : (D.pessoal || {}).prefeitura;
-    let pessoalPorNome = new Map(((orgPessoal || {}).servidores || []).map(s => [norm(s.nome), s]));
+    // Um servidor aparece com várias linhas (uma por mês). Para exibir o
+    // SALÁRIO usa-se o mês mensal mais recente — nunca o mês de rescisão,
+    // que traz verbas indenizatórias e faria um desligado parecer
+    // supersalário (caso real: Diretor Geral com R$ 41 mil na saída).
+    // Se a última linha da pessoa for rescisão, marca como desligada.
+    const mapaFolha = (servidores) => {
+      const porNome = new Map();
+      (servidores || []).forEach(s => {
+        const k = norm(s.nome);
+        if (!porNome.has(k)) porNome.set(k, []);
+        porNome.get(k).push(s);
+      });
+      const chaveMes = (s) => {
+        const m = String(s.competencia || "").match(/^(\d{2})\/(\d{4})$/);
+        return m ? m[2] + m[1] : "";
+      };
+      const ehRescisao = (s) => (s.tipos_folha || []).some(t => /rescis/i.test(String(t)));
+      const escolhido = new Map();
+      porNome.forEach((linhas, k) => {
+        const ordenadas = linhas.slice().sort((a, b) => chaveMes(a).localeCompare(chaveMes(b)));
+        const ultima = ordenadas[ordenadas.length - 1];
+        const mensais = ordenadas.filter(s => !ehRescisao(s));
+        const base = mensais.length ? mensais[mensais.length - 1] : ultima;
+        escolhido.set(k, { ...base, __desligado: ehRescisao(ultima), __compSalario: base.competencia || "" });
+      });
+      return escolhido;
+    };
+    let pessoalPorNome = mapaFolha((orgPessoal || {}).servidores);
     const isPrefeitura = prefix === "Prefeitura";
     // Competência da folha usada no rótulo do salário (ex.: "06/2026").
     let compFolha = (orgPessoal || {}).competencia || "";
@@ -116,7 +143,7 @@
         .then(full => {
           const org = (full || {}).prefeitura || {};
           if ((org.servidores || []).length) {
-            pessoalPorNome = new Map(org.servidores.map(s => [norm(s.nome), s]));
+            pessoalPorNome = mapaFolha(org.servidores);
             if (org.competencia) compFolha = org.competencia;
             render();
           }
@@ -162,6 +189,8 @@
         encontrado: true,
         comissionado: Boolean(servidor.comissionado_ou_similar),
         vencimentos: Number(servidor.vencimentos || 0),
+        desligado: Boolean(servidor.__desligado),
+        compSalario: servidor.__compSalario || "",
       };
     };
 
@@ -248,6 +277,8 @@
         // Salário bruto do mês de referência da folha (cruzado por nome).
         // Exibido SEPARADO das diárias: diária é indenização, não remuneração.
         salario: Number(vinculo.vencimentos || 0),
+        salarioComp: vinculo.compSalario || "",
+        desligado: Boolean(vinculo.desligado),
         secretaria: dimSecretaria(d),
         periodoKey: periodoKey || "",
         periodoRotulo: periodoKey ? mesRotulo(periodoKey) : "",
@@ -329,8 +360,9 @@
               <b>${fmtBRL(g.valor)}</b>
               <small>em diárias</small>
               ${g.salario > 0
-                ? `<small title="Salário bruto do mês de referência da folha (${esc(compFolha || "última competência")}). Diária é indenização de viagem, não se soma ao salário.">salário: ${fmtBRL(g.salario)}${compFolha ? ` (${esc(compFolha)})` : ""}</small>`
+                ? `<small title="Salário bruto do último mês MENSAL na folha (rescisões e indenizações ficam de fora deste valor). Diária é indenização de viagem, não se soma ao salário.">salário: ${fmtBRL(g.salario)}${(g.salarioComp || compFolha) ? ` (${esc(g.salarioComp || compFolha)})` : ""}</small>`
                 : `<small class="muted">salário não localizado na folha</small>`}
+              ${g.desligado ? `<small class="muted" title="A última folha desta pessoa neste órgão foi de rescisão: ela se desligou. As diárias listadas são do período em que atuava aqui.">desligado(a) do órgão</small>` : ""}
             </span>
           </div>`;
       }).join("");
