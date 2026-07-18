@@ -357,12 +357,17 @@
               <small>${esc(detalhe)}</small>
             </span>
             <span class="diaria-rank-row__valores">
-              <b>${fmtBRL(g.valor)}</b>
-              <small>em diárias</small>
+              <span class="dr-val dr-val--diarias" title="Dinheiro pago pelas viagens a serviço (hospedagem, alimentação). É reembolso/ajuda de custo — NÃO é aumento de salário.">
+                <small>✈️ recebeu de diárias</small>
+                <b>${fmtBRL(g.valor)}</b>
+              </span>
               ${g.salario > 0
-                ? `<small title="Salário bruto do último mês MENSAL na folha (rescisões e indenizações ficam de fora deste valor). Diária é indenização de viagem, não se soma ao salário.">salário: ${fmtBRL(g.salario)}${(g.salarioComp || compFolha) ? ` (${esc(g.salarioComp || compFolha)})` : ""}</small>`
-                : `<small class="muted">salário não localizado na folha</small>`}
-              ${g.desligado ? `<small class="muted" title="A última folha desta pessoa neste órgão foi de rescisão: ela se desligou. As diárias listadas são do período em que atuava aqui.">desligado(a) do órgão</small>` : ""}
+                ? `<span class="dr-val dr-val--salario" title="Salário bruto de um mês comum de trabalho (${esc(g.salarioComp || compFolha || "última folha")}), sem 13º, férias ou rescisão. É outro dinheiro: um não entra no outro.">
+                     <small>💼 salário por mês</small>
+                     <b>${fmtBRL(g.salario)}</b>
+                   </span>`
+                : `<span class="dr-val dr-val--salario dr-val--vazio"><small>💼 salário</small><b>não localizado</b></span>`}
+              ${g.desligado ? `<small class="dr-val__nota" title="A última folha desta pessoa neste órgão foi de rescisão: ela se desligou. As diárias listadas são do período em que trabalhava aqui.">⚠️ já saiu do órgão</small>` : ""}
             </span>
           </div>`;
       }).join("");
@@ -406,9 +411,11 @@
         if (parent && !parent.querySelector(".diarias-note")) {
           const note = document.createElement("div");
           note.className = "report-note diarias-note";
-          note.innerHTML = isPrefeitura
-            ? `<strong>Diária não é salário extra:</strong> aqui a Prefeitura aparece como despesa/empenho classificado como diária. Use o ranking anual e mensal como trilha de fiscalização: confira processo, justificativa, liquidação e comprovantes na fonte oficial.`
-            : `<strong>Diária não é salário:</strong> na Câmara, a diária deve indenizar viagem oficial. O ranking mensal e anual ajuda a conferir destino, finalidade, autorização, período, prestação de contas e resultado público para Varginha.`;
+          note.innerHTML = `
+            <strong>Como ler este ranking (bem simples):</strong> cada pessoa tem DOIS valores, que são dinheiros diferentes.<br>
+            <span style="display:inline-block;margin-top:4px">✈️ <strong>Diárias</strong> = o que ela recebeu pelas viagens a serviço no período (paga hotel, comida). É ajuda de custo — <strong>não é aumento de salário</strong>.</span><br>
+            <span>💼 <strong>Salário por mês</strong> = o que ela ganha num mês comum de trabalho, sem 13º, férias ou rescisão.</span><br>
+            <span class="small muted">Um valor não entra no outro. Diária alta não significa erro — significa muitas viagens: o certo é conferir destino, motivo e comprovantes na fonte oficial.</span>`;
           parent.insertBefore(note, rankingEl || listaEl);
         }
       }

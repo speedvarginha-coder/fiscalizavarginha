@@ -4672,21 +4672,45 @@ mark.hl {
   text-align: right;
   white-space: nowrap;
 }
-/* Coluna de valores: diárias em destaque + salário da folha logo abaixo,
-   separados de propósito (diária é indenização, não remuneração). */
+/* Coluna de valores: duas caixinhas rotuladas — diárias (viagens) e salário
+   mensal — em cores diferentes para o leitor leigo não somar nem confundir. */
 .diaria-rank-row__valores {
   display: grid;
-  gap: 1px;
-  justify-items: end;
+  gap: 4px;
+  justify-items: stretch;
   text-align: right;
-  max-width: 170px;
+  max-width: 185px;
+  min-width: 150px;
 }
-.diaria-rank-row__valores small {
-  font-size: .72rem;
-  color: var(--muted, #667);
+.dr-val {
+  display: grid;
+  gap: 0;
+  padding: 3px 8px;
+  border-radius: 6px;
+  line-height: 1.25;
+}
+.dr-val small {
+  font-size: .68rem;
+  white-space: nowrap;
+  opacity: .85;
+}
+.dr-val b { font-size: .92rem; white-space: nowrap; }
+.dr-val--diarias {
+  background: #e6f4f1;
+  border: 1px solid #bfe0d9;
+  color: #0b5345;
+}
+.dr-val--salario {
+  background: #eef2f9;
+  border: 1px solid #ccd8ec;
+  color: #1a3a6b;
+}
+.dr-val--vazio b { font-size: .74rem; font-style: italic; opacity: .8; }
+.dr-val__nota {
+  font-size: .7rem;
+  color: #856404;
   white-space: nowrap;
 }
-.diaria-rank-row__valores small.muted { font-style: italic; }
 .diaria-person-tags {
   display: flex;
   flex-wrap: wrap;
