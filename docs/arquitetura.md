@@ -83,7 +83,10 @@ PIPELINE DE DADOS (offline, roda no servidor de quem mantém o painel):
 │   └── coletor*.py             Scripts Python que populam o data/
 │
 ├── tests/
-│   ├── smoke.spec.js           41 testes Playwright
+│   ├── smoke.spec.js           ~55 testes Playwright (UI)
+│   ├── calculos.spec.js        ~14 testes (integridade de cálculos)
+│   ├── emendas-audit.spec.js   ~5 testes (auditoria de emendas)
+│   ├── http.spec.js            1 teste (smoke HTTP)
 │   └── README.md
 │
 └── docs/                       Esta pasta
@@ -375,7 +378,7 @@ npm install              # primeira vez
 npx playwright install   # primeira vez (baixa Chromium)
 
 npm run validate:data    # valida manifest, chunks e sanidade dos dados
-npm test                 # roda 41 testes em ~1min
+npm test                 # roda 75+ testes em ~1min
 npm run release          # valida dados + testes + zip limpo + valida pacote
 npm run test:headed      # vê o browser executando
 npm run test:ui          # modo interativo Playwright UI

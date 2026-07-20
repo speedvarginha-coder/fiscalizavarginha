@@ -2,6 +2,8 @@
 
 De onde vem cada número que aparece no painel. **Sempre** que algo for divulgado publicamente, conferir a fonte oficial primeiro.
 
+> Para fontes candidatas ainda NÃO integradas (links a verificar), veja [`fontes-candidatas.md`](fontes-candidatas.md).
+
 ---
 
 ## Mapa dos chunks

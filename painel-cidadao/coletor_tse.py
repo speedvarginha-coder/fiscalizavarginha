@@ -16,6 +16,7 @@ Saída: data/chunks/tse_doacoes.json
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -206,8 +207,9 @@ def main() -> int:
         "candidatos": resultado,
         "erros": erros,
     }
-    OUT_PATH.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
+    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(_tmp, OUT_PATH)
     print(f"✓ {len(resultado)} eleitos, {total_cruzamentos} cruzamento(s) → tse_doacoes.json")
     return 0
 

@@ -1,4 +1,6 @@
-# Fontes de dados — "mapa da mina" (Fiscaliza Varginha)
+# Fontes candidatas — "mapa da mina" (Fiscaliza Varginha)
+
+> Para o mapa das fontes JÁ integradas (chunk → coletor → fonte oficial), veja [`fontes-de-dados.md`](fontes-de-dados.md). Este arquivo é só para candidatas ainda não integradas.
 
 > Código IBGE de Varginha: **3170701** (chave para filtrar portais federais).
 >

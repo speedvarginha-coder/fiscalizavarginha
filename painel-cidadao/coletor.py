@@ -27,6 +27,7 @@ import csv
 import datetime as dt
 import hashlib
 import json
+import os
 import re
 import sys
 import unicodedata
@@ -68,6 +69,16 @@ DIARIO_EDICAO_OFFSET = 1593
 _CHUNKS_CARIMBO = {"camara_betha.json", "pessoal.json"}
 
 
+def _write_json_atomic(path: Path, payload) -> None:
+    """Escreve em arquivo temporario no MESMO diretorio e troca com os.replace,
+    que e atomico no NTFS/POSIX: o arquivo final nunca fica truncado/parcial,
+    mesmo em queda de energia ou kill do processo no meio da escrita."""
+    texto = json.dumps(payload, ensure_ascii=False, indent=2)
+    tmp = path.with_name(f".{path.name}.tmp{os.getpid()}")
+    tmp.write_text(texto, encoding="utf-8")
+    os.replace(tmp, path)
+
+
 def _save(name: str, payload) -> None:
     agora = dt.datetime.now().astimezone().isoformat(timespec="seconds")
     if name in _CHUNKS_CARIMBO and isinstance(payload, dict) and payload:
@@ -77,7 +88,7 @@ def _save(name: str, payload) -> None:
             if isinstance(bloco, dict) and bloco:
                 bloco.setdefault("coletado_em", agora)
     out = DATA / name
-    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    _write_json_atomic(out, payload)
     print(f"  ✓ {name}  ({out.stat().st_size // 1024} KB)")
 
     # Also save to chunks directory if it's a chunk file
@@ -94,7 +105,7 @@ def _save(name: str, payload) -> None:
         chunks_dir = DATA / "chunks"
         chunks_dir.mkdir(exist_ok=True)
         chunk_out = chunks_dir / name
-        chunk_out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        _write_json_atomic(chunk_out, payload)
 
 
 

@@ -43,7 +43,7 @@ Antes de subir qualquer coisa, rodar:
 ```bash
 # 1. Release local verde
 npm run release
-# → valida dados, roda 41 testes, gera zip e valida pacote
+# → valida dados, roda 75+ testes, gera zip e valida pacote
 
 # 2. Verificar que tokens NÃO estão na pasta
 ls painel-cidadao/.betha* 2>/dev/null

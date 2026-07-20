@@ -76,7 +76,7 @@ npm run validate:data
 npm test
 ```
 
-Se `validate:data` e os 41 testes passarem, os dados estão estruturalmente íntegros e o painel renderiza sem erro JS.
+Se `validate:data` e os 75+ testes passarem, os dados estão estruturalmente íntegros e o painel renderiza sem erro JS.
 
 Para inspecionar visualmente:
 
@@ -257,7 +257,7 @@ Observação: isso é uma aproximação por polling. Só seria "em tempo real" s
 Criar `.bat` que roda diariamente:
 
 ```batch
-cd "C:\Users\Desktop\Desktop\Ações Prefeitura Varginha\3_Fiscaliza Varginha"
+cd "D:\Ações Prefeitura Varginha\3_Fiscaliza Varginha"
 npm run data:update
 ```
 

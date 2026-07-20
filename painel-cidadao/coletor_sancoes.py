@@ -19,6 +19,7 @@ Transparência). Sem chave, o coletor preserva o chunk anterior.
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -224,8 +225,9 @@ def main() -> int:
         "achados": achados,
         "erros": erros[:20],
     }
-    OUT_PATH.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
+    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(_tmp, OUT_PATH)
     print(f"✓ {len(universo)} verificados em {consultas} consultas — "
           f"{len(achados)} sanção(ões), {len(vigentes)} vigente(s). → sancoes.json")
     if vigentes:

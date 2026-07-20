@@ -16,6 +16,7 @@ Saída: data/chunks/licitacoes_resultados.json
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 import urllib.parse
@@ -190,8 +191,9 @@ def main() -> int:
         "registros": compras_out,
         "erros": erros[:20],
     }
-    OUT_PATH.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
+    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(_tmp, OUT_PATH)
     print(f"✓ {len(compras_out)} compras, {len(com_resultado)} com resultado, "
           f"{len(simbolicas)} homologação(ões) simbólica(s) → licitacoes_resultados.json")
     for s in simbolicas[:5]:

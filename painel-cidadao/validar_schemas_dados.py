@@ -150,12 +150,48 @@ def validate_emendas() -> tuple[int, int, int]:
     return len(municipal.emendas), len(estadual.emendas), len(federal.emendas)
 
 
+# Guarda contra regressao estrutural: chunk que HISTORICAMENTE carrega muitos
+# registros nao pode virar lista vazia silenciosamente (foi exatamente o que
+# aconteceu em 20/07/2026 — diarias.json publicado vazio por uma coleta com
+# o Chromium do Playwright ausente, sem que nenhuma validacao formal pegasse
+# antes do teste de UI). getter(payload) extrai a lista a checar; PISO e o
+# minimo historico plausivel — abaixo disso, so aceita se o proprio chunk
+# se declarar "preservado"/"parcial" (coleta sabe que falhou e nao mentiu).
+
+def _checar_regressao(nome_chunk: str, descricao: str, piso: int, getter):
+    payload = read_json(CHUNKS / f"{nome_chunk}.json")
+    valor = getter(payload)
+    if not isinstance(valor, list):
+        raise ValueError(f"{nome_chunk}: {descricao} nao e uma lista (tipo {type(valor).__name__})")
+    if len(valor) < piso:
+        texto_bruto = json.dumps(payload, ensure_ascii=False).lower()
+        declarado_parcial = any(p in texto_bruto for p in ("preservad", "parcial", "falha"))
+        if not declarado_parcial:
+            raise ValueError(
+                f"{nome_chunk}: {descricao} tem {len(valor)} registro(s) (esperado >= {piso}) "
+                f"e o chunk nao se declara preservado/parcial — provavel coleta vazia publicada por engano."
+            )
+
+
+def validate_regressoes() -> None:
+    _checar_regressao("diarias", "diarias.prefeitura", 500, lambda p: (p or {}).get("prefeitura"))
+    _checar_regressao("diarias", "diarias.camara", 30, lambda p: (p or {}).get("camara"))
+    _checar_regressao("pessoal", "pessoal.prefeitura.servidores", 500,
+                       lambda p: ((p or {}).get("prefeitura") or {}).get("servidores"))
+    _checar_regressao("pessoal", "pessoal.camara.servidores", 20,
+                       lambda p: ((p or {}).get("camara") or {}).get("servidores"))
+    _checar_regressao("prefeitura", "prefeitura.contratos", 200, lambda p: (p or {}).get("contratos"))
+    _checar_regressao("camara_betha", "camara_betha.top_fornecedores_atual", 5,
+                       lambda p: (p or {}).get("top_fornecedores_atual"))
+
+
 def main() -> int:
     try:
         chunks = validate_manifest()
         status = SourceStatus.model_validate(read_json(CHUNKS / "status_fontes.json"))
         monitor = Monitoring.model_validate(read_json(CHUNKS / "monitoramento_coletas.json"))
         municipal, estadual, federal = validate_emendas()
+        validate_regressoes()
     except (OSError, ValueError, ValidationError, json.JSONDecodeError) as exc:
         print(f"ERRO DE SCHEMA: {exc}", file=sys.stderr)
         return 1

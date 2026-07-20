@@ -8,7 +8,7 @@ Lista única para conferir antes de cada deploy. Copie e cole no commit/PR.
 
 ### Código
 
-- [ ] `npm run release` — valida dados, roda 41 testes, gera zip e valida pacote
+- [ ] `npm run release` — valida dados, roda 75+ testes, gera zip e valida pacote
 - [ ] `npm test` — 41/41 verdes
 - [ ] `node --check painel-cidadao/app.js` — sintaxe OK
 - [ ] Sem erros no console em todas as 9 páginas (testar local)
@@ -25,7 +25,7 @@ Lista única para conferir antes de cada deploy. Copie e cole no commit/PR.
 ### Dados
 
 - [ ] `data/chunks/atualizado_em.json` tem timestamp < 30 dias
-- [ ] `data/manifest.json` lista todos os 16 chunks
+- [ ] `data/manifest.json` lista todos os 29 chunks
 - [ ] `npm run validate:data` passa sem erro
 - [ ] Tamanho total `du -sh painel-cidadao/` < 20MB
 - [ ] Spot-check: abrir 1 chunk grande e ver se JSON é válido (`py -m json.tool data/chunks/prefeitura.json | head`)

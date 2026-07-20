@@ -59,7 +59,7 @@ public_html/
 - ❌ **NUNCA substituir** pelo `chat.php` local (esse tem a chave em texto plano)
 - ❌ **NUNCA deletar** antes de fazer backup
 - ✅ **SEMPRE** baixar backup local antes de qualquer deploy
-- ✅ Local de backup esperado: `C:\Users\Desktop\Desktop\Ações Prefeitura Varginha\3_Fiscaliza Varginha\backups-hostinger\bate-papo.php`
+- ✅ Local de backup esperado: `D:\Ações Prefeitura Varginha\3_Fiscaliza Varginha\backups-hostinger\bate-papo.php`
 
 ### O que ele faz:
 Endpoint PHP que recebe requisições do chat "Pergunte à Iris" no frontend, chama a API Gemini server-side, e retorna a resposta. **A chave da API NUNCA vai pro frontend** — vai só do PHP pra Google.
@@ -70,7 +70,7 @@ Endpoint PHP que recebe requisições do chat "Pergunte à Iris" no frontend, ch
 
 ### Working tree (fonte):
 ```
-C:\Users\Desktop\Desktop\Ações Prefeitura Varginha\3_Fiscaliza Varginha\
+D:\Ações Prefeitura Varginha\3_Fiscaliza Varginha\
 ├── painel-cidadao\        ← código-fonte do site
 │   ├── *.html             (10 páginas)
 │   ├── app.js             (414 KB, atualizado 27/06 09:52)
@@ -92,7 +92,7 @@ C:\Users\Desktop\Desktop\Ações Prefeitura Varginha\3_Fiscaliza Varginha\
 ```
 
 ### Zip pronto pra deploy:
-**Caminho:** `C:\Users\Desktop\Desktop\Ações Prefeitura Varginha\3_Fiscaliza Varginha\dist\fiscaliza-varginha-painel.zip`
+**Caminho:** `D:\Ações Prefeitura Varginha\3_Fiscaliza Varginha\dist\fiscaliza-varginha-painel.zip`
 **Tamanho:** 5,8 MB
 **Conteúdo:** 95 arquivos (HTMLs, JS, CSS, .htaccess, data/, modules/, manifest.json)
 **Quando foi gerado:** 27/06/2026 às 11:05
@@ -189,7 +189,7 @@ O token Betha é capturado via Playwright e reusado entre portais.
 **1. Backup do `bate-papo.php`**
 - Acessar File Manager → `public_html/painel-cidadao/painel-cidadao/bate-papo.php`
 - Botão direito → Download (ou abrir e salvar manualmente)
-- Salvar em `C:\Users\Desktop\Desktop\Ações Prefeitura Varginha\3_Fiscaliza Varginha\backups-hostinger\`
+- Salvar em `D:\Ações Prefeitura Varginha\3_Fiscaliza Varginha\backups-hostinger\`
 - Validar: tamanho ~32 KB
 
 **2. Apagar estrutura errada**
