@@ -487,6 +487,15 @@ try {
   # Backup automatico no GitHub (so com -GitSync e coleta validada com sucesso).
   # Commita apenas os diretorios de dados; push nao-fatal (nao derruba o ciclo).
   if ($GitSync -and $collectionStatus -eq "SUCESSO") {
+    # O git normaliza fim de linha (LF->CRLF) e emite aviso no stderr sempre
+    # que ha arquivo pendente com fim de linha misto — o que e a norma neste
+    # projeto. Com $ErrorActionPreference=Stop (setado no topo do script),
+    # PowerShell 5.1 embrulha ESSE AVISO como excecao terminante mesmo com
+    # "2>&1 | Out-Null", derrubando o try ANTES do commit/push rodarem —
+    # GitSync silenciosamente nunca sincronizava de verdade. Mesmo padrao
+    # de Continue-e-restaura ja usado em Invoke-SourceProbe/Acquire-Lock.
+    $prevEAP = $ErrorActionPreference
+    $ErrorActionPreference = "Continue"
     try {
       Write-Log "Sincronizando dados com o GitHub (commit + push)."
       & git -C $root add -- painel-cidadao/data painel-cidadao/emendas/data 2>&1 | Out-Null
@@ -502,6 +511,8 @@ try {
       }
     } catch {
       Write-Log "AVISO: sync com GitHub falhou (nao bloqueia o ciclo): $_"
+    } finally {
+      $ErrorActionPreference = $prevEAP
     }
   }
 
