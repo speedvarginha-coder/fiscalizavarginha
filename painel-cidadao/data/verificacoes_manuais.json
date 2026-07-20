@@ -1,0 +1,21 @@
+{
+  "descricao": "Registro de verificacao manual de achados criticos contra a fonte oficial primaria. Sobrevive as coletas automaticas (que sobrescrevem sancoes.json a cada ciclo) porque mora neste arquivo separado, versionado no git; coletor_sancoes.py mescla estes registros nos achados correspondentes por raiz de CNPJ antes de publicar.",
+  "verificacoes": [
+    {
+      "cnpj_raiz": "11175931",
+      "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "data_verificacao": "2026-07-17",
+      "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+      "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+      "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+    },
+    {
+      "cnpj_raiz": "21856981",
+      "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "data_verificacao": "2026-07-20",
+      "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+      "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+      "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+    }
+  ]
+}

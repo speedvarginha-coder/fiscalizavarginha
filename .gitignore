@@ -99,6 +99,9 @@ Publicidade Emendas/
 # a raiz — só os chunks e o manifest.json.
 painel-cidadao/data/*.json
 !painel-cidadao/data/manifest.json
+# verificacoes_manuais.json é fonte mantida a mao (rastreabilidade de
+# achados criticos), nao um staging regeneravel pelo coletor — versionar.
+!painel-cidadao/data/verificacoes_manuais.json
 
 # data.js (monolito ~6,6MB, fallback file://) é gerado pelo coletor.py.
 # Regenerável e copiado ao empacotar — não versionar (evita diff diário de MBs).

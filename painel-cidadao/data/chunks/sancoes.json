@@ -22,7 +22,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "03945035"
     },
     {
       "base": "CEIS",
@@ -38,7 +39,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "73856593"
     },
     {
       "base": "CEIS",
@@ -54,7 +56,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "73856593"
     },
     {
       "base": "CEIS",
@@ -70,7 +73,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "43121365"
     },
     {
       "base": "CEIS",
@@ -86,7 +90,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "32439205"
     },
     {
       "base": "CEIS",
@@ -103,7 +108,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "24327852"
     },
     {
       "base": "CEIS",
@@ -119,7 +125,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "26961485"
     },
     {
       "base": "CEIS",
@@ -135,7 +142,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "40455009"
     },
     {
       "base": "CEIS",
@@ -151,7 +159,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "02499001"
     },
     {
       "base": "CEIS",
@@ -167,7 +176,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "02499001"
     },
     {
       "base": "CEIS",
@@ -183,7 +193,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "93577427"
     },
     {
       "base": "CEIS",
@@ -199,7 +210,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "93577427"
     },
     {
       "base": "CEIS",
@@ -215,7 +227,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "93577427"
     },
     {
       "base": "CEIS",
@@ -232,7 +245,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "11175931",
+      "verificacao_manual": {
+        "cnpj_raiz": "11175931",
+        "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+        "data_verificacao": "2026-07-17",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+      }
     },
     {
       "base": "CEIS",
@@ -249,7 +271,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "11175931",
+      "verificacao_manual": {
+        "cnpj_raiz": "11175931",
+        "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+        "data_verificacao": "2026-07-17",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+      }
     },
     {
       "base": "CEIS",
@@ -266,7 +297,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "11175931",
+      "verificacao_manual": {
+        "cnpj_raiz": "11175931",
+        "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+        "data_verificacao": "2026-07-17",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+      }
     },
     {
       "base": "CEIS",
@@ -283,7 +323,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "11175931",
+      "verificacao_manual": {
+        "cnpj_raiz": "11175931",
+        "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+        "data_verificacao": "2026-07-17",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+      }
     },
     {
       "base": "CEIS",
@@ -300,7 +349,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "11175931",
+      "verificacao_manual": {
+        "cnpj_raiz": "11175931",
+        "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+        "data_verificacao": "2026-07-17",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+      }
     },
     {
       "base": "CEIS",
@@ -317,7 +375,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "11175931",
+      "verificacao_manual": {
+        "cnpj_raiz": "11175931",
+        "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+        "data_verificacao": "2026-07-17",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+      }
     },
     {
       "base": "CEIS",
@@ -334,7 +401,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "11175931",
+      "verificacao_manual": {
+        "cnpj_raiz": "11175931",
+        "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+        "data_verificacao": "2026-07-17",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+      }
     },
     {
       "base": "CEIS",
@@ -351,7 +427,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "11175931",
+      "verificacao_manual": {
+        "cnpj_raiz": "11175931",
+        "fornecedor": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+        "data_verificacao": "2026-07-17",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "Declaracao de Inidoneidade sem prazo determinado pelo Governo do Estado da Bahia. CNPJ 11.175.931/0001-47 confirmado identico ao contrato local em execucao com a Prefeitura."
+      }
     },
     {
       "base": "CEIS",
@@ -368,7 +453,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "07308817"
     },
     {
       "base": "CEIS",
@@ -385,7 +471,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "07308817"
     },
     {
       "base": "CEIS",
@@ -401,7 +488,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "13460002"
     },
     {
       "base": "CEIS",
@@ -417,7 +505,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21613975"
     },
     {
       "base": "CEIS",
@@ -434,7 +523,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "29551995"
     },
     {
       "base": "CEIS",
@@ -450,7 +540,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "65122590"
     },
     {
       "base": "CEIS",
@@ -466,7 +557,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "36827096"
     },
     {
       "base": "CEIS",
@@ -482,7 +574,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "36827096"
     },
     {
       "base": "CEIS",
@@ -498,7 +591,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "36827096"
     },
     {
       "base": "CEIS",
@@ -514,7 +608,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "23588621"
     },
     {
       "base": "CEIS",
@@ -531,7 +626,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "48566347"
     },
     {
       "base": "CEIS",
@@ -548,7 +644,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "48566347"
     },
     {
       "base": "CEIS",
@@ -565,7 +662,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "48566347"
     },
     {
       "base": "CEIS",
@@ -582,7 +680,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21856981",
+      "verificacao_manual": {
+        "cnpj_raiz": "21856981",
+        "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+        "data_verificacao": "2026-07-20",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+      }
     },
     {
       "base": "CEIS",
@@ -599,7 +706,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21856981",
+      "verificacao_manual": {
+        "cnpj_raiz": "21856981",
+        "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+        "data_verificacao": "2026-07-20",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+      }
     },
     {
       "base": "CEIS",
@@ -616,7 +732,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21856981",
+      "verificacao_manual": {
+        "cnpj_raiz": "21856981",
+        "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+        "data_verificacao": "2026-07-20",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+      }
     },
     {
       "base": "CEIS",
@@ -633,7 +758,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21856981",
+      "verificacao_manual": {
+        "cnpj_raiz": "21856981",
+        "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+        "data_verificacao": "2026-07-20",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+      }
     },
     {
       "base": "CEIS",
@@ -650,7 +784,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21856981",
+      "verificacao_manual": {
+        "cnpj_raiz": "21856981",
+        "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+        "data_verificacao": "2026-07-20",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+      }
     },
     {
       "base": "CEIS",
@@ -667,7 +810,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21856981",
+      "verificacao_manual": {
+        "cnpj_raiz": "21856981",
+        "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+        "data_verificacao": "2026-07-20",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+      }
     },
     {
       "base": "CEIS",
@@ -684,7 +836,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21856981",
+      "verificacao_manual": {
+        "cnpj_raiz": "21856981",
+        "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+        "data_verificacao": "2026-07-20",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+      }
     },
     {
       "base": "CEIS",
@@ -701,7 +862,16 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21856981",
+      "verificacao_manual": {
+        "cnpj_raiz": "21856981",
+        "fornecedor": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+        "data_verificacao": "2026-07-20",
+        "fonte": "API oficial do Portal da Transparencia federal (CGU) — api-de-dados/ceis, consulta direta por nomeSancionado com confirmacao de CNPJ exato",
+        "verificado_por": "Claude (sessao Fiscaliza Varginha)",
+        "observacao": "CNPJ 21.856.981/0001-43 confirmado identico. Historico de 15+ sancoes em dezenas de municipios de MG desde 2023 (padrao de nao honrar contrato/documentacao falsa), incluindo impedimento aplicado pela propria Prefeitura de Varginha (04/03/2026-04/03/2027). Contrato local assinado 22/01/2026, antes da sancao da propria Varginha."
+      }
     },
     {
       "base": "CEIS",
@@ -718,7 +888,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "40968252"
     },
     {
       "base": "CEIS",
@@ -734,7 +905,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -750,7 +922,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -766,7 +939,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -782,7 +956,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -798,7 +973,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -814,7 +990,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -830,7 +1007,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -846,7 +1024,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -862,7 +1041,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -878,7 +1058,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -894,7 +1075,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "10581468"
     },
     {
       "base": "CEIS",
@@ -910,7 +1092,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "47646580"
     },
     {
       "base": "CEIS",
@@ -926,7 +1109,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "47646580"
     },
     {
       "base": "CEIS",
@@ -942,7 +1126,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "47646580"
     },
     {
       "base": "CEIS",
@@ -958,7 +1143,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "47646580"
     },
     {
       "base": "CEIS",
@@ -974,7 +1160,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "13482516"
     },
     {
       "base": "CEIS",
@@ -990,7 +1177,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "13482516"
     },
     {
       "base": "CEIS",
@@ -1006,7 +1194,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "13482516"
     },
     {
       "base": "CEIS",
@@ -1022,7 +1211,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "13482516"
     },
     {
       "base": "CEIS",
@@ -1038,7 +1228,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "13482516"
     },
     {
       "base": "CNEP",
@@ -1056,7 +1247,8 @@
         "contrato_camara",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "68533967"
     },
     {
       "base": "CEIS",
@@ -1072,7 +1264,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "20352354"
     },
     {
       "base": "CEIS",
@@ -1088,7 +1281,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "50387433"
     },
     {
       "base": "CEIS",
@@ -1104,7 +1298,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "07422644"
     },
     {
       "base": "CEIS",
@@ -1120,7 +1315,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "53448772"
     },
     {
       "base": "CEIS",
@@ -1136,7 +1332,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "53448772"
     },
     {
       "base": "CEIS",
@@ -1153,7 +1350,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "65271868"
     },
     {
       "base": "CEIS",
@@ -1170,7 +1368,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "65271868"
     },
     {
       "base": "CEIS",
@@ -1186,7 +1385,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "73068702"
     },
     {
       "base": "CEIS",
@@ -1202,7 +1402,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "16620059"
     },
     {
       "base": "CEIS",
@@ -1218,7 +1419,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "16620059"
     },
     {
       "base": "CEIS",
@@ -1234,7 +1436,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "13862822"
     },
     {
       "base": "CEIS",
@@ -1250,7 +1453,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "54362519"
     },
     {
       "base": "CEIS",
@@ -1266,7 +1470,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "20949657"
     },
     {
       "base": "CEIS",
@@ -1282,7 +1487,8 @@
       "origens": [
         "contrato_prefeitura"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "46221464"
     },
     {
       "base": "CEIS",
@@ -1299,7 +1505,8 @@
         "contrato_prefeitura",
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "41604536"
     },
     {
       "base": "CEIS",
@@ -1315,7 +1522,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "36521392"
     },
     {
       "base": "CEIS",
@@ -1331,7 +1539,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": false
+      "sancao_vigente": false,
+      "cnpj_raiz": "36521392"
     },
     {
       "base": "CEIS",
@@ -1347,7 +1556,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "50604613"
     },
     {
       "base": "CEIS",
@@ -1363,7 +1573,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "35230250"
     },
     {
       "base": "CEIS",
@@ -1379,7 +1590,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "35230250"
     },
     {
       "base": "CEIS",
@@ -1395,7 +1607,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "35230250"
     },
     {
       "base": "CEIS",
@@ -1411,7 +1624,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "21016690"
     },
     {
       "base": "CEIS",
@@ -1427,7 +1641,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "43595813"
     },
     {
       "base": "CEIS",
@@ -1443,7 +1658,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "24688722"
     },
     {
       "base": "CEIS",
@@ -1459,7 +1675,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": false
+      "sancao_vigente": false,
+      "cnpj_raiz": "08086600"
     },
     {
       "base": "CEIS",
@@ -1475,7 +1692,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "08086600"
     },
     {
       "base": "CEIS",
@@ -1491,7 +1709,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "36877324"
     },
     {
       "base": "CEIS",
@@ -1507,7 +1726,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "36877324"
     },
     {
       "base": "CEIS",
@@ -1523,7 +1743,8 @@
       "origens": [
         "vencedor_licitacao"
       ],
-      "sancao_vigente": true
+      "sancao_vigente": true,
+      "cnpj_raiz": "46418740"
     }
   ],
   "erros": [

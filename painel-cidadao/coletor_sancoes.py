@@ -92,6 +92,20 @@ def _ler_json(path: Path) -> dict:
         return {}
 
 
+def _carregar_verificacoes_manuais() -> dict:
+    """Le painel-cidadao/data/verificacoes_manuais.json (mantido a mao,
+    versionado) e devolve dict cnpj_raiz -> registro de verificacao. Arquivo
+    separado da coleta automatica para que a verificacao humana sobreviva ao
+    proximo ciclo, que sobrescreve sancoes.json inteiro."""
+    dados = _ler_json(ROOT / "data" / "verificacoes_manuais.json")
+    out = {}
+    for v in dados.get("verificacoes", []):
+        raiz = "".join(c for c in str(v.get("cnpj_raiz", "")) if c.isdigit())
+        if raiz:
+            out[raiz] = v
+    return out
+
+
 def coletar_universo() -> list[dict]:
     """Fornecedores e contratados a verificar: tops de despesa + contratos
     vigentes + base cadastral. Dedup por raiz de CNPJ (ou nome)."""
@@ -205,10 +219,21 @@ def main() -> int:
                 if casa(s, forn):
                     item = _resumo_sancao(s, base)
                     item["fornecedor_local"] = forn["nome"]
+                    item["cnpj_raiz"] = forn["cnpj_raiz"]
                     item["origens"] = forn["origens"]
                     item["sancao_vigente"] = _vigente(s, hoje)
                     if item not in achados:
                         achados.append(item)
+
+    # Rastreabilidade: acha grave verificado manualmente contra a fonte
+    # primaria (CGU) carrega o registro — nao fica so na conversa. Sobrevive
+    # a esta mesma coleta (que sobrescreve sancoes.json) porque o registro
+    # mora em verificacoes_manuais.json, versionado e mantido a parte.
+    verificacoes = _carregar_verificacoes_manuais()
+    for item in achados:
+        v = verificacoes.get(item.get("cnpj_raiz", ""))
+        if v:
+            item["verificacao_manual"] = v
 
     # Guarda-chuva: se o universo verificado desabar (universo vazio/quebrado
     # ou API do CGU falhando em bloco), nao sobrescreve uma base saudavel
