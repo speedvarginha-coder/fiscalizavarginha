@@ -5,6 +5,13 @@
   [switch]$SkipWhatsApp,
   [switch]$GitSync,
   [switch]$OnlyIfChanged,
+  # Pula as 3 varreduras externas lentas (CEIS/CNEP, TSE, PNCP-licitacoes) —
+  # dados de sancao/doacao/licitacao nao mudam de hora em hora, e cada uma
+  # bate uma API externa por ~15-40min. Feito para a vigia frequente rodar
+  # rapido SEM abrir mao de deploy+whatsapp (isso continua ativo aqui —
+  # a vigia so pula o que e caro e raramente muda, nao o que o cidadao
+  # espera ver atualizado ao longo do dia).
+  [switch]$SkipSlowAudits,
 
   [ValidateSet("Full", "Sapl", "NoHeavy")]
   [string]$CollectorMode = "Full"
@@ -242,7 +249,7 @@ try {
   $collectionStatus = "EM_ANDAMENTO"
   Write-Log "Iniciando coleta automatica."
   Write-Log "Projeto: $root"
-  Write-Log "Modo do coletor: $CollectorMode"
+  Write-Log "Modo do coletor: $CollectorMode$(if ($SkipSlowAudits) { ' (vigia rapida — sem CEIS/CNEP/TSE/licitacoes)' })"
 
   if ($OnlyIfChanged) {
     Write-Log "Verificando se fontes mudaram antes de coletar."
@@ -319,24 +326,31 @@ try {
     -Arguments @("-u", "audit_emendas.py") `
     -WorkingDirectory (Join-Path $painel "emendas")
 
-  # Cruzamentos externos (best effort: preservam o chunk anterior em falha)
-  Invoke-AndLog `
-    -Label "Cruzando fornecedores com CEIS/CNEP (empresas sancionadas)." `
-    -FilePath "python" `
-    -Arguments @("-u", "coletor_sancoes.py") `
-    -WorkingDirectory $painel
+  # Cruzamentos externos (best effort: preservam o chunk anterior em falha).
+  # Pulados na vigia rapida (-SkipSlowAudits): sancao/doacao/licitacao nao
+  # mudam de hora em hora, e juntas essas 3 chamadas levam ~1h so de API
+  # externa — o motivo real das colisoes de ciclo em 20/07/2026.
+  if (-not $SkipSlowAudits) {
+    Invoke-AndLog `
+      -Label "Cruzando fornecedores com CEIS/CNEP (empresas sancionadas)." `
+      -FilePath "python" `
+      -Arguments @("-u", "coletor_sancoes.py") `
+      -WorkingDirectory $painel
 
-  Invoke-AndLog `
-    -Label "Cruzando doadores de campanha (TSE) com fornecedores e QSA." `
-    -FilePath "python" `
-    -Arguments @("-u", "coletor_tse.py") `
-    -WorkingDirectory $painel
+    Invoke-AndLog `
+      -Label "Cruzando doadores de campanha (TSE) com fornecedores e QSA." `
+      -FilePath "python" `
+      -Arguments @("-u", "coletor_tse.py") `
+      -WorkingDirectory $painel
 
-  Invoke-AndLog `
-    -Label "Coletando resultados de licitacao (vencedores) no PNCP." `
-    -FilePath "python" `
-    -Arguments @("-u", "coletor_resultados_licitacao.py") `
-    -WorkingDirectory $painel
+    Invoke-AndLog `
+      -Label "Coletando resultados de licitacao (vencedores) no PNCP." `
+      -FilePath "python" `
+      -Arguments @("-u", "coletor_resultados_licitacao.py") `
+      -WorkingDirectory $painel
+  } else {
+    Write-Log "Vigia rapida: pulando CEIS/CNEP, TSE e licitacoes-resultados (rodam so no ciclo diario)."
+  }
 
   Push-Location $root
   try {

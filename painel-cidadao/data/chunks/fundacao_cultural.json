@@ -7,9 +7,9 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 2433425.93,
+    "total_atual": 2435643.81,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 349419.45,
+    "total_externo_atual": 351637.33,
     "total_externo_anterior": 3071916.67,
     "credores_atual_qtd": 112,
     "credores_anterior_qtd": 196,
@@ -264,7 +264,7 @@
       "registros": 216,
       "empenhado": 3173779.8,
       "liquidado": 2439833.81,
-      "pago": 2433452.54
+      "pago": 2435643.81
     },
     "maiores_empenhos_atual": [
       {
@@ -616,8 +616,8 @@
         "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
         "valor_empenhado": 12673.6,
         "valor_liquidado": 2217.88,
-        "valor_pago": 26.61,
-        "saldo_a_pagar": 12646.99
+        "valor_pago": 2217.88,
+        "saldo_a_pagar": 10455.72
       },
       {
         "data": "2026-04-08",

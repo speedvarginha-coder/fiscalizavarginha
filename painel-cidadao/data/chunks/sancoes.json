@@ -1,6 +1,6 @@
 {
   "fonte": "Portal da Transparencia (CGU) - CEIS e CNEP",
-  "gerado_em": "2026-07-20T17:42:16+00:00",
+  "gerado_em": "2026-07-20T20:10:09+00:00",
   "metodo": "Consulta por nome na API api-de-dados; confirmacao local por raiz de CNPJ ou nome normalizado identico. Cobertura limitada a fornecedores com nome consultavel — nao e prova de ausencia de sancao.",
   "verificados": 1074,
   "consultas_api": 1093,

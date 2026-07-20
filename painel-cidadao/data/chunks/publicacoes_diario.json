@@ -1,8 +1,572 @@
 {
- "gerado_em": "2026-07-20T17:06:43+00:00",
+ "gerado_em": "2026-07-20T19:46:35+00:00",
  "fonte": "diario",
- "total": 207,
+ "total": 225,
  "publicacoes": [
+  {
+   "id": "DIARIO-2026-1847-pessoal-portarian23249de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.249, DE 13 DE JULHO DE 2026.",
+   "numero": "23.249",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha designou o servidor Paulo Henrique de Oliveira para a função gratificada de Subinspetor da Guarda Civil Municipal.",
+   "pontos_atencao": [
+    "A designação para uma função gratificada implica em um aumento na despesa com pessoal da prefeitura.",
+    "A retroatividade dos efeitos da portaria a uma data anterior à sua publicação."
+   ],
+   "envolvidos": [
+    {
+     "nome": "",
+     "cnpj": "18.240.119/0001-05",
+     "papel": "cnpj"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:46:24+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-pessoal-portarian23240de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.240, DE 10 DE JULHO DE 2026.",
+   "numero": "23.240",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "segurança pública",
+   "resumo": "Esta Portaria nomeia os membros que irão compor o Conselho Municipal de Segurança Pública (CONSEP) de Varginha.",
+   "pontos_atencao": [
+    "A função de membro do CONSEP não é remunerada, sendo considerada um serviço público relevante.",
+    "Os mandatos dos membros são de dois anos, com possibilidade de uma única renovação."
+   ],
+   "envolvidos": [
+    {
+     "nome": "REPRESENTANTES DA SOCIEDADE",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:46:15+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-pessoal-portarian23229de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.229, DE 10 DE JULHO DE 2026.",
+   "numero": "23.229",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria prorroga por 12 meses a carga horária de trabalho diferenciada da servidora Márcia Sabino Luciano Rodrigues, ocupante do cargo de Oficial de Administração.",
+   "pontos_atencao": [
+    "A decisão afeta uma servidora específica e prorroga uma condição de trabalho já existente.",
+    "Os efeitos da portaria são retroativos a 09/07/2026, um dia antes da data de publicação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:46:10+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-pessoal-portarian1292026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 129/2026, 17 DE JULHO DE 2026.",
+   "numero": "129/2026",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "compras",
+   "resumo": "Foi publicado um aditivo que aumenta o valor de um contrato para a compra de computadores desktop com monitor para a Prefeitura de Varginha.",
+   "pontos_atencao": [
+    "O aumento de 25% no valor do Lote 14 do contrato original.",
+    "A necessidade de verificar a justificativa para o reequilíbrio econômico-financeiro.",
+    "A empresa beneficiada pelo aditivo é a AZUL TEC LICITACOES EM INFORMATICA E SUPRIMENTOS LTDA."
+   ],
+   "envolvidos": [
+    {
+     "nome": "TEC LICITACOES EM INFORMATICA E SUPRIMENTOS LTDA",
+     "papel": "empresa",
+     "cnpj": "58.149.730/0001-39"
+    },
+    {
+     "nome": "Caique Bruno da Silva - Supervisor de Compras. FUNDAÇÃO",
+     "papel": "empresa",
+     "cnpj": "19.110.162/0001-00"
+    }
+   ],
+   "valores": {
+    "total": 19775.0,
+    "encontrados": [
+     19775.0
+    ]
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:46:35+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein7591de30deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "LEI N° 7.591 DE 30 DE JUNHO DE 2026.",
+   "numero": "7.591",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta lei altera os nomes, requisitos e atribuições de diversos cargos efetivos da Fundação Hospitalar do Município de Varginha (FHOMUV).",
+   "pontos_atencao": [
+    "As mudanças nos requisitos de escolaridade podem impactar futuros concursos ou a qualificação de funcionários atuais.",
+    "A alteração de atribuições, embora não detalhada no texto fornecido, pode influenciar a rotina e as responsabilidades dos profissionais da saúde."
+   ],
+   "envolvidos": [
+    {
+     "nome": "A NOMENCLATURA, REQUISITOS E ATRIBUIÇÕES DOS CARGOS QUE ESPECIFICA DA FUNDAÇÃO",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:44:35+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein7591de30deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "LEI N° 7.591 DE 30 DE JUNHO DE 2026. - ANEXO I E II",
+   "numero": "7.591",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta lei descreve as atribuições e responsabilidades de um cargo de nível superior na área de Tecnologia da Informação para a Prefeitura de Varginha, com foco no Sistema Único de Saúde (SUS).",
+   "pontos_atencao": [],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:46:05+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein51372009",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 5.137/2009,",
+   "numero": "5.137/2009",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este ato detalha os requisitos de escolaridade para cargos públicos específicos na Prefeitura de Varginha, como Tecnólogo em Radiologia/Radioterapia, Escriturário e Fisioterapeuta.",
+   "pontos_atencao": [
+    "O texto fornecido é um excerto, o que limita a compreensão completa do contexto e do impacto total da lei.",
+    "É importante consultar as leis anteriores (Lei nº 5.137/2009, Lei nº 6.506/2018 e Lei nº 3.011/1998) para entender as modificações completas."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:44:56+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein45722006",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 4.572/2006,",
+   "numero": "4.572/2006",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta lei altera os requisitos de escolaridade para dois cargos específicos na Prefeitura de Varginha: Odontologista e Dosimetrista EF-10.",
+   "pontos_atencao": [],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:44:48+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein45722006",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 4.572/2006,",
+   "numero": "4.572/2006",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este ato esclarece os requisitos de escolaridade para o cargo de Fisioterapeuta CTI na Prefeitura de Varginha, especificando a necessidade de ensino superior completo em Fisioterapia com especialização em Fisioterapia Intensiva em Adulto.",
+   "pontos_atencao": [
+    "A alteração pode influenciar o perfil dos profissionais contratados para atuar em Unidades de Terapia Intensiva (CTI).",
+    "Define um padrão de qualificação para uma função sensível na área da saúde pública.",
+    "Pode impactar a disponibilidade de candidatos que atendam aos novos requisitos."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:45:03+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein45722006",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 4.572/2006,",
+   "numero": "4.572/2006",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Lei nº 4.572/2006, alterada pela Lei nº 6.506/2018 da Prefeitura de Varginha, estabelece os requisitos de escolaridade para os cargos de Fisioterapeuta Cardiopulmonar e Instrumentador Cirúrgico.",
+   "pontos_atencao": [
+    "A alteração nos requisitos de escolaridade pode impactar o perfil dos candidatos em futuros concursos públicos para essas funções.",
+    "É relevante observar se os novos requisitos estão alinhados com as demandas e necessidades atuais dos serviços de saúde municipais."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:45:13+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein45722006",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 4.572/2006,",
+   "numero": "4.572/2006",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "A Lei nº 4.572/2006, alterada pela Lei nº 6.506/2018, estabelece os requisitos de escolaridade e qualificação para cargos específicos na área da saúde da Prefeitura de Varginha.",
+   "pontos_atencao": [
+    "A precisão na descrição dos requisitos é crucial para garantir a contratação de profissionais adequados.",
+    "A atualização constante desses requisitos é importante para acompanhar as demandas e avanços na área da saúde."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:45:19+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein45722006",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 4.572/2006,",
+   "numero": "4.572/2006",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este ato altera os requisitos de escolaridade para cargos técnicos específicos na Prefeitura de Varginha, como Técnico em Eletricidade e Técnico em Enfermagem.",
+   "pontos_atencao": [
+    "Pode impactar o perfil dos profissionais que ingressam no serviço público municipal.",
+    "Assegura que os técnicos contratados possuam qualificações específicas e regulamentadas."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:45:48+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein45722006",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 4.572/2006,",
+   "numero": "4.572/2006",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Lei nº 4.572/2006, da Prefeitura de Varginha, foi alterada pela Lei nº 6.506/2018 para modificar a escolaridade exigida para o cargo de Técnico em Imobilização Ortopédica.",
+   "pontos_atencao": [
+    "A alteração nos requisitos pode impactar o perfil dos profissionais que ingressam no serviço público.",
+    "É importante verificar se a nova exigência está alinhada com as necessidades e atribuições do cargo."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:45:53+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein45722006",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 4.572/2006,",
+   "numero": "4.572/2006",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "A Lei nº 4.572/2006, publicada no Diário Oficial de Varginha, atualiza e especifica os requisitos de escolaridade para diversos cargos públicos da prefeitura.",
+   "pontos_atencao": [
+    "As novas especificações de escolaridade podem afetar futuros concursos públicos e a qualificação de servidores já em exercício.",
+    "A alteração de nomenclaturas e revogação de descrições de cargos exige atenção para a correta adequação dos registros e processos internos da prefeitura."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:46:00+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein30111998",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 3.011/1998,",
+   "numero": "3.011/1998",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este ato altera os requisitos de escolaridade para o cargo de Psicólogo Hospitalar na Prefeitura de Varginha, exigindo agora ensino superior completo em Psicologia com especialização na área.",
+   "pontos_atencao": [
+    "A alteração pode impactar o perfil dos profissionais que podem concorrer ao cargo, exigindo maior qualificação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:45:33+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lein30111998",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 3.011/1998,",
+   "numero": "3.011/1998",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este ato detalha os requisitos de escolaridade para cargos específicos na Prefeitura de Varginha, como Psicólogo Hospitalar e Técnico em Eletrotécnica, conforme alterações na Lei nº 3.011/1998.",
+   "pontos_atencao": [
+    "Verificar se os requisitos definidos são compatíveis com as atribuições dos cargos.",
+    "Observar se a aplicação desses requisitos contribui para a melhoria dos serviços públicos."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:45:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lei",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei",
+   "numero": "",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este ato, referente à Lei nº 3.011/1998 da Prefeitura de Varginha-MG, detalha os requisitos de escolaridade e qualificação profissional para alguns cargos públicos municipais.",
+   "pontos_atencao": [
+    "A clareza e adequação dos requisitos de qualificação para cada função.",
+    "A garantia de que as exigências educacionais são proporcionais às responsabilidades dos cargos."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:44:41+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1847-norma-lei",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei",
+   "numero": "",
+   "data": "2026-07-20",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta lei atualiza os requisitos de escolaridade e qualificação para os cargos de médico com especialização em Geriatria ou Saúde da Família e de motorista de veículos de transporte de emergência na Prefeitura de Varginha.",
+   "pontos_atencao": [
+    "Verificar se os novos requisitos podem impactar a oferta de candidatos para futuras seleções.",
+    "Observar se a atualização dos requisitos se aplica a servidores já empossados ou apenas a novas contratações."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1847",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T19:45:27+00:00"
+  },
   {
    "id": "DIARIO-2026-1846-pessoal-portarian1222026",
    "fonte": "diario",
@@ -32,7 +596,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-norma-resoluon272026cm",
@@ -63,7 +627,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-norma-resoluo32",
@@ -100,7 +664,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-norma-lein13853de2019",
@@ -131,7 +695,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-norma-decreton88122018",
@@ -158,7 +722,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-homologao1808202",
@@ -189,7 +753,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-editaln012026pro",
@@ -226,7 +790,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
@@ -259,7 +823,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
@@ -290,7 +854,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
@@ -321,7 +885,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
@@ -367,7 +931,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-edital012025",
@@ -397,7 +961,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23231de",
@@ -433,7 +997,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23226de",
@@ -463,7 +1027,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23225de",
@@ -494,7 +1058,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23223de",
@@ -524,7 +1088,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23222de",
@@ -557,7 +1121,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23221de",
@@ -590,7 +1154,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23220de",
@@ -623,7 +1187,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23219de",
@@ -656,7 +1220,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23218de",
@@ -689,7 +1253,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23216de",
@@ -722,7 +1286,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23212de",
@@ -755,7 +1319,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23208de",
@@ -785,7 +1349,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23200de",
@@ -818,7 +1382,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23199de",
@@ -851,7 +1415,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23198de",
@@ -884,7 +1448,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23197de",
@@ -917,7 +1481,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23196de",
@@ -950,7 +1514,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23179de",
@@ -980,7 +1544,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23178de",
@@ -1010,7 +1574,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23175de",
@@ -1040,7 +1604,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23174de",
@@ -1070,7 +1634,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian1282026",
@@ -1112,7 +1676,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian1272026",
@@ -1142,7 +1706,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-lein7594de06deju",
@@ -1180,7 +1744,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:42+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-lein7594de06deju",
@@ -1211,7 +1775,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-lein7594",
@@ -1238,7 +1802,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-lein7594",
@@ -1265,7 +1829,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-decreton12657de1",
@@ -1296,7 +1860,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-licitacao-editaln0122026da",
@@ -1330,7 +1894,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1845-licitacao-editaln0112026da",
@@ -1360,7 +1924,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-20T17:06:43+00:00"
+   "gerado_em": "2026-07-20T19:46:35+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian291de15",
