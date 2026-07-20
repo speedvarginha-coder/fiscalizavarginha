@@ -2194,7 +2194,25 @@ def main() -> int:
     diarias = {}
     if not so_sapl and not sem_betha:
         diarias = _processa_diarias_betha()
-        _save("diarias.json", diarias)
+        # Guarda-chuva: se a coleta falhar por completo (ex.: navegador do
+        # Playwright ausente, token Betha inacessivel), _processa_diarias_betha
+        # devolve listas vazias sem levantar excecao — sem esta checagem o
+        # _save gravava um diarias.json vazio por cima de milhares de
+        # registros bons (ja aconteceu: 5709 registros -> 0 em producao).
+        existente_diarias = _load_existing("diarias.json", {})
+        for org in ("prefeitura", "camara"):
+            novos = diarias.get(org, [])
+            antigos = existente_diarias.get(org, []) if isinstance(existente_diarias, dict) else []
+            if isinstance(antigos, list) and len(antigos) >= 50 and len(novos) == 0:
+                diarias[org] = antigos
+                antigo_resumo = (existente_diarias.get("resumo") or {}).get(org)
+                if antigo_resumo:
+                    diarias.setdefault("resumo", {})[org] = antigo_resumo
+                print(f"  ! Diarias {org}: coleta vazia; preservando base anterior ({len(antigos)} registros)")
+        if diarias.get("prefeitura") or diarias.get("camara"):
+            _save("diarias.json", diarias)
+        else:
+            print("  ✗ Diarias: nada coletado e nada preservado — mantendo diarias.json existente intacto")
 
     federal = {}
     if not so_sapl:

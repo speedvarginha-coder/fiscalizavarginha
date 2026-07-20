@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6828158.23,
-  "total_externo_anterior": 8404990.51,
-  "empenhos_qtd": 3094,
+  "total_externo_atual": 6831158.23,
+  "total_externo_anterior": 8406271.51,
+  "empenhos_qtd": 3098,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -169,8 +169,8 @@
     },
     {
       "nome": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-      "valor_total": 178854.53,
-      "qtd": 13
+      "valor_total": 181015.53,
+      "qtd": 15
     },
     {
       "nome": "49.906.995 FABIOLA SEBASTIANA KELLY SILVA",
@@ -598,7 +598,7 @@
       "contratado": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
       "cnpj": "21.650.715/****-**",
       "valor": 1590.0,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
@@ -710,7 +710,7 @@
       "contratado": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
       "cnpj": "07.215.045/****-**",
       "valor": 1081.2,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
@@ -1143,5 +1143,6 @@
       "situacao": "HOMOLOGADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
-  ]
+  ],
+  "coletado_em": "2026-07-20T14:05:29-03:00"
 }

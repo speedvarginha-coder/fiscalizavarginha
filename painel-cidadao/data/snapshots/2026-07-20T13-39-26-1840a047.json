@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "snapshot_id": "2026-07-20T11-40-43-c1b46a08",
+  "snapshot_id": "2026-07-20T13-39-26-1840a047",
   "source": "chunks",
-  "gerado_em": "2026-07-20T15:34:23.643Z",
-  "coleta_iso": "2026-07-20T11:40:43",
-  "data_humana": "20/07/2026 - 11:40",
+  "gerado_em": "2026-07-20T16:45:20.754Z",
+  "coleta_iso": "2026-07-20T13:39:26",
+  "data_humana": "20/07/2026 - 13:39",
   "totais": {
     "contratos_qtd": 1642,
     "contratos_valor_brl": 646645746.1999996,
@@ -24589,7 +24589,7 @@
       "id": "fornecedor-inidoneo",
       "severity": "error",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "1 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json"
     },
@@ -24597,7 +24597,7 @@
       "id": "fornecedor-sancionado-outro-ente",
       "severity": "warning",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "41 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (93 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (90 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json"
     },

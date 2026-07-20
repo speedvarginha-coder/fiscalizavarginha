@@ -1,16 +1,16 @@
 {
-  "gerado_em": "2026-07-20T15:34:05.617Z",
+  "gerado_em": "2026-07-20T18:04:26.068Z",
   "level": "critical",
   "summary": {
     "errors": 1,
-    "warnings": 9,
+    "warnings": 7,
     "info": 1,
     "ok": 1,
-    "total": 12
+    "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-20T11:40:43",
-    "data_humana": "20/07/2026 - 11:40"
+    "iso": "2026-07-20T14:06:32",
+    "data_humana": "20/07/2026 - 14:06"
   },
   "items": [
     {
@@ -28,14 +28,6 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
-    },
-    {
-      "severity": "warning",
-      "id": "pessoal-prefeitura-preservada",
-      "title": "Pessoal da Prefeitura preservado da ultima base completa",
-      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (4073 servidores) para nao reduzir a cobertura.",
-      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
-      "source": "pessoal.json"
     },
     {
       "severity": "info",
@@ -57,7 +49,7 @@
       "severity": "warning",
       "id": "camara-despesa-sem-contrato",
       "title": "Fornecedores sem contrato vinculado automaticamente",
-      "detail": "7 dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
+      "detail": "6 dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
       "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "source": "camara_betha.json"
     },
@@ -65,16 +57,8 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
-      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); SHA COMERCIO DE ALIMENTOS LTDA (R$ 2.5M); CAIXA ECONOMICA FEDERAL (R$ 1.6M); BRAVO LOCACOES E SERVICOS LTDA (R$ 1.5M).",
+      "detail": "10 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA (R$ 14.4M); VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
-      "source": "prefeitura.json"
-    },
-    {
-      "severity": "warning",
-      "id": "prefeitura-contratos-sem-competicao",
-      "title": "Alto indice de contratacao sem competicao licitatoria",
-      "detail": "Contratos por Inexigibilidade ou Dispensa somam 21.7% (R$ 140.4M de R$ 646.0M).",
-      "action": "Auditar as maiores inexigibilidades (ex. IPD, Viacao Real, CNEC) e verificar a regularidade das justificativas de preco.",
       "source": "prefeitura.json"
     },
     {
@@ -89,7 +73,7 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "2 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json",
       "blocksPipeline": false
@@ -98,7 +82,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "41 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (93 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "45 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (89 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json"
     },
@@ -129,14 +113,6 @@
       "source": "fontes_emendas_2026.json"
     },
     {
-      "severity": "warning",
-      "id": "pessoal-prefeitura-preservada",
-      "title": "Pessoal da Prefeitura preservado da ultima base completa",
-      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (4073 servidores) para nao reduzir a cobertura.",
-      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
-      "source": "pessoal.json"
-    },
-    {
       "severity": "info",
       "id": "pncp-apoio",
       "title": "PNCP usado como fonte auxiliar",
@@ -156,7 +132,7 @@
       "severity": "warning",
       "id": "camara-despesa-sem-contrato",
       "title": "Fornecedores sem contrato vinculado automaticamente",
-      "detail": "7 dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
+      "detail": "6 dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
       "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "source": "camara_betha.json"
     },
@@ -164,16 +140,8 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
-      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); SHA COMERCIO DE ALIMENTOS LTDA (R$ 2.5M); CAIXA ECONOMICA FEDERAL (R$ 1.6M); BRAVO LOCACOES E SERVICOS LTDA (R$ 1.5M).",
+      "detail": "10 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA (R$ 14.4M); VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
-      "source": "prefeitura.json"
-    },
-    {
-      "severity": "warning",
-      "id": "prefeitura-contratos-sem-competicao",
-      "title": "Alto indice de contratacao sem competicao licitatoria",
-      "detail": "Contratos por Inexigibilidade ou Dispensa somam 21.7% (R$ 140.4M de R$ 646.0M).",
-      "action": "Auditar as maiores inexigibilidades (ex. IPD, Viacao Real, CNEC) e verificar a regularidade das justificativas de preco.",
       "source": "prefeitura.json"
     },
     {
@@ -188,7 +156,7 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "2 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json",
       "blocksPipeline": false
@@ -197,7 +165,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "41 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (93 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "45 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (89 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json"
     },

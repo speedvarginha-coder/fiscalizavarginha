@@ -7,9 +7,9 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 2412167.1,
+    "total_atual": 2433425.93,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 338762.45,
+    "total_externo_atual": 349419.45,
     "total_externo_anterior": 3071916.67,
     "credores_atual_qtd": 112,
     "credores_anterior_qtd": 196,
@@ -27,15 +27,15 @@
         "registros": 1
       },
       {
-        "nome": "DISTRIBUIDORA RIO BRANCO DE PETROLEO LTDA",
-        "cnpj": "01.256.137/****-**",
-        "valor_total": 23010.4,
+        "nome": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
+        "cnpj": "21.650.715/****-**",
+        "valor_total": 25390.0,
         "registros": 1
       },
       {
-        "nome": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
-        "cnpj": "21.650.715/****-**",
-        "valor_total": 19120.0,
+        "nome": "DISTRIBUIDORA RIO BRANCO DE PETROLEO LTDA",
+        "cnpj": "01.256.137/****-**",
+        "valor_total": 23010.4,
         "registros": 1
       },
       {
@@ -264,7 +264,7 @@
       "registros": 216,
       "empenhado": 3173779.8,
       "liquidado": 2439833.81,
-      "pago": 2412494.67
+      "pago": 2433452.54
     },
     "maiores_empenhos_atual": [
       {
@@ -704,8 +704,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 06/2026",
         "valor_empenhado": 10601.83,
         "valor_liquidado": 10601.83,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 10601.83
+        "valor_pago": 10601.83,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-01-27",
@@ -720,10 +720,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 24,
+        "numero": 23,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -775,10 +775,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 19,
+        "numero": 24,
         "orgao": "ADMINISTRACAO",
-        "credor": "BLOCO VIUVAS VIRGENS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -786,10 +786,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 23,
+        "numero": 19,
         "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "BLOCO VIUVAS VIRGENS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -946,8 +946,8 @@
         "historico": "Contratação de prestação de serviços para a aquisição de 03 (três) inscrições no curso Emendas Parlamentares Federais 2026: Captação, Execução e Transparência (Pós Mudanças do STF), a realizar-se no período de 30 de junho a 03 de julho de 2026, na sede do Instituto Plenum Brasil, em Brasília/DF.\n\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
         "valor_empenhado": 6270.0,
         "valor_liquidado": 6270.0,
-        "valor_pago": 300.96,
-        "saldo_a_pagar": 5969.04
+        "valor_pago": 6270.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-05-14",
@@ -1001,8 +1001,8 @@
         "historico": "Contratação de empresa especializada no conserto e manutenção de cadeiras de escritório dos órgãos pertencentes a Fundação Cultural de Varginha.\n\nFUNDAÇÃO CULTURAL \nEndereço: Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária).\nHorário de expediente: Segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. \n\nRÁDIO MELODIA FM\nEndereço: Rua Radialista Gilberto Lima, n 50 - Bairro Vila Paiva, Varginha/MG.\nHorário: Segunda a sexta-feira, das 7h às 13h.\n\nTHEATRO MUNICIPAL CAPITÓLIO\nEndereço: Rua Presidente Antônio Carlos, n522  Centro, Varginha/MG.\nHorário de expediente: Segunda a sexta-feira, das 8h às 12h ou de 13h às 17h.\n\nTV PRINCESA \nEndereço: Praça Champagnat, 29, 4 andar, Centro, Varginha/MG.\nHorário de expediente: Segunda a sexta-feira, das 13h às 17h.\n\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
         "valor_empenhado": 4387.0,
         "valor_liquidado": 4387.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 4387.0
+        "valor_pago": 4387.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-05-04",
@@ -34751,6 +34751,18 @@
       },
       {
         "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "Contador",
+        "numero": 15095,
+        "quantidade": 1.0,
+        "valor_total": 664.5,
+        "periodo": "15-05-2026 a 16-05-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Visita técnica às rádios: Rádio CDL, Rádio 98 FM, Rádio Estrada Real FM e TV 98 News para análise de viabilidade do projeto de integração da Rádio Melodia FM com a TV Princesa \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$ 180,00 = R$ 360,00\nHOSPEDAGEM: R$ 304,50",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
         "funcionario": "FABIANO PEREIRA ARANTES",
         "cargo": "DIRETOR DA RADIO MELODIA",
         "numero": 15096,
@@ -34766,18 +34778,6 @@
         "funcionario": "GIL NOGUEIRA DE PAULA JUNIOR",
         "cargo": "Operador de Audio e Estudio",
         "numero": 15097,
-        "quantidade": 1.0,
-        "valor_total": 664.5,
-        "periodo": "15-05-2026 a 16-05-2026",
-        "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Visita técnica às rádios: Rádio CDL, Rádio 98 FM, Rádio Estrada Real FM e TV 98 News para análise de viabilidade do projeto de integração da Rádio Melodia FM com a TV Princesa \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$ 180,00 = R$ 360,00\nHOSPEDAGEM: R$ 304,50",
-        "fonte": "Betha Fundação Cultural - Diárias"
-      },
-      {
-        "ano": "2026",
-        "funcionario": "EDER JERONIMO DA SILVA",
-        "cargo": "Contador",
-        "numero": 15095,
         "quantidade": 1.0,
         "valor_total": 664.5,
         "periodo": "15-05-2026 a 16-05-2026",
