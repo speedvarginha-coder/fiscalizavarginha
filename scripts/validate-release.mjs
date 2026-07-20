@@ -40,7 +40,10 @@ const expectedChunks = [
   "vereadores",
 ];
 
-const optionalChunks = ["atualizacoes", "convenios", "educacao", "licitacoes", "obras_educacao"];
+const optionalChunks = [
+  "atualizacoes", "convenios", "educacao", "licitacoes", "obras_educacao",
+  "sancoes", "tse_doacoes", "licitacoes_resultados",
+];
 
 const requiredPublicFiles = [
   ".htaccess",
@@ -172,7 +175,7 @@ function validateManifest(baseManifestPath = manifestPath, baseChunksDir = chunk
   }
 
   for (const name of manifestNames) {
-    if (!expectedChunks.includes(name)) {
+    if (!expectedChunks.includes(name) && !optionalChunks.includes(name)) {
       warn(`Manifest lista chunk nao esperado: ${name}`);
     }
   }

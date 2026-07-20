@@ -1,4 +1,4 @@
-param(
+﻿param(
   [string]$OutputDir = "dist",
   [string]$ZipName = "fiscaliza-varginha-painel.zip"
 )

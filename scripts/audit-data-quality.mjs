@@ -303,7 +303,13 @@ function buildSourceStatus() {
 
 const items = [];
 
-function add(severity, id, title, detail, action, source = "") {
+// blocksPipeline distingue DEFEITO DE PIPELINE (schema quebrado, chunk
+// ausente, feed defasado — o dado nao esta pronto para publicar) de ACHADO
+// DE CONTEUDO (fornecedor sancionado, homologacao simbolica — o dado esta
+// correto e PRECISA ser publicado). So o primeiro tipo trava a publicacao
+// automatica; o segundo continua contando como severidade "error" na tela
+// e no IFT (achado grave e grave), mas nao impede o ciclo diario de rodar.
+function add(severity, id, title, detail, action, source = "", { blocksPipeline = true } = {}) {
   items.push({
     severity,
     id,
@@ -311,6 +317,7 @@ function add(severity, id, title, detail, action, source = "") {
     detail: cleanPublishedText(detail),
     action: cleanPublishedText(action),
     source,
+    blocksPipeline: severity === "error" ? blocksPipeline : undefined,
   });
 }
 
@@ -604,6 +611,7 @@ if (chunks.sancoes?.sancoes_vigentes > 0) {
       `${graves.length} sancao(oes) vigente(s) com alcance sobre Varginha: ${graves.slice(0, 3).map((a) => `${a.fornecedor_local} (${a.tipo} — ${a.orgao_sancionador})`).join("; ")}. Inidoneidade vale contra toda a administracao publica.`,
       "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "sancoes.json",
+      { blocksPipeline: false },
     );
   }
   if (informativas.length) {
@@ -783,4 +791,10 @@ for (const item of items.filter((item) => item.severity !== "ok")) {
   console.log(`- [${item.severity}] ${item.title}: ${item.detail}`);
 }
 
-if ((strict || !noExitCode) && payload.summary.errors > 0) process.exit(1);
+// So defeito de pipeline (blocksPipeline !== false) trava a publicacao
+// automatica. Achado de conteudo grave (fornecedor sancionado, etc.) segue
+// contando como erro na tela/IFT, mas nao impede o ciclo diario de rodar —
+// sem isso, todo achado grave (que pode durar meses) travava o site para
+// sempre no ultimo backup bom, como ocorreu apos a descoberta da MASTERFER.
+const errosQueBloqueiam = items.filter((i) => i.severity === "error" && i.blocksPipeline !== false).length;
+if ((strict || !noExitCode) && errosQueBloqueiam > 0) process.exit(1);

@@ -1,4 +1,4 @@
-param(
+﻿param(
   [ValidateSet("Daily", "Watch")]
   [string]$Mode = "Daily",
 
