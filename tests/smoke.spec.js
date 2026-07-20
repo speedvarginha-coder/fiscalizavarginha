@@ -121,7 +121,10 @@ test.describe("Avisos de qualidade dos dados", () => {
     await page.waitForTimeout(2500);
     const aviso = page.locator(".data-health-strip").first();
     await expect(aviso).toBeVisible();
-    await expect(aviso).toContainText(/limites dos dados|alerta critico/i);
+    // Regex cobre os dois rotulos de "tem problema" que app.js usa (level
+    // critical/attention); o rotulo de "ok" ("Dados sem alerta crítico") fica
+    // de fora de proposito — nao deve casar quando nao ha alerta real.
+    await expect(aviso).toContainText(/atenção crítica|limites dos dados/i);
     await expect(aviso).toContainText(/fonte oficial/i);
     await expect(aviso.locator('a[href="sobre.html#auditoriaDados"]')).toContainText(/auditoria completa/i);
   });
