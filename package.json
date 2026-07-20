@@ -10,6 +10,7 @@
     "data:bundle": "node scripts/sync-data-bundle.mjs",
     "data:indice": "node scripts/generate-indice-relevancia.mjs",
     "data:monitor": "node scripts/generate-collection-monitor.mjs",
+    "data:saude": "node scripts/check-pipeline-health.mjs",
     "data:schema": "python painel-cidadao/validar_schemas_dados.py",
     "data:probe": "node scripts/check-source-updates.mjs --no-exit-code",
     "data:snapshot": "node scripts/generate-data-snapshots.mjs",

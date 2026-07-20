@@ -251,6 +251,17 @@ try {
   Write-Log "Projeto: $root"
   Write-Log "Modo do coletor: $CollectorMode$(if ($SkipSlowAudits) { ' (vigia rapida — sem CEIS/CNEP/TSE/licitacoes)' })"
 
+  # Alerta de operacao (canal privado, separado do WhatsApp publico): grava
+  # batimento cardiaco e verifica se a automacao parou de disparar ou se
+  # ninguem tem sucesso ha muito tempo. Roda ANTES do -OnlyIfChanged decidir
+  # pular, para que ate um ciclo sem mudanca conte como "automacao viva".
+  $tagTarefa = if ($SkipSlowAudits) { "vigia" } elseif ($OnlyIfChanged) { "hourly-legado" } else { "diaria" }
+  Invoke-AndLog `
+    -Label "Verificando saude operacional do pipeline (alerta privado)." `
+    -FilePath "npm.cmd" `
+    -Arguments @("run", "data:saude", "--", "--tarefa=$tagTarefa") `
+    -WorkingDirectory $root
+
   if ($OnlyIfChanged) {
     Write-Log "Verificando se fontes mudaram antes de coletar."
     $probeCode = Invoke-SourceProbe
