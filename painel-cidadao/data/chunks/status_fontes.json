@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-17T17:45:26.065Z",
+  "gerado_em": "2026-07-20T15:34:05.720Z",
   "domains": {
     "atualizado_em": {
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-07-17T10:08:58.000Z",
-      "age_days": 0.3,
+      "source_updated_at": "2026-07-20T14:40:43.000Z",
+      "age_days": 0,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -28,11 +28,11 @@
     },
     "pessoal": {
       "label": "Pessoal",
-      "status": "manual",
-      "source_updated_at": null,
-      "age_days": null,
+      "status": "preserved",
+      "source_updated_at": "2026-07-20T14:39:42.000Z",
+      "age_days": 0,
       "max_age_days": 31,
-      "reason": "Sem timestamp interno verificavel; mtime local nao foi usado como freshness."
+      "reason": "Metadados indicam preservacao da ultima base valida."
     },
     "pncp": {
       "label": "PNCP",
@@ -53,48 +53,48 @@
     "fontes_emendas_2026": {
       "label": "Fontes de emendas 2026",
       "status": "partial",
-      "source_updated_at": "2026-07-17T10:05:16.000Z",
-      "age_days": 0.3,
+      "source_updated_at": "2026-07-20T14:39:49.000Z",
+      "age_days": 0,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
     "indice_relevancia": {
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-07-17T12:54:53.775Z",
-      "age_days": 0.2,
+      "source_updated_at": "2026-07-20T15:18:57.222Z",
+      "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
     },
     "diario": {
       "label": "Diario Oficial",
       "status": "ok",
-      "source_updated_at": "2026-07-16T20:01:39.000Z",
-      "age_days": 0.9,
+      "source_updated_at": "2026-07-17T19:06:43.000Z",
+      "age_days": 2.9,
       "max_age_days": 5,
       "reason": "Timestamp interno dentro da janela esperada."
     },
     "camara_anos": {
       "label": "Camara/SAPL",
-      "status": "manual",
-      "source_updated_at": null,
-      "age_days": null,
+      "status": "ok",
+      "source_updated_at": "2026-07-20T14:29:03.000Z",
+      "age_days": 0,
       "max_age_days": 7,
-      "reason": "Sem timestamp interno verificavel; mtime local nao foi usado como freshness."
+      "reason": "Timestamp interno dentro da janela esperada."
     },
     "publicacoes_estruturadas": {
       "label": "Publicacoes da Camara",
       "status": "preserved",
-      "source_updated_at": "2026-07-17T10:09:07.000Z",
-      "age_days": 0.3,
+      "source_updated_at": "2026-07-20T14:40:54.000Z",
+      "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam preservacao da ultima base valida."
     },
     "publicacoes_diario": {
       "label": "Publicacoes do Diario",
       "status": "partial",
-      "source_updated_at": "2026-07-17T10:09:08.000Z",
-      "age_days": 0.3,
+      "source_updated_at": "2026-07-20T14:42:28.000Z",
+      "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."
     }

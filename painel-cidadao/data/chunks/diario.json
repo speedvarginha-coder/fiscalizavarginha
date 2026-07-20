@@ -1,6 +1,17 @@
 {
-  "total": 249,
+  "total": 250,
   "ultimas": [
+    {
+      "ano": 2026,
+      "edicao": "1846",
+      "data": "2026-07-17 14:49:00",
+      "data_atualizacao": "2026-07-17 16:06:43",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 253,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/"
+    },
     {
       "ano": 2026,
       "edicao": "1845",
@@ -649,17 +660,6 @@
       "publicacao_id": 194,
       "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/194/",
       "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/194/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1786",
-      "data": "2026-04-27 16:12:00",
-      "data_atualizacao": "2026-04-27 16:13:19",
-      "descricao": "",
-      "extra": false,
-      "publicacao_id": 193,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/193/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/193/"
     }
   ]
 }

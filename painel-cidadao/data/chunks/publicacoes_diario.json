@@ -1,8 +1,405 @@
 {
- "gerado_em": "2026-07-17T10:09:08+00:00",
+ "gerado_em": "2026-07-20T14:42:28+00:00",
  "fonte": "diario",
- "total": 195,
+ "total": 207,
  "publicacoes": [
+  {
+   "id": "DIARIO-2026-1846-pessoal-portarian1222026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 122/2026",
+   "numero": "122/2026",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este documento apresenta a prorrogação de um prazo administrativo da Fundação Hospitalar do Município de Varginha (FHOMUV) e divulga os resultados finais de dois processos seletivos simplificados para contratação de técnicos em radiologia/radioterapia e técnicos em laboratório de análises clínicas para a mesma fundação.",
+   "pontos_atencao": [
+    "A Portaria nº 122/2026 prorroga um prazo sem detalhar o assunto da Portaria nº 095/2026, o que impede a compreensão completa do impacto da extensão.",
+    "A retroatividade da Portaria nº 122/2026 à data da portaria anterior pode gerar dúvidas sobre a validade de atos praticados no período.",
+    "Os processos seletivos simplificados visam preencher vagas importantes na área da saúde, e a transparência na classificação é crucial."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:42:02+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-norma-resoluon272026cm",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Resolução",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "RESOLUÇÃO Nº 27/2026 – CMDPI / VARGINHA-MG",
+   "numero": "27/2026",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "assistência social",
+   "resumo": "Esta resolução divulga o resultado final do Edital de Chamamento Público nº 01/2026, que selecionou organizações da sociedade civil para desenvolver projetos voltados à pessoa idosa em Varginha.",
+   "pontos_atencao": [
+    "O repasse de recursos às entidades habilitadas está condicionado à manutenção da sua regularidade junto ao Conselho Municipal dos Direitos da Pessoa Idosa.",
+    "Uma das organizações proponentes não foi habilitada no processo de seleção."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:42:28+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-norma-resoluo32",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Resolução",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "RESOLUÇÃO 32 ...........................................................................................................",
+   "numero": "32",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "infraestrutura",
+   "resumo": "A Prefeitura de Varginha abriu um processo de licitação na modalidade Pregão Eletrônico para contratar uma empresa especializada. O objetivo é restaurar a cobertura e recuperar o piso da quadra poliesportiva do Ginásio Minhocão, no Centro Esportivo Varginhense (CEV).",
+   "pontos_atencao": [
+    "Acompanhar o valor final da contratação para garantir que seja compatível com os preços de mercado.",
+    "Verificar se a empresa vencedora possui a qualificação técnica necessária para a execução dos serviços.",
+    "Monitorar o cumprimento dos prazos e a qualidade da obra após a contratação."
+   ],
+   "envolvidos": [
+    {
+     "nome": "",
+     "cnpj": "18.240.119/0001-05",
+     "papel": "cnpj"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:41:07+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-norma-lein13853de2019",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Lei nº 13.853 de 2019.",
+   "numero": "13.853",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "Este documento convoca candidatos já classificados no concurso público para Farmacêutico Bioquímico (Edital 01/2025) que tenham interesse em contratação temporária de excepcional interesse público. Ele também estabelece as regras e condições para essas contratações, incluindo avaliação de desempenho e duração do contrato.",
+   "pontos_atencao": [
+    "A contratação é temporária, com duração inicial de 6 meses, podendo ser prorrogada ou encerrada antes.",
+    "O desempenho dos servidores contratados será avaliado a cada três meses, conforme decreto municipal.",
+    "A justificativa de 'excepcional interesse público' para a contratação temporária deve ser observada."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:41:30+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-norma-decreton88122018",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Decreto nº 8.812/2018",
+   "numero": "8.812/2018",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "direitos do idoso",
+   "resumo": "Este é um decreto que publica uma resolução do Conselho Municipal dos Direitos da Pessoa Idosa de Varginha (CMDPI).",
+   "pontos_atencao": [],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:42:21+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-licitacao-homologao1808202",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "homologação 18/08/2026 17h",
+   "numero": "18/08",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "Este documento detalha os anexos do Edital n.º 01/2026 para um Processo Seletivo Simplificado da Prefeitura de Varginha, que visa preencher vagas para cargos como Agente Funerário, Oficial de Administração, Pedreiro/Coveiro e Auxiliar de Serviços Públicos.",
+   "pontos_atencao": [
+    "A comissão organizadora possui amplas competências, incluindo a decisão sobre inscrições e recursos, o que exige transparência em suas ações.",
+    "As regras para impedimento ou suspeição de membros da comissão em caso de parentesco ou interesse direto devem ser rigorosamente observadas.",
+    "A aplicação do sistema de cotas para negros(as) requer atenção à correta verificação das autodeclarações."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:42:17+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-licitacao-editaln012026pro",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL Nº 01/2026 - PROCESSO SELETIVO SIMPLIFICADO PARA CONTRATAÇÃO TEMPORÁRIA DE EXCEPCIONAL INTERESSE",
+   "numero": "01/2026",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha, por meio do Serviço Municipal Funerário e de Organização de Luto (SEMUL), abriu um processo seletivo simplificado para contratar profissionais temporários.",
+   "pontos_atencao": [
+    "Acompanhar a justificativa para a contratação temporária de 'excepcional interesse público' para garantir que não substitua concursos públicos regulares.",
+    "Verificar a transparência e imparcialidade das etapas de seleção, que incluem análise de documentos e entrevista.",
+    "Monitorar a aplicação das cotas para Pessoas com Deficiência e candidatos negros, incluindo o processo de heteroidentificação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 2364.37,
+    "encontrados": [
+     2364.37,
+     2111.12,
+     1922.95,
+     1701.27,
+     1060.0
+    ]
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:42:08+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 028/2026",
+   "numero": "028/2026",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "O Município de Varginha está convocando candidatos aprovados em concurso público para preencher uma vaga temporária de Farmacêutico Bioquímico na Secretaria Municipal de Saúde.",
+   "pontos_atencao": [
+    "A contratação é temporária, com prazo de 6 meses, podendo ser prorrogada por igual período ou encerrada antes.",
+    "A vaga é para substituição de servidora afastada por licença maternidade, conforme legislação específica.",
+    "Os candidatos devem atender a requisitos específicos de formação e registro profissional, além de apresentar diversos documentos."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 7786.96,
+    "encontrados": [
+     7786.96
+    ]
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:41:12+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO Nº 028/2026",
+   "numero": "028/2026",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "Este edital convoca candidatos aprovados em concurso público para apresentar a documentação necessária para assumir cargos na Prefeitura de Varginha, detalhando os requisitos para contratação e as condições para rescisão de contrato.",
+   "pontos_atencao": [
+    "A exigência de pontualidade e a rigorosa verificação de documentos podem levar à desclassificação de candidatos.",
+    "As condições para rescisão de contrato, tanto a pedido quanto de ofício, incluindo desempenho inadequado ou faltas excessivas.",
+    "Restrições para recontratação de servidores que tiveram contrato rescindido ou foram demitidos por processo administrativo disciplinar."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:41:19+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 029/2026",
+   "numero": "029/2026",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca candidatos classificados no concurso público de 2025 para preencher duas vagas temporárias de Farmacêutico Bioquímico.",
+   "pontos_atencao": [
+    "As contratações são temporárias, com prazo inicial de 6 meses, podendo ser prorrogado por igual período.",
+    "O horário de trabalho é fixo (17h às 21h) e não pode ser alterado pelo candidato.",
+    "Os profissionais estarão subordinados a diversas leis e decretos municipais, incluindo os que regulamentam a reserva de vagas para deficientes e negros."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 3893.48,
+    "encontrados": [
+     3893.48
+    ]
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:41:37+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO Nº 029/2026",
+   "numero": "029/2026",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este edital convoca candidatos aprovados em concurso para os cargos de TNS/PS/Bioquímico/Farmacêutico na Prefeitura de Varginha, detalhando os documentos necessários para a contratação e as regras para apresentação e possível desligamento.",
+   "pontos_atencao": [
+    "A lista de documentos pode ser complementada pelo Departamento de Recursos Humanos (DRHU) com itens adicionais não especificados inicialmente.",
+    "A assinatura da ata de registro não garante a contratação, que está condicionada a outros fatores.",
+    "A não apresentação pontual no local e horário indicados resulta em desclassificação automática."
+   ],
+   "envolvidos": [
+    {
+     "nome": "SEGURADORA S/A",
+     "papel": "empresa",
+     "cnpj": "13.985.869/0001-84"
+    },
+    {
+     "nome": "Kelly Cristina da Silva - Assistente Administrativo. FUNDAÇÃO",
+     "papel": "empresa",
+     "cnpj": "90.180.605/0001-02"
+    }
+   ],
+   "valores": {
+    "total": 11946.6,
+    "encontrados": [
+     11946.6,
+     3711.64,
+     528.03
+    ]
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:41:54+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-licitacao-edital012025",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "Edital 01/2025.",
+   "numero": "01/2025",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Este edital detalha a lista de documentos que os candidatos convocados devem apresentar para a admissão em cargos públicos na Prefeitura de Varginha.",
+   "pontos_atencao": [
+    "A correta e completa apresentação dos documentos é crucial para a efetivação da admissão.",
+    "A necessidade de declarações específicas (acúmulo de cargos, bens, dependentes) visa garantir a conformidade legal e ética dos novos servidores."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": []
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-20T14:41:47+00:00"
+  },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23231de",
    "fonte": "diario",
@@ -37,7 +434,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23226de",
@@ -67,7 +464,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23225de",
@@ -98,7 +495,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23223de",
@@ -128,7 +525,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23222de",
@@ -161,7 +558,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23221de",
@@ -194,7 +591,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23220de",
@@ -227,7 +624,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23219de",
@@ -260,7 +657,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23218de",
@@ -293,7 +690,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23216de",
@@ -326,7 +723,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23212de",
@@ -359,7 +756,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23208de",
@@ -389,7 +786,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23200de",
@@ -422,7 +819,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23199de",
@@ -455,7 +852,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23198de",
@@ -488,7 +885,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23197de",
@@ -521,7 +918,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23196de",
@@ -554,7 +951,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23179de",
@@ -584,7 +981,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23178de",
@@ -614,7 +1011,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23175de",
@@ -644,7 +1041,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23174de",
@@ -674,7 +1071,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian1282026",
@@ -716,7 +1113,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian1272026",
@@ -746,7 +1143,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-lein7594de06deju",
@@ -784,7 +1181,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-lein7594de06deju",
@@ -815,7 +1212,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-lein7594",
@@ -842,7 +1239,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-lein7594",
@@ -869,7 +1266,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-norma-decreton12657de1",
@@ -900,7 +1297,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-licitacao-editaln0122026da",
@@ -934,7 +1331,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1845-licitacao-editaln0112026da",
@@ -964,7 +1361,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian291de15",
@@ -1000,7 +1397,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian290de15",
@@ -1030,7 +1427,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23228de",
@@ -1083,7 +1480,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23227de",
@@ -1113,7 +1510,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23224de",
@@ -1143,7 +1540,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23211de",
@@ -1173,7 +1570,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23210de",
@@ -1204,7 +1601,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23209de",
@@ -1235,7 +1632,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23207de",
@@ -1264,7 +1661,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23206de",
@@ -1294,7 +1691,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23202de",
@@ -1324,7 +1721,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23201de",
@@ -1354,7 +1751,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23195de",
@@ -1384,7 +1781,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23194de",
@@ -1414,7 +1811,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23192de",
@@ -1445,7 +1842,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23190de",
@@ -1476,7 +1873,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23187de",
@@ -1507,7 +1904,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23186de",
@@ -1537,7 +1934,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23185de",
@@ -1567,7 +1964,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-pessoal-portarian23184de",
@@ -1597,7 +1994,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1844-dispensa-dispensadelicita",
@@ -1634,7 +2031,7 @@
     "anexo_pdf": ""
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
+   "gerado_em": "2026-07-20T14:42:28+00:00"
   },
   {
    "id": "DIARIO-2026-1843-pessoal-portarian23204de",

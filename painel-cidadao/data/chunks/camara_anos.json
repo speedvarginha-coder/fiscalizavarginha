@@ -31327,7 +31327,8 @@
         "grau": "baixo"
       }
     ],
-    "sessoes": []
+    "sessoes": [],
+    "coletado_em": "2026-07-20T11:29:03-03:00"
   },
   "2026": {
     "resumo": {
@@ -31339,8 +31340,8 @@
       "impacto_zero_qtd": 210,
       "desfechos": {
         "lei": 40,
-        "arquivado": 456,
-        "tramitando": 253,
+        "arquivado": 476,
+        "tramitando": 233,
         "encerrado": 15,
         "sem_dado": 0
       },
@@ -43650,7 +43651,7 @@
         "tipo": "Indicação",
         "sigla": "IND",
         "autor": "Miguel da Saúde",
-        "pdf": "",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6053/miguellima_-_indicacao338-2026.pdf",
         "ementa": "Solicita implantação de uma Unidade Básica de Saúde – UBS – Porte III no bairro Vila Floresta, destinada a atender também aos bairros Parque Ozanan, Vila Andere, Vila Ypiranga, Três Bicas e Vila Moraes.",
         "data": "2026-07-08",
         "impacto_zero": false,
@@ -43791,7 +43792,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "medio"
@@ -43808,7 +43809,7 @@
         "data": "2026-07-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -43825,7 +43826,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -43842,7 +43843,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "assistencia",
         "tema_label": "Assistência social",
         "grau": "medio"
@@ -43859,7 +43860,7 @@
         "data": "2026-07-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "baixo"
@@ -43876,7 +43877,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "transparencia",
         "tema_label": "Transparência/Fiscalização",
         "grau": "medio"
@@ -43893,7 +43894,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "cultura",
         "tema_label": "Cultura/Esporte/Lazer",
         "grau": "medio"
@@ -43910,7 +43911,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -43927,7 +43928,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "assistencia",
         "tema_label": "Assistência social",
         "grau": "medio"
@@ -43944,7 +43945,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "assistencia",
         "tema_label": "Assistência social",
         "grau": "medio"
@@ -43961,7 +43962,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -43978,7 +43979,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "transito",
         "tema_label": "Trânsito/Mobilidade",
         "grau": "medio"
@@ -43995,7 +43996,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "medio"
@@ -44012,7 +44013,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "medio"
@@ -44029,7 +44030,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "medio"
@@ -44046,7 +44047,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "medio"
@@ -44063,7 +44064,7 @@
         "data": "2026-07-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -44080,7 +44081,7 @@
         "data": "2026-07-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -44097,7 +44098,7 @@
         "data": "2026-07-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -44114,7 +44115,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "medio"
@@ -47327,6 +47328,7 @@
         ],
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5125"
       }
-    ]
+    ],
+    "coletado_em": "2026-07-20T11:29:03-03:00"
   }
 }

@@ -1,23 +1,23 @@
 {
   "fonte": "Portal da Transparencia (CGU) - CEIS e CNEP",
-  "gerado_em": "2026-07-17T12:59:00+00:00",
+  "gerado_em": "2026-07-20T15:05:58+00:00",
   "metodo": "Consulta por nome na API api-de-dados; confirmacao local por raiz de CNPJ ou nome normalizado identico. Cobertura limitada a fornecedores com nome consultavel — nao e prova de ausencia de sancao.",
-  "verificados": 1057,
-  "consultas_api": 1078,
-  "sancoes_encontradas": 92,
-  "sancoes_vigentes": 91,
+  "verificados": 1200,
+  "consultas_api": 1201,
+  "sancoes_encontradas": 98,
+  "sancoes_vigentes": 96,
   "achados": [
     {
       "base": "CEIS",
-      "sancionado": "ACACIA COMERCIO DE MEDICAMENTOS LTDA",
-      "cnpj": "03.945.035/0001-91",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "17/05/2025",
-      "data_fim": "17/05/2027",
-      "orgao_sancionador": "Prefeitura Municipal de Bauru - SP",
-      "uf_orgao": "SP",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "ACACIA COMERCIO DE MEDICAMENTOS LTDA",
+      "sancionado": "ORION - SAUDE E PARTICIPACOES LTDA",
+      "cnpj": "40.254.329/0001-01",
+      "tipo": "Suspensão",
+      "data_inicio": "16/05/2025",
+      "data_fim": "16/05/2027",
+      "orgao_sancionador": "CONSELHO REGIONAL DE ENFERMAGEM-RJ",
+      "uf_orgao": "RJ",
+      "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
+      "fornecedor_local": "ORION - SAUDE E PARTICIPACOES LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -25,15 +25,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "PRATI, DONADUZZI & CIA LTDA",
-      "cnpj": "73.856.593/0001-66",
+      "sancionado": "ORION - SAUDE E PARTICIPACOES LTDA",
+      "cnpj": "40.254.329/0001-01",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "21/05/2026",
-      "data_fim": "21/05/2027",
-      "orgao_sancionador": "PREFEITURA MUNICIPAL DE FERNANDOPOLIS - SP",
-      "uf_orgao": "SP",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "PRATI, DONADUZZI & CIA LTDA",
+      "data_inicio": "03/12/2024",
+      "data_fim": "03/12/2026",
+      "orgao_sancionador": "Prefeitura Municipal de Balneário Camboriú (SC)",
+      "uf_orgao": "SC",
+      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
+      "fornecedor_local": "ORION - SAUDE E PARTICIPACOES LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -57,15 +57,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "MG FLEX LTDA.",
-      "cnpj": "43.121.365/0001-87",
+      "sancionado": "PRATI, DONADUZZI & CIA LTDA",
+      "cnpj": "73.856.593/0001-66",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "28/10/2025",
-      "data_fim": "28/08/2027",
-      "orgao_sancionador": "PREFEITURA MUNICIPAL DE DIVINÓPOLIS - MG",
-      "uf_orgao": "MG",
+      "data_inicio": "21/05/2026",
+      "data_fim": "21/05/2027",
+      "orgao_sancionador": "PREFEITURA MUNICIPAL DE FERNANDOPOLIS - SP",
+      "uf_orgao": "SP",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "MG FLEX LTDA.",
+      "fornecedor_local": "PRATI, DONADUZZI & CIA LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -83,7 +83,8 @@
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "SOUL GESTAO DE NEGOCIOS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -105,22 +106,6 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "PURAH MEDICAL & CO LTDA",
-      "cnpj": "28.345.933/0001-30",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "11/09/2025",
-      "data_fim": "10/09/2027",
-      "orgao_sancionador": "Prefeitura Municipal de Atibaia (SP)",
-      "uf_orgao": "SP",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "PURAH MEDICAL & CO LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
       "sancionado": "ALMEIDA FARMACEUTICA LTDA",
       "cnpj": "40.455.009/0001-01",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
@@ -128,24 +113,8 @@
       "data_fim": "11/11/2028",
       "orgao_sancionador": "Fundação de Saúde Pública de Novo Hamburgo - FSNH-RS",
       "uf_orgao": "RS",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fundamentacao": "LEI 14133 - ART. 155, III - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nIII - DAR CAUSA À INEXECUÇÃO TOTAL DO CONTRATO;",
       "fornecedor_local": "ALMEIDA FARMACEUTICA LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "AEROFOTO NORDESTE LTDA",
-      "cnpj": "02.499.001/0001-58",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "07/11/2025",
-      "data_fim": "07/11/2027",
-      "orgao_sancionador": "MINISTERIO DA SAUDE",
-      "uf_orgao": "AM",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "AEROFOTO NORDESTE LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -169,15 +138,31 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "SSC SOLUCOES EM FORNECIMENTO DE MERCADORIAS LTDA",
-      "cnpj": "93.577.427/0001-38",
+      "sancionado": "AEROFOTO NORDESTE LTDA",
+      "cnpj": "02.499.001/0001-58",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "18/03/2026",
-      "data_fim": "17/03/2029",
-      "orgao_sancionador": "Prefeitura Municipal de Cacique Doble (RS)",
-      "uf_orgao": "RS",
+      "data_inicio": "07/11/2025",
+      "data_fim": "07/11/2027",
+      "orgao_sancionador": "MINISTERIO DA SAUDE",
+      "uf_orgao": "AM",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "SSC SOLUCOES EM FORNECIMENTO DE MERCADORIAS LTDA",
+      "fornecedor_local": "AEROFOTO NORDESTE LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "ESF II PRODUTOS MEDICO-HOSPITALARES LTDA",
+      "cnpj": "48.921.961/0001-65",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "05/05/2026",
+      "data_fim": "04/11/2026",
+      "orgao_sancionador": "COMANDO DO EXERCITO",
+      "uf_orgao": "MS",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "ESF II PRODUTOS MEDICO-HOSPITALARES LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -204,10 +189,10 @@
       "sancionado": "SSC SOLUCOES EM FORNECIMENTO DE MERCADORIAS LTDA",
       "cnpj": "93.577.427/0001-38",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "12/02/2026",
-      "data_fim": "12/08/2026",
-      "orgao_sancionador": "Prefeitura Municipal de Jataí (GO)",
-      "uf_orgao": "GO",
+      "data_inicio": "18/03/2026",
+      "data_fim": "17/03/2029",
+      "orgao_sancionador": "Prefeitura Municipal de Cacique Doble (RS)",
+      "uf_orgao": "RS",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "SSC SOLUCOES EM FORNECIMENTO DE MERCADORIAS LTDA",
       "origens": [
@@ -217,15 +202,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "MASTERFER COMERCIO DE FERRAGENS LTDA",
-      "cnpj": "11.175.931/0001-47",
-      "tipo": "Suspensão",
-      "data_inicio": "30/12/2025",
-      "data_fim": "29/12/2027",
-      "orgao_sancionador": "EMPRESA BRASILEIRA DE PESQUISA AGROPECUARIA",
-      "uf_orgao": "PI",
-      "fundamentacao": "LEI 13303 - ART. 83, II E III - ART. 83. PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A EMPRESA PÚBLICA OU A SOCIEDADE DE ECONOMIA MISTA PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEG",
-      "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "sancionado": "SSC SOLUCOES EM FORNECIMENTO DE MERCADORIAS LTDA",
+      "cnpj": "93.577.427/0001-38",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "12/02/2026",
+      "data_fim": "12/08/2026",
+      "orgao_sancionador": "Prefeitura Municipal de Jataí (GO)",
+      "uf_orgao": "GO",
+      "fundamentacao": "LEI 14133 - ART. 155, III - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nIII - DAR CAUSA À INEXECUÇÃO TOTAL DO CONTRATO;",
+      "fornecedor_local": "SSC SOLUCOES EM FORNECIMENTO DE MERCADORIAS LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -233,31 +218,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "MASTERFER COMERCIO DE FERRAGENS LTDA",
-      "cnpj": "11.175.931/0001-47",
+      "sancionado": "DISTRIMIX DISTRIBUIDORA DE MEDICAMENTOS LTDA",
+      "cnpj": "01.417.694/0001-20",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "09/07/2026",
-      "data_fim": "09/08/2026",
-      "orgao_sancionador": "COMANDO DO EXERCITO",
-      "uf_orgao": "RS",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "MASTERFER COMERCIO DE FERRAGENS LTDA",
-      "cnpj": "11.175.931/0001-47",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "31/12/2025",
-      "data_fim": "31/12/2028",
-      "orgao_sancionador": "PREFEITURA DE CAPITÃO LEÔNIDAS MARQUES - PR",
-      "uf_orgao": "PR",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "data_inicio": "28/09/2023",
+      "data_fim": "28/05/2028",
+      "orgao_sancionador": "PREFEITURA MUNICIPAL CONCEICAO DO CASTELO -ES",
+      "uf_orgao": "ES",
+      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
+      "fornecedor_local": "DISTRIMIX DISTRIBUIDORA DE MEDICAMENTOS LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -275,23 +244,8 @@
       "fundamentacao": "LEI 8666 - ART. 87, II E III - ART. 87.  PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES:II - MULTA, NA FORMA",
       "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
       "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "MASTERFER COMERCIO DE FERRAGENS LTDA",
-      "cnpj": "11.175.931/0001-47",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "15/06/2026",
-      "data_fim": "14/06/2027",
-      "orgao_sancionador": "CÂMARA MUNICIPAL DE LINHARES - ES",
-      "uf_orgao": "ES",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
-      "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -307,7 +261,8 @@
       "fundamentacao": "LEI 9433 (BA) - ART. 186, III - AO CANDIDATO A CADASTRAMENTO, AO LICITANTE E AO CONTRATADO, QUE INCORRAM NAS FALTAS PREVISTAS NESTA LEI, APLICAM-SE, SEGUNDO A NATUREZA E A GRAVIDADE DA FALTA, ASSEGURA",
       "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -323,7 +278,25 @@
       "fundamentacao": "LEI 14133 - ART. 155, VII - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nVII - ENSEJAR O RETARDAMENTO DA EXECUÇÃO OU DA ENTREGA DO OBJETO ",
       "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "cnpj": "11.175.931/0001-47",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "09/07/2026",
+      "data_fim": "09/08/2026",
+      "orgao_sancionador": "COMANDO DO EXERCITO",
+      "uf_orgao": "RS",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -338,6 +311,74 @@
       "uf_orgao": "PI",
       "fundamentacao": "LEI 13303 - ART. 83, II E III - ART. 83. PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A EMPRESA PÚBLICA OU A SOCIEDADE DE ECONOMIA MISTA PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEG",
       "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "cnpj": "11.175.931/0001-47",
+      "tipo": "Suspensão",
+      "data_inicio": "30/12/2025",
+      "data_fim": "29/12/2027",
+      "orgao_sancionador": "EMPRESA BRASILEIRA DE PESQUISA AGROPECUARIA",
+      "uf_orgao": "PI",
+      "fundamentacao": "LEI 13303 - ART. 83, II E III - ART. 83. PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A EMPRESA PÚBLICA OU A SOCIEDADE DE ECONOMIA MISTA PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEG",
+      "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "cnpj": "11.175.931/0001-47",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "15/06/2026",
+      "data_fim": "14/06/2027",
+      "orgao_sancionador": "CÂMARA MUNICIPAL DE LINHARES - ES",
+      "uf_orgao": "ES",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "cnpj": "11.175.931/0001-47",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "31/12/2025",
+      "data_fim": "31/12/2028",
+      "orgao_sancionador": "PREFEITURA DE CAPITÃO LEÔNIDAS MARQUES - PR",
+      "uf_orgao": "PR",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "MASTERFER COMERCIO DE FERRAGENS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "MCW PRODUTOS MEDICOS E HOSPITALARES LTDA",
+      "cnpj": "94.389.400/0001-84",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "26/02/2025",
+      "data_fim": "26/02/2027",
+      "orgao_sancionador": "PREFEITURA MUNICIPAL DE PONTE NOVA - MG",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "MCW PRODUTOS MEDICOS E HOSPITALARES LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -371,7 +412,8 @@
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "GLOBAL BRANDS COMERCIO LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -380,14 +422,15 @@
       "sancionado": "GLOBAL BRANDS COMERCIO LTDA",
       "cnpj": "07.308.817/0001-70",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "24/06/2026",
-      "data_fim": "23/06/2027",
-      "orgao_sancionador": "Prefeitura Municipal de Lagoa Santa (MG)",
-      "uf_orgao": "MG",
+      "data_inicio": "29/08/2025",
+      "data_fim": "29/08/2027",
+      "orgao_sancionador": "MINISTERIO DA CIENCIA,TECNOLOGIA E INOVAÇÃO",
+      "uf_orgao": "PE",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "GLOBAL BRANDS COMERCIO LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -402,54 +445,6 @@
       "uf_orgao": "MG",
       "fundamentacao": "LEI 13303 - ART. 83, II E III - ART. 83. PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A EMPRESA PÚBLICA OU A SOCIEDADE DE ECONOMIA MISTA PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEG",
       "fornecedor_local": "MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA",
-      "cnpj": "13.460.002/0001-05",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "09/07/2026",
-      "data_fim": "09/10/2026",
-      "orgao_sancionador": "COMANDO DO EXERCITO",
-      "uf_orgao": "PA",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CNEP",
-      "sancionado": "LV INDUSTRIA E COMERCIO LTDA",
-      "cnpj": "55.836.281/0001-09",
-      "tipo": "Multa",
-      "data_inicio": "16/06/2026",
-      "data_fim": "Sem informação",
-      "orgao_sancionador": "Prefeitura Municipal de Monte Carmelo (MG)",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 14133 - ART. 155, II - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nII - DAR CAUSA À INEXECUÇÃO PARCIAL DO CONTRATO QUE CAUSE GRAVE DA",
-      "fornecedor_local": "LV INDUSTRIA E COMERCIO LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "TECNOBLU COMERCIO DE REFRIGERACAO LTDA",
-      "cnpj": "21.613.975/0001-65",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "17/04/2026",
-      "data_fim": "17/08/2026",
-      "orgao_sancionador": "FUNDACAO OSWALDO CRUZ",
-      "uf_orgao": "RJ",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "TECNOBLU COMERCIO DE REFRIGERACAO LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -483,7 +478,8 @@
       "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
       "fornecedor_local": "FABIANO COSTA AZEVEDO",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -505,31 +501,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "ANA FLAVIA GARCIA CHAGAS",
-      "cnpj": "25.052.801/0001-21",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "19/09/2025",
-      "data_fim": "19/09/2028",
-      "orgao_sancionador": "Prefeitura Municipal de Campestre (MG)",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "ANA FLAVIA GARCIA CHAGAS",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "MP COMERCIO DE TELAS E FERRAGENS LTDA",
-      "cnpj": "41.278.073/0001-27",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "13/07/2026",
-      "data_fim": "09/01/2027",
-      "orgao_sancionador": "SAAE Serviço Autônomo de Água e Esgoto de Jacareí (SP)",
+      "sancionado": "AMELITECH GROUP LTDA",
+      "cnpj": "36.827.096/0001-03",
+      "tipo": "Suspensão",
+      "data_inicio": "12/06/2026",
+      "data_fim": "12/06/2028",
+      "orgao_sancionador": "EMPRESA BRASILEIRA DE PESQUISA AGROPECUARIA",
       "uf_orgao": "SP",
-      "fundamentacao": "LEI 14133 - ART. 155, III - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nIII - DAR CAUSA À INEXECUÇÃO TOTAL DO CONTRATO;",
-      "fornecedor_local": "MP COMERCIO DE TELAS E FERRAGENS LTDA",
+      "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
+      "fornecedor_local": "AMELITECH GROUP LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -569,22 +549,6 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "AMELITECH GROUP LTDA",
-      "cnpj": "36.827.096/0001-03",
-      "tipo": "Suspensão",
-      "data_inicio": "12/06/2026",
-      "data_fim": "12/06/2028",
-      "orgao_sancionador": "EMPRESA BRASILEIRA DE PESQUISA AGROPECUARIA",
-      "uf_orgao": "SP",
-      "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
-      "fornecedor_local": "AMELITECH GROUP LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
       "sancionado": "VITOR DIOGO WENDLING",
       "cnpj": "23.588.621/0001-33",
       "tipo": "Suspensão",
@@ -594,38 +558,6 @@
       "uf_orgao": "",
       "fundamentacao": "LEI 13303 - ART. 83, II E III - ART. 83. PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A EMPRESA PÚBLICA OU A SOCIEDADE DE ECONOMIA MISTA PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEG",
       "fornecedor_local": "VITOR DIOGO WENDLING",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "YNEMED PRODUTOS MEDICOS E HOSPITALARES LTDA",
-      "cnpj": "51.740.794/0001-60",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "05/05/2026",
-      "data_fim": "05/05/2028",
-      "orgao_sancionador": "Município de Matupá/MT",
-      "uf_orgao": "MT",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "YNEMED PRODUTOS MEDICOS E HOSPITALARES LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "TELES SOLUCOES EMPRESARIAIS LTDA",
-      "cnpj": "48.566.347/0001-22",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "30/10/2024",
-      "data_fim": "30/10/2026",
-      "orgao_sancionador": "Prefeitura Municipal de Mostardas - RS",
-      "uf_orgao": "RS",
-      "fundamentacao": "LEI 14133 - ART. 155, 1 - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\n\nI - DAR CAUSA À INEXECUÇÃO PARCIAL DO CONTRATO;",
-      "fornecedor_local": "TELES SOLUCOES EMPRESARIAIS LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -643,119 +575,59 @@
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "TELES SOLUCOES EMPRESARIAIS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
     {
       "base": "CEIS",
-      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "cnpj": "21.856.981/0001-43",
+      "sancionado": "TELES SOLUCOES EMPRESARIAIS LTDA",
+      "cnpj": "48.566.347/0001-22",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "24/07/2024",
-      "data_fim": "24/07/2026",
-      "orgao_sancionador": "COMANDO DO EXERCITO",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
-      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "data_inicio": "30/10/2024",
+      "data_fim": "30/10/2026",
+      "orgao_sancionador": "Prefeitura Municipal de Mostardas - RS",
+      "uf_orgao": "RS",
+      "fundamentacao": "LEI 14133 - ART. 155, 1 - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\n\nI - DAR CAUSA À INEXECUÇÃO PARCIAL DO CONTRATO;",
+      "fornecedor_local": "TELES SOLUCOES EMPRESARIAIS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
     {
       "base": "CEIS",
-      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "cnpj": "21.856.981/0001-43",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "23/12/2025",
-      "data_fim": "23/12/2027",
-      "orgao_sancionador": "Prefeitura Municipal de Itamogi (MG)",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 14133 - ART. 156, §4º - § 4º A SANÇÃO PREVISTA NO INCISO III DO CAPUT DESTE ARTIGO SERÁ APLICADA AO RESPONSÁVEL PELAS INFRAÇÕES ADMINISTRATIVAS PREVISTAS NOS INCISOS II, III, IV, V, VI E VII DO CA",
-      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "cnpj": "21.856.981/0001-43",
+      "sancionado": "TELES SOLUCOES EMPRESARIAIS LTDA",
+      "cnpj": "48.566.347/0001-22",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
       "data_inicio": "25/08/2025",
       "data_fim": "25/08/2027",
-      "orgao_sancionador": "Prefeitura Municipal de Aimorés (MG)",
+      "orgao_sancionador": "Prefeitura Municipal de Capitão (RS)",
+      "uf_orgao": "RS",
+      "fundamentacao": "LEI 14133 - ART. 156, II - MULTA",
+      "fornecedor_local": "TELES SOLUCOES EMPRESARIAIS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "cnpj": "21.856.981/0001-43",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "05/05/2026",
+      "data_fim": "04/05/2027",
+      "orgao_sancionador": "Câmara Municipal de São Gonçalo do Rio Abaixo (MG)",
       "uf_orgao": "MG",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
       "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "cnpj": "21.856.981/0001-43",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "12/02/2026",
-      "data_fim": "11/02/2029",
-      "orgao_sancionador": "Prefeitura Municipal de Lagoa Santa (MG)",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 14133 - ART. 155, III - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nIII - DAR CAUSA À INEXECUÇÃO TOTAL DO CONTRATO;",
-      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "cnpj": "21.856.981/0001-43",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "02/08/2023",
-      "data_fim": "01/08/2024",
-      "orgao_sancionador": "Prefeitura Municipal de Mário Campos - MG",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 10520 - ART. 7ºº - ART. 7º  QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJA",
-      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": false
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "cnpj": "21.856.981/0001-43",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "10/07/2025",
-      "data_fim": "09/07/2027",
-      "orgao_sancionador": "EMG-ESTADO DE MINAS GERAIS",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
-      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "cnpj": "21.856.981/0001-43",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "08/05/2026",
-      "data_fim": "08/05/2029",
-      "orgao_sancionador": "PREFEITURA DE CARMO DO RIO CLARO",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -771,7 +643,8 @@
       "fundamentacao": "REGULAMENTA A APLICAÇÃO DE SANÇÕES ADMINISTRATIVAS NO ÂMBITO DO PODER EXECUTIVO DO MUNICÍPIO DE POMPÉU/MINAS GERAIS. - ART. 11, PARÁGRAFO ÚNICO, III - ART. 11. A PRÁTICA DE ATOS ILÍCITOS SUJEITA O INF",
       "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -780,14 +653,15 @@
       "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
       "cnpj": "21.856.981/0001-43",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "03/09/2025",
-      "data_fim": "02/09/2026",
-      "orgao_sancionador": "FUNDACAO UNIVERSIDADE FEDERAL DE UBERLANDIA",
+      "data_inicio": "25/08/2025",
+      "data_fim": "25/08/2027",
+      "orgao_sancionador": "Prefeitura Municipal de Aimorés (MG)",
       "uf_orgao": "MG",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -796,30 +670,117 @@
       "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
       "cnpj": "21.856.981/0001-43",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "01/04/2026",
-      "data_fim": "01/04/2029",
+      "data_inicio": "08/05/2026",
+      "data_fim": "08/05/2029",
       "orgao_sancionador": "PREFEITURA DE CARMO DO RIO CLARO",
       "uf_orgao": "MG",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
     {
       "base": "CEIS",
-      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "cnpj": "10.581.468/0001-70",
+      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "cnpj": "21.856.981/0001-43",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "18/06/2026",
-      "data_fim": "17/06/2029",
-      "orgao_sancionador": "Prefeitura Municipal de Delfinópolis (MG)",
+      "data_inicio": "03/07/2025",
+      "data_fim": "03/07/2028",
+      "orgao_sancionador": "CAMARA MUNICIPAL DE EXTREMA - MG",
       "uf_orgao": "MG",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "cnpj": "21.856.981/0001-43",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "10/07/2025",
+      "data_fim": "09/07/2027",
+      "orgao_sancionador": "EMG-ESTADO DE MINAS GERAIS",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
+      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "cnpj": "21.856.981/0001-43",
+      "tipo": "Suspensão",
+      "data_inicio": "09/09/2024",
+      "data_fim": "09/09/2026",
+      "orgao_sancionador": "COMPANHIA DE SANEAMENTO MUNICIPAL JUIZ FORA",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 13303 - ART. 83, II E III - ART. 83. PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A EMPRESA PÚBLICA OU A SOCIEDADE DE ECONOMIA MISTA PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEG",
+      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "cnpj": "21.856.981/0001-43",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "24/07/2024",
+      "data_fim": "24/07/2026",
+      "orgao_sancionador": "COMANDO DO EXERCITO",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
+      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "cnpj": "21.856.981/0001-43",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "28/08/2024",
+      "data_fim": "27/08/2026",
+      "orgao_sancionador": "Serviço Autônomo de Água e Esgoto de Passos (MG)",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 14133 - ART. 156, II - MULTA",
+      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "cnpj": "21.856.981/0001-43",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "04/03/2026",
+      "data_fim": "04/03/2027",
+      "orgao_sancionador": "MMG-PREFEITURA MUNICIPAL DE VARGINHA",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -833,6 +794,118 @@
       "orgao_sancionador": "COMPANHIA DE SANEAMENTO MUNICIPAL JUIZ FORA",
       "uf_orgao": "MG",
       "fundamentacao": "LEI 13303 - ART. 83, II E III - ART. 83. PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A EMPRESA PÚBLICA OU A SOCIEDADE DE ECONOMIA MISTA PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEG",
+      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "cnpj": "10.581.468/0001-70",
+      "tipo": "Suspensão",
+      "data_inicio": "10/06/2025",
+      "data_fim": "10/06/2027",
+      "orgao_sancionador": "Prefeitura Municipal da Cidade do Rio de Janeiro (RJ)",
+      "uf_orgao": "RJ",
+      "fundamentacao": "LEI 13303 - ART. 83, III - III - SUSPENSÃO TEMPORÁRIA DE PARTICIPAÇÃO EM LICITAÇÃO E IMPEDIMENTO DE CONTRATAR COM A ENTIDADE SANCIONADORA, POR PRAZO NÃO SUPERIOR A 2 (DOIS) ANOS.",
+      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "cnpj": "10.581.468/0001-70",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "24/02/2026",
+      "data_fim": "22/07/2026",
+      "orgao_sancionador": "MIN.DA GEST.E DA INOVACAO EM SERVICOS PUBLICO",
+      "uf_orgao": "RJ",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "cnpj": "10.581.468/0001-70",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "07/07/2026",
+      "data_fim": "04/10/2026",
+      "orgao_sancionador": "JUSTICA ELEITORAL",
+      "uf_orgao": "ES",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "cnpj": "10.581.468/0001-70",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "26/05/2025",
+      "data_fim": "26/05/2027",
+      "orgao_sancionador": "COMANDO DO EXERCITO",
+      "uf_orgao": "RJ",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "cnpj": "10.581.468/0001-70",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "07/07/2026",
+      "data_fim": "04/10/2026",
+      "orgao_sancionador": "Tribunal Regional Eleitoral do Espírito Santo (TRE-ES)",
+      "uf_orgao": "ES",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "cnpj": "10.581.468/0001-70",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "27/07/2023",
+      "data_fim": "27/07/2026",
+      "orgao_sancionador": "FUNDO MUNICIPAL DE SAÚDE DE VOLTA REDONDA-RJ",
+      "uf_orgao": "RJ",
+      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
+      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
+      "cnpj": "10.581.468/0001-70",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "24/02/2026",
+      "data_fim": "23/02/2028",
+      "orgao_sancionador": "Prefeitura Municipal da Cidade do Rio de Janeiro (RJ)",
+      "uf_orgao": "RJ",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
       "origens": [
         "contrato_prefeitura"
@@ -876,140 +949,12 @@
       "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
       "cnpj": "10.581.468/0001-70",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "07/07/2026",
-      "data_fim": "04/10/2026",
-      "orgao_sancionador": "JUSTICA ELEITORAL",
-      "uf_orgao": "ES",
+      "data_inicio": "18/06/2026",
+      "data_fim": "17/06/2029",
+      "orgao_sancionador": "Prefeitura Municipal de Delfinópolis (MG)",
+      "uf_orgao": "MG",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "cnpj": "10.581.468/0001-70",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "27/07/2023",
-      "data_fim": "27/07/2026",
-      "orgao_sancionador": "FUNDO MUNICIPAL DE SAÚDE DE VOLTA REDONDA-RJ",
-      "uf_orgao": "RJ",
-      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
-      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "cnpj": "10.581.468/0001-70",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "07/07/2026",
-      "data_fim": "04/10/2026",
-      "orgao_sancionador": "Tribunal Regional Eleitoral do Espírito Santo (TRE-ES)",
-      "uf_orgao": "ES",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "cnpj": "10.581.468/0001-70",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "24/02/2026",
-      "data_fim": "22/07/2026",
-      "orgao_sancionador": "MIN.DA GEST.E DA INOVACAO EM SERVICOS PUBLICO",
-      "uf_orgao": "RJ",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "cnpj": "10.581.468/0001-70",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "26/05/2025",
-      "data_fim": "26/05/2027",
-      "orgao_sancionador": "COMANDO DO EXERCITO",
-      "uf_orgao": "RJ",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "cnpj": "10.581.468/0001-70",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "24/02/2026",
-      "data_fim": "23/02/2028",
-      "orgao_sancionador": "Prefeitura Municipal da Cidade do Rio de Janeiro (RJ)",
-      "uf_orgao": "RJ",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "cnpj": "10.581.468/0001-70",
-      "tipo": "Suspensão",
-      "data_inicio": "10/06/2025",
-      "data_fim": "10/06/2027",
-      "orgao_sancionador": "Prefeitura Municipal da Cidade do Rio de Janeiro (RJ)",
-      "uf_orgao": "RJ",
-      "fundamentacao": "LEI 13303 - ART. 83, III - III - SUSPENSÃO TEMPORÁRIA DE PARTICIPAÇÃO EM LICITAÇÃO E IMPEDIMENTO DE CONTRATAR COM A ENTIDADE SANCIONADORA, POR PRAZO NÃO SUPERIOR A 2 (DOIS) ANOS.",
-      "fornecedor_local": "META EMPREEDIMENTOS E SERVICOS LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "FRANCIELE ELETRO LTDA",
-      "cnpj": "47.646.580/0001-52",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "04/03/2026",
-      "data_fim": "04/03/2027",
-      "orgao_sancionador": "JUSTICA FEDERAL",
-      "uf_orgao": "RR",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "FRANCIELE ELETRO LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "FRANCIELE ELETRO LTDA",
-      "cnpj": "47.646.580/0001-52",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "16/06/2026",
-      "data_fim": "15/09/2026",
-      "orgao_sancionador": "FUNDACAO UNIVERSIDADE FEDERAL DE PELOTAS",
-      "uf_orgao": "RS",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "FRANCIELE ELETRO LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -1036,6 +981,22 @@
       "sancionado": "FRANCIELE ELETRO LTDA",
       "cnpj": "47.646.580/0001-52",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "04/03/2026",
+      "data_fim": "04/03/2027",
+      "orgao_sancionador": "JUSTICA FEDERAL",
+      "uf_orgao": "RR",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "FRANCIELE ELETRO LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "FRANCIELE ELETRO LTDA",
+      "cnpj": "47.646.580/0001-52",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
       "data_inicio": "15/06/2026",
       "data_fim": "15/06/2027",
       "orgao_sancionador": "Prefeitura Municipal de Guaporé (RS)",
@@ -1049,15 +1010,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "SUPERAR LTDA",
-      "cnpj": "13.482.516/0001-61",
+      "sancionado": "FRANCIELE ELETRO LTDA",
+      "cnpj": "47.646.580/0001-52",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "22/09/2025",
-      "data_fim": "21/09/2027",
-      "orgao_sancionador": "COMANDO DO EXERCITO",
+      "data_inicio": "16/06/2026",
+      "data_fim": "15/09/2026",
+      "orgao_sancionador": "FUNDACAO UNIVERSIDADE FEDERAL DE PELOTAS",
       "uf_orgao": "RS",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "SUPERAR EIRELI",
+      "fornecedor_local": "FRANCIELE ELETRO LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -1099,12 +1060,12 @@
       "base": "CEIS",
       "sancionado": "SUPERAR LTDA",
       "cnpj": "13.482.516/0001-61",
-      "tipo": "Suspensão",
-      "data_inicio": "20/02/2026",
-      "data_fim": "20/02/2028",
-      "orgao_sancionador": "MINISTERIO DA SAUDE",
-      "uf_orgao": "RO",
-      "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "12/03/2025",
+      "data_fim": "30/12/2026",
+      "orgao_sancionador": "DEPARTAMENTO DE POLICIA RODOVIARIA FEDERAL/MJ",
+      "uf_orgao": "SC",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "SUPERAR EIRELI",
       "origens": [
         "contrato_prefeitura"
@@ -1116,11 +1077,27 @@
       "sancionado": "SUPERAR LTDA",
       "cnpj": "13.482.516/0001-61",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "12/03/2025",
-      "data_fim": "30/12/2026",
-      "orgao_sancionador": "DEPARTAMENTO DE POLICIA RODOVIARIA FEDERAL/MJ",
-      "uf_orgao": "SC",
+      "data_inicio": "22/09/2025",
+      "data_fim": "21/09/2027",
+      "orgao_sancionador": "COMANDO DO EXERCITO",
+      "uf_orgao": "RS",
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "SUPERAR EIRELI",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "SUPERAR LTDA",
+      "cnpj": "13.482.516/0001-61",
+      "tipo": "Suspensão",
+      "data_inicio": "20/02/2026",
+      "data_fim": "20/02/2028",
+      "orgao_sancionador": "MINISTERIO DA SAUDE",
+      "uf_orgao": "RO",
+      "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
       "fornecedor_local": "SUPERAR EIRELI",
       "origens": [
         "contrato_prefeitura"
@@ -1140,7 +1117,8 @@
       "fornecedor_local": "PAPELARIA E COPIADORA COPYSUL LTDA.",
       "origens": [
         "contrato_prefeitura",
-        "contrato_camara"
+        "contrato_camara",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -1178,15 +1156,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "ONCO PROD DISTRIBUIDORA DE PRODUTOS HOSPITALARES E ONCOLOGICOS LTDA.",
-      "cnpj": "04.307.650/0003-05",
+      "sancionado": "ASTEM MOVEIS P/ ESCRITORIO LTDA",
+      "cnpj": "07.422.644/0001-17",
       "tipo": "Suspensão",
-      "data_inicio": "21/08/2025",
-      "data_fim": "21/08/2027",
-      "orgao_sancionador": "Prefeitura Municipal de São José do Norte (RS)",
-      "uf_orgao": "RS",
-      "fundamentacao": "LEI 8666 - ART. 87, §1º, III - III - SUSPENSÃO TEMPORÁRIA DE PARTICIPAÇÃO EM LICITAÇÃO E IMPEDIMENTO DE CONTRATAR COM A ADMINISTRAÇÃO, POR PRAZO NÃO SUPERIOR A 2 (DOIS) ANOS;",
-      "fornecedor_local": "ONCO PROD. DIST. DE PROD. HOSP. E ONCO. LTDA",
+      "data_inicio": "21/10/2024",
+      "data_fim": "21/10/2026",
+      "orgao_sancionador": "PREFEITURA MUNICIPAL DE WENCESLAU BRAZ - MG",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
+      "fornecedor_local": "ASTEM MOVEIS PARA ESCRITORIO LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -1210,15 +1188,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "DEBRUM MOVEIS CORPORATIVOS LTDA",
-      "cnpj": "53.448.772/0001-57",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "28/10/2025",
-      "data_fim": "27/10/2026",
-      "orgao_sancionador": "PREFEITURA MUNICIPAL DE PEDERNEIRAS - SP",
-      "uf_orgao": "SP",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "DEBRUM MOVEIS CORPORATIVOS LTDA",
+      "sancionado": "ONCO PROD DISTRIBUIDORA DE PRODUTOS HOSPITALARES E ONCOLOGICOS LTDA.",
+      "cnpj": "04.307.650/0003-05",
+      "tipo": "Suspensão",
+      "data_inicio": "21/08/2025",
+      "data_fim": "21/08/2027",
+      "orgao_sancionador": "Prefeitura Municipal de São José do Norte (RS)",
+      "uf_orgao": "RS",
+      "fundamentacao": "LEI 8666 - ART. 87, §1º, III - III - SUSPENSÃO TEMPORÁRIA DE PARTICIPAÇÃO EM LICITAÇÃO E IMPEDIMENTO DE CONTRATAR COM A ADMINISTRAÇÃO, POR PRAZO NÃO SUPERIOR A 2 (DOIS) ANOS;",
+      "fornecedor_local": "ONCO PROD. DIST. DE PROD. HOSP. E ONCO. LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -1234,6 +1212,22 @@
       "orgao_sancionador": "Prefeitura Municipal de Camanducaia (MG)",
       "uf_orgao": "MG",
       "fundamentacao": "LEI 14133 - ART. 155, I - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nI - DAR CAUSA À INEXECUÇÃO PARCIAL DO CONTRATO;",
+      "fornecedor_local": "DEBRUM MOVEIS CORPORATIVOS LTDA",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "DEBRUM MOVEIS CORPORATIVOS LTDA",
+      "cnpj": "53.448.772/0001-57",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "28/10/2025",
+      "data_fim": "27/10/2026",
+      "orgao_sancionador": "PREFEITURA MUNICIPAL DE PEDERNEIRAS - SP",
+      "uf_orgao": "SP",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "DEBRUM MOVEIS CORPORATIVOS LTDA",
       "origens": [
         "contrato_prefeitura"
@@ -1292,6 +1286,23 @@
       "base": "CEIS",
       "sancionado": "OXI QUIMICA LTDA",
       "cnpj": "65.271.868/0001-71",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "30/10/2024",
+      "data_fim": "30/10/2026",
+      "orgao_sancionador": "Prefeitura Municipal de João Monlevade - MG",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 8666 - ART. 87 - ART. 87.  PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES:I - ADVERTÊNCIA;II - MULTA, NA",
+      "fornecedor_local": "OXI QUIMICA LTDA",
+      "origens": [
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "OXI QUIMICA LTDA",
+      "cnpj": "65.271.868/0001-71",
       "tipo": "Suspensão",
       "data_inicio": "02/06/2026",
       "data_fim": "02/06/2027",
@@ -1300,7 +1311,8 @@
       "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
       "fornecedor_local": "OXI QUIMICA LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -1316,7 +1328,8 @@
       "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
       "fornecedor_local": "OXI QUIMICA LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
@@ -1332,21 +1345,22 @@
       "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
       "fornecedor_local": "OXI QUIMICA LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     },
     {
       "base": "CEIS",
-      "sancionado": "OXI QUIMICA LTDA",
-      "cnpj": "65.271.868/0001-71",
+      "sancionado": "GAUCHA COMERCIO DE COLCHOES LTDA",
+      "cnpj": "16.620.059/0001-12",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "30/10/2024",
-      "data_fim": "30/10/2026",
-      "orgao_sancionador": "Prefeitura Municipal de João Monlevade - MG",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 8666 - ART. 87 - ART. 87.  PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES:I - ADVERTÊNCIA;II - MULTA, NA",
-      "fornecedor_local": "OXI QUIMICA LTDA",
+      "data_inicio": "31/07/2024",
+      "data_fim": "31/07/2026",
+      "orgao_sancionador": "CONSÓRCIO INTERMUN.DE SAÚDE DE PATO BRANCO-PR",
+      "uf_orgao": "PR",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "GAUCHA COMERCIO DE COLCHOES LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -1370,95 +1384,15 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "GAUCHA COMERCIO DE COLCHOES LTDA",
-      "cnpj": "16.620.059/0001-12",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "31/07/2024",
-      "data_fim": "31/07/2026",
-      "orgao_sancionador": "CONSÓRCIO INTERMUN.DE SAÚDE DE PATO BRANCO-PR",
-      "uf_orgao": "PR",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "GAUCHA COMERCIO DE COLCHOES LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
       "sancionado": "AMAZON ECO COMERCIO LTDA",
       "cnpj": "13.862.822/0001-23",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "19/05/2026",
-      "data_fim": "19/11/2026",
-      "orgao_sancionador": "CORPO DE BOMBEIROS MILITAR - RN",
-      "uf_orgao": "RN",
-      "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
+      "tipo": "Declaração de Inidoneidade com prazo determinado",
+      "data_inicio": "14/04/2026",
+      "data_fim": "14/04/2029",
+      "orgao_sancionador": "Câmara Municipal de Além Paraíba (MG)",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 14133 - ART. 155, III - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nIII - DAR CAUSA À INEXECUÇÃO TOTAL DO CONTRATO;",
       "fornecedor_local": "AMAZON ECO COMERCIO LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "CREATIVE LICITACOES LTDA",
-      "cnpj": "54.362.519/0001-49",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "26/02/2026",
-      "data_fim": "26/11/2027",
-      "orgao_sancionador": "PREFEITURA MUNICIPAL DE DIVINÓPOLIS - MG",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "CREATIVE LICITACOES LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "CREATIVE LICITACOES LTDA",
-      "cnpj": "54.362.519/0001-49",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "09/07/2026",
-      "data_fim": "09/07/2027",
-      "orgao_sancionador": "Prefeitura Municipal de São João Nepomuceno (MG)",
-      "uf_orgao": "MG",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "CREATIVE LICITACOES LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "CREATIVE LICITACOES LTDA",
-      "cnpj": "54.362.519/0001-49",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "17/04/2026",
-      "data_fim": "17/04/2027",
-      "orgao_sancionador": "Fundação de Saúde Pública de São Sebastião (SP)",
-      "uf_orgao": "SP",
-      "fundamentacao": "LEI 14133 - ART. 156,III - ART. 156. SERÃO APLICADAS AO RESPONSÁVEL PELAS INFRAÇÕES ADMINISTRATIVAS PREVISTAS NESTA LEI AS SEGUINTES SANÇÕES:\nIII - IMPEDIMENTO DE LICITAR E CONTRATAR;",
-      "fornecedor_local": "CREATIVE LICITACOES LTDA",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "AC EQUIPAMENTOS E ELETRODOMESTICOS LTDA",
-      "cnpj": "46.221.464/0001-29",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "02/02/2026",
-      "data_fim": "18/04/2027",
-      "orgao_sancionador": "MIN.DA GEST.E DA INOVACAO EM SERVICOS PUBLICO",
-      "uf_orgao": "DF",
-      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
-      "fornecedor_local": "AC EQUIPAMENTOS E ELETRODOMESTICOS LTDA",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -1476,10 +1410,205 @@
       "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
       "fornecedor_local": "ICT FARMACEUTICA LTDA",
       "origens": [
-        "contrato_prefeitura"
+        "contrato_prefeitura",
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "GO VENDAS ELETRONICAS LTDA",
+      "cnpj": "36.521.392/0001-81",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "14/10/2025",
+      "data_fim": "14/10/2027",
+      "orgao_sancionador": "Prefeitura Municipal de Lajedo (PE)",
+      "uf_orgao": "PE",
+      "fundamentacao": "LEI 8666 - ART. 87, III - PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES: III - SUSPENSÃO TEMPORÁRIA DE PART",
+      "fornecedor_local": "GO VENDAS ELETRONICAS LTDA",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "GO VENDAS ELETRONICAS LTDA",
+      "cnpj": "36.521.392/0001-81",
+      "tipo": "Suspensão",
+      "data_inicio": "01/04/2026",
+      "data_fim": "10/05/2026",
+      "orgao_sancionador": "TRIBUNAL DE JUSTICA DA BAHIA (TJ-BA)",
+      "uf_orgao": "BA",
+      "fundamentacao": "LEI 9433 (BA) - ART. 185, IV E V - ART. 185 - CONSTITUI ILÍCITO ADMINISTRATIVO A PRÁTICA DOS SEGUINTES ATOS, PELO CONTRATADO:\nIV -     INCORRER EM INEXECUÇÃO DE CONTRATO;\nV - FRAUDAR, EM PREJUÍZO DA A",
+      "fornecedor_local": "GO VENDAS ELETRONICAS LTDA",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": false
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "CONSTRUTORA ENERGETTE LTDA",
+      "cnpj": "35.230.250/0001-00",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "30/06/2026",
+      "data_fim": "30/11/2026",
+      "orgao_sancionador": "MINISTERIO PUBLICO DA UNIAO",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "CONSTRUTORA ENERGETTE LTDA",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "CONSTRUTORA ENERGETTE LTDA",
+      "cnpj": "35.230.250/0001-00",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "24/10/2023",
+      "data_fim": "24/10/2026",
+      "orgao_sancionador": "PREFEITURA DE NOVA FATIMA - PR",
+      "uf_orgao": "PR",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "CONSTRUTORA ENERGETTE LTDA",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "CONSTRUTORA ENERGETTE LTDA",
+      "cnpj": "35.230.250/0001-00",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "14/04/2026",
+      "data_fim": "14/04/2027",
+      "orgao_sancionador": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+      "uf_orgao": "DF",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "CONSTRUTORA ENERGETTE LTDA",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "RIOLLI&LIMA UNIFORMES LTDA",
+      "cnpj": "50.583.738/0001-05",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "12/06/2026",
+      "data_fim": "12/10/2026",
+      "orgao_sancionador": "TRIBUNAL REGIONAL FEDERAL - 3A REGIAO",
+      "uf_orgao": "SP",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "RIOLLI&LIMA UNIFORMES LTDA",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "RIOLLI&LIMA UNIFORMES LTDA",
+      "cnpj": "50.583.738/0001-05",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "23/06/2026",
+      "data_fim": "23/08/2026",
+      "orgao_sancionador": "Prefeitura de Joinville (SC)",
+      "uf_orgao": "SC",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "RIOLLI&LIMA UNIFORMES LTDA",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "CORDIAL GENEROS ALIMENTICIOS LTDA",
+      "cnpj": "21.016.690/0001-47",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "01/09/2025",
+      "data_fim": "01/09/2028",
+      "orgao_sancionador": "CAMARA MUNICIPAL DE IPATINGA - MG",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "CORDIAL GENEROS ALIMENTICIOS LTDA",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "FARMACIA DO CAMPO LTDA",
+      "cnpj": "24.688.722/0001-49",
+      "tipo": "Suspensão",
+      "data_inicio": "12/03/2026",
+      "data_fim": "12/03/2028",
+      "orgao_sancionador": "EMPRESA BRASILEIRA DE PESQUISA AGROPECUARIA",
+      "uf_orgao": "CE",
+      "fundamentacao": "LEI 13303 - ART. 83, II E III - ART. 83. PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A EMPRESA PÚBLICA OU A SOCIEDADE DE ECONOMIA MISTA PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEG",
+      "fornecedor_local": "FARMACIA DO CAMPO",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "EVENI DA SILVA BRITO",
+      "cnpj": "08.086.600/0001-26",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "12/02/2026",
+      "data_fim": "27/09/2026",
+      "orgao_sancionador": "TRIBUNAL DE JUSTICA DA BAHIA (TJ-BA)",
+      "uf_orgao": "BA",
+      "fundamentacao": "LEI 14133 - ART. 155, IV - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nIV - DEIXAR DE ENTREGAR A DOCUMENTAÇÃO EXIGIDA PARA O CERTAME;",
+      "fornecedor_local": "EVENI DA SILVA BRITO",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "EVENI DA SILVA BRITO",
+      "cnpj": "08.086.600/0001-26",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "09/12/2025",
+      "data_fim": "09/06/2026",
+      "orgao_sancionador": "TRIBUNAL DE JUSTICA DA BAHIA (TJ-BA)",
+      "uf_orgao": "BA",
+      "fundamentacao": "LEI 14133 - ART. 155, IV - ART. 155. O LICITANTE OU O CONTRATADO SERÁ RESPONSABILIZADO ADMINISTRATIVAMENTE PELAS SEGUINTES INFRAÇÕES:\nIV - DEIXAR DE ENTREGAR A DOCUMENTAÇÃO EXIGIDA PARA O CERTAME;",
+      "fornecedor_local": "EVENI DA SILVA BRITO",
+      "origens": [
+        "vencedor_licitacao"
+      ],
+      "sancao_vigente": false
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "PALADIR LTDA",
+      "cnpj": "46.418.740/0001-43",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "15/05/2025",
+      "data_fim": "15/11/2026",
+      "orgao_sancionador": "DEPARTAMENTO MUN.DE A.ESGOTO DE CAMPO BELO/MG",
+      "uf_orgao": "MG",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "PALADIR LTDA",
+      "origens": [
+        "vencedor_licitacao"
       ],
       "sancao_vigente": true
     }
   ],
-  "erros": []
+  "erros": [
+    "CEIS/ROSANGELA: HTTP Error 400: "
+  ]
 }

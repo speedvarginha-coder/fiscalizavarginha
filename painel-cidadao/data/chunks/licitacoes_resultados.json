@@ -1,12 +1,12 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-07-17T17:19:40+00:00",
+  "gerado_em": "2026-07-20T15:18:54+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251119",
-    "fim": "20260717"
+    "inicio": "20251122",
+    "fim": "20260720"
   },
-  "compras": 298,
+  "compras": 302,
   "compras_com_resultado": 166,
   "homologacoes_simbolicas": [
     {
@@ -7413,6 +7413,58 @@
       "valor_homologado_total": null,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-16",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "68",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000165/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o fornecimento de suprimentos de informática e materiais afins",
+      "valor_estimado": 1694713.06,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-17",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "76",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000166/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa para fornecimento de link de fibra óptica dedicado à internet com redundância em fibra óptica, com suporte ininterrupto 24x7x30",
+      "valor_estimado": 169475.68,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-20",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "77",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000167/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de preços para aquisição de reagentes, insumos e consumíveis para o laboratório da Unidade de Pronto Atendimento",
+      "valor_estimado": 738309.25,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-20",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "60",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000168/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para a prestação de serviços de manutenção preventiva e corretiva, com fornecimento de peças, suprimentos e mão de obra, para os equipamentos de impress",
+      "valor_estimado": 182199.96,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-20",
       "resultados": []
     },
     {

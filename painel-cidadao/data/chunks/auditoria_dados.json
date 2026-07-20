@@ -1,23 +1,23 @@
 {
-  "gerado_em": "2026-07-17T17:45:25.937Z",
+  "gerado_em": "2026-07-20T15:34:05.617Z",
   "level": "critical",
   "summary": {
     "errors": 1,
-    "warnings": 8,
+    "warnings": 9,
     "info": 1,
     "ok": 1,
-    "total": 11
+    "total": 12
   },
   "atualizado_base": {
-    "iso": "2026-07-17T07:08:58",
-    "data_humana": "17/07/2026 - 07:08"
+    "iso": "2026-07-20T11:40:43",
+    "data_humana": "20/07/2026 - 11:40"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.3 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -28,6 +28,14 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
+    },
+    {
+      "severity": "warning",
+      "id": "pessoal-prefeitura-preservada",
+      "title": "Pessoal da Prefeitura preservado da ultima base completa",
+      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (4073 servidores) para nao reduzir a cobertura.",
+      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
+      "source": "pessoal.json"
     },
     {
       "severity": "info",
@@ -81,15 +89,16 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "1 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
-      "source": "sancoes.json"
+      "source": "sancoes.json",
+      "blocksPipeline": false
     },
     {
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (90 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "41 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (93 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json"
     },
@@ -107,7 +116,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.3 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -118,6 +127,14 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
+    },
+    {
+      "severity": "warning",
+      "id": "pessoal-prefeitura-preservada",
+      "title": "Pessoal da Prefeitura preservado da ultima base completa",
+      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (4073 servidores) para nao reduzir a cobertura.",
+      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
+      "source": "pessoal.json"
     },
     {
       "severity": "info",
@@ -171,15 +188,16 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "1 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
-      "source": "sancoes.json"
+      "source": "sancoes.json",
+      "blocksPipeline": false
     },
     {
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (90 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "41 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (93 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json"
     },

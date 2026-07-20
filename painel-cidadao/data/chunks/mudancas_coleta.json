@@ -1,32 +1,76 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-17T10:09:38.831Z",
+  "gerado_em": "2026-07-20T15:34:23.660Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-20T11-40-43-c1b46a08",
+    "coleta_iso": "2026-07-20T11:40:43",
+    "data_humana": "20/07/2026 - 11:40",
+    "arquivo": "data/snapshots/2026-07-20T11-40-43-c1b46a08.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-17T07-08-58-4f07992d",
     "coleta_iso": "2026-07-17T07:08:58",
     "data_humana": "17/07/2026 - 07:08",
-    "arquivo": "data/snapshots/2026-07-17T07-08-58-4f07992d.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-16T17-41-04-f8b31387",
-    "coleta_iso": "2026-07-16T17:41:04",
-    "data_humana": "16/07/2026 - 17:41",
-    "arquivo": "",
-    "origem": "backup_pre_coleta"
+    "arquivo": "data/snapshots/2026-07-17T07-08-58-4f07992d.json",
+    "origem": "chunks"
   },
   "resumo": {
     "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 0,
-    "pendencias_novas": 0,
-    "pendencias_resolvidas": 0,
+    "novas_edicoes_diario": 1,
+    "pendencias_novas": 4,
+    "pendencias_resolvidas": 1,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 0
+    "total_mudancas": 6
   },
-  "itens": [],
+  "itens": [
+    {
+      "tipo": "pendencia_nova",
+      "prioridade": "alta",
+      "titulo": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
+      "detalhe": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
+      "fonte": "sancoes.json"
+    },
+    {
+      "tipo": "nova_edicao_diario",
+      "prioridade": "media",
+      "titulo": "Nova edicao do Diario Oficial 1846",
+      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
+      "data": "2026-07-17",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/"
+    },
+    {
+      "tipo": "pendencia_nova",
+      "prioridade": "media",
+      "titulo": "Pessoal da Prefeitura preservado da ultima base completa",
+      "detalhe": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (4073 servidores) para nao reduzir a cobertura.",
+      "fonte": "pessoal.json"
+    },
+    {
+      "tipo": "pendencia_nova",
+      "prioridade": "media",
+      "titulo": "Fornecedores com sancao vigente aplicada por outros entes",
+      "detalhe": "41 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (93 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "fonte": "sancoes.json"
+    },
+    {
+      "tipo": "pendencia_nova",
+      "prioridade": "media",
+      "titulo": "Licitacao homologada por valor simbolico",
+      "detalhe": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: [Portal de Compras Públicas] - Contratação de empresa para r → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
+      "fonte": "licitacoes_resultados.json"
+    },
+    {
+      "tipo": "pendencia_resolvida",
+      "prioridade": "baixa",
+      "titulo": "Pendencia saiu da fila: Indice parlamentar parcial",
+      "detalhe": "A menor cobertura automatica do indice e 97.2%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.",
+      "fonte": "indice_relevancia.json"
+    }
+  ],
   "avisos": []
 }
