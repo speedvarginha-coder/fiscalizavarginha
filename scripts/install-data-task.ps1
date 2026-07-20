@@ -11,6 +11,8 @@
   [switch]$SkipDeploy,
   [switch]$SkipWhatsApp,
   [switch]$OnlyIfChanged,
+  [switch]$GitSync,
+  [switch]$SkipSlowAudits,
 
   [ValidateSet("Full", "Sapl", "NoHeavy")]
   [string]$CollectorMode = "Full",
@@ -42,6 +44,8 @@ if ($SkipPackage) { $argList += "-SkipPackage" }
 if ($SkipDeploy) { $argList += "-SkipDeploy" }
 if ($SkipWhatsApp) { $argList += "-SkipWhatsApp" }
 if ($OnlyIfChanged) { $argList += "-OnlyIfChanged" }
+if ($GitSync) { $argList += "-GitSync" }
+if ($SkipSlowAudits) { $argList += "-SkipSlowAudits" }
 if ($CollectorMode -ne "Full") {
   $argList += "-CollectorMode"
   $argList += $CollectorMode

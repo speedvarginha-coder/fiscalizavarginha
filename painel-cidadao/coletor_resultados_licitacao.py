@@ -175,6 +175,21 @@ def main() -> int:
                     })
             time.sleep(PAUSA)
 
+    # Guarda-chuva: API do PNCP as vezes devolve pagina vazia numa falha
+    # transitoria SEM levantar excecao (aconteceu em 20/07/2026: coleta que
+    # normalmente leva 12-40min terminou em 29s com 0 compras, sobrescrevendo
+    # silenciosamente 302 registros bons). Se a coleta atual voltou vazia e a
+    # base anterior tinha volume saudavel, preserva a anterior.
+    if len(compras_out) == 0 and OUT_PATH.exists():
+        try:
+            anterior = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            anterior = {}
+        if isinstance(anterior, dict) and (anterior.get("compras") or 0) >= 50:
+            print(f"⚠️ Coleta voltou vazia (0 compras) mas a base anterior tem "
+                  f"{anterior['compras']} — preservando base anterior, nao sobrescrevendo.")
+            return 0
+
     com_resultado = [c for c in compras_out if c["resultados"]]
     payload = {
         "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",

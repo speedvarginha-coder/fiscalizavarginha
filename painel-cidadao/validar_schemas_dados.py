@@ -173,6 +173,28 @@ def _checar_regressao(nome_chunk: str, descricao: str, piso: int, getter):
             )
 
 
+def _checar_regressao_numero(nome_chunk: str, descricao: str, piso: int, getter):
+    """Mesma logica de _checar_regressao, mas para um campo numerico (contagem)
+    em vez de uma lista — caso dos 3 chunks de cruzamento externo, onde o
+    coletor guarda a metrica de cobertura (verificados/eleitos/compras) e nao
+    so a lista de achados (que e naturalmente pequena/varia sem indicar
+    problema). Incidente real que motivou: licitacoes_resultados.json caiu de
+    302 para 0 compras numa coleta que voltou vazia por falha transitoria da
+    API do PNCP, sem excecao — publicado por engano em 20/07/2026."""
+    payload = read_json(CHUNKS / f"{nome_chunk}.json")
+    valor = getter(payload)
+    if not isinstance(valor, (int, float)):
+        raise ValueError(f"{nome_chunk}: {descricao} nao e numerico (tipo {type(valor).__name__})")
+    if valor < piso:
+        texto_bruto = json.dumps(payload, ensure_ascii=False).lower()
+        declarado_parcial = any(p in texto_bruto for p in ("preservad", "parcial", "falha"))
+        if not declarado_parcial:
+            raise ValueError(
+                f"{nome_chunk}: {descricao} e {valor} (esperado >= {piso}) "
+                f"e o chunk nao se declara preservado/parcial — provavel coleta vazia publicada por engano."
+            )
+
+
 def validate_regressoes() -> None:
     _checar_regressao("diarias", "diarias.prefeitura", 500, lambda p: (p or {}).get("prefeitura"))
     _checar_regressao("diarias", "diarias.camara", 30, lambda p: (p or {}).get("camara"))
@@ -183,6 +205,10 @@ def validate_regressoes() -> None:
     _checar_regressao("prefeitura", "prefeitura.contratos", 200, lambda p: (p or {}).get("contratos"))
     _checar_regressao("camara_betha", "camara_betha.top_fornecedores_atual", 5,
                        lambda p: (p or {}).get("top_fornecedores_atual"))
+    _checar_regressao_numero("sancoes", "sancoes.verificados", 500, lambda p: (p or {}).get("verificados"))
+    _checar_regressao_numero("tse_doacoes", "tse_doacoes.eleitos", 10, lambda p: (p or {}).get("eleitos"))
+    _checar_regressao_numero("licitacoes_resultados", "licitacoes_resultados.compras", 50,
+                              lambda p: (p or {}).get("compras"))
 
 
 def main() -> int:

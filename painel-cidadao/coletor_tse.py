@@ -194,6 +194,20 @@ def main() -> int:
         })
         print(f"  ✓ {c.get('nomeUrna')}: {len(cruzados)} doador(es) no ranking")
 
+    # Guarda-chuva: numero de eleitos e fixo entre eleicoes (16 em Varginha) —
+    # se a lista da API do TSE vier vazia/parcial por falha transitoria, nao
+    # sobrescreve uma base anterior completa. Mesma classe de incidente que
+    # ja ocorreu com licitacoes_resultados.json em 20/07/2026.
+    if len(resultado) < 10 and OUT_PATH.exists():
+        try:
+            anterior = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            anterior = {}
+        if isinstance(anterior, dict) and (anterior.get("eleitos") or 0) >= 10:
+            print(f"⚠️ Coleta trouxe so {len(resultado)} eleitos (base anterior tinha "
+                  f"{anterior['eleitos']}) — preservando base anterior, nao sobrescrevendo.")
+            return 0
+
     payload = {
         "fonte": "TSE - DivulgaCandContas (prestacao de contas eleicoes 2024)",
         "gerado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),

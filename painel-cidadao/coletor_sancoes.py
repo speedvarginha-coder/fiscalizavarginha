@@ -210,6 +210,20 @@ def main() -> int:
                     if item not in achados:
                         achados.append(item)
 
+    # Guarda-chuva: se o universo verificado desabar (universo vazio/quebrado
+    # ou API do CGU falhando em bloco), nao sobrescreve uma base saudavel
+    # anterior com achados quase vazios — mesma classe de incidente que
+    # ocorreu com licitacoes_resultados.json em 20/07/2026.
+    if len(universo) < 200 and OUT_PATH.exists():
+        try:
+            anterior = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+        except Exception:
+            anterior = {}
+        if isinstance(anterior, dict) and (anterior.get("verificados") or 0) >= 500:
+            print(f"⚠️ Universo verificado caiu para {len(universo)} (base anterior tinha "
+                  f"{anterior['verificados']}) — preservando base anterior, nao sobrescrevendo.")
+            return 0
+
     vigentes = [a for a in achados if a["sancao_vigente"]]
     payload = {
         "fonte": "Portal da Transparencia (CGU) - CEIS e CNEP",

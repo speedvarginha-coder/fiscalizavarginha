@@ -1,65 +1,37 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-20T20:11:49.824Z",
+  "gerado_em": "2026-07-20T21:05:01.376Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-07-20T16-44-13-22c20dc3",
-    "coleta_iso": "2026-07-20T16:44:13",
-    "data_humana": "20/07/2026 - 16:44",
-    "arquivo": "data/snapshots/2026-07-20T16-44-13-22c20dc3.json"
+    "snapshot_id": "2026-07-20T17-43-02-3d6a634c",
+    "coleta_iso": "2026-07-20T17:43:02",
+    "data_humana": "20/07/2026 - 17:43",
+    "arquivo": "data/snapshots/2026-07-20T17-43-02-3d6a634c.json"
   },
   "anterior": {
-    "snapshot_id": "2026-07-20T14-06-32-2f555de4",
-    "coleta_iso": "2026-07-20T14:06:32",
-    "data_humana": "20/07/2026 - 14:06",
-    "arquivo": "",
-    "origem": "backup_pre_coleta"
+    "snapshot_id": "2026-07-20T17-43-02-22c20dc3",
+    "coleta_iso": "2026-07-20T17:43:02",
+    "data_humana": "20/07/2026 - 17:43",
+    "arquivo": "data/snapshots/2026-07-20T17-43-02-22c20dc3.json",
+    "origem": "chunks"
   },
   "resumo": {
-    "novos_contratos": 2,
+    "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 1,
-    "pendencias_novas": 0,
-    "pendencias_resolvidas": 1,
+    "novas_edicoes_diario": 0,
+    "pendencias_novas": 1,
+    "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 2964603.5,
+    "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 4
+    "total_mudancas": 1
   },
   "itens": [
     {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 170/2023 - SERVICOS CFC LTDA",
-      "detalhe": "CONT. DE SERV. DE LIMPEZA E CONSERVACAO",
-      "orgao": "Prefeitura",
-      "data": "2023-12-01",
-      "valor_brl": 2964603.49,
-      "alvo_id": "PREFEITURA-2023-170"
-    },
-    {
-      "tipo": "nova_edicao_diario",
+      "tipo": "pendencia_nova",
       "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1847",
-      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-07-20",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 84/2024 - CLX PRODUCOES LTDA",
-      "detalhe": "Contratação de empresa para a realização da tradicional FEIRA DA PAZ, nos dias 31/07, 01 E 02/08/2026",
-      "orgao": "Prefeitura",
-      "data": "2026-07-17",
-      "valor_brl": 0.01,
-      "alvo_id": "PREFEITURA-2024-84"
-    },
-    {
-      "tipo": "pendencia_resolvida",
-      "prioridade": "baixa",
-      "titulo": "Pendencia saiu da fila: Licitacao homologada por valor simbolico",
+      "titulo": "Licitacao homologada por valor simbolico",
       "detalhe": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: [Portal de Compras Públicas] - Contratação de empresa para r → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
       "fonte": "licitacoes_resultados.json"
     }
