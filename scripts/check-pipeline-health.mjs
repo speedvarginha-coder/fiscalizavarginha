@@ -14,6 +14,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -21,6 +22,45 @@ const chunksDir = path.join(root, "painel-cidadao", "data", "chunks");
 const stateDir = path.join(root, "private", "state");
 const heartbeatPath = path.join(stateDir, "pipeline_heartbeat.json");
 const alertaPath = path.join(stateDir, "alerta_operacional.json");
+const whatsappConfigPath = path.join(root, "private", "whatsapp_config.json");
+
+// Numero pessoal (nao o grupo publico) para receber ESTE alerta operacional.
+// Reusa a mesma bridge Evolution API ja conectada e usada pelo canal publico.
+const NUMERO_ALERTA_PESSOAL = "5535991101580";
+
+async function enviarAlertaWhatsapp(texto) {
+  const config = readJson(whatsappConfigPath);
+  if (!config?.api_url || !config?.token || !config?.instance_id) return false;
+  try {
+    const resp = await fetch(`${config.api_url}/message/sendText/${config.instance_id}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: config.token },
+      body: JSON.stringify({
+        number: NUMERO_ALERTA_PESSOAL,
+        options: { delay: 1200, presence: "composing" },
+        textMessage: { text: texto },
+      }),
+    });
+    return resp.ok;
+  } catch {
+    return false;
+  }
+}
+
+// E-mail e o canal de alerta que nao depende da bridge do WhatsApp — se a
+// propria bridge cair, o e-mail ainda chega. Delega para um script Python
+// (smtplib, stdlib) que le private/email_config.json.
+function enviarAlertaEmail(assunto, corpo) {
+  const script = path.join(__dirname, "enviar-email-alerta.py");
+  if (!fs.existsSync(script)) return false;
+  for (const py of ["python", "py", "python3"]) {
+    const r = spawnSync(py, [script, assunto, corpo], { encoding: "utf8" });
+    if (r.error) continue; // interpretador nao encontrado — tenta o proximo
+    if (r.stderr) process.stderr.write(r.stderr);
+    return r.status === 0;
+  }
+  return false;
+}
 
 const modo = process.argv.includes("--registrar") ? "registrar" : "checar";
 const tarefa = (process.argv.find((a) => a.startsWith("--tarefa=")) || "").split("=")[1] || "desconhecida";
@@ -97,6 +137,13 @@ if (problemas.length) {
   for (const p of problemas) console.log(`  - ${p}`);
   console.log(`  Registrado em: ${alertaPath}`);
   console.log("");
+  // Um alerta que so mora num arquivo local nao ajuda se ninguem for olhar
+  // o arquivo — dispara nos dois canais privados (nao o grupo publico).
+  const texto = `🚨 Fiscaliza Varginha — alerta operacional (tarefa: ${tarefa})\n\n${problemas.join("\n\n")}`;
+  const enviadoWpp = await enviarAlertaWhatsapp(texto);
+  console.log(enviadoWpp ? "Alerta enviado ao WhatsApp pessoal." : "AVISO: falha ao enviar alerta ao WhatsApp pessoal (ver arquivo local).");
+  const enviadoEmail = enviarAlertaEmail("🚨 Fiscaliza Varginha — alerta operacional", texto);
+  console.log(enviadoEmail ? "Alerta enviado por e-mail." : "AVISO: falha ao enviar alerta por e-mail (ver config/senha SMTP).");
 } else if (fs.existsSync(alertaPath)) {
   // Limpa alerta antigo assim que a saude normalizar, para nao confundir
   // quem checar o arquivo mais tarde com um problema ja resolvido.
