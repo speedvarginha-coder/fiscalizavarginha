@@ -138,10 +138,13 @@ if (problemas.length) {
   console.log(`  Registrado em: ${alertaPath}`);
   console.log("");
   // Um alerta que so mora num arquivo local nao ajuda se ninguem for olhar
-  // o arquivo — dispara nos dois canais privados (nao o grupo publico).
+  // o arquivo — dispara por e-mail (canal privado, separado do grupo publico).
+  // E-mail e o canal escolhido por ser resiliente: chega mesmo se a bridge do
+  // WhatsApp estiver fora do ar, que e justamente quando o alerta mais importa.
+  // (O envio por WhatsApp foi descartado: DM da bridge para numero proprio nao
+  // e entregue de forma confiavel — ver enviarAlertaWhatsapp, mantido para uso
+  // futuro caso um grupo privado dedicado seja configurado.)
   const texto = `🚨 Fiscaliza Varginha — alerta operacional (tarefa: ${tarefa})\n\n${problemas.join("\n\n")}`;
-  const enviadoWpp = await enviarAlertaWhatsapp(texto);
-  console.log(enviadoWpp ? "Alerta enviado ao WhatsApp pessoal." : "AVISO: falha ao enviar alerta ao WhatsApp pessoal (ver arquivo local).");
   const enviadoEmail = enviarAlertaEmail("🚨 Fiscaliza Varginha — alerta operacional", texto);
   console.log(enviadoEmail ? "Alerta enviado por e-mail." : "AVISO: falha ao enviar alerta por e-mail (ver config/senha SMTP).");
 } else if (fs.existsSync(alertaPath)) {
