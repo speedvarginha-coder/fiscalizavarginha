@@ -654,25 +654,46 @@ document.addEventListener('zela:ready', function () {
   } catch (e) { /* silencioso */ }
 });
 
-/* ── Hub números ao vivo ── */
-document.addEventListener('zela:ready', function () {
-  var D  = window.ZELA_DATA || {};
-  var pf = D.prefeitura || {};
-  var cb = D.camara_betha || {};
+/* ── Hub números ao vivo ──
+   Na home o chunk "prefeitura" (4.4 MB) é carregado ADIADO, depois do zela:ready
+   (ver data-loader.js: DEFER "home": ["prefeitura"]). Por isso não basta ouvir
+   zela:ready uma vez — quando ele dispara, prefeitura ainda está vazio e os KPIs
+   ficariam em "—". A função abaixo tenta imediatamente e re-tenta a cada evento
+   de dados (zela:ready E zela:chunk), em window E document, até o dado real chegar. */
+(function () {
   function brl(v) {
     if (!v) return '—';
     return 'R$ ' + (Number(v)/1e6).toFixed(1).replace('.',',') + ' mi';
   }
   function n(v) { return v ? Number(v).toLocaleString('pt-BR') : '—'; }
-  var total = pf.total_externo_atual;
-  document.getElementById('hnTotal').textContent     = total ? brl(total) : '—';
-  document.getElementById('hnContratos').textContent = n((pf.contratos || []).length || pf.total_contratos);
-  document.getElementById('hnObras').textContent     = n((pf.obras || []).length || pf.total_obras);
-  // Sinais: conta registros com sinais
-  var sinais = 0;
-  (pf.top_fornecedores_atual || []).forEach(function(f){ if(f.sinais && f.sinais.length) sinais += f.sinais.length; });
-  document.getElementById('hnSinais').textContent = sinais || '—';
-});
+  function preencherHubNumeros() {
+    var pf = (window.ZELA_DATA || {}).prefeitura || {};
+    if (!pf.total_externo_atual) return false; // dado ainda não chegou
+    var elTotal  = document.getElementById('hnTotal');
+    var elContr  = document.getElementById('hnContratos');
+    var elObras  = document.getElementById('hnObras');
+    var elSinais = document.getElementById('hnSinais');
+    if (elTotal)  elTotal.textContent  = brl(pf.total_externo_atual);
+    if (elContr)  elContr.textContent  = n((pf.contratos || []).length || pf.total_contratos);
+    if (elObras)  elObras.textContent  = n((pf.obras_publicas || []).length || pf.total_obras);
+    // Sinais de atenção: emendas parlamentares cujo beneficiário (CNPJ) recebeu
+    // pagamento da prefeitura — dinheiro que efetivamente saiu para beneficiário
+    // de emenda. É ponto de partida para investigação, não prova de irregularidade.
+    if (elSinais) {
+      var sinais = (pf.emendas_cruzadas || []).filter(function (e) {
+        return (e.valor_pago_total || 0) > 0;
+      }).length;
+      elSinais.textContent = sinais || '—';
+    }
+    return true;
+  }
+  if (!preencherHubNumeros()) {
+    ['zela:ready', 'zela:chunk'].forEach(function (ev) {
+      window.addEventListener(ev, preencherHubNumeros);
+      document.addEventListener(ev, preencherHubNumeros);
+    });
+  }
+})();
 
 /* ── E: Badges "hoje" nos hub items com dados recentes ─────────── */
 document.addEventListener('zela:ready', function () {
