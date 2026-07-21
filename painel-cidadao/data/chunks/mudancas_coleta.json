@@ -1,42 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-20T23:11:09.454Z",
+  "gerado_em": "2026-07-21T09:07:37.481Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-21T06-06-56-74ac9548",
+    "coleta_iso": "2026-07-21T06:06:56",
+    "data_humana": "21/07/2026 - 06:06",
+    "arquivo": "data/snapshots/2026-07-21T06-06-56-74ac9548.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-20T17-43-02-3d6a634c",
     "coleta_iso": "2026-07-20T17:43:02",
     "data_humana": "20/07/2026 - 17:43",
-    "arquivo": "data/snapshots/2026-07-20T17-43-02-3d6a634c.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-20T17-43-02-22c20dc3",
-    "coleta_iso": "2026-07-20T17:43:02",
-    "data_humana": "20/07/2026 - 17:43",
-    "arquivo": "data/snapshots/2026-07-20T17-43-02-22c20dc3.json",
-    "origem": "chunks"
+    "arquivo": "",
+    "origem": "backup_pre_coleta"
   },
   "resumo": {
     "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
-    "pendencias_novas": 1,
+    "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 1
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "pendencia_nova",
-      "prioridade": "media",
-      "titulo": "Licitacao homologada por valor simbolico",
-      "detalhe": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: [Portal de Compras Públicas] - Contratação de empresa para r → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
-      "fonte": "licitacoes_resultados.json"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }
-
-

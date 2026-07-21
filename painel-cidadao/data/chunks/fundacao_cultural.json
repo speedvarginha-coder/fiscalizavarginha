@@ -51,6 +51,18 @@
         "registros": 1
       },
       {
+        "nome": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "cnpj": "05.852.571/****-**",
+        "valor_total": 10000.0,
+        "registros": 1
+      },
+      {
+        "nome": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "cnpj": "14.137.358/****-**",
+        "valor_total": 10000.0,
+        "registros": 1
+      },
+      {
         "nome": "BLOCO VIUVAS VIRGENS",
         "cnpj": "55.862.497/****-**",
         "valor_total": 10000.0,
@@ -77,18 +89,6 @@
       {
         "nome": "GREMIO RECREATIVO ESCOLA DE SAMBA UNIDOS DA VILA MENDES",
         "cnpj": "41.885.021/****-**",
-        "valor_total": 10000.0,
-        "registros": 1
-      },
-      {
-        "nome": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "cnpj": "14.137.358/****-**",
-        "valor_total": 10000.0,
-        "registros": 1
-      },
-      {
-        "nome": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "cnpj": "05.852.571/****-**",
         "valor_total": 10000.0,
         "registros": 1
       },
@@ -720,10 +720,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 23,
+        "numero": 24,
         "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -775,10 +775,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 24,
+        "numero": 19,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "BLOCO VIUVAS VIRGENS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -786,10 +786,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 19,
+        "numero": 23,
         "orgao": "ADMINISTRACAO",
-        "credor": "BLOCO VIUVAS VIRGENS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -34751,6 +34751,18 @@
       },
       {
         "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "Contador",
+        "numero": 15095,
+        "quantidade": 1.0,
+        "valor_total": 664.5,
+        "periodo": "15-05-2026 a 16-05-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Visita técnica às rádios: Rádio CDL, Rádio 98 FM, Rádio Estrada Real FM e TV 98 News para análise de viabilidade do projeto de integração da Rádio Melodia FM com a TV Princesa \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$ 180,00 = R$ 360,00\nHOSPEDAGEM: R$ 304,50",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
         "funcionario": "FABIANO PEREIRA ARANTES",
         "cargo": "DIRETOR DA RADIO MELODIA",
         "numero": 15096,
@@ -34766,18 +34778,6 @@
         "funcionario": "GIL NOGUEIRA DE PAULA JUNIOR",
         "cargo": "Operador de Audio e Estudio",
         "numero": 15097,
-        "quantidade": 1.0,
-        "valor_total": 664.5,
-        "periodo": "15-05-2026 a 16-05-2026",
-        "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Visita técnica às rádios: Rádio CDL, Rádio 98 FM, Rádio Estrada Real FM e TV 98 News para análise de viabilidade do projeto de integração da Rádio Melodia FM com a TV Princesa \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$ 180,00 = R$ 360,00\nHOSPEDAGEM: R$ 304,50",
-        "fonte": "Betha Fundação Cultural - Diárias"
-      },
-      {
-        "ano": "2026",
-        "funcionario": "EDER JERONIMO DA SILVA",
-        "cargo": "Contador",
-        "numero": 15095,
         "quantidade": 1.0,
         "valor_total": 664.5,
         "periodo": "15-05-2026 a 16-05-2026",

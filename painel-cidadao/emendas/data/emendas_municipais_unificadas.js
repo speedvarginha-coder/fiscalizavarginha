@@ -1,6 +1,6 @@
 window.EMENDAS_MUNICIPAIS_UNIFICADAS = {
  "metadata": {
-  "geradoEm": "2026-07-20T20:43:12.739553+00:00",
+  "geradoEm": "2026-07-21T09:07:06.870099+00:00",
   "fonte": "Histórico Betha (até 2024) + SAPL/Câmara (2025 em diante)",
   "criterioDeduplicacao": "número/ano da emenda; SAPL é canônico a partir de 2025",
   "totalRegistros": 581,

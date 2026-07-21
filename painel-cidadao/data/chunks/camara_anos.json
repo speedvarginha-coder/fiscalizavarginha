@@ -158,8 +158,8 @@
         "nome_rua": 22,
         "homenagens_terceiros": 9,
         "outros": 9,
-        "presenca_pct": 98.8,
-        "presenca_presentes": 85,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 86,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -177,8 +177,8 @@
         "nome_rua": 25,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 94.2,
-        "presenca_presentes": 81,
+        "presenca_pct": 95.3,
+        "presenca_presentes": 82,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -196,8 +196,8 @@
         "nome_rua": 31,
         "homenagens_terceiros": 3,
         "outros": 5,
-        "presenca_pct": 97.7,
-        "presenca_presentes": 84,
+        "presenca_pct": 98.8,
+        "presenca_presentes": 85,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -234,8 +234,8 @@
         "nome_rua": 20,
         "homenagens_terceiros": 7,
         "outros": 8,
-        "presenca_pct": 98.8,
-        "presenca_presentes": 85,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 86,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -253,8 +253,8 @@
         "nome_rua": 11,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 93.0,
-        "presenca_presentes": 80,
+        "presenca_pct": 94.2,
+        "presenca_presentes": 81,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -272,8 +272,8 @@
         "nome_rua": 19,
         "homenagens_terceiros": 3,
         "outros": 3,
-        "presenca_pct": 98.8,
-        "presenca_presentes": 85,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 86,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -291,8 +291,8 @@
         "nome_rua": 7,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 94.2,
-        "presenca_presentes": 81,
+        "presenca_pct": 95.3,
+        "presenca_presentes": 82,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -310,8 +310,8 @@
         "nome_rua": 28,
         "homenagens_terceiros": 2,
         "outros": 3,
-        "presenca_pct": 93.0,
-        "presenca_presentes": 80,
+        "presenca_pct": 94.2,
+        "presenca_presentes": 81,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -348,8 +348,8 @@
         "nome_rua": 27,
         "homenagens_terceiros": 4,
         "outros": 5,
-        "presenca_pct": 96.5,
-        "presenca_presentes": 83,
+        "presenca_pct": 97.7,
+        "presenca_presentes": 84,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -367,8 +367,8 @@
         "nome_rua": 14,
         "homenagens_terceiros": 1,
         "outros": 2,
-        "presenca_pct": 98.8,
-        "presenca_presentes": 85,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 86,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -424,8 +424,8 @@
         "nome_rua": 0,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 96.5,
-        "presenca_presentes": 83,
+        "presenca_pct": 97.7,
+        "presenca_presentes": 84,
         "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
@@ -443,8 +443,8 @@
         "nome_rua": 0,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 94.4,
-        "presenca_presentes": 51,
+        "presenca_pct": 96.3,
+        "presenca_presentes": 52,
         "presenca_elegiveis": 54,
         "presenca_janela": "2025-01-01 a 2025-08-22"
       },
@@ -462,8 +462,8 @@
         "nome_rua": 0,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 98.1,
-        "presenca_presentes": 53,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 54,
         "presenca_elegiveis": 54,
         "presenca_janela": "2025-01-01 a 2025-08-22"
       }
@@ -31328,7 +31328,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-07-20T17:32:50-03:00"
+    "coletado_em": "2026-07-21T05:59:17-03:00"
   },
   "2026": {
     "resumo": {
@@ -47329,6 +47329,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5125"
       }
     ],
-    "coletado_em": "2026-07-20T17:32:50-03:00"
+    "coletado_em": "2026-07-21T05:59:17-03:00"
   }
 }
