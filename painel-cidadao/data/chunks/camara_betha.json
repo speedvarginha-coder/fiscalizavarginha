@@ -1,7 +1,7 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6802241.78,
+  "total_externo_atual": 6831158.23,
   "total_externo_anterior": 8404647.51,
   "empenhos_qtd": 3098,
   "top_fornecedores_atual": [
@@ -26,6 +26,11 @@
       "qtd": 1
     },
     {
+      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+      "valor_total": 333881.91,
+      "qtd": 28
+    },
+    {
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
       "valor_total": 316929.0,
       "qtd": 6
@@ -41,11 +46,6 @@
       "qtd": 2
     },
     {
-      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 280890.87,
-      "qtd": 24
-    },
-    {
       "nome": "RONALDO MENDES-ME",
       "valor_total": 214999.2,
       "qtd": 2
@@ -57,8 +57,8 @@
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 158030.56,
-      "qtd": 20
+      "valor_total": 133955.97,
+      "qtd": 15
     },
     {
       "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
@@ -1144,5 +1144,5 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
   ],
-  "coletado_em": "2026-07-21T06:05:52-03:00"
+  "coletado_em": "2026-07-21T09:34:03-03:00"
 }

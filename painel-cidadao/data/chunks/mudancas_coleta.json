@@ -1,32 +1,73 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-21T09:07:37.481Z",
+  "gerado_em": "2026-07-21T13:05:29.268Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-21T09-34-57-39488b84",
+    "coleta_iso": "2026-07-21T09:34:57",
+    "data_humana": "21/07/2026 - 09:34",
+    "arquivo": "data/snapshots/2026-07-21T09-34-57-39488b84.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-21T06-06-56-74ac9548",
     "coleta_iso": "2026-07-21T06:06:56",
     "data_humana": "21/07/2026 - 06:06",
-    "arquivo": "data/snapshots/2026-07-21T06-06-56-74ac9548.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-20T17-43-02-3d6a634c",
-    "coleta_iso": "2026-07-20T17:43:02",
-    "data_humana": "20/07/2026 - 17:43",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 0,
+    "novos_contratos": 4,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 0,
+    "valor_novo_brl": 405614.95,
     "valor_delta_brl": 0,
-    "total_mudancas": 0
+    "total_mudancas": 4
   },
-  "itens": [],
+  "itens": [
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 25/2025 - CARBONI ARTES GRAFICAS LTDA",
+      "detalhe": "Registro de preços para fornecimento de placas de inauguração.",
+      "orgao": "Prefeitura",
+      "data": "2025-02-12",
+      "valor_brl": 396840,
+      "alvo_id": "PREFEITURA-2025-25"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - RM COMERCIO DE MERCADORIAS E MATERIAIS LTDA",
+      "detalhe": "A aquisição de torneiras com fechamento automático e duchas com instalação - UPA",
+      "orgao": "Prefeitura",
+      "data": "2026-07-21",
+      "valor_brl": 5864.04,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/0 - COFLEX PAULISTA METALURGICA E ACESSORIOS HIDRAULICOS LTDA",
+      "detalhe": "A aquisição de torneiras com fechamento automático e duchas com instalação - UPA",
+      "orgao": "Prefeitura",
+      "data": "2026-07-21",
+      "valor_brl": 2910.9,
+      "alvo_id": "PREFEITURA-0-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 84/2026 - CLX PRODUCOES LTDA",
+      "detalhe": "Contratação de empresa para a realização da tradicional FEIRA DA PAZ, nos dias 31/07, 01 E 02/08/2026",
+      "orgao": "Prefeitura",
+      "data": "2026-07-17",
+      "valor_brl": 0.01,
+      "alvo_id": "PREFEITURA-2026-84"
+    }
+  ],
   "avisos": []
 }
