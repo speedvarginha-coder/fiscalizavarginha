@@ -225,6 +225,43 @@ function Invoke-SourceProbe {
   }
 }
 
+function Test-LockOrfao {
+  # Decide se o lock ficou orfao — dono morreu sem liberar.
+  # Checar apenas "o PID existe" NAO basta: o Windows RECICLA numeros de PID.
+  # Em 22/07/2026 o PID gravado no lock aparecia vivo, mas era um
+  # "node ./mcp/server.mjs" iniciado 1h36 DEPOIS do lock — o dono real ja tinha
+  # morrido. O teste confiavel compara o INICIO DO PROCESSO com o nascimento do
+  # lock: quem criou o lock necessariamente comecou antes dele.
+  # Retorna $false em qualquer duvida (nao da para ler, outra maquina, sem
+  # permissao) — ai vale a regra de idade, que continua como rede de seguranca.
+  param([string]$Caminho, [datetime]$Nascimento)
+
+  try {
+    $conteudo = (Get-Content -LiteralPath $Caminho -Raw -ErrorAction Stop).Trim()
+  } catch {
+    return $false
+  }
+  $partes = $conteudo -split '\|'
+  if ($partes.Count -lt 2) { return $false }
+
+  $donoPid = 0
+  if (-not [int]::TryParse($partes[0], [ref]$donoPid)) { return $false }
+
+  # Lock de outra maquina: nao da para inspecionar o processo daqui.
+  if ($partes[1] -and $partes[1] -ne $env:COMPUTERNAME) { return $false }
+
+  $proc = Get-Process -Id $donoPid -ErrorAction SilentlyContinue
+  if (-not $proc) { return $true }   # dono morreu -> orfao
+
+  try {
+    # Margem de 5s cobre granularidade de relogio/arquivo.
+    if ($proc.StartTime -gt $Nascimento.AddSeconds(5)) { return $true }  # PID reciclado
+  } catch {
+    return $false   # sem permissao para ler StartTime
+  }
+  return $false   # dono vivo e legitimo: respeitar
+}
+
 function Acquire-Lock {
   for ($attempt = 0; $attempt -lt 2; $attempt++) {
     $token = "{0}|{1}|{2}|{3}" -f $PID, $env:COMPUTERNAME, (Get-Date).ToUniversalTime().ToString("o"), ([guid]::NewGuid())
@@ -240,11 +277,26 @@ function Acquire-Lock {
       return $token
     } catch [System.IO.IOException] {
       if (-not (Test-Path -LiteralPath $lockPath)) { continue }
-      $lockAge = (Get-Date) - (Get-Item -LiteralPath $lockPath).LastWriteTime
-      if ($lockAge.TotalHours -lt 3) {
+      $nascimento = (Get-Item -LiteralPath $lockPath).LastWriteTime
+      $lockAge = (Get-Date) - $nascimento
+
+      # Duas portas para assumir o lock:
+      #  1) IDENTIDADE (imediata): o dono morreu ou o PID foi reciclado. Resolve
+      #     em segundos, sem esperar horas com o pipeline parado.
+      #  2) IDADE (rede de seguranca): quando a identidade e indeterminavel
+      #     (nao deu para ler o lock, outra maquina, sem permissao).
+      # Em 22/07/2026 um ciclo morreu sem liberar o lock e, so pela regra de
+      # idade, o pipeline ficaria travado por ate 4h — a vigia dispara no minuto
+      # :24 e o lock vencia 15s depois, entao ela pulava mais uma vez.
+      $orfao = Test-LockOrfao -Caminho $lockPath -Nascimento $nascimento
+      if (-not $orfao -and $lockAge.TotalHours -lt 3) {
         throw "Outra coleta parece estar em andamento. Lock: $lockPath"
       }
-      Write-Log "Lock antigo detectado; tentando remover com seguranca."
+      if ($orfao) {
+        Write-Log "Lock orfao detectado (dono morto ou PID reciclado); assumindo."
+      } else {
+        Write-Log "Lock antigo detectado (mais de 3h); tentando remover com seguranca."
+      }
       $staleStream = New-Object System.IO.FileStream($lockPath, [System.IO.FileMode]::Open, [System.IO.FileAccess]::ReadWrite, [System.IO.FileShare]::None, 4096, [System.IO.FileOptions]::DeleteOnClose)
       $staleStream.Dispose()
     }
