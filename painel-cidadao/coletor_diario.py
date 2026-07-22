@@ -268,6 +268,33 @@ _EXERCICIO_RE = re.compile(
 )
 
 
+_TIPO_DESPESA_RE = re.compile(r"(?i)DESPESA\s+DO\s+TIPO\s*:?\s*([A-ZÁÂÃÉÊÍÓÔÕÚÇ]+)")
+_SEM_REFLEXO_RE = re.compile(r"(?i)(?:impacto|despesa)[^\n:]{0,60}?(20\d{2})\s*[:\-]\s*sem\s+reflexo")
+
+
+def _perfil_da_despesa(trecho: str) -> dict:
+    """Diz se a despesa ACABA ou se REPETE todo ano — muda o sentido do numero.
+
+    A LRF (art. 16) obriga declarar o impacto do exercicio de vigencia e dos
+    dois seguintes. Isso e formalidade legal, NAO o prazo do contrato. Somar os
+    anos declarados e chamar de "total comprometido" so faz sentido quando a
+    despesa termina (tipo EXTRAORDINARIA, com um exercicio final "sem reflexo").
+    Numa despesa CONTINUADA o valor se repete indefinidamente: apresentar a soma
+    de 2 anos como total SUBDIMENSIONA o compromisso — o erro oposto ao que
+    queriamos corrigir. Entao aqui so classificamos; quem rotula e o bot.
+    """
+    tipo = ""
+    m = _TIPO_DESPESA_RE.search(trecho)
+    if m:
+        bruto = m.group(1).upper()
+        if bruto.startswith("CONTINUAD"):
+            tipo = "continuada"
+        elif bruto.startswith("EXTRAORDINARI") or bruto.startswith("EXTRAORDINÁRI"):
+            tipo = "extraordinaria"
+    anos_sem_reflexo = sorted({m.group(1) for m in _SEM_REFLEXO_RE.finditer(trecho)})
+    return {"tipo": tipo, "encerra_em": anos_sem_reflexo}
+
+
 def _valores_por_exercicio(trecho: str) -> list[dict]:
     """Captura o impacto ano a ano quando o ato compromete varios exercicios.
 
@@ -302,6 +329,7 @@ def _extrai_valores(trecho: str) -> dict:
         "confianca": "media" if len(vals) == 1 else "indisponivel",
         "periodicidade": _periodicidade_do_valor(trecho, bruto_do_unico) if unico is not None else "",
         "por_exercicio": _valores_por_exercicio(trecho),
+        "perfil_despesa": _perfil_da_despesa(trecho),
     }
 
 

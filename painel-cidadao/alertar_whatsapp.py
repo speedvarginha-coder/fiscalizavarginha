@@ -437,6 +437,8 @@ def resolver_valor_publicacao(pub: dict, escopo: str) -> dict | None:
             "periodicidade": valores.get("periodicidade") or "",
             # Impacto ano a ano, quando o ato compromete varios exercicios.
             "por_exercicio": valores.get("por_exercicio") or [],
+            # Se a despesa acaba ou se repete todo ano — muda o sentido da soma.
+            "perfil_despesa": valores.get("perfil_despesa") or {},
         }
 
     if explicitos:
@@ -497,16 +499,33 @@ def bloco_valor_publicacao(pub: dict, escopo: str) -> str:
     # Ato plurianual: mostrar o quadro inteiro. Exibir so o primeiro exercicio
     # subdimensiona o compromisso — a LEI 7.595 parecia R$ 250 mil quando o
     # total era R$ 689.812,00 (250 mil em 2026 + 439,8 mil em 2027).
+    # O que a lei declara sao os exercicios exigidos pela LRF (art. 16): o de
+    # vigencia e os dois seguintes. Isso e formalidade legal, NAO o prazo do
+    # contrato — por isso o rotulo muda conforme o tipo da despesa. Somar e
+    # chamar de "total" so e honesto quando a despesa comprovadamente ACABA.
     exercicios = resolvido.get("por_exercicio") or []
     if len(exercicios) > 1:
         detalhe = " + ".join(
             f"{formatar_valor(e.get('valor'))} em {e.get('ano')}" for e in exercicios
         )
-        total_comprometido = sum(
+        bloco += f"\n- Impacto declarado (LRF art. 16): {detalhe}"
+        perfil = resolvido.get("perfil_despesa") or {}
+        tipo = str(perfil.get("tipo") or "")
+        anos_declarados = {str(e.get("ano")) for e in exercicios}
+        # "Encerra" só vale se o exercício sem reflexo vier DEPOIS dos que têm valor.
+        encerra = [a for a in (perfil.get("encerra_em") or []) if a > max(anos_declarados, default="")]
+        soma = sum(
             e.get("valor") or 0 for e in exercicios if isinstance(e.get("valor"), (int, float))
         )
-        bloco += f"\n- Impacto por exercício: {detalhe}"
-        bloco += f"\n- Total comprometido: {formatar_valor(total_comprometido)}"
+        if tipo == "continuada":
+            bloco += (
+                "\n- Despesa continuada: o valor se repete nos exercícios seguintes, "
+                "não é gasto único — o compromisso total é maior que a soma acima"
+            )
+        elif tipo == "extraordinaria" and encerra:
+            bloco += f"\n- Despesa extraordinária, sem reflexo em {encerra[0]} — total: {formatar_valor(soma)}"
+        else:
+            bloco += f"\n- Soma dos exercícios declarados: {formatar_valor(soma)} (pode não ser o total do contrato)"
     if resolvido.get("pagina"):
         bloco += f"\n- Onde conferir: página {resolvido['pagina']} do documento"
     elif resolvido.get("link_verificacao"):
