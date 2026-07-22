@@ -129,6 +129,41 @@ if (horasDesdeSucesso !== null && horasDesdeSucesso > LIMITE_SUCESSO_HORAS) {
   );
 }
 
+// (C) Defasagem por fonte: as diarias da Prefeitura (consulta Betha 83059) podem
+// parar de coletar (ex.: HTTP 406 no export CSV do lado da Betha) enquanto o resto
+// do pipeline segue saudavel — antes isso rotava em silencio. O carimbo
+// meta.prefeitura.atualizado_em (gravado por coletor.py) so avanca quando a fonte
+// e coletada com sucesso. Dedup: no maximo um e-mail a cada 24h para esta condicao,
+// para nao spammar na vigia horaria enquanto a Betha nao normaliza.
+const LIMITE_DIARIAS_DIAS = 4;
+const diariasStaleStatePath = path.join(stateDir, "diarias_stale_alerta.json");
+const diarias = readJson(path.join(chunksDir, "diarias.json"));
+const diariasPrefTs = diarias?.meta?.prefeitura?.atualizado_em || null;
+const diasDesdeDiariasPref = diariasPrefTs
+  ? (agora - new Date(diariasPrefTs)) / 86_400_000
+  : null;
+if (diasDesdeDiariasPref !== null && diasDesdeDiariasPref > LIMITE_DIARIAS_DIAS) {
+  const dedup = readJson(diariasStaleStatePath);
+  const horasDesdeAlerta = dedup?.alertado_em
+    ? (agora - new Date(dedup.alertado_em)) / 3_600_000
+    : null;
+  if (horasDesdeAlerta === null || horasDesdeAlerta >= 24) {
+    problemas.push(
+      `Diarias da Prefeitura sem coleta bem-sucedida ha ${diasDesdeDiariasPref.toFixed(1)} dias ` +
+      `(limite ${LIMITE_DIARIAS_DIAS}). Ultima OK: ${diariasPrefTs}. A consulta Betha 83059 pode estar ` +
+      "recusando o export (HTTP 406) — os dados antigos seguem preservados, mas sem atualizar. Checar private/logs/."
+    );
+    writeJson(diariasStaleStatePath, { alertado_em: agora.toISOString(), dias: diasDesdeDiariasPref });
+  } else {
+    console.log(
+      `Diarias da Prefeitura defasadas (${diasDesdeDiariasPref.toFixed(1)}d) — alerta ja enviado ha ` +
+      `${horasDesdeAlerta.toFixed(1)}h; nao reenviando (dedup 24h).`
+    );
+  }
+} else if (fs.existsSync(diariasStaleStatePath)) {
+  fs.rmSync(diariasStaleStatePath, { force: true });
+}
+
 if (problemas.length) {
   const alerta = {
     gerado_em: agora.toISOString(),

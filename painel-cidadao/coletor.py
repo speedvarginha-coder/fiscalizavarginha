@@ -2211,6 +2211,11 @@ def main() -> int:
         # _save gravava um diarias.json vazio por cima de milhares de
         # registros bons (ja aconteceu: 5709 registros -> 0 em producao).
         existente_diarias = _load_existing("diarias.json", {})
+        meta_ant = existente_diarias.get("meta") if isinstance(existente_diarias, dict) else {}
+        meta_ant = meta_ant if isinstance(meta_ant, dict) else {}
+        agora_iso = dt.datetime.now().isoformat(timespec="seconds")
+        # Sucesso da coleta de cada fonte NESTE ciclo (antes do preserve sobrescrever).
+        coletou = {org: len(diarias.get(org, [])) > 0 for org in ("prefeitura", "camara")}
         for org in ("prefeitura", "camara"):
             novos = diarias.get(org, [])
             antigos = existente_diarias.get(org, []) if isinstance(existente_diarias, dict) else []
@@ -2220,6 +2225,22 @@ def main() -> int:
                 if antigo_resumo:
                     diarias.setdefault("resumo", {})[org] = antigo_resumo
                 print(f"  ! Diarias {org}: coleta vazia; preservando base anterior ({len(antigos)} registros)")
+        # Carimbo de frescor por fonte: 'atualizado_em' avanca SO quando a fonte foi
+        # coletada com sucesso neste ciclo; caso contrario herda o anterior e registra
+        # 'ultima_falha'. Permite alerta de defasagem por fonte (ex.: 406 nas diarias da
+        # Prefeitura enquanto a Camara segue ok). Consumido por check-pipeline-health.mjs.
+        meta = {}
+        for org in ("prefeitura", "camara"):
+            ant = meta_ant.get(org) if isinstance(meta_ant.get(org), dict) else {}
+            if coletou[org]:
+                meta[org] = {"atualizado_em": agora_iso, "ok": True}
+            else:
+                meta[org] = {
+                    "atualizado_em": (ant or {}).get("atualizado_em"),
+                    "ok": False,
+                    "ultima_falha": agora_iso,
+                }
+        diarias["meta"] = meta
         if diarias.get("prefeitura") or diarias.get("camara"):
             _save("diarias.json", diarias)
         else:
