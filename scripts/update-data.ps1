@@ -234,6 +234,44 @@ function Acquire-Lock {
   throw "Nao foi possivel adquirir lock exclusivo: $lockPath"
 }
 
+function Clear-StaleGitLock {
+  # Um git commit/push que morre (ex.: crash libuv) deixa .git/index.lock, que
+  # trava TODAS as rodadas seguintes ate intervencao manual (foi o que causou
+  # ~10h de pipeline parado). Remove o lock apenas quando e seguro: nenhum
+  # processo git ativo E o lock nao e recente (evita atropelar um git em curso).
+  $gitLock = Join-Path $root ".git\index.lock"
+  if (-not (Test-Path -LiteralPath $gitLock)) { return }
+  $gitAtivo = Get-Process -Name git -ErrorAction SilentlyContinue
+  if ($gitAtivo) {
+    Write-Log "Aviso: .git/index.lock presente com git ativo; nao removido."
+    return
+  }
+  $idadeMin = ((Get-Date) - (Get-Item -LiteralPath $gitLock).LastWriteTime).TotalMinutes
+  if ($idadeMin -ge 5) {
+    Write-Log ("Auto-heal: removendo .git/index.lock orfao (idade {0}min, nenhum git ativo)." -f [math]::Round($idadeMin))
+    Remove-Item -LiteralPath $gitLock -Force -ErrorAction SilentlyContinue
+  } else {
+    Write-Log ("Aviso: .git/index.lock recente ({0}min) sem git ativo; aguardando proxima rodada." -f [math]::Round($idadeMin))
+  }
+}
+
+function Restore-DeletedTrackedData {
+  # Auto-cura: recupera arquivos versionados de dados que um ciclo anterior
+  # deixou apagados (ex.: crash no meio do rollback Remove->Copy, que apagou 9
+  # arquivos em 21/07). Restaura APENAS delecoes de arquivos rastreados (nao
+  # mexe em modificados nem em novos), e roda sob o lock exclusivo de coleta.
+  try {
+    $deleted = & git -C $root ls-files --deleted -- painel-cidadao/data painel-cidadao/emendas/data 2>$null
+    $lista = @($deleted | Where-Object { $_ -and $_.Trim() })
+    if ($lista.Count -gt 0) {
+      Write-Log ("Auto-heal: restaurando {0} arquivo(s) de dados apagados por ciclo anterior." -f $lista.Count)
+      & git -C $root checkout HEAD -- $lista 2>&1 | Out-Null
+    }
+  } catch {
+    Write-Log "Aviso: auto-heal de dados apagados falhou: $_"
+  }
+}
+
 if ($SkipPackage -and -not $SkipDeploy) {
   throw "Deploy bloqueado: -SkipPackage exige -SkipDeploy, pois somente pacote validado no mesmo ciclo pode ser publicado."
 }
@@ -255,6 +293,14 @@ try {
 try {
   $collectionStatus = "EM_ANDAMENTO"
   Write-Log "Iniciando coleta automatica."
+
+  # Auto-cura de sujeira deixada por um ciclo anterior que crashou (sob lock
+  # exclusivo, entao e seguro): 1) remove .git/index.lock orfao; 2) recupera
+  # arquivos de dados que ficaram apagados. Ordem importa — a restauracao usa
+  # git, que falharia se o index.lock orfao ainda estivesse presente.
+  Clear-StaleGitLock
+  Restore-DeletedTrackedData
+
   Write-Log "Projeto: $root"
   Write-Log "Modo do coletor: $CollectorMode$(if ($SkipSlowAudits) { ' (vigia rapida — sem CEIS/CNEP/TSE/licitacoes)' })"
 
