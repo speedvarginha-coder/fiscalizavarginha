@@ -164,6 +164,38 @@ if (diasDesdeDiariasPref !== null && diasDesdeDiariasPref > LIMITE_DIARIAS_DIAS)
   fs.rmSync(diariasStaleStatePath, { force: true });
 }
 
+// (C2) Falha do WhatsApp: a sessao do bridge pode cair (aconteceu em 20 e 21/07) e
+// exigir novo pareamento por QR Code. Nesse estado o bot faz a coisa certa — detecta
+// no healthcheck, NAO envia e preserva a fila — mas o resto do pipeline segue
+// "saudavel" e ninguem era avisado, entao o grupo ficava mudo em silencio.
+// Alerta assim que um ciclo reporta whatsapp=FALHA, com dedup de 24h (a condicao
+// persiste ate alguem reparear). PULADO nao alerta aqui: significa que a coleta
+// falhou antes, e isso ja e coberto pelos alertas de coleta acima.
+const whatsappFalhaStatePath = path.join(stateDir, "whatsapp_falha_alerta.json");
+const ultimoResultado = readJson(path.join(stateDir, "pipeline_last_result.json"));
+const whatsappStatus = ultimoResultado?.whatsapp || null;
+if (whatsappStatus === "FALHA") {
+  const dedupWa = readJson(whatsappFalhaStatePath);
+  const horasDesdeAlertaWa = dedupWa?.alertado_em
+    ? (agora - new Date(dedupWa.alertado_em)) / 3_600_000
+    : null;
+  if (horasDesdeAlertaWa === null || horasDesdeAlertaWa >= 24) {
+    problemas.push(
+      "Alertas do WhatsApp falharam no ultimo ciclo (whatsapp=FALHA). Causa tipica: a sessao do " +
+      "bridge caiu e precisa ser pareada de novo pelo QR Code em " +
+      "https://whatsapp.fiscalizavarginha.com.br — a fila de mensagens fica preservada ate reconectar."
+    );
+    writeJson(whatsappFalhaStatePath, { alertado_em: agora.toISOString(), status: whatsappStatus });
+  } else {
+    console.log(
+      `WhatsApp em FALHA — alerta ja enviado ha ${horasDesdeAlertaWa.toFixed(1)}h; ` +
+      "nao reenviando (dedup 24h)."
+    );
+  }
+} else if (fs.existsSync(whatsappFalhaStatePath)) {
+  fs.rmSync(whatsappFalhaStatePath, { force: true });
+}
+
 if (problemas.length) {
   const alerta = {
     gerado_em: agora.toISOString(),
