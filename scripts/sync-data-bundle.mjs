@@ -23,12 +23,26 @@ const keys = [
   "diario",
   "fundacao_cultural",
   "mudancas_coleta",
+  "monitoramento_coletas",
   "cnpjs",
   "status_fontes",
 ];
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+function writeFileWithRetry(filePath, content) {
+  const retryableCodes = new Set(["EBUSY", "EPERM", "EACCES", "UNKNOWN"]);
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    try {
+      fs.writeFileSync(filePath, content, "utf8");
+      return;
+    } catch (error) {
+      if (!retryableCodes.has(error?.code) || attempt === 7) throw error;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 125 * (attempt + 1));
+    }
+  }
 }
 
 function parseDataJs(text) {
@@ -52,13 +66,12 @@ for (const key of keys) {
   synced.push(key);
 }
 
-fs.writeFileSync(
+writeFileWithRetry(
   dataJsPath,
   "/* Gerado por coletor.py — não editar à mão. */\n"
     + "window.ZELA_DATA = "
     + JSON.stringify(data, null, 2)
     + ";\n",
-  "utf8",
 );
 
 const manifest = fs.existsSync(manifestPath) ? readJson(manifestPath) : {};
@@ -88,6 +101,6 @@ manifest.snapshots = {
     }];
   })),
 };
-fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n", "utf8");
+writeFileWithRetry(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 
 console.log(`data.js sincronizado: ${synced.join(", ") || "nenhum chunk auxiliar"}`);

@@ -226,7 +226,10 @@
       "Bash(rm -f pop-emendas.jpeg)",
       "Bash(pkill -f \"http.server 4332\")",
       "Bash(node -e \"for\\(const f of ['sancoes_fornecedores','remuneracao_vereadores','auditoria_dados']\\){try{const d=require\\('./painel-cidadao/data/chunks/'+f+'.json'\\);const k=Array.isArray\\(d\\)?'array len '+d.length:Object.keys\\(d\\).slice\\(0,6\\).join\\(','\\);console.log\\(f+': '+k\\)}catch\\(e\\){console.log\\(f+': ERRO '+e.message\\)}}\")",
-      "Bash(node -e \"const d=require\\('./painel-cidadao/data/chunks/prefeitura.json'\\);console.log\\('keys:',Object.keys\\(d\\).slice\\(0,10\\).join\\(','\\)\\)\")"
+      "Bash(node -e \"const d=require\\('./painel-cidadao/data/chunks/prefeitura.json'\\);console.log\\('keys:',Object.keys\\(d\\).slice\\(0,10\\).join\\(','\\)\\)\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://www.fiscalizavarginha.com.br)",
+      "Bash(curl -s -I https://www.fiscalizavarginha.com.br)",
+      "Bash(curl -s https://www.fiscalizavarginha.com.br/data/manifest.json)"
     ]
   }
 }

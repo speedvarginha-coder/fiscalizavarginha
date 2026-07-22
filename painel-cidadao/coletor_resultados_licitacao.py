@@ -45,23 +45,36 @@ MODALIDADES = (6, 7, 4, 5, 8, 9)
 JANELA_MESES = 8
 MAX_ITENS_POR_COMPRA = 20
 PAUSA = 0.25
+TENTATIVAS = 3
+BACKOFF_SEGUNDOS = 2.0
 # Homologação simbólica: valor irrisório com estimativa relevante.
 LIMIAR_SIMBOLICO = 10.0
 LIMIAR_ESTIMADO = 50000.0
 
 
 def _get(url: str, timeout: int = 30):
-    req = urllib.request.Request(url, headers={
-        "Accept": "application/json",
-        "User-Agent": "FiscalizaVarginha/1.0 (controle-social)",
-    })
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        if r.status == 204:
-            return None
-        return json.loads(r.read().decode("utf-8", errors="replace"))
+    ultimo_erro: Exception | None = None
+    for tentativa in range(1, TENTATIVAS + 1):
+        req = urllib.request.Request(url, headers={
+            "Accept": "application/json",
+            "User-Agent": "FiscalizaVarginha/1.0 (controle-social)",
+        })
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                if r.status == 204:
+                    return None
+                return json.loads(r.read().decode("utf-8", errors="replace"))
+        except Exception as exc:
+            ultimo_erro = exc
+            if tentativa < TENTATIVAS:
+                espera = BACKOFF_SEGUNDOS * tentativa
+                print(f"    tentativa {tentativa}/{TENTATIVAS} falhou; nova tentativa em {espera:.0f}s")
+                time.sleep(espera)
+    raise ultimo_erro or RuntimeError("Falha desconhecida ao consultar PNCP")
 
 
-def _listar_contratacoes(cnpj: str, data_ini: str, data_fim: str) -> list[dict]:
+def _listar_contratacoes(cnpj: str, data_ini: str, data_fim: str,
+                         erros: list[str]) -> list[dict]:
     todas: list[dict] = []
     for modalidade in MODALIDADES:
         pagina = 1
@@ -77,7 +90,9 @@ def _listar_contratacoes(cnpj: str, data_ini: str, data_fim: str) -> list[dict]:
             try:
                 payload = _get(f"{API}/consulta/v1/contratacoes/publicacao?{params}")
             except Exception as e:
-                print(f"  ! contratacoes {cnpj} mod {modalidade} pg {pagina}: {e}")
+                msg = f"contratacoes {cnpj} mod {modalidade} pg {pagina}: {e}"
+                erros.append(msg)
+                print(f"  ! {msg}")
                 break
             regs = (payload or {}).get("data") or []
             todas.extend(regs)
@@ -125,9 +140,15 @@ def main() -> int:
     compras_out: list[dict] = []
     simbolicas: list[dict] = []
     erros: list[str] = []
+    anterior: dict = {}
+    if OUT_PATH.exists():
+        try:
+            anterior = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+        except Exception as exc:
+            erros.append(f"base anterior ilegivel: {exc}")
 
     for cnpj, nome_orgao in ORGAOS.items():
-        contratacoes = _listar_contratacoes(cnpj, data_ini, data_fim)
+        contratacoes = _listar_contratacoes(cnpj, data_ini, data_fim, erros)
         # Cinto e suspensorio: se a API voltar a ignorar o filtro de orgao,
         # registros de outros entes NAO podem entrar na base publicada.
         antes = len(contratacoes)
@@ -175,20 +196,43 @@ def main() -> int:
                     })
             time.sleep(PAUSA)
 
-    # Guarda-chuva: API do PNCP as vezes devolve pagina vazia numa falha
+    # Guarda-chuva: a API do PNCP pode devolver poucas paginas em falhas
     # transitoria SEM levantar excecao (aconteceu em 20/07/2026: coleta que
     # normalmente leva 12-40min terminou em 29s com 0 compras, sobrescrevendo
     # silenciosamente 302 registros bons). Se a coleta atual voltou vazia e a
     # base anterior tinha volume saudavel, preserva a anterior.
-    if len(compras_out) == 0 and OUT_PATH.exists():
-        try:
-            anterior = json.loads(OUT_PATH.read_text(encoding="utf-8"))
-        except Exception:
-            anterior = {}
-        if isinstance(anterior, dict) and (anterior.get("compras") or 0) >= 50:
-            print(f"⚠️ Coleta voltou vazia (0 compras) mas a base anterior tem "
-                  f"{anterior['compras']} — preservando base anterior, nao sobrescrevendo.")
-            return 0
+    total_anterior = int(anterior.get("compras") or 0) if isinstance(anterior, dict) else 0
+    coleta_suspeita = bool(erros) and total_anterior >= 50 and len(compras_out) < max(50, total_anterior * 0.5)
+    if coleta_suspeita:
+        preservado = dict(anterior)
+        preservado["status"] = "preserved"
+        preservado["ultima_tentativa_em"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        preservado["motivo_preservacao"] = (
+            f"PNCP retornou apenas {len(compras_out)} de {total_anterior} compras anteriores "
+            "apos repeticoes; a ultima base valida foi mantida para evitar perda de dados."
+        )
+        preservado["erros_ultima_tentativa"] = erros[:20]
+        _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
+        _tmp.write_text(json.dumps(preservado, ensure_ascii=False, indent=2), encoding="utf-8")
+        os.replace(_tmp, OUT_PATH)
+        print(f"⚠️ Coleta parcial ({len(compras_out)}/{total_anterior}); base anterior preservada.")
+        return 0
+
+    # Se algumas modalidades falharam, conserva os registros ainda dentro da
+    # janela que nao reapareceram na tentativa atual. O registro atual vence
+    # pelo numeroControlePNCP e a saida fica explicitamente marcada como parcial.
+    if erros and isinstance(anterior, dict):
+        limite_iso = datetime.strptime(data_ini, "%Y%m%d").strftime("%Y-%m-%d")
+        por_controle = {
+            str(r.get("controle_pncp") or ""): r
+            for r in anterior.get("registros") or []
+            if str(r.get("data_publicacao") or "") >= limite_iso and r.get("controle_pncp")
+        }
+        for registro in compras_out:
+            controle = str(registro.get("controle_pncp") or "")
+            if controle:
+                por_controle[controle] = registro
+        compras_out = list(por_controle.values())
 
     com_resultado = [c for c in compras_out if c["resultados"]]
     payload = {
@@ -205,6 +249,12 @@ def main() -> int:
         "homologacoes_simbolicas": simbolicas,
         "registros": compras_out,
         "erros": erros[:20],
+        "status": "partial" if erros else "ok",
+        "qualidade_coleta": {
+            "tentativas_por_requisicao": TENTATIVAS,
+            "falhas": len(erros),
+            "base_anterior_preservada": bool(erros and total_anterior),
+        },
     }
     _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
     _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

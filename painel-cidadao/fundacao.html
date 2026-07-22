@@ -14,7 +14,7 @@
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Fundação Cultural · Fiscaliza Varginha">
 <meta name="twitter:description" content="Contratos, despesas e execução da Fundação Cultural de Varginha-MG.">
-<link rel="stylesheet" href="style.css?v=20260627b">
+<link rel="stylesheet" href="style.css?v=20260721c">
 </head>
 <body data-page="fundacao">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -120,10 +120,16 @@
       </div>
     </section>
 
-    <section id="fundacaoCruzamento" class="block">
-      <h3 class="block__title">Fornecedores que atendem várias esferas</h3>
-      <p class="block__lead">Empresas com contrato na Fundação que <strong>também aparecem na Prefeitura ou na Câmara</strong>. Concentração entre esferas não é irregularidade — mas é um bom ponto de partida para conferir preços, objeto e justificativa. Ordenado pelo total somado.</p>
-      <div id="fundacaoCruzamentoLista" class="forn-list"></div>
+    <section id="fundacaoCruzamento" class="block block--cross-suppliers">
+      <div class="cross-heading">
+        <span class="cross-heading__icon" aria-hidden="true">⇄</span>
+        <div>
+          <p class="cross-heading__kicker">CRUZAMENTO ENTRE ÓRGÃOS</p>
+          <h3 class="block__title">Fornecedores que atendem várias esferas</h3>
+          <p class="block__lead">Empresas com contrato na Fundação que <strong>também aparecem na Prefeitura ou na Câmara</strong>. Isso não indica irregularidade: serve para comparar preços, objetos e justificativas.</p>
+        </div>
+      </div>
+      <div id="fundacaoCruzamentoLista" class="cross-supplier-grid"></div>
     </section>
 
     <section id="fundacaoLicitacoes" class="block">

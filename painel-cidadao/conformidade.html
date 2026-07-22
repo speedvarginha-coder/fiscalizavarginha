@@ -175,6 +175,7 @@
       <a href="index.html"      class="nav__link">Início</a>
       <a href="atualizacoes.html" class="nav__link">Atualizações</a>
       <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="fundacao.html" class="nav__link">Fundação</a>
       <a href="camara.html"     class="nav__link">Câmara</a>
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
@@ -190,16 +191,17 @@
   <div class="container">
     <p class="breadcrumb"><a href="index.html">← Voltar ao início</a></p>
 
-    <h1 class="section__title">Painel de Conformidade Legal</h1>
+    <h1 class="section__title">Transparência e qualidade dos dados</h1>
     <p class="section__lead" style="text-align: justify;">
-      <strong>A publicidade dos atos públicos não é uma concessão política, é um imperativo constitucional.</strong> 
-      O ordenamento jurídico brasileiro proíbe terminantemente o ocultamento do gasto público e a gestão de dados em "caixas-pretas". 
-      Operando sob inteligência de dados, o <strong>Fiscaliza Varginha</strong> atua como uma malha fina cívica: cruzamos, em tempo real, as exigências da Lei com as bases de dados oficiais da Administração Municipal, revelando matematicamente o grau de conformidade — ou de omissão — da gestão pública.
+      <strong>A publicidade é um princípio constitucional e permite que qualquer pessoa acompanhe a gestão pública.</strong>
+      O <strong>Fiscaliza Varginha</strong> organiza bases oficiais e identifica lacunas documentais que merecem conferência.
+      Uma ausência no painel pode significar dado não publicado, falha de coleta, diferença de identificação ou documento disponível em outra fonte.
+      Por isso, nenhum alerta é apresentado como prova automática de ilegalidade ou responsabilidade de uma pessoa.
     </p>
 
     <div class="ift-panel">
-      <h2>Índice Fiscaliza de Transparência (IFT)</h2>
-      <p>Mede o grau de conformidade dos órgãos públicos com as principais obrigações legais.<br>
+      <h2>Indicador de qualidade da informação (IFT)</h2>
+      <p>Resume a completude, a atualidade e os problemas detectados nas bases coletadas pelo painel.<br>
         <span id="iftAtualizado">Calculado automaticamente a partir da auditoria de dados da última coleta.</span></p>
 
       <div class="ift-score">
@@ -207,8 +209,9 @@
         <span style="font-size:1.5rem; opacity:0.6; margin-top:20px;">/ 100</span>
       </div>
       <p id="iftMetodologia" class="muted small" style="opacity:0.75; margin-top:8px;">
-        Metodologia: pontuação parte de 100 e desconta 15 pontos por erro e 5 por aviso
-        apontados pela auditoria automática (<code>auditoria_dados.json</code>), executada a cada coleta.
+        Metodologia: a pontuação parte de 100 e desconta 15 pontos por erro técnico e 5 por aviso
+        registrados em <code>auditoria_dados.json</code>. A nota avalia a base disponível ao painel;
+        não certifica a legalidade do órgão nem substitui auditoria dos órgãos de controle.
       </p>
 
       <div style="margin: 32px auto 0; padding-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.2); text-align: left; max-width: 800px;">
@@ -224,9 +227,39 @@
         </ul>
         <p class="muted small" style="opacity:0.7; margin-top:14px;">
           Cada achado traz o botão <strong>“Copiar pedido de informação”</strong>: o texto sai pronto para
-          colar no <a href="https://www.varginha.mg.gov.br/portal/sic" target="_blank" rel="noopener" style="color: var(--gold);">e-SIC da Prefeitura</a> (Lei 12.527/2011 — resposta em até 20 dias).
+          colar no <a href="https://www.varginha.mg.gov.br/portal/sic" target="_blank" rel="noopener" style="color: var(--gold);">e-SIC da Prefeitura</a>.
+          Pela Lei 12.527/2011, o acesso deve ser imediato quando possível; caso contrário, o órgão tem até 20 dias,
+          prorrogáveis por mais 10 mediante justificativa expressa.
         </p>
       </div>
+    </div>
+
+    <div class="block" style="margin:40px 0;">
+      <h2 class="block__title">Compromissos de justiça dos dados</h2>
+      <div class="conformidade-grid">
+        <div class="sobre-card">
+          <h3>Mesma régua para todos</h3>
+          <p>Prefeitura, Câmara, agentes públicos e fornecedores são avaliados pelos mesmos critérios documentais, sem distinção partidária.</p>
+        </div>
+        <div class="sobre-card sobre-card--teal">
+          <h3>Ausência não é culpa</h3>
+          <p>“Não localizado” significa apenas que o vínculo não foi encontrado nas fontes consultadas. Pode haver documento em outra base ou erro de integração.</p>
+        </div>
+        <div class="sobre-card sobre-card--gold">
+          <h3>Direito de correção</h3>
+          <p>Dados contestados devem ser revistos com documento verificável. Correções preservam a fonte, a data e a justificativa da mudança.</p>
+        </div>
+        <div class="sobre-card">
+          <h3>Proporcionalidade</h3>
+          <p>Valores altos, sanções e cruzamentos são sinais de prioridade para conferência, não rótulos sobre pessoas ou organizações.</p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:18px;">
+        Encontrou um dado incorreto ou um documento que completa a informação?
+        <a href="mailto:speed.varginha@gmail.com?subject=Pedido%20de%20corre%C3%A7%C3%A3o%20de%20dado%20-%20Fiscaliza%20Varginha&body=Link%20ou%20se%C3%A7%C3%A3o%20do%20painel%3A%0A%0ADado%20a%20corrigir%3A%0A%0AFonte%20ou%20documento%20comprobat%C3%B3rio%3A%0A%0AObserva%C3%A7%C3%A3o%3A">
+          Envie um pedido de correção com a fonte comprobatória
+        </a>. A revisão deve registrar o documento, a data e o motivo da alteração.
+      </p>
     </div>
 
     <div class="conformidade-grid">
@@ -238,13 +271,13 @@
         </h2>
         <h3>Princípio da Publicidade</h3>
         
-        <h4>O Imperativo Constitucional</h4>
-        <p>A espinha dorsal do Estado Democrático. O caput do Artigo 37 estabelece que o sigilo na administração pública é uma anomalia jurídica. A <strong>Publicidade é regra inegociável</strong>. O gestor não possui a prerrogativa de escolher o que divulgar; ele tem o dever constitucional de submeter cada centavo orçamentário ao escrutínio irrestrito e imediato da sociedade.</p>
+        <h4>O princípio constitucional</h4>
+        <p>O artigo 37 inclui a publicidade entre os princípios da administração pública. O acesso, porém, convive com limites legais de sigilo e proteção de dados pessoais. O painel acompanha informações de interesse coletivo e preserva dados pessoais quando necessário.</p>
         
         <h4>Como o Fiscaliza Atua</h4>
         <ul>
-          <li><strong>Mapeamento Contínuo:</strong> Rastreamos os portais oficiais em busca de falhas ou atrasos na publicação de atos.</li>
-          <li><strong>Garantia do Princípio:</strong> Transformamos dados brutos e planilhas complexas em informação clara, devolvendo o poder de fiscalização ao cidadão.</li>
+          <li><strong>Mapeamento contínuo:</strong> consultamos portais oficiais e registramos atualização, cobertura e falhas de coleta.</li>
+          <li><strong>Linguagem cidadã:</strong> transformamos bases técnicas em informação compreensível e ligada à fonte original.</li>
         </ul>
         
         <div class="status-box">
@@ -261,18 +294,18 @@
         </h2>
         <h3>Lei da Transparência</h3>
         
-        <h4>A Régua do "Tempo Real"</h4>
-        <p>O fim da contabilidade atrasada. A Lei Complementar 131 exige rastreabilidade financeira imediata. A prefeitura é terminantemente obrigada a expor detalhadamente suas movimentações de despesa em <strong>tempo real</strong>. O crivo da Lei (regulado pelo Decreto Federal 7.185/10) é cristalino: o limite máximo para publicação expira no <strong>primeiro dia útil subsequente</strong> ao lançamento contábil. Atrasar essa divulgação configura violação sistêmica.</p>
+        <h4>O que significa “tempo real”</h4>
+        <p>O Decreto Federal 10.540/2020 define a disponibilização em tempo real como aquela feita até o <strong>primeiro dia útil subsequente ao registro contábil</strong>. O painel mede a data que consegue observar na fonte; divergências devem ser confirmadas com o órgão, pois a data de coleta pode não ser a data do registro contábil.</p>
         
         <h4>O que o Nosso Robô Vigia</h4>
         <ul>
-          <li><strong>Empenhos e Pagamentos:</strong> Disparamos alertas quando despesas milionárias aparecem sem lastro em contratos públicos.</li>
-          <li><strong>Janela de 24 horas:</strong> Identificamos defasagens e atrasos suspeitos na atualização do Portal da Transparência municipal.</li>
+          <li><strong>Empenhos e pagamentos:</strong> sinalizamos despesas sem contrato vinculado automaticamente.</li>
+          <li><strong>Atualidade:</strong> mostramos a idade da base e possíveis defasagens, sem confundir falha de coleta com omissão do órgão.</li>
         </ul>
         
         <div class="status-box status-box--alert">
           <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          Alerta: Despesas identificadas sem contrato base vinculado.
+          Atenção: despesas sem contrato vinculado automaticamente; conferir outras formas de contratação e fontes.
         </div>
       </div>
 
@@ -284,22 +317,22 @@
         </h2>
         <h3>Nova Lei de Licitações</h3>
         
-        <h4>O Filtro de Validade Contratual</h4>
-        <p>A publicidade como pressuposto de validade legal. Segundo a Nova Lei de Licitações (Lei 14.133/21), um contrato público assinado <strong>é nulo de eficácia jurídica perante terceiros</strong> enquanto permanecer fora do Portal Nacional de Contratações Públicas (PNCP). O legislador cravou um cronograma inflexível e obrigatório para o gestor:</p>
+        <h4>Publicação e eficácia contratual</h4>
+        <p>O artigo 94 da Lei 14.133/2021 estabelece que a divulgação no PNCP é condição indispensável para a eficácia do contrato e de seus aditamentos, observadas as regras e exceções legais:</p>
         <ul>
           <li><strong>20 dias úteis:</strong> Prazo limite para publicação de contratos oriundos de licitação padrão.</li>
           <li><strong>10 dias úteis:</strong> Prazo limite (e redobrado) para compras feitas de forma direta, via dispensa ou inexigibilidade de licitação.</li>
         </ul>
         
-        <h4>A Nossa Malha Fina</h4>
+        <h4>O que o painel consegue verificar</h4>
         <ul>
-          <li>Cruzamos a data de assinatura com a data de publicação no PNCP. Se o prazo for quebrado, nosso painel expõe a falha.</li>
-          <li>Monitoramos o abuso de "Dispensa de Licitação", exigindo que a exceção não vire a regra.</li>
+          <li>Comparamos datas somente quando assinatura e publicação estão disponíveis nas fontes consultadas.</li>
+          <li>Dispensa e inexigibilidade são formas previstas em lei; o painel prioriza a conferência da justificativa, do preço e dos documentos.</li>
         </ul>
         
         <div class="status-box status-box--alert">
           <svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          Alerta: Data de publicação ocultada na base municipal.
+          Atenção: data de publicação não localizada na base consultada; confirmar no PNCP e no processo original.
         </div>
       </div>
 
@@ -311,8 +344,8 @@
         </h2>
         <h3>Lei de Acesso à Informação</h3>
         
-        <h4>O Direito Inalienável de Auditar</h4>
-        <p>A quebra definitiva da burocracia do sigilo. É prerrogativa máxima de qualquer cidadão exigir, <strong>sem qualquer necessidade de justificar o motivo</strong>, o inteiro teor de contratos, empenhos, folhas de pagamento e laudos de medição governamentais. A máquina pública possui o limite legal de <strong>20 dias</strong> para fornecer a documentação irrestrita. O silêncio ou a omissão configuram infração gravíssima.</p>
+        <h4>O direito de pedir informação</h4>
+        <p>Qualquer interessado pode pedir informação pública sem explicar o motivo. O acesso deve ser imediato quando a informação estiver disponível. Caso isso não seja possível, o órgão deve responder em até <strong>20 dias</strong>, com possibilidade de prorrogação por mais 10 dias mediante justificativa expressa. O acesso pode ser total ou parcial, respeitando sigilos legais e a proteção de dados pessoais.</p>
       </div>
     </div>
 
@@ -330,7 +363,7 @@
           <tbody>
             <tr>
               <td>Atualização financeira no Portal da Transparência</td>
-              <td>Decreto 7.185/10 (LC 131)</td>
+              <td>Decreto 10.540/20 (LC 131/LRF)</td>
               <td><strong>1 dia útil</strong> após o registro contábil</td>
             </tr>
             <tr>
@@ -361,10 +394,10 @@
     <div class="disclaimer-box">
       <strong style="font-size: 1.15rem; display: flex; align-items: center; gap: 8px;">
         <svg style="width:20px;height:20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-        Salva-Guarda Jurídica e Limitação de Responsabilidade
+        Como interpretar este painel
       </strong>
-      <p>O escopo deste painel é o processamento estrito de metadados extraídos mecanicamente dos repositórios oficiais da Administração Pública Municipal e instâncias federais de controle (PNCP). O <em>Índice Fiscaliza de Transparência (IFT)</em> é um indicativo analítico-sistêmico concebido exclusivamente para fins de educação cívica e balizamento social da informação.</p>
-      <p>Os selos de "Alerta" ou "Desconformidade" refletem unicamente ausências paramétricas nas tabelas de dados abertos (como ocultação de datas-chave, divergência de chaves de ligação de empenhos ou quebras de prazos lógicos de publicidade). <strong>Eles não configuram, sob nenhuma hipótese, julgamento de mérito, imputação de crime, dolo, fraude ou improbidade administrativa</strong> — prerrogativas absolutas do Ministério Público e do Poder Judiciário. A nossa ferramenta expõe a anomalia documental da máquina pública; a presunção de inocência dos agentes públicos permanece intacta até o trânsito em julgado de processos legais correspondentes.</p>
+      <p>O painel processa dados obtidos em repositórios oficiais e bases públicas auxiliares. O <em>IFT</em> resume a qualidade da informação que chegou ao painel: atualidade, completude e consistência técnica.</p>
+      <p>Os selos de atenção refletem lacunas ou cruzamentos automatizados. <strong>Não representam julgamento de legalidade, intenção, culpa, fraude ou improbidade.</strong> Antes de divulgar um nome ou uma conclusão, confira CNPJ, período, documento original, alcance da sanção e eventual resposta do órgão ou da parte mencionada.</p>
     </div>
 
   </div>
@@ -441,7 +474,39 @@
 
   // ===== IFT dinâmico: calculado da auditoria automática de dados =====
   (function () {
-    const ESIC = "https://www.varginha.mg.gov.br/portal/sic";
+    const CANAL_PREFEITURA = "https://www.varginha.mg.gov.br/portal/sic";
+    const CANAL_CAMARA = "https://www.varginha.mg.leg.br/institucional/ouvidoria";
+
+    const FONTES = {
+      "atualizado_em.json": { label: "Atualização da coleta", url: "monitoramento.html", destinatario: "Prefeitura de Varginha", canal: CANAL_PREFEITURA },
+      "prefeitura.json": { label: "Portal Betha — Prefeitura", url: "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==", destinatario: "Prefeitura de Varginha", canal: CANAL_PREFEITURA },
+      "camara_betha.json": { label: "Portal Betha — Câmara", url: "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812", destinatario: "Câmara Municipal de Varginha", canal: CANAL_CAMARA },
+      "fontes_emendas_2026.json": { label: "Fontes de emendas 2026", url: "emendas/index.html", destinatario: "Câmara Municipal de Varginha", canal: CANAL_CAMARA },
+      "pessoal.json": { label: "Folhas de pessoal", url: "pessoal.html", destinatario: "órgão responsável pela folha", canal: "cobrar.html" },
+      "pncp.json": { label: "Portal Nacional de Contratações Públicas", url: "https://pncp.gov.br/", destinatario: "órgão contratante", canal: "cobrar.html" },
+      "cnpjs.json": { label: "Base auxiliar de CNPJ", url: "sobre.html#auditoriaDados", destinatario: "órgão contratante", canal: "cobrar.html" },
+      "sancoes.json": { label: "CEIS/CNEP — Portal da Transparência", url: "https://portaldatransparencia.gov.br/sancoes/consulta", destinatario: "órgão contratante", canal: "cobrar.html" },
+      "licitacoes_resultados.json": { label: "Resultados de licitações", url: "prefeitura.html", destinatario: "órgão contratante", canal: "cobrar.html" },
+      "indice_relevancia.json": { label: "Índice de relevância parlamentar", url: "camara.html", destinatario: "Câmara Municipal de Varginha", canal: CANAL_CAMARA }
+    };
+
+    function esc(valor) {
+      return String(valor == null ? "" : valor)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function fonteInfo(item) {
+      return FONTES[item.source] || {
+        label: item.source || "Fonte não identificada",
+        url: "sobre.html#auditoriaDados",
+        destinatario: "órgão responsável",
+        canal: "cobrar.html"
+      };
+    }
 
     function fmtData(iso) {
       try {
@@ -451,8 +516,9 @@
     }
 
     function pedidoLAI(item) {
+      const fonte = fonteInfo(item);
       return (
-        "À Ouvidoria / Serviço de Informação ao Cidadão da Prefeitura de Varginha-MG\n\n" +
+        "À Ouvidoria / Serviço de Informação ao Cidadão do(a) " + fonte.destinatario + "\n\n" +
         "Com fundamento na Lei Federal nº 12.527/2011 (Lei de Acesso à Informação), " +
         "solicito as informações abaixo, em formato aberto e legível por máquina, " +
         "no prazo legal de 20 dias:\n\n" +
@@ -462,7 +528,8 @@
         "do apontamento acima (contratos, empenhos, justificativas e datas de publicação " +
         "correspondentes), conforme recomendação: " + (item.action || "prestar esclarecimentos") + "\n\n" +
         "Dispenso a necessidade de justificar este pedido, nos termos do art. 10, §3º, da LAI.\n" +
-        "Fonte do apontamento: painel Fiscaliza Varginha (dados abertos oficiais), auditoria de " + fmtData(item._geradoEm) + "."
+        "Fonte consultada pelo painel: " + fonte.label + " (" + fonte.url + ").\n" +
+        "Auditoria gerada em " + fmtData(item._geradoEm) + "."
       );
     }
 
@@ -492,10 +559,26 @@
         }
         ul.innerHTML = items.map(function (i, idx) {
           const cor = i.severity === "error" ? "#ff6b6b" : "var(--gold)";
+          const fonte = fonteInfo(i);
+          const verificacao = i.verification || null;
+          const verificacaoHtml = verificacao ? (
+            '<span style="display:block;margin-top:5px;font-size:.86em;">' +
+            '<strong>Estado:</strong> ' + esc(verificacao.estado || "nao informado") +
+            ' · <strong>Confiança:</strong> ' + esc(verificacao.confianca || "nao informada") +
+            ' · <strong>Método:</strong> ' + esc(verificacao.metodo || "nao informado") +
+            '</span>' +
+            (Array.isArray(verificacao.limitacoes) && verificacao.limitacoes.length
+              ? '<span style="display:block;font-size:.82em;opacity:.78;">Limitação: ' + esc(verificacao.limitacoes.join("; ")) + '</span>'
+              : '')
+          ) : '';
           return (
             '<li style="margin-bottom:14px;position:relative;padding-left:20px;">' +
             '<span style="position:absolute;left:0;color:' + cor + ';">•</span>' +
-            "<strong>" + i.title + ":</strong> " + i.detail + " " +
+            "<strong>" + esc(i.title) + ":</strong> " + esc(i.detail) + " " +
+            '<span style="display:block;margin-top:5px;font-size:.86em;opacity:.82;">Fonte: ' +
+            '<a href="' + esc(fonte.url) + '" target="_blank" rel="noopener">' + esc(fonte.label) + '</a>' +
+            (i.source ? ' · arquivo: <code>' + esc(i.source) + '</code>' : '') + '</span>' +
+            verificacaoHtml +
             '<button type="button" class="ift-lai-btn" data-idx="' + idx + '" ' +
             'style="margin-left:6px;padding:2px 10px;border-radius:6px;border:1px solid var(--gold);' +
             'background:transparent;color:var(--gold);cursor:pointer;font-size:0.85em;">Copiar pedido de informação</button>' +
@@ -508,11 +591,12 @@
           if (!btn) return;
           const item = items[Number(btn.dataset.idx)];
           if (!item) return;
+          const fonte = fonteInfo(item);
           item._geradoEm = a.gerado_em;
           const texto = pedidoLAI(item);
           navigator.clipboard.writeText(texto).then(function () {
-            btn.textContent = "Copiado! Abra o e-SIC e cole";
-            setTimeout(function () { window.open(ESIC, "_blank", "noopener"); }, 400);
+            btn.textContent = "Copiado! Abra o canal e cole";
+            setTimeout(function () { window.open(fonte.canal, "_blank", "noopener"); }, 400);
             setTimeout(function () { btn.textContent = "Copiar pedido de informação"; }, 6000);
           }).catch(function () {
             window.prompt("Copie o pedido abaixo e cole no e-SIC:", texto);

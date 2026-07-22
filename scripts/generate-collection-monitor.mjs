@@ -5,9 +5,18 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const chunksDir = path.join(root, "painel-cidadao", "data", "chunks");
 const logsDir = path.join(root, "private", "logs");
+const statePath = path.join(root, "private", "state", "pipeline_last_result.json");
 const status = JSON.parse(fs.readFileSync(path.join(chunksDir, "status_fontes.json"), "utf8"));
 
 function latestCompletedRun() {
+  if (fs.existsSync(statePath)) {
+    try {
+      const state = JSON.parse(fs.readFileSync(statePath, "utf8"));
+      if (state?.finished_at && state?.coleta) return state;
+    } catch {
+      // Estado privado corrompido nao derruba a publicacao; usa logs abaixo.
+    }
+  }
   if (!fs.existsSync(logsDir)) return null;
   const candidates = fs.readdirSync(logsDir)
     .filter((name) => /^coleta-\d{4}-\d{2}-\d{2}\.log$/.test(name))
@@ -23,7 +32,7 @@ function latestCompletedRun() {
       } : null;
     })
     .filter(Boolean)
-    .sort((a, b) => b.updated_at.localeCompare(a.updated_at));
+    .sort((a, b) => new Date(b.finished_at.replace(" ", "T")) - new Date(a.finished_at.replace(" ", "T")));
   return candidates[0] || null;
 }
 

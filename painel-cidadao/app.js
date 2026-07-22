@@ -6409,6 +6409,27 @@ ${url}
     window.ZELA.diarias.init(prefix, dados);
   }
 
+  function renderDiariasDeferred(prefix, state = "idle") {
+    const block = $(`diarias${prefix}Block`);
+    const stats = $(`statsDiarias${prefix}`);
+    const ranking = $(`rankingDiarias${prefix}`);
+    const lista = $(`listaDiarias${prefix}`);
+    if (!block) return;
+    block.dataset.progressiveState = state;
+    const textos = {
+      idle: ["Dados disponíveis sob demanda", "Abra esta seção para carregar todos os registros de diárias."],
+      loading: ["Carregando diárias", "A página principal já está disponível. Aguarde enquanto esta base detalhada é preparada."],
+      error: ["Não foi possível carregar as diárias", "Os demais dados continuam disponíveis. Tente novamente ou consulte a fonte oficial."],
+    };
+    const [titulo, descricao] = textos[state] || textos.idle;
+    const acao = state === "error"
+      ? '<button type="button" class="btn-progressive-retry" data-retry-chunk="diarias">Tentar novamente</button>'
+      : '';
+    if (stats) stats.innerHTML = `<div class="progressive-data progressive-data--${state}" role="status"><span class="progressive-data__icon" aria-hidden="true"></span><div><strong>${titulo}</strong><p>${descricao}</p>${acao}</div></div>`;
+    if (ranking) ranking.innerHTML = "";
+    if (lista) lista.innerHTML = "";
+  }
+
   // ============= PLACAR DO DINHEIRO (prefeitura.html) =============
   // Placar e Categorias delegados para modules/dashboard.js
   function renderPlacarPrefeitura()     { window.ZELA.dashboard.renderPlacarPrefeitura(); }
@@ -6421,6 +6442,7 @@ ${url}
     const contratos = pf.contratos || [];
     const licitacoes = pf.licit_andamento || [];
     const diarias = (D.diarias || {}).prefeitura || [];
+    const diariasCarregadas = Boolean(D.diarias && Array.isArray(D.diarias.prefeitura));
     const compras = pf.compras_diretas || [];
     const frota = pf.frota || [];
 
@@ -6488,7 +6510,7 @@ ${url}
         <span><strong>${fmtMi(somaPagamentos)}</strong><small>pagos em ${pf.ano_atual || "ano atual"}</small></span>
         <span><strong>${fmtNum(contratos.length)}</strong><small>contratos</small></span>
         <span><strong>${fmtNum(licitacoes.length)}</strong><small>licitacoes abertas</small></span>
-        <span><strong>${fmtNum(diarias.length)}</strong><small>diárias</small></span>
+        <span><strong>${diariasCarregadas ? fmtNum(diarias.length) : "Sob demanda"}</strong><small>diárias</small></span>
         <span><strong>${fmtNum(frota.length)}</strong><small>veículos na frota</small></span>
       </div>`;
 
@@ -6500,9 +6522,9 @@ ${url}
       const el = $(id);
       if (el) el.textContent = value ? String(value) : "";
     };
-    setBadge("badgeVisao", contratos.length + licitacoes.length + diarias.length);
+    setBadge("badgeVisao", contratos.length + licitacoes.length + (diariasCarregadas ? diarias.length : 0));
     setBadge("badgeContratos", contratos.length);
-    setBadge("badgeDiarias", diarias.length);
+    setBadge("badgeDiarias", diariasCarregadas ? diarias.length : "…");
     setBadge("badgeAlugueis", alugueis.length);
     setBadge("badgeEventos", eventosBase.length);
     setBadge("badgeLicitacoes", licitacoes.length);
@@ -6515,7 +6537,7 @@ ${url}
       { cls: "audit-metric--hero", v: fmtMi(pf.total_externo_atual), l: `Pagamentos em ${pf.ano_atual}`, s: trendLabel, tab: "fontes" },
       { cls: "", v: fmtNum(contratos.length), l: "Contratos", s: `${fmtBRL(totalContratos)} em registros carregados`, tab: "contratos" },
       { cls: "audit-metric--red", v: fmtNum(contratosMilhao.length), l: "Acima de R$ 1 mi", s: "Primeira fila para conferir objeto e prazo", tab: "contratos" },
-      { cls: "audit-metric--gold", v: fmtNum(diarias.length), l: "Diárias", s: `${fmtBRL(totalDiarias)} em registros contabeis`, tab: "diarias" },
+      { cls: "audit-metric--gold", v: diariasCarregadas ? fmtNum(diarias.length) : "Abrir", l: "Diárias", s: diariasCarregadas ? `${fmtBRL(totalDiarias)} em registros contábeis` : "Base detalhada carregada sob demanda", tab: "diarias" },
       { cls: "", v: fmtNum(frota.length), l: "Frota municipal", s: `${fmtBRL(totalFrota)} em gastos vinculados`, tab: "frota" },
       { cls: "", v: fmtNum(alugueis.length), l: "Imoveis alugados", s: `${fmtBRL(totalAlugueis)} classificados por palavra-chave`, tab: "alugueis" },
       { cls: "audit-metric--gold", v: fmtNum(eventosBase.length), l: "Eventos e shows", s: `${fmtBRL(totalEventos)} em itens localizados`, tab: "eventos" },
@@ -6530,7 +6552,7 @@ ${url}
     if ($("prefeituraAtalhos")) {
       $("prefeituraAtalhos").innerHTML = [
         { tab: "contratos", value: fmtNum(contratosMilhao.length), title: "Contratos caros", text: "Compromissos acima de R$ 1 mi, objetos fracos e prazos." },
-        { tab: "diarias", value: fmtNum(diariasAltas.length), title: "Diárias altas", text: "Registros com valor diario estimado acima de R$ 1.000." },
+        { tab: "diarias", value: diariasCarregadas ? fmtNum(diariasAltas.length) : "Abrir", title: "Diárias altas", text: diariasCarregadas ? "Registros com valor diário estimado acima de R$ 1.000." : "Carregue a base detalhada somente quando precisar." },
         { tab: "frota", value: fmtNum(frota.length), title: "Frota municipal", text: "Veiculos, lotacao e gastos de combustivel/manutencao." },
         { tab: "alugueis", value: fmtNum(alugueis.length), title: "Imoveis alugados", text: `${fmtBRL(totalAlugueis)} somados em contratos classificados.` },
         { tab: "eventos", value: fmtNum(eventosBase.length), title: "Eventos e shows", text: "Empresas, artistas e estruturas contratadas." },
@@ -6548,8 +6570,8 @@ ${url}
         <p>
           A primeira leitura mostra que a base tem ${fmtNum(contratos.length)} contratos somando
           ${fmtBRL(totalContratos)}, ${fmtNum(licitacoes.length)} licitacoes para acompanhar antes
-          do pagamento, ${fmtNum(diarias.length)} diárias pagas a ${fmtNum(servidoresDiarias)}
-          pessoas/servidores identificados, ${fmtNum(frota.length)} veiculos municipais,
+          do pagamento, ${diariasCarregadas ? `${fmtNum(diarias.length)} diárias pagas a ${fmtNum(servidoresDiarias)} pessoas/servidores identificados` : "uma base detalhada de diárias disponível ao abrir a seção"},
+          ${fmtNum(frota.length)} veículos municipais,
           ${fmtNum(alugueis.length)} contratos classificados
           como aluguel de imovel e ${fmtNum(eventosBase.length)} itens ligados a eventos ou shows.
         </p>
@@ -6922,9 +6944,8 @@ ${url}
 
   function initPrefeituraTabs() {
     const tabs = Array.from(document.querySelectorAll(".pref-tab[data-pref-tab]"));
-    const triggers = Array.from(document.querySelectorAll("[data-pref-tab]"));
     const panels = Array.from(document.querySelectorAll("[data-pref-panel]"));
-    if (!triggers.length || !panels.length) return;
+    if (!tabs.length || !panels.length) return;
 
     const hashMap = {
       contratosBlock: "contratos",
@@ -6961,9 +6982,14 @@ ${url}
       }
     };
 
-    triggers.forEach(tab => {
-      tab.addEventListener("click", () => activate(tab.dataset.prefTab, true));
-    });
+    if (!document.body.dataset.prefTabsBound) {
+      document.body.dataset.prefTabsBound = "1";
+      document.addEventListener("click", (event) => {
+        const trigger = event.target.closest?.("[data-pref-tab]");
+        if (!trigger) return;
+        activate(trigger.dataset.prefTab, true);
+      });
+    }
 
     const hash = (location.hash || "").replace("#", "");
     const params = new URLSearchParams(window.location.search);
@@ -7087,7 +7113,9 @@ ${url}
     box.hidden = false;
     // Recolhível: no celular abre fechado (só título + contador) para não comer
     // a tela; no desktop já vem aberto. O cidadão toca para ver os detalhes.
-    const healthAberta = window.innerWidth >= 768;
+    // O aviso global é importante, mas não deve esconder os dados específicos
+    // da página. O resumo permanece visível e os detalhes abrem sob demanda.
+    const healthAberta = false;
     box.innerHTML = `
       <details class="data-health-strip__det"${healthAberta ? " open" : ""}>
         <summary class="data-health-strip__head">
@@ -7419,14 +7447,38 @@ ${url}
       el.innerHTML = '<div class="empty">Nenhum fornecedor da Fundação também localizado em Prefeitura ou Câmara.</div>';
       return;
     }
-    el.innerHTML = lista.map((m) => `
-      <article class="forn-row">
-        <div>
-          <p class="forn-row__nome">${esc(m.nome || "Não informado")}${m.esferas === 3 ? ' <span class="em__status em__status--no">Nas 3 esferas</span>' : ""}</p>
-          <p class="muted small">Fundação ${fmtBRL(m.fund)}${m.pref > 0 ? " · Prefeitura " + fmtBRL(m.pref) : ""}${m.cam > 0 ? " · Câmara " + fmtBRL(m.cam) : ""}</p>
-        </div>
-        <div class="forn-row__valor">${fmtBRL(m.total)}</div>
-      </article>`).join("");
+    el.innerHTML = lista.map((m, index) => {
+      const nome = m.nome || "Não informado";
+      const inicial = nome.trim().charAt(0).toUpperCase() || "?";
+      const orgaos = ["Fundação", m.pref > 0 ? "Prefeitura" : "", m.cam > 0 ? "Câmara" : ""].filter(Boolean);
+      const parcelas = [
+        ["Fundação", m.fund],
+        ["Prefeitura", m.pref],
+        ["Câmara", m.cam],
+      ].filter(([, valor]) => valor > 0);
+      return `
+        <article class="cross-supplier-card" style="--card-order:${index}">
+          <div class="cross-supplier-card__head">
+            <span class="cross-supplier-card__avatar" aria-hidden="true">${esc(inicial)}</span>
+            <div class="cross-supplier-card__identity">
+              <p class="cross-supplier-card__name">${esc(nome)}</p>
+              <span class="cross-supplier-card__scope">${m.esferas === 3 ? "Presente nas 3 esferas" : esc(orgaos.join(" + "))}</span>
+            </div>
+          </div>
+          <div class="cross-supplier-card__total">
+            <span>Total localizado</span>
+            <strong>${fmtBRL(m.total)}</strong>
+          </div>
+          <div class="cross-supplier-card__breakdown" aria-label="Composição do valor por órgão">
+            ${parcelas.map(([orgao, valor]) => `
+              <div>
+                <span>${esc(orgao)}</span>
+                <strong>${fmtBRL(valor)}</strong>
+              </div>`).join("")}
+          </div>
+          <p class="cross-supplier-card__note">Soma de contratos localizados nas bases oficiais.</p>
+        </article>`;
+    }).join("");
   }
 
   renderGlobalDataHealthNotice();
@@ -7567,8 +7619,20 @@ ${url}
   }
   if (PAGE === "atualizacoes" && window.ZELA.atualizacoes) window.ZELA.atualizacoes.init();
   if (PAGE === "prefeitura") renderAlugueisV2();
-  if (PAGE === "prefeitura") initDiarias("Prefeitura", (D.diarias || {}).prefeitura || []);
-  if (PAGE === "camara") initDiarias("Camara", (D.diarias || {}).camara || []);
+  if (PAGE === "prefeitura") {
+    if (D.diarias) {
+      $("diariasPrefeituraBlock")?.setAttribute("data-progressive-state", "ready");
+      initDiarias("Prefeitura", (D.diarias || {}).prefeitura || []);
+    }
+    else renderDiariasDeferred("Prefeitura");
+  }
+  if (PAGE === "camara") {
+    if (D.diarias) {
+      $("diariasCamaraBlock")?.setAttribute("data-progressive-state", "ready");
+      initDiarias("Camara", (D.diarias || {}).camara || []);
+    }
+    else renderDiariasDeferred("Camara");
+  }
   if (PAGE === "relatorios" && typeof renderRelatorios === "function") renderRelatorios();
   initCollapsibleBlocks();
   initPagePdfButton();
@@ -7800,8 +7864,36 @@ ${url}
 
 
   // Atualização progressiva: chunks pesados chegam em 2ª fase após o render inicial
+  window.addEventListener("zela:chunk:start", function (e) {
+    if ((e.detail || {}).key !== "diarias") return;
+    if (PAGE === "prefeitura") renderDiariasDeferred("Prefeitura", "loading");
+    if (PAGE === "camara") renderDiariasDeferred("Camara", "loading");
+  });
+
+  window.addEventListener("zela:chunk:error", function (e) {
+    if ((e.detail || {}).key !== "diarias") return;
+    if (PAGE === "prefeitura") renderDiariasDeferred("Prefeitura", "error");
+    if (PAGE === "camara") renderDiariasDeferred("Camara", "error");
+  });
+
+  document.addEventListener("click", function (e) {
+    const retry = e.target.closest?.('[data-retry-chunk="diarias"]');
+    if (!retry || !window.ZELA_DATA_LOADER) return;
+    renderDiariasDeferred(PAGE === "camara" ? "Camara" : "Prefeitura", "loading");
+    window.ZELA_DATA_LOADER.load("diarias").catch(() => {});
+  });
+
   window.addEventListener("zela:chunk", function (e) {
     var key = (e.detail || {}).key;
+    if (key === "diarias" && PAGE === "prefeitura") {
+      $("diariasPrefeituraBlock")?.setAttribute("data-progressive-state", "ready");
+      initDiarias("Prefeitura", (D.diarias || {}).prefeitura || []);
+      renderPrefeituraOverview();
+    }
+    if (key === "diarias" && PAGE === "camara") {
+      $("diariasCamaraBlock")?.setAttribute("data-progressive-state", "ready");
+      initDiarias("Camara", (D.diarias || {}).camara || []);
+    }
     if (key === "prefeitura" && PAGE === "home") {
       // prefeitura.json chegou: re-renderiza scorecard e seção ao vivo
       initScorecard();

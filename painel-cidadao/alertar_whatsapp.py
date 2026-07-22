@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 import urllib.request
 import urllib.parse
 from datetime import datetime, timezone
@@ -38,10 +39,14 @@ DIARIO_JSON = ROOT / "data" / "chunks" / "publicacoes_diario.json"
 EMENDAS_JSON = ROOT / "data" / "chunks" / "emendas.json"
 PREFEITURA_JSON = ROOT / "data" / "chunks" / "prefeitura.json"
 CAMARA_ANOS_JSON = ROOT / "data" / "chunks" / "camara_anos.json"
+CAMARA_BETHA_JSON = ROOT / "data" / "chunks" / "camara_betha.json"
+PNCP_JSON = ROOT / "data" / "chunks" / "pncp.json"
+LICITACOES_RESULTADOS_JSON = ROOT / "data" / "chunks" / "licitacoes_resultados.json"
 MONITOR_STATE_PATH = ROOT.parent / "private" / "state" / "whatsapp_monitor_state.json"
 
 _emendas_cache = None
 _prefeitura_cache = None
+_base_financeira_cache = None
 
 
 def carregar_emendas() -> list[dict]:
@@ -107,6 +112,187 @@ def obter_historico_fornecedor(cnpj: str) -> tuple[float | None, str | None]:
         if f_raiz == raiz:
             return f.get("valor_total"), f.get("nome")
     return None, None
+
+
+def _carregar_json(path: Path) -> dict:
+    try:
+        with open(path, "r", encoding="utf-8-sig") as f:
+            dados = json.load(f)
+        return dados if isinstance(dados, dict) else {}
+    except Exception:
+        return {}
+
+
+def _texto_normalizado(valor) -> str:
+    texto = unicodedata.normalize("NFKD", str(valor or ""))
+    texto = texto.encode("ascii", "ignore").decode("ascii").lower()
+    return re.sub(r"[^a-z0-9]+", " ", texto).strip()
+
+
+_STOPWORDS_OBJETO = {
+    "para", "com", "sem", "uma", "uns", "das", "dos", "que", "por", "pela",
+    "pelo", "municipio", "municipal", "prefeitura", "varginha", "contratacao",
+    "empresa", "especializada", "servico", "servicos", "fornecimento", "aquisicao",
+    "futura", "eventual", "registro", "precos", "publica", "publico",
+}
+
+
+def _tokens_objeto(valor) -> set[str]:
+    return {
+        token for token in _texto_normalizado(valor).split()
+        if len(token) >= 4 and token not in _STOPWORDS_OBJETO
+    }
+
+
+def _numero_simples(valor) -> str:
+    m = re.search(r"\d+", str(valor or ""))
+    return str(int(m.group(0))) if m else ""
+
+
+def _ano_registro(item: dict) -> str:
+    ano = re.search(r"20\d{2}", str(item.get("ano") or ""))
+    if ano:
+        return ano.group(0)
+    for campo in ("data", "data_publicacao", "data_assinatura"):
+        data = re.search(r"20\d{2}", str(item.get(campo) or ""))
+        if data:
+            return data.group(0)
+    return ""
+
+
+def _adicionar_candidatos(
+    saida: list[dict], itens: list[dict], *, escopo: str, fonte: str,
+    natureza: str, campo_valor: str = "valor", campo_numero: str = "numero",
+) -> None:
+    for item in itens or []:
+        valor = item.get(campo_valor)
+        try:
+            valor = float(valor)
+        except (TypeError, ValueError):
+            continue
+        if valor <= 0:
+            continue
+        saida.append({
+            "valor": valor,
+            "natureza": natureza,
+            "fonte": fonte,
+            "escopo": escopo,
+            "numero": _numero_simples(item.get(campo_numero)),
+            "ano": _ano_registro(item),
+            "modalidade": _texto_normalizado(item.get("modalidade")),
+            "objeto": str(item.get("objeto") or ""),
+            "cnpj": limpar_cnpj(
+                item.get("cnpj_fornecedor") or item.get("cnpj") or item.get("cnpj_vencedor") or ""
+            ),
+        })
+
+
+def carregar_base_financeira() -> list[dict]:
+    """Indexa apenas valores oficiais já coletados; não consulta a internet no envio."""
+    global _base_financeira_cache
+    if _base_financeira_cache is not None:
+        return _base_financeira_cache
+
+    candidatos: list[dict] = []
+    prefeitura = carregar_prefeitura()
+    _adicionar_candidatos(candidatos, prefeitura.get("contratos"), escopo="prefeitura", fonte="Betha - contratos", natureza="valor contratado")
+    _adicionar_candidatos(candidatos, prefeitura.get("licit_andamento"), escopo="prefeitura", fonte="Betha - licitações", natureza="valor estimado")
+    _adicionar_candidatos(candidatos, prefeitura.get("licit_finalizadas"), escopo="prefeitura", fonte="Betha - licitações", natureza="valor estimado")
+    _adicionar_candidatos(candidatos, prefeitura.get("compras_diretas"), escopo="prefeitura", fonte="Betha - compras diretas", natureza="valor informado")
+
+    camara = _carregar_json(CAMARA_BETHA_JSON)
+    _adicionar_candidatos(candidatos, camara.get("contratos"), escopo="camara", fonte="Betha Camara - contratos", natureza="valor contratado")
+    _adicionar_candidatos(candidatos, camara.get("licitacoes"), escopo="camara", fonte="Betha Câmara - licitações", natureza="valor estimado")
+
+    pncp = _carregar_json(PNCP_JSON)
+    _adicionar_candidatos(candidatos, pncp.get("contratos"), escopo="prefeitura", fonte="PNCP - contratos", natureza="valor contratado")
+
+    resultados = _carregar_json(LICITACOES_RESULTADOS_JSON)
+    for item in resultados.get("registros") or []:
+        if item.get("valor_homologado_total") is not None:
+            _adicionar_candidatos(candidatos, [item], escopo="prefeitura", fonte="PNCP - resultado da contratação", natureza="valor homologado", campo_valor="valor_homologado_total", campo_numero="numero_compra")
+        elif item.get("valor_estimado") is not None:
+            _adicionar_candidatos(candidatos, [item], escopo="prefeitura", fonte="PNCP - contratacao", natureza="valor estimado", campo_valor="valor_estimado", campo_numero="numero_compra")
+
+    _base_financeira_cache = candidatos
+    return candidatos
+
+
+def _referencias_publicacao(pub: dict) -> list[tuple[str, str, str]]:
+    partes = [
+        pub.get("titulo", ""), pub.get("resumo", ""), pub.get("o_que_propoe", ""),
+        pub.get("ementa", ""), " ".join(str(x) for x in (pub.get("pontos_atencao") or [])),
+    ]
+    texto = _texto_normalizado(" ".join(str(x) for x in partes))
+    padrao = re.compile(
+        r"(pregao|concorrencia|dispensa|inexigibilidade|licitacao|processo|contrato)"
+        r"(?:\s+(?:eletronico|eletronica|administrativo))?\s+(?:n\s+)?(\d{1,4})(?:\s+(20\d{2}))?"
+    )
+    return [(m.group(1), str(int(m.group(2))), m.group(3) or "") for m in padrao.finditer(texto)]
+
+
+def _modalidade_compativel(tipo: str, modalidade: str) -> bool:
+    if tipo in {"processo", "contrato", "licitacao"}:
+        return True
+    if tipo == "pregao":
+        return "pregao" in modalidade
+    if tipo == "concorrencia":
+        return "concorrencia" in modalidade
+    if tipo == "dispensa":
+        return "dispensa" in modalidade
+    if tipo == "inexigibilidade":
+        return "inexigibilidade" in modalidade
+    return False
+
+
+def cruzar_valor_publicacao(pub: dict, escopo: str) -> dict | None:
+    """Cruza somente por identificadores + objeto/CNPJ; similaridade isolada é proibida."""
+    referencias = _referencias_publicacao(pub)
+    partes = [pub.get("titulo", ""), pub.get("resumo", ""), pub.get("o_que_propoe", ""), pub.get("ementa", "")]
+    tokens_publicacao = _tokens_objeto(" ".join(str(x) for x in partes))
+    raizes = {
+        obter_raiz_cnpj(item.get("cnpj", ""))
+        for item in (pub.get("envolvidos") or []) if obter_raiz_cnpj(item.get("cnpj", ""))
+    }
+    pontuados = []
+    for candidato in carregar_base_financeira():
+        if candidato["escopo"] != escopo:
+            continue
+        tokens_candidato = _tokens_objeto(candidato["objeto"])
+        comuns = tokens_publicacao & tokens_candidato
+        if len(comuns) < 3:
+            continue
+        cobertura = len(comuns) / max(1, min(len(tokens_candidato), 10))
+        raiz_candidato = obter_raiz_cnpj(candidato.get("cnpj", ""))
+        cnpj_confere = bool(raiz_candidato and raiz_candidato in raizes)
+        ref_confere = False
+        for tipo, numero, ano in referencias:
+            if numero != candidato["numero"]:
+                continue
+            if ano and candidato["ano"] and ano != candidato["ano"]:
+                continue
+            if _modalidade_compativel(tipo, candidato["modalidade"]):
+                ref_confere = True
+                break
+        if not cnpj_confere and not ref_confere:
+            continue
+        if cobertura < 0.35:
+            continue
+        score = (100 if cnpj_confere else 80) + (20 if ref_confere else 0) + len(comuns)
+        pontuados.append((score, candidato))
+
+    if not pontuados:
+        return None
+    pontuados.sort(key=lambda x: x[0], reverse=True)
+    melhor_score, melhor = pontuados[0]
+    empatados = [item for score, item in pontuados if score >= melhor_score - 2]
+    if any(abs(item["valor"] - melhor["valor"]) > 0.01 for item in empatados[1:]):
+        return None
+    return {
+        **melhor,
+        "confianca": "alta",
+        "metodo": "cruzamento por identificador, objeto e CNPJ/modalidade",
+    }
 
 TEMPLATE_CONFIG = {
     "api_type": "evolution",  # opções: "evolution", "z-api", "callmebot", "custom"
@@ -208,12 +394,103 @@ def valores_do_texto(*textos) -> list[str]:
             continue
         if isinstance(t, list):
             t = " ".join(str(x) for x in t)
-        # Ex.: R$ 2.404.755,50  (formato brasileiro com centavos)
-        for m in re.finditer(r"R\$\s*(\d{1,3}(?:\.\d{3})*,\d{2})", str(t)):
+        # Ex.: R$ 2.404.755,50 ou R $ 60000,00 (sempre exige centavos).
+        for m in re.finditer(r"R\s*\$\s*((?:\d{1,3}(?:\.\d{3})+|\d+),\d{2})", str(t), re.I):
             v = m.group(1)
             if v not in achados:
                 achados.append(v)
     return achados
+
+
+def _valor_texto_para_float(valor: str) -> float | None:
+    try:
+        return round(float(str(valor).replace(".", "").replace(",", ".")), 2)
+    except (TypeError, ValueError):
+        return None
+
+
+def resolver_valor_publicacao(pub: dict, escopo: str) -> dict | None:
+    """Resolve valor e proveniencia sem transformar ausencia em zero."""
+    valores = pub.get("valores") or {}
+    textos = (
+        pub.get("resumo"), pub.get("o_que_propoe"), pub.get("ementa"),
+        pub.get("pontos_atencao"),
+    )
+    explicitos = valores_do_texto(*textos)
+    total = valores.get("total")
+    try:
+        total = float(total) if total is not None else None
+    except (TypeError, ValueError):
+        total = None
+
+    if total is not None and valores.get("confianca") in {"alta", "media"}:
+        return {
+            "valor": total,
+            "natureza": valores.get("natureza") or "valor citado na publicação",
+            "fonte": valores.get("fonte_total") or "texto estruturado da publicação",
+            "confianca": valores.get("confianca"),
+            "metodo": valores.get("metodo") or "extração do texto oficial",
+            "pagina": valores.get("pagina"),
+            "link_verificacao": valores.get("link_verificacao") or "",
+        }
+
+    if explicitos:
+        valor = _valor_texto_para_float(explicitos[0])
+        if valor is not None:
+            return {
+                "valor": valor,
+                "natureza": "valor citado no resumo da publicação",
+                "fonte": "publicação estruturada",
+                "confianca": "media",
+                "metodo": "valor monetário explícito com centavos",
+            }
+
+    cruzado = cruzar_valor_publicacao(pub, escopo)
+    if cruzado:
+        return cruzado
+
+    # Compatibilidade com registros antigos: o numero bruto continua visivel,
+    # mas nunca e promovido a valor confirmado sem proveniencia.
+    if total is not None:
+        return {
+            "valor": total,
+            "natureza": valores.get("natureza") or "valor citado no ato",
+            "fonte": "extração numérica legada",
+            "confianca": "baixa",
+            "metodo": "extração sem proveniência estruturada",
+        }
+    return None
+
+
+def bloco_valor_publicacao(pub: dict, escopo: str) -> str:
+    resolvido = resolver_valor_publicacao(pub, escopo)
+    if not resolvido:
+        bloco = (
+            "- Situação: valor não publicado ou não localizado com segurança\n"
+            "- Observação: ausência de valor na matéria não significa custo zero"
+        )
+        localizacao = pub.get("localizacao") or {}
+        if localizacao.get("pagina_inicial"):
+            bloco += f"\n- Onde conferir o ato: página {localizacao['pagina_inicial']} do documento"
+        if localizacao.get("link_direto"):
+            bloco += f"\n- Abrir o ato: {localizacao['link_direto']}"
+        return bloco
+    confianca = {"alta": "ALTA", "media": "MÉDIA", "baixa": "BAIXA"}.get(
+        str(resolvido.get("confianca") or "").lower(), "INDISPONÍVEL"
+    )
+    bloco = (
+        f"- {str(resolvido.get('natureza') or 'Valor').capitalize()}: {formatar_valor(resolvido.get('valor'))}\n"
+        f"- Fonte do valor: {resolvido.get('fonte') or 'não informada'}\n"
+        f"- Confiança: {confianca}\n"
+        f"- Método: {resolvido.get('metodo') or 'não informado'}"
+    )
+    if resolvido.get("pagina"):
+        bloco += f"\n- Onde conferir: página {resolvido['pagina']} do documento"
+    elif resolvido.get("link_verificacao"):
+        bloco += "\n- Onde conferir: documento original (sem paginação estável)"
+    if resolvido.get("link_verificacao"):
+        bloco += f"\n- Abrir evidência: {resolvido['link_verificacao']}"
+    return bloco
 
 
 def assunto_financeiro_diario(pub: dict) -> bool:
@@ -230,6 +507,8 @@ def assunto_financeiro_diario(pub: dict) -> bool:
         pub.get("tipo_label", ""),
         pub.get("tema", ""),
         pub.get("resumo", ""),
+        pub.get("o_que_propoe", ""),
+        pub.get("ementa", ""),
         " ".join(str(p) for p in pontos),
     ]
     texto = " ".join(partes).lower()
@@ -350,6 +629,8 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
         # Identificação de alertas por análise textual (Câmara)
         alertas_ia = []
         texto_analise = (titulo + " " + resumo + " " + o_que_propoe).lower()
+        assunto_financeiro = assunto_financeiro_diario(pub)
+        valor_resolvido = resolver_valor_publicacao(pub, "camara")
         
         if "urgência" in texto_analise or "urgente" in texto_analise:
             alertas_ia.append("Tramitação em regime de urgência identificada. Reduz o tempo de debate nas comissões parlamentares.")
@@ -381,6 +662,9 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
         if o_que_propoe:
             msg += f"📄 *PROPOSTA DO PROJETO*\n{o_que_propoe}\n\n"
 
+        if assunto_financeiro:
+            msg += f"💰 *VALOR E PROVENIÊNCIA*\n{bloco_valor_publicacao(pub, 'camara')}\n\n"
+
         if por_que:
             if isinstance(por_que, list):
                 por_que_str = "\n".join(f"- {p}" for p in por_que if p)
@@ -407,7 +691,14 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
             if link_consulta:
                 msg += f"Publicação: {link_consulta}\n"
             if link_anexo:
-                msg += f"Documento original: {link_anexo}\n"
+                pagina = valor_resolvido.get("pagina") if valor_resolvido else None
+                localizacao = pub.get("localizacao") or {}
+                pagina = pagina or localizacao.get("pagina_inicial")
+                link_direto = (
+                    valor_resolvido.get("link_verificacao") if valor_resolvido else None
+                ) or localizacao.get("link_direto") or link_anexo
+                rotulo_pagina = f" (página {pagina})" if pagina else ""
+                msg += f"Documento original{rotulo_pagina}: {link_direto or link_anexo}\n"
             msg += "\n"
 
         # Rodapé de Controle Cidadão
@@ -461,13 +752,15 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
         valores_encontrados = valores.get("encontrados") or []
         texto_analise = (titulo + " " + resumo).lower()
         assunto_financeiro = assunto_financeiro_diario(pub)
+        valor_resolvido = resolver_valor_publicacao(pub, "camara" if eh_compra_camara else "prefeitura")
         
         # Filtro de relevância ou valor mínimo de compras
         relevante = False
         if relevancia_str in ("alto", "médio", "medio", "sim", "3", "4", "5"):
             relevante = True
         
-        if assunto_financeiro and val_total is not None and float(val_total) >= val_minimo:
+        valor_relevancia = valor_resolvido.get("valor") if valor_resolvido else val_total
+        if assunto_financeiro and valor_relevancia is not None and float(valor_relevancia) >= val_minimo:
             relevante = True
 
         if filtro_relevante and not relevante:
@@ -482,6 +775,14 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
         for env in envolvidos:
             nome = env.get("nome")
             cnpj = env.get("cnpj")
+            papel = env.get("papel")
+
+            if papel == "orgao":
+                envolvidos_str += f"- Órgão responsável: {nome or 'não identificado'}"
+                if cnpj:
+                    envolvidos_str += f" ({cnpj})"
+                envolvidos_str += "\n"
+                continue
             
             if nome and cnpj:
                 envolvidos_str += f"- {nome} ({cnpj})\n"
@@ -548,7 +849,13 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
         msg += f"📅 *Data:* {data_formatada}\n"
         msg += f"🏢 *Órgão:* {orgao}\n\n"
 
-        msg += f"📌 *Relevância:* {relevancia_str.upper()}\n"
+        relevancia_label = {
+            "medio": "MÉDIO",
+            "médio": "MÉDIO",
+            "alto": "ALTO",
+            "baixo": "BAIXO",
+        }.get(relevancia_str, relevancia_str.upper())
+        msg += f"📌 *Relevância:* {relevancia_label}\n"
         msg += f"🏷️ *Tema:* {tema.upper()}\n\n"
 
         if resumo:
@@ -567,23 +874,9 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
             msg += f"🎯 *VÍNCULO PARLAMENTAR IDENTIFICADO*\n"
             msg += "\n".join(f"- {v}" for v in vinculos_emendas) + "\n\n"
 
-        # Valores — prioriza o valor do TEXTO da IA (confiável, com centavos).
-        # A extração numérica bruta (val_total/encontrados) costuma pescar números
-        # redondos errados de tabelas ou de outras publicações da mesma página.
-        vals_texto = valores_do_texto(resumo, pontos_atencao)
-        if vals_texto:
-            valores_str = f"- Valor: R$ {vals_texto[0]}\n"
-            if len(vals_texto) > 1:
-                outros_txt = ", ".join(f"R$ {v}" for v in vals_texto[1:3])
-                valores_str += f"- Outros valores citados: {outros_txt}\n"
-        elif val_total is not None:
-            # Sem valor no texto: mostra o bruto, mas marca como "a conferir".
-            valores_str = f"- Valor citado (confira na fonte): {formatar_valor(val_total)}\n"
-        else:
-            valores_str = "- Valor: não identificado com segurança (confira na fonte)\n"
-
-        if assunto_financeiro or vals_texto:
-            msg += f"💰 *VALORES IDENTIFICADOS*\n{valores_str.strip()}\n\n"
+        if assunto_financeiro or valor_resolvido:
+            escopo = "camara" if eh_compra_camara else "prefeitura"
+            msg += f"💰 *VALOR E PROVENIÊNCIA*\n{bloco_valor_publicacao(pub, escopo)}\n\n"
 
         # Junta pontos de atenção nativos e os alertas analíticos forenses
         todos_pontos = []
@@ -603,7 +896,14 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
             if link_consulta:
                 msg += f"Publicação: {link_consulta}\n"
             if link_anexo:
-                msg += f"Documento original: {link_anexo}\n"
+                pagina = valor_resolvido.get("pagina") if valor_resolvido else None
+                localizacao = pub.get("localizacao") or {}
+                pagina = pagina or localizacao.get("pagina_inicial")
+                link_direto = (
+                    valor_resolvido.get("link_verificacao") if valor_resolvido else None
+                ) or localizacao.get("link_direto") or link_anexo
+                rotulo_pagina = f" (página {pagina})" if pagina else ""
+                msg += f"Documento original{rotulo_pagina}: {link_direto or link_anexo}\n"
             msg += "\n"
 
         # Rodapé de Controle Cidadão
@@ -646,6 +946,14 @@ def checar_bridge(config: dict) -> tuple[bool, str]:
 def main():
     print("🚀 Iniciando Bot de Alertas para o WhatsApp - Fiscaliza Varginha")
     preview = "--preview" in sys.argv
+    preview_limit = 0
+    for argumento in sys.argv[1:]:
+        if argumento.startswith("--preview-limit="):
+            try:
+                preview_limit = max(0, int(argumento.split("=", 1)[1]))
+            except ValueError:
+                print("❌ --preview-limit deve ser um número inteiro.")
+                sys.exit(2)
     forcar_resumo = preview or "--resumo-semanal" in sys.argv
     config = carregar_config()
     enviados = carregar_enviados()
@@ -740,8 +1048,13 @@ def main():
         return
 
     if preview:
-        print(f"🔎 PRÉVIA LOCAL — {len(todas_mensagens)} mensagem(ns); nada será enviado.")
-        for indice, (pid, msg) in enumerate(todas_mensagens, start=1):
+        total_previa = len(todas_mensagens)
+        mensagens_previa = todas_mensagens[:preview_limit] if preview_limit else todas_mensagens
+        print(
+            f"🔎 PRÉVIA LOCAL — exibindo {len(mensagens_previa)} de {total_previa} mensagem(ns); "
+            "nada será enviado."
+        )
+        for indice, (pid, msg) in enumerate(mensagens_previa, start=1):
             print(f"\n{'=' * 72}\nPRÉVIA {indice} | ID: {pid}\n{'=' * 72}\n{msg}\n")
         return
 

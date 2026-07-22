@@ -1,10 +1,8 @@
 name: CI
 
-# Checagens estáticas em cada push/PR. NÃO roda a suíte Playwright completa:
-# os testes carregam window.ZELA_DATA do painel-cidadao/data.js, que é gitignored
-# (6,6MB, gerado pelo coletor.py a partir da API do Betha). Sem esses dados o
-# gate completo não roda no CI — ele permanece local (npm test) e no release.
-# Aqui validamos o que independe de dados: sintaxe JS e integridade de acentos.
+# Checagens em cada push/PR. A suíte visual completa permanece no release local,
+# mas os testes de integridade leem os chunks versionados diretamente do disco e
+# rodam no CI para impedir publicação de totais incoerentes ou cruzamentos quebrados.
 
 on:
   push:
@@ -25,6 +23,8 @@ jobs:
           cache: pip
       - name: Dependências de validação de dados
         run: python -m pip install -r requirements.txt
+      - name: Dependências Node
+        run: npm ci
       - name: Sintaxe dos scripts e HTML (check-syntax)
         run: node scripts/check-syntax.mjs
       - name: Integridade de acentos/encoding (check-accents)
@@ -33,3 +33,7 @@ jobs:
         run: python painel-cidadao/validar_schemas_dados.py
       - name: Auditoria bloqueante das emendas
         run: python painel-cidadao/emendas/audit_emendas.py
+      - name: Integridade dos cálculos e cruzamentos externos
+        run: npx playwright test tests/calculos.spec.js tests/cruzamentos-externos.spec.js --workers=1
+      - name: Resiliência dos coletores e explicabilidade dos cruzamentos
+        run: npm run test:pipeline

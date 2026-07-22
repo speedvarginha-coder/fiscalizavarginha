@@ -1034,6 +1034,101 @@ button.flag-card:hover {
   .quick-filters .chip { white-space: nowrap; flex: 0 0 auto; }
 }
 
+/* ===== EXPERIENCIA CIDADA V3 — alinhamento com o portal principal ===== */
+:root {
+  --warm-bg: #f8f7f2;
+  --warm-surface: #fffefb;
+  --civic-blue: #07558f;
+  --civic-green: #087a4b;
+  --civic-gold: #e6ae25;
+  --surface-border: #dce7e2;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 4%, rgba(230,174,37,.11), transparent 28rem),
+    radial-gradient(circle at 92% 12%, rgba(8,122,75,.07), transparent 32rem),
+    var(--warm-bg);
+}
+
+.site-nav {
+  min-height: 72px;
+  padding-block: 10px;
+  border-top: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--civic-blue) 0 62%, var(--civic-green) 62% 87%, var(--civic-gold) 87%) 1;
+  background: rgba(255,254,251,.96);
+  box-shadow: 0 5px 20px rgba(23,50,77,.07);
+}
+
+.site-nav__mark {
+  border: 1px solid #a9c8df;
+  border-radius: 11px;
+  background: #edf5fb;
+  color: var(--civic-blue);
+}
+.site-nav__name strong { color: var(--civic-blue); }
+.site-nav__name small { color: var(--civic-green); text-transform: uppercase; letter-spacing: .12em; }
+.site-nav__menu a { border-radius: 9px; }
+.site-nav__menu a:hover { background: #edf5fb; }
+.site-nav__menu a.is-active { background: #edf5fb; color: var(--civic-blue); }
+.site-nav__cta { background: var(--civic-gold) !important; color: #18324a !important; }
+
+.topbar {
+  align-items: center;
+  padding-block: clamp(28px, 5vw, 54px);
+  background:
+    radial-gradient(circle at 86% 5%, rgba(230,174,37,.28), transparent 18rem),
+    linear-gradient(125deg, #064d83, #08745c);
+}
+.topbar h1 { text-wrap: balance; }
+.lead { color: rgba(255,255,255,.86); line-height: 1.65; }
+.eyebrow { color: #ffd878; }
+.source-note { border-radius: 14px; background: rgba(255,255,255,.09); backdrop-filter: blur(8px); }
+
+.layout { gap: 22px; padding-top: 26px; }
+.metric,
+.filters,
+.panel,
+.results-section,
+.glossary,
+.esferas {
+  border-color: var(--surface-border);
+  border-radius: 16px;
+  background: var(--warm-surface);
+  box-shadow: 0 10px 30px rgba(23,50,77,.07);
+}
+.metric { border-top: 4px solid var(--civic-blue); }
+.metric:nth-child(3n + 2) { border-top-color: var(--civic-green); }
+.metric:nth-child(3n) { border-top-color: var(--civic-gold); }
+.metric strong { color: #17324d; }
+.citizen-guide { border-radius: 12px; background: #edf8f2; }
+.button { min-height: 44px; border-radius: 10px; }
+.field input, .field select { min-height: 44px; border-radius: 10px; }
+.result-card { border-radius: 14px; background: var(--warm-surface); }
+
+@media (max-width: 760px) {
+  .site-nav { padding-inline: 16px; }
+  .site-nav__menu { padding-top: 8px; }
+  .site-nav__menu a { min-height: 44px; display: flex; align-items: center; }
+  .topbar { align-items: stretch; padding: 26px 18px 30px; }
+  .topbar h1 { font-size: clamp(2rem, 10vw, 2.65rem); line-height: 1.05; }
+  .source-note { min-width: 0; }
+  .layout { padding-inline: 14px; }
+  .summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .metric { min-width: 0; padding: 14px 12px; }
+  .metric span { font-size: .75rem; line-height: 1.3; }
+  .metric strong {
+    font-size: clamp(.86rem, 3.6vw, 1.05rem);
+    letter-spacing: -.035em;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 390px) {
+  .summary-grid { grid-template-columns: 1fr 1fr; }
+  .site-nav__name strong { font-size: .93rem; }
+}
+
 /* Seletor de ano nos painéis de ranking */
 .rank-year {
   margin-left: auto; padding: 5px 8px; font-size: .78rem; font-weight: 700;

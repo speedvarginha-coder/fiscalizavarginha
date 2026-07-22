@@ -22,6 +22,7 @@ const chunksDir = path.join(root, "painel-cidadao", "data", "chunks");
 const stateDir = path.join(root, "private", "state");
 const heartbeatPath = path.join(stateDir, "pipeline_heartbeat.json");
 const alertaPath = path.join(stateDir, "alerta_operacional.json");
+const lastSuccessPath = path.join(stateDir, "pipeline_last_success.json");
 const whatsappConfigPath = path.join(root, "private", "whatsapp_config.json");
 
 // Numero pessoal (nao o grupo publico) para receber ESTE alerta operacional.
@@ -103,10 +104,15 @@ const horasDesdeHeartbeat = heartbeatAnterior?.ultimo_disparo
   ? (agora - new Date(heartbeatAnterior.ultimo_disparo)) / 3_600_000
   : null;
 
+const privateSuccess = readJson(lastSuccessPath);
 const monitor = readJson(path.join(chunksDir, "monitoramento_coletas.json"));
-const ultimoSucesso = monitor?.last_completed_run?.finished_at;
+const ultimoSucesso = privateSuccess?.coleta === "SUCESSO"
+  ? privateSuccess.finished_at
+  : monitor?.last_completed_run?.coleta === "SUCESSO"
+    ? monitor.last_completed_run.finished_at
+    : null;
 const horasDesdeSucesso = ultimoSucesso
-  ? (agora - new Date(ultimoSucesso.replace(" ", "T"))) / 3_600_000
+  ? (agora - new Date(String(ultimoSucesso).replace(" ", "T"))) / 3_600_000
   : null;
 
 const problemas = [];

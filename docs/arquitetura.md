@@ -71,7 +71,7 @@ PIPELINE DE DADOS (offline, roda no servidor de quem mantém o painel):
 │   │   └── watchlist.js        Marcadores em localStorage
 │   │
 │   ├── data/
-│   │   ├── chunks/             14 JSONs servidos por domínio
+│   │   ├── chunks/             29 JSONs servidos por domínio
 │   │   │   ├── prefeitura.json
 │   │   │   ├── emendas.json
 │   │   │   ├── diarias.json
@@ -83,7 +83,7 @@ PIPELINE DE DADOS (offline, roda no servidor de quem mantém o painel):
 │   └── coletor*.py             Scripts Python que populam o data/
 │
 ├── tests/
-│   ├── smoke.spec.js           ~55 testes Playwright (UI)
+│   ├── smoke.spec.js           testes Playwright de UI e regressão
 │   ├── calculos.spec.js        ~14 testes (integridade de cálculos)
 │   ├── emendas-audit.spec.js   ~5 testes (auditoria de emendas)
 │   ├── http.spec.js            1 teste (smoke HTTP)
@@ -386,7 +386,7 @@ npm run test:report      # vê relatório HTML do último run
 ```
 
 **Cobertura:**
-- 9 páginas × 3 verificações (abre, título, bloco principal)
+- páginas públicas × verificações de abertura, título e bloco principal
 - Navegação completa
 - Filtros básicos (contratos, emendas)
 - Busca de contrato por número com modal de fonte oficial

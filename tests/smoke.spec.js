@@ -21,6 +21,7 @@ const fileUrl = (page) => "file:///" + path.join(PAINEL, page).replace(/\\/g, "/
 const BENIGNOS = [
   /favicon/,
   /net::ERR_FILE_NOT_FOUND.*\.json/,
+  /Fetch API cannot load file:.*\.json/i,
   /ServiceWorker.*protocol.*not supported/i,  // SW só funciona em http(s)
   /Failed to register a ServiceWorker.*null/i,
   /URL protocol of the current origin/i,
@@ -52,6 +53,7 @@ const PAGINAS = [
   { arquivo: "cobrar.html",     titulo: /Como cobrar/,             bloco: ".cobrar-block" },
   { arquivo: "marcadores.html", titulo: /Marcadores/,              bloco: "#marcadoresArea" },
   { arquivo: "atualizacoes.html", titulo: /Atualiza..es/,           bloco: "#atualizacoesFeed" },
+  { arquivo: "conformidade.html", titulo: /Conformidade/,          bloco: ".ift-panel" },
 ];
 
 for (const p of PAGINAS) {
@@ -127,6 +129,19 @@ test.describe("Avisos de qualidade dos dados", () => {
     await expect(aviso).toContainText(/atenção crítica|limites dos dados/i);
     await expect(aviso).toContainText(/fonte oficial/i);
     await expect(aviso.locator('a[href="sobre.html#auditoriaDados"]')).toContainText(/auditoria completa/i);
+  });
+});
+
+test.describe("Justiça e transparência dos dados", () => {
+  test("conformidade separa alerta técnico de conclusão jurídica", async ({ page }) => {
+    await page.goto(fileUrl("conformidade.html"), { waitUntil: "domcontentloaded" });
+    const conteudo = page.locator("main");
+    await expect(conteudo).toContainText("Mesma régua para todos");
+    await expect(conteudo).toContainText("Ausência não é culpa");
+    await expect(conteudo).toContainText("Direito de correção");
+    await expect(conteudo).toContainText("Envie um pedido de correção");
+    await expect(conteudo).toContainText(/não certifica a legalidade/i);
+    await expect(conteudo).toContainText(/não representam julgamento de legalidade/i);
   });
 });
 
@@ -631,8 +646,8 @@ test.describe("Per-capita no placar", () => {
 });
 
 test.describe("Banner de boas-vindas (onboarding)", () => {
-  test("aparece na primeira visita e some ao fechar", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+  test("aparece uma vez na página inicial e não ocupa páginas de consulta", async ({ page }) => {
+    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.evaluate(() => localStorage.removeItem("fiscaliza.onboarding.v1"));
     await page.reload();
     await page.waitForTimeout(2000);
@@ -644,6 +659,12 @@ test.describe("Banner de boas-vindas (onboarding)", () => {
     // Não reaparece após recarregar (flag persistida)
     await page.reload();
     await page.waitForTimeout(2000);
+    await expect(page.locator("#onboarding-banner")).toHaveCount(0);
+
+    // Mesmo sem depender da flag, páginas de consulta nunca recebem o banner.
+    await page.evaluate(() => localStorage.removeItem("fiscaliza.onboarding.v1"));
+    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1000);
     await expect(page.locator("#onboarding-banner")).toHaveCount(0);
   });
 });
@@ -858,7 +879,9 @@ test.describe("Sinais de fiscalização — redes de sócios (CNPJ/QSA)", () => 
     setupConsoleListener(page);
     await page.goto(fileUrl("relatorios.html"), { waitUntil: "domcontentloaded" });
     await page.locator("#sinaisAtencao .signals-group").first().waitFor({ timeout: 10000 });
-    const txt = (await page.locator("#sinaisAtencao").innerText()).toLowerCase();
+    // O bloco usa content-visibility para não pintar conteúdo fora da tela.
+    // textContent valida os sinais já montados no DOM sem depender do scroll.
+    const txt = ((await page.locator("#sinaisAtencao").textContent()) || "").toLowerCase();
 
     if (comuns > 0) {
       expect(txt).toContain("redes de sócios");

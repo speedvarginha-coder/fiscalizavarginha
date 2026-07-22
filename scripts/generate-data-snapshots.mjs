@@ -29,7 +29,17 @@ function readJson(filePath, fallback = null) {
 
 function writeJson(filePath, value) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(value, null, 2) + "\n", "utf8");
+  const content = JSON.stringify(value, null, 2) + "\n";
+  const retryableCodes = new Set(["EBUSY", "EPERM", "EACCES", "UNKNOWN"]);
+  for (let attempt = 0; attempt < 8; attempt += 1) {
+    try {
+      fs.writeFileSync(filePath, content, "utf8");
+      return;
+    } catch (error) {
+      if (!retryableCodes.has(error?.code) || attempt === 7) throw error;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 125 * (attempt + 1));
+    }
+  }
 }
 
 function cleanText(value) {

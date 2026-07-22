@@ -1,43 +1,235 @@
 {
- "gerado_em": "2026-07-21T12:35:07+00:00",
+ "gerado_em": "2026-07-22T03:47:27+00:00",
  "fonte": "diario",
- "total": 225,
+ "total": 195,
  "publicacoes": [
+  {
+   "id": "DIARIO-2026-1848-pessoal-portarian1302026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "PORTARIA Nº 130/2026, 20 DE JULHO DE 2026.",
+   "numero": "130/2026",
+   "data": "2026-07-21",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria nomeia temporariamente uma empregada pública para substituir outro empregado público comissionado que está de férias.",
+   "pontos_atencao": [
+    "A nomeação é temporária e decorre de férias do titular do cargo.",
+    "A substituta fará jus ao recebimento da diferença de vencimentos entre os cargos."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf"
+   },
+   "edicao": "1848",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/255/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 8,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=8"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-22T03:45:43+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1848-licitacao-classificaoedita",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "CLASSIFICAÇÃO EDITAL DE SELEÇÃO SIMPLIFICADA - Nº 022/2026",
+   "numero": "022/2026",
+   "data": "2026-07-21",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "Este ato divulga a lista de classificação final e os candidatos desclassificados de um processo seletivo simplificado para o cargo de Auxiliar de Enfermagem na Prefeitura de Varginha.",
+   "pontos_atencao": [
+    "Grande número de candidatos desclassificados por falta de documentação essencial, como certificado do curso e registro no conselho de classe.",
+    "A vaga é para Auxiliar de Enfermagem, um cargo essencial para a saúde pública municipal."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf"
+   },
+   "edicao": "1848",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/255/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 9,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=9"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-22T03:45:54+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1848-dispensa-extratodepublica",
+   "fonte": "diario",
+   "tipo": "dispensa",
+   "tipo_label": "Dispensa de licitação",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "EXTRATO DE PUBLICAÇÃO DE RESULTADO - DISPENSA Nº 012/2026 - PROCESSO Nº 071/2026",
+   "numero": "012/2026",
+   "data": "2026-07-21",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "saúde",
+   "resumo": "O CISSUL publicou o resultado de uma dispensa de licitação para contratar uma empresa para fornecer coffee break para um evento do Programa Regional de Multiplicadores Lei Lucas – CISSUL/SAMU em Pouso Alegre/MG.",
+   "pontos_atencao": [
+    "A contratação foi realizada por dispensa de licitação, sem um processo competitivo.",
+    "O valor de R$ 30.000,00 será destinado ao fornecimento de coffee breaks para o evento.",
+    "O evento ocorrerá em Pouso Alegre/MG, mas o extrato foi publicado pela Prefeitura de Varginha/MG."
+   ],
+   "envolvidos": [
+    {
+     "nome": "OROM COMÉRCIO E SERVIÇOS DE ALIMENTAÇÃO LTDA",
+     "papel": "empresa",
+     "cnpj": "26.111.000/0001-52"
+    },
+    {
+     "nome": "CISSUL/SAMU",
+     "cnpj": "13985869000184",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": 30000.0,
+    "encontrados": [
+     30000.0
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "valor_principal_ia": "30.000,00",
+    "pagina": 8,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=8"
+   },
+   "edicao": "1848",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/255/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 8,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=8"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-22T03:45:49+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1848-dispensa-dispensadelicita",
+   "fonte": "diario",
+   "tipo": "dispensa",
+   "tipo_label": "Dispensa de licitação",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "Dispensa de Licitação nº 051/2026.",
+   "numero": "051/2026",
+   "data": "2026-07-21",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha autorizou a compra de carne bovina para a Fundação Hospitalar do Município sem licitação, contratando diretamente a empresa MARIA TERESA PEREIRA COELHO CIA LTDA.",
+   "pontos_atencao": [
+    "A compra foi realizada por dispensa de licitação, o que significa que não houve um processo de concorrência pública.",
+    "O valor da contratação é de R$ 68.833,00.",
+    "A empresa beneficiada é MARIA TERESA PEREIRA COELHO CIA LTDA."
+   ],
+   "envolvidos": [
+    {
+     "nome": "MARIA TERESA PEREIRA COELHO CIA LTDA",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": 68833.0,
+    "encontrados": [
+     68833.0
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "valor_principal_ia": "68.833,00",
+    "pagina": 12,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=12"
+   },
+   "edicao": "1848",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/255/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 12,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=12"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-22T03:45:59+00:00"
+  },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian23249de",
    "fonte": "diario",
    "tipo": "pessoal",
    "tipo_label": "Portaria",
-   "orgao": "Prefeitura de Varginha",
+   "orgao": "CISSUL/SAMU",
    "titulo": "PORTARIA Nº 23.249, DE 13 DE JULHO DE 2026.",
    "numero": "23.249",
    "data": "2026-07-20",
    "categoria": "Diário Oficial",
    "relevancia": "medio",
    "tema": "pessoal",
-   "resumo": "A Prefeitura de Varginha designou o servidor Paulo Henrique de Oliveira para a função gratificada de Subinspetor da Guarda Civil Municipal.",
+   "resumo": "A Prefeitura de Varginha designou o servidor Paulo Henrique de Oliveira para a função gratificada de Subinspetor da Guarda Civil Municipal, com uma gratificação de 20%.",
    "pontos_atencao": [
-    "A designação para uma função gratificada implica em um aumento na despesa com pessoal da prefeitura.",
-    "A retroatividade dos efeitos da portaria a uma data anterior à sua publicação."
+    "A portaria designa um servidor para uma função gratificada, o que implica em aumento de despesa com pessoal.",
+    "Os efeitos da portaria são retroativos a 07/07/2026."
    ],
    "envolvidos": [
     {
-     "nome": "",
+     "nome": "Prefeitura de Varginha",
      "cnpj": "18.240.119/0001-05",
-     "papel": "cnpj"
+     "papel": "orgao"
     }
    ],
    "valores": {
     "total": null,
-    "encontrados": []
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
    },
    "edicao": "1847",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 122,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=122"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:46:34+00:00"
   },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian23240de",
@@ -51,10 +243,10 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "segurança pública",
-   "resumo": "Esta Portaria nomeia os membros que irão compor o Conselho Municipal de Segurança Pública (CONSEP) de Varginha.",
+   "resumo": "A Prefeitura de Varginha nomeou os membros que irão compor o Conselho Municipal de Segurança Pública (CONSEP), um órgão que reúne representantes do governo e da sociedade civil para discutir e propor ações na área de segurança.",
    "pontos_atencao": [
-    "A função de membro do CONSEP não é remunerada, sendo considerada um serviço público relevante.",
-    "Os mandatos dos membros são de dois anos, com possibilidade de uma única renovação."
+    "A participação no conselho não é remunerada, sendo considerada um serviço público relevante.",
+    "Os membros têm um mandato de 2 anos, renovável uma única vez por igual período."
    ],
    "envolvidos": [
     {
@@ -64,15 +256,25 @@
    ],
    "valores": {
     "total": null,
-    "encontrados": []
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
    },
    "edicao": "1847",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 120,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=120"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:46:24+00:00"
   },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian23229de",
@@ -86,84 +288,111 @@
    "categoria": "Diário Oficial",
    "relevancia": "baixo",
    "tema": "pessoal",
-   "resumo": "Esta Portaria prorroga por 12 meses a carga horária de trabalho diferenciada da servidora Márcia Sabino Luciano Rodrigues, ocupante do cargo de Oficial de Administração.",
+   "resumo": "Esta portaria prorroga por 12 meses a jornada de trabalho diferenciada da servidora Márcia Sabino Luciano Rodrigues, ocupante do cargo de Oficial de Administração.",
    "pontos_atencao": [
-    "A decisão afeta uma servidora específica e prorroga uma condição de trabalho já existente.",
-    "Os efeitos da portaria são retroativos a 09/07/2026, um dia antes da data de publicação."
+    "A portaria retroage seus efeitos para 09/07/2026.",
+    "A prorrogação se refere a uma jornada de trabalho específica de uma única servidora.",
+    "A decisão se baseia em leis e decretos anteriores, que definem as condições para tal prorrogação."
    ],
    "envolvidos": [],
    "valores": {
     "total": null,
-    "encontrados": []
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
    },
    "edicao": "1847",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 120,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=120"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:46:17+00:00"
   },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian1292026",
    "fonte": "diario",
    "tipo": "pessoal",
    "tipo_label": "Portaria",
-   "orgao": "Prefeitura de Varginha",
+   "orgao": "CISSUL/SAMU",
    "titulo": "PORTARIA Nº 129/2026, 17 DE JULHO DE 2026.",
    "numero": "129/2026",
    "data": "2026-07-20",
    "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "compras",
-   "resumo": "Foi publicado um aditivo que aumenta o valor de um contrato para a compra de computadores desktop com monitor para a Prefeitura de Varginha.",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta portaria designa a servidora pública Daiane da Costa Oliveira para substituir temporariamente Julio Cesar Silva na função gratificada de Apoiador de Base em Guaxupé, devido ao afastamento por férias do titular.",
    "pontos_atencao": [
-    "O aumento de 25% no valor do Lote 14 do contrato original.",
-    "A necessidade de verificar a justificativa para o reequilíbrio econômico-financeiro.",
-    "A empresa beneficiada pelo aditivo é a AZUL TEC LICITACOES EM INFORMATICA E SUPRIMENTOS LTDA."
+    "A portaria não especifica o valor da gratificação que será paga à substituta.",
+    "A substituição é temporária e durará até o retorno do servidor titular.",
+    "A designação implica em custo adicional para o município, referente à gratificação.",
+    "A portaria não detalha as atribuições da função de Apoiador de Base."
    ],
    "envolvidos": [
     {
-     "nome": "TEC LICITACOES EM INFORMATICA E SUPRIMENTOS LTDA",
+     "nome": "AZUL TEC LICITACOES EM INFORMATICA E SUPRIMENTOS LTDA",
      "papel": "empresa",
      "cnpj": "58.149.730/0001-39"
     },
     {
      "nome": "Caique Bruno da Silva - Supervisor de Compras. FUNDAÇÃO",
-     "papel": "empresa",
-     "cnpj": "19.110.162/0001-00"
+     "papel": "empresa"
+    },
+    {
+     "nome": "Fundação Hospitalar do Município de Varginha",
+     "cnpj": "19.110.162/0001-00",
+     "papel": "orgao"
     }
    ],
    "valores": {
     "total": 19775.0,
     "encontrados": [
      19775.0
-    ]
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário",
+    "confianca": "media",
+    "valor_principal_ia": "",
+    "pagina": 125,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=125"
    },
    "edicao": "1847",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 124,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=124"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:46:46+00:00"
   },
   {
    "id": "DIARIO-2026-1847-norma-lein7591de30deju",
    "fonte": "diario",
    "tipo": "norma",
    "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
    "titulo": "LEI N° 7.591 DE 30 DE JUNHO DE 2026.",
    "numero": "7.591",
    "data": "2026-07-20",
    "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Esta lei altera os nomes, requisitos e atribuições de diversos cargos efetivos da Fundação Hospitalar do Município de Varginha (FHOMUV).",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "Esta lei da Prefeitura de Varginha altera os nomes, requisitos de escolaridade e atribuições de diversos cargos efetivos da Fundação Hospitalar do Município de Varginha (FHOMUV).",
    "pontos_atencao": [
-    "As mudanças nos requisitos de escolaridade podem impactar futuros concursos ou a qualificação de funcionários atuais.",
-    "A alteração de atribuições, embora não detalhada no texto fornecido, pode influenciar a rotina e as responsabilidades dos profissionais da saúde."
+    "Verificar se os novos requisitos de escolaridade e especialização são proporcionais às atribuições dos cargos e se visam aprimorar o serviço público de saúde.",
+    "Monitorar o impacto orçamentário futuro, caso as alterações na estrutura de cargos levem a revisões salariais ou novas contratações.",
+    "Observar como será a transição para os servidores que já ocupam os cargos afetados pelas mudanças de nomenclatura e requisitos."
    ],
    "envolvidos": [
     {
@@ -173,430 +402,66 @@
    ],
    "valores": {
     "total": null,
-    "encontrados": []
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
    },
    "edicao": "1847",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 3,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=3"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:06+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein7591de30deju",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "LEI N° 7.591 DE 30 DE JUNHO DE 2026. - ANEXO I E II",
-   "numero": "7.591",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Esta lei descreve as atribuições e responsabilidades de um cargo de nível superior na área de Tecnologia da Informação para a Prefeitura de Varginha, com foco no Sistema Único de Saúde (SUS).",
-   "pontos_atencao": [],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein51372009",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 5.137/2009,",
-   "numero": "5.137/2009",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este ato detalha os requisitos de escolaridade para cargos públicos específicos na Prefeitura de Varginha, como Tecnólogo em Radiologia/Radioterapia, Escriturário e Fisioterapeuta.",
-   "pontos_atencao": [
-    "O texto fornecido é um excerto, o que limita a compreensão completa do contexto e do impacto total da lei.",
-    "É importante consultar as leis anteriores (Lei nº 5.137/2009, Lei nº 6.506/2018 e Lei nº 3.011/1998) para entender as modificações completas."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein45722006",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 4.572/2006,",
-   "numero": "4.572/2006",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Esta lei altera os requisitos de escolaridade para dois cargos específicos na Prefeitura de Varginha: Odontologista e Dosimetrista EF-10.",
-   "pontos_atencao": [],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein45722006",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 4.572/2006,",
-   "numero": "4.572/2006",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este ato esclarece os requisitos de escolaridade para o cargo de Fisioterapeuta CTI na Prefeitura de Varginha, especificando a necessidade de ensino superior completo em Fisioterapia com especialização em Fisioterapia Intensiva em Adulto.",
-   "pontos_atencao": [
-    "A alteração pode influenciar o perfil dos profissionais contratados para atuar em Unidades de Terapia Intensiva (CTI).",
-    "Define um padrão de qualificação para uma função sensível na área da saúde pública.",
-    "Pode impactar a disponibilidade de candidatos que atendam aos novos requisitos."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein45722006",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 4.572/2006,",
-   "numero": "4.572/2006",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "A Lei nº 4.572/2006, alterada pela Lei nº 6.506/2018 da Prefeitura de Varginha, estabelece os requisitos de escolaridade para os cargos de Fisioterapeuta Cardiopulmonar e Instrumentador Cirúrgico.",
-   "pontos_atencao": [
-    "A alteração nos requisitos de escolaridade pode impactar o perfil dos candidatos em futuros concursos públicos para essas funções.",
-    "É relevante observar se os novos requisitos estão alinhados com as demandas e necessidades atuais dos serviços de saúde municipais."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein45722006",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 4.572/2006,",
-   "numero": "4.572/2006",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "A Lei nº 4.572/2006, alterada pela Lei nº 6.506/2018, estabelece os requisitos de escolaridade e qualificação para cargos específicos na área da saúde da Prefeitura de Varginha.",
-   "pontos_atencao": [
-    "A precisão na descrição dos requisitos é crucial para garantir a contratação de profissionais adequados.",
-    "A atualização constante desses requisitos é importante para acompanhar as demandas e avanços na área da saúde."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein45722006",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 4.572/2006,",
-   "numero": "4.572/2006",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este ato altera os requisitos de escolaridade para cargos técnicos específicos na Prefeitura de Varginha, como Técnico em Eletricidade e Técnico em Enfermagem.",
-   "pontos_atencao": [
-    "Pode impactar o perfil dos profissionais que ingressam no serviço público municipal.",
-    "Assegura que os técnicos contratados possuam qualificações específicas e regulamentadas."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein45722006",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 4.572/2006,",
-   "numero": "4.572/2006",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "A Lei nº 4.572/2006, da Prefeitura de Varginha, foi alterada pela Lei nº 6.506/2018 para modificar a escolaridade exigida para o cargo de Técnico em Imobilização Ortopédica.",
-   "pontos_atencao": [
-    "A alteração nos requisitos pode impactar o perfil dos profissionais que ingressam no serviço público.",
-    "É importante verificar se a nova exigência está alinhada com as necessidades e atribuições do cargo."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein45722006",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 4.572/2006,",
-   "numero": "4.572/2006",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "A Lei nº 4.572/2006, publicada no Diário Oficial de Varginha, atualiza e especifica os requisitos de escolaridade para diversos cargos públicos da prefeitura.",
-   "pontos_atencao": [
-    "As novas especificações de escolaridade podem afetar futuros concursos públicos e a qualificação de servidores já em exercício.",
-    "A alteração de nomenclaturas e revogação de descrições de cargos exige atenção para a correta adequação dos registros e processos internos da prefeitura."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein30111998",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 3.011/1998,",
-   "numero": "3.011/1998",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este ato altera os requisitos de escolaridade para o cargo de Psicólogo Hospitalar na Prefeitura de Varginha, exigindo agora ensino superior completo em Psicologia com especialização na área.",
-   "pontos_atencao": [
-    "A alteração pode impactar o perfil dos profissionais que podem concorrer ao cargo, exigindo maior qualificação."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lein30111998",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 3.011/1998,",
-   "numero": "3.011/1998",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este ato detalha os requisitos de escolaridade para cargos específicos na Prefeitura de Varginha, como Psicólogo Hospitalar e Técnico em Eletrotécnica, conforme alterações na Lei nº 3.011/1998.",
-   "pontos_atencao": [
-    "Verificar se os requisitos definidos são compatíveis com as atribuições dos cargos.",
-    "Observar se a aplicação desses requisitos contribui para a melhoria dos serviços públicos."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lei",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei",
-   "numero": "",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este ato, referente à Lei nº 3.011/1998 da Prefeitura de Varginha-MG, detalha os requisitos de escolaridade e qualificação profissional para alguns cargos públicos municipais.",
-   "pontos_atencao": [
-    "A clareza e adequação dos requisitos de qualificação para cada função.",
-    "A garantia de que as exigências educacionais são proporcionais às responsabilidades dos cargos."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1847-norma-lei",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei",
-   "numero": "",
-   "data": "2026-07-20",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Esta lei atualiza os requisitos de escolaridade e qualificação para os cargos de médico com especialização em Geriatria ou Saúde da Família e de motorista de veículos de transporte de emergência na Prefeitura de Varginha.",
-   "pontos_atencao": [
-    "Verificar se os novos requisitos podem impactar a oferta de candidatos para futuras seleções.",
-    "Observar se a atualização dos requisitos se aplica a servidores já empossados ou apenas a novas contratações."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1847",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/254/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:46:12+00:00"
   },
   {
    "id": "DIARIO-2026-1846-pessoal-portarian1222026",
    "fonte": "diario",
    "tipo": "pessoal",
    "tipo_label": "Portaria",
-   "orgao": "Prefeitura de Varginha",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
    "titulo": "PORTARIA Nº 122/2026",
    "numero": "122/2026",
    "data": "2026-07-17",
    "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "saúde",
-   "resumo": "A Portaria nº 122/2026 da Fundação Hospitalar do Município de Varginha (FHOMUV) prorroga por mais 30 dias o prazo estabelecido em uma portaria anterior, a Portaria nº 095/2026.",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "A Portaria nº 122/2026 prorroga por 30 dias o prazo de uma portaria anterior. O documento também apresenta a classificação final de dois editais de seleção simplificada para cargos de Técnico em Radiologia/Radioterapia e Técnico em Laboratório de Análises Clínicas na Fundação Hospitalar do Município de Varginha (FHOMUV).",
    "pontos_atencao": [
-    "O conteúdo da Portaria nº 095/2026, cujo prazo foi prorrogado, não é detalhado, impedindo a compreensão completa do impacto da extensão.",
-    "A portaria não especifica o motivo da prorrogação, apenas menciona uma solicitação em processo.",
-    "A retroatividade da prorrogação pode ter implicações dependendo da natureza do prazo original."
+    "O conteúdo da Portaria nº 095/2026, cujo prazo foi prorrogado, não é detalhado, impossibilitando a compreensão do impacto da extensão.",
+    "A retroatividade da Portaria nº 122/2026 à data da portaria anterior pode ter implicações administrativas que não são explicitadas.",
+    "A desclassificação de candidatos por falta de documentos ou registro profissional indica a necessidade de atenção aos requisitos nos próximos processos seletivos."
    ],
    "envolvidos": [],
    "valores": {
     "total": null,
-    "encontrados": []
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
    },
    "edicao": "1846",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 25,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf#page=25"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:47:13+00:00"
   },
   {
    "id": "DIARIO-2026-1846-norma-resoluon272026cm",
@@ -610,150 +475,33 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "assistência social",
-   "resumo": "Esta resolução do Conselho Municipal dos Direitos da Pessoa Idosa de Varginha (CMDPI) divulga o resultado final de um edital de chamamento público. Ele lista as organizações da sociedade civil que foram habilitadas para receber recursos para projetos voltados à pessoa idosa.",
+   "resumo": "Esta resolução divulga o resultado final do edital de chamamento público que selecionou organizações da sociedade civil para desenvolver projetos de apoio à pessoa idosa em Varginha.",
    "pontos_atencao": [
-    "O repasse dos recursos está condicionado à regularidade das entidades junto ao Conselho, o que exige acompanhamento contínuo.",
-    "A resolução não especifica os valores a serem repassados a cada organização, o que pode dificultar a fiscalização do impacto orçamentário individual.",
-    "Os projetos visam atender a população idosa, um grupo que requer atenção especial na garantia de seus direitos."
+    "A resolução não especifica os valores a serem repassados a cada organização habilitada.",
+    "O repasse dos recursos está condicionado à regularidade das entidades junto ao Conselho Municipal dos Direitos da Pessoa Idosa."
    ],
    "envolvidos": [],
    "valores": {
     "total": null,
-    "encontrados": []
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
    },
    "edicao": "1846",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 35,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf#page=35"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1846-norma-resoluo32",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Resolução",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "RESOLUÇÃO 32 ...........................................................................................................",
-   "numero": "32",
-   "data": "2026-07-17",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "infraestrutura",
-   "resumo": "A Prefeitura de Varginha abriu um processo de licitação na modalidade Pregão Eletrônico para contratar uma empresa especializada na restauração da cobertura e recuperação do piso da quadra poliesportiva do Ginásio Minhocão.",
-   "pontos_atencao": [
-    "O valor total estimado para a contratação não é detalhado neste aviso, apenas o tipo de licitação (Menor Preço Global).",
-    "A qualidade dos materiais e da execução dos serviços de restauração da quadra.",
-    "O cumprimento dos prazos para a conclusão da obra."
-   ],
-   "envolvidos": [
-    {
-     "nome": "",
-     "cnpj": "18.240.119/0001-05",
-     "papel": "cnpj"
-    }
-   ],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1846",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1846-norma-lein13853de2019",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 13.853 de 2019.",
-   "numero": "13.853",
-   "data": "2026-07-17",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este documento, publicado no Diário Oficial de Varginha, detalha as regras e o cronograma para a contratação temporária de Farmacêuticos Bioquímicos para a Secretaria Municipal de Saúde, direcionada a candidatos já classificados em concurso público anterior.",
-   "pontos_atencao": [
-    "A contratação é temporária, com duração de 6 meses, podendo ser prorrogada por igual período, o que pode gerar rotatividade na equipe.",
-    "O processo seletivo é direcionado apenas para candidatos já classificados em um concurso público anterior (Edital 01/2025), limitando a concorrência a um grupo específico.",
-    "A avaliação funcional a cada 3 meses e as condições de encerramento do contrato são pontos importantes para a gestão do pessoal e a estabilidade dos serviços."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1846",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1846-norma-decreton88122018",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Decreto",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Decreto nº 8.812/2018",
-   "numero": "8.812/2018",
-   "data": "2026-07-17",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "idosos",
-   "resumo": "Este é um decreto que publica uma resolução do Conselho Municipal dos Direitos da Pessoa Idosa de Varginha (CMDPI).",
-   "pontos_atencao": [],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1846",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1846-licitacao-homologao1808202",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "homologação 18/08/2026 17h",
-   "numero": "18/08",
-   "data": "2026-07-17",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este ato detalha os procedimentos e anexos para o Processo Seletivo Simplificado – Edital n.º 01/2026 da Prefeitura de Varginha, incluindo fichas de inscrição, critérios de avaliação e a composição da comissão organizadora.",
-   "pontos_atencao": [
-    "A Comissão Organizadora tem autonomia para alterar as datas do processo, o que exige atenção dos candidatos e do público.",
-    "Há regras claras para impedimento ou suspeição de membros da comissão, visando garantir a imparcialidade do processo.",
-    "O processo inclui um sistema de cotas para negros(as), com formulário de autodeclaração."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1846",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:47:27+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-editaln012026pro",
@@ -767,30 +515,100 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "pessoal",
-   "resumo": "A Prefeitura de Varginha, através do Serviço Municipal Funerário e de Organização de Luto (SEMUL), abriu um processo seletivo simplificado para contratar profissionais temporários.",
+   "resumo": "A Prefeitura de Varginha, por meio do Serviço Municipal Funerário e de Organização de Luto (SEMUL), abriu um processo seletivo simplificado para contratar temporariamente profissionais para diversas funções.",
    "pontos_atencao": [
-    "A contratação é temporária e justificada por \"excepcional interesse público\", o que deve ser acompanhado para garantir que a necessidade seja de fato temporária e excepcional.",
-    "O processo de seleção inclui análise de documentos e entrevista, que podem ter critérios subjetivos e devem ser transparentes.",
-    "A formação de cadastro de reserva não garante a contratação, dependendo da necessidade e disponibilidade orçamentária."
+    "Trata-se de contratações temporárias por \"excepcional interesse público\", que são uma exceção à regra de concurso público.",
+    "Os salários variam de R$ 1.701,27 a R$ 2.364,37, com acréscimo de ticket-alimentação de R$ 1.060,00 mensais.",
+    "Há reserva de vagas para Pessoas com Deficiência (PcD) e candidatos negros, conforme legislação municipal."
    ],
    "envolvidos": [],
    "valores": {
-    "total": 2364.37,
+    "total": null,
     "encontrados": [
      2364.37,
      2111.12,
      1922.95,
      1701.27,
      1060.0
-    ]
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
    },
    "edicao": "1846",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 27,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf#page=27"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:47:19+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1846-licitacao-editaldeconvocao-0292026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 029/2026",
+   "numero": "029/2026",
+   "data": "2026-07-17",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca dois candidatos aprovados no concurso público de 2025 para o cargo de Farmacêutico Bioquímico, visando o preenchimento de vagas para atuação em horário estendido.",
+   "pontos_atencao": [
+    "As contratações são temporárias, com prazo inicial de seis meses, podendo ser prorrogado por igual período ou encerrado antes, conforme a necessidade da administração.",
+    "O horário de trabalho é fixo (17h às 21h) e não pode ser alterado pelos candidatos, que devem ter disponibilidade para este turno.",
+    "Os candidatos convocados devem apresentar uma série de documentos e certidões, incluindo atestado de saúde e certidões cível e criminal, para a contratação."
+   ],
+   "envolvidos": [
+    {
+     "nome": "GENTE SEGURADORA S/A",
+     "papel": "empresa",
+     "cnpj": "90.180.605/0001-02"
+    },
+    {
+     "nome": "Kelly Cristina da Silva - Assistente Administrativo. FUNDAÇÃO",
+     "papel": "empresa"
+    },
+    {
+     "nome": "CISSUL/SAMU",
+     "cnpj": "13.985.869/0001-84",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [
+     11946.6,
+     3711.64,
+     528.03
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "edicao": "1846",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 9,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf#page=9"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-22T03:47:03+00:00"
   },
   {
    "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
@@ -804,164 +622,34 @@
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "pessoal",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um candidato aprovado em concurso público para preencher temporariamente uma vaga de Farmacêutico Bioquímico.",
+   "resumo": "A Prefeitura de Varginha, através da Secretaria Municipal de Saúde, convoca candidatos aprovados no concurso público de 2025 para preencher uma vaga temporária de Farmacêutico Bioquímico. Esta contratação visa substituir uma servidora em licença-maternidade.",
    "pontos_atencao": [
-    "A contratação é temporária, com duração inicial de 6 meses, podendo ser prorrogada por igual período.",
-    "A justificativa para a contratação é a substituição de uma servidora afastada por licença maternidade, caracterizada como de excepcional interesse público.",
-    "O candidato convocado deve atender a requisitos específicos de formação e apresentar uma série de documentos para a efetivação da contratação."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": 7786.96,
-    "encontrados": [
-     7786.96
-    ]
-   },
-   "edicao": "1846",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 028/2026",
-   "numero": "028/2026",
-   "data": "2026-07-17",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este é um edital de convocação da Prefeitura de Varginha que chama candidatos aprovados em processo seletivo para apresentar a documentação necessária para contratação em cargos públicos. O documento também detalha as regras para a apresentação dos candidatos e as condições para a rescisão dos contratos de trabalho.",
-   "pontos_atencao": [
-    "A exigência de pontualidade e a rigorosa apresentação de documentos originais e atualizados, sob pena de desclassificação imediata.",
-    "As diversas condições para rescisão do contrato de trabalho, incluindo desempenho inadequado, faltas excessivas ou conduta imprópria.",
-    "A proibição de recontratação para servidores que tiveram contrato rescindido, salvo exceções, e para aqueles demitidos por processo administrativo disciplinar."
+    "A contratação é temporária, com prazo de 6 meses, podendo ser prorrogada por igual período ou encerrada antes, caso a servidora titular retorne.",
+    "A vaga é para substituição de servidora em licença-maternidade, o que justifica a contratação temporária sem novo concurso.",
+    "O vencimento mensal para o cargo é de R$ 7.786,96, impactando o orçamento municipal."
    ],
    "envolvidos": [],
    "valores": {
     "total": null,
-    "encontrados": []
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "valor_principal_ia": "7.786,96",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
    },
    "edicao": "1846",
    "links": {
     "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 5,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026401714590a9aa7d02f97344219345230cda9fe61.pdf#page=5"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO nº 029/2026",
-   "numero": "029/2026",
-   "data": "2026-07-17",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca dois candidatos classificados no concurso público de 2025 para o cargo de Farmacêutico Bioquímico.",
-   "pontos_atencao": [
-    "As contratações são temporárias, com prazo inicial de 6 meses, podendo ser prorrogado por igual período.",
-    "O horário de trabalho é fixo (17h às 21h), sem possibilidade de alteração pelo candidato.",
-    "Os candidatos devem comprovar aptidão e escolaridade conforme o edital do concurso público anterior."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1846",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1846-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 029/2026",
-   "numero": "029/2026",
-   "data": "2026-07-17",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este edital da Prefeitura de Varginha convoca candidatos aprovados em processo seletivo para apresentar a documentação necessária para a contratação em cargos públicos. Ele detalha os documentos exigidos, as regras para a apresentação e as condições para a rescisão do contrato.",
-   "pontos_atencao": [
-    "Candidatos devem apresentar todos os documentos exigidos e comparecer pontualmente, sob pena de desclassificação automática.",
-    "A assinatura da ata de registro não garante a contratação, que está condicionada a verificações posteriores e à disponibilidade da vaga.",
-    "O contrato pode ser rescindido por desempenho inadequado, faltas excessivas, conduta imprópria ou outras razões especificadas."
-   ],
-   "envolvidos": [
-    {
-     "nome": "SEGURADORA S/A",
-     "papel": "empresa",
-     "cnpj": "13.985.869/0001-84"
-    },
-    {
-     "nome": "Kelly Cristina da Silva - Assistente Administrativo. FUNDAÇÃO",
-     "papel": "empresa",
-     "cnpj": "90.180.605/0001-02"
-    }
-   ],
-   "valores": {
-    "total": 11946.6,
-    "encontrados": [
-     11946.6,
-     3711.64,
-     528.03
-    ]
-   },
-   "edicao": "1846",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1846-licitacao-edital012025",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Edital 01/2025.",
-   "numero": "01/2025",
-   "data": "2026-07-17",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este edital detalha os documentos que os candidatos aprovados em um processo seletivo ou concurso público da Prefeitura de Varginha devem apresentar para tomar posse de seus cargos.",
-   "pontos_atencao": [
-    "A extensa lista de documentos e declarações exigidas pode demandar tempo e organização dos candidatos.",
-    "A necessidade de documentos recentes, como o atestado de saúde e a certidão de quitação eleitoral emitida após a data do edital, exige atenção aos prazos."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1846",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/253/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
+   "gerado_em": "2026-07-22T03:46:54+00:00"
   },
   {
    "id": "DIARIO-2026-1845-pessoal-portarian23231de",
@@ -1747,37 +1435,6 @@
    "gerado_em": "2026-07-21T12:35:07+00:00"
   },
   {
-   "id": "DIARIO-2026-1845-norma-lein7594de06deju",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "LEI N° 7.594 DE 06 DE JULHO DE 2026.",
-   "numero": "7.594",
-   "data": "2026-07-16",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "saúde",
-   "resumo": "A Lei nº 7.594/2026 institui um incentivo financeiro temporário para profissionais de saúde das equipes de Estratégia Saúde da Família (ESF) e Atenção Primária (EAP) de Varginha. O objetivo é reconhecer a qualidade dos serviços prestados na atenção primária.",
-   "pontos_atencao": [
-    "O pagamento do incentivo depende exclusivamente de repasses da União, podendo ser suspenso caso esses recursos sejam interrompidos.",
-    "Há uma lista extensa de condições que podem levar à perda do direito ao incentivo, como licenças prolongadas, penalidades disciplinares ou não cumprimento de metas de trabalho.",
-    "O incentivo tem caráter temporário e não se incorpora ao salário, não gerando direitos trabalhistas ou previdenciários adicionais."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1845",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/252/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
    "id": "DIARIO-2026-1845-norma-lein7594",
    "fonte": "diario",
    "tipo": "norma",
@@ -1790,33 +1447,6 @@
    "relevancia": "baixo",
    "tema": "",
    "resumo": "A Lei nº 7.594 foi publicada pela Prefeitura de Varginha em 16 de julho de 2026.",
-   "pontos_atencao": [],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1845",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/252/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-21T12:35:07+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1845-norma-lein7594",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei n° 7.594",
-   "numero": "7.594",
-   "data": "2026-07-16",
-   "categoria": "Diário Oficial",
-   "relevancia": "baixo",
-   "tema": "legislação",
-   "resumo": "Este é o registro da Lei n° 7.594, publicada pela Prefeitura de Varginha.",
    "pontos_atencao": [],
    "envolvidos": [],
    "valores": {
@@ -2986,60 +2616,6 @@
    "gerado_em": "2026-07-17T10:09:08+00:00"
   },
   {
-   "id": "DIARIO-2026-1843-licitacao-edital012025comd",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Edital 01/2025, com diplomas originais, comprovando habilitação para o cargo.",
-   "numero": "01/2025",
-   "data": "2026-07-14",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este ato detalha os documentos e requisitos que os candidatos aprovados no Concurso Público Edital 01/2025 da Prefeitura de Varginha devem apresentar para serem contratados, além de estabelecer as regras para a rescisão de seus contratos.",
-   "pontos_atencao": [
-    "A exigência rigorosa de documentação e a pontualidade na apresentação, sob pena de desclassificação.",
-    "As diversas condições para rescisão de contrato, incluindo desempenho inadequado e conduta.",
-    "A proibição de recontratação para servidores demitidos por processo administrativo disciplinar."
-   ],
-   "envolvidos": [
-    {
-     "nome": "Secretário Municipal de Saúde FUNDAÇÃO",
-     "papel": "empresa",
-     "cnpj": "19.110.162/0001-00"
-    },
-    {
-     "nome": "REPRESENTAÇÃO E SERVIÇOS LTDA",
-     "papel": "empresa"
-    },
-    {
-     "nome": "AMPLIAÇÃO DO CTI DA FUNDAÇÃO",
-     "papel": "empresa"
-    },
-    {
-     "nome": "PARA ATENDIMENTO AOS PACIENTES INTERNOS, EXTERNOS E REFERENCIADOS À FUNDAÇÃO",
-     "papel": "empresa"
-    }
-   ],
-   "valores": {
-    "total": 344650.0,
-    "encontrados": [
-     344650.0,
-     176496.09,
-     1650.0,
-     1300.0
-    ]
-   },
-   "edicao": "1843",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/250/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-17T10:09:08+00:00"
-  },
-  {
    "id": "DIARIO-2026-1842-pessoal-portarian2128202",
    "fonte": "diario",
    "tipo": "pessoal",
@@ -4001,6 +3577,39 @@
    "gerado_em": "2026-07-14T12:53:08+00:00"
   },
   {
+   "id": "DIARIO-2026-1840-licitacao-editaldeconvocao-0122026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 012/2026",
+   "numero": "012/2026",
+   "data": "2026-07-09",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um candidato aprovado em concurso público para preencher temporariamente uma vaga de Farmacêutico Bioquímico.",
+   "pontos_atencao": [
+    "A contratação é temporária, com duração inicial de seis meses, podendo ser prorrogada por igual período.",
+    "A vaga é para substituir uma servidora afastada por licença-maternidade, justificando a contratação por excepcional interesse público.",
+    "O candidato convocado deve apresentar uma série de documentos e comprovar aptidão para a função."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 7786.96,
+    "encontrados": [
+     7786.96
+    ]
+   },
+   "edicao": "1840",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/247/",
+    "anexo_pdf": ""
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-14T12:53:08+00:00"
+  },
+  {
    "id": "DIARIO-2026-1840-licitacao-editaldeconvocao",
    "fonte": "diario",
    "tipo": "licitacao",
@@ -4023,39 +3632,6 @@
     "total": 3893.48,
     "encontrados": [
      3893.48
-    ]
-   },
-   "edicao": "1840",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/247/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-14T12:53:08+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1840-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO nº 012/2026",
-   "numero": "012/2026",
-   "data": "2026-07-09",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um candidato aprovado em concurso público para preencher temporariamente uma vaga de Farmacêutico Bioquímico.",
-   "pontos_atencao": [
-    "A contratação é temporária, com duração inicial de seis meses, podendo ser prorrogada por igual período.",
-    "A vaga é para substituir uma servidora afastada por licença-maternidade, justificando a contratação por excepcional interesse público.",
-    "O candidato convocado deve apresentar uma série de documentos e comprovar aptidão para a função."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": 7786.96,
-    "encontrados": [
-     7786.96
     ]
    },
    "edicao": "1840",
@@ -5561,130 +5137,6 @@
    "gerado_em": "2026-07-09T02:43:41+00:00"
   },
   {
-   "id": "DIARIO-2026-1837-norma-lein13853de2019",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 13.853 de 2019.",
-   "numero": "13.853",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este ato convoca candidatos já classificados em concurso público anterior para vagas temporárias de Técnico em Enfermagem na Secretaria Municipal de Saúde de Varginha, devido a excepcional interesse público. A contratação será por 120 dias, podendo ser prorrogada.",
-   "pontos_atencao": [
-    "A contratação é temporária, com duração inicial de 120 dias, e sua prorrogação depende de outro decreto.",
-    "O processo utiliza candidatos já classificados em um concurso público anterior, não abrindo novas inscrições.",
-    "O desempenho dos contratados será avaliado trimestralmente, e essa avaliação pode influenciar a continuidade do contrato."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-norma-lein13853de2019",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 13.853 de 2019.",
-   "numero": "13.853",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "A Prefeitura de Varginha está convocando candidatos já classificados no concurso público para Médico Clínico Geral (Edital 01/2025) para contratação temporária de excepcional interesse público.",
-   "pontos_atencao": [
-    "A contratação é temporária, com duração de 120 dias, podendo ser prorrogada ou encerrada antes, conforme a demanda.",
-    "O desempenho dos servidores contratados será avaliado a cada três meses, conforme decreto municipal.",
-    "A convocação é direcionada a candidatos já classificados em concurso público anterior, mas para um regime de contratação temporária."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-norma-lein13853de2019",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 13.853 de 2019.",
-   "numero": "13.853",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este documento é um edital da Secretaria Municipal de Saúde de Varginha-MG que convoca médicos clínicos gerais, já classificados em concurso público anterior, para manifestarem interesse em contratações temporárias de 120 dias.",
-   "pontos_atencao": [
-    "A contratação é temporária, com duração de 120 dias, podendo ser prorrogada ou encerrada conforme a demanda, o que pode gerar instabilidade no quadro de pessoal.",
-    "A convocação é direcionada a candidatos já classificados em concurso público anterior (Edital 01/2025), não se tratando de um novo processo seletivo amplo.",
-    "O desempenho do servidor contratado será avaliado a cada três meses, conforme Decreto Municipal nº 5.185/2010."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-norma-lein13853de2019",
-   "fonte": "diario",
-   "tipo": "norma",
-   "tipo_label": "Lei",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "Lei nº 13.853 de 2019.",
-   "numero": "13.853",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este documento convoca candidatos classificados em concurso público anterior para vagas temporárias de Oficial de Administração na Secretaria Municipal de Saúde de Varginha. Ele detalha as regras para a contratação, avaliação de desempenho e encerramento dos contratos temporários.",
-   "pontos_atencao": [
-    "A contratação é temporária, com duração inicial de 120 dias, podendo ser prorrogada ou encerrada conforme a demanda.",
-    "O desempenho dos servidores contratados será avaliado a cada três meses.",
-    "A convocação é direcionada a candidatos já classificados em um concurso público anterior, para vagas de \"excepcional interesse público\"."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
    "id": "DIARIO-2026-1837-norma-decreton12644de2",
    "fonte": "diario",
    "tipo": "norma",
@@ -5782,55 +5234,22 @@
    "gerado_em": "2026-07-09T02:43:41+00:00"
   },
   {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
+   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao-072026",
    "fonte": "diario",
    "tipo": "licitacao",
    "tipo_label": "Licitação",
    "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO nº 005/2026",
-   "numero": "005/2026",
+   "titulo": "EDITAL DE CONVOCAÇÃO Nº 07/2026",
+   "numero": "07/2026",
    "data": "2026-07-06",
    "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "saúde",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um enfermeiro classificado em concurso público para preencher uma vaga temporária e emergencial.",
+   "relevancia": "medio",
+   "tema": "bem-estar animal",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Meio Ambiente e do Setor de Bem-Estar Animal, convoca os proprietários de diversos equinos apreendidos em via pública para que os retirem do Abrigo Municipal.",
    "pontos_atencao": [
-    "A contratação é temporária, com prazo inicial de 120 dias, podendo ser prorrogada ou encerrada antes.",
-    "O horário de trabalho é fixo (11h às 21h, segunda a sexta) e não pode ser alterado pelo candidato.",
-    "A justificativa é o caráter emergencial para repor a equipe da Central de Vacinas e reduzir riscos epidemiológicos."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": 7786.96,
-    "encontrados": [
-     7786.96
-    ]
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 005/2026",
-   "numero": "005/2026",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este edital convoca candidatos para apresentação de documentos e estabelece as regras para a contratação de pessoal pela Prefeitura de Varginha, detalhando os requisitos para admissão e as condições para rescisão de contrato.",
-   "pontos_atencao": [
-    "A lista extensa e detalhada de documentos exigidos para a contratação, incluindo certidões específicas e atualizadas.",
-    "As condições rigorosas para a rescisão do contrato, como desempenho inadequado, faltas excessivas ou conduta imprópria.",
-    "A regra de desclassificação automática para candidatos que não comparecerem pontualmente ou recusarem a vaga no momento da chamada."
+    "O prazo para retirada dos animais é de 10 dias úteis.",
+    "Animais não retirados dentro do prazo serão encaminhados para adoção.",
+    "A prefeitura realizará o microchipamento de todos os animais apreendidos que não possuírem identificação."
    ],
    "envolvidos": [],
    "valores": {
@@ -5846,7 +5265,106 @@
    "gerado_em": "2026-07-09T02:43:41+00:00"
   },
   {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
+   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao-0092026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 009/2026",
+   "numero": "009/2026",
+   "data": "2026-07-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha, através da Secretaria Municipal de Saúde, convoca candidatos aprovados em concurso público para preencher uma vaga temporária de Oficial de Administração.",
+   "pontos_atencao": [
+    "A contratação é temporária e emergencial, com prazo de 120 dias, podendo ser prorrogado.",
+    "A vaga é para um único cargo de Oficial de Administração na Secretaria Municipal de Saúde.",
+    "A justificativa para a contratação é de excepcional interesse público e caráter emergencial."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 2112.13,
+    "encontrados": [
+     2112.13
+    ]
+   },
+   "edicao": "1837",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
+    "anexo_pdf": ""
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-09T02:43:41+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao-0082026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 008/2026",
+   "numero": "008/2026",
+   "data": "2026-07-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um candidato aprovado em concurso público para preencher uma vaga temporária de Médico Clínico Geral.",
+   "pontos_atencao": [
+    "A contratação é temporária, justificada como emergencial para atender demandas de doenças respiratórias sazonais.",
+    "O horário de trabalho é fixo (noturno, das 17h às 21h), sem possibilidade de alteração pelo candidato.",
+    "A vaga é para um único profissional, o que pode ser um ponto de atenção se a demanda emergencial for muito alta."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 9237.12,
+    "encontrados": [
+     9237.12
+    ]
+   },
+   "edicao": "1837",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
+    "anexo_pdf": ""
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-09T02:43:41+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao-0072026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 007/2026",
+   "numero": "007/2026",
+   "data": "2026-07-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, está convocando candidatos aprovados em concurso público para preencher uma vaga temporária de Médico Clínico Geral.",
+   "pontos_atencao": [
+    "A contratação é temporária, com prazo de 120 dias, podendo ser prorrogada ou encerrada antes.",
+    "O horário de trabalho é fixo (13h às 17h), sem possibilidade de alteração pelo candidato.",
+    "A justificativa para a contratação é de caráter emergencial para reduzir impactos na capacidade operacional das unidades de saúde."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 9237.12,
+    "encontrados": [
+     9237.12
+    ]
+   },
+   "edicao": "1837",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
+    "anexo_pdf": ""
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-09T02:43:41+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao-0062026",
    "fonte": "diario",
    "tipo": "licitacao",
    "tipo_label": "Licitação",
@@ -5884,245 +5402,24 @@
    "tipo": "licitacao",
    "tipo_label": "Licitação",
    "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 006/2026",
-   "numero": "006/2026",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este edital convoca candidatos para apresentação de documentos e estabelece as regras para contratação e possíveis desligamentos de servidores na Prefeitura de Varginha.",
-   "pontos_atencao": [
-    "A lista de documentos exigidos é extensa e inclui certidões com prazos de emissão específicos, o que pode ser um desafio para os candidatos.",
-    "As regras de desclassificação por atraso ou recusa de vaga são rigorosas, exigindo atenção máxima dos convocados.",
-    "As condições para rescisão de contrato, como desempenho inadequado ou faltas excessivas, indicam critérios de avaliação para os futuros servidores."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO nº 007/2026",
-   "numero": "007/2026",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 005/2026",
+   "numero": "005/2026",
    "data": "2026-07-06",
    "categoria": "Diário Oficial",
    "relevancia": "alto",
    "tema": "saúde",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, está convocando candidatos aprovados em concurso público para preencher uma vaga temporária de Médico Clínico Geral.",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um enfermeiro classificado em concurso público para preencher uma vaga temporária e emergencial.",
    "pontos_atencao": [
-    "A contratação é temporária, com prazo de 120 dias, podendo ser prorrogada ou encerrada antes.",
-    "O horário de trabalho é fixo (13h às 17h), sem possibilidade de alteração pelo candidato.",
-    "A justificativa para a contratação é de caráter emergencial para reduzir impactos na capacidade operacional das unidades de saúde."
+    "A contratação é temporária, com prazo inicial de 120 dias, podendo ser prorrogada ou encerrada antes.",
+    "O horário de trabalho é fixo (11h às 21h, segunda a sexta) e não pode ser alterado pelo candidato.",
+    "A justificativa é o caráter emergencial para repor a equipe da Central de Vacinas e reduzir riscos epidemiológicos."
    ],
    "envolvidos": [],
    "valores": {
-    "total": 9237.12,
+    "total": 7786.96,
     "encontrados": [
-     9237.12
+     7786.96
     ]
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 007/2026",
-   "numero": "007/2026",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este edital convoca candidatos aprovados em processo seletivo da Prefeitura de Varginha para apresentar a documentação necessária para contratação.",
-   "pontos_atencao": [
-    "A desclassificação automática do candidato em caso de atraso na apresentação no local e horário fixados.",
-    "A extensa lista de documentos exigidos, incluindo certidões recentes e a abertura de conta corrente em banco específico (Santander).",
-    "As condições para rescisão do contrato, que incluem desempenho profissional inadequado, faltas excessivas ou conduta imprópria."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO nº 008/2026",
-   "numero": "008/2026",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "saúde",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, convoca um candidato aprovado em concurso público para preencher uma vaga temporária de Médico Clínico Geral.",
-   "pontos_atencao": [
-    "A contratação é temporária, justificada como emergencial para atender demandas de doenças respiratórias sazonais.",
-    "O horário de trabalho é fixo (noturno, das 17h às 21h), sem possibilidade de alteração pelo candidato.",
-    "A vaga é para um único profissional, o que pode ser um ponto de atenção se a demanda emergencial for muito alta."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": 9237.12,
-    "encontrados": [
-     9237.12
-    ]
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 008/2026",
-   "numero": "008/2026",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este edital convoca candidatos aprovados em processo seletivo para a apresentação de documentos e comparecimento para contratação em cargos públicos na Prefeitura de Varginha.",
-   "pontos_atencao": [
-    "A lista de documentos exigidos é extensa e inclui certidões recentes, atestado de saúde admissional e conta corrente em banco específico.",
-    "A pontualidade é um requisito eliminatório; atrasos resultam em desclassificação automática.",
-    "O contrato pode ser rescindido por desempenho inadequado, faltas excessivas, desacato ou indisciplina."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO nº 009/2026",
-   "numero": "009/2026",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "A Prefeitura de Varginha, através da Secretaria Municipal de Saúde, convoca candidatos aprovados em concurso público para preencher uma vaga temporária de Oficial de Administração.",
-   "pontos_atencao": [
-    "A contratação é temporária e emergencial, com prazo de 120 dias, podendo ser prorrogado.",
-    "A vaga é para um único cargo de Oficial de Administração na Secretaria Municipal de Saúde.",
-    "A justificativa para a contratação é de excepcional interesse público e caráter emergencial."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": 2112.13,
-    "encontrados": [
-     2112.13
-    ]
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 009/2026",
-   "numero": "009/2026",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "pessoal",
-   "resumo": "Este edital de convocação da Prefeitura de Varginha chama candidatos aprovados para o cargo de Oficial de Administração para apresentar documentos e iniciar o processo de contratação.",
-   "pontos_atencao": [
-    "A lista de documentos exigidos é extensa e detalhada, incluindo certidões específicas e conta bancária em instituição particular (Santander).",
-    "Há regras rigorosas sobre pontualidade e apresentação dos documentos, com desclassificação automática em caso de não cumprimento.",
-    "O edital prevê condições para o distrato (rescisão do contrato), incluindo desempenho inadequado ou faltas excessivas."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1837",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/244/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-09T02:43:41+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1837-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 07/2026",
-   "numero": "07/2026",
-   "data": "2026-07-06",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "bem-estar animal",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Meio Ambiente e do Setor de Bem-Estar Animal, convoca os proprietários de diversos equinos apreendidos em via pública para que os retirem do Abrigo Municipal.",
-   "pontos_atencao": [
-    "O prazo para retirada dos animais é de 10 dias úteis.",
-    "Animais não retirados dentro do prazo serão encaminhados para adoção.",
-    "A prefeitura realizará o microchipamento de todos os animais apreendidos que não possuírem identificação."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
    },
    "edicao": "1837",
    "links": {
@@ -7270,43 +6567,6 @@
    "gerado_em": "2026-07-06T20:39:05+00:00"
   },
   {
-   "id": "DIARIO-2026-1834-licitacao-editaln042026",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL Nº 04/2026",
-   "numero": "04/2026",
-   "data": "2026-07-01",
-   "categoria": "Diário Oficial",
-   "relevancia": "medio",
-   "tema": "esporte",
-   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Esportes e Lazer (SEMEL), abriu um edital para selecionar uma empresa patrocinadora para o Campeonato Amadorzão de Varginha.",
-   "pontos_atencao": [
-    "A seleção da empresa patrocinadora será baseada no maior valor de premiação ofertado e na solidez da empresa.",
-    "Critérios como apoio anterior a eventos na cidade podem influenciar a escolha.",
-    "A empresa vencedora terá obrigações como o repasse de recursos e a execução de ações promocionais."
-   ],
-   "envolvidos": [
-    {
-     "nome": "",
-     "cnpj": "18.240.119/0001-05",
-     "papel": "cnpj"
-    }
-   ],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1834",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/241/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-06T20:39:10+00:00"
-  },
-  {
    "id": "DIARIO-2026-1834-licitacao-editaldeconvocao",
    "fonte": "diario",
    "tipo": "licitacao",
@@ -7338,37 +6598,6 @@
    },
    "origem_ia": "ia",
    "gerado_em": "2026-07-06T20:39:18+00:00"
-  },
-  {
-   "id": "DIARIO-2026-1834-licitacao-editaldeconvocao",
-   "fonte": "diario",
-   "tipo": "licitacao",
-   "tipo_label": "Licitação",
-   "orgao": "Prefeitura de Varginha",
-   "titulo": "EDITAL DE CONVOCAÇÃO Nº 010/2026",
-   "numero": "010/2026",
-   "data": "2026-07-01",
-   "categoria": "Diário Oficial",
-   "relevancia": "alto",
-   "tema": "pessoal",
-   "resumo": "Este edital convoca candidatos para a apresentação de documentos e estabelece as regras para a contratação de pessoal pela Prefeitura de Varginha, incluindo as condições para a rescisão de contratos.",
-   "pontos_atencao": [
-    "A lista de documentos exigidos é extensa e inclui requisitos específicos como conta corrente no Banco Santander e certidões recentes.",
-    "A pontualidade é um requisito eliminatório, e a ausência no horário fixado resulta em desclassificação automática.",
-    "O contrato pode ser rescindido por desempenho inadequado, faltas excessivas, desacato ou outras condutas inadequadas."
-   ],
-   "envolvidos": [],
-   "valores": {
-    "total": null,
-    "encontrados": []
-   },
-   "edicao": "1834",
-   "links": {
-    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/241/",
-    "anexo_pdf": ""
-   },
-   "origem_ia": "ia",
-   "gerado_em": "2026-07-06T20:39:24+00:00"
   },
   {
    "id": "DIARIO-2026-1834-inexigibilidade-inexigibilidaden",

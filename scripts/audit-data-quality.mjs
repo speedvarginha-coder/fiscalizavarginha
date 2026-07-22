@@ -309,7 +309,10 @@ const items = [];
 // correto e PRECISA ser publicado). So o primeiro tipo trava a publicacao
 // automatica; o segundo continua contando como severidade "error" na tela
 // e no IFT (achado grave e grave), mas nao impede o ciclo diario de rodar.
-function add(severity, id, title, detail, action, source = "", { blocksPipeline = true } = {}) {
+function add(severity, id, title, detail, action, source = "", {
+  blocksPipeline = true,
+  verification,
+} = {}) {
   items.push({
     severity,
     id,
@@ -317,6 +320,7 @@ function add(severity, id, title, detail, action, source = "", { blocksPipeline 
     detail: cleanPublishedText(detail),
     action: cleanPublishedText(action),
     source,
+    verification,
     blocksPipeline: severity === "error" ? blocksPipeline : undefined,
   });
 }
@@ -499,6 +503,13 @@ if (cnpjErrors.length) {
       `${vinculos.length} nome(s) de socio aparecem em 2+ empresas distintas que receberam recurso publico. Exemplos: ${vinculos.slice(0, 3).map((v) => `${v.socio} (${v.empresas.slice(0, 2).join(" e ")})`).join("; ")}. O QSA nao traz CPF: homonimos sao possiveis e isto NAO e conclusao de irregularidade.`,
       "Conferir manualmente os quadros societarios e verificar se as empresas disputaram as mesmas licitacoes antes de qualquer divulgacao.",
       "cnpjs.json",
+      { verification: {
+        estado: "indicio_a_verificar",
+        metodo: "nome_normalizado_de_socio_em_qsa",
+        confianca: "baixa",
+        evidencias: [`${vinculos.length} nome(s) em duas ou mais empresas`],
+        limitacoes: ["QSA sem CPF permite homonimos", "Socio em comum nao implica irregularidade"],
+      } },
     );
   }
 }
@@ -530,6 +541,13 @@ if (camaraTop.length && camaraContracts.length) {
       `${semContrato.length} dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: ${semContrato.slice(0, 4).map((f) => f.nome).join("; ")}.${cauda}`,
       "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
       "camara_betha.json",
+      { verification: {
+        estado: "nao_localizado",
+        metodo: "raiz_cnpj_com_fallback_por_nome",
+        confianca: "baixa",
+        evidencias: [`${semContrato.length} fornecedor(es) sem correspondencia automatica`],
+        limitacoes: ["Pode haver contrato plurianual ou instrumento equivalente", "Correspondencia por nome pode falhar com abreviacoes"],
+      } },
     );
   }
 }
@@ -551,6 +569,13 @@ if (prefeituraTop.length && prefeituraContracts.length) {
       `${semContrato.length} fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: ${semContrato.slice(0, 4).map((f) => `${f.nome} (R$ ${(f.valor_total/1000000).toFixed(1)}M)`).join("; ")}.`,
       "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "prefeitura.json",
+      { verification: {
+        estado: "nao_localizado",
+        metodo: "raiz_cnpj_com_fallback_por_nome",
+        confianca: "baixa",
+        evidencias: [`${semContrato.length} fornecedor(es) acima de R$ 1 milhao sem correspondencia`],
+        limitacoes: ["Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"],
+      } },
     );
   }
 }
@@ -588,6 +613,13 @@ if (emendasSemPagamentoAlto.length) {
     `${emendasSemPagamentoAlto.length} emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: ${emendasSemPagamentoAlto.slice(0, 3).map((e) => `${e.beneficiario} (R$ ${(Number(e.valor_brl || e.valor)/1000).toFixed(0)}k - ${e.autor})`).join("; ")}.`,
     "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
     "prefeitura.json",
+    { verification: {
+      estado: "nao_localizado",
+      metodo: "raiz_cnpj_e_periodo",
+      confianca: "baixa",
+      evidencias: [`${emendasSemPagamentoAlto.length} emenda(s) sem pagamento localizado`],
+      limitacoes: ["Ausencia no cruzamento nao prova falta de execucao", "Pagamento ao mesmo CNPJ nao comprova origem na emenda"],
+    } },
   );
 }
 
@@ -611,7 +643,13 @@ if (chunks.sancoes?.sancoes_vigentes > 0) {
       `${graves.length} sancao(oes) vigente(s) com alcance sobre Varginha: ${graves.slice(0, 3).map((a) => `${a.fornecedor_local} (${a.tipo} — ${a.orgao_sancionador})`).join("; ")}. Inidoneidade vale contra toda a administracao publica.`,
       "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "sancoes.json",
-      { blocksPipeline: false },
+      { blocksPipeline: false, verification: {
+        estado: "requer_confirmacao_documental",
+        metodo: "fornecedor_local_x_ceis_cnep",
+        confianca: "media",
+        evidencias: [`${graves.length} sancao(oes) classificada(s) como de alcance relevante`],
+        limitacoes: ["Confirmar CNPJ, vigencia, tipo e alcance da sancao na fonte primaria"],
+      } },
     );
   }
   if (informativas.length) {
@@ -623,6 +661,13 @@ if (chunks.sancoes?.sancoes_vigentes > 0) {
       `${fornecedores.length} fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (${informativas.length} sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.`,
       "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "sancoes.json",
+      { verification: {
+        estado: "informativo",
+        metodo: "fornecedor_local_x_ceis_cnep",
+        confianca: "media",
+        evidencias: [`${informativas.length} sancao(oes) de outros entes`],
+        limitacoes: ["Impedimento de outro ente nao impede por si so contratar com Varginha"],
+      } },
     );
   }
 } else if (chunks.sancoes?.verificados > 0) {
@@ -661,6 +706,13 @@ if (chunks.tseDoacoes?.cruzamentos_encontrados > 0) {
     `${chunks.tseDoacoes.cruzamentos_encontrados} cruzamento(s) entre doadores declarados (TSE 2024) e fornecedores/socios da base. Doacao e legal e publica; o vinculo e informativo e pede conferencia humana antes de qualquer divulgacao.`,
     "Conferir os detalhes em tse_doacoes.json e validar CPF/CNPJ antes de publicar.",
     "tse_doacoes.json",
+    { verification: {
+      estado: "indicio_a_verificar",
+      metodo: "doador_tse_x_fornecedor_ou_socio",
+      confianca: "media",
+      evidencias: [`${chunks.tseDoacoes.cruzamentos_encontrados} correspondencia(s) automatica(s)`],
+      limitacoes: ["Doacao eleitoral e atividade legal", "Validar CPF ou CNPJ antes de divulgar"],
+    } },
   );
 }
 

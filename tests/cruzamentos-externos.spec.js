@@ -15,6 +15,32 @@ function load(name) {
   return JSON.parse(fs.readFileSync(path.join(CHUNKS, name + ".json"), "utf8"));
 }
 
+test.describe("Explicabilidade dos cruzamentos", () => {
+  test("alertas sensiveis publicam metodo, confianca, evidencias e limitacoes", () => {
+    const auditoria = load("auditoria_dados");
+    const ids = new Set([
+      "camara-despesa-sem-contrato",
+      "prefeitura-despesa-sem-contrato",
+      "emendas-sem-repasses",
+      "fornecedor-inidoneo",
+      "fornecedor-sancionado-outro-ente",
+      "socios-em-comum",
+      "doador-fornecedor",
+    ]);
+    const sensiveis = (auditoria.items || []).filter((item) => ids.has(item.id));
+    expect(sensiveis.length).toBeGreaterThan(0);
+    for (const item of sensiveis) {
+      expect(item.verification, `${item.id}: verification ausente`).toBeTruthy();
+      expect(item.verification.metodo, `${item.id}: metodo ausente`).toBeTruthy();
+      expect(item.verification.confianca, `${item.id}: confianca ausente`).toBeTruthy();
+      expect(Array.isArray(item.verification.evidencias)).toBe(true);
+      expect(item.verification.evidencias.length).toBeGreaterThan(0);
+      expect(Array.isArray(item.verification.limitacoes)).toBe(true);
+      expect(item.verification.limitacoes.length).toBeGreaterThan(0);
+    }
+  });
+});
+
 test.describe("Integridade — Sanções CEIS/CNEP", () => {
   test("estrutura básica: contadores numéricos e achados é lista", () => {
     const s = load("sancoes");

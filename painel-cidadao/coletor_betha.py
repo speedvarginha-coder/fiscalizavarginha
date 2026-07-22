@@ -552,7 +552,14 @@ def cruzar_emendas(emendas: list[dict], credores: list[dict]) -> list[dict]:
         raiz = _cnpj_raiz(e.get("cnpj") or "")
         if not raiz:
             out.append({**e, "status": "sem_cnpj",
-                       "pagamentos": [], "valor_pago_total": 0})
+                       "pagamentos": [], "valor_pago_total": 0,
+                       "cruzamento": {
+                           "estado": "indisponivel",
+                           "metodo": "sem_identificador",
+                           "confianca": "indisponivel",
+                           "evidencias": [],
+                           "limitacoes": ["A emenda nao possui CNPJ suficiente para cruzamento automatico."],
+                       }})
             continue
         
         beneficiario_lower = (e.get("beneficiario") or "").lower()
@@ -570,6 +577,13 @@ def cruzar_emendas(emendas: list[dict], credores: list[dict]) -> list[dict]:
                 "pagamentos": [],
                 "valor_pago_total": 0.0,
                 "status": "execucao_direta",
+                "cruzamento": {
+                    "estado": "nao_aplicavel",
+                    "metodo": "classificacao_entidade_publica",
+                    "confianca": "media",
+                    "evidencias": [f"CNPJ raiz {raiz}", e.get("beneficiario") or ""],
+                    "limitacoes": ["Execucao direta nao produz pagamento a beneficiario externo para comparar."],
+                },
             })
             continue
 
@@ -593,6 +607,20 @@ def cruzar_emendas(emendas: list[dict], credores: list[dict]) -> list[dict]:
             "pagamentos": amostra,
             "valor_pago_total": round(total, 2),
             "status": "encontrado" if total > 0 else "sem_pagamento",
+            "cruzamento": {
+                "estado": "correspondencia_localizada" if total > 0 else "nao_localizado",
+                "metodo": "raiz_cnpj_e_periodo",
+                "confianca": "media" if total > 0 else "baixa",
+                "evidencias": [
+                    f"CNPJ raiz {raiz}",
+                    f"{len(relevantes)} registro(s) de pagamento do ano da emenda em diante",
+                ],
+                "limitacoes": [
+                    "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
+                    "Ausencia de pagamento localizado nao comprova que a emenda nao foi executada.",
+                    "Matriz e filiais compartilham a mesma raiz de CNPJ.",
+                ],
+            },
         })
     return out
 

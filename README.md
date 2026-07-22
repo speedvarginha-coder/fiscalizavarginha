@@ -56,7 +56,7 @@ py coletor.py
 3_Fiscaliza Varginha/
 ├── painel-cidadao/   Pasta pública (vai para servidor)
 ├── private/          Tokens e logs (NUNCA publica)
-├── tests/            41 testes Playwright
+├── tests/            142 testes automatizados
 ├── docs/             Documentação interna
 └── .gitignore        Proteção contra commit de segredos
 ```
@@ -81,7 +81,7 @@ O diretório `dashboard/`, quando existir, deve ser tratado como laboratório/mi
 
 ## Recursos do painel
 
-- **9 páginas:** Início, Prefeitura, Câmara, Relatórios, Pessoal, Marcadores, Atualizações, Sobre, Como cobrar
+- **Páginas temáticas:** Início, Atualizações, Monitoramento, Prefeitura, Fundação Cultural, Câmara, Emendas, Relatórios, Pessoal, Marcadores, Sobre, Conformidade e Como cobrar
 - **Placar do Dinheiro** com ícones SVG profissionais
 - **Filtros por categoria** (Saúde, Educação, Obras, Transporte, Cultura, Assistência, Administração, Segurança)
 - **Cruzamento CNPJ** entre fornecedores da Prefeitura e emendas da Câmara

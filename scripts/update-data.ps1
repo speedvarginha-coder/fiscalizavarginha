@@ -242,6 +242,13 @@ try {
   $lockToken = Acquire-Lock
 } catch {
   Write-Log $_.Exception.Message
+  # Sobreposicao esperada entre vigia e coleta diaria: o lock protege os
+  # dados e a proxima execucao retomara o trabalho. Nao marca a tarefa como
+  # falha operacional quando outro ciclo legitimo ja esta cuidando da base.
+  if ($_.Exception.Message -like "Outra coleta parece estar em andamento*") {
+    Write-Log "Ciclo pulado com seguranca por sobreposicao; nenhuma base foi alterada."
+    exit 0
+  }
   exit 2
 }
 
@@ -304,6 +311,12 @@ try {
       -Arguments @("-u", "coletor_diario.py", "--edicoes", "3") `
       -WorkingDirectory $painel
   }
+
+  Invoke-AndLog `
+    -Label "Enriquecendo valores de materias financeiras com anexos oficiais do SAPL." `
+    -FilePath "python" `
+    -Arguments @("-u", "scripts/backfill-publication-values.py") `
+    -WorkingDirectory $root
 
   Invoke-AndLog `
     -Label "Regenerando emendas municipais com proveniencia SAPL." `
@@ -418,6 +431,26 @@ try {
         -WorkingDirectory $root
     }
 
+    # Neste ponto os dados e os testes passaram. Registra o sucesso validado
+    # antes de empacotar para que o monitor publico nao fique preso na falha
+    # anterior. Deploy/WhatsApp continuam pendentes e serao registrados no
+    # estado privado ao final do ciclo.
+    Invoke-AndLog `
+      -Label "Registrando coleta validada e atualizando monitor publico." `
+      -FilePath "node" `
+      -Arguments @("scripts/record-pipeline-state.mjs", "--coleta=SUCESSO", "--deploy=PENDENTE", "--whatsapp=PENDENTE", "--fase=validada") `
+      -WorkingDirectory $root
+    Invoke-AndLog `
+      -Label "Atualizando monitor com o ultimo sucesso validado." `
+      -FilePath "npm.cmd" `
+      -Arguments @("run", "data:monitor") `
+      -WorkingDirectory $root
+    Invoke-AndLog `
+      -Label "Sincronizando monitor e manifesto apos validacao." `
+      -FilePath "npm.cmd" `
+      -Arguments @("run", "data:bundle") `
+      -WorkingDirectory $root
+
     if (-not $SkipPackage) {
       Invoke-AndLog `
         -Label "Gerando pacote limpo." `
@@ -484,6 +517,12 @@ try {
     }
   }
 
+  Invoke-AndLog `
+    -Label "Registrando resultado final do pipeline." `
+    -FilePath "node" `
+    -Arguments @("scripts/record-pipeline-state.mjs", "--coleta=$collectionStatus", "--deploy=$deployStatus", "--whatsapp=$whatsAppStatus", "--fase=final") `
+    -WorkingDirectory $root
+
   # Backup automatico no GitHub (so com -GitSync e coleta validada com sucesso).
   # Commita apenas os diretorios de dados; push nao-fatal (nao derruba o ciclo).
   if ($GitSync -and $collectionStatus -eq "SUCESSO") {
@@ -524,6 +563,11 @@ try {
   $collectionStatus = "FALHA"
   Write-Log ("ERRO: " + $_.Exception.Message)
   Restore-PublishedDataBackup -Backup $backupPath
+  try {
+    & node (Join-Path $root "scripts\record-pipeline-state.mjs") "--coleta=FALHA" "--deploy=$deployStatus" "--whatsapp=$whatsAppStatus" "--fase=final" 2>&1 | ForEach-Object { Write-Log "$_" }
+  } catch {
+    Write-Log "Aviso: nao foi possivel registrar o estado final de falha: $_"
+  }
   Write-Log "RESUMO: coleta=$collectionStatus deploy=$deployStatus whatsapp=$whatsAppStatus"
   exit 1
 } finally {

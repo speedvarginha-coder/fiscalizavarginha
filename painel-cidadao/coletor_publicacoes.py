@@ -15,17 +15,20 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import os
 import re
 import sys
 import threading
 import urllib.request
+import zipfile
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
 import enriquecedor_ia
+from pypdf import PdfReader
 
 # Console do Windows (cp1252) quebra com ✓/→ — força UTF-8 na saída.
 try:
@@ -38,6 +41,8 @@ SAIDA = ROOT / "data" / "chunks" / "publicacoes_estruturadas.json"
 SAPL = "https://sapl.varginha.mg.leg.br/api"
 SAPL_PUB = "https://sapl.varginha.mg.leg.br"
 UA = "ZelaVarginha/1.0 (fiscalizacao cidada)"
+MONEY_RE = re.compile(r"R\s*\$\s*([\d.]+,\d{2})", re.IGNORECASE)
+CACHE_DOCUMENTOS = ROOT.parent / "private" / "cache" / "camara_documentos"
 
 # id do tipo no SAPL -> (sigla, rótulo legível, tipo normalizado do schema)
 TIPO_INFO = {
@@ -143,6 +148,7 @@ def _hash_publicacao_existente(pub: dict) -> str:
 
 
 def _ia_da_publicacao(pub: dict) -> dict:
+    valores = pub.get("valores") or {}
     return {
         "interesse_publico": pub.get("interesse_publico") or "medio",
         "tema": pub.get("tema") or "",
@@ -150,7 +156,132 @@ def _ia_da_publicacao(pub: dict) -> dict:
         "o_que_propoe": pub.get("o_que_propoe") or "",
         "por_que_acompanhar": pub.get("por_que_acompanhar") or [],
         "pontos_atencao": pub.get("pontos_atencao") or [],
+        "valor_principal": valores.get("valor_principal_ia") or "",
         "_origem_ia": pub.get("origem_ia") or "",
+    }
+
+
+def _valor_brl(texto: str) -> float | None:
+    try:
+        return round(float(str(texto).replace(".", "").replace(",", ".")), 2)
+    except (TypeError, ValueError):
+        return None
+
+
+def _documento_financeiro(sigla: str, ementa: str) -> bool:
+    if sigla not in {"PLOE", "PLOM", "PLC", "EMEIM", "EMEN", "SUBS"}:
+        return False
+    texto = ementa.lower()
+    termos = (
+        "subven", "credito", "crédito", "orcament", "orçament", "repasse",
+        "recurso", "remuner", "gratifica", "impacto financeiro", "despesa",
+    )
+    return any(termo in texto for termo in termos)
+
+
+def _documento_oficial(url: str) -> tuple[str, list[str]]:
+    if not url:
+        return "", []
+    url = str(url).replace("http://sapl.varginha.mg.leg.br", "https://sapl.varginha.mg.leg.br")
+    chave = hashlib.sha1(url.encode("utf-8")).hexdigest()
+    cache = CACHE_DOCUMENTOS / f"{chave}.txt"
+    cache_paginas = CACHE_DOCUMENTOS / f"{chave}.pages.json"
+    if cache_paginas.exists():
+        paginas = json.loads(cache_paginas.read_text(encoding="utf-8"))
+        return " ".join(paginas), paginas
+    if cache.exists() and not url.lower().split("?", 1)[0].endswith(".pdf"):
+        return cache.read_text(encoding="utf-8"), []
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=35) as resposta:
+            conteudo = resposta.read()
+        if url.lower().split("?", 1)[0].endswith(".pdf"):
+            paginas = [re.sub(r"\s+", " ", pagina.extract_text() or "").strip() for pagina in PdfReader(io.BytesIO(conteudo)).pages]
+            texto = " ".join(paginas)
+        elif url.lower().split("?", 1)[0].endswith(".docx"):
+            with zipfile.ZipFile(io.BytesIO(conteudo)) as documento:
+                xml = documento.read("word/document.xml").decode("utf-8", errors="replace")
+            texto = re.sub(r"<[^>]+>", " ", xml)
+            paginas = []
+        else:
+            return "", []
+        texto = re.sub(r"\s+", " ", texto).strip()
+        CACHE_DOCUMENTOS.mkdir(parents=True, exist_ok=True)
+        cache.write_text(texto, encoding="utf-8")
+        if paginas:
+            cache_paginas.write_text(json.dumps(paginas, ensure_ascii=False), encoding="utf-8")
+        return texto, paginas
+    except Exception as exc:
+        print(f"  ! documento oficial nao lido ({url}): {exc}")
+        return "", []
+
+
+def _texto_documento_oficial(url: str) -> str:
+    return _documento_oficial(url)[0]
+
+
+def _valores_publicacao(
+    ementa: str,
+    ia: dict,
+    texto_oficial: str = "",
+    fonte_documento: str = "",
+    paginas_oficiais: list[str] | None = None,
+    url_documento: str = "",
+) -> dict:
+    """Mantém apenas valores verificáveis na ementa oficial do SAPL.
+
+    O valor sugerido pela IA serve para escolher o principal, mas nunca cria um
+    valor que não apareça literalmente na ementa.
+    """
+    base_textual = texto_oficial or ementa or ""
+    encontrados = []
+    for bruto in MONEY_RE.findall(base_textual):
+        valor = _valor_brl(bruto)
+        if valor is not None and valor not in encontrados:
+            encontrados.append(valor)
+
+    ia_bruto = str(ia.get("valor_principal") or "").strip()
+    valor_ia = _valor_brl(re.sub(r"[^\d.,]", "", ia_bruto)) if ia_bruto else None
+    principal = valor_ia if valor_ia in encontrados else None
+    metodo = "valor principal da IA confirmado no documento oficial" if principal is not None else ""
+    if principal is None:
+        padrao_principal = re.search(
+            r"(?:totalizando|valor\s+global(?:\s+estimado)?(?:\s+de)?|valor\s+total(?:\s+de)?|"
+            r"subven[cç][aã]o.{0,80}?no\s+valor\s+de)\s*R\s*\$\s*([\d.]+,\d{2})",
+            base_textual,
+            re.IGNORECASE,
+        )
+        if padrao_principal:
+            principal = _valor_brl(padrao_principal.group(1))
+            metodo = "rótulo de valor total localizado no documento oficial"
+    if principal is None and len(encontrados) == 1:
+        principal = encontrados[0]
+        metodo = "único valor monetário localizado no documento oficial"
+    confianca = "alta" if principal is not None and valor_ia == principal else ("media" if principal is not None else "indisponivel")
+    fonte = fonte_documento or "ementa oficial do SAPL"
+    pagina = None
+    if principal is not None and paginas_oficiais:
+        alvo = f"{principal:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+        for indice, texto_pagina in enumerate(paginas_oficiais, start=1):
+            if alvo in texto_pagina:
+                pagina = indice
+                break
+    link_verificacao = ""
+    if url_documento:
+        link_verificacao = str(url_documento).replace("http://sapl.varginha.mg.leg.br", "https://sapl.varginha.mg.leg.br")
+        if pagina:
+            link_verificacao += f"#page={pagina}"
+    return {
+        "total": principal,
+        "encontrados": encontrados[:6],
+        "natureza": "valor citado na matéria legislativa",
+        "fonte_total": fonte if principal is not None else "",
+        "confianca": confianca,
+        "metodo": metodo,
+        "documento_consultado": fonte_documento,
+        "pagina": pagina,
+        "link_verificacao": link_verificacao,
+        "valor_principal_ia": ia_bruto,
     }
 
 
@@ -178,7 +309,6 @@ def _monta_publicacao(
     hash_atual = _fonte_hash(rotulo, titulo, ementa, autor, data)
     pode_reusar = bool(
         publicacao_existente
-        and publicacao_existente.get("origem_ia") == "ia"
         and _hash_publicacao_existente(publicacao_existente) == hash_atual
     )
     if pode_reusar:
@@ -193,6 +323,17 @@ def _monta_publicacao(
             "autor": autor,
             "data": data,
         })
+
+    documento_url = str(materia.get("texto_original") or "")
+    texto_documento, paginas_documento = _documento_oficial(documento_url) if _documento_financeiro(sigla, ementa) else ("", [])
+    valores = _valores_publicacao(
+        ementa,
+        ia,
+        texto_documento,
+        "documento original no SAPL" if texto_documento else "",
+        paginas_documento,
+        documento_url,
+    )
 
     return {
         "id": f"CAMARA-{ano}-{sigla}-{numero}",
@@ -210,12 +351,21 @@ def _monta_publicacao(
         "o_que_propoe": ia["o_que_propoe"],
         "por_que_acompanhar": ia["por_que_acompanhar"],
         "pontos_atencao": ia["pontos_atencao"],
+        "valores": valores,
         "autor": autor,
         "situacao": _situacao(materia),
         "ementa": ementa,
         "links": {
             "consulta": f"{SAPL_PUB}/materia/{mid}" if mid else "",
             "inteiro_teor": materia.get("texto_original") or "",
+        },
+        "localizacao": {
+            "pagina_inicial": 1 if str(materia.get("texto_original") or "").lower().split("?", 1)[0].endswith(".pdf") else None,
+            "link_direto": (
+                str(materia.get("texto_original") or "").replace("http://sapl.varginha.mg.leg.br", "https://sapl.varginha.mg.leg.br") + "#page=1"
+                if str(materia.get("texto_original") or "").lower().split("?", 1)[0].endswith(".pdf")
+                else str(materia.get("texto_original") or "")
+            ),
         },
         "origem_ia": ia.get("_origem_ia", ""),
         "fonte_hash": hash_atual,

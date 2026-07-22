@@ -20,6 +20,9 @@
 
   function montar() {
     if (jaViu()) return;
+    // A apresentação ocupa espaço valioso nas páginas de consulta. Ela fica
+    // restrita à página inicial e a confirmação continua valendo para o site.
+    if ((document.body && document.body.dataset.page) !== "home") return;
     var main = document.getElementById("conteudo");
     if (!main || document.getElementById("onboarding-banner")) return;
 

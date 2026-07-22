@@ -36,6 +36,13 @@
     "fundacao": ["prefeitura", "camara_betha"],  // p/ cruzar fornecedores entre esferas (chegam após o render)
   };
 
+  // Bases grandes carregadas somente quando a seção correspondente for usada.
+  // Diferente da fase 2, elas não iniciam automaticamente após o primeiro render.
+  const CHUNKS_SOB_DEMANDA = {
+    "prefeitura": ["diarias"],
+    "camara": ["diarias"],
+  };
+
   // ============ MÓDULOS DE CÓDIGO ============
   // Carregados em ordem, ANTES de app.js. app.js destrutura window.ZELA.utils etc.
   const MODULOS = [
@@ -67,6 +74,9 @@
     ? chunksAttr.split(",").map((s) => s.trim()).filter(Boolean)
     : (CHUNKS_POR_PAGINA[page] || []);
 
+  const chunksSobDemanda = new Set(CHUNKS_SOB_DEMANDA[page] || []);
+  const cargasEmAndamento = new Map();
+
   // ============ HELPERS ============
   function loadScript(src) {
     return new Promise((resolve, reject) => {
@@ -97,6 +107,75 @@
         throw err;
       });
   }
+
+  function carregarChunkSobDemanda(key) {
+    if (!chunksSobDemanda.has(key)) return Promise.resolve(window.ZELA_DATA?.[key]);
+    if (window.ZELA_DATA && window.ZELA_DATA[key] != null) {
+      return Promise.resolve(window.ZELA_DATA[key]);
+    }
+    if (cargasEmAndamento.has(key)) return cargasEmAndamento.get(key);
+
+    window.dispatchEvent(new CustomEvent("zela:chunk:start", { detail: { key, page } }));
+    document.body?.setAttribute("data-chunk-loading", key);
+    const carga = fetchChunk(key)
+      .then(({ data }) => {
+        window.ZELA_DATA = window.ZELA_DATA || {};
+        window.ZELA_DATA[key] = data;
+        document.body?.removeAttribute("data-chunk-loading");
+        document.body?.setAttribute(`data-chunk-${key}`, "ready");
+        window.dispatchEvent(new CustomEvent("zela:chunk", { detail: { key, page, demand: true } }));
+        return data;
+      })
+      .catch((error) => {
+        document.body?.removeAttribute("data-chunk-loading");
+        document.body?.setAttribute(`data-chunk-${key}`, "error");
+        window.dispatchEvent(new CustomEvent("zela:chunk:error", { detail: { key, page, error } }));
+        throw error;
+      })
+      .finally(() => cargasEmAndamento.delete(key));
+
+    cargasEmAndamento.set(key, carga);
+    return carga;
+  }
+
+  window.ZELA_DATA_LOADER = Object.freeze({
+    load: carregarChunkSobDemanda,
+    isDeferred: (key) => chunksSobDemanda.has(key),
+    isLoaded: (key) => Boolean(window.ZELA_DATA && window.ZELA_DATA[key] != null),
+  });
+
+  function prepararGatilhosSobDemanda() {
+    if (!chunksSobDemanda.size) return;
+    document.body?.setAttribute("data-progressive-data", Array.from(chunksSobDemanda).join(","));
+
+    document.addEventListener("click", (event) => {
+      const trigger = event.target.closest?.('[data-pref-tab="diarias"]');
+      if (trigger && chunksSobDemanda.has("diarias")) {
+        carregarChunkSobDemanda("diarias").catch(() => {});
+      }
+    });
+
+    const params = new URLSearchParams(location.search);
+    if ((params.get("tab") === "diarias" || location.hash.includes("diarias")) && chunksSobDemanda.has("diarias")) {
+      carregarChunkSobDemanda("diarias").catch(() => {});
+    }
+
+    const observar = () => {
+      const id = page === "camara" ? "diariasCamaraBlock" : "diariasPrefeituraBlock";
+      const bloco = document.getElementById(id);
+      if (!bloco || !chunksSobDemanda.has("diarias") || !("IntersectionObserver" in window)) return;
+      const observer = new IntersectionObserver((entries) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        observer.disconnect();
+        carregarChunkSobDemanda("diarias").catch(() => {});
+      }, { rootMargin: "700px 0px" });
+      observer.observe(bloco);
+    };
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", observar, { once: true });
+    else observar();
+  }
+
+  prepararGatilhosSobDemanda();
 
   function removerOverlay() {
     const ov = document.getElementById("loading-overlay");
@@ -141,8 +220,8 @@
     try {
       // Separa chunks críticos (fase 1) dos pesados adiados (fase 2)
       const fase2Keys = new Set(CHUNKS_FASE2[page] || []);
-      const chunksFase1 = chunks.filter(k => !fase2Keys.has(k));
-      const chunksFase2 = chunks.filter(k => fase2Keys.has(k));
+      const chunksFase1 = chunks.filter(k => !fase2Keys.has(k) && !chunksSobDemanda.has(k));
+      const chunksFase2 = chunks.filter(k => fase2Keys.has(k) && !chunksSobDemanda.has(k));
 
       const resultados = await Promise.all(chunksFase1.map(fetchChunk));
       resultados.forEach(({ key, data }) => { window.ZELA_DATA[key] = data; });
