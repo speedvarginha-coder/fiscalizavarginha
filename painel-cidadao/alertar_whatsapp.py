@@ -970,6 +970,23 @@ def main():
     todas_mensagens = []
     proximo_estado = None
 
+    # Ordem de leitura no grupo: o WhatsApp empilha por ordem de ENVIO, entao a
+    # mensagem mais nova precisa sair por ULTIMO para o feed ficar cronologico.
+    # Antes a fila saia na ordem da base (mais nova primeiro) e o grupo ficava
+    # invertido: o ato de 20/07 aparecia acima do de 15/07.
+    # Chave de ordenacao: data (antiga -> nova) > fonte (Camara, Diario,
+    # complementares) > autor em ordem alfabetica (vereador, nos atos da Camara).
+    ordem_por_id: dict[str, tuple] = {}
+
+    def _registrar_ordem(publicacoes, fonte_ordem: int) -> None:
+        for _p in publicacoes or []:
+            _pid = _p.get("id")
+            if not _pid:
+                continue
+            _data = str(_p.get("data") or "")[:10]
+            _autor = str(_p.get("autor") or _p.get("titulo") or "").strip().upper()
+            ordem_por_id[_pid] = (_data, fonte_ordem, _autor)
+
     # 1. Processa Câmara
     if config.get("enviar_legislativo", True):
         try:
@@ -993,6 +1010,7 @@ def main():
                 ids_existentes = {pub.get("id") for pub in pubs}
                 pubs.extend(pub for pub in extras if pub.get("id") not in ids_existentes)
 
+            _registrar_ordem(pubs, 1)
             todas_mensagens += processar_camara(pubs, config, enviados)
         except Exception as e:
             print(f"❌ Erro ao ler publicações da Câmara: {e}")
@@ -1003,6 +1021,7 @@ def main():
             with open(DIARIO_JSON, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 pubs = data.get("publicacoes", [])
+                _registrar_ordem(pubs, 2)
                 todas_mensagens += processar_diario(pubs, config, enviados)
         except Exception as e:
             print(f"❌ Erro ao ler publicações do Diário Oficial: {e}")
@@ -1020,6 +1039,15 @@ def main():
         todas_mensagens += complementares
     except Exception as e:
         print(f"❌ Erro ao preparar monitoramento complementar: {e}")
+
+    # Aplica a ordem de leitura (ver comentario em ordem_por_id). Precisa vir
+    # ANTES do corte por max_por_execucao: assim cada ciclo envia as mais antigas
+    # pendentes e a fila drena em ordem, em vez de despejar as novas e empurrar
+    # as velhas para depois (que era o que invertia o grupo).
+    # Complementares (obras, transparencia, resumo) nao tem data de publicacao —
+    # entram no fim do lote, com a data de hoje.
+    _ordem_padrao = (hoje.isoformat(), 3, "")
+    todas_mensagens.sort(key=lambda item: ordem_por_id.get(item[0], _ordem_padrao))
 
     if not todas_mensagens:
         print("💡 Nenhuma nova publicação qualificada para envio hoje.")
