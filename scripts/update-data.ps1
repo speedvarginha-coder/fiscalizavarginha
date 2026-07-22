@@ -276,6 +276,25 @@ if ($SkipPackage -and -not $SkipDeploy) {
   throw "Deploy bloqueado: -SkipPackage exige -SkipDeploy, pois somente pacote validado no mesmo ciclo pode ser publicado."
 }
 
+# Alerta de operacao (canal privado, separado do WhatsApp publico): grava o
+# batimento cardiaco e verifica a saude do pipeline.
+# Roda ANTES do Acquire-Lock DE PROPOSITO: um ciclo barrado pelo lock precisa
+# registrar batimento e conseguir alertar. Antes ficava depois do lock, entao
+# um ciclo pendurado segurando o lock bloqueava todos os seguintes EM SILENCIO
+# (22/07/2026: vigia das 09:24 travou com 0,4s de CPU e parou o pipeline por 3h,
+# sem nenhum alerta, porque os ciclos seguintes morriam antes do health check).
+# Falha aqui nunca bloqueia a coleta — e diagnostico, nao pre-requisito.
+$tagTarefa = if ($SkipSlowAudits) { "vigia" } elseif ($OnlyIfChanged) { "hourly-legado" } else { "diaria" }
+try {
+  Invoke-AndLog `
+    -Label "Verificando saude operacional do pipeline (alerta privado)." `
+    -FilePath "npm.cmd" `
+    -Arguments @("run", "data:saude", "--", "--tarefa=$tagTarefa") `
+    -WorkingDirectory $root
+} catch {
+  Write-Log "Aviso: health check falhou e nao bloqueia o ciclo: $($_.Exception.Message)"
+}
+
 try {
   $lockToken = Acquire-Lock
 } catch {
@@ -303,17 +322,6 @@ try {
 
   Write-Log "Projeto: $root"
   Write-Log "Modo do coletor: $CollectorMode$(if ($SkipSlowAudits) { ' (vigia rapida — sem CEIS/CNEP/TSE/licitacoes)' })"
-
-  # Alerta de operacao (canal privado, separado do WhatsApp publico): grava
-  # batimento cardiaco e verifica se a automacao parou de disparar ou se
-  # ninguem tem sucesso ha muito tempo. Roda ANTES do -OnlyIfChanged decidir
-  # pular, para que ate um ciclo sem mudanca conte como "automacao viva".
-  $tagTarefa = if ($SkipSlowAudits) { "vigia" } elseif ($OnlyIfChanged) { "hourly-legado" } else { "diaria" }
-  Invoke-AndLog `
-    -Label "Verificando saude operacional do pipeline (alerta privado)." `
-    -FilePath "npm.cmd" `
-    -Arguments @("run", "data:saude", "--", "--tarefa=$tagTarefa") `
-    -WorkingDirectory $root
 
   if ($OnlyIfChanged) {
     Write-Log "Verificando se fontes mudaram antes de coletar."

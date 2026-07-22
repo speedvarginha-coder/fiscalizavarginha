@@ -196,6 +196,57 @@ if (whatsappStatus === "FALHA") {
   fs.rmSync(whatsappFalhaStatePath, { force: true });
 }
 
+// (C3) Ciclo travado: um run pode pendurar segurando o coleta.lock e, com isso,
+// fazer TODOS os ciclos seguintes serem pulados. Aconteceu em 22/07/2026: a vigia
+// das 09:24 travou (0,4s de CPU em 3h, sem escrever no log) e parou o pipeline por
+// 3 horas — nenhum alerta existente pegava, porque os ciclos seguintes morriam no
+// Acquire-Lock antes mesmo de rodar este health check (por isso ele agora roda
+// ANTES do lock, ver update-data.ps1).
+// Sinal preciso = lock antigo E log sem escrita recente. Um ciclo saudavel, mesmo
+// demorado (a diaria com auditorias lentas passa de 1h), escreve progresso o tempo
+// todo; um travado para de escrever. Isso evita falso positivo em coleta longa.
+const LOCK_IDADE_MIN = 45;
+const LOG_PARADO_MIN = 30;
+const cicloTravadoStatePath = path.join(stateDir, "ciclo_travado_alerta.json");
+const lockColetaPath = path.join(root, "private", "logs", "coleta.lock");
+let cicloTravadoMin = null;
+if (fs.existsSync(lockColetaPath)) {
+  const idadeLockMin = (agora - fs.statSync(lockColetaPath).mtime) / 60_000;
+  // Nome do log usa a data LOCAL (Get-Date no PowerShell), nao UTC.
+  const hojeLocal = new Date(agora.getTime() - agora.getTimezoneOffset() * 60_000)
+    .toISOString()
+    .slice(0, 10);
+  const logHoje = path.join(root, "private", "logs", `coleta-${hojeLocal}.log`);
+  const idadeLogMin = fs.existsSync(logHoje)
+    ? (agora - fs.statSync(logHoje).mtime) / 60_000
+    : Infinity;
+  if (idadeLockMin > LOCK_IDADE_MIN && idadeLogMin > LOG_PARADO_MIN) {
+    cicloTravadoMin = idadeLockMin;
+  }
+}
+if (cicloTravadoMin !== null) {
+  const dedupCiclo = readJson(cicloTravadoStatePath);
+  const horasDesdeAlertaCiclo = dedupCiclo?.alertado_em
+    ? (agora - new Date(dedupCiclo.alertado_em)) / 3_600_000
+    : null;
+  if (horasDesdeAlertaCiclo === null || horasDesdeAlertaCiclo >= 6) {
+    problemas.push(
+      `Um ciclo de coleta parece TRAVADO: segura o lock ha ${cicloTravadoMin.toFixed(0)} min e o log nao ` +
+      `recebe escrita ha mais de ${LOG_PARADO_MIN} min. Enquanto isso, todos os ciclos seguintes sao pulados ` +
+      "e nada e publicado. Conferir o processo do update-data.ps1 (Gerenciador de Tarefas); se estiver inerte " +
+      "(CPU perto de zero), encerrar e apagar private/logs/coleta.lock."
+    );
+    writeJson(cicloTravadoStatePath, { alertado_em: agora.toISOString(), minutos: cicloTravadoMin });
+  } else {
+    console.log(
+      `Ciclo travado ha ${cicloTravadoMin.toFixed(0)}min — alerta ja enviado ha ` +
+      `${horasDesdeAlertaCiclo.toFixed(1)}h; nao reenviando (dedup 6h).`
+    );
+  }
+} else if (fs.existsSync(cicloTravadoStatePath)) {
+  fs.rmSync(cicloTravadoStatePath, { force: true });
+}
+
 if (problemas.length) {
   const alerta = {
     gerado_em: agora.toISOString(),
