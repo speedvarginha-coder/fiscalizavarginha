@@ -113,7 +113,12 @@ test("interface carrega a união municipal e mostra N/D para recebimento não co
     "/emendas/data/emendas_estaduais_normalizadas.js",
     "/emendas/data/emendas_federais.js",
   ]) {
-    const response = await request.get(asset);
+    // Timeout generoso de proposito: emendas_municipais_unificadas.js tem ~3,5 MB
+    // e o padrao de 10s estoura em maquina carregada (a suite inteira leva ~7 min).
+    // Em 22/07/2026 esse timeout reprovou o teste e, como o gate derruba o ciclo,
+    // bloqueou coleta, deploy e os alertas do WhatsApp — sem nenhum dado errado.
+    // A verificacao continua a mesma: o asset precisa ser servido via HTTP.
+    const response = await request.get(asset, { timeout: 60000 });
     expect(response.ok(), `${asset} deve responder via HTTP`).toBeTruthy();
   }
 
