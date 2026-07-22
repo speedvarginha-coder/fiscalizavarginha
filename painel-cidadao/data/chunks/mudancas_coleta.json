@@ -1,40 +1,62 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-21T22:47:44.699Z",
+  "gerado_em": "2026-07-22T21:13:58.918Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-07-21T16-44-49-6c228bb8",
-    "coleta_iso": "2026-07-21T16:44:49",
-    "data_humana": "21/07/2026 - 16:44",
-    "arquivo": "data/snapshots/2026-07-21T16-44-49-6c228bb8.json"
+    "snapshot_id": "2026-07-22T18-09-28-f550482f",
+    "coleta_iso": "2026-07-22T18:09:28",
+    "data_humana": "22/07/2026 - 18:09",
+    "arquivo": "data/snapshots/2026-07-22T18-09-28-f550482f.json"
   },
   "anterior": {
-    "snapshot_id": "2026-07-21T09-34-57-39488b84",
+    "snapshot_id": "2026-07-21T09-34-57-55e09661",
     "coleta_iso": "2026-07-21T09:34:57",
     "data_humana": "21/07/2026 - 09:34",
-    "arquivo": "data/snapshots/2026-07-21T09-34-57-39488b84.json",
-    "origem": "chunks"
+    "arquivo": "",
+    "origem": "backup_pre_coleta"
   },
   "resumo": {
     "novos_contratos": 0,
-    "contratos_valor_alterado": 0,
+    "contratos_valor_alterado": 2,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 1,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
-    "valor_delta_brl": 0,
-    "total_mudancas": 1
+    "valor_delta_brl": -1527159.8800000013,
+    "total_mudancas": 3
   },
   "itens": [
     {
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 26/2025",
+      "detalhe": "DIGIPLAN TECNOLOGIA LTDA: antes R$ 10.231.134,72, agora R$ 8.590.562,36.",
+      "orgao": "Prefeitura",
+      "data": "2025-05-05",
+      "valor_brl": 8590562.36,
+      "delta_brl": -1640572.3600000013,
+      "alvo_id": "PREFEITURA-2025-26"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 170/2023",
+      "detalhe": "SERVICOS CFC LTDA: antes R$ 2.964.603,49, agora R$ 3.078.015,97.",
+      "orgao": "Prefeitura",
+      "data": "2023-12-01",
+      "valor_brl": 3078015.97,
+      "delta_brl": 113412.47999999998,
+      "alvo_id": "PREFEITURA-2023-170"
+    },
+    {
       "tipo": "nova_edicao_diario",
       "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1848",
+      "titulo": "Nova edicao do Diario Oficial 1849",
       "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-07-21",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/255/"
+      "data": "2026-07-22",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/256/"
     }
   ],
   "avisos": []

@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-21T13:05:27.579Z",
+  "gerado_em": "2026-07-22T21:13:57.787Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,8 +9,8 @@
     "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-21T09:34:57",
-    "data_humana": "21/07/2026 - 09:34"
+    "iso": "2026-07-22T18:09:28",
+    "data_humana": "22/07/2026 - 18:09"
   },
   "items": [
     {
@@ -51,7 +51,19 @@
       "title": "Fornecedores sem contrato vinculado automaticamente",
       "detail": "6 dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
       "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
-      "source": "camara_betha.json"
+      "source": "camara_betha.json",
+      "verification": {
+        "estado": "nao_localizado",
+        "metodo": "raiz_cnpj_com_fallback_por_nome",
+        "confianca": "baixa",
+        "evidencias": [
+          "6 fornecedor(es) sem correspondencia automatica"
+        ],
+        "limitacoes": [
+          "Pode haver contrato plurianual ou instrumento equivalente",
+          "Correspondencia por nome pode falhar com abreviacoes"
+        ]
+      }
     },
     {
       "severity": "warning",
@@ -59,7 +71,18 @@
       "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
       "detail": "10 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA (R$ 14.4M); VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
-      "source": "prefeitura.json"
+      "source": "prefeitura.json",
+      "verification": {
+        "estado": "nao_localizado",
+        "metodo": "raiz_cnpj_com_fallback_por_nome",
+        "confianca": "baixa",
+        "evidencias": [
+          "10 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
+        ],
+        "limitacoes": [
+          "Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"
+        ]
+      }
     },
     {
       "severity": "warning",
@@ -67,7 +90,19 @@
       "title": "Emendas de alto valor sem repasse identificado",
       "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
-      "source": "prefeitura.json"
+      "source": "prefeitura.json",
+      "verification": {
+        "estado": "nao_localizado",
+        "metodo": "raiz_cnpj_e_periodo",
+        "confianca": "baixa",
+        "evidencias": [
+          "10 emenda(s) sem pagamento localizado"
+        ],
+        "limitacoes": [
+          "Ausencia no cruzamento nao prova falta de execucao",
+          "Pagamento ao mesmo CNPJ nao comprova origem na emenda"
+        ]
+      }
     },
     {
       "severity": "error",
@@ -76,6 +111,17 @@
       "detail": "5 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); GLOBAL BRANDS COMERCIO LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json",
+      "verification": {
+        "estado": "requer_confirmacao_documental",
+        "metodo": "fornecedor_local_x_ceis_cnep",
+        "confianca": "media",
+        "evidencias": [
+          "5 sancao(oes) classificada(s) como de alcance relevante"
+        ],
+        "limitacoes": [
+          "Confirmar CNPJ, vigencia, tipo e alcance da sancao na fonte primaria"
+        ]
+      },
       "blocksPipeline": false
     },
     {
@@ -84,7 +130,18 @@
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
       "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (91 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
-      "source": "sancoes.json"
+      "source": "sancoes.json",
+      "verification": {
+        "estado": "informativo",
+        "metodo": "fornecedor_local_x_ceis_cnep",
+        "confianca": "media",
+        "evidencias": [
+          "91 sancao(oes) de outros entes"
+        ],
+        "limitacoes": [
+          "Impedimento de outro ente nao impede por si so contratar com Varginha"
+        ]
+      }
     },
     {
       "severity": "warning",
@@ -134,7 +191,19 @@
       "title": "Fornecedores sem contrato vinculado automaticamente",
       "detail": "6 dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
       "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
-      "source": "camara_betha.json"
+      "source": "camara_betha.json",
+      "verification": {
+        "estado": "nao_localizado",
+        "metodo": "raiz_cnpj_com_fallback_por_nome",
+        "confianca": "baixa",
+        "evidencias": [
+          "6 fornecedor(es) sem correspondencia automatica"
+        ],
+        "limitacoes": [
+          "Pode haver contrato plurianual ou instrumento equivalente",
+          "Correspondencia por nome pode falhar com abreviacoes"
+        ]
+      }
     },
     {
       "severity": "warning",
@@ -142,7 +211,18 @@
       "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
       "detail": "10 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA (R$ 14.4M); VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
-      "source": "prefeitura.json"
+      "source": "prefeitura.json",
+      "verification": {
+        "estado": "nao_localizado",
+        "metodo": "raiz_cnpj_com_fallback_por_nome",
+        "confianca": "baixa",
+        "evidencias": [
+          "10 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
+        ],
+        "limitacoes": [
+          "Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"
+        ]
+      }
     },
     {
       "severity": "warning",
@@ -150,7 +230,19 @@
       "title": "Emendas de alto valor sem repasse identificado",
       "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
-      "source": "prefeitura.json"
+      "source": "prefeitura.json",
+      "verification": {
+        "estado": "nao_localizado",
+        "metodo": "raiz_cnpj_e_periodo",
+        "confianca": "baixa",
+        "evidencias": [
+          "10 emenda(s) sem pagamento localizado"
+        ],
+        "limitacoes": [
+          "Ausencia no cruzamento nao prova falta de execucao",
+          "Pagamento ao mesmo CNPJ nao comprova origem na emenda"
+        ]
+      }
     },
     {
       "severity": "error",
@@ -159,6 +251,17 @@
       "detail": "5 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); GLOBAL BRANDS COMERCIO LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json",
+      "verification": {
+        "estado": "requer_confirmacao_documental",
+        "metodo": "fornecedor_local_x_ceis_cnep",
+        "confianca": "media",
+        "evidencias": [
+          "5 sancao(oes) classificada(s) como de alcance relevante"
+        ],
+        "limitacoes": [
+          "Confirmar CNPJ, vigencia, tipo e alcance da sancao na fonte primaria"
+        ]
+      },
       "blocksPipeline": false
     },
     {
@@ -167,7 +270,18 @@
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
       "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (91 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
-      "source": "sancoes.json"
+      "source": "sancoes.json",
+      "verification": {
+        "estado": "informativo",
+        "metodo": "fornecedor_local_x_ceis_cnep",
+        "confianca": "media",
+        "evidencias": [
+          "91 sancao(oes) de outros entes"
+        ],
+        "limitacoes": [
+          "Impedimento de outro ente nao impede por si so contratar com Varginha"
+        ]
+      }
     },
     {
       "severity": "warning",
