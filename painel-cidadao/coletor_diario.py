@@ -231,17 +231,53 @@ def _parse_ia_valor(val_str: str) -> float | None:
         return None
 
 
+_PERIODICIDADES = (
+    (re.compile(r"(?i)\bmensalmente\b|\bpor m[êe]s\b|\bmensais?\b"), "por mês"),
+    (re.compile(r"(?i)\banualmente\b|\bvalor anual\b|\bao ano\b|\bpor ano\b|\banuais?\b"), "por ano"),
+    (re.compile(r"(?i)\bdiariamente\b|\bpor dia\b"), "por dia"),
+)
+
+
+def _periodicidade_do_valor(trecho: str, valor_bruto: str | None) -> str:
+    """Diz se o valor e recorrente (mensal/anual), olhando o texto em volta dele.
+
+    Sem isso a mensagem publica mostra so "R$ 111,95", que o cidadao le como
+    pagamento unico — quando na verdade e a taxa MENSAL de uso de uma banca no
+    Mercado do Produtor. Idem para leis, onde R$ 190.944,32 e o impacto ANUAL.
+    Procura primeiro numa janela ao redor do valor (mais preciso); se nao achar,
+    cai para o trecho inteiro, que ja e o texto de um unico ato.
+    """
+    janela = trecho
+    if valor_bruto:
+        pos = trecho.find(valor_bruto)
+        if pos >= 0:
+            janela = trecho[max(0, pos - 250): pos + 250]
+    for regex, rotulo in _PERIODICIDADES:
+        if regex.search(janela):
+            return rotulo
+    if janela is not trecho:
+        for regex, rotulo in _PERIODICIDADES:
+            if regex.search(trecho):
+                return rotulo
+    return ""
+
+
 def _extrai_valores(trecho: str) -> dict:
     # Remove linhas de tabelas de projeção de faturamento para evitar falsos positivos gigantes
     # Ex: "2026 R$ 13.000.000,00" ou "2026: R$ 13.000.000,00" ou "2026 - R$ 13.000.000,00"
     trecho_limpo = re.sub(r"(?im)^\s*(?:20\d{2})\b.*?(?:R\$|R\s*\$)\s*[\d.,]+.*$", "", trecho)
-    vals = sorted({_valor_brl(v) for v in MONEY_RE.findall(trecho_limpo)}, reverse=True)
+    brutos = MONEY_RE.findall(trecho_limpo)
+    vals = sorted({_valor_brl(v) for v in brutos}, reverse=True)
+    unico = vals[0] if len(vals) == 1 else None
+    # Periodicidade so faz sentido quando ha um valor definido para descrever.
+    bruto_do_unico = brutos[0] if (unico is not None and brutos) else None
     return {
-        "total": vals[0] if len(vals) == 1 else None,
+        "total": unico,
         "encontrados": vals[:6],
         "natureza": "valor citado no ato",
         "fonte_total": "texto oficial do Diário" if len(vals) == 1 else "",
         "confianca": "media" if len(vals) == 1 else "indisponivel",
+        "periodicidade": _periodicidade_do_valor(trecho, bruto_do_unico) if unico is not None else "",
     }
 
 

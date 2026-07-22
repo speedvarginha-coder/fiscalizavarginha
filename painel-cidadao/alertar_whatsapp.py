@@ -432,6 +432,9 @@ def resolver_valor_publicacao(pub: dict, escopo: str) -> dict | None:
             "metodo": valores.get("metodo") or "extração do texto oficial",
             "pagina": valores.get("pagina"),
             "link_verificacao": valores.get("link_verificacao") or "",
+            # "por mês"/"por ano": sem isso o cidadao le uma taxa mensal de
+            # R$ 111,95 como se fosse pagamento unico.
+            "periodicidade": valores.get("periodicidade") or "",
         }
 
     if explicitos:
@@ -458,6 +461,7 @@ def resolver_valor_publicacao(pub: dict, escopo: str) -> dict | None:
             "fonte": "extração numérica legada",
             "confianca": "baixa",
             "metodo": "extração sem proveniência estruturada",
+            "periodicidade": valores.get("periodicidade") or "",
         }
     return None
 
@@ -478,8 +482,12 @@ def bloco_valor_publicacao(pub: dict, escopo: str) -> str:
     confianca = {"alta": "ALTA", "media": "MÉDIA", "baixa": "BAIXA"}.get(
         str(resolvido.get("confianca") or "").lower(), "INDISPONÍVEL"
     )
+    # A periodicidade acompanha o numero para o valor nao ser lido como
+    # pagamento unico quando e recorrente (ex.: taxa mensal de uso de banca).
+    periodo = resolvido.get("periodicidade") or ""
+    valor_exibido = formatar_valor(resolvido.get("valor")) + (f" {periodo}" if periodo else "")
     bloco = (
-        f"- {str(resolvido.get('natureza') or 'Valor').capitalize()}: {formatar_valor(resolvido.get('valor'))}\n"
+        f"- {str(resolvido.get('natureza') or 'Valor').capitalize()}: {valor_exibido}\n"
         f"- Fonte do valor: {resolvido.get('fonte') or 'não informada'}\n"
         f"- Confiança: {confianca}\n"
         f"- Método: {resolvido.get('metodo') or 'não informado'}"
@@ -977,6 +985,12 @@ def main():
     # Chave de ordenacao: data (antiga -> nova) > fonte (Camara, Diario,
     # complementares) > autor em ordem alfabetica (vereador, nos atos da Camara).
     ordem_por_id: dict[str, tuple] = {}
+    # Chave do ATO (nao do registro): o mesmo ato pode entrar duas vezes com
+    # titulos diferentes e virar dois ids. Em 22/07 a LEI 7.595 foi publicada
+    # duas vezes no grupo porque um titulo usava "Nº" e o outro "N°" — sao
+    # caracteres distintos, entao o slug do id mudou. tipo+numero+edicao
+    # identifica o ato de verdade, independente de como o titulo foi escrito.
+    chave_ato_por_id: dict[str, tuple] = {}
 
     def _registrar_ordem(publicacoes, fonte_ordem: int) -> None:
         for _p in publicacoes or []:
@@ -986,6 +1000,13 @@ def main():
             _data = str(_p.get("data") or "")[:10]
             _autor = str(_p.get("autor") or _p.get("titulo") or "").strip().upper()
             ordem_por_id[_pid] = (_data, fonte_ordem, _autor)
+            _num = re.sub(r"\D", "", str(_p.get("numero") or ""))
+            if _num:  # sem numero nao da para afirmar que e o mesmo ato
+                chave_ato_por_id[_pid] = (
+                    str(_p.get("tipo") or ""),
+                    _num,
+                    str(_p.get("edicao") or _data),
+                )
 
     # 1. Processa Câmara
     if config.get("enviar_legislativo", True):
@@ -1058,13 +1079,20 @@ def main():
 
     mensagens_unicas = []
     ids_na_execucao = set()
+    atos_na_execucao = set()
     for pid, msg in todas_mensagens:
         if pid in enviados:
             continue
         if pid in ids_na_execucao:
             print(f"ℹ️ Publicação duplicada ignorada nesta execução: {pid}")
             continue
+        chave_ato = chave_ato_por_id.get(pid)
+        if chave_ato and chave_ato in atos_na_execucao:
+            print(f"ℹ️ Mesmo ato já enfileirado com outro título; ignorando: {pid}")
+            continue
         ids_na_execucao.add(pid)
+        if chave_ato:
+            atos_na_execucao.add(chave_ato)
         mensagens_unicas.append((pid, msg))
 
     todas_mensagens = mensagens_unicas
