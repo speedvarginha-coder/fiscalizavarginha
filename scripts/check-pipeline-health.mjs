@@ -66,11 +66,23 @@ function enviarAlertaEmail(assunto, corpo) {
 const modo = process.argv.includes("--registrar") ? "registrar" : "checar";
 const tarefa = (process.argv.find((a) => a.startsWith("--tarefa=")) || "").split("=")[1] || "desconhecida";
 
+// O watchdog roda por FORA do pipeline (node direto, sem passar pelo lock nem
+// pela tarefa da coleta). Se ele gravasse o MESMO batimento da coleta, um
+// pipeline morto pareceria vivo: foi exatamente isso que mascarou a parada de
+// 22/07/2026 — a coleta ficou 3h+ bloqueada e o heartbeat seguia fresco, porque
+// o watchdog o renovava a cada 2h. Agora o batimento da COLETA so avanca em
+// ciclo de coleta; o watchdog grava o seu, so para telemetria propria.
+const ehWatchdog = tarefa.startsWith("watchdog");
+const heartbeatWatchdogPath = path.join(stateDir, "watchdog_heartbeat.json");
+
 // Limites: folgados o bastante para nao alarmar por causa de silencio normal
 // das fontes (fim de semana, noite), mas curtos o bastante para pegar uma
 // automacao real quebrada em menos de um dia.
 const LIMITE_HEARTBEAT_HORAS = 6; // nenhum disparo (nem skip) em 6h = Task Scheduler/PC parado
-const LIMITE_SUCESSO_HORAS = 48; // sem NENHUMA coleta bem-sucedida em 48h = falhas repetidas
+// 14h: com coleta diaria (02:00, 06:30, 07:00) + vigia de hora em hora, passar
+// 14h sem NENHUM sucesso ja e anomalia clara. Estava em 48h e por isso a parada
+// de 22/07 (pipeline morto desde 09:24) so geraria e-mail no dia seguinte.
+const LIMITE_SUCESSO_HORAS = 14;
 
 function readJson(filePath, fallback = undefined) {
   try {
@@ -89,7 +101,7 @@ function writeJson(filePath, payload) {
 const agora = new Date();
 
 if (modo === "registrar") {
-  writeJson(heartbeatPath, {
+  writeJson(ehWatchdog ? heartbeatWatchdogPath : heartbeatPath, {
     ultimo_disparo: agora.toISOString(),
     tarefa,
   });
@@ -278,7 +290,10 @@ if (problemas.length) {
   console.log("Saude do pipeline normalizada — alerta operacional anterior removido.");
 }
 
-writeJson(heartbeatPath, { ultimo_disparo: agora.toISOString(), tarefa });
+writeJson(ehWatchdog ? heartbeatWatchdogPath : heartbeatPath, {
+  ultimo_disparo: agora.toISOString(),
+  tarefa,
+});
 console.log(
   `Saude do pipeline: heartbeat ${horasDesdeHeartbeat === null ? "(primeiro registro)" : horasDesdeHeartbeat.toFixed(1) + "h atras"}` +
   `, ultimo sucesso ${horasDesdeSucesso === null ? "desconhecido" : horasDesdeSucesso.toFixed(1) + "h atras"}.`
