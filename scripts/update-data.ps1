@@ -40,7 +40,14 @@ New-Item -ItemType Directory -Force -Path $backupRoot | Out-Null
 function Write-Log {
   param([string]$Message)
   $line = "[" + (Get-Date -Format "yyyy-MM-dd HH:mm:ss") + "] " + $Message
-  Write-Host $line
+  # ORDEM IMPORTA: arquivo ANTES do console.
+  # A tarefa roda com console visivel (Hidden=False, LogonType=Interactive) e o
+  # console do Windows vem com QuickEdit ligado: um clique que selecione texto
+  # BLOQUEIA a escrita e congela o processo inteiro. Em 22/07/2026 um ciclo
+  # ficou 3h vivo com 0,4s de CPU, sem uma linha no log, travando todos os
+  # ciclos seguintes (MultipleInstances=IgnoreNew) — e ficamos cegos justamente
+  # porque o Write-Host vinha primeiro e nunca chegava no arquivo.
+  # Gravando antes, um travamento passa a deixar rastro ate o ponto exato.
   # Gravar o log NUNCA pode derrubar a coleta. Se o arquivo estiver preso por
   # outro processo (antivirus, backup/sync em nuvem, visualizador de log, um
   # `tail` aberto), o Add-Content lanca IOException e, com
@@ -49,7 +56,7 @@ function Write-Log {
   # Em 22/07/2026 foi exatamente isso: um `tail -F` no log derrubou o ciclo das
   # 13:24 (exit 1, zero linhas no arquivo, diagnostico as cegas).
   # Agora e melhor-esforco: tenta, espera um instante, tenta de novo e desiste
-  # em silencio. O console (Write-Host acima) segue como registro de fallback.
+  # em silencio. O arquivo e a fonte de verdade do diagnostico.
   try {
     Add-Content -LiteralPath $logPath -Value $line -Encoding UTF8 -ErrorAction Stop
   } catch {
@@ -60,6 +67,7 @@ function Write-Log {
       # Desiste: log e diagnostico, nao pre-requisito da coleta.
     }
   }
+  Write-Host $line
 }
 
 function Invoke-AndLog {
