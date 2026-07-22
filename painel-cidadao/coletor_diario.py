@@ -262,6 +262,29 @@ def _periodicidade_do_valor(trecho: str, valor_bruto: str | None) -> str:
     return ""
 
 
+_EXERCICIO_RE = re.compile(
+    r"(?i)(?:impacto|despesa|estimativa|previs[ãa]o)[^\n:]{0,60}?(20\d{2})\s*[:\-]\s*"
+    r"(?:R\$|R\s*\$)\s*([\d.]+,\d{2})"
+)
+
+
+def _valores_por_exercicio(trecho: str) -> list[dict]:
+    """Captura o impacto ano a ano quando o ato compromete varios exercicios.
+
+    Leis com impacto orcamentario declaram "IMPACTO NO ORCAMENTO/2026: R$ X" e
+    "IMPACTO NO ORCAMENTO/2027: R$ Y". Publicar so o primeiro ano subdimensiona
+    o compromisso: a LEI 7.595 saiu no grupo como R$ 250.000,00 quando o total
+    comprometido era R$ 689.812,00 (250 mil em 2026 + 439,8 mil em 2027).
+    Transparencia exige mostrar o quadro inteiro, nao a fatia mais simpatica.
+    """
+    achados: dict[str, float] = {}
+    for m in _EXERCICIO_RE.finditer(trecho):
+        valor = _valor_brl(m.group(2))
+        if valor is not None:
+            achados[m.group(1)] = valor
+    return [{"ano": ano, "valor": achados[ano]} for ano in sorted(achados)]
+
+
 def _extrai_valores(trecho: str) -> dict:
     # Remove linhas de tabelas de projeção de faturamento para evitar falsos positivos gigantes
     # Ex: "2026 R$ 13.000.000,00" ou "2026: R$ 13.000.000,00" ou "2026 - R$ 13.000.000,00"
@@ -278,6 +301,7 @@ def _extrai_valores(trecho: str) -> dict:
         "fonte_total": "texto oficial do Diário" if len(vals) == 1 else "",
         "confianca": "media" if len(vals) == 1 else "indisponivel",
         "periodicidade": _periodicidade_do_valor(trecho, bruto_do_unico) if unico is not None else "",
+        "por_exercicio": _valores_por_exercicio(trecho),
     }
 
 

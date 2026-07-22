@@ -435,6 +435,8 @@ def resolver_valor_publicacao(pub: dict, escopo: str) -> dict | None:
             # "por mês"/"por ano": sem isso o cidadao le uma taxa mensal de
             # R$ 111,95 como se fosse pagamento unico.
             "periodicidade": valores.get("periodicidade") or "",
+            # Impacto ano a ano, quando o ato compromete varios exercicios.
+            "por_exercicio": valores.get("por_exercicio") or [],
         }
 
     if explicitos:
@@ -492,6 +494,19 @@ def bloco_valor_publicacao(pub: dict, escopo: str) -> str:
         f"- Confiança: {confianca}\n"
         f"- Método: {resolvido.get('metodo') or 'não informado'}"
     )
+    # Ato plurianual: mostrar o quadro inteiro. Exibir so o primeiro exercicio
+    # subdimensiona o compromisso — a LEI 7.595 parecia R$ 250 mil quando o
+    # total era R$ 689.812,00 (250 mil em 2026 + 439,8 mil em 2027).
+    exercicios = resolvido.get("por_exercicio") or []
+    if len(exercicios) > 1:
+        detalhe = " + ".join(
+            f"{formatar_valor(e.get('valor'))} em {e.get('ano')}" for e in exercicios
+        )
+        total_comprometido = sum(
+            e.get("valor") or 0 for e in exercicios if isinstance(e.get("valor"), (int, float))
+        )
+        bloco += f"\n- Impacto por exercício: {detalhe}"
+        bloco += f"\n- Total comprometido: {formatar_valor(total_comprometido)}"
     if resolvido.get("pagina"):
         bloco += f"\n- Onde conferir: página {resolvido['pagina']} do documento"
     elif resolvido.get("link_verificacao"):
