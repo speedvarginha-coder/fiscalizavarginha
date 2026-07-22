@@ -41,7 +41,25 @@ function Write-Log {
   param([string]$Message)
   $line = "[" + (Get-Date -Format "yyyy-MM-dd HH:mm:ss") + "] " + $Message
   Write-Host $line
-  Add-Content -LiteralPath $logPath -Value $line -Encoding UTF8
+  # Gravar o log NUNCA pode derrubar a coleta. Se o arquivo estiver preso por
+  # outro processo (antivirus, backup/sync em nuvem, visualizador de log, um
+  # `tail` aberto), o Add-Content lanca IOException e, com
+  # $ErrorActionPreference=Stop, isso mata o pipeline inteiro — e pior: sem
+  # deixar rastro, porque a propria mensagem de erro nao consegue ser gravada.
+  # Em 22/07/2026 foi exatamente isso: um `tail -F` no log derrubou o ciclo das
+  # 13:24 (exit 1, zero linhas no arquivo, diagnostico as cegas).
+  # Agora e melhor-esforco: tenta, espera um instante, tenta de novo e desiste
+  # em silencio. O console (Write-Host acima) segue como registro de fallback.
+  try {
+    Add-Content -LiteralPath $logPath -Value $line -Encoding UTF8 -ErrorAction Stop
+  } catch {
+    Start-Sleep -Milliseconds 200
+    try {
+      Add-Content -LiteralPath $logPath -Value $line -Encoding UTF8 -ErrorAction Stop
+    } catch {
+      # Desiste: log e diagnostico, nao pre-requisito da coleta.
+    }
+  }
 }
 
 function Invoke-AndLog {
