@@ -267,6 +267,34 @@ def main() -> int:
     _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
     _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     os.replace(_tmp, OUT_PATH)
+
+    # sancoes_fornecedores.json e o chunk que o painel le para exibir o estado da
+    # verificacao CEIS/CNEP. Ele nascia de outro caminho (coletor_federal), que
+    # devolve lista vazia por paginacao truncada — entao o arquivo ficava parado
+    # com status "pendente_coleta" enquanto ESTA coleta ja tinha o dado real.
+    # Projetamos aqui o resultado bom em vez de escrever um segundo coletor.
+    forn_path = CHUNKS / "sancoes_fornecedores.json"
+    forn_payload = {
+        "fonte": payload["fonte"],
+        "status": "coletado" if not erros else "coletado_com_falhas",
+        "gerado_em": payload["gerado_em"],
+        "metodo": payload["metodo"],
+        "verificados": payload["verificados"],
+        "sancoes": vigentes,
+        "sancoes_encontradas": len(achados),
+        "sancoes_vigentes": len(vigentes),
+        "consultas": {
+            "portal_transparencia": "https://portaldatransparencia.gov.br/sancoes/consulta",
+            "cnep_dados_abertos": "https://dados.gov.br/dados/conjuntos-dados/cnep",
+            "ceis_dados_abertos": "https://dados.gov.br/dados/conjuntos-dados/ceis",
+        },
+        "observacao": ("Sancoes vigentes com alcance verificado por raiz de CNPJ ou nome "
+                       "normalizado identico. Cobertura limitada a fornecedores com nome "
+                       "consultavel — ausencia aqui nao prova ausencia de sancao."),
+    }
+    _tmp_f = forn_path.with_name(f".{forn_path.name}.tmp{os.getpid()}")
+    _tmp_f.write_text(json.dumps(forn_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    os.replace(_tmp_f, forn_path)
     print(f"✓ {len(universo)} verificados em {consultas} consultas — "
           f"{len(achados)} sanção(ões), {len(vigentes)} vigente(s). → sancoes.json")
     if vigentes:
