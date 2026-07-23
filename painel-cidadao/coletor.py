@@ -1733,10 +1733,17 @@ def _f(s) -> float:
 def _normaliza_contratos(rows: list[dict]) -> list[dict]:
     out = []
     for r in rows:
+        # A Betha devolve ano="0" em mais da metade dos contratos, mas a
+        # dataAssinatura vem correta. Sem este fallback a serie historica fica
+        # falsamente vazia (77 contratos somando 2020-2024 contra 696 sem ano) e
+        # qualquer filtro ou grafico por ano mostra o quadro errado.
+        ano_bruto = str(r.get("ano") or "").strip()
+        assinatura = r.get("dataAssinatura", "") or ""
+        ano = ano_bruto if ano_bruto not in ("", "0") else assinatura[:4]
         out.append({
             "numero":        r.get("numero", ""),
-            "ano":           r.get("ano", ""),
-            "data_assinatura": r.get("dataAssinatura", ""),
+            "ano":           ano,
+            "data_assinatura": assinatura,
             "data_fim":      r.get("dataVigenciaFinal", ""),
             "modalidade":    r.get("modalidadeLicitacao", ""),
             "tipo":          r.get("tipo", ""),

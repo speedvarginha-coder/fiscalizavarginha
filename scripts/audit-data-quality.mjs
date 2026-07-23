@@ -554,9 +554,16 @@ if (camaraTop.length && camaraContracts.length) {
 
 // --- NOVOS CHECKS DE QUALIDADE FORENSE ---
 const prefeituraTop = (chunks.prefeitura?.top_fornecedores_atual || []).slice(0, 30);
+// Obras publicas entram no corpo de busca junto com os contratos: elas ja trazem
+// "contratado"/"cnpj" (mesmos campos que o matcher usa) e ainda referenciam
+// contrato_numero. Sem elas o alerta acusava de "sem contrato" fornecedor que
+// tem obra registrada — a PAVICAN aparecia como R$ 14,4M "sem contrato" tendo
+// 57 obras na base, o que induz a leitura de irregularidade onde ha vinculo
+// documentado, so registrado noutra aba.
 const prefeituraContracts = [
   ...(chunks.prefeitura?.contratos || []),
   ...(chunks.camaraBetha?.contratos || []),
+  ...(chunks.prefeitura?.obras_publicas || []),
 ];
 if (prefeituraTop.length && prefeituraContracts.length) {
   const unmatched = prefeituraTop.filter((supplier) => !supplierHasContract(supplier, prefeituraContracts));
@@ -565,7 +572,7 @@ if (prefeituraTop.length && prefeituraContracts.length) {
     add(
       "warning",
       "prefeitura-despesa-sem-contrato",
-      "Fornecedores de grande porte sem contrato vinculado automaticamente",
+      "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
       `${semContrato.length} fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: ${semContrato.slice(0, 4).map((f) => `${f.nome} (R$ ${(f.valor_total/1000000).toFixed(1)}M)`).join("; ")}.`,
       "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "prefeitura.json",
