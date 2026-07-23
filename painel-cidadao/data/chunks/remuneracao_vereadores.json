@@ -2,27 +2,47 @@
   "fonte": "Prefeitura de Varginha - Legislacao Municipal",
   "tipo": "subsidio_fixado_em_lei",
   "lei": {
+    "numero": "Lei Ordinaria 7.527/2026",
+    "data": "2026-02-20",
+    "url": "https://www.varginha.mg.gov.br/portal/leis_decretos/44080/",
+    "ementa": "Dispoe sobre a revisao geral anual dos vencimentos dos servidores e dos subsidios dos vereadores da Camara Municipal de Varginha e da outras providencias."
+  },
+  "lei_fixacao_original": {
     "numero": "Lei Ordinaria 7.285/2024",
     "data": "2024-07-18",
     "url": "https://www.varginha.mg.gov.br/portal/leis_decretos/39702/",
-    "ementa": "Dispoe sobre a fixacao dos subsidios do Prefeito, Vice-Prefeito, Vereadores e Secretarios do Municipio."
+    "ementa": "Dispoe sobre a fixacao dos subsidios do Prefeito, Vice-Prefeito, Vereadores e Secretarios do Municipio.",
+    "subsidio_bruto_mensal_brl": 10384.06
+  },
+  "reajuste": {
+    "percentual": 4.26,
+    "indice": "IPCA acumulado de janeiro a dezembro de 2025",
+    "efeitos_retroativos_a": "2026-01-01"
   },
   "legislatura": "2025/2028",
-  "vigencia_inicio": "2025-01-01",
+  "vigencia_inicio": "2026-01-01",
   "cargo": "Vereador",
   "quantidade_lei": 15,
-  "subsidio_bruto_mensal_brl": 10384.06,
-  "impacto_mensal_estimado_brl": 155760.9,
-  "impacto_anual_estimado_brl": 2024891.7,
+  "subsidio_bruto_mensal_brl": 10826.42,
+  "impacto_mensal_estimado_brl": 162396.3,
+  "impacto_anual_estimado_brl": 2111151.9,
   "observacoes": [
+    "Valor vigente = subsidio fixado na Lei 7.285/2024 (R$ 10.384,06) com a revisao geral anual de 4,26% da Lei 7.527/2026, com efeitos retroativos a 01/01/2026.",
+    "Revisao geral anual e reposicao inflacionaria (IPCA), nao aumento real: a Constituicao (art. 37, X) exige indice e data unicos para todos os servidores.",
     "Valor bruto fixado em lei para o cargo de vereador, nao necessariamente o valor liquido recebido por pessoa em cada mes.",
+    "Presidente e Vice-Presidente da Camara podem ter subsidio proprio, acima do valor base do vereador.",
     "A propria lei preve desconto por falta a sessao ordinaria nao justificada.",
     "A lei tambem permite renuncia formal de ate 80% do valor dos subsidios mensais.",
+    "Impacto anual estimado considera 13 parcelas (12 meses mais decimo terceiro).",
     "Para conferir pagamento individual, descontos e eventuais verbas indenizatorias, consultar Servidores e Remuneracao, Folha de Pagamento e Cotas/Verba Indenizatoria no Portal Betha da Camara."
   ],
   "links_conferencia": [
     {
-      "titulo": "Lei Ordinaria 7.285/2024",
+      "titulo": "Lei Ordinaria 7.527/2026 - revisao geral anual (vigente)",
+      "url": "https://www.varginha.mg.gov.br/portal/leis_decretos/44080/"
+    },
+    {
+      "titulo": "Lei Ordinaria 7.285/2024 - fixacao original dos subsidios",
       "url": "https://www.varginha.mg.gov.br/portal/leis_decretos/39702/"
     },
     {

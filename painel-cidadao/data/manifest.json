@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-23T14:14:11.881Z",
+  "gerado_em": "2026-07-23T15:36:20.079Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
@@ -8,8 +8,8 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 14862,
-      "sha256": "5143649cd739735c11f980f6c57d677ed28c25f68696451bccfd4dafff1947ca"
+      "bytes": 14864,
+      "sha256": "26244a24d5742ee4a44429ce86e85aae5a9278ccfeec34ec3319542907b83f7f"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
@@ -113,8 +113,8 @@
     },
     "remuneracao_vereadores": {
       "arquivo": "data/chunks/remuneracao_vereadores.json",
-      "bytes": 1804,
-      "sha256": "b6f42afe20ba0a48608f34125be4d7c5be483c082fca85799cc6df85414284c7"
+      "bytes": 3014,
+      "sha256": "d1bbe41b9d3e3c59b23d444c902f84206b5282b70ae90d2540054fbec16f212a"
     },
     "resumo": {
       "arquivo": "data/chunks/resumo.json",
@@ -133,8 +133,8 @@
     },
     "status_fontes": {
       "arquivo": "data/chunks/status_fontes.json",
-      "bytes": 3104,
-      "sha256": "941eb2099715256c340ef535c1a133deba2f6879161e794337faa6b0f7b7ce7b"
+      "bytes": 3120,
+      "sha256": "f2503798488001bb8eb2c61279e56eb998876b6920ee23286cbcfbc43ce78ec6"
     },
     "tse_doacoes": {
       "arquivo": "data/chunks/tse_doacoes.json",
