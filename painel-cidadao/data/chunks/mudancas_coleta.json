@@ -1,41 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-23T09:40:49.156Z",
+  "gerado_em": "2026-07-23T14:06:49.931Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-23T10-40-29-2954fb2a",
+    "coleta_iso": "2026-07-23T10:40:29",
+    "data_humana": "23/07/2026 - 10:40",
+    "arquivo": "data/snapshots/2026-07-23T10-40-29-2954fb2a.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-23T06-39-56-5f1e57c8",
     "coleta_iso": "2026-07-23T06:39:56",
     "data_humana": "23/07/2026 - 06:39",
-    "arquivo": "data/snapshots/2026-07-23T06-39-56-5f1e57c8.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-22T18-09-28-f550482f",
-    "coleta_iso": "2026-07-22T18:09:28",
-    "data_humana": "22/07/2026 - 18:09",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
     "novos_contratos": 0,
     "contratos_valor_alterado": 0,
-    "novos_fornecedores_relevantes": 1,
+    "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 1
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "novo_fornecedor_relevante",
-      "prioridade": "alta",
-      "titulo": "Fornecedor entrou no ranking: VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
-      "detalhe": "Prefeitura - rank 28, R$ 1.329.945,56 no recorte atual.",
-      "orgao": "Prefeitura",
-      "valor_brl": 1329945.56
-    }
-  ],
+  "itens": [],
   "avisos": []
 }

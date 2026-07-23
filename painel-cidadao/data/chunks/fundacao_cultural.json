@@ -34751,6 +34751,18 @@
       },
       {
         "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "Contador",
+        "numero": 15095,
+        "quantidade": 1.0,
+        "valor_total": 664.5,
+        "periodo": "15-05-2026 a 16-05-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Visita técnica às rádios: Rádio CDL, Rádio 98 FM, Rádio Estrada Real FM e TV 98 News para análise de viabilidade do projeto de integração da Rádio Melodia FM com a TV Princesa \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$ 180,00 = R$ 360,00\nHOSPEDAGEM: R$ 304,50",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
         "funcionario": "FABIANO PEREIRA ARANTES",
         "cargo": "DIRETOR DA RADIO MELODIA",
         "numero": 15096,
@@ -34766,18 +34778,6 @@
         "funcionario": "GIL NOGUEIRA DE PAULA JUNIOR",
         "cargo": "Operador de Audio e Estudio",
         "numero": 15097,
-        "quantidade": 1.0,
-        "valor_total": 664.5,
-        "periodo": "15-05-2026 a 16-05-2026",
-        "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Visita técnica às rádios: Rádio CDL, Rádio 98 FM, Rádio Estrada Real FM e TV 98 News para análise de viabilidade do projeto de integração da Rádio Melodia FM com a TV Princesa \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$ 180,00 = R$ 360,00\nHOSPEDAGEM: R$ 304,50",
-        "fonte": "Betha Fundação Cultural - Diárias"
-      },
-      {
-        "ano": "2026",
-        "funcionario": "EDER JERONIMO DA SILVA",
-        "cargo": "Contador",
-        "numero": 15095,
         "quantidade": 1.0,
         "valor_total": 664.5,
         "periodo": "15-05-2026 a 16-05-2026",

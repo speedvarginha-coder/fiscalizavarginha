@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-23T09:40:47.375Z",
+  "gerado_em": "2026-07-23T14:06:46.848Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,8 +9,8 @@
     "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-23T06:39:56",
-    "data_humana": "23/07/2026 - 06:39"
+    "iso": "2026-07-23T10:40:29",
+    "data_humana": "23/07/2026 - 10:40"
   },
   "items": [
     {
@@ -108,7 +108,7 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "5 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); GLOBAL BRANDS COMERCIO LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "2 sancao(oes) vigente(s) com alcance sobre Varginha: JM COSTA INFORMATICA LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json",
       "verification": {
@@ -116,7 +116,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "5 sancao(oes) classificada(s) como de alcance relevante"
+          "2 sancao(oes) classificada(s) como de alcance relevante"
         ],
         "limitacoes": [
           "Confirmar CNPJ, vigencia, tipo e alcance da sancao na fonte primaria"
@@ -128,7 +128,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (91 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "42 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (97 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -136,7 +136,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "91 sancao(oes) de outros entes"
+          "97 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
@@ -248,7 +248,7 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "5 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); GLOBAL BRANDS COMERCIO LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "2 sancao(oes) vigente(s) com alcance sobre Varginha: JM COSTA INFORMATICA LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json",
       "verification": {
@@ -256,7 +256,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "5 sancao(oes) classificada(s) como de alcance relevante"
+          "2 sancao(oes) classificada(s) como de alcance relevante"
         ],
         "limitacoes": [
           "Confirmar CNPJ, vigencia, tipo e alcance da sancao na fonte primaria"
@@ -268,7 +268,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (91 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "42 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (97 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -276,7 +276,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "91 sancao(oes) de outros entes"
+          "97 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"

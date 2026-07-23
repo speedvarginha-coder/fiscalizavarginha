@@ -14299,5 +14299,20 @@
       ]
     }
   ],
-  "erros": []
+  "erros": [],
+  "status": "preserved",
+  "ultima_tentativa_em": "2026-07-23T14:06:29+00:00",
+  "motivo_preservacao": "PNCP retornou apenas 0 de 302 compras anteriores apos repeticoes; a ultima base valida foi mantida para evitar perda de dados.",
+  "erros_ultima_tentativa": [
+    "contratacoes 18240119000105 mod 6 pg 1: HTTP Error 503: Service Unavailable",
+    "contratacoes 18240119000105 mod 7 pg 1: HTTP Error 503: Service Unavailable",
+    "contratacoes 18240119000105 mod 4 pg 1: HTTP Error 429: Too Many Requests",
+    "contratacoes 18240119000105 mod 5 pg 1: HTTP Error 429: Too Many Requests",
+    "contratacoes 18240119000105 mod 8 pg 1: HTTP Error 429: Too Many Requests",
+    "contratacoes 18240119000105 mod 9 pg 1: HTTP Error 429: Too Many Requests",
+    "contratacoes 04366790000184 mod 6 pg 1: HTTP Error 429: Too Many Requests",
+    "contratacoes 04366790000184 mod 7 pg 1: HTTP Error 429: Too Many Requests",
+    "contratacoes 04366790000184 mod 8 pg 1: HTTP Error 429: Too Many Requests",
+    "contratacoes 04366790000184 mod 9 pg 1: HTTP Error 429: Too Many Requests"
+  ]
 }

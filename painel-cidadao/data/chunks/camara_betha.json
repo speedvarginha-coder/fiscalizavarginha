@@ -1,8 +1,8 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6840114.01,
-  "total_externo_anterior": 8405447.51,
+  "total_externo_atual": 6828114.01,
+  "total_externo_anterior": 8402622.01,
   "empenhos_qtd": 3101,
   "top_fornecedores_atual": [
     {
@@ -101,9 +101,9 @@
       "qtd": 2
     },
     {
-      "nome": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
-      "valor_total": 60000.0,
-      "qtd": 2
+      "nome": "TARGET CONSULTORIAS E SOLUCOES LTDA",
+      "valor_total": 40500.0,
+      "qtd": 1
     }
   ],
   "top_fornecedores_anterior": [
@@ -1144,5 +1144,5 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
   ],
-  "coletado_em": "2026-07-23T06:38:47-03:00"
+  "coletado_em": "2026-07-23T10:39:10-03:00"
 }
