@@ -207,6 +207,7 @@ const chunks = {
   sancoes: readJson("sancoes"),
   tseDoacoes: readJson("tse_doacoes"),
   licitacoesResultados: readJson("licitacoes_resultados"),
+  remuneracaoVereadores: readJson("remuneracao_vereadores"),
 };
 
 nameToCnpjRoot = buildNameToCnpjRoot(chunks.cnpjs);
@@ -406,6 +407,93 @@ if (pessoalStatusCobertura !== "preservada_por_cobertura" && /parcial|escopo/i.t
     "Exibir essa limitacao junto dos numeros e buscar consulta completa por competencia.",
     "pessoal.json",
   );
+}
+
+// O subsidio de vereador e fixado em LEI, nao vem de feed: so muda quando outra
+// lei o altera. O risco e o registro envelhecer em silencio apos uma revisao.
+// Em vez de vigiar o texto da lei, compara com a folha REAL, que ja e coletada.
+// NAO acusa ninguem, de proposito: "vencimentos" e bruto e inclui verbas alem
+// do subsidio base (presidencia, tercos), e a folha traz 13o/rescisao/ferias que
+// inflam o valor — comparar cru mostraria "vereador 76% acima da lei", que e
+// falso. Por isso: cargo exatamente "VEREADOR" (fora presidente/vice), so folha
+// mensal pura, e MEDIANA (um caso isolado nao dispara). O achado e sobre o DADO
+// estar velho, nao sobre alguem receber a mais.
+const subsidioLei = Number(chunks.remuneracaoVereadores?.subsidio_bruto_mensal_brl || 0);
+const servidoresCamara = chunks.pessoal?.camara?.servidores || [];
+if (subsidioLei > 0 && servidoresCamara.length) {
+  const folhaNaoMensal = /13|RESCIS|F[EÉ]RIAS/i;
+  const brutos = servidoresCamara
+    .filter((s) => String(s.cargo || "").trim().toUpperCase() === "VEREADOR")
+    .filter((s) => Array.isArray(s.tipos_folha) && s.tipos_folha.length
+      && !s.tipos_folha.some((t) => folhaNaoMensal.test(String(t))))
+    .map((s) => Number(s.vencimentos || 0))
+    .filter((v) => v > 0)
+    .sort((a, b) => a - b);
+  if (brutos.length >= 5) {
+    const mediana = brutos[Math.floor(brutos.length / 2)];
+    const divergencia = (mediana / subsidioLei - 1) * 100;
+    if (Math.abs(divergencia) > 10) {
+      const leiNum = chunks.remuneracaoVereadores?.lei?.numero || "lei registrada";
+      add(
+        "warning",
+        "subsidio-vereador-desatualizado",
+        "Subsidio de vereador registrado pode estar desatualizado",
+        `A folha mensal paga tem mediana de R$ ${mediana.toFixed(2)}, contra R$ ${subsidioLei.toFixed(2)} `
+        + `fixados na ${leiNum} (${divergencia >= 0 ? "+" : ""}${divergencia.toFixed(1)}%). `
+        + "Divergencia grande costuma indicar lei de revisao aprovada e ainda nao registrada aqui.",
+        `Conferir se houve lei revisando o subsidio e atualizar remuneracao_vereadores.json (${leiNum}).`,
+        "remuneracao_vereadores.json",
+        { verification: {
+          estado: "divergencia_detectada",
+          metodo: "mediana da folha mensal pura, cargo VEREADOR, sem 13o/rescisao/ferias",
+          confianca: "media",
+          evidencias: [`${brutos.length} registros de folha mensal comparados`],
+          limitacoes: ["Vencimentos e bruto e pode incluir verbas alem do subsidio base"],
+        } },
+      );
+    }
+  }
+}
+
+// Segunda guarda para o mesmo risco, por outro caminho: procura nas publicacoes
+// JA COLETADAS (SAPL da Camara + Diario) uma materia que fixe ou revise subsidio
+// de vereador com data POSTERIOR a lei registrada. Nao precisa scraper novo — a
+// materia legislativa ja chega pela coleta. Enquanto a divergencia de folha
+// (acima) pega o efeito, esta pega a causa, e costuma aparecer antes.
+const leiData = String(chunks.remuneracaoVereadores?.lei?.data || "");
+if (leiData) {
+  const ehSubsidioVereador = (texto) => /subs[ií]dio/i.test(texto)
+    && /vereador|agentes?\s+pol[ií]ticos/i.test(texto)
+    && /fixa|revis|altera|reajust/i.test(texto);
+  const candidatas = [
+    ...(chunks.publicacoesCamara?.publicacoes || []),
+    ...(chunks.publicacoesDiario?.publicacoes || []),
+  ].filter((p) => {
+    const data = String(p?.data || "").slice(0, 10);
+    if (!data || data <= leiData) return false;
+    return ehSubsidioVereador(`${p?.titulo || ""} ${p?.ementa || ""} ${p?.resumo || ""} ${p?.o_que_propoe || ""}`);
+  });
+  if (candidatas.length) {
+    const exemplos = candidatas.slice(0, 3)
+      .map((p) => `${String(p.titulo || "ato").slice(0, 60)} (${String(p.data).slice(0, 10)})`)
+      .join("; ");
+    add(
+      "warning",
+      "subsidio-vereador-lei-nova",
+      "Possivel lei nova sobre subsidio de vereador",
+      `${candidatas.length} publicacao(oes) posterior(es) a ${chunks.remuneracaoVereadores?.lei?.numero || "lei registrada"} `
+      + `mencionam fixacao/revisao de subsidio de vereador. Exemplos: ${exemplos}.`,
+      "Ler a materia e, se alterar o subsidio, atualizar remuneracao_vereadores.json com a nova lei.",
+      "remuneracao_vereadores.json",
+      { verification: {
+        estado: "candidato_localizado",
+        metodo: "busca textual em publicacoes coletadas (SAPL + Diario) posteriores a lei registrada",
+        confianca: "baixa",
+        evidencias: [`${candidatas.length} publicacao(oes) candidata(s)`],
+        limitacoes: ["Busca textual: pode trazer materia que apenas cita subsidio sem alterar valor"],
+      } },
+    );
+  }
 }
 
 const prefeituraServidoresQtd = Array.isArray(chunks.pessoal?.prefeitura?.servidores)
