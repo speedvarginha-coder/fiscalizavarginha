@@ -1496,7 +1496,7 @@
       "cnpj_raiz": "25863390",
       "cnpj_completo": "25863390000154",
       "cnpj_reconstruido": true,
-      "valor_total": 47644220.89,
+      "valor_total": 47774405.31,
       "razao_social": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "nome_fantasia": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "situacao": "ATIVA",
@@ -1589,7 +1589,7 @@
       "cnpj_raiz": "57437279",
       "cnpj_completo": "57437279000192",
       "cnpj_reconstruido": true,
-      "valor_total": 4783243.2,
+      "valor_total": 5870389.95,
       "razao_social": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1765,7 +1765,7 @@
       "cnpj_raiz": "26001891",
       "cnpj_completo": "26001891000194",
       "cnpj_reconstruido": true,
-      "valor_total": 3000322.47,
+      "valor_total": 3003127.08,
       "razao_social": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -2025,6 +2025,25 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
+      "cnpj_raiz": "04491116",
+      "cnpj_completo": "04491116000121",
+      "cnpj_reconstruido": true,
+      "valor_total": 1329945.56,
+      "razao_social": "VERSAO BR COMUNICACAO E MARKETING LTDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2001-05-25",
+      "cnae": "Agências de publicidade",
+      "municipio": "RIBEIRAO PRETO",
+      "uf": "SP",
+      "socios": [
+        "GUSTAVO HENRIQUE TEIXEIRA DE CASTRO",
+        "SUELI MERI NEVES TEIXEIRA DE CASTRO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "ASSOCIAÇAO BENEFICENTE KERIGMA",
       "cnpj_raiz": "05549049",
       "cnpj_completo": "05549049000111",
@@ -2066,28 +2085,6 @@
         "HENRIQUE PEREIRA PROCOPIO BUENO",
         "LUCAS DEL FRARO XIMENES",
         "LUCILIO AMORELLI PEREIRA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "BETHA SISTEMAS LTDA",
-      "cnpj_raiz": "00456865",
-      "cnpj_completo": "00456865000167",
-      "cnpj_reconstruido": true,
-      "valor_total": 1216464.16,
-      "razao_social": "BETHA SISTEMAS LTDA",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "1995-03-01",
-      "cnae": "Desenvolvimento e licenciamento de programas de computador customizáveis",
-      "municipio": "CRICIUMA",
-      "uf": "SC",
-      "socios": [
-        "CESAR SMIELEVSKI",
-        "GUILHERME KAASTRUP BALSINI",
-        "OSCAR KAASTRUP BALSINI",
-        "TATIANE DEZIDERIO COSTA",
-        "WELLINGTON ROGERIO BIAGIO SILVA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     }

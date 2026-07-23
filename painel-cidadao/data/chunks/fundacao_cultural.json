@@ -263,8 +263,8 @@
     "resumo_atual": {
       "registros": 216,
       "empenhado": 3173779.8,
-      "liquidado": 2439833.81,
-      "pago": 2435643.81
+      "liquidado": 2494023.03,
+      "pago": 2436465.57
     },
     "maiores_empenhos_atual": [
       {
@@ -461,7 +461,7 @@
         "credor": "FRANCA CENTER MUSIC LTDA",
         "historico": "Aquisição de equipamentos eletrônicos de som e iluminação cênica para o Theatro Municipal Capitólio. \n* Endereço de entrega: Rua Presidente Antônio Carlos, 522, Centro - Varginha/MG. \n* Horário de expediente: segunda a sexta, das 07h00 às 17h00",
         "valor_empenhado": 27200.0,
-        "valor_liquidado": 0.0,
+        "valor_liquidado": 27200.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 27200.0
       },
@@ -720,10 +720,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 24,
+        "numero": 23,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -775,10 +775,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 19,
+        "numero": 24,
         "orgao": "ADMINISTRACAO",
-        "credor": "BLOCO VIUVAS VIRGENS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -786,10 +786,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 23,
+        "numero": 19,
         "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "BLOCO VIUVAS VIRGENS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -868,9 +868,9 @@
         "credor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
         "historico": "Contratação de Prestação de  Serviços de 04 (quatro) inscrições para o curso: Contratos Administrativos na Prática, Aditivos, Reequilíbrio, Repactuação e Encerramento sem Glosa, para especialização de 04 servidores do setor de Contabilidade/ Suprimentos da Fundação Cultural do Município de Varginha. Com carga horária de 16 horas, a ser realizado nos dias 09 e 10 de julho, na sede do Instituto Plenum Brasil, em Belo Horizonte/MG. Fundamento Legal: artigo 95,  2 da Lei Federal 14.133/21.",
         "valor_empenhado": 9160.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 9160.0
+        "valor_liquidado": 9160.0,
+        "valor_pago": 439.68,
+        "saldo_a_pagar": 8720.32
       },
       {
         "data": "2026-06-12",
@@ -879,7 +879,7 @@
         "credor": "AMORIM COMERCIO VAREJISTA DE PRODUTOS LTDA",
         "historico": "Aquisição de equipamentos eletrônicos de som e iluminação cênica para o Theatro Municipal Capitólio.\n* Endereço de entrega: Rua Presidente Antônio Carlos, 522, Centro - Varginha/MG\n* Horário de expediente: segunda a sexta, das 07h00 às 17h00",
         "valor_empenhado": 8639.84,
-        "valor_liquidado": 0.0,
+        "valor_liquidado": 8639.84,
         "valor_pago": 0.0,
         "saldo_a_pagar": 8639.84
       },
@@ -901,9 +901,9 @@
         "credor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
         "historico": "Contratação de Prestação de Serviços de 04 (quatro) inscrições para o curso: Compras Diretas Avançado, Análise Técnica Avançada, Estudo de Casos e Jurisprudências Aplicadas, para especialização de 04 servidores do setor de Contabilidade/ Suprimentos da Fundação Cultural do Município de Varginha. Com carga horária de 16 horas, a ser realizado nos dias 07 e 08 de julho, na sede do Instituto Plenum Brasil, em Belo Horizonte/MG. Fundamento Legal Art. 95,  2 da Lei Federal 14.133/2021.",
         "valor_empenhado": 7960.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 7960.0
+        "valor_liquidado": 7960.0,
+        "valor_pago": 382.08,
+        "saldo_a_pagar": 7577.92
       },
       {
         "data": "2026-01-27",
@@ -34811,6 +34811,18 @@
       },
       {
         "ano": "2026",
+        "funcionario": "TADEU  APARECIDO DE GODOI JUNIOR",
+        "cargo": "2803 - MOTORISTA",
+        "numero": 15118,
+        "quantidade": 1.0,
+        "valor_total": 600.0,
+        "periodo": "06-07-2026 a 20-06-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Motorista a serviço da Funcult\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 100% X R$ 180 = R$ 180,00\nHOSPEDAGEM: R$ 150,00\nCOMBUSTIVEL: R$ 453,99\nPEDAGIO: R$ 60,00",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
         "funcionario": "JOAO BATISTA COELHO",
         "cargo": "Assessor Progr Esportiva",
         "numero": 15099,
@@ -38029,10 +38041,10 @@
       }
     ],
     "resumo": {
-      "detalhadas_qtd": 67,
-      "detalhadas_valor_total": 60116.37,
-      "atual_qtd": 45,
-      "atual_valor": 48437.23,
+      "detalhadas_qtd": 68,
+      "detalhadas_valor_total": 60716.37,
+      "atual_qtd": 46,
+      "atual_valor": 49037.23,
       "orcamentarias_atual_valor": 48143.75
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/211697"

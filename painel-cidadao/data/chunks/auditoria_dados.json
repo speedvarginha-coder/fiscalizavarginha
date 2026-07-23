@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-22T21:13:57.787Z",
+  "gerado_em": "2026-07-23T09:40:47.375Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,8 +9,8 @@
     "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-22T18:09:28",
-    "data_humana": "22/07/2026 - 18:09"
+    "iso": "2026-07-23T06:39:56",
+    "data_humana": "23/07/2026 - 06:39"
   },
   "items": [
     {
@@ -69,7 +69,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
-      "detail": "10 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA (R$ 14.4M); VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M).",
+      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA (R$ 14.4M); VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json",
       "verification": {
@@ -77,7 +77,7 @@
         "metodo": "raiz_cnpj_com_fallback_por_nome",
         "confianca": "baixa",
         "evidencias": [
-          "10 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
+          "9 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
         ],
         "limitacoes": [
           "Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"
@@ -209,7 +209,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato vinculado automaticamente",
-      "detail": "10 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA (R$ 14.4M); VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M).",
+      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA (R$ 14.4M); VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json",
       "verification": {
@@ -217,7 +217,7 @@
         "metodo": "raiz_cnpj_com_fallback_por_nome",
         "confianca": "baixa",
         "evidencias": [
-          "10 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
+          "9 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
         ],
         "limitacoes": [
           "Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"

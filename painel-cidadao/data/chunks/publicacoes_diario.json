@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-07-22T21:13:27+00:00",
+ "gerado_em": "2026-07-23T09:40:07+00:00",
  "fonte": "diario",
  "total": 220,
  "publicacoes": [
@@ -33,6 +33,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -47,7 +53,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=26"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:13+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23262de",
@@ -73,6 +79,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -87,7 +99,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=25"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:05+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23261de",
@@ -113,6 +125,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -127,7 +145,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=25"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:58+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23248de",
@@ -152,6 +170,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -166,7 +190,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=24"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:53+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23243de",
@@ -191,6 +215,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -205,7 +235,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=24"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:48+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23242de",
@@ -232,6 +262,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -246,7 +282,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=23"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:43+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23239de",
@@ -275,6 +311,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "171,31",
     "pagina": 22,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=22"
@@ -289,7 +331,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=22"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:37+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23238de",
@@ -318,6 +360,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "59,40",
     "pagina": 22,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=22"
@@ -332,7 +380,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=21"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:32+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23237de",
@@ -361,6 +409,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "59,40",
     "pagina": 21,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=21"
@@ -375,7 +429,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=21"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:25+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23236de",
@@ -404,6 +458,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "59,40",
     "pagina": 20,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=20"
@@ -418,7 +478,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=20"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:19+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23235de",
@@ -447,6 +507,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "237,05",
     "pagina": 19,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=19"
@@ -461,7 +527,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=19"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:12+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23234de",
@@ -490,6 +556,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "111,95",
     "pagina": 19,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=19"
@@ -504,7 +576,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=18"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:11:05+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23233de",
@@ -533,6 +605,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "111,95",
     "pagina": 18,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=18"
@@ -547,7 +625,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=18"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:59+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23232de",
@@ -576,6 +654,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "217,75",
     "pagina": 17,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=17"
@@ -590,7 +674,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=17"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:53+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23230de",
@@ -621,6 +705,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -635,7 +725,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=16"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:46+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23217de",
@@ -664,6 +754,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "111,95",
     "pagina": 15,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=15"
@@ -678,7 +774,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=15"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:41+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23215de",
@@ -707,6 +803,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "59,40",
     "pagina": 14,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=14"
@@ -721,7 +823,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=14"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:35+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23214de",
@@ -750,6 +852,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "171,31",
     "pagina": 14,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=14"
@@ -764,7 +872,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=13"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:30+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23213de",
@@ -793,6 +901,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "111,95",
     "pagina": 13,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=13"
@@ -807,7 +921,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=13"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:25+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian1322026",
@@ -865,6 +979,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -879,7 +999,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=34"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:28+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian1312026",
@@ -906,6 +1026,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -920,7 +1046,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=34"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:17+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-norma-lein7595de06deju",
@@ -950,6 +1076,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "250.000,00",
     "pagina": 11,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=11"
@@ -964,7 +1096,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=11"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:10+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-norma-lein7595",
@@ -993,6 +1125,23 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [
+     {
+      "ano": "2026",
+      "valor": 250000.0
+     },
+     {
+      "ano": "2027",
+      "valor": 439812.0
+     }
+    ],
+    "perfil_despesa": {
+     "tipo": "extraordinaria",
+     "encerra_em": [
+      "2028"
+     ]
+    },
     "valor_principal_ia": "250.000,00",
     "pagina": 12,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=12"
@@ -1007,7 +1156,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=12"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:20+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-norma-lein7593de06deju",
@@ -1047,6 +1196,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf"
@@ -1061,7 +1216,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=3"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:09:56+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1849-norma-lein7593",
@@ -1090,6 +1245,14 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "por ano",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "continuada",
+     "encerra_em": [
+      "2026"
+     ]
+    },
     "valor_principal_ia": "190.944,32",
     "pagina": 10,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=10"
@@ -1104,7 +1267,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=10"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:10:02+00:00"
+   "gerado_em": "2026-07-23T09:40:06+00:00"
   },
   {
    "id": "DIARIO-2026-1848-pessoal-portarian1302026",
@@ -1130,6 +1293,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf"
@@ -1144,7 +1313,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=8"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:32+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1848-licitacao-classificaoedita",
@@ -1170,6 +1339,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf"
@@ -1184,7 +1359,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=9"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:43+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1848-dispensa-extratodepublica",
@@ -1224,6 +1399,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "30.000,00",
     "pagina": 8,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=8"
@@ -1238,7 +1419,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=8"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:38+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1848-dispensa-dispensadelicita",
@@ -1272,6 +1453,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário, selecionado pela IA",
     "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "68.833,00",
     "pagina": 12,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=12"
@@ -1286,7 +1473,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=12"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:48+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian23249de",
@@ -1317,6 +1504,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
@@ -1331,7 +1524,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=122"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:13:19+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian23240de",
@@ -1362,6 +1555,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
@@ -1376,7 +1575,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=120"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:13:07+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian23229de",
@@ -1403,6 +1602,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
@@ -1417,7 +1622,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=120"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:13:02+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian1292026",
@@ -1457,6 +1662,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "texto oficial do Diário",
     "confianca": "media",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": 125,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=125"
@@ -1471,7 +1682,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=124"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:13:27+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1847-norma-lein7591de30deju",
@@ -1502,6 +1713,12 @@
     "natureza": "valor citado no ato",
     "fonte_total": "",
     "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
     "valor_principal_ia": "",
     "pagina": null,
     "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf"
@@ -1516,7 +1733,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202619201213f568d832d49e8c5acb4ac238e01962b3.pdf#page=3"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-22T21:12:56+00:00"
+   "gerado_em": "2026-07-23T09:40:07+00:00"
   },
   {
    "id": "DIARIO-2026-1846-pessoal-portarian1222026",

@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6831158.23,
-  "total_externo_anterior": 8404647.51,
-  "empenhos_qtd": 3098,
+  "total_externo_atual": 6840114.01,
+  "total_externo_anterior": 8405447.51,
+  "empenhos_qtd": 3101,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -26,14 +26,14 @@
       "qtd": 1
     },
     {
-      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 333881.91,
-      "qtd": 28
-    },
-    {
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
       "valor_total": 316929.0,
       "qtd": 6
+    },
+    {
+      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+      "valor_total": 306463.1,
+      "qtd": 23
     },
     {
       "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
@@ -57,8 +57,8 @@
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 133955.97,
-      "qtd": 15
+      "valor_total": 158030.56,
+      "qtd": 20
     },
     {
       "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
@@ -101,9 +101,9 @@
       "qtd": 2
     },
     {
-      "nome": "TARGET CONSULTORIAS E SOLUCOES LTDA",
-      "valor_total": 40500.0,
-      "qtd": 1
+      "nome": "EMPRESA BRASILEIRA DE CORREIOS E TELEGRAFOS",
+      "valor_total": 60000.0,
+      "qtd": 2
     }
   ],
   "top_fornecedores_anterior": [
@@ -1144,5 +1144,5 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
   ],
-  "coletado_em": "2026-07-22T18:08:26-03:00"
+  "coletado_em": "2026-07-23T06:38:47-03:00"
 }

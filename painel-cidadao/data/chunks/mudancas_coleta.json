@@ -1,62 +1,40 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-22T21:13:58.918Z",
+  "gerado_em": "2026-07-23T09:40:49.156Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-23T06-39-56-5f1e57c8",
+    "coleta_iso": "2026-07-23T06:39:56",
+    "data_humana": "23/07/2026 - 06:39",
+    "arquivo": "data/snapshots/2026-07-23T06-39-56-5f1e57c8.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-22T18-09-28-f550482f",
     "coleta_iso": "2026-07-22T18:09:28",
     "data_humana": "22/07/2026 - 18:09",
-    "arquivo": "data/snapshots/2026-07-22T18-09-28-f550482f.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-21T09-34-57-55e09661",
-    "coleta_iso": "2026-07-21T09:34:57",
-    "data_humana": "21/07/2026 - 09:34",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
     "novos_contratos": 0,
-    "contratos_valor_alterado": 2,
-    "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 1,
+    "contratos_valor_alterado": 0,
+    "novos_fornecedores_relevantes": 1,
+    "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
-    "valor_delta_brl": -1527159.8800000013,
-    "total_mudancas": 3
+    "valor_delta_brl": 0,
+    "total_mudancas": 1
   },
   "itens": [
     {
-      "tipo": "valor_alterado",
+      "tipo": "novo_fornecedor_relevante",
       "prioridade": "alta",
-      "titulo": "Valor alterado no contrato 26/2025",
-      "detalhe": "DIGIPLAN TECNOLOGIA LTDA: antes R$ 10.231.134,72, agora R$ 8.590.562,36.",
+      "titulo": "Fornecedor entrou no ranking: VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
+      "detalhe": "Prefeitura - rank 28, R$ 1.329.945,56 no recorte atual.",
       "orgao": "Prefeitura",
-      "data": "2025-05-05",
-      "valor_brl": 8590562.36,
-      "delta_brl": -1640572.3600000013,
-      "alvo_id": "PREFEITURA-2025-26"
-    },
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "alta",
-      "titulo": "Valor alterado no contrato 170/2023",
-      "detalhe": "SERVICOS CFC LTDA: antes R$ 2.964.603,49, agora R$ 3.078.015,97.",
-      "orgao": "Prefeitura",
-      "data": "2023-12-01",
-      "valor_brl": 3078015.97,
-      "delta_brl": 113412.47999999998,
-      "alvo_id": "PREFEITURA-2023-170"
-    },
-    {
-      "tipo": "nova_edicao_diario",
-      "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1849",
-      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-07-22",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/256/"
+      "valor_brl": 1329945.56
     }
   ],
   "avisos": []

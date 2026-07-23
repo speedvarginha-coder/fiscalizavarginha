@@ -31328,7 +31328,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-07-22T17:59:10-03:00"
+    "coletado_em": "2026-07-23T06:26:54-03:00"
   },
   "2026": {
     "resumo": {
@@ -45151,24 +45151,8 @@
         "data": "2026-07-08",
         "finalizada": true,
         "url_video": "https://www.youtube.com/watch?v=uc66CiJUzjk",
-        "presentes_qtd": 15,
-        "presentes": [
-          "Afonso Monticeli",
-          "Alexandre Prado",
-          "Ana Rios Fontoura",
-          "Bruno Leandro Coletor",
-          "Cássio Chiodi",
-          "Dandan",
-          "Davi Martins",
-          "Dudu Ottoni",
-          "Joãozinho Enfermeiro",
-          "Miguel da Saúde",
-          "Pastor Faustinho",
-          "Rogério Bueno",
-          "Thulyo Paiva",
-          "Zilda Silva",
-          "Zé Morais"
-        ],
+        "presentes_qtd": 0,
+        "presentes": [],
         "votacoes": [
           {
             "id": 2854,
@@ -47329,6 +47313,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5125"
       }
     ],
-    "coletado_em": "2026-07-22T17:59:10-03:00"
+    "coletado_em": "2026-07-23T06:26:54-03:00"
   }
 }
