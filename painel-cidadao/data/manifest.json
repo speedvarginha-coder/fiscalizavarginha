@@ -1,25 +1,25 @@
 {
-  "gerado_em": "2026-07-23T15:36:20.079Z",
+  "gerado_em": "2026-07-24T15:46:53.584Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
       "bytes": 76,
-      "sha256": "4a4e109a831ecc120de9082068de6fe94706ffdbf0510705a8922d8c52103734"
+      "sha256": "6c109c285a771a46c078200661f643c22f78b11230d615c33b906a60c8bafbdc"
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 14864,
-      "sha256": "26244a24d5742ee4a44429ce86e85aae5a9278ccfeec34ec3319542907b83f7f"
+      "bytes": 14842,
+      "sha256": "d31b25ef194e21d3e7497d0f8d0e915427541b684a36e3fe535af66b5662d641"
     },
     "camara_anos": {
       "arquivo": "data/chunks/camara_anos.json",
       "bytes": 2138884,
-      "sha256": "46bc5be49d47b29f020ddb270238dc3ec9018c9b75c45b4fee2e1d9999d5e80b"
+      "sha256": "94fd731a0e23b7f46f6701113d198dca32a3c092260ddaa1402da704ae196537"
     },
     "camara_betha": {
       "arquivo": "data/chunks/camara_betha.json",
-      "bytes": 40313,
-      "sha256": "a4ce59b8c73e844e48e43936be99fb68453c0b1fa17618473f7915e84651dcde"
+      "bytes": 40415,
+      "sha256": "e74741233f65b2496429670a6dcd116b2e99dff68cf5cdb94dedfdaf09931e64"
     },
     "camara_transparencia": {
       "arquivo": "data/chunks/camara_transparencia.json",
@@ -28,18 +28,18 @@
     },
     "cnpjs": {
       "arquivo": "data/chunks/cnpjs.json",
-      "bytes": 71555,
-      "sha256": "beb8d48132df765080bbd34f2d2ecf0adde2ac08719d5d1beda861617f3fe00d"
+      "bytes": 71557,
+      "sha256": "75e1952f3eff5a38181367414ffe4a28abae421f670403eb659175ca514460c9"
     },
     "diarias": {
       "arquivo": "data/chunks/diarias.json",
-      "bytes": 4048928,
-      "sha256": "c9b5884510b652ae21167f55ccf4a23a7e3cab96c06e6eb5b4bb7c2a74a1e351"
+      "bytes": 4072678,
+      "sha256": "1d1ef8e7b840a71c71e7f2ef38e2ed7f3156c3c94344e843f4c98315e41a3036"
     },
     "diario": {
       "arquivo": "data/chunks/diario.json",
       "bytes": 23558,
-      "sha256": "0e7f585ac1c70e23ccfd84b2f0892a72e87c4e69ae1e2b0a603cdac25423a827"
+      "sha256": "5e869f663876549964e9fbdc8409c017ca4aaf2af199f3d4dd94ab59410112cf"
     },
     "emendas": {
       "arquivo": "data/chunks/emendas.json",
@@ -49,22 +49,22 @@
     "federal": {
       "arquivo": "data/chunks/federal.json",
       "bytes": 161955,
-      "sha256": "852a24951f91b0e7ce064974a673bcd809a4baf5d805cce2b693a60529705a90"
+      "sha256": "92175549451d09be359c3a8558d92b370d1344fd3cba5ff8ae68d449022e59df"
     },
     "fontes_emendas_2026": {
       "arquivo": "data/chunks/fontes_emendas_2026.json",
       "bytes": 8468,
-      "sha256": "603a18821cba512d9111711be2ffda06409aed7263727d868309dac0c48816ee"
+      "sha256": "92900e67792495ebbef50038676273f161480025cf5189c5e8e5f78855abe88f"
     },
     "fundacao_cultural": {
       "arquivo": "data/chunks/fundacao_cultural.json",
-      "bytes": 1208133,
-      "sha256": "c7a2e9652ef4a2df0c4ade80c0a2c35961a74cb543aea8274687d7118ca0fc86"
+      "bytes": 1212466,
+      "sha256": "e6f15e5d1d064938fb62a306343701e24034a1379d36787eec4b7da3e08b7770"
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
       "bytes": 102722,
-      "sha256": "954181a36222fec091ea023f319bd16e9fc46442cb2cbdc8f19bbe2dac4701ee"
+      "sha256": "8f9a51d0bc76bc09f4562af739738b52dca3c78bd0e88987cfec8d94a567ad4b"
     },
     "licitacoes_resultados": {
       "arquivo": "data/chunks/licitacoes_resultados.json",
@@ -74,37 +74,37 @@
     "monitoramento_coletas": {
       "arquivo": "data/chunks/monitoramento_coletas.json",
       "bytes": 3686,
-      "sha256": "7505d2003ffccd072bf8d9b92d468dff019e3002fd14a4a77a6ddd08d7932cf8"
+      "sha256": "f2213c18820ed0f6c110a7fc763b9ad42112841d82739cf3d39c17d8fa5e71fe"
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
-      "bytes": 857,
-      "sha256": "4f40ff121686c967984a0c1e96865d305d7ad6393d4e2f5cdc01c0225f1a69ea"
+      "bytes": 34156,
+      "sha256": "9b57815cf977d764a4ee9bee15249cb433116cc9505509a075e7df14aaa374a8"
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
       "bytes": 2559939,
-      "sha256": "1d623d075c24592705ae9b6e68b5656ac2d463a656022cbde357cedc3059b70d"
+      "sha256": "d5fc72a98920f23e9828264d2c2bacb5a6c68d3cc7b007a77fdb94d4f59597b4"
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
-      "bytes": 8584,
-      "sha256": "ef2ba4d90f063da0363fd266cdaecf64878e760f7e6f51df9b7c27f500ffc14d"
+      "bytes": 8668,
+      "sha256": "a1200f89a44c238afa4a9ddabcc19c6ce9f1a4b45876bafda15e511a4e22536d"
     },
     "prefeitura": {
       "arquivo": "data/chunks/prefeitura.json",
-      "bytes": 4874899,
-      "sha256": "3faad8e4a18b6378d4040cbe58f8873251e0f3ad782e5f53e47493c5765e6443"
+      "bytes": 4880497,
+      "sha256": "ee0f8246220328c4e5f833652a8ba95a3ff7039e90ce0ded6ed7496ffca687dc"
     },
     "publicacoes_diario": {
       "arquivo": "data/chunks/publicacoes_diario.json",
-      "bytes": 298884,
-      "sha256": "3a3d720416ec7fcb6aabb226fa83019f34beea305382d3d37a75f3166eec2b56"
+      "bytes": 307891,
+      "sha256": "d240cf3f5f60725155f84e3b8f8c04191657afee6b576956d087f04bf9f05716"
     },
     "publicacoes_estruturadas": {
       "arquivo": "data/chunks/publicacoes_estruturadas.json",
       "bytes": 2006116,
-      "sha256": "5989294e0a9168c23ada76b0df3fff99cb8083cd2864f42af421fe07f51bea41"
+      "sha256": "d484dfa33fb483caaf32329439b14099218efd06596c820495e1567923e9d327"
     },
     "receitas": {
       "arquivo": "data/chunks/receitas.json",
@@ -133,8 +133,8 @@
     },
     "status_fontes": {
       "arquivo": "data/chunks/status_fontes.json",
-      "bytes": 3120,
-      "sha256": "f2503798488001bb8eb2c61279e56eb998876b6920ee23286cbcfbc43ce78ec6"
+      "bytes": 3104,
+      "sha256": "41e17ee4ecf217a4bdfefddf20d68cccb017a2522b6fb1180712813339b14751"
     },
     "tse_doacoes": {
       "arquivo": "data/chunks/tse_doacoes.json",
@@ -150,12 +150,8 @@
   "snapshots": {
     "diretorio": "data/snapshots",
     "total": 30,
-    "ultimo": "2026-07-23T10-40-29-2954fb2a.json",
+    "ultimo": "2026-07-24T12-40-03-8a60f3c7.json",
     "arquivos": {
-      "2026-07-11T07-41-08-1f32824a.json": {
-        "bytes": 966569,
-        "sha256": "2644870ed180ec4b42d31b5a11b0f25123484ba1f83b48dbb40deaea52da5d2b"
-      },
       "2026-07-11T09-39-25-719a1bbb.json": {
         "bytes": 966571,
         "sha256": "95229ed027c6d3a4e4f03b3f64da2b28e1c03b5906b0db3755731170fd345012"
@@ -271,6 +267,10 @@
       "2026-07-23T10-40-29-2954fb2a.json": {
         "bytes": 847832,
         "sha256": "565d07bf97f325b003d5236047e3b1e41d5bf37cb9796a6a0705a879c4cf74c6"
+      },
+      "2026-07-24T12-40-03-8a60f3c7.json": {
+        "bytes": 747151,
+        "sha256": "107b0f2bd685bf0461e51a00fdb2f6164df28c1307da9daa9331aa205cf1a59b"
       }
     }
   }

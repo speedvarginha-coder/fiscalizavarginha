@@ -2,7 +2,7 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "total_externo_atual": 6828114.01,
-  "total_externo_anterior": 8402622.01,
+  "total_externo_anterior": 8405873.01,
   "empenhos_qtd": 3101,
   "top_fornecedores_atual": [
     {
@@ -239,7 +239,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-01-15",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -267,7 +267,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-01-15",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -295,7 +295,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-01-15",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -309,7 +309,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-03-30",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -337,7 +337,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-02-11",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -351,7 +351,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-05-06",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -365,7 +365,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-03-19",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -379,7 +379,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-03-31",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -393,7 +393,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-01",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -435,7 +435,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-04-14",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -463,7 +463,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-15",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -477,7 +477,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-01-20",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -491,7 +491,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-01-15",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -505,7 +505,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-05-04",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -519,7 +519,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-05-07",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -533,7 +533,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-03-19",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -547,7 +547,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-06",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -561,7 +561,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-03-23",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -575,7 +575,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-03-19",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -589,7 +589,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-16",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -603,7 +603,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-03-19",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -617,7 +617,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-02-11",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -631,7 +631,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-04-14",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -645,7 +645,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-02-11",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -659,7 +659,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-05-05",
       "data_fim": " ",
       "modalidade": "Inexigibilidade de licitação",
@@ -673,7 +673,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-04-06",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -701,7 +701,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-08",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -715,7 +715,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-02-12",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -729,7 +729,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-04-10",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -743,7 +743,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-05-04",
       "data_fim": " ",
       "modalidade": "Dispensa de licitação",
@@ -757,7 +757,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-14",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -771,7 +771,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-14",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -785,7 +785,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-03-19",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -799,7 +799,7 @@
     },
     {
       "numero": "0",
-      "ano": "0",
+      "ano": "2026",
       "data_assinatura": "2026-04-14",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -1144,5 +1144,5 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
   ],
-  "coletado_em": "2026-07-23T10:39:10-03:00"
+  "coletado_em": "2026-07-24T12:39:03-03:00"
 }

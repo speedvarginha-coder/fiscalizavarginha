@@ -1,8 +1,245 @@
 {
- "gerado_em": "2026-07-23T13:40:42+00:00",
+ "gerado_em": "2026-07-24T15:40:51+00:00",
  "fonte": "diario",
- "total": 220,
+ "total": 224,
  "publicacoes": [
+  {
+   "id": "DIARIO-2026-1850-pessoal-portarian292de23",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 292, DE 23 DE JULHO DE 2026.",
+   "numero": "292",
+   "data": "2026-07-23",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "O Instituto de Previdência dos Servidores Públicos de Varginha (INPREV) publicou dois aditivos a um contrato existente com a empresa Colmeia RH Tecnologia Serviços EIRELI.",
+   "pontos_atencao": [
+    "O reajuste de valor e a prorrogação do contrato devem ser acompanhados para garantir a justificativa e a economicidade.",
+    "A continuidade dos serviços prestados pela empresa Colmeia RH Tecnologia Serviços EIRELI ao INPREV."
+   ],
+   "envolvidos": [
+    {
+     "nome": "JUCILENE APARECIDA DA SILVA Corregedora da Guarda Civil Municipal INSTITUTO",
+     "papel": "empresa"
+    },
+    {
+     "nome": "INPREV Colmeia RH Tecnologia Serviços EIRELI",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": 7605.81,
+    "encontrados": [
+     7605.81
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "7.605,81",
+    "pagina": 17,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf#page=17"
+   },
+   "edicao": "1850",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/257/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 16,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf#page=16"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-24T15:40:50+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1850-pessoal-portarian1332026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "PORTARIA Nº 133/2026, 22 DE JULHO DE 2026.",
+   "numero": "133/2026",
+   "data": "2026-07-23",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "A Portaria nº 133/2026 designa uma empregada pública para substituir temporariamente outra em uma função gratificada no CISSUL/SAMU, devido a férias.",
+   "pontos_atencao": [
+    "A substituta fará jus ao recebimento da gratificação, impactando o orçamento.",
+    "A duração da substituição é indeterminada, dependendo do retorno da titular.",
+    "A portaria não especifica o valor da gratificação.",
+    "A substituição ocorre no CISSUL/SAMU, que presta serviços de saúde de urgência."
+   ],
+   "envolvidos": [
+    {
+     "nome": "TUPÃ COMUNICAÇÃO E MARKETING LTDA",
+     "papel": "empresa",
+     "cnpj": "11.828.652/0001-35"
+    },
+    {
+     "nome": "Kelly Cristina da Silva - Assistente Administrativo. FUNDAÇÃO",
+     "papel": "empresa"
+    },
+    {
+     "nome": "CISSUL/SAMU",
+     "cnpj": "13.985.869/0001-84",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": 135000.0,
+    "encontrados": [
+     135000.0
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário",
+    "confianca": "media",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": 14,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf#page=14"
+   },
+   "edicao": "1850",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/257/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 14,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf#page=14"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-24T15:40:29+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1850-norma-decreton12667de2",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "DECRETO Nº 12.667, DE 20 DE JULHO DE 2026.",
+   "numero": "12.667",
+   "data": "2026-07-23",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "orçamento",
+   "resumo": "Este decreto estabelece as regras e procedimentos que a Prefeitura de Varginha deve seguir para executar as emendas parlamentares individuais impositivas, que são recursos do orçamento municipal destinados por vereadores a projetos específicos.",
+   "pontos_atencao": [
+    "O decreto estabelece prazos rígidos para o envio das emendas pela Câmara Municipal (até 15 de janeiro), com consequências como a formalização de representação e a publicidade da pendência no Portal da Transparência em caso de atraso.",
+    "A inobservância dos prazos pela Câmara não suspende os prazos internos do Executivo, o que pode gerar pressão para a execução em tempo reduzido.",
+    "A necessidade de adequação às diretrizes de órgãos de controle e decisões judiciais indica que os procedimentos anteriores podem ter sido inadequados ou insuficientes."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf"
+   },
+   "edicao": "1850",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/257/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 3,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf#page=3"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-24T15:40:23+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1850-dispensa-dispensadelicita",
+   "fonte": "diario",
+   "tipo": "dispensa",
+   "tipo_label": "Dispensa de licitação",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "Dispensa de Licitação nº 053/2026.",
+   "numero": "053/2026",
+   "data": "2026-07-23",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Fundação Hospitalar de Varginha contratou uma empresa para treinar seus funcionários em segurança e medicina do trabalho, sem licitação.",
+   "pontos_atencao": [
+    "A contratação foi realizada por dispensa de licitação, um processo simplificado previsto em lei.",
+    "O valor do contrato é de R$ 3.999,00.",
+    "A empresa contratada é a SSOMA SOLUCOES TECNICAS LTDA."
+   ],
+   "envolvidos": [
+    {
+     "nome": "SSOMA SOLUCOES TECNICAS LTDA",
+     "papel": "empresa"
+    },
+    {
+     "nome": "PHILIPS MEDICAL SYSTEMS LTDA",
+     "papel": "empresa"
+    },
+    {
+     "nome": "MG, Quinta-feira, 23 de Julho de 2026 14 DIRETORA-GERAL HOSPITALAR FUNDAÇÃO",
+     "papel": "empresa"
+    },
+    {
+     "nome": "Julho de 2026. Rosana de Paiva Silva Morais DIRETORA-GERAL HOSPITALAR FUNDAÇÃO",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": 3999.0,
+    "encontrados": [
+     2396576.0,
+     53053.44,
+     3999.0
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "3.999,00",
+    "pagina": 15,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf#page=15"
+   },
+   "edicao": "1850",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/257/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 15,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_20261623114734bf184d9a1cf6d5cfb3a07ea4357101.pdf#page=15"
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-07-24T15:40:38+00:00"
+  },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23275de",
    "fonte": "diario",
@@ -53,7 +290,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=26"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23262de",
@@ -99,7 +336,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=25"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23261de",
@@ -145,7 +382,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=25"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23248de",
@@ -190,7 +427,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=24"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23243de",
@@ -235,7 +472,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=24"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23242de",
@@ -282,7 +519,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=23"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23239de",
@@ -331,7 +568,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=22"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23238de",
@@ -380,7 +617,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=21"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23237de",
@@ -429,7 +666,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=21"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23236de",
@@ -478,7 +715,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=20"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23235de",
@@ -527,7 +764,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=19"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23234de",
@@ -576,7 +813,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=18"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23233de",
@@ -625,7 +862,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=18"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23232de",
@@ -674,7 +911,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=17"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23230de",
@@ -725,7 +962,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=16"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23217de",
@@ -774,7 +1011,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=15"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23215de",
@@ -823,7 +1060,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=14"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23214de",
@@ -872,7 +1109,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=13"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian23213de",
@@ -921,7 +1158,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=13"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian1322026",
@@ -999,7 +1236,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=34"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-pessoal-portarian1312026",
@@ -1046,7 +1283,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=34"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1849-norma-lein7595de06deju",
@@ -1096,7 +1333,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=11"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1849-norma-lein7595",
@@ -1156,7 +1393,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=12"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1849-norma-lein7593de06deju",
@@ -1216,7 +1453,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=3"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1849-norma-lein7593",
@@ -1267,7 +1504,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202611221618d7fd49d9452ea16eea4d1dda272953d0.pdf#page=10"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:50+00:00"
   },
   {
    "id": "DIARIO-2026-1848-pessoal-portarian1302026",
@@ -1313,7 +1550,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=8"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1848-licitacao-classificaoedita",
@@ -1359,7 +1596,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=9"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1848-dispensa-extratodepublica",
@@ -1419,7 +1656,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=8"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1848-dispensa-dispensadelicita",
@@ -1473,7 +1710,7 @@
     "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202623211502c5d6272afcd2ef3d4b09ae2b26c294b4.pdf#page=12"
    },
    "origem_ia": "ia",
-   "gerado_em": "2026-07-23T13:40:41+00:00"
+   "gerado_em": "2026-07-24T15:40:51+00:00"
   },
   {
    "id": "DIARIO-2026-1847-pessoal-portarian23249de",

@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-23T15:36:06.173Z",
+  "gerado_em": "2026-07-24T15:41:22.398Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,15 +9,15 @@
     "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-23T10:40:29",
-    "data_humana": "23/07/2026 - 10:40"
+    "iso": "2026-07-24T12:40:03",
+    "data_humana": "24/07/2026 - 12:40"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -69,7 +69,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
-      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); SUCAFINA BRASIL IND.COM.E EXP.LTDA (R$ 1.8M).",
+      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); CAIXA ECONOMICA FEDERAL (R$ 1.8M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json",
       "verification": {
@@ -157,7 +157,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -209,7 +209,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
-      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); SUCAFINA BRASIL IND.COM.E EXP.LTDA (R$ 1.8M).",
+      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); CAIXA ECONOMICA FEDERAL (R$ 1.8M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json",
       "verification": {

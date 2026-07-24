@@ -1496,7 +1496,7 @@
       "cnpj_raiz": "25863390",
       "cnpj_completo": "25863390000154",
       "cnpj_reconstruido": true,
-      "valor_total": 47774405.31,
+      "valor_total": 47809405.31,
       "razao_social": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "nome_fantasia": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "situacao": "ATIVA",
@@ -1573,7 +1573,7 @@
       "cnpj_raiz": "00394460",
       "cnpj_completo": "00394460000141",
       "cnpj_reconstruido": true,
-      "valor_total": 6645459.13,
+      "valor_total": 6755728.81,
       "razao_social": "MINISTERIO DA FAZENDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1765,7 +1765,7 @@
       "cnpj_raiz": "26001891",
       "cnpj_completo": "26001891000194",
       "cnpj_reconstruido": true,
-      "valor_total": 3003127.08,
+      "valor_total": 3006296.46,
       "razao_social": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1822,6 +1822,56 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
+      "cnpj_raiz": "02999757",
+      "cnpj_completo": "02999757000166",
+      "cnpj_reconstruido": true,
+      "valor_total": 2088371.11,
+      "razao_social": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1999-02-12",
+      "cnae": "Serviços de diálise e nefrologia",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ADRIANA ALKMIM REZENDE BARATTI",
+        "BETANIA FROTA DO PRADO",
+        "CONSUELO VELOSO DE CARVALHO",
+        "RAIMUNDO NONATO DE CASTRO ANDRADE",
+        "RODOLFO FROTA DO PRADO",
+        "VINICIUS FROTA DO PRADO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "CAIXA ECONOMICA FEDERAL",
+      "cnpj_raiz": "00360305",
+      "cnpj_completo": "00360305000104",
+      "cnpj_reconstruido": true,
+      "valor_total": 1834673.51,
+      "razao_social": "CAIXA ECONOMICA FEDERAL",
+      "nome_fantasia": "CEF MATRIZ",
+      "situacao": "ATIVA",
+      "abertura": "1971-02-03",
+      "cnae": "Caixas econômicas",
+      "municipio": "BRASILIA",
+      "uf": "DF",
+      "socios": [
+        "ADRIANE VELLOSO FERREIRA",
+        "ADRIANO ASSIS MATIAS",
+        "ALEXANDRE GONCALVES DE AMORIM",
+        "ANDERSON AORIVAN DA CUNHA POSSA",
+        "CARLOS ANTONIO VIEIRA FERNANDES",
+        "CARLOS AUGUSTO DE ANDRADE JENIER",
+        "CINTIA LIMA GONCALVES TEIXEIRA",
+        "CIRO MENEZES BARREIROS",
+        "CRISTIANO BOAVENTURA DE MEDEIROS",
+        "CRISTINA MARIA DA SILVA PERES"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "SUCAFINA BRASIL IND.COM.E EXP.LTDA",
       "cnpj_raiz": "07146352",
       "cnpj_completo": "07146352000107",
@@ -1843,29 +1893,6 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
-      "nome": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
-      "cnpj_raiz": "02999757",
-      "cnpj_completo": "02999757000166",
-      "cnpj_reconstruido": true,
-      "valor_total": 1643845.8,
-      "razao_social": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "1999-02-12",
-      "cnae": "Serviços de diálise e nefrologia",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "ADRIANA ALKMIM REZENDE BARATTI",
-        "BETANIA FROTA DO PRADO",
-        "CONSUELO VELOSO DE CARVALHO",
-        "RAIMUNDO NONATO DE CASTRO ANDRADE",
-        "RODOLFO FROTA DO PRADO",
-        "VINICIUS FROTA DO PRADO"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
       "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
       "cnpj_raiz": "23593720",
       "cnpj_completo": "23593720000103",
@@ -1880,33 +1907,6 @@
       "uf": "MG",
       "socios": [
         "MARIA DAS GRACAS REZENDE FRAGOSO FLORESTA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "CAIXA ECONOMICA FEDERAL",
-      "cnpj_raiz": "00360305",
-      "cnpj_completo": "00360305000104",
-      "cnpj_reconstruido": true,
-      "valor_total": 1564865.3,
-      "razao_social": "CAIXA ECONOMICA FEDERAL",
-      "nome_fantasia": "CEF MATRIZ",
-      "situacao": "ATIVA",
-      "abertura": "1971-02-03",
-      "cnae": "Caixas econômicas",
-      "municipio": "BRASILIA",
-      "uf": "DF",
-      "socios": [
-        "ADRIANE VELLOSO FERREIRA",
-        "ADRIANO ASSIS MATIAS",
-        "ALEXANDRE GONCALVES DE AMORIM",
-        "ANDERSON AORIVAN DA CUNHA POSSA",
-        "CARLOS ANTONIO VIEIRA FERNANDES",
-        "CARLOS AUGUSTO DE ANDRADE JENIER",
-        "CINTIA LIMA GONCALVES TEIXEIRA",
-        "CIRO MENEZES BARREIROS",
-        "CRISTIANO BOAVENTURA DE MEDEIROS",
-        "CRISTINA MARIA DA SILVA PERES"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -1931,6 +1931,25 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
+      "cnpj_raiz": "42317980",
+      "cnpj_completo": "42317980000109",
+      "cnpj_reconstruido": true,
+      "valor_total": 1507564.0,
+      "razao_social": "SAO DOMINGOS CONSTRUTORA LTDA",
+      "nome_fantasia": "CONSTRUTORA SAO DOMINGOS",
+      "situacao": "ATIVA",
+      "abertura": "2021-06-14",
+      "cnae": "Construção de rodovias e ferrovias",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "DOMINGOS PINTO FERREIRA NETO",
+        "DOMINGOS PINTO FILHO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "BRAVO LOCACOES E SERVICOS LTDA",
       "cnpj_raiz": "58499094",
       "cnpj_completo": "58499094000175",
@@ -1947,25 +1966,6 @@
         "ANA CAROLINA PEREIRA ROQUIM",
         "ELDER DE BRITO MARQUES",
         "FERNANDO GUIMARAES FONSECA NETO"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
-      "cnpj_raiz": "42317980",
-      "cnpj_completo": "42317980000109",
-      "cnpj_reconstruido": true,
-      "valor_total": 1451125.6,
-      "razao_social": "SAO DOMINGOS CONSTRUTORA LTDA",
-      "nome_fantasia": "CONSTRUTORA SAO DOMINGOS",
-      "situacao": "ATIVA",
-      "abertura": "2021-06-14",
-      "cnae": "Construção de rodovias e ferrovias",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "DOMINGOS PINTO FERREIRA NETO",
-        "DOMINGOS PINTO FILHO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },

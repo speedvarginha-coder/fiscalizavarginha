@@ -194,9 +194,9 @@
     "/consulta/v1/contratacoes/publicacao: HTTP Error 400: ",
     "/consulta/v1/contratacoes/publicacao: HTTP Error 400: ",
     "/consulta/v1/contratacoes/publicacao: HTTP Error 400: ",
+    "https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20261231&cnpjOrgao=18240119000105&tamanhoPagina=50&pagina=1",
     "https://pncp.gov.br/api/consulta/v1/contratos?dataInicial=20260101&dataFinal=20261231&cnpjOrgao=04366790000184&tamanhoPagina=50&pagina=1",
-    "/consulta/v1/contratos: HTTP Error 500: ",
-    "/consulta/v1/contratos: The read operation timed out"
+    "/consulta/v1/contratos: HTTP Error 500: "
   ],
   "status_fontes": {
     "compras": {
