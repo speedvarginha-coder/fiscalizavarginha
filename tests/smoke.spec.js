@@ -526,7 +526,10 @@ test.describe("Placar do dinheiro", () => {
     await page.waitForTimeout(2500);
     await page.locator('.csec-btn[data-go="vereadores"]').click();
     await expect(page.locator("#remuneracaoVereadores")).toContainText("Subsidio bruto mensal");
-    await expect(page.locator("#remuneracaoVereadores")).toContainText("R$ 10.384,06");
+    // Regex, nao valor fixo: o subsidio muda na revisao geral anual (IPCA) e
+    // travar o centavo quebrava a coleta a cada reajuste. Valida que ha um
+    // subsidio na casa dos milhares com a fonte, sem depender do numero do ano.
+    await expect(page.locator("#remuneracaoVereadores")).toContainText(/R\$\s*1\d\.\d{3},\d{2}/);
     await expect(page.locator("#remuneracaoVereadores")).toContainText("Folha nominal localizada");
     await expect(page.locator("#remuneracaoVereadores .salary-payroll__row").nth(1)).toBeAttached();
     await expect(page.locator("#remuneracaoVereadores a", { hasText: "Ver lei" })).toBeAttached();
