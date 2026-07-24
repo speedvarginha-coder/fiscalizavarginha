@@ -7,11 +7,11 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 2436487.8,
+    "total_atual": 2436519.38,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 352481.32,
+    "total_externo_atual": 352512.9,
     "total_externo_anterior": 3071916.67,
-    "credores_atual_qtd": 112,
+    "credores_atual_qtd": 113,
     "credores_anterior_qtd": 196,
     "top_fornecedores_atual": [
       {
@@ -51,18 +51,6 @@
         "registros": 1
       },
       {
-        "nome": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "cnpj": "05.852.571/****-**",
-        "valor_total": 10000.0,
-        "registros": 1
-      },
-      {
-        "nome": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "cnpj": "14.137.358/****-**",
-        "valor_total": 10000.0,
-        "registros": 1
-      },
-      {
         "nome": "BLOCO VIUVAS VIRGENS",
         "cnpj": "55.862.497/****-**",
         "valor_total": 10000.0,
@@ -89,6 +77,18 @@
       {
         "nome": "GREMIO RECREATIVO ESCOLA DE SAMBA UNIDOS DA VILA MENDES",
         "cnpj": "41.885.021/****-**",
+        "valor_total": 10000.0,
+        "registros": 1
+      },
+      {
+        "nome": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "cnpj": "14.137.358/****-**",
+        "valor_total": 10000.0,
+        "registros": 1
+      },
+      {
+        "nome": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "cnpj": "05.852.571/****-**",
         "valor_total": 10000.0,
         "registros": 1
       },
@@ -261,10 +261,10 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 218,
-      "empenhado": 3291009.78,
-      "liquidado": 2611253.01,
-      "pago": 2437309.56
+      "registros": 220,
+      "empenhado": 3296708.35,
+      "liquidado": 2661154.78,
+      "pago": 2438468.0
     },
     "maiores_empenhos_atual": [
       {
@@ -373,9 +373,9 @@
         "credor": "ADRIANA CONSTRUCOES E SERVICOS LTDA",
         "historico": "Contratação de empresa especializada em serviços de serralheria para execução de serviços de recuperação, reforma, confecção, instalação e pintura de estruturas metálicas, compreendendo guarda-corpos, gradis, portões, corrimãos duplos e escadas, na antiga Estação Ferroviária de Varginha, bem cultural tombado, situada à Praça Matheus Tavares, n 121, Centro, Varginha/MG, conforme especificações e condições estabelecidas no Termo de Referência.",
         "valor_empenhado": 89999.9,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 89999.9
+        "valor_liquidado": 44999.95,
+        "valor_pago": 904.5,
+        "saldo_a_pagar": 89095.4
       },
       {
         "data": "2026-04-28",
@@ -384,9 +384,9 @@
         "credor": "M&E ALUGUEL DE CARROS LTDA",
         "historico": "LOCACAO DE VEICULOS. Aditivo n 005/2026 - 3 Termo Aditivo ao Contrato n 009/2023.",
         "valor_empenhado": 76582.32,
-        "valor_liquidado": 7020.04,
-        "valor_pago": 7020.04,
-        "saldo_a_pagar": 69562.28
+        "valor_liquidado": 10210.97,
+        "valor_pago": 7173.2,
+        "saldo_a_pagar": 69409.12
       },
       {
         "data": "2026-06-22",
@@ -571,9 +571,9 @@
         "credor": "INFORMA SOFTWARE SOLUTIONS LTDA",
         "historico": "Serviço de atualização e suporte técnico de licença de software de automação de emissora de rádio. Aditivo n 004/2026 - 1 Termo Aditivo ao Contrato n 004/2025.",
         "valor_empenhado": 16349.64,
-        "valor_liquidado": 67.01,
-        "valor_pago": 67.01,
-        "saldo_a_pagar": 16282.63
+        "valor_liquidado": 1429.48,
+        "valor_pago": 132.41,
+        "saldo_a_pagar": 16217.23
       },
       {
         "data": "2026-02-26",
@@ -626,9 +626,9 @@
         "credor": "PANIFICADORA PRINCESA LTDA",
         "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
         "valor_empenhado": 12673.6,
-        "valor_liquidado": 2217.88,
-        "valor_pago": 2217.88,
-        "saldo_a_pagar": 10455.72
+        "valor_liquidado": 2534.72,
+        "valor_pago": 2221.68,
+        "saldo_a_pagar": 10451.92
       },
       {
         "data": "2026-04-08",
@@ -731,10 +731,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 23,
+        "numero": 24,
         "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -786,10 +786,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 24,
+        "numero": 19,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "CONCEDER AUXILIO FINANCEIRO A ASSOCIAÇÃO CULTURAL BATERIA NOTA 10  NOS TERMOS DA LEI 7.522 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "BLOCO VIUVAS VIRGENS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -797,10 +797,10 @@
       },
       {
         "data": "2026-02-04",
-        "numero": 19,
+        "numero": 23,
         "orgao": "ADMINISTRACAO",
-        "credor": "BLOCO VIUVAS VIRGENS",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO BLOCO VIUVAS VIRGENS NOS TERMOS DA LEI 7.517 DE 04 DE FEVEREIRO DE 2026",
+        "credor": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO  INSTITUTO NACIONAL DE EDUCAÇÃO, CULTURA E ATIVIDADES PSICOLOGICAS - INECAP  NOS TERMOS DA LEI 7.521 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -1104,6 +1104,17 @@
         "saldo_a_pagar": 0.0
       },
       {
+        "data": "2026-07-24",
+        "numero": 219,
+        "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
+        "credor": "EDSON CARLOS DOS SANTOS 85968765615",
+        "historico": "Contratação de empresa para prestação de serviços de manutenção e conserto do portão eletrônico e da cancela da Antiga Estação Ferroviária, sede da Fundação Cultural de Varginha, com a troca de placas, capacitores, sensores e circuitos, e também instalação de nova cancela. \nLocal da prestação do serviço: Praça Matheus Tavares, 121, centro, Varginha/MG. Horário de expediente: de segunda a sexta-feira, das 7h às 12h e das 14h às 17h. \nFundamento legal: art. 95, 2, Lei 14.133/21.",
+        "valor_empenhado": 3170.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 3170.0
+      },
+      {
         "data": "2026-02-10",
         "numero": 37,
         "orgao": "ADMINISTRACAO",
@@ -1135,17 +1146,6 @@
         "valor_liquidado": 560.0,
         "valor_pago": 560.0,
         "saldo_a_pagar": 2240.0
-      },
-      {
-        "data": "2026-07-03",
-        "numero": 214,
-        "orgao": "ADMINISTRACAO",
-        "credor": "EDER JERONIMO DA SILVA",
-        "historico": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20\nCOMBUSTÍVEL: R$ 300,00\nPEDÁGIOS/ESTACIONAMENTO: R$ 200,00\nUBER/99: R$ 150,00",
-        "valor_empenhado": 2723.2,
-        "valor_liquidado": 2723.2,
-        "valor_pago": 2723.2,
-        "saldo_a_pagar": 0.0
       }
     ],
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80382"
@@ -34763,18 +34763,6 @@
       },
       {
         "ano": "2026",
-        "funcionario": "EDER JERONIMO DA SILVA",
-        "cargo": "Contador",
-        "numero": 15095,
-        "quantidade": 1.0,
-        "valor_total": 664.5,
-        "periodo": "15-05-2026 a 16-05-2026",
-        "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Visita técnica às rádios: Rádio CDL, Rádio 98 FM, Rádio Estrada Real FM e TV 98 News para análise de viabilidade do projeto de integração da Rádio Melodia FM com a TV Princesa \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$ 180,00 = R$ 360,00\nHOSPEDAGEM: R$ 304,50",
-        "fonte": "Betha Fundação Cultural - Diárias"
-      },
-      {
-        "ano": "2026",
         "funcionario": "FABIANO PEREIRA ARANTES",
         "cargo": "DIRETOR DA RADIO MELODIA",
         "numero": 15096,
@@ -34790,6 +34778,18 @@
         "funcionario": "GIL NOGUEIRA DE PAULA JUNIOR",
         "cargo": "Operador de Audio e Estudio",
         "numero": 15097,
+        "quantidade": 1.0,
+        "valor_total": 664.5,
+        "periodo": "15-05-2026 a 16-05-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Visita técnica às rádios: Rádio CDL, Rádio 98 FM, Rádio Estrada Real FM e TV 98 News para análise de viabilidade do projeto de integração da Rádio Melodia FM com a TV Princesa \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 200% X R$ 180,00 = R$ 360,00\nHOSPEDAGEM: R$ 304,50",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "Contador",
+        "numero": 15095,
         "quantidade": 1.0,
         "valor_total": 664.5,
         "periodo": "15-05-2026 a 16-05-2026",
@@ -38783,6 +38783,24 @@
     "itens": [
       {
         "numero": "",
+        "data": "2026-07-23",
+        "ano": "2026",
+        "orgao_concedente": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
+        "fonte_recurso": "RECURSOS NAO VINCULADOS DE IMPOSTOS",
+        "finalidade": "REPASSE SUBVENÇÃO MENSAL",
+        "valor": 416208.22
+      },
+      {
+        "numero": "",
+        "data": "2026-07-23",
+        "ano": "2026",
+        "orgao_concedente": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
+        "fonte_recurso": "RECURSOS NAO VINCULADOS DE IMPOSTOS",
+        "finalidade": "REPASSE SUBVENÇÃO MENSAL FOLHA PAGMENTO",
+        "valor": 337000.0
+      },
+      {
+        "numero": "",
         "data": "2026-06-25",
         "ano": "2026",
         "orgao_concedente": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
@@ -39584,9 +39602,9 @@
       }
     ],
     "resumo": {
-      "qtd": 89,
-      "valor_total": 25556934.98,
-      "valor_atual": 5072457.54,
+      "qtd": 91,
+      "valor_total": 26310143.2,
+      "valor_atual": 5825665.76,
       "valor_anterior": 8531504.0
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80403"
