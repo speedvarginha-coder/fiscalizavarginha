@@ -1,8 +1,8 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6828114.01,
-  "total_externo_anterior": 8403123.51,
+  "total_externo_atual": 6831458.23,
+  "total_externo_anterior": 8402622.01,
   "empenhos_qtd": 3101,
   "top_fornecedores_atual": [
     {
@@ -26,14 +26,14 @@
       "qtd": 1
     },
     {
+      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+      "valor_total": 333881.91,
+      "qtd": 28
+    },
+    {
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
       "valor_total": 316929.0,
       "qtd": 6
-    },
-    {
-      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 306463.1,
-      "qtd": 23
     },
     {
       "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
@@ -57,8 +57,8 @@
     },
     {
       "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 158030.56,
-      "qtd": 20
+      "valor_total": 133955.97,
+      "qtd": 15
     },
     {
       "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
@@ -169,8 +169,8 @@
     },
     {
       "nome": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-      "valor_total": 176693.53,
-      "qtd": 11
+      "valor_total": 178854.53,
+      "qtd": 13
     },
     {
       "nome": "49.906.995 FABIOLA SEBASTIANA KELLY SILVA",
@@ -1144,5 +1144,5 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
   ],
-  "coletado_em": "2026-07-24T19:07:50-03:00"
+  "coletado_em": "2026-07-25T06:09:34-03:00"
 }

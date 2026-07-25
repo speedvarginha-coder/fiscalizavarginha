@@ -1,13 +1,13 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-07-20T17:59:27+00:00",
+  "gerado_em": "2026-07-25T09:43:25+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251122",
-    "fim": "20260720"
+    "inicio": "20251127",
+    "fim": "20260725"
   },
-  "compras": 302,
-  "compras_com_resultado": 166,
+  "compras": 298,
+  "compras_com_resultado": 164,
   "homologacoes_simbolicas": [
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -22,80 +22,6 @@
     }
   ],
   "registros": [
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "132",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000424/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de Enxoval para Uso Hospitalar para UPA Varginha, através de recurso da Emenda Impositiva nº 51.",
-      "valor_estimado": 32671.15,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-25",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "127",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000426/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de serviços comuns de engenharia, incluindo fornecimento de materiais, mão de obra e equipamentos necessários para remoção e instalação de calhas, rufos e condutores, para atend",
-      "valor_estimado": 101186.22,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-25",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "123",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000430/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA MANUTENÇÃO PREVENTIVA/CORRETIVA DOS VEÍCULOS CCI DO AEROPORTO.",
-      "valor_estimado": 158841.25,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-26",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "134",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000433/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de equipamentos, mobiliários e eletrodomésticos para UPA de varginha, através das Emendas Impositivas n° 156, 102, 171 e 127.",
-      "valor_estimado": 84571.68,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-26",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "126",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000434/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de Brita Base - Material agregado, derivado de rocha granulometricamente estabilizado, empregado na construção de camadas de base no pavimento.",
-      "valor_estimado": 243225.0,
-      "valor_homologado_total": 233955.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-26",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "Brita Base - Material agregado, derivado de rocha, granulometricamente estabilizado, empregado na construção de camadas de base do pavimento. - Brita Base - Mat",
-          "vencedor": "MINERACAO SANTO ANTONIO DE VARGINHA LTDA",
-          "cnpj_vencedor": "25860537000152",
-          "valor_homologado": 233955.0,
-          "data_resultado": "2025-12-12"
-        }
-      ]
-    },
     {
       "orgao": "Prefeitura Municipal de Varginha",
       "numero_compra": "128",
@@ -6727,10 +6653,107 @@
       "modalidade": "Pregão - Eletrônico",
       "objeto": "[Portal de Compras Públicas] - Contratação de serviços contínuos de Remoção Terrestre Inter-Hospitalar com Ambulâncias, com o devido acompanhamento de profissional da área de saúde, para atender remoções de pacientes na ",
       "valor_estimado": 1267949.16,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 798624.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-05-20",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "Serviço de remoção terrestre inter hospitalar com Ambulância Suporte Básico, com tripulação composta de motorista/condutor e enfermeiro, DENTRO DO MUNICÍPIO DE ",
+          "vencedor": "SUL MINEIRA URGENCIA E EMERGENCIA MEDICA LTDA",
+          "cnpj_vencedor": "10372200000129",
+          "valor_homologado": 153900.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 1,
+          "descricao_item": "Serviço de remoção terrestre inter hospitalar com Ambulância Suporte Básico, com tripulação composta de motorista/condutor e enfermeiro, DENTRO DO MUNICÍPIO DE ",
+          "vencedor": "JF. MED LTDA",
+          "cnpj_vencedor": "43703574000139",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 1,
+          "descricao_item": "Serviço de remoção terrestre inter hospitalar com Ambulância Suporte Básico, com tripulação composta de motorista/condutor e enfermeiro, DENTRO DO MUNICÍPIO DE ",
+          "vencedor": "CARDIOCENTER ESPECIALIDADES MEDICAS LTDA.",
+          "cnpj_vencedor": "18836259000132",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 1,
+          "descricao_item": "Serviço de remoção terrestre inter hospitalar com Ambulância Suporte Básico, com tripulação composta de motorista/condutor e enfermeiro, DENTRO DO MUNICÍPIO DE ",
+          "vencedor": "SAUDE MOVEL REMOCOES LTDA.",
+          "cnpj_vencedor": "20612165000121",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 2,
+          "descricao_item": "Serviço de remoção terrestre com UNIDADE DE SUPORTE AVANÇADO (UTI), com tripulação composta de motorista/condutor, enfermeiro e médico, DENTRO DO MUNICÍPIO DE V",
+          "vencedor": "CARDIOCENTER ESPECIALIDADES MEDICAS LTDA.",
+          "cnpj_vencedor": "18836259000132",
+          "valor_homologado": 601560.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 2,
+          "descricao_item": "Serviço de remoção terrestre com UNIDADE DE SUPORTE AVANÇADO (UTI), com tripulação composta de motorista/condutor, enfermeiro e médico, DENTRO DO MUNICÍPIO DE V",
+          "vencedor": "JF. MED LTDA",
+          "cnpj_vencedor": "43703574000139",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 2,
+          "descricao_item": "Serviço de remoção terrestre com UNIDADE DE SUPORTE AVANÇADO (UTI), com tripulação composta de motorista/condutor, enfermeiro e médico, DENTRO DO MUNICÍPIO DE V",
+          "vencedor": "SUL MINEIRA URGENCIA E EMERGENCIA MEDICA LTDA",
+          "cnpj_vencedor": "10372200000129",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 2,
+          "descricao_item": "Serviço de remoção terrestre com UNIDADE DE SUPORTE AVANÇADO (UTI), com tripulação composta de motorista/condutor, enfermeiro e médico, DENTRO DO MUNICÍPIO DE V",
+          "vencedor": "SAUDE MOVEL REMOCOES LTDA.",
+          "cnpj_vencedor": "20612165000121",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 3,
+          "descricao_item": "Serviço de remoção terrestre com UNIDADE DE SUPORTE AVANÇADO (UTI) NEONATOS, com tripulação composta de motorista/condutor, enfermeiro e médico, DENTRO DO MUNIC",
+          "vencedor": "CARDIOCENTER ESPECIALIDADES MEDICAS LTDA.",
+          "cnpj_vencedor": "18836259000132",
+          "valor_homologado": 43164.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 3,
+          "descricao_item": "Serviço de remoção terrestre com UNIDADE DE SUPORTE AVANÇADO (UTI) NEONATOS, com tripulação composta de motorista/condutor, enfermeiro e médico, DENTRO DO MUNIC",
+          "vencedor": "SUL MINEIRA URGENCIA E EMERGENCIA MEDICA LTDA",
+          "cnpj_vencedor": "10372200000129",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 3,
+          "descricao_item": "Serviço de remoção terrestre com UNIDADE DE SUPORTE AVANÇADO (UTI) NEONATOS, com tripulação composta de motorista/condutor, enfermeiro e médico, DENTRO DO MUNIC",
+          "vencedor": "SAUDE MOVEL REMOCOES LTDA.",
+          "cnpj_vencedor": "20612165000121",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        },
+        {
+          "item": 3,
+          "descricao_item": "Serviço de remoção terrestre com UNIDADE DE SUPORTE AVANÇADO (UTI) NEONATOS, com tripulação composta de motorista/condutor, enfermeiro e médico, DENTRO DO MUNIC",
+          "vencedor": "JF. MED LTDA",
+          "cnpj_vencedor": "43703574000139",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-02"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -7280,10 +7303,35 @@
       "modalidade": "Pregão - Eletrônico",
       "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de soro fisiológico 0,9%, sistema fechado em bolsas para manutenção dos Serviços de Saúde da Unidade de Pronto Atendimento do Municí",
       "valor_estimado": 1029799.0,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 565600.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-03",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "CIRURGICA KLG EIRELI",
+          "cnpj_vencedor": "08618163000144",
+          "valor_homologado": 232000.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "FARMA 2 PRODUTOS PARA SAUDE LTDA",
+          "cnpj_vencedor": "24826631000556",
+          "valor_homologado": 115200.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "FARMA 2 PRODUTOS PARA SAUDE LTDA",
+          "cnpj_vencedor": "24826631000556",
+          "valor_homologado": 218400.0,
+          "data_resultado": "2026-07-20"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -7319,10 +7367,19 @@
       "modalidade": "Pregão - Eletrônico",
       "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para prestação de serviços de controle e manejo de aves urbanas (pombos), mediante a implantação de barreiras físicas e sistemas de repelência, com forn",
       "valor_estimado": 56378.73,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 49500.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-06",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "LOTE 01 - CONTRATACAO DE EMPRESA ESPECIALIZADA NA IMPLANTACAO E MANUTENCAO DE INIBIDORES PARA POMBOS - Contratacao de empresa especializada para prestacao de se",
+          "vencedor": "BASSI AMBIENTAL CONTROLE DE PRAGAS LTDA",
+          "cnpj_vencedor": "33953312000179",
+          "valor_homologado": 49500.0,
+          "data_resultado": "2026-07-24"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -7332,10 +7389,19 @@
       "modalidade": "Pregão - Eletrônico",
       "objeto": "[Portal de Compras Públicas] - Aquisição de veículo tipo furgão (Van Cargo), zero quilômetro, ano de fabricação 2026 ou superior, com capacidade volumétrica mínima de 11,5m³, motor a diesel, para transporte de materiais ",
       "valor_estimado": 281333.33,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 265000.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-06",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "Veiculo utilitario tipo furgao (Van Cargo) - Veiculo utilitario tipo furgao (Van Cargo) zero quilometro, ano de fabricacao 2026 ou superior, com capacidade volu",
+          "vencedor": "GTL COMERCIO DE VEICULOS",
+          "cnpj_vencedor": "60720082000170",
+          "valor_homologado": 265000.0,
+          "data_resultado": "2026-07-21"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -7372,7 +7438,7 @@
       "objeto": "[Portal de Compras Públicas] - Aquisição de veículo tipo Van, zero quilômetro, ano/modelo mínimo 2026 ou superior, com adaptação para cadeirante, cor branca, zero km, diesel, motor mínimo 2000 cilindradas, potência mínim",
       "valor_estimado": 747263.34,
       "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
+      "situacao": "Suspensa",
       "data_publicacao": "2026-07-10",
       "resultados": []
     },
@@ -7522,207 +7588,6 @@
       "situacao": "Revogada",
       "data_publicacao": "2026-01-07",
       "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "DE 157",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000422/2025",
-      "modalidade": "Dispensa",
-      "objeto": "FRALDA DESCARTAVEL TAM: XXG TURMA DA MONICA",
-      "valor_estimado": 3621.38,
-      "valor_homologado_total": 3416.4,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-24",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "Polpa de celulose, polímero superabsorvente, não tecido de fibras de polipropileno hidrofílico, não tecido de fibras de polipropileno hidrofóbico, não tecido de",
-          "vencedor": "CIRURGICA UNIAO LTDA",
-          "cnpj_vencedor": "04063331000121",
-          "valor_homologado": 3416.4,
-          "data_resultado": "2025-11-18"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "163",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000425/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - AQUISIÇÃO DE ELETRODOMÉSTICOS PARA USO NO PARQUE ZOOBOTÂNICO.",
-      "valor_estimado": 9953.66,
-      "valor_homologado_total": 9193.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-25",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "FOGÃO DOMESTICO A GÁS 4 BOCAS - - FOGÃO DOMESTICO A GÁS 4 BOCAS - 4 bocas, acendimento manual, forno, pintura branca eletrostática.",
-          "vencedor": "ODETE MARIA FREITAS 09083228606",
-          "cnpj_vencedor": "45897289000121",
-          "valor_homologado": 680.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 2,
-          "descricao_item": "FORNO DE MICRO-ONDAS CAPACIDADE MÍNIMA 28 LITROS - 110V - - FORNO DE MICRO-ONDAS CAPACIDADE MÍNIMA 28 LITROS - 110V -potência mínima de 800w, capacidade mínima ",
-          "vencedor": "ODETE MARIA FREITAS 09083228606",
-          "cnpj_vencedor": "45897289000121",
-          "valor_homologado": 563.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 3,
-          "descricao_item": "GELADEIRA FROST FREE 1 PORTA MÍNIMO DE 280 LITROS BRANCA - 110 V - - GELADEIRA FROST FREE 1 PORTA MÍNIMO DE 280 LITROS BRANCA - 110 V -",
-          "vencedor": "ODETE MARIA FREITAS 09083228606",
-          "cnpj_vencedor": "45897289000121",
-          "valor_homologado": 4560.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 4,
-          "descricao_item": "GELADEIRA DOMÉSTICA DUPLEX CAP. MÍNIMA DE 410 LITROS - 110V -  BRANCA - GELADEIRA DOMÉSTICA DUPLEX CAP. MÍNIMA DE 410 LITROS - 110V -  BRANCA - cap. Mínima de 4",
-          "vencedor": "ODETE MARIA FREITAS 09083228606",
-          "cnpj_vencedor": "45897289000121",
-          "valor_homologado": 3390.0,
-          "data_resultado": "2025-12-05"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "164",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000427/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Gaveteiro volante e Mesa em L  para escritório (ENTREGA + MONTAGEM)",
-      "valor_estimado": 6337.3,
-      "valor_homologado_total": 6334.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-25",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "GAVETEIRO VOLANTE 4 GAVETAS MÓVEL (2 MENORES E 2MAIORES) - COM TRILHO CORREDIÇA - CORPO EM AÇO TRATADO POR PROCESSO ANTI-CORROSIVO, COM REFORÇOS INTERNOS TAMBÉM",
-          "vencedor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
-          "cnpj_vencedor": "65289613000136",
-          "valor_homologado": 2127.0,
-          "data_resultado": "2025-12-03"
-        },
-        {
-          "item": 2,
-          "descricao_item": "MESA EM L PARA ESCRITÓRIO 150CM X150CM - PÉS COM ESPAÇO PARA PASSAGEM DE FIO - 03 (TRÊS) FUROS PARA PASSAR FIO NO TAMPO PRINCIPAL - COR CINZA/AZULOBS.: MONTAGEM",
-          "vencedor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
-          "cnpj_vencedor": "65289613000136",
-          "valor_homologado": 4207.0,
-          "data_resultado": "2025-12-03"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "161",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000428/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - MICROCHIP SERINGADO E LEITOR DE MICROCHIP",
-      "valor_estimado": 13967.91,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-25",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "158",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000429/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de Equipamentos de Proteção Individual (EPI) visando a proteção de olhos, face, membros superiores, inferiores, tronco, proteção respiratória e de riscos mecânicos.",
-      "valor_estimado": 1722.96,
-      "valor_homologado_total": 960.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-25",
-      "resultados": [
-        {
-          "item": 3,
-          "descricao_item": "LUVA DESCARTÁVEL DE PROCEDIMENTO EM NITRILO, MICROTEXTURIZADA NOS DEDOS  CX C/ 100  TAM M. - - LUVA PARA PROCEDIMENTOS NÃO-CIRÚRGICOS EM NITRILO, MICROTEXTURIZA",
-          "vencedor": "YNEMED PRODUTOS MEDICOS E HOSPITALARES LTDA",
-          "cnpj_vencedor": "51740794000160",
-          "valor_homologado": 960.0,
-          "data_resultado": "2025-12-12"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "DE 136",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000431/2025",
-      "modalidade": "Dispensa",
-      "objeto": "Serviços especializados em manutenção, reparo e instalação de guinchos e sistemas de elevação hidráulica, manutenção preventiva e corretiva, diagnóstico de falhas, troca de peças e reparos em componentes hidráulicos, seg",
-      "valor_estimado": 59591.0,
-      "valor_homologado_total": 56000.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-26",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "Serviços especializados em manutenção, reparo e instalação de guinchos e sistemas de elevação hidráulica, manutenção preventiva e corretiva, diagnóstico de falh",
-          "vencedor": "HIDRAULICA VARGINHA COMERCIO E SERVICOS LTDA",
-          "cnpj_vencedor": "16922616000150",
-          "valor_homologado": 56000.0,
-          "data_resultado": "2025-10-28"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "DE 60",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000432/2025",
-      "modalidade": "Dispensa",
-      "objeto": "AQUISIÇÃO DE EQUIPAMENTO CORTINA DE AR PARA UTILIZAÇÃO NO MEMORIAL DO ET.",
-      "valor_estimado": 975.76,
-      "valor_homologado_total": 953.44,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-26",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "Cortina de ar de 1,50 metros, em chapa galvanizada branca com rotor interno e paletas em polipropileno com velocidade do ar mínima de 13 m/s, com nível de ruído",
-          "vencedor": "46.935.751 MATHEUS VENCIMENTO DE FREITAS",
-          "cnpj_vencedor": "46935751000109",
-          "valor_homologado": 953.44,
-          "data_resultado": "2025-05-30"
-        },
-        {
-          "item": 1,
-          "descricao_item": "Cortina de ar de 1,50 metros, em chapa galvanizada branca com rotor interno e paletas em polipropileno com velocidade do ar mínima de 13 m/s, com nível de ruído",
-          "vencedor": "FSP COMERCIO",
-          "cnpj_vencedor": "46760367000104",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-05-30"
-        },
-        {
-          "item": 1,
-          "descricao_item": "Cortina de ar de 1,50 metros, em chapa galvanizada branca com rotor interno e paletas em polipropileno com velocidade do ar mínima de 13 m/s, com nível de ruído",
-          "vencedor": "TANKAVEL",
-          "cnpj_vencedor": "47326875000141",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-05-30"
-        },
-        {
-          "item": 1,
-          "descricao_item": "Cortina de ar de 1,50 metros, em chapa galvanizada branca com rotor interno e paletas em polipropileno com velocidade do ar mínima de 13 m/s, com nível de ruído",
-          "vencedor": "56.422.537 ANTONIA CRISTINA DE SOUSA SILVA",
-          "cnpj_vencedor": "56422537000102",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-05-30"
-        }
-      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -13026,28 +12891,6 @@
     },
     {
       "orgao": "Câmara Municipal de Varginha",
-      "numero_compra": "DL 29",
-      "ano": 2025,
-      "controle_pncp": "04366790000184-1-000071/2025",
-      "modalidade": "Dispensa",
-      "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SEGURO PARA VEÍCULO.",
-      "valor_estimado": 2057.42,
-      "valor_homologado_total": 2000.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-25",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "SEGURO CONTRA SINISTRO PARA VEÍCULO MARCA TOYOTA MODELO COROLLA XEI 2.0, ANO 2015/MODELO 2016, PLACA PXF 4F68.",
-          "vencedor": "GENTE SEGURADORA SA",
-          "cnpj_vencedor": "90180605000102",
-          "valor_homologado": 2000.0,
-          "data_resultado": "2025-12-03"
-        }
-      ]
-    },
-    {
-      "orgao": "Câmara Municipal de Varginha",
       "numero_compra": "DL 30",
       "ano": 2025,
       "controle_pncp": "04366790000184-1-000072/2025",
@@ -14066,10 +13909,43 @@
       "modalidade": "Dispensa",
       "objeto": "[Portal de Compras Públicas] - AQUISIÇÃO DE MATERIAIS ELÉTRICO (LÂMPADAS).",
       "valor_estimado": 1311.2,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 854.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-08",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "LAMPADA LED TIPO PERA, BRANCA FRIA DE 12W, BIVOLT, 6500K, BASE E27",
+          "vencedor": "CASA 500 MATERIAIS DE CONSTRUÇÃO ME",
+          "cnpj_vencedor": "86573904000121",
+          "valor_homologado": 240.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 2,
+          "descricao_item": "LAMPADA LED TIPO PERA, BRANCA FRIA DE 9W, BIVOLT, 6500K, BASE E27",
+          "vencedor": "CASA 500 MATERIAIS DE CONSTRUÇÃO ME",
+          "cnpj_vencedor": "86573904000121",
+          "valor_homologado": 144.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 3,
+          "descricao_item": "LAMPADA TUBULAR LED DE 120CM, 18W, BIVOLT, 6500K.",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 270.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 4,
+          "descricao_item": "LAMPADA PLAFON REDONDA LED EMBUTIR, BRANCA, 17CM, 12W, BIVOLT",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 200.0,
+          "data_resultado": "2026-07-14"
+        }
+      ]
     },
     {
       "orgao": "Câmara Municipal de Varginha",
@@ -14079,10 +13955,27 @@
       "modalidade": "Dispensa",
       "objeto": "[Portal de Compras Públicas] - AQUISIÇÃO DE ESCADA DE ALUMÍNIO COM 7 DEGRAUS E REFRIGERADOR DUPLEX.",
       "valor_estimado": 3576.97,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 3418.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-08",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "ESCADA DE ALUMiNIO COM 07 DEGRAUS REFORCADA",
+          "vencedor": "FABRICA DE PRE MOLDADOS NOSSA SENHORA DE FATIMA LTDA",
+          "cnpj_vencedor": "55796672000147",
+          "valor_homologado": 429.0,
+          "data_resultado": "2026-07-15"
+        },
+        {
+          "item": 2,
+          "descricao_item": "REFRIGERADOR DUPLEX, FROST FREE, COR BRANCO,  FREEZER EM CIMA DE 110/127V U BIVOLT.",
+          "vencedor": "FABRICA DE PRE MOLDADOS NOSSA SENHORA DE FATIMA LTDA",
+          "cnpj_vencedor": "55796672000147",
+          "valor_homologado": 2989.0,
+          "data_resultado": "2026-07-15"
+        }
+      ]
     },
     {
       "orgao": "Câmara Municipal de Varginha",
@@ -14297,22 +14190,133 @@
           "data_resultado": "2026-07-01"
         }
       ]
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "52",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000169/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para execução de serviços contínuos de reparo e manutenção predial e de bens móveis, com fornecimento de mão de obra especializada, materiais, ferrament",
+      "valor_estimado": 3415863.96,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-20",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "61",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000170/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de mobiliários, com o objetivo de atender às necessidades da Secretaria Municipal de Assistência e Desenvolvimento Social – SEHAD",
+      "valor_estimado": 132333.75,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-20",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "67",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000174/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de materiais de pintura epóxi e insumos complementares, destinados à manutenção e pintura de pisos e estruturas das instalações vinc",
+      "valor_estimado": 503507.72,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-21",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "80",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000176/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de tinta para demarcação viária à base de metil metacrilato - Departamento Municipal de Trânsito",
+      "valor_estimado": 218271.7,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-22",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "79",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000177/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de mobiliários",
+      "valor_estimado": 5972018.69,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-22",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "82",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000181/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa para prestação de serviços técnicos de gerenciamento e gestão de ativos (bens móveis) da Prefeitura Municipal de Varginha  MG, incluindo o fornecimento de solução int",
+      "valor_estimado": 1785596.46,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-23",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "85",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000182/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de Hortifrutigranjeiro para o Parque Zoobotânico Dr. Mário Frota",
+      "valor_estimado": 222280.2,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-23",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "90",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000185/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de materiais e curativos especiais para as necessidades do ambulatório de feridas da Policlínica Central – Léa Ferreira Teixeira no ",
+      "valor_estimado": 2911137.6,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-24",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "3",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000173/2026",
+      "modalidade": "Concorrência - Eletrônica",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para futura e eventual contratação de empresa especializada na prestação de serviços comuns de engenharia para execução de manutenção continuada preventiva e corretiva na",
+      "valor_estimado": 6239256.67,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-21",
+      "resultados": []
     }
   ],
-  "erros": [],
-  "status": "preserved",
-  "ultima_tentativa_em": "2026-07-23T14:06:29+00:00",
-  "motivo_preservacao": "PNCP retornou apenas 0 de 302 compras anteriores apos repeticoes; a ultima base valida foi mantida para evitar perda de dados.",
-  "erros_ultima_tentativa": [
-    "contratacoes 18240119000105 mod 6 pg 1: HTTP Error 503: Service Unavailable",
-    "contratacoes 18240119000105 mod 7 pg 1: HTTP Error 503: Service Unavailable",
-    "contratacoes 18240119000105 mod 4 pg 1: HTTP Error 429: Too Many Requests",
-    "contratacoes 18240119000105 mod 5 pg 1: HTTP Error 429: Too Many Requests",
+  "erros": [
     "contratacoes 18240119000105 mod 8 pg 1: HTTP Error 429: Too Many Requests",
-    "contratacoes 18240119000105 mod 9 pg 1: HTTP Error 429: Too Many Requests",
-    "contratacoes 04366790000184 mod 6 pg 1: HTTP Error 429: Too Many Requests",
-    "contratacoes 04366790000184 mod 7 pg 1: HTTP Error 429: Too Many Requests",
-    "contratacoes 04366790000184 mod 8 pg 1: HTTP Error 429: Too Many Requests",
-    "contratacoes 04366790000184 mod 9 pg 1: HTTP Error 429: Too Many Requests"
-  ]
+    "contratacoes 18240119000105 mod 9 pg 1: HTTP Error 429: Too Many Requests"
+  ],
+  "status": "partial",
+  "qualidade_coleta": {
+    "tentativas_por_requisicao": 3,
+    "falhas": 2,
+    "base_anterior_preservada": true
+  }
 }

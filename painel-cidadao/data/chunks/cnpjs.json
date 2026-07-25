@@ -1496,7 +1496,7 @@
       "cnpj_raiz": "25863390",
       "cnpj_completo": "25863390000154",
       "cnpj_reconstruido": true,
-      "valor_total": 47809405.31,
+      "valor_total": 48166093.29,
       "razao_social": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "nome_fantasia": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "situacao": "ATIVA",
@@ -1783,7 +1783,7 @@
       "cnpj_raiz": "17155730",
       "cnpj_completo": "17155730000164",
       "cnpj_reconstruido": true,
-      "valor_total": 2692086.68,
+      "valor_total": 2761333.38,
       "razao_social": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1841,6 +1841,26 @@
         "RAIMUNDO NONATO DE CASTRO ANDRADE",
         "RODOLFO FROTA DO PRADO",
         "VINICIUS FROTA DO PRADO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "BAMAQ S/A BANDEIRANTES MAQUINAS E EQUIPAMENTOS",
+      "cnpj_raiz": "18209965",
+      "cnpj_completo": "18209965000154",
+      "cnpj_reconstruido": true,
+      "valor_total": 1880837.17,
+      "razao_social": "BAMAQ SA BANDEIRANTES MAQUINAS E EQUIPAMENTOS",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1974-03-01",
+      "cnae": "Comércio atacadista de máquinas, aparelhos e equipamentos para uso agropecuário; partes e peças",
+      "municipio": "CONTAGEM",
+      "uf": "MG",
+      "socios": [
+        "CLEMENTE DE FARIA JUNIOR",
+        "GUILHERME BARROS NOGUEIRA",
+        "PINDARO LUIZ DE SOUSA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -2058,33 +2078,6 @@
       "uf": "MG",
       "socios": [
         "SEBASTIAO DINIZ"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "IOT- INSTITUTO DE ORTOPEDIA E TRAUMATOLOGIA DE VARGINHA LTDA",
-      "cnpj_raiz": "29045348",
-      "cnpj_completo": "29045348000187",
-      "cnpj_reconstruido": true,
-      "valor_total": 1221086.26,
-      "razao_social": "IOT- INSTITUTO DE ORTOPEDIA E TRAUMATOLOGIA DE VARGINHA LTDA",
-      "nome_fantasia": "IOT INSTITUTO DE ORTOPEDIA E TRAUMATOLOGIA DE VARGINHA",
-      "situacao": "ATIVA",
-      "abertura": "2017-11-10",
-      "cnae": "Atividade médica ambulatorial com recursos para realização de procedimentos cirúrgicos",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "EMPRESARIAL FREIRE MELO HOLDING E PARTICIPACOES LTDA",
-        "EMPRESARIAL GOMES HOLDING E PARTICIPACOES LTDA",
-        "EMPRESARIAL MORAES HOLDING E PARTICIPACOES LTDA",
-        "EMPRESARIAL POYARES HOLDING E PARTICIPACOES LTDA",
-        "EMPRESARIAL PROCOPIO HOLDING E PARTICIPACOES LTDA",
-        "ERNANI LUIZ GOMES",
-        "FABIO FREIRE SANTOS MELO",
-        "HENRIQUE PEREIRA PROCOPIO BUENO",
-        "LUCAS DEL FRARO XIMENES",
-        "LUCILIO AMORELLI PEREIRA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     }

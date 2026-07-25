@@ -1,25 +1,25 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-24T22:11:06.191Z",
+  "gerado_em": "2026-07-25T09:43:29.497Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-25T06-10-39-7d3a6910",
+    "coleta_iso": "2026-07-25T06:10:39",
+    "data_humana": "25/07/2026 - 06:10",
+    "arquivo": "data/snapshots/2026-07-25T06-10-39-7d3a6910.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-24T19-08-58-6199df7d",
     "coleta_iso": "2026-07-24T19:08:58",
     "data_humana": "24/07/2026 - 19:08",
-    "arquivo": "data/snapshots/2026-07-24T19-08-58-6199df7d.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-24T12-40-03-8a60f3c7",
-    "coleta_iso": "2026-07-24T12:40:03",
-    "data_humana": "24/07/2026 - 12:40",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
     "novos_contratos": 0,
     "contratos_valor_alterado": 0,
-    "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 1,
+    "novos_fornecedores_relevantes": 1,
+    "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
@@ -29,12 +29,12 @@
   },
   "itens": [
     {
-      "tipo": "nova_edicao_diario",
-      "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1851",
-      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-07-24",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/258/"
+      "tipo": "novo_fornecedor_relevante",
+      "prioridade": "alta",
+      "titulo": "Fornecedor entrou no ranking: BAMAQ S/A BANDEIRANTES MAQUINAS E EQUIPAMENTOS",
+      "detalhe": "Prefeitura - rank 19, R$ 1.880.837,17 no recorte atual.",
+      "orgao": "Prefeitura",
+      "valor_brl": 1880837.17
     }
   ],
   "avisos": []

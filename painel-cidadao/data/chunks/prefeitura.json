@@ -1,14 +1,14 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 195682647.94,
+  "total_externo_atual": 197296214.29,
   "total_externo_anterior": 390216204.32,
   "credores_qtd": 10000,
   "top_fornecedores_atual": [
     {
       "nome": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "cnpj": "25.863.390/****-**",
-      "valor_total": 47809405.31,
+      "valor_total": 48166093.29,
       "registros": 1,
       "anos": [
         2026
@@ -143,7 +143,7 @@
     {
       "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "cnpj": "17.155.730/****-**",
-      "valor_total": 2692086.68,
+      "valor_total": 2761333.38,
       "registros": 1,
       "anos": [
         2026
@@ -163,6 +163,15 @@
       "cnpj": "02.999.757/****-**",
       "valor_total": 2088371.11,
       "registros": 1,
+      "anos": [
+        2026
+      ]
+    },
+    {
+      "nome": "BAMAQ S/A BANDEIRANTES MAQUINAS E EQUIPAMENTOS",
+      "cnpj": "18.209.965/****-**",
+      "valor_total": 1880837.17,
+      "registros": 2,
       "anos": [
         2026
       ]
@@ -261,15 +270,6 @@
       "nome": "ASSOCIAÇAO BENEFICENTE KERIGMA",
       "cnpj": "05.549.049/****-**",
       "valor_total": 1312600.0,
-      "registros": 1,
-      "anos": [
-        2026
-      ]
-    },
-    {
-      "nome": "IOT- INSTITUTO DE ORTOPEDIA E TRAUMATOLOGIA DE VARGINHA LTDA",
-      "cnpj": "29.045.348/****-**",
-      "valor_total": 1221086.26,
       "registros": 1,
       "anos": [
         2026
@@ -685,10 +685,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -726,10 +726,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -767,10 +767,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -808,10 +808,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -849,10 +849,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -890,10 +890,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -931,10 +931,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -972,10 +972,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1013,10 +1013,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1054,10 +1054,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1095,10 +1095,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1136,10 +1136,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1177,10 +1177,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1218,10 +1218,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 47809405.31
+          "valor": 48166093.29
         }
       ],
-      "valor_pago_total": 126047406.33,
+      "valor_pago_total": 126404094.31,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12064,10 +12064,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12105,10 +12105,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12146,10 +12146,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12187,10 +12187,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12228,10 +12228,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12269,10 +12269,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12310,10 +12310,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12351,10 +12351,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12392,10 +12392,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12433,10 +12433,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12474,10 +12474,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 49884222.33
+          "valor": 50728732.95
         }
       ],
-      "valor_pago_total": 117688886.56,
+      "valor_pago_total": 118533397.18,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -18753,20 +18753,6 @@
       "entidade": "PREFEITURA MUNICIPAL VARGINHA"
     },
     {
-      "numero": "175",
-      "ano": "2025",
-      "data_assinatura": "2025-05-28",
-      "data_fim": "2026-05-28",
-      "modalidade": "Pregão eletrônico",
-      "tipo": "Compras e Serviços",
-      "objeto": "RP Aquisição de Bica Corrida Reciclada Material Reciclado para à Secretaria de Agricultura e Pecuária.",
-      "contratado": "ECOVIA RECICLAGEM DE RESIDUOS DA CONSTRUCAO CIVIL LTDA",
-      "cnpj": "14.319.217/****-**",
-      "valor": 60000.0,
-      "situacao": "ENCERRADO",
-      "entidade": "PREFEITURA MUNICIPAL VARGINHA"
-    },
-    {
       "numero": "0",
       "ano": "2026",
       "data_assinatura": "2026-01-23",
@@ -18778,6 +18764,20 @@
       "cnpj": "13.535.906/****-**",
       "valor": 60000.0,
       "situacao": "EXECUCAO",
+      "entidade": "PREFEITURA MUNICIPAL VARGINHA"
+    },
+    {
+      "numero": "175",
+      "ano": "2025",
+      "data_assinatura": "2025-05-28",
+      "data_fim": "2026-05-28",
+      "modalidade": "Pregão eletrônico",
+      "tipo": "Compras e Serviços",
+      "objeto": "RP Aquisição de Bica Corrida Reciclada Material Reciclado para à Secretaria de Agricultura e Pecuária.",
+      "contratado": "ECOVIA RECICLAGEM DE RESIDUOS DA CONSTRUCAO CIVIL LTDA",
+      "cnpj": "14.319.217/****-**",
+      "valor": 60000.0,
+      "situacao": "ENCERRADO",
       "entidade": "PREFEITURA MUNICIPAL VARGINHA"
     },
     {
@@ -24019,20 +24019,6 @@
     {
       "numero": "0",
       "ano": "2026",
-      "data_assinatura": "2026-01-27",
-      "data_fim": " ",
-      "modalidade": "Inexigibilidade de licitação",
-      "tipo": "Compras e Serviços",
-      "objeto": "Palestra com o professor Sebastião Mendes de Oliveira, com o tema FORMAÇÃO INCLUSIVA",
-      "contratado": "44.599.311 SEBASTIAO MENDES DE OLIVEIRA",
-      "cnpj": "44.599.311/****-**",
-      "valor": 8500.0,
-      "situacao": "EXECUCAO",
-      "entidade": "PREFEITURA MUNICIPAL VARGINHA"
-    },
-    {
-      "numero": "0",
-      "ano": "2026",
       "data_assinatura": "2026-02-10",
       "data_fim": " ",
       "modalidade": "Dispensa eletrônica",
@@ -24040,6 +24026,20 @@
       "objeto": "O objeto da presente solicitação é a aquisição de Pulverizador para quadriciclo para ser acoplado a tratores HUSQVARNA TS148",
       "contratado": "PRIMUM COMERCIO DE IMPLEMENTOS LTDA",
       "cnpj": "59.632.632/****-**",
+      "valor": 8500.0,
+      "situacao": "EXECUCAO",
+      "entidade": "PREFEITURA MUNICIPAL VARGINHA"
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-01-27",
+      "data_fim": " ",
+      "modalidade": "Inexigibilidade de licitação",
+      "tipo": "Compras e Serviços",
+      "objeto": "Palestra com o professor Sebastião Mendes de Oliveira, com o tema FORMAÇÃO INCLUSIVA",
+      "contratado": "44.599.311 SEBASTIAO MENDES DE OLIVEIRA",
+      "cnpj": "44.599.311/****-**",
       "valor": 8500.0,
       "situacao": "EXECUCAO",
       "entidade": "PREFEITURA MUNICIPAL VARGINHA"
@@ -26187,20 +26187,6 @@
       "entidade": "PREFEITURA MUNICIPAL VARGINHA"
     },
     {
-      "numero": "108",
-      "ano": "2026",
-      "data_assinatura": "2026-03-23",
-      "data_fim": "2027-03-23",
-      "modalidade": "Pregão eletrônico",
-      "tipo": "Compras e Serviços",
-      "objeto": "AQUISIÇÃO DE INSUMOS PARA LABORATÓRIO.",
-      "contratado": "SCAN MEDICA INSTRUMENTOS CIENTIFICOS LTDA",
-      "cnpj": "04.964.379/****-**",
-      "valor": 3900.0,
-      "situacao": "EXECUCAO",
-      "entidade": "PREFEITURA MUNICIPAL VARGINHA"
-    },
-    {
       "numero": "0",
       "ano": "2026",
       "data_assinatura": "2026-06-12",
@@ -26210,6 +26196,20 @@
       "objeto": "O objeto da presente solicitação de compras é aquisição de cadeiras, longarinas e mesas, destinadas ao atendimento das demandas administrativas e operacionais da Secretaria Municipal de Esporte e Lazer – SEMEL",
       "contratado": "CONVE COMERCIO DE MOVEIS E UTILIDADES LTDA",
       "cnpj": "53.438.403/****-**",
+      "valor": 3900.0,
+      "situacao": "EXECUCAO",
+      "entidade": "PREFEITURA MUNICIPAL VARGINHA"
+    },
+    {
+      "numero": "108",
+      "ano": "2026",
+      "data_assinatura": "2026-03-23",
+      "data_fim": "2027-03-23",
+      "modalidade": "Pregão eletrônico",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE INSUMOS PARA LABORATÓRIO.",
+      "contratado": "SCAN MEDICA INSTRUMENTOS CIENTIFICOS LTDA",
+      "cnpj": "04.964.379/****-**",
       "valor": 3900.0,
       "situacao": "EXECUCAO",
       "entidade": "PREFEITURA MUNICIPAL VARGINHA"
