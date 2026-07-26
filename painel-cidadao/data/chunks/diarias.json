@@ -116188,10 +116188,11 @@
   "meta": {
     "prefeitura": {
       "atualizado_em": "2026-07-26T06:07:01",
-      "ok": true
+      "ok": false,
+      "ultima_falha": "2026-07-26T20:06:55"
     },
     "camara": {
-      "atualizado_em": "2026-07-26T06:07:01",
+      "atualizado_em": "2026-07-26T20:06:55",
       "ok": true
     }
   }

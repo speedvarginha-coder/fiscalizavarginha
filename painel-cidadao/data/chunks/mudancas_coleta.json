@@ -1,32 +1,110 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-26T09:44:56.246Z",
+  "gerado_em": "2026-07-26T23:31:51.751Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-26T20-31-09-b14fbdb7",
+    "coleta_iso": "2026-07-26T20:31:09",
+    "data_humana": "26/07/2026 - 20:31",
+    "arquivo": "data/snapshots/2026-07-26T20-31-09-b14fbdb7.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-26T06-11-10-76bab749",
     "coleta_iso": "2026-07-26T06:11:10",
     "data_humana": "26/07/2026 - 06:11",
-    "arquivo": "data/snapshots/2026-07-26T06-11-10-76bab749.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-25T19-10-39-76bab749",
-    "coleta_iso": "2026-07-25T19:10:39",
-    "data_humana": "25/07/2026 - 19:10",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
     "novos_contratos": 0,
-    "contratos_valor_alterado": 0,
+    "contratos_valor_alterado": 7,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
-    "valor_delta_brl": 0,
-    "total_mudancas": 0
+    "valor_delta_brl": -222558.73,
+    "total_mudancas": 7
   },
-  "itens": [],
+  "itens": [
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 0/2025",
+      "detalhe": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA: antes R$ 158.029,99, agora R$ 45.650,00.",
+      "orgao": "Prefeitura",
+      "data": "2025-03-21",
+      "valor_brl": 45650,
+      "delta_brl": -112379.99000000002,
+      "alvo_id": "PREFEITURA-2025-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2026",
+      "detalhe": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA: antes R$ 95.138,40, agora R$ 57.373,83.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-12",
+      "valor_brl": 57373.83,
+      "delta_brl": -37764.56999999999,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2026",
+      "detalhe": "DEVA VEICULOS LTDA: antes R$ 55.417,78, agora R$ 45.708,76.",
+      "orgao": "Prefeitura",
+      "data": "2026-02-06",
+      "valor_brl": 45708.759999999995,
+      "delta_brl": -9709.020000000004,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2025",
+      "detalhe": "LICITA MED LTDA: antes R$ 43.744,00, agora R$ 30.395,00.",
+      "orgao": "Prefeitura",
+      "data": "2025-03-21",
+      "valor_brl": 30395,
+      "delta_brl": -13349,
+      "alvo_id": "PREFEITURA-2025-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2025",
+      "detalhe": "A A Z SAUDE COMERCIO DE PRODUTOS MEDICOS E HOSPITALARES LTDA: antes R$ 25.569,78, agora R$ 10.629,78.",
+      "orgao": "Prefeitura",
+      "data": "2025-01-14",
+      "valor_brl": 10629.78,
+      "delta_brl": -14939.999999999998,
+      "alvo_id": "PREFEITURA-2025-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2026",
+      "detalhe": "DIMEBRAS COMERCIAL HOSPITALAR LTDA: antes R$ 15.300,60, agora R$ 1.620,00.",
+      "orgao": "Prefeitura",
+      "data": "2026-04-15",
+      "valor_brl": 1620,
+      "delta_brl": -13680.6,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2026",
+      "detalhe": "ORISVALDO SILVA JUNIOR: antes R$ 22.224,55, agora R$ 1.489,00.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-16",
+      "valor_brl": 1489,
+      "delta_brl": -20735.55,
+      "alvo_id": "PREFEITURA-2026-0"
+    }
+  ],
   "avisos": []
 }
