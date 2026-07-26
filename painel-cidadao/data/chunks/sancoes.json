@@ -1,9 +1,9 @@
 {
   "fonte": "Portal da Transparencia (CGU) - CEIS e CNEP",
-  "gerado_em": "2026-07-25T09:35:21+00:00",
+  "gerado_em": "2026-07-26T09:33:21+00:00",
   "metodo": "Consulta por nome na API api-de-dados; confirmacao local por raiz de CNPJ ou nome normalizado identico. Cobertura limitada a fornecedores com nome consultavel — nao e prova de ausencia de sancao.",
-  "verificados": 1075,
-  "consultas_api": 1097,
+  "verificados": 1078,
+  "consultas_api": 1095,
   "sancoes_encontradas": 96,
   "sancoes_vigentes": 93,
   "achados": [
@@ -1809,6 +1809,6 @@
     }
   ],
   "erros": [
-    "CEIS/HOSPITAL: The read operation timed out"
+    "CEIS/TERRAPLENAGEM: The read operation timed out"
   ]
 }

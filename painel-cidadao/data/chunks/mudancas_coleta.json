@@ -1,44 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-25T22:11:23.726Z",
+  "gerado_em": "2026-07-26T09:44:56.246Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-26T06-11-10-76bab749",
+    "coleta_iso": "2026-07-26T06:11:10",
+    "data_humana": "26/07/2026 - 06:11",
+    "arquivo": "data/snapshots/2026-07-26T06-11-10-76bab749.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-25T19-10-39-76bab749",
     "coleta_iso": "2026-07-25T19:10:39",
     "data_humana": "25/07/2026 - 19:10",
-    "arquivo": "data/snapshots/2026-07-25T19-10-39-76bab749.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-25T06-10-39-7d3a6910",
-    "coleta_iso": "2026-07-25T06:10:39",
-    "data_humana": "25/07/2026 - 06:10",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
     "novos_contratos": 0,
-    "contratos_valor_alterado": 1,
+    "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
-    "valor_delta_brl": 3490,
-    "total_mudancas": 1
+    "valor_delta_brl": 0,
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "media",
-      "titulo": "Valor alterado no contrato 0/2026",
-      "detalhe": "LEONARDO PELEGRINI PINTO: antes R$ 3.507,00, agora R$ 6.997,00.",
-      "orgao": "Prefeitura",
-      "data": "2026-05-14",
-      "valor_brl": 6997,
-      "delta_brl": 3490,
-      "alvo_id": "PREFEITURA-2026-0"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }

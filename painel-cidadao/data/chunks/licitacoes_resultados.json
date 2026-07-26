@@ -1,10 +1,10 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-07-25T09:43:25+00:00",
+  "gerado_em": "2026-07-26T09:44:49+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251127",
-    "fim": "20260725"
+    "inicio": "20251128",
+    "fim": "20260726"
   },
   "compras": 298,
   "compras_com_resultado": 164,
@@ -12891,148 +12891,6 @@
     },
     {
       "orgao": "Câmara Municipal de Varginha",
-      "numero_compra": "DL 30",
-      "ano": 2025,
-      "controle_pncp": "04366790000184-1-000072/2025",
-      "modalidade": "Dispensa",
-      "objeto": "Contratação de concessionária autorizada Toyota para revisão de 210 mil km, incluindo mão de obra mecânica, fornecimento de peças/componentes genuínos e originais e lubrificantes para veículo oficial Toyota Corolla XEI 2",
-      "valor_estimado": 4261.43,
-      "valor_homologado_total": 4261.43,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-27",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "VEHICLE ODORIZER (ODORIZANTE DO AR CONDICIONADO)",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 100.52,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 2,
-          "descricao_item": "VIA TANQUE GASOLINA",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 177.71,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 3,
-          "descricao_item": "FILTRO DE OLEO SINTETICO",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 72.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 4,
-          "descricao_item": "ÓLEO PARA MOTOR 5W30 SEMI SINTÉTICO",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 352.8,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 5,
-          "descricao_item": "FLUIDO DO RADIADOR",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 125.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 6,
-          "descricao_item": "ELEMENTO FILTRANTE",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 79.9,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 7,
-          "descricao_item": "FILTRO DE COMBUSTIVEL",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 57.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 8,
-          "descricao_item": "DISCO DE FREIO TRASEIRO.",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 798.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 9,
-          "descricao_item": "DISCO DE FREIO DIANTEIRO",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 1060.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 10,
-          "descricao_item": "ELEMENTO DO FILTRO DE AR DO MOTOR",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 80.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 11,
-          "descricao_item": "JUNTA DE ALUMÍNIO DO CARTER",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 11.5,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 12,
-          "descricao_item": "MÃO DE OBRA MECÂNICA DE TROCA DO FILTRO DE AR CONDICIONADO E",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 40.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 13,
-          "descricao_item": "MÃO DE OBRA MECÂNICA PARA REVISÃO DE 210.000 KM.",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 516.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 14,
-          "descricao_item": "MÃO DE OBRA MECÂNCIA PARA TROCA DE DISCO DIANTEIRO",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 344.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 15,
-          "descricao_item": "MÃO DE OBRA MECÂNICA PARA TROCA DE DISCO TRASEIRO",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 387.0,
-          "data_resultado": "2025-12-05"
-        },
-        {
-          "item": 16,
-          "descricao_item": "OXISANITAZAÇÃO COM HIGIENIZAÇÃO DO AR CONDICIONADO",
-          "vencedor": "NIPONICA COMERCIO DE VEICULOS LIMITADA",
-          "cnpj_vencedor": "07215045000122",
-          "valor_homologado": 60.0,
-          "data_resultado": "2025-12-05"
-        }
-      ]
-    },
-    {
-      "orgao": "Câmara Municipal de Varginha",
       "numero_compra": "1",
       "ano": 2026,
       "controle_pncp": "04366790000184-1-000006/2026",
@@ -14307,16 +14165,37 @@
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-21",
       "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "IL 23",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000180/2026",
+      "modalidade": "Inexigibilidade",
+      "objeto": "Aquisição e demais serviços em sensor anemométrico (anemômetro aeronáutico), destinado ao Aeroporto Regional do Sul de Minas – Major Brigadeiro Trompowsky",
+      "valor_estimado": 68857.6,
+      "valor_homologado_total": 68857.6,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-23",
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "SENSOR - Sensor anemométrico compatível com o sistema meteorológico existente do Aeroporto Regional do Sul de Minas – Major Brigadeiro Trompowsky, destinado à m",
+          "vencedor": "HOBECO SUDAMERICANA LTDA",
+          "cnpj_vencedor": "03548170000101",
+          "valor_homologado": 68857.6,
+          "data_resultado": "2026-07-21"
+        }
+      ]
     }
   ],
   "erros": [
-    "contratacoes 18240119000105 mod 8 pg 1: HTTP Error 429: Too Many Requests",
-    "contratacoes 18240119000105 mod 9 pg 1: HTTP Error 429: Too Many Requests"
+    "contratacoes 18240119000105 mod 8 pg 1: The read operation timed out"
   ],
   "status": "partial",
   "qualidade_coleta": {
     "tentativas_por_requisicao": 3,
-    "falhas": 2,
+    "falhas": 1,
     "base_anterior_preservada": true
   }
 }
