@@ -7,7 +7,7 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 2436611.39,
+    "total_atual": 2852301.55,
     "total_anterior": 7137822.19,
     "total_externo_atual": 352604.91,
     "total_externo_anterior": 3071916.67,
@@ -261,10 +261,10 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 220,
-      "empenhado": 3296708.35,
-      "liquidado": 2668585.71,
-      "pago": 2438713.17
+      "registros": 231,
+      "empenhado": 3638572.39,
+      "liquidado": 3010344.39,
+      "pago": 2854403.33
     },
     "maiores_empenhos_atual": [
       {
@@ -323,6 +323,17 @@
         "saldo_a_pagar": 0.0
       },
       {
+        "data": "2026-07-24",
+        "numero": 226,
+        "orgao": "ADMINISTRACAO",
+        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
+        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026",
+        "valor_empenhado": 237758.65,
+        "valor_liquidado": 237758.65,
+        "valor_pago": 237758.65,
+        "saldo_a_pagar": 0.0
+      },
+      {
         "data": "2026-04-28",
         "numero": 122,
         "orgao": "ADMINISTRACAO",
@@ -363,8 +374,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026 - Adiantamento 13 SALARIO/2026",
         "valor_empenhado": 116385.99,
         "valor_liquidado": 116385.99,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 116385.99
+        "valor_pago": 116385.99,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-03-11",
@@ -397,6 +408,17 @@
         "valor_empenhado": 50870.0,
         "valor_liquidado": 50870.0,
         "valor_pago": 50870.0,
+        "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-07-24",
+        "numero": 230,
+        "orgao": "ADMINISTRACAO",
+        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
+        "historico": "DESPESA FOLHA DE PAGAMENTO - AUXILIO ALIMENTACAO -  REFERENTE 07/2026",
+        "valor_empenhado": 49774.7,
+        "valor_liquidado": 49774.7,
+        "valor_pago": 49774.7,
         "saldo_a_pagar": 0.0
       },
       {
@@ -519,6 +541,17 @@
         "valor_liquidado": 21099.22,
         "valor_pago": 21099.22,
         "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-07-24",
+        "numero": 225,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026",
+        "valor_empenhado": 21099.22,
+        "valor_liquidado": 21099.22,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 21099.22
       },
       {
         "data": "2026-05-25",
@@ -708,6 +741,17 @@
         "saldo_a_pagar": 0.0
       },
       {
+        "data": "2026-07-24",
+        "numero": 224,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026",
+        "valor_empenhado": 10753.46,
+        "valor_liquidado": 10753.46,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 10753.46
+      },
+      {
         "data": "2026-06-22",
         "numero": 207,
         "orgao": "ADMINISTRACAO",
@@ -717,6 +761,17 @@
         "valor_liquidado": 10601.83,
         "valor_pago": 10601.83,
         "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-07-24",
+        "numero": 223,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSS - INST.NACIONAL SEGURO SOCIAL",
+        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026",
+        "valor_empenhado": 10601.83,
+        "valor_liquidado": 10601.83,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 10601.83
       },
       {
         "data": "2026-01-27",
@@ -972,6 +1027,17 @@
         "saldo_a_pagar": 5437.5
       },
       {
+        "data": "2026-07-24",
+        "numero": 227,
+        "orgao": "ADMINISTRACAO",
+        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
+        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026",
+        "valor_empenhado": 5149.32,
+        "valor_liquidado": 5149.32,
+        "valor_pago": 5149.32,
+        "saldo_a_pagar": 0.0
+      },
+      {
         "data": "2026-06-22",
         "numero": 203,
         "orgao": "ADMINISTRACAO",
@@ -1080,72 +1146,6 @@
         "valor_liquidado": 3620.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 3620.0
-      },
-      {
-        "data": "2026-02-05",
-        "numero": 29,
-        "orgao": "ADMINISTRACAO",
-        "credor": "LOPES & BACHA COMERCIO E PRESTACAO DE SERVICOS LTDA",
-        "historico": "Aquisição de licença de software de relógio de ponto para 01 (um) CNPJ com até 60 (sessenta) funcionários, pelo período de 12 meses. Incluso: coleta automática na nuvem, sendo relógio instalado na rede, instalação e treinamento, suporte técnico remoto e presencial (se necessário), sem custo adicional.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 3576.0,
-        "valor_liquidado": 3576.0,
-        "valor_pago": 3576.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-22",
-        "numero": 202,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 06/2026",
-        "valor_empenhado": 3372.44,
-        "valor_liquidado": 3372.44,
-        "valor_pago": 3372.44,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-07-24",
-        "numero": 219,
-        "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
-        "credor": "EDSON CARLOS DOS SANTOS 85968765615",
-        "historico": "Contratação de empresa para prestação de serviços de manutenção e conserto do portão eletrônico e da cancela da Antiga Estação Ferroviária, sede da Fundação Cultural de Varginha, com a troca de placas, capacitores, sensores e circuitos, e também instalação de nova cancela. \nLocal da prestação do serviço: Praça Matheus Tavares, 121, centro, Varginha/MG. Horário de expediente: de segunda a sexta-feira, das 7h às 12h e das 14h às 17h. \nFundamento legal: art. 95, 2, Lei 14.133/21.",
-        "valor_empenhado": 3170.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 3170.0
-      },
-      {
-        "data": "2026-02-10",
-        "numero": 37,
-        "orgao": "ADMINISTRACAO",
-        "credor": "G C LUZ  LTDA",
-        "historico": "Registro de Preços para futuro e eventual fornecimento de suprimentos de materiais de informática a fim de atender as demanda da Administração Direta e entidades da Administração Indireta. Local: Fundação Cultural de Varginha (Antiga Estação Ferroviária), localizada na Praça Matheus Tavares, 121, Centro, Varginha/MG. Horário de entrega: Dentro do horário de expediente, de segunda a sexta-feira, das 7h às 11h30 e das 14h às 16h30.",
-        "valor_empenhado": 3074.64,
-        "valor_liquidado": 3074.64,
-        "valor_pago": 3074.64,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-04-22",
-        "numero": 112,
-        "orgao": "ADMINISTRACAO",
-        "credor": "MARIA TERESA PEREIRA COELHO & CIA LTDA",
-        "historico": "Contratação de empresa para o fornecimento de 100 (cem) pacotes de café torrado e moído de 500 gramas, conforme especificação e com selo ABIC,  para atender as demandas dos setores da Fundação Cultural de Varginha.\nLocal de entrega: Almoxarifado da Fundação Cultural de Varginha na Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária). Horário de expediente: segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. \nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 2848.0,
-        "valor_liquidado": 2848.0,
-        "valor_pago": 2848.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-02-02",
-        "numero": 15,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FLORICULTURA DO DEDE LTDA",
-        "historico": "Aquisição de arranjos de flores, em caráter de urgência, para homenagem e respeito a servidores/figuras públicas como forma de demonstrar gratidão e apreço da instituição pelos seus serviços dedicados.\nFundamento legal: Art. 95, Parágrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 2800.0,
-        "valor_liquidado": 560.0,
-        "valor_pago": 560.0,
-        "saldo_a_pagar": 2240.0
       }
     ],
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80382"

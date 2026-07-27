@@ -1573,7 +1573,7 @@
       "cnpj_raiz": "00394460",
       "cnpj_completo": "00394460000141",
       "cnpj_reconstruido": true,
-      "valor_total": 6755728.81,
+      "valor_total": 6756074.48,
       "razao_social": "MINISTERIO DA FAZENDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1845,6 +1845,26 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "BRAVO LOCACOES E SERVICOS LTDA",
+      "cnpj_raiz": "58499094",
+      "cnpj_completo": "58499094000175",
+      "cnpj_reconstruido": true,
+      "valor_total": 2084080.51,
+      "razao_social": "BRAVO LOCACOES E SERVICOS LTDA",
+      "nome_fantasia": "BRAVO ENGENHARIA",
+      "situacao": "ATIVA",
+      "abertura": "2024-12-18",
+      "cnae": "Serviços de engenharia",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ANA CAROLINA PEREIRA ROQUIM",
+        "ELDER DE BRITO MARQUES",
+        "FERNANDO GUIMARAES FONSECA NETO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "BAMAQ S/A BANDEIRANTES MAQUINAS E EQUIPAMENTOS",
       "cnpj_raiz": "18209965",
       "cnpj_completo": "18209965000154",
@@ -1970,22 +1990,24 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
-      "nome": "BRAVO LOCACOES E SERVICOS LTDA",
-      "cnpj_raiz": "58499094",
-      "cnpj_completo": "58499094000175",
+      "nome": "BETHA SISTEMAS LTDA",
+      "cnpj_raiz": "00456865",
+      "cnpj_completo": "00456865000167",
       "cnpj_reconstruido": true,
-      "valor_total": 1469690.73,
-      "razao_social": "BRAVO LOCACOES E SERVICOS LTDA",
-      "nome_fantasia": "BRAVO ENGENHARIA",
+      "valor_total": 1450990.76,
+      "razao_social": "BETHA SISTEMAS LTDA",
+      "nome_fantasia": "",
       "situacao": "ATIVA",
-      "abertura": "2024-12-18",
-      "cnae": "Serviços de engenharia",
-      "municipio": "VARGINHA",
-      "uf": "MG",
+      "abertura": "1995-03-01",
+      "cnae": "Desenvolvimento e licenciamento de programas de computador customizáveis",
+      "municipio": "CRICIUMA",
+      "uf": "SC",
       "socios": [
-        "ANA CAROLINA PEREIRA ROQUIM",
-        "ELDER DE BRITO MARQUES",
-        "FERNANDO GUIMARAES FONSECA NETO"
+        "CESAR SMIELEVSKI",
+        "GUILHERME KAASTRUP BALSINI",
+        "OSCAR KAASTRUP BALSINI",
+        "TATIANE DEZIDERIO COSTA",
+        "WELLINGTON ROGERIO BIAGIO SILVA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -2060,24 +2082,6 @@
       "socios": [
         "GUSTAVO HENRIQUE TEIXEIRA DE CASTRO",
         "SUELI MERI NEVES TEIXEIRA DE CASTRO"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "ASSOCIAÇAO BENEFICENTE KERIGMA",
-      "cnpj_raiz": "05549049",
-      "cnpj_completo": "05549049000111",
-      "cnpj_reconstruido": true,
-      "valor_total": 1312600.0,
-      "razao_social": "ASSOCIACAO BENEFICIENTE KERYGMA",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2003-02-20",
-      "cnae": "Atividades de associações de defesa de direitos sociais",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "SEBASTIAO DINIZ"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     }

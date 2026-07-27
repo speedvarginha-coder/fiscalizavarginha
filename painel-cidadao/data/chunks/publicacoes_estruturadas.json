@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-07-27T09:11:13+00:00",
+ "gerado_em": "2026-07-27T20:45:57+00:00",
  "fonte": "camara",
  "total": 764,
  "publicacoes": [
@@ -3155,7 +3155,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6067/comenda_do_merito_eclesiastico___padre_jose_rodrigo1_revisada_08-07.docx",
+    "link_verificacao": "",
     "valor_principal_ia": ""
    },
    "autor": "Ana Rios Fontoura",
@@ -3163,11 +3163,11 @@
    "ementa": "CONCEDE COMENDA DO MÉRITO ECLESIÁSTICO – PADRE VICTOR AO PADRE JOSÉ RODRIGO PEREIRA.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6067",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6067/comenda_do_merito_eclesiastico___padre_jose_rodrigo1_revisada_08-07.docx"
+    "inteiro_teor": ""
    },
    "localizacao": {
     "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6067/comenda_do_merito_eclesiastico___padre_jose_rodrigo1_revisada_08-07.docx"
+    "link_direto": ""
    },
    "origem_ia": "ia",
    "fonte_hash": "6a5597a9f068d1cab93e728f880279b1b9cd6339",
@@ -3205,19 +3205,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6066/alexandre_titulo_esportista_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6066/projeto_de_decreto_legislativo53-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Alexandre Prado",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "CONCEDE TÍTULO DE ESPORTISTA DESTAQUE VARGINHENSE A CECÍLIA RABELO",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6066",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6066/alexandre_titulo_esportista_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6066/projeto_de_decreto_legislativo53-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6066/alexandre_titulo_esportista_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6066/projeto_de_decreto_legislativo53-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "0a67ac23b95b7ac29c1b08b3778e68970924feee",

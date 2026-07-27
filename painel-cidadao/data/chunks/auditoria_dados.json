@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-27T09:48:00.088Z",
+  "gerado_em": "2026-07-27T20:51:25.658Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,8 +9,8 @@
     "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-27T06:11:04",
-    "data_humana": "27/07/2026 - 06:11"
+    "iso": "2026-07-27T17:45:48",
+    "data_humana": "27/07/2026 - 17:45"
   },
   "items": [
     {
@@ -69,7 +69,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
-      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); CAIXA ECONOMICA FEDERAL (R$ 1.8M).",
+      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); BRAVO LOCACOES E SERVICOS LTDA (R$ 2.1M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json",
       "verification": {
@@ -77,7 +77,7 @@
         "metodo": "raiz_cnpj_com_fallback_por_nome",
         "confianca": "baixa",
         "evidencias": [
-          "8 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
+          "9 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
         ],
         "limitacoes": [
           "Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"
@@ -209,7 +209,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
-      "detail": "8 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); CAIXA ECONOMICA FEDERAL (R$ 1.8M).",
+      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); BRAVO LOCACOES E SERVICOS LTDA (R$ 2.1M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json",
       "verification": {
@@ -217,7 +217,7 @@
         "metodo": "raiz_cnpj_com_fallback_por_nome",
         "confianca": "baixa",
         "evidencias": [
-          "8 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
+          "9 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
         ],
         "limitacoes": [
           "Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"

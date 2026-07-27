@@ -1,833 +1,100 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-27T09:48:01.535Z",
+  "gerado_em": "2026-07-27T20:51:26.917Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-07-27T17-45-48-cef8855b",
+    "coleta_iso": "2026-07-27T17:45:48",
+    "data_humana": "27/07/2026 - 17:45",
+    "arquivo": "data/snapshots/2026-07-27T17-45-48-cef8855b.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-07-27T06-11-04-76bab749",
     "coleta_iso": "2026-07-27T06:11:04",
     "data_humana": "27/07/2026 - 06:11",
-    "arquivo": "data/snapshots/2026-07-27T06-11-04-76bab749.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-07-26T20-31-09-b14fbdb7",
-    "coleta_iso": "2026-07-26T20:31:09",
-    "data_humana": "26/07/2026 - 20:31",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 660,
-    "contratos_valor_alterado": 7,
-    "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 0,
+    "novos_contratos": 3,
+    "contratos_valor_alterado": 2,
+    "novos_fornecedores_relevantes": 1,
+    "novas_edicoes_diario": 1,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
-    "asfalto_novos": 1,
-    "valor_novo_brl": 174046455.09000003,
-    "valor_delta_brl": 222558.73,
-    "total_mudancas": 668
+    "asfalto_novos": 0,
+    "valor_novo_brl": 664598.7,
+    "valor_delta_brl": 1039835.28,
+    "total_mudancas": 7
   },
   "itens": [
     {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 330/2025 - MED CENTER COMERCIAL LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2025-12-15",
-      "valor_brl": 11701767.54,
-      "alvo_id": "PREFEITURA-2025-330"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 36/2025 - ZEUS SERVICO SAUDE LTDA",
-      "detalhe": "Contratação emergencial de empresa especializada para prestação de serviços com utilização de mão de obra em um único lote de Médicos Plantonistas Pediátricos e/ou Médicos Plantonistas Clínicos Gerais, inscritos no Programa de Residência Médica em pediatria - PRM e/ou Médicos Plantonista Clínicos Gerais que atendem Pediatria, Médicos Plantonistas Clínicos Gerais e Médicos Plantonistas Cirurgiões Gerais em plantões de 12 horas presenciais, aos pacientes assistidos pelo Sistema Único de Saúde - SU",
-      "orgao": "Prefeitura",
-      "data": "2025-05-16",
-      "valor_brl": 9763876.8,
-      "alvo_id": "PREFEITURA-2025-36"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 26/2025 - DIGIPLAN TECNOLOGIA LTDA",
-      "detalhe": "Contratação de empresas para prestação de serviço especializado de atualização do cadastro técnico multifinalitário municipal conforme termo de referência",
-      "orgao": "Prefeitura",
-      "data": "2025-05-05",
-      "valor_brl": 8590562.36,
-      "alvo_id": "PREFEITURA-2025-26"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 232/2025 - D E F COSTA TRANSPORTE E CONSTRUTORA LTDA",
-      "detalhe": "Registro de Preços para eventual aquisição de massa asfáltica, tipo concreto betuminoso usinado – CBUQ",
-      "orgao": "Prefeitura",
-      "data": "2025-08-29",
-      "valor_brl": 6420364,
-      "alvo_id": "PREFEITURA-2025-232"
-    },
-    {
-      "tipo": "asfalto_novo",
-      "prioridade": "alta",
-      "titulo": "Novo item de asfalto/obra viaria: D E F COSTA TRANSPORTE E CONSTRUTORA LTDA",
-      "detalhe": "Registro de Preços para eventual aquisição de massa asfáltica, tipo concreto betuminoso usinado – CBUQ",
-      "orgao": "Prefeitura",
-      "data": "2025-08-29",
-      "valor_brl": 6420364,
-      "alvo_id": "PREFEITURA-2025-232"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 107/2025 - NOVA OPCAO LOCADORA DE VEICULOS LTDA",
-      "detalhe": "Registro de Preços para Locação de Veículos para Atendimento das Demandas da Administração Direta",
-      "orgao": "Prefeitura",
-      "data": "2025-05-08",
-      "valor_brl": 6399999.84,
-      "alvo_id": "PREFEITURA-2025-107"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 2/2026 - WELINGTON MOL DA SILVA",
-      "detalhe": "Hortifrutigranjeiros",
-      "orgao": "Prefeitura",
-      "data": "2026-01-22",
-      "valor_brl": 5669444.4,
-      "alvo_id": "PREFEITURA-2026-2"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 355/2025 - TRES PHARMA DISTRIBUIDORA E SERVICOS LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-02",
-      "valor_brl": 4561406,
-      "alvo_id": "PREFEITURA-2025-355"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 56/2025 - DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-      "detalhe": "Contratação de Empresa Especializada na Prestação de Serviços Contínuos de Auxiliares de Serventes Escolares",
-      "orgao": "Prefeitura",
-      "data": "2025-06-27",
-      "valor_brl": 3933804,
-      "alvo_id": "PREFEITURA-2025-56"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 361/2025 - MIMO GOURMET RESTAURANTE LTDA",
-      "detalhe": "Registro de preços para a prestação de serviços de coffee break",
-      "orgao": "Prefeitura",
-      "data": "2025-12-23",
-      "valor_brl": 3719139.27,
-      "alvo_id": "PREFEITURA-2025-361"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 299/2025 - VISA INDUSTRIA ATACADISTA LTDA",
-      "detalhe": "Registro de Preços para o fornecimento de kits escolares.",
-      "orgao": "Prefeitura",
-      "data": "2025-11-26",
-      "valor_brl": 3311916.45,
-      "alvo_id": "PREFEITURA-2025-299"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 87/2025 - INSTITUTO BRASILEIRO DE TECNOLOGIA, EMPREENDEDORISMO E GESTAO",
-      "detalhe": "Contratação de instituto especializado para realização de trabalhos técnicos especializados visando a realização de estudo de viabilidade econômico-financeira para que o Município possa realizar a gestão financeira da folha de pagamento dos servidores ativos, inativos e pensionistas do Município de Varginha",
-      "orgao": "Prefeitura",
-      "data": "2025-11-14",
-      "valor_brl": 3021285,
-      "alvo_id": "PREFEITURA-2025-87"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 34/2026 - NOVA OPCAO LOCADORA DE VEICULOS LTDA",
-      "detalhe": "Registro de Preços para Locação de Veículos para Atendimento das Demandas da Administração Direta",
-      "orgao": "Prefeitura",
-      "data": "2026-04-29",
-      "valor_brl": 2699881.59,
-      "alvo_id": "PREFEITURA-2026-34"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 301/2025 - ACACIA COMERCIO DE MEDICAMENTOS LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-21",
-      "valor_brl": 2579478.49,
-      "alvo_id": "PREFEITURA-2025-301"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 326/2025 - JABOQUE DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2025-12-31",
-      "valor_brl": 2433600,
-      "alvo_id": "PREFEITURA-2025-326"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 68/2025 - SERVICOS CFC LTDA",
-      "detalhe": "Prestação dos serviços (material e mão de obra) de corte de grama e roçada (em canteiros de avenidas, praças, logradouros e locais similares), roçada e limpeza em calçada ecológica, roçada em terrenos de posse do município, roçada em terrenos baldios e corte de grama e roçada em próprios públicos, limpeza de praças, parques e espaços públicos externos, em locais no Município de Varginha, com fornecimento de materiais e equipamentos, para atender à necessidade da Secretaria Municipal de Obras e S",
-      "orgao": "Prefeitura",
-      "data": "2025-07-29",
-      "valor_brl": 2339988,
-      "alvo_id": "PREFEITURA-2025-68"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 226/2025 - SAO DOMINGOS CONSTRUTORA LTDA",
-      "detalhe": "Registro de preços - fornecimento de Concreto Usinado FCK, para atendimento aos órgãos da administração direta e indireta do município de Varginha/MG",
-      "orgao": "Prefeitura",
-      "data": "2025-08-06",
-      "valor_brl": 2104875.84,
-      "alvo_id": "PREFEITURA-2025-226"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 0/2020 - LUIZ FORTE ILUMINACAO E SERVICOS EIRELI ME",
-      "detalhe": "MANUTENCAO EM ILUMINACAO PUBLICA",
-      "orgao": "Prefeitura",
-      "data": "2020-01-28",
-      "valor_brl": 2077343.92,
-      "alvo_id": "PREFEITURA-2020-0"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 84/2025 - SHIMADZU DO BRASIL COMERCIO LTDA.",
-      "detalhe": "Aquisição de Aparelho de Raios-X fixo, com tecnologia digital tipo conversão indireta (DR) para radiologia geral para radiografias de pacientes adultos (incluindo obesos), infantis e pediátricos",
-      "orgao": "Prefeitura",
-      "data": "2025-10-08",
-      "valor_brl": 2031416,
-      "alvo_id": "PREFEITURA-2025-84"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 311/2025 - COMERCIAL CIRURGICA RIOCLARENSE LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-13",
-      "valor_brl": 1999147.9,
-      "alvo_id": "PREFEITURA-2025-311"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 53/2025 - GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
-      "detalhe": "O objeto do presente termo de referência é a contratação de empresa especializada de engenharia para a construção da Unidade Básica de Saúde (UBS), porte 1, município Varginha, com fornecimento de todos os materiais, mão de obra e equipamentos necessários, de acordo com o Memorial Descritivo e Projeto (anexos). O imóvel, ficará localizado à Rua Samuel Eli de Araújo, Bairro Parque Rinaldo, e sediará as instalações da nova UBS Jardim Áurea de Varginha.",
-      "orgao": "Prefeitura",
-      "data": "2025-06-16",
-      "valor_brl": 1893101.1,
-      "alvo_id": "PREFEITURA-2025-53"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 93/2025 - D & A COMERCIO EXPORTACAO IMPORTACAO TRANSPORTE E LOCACAO DE SOM E LUZ LTDA",
-      "detalhe": "Contratação de empresa especializada para prestação de serviços de locação, manutenção, montagem e desmontagem e transporte de Decorações Natalinas, incluindo o fornecimento de mão de obra especializada, materiais e disponibilização de equipamentos necessários para execução da Decoração Urbana do Natal da cidade de Varginha 2025",
-      "orgao": "Prefeitura",
-      "data": "2025-10-30",
-      "valor_brl": 1800299.78,
-      "alvo_id": "PREFEITURA-2025-93"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 303/2025 - ALFALAGOS LTDA.",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-05",
-      "valor_brl": 1767862.1,
-      "alvo_id": "PREFEITURA-2025-303"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 263/2025 - RC MATERIAIS E SERVICOS LTDA",
-      "detalhe": "Registro de preços para contratação de empresa para prestação de serviços de vidraçaria",
-      "orgao": "Prefeitura",
-      "data": "2025-10-13",
-      "valor_brl": 1751227,
-      "alvo_id": "PREFEITURA-2025-263"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 332/2025 - MEDILAR IMPORTACAO E DISTRIBUICAO DE PRODUTOS MEDICO HOSPITALARES S/A",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-12",
-      "valor_brl": 1712949.2,
-      "alvo_id": "PREFEITURA-2025-332"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 233/2025 - MIMO GOURMET RESTAURANTE LTDA",
-      "detalhe": "Registro de Preços para o futuro e eventual fornecimento de Marmitex.",
-      "orgao": "Prefeitura",
-      "data": "2025-09-01",
-      "valor_brl": 1699990.88,
-      "alvo_id": "PREFEITURA-2025-233"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 181/2025 - CM HOSPITALAR S.A.",
-      "detalhe": "Registro de preços para futura aquisição dos medicamentos Pembrolizumabe e Axitinibe para cumprir EXCLUSIVAMENTE a mandado judiciais.",
-      "orgao": "Prefeitura",
-      "data": "2025-06-12",
-      "valor_brl": 1599721,
-      "alvo_id": "PREFEITURA-2025-181"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 59/2025 - GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
-      "detalhe": "contratação de serviços comuns de engenharia, incluindo o fornecimento de mão-de-obra, materiais e disponibilização de equipamentos necessários para execução das obras de construção da praça esportiva e de lazer, anexa ao complexo desportivo Dilzon Mello, de acordo com o Memorial Descritivo e Projeto",
-      "orgao": "Prefeitura",
-      "data": "2025-07-08",
-      "valor_brl": 1594617.26,
-      "alvo_id": "PREFEITURA-2025-59"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 342/2025 - PRATI, DONADUZZI & CIA LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-05",
-      "valor_brl": 1543956.78,
-      "alvo_id": "PREFEITURA-2025-342"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 37/2026 - MG FLEX LTDA.",
-      "detalhe": "Registro de Preços para Futura e Eventual Aquisição de Material Ambulatorial",
-      "orgao": "Prefeitura",
-      "data": "2026-01-29",
-      "valor_brl": 1519357.94,
-      "alvo_id": "PREFEITURA-2026-37"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 314/2025 - CRISTALIA PRODUTOS QUIMICOS FARMACEUTICOS LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-05",
-      "valor_brl": 1498535.16,
-      "alvo_id": "PREFEITURA-2025-314"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 178/2025 - AUTO SUTURE DO BRASIL LTDA.",
-      "detalhe": "Registro de Preços Aquisição de Bomba e Insumos Medtronic",
-      "orgao": "Prefeitura",
-      "data": "2025-06-11",
-      "valor_brl": 1387964,
-      "alvo_id": "PREFEITURA-2025-178"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 356/2025 - UNI HOSPITALAR CEARA LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2025-12-31",
-      "valor_brl": 1336117.2,
-      "alvo_id": "PREFEITURA-2025-356"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 193/2025 - RICARDO PEREIRA LTDA",
-      "detalhe": "Considerando a necessidade e o interesse da administração na aquisição de peças, materiais elétricos, eletrônicos e acessórios para manutenção e reparo de veículos leves, médios e motocicletas da frota municipal, objetivando o processamento das compras através do sistema de registro de preço. Linhas de veículos que se faz necessário o registro de preço: VOLKSWAGEM-IVECO-RENAULT-VEÍCULO HONDA-MOTOCICLETA HONDA-MERCEDES BENZ-FORD-TOYOTA.MITSUBSHI",
-      "orgao": "Prefeitura",
-      "data": "2025-06-27",
-      "valor_brl": 1180800,
-      "alvo_id": "PREFEITURA-2025-193"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 19/2026 - ASSOCIACAO DOS PRODUTORES DA AGRICULTURA FAMILIAR DE VARGINHA-MG E REGIAO",
-      "detalhe": "Chamada pública para aquisição de gêneros alimentícios para abastecimento das escolas e creches municipais por um período de 6 meses",
-      "orgao": "Prefeitura",
-      "data": "2026-02-25",
-      "valor_brl": 1095779.65,
-      "alvo_id": "PREFEITURA-2026-19"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 195/2025 - FW ALIMENTACAO LTDA",
-      "detalhe": "Registro de preços para o futuro e eventual fornecimento de pães",
-      "orgao": "Prefeitura",
-      "data": "2025-07-03",
-      "valor_brl": 1091523,
-      "alvo_id": "PREFEITURA-2025-195"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 359/2025 - VIVA FARMACEUTICA SA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-06",
-      "valor_brl": 1063405.64,
-      "alvo_id": "PREFEITURA-2025-359"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 240/2025 - TELAFER COMERCIO DE ACO E TELAS LTDA",
-      "detalhe": "Registro de preço para o fornecimento de materiais de serralheria.",
-      "orgao": "Prefeitura",
-      "data": "2025-09-09",
-      "valor_brl": 1034313.6,
-      "alvo_id": "PREFEITURA-2025-240"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "alta",
-      "titulo": "Novo contrato 149/2026 - MPS DISTRIBUIDORA LTDA",
-      "detalhe": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
-      "orgao": "Prefeitura",
-      "data": "2026-06-15",
-      "valor_brl": 1016256.2,
-      "alvo_id": "PREFEITURA-2026-149"
-    },
-    {
       "tipo": "valor_alterado",
       "prioridade": "alta",
-      "titulo": "Valor alterado no contrato 0/2025",
-      "detalhe": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA: antes R$ 45.650,00, agora R$ 158.029,99.",
-      "orgao": "Prefeitura",
-      "data": "2025-09-25",
-      "valor_brl": 158029.99000000002,
-      "delta_brl": 112379.99000000002,
-      "alvo_id": "PREFEITURA-2025-0"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 195/2025 - LABORATORIOS B BRAUN SA",
-      "detalhe": "AQUISIÇÃO DE MATERIAL DE CONSUMO MÉDICO HOSPITALAR",
-      "orgao": "Prefeitura",
-      "data": "2025-06-27",
-      "valor_brl": 957711.56,
-      "alvo_id": "PREFEITURA-2025-195"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 15/2026 - COFARMINAS COMERCIO DE PRODUTOS FARMACEUTICOS LTDA",
-      "detalhe": "Registro de Preços para Futura e Eventual Aquisição de Material Ambulatorial",
-      "orgao": "Prefeitura",
-      "data": "2026-01-27",
-      "valor_brl": 890717.98,
-      "alvo_id": "PREFEITURA-2026-15"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 187/2025 - RC MATERIAIS E SERVICOS LTDA",
-      "detalhe": "Contratação de empresa especializada para prestação de serviços de chaveiro",
-      "orgao": "Prefeitura",
-      "data": "2025-06-24",
-      "valor_brl": 819413.57,
-      "alvo_id": "PREFEITURA-2025-187"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 334/2025 - MULTIFARMA COMERCIO E REPRESENTACOES LTDA.",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-08",
-      "valor_brl": 804595.4,
-      "alvo_id": "PREFEITURA-2025-334"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 224/2025 - LUIS OTAVIO CRABI INDUSTRIA E COMERCIO DE ARTEFATOS DE CIMENTO LTDA",
-      "detalhe": "Fornecimento de tubos de concreto.",
-      "orgao": "Prefeitura",
-      "data": "2025-07-30",
-      "valor_brl": 801039,
-      "alvo_id": "PREFEITURA-2025-224"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 72/2025 - INSTITUTO NACIONAL ESPECIALIZADO EM PESQUISA E APOIO AOS MUNICIPIOS - INEPAM",
-      "detalhe": "Contratação de instituto especializado para realização de trabalhos técnicos especializados para a Modernização Administrativa da Estrutura Organizacional e de Gestão Administrativa dos Planos de Cargos, Carreiras, Vencimentos, Quadro Setorial de Carreiras, de acordo com previsões da Emenda Constitucional n°. 19/98 da Lei Complementar n° 101/2000 e legislações específicas que regem a Administração Pública, dentre outros aporte legais ao fiel cumprimento da execução dos serviços, om Revisão do E",
+      "titulo": "Valor alterado no contrato 72/2025",
+      "detalhe": "INSTITUTO NACIONAL ESPECIALIZADO EM PESQUISA E APOIO AOS MUNICIPIOS - INEPAM: antes R$ 779.770,00, agora R$ 1.819.463,32.",
       "orgao": "Prefeitura",
       "data": "2025-08-18",
-      "valor_brl": 779770,
+      "valor_brl": 1819463.32,
+      "delta_brl": 1039693.3200000001,
       "alvo_id": "PREFEITURA-2025-72"
     },
     {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 222/2025 - BSM ATACADISTA LTDA",
-      "detalhe": "Registro de preços para o futuro e eventual fornecimento de carnes",
+      "tipo": "novo_fornecedor_relevante",
+      "prioridade": "alta",
+      "titulo": "Fornecedor entrou no ranking: BETHA SISTEMAS LTDA",
+      "detalhe": "Prefeitura - rank 26, R$ 1.450.990,76 no recorte atual.",
       "orgao": "Prefeitura",
-      "data": "2025-07-24",
-      "valor_brl": 772276.15,
-      "alvo_id": "PREFEITURA-2025-222"
+      "valor_brl": 1450990.76
     },
     {
-      "tipo": "novo_contrato",
+      "tipo": "valor_alterado",
       "prioridade": "media",
-      "titulo": "Novo contrato 47/2025 - CIV - CENTRO DE INFUSAO DE VARGINHA LTDA",
-      "detalhe": "CREDENCIAMENTO PARA OS SERVIÇOS DE INFUSÃO DE MEDICAMENTOS IMUNOBIOLÓGICOS, CITOSTÁTICOS E COMPLEXOS VITAMÍNICOS",
-      "orgao": "Prefeitura",
-      "data": "2025-05-30",
-      "valor_brl": 750000,
-      "alvo_id": "PREFEITURA-2025-47"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 310/2025 - BIOTEC BIOLOGICA INDUSTRIA FARMACEUTICA LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2025-12-31",
-      "valor_brl": 742574,
-      "alvo_id": "PREFEITURA-2025-310"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 335/2025 - NOVA MEDICAMENTOS LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-05",
-      "valor_brl": 735794,
-      "alvo_id": "PREFEITURA-2025-335"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 316/2025 - DIMEBRAS COMERCIAL HOSPITALAR LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-05",
-      "valor_brl": 732785.6,
-      "alvo_id": "PREFEITURA-2025-316"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 351/2025 - SOMA/MG PRODUTOS HOSPITALARES LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-07",
-      "valor_brl": 728096,
-      "alvo_id": "PREFEITURA-2025-351"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 317/2025 - DISTRIBEM MED. E MAT. HOSP. LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2025-12-31",
-      "valor_brl": 686861,
-      "alvo_id": "PREFEITURA-2025-317"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 315/2025 - DIMASTER - COMERCIO DE PRODUTOS HOSPITALARES LTDA.",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-02",
-      "valor_brl": 674885.6,
-      "alvo_id": "PREFEITURA-2025-315"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 124/2025 - MUNDO PARALELO PRODUCOES ARTISTICAS LTDA",
-      "detalhe": "CONTRATAÇÃO PARA APRESENTAÇÃO DE SHOW ARTÍSTICO MUSICAL DE MATHEUS E KAUAN,POR OCASIÃO DO EVENTO FEIRA DA PAZ 2026.",
-      "orgao": "Prefeitura",
-      "data": "2025-12-23",
-      "valor_brl": 670000,
-      "alvo_id": "PREFEITURA-2025-124"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 101/2025 - COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "detalhe": "Contratação de empresa especializada na prestação de serviços de manutenção predial preventiva e corretiva, com fornecimento de mão de obra, equipamentos e ferramental necessário para atender às necessidades dos Próprios Públicos de Varginha/MG",
-      "orgao": "Prefeitura",
-      "data": "2025-11-17",
-      "valor_brl": 668851.62,
-      "alvo_id": "PREFEITURA-2025-101"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 88/2025 - CONFORTLINE ENGENHARIA TERMICA LTDA",
-      "detalhe": "Contratação de serviços de engenharia incluindo o fornecimento de materiais, mão de obra e equipamentos necessários para a execução de obras de implantação do sistema de climatização do tipo VRF inverter no Theatro Municipal Capitólio, imóvel tombado em âmbito municipal, localizado na Rua Presidente Antônio Carlos, 522 - Centro – Varginha/MG, conforme especificações e condições estabelecidas no Termo de Referência e seus anexos.",
-      "orgao": "Prefeitura",
-      "data": "2025-10-21",
-      "valor_brl": 659000,
-      "alvo_id": "PREFEITURA-2025-88"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 185/2025 - MARIA TERESA PEREIRA COELHO & CIA LTDA",
-      "detalhe": "Registro de preços para futura e eventual aquisição de cestas básicas para atender as necessidades de pessoas em situação de vulnerabilidade social, assistidas pelo Centro de Referência da Assistência Social - CRAS",
+      "titulo": "Valor alterado no contrato 185/2025",
+      "detalhe": "MARIA TERESA PEREIRA COELHO & CIA LTDA: antes R$ 652.752,00, agora R$ 652.893,96.",
       "orgao": "Prefeitura",
       "data": "2025-06-26",
-      "valor_brl": 652752,
+      "valor_brl": 652893.96,
+      "delta_brl": 141.95999999996275,
       "alvo_id": "PREFEITURA-2025-185"
     },
     {
       "tipo": "novo_contrato",
       "prioridade": "media",
-      "titulo": "Novo contrato 333/2025 - MEDLIFE PRODUTOS HOSPITALARES LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
+      "titulo": "Novo contrato 19/2025 - RECAPAGEM FELIPE FONTES LTDA",
+      "detalhe": "Registro de Preços para prestação de serviços de recauchutagem de pneus",
       "orgao": "Prefeitura",
-      "data": "2025-12-31",
-      "valor_brl": 651456,
-      "alvo_id": "PREFEITURA-2025-333"
+      "data": "2025-01-27",
+      "valor_brl": 437613.7,
+      "alvo_id": "PREFEITURA-2025-19"
     },
     {
       "tipo": "novo_contrato",
       "prioridade": "media",
-      "titulo": "Novo contrato 186/2025 - RC MATERIAIS E SERVICOS LTDA",
-      "detalhe": "Registro de preços - Serviços de instalação de parede / divisória em drywall, com fornecimento de mão de obra e materiais necessários",
+      "titulo": "Novo contrato 17/2025 - INDUSTRIA E COMERCIO MUT PNEUS LTDA",
+      "detalhe": "Registro de Preços para prestação de serviços de recauchutagem de pneus",
       "orgao": "Prefeitura",
-      "data": "2025-06-18",
-      "valor_brl": 649000,
-      "alvo_id": "PREFEITURA-2025-186"
+      "data": "2025-01-27",
+      "valor_brl": 146930,
+      "alvo_id": "PREFEITURA-2025-17"
+    },
+    {
+      "tipo": "nova_edicao_diario",
+      "prioridade": "media",
+      "titulo": "Nova edicao do Diario Oficial 1852",
+      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
+      "data": "2026-07-27",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/259/"
     },
     {
       "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 0/2025 - WELINGTON MOL DA SILVA",
-      "detalhe": "O objeto da presente Solicitação de Compra é a contratação de empresa especializada em fornecimento de Hortifrutigranjeiros",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 83/2026 - MAIS SAUDE CONSULTORIA E AUDITORIA MEDICA HOSPITALAR LTDA",
+      "detalhe": "SERVIÇOS DE LOCAÇÃO DE UNIDADE MÓVEL DE RADIOLOGIA.",
       "orgao": "Prefeitura",
-      "data": "2025-09-30",
-      "valor_brl": 615111.72,
-      "alvo_id": "PREFEITURA-2025-0"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 1/2026 - COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "detalhe": "CONTRATAÇÃO DE SERVIÇO DE MANUTENÇÃO PREDIAL",
-      "orgao": "Prefeitura",
-      "data": "2026-01-08",
-      "valor_brl": 593104.93,
-      "alvo_id": "PREFEITURA-2026-1"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 1/2026 - 62.778.167 GIANN MARCOS REIS AZARA",
-      "detalhe": "Ata de Registro de Preços para Serviço de Locação de Brinquedos Recreativos, com a disponibilização de monitores capacitados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-08",
-      "valor_brl": 589966.18,
-      "alvo_id": "PREFEITURA-2026-1"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 148/2026 - AMM LICITACOES LTDA",
-      "detalhe": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
-      "orgao": "Prefeitura",
-      "data": "2026-06-15",
-      "valor_brl": 558266.92,
-      "alvo_id": "PREFEITURA-2026-148"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 82/2025 - SUL MINEIRA URGENCIA E EMERGENCIA MEDICA LTDA",
-      "detalhe": "Contratação de empresa especializada na prestação de serviços médicos e não médicos com fornecimento de insumos e equipamentos em locação e transporte quando necessários, na modalidade de HOME CARE",
-      "orgao": "Prefeitura",
-      "data": "2025-09-24",
-      "valor_brl": 555949.8,
-      "alvo_id": "PREFEITURA-2025-82"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 318/2025 - DROGAFONTE LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-12",
-      "valor_brl": 546864.64,
-      "alvo_id": "PREFEITURA-2025-318"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 81/2025 - QUIBASA QUIMICA BASICA LTDA",
-      "detalhe": "Contratação para futura aquisição de material laboratorial, reagentes e consumíveis conforme especificado em lote, visando o funcionamento adequado do laboratório da Unidade de Pronto Atendimento - UPA",
-      "orgao": "Prefeitura",
-      "data": "2025-09-18",
-      "valor_brl": 543514.37,
-      "alvo_id": "PREFEITURA-2025-81"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 38/2025 - HABILIDADE ESPORTE SERVICOS LTDA",
-      "detalhe": "Contratação de Serviços de Coordenação e Arbitragem ( quadro de árbitros, anotador, apontador, mesários, fornecimento de súmulas, alimentação e gerenciamento de site e/ou apps e grupos de whatsapp relacionados a competição, fornecimento de troféu destaque da partida, dentre outros ), inscrições de atletas, e organização geral, para campeonatos amadores de futebol veterano, adulto, juvenil ou infantil e também para jogos festivos e amistosos.",
-      "orgao": "Prefeitura",
-      "data": "2025-05-22",
-      "valor_brl": 540901.5,
-      "alvo_id": "PREFEITURA-2025-38"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 182/2025 - SAMEH SOLUCOES HOSPITALARES LTDA",
-      "detalhe": "Registro de preços para futura aquisição dos medicamentos Pembrolizumabe e Axitinibe para cumprir EXCLUSIVAMENTE a mandado judiciais.",
-      "orgao": "Prefeitura",
-      "data": "2025-06-12",
-      "valor_brl": 532152,
-      "alvo_id": "PREFEITURA-2025-182"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 325/2025 - INOVAMED HOSPITALAR LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2025-12-31",
-      "valor_brl": 531766.98,
-      "alvo_id": "PREFEITURA-2025-325"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 207/2025 - VALE COMERCIAL LTDA",
-      "detalhe": "Registro de Preços para Futura e Eventual Aquisição de materiais para o serviço ambulatorial em sala de curativos e afins",
-      "orgao": "Prefeitura",
-      "data": "2025-07-11",
-      "valor_brl": 526999,
-      "alvo_id": "PREFEITURA-2025-207"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 58/2025 - A & G SERVICOS MEDICOS LTDA",
-      "detalhe": "O objeto é Contratação de Empresa Especializada em Serviços de Socorrista em Urgência e Emergência médica, com disponibilização de Ambulância Básica Tripulada por Condutor Socorrista e Enfermagem. Serviços esses, a serem prestados em diversos Evento Esportivos, com organização e participação direta ou indireta da SEMEL. A contratação será realizada referente a Horas de Serviços prestados.",
-      "orgao": "Prefeitura",
-      "data": "2025-07-04",
-      "valor_brl": 515315.84,
-      "alvo_id": "PREFEITURA-2025-58"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 22/2025 - V1 SOLUCOES - EVENTOS, PUBLICIDADE E MARKETING LTDA",
-      "detalhe": "O objeto constitui-se da contratação de Prestação de Serviço de Oficineiros para o ano de 2025, para a prática das oficinas dos Centros de Atenção Psicossocial e Equipe Especializada de Saúde Mental na Atenção Básica.",
-      "orgao": "Prefeitura",
-      "data": "2025-04-02",
-      "valor_brl": 489995.6,
-      "alvo_id": "PREFEITURA-2025-22"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 241/2025 - TINPAVI INDUSTRIA E COMERCIO DE TINTAS LTDA",
-      "detalhe": "Registro de preço para o fornecimento de materiais de serralheria.",
-      "orgao": "Prefeitura",
-      "data": "2025-09-09",
-      "valor_brl": 481913,
-      "alvo_id": "PREFEITURA-2025-241"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 347/2025 - SANTINI MEDICAMENTOS LTDA",
-      "detalhe": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
-      "orgao": "Prefeitura",
-      "data": "2026-01-01",
-      "valor_brl": 476940,
-      "alvo_id": "PREFEITURA-2025-347"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 30/2025 - EVOLUTION PRODUTORA DE EVENTOS LTDA.",
-      "detalhe": "Contratação para apresentação de show artístico musical da Banda Raça Negra, por ocasião do evento FEIRA DA PAZ, a realizar-se no dia 01/08/2025.",
-      "orgao": "Prefeitura",
-      "data": "2025-04-30",
-      "valor_brl": 475000,
-      "alvo_id": "PREFEITURA-2025-30"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 18/2025 - BP SAUDE LTDA",
-      "detalhe": "Contratação Emergencial de empresa especializada para a realização de Exames de Diagnóstico por Imagem com emissão de laudo: Ultrassonografia para os pacientes Adultos e Crianças atendidos na Unidade de Pronto Atendimento - UPA, caracterizados como Urgências e Emergências, onde a empresa deverá ter sede em Varginha-MG, com espaço físico adequado para a realização dos exames, com disponibilidade dos materiais, equipamentos e recursos humanos.",
-      "orgao": "Prefeitura",
-      "data": "2025-03-10",
-      "valor_brl": 468000,
-      "alvo_id": "PREFEITURA-2025-18"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 9/2026 - COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "detalhe": "Contratação de empresa para prestação de serviços de Portaria, Jardinagem, Recepcionistas, Auxiliares de Serviços gerais.",
-      "orgao": "Prefeitura",
-      "data": "2026-02-10",
-      "valor_brl": 467477.34,
-      "alvo_id": "PREFEITURA-2026-9"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 225/2025 - VIACAO TRES CORACOES LTDA",
-      "detalhe": "Registro de preços para futura e eventual prestação de serviços de transporte em veículos adequados com motorista e devidamente habilitados, para o transporte de Atletas / Alunos, Técnicos Desportivos e Chefias quando das competições e eventos desportivos, em representação da SEMEL.",
-      "orgao": "Prefeitura",
-      "data": "2025-08-13",
-      "valor_brl": 466820,
-      "alvo_id": "PREFEITURA-2025-225"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 49/2025 - TA COMBINADO PRODUCOES ARTISTICAS LTDA",
-      "detalhe": "Contratação para apresentação de show artístico musical da Dupla João Neto e Frederico, por ocasião do evento REVEILLON DA PAZ, a realizar-se no dia 31/12/2025.",
-      "orgao": "Prefeitura",
-      "data": "2025-06-10",
-      "valor_brl": 435000,
-      "alvo_id": "PREFEITURA-2025-49"
+      "data": "2026-07-17",
+      "valor_brl": 80055,
+      "alvo_id": "PREFEITURA-2026-83"
     }
   ],
   "avisos": []

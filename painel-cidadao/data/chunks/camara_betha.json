@@ -766,7 +766,7 @@
       "contratado": "HERICON FELIPE TRISTAO NASCIMENTO",
       "cnpj": "39.327.884/****-**",
       "valor": 470.0,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
@@ -1144,5 +1144,5 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
   ],
-  "coletado_em": "2026-07-27T06:10:02-03:00"
+  "coletado_em": "2026-07-27T17:44:37-03:00"
 }
