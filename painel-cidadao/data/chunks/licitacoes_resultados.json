@@ -1,12 +1,12 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-07-26T09:44:49+00:00",
+  "gerado_em": "2026-07-27T09:47:54+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251128",
-    "fim": "20260726"
+    "inicio": "20251129",
+    "fim": "20260727"
   },
-  "compras": 298,
+  "compras": 294,
   "compras_com_resultado": 164,
   "homologacoes_simbolicas": [
     {
@@ -22,32 +22,6 @@
     }
   ],
   "registros": [
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "128",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000436/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada em serviços de lavanderia industrial para o processamento do enxoval, abrangendo as etapas de recolhimento, transporte, pesagem, classificação da roupa ",
-      "valor_estimado": 17056.2,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-28",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "120",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000437/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de EPI’s, materiais de apoio, vestuário e itens de uso operacional para atender as necessidades dos Agentes de Combate às Endemias.",
-      "valor_estimado": 269854.9,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-28",
-      "resultados": []
-    },
     {
       "orgao": "Prefeitura Municipal de Varginha",
       "numero_compra": "140",
@@ -7591,32 +7565,6 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "167",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000435/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para troca do assoalho em madeira do caminhão VW 9170 placa1L25, ano de fabricação 2021, pertencente à frota da Secretaria de Agricultura e Pecuária de ",
-      "valor_estimado": 4506.67,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-28",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "165",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000438/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - O objeto da presente solicitação é a Aquisição de Forno micro-ondas e Geladeira para atender às necessidades da Secretaria Municipal de Esportes e Lazer.",
-      "valor_estimado": 7292.36,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-11-28",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
       "numero_compra": "166",
       "ano": 2025,
       "controle_pncp": "18240119000105-1-000439/2025",
@@ -14190,7 +14138,7 @@
     }
   ],
   "erros": [
-    "contratacoes 18240119000105 mod 8 pg 1: The read operation timed out"
+    "contratacoes 18240119000105 mod 8 pg 2: The read operation timed out"
   ],
   "status": "partial",
   "qualidade_coleta": {
