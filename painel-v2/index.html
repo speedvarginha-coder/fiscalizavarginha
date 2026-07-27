@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dinheiro de Varginha — o que a Prefeitura e a Câmara fazem com ele</title>
+<meta name="description" content="Painel independente que mostra, em linguagem comum, quanto Varginha arrecada, com quem gasta, quanto paga a cada servidor e o que está parado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,700;6..96,900&family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="masthead">
+  <div class="wrap masthead__row">
+    <a class="marca" href="#/">
+      <span class="marca__nome">Dinheiro de Varginha</span>
+      <span class="marca__sub">painel independente de fiscalização</span>
+    </a>
+
+    <form class="busca" role="search" onsubmit="return false">
+      <label class="sr-only" for="q">Buscar por nome de pessoa, empresa, obra ou contrato</label>
+      <input id="q" type="search" autocomplete="off" spellcheck="false"
+             placeholder="Buscar uma pessoa, empresa, obra ou contrato">
+      <button type="button" id="btnBusca" aria-label="Buscar">Buscar</button>
+    </form>
+  </div>
+
+  <nav class="menu" aria-label="Seções">
+    <div class="wrap menu__row">
+      <a href="#/" data-rota="/">Início</a>
+      <a href="#/salarios" data-rota="/salarios">Quanto ganha cada um</a>
+      <a href="#/dinheiro" data-rota="/dinheiro">Para onde vai o dinheiro</a>
+      <a href="#/obras" data-rota="/obras">Obras</a>
+      <a href="#/viagens" data-rota="/viagens">Viagens pagas</a>
+      <a href="#/cobrar" data-rota="/cobrar">Como cobrar</a>
+    </div>
+  </nav>
+</header>
+
+<div id="tarja" class="tarja" hidden></div>
+
+<main id="conteudo" class="wrap">
+  <div id="view" aria-live="polite">
+    <div class="carregando">
+      <span class="carregando__barra"></span>
+      Carregando os dados públicos de Varginha
+    </div>
+  </div>
+</main>
+
+<footer class="rodape">
+  <div class="wrap">
+    <p class="rodape__aviso">
+      <strong>Isto não é acusação.</strong> É dado público reorganizado para leitura.
+      Antes de divulgar qualquer número, confira na fonte primária. Todo bloco desta
+      página traz o link de onde o dado saiu.
+    </p>
+    <p class="rodape__meta">
+      Fontes oficiais: Portal Betha da Prefeitura e da Câmara, SAPL, PNCP, TCE-MG,
+      Diário Oficial do Município. Dados públicos por força da Lei 12.527/2011.
+    </p>
+    <p class="rodape__meta">
+      Ferramenta independente, sem fins lucrativos e sem vínculo partidário.
+      Achou um número errado? Escreva para
+      <a href="mailto:speed.varginha@gmail.com">speed.varginha@gmail.com</a>.
+    </p>
+    <p class="rodape__meta" id="rodapeAtualizacao"></p>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
