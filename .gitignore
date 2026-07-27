@@ -137,3 +137,14 @@ painel-cidadao/encode_deploy.js
 
 # ---- WhatsApp bridge — chave da API (fora do git) ----
 painel-cidadao/whatsapp-bridge/.apikey
+
+# ---- Acervo orçamentário: PDFs oficiais (LDO, LOA, PPA) ----
+# ~215 MB de PDF não entram no histórico do git. O que garante a cadeia de
+# evidência é docs/orcamento-varginha/MANIFESTO-SHA256.csv, que registra o
+# SHA-256 e a URL oficial de cada arquivo na data da coleta. Para reconferir:
+#   py scripts/gerar-manifesto-orcamento.py --conferir
+docs/orcamento-varginha/**/*.pdf
+
+# ---- Material de trabalho de sessões (geradores e QA) ----
+# Os entregáveis finais ficam em docs/pntp/solicitacoes-portal/.
+tmp/

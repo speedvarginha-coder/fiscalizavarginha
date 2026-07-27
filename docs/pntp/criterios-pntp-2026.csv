@@ -1,0 +1,182 @@
+matriz,dimensao,id,criterio,classe
+COMUM,Informações Prioritárias,1.1,Possui sítio oficial próprio na internet?,Essencial
+COMUM,Informações Prioritárias,1.2,Possui portal da transparência próprio ou compartilhado na internet?,Essencial
+COMUM,Informações Prioritárias,1.3,O acesso ao portal transparência está visível na capa do site?,Obrigatória
+COMUM,Informações Prioritárias,1.4,O site e o portal de transparência contêm ferramenta de pesquisa de conteúdo que permita o acesso à informação?,Obrigatória
+COMUM,Informações Institucionais,2.1,Divulga a sua estrutura organizacional e a norma que a institui/altera?,Obrigatória
+COMUM,Informações Institucionais,2.2,Divulga competências e/ou atribuições?,Obrigatória
+COMUM,Informações Institucionais,2.3,Identifica o nome dos atuais responsáveis pela gestão do Poder/Órgão?,Obrigatória
+COMUM,Informações Institucionais,2.4,Divulga os endereços e telefones atuais do Poder ou órgão e e-mails institucionais?,Obrigatória
+COMUM,Informações Institucionais,2.5,Divulga o horário de atendimento?,Obrigatória
+COMUM,Informações Institucionais,2.6,Divulga os atos normativos próprios?,Obrigatória
+COMUM,Informações Institucionais,2.7,Divulga as perguntas e respostas mais frequentes relacionadas às atividades desenvolvidas pelo Poder/Órgão?,Obrigatória
+COMUM,Informações Institucionais,2.8,"Participa em redes sociais e apresenta, no seu sítio institucional, link de acesso ao seu perfil?",Recomendada
+COMUM,Informações Institucionais,2.9,Inclui botão do Radar da Transparência Pública no site institucional ou portal transparência?,Recomendada
+COMUM (EXCETO ESTATAIS INDEPENDENTES),Receita,3.1,"Divulga as receitas do Poder ou órgão, evidenciando sua previsão e realização?",Essencial
+EXECUTIVO,Receita,3.2,"Divulga a classificação orçamentária por natureza da receita (categoria econômica, origem, espécie, desdobramento)?",Essencial
+EXECUTIVO,Receita,3.3,"Divulga a lista dos inscritos em dívida ativa, contendo, no mínimo, dados referentes ao nome do inscrito e o valor total da dívida?",Obrigatória
+COMUM (EXCETO ESTATAIS INDEPENDENTES),Despesa,4.1,"Divulga o total das despesas empenhadas, liquidadas e pagas?",Essencial
+COMUM (EXCETO ESTATAIS INDEPENDENTES),Despesa,4.2,Divulga as despesas por classificação orçamentária?,Essencial
+COMUM (EXCETO ESTATAIS INDEPENDENTES),Despesa,4.3,"Possibilita a consulta de empenhos com os detalhes do beneficiário do pagamento ou credor, o valor, o bem fornecido ou serviço prestado e a identificação do procedimento licitatório originário da despesa?",Essencial
+ESTATAIS,Despesa,4.4,"Publica relação das despesas com aquisições de bens efetuadas pela instituição contendo: identificação do bem, preço unitário, quantidade, nome do fornecedor e valor total de cada aquisição?",Recomendada
+ESTATAIS,Despesa,4.5,Publica informações sobre despesas de patrocínio?,Recomendada
+ESTATAIS,Despesa,4.6,"Publica informações detalhadas sobre a execução dos contratos de publicidade, com nomes dos fornecedores de serviços especializados e veículos, bem como informações sobre os totais de valores pagos para cada tipo de serviço e meio de divulgação?",Recomendada
+COMUM,Convênios e Transferências,5.1,"Divulga as transferências recebidas a partir da celebração de convênios/acordos com indicação, no mínimo, do número/ano do convênio/termo ou ajuste, do valor total previsto dos recursos envolvidos, do valor recebido, do objeto, da vigência, da origem (órgão repassador/concedente) e o inteiro teor do instrumento de convênio/transferência?",Obrigatória
+COMUM,Convênios e Transferências,5.2,"Divulga as transferências realizadas a partir da celebração de convênios/acordos/ajustes, com indicação, no mínimo, do número/ano do convênio/termo ou ajuste, do beneficiário, do objeto, da vigência, do valor total previsto para repasse, do valor concedido e inteiro teor do instrumento de convênio/termo ou ajuste?",Obrigatória
+COMUM,Convênios e Transferências,5.3,"Divulga os acordos firmados que não envolvam transferência de recursos financeiros, identificando as partes, o número/ano do convênio/termo ou ajuste, o objeto, a vigência, as obrigações ajustadas e o inteiro teor do instrumento de convênio/termo ou ajuste?",Obrigatória
+COMUM,Recursos Humanos,6.1,"Divulga a relação nominal dos servidores/autoridades/membros, seus cargos/funções, as respectivas lotações, as suas datas de admissão/exoneração/inativação e a carga horária do cargo/função ocupada/desempenhada?",Obrigatória
+COMUM,Recursos Humanos,6.2,Divulga a remuneração nominal de cada servidor/autoridade/Membro?,Obrigatória
+COMUM,Recursos Humanos,6.3,Divulga a tabela com o padrão remuneratório dos cargos e funções?,Obrigatória
+COMUM,Recursos Humanos,6.4,"Divulga a lista de seus estagiários, contendo o nome dos estudantes; a data de contratação e a data de término do respectivo contrato?",Recomendada
+COMUM,Recursos Humanos,6.5,"Publica lista dos terceirizados que prestam serviços para o Poder ou órgão/entidades, contendo, em relação a cada um deles: nome completo, função ou atividade exercida e nome da empresa empregadora?",Recomendada
+COMUM,Recursos Humanos,6.6,Divulga a íntegra dos editais de concursos e seleções públicas realizados pelo Poder ou órgão para provimento de cargos e empregos públicos?,Obrigatória
+COMUM,Recursos Humanos,6.7,"Divulga informações sobre os demais atos dos concursos públicos e processos seletivos do Poder ou órgão, contendo no mínimo a lista de aprovados com as classificações e as nomeações?",Obrigatória
+COMUM,Diárias,7.1,"Divulga o nome e o cargo/função do beneficiário, além do valor total recebido, número de diárias usufruídas por afastamento, período de afastamento, motivo do afastamento e local de destino?",Obrigatória
+COMUM,Diárias,7.2,"Divulga tabela ou relação que explicite os valores das diárias dentro do Estado, fora do Estado e fora do país, conforme legislação local?",Obrigatória
+COMUM,Licitações,8.1,"Divulga a relação das licitações em ordem sequencial, informando o número e modalidade licitatória, o objeto, a data, o valor estimado/homologado e a situação?",Obrigatória
+COMUM,Licitações,8.2,Divulga a íntegra dos editais de licitação?,Obrigatória
+COMUM,Licitações,8.3,Divulga a íntegra dos demais documentos das fases interna e externa das licitações?,Obrigatória
+COMUM,Licitações,8.4,Divulga a íntegra dos principais documentos dos processos de dispensa e inexigibilidade de licitação?,Obrigatória
+COMUM,Licitações,8.5,Divulga a íntegra das Atas de Adesão – SRP?,Obrigatória
+COMUM (EXCETO ESTATAIS),Licitações,8.6,Divulga o plano de contratações anual?,Recomendada
+COMUM,Licitações,8.7,Divulga a relação dos licitantes e/ou contratados sancionados administrativamente pelo Poder ou órgão?,Recomendada
+ESTATAIS,Licitações,8.8,Divulga regulamento interno de licitações e contratos?,Obrigatória
+COMUM,Contratos,9.1,"Divulga a relação dos contratos celebrados em ordem sequencial, com o seu respectivo resumo, contendo, no mínimo, indicação do contratado(a), do valor, do objeto e da vigência, bem como dos aditivos deles decorrentes?",Obrigatória
+COMUM,Contratos,9.2,Divulga o inteiro teor dos contratos e dos respectivos termos aditivos?,Obrigatória
+COMUM,Contratos,9.3,Divulga a relação/lista dos fiscais de cada contrato vigente e encerrado?,Obrigatória
+COMUM (EXCETO ESTATAIS),Contratos,9.4,"Divulga a ordem cronológica de seus pagamentos, bem como as justificativas que fundamentaram a eventual alteração dessa ordem?",Obrigatória
+COMUM (EXCETO ESTATAIS),Obras,10.1,"Divulga informações sobre as obras contendo o objeto, a situação atual, as datas de início e de conclusão da obra, empresa contratada e o percentual concluído?",Recomendada
+COMUM,Obras,10.2,"Divulga os quantitativos, os preços unitários e totais contratados?",Obrigatória
+COMUM (EXCETO ESTATAIS),Obras,10.3,Divulga os quantitativos executados e os preços efetivamente pagos?,Obrigatória
+COMUM (EXCETO ESTATAIS),Obras,10.4,"Divulga relação das obras paralisadas contendo o motivo, o responsável pela inexecução temporária do objeto do contrato e a data prevista para o reinício da sua execução?",Obrigatória
+COMUM (EXCETO ESTATAIS),Planejamento e Prestação de contas,11.1,Publica a Prestação de Contas do Ano Anterior (Balanço Geral)?,Obrigatória
+COMUM (EXCETO ESTATAIS),Planejamento e Prestação de contas,11.2,Divulga o Relatório de Gestão ou Atividades?,Obrigatória
+COMUM,Planejamento e Prestação de contas,11.3,Divulga a íntegra da decisão da apreciação ou julgamento das contas pelo Tribunal de Contas?,Obrigatória
+EXECUTIVO,Planejamento e Prestação de contas,11.4,Divulga o resultado do julgamento das Contas do Chefe do Poder Executivo pelo Poder Legislativo?,Obrigatória
+COMUM (EXCETO ESTATAIS),Planejamento e Prestação de contas,11.5,Divulga o Relatório de Gestão Fiscal (RGF)?,Essencial
+EXECUTIVO e CONSÓRCIOS,Planejamento e Prestação de contas,11.6,Divulga o Relatório Resumido da Execução Orçamentária (RREO)?,Essencial
+COMUM,Planejamento e Prestação de contas,11.7,Divulga o plano estratégico institucional?,Recomendada
+EXECUTIVO,Planejamento e Prestação de contas,11.8,Divulga a Lei do Plano Plurianual (PPA) e seus anexos?,Essencial
+EXECUTIVO,Planejamento e Prestação de contas,11.9,Divulga a Lei de Diretrizes Orçamentárias (LDO) e seus anexos?,Essencial
+EXECUTIVO,Planejamento e Prestação de contas,11.10,Divulga a Lei Orçamentária (LOA) e seus anexos?,Essencial
+CONSÓRCIOS,Planejamento e Prestação de contas,11.11,Divulga o Orçamento do Consórcio Público onde conste a estimativa da receita e a fixação da despesa para o exercício atual?,Obrigatória
+ESTATAIS,Planejamento e Prestação de contas,11.12,Divulga as demonstrações financeiras trimestrais?,Recomendada
+ESTATAIS,Planejamento e Prestação de contas,11.13,Divulga as demonstrações financeiras (contábeis) acompanhadas dos pareceres do Conselho Fiscal e da auditoria independente?,Recomendada
+ESTATAIS INDEPENDENTES,Planejamento e Prestação de contas,11.14,Pública o Orçamento de Investimentos da instituição que compõe a Lei Orçamentária Anual?,Obrigatória
+ESTATAIS,Planejamento e Prestação de contas,11.15,Divulga as demonstrações contábeis auditadas em formato eletrônico editável?,Obrigatória
+ESTATAIS,Planejamento e Prestação de contas,11.16,Divulga o relatório anual elaborado pelo Comitê de Auditoria Estatutário com informações sobre as atividades e os resultados e suas conclusões e recomendações?,Obrigatória
+ESTATAIS,Planejamento e Prestação de contas,11.17,Divulga as atas das reuniões do Comitê de Auditoria Estatutário?,Obrigatória
+ESTATAIS,Planejamento e Prestação de contas,11.18,"Divulga as atas das reuniões do Comitê de Elegibilidade Estatutário ou Comitê de Pessoas, Elegibilidade, Sucessão e Remuneração a partir de 2022, na forma de sumário dos fatos ocorridos, inclusive das dissidências e protestos?",Obrigatória
+ESTATAIS,Planejamento e Prestação de contas,11.19,Divulga anualmente relatório integrado ou de sustentabilidade?,Obrigatória
+COMUM,Serviço de Informação ao Cidadão - SIC,12.1,Existe o SIC no site ou no portal de transparência e indica a unidade/setor responsável?,Obrigatória
+COMUM,Serviço de Informação ao Cidadão - SIC,12.2,"Indica o endereço físico, o telefone e o e-mail da unidade responsável pelo SIC, além do horário de funcionamento?",Obrigatória
+COMUM,Serviço de Informação ao Cidadão - SIC,12.3,Há possibilidade de envio de pedidos de informação de forma eletrônica (e­-SIC)?,Obrigatória
+COMUM,Serviço de Informação ao Cidadão - SIC,12.4,"A solicitação por meio de eSic é simples, ou seja, sem a exigência de itens de identificação do requerente que dificultem ou impossibilitem o acesso à informação, tais como: envio de documentos, assinatura reconhecida, declaração de responsabilidade, maioridade?",Obrigatória
+COMUM,Serviço de Informação ao Cidadão - SIC,12.5,"Divulga nesta seção, instrumento normativo local que regulamente a Lei nº 12.527/2011 – LAI?",Obrigatória
+COMUM,Serviço de Informação ao Cidadão - SIC,12.6,"Divulga, na seção relativa ao e-SIC, os prazos de resposta ao cidadão, incluindo o recursal, e as autoridades competentes para o exame dos pedidos, além do procedimento referente à realização do pedido e de eventual recurso?",Recomendada
+COMUM,Serviço de Informação ao Cidadão - SIC,12.7,"Divulga relatório anual estatístico contendo a quantidade de pedidos de acesso recebidos, atendidos, indeferidos, bem como informações genéricas sobre os solicitantes?",Obrigatória
+COMUM,Serviço de Informação ao Cidadão - SIC,12.8,"Divulga lista de documentos classificados em cada grau de sigilo, contendo pelo menos o assunto sobre o qual versa a informação, a categoria na qual ela se encontra, o dispositivo legal que fundamenta a classificação e o respectivo prazo?",Obrigatória
+COMUM,Serviço de Informação ao Cidadão - SIC,12.9,Divulga lista das informações que tenham sido desclassificadas nos últimos 12 (doze) meses?,Obrigatória
+COMUM,Acessibilidade,13.1,O site oficial e o portal de transparência contêm símbolo de acessibilidade em destaque?,Obrigatória
+COMUM,Acessibilidade,13.2,O site e o portal de transparência contêm exibição do “caminho” de páginas percorridas pelo usuário?,Obrigatória
+COMUM,Acessibilidade,13.3,O site e o portal de transparência contêm opção de alto contraste?,Obrigatória
+COMUM,Acessibilidade,13.4,O site e o portal de transparência contêm ferramenta de redimensionamento de texto?,Obrigatória
+COMUM,Acessibilidade,13.5,Contém mapa do site institucional?,Recomendada
+COMUM,Ouvidorias,14.1,"Há informações sobre o atendimento presencial pela Ouvidoria (Indicação de endereço físico e telefone, além do horário de funcionamento)?",Obrigatória
+COMUM,Ouvidorias,14.2.,Há canal eletrônico de acesso/interação com a ouvidoria?,Obrigatória
+COMUM,Ouvidorias,14.3,Divulga Carta de Serviços ao Usuário?,Obrigatória
+COMUM,Lei Geral de Proteção de Dados (LGPD) e Governo Digital,15.1,Identifica o encarregado/responsável pelo tratamento de dados pessoais e disponibiliza Canal de Comunicação com esse servidor (telefone e/ou e-mail)?,Obrigatória
+COMUM,Lei Geral de Proteção de Dados (LGPD) e Governo Digital,15.2,Publica a sua Política de Privacidade e Proteção de Dados?,Recomendada
+COMUM,Lei Geral de Proteção de Dados (LGPD) e Governo Digital,15.3,"Possibilita a demanda e o acesso a serviços públicos por meio digital, sem necessidade de solicitação presencial?",Obrigatória
+COMUM,Lei Geral de Proteção de Dados (LGPD) e Governo Digital,15.4,"Possibilita o acesso automatizado por sistemas externos em dados abertos  (estruturados e legíveis por máquina), e a página contém as regras de utilização?",Obrigatória
+COMUM,Lei Geral de Proteção de Dados (LGPD) e Governo Digital,15.5,Regulamenta a Lei Federal nº 14.129/2021 (Governo Digital) e divulga a normativa em seu portal?,Recomendada
+COMUM,Lei Geral de Proteção de Dados (LGPD) e Governo Digital,15.6,Realiza e divulga resultados de pesquisas de satisfação?,Obrigatória
+EXECUTIVO,Renúncias de Receitas,16.1,Divulga as desonerações tributárias concedidas e a fundamentação legal individualizada?,Obrigatória
+EXECUTIVO,Renúncias de Receitas,16.2,"Divulga os valores da renúncia fiscal prevista e realizada, por tipo ou espécie de benefício ou incentivo fiscal?",Obrigatória
+EXECUTIVO,Renúncias de Receitas,16.3,Identifica os beneficiários das desonerações tributárias (benefícios ou incentivos fiscais)?,Recomendada
+EXECUTIVO,Renúncias de Receitas,16.4,"Divulga informações sobre projetos de incentivo à cultura (incluindo esportivos), identificando os projetos aprovados, o respectivo beneficiário e o valor aprovado?",Recomendada
+EXECUTIVO,Emendas Parlamentares,17.1,"Identifica as emendas parlamentares federais recebidas, contendo informações sobre a origem, a forma de repasse, o tipo de emenda, o número da emenda, a autoria, o valor previsto e realizado, o objeto e função de governo?",Obrigatória
+EXECUTIVO,Emendas Parlamentares,17.2,"Identifica as emendas parlamentares estaduais e municipais, contendo informações sobre a origem, a forma de repasse, o tipo de emenda, o número da emenda, a autoria, o valor previsto e realizado, o objeto e função de governo?",Obrigatória
+EXECUTIVO,Emendas Parlamentares,17.3,Demonstra a execução orçamentária e financeira oriunda das emendas parlamentares recebidas e próprias?,Obrigatória
+EXECUTIVO,Saúde,18.1,"Divulga o plano de saúde, a programação anual e o relatório de gestão?",Obrigatória
+EXECUTIVO,Saúde,18.2,"Divulga informações relacionadas aos serviços de saúde, indicando os horários, os profissionais prestadores de serviços, as especialidades e local?",Obrigatória
+EXECUTIVO,Saúde,18.3,"Divulga a lista de espera de regulação para acesso às consultas, exames e serviços médicos?",Recomendada
+EXECUTIVO,Saúde,18.4,"Divulga lista dos medicamentos a serem fornecidos pelo SUS e informações de como obter medicamentos, incluindo os de alto custo?",Recomendada
+EXECUTIVO,Saúde,18.5,Divulga os estoques de medicamentos das farmácias públicas?,Obrigatória
+EXECUTIVO,Saúde,18.6,Divulga informações atualizadas sobre a composição e o funcionamento do Conselho de Saúde?,Recomendada
+EXECUTIVO,Educação e Assistência Social,19.1,Divulga o plano de educação e o respectivo relatório de resultados?,Recomendada
+EXECUTIVO,Educação e Assistência Social,19.2,Divulga a lista de espera em creches públicas e os critérios de priorização de acesso a elas?,Obrigatória
+EXECUTIVO,Educação e Assistência Social,19.3,Divulga informações atualizadas sobre a composição e o funcionamento do Conselho do Fundeb?,Obrigatória
+EXECUTIVO,Educação e Assistência Social,19.4,Divulga informações atualizadas sobre a composição e o funcionamento do Conselho de Assistência Social?,Recomendada
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.1,"Divulga a composição da Casa, com a biografia dos parlamentares?",Obrigatória
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.2,"Divulga as leis e atos infralegais (resoluções, decretos, etc.) produzidos?",Obrigatória
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.3,"Divulga projetos de leis e de atos infralegais, bem como as respectivas tramitações (contemplando ementa, documentos anexos, situação atual e autor/relator)?",Obrigatória
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.4,Divulga a pauta das sessões do Plenário?,Obrigatória
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.5,Divulga a pauta das Comissões?,Obrigatória
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.6,"Divulga as atas das sessões, incluindo a lista de presença dos parlamentares em cada sessão?",Obrigatória
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.7,Divulga lista sobre as votações nominais?,Recomendada
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.8,Divulga o ato que aprecia as Contas do Chefe do Poder Executivo (Decreto) e o teor do julgamento (Ata ou Resumo da Sessão que aprovou ou rejeitou as contas)?,Obrigatória
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.9,"Há transmissão de sessões, audiências públicas, consultas públicas ou outras formas de participação popular via meios de comunicação como rádio, TV, internet, entre outros?",Recomendada
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.10,Divulga a regulamentação e os valores relativos às cotas para exercício da atividade parlamentar/verba indenizatória?,Recomendada
+PODER LEGISLATIVO,Atividades Finalísticas - PL,20.11,Divulga dados sobre as atividades legislativas dos parlamentares?,Recomendada
+PODER JUDICIÁRIO,Atividades Finalísticas - PJ,21.1,"Divulga a composição da Casa, com a indicação de onde cada magistrado atua?",Recomendada
+PODER JUDICIÁRIO,Atividades Finalísticas - PJ,21.2,Divulga pauta das sessões?,Obrigatória
+PODER JUDICIÁRIO,Atividades Finalísticas - PJ,21.3,Divulga ata das sessões de julgamento/deliberativas?,Obrigatória
+PODER JUDICIÁRIO,Atividades Finalísticas - PJ,21.4,Divulga suas decisões?,Obrigatória
+PODER JUDICIÁRIO,Atividades Finalísticas - PJ,21.5,Divulga informativo de jurisprudência contendo decisões atualizadas?,Recomendada
+PODER JUDICIÁRIO,Atividades Finalísticas - PJ,21.6,"Há transmissão das sessões de julgamento e eventuais audiências públicas via meios de comunicação como rádio, TV, internet, entre outros?",Recomendada
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.1,"Divulga a composição da Casa, com a indicação das funções exercidas por membro e onde cada um deles atua?",Recomendada
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.2,Divulga pauta das sessões?,Obrigatória
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.3,Divulga ata das sessões de julgamento/deliberativas?,Obrigatória
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.4,Divulga suas Decisões?,Obrigatória
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.5,Divulga as peças dos processos em trâmite nos Tribunais de Contas a partir da análise do contraditório?,Recomendada
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.6,Divulga a íntegra dos processos após o trânsito em julgado?,Obrigatória
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.7,Divulga informativo de jurisprudência contendo decisões atualizadas?,Recomendada
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.8,Divulga informações técnicas de cunho orientativo?,Recomendada
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.9,Informa sobre valor das condenações (débitos e multas)?,Recomendada
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.10,Divulga relação de responsáveis que tiveram suas contas julgadas irregulares ou receberam parecer pela reprovação de suas contas?,Recomendada
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.11,O Tribunal de Contas disponibiliza dados atualizados encaminhados pelos respectivos entes fiscalizados (Estados ou Municípios) referentes à despesa e à receita?,Recomendada
+TRIBUNAL DE CONTAS,Atividades Finalísticas,22.12,"Há transmissão das sessões de julgamento e eventuais audiências públicas via meios de comunicação como rádio, TV, internet, entre outros?",Recomendada
+MINISTÉRIO PÚBLICO,Atividades Finalísticas,23.1,"Divulga a composição da Casa, com a indicação de onde cada membro atual?",Recomendada
+MINISTÉRIO PÚBLICO,Atividades Finalísticas,23.2,"Divulga os registros de ""procedimentos preparatórios"" e de seus respectivos andamentos?",Obrigatória
+MINISTÉRIO PÚBLICO,Atividades Finalísticas,23.3,"Divulga os registros de ""procedimentos de investigação” e de seus respectivos andamentos?",Obrigatória
+MINISTÉRIO PÚBLICO,Atividades Finalísticas,23.4,"Divulga os registros sobre os ""inquéritos civis"" e de seus respectivos andamentos?",Obrigatória
+DEFENSORIA PÚBLICA,Atividades Finalísticas,24.1,Divulga a composição da Casa?,Recomendada
+DEFENSORIA PÚBLICA,Atividades Finalísticas,24.2,Disponibiliza material informativo?,Recomendada
+DEFENSORIA PÚBLICA,Atividades Finalísticas,24.3,Disponibiliza informações sobre o atendimento?,Recomendada
+CONSÓRCIOS,Atividades Finalísticas,25.1,Divulga o protocolo de intenções que antecede a formalização do Contrato?,Recomendada
+CONSÓRCIOS,Atividades Finalísticas,25.2,Divulga estatuto do consórcio?,Recomendada
+CONSÓRCIOS,Atividades Finalísticas,25.3,Divulga os contratos de rateio?,Recomendada
+CONSÓRCIOS,Atividades Finalísticas,25.4,Divulga o Contrato de Programa?,Recomendada
+CONSÓRCIOS,Atividades Finalísticas,25.5,Divulga a ata de eleição dos atuais dirigentes?,Recomendada
+CONSÓRCIOS,Atividades Finalísticas,25.6,Divulga as atas da assembleia geral?,Recomendada
+CONSÓRCIOS,Atividades Finalísticas,25.7,Divulga os entes consorciados (municípios integrantes)?,Recomendada
+ESTATAIS,Atividades Finalísticas,26.1,Divulga o plano de negócios para o exercício seguinte?,Recomendada
+ESTATAIS,Atividades Finalísticas,26.2,Divulga o ato ou lei de criação?,Recomendada
+ESTATAIS,Atividades Finalísticas,26.3,Divulga o estatuto social?,Recomendada
+ESTATAIS,Atividades Finalísticas,26.4,"Divulga a missão, princípios e valores da instituição?",Recomendada
+ESTATAIS,Atividades Finalísticas,26.5,Código de Conduta e Integridade?,Obrigatória
+ESTATAIS,Atividades Finalísticas,26.6,Divulga a composição do capital social?,Recomendada
+ESTATAIS,Atividades Finalísticas,26.7,Divulga a descrição da composição e da remuneração da diretoria executiva?,Obrigatória
+ESTATAIS,Atividades Finalísticas,26.8,Divulga a composição dos conselhos de administração e fiscal?,Recomendada
+ESTATAIS,Atividades Finalísticas,26.9,"Extrato das atas de assembleias gerais, quando for o caso?",Recomendada
+ESTATAIS,Atividades Finalísticas,26.10,"Divulga fatos relevantes e comunicados ao mercado, quando houver?",Recomendada
+ESTATAIS,Atividades Finalísticas,26.11,Divulga currículo profissional resumido dos membros dos órgãos societários de administração e fiscalização?,Recomendada
+ESTATAIS,Atividades Finalísticas,26.12,Publica a política de divulgação de informações?,Obrigatória
+ESTATAIS,Atividades Finalísticas,26.13,Publica a política de distribuição de dividendos ?,Obrigatória
+ESTATAIS,Atividades Finalísticas,26.14,"Divulga política de transações com partes relacionadas, revisada ao menos anualmente e aprovada pelo Conselho de Administração?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.15,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Explicitação dos compromissos de consecução de objetivos de políticas públicas pela empresa estatal e por suas subsidiárias, em atendimento ao interesse coletivo ou ao imperativo de segurança nacional que justificou a autorização de sua criação?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.16,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Definição clara dos recursos a serem empregados na consecução de objetivos de políticas públicas?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.17,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Definição clara dos impactos econômico-financeiros da consecução de objetivos de políticas públicas, mensuráveis por meio de indicadores objetivos?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.18,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Informações relativas às atividades desenvolvidas pela instituição?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.19,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Informações relativas à estrutura de controle da instituição?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.20,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Informações relativas a fatores de risco?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.21,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Dados econômico-financeiros da instituição?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.22,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Comentários dos administradores sobre o desempenho da instituição?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.23,"Publica, no sítio eletrônico da instituição, carta anual subscrita pelos membros do Conselho de Administração contendo: Informações relativas a políticas e práticas de governança corporativa da instituição?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.24,"Divulga, de forma detalhada e individual, toda e qualquer remuneração dos dirigentes (administradores) e membros do Conselho Fiscal?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.25,"Divulga, em nota explicativa às demonstrações financeiras anuais, os seguintes valores, considerados na data de elaboração da nota: Maior e menor remuneração pagas a seus empregados e administradores, nelas computadas as vantagens e benefícios efetivamente percebidos?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.26,"Divulga, em nota explicativa às demonstrações financeiras anuais, os seguintes valores, considerados na data de elaboração da nota: Salário médio dos empregados e dos administradores, bem como dos membros do Conselho Fiscal e do Conselho de Administração?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.27,"Divulga, em nota explicativa às demonstrações financeiras anuais, os seguintes valores, considerados na data de elaboração da nota: Para os empregados, o valor médio global dos benefícios oferecidos, considerando assistências médica e odontológica, auxílios alimentação e refeição, cesta básica, auxílio creche, auxílio transporte, previdência complementar e outros benefícios?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.28,"Relativamente à exploração de atividade econômica, no que concerne às obrigações e responsabilidades assumidas em condições distintas às de qualquer outra empresa do setor privado em que atua, é dada ampla publicidade, no sítio eletrônico da instituição, aos contratos, convênios ou ajustes celebrados nessas condições?",Obrigatória
+ESTATAIS,Atividades Finalísticas,26.29,Publica em seu sítio eletrônico os currículos profissionais dos membros da Diretoria Executiva e dos Conselhos de Administração e Fiscal?,Obrigatória
