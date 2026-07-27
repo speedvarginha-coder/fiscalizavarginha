@@ -259,6 +259,39 @@ if (cicloTravadoMin !== null) {
   fs.rmSync(cicloTravadoStatePath, { force: true });
 }
 
+// (C4) Desempenho do site: medição sintética em navegador móvel, sem analytics,
+// cookies ou dados de visitantes. Uma tarefa diária atualiza o estado; o watchdog
+// alerta se a medição reprovar ou ficar velha, com dedup de 24h.
+const performancePath = path.join(stateDir, "site_performance.json");
+const performanceAlertPath = path.join(stateDir, "site_performance_alerta.json");
+const performanceState = readJson(performancePath);
+const horasDesdePerformance = performanceState?.medido_em
+  ? (agora - new Date(performanceState.medido_em)) / 3_600_000
+  : null;
+const performanceProblema = performanceState && (
+  performanceState.status !== "ok"
+  || horasDesdePerformance === null
+  || horasDesdePerformance > 30
+);
+if (performanceProblema) {
+  const dedupPerformance = readJson(performanceAlertPath);
+  const horasDesdeAlertaPerformance = dedupPerformance?.alertado_em
+    ? (agora - new Date(dedupPerformance.alertado_em)) / 3_600_000
+    : null;
+  if (horasDesdeAlertaPerformance === null || horasDesdeAlertaPerformance >= 24) {
+    const detalhes = Array.isArray(performanceState.falhas)
+      ? performanceState.falhas.join("; ")
+      : "medição ausente ou inválida";
+    problemas.push(
+      `Desempenho móvel do site em alerta. Última medição: ${performanceState.medido_em || "desconhecida"}. ` +
+      `Detalhes: ${detalhes}. Rodar npm run performance:site e conferir private/state/site_performance.json.`
+    );
+    writeJson(performanceAlertPath, { alertado_em: agora.toISOString(), status: performanceState.status });
+  }
+} else if (performanceState?.status === "ok" && fs.existsSync(performanceAlertPath)) {
+  fs.rmSync(performanceAlertPath, { force: true });
+}
+
 if (problemas.length) {
   const alerta = {
     gerado_em: agora.toISOString(),

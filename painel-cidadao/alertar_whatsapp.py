@@ -43,6 +43,8 @@ CAMARA_BETHA_JSON = ROOT / "data" / "chunks" / "camara_betha.json"
 PNCP_JSON = ROOT / "data" / "chunks" / "pncp.json"
 LICITACOES_RESULTADOS_JSON = ROOT / "data" / "chunks" / "licitacoes_resultados.json"
 MONITOR_STATE_PATH = ROOT.parent / "private" / "state" / "whatsapp_monitor_state.json"
+REVIEW_QUEUE_PATH = ROOT.parent / "private" / "state" / "whatsapp_review_queue.json"
+PUBLICATION_CURSOR_PATH = ROOT.parent / "private" / "state" / "whatsapp_publication_cursor.json"
 
 _emendas_cache = None
 _prefeitura_cache = None
@@ -305,6 +307,8 @@ TEMPLATE_CONFIG = {
     "data_minima_envio": "2026-07-01",       # só envia publicações com data >= esta (evita notícia antiga)
     "intervalo_envio_segundos": 45,          # pausa entre mensagens (0 = sem pausa)
     "max_por_execucao": 12,                  # teto de mensagens por rodada (0 = sem teto)
+    "exigir_aprovacao_fila_grande": True,    # retém backlog anormal antes de publicar em massa
+    "limite_fila_sem_aprovacao": 15,         # acima disso exige --aprovar-fila
     "enviar_legislativo": True,
     "enviar_diario_oficial": True,
     "enviar_obras": True,
@@ -346,6 +350,50 @@ def salvar_enviados(enviados: set[str]):
         json.dump(enviados_lista, f, indent=2, ensure_ascii=False)
 
 
+def carregar_cursor_publicacao() -> dict:
+    if not PUBLICATION_CURSOR_PATH.exists():
+        return {}
+    try:
+        with open(PUBLICATION_CURSOR_PATH, "r", encoding="utf-8") as f:
+            cursor = json.load(f)
+        if isinstance(cursor, dict) and isinstance(cursor.get("chave_ordem"), list):
+            return cursor
+    except Exception:
+        pass
+    return {}
+
+
+def salvar_cursor_publicacao(pid: str, chave_ordem: tuple, origem: str = "envio_confirmado") -> None:
+    PUBLICATION_CURSOR_PATH.parent.mkdir(parents=True, exist_ok=True)
+    conteudo = {
+        "ultimo_id": pid,
+        "chave_ordem": list(chave_ordem),
+        "atualizado_em": datetime.now().astimezone().isoformat(timespec="seconds"),
+        "origem": origem,
+    }
+    temporario = PUBLICATION_CURSOR_PATH.with_suffix(".tmp")
+    with open(temporario, "w", encoding="utf-8") as f:
+        json.dump(conteudo, f, indent=2, ensure_ascii=False)
+    temporario.replace(PUBLICATION_CURSOR_PATH)
+
+
+def definir_cursor_por_data(data_iso: str) -> None:
+    data_validada = datetime.strptime(data_iso, "%Y-%m-%d").date().isoformat()
+    # 99 e caracteres altos colocam o cursor depois de todos os atos da data.
+    salvar_cursor_publicacao(
+        f"fim-do-dia-{data_validada}",
+        (data_validada, 99, "\uffff", "\uffff"),
+        origem="marco_manual_confirmado",
+    )
+
+
+def depois_do_cursor(chave_ordem: tuple, cursor: dict) -> bool:
+    chave_cursor = cursor.get("chave_ordem") if isinstance(cursor, dict) else None
+    if not isinstance(chave_cursor, list) or not chave_cursor:
+        return True
+    return tuple(chave_ordem) > tuple(chave_cursor)
+
+
 def formatar_valor(valor) -> str:
     if valor is None:
         return "Não informado"
@@ -382,6 +430,146 @@ def dentro_da_janela(data_str, data_minima: str) -> bool:
     except Exception:
         return False
     return dt >= piso
+
+
+def auditar_publicacao_pre_envio(pub: dict) -> dict:
+    """Barreira determinística para impedir associações públicas inseguras."""
+    erros = []
+    avisos = []
+    pid = str(pub.get("id") or "")
+    tipo = str(pub.get("tipo") or "").lower()
+    orgao = str(pub.get("orgao") or "")
+    qualidade = pub.get("qualidade") or {}
+    valores = pub.get("valores") or {}
+    envolvidos = pub.get("envolvidos") or []
+
+    if qualidade.get("segmentacao_ok") is False:
+        erros.append(
+            f"segmentação contém {qualidade.get('atos_detectados_no_trecho') or 'mais de um'} atos"
+        )
+
+    empresas = [item for item in envolvidos if item.get("papel") == "empresa"]
+    if tipo == "pessoal" and empresas:
+        nomes = ", ".join(str(item.get("nome") or item.get("cnpj") or "?") for item in empresas)
+        erros.append(f"ato de pessoal associado a empresa: {nomes}")
+
+    total = valores.get("total")
+    encontrados = []
+    for item in valores.get("encontrados") or []:
+        try:
+            encontrados.append(round(float(item), 2))
+        except (TypeError, ValueError):
+            continue
+    if total is not None:
+        try:
+            total_float = round(float(total), 2)
+        except (TypeError, ValueError):
+            erros.append("valor principal não é numérico")
+        else:
+            if total_float not in encontrados:
+                erros.append("valor principal não aparece entre os valores literais do ato")
+
+    itens = valores.get("itens") or []
+    if len(encontrados) > 1 and not itens:
+        avisos.append("múltiplos valores sem classificação individual")
+    if total is not None and str(valores.get("natureza") or "") == "valor citado no ato":
+        avisos.append("valor principal ainda possui natureza genérica")
+
+    texto_ia = _texto_normalizado(
+        " ".join([
+            str(pub.get("resumo") or ""),
+            " ".join(str(item) for item in (pub.get("pontos_atencao") or [])),
+        ])
+    )
+    orgao_norm = _texto_normalizado(orgao)
+    contradicoes = {
+        "cissul samu": ("prefeitura de varginha", "fundacao hospitalar do municipio de varginha"),
+        "inprev": ("prefeitura de varginha",),
+        "cimbasp": ("prefeitura de varginha",),
+        "fundacao cultural do municipio de varginha": ("prefeitura de varginha",),
+    }
+    for esperado, indevidos in contradicoes.items():
+        if esperado in orgao_norm:
+            for indevido in indevidos:
+                if indevido in texto_ia:
+                    erros.append(f"texto menciona órgão divergente: {indevido}")
+
+    return {
+        "id": pid,
+        "titulo": str(pub.get("titulo") or ""),
+        "ok": not erros,
+        "erros": erros,
+        "avisos": avisos,
+    }
+
+
+def _titulo_da_mensagem(mensagem: str) -> str:
+    for linha in str(mensagem or "").splitlines():
+        limpa = linha.strip()
+        if limpa.startswith("*") and limpa.endswith("*") and len(limpa) > 2:
+            return limpa.strip("*")[:180]
+        destaque = re.search(r"\*([^*\r\n]+)\*", limpa)
+        if destaque:
+            titulo = destaque.group(1).strip()
+            if titulo and not titulo.lower().startswith(("categoria:", "valor:", "fonte:")):
+                return titulo[:180]
+    return ""
+
+
+def sanitizar_mencoes_tecnologia(mensagem: str) -> str:
+    """Remove referências ao mecanismo interno antes da publicação no grupo."""
+    texto = str(mensagem or "")
+    substituicoes = (
+        (r"texto oficial do Diário,\s*selecionad[oa] pela IA", "texto oficial do Diário"),
+        (r"selecionad[oa] pela IA", "confirmado no texto oficial"),
+        (r"gerad[oa] por (?:uma )?IA", "produzido a partir dos dados oficiais"),
+        (r"an[aá]lise (?:feita )?pela IA", "análise dos dados oficiais"),
+        (r"intelig[êe]ncia artificial", "análise técnica"),
+        (r"\bI\.?A\.?\b", "análise técnica"),
+    )
+    for padrao, substituto in substituicoes:
+        texto = re.sub(padrao, substituto, texto, flags=re.IGNORECASE)
+    return texto
+
+
+def salvar_relatorio_revisao(
+    mensagens: list[tuple[str, str]],
+    bloqueios: list[dict],
+    *,
+    status: str,
+    limite: int,
+    aprovado_manualmente: bool,
+) -> None:
+    payload = {
+        "schema_version": 1,
+        "gerado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "status": status,
+        "total_liberadas": len(mensagens),
+        "total_bloqueadas": len(bloqueios),
+        "limite_sem_aprovacao": limite,
+        "aprovado_manualmente": aprovado_manualmente,
+        "fila": [
+            {"id": pid, "titulo": _titulo_da_mensagem(msg)}
+            for pid, msg in mensagens
+        ],
+        "bloqueios": bloqueios,
+    }
+    REVIEW_QUEUE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    temporario = REVIEW_QUEUE_PATH.with_suffix(".tmp")
+    temporario.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    temporario.replace(REVIEW_QUEUE_PATH)
+
+
+def fila_exige_aprovacao(total: int, config: dict, aprovado_manualmente: bool) -> bool:
+    if aprovado_manualmente:
+        return False
+    if not bool(config.get("exigir_aprovacao_fila_grande", True)):
+        return False
+    limite = max(0, int(config.get("limite_fila_sem_aprovacao", 15)))
+    return limite > 0 and total > limite
 
 
 def valores_do_texto(*textos) -> list[str]:
@@ -422,6 +610,11 @@ def resolver_valor_publicacao(pub: dict, escopo: str) -> dict | None:
         total = float(total) if total is not None else None
     except (TypeError, ValueError):
         total = None
+    encontrados_estruturados = {
+        round(float(item), 2)
+        for item in (valores.get("encontrados") or [])
+        if isinstance(item, (int, float))
+    }
 
     if total is not None and valores.get("confianca") in {"alta", "media"}:
         return {
@@ -440,6 +633,11 @@ def resolver_valor_publicacao(pub: dict, escopo: str) -> dict | None:
             # Se a despesa acaba ou se repete todo ano — muda o sentido da soma.
             "perfil_despesa": valores.get("perfil_despesa") or {},
         }
+
+    # Quando o texto oficial contém vários números e nenhum foi confirmado
+    # como principal, não escolhemos o primeiro valor citado no resumo da IA.
+    if total is None and len(encontrados_estruturados) > 1:
+        return None
 
     if explicitos:
         valor = _valor_texto_para_float(explicitos[0])
@@ -471,6 +669,68 @@ def resolver_valor_publicacao(pub: dict, escopo: str) -> dict | None:
 
 
 def bloco_valor_publicacao(pub: dict, escopo: str) -> str:
+    valores = pub.get("valores") or {}
+    itens = valores.get("itens") or []
+    valores_com_natureza_especifica = {
+        round(float(item.get("valor")), 2)
+        for item in itens
+        if isinstance(item.get("valor"), (int, float))
+        and str(item.get("natureza") or "") != "valor citado no ato"
+    }
+    itens_exibidos = []
+    pares_exibidos = set()
+    for item in itens:
+        valor_item = item.get("valor")
+        if not isinstance(valor_item, (int, float)):
+            continue
+        valor_normalizado = round(float(valor_item), 2)
+        natureza = str(item.get("natureza") or "valor citado no ato")
+        if (
+            natureza == "valor citado no ato"
+            and valor_normalizado in valores_com_natureza_especifica
+        ):
+            continue
+        par = (valor_normalizado, natureza)
+        if par in pares_exibidos:
+            continue
+        pares_exibidos.add(par)
+        itens_exibidos.append(item)
+    valores_distintos = {
+        round(float(item.get("valor")), 2)
+        for item in itens_exibidos
+        if isinstance(item.get("valor"), (int, float))
+    }
+    if len(valores_distintos) > 1:
+        linhas = ["- Valores identificados no texto oficial:"]
+        for item in itens_exibidos:
+            valor_item = item.get("valor")
+            if not isinstance(valor_item, (int, float)):
+                continue
+            natureza = str(item.get("natureza") or "valor citado no ato")
+            linhas.append(f"  - {natureza.capitalize()}: {formatar_valor(valor_item)}")
+        total = valores.get("total")
+        if isinstance(total, (int, float)):
+            linhas.append(
+                f"- Valor principal confirmado: {formatar_valor(total)} "
+                f"({str(valores.get('natureza') or 'natureza não classificada')})"
+            )
+        else:
+            linhas.append(
+                "- Total do ato: não calculado automaticamente; os valores têm naturezas diferentes"
+            )
+        linhas.append("- Fonte: texto oficial do Diário")
+        linhas.append(
+            "- Confiança: ALTA na leitura dos números; total depende do significado declarado"
+        )
+        paginas = sorted({
+            int(item.get("pagina"))
+            for item in itens_exibidos
+            if isinstance(item.get("pagina"), int)
+        })
+        if paginas:
+            linhas.append("- Onde conferir: " + ", ".join(f"página {pagina}" for pagina in paginas))
+        return "\n".join(linhas)
+
     resolvido = resolver_valor_publicacao(pub, escopo)
     if not resolvido:
         bloco = (
@@ -757,7 +1017,12 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
     return mensagens
 
 
-def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list[tuple[str, str]]:
+def processar_diario(
+    pubs: list[dict],
+    config: dict,
+    enviados: set[str],
+    bloqueios: list[dict] | None = None,
+) -> list[tuple[str, str]]:
     filtro_relevante = config.get("filtrar_relevantes_apenas", True)
     val_minimo = config.get("valor_minimo_alerta_compras", 10000.0)
     data_minima = config.get("data_minima_envio", "")
@@ -806,6 +1071,16 @@ def processar_diario(pubs: list[dict], config: dict, enviados: set[str]) -> list
             relevante = True
 
         if filtro_relevante and not relevante:
+            continue
+
+        auditoria_pre_envio = auditar_publicacao_pre_envio(pub)
+        if not auditoria_pre_envio["ok"]:
+            if bloqueios is not None:
+                bloqueios.append(auditoria_pre_envio)
+            print(
+                f"⛔ Publicação retida pela auditoria pré-envio: {pid} — "
+                + "; ".join(auditoria_pre_envio["erros"])
+            )
             continue
 
         # Resolve envolvidos e busca histórico financeiro
@@ -988,7 +1263,9 @@ def checar_bridge(config: dict) -> tuple[bool, str]:
 def main():
     print("🚀 Iniciando Bot de Alertas para o WhatsApp - Fiscaliza Varginha")
     preview = "--preview" in sys.argv
+    aprovar_fila = "--aprovar-fila" in sys.argv
     preview_limit = 0
+    definir_cursor = None
     for argumento in sys.argv[1:]:
         if argumento.startswith("--preview-limit="):
             try:
@@ -996,9 +1273,22 @@ def main():
             except ValueError:
                 print("❌ --preview-limit deve ser um número inteiro.")
                 sys.exit(2)
+        elif argumento.startswith("--definir-cursor="):
+            definir_cursor = argumento.split("=", 1)[1].strip()
+    if definir_cursor:
+        try:
+            definir_cursor_por_data(definir_cursor)
+        except ValueError:
+            print("❌ --definir-cursor deve usar o formato AAAA-MM-DD.")
+            sys.exit(2)
+        print(f"✅ Marco de publicação definido no fim de {definir_cursor}.")
+        return
     forcar_resumo = preview or "--resumo-semanal" in sys.argv
     config = carregar_config()
     enviados = carregar_enviados()
+    cursor_publicacao = carregar_cursor_publicacao()
+    bloqueios_pre_envio: list[dict] = []
+    limite_fila = max(0, int(config.get("limite_fila_sem_aprovacao", 15)))
 
     if not preview:
         ok_bridge, motivo = checar_bridge(config)
@@ -1033,7 +1323,7 @@ def main():
                 continue
             _data = str(_p.get("data") or "")[:10]
             _autor = str(_p.get("autor") or _p.get("titulo") or "").strip().upper()
-            ordem_por_id[_pid] = (_data, fonte_ordem, _autor)
+            ordem_por_id[_pid] = (_data, fonte_ordem, _autor, _pid)
             _num = re.sub(r"\D", "", str(_p.get("numero") or ""))
             if _num:  # sem numero nao da para afirmar que e o mesmo ato
                 chave_ato_por_id[_pid] = (
@@ -1077,7 +1367,12 @@ def main():
                 data = json.load(f)
                 pubs = data.get("publicacoes", [])
                 _registrar_ordem(pubs, 2)
-                todas_mensagens += processar_diario(pubs, config, enviados)
+                todas_mensagens += processar_diario(
+                    pubs,
+                    config,
+                    enviados,
+                    bloqueios_pre_envio,
+                )
         except Exception as e:
             print(f"❌ Erro ao ler publicações do Diário Oficial: {e}")
 
@@ -1101,11 +1396,20 @@ def main():
     # as velhas para depois (que era o que invertia o grupo).
     # Complementares (obras, transparencia, resumo) nao tem data de publicacao —
     # entram no fim do lote, com a data de hoje.
-    _ordem_padrao = (hoje.isoformat(), 3, "")
+    _ordem_padrao = (hoje.isoformat(), 3, "", "")
     todas_mensagens.sort(key=lambda item: ordem_por_id.get(item[0], _ordem_padrao))
 
     if not todas_mensagens:
         print("💡 Nenhuma nova publicação qualificada para envio hoje.")
+        salvar_relatorio_revisao(
+            [],
+            bloqueios_pre_envio,
+            status="sem_mensagens_liberadas",
+            limite=limite_fila,
+            aprovado_manualmente=aprovar_fila,
+        )
+        if bloqueios_pre_envio:
+            print(f"⛔ {len(bloqueios_pre_envio)} publicação(ões) retida(s) para revisão.")
         if not preview and proximo_estado is not None:
             salvar_estado(MONITOR_STATE_PATH, proximo_estado)
             print("ℹ️ Linha de base de obras e transparência atualizada.")
@@ -1116,6 +1420,9 @@ def main():
     atos_na_execucao = set()
     for pid, msg in todas_mensagens:
         if pid in enviados:
+            continue
+        chave_ordem = ordem_por_id.get(pid, (_ordem_padrao[0], _ordem_padrao[1], "", pid))
+        if not depois_do_cursor(chave_ordem, cursor_publicacao):
             continue
         if pid in ids_na_execucao:
             print(f"ℹ️ Publicação duplicada ignorada nesta execução: {pid}")
@@ -1130,14 +1437,32 @@ def main():
         mensagens_unicas.append((pid, msg))
 
     todas_mensagens = mensagens_unicas
+    todas_mensagens = [
+        (pid, sanitizar_mencoes_tecnologia(msg))
+        for pid, msg in todas_mensagens
+    ]
 
     if not todas_mensagens:
         print("💡 Nenhuma nova publicação qualificada para envio hoje após remover duplicidades.")
+        salvar_relatorio_revisao(
+            [],
+            bloqueios_pre_envio,
+            status="sem_mensagens_liberadas",
+            limite=limite_fila,
+            aprovado_manualmente=aprovar_fila,
+        )
         if not preview and proximo_estado is not None:
             salvar_estado(MONITOR_STATE_PATH, proximo_estado)
         return
 
     if preview:
+        salvar_relatorio_revisao(
+            todas_mensagens,
+            bloqueios_pre_envio,
+            status="preview",
+            limite=limite_fila,
+            aprovado_manualmente=aprovar_fila,
+        )
         total_previa = len(todas_mensagens)
         mensagens_previa = todas_mensagens[:preview_limit] if preview_limit else todas_mensagens
         print(
@@ -1147,6 +1472,30 @@ def main():
         for indice, (pid, msg) in enumerate(mensagens_previa, start=1):
             print(f"\n{'=' * 72}\nPRÉVIA {indice} | ID: {pid}\n{'=' * 72}\n{msg}\n")
         return
+
+    if fila_exige_aprovacao(len(todas_mensagens), config, aprovar_fila):
+        salvar_relatorio_revisao(
+            todas_mensagens,
+            bloqueios_pre_envio,
+            status="retida_fila_grande",
+            limite=limite_fila,
+            aprovado_manualmente=False,
+        )
+        print(
+            f"⛔ FILA RETIDA: {len(todas_mensagens)} mensagens excedem o limite "
+            f"de {limite_fila}. Nenhum envio foi realizado."
+        )
+        print(f"   Relatório: {REVIEW_QUEUE_PATH}")
+        print("   Para liberar conscientemente uma rodada: python alertar_whatsapp.py --aprovar-fila")
+        sys.exit(3)
+
+    salvar_relatorio_revisao(
+        todas_mensagens,
+        bloqueios_pre_envio,
+        status="liberada_para_envio",
+        limite=limite_fila,
+        aprovado_manualmente=aprovar_fila,
+    )
 
     import time
 
@@ -1175,6 +1524,8 @@ def main():
         if enviar_mensagem(config, msg):
             enviados.add(pid)
             salvar_enviados(enviados)  # Salva incrementalmente para garantir resiliência contra falhas
+            chave_ordem = ordem_por_id.get(pid, (_ordem_padrao[0], _ordem_padrao[1], "", pid))
+            salvar_cursor_publicacao(pid, chave_ordem)
             sucessos += 1
             # Espaça os envios (pula a espera após a última mensagem)
             if intervalo > 0 and i < ultimo:
@@ -1182,6 +1533,11 @@ def main():
         else:
             print(f"❌ Falha no envio do ID: {pid}")
             falhas += 1
+            ok_bridge, motivo = checar_bridge(config)
+            estado_bridge = motivo if not ok_bridge else "bridge ainda conectado"
+            print(f"⛔ Fila interrompida na primeira falha ({estado_bridge}).")
+            print("   Os itens seguintes permanecem pendentes e na ordem original.")
+            break
 
     truncou = max_exec > 0 and total_qualificadas > max_exec
     if falhas == 0 and not truncou and proximo_estado is not None:
@@ -1199,9 +1555,9 @@ def main():
     else:
         print("ℹ️ Nenhum alerta pôde ser enviado com sucesso nesta execução.")
 
-    # Falha total de envio precisa derrubar o exit code, senão o pipeline
-    # marca whatsapp=SUCESSO com o bridge fora do ar (regressão de 15-17/07).
-    if falhas > 0 and sucessos == 0:
+    # Qualquer falha precisa derrubar o exit code. O cursor só avança depois de
+    # cada confirmação, preservando a fila restante para a próxima execução.
+    if falhas > 0:
         sys.exit(1)
 
 

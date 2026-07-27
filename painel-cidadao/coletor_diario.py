@@ -58,22 +58,40 @@ TIPOS_PAT = (
 )
 CABECALHO = re.compile(r"^\s*(" + TIPOS_PAT + r")\s+N?[º°]?\s*[\d./-]{2,}",
                        re.MULTILINE | re.IGNORECASE)
+# Alguns órgãos publicam o tipo do ato em uma linha e só informam o número na
+# linha seguinte. Esses cabeçalhos não passam pelo CABECALHO acima e, sem uma
+# fronteira própria, todo o extrato é anexado ao ato anterior (inclusive CNPJ e
+# valores). Mantemos esta lista deliberadamente restrita a formatos fortes e
+# observados no Diário para não transformar subtítulos genéricos em novos atos.
+CABECALHO_SEM_NUMERO = re.compile(
+    r"^\s*("
+    r"EXTRATOS\s+DE\s+TERMOS\s+ADITIVOS[^\n]{0,120}|"
+    r"EXTRATO(?!S\b)[^\n]{4,180}|"
+    r"AVISO[^\n]{4,180}(?:PREG[ÃA]O|CONCORR[ÊE]NCIA|PROCESSO)[^\n]{0,120}|"
+    r"[\"“]?\s*HOMOLOGA[ÇC][ÃA]O(?:\s+E\s+ADJUDICA[ÇC][ÃA]O)?\s*[\"”]?\s*-\s*PROCESSO[^\n]{0,160}|"
+    r"EDITAL\s+DE\s+(?:INTIMA[ÇC][ÃA]O|CONVOCA[ÇC][ÃA]O|NOTIFICA[ÇC][ÃA]O)[^\n]{0,160}|"
+    r"NOTIFICA[ÇC][ÃA]O\s+DE\s+PEND[ÊE]NCIA[^\n]{0,160}|"
+    r"ATA\s+N?[º°]?\.?\s*[\d./-]+\s*[^\n]{0,120}REUNI[^\n]{0,100}"
+    r")\s*$",
+    re.MULTILINE | re.IGNORECASE,
+)
 
 CNPJ_RE = re.compile(r"\b\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2}\b")
-MONEY_RE = re.compile(r"R\$\s*([\d.]+,\d{2})")
-NUM_ATO_RE = re.compile(r"N?[º°]?\s*([\d.]+/?\d*)")
+MONEY_RE = re.compile(r"R\$\s*(?:\)?[²³]?\s*:?\s*)?([\d.]+,\d{2})")
+NUM_ATO_RE = re.compile(r"N?[º°]?\.?\s*([\d.]+/?\d*)")
 # Razão social: nome seguido de sufixo societário/entidade. Bem mais preciso
 # que "EMPRESA: ..." (que pegava frases inteiras do texto).
 RAZAO_RE = re.compile(
     r"\b([A-ZÀ-Ú][A-Za-zÀ-ú0-9&.,'\-/ ]{3,70}?\s"
     r"(?:LTDA|EIRELI|EPP|S/A|S\.A\.?|\bME\b|MEI|ASSOCIA[ÇC][ÃA]O|"
-    r"INSTITUTO|FUNDA[ÇC][ÃA]O|COOPERATIVA|SOCIEDADE)"
+    r"COOPERATIVA|SOCIEDADE)"
     r"\b\.?(?:\s*[-–]\s*(?:EPP|ME))?)"
 )
 ORGAOS_CNPJ = {
     "18240119000105": "Prefeitura de Varginha",
     "13985869000184": "CISSUL/SAMU",
     "19110162000100": "Fundação Hospitalar do Município de Varginha",
+    "46125774000140": "CIMBASP",
 }
 
 
@@ -122,6 +140,17 @@ def _classifica(titulo: str) -> tuple[str, str]:
         return "dispensa", "Dispensa de licitação"
     if "INEXIG" in t:
         return "inexigibilidade", "Inexigibilidade"
+    if t.startswith("EXTRATO DE COMPRA DIRETA"):
+        return "dispensa", "Compra direta"
+    if t.startswith("EDITAL DE CONVOCA"):
+        return "pessoal", "Edital de convocação"
+    if (
+        t.startswith("EDITAL DE INTIMA")
+        or t.startswith("EDITAL DE NOTIFICA")
+        or t.startswith("NOTIFICA")
+        or (t.startswith("ATA") and "REUNI" in t)
+    ):
+        return "outro", "Ato"
     if "EDITAL" in t or "PREG" in t or "CONCORR" in t or "HOMOLOGA" in t or "ATA DE REGISTRO" in t:
         return "licitacao", "Licitação"
     if "PORTARIA" in t:
@@ -137,11 +166,26 @@ def _classifica(titulo: str) -> tuple[str, str]:
 
 def _segmentar(texto: str) -> list[tuple[str, str, str, str, int]]:
     """[(tipo_norm, rótulo, título, trecho, página_inicial)] dos atos."""
-    candidatos = list(CABECALHO.finditer(texto))
+    candidatos = sorted(
+        [*CABECALHO.finditer(texto), *CABECALHO_SEM_NUMERO.finditer(texto)],
+        key=lambda match: match.start(1),
+    )
     matches = []
     titulos_vistos = set()
     for m in candidatos:
-        linha = re.sub(r"\s+", " ", texto[m.start(1):texto.find("\n", m.start(1))]).strip()
+        fim_linha = texto.find("\n", m.start(1))
+        if fim_linha < 0:
+            fim_linha = len(texto)
+        linha = re.sub(r"\s+", " ", texto[m.start(1):fim_linha]).strip()
+        # No formato genérico, o identificador do aditivo aparece logo abaixo:
+        # "EXTRATO DE TERMO ADITIVO DE CONTRATO\nAditivo n°: 09/2026".
+        # Incorporá-lo ao título preserva dois aditivos consecutivos como atos
+        # distintos e gera IDs/números verificáveis.
+        if CABECALHO_SEM_NUMERO.fullmatch(texto[m.start():m.end()]):
+            restante = texto[fim_linha + 1:]
+            proxima = next((item.strip() for item in restante.splitlines() if item.strip()), "")
+            if proxima and re.search(r"(?i)\b(?:aditivo|contrato|processo|termo|fomento)\b", proxima):
+                linha = f"{linha} — {re.sub(r'\s+', ' ', proxima)}"
         tipo, _ = _classifica(linha)
         cabecalho = m.group(1).strip()
         letras = re.sub(r"[^A-Za-zÀ-ÖØ-öø-ÿ]", "", cabecalho)
@@ -170,7 +214,13 @@ def _segmentar(texto: str) -> list[tuple[str, str, str, str, int]]:
         ini = m.start()
         fim = matches[i + 1].start() if i + 1 < len(matches) else len(texto)
         trecho = texto[ini:fim].strip()
-        titulo = re.sub(r"\s+", " ", trecho.split("\n")[0])[:120]
+        primeira_linha = re.sub(r"\s+", " ", trecho.split("\n")[0]).strip()
+        titulo = primeira_linha
+        if CABECALHO_SEM_NUMERO.match(trecho):
+            proxima = next((item.strip() for item in trecho.splitlines()[1:] if item.strip()), "")
+            if proxima and re.search(r"(?i)\b(?:aditivo|contrato|processo|termo|fomento)\b", proxima):
+                titulo = f"{primeira_linha} — {re.sub(r'\s+', ' ', proxima)}"
+        titulo = titulo[:120]
         tipo, rotulo = _classifica(titulo)
         # O ^\s* do CABECALHO pode consumir a quebra de pagina; o grupo 1
         # comeca exatamente no titulo e preserva a pagina correta.
@@ -312,19 +362,73 @@ def _valores_por_exercicio(trecho: str) -> list[dict]:
     return [{"ano": ano, "valor": achados[ano]} for ano in sorted(achados)]
 
 
+def _natureza_valor(trecho: str, inicio: int, fim: int) -> str:
+    """Classifica o significado do número pelo rótulo oficial mais próximo."""
+    linha_inicio = trecho.rfind("\n", 0, inicio) + 1
+    linha_fim = trecho.find("\n", fim)
+    if linha_fim < 0:
+        linha_fim = len(trecho)
+    contexto = trecho[max(0, linha_inicio - 180):linha_fim]
+    normalizado = "".join(
+        caractere for caractere in unicodedata.normalize("NFKD", contexto).lower()
+        if not unicodedata.combining(caractere)
+    )
+    regras = (
+        (r"saldo\s+remanescente", "saldo remanescente da ata"),
+        (r"valor\s+rescindido", "valor rescindido"),
+        (r"valor\s+aditivado|acrescimo\s+contratual", "valor do aditivo"),
+        (r"gratificacao", "gratificação mensal"),
+        (r"vencimento", "vencimento-base"),
+        (r"valor\s+homologado|homologacao", "valor homologado"),
+        (r"valor\s+estimado|estimativa", "valor estimado"),
+        (r"valor\s+unitario|por\s+un(?:idade)?\b", "valor unitário"),
+        (r"parcela", "valor da parcela"),
+        (r"valor\s+mensal|mensalmente|por\s+mes", "valor mensal"),
+        (r"valor\s+anual|anualmente|por\s+ano", "valor anual"),
+        (r"reajust|repactu", "valor do reajuste"),
+        (r"valor\s+total|\btotal\b", "valor total"),
+    )
+    for padrao, rotulo in regras:
+        if re.search(padrao, normalizado):
+            return rotulo
+    return "valor citado no ato"
+
+
 def _extrai_valores(trecho: str) -> dict:
     # Remove linhas de tabelas de projeção de faturamento para evitar falsos positivos gigantes
     # Ex: "2026 R$ 13.000.000,00" ou "2026: R$ 13.000.000,00" ou "2026 - R$ 13.000.000,00"
-    trecho_limpo = re.sub(r"(?im)^\s*(?:20\d{2})\b.*?(?:R\$|R\s*\$)\s*[\d.,]+.*$", "", trecho)
-    brutos = MONEY_RE.findall(trecho_limpo)
-    vals = sorted({_valor_brl(v) for v in brutos}, reverse=True)
+    trecho_limpo = re.sub(
+        r"(?im)^\s*(?:20\d{2})\b.*?(?:R\$|R\s*\$)\s*[\d.,]+.*$",
+        lambda match: " " * len(match.group(0)),
+        trecho,
+    )
+    ocorrencias = []
+    vistos = set()
+    for match in MONEY_RE.finditer(trecho_limpo):
+        bruto = match.group(1)
+        valor = _valor_brl(bruto)
+        natureza = _natureza_valor(trecho_limpo, match.start(), match.end())
+        chave = (valor, natureza)
+        if chave in vistos:
+            continue
+        vistos.add(chave)
+        ocorrencias.append({
+            "valor": valor,
+            "natureza": natureza,
+            "_posicao": match.start(1),
+            "_bruto": bruto,
+        })
+    brutos = [item["_bruto"] for item in ocorrencias]
+    vals = sorted({item["valor"] for item in ocorrencias}, reverse=True)
     unico = vals[0] if len(vals) == 1 else None
+    item_unico = next((item for item in ocorrencias if item["valor"] == unico), None)
     # Periodicidade so faz sentido quando ha um valor definido para descrever.
     bruto_do_unico = brutos[0] if (unico is not None and brutos) else None
     return {
         "total": unico,
         "encontrados": vals[:6],
-        "natureza": "valor citado no ato",
+        "itens": ocorrencias[:12],
+        "natureza": (item_unico or {}).get("natureza") or "valor citado no ato",
         "fonte_total": "texto oficial do Diário" if len(vals) == 1 else "",
         "confianca": "media" if len(vals) == 1 else "indisponivel",
         "periodicidade": _periodicidade_do_valor(trecho, bruto_do_unico) if unico is not None else "",
@@ -340,9 +444,24 @@ def _extrai_envolvidos(trecho: str) -> list[dict]:
     nomes = []
     for m in RAZAO_RE.finditer(trecho):
         nome = re.sub(r"\s+", " ", m.group(1)).strip(" .,:-")
+        nome = re.sub(
+            r"(?i)^(?:INPREV|CISSUL(?:/SAMU)?|CIMBASP)\s+",
+            "",
+            nome,
+        ).strip()
         nome_baixo = nome.lower()
         parece_rodape = nome_baixo.startswith("varginha/mg") or "diario oficial" in nome_baixo
-        if 6 <= len(nome) <= 80 and not parece_rodape and all(nome != item[0] for item in nomes):
+        parece_pessoa_com_cargo = re.search(
+            r"(?i)\b(?:corregedor(?:a)?|assistente\s+administrativ[oa]|diretor(?:a)?|"
+            r"prefeito|secret[áa]ri[oa]|matr[íi]cula)\b",
+            nome,
+        )
+        if (
+            6 <= len(nome) <= 80
+            and not parece_rodape
+            and not parece_pessoa_com_cargo
+            and all(nome != item[0] for item in nomes)
+        ):
             nomes.append((nome, m.start()))
     cnpjs = []
     for m in CNPJ_RE.finditer(trecho):
@@ -377,17 +496,70 @@ def _extrai_envolvidos(trecho: str) -> list[dict]:
 
 
 def _orgao_ato(trecho: str) -> str:
-    texto = trecho.lower()
+    # CNPJ do ente dentro do próprio ato é a evidência mais forte. Depois,
+    # desconsideramos o rodapé final do segmento: o PDF costuma imprimir ali o
+    # cabeçalho do órgão seguinte, antes do próximo título, e isso fazia um
+    # decreto da Prefeitura virar "CISSUL" e uma portaria da Guarda virar
+    # "INPREV".
+    for match in CNPJ_RE.finditer(trecho):
+        limpo = re.sub(r"\D", "", match.group(0))
+        if limpo in ORGAOS_CNPJ:
+            return ORGAOS_CNPJ[limpo]
+    limite = max(400, int(len(trecho) * 0.8))
+    texto = trecho[:limite].lower()
     if "cissul" in texto or "consórcio intermunicipal de saúde" in texto:
         return "CISSUL/SAMU"
     if "fundação hospitalar do município" in texto or "fhomuv" in texto:
         return "Fundação Hospitalar do Município de Varginha"
+    if "fundação cultural do município" in texto:
+        return "Fundação Cultural do Município de Varginha"
+    if "instituto de previdência dos servidores públicos" in texto or "inprev" in texto:
+        return "INPREV"
+    if "consórcio intermunicipal multifinalitário do baixo sapucaí" in texto or "cimbasp" in texto:
+        return "CIMBASP"
+    if "guarda civil municipal" in texto:
+        return "Guarda Civil Municipal de Varginha"
     return "Prefeitura de Varginha"
 
 
 def _numero(titulo: str) -> str:
     m = NUM_ATO_RE.search(titulo)
     return m.group(1) if m else ""
+
+
+def _alinhar_orgao_texto_ia(ia: dict, orgao: str) -> dict:
+    """Corrige menções institucionais genéricas que contradizem o ato.
+
+    O enriquecedor às vezes chama qualquer ente de "Prefeitura de Varginha",
+    mesmo quando o CNPJ/texto oficial identifica CISSUL, INPREV, CIMBASP ou
+    Fundação Cultural. A correção é conservadora e só atua nesses entes com
+    identificação forte; números, fornecedores e o restante do texto ficam
+    intocados.
+    """
+    substituicoes: list[str] = []
+    if orgao in {"CISSUL/SAMU", "INPREV", "CIMBASP", "Fundação Cultural do Município de Varginha"}:
+        substituicoes.append("Prefeitura de Varginha")
+    if orgao == "CISSUL/SAMU":
+        substituicoes.extend([
+            "Fundação Hospitalar do Município de Varginha/MG",
+            "Fundação Hospitalar do Município de Varginha",
+        ])
+    if not substituicoes:
+        return ia
+
+    alinhado = dict(ia)
+
+    def corrigir(texto: str) -> str:
+        saida = str(texto or "")
+        for incorreto in substituicoes:
+            saida = re.sub(re.escape(incorreto), orgao, saida, flags=re.IGNORECASE)
+        return saida
+
+    alinhado["resumo"] = corrigir(alinhado.get("resumo", ""))
+    alinhado["pontos_atencao"] = [
+        corrigir(item) for item in (alinhado.get("pontos_atencao") or [])
+    ]
+    return alinhado
 
 
 def _monta_ato(tipo, rotulo, titulo, trecho, edicao, url_pdf, leitor, pagina_inicial=1) -> dict:
@@ -402,9 +574,10 @@ def _monta_ato(tipo, rotulo, titulo, trecho, edicao, url_pdf, leitor, pagina_ini
         "tipo": rotulo,
         "titulo": titulo,
         "texto": trecho,
-        "autor": "Prefeitura de Varginha",
+        "autor": orgao,
         "data": data,
     })
+    ia = _alinhar_orgao_texto_ia(ia, orgao)
 
     # Extrai valores com regex
     valores = _extrai_valores(trecho)
@@ -414,9 +587,29 @@ def _monta_ato(tipo, rotulo, titulo, trecho, edicao, url_pdf, leitor, pagina_ini
     val_ia = _parse_ia_valor(valor_ia_str)
     if val_ia is not None and val_ia in valores["encontrados"]:
         valores["total"] = val_ia
+        item_principal = next(
+            (
+                item for item in valores.get("itens", [])
+                if item.get("valor") == val_ia and item.get("natureza") != "valor citado no ato"
+            ),
+            next((item for item in valores.get("itens", []) if item.get("valor") == val_ia), None),
+        )
+        if item_principal:
+            valores["natureza"] = item_principal.get("natureza") or valores["natureza"]
         valores["fonte_total"] = "texto oficial do Diário, selecionado pela IA"
         valores["confianca"] = "alta"
     valores["valor_principal_ia"] = valor_ia_str or ""
+    for item in valores.get("itens", []):
+        posicao_item = int(item.pop("_posicao", -1))
+        item.pop("_bruto", None)
+        pagina_item = (
+            int(pagina_inicial) + trecho[:posicao_item].count("\f")
+            if posicao_item >= 0 else None
+        )
+        item["pagina"] = pagina_item
+        item["link_verificacao"] = (
+            f"{url_pdf}#page={pagina_item}" if url_pdf and pagina_item else url_pdf
+        )
     pagina_valor = None
     if valores.get("total") is not None:
         alvo = f"{float(valores['total']):,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
@@ -426,6 +619,7 @@ def _monta_ato(tipo, rotulo, titulo, trecho, edicao, url_pdf, leitor, pagina_ini
     valores["pagina"] = pagina_valor
     valores["link_verificacao"] = f"{url_pdf}#page={pagina_valor}" if url_pdf and pagina_valor else url_pdf
 
+    subatos_detectados = _segmentar(trecho)
     slug = re.sub(r"[^a-z0-9]", "", titulo.lower())[:16]
     return {
         "id": f"DIARIO-{ano}-{edicao.get('edicao')}-{tipo}-{slug}",
@@ -451,6 +645,10 @@ def _monta_ato(tipo, rotulo, titulo, trecho, edicao, url_pdf, leitor, pagina_ini
         "localizacao": {
             "pagina_inicial": int(pagina_inicial),
             "link_direto": f"{url_pdf}#page={int(pagina_inicial)}" if url_pdf else "",
+        },
+        "qualidade": {
+            "segmentacao_ok": len(subatos_detectados) <= 1,
+            "atos_detectados_no_trecho": len(subatos_detectados),
         },
         "origem_ia": ia.get("_origem_ia", ""),
         "gerado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),

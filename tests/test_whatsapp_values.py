@@ -1,4 +1,5 @@
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -151,6 +152,129 @@ class WhatsappValueQualityTests(unittest.TestCase):
         self.assertIsNone(values["total"])
         self.assertEqual(values["confianca"], "indisponivel")
 
+    def test_diario_classifies_financial_nature_near_each_value(self):
+        values = coletor_diario._extrai_valores(
+            "Vencimento (R$): 5.710,22.\n"
+            "Gratificação mensal no valor de R$ 3.711,64.\n"
+            "Saldo Remanescente da Ata: R$ 24.526.528,79."
+        )
+        itens = {(item["valor"], item["natureza"]) for item in values["itens"]}
+        self.assertIn((5710.22, "vencimento-base"), itens)
+        self.assertIn((3711.64, "gratificação mensal"), itens)
+        self.assertIn((24526528.79, "saldo remanescente da ata"), itens)
+        self.assertIsNone(values["total"])
+
+    def test_whatsapp_lists_multiple_values_without_inventing_total(self):
+        pub = {
+            "valores": {
+                "total": None,
+                "encontrados": [5710.22, 3711.64],
+                "itens": [
+                    {"valor": 5710.22, "natureza": "vencimento-base", "pagina": 2},
+                    {"valor": 3711.64, "natureza": "gratificação mensal", "pagina": 2},
+                ],
+            },
+            "resumo": "Vencimento de R$ 5.710,22 e gratificação de R$ 3.711,64.",
+        }
+        bloco = whatsapp.bloco_valor_publicacao(pub, "prefeitura")
+        self.assertIn("Vencimento-base: R$ 5.710,22", bloco)
+        self.assertIn("Gratificação mensal: R$ 3.711,64", bloco)
+        self.assertIn("não calculado automaticamente", bloco)
+        self.assertNotIn("R$ 9.421,86", bloco)
+        self.assertIsNone(whatsapp.resolver_valor_publicacao(pub, "prefeitura"))
+
+    def test_pre_send_audit_blocks_company_on_personnel_act(self):
+        resultado = whatsapp.auditar_publicacao_pre_envio({
+            "id": "DIARIO-TESTE",
+            "tipo": "pessoal",
+            "titulo": "PORTARIA Nº 1/2026",
+            "orgao": "Prefeitura de Varginha",
+            "envolvidos": [{"nome": "EMPRESA TESTE LTDA", "papel": "empresa"}],
+            "valores": {"total": None, "encontrados": []},
+            "qualidade": {"segmentacao_ok": True},
+        })
+        self.assertFalse(resultado["ok"])
+        self.assertIn("ato de pessoal associado a empresa", resultado["erros"][0])
+
+    def test_pre_send_audit_blocks_value_absent_from_official_literals(self):
+        resultado = whatsapp.auditar_publicacao_pre_envio({
+            "id": "DIARIO-TESTE",
+            "tipo": "contrato",
+            "titulo": "EXTRATO DE CONTRATO",
+            "orgao": "Prefeitura de Varginha",
+            "envolvidos": [],
+            "valores": {"total": 9999.0, "encontrados": [1000.0]},
+            "qualidade": {"segmentacao_ok": True},
+        })
+        self.assertFalse(resultado["ok"])
+        self.assertIn("não aparece", resultado["erros"][0])
+
+    def test_pre_send_audit_blocks_value_when_no_official_literal_exists(self):
+        resultado = whatsapp.auditar_publicacao_pre_envio({
+            "id": "DIARIO-TESTE",
+            "tipo": "contrato",
+            "titulo": "EXTRATO DE CONTRATO",
+            "orgao": "Prefeitura de Varginha",
+            "envolvidos": [],
+            "valores": {"total": 9999.0, "encontrados": []},
+            "qualidade": {"segmentacao_ok": True},
+        })
+        self.assertFalse(resultado["ok"])
+        self.assertIn("não aparece", resultado["erros"][0])
+
+    def test_pre_send_audit_blocks_institutional_contradiction(self):
+        resultado = whatsapp.auditar_publicacao_pre_envio({
+            "id": "DIARIO-TESTE",
+            "tipo": "aditivo",
+            "titulo": "TERMO ADITIVO",
+            "orgao": "CISSUL/SAMU",
+            "resumo": "A Prefeitura de Varginha prorrogou o contrato.",
+            "envolvidos": [],
+            "valores": {"total": None, "encontrados": []},
+            "qualidade": {"segmentacao_ok": True},
+        })
+        self.assertFalse(resultado["ok"])
+        self.assertIn("órgão divergente", resultado["erros"][0])
+
+    def test_large_queue_requires_explicit_one_run_approval(self):
+        config = {
+            "exigir_aprovacao_fila_grande": True,
+            "limite_fila_sem_aprovacao": 15,
+        }
+        self.assertFalse(whatsapp.fila_exige_aprovacao(15, config, False))
+        self.assertTrue(whatsapp.fila_exige_aprovacao(16, config, False))
+        self.assertFalse(whatsapp.fila_exige_aprovacao(40, config, True))
+
+    def test_publication_cursor_excludes_cutoff_day_and_keeps_later_items(self):
+        cursor = {"chave_ordem": ["2026-07-22", 99, "\uffff", "\uffff"]}
+        self.assertFalse(
+            whatsapp.depois_do_cursor(("2026-07-22", 0, "ATO", "id-22"), cursor)
+        )
+        self.assertTrue(
+            whatsapp.depois_do_cursor(("2026-07-23", 0, "ATO", "id-23"), cursor)
+        )
+
+    def test_publication_cursor_is_written_atomically(self):
+        with tempfile.TemporaryDirectory() as pasta:
+            destino = Path(pasta) / "cursor.json"
+            with patch.object(whatsapp, "PUBLICATION_CURSOR_PATH", destino):
+                whatsapp.definir_cursor_por_data("2026-07-22")
+                cursor = whatsapp.carregar_cursor_publicacao()
+            self.assertEqual(cursor["ultimo_id"], "fim-do-dia-2026-07-22")
+            self.assertEqual(cursor["origem"], "marco_manual_confirmado")
+            self.assertEqual(cursor["chave_ordem"][0], "2026-07-22")
+            self.assertFalse(destino.with_suffix(".tmp").exists())
+
+    def test_public_message_hides_artificial_intelligence_references(self):
+        mensagem = (
+            "Fonte: texto oficial do Diário, selecionado pela IA.\n"
+            "Análise feita pela IA e inteligência artificial."
+        )
+        limpa = whatsapp.sanitizar_mencoes_tecnologia(mensagem)
+        self.assertNotRegex(limpa.lower(), r"\bia\b|intelig[êe]ncia artificial")
+        self.assertIn("texto oficial do Diário", limpa)
+        self.assertIn("dados oficiais", limpa)
+
     def test_diario_separates_portaria_resultado_dispensa_and_classificacao(self):
         texto = (
             "PORTARIA Nº 130/2026\nTexto da portaria.\n"
@@ -164,6 +288,183 @@ class WhatsappValueQualityTests(unittest.TestCase):
         self.assertEqual([ato[4] for ato in atos], [1, 1, 2])
         self.assertNotIn("R$ 30.000,00", atos[0][3])
         self.assertIn("R$ 30.000,00", atos[1][3])
+
+    def test_diario_separates_unnumbered_aditivo_header_from_previous_portaria(self):
+        texto = (
+            "PORTARIA Nº 133/2026, 22 DE JULHO DE 2026.\n"
+            "Designa empregada para substituição temporária.\n"
+            "EXTRATO DE PUBLICAÇÃO - 4º TERMO ADITIVO AO CONTRATO Nº 029/2023 - PROCESSO Nº 079/2023\n"
+            "Contratado: TUPÃ COMUNICAÇÃO E MARKETING LTDA\n"
+            "Valor aditivado: R$ 135.000,00\n"
+        )
+        atos = coletor_diario._segmentar(texto)
+        self.assertEqual([ato[0] for ato in atos], ["pessoal", "aditivo"])
+        self.assertNotIn("R$ 135.000,00", atos[0][3])
+        self.assertIn("R$ 135.000,00", atos[1][3])
+
+    def test_diario_preserves_consecutive_generic_aditivos_as_distinct_acts(self):
+        texto = (
+            "PORTARIA Nº 292, DE 23 DE JULHO DE 2026.\n"
+            "Prorroga prazo de sindicância.\n"
+            "EXTRATO DE TERMO ADITIVO DE CONTRATO\n"
+            "Aditivo n°: 09/2026 – Datado de 17/07/2026.\n"
+            "Objeto: Repactuação contratual.\n"
+            "Valor: R$ 7.605,81.\n"
+            "EXTRATO DE TERMO ADITIVO DE CONTRATO\n"
+            "Aditivo n°: 10/2026 – Datado de 17/07/2026.\n"
+            "Objeto: Prorrogação do prazo contratual.\n"
+        )
+        atos = coletor_diario._segmentar(texto)
+        self.assertEqual([ato[0] for ato in atos], ["pessoal", "aditivo", "aditivo"])
+        self.assertIn("09/2026", atos[1][2])
+        self.assertIn("10/2026", atos[2][2])
+        self.assertNotIn("R$ 7.605,81", atos[0][3])
+        self.assertNotIn("10/2026", atos[1][3])
+
+    def test_diario_separates_other_strong_unnumbered_extract_headers(self):
+        texto = (
+            "PORTARIA Nº 23.276, DE 20 DE JULHO DE 2026.\n"
+            "Designa servidor municipal.\n"
+            "EXTRATO DE CONTRATO\n"
+            "Contrato: 074/2026. Datado de 18/06/2026.\n"
+            "Valor: R$ 325.000,00.\n"
+            "EXTRATO DE TERMO DE FOMENTO\n"
+            "Termo de Fomento: 099/2026. Datado de 21/07/2026.\n"
+            "Valor: R$ 102.000,00.\n"
+            "EXTRATO DE PUBLICAÇÃO - TERMO DE RESCISÃO AO CONTRATO Nº 189/2026\n"
+            "Valor rescindido: R$ 2.060,00.\n"
+        )
+        atos = coletor_diario._segmentar(texto)
+        self.assertEqual(len(atos), 4)
+        self.assertEqual([ato[0] for ato in atos], ["pessoal", "contrato", "outro", "contrato"])
+        self.assertNotIn("R$ 325.000,00", atos[0][3])
+        self.assertIn("074/2026", atos[1][2])
+        self.assertIn("099/2026", atos[2][2])
+        self.assertIn("R$ 2.060,00", atos[3][3])
+
+    def test_diario_does_not_classify_authority_and_next_agency_as_company(self):
+        texto = (
+            "JUCILENE APARECIDA DA SILVA\n"
+            "Corregedora da Guarda Civil Municipal\n"
+            "INSTITUTO DE PREVIDÊNCIA DOS SERVIDORES PÚBLICOS"
+        )
+        self.assertEqual(coletor_diario._extrai_envolvidos(texto), [])
+
+    def test_diario_separates_dash_style_procurement_notices_from_portaria(self):
+        texto = (
+            "PORTARIA Nº 23.276, DE 20 DE JULHO DE 2026.\n"
+            "Nomeia servidores em caráter efetivo.\n"
+            "AVISO - PREGÃO ELETRÔNICO Nº 082 / 2026 - PROCESSO Nº 191 / 2026\n"
+            "Contratação de serviços técnicos.\n"
+            "AVISO SUSPENSÃO - “SINE DIE” - PREGÃO ELETRÔNICO Nº 071 / 2026 - PROCESSO Nº 162 / 2026\n"
+            "Suspende a sessão pública.\n"
+        )
+        atos = coletor_diario._segmentar(texto)
+        self.assertEqual([ato[0] for ato in atos], ["pessoal", "licitacao", "licitacao"])
+        self.assertNotIn("PREGÃO", atos[0][3])
+        self.assertIn("082", atos[1][2])
+        self.assertIn("071", atos[2][2])
+
+    def test_diario_separates_homologations_and_non_financial_notices(self):
+        texto = (
+            "DISPENSA DE LICITAÇÃO Nº 053/2026.\n"
+            "Valor: R$ 3.999,00.\n"
+            "“HOMOLOGAÇÃO” - PROCESSO Nº 094/2026 - PREGÃO ELETRÔNICO Nº 048/2026\n"
+            "Aquisição de tomógrafo por R$ 2.396.576,00.\n"
+            "“HOMOLOGAÇÃO E ADJUDICAÇÃO” - PROCESSO Nº 099/2026 - PREGÃO ELETRÔNICO Nº 052/2026\n"
+            "Serviços de telefonia por R$ 53.053,44.\n"
+            "EDITAL DE INTIMAÇÃO\n"
+            "Intima empresa em processo sancionatório.\n"
+            "AVISO REDESIGNAÇÃO - PROCESSO Nº 081/2026 – PREGÃO ELETRÔNICO Nº 040/2026\n"
+            "Redesigna a sessão pública.\n"
+        )
+        atos = coletor_diario._segmentar(texto)
+        self.assertEqual(
+            [ato[0] for ato in atos],
+            ["dispensa", "licitacao", "licitacao", "outro", "licitacao"],
+        )
+        self.assertNotIn("2.396.576,00", atos[0][3])
+        self.assertNotIn("53.053,44", atos[1][3])
+        self.assertNotIn("REDESIGNAÇÃO", atos[2][3])
+
+    def test_diario_separates_convocation_and_miscellaneous_sections(self):
+        texto = (
+            "EXTRATO DE TERMO DE FOMENTO\n"
+            "Termo de Fomento: 099/2026. Valor: R$ 102.000,00.\n"
+            "EDITAL DE CONVOCAÇÃO Nº. 035/2026\n"
+            "Convoca candidato aprovado.\n"
+            "NOTIFICAÇÃO DE PENDÊNCIA DE PRESTAÇÃO DE CONTAS\n"
+            "Notifica agente cultural.\n"
+            "ATA Nº 13 – REUNIÃO ORDINÁRIA DO CONSELHO MUNICIPAL\n"
+            "Relato da reunião.\n"
+            "EXTRATO DO PRIMEIRO TERMO ADITIVO À ATA DE REGISTRO DE PREÇOS Nº 10/2026\n"
+            "Reequilíbrio econômico-financeiro.\n"
+        )
+        atos = coletor_diario._segmentar(texto)
+        self.assertEqual([ato[0] for ato in atos], ["outro", "pessoal", "outro", "outro", "aditivo"])
+        self.assertNotIn("EDITAL", atos[0][3])
+        self.assertNotIn("NOTIFICAÇÃO", atos[1][3])
+        self.assertNotIn("EXTRATO", atos[3][3])
+
+    def test_diario_separates_plural_aditivos_section_from_contract(self):
+        texto = (
+            "EXTRATO DE CONTRATO\n"
+            "Contrato: 074/2026. Valor: R$ 325.000,00.\n"
+            "EXTRATOS DE TERMOS ADITIVOS\n"
+            "Aditivo nº: 314/2026. Reajusta o valor contratual.\n"
+            "Aditivo nº: 315/2026. Prorroga o prazo.\n"
+        )
+        atos = coletor_diario._segmentar(texto)
+        self.assertEqual([ato[0] for ato in atos], ["contrato", "aditivo"])
+        self.assertNotIn("314/2026", atos[0][3])
+        self.assertIn("315/2026", atos[1][3])
+
+    def test_diario_extracts_salary_when_currency_label_has_closing_parenthesis(self):
+        valores = coletor_diario._extrai_valores(
+            "Vencimento (R$): 7.786,96. Gratificação mensal de R$ 528,03."
+        )
+        self.assertIsNone(valores["total"])
+        self.assertEqual(valores["encontrados"], [7786.96, 528.03])
+
+    def test_diario_identifies_additional_public_bodies(self):
+        self.assertEqual(
+            coletor_diario._orgao_ato("Fundação Cultural do Município de Varginha"),
+            "Fundação Cultural do Município de Varginha",
+        )
+        self.assertEqual(
+            coletor_diario._orgao_ato("Instituto de Previdência dos Servidores Públicos - INPREV"),
+            "INPREV",
+        )
+        self.assertEqual(
+            coletor_diario._orgao_ato("Consórcio Intermunicipal Multifinalitário do Baixo Sapucaí"),
+            "CIMBASP",
+        )
+        self.assertEqual(
+            coletor_diario._orgao_ato(
+                "DECRETO MUNICIPAL\nRegras do Poder Executivo.\n" + ("texto " * 100)
+                + "CONSÓRCIO INTERMUNICIPAL DE SAÚDE - CISSUL"
+            ),
+            "Prefeitura de Varginha",
+        )
+        self.assertEqual(
+            coletor_diario._orgao_ato(
+                "Contrato do CISSUL. CNPJ: 13.985.869/0001-84.\n"
+                "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA"
+            ),
+            "CISSUL/SAMU",
+        )
+
+    def test_diario_aligns_ai_institution_with_strong_official_body(self):
+        ia = {
+            "resumo": "A Prefeitura de Varginha prorrogou o contrato.",
+            "pontos_atencao": [
+                "A despesa foi atribuída à Fundação Hospitalar do Município de Varginha/MG."
+            ],
+        }
+        alinhado = coletor_diario._alinhar_orgao_texto_ia(ia, "CISSUL/SAMU")
+        self.assertEqual(alinhado["resumo"], "A CISSUL/SAMU prorrogou o contrato.")
+        self.assertIn("CISSUL/SAMU", alinhado["pontos_atencao"][0])
+        self.assertNotIn("Fundação Hospitalar", alinhado["pontos_atencao"][0])
 
     def test_diario_ignores_internal_legal_references_and_repeated_annex_header(self):
         texto = (

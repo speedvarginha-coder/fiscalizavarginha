@@ -76,7 +76,8 @@ function Invoke-AndLog {
     [string]$FilePath,
     [string[]]$Arguments,
     [string]$WorkingDirectory,
-    [int]$Retries = 0
+    [int]$Retries = 0,
+    [int[]]$AcceptedExitCodes = @(0)
   )
 
   # PS 5.1: com $ErrorActionPreference=Stop, QUALQUER linha de stderr de um exe
@@ -97,7 +98,10 @@ function Invoke-AndLog {
       $ErrorActionPreference = $prevEAP
       Pop-Location
     }
-    if ($code -eq 0) { return }
+    if ($AcceptedExitCodes -contains $code) {
+      if ($code -ne 0) { return $code }
+      return
+    }
     if ($tentativa -le $Retries) {
       Write-Log "$Label falhou com codigo $code; nova tentativa ($tentativa/$Retries) em 15s (falhas transitorias de arquivo/rede passam na segunda)."
       Start-Sleep -Seconds 15
@@ -637,12 +641,18 @@ try {
   } else {
     Write-Log "Disparando alertas automatizados para o WhatsApp."
     try {
-      Invoke-AndLog `
+      $whatsAppExitCode = Invoke-AndLog `
         -Label "Enviando alertas do WhatsApp." `
         -FilePath "python" `
         -Arguments @((Join-Path $painel "alertar_whatsapp.py")) `
-        -WorkingDirectory $painel
-      $whatsAppStatus = "SUCESSO"
+        -WorkingDirectory $painel `
+        -AcceptedExitCodes @(0, 3)
+      if ($whatsAppExitCode -eq 3) {
+        $whatsAppStatus = "RETIDO"
+        Write-Log "WhatsApp retido pela barreira de seguranca; nao e falha da bridge."
+      } else {
+        $whatsAppStatus = "SUCESSO"
+      }
     } catch {
       $whatsAppStatus = "FALHA"
       Write-Log "ERRO de WhatsApp: $_"
@@ -689,7 +699,20 @@ try {
 
   Remove-OldBackups
   Write-Log "RESUMO: coleta=$collectionStatus deploy=$deployStatus whatsapp=$whatsAppStatus"
-  if ($deployStatus -eq "FALHA" -or $whatsAppStatus -eq "FALHA") { exit 1 }
+
+  # Codigos de saida separados por gravidade. Antes, sessao do WhatsApp caida
+  # marcava o ciclo inteiro como falha mesmo com coleta e deploy perfeitos: o
+  # agendador mostrava erro, o operador ia atras de um problema de dados que
+  # nao existia, e falha real de deploy ficava indistinguivel de QR expirado.
+  #   0 = tudo certo
+  #   1 = deploy falhou: o site pode estar com dado velho ou quebrado
+  #   4 = so o WhatsApp falhou: site publicado, fila preservada para o proximo
+  #       ciclo. Nao exige acao imediata; o watchdog ja alerta em separado.
+  if ($deployStatus -eq "FALHA") { exit 1 }
+  if ($whatsAppStatus -eq "FALHA") {
+    Write-Log "Coleta e deploy concluidos; apenas o WhatsApp falhou (exit 4, nao critico)."
+    exit 4
+  }
   exit 0
 } catch {
   $collectionStatus = "FALHA"
