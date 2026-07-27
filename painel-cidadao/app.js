@@ -87,7 +87,7 @@
   }
 
   const D    = window.ZELA_DATA;
-  const pf   = D.prefeitura || {};
+  const pf   = D.prefeitura || D.home_resumo || {};
   const PAGE = document.body.dataset.page || "hub";
   const $    = (id) => document.getElementById(id);
 
@@ -2071,9 +2071,9 @@
       addSignal(
         "CÂMARA · Pessoal",
         pctCam >= 30 ? "critico" : "alto",
-        `${camComQtd} comissionados em ${camServQtd} servidores da Câmara (${pctCam}%)`,
-        `Proporção de cargos comissionados ou similares na Câmara Municipal é ${pctCam}% — contra ${pctPref}% na Prefeitura (${prefComQtd} em ${prefServQtd} servidores). Câmara Municipal legislativa deveria ter quadro enxuto; proporção alta merece explicação pública.`,
-        `Folha comissionados Câmara: ${fmtBRL(camResumoP.folha_bruta_comissionados || 0)} · Folha total: ${fmtBRL(camResumoP.folha_bruta_total || 0)}`,
+        `${camComQtd} comissionados em ${camServQtd} vínculos ativos da Câmara (${pctCam}%)`,
+        `Proporção de cargos comissionados ou similares na Câmara Municipal é ${pctCam}% — contra ${pctPref}% na Prefeitura (${prefComQtd} em ${prefServQtd} vínculos). Câmara Municipal legislativa deveria ter quadro enxuto; proporção alta merece explicação pública.`,
+        `Competência ${camResumoP.competencia_referencia || camPessoal.competencia || "não informada"} · Folha comissionados: ${fmtBRL(camResumoP.folha_bruta_comissionados || 0)} · Folha total: ${fmtBRL(camResumoP.folha_bruta_total || 0)}`,
         "camara.html"
       );
     }
@@ -2875,10 +2875,13 @@
             <div class="personnel-card__num">${fmtNum(r.comissionados_qtd || 0)}</div>
             <p>comissionados ou similares</p>
             <dl>
-              <div><dt>Servidores listados</dt><dd>${fmtNum(r.servidores_qtd || 0)}</dd></div>
+              <div><dt>Vínculos ativos</dt><dd>${fmtNum(r.vinculos_qtd || r.servidores_qtd || 0)}</dd></div>
+              ${r.pessoas_qtd ? `<div><dt>Pessoas distintas (por nome)</dt><dd>${fmtNum(r.pessoas_qtd)}</dd></div>` : ""}
+              <div><dt>Competência</dt><dd>${esc(r.competencia_referencia || orgao.competencia || "não informada")}</dd></div>
               <div><dt>Folha bruta comissionados</dt><dd>${fmtBRL(r.folha_bruta_comissionados || 0)}</dd></div>
               <div><dt>Maior vencimento</dt><dd>${fmtBRL(r.maior_vencimento_comissionado || 0)}</dd></div>
             </dl>
+            ${r.competencia_parcial ? `<p class="personnel-card__status">A competência ${esc(r.competencia_parcial.competencia)} já tem ${fmtNum(r.competencia_parcial.linhas)} lançamento(s), mas está incompleta e por isso não é usada como referência.</p>` : ""}
             <a href="${esc(orgao.fonte || "#")}" target="_blank" rel="noopener">Abrir fonte oficial</a>
             ${orgao.status ? `<p class="personnel-card__status">${esc(orgao.status)}</p>` : ""}
           </article>`;
@@ -4824,7 +4827,7 @@ ${url}
       const pctCam  = camTot  ? (camQtd  / camTot  * 100) : 0;
       const pctPref = prefTot ? (prefQtd / prefTot * 100) : 0;
       const barMax  = Math.max(pctCam, pctPref, 1);
-      const mkBar = (label, com, tot, pct, folhaCom, cor) => `
+      const mkBar = (label, com, tot, pct, folhaCom, cor, comp) => `
         <div style="margin-bottom:20px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px">
             <strong>${esc(label)}</strong>
@@ -4834,15 +4837,20 @@ ${url}
             <div style="width:${Math.min(pct/barMax*100,100).toFixed(1)}%;height:100%;background:${cor};border-radius:4px;transition:width .5s"></div>
           </div>
           <div class="small muted" style="margin-top:4px">
-            ${fmtNum(com)} comissionados de ${fmtNum(tot)} servidores
-            ${folhaCom ? ` · Folha comissionados: <strong>${fmtBRL(folhaCom)}</strong>/mês` : ""}
+            ${fmtNum(com)} comissionados de ${fmtNum(tot)} vínculos ativos
+            ${folhaCom ? ` · Folha comissionados: <strong>${fmtBRL(folhaCom)}</strong> na competência ${esc(comp || "não informada")}` : ""}
           </div>
         </div>`;
+      // A folha vem com uma linha por servidor POR MÊS: o resumo já soma só a
+      // competência de referência. Rotular "/mês" sem dizer qual mês foi o que
+      // publicou R$ 1,1 mi como custo mensal quando o mês custava R$ 218 mil.
+      const camComp  = camRes.competencia_referencia  || (pes.camara     || {}).competencia;
+      const prefComp = prefRes.competencia_referencia || (pes.prefeitura || {}).competencia;
       divComp.innerHTML =
         mkBar("Câmara Municipal",  camQtd,  camTot,  pctCam,
-              camRes.folha_bruta_comissionados  || 0, "#c0392b") +
+              camRes.folha_bruta_comissionados  || 0, "#c0392b", camComp) +
         mkBar("Prefeitura",        prefQtd, prefTot, pctPref,
-              prefRes.folha_bruta_comissionados || 0, "#2980b9") +
+              prefRes.folha_bruta_comissionados || 0, "#2980b9", prefComp) +
         (camTot > 0 && prefTot > 0 ? `
         <div class="report-note" style="margin-top:8px;border-left:4px solid #c0392b;padding-left:12px">
           A Câmara tem <strong>${pctCam.toFixed(1)}% de comissionados</strong> —

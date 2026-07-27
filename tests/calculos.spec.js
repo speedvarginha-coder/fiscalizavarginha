@@ -74,6 +74,21 @@ test.describe("Integridade dos cálculos (miolo)", () => {
     expect(Math.abs(calculado - perCapitaPublicado)).toBeLessThanOrEqual(1);
   });
 
+  test("LOA 2026: o painel referencia a Lei 7.510/2025 e o PDF correto", () => {
+    const fs = require("fs");
+    const path = require("path");
+    const painelDir = path.join(__dirname, "..", "painel-cidadao");
+    const index = fs.readFileSync(path.join(painelDir, "index.html"), "utf8");
+    const pdfLoa = path.join(painelDir, "docs", "loa-2026-lei-7510-2025.pdf");
+
+    expect(index).toContain("LOA 2026 — Lei nº 7.510/2025");
+    expect(index).toContain('href="docs/loa-2026-lei-7510-2025.pdf"');
+    expect(index).not.toContain("loa-2026-lei-7417-2025.pdf");
+    expect(index).not.toContain("LOA 2026 — Lei nº 7.417/2025");
+    expect(fs.existsSync(pdfLoa)).toBe(true);
+    expect(fs.statSync(pdfLoa).size).toBeGreaterThan(1_000_000);
+  });
+
   test("desfecho legislativo: tally do resumo reconcilia com as matérias", () => {
     const fs = require("fs");
     const path = require("path");
@@ -99,16 +114,26 @@ test.describe("Integridade dos cálculos (miolo)", () => {
 
 test.describe("Integridade — Pessoal e Cargos", () => {
   for (const org of ["camara", "prefeitura"]) {
-    test(`pessoal/${org}: resumo bate com a lista de servidores`, () => {
+    test(`pessoal/${org}: resumo bate com a competencia de referencia`, () => {
       const ps = load("pessoal");
       const o = ps[org];
       const r = o.resumo;
-      const s = o.servidores;
+
+      // A lista traz uma linha por servidor POR MES (a Camara tem 7
+      // competencias no mesmo array). O resumo representa UM mes: comparar com
+      // o array inteiro era o que fazia 388 linhas virarem "388 servidores" e
+      // sete meses de folha virarem custo mensal.
+      const ref = r.competencia_referencia;
+      const s = ref
+        ? o.servidores.filter((x) => x.competencia === ref)
+        : o.servidores;
+
       const com = s.filter((x) => x.comissionado_ou_similar);
       const somaTotal = s.reduce((a, x) => a + (Number(x.vencimentos) || 0), 0);
       const somaCom = com.reduce((a, x) => a + (Number(x.vencimentos) || 0), 0);
 
       expect(r.servidores_qtd).toBe(s.length);
+      expect(r.vinculos_qtd).toBe(s.length);
       expect(r.comissionados_qtd).toBe(com.length);
       expect(com.length).toBeLessThanOrEqual(s.length);
       expect(Math.abs(r.folha_bruta_total - somaTotal)).toBeLessThan(0.05);
@@ -118,6 +143,12 @@ test.describe("Integridade — Pessoal e Cargos", () => {
         const maxCom = Math.max(...com.map((x) => Number(x.vencimentos) || 0));
         expect(r.maior_vencimento_comissionado).toBe(maxCom);
       }
+
+      // pessoas nunca pode passar de vinculos, e a competencia exibida no
+      // orgao tem que ser a mesma que o resumo somou.
+      expect(r.pessoas_qtd).toBeLessThanOrEqual(r.vinculos_qtd);
+      expect(r.linhas_todas_competencias).toBe(o.servidores.length);
+      if (ref) expect(o.competencia).toBe(ref);
     });
   }
 

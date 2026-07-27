@@ -58,10 +58,10 @@
       <h1 class="hero__title">Fiscalize Varginha sem se perder nos portais.</h1>
       <p class="hero__lead">
         Em 2026, Varginha tem orçamento de R$ 1,22 bilhão — quase tudo na Prefeitura (contratos, folha, obras, diárias) e R$ 19,8 milhões na Câmara. Veja para onde vai cada real e como cobrar resposta — sem juridiquês, sem login.
-        <a href="docs/loa-2026-lei-7417-2025.pdf" target="_blank" rel="noopener" class="muted small" style="display:inline-block;margin-top:4px">Fonte: LOA 2026 — Lei nº 7.417/2025 (PDF oficial, 18 MB) ↗</a>
+        <a href="docs/loa-2026-lei-7510-2025.pdf" target="_blank" rel="noopener" class="muted small" style="display:inline-block;margin-top:4px">Fonte: LOA 2026 — Lei nº 7.510/2025 (PDF oficial, 18 MB) ↗</a>
       </p>
       <div class="hero__proof" aria-label="Destaques do painel">
-        <a href="docs/loa-2026-lei-7417-2025.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none"><span>LOA 2026 (PDF)</span></a>
+        <a href="docs/loa-2026-lei-7510-2025.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none"><span>LOA 2026 (PDF)</span></a>
         <span>Prefeitura + Câmara</span>
         <span>Dados públicos</span>
       </div>
@@ -171,19 +171,19 @@
 
       <!-- Card de números ao vivo -->
       <div class="hub-numeros" id="hubNumeros">
-        <p class="hub-numeros__titulo">📊 Números de 2026</p>
+        <p class="hub-numeros__titulo">📊 Números do painel</p>
         <div class="hub-numeros__grid">
           <div class="hub-numeros__item">
             <strong id="hnTotal">—</strong>
-            <span>pago a fornecedores</span>
+            <span>pago a fornecedores em 2026</span>
           </div>
           <div class="hub-numeros__item">
             <strong id="hnContratos">—</strong>
-            <span>contratos ativos</span>
+            <span>contratos em execução</span>
           </div>
           <div class="hub-numeros__item">
             <strong id="hnObras">—</strong>
-            <span>obras registradas</span>
+            <span>obras cadastradas desde 2020</span>
           </div>
           <div class="hub-numeros__item">
             <strong id="hnSinais">—</strong>
@@ -283,13 +283,13 @@
         <h2 class="lvb-hero__title">Para onde vai<br>R$ 1,22 bilhão<br>em 2026?</h2>
         <p class="lvb-hero__sub">Acompanhe como o orçamento de Varginha será aplicado e transforme informação em participação.</p>
         <a href="relatorios.html" class="lvb-hero__cta">Entenda em 1 minuto</a>
-        <p class="muted small" style="margin-top:10px"><a href="docs/loa-2026-lei-7417-2025.pdf" target="_blank" rel="noopener" style="color:inherit">Fonte: LOA 2026 — Lei Municipal nº 7.417/2025 (PDF oficial) ↗</a></p>
+        <p class="muted small" style="margin-top:10px"><a href="docs/loa-2026-lei-7510-2025.pdf" target="_blank" rel="noopener" style="color:inherit">Fonte: LOA 2026 — Lei Municipal nº 7.510/2025 (PDF oficial) ↗</a></p>
       </div>
       <div class="lvb-hero__cards">
         <div class="lvb-stat lvb-stat--navy">
           <span class="lvb-stat__cat">Orçamento total</span>
           <strong class="lvb-stat__val">R$ 1,22 bilhão</strong>
-          <span class="lvb-stat__sub">R$ 8.737 por habitante</span>
+          <span class="lvb-stat__sub">≈ R$ 8.737 por habitante</span>
         </div>
         <div class="lvb-stat lvb-stat--orange">
           <span class="lvb-stat__cat">Pessoal &amp; cargos</span>
@@ -342,8 +342,8 @@
         <div class="lvb-percapita-box">
           <div>
             <p>O orçamento de 2026 equivale a</p>
-            <strong>R$ 8.737</strong>
-            <p>por morador de Varginha</p>
+            <strong>≈ R$ 8.737</strong>
+            <p>por morador (base estimada: 140 mil)</p>
           </div>
         </div>
       </div>
@@ -351,14 +351,14 @@
       <!-- Ranking -->
       <div class="lvb-ranking-col">
         <div class="lvb-ranking-hd">
-          <p class="lvb-col-title">Explore as 22 secretarias</p>
+          <p class="lvb-col-title">Explore os 22 órgãos orçamentários</p>
         </div>
         <!-- Barra de controle -->
         <div class="lvb-ctrl">
-          <input type="search" id="lvbSearch" class="lvb-search" placeholder="Pesquisar secretaria…" aria-label="Pesquisar secretaria">
+          <input type="search" id="lvbSearch" class="lvb-search" placeholder="Pesquisar órgão…" aria-label="Pesquisar órgão">
           <label class="lvb-sort">
             <span>Ordenar:</span>
-            <select id="lvbSort" aria-label="Ordenar secretarias">
+            <select id="lvbSort" aria-label="Ordenar órgãos">
               <option value="val-desc">Maior valor</option>
               <option value="val-asc">Menor valor</option>
               <option value="abc">Ordem alfabética</option>
@@ -380,7 +380,7 @@
           <button type="button" class="lvb-chip" data-area="social">Segurança &amp; Social</button>
           <button type="button" class="lvb-chip" data-area="legislativo">Poder Legislativo</button>
         </div>
-        <p class="lvb-count" id="lvbCount" aria-live="polite">Mostrando 22 de 22 secretarias</p>
+        <p class="lvb-count" id="lvbCount" aria-live="polite">Mostrando 22 de 22 órgãos</p>
 
         <!-- Visão tabela -->
         <div id="lvbTable">
@@ -392,7 +392,7 @@
             <span class="lvb-ta-r lvb-hide-sm">R$/hab.</span>
           </div>
           <div id="lvbRows"></div>
-          <button class="lvb-expand-btn" id="lvbExpandBtn">Ver todas as 22 secretarias ∨</button>
+          <button class="lvb-expand-btn" id="lvbExpandBtn">Ver todos os 22 órgãos ∨</button>
         </div>
 
         <!-- Visão cards -->
@@ -619,7 +619,7 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260608l"></script>
+<script src="data-loader.js?v=20260727-mobile2"></script>
 <script>
 /* ── A: Widget "Esta semana na Câmara" ─────────────────────────── */
 document.addEventListener('zela:ready', function () {
@@ -667,15 +667,24 @@ document.addEventListener('zela:ready', function () {
   }
   function n(v) { return v ? Number(v).toLocaleString('pt-BR') : '—'; }
   function preencherHubNumeros() {
-    var pf = (window.ZELA_DATA || {}).prefeitura || {};
+    var dados = window.ZELA_DATA || {};
+    var pf = dados.prefeitura || dados.home_resumo || {};
     if (!pf.total_externo_atual) return false; // dado ainda não chegou
     var elTotal  = document.getElementById('hnTotal');
     var elContr  = document.getElementById('hnContratos');
     var elObras  = document.getElementById('hnObras');
     var elSinais = document.getElementById('hnSinais');
     if (elTotal)  elTotal.textContent  = brl(pf.total_externo_atual);
-    if (elContr)  elContr.textContent  = n((pf.contratos || []).length || pf.total_contratos);
-    if (elObras)  elObras.textContent  = n((pf.obras_publicas || []).length || pf.total_obras);
+    // Só EXECUCAO conta como vigente: o array traz também ENCERRADO,
+    // RESCINDIDO e AGUARDANDO_EXECUCAO, e contá-los como "ativos" inflava
+    // o número em 55 contratos.
+    if (elContr) {
+      var emExec = (pf.contratos || []).filter(function (c) {
+        return String(c && c.situacao).toUpperCase() === 'EXECUCAO';
+      }).length;
+      elContr.textContent = n(emExec || pf.contratos_execucao_qtd || pf.total_contratos);
+    }
+    if (elObras)  elObras.textContent  = n((pf.obras_publicas || []).length || pf.obras_qtd || pf.total_obras);
     // Sinais de atenção: emendas parlamentares cujo beneficiário (CNPJ) recebeu
     // pagamento da prefeitura — dinheiro que efetivamente saiu para beneficiário
     // de emenda. É ponto de partida para investigação, não prova de irregularidade.
@@ -683,7 +692,7 @@ document.addEventListener('zela:ready', function () {
       var sinais = (pf.emendas_cruzadas || []).filter(function (e) {
         return (e.valor_pago_total || 0) > 0;
       }).length;
-      elSinais.textContent = sinais || '—';
+      elSinais.textContent = sinais || pf.sinais_emendas_qtd || '—';
     }
     return true;
   }
@@ -712,7 +721,7 @@ document.addEventListener('zela:ready', function () {
   });
 });
 
-/* ── LOA: explorador de secretarias (busca, ordenar, filtrar, visão) ── */
+/* ── LOA: explorador de órgãos orçamentários (busca, ordenar, filtrar, visão) ── */
 (function () {
   var rows = document.getElementById('lvbRows');
   if (!rows) return;
@@ -813,7 +822,7 @@ document.addEventListener('zela:ready', function () {
     var filtered = state.q !== '' || state.area !== 'all';
 
     // contador
-    countEl.textContent = 'Mostrando ' + list.length + ' de ' + DATA.length + ' secretarias';
+    countEl.textContent = 'Mostrando ' + list.length + ' de ' + DATA.length + ' órgãos';
     emptyEl.hidden = list.length !== 0;
 
     // visão
@@ -830,7 +839,7 @@ document.addEventListener('zela:ready', function () {
       });
       var hideExpand = filtered || list.length <= 5;
       expand.style.display = hideExpand ? 'none' : 'block';
-      expand.textContent = state.expanded ? 'Mostrar menos ∧' : 'Ver todas as ' + list.length + ' secretarias ∨';
+      expand.textContent = state.expanded ? 'Mostrar menos ∧' : 'Ver todos os ' + list.length + ' órgãos ∨';
     } else {
       grid.innerHTML = '';
       list.forEach(function (d) { grid.appendChild(cardEl(d)); });

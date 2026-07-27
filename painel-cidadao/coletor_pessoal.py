@@ -8,6 +8,7 @@ escopo como parcial em vez de fingir cobertura completa da folha.
 """
 from __future__ import annotations
 
+from collections import Counter
 from html.parser import HTMLParser
 import datetime as dt
 import html
@@ -159,18 +160,79 @@ def _normaliza_betha(rows: list[dict], orgao: str, escopo: str) -> list[dict]:
     return servidores
 
 
+def _ordem_comp(comp: str) -> str:
+    """MM/AAAA -> AAAAMM, para ordenar competencia como texto."""
+    c = str(comp or "")
+    return c[3:7] + c[0:2] if len(c) == 7 else ""
+
+
+def _competencia_referencia(servidores: list[dict]):
+    """Escolhe a competencia que representa UM mes de folha.
+
+    A consulta da Camara devolve uma linha por servidor POR MES (388 linhas para
+    ~70 pessoas, cobrindo 7 competencias). Somar tudo da o custo de sete meses e
+    contar linhas infla o numero de servidores em 5x.
+
+    A competencia mais recente tambem nao serve de referencia: costuma vir
+    parcial, com a folha do mes ainda em processamento ou so lancamentos de
+    ferias e 13o (em 07/2026 eram 7 linhas de 65).
+
+    Regra: entre as competencias com pelo menos 80% da maior cobertura, fica com
+    a mais recente. Devolve (referencia, parcial_descartada).
+    """
+    cont = Counter(s.get("competencia") for s in servidores if s.get("competencia"))
+    if not cont:
+        return None, None
+    maior = max(cont.values())
+    completas = [c for c, n in cont.items() if n >= 0.8 * maior]
+    ref = max(completas, key=_ordem_comp)
+    recente = max(cont, key=_ordem_comp)
+    parcial = (recente, cont[recente]) if recente != ref else None
+    return ref, parcial
+
+
 def _resumo(nome: str, servidores: list[dict]) -> dict:
-    comissionados = [s for s in servidores if s.get("comissionado_ou_similar")]
-    todos_venc = sum(float(s.get("vencimentos") or 0) for s in servidores)
+    ref, parcial = _competencia_referencia(servidores)
+
+    # Sem competencia na linha (Prefeitura) a folha ja vem de um mes so, e cada
+    # linha e um VINCULO, nao uma repeticao: a mesma pessoa pode ser estagiaria
+    # em duas lotacoes e efetiva numa terceira. Ali somar as linhas e o correto.
+    linhas = [s for s in servidores if s.get("competencia") == ref] if ref else list(servidores)
+
+    # A fonte não publica CPF ou outro identificador civil. Para não chamar dois
+    # vínculos da mesma pessoa de duas pessoas, a melhor aproximação disponível
+    # é o nome normalizado; matrícula identifica o vínculo, não necessariamente
+    # a pessoa. Se o nome vier vazio, usa matrícula e, em último caso, a linha.
+    pessoas = set()
+    for idx, s in enumerate(linhas):
+        nome_pessoa = (s.get("nome") or "").strip().upper()
+        matricula = str(s.get("matricula") or "").strip()
+        chave = ("nome", nome_pessoa) if nome_pessoa else (
+            ("matricula", matricula) if matricula else ("linha", idx)
+        )
+        pessoas.add(chave)
+    comissionados = [s for s in linhas if s.get("comissionado_ou_similar")]
+    todos_venc = sum(float(s.get("vencimentos") or 0) for s in linhas)
     com_venc = sum(float(s.get("vencimentos") or 0) for s in comissionados)
-    return {
+
+    resumo = {
         "orgao": nome,
-        "servidores_qtd": len(servidores),
+        "competencia_referencia": ref,
+        # servidores_qtd e vinculos_qtd sao o mesmo numero: vinculos ativos na
+        # competencia. pessoas_qtd aproxima pessoas distintas pelo nome, pois a
+        # fonte nao oferece identificador civil unico.
+        "servidores_qtd": len(linhas),
+        "vinculos_qtd": len(linhas),
+        "pessoas_qtd": len(pessoas),
+        "linhas_todas_competencias": len(servidores),
         "comissionados_qtd": len(comissionados),
         "folha_bruta_total": round(todos_venc, 2),
         "folha_bruta_comissionados": round(com_venc, 2),
         "maior_vencimento_comissionado": round(max([float(s.get("vencimentos") or 0) for s in comissionados] or [0]), 2),
     }
+    if parcial:
+        resumo["competencia_parcial"] = {"competencia": parcial[0], "linhas": parcial[1]}
+    return resumo
 
 
 def _coletar_camara_betha(ano: int) -> list[dict]:
@@ -285,17 +347,16 @@ def coletar() -> dict:
     try:
         servidores = _coletar_camara_betha(ano)
         payload["camara"]["servidores"] = servidores
-        payload["camara"]["resumo"] = _resumo("Camara", servidores)
-        # Competencia da folha da Camara = mes mais recente entre as linhas
-        # (formato MM/AAAA; ordena por AAAA+MM para nao comparar so o mes).
-        comps = sorted(
-            {s.get("competencia") for s in servidores if s.get("competencia")},
-            key=lambda c: (c[3:7], c[0:2]),
-        )
-        if comps:
-            payload["camara"]["competencia"] = comps[-1]
+        resumo_cam = _resumo("Camara", servidores)
+        payload["camara"]["resumo"] = resumo_cam
+        # A competencia do orgao tem que ser a MESMA que o resumo somou, senao o
+        # painel carimba "julho" num valor de junho. Antes daqui saia o mes mais
+        # recente, que costuma vir parcial e nao corresponde ao total exibido.
+        ref = resumo_cam.get("competencia_referencia")
+        if ref:
+            payload["camara"]["competencia"] = ref
             payload["camara"]["status"] = (
-                f"Coletado automaticamente via Betha (competencia {comps[-1]})"
+                f"Coletado automaticamente via Betha (competencia {ref})"
             )
         else:
             payload["camara"]["status"] = "Coletado automaticamente via Betha"
