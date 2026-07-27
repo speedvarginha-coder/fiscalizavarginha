@@ -69,6 +69,7 @@ if (Test-Path -LiteralPath $swStage) {
 }
 
 Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
+Copy-IfExists (Join-Path $source "docs") (Join-Path $stage "docs")
 Copy-IfExists (Join-Path $source "emendas") (Join-Path $stage "emendas")
 $emendasStage = Join-Path $stage "emendas"
 if (Test-Path $emendasStage) {

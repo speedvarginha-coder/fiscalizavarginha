@@ -14,14 +14,14 @@
   // ============ CHUNKS POR PÁGINA ============
   // Mapeia data-page → chunks necessários. Body também pode sobrescrever via data-chunks.
   const CHUNKS_POR_PAGINA = {
-    "home":         ["resumo", "atualizado_em", "auditoria_dados", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
-    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "licitacoes"],
+    "home":         ["home_resumo", "resumo", "atualizado_em", "auditoria_dados", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
+    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados"],
     "fundacao":     ["fundacao_cultural", "atualizado_em", "auditoria_dados", "diario", "prefeitura", "camara_betha"],
     "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados"],
     // "receitas" removido: o chunk mistura arrecadação acumulada de vários anos
     // (ISSQN R$ 2,1 bi vs orçado 379M) e nada na página o renderiza — não publicar
     // até a coleta filtrar o exercício corrente.
-    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "educacao", "licitacoes", "convenios", "obras_educacao", "pessoal"],
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "pessoal"],
     "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
@@ -64,9 +64,61 @@
     "modules/publicacoes.js",
   ];
 
-  const ts = Date.now();
+  // A home é a principal porta de entrada no celular. Antes ela baixava todos
+  // os módulos das páginas internas (diárias, relatórios, atualizações etc.)
+  // antes de liberar a tela, embora não os utilizasse.
+  const MODULOS_POR_PAGINA = {
+    "home": [
+      "modules/utils.js",
+      "modules/icons.js",
+      "modules/glossario.js",
+      "modules/categorias.js",
+      "modules/dossie.js",
+      "modules/home-cidadao.js",
+      "modules/onboarding.js",
+    ],
+    "prefeitura": [
+      "modules/utils.js", "modules/icons.js", "modules/glossario.js",
+      "modules/categorias.js", "modules/watchlist.js", "modules/dossie.js",
+      "modules/dashboard.js", "modules/diarias.js", "modules/onboarding.js",
+    ],
+    "camara": [
+      "modules/utils.js", "modules/icons.js", "modules/glossario.js",
+      "modules/categorias.js", "modules/watchlist.js", "modules/dossie.js",
+      "modules/dashboard.js", "modules/diarias.js", "modules/materia-cidada.js",
+      "modules/indice-relevancia.js", "modules/onboarding.js",
+    ],
+    "relatorios": [
+      "modules/utils.js", "modules/icons.js", "modules/glossario.js",
+      "modules/categorias.js", "modules/dossie.js", "modules/relatorios.js",
+      "modules/onboarding.js",
+    ],
+    "atualizacoes": [
+      "modules/utils.js", "modules/icons.js", "modules/glossario.js",
+      "modules/atualizacoes.js", "modules/publicacoes.js",
+    ],
+    "pessoal": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/dossie.js", "modules/onboarding.js"],
+    "fundacao": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/categorias.js", "modules/dossie.js", "modules/dashboard.js", "modules/onboarding.js"],
+    "marcadores": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/watchlist.js", "modules/dossie.js"],
+    "cobrar": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/dossie.js"],
+    "sobre": ["modules/utils.js", "modules/icons.js", "modules/glossario.js"],
+  };
+  const MODULOS_ADIADOS_POR_PAGINA = {
+    "home": ["modules/chat-cidadao.js"],
+    "prefeitura": ["modules/chat-cidadao.js"],
+    "camara": ["modules/chat-cidadao.js"],
+    "relatorios": ["modules/chat-cidadao.js"],
+    "fundacao": ["modules/chat-cidadao.js"],
+    "cobrar": ["modules/chat-cidadao.js"],
+  };
+
+  // Versão estável: Date.now() obrigava o celular a baixar novamente todos os
+  // scripts e chunks em cada visita. A versão muda apenas quando há deploy.
+  const BUILD_VERSION = "20260727-mobile2";
   const body = document.body;
   const page = (body && body.dataset.page) || "home";
+  const modulosPagina = MODULOS_POR_PAGINA[page] || MODULOS;
+  const modulosAdiados = MODULOS_ADIADOS_POR_PAGINA[page] || [];
 
   // Permite override via <body data-chunks="x,y,z">
   const chunksAttr = body && body.dataset.chunks;
@@ -81,8 +133,11 @@
   function loadScript(src) {
     return new Promise((resolve, reject) => {
       const s = document.createElement("script");
-      s.src = src + "?v=" + ts;
+      s.src = src + "?v=" + BUILD_VERSION;
       s.charset = "UTF-8";
+      // Scripts dinâmicos são async por padrão. Desativar async permite que o
+      // navegador baixe em paralelo, mas execute na ordem da lista.
+      s.async = false;
       s.onload = resolve;
       s.onerror = () => reject(new Error("Falha ao carregar " + src));
       document.head.appendChild(s);
@@ -90,10 +145,13 @@
   }
 
   // Chunks opcionais (novos): falha silenciosa, não derruba toda a página
-  const CHUNKS_OPCIONAIS = new Set(["atualizacoes", "educacao", "receitas", "licitacoes", "convenios", "obras_educacao", "publicacoes_estruturadas", "publicacoes_diario"]);
+  const CHUNKS_OPCIONAIS = new Set(["atualizacoes", "receitas", "publicacoes_estruturadas", "publicacoes_diario"]);
 
   function fetchChunk(key) {
-    return fetch("data/chunks/" + key + ".json?v=" + ts, { cache: "default" })
+    // URL estável permite ao service worker devolver o cache imediatamente e
+    // revalidar em segundo plano. "no-cache" ainda consulta a versão nova
+    // quando não há service worker, usando ETag/Last-Modified.
+    return fetch("data/chunks/" + key + ".json", { cache: "no-cache" })
       .then((r) => {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.json();
@@ -188,9 +246,20 @@
   async function carregar() {
     window.ZELA_DATA = window.ZELA_DATA || {};
 
-    // Carrega lista de módulos em sequência (ordem importa)
+    // Insere todos em ordem de uma vez: downloads paralelos, execução ordenada
+    // por async=false em loadScript().
     async function carregarModulos() {
-      for (const m of MODULOS) await loadScript(m);
+      await Promise.all(modulosPagina.map(loadScript));
+    }
+
+    function carregarModulosAdiados() {
+      if (!modulosAdiados.length) return;
+      const iniciar = () => Promise.allSettled(modulosAdiados.map(loadScript));
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(iniciar, { timeout: 2500 });
+      } else {
+        setTimeout(iniciar, 800);
+      }
     }
 
     // Páginas sem dados só carregam módulos + app.js
@@ -229,6 +298,7 @@
       await carregarModulos();
       await loadScript("app.js");
       window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks } }));
+      carregarModulosAdiados();
 
       // Fase 2: chunks pesados carregam em background sem bloquear o render inicial
       if (chunksFase2.length > 0) {
@@ -269,6 +339,17 @@
   // Service Worker (só funciona em http(s))
   if ("serviceWorker" in navigator && location.protocol !== "file:") {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
+  }
+
+  // Na home, a maior parte do conteúdo é HTML estático e já pode ser usada
+  // enquanto os números vivos terminam de carregar. O overlay não deve cobrir
+  // uma página que o navegador já renderizou.
+  if (page === "home") {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", removerOverlay, { once: true });
+    } else {
+      removerOverlay();
+    }
   }
 
   carregar();

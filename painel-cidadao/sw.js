@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v90 (IFT dinâmico + fonte LOA + publicações julho) */
-const CACHE = "fiscaliza-v90";
+/* Fiscaliza Varginha — Service Worker v91 (cache móvel reutilizável) */
+const CACHE = "fiscaliza-v91";
 const STATIC = [
   "./",
   "./index.html",

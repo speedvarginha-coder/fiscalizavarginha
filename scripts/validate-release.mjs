@@ -24,6 +24,7 @@ const expectedChunks = [
   "federal",
   "fontes_emendas_2026",
   "fundacao_cultural",
+  "home_resumo",
   "indice_relevancia",
   "mudancas_coleta",
   "monitoramento_coletas",
@@ -84,6 +85,8 @@ const requiredPublicFiles = [
   "modules/publicacoes.js",
   "data/manifest.json",
   "release.json",
+  "docs/ldo-2026-lei-7417-2025.pdf",
+  "docs/loa-2026-lei-7510-2025.pdf",
   ...expectedChunks.map((name) => `data/chunks/${name}.json`),
 ];
 
@@ -230,6 +233,21 @@ function validateDomainShapes(chunks) {
     assertNumber(prefeitura.total_externo_atual, "prefeitura.total_externo_atual", 0);
     assertArray(prefeitura.contratos, "prefeitura.contratos", 1);
     assertArray(prefeitura.top_fornecedores_atual, "prefeitura.top_fornecedores_atual");
+  }
+  const homeResumo = chunks.get("home_resumo");
+  assertObject(homeResumo, "home_resumo");
+  if (isObject(homeResumo) && isObject(prefeitura)) {
+    assert(homeResumo.schema_version === 1, "home_resumo.schema_version deve ser 1");
+    assertNumber(homeResumo.total_externo_atual, "home_resumo.total_externo_atual", 0);
+    assertNumber(homeResumo.contratos_execucao_qtd, "home_resumo.contratos_execucao_qtd", 0);
+    assert(
+      homeResumo.total_externo_atual === prefeitura.total_externo_atual,
+      "home_resumo.total_externo_atual diverge de prefeitura",
+    );
+    const prefeituraHash = crypto.createHash("sha256")
+      .update(fs.readFileSync(path.join(chunksDir, "prefeitura.json")))
+      .digest("hex");
+    assert(homeResumo.fonte_sha256 === prefeituraHash, "home_resumo.fonte_sha256 diverge da base completa");
   }
 
   const camaraBetha = chunks.get("camara_betha");
@@ -380,7 +398,7 @@ function validateDeploy() {
 
   const files = walk(stageDir);
   const forbiddenExtensions = new Set([".py", ".pyc", ".bat", ".txt", ".log", ".bak", ".backup", ".tmp"]);
-  const forbiddenDirs = new Set(["private", "node_modules", "tests", "docs", "__pycache__", ".git"]);
+  const forbiddenDirs = new Set(["private", "node_modules", "tests", "__pycache__", ".git"]);
 
   for (const file of files) {
     const rel = path.relative(stageDir, file).replace(/\\/g, "/");
@@ -389,6 +407,7 @@ function validateDeploy() {
 
     if (forbiddenExtensions.has(ext)) fail(`Arquivo proibido no pacote: ${rel}`);
     if (parts.some((part) => forbiddenDirs.has(part))) fail(`Diretorio proibido no pacote: ${rel}`);
+    if (rel.startsWith("docs/") && ext !== ".pdf") fail(`Arquivo nao-PDF proibido em docs/: ${rel}`);
     if (path.basename(file).startsWith(".betha-token")) fail(`Token Betha no pacote: ${rel}`);
 
     if (rel.startsWith("data/") && ext === ".json") {

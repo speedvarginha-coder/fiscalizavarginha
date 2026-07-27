@@ -10,6 +10,8 @@ const painelDir = path.join(root, "painel-cidadao");
 const dataJsPath = path.join(painelDir, "data.js");
 const chunksDir = path.join(painelDir, "data", "chunks");
 const manifestPath = path.join(painelDir, "data", "manifest.json");
+const prefeituraPath = path.join(chunksDir, "prefeitura.json");
+const homeResumoPath = path.join(chunksDir, "home_resumo.json");
 
 const keys = [
   "auditoria_dados",
@@ -26,6 +28,9 @@ const keys = [
   "monitoramento_coletas",
   "cnpjs",
   "status_fontes",
+  // sem isto o fallback data.js (file:// ou fetch falhando) servia a folha
+  // antiga, com 388 "servidores" e o custo de sete meses somado
+  "pessoal",
 ];
 
 function readJson(filePath) {
@@ -52,12 +57,51 @@ function parseDataJs(text) {
   return JSON.parse(text.slice(start, end + 1));
 }
 
+function gerarResumoHome(prefeitura) {
+  const contratos = Array.isArray(prefeitura.contratos) ? prefeitura.contratos : [];
+  const obras = Array.isArray(prefeitura.obras_publicas) ? prefeitura.obras_publicas : [];
+  const emendas = Array.isArray(prefeitura.emendas_cruzadas) ? prefeitura.emendas_cruzadas : [];
+  const anoAtual = String(prefeitura.ano_atual || "");
+  const anoAnterior = String(prefeitura.ano_anterior || "");
+  const contratosPorAno = (ano) => contratos.filter((item) => String(item?.ano || "") === ano).length;
+  const fonteBytes = fs.readFileSync(prefeituraPath);
+  return {
+    schema_version: 1,
+    gerado_em: new Date().toISOString(),
+    fonte: "data/chunks/prefeitura.json",
+    fonte_sha256: crypto.createHash("sha256").update(fonteBytes).digest("hex"),
+    ano_atual: prefeitura.ano_atual,
+    ano_anterior: prefeitura.ano_anterior,
+    total_externo_atual: Number(prefeitura.total_externo_atual) || 0,
+    total_externo_anterior: Number(prefeitura.total_externo_anterior) || 0,
+    credores_qtd: Number(prefeitura.credores_qtd) || 0,
+    contratos_execucao_qtd: contratos.filter(
+      (item) => String(item?.situacao || "").toUpperCase() === "EXECUCAO",
+    ).length,
+    contratos_total_qtd: contratos.length,
+    contratos_ano_atual_qtd: contratosPorAno(anoAtual),
+    contratos_ano_anterior_qtd: contratosPorAno(anoAnterior),
+    obras_qtd: obras.length,
+    sinais_emendas_qtd: emendas.filter((item) => Number(item?.valor_pago_total) > 0).length,
+    licitacoes_qtd: Array.isArray(prefeitura.licit_andamento)
+      ? prefeitura.licit_andamento.length
+      : 0,
+  };
+}
+
 if (!fs.existsSync(dataJsPath)) {
   throw new Error(`data.js nao encontrado: ${dataJsPath}`);
 }
 
 const data = parseDataJs(fs.readFileSync(dataJsPath, "utf8"));
 const synced = [];
+
+if (fs.existsSync(prefeituraPath)) {
+  writeFileWithRetry(
+    homeResumoPath,
+    JSON.stringify(gerarResumoHome(readJson(prefeituraPath)), null, 2) + "\n",
+  );
+}
 
 for (const key of keys) {
   const chunkPath = path.join(chunksDir, `${key}.json`);

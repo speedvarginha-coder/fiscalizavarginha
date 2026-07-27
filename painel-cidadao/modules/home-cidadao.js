@@ -290,15 +290,19 @@
     const el = $("homeTrendWatch");
     if (!el) return;
     const D = window.ZELA_DATA || {};
-    const pf = D.prefeitura || {};
+    const pf = D.prefeitura || D.home_resumo || {};
     const cb = D.camara_betha || {};
     if (!pf.ano_atual) return;
     const anoAtu = String(pf.ano_atual);
     const anoAnt = String(pf.ano_anterior || pf.ano_atual - 1);
 
     const contratos = pf.contratos || [];
-    const qtdAtu = contratos.filter((c) => String(c.ano) === anoAtu).length;
-    const qtdAnt = contratos.filter((c) => String(c.ano) === anoAnt).length;
+    const qtdAtu = contratos.length
+      ? contratos.filter((c) => String(c.ano) === anoAtu).length
+      : Number(pf.contratos_ano_atual_qtd) || 0;
+    const qtdAnt = contratos.length
+      ? contratos.filter((c) => String(c.ano) === anoAnt).length
+      : Number(pf.contratos_ano_anterior_qtd) || 0;
 
     const series = [
       { id: "pagamentos", titulo: "Pagamentos da Prefeitura", ant: Number(pf.total_externo_anterior) || 0, atu: Number(pf.total_externo_atual) || 0, fmt: fmtBRL,

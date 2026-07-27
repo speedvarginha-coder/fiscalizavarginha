@@ -10,6 +10,7 @@ test("pacote publico serve loader, chunk e modulo sem data.js", async ({ request
 
   for (const asset of [
     "/data-loader.js",
+    "/data/chunks/home_resumo.json",
     "/data/chunks/resumo.json",
     "/modules/utils.js",
     "/modules/chat-cidadao.js",
@@ -18,6 +19,60 @@ test("pacote publico serve loader, chunk e modulo sem data.js", async ({ request
     expect(response.ok(), `${asset} deve responder via HTTP`).toBeTruthy();
     expect((await response.body()).length, `${asset} nao deve estar vazio`).toBeGreaterThan(0);
   }
+});
+
+test("home móvel reutiliza cache e não baixa módulos de páginas internas", async ({ page, request }) => {
+  const loaderResponse = await request.get("/data-loader.js");
+  const loader = await loaderResponse.text();
+  expect(loader).not.toMatch(/const\s+\w+\s*=\s*Date\.now\(\)/);
+  expect(loader).toContain('const BUILD_VERSION = "20260727-mobile2"');
+
+  const modulos = [];
+  page.on("request", (req) => {
+    if (req.url().includes("/modules/")) modulos.push(req.url());
+  });
+
+  await page.goto("/index.html", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => window.ZELA && typeof window.ZELA.smartAudit === "function");
+
+  expect(modulos.some((url) => url.includes("/modules/utils.js"))).toBe(true);
+  expect(modulos.some((url) => url.includes("/modules/home-cidadao.js"))).toBe(true);
+  expect(modulos.some((url) => url.includes("/modules/diarias.js"))).toBe(false);
+  expect(modulos.some((url) => url.includes("/modules/relatorios.js"))).toBe(false);
+  expect(modulos.some((url) => url.includes("/modules/atualizacoes.js"))).toBe(false);
+  await expect(page.locator("#loading-overlay")).toHaveCount(0);
+  await page.waitForFunction(() => Boolean(window.ZELA_DATA?.home_resumo?.total_externo_atual));
+  await expect(page.locator("#hnTotal")).not.toHaveText("—");
+});
+
+test("páginas principais não requisitam chunks inexistentes", async ({ page }) => {
+  for (const rota of ["/index.html", "/prefeitura.html", "/camara.html", "/relatorios.html"]) {
+    const erros = [];
+    const observar = (response) => {
+      if (response.status() >= 400 && response.url().includes("/data/chunks/")) {
+        erros.push(`${response.status()} ${response.url()}`);
+      }
+    };
+    page.on("response", observar);
+    await page.goto(rota, { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => Boolean(window.ZELA_DATA));
+    await page.waitForTimeout(400);
+    page.off("response", observar);
+    expect(erros, `${rota} não deve buscar chunks ausentes`).toEqual([]);
+  }
+});
+
+test("home publica a LOA 2026 correta e serve o PDF oficial", async ({ request }) => {
+  const index = await request.get("/index.html");
+  expect(index.ok()).toBeTruthy();
+  const html = await index.text();
+  expect(html).toContain("LOA 2026 — Lei nº 7.510/2025");
+  expect(html).not.toContain("loa-2026-lei-7417-2025.pdf");
+
+  const pdf = await request.get("/docs/loa-2026-lei-7510-2025.pdf");
+  expect(pdf.ok()).toBeTruthy();
+  expect(pdf.headers()["content-type"]).toContain("application/pdf");
+  expect((await pdf.body()).length).toBeGreaterThan(1_000_000);
 });
 
 test("conformidade publica origem, arquivo e canal de verificacao dos achados", async ({ page }) => {
