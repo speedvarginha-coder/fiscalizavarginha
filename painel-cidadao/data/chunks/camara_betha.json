@@ -1074,6 +1074,16 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     },
     {
+      "numero": "54",
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "INSCRIÇÃO PARA CURSO: EMENDAS IMPOSITIVAS: ELABORAÇÃO, TRAMITAÇÃO E EXECUÇÃO ORÇAMENTÁRIA.",
+      "data": "2026-07-28",
+      "valor": 1590.0,
+      "situacao": "RATIFICADO",
+      "entidade": "CAMARA MUNICIPAL DE VARGINHA"
+    },
+    {
       "numero": "52",
       "ano": "",
       "modalidade": "Dispensa eletrônica",
@@ -1144,5 +1154,5 @@
       "entidade": "CAMARA MUNICIPAL DE VARGINHA"
     }
   ],
-  "coletado_em": "2026-07-27T17:44:37-03:00"
+  "coletado_em": "2026-07-29T06:10:54-03:00"
 }

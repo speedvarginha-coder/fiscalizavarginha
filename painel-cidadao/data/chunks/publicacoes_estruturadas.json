@@ -1,8 +1,57 @@
 {
- "gerado_em": "2026-07-27T20:45:57+00:00",
+ "gerado_em": "2026-07-29T09:12:04+00:00",
  "fonte": "camara",
- "total": 764,
+ "total": 765,
  "publicacoes": [
+  {
+   "id": "CAMARA-2026-PLOE-44",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Executivo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Executivo nº 44/2026",
+   "numero": "44/2026",
+   "data": "2026-07-28",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "educação",
+   "resumo": "Este projeto de lei propõe uma mudança na redação do artigo que nomeia a Escola Municipal Francisca Geraldina de Paula.",
+   "o_que_propoe": "O projeto altera a redação do Artigo 1º da Lei Municipal nº 7.513/2025, que trata da denominação da Escola Municipal Francisca Geraldina de Paula.",
+   "por_que_acompanhar": [
+    "Garantir a transparência nos processos de nomeação e alteração de nomes de bens públicos.",
+    "Compreender as razões por trás da alteração da redação de uma lei já existente.",
+    "Verificar se a mudança tem alguma implicação para a comunidade escolar ou para a memória da homenageada."
+   ],
+   "pontos_atencao": [
+    "A proposta não especifica a natureza da alteração na redação do artigo, o que pode dificultar a compreensão do impacto da mudança."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6117/projetodelei44-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Leonardo Vinhas Ciacci",
+   "situacao": "em tramitação",
+   "ementa": "ALTERA REDAÇÃO DO ART. 1' DA LEI MUNICIPAL N° 7.513/2025 QUE DISPÕE SOBRE DENOMINAÇÃO DE PRÓPRIO PÚBLICO. ESCOLA MUNICIPAL FRANCISCA GERALDINA DE PAULA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6117",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6117/projetodelei44-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6117/projetodelei44-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "ff5ce37575e7abf18d09191fe0ce9389c97adb92",
+   "gerado_em": "2026-07-28T22:39:46+00:00"
+  },
   {
    "id": "CAMARA-2026-REQ-184",
    "fonte": "camara",
@@ -2754,7 +2803,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/zilda_p.l.___denominacao_logradouro_mario_kieser_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/projetodelei63-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Zilda Silva",
@@ -2762,11 +2811,11 @@
    "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A RUA B, NO BAIRRO TERRA NOBRE, PASSARÁ A DENOMINAR-SE RUA MÁRIO KIESER.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6074",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/zilda_p.l.___denominacao_logradouro_mario_kieser_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/projetodelei63-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/zilda_p.l.___denominacao_logradouro_mario_kieser_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/projetodelei63-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "50592ccdcfe638fdf94a251c504ce735c8d8200e",
@@ -2956,7 +3005,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/p.l.___denominacao_logradouro.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/projetodelei59-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Afonso Monticeli",
@@ -2964,11 +3013,11 @@
    "ementa": "DISPÕE SOBRE DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A RUA 12 NO BAIRRO PRAÇA DA MATA, PASSARÁ A DENOMINA-SE RUA LOURIVAL SILVA",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6065",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/p.l.___denominacao_logradouro.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/projetodelei59-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/p.l.___denominacao_logradouro.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/projetodelei59-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "0769ff01d1ce0d226aed1ecc8e86535f8fecb7d6",
@@ -3006,19 +3055,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_decreto_-_honra_ao_merito_aloysio.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_de_decreto_legislativo57-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Pastor Faustinho",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "CONCEDE DIPLOMA DE HONRA AO MÉRITO AO SENHOR ALOYSIO RIBEIRO DE ALMEIDA.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6071",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_decreto_-_honra_ao_merito_aloysio.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_de_decreto_legislativo57-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_decreto_-_honra_ao_merito_aloysio.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_de_decreto_legislativo57-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "876315a79e9377f9169cc85c378427c3721bfca7",
@@ -3056,19 +3105,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo_no.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo56-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Miguel da Saúde",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "CONCEDE COMENDA DO MÉRITO PROFISSIONAL DA SEGURANÇA PÚBLICA - ALFERES TIRADENTES - À COMANDANTE CORONEL DAISY FERRAREZI DA 6° REGIÃO DA PMMG.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6070",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo_no.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo56-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo_no.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo56-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "6cf617d1dc3f587f0093ca2501026f9b3dc64ed2",
@@ -3106,19 +3155,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/dandan_minuta_projeto_de_decreto___professora_olga_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/projeto_de_decreto_legislativo55-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Dandan",
-   "situacao": "tramitação encerrada",
+   "situacao": "em tramitação",
    "ementa": "CONCEDE COMENDA DO MÉRITO EDUCACIONAL À OLGA PIRES DA SILVA JUNQUEIRA",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6069",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/dandan_minuta_projeto_de_decreto___professora_olga_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/projeto_de_decreto_legislativo55-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/dandan_minuta_projeto_de_decreto___professora_olga_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/projeto_de_decreto_legislativo55-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "28151f87c7f10152080d60533d898c77f518d389",
@@ -3155,19 +3204,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6067/projeto_de_decreto_legislativo54-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Ana Rios Fontoura",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "CONCEDE COMENDA DO MÉRITO ECLESIÁSTICO – PADRE VICTOR AO PADRE JOSÉ RODRIGO PEREIRA.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6067",
-    "inteiro_teor": ""
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6067/projeto_de_decreto_legislativo54-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": ""
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6067/projeto_de_decreto_legislativo54-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "6a5597a9f068d1cab93e728f880279b1b9cd6339",
@@ -4586,7 +4635,7 @@
     "valor_principal_ia": ""
    },
    "autor": "Leonardo Vinhas Ciacci",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "DISPÕE SOBRE A APLICAÇÃO DO RECURSO DO COMPONENTE DE QUALIDADE DA ATENÇÃO PRIMÁRIA À SAÚDE - APS, DESTINADO AO REPASSE AOS PROFISSIONAIS DAS EQUIPES DE SAÚDE DA FAMÍLIA E EQUIPES DE ATENÇÃO PRIMÁRIA DO MUNICÍPIO DE VARGINHA, E DÁ OUTRAS PROVIDÊNCIAS.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6027",

@@ -263,8 +263,8 @@
     "resumo_atual": {
       "registros": 231,
       "empenhado": 3638572.39,
-      "liquidado": 3010344.39,
-      "pago": 2854403.33
+      "liquidado": 3014094.32,
+      "pago": 2854479.21
     },
     "maiores_empenhos_atual": [
       {
@@ -461,9 +461,9 @@
         "credor": "L&C LOCACAO DE EQUIPAMENTOS PARA FESTAS LTDA",
         "historico": "Aditivo n 006/2026 - 2 Termo Aditivo ao Contrato n 003/2024. Locação de banheiros químicos visando atender às demandas da Fundação Cultural de Varginha, incluindo a montagem, desmontagem, transporte, manutenção, higienização e sucção dos dejetos de banheiros químicos temporários, de acordo com as especificações deste documento.",
         "valor_empenhado": 31660.8,
-        "valor_liquidado": 1055.36,
-        "valor_pago": 1055.36,
-        "saldo_a_pagar": 30605.44
+        "valor_liquidado": 3166.08,
+        "valor_pago": 1106.65,
+        "saldo_a_pagar": 30554.15
       },
       {
         "data": "2026-06-12",
@@ -643,17 +643,6 @@
       },
       {
         "data": "2026-03-20",
-        "numero": 71,
-        "orgao": "ADMINISTRACAO",
-        "credor": "PANIFICADORA PRINCESA LTDA",
-        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
-        "valor_empenhado": 12673.6,
-        "valor_liquidado": 1901.04,
-        "valor_pago": 1901.04,
-        "saldo_a_pagar": 10772.56
-      },
-      {
-        "data": "2026-03-20",
         "numero": 70,
         "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
         "credor": "PANIFICADORA PRINCESA LTDA",
@@ -662,6 +651,17 @@
         "valor_liquidado": 2534.72,
         "valor_pago": 2221.68,
         "saldo_a_pagar": 10451.92
+      },
+      {
+        "data": "2026-03-20",
+        "numero": 71,
+        "orgao": "ADMINISTRACAO",
+        "credor": "PANIFICADORA PRINCESA LTDA",
+        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
+        "valor_empenhado": 12673.6,
+        "valor_liquidado": 2851.56,
+        "valor_pago": 1912.44,
+        "saldo_a_pagar": 10761.16
       },
       {
         "data": "2026-04-08",
@@ -38442,8 +38442,8 @@
         "data_admissao": "1996-07-19",
         "tipo_matricula": "Funcionário",
         "vinculo": "EFETIVO(PF/INPREV)",
-        "carga_horaria_mensal": "220.00",
-        "carga_horaria_semanal": "44",
+        "carga_horaria_mensal": "180.00",
+        "carga_horaria_semanal": "36",
         "remuneracao_contratual": 2206.69,
         "situacao": "Trabalhando"
       },

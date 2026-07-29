@@ -31328,20 +31328,20 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-07-27T17:26:51-03:00"
+    "coletado_em": "2026-07-29T06:02:11-03:00"
   },
   "2026": {
     "resumo": {
       "ano": 2026,
-      "total_materias": 764,
+      "total_materias": 765,
       "vereadores_ativos": 15,
       "emendas_qtd": 0,
       "emendas_valor_total_brl": 0.0,
       "impacto_zero_qtd": 210,
       "desfechos": {
-        "lei": 40,
-        "arquivado": 477,
-        "tramitando": 232,
+        "lei": 39,
+        "arquivado": 481,
+        "tramitando": 230,
         "encerrado": 15,
         "sem_dado": 0
       },
@@ -31364,7 +31364,7 @@
         },
         {
           "tipo": "Projeto de Lei Ordinária do Executivo",
-          "qtd": 43
+          "qtd": 44
         },
         {
           "tipo": "Emenda",
@@ -32521,7 +32521,7 @@
         "data": "2026-06-19",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -32610,6 +32610,23 @@
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
+      },
+      {
+        "id": "6117",
+        "ano": "2026",
+        "numero": "44",
+        "tipo": "Projeto de Lei Ordinária do Executivo",
+        "sigla": "PLOE",
+        "autor": "Leonardo Vinhas Ciacci",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6117/projetodelei44-2026.pdf",
+        "ementa": "ALTERA REDAÇÃO DO  ART.  1' DA LEI MUNICIPAL N°  7.513/2025 QUE DISPÕE SOBRE DENOMINAÇÃO DE PRÓPRIO PÚBLICO. \r\nESCOLA MUNICIPAL FRANCISCA GERALDINA DE PAULA.",
+        "data": "2026-07-28",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "educacao",
+        "tema_label": "Educação",
+        "grau": "alto"
       },
       {
         "id": "5357",
@@ -33587,7 +33604,7 @@
         "tipo": "Projeto de Lei Ordinária do Legislativo",
         "sigla": "PLOL",
         "autor": "Afonso Monticeli",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/p.l.___denominacao_logradouro.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/projetodelei59-2026.pdf",
         "ementa": "DISPÕE SOBRE DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A RUA 12 NO BAIRRO PRAÇA DA MATA, PASSARÁ A DENOMINA-SE RUA LOURIVAL SILVA",
         "data": "2026-07-08",
         "impacto_zero": true,
@@ -33655,7 +33672,7 @@
         "tipo": "Projeto de Lei Ordinária do Legislativo",
         "sigla": "PLOL",
         "autor": "Zilda Silva",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/zilda_p.l.___denominacao_logradouro_mario_kieser_revisado.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/projetodelei63-2026.pdf",
         "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A RUA B, NO BAIRRO TERRA NOBRE, PASSARÁ A DENOMINAR-SE RUA MÁRIO KIESER.",
         "data": "2026-07-08",
         "impacto_zero": true,
@@ -34658,12 +34675,12 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Ana Rios Fontoura",
-        "pdf": "",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6067/projeto_de_decreto_legislativo54-2026.pdf",
         "ementa": "CONCEDE COMENDA DO MÉRITO ECLESIÁSTICO – PADRE VICTOR AO PADRE JOSÉ RODRIGO PEREIRA.",
         "data": "2026-07-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -34675,12 +34692,12 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Dandan",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/dandan_minuta_projeto_de_decreto___professora_olga_revisada.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/projeto_de_decreto_legislativo55-2026.pdf",
         "ementa": "CONCEDE COMENDA DO MÉRITO EDUCACIONAL À OLGA PIRES DA SILVA JUNQUEIRA",
         "data": "2026-07-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "lei",
+        "desfecho": "tramitando",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -34692,12 +34709,12 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Miguel da Saúde",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo_no.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo56-2026.pdf",
         "ementa": "CONCEDE COMENDA DO MÉRITO PROFISSIONAL DA SEGURANÇA PÚBLICA - ALFERES TIRADENTES - À COMANDANTE CORONEL DAISY FERRAREZI DA 6° REGIÃO DA PMMG.",
         "data": "2026-07-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "baixo"
@@ -34709,12 +34726,12 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Pastor Faustinho",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_decreto_-_honra_ao_merito_aloysio.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_de_decreto_legislativo57-2026.pdf",
         "ementa": "CONCEDE DIPLOMA DE HONRA AO MÉRITO AO SENHOR ALOYSIO RIBEIRO DE ALMEIDA.",
         "data": "2026-07-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -47329,6 +47346,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5125"
       }
     ],
-    "coletado_em": "2026-07-27T17:26:51-03:00"
+    "coletado_em": "2026-07-29T06:02:11-03:00"
   }
 }

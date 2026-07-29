@@ -1496,7 +1496,7 @@
       "cnpj_raiz": "25863390",
       "cnpj_completo": "25863390000154",
       "cnpj_reconstruido": true,
-      "valor_total": 48166093.29,
+      "valor_total": 50897221.94,
       "razao_social": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "nome_fantasia": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "situacao": "ATIVA",
@@ -1573,7 +1573,7 @@
       "cnpj_raiz": "00394460",
       "cnpj_completo": "00394460000141",
       "cnpj_reconstruido": true,
-      "valor_total": 6756074.48,
+      "valor_total": 6756143.32,
       "razao_social": "MINISTERIO DA FAZENDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1600,6 +1600,27 @@
       "socios": [
         "JOSE ALBERTO DA SILVA VINHAS",
         "PAMELA VINHAS"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
+      "cnpj_raiz": "16565111",
+      "cnpj_completo": "16565111000185",
+      "cnpj_reconstruido": true,
+      "valor_total": 4518151.88,
+      "razao_social": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1972-05-29",
+      "cnae": "Coleta de resíduos não-perigosos",
+      "municipio": "BELO HORIZONTE",
+      "uf": "MG",
+      "socios": [
+        "FLAVIO COSTA DINIZ",
+        "HELDER FILIPE TEIXEIRA BESSA",
+        "MARIANA MIRANDA MAIA LOPES",
+        "NORBERTO JORGE RODRIGUES ALVES DA COSTA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -1638,27 +1659,6 @@
         "LAURA PETRI GERALDINO",
         "MARILIA CARVALHO DE MELO",
         "PABLO FERRACO ANDREAO"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
-      "cnpj_raiz": "16565111",
-      "cnpj_completo": "16565111000185",
-      "cnpj_reconstruido": true,
-      "valor_total": 3775220.72,
-      "razao_social": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "1972-05-29",
-      "cnae": "Coleta de resíduos não-perigosos",
-      "municipio": "BELO HORIZONTE",
-      "uf": "MG",
-      "socios": [
-        "FLAVIO COSTA DINIZ",
-        "HELDER FILIPE TEIXEIRA BESSA",
-        "MARIANA MIRANDA MAIA LOPES",
-        "NORBERTO JORGE RODRIGUES ALVES DA COSTA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -1808,7 +1808,7 @@
       "cnpj_raiz": "05165851",
       "cnpj_completo": "05165851000108",
       "cnpj_reconstruido": true,
-      "valor_total": 2411996.14,
+      "valor_total": 2416982.82,
       "razao_social": "SERVICOS CFC LTDA",
       "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
       "situacao": "ATIVA",

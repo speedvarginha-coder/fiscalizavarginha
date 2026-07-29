@@ -1,101 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-27T20:51:26.917Z",
+  "gerado_em": "2026-07-29T09:47:56.520Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-07-27T17-45-48-cef8855b",
-    "coleta_iso": "2026-07-27T17:45:48",
-    "data_humana": "27/07/2026 - 17:45",
-    "arquivo": "data/snapshots/2026-07-27T17-45-48-cef8855b.json"
+    "snapshot_id": "2026-07-29T06-11-55-814e6052",
+    "coleta_iso": "2026-07-29T06:11:55",
+    "data_humana": "29/07/2026 - 06:11",
+    "arquivo": "data/snapshots/2026-07-29T06-11-55-814e6052.json"
   },
   "anterior": {
-    "snapshot_id": "2026-07-27T06-11-04-76bab749",
-    "coleta_iso": "2026-07-27T06:11:04",
-    "data_humana": "27/07/2026 - 06:11",
+    "snapshot_id": "2026-07-28T19-39-28-5b3e1fe3",
+    "coleta_iso": "2026-07-28T19:39:28",
+    "data_humana": "28/07/2026 - 19:39",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 3,
-    "contratos_valor_alterado": 2,
-    "novos_fornecedores_relevantes": 1,
-    "novas_edicoes_diario": 1,
+    "novos_contratos": 0,
+    "contratos_valor_alterado": 0,
+    "novos_fornecedores_relevantes": 0,
+    "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 664598.7,
-    "valor_delta_brl": 1039835.28,
-    "total_mudancas": 7
+    "valor_novo_brl": 0,
+    "valor_delta_brl": 0,
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "alta",
-      "titulo": "Valor alterado no contrato 72/2025",
-      "detalhe": "INSTITUTO NACIONAL ESPECIALIZADO EM PESQUISA E APOIO AOS MUNICIPIOS - INEPAM: antes R$ 779.770,00, agora R$ 1.819.463,32.",
-      "orgao": "Prefeitura",
-      "data": "2025-08-18",
-      "valor_brl": 1819463.32,
-      "delta_brl": 1039693.3200000001,
-      "alvo_id": "PREFEITURA-2025-72"
-    },
-    {
-      "tipo": "novo_fornecedor_relevante",
-      "prioridade": "alta",
-      "titulo": "Fornecedor entrou no ranking: BETHA SISTEMAS LTDA",
-      "detalhe": "Prefeitura - rank 26, R$ 1.450.990,76 no recorte atual.",
-      "orgao": "Prefeitura",
-      "valor_brl": 1450990.76
-    },
-    {
-      "tipo": "valor_alterado",
-      "prioridade": "media",
-      "titulo": "Valor alterado no contrato 185/2025",
-      "detalhe": "MARIA TERESA PEREIRA COELHO & CIA LTDA: antes R$ 652.752,00, agora R$ 652.893,96.",
-      "orgao": "Prefeitura",
-      "data": "2025-06-26",
-      "valor_brl": 652893.96,
-      "delta_brl": 141.95999999996275,
-      "alvo_id": "PREFEITURA-2025-185"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 19/2025 - RECAPAGEM FELIPE FONTES LTDA",
-      "detalhe": "Registro de Preços para prestação de serviços de recauchutagem de pneus",
-      "orgao": "Prefeitura",
-      "data": "2025-01-27",
-      "valor_brl": 437613.7,
-      "alvo_id": "PREFEITURA-2025-19"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 17/2025 - INDUSTRIA E COMERCIO MUT PNEUS LTDA",
-      "detalhe": "Registro de Preços para prestação de serviços de recauchutagem de pneus",
-      "orgao": "Prefeitura",
-      "data": "2025-01-27",
-      "valor_brl": 146930,
-      "alvo_id": "PREFEITURA-2025-17"
-    },
-    {
-      "tipo": "nova_edicao_diario",
-      "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1852",
-      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-07-27",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/259/"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 83/2026 - MAIS SAUDE CONSULTORIA E AUDITORIA MEDICA HOSPITALAR LTDA",
-      "detalhe": "SERVIÇOS DE LOCAÇÃO DE UNIDADE MÓVEL DE RADIOLOGIA.",
-      "orgao": "Prefeitura",
-      "data": "2026-07-17",
-      "valor_brl": 80055,
-      "alvo_id": "PREFEITURA-2026-83"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }

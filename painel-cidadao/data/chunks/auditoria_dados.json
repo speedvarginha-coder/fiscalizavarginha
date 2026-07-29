@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-27T20:51:25.658Z",
+  "gerado_em": "2026-07-29T09:47:54.146Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,8 +9,8 @@
     "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-27T17:45:48",
-    "data_humana": "27/07/2026 - 17:45"
+    "iso": "2026-07-29T06:11:55",
+    "data_humana": "29/07/2026 - 06:11"
   },
   "items": [
     {
@@ -69,7 +69,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
-      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); BRAVO LOCACOES E SERVICOS LTDA (R$ 2.1M).",
+      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 4.5M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); BRAVO LOCACOES E SERVICOS LTDA (R$ 2.1M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json",
       "verification": {
@@ -108,7 +108,7 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); GLOBAL BRANDS COMERCIO LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json",
       "verification": {
@@ -128,7 +128,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "40 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (90 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (89 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -136,7 +136,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "90 sancao(oes) de outros entes"
+          "89 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
@@ -209,7 +209,7 @@
       "severity": "warning",
       "id": "prefeitura-despesa-sem-contrato",
       "title": "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
-      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 3.8M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); BRAVO LOCACOES E SERVICOS LTDA (R$ 2.1M).",
+      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 4.5M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); BRAVO LOCACOES E SERVICOS LTDA (R$ 2.1M).",
       "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
       "source": "prefeitura.json",
       "verification": {
@@ -248,7 +248,7 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); GLOBAL BRANDS COMERCIO LTDA (Impedimento/proibição de contratar com prazo determinado — MMG-PREFEITURA MUNICIPAL DE VARGINHA); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
+      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
       "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
       "source": "sancoes.json",
       "verification": {
@@ -268,7 +268,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "40 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (90 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "39 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (89 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -276,7 +276,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "90 sancao(oes) de outros entes"
+          "89 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"

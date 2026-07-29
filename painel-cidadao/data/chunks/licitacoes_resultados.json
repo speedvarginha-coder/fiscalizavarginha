@@ -1,13 +1,13 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-07-27T09:47:54+00:00",
+  "gerado_em": "2026-07-29T09:47:47+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251129",
-    "fim": "20260727"
+    "inicio": "20251201",
+    "fim": "20260729"
   },
-  "compras": 294,
-  "compras_com_resultado": 164,
+  "compras": 313,
+  "compras_com_resultado": 171,
   "homologacoes_simbolicas": [
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -7412,7 +7412,7 @@
       "objeto": "[Portal de Compras Públicas] - Aquisição de veículo tipo Van, zero quilômetro, ano/modelo mínimo 2026 ou superior, com adaptação para cadeirante, cor branca, zero km, diesel, motor mínimo 2000 cilindradas, potência mínim",
       "valor_estimado": 747263.34,
       "valor_homologado_total": null,
-      "situacao": "Suspensa",
+      "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-10",
       "resultados": []
     },
@@ -7438,7 +7438,7 @@
       "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para locação (outsourcing) de equipamentos de informática (computadores desktop, notebooks), incluindo licenças de softwares, serviços de instalação, ma",
       "valor_estimado": 3632232.0,
       "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
+      "situacao": "Suspensa",
       "data_publicacao": "2026-07-14",
       "resultados": []
     },
@@ -7509,6 +7509,188 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "52",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000169/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para execução de serviços contínuos de reparo e manutenção predial e de bens móveis, com fornecimento de mão de obra especializada, materiais, ferrament",
+      "valor_estimado": 3415863.96,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-20",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "61",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000170/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de mobiliários, com o objetivo de atender às necessidades da Secretaria Municipal de Assistência e Desenvolvimento Social – SEHAD",
+      "valor_estimado": 132333.75,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-20",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "67",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000174/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de materiais de pintura epóxi e insumos complementares, destinados à manutenção e pintura de pisos e estruturas das instalações vinc",
+      "valor_estimado": 503507.72,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-21",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "80",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000176/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de tinta para demarcação viária à base de metil metacrilato - Departamento Municipal de Trânsito",
+      "valor_estimado": 218271.7,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-22",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "79",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000177/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de mobiliários",
+      "valor_estimado": 5972018.69,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-22",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "82",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000181/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa para prestação de serviços técnicos de gerenciamento e gestão de ativos (bens móveis) da Prefeitura Municipal de Varginha  MG, incluindo o fornecimento de solução int",
+      "valor_estimado": 1785596.46,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-23",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "85",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000182/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de Hortifrutigranjeiro para o Parque Zoobotânico Dr. Mário Frota",
+      "valor_estimado": 222280.2,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-23",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "90",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000185/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de materiais e curativos especiais para as necessidades do ambulatório de feridas da Policlínica Central – Léa Ferreira Teixeira no ",
+      "valor_estimado": 2911137.6,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-24",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "87",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000187/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "valor_estimado": 7058499.85,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-27",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "86",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000188/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de materiais ambulatoriais para atender a Secretaria Municipal de Saúde - SEMUS, Unidade de Pronto Atendimento Francisco Corrêa de Carvalho – UPA e Secretaria Municipal de Meio Am",
+      "valor_estimado": 218869.93,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-27",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "75",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000190/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de serviços contínuos de Remoção Terrestre Inter-Hospitalar com Ambulâncias, com o devido acompanhamento de profissional da área de saúde, para atender remoções de urgências, em",
+      "valor_estimado": 753397.8,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-28",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "78",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000194/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de materiais de higiene, limpeza e utensílios domésticos",
+      "valor_estimado": 8218554.01,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-28",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "84",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000195/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de materiais de escritório",
+      "valor_estimado": 8594587.37,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-28",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "89",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000196/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de argamassa ACI",
+      "valor_estimado": 178110.32,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-28",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
       "numero_compra": "1",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000030/2026",
@@ -7548,6 +7730,32 @@
       "valor_homologado_total": null,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-09",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "3",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000173/2026",
+      "modalidade": "Concorrência - Eletrônica",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para futura e eventual contratação de empresa especializada na prestação de serviços comuns de engenharia para execução de manutenção continuada preventiva e corretiva na",
+      "valor_estimado": 6239256.67,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-21",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "4",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000186/2026",
+      "modalidade": "Concorrência - Eletrônica",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para prestação de serviços comuns de engenharia para a execução de manutenção corretiva, ampliação, modificação, modernização e execução de obras em red",
+      "valor_estimado": 7497875.0,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-27",
       "resultados": []
     },
     {
@@ -11656,11 +11864,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "57",
+      "numero_compra": "DE 57",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000147/2026",
       "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para a futura e eventual contratação de empresa especializada na prestação de serviços de manutenção preventiva e corretiva em veículos pesados e máquinas, pertencentes á",
+      "objeto": "SERVIÇOS DE MANUTENÇÃO PREVENTIVA E CORRETIVA EM VEÍCULOS PESADOS E MÁQUINAS DO SETOR DE COLETA DE LIXO",
       "valor_estimado": 52824.0,
       "valor_homologado_total": 52000.0,
       "situacao": "Divulgada no PNCP",
@@ -11678,16 +11886,25 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "53",
+      "numero_compra": "DE 53",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000148/2026",
       "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - CONTRATAÇÃO EMERGENCIAL DE EMPRESA ESPECIALIZADA NA PRESTAÇÃO DE SERVIÇOS DE LOCAÇÃO DE UNIDADE MÓVEL DE RADIOLOGIA, DEVIDAMENTE EQUIPADA COM SISTEMA DE RAIO X DIGITAL (DR) PARA PRESTAÇAO D",
+      "objeto": "SERVIÇOS DE LOCAÇÃO DE UNIDADE MÓVEL DE RADIOLOGIA.",
       "valor_estimado": 80301.6,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 80055.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-02",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "LOCAÇAO DE UNIDADE MÓVEL DE RADIOLOGIA - LOCAÇAO DE UNIDADE MÓVEL DE RADIOLOGIA. DEVIDAMENTE EQUIPADA COM SISTEMA DE RAIO X\nDIGITAL (DR)",
+          "vencedor": "MAIS SAUDE CONSULTORIA E AUDITORIA MEDICA HOSPITALAR LTDA",
+          "cnpj_vencedor": "29203994000125",
+          "valor_homologado": 80055.0,
+          "data_resultado": "2026-07-14"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -11710,10 +11927,83 @@
       "modalidade": "Dispensa",
       "objeto": "[Portal de Compras Públicas] - Aquisição de ferramentas e equipamentos destinados aos servidores do setor de manutenção da Secretaria Municipal de Saúde do Município de Varginha  MG",
       "valor_estimado": 44280.35,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 18441.51,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-03",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "MARTELETE PERFURADOR / ROMPEDOR - MARTELETE PERFURADOR / ROMPEDORCaracteristicas minimas:*Perfuracao em madeira, aco, concreto e alvenaria (12 mm a 40 mm);*Pote",
+          "vencedor": "AGR SOLUCOES INTEGRADAS LTDA",
+          "cnpj_vencedor": "65912505000178",
+          "valor_homologado": 618.99,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 2,
+          "descricao_item": "FURADEIRA DE IMPACTO COM FIO - FURADEIRA DE IMPACTO COM FIOCaracteristicas minimas:*Funcao reversa;*Frequencia minima de 50 Hz;*Voltagem: 127 V ou bivolt;*Veloc",
+          "vencedor": "AGR SOLUCOES INTEGRADAS LTDA",
+          "cnpj_vencedor": "65912505000178",
+          "valor_homologado": 633.74,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 3,
+          "descricao_item": "LAVADORA  ALTA PRESSAO - LAVADORA DE ALTA PRESSAOCaracteristicas minimas da lavadora:*possuir alca;*possuir carrinho com rodas integrada;*possuir suporte para a",
+          "vencedor": "ANGULAR SOLUCOES EM DISTRIBUICAO LTDA",
+          "cnpj_vencedor": "58543909000176",
+          "valor_homologado": 1800.0,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 4,
+          "descricao_item": "SERRA MARMORE - SERRA MARMORE Caracteristicas:* possuir botao de seguranca;* gatilho com capa antipoeira;*guia de profundidade ajustavel;*ventilacao otimizada p",
+          "vencedor": "ANGULAR SOLUCOES EM DISTRIBUICAO LTDA",
+          "cnpj_vencedor": "58543909000176",
+          "valor_homologado": 365.0,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 5,
+          "descricao_item": "FURADEIRA PARAFUSADEIRA DE IMPACTO (SEM FIO) - FURADEIRA PARAFUSADEIRA DE IMPACTO (SEM FIO)Caracteristicas:*aplicacao em aco, madeira e alvenaria;*seletor de fu",
+          "vencedor": "REFINAR EMPRESARIAL ASSESSORIA EM CONTROLES ADMINISTRATIVOS LTDA",
+          "cnpj_vencedor": "52386933000162",
+          "valor_homologado": 1150.0,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 6,
+          "descricao_item": "MAQUINA DE SOLDA - MAQUINA DE SOLDA INVERSORA -01Maquina de solda inversora:*bivolt (127 V / 220 V) ou somente 220 V;*eletrodos de ate 3,25 mm;*com alca de ombr",
+          "vencedor": "KEILA JUNIA JACINTO SILVA",
+          "cnpj_vencedor": "18695651000109",
+          "valor_homologado": 635.53,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 7,
+          "descricao_item": "ESCADA TELESCOPICA DUPLA - ESCADA TELESCOPICA DUPLACaracteristicas:*aluminio;*multifuncional;*16 degraus;*comprimento de 5 metros;*capacidade de carga de ate 15",
+          "vencedor": "KEILA JUNIA JACINTO SILVA",
+          "cnpj_vencedor": "18695651000109",
+          "valor_homologado": 10452.0,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 8,
+          "descricao_item": "MOTOCOMPRESSOR DE AR - MOTOCOMPRESSOR DE ARCaracteristicas:*compressor direto para pinturas com tintas e vernizes de base;*alca de transporte;*pes de borracha;E",
+          "vencedor": "HORIZONTE AZUL LICITA LTDA",
+          "cnpj_vencedor": "63236363000140",
+          "valor_homologado": 538.2,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 9,
+          "descricao_item": "ROCADEIRA a GASOLINA - PARA TRABALHO PESADO - ROCADEIRA A GASOLINACaracteristicas:*desenvolvida para trabalho pesado;*baixo consumo de combustivel;*punho tipo g",
+          "vencedor": "JORDAN VENDAS INTELIGENTES LTDA",
+          "cnpj_vencedor": "51167154000103",
+          "valor_homologado": 2248.05,
+          "data_resultado": "2026-07-23"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -11723,9 +12013,583 @@
       "modalidade": "Dispensa",
       "objeto": "[Portal de Compras Públicas] - Aquisição de Copiadoras e Impressoras",
       "valor_estimado": 17433.81,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 10480.79,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-08",
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "IMPRESSORA MULTIFUNCIONAL - Impressora Multifuncional Canon IR 1643",
+          "vencedor": "FORT PRINT EQUIPAMENTOS E SUPRIMENTOS DE INFORMATICA LTDA",
+          "cnpj_vencedor": "22579314000123",
+          "valor_homologado": 6936.0,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 2,
+          "descricao_item": "IMPRESSORA MULTIFUNCIONAL - Copiadora Multifuncional HP M432 DN",
+          "vencedor": "FORT PRINT EQUIPAMENTOS E SUPRIMENTOS DE INFORMATICA LTDA",
+          "cnpj_vencedor": "22579314000123",
+          "valor_homologado": 2314.8,
+          "data_resultado": "2026-07-23"
+        },
+        {
+          "item": 3,
+          "descricao_item": "IMPRESSORA MULTIFUNCIONAL - Multifuncional Epson L3250 Ecotank",
+          "vencedor": "AGR SOLUCOES INTEGRADAS LTDA",
+          "cnpj_vencedor": "65912505000178",
+          "valor_homologado": 1229.99,
+          "data_resultado": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "67",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000171/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de calçados de segurança (EPI´s) para atender as necessidades da Secretaria Municipal de Obras e Serviços Urbanos - SOSUB",
+      "valor_estimado": 29408.97,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-21",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "66",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000172/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de materiais para alarmes",
+      "valor_estimado": 14813.46,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-21",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "64",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000178/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de conjunto de mesa e 4 cadeiras de plástico",
+      "valor_estimado": 56620.0,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-22",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "60",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000179/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para controle de pragas, incluindo o fornecimento de mão de obra, materiais e equipamentos necessários",
+      "valor_estimado": 4173.32,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-22",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "DL 5",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000183/2026",
+      "modalidade": "Dispensa",
+      "objeto": "Serviços para revisão e manutenção do veículo Van RENAULT MASTER - RTP6H07",
+      "valor_estimado": 3490.0,
+      "valor_homologado_total": 3490.0,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-24",
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "MÃO DE OBRA MECÂNICA REFERENTE REVISÃO DE 40000 KM",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 1225.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "OLEO 5W30 DIESEL",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 610.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "ANEL DO BUJAO",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 15.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 4,
+          "descricao_item": "FILTRO = DO AR DO MOTOR N 165.465.171R",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 170.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 5,
+          "descricao_item": "FILTRO = DO OLEO N 152.093.920R",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 140.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 6,
+          "descricao_item": "FILTRO = DO COMBUSTIVEL N 164.039.587R",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 310.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 7,
+          "descricao_item": "FILTRO = DO AR CONDICIONADO N 820.167.60.37",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 80.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 8,
+          "descricao_item": "KIT LUBRIFICAÇÃO  N° 1300.528",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 65.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 9,
+          "descricao_item": "DESCARBONIZANTE -",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 110.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 10,
+          "descricao_item": "LIMPA BICOS INJETORES  N° 770.226.71.60",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 150.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 11,
+          "descricao_item": "HIGIENIZADOR. A.C RENAULT",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 55.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 12,
+          "descricao_item": "JG PALHETA LIMPADOR Nº 288.906.79.6R",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 250.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 13,
+          "descricao_item": "REVESTIMENTO DO PAINEL Nº 403.132-14.24",
+          "vencedor": "LEONARDO PELEGRINI PINTO 10616077637",
+          "cnpj_vencedor": "23940290000159",
+          "valor_homologado": 310.0,
+          "data_resultado": "2026-07-20"
+        }
+      ]
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "DL 6",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000184/2026",
+      "modalidade": "Dispensa",
+      "objeto": "Serviço de revisão programada do veículo SPIN 1.8 durante o período de garantia de fábrica",
+      "valor_estimado": 7475.87,
+      "valor_homologado_total": 7475.87,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-24",
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "LUB ACD SINT SAE 0W",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 315.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 2,
+          "descricao_item": "VEDADOR DE BORRACHA",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 14.01,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 3,
+          "descricao_item": "FILTRO DE OLEO PARA MOTOR SPIN 1.8",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 35.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 4,
+          "descricao_item": "VELA DE IGNICAO",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 167.8,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 5,
+          "descricao_item": "ELEMENTO DO FILTRO",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 111.84,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 6,
+          "descricao_item": "FILTRO DE AR CONDICIONADO",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 90.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 7,
+          "descricao_item": "SORTIDO COMPOSTO POR REVISÃO",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 1450.61,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 8,
+          "descricao_item": "TERCEIRA REVISÃO VEICULO SPIN 1.8",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 277.85,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 9,
+          "descricao_item": "SERVICO DE ALINHAMENTO E BALANCEAMENTO (01)",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 180.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 10,
+          "descricao_item": "KIT DE LIMPEZA DO SISTEMA DE AR CONDICIONADO",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 130.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 11,
+          "descricao_item": "OXI-SANITIZAÇÃO DO AR",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 130.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 12,
+          "descricao_item": "GDI - SISTEMA DE LIMPEZA DO CORPO DE BORBOLETA DO MOTOR",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 156.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 13,
+          "descricao_item": "SERVIÇO DE SUBSTITUIÇÃO DE PASTILHAS DE FREIO",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 208.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 14,
+          "descricao_item": "FILTRO DE OLEO PARA MOTOR SPIN 1.8 (02)",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 48.72,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 15,
+          "descricao_item": "SPIN 1.8L",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 167.96,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 16,
+          "descricao_item": "FLUIDO PARA FREIO (02)",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 140.73,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 17,
+          "descricao_item": "ELEMENTO DO FILTRO (02)",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 111.84,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 18,
+          "descricao_item": "FILTRO DE AR CONDICIONADO (02)",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 80.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 19,
+          "descricao_item": "SORTIDO COMPOSTO POR REVISÃO (02)",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 180.0,
+          "data_resultado": "2026-07-14"
+        },
+        {
+          "item": 20,
+          "descricao_item": "PARAFUSO PRISIONEIRO DE ROSCA DO CUBO DE RODA",
+          "vencedor": "COMPANHIA MINEIRA DE AUTOMOVEIS LTDA",
+          "cnpj_vencedor": "24344495000304",
+          "valor_homologado": 23.21,
+          "data_resultado": "2026-07-14"
+        }
+      ]
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "62",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000189/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de materiais elétricos",
+      "valor_estimado": 9031.42,
+      "valor_homologado_total": 5753.87,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-27",
+      "resultados": [
+        {
+          "item": 2,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  16,00MM  AZUL",
+          "vencedor": "46.935.751 MATHEUS VENCIMENTO DE FREITAS",
+          "cnpj_vencedor": "46935751000109",
+          "valor_homologado": 639.5,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 3,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  16,00MM  VERDE",
+          "vencedor": "46.935.751 MATHEUS VENCIMENTO DE FREITAS",
+          "cnpj_vencedor": "46935751000109",
+          "valor_homologado": 639.5,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 4,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  10,00MM  AZUL",
+          "vencedor": "46.935.751 MATHEUS VENCIMENTO DE FREITAS",
+          "cnpj_vencedor": "46935751000109",
+          "valor_homologado": 600.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 5,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  10,00MM  VERDE  SIL",
+          "vencedor": "46.935.751 MATHEUS VENCIMENTO DE FREITAS",
+          "cnpj_vencedor": "46935751000109",
+          "valor_homologado": 600.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 6,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  6,00MM AE  AZUL / MT",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 494.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 7,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  6,00MM AE  VERDE / MT",
+          "vencedor": "55.514.498 LAURA CERQUEIRA DOS SANTOS DE FREITAS",
+          "cnpj_vencedor": "55514498000100",
+          "valor_homologado": 474.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 8,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  4,00MM AE  PRETO / MT",
+          "vencedor": "55.514.498 LAURA CERQUEIRA DOS SANTOS DE FREITAS",
+          "cnpj_vencedor": "55514498000100",
+          "valor_homologado": 313.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 9,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  4,00MM AE  AZUL / MT",
+          "vencedor": "55.514.498 LAURA CERQUEIRA DOS SANTOS DE FREITAS",
+          "cnpj_vencedor": "55514498000100",
+          "valor_homologado": 313.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 10,
+          "descricao_item": "CABO - CABO FLEXiVEL 750 V  4,00MM AE  VERDE / MT",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 335.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 11,
+          "descricao_item": "MATERIAIS ELETRICOS - DISJUNTOR DIN CURVA C 50A",
+          "vencedor": "VRM COMÉRCIO E SERVIÇOS LTDA",
+          "cnpj_vencedor": "31868626000148",
+          "valor_homologado": 159.96,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 12,
+          "descricao_item": "MATERIAIS ELETRICOS - DISJUNTOR DIN CURVA C 25A",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 75.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 13,
+          "descricao_item": "MATERIAIS ELETRICOS - DISJUNTOR DIN CURVA C 16A",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 52.5,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 14,
+          "descricao_item": "MATERIAIS ELETRICOS - DISJUNTOR DIN CURVA C 10A",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 195.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 15,
+          "descricao_item": "FITA ISOLANTE 10 METROS - FITA ISOLANTE 10 METROS",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 25.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 16,
+          "descricao_item": "ABRACADEIRA - ABRACADEIRA NYLON 150 X 3,5MM  PRETO",
+          "vencedor": "VRM COMÉRCIO E SERVIÇOS LTDA",
+          "cnpj_vencedor": "31868626000148",
+          "valor_homologado": 16.0,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 17,
+          "descricao_item": "TERMINAL - TERMINAL ISOL. CABO FLEX 16,00MM  AZUL  LONGO",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 53.4,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 18,
+          "descricao_item": "TERMINAL ISOLADO ILHOS DE 4 MM2 - TERMINAL ISOL. CABO FLEX 04,00MM  CINZA",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 37.5,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 19,
+          "descricao_item": "TERMINAL - TERMINAL ISOL. CABO FLEX 2,50MM",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 62.5,
+          "data_resultado": "2026-07-27"
+        },
+        {
+          "item": 20,
+          "descricao_item": "TERMINAL - TERMINAL COMP. COBRE EST. 16MM 1F",
+          "vencedor": "HERICON FELIPE TRISTAO NASCIMENTO",
+          "cnpj_vencedor": "39327884000129",
+          "valor_homologado": 45.0,
+          "data_resultado": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "65",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000191/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de bebedouro industrial para o Terminal Rodoviário",
+      "valor_estimado": 2766.33,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-28",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "68",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000192/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de papel sulfite A4 para impressão de provas",
+      "valor_estimado": 59980.0,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-28",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "69",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000193/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de medalhas para os alunos participantes do 1° Jogos Escolares Municipais de Varginha.",
+      "valor_estimado": 43040.0,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-28",
       "resultados": []
     },
     {
@@ -12816,6 +13680,28 @@
       ]
     },
     {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "IL 23",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000180/2026",
+      "modalidade": "Inexigibilidade",
+      "objeto": "Aquisição e demais serviços em sensor anemométrico (anemômetro aeronáutico), destinado ao Aeroporto Regional do Sul de Minas – Major Brigadeiro Trompowsky",
+      "valor_estimado": 68857.6,
+      "valor_homologado_total": 68857.6,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-23",
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "SENSOR - Sensor anemométrico compatível com o sistema meteorológico existente do Aeroporto Regional do Sul de Minas – Major Brigadeiro Trompowsky, destinado à m",
+          "vencedor": "HOBECO SUDAMERICANA LTDA",
+          "cnpj_vencedor": "03548170000101",
+          "valor_homologado": 68857.6,
+          "data_resultado": "2026-07-21"
+        }
+      ]
+    },
+    {
       "orgao": "Câmara Municipal de Varginha",
       "numero_compra": "1",
       "ano": 2026,
@@ -13785,6 +14671,19 @@
     },
     {
       "orgao": "Câmara Municipal de Varginha",
+      "numero_compra": "DL 16",
+      "ano": 2026,
+      "controle_pncp": "04366790000184-1-000035/2026",
+      "modalidade": "Dispensa",
+      "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE TRANSPORTE MEDIANTE LOCAÇÃO/FRETAMENTO DE VEÍCULOS TIPO ÔNIBUS E VAN PARA TRANSPORTE DE ALUNOS MATRICULADOS NA ESCOLA DO LEGISALTIVO PROF. MÁRIO VANI BEM",
+      "valor_estimado": 17242.9,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-28",
+      "resultados": []
+    },
+    {
+      "orgao": "Câmara Municipal de Varginha",
       "numero_compra": "IL 1",
       "ano": 2026,
       "controle_pncp": "04366790000184-1-000001/2026",
@@ -13998,152 +14897,33 @@
       ]
     },
     {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "52",
+      "orgao": "Câmara Municipal de Varginha",
+      "numero_compra": "IL 10",
       "ano": 2026,
-      "controle_pncp": "18240119000105-1-000169/2026",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para execução de serviços contínuos de reparo e manutenção predial e de bens móveis, com fornecimento de mão de obra especializada, materiais, ferrament",
-      "valor_estimado": 3415863.96,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-20",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "61",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000170/2026",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de mobiliários, com o objetivo de atender às necessidades da Secretaria Municipal de Assistência e Desenvolvimento Social – SEHAD",
-      "valor_estimado": 132333.75,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-20",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "67",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000174/2026",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de materiais de pintura epóxi e insumos complementares, destinados à manutenção e pintura de pisos e estruturas das instalações vinc",
-      "valor_estimado": 503507.72,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-21",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "80",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000176/2026",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de tinta para demarcação viária à base de metil metacrilato - Departamento Municipal de Trânsito",
-      "valor_estimado": 218271.7,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-22",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "79",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000177/2026",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de mobiliários",
-      "valor_estimado": 5972018.69,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-22",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "82",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000181/2026",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa para prestação de serviços técnicos de gerenciamento e gestão de ativos (bens móveis) da Prefeitura Municipal de Varginha  MG, incluindo o fornecimento de solução int",
-      "valor_estimado": 1785596.46,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-23",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "85",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000182/2026",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de Hortifrutigranjeiro para o Parque Zoobotânico Dr. Mário Frota",
-      "valor_estimado": 222280.2,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-23",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "90",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000185/2026",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de materiais e curativos especiais para as necessidades do ambulatório de feridas da Policlínica Central – Léa Ferreira Teixeira no ",
-      "valor_estimado": 2911137.6,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-24",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "3",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000173/2026",
-      "modalidade": "Concorrência - Eletrônica",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para futura e eventual contratação de empresa especializada na prestação de serviços comuns de engenharia para execução de manutenção continuada preventiva e corretiva na",
-      "valor_estimado": 6239256.67,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-21",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "IL 23",
-      "ano": 2026,
-      "controle_pncp": "18240119000105-1-000180/2026",
+      "controle_pncp": "04366790000184-1-000034/2026",
       "modalidade": "Inexigibilidade",
-      "objeto": "Aquisição e demais serviços em sensor anemométrico (anemômetro aeronáutico), destinado ao Aeroporto Regional do Sul de Minas – Major Brigadeiro Trompowsky",
-      "valor_estimado": 68857.6,
-      "valor_homologado_total": 68857.6,
+      "objeto": "INSCRIÇÃO PARA CURSO: EMENDAS IMPOSITIVAS: ELABORAÇÃO, TRAMITAÇÃO E EXECUÇÃO ORÇAMENTÁRIA.",
+      "valor_estimado": 1590.0,
+      "valor_homologado_total": 1590.0,
       "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-07-23",
+      "data_publicacao": "2026-07-28",
       "resultados": [
         {
           "item": 1,
-          "descricao_item": "SENSOR - Sensor anemométrico compatível com o sistema meteorológico existente do Aeroporto Regional do Sul de Minas – Major Brigadeiro Trompowsky, destinado à m",
-          "vencedor": "HOBECO SUDAMERICANA LTDA",
-          "cnpj_vencedor": "03548170000101",
-          "valor_homologado": 68857.6,
-          "data_resultado": "2026-07-21"
+          "descricao_item": "CURSO: EMENDAS IMPOSITIVAS MUNICIPAIS: ELABORAÇÃO, TRAMITAÇÃO E EXECUÇÃO ORÇAMENTÁRIA",
+          "vencedor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
+          "cnpj_vencedor": "21650715000160",
+          "valor_homologado": 1590.0,
+          "data_resultado": "2026-07-16"
         }
       ]
     }
   ],
-  "erros": [
-    "contratacoes 18240119000105 mod 8 pg 2: The read operation timed out"
-  ],
-  "status": "partial",
+  "erros": [],
+  "status": "ok",
   "qualidade_coleta": {
     "tentativas_por_requisicao": 3,
-    "falhas": 1,
-    "base_anterior_preservada": true
+    "falhas": 0,
+    "base_anterior_preservada": false
   }
 }
