@@ -1,12018 +1,7941 @@
 window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
   "metadata": {
-    "criterio": "Derivado conservador da base local; nenhuma confirmação foi buscada ou inferida sem fonte.",
-    "fonteDerivada": "data/emendas.js",
-    "totalRegistros": 30,
-    "classificacoes": {
-      "confirmado": 0,
-      "parcial": 30,
-      "sem_comprovacao": 0
+    "criterio": "Registros oficiais por indicação; cada estágio financeiro é mantido sem inferência.",
+    "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+    "fontePagina": "https://www.emendas.mg.gov.br/transparencia/",
+    "fonteArquivo": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+    "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+    "arquivoEtag": "\"91bf96-651b6f71c7900\"",
+    "arquivoUltimaModificacao": "Wed, 13 May 2026 18:15:32 GMT",
+    "extraidoEm": "2026-07-30T18:39:37-03:00",
+    "codigoIbge": "3170701",
+    "planilha": "12-05",
+    "colunasOriginais": [
+      "Ano da Indicação",
+      "Número da Indicação",
+      "Indicador de Impositividade",
+      "Tipo de Indicação",
+      "Status da Indicação",
+      "Autor",
+      "Genêro",
+      "Categoria",
+      "Especificação",
+      "Tipo de Aplicação",
+      "Unidade Orçamentária Código",
+      "Unidade Orçamentária Sigla",
+      "Unidade Orçamentária Descrição",
+      "Função Código",
+      "Função Descrição",
+      "Número da Ação",
+      "Nome da Ação",
+      "Grupo de Despesa Código",
+      "Grupo de Despesa Descrição",
+      "Código IBGE do Município",
+      "Município",
+      "Descrição do Tipo de Beneficiário",
+      "Nome Beneficiário",
+      "Número do CNPJ do Beneficiário",
+      "Código Escola",
+      "Minímo Saúde ou Educação",
+      "Descrição da Indicação",
+      "Valor Indicado",
+      "Valor Utilizado",
+      "Valor Empenhado no Ano",
+      "Valor Liquidado no Ano",
+      "Valor Liquidado Atualizado",
+      "Valor Pago no Ano",
+      "Valor Pago Atualizado",
+      "Valor Executado",
+      "Valor Inscrito em Restos a Pagar",
+      "Saldo Restos a Pagar",
+      "Classificação do IOT",
+      "Justificativa de Reprovação",
+      "Status",
+      "Número do Instrumento",
+      "Status do Instrumento",
+      "Código SIAFI do Instrumento",
+      "Data de Publicação do Instrumento",
+      "Data de Validade do Instrumento",
+      "Agência",
+      "Agência Dígito",
+      "Conta",
+      "Conta Dígito"
+    ],
+    "totalRegistros": 99,
+    "anos": {
+      "2023": {
+        "registros": 24,
+        "valorIndicado": 5342056.75,
+        "valorUtilizado": 4832644.97,
+        "valorEmpenhado": 4832644.97,
+        "valorLiquidado": 4832644.97,
+        "valorPago": 4832644.97,
+        "valorExecutado": 0.0
+      },
+      "2024": {
+        "registros": 13,
+        "valorIndicado": 1989200.0,
+        "valorUtilizado": 1743455.0,
+        "valorEmpenhado": 1743455.0,
+        "valorLiquidado": 1743455.0,
+        "valorPago": 1743455.0,
+        "valorExecutado": 0.0
+      },
+      "2025": {
+        "registros": 31,
+        "valorIndicado": 4667330.4,
+        "valorUtilizado": 4367279.53,
+        "valorEmpenhado": 4467210.47,
+        "valorLiquidado": 4467210.47,
+        "valorPago": 4467210.47,
+        "valorExecutado": 0.0
+      },
+      "2026": {
+        "registros": 31,
+        "valorIndicado": 4606500.0,
+        "valorUtilizado": 3120000.0,
+        "valorEmpenhado": 0.0,
+        "valorLiquidado": 0.0,
+        "valorPago": 0.0,
+        "valorExecutado": 0.0
+      }
     },
-    "valoresDesconhecidos": 7,
-    "totalDeclaradoConhecido": 6507741.0,
-    "totalRecebidoComEvidencia": 5686107.0,
-    "registrosExcluidosDoTotalRecebido": 0,
-    "pendencias": {
-      "autor_nao_informado": 2,
-      "pdf_sem_url_oficial": 30,
-      "recebimento_nao_comprovado": 6,
-      "sem_url_oficial": 30,
-      "valor_desconhecido": 7
-    }
+    "statusIndicacao": {
+      "APROVADO": 84,
+      "ENVIADA PARA SEE": 8,
+      "REPROVADO PELO ÓRGÃO": 7
+    },
+    "totalIndicado": 16605087.15,
+    "totalUtilizado": 14063379.5,
+    "totalEmpenhado": 11043310.44,
+    "totalLiquidado": 11043310.44,
+    "totalPago": 11043310.44,
+    "totalExecutado": 0.0,
+    "registrosComPagamento": 62,
+    "registrosSemPagamento": 37,
+    "observacao": "Valor utilizado representa recurso reservado/associado à indicação e não comprova pagamento. Pagamento e execução usam exclusivamente as colunas oficiais correspondentes."
   },
   "emendas": [
     {
+      "id": "estadual-sigcon-2026-205897",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "emenda": "10662/2025",
-      "emendaOriginal": "10662/2025",
-      "autor": "GREYCE DE QUEIROZ ELIAS",
-      "partido": "AVANTE",
-      "valor": 2570000.0,
-      "valorTexto": "2.570.000,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "205897/2026",
+      "emendaOriginal": "205897",
+      "numeroIndicacao": "205897",
+      "origemExternaId": "sigcon-205897",
+      "autor": "CHIARA BIONDINI",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA",
+      "categoria": "EXECUÇÃO DIRETA",
+      "modalidade": "EXECUÇÃO DIRETA",
+      "impositiva": true,
+      "beneficiario": "9º BBM",
+      "documentoBeneficiario": "03.389.126/0001-98",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "12/12/2025",
-      "dataPlano": "28/11/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "48",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SESMG 10.662/2025 - GREYCE DE QUEIROZ ELIAS (AVANTE) Não Emenda individual",
-      "objeto": "AQUISIÇÃO DE 01 (UM) TOMÓGRAFO COMPUTADORIZADO.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 1,
-      "textoBusca": "estadual 10662/2025 2025 2025 avante  fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv aquisicao de 01 (um) tomografo computadorizado. resolucao sesmg 10.662/2025 - greyce de queiroz elias (avante) nao emenda individual rosana de paiva silva morais 12/12/2025 nao nao",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "d5a653fd7754ae88",
+      "orgao": "CORPO DE BOMBEIROS MILITAR DO ESTADO DE MINAS GERAIS",
+      "orgaoSigla": "CBMMG",
+      "funcao": "SAÚDE",
+      "acao": "SUPORTE BÁSICO E AVANÇADO DE VIDA",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "R$180.000,00 para aquisição de equipamentos de proteção individual",
+      "descricao": "R$180.000,00 para aquisição de equipamentos de proteção individual",
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=30434",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 30434,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 1
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 1
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 30434
         }
       ],
-      "autorOriginal": "Greyce De Queiroz Elias",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Federal",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 2570000.0,
-      "valorRecebido": 2570000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2026-205473",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2024",
-      "anoRecurso": "2024",
-      "emenda": "146956/2024",
-      "emendaOriginal": "146956/2024",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "205473/2026",
+      "emendaOriginal": "205473",
+      "numeroIndicacao": "205473",
+      "origemExternaId": "sigcon-205473",
       "autor": "BRUNO ENGLER",
-      "partido": "",
-      "valor": 270000.0,
-      "valorTexto": "270.000,00",
-      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
-      "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA",
+      "categoria": "EXECUÇÃO DIRETA",
+      "modalidade": "EXECUÇÃO DIRETA",
+      "impositiva": true,
+      "beneficiario": "9º BBM",
+      "documentoBeneficiario": "03.389.126/0001-98",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "10/09/2024",
-      "dataPlano": "18/06/2024",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 9.578, 14 DE JUNHO DE 2024. BRUNO ENGLER. Sim Emenda individual",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária nº 4121 - Política de Atenção Hospitalar e Urgência e Emergência, devendo a execução ser comprovada para esse fim. - Os recursos deverão ser utilizados única e exclusivamente para o atendimento dos usuários do Sistema Único de Saúde - SUS. - Os rendimentos provenientes de aplicação financeira devem ser utilizados na execução do objeto, nos termos desta Resolução. - Fica vedada a utilização dos recursos para realização de despesas com pessoal, aquisição de equipamentos e materiais permanentes, incluindo obra.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 8,
-      "textoBusca": "estadual 146956/2024 2024 2024 pl  hospital regional do sul de minas hospital regional do sul de minas os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria nº 4121 - politica de atencao hospitalar e urgencia e emergencia, devendo a execucao ser comprovada para esse fim. - os recursos deverao ser utilizados unica e exclusivamente para o atendimento dos usuarios do sistema unico de saude - sus. - os rendimentos provenientes de aplicacao financeira devem ser utilizados na execucao do objeto, nos termos desta resolucao. - fica vedada a utilizacao dos recursos para realizacao de despesas com pessoal, aquisicao de equipamentos e materiais permanentes, incluindo obra. resolucao ses nº 9.578, 14 de junho de 2024. bruno engler. sim emenda individual heron ataide martins 10/09/2024 nao sim",
-      "anosRelacionados": [
-        "2024",
-        "2025"
-      ],
-      "id": "3041d3b034b4b313",
+      "orgao": "CORPO DE BOMBEIROS MILITAR DO ESTADO DE MINAS GERAIS",
+      "orgaoSigla": "CBMMG",
+      "funcao": "SAÚDE",
+      "acao": "SUPORTE BÁSICO E AVANÇADO DE VIDA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Aquisição de Equipamentos de Proteção Individual (EPI): Conjunto Especial Multimissão",
+      "descricao": "Aquisição de Equipamentos de Proteção Individual (EPI): Conjunto Especial Multimissão",
+      "valor": 60000.0,
+      "valorTexto": "60.000,00",
+      "valorDeclarado": 60000.0,
+      "valorIndicado": 60000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29903",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29903,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 8
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 8
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29903
         }
       ],
-      "autorOriginal": "Bruno Engler",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 270000.0,
-      "valorRecebido": 270000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2026-204706",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "emenda": "163607/2025",
-      "emendaOriginal": "163607/2025",
-      "autor": "MÁRIO HENRIQUE CAIXA",
-      "partido": "",
-      "valor": 220000.0,
-      "valorTexto": "220.000,00",
-      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
-      "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "204706/2026",
+      "emendaOriginal": "204706",
+      "numeroIndicacao": "204706",
+      "origemExternaId": "sigcon-204706",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "AQUISIÇÃO DE BENS",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "23/06/2025",
-      "dataPlano": "17/05/2025",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 10.133, 16 DE MAIO DE 2025. MARIO HENRIQUE CAIXA Sim Emenda individual",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária 4121 - Política de Atenção Hospitalar e Urgência e Emergência, devendo a execução ser comprovada para esse fim.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 17,
-      "textoBusca": "estadual 163607/2025 2025 2025 pv  hospital regional do sul de minas hospital regional do sul de minas os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria 4121 - politica de atencao hospitalar e urgencia e emergencia, devendo a execucao ser comprovada para esse fim. resolucao ses nº 10.133, 16 de maio de 2025. mario henrique caixa sim emenda individual heron ataide martins 23/06/2025 nao sim",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "669b01aa27965adc",
+      "orgao": "SECRETARIA DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA",
+      "orgaoSigla": "SEJUSP",
+      "funcao": "SEGURANÇA PÚBLICA",
+      "acao": "OPERACIONALIZAÇÃO DA POLÍTICA DE INTEGRAÇÃO DA SEGURANÇA PÚBLICA DE MINAS GERAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Bens Permanentes",
+      "descricao": null,
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29831",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29831,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 17
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 17
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29831
         }
       ],
-      "autorOriginal": "Mario Henrique Caixa",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 220000.0,
-      "valorRecebido": 220000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2026-204462",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "emenda": "163608/2025",
-      "emendaOriginal": "163608/2025",
-      "autor": "MÁRIO HENRIQUE DA SILVA",
-      "partido": "PV",
-      "valor": 220000.0,
-      "valorTexto": "220.000,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "204462/2026",
+      "emendaOriginal": "204462",
+      "numeroIndicacao": "204462",
+      "origemExternaId": "sigcon-204462",
+      "autor": "BEATRIZ CERQUEIRA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "categoria": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "modalidade": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "impositiva": true,
+      "beneficiario": "EE PROFESSORA SELMA BASTOS",
+      "documentoBeneficiario": null,
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "27/08/2025",
-      "dataPlano": "30/07/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 10.091/2025 - MÁRIO HENRIQUE DA SILVA (PV) Não Emenda individual",
-      "objeto": "CUSTEIO DA POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 18,
-      "textoBusca": "estadual 163608/2025 2025 2025 pv  fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv custeio da politica de atencao hospitalar e urgencia e emergencia resolucao ses/mg 10.091/2025 - mario henrique da silva (pv) nao emenda individual rosana de paiva silva morais 27/08/2025 nao nao",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "097e67656cc56a49",
+      "orgao": "SECRETARIA DE ESTADO DE EDUCAÇÃO",
+      "orgaoSigla": "SEE",
+      "funcao": "EDUCAÇÃO",
+      "acao": "DESENVOLVIMENTO DO ENSINO MEDIO",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Projeto Pedagogico - Aprendizado Além dos Muros",
+      "descricao": "Projeto Pedagogico - Aprendizado Além dos Muros",
+      "valor": 50000.0,
+      "valorTexto": "50.000,00",
+      "valorDeclarado": 50000.0,
+      "valorIndicado": 50000.0,
+      "valorUtilizado": 50000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "ENVIADA PARA SEE",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=27658",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 27658,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 18
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 18
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 27658
         }
       ],
-      "autorOriginal": "Mário Henrique Da Silva",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 220000.0,
-      "valorRecebido": 220000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2026-203697",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2024",
-      "anoRecurso": "2024",
-      "emenda": "140987/2024",
-      "emendaOriginal": "140987/2024",
-      "autor": "ALENCAR DA SILVEIRA JÚNIOR",
-      "partido": "",
-      "valor": 200000.0,
-      "valorTexto": "200.000,00",
-      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
-      "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "10/09/2024",
-      "dataPlano": "18/06/2024",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 9.578, 14 DE JUNHO DE 2024. ALENCAR DA SILVEIRA JUNIOR. Sim Emenda individual",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária nº 4121 - Política de Atenção Hospitalar e Urgência e Emergência, devendo a execução ser comprovada para esse fim. Os recursos deverão ser utilizados única e exclusivamente para o atendimento dos usuários do Sistema Único de Saúde SUS. Os rendimentos provenientes de aplicação financeira devem ser utilizados na execução do objeto, nos termos desta Resolução. Fica vedada a utilização dos recursos para realização de despesas com pessoal, aquisição de equipamentos e materiais permanentes, incluindo obra.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 5,
-      "textoBusca": "estadual 140987/2024 2024 2024 pl  hospital regional do sul de minas hospital regional do sul de minas os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria nº 4121 - politica de atencao hospitalar e urgencia e emergencia, devendo a execucao ser comprovada para esse fim. os recursos deverao ser utilizados unica e exclusivamente para o atendimento dos usuarios do sistema unico de saude sus. os rendimentos provenientes de aplicacao financeira devem ser utilizados na execucao do objeto, nos termos desta resolucao. fica vedada a utilizacao dos recursos para realizacao de despesas com pessoal, aquisicao de equipamentos e materiais permanentes, incluindo obra. resolucao ses nº 9.578, 14 de junho de 2024. alencar da silveira junior. sim emenda individual heron ataide martins 10/09/2024 nao sim",
-      "anosRelacionados": [
-        "2024",
-        "2025"
-      ],
-      "id": "86fb310a8f0b5671",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 5
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 5
-        }
-      ],
-      "autorOriginal": "Alencar Da Silveira Junior",
       "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 200000.0,
-      "valorRecebido": 200000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2024",
-      "anoRecurso": "2024",
-      "emenda": "143467/2024",
-      "emendaOriginal": "143467/2024",
-      "autor": "DELEGADO WASHINGTON",
-      "partido": "PL",
-      "valor": 200000.0,
-      "valorTexto": "200.000,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "BRASIL",
-      "conta": "",
-      "dataRecurso": "25/06/2024",
-      "dataPlano": "08/07/2024",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES/MG 9.558/2024 - WASHINGTON FERNANDO RODRIGUES (PL) Sim Emenda individual",
-      "objeto": "AQUISIÇÃO DE EQUIPAMENTOS CONSTANTES NA LISTA DA RESOLUÇÃO 9.558/2024 (CAMAS)",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 6,
-      "textoBusca": "estadual 143467/2024 2024 2024 pl  fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv aquisicao de equipamentos constantes na lista da resolucao 9.558/2024 (camas) resolucao ses/mg 9.558/2024 - washington fernando rodrigues (pl) sim emenda individual rosana de paiva silva morais 25/06/2024 nao sim",
-      "anosRelacionados": [
-        "2024",
-        "2025"
-      ],
-      "id": "9b620ccb742d71d6",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 6
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 6
-        }
-      ],
-      "autorOriginal": "Washington Fernando Rodrigues",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 200000.0,
-      "valorRecebido": 200000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2024",
-      "anoRecurso": "2024",
-      "emenda": "145004/2024",
-      "emendaOriginal": "145004/2024",
-      "autor": "MAURO TRAMONTE",
-      "partido": "",
-      "valor": 200000.0,
-      "valorTexto": "200.000,00",
-      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
-      "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "10/09/2024",
-      "dataPlano": "18/06/2024",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 9.578, 14 DE JUNHO DE 2024. MAURO TRAMONTE. Sim Emenda individual",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária nº 4121 - Política de Atenção Hospitalar e Urgência e Emergência, devendo a execução ser comprovada para esse fim. - Os recursos deverão ser utilizados única e exclusivamente para o atendimento dos usuários do Sistema Único de Saúde - SUS. - Os rendimentos provenientes de aplicação financeira devem ser utilizados na execução do objeto, nos termos desta Resolução. - Fica vedada a utilização dos recursos para realização de despesas com pessoal, aquisição de equipamentos e materiais permanentes, incluindo obra.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 7,
-      "textoBusca": "estadual 145004/2024 2024 2024 republican  hospital regional do sul de minas hospital regional do sul de minas os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria nº 4121 - politica de atencao hospitalar e urgencia e emergencia, devendo a execucao ser comprovada para esse fim. - os recursos deverao ser utilizados unica e exclusivamente para o atendimento dos usuarios do sistema unico de saude - sus. - os rendimentos provenientes de aplicacao financeira devem ser utilizados na execucao do objeto, nos termos desta resolucao. - fica vedada a utilizacao dos recursos para realizacao de despesas com pessoal, aquisicao de equipamentos e materiais permanentes, incluindo obra. resolucao ses nº 9.578, 14 de junho de 2024. mauro tramonte. sim emenda individual heron ataide martins 10/09/2024 nao sim",
-      "anosRelacionados": [
-        "2024",
-        "2025"
-      ],
-      "id": "851eb8af07e011f1",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 7
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 7
-        }
-      ],
-      "autorOriginal": "Mauro Tramonte",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 200000.0,
-      "valorRecebido": 200000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2024",
-      "anoRecurso": "2024",
-      "emenda": "147326/2024",
-      "emendaOriginal": "147326/2024",
-      "autor": "PROFESSOR CLEITON",
-      "partido": "",
-      "valor": 200000.0,
-      "valorTexto": "200.000,00",
-      "beneficiario": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-      "documentoBeneficiario": "18.240.010/0001-60",
-      "orgao": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIA AOS EXCEPCIONAIS - FUVAE",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "28/06/2024",
-      "dataPlano": "03/04/2024",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 9.479, 30 DE ABRIL DE 2024. PROFESSOR CLEITON. Sim Emenda individual",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária nº 4129 - Apoio e Fortalecimento da Rede de Cuidado à Pessoa com Deficiência, devendo a execução ser comprovada para esse fim. - Os recursos deverão ser utilizados única e exclusivamente para o atendimento dos usuários do Sistema Único de Saúde - SUS. - Os rendimentos provenientes de aplicação financeira devem ser utilizados na execução do objeto, nos termos desta Resolução. - Fica vedada a utilização dos recursos para realização de despesas com pessoal, aquisição de equipamentos e materiais permanentes, incluindo obra.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 9,
-      "textoBusca": "estadual 147326/2024 2024 2024 pv  fundacao varginha de assistencia aos excepcionais fundacao varginhense de assistencia aos excepcionais - fuvae os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria nº 4129 - apoio e fortalecimento da rede de cuidado a pessoa com deficiencia, devendo a execucao ser comprovada para esse fim. - os recursos deverao ser utilizados unica e exclusivamente para o atendimento dos usuarios do sistema unico de saude - sus. - os rendimentos provenientes de aplicacao financeira devem ser utilizados na execucao do objeto, nos termos desta resolucao. - fica vedada a utilizacao dos recursos para realizacao de despesas com pessoal, aquisicao de equipamentos e materiais permanentes, incluindo obra. resolucao ses nº 9.479, 30 de abril de 2024. professor cleiton. sim emenda individual heron ataide martins 28/06/2024 nao sim",
-      "anosRelacionados": [
-        "2024",
-        "2025"
-      ],
-      "id": "0037883cda8dce5b",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 9
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 9
-        }
-      ],
-      "autorOriginal": "Professor Cleiton",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 200000.0,
-      "valorRecebido": 200000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "emenda": "158035/2025",
-      "emendaOriginal": "158035/2025",
-      "autor": "PROFESSOR CLEITON",
-      "partido": "",
-      "valor": 200000.0,
-      "valorTexto": "200.000,00",
-      "beneficiario": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-      "documentoBeneficiario": "18.240.010/0001-60",
-      "orgao": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIA AOS EXCEPCIONAIS - FUVAE,",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "24/07/2025",
-      "dataPlano": "29/03/2025",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 10.044, 28 DE MARÇO DE 2025. PROFESSOR CLEITON Sim Emenda individual",
-      "objeto": "incremento temporário de custeio dos serviços de Atenção Especializada à Saúde, para o Estado, Município ou Distrito Federal.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 10,
-      "textoBusca": "estadual 158035/2025 2025 2025 pv  fundacao varginha de assistencia aos excepcionais fundacao varginhense de assistencia aos excepcionais - fuvae, incremento temporario de custeio dos servicos de atencao especializada a saude, para o estado, municipio ou distrito federal. resolucao ses nº 10.044, 28 de marco de 2025. professor cleiton sim emenda individual heron ataide martins 24/07/2025 nao sim",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "ee62eae93e884683",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 10
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 10
-        }
-      ],
-      "autorOriginal": "Professor Cleiton",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 200000.0,
-      "valorRecebido": 200000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "",
-      "emenda": "168394/2025",
-      "emendaOriginal": "168394/2025",
-      "autor": "NORALDINO JÚNIOR",
-      "partido": "",
-      "valor": null,
-      "valorTexto": "200.000,00",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "203697/2026",
+      "emendaOriginal": "203697",
+      "numeroIndicacao": "203697",
+      "origemExternaId": "sigcon-203697",
+      "autor": "CAPOREZZO",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
       "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
       "documentoBeneficiario": "11.234.223/0001-30",
-      "orgao": "FUNDO MUNICIPAL DE SAÚDE",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "29/04/2025",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 10.092, 28 DE ABRIL DE 2025. NORALDINO JUNIOR. Sim Emenda individual",
-      "objeto": "4125 - FORTALECIMENTO DA ATENÇÃO PRIMÁRIA À SAÚDE. Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária 4125 Fortalecimento da Atenção Primária à Saúde, devendo a execução ser comprovada para esse fim. Os recursos deverão ser utilizados única exclusivamente para o atendimento dos usuários do Sistema Único de Saúde SUS. Os recursos e os rendimentos provenientes de aplicação financeira devem ser utilizados na execução do objeto, nos termos desta Resolução. São configuradas como despesas de custeio aquelas necessárias à prestação de serviços e à manutenção da ação da administração e que não contribuem diretamente para a formação ou aquisição de um bem de capital. Fica vedada a utilização dos recursos para realização de despesas com pessoal, aquisição de equipamentos e materiais permanentes e execução de obra.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 23,
-      "textoBusca": "estadual 168394/2025 2025  psc  fundo municipal de saude fundo municipal de saude 4125 - fortalecimento da atencao primaria a saude. os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria 4125 fortalecimento da atencao primaria a saude, devendo a execucao ser comprovada para esse fim. os recursos deverao ser utilizados unica exclusivamente para o atendimento dos usuarios do sistema unico de saude sus. os recursos e os rendimentos provenientes de aplicacao financeira devem ser utilizados na execucao do objeto, nos termos desta resolucao. sao configuradas como despesas de custeio aquelas necessarias a prestacao de servicos e a manutencao da acao da administracao e que nao contribuem diretamente para a formacao ou aquisicao de um bem de capital. fica vedada a utilizacao dos recursos para realizacao de despesas com pessoal, aquisicao de equipamentos e materiais permanentes e execucao de obra. resolucao ses nº 10.092, 28 de abril de 2025. noraldino junior. sim emenda individual heron ataide martins  nao sim",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "cc216d2259bd5a7e",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 23
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 23
-        }
-      ],
-      "autorOriginal": "Noraldino Junior",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 200000.0,
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS PÚBLICAS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS PÚBLICAS",
+      "descricao": null,
+      "valor": 64838.0,
+      "valorTexto": "64.838,00",
+      "valorDeclarado": 64838.0,
+      "valorIndicado": 64838.0,
+      "valorUtilizado": 64838.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
       "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9504547",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29988",
       "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29988,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
       },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial",
-        "recebimento_nao_comprovado"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "emenda": "159950/2025",
-      "emendaOriginal": "159950/2025",
-      "autor": "ANDRÉIA DE JESUS SILVA",
-      "partido": "PT",
-      "valor": 180000.0,
-      "valorTexto": "180.000,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "05/08/2025",
-      "dataPlano": "25/06/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 10.136/2025 - ANDRÉIA DE JESUS SILVA (PT) Não Emenda individual",
-      "objeto": "AQUISIÇÃO DE EQUIPAMENTOS CONSTANTES NO ANEXO II DA RESOLUÇÃO 10.136/2025.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 12,
-      "textoBusca": "estadual 159950/2025 2025 2025 pt  fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv aquisicao de equipamentos constantes no anexo ii da resolucao 10.136/2025. resolucao ses/mg 10.136/2025 - andreia de jesus silva (pt) nao emenda individual rosana de paiva silva morais 05/08/2025 nao nao",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "abe22da85244749f",
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 12
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 12
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29988
         }
       ],
-      "autorOriginal": "Andréia De Jesus Silva",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 180000.0,
-      "valorRecebido": 180000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2026-203694",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "emenda": "164567/2025",
-      "emendaOriginal": "164567/2025",
-      "autor": "BRUNO ENGLER",
-      "partido": "",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "203694/2026",
+      "emendaOriginal": "203694",
+      "numeroIndicacao": "203694",
+      "origemExternaId": "sigcon-203694",
+      "autor": "CAPOREZZO",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS PÚBLICAS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS PÚBLICAS",
+      "descricao": null,
+      "valor": 2581.0,
+      "valorTexto": "2.581,00",
+      "valorDeclarado": 2581.0,
+      "valorIndicado": 2581.0,
+      "valorUtilizado": 2581.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9504548",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29989",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29989,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29989
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-203693",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "203693/2026",
+      "emendaOriginal": "203693",
+      "numeroIndicacao": "203693",
+      "origemExternaId": "sigcon-203693",
+      "autor": "CAPOREZZO",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS PÚBLICAS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS PÚBLICAS",
+      "descricao": null,
+      "valor": 92581.0,
+      "valorTexto": "92.581,00",
+      "valorDeclarado": 92581.0,
+      "valorIndicado": 92581.0,
+      "valorUtilizado": 92581.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9504911",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29987",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29987,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29987
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-203544",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "203544/2026",
+      "emendaOriginal": "203544",
+      "numeroIndicacao": "203544",
+      "origemExternaId": "sigcon-203544",
+      "autor": "ANA CAROLINA PINTO CARAM GUIMARÃES",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
       "valor": 180000.0,
       "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "NÃO CADASTRADO",
+      "codigoSiafiInstrumento": "0",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=26728",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 26728,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 26728
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-202880",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "202880/2026",
+      "emendaOriginal": "202880",
+      "numeroIndicacao": "202880",
+      "origemExternaId": "sigcon-202880",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "NÃO CADASTRADO",
+      "codigoSiafiInstrumento": "0",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=34409",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 34409,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 34409
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-202701",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "202701/2026",
+      "emendaOriginal": "202701",
+      "numeroIndicacao": "202701",
+      "origemExternaId": "sigcon-202701",
+      "autor": "CORONEL HENRIQUE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
+      "valor": 600000.0,
+      "valorTexto": "600.000,00",
+      "valorDeclarado": 600000.0,
+      "valorIndicado": 600000.0,
+      "valorUtilizado": 600000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "NÃO CADASTRADO",
+      "codigoSiafiInstrumento": "0",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=30522",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 30522,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 30522
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-200969",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "200969/2026",
+      "emendaOriginal": "200969",
+      "numeroIndicacao": "200969",
+      "origemExternaId": "sigcon-200969",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "AQUISIÇÃO DE BENS",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "DESPORTO E LAZER",
+      "acao": "APOIO À REALIZAÇÃO DE AÇÕES ESPORTIVAS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Bens Permanentes",
+      "descricao": null,
+      "valor": 150000.0,
+      "valorTexto": "150.000,00",
+      "valorDeclarado": 150000.0,
+      "valorIndicado": 150000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29839",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29839,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29839
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-200965",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "200965/2026",
+      "emendaOriginal": "200965",
+      "numeroIndicacao": "200965",
+      "origemExternaId": "sigcon-200965",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "AQUISIÇÃO DE BENS",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "DESPORTO E LAZER",
+      "acao": "APOIO À REALIZAÇÃO DE AÇÕES ESPORTIVAS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Bens Permanentes",
+      "descricao": null,
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29838",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29838,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29838
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-200843",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "200843/2026",
+      "emendaOriginal": "200843",
+      "numeroIndicacao": "200843",
+      "origemExternaId": "sigcon-200843",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "AQUISIÇÃO DE BENS",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA",
+      "orgaoSigla": "SEJUSP",
+      "funcao": "SEGURANÇA PÚBLICA",
+      "acao": "OPERACIONALIZAÇÃO DA POLÍTICA DE INTEGRAÇÃO DA SEGURANÇA PÚBLICA DE MINAS GERAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Bens Permanentes",
+      "descricao": null,
+      "valor": 150000.0,
+      "valorTexto": "150.000,00",
+      "valorDeclarado": 150000.0,
+      "valorIndicado": 150000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29832",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29832,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29832
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-200831",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "200831/2026",
+      "emendaOriginal": "200831",
+      "numeroIndicacao": "200831",
+      "origemExternaId": "sigcon-200831",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "AQUISIÇÃO DE BENS",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA",
+      "orgaoSigla": "SEJUSP",
+      "funcao": "SEGURANÇA PÚBLICA",
+      "acao": "OPERACIONALIZAÇÃO DA POLÍTICA DE INTEGRAÇÃO DA SEGURANÇA PÚBLICA DE MINAS GERAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Bens Permanentes",
+      "descricao": null,
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29830",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29830,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29830
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-200825",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "200825/2026",
+      "emendaOriginal": "200825",
+      "numeroIndicacao": "200825",
+      "origemExternaId": "sigcon-200825",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "AQUISIÇÃO DE BENS",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA",
+      "orgaoSigla": "SEJUSP",
+      "funcao": "SEGURANÇA PÚBLICA",
+      "acao": "OPERACIONALIZAÇÃO DA POLÍTICA DE INTEGRAÇÃO DA SEGURANÇA PÚBLICA DE MINAS GERAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Bens Permanentes",
+      "descricao": null,
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29829",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29829,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29829
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-200814",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "200814/2026",
+      "emendaOriginal": "200814",
+      "numeroIndicacao": "200814",
+      "origemExternaId": "sigcon-200814",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "NÃO CADASTRADO",
+      "codigoSiafiInstrumento": "0",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29828",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29828,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29828
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-200808",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "200808/2026",
+      "emendaOriginal": "200808",
+      "numeroIndicacao": "200808",
+      "origemExternaId": "sigcon-200808",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
+      "valor": 360000.0,
+      "valorTexto": "360.000,00",
+      "valorDeclarado": 360000.0,
+      "valorIndicado": 360000.0,
+      "valorUtilizado": 360000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "NÃO CADASTRADO",
+      "codigoSiafiInstrumento": "0",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29827",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29827,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29827
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-200334",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "200334/2026",
+      "emendaOriginal": "200334",
+      "numeroIndicacao": "200334",
+      "origemExternaId": "sigcon-200334",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
       "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "23/06/2025",
-      "dataPlano": "17/05/2025",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 10.133, 16 DE MAIO DE 2025. BRUNO ENGLER. Sim Emenda individual",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária 4121 - Política de Atenção Hospitalar e Urgência e Emergência, devendo a execução ser comprovada para esse fim.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 19,
-      "textoBusca": "estadual 164567/2025 2025 2025 pl  hospital regional do sul de minas hospital regional do sul de minas os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria 4121 - politica de atencao hospitalar e urgencia e emergencia, devendo a execucao ser comprovada para esse fim. resolucao ses nº 10.133, 16 de maio de 2025. bruno engler. sim emenda individual heron ataide martins 23/06/2025 nao sim",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "5b65b23d3864679b",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 19
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 19
-        }
-      ],
-      "autorOriginal": "Bruno Engler",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 180000.0,
-      "valorRecebido": 180000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "emenda": "164623/2025",
-      "emendaOriginal": "164623/2025",
-      "autor": "BRUNO ENGLER",
-      "partido": "PL",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
       "valor": 180000.0,
       "valorTexto": "180.000,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "18/06/2025",
-      "dataPlano": "30/07/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "36",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "REPROVADO PELO ÓRGÃO",
+      "statusFinanceiro": "Reprovado",
+      "estagioAtual": "reprovada",
       "aprovado": "Não",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 10.091/2025 - BRUNO DE CASTRO ENGLER FLORENCIO DE ALMEIDA (PL) Não Emenda individual",
-      "objeto": "CUSTEIO DA POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 20,
-      "textoBusca": "estadual 164623/2025 2025 2025 pl  fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv custeio da politica de atencao hospitalar e urgencia e emergencia resolucao ses/mg 10.091/2025 - bruno de castro engler florencio de almeida (pl) nao emenda individual rosana de paiva silva morais 18/06/2025 nao nao",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "abc4af30617c4611",
+      "justificativaReprovacao": "É necessário informar o CNES do beneficiário final.",
+      "classificacaoIot": "u) outras razões de ordem técnica devidamente justificadas",
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=34393",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 34393,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 20
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 20
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 34393
         }
       ],
-      "autorOriginal": "Bruno De Castro Engler Florencio De Almeida",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 180000.0,
-      "valorRecebido": 180000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2026-198590",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "2025",
-      "emenda": "165894/2025",
-      "emendaOriginal": "165894/2025",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "198590/2026",
+      "emendaOriginal": "198590",
+      "numeroIndicacao": "198590",
+      "origemExternaId": "sigcon-198590",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "AQUISIÇÃO DE BENS",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "DESPORTO E LAZER",
+      "acao": "APOIO À REALIZAÇÃO DE AÇÕES ESPORTIVAS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Bens Permanentes",
+      "descricao": null,
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=35303",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 35303,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 35303
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-197898",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "197898/2026",
+      "emendaOriginal": "197898",
+      "numeroIndicacao": "197898",
+      "origemExternaId": "sigcon-197898",
+      "autor": "BLOCO DEMOCRACIA E LUTA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "AQUISIÇÃO DE BENS",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Permanente",
+      "descricao": null,
+      "valor": 86500.0,
+      "valorTexto": "86.500,00",
+      "valorDeclarado": 86500.0,
+      "valorIndicado": 86500.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=28869",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 28869,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 28869
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-196843",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "196843/2026",
+      "emendaOriginal": "196843",
+      "numeroIndicacao": "196843",
+      "origemExternaId": "sigcon-196843",
+      "autor": "BLOCO DEMOCRACIA E LUTA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "categoria": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "modalidade": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "impositiva": true,
+      "beneficiario": "EE PROFESSORA ARACY MIRANDA",
+      "documentoBeneficiario": null,
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE EDUCAÇÃO",
+      "orgaoSigla": "SEE",
+      "funcao": "EDUCAÇÃO",
+      "acao": "RENOVAÇÃO DE MOBILIÁRIO E/OU EQUIPAMENTO",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Equipamento e Mobiliário",
+      "descricao": "Equipamento e Mobiliário",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "ENVIADA PARA SEE",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29169",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29169,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29169
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-196842",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "196842/2026",
+      "emendaOriginal": "196842",
+      "numeroIndicacao": "196842",
+      "origemExternaId": "sigcon-196842",
+      "autor": "BLOCO DEMOCRACIA E LUTA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "categoria": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "modalidade": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "impositiva": true,
+      "beneficiario": "EE DOUTOR WLADIMIR DE REZENDE PINTO",
+      "documentoBeneficiario": null,
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE EDUCAÇÃO",
+      "orgaoSigla": "SEE",
+      "funcao": "EDUCAÇÃO",
+      "acao": "RENOVAÇÃO DE MOBILIÁRIO E/OU EQUIPAMENTO",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Equipamento e Mobiliário",
+      "descricao": "Equipamento e Mobiliário",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "ENVIADA PARA SEE",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29168",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29168,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29168
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-196841",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "196841/2026",
+      "emendaOriginal": "196841",
+      "numeroIndicacao": "196841",
+      "origemExternaId": "sigcon-196841",
+      "autor": "BLOCO DEMOCRACIA E LUTA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "categoria": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "modalidade": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "impositiva": true,
+      "beneficiario": "EE DEPUTADO DOMINGOS DE FIGUEIREDO",
+      "documentoBeneficiario": null,
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE EDUCAÇÃO",
+      "orgaoSigla": "SEE",
+      "funcao": "EDUCAÇÃO",
+      "acao": "RENOVAÇÃO DE MOBILIÁRIO E/OU EQUIPAMENTO",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Equipamento e Mobiliário",
+      "descricao": "Equipamento e Mobiliário",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "ENVIADA PARA SEE",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29167",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29167,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29167
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-196840",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "196840/2026",
+      "emendaOriginal": "196840",
+      "numeroIndicacao": "196840",
+      "origemExternaId": "sigcon-196840",
+      "autor": "BLOCO DEMOCRACIA E LUTA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "categoria": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "modalidade": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "impositiva": true,
+      "beneficiario": "EE CORAÇÃO DE JESUS",
+      "documentoBeneficiario": null,
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE EDUCAÇÃO",
+      "orgaoSigla": "SEE",
+      "funcao": "EDUCAÇÃO",
+      "acao": "RENOVAÇÃO DE MOBILIÁRIO E/OU EQUIPAMENTO",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Equipamento e Mobiliário",
+      "descricao": "Equipamento e Mobiliário",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "ENVIADA PARA SEE",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29166",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29166,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29166
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-196839",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "196839/2026",
+      "emendaOriginal": "196839",
+      "numeroIndicacao": "196839",
+      "origemExternaId": "sigcon-196839",
+      "autor": "BLOCO DEMOCRACIA E LUTA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "categoria": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "modalidade": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "impositiva": true,
+      "beneficiario": "EE PROFESSOR FÁBIO SALLES",
+      "documentoBeneficiario": null,
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE EDUCAÇÃO",
+      "orgaoSigla": "SEE",
+      "funcao": "EDUCAÇÃO",
+      "acao": "RENOVAÇÃO DE MOBILIÁRIO E/OU EQUIPAMENTO",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Equipamento e Mobiliário",
+      "descricao": "Equipamento e Mobiliário",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "ENVIADA PARA SEE",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29165",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29165,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29165
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-196838",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "196838/2026",
+      "emendaOriginal": "196838",
+      "numeroIndicacao": "196838",
+      "origemExternaId": "sigcon-196838",
+      "autor": "BLOCO DEMOCRACIA E LUTA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "categoria": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "modalidade": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "impositiva": true,
+      "beneficiario": "EE CORONEL GABRIEL PENHA DE PAIVA",
+      "documentoBeneficiario": null,
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE EDUCAÇÃO",
+      "orgaoSigla": "SEE",
+      "funcao": "EDUCAÇÃO",
+      "acao": "RENOVAÇÃO DE MOBILIÁRIO E/OU EQUIPAMENTO",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Equipamento e Mobiliário",
+      "descricao": "Equipamento e Mobiliário",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "ENVIADA PARA SEE",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29164",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29164,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29164
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-196837",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "196837/2026",
+      "emendaOriginal": "196837",
+      "numeroIndicacao": "196837",
+      "origemExternaId": "sigcon-196837",
+      "autor": "BLOCO DEMOCRACIA E LUTA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "categoria": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "modalidade": "EXECUÇÃO DIRETA - CAIXA ESCOLAR",
+      "impositiva": true,
+      "beneficiario": "EE PEDRO DE ALCÂNTARA",
+      "documentoBeneficiario": null,
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE EDUCAÇÃO",
+      "orgaoSigla": "SEE",
+      "funcao": "EDUCAÇÃO",
+      "acao": "RENOVAÇÃO DE MOBILIÁRIO E/OU EQUIPAMENTO",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Equipamento e Mobiliário",
+      "descricao": "Equipamento e Mobiliário",
+      "valor": 150000.0,
+      "valorTexto": "150.000,00",
+      "valorDeclarado": 150000.0,
+      "valorIndicado": 150000.0,
+      "valorUtilizado": 150000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "ENVIADA PARA SEE",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=29163",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 29163,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 29163
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-196720",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "196720/2026",
+      "emendaOriginal": "196720",
+      "numeroIndicacao": "196720",
+      "origemExternaId": "sigcon-196720",
       "autor": "MAURO TRAMONTE",
-      "partido": "",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
       "valor": 180000.0,
       "valorTexto": "180.000,00",
-      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
-      "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "23/06/2025",
-      "dataPlano": "17/05/2025",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 10.133, 16 DE MAIO DE 2025. MAURO TRAMONTE. Sim Emenda individual",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária 4121 - Política de Atenção Hospitalar e Urgência e Emergência, devendo a execução ser comprovada para esse fim. Os recursos deverão ser utilizados única e exclusivamente para o atendimento dos usuários do Sistema Único de Saúde - SUS. Os recursos e os rendimentos provenientes de aplicação financeira devem ser utilizados na execução do objeto, nos termos desta Resolução. Fica vedada a utilização dos recursos para realização de despesas com pessoal, aquisição de equipamentos e materiais permanentes e execução de obra.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 21,
-      "textoBusca": "estadual 165894/2025 2025 2025 republican  hospital regional do sul de minas hospital regional do sul de minas os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria 4121 - politica de atencao hospitalar e urgencia e emergencia, devendo a execucao ser comprovada para esse fim. os recursos deverao ser utilizados unica e exclusivamente para o atendimento dos usuarios do sistema unico de saude - sus. os recursos e os rendimentos provenientes de aplicacao financeira devem ser utilizados na execucao do objeto, nos termos desta resolucao. fica vedada a utilizacao dos recursos para realizacao de despesas com pessoal, aquisicao de equipamentos e materiais permanentes e execucao de obra. resolucao ses nº 10.133, 16 de maio de 2025. mauro tramonte. sim emenda individual heron ataide martins 23/06/2025 nao sim",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "29af76da32ed8b85",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "NÃO CADASTRADO",
+      "codigoSiafiInstrumento": "0",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=34791",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 34791,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 21
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 21
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 34791
         }
       ],
-      "autorOriginal": "Mauro Tramonte",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 180000.0,
-      "valorRecebido": 180000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2026-195448",
       "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "195448/2026",
+      "emendaOriginal": "195448",
+      "numeroIndicacao": "195448",
+      "origemExternaId": "sigcon-195448",
+      "autor": "ANDREIA DE JESUS",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "NÃO CADASTRADO",
+      "codigoSiafiInstrumento": "0",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=26866",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 26866,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 26866
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-194227",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "194227/2026",
+      "emendaOriginal": "194227",
+      "numeroIndicacao": "194227",
+      "origemExternaId": "sigcon-194227",
+      "autor": "SARGENTO RODRIGUES",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ESTRUTURAÇÃO DA ATENÇÃO HOSPITALAR E DE URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "ESTRUTURAÇÃO DA ATENÇÃO HOSPITALAR E DE URGÊNCIA E EMERGÊNCIA",
+      "descricao": null,
+      "valor": 300000.0,
+      "valorTexto": "300.000,00",
+      "valorDeclarado": 300000.0,
+      "valorIndicado": 300000.0,
+      "valorUtilizado": 300000.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "utilizado",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9507945",
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=36011",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 36011,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 36011
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2026-193883",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2026",
+      "anoEmenda": "2026",
+      "anoRecurso": null,
+      "emenda": "193883/2026",
+      "emendaOriginal": "193883",
+      "numeroIndicacao": "193883",
+      "origemExternaId": "sigcon-193883",
+      "autor": "LELECO PIMENTEL",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS DE VIGILÂNCIA EM SAÚDE",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS DE VIGILÂNCIA EM SAÚDE",
+      "descricao": null,
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Aprovado",
+      "estagioAtual": "aprovada",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=32940",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 32940,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 32940
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-168956",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "168956/2025",
+      "emendaOriginal": "168956",
+      "numeroIndicacao": "168956",
+      "origemExternaId": "sigcon-168956",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA",
+      "categoria": "EXECUÇÃO DIRETA",
+      "modalidade": "EXECUÇÃO DIRETA",
+      "impositiva": true,
+      "beneficiario": "9º BBM",
+      "documentoBeneficiario": "03.389.126/0001-98",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "CORPO DE BOMBEIROS MILITAR DO ESTADO DE MINAS GERAIS",
+      "orgaoSigla": "CBMMG",
+      "funcao": "SAÚDE",
+      "acao": "SUPORTE BÁSICO E AVANÇADO DE VIDA",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Aquisição de bens permanentes para o Corpo de Bombeiros de Varginha",
+      "descricao": "Aquisição de bens permanentes para o Corpo de Bombeiros de Varginha",
+      "valor": 92094.0,
+      "valorTexto": "92.094,00",
+      "valorDeclarado": 92094.0,
+      "valorIndicado": 92094.0,
+      "valorUtilizado": 92094.0,
+      "valorEmpenhado": 92024.94,
+      "valorLiquidadoAno": 78546.88,
+      "valorLiquidado": 92024.94,
+      "valorPagoAno": 0.0,
+      "valorPago": 92024.94,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=25297",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 25297,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 25297
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-168925",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "168925/2025",
+      "emendaOriginal": "168925",
+      "numeroIndicacao": "168925",
+      "origemExternaId": "sigcon-168925",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS PÚBLICAS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Veículo Passeio (5 lugares)",
+      "descricao": null,
+      "valor": 83953.0,
+      "valorTexto": "83.953,00",
+      "valorDeclarado": 83953.0,
+      "valorIndicado": 83953.0,
+      "valorUtilizado": 83953.0,
+      "valorEmpenhado": 83953.0,
+      "valorLiquidadoAno": 83953.0,
+      "valorLiquidado": 83953.0,
+      "valorPagoAno": 83953.0,
+      "valorPago": 83953.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010088/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9461150",
+      "dataPublicacaoInstrumento": "25/04/2025",
+      "dataValidadeInstrumento": "25/04/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=25267",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 25267,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 25267
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-168472",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "168472/2025",
+      "emendaOriginal": "168472",
+      "numeroIndicacao": "168472",
+      "origemExternaId": "sigcon-168472",
+      "autor": "LUIZINHO",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 57000.0,
+      "valorTexto": "57.000,00",
+      "valorDeclarado": 57000.0,
+      "valorIndicado": 57000.0,
+      "valorUtilizado": 57000.0,
+      "valorEmpenhado": 57000.0,
+      "valorLiquidadoAno": 57000.0,
+      "valorLiquidado": 57000.0,
+      "valorPagoAno": 57000.0,
+      "valorPago": 57000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 57000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0016/2025",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9463138",
+      "dataPublicacaoInstrumento": "01/05/2025",
+      "dataValidadeInstrumento": "01/05/2055",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=24829",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 24829,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 24829
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-168468",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "168468/2025",
+      "emendaOriginal": "168468",
+      "numeroIndicacao": "168468",
+      "origemExternaId": "sigcon-168468",
+      "autor": "LUIZINHO",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 133000.0,
+      "valorTexto": "133.000,00",
+      "valorDeclarado": 133000.0,
+      "valorIndicado": 133000.0,
+      "valorUtilizado": 133000.0,
+      "valorEmpenhado": 133000.0,
+      "valorLiquidadoAno": 133000.0,
+      "valorLiquidado": 133000.0,
+      "valorPagoAno": 133000.0,
+      "valorPago": 133000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 133000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0016/2025",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9463758",
+      "dataPublicacaoInstrumento": "01/05/2025",
+      "dataValidadeInstrumento": "01/05/2055",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=24825",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 24825,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 24825
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-168394",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "168394/2025",
+      "emendaOriginal": "168394",
+      "numeroIndicacao": "168394",
+      "origemExternaId": "sigcon-168394",
+      "autor": "NORALDINO JUNIOR",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "FORTALECIMENTO DA ATENÇÃO PRIMÁRIA À SAÚDE",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Despesas de custeio para suprir as necessidades do município.",
+      "descricao": "Despesas de custeio para suprir as necessidades do município.",
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 200000.0,
+      "valorEmpenhado": 200000.0,
+      "valorLiquidadoAno": 200000.0,
+      "valorLiquidado": 200000.0,
+      "valorPagoAno": 200000.0,
+      "valorPago": 200000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 200000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010092/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9462896",
+      "dataPublicacaoInstrumento": "29/04/2025",
+      "dataValidadeInstrumento": "29/04/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=24756",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 24756,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 24756
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-166714",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
       "ano": "2025",
       "anoEmenda": "2025",
       "anoRecurso": "2025",
       "emenda": "166714/2025",
-      "emendaOriginal": "166714/2025",
-      "autor": "",
-      "partido": "",
-      "valor": 180000.0,
-      "valorTexto": "180.000,00",
+      "emendaOriginal": "166714",
+      "numeroIndicacao": "166714",
+      "origemExternaId": "sigcon-166714",
+      "autor": "BLOCO MINAS EM FRENTE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
       "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "23/06/2025",
-      "dataPlano": "17/05/2025",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao informado",
-      "descricao": "RESOLUÇÃO SES Nº 10.133, 16 DE MAIO DE 2025. BLOCO MINAS EM FRENTE. Sim Emenda comissão",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária 4121 - Política de Atenção Hospitalar e Urgência e Emergência, devendo a execução ser comprovada para esse fim. Os recursos deverão ser utilizados única e exclusivamente para o atendimento dos usuários do Sistema Único de Saúde - SUS. Os recursos e os rendimentos provenientes de aplicação financeira devem ser utilizados na execução do objeto, nos termos desta Resolução. Fica vedada a utilização dos recursos para realização de despesas com pessoal, aquisição de equipamentos e materiais permanentes e execução de obra.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 22,
-      "textoBusca": "estadual 166714/2025 2025 2025   hospital regional do sul de minas hospital regional do sul de minas os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria 4121 - politica de atencao hospitalar e urgencia e emergencia, devendo a execucao ser comprovada para esse fim. os recursos deverao ser utilizados unica e exclusivamente para o atendimento dos usuarios do sistema unico de saude - sus. os recursos e os rendimentos provenientes de aplicacao financeira devem ser utilizados na execucao do objeto, nos termos desta resolucao. fica vedada a utilizacao dos recursos para realizacao de despesas com pessoal, aquisicao de equipamentos e materiais permanentes e execucao de obra. resolucao ses nº 10.133, 16 de maio de 2025. bloco minas em frente. sim emenda comissao heron ataide martins 23/06/2025 nao nao informado",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "682cbf60c133fec7",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 22
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 22
-        }
-      ],
-      "autorOriginal": null,
-      "esferaDocumento": "Estadual",
-      "cargoAutor": null,
-      "classificacaoComprovacao": "parcial",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Recurso de custeio hospitalar para fortalecimento do Hospital Regional do Sul de Minas, CNES 2761041.",
+      "descricao": "Recurso de custeio hospitalar para fortalecimento do Hospital Regional do Sul de Minas, CNES 2761041.",
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
       "valorDeclarado": 180000.0,
-      "valorRecebido": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 180000.0,
+      "valorLiquidadoAno": 180000.0,
+      "valorLiquidado": 180000.0,
+      "valorPagoAno": 180000.0,
+      "valorPago": 180000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 180000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010133/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9468651",
+      "dataPublicacaoInstrumento": "17/05/2025",
+      "dataValidadeInstrumento": "17/05/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=23140",
       "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 23140,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
       },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial",
-        "autor_nao_informado"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2024",
-      "anoRecurso": "2024",
-      "emenda": "134607/2024",
-      "emendaOriginal": "134607/2024",
-      "autor": "MAURO TRAMONTE",
-      "partido": "REPU",
-      "valor": 177236.0,
-      "valorTexto": "177.236,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "BRASIL",
-      "conta": "",
-      "dataRecurso": "23/12/2024",
-      "dataPlano": "21/03/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "33",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 9.828/2024 - MAURO HENRIQUE TRAMONTE (REPU) Não Emenda individual",
-      "objeto": "AQUISIÇÃO DE 01 (UM) APARELHO DE ANESTESIA",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 3,
-      "textoBusca": "estadual 134607/2024 2024 2024 repu  fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv aquisicao de 01 (um) aparelho de anestesia resolucao ses/mg 9.828/2024 - mauro henrique tramonte (repu) nao emenda individual rosana de paiva silva morais 23/12/2024 nao nao",
-      "anosRelacionados": [
-        "2024",
-        "2025"
-      ],
-      "id": "1dcda6f723b771ba",
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 3
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 3
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 23140
         }
       ],
-      "autorOriginal": "Mauro Henrique Tramonte",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 177236.0,
-      "valorRecebido": 177236.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2025-166401",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2024",
-      "anoRecurso": "2024",
-      "emenda": "134171/2024",
-      "emendaOriginal": "134171/2024",
-      "autor": "NORALDINO LUCIO DIAS JÚNIOR",
-      "partido": "PSB",
-      "valor": 167871.0,
-      "valorTexto": "167.871,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNCÍPIO DE VARGINHA FHOMUV",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "BRASIL",
-      "conta": "",
-      "dataRecurso": "24/05/2024",
-      "dataPlano": "18/04/2024",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "33",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 9.333/2024 - NORALDINO LUCIO DIAS JÚNIOR (PSB) Não Emenda individual",
-      "objeto": "AQUISIÇÃO DE 01 (UM) FOCO CIRÚRGICO DE TETO COM CÂMERA DE VÍDEO.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 2,
-      "textoBusca": "estadual 134171/2024 2024 2024 psb  fundacao hospitalar do municipio de varginha fundacao hospitalar do muncipio de varginha fhomuv aquisicao de 01 (um) foco cirurgico de teto com camera de video. resolucao ses/mg 9.333/2024 - noraldino lucio dias junior (psb) nao emenda individual rosana de paiva silva morais 24/05/2024 nao nao",
-      "anosRelacionados": [
-        "2024",
-        "2025"
-      ],
-      "id": "c20e350ec90c9b53",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 2
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 2
-        }
-      ],
-      "autorOriginal": "Noraldino Lucio Dias Júnior",
       "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 167871.0,
-      "valorRecebido": 167871.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
-    },
-    {
-      "tipo": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
       "ano": "2025",
       "anoEmenda": "2025",
-      "anoRecurso": "",
-      "emenda": "175698/2025",
-      "emendaOriginal": "175698/2025",
-      "autor": "DIMAS FABIANO",
-      "partido": "PP",
-      "valor": null,
-      "valorTexto": "163.904,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
+      "anoRecurso": "2025",
+      "emenda": "166401/2025",
+      "emendaOriginal": "166401",
+      "numeroIndicacao": "166401",
+      "origemExternaId": "sigcon-166401",
+      "autor": "LUIZINHO",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "22/12/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "48",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ESTRUTURAÇÃO DA ATENÇÃO HOSPITALAR E DE URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANTENTES - UPA FRANCISCO CORREA DE CARVALHO",
+      "descricao": "AQUISIÇÃO DE EQUIPAMENTOS E MATERIAIS PERMANTENTES - UPA FRANCISCO CORREA DE CARVALHO",
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 180000.0,
+      "valorLiquidadoAno": 180000.0,
+      "valorLiquidado": 180000.0,
+      "valorPagoAno": 180000.0,
+      "valorPago": 180000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
       "aprovado": "Sim",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 10.502/2025 - DIMAS FABIANO TOLEDO JUNIOR Não Emenda individual",
-      "objeto": "AQUISIÇÃO DE 01 (UM) APARELHO DE ANESTESIA COM MONITOR MULTIPARÂMETROS.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 27,
-      "textoBusca": "estadual 175698/2025 2025  dimas fabiano toledo junior pp fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv aquisicao de 01 (um) aparelho de anestesia com monitor multiparametros. resolucao ses/mg 10.502/2025 - dimas fabiano toledo junior nao emenda individual rosana de paiva silva morais  sim nao",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "43d04b7e7510ec03",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010162/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9469701",
+      "dataPublicacaoInstrumento": "24/05/2025",
+      "dataValidadeInstrumento": "24/05/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=22848",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 22848,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 27
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 27
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 22848
         }
       ],
-      "autorOriginal": "DIMAS FABIANO TOLEDO JUNIOR",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Federal",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 163904.0,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial",
-        "recebimento_nao_comprovado"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2025-165894",
       "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
       "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "165894/2025",
+      "emendaOriginal": "165894",
+      "numeroIndicacao": "165894",
+      "origemExternaId": "sigcon-165894",
+      "autor": "MAURO TRAMONTE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Custeio",
+      "descricao": null,
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 180000.0,
+      "valorLiquidadoAno": 180000.0,
+      "valorLiquidado": 180000.0,
+      "valorPagoAno": 180000.0,
+      "valorPago": 180000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 180000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010133/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9468654",
+      "dataPublicacaoInstrumento": "17/05/2025",
+      "dataValidadeInstrumento": "17/05/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=22381",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 22381,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 22381
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-164623",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "164623/2025",
+      "emendaOriginal": "164623",
+      "numeroIndicacao": "164623",
+      "origemExternaId": "sigcon-164623",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
+      "documentoBeneficiario": "19.110.162/0001-00",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Recurso de custeio para o Hospital Bom Pastor de varginha. CNES: 2761092",
+      "descricao": "Recurso de custeio para o Hospital Bom Pastor de varginha. CNES: 2761092",
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 180000.0,
+      "valorLiquidadoAno": 180000.0,
+      "valorLiquidado": 180000.0,
+      "valorPagoAno": 180000.0,
+      "valorPago": 180000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 180000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010091/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9461496",
+      "dataPublicacaoInstrumento": "29/04/2025",
+      "dataValidadeInstrumento": "29/04/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=21206",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 21206,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 21206
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-164567",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "164567/2025",
+      "emendaOriginal": "164567",
+      "numeroIndicacao": "164567",
+      "origemExternaId": "sigcon-164567",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Recurso de custeio para o Hospital Regional do Sul de Minas",
+      "descricao": "Recurso de custeio para o Hospital Regional do Sul de Minas",
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 180000.0,
+      "valorLiquidadoAno": 180000.0,
+      "valorLiquidado": 180000.0,
+      "valorPagoAno": 180000.0,
+      "valorPago": 180000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 180000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010133/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9468652",
+      "dataPublicacaoInstrumento": "17/05/2025",
+      "dataValidadeInstrumento": "17/05/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=21155",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 21155,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 21155
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-163608",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "163608/2025",
+      "emendaOriginal": "163608",
+      "numeroIndicacao": "163608",
+      "origemExternaId": "sigcon-163608",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
+      "documentoBeneficiario": "19.110.162/0001-00",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "valor": 220000.0,
+      "valorTexto": "220.000,00",
+      "valorDeclarado": 220000.0,
+      "valorIndicado": 220000.0,
+      "valorUtilizado": 220000.0,
+      "valorEmpenhado": 220000.0,
+      "valorLiquidadoAno": 220000.0,
+      "valorLiquidado": 220000.0,
+      "valorPagoAno": 220000.0,
+      "valorPago": 220000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 220000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010091/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9461533",
+      "dataPublicacaoInstrumento": "29/04/2025",
+      "dataValidadeInstrumento": "29/04/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=20275",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 20275,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 20275
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-163607",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "163607/2025",
+      "emendaOriginal": "163607",
+      "numeroIndicacao": "163607",
+      "origemExternaId": "sigcon-163607",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "valor": 220000.0,
+      "valorTexto": "220.000,00",
+      "valorDeclarado": 220000.0,
+      "valorIndicado": 220000.0,
+      "valorUtilizado": 220000.0,
+      "valorEmpenhado": 220000.0,
+      "valorLiquidadoAno": 220000.0,
+      "valorLiquidado": 220000.0,
+      "valorPagoAno": 220000.0,
+      "valorPago": 220000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 220000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010133/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9468653",
+      "dataPublicacaoInstrumento": "17/05/2025",
+      "dataValidadeInstrumento": "17/05/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=20274",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 20274,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 20274
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-163374",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "163374/2025",
+      "emendaOriginal": "163374",
+      "numeroIndicacao": "163374",
+      "origemExternaId": "sigcon-163374",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 117000.0,
+      "valorTexto": "117.000,00",
+      "valorDeclarado": 117000.0,
+      "valorIndicado": 117000.0,
+      "valorUtilizado": 117000.0,
+      "valorEmpenhado": 117000.0,
+      "valorLiquidadoAno": 117000.0,
+      "valorLiquidado": 117000.0,
+      "valorPagoAno": 117000.0,
+      "valorPago": 117000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 117000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0016/2025",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9467959",
+      "dataPublicacaoInstrumento": "01/05/2025",
+      "dataValidadeInstrumento": "01/05/2055",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=20060",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 20060,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 20060
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-163084",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "163084/2025",
+      "emendaOriginal": "163084",
+      "numeroIndicacao": "163084",
+      "origemExternaId": "sigcon-163084",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 400000.0,
+      "valorTexto": "400.000,00",
+      "valorDeclarado": 400000.0,
+      "valorIndicado": 400000.0,
+      "valorUtilizado": 400000.0,
+      "valorEmpenhado": 400000.0,
+      "valorLiquidadoAno": 400000.0,
+      "valorLiquidado": 400000.0,
+      "valorPagoAno": 400000.0,
+      "valorPago": 400000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 400000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0016/2025",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9464509",
+      "dataPublicacaoInstrumento": "01/05/2025",
+      "dataValidadeInstrumento": "01/05/2055",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=19787",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 19787,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 19787
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-162593",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "162593/2025",
+      "emendaOriginal": "162593",
+      "numeroIndicacao": "162593",
+      "origemExternaId": "sigcon-162593",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 50000.0,
+      "valorTexto": "50.000,00",
+      "valorDeclarado": 50000.0,
+      "valorIndicado": 50000.0,
+      "valorUtilizado": 50000.0,
+      "valorEmpenhado": 50000.0,
+      "valorLiquidadoAno": 50000.0,
+      "valorLiquidado": 50000.0,
+      "valorPagoAno": 50000.0,
+      "valorPago": 50000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 50000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0016/2025",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9466338",
+      "dataPublicacaoInstrumento": "01/05/2025",
+      "dataValidadeInstrumento": "01/05/2055",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=19345",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 19345,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 19345
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-162325",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "162325/2025",
+      "emendaOriginal": "162325",
+      "numeroIndicacao": "162325",
+      "origemExternaId": "sigcon-162325",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Apoio",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO EU ESCOLHI AMAR",
+      "documentoBeneficiario": "28.221.997/0001-29",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "APOIO FINANCEIRO E MATERIAL ÀS INSTITUIÇÕES NA PROMOÇÃO DO DESENVOLVIMENTO SOCIAL",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Recurso de apoio para a entidade.",
+      "descricao": "Recurso de apoio para a entidade.",
+      "valor": 167236.67,
+      "valorTexto": "167.236,67",
+      "valorDeclarado": 167236.67,
+      "valorIndicado": 167236.67,
+      "valorUtilizado": 167232.0,
+      "valorEmpenhado": 167232.0,
+      "valorLiquidadoAno": 167232.0,
+      "valorLiquidado": 167232.0,
+      "valorPagoAno": 167232.0,
+      "valorPago": 167232.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 167232.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000930/2025",
+      "statusInstrumento": "VIGENTE",
+      "codigoSiafiInstrumento": "9472941",
+      "dataPublicacaoInstrumento": "25/07/2025",
+      "dataValidadeInstrumento": "13/08/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=19099",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 19099,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 19099
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-162301",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "162301/2025",
+      "emendaOriginal": "162301",
+      "numeroIndicacao": "162301",
+      "origemExternaId": "sigcon-162301",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 300000.0,
+      "valorTexto": "300.000,00",
+      "valorDeclarado": 300000.0,
+      "valorIndicado": 300000.0,
+      "valorUtilizado": 300000.0,
+      "valorEmpenhado": 300000.0,
+      "valorLiquidadoAno": 300000.0,
+      "valorLiquidado": 300000.0,
+      "valorPagoAno": 300000.0,
+      "valorPago": 300000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 300000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0016/2025",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9466531",
+      "dataPublicacaoInstrumento": "01/05/2025",
+      "dataValidadeInstrumento": "01/05/2055",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=19078",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 19078,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 19078
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-160829",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "160829/2025",
+      "emendaOriginal": "160829",
+      "numeroIndicacao": "160829",
+      "origemExternaId": "sigcon-160829",
+      "autor": "ANDREIA DE JESUS",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Apoio",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
+      "documentoBeneficiario": "04.982.141/0001-08",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE CULTURA E TURISMO",
+      "orgaoSigla": "SECULT",
+      "funcao": "CULTURA",
+      "acao": "APOIO A PROJETOS CULTURAIS E TURÍSTICOS REALIZADOS POR INTERMÉDIO DE PARCERIAS",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Fest Diversidade: Um evento de inclusão voltado à comunidade LGBT, uma festa com artistas da comunidade ; Eventos Mensais em parceria com grupos de terreiros e com cozinhas comunitárias.",
+      "descricao": "Fest Diversidade: Um evento de inclusão voltado à comunidade LGBT, uma festa com artistas da comunidade ; Eventos Mensais em parceria com grupos de terreiros e com cozinhas comunitárias.",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 100000.0,
+      "valorLiquidadoAno": 100000.0,
+      "valorLiquidado": 100000.0,
+      "valorPagoAno": 100000.0,
+      "valorPago": 100000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 100000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1271000537/2025",
+      "statusInstrumento": "VIGENTE",
+      "codigoSiafiInstrumento": "9472465",
+      "dataPublicacaoInstrumento": "17/07/2025",
+      "dataValidadeInstrumento": "16/07/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=17837",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 17837,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 17837
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-160716",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "160716/2025",
+      "emendaOriginal": "160716",
+      "numeroIndicacao": "160716",
+      "origemExternaId": "sigcon-160716",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO DE PROMOCAO E ASSISTENCIA NOSSA SENHORA DE GUADALUPE - ASPAS",
+      "documentoBeneficiario": "08.035.444/0001-74",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "APOIO FINANCEIRO E MATERIAL ÀS INSTITUIÇÕES NA PROMOÇÃO DO DESENVOLVIMENTO SOCIAL",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Recurso para aquisição de equipamentos e mobiliários",
+      "descricao": "Recurso para aquisição de equipamentos e mobiliários",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 100000.0,
+      "valorLiquidadoAno": 100000.0,
+      "valorLiquidado": 100000.0,
+      "valorPagoAno": 100000.0,
+      "valorPago": 100000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 100000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000820/2025",
+      "statusInstrumento": "VIGENTE",
+      "codigoSiafiInstrumento": "9473119",
+      "dataPublicacaoInstrumento": "26/07/2025",
+      "dataValidadeInstrumento": "25/07/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=17736",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 17736,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 17736
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-160552",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "160552/2025",
+      "emendaOriginal": "160552",
+      "numeroIndicacao": "160552",
+      "origemExternaId": "sigcon-160552",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+      "documentoBeneficiario": "14.137.358/0001-75",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE CULTURA E TURISMO",
+      "orgaoSigla": "SECULT",
+      "funcao": "CULTURA",
+      "acao": "APOIO A PROJETOS CULTURAIS E TURÍSTICOS REALIZADOS POR INTERMÉDIO DE PARCERIAS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Veículo de 07 Lugares- Resolução 06 SEGOV de 31/01/2025",
+      "descricao": "Veículo de 07 Lugares- Resolução 06 SEGOV de 31/01/2025",
+      "valor": 125737.7,
+      "valorTexto": "125.737,70",
+      "valorDeclarado": 125737.7,
+      "valorIndicado": 125737.7,
+      "valorUtilizado": 125737.7,
+      "valorEmpenhado": 125737.7,
+      "valorLiquidadoAno": 125737.7,
+      "valorLiquidado": 125737.7,
+      "valorPagoAno": 125737.7,
+      "valorPago": 125737.7,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 125737.7,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1271000393/2025",
+      "statusInstrumento": "VIGENTE",
+      "codigoSiafiInstrumento": "9471839",
+      "dataPublicacaoInstrumento": "10/07/2025",
+      "dataValidadeInstrumento": "09/07/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=17618",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 17618,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 17618
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-160547",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": null,
+      "emenda": "160547/2025",
+      "emendaOriginal": "160547",
+      "numeroIndicacao": "160547",
+      "origemExternaId": "sigcon-160547",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Realização",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
+      "documentoBeneficiario": "43.749.486/0001-78",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE CULTURA E TURISMO",
+      "orgaoSigla": "SECULT",
+      "funcao": "CULTURA",
+      "acao": "APOIO A PROJETOS CULTURAIS E TURÍSTICOS REALIZADOS POR INTERMÉDIO DE PARCERIAS",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Realização de um Evento para encontro das Companhias de Reis",
+      "descricao": "Realização de um Evento para encontro das Companhias de Reis",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "REPROVADO PELO ÓRGÃO",
+      "statusFinanceiro": "Reprovado",
+      "estagioAtual": "reprovada",
+      "aprovado": "Não",
+      "justificativaReprovacao": "Considerando que não foi encaminhada a documentação exigida pela legislação específica aplicável ao instrumento jurídico a ser formalizado no âmbito do Poder Executivo para viabilizar a execução das programações indicadas com finalidade específica, o impedimento de ordem técnica é justificado pelo inciso IX do artigo 24 da Resolução SEGOV 04/2025.",
+      "classificacaoIot": "i) não apresentação ou apresentação fora dos prazos da documentação exigida pela legislação específica aplicável ao instrumento jurídico a ser formalizado no âmbito do Poder Executivo para viabilizar a execução das programações indicadas com finalidade específica, incluindo a vinculação da proposta de plano de trabalho para as formas de execução de celebração de convênios de saída e parcerias do MROSC",
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=17613",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 17613,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 17613
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-160543",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "160543/2025",
+      "emendaOriginal": "160543",
+      "numeroIndicacao": "160543",
+      "origemExternaId": "sigcon-160543",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO AFETO DE AMPARO A GESTANTE - RAEL E OS PEQUENOS GUERREIROS - A G E V A",
+      "documentoBeneficiario": "41.513.999/0001-50",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "APOIO FINANCEIRO E MATERIAL ÀS INSTITUIÇÕES NA PROMOÇÃO DO DESENVOLVIMENTO SOCIAL",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Camionete de acordo com a resolução 06 SEGOV 31/01/2025",
+      "descricao": "Camionete de acordo com a resolução 06 SEGOV 31/01/2025",
+      "valor": 132763.33,
+      "valorTexto": "132.763,33",
+      "valorDeclarado": 132763.33,
+      "valorIndicado": 132763.33,
+      "valorUtilizado": 132763.33,
+      "valorEmpenhado": 132763.33,
+      "valorLiquidadoAno": 132763.33,
+      "valorLiquidado": 132763.33,
+      "valorPagoAno": 132763.33,
+      "valorPago": 132763.33,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 132763.33,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000968/2025",
+      "statusInstrumento": "VIGENTE",
+      "codigoSiafiInstrumento": "9473115",
+      "dataPublicacaoInstrumento": "26/07/2025",
+      "dataValidadeInstrumento": "25/07/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=17611",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 17611,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 17611
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-160349",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "160349/2025",
+      "emendaOriginal": "160349",
+      "numeroIndicacao": "160349",
+      "origemExternaId": "sigcon-160349",
+      "autor": "ANDREIA DE JESUS",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Realização",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "( INSTITUTO NACIONAL DE EDUCAO, CULTURA E ATIVIDADES SICOPEDAGOGICAS)",
+      "documentoBeneficiario": "05.852.571/0001-78",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE CULTURA E TURISMO",
+      "orgaoSigla": "SECULT",
+      "funcao": "CULTURA",
+      "acao": "APOIO A PROJETOS CULTURAIS E TURÍSTICOS REALIZADOS POR INTERMÉDIO DE PARCERIAS",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Apoio a atividade Cultural do Bloco Afro Magia Negra - \"O arrastão do Bloco Magia Negra\"",
+      "descricao": "Apoio a atividade Cultural do Bloco Afro Magia Negra - \"O arrastão do Bloco Magia Negra\"",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 100000.0,
+      "valorLiquidadoAno": 100000.0,
+      "valorLiquidado": 100000.0,
+      "valorPagoAno": 100000.0,
+      "valorPago": 100000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 100000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1271001546/2025",
+      "statusInstrumento": "VIGENTE",
+      "codigoSiafiInstrumento": "9481249",
+      "dataPublicacaoInstrumento": "18/10/2025",
+      "dataValidadeInstrumento": "17/10/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=17459",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 17459,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 17459
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-159950",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "159950/2025",
+      "emendaOriginal": "159950",
+      "numeroIndicacao": "159950",
+      "origemExternaId": "sigcon-159950",
+      "autor": "ANDREIA DE JESUS",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
+      "documentoBeneficiario": "19.110.162/0001-00",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ASSESSORAMENTO E GERENCIAMENTO DE POLÍTICAS DE VIGILÂNCIA EM SAÚDE",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Investimento Apoio as ações de saúde Fundação Hospitalar Varginha",
+      "descricao": "Investimento Apoio as ações de saúde Fundação Hospitalar Varginha",
+      "valor": 180000.0,
+      "valorTexto": "180.000,00",
+      "valorDeclarado": 180000.0,
+      "valorIndicado": 180000.0,
+      "valorUtilizado": 180000.0,
+      "valorEmpenhado": 180000.0,
+      "valorLiquidadoAno": 180000.0,
+      "valorLiquidado": 180000.0,
+      "valorPagoAno": 180000.0,
+      "valorPago": 180000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010136/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9468548",
+      "dataPublicacaoInstrumento": "17/05/2025",
+      "dataValidadeInstrumento": "17/05/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=17099",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 17099,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 17099
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-159644",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "159644/2025",
+      "emendaOriginal": "159644",
+      "numeroIndicacao": "159644",
+      "origemExternaId": "sigcon-159644",
+      "autor": "BELLA GONÇALVES",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Contratação",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "( INSTITUTO NACIONAL DE EDUCAO, CULTURA E ATIVIDADES SICOPEDAGOGICAS)",
+      "documentoBeneficiario": "05.852.571/0001-78",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "TRABALHO",
+      "acao": "QUALIFICAÇÃO PROFISSIONAL",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Feira Cultural Yiaminas",
+      "descricao": "Feira Cultural Yiaminas",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 100000.0,
+      "valorLiquidadoAno": 100000.0,
+      "valorLiquidado": 100000.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 100000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": "ANÁLISE TÉCNICA",
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=16835",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 16835,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 16835
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-158649",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": null,
+      "emenda": "158649/2025",
+      "emendaOriginal": "158649",
+      "numeroIndicacao": "158649",
+      "origemExternaId": "sigcon-158649",
+      "autor": "ALENCAR DA SILVEIRA JR.",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO ANJOS DE BRANCO",
+      "documentoBeneficiario": "34.509.195/0001-11",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "EXECUÇÃO DO PROGRAMA DE APOIO AO DESENVOLVIMENTO MUNICIPAL - PADEM",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "AQUISIÇÃO DE BENS PERMANENTES",
+      "descricao": "AQUISIÇÃO DE BENS PERMANENTES",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "REPROVADO PELO ÓRGÃO",
+      "statusFinanceiro": "Reprovado",
+      "estagioAtual": "reprovada",
+      "aprovado": "Não",
+      "justificativaReprovacao": "Registro de Impedimento de acordo com ticket #209039",
+      "classificacaoIot": "u) outras razões de ordem técnica devidamente justificadas",
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=16042",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 16042,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 16042
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-158603",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "158603/2025",
+      "emendaOriginal": "158603",
+      "numeroIndicacao": "158603",
+      "origemExternaId": "sigcon-158603",
+      "autor": "BLOCO AVANCA MINAS",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 162808.0,
+      "valorTexto": "162.808,00",
+      "valorDeclarado": 162808.0,
+      "valorIndicado": 162808.0,
+      "valorUtilizado": 162808.0,
+      "valorEmpenhado": 162808.0,
+      "valorLiquidadoAno": 162808.0,
+      "valorLiquidado": 162808.0,
+      "valorPagoAno": 162808.0,
+      "valorPago": 162808.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 162808.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0016/2025",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9464974",
+      "dataPublicacaoInstrumento": "01/05/2025",
+      "dataValidadeInstrumento": "01/05/2055",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=16024",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 16024,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 16024
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-158214",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "158214/2025",
+      "emendaOriginal": "158214",
+      "numeroIndicacao": "158214",
+      "origemExternaId": "sigcon-158214",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Consumo",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO VARGINHENSE DE ESPORTE",
+      "documentoBeneficiario": "03.724.095/0001-84",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "DESPORTO E LAZER",
+      "acao": "APOIO À REALIZAÇÃO DE AÇÕES ESPORTIVAS",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Aquisição de bens para apoio aos projetos esportivos da associação .",
+      "descricao": "Aquisição de bens para apoio aos projetos esportivos da associação .",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 99953.8,
+      "valorEmpenhado": 99953.8,
+      "valorLiquidadoAno": 99953.8,
+      "valorLiquidado": 99953.8,
+      "valorPagoAno": 99953.8,
+      "valorPago": 99953.8,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 99953.8,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000330/2025",
+      "statusInstrumento": "VIGENTE",
+      "codigoSiafiInstrumento": "9471743",
+      "dataPublicacaoInstrumento": "08/07/2025",
+      "dataValidadeInstrumento": "07/07/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=15748",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 15748,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 15748
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-158165",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "158165/2025",
+      "emendaOriginal": "158165",
+      "numeroIndicacao": "158165",
+      "origemExternaId": "sigcon-158165",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO EU ESCOLHI AMAR",
+      "documentoBeneficiario": "28.221.997/0001-29",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "APOIO FINANCEIRO E MATERIAL ÀS INSTITUIÇÕES NA PROMOÇÃO DO DESENVOLVIMENTO SOCIAL",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Veículo Minivan (mínimo 7 lugares). Resolução SEGOV, N° 06 de 31 de janeiro de 2025.",
+      "descricao": "Veículo Minivan (mínimo 7 lugares). Resolução SEGOV, N° 06 de 31 de janeiro de 2025.",
+      "valor": 125737.7,
+      "valorTexto": "125.737,70",
+      "valorDeclarado": 125737.7,
+      "valorIndicado": 125737.7,
+      "valorUtilizado": 125737.7,
+      "valorEmpenhado": 125737.7,
+      "valorLiquidadoAno": 125737.7,
+      "valorLiquidado": 125737.7,
+      "valorPagoAno": 125737.7,
+      "valorPago": 125737.7,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 125737.7,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000175/2025",
+      "statusInstrumento": "ANÁLISE JURÍDICA DA ALTERAÇÃO",
+      "codigoSiafiInstrumento": "9470712",
+      "dataPublicacaoInstrumento": "18/06/2025",
+      "dataValidadeInstrumento": "17/06/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=15718",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 15718,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 15718
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-158035",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "158035/2025",
+      "emendaOriginal": "158035",
+      "numeroIndicacao": "158035",
+      "origemExternaId": "sigcon-158035",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO VARGINHENSE DE ASSISTENCIA AOS EXCEPCIONAIS",
+      "documentoBeneficiario": "18.240.010/0001-60",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "APOIO E FORTALECIMENTO DA REDE DE CUIDADO À PESSOA COM DEFICIÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "custeio",
+      "descricao": "custeio",
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 200000.0,
+      "valorEmpenhado": 200000.0,
+      "valorLiquidadoAno": 200000.0,
+      "valorLiquidado": 200000.0,
+      "valorPagoAno": 200000.0,
+      "valorPago": 200000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 200000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "010044/2025",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9459040",
+      "dataPublicacaoInstrumento": "29/03/2025",
+      "dataValidadeInstrumento": "29/03/2028",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=15643",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 15643,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 15643
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2025-157901",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2025",
+      "anoEmenda": "2025",
+      "anoRecurso": "2025",
+      "emenda": "157901/2025",
+      "emendaOriginal": "157901",
+      "numeroIndicacao": "157901",
+      "origemExternaId": "sigcon-157901",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Consumo",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "CONSELHO METROPOLITANO DE POUSO ALEGRE DA SOCIEDADE DE SAO VICENTE DE PAULO",
+      "documentoBeneficiario": "41.774.894/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "APOIO FINANCEIRO E MATERIAL ÀS INSTITUIÇÕES NA PROMOÇÃO DO DESENVOLVIMENTO SOCIAL",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Aquisição de bens de consumo .",
+      "descricao": "Aquisição de bens de consumo .",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 100000.0,
+      "valorLiquidadoAno": 100000.0,
+      "valorLiquidado": 100000.0,
+      "valorPagoAno": 100000.0,
+      "valorPago": 100000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 100000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000896/2025",
+      "statusInstrumento": "VIGENTE",
+      "codigoSiafiInstrumento": "9473111",
+      "dataPublicacaoInstrumento": "26/07/2025",
+      "dataValidadeInstrumento": "25/07/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=15586",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 15586,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 15586
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-147927",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "147927/2024",
+      "emendaOriginal": "147927",
+      "numeroIndicacao": "147927",
+      "origemExternaId": "sigcon-147927",
+      "autor": "ANTONIO CARLOS ARANTES",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA",
+      "categoria": "EXECUÇÃO DIRETA",
+      "modalidade": "EXECUÇÃO DIRETA",
+      "impositiva": true,
+      "beneficiario": "9º BBM",
+      "documentoBeneficiario": "03.389.126/0001-98",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "CORPO DE BOMBEIROS MILITAR DO ESTADO DE MINAS GERAIS",
+      "orgaoSigla": "CBMMG",
+      "funcao": "SEGURANÇA PÚBLICA",
+      "acao": "GESTÃO DA RESPOSTA A DESASTRES",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Aquisição de bem permanente",
+      "descricao": "Aquisição de bem permanente",
+      "valor": 75000.0,
+      "valorTexto": "75.000,00",
+      "valorDeclarado": 75000.0,
+      "valorIndicado": 75000.0,
+      "valorUtilizado": 74955.0,
+      "valorEmpenhado": 74955.0,
+      "valorLiquidadoAno": 74955.0,
+      "valorLiquidado": 74955.0,
+      "valorPagoAno": 74955.0,
+      "valorPago": 74955.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 74955.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=14943",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 14943,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 14943
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-147326",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "147326/2024",
+      "emendaOriginal": "147326",
+      "numeroIndicacao": "147326",
+      "origemExternaId": "sigcon-147326",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO VARGINHENSE DE ASSISTENCIA AOS EXCEPCIONAIS",
+      "documentoBeneficiario": "18.240.010/0001-60",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "APOIO E FORTALECIMENTO DA REDE DE CUIDADO À PESSOA COM DEFICIÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Recurso para custeio.",
+      "descricao": "Recurso para custeio.",
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 200000.0,
+      "valorEmpenhado": 200000.0,
+      "valorLiquidadoAno": 200000.0,
+      "valorLiquidado": 200000.0,
+      "valorPagoAno": 200000.0,
+      "valorPago": 200000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 200000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "009479/2024",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9425849",
+      "dataPublicacaoInstrumento": "03/05/2024",
+      "dataValidadeInstrumento": "03/05/2027",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=14356",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 14356,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 14356
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-146956",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "146956/2024",
+      "emendaOriginal": "146956",
+      "numeroIndicacao": "146956",
+      "origemExternaId": "sigcon-146956",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "FES Custeio",
+      "descricao": null,
+      "valor": 270000.0,
+      "valorTexto": "270.000,00",
+      "valorDeclarado": 270000.0,
+      "valorIndicado": 270000.0,
+      "valorUtilizado": 270000.0,
+      "valorEmpenhado": 270000.0,
+      "valorLiquidadoAno": 270000.0,
+      "valorLiquidado": 270000.0,
+      "valorPagoAno": 270000.0,
+      "valorPago": 270000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 270000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "009578/2024",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9430041",
+      "dataPublicacaoInstrumento": "18/06/2024",
+      "dataValidadeInstrumento": "18/06/2027",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=14008",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 14008,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 14008
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-146615",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "146615/2024",
+      "emendaOriginal": "146615",
+      "numeroIndicacao": "146615",
+      "origemExternaId": "sigcon-146615",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA",
+      "categoria": "EXECUÇÃO DIRETA",
+      "modalidade": "EXECUÇÃO DIRETA",
+      "impositiva": true,
+      "beneficiario": "07ª Delegacia Regional de Polícia Civil - Varginha",
+      "documentoBeneficiario": "18.715.532/0001-70",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "POLÍCIA CIVIL DO ESTADO DE MINAS GERAIS",
+      "orgaoSigla": "PCMG",
+      "funcao": "SEGURANÇA PÚBLICA",
+      "acao": "GESTÃO DAS UNIDADES POLICIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Aquisição de KIT ARMAMENTO para a delegacia do município de Varginha",
+      "descricao": "Aquisição de KIT ARMAMENTO para a delegacia do município de Varginha",
+      "valor": 43200.0,
+      "valorTexto": "43.200,00",
+      "valorDeclarado": 43200.0,
+      "valorIndicado": 43200.0,
+      "valorUtilizado": 42600.0,
+      "valorEmpenhado": 42600.0,
+      "valorLiquidadoAno": 42600.0,
+      "valorLiquidado": 42600.0,
+      "valorPagoAno": 42600.0,
+      "valorPago": 42600.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 42600.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=13688",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 13688,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 13688
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-146613",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "146613/2024",
+      "emendaOriginal": "146613",
+      "numeroIndicacao": "146613",
+      "origemExternaId": "sigcon-146613",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA",
+      "categoria": "EXECUÇÃO DIRETA",
+      "modalidade": "EXECUÇÃO DIRETA",
+      "impositiva": true,
+      "beneficiario": "07ª Delegacia Regional de Polícia Civil - Varginha",
+      "documentoBeneficiario": "18.715.532/0001-70",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "POLÍCIA CIVIL DO ESTADO DE MINAS GERAIS",
+      "orgaoSigla": "PCMG",
+      "funcao": "SEGURANÇA PÚBLICA",
+      "acao": "GESTÃO DAS UNIDADES POLICIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Aquisição de viatura caracterizada com cela tipo SUV para a delegacia do município de Varginha",
+      "descricao": "Aquisição de viatura caracterizada com cela tipo SUV para a delegacia do município de Varginha",
+      "valor": 190000.0,
+      "valorTexto": "190.000,00",
+      "valorDeclarado": 190000.0,
+      "valorIndicado": 190000.0,
+      "valorUtilizado": 144900.0,
+      "valorEmpenhado": 144900.0,
+      "valorLiquidadoAno": 144900.0,
+      "valorLiquidado": 144900.0,
+      "valorPagoAno": 144900.0,
+      "valorPago": 144900.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 144900.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=13686",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 13686,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 13686
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-145004",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "145004/2024",
+      "emendaOriginal": "145004",
+      "numeroIndicacao": "145004",
+      "origemExternaId": "sigcon-145004",
+      "autor": "MAURO TRAMONTE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "custeio",
+      "descricao": "custeio",
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 200000.0,
+      "valorEmpenhado": 200000.0,
+      "valorLiquidadoAno": 200000.0,
+      "valorLiquidado": 200000.0,
+      "valorPagoAno": 200000.0,
+      "valorPago": 200000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 200000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "009578/2024",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9430040",
+      "dataPublicacaoInstrumento": "18/06/2024",
+      "dataValidadeInstrumento": "18/06/2027",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=12284",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 12284,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 12284
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-144826",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "144826/2024",
+      "emendaOriginal": "144826",
+      "numeroIndicacao": "144826",
+      "origemExternaId": "sigcon-144826",
+      "autor": "CORONEL HENRIQUE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "PREFEITURA MUNICIPAL DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 100000.0,
+      "valorLiquidadoAno": 100000.0,
+      "valorLiquidado": 100000.0,
+      "valorPagoAno": 100000.0,
+      "valorPago": 100000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 100000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0014/2024",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9420114",
+      "dataPublicacaoInstrumento": "04/04/2024",
+      "dataValidadeInstrumento": "04/04/2054",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=12123",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 12123,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 12123
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-143467",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "143467/2024",
+      "emendaOriginal": "143467",
+      "numeroIndicacao": "143467",
+      "origemExternaId": "sigcon-143467",
+      "autor": "SARGENTO RODRIGUES",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ESTRUTURAÇÃO DA ATENÇÃO HOSPITALAR E DE URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Beneficiário final: Fundação Hospitalar do Município de Varginha (Nome Fantasia: Hospital Bom Pastor) - CNPJ: 19.110.1620001-00.",
+      "descricao": "Beneficiário final: Fundação Hospitalar do Município de Varginha (Nome Fantasia: Hospital Bom Pastor) - CNPJ: 19.110.1620001-00.",
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 200000.0,
+      "valorEmpenhado": 200000.0,
+      "valorLiquidadoAno": 200000.0,
+      "valorLiquidado": 200000.0,
+      "valorPagoAno": 200000.0,
+      "valorPago": 200000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 200000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "009558/2024",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9429671",
+      "dataPublicacaoInstrumento": "07/06/2024",
+      "dataValidadeInstrumento": "07/06/2027",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=10987",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 10987,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 10987
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-141282",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "141282/2024",
+      "emendaOriginal": "141282",
+      "numeroIndicacao": "141282",
+      "origemExternaId": "sigcon-141282",
+      "autor": "BLOCO MINAS EM FRENTE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "PREFEITURA MUNICIPAL DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 100000.0,
+      "valorLiquidadoAno": 100000.0,
+      "valorLiquidado": 100000.0,
+      "valorPagoAno": 100000.0,
+      "valorPago": 100000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 100000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0014/2024",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9420428",
+      "dataPublicacaoInstrumento": "04/04/2024",
+      "dataValidadeInstrumento": "04/04/2054",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=9447",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 9447,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 9447
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-140987",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "140987/2024",
+      "emendaOriginal": "140987",
+      "numeroIndicacao": "140987",
+      "origemExternaId": "sigcon-140987",
+      "autor": "ALENCAR DA SILVEIRA JR.",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "CUSTEIO PARA SAÚDE",
+      "descricao": "CUSTEIO PARA SAÚDE",
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 200000.0,
+      "valorEmpenhado": 200000.0,
+      "valorLiquidadoAno": 200000.0,
+      "valorLiquidado": 200000.0,
+      "valorPagoAno": 200000.0,
+      "valorPago": 200000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 200000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "009578/2024",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9430039",
+      "dataPublicacaoInstrumento": "18/06/2024",
+      "dataValidadeInstrumento": "18/06/2027",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=9189",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 9189,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 9189
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-140551",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": null,
+      "emenda": "140551/2024",
+      "emendaOriginal": "140551",
+      "numeroIndicacao": "140551",
+      "origemExternaId": "sigcon-140551",
+      "autor": "SARGENTO RODRIGUES",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "FES Cama Hospitalar Tipo Fawler Elétrica",
+      "descricao": null,
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "REPROVADO PELO ÓRGÃO",
+      "statusFinanceiro": "Reprovado",
+      "estagioAtual": "reprovada",
+      "aprovado": "Não",
+      "justificativaReprovacao": "Conforme parecer emitido pela área técnica afeta a ação orçamentaria indicada, pois o tipo de aplicação \"FES Cama Hospitalar do Tipo Fawler Elétrica\" não pode ser contemplado na ação 4121, que se refere apenas a custeio de instituições Valora Minas.",
+      "classificacaoIot": "t) previsão de distribuição gratuita de bens, valores ou benefícios por parte da Administração Pública para a população, seja diretamente ou por meio da celebração de convênio de saída ou parcerias com organizações da sociedade civil, contrariando o §10 do art.73, da Lei Federal nº 9.504, de 30 de setembro, de 1997 (Lei Eleitoral)",
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=8876",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 8876,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 8876
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2024-140014",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
       "anoEmenda": "2024",
       "anoRecurso": "2024",
       "emenda": "140014/2024",
-      "emendaOriginal": "140014/2024",
-      "autor": "MÁRIO HENRIQUE CAIXA",
-      "partido": "",
-      "valor": 161000.0,
-      "valorTexto": "161.000,00",
+      "emendaOriginal": "140014",
+      "numeroIndicacao": "140014",
+      "origemExternaId": "sigcon-140014",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
       "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "documentoBeneficiario": "25.863.390/0001-54",
-      "orgao": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "10/09/2024",
-      "dataPlano": "18/06/2024",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 9.578, 14 DE JUNHO DE 2024. MARIO HENRIQUE CAIXA Sim Emenda individual",
-      "objeto": "Os beneficiários deverão utilizar os recursos recebidos tão somente em ações e serviços de saúde que se enquadrem na ação orçamentária nº 4121 - Política de Atenção Hospitalar e Urgência e Emergência, devendo a execução ser comprovada para esse fim. Os recursos deverão ser utilizados única e exclusivamente para o atendimento dos usuários do Sistema Único de Saúde - SUS. Os rendimentos provenientes de aplicação financeira devem ser utilizados na execução do objeto, nos termos desta Resolução. Fica vedada a utilização dos recursos para realização de despesas com pessoal, aquisição de equipamentos e materiais permanentes, incluindo obra.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 4,
-      "textoBusca": "estadual 140014/2024 2024 2024 pv  hospital regional do sul de minas hospital regional do sul de minas os beneficiarios deverao utilizar os recursos recebidos tao somente em acoes e servicos de saude que se enquadrem na acao orcamentaria nº 4121 - politica de atencao hospitalar e urgencia e emergencia, devendo a execucao ser comprovada para esse fim. os recursos deverao ser utilizados unica e exclusivamente para o atendimento dos usuarios do sistema unico de saude - sus. os rendimentos provenientes de aplicacao financeira devem ser utilizados na execucao do objeto, nos termos desta resolucao. fica vedada a utilizacao dos recursos para realizacao de despesas com pessoal, aquisicao de equipamentos e materiais permanentes, incluindo obra. resolucao ses nº 9.578, 14 de junho de 2024. mario henrique caixa sim emenda individual heron ataide martins 10/09/2024 nao sim",
-      "anosRelacionados": [
-        "2024",
-        "2025"
-      ],
-      "id": "87514053a8620c9c",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 4
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 4
-        }
-      ],
-      "autorOriginal": "Mario Henrique Caixa",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "4121 - POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "descricao": "4121 - POLÍTICA DE ATENÇÃO HOSPITALAR E URGÊNCIA E EMERGÊNCIA",
+      "valor": 161000.0,
+      "valorTexto": "161.000,00",
       "valorDeclarado": 161000.0,
-      "valorRecebido": 161000.0,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "",
-      "emenda": "175707/2025",
-      "emendaOriginal": "175707/2025",
-      "autor": "DIMAS FABIANO",
-      "partido": "PP",
-      "valor": null,
-      "valorTexto": "151.600,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "22/12/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "48",
+      "valorIndicado": 161000.0,
+      "valorUtilizado": 161000.0,
+      "valorEmpenhado": 161000.0,
+      "valorLiquidadoAno": 161000.0,
+      "valorLiquidado": 161000.0,
+      "valorPagoAno": 161000.0,
+      "valorPago": 161000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 161000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
       "aprovado": "Sim",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 10.433/2025 - DIMAS FABIANO TOLEDO JÚNIOR (PP) Não Emenda individual",
-      "objeto": "AQUISIÇÃO DE 01 (UMA) GAMA PROBE.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 30,
-      "textoBusca": "estadual 175707/2025 2025  dimas fabiano toledo junior pp fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv aquisicao de 01 (uma) gama probe. resolucao ses/mg 10.433/2025 - dimas fabiano toledo junior (pp) nao emenda individual rosana de paiva silva morais  sim nao",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "22cdb7ce68016544",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "009578/2024",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9430038",
+      "dataPublicacaoInstrumento": "18/06/2024",
+      "dataValidadeInstrumento": "18/06/2027",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=8436",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 8436,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 30
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 30
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 8436
         }
       ],
-      "autorOriginal": "DIMAS FABIANO TOLEDO JUNIOR",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Federal",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 151600.0,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial",
-        "recebimento_nao_comprovado"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2024-139560",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "",
-      "emenda": "175699/2025",
-      "emendaOriginal": "175699/2025",
-      "autor": "DIMAS FABIANO",
-      "partido": "PP",
-      "valor": null,
-      "valorTexto": "111.802,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMU",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2024",
+      "anoEmenda": "2024",
+      "anoRecurso": "2024",
+      "emenda": "139560/2024",
+      "emendaOriginal": "139560",
+      "numeroIndicacao": "139560",
+      "origemExternaId": "sigcon-139560",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "PREFEITURA MUNICIPAL DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "22/12/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "48",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 50000.0,
+      "valorTexto": "50.000,00",
+      "valorDeclarado": 50000.0,
+      "valorIndicado": 50000.0,
+      "valorUtilizado": 50000.0,
+      "valorEmpenhado": 50000.0,
+      "valorLiquidadoAno": 50000.0,
+      "valorLiquidado": 50000.0,
+      "valorPagoAno": 50000.0,
+      "valorPago": 50000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 50000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
       "aprovado": "Sim",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 10.502/2025 - DIMAS FABIANO TOLEDO JÚNIOR (PP) Não Emenda individual",
-      "objeto": "AQUISIÇÃO DE 01 (UM) ENDOSCÓPIO RÍGIDO.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 28,
-      "textoBusca": "estadual 175699/2025 2025  dimas fabiano toledo junior pp fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomu aquisicao de 01 (um) endoscopio rigido. resolucao ses/mg 10.502/2025 - dimas fabiano toledo junior (pp) nao emenda individual rosana de paiva silva morais  sim nao",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "bc1dccd9ab152562",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0014/2024",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9421254",
+      "dataPublicacaoInstrumento": "04/04/2024",
+      "dataValidadeInstrumento": "04/04/2054",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=8171",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 8171,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 28
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 28
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 8171
         }
       ],
-      "autorOriginal": "DIMAS FABIANO TOLEDO JUNIOR",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Federal",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 111802.0,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial",
-        "recebimento_nao_comprovado"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2023-127518",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "",
-      "emenda": "175700/2025",
-      "emendaOriginal": "175700/2025",
-      "autor": "DIMAS FABIANO",
-      "partido": "PP",
-      "valor": null,
-      "valorTexto": "110.375,00",
-      "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-      "documentoBeneficiario": "19.110.162/0001-00",
-      "orgao": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA FHOMUV",
-      "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "22/12/2025",
-      "responsavel": "ROSANA DE PAIVA SILVA MORAIS",
-      "prazoExecucao": "48",
-      "aprovado": "Sim",
-      "emendaIndividual": "Nao",
-      "descricao": "RESOLUÇÃO SES/MG 10.502/2025 - DIMAS FABIANO TOLEDO JÚNIOR (PP) Não Emenda individual",
-      "objeto": "AQUISIÇÃO DE 01 (UM) VENTILADOR PULMONAR PRESSOMÉTRICO E VOLUMÉTRICO.",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 29,
-      "textoBusca": "estadual 175700/2025 2025  dimas fabiano toledo junior pp fundacao hospitalar do municipio de varginha fundacao hospitalar do municipio de varginha fhomuv aquisicao de 01 (um) ventilador pulmonar pressometrico e volumetrico. resolucao ses/mg 10.502/2025 - dimas fabiano toledo junior (pp) nao emenda individual rosana de paiva silva morais  sim nao",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "e66ae8d7179f5cb9",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 29
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 29
-        }
-      ],
-      "autorOriginal": "DIMAS FABIANO TOLEDO JUNIOR",
       "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Federal",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 110375.0,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial",
-        "recebimento_nao_comprovado"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "2025",
-      "anoRecurso": "",
-      "emenda": "168925/2025",
-      "emendaOriginal": "168925/2025",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "127518/2023",
+      "emendaOriginal": "127518",
+      "numeroIndicacao": "127518",
+      "origemExternaId": "sigcon-127518",
       "autor": "BRUNO ENGLER",
-      "partido": "",
-      "valor": null,
-      "valorTexto": "83.953,00",
-      "beneficiario": "FUNDO MUNICIPAL DE SAUDE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "PREFEITURA MUNICIPAL DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 200000.0,
+      "valorEmpenhado": 200000.0,
+      "valorLiquidadoAno": 200000.0,
+      "valorLiquidado": 200000.0,
+      "valorPagoAno": 200000.0,
+      "valorPago": 200000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 200000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0027/2023",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9394693",
+      "dataPublicacaoInstrumento": "26/09/2023",
+      "dataValidadeInstrumento": "26/09/2053",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=6767",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 6767,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 6767
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-118681",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "118681/2023",
+      "emendaOriginal": "118681",
+      "numeroIndicacao": "118681",
+      "origemExternaId": "sigcon-118681",
+      "autor": "NORALDINO JUNIOR",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
+      "documentoBeneficiario": "19.110.162/0001-00",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Despesas de custeio para atender as demandas do Hospital.",
+      "descricao": "Despesas de custeio para atender as demandas do Hospital.",
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 200000.0,
+      "valorEmpenhado": 200000.0,
+      "valorLiquidadoAno": 200000.0,
+      "valorLiquidado": 200000.0,
+      "valorPagoAno": 200000.0,
+      "valorPago": 200000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 200000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008771/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388301",
+      "dataPublicacaoInstrumento": "24/05/2023",
+      "dataValidadeInstrumento": "24/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=4838",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 4838,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 4838
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-117409",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": null,
+      "emenda": "117409/2023",
+      "emendaOriginal": "117409",
+      "numeroIndicacao": "117409",
+      "origemExternaId": "sigcon-117409",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIA AOS EXCEPCIONAIS FUVAE",
+      "documentoBeneficiario": "18.240.010/0001-60",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ASSISTÊNCIA SOCIAL",
+      "acao": "APOIO FINANCEIRO E MATERIAL AOS SERVIÇOS SOCIOASSISTENCIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Aquisição de bens permanentes diversos para a FUVAE (Fundação Varginhense de Assistência aos Excepcionais) de Varginha.",
+      "descricao": "Aquisição de bens permanentes diversos para a FUVAE (Fundação Varginhense de Assistência aos Excepcionais) de Varginha.",
+      "valor": 200000.0,
+      "valorTexto": "200.000,00",
+      "valorDeclarado": 200000.0,
+      "valorIndicado": 200000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "REPROVADO PELO ÓRGÃO",
+      "statusFinanceiro": "Reprovado",
+      "estagioAtual": "reprovada",
+      "aprovado": "Não",
+      "justificativaReprovacao": "Emenda n¿o vinculada ¿ proposta de plano de trabalho 002099/2023 conforme prev¿ o inciso I, ¿1¿, artigo 14, da Resolu¿¿o SEGOV 03/2023",
+      "classificacaoIot": "i) não apresentação ou apresentação fora dos prazos da documentação exigida pela legislação específica aplicável ao instrumento jurídico a ser formalizado no âmbito do Poder Executivo para viabilizar a execução das programações indicadas com finalidade específica, incluindo a vinculação da proposta de plano de trabalho para as formas de execução de celebração de convênios de saída e parcerias do MROSC",
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=3677",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 3677,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 3677
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-117097",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "117097/2023",
+      "emendaOriginal": "117097",
+      "numeroIndicacao": "117097",
+      "origemExternaId": "sigcon-117097",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "PREFEITURA MUNICIPAL DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 60000.0,
+      "valorTexto": "60.000,00",
+      "valorDeclarado": 60000.0,
+      "valorIndicado": 60000.0,
+      "valorUtilizado": 60000.0,
+      "valorEmpenhado": 60000.0,
+      "valorLiquidadoAno": 60000.0,
+      "valorLiquidado": 60000.0,
+      "valorPagoAno": 60000.0,
+      "valorPago": 60000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 60000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0012/2023",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9383887",
+      "dataPublicacaoInstrumento": "20/04/2023",
+      "dataValidadeInstrumento": "20/04/2053",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=3413",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 3413,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 3413
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-116791",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "116791/2023",
+      "emendaOriginal": "116791",
+      "numeroIndicacao": "116791",
+      "origemExternaId": "sigcon-116791",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
       "documentoBeneficiario": "11.234.223/0001-30",
-      "orgao": "FUNDO MUNICIPAL DE SAÚDE",
+      "codigoIbge": "3170701",
       "localidade": "VARGINHA",
-      "funcao": "10",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "25/04/2025",
-      "responsavel": "HERON ATAIDE MARTINS",
-      "prazoExecucao": "36",
-      "aprovado": "Não",
-      "emendaIndividual": "Sim",
-      "descricao": "RESOLUÇÃO SES Nº 10.088, 24 DE ABRIL DE 2025. BRUNO ENGLER. Sim Emenda individual",
-      "objeto": "Veículo Passeio (5 lugares)",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 26,
-      "textoBusca": "estadual 168925/2025 2025  pl  fundo municipal de saude fundo municipal de saude veiculo passeio (5 lugares) resolucao ses nº 10.088, 24 de abril de 2025. bruno engler. sim emenda individual heron ataide martins  nao sim",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "43003cacfcccbdf8",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ESTRUTURAÇÃO DA ATENÇÃO PRIMÁRIA À SAÚDE (ORGANIZAÇÃO DA ATENÇÃO PRIMÁRIA À SAÚDE)",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Verba de custeio para o Fundo Municipal de Saúde de Varginha",
+      "descricao": "Verba de custeio para o Fundo Municipal de Saúde de Varginha",
+      "valor": 350000.0,
+      "valorTexto": "350.000,00",
+      "valorDeclarado": 350000.0,
+      "valorIndicado": 350000.0,
+      "valorUtilizado": 350000.0,
+      "valorEmpenhado": 350000.0,
+      "valorLiquidadoAno": 350000.0,
+      "valorLiquidado": 350000.0,
+      "valorPagoAno": 350000.0,
+      "valorPago": 350000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 350000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008685/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9387570",
+      "dataPublicacaoInstrumento": "10/05/2023",
+      "dataValidadeInstrumento": "10/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=3149",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 3149,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 26
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 26
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 3149
         }
       ],
-      "autorOriginal": "Bruno Engler",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": 83953.0,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "sem_url_oficial",
-        "pdf_sem_url_oficial",
-        "recebimento_nao_comprovado"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2023-116716",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "",
-      "anoRecurso": "",
-      "emenda": "158603",
-      "emendaOriginal": "158603",
-      "autor": "",
-      "partido": "",
-      "valor": null,
-      "valorTexto": null,
-      "beneficiario": "",
-      "documentoBeneficiario": "",
-      "orgao": "",
-      "localidade": "",
-      "funcao": "",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "01/01/1800",
-      "responsavel": "",
-      "prazoExecucao": "",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao informado",
-      "descricao": "Emenda Parlamentar Emenda bancada",
-      "objeto": "",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 11,
-      "textoBusca": "estadual 158603        emenda parlamentar emenda bancada   nao nao informado",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "ec9622e68473c197",
-      "fontes": [
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 11
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 11
-        }
-      ],
-      "autorOriginal": null,
       "esferaDocumento": "Estadual",
-      "cargoAutor": null,
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": null,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "valor_desconhecido",
-        "sem_url_oficial",
-        "pdf_sem_url_oficial",
-        "autor_nao_informado"
-      ]
-    },
-    {
-      "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "",
-      "anoRecurso": "",
-      "emenda": "162301",
-      "emendaOriginal": "162301",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "116716/2023",
+      "emendaOriginal": "116716",
+      "numeroIndicacao": "116716",
+      "origemExternaId": "sigcon-116716",
       "autor": "BRUNO ENGLER",
-      "partido": "PL",
-      "valor": null,
-      "valorTexto": null,
-      "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "PREFEITURA MUNICIPAL DE VARGINHA",
       "documentoBeneficiario": "18.240.119/0001-05",
-      "orgao": "",
-      "localidade": "",
-      "funcao": "",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "01/01/1800",
-      "responsavel": "",
-      "prazoExecucao": "",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao informado",
-      "descricao": "Bruno Engler-PL/MG Emenda individual",
-      "objeto": "",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 13,
-      "textoBusca": "estadual 162301     prefeitura do municipio de varginha   bruno engler-pl/mg emenda individual   nao nao informado",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "5d30bb577ab53739",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 260022.0,
+      "valorTexto": "260.022,00",
+      "valorDeclarado": 260022.0,
+      "valorIndicado": 260022.0,
+      "valorUtilizado": 260022.0,
+      "valorEmpenhado": 260022.0,
+      "valorLiquidadoAno": 260022.0,
+      "valorLiquidado": 260022.0,
+      "valorPagoAno": 260022.0,
+      "valorPago": 260022.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 260022.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0012/2023",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9384707",
+      "dataPublicacaoInstrumento": "20/04/2023",
+      "dataValidadeInstrumento": "20/04/2053",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=3103",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 3103,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 13
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 13
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 3103
         }
       ],
-      "autorOriginal": "Bruno Engler",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": null,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "valor_desconhecido",
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2023-116710",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "",
-      "anoRecurso": "",
-      "emenda": "162593",
-      "emendaOriginal": "162593",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "116710/2023",
+      "emendaOriginal": "116710",
+      "numeroIndicacao": "116710",
+      "origemExternaId": "sigcon-116710",
+      "autor": "BRUNO ENGLER",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "PREFEITURA MUNICIPAL DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 127000.0,
+      "valorTexto": "127.000,00",
+      "valorDeclarado": 127000.0,
+      "valorIndicado": 127000.0,
+      "valorUtilizado": 127000.0,
+      "valorEmpenhado": 127000.0,
+      "valorLiquidadoAno": 127000.0,
+      "valorLiquidado": 127000.0,
+      "valorPagoAno": 127000.0,
+      "valorPago": 127000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 127000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0012/2023",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9385149",
+      "dataPublicacaoInstrumento": "20/04/2023",
+      "dataValidadeInstrumento": "20/04/2053",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=3097",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 3097,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 3097
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-116688",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "116688/2023",
+      "emendaOriginal": "116688",
+      "numeroIndicacao": "116688",
+      "origemExternaId": "sigcon-116688",
+      "autor": "CORONEL HENRIQUE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
+      "documentoBeneficiario": "19.110.162/0001-00",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Recurso de custeio para fortalecimento dos hospitais participantes do módulo Valor em Saúde da Política de Atenção Hospitalar - Valora Minas.",
+      "descricao": "Recurso de custeio para fortalecimento dos hospitais participantes do módulo Valor em Saúde da Política de Atenção Hospitalar - Valora Minas.",
+      "valor": 550000.0,
+      "valorTexto": "550.000,00",
+      "valorDeclarado": 550000.0,
+      "valorIndicado": 550000.0,
+      "valorUtilizado": 550000.0,
+      "valorEmpenhado": 550000.0,
+      "valorLiquidadoAno": 550000.0,
+      "valorLiquidado": 550000.0,
+      "valorPagoAno": 550000.0,
+      "valorPago": 550000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 550000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008771/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388306",
+      "dataPublicacaoInstrumento": "24/05/2023",
+      "dataValidadeInstrumento": "24/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=3079",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 3079,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 3079
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-116672",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "116672/2023",
+      "emendaOriginal": "116672",
+      "numeroIndicacao": "116672",
+      "origemExternaId": "sigcon-116672",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
+      "documentoBeneficiario": "19.110.162/0001-00",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "FES Custeio",
+      "descricao": null,
+      "valor": 160000.0,
+      "valorTexto": "160.000,00",
+      "valorDeclarado": 160000.0,
+      "valorIndicado": 160000.0,
+      "valorUtilizado": 160000.0,
+      "valorEmpenhado": 160000.0,
+      "valorLiquidadoAno": 160000.0,
+      "valorLiquidado": 160000.0,
+      "valorPagoAno": 160000.0,
+      "valorPago": 160000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 160000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008771/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388304",
+      "dataPublicacaoInstrumento": "24/05/2023",
+      "dataValidadeInstrumento": "24/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=3067",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 3067,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 3067
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-116671",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "116671/2023",
+      "emendaOriginal": "116671",
+      "numeroIndicacao": "116671",
+      "origemExternaId": "sigcon-116671",
+      "autor": "MARIO HENRIQUE CAIXA",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Custeio - Atenção Hospitalar",
+      "descricao": "Custeio - Atenção Hospitalar",
+      "valor": 160000.0,
+      "valorTexto": "160.000,00",
+      "valorDeclarado": 160000.0,
+      "valorIndicado": 160000.0,
+      "valorUtilizado": 160000.0,
+      "valorEmpenhado": 160000.0,
+      "valorLiquidadoAno": 160000.0,
+      "valorLiquidado": 160000.0,
+      "valorPagoAno": 160000.0,
+      "valorPago": 160000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 160000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008771/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388305",
+      "dataPublicacaoInstrumento": "24/05/2023",
+      "dataValidadeInstrumento": "24/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=3066",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 3066,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 3066
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-115981",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "115981/2023",
+      "emendaOriginal": "115981",
+      "numeroIndicacao": "115981",
+      "origemExternaId": "sigcon-115981",
+      "autor": "MAURO TRAMONTE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "CUSTEIO DA SAUDE",
+      "descricao": "CUSTEIO DA SAUDE",
+      "valor": 160000.0,
+      "valorTexto": "160.000,00",
+      "valorDeclarado": 160000.0,
+      "valorIndicado": 160000.0,
+      "valorUtilizado": 160000.0,
+      "valorEmpenhado": 160000.0,
+      "valorLiquidadoAno": 160000.0,
+      "valorLiquidado": 160000.0,
+      "valorPagoAno": 160000.0,
+      "valorPago": 160000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 160000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008771/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388302",
+      "dataPublicacaoInstrumento": "24/05/2023",
+      "dataValidadeInstrumento": "24/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=2499",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 2499,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 2499
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-115980",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "115980/2023",
+      "emendaOriginal": "115980",
+      "numeroIndicacao": "115980",
+      "origemExternaId": "sigcon-115980",
+      "autor": "MAURO TRAMONTE",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Destinado ao Hospital Bom Pastor CNES 2761092",
+      "descricao": "Destinado ao Hospital Bom Pastor CNES 2761092",
+      "valor": 160000.0,
+      "valorTexto": "160.000,00",
+      "valorDeclarado": 160000.0,
+      "valorIndicado": 160000.0,
+      "valorUtilizado": 160000.0,
+      "valorEmpenhado": 160000.0,
+      "valorLiquidadoAno": 160000.0,
+      "valorLiquidado": 160000.0,
+      "valorPagoAno": 160000.0,
+      "valorPago": 160000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 160000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008771/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388303",
+      "dataPublicacaoInstrumento": "24/05/2023",
+      "dataValidadeInstrumento": "24/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=2498",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 2498,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 2498
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-115841",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "115841/2023",
+      "emendaOriginal": "115841",
+      "numeroIndicacao": "115841",
+      "origemExternaId": "sigcon-115841",
       "autor": "PROFESSOR CLEITON",
-      "partido": "PV",
-      "valor": null,
-      "valorTexto": null,
-      "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-      "documentoBeneficiario": "18.240.119/0001-05",
-      "orgao": "",
-      "localidade": "",
-      "funcao": "",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "01/01/1800",
-      "responsavel": "",
-      "prazoExecucao": "",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao informado",
-      "descricao": "Professor Cleiton-PV Emenda individual",
-      "objeto": "",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 14,
-      "textoBusca": "estadual 162593     prefeitura do municipio de varginha   professor cleiton-pv emenda individual   nao nao informado",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "c3c5905173b87b3a",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Apoio",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "OASIS - ORGANIZAÇÃO DE ASSISTÊNCIA E SERVIÇOS INTEGRADOS AOS SUJEITOS COM NECESSIDADES ESPECIAIS",
+      "documentoBeneficiario": "04.812.951/0001-16",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ASSISTÊNCIA SOCIAL",
+      "acao": "APOIO FINANCEIRO E MATERIAL AOS SERVIÇOS SOCIOASSISTENCIAIS",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Recursos para manutenção da oficina de convivência da entidade.",
+      "descricao": "Recursos para manutenção da oficina de convivência da entidade.",
+      "valor": 91520.0,
+      "valorTexto": "91.520,00",
+      "valorDeclarado": 91520.0,
+      "valorIndicado": 91520.0,
+      "valorUtilizado": 88393.8,
+      "valorEmpenhado": 88393.8,
+      "valorLiquidadoAno": 88393.8,
+      "valorLiquidado": 88393.8,
+      "valorPagoAno": 88393.8,
+      "valorPago": 88393.8,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 88393.8,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481001491/2023",
+      "statusInstrumento": "ENCERRADO",
+      "codigoSiafiInstrumento": "9406249",
+      "dataPublicacaoInstrumento": "19/12/2023",
+      "dataValidadeInstrumento": "15/06/2025",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=2382",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 2382,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 14
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 14
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 2382
         }
       ],
-      "autorOriginal": "Professor Cleiton",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": null,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "valor_desconhecido",
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2023-113978",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "",
-      "anoRecurso": "",
-      "emenda": "163084",
-      "emendaOriginal": "163084",
-      "autor": "BRUNO ENGLER",
-      "partido": "PL",
-      "valor": null,
-      "valorTexto": null,
-      "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-      "documentoBeneficiario": "18.240.119/0001-05",
-      "orgao": "",
-      "localidade": "",
-      "funcao": "",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "01/01/1800",
-      "responsavel": "",
-      "prazoExecucao": "",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao informado",
-      "descricao": "Bruno Engler-PL/MG Emenda individual",
-      "objeto": "",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 15,
-      "textoBusca": "estadual 163084     prefeitura do municipio de varginha   bruno engler-pl/mg emenda individual   nao nao informado",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "0ee9d33c465a20b4",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "113978/2023",
+      "emendaOriginal": "113978",
+      "numeroIndicacao": "113978",
+      "origemExternaId": "sigcon-113978",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDACAO HOSPITALAR DO MUNICIPIO DE VARGINHA FHOMUV",
+      "documentoBeneficiario": "19.110.162/0001-00",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "FES Equipamentos e Materiais Permanentes",
+      "descricao": null,
+      "valor": 300000.0,
+      "valorTexto": "300.000,00",
+      "valorDeclarado": 300000.0,
+      "valorIndicado": 300000.0,
+      "valorUtilizado": 300000.0,
+      "valorEmpenhado": 300000.0,
+      "valorLiquidadoAno": 300000.0,
+      "valorLiquidado": 300000.0,
+      "valorPagoAno": 300000.0,
+      "valorPago": 300000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 300000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008745/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388170",
+      "dataPublicacaoInstrumento": "19/05/2023",
+      "dataValidadeInstrumento": "19/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=1087",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 1087,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 15
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 15
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 1087
         }
       ],
-      "autorOriginal": "Bruno Engler",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": null,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "valor_desconhecido",
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2023-113956",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "",
-      "anoRecurso": "",
-      "emenda": "163374",
-      "emendaOriginal": "163374",
-      "autor": "BRUNO ENGLER",
-      "partido": "PL",
-      "valor": null,
-      "valorTexto": null,
-      "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-      "documentoBeneficiario": "18.240.119/0001-05",
-      "orgao": "",
-      "localidade": "",
-      "funcao": "",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "01/01/1800",
-      "responsavel": "",
-      "prazoExecucao": "",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao informado",
-      "descricao": "Bruno Engler-PL/MG Emenda individual",
-      "objeto": "",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 16,
-      "textoBusca": "estadual 163374     prefeitura do municipio de varginha   bruno engler-pl/mg emenda individual   nao nao informado",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "45d8f6e8093f61f7",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "113956/2023",
+      "emendaOriginal": "113956",
+      "numeroIndicacao": "113956",
+      "origemExternaId": "sigcon-113956",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "documentoBeneficiario": "25.863.390/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "FES Equipamentos e Materiais Permanentes",
+      "descricao": null,
+      "valor": 400000.0,
+      "valorTexto": "400.000,00",
+      "valorDeclarado": 400000.0,
+      "valorIndicado": 400000.0,
+      "valorUtilizado": 400000.0,
+      "valorEmpenhado": 400000.0,
+      "valorLiquidadoAno": 400000.0,
+      "valorLiquidado": 400000.0,
+      "valorPagoAno": 400000.0,
+      "valorPago": 400000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 400000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008745/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388169",
+      "dataPublicacaoInstrumento": "19/05/2023",
+      "dataValidadeInstrumento": "19/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=1068",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 1068,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 16
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 16
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 1068
         }
       ],
-      "autorOriginal": "Bruno Engler",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": null,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "valor_desconhecido",
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2023-113876",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "",
-      "anoRecurso": "",
-      "emenda": "168468",
-      "emendaOriginal": "168468",
-      "autor": "LUIZINHO",
-      "partido": "PT",
-      "valor": null,
-      "valorTexto": null,
-      "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-      "documentoBeneficiario": "18.240.119/0001-05",
-      "orgao": "",
-      "localidade": "",
-      "funcao": "",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "01/01/1800",
-      "responsavel": "",
-      "prazoExecucao": "",
-      "aprovado": "Não",
-      "emendaIndividual": "Nao informado",
-      "descricao": "Luizinho-PT Emenda individual",
-      "objeto": "",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 24,
-      "textoBusca": "estadual 168468     prefeitura do municipio de varginha   luizinho-pt emenda individual   nao nao informado",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "1e54de7e391c9d47",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "113876/2023",
+      "emendaOriginal": "113876",
+      "numeroIndicacao": "113876",
+      "origemExternaId": "sigcon-113876",
+      "autor": "PARTIDO LIBERAL",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "IMPLANTAÇÃO DA POLÍTICA DE ATENÇÃO HOSPITALAR - VALOR EM SAÚDE",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "FES Equipamentos e Materiais Permanentes",
+      "descricao": null,
+      "valor": 160000.0,
+      "valorTexto": "160.000,00",
+      "valorDeclarado": 160000.0,
+      "valorIndicado": 160000.0,
+      "valorUtilizado": 160000.0,
+      "valorEmpenhado": 160000.0,
+      "valorLiquidadoAno": 160000.0,
+      "valorLiquidado": 160000.0,
+      "valorPagoAno": 160000.0,
+      "valorPago": 160000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 160000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "008745/2023",
+      "statusInstrumento": "CADASTRADO",
+      "codigoSiafiInstrumento": "9388168",
+      "dataPublicacaoInstrumento": "19/05/2023",
+      "dataValidadeInstrumento": "19/05/2026",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=1003",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 1003,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 24
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 24
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 1003
         }
       ],
-      "autorOriginal": "Luizinho",
-      "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": null,
-      "valorRecebido": null,
-      "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
-      },
-      "pendencias": [
-        "valor_desconhecido",
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "pendencias": []
     },
     {
+      "id": "estadual-sigcon-2023-113318",
       "tipo": "Estadual",
-      "ano": "2025",
-      "anoEmenda": "",
-      "anoRecurso": "",
-      "emenda": "168472",
-      "emendaOriginal": "168472",
-      "autor": "LUIZINHO",
-      "partido": "PT",
-      "valor": null,
-      "valorTexto": null,
-      "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA",
-      "documentoBeneficiario": "18.240.119/0001-05",
-      "orgao": "",
-      "localidade": "",
-      "funcao": "",
-      "ato": "",
-      "grupoNaturezaDespesa": "",
-      "banco": "",
-      "conta": "",
-      "dataRecurso": "",
-      "dataPlano": "01/01/1800",
-      "responsavel": "",
-      "prazoExecucao": "",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": null,
+      "emenda": "113318/2023",
+      "emendaOriginal": "113318",
+      "numeroIndicacao": "113318",
+      "origemExternaId": "sigcon-113318",
+      "autor": "PARTIDO LIBERAL",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "RESOLUÇÃO SES",
+      "categoria": "RESOLUÇÃO SES",
+      "modalidade": "RESOLUÇÃO SES",
+      "impositiva": true,
+      "beneficiario": "FUNDO MUNICIPAL DE SAÚDE DE VARGINHA",
+      "documentoBeneficiario": "11.234.223/0001-30",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "FUNDO ESTADUAL DE SAÚDE",
+      "orgaoSigla": "FES",
+      "funcao": "SAÚDE",
+      "acao": "ESTRUTURAÇÃO DA ATENÇÃO PRIMÁRIA À SAÚDE (ORGANIZAÇÃO DA ATENÇÃO PRIMÁRIA À SAÚDE)",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "ESTRUTURAÇÃO DA ATENÇÃO PRIMÁRIA À SAÚDE",
+      "descricao": "ESTRUTURAÇÃO DA ATENÇÃO PRIMÁRIA À SAÚDE",
+      "valor": 187382.25,
+      "valorTexto": "187.382,25",
+      "valorDeclarado": 187382.25,
+      "valorIndicado": 187382.25,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "REPROVADO PELO ÓRGÃO",
+      "statusFinanceiro": "Reprovado",
+      "estagioAtual": "reprovada",
       "aprovado": "Não",
-      "emendaIndividual": "Nao informado",
-      "descricao": "Luizinho-PT Emenda individual",
-      "objeto": "",
-      "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-      "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-      "pagina": 25,
-      "textoBusca": "estadual 168472     prefeitura do municipio de varginha   luizinho-pt emenda individual   nao nao informado",
-      "anosRelacionados": [
-        "2025"
-      ],
-      "id": "9638bb60c9771a2b",
+      "justificativaReprovacao": "Esclarecemos que para o Tipo de Aplica¿¿o \"FES Equipamentos e Materiais Permanentes\" na a¿¿o or¿ament¿ria 4460, a indica¿¿o dever¿ apresentar coer¿ncia com o n¿ de equipes de Sa¿de da Fam¿lia (eSF) pagas, sendo fixado o valor de R$160.000,00 por Equipe Sa¿de da Fam¿lia. Al¿m disso, deve-se respeitar a quantidade m¿xima de equipes. A planilha contendo a quantidade de equipe Sa¿de da Fam¿lia por munic¿pio encontra-se no sistema Sigcon-Saida, em ¿ORIENTA¿¿ES SES¿. Assim sendo, informamos que o valor exato para indica¿¿o por cada equipe Sa¿de da Fam¿lia ¿ de R$160.000,00",
+      "classificacaoIot": "t) outras razões de ordem técnica devidamente justificadas.",
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=528",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 528,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
       "fontes": [
         {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (1).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (1).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (10).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (10).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (11).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (11).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (12).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (12).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (13).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (13).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (14).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (14).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (15).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (15).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (16).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (16).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (17).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (17).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (18).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (18).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (19).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (19).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (2).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (2).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (20).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (20).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (21).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (21).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (22).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (22).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (23).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (23).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (24).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (24).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (25).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (25).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (26).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (26).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (27).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (27).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (28).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (28).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (29).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (29).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (3).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (3).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (30).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (30).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (31).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (31).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (32).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (32).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (33).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (33).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (34).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (34).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (35).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (35).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (36).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (36).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (37).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (37).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (38).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (38).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (39).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (39).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (4).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (4).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (40).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (40).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (41).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (41).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (42).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (42).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (43).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (43).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (44).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (44).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (45).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (45).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (46).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (46).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (47).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (47).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (48).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (48).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (49).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (49).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (5).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (5).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (50).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (50).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (51).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (51).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (52).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (52).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (53).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (53).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (54).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (54).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (55).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (55).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (56).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (56).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (57).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (57).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (58).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (58).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (59).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (59).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (6).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (6).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (60).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (60).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (61).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (61).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (62).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (62).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (63).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (63).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (64).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (64).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (65).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (65).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (66).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (66).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (67).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (67).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (68).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (68).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (7).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (7).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (8).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (8).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais (9).pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais (9).pdf",
-          "pagina": 25
-        },
-        {
-          "arquivo": "eMENDAS eSTADUAIS/UTF-8''Emendas%20Estaduais.pdf",
-          "arquivoUrl": "eMENDAS eSTADUAIS/UTF-8''Emendas%2520Estaduais.pdf",
-          "pagina": 25
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 528
         }
       ],
-      "autorOriginal": "Luizinho",
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-113258",
+      "tipo": "Estadual",
       "esferaDocumento": "Estadual",
-      "cargoAutor": "Dep. Estadual",
-      "classificacaoComprovacao": "parcial",
-      "valorDeclarado": null,
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "113258/2023",
+      "emendaOriginal": "113258",
+      "numeroIndicacao": "113258",
+      "origemExternaId": "sigcon-113258",
+      "autor": "PARTIDO LIBERAL",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "TRANSFERÊNCIA ESPECIAL",
+      "categoria": "TRANSFERÊNCIA ESPECIAL",
+      "modalidade": "TRANSFERÊNCIA ESPECIAL",
+      "impositiva": true,
+      "beneficiario": "PREFEITURA MUNICIPAL DE VARGINHA",
+      "documentoBeneficiario": "18.240.119/0001-05",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
+      "orgaoSigla": "SEGOV",
+      "funcao": "ADMINISTRAÇÃO",
+      "acao": "TRANSFERÊNCIAS ESPECIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "TRANSFERÊNCIAS ESPECIAIS",
+      "descricao": null,
+      "valor": 323822.5,
+      "valorTexto": "323.822,50",
+      "valorDeclarado": 323822.5,
+      "valorIndicado": 323822.5,
+      "valorUtilizado": 323822.5,
+      "valorEmpenhado": 323822.5,
+      "valorLiquidadoAno": 323822.5,
+      "valorLiquidado": 323822.5,
+      "valorPagoAno": 323822.5,
+      "valorPago": 323822.5,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 323822.5,
+      "valorRestosSaldo": 0.0,
       "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "0012/2023",
+      "statusInstrumento": "REGISTRADO NO SIAFI",
+      "codigoSiafiInstrumento": "9384104",
+      "dataPublicacaoInstrumento": "20/04/2023",
+      "dataValidadeInstrumento": "20/04/2053",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=476",
       "evidencias": {
-        "urlOficial": null,
-        "pdfReferenciado": true,
-        "pdfOficialAcessivel": false
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 476,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
       },
-      "pendencias": [
-        "valor_desconhecido",
-        "sem_url_oficial",
-        "pdf_sem_url_oficial"
-      ]
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 476
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-113175",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "113175/2023",
+      "emendaOriginal": "113175",
+      "numeroIndicacao": "113175",
+      "origemExternaId": "sigcon-113175",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "CONSELHO METROPOLITANO DE POUSO ALEGRE",
+      "documentoBeneficiario": "41.774.894/0001-54",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ASSISTÊNCIA SOCIAL",
+      "acao": "APOIO FINANCEIRO E MATERIAL AOS SERVIÇOS SOCIOASSISTENCIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Recurso para aquisição de um veículo de 07 lugares",
+      "descricao": "Recurso para aquisição de um veículo de 07 lugares",
+      "valor": 132310.0,
+      "valorTexto": "132.310,00",
+      "valorDeclarado": 132310.0,
+      "valorIndicado": 132310.0,
+      "valorUtilizado": 132310.0,
+      "valorEmpenhado": 132310.0,
+      "valorLiquidadoAno": 132310.0,
+      "valorLiquidado": 132310.0,
+      "valorPagoAno": 132310.0,
+      "valorPago": 132310.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 132310.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481001517/2023",
+      "statusInstrumento": "ENCERRADO",
+      "codigoSiafiInstrumento": "9406375",
+      "dataPublicacaoInstrumento": "19/12/2023",
+      "dataValidadeInstrumento": "17/12/2024",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=407",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 407,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 407
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-112925",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "112925/2023",
+      "emendaOriginal": "112925",
+      "numeroIndicacao": "112925",
+      "origemExternaId": "sigcon-112925",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Apoio",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO EU ESCOLHI AMAR",
+      "documentoBeneficiario": "28.221.997/0001-29",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ASSISTÊNCIA SOCIAL",
+      "acao": "APOIO FINANCEIRO E MATERIAL AOS SERVIÇOS SOCIOASSISTENCIAIS",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Recursos de apoio e manuten¿¿o da entidade",
+      "descricao": "Recursos de apoio e manuten¿¿o da entidade",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 100000.0,
+      "valorEmpenhado": 100000.0,
+      "valorLiquidadoAno": 100000.0,
+      "valorLiquidado": 100000.0,
+      "valorPagoAno": 100000.0,
+      "valorPago": 100000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 100000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000861/2023",
+      "statusInstrumento": "ENCERRADO",
+      "codigoSiafiInstrumento": "9390257",
+      "dataPublicacaoInstrumento": "15/07/2023",
+      "dataValidadeInstrumento": "13/07/2024",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=243",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 243,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 243
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-112912",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": null,
+      "emenda": "112912/2023",
+      "emendaOriginal": "112912",
+      "numeroIndicacao": "112912",
+      "origemExternaId": "sigcon-112912",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Atendimento",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "NUCAP NÚCLEO DE CAPACITAÇÃO PARA A PAZ",
+      "documentoBeneficiario": "14.882.686/0001-04",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "DIREITOS DA CIDADANIA",
+      "acao": "PROMOÇÃO, PROTEÇÃO E REPARAÇÃO DE DIREITOS HUMANOS",
+      "grupoDespesa": "OUTRAS DESPESAS CORRENTES",
+      "objeto": "Custeio do projeto UMBELA para atendimento de mulheres vitimas de viol�ncia domestica e m�es solos.",
+      "descricao": "Custeio do projeto UMBELA para atendimento de mulheres vitimas de viol�ncia domestica e m�es solos.",
+      "valor": 100000.0,
+      "valorTexto": "100.000,00",
+      "valorDeclarado": 100000.0,
+      "valorIndicado": 100000.0,
+      "valorUtilizado": 0.0,
+      "valorEmpenhado": 0.0,
+      "valorLiquidadoAno": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPagoAno": 0.0,
+      "valorPago": 0.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 0.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "REPROVADO PELO ÓRGÃO",
+      "statusFinanceiro": "Reprovado",
+      "estagioAtual": "reprovada",
+      "aprovado": "Não",
+      "justificativaReprovacao": "NÃO CELEBRADO DEVIDO A IMPOSSIBILIDADE DE ASSINATURA DO PLANO E TERMO, POIS O CAGEC DA OSC ESTAVA IRREGULAR",
+      "classificacaoIot": "k) não realização de complementação da documentação ou ajustes solicitados para atendimento de requisitos estabelecidos na legislação específica, bem como realização de complementação ou ajustes fora dos prazos previstos",
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=234",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 234,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 234
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-112822",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "112822/2023",
+      "emendaOriginal": "112822",
+      "numeroIndicacao": "112822",
+      "origemExternaId": "sigcon-112822",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIACAO ANJOS DE BRANCO",
+      "documentoBeneficiario": "34.509.195/0001-11",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ASSISTÊNCIA SOCIAL",
+      "acao": "APOIO FINANCEIRO E MATERIAL AOS SERVIÇOS SOCIOASSISTENCIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Recursos para aquisição de um Veículo pick-up, para atendimento da Associação.",
+      "descricao": "Recursos para aquisição de um Veículo pick-up, para atendimento da Associação.",
+      "valor": 130000.0,
+      "valorTexto": "130.000,00",
+      "valorDeclarado": 130000.0,
+      "valorIndicado": 130000.0,
+      "valorUtilizado": 112096.67,
+      "valorEmpenhado": 112096.67,
+      "valorLiquidadoAno": 112096.67,
+      "valorLiquidado": 112096.67,
+      "valorPagoAno": 112096.67,
+      "valorPago": 112096.67,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 112096.67,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000503/2023",
+      "statusInstrumento": "ENCERRADO",
+      "codigoSiafiInstrumento": "9390199",
+      "dataPublicacaoInstrumento": "14/07/2023",
+      "dataValidadeInstrumento": "12/07/2024",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=164",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 164,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 164
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-112821",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "112821/2023",
+      "emendaOriginal": "112821",
+      "numeroIndicacao": "112821",
+      "origemExternaId": "sigcon-112821",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "CELEBRAÇÃO DE CONVÊNIO",
+      "categoria": "Permanente",
+      "modalidade": "CELEBRAÇÃO DE CONVÊNIO",
+      "impositiva": true,
+      "beneficiario": "ASSOCIAÇÃO CULTURAL CASA DA CAPOEIRA",
+      "documentoBeneficiario": "20.555.901/0001-57",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
+      "orgaoSigla": "SEDESE",
+      "funcao": "ASSISTÊNCIA SOCIAL",
+      "acao": "APOIO FINANCEIRO E MATERIAL AOS SERVIÇOS SOCIOASSISTENCIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "Veículo de 07 lugares para atender grupos de vulnerabilidade sociais de interesse nas atividades da associação.",
+      "descricao": "Veículo de 07 lugares para atender grupos de vulnerabilidade sociais de interesse nas atividades da associação.",
+      "valor": 130000.0,
+      "valorTexto": "130.000,00",
+      "valorDeclarado": 130000.0,
+      "valorIndicado": 130000.0,
+      "valorUtilizado": 130000.0,
+      "valorEmpenhado": 130000.0,
+      "valorLiquidadoAno": 130000.0,
+      "valorLiquidado": 130000.0,
+      "valorPagoAno": 130000.0,
+      "valorPago": 130000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 130000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": "1481000575/2023",
+      "statusInstrumento": "ENCERRADO",
+      "codigoSiafiInstrumento": "9390085",
+      "dataPublicacaoInstrumento": "12/07/2023",
+      "dataValidadeInstrumento": "10/07/2024",
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=163",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 163,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 163
+        }
+      ],
+      "pendencias": []
+    },
+    {
+      "id": "estadual-sigcon-2023-112580",
+      "tipo": "Estadual",
+      "esferaDocumento": "Estadual",
+      "granularidade": "indicacao_estadual_oficial",
+      "ano": "2023",
+      "anoEmenda": "2023",
+      "anoRecurso": "2023",
+      "emenda": "112580/2023",
+      "emendaOriginal": "112580",
+      "numeroIndicacao": "112580",
+      "origemExternaId": "sigcon-112580",
+      "autor": "PROFESSOR CLEITON",
+      "cargoAutor": "Dep. Estadual / autoria coletiva",
+      "tipoIndicacao": "EXECUÇÃO DIRETA",
+      "categoria": "EXECUÇÃO DIRETA",
+      "modalidade": "EXECUÇÃO DIRETA",
+      "impositiva": true,
+      "beneficiario": "9º BBM",
+      "documentoBeneficiario": "03.389.126/0001-98",
+      "codigoIbge": "3170701",
+      "localidade": "VARGINHA",
+      "orgao": "CORPO DE BOMBEIROS MILITAR DO ESTADO DE MINAS GERAIS",
+      "orgaoSigla": "CBMMG",
+      "funcao": "SEGURANÇA PÚBLICA",
+      "acao": "EXPANSÃO DO CBMMG ATRAVÉS DA CRIAÇÃO E AMPLIAÇÃO DE UNIDADES PREDIAIS",
+      "grupoDespesa": "INVESTIMENTOS",
+      "objeto": "CONSTRUÇÃO DE UMA PISCINA SEMI OLÍMPICA NO 9°BATALHÃO DO CORPO DE BOMBEIROS NO MUNICÍPIO DE VARGINHA",
+      "descricao": "CONSTRUÇÃO DE UMA PISCINA SEMI OLÍMPICA NO 9°BATALHÃO DO CORPO DE BOMBEIROS NO MUNICÍPIO DE VARGINHA",
+      "valor": 700000.0,
+      "valorTexto": "700.000,00",
+      "valorDeclarado": 700000.0,
+      "valorIndicado": 700000.0,
+      "valorUtilizado": 699000.0,
+      "valorEmpenhado": 699000.0,
+      "valorLiquidadoAno": 647036.42,
+      "valorLiquidado": 699000.0,
+      "valorPagoAno": 503225.55,
+      "valorPago": 699000.0,
+      "valorExecutado": 0.0,
+      "valorRestosInscritos": 699000.0,
+      "valorRestosSaldo": 0.0,
+      "valorRecebido": null,
+      "identificador_repasse_confirmado": false,
+      "statusIndicacao": "APROVADO",
+      "statusFinanceiro": "Pago Total",
+      "estagioAtual": "pago",
+      "aprovado": "Sim",
+      "justificativaReprovacao": null,
+      "classificacaoIot": null,
+      "numeroInstrumento": null,
+      "statusInstrumento": null,
+      "codigoSiafiInstrumento": null,
+      "dataPublicacaoInstrumento": null,
+      "dataValidadeInstrumento": null,
+      "classificacaoComprovacao": "confirmado",
+      "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+      "fonteUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+      "fonteRegistroUrl": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx#planilha=12-05&linha=8",
+      "evidencias": {
+        "urlOficial": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+        "paginaOficial": "https://www.emendas.mg.gov.br/transparencia/",
+        "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+        "planilha": "12-05",
+        "linha": 8,
+        "coletadoEm": "2026-07-30T18:39:37-03:00",
+        "estagiosSemInferencia": true
+      },
+      "fontes": [
+        {
+          "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+          "url": "https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx",
+          "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
+          "planilha": "12-05",
+          "linha": 8
+        }
+      ],
+      "pendencias": []
     }
   ]
 };

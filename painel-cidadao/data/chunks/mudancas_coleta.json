@@ -1,32 +1,81 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-29T09:47:56.520Z",
+  "gerado_em": "2026-07-30T21:40:27.360Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-07-29T06-11-55-814e6052",
-    "coleta_iso": "2026-07-29T06:11:55",
-    "data_humana": "29/07/2026 - 06:11",
-    "arquivo": "data/snapshots/2026-07-29T06-11-55-814e6052.json"
+    "snapshot_id": "2026-07-30T18-32-59-02733c20",
+    "coleta_iso": "2026-07-30T18:32:59",
+    "data_humana": "30/07/2026 - 18:32",
+    "arquivo": "data/snapshots/2026-07-30T18-32-59-02733c20.json"
   },
   "anterior": {
-    "snapshot_id": "2026-07-28T19-39-28-5b3e1fe3",
-    "coleta_iso": "2026-07-28T19:39:28",
-    "data_humana": "28/07/2026 - 19:39",
+    "snapshot_id": "2026-07-29T19-33-25-c71d7761",
+    "coleta_iso": "2026-07-29T19:33:25",
+    "data_humana": "29/07/2026 - 19:33",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 0,
+    "novos_contratos": 4,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 0,
+    "novas_edicoes_diario": 1,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 0,
+    "valor_novo_brl": 5399209.18,
     "valor_delta_brl": 0,
-    "total_mudancas": 0
+    "total_mudancas": 5
   },
-  "itens": [],
+  "itens": [
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "alta",
+      "titulo": "Novo contrato 157/2026 - ADRIANA CONSTRUCOES E SERVICOS LTDA",
+      "detalhe": "Registro de preços para o fornecimento de cobertura de policarbonato instalada",
+      "orgao": "Prefeitura",
+      "data": "2026-07-21",
+      "valor_brl": 4781609.18,
+      "alvo_id": "PREFEITURA-2026-157"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 159/2026 - FARMA 2 PRODUTOS PARA SAUDE LTDA",
+      "detalhe": "Registro de preços para o fornecimento de soro fisiológico 0,9% sistema fechado em bolsas - UPA",
+      "orgao": "Prefeitura",
+      "data": "2026-07-21",
+      "valor_brl": 333600,
+      "alvo_id": "PREFEITURA-2026-159"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 158/2026 - CIRURGICA KLG LTDA",
+      "detalhe": "Registro de preços para o fornecimento de soro fisiológico 0,9% sistema fechado em bolsas - UPA",
+      "orgao": "Prefeitura",
+      "data": "2026-07-21",
+      "valor_brl": 232000,
+      "alvo_id": "PREFEITURA-2026-158"
+    },
+    {
+      "tipo": "nova_edicao_diario",
+      "prioridade": "media",
+      "titulo": "Nova edicao do Diario Oficial 1856",
+      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
+      "data": "2026-07-30",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/263/"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 156/2026 - AUTO PECAS G.L. LTDA",
+      "detalhe": "SERVIÇOS DE MANUTENÇÃO PREVENTIVA E CORRETIVA EM VEÍCULOS PESADOS E MÁQUINAS DO SETOR DE COLETA DE LIXO",
+      "orgao": "Prefeitura",
+      "data": "2026-07-14",
+      "valor_brl": 52000,
+      "alvo_id": "PREFEITURA-2026-156"
+    }
+  ],
   "avisos": []
 }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "snapshot_id": "2026-07-29T06-11-55-814e6052",
   "source": "chunks",
-  "gerado_em": "2026-07-29T09:47:56.065Z",
+  "gerado_em": "2026-07-29T14:52:43.533Z",
   "coleta_iso": "2026-07-29T06:11:55",
   "data_humana": "29/07/2026 - 06:11",
   "totais": {
@@ -18310,9 +18310,9 @@
     {
       "id": "fornecedor-inidoneo",
       "severity": "error",
-      "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
+      "title": "Declaracao de inidoneidade ou sancao aplicada por Varginha",
       "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
-      "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
+      "action": "Confirmar CNPJ, vigencia e alcance no Portal da Transparencia federal; depois verificar se existe contratacao ativa antes de qualquer conclusao.",
       "source": "sancoes.json"
     },
     {

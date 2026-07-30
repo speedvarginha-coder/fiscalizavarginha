@@ -21,7 +21,7 @@ Municipal de 2026, contendo obrigatoriamente, para cada emenda:
 
 Formato solicitado: planilha (XLSX ou CSV) ou PDF com dados estruturados.
 
-Prazo legal: 20 dias uteis (prorrogavel por mais 10, com justificativa).
+Prazo legal: 20 dias corridos (prorrogavel por mais 10, com justificativa).
 
 
 Emendas impositivas localizadas no SAPL (sem CNPJ/valor confirmado):

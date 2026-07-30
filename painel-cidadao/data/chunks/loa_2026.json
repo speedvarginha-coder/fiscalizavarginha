@@ -1,0 +1,83 @@
+{
+  "fonte": {
+    "lei": "Lei Municipal nº 7.510/2025",
+    "documento": "docs/loa-2026-lei-7510-2025.pdf",
+    "extraido_de": "PDF oficial digitalizado, leitura das paginas 2 a 6",
+    "observacao": "O PDF nao tem camada de texto. Valores transcritos das tabelas oficiais e conferidos contra o Total Geral de cada quadro."
+  },
+  "exercicio": 2026,
+  "total_geral": 1223155000.00,
+  "despesa_fixada": {
+    "orcamento_fiscal": 591655898.11,
+    "orcamento_seguridade_social": 631499101.89
+  },
+  "receita_estimada": {
+    "correntes": 1069686222.18,
+    "capital": 3000.00,
+    "correntes_intra_offs": 153465777.82,
+    "capital_intra_offs": 0.00
+  },
+  "por_categoria_economica": {
+    "despesas_correntes": 1100452946.61,
+    "pessoal_e_encargos_sociais": 554357927.45,
+    "juros_e_encargos_da_divida": 3848760.00,
+    "outras_despesas_correntes": 542246259.16,
+    "despesas_de_capital": 76767053.39,
+    "investimentos": 20517983.39,
+    "inversoes_financeiras": 1000.00,
+    "amortizacao_da_divida": 56248070.00,
+    "reserva_de_contingencia": 50000.00,
+    "_nota": "Este quadro da LOA nao fecha com o Total Geral: correntes + capital + contingencia = R$ 1.177.270.000,00, faltando R$ 45.885.000,00 para os R$ 1.223.155.000,00. A diferenca corresponde a Reserva Legal (subfuncao 997), que aparece nos quadros por funcao e por subfuncao mas nao foi listada aqui. Transcricao conferida com ampliacao da pagina 6. Nao inventamos a linha ausente."
+  },
+  "por_funcao": {
+    "legislativa": 19800000.00,
+    "judiciaria": 7657000.00,
+    "administracao": 107580035.92,
+    "seguranca_publica": 14523018.11,
+    "assistencia_social": 41761307.91,
+    "previdencia_social": 122115000.00,
+    "saude": 481253739.01,
+    "educacao": 210183248.21,
+    "cultura": 10878498.63,
+    "direitos_da_cidadania": 197000.00,
+    "urbanismo": 45971000.00,
+    "habitacao": 334000.00,
+    "saneamento": 1024000.00,
+    "gestao_ambiental": 26975000.00,
+    "agricultura": 4359000.00,
+    "industria": 688000.00,
+    "comercio_e_servicos": 9163000.00,
+    "desporto_e_lazer": 12680322.21,
+    "encargos_especiais": 60076830.00,
+    "reserva_de_contingencia": 45935000.00
+  },
+  "por_orgao": [
+    { "codigo": "01000000", "nome": "Câmara Municipal", "valor": 19800000.00 },
+    { "codigo": "02000000", "nome": "Secretaria Municipal de Governo", "valor": 6769000.00 },
+    { "codigo": "03000000", "nome": "Secretaria Municipal de Planejamento", "valor": 18951000.00 },
+    { "codigo": "04000000", "nome": "Secretaria Municipal de Administração", "valor": 66435035.92 },
+    { "codigo": "05000000", "nome": "Secretaria Municipal da Fazenda", "valor": 78726040.00 },
+    { "codigo": "06000000", "nome": "Secretaria Municipal de Saúde", "valor": 356796073.36 },
+    { "codigo": "07000000", "nome": "Secretaria Municipal de Educação", "valor": 210183248.21 },
+    { "codigo": "08000000", "nome": "Secretaria Municipal de Habitação e Desenvolvimento Social", "valor": 37712307.91 },
+    { "codigo": "09000000", "nome": "Secretaria Municipal de Obras e Serviços Urbanos", "valor": 33704000.00 },
+    { "codigo": "10000000", "nome": "Secretaria Municipal de Agricultura e Pecuária", "valor": 4359000.00 },
+    { "codigo": "11000000", "nome": "Secretaria Municipal de Desenvolvimento Econômico", "valor": 688000.00 },
+    { "codigo": "12000000", "nome": "Secretaria Municipal de Controle Interno", "valor": 1019000.00 },
+    { "codigo": "13000000", "nome": "Secretaria Municipal de Turismo e Comércio", "valor": 9163000.00 },
+    { "codigo": "14000000", "nome": "Secretaria Municipal de Esportes e Lazer", "valor": 12680322.21 },
+    { "codigo": "15000000", "nome": "Fundação Cultural do Município de Varginha", "valor": 10878498.63 },
+    { "codigo": "16000000", "nome": "Fundação Hospitalar do Município de Varginha", "valor": 124695455.65 },
+    { "codigo": "18000000", "nome": "Guarda Municipal", "valor": 14523018.11 },
+    { "codigo": "19000000", "nome": "Instituto de Previdência dos Servidores Públicos de Varginha", "valor": 168000000.00 },
+    { "codigo": "20000000", "nome": "Secretaria Municipal do Meio Ambiente", "valor": 26975000.00 },
+    { "codigo": "21000000", "nome": "Procuradoria Geral do Município", "valor": 7657000.00 },
+    { "codigo": "22000000", "nome": "SEMUL", "valor": 6180000.00 },
+    { "codigo": "23000000", "nome": "Secretaria Municipal de Tecnologia da Informação e Inovação", "valor": 7260000.00 }
+  ],
+  "notas": {
+    "saude": "A função Saúde (R$ 481.253.739,01) soma a Secretaria de Saúde e a Fundação Hospitalar. Ao falar de órgão, use apenas a Secretaria (R$ 356.796.073,36).",
+    "previdencia": "A função Previdência Social (R$ 122.115.000,00) difere do orçamento do IPREV como órgão (R$ 168.000.000,00): o órgão executa despesas além da função.",
+    "valores": "São valores fixados na LOA. Créditos suplementares durante o exercício alteram o executado, não este quadro."
+  }
+}

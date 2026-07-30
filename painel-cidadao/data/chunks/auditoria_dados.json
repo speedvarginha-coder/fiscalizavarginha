@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-29T09:47:54.146Z",
+  "gerado_em": "2026-07-30T21:40:26.216Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,8 +9,8 @@
     "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-29T06:11:55",
-    "data_humana": "29/07/2026 - 06:11"
+    "iso": "2026-07-30T18:32:59",
+    "data_humana": "30/07/2026 - 18:32"
   },
   "items": [
     {
@@ -88,7 +88,7 @@
       "severity": "warning",
       "id": "emendas-sem-repasses",
       "title": "Emendas de alto valor sem repasse identificado",
-      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
+      "detail": "10 emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
       "source": "prefeitura.json",
       "verification": {
@@ -107,9 +107,9 @@
     {
       "severity": "error",
       "id": "fornecedor-inidoneo",
-      "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
-      "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
+      "title": "Declaracoes de inidoneidade vigentes localizadas em fornecedores do painel",
+      "detail": "3 declaracao(oes) de inidoneidade vigente(s) foi(ram) localizada(s) para fornecedores presentes no painel: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — aplicada por Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — aplicada por Prefeitura Municipal de Itapetininga (SP)); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — aplicada por Câmara Municipal de Além Paraíba (MG)). Enquanto vigente, a declaracao de inidoneidade impede contratar com todos os entes federativos, mas o cruzamento deve ser confirmado na fonte antes de qualquer conclusao sobre contrato local.",
+      "action": "Confirmar CNPJ, vigencia e alcance no Portal da Transparencia federal; depois verificar se existe contratacao ativa antes de qualquer conclusao.",
       "source": "sancoes.json",
       "verification": {
         "estado": "requer_confirmacao_documental",
@@ -228,7 +228,7 @@
       "severity": "warning",
       "id": "emendas-sem-repasses",
       "title": "Emendas de alto valor sem repasse identificado",
-      "detail": "10 emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
+      "detail": "10 emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
       "source": "prefeitura.json",
       "verification": {
@@ -247,9 +247,9 @@
     {
       "severity": "error",
       "id": "fornecedor-inidoneo",
-      "title": "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      "detail": "3 sancao(oes) vigente(s) com alcance sobre Varginha: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — Prefeitura Municipal de Itapetininga (SP)); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — Câmara Municipal de Além Paraíba (MG)). Inidoneidade vale contra toda a administracao publica.",
-      "action": "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
+      "title": "Declaracoes de inidoneidade vigentes localizadas em fornecedores do painel",
+      "detail": "3 declaracao(oes) de inidoneidade vigente(s) foi(ram) localizada(s) para fornecedores presentes no painel: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — aplicada por Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — aplicada por Prefeitura Municipal de Itapetininga (SP)); AMAZON ECO COMERCIO LTDA (Declaração de Inidoneidade com prazo determinado — aplicada por Câmara Municipal de Além Paraíba (MG)). Enquanto vigente, a declaracao de inidoneidade impede contratar com todos os entes federativos, mas o cruzamento deve ser confirmado na fonte antes de qualquer conclusao sobre contrato local.",
+      "action": "Confirmar CNPJ, vigencia e alcance no Portal da Transparencia federal; depois verificar se existe contratacao ativa antes de qualquer conclusao.",
       "source": "sancoes.json",
       "verification": {
         "estado": "requer_confirmacao_documental",

@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "gerado_em": "2026-07-30T21:40:33.042Z",
+  "atualizado_em": "2026-07-30T18:32:59",
+  "regras_editoriais": [
+    "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
+    "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
+    "Valor de contrato não é igual a valor pago.",
+    "Valor total dividido pela vigência não representa gasto diário efetivo.",
+    "A lista histórica de parlamentares pode conter titulares e suplentes; a Câmara possui 15 cadeiras."
+  ],
+  "prefeitura": {
+    "ano": 2026,
+    "total_pago_fornecedores_externos": 202774938.21,
+    "credores_mapeados": 10000,
+    "contratos_total": 1224,
+    "contratos_do_ano": 364,
+    "contratos_em_execucao": 1170,
+    "obras_publicas": 130,
+    "top_fornecedores": [
+      {
+        "nome": "HOSPITAL REGIONAL DO SUL DE MINAS",
+        "valor": 50897221.94
+      },
+      {
+        "nome": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
+        "valor": 14359013.12
+      },
+      {
+        "nome": "VIAÇÃO REAL TRANSPORTE URBANO E RODOVIÁRIO LTDA",
+        "valor": 11923403.09
+      },
+      {
+        "nome": "VARIAN MEDICAL SYSTEMS INC",
+        "valor": 7819347.76
+      },
+      {
+        "nome": "RECEITA FEDERAL",
+        "valor": 6756143.32
+      },
+      {
+        "nome": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
+        "valor": 5870389.95
+      },
+      {
+        "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
+        "valor": 4518151.88
+      },
+      {
+        "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+        "valor": 4404213.7
+      },
+      {
+        "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
+        "valor": 3959665.27
+      },
+      {
+        "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
+        "valor": 3766863.16
+      }
+    ]
+  },
+  "camara": {
+    "ano": 2026,
+    "cadeiras": 15,
+    "total_pago_fornecedores_externos": 6831458.23,
+    "contratos_total": 43,
+    "top_fornecedores": [
+      {
+        "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
+        "valor": 2000000
+      },
+      {
+        "nome": "VEROCHEQUE REFEICOES LTDA",
+        "valor": 1062359.18
+      },
+      {
+        "nome": "BETHA SISTEMAS LTDA",
+        "valor": 491715.9
+      },
+      {
+        "nome": "UNIMED VARGINHA COOPERATIVA DE TRABALHO MEDICO",
+        "valor": 451030
+      },
+      {
+        "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+        "valor": 333881.91
+      },
+      {
+        "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
+        "valor": 316929
+      },
+      {
+        "nome": "DOMINO VIGILANCIA PATRIMONIAL LTDA",
+        "valor": 294701.58
+      },
+      {
+        "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+        "valor": 288603.36
+      },
+      {
+        "nome": "RONALDO MENDES-ME",
+        "valor": 214999.2
+      },
+      {
+        "nome": "FUNDACAO JOAO PINHEIRO",
+        "valor": 165256.57
+      }
+    ],
+    "subsidio_vereador": {
+      "bruto_mensal": 10826.42,
+      "lei_vigente": "Lei Ordinaria 7.527/2026",
+      "lei_data": "2026-02-20",
+      "vigencia_inicio": "2026-01-01",
+      "reajuste_percentual": 4.26,
+      "lei_fixacao_original": "Lei Ordinaria 7.285/2024",
+      "impacto_anual_estimado": 2111151.9,
+      "ressalva": "Use sempre o subsidio da lei vigente. A lei de fixacao original traz o valor sem as revisoes anuais."
+    }
+  },
+  "diarias": {
+    "prefeitura": {
+      "registros": 5567,
+      "valor_total": 2199570.64,
+      "quantidade_total": 5567,
+      "servidores": 297
+    },
+    "camara": {
+      "registros": 240,
+      "valor_total": 143765,
+      "quantidade_total": 234,
+      "servidores": 31
+    },
+    "anos_disponiveis": [
+      2025,
+      2026
+    ]
+  },
+  "pessoal": {
+    "prefeitura": {
+      "competencia": "07/2026",
+      "resumo": {
+        "orgao": "Prefeitura",
+        "competencia_referencia": null,
+        "servidores_qtd": 4074,
+        "vinculos_qtd": 4074,
+        "pessoas_qtd": 3893,
+        "linhas_todas_competencias": 4074,
+        "comissionados_qtd": 94,
+        "folha_bruta_total": 32193799.8,
+        "folha_bruta_comissionados": 775911.43,
+        "maior_vencimento_comissionado": 40509.01
+      }
+    },
+    "camara": {
+      "competencia": "06/2026",
+      "resumo": {
+        "orgao": "Camara",
+        "competencia_referencia": "06/2026",
+        "servidores_qtd": 62,
+        "vinculos_qtd": 62,
+        "pessoas_qtd": 62,
+        "linhas_todas_competencias": 388,
+        "comissionados_qtd": 28,
+        "folha_bruta_total": 679488.08,
+        "folha_bruta_comissionados": 218364.22,
+        "maior_vencimento_comissionado": 30128.89,
+        "competencia_parcial": {
+          "competencia": "07/2026",
+          "linhas": 7
+        }
+      }
+    }
+  },
+  "legislativo": {
+    "ano": 2025,
+    "materias": 1584,
+    "emendas": 357,
+    "valor_emendas": 17841369.18,
+    "vereadores_ativos_na_composicao": 14,
+    "observacao": "A base histórica pode incluir titulares e suplentes; não apresentar esse total como número de cadeiras."
+  },
+  "loa_2026": {
+    "orcamento_total": 1223155000,
+    "saude_funcao": 481253739.01,
+    "secretaria_saude": 356796073.36,
+    "fundacao_hospitalar": 124695455.65,
+    "educacao": 210183248.21,
+    "iprev": 168000000,
+    "camara": 19800000,
+    "fonte": "docs/loa-2026-lei-7510-2025.pdf"
+  },
+  "fundeb_2026": {
+    "tipo": "previsao_oficial_de_receita",
+    "valor": 104771249.39,
+    "publicacao": "2ª publicação oficial do FNDE",
+    "norma": "Portaria MEC/MF nº 6, de 29 de abril de 2026",
+    "ressalva": "Atenção: isso é previsão, não o que já entrou no caixa nem o que foi gasto. Também não prova que o mínimo de 70% para profissionais da educação foi cumprido.",
+    "fonte": "https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/financiamento/fundeb/2026-1/publicacoes-2026/2-publicacao/1-receita-total-do-fundeb-por-ente-federado.pdf"
+  },
+  "pntp_2025": {
+    "prefeitura": {
+      "indice": 81.8,
+      "essenciais": 81.82,
+      "nivel": "Elevado"
+    },
+    "camara": {
+      "indice": 63.28,
+      "essenciais": 85.71,
+      "nivel": "Intermediário"
+    },
+    "natureza": "autoavaliação",
+    "validada": false,
+    "revisada": false,
+    "certificavel": false,
+    "ressalva": "É autoavaliação do próprio órgão. O Tribunal de Contas não validou nem certificou esses números.",
+    "fonte": "https://radardatransparencia.atricon.org.br/"
+  },
+  "prazos_lai": {
+    "resposta": "20 dias corridos",
+    "prorrogacao": "mais 10 dias mediante justificativa expressa",
+    "fonte": "Lei 12.527/2011, art. 11"
+  }
+}

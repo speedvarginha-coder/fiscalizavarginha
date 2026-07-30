@@ -1,0 +1,18 @@
+{
+  "prefeito": {
+    "nome": "Leonardo Vinhas Ciacci",
+    "papel": "Prefeito · mandato 2025–2028"
+  },
+  "vereadores_excluidos": [
+    "Marquinho da Cooperativa",
+    "Dr. Guedes",
+    "Dr. Lucas"
+  ],
+  "motivo_exclusao": {
+    "_": "Por que cada nome sai da lista de avaliáveis. A base do SAPL guarda quem exerceu mandato em qualquer período; receber nota exige estar em exercício hoje.",
+    "Marquinho da Cooperativa": "Não integra a composição atual da Câmara: o mandato foi encerrado antes do fim da legislatura. Na base aparece com presença registrada e nenhuma matéria na janela apurada.",
+    "Dr. Guedes": "Não integra a composição atual da Câmara. Consta na base histórica, sem matérias na janela apurada.",
+    "Dr. Lucas": "Não integra a composição atual da Câmara. Consta na base histórica, sem matérias na janela apurada."
+  },
+  "nota": "A Câmara tem 15 cadeiras. Esta lista tira da avaliação quem não está em exercício, para que ninguém receba nota por um mandato que não exerce."
+}

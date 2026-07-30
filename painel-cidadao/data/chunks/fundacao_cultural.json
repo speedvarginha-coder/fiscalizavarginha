@@ -263,7 +263,7 @@
     "resumo_atual": {
       "registros": 231,
       "empenhado": 3638572.39,
-      "liquidado": 3014094.32,
+      "liquidado": 3048656.32,
       "pago": 2854479.21
     },
     "maiores_empenhos_atual": [
@@ -472,7 +472,7 @@
         "credor": "EVANDRO ZACARONI PEDROSO",
         "historico": "Aquisição de equipamentos eletrônicos de som e iluminação cênica para o Theatro Municipal Capitólio.\n* Endereço de entrega: Rua Presidente Antônio Carlos, 522, Centro - Varginha/MG\n* Horário de expediente: segunda a sexta, das 07h00 às 17h00",
         "valor_empenhado": 30602.0,
-        "valor_liquidado": 0.0,
+        "valor_liquidado": 30602.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 30602.0
       },
@@ -1110,7 +1110,7 @@
         "credor": "EVANDRO ZACARONI PEDROSO",
         "historico": "Aquisição de equipamentos eletrônicos de som e iluminação cênica para o Theatro Municipal Capitólio.\n* Endereço de entrega: Rua Presidente Antônio Carlos, 522, Centro - Varginha/MG\n* Horário de expediente: segunda a sexta, das 07h00 às 17h00",
         "valor_empenhado": 3960.0,
-        "valor_liquidado": 0.0,
+        "valor_liquidado": 3960.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 3960.0
       },
@@ -2041,7 +2041,7 @@
       "modalidade": "",
       "tipo": "Compras e Serviços",
       "objeto": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
-      "contratado": "MPS DISTRIBUIDORA LTDA",
+      "contratado": "CAMIPLACE DISTRIBUIDORA LTDA",
       "cnpj": "53.029.830/****-**",
       "valor": 25190.0,
       "situacao": "EXECUCAO",
@@ -14111,7 +14111,7 @@
       "modalidade": "",
       "tipo": "Compras e Serviços",
       "objeto": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
-      "contratado": "MPS DISTRIBUIDORA LTDA",
+      "contratado": "CAMIPLACE DISTRIBUIDORA LTDA",
       "cnpj": "53.029.830/****-**",
       "valor": 25190.0,
       "situacao": "EXECUCAO",
@@ -15737,7 +15737,7 @@
       "modalidade": "",
       "tipo": "Compras e Serviços",
       "objeto": "Café Torrado e Moído Tradicional (embalagem de 500g) – café em pó (torrado e moído), embalado em pacote de 500g, 100% arábica ou blend com predominância de grãos arábica, bebida dura ou superior, com moagem fina ou médica, de torrefação clássica ou média próprio para o preparo em coador de papel ou pano, com selo vigente de Pureza e Qualidade ABIC e acompanhado de laudo de avaliação, emitido por laboratório especializado, com nota igual ou superior a 5,0, na escala sensorial PQC – Programa de Qu",
-      "contratado": "MPS DISTRIBUIDORA LTDA",
+      "contratado": "CAMIPLACE DISTRIBUIDORA LTDA",
       "cnpj": "53.029.830/****-**",
       "valor": 25190.0,
       "situacao": "EXECUCAO",
