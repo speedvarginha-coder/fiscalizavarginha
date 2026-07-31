@@ -7,13 +7,19 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 2852301.55,
+    "total_atual": 2916519.47,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 352604.91,
+    "total_externo_atual": 416822.83,
     "total_externo_anterior": 3071916.67,
-    "credores_atual_qtd": 113,
+    "credores_atual_qtd": 114,
     "credores_anterior_qtd": 196,
     "top_fornecedores_atual": [
+      {
+        "nome": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
+        "cnpj": "21.650.715/****-**",
+        "valor_total": 42510.0,
+        "registros": 1
+      },
       {
         "nome": "AUAD CORREA EQUIPAMENTOS ELETRONICOS LTDA",
         "cnpj": "01.377.889/****-**",
@@ -27,9 +33,9 @@
         "registros": 1
       },
       {
-        "nome": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
-        "cnpj": "21.650.715/****-**",
-        "valor_total": 25390.0,
+        "nome": "FRANCA CENTER LUZ, MONTAGEM DE ESTRUTURAS LTDA",
+        "cnpj": "10.433.080/****-**",
+        "valor_total": 27200.0,
         "registros": 1
       },
       {
@@ -99,6 +105,12 @@
         "registros": 1
       },
       {
+        "nome": "AMORIM COMERCIO VAREJISTA DE PRODUTOS LTDA",
+        "cnpj": "61.379.580/****-**",
+        "valor_total": 8639.84,
+        "registros": 1
+      },
+      {
         "nome": "WANGER AUDIO E INSTRUMENTOS MUSICAIS LTDA",
         "cnpj": "50.664.446/****-**",
         "valor_total": 8621.0,
@@ -120,18 +132,6 @@
         "nome": "M&E ALUGUEL DE CARROS LTDA",
         "cnpj": "17.328.595/****-**",
         "valor_total": 7020.04,
-        "registros": 1
-      },
-      {
-        "nome": "PAULA REZENDE REIS",
-        "cnpj": "014.601.***-**",
-        "valor_total": 6499.27,
-        "registros": 1
-      },
-      {
-        "nome": "FRANCINE MAGANHA TERRA GOULART",
-        "cnpj": "089.318.***-**",
-        "valor_total": 5341.23,
         "registros": 1
       }
     ],
@@ -261,10 +261,10 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 231,
-      "empenhado": 3638572.39,
+      "registros": 232,
+      "empenhado": 3640862.39,
       "liquidado": 3048656.32,
-      "pago": 2854479.21
+      "pago": 2917794.77
     },
     "maiores_empenhos_atual": [
       {
@@ -495,8 +495,8 @@
         "historico": "Aquisição de equipamentos eletrônicos de som e iluminação cênica para o Theatro Municipal Capitólio. \n* Endereço de entrega: Rua Presidente Antônio Carlos, 522, Centro - Varginha/MG. \n* Horário de expediente: segunda a sexta, das 07h00 às 17h00",
         "valor_empenhado": 27200.0,
         "valor_liquidado": 27200.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 27200.0
+        "valor_pago": 27200.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-02-12",
@@ -605,8 +605,8 @@
         "historico": "Serviço de atualização e suporte técnico de licença de software de automação de emissora de rádio. Aditivo n 004/2026 - 1 Termo Aditivo ao Contrato n 004/2025.",
         "valor_empenhado": 16349.64,
         "valor_liquidado": 1429.48,
-        "valor_pago": 132.41,
-        "saldo_a_pagar": 16217.23
+        "valor_pago": 1429.48,
+        "saldo_a_pagar": 14920.16
       },
       {
         "data": "2026-02-26",
@@ -660,8 +660,8 @@
         "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
         "valor_empenhado": 12673.6,
         "valor_liquidado": 2534.72,
-        "valor_pago": 2221.68,
-        "saldo_a_pagar": 10451.92
+        "valor_pago": 2534.72,
+        "saldo_a_pagar": 10138.88
       },
       {
         "data": "2026-04-08",
@@ -935,8 +935,8 @@
         "historico": "Contratação de Prestação de  Serviços de 04 (quatro) inscrições para o curso: Contratos Administrativos na Prática, Aditivos, Reequilíbrio, Repactuação e Encerramento sem Glosa, para especialização de 04 servidores do setor de Contabilidade/ Suprimentos da Fundação Cultural do Município de Varginha. Com carga horária de 16 horas, a ser realizado nos dias 09 e 10 de julho, na sede do Instituto Plenum Brasil, em Belo Horizonte/MG. Fundamento Legal: artigo 95,  2 da Lei Federal 14.133/21.",
         "valor_empenhado": 9160.0,
         "valor_liquidado": 9160.0,
-        "valor_pago": 439.68,
-        "saldo_a_pagar": 8720.32
+        "valor_pago": 9160.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-06-12",
@@ -946,8 +946,8 @@
         "historico": "Aquisição de equipamentos eletrônicos de som e iluminação cênica para o Theatro Municipal Capitólio.\n* Endereço de entrega: Rua Presidente Antônio Carlos, 522, Centro - Varginha/MG\n* Horário de expediente: segunda a sexta, das 07h00 às 17h00",
         "valor_empenhado": 8639.84,
         "valor_liquidado": 8639.84,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 8639.84
+        "valor_pago": 8639.84,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-02-19",
@@ -968,8 +968,8 @@
         "historico": "Contratação de Prestação de Serviços de 04 (quatro) inscrições para o curso: Compras Diretas Avançado, Análise Técnica Avançada, Estudo de Casos e Jurisprudências Aplicadas, para especialização de 04 servidores do setor de Contabilidade/ Suprimentos da Fundação Cultural do Município de Varginha. Com carga horária de 16 horas, a ser realizado nos dias 07 e 08 de julho, na sede do Instituto Plenum Brasil, em Belo Horizonte/MG. Fundamento Legal Art. 95,  2 da Lei Federal 14.133/2021.",
         "valor_empenhado": 7960.0,
         "valor_liquidado": 7960.0,
-        "valor_pago": 382.08,
-        "saldo_a_pagar": 7577.92
+        "valor_pago": 7960.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-01-27",
@@ -1089,8 +1089,8 @@
         "historico": "Contratação de serviços de engenharia para elaboração de laudo de conformidade das instalações elétricas e estudo de viabilidade técnica da implantação de sistema de climatização na antiga Estação Ferroviária de Varginha, atual sede da Fundação Cultural.\nLocal do serviço: Fundação Cultural de Varginha, na Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária).\nHorário de expediente: segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. Aos cuidados da Arquiteta Danielle.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
         "valor_empenhado": 4240.0,
         "valor_liquidado": 4240.0,
-        "valor_pago": 92.01,
-        "saldo_a_pagar": 4147.99
+        "valor_pago": 4240.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-05-25",
@@ -1144,8 +1144,8 @@
         "historico": "Aquisição de materiais e equipamentos de rede e infraestrutura de TI, destinados à substituição dos equipamentos do Setor de Patrimônio Histórico da Fundação Cultural de Varginha, lotado na antiga estação ferroviária.\nLocal de entrega: Fundação Cultural de Varginha, na Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária). Horário de expediente: segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. Aos cuidados de Danielle.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
         "valor_empenhado": 3620.0,
         "valor_liquidado": 3620.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 3620.0
+        "valor_pago": 3620.0,
+        "saldo_a_pagar": 0.0
       }
     ],
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80382"

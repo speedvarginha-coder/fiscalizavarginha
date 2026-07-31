@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-31T10:41:10.387Z",
-  "atualizado_em": "2026-07-31T06:15:49",
+  "gerado_em": "2026-07-31T21:46:05.413Z",
+  "atualizado_em": "2026-07-31T18:42:36",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,11 +11,11 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 202774938.21,
+    "total_pago_fornecedores_externos": 206311488.66,
     "credores_mapeados": 10000,
-    "contratos_total": 1332,
-    "contratos_do_ano": 362,
-    "contratos_em_execucao": 1278,
+    "contratos_total": 1227,
+    "contratos_do_ano": 365,
+    "contratos_em_execucao": 1172,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -28,7 +28,7 @@
       },
       {
         "nome": "VIAÇÃO REAL TRANSPORTE URBANO E RODOVIÁRIO LTDA",
-        "valor": 11923403.09
+        "valor": 11964705.09
       },
       {
         "nome": "VARIAN MEDICAL SYSTEMS INC",
@@ -36,23 +36,23 @@
       },
       {
         "nome": "RECEITA FEDERAL",
-        "valor": 6756143.32
+        "valor": 7641542.22
       },
       {
         "nome": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
         "valor": 5870389.95
       },
       {
+        "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+        "valor": 5383293.36
+      },
+      {
         "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
         "valor": 4518151.88
       },
       {
-        "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-        "valor": 4404213.7
-      },
-      {
         "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
-        "valor": 3959665.27
+        "valor": 3963420.52
       },
       {
         "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
@@ -120,9 +120,9 @@
   },
   "diarias": {
     "prefeitura": {
-      "registros": 5567,
-      "valor_total": 2199570.64,
-      "quantidade_total": 5567,
+      "registros": 5637,
+      "valor_total": 2205333.39,
+      "quantidade_total": 5637,
       "servidores": 297
     },
     "camara": {

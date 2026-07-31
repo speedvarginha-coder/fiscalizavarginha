@@ -1538,7 +1538,7 @@
       "cnpj_raiz": "77930956",
       "cnpj_completo": "77930956000117",
       "cnpj_reconstruido": true,
-      "valor_total": 11923403.09,
+      "valor_total": 11964705.09,
       "razao_social": "VIACAO REAL TRANSPORTE URBANO E RODOVIARIO LTDA",
       "nome_fantasia": "VIACAO REAL",
       "situacao": "ATIVA",
@@ -1573,7 +1573,7 @@
       "cnpj_raiz": "00394460",
       "cnpj_completo": "00394460000141",
       "cnpj_reconstruido": true,
-      "valor_total": 6756143.32,
+      "valor_total": 7641542.22,
       "razao_social": "MINISTERIO DA FAZENDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1604,6 +1604,22 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
+      "cnpj_raiz": "29979036",
+      "cnpj_completo": "29979036000140",
+      "cnpj_reconstruido": true,
+      "valor_total": 5383293.36,
+      "razao_social": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
+      "nome_fantasia": "COORDENACAO GERAL DE ORCAMENTO FINANCAS E CONTABILIDADE",
+      "situacao": "ATIVA",
+      "abertura": "1978-04-13",
+      "cnae": "Seguridade social obrigatória",
+      "municipio": "BRASILIA",
+      "uf": "DF",
+      "socios": [],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
       "cnpj_raiz": "16565111",
       "cnpj_completo": "16565111000185",
@@ -1625,27 +1641,11 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
-      "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "cnpj_raiz": "29979036",
-      "cnpj_completo": "29979036000140",
-      "cnpj_reconstruido": true,
-      "valor_total": 4404213.7,
-      "razao_social": "INSTITUTO NACIONAL DO SEGURO SOCIAL",
-      "nome_fantasia": "COORDENACAO GERAL DE ORCAMENTO FINANCAS E CONTABILIDADE",
-      "situacao": "ATIVA",
-      "abertura": "1978-04-13",
-      "cnae": "Seguridade social obrigatória",
-      "municipio": "BRASILIA",
-      "uf": "DF",
-      "socios": [],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
       "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
       "cnpj_raiz": "17281106",
       "cnpj_completo": "17281106000103",
       "cnpj_reconstruido": true,
-      "valor_total": 3959665.27,
+      "valor_total": 3963420.52,
       "razao_social": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS COPASA MG",
       "nome_fantasia": "COPASA MG",
       "situacao": "ATIVA",
@@ -1779,6 +1779,24 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "SERVICOS CFC LTDA",
+      "cnpj_raiz": "05165851",
+      "cnpj_completo": "05165851000108",
+      "cnpj_reconstruido": true,
+      "valor_total": 2868657.32,
+      "razao_social": "SERVICOS CFC LTDA",
+      "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
+      "situacao": "ATIVA",
+      "abertura": "2002-07-02",
+      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ROBERTO ANDERE"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "cnpj_raiz": "17155730",
       "cnpj_completo": "17155730000164",
@@ -1800,24 +1818,6 @@
         "MARCOS MONTES CORDEIRO",
         "SERGIO LOPES CABRAL",
         "SERGIO PESSOA DE PAULA CASTRO"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "SERVICOS CFC LTDA",
-      "cnpj_raiz": "05165851",
-      "cnpj_completo": "05165851000108",
-      "cnpj_reconstruido": true,
-      "valor_total": 2416982.82,
-      "razao_social": "SERVICOS CFC LTDA",
-      "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
-      "situacao": "ATIVA",
-      "abertura": "2002-07-02",
-      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "ROBERTO ANDERE"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -1933,6 +1933,43 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "CISSUL - CONSÓRCIO INTERMUNICIPAL DE SAÚDE SUL MINEIRO",
+      "cnpj_raiz": "00730595",
+      "cnpj_completo": "00730595000130",
+      "cnpj_reconstruido": true,
+      "valor_total": 1656980.99,
+      "razao_social": "CONS.INTERMUN.SAUDE DOS MUNICIPIOS SUL MINEIROS",
+      "nome_fantasia": "CISSUL",
+      "situacao": "ATIVA",
+      "abertura": "1995-06-28",
+      "cnae": "Outras atividades de atenção à saúde humana não especificadas anteriormente",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "LUIS CARLOS DA SILVA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
+      "cnpj_raiz": "42317980",
+      "cnpj_completo": "42317980000109",
+      "cnpj_reconstruido": true,
+      "valor_total": 1655656.0,
+      "razao_social": "SAO DOMINGOS CONSTRUTORA LTDA",
+      "nome_fantasia": "CONSTRUTORA SAO DOMINGOS",
+      "situacao": "ATIVA",
+      "abertura": "2021-06-14",
+      "cnae": "Construção de rodovias e ferrovias",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "DOMINGOS PINTO FERREIRA NETO",
+        "DOMINGOS PINTO FILHO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
       "cnpj_raiz": "23593720",
       "cnpj_completo": "23593720000103",
@@ -1967,25 +2004,6 @@
         "FERNANDO BATISTA DA SILVA JUNIOR",
         "HIRAM RAFAEL SILVEIRA KALBERMATTER",
         "WILIAN CARVALHO FERREIRA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
-      "cnpj_raiz": "42317980",
-      "cnpj_completo": "42317980000109",
-      "cnpj_reconstruido": true,
-      "valor_total": 1507564.0,
-      "razao_social": "SAO DOMINGOS CONSTRUTORA LTDA",
-      "nome_fantasia": "CONSTRUTORA SAO DOMINGOS",
-      "situacao": "ATIVA",
-      "abertura": "2021-06-14",
-      "cnae": "Construção de rodovias e ferrovias",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "DOMINGOS PINTO FERREIRA NETO",
-        "DOMINGOS PINTO FILHO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -2027,24 +2045,6 @@
       "socios": [
         "GABRIELLE DANIEL NERY",
         "MARCIA PEREIRA DANIEL NERY"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "CISSUL - CONSÓRCIO INTERMUNICIPAL DE SAÚDE SUL MINEIRO",
-      "cnpj_raiz": "00730595",
-      "cnpj_completo": "00730595000130",
-      "cnpj_reconstruido": true,
-      "valor_total": 1403556.4,
-      "razao_social": "CONS.INTERMUN.SAUDE DOS MUNICIPIOS SUL MINEIROS",
-      "nome_fantasia": "CISSUL",
-      "situacao": "ATIVA",
-      "abertura": "1995-06-28",
-      "cnae": "Outras atividades de atenção à saúde humana não especificadas anteriormente",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "LUIS CARLOS DA SILVA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
