@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-07-30T21:40:33.042Z",
-  "atualizado_em": "2026-07-30T18:32:59",
+  "gerado_em": "2026-07-31T10:41:10.387Z",
+  "atualizado_em": "2026-07-31T06:15:49",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -13,9 +13,9 @@
     "ano": 2026,
     "total_pago_fornecedores_externos": 202774938.21,
     "credores_mapeados": 10000,
-    "contratos_total": 1224,
-    "contratos_do_ano": 364,
-    "contratos_em_execucao": 1170,
+    "contratos_total": 1332,
+    "contratos_do_ano": 362,
+    "contratos_em_execucao": 1278,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -153,21 +153,21 @@
       }
     },
     "camara": {
-      "competencia": "06/2026",
+      "competencia": "07/2026",
       "resumo": {
         "orgao": "Camara",
-        "competencia_referencia": "06/2026",
-        "servidores_qtd": 62,
-        "vinculos_qtd": 62,
-        "pessoas_qtd": 62,
-        "linhas_todas_competencias": 388,
-        "comissionados_qtd": 28,
-        "folha_bruta_total": 679488.08,
-        "folha_bruta_comissionados": 218364.22,
-        "maior_vencimento_comissionado": 30128.89,
+        "competencia_referencia": "07/2026",
+        "servidores_qtd": 59,
+        "vinculos_qtd": 59,
+        "pessoas_qtd": 59,
+        "linhas_todas_competencias": 441,
+        "comissionados_qtd": 27,
+        "folha_bruta_total": 467175.21,
+        "folha_bruta_comissionados": 137903.5,
+        "maior_vencimento_comissionado": 10131.25,
         "competencia_parcial": {
-          "competencia": "07/2026",
-          "linhas": 7
+          "competencia": "08/2026",
+          "linhas": 1
         }
       }
     }

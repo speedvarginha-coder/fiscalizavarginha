@@ -1,19 +1,19 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-07-29T09:47:47+00:00",
+  "gerado_em": "2026-07-31T10:40:52+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251201",
-    "fim": "20260729"
+    "inicio": "20251203",
+    "fim": "20260731"
   },
-  "compras": 313,
-  "compras_com_resultado": 171,
+  "compras": 310,
+  "compras_com_resultado": 174,
   "homologacoes_simbolicas": [
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "64",
+      "numero_compra": "PE 64",
       "ano": 2026,
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa para realização de evento, incluindo o fornecimento de toda estrutura e disponibilização de equipamentos, ",
+      "objeto": "Contratação de empresa para a realização da tradicional FEIRA DA PAZ, nos dias 31/07, 01 E 02/08/2026",
       "vencedor": "CLX PRODUCOES LTDA",
       "cnpj_vencedor": "24406880000169",
       "valor_homologado": 0.01,
@@ -22,58 +22,6 @@
     }
   ],
   "registros": [
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "140",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000442/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de  VENTILADORES DE PAREDE  para atender a demanda da Secretaria Municipal de Educação no ano de 2025.",
-      "valor_estimado": 72309.0,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-01",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "137",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000443/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de Mobiliários e Equipamentos para o atendimento do Centro Ambulatorial de Especialidades Pediátricas  pertencente à Secretaria Municipal da Saúde (Emenda Parlamentar de Transferê",
-      "valor_estimado": 102483.15,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-02",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "135",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000444/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de concreto usinado",
-      "valor_estimado": 1143757.44,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-02",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "131",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000445/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para a futura e eventual prestação de serviços de coffee break",
-      "valor_estimado": 4408288.56,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-02",
-      "resultados": []
-    },
     {
       "orgao": "Prefeitura Municipal de Varginha",
       "numero_compra": "133",
@@ -5228,11 +5176,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "16",
+      "numero_compra": "PE 16",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000048/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de serviços comuns de engenharia, incluindo fornecimento de materiais, mão de obra e equipamentos necessários para remoção e instalação de calhas, rufos e condutores, para atend",
+      "objeto": "Serviços de remoção e instalação de calhas, rufos e condutores da UPA",
       "valor_estimado": 101186.22,
       "valor_homologado_total": 77500.0,
       "situacao": "Divulgada no PNCP",
@@ -5250,11 +5198,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "14",
+      "numero_compra": "PE 14",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000049/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de Veículo Automotor para atender a necessidade de distribuição de imunobiológicos para as salas de vacinas do município de Varginha/MG",
+      "objeto": "Aquisição de veículo para distribuição de imunobiológicos para as salas de vacinas do município de Varginha/MG",
       "valor_estimado": 151846.83,
       "valor_homologado_total": 143990.0,
       "situacao": "Divulgada no PNCP",
@@ -5272,11 +5220,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "17",
+      "numero_compra": "PE 17",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000050/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de veículo 07 lugares para Secretaria Municipal de Saúde de Varginha.",
+      "objeto": "Aquisição de veículo 07 lugares para Secretaria Municipal de Saúde de Varginha.",
       "valor_estimado": 155154.5,
       "valor_homologado_total": 147700.0,
       "situacao": "Divulgada no PNCP",
@@ -5399,11 +5347,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "27",
+      "numero_compra": "PE 27",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000057/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para fornecimento, instalação e homologação do Sistema PAPI para o Aeroporto Major Brigadeiro Trompowky nas cabeceiras designadas 22/04.",
+      "objeto": "Contratação de empresa para fornecimento do Sistema PAPI para o Aeroporto Major Brigadeiro Trompowky nas cabeceiras designadas 22/04.",
       "valor_estimado": 1576882.18,
       "valor_homologado_total": 1576882.18,
       "situacao": "Divulgada no PNCP",
@@ -5421,11 +5369,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "19",
+      "numero_compra": "PE 19",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000058/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de câmara de conservação refrigerada (2º C à 8º C), modelo vertical.",
+      "objeto": "Aquisição de uma câmara de conservação refrigeradora (2°C à 8°C) de vacinas e afins",
       "valor_estimado": 781386.76,
       "valor_homologado_total": 447972.0,
       "situacao": "Divulgada no PNCP",
@@ -5974,11 +5922,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "37",
+      "numero_compra": "PE 37",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000074/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada em serviços de telecomunicações, para prestação de serviços de telefonia móvel e pacote de dados, com fornecimento de chips novos, para comunicação de v",
+      "objeto": "Contratação de empresa especializada em serviços de telecomunicações, para prestação de serviços de telefonia móvel e pacote de dados",
       "valor_estimado": 15356.4,
       "valor_homologado_total": 13848.0,
       "situacao": "Divulgada no PNCP",
@@ -6087,11 +6035,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "28",
+      "numero_compra": "PE 28",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000080/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de 01 (um) caminhão novo, 0 km, destinado a atender as demandas do Setor de Poda e Manutenção de Áreas Verdes da Secretaria Municipal de Meio Ambiente do Município de Varginha/MG",
+      "objeto": "Aquisição de caminhão com cabine suplementar",
       "valor_estimado": 608287.37,
       "valor_homologado_total": null,
       "situacao": "Divulgada no PNCP",
@@ -6143,11 +6091,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "43",
+      "numero_compra": "PE 43",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000089/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Locação de equipamentos laboratoriais, bem como a aquisição de reagentes, insumos e consumíveis",
+      "objeto": "Locação de equipamentos laboratoriais, bem como a aquisição de reagentes, insumos e consumíveis",
       "valor_estimado": 493540.12,
       "valor_homologado_total": null,
       "situacao": "Divulgada no PNCP",
@@ -6156,11 +6104,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "40",
+      "numero_compra": "PE 40",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000090/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de caminhão com equipamento combinado de hidrojateamento e sucção à vácuo para atender as necessidades da Secretaria Municipal deObras e Serviços Urbanos",
+      "objeto": "Aquisição de caminhão com equipamento combinado de hidrojateamento e sucção à vácuo",
       "valor_estimado": 939383.33,
       "valor_homologado_total": 870000.0,
       "situacao": "Divulgada no PNCP",
@@ -6352,11 +6300,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "44",
+      "numero_compra": "PE 44",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000095/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de equipamento gerador",
+      "objeto": "Aquisição de equipamento gerador",
       "valor_estimado": 57317.35,
       "valor_homologado_total": null,
       "situacao": "Divulgada no PNCP",
@@ -6365,11 +6313,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "42",
+      "numero_compra": "PE 42",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000096/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de veículo automotor de grande porte, tipo caminhonete, cabine dupla (pick-up), Zero quilômetro, tração 4x4 que será destinado exclusivamente para cumprir atividades de segurança ",
+      "objeto": "Aquisição de veículo cabine dupla (pick-up), Zero quilômetro, tração 4x4 da Guarda Civil Municipal",
       "valor_estimado": 348886.24,
       "valor_homologado_total": null,
       "situacao": "Divulgada no PNCP",
@@ -6456,16 +6404,97 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "30",
+      "numero_compra": "PE 30",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000098/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de  cobertura de policarbonato, instalada",
+      "objeto": "Registro de preços para o fornecimento de cobertura de policarbonato instalada",
       "valor_estimado": 6531932.46,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 4867094.18,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-05-14",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA INCOLOR - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "ADRIANA CONSTRUCOES E SERVICOS LTDA",
+          "cnpj_vencedor": "41253754000130",
+          "valor_homologado": 2527010.69,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA INCOLOR - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "TQQ CONSTRUTORA LTDA",
+          "cnpj_vencedor": "23779439000160",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA INCOLOR - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "FABRICA DE LADRILHOS MATERIAIS E SERVICOS NOSSA SENHORA DE FATIMA LTDA",
+          "cnpj_vencedor": "55796672000147",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA INCOLOR - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "PAMELA REGINA DE CAMARGO SOUZA 30181044803",
+          "cnpj_vencedor": "12616386000140",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA INCOLOR - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "KEILA JUNIA JACINTO SILVA",
+          "cnpj_vencedor": "18695651000109",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA BRANCA - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "ADRIANA CONSTRUCOES E SERVICOS LTDA",
+          "cnpj_vencedor": "41253754000130",
+          "valor_homologado": 2340083.49,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA BRANCA - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "TQQ CONSTRUTORA LTDA",
+          "cnpj_vencedor": "23779439000160",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA BRANCA - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "FABRICA DE LADRILHOS MATERIAIS E SERVICOS NOSSA SENHORA DE FATIMA LTDA",
+          "cnpj_vencedor": "55796672000147",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA BRANCA - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "PAMELA REGINA DE CAMARGO SOUZA 30181044803",
+          "cnpj_vencedor": "12616386000140",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "COBERTURA EM POLICARBONATO COMPACTO CHAPA BRANCA - ESPESSURA 3MM, FORNECIMENTO E INSTALAÇAO CONFORME TERMO DE REFERENCIA",
+          "vencedor": "KEILA JUNIA JACINTO SILVA",
+          "cnpj_vencedor": "18695651000109",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -6621,11 +6650,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "48",
+      "numero_compra": "PE 48",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000107/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de serviços contínuos de Remoção Terrestre Inter-Hospitalar com Ambulâncias, com o devido acompanhamento de profissional da área de saúde, para atender remoções de pacientes na ",
+      "objeto": "Serviços de Remoção Terrestre Inter-Hospitalar com Ambulâncias e com profissional de saúde para atender remoções de pacientes na Unidade de urgências, emergências, dentro do município.",
       "valor_estimado": 1267949.16,
       "valor_homologado_total": 798624.0,
       "situacao": "Divulgada no PNCP",
@@ -6744,11 +6773,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "47",
+      "numero_compra": "PE 47",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000110/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para fornecimento de licença de uso de conjunto integrado de aplicações online para a Prefeitura Municipal de Varginha – MG, com acesso via web, com ade",
+      "objeto": "Contratação de empresa para fornecimento de licença de uso de conjunto integrado de aplicações online, com adequação à Lei Geral De Proteção De Dados Das Pessoas – LGPD (Lei Federal 13.709/2018)",
       "valor_estimado": 24411.96,
       "valor_homologado_total": 24411.96,
       "situacao": "Divulgada no PNCP",
@@ -7223,11 +7252,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "64",
+      "numero_compra": "PE 64",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000140/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa para realização de evento, incluindo o fornecimento de toda estrutura e disponibilização de equipamentos, mão de obra, iluminação, geradores, sonorização, barracas, b",
+      "objeto": "Contratação de empresa para a realização da tradicional FEIRA DA PAZ, nos dias 31/07, 01 E 02/08/2026",
       "valor_estimado": 477909.29,
       "valor_homologado_total": 0.01,
       "situacao": "Divulgada no PNCP",
@@ -7264,18 +7293,59 @@
       "modalidade": "Pregão - Eletrônico",
       "objeto": "[Portal de Compras Públicas] - Registro de Preços para futura e eventual aquisição de mobiliários pedagógicos",
       "valor_estimado": 807024.0,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 693845.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-06-30",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "QUADRO BRANCO ESCOLAR COM MOLDURA ALUMINIO - CHAPA MDF 9MM, MEDINDO 300 X 120 CM.",
+          "vencedor": "LOUSAS BRASIL COMERCIO DE QUADROS E ARTIGOS ESCOLARES EIRELI",
+          "cnpj_vencedor": "40801863000182",
+          "valor_homologado": 59900.0,
+          "data_resultado": "2026-07-30"
+        },
+        {
+          "item": 2,
+          "descricao_item": "Mesa de Refeicao Infantil Baby para 05 Lugares - Mesa de Refeicao Infantil Baby para 05 Lugares- Dimensoes aproximadas:1,20mt x 1,75mt x 80cm de altura- Estrutu",
+          "vencedor": "GREGORIOS COMERCIO DE MOVEIS EPP",
+          "cnpj_vencedor": "14700761000160",
+          "valor_homologado": 249000.0,
+          "data_resultado": "2026-07-30"
+        },
+        {
+          "item": 3,
+          "descricao_item": "CADEIRA ALTA PARA ALIMENTACAO DE BEBE - CADEIRA ALTA PARA ALIMENTACAO DE BEBE, Cadeira Alta de refeicao para bebes a partir de 6 meses ou 15 kg: Assento e const",
+          "vencedor": "Condafe Comercio de Roupas Ltda EPP",
+          "cnpj_vencedor": "10430444000110",
+          "valor_homologado": 144500.0,
+          "data_resultado": "2026-07-30"
+        },
+        {
+          "item": 4,
+          "descricao_item": "COLCHAO INFANTIL PARA BERCO - COLCHAO INFANTIL PARA BERCO, Com espuma D18 com revestimento em tecido 100% poliester de um lado  e do outro 100% plastico polieti",
+          "vencedor": "MAROUN SLEIMAN MOVEIS E COLCHOES LTDA-EPP",
+          "cnpj_vencedor": "62415013000189",
+          "valor_homologado": 41450.0,
+          "data_resultado": "2026-07-30"
+        },
+        {
+          "item": 5,
+          "descricao_item": "TROCADOR DE FRALDA COM BANHEIRA, DOBRAVEL - TROCADOR DE FRALDA COM BANHEIRA, DOBRAVEL  estrutura em aco, estrutura desmontavel,composicao textil 100% PVC, prote",
+          "vencedor": "Condafe Comercio de Roupas Ltda EPP",
+          "cnpj_vencedor": "10430444000110",
+          "valor_homologado": 198995.0,
+          "data_resultado": "2026-07-30"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "72",
+      "numero_compra": "PE 72",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000150/2026",
       "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de soro fisiológico 0,9%, sistema fechado em bolsas para manutenção dos Serviços de Saúde da Unidade de Pronto Atendimento do Municí",
+      "objeto": "Registro de preços para o fornecimento de soro fisiológico 0,9% sistema fechado em bolsas - UPA",
       "valor_estimado": 1029799.0,
       "valor_homologado_total": 565600.0,
       "situacao": "Divulgada no PNCP",
@@ -7290,6 +7360,142 @@
           "data_resultado": "2026-07-20"
         },
         {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "FARMA 2 PRODUTOS PARA SAUDE LTDA",
+          "cnpj_vencedor": "24826631000556",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "ACACIA COMERCIO DE MEDICAMENTOS LTDA",
+          "cnpj_vencedor": "03945035000191",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "MEDH DISTRIBUIDORA DE MEDICAMENTOS LTDA",
+          "cnpj_vencedor": "18917657000183",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "MULTIFARMA COMERCIO E REPRESENTACOES LTDA.",
+          "cnpj_vencedor": "21681325000157",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "HALEX ISTAR INDUSTRIA FARMACEUTICA SA",
+          "cnpj_vencedor": "01571702000198",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "MCW PRODUTOS MEDICOS E HOSPITALARES LTDA",
+          "cnpj_vencedor": "94389400000184",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "COFARMINAS COMERCIO DE PRODUTOS FARMACEUTICOS LTDA",
+          "cnpj_vencedor": "02537890000109",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "DIMEBRAS COMERCIAL HOSPITALAR LTDA",
+          "cnpj_vencedor": "56081482000106",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "MEDIOCENTER LTDA",
+          "cnpj_vencedor": "51910969000130",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "MULTIMEDIC COMERCIAL LTDA",
+          "cnpj_vencedor": "00207500000107",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "SOMA/MG PRODUTOS HOSPITALARES LTDA",
+          "cnpj_vencedor": "12927876000167",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "F V P COELHO",
+          "cnpj_vencedor": "26294192000180",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "COMERCIAL CIRURGICA RIOCLARENSE LTDA",
+          "cnpj_vencedor": "67729178000220",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "PROHOSP DISTRIBUIDORA DE MEDICAMENTOS LTDA.",
+          "cnpj_vencedor": "04355394000232",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "GABRIEL MURTA PIMENTA",
+          "cnpj_vencedor": "37218607000152",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "CLEAN MED DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA",
+          "cnpj_vencedor": "35310607000152",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 100ML - SORO FISIOLOGICO CLORETO DE SODIO  0,9% BOLSA COM 100ML",
+          "vencedor": "QUALITY COMMERCE DISTRIBUIDORA HOSPITALAR LTDA",
+          "cnpj_vencedor": "65141046000176",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
           "item": 2,
           "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
           "vencedor": "FARMA 2 PRODUTOS PARA SAUDE LTDA",
@@ -7298,11 +7504,283 @@
           "data_resultado": "2026-07-20"
         },
         {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "CIRURGICA KLG LTDA",
+          "cnpj_vencedor": "08618163000144",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "ACACIA COMERCIO DE MEDICAMENTOS LTDA",
+          "cnpj_vencedor": "03945035000191",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "MEDH DISTRIBUIDORA DE MEDICAMENTOS LTDA",
+          "cnpj_vencedor": "18917657000183",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "MCW PRODUTOS MEDICOS E HOSPITALARES LTDA",
+          "cnpj_vencedor": "94389400000184",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "DIMEBRAS COMERCIAL HOSPITALAR LTDA",
+          "cnpj_vencedor": "56081482000106",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "COFARMINAS COMERCIO DE PRODUTOS FARMACEUTICOS LTDA",
+          "cnpj_vencedor": "02537890000109",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "MULTIFARMA COMERCIO E REPRESENTACOES LTDA.",
+          "cnpj_vencedor": "21681325000157",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "MULTIMEDIC COMERCIAL LTDA",
+          "cnpj_vencedor": "00207500000107",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "HALEX ISTAR INDUSTRIA FARMACEUTICA SA",
+          "cnpj_vencedor": "01571702000198",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "MEDIOCENTER LTDA",
+          "cnpj_vencedor": "51910969000130",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "F V P COELHO",
+          "cnpj_vencedor": "26294192000180",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "SOMA/MG PRODUTOS HOSPITALARES LTDA",
+          "cnpj_vencedor": "12927876000167",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "COMERCIAL CIRURGICA RIOCLARENSE LTDA",
+          "cnpj_vencedor": "67729178000220",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "PROHOSP DISTRIBUIDORA DE MEDICAMENTOS LTDA.",
+          "cnpj_vencedor": "04355394000232",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "GABRIEL MURTA PIMENTA",
+          "cnpj_vencedor": "37218607000152",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "IMPERIUM MED DISTRIBUIDORA DE MEDICAMENTOS E PRODUTOS HOSPITALARES LTDA",
+          "cnpj_vencedor": "43269791000162",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "CLEAN MED DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA",
+          "cnpj_vencedor": "35310607000152",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 250ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 250ML",
+          "vencedor": "QUALITY COMMERCE DISTRIBUIDORA HOSPITALAR LTDA",
+          "cnpj_vencedor": "65141046000176",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
           "item": 3,
           "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
           "vencedor": "FARMA 2 PRODUTOS PARA SAUDE LTDA",
           "cnpj_vencedor": "24826631000556",
           "valor_homologado": 218400.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "CIRURGICA KLG LTDA",
+          "cnpj_vencedor": "08618163000144",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "ACACIA COMERCIO DE MEDICAMENTOS LTDA",
+          "cnpj_vencedor": "03945035000191",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "MEDH DISTRIBUIDORA DE MEDICAMENTOS LTDA",
+          "cnpj_vencedor": "18917657000183",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "DIMEBRAS COMERCIAL HOSPITALAR LTDA",
+          "cnpj_vencedor": "56081482000106",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "MCW PRODUTOS MEDICOS E HOSPITALARES LTDA",
+          "cnpj_vencedor": "94389400000184",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "MULTIFARMA COMERCIO E REPRESENTACOES LTDA.",
+          "cnpj_vencedor": "21681325000157",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "MEDIOCENTER LTDA",
+          "cnpj_vencedor": "51910969000130",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "MULTIMEDIC COMERCIAL LTDA",
+          "cnpj_vencedor": "00207500000107",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "F V P COELHO",
+          "cnpj_vencedor": "26294192000180",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "IMPERIUM MED DISTRIBUIDORA DE MEDICAMENTOS E PRODUTOS HOSPITALARES LTDA",
+          "cnpj_vencedor": "43269791000162",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "HALEX ISTAR INDUSTRIA FARMACEUTICA SA",
+          "cnpj_vencedor": "01571702000198",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "COMERCIAL CIRURGICA RIOCLARENSE LTDA",
+          "cnpj_vencedor": "67729178000220",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "PROHOSP DISTRIBUIDORA DE MEDICAMENTOS LTDA.",
+          "cnpj_vencedor": "04355394000232",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "GABRIEL MURTA PIMENTA",
+          "cnpj_vencedor": "37218607000152",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "CLEAN MED DISTRIBUIDORA DE PRODUTOS HOSPITALARES LTDA",
+          "cnpj_vencedor": "35310607000152",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-07-20"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA 500ML - SORO FISIOLOGICO CLORETO DE SODIO 0,9% BOLSA COM 500 ML",
+          "vencedor": "QUALITY COMMERCE DISTRIBUIDORA HOSPITALAR LTDA",
+          "cnpj_vencedor": "65141046000176",
+          "valor_homologado": 0.0,
           "data_resultado": "2026-07-20"
         }
       ]
@@ -7490,7 +7968,7 @@
       "objeto": "[Portal de Compras Públicas] - Registro de preços para aquisição de reagentes, insumos e consumíveis para o laboratório da Unidade de Pronto Atendimento",
       "valor_estimado": 738309.25,
       "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
+      "situacao": "Suspensa",
       "data_publicacao": "2026-07-20",
       "resultados": []
     },
@@ -7691,33 +8169,16 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "1",
+      "numero_compra": "95",
       "ano": 2026,
-      "controle_pncp": "18240119000105-1-000030/2026",
-      "modalidade": "Concorrência - Eletrônica",
-      "objeto": "[Portal de Compras Públicas] - Construção de uma unidade escolar CEMEI DO BAIRRO GREVILEAS",
-      "valor_estimado": 3536245.37,
-      "valor_homologado_total": 3536245.37,
+      "controle_pncp": "18240119000105-1-000197/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada na administração e gerenciamento de fornecimento de documentos de legitimação (cartões eletrônicos, com tecnologia on-line - vale alimentação), em confo",
+      "valor_estimado": 3.6,
+      "valor_homologado_total": null,
       "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2026-03-05",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "GLOBAL - CONTRATACAO DE SERVICOS NA AREA DE ENGENHARIA - Servicos de Administracao de Obra e Terraplanagem",
-          "vencedor": "GW ENGENHARIA PROJETOS E EXECUÇÃO DE OBRAS LTDA",
-          "cnpj_vencedor": "32385538000158",
-          "valor_homologado": 450019.53,
-          "data_resultado": "2026-05-11"
-        },
-        {
-          "item": 2,
-          "descricao_item": "GLOBAL - CONTRATACAO DE SERVICOS NA AREA DE ENGENHARIA - Execucao das obras de construcao do CEMEI - Centro Municipal de Educacao Infantil do Bairro das Grevile",
-          "vencedor": "GW ENGENHARIA PROJETOS E EXECUÇÃO DE OBRAS LTDA",
-          "cnpj_vencedor": "32385538000158",
-          "valor_homologado": 3086225.84,
-          "data_resultado": "2026-05-11"
-        }
-      ]
+      "data_publicacao": "2026-07-29",
+      "resultados": []
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -7773,36 +8234,31 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "166",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000439/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - A aquisição de 6 (seis) Notebooks - Tipo 03 - Conforme Memorial Descritivo.",
-      "valor_estimado": 42823.14,
-      "valor_homologado_total": null,
+      "numero_compra": "CC 1",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000030/2026",
+      "modalidade": "Concorrência - Presencial",
+      "objeto": "Construção de unidade escolar CEMEI DO BAIRRO GREVILEAS",
+      "valor_estimado": 3536245.37,
+      "valor_homologado_total": 3536245.37,
       "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-01",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "DE 111",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000440/2025",
-      "modalidade": "Dispensa",
-      "objeto": "Contratação de instituto especializado para realização de trabalhos técnicos especializados visando a realização de estudo de viabilidade econômico-financeira para que o Município possa realizar a gestão financeira da fo",
-      "valor_estimado": 1900000.0,
-      "valor_homologado_total": 1900000.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-01",
+      "data_publicacao": "2026-03-05",
       "resultados": [
         {
           "item": 1,
-          "descricao_item": "para realização de trabalhos técnicos especializados visando a realização de estudo de viabilidade econômico-financeira para que o Município possa realizar a ge",
-          "vencedor": "INSTITUTO BRASILEIRO DE TECNOLOGIA, EMPREENDEDORISMO E GESTAO",
-          "cnpj_vencedor": "15555941000169",
-          "valor_homologado": 1900000.0,
-          "data_resultado": "2025-10-16"
+          "descricao_item": "GLOBAL - CONTRATACAO DE SERVICOS NA AREA DE ENGENHARIA - Servicos de Administracao de Obra e Terraplanagem",
+          "vencedor": "GW ENGENHARIA PROJETOS E EXECUÇÃO DE OBRAS LTDA",
+          "cnpj_vencedor": "32385538000158",
+          "valor_homologado": 450019.53,
+          "data_resultado": "2026-05-11"
+        },
+        {
+          "item": 2,
+          "descricao_item": "GLOBAL - CONTRATACAO DE SERVICOS NA AREA DE ENGENHARIA - Execucao das obras de construcao do CEMEI - Centro Municipal de Educacao Infantil do Bairro das Grevile",
+          "vencedor": "GW ENGENHARIA PROJETOS E EXECUÇÃO DE OBRAS LTDA",
+          "cnpj_vencedor": "32385538000158",
+          "valor_homologado": 3086225.84,
+          "data_resultado": "2026-05-11"
         }
       ]
     },
@@ -11282,11 +11738,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "47",
+      "numero_compra": "DE 47",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000122/2026",
       "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Contratação de serviço comum de engenharia para construção de aproximadamente 11,76 m de muro em concreto armado e alvenaria, com fornecimento de mão de obra, materiais e disponibilização d",
+      "objeto": "Serviços de engenharia para construção do muro em concreto armado e alvenaria na Escola Municipal São José",
       "valor_estimado": 46842.52,
       "valor_homologado_total": 45955.91,
       "situacao": "Divulgada no PNCP",
@@ -11350,11 +11806,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "43",
+      "numero_compra": "DE 43",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000127/2026",
       "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para pintura das caixas d’água das Escolas CAIC I - Dr. Jacy de Figueiredo (Avenida Manoel Vida, 1150 – Bairro Imaculada, Varginha/MG) e CAIC II Profess",
+      "objeto": "Contratação de empresa para pintura de 04 (quatro) caixas d’água das Escolas",
       "valor_estimado": 42266.0,
       "valor_homologado_total": 42266.0,
       "situacao": "Divulgada no PNCP",
@@ -11826,11 +12282,11 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "56",
+      "numero_compra": "DE 56",
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000146/2026",
       "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa para prestação de serviços de instalação e desinstalação de ar condicionado  para atender as necessidades da Secretaria Municipal Saúde e Unidades Básicas de Saúde.",
+      "objeto": "Serviços de instalação e desinstalação de ar condicionado - Secretaria Municipal Saúde e Unidades Básicas de Saúde.",
       "valor_estimado": 64054.19,
       "valor_homologado_total": 33048.98,
       "situacao": "Divulgada no PNCP",
@@ -12051,10 +12507,27 @@
       "modalidade": "Dispensa",
       "objeto": "[Portal de Compras Públicas] - Aquisição de calçados de segurança (EPI´s) para atender as necessidades da Secretaria Municipal de Obras e Serviços Urbanos - SOSUB",
       "valor_estimado": 29408.97,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 23220.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-21",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "CALCADO OCUPACIONAL DE USO PROF.TIPO BOTINA - Calcado ocupacional profissional tipo botina (CA 25259)  calcado de seguranca isolante eletrico de uso profissiona",
+          "vencedor": "CHEPIS LTDA",
+          "cnpj_vencedor": "64415968000161",
+          "valor_homologado": 21240.0,
+          "data_resultado": "2026-07-30"
+        },
+        {
+          "item": 3,
+          "descricao_item": "CALCADO OCUPACIONAL DE USO PROF.TIPO BOTINA - Botina de seguranca Nobuck marrom com cadarco (CA 28993)  Em couro com acabamento em nobuck, com forracao externa,",
+          "vencedor": "CHEPIS LTDA",
+          "cnpj_vencedor": "64415968000161",
+          "valor_homologado": 1980.0,
+          "data_resultado": "2026-07-30"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -12077,10 +12550,19 @@
       "modalidade": "Dispensa",
       "objeto": "[Portal de Compras Públicas] - Aquisição de conjunto de mesa e 4 cadeiras de plástico",
       "valor_estimado": 56620.0,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 41400.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-22",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "MESA E CADEIRAS DE PLASTICO C/4 CADEIRAS CADA - Conjunto de mesa e 4 cadeiras de plastico Mesa: alt. 0,72x larg. 0,70 x comp. 0,70 / cadeira: alt. 0,88x larg. 0",
+          "vencedor": "VERTICE COMERCIO DE ARTIGOS DE PLASTICOS LTDA",
+          "cnpj_vencedor": "66712923000184",
+          "valor_homologado": 41400.0,
+          "data_resultado": "2026-07-30"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -12594,25 +13076,51 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "IL 35",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000441/2025",
-      "modalidade": "Inexigibilidade",
-      "objeto": "Aquisição por demanda de kit para aparelho de gasometria portátil modelo ABL09 flex marca Radiometer visando o funcionameno adequado do Laboratório da Unidade de Pronto Atendimento - UPA - Varginha/MG.",
-      "valor_estimado": 61200.0,
-      "valor_homologado_total": 61200.0,
+      "numero_compra": "DE 14",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000198/2026",
+      "modalidade": "Dispensa",
+      "objeto": "Contratação de instituição para organização do processo seletivo para o quadro de direção das escolas Municipais",
+      "valor_estimado": 31900.0,
+      "valor_homologado_total": 31900.0,
       "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-01",
+      "data_publicacao": "2026-07-30",
       "resultados": [
         {
           "item": 1,
-          "descricao_item": "KIT ABL 09\nMARCA RADIOMETER PARA EXAME DE GASOMETRIA ELETROLITOS E HEMATOCRITO QUE REALIZA 300 EXAMES EM ATE 30 DIAS COMPOSTO POR:\n01 SENSOR CASSETE SC9 COMPLET",
-          "vencedor": "WEBMED SOLUCOES EM SAUDE LTDA",
-          "cnpj_vencedor": "05731550000102",
-          "valor_homologado": 61200.0,
-          "data_resultado": "2025-12-01"
+          "descricao_item": "Contratação de instituição especializada para o planejamento, organização e execução do Exame Seletivo de Provas Objetivas Teóricas - Contratação de instituição",
+          "vencedor": "INSTITUTO AVANCA SAO PAULO",
+          "cnpj_vencedor": "31160361000129",
+          "valor_homologado": 31900.0,
+          "data_resultado": "2026-05-27"
         }
       ]
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "DE 49",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000199/2026",
+      "modalidade": "Dispensa",
+      "objeto": "Serviços de Dedetização e Desratização",
+      "valor_estimado": 5653.33,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-30",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "70",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000200/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de notebooks destinados a atender às necessidades operacionais da Corregedoria do Município de Varginha/MG.",
+      "valor_estimado": 18393.36,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-30",
+      "resultados": []
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -13521,7 +14029,7 @@
       "ano": 2026,
       "controle_pncp": "18240119000105-1-000101/2026",
       "modalidade": "Inexigibilidade",
-      "objeto": "Aquisição, por demanda, de kit para aparelho de gasometria portátil modelo ABL09 flex marca Radiometer visando o funcionamento adequado do laboratório da UPA",
+      "objeto": "Aquisição de kit para aparelho de gasometria portátil modelo ABL09 flex marca Radiometer - UPA",
       "valor_estimado": 61200.0,
       "valor_homologado_total": 61200.0,
       "situacao": "Divulgada no PNCP",

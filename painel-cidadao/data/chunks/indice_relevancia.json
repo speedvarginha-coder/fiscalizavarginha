@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-30T21:40:22.292Z",
+  "gerado_em": "2026-07-31T10:40:53.802Z",
   "fonte": {
     "principal": "camara_anos.json",
     "origem": "SAPL Camara Municipal de Varginha",
@@ -591,57 +591,57 @@
             "valor": 1
           },
           {
-            "nome": "Zilda Silva",
+            "nome": "Bruno Leandro Coletor",
             "posicao": 2,
-            "valor": 0
+            "valor": 1
           },
           {
-            "nome": "Dandan",
+            "nome": "Thulyo Paiva",
             "posicao": 3,
-            "valor": 0
+            "valor": 1
           },
           {
-            "nome": "Joãozinho Enfermeiro",
+            "nome": "Cássio Chiodi",
             "posicao": 4,
-            "valor": 0
+            "valor": 1
           },
           {
-            "nome": "Alexandre Prado",
+            "nome": "Zilda Silva",
             "posicao": 5,
             "valor": 0
           },
           {
-            "nome": "Rogério Bueno",
+            "nome": "Dandan",
             "posicao": 6,
             "valor": 0
           },
           {
-            "nome": "Bruno Leandro Coletor",
+            "nome": "Joãozinho Enfermeiro",
             "posicao": 7,
             "valor": 0
           },
           {
-            "nome": "Thulyo Paiva",
+            "nome": "Alexandre Prado",
             "posicao": 8,
             "valor": 0
           },
           {
-            "nome": "Davi Martins",
+            "nome": "Rogério Bueno",
             "posicao": 9,
             "valor": 0
           },
           {
-            "nome": "Dudu Ottoni",
+            "nome": "Davi Martins",
             "posicao": 10,
             "valor": 0
           },
           {
-            "nome": "Zé Morais",
+            "nome": "Dudu Ottoni",
             "posicao": 11,
             "valor": 0
           },
           {
-            "nome": "Cássio Chiodi",
+            "nome": "Zé Morais",
             "posicao": 12,
             "valor": 0
           },
@@ -1048,8 +1048,8 @@
         {
           "nome": "Bruno Leandro Coletor",
           "indice": 64,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
+          "efetividade": 100,
+          "leis_aprovadas": 1,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 95.3,
@@ -1066,7 +1066,7 @@
             "legislar": 42,
             "fiscalizar": 39,
             "representar": 15,
-            "efetividade": 0,
+            "efetividade": 1,
             "presenca": 95.3
           },
           "evidencias": {
@@ -1074,7 +1074,7 @@
             "alteracao_relevante": 0,
             "proposicao_simbolica": 12,
             "emenda_relevante": 24,
-            "leis_aprovadas": 0,
+            "leis_aprovadas": 1,
             "relatoria_processante": 0,
             "requerimento_info": 26,
             "audiencia_contas": 0,
@@ -1103,15 +1103,15 @@
           "explicacao": [
             "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
           ],
           "posicao": 7
         },
         {
           "nome": "Thulyo Paiva",
           "indice": 63.7,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
+          "efetividade": 100,
+          "leis_aprovadas": 1,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
@@ -1128,7 +1128,7 @@
             "legislar": 54,
             "fiscalizar": 24,
             "representar": 15,
-            "efetividade": 0,
+            "efetividade": 1,
             "presenca": 100
           },
           "evidencias": {
@@ -1136,7 +1136,7 @@
             "alteracao_relevante": 0,
             "proposicao_simbolica": 17,
             "emenda_relevante": 12,
-            "leis_aprovadas": 0,
+            "leis_aprovadas": 1,
             "relatoria_processante": 0,
             "requerimento_info": 16,
             "audiencia_contas": 0,
@@ -1165,7 +1165,7 @@
           "explicacao": [
             "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
           ],
           "posicao": 8
         },
@@ -1358,8 +1358,8 @@
         {
           "nome": "Cássio Chiodi",
           "indice": 52,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
+          "efetividade": 100,
+          "leis_aprovadas": 1,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
@@ -1376,7 +1376,7 @@
             "legislar": 37.5,
             "fiscalizar": 9,
             "representar": 13,
-            "efetividade": 0,
+            "efetividade": 1,
             "presenca": 100
           },
           "evidencias": {
@@ -1384,7 +1384,7 @@
             "alteracao_relevante": 0,
             "proposicao_simbolica": 11,
             "emenda_relevante": 17,
-            "leis_aprovadas": 0,
+            "leis_aprovadas": 1,
             "relatoria_processante": 0,
             "requerimento_info": 6,
             "audiencia_contas": 0,
@@ -1413,7 +1413,7 @@
           "explicacao": [
             "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
           ],
           "posicao": 12
         },

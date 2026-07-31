@@ -643,17 +643,6 @@
       },
       {
         "data": "2026-03-20",
-        "numero": 70,
-        "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
-        "credor": "PANIFICADORA PRINCESA LTDA",
-        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
-        "valor_empenhado": 12673.6,
-        "valor_liquidado": 2534.72,
-        "valor_pago": 2221.68,
-        "saldo_a_pagar": 10451.92
-      },
-      {
-        "data": "2026-03-20",
         "numero": 71,
         "orgao": "ADMINISTRACAO",
         "credor": "PANIFICADORA PRINCESA LTDA",
@@ -662,6 +651,17 @@
         "valor_liquidado": 2851.56,
         "valor_pago": 1912.44,
         "saldo_a_pagar": 10761.16
+      },
+      {
+        "data": "2026-03-20",
+        "numero": 70,
+        "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
+        "credor": "PANIFICADORA PRINCESA LTDA",
+        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
+        "valor_empenhado": 12673.6,
+        "valor_liquidado": 2534.72,
+        "valor_pago": 2221.68,
+        "saldo_a_pagar": 10451.92
       },
       {
         "data": "2026-04-08",
@@ -38709,7 +38709,7 @@
         "carga_horaria_mensal": "180.00",
         "carga_horaria_semanal": "36",
         "remuneracao_contratual": 6715.06,
-        "situacao": "Trabalhando"
+        "situacao": "Licença"
       },
       {
         "nome": "VINICIUS LOPES DA SILVA",
