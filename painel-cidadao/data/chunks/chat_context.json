@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-01T11:10:41.080Z",
-  "atualizado_em": "2026-08-01T06:17:00",
+  "gerado_em": "2026-08-01T21:55:33.475Z",
+  "atualizado_em": "2026-08-01T18:43:29",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -13,9 +13,9 @@
     "ano": 2026,
     "total_pago_fornecedores_externos": 206311488.66,
     "credores_mapeados": 10000,
-    "contratos_total": 1340,
+    "contratos_total": 1232,
     "contratos_do_ano": 365,
-    "contratos_em_execucao": 1285,
+    "contratos_em_execucao": 1177,
     "obras_publicas": 130,
     "top_fornecedores": [
       {

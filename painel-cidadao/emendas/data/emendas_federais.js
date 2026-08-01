@@ -728,6 +728,11 @@ window.EMENDAS_FEDERAIS = {
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202527540001",
       "id": "fed_202527540001_16",
+      "qtdDocumentos": 127,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 02/09/2025 · liquidação 08/09/2025 · pagamento 09/09/2025",
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
