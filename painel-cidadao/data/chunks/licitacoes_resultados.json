@@ -15428,10 +15428,24 @@
     }
   ],
   "erros": [],
-  "status": "ok",
+  "status": "preserved",
   "qualidade_coleta": {
     "tentativas_por_requisicao": 3,
     "falhas": 0,
     "base_anterior_preservada": false
-  }
+  },
+  "ultima_tentativa_em": "2026-08-01T11:10:26+00:00",
+  "motivo_preservacao": "PNCP retornou apenas 10 de 310 compras anteriores apos repeticoes; a ultima base valida foi mantida para evitar perda de dados.",
+  "erros_ultima_tentativa": [
+    "contratacoes 18240119000105 mod 6 pg 1: The read operation timed out",
+    "contratacoes 18240119000105 mod 4 pg 1: The read operation timed out",
+    "contratacoes 18240119000105 mod 5 pg 1: The read operation timed out",
+    "contratacoes 18240119000105 mod 8 pg 1: The read operation timed out",
+    "contratacoes 18240119000105 mod 9 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 6 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 7 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 4 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 5 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 8 pg 1: The read operation timed out"
+  ]
 }

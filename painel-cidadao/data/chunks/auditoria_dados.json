@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-07-31T21:45:52.977Z",
+  "gerado_em": "2026-08-01T11:10:33.117Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,15 +9,15 @@
     "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-07-31T18:42:36",
-    "data_humana": "31/07/2026 - 18:42"
+    "iso": "2026-08-01T06:17:00",
+    "data_humana": "01/08/2026 - 06:17"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.1 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -108,7 +108,7 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Declaracoes de inidoneidade vigentes localizadas em fornecedores do painel",
-      "detail": "2 declaracao(oes) de inidoneidade vigente(s) foi(ram) localizada(s) para fornecedores presentes no painel: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — aplicada por Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — aplicada por Prefeitura Municipal de Itapetininga (SP)). Enquanto vigente, a declaracao de inidoneidade impede contratar com todos os entes federativos, mas o cruzamento deve ser confirmado na fonte antes de qualquer conclusao sobre contrato local.",
+      "detail": "2 declaracao(oes) de inidoneidade vigente(s) foi(ram) localizada(s) para fornecedores presentes no painel: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — aplicada por Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — aplicada por MMG-PREFEITURA MUNICIPAL DE VARGINHA). Enquanto vigente, a declaracao de inidoneidade impede contratar com todos os entes federativos, mas o cruzamento deve ser confirmado na fonte antes de qualquer conclusao sobre contrato local.",
       "action": "Confirmar CNPJ, vigencia e alcance no Portal da Transparencia federal; depois verificar se existe contratacao ativa antes de qualquer conclusao.",
       "source": "sancoes.json",
       "verification": {
@@ -128,7 +128,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "32 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (78 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "45 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (96 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -136,7 +136,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "78 sancao(oes) de outros entes"
+          "96 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
@@ -157,7 +157,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.1 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -248,7 +248,7 @@
       "severity": "error",
       "id": "fornecedor-inidoneo",
       "title": "Declaracoes de inidoneidade vigentes localizadas em fornecedores do painel",
-      "detail": "2 declaracao(oes) de inidoneidade vigente(s) foi(ram) localizada(s) para fornecedores presentes no painel: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — aplicada por Governo do Estado da Bahia (BA)); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — aplicada por Prefeitura Municipal de Itapetininga (SP)). Enquanto vigente, a declaracao de inidoneidade impede contratar com todos os entes federativos, mas o cruzamento deve ser confirmado na fonte antes de qualquer conclusao sobre contrato local.",
+      "detail": "2 declaracao(oes) de inidoneidade vigente(s) foi(ram) localizada(s) para fornecedores presentes no painel: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — aplicada por Governo do Estado da Bahia (BA)); WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (Impedimento/proibição de contratar com prazo determinado — aplicada por MMG-PREFEITURA MUNICIPAL DE VARGINHA). Enquanto vigente, a declaracao de inidoneidade impede contratar com todos os entes federativos, mas o cruzamento deve ser confirmado na fonte antes de qualquer conclusao sobre contrato local.",
       "action": "Confirmar CNPJ, vigencia e alcance no Portal da Transparencia federal; depois verificar se existe contratacao ativa antes de qualquer conclusao.",
       "source": "sancoes.json",
       "verification": {
@@ -268,7 +268,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "32 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (78 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "45 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (96 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -276,7 +276,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "78 sancao(oes) de outros entes"
+          "96 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
