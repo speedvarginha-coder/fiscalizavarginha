@@ -7,9 +7,9 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 3006201.81,
+    "total_atual": 3006239.88,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 506505.17,
+    "total_externo_atual": 506543.24,
     "total_externo_anterior": 3071916.67,
     "credores_atual_qtd": 114,
     "credores_anterior_qtd": 196,
@@ -263,8 +263,8 @@
     "resumo_atual": {
       "registros": 232,
       "empenhado": 3640862.39,
-      "liquidado": 3048656.32,
-      "pago": 3006201.81
+      "liquidado": 3048694.39,
+      "pago": 3006239.88
     },
     "maiores_empenhos_atual": [
       {

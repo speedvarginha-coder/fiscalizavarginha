@@ -2,7 +2,7 @@ window.EMENDAS_FEDERAIS = {
   "metadata": {
     "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
     "favorecido": "Favorecidos em Varginha-MG",
-    "extraidoEm": "2026-08-01",
+    "extraidoEm": "2026-08-02",
     "codigoIbge": "3170701",
     "totalFederal": 22595441.99,
     "totalFederalTexto": "22.595.441,99",
@@ -224,7 +224,12 @@ window.EMENDAS_FEDERAIS = {
         "2026"
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627540001",
-      "id": "fed_202627540001_2"
+      "id": "fed_202627540001_2",
+      "qtdDocumentos": 73,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 08/05/2026 · liquidação 11/05/2026 · pagamento 12/05/2026"
     },
     {
       "tipo": "Federal",

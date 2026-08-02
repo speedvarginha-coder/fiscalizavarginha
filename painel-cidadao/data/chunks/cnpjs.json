@@ -1645,7 +1645,7 @@
       "cnpj_raiz": "17281106",
       "cnpj_completo": "17281106000103",
       "cnpj_reconstruido": true,
-      "valor_total": 3963420.52,
+      "valor_total": 4477199.74,
       "razao_social": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS COPASA MG",
       "nome_fantasia": "COPASA MG",
       "situacao": "ATIVA",
@@ -1783,7 +1783,7 @@
       "cnpj_raiz": "05165851",
       "cnpj_completo": "05165851000108",
       "cnpj_reconstruido": true,
-      "valor_total": 2868657.32,
+      "valor_total": 3004813.21,
       "razao_social": "SERVICOS CFC LTDA",
       "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
       "situacao": "ATIVA",
@@ -1933,6 +1933,24 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
+      "cnpj_raiz": "23593720",
+      "cnpj_completo": "23593720000103",
+      "cnpj_reconstruido": true,
+      "valor_total": 1672167.62,
+      "razao_social": "EXXCELENCIA SERVICOS TERCEIRIZADOS LTDA",
+      "nome_fantasia": "EXXCELENCIA SERVICOS",
+      "situacao": "ATIVA",
+      "abertura": "2015-11-04",
+      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
+      "municipio": "TEIXEIRAS",
+      "uf": "MG",
+      "socios": [
+        "MARIA DAS GRACAS REZENDE FRAGOSO FLORESTA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "CISSUL - CONSÓRCIO INTERMUNICIPAL DE SAÚDE SUL MINEIRO",
       "cnpj_raiz": "00730595",
       "cnpj_completo": "00730595000130",
@@ -1966,24 +1984,6 @@
       "socios": [
         "DOMINGOS PINTO FERREIRA NETO",
         "DOMINGOS PINTO FILHO"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
-      "cnpj_raiz": "23593720",
-      "cnpj_completo": "23593720000103",
-      "cnpj_reconstruido": true,
-      "valor_total": 1581175.97,
-      "razao_social": "EXXCELENCIA SERVICOS TERCEIRIZADOS LTDA",
-      "nome_fantasia": "EXXCELENCIA SERVICOS",
-      "situacao": "ATIVA",
-      "abertura": "2015-11-04",
-      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
-      "municipio": "TEIXEIRAS",
-      "uf": "MG",
-      "socios": [
-        "MARIA DAS GRACAS REZENDE FRAGOSO FLORESTA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },

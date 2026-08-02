@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-01T21:55:33.475Z",
-  "atualizado_em": "2026-08-01T18:43:29",
+  "gerado_em": "2026-08-02T12:42:01.569Z",
+  "atualizado_em": "2026-08-02T06:14:12",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,11 +11,11 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 206311488.66,
+    "total_pago_fornecedores_externos": 207877421.25,
     "credores_mapeados": 10000,
-    "contratos_total": 1232,
+    "contratos_total": 1340,
     "contratos_do_ano": 365,
-    "contratos_em_execucao": 1177,
+    "contratos_em_execucao": 1285,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -52,7 +52,7 @@
       },
       {
         "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
-        "valor": 3963420.52
+        "valor": 4477199.74
       },
       {
         "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
@@ -120,9 +120,9 @@
   },
   "diarias": {
     "prefeitura": {
-      "registros": 5637,
-      "valor_total": 2205333.39,
-      "quantidade_total": 5637,
+      "registros": 5653,
+      "valor_total": 2258141.44,
+      "quantidade_total": 5653,
       "servidores": 297
     },
     "camara": {

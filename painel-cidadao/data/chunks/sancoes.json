@@ -1,9 +1,9 @@
 {
   "fonte": "Portal da Transparencia (CGU) - CEIS e CNEP",
-  "gerado_em": "2026-08-01T10:51:49+00:00",
+  "gerado_em": "2026-08-02T10:47:41+00:00",
   "metodo": "Consulta por nome na API api-de-dados; confirmacao local por raiz de CNPJ ou nome normalizado identico. Cobertura limitada a fornecedores com nome consultavel — nao e prova de ausencia de sancao.",
   "verificados": 1102,
-  "consultas_api": 1058,
+  "consultas_api": 1041,
   "sancoes_encontradas": 101,
   "sancoes_vigentes": 98,
   "achados": [
@@ -139,6 +139,23 @@
       "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
       "fornecedor_local": "SMART GO CAR LTDA",
       "cnpj_raiz": "32439205",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "HABILIDADE ESPORTE SERVICOS LTDA",
+      "cnpj": "26.961.485/0001-73",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "08/04/2026",
+      "data_fim": "07/04/2028",
+      "orgao_sancionador": "Prefeitura Municipal de Jundiaí - SP",
+      "uf_orgao": "SP",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "HABILIDADE ESPORTE SERVICOS LTDA",
+      "cnpj_raiz": "26961485",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -1410,23 +1427,6 @@
     },
     {
       "base": "CEIS",
-      "sancionado": "COSTA & SILVA COMERCIO DE MOVEIS E UTILIDADES LTDA",
-      "cnpj": "50.387.433/0001-10",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "29/04/2025",
-      "data_fim": "29/04/2027",
-      "orgao_sancionador": "Prefeitura Municipal de Itápolis (SP)",
-      "uf_orgao": "SP",
-      "fundamentacao": "LEI 8666 - ART. 87, II E III - ART. 87.  PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES:II - MULTA, NA FORMA",
-      "fornecedor_local": "COSTA & SILVA COM. DE MOVEIS E UTILIDA. LTDA",
-      "cnpj_raiz": "50387433",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
       "sancionado": "CARVALHO MIRANDA EQUIPAMENTOS LTDA",
       "cnpj": "36.839.023/0001-31",
       "tipo": "Impedimento/proibição de contratar com prazo determinado",
@@ -1910,22 +1910,22 @@
     "CEIS/HOSPITAL: The read operation timed out",
     "CEIS/TERRAPLENAGEM: The read operation timed out",
     "CEIS/TRANSPORTE: The read operation timed out",
-    "CNEP/RECEITA: The read operation timed out",
-    "CEIS/TERCEIRIZADOS: The read operation timed out",
-    "CEIS/VEROCHEQUE: The read operation timed out",
-    "CEIS/PSICOLOGIA: The read operation timed out",
-    "CEIS/HABILIDADE: The read operation timed out",
-    "CNEP/LABORATORIAL: The read operation timed out",
-    "CEIS/PRODUTOS: HTTP Error 400: ",
-    "CNEP/INFORMATICA: The read operation timed out",
-    "CEIS/FLORESTA: The read operation timed out",
-    "CNEP/FLORESTA: The read operation timed out",
-    "CNEP/BRASIL: The read operation timed out",
-    "CEIS/OLIVEIRA: The read operation timed out",
-    "CNEP/OLIVEIRA: The read operation timed out",
-    "CEIS/AGROPECUARIA: The read operation timed out",
-    "CNEP/AGROPECUARIA: The read operation timed out",
-    "CEIS/LTDA: The read operation timed out",
-    "CNEP/LTDA: The read operation timed out"
+    "CEIS/RECEITA: The read operation timed out",
+    "CNEP/AMBIENTE: The read operation timed out",
+    "CEIS/SANEAMENTO: The read operation timed out",
+    "CNEP/SANEAMENTO: The read operation timed out",
+    "CEIS/EDUCACIONAL: The read operation timed out",
+    "CNEP/EDUCACIONAL: The read operation timed out",
+    "CEIS/DESENVOLVIMENTO: The read operation timed out",
+    "CNEP/DESENVOLVIMENTO: The read operation timed out",
+    "CEIS/ADOLECENTE: The read operation timed out",
+    "CNEP/ADOLECENTE: The read operation timed out",
+    "CEIS/ESPECIALIZADOS: The read operation timed out",
+    "CNEP/ESPECIALIZADOS: The read operation timed out",
+    "CEIS/ALIMENTOS: The read operation timed out",
+    "CNEP/ALIMENTOS: The read operation timed out",
+    "CEIS/SERVICOS: The read operation timed out",
+    "CNEP/SERVICOS: The read operation timed out",
+    "CEIS/ENERGETICA: The read operation timed out"
   ]
 }

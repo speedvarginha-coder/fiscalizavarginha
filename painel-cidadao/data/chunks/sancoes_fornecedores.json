@@ -1,7 +1,7 @@
 {
   "fonte": "Portal da Transparencia (CGU) - CEIS e CNEP",
   "status": "coletado_com_falhas",
-  "gerado_em": "2026-08-01T10:51:49+00:00",
+  "gerado_em": "2026-08-02T10:47:41+00:00",
   "metodo": "Consulta por nome na API api-de-dados; confirmacao local por raiz de CNPJ ou nome normalizado identico. Cobertura limitada a fornecedores com nome consultavel — nao e prova de ausencia de sancao.",
   "verificados": 1102,
   "sancoes": [
@@ -137,6 +137,23 @@
       "fundamentacao": "LEI 10520 - ART. 7º - QUEM, CONVOCADO DENTRO DO PRAZO DE VALIDADE DA SUA PROPOSTA, NÃO CELEBRAR O CONTRATO, DEIXAR DE ENTREGAR OU APRESENTAR DOCUMENTAÇÃO FALSA EXIGIDA PARA O CERTAME, ENSEJAR O RETARD",
       "fornecedor_local": "SMART GO CAR LTDA",
       "cnpj_raiz": "32439205",
+      "origens": [
+        "contrato_prefeitura"
+      ],
+      "sancao_vigente": true
+    },
+    {
+      "base": "CEIS",
+      "sancionado": "HABILIDADE ESPORTE SERVICOS LTDA",
+      "cnpj": "26.961.485/0001-73",
+      "tipo": "Impedimento/proibição de contratar com prazo determinado",
+      "data_inicio": "08/04/2026",
+      "data_fim": "07/04/2028",
+      "orgao_sancionador": "Prefeitura Municipal de Jundiaí - SP",
+      "uf_orgao": "SP",
+      "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
+      "fornecedor_local": "HABILIDADE ESPORTE SERVICOS LTDA",
+      "cnpj_raiz": "26961485",
       "origens": [
         "contrato_prefeitura"
       ],
@@ -1375,23 +1392,6 @@
       "fundamentacao": "LEI 14133 - ART. 156, III - IMPEDIMENTO DE LICITAR E CONTRATAR",
       "fornecedor_local": "GC LAB DIAGNOSTICO LTDA EPP",
       "cnpj_raiz": "20352354",
-      "origens": [
-        "contrato_prefeitura"
-      ],
-      "sancao_vigente": true
-    },
-    {
-      "base": "CEIS",
-      "sancionado": "COSTA & SILVA COMERCIO DE MOVEIS E UTILIDADES LTDA",
-      "cnpj": "50.387.433/0001-10",
-      "tipo": "Impedimento/proibição de contratar com prazo determinado",
-      "data_inicio": "29/04/2025",
-      "data_fim": "29/04/2027",
-      "orgao_sancionador": "Prefeitura Municipal de Itápolis (SP)",
-      "uf_orgao": "SP",
-      "fundamentacao": "LEI 8666 - ART. 87, II E III - ART. 87.  PELA INEXECUÇÃO TOTAL OU PARCIAL DO CONTRATO A ADMINISTRAÇÃO PODERÁ, GARANTIDA A PRÉVIA DEFESA, APLICAR AO CONTRATADO AS SEGUINTES SANÇÕES:II - MULTA, NA FORMA",
-      "fornecedor_local": "COSTA & SILVA COM. DE MOVEIS E UTILIDA. LTDA",
-      "cnpj_raiz": "50387433",
       "origens": [
         "contrato_prefeitura"
       ],
