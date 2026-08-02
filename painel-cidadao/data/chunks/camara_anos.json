@@ -8,11 +8,11 @@
       "emendas_valor_total_brl": 17841369.18,
       "impacto_zero_qtd": 328,
       "desfechos": {
-        "lei": 15,
-        "arquivado": 864,
-        "tramitando": 662,
+        "lei": 25,
+        "arquivado": 882,
+        "tramitando": 666,
         "encerrado": 11,
-        "sem_dado": 32
+        "sem_dado": 0
       },
       "tipos": [
         {
@@ -189,7 +189,7 @@
         "requerimentos": 12,
         "projetos_lei": 14,
         "emendas": 27,
-        "leis_aprovadas": 1,
+        "leis_aprovadas": 2,
         "mocoes": 2,
         "pdl": 3,
         "impacto_zero": 36,
@@ -208,7 +208,7 @@
         "requerimentos": 61,
         "projetos_lei": 5,
         "emendas": 37,
-        "leis_aprovadas": 0,
+        "leis_aprovadas": 3,
         "mocoes": 2,
         "pdl": 1,
         "impacto_zero": 20,
@@ -227,7 +227,7 @@
         "requerimentos": 7,
         "projetos_lei": 7,
         "emendas": 30,
-        "leis_aprovadas": 0,
+        "leis_aprovadas": 1,
         "mocoes": 3,
         "pdl": 7,
         "impacto_zero": 30,
@@ -360,7 +360,7 @@
         "requerimentos": 16,
         "projetos_lei": 12,
         "emendas": 12,
-        "leis_aprovadas": 1,
+        "leis_aprovadas": 2,
         "mocoes": 2,
         "pdl": 1,
         "impacto_zero": 17,
@@ -24300,7 +24300,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "medio"
@@ -24317,7 +24317,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "medio"
@@ -24334,7 +24334,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "meio_ambiente",
         "tema_label": "Meio ambiente",
         "grau": "medio"
@@ -24351,7 +24351,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -24368,7 +24368,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "cultura",
         "tema_label": "Cultura/Esporte/Lazer",
         "grau": "baixo"
@@ -24385,7 +24385,7 @@
         "data": "2025-12-17",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -24402,7 +24402,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "medio"
@@ -24419,7 +24419,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "medio"
@@ -24436,7 +24436,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "medio"
@@ -24453,7 +24453,7 @@
         "data": "2025-12-17",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "baixo"
@@ -24470,7 +24470,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "medio"
@@ -24487,7 +24487,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "cultura",
         "tema_label": "Cultura/Esporte/Lazer",
         "grau": "baixo"
@@ -24504,7 +24504,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "transito",
         "tema_label": "Trânsito/Mobilidade",
         "grau": "medio"
@@ -24521,7 +24521,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -24538,7 +24538,7 @@
         "data": "2025-12-17",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -24555,7 +24555,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "medio"
@@ -24572,7 +24572,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "medio"
@@ -24589,7 +24589,7 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "medio"
@@ -24980,7 +24980,7 @@
         "data": "2025-03-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -24997,7 +24997,7 @@
         "data": "2025-03-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -25014,7 +25014,7 @@
         "data": "2025-03-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -25082,7 +25082,7 @@
         "data": "2025-05-05",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -25099,7 +25099,7 @@
         "data": "2025-05-12",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -25116,7 +25116,7 @@
         "data": "2025-07-07",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -25150,7 +25150,7 @@
         "data": "2025-08-20",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -25167,7 +25167,7 @@
         "data": "2025-09-03",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "baixo"
@@ -25184,7 +25184,7 @@
         "data": "2025-10-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -25201,7 +25201,7 @@
         "data": "2025-11-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -31202,7 +31202,7 @@
         "data": "2025-12-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -31253,7 +31253,7 @@
         "data": "2025-12-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -31270,7 +31270,7 @@
         "data": "2025-12-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "baixo"
@@ -31321,14 +31321,14 @@
         "data": "2025-04-16",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-08-02T06:02:48-03:00"
+    "coletado_em": "2026-08-02T18:27:36-03:00"
   },
   "2026": {
     "resumo": {
@@ -31339,11 +31339,11 @@
       "emendas_valor_total_brl": 0.0,
       "impacto_zero_qtd": 210,
       "desfechos": {
-        "lei": 0,
-        "arquivado": 0,
+        "lei": 18,
+        "arquivado": 98,
         "tramitando": 220,
         "encerrado": 0,
-        "sem_dado": 545
+        "sem_dado": 429
       },
       "tipos": [
         {
@@ -31740,7 +31740,7 @@
         "requerimentos": 3,
         "projetos_lei": 2,
         "emendas": 0,
-        "leis_aprovadas": 0,
+        "leis_aprovadas": 1,
         "mocoes": 0,
         "pdl": 0,
         "impacto_zero": 4,
@@ -31824,7 +31824,7 @@
         "data": "2026-03-25",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -31841,7 +31841,7 @@
         "data": "2026-03-25",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -31858,7 +31858,7 @@
         "data": "2026-04-13",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -31892,7 +31892,7 @@
         "data": "2026-01-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -31926,7 +31926,7 @@
         "data": "2026-01-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -31943,7 +31943,7 @@
         "data": "2026-01-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "alto"
@@ -31960,7 +31960,7 @@
         "data": "2026-01-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -31977,7 +31977,7 @@
         "data": "2026-01-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -31994,7 +31994,7 @@
         "data": "2026-01-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "alto"
@@ -32011,7 +32011,7 @@
         "data": "2026-01-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "cultura",
         "tema_label": "Cultura/Esporte/Lazer",
         "grau": "medio"
@@ -32028,7 +32028,7 @@
         "data": "2026-01-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "alto"
@@ -32045,7 +32045,7 @@
         "data": "2026-02-02",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32062,7 +32062,7 @@
         "data": "2026-02-03",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32079,7 +32079,7 @@
         "data": "2026-02-23",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -32096,7 +32096,7 @@
         "data": "2026-03-02",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "assistencia",
         "tema_label": "Assistência social",
         "grau": "alto"
@@ -32113,7 +32113,7 @@
         "data": "2026-03-11",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -32130,7 +32130,7 @@
         "data": "2026-03-11",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32147,7 +32147,7 @@
         "data": "2026-03-13",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32164,7 +32164,7 @@
         "data": "2026-03-12",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32181,7 +32181,7 @@
         "data": "2026-03-12",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32198,7 +32198,7 @@
         "data": "2026-03-18",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32215,7 +32215,7 @@
         "data": "2026-03-19",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32232,7 +32232,7 @@
         "data": "2026-03-26",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32249,7 +32249,7 @@
         "data": "2026-04-06",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "assistencia",
         "tema_label": "Assistência social",
         "grau": "alto"
@@ -32266,7 +32266,7 @@
         "data": "2026-04-13",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -32283,7 +32283,7 @@
         "data": "2026-04-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32300,7 +32300,7 @@
         "data": "2026-04-22",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32317,7 +32317,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32334,7 +32334,7 @@
         "data": "2026-04-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "alto"
@@ -32368,7 +32368,7 @@
         "data": "2026-05-04",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32385,7 +32385,7 @@
         "data": "2026-05-05",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32402,7 +32402,7 @@
         "data": "2026-05-11",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -32419,7 +32419,7 @@
         "data": "2026-05-13",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32436,7 +32436,7 @@
         "data": "2026-05-11",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32453,7 +32453,7 @@
         "data": "2026-05-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "tributario",
         "tema_label": "Tributos/Finanças",
         "grau": "medio"
@@ -32470,7 +32470,7 @@
         "data": "2026-06-02",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -32487,7 +32487,7 @@
         "data": "2026-06-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32504,7 +32504,7 @@
         "data": "2026-06-19",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -32521,7 +32521,7 @@
         "data": "2026-06-19",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -32538,7 +32538,7 @@
         "data": "2026-06-22",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32555,7 +32555,7 @@
         "data": "2026-06-30",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32589,7 +32589,7 @@
         "data": "2026-07-07",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32606,7 +32606,7 @@
         "data": "2026-07-13",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32640,7 +32640,7 @@
         "data": "2026-02-04",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32674,7 +32674,7 @@
         "data": "2026-02-09",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32708,7 +32708,7 @@
         "data": "2026-02-11",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32725,7 +32725,7 @@
         "data": "2026-02-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -32742,7 +32742,7 @@
         "data": "2026-02-25",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32776,7 +32776,7 @@
         "data": "2026-02-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -32793,7 +32793,7 @@
         "data": "2026-02-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -32810,7 +32810,7 @@
         "data": "2026-02-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -32827,7 +32827,7 @@
         "data": "2026-02-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -32844,7 +32844,7 @@
         "data": "2026-03-04",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32861,7 +32861,7 @@
         "data": "2026-03-04",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32895,7 +32895,7 @@
         "data": "2026-03-04",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -32912,7 +32912,7 @@
         "data": "2026-03-04",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "alto"
@@ -32929,7 +32929,7 @@
         "data": "2026-03-04",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -32963,7 +32963,7 @@
         "data": "2026-03-18",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "alto"
@@ -32997,7 +32997,7 @@
         "data": "2026-03-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33014,7 +33014,7 @@
         "data": "2026-03-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -33031,7 +33031,7 @@
         "data": "2026-03-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33048,7 +33048,7 @@
         "data": "2026-03-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33065,7 +33065,7 @@
         "data": "2026-04-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33099,7 +33099,7 @@
         "data": "2026-04-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33116,7 +33116,7 @@
         "data": "2026-04-08",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "cultura",
         "tema_label": "Cultura/Esporte/Lazer",
         "grau": "medio"
@@ -33133,7 +33133,7 @@
         "data": "2026-04-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33150,7 +33150,7 @@
         "data": "2026-04-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33167,7 +33167,7 @@
         "data": "2026-04-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33184,7 +33184,7 @@
         "data": "2026-04-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33201,7 +33201,7 @@
         "data": "2026-04-22",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33218,7 +33218,7 @@
         "data": "2026-04-22",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33235,7 +33235,7 @@
         "data": "2026-04-22",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33252,7 +33252,7 @@
         "data": "2026-04-29",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -33269,7 +33269,7 @@
         "data": "2026-04-29",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33286,7 +33286,7 @@
         "data": "2026-04-29",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33303,7 +33303,7 @@
         "data": "2026-04-29",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33320,7 +33320,7 @@
         "data": "2026-04-29",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33337,7 +33337,7 @@
         "data": "2026-04-29",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33354,7 +33354,7 @@
         "data": "2026-05-06",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33371,7 +33371,7 @@
         "data": "2026-05-06",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33388,7 +33388,7 @@
         "data": "2026-05-13",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33405,7 +33405,7 @@
         "data": "2026-05-13",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33422,7 +33422,7 @@
         "data": "2026-05-20",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -33439,7 +33439,7 @@
         "data": "2026-05-20",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "alto"
@@ -33456,7 +33456,7 @@
         "data": "2026-05-20",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33473,7 +33473,7 @@
         "data": "2026-05-27",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -33490,7 +33490,7 @@
         "data": "2026-06-03",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33507,7 +33507,7 @@
         "data": "2026-06-03",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33524,7 +33524,7 @@
         "data": "2026-06-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33558,7 +33558,7 @@
         "data": "2026-06-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "alto"
@@ -33575,7 +33575,7 @@
         "data": "2026-06-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33609,7 +33609,7 @@
         "data": "2026-07-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -33643,7 +33643,7 @@
         "data": "2026-07-08",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "alto"
@@ -33677,7 +33677,7 @@
         "data": "2026-07-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33796,7 +33796,7 @@
         "data": "2026-02-04",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33813,7 +33813,7 @@
         "data": "2026-02-11",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -33830,7 +33830,7 @@
         "data": "2026-02-11",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33847,7 +33847,7 @@
         "data": "2026-02-11",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -33864,7 +33864,7 @@
         "data": "2026-02-11",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "baixo"
@@ -33881,7 +33881,7 @@
         "data": "2026-02-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33898,7 +33898,7 @@
         "data": "2026-02-25",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "cultura",
         "tema_label": "Cultura/Esporte/Lazer",
         "grau": "baixo"
@@ -33915,7 +33915,7 @@
         "data": "2026-03-04",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33932,7 +33932,7 @@
         "data": "2026-03-11",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33949,7 +33949,7 @@
         "data": "2026-03-11",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -33966,7 +33966,7 @@
         "data": "2026-03-11",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -33983,7 +33983,7 @@
         "data": "2026-03-18",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -34068,7 +34068,7 @@
         "data": "2026-03-25",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -34085,7 +34085,7 @@
         "data": "2026-04-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "baixo"
@@ -34102,7 +34102,7 @@
         "data": "2026-04-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -34119,7 +34119,7 @@
         "data": "2026-04-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -34136,7 +34136,7 @@
         "data": "2026-04-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -34153,7 +34153,7 @@
         "data": "2026-04-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -34170,7 +34170,7 @@
         "data": "2026-04-13",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -34187,7 +34187,7 @@
         "data": "2026-04-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "baixo"
@@ -34204,7 +34204,7 @@
         "data": "2026-04-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "baixo"
@@ -34221,7 +34221,7 @@
         "data": "2026-04-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "homenagem a terceiro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "baixo"
@@ -47346,6 +47346,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5125"
       }
     ],
-    "coletado_em": "2026-08-02T06:02:48-03:00"
+    "coletado_em": "2026-08-02T18:27:36-03:00"
   }
 }
