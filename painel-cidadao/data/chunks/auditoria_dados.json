@@ -1,23 +1,23 @@
 {
-  "gerado_em": "2026-08-02T21:40:43.737Z",
+  "gerado_em": "2026-08-03T11:24:15.919Z",
   "level": "critical",
   "summary": {
     "errors": 1,
-    "warnings": 7,
+    "warnings": 6,
     "info": 1,
     "ok": 1,
-    "total": 10
+    "total": 9
   },
   "atualizado_base": {
-    "iso": "2026-08-02T18:33:55",
-    "data_humana": "02/08/2026 - 18:33"
+    "iso": "2026-08-03T06:18:09",
+    "data_humana": "03/08/2026 - 06:18"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.1 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -128,7 +128,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "45 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (96 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "30 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (65 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -136,20 +136,12 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "96 sancao(oes) de outros entes"
+          "65 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
         ]
       }
-    },
-    {
-      "severity": "warning",
-      "id": "homologacao-simbolica",
-      "title": "Licitacao homologada por valor simbolico",
-      "detail": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: Contratação de empresa para a realização da tradicional FEIR → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
-      "action": "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
-      "source": "licitacoes_resultados.json"
     }
   ],
   "issues": [
@@ -157,7 +149,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.1 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -268,7 +260,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "45 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (96 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "30 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (65 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -276,20 +268,12 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "96 sancao(oes) de outros entes"
+          "65 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
         ]
       }
-    },
-    {
-      "severity": "warning",
-      "id": "homologacao-simbolica",
-      "title": "Licitacao homologada por valor simbolico",
-      "detail": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: Contratação de empresa para a realização da tradicional FEIR → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
-      "action": "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
-      "source": "licitacoes_resultados.json"
     }
   ]
 }

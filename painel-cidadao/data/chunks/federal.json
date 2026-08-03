@@ -1,10 +1,10 @@
 {
   "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
-  "atualizado_em": "2026-08-02T18:31:14.316607",
+  "atualizado_em": "2026-08-03T06:14:23.103886",
   "resumo": {
     "municipio": "Varginha-MG",
     "codigoIbge": "3170701",
-    "atualizadoEm": "02/08/2026 18:31",
+    "atualizadoEm": "03/08/2026 06:14",
     "emendas": {
       "qtd": 0,
       "totalEmpenhado": 0,
@@ -3334,8 +3334,8 @@
   "sancoes_fornecedores": [],
   "status_fontes": {
     "emendas": {
-      "status": "erro",
-      "motivo": "HTTP 400: "
+      "status": "partial",
+      "motivo": "filtro local rejeitou todos os registros sem destino Varginha/MG confirmado (partial)"
     },
     "convenios": {
       "status": "ok",

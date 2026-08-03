@@ -1,70 +1,15 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-08-02T12:41:50+00:00",
+  "gerado_em": "2026-08-03T11:24:10+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251205",
-    "fim": "20260802"
+    "inicio": "20251206",
+    "fim": "20260803"
   },
-  "compras": 304,
-  "compras_com_resultado": 142,
-  "homologacoes_simbolicas": [
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "PE 64",
-      "ano": 2026,
-      "objeto": "Contratação de empresa para a realização da tradicional FEIRA DA PAZ, nos dias 31/07, 01 E 02/08/2026",
-      "vencedor": "CLX PRODUCOES LTDA",
-      "cnpj_vencedor": "24406880000169",
-      "valor_homologado": 0.01,
-      "valor_estimado": 477909.29,
-      "controle_pncp": "18240119000105-1-000140/2026"
-    }
-  ],
+  "compras": 300,
+  "compras_com_resultado": 140,
+  "homologacoes_simbolicas": [],
   "registros": [
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "PE 124",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000454/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "Aquisição de Tela Mosqueteira em Fibra de Vidro Revestida em PVC - Sob medida em esquadrias prediais, com molduras,incluindo confecção, fornecimento e instalação, para atendimento das necessidades da Unidade de Pronto At",
-      "valor_estimado": 33165.22,
-      "valor_homologado_total": 31140.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-05",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "AQUISIÇÃO DE TELA MOSQUETEIRA EM FIBRA DE VIDRO REVESTIDA EM PVC\nSOB MEDIDA EM ESQUADRIAS PREDIAIS COM MOLDURAS INCLUINDO CONFECÇÃO FORNECIMENTO E INSTALAÇÃO PA",
-          "vencedor": "MELUZ SERVICE",
-          "cnpj_vencedor": "46816640000175",
-          "valor_homologado": 31140.0,
-          "data_resultado": "2025-12-04"
-        },
-        {
-          "item": 1,
-          "descricao_item": "AQUISIÇÃO DE TELA MOSQUETEIRA EM FIBRA DE VIDRO REVESTIDA EM PVC\nSOB MEDIDA EM ESQUADRIAS PREDIAIS COM MOLDURAS INCLUINDO CONFECÇÃO FORNECIMENTO E INSTALAÇÃO PA",
-          "vencedor": "RC MATERIAIS E SERVICOS LTDA",
-          "cnpj_vencedor": "37623309000148",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-04"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "147",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000456/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de Equipamentos e Mobiliários para os Centros de Atenção Psicossocial de acordo com a Resolução SES/MG n° 8.438 de 9 de novembro de 2022",
-      "valor_estimado": 73213.93,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-05",
-      "resultados": []
-    },
     {
       "orgao": "Prefeitura Municipal de Varginha",
       "numero_compra": "141",
@@ -4466,19 +4411,6 @@
           "data_resultado": "2026-05-11"
         }
       ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "170",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000457/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Cateter hidrofílico VaPro (cateter intermitente sem toque)",
-      "valor_estimado": 37203.6,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-05",
-      "resultados": []
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -9193,28 +9125,6 @@
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "IL 37",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000453/2025",
-      "modalidade": "Inexigibilidade",
-      "objeto": "Aquisição de atualização do Software Cypecad, conforme especificações constantes neste Termo de Referência.",
-      "valor_estimado": 11990.0,
-      "valor_homologado_total": 11990.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-05",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "AQUISICAO DE SOFTWARES DE APLICACAO",
-          "vencedor": "INTERCONTROLE SERVICOS ADMINISTRATIVOS EMPRESARIAIS LTDA",
-          "cnpj_vencedor": "14630251000164",
-          "valor_homologado": 11990.0,
-          "data_resultado": "2025-12-03"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
       "numero_compra": "IL 39",
       "ano": 2025,
       "controle_pncp": "18240119000105-1-000458/2025",
@@ -11510,7 +11420,7 @@
     }
   ],
   "erros": [
-    "contratacoes 18240119000105 mod 8 pg 2: The read operation timed out"
+    "contratacoes 18240119000105 mod 6 pg 1: The read operation timed out"
   ],
   "status": "partial",
   "qualidade_coleta": {
