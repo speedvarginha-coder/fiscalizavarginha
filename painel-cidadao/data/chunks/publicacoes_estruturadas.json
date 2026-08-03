@@ -1,8 +1,63 @@
 {
- "gerado_em": "2026-08-03T09:18:18+00:00",
+ "gerado_em": "2026-08-03T21:33:54+00:00",
  "fonte": "camara",
- "total": 765,
+ "total": 766,
  "publicacoes": [
+  {
+   "id": "CAMARA-2026-PLOE-45",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Executivo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Executivo nº 45/2026",
+   "numero": "45/2026",
+   "data": "2026-08-03",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "orçamento",
+   "resumo": "Este é um Projeto de Lei que propõe conceder uma subvenção social, ou seja, um auxílio financeiro, a uma entidade específica.",
+   "o_que_propoe": "Se aprovado, o projeto permitirá que a Prefeitura de Varginha repasse dinheiro público a uma organização para ajudar em suas atividades.",
+   "impacto_cidadao": "Se aprovado, o projeto poderá direcionar recursos públicos para uma entidade, impactando a forma como o dinheiro da cidade é utilizado.",
+   "por_que_acompanhar": [
+    "Para entender como os recursos públicos da cidade são distribuídos.",
+    "Para verificar a finalidade e a transparência do uso do dinheiro pela entidade beneficiada.",
+    "Para acompanhar a fiscalização do uso da subvenção social."
+   ],
+   "pontos_atencao": [
+    "O projeto envolve o uso de dinheiro público para uma entidade, o que requer atenção à justificativa e aos critérios de escolha.",
+    "É importante verificar qual entidade será beneficiada e quais serviços ela presta à comunidade.",
+    "Acompanhar o valor exato da subvenção e como ele será fiscalizado."
+   ],
+   "valores": {
+    "total": 95985.8,
+    "encontrados": [
+     95985.8,
+     7998.81
+    ],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "documento original no SAPL",
+    "confianca": "media",
+    "metodo": "rótulo de valor total localizado no documento oficial",
+    "documento_consultado": "documento original no SAPL",
+    "pagina": 1,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6118/projetodelei45-2026.pdf#page=1",
+    "valor_principal_ia": ""
+   },
+   "autor": "Leonardo Vinhas Ciacci",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE SUBVENÇÃO SOCIAL À ENTIDADE QUE ESPECIFICA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6118",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6118/projetodelei45-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6118/projetodelei45-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "9bb3052a6129bf03a0cd6e5024e995d1b47c9710",
+   "gerado_em": "2026-08-03T21:33:48+00:00"
+  },
   {
    "id": "CAMARA-2026-PLOE-44",
    "fonte": "camara",
@@ -15,16 +70,17 @@
    "categoria": "Legislativo",
    "interesse_publico": "baixo",
    "tema": "educação",
-   "resumo": "Este projeto de lei propõe uma mudança na redação do artigo que nomeia a Escola Municipal Francisca Geraldina de Paula.",
-   "o_que_propoe": "O projeto altera a redação do Artigo 1º da Lei Municipal nº 7.513/2025, que trata da denominação da Escola Municipal Francisca Geraldina de Paula.",
-   "impacto_cidadao": "",
+   "resumo": "Este projeto de lei propõe mudar a redação de um artigo de uma lei municipal que nomeia a Escola Municipal Francisca Geraldina de Paula.",
+   "o_que_propoe": "O projeto altera o Artigo 1º da Lei Municipal nº 7.513/2025, que trata da denominação da Escola Municipal Francisca Geraldina de Paula. A ementa não especifica a natureza da alteração.",
+   "impacto_cidadao": "Se aprovado, o projeto alteraria o texto legal referente ao nome de uma escola pública, com impacto prático direto provavelmente limitado para o cidadão.",
    "por_que_acompanhar": [
-    "Garantir a transparência nos processos de nomeação e alteração de nomes de bens públicos.",
-    "Compreender as razões por trás da alteração da redação de uma lei já existente.",
-    "Verificar se a mudança tem alguma implicação para a comunidade escolar ou para a memória da homenageada."
+    "Para entender como as leis municipais são atualizadas e modificadas.",
+    "Para garantir a transparência nos processos legislativos que envolvem bens públicos.",
+    "Para verificar se a alteração proposta tem alguma implicação não evidente na ementa."
    ],
    "pontos_atencao": [
-    "A proposta não especifica a natureza da alteração na redação do artigo, o que pode dificultar a compreensão do impacto da mudança."
+    "A ementa não detalha qual é a alteração específica na redação do Art. 1º.",
+    "É importante consultar o texto completo do projeto para entender a mudança proposta."
    ],
    "valores": {
     "total": null,
@@ -40,7 +96,7 @@
    },
    "autor": "Leonardo Vinhas Ciacci",
    "situacao": "em tramitação",
-   "ementa": "ALTERA REDAÇÃO DO ART. 1' DA LEI MUNICIPAL N° 7.513/2025 QUE DISPÕE SOBRE DENOMINAÇÃO DE PRÓPRIO PÚBLICO. ESCOLA MUNICIPAL FRANCISCA GERALDINA DE PAULA.",
+   "ementa": "ALTERA REDAÇÃO DO ART. 1' DA LEI MUNICIPAL N° 7.513/2025 QUE DISPÕE SOBRE DENOMINAÇÃO DE PRÓPRIO PÚBLICO - ESCOLA MUNICIPAL FRANCISCA GERALDINA DE PAULA.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6117",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6117/projetodelei44-2026.pdf"
@@ -50,8 +106,8 @@
     "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6117/projetodelei44-2026.pdf#page=1"
    },
    "origem_ia": "ia",
-   "fonte_hash": "ff5ce37575e7abf18d09191fe0ce9389c97adb92",
-   "gerado_em": "2026-07-28T22:39:46+00:00"
+   "fonte_hash": "281414520bde0273f87b905d67151e6f665220fe",
+   "gerado_em": "2026-08-03T21:33:54+00:00"
   },
   {
    "id": "CAMARA-2026-REQ-184",
@@ -38696,7 +38752,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5346/projetodelei10-2025-..pdf",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5346/projetodelei10-2025-a.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Leonardo Vinhas Ciacci",
@@ -38704,11 +38760,11 @@
    "ementa": "APROVA O PLANO MUNICIPAL DA PRIMEIRA INFÂNCIA - PMPI DO MUNICÍPIO DE VARGINHA.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/5346",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5346/projetodelei10-2025-..pdf"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5346/projetodelei10-2025-a.pdf"
    },
    "localizacao": {
     "pagina_inicial": 1,
-    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5346/projetodelei10-2025-..pdf#page=1"
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5346/projetodelei10-2025-a.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "f9523ddad78941465b839de3799d3510515dfe1c",
