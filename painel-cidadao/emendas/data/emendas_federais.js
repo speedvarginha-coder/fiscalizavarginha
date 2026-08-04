@@ -2,7 +2,7 @@ window.EMENDAS_FEDERAIS = {
   "metadata": {
     "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
     "favorecido": "Favorecidos em Varginha-MG",
-    "extraidoEm": "2026-08-03",
+    "extraidoEm": "2026-08-04",
     "codigoIbge": "3170701",
     "totalFederal": 22595441.99,
     "totalFederalTexto": "22.595.441,99",
@@ -224,7 +224,12 @@ window.EMENDAS_FEDERAIS = {
         "2026"
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627540001",
-      "id": "fed_202627540001_2"
+      "id": "fed_202627540001_2",
+      "qtdDocumentos": 73,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 08/05/2026 · liquidação 11/05/2026 · pagamento 12/05/2026"
     },
     {
       "tipo": "Federal",
@@ -728,6 +733,11 @@ window.EMENDAS_FEDERAIS = {
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202527540001",
       "id": "fed_202527540001_16",
+      "qtdDocumentos": 127,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 02/09/2025 · liquidação 08/09/2025 · pagamento 09/09/2025",
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -1409,6 +1419,11 @@ window.EMENDAS_FEDERAIS = {
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202414110024",
       "id": "fed_202414110024_31",
+      "qtdDocumentos": 107,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -1457,6 +1472,11 @@ window.EMENDAS_FEDERAIS = {
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202444540004",
       "id": "fed_202444540004_32",
+      "qtdDocumentos": 95,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -1505,6 +1525,11 @@ window.EMENDAS_FEDERAIS = {
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202427640015",
       "id": "fed_202427640015_33",
+      "qtdDocumentos": 50,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -1693,6 +1718,11 @@ window.EMENDAS_FEDERAIS = {
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202437130005",
       "id": "fed_202437130005_38",
+      "qtdDocumentos": 92,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 26/06/2024 · liquidação 28/06/2024 · pagamento 03/07/2024",
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -1986,6 +2016,11 @@ window.EMENDAS_FEDERAIS = {
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202214080012",
       "id": "fed_202214080012_46",
+      "qtdDocumentos": 65,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 17/05/2022 · liquidação 28/06/2022 · pagamento 01/07/2022",
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -2734,6 +2769,11 @@ window.EMENDAS_FEDERAIS = {
       ],
       "fonteUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202027550010",
       "id": "fed_202027550010_67",
+      "qtdDocumentos": 144,
+      "valorEmpenhado": 0.0,
+      "valorLiquidado": 0.0,
+      "valorPago": 0.0,
+      "execucao": "empenho 18/05/2020 · liquidação 25/06/2020 · pagamento 26/06/2020",
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-03T21:39:09.781Z",
-  "atualizado_em": "2026-08-03T18:33:33",
+  "gerado_em": "2026-08-04T09:39:34.428Z",
+  "atualizado_em": "2026-08-04T06:12:15",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,11 +11,11 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 207877421.25,
+    "total_pago_fornecedores_externos": 209637994.62,
     "credores_mapeados": 10000,
-    "contratos_total": 1233,
-    "contratos_do_ano": 366,
-    "contratos_em_execucao": 1178,
+    "contratos_total": 1340,
+    "contratos_do_ano": 365,
+    "contratos_em_execucao": 1285,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -63,7 +63,7 @@
   "camara": {
     "ano": 2026,
     "cadeiras": 15,
-    "total_pago_fornecedores_externos": 6831458.23,
+    "total_pago_fornecedores_externos": 6905226.61,
     "contratos_total": 43,
     "top_fornecedores": [
       {
@@ -84,7 +84,7 @@
       },
       {
         "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-        "valor": 333881.91
+        "valor": 385467.77
       },
       {
         "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
@@ -120,9 +120,9 @@
   },
   "diarias": {
     "prefeitura": {
-      "registros": 5653,
-      "valor_total": 2258141.44,
-      "quantidade_total": 5653,
+      "registros": 5656,
+      "valor_total": 2260264.57,
+      "quantidade_total": 5656,
       "servidores": 297
     },
     "camara": {

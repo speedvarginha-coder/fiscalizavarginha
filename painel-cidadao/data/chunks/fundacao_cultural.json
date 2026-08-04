@@ -263,8 +263,8 @@
     "resumo_atual": {
       "registros": 232,
       "empenhado": 3640862.39,
-      "liquidado": 3048694.39,
-      "pago": 3006239.88
+      "liquidado": 3083013.72,
+      "pago": 3007459.42
     },
     "maiores_empenhos_atual": [
       {
@@ -483,9 +483,9 @@
         "credor": "BARRY EVENTOS LTDA",
         "historico": "Contratação de empresa especializada em locação de Tendas e Estrutura Box Truss visando atender às demandas da Fundação Cultural de Varginha. Evento: Feira Literária da APESUL, com apoio da Fundação Cultural. Data: 23, 24 e 25 de julho de 2026. Montagem: 22/07/26. Desmontagem: 25/07/26 após 21h.",
         "valor_empenhado": 28320.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 28320.0
+        "valor_liquidado": 28320.0,
+        "valor_pago": 1186.61,
+        "saldo_a_pagar": 27133.39
       },
       {
         "data": "2026-06-12",

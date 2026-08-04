@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-03T21:39:00.897Z",
+  "gerado_em": "2026-08-04T09:39:26.230Z",
   "fonte": {
     "principal": "camara_anos.json",
     "origem": "SAPL Camara Municipal de Varginha",
@@ -2285,62 +2285,62 @@
         ],
         "efetividade": [
           {
-            "nome": "Rogério Bueno",
+            "nome": "Davi Martins",
             "posicao": 1,
             "valor": 1
           },
           {
-            "nome": "Zilda Silva",
+            "nome": "Rogério Bueno",
             "posicao": 2,
-            "valor": 0
+            "valor": 1
           },
           {
-            "nome": "Cássio Chiodi",
+            "nome": "Zilda Silva",
             "posicao": 3,
             "valor": 0
           },
           {
-            "nome": "Dandan",
+            "nome": "Cássio Chiodi",
             "posicao": 4,
             "valor": 0
           },
           {
-            "nome": "Bruno Leandro Coletor",
+            "nome": "Dandan",
             "posicao": 5,
             "valor": 0
           },
           {
-            "nome": "Joãozinho Enfermeiro",
+            "nome": "Bruno Leandro Coletor",
             "posicao": 6,
             "valor": 0
           },
           {
-            "nome": "Dudu Ottoni",
+            "nome": "Joãozinho Enfermeiro",
             "posicao": 7,
             "valor": 0
           },
           {
-            "nome": "Miguel da Saúde",
+            "nome": "Dudu Ottoni",
             "posicao": 8,
             "valor": 0
           },
           {
-            "nome": "Thulyo Paiva",
+            "nome": "Miguel da Saúde",
             "posicao": 9,
             "valor": 0
           },
           {
-            "nome": "Ana Rios Fontoura",
+            "nome": "Thulyo Paiva",
             "posicao": 10,
             "valor": 0
           },
           {
-            "nome": "Alexandre Prado",
+            "nome": "Ana Rios Fontoura",
             "posicao": 11,
             "valor": 0
           },
           {
-            "nome": "Davi Martins",
+            "nome": "Alexandre Prado",
             "posicao": 12,
             "valor": 0
           },
@@ -3000,8 +3000,8 @@
         {
           "nome": "Davi Martins",
           "indice": 54.8,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
+          "efetividade": 100,
+          "leis_aprovadas": 1,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
@@ -3018,7 +3018,7 @@
             "legislar": 9,
             "fiscalizar": 10.5,
             "representar": 15,
-            "efetividade": 0,
+            "efetividade": 1,
             "presenca": 100
           },
           "evidencias": {
@@ -3026,7 +3026,7 @@
             "alteracao_relevante": 0,
             "proposicao_simbolica": 12,
             "emenda_relevante": 0,
-            "leis_aprovadas": 0,
+            "leis_aprovadas": 1,
             "relatoria_processante": 0,
             "requerimento_info": 7,
             "audiencia_contas": 0,
@@ -3055,7 +3055,7 @@
           "explicacao": [
             "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
           ],
           "posicao": 11
         },

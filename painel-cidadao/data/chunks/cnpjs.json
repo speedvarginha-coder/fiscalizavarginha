@@ -1720,6 +1720,24 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
+      "cnpj_raiz": "26001891",
+      "cnpj_completo": "26001891000194",
+      "cnpj_reconstruido": true,
+      "valor_total": 3573049.8,
+      "razao_social": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1989-08-24",
+      "cnae": "Laboratórios de anatomia patológica e citológica",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ANTONIO JANINI NETO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
       "cnpj_raiz": "37943080",
       "cnpj_completo": "37943080000129",
@@ -1761,29 +1779,11 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
-      "nome": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
-      "cnpj_raiz": "26001891",
-      "cnpj_completo": "26001891000194",
-      "cnpj_reconstruido": true,
-      "valor_total": 3006296.46,
-      "razao_social": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "1989-08-24",
-      "cnae": "Laboratórios de anatomia patológica e citológica",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "ANTONIO JANINI NETO"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
       "nome": "SERVICOS CFC LTDA",
       "cnpj_raiz": "05165851",
       "cnpj_completo": "05165851000108",
       "cnpj_reconstruido": true,
-      "valor_total": 3004813.21,
+      "valor_total": 3072770.02,
       "razao_social": "SERVICOS CFC LTDA",
       "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
       "situacao": "ATIVA",
@@ -1801,7 +1801,7 @@
       "cnpj_raiz": "17155730",
       "cnpj_completo": "17155730000164",
       "cnpj_reconstruido": true,
-      "valor_total": 2761333.38,
+      "valor_total": 2858005.05,
       "razao_social": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1937,7 +1937,7 @@
       "cnpj_raiz": "23593720",
       "cnpj_completo": "23593720000103",
       "cnpj_reconstruido": true,
-      "valor_total": 1672167.62,
+      "valor_total": 1762357.68,
       "razao_social": "EXXCELENCIA SERVICOS TERCEIRIZADOS LTDA",
       "nome_fantasia": "EXXCELENCIA SERVICOS",
       "situacao": "ATIVA",
@@ -2008,6 +2008,24 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "cnpj_raiz": "27445021",
+      "cnpj_completo": "27445021000177",
+      "cnpj_reconstruido": true,
+      "valor_total": 1466898.37,
+      "razao_social": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "nome_fantasia": "COLMEIA MULTISSERVICOS",
+      "situacao": "ATIVA",
+      "abertura": "2017-04-03",
+      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "THALES MAIA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "BETHA SISTEMAS LTDA",
       "cnpj_raiz": "00456865",
       "cnpj_completo": "00456865000167",
@@ -2034,7 +2052,7 @@
       "cnpj_raiz": "00874929",
       "cnpj_completo": "00874929000140",
       "cnpj_reconstruido": true,
-      "valor_total": 1413823.56,
+      "valor_total": 1414707.44,
       "razao_social": "MED CENTER COMERCIAL LTDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -2045,24 +2063,6 @@
       "socios": [
         "GABRIELLE DANIEL NERY",
         "MARCIA PEREIRA DANIEL NERY"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "cnpj_raiz": "27445021",
-      "cnpj_completo": "27445021000177",
-      "cnpj_reconstruido": true,
-      "valor_total": 1341602.84,
-      "razao_social": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "nome_fantasia": "COLMEIA MULTISSERVICOS",
-      "situacao": "ATIVA",
-      "abertura": "2017-04-03",
-      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "THALES MAIA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },

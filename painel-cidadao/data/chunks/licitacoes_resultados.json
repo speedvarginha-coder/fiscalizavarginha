@@ -11422,10 +11422,16 @@
   "erros": [
     "contratacoes 18240119000105 mod 6 pg 1: The read operation timed out"
   ],
-  "status": "partial",
+  "status": "preserved",
   "qualidade_coleta": {
     "tentativas_por_requisicao": 3,
     "falhas": 1,
     "base_anterior_preservada": true
-  }
+  },
+  "ultima_tentativa_em": "2026-08-04T09:39:25+00:00",
+  "motivo_preservacao": "PNCP retornou apenas 71 de 300 compras anteriores apos repeticoes; a ultima base valida foi mantida para evitar perda de dados.",
+  "erros_ultima_tentativa": [
+    "contratacoes 18240119000105 mod 6 pg 1: The read operation timed out",
+    "contratacoes 18240119000105 mod 8 pg 1: The read operation timed out"
+  ]
 }
