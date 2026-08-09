@@ -1,8 +1,1653 @@
 {
- "gerado_em": "2026-08-04T09:12:24+00:00",
+ "gerado_em": "2026-08-09T06:35:40+00:00",
  "fonte": "camara",
- "total": 766,
+ "total": 798,
  "publicacoes": [
+  {
+   "id": "CAMARA-2026-REQ-191",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 191/2026",
+   "numero": "191/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "saneamento",
+   "resumo": "Um vereador de Varginha pediu informações sobre a possibilidade de a prefeitura assumir diretamente os serviços de saneamento básico, após a privatização da COPASA.",
+   "o_que_propoe": "O requerimento busca esclarecer se o município pode assumir a gestão dos serviços de água e esgoto.",
+   "impacto_cidadao": "Se o município assumir o saneamento, isso poderá mudar a forma como os serviços de água e esgoto são geridos na cidade.",
+   "por_que_acompanhar": [
+    "Pode influenciar diretamente a qualidade e o custo do saneamento básico em Varginha.",
+    "Permite fiscalizar a transparência na gestão de um serviço essencial para a população.",
+    "Acompanhar pode garantir que os serviços de água e esgoto sejam eficientes e com preços justos."
+   ],
+   "pontos_atencao": [
+    "Possível impacto financeiro significativo para o orçamento municipal caso a prefeitura assuma a gestão.",
+    "Desafios operacionais e técnicos para o município gerir um serviço complexo como o saneamento.",
+    "A necessidade de avaliar a capacidade técnica e financeira da prefeitura para essa transição."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6138/joaomartins_-_requerimento191-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Joãozinho Enfermeiro",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações acerca da possibilidade de o Município de Varginha assumir diretamente os serviços de saneamento básico, diante da recente privatização da COPASA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6138",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6138/joaomartins_-_requerimento191-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6138/joaomartins_-_requerimento191-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "8b1d362ad92a7577973d9f66e0324f3666cd8cde",
+   "gerado_em": "2026-08-05T18:33:42+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-190",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 190/2026",
+   "numero": "190/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "lazer",
+   "resumo": "O Requerimento nº 190/2026, do vereador Joãozinho Enfermeiro, solicita informações à Câmara Municipal de Varginha sobre a reabertura do Parque Natural Municipal São Francisco de Assis para visitação pública.",
+   "o_que_propoe": "",
+   "impacto_cidadao": "Se o parque for reaberto, os cidadãos de Varginha poderão ter novamente um espaço público para lazer e contato com a natureza.",
+   "por_que_acompanhar": [
+    "Garantir o acesso a espaços públicos de lazer e bem-estar para a comunidade.",
+    "Promover a transparência sobre a gestão e o uso de bens públicos municipais.",
+    "Acompanhar a manutenção e a disponibilidade de áreas verdes na cidade."
+   ],
+   "pontos_atencao": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6136/joaomartins_-_requerimento190-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Joãozinho Enfermeiro",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações acerca da reabertura do Parque Natural Municipal São Francisco de Assis, localizado na Rua Ruth Carvalho, bairro São Francisco, para visitação pública.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6136",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6136/joaomartins_-_requerimento190-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6136/joaomartins_-_requerimento190-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "fd550a333ddaba5c8058d38cbea46694d891fae3",
+   "gerado_em": "2026-08-05T18:33:33+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-189",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 189/2026",
+   "numero": "189/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "segurança pública",
+   "resumo": "O Requerimento nº 189/2026, de autoria do vereador Davi Martins, solicita informações detalhadas sobre as ações e planos para a valorização da Guarda Civil Municipal de Varginha.",
+   "o_que_propoe": "O requerimento busca obter dados sobre as ações e planos para a valorização dos guardas civis municipais, sem propor uma mudança direta na legislação.",
+   "impacto_cidadao": "A obtenção dessas informações pode contribuir para a transparência e o debate público sobre a segurança e o bem-estar dos profissionais que atuam na proteção da cidade.",
+   "por_que_acompanhar": [
+    "Acompanhar a valorização da Guarda Municipal é importante para garantir que os profissionais de segurança pública tenham condições adequadas de trabalho.",
+    "A qualidade do serviço prestado pela Guarda Municipal impacta diretamente a segurança e a ordem pública na cidade.",
+    "A transparência sobre a gestão de pessoal na Guarda Municipal permite que os cidadãos fiscalizem o uso dos recursos públicos."
+   ],
+   "pontos_atencao": [
+    "O requerimento é um pedido de informação, não uma proposta de lei, e seu impacto depende das respostas e ações subsequentes da prefeitura.",
+    "A valorização da Guarda Municipal pode envolver aspectos financeiros e de recursos humanos, que podem ter impacto no orçamento municipal."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6134/carlosdavi_-_requerimento189-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Davi Martins",
+   "situacao": "em tramitação",
+   "ementa": "Requer as seguintes informações acerca da valorização da Guarda Civil Municipal de Varginha",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6134",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6134/carlosdavi_-_requerimento189-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6134/carlosdavi_-_requerimento189-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "c418afdc210fc698cbfc25e798d283ece5d9f1ef",
+   "gerado_em": "2026-08-05T18:33:27+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-188",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 188/2026",
+   "numero": "188/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "saúde",
+   "resumo": "O Requerimento nº 188/2026, de autoria do vereador Davi Martins, solicita informações sobre como o Supervisor de Leitos do Município de Varginha-MG tem atuado após a implantação do CORE/MG.",
+   "o_que_propoe": "",
+   "impacto_cidadao": "Se as informações forem fornecidas, os cidadãos poderão entender melhor como a supervisão de leitos funciona na cidade e a influência do CORE/MG.",
+   "por_que_acompanhar": [
+    "Acompanhar a transparência na gestão da saúde pública.",
+    "Verificar a eficiência da supervisão de leitos e o impacto do CORE/MG.",
+    "Garantir que os recursos e serviços de saúde estejam sendo bem administrados."
+   ],
+   "pontos_atencao": [
+    "A qualidade e a completude das informações que serão fornecidas pela prefeitura.",
+    "O prazo para a resposta ao requerimento."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6133/carlosdavi_-_requerimento188-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Davi Martins",
+   "situacao": "em tramitação",
+   "ementa": "Requer as seguintes informações acerca da atuação do Supervisor de Leitos do Município após a implantação do CORE/MG:",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6133",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6133/carlosdavi_-_requerimento188-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6133/carlosdavi_-_requerimento188-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "88d31dfa8b3af24f6278e385c26059a2a4a041f9",
+   "gerado_em": "2026-08-05T18:33:23+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-187",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 187/2026",
+   "numero": "187/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "meio ambiente",
+   "resumo": "Um vereador solicitou informações à Câmara Municipal sobre uma erosão em uma área de preservação ambiental localizada atrás de residências na Rua Vilela Nunes, no bairro Jardim Petrópolis.",
+   "o_que_propoe": "O requerimento propõe que a Câmara Municipal obtenha dados detalhados sobre a erosão na área mencionada.",
+   "impacto_cidadao": "Se as informações levarem a ações, os moradores próximos poderão ter mais segurança e um ambiente preservado.",
+   "por_que_acompanhar": [
+    "Garantir a transparência na gestão ambiental do município.",
+    "Verificar se a prefeitura está atenta aos problemas de infraestrutura e meio ambiente.",
+    "Assegurar que áreas de preservação ambiental sejam protegidas e recuperadas."
+   ],
+   "pontos_atencao": [
+    "A resposta ao requerimento pode indicar a necessidade de investimentos futuros para contenção da erosão.",
+    "A demora na obtenção das informações ou na tomada de providências pode agravar o problema ambiental."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6132/danielrodrigues_-_requerimento187-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Dandan",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações acerca da erosão existente na área de preservação ambiental localizada aos fundos das residências situadas na Rua Vilela Nunes, nas proximidades dos imóveis de nº 75 e nº 11, no bairro Jardim Petrópolis.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6132",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6132/danielrodrigues_-_requerimento187-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6132/danielrodrigues_-_requerimento187-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "a10e9e7eb96292f061f1adf5fcaf6573499faa2b",
+   "gerado_em": "2026-08-05T18:33:19+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-186",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 186/2026",
+   "numero": "186/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "infraestrutura",
+   "resumo": "O vereador Dandan solicitou à Câmara Municipal de Varginha informações sobre a construção de calçadas e a manutenção da iluminação pública em uma praça específica no bairro Parque das Acácias.",
+   "o_que_propoe": "O requerimento busca esclarecer se os serviços de construção de calçadas e manutenção da iluminação pública foram realizados na praça indicada.",
+   "impacto_cidadao": "Se as informações solicitadas revelarem problemas, isso pode levar a melhorias na infraestrutura da praça para os moradores locais.",
+   "por_que_acompanhar": [
+    "Garantir a transparência da gestão pública sobre serviços contratados.",
+    "Verificar a qualidade e a execução de obras e serviços públicos no bairro.",
+    "Assegurar que os recursos públicos estão sendo bem aplicados na infraestrutura local."
+   ],
+   "pontos_atencao": [
+    "Acompanhar a resposta da prefeitura para verificar a efetividade do requerimento.",
+    "Observar se os serviços mencionados foram de fato realizados e com qualidade."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6130/danielrodrigues_-_requerimento186-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Dandan",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações sobre a realização dos serviços de construção de calçadas e manutenção da iluminação pública na praça localizada entre as ruas Jacy Sarube Pereira, Nhá Chica e Professora Reina Esper, no bairro Parque das Acácias.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6130",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6130/danielrodrigues_-_requerimento186-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6130/danielrodrigues_-_requerimento186-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "4ff2fbb4af4d0d1f4cee40fa23cd7e90947f7912",
+   "gerado_em": "2026-08-05T18:33:14+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-185",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 185/2026",
+   "numero": "185/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "reciclagem",
+   "resumo": "Um vereador de Varginha está solicitando informações detalhadas sobre a parceria entre a prefeitura e a CooperET, cooperativa responsável pela reciclagem de lixo na cidade.",
+   "o_que_propoe": "",
+   "impacto_cidadao": "Se as informações revelarem irregularidades ou oportunidades de melhoria, poderá haver impacto na gestão da reciclagem e nos serviços prestados à população.",
+   "por_que_acompanhar": [
+    "Garantir a transparência na gestão dos serviços de reciclagem e no uso de recursos públicos.",
+    "Verificar a legalidade e a eficiência da parceria entre o município e a cooperativa.",
+    "Assegurar a qualidade do serviço de coleta seletiva e reciclagem na cidade."
+   ],
+   "pontos_atencao": [
+    "A natureza jurídica e os termos do acordo entre a prefeitura e a cooperativa.",
+    "O apoio operacional e financeiro que o município oferece à CooperET.",
+    "As contrapartidas que a cooperativa deve oferecer em troca do apoio municipal."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6126/brunoleandro_-_requerimento185-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Bruno Leandro Coletor",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações e o encaminhamento da documentação pertinente acerca da relação jurídica, administrativa e operacional existente entre o Município e a CooperET (Cooperativa Imaculada de Produção, Coleta Seletiva de Lixo, Reciclagem de Artefatos Plásticos e Madeira de Varginha), responsável pela reciclagem de materiais recicláveis localizada ao lado do aterro sanitário municipal, especialmente quanto aos instrumentos jurídicos eventualmente firmados, aos fundamentos legais que amparam essa relação, ao apoio operacional prestado pelo Município, às contrapartidas assumidas pela cooperativa e aos demais aspectos correlatos, nos termos dos questionamentos abaixo.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6126",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6126/brunoleandro_-_requerimento185-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6126/brunoleandro_-_requerimento185-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "de6326c3a1043eeb837209eb16c8019d83975abd",
+   "gerado_em": "2026-08-05T18:33:10+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PLOL-71",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Legislativo nº 71/2026",
+   "numero": "71/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "habitação",
+   "resumo": "Este projeto de lei propõe criar uma política em Varginha para reutilizar imóveis públicos vazios e imóveis urbanos abandonados. O objetivo é usar esses locais para moradias sociais, equipamentos públicos e desenvolvimento urbano sustentável.",
+   "o_que_propoe": "Na prática, o projeto estabelece diretrizes para que a prefeitura possa identificar e destinar imóveis públicos sem uso e imóveis urbanos abandonados. Esses imóveis seriam usados para construir moradias populares, criar espaços públicos ou promover o desenvolvimento da cidade.",
+   "impacto_cidadao": "Se aprovado, poderá aumentar a oferta de moradias de interesse social e melhorar a infraestrutura urbana para os cidadãos de Varginha.",
+   "por_que_acompanhar": [
+    "Pode ajudar a resolver o problema da falta de moradias para famílias de baixa renda.",
+    "Busca otimizar o uso de bens públicos e privados que estão sem função social.",
+    "Pode contribuir para o desenvolvimento e a revitalização de áreas urbanas da cidade."
+   ],
+   "pontos_atencao": [
+    "A forma como os imóveis serão identificados e adquiridos pode gerar debates.",
+    "Os custos de adaptação ou construção nos imóveis precisarão ser definidos e orçados.",
+    "Os critérios para a destinação dos imóveis e seleção dos beneficiários deverão ser transparentes."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6148/p.l.___reaproveitamento_imoveis_abandonados1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Zilda Silva",
+   "situacao": "em tramitação",
+   "ementa": "INSTITUI A POLÍTICA MUNICIPAL DE REAPROVEITAMENTO SOCIAL DE IMÓVEIS PÚBLICOS OCIOSOS E DE IMÓVEIS URBANOS ABANDONADOS PARA FINS DE HABITAÇÃO DE INTERESSE SOCIAL, EQUIPAMENTOS PÚBLICOS E DESENVOLVIMENTO URBANO SUSTENTÁVEL NO MUNICÍPIO DE VARGINHA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6148",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6148/p.l.___reaproveitamento_imoveis_abandonados1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6148/p.l.___reaproveitamento_imoveis_abandonados1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "c2e1e4229422856e4979ef13fc855e6d34507050",
+   "gerado_em": "2026-08-05T18:32:42+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PLOL-70",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Legislativo nº 70/2026",
+   "numero": "70/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "mobilidade",
+   "resumo": "Este projeto de lei propõe criar uma plataforma digital da Prefeitura de Varginha para intermediar o transporte de passageiros por aplicativos, como Uber e 99.",
+   "o_que_propoe": "Na prática, a Prefeitura de Varginha passaria a ter sua própria plataforma para gerenciar e intermediar as viagens de transporte individual de passageiros, estabelecendo suas próprias regras para motoristas e veículos.",
+   "impacto_cidadao": "Se aprovado, os cidadãos de Varginha poderão ter uma nova opção de aplicativo para solicitar transporte, com regras e fiscalização definidas pela própria prefeitura.",
+   "por_que_acompanhar": [
+    "Acompanhar como o transporte por aplicativo será regulamentado e se isso afetará a qualidade ou o preço das viagens.",
+    "Verificar como a prefeitura irá gerenciar e custear essa nova plataforma, e se haverá transparência nos dados.",
+    "Entender o impacto na concorrência entre os serviços de transporte existentes na cidade."
+   ],
+   "pontos_atencao": [
+    "O custo de desenvolvimento, manutenção e operação da plataforma municipal.",
+    "A forma como a plataforma irá interagir ou competir com os aplicativos de transporte já existentes no mercado.",
+    "A garantia de transparência na gestão dos dados e na fiscalização dos serviços."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6127/pl___plataforma_municipal_de_mobilidade_urbana1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Cássio Chiodi",
+   "situacao": "em tramitação",
+   "ementa": "INSTITUI A PLATAFORMA MUNICIPAL DE MOBILIDADE URBANA, DE PROPRIEDADE DA PREFEITURA MUNICIPAL DE VARGINHA, PARA A INTERMEDIAÇÃO DO TRANSPORTE INDIVIDUAL PRIVADO REMUNERADO DE PASSAGEIROS, DISCIPLINA SEU FUNCIONAMENTO, ESTABELECE REGRAS PARA CREDENCIAMENTO DE MOTORISTAS E VEÍCULOS E DEFINE CRITÉRIOS DE GESTÃO, CUSTEIO E TRANSPARÊNCIA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6127",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6127/pl___plataforma_municipal_de_mobilidade_urbana1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6127/pl___plataforma_municipal_de_mobilidade_urbana1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "bccd9d34665734f89adc75e9a6e40a69e1ea9981",
+   "gerado_em": "2026-08-05T18:32:35+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PDL-65",
+   "fonte": "camara",
+   "tipo": "decreto_legislativo",
+   "tipo_label": "Projeto de Decreto Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Decreto Legislativo nº 65/2026",
+   "numero": "65/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "homenagem",
+   "resumo": "Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito Ambiental Municipal \"Dr. Sérgio Mário Regina\", ao senhor Donizeti Leão de Miranda.",
+   "o_que_propoe": "Se aprovado, o senhor Donizeti Leão de Miranda receberá uma honraria municipal em reconhecimento a seus méritos ambientais.",
+   "impacto_cidadao": "Não há impacto direto para o cidadão comum, mas reconhece ações relevantes na área ambiental.",
+   "por_que_acompanhar": [
+    "Acompanhar como a Câmara Municipal reconhece e valoriza indivíduos por suas contribuições à comunidade.",
+    "Verificar a transparência nos critérios de concessão de honrarias públicas.",
+    "Entender as iniciativas de valorização ambiental no município."
+   ],
+   "pontos_atencao": [
+    "Acompanhar os motivos específicos que levaram à indicação do homenageado."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6143/projeto_de_decreto___comenda_do_merito_ambiental___leao_miranda1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Rogério Bueno",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE COMENDA DO MÉRITO AMBIENTAL MUNICIPAL \"DR. SÉRGIO MÁRIO REGINA” AO SENHOR DONIZETI LEÃO DE MIRANDA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6143",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6143/projeto_de_decreto___comenda_do_merito_ambiental___leao_miranda1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6143/projeto_de_decreto___comenda_do_merito_ambiental___leao_miranda1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "887d9de4ac0d6712aedd37a4f8f67f9f4dca5a29",
+   "gerado_em": "2026-08-05T18:33:01+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PDL-64",
+   "fonte": "camara",
+   "tipo": "decreto_legislativo",
+   "tipo_label": "Projeto de Decreto Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Decreto Legislativo nº 64/2026",
+   "numero": "64/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "homenagem",
+   "resumo": "Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito de Medicina e Saúde Municipal, ao Dr. João Baptista Macuco Janini.",
+   "o_que_propoe": "Na prática, o projeto propõe formalizar a concessão de uma honraria municipal a um médico.",
+   "impacto_cidadao": "Não há impacto direto ou prático no dia a dia do cidadão.",
+   "por_que_acompanhar": [
+    "Acompanhar a concessão de honrarias permite verificar como os recursos públicos são utilizados, mesmo que indiretamente.",
+    "Permite conhecer as personalidades que a Câmara Municipal considera dignas de reconhecimento público."
+   ],
+   "pontos_atencao": [
+    "A concessão de honrarias, embora simbólica, pode envolver custos indiretos com cerimônias e publicidade.",
+    "É importante observar os critérios para a escolha dos homenageados e se eles refletem o interesse público."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/miguel_comenda_de_medicina_e_saude_revisado.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Miguel da Saúde",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL - DR. FERNANDO EUGÊNIO PIRES DO PRADO AO DR. JOÃO BAPTISTA MACUCO JANINI",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6140",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/miguel_comenda_de_medicina_e_saude_revisado.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/miguel_comenda_de_medicina_e_saude_revisado.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "3b5cc7e9443086bb1e3e5978a9abfa21bdc568a1",
+   "gerado_em": "2026-08-05T18:32:56+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PDL-63",
+   "fonte": "camara",
+   "tipo": "decreto_legislativo",
+   "tipo_label": "Projeto de Decreto Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Decreto Legislativo nº 63/2026",
+   "numero": "63/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "homenagem",
+   "resumo": "Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito Jurídico Municipal, ao Sr. Jayme Silvestre Corrêa Camargo.",
+   "o_que_propoe": "A proposta é que o Sr. Jayme Silvestre Corrêa Camargo receba uma honraria municipal por seus serviços na área jurídica.",
+   "impacto_cidadao": "Este tipo de homenagem não tem um impacto direto no dia a dia do cidadão, mas reconhece a contribuição de indivíduos para a comunidade.",
+   "por_que_acompanhar": [
+    "Acompanhar a concessão de honrarias permite verificar como os recursos públicos são utilizados, mesmo que indiretamente.",
+    "Garante a transparência nos critérios de reconhecimento público.",
+    "Ajuda a entender quais valores e contribuições a Câmara Municipal decide destacar na sociedade."
+   ],
+   "pontos_atencao": [
+    "Verificar se os critérios para a concessão da comenda foram seguidos rigorosamente.",
+    "Entender o custo envolvido na cerimônia de entrega da homenagem."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6137/joaozinho_projeto_de_decreto___merito_juridico__jayme__revisado.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Joãozinho Enfermeiro",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE A COMENDA DO MÉRITO JURÍDICO MUNICIPAL AO SR. JAYME SILVESTRE CORRÊA CAMARGO.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6137",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6137/joaozinho_projeto_de_decreto___merito_juridico__jayme__revisado.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6137/joaozinho_projeto_de_decreto___merito_juridico__jayme__revisado.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "536657224279dc0a04e3ca32b41b8e0e9012d707",
+   "gerado_em": "2026-08-05T18:32:52+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PDL-62",
+   "fonte": "camara",
+   "tipo": "decreto_legislativo",
+   "tipo_label": "Projeto de Decreto Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Decreto Legislativo nº 62/2026",
+   "numero": "62/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "homenagens",
+   "resumo": "Este projeto de decreto legislativo propõe conceder o título de Cidadania Honorária Varginhense ao Sr. Ricardo Patrício de Paula.",
+   "o_que_propoe": "Se aprovado, o Sr. Ricardo Patrício de Paula receberá formalmente o título de Cidadão Honorário de Varginha.",
+   "impacto_cidadao": "Não há impacto direto para o cidadão comum.",
+   "por_que_acompanhar": [
+    "Entender como os vereadores utilizam o tempo legislativo para propor homenagens.",
+    "Conhecer os critérios e as justificativas apresentadas para a concessão de títulos honoríficos.",
+    "Observar a atuação dos representantes eleitos na valorização de indivíduos na comunidade."
+   ],
+   "pontos_atencao": [
+    "Verificar se a homenagem está alinhada com os critérios estabelecidos para a concessão de títulos honoríficos.",
+    "Avaliar se a justificativa para a honraria reflete serviços relevantes prestados à comunidade de Varginha."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6131/dandan_titulo_de_cidadao_honorario_ricardo_patricio_de_paula1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Dandan",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE TÍTULO DE CIDADANIA HONORÁRIA VARGINHENSE AO SR. RICARDO PATRÍCIO DE PAULA",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6131",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6131/dandan_titulo_de_cidadao_honorario_ricardo_patricio_de_paula1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6131/dandan_titulo_de_cidadao_honorario_ricardo_patricio_de_paula1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "60a21b90cd68bc19185eaf41339154601427a81f",
+   "gerado_em": "2026-08-05T18:32:47+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-384",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 384/2026",
+   "numero": "384/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "mobilidade",
+   "resumo": "Esta é uma solicitação da vereadora Zilda Silva para que a prefeitura realize a manutenção e recuperação do asfalto na Rua Janaína Ferreira Santos, no bairro Park Imperial.",
+   "o_que_propoe": "A proposta é corrigir o afundamento do asfalto em trechos já remendados e tapar os buracos existentes na Rua Janaína Ferreira Santos.",
+   "impacto_cidadao": "Se a solicitação for atendida, os moradores e usuários da Rua Janaína Ferreira Santos poderão ter uma via com melhor condição de tráfego e mais segura.",
+   "por_que_acompanhar": [
+    "Garantir que os recursos públicos sejam aplicados na melhoria da infraestrutura urbana.",
+    "Verificar a eficiência da gestão municipal na manutenção das vias públicas.",
+    "Assegurar que a qualidade de vida dos moradores do bairro Park Imperial seja considerada."
+   ],
+   "pontos_atencao": [
+    "Acompanhar o prazo para a execução da manutenção, caso a solicitação seja aprovada.",
+    "Verificar se a manutenção será realizada de forma completa e duradoura."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6150/zilda_-_indicacao384-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Zilda Silva",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita manutenção e recuperação do pavimento da Rua Janaína Ferreira Santos, entre os números 46 e 185, no bairro Park Imperial, com a correção do afundamento do asfalto nos trechos remendados e o reparo dos buracos existentes na via.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6150",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6150/zilda_-_indicacao384-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6150/zilda_-_indicacao384-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "4f2f8e9b162b553a0d2ba6c0814496d2259116a8",
+   "gerado_em": "2026-08-05T18:35:23+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-383",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 383/2026",
+   "numero": "383/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "saúde",
+   "resumo": "A Indicação nº 383/2026 solicita que a prefeitura estude a possibilidade de oferecer a cirurgia de colocação de tela sling na rede pública de saúde municipal. Essa cirurgia é para tratar a incontinência urinária de esforço em mulheres.",
+   "o_que_propoe": "A indicação propõe a realização de um estudo para verificar a viabilidade de implantar a cirurgia de tela sling na rede pública municipal, visando o tratamento da incontinência urinária feminina.",
+   "impacto_cidadao": "Se a proposta for aceita e implementada, mulheres com incontinência urinária de esforço poderiam ter acesso a essa cirurgia pelo sistema público de saúde municipal.",
+   "por_que_acompanhar": [
+    "Acompanhar para garantir que a saúde da mulher seja uma prioridade na agenda municipal.",
+    "Verificar a transparência e a eficiência na alocação de recursos públicos para novos serviços de saúde.",
+    "Monitorar a expansão dos serviços de saúde oferecidos à população de Varginha."
+   ],
+   "pontos_atencao": [
+    "É uma indicação, ou seja, uma sugestão ao Poder Executivo, não uma lei ou decisão obrigatória.",
+    "A implantação dependerá dos resultados do estudo de viabilidade e da disponibilidade orçamentária do município.",
+    "O estudo em si pode gerar custos e demandar recursos da administração pública."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6149/zilda_-_indicacao383-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Zilda Silva",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita realização de estudo de viabilidade para implantação da cirurgia de colocação de tela sling na rede pública municipal de saúde, destinada ao tratamento da incontinência urinária de esforço feminina.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6149",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6149/zilda_-_indicacao383-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6149/zilda_-_indicacao383-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "bb18be5df2c4b683b83f16ef9e9647dba8a6acf2",
+   "gerado_em": "2026-08-05T18:35:17+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-382",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 382/2026",
+   "numero": "382/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "mobilidade",
+   "resumo": "O vereador Zé Morais apresentou uma indicação solicitando que a prefeitura estude a possibilidade de reconstruir uma passarela para pedestres na Travessa São José, localizada no bairro Sion.",
+   "o_que_propoe": "Esta indicação propõe que a administração municipal avalie se é viável tecnicamente reconstruir a passarela.",
+   "impacto_cidadao": "Se a reconstrução for aprovada e executada, os moradores do bairro Sion poderão ter uma travessia mais segura na Travessa São José.",
+   "por_que_acompanhar": [
+    "Acompanhar garante que a demanda dos cidadãos por infraestrutura seja considerada.",
+    "Permite verificar se os recursos públicos serão usados de forma eficiente para melhorar a segurança e mobilidade.",
+    "Ajuda a fiscalizar a atuação do vereador e da prefeitura na resolução de problemas locais."
+   ],
+   "pontos_atencao": [
+    "A indicação é apenas um pedido, não uma decisão, e depende da análise e aprovação da prefeitura.",
+    "A reconstrução da passarela pode ter impacto no orçamento municipal.",
+    "É importante acompanhar os próximos passos para garantir que o estudo de viabilidade seja realizado e divulgado."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6147/josemorais_-_indicacao382-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Zé Morais",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita estudo de viabilidade técnica visando à reconstrução de uma passarela para pedestres na Travessa São José, localizada no bairro Sion.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6147",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6147/josemorais_-_indicacao382-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6147/josemorais_-_indicacao382-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "f2dff614ea650c08828094823f18f5c6264e5108",
+   "gerado_em": "2026-08-05T18:35:13+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-381",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 381/2026",
+   "numero": "381/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "mobilidade",
+   "resumo": "Esta é uma solicitação do vereador Zé Morais para que a prefeitura realize o recapeamento asfáltico de duas ruas no bairro Sion, em Varginha-MG.",
+   "o_que_propoe": "A proposta é que a Rua Ruth Carvalho e a Avenida José Elias de Oliveira recebam nova camada de asfalto, melhorando suas condições.",
+   "impacto_cidadao": "Se a solicitação for atendida, os moradores e usuários dessas vias poderão ter melhorias na segurança e conforto ao transitar.",
+   "por_que_acompanhar": [
+    "Verificar se a solicitação será atendida pela prefeitura.",
+    "Acompanhar a qualidade e o prazo da execução do serviço, caso seja realizado.",
+    "Entender como os recursos públicos são alocados para melhorias na infraestrutura local."
+   ],
+   "pontos_atencao": [
+    "A indicação é uma sugestão, e a prefeitura não é obrigada a executá-la.",
+    "O custo do recapeamento precisará ser avaliado e incluído no orçamento municipal.",
+    "A priorização desta obra em relação a outras necessidades da cidade."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6146/josemorais_-_indicacao381-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Zé Morais",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita recapeamento asfáltico da Rua Ruth Carvalho e da Avenida José Elias de Oliveira, localizadas no bairro Sion.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6146",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6146/josemorais_-_indicacao381-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6146/josemorais_-_indicacao381-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "b7fa6d9d1b8a4b2c3b7a4313d5a03c3c32a97126",
+   "gerado_em": "2026-08-05T18:35:08+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-380",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 380/2026",
+   "numero": "380/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "urbanismo",
+   "resumo": "O vereador Rogério Bueno solicitou à Prefeitura de Varginha a reforma da Praça Governador Benedito Valadares.",
+   "o_que_propoe": "A proposta é que a praça receba serviços de pintura, jardinagem, reforma de bancos e calçadas, além de manutenção da iluminação.",
+   "impacto_cidadao": "Se a indicação for atendida, os cidadãos terão um espaço público mais conservado e agradável para uso.",
+   "por_que_acompanhar": [
+    "Garantir a manutenção e melhoria dos espaços públicos da cidade.",
+    "Verificar a aplicação dos recursos públicos em obras de infraestrutura.",
+    "Acompanhar a qualidade de vida e o bem-estar dos moradores que utilizam a praça."
+   ],
+   "pontos_atencao": [
+    "O impacto orçamentário para a realização das reformas.",
+    "A qualidade e o prazo de execução dos serviços.",
+    "A prioridade desta reforma em relação a outras necessidades da cidade."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6145/rogeriobueno_-_indicacao380-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Rogério Bueno",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita a reforma da Praça Governador Benedito Valadares, com serviços de pintura e jardinagem, além de reforma dos bancos, das calçadas e a manutenção da iluminação do local.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6145",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6145/rogeriobueno_-_indicacao380-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6145/rogeriobueno_-_indicacao380-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "d7dbc0ec661c47dbfe5b31cf24f6b0d962ebc98d",
+   "gerado_em": "2026-08-05T18:35:03+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-379",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 379/2026",
+   "numero": "379/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "cultura",
+   "resumo": "A Indicação nº 379/2026 propõe a instalação de uma estátua em homenagem a Antônio Adão, uma figura popular e símbolo da cultura de Varginha.",
+   "o_que_propoe": "A proposta visa criar um monumento público para celebrar Antônio Adão, reconhecendo sua importância cultural para a cidade.",
+   "impacto_cidadao": "Se a indicação for acatada, a cidade poderá ter um novo monumento público que celebra uma figura local.",
+   "por_que_acompanhar": [
+    "Para entender como os recursos públicos são direcionados para projetos culturais e de homenagem.",
+    "Para participar da discussão sobre a valorização de figuras locais e a identidade cultural da cidade.",
+    "Para verificar o impacto da proposta no espaço público e no orçamento municipal."
+   ],
+   "pontos_atencao": [
+    "O custo de instalação e manutenção da estátua.",
+    "A escolha do local para a instalação do monumento.",
+    "Os critérios para a seleção de figuras a serem homenageadas com estátuas públicas."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6144/rogeriobueno_-_indicacao379-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Rogério Bueno",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita a instalação de uma estátua em homenagem a Antônio Adão, figura popular e símbolo da cultura de Varginha.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6144",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6144/rogeriobueno_-_indicacao379-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6144/rogeriobueno_-_indicacao379-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "93232c1e1c551e48fef62e134baa6eafc91dcdbc",
+   "gerado_em": "2026-08-05T18:34:58+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-378",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 378/2026",
+   "numero": "378/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "mobilidade",
+   "resumo": "Esta é uma solicitação do Pastor Faustinho para que a prefeitura instale placas de sinalização e faça pinturas no chão nos cruzamentos de Varginha. O objetivo é evitar que os motoristas parem no meio do cruzamento, bloqueando o trânsito.",
+   "o_que_propoe": "A proposta é a implantação de sinalização vertical (placas) e horizontal (pintura no asfalto) nos cruzamentos da cidade.",
+   "impacto_cidadao": "Se implementada, a medida poderá ajudar a melhorar o fluxo do trânsito e reduzir o número de cruzamentos bloqueados, facilitando a circulação de veículos.",
+   "por_que_acompanhar": [
+    "Melhora na fluidez do trânsito e na segurança viária.",
+    "Uso eficiente dos recursos públicos para infraestrutura urbana.",
+    "Impacto direto na rotina de motoristas e pedestres da cidade."
+   ],
+   "pontos_atencao": [
+    "Necessidade de planejamento adequado para a localização e tipo de sinalização.",
+    "Impacto orçamentário para a compra e instalação das placas e realização das pinturas.",
+    "Efetividade da medida em coibir o comportamento dos condutores."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6142/pastorfaustinho_-_indicacao378-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Pastor Faustinho",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita implantação de placas de sinalização e pintura vertical e horizontal nos cruzamentos, com o objetivo de coibir o fechamento dos cruzamentos pelos condutores.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6142",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6142/pastorfaustinho_-_indicacao378-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6142/pastorfaustinho_-_indicacao378-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "6976d94f5a954b0650f38c11feeed4322c30c7bb",
+   "gerado_em": "2026-08-05T18:34:54+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-377",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 377/2026",
+   "numero": "377/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "segurança",
+   "resumo": "Esta é uma solicitação do vereador Pastor Faustinho para que a prefeitura instale uma tela de alambrado em uma ribanceira no bairro Imaculada, em Varginha-MG.",
+   "o_que_propoe": "A proposta é instalar uma tela de alambrado em uma área de ribanceira específica, localizada entre a Avenida Rio Verde e a Avenida Rio São Francisco, no bairro Imaculada.",
+   "impacto_cidadao": "Se a solicitação for atendida, a instalação do alambrado poderá aumentar a segurança dos moradores e pedestres na área.",
+   "por_que_acompanhar": [
+    "Verificar se a solicitação será atendida pela prefeitura.",
+    "Acompanhar a execução de melhorias na infraestrutura e segurança do bairro.",
+    "Observar como os recursos públicos são utilizados para atender às demandas da comunidade."
+   ],
+   "pontos_atencao": [
+    "O impacto orçamentário para a instalação do alambrado.",
+    "A prioridade desta obra em relação a outras necessidades do município.",
+    "O prazo para a possível execução da obra, caso seja aceita pela prefeitura."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6141/pastorfaustinho_-_indicacao377-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Pastor Faustinho",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita a instalação de tela de alambrado na área de ribanceira existente junto ao bambuzal localizado entre a Avenida Rio Verde e a Avenida Rio São Francisco no bairro Imaculada.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6141",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6141/pastorfaustinho_-_indicacao377-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6141/pastorfaustinho_-_indicacao377-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "589bf614789f8237d0936d62ea5dc57597a786de",
+   "gerado_em": "2026-08-05T18:34:49+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-376",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 376/2026",
+   "numero": "376/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "habitação",
+   "resumo": "A Indicação nº 376/2026, do vereador Miguel da Saúde, solicita que a prefeitura estude a criação de um programa de moradia para Agentes Comunitários de Saúde (ACS) e Agentes de Combate às Endemias (ACE) em Varginha.",
+   "o_que_propoe": "A proposta é que sejam realizados estudos para desenvolver um programa habitacional específico para esses profissionais.",
+   "impacto_cidadao": "Se aprovado e implementado, o programa poderá oferecer opções de moradia para os Agentes Comunitários de Saúde e de Combate às Endemias do município.",
+   "por_que_acompanhar": [
+    "Envolve a política de habitação social no município",
+    "Pode beneficiar uma categoria importante de servidores públicos",
+    "Pode ter implicações no orçamento municipal"
+   ],
+   "pontos_atencao": [
+    "O impacto financeiro para o município",
+    "Os critérios de elegibilidade para os beneficiários do programa",
+    "A viabilidade da implementação do programa"
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6139/miguellima_-_indicacao376-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Miguel da Saúde",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita estudos para a criação de programa habitacional destinado aos Agentes Comunitários de Saúde (ACS) e Agentes de Combate às Endemias (ACE) no município de Varginha.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6139",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6139/miguellima_-_indicacao376-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6139/miguellima_-_indicacao376-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "05a7adb01b87e650615c8685e5e490c4271fb25e",
+   "gerado_em": "2026-08-05T18:34:44+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-375",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 375/2026",
+   "numero": "375/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "mobilidade",
+   "resumo": "A Indicação nº 375/2026 solicita melhorias na Avenida Murilo Paiva, no bairro Parque Mariela, em Varginha-MG, para aumentar a segurança e facilitar o trânsito.",
+   "o_que_propoe": "A proposta é implementar medidas de engenharia de tráfego, como semáforos ou rotatórias, no entroncamento com a Avenida Comendador Manoel Sendas.",
+   "impacto_cidadao": "Se aprovada e implementada, a medida poderá melhorar a segurança e a fluidez do tráfego para motoristas e pedestres na região.",
+   "por_que_acompanhar": [
+    "Acompanhar a melhoria da segurança viária em uma área movimentada.",
+    "Verificar a efetividade das soluções propostas para o trânsito local.",
+    "Monitorar o uso de recursos públicos para obras de infraestrutura."
+   ],
+   "pontos_atencao": [
+    "A necessidade de avaliação técnica para definir as melhores intervenções.",
+    "O impacto orçamentário para a prefeitura na execução das obras.",
+    "O prazo para a implementação das melhorias, caso a indicação seja acatada."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6135/eduardoottonifilho_-_indicacao375-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Dudu Ottoni",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita melhorias nas condições de mobilidade e segurança viária na Avenida Murilo Paiva, bairro Parque Mariela, especialmente no entroncamento com a Avenida Comendador Manoel Sendas, mediante a implementação das intervenções que se mostrarem tecnicamente adequadas, tais como a implantação de semáforos, rotatórias, ou outras medidas de engenharia de tráfego.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6135",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6135/eduardoottonifilho_-_indicacao375-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6135/eduardoottonifilho_-_indicacao375-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "b13ad21ff436e510aed5b8704389e3a165f493f9",
+   "gerado_em": "2026-08-05T18:34:39+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-374",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 374/2026",
+   "numero": "374/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "educação",
+   "resumo": "A Indicação nº 374/2026 solicita a suspensão de um processo de licitação para a compra de material apostilado para o Município de Varginha. O objetivo é que informações sobre o procedimento sejam apuradas e esclarecidas antes da continuidade.",
+   "o_que_propoe": "A proposta é pausar a licitação de material apostilado até que todas as dúvidas e informações sobre o processo sejam resolvidas.",
+   "impacto_cidadao": "Se a suspensão for acatada, a compra de material didático para as escolas municipais poderá ser adiada, aguardando maior transparência no processo.",
+   "por_que_acompanhar": [
+    "Para garantir a transparência e a correta aplicação dos recursos públicos na compra de materiais educacionais.",
+    "Para assegurar que o processo licitatório siga todas as normas e seja justo.",
+    "Para verificar se a educação municipal terá acesso aos materiais didáticos de forma adequada e em tempo hábil."
+   ],
+   "pontos_atencao": [
+    "A suspensão pode atrasar a aquisição e entrega do material apostilado aos alunos.",
+    "A necessidade de apuração e esclarecimento de informações indica possíveis dúvidas ou necessidade de maior transparência no processo.",
+    "O valor do contrato de aquisição de material apostilado não é especificado, mas envolve recursos públicos para a educação."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6129/cassiochiodi_-_indicacao374-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Cássio Chiodi",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita a suspensão do Processo Licitatório nº 160/2026, destinado à aquisição de material apostilado para o Município de Varginha, até que sejam apuradas e esclarecidas as informações necessárias sobre o procedimento.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6129",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6129/cassiochiodi_-_indicacao374-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6129/cassiochiodi_-_indicacao374-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "772666d9c0568cff568513d7e8ba8c8658cc54fb",
+   "gerado_em": "2026-08-05T18:34:34+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-373",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 373/2026",
+   "numero": "373/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "educação",
+   "resumo": "A indicação pede que a Secretaria Municipal de Educação de Varginha se inscreva no Programa Nacional do Livro e do Material Didático (PNLD) do governo federal. O objetivo é que a rede municipal de ensino receba livros e materiais didáticos de graça.",
+   "o_que_propoe": "A proposta é que Varginha adira ao PNLD, garantindo que estudantes e professores das escolas municipais recebam materiais didáticos sem custo para o município ou para as famílias.",
+   "impacto_cidadao": "Se a adesão for realizada, estudantes e professores da rede municipal de Varginha poderão ter acesso a livros e materiais didáticos gratuitos.",
+   "por_que_acompanhar": [
+    "Garante o acesso a materiais didáticos de qualidade para os alunos da rede municipal.",
+    "Pode gerar economia para as famílias, que não precisariam comprar esses materiais.",
+    "Assegura que o município aproveite recursos federais disponíveis para a educação."
+   ],
+   "pontos_atencao": [
+    "A indicação destaca a importância de aproveitar o \"período de adesão atualmente aberto\", indicando um prazo para a adesão.",
+    "Trata-se de uma indicação, ou seja, uma sugestão ao Executivo, que não é obrigado a acatá-la."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6128/cassiochiodi_-_indicacao373-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Cássio Chiodi",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita que a Secretaria Municipal de Educação realize a adesão do Município de Varginha ao Programa Nacional do Livro e do Material Didático (PNLD), disponibilizado pelo Fundo Nacional de Desenvolvimento da Educação (FNDE), aproveitando o período de adesão atualmente aberto, a fim de garantir o recebimento gratuito de livros e materiais didáticos destinados aos estudantes e professores da rede municipal de ensino.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6128",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6128/cassiochiodi_-_indicacao373-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6128/cassiochiodi_-_indicacao373-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "3678c1330677e89a77923363a3ec200218f6842e",
+   "gerado_em": "2026-08-05T18:34:29+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-372",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 372/2026",
+   "numero": "372/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "infraestrutura",
+   "resumo": "A Indicação nº 372/2026 solicita à prefeitura a pavimentação asfáltica e a instalação de iluminação pública na Rua Antônio Bernardes Pereira, no bairro Jardim Corcetti I.",
+   "o_que_propoe": "A proposta é que a prefeitura realize obras de infraestrutura, como asfalto e iluminação, em uma rua específica do bairro Jardim Corcetti I.",
+   "impacto_cidadao": "Se a solicitação for atendida, os moradores da Rua Antônio Bernardes Pereira poderão ter melhorias na infraestrutura e segurança da via.",
+   "por_que_acompanhar": [
+    "Verificar se a solicitação será considerada e atendida pela prefeitura.",
+    "Acompanhar a destinação de recursos públicos para obras de infraestrutura.",
+    "Observar a atuação do vereador na representação dos interesses da comunidade."
+   ],
+   "pontos_atencao": [
+    "O custo estimado para as obras de pavimentação e iluminação.",
+    "O prazo para a possível execução das melhorias.",
+    "A prioridade desta obra em relação a outras necessidades do município."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6125/brunoleandro_-_indicacao372-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Bruno Leandro Coletor",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita pavimentação asfáltica e implantação de iluminação pública na Rua Antônio Bernardes Pereira, nº 1290, bairro Jardim Corcetti I.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6125",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6125/brunoleandro_-_indicacao372-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6125/brunoleandro_-_indicacao372-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "b7c421a380c2468687c02344e4b4c578e1d1c2f7",
+   "gerado_em": "2026-08-05T18:34:23+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-371",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 371/2026",
+   "numero": "371/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "saúde",
+   "resumo": "A vereadora Ana Rios Fontoura apresentou uma indicação solicitando melhorias na Unidade Básica de Saúde (UBS) Dr. Carlos da Costa Brito, localizada no bairro Jardim Corcetti.",
+   "o_que_propoe": "A indicação propõe a construção de uma cozinha externa com cobertura e a abertura de um portão para acesso de veículos nos fundos da UBS.",
+   "impacto_cidadao": "Se as melhorias forem implementadas, os usuários e funcionários da UBS podem ter mais conforto e acessibilidade.",
+   "por_que_acompanhar": [
+    "Para verificar a resposta da prefeitura à solicitação da vereadora.",
+    "Para entender se as melhorias propostas são prioritárias e beneficiarão a comunidade local.",
+    "Para monitorar o uso de recursos públicos caso a proposta seja aprovada e executada."
+   ],
+   "pontos_atencao": [
+    "A indicação é um pedido ao executivo municipal, não uma decisão final, e sua execução depende de análise e aprovação.",
+    "A realização das obras propostas terá impacto no orçamento municipal."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6124/anarios_-_indicacao371-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Ana Rios Fontoura",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita a construção de uma cozinha externa com cobertura e a abertura de um portão para acesso de veículos nos fundos da Unidade Básica de Saúde Dr. Carlos da Costa Brito, localizada no bairro Jardim Corcetti.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6124",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6124/anarios_-_indicacao371-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6124/anarios_-_indicacao371-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "75cac567e0c9ff90e52717c2fd8f63fab00c577f",
+   "gerado_em": "2026-08-05T18:34:18+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-370",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 370/2026",
+   "numero": "370/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "infraestrutura",
+   "resumo": "A Indicação nº 370/2026, da vereadora Ana Rios Fontoura, solicita à prefeitura a instalação de uma cobertura fixa na Praça do ET e a nivelação das ruas com a calçada em frente à praça.",
+   "o_que_propoe": "A proposta visa adicionar uma estrutura de cobertura na Praça do ET e ajustar a altura das ruas para ficarem niveladas com as calçadas adjacentes.",
+   "impacto_cidadao": "Se aprovada e implementada, a medida poderá oferecer mais conforto e segurança aos frequentadores da Praça do ET e melhorar a acessibilidade na área.",
+   "por_que_acompanhar": [
+    "Para verificar a melhoria da infraestrutura urbana e acessibilidade na Praça do ET.",
+    "Para acompanhar o uso de recursos públicos em obras de infraestrutura.",
+    "Para observar a resposta do executivo às solicitações dos vereadores."
+   ],
+   "pontos_atencao": [
+    "A Indicação é uma sugestão ao Executivo, não uma lei, e sua implementação depende da decisão da prefeitura.",
+    "O impacto orçamentário para a realização das obras não é detalhado na indicação."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6123/anarios_-_indicacao370-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Ana Rios Fontoura",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita a instalação de cobertura fixa na Praça do ET e a nivelação da altura das ruas com a calçada em frente a referida praça.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6123",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6123/anarios_-_indicacao370-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6123/anarios_-_indicacao370-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "d6d8eb136ed8324263fef464d40286edddc922ee",
+   "gerado_em": "2026-08-05T18:34:13+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-369",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 369/2026",
+   "numero": "369/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "saúde",
+   "resumo": "A Indicação nº 369/2026 solicita que a prefeitura de Varginha estude parcerias com faculdades para treinar mais profissionais para atender pessoas com Transtorno do Espectro Autista (TEA) e outras condições do neurodesenvolvimento.",
+   "o_que_propoe": "A proposta é que a prefeitura avalie a possibilidade de firmar acordos com instituições de ensino superior para qualificar profissionais em áreas como Terapia Ocupacional, Fonoaudiologia e Psicologia.",
+   "impacto_cidadao": "Se implementada, a medida poderá resultar em mais profissionais capacitados para oferecer atendimento especializado a pessoas com TEA e outras condições do neurodesenvolvimento no município.",
+   "por_que_acompanhar": [
+    "Garantir que pessoas com TEA e outras condições do neurodesenvolvimento recebam atendimento especializado e de qualidade.",
+    "Verificar a efetividade das parcerias propostas e o uso dos recursos públicos.",
+    "Promover a inclusão e o desenvolvimento de serviços de saúde e educação na comunidade."
+   ],
+   "pontos_atencao": [
+    "A viabilidade orçamentária para a celebração e manutenção dessas parcerias.",
+    "A seleção das instituições de ensino superior parceiras e a qualidade da formação oferecida.",
+    "O prazo para a realização dos estudos e a implementação das parcerias."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6122/alexandreprado_-_indicacao369-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Alexandre Prado",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita a realização de estudos para a celebração de parcerias com instituições de ensino superior do Município e da região, especialmente aquelas que ofertam cursos de Terapia Ocupacional, Fonoaudiologia, Psicologia, Psicopedagogia e áreas correlatas, com o objetivo de ampliar a formação e qualificação de profissionais especializados no atendimento de pessoas com Transtorno do Espectro Autista (TEA) e outras condições do neurodesenvolvimento.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6122",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6122/alexandreprado_-_indicacao369-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6122/alexandreprado_-_indicacao369-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "75b688864f94e27485e27afc7ce61b2fee9c53d8",
+   "gerado_em": "2026-08-05T18:34:07+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-368",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 368/2026",
+   "numero": "368/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta indicação propõe uma mudança na lei dos servidores públicos municipais para que o tempo de afastamento por motivo de saúde não impeça o servidor de ter direito à licença-prêmio.",
+   "o_que_propoe": "Se aprovada, a proposta fará com que o período em que um servidor municipal se afasta para cuidar da própria saúde seja contado normalmente para a aquisição da licença-prêmio.",
+   "impacto_cidadao": "A medida pode influenciar as condições de trabalho e os direitos dos servidores públicos municipais, que são responsáveis pelos serviços prestados à população.",
+   "por_que_acompanhar": [
+    "Acompanhar como os direitos e benefícios dos servidores públicos são definidos, pois isso impacta a gestão de pessoal da prefeitura.",
+    "Verificar se a proposta contribui para a valorização do serviço público e a manutenção de um quadro de servidores motivado.",
+    "Entender como as leis trabalhistas para servidores são ajustadas e quais os critérios para concessão de benefícios."
+   ],
+   "pontos_atencao": [
+    "Possível impacto orçamentário futuro, caso a alteração resulte em mais concessões de licença-prêmio.",
+    "A proposta beneficia diretamente os servidores públicos municipais.",
+    "A indicação é um pedido ao Executivo, que decidirá se enviará um projeto de lei para a Câmara."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6121/alexandreprado_-_indicacao368-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Alexandre Prado",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita a alteração da legislação que dispõe sobre o Estatuto dos Servidores Públicos Municipais para assegurar que o afastamento para tratamento da própria saúde não prejudique a aquisição do direito à licença-prêmio.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6121",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6121/alexandreprado_-_indicacao368-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6121/alexandreprado_-_indicacao368-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "4c435a7c21b83fe7b4eb3a9e3fac92a5e667a64a",
+   "gerado_em": "2026-08-05T18:34:01+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-367",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 367/2026",
+   "numero": "367/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "infraestrutura",
+   "resumo": "A Indicação nº 367/2026, apresentada pelo vereador Afonso Monticeli, solicita à prefeitura a realização de serviços de limpeza, manutenção, melhorias estruturais e instalação de iluminação pública em uma escadaria específica no bairro Bom Pastor.",
+   "o_que_propoe": "A proposta é que a prefeitura realize a limpeza, manutenção, melhorias estruturais e instale iluminação pública na escadaria localizada entre a Avenida Artur Saoviolo Lima e a Rua Professor Liamar Lomeu.",
+   "impacto_cidadao": "Se a solicitação for atendida, os cidadãos que utilizam a escadaria poderão ter um acesso mais seguro e melhor iluminado.",
+   "por_que_acompanhar": [
+    "Verificar se a solicitação será atendida pela prefeitura e se os serviços serão executados.",
+    "Acompanhar a melhoria da infraestrutura em áreas públicas do município.",
+    "Garantir que as demandas da comunidade sejam consideradas e, se possível, atendidas pelo poder público."
+   ],
+   "pontos_atencao": [
+    "Indicações são sugestões ao Poder Executivo e não têm força de lei, dependendo da decisão da prefeitura para serem implementadas.",
+    "O impacto orçamentário para a realização dos serviços não é detalhado na indicação."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6120/afonsomonticeli_-_indicacao367-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Afonso Monticeli",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita que sejam realizados serviços de limpeza, manutenção, melhorias estruturais e instalação de iluminação pública na escadaria localizada entre a Avenida Artur Saoviolo Lima e a Rua Professor Liamar Lomeu, no bairro Bom Pator.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6120",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6120/afonsomonticeli_-_indicacao367-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6120/afonsomonticeli_-_indicacao367-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "6cfff81cbf21d22c80ab09adde61785b97711ce1",
+   "gerado_em": "2026-08-05T18:33:52+00:00"
+  },
+  {
+   "id": "CAMARA-2026-IND-366",
+   "fonte": "camara",
+   "tipo": "indicacao",
+   "tipo_label": "Indicação",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Indicação nº 366/2026",
+   "numero": "366/2026",
+   "data": "2026-08-05",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "mobilidade",
+   "resumo": "O vereador Afonso Monticeli sugeriu à prefeitura que realize o recapeamento asfáltico e melhore a sinalização na Rua Santa Margarida, em trechos específicos do bairro Bom Pastor.",
+   "o_que_propoe": "A proposta é que a Rua Santa Margarida tenha seu asfalto renovado e a sinalização horizontal aprimorada em duas seções.",
+   "impacto_cidadao": "Se a sugestão for aceita, os moradores e motoristas que utilizam a Rua Santa Margarida poderão ter mais segurança e conforto no trânsito.",
+   "por_que_acompanhar": [
+    "Verificar se a prefeitura irá atender à solicitação do vereador.",
+    "Acompanhar a melhoria da infraestrutura viária no bairro Bom Pastor.",
+    "Garantir que os recursos públicos sejam aplicados em melhorias para a comunidade."
+   ],
+   "pontos_atencao": [
+    "Por ser uma Indicação, a prefeitura não é obrigada a realizar a obra.",
+    "A execução da obra dependerá da disponibilidade orçamentária do município.",
+    "É importante observar o prazo e a qualidade da execução, caso a obra seja aprovada."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6119/afonsomonticeli_-_indicacao366-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Afonso Monticeli",
+   "situacao": "tramitação encerrada",
+   "ementa": "Solicita recapeamento asfáltico e melhorias na sinalização horizontal na Rua Santa Margarida, nos trechos compreendidos entre a Rua Presidente Tancredo Neves e a Avenida Artur Saoviolo Lima, trecho em paralelepípedo, bem como entre a Rua Tenente Joaquim Pinto e Avenida Catarina Limborço, no bairro Bom Pastor.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6119",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6119/afonsomonticeli_-_indicacao366-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6119/afonsomonticeli_-_indicacao366-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "81a0074a1ee7e8ab2ea31f69a4d6852ec9dffd5b",
+   "gerado_em": "2026-08-05T18:33:47+00:00"
+  },
   {
    "id": "CAMARA-2026-PLOE-45",
    "fonte": "camara",
@@ -375,17 +2020,17 @@
    "categoria": "Legislativo",
    "interesse_publico": "alto",
    "tema": "saúde",
-   "resumo": "O Requerimento nº 179/2026, de autoria do vereador Dandan, solicita informações sobre a disponibilidade do medicamento Abemaciclib, utilizado no tratamento de câncer.",
-   "o_que_propoe": "O requerimento busca obter dados sobre a oferta do medicamento Abemaciclib para pacientes no município.",
-   "impacto_cidadao": "",
+   "resumo": "O Requerimento nº 179/2026 solicita informações à Câmara Municipal de Varginha-MG sobre a disponibilidade do medicamento Abemaciclib, utilizado no tratamento de câncer.",
+   "o_que_propoe": "",
+   "impacto_cidadao": "Pode ajudar a verificar se pacientes com câncer em Varginha-MG têm acesso ao medicamento Abemaciclib.",
    "por_que_acompanhar": [
-    "Para verificar se o município está garantindo o acesso a medicamentos essenciais para a saúde pública.",
-    "Para entender as políticas de saúde relacionadas ao tratamento de doenças graves como o câncer.",
-    "Para fiscalizar a atuação do poder público na oferta de serviços e insumos médicos."
+    "Para garantir a transparência sobre a disponibilidade de medicamentos essenciais.",
+    "Para assegurar que pacientes com câncer tenham acesso a tratamentos adequados.",
+    "Para fiscalizar a atuação do poder público na área da saúde."
    ],
    "pontos_atencao": [
-    "A resposta ao requerimento pode revelar desafios na aquisição ou distribuição de medicamentos de alto custo.",
-    "A disponibilidade do medicamento é crucial para pacientes em tratamento de câncer."
+    "A resposta ao requerimento pode indicar a necessidade de ações para garantir o fornecimento do medicamento.",
+    "A falta do medicamento pode impactar diretamente a vida de pacientes em tratamento."
    ],
    "valores": {
     "total": null,
@@ -401,7 +2046,7 @@
    },
    "autor": "Dandan",
    "situacao": "em tramitação",
-   "ementa": "Requer informações sobre a disponibilidade do medicamento Abemaciclib, utilizado no tratamento de câncer",
+   "ementa": "Requer informações sobre a disponibilidade do medicamento Abemaciclib, utilizado no tratamento de câncer.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6092",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6092/danielrodrigues_-_requerimento179-2026.pdf"
@@ -411,8 +2056,8 @@
     "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6092/danielrodrigues_-_requerimento179-2026.pdf#page=1"
    },
    "origem_ia": "ia",
-   "fonte_hash": "a6694a82dcb809392d04ef36fd58834dd99b7a21",
-   "gerado_em": "2026-07-15T11:39:40+00:00"
+   "fonte_hash": "727a56af37a98e7e86b7face61adf6b1c02bd66f",
+   "gerado_em": "2026-08-05T18:35:27+00:00"
   },
   {
    "id": "CAMARA-2026-PLOL-69",
@@ -17213,7 +18858,7 @@
     "valor_principal_ia": ""
    },
    "autor": "Leonardo Vinhas Ciacci",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "ALTERA A LEI ORDINÁRIA N° 7.068, DE 16 DE DEZEMBRO DE 2022, E DÁ OUTRAS PROVIDÊNCIAS.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/5779",

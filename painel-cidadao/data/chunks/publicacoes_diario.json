@@ -1,8 +1,4433 @@
 {
- "gerado_em": "2026-08-04T09:12:25+00:00",
+ "gerado_em": "2026-08-09T06:35:43+00:00",
  "fonte": "diario",
- "total": 380,
+ "total": 458,
  "publicacoes": [
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian382026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA N°38/2026",
+   "numero": "38/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Portaria nº 38/2026 da Câmara Municipal de Varginha torna sem efeito, a pedido, a designação de um servidor para uma função gratificada.",
+   "pontos_atencao": [
+    "A portaria não indica quem assumirá a função de Coordenador do Processo Legislativo Orçamentário, nem se haverá uma nova designação.",
+    "A função gratificada FG 25% representa um custo para o orçamento público, e sua vacância ou nova designação impacta as despesas com pessoal."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 30,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=30"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23340de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.340, DE 03 DE AGOSTO DE 2026.",
+   "numero": "23.340",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "administração pública",
+   "resumo": "A Prefeitura de Varginha determinou a abertura de um processo de sindicância para investigar fatos relacionados ao Processo Administrativo nº 4.187/2026. Uma comissão de servidores foi nomeada para conduzir essa apuração.",
+   "pontos_atencao": [
+    "O prazo inicial de 15 dias para a conclusão da sindicância pode ser prorrogado, o que pode estender o tempo da investigação.",
+    "A Portaria não especifica a natureza dos \"fatos\" a serem apurados, o que impede uma avaliação mais detalhada do escopo da investigação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 20,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=20"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23339de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.339, DE 03 DE AGOSTO DE 2026.",
+   "numero": "23.339",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "administração pública",
+   "resumo": "A Prefeitura de Varginha determinou a abertura de um processo de sindicância para investigar fatos relatados em um processo administrativo anterior e outros fatos relacionados.",
+   "pontos_atencao": [
+    "O objeto específico da investigação (Processo Administrativo nº 180/2025) não é detalhado na portaria.",
+    "A comissão tem um prazo inicial de 15 dias para concluir os trabalhos, com possibilidade de recondução em caso de dilatação do prazo.",
+    "A apuração pode se estender a 'fatos conexos que emergirem no decorrer dos trabalhos', ampliando o escopo da investigação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 19,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=19"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23338de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.338, DE 03 DE AGOSTO DE 2026.",
+   "numero": "23.338",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria anula a nomeação de uma candidata aprovada em concurso público e a coloca no final da lista de espera.",
+   "pontos_atencao": [
+    "A reclassificação foi solicitada pela própria candidata e deferida em um processo administrativo.",
+    "A Portaria revoga uma nomeação anterior da mesma candidata, publicada em 22/07/2026."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 18,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=18"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23331de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.331, DE 03 DE AGOSTO DE 2026.",
+   "numero": "23.331",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "administração pública",
+   "resumo": "Esta portaria da Prefeitura de Varginha prorroga por mais 15 dias o prazo estabelecido em uma portaria anterior, a de número 23.287/2026.",
+   "pontos_atencao": [
+    "A falta de detalhes sobre o conteúdo da Portaria nº 23.287/2026 impede a avaliação completa do motivo e do impacto da prorrogação.",
+    "A retroatividade dos efeitos da prorrogação pode ter implicações que não são claras sem o contexto da portaria original."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 18,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=18"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23328de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.328, DE 30 DE JULHO DE 2026.",
+   "numero": "23.328",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "concessões",
+   "resumo": "Esta Portaria prorroga por mais 15 dias o prazo para um grupo de trabalho que está preparando a licitação para a concessão do Novo Mercado Municipal de Varginha.",
+   "pontos_atencao": [
+    "É a segunda prorrogação de prazo para este grupo de trabalho, o que pode indicar desafios na execução das tarefas.",
+    "A portaria menciona um contrato administrativo e um aditivo, cujos detalhes não estão explícitos neste documento."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 17,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=17"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23323de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.323, DE 29 DE JULHO DE 2026.",
+   "numero": "23.323",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria prorroga por mais 12 meses a carga horária de trabalho diferenciada de uma servidora pública municipal de Varginha.",
+   "pontos_atencao": [
+    "A prorrogação é específica para a servidora Vanuza Aparecida Coelho.",
+    "O prazo da prorrogação é de 12 meses.",
+    "A decisão se baseia no Decreto Municipal nº 9.997/2020 e leis municipais."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 17,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=17"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23322de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.322, DE 29 DE JULHO DE 2026.",
+   "numero": "23.322",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha prorrogou a readaptação funcional de uma servidora pública, detentora do cargo de Educador Infantil, até junho de 2027.",
+   "pontos_atencao": [
+    "A prorrogação da readaptação é em caráter provisório.",
+    "Os efeitos da portaria retroagem a junho de 2026."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 16,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=16"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23321de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.321, DE 29 DE JULHO DE 2026.",
+   "numero": "23.321",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha prorrogou a readaptação funcional de uma servidora pública, a Técnica em Enfermagem Eliziane de Paula Silva Braga.",
+   "pontos_atencao": [
+    "A prorrogação da readaptação é em caráter provisório.",
+    "A decisão está fundamentada em um Processo Administrativo específico (nº 9.908/2025)."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 15,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=15"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23320de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.320, DE 29 DE JULHO DE 2026.",
+   "numero": "23.320",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria prorroga o prazo da carga horária de trabalho de uma servidora pública municipal em Varginha.",
+   "pontos_atencao": [
+    "A portaria retroage seus efeitos para uma data anterior à sua publicação (12/07/2026).",
+    "A decisão se baseia em legislação municipal anterior (Lei Municipal nº 2.673/1995, Lei Municipal nº 5.986/2015 e Decreto Municipal nº 7.361/2015)."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 15,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=15"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23319de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.319, DE 29 DE JULHO DE 2026.",
+   "numero": "23.319",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha prorrogou por 12 meses a carga horária de trabalho da servidora Selma Conceição Silva, que ocupa o cargo de ASP/Manutenção e Conservação de Próprios Públicos.",
+   "pontos_atencao": [
+    "A portaria faz referência a atos anteriores (Portarias Municipais nº 21.910/2025 e nº 20.467/2024) que não estão detalhados no texto.",
+    "Os efeitos da prorrogação são retroativos a 31 de março de 2026."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 14,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=14"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23317de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.317, DE 29 DE JULHO DE 2026.",
+   "numero": "23.317",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria da Prefeitura de Varginha prorroga por 12 meses a carga horária de trabalho da servidora Graziela de Oliveira, que ocupa o cargo de ASP/Manutenção e Conservação de Próprios Públicos.",
+   "pontos_atencao": [
+    "A portaria tem efeitos retroativos a 12 de julho de 2026.",
+    "Beneficia uma servidora específica.",
+    "A prorrogação é por um período determinado de 12 meses."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 14,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=14"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23316de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.316, DE 29 DE JULHO DE 2026.",
+   "numero": "23.316",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha prorrogou por 12 meses a forma de jornada de trabalho da servidora Fabiana Faria Botelho, que atua como enfermeira.",
+   "pontos_atencao": [
+    "A portaria se refere a uma servidora específica.",
+    "Trata-se de uma prorrogação de um arranjo de trabalho já existente.",
+    "A prorrogação tem duração de 12 meses."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 13,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=13"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23315de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Fundação Cultural do Município de Varginha",
+   "titulo": "PORTARIA Nº 23.315, DE 28 DE JULHO DE 2026.",
+   "numero": "23.315",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria redistribui dois servidores públicos entre a Fundação Cultural do Município de Varginha e a Fundação Cultural do Município de Varginha. Um servidor é transferido da Fundação para a Prefeitura e outro da Prefeitura para a Fundação.",
+   "pontos_atencao": [
+    "Os vencimentos base dos servidores redistribuídos permanecerão os mesmos, não havendo alteração de custo salarial.",
+    "A redistribuição é uma movimentação interna de pessoal entre órgãos da administração municipal."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 2112.13,
+    "encontrados": [
+     2112.13
+    ],
+    "itens": [
+     {
+      "valor": 2112.13,
+      "natureza": "vencimento-base",
+      "pagina": 12,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=12"
+     }
+    ],
+    "natureza": "vencimento-base",
+    "fonte_total": "texto oficial do Diário",
+    "confianca": "media",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": 12,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=12"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 12,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=12"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23313de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.313, DE 28 DE JULHO DE 2026.",
+   "numero": "23.313",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha concedeu licença-prêmio por assiduidade a uma servidora pública municipal.",
+   "pontos_atencao": [
+    "A licença de um profissional de saúde pode exigir planejamento para evitar interrupção no atendimento.",
+    "Verificar se há previsão de substituição para o período da licença, especialmente em cargos essenciais."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 11,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=11"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23299de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Fundação Cultural do Município de Varginha",
+   "titulo": "PORTARIA Nº 23.299, DE 23 DE JULHO DE 2026.",
+   "numero": "23.299",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "cultura",
+   "resumo": "Esta Portaria nomeia os novos membros do Conselho Deliberativo da Fundação Cultural do Município de Varginha.",
+   "pontos_atencao": [
+    "Os trabalhos desenvolvidos pelos membros do Conselho Deliberativo não serão remunerados, sendo considerados serviços públicos relevantes.",
+    "A Portaria revoga a nomeação anterior, indicando uma renovação na composição do conselho."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 11,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=11"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23298de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.298, DE 23 DE JULHO DE 2026.",
+   "numero": "23.298",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Portaria nº 23.298 da Prefeitura de Varginha prorroga por 12 meses a carga horária de trabalho da servidora Lucimara Paula Modesto Agnelo, que ocupa o cargo de Técnica em Enfermagem.",
+   "pontos_atencao": [
+    "A portaria beneficia uma servidora específica.",
+    "A prorrogação tem um prazo definido de 12 meses."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 10,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=10"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23296de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.296, DE 23 DE JULHO DE 2026.",
+   "numero": "23.296",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Uma Portaria da Prefeitura de Varginha declara a vacância de um cargo público de Oficial de Administração.",
+   "pontos_atencao": [
+    "A vacância é declarada por um período de 3 anos, salvo pedido anterior da servidora.",
+    "Os efeitos da portaria são retroativos a 25 de junho de 2026.",
+    "O motivo da vacância é a posse da servidora em outro cargo público que não pode ser acumulado."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 9,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=9"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23295de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.295, DE 23 DE JULHO DE 2026.",
+   "numero": "23.295",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha nomeou os membros da Comissão de Prevenção e Apuração de Assédio Moral e Sexual (COPAT) no âmbito do município.",
+   "pontos_atencao": [
+    "A participação na comissão é considerada serviço público relevante e não é remunerada.",
+    "Os membros nomeados terão um mandato de dois anos, permitida uma única recondução."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 8,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=8"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23289de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.289, DE 22 DE JULHO DE 2026.",
+   "numero": "23.289",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria da Prefeitura de Varginha prorroga por 12 meses o prazo de uma portaria anterior que trata da carga horária de trabalho de um servidor público.",
+   "pontos_atencao": [
+    "Trata-se de uma prorrogação de uma decisão anterior, não uma nova atribuição.",
+    "Envolve a jornada de trabalho de um servidor específico."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 8,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=8"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23281de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.281, DE 22 DE JULHO DE 2026.",
+   "numero": "23.281",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "direitos da pessoa com deficiência",
+   "resumo": "A Portaria nº 23.281 da Prefeitura de Varginha substitui membros do Conselho Municipal de Defesa dos Direitos da Pessoa com Deficiência (CODEVA).",
+   "pontos_atencao": [
+    "Observar se os novos membros possuem qualificação ou experiência relevante para a pauta da pessoa com deficiência.",
+    "Analisar se as substituições afetam a representatividade dos diferentes setores no conselho."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 7,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=7"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian23259de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.259, DE 15 DE JULHO DE 2026.",
+   "numero": "23.259",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Uma Portaria da Prefeitura de Varginha prorroga a readaptação funcional de um servidor público até maio de 2027.",
+   "pontos_atencao": [
+    "A prorrogação da readaptação é em \"caráter provisório\", indicando que a situação pode ser revista.",
+    "A readaptação do servidor já se estende desde um processo administrativo iniciado em 2022."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 6,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=6"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian2137202",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "INPREV",
+   "titulo": "PORTARIA Nº 2.137/2026",
+   "numero": "2.137/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "previdência",
+   "resumo": "A Portaria da INPREV nomeia os membros da comissão eleitoral responsável por organizar as eleições dos conselhos Deliberativo e Fiscal do Instituto de Previdência dos Servidores Públicos Municipais (INPREV) em 2026.",
+   "pontos_atencao": [
+    "A composição da comissão deve garantir a representatividade e a imparcialidade necessárias para um processo eleitoral justo.",
+    "Os membros da comissão exercerão suas funções sem prejuízo de seus cargos efetivos, o que exige organização para evitar sobrecarga."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 34,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=34"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian1392026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "PORTARIA Nº 139/2026",
+   "numero": "139/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "gestao_publica",
+   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) publicou uma portaria que estende por 30 dias o prazo estabelecido em uma portaria anterior, a de número 116/2026.",
+   "pontos_atencao": [
+    "A portaria não especifica o conteúdo da Portaria nº 116/2026, dificultando a compreensão do impacto da prorrogação."
+   ],
+   "envolvidos": [
+    {
+     "nome": "INSTITUTO DE DESENVOLVIMENTO PÚBLICO PLENUM BRASIL LTDA",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": 1890.0,
+    "encontrados": [
+     1890.0
+    ],
+    "itens": [
+     {
+      "valor": 1890.0,
+      "natureza": "valor citado no ato",
+      "pagina": 33,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=33"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário",
+    "confianca": "media",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": 33,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=33"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 32,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=32"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian1382026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "PORTARIA Nº 138/2026",
+   "numero": "138/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "saúde",
+   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) prorrogou por 30 dias o prazo de uma portaria anterior, a Portaria nº 115/2026.",
+   "pontos_atencao": [
+    "A portaria retroage à data da portaria anterior, o que pode ter implicações administrativas.",
+    "O conteúdo da Portaria nº 115/2026 não é detalhado, impedindo a compreensão completa do impacto desta prorrogação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 32,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=32"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-portarian1372026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "PORTARIA Nº 137/2026",
+   "numero": "137/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "saúde",
+   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) publicou uma portaria que estende por mais 30 dias um prazo estabelecido anteriormente pela Portaria nº 122/2026.",
+   "pontos_atencao": [
+    "O conteúdo específico da Portaria nº 122/2026, cujo prazo foi prorrogado, não é detalhado, o que impede uma compreensão completa do motivo e impacto da extensão.",
+    "A portaria estabelece que a prorrogação retroage à data da portaria anterior, o que pode ter implicações legais ou administrativas dependendo do contexto."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 31,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=31"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-pessoal-editaldeconvocao",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Edital de convocação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO Nº. 038/2026",
+   "numero": "038/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, está convocando candidatos aprovados em concurso público para preencher uma vaga temporária de Farmacêutico/Bioquímico.",
+   "pontos_atencao": [
+    "A contratação é temporária, com prazo inicial de 6 meses, podendo ser prorrogada por igual período.",
+    "A vaga é justificada por excepcional interesse público para substituição de licença-maternidade e atendimento de demandas na UPA.",
+    "O regime jurídico para os servidores do Município de Varginha é o estatutário, mesmo para contratações temporárias."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [
+     7786.96,
+     528.03
+    ],
+    "itens": [
+     {
+      "valor": 7786.96,
+      "natureza": "vencimento-base",
+      "pagina": 25,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=25"
+     },
+     {
+      "valor": 528.03,
+      "natureza": "gratificação mensal",
+      "pagina": 25,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=25"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "8.314,99",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 25,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=25"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-norma-decreton12675de2",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "DECRETO Nº 12.675, DE 29 DE JULHO DE 2026.",
+   "numero": "12.675",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "patrimônio público",
+   "resumo": "Este decreto prorroga os prazos para a formalização e registro de uma doação de terras para a Prefeitura de Varginha, que havia sido autorizada por uma lei municipal anterior.",
+   "pontos_atencao": [
+    "A razão específica para a necessidade de prorrogação dos prazos não é detalhada, apenas mencionada como 'necessidade de prorrogação'.",
+    "O 'encargo' (condição ou ônus) da doação não é especificado no decreto, o que pode ter implicações para o município.",
+    "A responsabilidade pelos custos de registro da escritura é da 'donatária', que é a Prefeitura, o que implica em despesa pública."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 5,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=5"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:41+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-norma-decreton12673de2",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "DECRETO Nº 12.673, DE 23 DE JULHO DE 2026.",
+   "numero": "12.673",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "Este decreto prorroga os prazos para a formalização da doação de um imóvel da Prefeitura de Varginha para o Centro de Referência em Pesquisas de Intervenção e Tratamento para Crianças e Adolescentes em Situação de Sofrimento Psíquico Severo e Persistente (CONVIVER).",
+   "pontos_atencao": [
+    "A prorrogação dos prazos deve ser acompanhada para garantir que a doação seja finalizada sem novas demoras.",
+    "Os custos e procedimentos de registro continuam sendo responsabilidade da instituição beneficiada."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 4,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=4"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:41+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-norma-decreton12672de2",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "DECRETO Nº 12.672, DE 23 DE JULHO DE 2026.",
+   "numero": "12.672",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "Este decreto da Prefeitura de Varginha prorroga os prazos para a Associação São Luciano de Antioquia formalizar a doação de um terreno e registrá-lo. O terreno é destinado à construção de um Hospital de Cuidados Paliativos.",
+   "pontos_atencao": [
+    "A prorrogação dos prazos pode indicar desafios na execução do projeto ou na infraestrutura do local doado.",
+    "É importante observar se a Associação São Luciano de Antioquia cumprirá os novos prazos e os encargos da doação.",
+    "A ausência de infraestrutura na área doada pode gerar custos adicionais ou atrasos futuros."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 3,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=3"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:41+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-norma-decreton12668de2",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "DECRETO Nº 12.668, DE 23 DE JULHO DE 2026.",
+   "numero": "12.668",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "administração pública",
+   "resumo": "Este decreto altera a composição da Comissão de Prevenção e Apuração de Assédio Moral e Sexual (COPAT) da Prefeitura de Varginha.",
+   "pontos_atencao": [
+    "A efetividade da comissão dependerá da designação de membros qualificados e comprometidos.",
+    "A paridade de gênero deve ser efetivamente implementada na prática na escolha dos membros."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 3,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=3"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:41+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-licitacao-edital0362026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL 036/2026",
+   "numero": "036/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, informou que não houve candidatos interessados na vaga de Médico Plantonista Cirurgião Geral, que foi ofertada através do Edital 036/2026.",
+   "pontos_atencao": [
+    "A falta de candidatos para uma posição médica essencial pode indicar desafios na atração de profissionais para o serviço público.",
+    "Será necessário um novo plano ou processo para preencher a vaga de cirurgião geral plantonista e garantir o atendimento à saúde."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 24,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=24"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-licitacao-edital0332026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL 033/2026",
+   "numero": "033/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha, por meio da Secretaria Municipal de Saúde, informou que não houve candidatos interessados na vaga de Farmacêutico/Bioquímico oferecida pelo Edital 033/2026.",
+   "pontos_atencao": [
+    "A vaga de Farmacêutico/Bioquímico permanece sem preenchimento, o que pode exigir novas ações da Secretaria de Saúde.",
+    "É importante observar os próximos passos da prefeitura para garantir a ocupação da posição."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 24,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=24"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-licitacao-avisoredesignaop-1512026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "AVISO REDESIGNAÇÃO - PROCESSO Nº 151/2026 – PREGÃO ELETRÔNICO Nº 075/2026",
+   "numero": "151/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) alterou as condições e a data de uma licitação para contratar serviços médicos especializados em cardiologia e avaliação pré-anestésica.",
+   "pontos_atencao": [
+    "A licitação é para serviços médicos especializados, que são cruciais para a segurança e o bem-estar dos pacientes.",
+    "A redesignação da data indica uma alteração no cronograma original do processo.",
+    "A modalidade \"menor preço por item\" busca a proposta mais econômica para cada serviço."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Fundação Hospitalar do Município de Varginha",
+     "cnpj": "19.110.162/0001-00",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 33,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=33"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-licitacao-avisoredesignaop",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "AVISO REDESIGNAÇÃO - PROCESSO Nº 141/2026 – PREGÃO ELETRÔNICO Nº 069/2026",
+   "numero": "141/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) informou que o processo de licitação para contratar serviços de manutenção de instrumentais cirúrgicos foi reagendado.",
+   "pontos_atencao": [
+    "As alterações nas condições do edital, que podem influenciar a participação de empresas.",
+    "A necessidade de fiscalizar a execução do contrato para garantir a manutenção adequada dos equipamentos.",
+    "O processo de escolha da empresa que prestará um serviço crítico para o funcionamento do hospital."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Fundação Hospitalar do Município de Varginha",
+     "cnpj": "19.110.162/0001-00",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 33,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=33"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-inexigibilidade-extratodepublica",
+   "fonte": "diario",
+   "tipo": "inexigibilidade",
+   "tipo_label": "Inexigibilidade",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "EXTRATO DE PUBLICAÇÃO DE RESULTADO - INEXIGIBILIDADE Nº 023/2026 - PROCESSO Nº 081/2026",
+   "numero": "023/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "saúde",
+   "resumo": "O CISSUL/SAMU contratou diretamente uma empresa para prestar serviços de assistência médico-pericial em um processo judicial trabalhista.",
+   "pontos_atencao": [
+    "A contratação foi feita por inexigibilidade, sem licitação competitiva.",
+    "O valor do contrato é de R$ 3.000,00.",
+    "A empresa contratada é a MED KER LTDA."
+   ],
+   "envolvidos": [
+    {
+     "nome": "MED KER LTDA",
+     "papel": "empresa",
+     "cnpj": "03.665.024/0001-58"
+    },
+    {
+     "nome": "CISSUL/SAMU",
+     "cnpj": "13985869000184",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": 3000.0,
+    "encontrados": [
+     3000.0
+    ],
+    "itens": [
+     {
+      "valor": 3000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 31,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=31"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "3.000,00",
+    "pagina": 31,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=31"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 31,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=31"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-contrato-extratodecontrat",
+   "fonte": "diario",
+   "tipo": "contrato",
+   "tipo_label": "Extrato de contrato",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EXTRATO DE CONTRATO — Contrato : 086/2026. Datado de 30/07/2026.",
+   "numero": "086/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "infraestrutura",
+   "resumo": "A Prefeitura de Varginha firmou um contrato com a Associação dos Municípios da Macrorregião do Baixo Sapucaí (AMBASP) para a contratação de serviços de máquina pesada (motoniveladora).",
+   "pontos_atencao": [
+    "O Prefeito Municipal de Varginha é também o Presidente da AMBASP, a entidade contratada, o que pode gerar questionamentos sobre a governança e potencial conflito de interesses.",
+    "O valor total do contrato é de R$ 195.000,00 pelo período de 24 meses."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 195000.0,
+    "encontrados": [
+     195000.0
+    ],
+    "itens": [
+     {
+      "valor": 195000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 21,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=21"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "195.000,00",
+    "pagina": 21,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=21"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 20,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=20"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-aditivo-extratosdetermos-3232026",
+   "fonte": "diario",
+   "tipo": "aditivo",
+   "tipo_label": "Termo aditivo",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EXTRATOS DE TERMOS ADITIVOS — Aditivo nº : 323/2026. Datado de 17/07/2026.",
+   "numero": "323/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "assistência social",
+   "resumo": "O Município de Varginha e a Associação Anjos de Branco assinaram um aditivo para estender o prazo de um Termo de Fomento.",
+   "pontos_atencao": [
+    "O valor original do Termo de Fomento não é especificado neste aditivo."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 6547.72,
+    "encontrados": [
+     6547.72
+    ],
+    "itens": [
+     {
+      "valor": 6547.72,
+      "natureza": "valor mensal",
+      "pagina": 22,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=22"
+     }
+    ],
+    "natureza": "valor mensal",
+    "fonte_total": "texto oficial do Diário",
+    "confianca": "media",
+    "periodicidade": "por mês",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": 22,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=22"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 22,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=22"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-aditivo-extratosdetermos",
+   "fonte": "diario",
+   "tipo": "aditivo",
+   "tipo_label": "Termo aditivo",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EXTRATOS DE TERMOS ADITIVOS — Aditivo nº : 298/2026. Datado de 03/07/2026.",
+   "numero": "298/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "orçamento",
+   "resumo": "Este documento apresenta extratos de sete termos aditivos a contratos e termos de fomento da Prefeitura de Varginha, publicados no Diário Oficial.",
+   "pontos_atencao": [
+    "Prorrogação de contratos de locação e serviços.",
+    "Reajustes de valores em diversos contratos, impactando o orçamento municipal.",
+    "Acréscimo de serviços em contrato de pavimentação e terraplanagem."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [
+     76804.86,
+     50089.25,
+     12532.6,
+     5030.97,
+     2104.24
+    ],
+    "itens": [
+     {
+      "valor": 2104.24,
+      "natureza": "valor mensal",
+      "pagina": 21,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=21"
+     },
+     {
+      "valor": 76804.86,
+      "natureza": "valor citado no ato",
+      "pagina": 21,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=21"
+     },
+     {
+      "valor": 12532.6,
+      "natureza": "valor mensal",
+      "pagina": 21,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=21"
+     },
+     {
+      "valor": 5030.97,
+      "natureza": "valor mensal",
+      "pagina": 21,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=21"
+     },
+     {
+      "valor": 50089.25,
+      "natureza": "valor do reajuste",
+      "pagina": 22,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=22"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 21,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=21"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-aditivo-extratodetermoad-202026",
+   "fonte": "diario",
+   "tipo": "aditivo",
+   "tipo_label": "Termo aditivo",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EXTRATO DE TERMO ADITIVO — Aditivo nº 20/2026. Datado de 03/08/2026.",
+   "numero": "20/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "saúde",
+   "resumo": "Este é um aditivo a um contrato existente entre a Câmara Municipal de Varginha e a empresa L.C.B. – Atividades Médicas Ltda.",
+   "pontos_atencao": [
+    "O reajuste do valor mensal do contrato.",
+    "A prorrogação do prazo de vigência por mais 12 meses.",
+    "O contrato envolve a prestação de atividades médicas para a Câmara Municipal."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 1344.37,
+    "encontrados": [
+     1344.37
+    ],
+    "itens": [
+     {
+      "valor": 1344.37,
+      "natureza": "valor mensal",
+      "pagina": 30,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=30"
+     }
+    ],
+    "natureza": "valor mensal",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "1.344,37",
+    "pagina": 30,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=30"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 30,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=30"
+   },
+   "qualidade": {
+    "segmentacao_ok": false,
+    "atos_detectados_no_trecho": 2
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1862-aditivo-extratodetermoad",
+   "fonte": "diario",
+   "tipo": "aditivo",
+   "tipo_label": "Termo aditivo",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EXTRATO DE TERMO ADITIVO — Aditivo nº : 175/2026. Datado de 03/08/2026.",
+   "numero": "175/2026",
+   "data": "2026-08-07",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saneamento",
+   "resumo": "Este é o terceiro aditivo a um convênio entre o Município de Varginha, a Agência Reguladora Intermunicipal de Saneamento de Minas Gerais (ARISMIG) e a Companhia de Saneamento de Minas Gerais (COPASA/MG).",
+   "pontos_atencao": [
+    "O convênio foi prorrogado por um período significativo, até 2030.",
+    "Há um custo mensal de regulação estabelecido de R$ 9.382,10."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 9382.1,
+    "encontrados": [
+     9382.1
+    ],
+    "itens": [
+     {
+      "valor": 9382.1,
+      "natureza": "valor citado no ato",
+      "pagina": 23,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=23"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "9.382,10",
+    "pagina": 23,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=23"
+   },
+   "edicao": "1862",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/269/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 23,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202613071343521ece64bb6a8d1b2603f980bd9e9ce9.pdf#page=23"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1861-pessoal-portarian1442026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "PORTARIA Nº 144/2026, 05 DE AGOSTO DE 2026.",
+   "numero": "144/2026",
+   "data": "2026-08-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria designa temporariamente uma empregada pública para uma função gratificada no CISSUL/SAMU, devido ao afastamento da titular por férias.",
+   "pontos_atencao": [
+    "A designação é temporária e vinculada ao período de férias da titular.",
+    "A empregada designada fará jus a uma gratificação correspondente à função durante a substituição."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "edicao": "1861",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/268/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 12,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=12"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1861-pessoal-editaldeconvocao-0372026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Edital de convocação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 037/2026",
+   "numero": "037/2026",
+   "data": "2026-08-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "Este edital convoca candidatos aprovados no concurso público para a vaga de Farmacêutico Bioquímico na Secretaria Municipal de Saúde de Varginha. O objetivo é preencher uma vaga temporária para atuar em horário estendido nas unidades de saúde.",
+   "pontos_atencao": [
+    "A contratação é temporária, por 6 meses, podendo ser prorrogada, o que pode gerar instabilidade no quadro de pessoal.",
+    "A justificativa é de \"caráter emergencial\" e \"excepcional interesse público\" para atender demandas em horário estendido.",
+    "O horário de trabalho é fixo (17h às 21h), e a não disponibilidade impede a assunção da vaga."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 3893.48,
+    "encontrados": [
+     3893.48
+    ],
+    "itens": [
+     {
+      "valor": 3893.48,
+      "natureza": "vencimento-base",
+      "pagina": 8,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=8"
+     }
+    ],
+    "natureza": "vencimento-base",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "3.893,48",
+    "pagina": 8,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=8"
+   },
+   "edicao": "1861",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/268/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 8,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=8"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1861-pessoal-editaldeconvocao",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Edital de convocação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EDITAL DE CONVOCAÇÃO nº 034/2026",
+   "numero": "034/2026",
+   "data": "2026-08-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha convoca um candidato aprovado em concurso público para a vaga temporária de Técnico em Enfermagem - US.",
+   "pontos_atencao": [
+    "A contratação é de caráter temporário, com duração de 6 meses, podendo ser prorrogada por igual período.",
+    "A vaga é para substituir uma servidora afastada por licença-maternidade, o que justifica a urgência e o caráter temporário.",
+    "Os candidatos devem atender a requisitos específicos de formação e apresentar uma série de documentos para a contratação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": 4111.34,
+    "encontrados": [
+     4111.34
+    ],
+    "itens": [
+     {
+      "valor": 4111.34,
+      "natureza": "vencimento-base",
+      "pagina": 4,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=4"
+     }
+    ],
+    "natureza": "vencimento-base",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "4.111,34",
+    "pagina": 4,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=4"
+   },
+   "edicao": "1861",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/268/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 4,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=4"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1861-licitacao-extratodepublica-0000652026",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "EXTRATO DE PUBLICAÇÃO - PROCESSO ADMINISTRATIVO Nº. 000065/2026 - PREGÃO Nº. 000017/2026",
+   "numero": "000065/2026",
+   "data": "2026-08-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "O CISSUL/SAMU está realizando uma licitação para comprar extintores de incêndio e seus suportes para suas instalações e ambulâncias.",
+   "pontos_atencao": [
+    "O valor total estimado para a aquisição é de R$ 66.097,30.",
+    "A licitação é para registro de preços, o que significa que as compras serão feitas conforme a necessidade futura.",
+    "O critério de julgamento é o menor preço, o que exige atenção à qualidade dos produtos oferecidos."
+   ],
+   "envolvidos": [
+    {
+     "nome": "CISSUL/SAMU",
+     "cnpj": "13.985.869/0001-84",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": 66097.3,
+    "encontrados": [
+     66097.3
+    ],
+    "itens": [
+     {
+      "valor": 66097.3,
+      "natureza": "valor total",
+      "pagina": 13,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=13"
+     }
+    ],
+    "natureza": "valor total",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "66.097,30",
+    "pagina": 13,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=13"
+   },
+   "edicao": "1861",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/268/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 13,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=13"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1861-licitacao-extratodepublica",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "EXTRATO DE PUBLICAÇÃO - PROCESSO ADMINISTRATIVO Nº. 000067/2026 - PREGÃO Nº. 000016/2026",
+   "numero": "000067/2026",
+   "data": "2026-08-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "O CISSUL/SAMU está realizando um processo de licitação para registrar preços para futuras aquisições de materiais médico-hospitalares e dispositivos para atendimento de emergência.",
+   "pontos_atencao": [
+    "O valor total estimado do processo é de R$ 498.329,60.",
+    "A licitação se refere a itens remanescentes de um processo anterior que não foi totalmente concluído.",
+    "O prazo final para envio de propostas é 19/08/2026."
+   ],
+   "envolvidos": [
+    {
+     "nome": "CISSUL/SAMU",
+     "cnpj": "13.985.869/0001-84",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": 498329.6,
+    "encontrados": [
+     498329.6
+    ],
+    "itens": [
+     {
+      "valor": 498329.6,
+      "natureza": "valor total",
+      "pagina": 13,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=13"
+     }
+    ],
+    "natureza": "valor total",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "498.329,60",
+    "pagina": 13,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=13"
+   },
+   "edicao": "1861",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/268/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 13,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=13"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1861-licitacao-avisopregoeletrn",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "AVISO - PREGÃO ELETRÔNICO Nº 105 / 2026 - (PROCESSO ADMINISTRATIVO Nº 240 / 2026)",
+   "numero": "105",
+   "data": "2026-08-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Prefeitura de Varginha publicou um aviso de Pregão Eletrônico para contratar uma empresa especializada em serviços contínuos de portaria para a Unidade de Pronto Atendimento (UPA).",
+   "pontos_atencao": [
+    "Acompanhar o processo licitatório para garantir a transparência e a escolha da proposta mais vantajosa para o município.",
+    "Verificar se a empresa contratada possui experiência e capacidade para prestar os serviços de portaria na UPA.",
+    "Observar a qualidade dos serviços prestados após a contratação, uma vez que impactam diretamente o funcionamento da UPA."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Prefeitura de Varginha",
+     "cnpj": "18.240.119/0001-05",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "edicao": "1861",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/268/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 3,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=3"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1861-inexigibilidade-extratodepublica",
+   "fonte": "diario",
+   "tipo": "inexigibilidade",
+   "tipo_label": "Inexigibilidade",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "EXTRATO DE PUBLICAÇÃO DE RESULTADO - INEXIGIBILIDADE?Nº 022/2026 - PROCESSO Nº 080/2026",
+   "numero": "022/2026",
+   "data": "2026-08-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "saúde",
+   "resumo": "O CISSUL/SAMU contratou diretamente uma instituição para alugar um auditório e serviços relacionados para um evento de socorristas em Varginha.",
+   "pontos_atencao": [
+    "Contratação por inexigibilidade, sem concorrência.",
+    "O valor de R$ 4.000,00 para locação de auditório e serviços.",
+    "A empresa contratada é uma \"Instituicao Adv De Educ E Assist Social Este Brasileira\", verificar se é a mais adequada para o serviço."
+   ],
+   "envolvidos": [
+    {
+     "nome": "METALFER COMERCIO DE METAIS LTDA",
+     "papel": "empresa"
+    },
+    {
+     "nome": "",
+     "cnpj": "73.686.370/0054-00",
+     "papel": "cnpj"
+    },
+    {
+     "nome": "CISSUL/SAMU",
+     "cnpj": "13.985.869/0001-84",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": 4000.0,
+    "encontrados": [
+     4000.0,
+     510.0
+    ],
+    "itens": [
+     {
+      "valor": 4000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 14,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=14"
+     },
+     {
+      "valor": 510.0,
+      "natureza": "valor total",
+      "pagina": 14,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=14"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "texto oficial do Diário, selecionado pela IA",
+    "confianca": "alta",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "4.000,00",
+    "pagina": 14,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=14"
+   },
+   "edicao": "1861",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/268/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 14,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=14"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1861-aditivo-extratodeaditivo",
+   "fonte": "diario",
+   "tipo": "aditivo",
+   "tipo_label": "Termo aditivo",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EXTRATO DE ADITIVO — Contrato Aditivos: Quarto Termo Aditivo Ao Contrato De Prestação De Serviços",
+   "numero": "",
+   "data": "2026-08-06",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "assistência social",
+   "resumo": "Este é o quarto termo aditivo a um contrato entre o Fundo Municipal de Assistência Social (FMAS) de Varginha e o Banco do Brasil S.A. para a prestação de serviços de pagamento de benefícios assistenciais.",
+   "pontos_atencao": [
+    "O reajuste dos preços unitários dos serviços prestados pelo Banco do Brasil.",
+    "A prorrogação do contrato por mais 12 meses, garantindo a continuidade dos serviços de pagamento de benefícios.",
+    "O custo de R$ 4,90 para a emissão de segunda via do cartão magnético em caso de perda."
+   ],
+   "envolvidos": [
+    {
+     "nome": "O Fundo Municipal De Assistência Social - Fmas E O Banco Do Brasil S.A",
+     "papel": "empresa"
+    },
+    {
+     "nome": "Fmas e Bando do Brasil S.A",
+     "papel": "empresa"
+    },
+    {
+     "nome": "Banco do Brasi S.A",
+     "papel": "empresa"
+    },
+    {
+     "nome": "FMAS- Sr. José Manoel Magalhães Ferreira Pelo Banco do Brasil S.A",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [
+     4.9,
+     3.34
+    ],
+    "itens": [
+     {
+      "valor": 4.9,
+      "natureza": "valor do reajuste",
+      "pagina": 15,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=15"
+     },
+     {
+      "valor": 3.34,
+      "natureza": "valor citado no ato",
+      "pagina": 15,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=15"
+     },
+     {
+      "valor": 4.9,
+      "natureza": "valor citado no ato",
+      "pagina": 15,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=15"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "edicao": "1861",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/268/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 15,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_2026290615200c7a9cc051ce33fd17727f17af341c54.pdf#page=15"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-pessoal-portarian23324de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.324, DE 30 DE JULHO DE 2026.",
+   "numero": "23.324",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "pessoal",
+   "resumo": "A Portaria da Prefeitura de Varginha cancela a nomeação de diversos servidores públicos que não tomaram posse dentro do prazo legal.",
+   "pontos_atencao": [
+    "O grande número de cargos afetados em diversas secretarias, como Saúde (SEMUS) e Educação (SEDUC).",
+    "A necessidade de novas convocações para preencher essas vagas, o que pode levar tempo.",
+    "As razões pelas quais os candidatos não tomaram posse, que podem indicar questões a serem analisadas nos processos seletivos."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Prefeitura de Varginha",
+     "cnpj": "18.240.119/0001-05",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 103,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=103"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:43+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-pessoal-portarian23245de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.245, DE 13 DE JULHO DE 2026.",
+   "numero": "23.245",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria da Prefeitura de Varginha-MG trata da realocação de servidores públicos entre diferentes secretarias municipais.",
+   "pontos_atencao": [
+    "A Portaria não detalha os motivos específicos para cada realocação, o que poderia trazer mais clareza sobre os objetivos.",
+    "É importante observar se as secretarias de destino e origem terão suas capacidades de atendimento afetadas pela mudança."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 102,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=102"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-pessoal-portarian23244de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.244, DE 13 DE JULHO DE 2026.",
+   "numero": "23.244",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria da Prefeitura de Varginha-MG reorganiza a lotação de diversos cargos públicos efetivos e seus respectivos ocupantes entre diferentes Secretarias Municipais.",
+   "pontos_atencao": [
+    "Verificar se as relotações estão alinhadas com as necessidades de cada Secretaria e se otimizam a distribuição da força de trabalho.",
+    "Observar se as mudanças impactam a continuidade ou a qualidade de serviços específicos em alguma das Secretarias de origem ou destino."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 100,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=100"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-pessoal-portarian21120de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 21.120, DE 16 DE JULHO DE 2024.",
+   "numero": "21.120",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "primeira infância",
+   "resumo": "Esta Portaria da Prefeitura de Varginha-MG realiza a substituição de um membro no Comitê do Plano Municipal da Primeira Infância.",
+   "pontos_atencao": [
+    "A Portaria não especifica o motivo da substituição do membro.",
+    "Não há informações sobre o perfil ou experiência da nova integrante, Renata Hélica Souza Rezende Mazzeu, no contexto da primeira infância."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 93,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=93"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-pessoal-portarian2112016",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 21120, 16 DE JULHO DE 2024",
+   "numero": "21120",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta portaria da Prefeitura de Varginha-MG trata da substituição de um membro em uma função ou órgão.",
+   "pontos_atencao": [
+    "O texto não especifica qual membro ou em qual órgão a substituição ocorre.",
+    "A falta de detalhes impede a avaliação do impacto da mudança."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 93,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=93"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-pessoal-portarian20808de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 20.808, DE 02 DE MAIO DE 2024. NOMEIA MEMBROS PARA COMPOR O COMITÊ DO PLANO MUNICIPAL DA PRIMEIRA INFÂNCIA O",
+   "numero": "20.808",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "infância",
+   "resumo": "A Prefeitura de Varginha nomeou os membros que farão parte do Comitê do Plano Municipal da Primeira Infância (PMPI).",
+   "pontos_atencao": [
+    "A efetividade do comitê dependerá da participação ativa e colaboração dos membros nomeados.",
+    "As decisões e planos desenvolvidos por este comitê terão impacto direto nos serviços e políticas públicas voltadas para a primeira infância.",
+    "É importante observar como o comitê irá integrar as diferentes perspectivas dos setores representados para criar políticas abrangentes."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 91,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=91"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-pessoal-portarian2080802",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 20808, 02 DE MAIO DE 2024",
+   "numero": "20808",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha publicou uma portaria que nomeia novos membros para cargos ou funções na administração municipal.",
+   "pontos_atencao": [],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 91,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=91"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-norma-lein7602de22deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "LEI N° 7.602 DE 22 DE JULHO DE 2026.",
+   "numero": "7.602",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "políticas sociais",
+   "resumo": "A Lei nº 7.602/2026 aprova o Plano Municipal da Primeira Infância (PMPI) de Varginha, que estabelece políticas públicas integradas para crianças de 0 a 6 anos. O plano terá vigência decenal, de 2025 a 2035.",
+   "pontos_atencao": [
+    "A efetividade do plano dependerá da garantia de dotação orçamentária necessária, conforme a Lei de Responsabilidade Fiscal.",
+    "O monitoramento e avaliação anuais pelo Comitê Intersetorial serão cruciais para a transparência e ajuste das ações.",
+    "A articulação e cooperação entre as diversas secretarias e órgãos municipais são fundamentais para a execução intersetorial do plano."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 3,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=3"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-norma-decreton11991de0",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "DECRETO Nº 11.991, DE 02 DE MAIO DE 2024.",
+   "numero": "11.991",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "primeira infância",
+   "resumo": "O Decreto nº 11.991/2024 institui o Comitê da Primeira Infância no Município de Varginha, com o objetivo de planejar, promover, coordenar, avaliar e monitorar políticas públicas para crianças de 0 a 6 anos.",
+   "pontos_atencao": [
+    "A função de membro do comitê não será remunerada, sendo considerada serviço público relevante.",
+    "O funcionamento detalhado do comitê dependerá da elaboração e aprovação de um Regimento Interno pelos seus membros.",
+    "O Poder Executivo Municipal fornecerá a estrutura necessária para o funcionamento do Comitê."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 89,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=89"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-norma-decreton1199102d",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "DECRETO Nº 11991, 02 DE MAIO DE 2024",
+   "numero": "11991",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "administração",
+   "resumo": "Este decreto da Prefeitura de Varginha trata das comissões municipais.",
+   "pontos_atencao": [],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 89,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=89"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:42+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-aditivo-extratosdetermos-2302026",
+   "fonte": "diario",
+   "tipo": "aditivo",
+   "tipo_label": "Termo aditivo",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EXTRATOS DE TERMOS ADITIVOS — Aditivo nº : 230/2026. Datado de 02/06/2026.",
+   "numero": "230/2026",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "contratos",
+   "resumo": "A Prefeitura de Varginha publicou extratos de quatro termos aditivos a contratos já existentes com diferentes empresas e cooperativas.",
+   "pontos_atencao": [
+    "Os reajustes de valores em dois contratos (Sicoob Credivar e SHA Comércio de Alimentos Ltda.) merecem atenção para entender a justificativa.",
+    "As prorrogações de prazo indicam a continuidade de serviços sem nova licitação imediata.",
+    "A menção a novos procedimentos licitatórios para dois contratos (LCC Prestadora de Serviços e Salt Tecnologia) sugere que as prorrogações são temporárias."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 107,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=107"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:43+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1860-aditivo-extratosdetermos",
+   "fonte": "diario",
+   "tipo": "aditivo",
+   "tipo_label": "Termo aditivo",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "EXTRATOS DE TERMOS ADITIVOS — Aditivo nº : 317/2026. Datado de 15/07/2026.",
+   "numero": "317/2026",
+   "data": "2026-08-05",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "Dois termos aditivos foram publicados, alterando um convênio existente entre a Prefeitura de Varginha e o Hospital Regional do Sul de Minas.",
+   "pontos_atencao": [
+    "O valor total adicionado é de R$ 825.000,00.",
+    "Os aditivos são para um convênio já existente, o que significa que o processo original de contratação já foi realizado.",
+    "O prazo do convênio original foi mantido."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [
+     800000.0,
+     25000.0
+    ],
+    "itens": [
+     {
+      "valor": 25000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 107,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=107"
+     },
+     {
+      "valor": 800000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 107,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=107"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "825.000,00",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "edicao": "1860",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/267/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 107,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202631051410cb652a48b8dafc4844d03d7eaad9647c.pdf#page=107"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-09T06:35:43+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian296de04",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Guarda Civil Municipal de Varginha",
+   "titulo": "PORTARIA Nº 296, DE 04 DE AGOSTO DE 2026.",
+   "numero": "296",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Corregedora da Guarda Civil Municipal de Varginha prorrogou por 30 dias o prazo de um processo disciplinar que está em andamento.",
+   "pontos_atencao": [
+    "A prorrogação indica que a investigação ou análise do processo disciplinar ainda está em andamento.",
+    "É importante acompanhar o desfecho para verificar a conclusão e as medidas tomadas, se houver."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 33,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=33"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:35:17+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian295de04",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Guarda Civil Municipal de Varginha",
+   "titulo": "PORTARIA Nº 295, DE 04 DE AGOSTO DE 2026.",
+   "numero": "295",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "A Corregedora da Guarda Civil Municipal de Varginha prorrogou por mais 15 dias o prazo para a conclusão de um Processo Administrativo de Sindicância.",
+   "pontos_atencao": [
+    "O motivo específico para a prorrogação do prazo não é detalhado nesta portaria.",
+    "A natureza do Processo Administrativo de Sindicância nº. 10.495/2026 não é especificada."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 33,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=33"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:35:13+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian23308de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.308, DE 23 DE JULHO DE 2026.",
+   "numero": "23.308",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta portaria concede licença-prêmio por assiduidade a uma servidora pública da área da saúde em Varginha.",
+   "pontos_atencao": [
+    "A licença-prêmio é um direito legal do servidor, mas sua concessão deve ser planejada para não desfalcar serviços essenciais.",
+    "O período de gozo da licença é de um mês, de 01/10/2026 a 30/10/2026."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 10,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=10"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:40+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian23302de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.302, DE 23 DE JULHO DE 2026.",
+   "numero": "23.302",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta portaria designa três servidoras para exercerem a função gratificada de Líder de Equipe de Fiscais na Secretaria Municipal de Saúde de Varginha.",
+   "pontos_atencao": [
+    "A portaria estabelece que os efeitos da designação são retroativos a 15 de outubro de 2025, o que implica pagamento retroativo da gratificação.",
+    "A função gratificada de 15% representa um custo adicional para o orçamento municipal."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 9,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=9"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:34+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian23301de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.301, DE 23 DE JULHO DE 2026.",
+   "numero": "23.301",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "Esta Portaria nomeia os membros do Comitê Técnico Municipal de Promoção da Equidade em Saúde para o mandato de 2026 a 2028.",
+   "pontos_atencao": [
+    "A efetividade do comitê dependerá da participação ativa e do engajamento dos membros nomeados para representar os diversos grupos.",
+    "É importante acompanhar como as propostas e recomendações do comitê serão implementadas nas ações e políticas da Secretaria Municipal de Saúde."
+   ],
+   "envolvidos": [
+    {
+     "nome": "REPRESENTANTES DA SOCIEDADE",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 8,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=8"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:28+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian23297de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.297, DE 23 DE JULHO DE 2026.",
+   "numero": "23.297",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "A Prefeitura de Varginha prorrogou a readaptação funcional de uma servidora pública, Ana Cristina de Moura Salgado, até abril de 2027.",
+   "pontos_atencao": [
+    "A readaptação funcional é em caráter provisório.",
+    "Os efeitos da portaria são retroativos a maio de 2026."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 7,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=7"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:23+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian23288de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.288, DE 22 DE JULHO DE 2026.",
+   "numero": "23.288",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta portaria estende a readaptação funcional de uma servidora pública municipal de Varginha até abril de 2027.",
+   "pontos_atencao": [
+    "A prorrogação da readaptação é em caráter provisório.",
+    "Os efeitos desta portaria são retroativos a junho de 2026.",
+    "A decisão se refere à condição funcional de uma única servidora."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 7,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=7"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:17+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian23284de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.284, DE 22 DE JULHO DE 2026.",
+   "numero": "23.284",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "",
+   "resumo": "PORTARIA Nº 23.284, DE 22 DE JULHO DE 2026. PRORROGA READAPTAÇÃO FUNCIONAL DE SERVIDORA. O Prefeito do Município de Varginha, Estado de Minas Gerais, no uso de suas atribuições legais, R E S O L V E : Art. 1º PRORROGAR até maio de 2027 , em",
+   "pontos_atencao": [],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 6,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=6"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "fallback",
+   "gerado_em": "2026-08-07T14:34:09+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian23283de",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "PORTARIA Nº 23.283, DE 22 DE JULHO DE 2026.",
+   "numero": "23.283",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "pessoal",
+   "resumo": "Esta Portaria prorroga a readaptação funcional de uma servidora pública municipal, Margareth de Sousa, que ocupa o cargo de Educador Infantil/Readaptada.",
+   "pontos_atencao": [
+    "A prorrogação é em caráter provisório, indicando uma situação temporária para a servidora.",
+    "Os efeitos da Portaria retroagem a junho de 2026, antes da data de sua publicação."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 6,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=6"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:09+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-pessoal-portarian1402026",
+   "fonte": "diario",
+   "tipo": "pessoal",
+   "tipo_label": "Portaria",
+   "orgao": "CISSUL/SAMU",
+   "titulo": "PORTARIA Nº 140/2026, 03 DE AGOSTO DE 2026.",
+   "numero": "140/2026",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "pessoal",
+   "resumo": "Esta portaria designa temporariamente empregados públicos para a função gratificada de Apoiador(a) de Base.",
+   "pontos_atencao": [
+    "As substituições são temporárias e implicam no pagamento de gratificação aos substitutos.",
+    "A portaria não especifica a duração exata das substituições, apenas que perdurarão até o retorno dos titulares."
+   ],
+   "envolvidos": [
+    {
+     "nome": "BP SAÚDE LTDA",
+     "papel": "empresa"
+    },
+    {
+     "nome": "TELEVGA TECNOLOGIA DA INFORMAÇÃO LTDA",
+     "papel": "empresa"
+    },
+    {
+     "nome": "MED CENTER COMERCIAL LTDA",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [
+     260919.0,
+     6984.9,
+     3900.0
+    ],
+    "itens": [
+     {
+      "valor": 260919.0,
+      "natureza": "valor citado no ato",
+      "pagina": 32,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=32"
+     },
+     {
+      "valor": 6984.9,
+      "natureza": "valor citado no ato",
+      "pagina": 32,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=32"
+     },
+     {
+      "valor": 3900.0,
+      "natureza": "valor citado no ato",
+      "pagina": 32,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=32"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 31,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=31"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:35:04+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-norma-lein7606de22deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "LEI N° 7.606 DE 22 DE JULHO DE 2026.",
+   "numero": "7.606",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "saúde",
+   "resumo": "Esta lei denomina a Unidade Básica de Saúde (UBS) em construção no bairro Alto da Figueira III como \"UNIDADE BÁSICA DE SAÚDE LUIZ CARLOS BRUZIGUESSI\".",
+   "pontos_atencao": [
+    "A lei determina que o Poder Executivo promova adequações cadastrais, administrativas e de sinalização, o que pode gerar custos para o município.",
+    "A escolha do nome de uma pessoa para um próprio público pode gerar debates sobre os critérios de homenagem."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 4,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=4"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:05+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-norma-lein7601de22deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "LEI N° 7.601 DE 22 DE JULHO DE 2026.",
+   "numero": "7.601",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "urbanismo",
+   "resumo": "A Lei nº 7.601 de 2026 renomeia uma rua no município de Varginha.",
+   "pontos_atencao": [
+    "Possíveis custos administrativos para a prefeitura com a alteração de placas e registros.",
+    "Necessidade de atualização de documentos e cadastros por parte dos moradores e comerciantes da rua."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 3,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=3"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:05+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-norma-lein7600de22deju",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Lei",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "LEI N° 7.600 DE 22 DE JULHO DE 2026.",
+   "numero": "7.600",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "baixo",
+   "tema": "urbanismo",
+   "resumo": "Esta lei altera o nome de uma rua no município de Varginha.",
+   "pontos_atencao": [
+    "Custos administrativos para a prefeitura na atualização de mapas e sinalização.",
+    "Possível transtorno para moradores e empresas na atualização de documentos e correspondências."
+   ],
+   "envolvidos": [],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 3,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=3"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:05+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-norma-decreton12661de1",
+   "fonte": "diario",
+   "tipo": "norma",
+   "tipo_label": "Decreto",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "DECRETO Nº 12.661, DE 10 DE JULHO DE 2026.",
+   "numero": "12.661",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "medio",
+   "tema": "orçamento",
+   "resumo": "Este decreto da Prefeitura de Varginha cancela uma série de pagamentos pendentes, conhecidos como \"restos a pagar\", do Serviço Municipal Funerário e de Organização de Luto (SEMUL).",
+   "pontos_atencao": [
+    "O motivo principal para o cancelamento é o \"saldo não utilizado\" dos empenhos.",
+    "O valor total cancelado é de R$ 33.915,73.",
+    "Os pagamentos cancelados são referentes a empenhos de 2024 e 2025."
+   ],
+   "envolvidos": [
+    {
+     "nome": "FORNECEDOR VALOR 0001 264/2025 Saldo não utilizado TELEFÔNICA BRASIL S.A",
+     "papel": "empresa"
+    },
+    {
+     "nome": "Saldo não utilizado TELEFÔNICA BRASIL S.A",
+     "papel": "empresa"
+    },
+    {
+     "nome": "E RODOVIÁRIO 7,79 0004 38/2024 Saldo não utilizado BETHA SISTEMAS LTDA",
+     "papel": "empresa"
+    },
+    {
+     "nome": "Saldo não utilizado WTRADE INTERMEDIAÇÃO DE NEGÓCIOS LTDA",
+     "papel": "empresa"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "33.915,73",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 4,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=4"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:05+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-licitacao-avisoprocesson16",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Fundação Hospitalar do Município de Varginha",
+   "titulo": "AVISO - PROCESSO Nº 161/2026 – PREGÃO ELETRÔNICO Nº 080/2026",
+   "numero": "161/2026",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "saúde",
+   "resumo": "A Fundação Hospitalar do Município de Varginha (FHOMUV) abriu um processo de licitação na modalidade Pregão Eletrônico para registrar preços e adquirir insumos para laboratório.",
+   "pontos_atencao": [
+    "Acompanhar o processo licitatório para garantir a competitividade e a escolha da melhor proposta.",
+    "Verificar os preços finais registrados para os insumos.",
+    "Monitorar a qualidade dos materiais adquiridos."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Fundação Hospitalar do Município de Varginha",
+     "cnpj": "19.110.162/0001-00",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 33,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=33"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:35:09+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-licitacao-avisopregoeletrn-088",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "AVISO - PREGÃO ELETRÔNICO Nº 088 / 2026 - (PROCESSO ADMINISTRATIVO Nº 201 / 2026)",
+   "numero": "088",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "mobilidade",
+   "resumo": "A Prefeitura de Varginha abriu um processo de licitação para contratar serviços de engenharia para instalar sinalização de trânsito em ruas da cidade.",
+   "pontos_atencao": [
+    "Acompanhar o resultado da licitação para saber qual empresa será contratada.",
+    "Verificar se os serviços contratados serão executados conforme o edital e com qualidade."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Prefeitura de Varginha",
+     "cnpj": "18.240.119/0001-05",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [
+     130000.0,
+     120000.0,
+     100000.0,
+     50000.0,
+     30000.0,
+     20000.0
+    ],
+    "itens": [
+     {
+      "valor": 2868.82,
+      "natureza": "vencimento-base",
+      "pagina": 12,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=12"
+     },
+     {
+      "valor": 120000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 24,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=24"
+     },
+     {
+      "valor": 20000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 24,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=24"
+     },
+     {
+      "valor": 130000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 24,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=24"
+     },
+     {
+      "valor": 50000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 24,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=24"
+     },
+     {
+      "valor": 30000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 25,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=25"
+     },
+     {
+      "valor": 15000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 25,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=25"
+     },
+     {
+      "valor": 100000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 25,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=25"
+     },
+     {
+      "valor": 19000.0,
+      "natureza": "valor citado no ato",
+      "pagina": 26,
+      "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=26"
+     }
+    ],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 11,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=11"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:54+00:00"
+  },
+  {
+   "id": "DIARIO-2026-1859-licitacao-avisopregoeletrn",
+   "fonte": "diario",
+   "tipo": "licitacao",
+   "tipo_label": "Licitação",
+   "orgao": "Prefeitura de Varginha",
+   "titulo": "AVISO - PREGÃO ELETRÔNICO Nº 083 / 2026 - (PROCESSO ADMINISTRATIVO Nº 193 / 2026)",
+   "numero": "083",
+   "data": "2026-08-04",
+   "categoria": "Diário Oficial",
+   "relevancia": "alto",
+   "tema": "educação",
+   "resumo": "A Prefeitura de Varginha abriu um processo de licitação na modalidade Pregão Eletrônico para registrar preços para a futura e eventual aquisição de equipamentos multimídia e de comunicação.",
+   "pontos_atencao": [
+    "Acompanhar o processo licitatório para garantir a transparência e a competitividade entre os fornecedores.",
+    "Verificar a efetiva entrega e instalação dos equipamentos nas unidades escolares.",
+    "Avaliar se os equipamentos adquiridos realmente atendem às necessidades da Secretaria Municipal de Educação."
+   ],
+   "envolvidos": [
+    {
+     "nome": "Prefeitura de Varginha",
+     "cnpj": "18.240.119/0001-05",
+     "papel": "orgao"
+    }
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "itens": [],
+    "natureza": "valor citado no ato",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "periodicidade": "",
+    "por_exercicio": [],
+    "perfil_despesa": {
+     "tipo": "",
+     "encerra_em": []
+    },
+    "valor_principal_ia": "",
+    "pagina": null,
+    "link_verificacao": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "edicao": "1859",
+   "links": {
+    "publicacao": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/266/",
+    "anexo_pdf": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 11,
+    "link_direto": "https://www.varginha.mg.gov.br/uploads/diario_202610041511207d3c98e144dde9811d551513fbbc18.pdf#page=11"
+   },
+   "qualidade": {
+    "segmentacao_ok": true,
+    "atos_detectados_no_trecho": 1
+   },
+   "origem_ia": "ia",
+   "gerado_em": "2026-08-07T14:34:46+00:00"
+  },
   {
    "id": "DIARIO-2026-1858-pessoal-portarian23325de",
    "fonte": "diario",

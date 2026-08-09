@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-04T09:39:29.623Z",
+  "gerado_em": "2026-08-09T06:36:43.618Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,8 +9,8 @@
     "total": 9
   },
   "atualizado_base": {
-    "iso": "2026-08-04T06:12:15",
-    "data_humana": "04/08/2026 - 06:12"
+    "iso": "2026-08-09T03:35:30",
+    "data_humana": "09/08/2026 - 03:35"
   },
   "items": [
     {
@@ -47,40 +47,20 @@
     },
     {
       "severity": "warning",
-      "id": "camara-despesa-sem-contrato",
-      "title": "Fornecedores sem contrato vinculado automaticamente",
-      "detail": "6 dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
-      "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
-      "source": "camara_betha.json",
-      "verification": {
-        "estado": "nao_localizado",
-        "metodo": "raiz_cnpj_com_fallback_por_nome",
-        "confianca": "baixa",
-        "evidencias": [
-          "6 fornecedor(es) sem correspondencia automatica"
-        ],
-        "limitacoes": [
-          "Pode haver contrato plurianual ou instrumento equivalente",
-          "Correspondencia por nome pode falhar com abreviacoes"
-        ]
-      }
-    },
-    {
-      "severity": "warning",
-      "id": "prefeitura-despesa-sem-contrato",
-      "title": "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
-      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 4.5M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); BRAVO LOCACOES E SERVICOS LTDA (R$ 2.1M).",
-      "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
+      "id": "auditoria-vinculos-suspensa-por-frescor",
+      "title": "Cruzamentos de fornecedores e contratos temporariamente suspensos",
+      "detail": "A ultima base valida permanece publicada, mas contratos ou obras nao foram coletados integralmente no ciclo atual. Por seguranca, o sistema nao gera novos alertas nominais de fornecedor sem contrato nem de incompatibilidade contratual enquanto a fonte estiver preservada ou parcial.",
+      "action": "Restabelecer a coleta Betha, validar a cobertura e somente depois reativar os cruzamentos nominais.",
       "source": "prefeitura.json",
       "verification": {
-        "estado": "nao_localizado",
-        "metodo": "raiz_cnpj_com_fallback_por_nome",
-        "confianca": "baixa",
+        "estado": "fonte_desatualizada",
+        "metodo": "trava_de_frescor_por_dataset",
+        "confianca": "alta",
         "evidencias": [
-          "9 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
+          "Metadados de contratos/obras indicam coleta preservada, parcial ou falha"
         ],
         "limitacoes": [
-          "Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"
+          "A base anterior continua visivel, mas pode nao conter publicacoes recentes"
         ]
       }
     },
@@ -106,20 +86,24 @@
     },
     {
       "severity": "error",
-      "id": "fornecedor-inidoneo",
-      "title": "Declaracoes de inidoneidade vigentes localizadas em fornecedores do painel",
-      "detail": "3 declaracao(oes) de inidoneidade vigente(s) foi(ram) localizada(s) para fornecedores presentes no painel: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — aplicada por Governo do Estado da Bahia (BA)); GLOBAL BRANDS COMERCIO LTDA (Impedimento/proibição de contratar com prazo determinado — aplicada por MMG-PREFEITURA MUNICIPAL DE VARGINHA); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — aplicada por Prefeitura Municipal de Itapetininga (SP)). Enquanto vigente, a declaracao de inidoneidade impede contratar com todos os entes federativos, mas o cruzamento deve ser confirmado na fonte antes de qualquer conclusao sobre contrato local.",
-      "action": "Confirmar CNPJ, vigencia e alcance no Portal da Transparencia federal; depois verificar se existe contratacao ativa antes de qualquer conclusao.",
+      "id": "sancao-com-alcance-sobre-varginha",
+      "title": "Registros de sancao com alcance que atinge Varginha",
+      "detail": "Foi localizado no cadastro federal 8 registro(s) de sancao vigente vinculado(s) a fornecedor(es) do painel cuja abrangencia declarada alcanca a administracao de Varginha: NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA (registro CEIS classificado pelo orgao informante como \"Impedimento/proibição de contratar com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Conselho Administrativo de Defesa Econômica - CADE, processo 08012.010022/2008-16, vigencia ate 18/08/2026); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (registro CEIS classificado pelo orgao informante como \"Declaração de Inidoneidade com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Prefeitura Municipal de Itapetininga (SP), processo PROTOCOLO Nº 23779/1/2026, vigencia ate 22/05/2029); FRAGA EVENTOS (registro CEIS classificado pelo orgao informante como \"Declaração de Inidoneidade com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Prefeitura Municipal de Coronel Xavier Chaves (MG), processo 9530/2025, vigencia ate 13/11/2028). O conteudo do cadastro e de responsabilidade do orgao que o alimenta. O registro nao prova, por si so, contratacao irregular — para isso e preciso contrato local ativo com datas sobrepostas a vigencia da sancao.",
+      "action": "Abrir o registro individual no Portal da Transparencia, conferir categoria, fundamentacao, abrangencia, situacao e processo; so entao verificar contrato local com datas sobrepostas.",
       "source": "sancoes.json",
       "verification": {
         "estado": "requer_confirmacao_documental",
-        "metodo": "fornecedor_local_x_ceis_cnep",
+        "metodo": "abrangencia_oficial_do_registro",
         "confianca": "media",
         "evidencias": [
-          "3 sancao(oes) classificada(s) como de alcance relevante"
+          "NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA: Todas as Esferas em todos os Poderes (processo 08012.010022/2008-16)",
+          "MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA: Todas as Esferas em todos os Poderes (processo PROTOCOLO Nº 23779/1/2026)",
+          "FRAGA EVENTOS: Todas as Esferas em todos os Poderes (processo 9530/2025)"
         ],
         "limitacoes": [
-          "Confirmar CNPJ, vigencia, tipo e alcance da sancao na fonte primaria"
+          "CNPJ do lado local vem mascarado pela fonte — casamento por raiz, nao exato",
+          "Raiz de CNPJ nao distingue matriz de filial",
+          "Registro de sancao nao prova contratacao irregular"
         ]
       },
       "blocksPipeline": false
@@ -128,7 +112,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "38 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (92 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "80 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (207 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -136,10 +120,30 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "92 sancao(oes) de outros entes"
+          "207 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
+        ]
+      }
+    },
+    {
+      "severity": "warning",
+      "id": "sancoes-sem-alcance-determinado",
+      "title": "Sancoes vigentes sem alcance determinavel automaticamente",
+      "detail": "8 sancao(oes) vigente(s) ficam fora de qualquer alerta nominal porque o alcance nao pode ser afirmado com seguranca. Motivos: 4x sancao pecuniaria, sem efeito restritivo sobre contratar; 4x campo de abrangencia ausente ou 'Sem Informacao' no registro oficial. O alcance e lido do campo oficial de abrangencia do registro, nunca deduzido do nome do tipo de sancao. Multa entra aqui de proposito: e sancao pecuniaria e nao restringe o direito de contratar.",
+      "action": "Ler o registro individual no CEIS (categoria, fundamentacao, abrangencia, situacao e processo) antes de qualquer divulgacao com nome de empresa.",
+      "source": "sancoes.json",
+      "verification": {
+        "estado": "requer_revisao_humana",
+        "metodo": "classificacao_por_tipo_e_fundamentacao",
+        "confianca": "baixa",
+        "evidencias": [
+          "8 registro(s) sem alcance determinado"
+        ],
+        "limitacoes": [
+          "A abrangencia oficial nao e coletada hoje — o alcance e inferido de tipo e fundamentacao",
+          "Sem numero de processo e link individual, a conferencia depende de busca manual no CEIS"
         ]
       }
     }
@@ -179,40 +183,20 @@
     },
     {
       "severity": "warning",
-      "id": "camara-despesa-sem-contrato",
-      "title": "Fornecedores sem contrato vinculado automaticamente",
-      "detail": "6 dos 20 maiores fornecedores de despesas nao bateram com contrato (verificado por CNPJ e por nome). Exemplos: VEROCHEQUE REFEICOES LTDA; BETHA SISTEMAS LTDA; IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA; INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH. Os outros 3 nao sao falha: 1 sao tributos/encargos (ex.: Receita Federal, INSS); 2 sao repasses a entidades de saude/assistencia ou concessionarias — nao passam por contrato.",
-      "action": "Cruzar por CNPJ e conferir no Betha — pode ser contrato plurianual ainda nao coletado (a coleta agora resgata contratos vigentes de anos anteriores).",
-      "source": "camara_betha.json",
-      "verification": {
-        "estado": "nao_localizado",
-        "metodo": "raiz_cnpj_com_fallback_por_nome",
-        "confianca": "baixa",
-        "evidencias": [
-          "6 fornecedor(es) sem correspondencia automatica"
-        ],
-        "limitacoes": [
-          "Pode haver contrato plurianual ou instrumento equivalente",
-          "Correspondencia por nome pode falhar com abreviacoes"
-        ]
-      }
-    },
-    {
-      "severity": "warning",
-      "id": "prefeitura-despesa-sem-contrato",
-      "title": "Fornecedores de grande porte sem contrato nem obra vinculada automaticamente",
-      "detail": "9 fornecedor(es) com despesa > R$ 1M nao possuem contrato localizado. Exemplos: VARIAN MEDICAL SYSTEMS INC (R$ 7.8M); SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A. (R$ 4.5M); SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA (R$ 3.8M); BRAVO LOCACOES E SERVICOS LTDA (R$ 2.1M).",
-      "action": "Verificar se ha contrato plurianual nao publicado, dispensa/inexigibilidade nao integrada ou repasse SUS/saude nao classificado.",
+      "id": "auditoria-vinculos-suspensa-por-frescor",
+      "title": "Cruzamentos de fornecedores e contratos temporariamente suspensos",
+      "detail": "A ultima base valida permanece publicada, mas contratos ou obras nao foram coletados integralmente no ciclo atual. Por seguranca, o sistema nao gera novos alertas nominais de fornecedor sem contrato nem de incompatibilidade contratual enquanto a fonte estiver preservada ou parcial.",
+      "action": "Restabelecer a coleta Betha, validar a cobertura e somente depois reativar os cruzamentos nominais.",
       "source": "prefeitura.json",
       "verification": {
-        "estado": "nao_localizado",
-        "metodo": "raiz_cnpj_com_fallback_por_nome",
-        "confianca": "baixa",
+        "estado": "fonte_desatualizada",
+        "metodo": "trava_de_frescor_por_dataset",
+        "confianca": "alta",
         "evidencias": [
-          "9 fornecedor(es) acima de R$ 1 milhao sem correspondencia"
+          "Metadados de contratos/obras indicam coleta preservada, parcial ou falha"
         ],
         "limitacoes": [
-          "Pode ser repasse, contrato plurianual, dispensa ou inexigibilidade fora da base"
+          "A base anterior continua visivel, mas pode nao conter publicacoes recentes"
         ]
       }
     },
@@ -238,20 +222,24 @@
     },
     {
       "severity": "error",
-      "id": "fornecedor-inidoneo",
-      "title": "Declaracoes de inidoneidade vigentes localizadas em fornecedores do painel",
-      "detail": "3 declaracao(oes) de inidoneidade vigente(s) foi(ram) localizada(s) para fornecedores presentes no painel: MASTERFER COMERCIO DE FERRAGENS LTDA (Declaração de Inidoneidade sem prazo determinado — aplicada por Governo do Estado da Bahia (BA)); GLOBAL BRANDS COMERCIO LTDA (Impedimento/proibição de contratar com prazo determinado — aplicada por MMG-PREFEITURA MUNICIPAL DE VARGINHA); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (Declaração de Inidoneidade com prazo determinado — aplicada por Prefeitura Municipal de Itapetininga (SP)). Enquanto vigente, a declaracao de inidoneidade impede contratar com todos os entes federativos, mas o cruzamento deve ser confirmado na fonte antes de qualquer conclusao sobre contrato local.",
-      "action": "Confirmar CNPJ, vigencia e alcance no Portal da Transparencia federal; depois verificar se existe contratacao ativa antes de qualquer conclusao.",
+      "id": "sancao-com-alcance-sobre-varginha",
+      "title": "Registros de sancao com alcance que atinge Varginha",
+      "detail": "Foi localizado no cadastro federal 8 registro(s) de sancao vigente vinculado(s) a fornecedor(es) do painel cuja abrangencia declarada alcanca a administracao de Varginha: NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA (registro CEIS classificado pelo orgao informante como \"Impedimento/proibição de contratar com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Conselho Administrativo de Defesa Econômica - CADE, processo 08012.010022/2008-16, vigencia ate 18/08/2026); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (registro CEIS classificado pelo orgao informante como \"Declaração de Inidoneidade com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Prefeitura Municipal de Itapetininga (SP), processo PROTOCOLO Nº 23779/1/2026, vigencia ate 22/05/2029); FRAGA EVENTOS (registro CEIS classificado pelo orgao informante como \"Declaração de Inidoneidade com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Prefeitura Municipal de Coronel Xavier Chaves (MG), processo 9530/2025, vigencia ate 13/11/2028). O conteudo do cadastro e de responsabilidade do orgao que o alimenta. O registro nao prova, por si so, contratacao irregular — para isso e preciso contrato local ativo com datas sobrepostas a vigencia da sancao.",
+      "action": "Abrir o registro individual no Portal da Transparencia, conferir categoria, fundamentacao, abrangencia, situacao e processo; so entao verificar contrato local com datas sobrepostas.",
       "source": "sancoes.json",
       "verification": {
         "estado": "requer_confirmacao_documental",
-        "metodo": "fornecedor_local_x_ceis_cnep",
+        "metodo": "abrangencia_oficial_do_registro",
         "confianca": "media",
         "evidencias": [
-          "3 sancao(oes) classificada(s) como de alcance relevante"
+          "NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA: Todas as Esferas em todos os Poderes (processo 08012.010022/2008-16)",
+          "MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA: Todas as Esferas em todos os Poderes (processo PROTOCOLO Nº 23779/1/2026)",
+          "FRAGA EVENTOS: Todas as Esferas em todos os Poderes (processo 9530/2025)"
         ],
         "limitacoes": [
-          "Confirmar CNPJ, vigencia, tipo e alcance da sancao na fonte primaria"
+          "CNPJ do lado local vem mascarado pela fonte — casamento por raiz, nao exato",
+          "Raiz de CNPJ nao distingue matriz de filial",
+          "Registro de sancao nao prova contratacao irregular"
         ]
       },
       "blocksPipeline": false
@@ -260,7 +248,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "38 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (92 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "80 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (207 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -268,10 +256,30 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "92 sancao(oes) de outros entes"
+          "207 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
+        ]
+      }
+    },
+    {
+      "severity": "warning",
+      "id": "sancoes-sem-alcance-determinado",
+      "title": "Sancoes vigentes sem alcance determinavel automaticamente",
+      "detail": "8 sancao(oes) vigente(s) ficam fora de qualquer alerta nominal porque o alcance nao pode ser afirmado com seguranca. Motivos: 4x sancao pecuniaria, sem efeito restritivo sobre contratar; 4x campo de abrangencia ausente ou 'Sem Informacao' no registro oficial. O alcance e lido do campo oficial de abrangencia do registro, nunca deduzido do nome do tipo de sancao. Multa entra aqui de proposito: e sancao pecuniaria e nao restringe o direito de contratar.",
+      "action": "Ler o registro individual no CEIS (categoria, fundamentacao, abrangencia, situacao e processo) antes de qualquer divulgacao com nome de empresa.",
+      "source": "sancoes.json",
+      "verification": {
+        "estado": "requer_revisao_humana",
+        "metodo": "classificacao_por_tipo_e_fundamentacao",
+        "confianca": "baixa",
+        "evidencias": [
+          "8 registro(s) sem alcance determinado"
+        ],
+        "limitacoes": [
+          "A abrangencia oficial nao e coletada hoje — o alcance e inferido de tipo e fundamentacao",
+          "Sem numero de processo e link individual, a conferencia depende de busca manual no CEIS"
         ]
       }
     }

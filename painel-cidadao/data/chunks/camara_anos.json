@@ -31328,39 +31328,39 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-08-04T06:02:33-03:00"
+    "coletado_em": "2026-08-09T03:26:49-03:00"
   },
   "2026": {
     "resumo": {
       "ano": 2026,
-      "total_materias": 766,
+      "total_materias": 798,
       "vereadores_ativos": 15,
       "emendas_qtd": 0,
       "emendas_valor_total_brl": 0.0,
-      "impacto_zero_qtd": 210,
+      "impacto_zero_qtd": 222,
       "desfechos": {
         "lei": 36,
-        "arquivado": 484,
-        "tramitando": 228,
+        "arquivado": 504,
+        "tramitando": 243,
         "encerrado": 15,
-        "sem_dado": 3
+        "sem_dado": 0
       },
       "tipos": [
         {
           "tipo": "Indicação",
-          "qtd": 363
+          "qtd": 382
         },
         {
           "tipo": "Requerimento",
-          "qtd": 177
+          "qtd": 184
         },
         {
           "tipo": "Projeto de Lei Ordinária do Legislativo",
-          "qtd": 68
+          "qtd": 70
         },
         {
           "tipo": "Projeto de Decreto Legislativo",
-          "qtd": 60
+          "qtd": 64
         },
         {
           "tipo": "Projeto de Lei Ordinária do Executivo",
@@ -31406,35 +31406,39 @@
       "temas_top": [
         {
           "tema": "saude",
-          "mencoes": 87
+          "mencoes": 92
         },
         {
           "tema": "praca",
-          "mencoes": 60
-        },
-        {
-          "tema": "seguranca",
-          "mencoes": 33
+          "mencoes": 64
         },
         {
           "tema": "educacao",
-          "mencoes": 32
+          "mencoes": 34
         },
         {
-          "tema": "cultura",
-          "mencoes": 22
+          "tema": "seguranca",
+          "mencoes": 34
         },
         {
           "tema": "iluminacao",
-          "mencoes": 20
+          "mencoes": 24
+        },
+        {
+          "tema": "cultura",
+          "mencoes": 23
         },
         {
           "tema": "transporte",
-          "mencoes": 17
+          "mencoes": 18
         },
         {
           "tema": "esporte",
           "mencoes": 14
+        },
+        {
+          "tema": "pavimentacao",
+          "mencoes": 10
         },
         {
           "tema": "crianca",
@@ -31445,16 +31449,12 @@
           "mencoes": 10
         },
         {
-          "tema": "pavimentacao",
-          "mencoes": 9
-        },
-        {
           "tema": "idoso",
           "mencoes": 6
         },
         {
           "tema": "asfalto",
-          "mencoes": 4
+          "mencoes": 5
         },
         {
           "tema": "meio ambiente",
@@ -31468,30 +31468,11 @@
     },
     "vereadores": [
       {
-        "nome": "Ana Rios Fontoura",
-        "total": 52,
-        "indicacoes": 33,
-        "requerimentos": 7,
-        "projetos_lei": 4,
-        "emendas": 0,
-        "leis_aprovadas": 0,
-        "mocoes": 3,
-        "pdl": 5,
-        "impacto_zero": 21,
-        "nome_rua": 13,
-        "homenagens_terceiros": 5,
-        "outros": 5,
-        "presenca_pct": 100.0,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
-        "presenca_janela": "2026-01-01 a 2026-12-31"
-      },
-      {
         "nome": "Zilda Silva",
-        "total": 52,
-        "indicacoes": 27,
+        "total": 55,
+        "indicacoes": 29,
         "requerimentos": 9,
-        "projetos_lei": 10,
+        "projetos_lei": 11,
         "emendas": 0,
         "leis_aprovadas": 0,
         "mocoes": 1,
@@ -31501,34 +31482,53 @@
         "homenagens_terceiros": 4,
         "outros": 5,
         "presenca_pct": 100.0,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
+        "presenca_janela": "2026-01-01 a 2026-12-31"
+      },
+      {
+        "nome": "Ana Rios Fontoura",
+        "total": 54,
+        "indicacoes": 35,
+        "requerimentos": 7,
+        "projetos_lei": 4,
+        "emendas": 0,
+        "leis_aprovadas": 0,
+        "mocoes": 3,
+        "pdl": 5,
+        "impacto_zero": 22,
+        "nome_rua": 14,
+        "homenagens_terceiros": 5,
+        "outros": 5,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
         "nome": "Joãozinho Enfermeiro",
-        "total": 51,
+        "total": 54,
         "indicacoes": 22,
-        "requerimentos": 17,
+        "requerimentos": 19,
         "projetos_lei": 4,
         "emendas": 0,
         "leis_aprovadas": 0,
         "mocoes": 1,
-        "pdl": 7,
-        "impacto_zero": 22,
+        "pdl": 8,
+        "impacto_zero": 23,
         "nome_rua": 14,
-        "homenagens_terceiros": 7,
-        "outros": 7,
+        "homenagens_terceiros": 8,
+        "outros": 8,
         "presenca_pct": 100.0,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
         "nome": "Bruno Leandro Coletor",
-        "total": 48,
-        "indicacoes": 21,
-        "requerimentos": 17,
+        "total": 50,
+        "indicacoes": 22,
+        "requerimentos": 18,
         "projetos_lei": 4,
         "emendas": 0,
         "leis_aprovadas": 0,
@@ -31539,33 +31539,52 @@
         "homenagens_terceiros": 1,
         "outros": 3,
         "presenca_pct": 100.0,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
         "nome": "Dandan",
-        "total": 47,
+        "total": 50,
         "indicacoes": 3,
-        "requerimentos": 36,
+        "requerimentos": 38,
         "projetos_lei": 5,
         "emendas": 0,
         "leis_aprovadas": 0,
         "mocoes": 2,
-        "pdl": 1,
-        "impacto_zero": 16,
-        "nome_rua": 13,
-        "homenagens_terceiros": 1,
-        "outros": 1,
+        "pdl": 2,
+        "impacto_zero": 18,
+        "nome_rua": 14,
+        "homenagens_terceiros": 2,
+        "outros": 2,
         "presenca_pct": 100.0,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
+        "presenca_janela": "2026-01-01 a 2026-12-31"
+      },
+      {
+        "nome": "Cássio Chiodi",
+        "total": 48,
+        "indicacoes": 14,
+        "requerimentos": 18,
+        "projetos_lei": 9,
+        "emendas": 0,
+        "leis_aprovadas": 0,
+        "mocoes": 1,
+        "pdl": 5,
+        "impacto_zero": 6,
+        "nome_rua": 0,
+        "homenagens_terceiros": 5,
+        "outros": 6,
+        "presenca_pct": 98.1,
         "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
         "nome": "Alexandre Prado",
-        "total": 46,
-        "indicacoes": 28,
+        "total": 48,
+        "indicacoes": 30,
         "requerimentos": 10,
         "projetos_lei": 3,
         "emendas": 0,
@@ -31577,46 +31596,65 @@
         "homenagens_terceiros": 5,
         "outros": 5,
         "presenca_pct": 100.0,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
         "nome": "Miguel da Saúde",
-        "total": 46,
-        "indicacoes": 22,
+        "total": 48,
+        "indicacoes": 23,
         "requerimentos": 16,
         "projetos_lei": 3,
         "emendas": 0,
         "leis_aprovadas": 0,
         "mocoes": 0,
-        "pdl": 5,
-        "impacto_zero": 13,
+        "pdl": 6,
+        "impacto_zero": 14,
         "nome_rua": 8,
-        "homenagens_terceiros": 5,
-        "outros": 5,
-        "presenca_pct": 98.0,
-        "presenca_presentes": 50,
-        "presenca_elegiveis": 51,
+        "homenagens_terceiros": 6,
+        "outros": 6,
+        "presenca_pct": 98.1,
+        "presenca_presentes": 51,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
-        "nome": "Cássio Chiodi",
-        "total": 45,
-        "indicacoes": 12,
-        "requerimentos": 18,
-        "projetos_lei": 8,
+        "nome": "Davi Martins",
+        "total": 46,
+        "indicacoes": 30,
+        "requerimentos": 9,
+        "projetos_lei": 3,
+        "emendas": 0,
+        "leis_aprovadas": 1,
+        "mocoes": 1,
+        "pdl": 2,
+        "impacto_zero": 12,
+        "nome_rua": 9,
+        "homenagens_terceiros": 2,
+        "outros": 3,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
+        "presenca_janela": "2026-01-01 a 2026-12-31"
+      },
+      {
+        "nome": "Pastor Faustinho",
+        "total": 46,
+        "indicacoes": 39,
+        "requerimentos": 0,
+        "projetos_lei": 2,
         "emendas": 0,
         "leis_aprovadas": 0,
-        "mocoes": 1,
+        "mocoes": 0,
         "pdl": 5,
-        "impacto_zero": 6,
-        "nome_rua": 0,
+        "impacto_zero": 21,
+        "nome_rua": 16,
         "homenagens_terceiros": 5,
-        "outros": 6,
-        "presenca_pct": 98.0,
-        "presenca_presentes": 50,
-        "presenca_elegiveis": 51,
+        "outros": 5,
+        "presenca_pct": 98.1,
+        "presenca_presentes": 51,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31634,122 +31672,84 @@
         "homenagens_terceiros": 6,
         "outros": 6,
         "presenca_pct": 100.0,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
-        "presenca_janela": "2026-01-01 a 2026-12-31"
-      },
-      {
-        "nome": "Davi Martins",
-        "total": 44,
-        "indicacoes": 30,
-        "requerimentos": 7,
-        "projetos_lei": 3,
-        "emendas": 0,
-        "leis_aprovadas": 1,
-        "mocoes": 1,
-        "pdl": 2,
-        "impacto_zero": 12,
-        "nome_rua": 9,
-        "homenagens_terceiros": 2,
-        "outros": 3,
-        "presenca_pct": 100.0,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
-        "presenca_janela": "2026-01-01 a 2026-12-31"
-      },
-      {
-        "nome": "Pastor Faustinho",
-        "total": 44,
-        "indicacoes": 37,
-        "requerimentos": 0,
-        "projetos_lei": 2,
-        "emendas": 0,
-        "leis_aprovadas": 0,
-        "mocoes": 0,
-        "pdl": 5,
-        "impacto_zero": 20,
-        "nome_rua": 15,
-        "homenagens_terceiros": 5,
-        "outros": 5,
-        "presenca_pct": 98.0,
-        "presenca_presentes": 50,
-        "presenca_elegiveis": 51,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
         "nome": "Zé Morais",
-        "total": 43,
-        "indicacoes": 37,
+        "total": 45,
+        "indicacoes": 39,
         "requerimentos": 3,
         "projetos_lei": 3,
         "emendas": 0,
         "leis_aprovadas": 0,
         "mocoes": 0,
         "pdl": 0,
-        "impacto_zero": 6,
-        "nome_rua": 6,
+        "impacto_zero": 7,
+        "nome_rua": 7,
         "homenagens_terceiros": 0,
         "outros": 0,
         "presenca_pct": 100.0,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 51,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
         "nome": "Dudu Ottoni",
-        "total": 37,
-        "indicacoes": 19,
+        "total": 38,
+        "indicacoes": 20,
         "requerimentos": 8,
         "projetos_lei": 6,
         "emendas": 0,
         "leis_aprovadas": 0,
         "mocoes": 0,
         "pdl": 4,
-        "impacto_zero": 10,
-        "nome_rua": 6,
+        "impacto_zero": 11,
+        "nome_rua": 7,
         "homenagens_terceiros": 4,
         "outros": 4,
-        "presenca_pct": 98.0,
-        "presenca_presentes": 50,
-        "presenca_elegiveis": 51,
+        "presenca_pct": 98.1,
+        "presenca_presentes": 51,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
         "nome": "Afonso Monticeli",
-        "total": 30,
-        "indicacoes": 23,
+        "total": 32,
+        "indicacoes": 25,
         "requerimentos": 3,
         "projetos_lei": 3,
         "emendas": 0,
         "leis_aprovadas": 0,
         "mocoes": 0,
         "pdl": 1,
-        "impacto_zero": 11,
-        "nome_rua": 10,
+        "impacto_zero": 13,
+        "nome_rua": 12,
         "homenagens_terceiros": 1,
         "outros": 1,
         "presenca_pct": 100.0,
-        "presenca_presentes": 34,
-        "presenca_elegiveis": 34,
+        "presenca_presentes": 35,
+        "presenca_elegiveis": 35,
         "presenca_janela": "2026-03-27 a 2026-12-31"
       },
       {
         "nome": "Rogério Bueno",
-        "total": 6,
-        "indicacoes": 1,
+        "total": 9,
+        "indicacoes": 3,
         "requerimentos": 3,
         "projetos_lei": 2,
         "emendas": 0,
         "leis_aprovadas": 1,
         "mocoes": 0,
-        "pdl": 0,
-        "impacto_zero": 4,
-        "nome_rua": 4,
-        "homenagens_terceiros": 0,
-        "outros": 0,
-        "presenca_pct": 19.6,
-        "presenca_presentes": 10,
-        "presenca_elegiveis": 51,
+        "pdl": 1,
+        "impacto_zero": 6,
+        "nome_rua": 5,
+        "homenagens_terceiros": 1,
+        "outros": 1,
+        "presenca_pct": 21.2,
+        "presenca_presentes": 11,
+        "presenca_elegiveis": 52,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -32351,7 +32351,7 @@
         "data": "2026-05-04",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -33802,6 +33802,40 @@
         "grau": "baixo"
       },
       {
+        "id": "6127",
+        "ano": "2026",
+        "numero": "70",
+        "tipo": "Projeto de Lei Ordinária do Legislativo",
+        "sigla": "PLOL",
+        "autor": "Cássio Chiodi",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6127/pl___plataforma_municipal_de_mobilidade_urbana1.docx",
+        "ementa": "INSTITUI A PLATAFORMA MUNICIPAL DE MOBILIDADE URBANA, DE PROPRIEDADE DA PREFEITURA MUNICIPAL DE VARGINHA, PARA A INTERMEDIAÇÃO DO TRANSPORTE INDIVIDUAL PRIVADO REMUNERADO DE PASSAGEIROS, DISCIPLINA SEU FUNCIONAMENTO, ESTABELECE REGRAS PARA CREDENCIAMENTO DE MOTORISTAS E VEÍCULOS E DEFINE CRITÉRIOS DE GESTÃO, CUSTEIO E TRANSPARÊNCIA.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "transito",
+        "tema_label": "Trânsito/Mobilidade",
+        "grau": "alto"
+      },
+      {
+        "id": "6148",
+        "ano": "2026",
+        "numero": "71",
+        "tipo": "Projeto de Lei Ordinária do Legislativo",
+        "sigla": "PLOL",
+        "autor": "Zilda Silva",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6148/p.l.___reaproveitamento_imoveis_abandonados1.docx",
+        "ementa": "INSTITUI A POLÍTICA MUNICIPAL DE REAPROVEITAMENTO SOCIAL DE IMÓVEIS PÚBLICOS OCIOSOS E DE IMÓVEIS URBANOS ABANDONADOS PARA FINS DE HABITAÇÃO DE INTERESSE SOCIAL, EQUIPAMENTOS PÚBLICOS E DESENVOLVIMENTO URBANO SUSTENTÁVEL NO MUNICÍPIO DE VARGINHA.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "alto"
+      },
+      {
         "id": "5382",
         "ano": "2026",
         "numero": "1",
@@ -34819,6 +34853,74 @@
         "desfecho": "tramitando",
         "tema": "cultura",
         "tema_label": "Cultura/Esporte/Lazer",
+        "grau": "baixo"
+      },
+      {
+        "id": "6131",
+        "ano": "2026",
+        "numero": "62",
+        "tipo": "Projeto de Decreto Legislativo",
+        "sigla": "PDL",
+        "autor": "Dandan",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6131/dandan_titulo_de_cidadao_honorario_ricardo_patricio_de_paula1.docx",
+        "ementa": "CONCEDE TÍTULO DE CIDADANIA HONORÁRIA VARGINHENSE AO SR. RICARDO PATRÍCIO DE PAULA",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "homenagem a terceiro",
+        "desfecho": "tramitando",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "baixo"
+      },
+      {
+        "id": "6137",
+        "ano": "2026",
+        "numero": "63",
+        "tipo": "Projeto de Decreto Legislativo",
+        "sigla": "PDL",
+        "autor": "Joãozinho Enfermeiro",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6137/joaozinho_projeto_de_decreto___merito_juridico__jayme__revisado.docx",
+        "ementa": "CONCEDE A COMENDA DO MÉRITO JURÍDICO MUNICIPAL AO SR. JAYME SILVESTRE CORRÊA CAMARGO.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "homenagem a terceiro",
+        "desfecho": "tramitando",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "baixo"
+      },
+      {
+        "id": "6140",
+        "ano": "2026",
+        "numero": "64",
+        "tipo": "Projeto de Decreto Legislativo",
+        "sigla": "PDL",
+        "autor": "Miguel da Saúde",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/miguel_comenda_de_medicina_e_saude_revisado.docx",
+        "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL - DR. FERNANDO EUGÊNIO PIRES DO PRADO AO DR. JOÃO BAPTISTA MACUCO JANINI",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "homenagem a terceiro",
+        "desfecho": "tramitando",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "baixo"
+      },
+      {
+        "id": "6143",
+        "ano": "2026",
+        "numero": "65",
+        "tipo": "Projeto de Decreto Legislativo",
+        "sigla": "PDL",
+        "autor": "Rogério Bueno",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6143/projeto_de_decreto___comenda_do_merito_ambiental___leao_miranda1.docx",
+        "ementa": "CONCEDE COMENDA DO MÉRITO AMBIENTAL MUNICIPAL \"DR. SÉRGIO MÁRIO REGINA” AO SENHOR DONIZETI LEÃO DE MIRANDA.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "homenagem a terceiro",
+        "desfecho": "tramitando",
+        "tema": "meio_ambiente",
+        "tema_label": "Meio ambiente",
         "grau": "baixo"
       },
       {
@@ -37889,7 +37991,7 @@
         "sigla": "REQ",
         "autor": "Dandan",
         "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6092/danielrodrigues_-_requerimento179-2026.pdf",
-        "ementa": "Requer informações sobre a disponibilidade do medicamento Abemaciclib, utilizado no tratamento de câncer",
+        "ementa": "Requer informações sobre a disponibilidade do medicamento Abemaciclib, utilizado no tratamento de câncer.",
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
@@ -37981,6 +38083,125 @@
         "desfecho": "tramitando",
         "tema": "saude",
         "tema_label": "Saúde",
+        "grau": "medio"
+      },
+      {
+        "id": "6126",
+        "ano": "2026",
+        "numero": "185",
+        "tipo": "Requerimento",
+        "sigla": "REQ",
+        "autor": "Bruno Leandro Coletor",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6126/brunoleandro_-_requerimento185-2026.pdf",
+        "ementa": "Requer informações e o encaminhamento da documentação pertinente acerca da relação jurídica, administrativa e operacional existente entre o Município e a CooperET (Cooperativa Imaculada de Produção, Coleta Seletiva de Lixo, Reciclagem de Artefatos Plásticos e Madeira de Varginha), responsável pela reciclagem de materiais recicláveis localizada ao lado do aterro sanitário municipal, especialmente quanto aos instrumentos jurídicos eventualmente firmados, aos fundamentos legais que amparam essa relação, ao apoio operacional prestado pelo Município, às contrapartidas assumidas pela cooperativa e aos demais aspectos correlatos, nos termos dos questionamentos abaixo.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "meio_ambiente",
+        "tema_label": "Meio ambiente",
+        "grau": "medio"
+      },
+      {
+        "id": "6130",
+        "ano": "2026",
+        "numero": "186",
+        "tipo": "Requerimento",
+        "sigla": "REQ",
+        "autor": "Dandan",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6130/danielrodrigues_-_requerimento186-2026.pdf",
+        "ementa": "Requer informações sobre a realização dos serviços de construção de calçadas e manutenção da iluminação pública na praça localizada entre as ruas Jacy Sarube Pereira, Nhá Chica e Professora Reina Esper, no bairro Parque das Acácias.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "tramitando",
+        "tema": "educacao",
+        "tema_label": "Educação",
+        "grau": "baixo"
+      },
+      {
+        "id": "6132",
+        "ano": "2026",
+        "numero": "187",
+        "tipo": "Requerimento",
+        "sigla": "REQ",
+        "autor": "Dandan",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6132/danielrodrigues_-_requerimento187-2026.pdf",
+        "ementa": "Requer  informações acerca da erosão existente na área de preservação ambiental localizada aos fundos das residências situadas na Rua Vilela Nunes, nas proximidades dos imóveis de nº 75 e nº 11, no bairro Jardim Petrópolis.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "meio_ambiente",
+        "tema_label": "Meio ambiente",
+        "grau": "medio"
+      },
+      {
+        "id": "6133",
+        "ano": "2026",
+        "numero": "188",
+        "tipo": "Requerimento",
+        "sigla": "REQ",
+        "autor": "Davi Martins",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6133/carlosdavi_-_requerimento188-2026.pdf",
+        "ementa": "Requer as seguintes informações acerca da atuação do Supervisor de Leitos do Município após a implantação do CORE/MG:",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "baixo"
+      },
+      {
+        "id": "6134",
+        "ano": "2026",
+        "numero": "189",
+        "tipo": "Requerimento",
+        "sigla": "REQ",
+        "autor": "Davi Martins",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6134/carlosdavi_-_requerimento189-2026.pdf",
+        "ementa": "Requer as seguintes informações acerca da valorização da Guarda Civil Municipal de Varginha",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "baixo"
+      },
+      {
+        "id": "6136",
+        "ano": "2026",
+        "numero": "190",
+        "tipo": "Requerimento",
+        "sigla": "REQ",
+        "autor": "Joãozinho Enfermeiro",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6136/joaomartins_-_requerimento190-2026.pdf",
+        "ementa": "Requer informações acerca da reabertura do Parque Natural Municipal São Francisco de Assis, localizado na Rua Ruth Carvalho, bairro São Francisco, para visitação pública.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "baixo"
+      },
+      {
+        "id": "6138",
+        "ano": "2026",
+        "numero": "191",
+        "tipo": "Requerimento",
+        "sigla": "REQ",
+        "autor": "Joãozinho Enfermeiro",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6138/joaomartins_-_requerimento191-2026.pdf",
+        "ementa": "Requer informações acerca da possibilidade de o Município de Varginha assumir diretamente os serviços de saneamento básico, diante da recente privatização da COPASA.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "meio_ambiente",
+        "tema_label": "Meio ambiente",
         "grau": "medio"
       },
       {
@@ -44155,6 +44376,329 @@
         "grau": "medio"
       },
       {
+        "id": "6119",
+        "ano": "2026",
+        "numero": "366",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Afonso Monticeli",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6119/afonsomonticeli_-_indicacao366-2026.pdf",
+        "ementa": "Solicita recapeamento asfáltico e melhorias na sinalização horizontal na Rua Santa Margarida, nos trechos compreendidos entre a Rua Presidente Tancredo Neves e a Avenida Artur Saoviolo Lima, trecho em paralelepípedo, bem como entre a Rua Tenente Joaquim Pinto e Avenida Catarina Limborço, no bairro Bom Pastor.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "arquivado",
+        "tema": "transito",
+        "tema_label": "Trânsito/Mobilidade",
+        "grau": "baixo"
+      },
+      {
+        "id": "6120",
+        "ano": "2026",
+        "numero": "367",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Afonso Monticeli",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6120/afonsomonticeli_-_indicacao367-2026.pdf",
+        "ementa": "Solicita que sejam realizados serviços de limpeza, manutenção, melhorias estruturais e instalação de iluminação pública na escadaria localizada entre a Avenida Artur Saoviolo Lima e a Rua Professor Liamar Lomeu, no bairro Bom Pator.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "arquivado",
+        "tema": "educacao",
+        "tema_label": "Educação",
+        "grau": "baixo"
+      },
+      {
+        "id": "6121",
+        "ano": "2026",
+        "numero": "368",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Alexandre Prado",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6121/alexandreprado_-_indicacao368-2026.pdf",
+        "ementa": "Solicita a alteração da legislação que dispõe sobre o Estatuto dos Servidores Públicos Municipais para assegurar que o afastamento para tratamento da própria saúde não prejudique a aquisição do direito à licença-prêmio.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "medio"
+      },
+      {
+        "id": "6122",
+        "ano": "2026",
+        "numero": "369",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Alexandre Prado",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6122/alexandreprado_-_indicacao369-2026.pdf",
+        "ementa": "Solicita a realização de estudos para a celebração de parcerias com instituições de ensino superior do Município e da região, especialmente aquelas que ofertam cursos de Terapia Ocupacional, Fonoaudiologia, Psicologia, Psicopedagogia e áreas correlatas, com o objetivo de ampliar a formação e qualificação de profissionais especializados no atendimento de pessoas com Transtorno do Espectro Autista (TEA) e outras condições do neurodesenvolvimento.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "medio"
+      },
+      {
+        "id": "6123",
+        "ano": "2026",
+        "numero": "370",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Ana Rios Fontoura",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6123/anarios_-_indicacao370-2026.pdf",
+        "ementa": "Solicita a instalação de cobertura fixa na Praça do ET e a nivelação da altura das ruas com a calçada em frente a referida praça.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "arquivado",
+        "tema": "infraestrutura",
+        "tema_label": "Infraestrutura",
+        "grau": "baixo"
+      },
+      {
+        "id": "6124",
+        "ano": "2026",
+        "numero": "371",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Ana Rios Fontoura",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6124/anarios_-_indicacao371-2026.pdf",
+        "ementa": "Solicita a construção de uma cozinha externa com cobertura e a abertura de um portão para acesso de veículos nos fundos da Unidade Básica de Saúde Dr. Carlos da Costa Brito, localizada no bairro Jardim Corcetti.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "medio"
+      },
+      {
+        "id": "6125",
+        "ano": "2026",
+        "numero": "372",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Bruno Leandro Coletor",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6125/brunoleandro_-_indicacao372-2026.pdf",
+        "ementa": "Solicita pavimentação asfáltica e implantação de iluminação pública na Rua Antônio Bernardes Pereira, nº 1290, bairro Jardim Corcetti I.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "seguranca",
+        "tema_label": "Segurança",
+        "grau": "medio"
+      },
+      {
+        "id": "6128",
+        "ano": "2026",
+        "numero": "373",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Cássio Chiodi",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6128/cassiochiodi_-_indicacao373-2026.pdf",
+        "ementa": "Solicita que a Secretaria Municipal de Educação realize a adesão do Município de Varginha ao Programa Nacional do Livro e do Material Didático (PNLD), disponibilizado pelo Fundo Nacional de Desenvolvimento da Educação (FNDE), aproveitando o período de adesão atualmente aberto, a fim de garantir o recebimento gratuito de livros e materiais didáticos destinados aos estudantes e professores da rede municipal de ensino.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "educacao",
+        "tema_label": "Educação",
+        "grau": "medio"
+      },
+      {
+        "id": "6129",
+        "ano": "2026",
+        "numero": "374",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Cássio Chiodi",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6129/cassiochiodi_-_indicacao374-2026.pdf",
+        "ementa": "Solicita a suspensão do Processo Licitatório nº 160/2026, destinado à aquisição de material apostilado para o Município de Varginha, até que sejam apuradas e esclarecidas as informações necessárias sobre o procedimento.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "medio"
+      },
+      {
+        "id": "6135",
+        "ano": "2026",
+        "numero": "375",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Dudu Ottoni",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6135/eduardoottonifilho_-_indicacao375-2026.pdf",
+        "ementa": "Solicita melhorias nas condições de mobilidade e segurança viária na Avenida Murilo Paiva, bairro Parque Mariela, especialmente no entroncamento com a Avenida Comendador Manoel Sendas, mediante a implementação das intervenções que se mostrarem tecnicamente adequadas, tais como a implantação de semáforos, rotatórias, ou outras medidas de engenharia de tráfego.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "arquivado",
+        "tema": "transito",
+        "tema_label": "Trânsito/Mobilidade",
+        "grau": "baixo"
+      },
+      {
+        "id": "6139",
+        "ano": "2026",
+        "numero": "376",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Miguel da Saúde",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6139/miguellima_-_indicacao376-2026.pdf",
+        "ementa": "Solicita estudos para a criação de programa habitacional destinado aos Agentes Comunitários de Saúde (ACS) e Agentes de Combate às Endemias (ACE) no município de Varginha.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "medio"
+      },
+      {
+        "id": "6141",
+        "ano": "2026",
+        "numero": "377",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Pastor Faustinho",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6141/pastorfaustinho_-_indicacao377-2026.pdf",
+        "ementa": "Solicita a instalação de tela de alambrado na área de ribanceira existente junto ao bambuzal localizado entre a Avenida Rio Verde e a Avenida Rio São Francisco no bairro Imaculada.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "arquivado",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "baixo"
+      },
+      {
+        "id": "6142",
+        "ano": "2026",
+        "numero": "378",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Pastor Faustinho",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6142/pastorfaustinho_-_indicacao378-2026.pdf",
+        "ementa": "Solicita implantação de placas de sinalização e pintura vertical e horizontal nos cruzamentos, com o objetivo de coibir o fechamento dos cruzamentos pelos condutores.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "transito",
+        "tema_label": "Trânsito/Mobilidade",
+        "grau": "medio"
+      },
+      {
+        "id": "6144",
+        "ano": "2026",
+        "numero": "379",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Rogério Bueno",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6144/rogeriobueno_-_indicacao379-2026.pdf",
+        "ementa": "Solicita a instalação de uma estátua em homenagem a Antônio Adão, figura popular e símbolo da cultura de Varginha.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "cultura",
+        "tema_label": "Cultura/Esporte/Lazer",
+        "grau": "baixo"
+      },
+      {
+        "id": "6145",
+        "ano": "2026",
+        "numero": "380",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Rogério Bueno",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6145/rogeriobueno_-_indicacao380-2026.pdf",
+        "ementa": "Solicita a reforma da Praça Governador Benedito Valadares, com serviços de pintura e jardinagem, além de reforma dos bancos, das calçadas e a manutenção da iluminação do local.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "arquivado",
+        "tema": "infraestrutura",
+        "tema_label": "Infraestrutura",
+        "grau": "baixo"
+      },
+      {
+        "id": "6146",
+        "ano": "2026",
+        "numero": "381",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Zé Morais",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6146/josemorais_-_indicacao381-2026.pdf",
+        "ementa": "Solicita recapeamento asfáltico da Rua Ruth Carvalho e da Avenida José Elias de Oliveira, localizadas no bairro Sion.",
+        "data": "2026-08-05",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "arquivado",
+        "tema": "infraestrutura",
+        "tema_label": "Infraestrutura",
+        "grau": "baixo"
+      },
+      {
+        "id": "6147",
+        "ano": "2026",
+        "numero": "382",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Zé Morais",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6147/josemorais_-_indicacao382-2026.pdf",
+        "ementa": "Solicita estudo de viabilidade técnica visando à reconstrução de uma passarela para pedestres na Travessa São José, localizada no bairro Sion.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "transito",
+        "tema_label": "Trânsito/Mobilidade",
+        "grau": "medio"
+      },
+      {
+        "id": "6149",
+        "ano": "2026",
+        "numero": "383",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Zilda Silva",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6149/zilda_-_indicacao383-2026.pdf",
+        "ementa": "Solicita realização de estudo de viabilidade para implantação da cirurgia de colocação de tela sling na rede pública municipal de saúde, destinada ao tratamento da incontinência urinária de esforço feminina.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "medio"
+      },
+      {
+        "id": "6150",
+        "ano": "2026",
+        "numero": "384",
+        "tipo": "Indicação",
+        "sigla": "IND",
+        "autor": "Zilda Silva",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6150/zilda_-_indicacao384-2026.pdf",
+        "ementa": "Solicita manutenção e recuperação do pavimento da Rua Janaína Ferreira Santos, entre os números 46 e 185, no bairro Park Imperial, com a correção do afundamento do asfalto nos trechos remendados e o reparo dos buracos existentes na via.",
+        "data": "2026-08-05",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "arquivado",
+        "tema": "infraestrutura",
+        "tema_label": "Infraestrutura",
+        "grau": "medio"
+      },
+      {
         "id": "5421",
         "ano": "2026",
         "numero": "1",
@@ -44795,7 +45339,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -44812,7 +45356,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -44829,7 +45373,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -47367,8 +47911,8 @@
         "numero": 46,
         "tipo": "Sessão Ordinária",
         "data": "2026-08-03",
-        "finalizada": false,
-        "url_video": "",
+        "finalizada": true,
+        "url_video": "https://www.youtube.com/watch?v=Ri5gZYAOoWw",
         "presentes_qtd": 15,
         "presentes": [
           "Afonso Monticeli",
@@ -47389,8 +47933,249 @@
         ],
         "votacoes": [],
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5126"
+      },
+      {
+        "id": 5128,
+        "numero": 47,
+        "tipo": "Sessão Ordinária",
+        "data": "2026-08-05",
+        "finalizada": true,
+        "url_video": "https://www.youtube.com/watch?v=WoYWY11DYHc",
+        "presentes_qtd": 15,
+        "presentes": [
+          "Afonso Monticeli",
+          "Alexandre Prado",
+          "Ana Rios Fontoura",
+          "Bruno Leandro Coletor",
+          "Cássio Chiodi",
+          "Dandan",
+          "Davi Martins",
+          "Dudu Ottoni",
+          "Joãozinho Enfermeiro",
+          "Miguel da Saúde",
+          "Pastor Faustinho",
+          "Rogério Bueno",
+          "Thulyo Paiva",
+          "Zilda Silva",
+          "Zé Morais"
+        ],
+        "votacoes": [
+          {
+            "id": 2897,
+            "materia_id": 6118,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 1 - Projeto de Lei Ordinária do Executivo nº 45 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
+          },
+          {
+            "id": 2898,
+            "materia_id": 6118,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 2 - Projeto de Lei Ordinária do Executivo nº 45 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
+          },
+          {
+            "id": 2896,
+            "materia_id": 6126,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 7 - Requerimento nº 185 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2890,
+            "materia_id": 6130,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 13 - Requerimento nº 186 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2891,
+            "materia_id": 6132,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 14 - Requerimento nº 187 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2894,
+            "materia_id": 6133,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 15 - Requerimento nº 188 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2895,
+            "materia_id": 6134,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 16 - Requerimento nº 189 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2892,
+            "materia_id": 6136,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 19 - Requerimento nº 190 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2893,
+            "materia_id": 6138,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 20 - Requerimento nº 191 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          }
+        ],
+        "fonte": "https://sapl.varginha.mg.leg.br/sessao/5128"
       }
     ],
-    "coletado_em": "2026-08-04T06:02:33-03:00"
+    "coletado_em": "2026-08-09T03:26:49-03:00"
   }
 }

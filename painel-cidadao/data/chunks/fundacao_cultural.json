@@ -7,9 +7,9 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 3006239.88,
+    "total_atual": 3038573.32,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 506543.24,
+    "total_externo_atual": 507024.0,
     "total_externo_anterior": 3071916.67,
     "credores_atual_qtd": 114,
     "credores_anterior_qtd": 196,
@@ -261,10 +261,10 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 232,
-      "empenhado": 3640862.39,
-      "liquidado": 3083013.72,
-      "pago": 3007459.42
+      "registros": 234,
+      "empenhado": 3641589.69,
+      "liquidado": 3085657.72,
+      "pago": 3039809.1
     },
     "maiores_empenhos_atual": [
       {
@@ -550,8 +550,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026",
         "valor_empenhado": 21099.22,
         "valor_liquidado": 21099.22,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 21099.22
+        "valor_pago": 21099.22,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-05-25",
@@ -748,8 +748,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026",
         "valor_empenhado": 10753.46,
         "valor_liquidado": 10753.46,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 10753.46
+        "valor_pago": 10753.46,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-06-22",
@@ -34954,6 +34954,18 @@
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
+        "ano": "2026",
+        "funcionario": "TADEU  APARECIDO DE GODOI JUNIOR",
+        "cargo": "2803 - MOTORISTA",
+        "numero": 15119,
+        "quantidade": 1.0,
+        "valor_total": 180.0,
+        "periodo": "26-07-2026 a 26-07-2026",
+        "destino": "Santana da Vargem",
+        "finalidade": "Destino: Santana da Vargem/MG\nMotivo da viagem: Motorista a serviço da Funcult\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 100% X R$ 180 = R$ 180,00",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
         "ano": "2025",
         "funcionario": "JAERCIO ALVES DA TRINDADE",
         "cargo": "8202 - ASSESSOR LOGISTICA SEGURANCA",
@@ -36552,6 +36564,18 @@
         "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
       },
       {
+        "ano": "2026",
+        "funcionario": "TADEU  APARECIDO DE GODOI JUNIOR",
+        "cargo": "",
+        "numero": 233,
+        "quantidade": 1,
+        "valor_total": 180.0,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
         "ano": "2019",
         "funcionario": "NYEI NADEIA",
         "cargo": "",
@@ -38053,11 +38077,11 @@
       }
     ],
     "resumo": {
-      "detalhadas_qtd": 68,
-      "detalhadas_valor_total": 60960.36,
-      "atual_qtd": 46,
-      "atual_valor": 49281.22,
-      "orcamentarias_atual_valor": 48987.74
+      "detalhadas_qtd": 69,
+      "detalhadas_valor_total": 61140.36,
+      "atual_qtd": 47,
+      "atual_valor": 49461.22,
+      "orcamentarias_atual_valor": 49167.74
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/211697"
   },

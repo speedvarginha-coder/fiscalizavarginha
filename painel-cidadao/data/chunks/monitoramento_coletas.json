@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-04T09:47:36.646Z",
+  "generated_at": "2026-08-09T06:46:12.828Z",
   "last_completed_run": {
     "schema_version": 1,
-    "updated_at": "2026-08-04T09:47:36.167Z",
-    "finished_at": "2026-08-04T09:47:36.167Z",
+    "updated_at": "2026-08-09T06:46:12.325Z",
+    "finished_at": "2026-08-09T06:46:12.325Z",
     "coleta": "SUCESSO",
     "deploy": "SUCESSO",
-    "whatsapp": "SUCESSO",
+    "whatsapp": "PULADO",
     "fase": "final"
   },
   "summary": {
     "total_sources": 12,
     "by_status": {
-      "ok": 8,
-      "partial": 3,
+      "ok": 7,
+      "partial": 4,
       "manual": 0,
       "preserved": 1,
       "failed": 0,
@@ -27,7 +27,7 @@
       "id": "atualizado_em",
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-08-04T09:12:15.000Z",
+      "source_updated_at": "2026-08-09T06:35:30.000Z",
       "age_days": 0,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -35,38 +35,38 @@
     {
       "id": "prefeitura",
       "label": "Prefeitura/Betha",
-      "status": "ok",
-      "source_updated_at": "2026-08-04T09:12:15.000Z",
+      "status": "preserved",
+      "source_updated_at": "2026-08-09T06:35:30.000Z",
       "age_days": 0,
       "max_age_days": 7,
-      "reason": "Timestamp interno dentro da janela esperada."
+      "reason": "Metadados indicam preservacao da ultima base valida."
     },
     {
       "id": "camara_betha",
       "label": "Camara/Betha",
-      "status": "ok",
-      "source_updated_at": "2026-08-04T09:11:13.000Z",
+      "status": "partial",
+      "source_updated_at": "2026-08-09T06:34:28.000Z",
       "age_days": 0,
       "max_age_days": 7,
-      "reason": "Timestamp interno dentro da janela esperada."
+      "reason": "Metadados indicam cobertura parcial."
     },
     {
       "id": "pessoal",
       "label": "Pessoal",
       "status": "ok",
       "source_updated_at": "2026-08-04T09:07:29.000Z",
-      "age_days": 0,
+      "age_days": 4.9,
       "max_age_days": 31,
       "reason": "Timestamp interno dentro da janela esperada."
     },
     {
       "id": "pncp",
       "label": "PNCP",
-      "status": "preserved",
-      "source_updated_at": null,
-      "age_days": null,
+      "status": "ok",
+      "source_updated_at": "2026-08-08T17:44:42.000Z",
+      "age_days": 0.5,
       "max_age_days": 15,
-      "reason": "Metadados indicam preservacao da ultima base valida."
+      "reason": "Timestamp interno dentro da janela esperada."
     },
     {
       "id": "cnpjs",
@@ -82,7 +82,7 @@
       "label": "Fontes de emendas 2026",
       "status": "partial",
       "source_updated_at": "2026-08-04T09:07:35.000Z",
-      "age_days": 0,
+      "age_days": 4.9,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
@@ -90,7 +90,7 @@
       "id": "indice_relevancia",
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-08-04T09:39:26.230Z",
+      "source_updated_at": "2026-08-09T06:36:37.887Z",
       "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
@@ -99,8 +99,8 @@
       "id": "diario",
       "label": "Diario Oficial",
       "status": "ok",
-      "source_updated_at": "2026-08-03T18:45:22.000Z",
-      "age_days": 0.6,
+      "source_updated_at": "2026-08-07T17:07:19.000Z",
+      "age_days": 1.6,
       "max_age_days": 5,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -108,7 +108,7 @@
       "id": "camara_anos",
       "label": "Camara/SAPL",
       "status": "ok",
-      "source_updated_at": "2026-08-04T09:02:33.000Z",
+      "source_updated_at": "2026-08-09T06:26:49.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -117,7 +117,7 @@
       "id": "publicacoes_estruturadas",
       "label": "Publicacoes da Camara",
       "status": "ok",
-      "source_updated_at": "2026-08-04T09:12:24.000Z",
+      "source_updated_at": "2026-08-09T06:35:40.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -126,7 +126,7 @@
       "id": "publicacoes_diario",
       "label": "Publicacoes do Diario",
       "status": "ok",
-      "source_updated_at": "2026-08-04T09:12:25.000Z",
+      "source_updated_at": "2026-08-09T06:35:43.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."

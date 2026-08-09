@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-04T09:39:34.428Z",
-  "atualizado_em": "2026-08-04T06:12:15",
+  "gerado_em": "2026-08-09T06:36:52.574Z",
+  "atualizado_em": "2026-08-09T03:35:30",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,11 +11,11 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 209637994.62,
+    "total_pago_fornecedores_externos": 215236142.55,
     "credores_mapeados": 10000,
-    "contratos_total": 1340,
-    "contratos_do_ano": 365,
-    "contratos_em_execucao": 1285,
+    "contratos_total": 1286,
+    "contratos_do_ano": 417,
+    "contratos_em_execucao": 1232,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -24,7 +24,7 @@
       },
       {
         "nome": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
-        "valor": 14359013.12
+        "valor": 17096002.68
       },
       {
         "nome": "VIAÇÃO REAL TRANSPORTE URBANO E RODOVIÁRIO LTDA",
@@ -36,7 +36,7 @@
       },
       {
         "nome": "RECEITA FEDERAL",
-        "valor": 7641542.22
+        "valor": 7694656.32
       },
       {
         "nome": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
@@ -47,24 +47,24 @@
         "valor": 5383293.36
       },
       {
+        "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
+        "valor": 4623269.51
+      },
+      {
         "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
         "valor": 4518151.88
       },
       {
-        "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
-        "valor": 4477199.74
-      },
-      {
-        "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
-        "valor": 3766863.16
+        "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+        "valor": 3988460.71
       }
     ]
   },
   "camara": {
     "ano": 2026,
     "cadeiras": 15,
-    "total_pago_fornecedores_externos": 6905226.61,
-    "contratos_total": 43,
+    "total_pago_fornecedores_externos": 6936648.11,
+    "contratos_total": 46,
     "top_fornecedores": [
       {
         "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -120,10 +120,10 @@
   },
   "diarias": {
     "prefeitura": {
-      "registros": 5656,
-      "valor_total": 2260264.57,
-      "quantidade_total": 5656,
-      "servidores": 297
+      "registros": 5732,
+      "valor_total": 2314221.21,
+      "quantidade_total": 5732,
+      "servidores": 298
     },
     "camara": {
       "registros": 240,

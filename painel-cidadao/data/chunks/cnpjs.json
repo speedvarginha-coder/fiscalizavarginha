@@ -1514,7 +1514,7 @@
       "cnpj_raiz": "03091412",
       "cnpj_completo": "03091412000172",
       "cnpj_reconstruido": true,
-      "valor_total": 14359013.12,
+      "valor_total": 17096002.68,
       "razao_social": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
       "nome_fantasia": "PAVICAN",
       "situacao": "ATIVA",
@@ -1573,7 +1573,7 @@
       "cnpj_raiz": "00394460",
       "cnpj_completo": "00394460000141",
       "cnpj_reconstruido": true,
-      "valor_total": 7641542.22,
+      "valor_total": 7694656.32,
       "razao_social": "MINISTERIO DA FAZENDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1620,6 +1620,28 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
+      "cnpj_raiz": "17281106",
+      "cnpj_completo": "17281106000103",
+      "cnpj_reconstruido": true,
+      "valor_total": 4623269.51,
+      "razao_social": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS COPASA MG",
+      "nome_fantasia": "COPASA MG",
+      "situacao": "ATIVA",
+      "abertura": "1966-08-24",
+      "cnae": "Captação, tratamento e distribuição de água",
+      "municipio": "BELO HORIZONTE",
+      "uf": "MG",
+      "socios": [
+        "ADRIANO RUDEK DE MOURA",
+        "CLEYSON JACOMINI DE SOUSA",
+        "LAURA PETRI GERALDINO",
+        "MARILIA CARVALHO DE MELO",
+        "PABLO FERRACO ANDREAO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
       "cnpj_raiz": "16565111",
       "cnpj_completo": "16565111000185",
@@ -1641,24 +1663,20 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
-      "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
-      "cnpj_raiz": "17281106",
-      "cnpj_completo": "17281106000103",
+      "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+      "cnpj_raiz": "37943080",
+      "cnpj_completo": "37943080000129",
       "cnpj_reconstruido": true,
-      "valor_total": 4477199.74,
-      "razao_social": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS COPASA MG",
-      "nome_fantasia": "COPASA MG",
+      "valor_total": 3988460.71,
+      "razao_social": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+      "nome_fantasia": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS",
       "situacao": "ATIVA",
-      "abertura": "1966-08-24",
-      "cnae": "Captação, tratamento e distribuição de água",
-      "municipio": "BELO HORIZONTE",
+      "abertura": "2020-08-03",
+      "cnae": "Seleção e agenciamento de mão-de-obra",
+      "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "ADRIANO RUDEK DE MOURA",
-        "CLEYSON JACOMINI DE SOUSA",
-        "LAURA PETRI GERALDINO",
-        "MARILIA CARVALHO DE MELO",
-        "PABLO FERRACO ANDREAO"
+        "THALES MAIA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -1738,24 +1756,6 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
-      "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-      "cnpj_raiz": "37943080",
-      "cnpj_completo": "37943080000129",
-      "cnpj_reconstruido": true,
-      "valor_total": 3479890.35,
-      "razao_social": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-      "nome_fantasia": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS",
-      "situacao": "ATIVA",
-      "abertura": "2020-08-03",
-      "cnae": "Seleção e agenciamento de mão-de-obra",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "THALES MAIA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
       "nome": "SHA COMERCIO DE ALIMENTOS LTDA",
       "cnpj_raiz": "61980272",
       "cnpj_completo": "61980272000190",
@@ -1783,7 +1783,7 @@
       "cnpj_raiz": "05165851",
       "cnpj_completo": "05165851000108",
       "cnpj_reconstruido": true,
-      "valor_total": 3072770.02,
+      "valor_total": 3107465.51,
       "razao_social": "SERVICOS CFC LTDA",
       "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
       "situacao": "ATIVA",
@@ -1801,7 +1801,7 @@
       "cnpj_raiz": "17155730",
       "cnpj_completo": "17155730000164",
       "cnpj_reconstruido": true,
-      "valor_total": 2858005.05,
+      "valor_total": 2858192.26,
       "razao_social": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1861,6 +1861,24 @@
         "ANA CAROLINA PEREIRA ROQUIM",
         "ELDER DE BRITO MARQUES",
         "FERNANDO GUIMARAES FONSECA NETO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
+      "cnpj_raiz": "23593720",
+      "cnpj_completo": "23593720000103",
+      "cnpj_reconstruido": true,
+      "valor_total": 1882848.08,
+      "razao_social": "EXXCELENCIA SERVICOS TERCEIRIZADOS LTDA",
+      "nome_fantasia": "EXXCELENCIA SERVICOS",
+      "situacao": "ATIVA",
+      "abertura": "2015-11-04",
+      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
+      "municipio": "TEIXEIRAS",
+      "uf": "MG",
+      "socios": [
+        "MARIA DAS GRACAS REZENDE FRAGOSO FLORESTA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -1933,24 +1951,6 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
-      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
-      "cnpj_raiz": "23593720",
-      "cnpj_completo": "23593720000103",
-      "cnpj_reconstruido": true,
-      "valor_total": 1762357.68,
-      "razao_social": "EXXCELENCIA SERVICOS TERCEIRIZADOS LTDA",
-      "nome_fantasia": "EXXCELENCIA SERVICOS",
-      "situacao": "ATIVA",
-      "abertura": "2015-11-04",
-      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
-      "municipio": "TEIXEIRAS",
-      "uf": "MG",
-      "socios": [
-        "MARIA DAS GRACAS REZENDE FRAGOSO FLORESTA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
       "nome": "CISSUL - CONSÓRCIO INTERMUNICIPAL DE SAÚDE SUL MINEIRO",
       "cnpj_raiz": "00730595",
       "cnpj_completo": "00730595000130",
@@ -1988,6 +1988,43 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
+      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "cnpj_raiz": "27445021",
+      "cnpj_completo": "27445021000177",
+      "cnpj_reconstruido": true,
+      "valor_total": 1589846.5,
+      "razao_social": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "nome_fantasia": "COLMEIA MULTISSERVICOS",
+      "situacao": "ATIVA",
+      "abertura": "2017-04-03",
+      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "THALES MAIA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
+      "cnpj_raiz": "04491116",
+      "cnpj_completo": "04491116000121",
+      "cnpj_reconstruido": true,
+      "valor_total": 1540388.64,
+      "razao_social": "VERSAO BR COMUNICACAO E MARKETING LTDA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2001-05-25",
+      "cnae": "Agências de publicidade",
+      "municipio": "RIBEIRAO PRETO",
+      "uf": "SP",
+      "socios": [
+        "GUSTAVO HENRIQUE TEIXEIRA DE CASTRO",
+        "SUELI MERI NEVES TEIXEIRA DE CASTRO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
       "nome": "AGENCIA ADVENTISTA DESENV.E REC.ASSIST. ADRA",
       "cnpj_raiz": "16524054",
       "cnpj_completo": "16524054000196",
@@ -2004,24 +2041,6 @@
         "FERNANDO BATISTA DA SILVA JUNIOR",
         "HIRAM RAFAEL SILVEIRA KALBERMATTER",
         "WILIAN CARVALHO FERREIRA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "cnpj_raiz": "27445021",
-      "cnpj_completo": "27445021000177",
-      "cnpj_reconstruido": true,
-      "valor_total": 1466898.37,
-      "razao_social": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "nome_fantasia": "COLMEIA MULTISSERVICOS",
-      "situacao": "ATIVA",
-      "abertura": "2017-04-03",
-      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "THALES MAIA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -2052,7 +2071,7 @@
       "cnpj_raiz": "00874929",
       "cnpj_completo": "00874929000140",
       "cnpj_reconstruido": true,
-      "valor_total": 1414707.44,
+      "valor_total": 1415839.04,
       "razao_social": "MED CENTER COMERCIAL LTDA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -2063,25 +2082,6 @@
       "socios": [
         "GABRIELLE DANIEL NERY",
         "MARCIA PEREIRA DANIEL NERY"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
-      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
-      "cnpj_raiz": "04491116",
-      "cnpj_completo": "04491116000121",
-      "cnpj_reconstruido": true,
-      "valor_total": 1329945.56,
-      "razao_social": "VERSAO BR COMUNICACAO E MARKETING LTDA",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2001-05-25",
-      "cnae": "Agências de publicidade",
-      "municipio": "RIBEIRAO PRETO",
-      "uf": "SP",
-      "socios": [
-        "GUSTAVO HENRIQUE TEIXEIRA DE CASTRO",
-        "SUELI MERI NEVES TEIXEIRA DE CASTRO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     }
