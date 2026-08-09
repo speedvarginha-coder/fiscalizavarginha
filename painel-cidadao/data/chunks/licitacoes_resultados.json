@@ -1,106 +1,15 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-08-03T11:24:10+00:00",
+  "gerado_em": "2026-08-09T10:58:15+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251206",
-    "fim": "20260803"
+    "inicio": "20251212",
+    "fim": "20260809"
   },
-  "compras": 300,
-  "compras_com_resultado": 140,
+  "compras": 286,
+  "compras_com_resultado": 136,
   "homologacoes_simbolicas": [],
   "registros": [
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "141",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000464/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa para realização do evento BANHO DA DOROTÉIA",
-      "valor_estimado": 245786.23,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-09",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "150",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000465/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de equipamentos de informática (computadores, notebooks, servidores).",
-      "valor_estimado": 483069.55,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-09",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "139",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000467/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Tem por objeto a contratação de serviços de engenharia necessários à execução do sistema de aquecimento das piscinas públicas.",
-      "valor_estimado": 596319.28,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-10",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "153",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000468/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de equipamentos odontológicos destinados às Unidades Básicas de Saúde pertencente à rede municipal de saúde, conforme Emenda Impositiva nº 122/2024, de autoria do vereador Thulyo ",
-      "valor_estimado": 140366.34,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-10",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "152",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000469/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Aquisição de câmara fria para conservação de resfriados (2°C a 8°C), para armazenar medicamentos, imunobiológicos, insulinas e testes que necessitam de controle adequado de temperatura.",
-      "valor_estimado": 48821.9,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-10",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "142",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000474/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de hortifrutigranjeiros",
-      "valor_estimado": 5872444.4,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-11",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "148",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000479/2025",
-      "modalidade": "Pregão - Eletrônico",
-      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de combustível – gasolina e óleo diesel S-10",
-      "valor_estimado": 8829991.0,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-11",
-      "resultados": []
-    },
     {
       "orgao": "Prefeitura Municipal de Varginha",
       "numero_compra": "143",
@@ -4352,7 +4261,7 @@
       "objeto": "[Portal de Compras Públicas] - Registro de Preços para futura e eventual contratação de empresa especializada na prestação de serviços comuns de engenharia para execução de manutenção continuada preventiva e corretiva na",
       "valor_estimado": 6239256.67,
       "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
+      "situacao": "Suspensa",
       "data_publicacao": "2026-07-21",
       "resultados": []
     },
@@ -4411,413 +4320,6 @@
           "data_resultado": "2026-05-11"
         }
       ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "168",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000460/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Revisão do veículo: IVECO/DAILY 65170 CD EE4350 - ANO 2023, placa SIT3E42/MG.",
-      "valor_estimado": 2737.89,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-09",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "173",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000462/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM RECARGA E TESTE HIDROSTÁTICO DE EXTINTORES DE INCÊNDIO.",
-      "valor_estimado": 1476.04,
-      "valor_homologado_total": 1468.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-09",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "Lote 1 - RECARGA DE EXTINTOR DE PÓ QUÍMICO SECO ABC  CAPACIDADE DE 6 - RECARGA DE EXTINTOR DE PÓ QUÍMICO SECO ABC  CAPACIDADE DE 6",
-          "vencedor": "J A EQUIPAMENTOS CONTRA INCENDIO LTDA",
-          "cnpj_vencedor": "53211964000145",
-          "valor_homologado": 585.2,
-          "data_resultado": "2025-12-18"
-        },
-        {
-          "item": 2,
-          "descricao_item": "Lote 1 - RECARGA DE EXTINTOR PÓ QUÍMICO ABC CAPACIDADE DE 4 K - RECARGA DE EXTINTOR PÓ QUÍMICO ABC CAPACIDADE DE 4 K",
-          "vencedor": "J A EQUIPAMENTOS CONTRA INCENDIO LTDA",
-          "cnpj_vencedor": "53211964000145",
-          "valor_homologado": 58.8,
-          "data_resultado": "2025-12-18"
-        },
-        {
-          "item": 3,
-          "descricao_item": "Lote 1 - SERVICO DE RECARGA DE EXTINTOR DE INCENDIO ABC 2KG - SERVICO DE RECARGA DE EXTINTOR DE INCENDIO ABC 2KG",
-          "vencedor": "J A EQUIPAMENTOS CONTRA INCENDIO LTDA",
-          "cnpj_vencedor": "53211964000145",
-          "valor_homologado": 112.0,
-          "data_resultado": "2025-12-18"
-        },
-        {
-          "item": 4,
-          "descricao_item": "Lote 1 - SERVICO DE RECARGA DE EXTINTOR BC 6 KG - 15335 - SERVICO DE RECARGA DE EXTINTOR BC 6 KG - 15335",
-          "vencedor": "J A EQUIPAMENTOS CONTRA INCENDIO LTDA",
-          "cnpj_vencedor": "53211964000145",
-          "valor_homologado": 362.4,
-          "data_resultado": "2025-12-18"
-        },
-        {
-          "item": 5,
-          "descricao_item": "Lote 1 - SERVICO DE RECARGA DE EXTINTOR BC 4 KG - 15334 - 15334 - SERVICO DE RECARGA DE EXTINTOR BC 4 KG",
-          "vencedor": "J A EQUIPAMENTOS CONTRA INCENDIO LTDA",
-          "cnpj_vencedor": "53211964000145",
-          "valor_homologado": 46.8,
-          "data_resultado": "2025-12-18"
-        },
-        {
-          "item": 6,
-          "descricao_item": "Lote 1 - RECARGA DE EXTINTOR CO2 DE 6 KG - RECARGA DE EXTINTOR CO2 DE 6 KG",
-          "vencedor": "J A EQUIPAMENTOS CONTRA INCENDIO LTDA",
-          "cnpj_vencedor": "53211964000145",
-          "valor_homologado": 194.4,
-          "data_resultado": "2025-12-18"
-        },
-        {
-          "item": 7,
-          "descricao_item": "Lote 1 - RECARGA EXTINTOR CO2 4KG - 9181 - 9181 - SERVICO DE RECARGA EXTINTOR CO2 4KG",
-          "vencedor": "J A EQUIPAMENTOS CONTRA INCENDIO LTDA",
-          "cnpj_vencedor": "53211964000145",
-          "valor_homologado": 79.76,
-          "data_resultado": "2025-12-18"
-        },
-        {
-          "item": 8,
-          "descricao_item": "Lote 1 - SERVICOS DE TESTE HIDROSTATICO - EXTINTOR INCENDIO - SERVICOS DE TESTE HIDROSTATICO - EXTINTOR INCENDIO",
-          "vencedor": "J A EQUIPAMENTOS CONTRA INCENDIO LTDA",
-          "cnpj_vencedor": "53211964000145",
-          "valor_homologado": 28.64,
-          "data_resultado": "2025-12-18"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "DE 161",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000463/2025",
-      "modalidade": "Dispensa",
-      "objeto": "MICROCHIP SERINGADO E LEITOR DE MICROCHIP",
-      "valor_estimado": 13967.91,
-      "valor_homologado_total": 5348.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-09",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "Microchip Seringado 2 X 12mm Esterilizado, Com Agulha Descartável, Aplicador,  Etiquetas Adesivas Com O Numero Do Microchip, Codigo De Barras E Certificado De M",
-          "vencedor": "ALC MORAES COMERCIAL LTDA.",
-          "cnpj_vencedor": "46339373000192",
-          "valor_homologado": 5150.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 1,
-          "descricao_item": "Microchip Seringado 2 X 12mm Esterilizado, Com Agulha Descartável, Aplicador,  Etiquetas Adesivas Com O Numero Do Microchip, Codigo De Barras E Certificado De M",
-          "vencedor": "STERF COMERCIO E IMPORTACAO LTDA",
-          "cnpj_vencedor": "53058818000121",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 1,
-          "descricao_item": "Microchip Seringado 2 X 12mm Esterilizado, Com Agulha Descartável, Aplicador,  Etiquetas Adesivas Com O Numero Do Microchip, Codigo De Barras E Certificado De M",
-          "vencedor": "ABB IMPORTACAO, COMERCIO E INTERMEDIACAO LTDA",
-          "cnpj_vencedor": "33742700000100",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 1,
-          "descricao_item": "Microchip Seringado 2 X 12mm Esterilizado, Com Agulha Descartável, Aplicador,  Etiquetas Adesivas Com O Numero Do Microchip, Codigo De Barras E Certificado De M",
-          "vencedor": "TRIPUI SERVICOS E COMERCIO LTDA",
-          "cnpj_vencedor": "05086623000142",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 1,
-          "descricao_item": "Microchip Seringado 2 X 12mm Esterilizado, Com Agulha Descartável, Aplicador,  Etiquetas Adesivas Com O Numero Do Microchip, Codigo De Barras E Certificado De M",
-          "vencedor": "ANIMALLTAG SISTEMAS DE INDENTIFICACAO ANIMAL",
-          "cnpj_vencedor": "18432445000106",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 2,
-          "descricao_item": "LEITOR UNIVERSAL DE MICROCHIP",
-          "vencedor": "STERF COMERCIO E IMPORTACAO LTDA",
-          "cnpj_vencedor": "53058818000121",
-          "valor_homologado": 198.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 2,
-          "descricao_item": "LEITOR UNIVERSAL DE MICROCHIP",
-          "vencedor": "ABB IMPORTACAO, COMERCIO E INTERMEDIACAO LTDA",
-          "cnpj_vencedor": "33742700000100",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 2,
-          "descricao_item": "LEITOR UNIVERSAL DE MICROCHIP",
-          "vencedor": "ALC MORAES COMERCIAL LTDA.",
-          "cnpj_vencedor": "46339373000192",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 2,
-          "descricao_item": "LEITOR UNIVERSAL DE MICROCHIP",
-          "vencedor": "ANIMALLTAG SISTEMAS DE INDENTIFICACAO ANIMAL",
-          "cnpj_vencedor": "18432445000106",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 2,
-          "descricao_item": "LEITOR UNIVERSAL DE MICROCHIP",
-          "vencedor": "TRIPUI SERVICOS E COMERCIO LTDA",
-          "cnpj_vencedor": "05086623000142",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 2,
-          "descricao_item": "LEITOR UNIVERSAL DE MICROCHIP",
-          "vencedor": "52.890.773 MAURICIO NATTAN DOS SANTOS",
-          "cnpj_vencedor": "52890773000194",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 2,
-          "descricao_item": "LEITOR UNIVERSAL DE MICROCHIP",
-          "vencedor": "48.776.139 RAFAEL FRANCO CASTILHO",
-          "cnpj_vencedor": "48776139000158",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        },
-        {
-          "item": 2,
-          "descricao_item": "LEITOR UNIVERSAL DE MICROCHIP",
-          "vencedor": "J.S.A COMERCIO LTDA",
-          "cnpj_vencedor": "54361487000167",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-02"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "DE 166",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000466/2025",
-      "modalidade": "Dispensa",
-      "objeto": "A aquisição de 6 (seis) Notebooks - Tipo 03 - Conforme Memorial Descritivo",
-      "valor_estimado": 42823.14,
-      "valor_homologado_total": 35453.94,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-10",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "AHR EXPRESS LTDA",
-          "cnpj_vencedor": "56689187000137",
-          "valor_homologado": 35453.94,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "NOVA VISAO VENDA E ASSISTENCIA LTDA",
-          "cnpj_vencedor": "00346281000139",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "AV AGENCIA DIGITAL LTDA",
-          "cnpj_vencedor": "56634978000160",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "MS ENGENHARIA E SERVICOS",
-          "cnpj_vencedor": "32303542000120",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "GERENCIAR SERVICOS, PRODUTOS E TECNOLOGIA LTDA",
-          "cnpj_vencedor": "40131959000180",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "Pedro Henrique Costa Cunha Santana",
-          "cnpj_vencedor": "61077506000193",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "WDL SERVICOS DE TELECOMUNICACAO LTDA",
-          "cnpj_vencedor": "34726583000154",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "52.890.773 MAURICIO NATTAN DOS SANTOS",
-          "cnpj_vencedor": "52890773000194",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "LRF SERVICOS E COMERCIO EM INFORMATICA LTDA",
-          "cnpj_vencedor": "35053508000132",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        },
-        {
-          "item": 1,
-          "descricao_item": "NOTEBOOK TIPO 03 – I7 15.6 (CONFORME MEMORIAL DESCRITIVO)",
-          "vencedor": "59.569.294 IVENS TEODORO MARQUES",
-          "cnpj_vencedor": "59569294000110",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-12-09"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "177",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000470/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para realizar serviço de desinstalação, desmontagem, acondicionamento com fornecimento de embalagens, recolhimento, carga, transporte, descarga até o lo",
-      "valor_estimado": 20656.67,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-10",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "175",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000471/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Contratação de Empresa Especializada para Serviços de revisão para Daily Minibus 50-180 ee 4100 Turismo 18+1 Tq. 90 l  Placa: TCN3F56/MG  cor Branco Iveco de 46225 km.",
-      "valor_estimado": 9709.02,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-10",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "DE 159",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000472/2025",
-      "modalidade": "Dispensa",
-      "objeto": "Contratação de serviços externos de MOTOBOY destinados à realização de entregas dos resultados de perícias aos servidores públicos municipais, documentos diversos e/ou pequenos volumes aos demais setores da Prefeitura Mu",
-      "valor_estimado": 14958.0,
-      "valor_homologado_total": 14922.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-10",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "SERVICOS DE MOTOBOY",
-          "vencedor": "BRUNO CARIOCA LOPES 09364252616",
-          "cnpj_vencedor": "19460296000151",
-          "valor_homologado": 14922.0,
-          "data_resultado": "2025-11-27"
-        },
-        {
-          "item": 1,
-          "descricao_item": "SERVICOS DE MOTOBOY",
-          "vencedor": "ALISSON RIBEIRO CARDOSO MOTOBOY",
-          "cnpj_vencedor": "17191963000112",
-          "valor_homologado": 0.0,
-          "data_resultado": "2025-11-27"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "174",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000473/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - AQUISIÇÃO DE RAÇÃO PREMIUM PARA CÃES ADULTOS",
-      "valor_estimado": 25779.0,
-      "valor_homologado_total": 21801.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-10",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "Ração premium para cães adultos - Ração premium para cães adultos - Ração premium para cães adultos com qualidade nutricional para garantir a vitalidade e o bem",
-          "vencedor": "CAMPO VERDE AGRICOLA LTDA",
-          "cnpj_vencedor": "26352751000160",
-          "valor_homologado": 21801.0,
-          "data_resultado": "2025-12-22"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "171",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000475/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa autorizada para prestação de serviço de revisão programada, com fornecimento de peças e acessórios de reposição, durante o período de garantia de fábrica dos veículos",
-      "valor_estimado": 7971.6,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-11",
-      "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "176",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000477/2025",
-      "modalidade": "Dispensa",
-      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada na execução de serviços de manutenção preventiva e corretiva dos motores eletrônicos com todos os materiais, equipamentos, mão de obra inclusos (troca d",
-      "valor_estimado": 6205.32,
-      "valor_homologado_total": null,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-11",
-      "resultados": []
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -8538,10 +8040,91 @@
       "modalidade": "Dispensa",
       "objeto": "[Portal de Compras Públicas] - Aquisição de materiais para alarmes",
       "valor_estimado": 14813.46,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 13886.85,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-21",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "LOTE 01 - CENTRAL DE ALARME ACTIVE 20 GPRS - CENTRAL DE ALARME ACTIVE 20 GPRS",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 3091.98,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 2,
+          "descricao_item": "LOTE 01 - TECLADO JFL TEC 300 - - TECLADO - TEC 300",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 1053.96,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 3,
+          "descricao_item": "LOTE 01 - MODULO ETHERNET PARA ACTIVE MOB ME-05 WB - MODULO ETHERNET PARA ACTIVE MOB ME-05 WB",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 667.38,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 4,
+          "descricao_item": "LOTE 01 - MODULO P/ COMUNICACAO DE CENTRAIS DE ALARME MGP-04 4G - Especificacoes Tecnicas:- Conexao nuvem;- Programacao remota;- 1 SIM CARD;- IP fixo ou dinamic",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 2218.98,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 5,
+          "descricao_item": "LOTE 01 - SIRENE P/ ALARME 12 V - 17091 - Sirene de parede piezoeletrica.",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 585.76,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 6,
+          "descricao_item": "LOTE 01 - SENSOR IRD 640 - SENSOR IRD 640",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 1647.3,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 7,
+          "descricao_item": "LOTE 01 - ARTICULADOR PARA SENSOR - ARTICULADOR PARA SENSOR",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 72.75,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 8,
+          "descricao_item": "LOTE 01 - SENSOR EXTERNO DSE-830 - SENSOR EXTERNO DSE-830",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 2934.24,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 9,
+          "descricao_item": "LOTE 01 - CABO 6 VIAS PARA ALARME - CABO 6 VIAS PARA ALARME",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 1073.84,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 10,
+          "descricao_item": "LOTE 01 - SIRENE COM STROBE - SIRENE COM STROBE",
+          "vencedor": "MALINOIS LICITACOES LTDA",
+          "cnpj_vencedor": "29290196000188",
+          "valor_homologado": 540.66,
+          "data_resultado": "2026-08-03"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -8573,10 +8156,19 @@
       "modalidade": "Dispensa",
       "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para controle de pragas, incluindo o fornecimento de mão de obra, materiais e equipamentos necessários",
       "valor_estimado": 4173.32,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 3200.0,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-22",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "GLOBAL - Desratizacao, dedetizacao e controle de pragas - Prestacao de servicos de dedetizacao, desratizacao, desinsetizacao completa e controle de vetores e pr",
+          "vencedor": "DEDETIZADORA RIBEIRO E SOUZA EIRELI",
+          "cnpj_vencedor": "13201350000168",
+          "valor_homologado": 3200.0,
+          "data_resultado": "2026-08-03"
+        }
+      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -9122,72 +8714,6 @@
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-30",
       "resultados": []
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "IL 39",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000458/2025",
-      "modalidade": "Inexigibilidade",
-      "objeto": "CONTRATAÇÃO PARA APRESENTAÇÃO DE SHOW ARTÍSTICO MUSICAL DO ZÉ FELIPE,POR ACASIÃO DO EVENTO FEIRA DA PAZ 2026.",
-      "valor_estimado": 400000.0,
-      "valor_homologado_total": 400000.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-09",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "APRESENTACAO DE ARTISTA EM SHOWS E EVENTOS",
-          "vencedor": "FORVIBES MUSIC LTDA",
-          "cnpj_vencedor": "26940667000168",
-          "valor_homologado": 400000.0,
-          "data_resultado": "2025-12-13"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "IL 38",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000459/2025",
-      "modalidade": "Inexigibilidade",
-      "objeto": "CONTRATAÇÃO PARA APRESENTAÇÃO DE SHOW ARTÍSTICO MUSICAL DO DILSINHO,POR ACASIÃO DO EVENTO FEIRA DA PAZ 2026.",
-      "valor_estimado": 390000.0,
-      "valor_homologado_total": 390000.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-09",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "APRESENTACAO DE ARTISTA EM SHOWS E EVENTOS",
-          "vencedor": "GH MUSIC PRODUCAO MUSICAL EDITORA E GRAVADORA LTDA",
-          "cnpj_vencedor": "19353932000146",
-          "valor_homologado": 390000.0,
-          "data_resultado": "2025-12-03"
-        }
-      ]
-    },
-    {
-      "orgao": "Prefeitura Municipal de Varginha",
-      "numero_compra": "IL 40",
-      "ano": 2025,
-      "controle_pncp": "18240119000105-1-000461/2025",
-      "modalidade": "Inexigibilidade",
-      "objeto": "CONTRATAÇÃO PARA APRESENTAÇÃO DE SHOW ARTÍSTICO MUSICAL DA BANDA SAMBÔ,POR ACASIÃO DO EVENTO BANHO DA DOROTÉIA 2026.",
-      "valor_estimado": 150000.0,
-      "valor_homologado_total": 150000.0,
-      "situacao": "Divulgada no PNCP",
-      "data_publicacao": "2025-12-09",
-      "resultados": [
-        {
-          "item": 1,
-          "descricao_item": "APRESENTACAO DE ARTISTA EM SHOWS E EVENTOS",
-          "vencedor": "BRAZUK PRODUCOES LTDA",
-          "cnpj_vencedor": "46802428000159",
-          "valor_homologado": 150000.0,
-          "data_resultado": "2025-12-03"
-        }
-      ]
     },
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -11164,10 +10690,43 @@
       "modalidade": "Dispensa",
       "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE TRANSPORTE MEDIANTE LOCAÇÃO/FRETAMENTO DE VEÍCULOS TIPO ÔNIBUS E VAN PARA TRANSPORTE DE ALUNOS MATRICULADOS NA ESCOLA DO LEGISALTIVO PROF. MÁRIO VANI BEM",
       "valor_estimado": 17242.9,
-      "valor_homologado_total": null,
+      "valor_homologado_total": 14369.06,
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-28",
-      "resultados": []
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "FRETAMENTO DE ÔNIBUS , PADRÃO EXECUTIVO, COM ATÉ 46 LUGARES, PARA REALIZAÇÃO DE VIAGEM IDA E VOLTA ENTRE VARGINHA/MG E TRÊS CORAÇÕES/MG.",
+          "vencedor": "VIACAO CAMPOS GERAIS LTDA",
+          "cnpj_vencedor": "11827210000174",
+          "valor_homologado": 2932.0,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 2,
+          "descricao_item": "FRETAMENTO DE VEÍCULO VAN, PADRÃO EXECUTIVO, COM NO MÍNIMO 18 (DEZOITO) LUGARES PARA REALIZAÇÃO DE VIAGEM IDA E VOLTA ENTRE VARGINHA/MG E POÇOS DE CALDAS/MG.",
+          "vencedor": "THAISVAN TURISMO LTDA",
+          "cnpj_vencedor": "03749982000107",
+          "valor_homologado": 3690.0,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 3,
+          "descricao_item": "FRETAMENTO DE VEÍCULO VAN, PADRÃO EXECUTIVO, COM NO MÍNIMO 18 (DEZOITO) LUGARES PARA REALIZAÇÃO DE VIAGEM IDA E VOLTA ENTRE VARGINHA/MG E AEROPORTO DE CONGONHAS",
+          "vencedor": "THAISVAN TURISMO LTDA",
+          "cnpj_vencedor": "03749982000107",
+          "valor_homologado": 5200.0,
+          "data_resultado": "2026-08-03"
+        },
+        {
+          "item": 4,
+          "descricao_item": "FRETAMENTO DE VEÍCULO VAN, PADRÃO EXECUTIVO, COM NO MÍNIMO 18 (DEZOITO) LUGARES PARA DESLOCAMENTOS DOS ALUNOS DA ESCOLA DO LEGISLATIVO, DURANTE A PERMANÊNCIA EM",
+          "vencedor": "SHEKINAH TUR AGENCIA DE TURISMO LTDA",
+          "cnpj_vencedor": "42969135000100",
+          "valor_homologado": 2547.06,
+          "data_resultado": "2026-08-03"
+        }
+      ]
     },
     {
       "orgao": "Câmara Municipal de Varginha",
@@ -11417,21 +10976,222 @@
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-07-31",
       "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "4",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000205/2026",
+      "modalidade": "Concorrência - Eletrônica",
+      "objeto": "[Portal de Compras Públicas] - Contratação de empresa especializada para prestação de serviços comuns de engenharia para a execução de manutenção corretiva, ampliação, modificação, modernização e execução de obras em red",
+      "valor_estimado": 7497875.0,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-05",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "72",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000204/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição e Instalação de Placas e Adesivos Internos e Externos para a Unidade de Pronto Atendimento Francisco Corrêa de Carvalho - UPA",
+      "valor_estimado": 14329.04,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-04",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "73",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000207/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Serviço de limpeza pesada em bloco do Terminal Rodoviário",
+      "valor_estimado": 20050.0,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-06",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "75",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000208/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de materiais de emergência e incêndio",
+      "valor_estimado": 10668.26,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-07",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "74",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000210/2026",
+      "modalidade": "Dispensa",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preço para a futura e eventual prestação de serviços de manutenção preventiva e corretiva, bem como fornecimento de peças de reposição, destinadas às máquinas e equipamentos mot",
+      "valor_estimado": 61158.75,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-07",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "CRE 3",
+      "ano": 2025,
+      "controle_pncp": "18240119000105-1-000528/2025",
+      "modalidade": "Credenciamento",
+      "objeto": "Contratação de pessoas jurídicas prestadora de serviços médicos veterinários terceirizados, a fim de atender CÃES E GATOS sob cuidados do Município de Varginha, dentre eles animais de tutores de baixa renda, animais em s",
+      "valor_estimado": 500000.0,
+      "valor_homologado_total": 1500000.0,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-07-21",
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Ortopédicos – VOLANTE",
+          "vencedor": "CENTER PET CLINICA VETERINARIA LTDA",
+          "cnpj_vencedor": "10805373000193",
+          "valor_homologado": 100000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 1,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Ortopédicos – VOLANTE",
+          "vencedor": "RENATTO CIRURGIA VETERINARIA LTDA",
+          "cnpj_vencedor": "62954420000164",
+          "valor_homologado": 100000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário -",
+          "vencedor": "ESPACO MASSOTE PET SHOP LTDA",
+          "cnpj_vencedor": "18861833000102",
+          "valor_homologado": 100000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário -",
+          "vencedor": "CENTER PET CLINICA VETERINARIA LTDA",
+          "cnpj_vencedor": "10805373000193",
+          "valor_homologado": 100000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário -",
+          "vencedor": "RENATTO CIRURGIA VETERINARIA LTDA",
+          "cnpj_vencedor": "62954420000164",
+          "valor_homologado": 100000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 2,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário -",
+          "vencedor": "VETERINARIA FIORAVANTE LTDA",
+          "cnpj_vencedor": "05350054000109",
+          "valor_homologado": 100000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 3,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos de Anestesia – VOLANTE",
+          "vencedor": "CENTER PET CLINICA VETERINARIA LTDA",
+          "cnpj_vencedor": "10805373000193",
+          "valor_homologado": 60000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 4,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Exames de Imagem e Cardiológicos – VOLANTE",
+          "vencedor": "J&V DIAGNOSTICO POR IMAGEM VETERINARIO LTDA",
+          "cnpj_vencedor": "52539569000123",
+          "valor_homologado": 60000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 4,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Exames de Imagem e Cardiológicos – VOLANTE",
+          "vencedor": "CENTER PET CLINICA VETERINARIA LTDA",
+          "cnpj_vencedor": "10805373000193",
+          "valor_homologado": 60000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 5,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Exames Laboratoriais – VOLANTE",
+          "vencedor": "ANIMALAB - LABORATORIO DE ANALISES CLINICAS VETERINARIAS LTDA",
+          "cnpj_vencedor": "19421343000158",
+          "valor_homologado": 60000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 5,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Exames Laboratoriais – VOLANTE",
+          "vencedor": "CENTER PET CLINICA VETERINARIA LTDA",
+          "cnpj_vencedor": "10805373000193",
+          "valor_homologado": 60000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 6,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário",
+          "vencedor": "ESPACO MASSOTE PET SHOP LTDA",
+          "cnpj_vencedor": "18861833000102",
+          "valor_homologado": 120000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 6,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário",
+          "vencedor": "FUNDACAO DE ENSINO E PESQUISA DO SUL DE MINAS - FEPESMIG",
+          "cnpj_vencedor": "21420856000196",
+          "valor_homologado": 120000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 6,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário",
+          "vencedor": "J&V DIAGNOSTICO POR IMAGEM VETERINARIO LTDA",
+          "cnpj_vencedor": "52539569000123",
+          "valor_homologado": 120000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 6,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário",
+          "vencedor": "CENTER PET CLINICA VETERINARIA LTDA",
+          "cnpj_vencedor": "10805373000193",
+          "valor_homologado": 120000.0,
+          "data_resultado": "2025-11-12"
+        },
+        {
+          "item": 6,
+          "descricao_item": "SERVICOS MEDICOS VETERINARIOS - Procedimentos Cirúrgicos e Ambulatoriais em Clínica/Hospital Veterinário",
+          "vencedor": "VETERINARIA FIORAVANTE LTDA",
+          "cnpj_vencedor": "05350054000109",
+          "valor_homologado": 120000.0,
+          "data_resultado": "2025-11-12"
+        }
+      ]
     }
   ],
   "erros": [
     "contratacoes 18240119000105 mod 6 pg 1: The read operation timed out"
   ],
-  "status": "preserved",
+  "status": "partial",
   "qualidade_coleta": {
-    "tentativas_por_requisicao": 3,
+    "tentativas_por_requisicao": 4,
     "falhas": 1,
     "base_anterior_preservada": true
-  },
-  "ultima_tentativa_em": "2026-08-04T09:39:25+00:00",
-  "motivo_preservacao": "PNCP retornou apenas 71 de 300 compras anteriores apos repeticoes; a ultima base valida foi mantida para evitar perda de dados.",
-  "erros_ultima_tentativa": [
-    "contratacoes 18240119000105 mod 6 pg 1: The read operation timed out",
-    "contratacoes 18240119000105 mod 8 pg 1: The read operation timed out"
-  ]
+  }
 }

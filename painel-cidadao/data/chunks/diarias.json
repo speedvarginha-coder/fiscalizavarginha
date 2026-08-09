@@ -119735,15 +119735,15 @@
     "prefeitura": {
       "atualizado_em": "2026-08-04T06:08:04",
       "ok": false,
-      "ultima_falha": "2026-08-09T03:30:35",
-      "ultima_tentativa": "2026-08-09T03:30:35",
+      "ultima_falha": "2026-08-09T06:15:29",
+      "ultima_tentativa": "2026-08-09T06:15:29",
       "status": "partial"
     },
     "camara": {
       "atualizado_em": "2026-08-04T06:08:04",
       "ok": false,
-      "ultima_falha": "2026-08-09T03:30:35",
-      "ultima_tentativa": "2026-08-09T03:30:35",
+      "ultima_falha": "2026-08-09T06:15:29",
+      "ultima_tentativa": "2026-08-09T06:15:29",
       "status": "partial"
     }
   }
