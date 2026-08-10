@@ -31328,20 +31328,20 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-08-10T10:54:52-03:00"
+    "coletado_em": "2026-08-10T18:37:11-03:00"
   },
   "2026": {
     "resumo": {
       "ano": 2026,
-      "total_materias": 798,
+      "total_materias": 800,
       "vereadores_ativos": 15,
       "emendas_qtd": 0,
       "emendas_valor_total_brl": 0.0,
-      "impacto_zero_qtd": 222,
+      "impacto_zero_qtd": 223,
       "desfechos": {
         "lei": 36,
         "arquivado": 504,
-        "tramitando": 243,
+        "tramitando": 245,
         "encerrado": 15,
         "sem_dado": 0
       },
@@ -31364,7 +31364,7 @@
         },
         {
           "tipo": "Projeto de Lei Ordinária do Executivo",
-          "qtd": 45
+          "qtd": 46
         },
         {
           "tipo": "Emenda",
@@ -31372,7 +31372,7 @@
         },
         {
           "tipo": "Moção",
-          "qtd": 14
+          "qtd": 15
         },
         {
           "tipo": "Projeto de Resolução",
@@ -31406,7 +31406,7 @@
       "temas_top": [
         {
           "tema": "saude",
-          "mencoes": 92
+          "mencoes": 93
         },
         {
           "tema": "praca",
@@ -31482,8 +31482,27 @@
         "homenagens_terceiros": 4,
         "outros": 5,
         "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
+        "presenca_janela": "2026-01-01 a 2026-12-31"
+      },
+      {
+        "nome": "Joãozinho Enfermeiro",
+        "total": 55,
+        "indicacoes": 22,
+        "requerimentos": 19,
+        "projetos_lei": 4,
+        "emendas": 0,
+        "leis_aprovadas": 0,
+        "mocoes": 2,
+        "pdl": 8,
+        "impacto_zero": 24,
+        "nome_rua": 14,
+        "homenagens_terceiros": 8,
+        "outros": 8,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31501,27 +31520,8 @@
         "homenagens_terceiros": 5,
         "outros": 5,
         "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
-        "presenca_janela": "2026-01-01 a 2026-12-31"
-      },
-      {
-        "nome": "Joãozinho Enfermeiro",
-        "total": 54,
-        "indicacoes": 22,
-        "requerimentos": 19,
-        "projetos_lei": 4,
-        "emendas": 0,
-        "leis_aprovadas": 0,
-        "mocoes": 1,
-        "pdl": 8,
-        "impacto_zero": 23,
-        "nome_rua": 14,
-        "homenagens_terceiros": 8,
-        "outros": 8,
-        "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31539,8 +31539,8 @@
         "homenagens_terceiros": 1,
         "outros": 3,
         "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31558,8 +31558,8 @@
         "homenagens_terceiros": 2,
         "outros": 2,
         "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31577,8 +31577,8 @@
         "homenagens_terceiros": 5,
         "outros": 6,
         "presenca_pct": 98.1,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31596,8 +31596,8 @@
         "homenagens_terceiros": 5,
         "outros": 5,
         "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31615,8 +31615,8 @@
         "homenagens_terceiros": 6,
         "outros": 6,
         "presenca_pct": 98.1,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31634,8 +31634,8 @@
         "homenagens_terceiros": 2,
         "outros": 3,
         "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31653,8 +31653,8 @@
         "homenagens_terceiros": 5,
         "outros": 5,
         "presenca_pct": 98.1,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31672,8 +31672,8 @@
         "homenagens_terceiros": 6,
         "outros": 6,
         "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31691,8 +31691,8 @@
         "homenagens_terceiros": 0,
         "outros": 0,
         "presenca_pct": 100.0,
-        "presenca_presentes": 52,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 53,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31710,8 +31710,8 @@
         "homenagens_terceiros": 4,
         "outros": 4,
         "presenca_pct": 98.1,
-        "presenca_presentes": 51,
-        "presenca_elegiveis": 52,
+        "presenca_presentes": 52,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31729,8 +31729,8 @@
         "homenagens_terceiros": 1,
         "outros": 1,
         "presenca_pct": 100.0,
-        "presenca_presentes": 35,
-        "presenca_elegiveis": 35,
+        "presenca_presentes": 36,
+        "presenca_elegiveis": 36,
         "presenca_janela": "2026-03-27 a 2026-12-31"
       },
       {
@@ -31747,9 +31747,9 @@
         "nome_rua": 5,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 21.2,
-        "presenca_presentes": 11,
-        "presenca_elegiveis": 52,
+        "presenca_pct": 22.6,
+        "presenca_presentes": 12,
+        "presenca_elegiveis": 53,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -32638,6 +32638,23 @@
         "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6118/projetodelei45-2026.pdf",
         "ementa": "CONCEDE SUBVENÇÃO SOCIAL À ENTIDADE QUE ESPECIFICA.",
         "data": "2026-08-03",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "medio"
+      },
+      {
+        "id": "6152",
+        "ano": "2026",
+        "numero": "46",
+        "tipo": "Projeto de Lei Ordinária do Executivo",
+        "sigla": "PLOE",
+        "autor": "Leonardo Vinhas Ciacci",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6152/projetodelei46-2026.pdf",
+        "ementa": "DISPÕE SOBRE A CRIAÇÃO DE CARGOS EFETIVOS NA ESTRUTURA ADMINISTRATIVA DA GUARDA CIVIL MUNICIPAL DE VARGINHA.",
+        "data": "2026-08-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
         "desfecho": "tramitando",
@@ -44937,6 +44954,23 @@
         "grau": "baixo"
       },
       {
+        "id": "6151",
+        "ano": "2026",
+        "numero": "15",
+        "tipo": "Moção",
+        "sigla": "MOC",
+        "autor": "Joãozinho Enfermeiro",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6151/mocao___robertson___10_08_revisada.docx",
+        "ementa": "Moção de Aplauso ao Dr. Robertson Rodrigues Pereira Júnior em reconhecimento à sua distinta carreira médica, à dedicação incansável à saúde pública e ao relevante impacto de seu trabalho na qualidade de vida da população de Varginha e região.",
+        "data": "2026-08-10",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "mocao/aplauso/homenagem",
+        "desfecho": "tramitando",
+        "tema": "saude",
+        "tema_label": "Saúde",
+        "grau": "baixo"
+      },
+      {
         "id": "5921",
         "ano": "2026",
         "numero": "1",
@@ -48101,11 +48135,109 @@
                 "voto": "Não Votou"
               }
             ]
+          },
+          {
+            "id": 2896,
+            "materia_id": 6126,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 7 - Requerimento nº 185 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2890,
+            "materia_id": 6130,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 13 - Requerimento nº 186 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2891,
+            "materia_id": 6132,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 14 - Requerimento nº 187 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2894,
+            "materia_id": 6133,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 15 - Requerimento nº 188 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2895,
+            "materia_id": 6134,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 16 - Requerimento nº 189 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2892,
+            "materia_id": 6136,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 19 - Requerimento nº 190 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2893,
+            "materia_id": 6138,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 20 - Requerimento nº 191 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
           }
         ],
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5128"
+      },
+      {
+        "id": 5129,
+        "numero": 48,
+        "tipo": "Sessão Ordinária",
+        "data": "2026-08-10",
+        "finalizada": false,
+        "url_video": "",
+        "presentes_qtd": 15,
+        "presentes": [
+          "Afonso Monticeli",
+          "Alexandre Prado",
+          "Ana Rios Fontoura",
+          "Bruno Leandro Coletor",
+          "Cássio Chiodi",
+          "Dandan",
+          "Davi Martins",
+          "Dudu Ottoni",
+          "Joãozinho Enfermeiro",
+          "Miguel da Saúde",
+          "Pastor Faustinho",
+          "Rogério Bueno",
+          "Thulyo Paiva",
+          "Zilda Silva",
+          "Zé Morais"
+        ],
+        "votacoes": [],
+        "fonte": "https://sapl.varginha.mg.leg.br/sessao/5129"
       }
     ],
-    "coletado_em": "2026-08-10T10:54:52-03:00"
+    "coletado_em": "2026-08-10T18:37:11-03:00"
   }
 }

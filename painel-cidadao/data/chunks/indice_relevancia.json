@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-10T14:03:00.673Z",
+  "gerado_em": "2026-08-10T21:49:30.503Z",
   "fonte": {
     "principal": "camara_anos.json",
     "origem": "SAPL Camara Municipal de Varginha",
@@ -1810,7 +1810,7 @@
           {
             "nome": "Rogério Bueno",
             "posicao": 16,
-            "valor": 16.1
+            "valor": 16.5
           },
           {
             "nome": "Dr. Guedes",
@@ -2026,7 +2026,7 @@
           {
             "nome": "Joãozinho Enfermeiro",
             "posicao": 4,
-            "valor": 42.6
+            "valor": 43.6
           },
           {
             "nome": "Ana Rios Fontoura",
@@ -2270,7 +2270,7 @@
           {
             "nome": "Rogério Bueno",
             "posicao": 16,
-            "valor": 21.2
+            "valor": 22.6
           },
           {
             "nome": "Dr. Guedes",
@@ -2385,8 +2385,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 100,
@@ -2447,8 +2447,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 98.1,
-          "presenca_presentes": 51,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 52,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 81.8,
@@ -2509,8 +2509,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 45.5,
@@ -2571,8 +2571,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 36.4,
@@ -2590,7 +2590,7 @@
           "evidencias": {
             "projeto_autoria_propria": 4,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 23,
+            "proposicao_simbolica": 24,
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
@@ -2600,16 +2600,16 @@
             "indicacao_protocolada_sem_confirmacao": 22,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 31
+            "comenda_titulo": 32
           },
           "composicao": {
             "substantivo": 45,
-            "cerimonial": 23,
-            "cerimonial_pct": 42.6,
-            "substantivo_pct": 83.3
+            "cerimonial": 24,
+            "cerimonial_pct": 43.6,
+            "substantivo_pct": 81.8
           },
           "perfil": {
-            "simbolico_pct": 42.6
+            "simbolico_pct": 43.6
           },
           "pendencias": [
             "relatoria_processante",
@@ -2633,8 +2633,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 36.4,
@@ -2695,8 +2695,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 98.1,
-          "presenca_presentes": 51,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 52,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 54.5,
@@ -2757,8 +2757,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 98.1,
-          "presenca_presentes": 51,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 52,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
@@ -2819,8 +2819,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
@@ -2881,8 +2881,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 36.4,
@@ -2943,8 +2943,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
@@ -3005,8 +3005,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
@@ -3067,8 +3067,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 35,
-          "presenca_elegiveis": 35,
+          "presenca_presentes": 36,
+          "presenca_elegiveis": 36,
           "presenca_janela": "2026-03-27 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
@@ -3129,8 +3129,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 100,
-          "presenca_presentes": 52,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
@@ -3191,8 +3191,8 @@
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
           "presenca_pct": 98.1,
-          "presenca_presentes": 51,
-          "presenca_elegiveis": 52,
+          "presenca_presentes": 52,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 18.2,
@@ -3307,27 +3307,27 @@
         },
         {
           "nome": "Rogério Bueno",
-          "indice": 16.1,
+          "indice": 16.5,
           "efetividade": 100,
           "leis_aprovadas": 1,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 21.2,
-          "presenca_presentes": 11,
-          "presenca_elegiveis": 52,
+          "presenca_pct": 22.6,
+          "presenca_presentes": 12,
+          "presenca_elegiveis": 53,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 18.2,
             "fiscalizar": 7.9,
             "representar": 20,
-            "presenca": 21.2
+            "presenca": 22.6
           },
           "dimensoes_brutas": {
             "legislar": 6,
             "fiscalizar": 4.5,
             "representar": 3,
             "efetividade": 1,
-            "presenca": 21.2
+            "presenca": 22.6
           },
           "evidencias": {
             "projeto_autoria_propria": 2,

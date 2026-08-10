@@ -11,7 +11,7 @@
     "total_anterior": 7137822.19,
     "total_externo_atual": 507024.0,
     "total_externo_anterior": 3071916.67,
-    "credores_atual_qtd": 114,
+    "credores_atual_qtd": 125,
     "credores_anterior_qtd": 196,
     "top_fornecedores_atual": [
       {
@@ -81,20 +81,14 @@
         "registros": 1
       },
       {
-        "nome": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "cnpj": "14.137.358/****-**",
-        "valor_total": 10000.0,
-        "registros": 1
-      },
-      {
         "nome": "BLOCO VIUVAS VIRGENS",
         "cnpj": "55.862.497/****-**",
         "valor_total": 10000.0,
         "registros": 1
       },
       {
-        "nome": "GREMIO R.E. DE SAMBA IMPERIO DA SERRINHA",
-        "cnpj": "18.987.776/****-**",
+        "nome": "GREMIO RECREATIVO ESCOLA DE SAMBA UNIDOS DA VILA MENDES",
+        "cnpj": "41.885.021/****-**",
         "valor_total": 10000.0,
         "registros": 1
       },
@@ -105,14 +99,20 @@
         "registros": 1
       },
       {
+        "nome": "GREMIO R.E. DE SAMBA IMPERIO DA SERRINHA",
+        "cnpj": "18.987.776/****-**",
+        "valor_total": 10000.0,
+        "registros": 1
+      },
+      {
         "nome": "GRUPO MARANATHA DE ART GLOBAL",
         "cnpj": "02.277.313/****-**",
         "valor_total": 10000.0,
         "registros": 1
       },
       {
-        "nome": "GREMIO RECREATIVO ESCOLA DE SAMBA UNIDOS DA VILA MENDES",
-        "cnpj": "41.885.021/****-**",
+        "nome": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "cnpj": "14.137.358/****-**",
         "valor_total": 10000.0,
         "registros": 1
       },
@@ -261,8 +261,8 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 234,
-      "empenhado": 3641589.69,
+      "registros": 270,
+      "empenhado": 4783038.32,
       "liquidado": 3085657.72,
       "pago": 3039809.1
     },
@@ -378,6 +378,39 @@
         "saldo_a_pagar": 0.0
       },
       {
+        "data": "2026-08-05",
+        "numero": 262,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 332/2025 P.A: 2205/2026 - Execução Projeto cultural: \"200 ANOS DA FUNDAÇÃO DE VARGINHA\"",
+        "valor_empenhado": 105000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 105000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 238,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO CULTURAL NIKKEY DE VARGINHA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 308/2025 P.A: 2744/2026 -  CONSTRUÇÃO DA SEDE - 2 ETAPA",
+        "valor_empenhado": 100000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 100000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 249,
+        "orgao": "ADMINISTRACAO",
+        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 319/2025 P.A: 1829/2026 - Manutenção das Oficinas e Concertos da Filarmônica de Varginha",
+        "valor_empenhado": 92800.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 92800.0
+      },
+      {
         "data": "2026-03-11",
         "numero": 65,
         "orgao": "ADMINISTRACAO",
@@ -387,6 +420,28 @@
         "valor_liquidado": 44999.95,
         "valor_pago": 44999.95,
         "saldo_a_pagar": 44999.95
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 245,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIAÇAO CULTURAL CASA DA CAPOEIRA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 315/2025 P.A: 1864/2026 - Aulas Praticas de Capoeira; Oficinas instrumentais (berimbaus, pandeiros, atabaque e Outros) e de musicalidade; aulas de danças afro-brasileiras;",
+        "valor_empenhado": 81011.11,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 81011.11
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 235,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO OFICINA DO SER",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 063/2025 P.A: 2237/2026 - DESTINAÇÃO DE RECURSOS AO PROJETO CULTURAL : DANÇA QUE CURA",
+        "valor_empenhado": 80000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 80000.0
       },
       {
         "data": "2026-04-28",
@@ -400,6 +455,50 @@
         "saldo_a_pagar": 63180.42
       },
       {
+        "data": "2026-08-05",
+        "numero": 239,
+        "orgao": "ADMINISTRACAO",
+        "credor": "MAZ  ASSOCIACAO ARTISTICA MARINA AZZE",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 309/2025 P.A: 1819/2026-  PROJETO CULTURAL : MAIS PRA MAZ!  Recursos de materiais como cadeiras e um kit de luz ribalta para sala de Cinema e Cine Clube da Associação bem como a sala de apresentação de artes integradas.",
+        "valor_empenhado": 70000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 70000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 256,
+        "orgao": "ADMINISTRACAO",
+        "credor": "GRUPO MARANATHA DE ART GLOBAL",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 326/2025 P.A: 1859/2026 - Projeto: 2 MOSTRA DE CINEMA E GASTRONOMIA RURAL MINEIRA",
+        "valor_empenhado": 60000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 60000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 250,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 320/2025 P.A: 1861/2026 - para Aquisição de instrumentos musicais, equipamentos e acessórios; Aquisição de materiais para Reforma do Muro da Sede; Aquisição de Materiais para o escritório.",
+        "valor_empenhado": 60000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 60000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 236,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO OFICINA DO SER",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 072/2025 P.A: 2428/2025 -  PROJETO CULTURAL - CINE JOVEM",
+        "valor_empenhado": 60000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 60000.0
+      },
+      {
         "data": "2026-06-22",
         "numero": 205,
         "orgao": "ADMINISTRACAO",
@@ -409,6 +508,17 @@
         "valor_liquidado": 50870.0,
         "valor_pago": 50870.0,
         "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 242,
+        "orgao": "ADMINISTRACAO",
+        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 312/2025 P.A: 2556/2026 - PARA MANUTENÇÃO DAS OFICINAS E CONCERTOS DA FILARMÔNICA DE VARGINHA",
+        "valor_empenhado": 50000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 50000.0
       },
       {
         "data": "2026-07-24",
@@ -431,6 +541,28 @@
         "valor_liquidado": 41000.0,
         "valor_pago": 41000.0,
         "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 257,
+        "orgao": "ADMINISTRACAO",
+        "credor": "GREMIO RECREAT.ESC.SAMBA INDEP.CENTENARIO",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 327/2025 P.A: 2782/2026 - REFORMA ESTRUTURAL E REVITALIZAÇÃO DA SEDE DA GRESIC",
+        "valor_empenhado": 40000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 40000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 243,
+        "orgao": "ADMINISTRACAO",
+        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 313/2025 P.A: 1912/2026-  PARA MANUTENÇÃO DAS OFICINAS E CONCERTOS DA FILARMÔNICA DE VARGINHA",
+        "valor_empenhado": 40000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 40000.0
       },
       {
         "data": "2026-04-01",
@@ -475,6 +607,28 @@
         "valor_liquidado": 30602.0,
         "valor_pago": 30602.0,
         "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 259,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO ARTISTICA VIVA CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS -E.I: 329/2025 P.A: 27242026 - Projeto Cultural - Circuito de Férias no Zoológico - Atividades culturais, educativas e recreativas",
+        "valor_empenhado": 30000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 30000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 258,
+        "orgao": "ADMINISTRACAO",
+        "credor": "GREMIO R.E. DE SAMBA IMPERIO DA SERRINHA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 328/2025 P.A: 1865/2026 - aquisição de instrumentos musicais para o Grêmio Recreativo Escola de Samba Império da Serrinha - GRESIS",
+        "valor_empenhado": 30000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 30000.0
       },
       {
         "data": "2026-05-14",
@@ -587,6 +741,39 @@
         "saldo_a_pagar": 0.0
       },
       {
+        "data": "2026-08-05",
+        "numero": 270,
+        "orgao": "ADMINISTRACAO",
+        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 353/2025 P.A: 2102/2026 - Manutenção das Oficinas e Concertos da Filarmônica de Varginha",
+        "valor_empenhado": 20000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 20000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 269,
+        "orgao": "ADMINISTRACAO",
+        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 339/2025 P.A: 2207/2026 - Manutenção das Oficinas e Concertos da Filarmônica de Varginha",
+        "valor_empenhado": 20000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 20000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 247,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 317/2025 P.A: 2737/2026 - Aquisição de materiais e contratação de prestação de serviço para Obra na Cozinha da Associação.",
+        "valor_empenhado": 20000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 20000.0
+      },
+      {
         "data": "2026-01-27",
         "numero": 13,
         "orgao": "ADMINISTRACAO",
@@ -596,6 +783,28 @@
         "valor_liquidado": 19969.36,
         "valor_pago": 19969.36,
         "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 263,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 333/2025 P.A: 1889/2026-  PROJETO CULTURAL: \"13 FESTIVAL NACIONAL DE CINEMA DE VARGINHA\"",
+        "valor_empenhado": 17500.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 17500.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 264,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS -E.I: 334/2025 P.A: 1863/2026 - EXECUÇÃO PROJETO CULTURAL - ARTE EM TERAPIA - ARTESENATO EM AÇÃO",
+        "valor_empenhado": 17500.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 17500.0
       },
       {
         "data": "2026-04-28",
@@ -618,6 +827,50 @@
         "valor_liquidado": 15867.12,
         "valor_pago": 15867.12,
         "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 261,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 331/2025 P.A: 2751/2026 - Execução Projeto Cultural - 220 ANOS DA FUNDAÇÃO DE VARGINHA",
+        "valor_empenhado": 15000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 15000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 248,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 318/2025 P.A: 2013/2026 - Aquisição de instrumentos musicais equipamentos e acessórios para apresentações e para eventos internos.",
+        "valor_empenhado": 15000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 15000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 251,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 321/2025 P.A: 2628/2026 - Aquisição de uniformes (calças, camisas e/ou camisetas) para as equipes de Folia de Reis, visando a padronização e valorização cultural dos grupos participantes",
+        "valor_empenhado": 15000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 15000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 237,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO DE CAPOEIRA NOVA VISAO",
+        "historico": "SUBVENÇÕES SOCIAIS -E.I: 266/2025 P.A: 2120/2026 - Projeto: Viva Cultura Viva - Oficinas de Tradições Populares Afro-Brasileiras",
+        "valor_empenhado": 15000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 15000.0
       },
       {
         "data": "2026-03-27",
@@ -774,6 +1027,17 @@
         "saldo_a_pagar": 10601.83
       },
       {
+        "data": "2026-08-05",
+        "numero": 246,
+        "orgao": "ADMINISTRACAO",
+        "credor": "APESUL-ASSOC. DE POETAS E ESC.DO SUL DE MINAS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 316/2025 P.A: 2561/2026 - RECUSOS DESTINADOS A AQUISIÇÕES DE TENDAS, MESAS E CADEIRAS PARA MANUTENÇÃO DAS ATIVIDADES LITERÁRIAS",
+        "valor_empenhado": 10405.1,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 10405.1
+      },
+      {
         "data": "2026-01-27",
         "numero": 11,
         "orgao": "ADMINISTRACAO",
@@ -862,290 +1126,26 @@
         "saldo_a_pagar": 0.0
       },
       {
-        "data": "2026-04-24",
-        "numero": 116,
+        "data": "2026-08-05",
+        "numero": 252,
         "orgao": "ADMINISTRACAO",
-        "credor": "U. EXPERIENCE CONSULTORIA PALESTRAS E TREIN.L",
-        "historico": "Contratação de empresa especializada na organização de feiras, congressos e exposições, para a realização da 4 Missão Empresarial da Central Única das Favelas (CUFA) Varginha, que ocorrerá durante o evento Expo Favela Innovation, em Belo Horizonte/MG, nos dias 29 e 30 de maio de 2026 em Belo Horizonte, de acordo com as especificações presentes no ofício e tabela de custos, destinado à participação de 30 pessoas.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 9977.0,
-        "valor_liquidado": 9977.0,
-        "valor_pago": 9977.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-03-27",
-        "numero": 85,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSS - INST.NACIONAL SEGURO SOCIAL",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 03/2026",
-        "valor_empenhado": 9920.2,
-        "valor_liquidado": 9920.2,
-        "valor_pago": 9920.2,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-04-28",
-        "numero": 127,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSS - INST.NACIONAL SEGURO SOCIAL",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 04/2026",
-        "valor_empenhado": 9920.2,
-        "valor_liquidado": 9920.2,
-        "valor_pago": 9920.2,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-02-26",
-        "numero": 60,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 02/2026",
-        "valor_empenhado": 9896.21,
-        "valor_liquidado": 9896.21,
-        "valor_pago": 9896.21,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-02-24",
-        "numero": 44,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
-        "historico": "Aquisição de 4 (quatro) inscrições no 3 Seminário Nacional de Contratações Públicas que acontecerá em Belo Horizonte/MG, nos dias 15 a 17 de abril de 2026.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 9560.0,
-        "valor_liquidado": 9560.0,
-        "valor_pago": 9560.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-05-13",
-        "numero": 146,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
-        "historico": "Pagamento de 4 (quatro) inscrições no Curso - Formação Avançada para Agentes de Contratação e Pregoeiros, de 27 a 29 de maio de 2026, em Belo Horizonte/MG.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 9560.0,
-        "valor_liquidado": 9560.0,
-        "valor_pago": 9560.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-10",
-        "numero": 184,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
-        "historico": "Contratação de Prestação de  Serviços de 04 (quatro) inscrições para o curso: Contratos Administrativos na Prática, Aditivos, Reequilíbrio, Repactuação e Encerramento sem Glosa, para especialização de 04 servidores do setor de Contabilidade/ Suprimentos da Fundação Cultural do Município de Varginha. Com carga horária de 16 horas, a ser realizado nos dias 09 e 10 de julho, na sede do Instituto Plenum Brasil, em Belo Horizonte/MG. Fundamento Legal: artigo 95,  2 da Lei Federal 14.133/21.",
-        "valor_empenhado": 9160.0,
-        "valor_liquidado": 9160.0,
-        "valor_pago": 9160.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-12",
-        "numero": 190,
-        "orgao": "ADMINISTRACAO",
-        "credor": "AMORIM COMERCIO VAREJISTA DE PRODUTOS LTDA",
-        "historico": "Aquisição de equipamentos eletrônicos de som e iluminação cênica para o Theatro Municipal Capitólio.\n* Endereço de entrega: Rua Presidente Antônio Carlos, 522, Centro - Varginha/MG\n* Horário de expediente: segunda a sexta, das 07h00 às 17h00",
-        "valor_empenhado": 8639.84,
-        "valor_liquidado": 8639.84,
-        "valor_pago": 8639.84,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-02-19",
-        "numero": 42,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INFOCO-RH LTDA",
-        "historico": "Aquisição de 02 (duas) inscrições no Evento Presencial Masterclass de Implantação do e-Social na Administração Pública que será realizado nos dias 13 a 14 de abril de 2026 em São Paulo/SP.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 8380.0,
-        "valor_liquidado": 8380.0,
-        "valor_pago": 8380.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-10",
-        "numero": 183,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
-        "historico": "Contratação de Prestação de Serviços de 04 (quatro) inscrições para o curso: Compras Diretas Avançado, Análise Técnica Avançada, Estudo de Casos e Jurisprudências Aplicadas, para especialização de 04 servidores do setor de Contabilidade/ Suprimentos da Fundação Cultural do Município de Varginha. Com carga horária de 16 horas, a ser realizado nos dias 07 e 08 de julho, na sede do Instituto Plenum Brasil, em Belo Horizonte/MG. Fundamento Legal Art. 95,  2 da Lei Federal 14.133/2021.",
-        "valor_empenhado": 7960.0,
-        "valor_liquidado": 7960.0,
-        "valor_pago": 7960.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-01-27",
-        "numero": 6,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 01/2026",
-        "valor_empenhado": 7807.73,
-        "valor_liquidado": 7807.73,
-        "valor_pago": 7807.73,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-01-27",
-        "numero": 7,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 01/2026",
-        "valor_empenhado": 7570.23,
-        "valor_liquidado": 7570.23,
-        "valor_pago": 7570.23,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-03-11",
-        "numero": 66,
-        "orgao": "ADMINISTRACAO",
-        "credor": "WANGER AUDIO E INSTRUMENTOS MUSICAIS LTDA",
-        "historico": "Aquisição de 02 (dois) pares de monitores de referência de acordo com as especificações, para uso nos estúdios da Rádio Melodia FM, pertencente à Fundação Cultural de Varginha.\nLocal de entrega: Fundação Cultural de Varginha, na Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária).\nHorário de expediente: segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 6974.6,
-        "valor_liquidado": 6974.6,
-        "valor_pago": 6974.6,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-18",
-        "numero": 198,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
-        "historico": "Contratação de prestação de serviços para a aquisição de 03 (três) inscrições no curso Emendas Parlamentares Federais 2026: Captação, Execução e Transparência (Pós Mudanças do STF), a realizar-se no período de 30 de junho a 03 de julho de 2026, na sede do Instituto Plenum Brasil, em Brasília/DF.\n\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 6270.0,
-        "valor_liquidado": 6270.0,
-        "valor_pago": 6270.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-05-14",
-        "numero": 149,
-        "orgao": "ADMINISTRACAO",
-        "credor": "23.974.941 LUIZ FERNANDO CARVALHO BRAVO",
-        "historico": "Registro de preços para prestação de serviços de locação de itens, para a realização de eventos. Jogos de mesas e cadeiras. Evento: Feira Literária da APESUL, com apoio da Fundação Cultural. Data: 23, 24 e 25 de julho de 2026. Montagem: 22/07/26. Desmontagem: 25/07/26 após 21h.",
-        "valor_empenhado": 5437.5,
+        "credor": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 322/2025 P.A: 2540/2026 - Aquisição de uniformes (calças, camisas e/ou camisetas) para as equipes de Folia de Reis, visando a padronização e valorização cultural dos grupos participantes",
+        "valor_empenhado": 10000.0,
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
-        "saldo_a_pagar": 5437.5
+        "saldo_a_pagar": 10000.0
       },
       {
-        "data": "2026-07-24",
-        "numero": 227,
+        "data": "2026-08-05",
+        "numero": 255,
         "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 07/2026",
-        "valor_empenhado": 5149.32,
-        "valor_liquidado": 5149.32,
-        "valor_pago": 5149.32,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-22",
-        "numero": 203,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 06/2026",
-        "valor_empenhado": 4963.62,
-        "valor_liquidado": 4963.62,
-        "valor_pago": 4963.62,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-04-28",
-        "numero": 125,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 04/2026",
-        "valor_empenhado": 4675.69,
-        "valor_liquidado": 4675.69,
-        "valor_pago": 4675.69,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-02-26",
-        "numero": 59,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 02/2026",
-        "valor_empenhado": 4453.94,
-        "valor_liquidado": 4453.94,
-        "valor_pago": 4453.94,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-05-19",
-        "numero": 162,
-        "orgao": "ADMINISTRACAO",
-        "credor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
-        "historico": "Contratação de empresa especializada no conserto e manutenção de cadeiras de escritório dos órgãos pertencentes a Fundação Cultural de Varginha.\n\nFUNDAÇÃO CULTURAL \nEndereço: Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária).\nHorário de expediente: Segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. \n\nRÁDIO MELODIA FM\nEndereço: Rua Radialista Gilberto Lima, n 50 - Bairro Vila Paiva, Varginha/MG.\nHorário: Segunda a sexta-feira, das 7h às 13h.\n\nTHEATRO MUNICIPAL CAPITÓLIO\nEndereço: Rua Presidente Antônio Carlos, n522  Centro, Varginha/MG.\nHorário de expediente: Segunda a sexta-feira, das 8h às 12h ou de 13h às 17h.\n\nTV PRINCESA \nEndereço: Praça Champagnat, 29, 4 andar, Centro, Varginha/MG.\nHorário de expediente: Segunda a sexta-feira, das 13h às 17h.\n\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 4387.0,
-        "valor_liquidado": 4387.0,
-        "valor_pago": 4387.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-05-04",
-        "numero": 131,
-        "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
-        "credor": "SENHOR VOLT LTDA",
-        "historico": "Contratação de serviços de engenharia para elaboração de laudo de conformidade das instalações elétricas e estudo de viabilidade técnica da implantação de sistema de climatização na antiga Estação Ferroviária de Varginha, atual sede da Fundação Cultural.\nLocal do serviço: Fundação Cultural de Varginha, na Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária).\nHorário de expediente: segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. Aos cuidados da Arquiteta Danielle.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 4240.0,
-        "valor_liquidado": 4240.0,
-        "valor_pago": 4240.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-05-25",
-        "numero": 173,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 05/2026",
-        "valor_empenhado": 4190.2,
-        "valor_liquidado": 4190.2,
-        "valor_pago": 4190.2,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-12",
-        "numero": 188,
-        "orgao": "ADMINISTRACAO",
-        "credor": "EVANDRO ZACARONI PEDROSO",
-        "historico": "Aquisição de equipamentos eletrônicos de som e iluminação cênica para o Theatro Municipal Capitólio.\n* Endereço de entrega: Rua Presidente Antônio Carlos, 522, Centro - Varginha/MG\n* Horário de expediente: segunda a sexta, das 07h00 às 17h00",
-        "valor_empenhado": 3960.0,
-        "valor_liquidado": 3960.0,
-        "valor_pago": 3960.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-01-27",
-        "numero": 8,
-        "orgao": "ADMINISTRACAO",
-        "credor": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
-        "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 01/2026",
-        "valor_empenhado": 3749.96,
-        "valor_liquidado": 3749.96,
-        "valor_pago": 3749.96,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-18",
-        "numero": 199,
-        "orgao": "ADMINISTRACAO",
-        "credor": "EDER JERONIMO DA SILVA",
-        "historico": "Destino: Brasilia/DF\nMotivo da viagem: Participação no curso de Curso Emendas Parlamentares Federal 2026: Capacitação, Execução e Transparência (Pós-Mudanças do STF) na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 500% X R$ 216,00 = R$ 1080,00\nHOSPEDAGEM: R$ 1.400,00\nPASSAGEM AEREA: R$ 1.267,08",
-        "valor_empenhado": 3747.08,
-        "valor_liquidado": 3747.08,
-        "valor_pago": 3747.08,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-06-01",
-        "numero": 180,
-        "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
-        "credor": "JM INFORMATICA LTDA I",
-        "historico": "Aquisição de materiais e equipamentos de rede e infraestrutura de TI, destinados à substituição dos equipamentos do Setor de Patrimônio Histórico da Fundação Cultural de Varginha, lotado na antiga estação ferroviária.\nLocal de entrega: Fundação Cultural de Varginha, na Praça Matheus Tavares, 121, Centro, Varginha/MG (antiga estação ferroviária). Horário de expediente: segunda-feira a sexta-feira, das 7h às 12h ou das 14h às 17h. Aos cuidados de Danielle.\nFundamento legal: Art. 95, Paragrafo 2 da Lei 14.133/21.",
-        "valor_empenhado": 3620.0,
-        "valor_liquidado": 3620.0,
-        "valor_pago": 3620.0,
-        "saldo_a_pagar": 0.0
+        "credor": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 325/2025 P.A: 2095/2026 - Aquisição de uniformes (calças, camisas e/ou camisetas) para as equipes de Folia de Reis, visando a padronização e valorização cultural dos grupos participantes",
+        "valor_empenhado": 10000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 10000.0
       }
     ],
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80382"
@@ -1978,6 +1978,20 @@
       "entidade": ""
     },
     {
+      "numero": "6",
+      "ano": "2022",
+      "data_assinatura": "2022-08-22",
+      "data_fim": "2027-08-20",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "LOCACAO DE INFRAESTRUTURA DE REDE DEFIBRA OPTICA",
+      "contratado": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
+      "cnpj": "23.131.342/****-**",
+      "valor": 30466.8,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "8",
       "ano": "2022",
       "data_assinatura": "2022-09-29",
@@ -2059,20 +2073,6 @@
       "cnpj": "50.933.321/****-**",
       "valor": 23982.33,
       "situacao": "RESCINDIDO",
-      "entidade": ""
-    },
-    {
-      "numero": "6",
-      "ano": "2022",
-      "data_assinatura": "2022-08-22",
-      "data_fim": "2026-08-20",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "LOCACAO DE INFRAESTRUTURA DE REDE DEFIBRA OPTICA",
-      "contratado": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
-      "cnpj": "23.131.342/****-**",
-      "valor": 23395.2,
-      "situacao": "EXECUCAO",
       "entidade": ""
     },
     {
@@ -14076,6 +14076,20 @@
       "entidade": ""
     },
     {
+      "numero": "6",
+      "ano": "2022",
+      "data_assinatura": "2022-08-22",
+      "data_fim": "2027-08-20",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "LOCACAO DE INFRAESTRUTURA DE REDE DEFIBRA OPTICA",
+      "contratado": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
+      "cnpj": "23.131.342/****-**",
+      "valor": 30466.8,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "8",
       "ano": "2022",
       "data_assinatura": "2022-09-29",
@@ -14114,20 +14128,6 @@
       "contratado": "CAMIPLACE DISTRIBUIDORA LTDA",
       "cnpj": "53.029.830/****-**",
       "valor": 25190.0,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
-      "numero": "6",
-      "ano": "2022",
-      "data_assinatura": "2022-08-22",
-      "data_fim": "2026-08-20",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "LOCACAO DE INFRAESTRUTURA DE REDE DEFIBRA OPTICA",
-      "contratado": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
-      "cnpj": "23.131.342/****-**",
-      "valor": 23395.2,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -15730,6 +15730,20 @@
       "entidade": ""
     },
     {
+      "numero": "6",
+      "ano": "2022",
+      "data_assinatura": "2022-08-22",
+      "data_fim": "2027-08-20",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "LOCACAO DE INFRAESTRUTURA DE REDE DEFIBRA OPTICA",
+      "contratado": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
+      "cnpj": "23.131.342/****-**",
+      "valor": 30466.8,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "0",
       "ano": "2026",
       "data_assinatura": "2026-06-15",
@@ -15740,20 +15754,6 @@
       "contratado": "CAMIPLACE DISTRIBUIDORA LTDA",
       "cnpj": "53.029.830/****-**",
       "valor": 25190.0,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
-      "numero": "6",
-      "ano": "2022",
-      "data_assinatura": "2022-08-22",
-      "data_fim": "2026-08-20",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "LOCACAO DE INFRAESTRUTURA DE REDE DEFIBRA OPTICA",
-      "contratado": "ONO TECNOLOGIA E SEGURANCA DIGITAL LTDA",
-      "cnpj": "23.131.342/****-**",
-      "valor": 23395.2,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -16348,11 +16348,11 @@
   ],
   "contratos_resumo": {
     "qtd_total": 901,
-    "valor_total": 10682633.64,
+    "valor_total": 10689705.24,
     "qtd_vigentes": 132,
-    "valor_vigentes": 4038513.67,
+    "valor_vigentes": 4045585.27,
     "qtd_vigencia_futura": 52,
-    "valor_vigencia_futura": 993627.32,
+    "valor_vigencia_futura": 1000698.92,
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80579"
   },
   "licitacoes": [
@@ -34359,22 +34359,10 @@
         "cargo": "Contador",
         "numero": 15113,
         "quantidade": 1.0,
-        "valor_total": 3747.08,
-        "periodo": "29-06-2026 a 03-07-2026",
+        "valor_total": 3826.68,
+        "periodo": "29-06-2026 a 04-07-2026",
         "destino": "Brasília",
-        "finalidade": "Destino: Brasilia/DF\nMotivo da viagem: Participação no curso de Curso Emendas Parlamentares Federal 2026: Capacitação, Execução e Transparência (Pós-Mudanças do STF) na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 500% X R$ 216,00 = R$ 1080,00\nHOSPEDAGEM: R$ 1.400,00\nPASSAGEM AEREA: R$ 1.267,08",
-        "fonte": "Betha Fundação Cultural - Diárias"
-      },
-      {
-        "ano": "2026",
-        "funcionario": "EDER JERONIMO DA SILVA",
-        "cargo": "Contador",
-        "numero": 15115,
-        "quantidade": 1.0,
-        "valor_total": 2723.2,
-        "periodo": "06-07-2026 a 10-07-2026",
-        "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20\nCOMBUSTÍVEL: R$ 300,00\nPEDÁGIOS/ESTACIONAMENTO: R$ 200,00\nUBER/99: R$ 150,00",
+        "finalidade": "Destino: Brasilia/DF\nMotivo da viagem: Participação no curso de Curso Emendas Parlamentares Federal 2026: Capacitação, Execução e Transparência (Pós-Mudanças do STF) na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 500% X R$ 216,00 = R$ 1080,00\nHOSPEDAGEM: R$ 1.400,00\nPASSAGEM AEREA: R$ 1.267,08\n99: R$79,60",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -34387,6 +34375,18 @@
         "periodo": "26-05-2026 a 29-05-2026",
         "destino": "Belo Horizonte",
         "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de formação avançada para agentes de contratação e pregoeiros na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180,00 = R$720,00\nHOSPEDAGEM: R$ 1.474,20\nCOMBUSTÍVEL: R$150,00\n99: R$101,59\nPEDÁGIOS: R$59,60\nESTACIONAMENTO: R$140,00",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "Contador",
+        "numero": 15115,
+        "quantidade": 1.0,
+        "valor_total": 2389.26,
+        "periodo": "06-07-2026 a 10-07-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.261,58\nCOMBUSTÍVEL: R$ 150,00\nPEDÁGIOS/ESTACIONAMENTO: R$ 245,20\nUBER/99: R$ 12,48",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -34431,22 +34431,10 @@
         "cargo": "Oficial Administrativo",
         "numero": 15114,
         "quantidade": 1.0,
-        "valor_total": 2073.2,
+        "valor_total": 2013.8,
         "periodo": "06-07-2026 a 10-07-2026",
         "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20",
-        "fonte": "Betha Fundação Cultural - Diárias"
-      },
-      {
-        "ano": "2026",
-        "funcionario": "FRANCINE MAGANHA TERRA GOULART",
-        "cargo": "Oficial Administrativo",
-        "numero": 15116,
-        "quantidade": 1.0,
-        "valor_total": 2073.2,
-        "periodo": "06-07-2026 a 10-07-2026",
-        "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.261,58\n99: R$32,22",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -34455,10 +34443,10 @@
         "cargo": "Oficial Administrativo",
         "numero": 15117,
         "quantidade": 1.0,
-        "valor_total": 2073.2,
+        "valor_total": 2005.18,
         "periodo": "06-07-2026 a 10-07-2026",
         "destino": "Belo Horizonte",
-        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.353,20",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.261,58\n99: R$23,60",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -34471,6 +34459,18 @@
         "periodo": "12-04-2026 a 14-04-2026",
         "destino": "São Paulo",
         "finalidade": "Destino: São Paulo/SP\nMotivo da viagem: Participação no curso Masterclass de Implantação do E-SOCIAL na Administração Pública - INFOCO RH \nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 300% X R$ 145,36 = R$436,07\nHOSPEDAGEM: R$ 1.249,25\nCOMBUSTÍVEL: R$ 180,13\nPEDÁGIO/ESTACIONAMENTO : R$ 135,60",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "FRANCINE MAGANHA TERRA GOULART",
+        "cargo": "Oficial Administrativo",
+        "numero": 15116,
+        "quantidade": 1.0,
+        "valor_total": 1995.17,
+        "periodo": "06-07-2026 a 10-07-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 400% X R$ 180 = R$720,00\nHOSPEDAGEM: R$ 1.261,58\n99: R$13,59",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -38078,9 +38078,9 @@
     ],
     "resumo": {
       "detalhadas_qtd": 69,
-      "detalhadas_valor_total": 61140.36,
+      "detalhadas_valor_total": 60680.57,
       "atual_qtd": 47,
-      "atual_valor": 49461.22,
+      "atual_valor": 49001.43,
       "orcamentarias_atual_valor": 49167.74
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/211697"

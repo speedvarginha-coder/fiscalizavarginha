@@ -1,8 +1,110 @@
 {
- "gerado_em": "2026-08-10T14:02:12+00:00",
+ "gerado_em": "2026-08-10T21:47:26+00:00",
  "fonte": "camara",
- "total": 798,
+ "total": 800,
  "publicacoes": [
+  {
+   "id": "CAMARA-2026-PLOE-46",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Executivo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Executivo nº 46/2026",
+   "numero": "46/2026",
+   "data": "2026-08-10",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "pessoal",
+   "resumo": "Este projeto de lei propõe a criação de novos cargos efetivos na estrutura administrativa da Guarda Civil Municipal de Varginha.",
+   "o_que_propoe": "Na prática, a estrutura administrativa da Guarda Civil Municipal de Varginha poderá ter mais servidores em cargos permanentes.",
+   "impacto_cidadao": "Se aprovado, poderá fortalecer a segurança pública local através do aumento do efetivo da Guarda Municipal.",
+   "por_que_acompanhar": [
+    "Acompanhar como os recursos públicos serão utilizados para a contratação de novos servidores.",
+    "Verificar o impacto na segurança pública da cidade.",
+    "Entender a gestão de pessoal da prefeitura."
+   ],
+   "pontos_atencao": [
+    "O impacto financeiro no orçamento municipal para custear os novos salários e benefícios.",
+    "A justificativa para a necessidade de mais cargos na Guarda Municipal."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6152/projetodelei46-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Leonardo Vinhas Ciacci",
+   "situacao": "em tramitação",
+   "ementa": "DISPÕE SOBRE A CRIAÇÃO DE CARGOS EFETIVOS NA ESTRUTURA ADMINISTRATIVA DA GUARDA CIVIL MUNICIPAL DE VARGINHA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6152",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6152/projetodelei46-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6152/projetodelei46-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "49715e7f69af3070c55909e83ebcfdf798e44bfb",
+   "gerado_em": "2026-08-10T21:47:21+00:00"
+  },
+  {
+   "id": "CAMARA-2026-MOC-15",
+   "fonte": "camara",
+   "tipo": "mocao",
+   "tipo_label": "Moção",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Moção nº 15/2026",
+   "numero": "15/2026",
+   "data": "2026-08-10",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "reconhecimento",
+   "resumo": "A Moção de Aplauso é uma homenagem da Câmara Municipal ao Dr. Robertson Rodrigues Pereira Júnior por sua carreira médica e dedicação à saúde pública em Varginha e região.",
+   "o_que_propoe": "Não há mudança prática direta na legislação ou em serviços públicos, mas formaliza um reconhecimento público.",
+   "impacto_cidadao": "O impacto direto para o cidadão é o reconhecimento público de um profissional que contribui para a saúde da comunidade.",
+   "por_que_acompanhar": [
+    "Entender como a Câmara Municipal utiliza moções para reconhecer indivíduos.",
+    "Conhecer as personalidades e instituições que são homenageadas pelo poder legislativo local.",
+    "Observar a valorização de profissionais da saúde que atuam na região."
+   ],
+   "pontos_atencao": [
+    "Trata-se de um ato simbólico, sem impacto financeiro direto ou alteração legislativa.",
+    "A moção é uma forma de reconhecimento e valorização de indivíduos pela Câmara Municipal."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6151/mocao___robertson___10_08_revisada.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Joãozinho Enfermeiro",
+   "situacao": "em tramitação",
+   "ementa": "Moção de Aplauso ao Dr. Robertson Rodrigues Pereira Júnior em reconhecimento à sua distinta carreira médica, à dedicação incansável à saúde pública e ao relevante impacto de seu trabalho na qualidade de vida da população de Varginha e região.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6151",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6151/mocao___robertson___10_08_revisada.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6151/mocao___robertson___10_08_revisada.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "62c09c8e0497be5f57a06619a79bdb827adcb4bf",
+   "gerado_em": "2026-08-10T21:47:26+00:00"
+  },
   {
    "id": "CAMARA-2026-REQ-191",
    "fonte": "camara",
