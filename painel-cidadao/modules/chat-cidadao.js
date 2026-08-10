@@ -252,7 +252,7 @@
   // ---- Gerador de respostas ----
   function gerarResposta(q) {
     const t = norm(q);
-    const D  = window.ZELA_DATA || {};
+    const D  = window.FISCALIZA_DATA || {};
     const pf = D.prefeitura   || {};
     const cb = D.camara_betha || {};
     const em = D.emendas      || {};
@@ -328,7 +328,13 @@
 
     // Pessoal / salários / comissionados
     if (/salario|servidor|funcional|comission|remuner|folha|cargo|contrat|quadro/.test(t)) {
-      const comiss = (pe.prefeitura || []).filter((p) => /comission|DAS|cargo em comissao/i.test(p.cargo || p.vinculo || ""));
+      const servidoresPrefeitura = Array.isArray(pe.prefeitura)
+        ? pe.prefeitura
+        : (pe.prefeitura?.servidores || []);
+      const comiss = servidoresPrefeitura.filter((p) =>
+        p.comissionado_ou_similar === true ||
+        /comission|DAS|cargo em comissao/i.test(p.cargo || p.vinculo || "")
+      );
       return {
         msg:
           'O painel mostra remuneração por secretaria — incluindo <strong>cargos comissionados</strong> (nomeados sem concurso).<br>' +
@@ -347,10 +353,14 @@
       const lista = Array.isArray(em) ? em : (em.lista || []);
       const totalEm = lista.reduce((s, e) => s + (Number(e.valor_brl) || Number(e.valor) || 0), 0);
       const qtdEm   = lista.length;
+      const anosEmendas = [...new Set(lista.map((e) => String(e.ano || "")).filter(Boolean))].sort();
+      const periodoEmendas = anosEmendas.length === 1
+        ? anosEmendas[0]
+        : anosEmendas.length > 1 ? anosEmendas.join("–") : "período não informado";
       return {
         msg:
-          'A Câmara Municipal tem <strong>17 vereadores</strong>.<br>' +
-          (qtdEm ? 'Em 2026 foram registradas <strong>' + num(qtdEm) + ' emendas impositivas</strong>, somando aprox. <strong>' + brl(totalEm) + '</strong>.<br>' : '') +
+          'A Câmara Municipal tem <strong>15 cadeiras</strong>. A lista histórica pode incluir titulares e suplentes de períodos diferentes.<br>' +
+          (qtdEm ? 'Na base de ' + esc(periodoEmendas) + ' há <strong>' + num(qtdEm) + ' emendas impositivas</strong>, somando aprox. <strong>' + brl(totalEm) + '</strong>.<br>' : '') +
           'O painel mostra presença em plenário, produção legislativa e CNPJ dos beneficiários das emendas.<br><br>' +
           '<a href="camara.html">Ver dados da Câmara &rarr;</a>',
         chips: [
@@ -400,7 +410,7 @@
     if (/cobrar|lai|acesso|pedido|informac|esic|resposta|ouvidoria|solicitar|requerir/.test(t)) {
       return {
         msg:
-          'A <strong>Lei de Acesso à Informação (LAI)</strong> garante resposta em até <strong>20 dias úteis</strong>.<br>' +
+          'A <strong>Lei de Acesso à Informação (LAI)</strong> prevê resposta em até <strong>20 dias corridos</strong>, prorrogáveis por mais 10 mediante justificativa.<br>' +
           'O painel tem <strong>21 modelos prontos</strong> de pedido — obras, contratos, salários, diárias, emendas e mais.<br>' +
           'É grátis, leva 2 minutos e não precisa de advogado.<br><br>' +
           '<a href="cobrar.html">Ver Como Cobrar &rarr;</a>',

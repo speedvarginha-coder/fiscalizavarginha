@@ -1030,7 +1030,8 @@ button.flag-card:hover {
   .adv-filters__toggle { display: block; }
   .esfera-card__valor, .fed-tipo__valor { font-size: 1.2rem; white-space: nowrap; }
   .fed-tipos__grid { grid-template-columns: 1fr; }
-  .quick-filters { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+  .quick-filters { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .quick-filters::-webkit-scrollbar { display: none; }
   .quick-filters .chip { white-space: nowrap; flex: 0 0 auto; }
 }
 
@@ -1134,3 +1135,44 @@ body {
   margin-left: auto; padding: 5px 8px; font-size: .78rem; font-weight: 700;
   border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--green);
 }
+
+/* ================== RODAPE PADRAO DO PAINEL ==================
+   Mesmo markup e mesma aparencia do rodape das demais paginas.
+   As variaveis abaixo nao existem nesta folha, entao vao literais. */
+.footer {
+  background: linear-gradient(135deg, #00376B, #004B8D);
+  color: #fff;
+  padding: 40px 0 0;
+  font-size: .92rem;
+  border-top: 6px solid #F2C230;
+  margin-top: 40px;
+}
+.footer .container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1.3fr 1.3fr;
+  gap: 32px;
+  padding-bottom: 28px;
+}
+.footer__inner > div > strong { display: block; margin-bottom: 10px; font-size: .95rem; }
+.footer .small { font-size: .8rem; line-height: 1.5; }
+.footer .muted { color: #AAC4E3; }
+.footer__brand strong { font-size: 1.1rem; }
+.footer__brand span { color: #F2C230; font-weight: 600; }
+.footer__nav { display: grid; gap: 7px; }
+.footer__nav a { color: #fff; opacity: .9; text-decoration: none; }
+.footer__nav a:hover { opacity: 1; color: #F2C230; text-decoration: underline; }
+.footer__sources ul { list-style: none; padding: 0; margin: 0; }
+.footer__sources li { margin: 6px 0; }
+.footer__sources a { color: #F2C230; text-decoration: none; }
+.footer__sources a:hover { text-decoration: underline; }
+.footer__updated { margin: 0 0 12px; }
+.footer__updated span { color: #F2C230; font-weight: 700; }
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding: 16px 0 96px;
+  font-size: .82rem;
+  opacity: .82;
+}
+@media (max-width: 900px) { .footer__inner { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .footer__inner { grid-template-columns: 1fr; } }

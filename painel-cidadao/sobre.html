@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sobre e Metodologia · Fiscaliza Varginha</title>
-<meta name="description" content="O que é o Fiscaliza Varginha, como os dados são coletados, limitações e disclaimer legal.">
+<title>Sobre o Fiscaliza Varginha: metodologia e fontes</title>
+<meta name="description" content="Conheça as fontes oficiais, a metodologia de coleta, as limitações e os princípios editoriais do Fiscaliza Varginha.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/sobre.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Sobre e Metodologia · Fiscaliza Varginha">
 <meta property="og:description" content="Ferramenta independente de fiscalização cidadã de Varginha-MG — metodologia, fontes e limitações.">
 <meta property="og:locale"      content="pt_BR">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/sobre.html">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Sobre · Fiscaliza Varginha">
 <meta name="twitter:description" content="O que é o Fiscaliza Varginha e como os dados são coletados.">
-<link rel="stylesheet" href="style.css?v=20260627b">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 <style>
   .sobre-grid {
     display: grid;
@@ -52,15 +55,15 @@
   .fonte-table tr:nth-child(even) td { background: var(--cream); }
   .fonte-table a { color: var(--navy); word-break: break-all; }
   .disclaimer-box {
-    background: #fff8e1;
+    background: var(--warn-bg);
     border: 1px solid #f9a825;
     border-left: 5px solid #f57f17;
     border-radius: 8px;
     padding: 18px 22px;
     margin: 24px 0;
   }
-  .disclaimer-box strong { display: block; margin-bottom: 8px; color: #6d3800; font-size: 1rem; }
-  .disclaimer-box p { margin: 0 0 8px; font-size: .88rem; color: #5d4037; line-height: 1.6; }
+  .disclaimer-box strong { display: block; margin-bottom: 8px; color: var(--warn-ink-2); font-size: 1rem; }
+  .disclaimer-box p { margin: 0 0 8px; font-size: .88rem; color: var(--warn-ink); line-height: 1.6; }
   .data-health {
     background: var(--white);
     border: 1px solid var(--line);
@@ -91,8 +94,8 @@
     font-weight: 800;
     text-transform: uppercase;
   }
-  .data-health--attention .data-health__badge { background: #fff8e1; color: #8a5b00; }
-  .data-health--critical .data-health__badge { background: #ffebee; color: #9b1c1c; }
+  .data-health--attention .data-health__badge { background: var(--warn-bg); color: #8a5b00; }
+  .data-health--critical .data-health__badge { background: var(--danger-bg); color: var(--danger-ink); }
   .data-health__stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
@@ -112,7 +115,7 @@
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 10px 12px;
-    background: #fff;
+    background: var(--white);
   }
   .data-health__item strong { display: block; color: var(--ink); font-size: .88rem; margin-bottom: 3px; }
   .data-health__item p { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.45; }
@@ -159,6 +162,7 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html"      class="nav__link nav__link--active">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
@@ -360,14 +364,14 @@
           <span class="timeline__step">2</span>
           <div class="timeline__txt">
             <strong>Geração do bundle</strong>
-            <span>Um segundo script compila os JSONs num único arquivo <code>data.js</code> (variável global <code>ZELA_DATA</code>).</span>
+            <span>Um segundo script compila os JSONs num único arquivo <code>data.js</code> (variável global <code>FISCALIZA_DATA</code>).</span>
           </div>
         </li>
         <li>
           <span class="timeline__step">3</span>
           <div class="timeline__txt">
             <strong>Renderização no browser</strong>
-            <span><code>app.js</code> lê <code>ZELA_DATA</code>, aplica os filtros, alertas e formatações e preenche as páginas HTML com JavaScript puro — sem servidor.</span>
+            <span><code>app.js</code> lê <code>FISCALIZA_DATA</code>, aplica os filtros, alertas e formatações e preenche as páginas HTML com JavaScript puro — sem servidor.</span>
           </div>
         </li>
         <li>
@@ -474,8 +478,10 @@
         <a href="prefeitura.html">Prefeitura</a>
         <a href="fundacao.html">Fundação Cultural</a>
         <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="cobrar.html">Como cobrar</a>
       </nav>
@@ -606,8 +612,8 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
   s.src = "app-glossario.js?v=" + Date.now();
   s.onload = function () {
     var tbody = document.querySelector("#tabelaGlossario tbody");
-    if (!tbody || !window.ZELA || !window.ZELA.glossario) return;
-    var g = window.ZELA.glossario;
+    if (!tbody || !window.FISCALIZA || !window.FISCALIZA.glossario) return;
+    var g = window.FISCALIZA.glossario;
     var rows = Object.keys(g).map(function (k) {
       var label = k.charAt(0).toUpperCase() + k.slice(1);
       return "<tr><td>" + label + "</td><td>" + g[k].simples + "</td><td>" + g[k].explica + "</td></tr>";
@@ -617,6 +623,6 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
   document.head.appendChild(s);
 })();
 </script>
-<script src="data-loader.js?v=20260727-mobile2"></script>
+<script src="data-loader.js?v=20260730-relatorios2"></script>
 </body>
 </html>

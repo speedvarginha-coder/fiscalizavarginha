@@ -2,10 +2,10 @@
 (function () {
   "use strict";
 
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
-  const D = window.ZELA_DATA || {};
-  const utils = window.ZELA.utils || {};
+  const D = window.FISCALIZA_DATA || {};
+  const utils = window.FISCALIZA.utils || {};
   const esc = utils.esc || function (s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
@@ -535,9 +535,9 @@
     });
   }
 
-  window.ZELA.indiceRelevancia = { render };
+  window.FISCALIZA.indiceRelevancia = { render };
 
-  window.addEventListener("zela:ready", render);
+  window.addEventListener("fiscaliza:ready", render);
   document.addEventListener("change", function (event) {
     if (event.target && event.target.id === "filtroAnoCamara") render();
   });

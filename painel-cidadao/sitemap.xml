@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Trocar SEU-DOMINIO pelo domínio real no deploy (ver docs/como-publicar.md) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://SEU-DOMINIO/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://SEU-DOMINIO/atualizacoes.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://SEU-DOMINIO/prefeitura.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://SEU-DOMINIO/camara.html</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://SEU-DOMINIO/relatorios.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://SEU-DOMINIO/pessoal.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://SEU-DOMINIO/marcadores.html</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://SEU-DOMINIO/sobre.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://SEU-DOMINIO/cobrar.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://fiscalizavarginha.com.br/</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/atualizacoes.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/prefeitura.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/fundacao.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/camara.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/emendas/</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/relatorios.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/pessoal.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/avalie.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/sobre.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/conformidade.html</loc></url>
+  <url><loc>https://fiscalizavarginha.com.br/cobrar.html</loc></url>
 </urlset>

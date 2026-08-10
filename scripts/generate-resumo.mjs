@@ -209,7 +209,9 @@ const chunks = {
 };
 const resumo = agregarPeriodo(chunks, inicio, fim);
 const idx = indexarPublicacoes(readJson("publicacoes_estruturadas")?.publicacoes);
-const html = render(resumo, tipo, idx);
+// Templates condicionais podem deixar linhas contendo apenas indentacao.
+// Normalizar a saida mantem os relatorios deterministas e o diff limpo.
+const html = render(resumo, tipo, idx).replace(/[ \t]+$/gm, "");
 const saida = arg("saida") || path.join(root, "painel-cidadao", "relatorios", `resumo-${tipo}${secao === "tudo" ? "" : "-" + secao}-${inicio}.html`);
 fs.mkdirSync(path.dirname(saida), { recursive: true });
 fs.writeFileSync(saida, html, "utf8");

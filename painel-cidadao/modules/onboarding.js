@@ -19,28 +19,36 @@
   }
 
   function montar() {
-    if (jaViu()) return;
     // A apresentação ocupa espaço valioso nas páginas de consulta. Ela fica
     // restrita à página inicial e a confirmação continua valendo para o site.
     if ((document.body && document.body.dataset.page) !== "home") return;
     var main = document.getElementById("conteudo");
-    if (!main || document.getElementById("onboarding-banner")) return;
+    if (!main) return;
 
-    var banner = document.createElement("aside");
-    banner.id = "onboarding-banner";
-    banner.className = "onboarding";
-    banner.setAttribute("role", "note");
-    banner.innerHTML =
-      '<div class="onboarding__body">' +
-        '<strong class="onboarding__title">Bem-vindo ao Fiscaliza Varginha</strong>' +
-        '<p class="onboarding__text">Este painel mostra <strong>contratos e gastos reais</strong> ' +
-        'da Prefeitura e da Câmara de Varginha-MG, em linguagem simples. ' +
-        'Clique em qualquer valor para conferir a <strong>fonte oficial</strong>. ' +
-        'Não é prova de irregularidade — é um ponto de partida.</p>' +
-      '</div>' +
-      '<button type="button" class="onboarding__close" aria-label="Entendi, fechar aviso">Entendi</button>';
+    var banner = document.getElementById("onboarding-banner");
+    if (jaViu()) {
+      if (banner) banner.remove();
+      return;
+    }
 
-    main.insertBefore(banner, main.firstChild);
+    // Compatibilidade com outras entradas que ainda não tenham o markup
+    // estático. Na home ele já vem no HTML, evitando qualquer layout shift.
+    if (!banner) {
+      banner = document.createElement("aside");
+      banner.id = "onboarding-banner";
+      banner.className = "onboarding";
+      banner.setAttribute("role", "note");
+      banner.innerHTML =
+        '<div class="onboarding__body">' +
+          '<strong class="onboarding__title">Bem-vindo ao Fiscaliza Varginha</strong>' +
+          '<p class="onboarding__text">Este painel mostra <strong>contratos e gastos reais</strong> ' +
+          'da Prefeitura e da Câmara de Varginha-MG, em linguagem simples. ' +
+          'Clique em qualquer valor para conferir a <strong>fonte oficial</strong>. ' +
+          'Não é prova de irregularidade — é um ponto de partida.</p>' +
+        '</div>' +
+        '<button type="button" class="onboarding__close" aria-label="Entendi, fechar aviso">Entendi</button>';
+      main.insertBefore(banner, main.firstChild);
+    }
 
     var fechado = false;
     function fechar() {

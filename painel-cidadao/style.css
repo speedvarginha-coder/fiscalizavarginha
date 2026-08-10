@@ -82,11 +82,11 @@
   --font-mono: "Cascadia Mono", "Consolas", monospace;
 }
 
-/* ================== DARK MODE (automático via preferência do sistema) ==================
-   Ativa quando o SO do visitante está em tema escuro. Superfícies, estados e
-   textos foram tokenizados, então a inversão é consistente entre as páginas.
+/* ================== DARK MODE (automático apenas em desktop) ==================
+   Ativa em telas maiores com mouse/trackpad quando o sistema está em tema escuro.
+   Celulares e dispositivos de toque permanecem sempre no tema claro.
    Para forçar claro mesmo com SO escuro: <html data-theme="light">. */
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) and (min-width: 769px) and (hover: hover) and (pointer: fine) {
   :root:not([data-theme="light"]) {
     --bg:        #0d141c;
     --surface:   #161f2b;
@@ -3404,6 +3404,7 @@ a.brand:hover { text-decoration: none; }
     grid-template-columns: 1fr;
   }
 }
+
 .ver-profile__head {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -3750,7 +3751,9 @@ a.brand:hover { text-decoration: none; }
 .footer__updated span { color: var(--gold); font-weight: 700; }
 .footer__bottom {
   border-top: 1px solid rgba(255,255,255,.15);
-  padding: 16px 0;
+  /* Folga extra embaixo: a legenda de leitura, o chat e o botao de voltar ao
+     topo sao position:fixed e cobriam o texto de copyright no fim da pagina. */
+  padding: 16px 0 96px;
   font-size: .82rem;
   opacity: .82;
 }
@@ -4633,7 +4636,7 @@ mark.hl {
 }
 .diarias-ranking__summary {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
 }
 .diarias-ranking__summary article {
@@ -4692,6 +4695,29 @@ mark.hl {
 .diarias-ranking__panel-head p {
   margin: 0;
   line-height: 1.4;
+}
+.diarias-list-heading {
+  display: grid;
+  gap: 4px;
+  margin: 24px 0 10px;
+  padding: 14px 16px;
+  border-left: 4px solid var(--gold);
+  border-radius: 8px;
+  background: var(--gold-soft);
+}
+.diarias-list-heading h3,
+.diarias-list-heading p {
+  margin: 0;
+}
+.diarias-list-heading h3 {
+  color: var(--navy);
+  font-family: var(--font-h);
+  font-size: 1.05rem;
+}
+.diarias-list-heading p {
+  color: var(--ink);
+  font-size: .9rem;
+  line-height: 1.45;
 }
 .diaria-rank-row {
   display: grid;
@@ -4868,6 +4894,18 @@ mark.hl {
 .diaria-card__body h4 {
   margin: 0 0 6px;
   color: var(--navy);
+}
+.diaria-card__body {
+  min-width: 0;
+}
+.diaria-card__person-label {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 .diaria-card__role {
   display: inline-flex;
@@ -6989,6 +7027,15 @@ body[data-page="home"] .audit-scores {
   font-size: clamp(1.45rem, 2.4vw, 2.25rem);
 }
 
+#statsDiariasPrefeitura .stat__value,
+#statsDiariasCamara .stat__value {
+  min-width: 0;
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  line-height: 1.08;
+  letter-spacing: -.015em;
+  font-variant-numeric: tabular-nums;
+}
+
 .filterbar {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -7002,21 +7049,69 @@ body[data-page="home"] .audit-scores {
   min-height: 42px;
 }
 
+/* Ocupa a linha inteira: com min-width max-content dentro de uma coluna de
+   180px, textos como "86 entidades · R$ 17.841.369,18" estouravam a coluna e
+   vazavam para fora da caixa de filtros. */
 .filterbar__count {
-  justify-self: end;
-  min-width: max-content;
-  padding: 8px 10px;
+  grid-column: 1 / -1;
+  justify-self: stretch;
+  text-align: center;
+  min-width: 0;
+  padding: 8px 12px;
   border-radius: 999px;
   background: rgba(0,75,141,.08);
   color: var(--navy);
   font-weight: 750;
 }
 
-.signals {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 12px;
+/* Faixas por gravidade. O grid multi-coluna vive DENTRO de cada faixa: quando
+   ficava no container, cada grupo virava uma coluna e grupos de 1 a 23 itens
+   deixavam buracos enormes esperando a coluna mais longa terminar. */
+.signals { display: grid; gap: 14px; grid-template-columns: 1fr; }
+
+.sev { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.sev__head {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 14px 16px; cursor: pointer; list-style: none;
+  font-size: .82rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 700;
 }
+.sev__head::-webkit-details-marker { display: none; }
+.sev__head::after {
+  content: "▾"; margin-left: auto; font-size: 1rem; letter-spacing: 0;
+  transition: transform .15s;
+}
+.sev[open] > .sev__head::after { transform: rotate(180deg); }
+.sev__head:hover { background: var(--surface-2); }
+.sev__head:focus-visible { outline: 2px solid var(--navy); outline-offset: -2px; }
+.sev__count {
+  font-size: .78rem; padding: 1px 9px; border-radius: var(--radius-pill);
+  color: var(--on-accent); letter-spacing: 0;
+}
+.sev__resumo {
+  flex: 1 1 220px; font-size: .8rem; font-weight: 400;
+  text-transform: none; letter-spacing: 0; color: var(--muted);
+}
+.sev__head--critico { color: var(--danger-ink); }
+.sev__head--critico .sev__count { background: var(--danger-ink); }
+.sev__head--alto { color: var(--warn-ink); }
+.sev__head--alto .sev__count { background: #8C3B1A; }
+.sev__head--medio { color: var(--navy); }
+.sev__head--medio .sev__count { background: var(--navy); }
+
+.sev__grid {
+  display: grid; gap: 12px; padding: 0 16px 16px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  align-items: start;
+}
+.sev__grid--extra { padding-top: 0; }
+.sev__mais {
+  margin: 0 16px 16px; padding: 10px 18px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: var(--radius-sm); color: var(--navy);
+  font-size: .9rem; font-weight: 600; cursor: pointer;
+}
+.sev__mais:hover { border-color: var(--navy); background: var(--cream); }
+@media (max-width: 720px) { .sev__resumo { display: none; } }
 
 .signal {
   min-height: 0;
@@ -7055,6 +7150,13 @@ body[data-page="prefeitura"] .bigheader {
 
 body[data-page="prefeitura"] .bigheader .reader-summary {
   padding: 18px;
+}
+
+body[data-page="prefeitura"] .bigheader .reader-summary__chips strong {
+  font-size: clamp(1.1rem, 1.45vw, 1.22rem);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 body[data-page="prefeitura"] .audit-overview {
@@ -7526,7 +7628,7 @@ body[data-page="cobrar"] .section__title {
 }
 
 .risk-priority small {
-  color: #7a4d00;
+  color: var(--warn-ink);
   font-size: .72rem;
   font-weight: 900;
 }
@@ -11241,8 +11343,19 @@ body[data-page="home"] .hub-numeros__item { padding: 8px 9px; }
   body[data-page="home"] #atualizado {
     display: flex;
     margin: 8px 0 0;
+    min-height: 24px;
   }
   body[data-page="home"] .hub-grid-18 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Reserva o espaço do resumo semanal antes dos dados chegarem. Sem esta
+   reserva, o bloco surgia acima da dobra e empurrava toda a página no celular. */
+body[data-page="home"] .semana-hero--pending {
+  visibility: hidden;
+}
+
+html.onboarding-seen #onboarding-banner {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -11789,7 +11902,7 @@ body[data-page="home"] .hub-grid-18 .hub-item__icon svg { stroke: var(--navy); }
 .pub-badge { font-size: .68rem; font-weight: 700; padding: 3px 9px; border-radius: 6px; }
 .pub-badge--alta { background: var(--danger-bg); color: var(--danger-ink); }
 .pub-badge--media { background: var(--warn-bg); color: var(--warn-ink); }
-.pub-badge--baixa { background: var(--surface-2); color: #5f5e5a; }
+.pub-badge--baixa { background: var(--surface-2); color: var(--ink-soft, #5f5e5a); }
 .pub-card__data { margin-left: auto; font-size: .78rem; color: var(--muted); }
 .pub-card__titulo { font-size: 1.02rem; font-weight: 700; color: var(--navy); margin: 2px 0 0; line-height: 1.3; }
 .pub-card__autor { font-size: .82rem; color: var(--muted); margin: 0; }
@@ -12272,6 +12385,9 @@ body[data-page="conformidade"] #iftMetodologia {
   color: rgba(255,255,255,.92) !important;
   opacity: 1 !important;
 }
+/* Links dentro do painel escuro do IFT: azul sobre azul nao contrasta. */
+body[data-page="conformidade"] .ift-panel a { color: #ffd166; }
+
 body[data-page="conformidade"] .ift-panel {
   background: linear-gradient(140deg, #064a7f, #08745c);
   border-radius: 22px;
@@ -12420,4 +12536,643 @@ body[data-page="relatorios"] .block {
 @media (max-width: 520px) {
   .progressive-data { grid-template-columns: 34px minmax(0, 1fr); padding: 14px; }
   .progressive-data__icon { width: 32px; height: 32px; }
+}
+
+/* ==================================================================
+   TEMA ESCURO — correção da camada "Experiência Cidadã V3"
+   A V3 fixa superfícies claras (--warm-surface, --soft-*) depois do
+   @media (prefers-color-scheme: dark) do topo do arquivo. No celular
+   em tema escuro isso deixava cartão claro com texto claro (contraste
+   1.17 em .stat, .audit-metric, .page-howto e no .bigheader).
+   Aqui os mesmos tokens são reescritos para o escuro, no fim do arquivo.
+================================================================== */
+@media (prefers-color-scheme: dark) and (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  :root:not([data-theme="light"]) {
+    --warm-bg:        #0d141c;
+    --warm-surface:   #161f2b;
+    --civic-blue:     #6fb2f0;
+    --civic-green:    #57b985;
+    --civic-gold:     #f0b64d;
+    --soft-blue:      #14273a;
+    --soft-green:     #14301f;
+    --soft-gold:      #332a12;
+    --surface-border: #2a3949;
+    --shadow-civic:   0 12px 34px rgba(0, 0, 0, .45);
+  }
+
+  /* Superfícies escritas em rgba() literal não leem os tokens acima. */
+  :root:not([data-theme="light"]) .topbar,
+  :root:not([data-theme="light"]) #loading-overlay,
+  :root:not([data-theme="light"]) .page-howto {
+    background: rgba(22, 31, 43, .96);
+  }
+  :root:not([data-theme="light"]) #loading-overlay,
+  :root:not([data-theme="light"]) .progressive-data,
+  :root:not([data-theme="light"]) .citizen-alerts { border-color: var(--line); }
+  :root:not([data-theme="light"]) #loading-overlay .loading-spinner,
+  :root:not([data-theme="light"]) .progressive-data__icon {
+    border-color: var(--line);
+    border-top-color: var(--civic-green);
+  }
+
+  /* Texto fixo em hex claro/escuro dentro da V3. */
+  :root:not([data-theme="light"]) .bigheader__lead { color: var(--muted); }
+  :root:not([data-theme="light"]) .cross-supplier-card__breakdown span,
+  :root:not([data-theme="light"]) .cross-supplier-card__note { color: var(--muted); }
+  :root:not([data-theme="light"]) .cross-supplier-card__breakdown strong { color: var(--ink); }
+
+  /* Sombras claras viram sombras de profundidade. */
+  :root:not([data-theme="light"]) .stat,
+  :root:not([data-theme="light"]) .audit-metric,
+  :root:not([data-theme="light"]) .feature-card,
+  :root:not([data-theme="light"]) .hub-card,
+  :root:not([data-theme="light"]) .source-card,
+  :root:not([data-theme="light"]) .signal,
+  :root:not([data-theme="light"]) .citizen-alert-card {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .38);
+  }
+
+  /* --civic-blue clareou: como fundo de botão precisa de texto escuro. */
+  :root:not([data-theme="light"]) .btn-progressive-retry { color: #08121c; }
+}
+
+/* Faixas que já nascem escuras usam var(--navy) como fundo. No tema escuro
+   o token clareia e a faixa fica clara com texto claro — aqui o fundo é fixado. */
+@media (prefers-color-scheme: dark) and (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  :root:not([data-theme="light"]) .section.transp-radar { background: #0e2f52; }
+  :root:not([data-theme="light"]) .lvb-hero {
+    background: linear-gradient(135deg, #0b3f76 0%, #063f78 54%, #042f5b 100%);
+  }
+
+  /* Botões dourados levam texto escuro: var(--navy) clareado não contrasta. */
+  :root:not([data-theme="light"]) :is(
+    .search button,
+    .transp-radar__btn,
+    .lvb-hero__cta,
+    .audit-cta__btn
+  ) { color: #10243a; }
+
+  :root:not([data-theme="light"]) .lvb-rp { color: var(--danger-dk); }
+}
+
+/* Tokens que só existiam como fallback claro dentro de var(). */
+@media (prefers-color-scheme: dark) and (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  :root:not([data-theme="light"]) {
+    --ink-soft: #b3c0d1;
+    --border:   #2a3949;
+    --navy-lt:  #1c2735;
+  }
+
+  /* Realces claros dentro de caixas de aviso já escuras. */
+  :root:not([data-theme="light"]) .indice-alert code,
+  :root:not([data-theme="light"]) .indice-alert span {
+    background: rgba(255, 255, 255, .10);
+    border-color: rgba(255, 255, 255, .18);
+  }
+  :root:not([data-theme="light"]) .btn-copiar-num { color: var(--warn-ink); }
+
+  /* Primeiro atalho da faixa de ações é dourado: texto escuro. */
+  :root:not([data-theme="light"]) .civic-actions a:first-child,
+  :root:not([data-theme="light"]) .civic-actions button:first-child { color: #10243a; }
+}
+
+/* Fundo dourado + texto var(--navy): no tema escuro o navy clareia e o texto
+   some no dourado. Um único lugar fixa o texto escuro nesses componentes. */
+@media (prefers-color-scheme: dark) and (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  :root:not([data-theme="light"]) :is(
+    .skip-link,
+    .nav__link--cta,
+    .search button,
+    .smart-guide__go,
+    .audit-chips button:hover,
+    .pdf-action span:first-child,
+    .score-mini--atencao,
+    .keyword-audit__chips span,
+    .guia-btn:hover,
+    .diario__extra,
+    .data-legend__toggle span[aria-hidden="true"],
+    .cat-chip.is-active .cat-chip__count,
+    .hub-badge,
+    .btn-star.is-marked,
+    .pub-secao__tag,
+    .start-guide__choices button.is-active
+  ) { color: #10243a; }
+}
+
+/* Fundação: cabeçalho próprio (fundo escuro) e cartão de cruzamento translúcido. */
+@media (prefers-color-scheme: dark) and (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  :root:not([data-theme="light"]) body[data-page="fundacao"] .bigheader .civic-actions a:first-child {
+    color: var(--on-accent);
+  }
+  :root:not([data-theme="light"]) body[data-page="fundacao"] .block--cross-suppliers {
+    background: var(--surface);
+    border-color: var(--line);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, .40);
+  }
+}
+
+/* Cartão vermelho do hero: --danger-bd escurece no tema escuro e some no azul. */
+@media (prefers-color-scheme: dark) and (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  :root:not([data-theme="light"]) .lvb-stat--red .lvb-stat__val { color: var(--danger-dk); }
+}
+
+/* Atalho de participação cidadã: destaque discreto e compatível com os dois temas. */
+body[data-page="home"] .hub-grid-18 .hub-item--avalie {
+  border-color: rgba(0, 137, 123, .48);
+  background: linear-gradient(135deg, rgba(0, 137, 123, .12), var(--surface-2));
+}
+body[data-page="home"] .hub-grid-18 .hub-item--avalie span {
+  color: var(--teal);
+}
+body[data-page="home"] .hub-grid-18 .hub-item--avalie .hub-item__icon svg {
+  stroke: var(--teal);
+}
+
+/* Abas da Prefeitura: em larguras intermediárias, quebram em linhas em vez
+   de criar uma barra horizontal visível sob o cabeçalho. */
+@media (min-width: 761px) {
+  .pref-tabs {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+}
+
+/* Controles com muitos itens continuam deslizáveis no celular, mas sem uma
+   barra de rolagem atravessando o conteúdo. */
+@media (max-width: 760px) {
+  .pref-tabs,
+  .lvb-chips {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .pref-tabs::-webkit-scrollbar,
+  .lvb-chips::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Evita campos espremidos e contadores sobrepostos na faixa de tablet /
+   Windows com escala de tela ampliada. */
+@media (min-width: 769px) and (max-width: 1350px) {
+  .filterbar {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+  .filterbar__count {
+    min-width: 0;
+    width: 100%;
+    justify-self: stretch;
+    text-align: center;
+  }
+}
+
+/* Cobertura por fonte: estado real de cada base sem competir com o conteúdo. */
+.source-coverage {
+  margin: 12px 0 4px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--teal);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 92%, var(--teal) 8%);
+  color: var(--ink);
+}
+.source-coverage > details > summary {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  cursor: pointer;
+  list-style: none;
+}
+.source-coverage > details > summary::-webkit-details-marker { display: none; }
+.source-coverage > details > summary > span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+  flex: 1;
+}
+.source-coverage > details > summary b {
+  color: var(--navy);
+  font-size: .84rem;
+}
+.source-coverage > details > summary small {
+  color: var(--muted);
+  font-size: .75rem;
+}
+.source-coverage > details > summary em {
+  color: var(--navy);
+  font-size: .76rem;
+  font-style: normal;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.source-coverage > details > summary::after {
+  content: "+";
+  color: var(--navy);
+  font-size: 1.1rem;
+  transition: transform .2s ease;
+}
+.source-coverage > details[open] > summary { border-bottom: 1px solid var(--line); }
+.source-coverage > details[open] > summary::after {
+  content: "−";
+  transform: none;
+}
+.source-coverage__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  padding: 12px 14px 8px;
+}
+.source-coverage__item {
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--teal);
+  border-radius: 10px;
+  background: var(--surface);
+}
+.source-coverage__item--partial,
+.source-coverage__item--preserved,
+.source-coverage__item--manual { border-left-color: var(--gold-dk); }
+.source-coverage__item--failed,
+.source-coverage__item--stale { border-left-color: var(--red); }
+.source-coverage__item > div {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.source-coverage__item strong {
+  color: var(--navy);
+  font-size: .82rem;
+}
+.source-coverage__item span {
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--success-bg);
+  color: var(--success-mid);
+  font-size: .67rem;
+  font-weight: 800;
+  text-align: center;
+}
+.source-coverage__item--partial span,
+.source-coverage__item--preserved span,
+.source-coverage__item--manual span {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}
+.source-coverage__item--failed span,
+.source-coverage__item--stale span {
+  background: var(--danger-bg-2);
+  color: var(--red);
+}
+.source-coverage__item small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: .7rem;
+}
+.source-coverage__item p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: .72rem;
+  line-height: 1.4;
+}
+.source-coverage__note {
+  margin: 0;
+  padding: 2px 14px 13px;
+  color: var(--muted);
+  font-size: .73rem;
+  line-height: 1.45;
+}
+
+/* Fila editorial: hierarquia de leitura, sem transformar sinal em acusação. */
+.verification-priorities { border-top: 4px solid var(--gold); }
+.verification-priorities__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+.block__eyebrow {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--teal);
+  font-size: .68rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+.verification-list { display: grid; gap: 10px; }
+.verification-item {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--gold-dk);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.verification-item--error { border-left-color: var(--red); }
+.verification-item__rank {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--on-accent);
+  font-weight: 900;
+}
+.verification-item__title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.verification-item__title span {
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font-size: .64rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+.verification-item--error .verification-item__title span {
+  background: var(--danger-bg-2);
+  color: var(--red);
+}
+.verification-item__title h4 {
+  margin: 0;
+  color: var(--navy);
+  font-size: .97rem;
+}
+.verification-item__content > p {
+  margin: 7px 0;
+  color: var(--ink);
+  font-size: .84rem;
+  line-height: 1.5;
+}
+.verification-item details {
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+}
+.verification-item details summary {
+  padding: 9px 0 3px;
+  color: var(--navy);
+  cursor: pointer;
+  font-size: .77rem;
+  font-weight: 800;
+}
+.verification-item__details p {
+  margin: 6px 0;
+  color: var(--muted);
+  font-size: .77rem;
+}
+.verification-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+.verification-more {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--surface) 94%, var(--navy) 6%);
+}
+.verification-more > summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  color: var(--navy);
+  cursor: pointer;
+  font-size: .82rem;
+  font-weight: 900;
+}
+.verification-more__list {
+  display: grid;
+  gap: 10px;
+  padding: 0 10px 10px;
+}
+.btn-link--quiet {
+  background: transparent;
+  color: var(--navy);
+}
+
+@media (max-width: 760px) {
+  .source-coverage > details > summary {
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .source-coverage > details > summary em { display: none; }
+  .source-coverage__grid { grid-template-columns: 1fr; }
+  .source-coverage__item > div { align-items: center; }
+  .verification-priorities__head { grid-template-columns: 1fr; }
+  .verification-item {
+    grid-template-columns: 30px minmax(0, 1fr);
+    padding: 12px 10px;
+  }
+  .verification-item__rank {
+    width: 28px;
+    height: 28px;
+    font-size: .78rem;
+  }
+}
+
+/* Tema noturno final de desktop: deve permanecer no fim para vencer regras legadas claras. */
+@media (prefers-color-scheme: dark) and (min-width: 769px) and (hover: hover) and (pointer: fine) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0b121a;
+    --surface:   #131d28;
+    --surface-2: #1a2735;
+    --cream:     #172331;
+    --ink:       #f0f4f8;
+    --ink-soft:  #c8d2de;
+    --muted:     #b5c2d1;
+    --line:      #405166;
+    --border:    #405166;
+    --white:     #131d28;
+    --navy-lt:   #1a2735;
+    --night-blue:#82c2f5;
+    --night-on-blue: #07131f;
+  }
+
+  :root:not([data-theme="light"]) body {
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  :root:not([data-theme="light"]) ::selection {
+    background: rgba(242, 194, 48, .32);
+    color: var(--ink);
+  }
+
+  :root:not([data-theme="light"]) :is(
+    input, select, textarea, dialog, .modal, .filterbar
+  ) {
+    background-color: var(--surface);
+    border-color: var(--line);
+    color: var(--ink);
+  }
+
+  :root:not([data-theme="light"]) :is(input, textarea)::placeholder {
+    color: var(--muted);
+    opacity: 1;
+  }
+
+  :root:not([data-theme="light"]) :is(
+    a, button, input, select, textarea, summary, [tabindex]
+  ):focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  :root:not([data-theme="light"]) body[data-page="home"] :is(
+    .hero__kicker,
+    .hero__proof span,
+    .search,
+    .start-guide,
+    .start-guide__choices button,
+    .start-guide__facts span,
+    .hub-full,
+    .hub-grid-18 .hub-item,
+    .hub-numeros,
+    .hub-numeros__item,
+    .semana-hero,
+    .smart-suggest__list button,
+    .smart-guide,
+    .smart-guide__grid article,
+    .smart-guide__question,
+    .home-ops__brief a
+  ) {
+    border-color: var(--line);
+  }
+
+  :root:not([data-theme="light"]) body[data-page="home"] .hub-grid-18 .hub-item {
+    background: #172433;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .035);
+  }
+
+  :root:not([data-theme="light"]) body[data-page="home"] .hub-grid-18 .hub-item span {
+    color: var(--ink);
+  }
+
+  :root:not([data-theme="light"]) body[data-page="home"] .hub-grid-18 .hub-item__cue,
+  :root:not([data-theme="light"]) body[data-page="home"] .hub-numeros__link {
+    color: var(--night-blue);
+  }
+
+  :root:not([data-theme="light"]) body[data-page="home"] .hub-grid-18 .hub-item__icon svg {
+    stroke: var(--night-blue);
+  }
+
+  :root:not([data-theme="light"]) body[data-page="home"] :is(
+    .start-guide, .hub-full, .hub-numeros, .home-ops__head
+  ) {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .34);
+  }
+
+  :root:not([data-theme="light"]) :is(
+    .nav__link--active,
+    .csec-btn--active,
+    .ano-chip--active,
+    .pref-tab.is-active,
+    .signals-group__count,
+    .timeline__step,
+    .cobrar-path > span,
+    .pub-chip.is-active,
+    .pub-tag--fonte,
+    .aval-switch__btn.is-active,
+    .rep__btn,
+    .lvb-view-btn.is-active,
+    .lvb-chip.is-active
+  ) {
+    color: var(--night-on-blue);
+  }
+
+  :root:not([data-theme="light"]) :is(
+    .pref-tab.is-active span,
+    .signals-group__count *,
+    .timeline__step *,
+    .cobrar-path > span *
+  ) {
+    color: inherit;
+  }
+
+  :root:not([data-theme="light"]) :is(
+    .hub-item, .monitor-card, .monitor-table, .sobre-card
+  ) {
+    background-color: var(--surface);
+  }
+
+  :root:not([data-theme="light"]) :is(
+    .muted, small, .card__sub, .stat__sub, .page-subtitle
+  ) {
+    color: var(--muted);
+  }
+
+  :root:not([data-theme="light"]) table :is(th, td) {
+    border-color: var(--line);
+  }
+
+  :root:not([data-theme="light"]) :is(
+    #btn-topo,
+    .btn--primary,
+    .btn-csv,
+    .update-tab.is-active,
+    .aval-switch__btn[aria-selected="true"],
+    .fonte-table th,
+    .glossario-tabela th
+  ) {
+    color: var(--night-on-blue);
+  }
+
+  :root:not([data-theme="light"]) .signals-group__title--critico .signals-group__count {
+    color: var(--night-on-blue);
+  }
+
+  :root:not([data-theme="light"]) .signals-group__title--alto .signals-group__count {
+    color: var(--on-accent);
+  }
+
+  :root:not([data-theme="light"]) .signal__level {
+    color: var(--warn-ink);
+  }
+
+  :root:not([data-theme="light"]) .signal--critico .signal__level,
+  :root:not([data-theme="light"]) .em__status--no,
+  :root:not([data-theme="light"]) .lvb-rp {
+    color: var(--danger-dk);
+  }
+
+  :root:not([data-theme="light"]) .cat-chip__count,
+  :root:not([data-theme="light"]) code {
+    background: var(--surface-2);
+    color: var(--night-blue);
+    border-color: var(--line);
+  }
+
+  :root:not([data-theme="light"]) code {
+    background: var(--surface-2) !important;
+    color: var(--night-blue) !important;
+  }
+
+  :root:not([data-theme="light"]) :is(.btn-csv, .obra-cta__btn) {
+    color: #02070b;
+  }
+
+  :root:not([data-theme="light"]) .timeline-card__step {
+    color: rgba(130, 194, 245, .30);
+  }
+
+  :root:not([data-theme="light"]) .lvb-col-title {
+    color: var(--muted);
+  }
+
+  :root:not([data-theme="light"]) .cross-supplier-card__avatar {
+    color: var(--success-dk);
+  }
 }

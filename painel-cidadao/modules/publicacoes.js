@@ -1,7 +1,7 @@
 /* Fiscaliza Varginha — Feed de publicações estruturadas (Câmara + Diário).
    Renderiza os cards "cidadãos" gerados pela coleta com IA: resumo,
    o que propõe / envolvidos+valores, pontos de atenção e link à fonte.
-   Autocontido: lê window.ZELA_DATA.publicacoes_estruturadas (Câmara) e
+   Autocontido: lê window.FISCALIZA_DATA.publicacoes_estruturadas (Câmara) e
    .publicacoes_diario (Diário). Não depende do app.js. */
 (function () {
   "use strict";
@@ -124,7 +124,7 @@
   function init() {
     var feed = document.getElementById("publicacoesFeed");
     if (!feed || feed.dataset.ready) return;
-    var D = window.ZELA_DATA || {};
+    var D = window.FISCALIZA_DATA || {};
     var camara = (D.publicacoes_estruturadas && D.publicacoes_estruturadas.publicacoes) || [];
     var diario = (D.publicacoes_diario && D.publicacoes_diario.publicacoes) || [];
     if (!camara.length && !diario.length) return;  // dados ainda não chegaram
@@ -155,16 +155,16 @@
   }
 
   function tryInit() {
-    var D = window.ZELA_DATA || {};
+    var D = window.FISCALIZA_DATA || {};
     if (!D.publicacoes_estruturadas && !D.publicacoes_diario) return false;
     init();
     return true;
   }
 
   if (!tryInit()) {
-    window.addEventListener("zela:chunk", tryInit);
+    window.addEventListener("fiscaliza:chunk", tryInit);
     document.addEventListener("DOMContentLoaded", tryInit);
   }
-  window.ZELA = window.ZELA || {};
-  window.ZELA.initPublicacoes = init;
+  window.FISCALIZA = window.FISCALIZA || {};
+  window.FISCALIZA.initPublicacoes = init;
 })();

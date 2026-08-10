@@ -7,23 +7,23 @@
  *   - Contrato (conferência de procedência na fonte oficial)
  *   - Relatório TXT de contrato (download)
  *
- * Disponível em window.ZELA.dossie.
- * Dependências: window.ZELA.utils (esc, fmtBRL, fmtNum).
+ * Disponível em window.FISCALIZA.dossie.
+ * Dependências: window.FISCALIZA.utils (esc, fmtBRL, fmtNum).
  *
  * Carregado pelo data-loader.js (depois de utils.js, antes de app.js).
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
-  const u = window.ZELA.utils;
+  const u = window.FISCALIZA.utils;
   if (!u) {
-    console.error("[dossie] window.ZELA.utils ausente. Carregue modules/utils.js primeiro.");
+    console.error("[dossie] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
   const esc = u.esc, fmtBRL = u.fmtBRL, fmtNum = u.fmtNum, norm = u.norm;
 
-  const CHECK_STORE = "zela.dossie.checklist.v1";
+  const CHECK_STORE = "fiscaliza.dossie.checklist.v1";
   function readChecklistStore() {
     try { return JSON.parse(localStorage.getItem(CHECK_STORE) || "{}") || {}; }
     catch (_) { return {}; }
@@ -246,7 +246,7 @@
         <textarea readonly>${esc(pergunta)}</textarea>
         <div class="diaria-actions">
           <button type="button" class="btn-dossie" onclick="navigator.clipboard && navigator.clipboard.writeText(this.closest('.dossier-lai').querySelector('textarea').value)">Copiar pergunta</button>
-          ${canDownloadTxt ? `<button type="button" class="btn-dossie" onclick="ZELA.gerarDossie && ZELA.gerarDossie(${Number(c.__idx)})">Baixar relatório TXT</button>` : ""}
+          ${canDownloadTxt ? `<button type="button" class="btn-dossie" onclick="FISCALIZA.gerarDossie && FISCALIZA.gerarDossie(${Number(c.__idx)})">Baixar relatório TXT</button>` : ""}
         </div>
       </section>
       <p class="muted">Procedência significa conferir se o registro do painel bate com a fonte oficial. Não é conclusão automática sobre legalidade.</p>`;
@@ -446,7 +446,7 @@
         <div class="diaria-actions">
           <button type="button" class="btn-dossie" onclick="navigator.clipboard && navigator.clipboard.writeText(this.closest('.dossier-lai').querySelector('textarea').value)">Copiar pergunta</button>
           ${fonte ? `<a class="btn-link" href="${esc(fonte)}" target="_blank" rel="noopener">Abrir fonte oficial</a>` : ""}
-          <button type="button" class="btn-dossie" onclick="ZELA.baixarPdfSecao('#modalFiscalizaContent', 'Fiscalizacao de diária')">Baixar PDF</button>
+          <button type="button" class="btn-dossie" onclick="FISCALIZA.baixarPdfSecao('#modalFiscalizaContent', 'Fiscalizacao de diária')">Baixar PDF</button>
         </div>
       </section>`;
   }
@@ -511,7 +511,7 @@ ${baseLegalTxt}
   // ============================================================
   // API PÚBLICA
   // ============================================================
-  window.ZELA.dossie = Object.freeze({
+  window.FISCALIZA.dossie = Object.freeze({
     criarModal,
     abrirComHtml,
     templateEmenda,

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avaliação dos serviços públicos de Varginha</title>
+<meta name="description" content="Percepção dos moradores sobre os serviços públicos e os representantes de Varginha-MG.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/avalie.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta property="og:type"        content="website">
+<meta property="og:site_name"   content="Fiscaliza Varginha">
+<meta property="og:title"       content="Avalie · Fiscaliza Varginha">
+<meta property="og:description" content="Percepção dos moradores sobre os serviços públicos e os representantes de Varginha-MG.">
+<meta property="og:locale"      content="pt_BR">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/avalie.html">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Avalie · Fiscaliza Varginha">
+<meta name="twitter:description" content="Percepção dos moradores sobre serviços e representantes de Varginha-MG.">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+/* Protótipo de layout. Ao aprovar o desenho, este bloco migra para style.css. */
+body[data-page="avalie"] .proto-flag {
+  background: var(--warn-bg);
+  border: 1px solid var(--warn-bd);
+  border-left: 5px solid var(--gold);
+  border-radius: 0;
+  padding: 14px 18px;
+  margin: 0 0 26px;
+}
+body[data-page="avalie"] .proto-flag strong { color: var(--warn-ink); }
+body[data-page="avalie"] .proto-flag p { margin: 4px 0 0; color: var(--warn-ink); font-size: .94rem; }
+
+body[data-page="avalie"] .aval-switch {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px;
+}
+body[data-page="avalie"] .aval-switch__btn {
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  border-radius: var(--radius-pill); padding: 9px 20px; font-size: .95rem;
+  font-weight: 500; cursor: pointer; transition: background .15s, border-color .15s, color .15s;
+}
+body[data-page="avalie"] .aval-switch__btn:hover { border-color: var(--navy); }
+body[data-page="avalie"] .aval-switch__btn[aria-selected="true"] {
+  background: var(--navy); border-color: var(--navy); color: var(--on-accent);
+}
+
+body[data-page="avalie"] .svc-grid {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+}
+body[data-page="avalie"] .svc {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 10px;
+  cursor: pointer; transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+body[data-page="avalie"] .svc:hover {
+  transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--gold);
+}
+body[data-page="avalie"] .svc__name { font-weight: 600; font-size: 1rem; color: var(--ink); }
+body[data-page="avalie"] .svc__desc { font-size: .84rem; color: var(--muted); line-height: 1.5; flex: 1; }
+body[data-page="avalie"] .svc__foot {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-top: 1px solid var(--line); padding-top: 9px;
+}
+body[data-page="avalie"] .svc__n { font-size: .76rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+body[data-page="avalie"] .svc__cta { font-size: .84rem; color: var(--navy); font-weight: 600; }
+
+body[data-page="avalie"] .rep-grid {
+  display: grid; gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+body[data-page="avalie"] .rep {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 18px 20px;
+  position: relative; overflow: hidden;
+}
+body[data-page="avalie"] .rep::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 4px; height: 100%; background: var(--navy);
+}
+body[data-page="avalie"] .rep--prefeito::before { background: var(--gold); }
+body[data-page="avalie"] .rep__head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+body[data-page="avalie"] .rep__ini {
+  width: 44px; height: 44px; border-radius: 50%; flex: none;
+  background: var(--cream); color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: .92rem;
+}
+body[data-page="avalie"] .rep__name { font-weight: 600; font-size: 1.02rem; color: var(--ink); line-height: 1.25; }
+body[data-page="avalie"] .rep__role { font-size: .82rem; color: var(--muted); }
+
+body[data-page="avalie"] .rep__ficha {
+  background: var(--surface-2); border-radius: var(--radius-sm);
+  padding: 12px 14px; margin-bottom: 12px;
+}
+body[data-page="avalie"] .rep__ficha-lbl {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--muted); display: block; margin-bottom: 9px;
+}
+body[data-page="avalie"] .rep__nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+body[data-page="avalie"] .rep__num b { display: block; font-size: 1.12rem; color: var(--ink); line-height: 1.2; }
+body[data-page="avalie"] .rep__num span { font-size: .7rem; color: var(--muted); line-height: 1.3; display: block; }
+
+body[data-page="avalie"] .rep__aviso {
+  margin: 9px 0 0; font-size: .78rem; line-height: 1.5; color: var(--warn-ink);
+  background: var(--warn-bg); border-radius: var(--radius-sm); padding: 7px 10px;
+}
+body[data-page="avalie"] .rep__nota { border-top: 1px solid var(--line); padding-top: 12px; }
+body[data-page="avalie"] .rep__nota-lbl {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--muted); display: block; margin-bottom: 8px;
+}
+body[data-page="avalie"] .rep__nota-row { display: flex; align-items: baseline; gap: 10px; }
+body[data-page="avalie"] .rep__nota-val { font-size: 1.7rem; font-weight: 700; color: var(--muted); line-height: 1; }
+body[data-page="avalie"] .rep__nota-sub { font-size: .82rem; color: var(--muted); }
+body[data-page="avalie"] .rep__btn {
+  margin-top: 12px; width: 100%;
+  background: var(--navy); color: var(--on-accent); border: 0;
+  border-radius: var(--radius-sm); padding: 10px 16px;
+  font-size: .92rem; font-weight: 600; cursor: pointer;
+}
+body[data-page="avalie"] .rep__btn:hover { background: var(--navy-dk); }
+
+body[data-page="avalie"] .crit { display: grid; gap: 14px; margin: 4px 0 0; }
+body[data-page="avalie"] .crit__row { display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
+body[data-page="avalie"] .crit__lbl { font-size: .95rem; color: var(--ink); }
+body[data-page="avalie"] .crit__val { font-size: .95rem; font-weight: 700; color: var(--navy); min-width: 2ch; text-align: right; }
+body[data-page="avalie"] .crit__row input[type="range"] { grid-column: 1 / -1; width: 100%; accent-color: var(--navy); }
+
+body[data-page="avalie"] .obra-cta {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  flex-wrap: wrap; background: var(--surface-2);
+  border: 1px dashed var(--line); border-radius: var(--radius); padding: 18px 20px;
+}
+body[data-page="avalie"] .obra-cta b { display: block; font-size: .98rem; color: var(--ink); margin-bottom: 3px; }
+body[data-page="avalie"] .obra-cta span { font-size: .87rem; color: var(--muted); line-height: 1.55; }
+body[data-page="avalie"] .obra-cta__btn {
+  flex: none; background: var(--teal); color: var(--on-accent); border: 0;
+  border-radius: var(--radius-sm); padding: 11px 24px;
+  font-size: .95rem; font-weight: 600; cursor: pointer;
+}
+body[data-page="avalie"] .obra-cta__btn:hover { filter: brightness(.93); }
+
+body[data-page="avalie"] .id-steps { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+body[data-page="avalie"] .id-step {
+  background: var(--surface-2); border-radius: var(--radius-sm); padding: 14px 16px;
+}
+body[data-page="avalie"] .id-step b { display: block; font-size: .95rem; color: var(--ink); margin-bottom: 4px; }
+body[data-page="avalie"] .id-step span { font-size: .86rem; color: var(--muted); line-height: 1.55; }
+
+body[data-page="avalie"] .aval-modal {
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 0; width: min(520px, calc(100vw - 32px)); max-height: calc(100vh - 64px);
+  background: var(--surface); color: var(--ink); box-shadow: var(--shadow-lg);
+}
+body[data-page="avalie"] .aval-modal::backdrop { background: rgba(21, 33, 49, .55); }
+body[data-page="avalie"] .aval-modal__head {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 20px 22px 14px; border-bottom: 1px solid var(--line);
+}
+body[data-page="avalie"] .aval-modal__kicker {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .05em;
+  color: var(--muted); display: block;
+}
+body[data-page="avalie"] .aval-modal__title {
+  font-family: var(--font-h); font-size: 1.25rem; font-weight: bold;
+  color: var(--ink); margin: 2px 0 0; line-height: 1.25;
+}
+body[data-page="avalie"] .aval-modal__media {
+  margin-left: auto; flex: none; text-align: right; line-height: 1.15;
+}
+body[data-page="avalie"] .aval-modal__media-lbl {
+  display: block; font-size: .68rem; text-transform: uppercase;
+  letter-spacing: .05em; color: var(--muted);
+}
+body[data-page="avalie"] .aval-modal__media-val {
+  font-family: var(--font-h); font-size: 1.7rem; font-weight: bold; color: var(--navy);
+}
+body[data-page="avalie"] .aval-modal__x {
+  flex: none; border: 0; background: transparent;
+  font-size: 1.5rem; line-height: 1; color: var(--muted);
+  cursor: pointer; padding: 0 4px;
+}
+body[data-page="avalie"] .aval-modal__x:hover { color: var(--ink); }
+body[data-page="avalie"] .aval-modal__body { padding: 18px 22px; overflow-y: auto; }
+body[data-page="avalie"] .aval-modal__foot {
+  padding: 14px 22px 20px; border-top: 1px solid var(--line);
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+body[data-page="avalie"] .aval-modal__send {
+  background: var(--navy); color: var(--on-accent); border: 0;
+  border-radius: var(--radius-sm); padding: 11px 22px;
+  font-size: .95rem; font-weight: 600; cursor: pointer;
+}
+body[data-page="avalie"] .aval-modal__send:hover { background: var(--navy-dk); }
+body[data-page="avalie"] .aval-modal__note { font-size: .8rem; color: var(--muted); flex: 1 1 180px; }
+
+body[data-page="avalie"] .aval-id {
+  background: var(--warn-bg); border-left: 4px solid var(--gold);
+  padding: 12px 14px; margin: 0 0 18px;
+}
+body[data-page="avalie"] .aval-id b { display: block; font-size: .92rem; color: var(--warn-ink); margin-bottom: 3px; }
+body[data-page="avalie"] .aval-id span { font-size: .85rem; color: var(--warn-ink); line-height: 1.55; }
+body[data-page="avalie"] .aval-id__row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+body[data-page="avalie"] .aval-id__row input {
+  flex: 1 1 160px; min-width: 0; border: 1px solid var(--line);
+  border-radius: var(--radius-sm); padding: 9px 12px; font: inherit; font-size: .92rem;
+  background: var(--surface); color: var(--ink);
+}
+body[data-page="avalie"] .aval-id__row button {
+  border: 1px solid var(--navy); background: var(--surface); color: var(--navy);
+  border-radius: var(--radius-sm); padding: 9px 16px; font-size: .9rem;
+  font-weight: 600; cursor: pointer;
+}
+body[data-page="avalie"] .aval-regiao { display: block; margin: 0 0 18px; }
+body[data-page="avalie"] .aval-regiao__lbl {
+  display: block; font-size: .9rem; color: var(--ink); margin-bottom: 6px;
+}
+body[data-page="avalie"] .aval-regiao select,
+body[data-page="avalie"] .aval-regiao input[type="text"],
+body[data-page="avalie"] .aval-regiao textarea {
+  width: 100%; border: 1px solid var(--line); border-radius: var(--radius-sm);
+  padding: 9px 12px; font: inherit; font-size: .92rem;
+  background: var(--surface); color: var(--ink);
+}
+body[data-page="avalie"] .aval-regiao textarea { resize: vertical; line-height: 1.55; }
+body[data-page="avalie"] .aval-ficha {
+  background: var(--surface-2); border-radius: var(--radius-sm);
+  padding: 10px 14px; margin: 0 0 16px; font-size: .85rem; color: var(--muted); line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+  body[data-page="avalie"] .rep__nums { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body data-page="avalie">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="brand">
+      <span class="brand__mark"></span>
+      <div>
+        <span class="brand__name">Fiscaliza Varginha</span>
+        <span class="brand__tag">Painel Cidadão</span>
+      </div>
+    </a>
+    <button class="nav__toggle" type="button" title="Abrir menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span aria-hidden="true">☰</span></button>
+    <nav id="mainNav" class="nav" aria-label="Seções">
+      <a href="index.html"      class="nav__link">Início</a>
+      <a href="atualizacoes.html" class="nav__link">Atualizações</a>
+      <a href="prefeitura.html" class="nav__link">Prefeitura</a>
+      <a href="fundacao.html" class="nav__link">Fundação</a>
+      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="emendas/index.html" class="nav__link">Emendas</a>
+      <a href="relatorios.html" class="nav__link">Relatórios</a>
+      <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="avalie.html"     class="nav__link nav__link--active">Avalie</a>
+      <a href="sobre.html"      class="nav__link">Sobre</a>
+      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" class="container section">
+  <div class="bigheader">
+    <span class="bigheader__kicker">Participação</span>
+    <h1 class="bigheader__title">Avalie</h1>
+    <p class="bigheader__lead">
+      O resto do painel mostra o que os documentos dizem. Esta seção mostra o que os moradores
+      dizem. São coisas diferentes e ficam separadas: nenhuma nota daqui entra nos indicadores,
+      no índice de relevância ou nos alertas.
+    </p>
+  </div>
+
+  <div class="report-note" style="margin:0 0 26px; background:var(--info-bg); border-left:5px solid var(--info);">
+    <strong>Como ler esta página</strong>
+    <p style="margin:4px 0 0">
+      Avaliação é percepção, não medição. A amostra é de quem escolheu responder, não da população.
+      Serve para apontar onde olhar, nunca como prova. Para prova, use as abas
+      <a href="prefeitura.html">Prefeitura</a>, <a href="camara.html">Câmara</a> e
+      <a href="relatorios.html">Relatórios</a>.
+    </p>
+  </div>
+
+  <div class="aval-switch" role="tablist" aria-label="O que avaliar">
+    <button class="aval-switch__btn" type="button" role="tab" aria-selected="true" aria-controls="painel-servicos">Serviços da cidade</button>
+    <button class="aval-switch__btn" type="button" role="tab" aria-selected="false" aria-controls="painel-representantes">Prefeito e vereadores</button>
+  </div>
+
+  <section id="painel-servicos" class="block">
+    <h3 class="block__title">Serviços da cidade</h3>
+    <p class="block__lead">
+      Vinte áreas. Sem cadastro, sem login: a barreira baixa é proposital, porque reclamar de
+      buraco na rua não pode exigir burocracia. Um voto por área por aparelho, com intervalo de espera.
+    </p>
+    <div class="svc-grid" id="svcGrid"></div>
+  </section>
+
+  <section id="painel-representantes" class="block">
+    <h3 class="block__title">Prefeito e vereadores</h3>
+    <p class="block__lead">
+      Aqui a regra muda: exige identificação, porque nota em pessoa sem identidade é manipulável.
+      Cada ficha mostra primeiro o trabalho registrado no SAPL, que não recebe nota, e só depois
+      a opinião do morador. Os dois números nunca se somam.
+    </p>
+
+    <div class="rep-grid" id="repGrid"></div>
+    <p class="report-note" style="margin-top:16px">
+      Fonte da ficha de trabalho: SAPL da Câmara Municipal, mesma base do índice de relevância
+      em <a href="camara.html">Câmara</a>. Presença apurada na janela de mandato.
+    </p>
+  </section>
+
+  <section class="block">
+    <div class="block__titlerow">
+      <h3 class="block__title">Aponte uma obra, investimento ou projeto</h3>
+    </div>
+    <p class="block__lead">
+      Diferente da nota: aqui não é opinião, é fato que dá para conferir. Você aponta a obra parada,
+      o equipamento que nunca chegou ou o projeto que saiu do papel, e nós cruzamos com contrato,
+      empenho e pagamento antes de publicar. O que não fecha com documento não vai ao ar.
+    </p>
+    <div class="obra-cta">
+      <div>
+        <b>Nenhuma contribuição publicada ainda</b>
+        <span>Seja o primeiro a apontar. Leva menos de dois minutos e não precisa de cadastro.</span>
+      </div>
+      <button class="obra-cta__btn" type="button" id="btnContribuir">Contribuir</button>
+    </div>
+    <p class="report-note" style="margin-top:14px">
+      Toda contribuição passa por conferência antes de aparecer. Publicamos o que checamos,
+      com link para a fonte, do mesmo jeito que o resto do painel.
+    </p>
+  </section>
+
+  <section class="block">
+    <h3 class="block__title">Como funciona a identificação</h3>
+    <p class="block__lead">
+      Só para avaliar prefeito e vereador. Serviço da cidade e contribuição de obra não pedem nada disso.
+    </p>
+    <div class="id-steps">
+      <div class="id-step">
+        <b>1. Entrar com Google</b>
+        <span>Gratuito e sem envio de SMS. Evita a conta descartável mais barata sem criar custo por mensagem.</span>
+      </div>
+      <div class="id-step">
+        <b>2. Uma avaliação por pessoa</b>
+        <span>Dá para mudar a nota quando quiser, mas não dá para votar duas vezes no mesmo político.</span>
+      </div>
+      <div class="id-step">
+        <b>3. Nota, sem texto livre</b>
+        <span>Não há campo de comentário sobre pessoa. Reduz difamação e dispensa moderação diária.</span>
+      </div>
+      <div class="id-step">
+        <b>4. Direito de resposta</b>
+        <span>O avaliado pode publicar uma resposta na própria ficha, identificada como tal.</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="aval-modal" id="avalModal" aria-labelledby="avalModalTitle">
+  <form method="dialog">
+    <div class="aval-modal__head">
+      <div>
+        <span class="aval-modal__kicker" id="avalModalKicker">Serviço da cidade</span>
+        <h2 class="aval-modal__title" id="avalModalTitle">—</h2>
+      </div>
+      <span class="aval-modal__media" id="avalModalMedia" hidden>
+        <span class="aval-modal__media-lbl">Média</span>
+        <b class="aval-modal__media-val" id="avalModalMediaVal" aria-live="polite">7,0</b>
+      </span>
+      <button class="aval-modal__x" type="submit" value="fechar" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="aval-modal__body">
+      <div id="avalModalId" hidden>
+        <div class="aval-id">
+          <b id="avalIdTitulo">Entre para avaliar</b>
+          <span id="avalIdTexto">Só para prefeito e vereador. Uma conta por pessoa, uma avaliação por político, editável depois.</span>
+          <span class="aval-id__row">
+            <button type="button" id="btnGoogle">Entrar com Google</button>
+          </span>
+        </div>
+      </div>
+      <p class="aval-ficha" id="avalModalFicha" hidden></p>
+      <div id="avalModalRegiao" hidden>
+        <label class="aval-regiao">
+          <span class="aval-regiao__lbl">Em que região você usa este serviço</span>
+          <select id="avalModalRegiaoSel">
+            <option value="">Prefiro não dizer</option>
+            <option>Centro</option>
+            <option>Vila Paiva</option>
+            <option>Jardim Andere</option>
+            <option>Santa Maria</option>
+            <option>Sion</option>
+            <option>Bom Pastor</option>
+            <option>Imaculada</option>
+            <option>Rio Verde</option>
+            <option>Carvalhos</option>
+            <option>Zona rural</option>
+            <option>Outro bairro</option>
+          </select>
+        </label>
+      </div>
+      <div class="crit" id="avalModalCrit"></div>
+      <div id="avalModalObra" hidden>
+        <label class="aval-regiao">
+          <span class="aval-regiao__lbl">O que você quer apontar</span>
+          <select>
+            <option>Obra parada ou atrasada</option>
+            <option>Obra entregue com problema</option>
+            <option>Equipamento comprado que não chegou</option>
+            <option>Projeto anunciado que não saiu</option>
+            <option>Outro</option>
+          </select>
+        </label>
+        <label class="aval-regiao">
+          <span class="aval-regiao__lbl">Onde fica</span>
+          <input type="text" placeholder="Rua, bairro ou ponto de referência">
+        </label>
+        <label class="aval-regiao">
+          <span class="aval-regiao__lbl">Descreva o que você viu</span>
+          <textarea rows="3" placeholder="Sem opinião sobre pessoas. Só o que dá para conferir no local."></textarea>
+        </label>
+        <p class="aval-ficha" style="margin:0">
+          Sua contribuição é conferida contra contrato, empenho e pagamento antes de ir ao ar.
+          O envio de fotos poderá ser incluído em uma versão futura.
+        </p>
+      </div>
+    </div>
+    <div class="aval-modal__foot">
+      <button class="aval-modal__send" type="button" id="avalModalSend">Enviar avaliação</button>
+      <span class="aval-modal__note" id="avalModalNota">Sua resposta é anônima. Guardamos só a nota.</span>
+    </div>
+  </form>
+</dialog>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
+    </div>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="monitoramento.html">Monitoramento</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="fundacao.html">Fundação Cultural</a>
+        <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var SERVICOS = [
+    ["Saúde", "Hospitais, postos de saúde e atendimento de urgência."],
+    ["Educação", "Escolas municipais, creches e projetos educativos."],
+    ["Segurança", "Guarda municipal, iluminação e policiamento."],
+    ["Transporte público", "Linhas de ônibus, terminais e mobilidade urbana."],
+    ["Infraestrutura", "Asfalto, calçadas, drenagem e obras públicas."],
+    ["Limpeza urbana", "Coleta de lixo, varrição e manutenção de praças."],
+    ["Saneamento", "Abastecimento de água, esgoto e drenagem pluvial."],
+    ["Iluminação pública", "Manutenção de postes, troca de lâmpadas e expansão."],
+    ["Habitação e urbanismo", "Programas habitacionais e planejamento urbano."],
+    ["Assistência social", "CRAS, CREAS, auxílios e proteção à família."],
+    ["Meio ambiente", "Arborização, parques e áreas de preservação."],
+    ["Vigilância sanitária", "Combate à dengue e fiscalização sanitária."],
+    ["Causa animal", "Castração, zoonoses e proteção aos animais."],
+    ["Desenvolvimento econômico", "Empregos, Porto Seco e incentivo ao comércio."],
+    ["Desenvolvimento rural", "Estradas rurais e apoio ao produtor."],
+    ["Esporte e juventude", "SEMEL, ginásios e escolinhas de esporte."],
+    ["Cultura e patrimônio", "Fundação Cultural, teatros e preservação histórica."],
+    ["Lazer e eventos", "Eventos na praça, festas tradicionais e convívio."],
+    ["Turismo", "Promoção da cidade, pontos turísticos e Memorial do ET."],
+    ["Gestão e burocracia", "Atendimento na prefeitura e processos digitais."]
+  ];
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  var grid = document.getElementById("svcGrid");
+  if (grid) {
+    grid.innerHTML = SERVICOS.map(function (s) {
+      return '<div class="svc" tabindex="0">' +
+        '<span class="svc__name">' + esc(s[0]) + '</span>' +
+        '<span class="svc__desc">' + esc(s[1]) + '</span>' +
+        '<span class="svc__foot">' +
+          '<span class="svc__n">sem avaliações</span>' +
+          '<span class="svc__cta">Avaliar</span>' +
+        '</span>' +
+      '</div>';
+    }).join("");
+  }
+
+  var repGrid = document.getElementById("repGrid");
+  function iniciais(nome) {
+    var p = String(nome || "").trim().split(/\s+/);
+    return ((p[0] || "").charAt(0) + (p.length > 1 ? p[p.length - 1].charAt(0) : "")).toUpperCase();
+  }
+  function cardRep(nome, papel, ficha, modificador) {
+    var resumo = ficha
+      ? "Ficha de trabalho no SAPL: " + (ficha.presenca_pct != null ? ficha.presenca_pct.toFixed(1).replace(".", ",") + "% de presença" : "presença não apurada") +
+        ", " + (ficha.total || 0) + " matérias, " + (ficha.projetos_lei || 0) + " projetos de lei, " +
+        (ficha.leis_aprovadas || 0) + " leis aprovadas. Esses números não mudam com a sua nota."
+      : "";
+    var nums = ficha
+      ? '<div class="rep__nums">' +
+          '<span class="rep__num"><b>' + (ficha.presenca_pct != null ? ficha.presenca_pct.toFixed(1).replace(".", ",") + "%" : "—") + '</b><span>presença</span></span>' +
+          '<span class="rep__num"><b>' + (ficha.total || 0) + '</b><span>matérias</span></span>' +
+          '<span class="rep__num"><b>' + (ficha.projetos_lei || 0) + '</b><span>proj. lei</span></span>' +
+          '<span class="rep__num"><b>' + (ficha.leis_aprovadas || 0) + '</b><span>leis aprov.</span></span>' +
+        '</div>'
+      : '<p class="muted small" style="margin:0">Executivo não tem produção legislativa. A ficha usa execução orçamentária.</p>';
+
+    return '<article class="rep ' + (modificador || "") + '">' +
+      '<div class="rep__head">' +
+        '<span class="rep__ini" aria-hidden="true">' + esc(iniciais(nome)) + '</span>' +
+        '<span><span class="rep__name">' + esc(nome) + '</span>' +
+        '<span class="rep__role">' + esc(papel) + '</span></span>' +
+      '</div>' +
+      '<div class="rep__ficha">' +
+        '<span class="rep__ficha-lbl">Trabalho registrado · não recebe nota</span>' + nums +
+        (ficha && !(ficha.total > 0)
+          ? '<p class="rep__aviso">Sem matérias na janela apurada. Pode ser suplente em exercício ou titular licenciado — confira em <a href="camara.html">Câmara</a> antes de concluir.</p>'
+          : "") +
+      '</div>' +
+      '<div class="rep__nota">' +
+        '<span class="rep__nota-lbl">Opinião dos moradores</span>' +
+        '<span class="rep__nota-row">' +
+          '<span class="rep__nota-val">—</span>' +
+          '<span class="rep__nota-sub">nenhuma avaliação ainda</span>' +
+        '</span>' +
+        '<button class="rep__btn" type="button" data-nome="' + esc(nome) +
+          '" data-papel="' + esc(papel) + '" data-resumo="' + esc(resumo || "") + '">Avaliar</button>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function render(vereadores, config) {
+    var prefeito = config && config.prefeito;
+    var html = prefeito && prefeito.nome
+      ? cardRep(prefeito.nome, prefeito.papel || "Prefeito", null, "rep--prefeito")
+      : "";
+    html += vereadores.map(function (v) {
+      return cardRep(v.nome, "Vereador · 20ª legislatura", v, "");
+    }).join("");
+    repGrid.innerHTML = html ||
+      '<p class="muted">A lista de representantes está temporariamente indisponível.</p>';
+    pintaResumo();
+  }
+
+  if (repGrid) {
+    if (!window.fetch || location.protocol === "file:") {
+      render([], null);
+    } else {
+      Promise.all([
+        fetch("data/chunks/vereadores.json?v=" + Date.now(), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : []; }),
+        fetch("data/chunks/avalie_config.json?v=" + Date.now(), { cache: "no-store" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+      ])
+        .then(function (dados) {
+          var vereadores = dados[0];
+          var config = dados[1];
+          if (!config || !config.prefeito || !config.prefeito.nome ||
+              !Array.isArray(config.vereadores_excluidos)) {
+            render([], null);
+            return;
+          }
+          var fora = config.vereadores_excluidos;
+          var lista = (Array.isArray(vereadores) ? vereadores : []).filter(function (v) {
+            return fora.indexOf(v.nome) === -1;
+          });
+          lista.sort(function (a, b) { return (b.total || 0) - (a.total || 0); });
+          render(lista, config);
+        })
+        .catch(function () { render([], null); });
+    }
+  }
+
+  var CRIT_SERVICO = ["Como você avalia este serviço hoje"];
+  var CRIT_REPRESENTANTE = [
+    "Transparência",
+    "Honestidade",
+    "Atendimento à população",
+    "Cumprimento de promessas",
+    "Presença no município",
+    "Comunicação com os cidadãos",
+    "Qualidade da gestão pública"
+  ];
+
+  var modal   = document.getElementById("avalModal");
+  var mKicker = document.getElementById("avalModalKicker");
+  var mTitle  = document.getElementById("avalModalTitle");
+  var mId     = document.getElementById("avalModalId");
+  var mFicha  = document.getElementById("avalModalFicha");
+  var mCrit   = document.getElementById("avalModalCrit");
+  var mMedia  = document.getElementById("avalModalMedia");
+  var mMediaVal = document.getElementById("avalModalMediaVal");
+  var mRegiao = document.getElementById("avalModalRegiao");
+  var mObra   = document.getElementById("avalModalObra");
+  var mSend   = document.getElementById("avalModalSend");
+
+  function montarCriterios(labels) {
+    mCrit.innerHTML = labels.map(function (lbl, i) {
+      var id = "crit-" + i;
+      return '<div class="crit__row">' +
+        '<span class="crit__lbl">' + esc(lbl) + '</span>' +
+        '<span class="crit__val" id="' + id + '">7</span>' +
+        '<input type="range" min="1" max="10" step="1" value="7" data-out="' + id +
+          '" aria-label="' + esc(lbl) + '">' +
+      '</div>';
+    }).join("");
+
+    Array.prototype.forEach.call(mCrit.querySelectorAll('input[type="range"][data-out]'), function (el) {
+      el.addEventListener("input", function () {
+        var out = document.getElementById(el.dataset.out);
+        if (out) out.textContent = el.value;
+        atualizarMedia();
+      });
+    });
+    atualizarMedia();
+  }
+
+  function atualizarMedia() {
+    var vals = Array.prototype.map.call(
+      mCrit.querySelectorAll('input[type="range"]'),
+      function (el) { return Number(el.value); }
+    );
+    if (!vals.length) return;
+    var soma = vals.reduce(function (a, b) { return a + b; }, 0);
+    mMediaVal.textContent = (soma / vals.length).toFixed(1).replace(".", ",");
+  }
+
+  var ctx = null;
+  var idTokenGoogle = null;
+
+  function abrir(opts) {
+    ctx = opts;
+    mKicker.textContent = opts.kicker;
+    mTitle.textContent = opts.titulo;
+    mId.hidden = !opts.exigeIdentificacao;
+    if (opts.exigeIdentificacao) atualizaEstadoLogin();
+    if (opts.resumo) {
+      mFicha.textContent = opts.resumo;
+      mFicha.hidden = false;
+    } else {
+      mFicha.hidden = true;
+    }
+    mRegiao.hidden = !opts.pedeRegiao;
+    mObra.hidden = !opts.modoObra;
+    mSend.textContent = opts.modoObra ? "Enviar contribuição" : "Enviar avaliação";
+    mMedia.hidden = opts.criterios.length < 2;
+    montarCriterios(opts.criterios);
+    if (!opts.modoObra && !opts.exigeIdentificacao) {
+      aviso("Errou a nota? Envie novamente: o voto anterior será substituído, sem duplicar a contagem.", false);
+    } else {
+      aviso("", false);
+    }
+    if (typeof modal.showModal === "function") modal.showModal();
+    else modal.setAttribute("open", "");
+  }
+
+  document.addEventListener("click", function (ev) {
+    var svc = ev.target.closest ? ev.target.closest(".svc") : null;
+    if (svc) {
+      abrir({
+        kicker: "Serviço da cidade",
+        titulo: svc.querySelector(".svc__name").textContent,
+        criterios: CRIT_SERVICO,
+        exigeIdentificacao: false,
+        pedeRegiao: true,
+        resumo: ""
+      });
+      return;
+    }
+    var btn = ev.target.closest ? ev.target.closest(".rep__btn") : null;
+    if (btn) {
+      abrir({
+        kicker: btn.dataset.papel || "Representante",
+        titulo: btn.dataset.nome || "",
+        criterios: CRIT_REPRESENTANTE,
+        exigeIdentificacao: true,
+        pedeRegiao: false,
+        resumo: btn.dataset.resumo || ""
+      });
+      return;
+    }
+    if (ev.target.closest && ev.target.closest("#btnContribuir")) {
+      abrir({
+        kicker: "Contribuição verificável",
+        titulo: "Apontar obra ou investimento",
+        criterios: [],
+        exigeIdentificacao: false,
+        pedeRegiao: false,
+        modoObra: true,
+        resumo: ""
+      });
+    }
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key !== "Enter" && ev.key !== " ") return;
+    var svc = ev.target.closest ? ev.target.closest(".svc") : null;
+    if (!svc) return;
+    ev.preventDefault();
+    svc.click();
+  });
+
+  // ---------------------------------------------------------------- backend
+
+  var CLIENT_ID = "481086614738-g2tgkd3lj81epst2utgbc8ou0hbe72b0.apps.googleusercontent.com";
+  var mNota = document.getElementById("avalModalNota");
+  var mIdTitulo = document.getElementById("avalIdTitulo");
+  var mIdTexto = document.getElementById("avalIdTexto");
+  var btnGoogle = document.getElementById("btnGoogle");
+  var resumoAtual = null;
+
+  function atualizaEstadoLogin() {
+    var logado = !!idTokenGoogle;
+    mIdTitulo.textContent = logado ? "Você está identificado" : "Entre para avaliar";
+    mIdTexto.textContent = logado
+      ? "Uma avaliação por político. Pode mudar a nota depois, não pode votar duas vezes."
+      : "Só para prefeito e vereador. Uma conta por pessoa, uma avaliação por político, editável depois.";
+    btnGoogle.textContent = logado ? "Trocar de conta" : "Entrar com Google";
+  }
+
+  function aviso(texto, erro) {
+    mNota.textContent = texto;
+    mNota.style.color = erro ? "var(--danger)" : "var(--muted)";
+  }
+
+  function enviar(corpo) {
+    mSend.disabled = true;
+    aviso("Enviando…", false);
+    return fetch("avalie.php", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(corpo)
+    })
+      .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+      .then(function (res) {
+        mSend.disabled = false;
+        if (!res.ok || !res.d.ok) {
+          aviso(res.d.erro || "Não foi possível enviar. Tente de novo.", true);
+          return false;
+        }
+        if (res.d.resumo) { resumoAtual = res.d.resumo; pintaResumo(); }
+        aviso(res.d.mensagem || "Obrigado. Sua resposta foi registrada.", false);
+        setTimeout(function () { modal.close(); }, 1400);
+        return true;
+      })
+      .catch(function () {
+        mSend.disabled = false;
+        aviso("Sem conexão com o servidor. Tente de novo.", true);
+        return false;
+      });
+  }
+
+  function notasDoFormulario() {
+    return Array.prototype.map.call(
+      mCrit.querySelectorAll('input[type="range"]'),
+      function (el) { return Number(el.value); }
+    );
+  }
+
+  mSend.addEventListener("click", function () {
+    if (!ctx) return;
+
+    if (ctx.modoObra) {
+      var campos = mObra.querySelectorAll("select, input, textarea");
+      return enviar({
+        acao: "obra",
+        tipo: campos[0] ? campos[0].value : "",
+        local: campos[1] ? campos[1].value : "",
+        descricao: campos[2] ? campos[2].value : ""
+      });
+    }
+
+    var notas = notasDoFormulario();
+
+    if (ctx.exigeIdentificacao) {
+      if (!idTokenGoogle) {
+        aviso("Entre com sua conta Google antes de enviar.", true);
+        return;
+      }
+      var mapa = {};
+      CHAVES_CRITERIO.forEach(function (chave, i) { mapa[chave] = notas[i]; });
+      return enviar({
+        acao: "representante",
+        alvo: ctx.titulo,
+        notas: mapa,
+        id_token: idTokenGoogle
+      });
+    }
+
+    var sel = document.getElementById("avalModalRegiaoSel");
+    return enviar({
+      acao: "servico",
+      area: ctx.titulo,
+      nota: notas[0],
+      regiao: sel ? sel.value : ""
+    });
+  });
+
+  var CHAVES_CRITERIO = [
+    "transparencia", "honestidade", "atendimento",
+    "promessas", "presenca", "comunicacao", "gestao"
+  ];
+
+  btnGoogle.addEventListener("click", function () {
+    if (!window.google || !google.accounts || !google.accounts.id) {
+      aviso("O login do Google ainda está carregando. Tente em instantes.", true);
+      return;
+    }
+    google.accounts.id.initialize({
+      client_id: CLIENT_ID,
+      callback: function (resp) {
+        idTokenGoogle = resp.credential || null;
+        atualizaEstadoLogin();
+        aviso(idTokenGoogle ? "Identificado. Agora dê suas notas." : "Não foi possível entrar.", !idTokenGoogle);
+      }
+    });
+    google.accounts.id.prompt();
+  });
+
+  function pintaResumo() {
+    if (!resumoAtual) return;
+
+    var porArea = {};
+    (resumoAtual.servicos || []).forEach(function (s) { porArea[s.area] = s; });
+    Array.prototype.forEach.call(document.querySelectorAll(".svc"), function (card) {
+      var nome = card.querySelector(".svc__name").textContent;
+      var d = porArea[nome];
+      var alvo = card.querySelector(".svc__n");
+      if (!alvo) return;
+      alvo.textContent = d && d.n
+        ? d.mediana.toString().replace(".", ",") + " · " + d.n + (d.n === 1 ? " voto" : " votos")
+        : "sem avaliações";
+    });
+
+    var porAlvo = {};
+    (resumoAtual.representantes || []).forEach(function (r) { porAlvo[r.alvo] = r; });
+    Array.prototype.forEach.call(document.querySelectorAll(".rep"), function (card) {
+      var nome = card.querySelector(".rep__name").textContent;
+      var d = porAlvo[nome];
+      var val = card.querySelector(".rep__nota-val");
+      var sub = card.querySelector(".rep__nota-sub");
+      if (!val || !sub) return;
+      if (d && d.n) {
+        val.textContent = d.mediana.toString().replace(".", ",");
+        sub.textContent = d.n + (d.n === 1 ? " avaliação" : " avaliações");
+      } else {
+        val.textContent = "—";
+        sub.textContent = "nenhuma avaliação ainda";
+      }
+    });
+  }
+
+  function carregaResumo() {
+    if (!window.fetch || location.protocol === "file:") return;
+    fetch("avalie.php?acao=resumo", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { if (d) { resumoAtual = d; pintaResumo(); } })
+      .catch(function () {});
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll(".aval-switch__btn"), function (btn) {
+    btn.addEventListener("click", function () {
+      Array.prototype.forEach.call(document.querySelectorAll(".aval-switch__btn"), function (b) {
+        b.setAttribute("aria-selected", String(b === btn));
+      });
+      var alvo = document.getElementById(btn.getAttribute("aria-controls"));
+      if (alvo) alvo.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  carregaResumo();
+})();
+</script>
+<script>
+(function () {
+  var el = document.getElementById("footerAtualizado");
+  if (!el || !window.fetch || location.protocol === "file:") return;
+  fetch("data/chunks/atualizado_em.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { if (d && d.data_humana) el.textContent = d.data_humana; })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>

@@ -5,31 +5,31 @@
  *   - Detector de fragmentação (contratos suspeitos)
  *   - Comparativo entre anos por categoria
  *
- * Cada função lê window.ZELA_DATA diretamente. Só renderiza se o
+ * Cada função lê window.FISCALIZA_DATA diretamente. Só renderiza se o
  * elemento alvo existe no DOM (ignora outras páginas).
  *
- * Disponível em window.ZELA.relatorios.
+ * Disponível em window.FISCALIZA.relatorios.
  * Dependências:
- *   - window.ZELA.utils (fmtBRL, fmtNum, esc, cleanText)
- *   - window.ZELA.icon
- *   - window.ZELA.classificarItem + window.ZELA.categorias
+ *   - window.FISCALIZA.utils (fmtBRL, fmtNum, esc, cleanText)
+ *   - window.FISCALIZA.icon
+ *   - window.FISCALIZA.classificarItem + window.FISCALIZA.categorias
  *
  * Carregado pelo data-loader.js (depois dos módulos base, antes de app.js).
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
-  const u = window.ZELA.utils;
+  const u = window.FISCALIZA.utils;
   if (!u) {
-    console.error("[relatorios] window.ZELA.utils ausente. Carregue modules/utils.js primeiro.");
+    console.error("[relatorios] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
   const { fmtBRL, esc, cleanText } = u;
 
   function $(id) { return document.getElementById(id); }
   function icon(nome, opts) {
-    return (window.ZELA.icon || function () { return ""; })(nome, opts);
+    return (window.FISCALIZA.icon || function () { return ""; })(nome, opts);
   }
 
   // ============================================================
@@ -40,7 +40,7 @@
     const block = $("timelineSinaisBlock");
     if (!el || !block) return;
 
-    const D = window.ZELA_DATA || {};
+    const D = window.FISCALIZA_DATA || {};
     const pf = D.prefeitura || {};
     const eventos = [];
     const contratos = pf.contratos || [];
@@ -128,7 +128,7 @@
     const block = $("fragmentacaoBlock");
     if (!lista || !block) return;
 
-    const pf = (window.ZELA_DATA || {}).prefeitura || {};
+    const pf = (window.FISCALIZA_DATA || {}).prefeitura || {};
     const LIMITE_DISPENSA = 17600;
     const contratosFrag = (pf.contratos || []).filter(c =>
       c.data_assinatura && c.contratado &&
@@ -189,7 +189,7 @@
     const block = $("comparativoAnosBlock");
     if (!el || !block) return;
 
-    const pf = (window.ZELA_DATA || {}).prefeitura || {};
+    const pf = (window.FISCALIZA_DATA || {}).prefeitura || {};
     const contratosComp = pf.contratos || [];
     if (!contratosComp.length) return;
 
@@ -202,14 +202,14 @@
     contratosComp.forEach(c => {
       const ano = String(c.ano || "");
       if (!ano) return;
-      const cat = (window.ZELA.classificarItem || (() => null))(c) || "outros";
+      const cat = (window.FISCALIZA.classificarItem || (() => null))(c) || "outros";
       mapa[cat] = mapa[cat] || {};
       mapa[cat][ano] = (mapa[cat][ano] || 0) + (Number(c.valor) || 0);
       totaisAno[ano] = (totaisAno[ano] || 0) + (Number(c.valor) || 0);
     });
 
     const catLabel = (id) => {
-      const cat = (window.ZELA.categorias || []).find(c => c.id === id);
+      const cat = (window.FISCALIZA.categorias || []).find(c => c.id === id);
       if (cat) return `${icon(cat.iconKey, { size: 14 })} ${cat.label}`;
       return "Outros";
     };
@@ -270,7 +270,7 @@
     renderComparativoAnos();
   }
 
-  window.ZELA.relatorios = Object.freeze({
+  window.FISCALIZA.relatorios = Object.freeze({
     renderTimelineSinais,
     detectarFragmentacao,
     renderComparativoAnos,

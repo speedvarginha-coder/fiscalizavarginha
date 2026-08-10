@@ -1,7 +1,7 @@
 /* Fiscaliza Varginha - Glossario cidadao standalone para sobre.html.
    Espelho resumido de modules/glossario.js. */
-window.ZELA = window.ZELA || {};
-window.ZELA.glossario = {
+window.FISCALIZA = window.FISCALIZA || {};
+window.FISCALIZA.glossario = {
   "favorecido":        { simples: "Quem recebeu",        explica: "Pessoa ou empresa que recebeu dinheiro publico." },
   "beneficiario":      { simples: "Quem recebeu",        explica: "Entidade ou pessoa beneficiada por emenda, contrato ou repasse." },
   "credor":            { simples: "Quem recebeu",        explica: "Pessoa ou empresa a quem o poder publico deve ou ja pagou." },
@@ -28,7 +28,7 @@ window.ZELA.glossario = {
   "objeto":            { simples: "O que foi contratado", explica: "Descricao do bem, servico ou obra contratada." },
   "data_assinatura":   { simples: "Inicio do contrato",  explica: "Dia em que o contrato foi assinado." },
   "data_fim":          { simples: "Fim do contrato",     explica: "Dia em que o contrato termina." },
-  "emenda impositiva": { simples: "Emenda impositiva",   explica: "Verba que cada vereador pode destinar a entidades, obras ou servicos, com execucao obrigatoria pela Prefeitura." },
+  "emenda impositiva": { simples: "Emenda impositiva",   explica: "Verba indicada pelo vereador com execução orçamentária obrigatória, ressalvados impedimentos técnicos ou legais." },
   "cnpj":              { simples: "CNPJ",                explica: "Numero de identificacao da empresa na Receita Federal." },
   "situacao":          { simples: "Situacao",            explica: "Status atual do contrato: ativo, encerrado, suspenso etc." },
   "diaria":            { simples: "Diaria",              explica: "Valor para custear viagem oficial. Nao e salario extra; precisa de finalidade publica e prestacao de contas." },

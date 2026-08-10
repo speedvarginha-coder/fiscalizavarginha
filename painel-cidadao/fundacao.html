@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fundação Cultural · Fiscaliza Varginha</title>
+<title>Gastos da Fundação Cultural de Varginha</title>
 <meta name="description" content="Contratos, despesas, licitações, diárias, pessoal e transferências da Fundação Cultural de Varginha-MG.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/fundacao.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Fundação Cultural · Fiscaliza Varginha">
 <meta property="og:description" content="Acompanhe gastos, contratos, editais, pessoal e diárias da Fundação Cultural de Varginha-MG.">
 <meta property="og:locale"      content="pt_BR">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/fundacao.html">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Fundação Cultural · Fiscaliza Varginha">
 <meta name="twitter:description" content="Contratos, despesas e execução da Fundação Cultural de Varginha-MG.">
-<link rel="stylesheet" href="style.css?v=20260721c">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 </head>
 <body data-page="fundacao">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -42,6 +45,7 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html" class="nav__link">Pessoal</a>
+      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html" class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html" class="nav__link nav__link--cta">Como cobrar</a>
@@ -116,7 +120,7 @@
       </div>
       <div id="fundacaoContratosLista" class="contratos-list"></div>
       <div id="fundacaoContratosMais" class="loadmore" hidden>
-        <button type="button" onclick="ZELA.maisContratosFundacao()">Mostrar mais</button>
+        <button type="button" onclick="FISCALIZA.maisContratosFundacao()">Mostrar mais</button>
       </div>
     </section>
 
@@ -171,19 +175,57 @@
 
 <footer class="footer">
   <div class="container footer__inner">
-    <div>
+    <div class="footer__brand">
       <strong>Fiscaliza Varginha</strong>
-      <p>Painel cidadão independente. Dados são ponto de partida para conferência, não conclusão automática.</p>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
     </div>
-    <nav class="footer__nav" aria-label="Rodapé">
-      <a href="prefeitura.html">Prefeitura</a>
-      <a href="fundacao.html">Fundação Cultural</a>
-      <a href="camara.html">Câmara</a>
-      <a href="cobrar.html">Como cobrar</a>
-    </nav>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="monitoramento.html">Monitoramento</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="fundacao.html">Fundação Cultural</a>
+        <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
+    </div>
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260727-mobile2"></script>
+<script src="data-loader.js?v=20260730-relatorios2"></script>
 </body>
 </html>

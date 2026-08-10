@@ -4,20 +4,20 @@
  * Renderiza: filtros, stats, ranking anual/mensal por pessoa, lista detalhada.
  * Exporta: CSV das diárias filtradas. Abre dossiê de fiscalização ao clicar.
  *
- * Disponível em window.ZELA.diarias.
+ * Disponível em window.FISCALIZA.diarias.
  * Dependências:
- *   - window.ZELA.utils (norm, esc, cleanText, fmtBRL, fmtNum, jsSafe, exportCSV)
- *   - window.ZELA.dossie  (abrirFiscalizacao de diária — via window.ZELA.diarias.abrir)
+ *   - window.FISCALIZA.utils (norm, esc, cleanText, fmtBRL, fmtNum, jsSafe, exportCSV)
+ *   - window.FISCALIZA.dossie  (abrirFiscalizacao de diária — via window.FISCALIZA.diarias.abrir)
  *
  * Carregado pelo data-loader.js (depois dos módulos base, antes de app.js).
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
-  const u = window.ZELA.utils;
+  const u = window.FISCALIZA.utils;
   if (!u) {
-    console.error("[diarias] window.ZELA.utils ausente. Carregue modules/utils.js primeiro.");
+    console.error("[diarias] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
   const { norm, esc, cleanText, fmtBRL, fmtNum, jsSafe, exportCSV, siglaSecretaria } = u;
@@ -31,15 +31,15 @@
 
   // Abre dossiê de fiscalização de diária — delega para modules/dossie.js
   function abrirFiscalizacaoDiaria(prefix, idx) {
-    const lista = (window.ZELA_DIARIAS || {})[prefix] || [];
+    const lista = (window.FISCALIZA_DIARIAS || {})[prefix] || [];
     const d = lista[idx];
     if (!d) return;
-    const D = window.ZELA_DATA || {};
+    const D = window.FISCALIZA_DATA || {};
     const isPrefeitura = prefix === "Prefeitura";
     const fonte = isPrefeitura
       ? ((D.diarias || {}).fontes || {}).prefeitura
       : ((D.diarias || {}).fontes || {}).camara;
-    const dossie = window.ZELA.dossie;
+    const dossie = window.FISCALIZA.dossie;
     if (!dossie || !dossie.templateDiaria) return;
     const html = dossie.templateDiaria({ diaria: d, prefix, fonte });
     dossie.abrirComHtml(html);
@@ -94,10 +94,10 @@
     const rankingEl = $(`rankingDiarias${prefix}`);
     const listaEl = $(`listaDiarias${prefix}`);
     const contadorEl = $(`contadorDiarias${prefix}`);
-    window.ZELA_DIARIAS = window.ZELA_DIARIAS || {};
-    window.ZELA_DIARIAS[prefix] = lista;
+    window.FISCALIZA_DIARIAS = window.FISCALIZA_DIARIAS || {};
+    window.FISCALIZA_DIARIAS[prefix] = lista;
 
-    const D = window.ZELA_DATA || {};
+    const D = window.FISCALIZA_DATA || {};
     const orgPessoal = prefix === "Camara" ? (D.pessoal || {}).camara : (D.pessoal || {}).prefeitura;
     // Um servidor aparece com várias linhas (uma por mês). Para exibir o
     // SALÁRIO usa-se o mês mensal mais recente — nunca o mês de rescisão,
@@ -387,6 +387,16 @@
       const rankingMensal = rankingPorPessoaMes(f.mes ? view : baseAnual);
       const topAnual = rankingAnual[0];
       const topMensal = rankingMensal[0];
+      const periodoMaisRecente = baseAnual
+        .map(mesAnoKey)
+        .filter(Boolean)
+        .sort()
+        .at(-1) || "";
+      const registrosMaisRecentes = periodoMaisRecente
+        ? baseAnual.filter(d => mesAnoKey(d) === periodoMaisRecente)
+        : [];
+      const totalMaisRecente = registrosMaisRecentes
+        .reduce((s, d) => s + Number(d.valor_total || 0), 0);
       const periodoLabel = f.mes && f.ano ? `${MESES[Number(f.mes) - 1]} de ${f.ano}` : (f.ano ? `ano ${f.ano}` : "todos os anos");
 
       if (contadorEl) contadorEl.textContent = `${fmtNum(view.length)} registro(s) · ${fmtBRL(total)}`;
@@ -429,9 +439,14 @@
               <small>${topAnual ? esc(cleanText(topAnual.nome)) : "Sem registros no recorte anual"}</small>
             </article>
             <article>
-              <span>${f.mes ? "Recorte mensal" : "Maior mês individual"}</span>
+              <span>${f.mes ? "Recorte mensal selecionado" : "Recorde individual do ano"}</span>
               <strong>${topMensal ? fmtBRL(topMensal.valor) : fmtBRL(0)}</strong>
-              <small>${topMensal ? `${esc(cleanText(topMensal.nome))} · ${esc(topMensal.periodoRotulo)}` : "Sem mês identificado"}</small>
+              <small>${topMensal ? `${esc(cleanText(topMensal.nome))} · ocorreu em ${esc(topMensal.periodoRotulo)}` : "Sem mês identificado"}</small>
+            </article>
+            <article>
+              <span>Período mais recente na base</span>
+              <strong>${periodoMaisRecente ? esc(mesRotulo(periodoMaisRecente)) : "Não identificado"}</strong>
+              <small>${periodoMaisRecente ? `${fmtNum(registrosMaisRecentes.length)} registro(s) · ${fmtBRL(totalMaisRecente)}` : "Sem registros no recorte anual"}</small>
             </article>
           </div>
           <div class="diarias-ranking__grid">
@@ -460,7 +475,7 @@
         listaEl.innerHTML = `
           <div class="empty">
             Nenhuma diária encontrada com os filtros atuais.
-            ${fonte ? `<br><a href="${esc(fonte)}" target="_blank" rel="noopener">Abrir fonte oficial</a>` : ""}
+            ${fonte ? `<br><a href="${esc(fonte)}" target="_blank" rel="noopener">Abrir esta diária na fonte oficial</a>` : ""}
           </div>`;
         return;
       }
@@ -469,8 +484,8 @@
       listaEl.innerHTML = view.slice(0, 80).map(d => {
         const funcao = funcaoDiaria(d);
         const vinculo = vinculoDiaria(d);
-        const seloConfianca = window.ZELA.dataTrustSeal
-          ? window.ZELA.dataTrustSeal("diaria", {
+        const seloConfianca = window.FISCALIZA.dataTrustSeal
+          ? window.FISCALIZA.dataTrustSeal("diaria", {
               fonte: isPrefeitura ? "despesas/diarias da Prefeitura" : "diarias da Camara",
               escopo: isPrefeitura ? "registro contabil classificado" : "diaria individual estruturada",
               risco: isPrefeitura ? "pode nao ser uma viagem individual" : "nao comprova resultado publico da viagem",
@@ -485,7 +500,7 @@
             <span>${isPrefeitura ? "1 registro/empenho" : `${fmtNum(d.quantidade || 0)} diária(s)`} · ${fmtBRL(d.valor_unitario || 0)} ${isPrefeitura ? "no registro" : "cada"}</span>
           </div>
           <div class="diaria-card__body">
-            <h4>${esc(cleanText(d.funcionario || "Funcionário não informado"))}</h4>
+            <h4><span class="diaria-card__person-label">Pessoa beneficiária</span>${esc(cleanText(d.funcionario || "Nome não informado pela fonte"))}</h4>
             <div class="diaria-card__role">
               <strong>Função/cargo:</strong> ${esc(cleanText(funcao.texto))}
               <small>${esc(cleanText(funcao.detalhe))}</small>
@@ -500,8 +515,8 @@
             </div>
             ${seloConfianca}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
-              <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(d.funcionario)}', '${jsSafe(d.finalidade || d.historico)}', '${fmtBRL(d.valor_total)} (${fmtNum(d.quantidade)} dias)')" style="padding: 4px 8px; background: #0b5f3a; color: white; border: none; border-radius: 4px; font-size: 0.75em; cursor: pointer;">Compartilhar</button>
-              <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/diarias" target="_blank" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 4px 8px; background: #eee; border-radius: 4px; color: #333; font-size: 0.75em; font-weight: 500; border: 1px solid #ccc; display: inline-block;">Fonte oficial</a>
+              <button class="btn-share" onclick="FISCALIZA.compartilharZap('${jsSafe(d.funcionario)}', '${jsSafe(d.finalidade || d.historico)}', '${fmtBRL(d.valor_total)} (${fmtNum(d.quantidade)} dias)')" style="padding: 4px 8px; background: #0b5f3a; color: white; border: none; border-radius: 4px; font-size: 0.75em; cursor: pointer;">Compartilhar</button>
+              <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/diarias" target="_blank" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 4px 8px; background: #eee; border-radius: 4px; color: #333; font-size: 0.75em; font-weight: 500; border: 1px solid #ccc; display: inline-block;">Abrir esta diária na fonte oficial</a>
               <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/diarias" target="_blank" title="Portal Betha — alternativa quando o portal oficial estiver fora do ar" style="text-decoration:none; padding: 4px 8px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.75em; font-weight: 500; border: 1px solid #90caf9; display: inline-block;">Portal Betha</a>
             </div>
           </div>
@@ -581,7 +596,7 @@
     }
   }
 
-  window.ZELA.diarias = Object.freeze({
+  window.FISCALIZA.diarias = Object.freeze({
     init,
     abrirFiscalizacaoDiaria,
   });

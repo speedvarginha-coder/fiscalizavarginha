@@ -4,9 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Monitoramento das coletas | Fiscaliza Varginha</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Monitoramento técnico das fontes e das coletas de dados do Fiscaliza Varginha." />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://fiscalizavarginha.com.br/monitoramento.html" />
+  <link rel="stylesheet" href="style.css?v=20260730-relatorios2" />
   <style>
-    .monitor-wrap{max-width:1100px;margin:0 auto;padding:36px 18px}.monitor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.monitor-card{background:#fff;border:1px solid #d8e0e7;border-radius:12px;padding:16px}.monitor-card h2{margin:0 0 6px;font-size:1rem}.monitor-card p{margin:6px 0;color:#4b5563}.monitor-table{width:100%;border-collapse:collapse;background:#fff}.monitor-table th,.monitor-table td{padding:12px;border-bottom:1px solid #e5e7eb;text-align:left}.status{display:inline-block;border-radius:999px;padding:3px 8px;font-size:.8rem;font-weight:700}.status-ok{background:#dcfce7;color:#166534}.status-partial,.status-manual,.status-preserved{background:#fef3c7;color:#92400e}.status-failed{background:#fee2e2;color:#991b1b}.status-unknown{background:#e5e7eb;color:#374151}.muted{color:#6b7280}
+    .monitor-wrap{max-width:1100px;margin:0 auto;padding:36px 18px}
+    .monitor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .monitor-card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+    .monitor-card h2{margin:0 0 6px;font-size:1rem;color:var(--ink)}
+    .monitor-card p{margin:6px 0;color:var(--muted)}
+    .monitor-table{width:100%;border-collapse:collapse;background:var(--surface);color:var(--ink)}
+    .monitor-table th,.monitor-table td{padding:12px;border-bottom:1px solid var(--line);text-align:left}
+    .status{display:inline-block;border-radius:999px;padding:3px 8px;font-size:.8rem;font-weight:700}
+    .status-ok{background:var(--success-bg);color:var(--success-dk)}
+    .status-partial,.status-manual,.status-preserved{background:var(--warn-bg);color:var(--warn-ink)}
+    .status-failed{background:var(--danger-bg);color:var(--danger-ink)}
+    .status-unknown{background:var(--surface-2);color:var(--muted)}
+    .muted{color:var(--muted)}
+    @media (max-width:600px){
+      .monitor-wrap{padding:24px 14px}
+      .monitor-table{min-width:720px}
+    }
   </style>
 </head>
 <body>
@@ -24,13 +43,76 @@
     const formatDate = (value) => value ? new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" }).format(new Date(value)) : "Não informada";
     fetch("data/chunks/monitoramento_coletas.json", { cache: "no-store" }).then((response) => response.json()).then((data) => {
       const run = data.last_completed_run;
+      const deployment = data.last_verified_deployment;
       document.querySelector("#summary").innerHTML = [
-        ["Última coleta concluída", run ? text(run.coleta) : "Sem registro"],
-        ["Último deploy", run ? text(run.deploy) : "Sem registro"],
+        ["Última coleta concluída", run ? `${text(run.coleta)} · ${formatDate(run.finished_at)}` : "Sem registro"],
+        ["Publicação verificada", deployment ? `${text(deployment.status)} · ${formatDate(deployment.checked_at)}` : "Sem registro"],
         ["Fontes em alerta", (data.summary.by_status.partial || 0) + (data.summary.by_status.failed || 0)],
       ].map(([title, value]) => `<article class="monitor-card"><h2>${safe(title)}</h2><p>${safe(value)}</p></article>`).join("");
       document.querySelector("#sources").innerHTML = data.sources.map((source) => `<tr><td>${safe(source.label)}</td><td><span class="status status-${safe(source.status)}">${safe(source.status)}</span></td><td>${safe(formatDate(source.source_updated_at))}</td><td>${safe(source.reason)}</td></tr>`).join("");
     }).catch(() => { document.querySelector("#summary").textContent = "Não foi possível carregar o monitoramento."; });
   </script>
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
+    </div>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="index.html">Início</a>
+        <a href="atualizacoes.html">Atualizações</a>
+        <a href="monitoramento.html">Monitoramento</a>
+        <a href="prefeitura.html">Prefeitura</a>
+        <a href="fundacao.html">Fundação Cultural</a>
+        <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function () {
+  var el = document.getElementById("footerAtualizado");
+  if (!el || !window.fetch || location.protocol === "file:") return;
+  fetch("data/chunks/atualizado_em.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { if (d && d.data_humana) el.textContent = d.data_humana; })
+    .catch(function () {});
+})();
+</script>
 </body>
 </html>

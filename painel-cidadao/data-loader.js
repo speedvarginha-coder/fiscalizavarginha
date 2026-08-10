@@ -2,7 +2,7 @@
  *
  * Substitui o data.js monolítico (~9 MB) por chunks JSON carregados sob demanda.
  * Cada HTML especifica os chunks que precisa via <body data-chunks="a,b,c">.
- * Os chunks são fetchados em paralelo, montados em window.ZELA_DATA e o app.js
+ * Os chunks são fetchados em paralelo, montados em window.FISCALIZA_DATA e o app.js
  * é carregado depois — mantendo retrocompatibilidade total.
  *
  * Fallback: se algum chunk falha (ou rodando em file:// sem servidor),
@@ -14,23 +14,23 @@
   // ============ CHUNKS POR PÁGINA ============
   // Mapeia data-page → chunks necessários. Body também pode sobrescrever via data-chunks.
   const CHUNKS_POR_PAGINA = {
-    "home":         ["home_resumo", "resumo", "atualizado_em", "auditoria_dados", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
-    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados"],
-    "fundacao":     ["fundacao_cultural", "atualizado_em", "auditoria_dados", "diario", "prefeitura", "camara_betha"],
-    "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados"],
+    "home":         ["home_resumo", "resumo", "atualizado_em", "auditoria_dados", "status_fontes", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
+    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "status_fontes"],
+    "fundacao":     ["fundacao_cultural", "atualizado_em", "auditoria_dados", "status_fontes", "diario", "prefeitura", "camara_betha"],
+    "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados", "status_fontes"],
     // "receitas" removido: o chunk mistura arrecadação acumulada de vários anos
     // (ISSQN R$ 2,1 bi vs orçado 379M) e nada na página o renderiza — não publicar
     // até a coleta filtrar o exercício corrente.
-    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "pessoal"],
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "status_fontes", "pessoal"],
     "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
-    "atualizacoes": ["atualizacoes", "prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
+    "atualizacoes": ["prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
     "sobre":        ["atualizado_em", "auditoria_dados"],
     "cobrar":       ["prefeitura", "camara_betha", "emendas", "pncp", "sancoes_fornecedores", "diario", "pessoal", "remuneracao_vereadores", "atualizado_em", "auditoria_dados"],
   };
 
   // Chunks pesados adiados para 2ª fase por página: carregam APÓS app.js renderizar
-  // app.js escuta "zela:chunk" e re-renderiza as seções afetadas
+  // app.js escuta "fiscaliza:chunk" e re-renderiza as seções afetadas
   const CHUNKS_FASE2 = {
     "home": ["prefeitura"],  // 4.4 MB — home usa só resumo; prefeitura.json chega depois
     "fundacao": ["prefeitura", "camara_betha"],  // p/ cruzar fornecedores entre esferas (chegam após o render)
@@ -44,7 +44,7 @@
   };
 
   // ============ MÓDULOS DE CÓDIGO ============
-  // Carregados em ordem, ANTES de app.js. app.js destrutura window.ZELA.utils etc.
+  // Carregados em ordem, ANTES de app.js. app.js destrutura window.FISCALIZA.utils etc.
   const MODULOS = [
     "modules/utils.js",
     "modules/icons.js",
@@ -114,7 +114,7 @@
 
   // Versão estável: Date.now() obrigava o celular a baixar novamente todos os
   // scripts e chunks em cada visita. A versão muda apenas quando há deploy.
-  const BUILD_VERSION = "20260727-mobile2";
+  const BUILD_VERSION = "20260730-pipeline1";
   const body = document.body;
   const page = (body && body.dataset.page) || "home";
   const modulosPagina = MODULOS_POR_PAGINA[page] || MODULOS;
@@ -167,27 +167,27 @@
   }
 
   function carregarChunkSobDemanda(key) {
-    if (!chunksSobDemanda.has(key)) return Promise.resolve(window.ZELA_DATA?.[key]);
-    if (window.ZELA_DATA && window.ZELA_DATA[key] != null) {
-      return Promise.resolve(window.ZELA_DATA[key]);
+    if (!chunksSobDemanda.has(key)) return Promise.resolve(window.FISCALIZA_DATA?.[key]);
+    if (window.FISCALIZA_DATA && window.FISCALIZA_DATA[key] != null) {
+      return Promise.resolve(window.FISCALIZA_DATA[key]);
     }
     if (cargasEmAndamento.has(key)) return cargasEmAndamento.get(key);
 
-    window.dispatchEvent(new CustomEvent("zela:chunk:start", { detail: { key, page } }));
+    window.dispatchEvent(new CustomEvent("fiscaliza:chunk:start", { detail: { key, page } }));
     document.body?.setAttribute("data-chunk-loading", key);
     const carga = fetchChunk(key)
       .then(({ data }) => {
-        window.ZELA_DATA = window.ZELA_DATA || {};
-        window.ZELA_DATA[key] = data;
+        window.FISCALIZA_DATA = window.FISCALIZA_DATA || {};
+        window.FISCALIZA_DATA[key] = data;
         document.body?.removeAttribute("data-chunk-loading");
         document.body?.setAttribute(`data-chunk-${key}`, "ready");
-        window.dispatchEvent(new CustomEvent("zela:chunk", { detail: { key, page, demand: true } }));
+        window.dispatchEvent(new CustomEvent("fiscaliza:chunk", { detail: { key, page, demand: true } }));
         return data;
       })
       .catch((error) => {
         document.body?.removeAttribute("data-chunk-loading");
         document.body?.setAttribute(`data-chunk-${key}`, "error");
-        window.dispatchEvent(new CustomEvent("zela:chunk:error", { detail: { key, page, error } }));
+        window.dispatchEvent(new CustomEvent("fiscaliza:chunk:error", { detail: { key, page, error } }));
         throw error;
       })
       .finally(() => cargasEmAndamento.delete(key));
@@ -196,10 +196,10 @@
     return carga;
   }
 
-  window.ZELA_DATA_LOADER = Object.freeze({
+  window.FISCALIZA_DATA_LOADER = Object.freeze({
     load: carregarChunkSobDemanda,
     isDeferred: (key) => chunksSobDemanda.has(key),
-    isLoaded: (key) => Boolean(window.ZELA_DATA && window.ZELA_DATA[key] != null),
+    isLoaded: (key) => Boolean(window.FISCALIZA_DATA && window.FISCALIZA_DATA[key] != null),
   });
 
   function prepararGatilhosSobDemanda() {
@@ -244,7 +244,7 @@
 
   // ============ MAIN ============
   async function carregar() {
-    window.ZELA_DATA = window.ZELA_DATA || {};
+    window.FISCALIZA_DATA = window.FISCALIZA_DATA || {};
 
     // Insere todos em ordem de uma vez: downloads paralelos, execução ordenada
     // por async=false em loadScript().
@@ -268,7 +268,7 @@
         await carregarModulos();
         await loadScript("app.js");
       } catch (e) { /* sobre.html tem seu próprio script */ }
-      window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks: [] } }));
+      window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { chunks: [] } }));
       return;
     }
 
@@ -278,7 +278,7 @@
         await loadScript("data.js");
         await carregarModulos();
         await loadScript("app.js");
-        window.dispatchEvent(new CustomEvent("zela:ready", { detail: { fallback: true } }));
+        window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { fallback: true } }));
       } catch (e) {
         console.error("[data-loader] falha em fallback file://:", e);
       }
@@ -293,11 +293,11 @@
       const chunksFase2 = chunks.filter(k => fase2Keys.has(k) && !chunksSobDemanda.has(k));
 
       const resultados = await Promise.all(chunksFase1.map(fetchChunk));
-      resultados.forEach(({ key, data }) => { window.ZELA_DATA[key] = data; });
+      resultados.forEach(({ key, data }) => { window.FISCALIZA_DATA[key] = data; });
 
       await carregarModulos();
       await loadScript("app.js");
-      window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks } }));
+      window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { chunks } }));
       carregarModulosAdiados();
 
       // Fase 2: chunks pesados carregam em background sem bloquear o render inicial
@@ -305,8 +305,8 @@
         Promise.allSettled(chunksFase2.map(fetchChunk)).then(results => {
           results.forEach(r => {
             if (r.status === "fulfilled" && r.value && r.value.data !== null) {
-              window.ZELA_DATA[r.value.key] = r.value.data;
-              window.dispatchEvent(new CustomEvent("zela:chunk", { detail: { key: r.value.key } }));
+              window.FISCALIZA_DATA[r.value.key] = r.value.data;
+              window.dispatchEvent(new CustomEvent("fiscaliza:chunk", { detail: { key: r.value.key } }));
             }
           });
         });
@@ -317,7 +317,7 @@
         await loadScript("data.js");
         await carregarModulos();
         await loadScript("app.js");
-        window.dispatchEvent(new CustomEvent("zela:ready", { detail: { fallback: true } }));
+        window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { fallback: true } }));
       } catch (err2) {
         console.error("[data-loader] falha total ao carregar dados:", err2);
         removerOverlay();

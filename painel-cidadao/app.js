@@ -10,24 +10,24 @@
   // ============================================================
   // SHIMS DEFENSIVOS — toleram módulo ausente (cache antigo, fetch falho, etc.)
   // App continua funcionando mesmo se algum module.js não carregou,
-  // só sem o recurso específico. Evita TypeError fatal por window.ZELA.X.
+  // só sem o recurso específico. Evita TypeError fatal por window.FISCALIZA.X.
   // ============================================================
-  window.ZELA = window.ZELA || {};
-  if (!window.ZELA.icon) window.ZELA.icon = function () { return ""; };
-  if (!window.ZELA.simplificarTermo) window.ZELA.simplificarTermo = function (t) { return t; };
-  if (!window.ZELA.termoCidadao) window.ZELA.termoCidadao = function (t) { return String(t || ""); };
-  if (!window.ZELA.classificarItem) window.ZELA.classificarItem = function () { return null; };
-  if (!window.ZELA.categorias) window.ZELA.categorias = [];
-  if (!window.ZELA.watchlist) {
-    window.ZELA.watchlist = {
+  window.FISCALIZA = window.FISCALIZA || {};
+  if (!window.FISCALIZA.icon) window.FISCALIZA.icon = function () { return ""; };
+  if (!window.FISCALIZA.simplificarTermo) window.FISCALIZA.simplificarTermo = function (t) { return t; };
+  if (!window.FISCALIZA.termoCidadao) window.FISCALIZA.termoCidadao = function (t) { return String(t || ""); };
+  if (!window.FISCALIZA.classificarItem) window.FISCALIZA.classificarItem = function () { return null; };
+  if (!window.FISCALIZA.categorias) window.FISCALIZA.categorias = [];
+  if (!window.FISCALIZA.watchlist) {
+    window.FISCALIZA.watchlist = {
       obter: function () { return { contratos: [], emendas: [] }; },
       has:    function () { return false; },
       toggle: function () { return false; },
       botao:  function () { return ""; },
     };
   }
-  if (!window.ZELA.dossie) {
-    window.ZELA.dossie = {
+  if (!window.FISCALIZA.dossie) {
+    window.FISCALIZA.dossie = {
       criarModal:       function () { return null; },
       abrirComHtml:     function () { alert("Módulo de dossiê não carregou."); },
       templateEmenda:   function () { return ""; },
@@ -36,30 +36,30 @@
       gerarTxtContrato: function () { alert("Módulo de dossiê não carregou."); },
     };
   }
-  if (!window.ZELA.dashboard) {
-    window.ZELA.dashboard = {
+  if (!window.FISCALIZA.dashboard) {
+    window.FISCALIZA.dashboard = {
       renderPlacarPrefeitura:     function () {},
       renderCategoriasPrefeitura: function () {},
       renderPlacarCamara:         function () {},
       renderCategoriasCamara:     function () {},
     };
   }
-  if (!window.ZELA.relatorios) {
-    window.ZELA.relatorios = {
+  if (!window.FISCALIZA.relatorios) {
+    window.FISCALIZA.relatorios = {
       renderTimelineSinais:  function () {},
       detectarFragmentacao:  function () {},
       renderComparativoAnos: function () {},
       renderTodos:           function () {},
     };
   }
-  if (!window.ZELA.diarias) {
-    window.ZELA.diarias = {
+  if (!window.FISCALIZA.diarias) {
+    window.FISCALIZA.diarias = {
       init:                    function () {},
       abrirFiscalizacaoDiaria: function () {},
     };
   }
-  if (!window.ZELA.atualizacoes) {
-    window.ZELA.atualizacoes = {
+  if (!window.FISCALIZA.atualizacoes) {
+    window.FISCALIZA.atualizacoes = {
       init:          function () {},
       render:        function () {},
       copiarLAI:     function () {},
@@ -67,7 +67,7 @@
     };
   }
   // utils.js é crítico — sem ele, app.js não funciona (destructuring abaixo)
-  if (!window.ZELA.utils) {
+  if (!window.FISCALIZA.utils) {
     console.error("[app.js] CRÍTICO: modules/utils.js não carregou. Mostrando erro ao usuário.");
     document.body.innerHTML =
       '<div style="padding:60px;text-align:center;font-family:sans-serif;">' +
@@ -78,7 +78,7 @@
     return;
   }
 
-  if (!window.ZELA_DATA) {
+  if (!window.FISCALIZA_DATA) {
     document.body.innerHTML =
       '<div style="padding:60px;text-align:center;font-family:sans-serif;">' +
       '<h2>Dados não carregados</h2>' +
@@ -86,14 +86,14 @@
     return;
   }
 
-  const D    = window.ZELA_DATA;
+  const D    = window.FISCALIZA_DATA;
   const pf   = D.prefeitura || D.home_resumo || {};
   const PAGE = document.body.dataset.page || "hub";
   const $    = (id) => document.getElementById(id);
 
   // ============= UTILS (extraídos para modules/utils.js) =============
-  // Aliases locais para retrocompatibilidade. Definições reais em window.ZELA.utils.
-  const { fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, exportCSV } = window.ZELA.utils;
+  // Aliases locais para retrocompatibilidade. Definições reais em window.FISCALIZA.utils.
+  const { fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, exportCSV } = window.FISCALIZA.utils;
 
 
 
@@ -219,23 +219,23 @@
       </div>
     </div>`;
   };
-  window.ZELA.dataTrustSeal = dataTrustSeal;
+  window.FISCALIZA.dataTrustSeal = dataTrustSeal;
 
   // Helper público para gerar carimbo "coletado há X dias"
-  window.ZELA.carimboColeta = function () {
+  window.FISCALIZA.carimboColeta = function () {
     if (!upd.iso) return "";
     const dias = Math.floor((Date.now() - new Date(upd.iso).getTime()) / 86_400_000);
     let texto, cls;
     if (dias <= 7)       { texto = dias === 0 ? "Coletado hoje" : `Há ${dias}d`;          cls = "fresh"; }
     else if (dias <= 21) { texto = `Há ${dias} dias`;                                    cls = "okay";  }
     else                 { texto = `Há ${dias}d · pode estar desatualizado`;             cls = "stale"; }
-    return `<span class="carimbo-coleta carimbo-coleta--${cls}" title="Última coleta: ${esc(cleanText(upd.data_humana || ""))}">${window.ZELA.icon ? window.ZELA.icon("sinal", { size: 13 }) : ""} ${texto}</span>`;
+    return `<span class="carimbo-coleta carimbo-coleta--${cls}" title="Última coleta: ${esc(cleanText(upd.data_humana || ""))}">${window.FISCALIZA.icon ? window.FISCALIZA.icon("sinal", { size: 13 }) : ""} ${texto}</span>`;
   };
   // Carimbo de frescor no cabeçalho de toda página
   if ($("atualizado")) {
     if (upd.data_humana) {
       $("atualizado").innerHTML =
-        "Dados atualizados em " + esc(cleanText(upd.data_humana)) + " " + window.ZELA.carimboColeta();
+        "Dados atualizados em " + esc(cleanText(upd.data_humana)) + " " + window.FISCALIZA.carimboColeta();
     } else {
       $("atualizado").textContent = "";
     }
@@ -545,7 +545,6 @@
         ...cat,
         qtd: baseCamara.filter(item => combina(item, cat.termos)).length,
       })).filter(cat => cat.qtd > 0);
-
       box.innerHTML = `
         <div class="keyword-audit__head">
           <div>
@@ -731,7 +730,7 @@
         </div>
         ${itens.length ? `<div class="detail-stack detail-stack--list">
           <section><h4>Itens relacionados em ${anoCamara()}</h4>
-            ${itens.map(m => window.ZELA.materiaCard ? window.ZELA.materiaCard(m, esc) : `<article class="matter-mini">
+            ${itens.map(m => window.FISCALIZA.materiaCard ? window.FISCALIZA.materiaCard(m, esc) : `<article class="matter-mini">
               <strong>${esc(m.tipo)} nº ${esc(m.numero)}/${esc(m.ano)}</strong>
               <p>${esc(m.ementa || "Ementa não informada")}</p>
               ${m.impacto_zero ? `<span>Impacto zero: ${esc(m.motivo_impacto_zero || "classificação simbolica")}</span>` : ""}
@@ -943,8 +942,8 @@
                          : "Simbólicos / administrativos";
           html += '<h4 class="resumo-semanal__grau-titulo resumo-semanal__grau-titulo--' + grauAtual + '">' + tituloGrau + '</h4>';
         }
-        if (window.ZELA.materiaCard) {
-          html += window.ZELA.materiaCard(m, esc);
+        if (window.FISCALIZA.materiaCard) {
+          html += window.FISCALIZA.materiaCard(m, esc);
         } else {
           html += '<article class="mat-card"><span class="mat-ementa">' + esc(m.ementa || "") + '</span></article>';
         }
@@ -1070,7 +1069,7 @@
     const badge = (status) =>
         status === "encontrado" ? confidenceBadge("forte")
       : status === "execucao_direta" ? '<span class="em__status em__status--direct" style="background:#e0f2f1; color:#00695c; border:1px solid #b2dfdb; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:500;">Execução direta</span>'
-      : status === "sem_pagamento" ? '<span class="em__status em__status--no">Sem pagamento detectado</span>'
+      : status === "sem_pagamento" ? '<span class="em__status em__status--no">Sem pagamento localizado no cruzamento automático</span>'
       : status === "sem_cnpj" ? '<span class="em__status em__status--unknown">Sem CNPJ para cruzar</span>'
       : confidenceBadge("neutro");
 
@@ -1220,7 +1219,7 @@
             <h4>${esc(v.nome)}</h4>
             <p>${fmtNum(v.total)} matérias em ${ano} · ${fmtNum(v.indicacoes)} indicações · ${fmtNum(v.requerimentos)} requerimentos · ${fmtNum(v.projetos_lei)} projetos de lei · ${fmtNum(v.mocoes || 0)} moções/homenagens · ${fmtNum(v.impacto_zero || 0)} itens de impacto zero · posição ${rankingTotal || "-"} por volume de produção</p>
           </div>
-          <button type="button" onclick="ZELA.limparVereador()">Limpar filtro</button>
+          <button type="button" onclick="FISCALIZA.limparVereador()">Limpar filtro</button>
         </div>
         <div class="ver-profile__stats">
           <div><strong>${fmtNum(lista.length)}</strong><span>emendas localizadas</span></div>
@@ -1353,7 +1352,7 @@
             <h4>${esc(nome)}</h4>
             <p>${esc(cnpj || "CNPJ não informado")} · ${fmtNum(autores.length)} vereador${autores.length === 1 ? "" : "es"} destinaram emenda</p>
           </div>
-          <button type="button" onclick="ZELA.limparEntidade()">Limpar entidade</button>
+          <button type="button" onclick="FISCALIZA.limparEntidade()">Limpar entidade</button>
         </div>
         <div class="entity-profile__stats">
           <div><strong>${fmtNum(grupo.qtd)}</strong><span>emendas recebidas</span></div>
@@ -1398,17 +1397,17 @@
     const abrirFiscalizacao = (idx) => {
       const e = camEmendas()[idx];
       if (!e) return;
-      const html = window.ZELA.dossie.templateEmenda({
+      const html = window.FISCALIZA.dossie.templateEmenda({
         emenda: e,
         cruz: cruzMap[e.numero + "/" + e.ano] || {},
         contratos: encontrarContratosCnpj(e.cnpj),
         cnpjInfo: encontrarCnpjInfo(e.cnpj),
       });
-      window.ZELA.dossie.abrirComHtml(html);
+      window.FISCALIZA.dossie.abrirComHtml(html);
     };
 
     let categoriaAtivaEmendas = "";
-    window.ZELA.filtrarEmendasPorCategoria = (cat) => {
+    window.FISCALIZA.filtrarEmendasPorCategoria = (cat) => {
       categoriaAtivaEmendas = cat || "";
       renderEmendas(true);
     };
@@ -1426,7 +1425,7 @@
       const emendasAno = emendasPorAnoSelecionado();
       emendasView = emendasAno.filter(e => {
         if (categoriaAtivaEmendas) {
-          if (window.ZELA.classificarItem(e) !== categoriaAtivaEmendas) return false;
+          if (window.FISCALIZA.classificarItem(e) !== categoriaAtivaEmendas) return false;
         }
         if (vereadorAtivo) {
           if (!autoresInclui(e.autor, vereadorAtivo.nome) && !norm(e.autor).includes(verNorm)) return false;
@@ -1474,7 +1473,7 @@
               <strong>Sem base completa de emendas impositivas em ${anoFiltro}.</strong><br>
               O SAPL tem ${fmtNum(emendasLegislativas)} emenda${emendasLegislativas === 1 ? "" : "s"} legislativa${emendasLegislativas === 1 ? "" : "s"} em ${anoFiltro}, mas elas são alterações de texto de projetos, não uma lista de destinação direta de dinheiro para ONG/entidade.
               <br>Para cruzar pagamento com execução, ainda faltam entidade, CNPJ, valor e objeto. Próxima checagem: LOA ${anoFiltro}, anexos orçamentários, formulário oficial de solicitação, decreto regulamentador e publicações da Prefeitura/Câmara.
-              <br><button type="button" class="link-button" onclick="document.getElementById('filtroAnoEmendas').value='2025'; ZELA.filtrarEmendasAno('2025')">Ver emendas estruturadas de 2025</button>
+              <br><button type="button" class="link-button" onclick="document.getElementById('filtroAnoEmendas').value='2025'; FISCALIZA.filtrarEmendasAno('2025')">Ver emendas estruturadas de 2025</button>
             </div>`
           : `<div class="empty">
               Nenhuma emenda impositiva encontrada${anoFiltro ? " em " + anoFiltro : ""}.
@@ -1507,7 +1506,7 @@
           <div class="em__valor">
             ${fmtBRL(e.valor_brl)}
             ${e.valor_brl >= 1000 ? `<div class="percapita-mini" style="font-size: 0.72em; color: var(--muted); margin-top: 4px;" title="Este valor de emenda dividido por cada morador de Varginha">≈ ${fmtBRL(e.valor_brl / 135159)} por morador</div>` : ''}
-            <div style="margin-top:8px;">${window.ZELA.watchlist.botao("emendas", idEmenda)}</div>
+            <div style="margin-top:8px;">${window.FISCALIZA.watchlist.botao("emendas", idEmenda)}</div>
           </div>
           <div class="em__body">
             <p class="em__benef">
@@ -1647,7 +1646,7 @@
         $("emendasAtencaoBlock").innerHTML = `
           <div class="atencao-emendas">
             <div class="atencao-emendas__head">
-              ${window.ZELA.icon ? window.ZELA.icon("alerta", { size: 16 }) : ""} Emendas comprometidas sem pagamento comprovado
+              ${window.FISCALIZA.icon ? window.FISCALIZA.icon("alerta", { size: 16 }) : ""} Emendas sem pagamento localizado no cruzamento automático
             </div>
             <p style="margin:0 0 10px; font-size:.88rem; color:#5d4037;">
               Valor total destinado por vereadores que <strong>não tem pagamento localizado</strong> no Portal de Transparência da Prefeitura.
@@ -1672,7 +1671,7 @@
                 Ver lista filtrada
               </button>
               <a class="atencao-emendas__cta" href="cobrar.html#templates-emenda" style="background:#6d3800;">
-                ${window.ZELA.icon ? window.ZELA.icon("anexo", { size: 16 }) : ""} Protocolar LAI sobre execução
+                ${window.FISCALIZA.icon ? window.FISCALIZA.icon("anexo", { size: 16 }) : ""} Protocolar LAI sobre execução
               </a>
             </div>
           </div>`;
@@ -1739,7 +1738,7 @@
       <div class="cruz-cell">
         <div class="cruz-cell__num" style="color:#8C3B1A">${cs.sem_pagamento}</div>
         <div class="cruz-cell__pct">${pct(cs.sem_pagamento)}</div>
-        <div class="cruz-cell__lbl">Nenhum pagamento ao CNPJ<br><span class="confidence-badge confidence--clue">Pedir comprovante</span></div>
+        <div class="cruz-cell__lbl">Pagamento não localizado para o CNPJ no cruzamento automático<br><span class="confidence-badge confidence--clue">Pedir comprovante</span></div>
       </div>
       <div class="cruz-cell">
         <div class="cruz-cell__num" style="color:#666">${cs.sem_cnpj}</div>
@@ -1894,8 +1893,8 @@
       .forEach(c => addSignal(
         "Contratos",
         "medio",
-        `Custo diário elevado: ${esc(c.contratado)}`,
-        `O contrato ${c.numero}/${c.ano} tem um custo estimado de ${fmtBRL(c.custo_diario)} por dia de vigência. Objeto: ${esc(cleanText(c.objeto))}`,
+        `Valor contratado por dia de vigência: ${esc(c.contratado)}`,
+        `A divisão simples do valor total do contrato ${c.numero}/${c.ano} pelos dias de vigência resulta em ${fmtBRL(c.custo_diario)}. Isso não representa gasto ou pagamento diário efetivo. Objeto: ${esc(cleanText(c.objeto))}`,
         `${fmtBRL(c.valor)} total · ${c.data_assinatura} a ${c.data_fim}`,
         null
       ));
@@ -2425,6 +2424,9 @@
       return "Educação - outros";
     };
 
+    const FUNDEB_2026_PREVISAO_OFICIAL = 104_771_249.39;
+    const FUNDEB_2026_FONTE_OFICIAL = "https://www.gov.br/fnde/pt-br/acesso-a-informacao/acoes-e-programas/financiamento/fundeb/2026-1/publicacoes-2026/2-publicacao/1-receita-total-do-fundeb-por-ente-federado.pdf";
+
     if ($("fundebResumo") || $("fundebInvestimentos")) {
       const itensEducacao = [
         ...contratos.map(c => ({ ...c, origem: "Contrato Prefeitura", valor_analise: c.valor || 0 })),
@@ -2434,14 +2436,13 @@
       ].map(item => ({ ...item, categoriaEducacao: classificaEducacao(item) }))
        .filter(item => item.categoriaEducacao);
 
-      const totalEducacao = itensEducacao.reduce((s, item) => s + (item.valor_analise || 0), 0);
       const comFundeb = itensEducacao.filter(item => /fundeb/i.test([item.objeto, item.entidade].join(" ")));
       const escolasDireto = itensEducacao.filter(item => /escola|creche|cemei|educacao|ensino|aluno/i.test([item.objeto, item.entidade].join(" ")));
       const categoriasEducacao = agruparRelatorio(itensEducacao, item => item.categoriaEducacao, item => item.valor_analise || 0);
 
       if ($("fundebResumo")) {
         $("fundebResumo").innerHTML = [
-          { cls: "stat--teal", v: fmtBRL(totalEducacao), l: "Valor ligado a educação", s: `${fmtNum(itensEducacao.length)} registros mapeados` },
+          { cls: "stat--teal", v: fmtBRL(FUNDEB_2026_PREVISAO_OFICIAL), l: "Receita do FUNDEB prevista para 2026", s: "2ª publicação oficial do FNDE · Portaria MEC/MF nº 6" },
           { cls: "stat--gold", v: fmtNum(comFundeb.length), l: "FUNDEB citado no texto", s: "Exige conferência na fonte contábil" },
           { cls: "stat--navy", v: fmtNum(escolasDireto.length), l: "Escola/creche/aluno citados", s: "Indício de aplicação direta" },
           { cls: "stat--gold", v: fmtNum(categoriasEducacao.length), l: "Categorias de gasto", s: "Obra, merenda, transporte, material etc." },
@@ -2459,6 +2460,15 @@
           .sort((a, b) => (b.valor_analise || 0) - (a.valor_analise || 0))
           .slice(0, 12);
         $("fundebInvestimentos").innerHTML = `
+          <article class="signal signal--teal signal--wide">
+            <div class="signal__top">
+              <span class="signal__kind">Fonte oficial FNDE</span>
+              <span class="signal__level">Previsão revisada de 2026</span>
+            </div>
+            <h4>Receita total do FUNDEB prevista para Varginha: ${fmtBRL(FUNDEB_2026_PREVISAO_OFICIAL)}</h4>
+            <p>Valor oficial previsto na 2ª publicação do FNDE, conforme a Portaria MEC/MF nº 6, de 29 de abril de 2026. Não representa o valor já recebido ou gasto pelo Município.</p>
+            <div class="signal__meta"><a href="${FUNDEB_2026_FONTE_OFICIAL}" target="_blank" rel="noopener">Conferir publicação oficial no FNDE</a></div>
+          </article>
           <article class="signal signal--medio signal--wide">
             <div class="signal__top">
               <span class="signal__kind">Pergunta pronta</span>
@@ -2745,18 +2755,16 @@
     }
 
     if ($("sinaisAtencao")) {
-      const lvlVal = { critico: 3, alto: 2, medio: 1 };
-      const kindGroups = {};
-      sinais.forEach(s => {
-        const k = s.kind || "Outros";
-        if (!kindGroups[k]) kindGroups[k] = [];
-        kindGroups[k].push(s);
-      });
-      const sortedKinds = Object.keys(kindGroups).sort((a, b) => {
-        const maxA = Math.max(...kindGroups[a].map(s => lvlVal[s.level] || 0));
-        const maxB = Math.max(...kindGroups[b].map(s => lvlVal[s.level] || 0));
-        return maxB - maxA || kindGroups[b].length - kindGroups[a].length;
-      });
+      // Agrupado por gravidade, nao por fonte. A fonte virou etiqueta no card.
+      // Antes eram 11 grupos por origem, com tamanhos de 1 a 23: as colunas
+      // nunca terminavam juntas e os 6 criticos ficavam diluidos em 152 itens.
+      const NIVEIS = [
+        { id: "critico", rotulo: "Crítico",       aberto: true,  resumo: "Prazo vencido, valor sem contrato ou proporção fora da curva." },
+        { id: "alto",    rotulo: "Atenção alta",  aberto: false, resumo: "Vale conferir com calma: valores altos e promessas sem pagamento localizado." },
+        { id: "medio",   rotulo: "Atenção média", aberto: false, resumo: "Panorama para quem quiser se aprofundar." },
+      ];
+      const LOTE = 10; // quantos cards a faixa mostra antes do "mostrar mais"
+
       const signalCard = (s) => `
         <article class="signal signal--${s.level}">
           <div class="signal__top">
@@ -2768,17 +2776,39 @@
           <div class="signal__meta">${esc(s.meta)}</div>
           ${s.href ? `<a href="${esc(s.href)}" ${/^https:/.test(s.href) ? 'target="_blank" rel="noopener"' : ""}>Conferir fonte ou detalhes</a>` : ""}
         </article>`;
-      $("sinaisAtencao").innerHTML = sinais.length ? sortedKinds.map(kind => {
-        const items = kindGroups[kind];
-        const maxLvl = Math.max(...items.map(s => lvlVal[s.level] || 0));
-        const grpCls = maxLvl === 3 ? "critico" : maxLvl === 2 ? "alto" : "medio";
-        return `<div class="signals-group">
-          <h4 class="signals-group__title signals-group__title--${grpCls}">
-            ${esc(kind)} <span class="signals-group__count">${items.length}</span>
-          </h4>
-          ${items.map(signalCard).join("")}
-        </div>`;
-      }).join("") : '<div class="empty">Nenhum sinal de atenção gerado com os dados atuais.</div>';
+
+      const faixa = (nv) => {
+        const itens = sinais.filter(s => s.level === nv.id);
+        if (!itens.length) return "";
+        const visiveis = itens.slice(0, LOTE);
+        const restantes = itens.slice(LOTE);
+        // <details> nativo: mantem Ctrl+F, teclado e aria-expanded sem JS proprio.
+        return `<details class="sev" data-nivel="${nv.id}"${nv.aberto ? " open" : ""}>
+          <summary class="sev__head sev__head--${nv.id}">
+            <span class="sev__rotulo">${nv.rotulo}</span>
+            <span class="sev__count">${itens.length}</span>
+            <span class="sev__resumo">${esc(nv.resumo)}</span>
+          </summary>
+          <div class="sev__grid">${visiveis.map(signalCard).join("")}</div>
+          ${restantes.length ? `
+            <div class="sev__grid sev__grid--extra" hidden>${restantes.map(signalCard).join("")}</div>
+            <button class="sev__mais" type="button" data-alvo="${nv.id}">
+              Mostrar os outros ${restantes.length}
+            </button>` : ""}
+        </details>`;
+      };
+
+      $("sinaisAtencao").innerHTML = sinais.length
+        ? NIVEIS.map(faixa).join("")
+        : '<div class="empty">Nenhum sinal de atenção gerado com os dados atuais.</div>';
+
+      $("sinaisAtencao").querySelectorAll(".sev__mais").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const extra = btn.parentElement.querySelector(".sev__grid--extra");
+          if (extra) extra.hidden = false;
+          btn.remove();
+        });
+      });
     }
 
     if ($("statsCamaraRel") && cb2.total_externo_atual != null) {
@@ -3021,7 +3051,7 @@
   renderRelatorios();
 
   // Blocos auto-contidos de Relatórios (extraídos para modules/relatorios.js)
-  window.ZELA.relatorios.renderTodos();
+  window.FISCALIZA.relatorios.renderTodos();
 
   // ============= TIMELINE DE SINAIS — extraído para modules/relatorios.js =============
 
@@ -3058,9 +3088,9 @@
           <div class="forn-row__nome">${esc(f.nome)}</div>
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / max) * 100}%"></span></div>
           <div class="forn-row__actions">
-            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83034" target="_blank" rel="noopener" title="Despesas da Prefeitura no Portal Betha — onde estes pagamentos estão registrados">${window.ZELA.icon("lupa", { size: 14 })} Despesas Betha</a>
-            <a class="forn-row__btn forn-row__btn--filtro" href="prefeitura.html?q=${nomeBusca}" title="Ver contratos vigentes desta empresa (pode não existir se for pagamento sem contrato)">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
-            ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.ZELA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
+            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83034" target="_blank" rel="noopener" title="Despesas da Prefeitura no Portal Betha — onde estes pagamentos estão registrados">${window.FISCALIZA.icon("lupa", { size: 14 })} Despesas Betha</a>
+            <a class="forn-row__btn forn-row__btn--filtro" href="prefeitura.html?q=${nomeBusca}" title="Ver contratos vigentes desta empresa (pode não existir se for pagamento sem contrato)">${window.FISCALIZA.icon("documentos", { size: 14 })} Ver contratos</a>
+            ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.FISCALIZA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
         <div class="forn-row__cnpj">${esc(f.cnpj)}</div>
@@ -3104,10 +3134,10 @@
           <div class="forn-row__nome">${esc(f.nome)}</div>
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / maxCam) * 100}%"></span></div>
           <div class="forn-row__actions">
-            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767" target="_blank" rel="noopener" title="Despesas da Câmara no Portal Betha — onde estes pagamentos estão registrados">${window.ZELA.icon("lupa", { size: 14 })} Despesas Betha</a>
-            <button type="button" class="forn-row__btn forn-row__btn--filtro" data-forn-filtro="${i}" title="Ver contratos vigentes desta empresa na Câmara (pode não existir se for pagamento sem contrato)">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</button>
-            <button type="button" class="forn-row__btn forn-row__btn--dossie" data-forn-dossie="${i}" title="Dossiê consolidado: pagamentos, contratos e pergunta LAI pronta">${window.ZELA.icon("lupa", { size: 14 })} Dossiê</button>
-            ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.ZELA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
+            <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767" target="_blank" rel="noopener" title="Despesas da Câmara no Portal Betha — onde estes pagamentos estão registrados">${window.FISCALIZA.icon("lupa", { size: 14 })} Despesas Betha</a>
+            <button type="button" class="forn-row__btn forn-row__btn--filtro" data-forn-filtro="${i}" title="Ver contratos vigentes desta empresa na Câmara (pode não existir se for pagamento sem contrato)">${window.FISCALIZA.icon("documentos", { size: 14 })} Ver contratos</button>
+            <button type="button" class="forn-row__btn forn-row__btn--dossie" data-forn-dossie="${i}" title="Dossiê consolidado: pagamentos, contratos e pergunta LAI pronta">${window.FISCALIZA.icon("lupa", { size: 14 })} Dossiê</button>
+            ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.FISCALIZA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
         <div class="forn-row__cnpj">${esc(f.cnpj)}</div>
@@ -3157,11 +3187,11 @@
     $("topFornecedoresCamara").querySelectorAll("[data-forn-dossie]").forEach((btn) => {
       btn.addEventListener("click", () => {
         const f = topCam[Number(btn.dataset.fornDossie)];
-        if (!f || !window.ZELA.dossie || !window.ZELA.dossie.abrirComHtml) return;
+        if (!f || !window.FISCALIZA.dossie || !window.FISCALIZA.dossie.abrirComHtml) return;
         const rel = contratosDoFornecedor(f);
         const nome = cleanText(f.nome || "");
         const pergunta = `Solicito, com fundamento na Lei de Acesso à Informação (Lei 12.527/2011), os empenhos, liquidações, notas fiscais e comprovantes de pagamento da Câmara Municipal de Varginha ao fornecedor ${nome}${f.cnpj ? ", CNPJ " + f.cnpj : ""}, no exercício ${cb.ano_atual || ""}, bem como os contratos correspondentes ou a justificativa de contratação sem contrato formal.`;
-        window.ZELA.dossie.abrirComHtml(
+        window.FISCALIZA.dossie.abrirComHtml(
           '<div class="cat-modal">' +
             '<p style="margin:0;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--gold-dk);">DOSSIÊ DO FORNECEDOR</p>' +
             '<h3 style="margin:4px 0 2px;">' + esc(nome) + '</h3>' +
@@ -3216,7 +3246,7 @@
         <article class="contrato">
           <div class="contrato__valor">
             ${fmtBRL(c.valor)}
-            <div style="margin-top:8px;">${window.ZELA.watchlist.botao("contratos", "CAM-" + (c.numero || "") + "/" + (c.ano || ""))}</div>
+            <div style="margin-top:8px;">${window.FISCALIZA.watchlist.botao("contratos", "CAM-" + (c.numero || "") + "/" + (c.ano || ""))}</div>
           </div>
           <div class="contrato__body">
             <p class="contrato__nome">${esc(c.contratado || "—")} <span class="muted">${esc(c.cnpj || "")}</span></p>
@@ -3224,7 +3254,7 @@
             <p class="muted small">${esc(c.modalidade || "")} · ${esc(c.data_assinatura || "")} → ${esc(c.data_fim || "")}${c.numero ? ` · Nº ${esc(c.numero)}` : ""}</p>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
               ${c.numero ? `<button type="button" class="btn-copiar-num" onclick="(function(b){var t=b.closest('.contrato').querySelector('.muted.small');var m=t&&t.textContent.match(/N[°º]\s*([\w\/\-]+)/);var n=m?m[1]:'${jsSafe(String(c.numero || ""))}';navigator.clipboard&&navigator.clipboard.writeText(n).then(function(){var o=b.textContent;b.textContent='✓ Copiado';setTimeout(function(){b.textContent=o;},1400);}).catch(function(){});b.title=n;})(this)" title="Copiar número do contrato">📋 Copiar nº</button>` : ""}
-              <button type="button" class="btn-dossie" onclick="ZELA.abrirContratoCamara(${contratosCam.indexOf(c)})">Ver detalhes e fonte</button>
+              <button type="button" class="btn-dossie" onclick="FISCALIZA.abrirContratoCamara(${contratosCam.indexOf(c)})">Ver contrato e fonte oficial</button>
               <a class="btn-link" href="${BETHA_CONTRATOS_CAMARA}" target="_blank" rel="noopener" title="Ver todos os contratos da Câmara no Portal Betha" style="text-decoration:none; padding: 4px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">Portal Betha (Câmara)</a>
               <a class="btn-link" href="${PORTAL_CONTRATOS_CAMARA}" target="_blank" rel="noopener" title="Portal de Transparência oficial da Câmara Municipal" style="text-decoration:none; padding: 4px 10px; background: #eee; border-radius: 4px; color: #333; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Site da Câmara</a>
             </div>
@@ -3232,16 +3262,16 @@
         </article>`).join("");
       if (maisEl) maisEl.hidden = filtrados.length <= contratosCamaraShown;
     };
-    window.ZELA.abrirContratoCamara = (idx) => {
+    window.FISCALIZA.abrirContratoCamara = (idx) => {
       const c = contratosCam[idx];
       if (!c) return;
-      const html = window.ZELA.dossie.templateContrato({
+      const html = window.FISCALIZA.dossie.templateContrato({
         contrato: c,
         audit: { nivel: "ok", score: 100, achados: [] },
         baseLegal: baseLegalCamara,
         orgao: "Câmara",
       });
-      window.ZELA.dossie.abrirComHtml(html);
+      window.FISCALIZA.dossie.abrirComHtml(html);
     };
     if (filtroEl) filtroEl.addEventListener("input", () => renderContratosCamara(true));
     renderContratosCamara(true);
@@ -3540,32 +3570,32 @@
     renderBaseLegalContratos();
 
     // Delega geração e download do TXT para modules/dossie.js
-    window.ZELA.gerarDossie = (idx) => {
+    window.FISCALIZA.gerarDossie = (idx) => {
       const c = pf.contratos[idx];
       if (!c) return;
       const audit = diagnosticarContrato(c);
-      window.ZELA.dossie.gerarTxtContrato({
+      window.FISCALIZA.dossie.gerarTxtContrato({
         contrato: c,
         audit,
         baseLegal: baseLegalContratos,
       });
     };
 
-    window.ZELA.abrirContrato = (idx) => {
+    window.FISCALIZA.abrirContrato = (idx) => {
       const c = pf.contratos[idx];
       if (!c) return;
       const audit = diagnosticarContrato(c);
-      const html = window.ZELA.dossie.templateContrato({
+      const html = window.FISCALIZA.dossie.templateContrato({
         contrato: { ...c, __idx: idx },
         audit,
         baseLegal: baseLegalContratos,
         orgao: "Prefeitura",
       });
-      window.ZELA.dossie.abrirComHtml(html);
+      window.FISCALIZA.dossie.abrirComHtml(html);
     };
 
     let categoriaAtivaContratos = "";
-    window.ZELA.filtrarContratosPorCategoria = (cat) => {
+    window.FISCALIZA.filtrarContratosPorCategoria = (cat) => {
       categoriaAtivaContratos = cat || "";
       renderContratos(true);
     };
@@ -3580,7 +3610,7 @@
         estaContratoAtivoNoAno(c, anoFiltro) &&
         (!valorMin || (Number(c.valor) || 0) >= valorMin) &&
         (!secFiltro || (c.entidade || "").trim() === secFiltro) &&
-        (!categoriaAtivaContratos || window.ZELA.classificarItem(c) === categoriaAtivaContratos) &&
+        (!categoriaAtivaContratos || window.FISCALIZA.classificarItem(c) === categoriaAtivaContratos) &&
         (!q ||
           norm(contratoSearchText(c)).includes(q) ||
           (q.replace(/[^\d]/g, "").length >= 3 && (c.cnpj || "").replace(/[^\d]/g, "").includes(q.replace(/[^\d]/g, "")))
@@ -3630,7 +3660,7 @@
             document.getElementById('filtroContrato').value='';
             document.getElementById('filtroAnoContrato').value='';
             if(document.getElementById('filtroValorContrato')) document.getElementById('filtroValorContrato').value='';
-            ZELA.filtrarContratos && ZELA.filtrarContratos();
+            FISCALIZA.filtrarContratos && FISCALIZA.filtrarContratos();
           ">Limpar filtros</button>
         </div>`;
         contratosMaisEl.hidden = true;
@@ -3680,7 +3710,7 @@
           const vereadores = [...new Set(emCruzadas.map(e => e.vereador || e.autor || "").filter(Boolean))];
           const totalEm = emCruzadas.reduce((s, e) => s + (Number(e.valor) || 0), 0);
           return `<div class="cnpj-cruzado">
-            <span class="cnpj-cruzado__icon">${window.ZELA.icon ? window.ZELA.icon("alerta", { size: 18 }) : ""}</span>
+            <span class="cnpj-cruzado__icon">${window.FISCALIZA.icon ? window.FISCALIZA.icon("alerta", { size: 18 }) : ""}</span>
             <div class="cnpj-cruzado__txt">
               <strong>Empresa também recebeu emenda da Câmara</strong>
               <em>${emCruzadas.length} emenda${emCruzadas.length > 1 ? "s" : ""} · ${fmtBRL(totalEm)}${vereadores.length ? " · " + vereadores.slice(0,2).map(v => esc(v)).join(", ") + (vereadores.length > 2 ? "…" : "") : ""} — <a href="camara.html?q=${encodeURIComponent((c.cnpj||"").replace(/[^\d]/g,"").slice(0,8))}" style="color:inherit;font-weight:700;">Ver na Câmara →</a></em>
@@ -3702,17 +3732,17 @@
             <p class="contrato__nome" style="display:flex; align-items:flex-start; gap:8px;">
               <span style="flex:1;">${cleanText(c.contratado || "—")}
               ${c.situacao ? `<span class="contrato__sit${sitClass}">${esc(c.situacao)}</span>` : ""}</span>
-              ${window.ZELA.watchlist.botao("contratos", idContrato)}
+              ${window.FISCALIZA.watchlist.botao("contratos", idContrato)}
             </p>
             <p class="contrato__obj">${esc(cleanText(c.objeto))}</p>
             <div class="contrato__meta">
               <span>
                 <strong>Contrato nº</strong> ${c.numero}/${c.ano}
-                ${c.numero ? `<button class="btn-copiar-num" title="Copiar número para buscar no portal" onclick="(function(b){var t='${jsSafe(c.numero + '/' + c.ano)}';navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=o},1500)}).catch(function(){});b.blur();})(this)">${window.ZELA.icon ? window.ZELA.icon("copiar", { size: 13 }) : ""} Copiar nº</button>` : ""}
+                ${c.numero ? `<button class="btn-copiar-num" title="Copiar número para buscar no portal" onclick="(function(b){var t='${jsSafe(c.numero + '/' + c.ano)}';navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=o},1500)}).catch(function(){});b.blur();})(this)">${window.FISCALIZA.icon ? window.FISCALIZA.icon("copiar", { size: 13 }) : ""} Copiar nº</button>` : ""}
               </span>
               <span><span class="glossario-termo" tabindex="0" data-explica="Como a Prefeitura comprou (pregão, dispensa, concorrência…).">Tipo de compra:</span> ${esc(cleanText(c.modalidade))}</span>
               ${dataIni ? `<span><span class="glossario-termo" tabindex="0" data-explica="Período em que o contrato está em vigor.">Período:</span> ${dataIni} ${dataFim ? "até " + dataFim : ""}</span>` : ""}
-              ${custoDiario ? `<span style="color:#2c3e50; font-weight:bold;">Custo estimado: ${fmtBRL(custoDiario)}/dia</span>` : ""}
+              ${custoDiario ? `<span style="color:#2c3e50; font-weight:bold;">Valor contratado por dia de vigência: ${fmtBRL(custoDiario)} <small>(divisão simples; não é gasto diário efetivo)</small></span>` : ""}
             </div>
             ${audit.achados.length ? `
               <div class="contrato-legal">
@@ -3724,10 +3754,10 @@
             ` : ""}
             ${cruzadoHtml}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap; align-items:center;">
-              <button class="btn-dossie" onclick="ZELA.abrirContrato(${contratos.indexOf(c)})">Ver detalhes e fonte</button>
-              <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratos.indexOf(c)})">Baixar relatório</button>
-              <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}${custoDiario ? " (Custo: " + fmtBRL(custoDiario) + "/dia)" : ""}')">Compartilhar</button>
-              <a class="btn-link" href="${BETHA_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Cole o nº do contrato no campo de busca do Betha para localizar este contrato" style="text-decoration:none; padding: 6px 12px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.85em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon ? window.ZELA.icon("lupa", { size: 13 }) : ""} Betha</a>
+              <button class="btn-dossie" onclick="FISCALIZA.abrirContrato(${contratos.indexOf(c)})">Ver contrato e fonte oficial</button>
+              <button class="btn-dossie" onclick="FISCALIZA.gerarDossie(${contratos.indexOf(c)})">Baixar relatório</button>
+              <button class="btn-share" onclick="FISCALIZA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}${custoDiario ? " (valor total dividido pelos dias de vigência: " + fmtBRL(custoDiario) + "; não é gasto diário efetivo)" : ""}')">Compartilhar</button>
+              <a class="btn-link" href="${BETHA_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Cole o nº do contrato no campo de busca do Betha para localizar este contrato" style="text-decoration:none; padding: 6px 12px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.85em; font-weight: 500; border: 1px solid #90caf9;">${window.FISCALIZA.icon ? window.FISCALIZA.icon("lupa", { size: 13 }) : ""} Betha</a>
               <a class="btn-link" href="${PORTAL_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 6px 12px; background: #eee; border-radius: 4px; color: #555; font-size: 0.85em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
               <a class="btn-link" href="${contratoPncpUrl(c)}" target="_blank" rel="noopener" title="Buscar este fornecedor/contrato no PNCP" style="text-decoration:none; padding: 6px 12px; background: #fff8e1; border-radius: 4px; color: #6d4c00; font-size: 0.85em; font-weight: 500; border: 1px solid #ffd54f;">PNCP</a>
             </div>
@@ -3786,7 +3816,7 @@
       const filterbar = $("contratosBlock").querySelector(".filterbar");
       if (filterbar) filterbar.before(compEl);
 
-      window.ZELA.filtrarContratos = () => renderContratos(true);
+      window.FISCALIZA.filtrarContratos = () => renderContratos(true);
       filtroContrato.addEventListener("input", () => renderContratos(true));
       filtroAnoContrato.addEventListener("change", () => renderContratos(true));
       if (filtroValorContrato) filtroValorContrato.addEventListener("change", () => renderContratos(true));
@@ -3858,14 +3888,17 @@
       });
       if (licContador) licContador.textContent = `${filtrados.length} licitações`;
       if (!filtrados.length) {
+        const semDadosNaFonte = licitacoes.length === 0;
         $("licitacoes").innerHTML = `<div class="empty">
-          <strong>Nenhuma licitação encontrada</strong>
-          <p>Tente remover o filtro de valor, mudar o ano ou limpar a busca.</p>
+          <strong>${semDadosNaFonte ? "Coleta de licitações indisponível neste ciclo" : "Nenhuma licitação encontrada"}</strong>
+          <p>${semDadosNaFonte
+            ? "A fonte automática não retornou registros. Isso não significa que não existam licitações abertas; confira os portais oficiais acima."
+            : "Tente remover o filtro de valor, mudar o ano ou limpar a busca."}</p>
           <button class="btn-limpar" onclick="
             if(document.getElementById('filtroLicitacao')) document.getElementById('filtroLicitacao').value='';
             if(document.getElementById('filtroValorLicitacao')) document.getElementById('filtroValorLicitacao').value='';
             if(document.getElementById('filtroAnoLicitacao')) document.getElementById('filtroAnoLicitacao').value='';
-            window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true);
+            window.FISCALIZA && window.FISCALIZA.renderLicitacoes && window.FISCALIZA.renderLicitacoes(true);
           ">Limpar filtros</button>
         </div>`;
         if (licMaisWrap) licMaisWrap.hidden = true;
@@ -3884,8 +3917,8 @@
               ${data ? `<span>${data}</span>` : ""}
             </div>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
-              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82967" target="_blank" rel="noopener" title="Ver licitações no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
-              <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" title="Buscar no Portal Nacional de Contratações Públicas" style="text-decoration:none; padding: 3px 9px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">${window.ZELA.icon ? window.ZELA.icon("documentos", { size: 12 }) : ""} PNCP</a>
+              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82967" target="_blank" rel="noopener" title="Ver licitações no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.FISCALIZA.icon("lupa", { size: 14 })} Betha</a>
+              <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" title="Buscar no Portal Nacional de Contratações Públicas" style="text-decoration:none; padding: 3px 9px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">${window.FISCALIZA.icon ? window.FISCALIZA.icon("documentos", { size: 12 }) : ""} PNCP</a>
             </div>
           </article>`;
       }).join("");
@@ -3902,24 +3935,26 @@
       })();
     };
 
+    // O bloco e os links oficiais continuam visíveis mesmo quando a integração
+    // automática retorna zero. Zero coletado não prova ausência de licitações.
+    $("licitacoesBlock").hidden = false;
+    window.FISCALIZA.renderLicitacoes = renderLicitacoes;
+    if (filtroLic)    filtroLic.addEventListener("input",  () => renderLicitacoes(true));
+    if (filtroValLic) filtroValLic.addEventListener("change", () => renderLicitacoes(true));
+    if (filtroAnoLic) filtroAnoLic.addEventListener("change", () => renderLicitacoes(true));
+    if (licMaisBtn)   licMaisBtn.addEventListener("click", () => { licShown += 12; renderLicitacoes(false); });
+
+    // restore URL params
+    (function () {
+      const p = new URLSearchParams(window.location.search);
+      if (filtroLic    && p.get("lic_q")) filtroLic.value    = p.get("lic_q");
+      if (filtroValLic && p.get("lic_v")) filtroValLic.value = p.get("lic_v");
+      if (filtroAnoLic && p.get("lic_ano")) filtroAnoLic.value = p.get("lic_ano");
+    })();
+
+    renderLicitacoes(true);
+
     if (licitacoes.length) {
-      $("licitacoesBlock").hidden = false;
-      window.ZELA.renderLicitacoes = renderLicitacoes;
-      if (filtroLic)    filtroLic.addEventListener("input",  () => renderLicitacoes(true));
-      if (filtroValLic) filtroValLic.addEventListener("change", () => renderLicitacoes(true));
-      if (filtroAnoLic) filtroAnoLic.addEventListener("change", () => renderLicitacoes(true));
-      if (licMaisBtn)   licMaisBtn.addEventListener("click", () => { licShown += 12; renderLicitacoes(false); });
-
-      // restore URL params
-      (function () {
-        const p = new URLSearchParams(window.location.search);
-        if (filtroLic    && p.get("lic_q")) filtroLic.value    = p.get("lic_q");
-        if (filtroValLic && p.get("lic_v")) filtroValLic.value = p.get("lic_v");
-        if (filtroAnoLic && p.get("lic_ano")) filtroAnoLic.value = p.get("lic_ano");
-      })();
-
-      renderLicitacoes(true);
-
       // CSV export para licitações
       const licCsvBtn = document.createElement("button");
       licCsvBtn.className = "btn-csv";
@@ -4196,7 +4231,7 @@
                 ${data ? `<span>Data: ${data}</span>` : ""}
               </div>
               <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
-                <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+                <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.FISCALIZA.icon("lupa", { size: 14 })} Betha</a>
                 <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 3px 9px; background: #eee; border-radius: 4px; color: #555; font-size: 0.78em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
               </div>
             </div>
@@ -4402,7 +4437,7 @@ ${url}
 
         // Atribui função de clique para compartilhamento dinâmico
         const shareId = `share_diario_${d.edicao}`;
-        window.ZELA[shareId] = function() {
+        window.FISCALIZA[shareId] = function() {
           if (navigator.share) {
             navigator.share({ title: `Diário Oficial nº ${d.edicao}`, text: textZapMsg }).catch(() => {});
           } else {
@@ -4462,7 +4497,7 @@ ${url}
             </div>
 
             <div class="diario-whats-card__section">
-              <div class="diario-whats-card__section-title">🚨 Pontos de Atenção (Heurísticas Zela)</div>
+              <div class="diario-whats-card__section-title">🚨 Pontos de Atenção (Heurísticas Fiscaliza)</div>
               <ul class="diario-whats-card__list">
                 ${atencaoHtml}
               </ul>
@@ -4470,7 +4505,7 @@ ${url}
 
             <div class="diario-whats-card__actions">
               <div class="diario-whats-card__buttons">
-                <button type="button" class="diario-whats-card__btn-zap" onclick="window.ZELA.${shareId}()" aria-label="Compartilhar resumo da edição nº ${d.edicao} no WhatsApp">
+                <button type="button" class="diario-whats-card__btn-zap" onclick="window.FISCALIZA.${shareId}()" aria-label="Compartilhar resumo da edição nº ${d.edicao} no WhatsApp">
                   <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle; margin-right:4px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.27-4.103c1.623.963 3.238 1.468 4.873 1.469 5.585-.001 10.13-4.549 10.133-10.139.002-2.709-1.051-5.253-2.962-7.168C16.46 2.14 13.918.99 11.996.99c-5.59 0-10.136 4.547-10.14 10.138-.001 1.762.477 3.486 1.385 5.011l-.946 3.454 3.543-.929zm13.111-7.795c-.32-.16-1.89-.933-2.185-1.041-.295-.108-.51-.16-.723.16-.214.32-.828 1.042-1.015 1.258-.187.215-.374.242-.693.083-.32-.16-1.349-.497-2.57-1.587-.949-.846-1.59-1.892-1.777-2.213-.187-.32-.02-.493.14-.653.143-.144.32-.373.48-.56.16-.188.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.723-1.741-.99-2.382-.26-.628-.525-.544-.723-.554-.187-.01-.4-.012-.613-.012s-.56.08-.853.4c-.293.32-1.12 1.093-1.12 2.667 0 1.573 1.147 3.093 1.307 3.307.16.213 2.257 3.447 5.467 4.833.763.33 1.36.527 1.823.674.767.244 1.466.21 2.018.128.614-.092 1.89-.773 2.157-1.48.267-.707.267-1.314.187-1.44-.08-.127-.295-.213-.615-.373z"/></svg>
                   Copiar WhatsApp
                 </button>
@@ -4488,8 +4523,8 @@ ${url}
       // Injeta selos de confiança
       ultimas.slice(0, 24).forEach(d => {
         const sealContainer = $(`seal-container-${d.edicao}`);
-        if (sealContainer && window.ZELA.dataTrustSeal) {
-          sealContainer.innerHTML = window.ZELA.dataTrustSeal("diaria", {
+        if (sealContainer && window.FISCALIZA.dataTrustSeal) {
+          sealContainer.innerHTML = window.FISCALIZA.dataTrustSeal("diaria", {
             fonte: "Diário Oficial / Betha Transparência",
             escopo: "cruzamento automatizado",
             risco: "não dispensa a leitura da publicação completa no PDF oficial",
@@ -4500,8 +4535,8 @@ ${url}
       });
 
       // Enriquece com tooltips do glossário
-      if (window.ZELA.enriquecerGlossario) {
-        window.ZELA.enriquecerGlossario($("diarioLista"));
+      if (window.FISCALIZA.enriquecerGlossario) {
+        window.FISCALIZA.enriquecerGlossario($("diarioLista"));
       }
     }
   }
@@ -4974,14 +5009,14 @@ ${url}
     const root = $("asfaltoPainel");
     if (!root) return;
 
-    window.ZELA.renderAsfaltoPrefeitura = renderAsfaltoPrefeitura;
+    window.FISCALIZA.renderAsfaltoPrefeitura = renderAsfaltoPrefeitura;
 
     const select      = $("filtroAnoAsfalto");
     const buscaInput  = $("filtroBuscaAsfalto");
     const ordemSelect = $("filtroOrdemAsfalto");
     const tipoSelect  = $("filtroTipoAsfalto");
-    if (select && !window.ZELA._asfaltoInit) {
-      window.ZELA._asfaltoInit = true;
+    if (select && !window.FISCALIZA._asfaltoInit) {
+      window.FISCALIZA._asfaltoInit = true;
       select.addEventListener("change", () => renderAsfaltoPrefeitura());
       if (buscaInput)  buscaInput.addEventListener("input",   () => renderAsfaltoPrefeitura());
       if (ordemSelect) ordemSelect.addEventListener("change", () => renderAsfaltoPrefeitura());
@@ -4990,7 +5025,7 @@ ${url}
 
     const anoSelecionado = select      ? select.value      : "";
     const buscaTexto     = buscaInput  ? norm(buscaInput.value.trim()) : "";
-    const ordem          = ordemSelect ? ordemSelect.value : "recente";
+    const ordem          = ordemSelect ? ordemSelect.value : "inicio";
     const tipoFiltro     = tipoSelect  ? tipoSelect.value  : "";
 
     const termos = [
@@ -5096,11 +5131,20 @@ ${url}
       };
     }).sort((a, b) => {
       if (ordem === "valor") return Number(b.valor_asfalto || 0) - Number(a.valor_asfalto || 0);
-      // mais recente: data mais relevante disponível (última medição > início > assinatura)
-      const da = a.data_ultima_medicao || a.data_inicio || a.data_ordem_servico || a.data_assinatura || a.data || "";
-      const db = b.data_ultima_medicao || b.data_inicio || b.data_ordem_servico || b.data_assinatura || b.data || "";
+      if (ordem === "movimentacao") {
+        const daMov = a.data_ultima_medicao || a.data_inicio || a.data_ordem_servico || a.data_assinatura || a.data || "";
+        const dbMov = b.data_ultima_medicao || b.data_inicio || b.data_ordem_servico || b.data_assinatura || b.data || "";
+        return dbMov.localeCompare(daMov) || Number(b.valor_asfalto || 0) - Number(a.valor_asfalto || 0);
+      }
+      // Padrão: data de início/assinatura do contrato ou da obra, sem confundir
+      // uma medição recente com uma contratação recente.
+      const da = a.data_inicio || a.data_ordem_servico || a.data_assinatura || a.data || "";
+      const db = b.data_inicio || b.data_ordem_servico || b.data_assinatura || b.data || "";
       return db.localeCompare(da) || Number(b.valor_asfalto || 0) - Number(a.valor_asfalto || 0);
     });
+
+    const badgeAsfalto = $("badgeAsfalto");
+    if (badgeAsfalto) badgeAsfalto.textContent = fmtNum(bases.length);
 
     let basesFiltradas = bases.filter(i => estaAtivoNoAno(i, anoSelecionado));
     if (tipoFiltro === "obra")      basesFiltradas = basesFiltradas.filter(i => i.obra_publica);
@@ -5116,7 +5160,7 @@ ${url}
     const total = basesFiltradas.reduce((s, i) => s + Number(i.valor_asfalto || 0), 0);
     const oficiais = basesFiltradas.filter(i => i.obra_publica).length;
     const fila = basesFiltradas.filter(i => i.pendencias.length).slice(0, 4);
-    window.ZELA._asfaltoLAI = {};
+    window.FISCALIZA._asfaltoLAI = {};
 
     const contadorEl = $("asfaltoContador");
     if (contadorEl) {
@@ -5142,7 +5186,7 @@ ${url}
       <div class="asfalto-lista">
         ${basesFiltradas.slice(0, 40).map((i, idx) => {
           const id = `asfalto-${idx}`;
-          window.ZELA._asfaltoLAI[id] = `Solicito documentos do ${i.origem} relacionado a asfalto/pavimentação: objeto, local por rua/bairro, metragem, medição, notas fiscais, fiscal responsável e fotos antes/depois. Item: ${i.numero || i.id_obra || "s/n"} - ${i.objeto || i.descricao || ""}`;
+          window.FISCALIZA._asfaltoLAI[id] = `Solicito documentos do ${i.origem} relacionado a asfalto/pavimentação: objeto, local por rua/bairro, metragem, medição, notas fiscais, fiscal responsável e fotos antes/depois. Item: ${i.numero || i.id_obra || "s/n"} - ${i.objeto || i.descricao || ""}`;
           const url = i.obra_publica ? "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026" : "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043";
           return `<article class="asfalto-card">
             <div class="asfalto-card__valor">${fmtBRL(i.valor_asfalto || 0)}</div>
@@ -5159,15 +5203,15 @@ ${url}
                 <span><b>Custo unitário:</b> ${i.custo_m2 ? `${fmtBRL(i.custo_m2)}/m²` : "Não calculável"}</span>
               </div>
               <p>${esc(i.objeto || i.descricao || "Objeto não informado")}</p>
-              <div class="asfalto-card__actions"><button type="button" class="btn-dossie" onclick="ZELA.copiarAsfaltoLAI('${id}', this)">Copiar pergunta LAI</button><a class="btn-link" href="${url}" target="_blank" rel="noopener">Abrir Betha</a></div>
+              <div class="asfalto-card__actions"><button type="button" class="btn-dossie" onclick="FISCALIZA.copiarAsfaltoLAI('${id}', this)">Copiar pedido sobre esta obra</button><a class="btn-link" href="${url}" target="_blank" rel="noopener">Abrir esta obra no Betha</a></div>
             </div>
           </article>`;
         }).join("")}
       </div>`;
   }
 
-  window.ZELA.copiarAsfaltoLAI = (id, btn) => {
-    const texto = (window.ZELA._asfaltoLAI || {})[id] || "";
+  window.FISCALIZA.copiarAsfaltoLAI = (id, btn) => {
+    const texto = (window.FISCALIZA._asfaltoLAI || {})[id] || "";
     if (!texto) return;
     const old = btn ? btn.textContent : "";
     navigator.clipboard.writeText(texto).then(() => {
@@ -5297,12 +5341,12 @@ ${url}
         </div>`;
     }
 
-    window.ZELA._frotaLAI = {};
+    window.FISCALIZA._frotaLAI = {};
     if (countEl) countEl.textContent = `${fmtNum(view.length)} veículo(s) · ${fmtBRL(totalGastos)}`;
     if (listaEl) {
       listaEl.innerHTML = view.slice(0, 80).map((v, idx) => {
         const id = `frota-${idx}`;
-        window.ZELA._frotaLAI[id] = perguntaLAIFrota(v);
+        window.FISCALIZA._frotaLAI[id] = perguntaLAIFrota(v);
         const alertas = (v.alertas || []).slice(0, 4);
         const gastosRecentes = (v.gastos_recentes || []).slice(0, 3);
         const fornecedores = (v.fornecedores_gastos || []).slice(0, 3);
@@ -5334,7 +5378,7 @@ ${url}
               tone: alertas.length ? "warn" : "ok",
             })}
             <div class="frota-card__actions">
-              <button type="button" class="btn-dossie" onclick="ZELA.copiarFrotaLAI('${id}', this)">Copiar pergunta LAI</button>
+              <button type="button" class="btn-dossie" onclick="FISCALIZA.copiarFrotaLAI('${id}', this)">Copiar pergunta LAI</button>
               <a class="btn-link" href="${esc(v.fonte_url || "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83061")}" target="_blank" rel="noopener">Abrir Betha</a>
             </div>
           </div>
@@ -5359,8 +5403,8 @@ ${url}
     });
   }
 
-  window.ZELA.copiarFrotaLAI = (id, btn) => {
-    const texto = (window.ZELA._frotaLAI || {})[id] || "";
+  window.FISCALIZA.copiarFrotaLAI = (id, btn) => {
+    const texto = (window.FISCALIZA._frotaLAI || {})[id] || "";
     if (!texto) return;
     const old = btn ? btn.textContent : "";
     navigator.clipboard.writeText(texto).then(() => {
@@ -5444,7 +5488,7 @@ ${url}
     const folhaLinhas = folha.slice(0, 18);
     const leiUrl = lei.url || (links[0] && links[0].url) || "#";
 
-    window.ZELA._folhaVereadores = folha;
+    window.FISCALIZA._folhaVereadores = folha;
 
     el.innerHTML = `
       <div class="salary-transparency__head">
@@ -5501,7 +5545,7 @@ ${url}
                 <span>${fmtBRL(item.maior_bruto || 0)}</span>
                 <span>${fmtBRL(item.maior_liquido || 0)}</span>
                 <span>${fmtNum(item.registros.length)}</span>
-                <span><button type="button" onclick="ZELA.abrirDetalheRemuneracao(${idx})">Detalhes</button></span>
+                <span><button type="button" onclick="FISCALIZA.abrirDetalheRemuneracao(${idx})">Detalhes</button></span>
               </div>`).join("")}
           </div>
           ${folha.length > folhaLinhas.length ? `<p class="salary-payroll__warn">Mostrando ${fmtNum(folhaLinhas.length)} de ${fmtNum(folha.length)} nomes. Abra o portal Betha para conferir a folha completa.</p>` : ""}
@@ -5516,16 +5560,16 @@ ${url}
         <div class="salary-transparency__actions">
           <a href="${esc(leiUrl)}" target="_blank" rel="noopener">Ver lei</a>
           ${links.slice(1, 3).map((link) => `<a href="${esc(link.url)}" target="_blank" rel="noopener">${esc(cleanText(link.titulo || "Fonte oficial"))}</a>`).join("")}
-          <button type="button" onclick="ZELA.entenderRemuneracao()">Entender</button>
+          <button type="button" onclick="FISCALIZA.entenderRemuneracao()">Entender</button>
         </div>
       </div>`;
   }
 
-  window.ZELA.abrirDetalheRemuneracao = (idx) => {
-    const item = (window.ZELA._folhaVereadores || [])[idx];
+  window.FISCALIZA.abrirDetalheRemuneracao = (idx) => {
+    const item = (window.FISCALIZA._folhaVereadores || [])[idx];
     if (!item) return;
     const rows = (item.registros || []).slice(0, 12);
-    window.ZELA.dossie.abrirComHtml(`
+    window.FISCALIZA.dossie.abrirComHtml(`
       <p class="label">FOLHA NOMINAL</p>
       <h3>${esc(item.nome)}</h3>
       <p class="muted">Cargo: ${esc(item.cargo || "Vereador")} ${item.matricula ? "- matricula " + esc(item.matricula) : ""}</p>
@@ -5544,8 +5588,8 @@ ${url}
       </ul>`);
   };
 
-  window.ZELA.entenderRemuneracao = () => {
-    window.ZELA.dossie.abrirComHtml(`
+  window.FISCALIZA.entenderRemuneracao = () => {
+    window.FISCALIZA.dossie.abrirComHtml(`
       <p class="label">REMUNERACAO PARLAMENTAR</p>
       <h3>Como entender salario/subsidio de vereador</h3>
       <div class="citizen-explain">
@@ -5560,7 +5604,7 @@ ${url}
       <p>Solicite a folha analitica por competencia, demonstrativo de descontos, registro de faltas, eventual renuncia de subsidio, diarias, cotas/verbas indenizatorias e ato legal que autorizou cada pagamento.</p>`);
   };
 
-  const FILA_COBRANCA_STORE = "zela.filaCobranca.v2";
+  const FILA_COBRANCA_STORE = "fiscaliza.filaCobranca.v2";
 
   function filaReadStore() {
     try { return JSON.parse(localStorage.getItem(FILA_COBRANCA_STORE) || "{}") || {}; }
@@ -5754,7 +5798,12 @@ ${url}
       }
     });
 
-    (pf.frota || []).forEach((v) => {
+    const frotaStatus = norm(pf.frota_status_coleta || "");
+    const frotaAuditavel = (pf.frota || []).length > 0 && !hasAny(
+      frotaStatus,
+      ["parcial", "partial", "preserv", "falha", "failed", "erro"],
+    );
+    if (frotaAuditavel) (pf.frota || []).forEach((v) => {
       const valor = Number(v.gastos_total || 0);
       const atipico = Number(v.gastos_atipicos_total || 0);
       const pend = [];
@@ -5926,6 +5975,18 @@ ${url}
     }
 
     if (!filtrados.length) {
+      if (tipo === "frota") {
+        const pf = D.prefeitura || {};
+        const status = norm(pf.frota_status_coleta || "");
+        const auditavel = (pf.frota || []).length > 0 && !hasAny(
+          status,
+          ["parcial", "partial", "preserv", "falha", "failed", "erro"],
+        );
+        if (!auditavel) {
+          lista.innerHTML = '<div class="empty source-coverage-note"><p>A cobertura da frota está parcial ou preservada. Alertas individuais por veículo ficam suspensos até a fonte Betha voltar a fornecer os anexos completos; a base anterior continua disponível para consulta.</p></div>';
+          return;
+        }
+      }
       lista.innerHTML = '<div class="empty"><p>Nenhum item encontrado para este filtro.</p></div>';
       return;
     }
@@ -6078,15 +6139,15 @@ ${url}
 
   // Helper local — delega criação do <dialog> para modules/dossie.js
   function modalFiscalizacao() {
-    return window.ZELA.dossie.criarModal();
+    return window.FISCALIZA.dossie.criarModal();
   }
 
   // abrirFiscalizacaoDiaria delegado para modules/diarias.js
   function abrirFiscalizacaoDiaria(prefix, idx) {
-    window.ZELA.diarias.abrirFiscalizacaoDiaria(prefix, idx);
+    window.FISCALIZA.diarias.abrirFiscalizacaoDiaria(prefix, idx);
   }
 
-  window.ZELA = {
+  window.FISCALIZA = {
     buscaHome: buscaHome,
     smartAudit: (providedQ) => {
       const inp = $("buscaHome");
@@ -6152,7 +6213,7 @@ ${url}
       // Fallback para busca normal
       buscaHome(q);
     },
-    ...window.ZELA,
+    ...window.FISCALIZA,
     maisEmendas:   () => { emendasShown   += 30; renderEmendas && renderEmendas(false); },
     maisContratos: () => { contratosShown += 20; renderContratos && renderContratos(false); },
     maisContratosCamara: () => { contratosCamaraShown += 20; renderContratosCamara && renderContratosCamara(false); },
@@ -6268,9 +6329,9 @@ ${url}
               ${dataIni ? `<span><strong>Vigência:</strong> ${dataIni} ate ${dataFim}</span>` : ""}
             </div>
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
-              <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratosAluguel.indexOf(c)})">Ver relatorio</button>
-              <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}')">Compartilhar</button>
-              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+              <button class="btn-dossie" onclick="FISCALIZA.gerarDossie(${contratosAluguel.indexOf(c)})">Ver relatorio</button>
+              <button class="btn-share" onclick="FISCALIZA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}')">Compartilhar</button>
+              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.FISCALIZA.icon("lupa", { size: 14 })} Betha</a>
               <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 5px 10px; background: #eee; border-radius: 4px; color: #555; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
             </div>
           </div>
@@ -6394,9 +6455,9 @@ ${url}
               ${meses ? `<span><strong>Duracao estimada:</strong> ${meses} mes${meses === 1 ? "" : "es"}</span>` : ""}
             </div>
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
-              <button class="btn-dossie" onclick="ZELA.gerarDossie(${contratosAluguel.indexOf(c)})">Ver Dossie</button>
-              <button class="btn-share" onclick="ZELA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)} · estimado ${fmtBRL(mensal)}/mes por ${meses || ""} meses')">Zap</button>
-              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.ZELA.icon("lupa", { size: 14 })} Betha</a>
+              <button class="btn-dossie" onclick="FISCALIZA.gerarDossie(${contratosAluguel.indexOf(c)})">Ver Dossie</button>
+              <button class="btn-share" onclick="FISCALIZA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)} · estimado ${fmtBRL(mensal)}/mes por ${meses || ""} meses')">Zap</button>
+              <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener" title="Buscar este contrato no Portal Betha" style="text-decoration:none; padding: 5px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">${window.FISCALIZA.icon("lupa", { size: 14 })} Betha</a>
               <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/contratos" target="_blank" rel="noopener" title="Portal oficial (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 5px 10px; background: #eee; border-radius: 4px; color: #555; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
             </div>
           </div>
@@ -6414,7 +6475,7 @@ ${url}
 
   // initDiarias delegado para modules/diarias.js (264 linhas extraídas + bugs corrigidos)
   function initDiarias(prefix, dados) {
-    window.ZELA.diarias.init(prefix, dados);
+    window.FISCALIZA.diarias.init(prefix, dados);
   }
 
   function renderDiariasDeferred(prefix, state = "idle") {
@@ -6440,10 +6501,10 @@ ${url}
 
   // ============= PLACAR DO DINHEIRO (prefeitura.html) =============
   // Placar e Categorias delegados para modules/dashboard.js
-  function renderPlacarPrefeitura()     { window.ZELA.dashboard.renderPlacarPrefeitura(); }
-  function renderCategoriasPrefeitura() { window.ZELA.dashboard.renderCategoriasPrefeitura(); }
-  function renderPlacarCamara()         { window.ZELA.dashboard.renderPlacarCamara(); }
-  function renderCategoriasCamara()     { window.ZELA.dashboard.renderCategoriasCamara(); }
+  function renderPlacarPrefeitura()     { window.FISCALIZA.dashboard.renderPlacarPrefeitura(); }
+  function renderCategoriasPrefeitura() { window.FISCALIZA.dashboard.renderCategoriasPrefeitura(); }
+  function renderPlacarCamara()         { window.FISCALIZA.dashboard.renderPlacarCamara(); }
+  function renderCategoriasCamara()     { window.FISCALIZA.dashboard.renderCategoriasCamara(); }
 
   function renderPrefeituraOverview() {
     if (!$("prefeituraOverview")) return;
@@ -6537,6 +6598,7 @@ ${url}
     setBadge("badgeEventos", eventosBase.length);
     setBadge("badgeLicitacoes", licitacoes.length);
     setBadge("badgeFrota", frota.length);
+    setBadge("badgeAsfalto", "…");
 
     const pctVariacao = pf.total_externo_anterior ? (((pf.total_externo_atual / pf.total_externo_anterior) - 1) * 100).toFixed(1) : 0;
     const trendLabel = pctVariacao > 0 ? `+${pctVariacao}% em relacao a ${pf.ano_anterior}` : `${pctVariacao}% em relacao a ${pf.ano_anterior}`;
@@ -6752,7 +6814,7 @@ ${url}
             ${fornecedores.length ? fornecedores.map(f => `
               <div class="keyword-row">
                 <span>${esc(f.nome)}
-                  ${Number.isInteger(f.contratoIdx) ? `<button type="button" class="keyword-row__action" onclick="ZELA.abrirContrato(${f.contratoIdx})">Ver contrato</button>` : ""}
+                  ${Number.isInteger(f.contratoIdx) ? `<button type="button" class="keyword-row__action" onclick="FISCALIZA.abrirContrato(${f.contratoIdx})">Ver contrato</button>` : ""}
                 </span>
                 <strong>${fmtBRL(f.valor)}</strong>
                 <small>${fmtNum(f.qtd)} registro(s)</small>
@@ -6764,7 +6826,7 @@ ${url}
               const isContrato = item.origem === "Contrato" && Number.isInteger(item.contratoIdx);
               const tag = isContrato ? "button" : "div";
               const attrs = isContrato
-                ? ` type="button" class="keyword-row keyword-row--button" onclick="ZELA.abrirContrato(${item.contratoIdx})"`
+                ? ` type="button" class="keyword-row keyword-row--button" onclick="FISCALIZA.abrirContrato(${item.contratoIdx})"`
                 : ` class="keyword-row"`;
               return `
               <${tag}${attrs}>
@@ -7016,7 +7078,7 @@ ${url}
 
       block.dataset.collapsibleReady = "1";
       const titleText = (title.textContent || "Secao").trim();
-      const storageKey = `zela:collapse:${PAGE}:${index}:${norm(titleText).slice(0, 48)}`;
+      const storageKey = `fiscaliza:collapse:${PAGE}:${index}:${norm(titleText).slice(0, 48)}`;
 
       const head = document.createElement("div");
       head.className = "block__head";
@@ -7076,14 +7138,22 @@ ${url}
 
   function initPagePdfButton() {
     const header = document.querySelector(".bigheader, .cobrar-hero");
-    if (!header || header.querySelector(".pdf-action")) return;
+    if (!header) return;
+    const existing = header.querySelector(".pdf-action, .btn-pdf, #btnBaixarPagina");
+    if (existing) {
+      existing.addEventListener("click", (event) => {
+        event.preventDefault();
+        baixarPdfSecao(document.querySelector("#conteudo") || document.body, pageTitle());
+      });
+      return;
+    }
 
     const actions = header.querySelector(".civic-actions") || header;
     const button = document.createElement("button");
     button.type = "button";
     button.className = "pdf-action pdf-action--page";
-    button.innerHTML = `<span aria-hidden="true">PDF</span><span>Baixar pagina</span>`;
-    button.setAttribute("aria-label", "Baixar PDF da pagina atual");
+    button.innerHTML = `<span aria-hidden="true">PDF</span><span>Baixar relatório em PDF</span>`;
+    button.setAttribute("aria-label", "Baixar relatório da página atual em PDF");
     button.addEventListener("click", () => baixarPdfSecao(document.querySelector("#conteudo") || document.body, pageTitle()));
     actions.appendChild(button);
   }
@@ -7142,6 +7212,191 @@ ${url}
           <a href="sobre.html#auditoriaDados">Ver auditoria completa e limitações das fontes</a>
         </div>
       </details>`;
+  }
+
+  function renderSourceCoverage() {
+    if (!["prefeitura", "camara", "relatorios"].includes(PAGE)) return;
+    const domains = D.status_fontes?.domains || {};
+    if (!Object.keys(domains).length) return;
+
+    const pageSources = {
+      prefeitura: ["prefeitura", "pncp", "cnpjs", "diario"],
+      camara: ["camara_betha", "camara_anos", "indice_relevancia", "publicacoes_estruturadas"],
+      relatorios: ["prefeitura", "camara_betha", "camara_anos", "pncp", "cnpjs", "fontes_emendas_2026"],
+    };
+    const sources = (pageSources[PAGE] || [])
+      .map((id) => ({ id, ...(domains[id] || {}) }))
+      .filter((source) => source.label);
+    if (!sources.length) return;
+
+    const statusMeta = {
+      ok: { label: "Completa", cls: "ok" },
+      partial: { label: "Parcial", cls: "partial" },
+      preserved: { label: "Base anterior preservada", cls: "preserved" },
+      stale: { label: "Desatualizada", cls: "stale" },
+      failed: { label: "Falhou", cls: "failed" },
+      manual: { label: "Atualização manual", cls: "manual" },
+      unknown: { label: "Situação não informada", cls: "unknown" },
+    };
+    const counts = sources.reduce((acc, source) => {
+      const key = source.status || "unknown";
+      acc[key] = (acc[key] || 0) + 1;
+      return acc;
+    }, {});
+    const summaryParts = [
+      counts.ok ? `${fmtNum(counts.ok)} completa${counts.ok > 1 ? "s" : ""}` : "",
+      counts.partial ? `${fmtNum(counts.partial)} parcial${counts.partial > 1 ? "is" : ""}` : "",
+      counts.preserved ? `${fmtNum(counts.preserved)} preservada${counts.preserved > 1 ? "s" : ""}` : "",
+      counts.failed ? `${fmtNum(counts.failed)} com falha` : "",
+      counts.stale ? `${fmtNum(counts.stale)} desatualizada${counts.stale > 1 ? "s" : ""}` : "",
+    ].filter(Boolean).join(" · ");
+
+    const formatDate = (iso) => {
+      if (!iso) return "data não informada";
+      const date = new Date(iso);
+      if (Number.isNaN(date.getTime())) return "data não informada";
+      return new Intl.DateTimeFormat("pt-BR", {
+        day: "2-digit", month: "2-digit", year: "numeric",
+        hour: "2-digit", minute: "2-digit",
+      }).format(date);
+    };
+
+    const box = document.createElement("section");
+    box.className = "source-coverage";
+    box.setAttribute("aria-label", "Cobertura e atualização das fontes desta página");
+    box.innerHTML = `
+      <details>
+        <summary>
+          <span>
+            <b>Cobertura dos dados desta página</b>
+            <small>${esc(summaryParts || "situação das fontes disponível")}</small>
+          </span>
+          <em>Ver fontes e datas</em>
+        </summary>
+        <div class="source-coverage__grid">
+          ${sources.map((source) => {
+            const meta = statusMeta[source.status] || statusMeta.unknown;
+            return `<article class="source-coverage__item source-coverage__item--${meta.cls}">
+              <div>
+                <strong>${esc(cleanText(source.label))}</strong>
+                <span>${esc(meta.label)}</span>
+              </div>
+              <small>Último dado: ${esc(formatDate(source.source_updated_at))}</small>
+              <p>${esc(cleanText(source.reason || "Sem observação adicional."))}</p>
+            </article>`;
+          }).join("")}
+        </div>
+        <p class="source-coverage__note">
+          “Parcial” indica que parte da informação não foi localizada ou validada.
+          “Preservada” significa que o painel manteve a última base válida para não apagar o histórico.
+        </p>
+      </details>`;
+
+    const header = document.querySelector(".bigheader");
+    const updated = header?.querySelector("#atualizado");
+    if (updated) updated.insertAdjacentElement("afterend", box);
+    else if (header) header.prepend(box);
+  }
+
+  function renderVerificationPriorities() {
+    const target = $("pontosConferencia");
+    if (!target) return;
+    const auditItems = (D.auditoria_dados?.items || [])
+      .filter((item) => item.severity === "error" || item.severity === "warning")
+      .sort((a, b) => {
+        const rank = { error: 0, warning: 1 };
+        return (rank[a.severity] ?? 2) - (rank[b.severity] ?? 2);
+      });
+    if (!auditItems.length) {
+      target.innerHTML = `<div class="empty">Nenhum ponto prioritário foi sinalizado na auditoria atual.</div>`;
+      return;
+    }
+
+    const destination = (item) => {
+      const source = String(item.source || "");
+      if (/emenda/i.test(source) || /emenda/i.test(item.id || "")) return "camara.html#emendas";
+      if (/camara/i.test(source)) return "camara.html";
+      if (/prefeitura|licitac/i.test(source)) return "prefeitura.html?tab=contratos";
+      if (/sanc/i.test(source) || /cnpj/i.test(source)) return "conformidade.html";
+      return "sobre.html#auditoriaDados";
+    };
+    const destinationLabel = (item) => {
+      const href = destination(item);
+      if (href.startsWith("camara")) return "Conferir na Câmara";
+      if (href.startsWith("prefeitura")) return "Conferir contratos";
+      if (href.startsWith("conformidade")) return "Conferir sanções e CNPJ";
+      return "Ver metodologia";
+    };
+
+    const titleOverrides = {
+      "fornecedor-inidoneo": "Fornecedores do painel com declaração de inidoneidade vigente",
+      "emendas-2026-sem-lista": "Emendas de 2026 sem lista oficial consolidada",
+      "cnpj-falhas": "CNPJ sem enriquecimento cadastral completo",
+      "camara-despesa-sem-contrato": "Despesas da Câmara sem contrato vinculado automaticamente",
+      "prefeitura-despesa-sem-contrato": "Pagamentos elevados sem contrato ou obra vinculada automaticamente",
+      "emendas-sem-repasses": "Emendas de alto valor sem repasse localizado no cruzamento",
+      "fornecedor-sancionado-outro-ente": "Sanções aplicadas por outros órgãos: histórico para conferência",
+      "homologacao-simbolica": "Licitação com valor homologado simbólico",
+    };
+    const humanize = (value) => {
+      let text = cleanText(value || "");
+      const replacements = [
+        [/\bnao\b/gi, "não"], [/\bha\b/gi, "há"], [/\bsao\b/gi, "são"],
+        [/\bpublica\b/gi, "pública"],
+        [/\bpublico\b/gi, "público"], [/\bpublicos\b/gi, "públicos"],
+        [/\bdeclaracao\b/gi, "declaração"], [/\bsancao\b/gi, "sanção"],
+        [/\bsancoes\b/gi, "sanções"], [/\badministracao\b/gi, "administração"],
+        [/\blicitacao\b/gi, "licitação"], [/\bcontratacao\b/gi, "contratação"],
+        [/\bexecucao\b/gi, "execução"], [/\binformacao\b/gi, "informação"],
+        [/\bmunicipio\b/gi, "município"], [/\bvigencia\b/gi, "vigência"],
+        [/\bevidencias\b/gi, "evidências"], [/\blimitacoes\b/gi, "limitações"],
+        [/\binvestigacao\b/gi, "investigação"], [/\bnumero\b/gi, "número"],
+        [/\btecnico\b/gi, "técnico"], [/\btecnicos\b/gi, "técnicos"],
+        [/\borgao\b/gi, "órgão"], [/\borgaos\b/gi, "órgãos"],
+        [/\bresponsavel\b/gi, "responsável"], [/\bhistorico\b/gi, "histórico"],
+        [/\bcriterio\b/gi, "critério"], [/\bintegra\b/gi, "íntegra"],
+        [/\birrisorio\b/gi, "irrisório"], [/\bcorrespondencia\b/gi, "correspondência"],
+      ];
+      replacements.forEach(([pattern, replacement]) => { text = text.replace(pattern, replacement); });
+      return text;
+    };
+    const renderItem = (item, index) => {
+      const verification = item.verification || {};
+      const evidence = verification.evidencias || [];
+      const limitations = verification.limitacoes || [];
+      const level = item.severity === "error" ? "prioridade alta" : "atenção";
+      return `<article class="verification-item verification-item--${esc(item.severity)}">
+        <div class="verification-item__rank" aria-hidden="true">${index + 1}</div>
+        <div class="verification-item__content">
+          <div class="verification-item__title">
+            <span>${esc(level)}</span>
+            <h4>${esc(titleOverrides[item.id] || humanize(item.title || "Ponto para conferência"))}</h4>
+          </div>
+          <p>${esc(humanize(item.detail || ""))}</p>
+          <details>
+            <summary>Ver evidências, limitações e próximo passo</summary>
+            <div class="verification-item__details">
+              ${evidence.length ? `<p><b>Evidência automática:</b> ${esc(humanize(evidence.join("; ")))}</p>` : ""}
+              ${limitations.length ? `<p><b>Limitação:</b> ${esc(humanize(limitations.join("; ")))}</p>` : ""}
+              <p><b>Próximo passo:</b> ${esc(humanize(item.action || "Conferir a fonte oficial antes de concluir."))}</p>
+            </div>
+          </details>
+          <div class="verification-item__actions">
+            <a class="btn-link" href="${esc(destination(item))}">${esc(destinationLabel(item))}</a>
+            <a class="btn-link btn-link--quiet" href="cobrar.html">Preparar cobrança oficial</a>
+          </div>
+        </div>
+      </article>`;
+    };
+    const visible = auditItems.slice(0, 4);
+    const additional = auditItems.slice(4);
+    target.innerHTML = visible.map(renderItem).join("") +
+      (additional.length ? `<details class="verification-more">
+        <summary>Ver mais ${fmtNum(additional.length)} ponto(s) para conferência</summary>
+        <div class="verification-more__list">
+          ${additional.map((item, index) => renderItem(item, index + visible.length)).join("")}
+        </div>
+      </details>` : "");
   }
 
   // ============= AUDITÔMETRO (index.html) =============
@@ -7212,10 +7467,10 @@ ${url}
       </article>`;
 
     $("fundacaoResumo").innerHTML = [
-      card("placar-card--money", window.ZELA.icon("cifrao", { size: 20 }), fmtMi(despesas.total_atual || 0), `Pago em ${ano}`, "Despesas por credor no Betha"),
-      card("placar-card--top", window.ZELA.icon("predio", { size: 20 }), fmtMi(despesas.total_externo_atual || 0), "Pago a externos", "Sem folha/encargos internos"),
-      card("placar-card--count", window.ZELA.icon("documentos", { size: 20 }), fmtNum(contratosResumo.qtd_vigencia_futura || 0), "Contratos com vigência futura", fmtBRL(contratosResumo.valor_vigencia_futura || 0)),
-      card("placar-card--warn", window.ZELA.icon("alerta", { size: 20 }), fmtNum(licResumo.dispensas_qtd || 0), "Dispensas no histórico", "Priorize justificativas e publicações"),
+      card("placar-card--money", window.FISCALIZA.icon("cifrao", { size: 20 }), fmtMi(despesas.total_atual || 0), `Pago em ${ano}`, "Despesas por credor no Betha"),
+      card("placar-card--top", window.FISCALIZA.icon("predio", { size: 20 }), fmtMi(despesas.total_externo_atual || 0), "Pago a externos", "Sem folha/encargos internos"),
+      card("placar-card--count", window.FISCALIZA.icon("documentos", { size: 20 }), fmtNum(contratosResumo.qtd_vigencia_futura || 0), "Contratos com vigência futura", fmtBRL(contratosResumo.valor_vigencia_futura || 0)),
+      card("placar-card--warn", window.FISCALIZA.icon("alerta", { size: 20 }), fmtNum(licResumo.dispensas_qtd || 0), "Dispensas no histórico", "Priorize justificativas e publicações"),
     ].join("");
 
     if ($("fundacaoMapa")) {
@@ -7249,8 +7504,8 @@ ${url}
             <div class="forn-row__nome">${esc(f.nome || "Credor não informado")}</div>
             <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${((f.valor_total || 0) / max) * 100}%"></span></div>
             <div class="forn-row__actions">
-              <a class="forn-row__btn forn-row__btn--betha" href="${portal}/consulta/80528" target="_blank" rel="noopener">${window.ZELA.icon("lupa", { size: 14 })} Despesas Betha</a>
-              <a class="forn-row__btn forn-row__btn--filtro" href="fundacao.html?q=${encodeURIComponent(f.nome || "")}#fundacaoContratos">${window.ZELA.icon("documentos", { size: 14 })} Ver contratos</a>
+              <a class="forn-row__btn forn-row__btn--betha" href="${portal}/consulta/80528" target="_blank" rel="noopener">${window.FISCALIZA.icon("lupa", { size: 14 })} Despesas Betha</a>
+              <a class="forn-row__btn forn-row__btn--filtro" href="fundacao.html?q=${encodeURIComponent(f.nome || "")}#fundacaoContratos">${window.FISCALIZA.icon("documentos", { size: 14 })} Ver contratos</a>
             </div>
           </div>
           <div class="forn-row__cnpj">${esc(f.cnpj || "")}</div>
@@ -7297,7 +7552,7 @@ ${url}
             <p class="contrato__obj">${esc(cleanText(c.objeto || "Objeto não informado"))}</p>
             <p class="muted small">Nº ${esc(c.numero || "—")}${c.ano ? "/" + esc(c.ano) : ""} · ${esc(c.data_assinatura || "")}${c.data_fim ? " → " + esc(c.data_fim) : ""} · ${esc(c.tipo || c.modalidade || "")}</p>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
-              <button type="button" class="btn-dossie" onclick="ZELA.abrirContratoFundacao(${contratos.indexOf(c)})">Ver detalhes</button>
+              <button type="button" class="btn-dossie" onclick="FISCALIZA.abrirContratoFundacao(${contratos.indexOf(c)})">Ver detalhes</button>
               <a class="btn-link" href="${portal}/consulta/80579" target="_blank" rel="noopener" style="text-decoration:none; padding:4px 10px; background:#e8f4fd; border-radius:4px; color:#1565c0; font-size:.8em; font-weight:600; border:1px solid #90caf9;">Betha contratos</a>
             </div>
           </div>
@@ -7306,14 +7561,14 @@ ${url}
       if (maisContratos) maisContratos.hidden = view.length <= contratosShownFundacao;
     }
 
-    window.ZELA.maisContratosFundacao = function () {
+    window.FISCALIZA.maisContratosFundacao = function () {
       contratosShownFundacao += 20;
       renderContratosFundacao(false);
     };
-    window.ZELA.abrirContratoFundacao = function (idx) {
+    window.FISCALIZA.abrirContratoFundacao = function (idx) {
       const c = contratos[idx];
-      if (!c || !window.ZELA.dossie) return;
-      window.ZELA.dossie.abrirComHtml(`
+      if (!c || !window.FISCALIZA.dossie) return;
+      window.FISCALIZA.dossie.abrirComHtml(`
         <div class="cat-modal">
           <p style="margin:0;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--gold-dk);">CONTRATO DA FUNDAÇÃO</p>
           <h3 style="margin:4px 0 2px;">${esc(c.contratado || "Contratado não informado")}</h3>
@@ -7489,7 +7744,9 @@ ${url}
     }).join("");
   }
 
+  renderSourceCoverage();
   renderGlobalDataHealthNotice();
+  renderVerificationPriorities();
   if (PAGE === "home") initScorecard();
   if (PAGE === "pessoal") initPessoal();
   if (PAGE === "fundacao") { renderFundacaoCultural(); renderCruzamentoFundacao(); }
@@ -7503,7 +7760,7 @@ ${url}
   if (PAGE === "prefeitura") renderFrotaPrefeitura();
   if (PAGE === "camara") renderPlacarCamara();
   if (PAGE === "camara") renderRemuneracaoVereadores();
-  if (PAGE === "camara" && window.ZELA.indiceRelevancia) window.ZELA.indiceRelevancia.render();
+  if (PAGE === "camara" && window.FISCALIZA.indiceRelevancia) window.FISCALIZA.indiceRelevancia.render();
   if (PAGE === "camara") renderCategoriasCamara();
   if (PAGE === "cobrar") {
     renderFilaCobrancaPublica();
@@ -7625,7 +7882,7 @@ ${url}
 
     initFiltrosTemplates();
   }
-  if (PAGE === "atualizacoes" && window.ZELA.atualizacoes) window.ZELA.atualizacoes.init();
+  if (PAGE === "atualizacoes" && window.FISCALIZA.atualizacoes) window.FISCALIZA.atualizacoes.init();
   if (PAGE === "prefeitura") renderAlugueisV2();
   if (PAGE === "prefeitura") {
     if (D.diarias) {
@@ -7655,7 +7912,7 @@ ${url}
       const toast = document.createElement("div");
       toast.id = "sw-toast";
       toast.setAttribute("role", "status");
-      toast.innerHTML = `${window.ZELA.icon ? window.ZELA.icon("sinal", { size: 16 }) : ""} Dados atualizados <button onclick="window.location.reload()">Recarregar</button>`;
+      toast.innerHTML = `${window.FISCALIZA.icon ? window.FISCALIZA.icon("sinal", { size: 16 }) : ""} Dados atualizados <button onclick="window.location.reload()">Recarregar</button>`;
       document.body.appendChild(toast);
       requestAnimationFrame(function () {
         requestAnimationFrame(function () { toast.classList.add("show"); });
@@ -7804,7 +8061,7 @@ ${url}
   })();
 
   // ============= GAVETA DE FILTROS RESPONSIVA MOBILE =============
-  window.ZELA.toggleMobileFilters = function(id) {
+  window.FISCALIZA.toggleMobileFilters = function(id) {
     const el = document.getElementById(id);
     if (!el) return;
     let overlay = document.getElementById("filterOverlay");
@@ -7828,12 +8085,12 @@ ${url}
   };
 
   // ============= MODO ESCURO (DARK THEME) =============
-  window.ZELA.initTheme = function() {
+  window.FISCALIZA.initTheme = function() {
     document.body.classList.remove("dark-theme");
-    try { localStorage.removeItem("zela-theme"); } catch (_) {}
+    try { localStorage.removeItem("fiscaliza-theme"); } catch (_) {}
     document.querySelector(".theme-toggle-btn")?.remove();
     return;
-    const isDark = localStorage.getItem("zela-theme") === "dark";
+    const isDark = localStorage.getItem("fiscaliza-theme") === "dark";
     if (isDark) {
       document.body.classList.add("dark-theme");
     }
@@ -7848,7 +8105,7 @@ ${url}
       btn.innerHTML = isDark ? "☀" : "☾";
       btn.addEventListener("click", () => {
         const isCurrentlyDark = document.body.classList.toggle("dark-theme");
-        localStorage.setItem("zela-theme", isCurrentlyDark ? "dark" : "light");
+        localStorage.setItem("fiscaliza-theme", isCurrentlyDark ? "dark" : "light");
         const label = isCurrentlyDark ? "Usar tema claro" : "Usar tema escuro";
         btn.setAttribute("aria-label", label);
         btn.setAttribute("title", label);
@@ -7865,20 +8122,20 @@ ${url}
 
   // Garante a execucao apos o DOM estar pronto
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", window.ZELA.initTheme);
+    document.addEventListener("DOMContentLoaded", window.FISCALIZA.initTheme);
   } else {
-    window.ZELA.initTheme();
+    window.FISCALIZA.initTheme();
   }
 
 
   // Atualização progressiva: chunks pesados chegam em 2ª fase após o render inicial
-  window.addEventListener("zela:chunk:start", function (e) {
+  window.addEventListener("fiscaliza:chunk:start", function (e) {
     if ((e.detail || {}).key !== "diarias") return;
     if (PAGE === "prefeitura") renderDiariasDeferred("Prefeitura", "loading");
     if (PAGE === "camara") renderDiariasDeferred("Camara", "loading");
   });
 
-  window.addEventListener("zela:chunk:error", function (e) {
+  window.addEventListener("fiscaliza:chunk:error", function (e) {
     if ((e.detail || {}).key !== "diarias") return;
     if (PAGE === "prefeitura") renderDiariasDeferred("Prefeitura", "error");
     if (PAGE === "camara") renderDiariasDeferred("Camara", "error");
@@ -7886,12 +8143,12 @@ ${url}
 
   document.addEventListener("click", function (e) {
     const retry = e.target.closest?.('[data-retry-chunk="diarias"]');
-    if (!retry || !window.ZELA_DATA_LOADER) return;
+    if (!retry || !window.FISCALIZA_DATA_LOADER) return;
     renderDiariasDeferred(PAGE === "camara" ? "Camara" : "Prefeitura", "loading");
-    window.ZELA_DATA_LOADER.load("diarias").catch(() => {});
+    window.FISCALIZA_DATA_LOADER.load("diarias").catch(() => {});
   });
 
-  window.addEventListener("zela:chunk", function (e) {
+  window.addEventListener("fiscaliza:chunk", function (e) {
     var key = (e.detail || {}).key;
     if (key === "diarias" && PAGE === "prefeitura") {
       $("diariasPrefeituraBlock")?.setAttribute("data-progressive-state", "ready");

@@ -2,19 +2,19 @@
  *
  * Glossário cidadão — traduz jargão técnico em linguagem comum.
  *
- * Disponível em window.ZELA.glossario.
+ * Disponível em window.FISCALIZA.glossario.
  * Carregado pelo data-loader.js (depois de utils.js, antes de app.js).
  *
  * Dependências externas:
- *   - window.ZELA.utils.* (esc, jsSafe, norm — conforme uso interno)
+ *   - window.FISCALIZA.utils.* (esc, jsSafe, norm — conforme uso interno)
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
   // Aliases das utilidades. utils.js DEVE ser carregado antes.
-  const u = window.ZELA.utils;
+  const u = window.FISCALIZA.utils;
   if (!u) {
-    console.error("[glossario] window.ZELA.utils ausente. Carregue modules/utils.js primeiro.");
+    console.error("[glossario] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
   const esc = u.esc, jsSafe = u.jsSafe, norm = u.norm;
@@ -48,7 +48,7 @@
     "objeto":            { simples: "O que foi contratado", explica: "Descrição do bem, serviço ou obra contratada." },
     "data_assinatura":   { simples: "Início do contrato",  explica: "Dia em que o contrato foi assinado." },
     "data_fim":          { simples: "Fim do contrato",     explica: "Dia em que o contrato termina." },
-    "emenda impositiva": { simples: "Emenda impositiva",   explica: "Verba que cada vereador pode destinar a entidades, obras ou serviços — execução obrigatória pela Prefeitura." },
+    "emenda impositiva": { simples: "Emenda impositiva",   explica: "Verba indicada pelo vereador com execução orçamentária obrigatória, ressalvados impedimentos técnicos ou legais." },
     "cnpj":              { simples: "CNPJ",                explica: "Número de identificação da empresa na Receita Federal." },
     "situação":          { simples: "Situação",            explica: "Status atual do contrato: ativo, encerrado, suspenso." },
     "diária":            { simples: "Diária",              explica: "Valor para custear viagem oficial. Não é salário extra; precisa de finalidade pública e prestação de contas.", aliases: ["diarias", "diárias"] },
@@ -66,15 +66,15 @@
     return glossarioLookup.get(norm(termo));
   };
   // Expor publicamente para uso por outras partes do código
-  window.ZELA = window.ZELA || {};
-  window.ZELA.glossario = GLOSSARIO;
-  window.ZELA.simplificarTermo = function (termo) {
+  window.FISCALIZA = window.FISCALIZA || {};
+  window.FISCALIZA.glossario = GLOSSARIO;
+  window.FISCALIZA.simplificarTermo = function (termo) {
     if (!termo) return termo;
     const dic = buscarTermo(termo);
     return (dic && dic.simples) || termo;
   };
   // Envolve um termo num span com tooltip explicativo (uso opcional em templates)
-  window.ZELA.termoCidadao = function (termo, opts) {
+  window.FISCALIZA.termoCidadao = function (termo, opts) {
     opts = opts || {};
     const dic = buscarTermo(termo);
     if (!dic) return esc(termo);
@@ -145,7 +145,7 @@
     node.parentNode.replaceChild(frag, node);
   };
   let enriquecendo = false;
-  window.ZELA.enriquecerGlossario = function (root) {
+  window.FISCALIZA.enriquecerGlossario = function (root) {
     const alvo = root && root.nodeType ? root : document.body;
     if (!alvo || enriquecendo) return;
     enriquecendo = true;
@@ -169,10 +169,10 @@
     agendado = true;
     requestAnimationFrame(function () {
       agendado = false;
-      window.ZELA.enriquecerGlossario(document.getElementById("conteudo") || document.body);
+      window.FISCALIZA.enriquecerGlossario(document.getElementById("conteudo") || document.body);
     });
   };
-  window.addEventListener("zela:ready", agendar);
+  window.addEventListener("fiscaliza:ready", agendar);
   document.addEventListener("DOMContentLoaded", agendar);
   const observer = new MutationObserver(function (mutations) {
     if (enriquecendo) return;

@@ -9,23 +9,23 @@
  *   2. data/chunks/prefeitura.json + camara_anos.json — contratos coletados
  *      do Portal Betha, convertidos automaticamente em atos do feed
  *
- * Disponível em window.ZELA.atualizacoes.
+ * Disponível em window.FISCALIZA.atualizacoes.
  * Dependências: utils, icons, watchlist, categorias.
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
-  const u = window.ZELA.utils;
+  const u = window.FISCALIZA.utils;
   if (!u) {
-    console.error("[atualizacoes] window.ZELA.utils ausente.");
+    console.error("[atualizacoes] window.FISCALIZA.utils ausente.");
     return;
   }
   const { esc, cleanText, fmtBRL, fmtNum, norm } = u;
 
   function $(id) { return document.getElementById(id); }
   function icon(nome, opts) {
-    return (window.ZELA.icon || function () { return ""; })(nome, opts);
+    return (window.FISCALIZA.icon || function () { return ""; })(nome, opts);
   }
 
   // Mapa tipo → ícone + label visual
@@ -217,8 +217,8 @@
     else relevancia = "baixa";
 
     // Categoria automática
-    const cat = (window.ZELA.classificarItem || (() => null))(c);
-    const categorias = (window.ZELA.categorias || []);
+    const cat = (window.FISCALIZA.classificarItem || (() => null))(c);
+    const categorias = (window.FISCALIZA.categorias || []);
     const catObj = categorias.find(x => x.id === cat);
     const categoria = catObj ? catObj.label : "Administração";
 
@@ -327,7 +327,7 @@
   // Carrega todos os atos: mocks do diário + contratos reais
   // ============================================================
   function carregarAtos() {
-    const D = window.ZELA_DATA || {};
+    const D = window.FISCALIZA_DATA || {};
     const mockData = D.atualizacoes || {};
     const mocks = (mockData.atos || []).map(a => ({ ...a, _fonte: "diario" }));
 
@@ -370,8 +370,8 @@
 
       const valor = Number(f.valor_total) || 0;
       const ano = orgao === "Câmara"
-        ? ((window.ZELA_DATA.camara_betha || {}).ano_atual)
-        : ((window.ZELA_DATA.prefeitura || {}).ano_atual);
+        ? ((window.FISCALIZA_DATA.camara_betha || {}).ano_atual)
+        : ((window.FISCALIZA_DATA.prefeitura || {}).ano_atual);
       const dataRef = ano ? `${ano}-12-31` : "";
       const idAto = `${orgao.toUpperCase()}-FORN-${(nomeNorm.replace(/[^a-z0-9]/g, "")).slice(0, 24)}`;
 
@@ -471,7 +471,7 @@
   }
 
   function carregarDiario() {
-    const D = window.ZELA_DATA || {};
+    const D = window.FISCALIZA_DATA || {};
     const diario = D.diario || {};
     return (diario.ultimas || []).map((item, idx) => {
       const edicao = cleanText(item.edicao || item.numero || "");
@@ -499,7 +499,7 @@
     const el = $("atualizacoesStats");
     if (!el) return;
 
-    const diario = (window.ZELA_DATA || {}).diario || {};
+    const diario = (window.FISCALIZA_DATA || {}).diario || {};
     const hoje = hojeISO();
     const edicoesHoje = edicoes.filter(e => e.data === hoje).length;
     const extras = edicoes.filter(e => e.extra).length;
@@ -710,7 +710,7 @@
     const el = $("mudancasRecentes");
     if (!el) return;
 
-    const diff = (window.ZELA_DATA || {}).mudancas_coleta;
+    const diff = (window.FISCALIZA_DATA || {}).mudancas_coleta;
     if (diff && diff.resumo && (diff.modo === "comparacao" || diff.modo === "baseline")) {
       el.innerHTML = renderMudancasComparacao(diff);
       return;
@@ -734,7 +734,7 @@
         return (b.data || "").localeCompare(a.data || "");
       })
       .slice(0, 5);
-    const coleta = cleanText((window.ZELA_DATA || {}).atualizado_em?.data_humana || "");
+    const coleta = cleanText((window.FISCALIZA_DATA || {}).atualizado_em?.data_humana || "");
 
     if (!recentes.length) {
       el.innerHTML = `
@@ -1145,7 +1145,7 @@
     if (!envolvido || !envolvido.cnpj) return null;
     const raiz = envolvido.cnpj.replace(/[^\d]/g, "").slice(0, 8);
     if (raiz.length < 8) return null;
-    const D = window.ZELA_DATA || {};
+    const D = window.FISCALIZA_DATA || {};
     const pf = D.prefeitura || {};
     const contratos = (pf.contratos || []).filter(c =>
       (c.cnpj || "").replace(/[^\d]/g, "").slice(0, 8) === raiz
@@ -1187,7 +1187,7 @@
     // Atos agregados (ex.: "sem contrato formal") trazem data_rotulo —
     // exibição amigável que não confunde o cidadão com uma data de evento.
     let dataDisplay = ato.data_rotulo || dataBr;
-    const coletaData = (window.ZELA_DATA || {}).atualizado_em?.data_humana || "";
+    const coletaData = (window.FISCALIZA_DATA || {}).atualizado_em?.data_humana || "";
     if (ato.data_rotulo && coletaData) {
       dataDisplay += ` (atualizado no site em ${coletaData.replace(" - ", " às ")})`;
     }
@@ -1218,8 +1218,8 @@
     ).join("");
 
     const idAto = ato.id || `${ato.data}-${ato.titulo}`;
-    const btnWatch = (window.ZELA.watchlist || {}).botao
-      ? window.ZELA.watchlist.botao("atualizacoes", idAto)
+    const btnWatch = (window.FISCALIZA.watchlist || {}).botao
+      ? window.FISCALIZA.watchlist.botao("atualizacoes", idAto)
       : "";
 
     // Compartilhar WhatsApp
@@ -1267,7 +1267,7 @@
         <div style="margin-top:14px; padding:10px 12px; background:var(--cream); border-radius:6px; border:1px dashed var(--line); display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <span style="font-size:.82rem; color:var(--muted);">Pesquisar a publicação? Copie o número:</span>
           <code style="background:#fff; padding:3px 10px; border-radius:4px; font-weight:700; color:var(--navy); border:1px solid var(--line);">${esc(ato.copia_numero)}</code>
-          <button type="button" onclick="window.ZELA.atualizacoes.copiarNumero('${esc(ato.copia_numero).replace(/'/g, "\\'")}', this)" style="padding:4px 10px; background:var(--navy); color:#fff; border:none; border-radius:4px; font-size:.78rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">${icon("copiar", { size: 12 })} Copiar</button>
+          <button type="button" onclick="window.FISCALIZA.atualizacoes.copiarNumero('${esc(ato.copia_numero).replace(/'/g, "\\'")}', this)" style="padding:4px 10px; background:var(--navy); color:#fff; border:none; border-radius:4px; font-size:.78rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:4px;">${icon("copiar", { size: 12 })} Copiar</button>
         </div>
       ` : ""}
 
@@ -1288,7 +1288,7 @@
       <!-- Ações principais -->
       <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
         <a class="btn-link" href="${linkWa}" target="_blank" rel="noopener" style="padding:6px 12px; background:#0b5f3a; color:white; border-radius:4px; font-size:.82em; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:6px;">${icon("compartilhar", { size: 14 })} Compartilhar</a>
-        <button type="button" class="btn-link" onclick="window.ZELA.atualizacoes.copiarLAI('${idAto.replace(/'/g, "\\'")}', this)" style="padding:6px 12px; background:#fff8e1; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; border:1px solid #ffd54f; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">${icon("copiar", { size: 14 })} Copiar pergunta LAI</button>
+        <button type="button" class="btn-link" onclick="window.FISCALIZA.atualizacoes.copiarLAI('${idAto.replace(/'/g, "\\'")}', this)" style="padding:6px 12px; background:#fff8e1; color:#6d4c00; border-radius:4px; font-size:.82em; font-weight:600; border:1px solid #ffd54f; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">${icon("copiar", { size: 14 })} Copiar pergunta LAI</button>
       </div>
 
       <textarea class="dossier-lai-pergunta" data-id="${esc(idAto)}" readonly hidden aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)">${esc(perguntaLAI(ato))}</textarea>
@@ -1608,7 +1608,7 @@
     render();
   }
 
-  window.ZELA.atualizacoes = Object.freeze({
+  window.FISCALIZA.atualizacoes = Object.freeze({
     init,
     render,
     copiarLAI,

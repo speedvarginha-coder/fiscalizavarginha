@@ -4,5 +4,7 @@ Allow: /
 # Bloqueia artefatos que não devem ser indexados
 Disallow: /data/
 Allow: /data/chunks/
+Disallow: /avalie.php
+Disallow: /chat.php
 
-Sitemap: https://SEU-DOMINIO/sitemap.xml
+Sitemap: https://fiscalizavarginha.com.br/sitemap.xml

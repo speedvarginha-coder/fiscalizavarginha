@@ -2,19 +2,19 @@
  *
  * Categorias cidadãs — classifica itens (contratos/emendas) por área.
  *
- * Disponível em window.ZELA.categorias.
+ * Disponível em window.FISCALIZA.categorias.
  * Carregado pelo data-loader.js (depois de utils.js, antes de app.js).
  *
  * Dependências externas:
- *   - window.ZELA.utils.* (esc, jsSafe, norm — conforme uso interno)
+ *   - window.FISCALIZA.utils.* (esc, jsSafe, norm — conforme uso interno)
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
   // Aliases das utilidades. utils.js DEVE ser carregado antes.
-  const u = window.ZELA.utils;
+  const u = window.FISCALIZA.utils;
   if (!u) {
-    console.error("[categorias] window.ZELA.utils ausente. Carregue modules/utils.js primeiro.");
+    console.error("[categorias] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
   const esc = u.esc, jsSafe = u.jsSafe, norm = u.norm;
@@ -35,7 +35,7 @@
     { id: "seguranca",     iconKey: "seguranca",     label: "Segurança",     kw: ["seguranca", "guarda municipal", "vigilancia", "monitoramento", "camera", "alarme", "policial", "patrulha"] },
   ];
 
-  window.ZELA.categorias = CATEGORIAS;
+  window.FISCALIZA.categorias = CATEGORIAS;
   // Classifica pelo OBJETO (o que está sendo comprado) — não pela secretaria
   // gestora (entidade) nem pela modalidade. Inclui beneficiário/tipo, que ajudam
   // sobretudo nas emendas. Isso evita que tudo de uma "Secretaria de Obras"
@@ -46,7 +46,7 @@
   // cidadã própria, então vira token neutro.)
   const ARMADILHAS = /agricultura|agropecuaria|agricola|banda larga/g;
 
-  window.ZELA.classificarItem = function (item) {
+  window.FISCALIZA.classificarItem = function (item) {
     let txt = norm([item.objeto, item.beneficiario, item.tipo].filter(Boolean).join(" "));
     txt = txt.replace(ARMADILHAS, " agro ");
     for (let i = 0; i < CATEGORIAS.length; i++) {

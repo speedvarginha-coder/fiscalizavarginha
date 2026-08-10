@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Câmara · Fiscaliza Varginha</title>
-<meta name="description" content="O que a Câmara Municipal de Varginha está produzindo: vereadores, indicações, emendas impositivas.">
+<title>Vereadores e projetos da Câmara de Varginha</title>
+<meta name="description" content="Consulte vereadores, projetos de lei, indicações, votações, presença e emendas impositivas da Câmara Municipal de Varginha-MG.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/camara.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Câmara Municipal · Fiscaliza Varginha">
 <meta property="og:description" content="Vereadores, emendas impositivas e produção legislativa da Câmara de Varginha-MG.">
 <meta property="og:locale"      content="pt_BR">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/camara.html">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Câmara Municipal · Fiscaliza Varginha">
 <meta name="twitter:description" content="Vereadores, emendas e produção legislativa de Varginha-MG.">
-<link rel="stylesheet" href="style.css?v=20260627b">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 </head>
 <body data-page="camara">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -42,6 +45,7 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
@@ -175,7 +179,7 @@
         </div>
         <div id="contratosCamara" class="contratos-list"></div>
         <div id="contratosCamaraMais" class="loadmore" hidden>
-          <button type="button" onclick="ZELA.maisContratosCamara()">Mostrar mais</button>
+          <button type="button" onclick="FISCALIZA.maisContratosCamara()">Mostrar mais</button>
         </div>
       </div>
     </div>
@@ -356,7 +360,7 @@
       <div id="entidadeResumo" class="entity-profile" hidden></div>
       <div id="emendas" class="emendas"></div>
       <div id="emendasMais" class="loadmore" hidden>
-        <button type="button" onclick="ZELA.maisEmendas()">Mostrar mais 30</button>
+        <button type="button" onclick="FISCALIZA.maisEmendas()">Mostrar mais 30</button>
       </div>
     </div>
 
@@ -396,6 +400,10 @@
         <span id="contadorDiariasCamara" class="filterbar__count"></span>
       </div>
       <div id="rankingDiariasCamara" class="diarias-ranking"></div>
+      <div class="diarias-list-heading">
+        <h3>Lançamentos de diárias encontrados</h3>
+        <p>Cada cartão abaixo representa uma diária informada pela fonte oficial. A mesma pessoa pode aparecer mais de uma vez quando possui viagens ou lançamentos diferentes.</p>
+      </div>
       <div id="listaDiariasCamara" class="diarias-list"></div>
     </div>
 
@@ -437,8 +445,10 @@
         <a href="prefeitura.html">Prefeitura</a>
         <a href="fundacao.html">Fundação Cultural</a>
         <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="cobrar.html">Como cobrar</a>
       </nav>
@@ -468,7 +478,7 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260727-mobile2"></script>
+<script src="data-loader.js?v=20260730-relatorios2"></script>
 <script>
 /* Sub-navegação da Câmara: mostra uma seção por vez (reduz scroll gigante).
    Não interfere na renderização async — só alterna a classe csec-hidden. */
@@ -538,5 +548,4 @@
 </script>
 </body>
 </html>
-
 

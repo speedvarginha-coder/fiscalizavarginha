@@ -3,15 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel de Conformidade Legal · Fiscaliza Varginha</title>
-<meta name="description" content="Acompanhe o Índice Fiscaliza de Transparência e as exigências legais sobre a publicidade dos gastos públicos em Varginha.">
+<title>Conformidade e transparência legal em Varginha</title>
+<meta name="description" content="Acompanhe o Índice Fiscaliza de Transparência e as exigências legais sobre a publicidade dos gastos públicos em Varginha-MG.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/conformidade.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Conformidade Legal · Fiscaliza Varginha">
 <meta property="og:description" content="O Índice Fiscaliza de Transparência mede o cumprimento das leis de acesso à informação e compras públicas.">
 <meta property="og:locale"      content="pt_BR">
-<link rel="stylesheet" href="style.css?v=20260708">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/conformidade.html">
+<meta name="twitter:card"       content="summary">
+<meta name="twitter:title"      content="Transparência e conformidade legal em Varginha">
+<meta name="twitter:description" content="Acompanhe critérios legais de transparência pública em Varginha-MG.">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 <style>
   .conformidade-grid {
     display: flex;
@@ -20,7 +26,7 @@
     margin: 32px 0;
   }
   .sobre-card {
-    background: var(--white);
+    background: var(--surface);
     border: 1px solid var(--line);
     border-left: 6px solid var(--navy);
     border-radius: var(--radius);
@@ -47,9 +53,9 @@
     align-items: center;
     gap: 12px;
   }
-  .sobre-card--gold h2 { color: #b07e00; }
-  .sobre-card--teal h2 { color: #007355; }
-  .sobre-card--red h2  { color: #9b1c1c; }
+  .sobre-card--gold h2 { color: var(--warn-ink-2); }
+  .sobre-card--teal h2 { color: var(--success-dk); }
+  .sobre-card--red h2  { color: var(--danger-dk); }
 
   .sobre-card h3 {
     margin: 0 0 20px;
@@ -68,7 +74,7 @@
   }
   .sobre-card p, .sobre-card li {
     font-size: 1.08rem;
-    color: #374151;
+    color: var(--ink-soft, #374151);
     line-height: 1.7;
     margin: 0 0 12px;
     text-align: justify;
@@ -115,8 +121,8 @@
   }
 
   .ift-panel {
-    background: var(--navy);
-    color: var(--white);
+    background: #0e2f52;
+    color: var(--on-accent);
     border-radius: var(--radius);
     padding: 30px;
     text-align: center;
@@ -142,19 +148,42 @@
   .fonte-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
   
   .disclaimer-box {
-    background: #fff8e1;
+    background: var(--warn-bg);
     border: 1px solid #f9a825;
     border-left: 5px solid #f57f17;
     border-radius: 8px;
     padding: 18px 22px;
     margin: 32px 0;
   }
-  .disclaimer-box strong { display: block; margin-bottom: 8px; color: #6d3800; font-size: 1rem; }
-  .disclaimer-box p { margin: 0 0 8px; font-size: .88rem; color: #5d4037; line-height: 1.6; text-align: justify; }
+  .disclaimer-box strong { display: block; margin-bottom: 8px; color: var(--warn-ink-2); font-size: 1rem; }
+  .disclaimer-box p { margin: 0 0 8px; font-size: .88rem; color: var(--warn-ink); line-height: 1.6; text-align: justify; }
   
   .section__lead {
     max-width: 100%;
     margin-right: auto;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .status-box {
+      background: var(--success-bg);
+      border-color: var(--success-bd);
+      color: var(--success-dk);
+    }
+    :root:not([data-theme="light"]) .status-box--alert {
+      background: var(--danger-bg);
+      border-color: var(--danger-bd);
+      color: var(--danger-ink);
+    }
+    :root:not([data-theme="light"]) .ift-panel {
+      background: #0e2f52;
+      border: 1px solid rgba(130, 194, 245, .26);
+    }
+    :root:not([data-theme="light"]) .ift-score,
+    :root:not([data-theme="light"]) .ift-panel p {
+      color: var(--on-accent);
+    }
+    :root:not([data-theme="light"]) .fonte-table th {
+      color: var(--ink);
+    }
   }
 </style>
 </head>
@@ -424,8 +453,10 @@
         <a href="prefeitura.html">Prefeitura</a>
         <a href="fundacao.html">Fundação Cultural</a>
         <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="cobrar.html">Como cobrar</a>
       </nav>

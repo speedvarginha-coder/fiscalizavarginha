@@ -3,10 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Emendas municipais, estaduais e federais · Fiscaliza Varginha</title>
+    <title>Emendas parlamentares para Varginha | Fiscaliza Varginha</title>
     <meta name="description" content="Consulta de emendas municipais, estaduais e federais destinadas a Varginha-MG: beneficiário informado, estágios financeiros, objeto e fontes." />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://fiscalizavarginha.com.br/emendas/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fiscaliza Varginha" />
+    <meta property="og:title" content="Emendas parlamentares para Varginha" />
+    <meta property="og:description" content="Consulte emendas municipais, estaduais e federais destinadas a Varginha-MG, com valores, beneficiários, estágios e fontes." />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://fiscalizavarginha.com.br/emendas/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Emendas parlamentares para Varginha" />
+    <meta name="twitter:description" content="Valores, beneficiários, estágios e fontes das emendas destinadas a Varginha-MG." />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=20260708" />
+    <link rel="stylesheet" href="styles.css?v=20260730-rodape" />
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -419,30 +430,73 @@
       <div id="detailBody" class="detail-body"></div>
     </dialog>
 
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <div class="site-footer__brand">
-          <strong>Fiscaliza Varginha</strong>
-          <span>Painel Cidadão · Fiscalização Independente</span>
-          <p>Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos oficiais e mostramos como conferir — informamos, não acusamos.</p>
-        </div>
-        <nav class="site-footer__links" aria-label="Rodapé">
-          <a href="../index.html">Início</a>
-          <a href="../atualizacoes.html">Atualizações</a>
-          <a href="../prefeitura.html">Prefeitura</a>
-          <a href="../camara.html">Câmara</a>
-          <a href="index.html">Emendas</a>
-          <a href="../relatorios.html">Relatórios</a>
-          <a href="../cobrar.html">Como cobrar</a>
-        </nav>
-      </div>
-      <div class="site-footer__bottom">Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</div>
-    </footer>
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <strong>Fiscaliza Varginha</strong>
+      <span>Painel Cidadão · Fiscalização Independente</span>
+      <p class="muted small" style="margin-top:10px">
+        Sem vínculo governamental e sem fins lucrativos. Reunimos dados públicos
+        oficiais e mostramos como conferir — informamos, não acusamos.
+        Dados pessoais protegidos: CPF exibido parcialmente (LGPD).
+      </p>
+    </div>
+    <div class="footer__col">
+      <strong>Navegação</strong>
+      <nav class="footer__nav">
+        <a href="../index.html">Início</a>
+        <a href="../atualizacoes.html">Atualizações</a>
+        <a href="../monitoramento.html">Monitoramento</a>
+        <a href="../prefeitura.html">Prefeitura</a>
+        <a href="../fundacao.html">Fundação Cultural</a>
+        <a href="../camara.html">Câmara</a>
+        <a href="../emendas/index.html">Emendas</a>
+        <a href="../relatorios.html">Relatórios</a>
+        <a href="../pessoal.html">Pessoal</a>
+        <a href="../avalie.html">Avalie</a>
+        <a href="../sobre.html">Sobre</a>
+        <a href="../cobrar.html">Como cobrar</a>
+      </nav>
+    </div>
+    <div class="footer__col footer__sources">
+      <strong>Fontes &amp; dados abertos</strong>
+      <ul>
+        <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
+        <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
+        <li><a href="https://sapl.varginha.mg.leg.br/" target="_blank" rel="noopener">SAPL — Processo Legislativo</a></li>
+        <li><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==" target="_blank" rel="noopener">Portal da Transparência</a></li>
+        <li><a href="https://pncp.gov.br/" target="_blank" rel="noopener">PNCP — Contratações</a></li>
+        <li><a href="https://www.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a></li>
+        <li><a href="https://www.mpmg.mp.br/" target="_blank" rel="noopener">MP-MG</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <strong>Transparência</strong>
+      <p class="footer__updated">Dados atualizados em<br><span id="footerAtualizado">—</span></p>
+      <p class="muted small">Confirme sempre na fonte oficial antes de concluir qualquer cobrança.</p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <span>Fiscaliza Varginha &copy; 2026 · Varginha-MG · Ferramenta cidadã independente</span>
+    </div>
+  </div>
+</footer>
 
-    <script src="data/emendas.js?v=20260711b"></script>
-    <script src="data/emendas_estaduais_normalizadas.js?v=20260711b"></script>
-    <script src="data/emendas_municipais_unificadas.js?v=20260711b"></script>
-    <script src="data/emendas_federais.js?v=20260711b"></script>
-    <script src="app.js?v=20260711b"></script>
-  </body>
+    <script src="data/emendas.js?v=20260729a"></script>
+    <script src="data/emendas_estaduais_normalizadas.js?v=20260729a"></script>
+    <script src="data/emendas_municipais_unificadas.js?v=20260729a"></script>
+    <script src="data/emendas_federais.js?v=20260729a"></script>
+    <script src="app.js?v=20260729a"></script>
+  <script>
+(function () {
+  var el = document.getElementById("footerAtualizado");
+  if (!el || !window.fetch || location.protocol === "file:") return;
+  fetch("../data/chunks/atualizado_em.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) { if (d && d.data_humana) el.textContent = d.data_humana; })
+    .catch(function () {});
+})();
+</script>
+</body>
 </html>

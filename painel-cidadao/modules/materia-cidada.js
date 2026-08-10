@@ -11,7 +11,7 @@
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
   var GRAUS = {
     alto:  { label: "ALTO",  cls: "alto",  desc: "Projeto de lei com tema estruturante" },
@@ -63,7 +63,7 @@
   }
 
   function iconHelper(name, opts) {
-    return (window.ZELA && window.ZELA.icon) ? window.ZELA.icon(name, opts) : "";
+    return (window.FISCALIZA && window.FISCALIZA.icon) ? window.FISCALIZA.icon(name, opts) : "";
   }
 
   // esc: função de escape de HTML do app.
@@ -178,8 +178,8 @@
     );
   }
 
-  window.ZELA.materiaGrau = grauInfo;
-  window.ZELA.materiaPorque = porque;
-  window.ZELA.materiaSelo = selo;
-  window.ZELA.materiaCard = card;
+  window.FISCALIZA.materiaGrau = grauInfo;
+  window.FISCALIZA.materiaPorque = porque;
+  window.FISCALIZA.materiaSelo = selo;
+  window.FISCALIZA.materiaCard = card;
 })();

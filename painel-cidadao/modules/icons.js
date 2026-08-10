@@ -4,16 +4,16 @@
  * Substitui emojis para um visual mais profissional e institucional.
  *
  * Uso:
- *   window.ZELA.icon("saude")               // SVG default 20x20
- *   window.ZELA.icon("trofeu", { size: 24 }) // tamanho customizado
- *   window.ZELA.icon("copiar", { class: "btn-icon" })
+ *   window.FISCALIZA.icon("saude")               // SVG default 20x20
+ *   window.FISCALIZA.icon("trofeu", { size: 24 }) // tamanho customizado
+ *   window.FISCALIZA.icon("copiar", { class: "btn-icon" })
  *
  * Todos os ícones usam currentColor — herda a cor do elemento pai via CSS.
  * Stroke 1.75 para legibilidade em telas comuns.
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
   const ICONS = {
     // === Categorias ===
@@ -74,6 +74,6 @@
     return `<svg class="${cls}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}"${aria}>${body}</svg>`;
   }
 
-  window.ZELA.icon = icon;
-  window.ZELA.iconNames = Object.keys(ICONS);
+  window.FISCALIZA.icon = icon;
+  window.FISCALIZA.iconNames = Object.keys(ICONS);
 })();

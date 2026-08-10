@@ -8,15 +8,15 @@
  *   4. Mapa cidadão do dinheiro (#homeMoneyMap)
  *   5. Tendência cidadã (#homeTrendWatch)
  *
- * Lê window.ZELA_DATA diretamente (4 e 5). 1–3 são estáticos e funcionam
+ * Lê window.FISCALIZA_DATA diretamente (4 e 5). 1–3 são estáticos e funcionam
  * mesmo sem dados. Segue o padrão de modules/dashboard.js.
- * Dependências: window.ZELA.utils, window.ZELA.categorias/classificarItem,
- * window.ZELA.dossie.abrirComHtml (modal).
+ * Dependências: window.FISCALIZA.utils, window.FISCALIZA.categorias/classificarItem,
+ * window.FISCALIZA.dossie.abrirComHtml (modal).
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
-  const u = window.ZELA.utils;
+  window.FISCALIZA = window.FISCALIZA || {};
+  const u = window.FISCALIZA.utils;
   if (!u) return;
   const { fmtBRL, fmtNum, esc, cleanText } = u;
   function $(id) { return document.getElementById(id); }
@@ -24,8 +24,8 @@
     return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
   }
   function abrirModal(html) {
-    if (window.ZELA.dossie && window.ZELA.dossie.abrirComHtml) {
-      window.ZELA.dossie.abrirComHtml(html);
+    if (window.FISCALIZA.dossie && window.FISCALIZA.dossie.abrirComHtml) {
+      window.FISCALIZA.dossie.abrirComHtml(html);
     }
   }
 
@@ -221,10 +221,10 @@
   function renderMoneyMap() {
     const el = $("homeMoneyMap");
     if (!el) return;
-    const pf = (window.ZELA_DATA || {}).prefeitura || {};
+    const pf = (window.FISCALIZA_DATA || {}).prefeitura || {};
     const contratos = pf.contratos || [];
-    const classificar = window.ZELA.classificarItem || function () { return null; };
-    const cats = window.ZELA.categorias || [];
+    const classificar = window.FISCALIZA.classificarItem || function () { return null; };
+    const cats = window.FISCALIZA.categorias || [];
     if (!contratos.length || !cats.length) return;
 
     const ag = {};
@@ -289,7 +289,7 @@
   function renderTrendWatch() {
     const el = $("homeTrendWatch");
     if (!el) return;
-    const D = window.ZELA_DATA || {};
+    const D = window.FISCALIZA_DATA || {};
     const pf = D.prefeitura || D.home_resumo || {};
     const cb = D.camara_betha || {};
     if (!pf.ano_atual) return;
@@ -373,7 +373,7 @@
   renderTrendWatch();
 
   // Listen to deferred chunks loading (like "prefeitura" on home page)
-  window.addEventListener("zela:chunk", function (e) {
+  window.addEventListener("fiscaliza:chunk", function (e) {
     const key = (e.detail || {}).key;
     if (key === "prefeitura") {
       renderMoneyMap();

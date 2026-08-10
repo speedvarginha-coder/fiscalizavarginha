@@ -26,10 +26,14 @@ function firstMoney(record, keys) {
 }
 
 function normalizeRecord(record) {
-  const category = normalize(record.categoria || record.modalidade || record.descricao);
+  const category = normalize(
+    [record.categoria, record.modalidade, record.tipoIndicacao, record.descricao]
+      .filter(Boolean)
+      .join(" ")
+  );
   const author = normalize(record.autor);
   let autoriaTipo = "Individual";
-  if (category.includes("bancada") || author.includes("bancada")) autoriaTipo = "Bancada";
+  if (category.includes("bancada") || category.includes("bloco") || author.includes("bancada") || author.includes("bloco")) autoriaTipo = "Bloco/Bancada";
   else if (category.includes("comissao") || author.includes("comissao") || author.startsWith("com.")) autoriaTipo = "Comissão";
   else if (category.includes("relator") || author.includes("relator")) autoriaTipo = "Relator";
 
@@ -1535,6 +1539,9 @@ function openDetails(id, updateUrl = true) {
     </div>
     <div class="detail-grid">
       ${detailItem("Indicado", record.stages.indicado === null ? "N/D" : moneyFormatter.format(record.stages.indicado))}
+      ${record.valorUtilizado === null || record.valorUtilizado === undefined
+        ? ""
+        : detailItem("Utilizado / associado à indicação", moneyFormatter.format(Number(record.valorUtilizado)))}
       ${detailItem("Empenhado", record.stages.empenhado === null ? "N/D" : moneyFormatter.format(record.stages.empenhado))}
       ${detailItem("Pago / transferido", record.stages.pago === null ? "N/D" : moneyFormatter.format(record.stages.pago))}
       ${detailItem("Recebido confirmado", record.stages.recebido === null ? "N/D" : moneyFormatter.format(record.stages.recebido))}
@@ -1560,6 +1567,11 @@ function openDetails(id, updateUrl = true) {
       ${record.tipo === "Federal"
         ? detailItem("Situação financeira", record.statusFinanceiro)
         : detailItem("Aprovado", record.aprovado)}
+      ${record.statusIndicacao ? detailItem("Status oficial da indicação", record.statusIndicacao) : ""}
+      ${record.statusFinanceiro ? detailItem("Status financeiro oficial", record.statusFinanceiro) : ""}
+      ${record.numeroInstrumento ? detailItem("Instrumento", record.numeroInstrumento) : ""}
+      ${record.codigoSiafiInstrumento ? detailItem("Código SIAFI do instrumento", record.codigoSiafiInstrumento) : ""}
+      ${record.dataPublicacaoInstrumento ? detailItem("Publicação do instrumento", record.dataPublicacaoInstrumento) : ""}
       ${record.competenciaPagamento ? detailItem("Competência do repasse", record.competenciaPagamento) : ""}
       ${detailItem("Emenda individual", record.emendaIndividual)}
       ${detailItem("Banco", record.banco)}

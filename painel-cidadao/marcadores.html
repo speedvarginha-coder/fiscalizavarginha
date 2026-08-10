@@ -4,14 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meus Marcadores · Fiscaliza Varginha</title>
-<meta name="description" content="Contratos e emendas que você está acompanhando — Fiscaliza Varginha.">
+<meta name="description" content="Acesse os contratos e as emendas que você escolheu acompanhar no Fiscaliza Varginha.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/marcadores.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Meus Marcadores · Fiscaliza Varginha">
 <meta property="og:description" content="Sua lista pessoal de contratos e emendas em acompanhamento.">
 <meta property="og:locale"      content="pt_BR">
-<link rel="stylesheet" href="style.css?v=20260627b">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 </head>
 <body data-page="marcadores">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -39,6 +41,7 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
@@ -103,8 +106,10 @@
         <a href="prefeitura.html">Prefeitura</a>
         <a href="fundacao.html">Fundação Cultural</a>
         <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="cobrar.html">Como cobrar</a>
       </nav>
@@ -134,19 +139,19 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260727-mobile2"></script>
+<script src="data-loader.js?v=20260730-relatorios2"></script>
 <script>
-window.addEventListener("zela:ready", function () { renderMarcadores(); });
+window.addEventListener("fiscaliza:ready", function () { renderMarcadores(); });
 
 function renderMarcadores() {
-  if (!window.ZELA || !window.ZELA.watchlist) return;
-  if (!window.ZELA_DATA) return;
+  if (!window.FISCALIZA || !window.FISCALIZA.watchlist) return;
+  if (!window.FISCALIZA_DATA) return;
 
   var area = document.getElementById("marcadoresArea");
-  var w = window.ZELA.watchlist.obter();
-  var dataPref = window.ZELA_DATA.prefeitura || {};
+  var w = window.FISCALIZA.watchlist.obter();
+  var dataPref = window.FISCALIZA_DATA.prefeitura || {};
   var contratosAll = (dataPref.contratos || []);
-  var emendasAll = (window.ZELA_DATA.emendas || []);
+  var emendasAll = (window.FISCALIZA_DATA.emendas || []);
 
   // Mapeia ID → item
   var contratosMarcados = w.contratos.map(function(id) {
@@ -184,11 +189,11 @@ function renderMarcadores() {
     contratosMarcados.forEach(function(c) {
       if (c._orfao) {
         html += '<article class="contrato"><div class="contrato__valor">—</div><div><p class="contrato__nome">Contrato ' + c._id + '</p><p class="muted small">Não encontrado nos dados atuais. Pode ter sido removido do portal.</p>' +
-          window.ZELA.watchlist.botao("contratos", c._id) + '</div></article>';
+          window.FISCALIZA.watchlist.botao("contratos", c._id) + '</div></article>';
         return;
       }
       var valor = (c.valor || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-      html += '<article class="contrato"><div class="contrato__valor">' + valor + '<div style="margin-top:8px;">' + window.ZELA.watchlist.botao("contratos", c._id) + '</div></div>' +
+      html += '<article class="contrato"><div class="contrato__valor">' + valor + '<div style="margin-top:8px;">' + window.FISCALIZA.watchlist.botao("contratos", c._id) + '</div></div>' +
         '<div><p class="contrato__nome">' + (c.contratado || "—") + '</p>' +
         '<p class="contrato__obj">' + (c.objeto || "—") + '</p>' +
         '<div class="contrato__meta"><span><strong>Nº</strong> ' + c.numero + '/' + c.ano + '</span><span>' + (c.modalidade || "") + '</span><span>' + (c.data_assinatura || "") + ' → ' + (c.data_fim || "") + '</span></div>' +
@@ -203,11 +208,11 @@ function renderMarcadores() {
     emendasMarcadas.forEach(function(e) {
       if (e._orfao) {
         html += '<article class="em"><div class="em__valor">—</div><div class="em__body"><p class="em__benef">Emenda ' + e._id + '</p><p class="muted small">Não encontrada nos dados atuais.</p>' +
-          window.ZELA.watchlist.botao("emendas", e._id) + '</div></article>';
+          window.FISCALIZA.watchlist.botao("emendas", e._id) + '</div></article>';
         return;
       }
       var valor = (e.valor_brl || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-      html += '<article class="em"><div class="em__valor">' + valor + '<div style="margin-top:8px;">' + window.ZELA.watchlist.botao("emendas", e._id) + '</div></div>' +
+      html += '<article class="em"><div class="em__valor">' + valor + '<div style="margin-top:8px;">' + window.FISCALIZA.watchlist.botao("emendas", e._id) + '</div></div>' +
         '<div class="em__body"><p class="em__benef">' + (e.beneficiario || "—") + '</p>' +
         '<div class="em__meta"><span><strong>Autor(a):</strong> ' + (e.autor || "—") + '</span><span>Emenda nº ' + e.numero + '/' + e.ano + '</span></div>' +
         '<div style="margin-top:8px;"><a href="camara.html?q=' + encodeURIComponent(e.beneficiario || "") + '" class="btn-link" style="text-decoration:none;padding:4px 10px;background:#e8f4fd;color:#1565c0;border-radius:4px;font-size:0.85em;">Ver na Câmara →</a></div></div></article>';
@@ -229,13 +234,13 @@ function renderMarcadores() {
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");
     a.href = url;
-    a.download = "zela-marcadores-" + new Date().toISOString().slice(0,10) + ".json";
+    a.download = "fiscaliza-marcadores-" + new Date().toISOString().slice(0,10) + ".json";
     a.click();
   });
   var btnLimp = document.getElementById("btnLimparMarcadores");
   if (btnLimp) btnLimp.addEventListener("click", function() {
     if (!confirm("Apagar TODOS os seus marcadores? Esta ação não pode ser desfeita.")) return;
-    localStorage.removeItem("zela.watchlist.v1");
+    localStorage.removeItem("fiscaliza.watchlist.v1");
     location.reload();
   });
 }

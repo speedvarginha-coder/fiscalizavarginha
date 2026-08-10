@@ -5,15 +5,15 @@
  *   cleanText — limpeza de mojibake + caracteres corrompidos
  *   esc — escape HTML
  *
- * Disponíveis globalmente em window.ZELA.utils. O app.js destrutura no topo
+ * Disponíveis globalmente em window.FISCALIZA.utils. O app.js destrutura no topo
  * para manter retrocompatibilidade total.
  *
  * Carregado pelo data-loader.js ANTES de app.js.
- * NÃO depende de window.ZELA_DATA, nem de DOM, nem de outros módulos.
+ * NÃO depende de window.FISCALIZA_DATA, nem de DOM, nem de outros módulos.
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
   // ============= FORMATTERS =============
   const fmtBRL = (n) =>
@@ -56,8 +56,12 @@
       .replace(/ê|ÃÂª/g, "\u00ea")
       .replace(/ô|ÃÂ´/g, "\u00f4")
       .replace(/Ç|Ã—¡/g, "\u00c7")
-      .replace(/Ã‚·|·/g, " - ")
-      .replace(/Ã‚|Â/g, "")
+      // Separador visual: normaliza os espaços em volta para nao sobrar " - ".
+      .replace(/\s*(?:Ã‚·|Â·|·)\s*/g, " · ")
+      // Sobra de mojibake: o "Â" orfao aparece colado em espaco ou simbolo
+      // (Â , Âº, Â°). Dentro de palavra ele e legitimo — sem o negative
+      // lookahead isto apagava o acento de CÂMARA e virava "CMARA".
+      .replace(/Ã‚(?![A-Za-zÀ-ÿ])|Â(?![A-Za-zÀ-ÿ])/g, "")
       .replace(/ï¿½\?\?/g, "");
     const pairs = [
       [/Aquisi\uFFFD+o/gi, "Aquisi\u00e7\u00e3o"],
@@ -180,7 +184,7 @@
     URL.revokeObjectURL(url);
   };
 
-  window.ZELA.utils = Object.freeze({
+  window.FISCALIZA.utils = Object.freeze({
     fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, siglaSecretaria, exportCSV,
   });
 })();

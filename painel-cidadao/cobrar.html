@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Como cobrar · Fiscaliza Varginha</title>
+<title>Como cobrar informações públicas em Varginha</title>
 <meta name="description" content="Canais oficiais para o cidadão pedir documentos, acompanhar dados públicos e cobrar respostas da Prefeitura e da Câmara.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/cobrar.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Como cobrar · Fiscaliza Varginha">
 <meta property="og:description" content="Canais oficiais para o cidadão pedir documentos, acompanhar dados públicos e cobrar respostas em Varginha-MG.">
 <meta property="og:locale"      content="pt_BR">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/cobrar.html">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Como cobrar · Fiscaliza Varginha">
 <meta name="twitter:description" content="Canais oficiais para pedir documentos e cobrar respostas da Prefeitura e da Câmara em Varginha-MG.">
-<link rel="stylesheet" href="style.css?v=20260627b">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 </head>
 <body data-page="cobrar">
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -38,6 +41,7 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta nav__link--active">Como cobrar</a>
@@ -158,12 +162,12 @@
           <p>Sem advogado, sem taxa, sem obrigação de dar justificativa. Apenas o seu CPF e o pedido por escrito.</p>
         </div>
       </div>
-      <div style="background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--line);">
+      <div style="background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--line);">
         <h4 style="color: var(--navy); margin-top: 0;">Passo a passo completo</h4>
         <ol style="padding-left: 20px; color: var(--ink); line-height: 1.6;">
           <li style="margin-bottom: 12px;"><strong>Identifique o órgão responsável:</strong> Câmara Municipal para dados dos vereadores. Prefeitura e secretarias para dados do Executivo. Cada órgão tem seu canal próprio de LAI.</li>
           <li style="margin-bottom: 12px;"><strong>Escreva o pedido de forma específica:</strong> Defina: período, tipo de dado, formato desejado (Excel, PDF, CSV). Pedidos vagos como "mande tudo sobre obras" geram respostas incompletas.<br>
-          <span style="display: inline-block; background: #eff5fb; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-top: 4px;">💡 Use os modelos prontos na seção 5 desta página</span></li>
+          <span style="display: inline-block; background: var(--soft-blue); padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-top: 4px;">💡 Use os modelos prontos na seção 5 desta página</span></li>
           <li style="margin-bottom: 12px;"><strong>Protocole e guarde o comprovante:</strong> Prefira protocolo presencial com cópia carimbada, ou e-mail com confirmação de recebimento. Isso inicia a contagem dos 20 dias legais.</li>
           <li style="margin-bottom: 12px;"><strong>Aguarde até 20 dias corridos:</strong> Prorrogável por mais 10 com justificativa. Sem resposta após esse prazo, o cidadão pode recorrer e pedir providência ao órgão de controle.</li>
           <li style="margin-bottom: 12px;"><strong>Se a resposta for negada ou incompleta, recorra:</strong> Recurso à autoridade superior do mesmo órgão em até 10 dias. Se ainda insuficiente, denúncia ao MP-MG ou à CGU.<br>
@@ -229,21 +233,21 @@
       <p style="margin: 0 0 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);">Filtrar por nível de prioridade</p>
       <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
         <button type="button" class="lai-filter-nivel active" data-nivel="all" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--navy); background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; letter-spacing: 0.02em;">Todos os níveis</button>
-        <button type="button" class="lai-filter-nivel" data-nivel="1" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 1 · Alto impacto</button>
-        <button type="button" class="lai-filter-nivel" data-nivel="2" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 2 · Muito relevante</button>
-        <button type="button" class="lai-filter-nivel" data-nivel="3" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 3 · Onde poucos olham</button>
-        <button type="button" class="lai-filter-nivel" data-nivel="4" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 4 · Avançada</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="1" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 1 · Alto impacto</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="2" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 2 · Muito relevante</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="3" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 3 · Onde poucos olham</button>
+        <button type="button" class="lai-filter-nivel" data-nivel="4" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Nível 4 · Avançada</button>
       </div>
 
       <p style="margin: 0 0 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);">Filtrar por categoria</p>
       <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;">
         <button type="button" class="lai-filter active" data-cat="all" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--navy); background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; letter-spacing: 0.02em;">Todas</button>
-        <button type="button" class="lai-filter" data-cat="licitacao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Contratos &amp; Compras</button>
-        <button type="button" class="lai-filter" data-cat="obras" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Obras &amp; Asfalto</button>
-        <button type="button" class="lai-filter" data-cat="servicos" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Saúde, Educação &amp; Social</button>
-        <button type="button" class="lai-filter" data-cat="pessoal" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Pessoal &amp; Câmara</button>
-        <button type="button" class="lai-filter" data-cat="patrimonio" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Patrimônio, Frota &amp; Imóveis</button>
-        <button type="button" class="lai-filter" data-cat="gestao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: #fff; color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Gestão, Repasses &amp; Cidade</button>
+        <button type="button" class="lai-filter" data-cat="licitacao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Contratos &amp; Compras</button>
+        <button type="button" class="lai-filter" data-cat="obras" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Obras &amp; Asfalto</button>
+        <button type="button" class="lai-filter" data-cat="servicos" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Saúde, Educação &amp; Social</button>
+        <button type="button" class="lai-filter" data-cat="pessoal" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Pessoal &amp; Câmara</button>
+        <button type="button" class="lai-filter" data-cat="patrimonio" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Patrimônio, Frota &amp; Imóveis</button>
+        <button type="button" class="lai-filter" data-cat="gestao" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 0.85rem; font-weight: 600; cursor: pointer;">Gestão, Repasses &amp; Cidade</button>
       </div>
 
       <input type="text" id="laiBusca" placeholder="Buscar modelo por palavra (ex.: medicamento, merenda, diária)..." style="width: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; font-size: 0.95rem; margin-bottom: 20px;">
@@ -1057,8 +1061,10 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
         <a href="prefeitura.html">Prefeitura</a>
         <a href="fundacao.html">Fundação Cultural</a>
         <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="cobrar.html">Como cobrar</a>
       </nav>
@@ -1147,7 +1153,6 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
   }
 })();
 </script>
-<script src="data-loader.js?v=20260727-mobile2"></script>
+<script src="data-loader.js?v=20260730-relatorios2"></script>
 </body>
 </html>
-

@@ -1,0 +1,2853 @@
+<title>Resumo mensal · Trabalho legislativo — Varginha, 01/07/2026 a 31/07/2026</title>
+<style>
+  :root {
+    --navy: #004B8D;
+    --navy-soft: #E7F0F9;
+    --ink: #152131;
+    --muted: #607084;
+    --line: #DCE6F0;
+    --bg: #F7FAFD;
+    --surface: #FFFFFF;
+    --gold: #F2C230;
+    --gold-ink: #6B4E00;
+    --gold-bg: #FDF4D8;
+    --teal: #078A4B;
+    --teal-bg: #E6F4EC;
+    --red: #C93632;
+    --red-bg: #FBEBEA;
+    --bar: #004B8D;
+    --bar-alt: #8FB8DC;
+    --bar-track: #E7EEF6;
+
+    --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    --s1: 0.35rem;
+    --s2: 0.7rem;
+    --s3: 1.15rem;
+    --s4: 1.9rem;
+    --s5: 3rem;
+    --s6: 4.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --navy: #6FB1EC; --navy-soft: #16283C;
+      --ink: #E8EFF7; --muted: #96A6BA;
+      --line: #26333F; --bg: #0D141C; --surface: #141D27;
+      --gold-ink: #F0D68C; --gold-bg: #2C2410;
+      --teal: #4FC38A; --teal-bg: #102A1E;
+      --red: #F08A86; --red-bg: #2E1614;
+      --bar: #4E9BE0; --bar-alt: #2C577E; --bar-track: #1D2B39;
+    }
+  }
+  :root[data-theme="dark"] {
+    --navy: #6FB1EC; --navy-soft: #16283C;
+    --ink: #E8EFF7; --muted: #96A6BA;
+    --line: #26333F; --bg: #0D141C; --surface: #141D27;
+    --gold-ink: #F0D68C; --gold-bg: #2C2410;
+    --teal: #4FC38A; --teal-bg: #102A1E;
+    --red: #F08A86; --red-bg: #2E1614;
+    --bar: #4E9BE0; --bar-alt: #2C577E; --bar-track: #1D2B39;
+  }
+  :root[data-theme="light"] {
+    --navy: #004B8D; --navy-soft: #E7F0F9;
+    --ink: #152131; --muted: #607084;
+    --line: #DCE6F0; --bg: #F7FAFD; --surface: #FFFFFF;
+    --gold-ink: #6B4E00; --gold-bg: #FDF4D8;
+    --teal: #078A4B; --teal-bg: #E6F4EC;
+    --red: #C93632; --red-bg: #FBEBEA;
+    --bar: #004B8D; --bar-alt: #8FB8DC; --bar-track: #E7EEF6;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding: var(--s5) var(--s3) var(--s6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s5);
+  }
+  a { color: var(--navy); }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .masthead {
+    display: flex; flex-direction: column; gap: var(--s3);
+    border-bottom: 3px solid var(--navy);
+    padding-bottom: var(--s3);
+  }
+  .eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600;
+  }
+  .masthead h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.08; font-weight: 600;
+    letter-spacing: -0.015em; text-wrap: balance; margin: 0;
+  }
+  .periodo { font-family: var(--serif); font-size: 1.15rem; font-style: italic; color: var(--muted); }
+  .proveniencia {
+    display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3);
+    font-size: 0.85rem; color: var(--muted);
+  }
+
+  .numeros {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
+    gap: 1px; background: var(--line); border: 1px solid var(--line);
+  }
+  .numero { background: var(--surface); padding: var(--s3); display: flex; flex-direction: column; gap: var(--s1); }
+  .numero b {
+    font-family: var(--serif); font-size: 1.9rem; line-height: 1.05;
+    font-weight: 600; font-variant-numeric: tabular-nums; color: var(--navy);
+  }
+  .numero span { font-size: 0.8rem; color: var(--muted); line-height: 1.35; }
+
+  section { display: flex; flex-direction: column; gap: var(--s3); }
+  section > h2 {
+    font-family: var(--serif); font-size: 1.5rem; font-weight: 600; margin: 0;
+    padding-bottom: var(--s2); border-bottom: 1px solid var(--line); text-wrap: balance;
+  }
+  .nota { font-size: 0.9rem; color: var(--muted); max-width: 64ch; }
+  .destaque-texto {
+    font-family: var(--serif); font-size: 1.1rem; line-height: 1.5;
+    max-width: 60ch; margin: 0;
+  }
+
+  .rolagem { overflow-x: auto; }
+  table { width: 100%; min-width: 38rem; border-collapse: collapse; font-size: 0.9rem; }
+  thead th {
+    text-align: left; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; padding: 0 var(--s2) var(--s2);
+    border-bottom: 1px solid var(--line); white-space: nowrap;
+  }
+  tbody td { padding: var(--s2); border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:hover td { background: var(--navy-soft); }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .num.forte { font-weight: 600; }
+  .obj { color: var(--muted); font-size: 0.85rem; }
+  .forn { font-weight: 600; }
+
+  .duplo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: var(--s4);
+  }
+  .painel {
+    background: var(--surface); border: 1px solid var(--line);
+    padding: var(--s3); display: flex; flex-direction: column; gap: var(--s3);
+  }
+  .painel > header { display: flex; flex-direction: column; gap: var(--s1); padding-bottom: var(--s2); border-bottom: 1px solid var(--line); }
+  .painel h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; margin: 0; }
+  .painel .sub { font-size: 0.82rem; color: var(--muted); }
+
+  .modal { display: flex; flex-direction: column; gap: var(--s3); }
+  .modal-linha { display: flex; flex-direction: column; gap: var(--s1); }
+  .modal-topo { display: flex; justify-content: space-between; gap: var(--s2); font-size: 0.88rem; align-items: baseline; }
+  .modal-topo b { font-weight: 600; }
+  .modal-topo span { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .duas-barras { display: flex; flex-direction: column; gap: 3px; }
+  .barra { height: 9px; background: var(--bar-track); position: relative; }
+  .barra i { position: absolute; inset: 0 auto 0 0; display: block; background: var(--bar); }
+  .barra.valor i { background: var(--bar-alt); }
+  .legenda { display: flex; gap: var(--s3); font-size: 0.75rem; color: var(--muted); flex-wrap: wrap; }
+  .chave { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .swatch { width: 12px; height: 9px; display: inline-block; background: var(--bar); }
+  .swatch.alt { background: var(--bar-alt); }
+
+  .aviso {
+    background: var(--red-bg); border: 1px solid var(--red);
+    padding: var(--s3); display: flex; flex-direction: column; gap: var(--s2);
+  }
+  .aviso h2 {
+    font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 700; color: var(--red);
+    margin: 0; border: 0; padding: 0;
+  }
+  .aviso p, .aviso li { font-size: 0.9rem; max-width: 68ch; margin: 0; }
+  .aviso ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: var(--s2); }
+
+  footer {
+    border-top: 1px solid var(--line); padding-top: var(--s3);
+    display: flex; flex-direction: column; gap: var(--s2);
+    font-size: 0.82rem; color: var(--muted);
+  }
+  footer dl { display: grid; grid-template-columns: minmax(8rem, auto) 1fr; gap: var(--s1) var(--s3); margin: 0; }
+  footer dt { font-weight: 600; color: var(--ink); }
+  footer dd { margin: 0; }
+  footer p { margin: 0; max-width: 70ch; }
+
+  .sub-h { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; margin: 0; }
+  .vazio { background: var(--surface); border: 1px solid var(--line); padding: var(--s3);
+           display: flex; flex-direction: column; gap: var(--s2); }
+  table { min-width: 32rem; }
+
+/* ---------- cards de matéria ---------- */
+  .materias { display: flex; flex-direction: column; gap: var(--s3); }
+  .materia {
+    border: 1px solid var(--line);
+    padding: var(--s3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s2);
+  }
+  .materia-topo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s2);
+    align-items: baseline;
+    justify-content: space-between;
+  }
+  .materia-topo time { font-size: 0.78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--s1); }
+  .chip {
+    font-size: 0.7rem;
+    letter-spacing: 0.03em;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .chip-tipo { color: var(--navy); border-color: var(--navy); font-weight: 600; }
+  .chip-alto { background: var(--gold-bg); color: var(--gold-ink); border-color: var(--gold); font-weight: 600; }
+  .chip-lei { background: var(--teal-bg); color: var(--teal); border-color: var(--teal); font-weight: 600; }
+  .chip-zero { font-style: italic; }
+  .materia h4 {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .resumo { font-size: 0.92rem; line-height: 1.55; margin: 0; max-width: 70ch; }
+  .acompanhar, .atencao {
+    background: var(--bg);
+    border-left: 2px solid var(--line);
+    padding: var(--s2) var(--s3);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s1);
+  }
+  .acompanhar b, .atencao b {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .atencao { border-left-color: var(--gold); }
+  .acompanhar ul, .atencao ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.88rem;
+  }
+  .acoes { display: flex; flex-wrap: wrap; gap: var(--s2); }
+  .botao {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--navy);
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .botao:hover { background: var(--navy); color: var(--surface); }
+  .botao.secundario { border-color: var(--line); color: var(--muted); }
+  .botao.secundario:hover { background: var(--line); color: var(--ink); }
+</style>
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">Fiscaliza Varginha · Resumo mensal · Trabalho legislativo</div>
+    <h1>Câmara e Prefeitura de Varginha</h1>
+    <div class="periodo">01/07/2026 a 31/07/2026</div>
+    <div class="proveniencia">
+      <span>Fontes: SAPL, Portal Betha e Diário Oficial</span>
+      <span>Gerado em 05/08/2026</span>
+    </div>
+  </header>
+
+  <div class="numeros">
+    <div class="numero"><b>79</b><span>matérias de vereadores</span></div>
+    <div class="numero"><b>5</b><span>sessões no período</span></div>
+
+    <div class="numero"><b>R$ 7.048.993,72</b><span>somados nesses contratos</span></div>
+    <div class="numero"><b>14</b><span>atos de contratação direta</span></div>
+  </div>
+
+
+    <section>
+      <h2>Trabalho legislativo</h2>
+      <p class="nota">79 matéria(s) de autoria de vereadores, além de 8 do Executivo, da Mesa ou de comissões. 5 sessão(ões) no período.</p>
+      <div class="rolagem"><table>
+        <thead><tr><th>Vereador</th><th>Tipos</th><th class="num">Total</th></tr></thead>
+        <tbody>
+      <tr>
+        <td class="nome">Ana Rios Fontoura</td>
+        <td class="obj">1 PDL, 1 REQ, 3 IND, 2 MOC</td>
+        <td class="num forte">7</td>
+      </tr>
+      <tr>
+        <td class="nome">Afonso Monticeli</td>
+        <td class="obj">1 PLOL, 1 PDL, 4 IND</td>
+        <td class="num forte">6</td>
+      </tr>
+      <tr>
+        <td class="nome">Rogério Bueno</td>
+        <td class="obj">2 PLOL, 3 REQ, 1 IND</td>
+        <td class="num forte">6</td>
+      </tr>
+      <tr>
+        <td class="nome">Thulyo Paiva</td>
+        <td class="obj">1 PLOL, 1 PDL, 2 REQ, 2 IND</td>
+        <td class="num forte">6</td>
+      </tr>
+      <tr>
+        <td class="nome">Miguel da Saúde</td>
+        <td class="obj">1 PLOL, 1 PDL, 4 IND</td>
+        <td class="num forte">6</td>
+      </tr>
+      <tr>
+        <td class="nome">Alexandre Prado</td>
+        <td class="obj">2 PDL, 1 REQ, 3 IND</td>
+        <td class="num forte">6</td>
+      </tr>
+      <tr>
+        <td class="nome">Dandan</td>
+        <td class="obj">1 PDL, 4 REQ, 1 MOC</td>
+        <td class="num forte">6</td>
+      </tr>
+      <tr>
+        <td class="nome">Bruno Leandro Coletor</td>
+        <td class="obj">2 PLOL, 2 REQ, 1 IND</td>
+        <td class="num forte">5</td>
+      </tr>
+      <tr>
+        <td class="nome">Zilda Silva</td>
+        <td class="obj">2 PLOL, 2 REQ, 1 IND</td>
+        <td class="num forte">5</td>
+      </tr>
+      <tr>
+        <td class="nome">Pastor Faustinho</td>
+        <td class="obj">1 PDL, 4 IND</td>
+        <td class="num forte">5</td>
+      </tr>
+      <tr>
+        <td class="nome">Davi Martins</td>
+        <td class="obj">1 PDL, 4 IND</td>
+        <td class="num forte">5</td>
+      </tr>
+      <tr>
+        <td class="nome">Cássio Chiodi</td>
+        <td class="obj">1 PLOL, 3 IND</td>
+        <td class="num forte">4</td>
+      </tr>
+      <tr>
+        <td class="nome">Dudu Ottoni</td>
+        <td class="obj">1 PLOL, 1 REQ, 2 IND</td>
+        <td class="num forte">4</td>
+      </tr>
+      <tr>
+        <td class="nome">Joãozinho Enfermeiro</td>
+        <td class="obj">2 REQ, 2 IND</td>
+        <td class="num forte">4</td>
+      </tr>
+      <tr>
+        <td class="nome">Zé Morais</td>
+        <td class="obj">4 IND</td>
+        <td class="num forte">4</td>
+      </tr></tbody>
+      </table></div>
+    </section>
+    <section>
+      <h2>Detalhamento por vereador</h2>
+      <p class="nota">Cada matéria com resumo, motivos para acompanhar, pontos de atenção e
+      link para o documento e para a tramitação no SAPL. Resumo e motivos vêm do enriquecimento
+      automático da base — o texto oficial é sempre o do documento.</p>
+      <div class="fichas">
+      <article class="ficha">
+        <header>
+          <h3>Ana Rios Fontoura</h3>
+          <div class="linha-resumo">7 matéria(s) · 1 projeto de decreto legislativo, 1 requerimento, 3 indicação, 2 moção · 1 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 54/2026</span>
+                <span class="chip">Homenagem</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 54/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito Eclesiástico – Padre Victor, ao Padre José Rodrigo Pereira.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a transparência na concessão de honrarias públicas.</li><li>Verificar os critérios utilizados para a escolha dos homenageados.</li><li>Entender como a Câmara Municipal reconhece personalidades da comunidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar se há custos associados à cerimônia de entrega da comenda.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6067/projeto_de_decreto_legislativo54-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6067" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 168/2026</span>
+                <span class="chip">Urbanismo</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 168/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento solicita informações sobre as providências tomadas em relação à limpeza, melhoria da iluminação e instalação de corrimão na Praça José de Rezende Paiva, conhecida como Praça da Fonte.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Verificar se as solicitações de melhoria em espaços públicos estão sendo atendidas.</li><li>Acompanhar a transparência e a fiscalização das ações do poder executivo.</li><li>Garantir a segurança e o bem-estar dos cidadãos que utilizam a praça.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Acompanhar o prazo de resposta da prefeitura ao requerimento.</li><li>Verificar se as melhorias na praça serão de fato implementadas após a resposta.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6039/req_praca_da_fonte1_revisada_08-07.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6039" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 331/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 331/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 331/2026 solicita a instalação de placas de sinalização em Varginha-MG para orientar moradores e visitantes sobre a localização de bairros, órgãos públicos, unidades de saúde, escolas e outros locais de interesse.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a implementação pode resultar em melhorias na mobilidade e na experiência de deslocamento na cidade.</li><li>Pode impactar positivamente o turismo e o comércio local ao facilitar o acesso a diferentes pontos.</li><li>Verificar a transparência e a eficiência na aplicação dos recursos públicos destinados a este projeto.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A necessidade de alocação de recursos no orçamento municipal para a compra e instalação das placas.</li><li>A definição dos critérios para a escolha dos 'pontos estratégicos' e dos locais de interesse a serem sinalizados.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6040/anarios_-_indicacao331-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6040" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">MOC 13/2026</span>
+                <span class="chip">Educação</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-13">13/07/2026</time>
+            </div>
+
+            <h4>Moção nº 13/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Moção nº 13/2026 é uma homenagem aos estudantes da Rede Municipal de Ensino de Varginha-MG que se destacaram na Olimpíada Brasileira de Matemática das Escolas Públicas (OBMEP) de 2025. Ela reconhece as conquistas acadêmicas desses alunos e o nome do município.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Valoriza o desempenho acadêmico e o esforço dos estudantes da rede pública.</li><li>Incentiva a participação em competições educacionais e o desenvolvimento intelectual.</li><li>Promove o reconhecimento positivo do município em âmbito nacional.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Trata-se de um ato simbólico de reconhecimento, sem impacto direto no orçamento municipal.</li><li>Não propõe mudanças em políticas públicas educacionais ou investimentos específicos.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6075/mocao13-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6075" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">MOC 14/2026</span>
+                <span class="chip">Homenagem</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-13">13/07/2026</time>
+            </div>
+
+            <h4>Moção nº 14/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta é uma moção que parabeniza o Sr. Marcelo Rennó por sua carreira profissional e por divulgar o nome de Varginha nacionalmente através de seu trabalho na comunicação.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Compreender como os vereadores utilizam as ferramentas legislativas para reconhecer cidadãos.</li><li>Observar os critérios e a frequência com que homenagens públicas são concedidas.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Não há impacto orçamentário direto ou alteração na legislação municipal.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6076/mocao14-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6076" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 350/2026</span>
+                <span class="chip">Urbanismo</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 350/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 350/2026, da vereadora Ana Rios Fontoura, solicita à prefeitura a reforma e revitalização das praças localizadas em frente à Igreja do Mártir São Sebastião.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a execução da reforma garante que os recursos públicos sejam bem utilizados na melhoria de espaços comunitários.</li><li>A revitalização das praças pode melhorar a segurança, o lazer e a qualidade de vida dos moradores da região.</li><li>Monitorar a resposta da prefeitura a esta indicação é importante para a participação cívica e fiscalização das ações do executivo.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar a disponibilidade orçamentária da prefeitura para a execução das melhorias solicitadas.</li><li>Acompanhar o prazo para a possível realização das obras, caso a indicação seja acatada.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6086/anarios_-_indicacao350-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6086" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 351/2026</span>
+                <span class="chip">Assistência social</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 351/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 351/2026 sugere que o Centro POP de Varginha tenha um plantão telefônico 24 horas para receber pedidos da população relacionados ao atendimento de pessoas em situação de rua.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a implementação pode melhorar o atendimento a pessoas em situação de rua, garantindo suporte mais rápido.</li><li>A proposta busca aumentar a capacidade de resposta do poder público a uma questão social importante.</li><li>A efetivação desta indicação pode promover maior inclusão e dignidade para a população mais vulnerável.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Possível impacto orçamentário para a contratação de pessoal ou remanejamento de equipes para o plantão 24 horas.</li><li>Necessidade de estrutura e recursos adequados para garantir a efetividade do atendimento telefônico e das ações subsequentes.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6087/anarios_-_indicacao351-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6087" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Afonso Monticeli</h3>
+          <div class="linha-resumo">6 matéria(s) · 1 projeto de lei ordinária do legislativo, 1 projeto de decreto legislativo, 4 indicação · 2 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 59/2026</span>
+                <span class="chip">Urbanismo</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+                <span class="chip chip-lei">Virou lei</span>
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 59/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe mudar o nome de uma rua na cidade de Varginha-MG.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Verificar se a homenagem é justa e se a pessoa homenageada tem relevância para a comunidade.</li><li>Acompanhar o processo legislativo e a participação dos moradores afetados pela mudança.</li><li>Entender o impacto da mudança de nome para os serviços postais e de entrega na região.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Custos administrativos para a prefeitura e moradores com a alteração de placas e documentos.</li><li>Possível impacto na identificação de endereços para serviços públicos e privados.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6065/projetodelei59-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6065" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 328/2026</span>
+                <span class="chip">Infraestrutura</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 328/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 328/2026, do vereador Afonso Monticeli, solicita à prefeitura que realize melhorias no Ginásio Poliesportivo Wadih Antônio Esper, localizado no Bairro Bom Pastor.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garantir que a infraestrutura esportiva pública seja adequada e segura para a população.</li><li>Verificar a aplicação eficiente dos recursos públicos destinados a melhorias urbanas.</li><li>Assegurar que os espaços de lazer e esporte atendam às necessidades da comunidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O impacto orçamentário que as melhorias podem ter nas finanças do município.</li><li>A necessidade de um planejamento detalhado para a execução das obras.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6035/afonsomonticeli_-_indicacao328-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6035" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 329/2026</span>
+                <span class="chip">Segurança</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 329/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta é uma solicitação do vereador Afonso Monticeli para que a prefeitura instale câmeras de monitoramento do sistema 'OLHO VIVO' e melhore a iluminação na Rua Presidente Tancredo Neves, no Bairro Bom Pastor, em Varginha.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a solicitação será atendida pela prefeitura e em qual prazo.</li><li>Para acompanhar o uso dos recursos públicos destinados à segurança e infraestrutura.</li><li>Para avaliar o impacto das melhorias na segurança e qualidade de vida dos moradores da região.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A implementação depende da disponibilidade orçamentária da prefeitura.</li><li>É importante verificar se há outras áreas da cidade com necessidades semelhantes ou mais urgentes de segurança e iluminação.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6036/afonsomonticeli_-_indicacao329-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6036" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 58/2026</span>
+                <span class="chip">Homenagens</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 58/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder uma homenagem chamada Comenda do Mérito Profissional da Segurança Pública – Alferes Tiradentes ao senhor Evaldo Mendes.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para entender como a Câmara Municipal utiliza seu poder de conceder honrarias.</li><li>Para verificar os critérios e justificativas para a concessão de méritos públicos.</li><li>Para acompanhar o reconhecimento de profissionais da segurança pública na cidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O projeto beneficia diretamente o senhor Evaldo Mendes.</li><li>Pode haver um custo simbólico para a confecção da comenda e a realização da cerimônia de entrega.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6082/afonso_2025_novomodelo_minuta_projeto_de_decreto_2.0_evaldo_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6082" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 346/2026</span>
+                <span class="chip">Infraestrutura</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 346/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta Indicação solicita à prefeitura a recuperação da pavimentação em paralelepípedo e melhorias na escadaria da Rua Júlio Carneiro, localizada no bairro Vila Moraes.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a solicitação do vereador será considerada e atendida pela prefeitura.</li><li>Para acompanhar a qualidade e o prazo de execução dos serviços, caso sejam realizados, garantindo a efetividade da ação pública.</li><li>Para observar a capacidade de resposta do Poder Executivo às demandas de infraestrutura da comunidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Indicações são sugestões ao Poder Executivo e não possuem caráter impositivo, ou seja, a prefeitura não é obrigada a realizá-las.</li><li>A eventual execução dos serviços dependerá da disponibilidade de recursos no orçamento municipal e do planejamento da administração.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6080/afonsomonticeli_-_indicacao346-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6080" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 347/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-alto">Relevância alta</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 347/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação solicita que a prefeitura realize estudos técnicos para instalar radares, lombadas eletrônicas ou outros dispositivos de fiscalização de velocidade na Avenida Presidente Castelo Branco, nos bairros Vila Verde e Jardim Petrópolis, com foco próximo ao Via Café Shopping Center. Também pede a implantação de uma faixa de travessia de pedestres perto do número 600 da mesma avenida.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a prefeitura realizará os estudos técnicos solicitados e qual será o resultado dessas análises.</li><li>Para acompanhar a possível implementação de medidas que podem afetar a segurança e o fluxo do trânsito em uma via movimentada da cidade.</li><li>Para participar do debate sobre a segurança viária e a mobilidade urbana na região da Avenida Presidente Castelo Branco.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A instalação e manutenção de radares, lombadas eletrônicas e faixas de pedestres envolvem custos para o município, impactando o orçamento público.</li><li>É fundamental que os estudos técnicos avaliem a real necessidade e a eficácia desses dispositivos para evitar impactos negativos no fluxo de trânsito.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6081/afonsomonticeli_-_indicacao347-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6081" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Rogério Bueno</h3>
+          <div class="linha-resumo">6 matéria(s) · 2 projeto de lei ordinária do legislativo, 3 requerimento, 1 indicação · 1 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 61/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+
+                <span class="chip chip-lei">Virou lei</span>
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 61/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe dar um nome a um prédio público em Varginha-MG. Ele sugere que uma Unidade Básica de Saúde (UBS) seja chamada de Luiz Carlos Bruziguessi.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir que a escolha do nome de um bem público seja transparente e justificada.</li><li>Para que a comunidade possa conhecer a pessoa homenageada e sua relevância para a cidade.</li><li>Para assegurar que não haja custos desnecessários com a alteração de identificação do local.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar se a pessoa homenageada tem um histórico de contribuições significativas para a comunidade.</li><li>Avaliar se a mudança de nome pode gerar custos para a prefeitura, como a troca de placas e documentos.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6072/rogerio_projeto_de_lei___proprio_publico_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6072" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 175/2026</span>
+                <span class="chip">Infraestrutura</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 175/2026</h4>
+            <p class="resumo"><b>Resumo:</b> O vereador Rogério Bueno solicitou informações à prefeitura sobre a não execução da ampliação de uma praça na Avenida dos Tachos, que havia sido objeto de indicação em agosto de 2025.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garantir a transparência e a fiscalização sobre a execução de obras públicas.</li><li>Assegurar que as melhorias prometidas para a comunidade sejam entregues.</li><li>Verificar a eficiência na gestão dos recursos e projetos municipais.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Acompanhar a justificativa da prefeitura para a não execução da obra.</li><li>Verificar se há impacto no planejamento urbano ou no orçamento municipal.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6057/rogeriobueno_-_requerimento175-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6057" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 176/2026</span>
+                <span class="chip">Pessoal</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 176/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Um vereador de Varginha está solicitando informações detalhadas sobre como os conselheiros titulares e suplentes do Conselho Tutelar foram nomeados, empossados e como o conselho está organizado atualmente.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>O Conselho Tutelar é um órgão essencial para a proteção dos direitos de crianças e adolescentes no município.</li><li>Acompanhar a composição e os processos de nomeação garante a lisura e a legalidade na formação de um órgão público.</li><li>As informações solicitadas podem revelar se o conselho está funcionando com sua composição completa e regular.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Acompanhar a resposta da prefeitura para garantir a transparência sobre a formação e o funcionamento do Conselho Tutelar.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6058/rogeriobueno_-_requerimento176-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6058" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 68/2026</span>
+                <span class="chip">Urbanismo</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 68/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe renomear a atual Rua &quot;E&quot;, localizada no bairro Jardim Vitória, para Rua Professor Maçaneiro.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Assegurar que a homenagem seja justa e relevante para a comunidade de Varginha.</li><li>Monitorar os impactos práticos da mudança de nome para os moradores e serviços da rua.</li><li>Acompanhar a transparência dos custos envolvidos na implementação da nova denominação.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Possíveis custos administrativos para a alteração de placas de identificação e atualização de cadastros.</li><li>Verificar se a escolha do nome Professor Maçaneiro reflete um consenso ou desejo da comunidade local.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6108/rogerio_projeto___rogerio_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6108" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 182/2026</span>
+                <span class="chip">Infraestrutura</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 182/2026</h4>
+            <p class="resumo"><b>Resumo:</b> O vereador Rogério Bueno solicitou informações à pre prefeitura sobre as ações para resolver os problemas de drenagem na Avenida dos Tachos, no bairro Sagrado Coração.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garante que a prefeitura responda sobre problemas de infraestrutura local.</li><li>Permite que os moradores da região acompanhem a busca por soluções para um problema que afeta o dia a dia.</li><li>Promove a transparência sobre a gestão de obras públicas e serviços essenciais.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A qualidade e o prazo da resposta da prefeitura ao requerimento.</li><li>A efetividade das soluções propostas para resolver o problema de drenagem.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6106/rogeriobueno_-_requerimento182-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6106" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 362/2026</span>
+                <span class="chip">Segurança</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 362/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Um vereador de Varginha-MG solicitou a instalação de uma câmera de segurança e a reforma dos brinquedos em uma praça específica no bairro Sagrado Coração.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir que a solicitação seja avaliada e, se aprovada, implementada pela prefeitura.</li><li>Para verificar a destinação de recursos públicos para melhorias em espaços de lazer.</li><li>Para acompanhar a efetividade das ações para a segurança e bem-estar da comunidade local.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O impacto orçamentário para a instalação da câmera e a reforma dos brinquedos.</li><li>O prazo para a execução das melhorias, caso a indicação seja acatada pelo executivo.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6107/rogeriobueno_-_indicacao362-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6107" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Thulyo Paiva</h3>
+          <div class="linha-resumo">6 matéria(s) · 1 projeto de lei ordinária do legislativo, 1 projeto de decreto legislativo, 2 requerimento, 2 indicação · 3 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 62/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 62/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe que empresas de transporte por aplicativo em Varginha criem uma opção para passageiras solicitarem motoristas do mesmo sexo.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a discussão sobre a segurança das passageiras em transportes por aplicativo.</li><li>Verificar como a medida pode impactar a operação das empresas e a experiência dos usuários.</li><li>Observar a efetividade da proposta na promoção de um ambiente de transporte mais seguro e inclusivo.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Possíveis custos de implementação para as empresas de aplicativo.</li><li>Impacto na disponibilidade de motoristas e no tempo de espera das corridas.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6073/thulyo_interface_app_de_transporte_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6073" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 177/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 177/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento pede informações e estudos para regulamentar o serviço de mototáxi em Varginha, tanto por aplicativo quanto de forma tradicional.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir a segurança dos usuários e dos profissionais de mototáxi.</li><li>Para assegurar que a regulamentação seja justa e promova a concorrência.</li><li>Para entender como essa medida pode melhorar as opções de transporte público na cidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A regulamentação pode impactar a segurança dos passageiros e as condições de trabalho dos mototaxistas.</li><li>É importante garantir que as regras sejam claras e justas para todos os envolvidos.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6059/thulyo_-_requerimento177-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6059" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 342/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 342/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação sugere que a prefeitura ofereça atendimento odontológico de urgência e emergência na UPA durante os finais de semana.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garantir o acesso a serviços de saúde essenciais para a população.</li><li>Verificar a efetividade da gestão pública em atender às demandas da comunidade.</li><li>Acompanhar como os recursos públicos são alocados para a melhoria da saúde.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A implementação pode gerar custos adicionais para o município, como contratação de profissionais e aquisição de equipamentos.</li><li>A viabilidade depende da análise e aprovação do Poder Executivo municipal.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6060/thulyo_-_indicacao342-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6060" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 61/2026</span>
+                <span class="chip">Homenagem</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 61/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder uma homenagem chamada Comenda do Mérito da Agricultura - Antonio Ernesto à Cooperativa dos Produtores de Café Especial dos Martins (COOPERCAFEM).</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Entender como as homenagens são concedidas e se elas refletem o reconhecimento de contribuições relevantes para a comunidade.</li><li>Garantir que os recursos públicos, mesmo que para cerimônias, sejam utilizados de forma transparente e justificada.</li><li>Verificar a relevância da entidade homenageada para o desenvolvimento da agricultura local.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar se os critérios para a concessão da comenda foram seguidos e se a entidade agraciada atende plenamente aos requisitos.</li><li>Acompanhar os custos associados à cerimônia de entrega da comenda, caso haja, para garantir a boa aplicação dos recursos públicos.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6111/thulyo_comenda_do_merito_da_agricultura___antonio_ernesto___coopercafem.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6111" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 183/2026</span>
+                <span class="chip">Infraestrutura</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 183/2026</h4>
+            <p class="resumo"><b>Resumo:</b> O Requerimento nº 183/2026 solicita informações da prefeitura sobre a realização de uma obra para conter um desbarrancamento na Rua Zeca Ponciano, no bairro Rezende.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a solicitação do vereador será atendida pela prefeitura.</li><li>Para garantir a segurança e a qualidade de vida dos moradores da Rua Zeca Ponciano.</li><li>Para acompanhar a execução de obras públicas na cidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A resposta da prefeitura pode indicar o cronograma e o custo da obra.</li><li>A urgência da obra para a segurança dos moradores da Rua Zeca Ponciano.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6109/thulyo_-_requerimento183-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6109" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 363/2026</span>
+                <span class="chip">Lazer</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 363/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Um vereador de Varginha-MG sugere que a prefeitura avalie a instalação de um parquinho infantil e uma academia de rua na Praça Santa Cruz, no bairro Bom Pastor.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para saber se a prefeitura vai considerar a sugestão e realizar o estudo de viabilidade.</li><li>Para acompanhar a possível melhoria da infraestrutura de lazer e esporte para os moradores do bairro Bom Pastor.</li><li>Para entender como as demandas da comunidade são transformadas em ações pelo poder público.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A indicação é uma sugestão e não obriga a prefeitura a executar o projeto.</li><li>A eventual implantação dos equipamentos terá custos para o município, que serão definidos após o estudo.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6110/thulyo_-_indicacao363-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6110" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Miguel da Saúde</h3>
+          <div class="linha-resumo">6 matéria(s) · 1 projeto de lei ordinária do legislativo, 1 projeto de decreto legislativo, 4 indicação · 3 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 56/2026</span>
+                <span class="chip">Homenagens</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 56/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito Profissional da Segurança Pública - Alferes Tiradentes, à Comandante Coronel Daisy Ferrarezi da 6ª Região da Polícia Militar de Minas Gerais.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para entender os critérios e processos de concessão de honrarias públicas.</li><li>Para conhecer os profissionais da segurança pública que são reconhecidos pelo município.</li><li>Para acompanhar a utilização do tempo legislativo em pautas de reconhecimento.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar se a homenageada atende aos critérios e regulamentos para o recebimento da comenda.</li><li>Observar o processo de votação e aprovação da homenagem na Câmara Municipal.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6070/projeto_de_decreto_legislativo56-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6070" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 338/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 338/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Um vereador de Varginha-MG apresentou uma indicação solicitando a implantação de uma Unidade Básica de Saúde (UBS) de Porte III no bairro Vila Floresta.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a sugestão será acolhida e se haverá avanços na melhoria da infraestrutura de saúde local.</li><li>Para acompanhar a alocação de recursos públicos para projetos que visam expandir o acesso à saúde.</li><li>Para observar o impacto potencial na qualidade de vida dos moradores dos bairros citados.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Indicações são sugestões e dependem da decisão do Poder Executivo para serem implementadas.</li><li>A construção e manutenção de uma UBS envolvem custos significativos que precisam ser previstos no orçamento municipal.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6053/miguellima_-_indicacao338-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6053" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 339/2026</span>
+                <span class="chip">Comércio</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 339/2026</h4>
+            <p class="resumo"><b>Resumo:</b> O vereador Miguel da Saúde sugere que a prefeitura estude a possibilidade de transformar o atual Mercado Municipal de Varginha em um Shopping Popular, alterando sua finalidade e modelo de gestão.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>A mudança pode afetar a oferta de produtos e serviços para os cidadãos.</li><li>Impacta diretamente os atuais permissionários e trabalhadores do Mercado Municipal.</li><li>Define o futuro de um espaço público relevante para a economia local.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Possíveis impactos nos comerciantes que atualmente trabalham no Mercado Municipal.</li><li>Custos envolvidos na adaptação da estrutura e na mudança do modelo de gestão.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6054/miguellima_-_indicacao339-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6054" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 67/2026</span>
+                <span class="chip">Urbanismo</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 67/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe dar um nome a uma rua pública no bairro Jardim Vitória, em Varginha-MG.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a destinação e o uso dos espaços públicos da cidade.</li><li>Verificar se a homenagem proposta reflete os valores e a história da comunidade local.</li><li>Garantir a transparência no processo de nomeação de logradouros públicos.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar os custos administrativos envolvidos na alteração da denominação, como a confecção de novas placas de identificação.</li><li>Entender os critérios utilizados para a escolha da pessoa homenageada com o nome da rua.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6101/miguel_logradouro_sergio_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6101" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 358/2026</span>
+                <span class="chip">Segurança</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 358/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta é uma solicitação do vereador Miguel da Saúde para instalar câmeras de videomonitoramento no cruzamento em frente à Secretaria Municipal de Esporte e Lazer (SEMEL) em Varginha.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a segurança no cruzamento da SEMEL será de fato melhorada com as câmeras.</li><li>Para acompanhar como os recursos públicos serão utilizados para a instalação e manutenção desses equipamentos.</li><li>Para entender as políticas de segurança pública e videomonitoramento adotadas pela prefeitura.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A instalação das câmeras terá um custo que precisará ser coberto pelo orçamento municipal.</li><li>É importante avaliar se o videomonitoramento é a solução mais eficaz para as necessidades de segurança do local.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6102/miguellima_-_indicacao358-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6102" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 359/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 359/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação pede que a Policlínica Central de Varginha seja ampliada. O objetivo é atender mais pessoas e oferecer melhores condições para pacientes e profissionais de saúde.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir que os serviços de saúde pública melhorem na cidade.</li><li>Para fiscalizar como os recursos públicos serão utilizados em uma possível obra.</li><li>Para verificar se a ampliação realmente trará os benefícios esperados para a população.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A ampliação da policlínica pode gerar custos significativos para o orçamento municipal.</li><li>Por ser uma indicação, a proposta depende da decisão e execução da prefeitura.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6103/miguellima_-_indicacao359-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6103" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Alexandre Prado</h3>
+          <div class="linha-resumo">6 matéria(s) · 2 projeto de decreto legislativo, 1 requerimento, 3 indicação · 4 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 53/2026</span>
+                <span class="chip">Homenagem</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 53/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder o título de &quot;Esportista Destaque Varginhense&quot; à senhora Cecília Rabelo.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para conhecer as pessoas que são reconhecidas pela Câmara Municipal.</li><li>Para entender como os recursos públicos são utilizados na concessão de honrarias.</li><li>Para acompanhar o uso do tempo legislativo em pautas simbólicas.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A concessão de títulos honoríficos utiliza tempo e recursos legislativos.</li><li>É importante verificar os critérios para a escolha dos homenageados.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6066/projeto_de_decreto_legislativo53-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6066" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 167/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 167/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento solicita informações à prefeitura sobre como o município atende pessoas com Transtorno do Déficit de Atenção e Hiperatividade (TDAH), incluindo diagnóstico, acompanhamento especializado e fornecimento de medicamentos pela rede pública.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir a transparência e a qualidade dos serviços de saúde oferecidos a pessoas com TDAH no município.</li><li>Para verificar se a prefeitura está cumprindo seu papel na oferta de diagnóstico e tratamento adequado.</li><li>Para identificar possíveis lacunas no atendimento e advogar por melhorias na política pública de saúde para TDAH.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A qualidade e a completude das informações que serão fornecidas pela prefeitura em resposta ao requerimento.</li><li>O prazo para que o executivo municipal apresente as informações solicitadas.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6038/alexandreprado_-_requerimento167-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6038" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 330/2026</span>
+                <span class="chip">Serviços públicos</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 330/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação sugere a criação de um novo aplicativo municipal ou a melhoria do aplicativo &quot;Conecta Varginha&quot; para que os cidadãos possam solicitar e acompanhar serviços urbanos de forma digital.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Pode simplificar a forma como os cidadãos solicitam e acompanham serviços públicos.</li><li>Pode aumentar a transparência sobre o andamento das solicitações.</li><li>Pode melhorar a eficiência na prestação de serviços urbanos pela prefeitura.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O custo de desenvolvimento e manutenção do aplicativo para o município.</li><li>A necessidade de garantir que o aplicativo seja acessível e fácil de usar para toda a população.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6037/alexandreprado_-_indicacao330-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6037" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 59/2026</span>
+                <span class="chip">Homenagem</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 59/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito Eclesiástico &quot;Padre Victor&quot;, ao Cônego Bruno César Dias Graciano.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Entender como a Câmara Municipal utiliza seu poder de conceder honrarias e reconhecimentos.</li><li>Observar a transparência e os critérios na seleção de personalidades para receber homenagens públicas.</li><li>Acompanhar o uso do tempo e recursos legislativos para a aprovação de honrarias.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar os critérios utilizados para a escolha do homenageado.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6084/alexandre_comenda_conego_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6084" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 348/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 348/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação solicita que a prefeitura realize um estudo técnico para criar um fluxo de atendimento integrado para pessoas com problemas de álcool e outras drogas, dentro da Rede de Atenção Psicossocial (RAPS).</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a proposta resultará em melhorias no atendimento à saúde mental e no combate ao uso de substâncias na cidade.</li><li>Para acompanhar como os recursos públicos serão utilizados na realização do estudo e na possível implementação do fluxo.</li><li>Para garantir que as políticas públicas de saúde atendam de forma eficiente e humanizada a população mais vulnerável.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O estudo e a eventual implantação do fluxo podem gerar custos para o orçamento municipal.</li><li>É importante garantir que o fluxo proposto seja realmente eficaz e acessível a todos que precisam.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6083/alexandreprado_-_indicacao348-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6083" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 349/2026</span>
+                <span class="chip">Inclusão digital</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 349/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação solicita que a prefeitura de Varginha-MG realize um estudo técnico para implantar Centros de Inclusão Digital e Atendimento ao Cidadão em imóveis públicos.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Pode melhorar o acesso da população aos serviços públicos digitais.</li><li>Promove a inclusão digital, auxiliando cidadãos com dificuldades tecnológicas.</li><li>Pode otimizar o uso de imóveis públicos para benefício da comunidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A implementação dos centros pode gerar custos para o orçamento municipal.</li><li>É fundamental que o estudo técnico seja detalhado e transparente.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6085/alexandreprado_-_indicacao349-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6085" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Dandan</h3>
+          <div class="linha-resumo">6 matéria(s) · 1 projeto de decreto legislativo, 4 requerimento, 1 moção · 3 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">MOC 12/2026</span>
+                <span class="chip">Comunidade</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-06">06/07/2026</time>
+            </div>
+
+            <h4>Moção nº 12/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Moção nº 12/2026 é uma homenagem da Câmara Municipal de Varginha à Associação Zapata Moto Clube. Ela reconhece o trabalho do clube no motociclismo, na promoção da fraternidade e em ações sociais, humanitárias e ambientais.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Entender como os vereadores utilizam o instrumento de moção para reconhecer entidades da sociedade civil.</li><li>Observar quais grupos e atividades são valorizados pelos representantes eleitos.</li><li>Conhecer as iniciativas sociais, humanitárias e ambientais que recebem apoio formal do legislativo municipal.</li></ul>
+            </div>
+
+
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6033/mocao12-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6033" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 55/2026</span>
+                <span class="chip">Educação</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 55/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito Educacional, à senhora Olga Pires da Silva Junqueira.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Entender como a Câmara Municipal reconhece e valoriza personalidades da cidade.</li><li>Conhecer as pessoas que são consideradas exemplos na área da educação em Varginha.</li><li>Acompanhar o uso de recursos públicos, mesmo que mínimos, para a realização de cerimônias e confecção de honrarias.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar os critérios que justificam a concessão da honraria.</li><li>Observar os custos envolvidos na cerimônia de entrega e na confecção da comenda.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6069/projeto_de_decreto_legislativo55-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6069" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 171/2026</span>
+                <span class="chip">Segurança</span>
+                <span class="chip chip-alto">Relevância alta</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 171/2026</h4>
+            <p class="resumo"><b>Resumo:</b> O vereador Dandan solicitou informações à prefeitura sobre a possibilidade de instalar iluminação e câmeras de segurança na Avenida Mário Cândido de Oliveira, conhecida como Avenida Perimetral.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Pode resultar em maior segurança para quem utiliza a Avenida Perimetral.</li><li>Envolve o uso de recursos públicos para melhorias na infraestrutura da cidade.</li><li>Acompanhar a transparência e a eficiência da gestão pública na resposta e execução de demandas.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Potencial impacto no orçamento municipal para a execução das obras.</li><li>A viabilidade técnica e operacional da instalação dos sistemas.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6045/danielrodrigues_-_requerimento171-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6045" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 172/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 172/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento solicita informações detalhadas sobre a Central de Operações para Regulação Estadual (CORE/MG), o novo sistema que substituiu o SUS Fácil na gestão de leitos hospitalares em Minas Gerais.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para entender como a mudança no sistema de regulação de leitos pode impactar o acesso a serviços de saúde.</li><li>Para acompanhar a fiscalização sobre a eficiência e transparência da nova Central de Operações para Regulação Estadual (CORE/MG).</li><li>Para garantir que a gestão dos leitos hospitalares atenda às necessidades da população de forma adequada.</li></ul>
+            </div>
+
+
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6046/danielrodrigues_-_requerimento172-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6046" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 179/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 179/2026</h4>
+            <p class="resumo"><b>Resumo:</b> O Requerimento nº 179/2026, de autoria do vereador Dandan, solicita informações sobre a disponibilidade do medicamento Abemaciclib, utilizado no tratamento de câncer.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se o município está garantindo o acesso a medicamentos essenciais para a saúde pública.</li><li>Para entender as políticas de saúde relacionadas ao tratamento de doenças graves como o câncer.</li><li>Para fiscalizar a atuação do poder público na oferta de serviços e insumos médicos.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A resposta ao requerimento pode revelar desafios na aquisição ou distribuição de medicamentos de alto custo.</li><li>A disponibilidade do medicamento é crucial para pacientes em tratamento de câncer.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6092/danielrodrigues_-_requerimento179-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6092" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 180/2026</span>
+                <span class="chip">Infraestrutura</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 180/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento solicita informações à prefeitura sobre uma erosão localizada no passeio público da Avenida dos Tachos, em frente à Praça Vereador Carlos Costa.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garantir a segurança dos pedestres e usuários da via pública.</li><li>Verificar a manutenção adequada do espaço público pela prefeitura.</li><li>Assegurar a transparência na gestão e resolução de problemas urbanos.</li></ul>
+            </div>
+
+
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6093/danielrodrigues_-_requerimento180-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6093" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Bruno Leandro Coletor</h3>
+          <div class="linha-resumo">5 matéria(s) · 2 projeto de lei ordinária do legislativo, 2 requerimento, 1 indicação · 3 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 60/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 60/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei busca proibir o descarte incorreto de materiais perfurocortantes na cidade de Varginha, criando regras e punições para quem não seguir.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Pode contribuir para a segurança e saúde pública, diminuindo riscos de acidentes e contaminações.</li><li>Visa proteger trabalhadores que lidam com o lixo, como garis.</li><li>Promove a responsabilidade ambiental no manejo de resíduos perigosos.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A implementação da lei exigirá fiscalização por parte do município.</li><li>Será importante a conscientização da população sobre as novas regras de descarte.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6068/bruno_projeto_de_lei_residuos_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6068" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 169/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 169/2026</h4>
+            <p class="resumo"><b>Resumo:</b> O Requerimento nº 169/2026 solicita informações à prefeitura sobre a possibilidade de criar um sistema de internação hospitalar exclusivo para os servidores públicos municipais e se há estudos sobre o tema.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para compreender como os recursos públicos podem ser direcionados para benefícios de servidores.</li><li>Para assegurar a transparência no planejamento e na eventual implementação de novos serviços de saúde.</li><li>Para analisar o impacto de tal medida na gestão da saúde pública municipal.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Potencial impacto financeiro para o orçamento municipal, caso o sistema seja implementado.</li><li>A necessidade de avaliar a equidade e a sustentabilidade de um sistema de saúde exclusivo para servidores.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6041/brunoleandro_-_requerimento169-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6041" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 170/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 170/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento solicita informações à prefeitura de Varginha sobre as condições de trabalho dos servidores responsáveis pela coleta de resíduos sólidos, especialmente em relação à exposição ao sol e calor intenso.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para assegurar que os trabalhadores que realizam a coleta de lixo, um serviço essencial, tenham condições de trabalho dignas e seguras.</li><li>Para acompanhar a atuação da Câmara Municipal na fiscalização das condições de trabalho dos servidores públicos.</li><li>Para verificar se a administração municipal está implementando medidas eficazes para proteger a saúde dos coletores de resíduos.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A resposta da prefeitura pode indicar a necessidade de ajustes nas rotinas de trabalho ou investimentos em equipamentos de proteção.</li><li>A qualidade e a transparência das informações fornecidas serão importantes para a avaliação da situação.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6042/brunoleandro_-_requerimento170-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6042" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 64/2026</span>
+                <span class="chip">Urbanismo</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 64/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe a alteração do nome de uma rua na cidade de Varginha. A Rua 13, localizada no Bairro Residencial Penedo, passará a se chamar Rua Joel de Farias Reis.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir que os recursos públicos sejam utilizados de forma eficiente na mudança de sinalização.</li><li>Para que os moradores da rua possam se preparar para as alterações de endereço.</li><li>Para assegurar que a homenagem seja justa e representativa para a comunidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Custos para a prefeitura com a confecção e instalação de novas placas de sinalização.</li><li>Possíveis transtornos para moradores e comerciantes da rua com a atualização de documentos e cadastros.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/bruno_minuta_projeto_de_decreto__logradouro_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6088" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 352/2026</span>
+                <span class="chip">Infraestrutura</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 352/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação pede que a prefeitura faça um aditivo em um contrato existente para construir banheiros, vestiários e instalar um bebedouro no Complexo Esportivo e de Lazer, conhecido como Melãozinho.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir que os recursos públicos sejam utilizados de forma eficiente na melhoria da infraestrutura esportiva.</li><li>Para verificar se as obras propostas realmente atendem às necessidades da comunidade que utiliza o complexo.</li><li>Para acompanhar a execução do contrato e a qualidade das novas instalações.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A realização de um aditivo contratual pode implicar em aumento de custos para o município.</li><li>É importante verificar se o aditivo segue as normas de transparência e licitação.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6089/brunoleandro_-_indicacao352-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6089" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Zilda Silva</h3>
+          <div class="linha-resumo">5 matéria(s) · 2 projeto de lei ordinária do legislativo, 2 requerimento, 1 indicação · 2 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 63/2026</span>
+                <span class="chip">Urbanismo</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+                <span class="chip chip-lei">Virou lei</span>
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 63/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe dar um nome oficial a uma rua no bairro Terra Nobre.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a homenagem a Mário Kieser e entender sua relevância para a comunidade.</li><li>Verificar o processo de escolha do nome e se houve participação popular.</li><li>Impacta diretamente os moradores da Rua B, que terão um novo endereço.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Possíveis custos para os moradores da Rua B com a atualização de documentos e cadastros.</li><li>A justificativa para a escolha do nome &quot;Mário Kieser&quot; não está detalhada no texto.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6074/projetodelei63-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6074" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 178/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 178/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento solicita informações à prefeitura sobre a possibilidade de instalar redutores de velocidade ou radares na Avenida dos Tachos, próximo ao número 358.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir a segurança de pedestres e motoristas na Avenida dos Tachos</li><li>Para fiscalizar o uso de recursos públicos caso as instalações sejam aprovadas</li><li>Para acompanhar a resposta da prefeitura sobre a viabilidade técnica e orçamentária</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Possível impacto no orçamento municipal para instalação e manutenção das estruturas</li><li>Necessidade de estudo técnico para avaliar a real necessidade e eficácia das medidas propostas</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6064/zilda_-_requerimento178-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6064" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 345/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 345/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A vereadora Zilda Silva solicitou que a empresa de transporte coletivo realize um estudo para verificar a viabilidade de criar uma nova linha de ônibus para atender a região do Capão e suas adjacências.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir que a necessidade de transporte público da comunidade do Capão seja devidamente avaliada.</li><li>Para fiscalizar a transparência e a eficiência do estudo de viabilidade proposto.</li><li>Para acompanhar os possíveis impactos na qualidade e custo do transporte coletivo municipal.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O estudo de viabilidade pode indicar custos adicionais para a concessionária ou para o município, que podem impactar a tarifa ou exigir subsídios.</li><li>A efetivação da linha dependerá da conclusão do estudo e da decisão da empresa concessionária e do poder público.</li></ul>
+            </div>
+
+            <div class="acoes">
+
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6063" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 69/2026</span>
+                <span class="chip">Nomenclatura</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 69/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe dar um novo nome a uma rua na cidade de Varginha.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Afeta diretamente os moradores da rua, que terão seus endereços alterados.</li><li>Define a homenagem a uma pessoa, refletindo valores e figuras importantes para a comunidade.</li><li>Envolve o uso de recursos públicos para a confecção e instalação de novas placas de identificação.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Custos para a prefeitura com a confecção e instalação de novas placas de identificação da rua.</li><li>Possíveis transtornos para os moradores com a atualização de documentos e correspondências.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6115/zilda_p.l.___denominacao_logradouro_denise_ciacci_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6115" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 184/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 184/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento busca informações junto ao INSS sobre o agendamento de perícias médicas para moradores de Varginha em outras cidades.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir que os moradores de Varginha tenham acesso facilitado e justo às perícias médicas do INSS.</li><li>Para verificar se a Câmara Municipal atuará para resolver possíveis problemas identificados na prestação desses serviços.</li><li>Para entender a qualidade e a disponibilidade dos serviços previdenciários na cidade.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A resposta do INSS pode revelar desafios na oferta de serviços de perícia médica na região.</li><li>A questão levanta preocupações sobre a acessibilidade e o custo de deslocamento para os segurados.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6114/zilda_-_requerimento184-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6114" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Pastor Faustinho</h3>
+          <div class="linha-resumo">5 matéria(s) · 1 projeto de decreto legislativo, 4 indicação</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 57/2026</span>
+                <span class="chip">Homenagens</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 57/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder o Diploma de Honra ao Mérito ao senhor Aloysio Ribeiro de Almeida.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para conhecer as pessoas que são reconhecidas pela Câmara Municipal.</li><li>Para fiscalizar a aplicação dos critérios para a concessão de honrarias públicas.</li><li>Para compreender como os recursos públicos, mesmo que mínimos, são utilizados em cerimônias e diplomas.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar os critérios e justificativas para a concessão da honraria.</li><li>Entender o impacto simbólico e o precedente que a homenagem pode criar.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6071/projeto_de_decreto_legislativo57-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6071" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 340/2026</span>
+                <span class="chip">Infraestrutura</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 340/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 340/2026 solicita à Defesa Civil de Varginha que realize uma vistoria e tome as medidas necessárias em um imóvel específico na Rua Rio de Janeiro, 862, no Centro.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garantir a segurança de imóveis e áreas públicas, prevenindo riscos à população.</li><li>Assegurar a eficiência e a responsabilidade da Defesa Civil na fiscalização e atuação.</li><li>Verificar se as solicitações dos vereadores são atendidas pelo poder executivo.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar se a vistoria será de fato realizada pela Defesa Civil.</li><li>Acompanhar quais providências serão adotadas após a vistoria, caso sejam necessárias.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6055/ind_034-_defesa_civil.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6055" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 341/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 341/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação pede à prefeitura que faça o recapeamento, ou seja, a reforma do asfalto, em toda a Rua Jacy de Figueiredo, no Bairro Campos Elíseos.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para saber se a prefeitura vai aceitar a sugestão e realizar o recapeamento.</li><li>Para acompanhar a qualidade da obra, caso ela seja feita.</li><li>Para entender como os recursos públicos são usados em melhorias de infraestrutura.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Indicações são sugestões e não obrigam a prefeitura a realizar a obra.</li><li>O custo do recapeamento não é informado, o que pode gerar impacto no orçamento público.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6056/pastorfaustinho_-_indicacao341-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6056" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 360/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 360/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 360/2026 solicita que a prefeitura recupere o asfalto em trechos específicos das Ruas Delfraro Anselmo e Professor Fernando Máximo, no Bairro Campos Elíseos.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garantir a segurança e o conforto de motoristas e pedestres que utilizam as vias.</li><li>Verificar a eficiência da gestão municipal na manutenção da infraestrutura urbana.</li><li>Assegurar que os recursos públicos sejam aplicados na melhoria da qualidade de vida dos moradores.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O impacto orçamentário para a realização das obras de recuperação.</li><li>O prazo para que a solicitação seja avaliada e, se aprovada, executada pela prefeitura.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6104/pastorfaustinho_-_indicacao360-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6104" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 361/2026</span>
+                <span class="chip">Patrimônio público</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 361/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 361/2026 pede que a prefeitura estude a possibilidade de instalar a sede do Grupo Escoteiro 47 Raios do Sol na antiga Escola Rural Santa Terezinha, que está desativada, ou em outro espaço público adequado.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar o uso de um imóvel público desativado, que pode ser revitalizado para a comunidade.</li><li>Verificar o apoio a atividades educativas e sociais para jovens na cidade.</li><li>Observar os custos envolvidos na adaptação e manutenção do espaço, caso a proposta seja implementada.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Possível impacto no orçamento municipal para reformas e manutenção do espaço, caso seja cedido.</li><li>A necessidade de garantir que a cessão do espaço siga as normas legais para uso de bens públicos.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6105/pastorfaustinho_-_indicacao361-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6105" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Davi Martins</h3>
+          <div class="linha-resumo">5 matéria(s) · 1 projeto de decreto legislativo, 4 indicação · 1 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 334/2026</span>
+                <span class="chip">Lazer</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 334/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Um vereador de Varginha solicitou à prefeitura a limpeza e revitalização de um terreno no bairro Nova Varginha, propondo a criação de um campo de futebol, praça e academia ao ar livre no local.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Verificar se a solicitação será atendida e se a área de lazer será de fato implementada.</li><li>Acompanhar o uso de recursos públicos para a revitalização e construção dos equipamentos.</li><li>Garantir que a comunidade do bairro Nova Varginha seja beneficiada com melhorias na infraestrutura de lazer.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Impacto orçamentário para a realização dos serviços de limpeza e implantação dos equipamentos.</li><li>Disponibilidade do terreno para a finalidade proposta, verificando se é público ou privado.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6047/carlosdavi_-_indicacao334-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6047" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 335/2026</span>
+                <span class="chip">Cultura</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 335/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação solicita que a Prefeitura de Varginha estude a possibilidade de oferecer apoio institucional e financeiro à Orquestra Filarmônica de Varginha. O objetivo é ajudar na manutenção das atividades artísticas, educacionais e culturais da orquestra.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para entender como os recursos públicos podem ser direcionados para o setor cultural.</li><li>Para acompanhar o desenvolvimento e a oferta de atividades culturais e educacionais na cidade.</li><li>Para verificar a transparência e os critérios de um possível apoio financeiro a entidades culturais.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Potencial impacto no orçamento municipal, caso o apoio financeiro seja implementado.</li><li>A necessidade de critérios claros e justos para a concessão de apoio a entidades culturais.</li></ul>
+            </div>
+
+            <div class="acoes">
+
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6048" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PDL 60/2026</span>
+                <span class="chip">Homenagem</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Decreto Legislativo nº 60/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito Profissional da Segurança Pública - Alferes Tiradentes, ao Senhor Helder Vitor da Silva.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garantir que as homenagens públicas reflitam o mérito e a relevância para a comunidade.</li><li>Assegurar a transparência nos processos de reconhecimento público.</li><li>Entender como o legislativo valoriza e celebra as contribuições individuais para a segurança pública.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Acompanhar os critérios que justificam a escolha do homenageado.</li><li>Verificar se há custos envolvidos na cerimônia de entrega e sua origem orçamentária.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6094/davi_concede_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes_helder_vitor_da_silva_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6094" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 354/2026</span>
+                <span class="chip">Assistencia social</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 354/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 354/2026 sugere que a Prefeitura de Varginha estude a criação de um programa chamado &quot;Bolsa Atirador&quot;. Este programa concederia um auxílio financeiro a jovens que estão servindo no Tiro de Guerra 04-034.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Verificar como os recursos públicos serão utilizados para apoiar os jovens da cidade.</li><li>Acompanhar a criação de novos programas sociais e seus critérios de elegibilidade.</li><li>Entender o impacto financeiro de um novo auxílio no orçamento municipal.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Impacto orçamentário: A criação de um novo auxílio financeiro demandará recursos do orçamento municipal.</li><li>Critérios de elegibilidade: É importante que os critérios para receber a bolsa sejam claros e justos.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6095/davi_martins_ind_0138_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6095" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 355/2026</span>
+                <span class="chip">Tributos</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 355/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 355/2026 sugere que a prefeitura estude a possibilidade de criar ou aumentar um desconto no IPTU para idosos de baixa renda que moram em seu único imóvel.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para entender como a prefeitura pode apoiar idosos de baixa renda na cidade.</li><li>Para acompanhar as discussões sobre a política tributária municipal e seus impactos no orçamento.</li><li>Para verificar se os estudos técnicos e jurídicos serão de fato realizados e quais serão suas conclusões.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O impacto financeiro para o orçamento municipal, caso o benefício seja implementado.</li><li>A definição dos critérios para 'baixa renda' e 'único imóvel' para garantir que o benefício atinja quem realmente precisa.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6096/davi_martins_ind_0226_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6096" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Cássio Chiodi</h3>
+          <div class="linha-resumo">4 matéria(s) · 1 projeto de lei ordinária do legislativo, 3 indicação · 2 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 332/2026</span>
+                <span class="chip">Pessoal</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 332/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação solicita que a Prefeitura de Varginha ofereça assistência jurídica gratuita aos servidores públicos municipais que respondam a processos administrativos por atos praticados no exercício de suas funções.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Pode gerar novos custos para o orçamento municipal, impactando os recursos públicos.</li><li>Garante o direito de defesa dos servidores, o que pode influenciar a qualidade do serviço público.</li><li>Estabelece um precedente sobre o tipo de apoio que a administração pública oferece aos seus funcionários.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O impacto financeiro para o município, que precisará arcar com os custos da assistência jurídica.</li><li>A necessidade de clareza sobre o que se entende por &quot;exercício regular de suas funções&quot; para evitar abusos.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6043/cassiochiodi_-_indicacao332-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6043" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 333/2026</span>
+                <span class="chip">Educação</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 333/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação solicita que a prefeitura de Varginha analise a possibilidade de devolver os valores descontados dos servidores da educação que participaram de uma paralisação, ou que os descontos sejam proporcionais ao tempo parado, ou ainda que não haja desconto se o dia for reposto.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Pode afetar o uso dos recursos públicos do município.</li><li>Trata dos direitos e deveres dos servidores públicos da educação.</li><li>Influencia a relação entre a administração municipal e seus funcionários.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Potencial impacto no orçamento municipal caso os valores sejam restituídos.</li><li>A indicação é uma sugestão e não uma decisão vinculante para o executivo.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6044/cassiochiodi_-_indicacao333-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6044" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 65/2026</span>
+                <span class="chip">Consumidor</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 65/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei busca estabelecer regras para a cobrança e o uso do couvert artístico em estabelecimentos no município de Varginha.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para entender seus direitos como consumidor ao frequentar estabelecimentos com música ao vivo.</li><li>Para verificar se as regras propostas são justas para consumidores e comerciantes.</li><li>Para acompanhar como a legislação pode influenciar a cultura e o entretenimento local.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Possível impacto financeiro para bares e restaurantes que oferecem música ao vivo.</li><li>Necessidade de clareza nas regras para evitar abusos na cobrança aos consumidores.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6090/cassio_pl___couvert_artistico.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6090" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 353/2026</span>
+                <span class="chip">Gestão pública</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 353/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação sugere que a prefeitura estude a possibilidade de mudar a casa usada pela Limpeza Urbana para o prédio onde hoje funciona a SEMEL (antigo VTC).</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Verificar se a mudança trará mais eficiência para os serviços de Limpeza Urbana.</li><li>Acompanhar o uso adequado e a otimização dos imóveis públicos da cidade.</li><li>Entender os custos e benefícios envolvidos na realocação de estruturas municipais.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Custos envolvidos na adaptação e mudança das instalações.</li><li>Impacto na continuidade dos serviços da Limpeza Urbana durante a transição.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6091/cassiochiodi_-_indicacao353-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6091" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Dudu Ottoni</h3>
+          <div class="linha-resumo">4 matéria(s) · 1 projeto de lei ordinária do legislativo, 1 requerimento, 2 indicação · 1 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 173/2026</span>
+                <span class="chip">Pessoal</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 173/2026</h4>
+            <p class="resumo"><b>Resumo:</b> O vereador Dudu Ottoni solicitou informações sobre o andamento da revisão e elaboração do novo Plano de Cargos, Carreiras e Salários e do Estatuto dos Servidores Públicos Municipais.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a revisão do Plano de Cargos e Salários é importante porque ele define as regras para a carreira e remuneração dos servidores públicos.</li><li>Isso pode impactar diretamente o orçamento da prefeitura e, consequentemente, os recursos disponíveis para outras áreas como saúde e educação.</li><li>A qualidade dos serviços públicos oferecidos à população está ligada à valorização e organização da carreira dos servidores.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A revisão do plano de cargos e salários pode gerar impactos financeiros significativos no orçamento municipal.</li><li>É fundamental que o processo de elaboração seja transparente e considere as necessidades dos servidores e a capacidade financeira do município.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6050/eduardoottonifilho_-_requerimento173-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6050" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 336/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 336/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 336/2026 sugere que a prefeitura realize o recapeamento do asfalto e revitalize a sinalização de trânsito na Rua João Batista Bueno, no bairro Vila Bueno.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a melhoria da infraestrutura viária e a segurança no trânsito local.</li><li>Verificar a efetividade da atuação legislativa na proposição de melhorias urbanas.</li><li>Monitorar o uso de recursos públicos destinados à manutenção e revitalização de vias.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A execução da obra dependerá da disponibilidade orçamentária da prefeitura.</li><li>A priorização desta rua em relação a outras demandas de infraestrutura da cidade.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6049/eduardoottonifilho_-_indicacao336-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6049" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">PLOL 66/2026</span>
+                <span class="chip">Urbanismo</span>
+                <span class="chip chip-baixo">Relevância baixa</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Projeto de Lei Ordinária do Legislativo nº 66/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este projeto de lei propõe a mudança do nome de uma avenida em Varginha-MG.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Garantir que a homenagem ao Dr. Joaquim Pereira de Morais seja apropriada e represente os valores da comunidade.</li><li>Acompanhar a transparência dos custos envolvidos na mudança de nome.</li><li>Assegurar que a população local foi informada e teve a oportunidade de se manifestar sobre a alteração.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar os custos administrativos para a alteração de placas, mapas e registros oficiais.</li><li>Considerar o impacto para moradores e empresas da avenida na atualização de endereços e documentos.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6097/dudu_den_logradouro_av_dr_joaquim_pereira_de_morais_revisado.docx" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6097" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 356/2026</span>
+                <span class="chip">Iluminação pública</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 356/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta é uma solicitação do vereador Dudu Ottoni para que a prefeitura instale lâmpadas de LED nos postes localizados no prolongamento da Rua São Lucas, no bairro Parque Urupês.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a solicitação será atendida pela prefeitura e em qual prazo.</li><li>Para avaliar a eficiência da iluminação LED e seus benefícios para a segurança e economia de energia na região.</li><li>Para observar como as demandas de infraestrutura dos bairros são priorizadas e executadas.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Verificar o impacto orçamentário para a instalação e manutenção das novas lâmpadas.</li><li>Observar a priorização desta rua em relação a outras que também necessitam de melhorias na iluminação.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6098/eduardoottonifilho_-_indicacao356-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6098" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Joãozinho Enfermeiro</h3>
+          <div class="linha-resumo">4 matéria(s) · 2 requerimento, 2 indicação · 3 de relevância alta</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 174/2026</span>
+                <span class="chip">Saneamento</span>
+                <span class="chip chip-alto">Relevância alta</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 174/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento, apresentado pelo vereador Joãozinho Enfermeiro, pede informações sobre a falta de água na Avenida José Ribeiro Tristão, no bairro Aeroporto.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para garantir que a população tenha acesso a um serviço essencial como o abastecimento de água.</li><li>Para fiscalizar a atuação dos órgãos públicos na resolução de problemas da comunidade.</li><li>Para promover a transparência na gestão dos serviços públicos.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>Acompanhar se a prefeitura responderá ao requerimento dentro do prazo legal.</li><li>Verificar se as informações fornecidas são claras e detalhadas sobre a situação do abastecimento.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6052/joaomartins_-_requerimento174-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6052" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 337/2026</span>
+                <span class="chip">Saúde</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 337/2026</h4>
+            <p class="resumo"><b>Resumo:</b> A Indicação nº 337/2026 solicita a criação de um programa municipal para promover e proteger a saúde mental dos trabalhadores da saúde em Varginha.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>A saúde dos profissionais impacta diretamente a qualidade do atendimento oferecido à população.</li><li>O programa pode contribuir para a redução do estresse e esgotamento entre os trabalhadores da saúde.</li><li>Acompanhar garante que os recursos públicos sejam bem aplicados em benefício dos serviços de saúde.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A implantação do programa pode gerar custos para o orçamento municipal.</li><li>Por ser uma indicação, a decisão final sobre a criação do programa cabe ao Poder Executivo.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6051/joaomartins_-_indicacao337-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6051" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">REQ 181/2026</span>
+                <span class="chip">Segurança</span>
+                <span class="chip chip-alto">Relevância alta</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Requerimento nº 181/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Este requerimento pede informações à prefeitura sobre por que a instalação de câmeras de segurança na cidade de Varginha parou.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para entender os motivos da paralisação de um projeto de segurança que afeta a cidade.</li><li>Para fiscalizar a aplicação dos recursos públicos destinados à segurança e garantir a eficiência dos investimentos.</li><li>Para assegurar que a Câmara Municipal está atuando na fiscalização das ações do executivo em prol da segurança dos cidadãos.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A paralisação da implantação das câmeras pode indicar problemas na execução de um projeto de segurança pública.</li><li>A falta de informações sobre o motivo da paralisação pode gerar dúvidas sobre a gestão dos recursos públicos destinados à segurança.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6099/joaomartins_-_requerimento181-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6099" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 357/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 357/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta indicação solicita a instalação de uma faixa elevada para travessia de pedestres na Rua Mário Sappi, na altura do número 55, no bairro da Vargem.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar pode garantir que a solicitação seja avaliada e, se aprovada, implementada pela prefeitura.</li><li>Permite verificar se a medida realmente contribui para a segurança dos pedestres na região.</li><li>É uma oportunidade para a comunidade local expressar apoio ou preocupações sobre a localização e necessidade da faixa.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A implantação de faixas elevadas envolve custos de material e mão de obra, impactando o orçamento municipal.</li><li>É importante verificar se a localização proposta é a mais adequada para o fluxo de pedestres e veículos, evitando congestionamentos ou outros problemas.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6100/joaomartins_-_indicacao357-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6100" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article>
+      <article class="ficha">
+        <header>
+          <h3>Zé Morais</h3>
+          <div class="linha-resumo">4 matéria(s) · 4 indicação</div>
+        </header>
+        <div class="materias">
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 343/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 343/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta é uma solicitação do vereador Zé Morais para que a prefeitura realize o recapeamento da Rua Antônio Rodrigues de Souza, localizada no bairro Jardim Canaã.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Acompanhar a execução de obras públicas e a qualidade dos serviços prestados à comunidade.</li><li>Verificar como os recursos públicos são utilizados para melhorias na infraestrutura urbana.</li><li>Garantir que as demandas dos cidadãos por manutenção de vias sejam consideradas e atendidas.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A necessidade de alocação de recursos orçamentários para a execução da obra.</li><li>A prioridade desta rua em relação a outras demandas de infraestrutura na cidade.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6061/josemorais_-_indicacao343-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6061" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 344/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-08">08/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 344/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta é uma solicitação para que a prefeitura asfalte uma via específica em Varginha-MG, localizada perto do Clube Recreativo Madrugada, na região do Juriti.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Verificar a melhoria da infraestrutura local e a qualidade de vida dos moradores da região.</li><li>Acompanhar o uso de recursos públicos destinados a obras de pavimentação.</li><li>Observar a capacidade da administração municipal em atender às demandas de infraestrutura.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O impacto orçamentário para a execução da obra de asfaltamento.</li><li>A priorização desta via em relação a outras demandas de infraestrutura na cidade.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6062/josemorais_-_indicacao344-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6062" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 364/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+                <span class="chip chip-zero">Sem impacto orçamentário</span>
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 364/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta é uma solicitação do vereador Zé Morais para que a prefeitura de Varginha asfalte um trecho de rua específico. O trecho vai da Avenida dos Imigrantes, passa pelo Campo do Moacir e Estrada Rural 135, até o acesso ao Chacreamento Vale do Sol.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Para verificar se a infraestrutura da região será melhorada com o asfaltamento.</li><li>Para acompanhar como os recursos públicos serão utilizados em obras de mobilidade.</li><li>Para entender o impacto da obra na qualidade de vida e no trânsito local.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>O impacto financeiro da obra no orçamento municipal.</li><li>A prioridade desta solicitação em comparação com outras necessidades da cidade.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6112/josemorais_-_indicacao364-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6112" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article>
+          <article class="materia">
+            <div class="materia-topo">
+              <div class="chips">
+                <span class="chip chip-tipo">IND 365/2026</span>
+                <span class="chip">Mobilidade</span>
+                <span class="chip chip-medio">Relevância média</span>
+
+
+              </div>
+              <time datetime="2026-07-15">15/07/2026</time>
+            </div>
+
+            <h4>Indicação nº 365/2026</h4>
+            <p class="resumo"><b>Resumo:</b> Esta é uma solicitação do vereador Zé Morais para que a prefeitura de Varginha realize o recapeamento da Rua Ludgero Pereira, localizada no bairro Vila Nogueira.</p>
+
+            <div class="acompanhar">
+              <b>Por que acompanhar</b>
+              <ul><li>Verificar se a solicitação será atendida e qual o prazo para a execução da obra.</li><li>Acompanhar a qualidade do serviço caso seja realizado.</li><li>Entender como as demandas de infraestrutura são priorizadas pela prefeitura.</li></ul>
+            </div>
+
+            <div class="atencao">
+              <b>Pontos de atenção</b>
+              <ul><li>A indicação é uma sugestão e não obriga a prefeitura a realizar a obra, dependendo da disponibilidade orçamentária e das prioridades da administração municipal.</li></ul>
+            </div>
+
+            <div class="acoes">
+              <a class="botao" href="http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6113/josemorais_-_indicacao365-2026.pdf" target="_blank" rel="noopener">Ver documento no detalhe</a>
+              <a class="botao secundario" href="https://sapl.varginha.mg.leg.br/materia/6113" target="_blank" rel="noopener">Tramitação no SAPL</a>
+            </div>
+          </article></div>
+      </article></div>
+    </section>
+
+
+  <footer>
+    <p><b>O que este resumo não afirma.</b> Contrato assinado não é pagamento executado —
+    a base não tem série de empenho e liquidação por período. O CNPJ dos fornecedores vem
+    mascarado na origem, então o cruzamento com sanções e quadro societário funciona por raiz
+    e pode deixar casos sem vínculo.</p>
+    <p>Divergência entre este resumo e o portal de origem deve ser resolvida a favor da fonte oficial.</p>
+  </footer>
+</div>

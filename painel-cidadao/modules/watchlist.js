@@ -2,25 +2,25 @@
  *
  * Watchlist cidadã — marcadores pessoais em localStorage.
  *
- * Disponível em window.ZELA.watchlist.
+ * Disponível em window.FISCALIZA.watchlist.
  * Carregado pelo data-loader.js (depois de utils.js, antes de app.js).
  *
  * Dependências externas:
- *   - window.ZELA.utils.* (esc, jsSafe, norm — conforme uso interno)
+ *   - window.FISCALIZA.utils.* (esc, jsSafe, norm — conforme uso interno)
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
   // Aliases das utilidades. utils.js DEVE ser carregado antes.
-  const u = window.ZELA.utils;
+  const u = window.FISCALIZA.utils;
   if (!u) {
-    console.error("[watchlist] window.ZELA.utils ausente. Carregue modules/utils.js primeiro.");
+    console.error("[watchlist] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
   const esc = u.esc, jsSafe = u.jsSafe, norm = u.norm;
 
   // ============= WATCHLIST CIDADÃ =============
-  const WATCH_KEY = "zela.watchlist.v1";
+  const WATCH_KEY = "fiscaliza.watchlist.v1";
   const carregarWatch = function () {
     try {
       const raw = localStorage.getItem(WATCH_KEY);
@@ -36,7 +36,7 @@
     try { localStorage.setItem(WATCH_KEY, JSON.stringify(w)); }
     catch (e) { /* localStorage cheio ou bloqueado — silencioso */ }
   };
-  window.ZELA.watchlist = {
+  window.FISCALIZA.watchlist = {
     obter: carregarWatch,
     has: function (tipo, id) {
       const w = carregarWatch();
@@ -64,13 +64,13 @@
       return arr.indexOf(id) >= 0;
     },
     botao: function (tipo, id) {
-      const marked = window.ZELA.watchlist.has(tipo, id);
+      const marked = window.FISCALIZA.watchlist.has(tipo, id);
       return `<button type="button" class="btn-star${marked ? " is-marked" : ""}"
         data-watch-tipo="${tipo}" data-watch-id="${esc(id)}"
         aria-pressed="${marked ? "true" : "false"}"
         title="${marked ? "Remover dos marcadores" : "Adicionar aos marcadores"}"
         aria-label="${marked ? "Remover" : "Adicionar"} marcador"
-        onclick="window.ZELA.watchlist.toggle('${tipo}', '${jsSafe(id)}')">${marked ? "★" : "☆"}</button>`;
+        onclick="window.FISCALIZA.watchlist.toggle('${tipo}', '${jsSafe(id)}')">${marked ? "★" : "☆"}</button>`;
     }
   };
   // Atualiza contador da nav quando o app carrega
@@ -86,7 +86,7 @@
     if (!btn || btn.dataset.handled === "1") return;
     // se onclick inline não existir, faz aqui
     if (!btn.getAttribute("onclick")) {
-      window.ZELA.watchlist.toggle(btn.dataset.watchTipo, btn.dataset.watchId);
+      window.FISCALIZA.watchlist.toggle(btn.dataset.watchTipo, btn.dataset.watchId);
     }
   });
 

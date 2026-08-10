@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pessoal e Cargos · Fiscaliza Varginha</title>
-<meta name="description" content="Servidores, comissionados e folha de pagamento da Prefeitura e Câmara de Varginha-MG.">
+<title>Pessoal e folha de pagamento de Varginha</title>
+<meta name="description" content="Consulte servidores, cargos comissionados e folha de pagamento da Prefeitura e da Câmara Municipal de Varginha-MG.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/pessoal.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Pessoal e Cargos · Fiscaliza Varginha">
 <meta property="og:description" content="Servidores, comissionados e folha de pagamento da Prefeitura e Câmara de Varginha-MG.">
 <meta property="og:locale"      content="pt_BR">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/pessoal.html">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Pessoal e Cargos · Fiscaliza Varginha">
 <meta name="twitter:description" content="Servidores e comissionados de Varginha-MG.">
-<link rel="stylesheet" href="style.css?v=20260627b">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 </head>
 <body data-page="pessoal">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -42,6 +45,7 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link nav__link--active">Pessoal</a>
+      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
@@ -132,9 +136,9 @@
       Use os filtros para identificar funcionários por nome, órgão ou tipo de vínculo.
     </p>
 
-    <div class="report-note" style="margin:0 0 14px; background:#fff8e1; border-left:5px solid var(--gold);">
+    <div class="report-note" style="margin:0 0 14px; background:var(--warn-bg); border-left:5px solid var(--gold);">
       <strong>ℹ Sobre o cargo "Vereador" nesta lista</strong>
-      <p style="margin:4px 0 0">O sistema Betha pode registrar servidores do quadro da Câmara com o cargo ou lotação <em>"Vereador"</em> — isso inclui assistentes e funcionários de gabinete, não apenas os vereadores eleitos. Os <strong>17 vereadores eleitos</strong> têm subsídio de <strong>R$ 10.384/mês</strong>; servidores com este campo no sistema recebem valores bem menores. Veja a remuneração oficial dos vereadores na aba <a href="camara.html">Câmara</a>.</p>
+      <p style="margin:4px 0 0">O sistema Betha pode registrar servidores do quadro da Câmara com o cargo ou lotação <em>"Vereador"</em> — isso inclui assistentes e funcionários de gabinete, não apenas os parlamentares. A Câmara possui <strong>15 cadeiras</strong>; a lista histórica pode conter titulares e suplentes que exerceram o mandato em períodos diferentes. O subsídio vigente é de <strong id="subsidioVereador">R$ 10.826,42/mês</strong> <span id="subsidioVereadorFonte" class="muted small">(Lei 7.527/2026, revisão geral de 4,26% sobre a fixação da Lei 7.285/2024)</span>. Veja a remuneração oficial na aba <a href="camara.html">Câmara</a>.</p>
     </div>
     <div class="filterbar">
       <select id="filtroOrgao" aria-label="Filtrar por órgão">
@@ -162,7 +166,7 @@
   </div>
 </main>
 
-<script src="data-loader.js?v=20260727-mobile2"></script>
+<script src="data-loader.js?v=20260730-relatorios2"></script>
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__brand">
@@ -183,8 +187,10 @@
         <a href="prefeitura.html">Prefeitura</a>
         <a href="fundacao.html">Fundação Cultural</a>
         <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="cobrar.html">Como cobrar</a>
       </nav>
@@ -214,6 +220,28 @@
   </div>
 </footer>
 
+<script>
+// Subsidio do vereador sai do chunk, nao do texto: a revisao geral e anual e o
+// valor escrito a mao ficou preso na lei de fixacao de 2024 por dois anos.
+(function () {
+  var el = document.getElementById("subsidioVereador");
+  var fonte = document.getElementById("subsidioVereadorFonte");
+  if (!el || !window.fetch || location.protocol === "file:") return;
+  fetch("data/chunks/remuneracao_vereadores.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (!d || !d.subsidio_bruto_mensal_brl) return;
+      el.textContent = d.subsidio_bruto_mensal_brl
+        .toLocaleString("pt-BR", { style: "currency", currency: "BRL" }) + "/mês";
+      if (fonte && d.lei && d.lei.numero) {
+        var pct = d.reajuste && d.reajuste.percentual
+          ? ", revisão geral de " + String(d.reajuste.percentual).replace(".", ",") + "%"
+          : "";
+        fonte.textContent = "(" + d.lei.numero + pct + ")";
+      }
+    })
+    .catch(function () {});
+})();
+</script>
 </body>
 </html>
-

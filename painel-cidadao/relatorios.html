@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Relatórios · Fiscaliza Varginha</title>
+<title>Relatórios de fiscalização pública de Varginha</title>
 <meta name="description" content="Relatórios independentes de sinais de atenção em dados públicos da Prefeitura e da Câmara Municipal de Varginha-MG.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/relatorios.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Relatórios e Sinais de Atenção · Fiscaliza Varginha">
 <meta property="og:description" content="Sinais automáticos de atenção nos dados públicos de Varginha-MG — contratos, emendas e diárias.">
 <meta property="og:locale"      content="pt_BR">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/relatorios.html">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Relatórios · Fiscaliza Varginha">
 <meta name="twitter:description" content="Sinais de atenção nos dados públicos de Varginha-MG.">
-<link rel="stylesheet" href="style.css?v=20260627b">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 </head>
 <body data-page="relatorios">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -42,6 +45,7 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link nav__link--active">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
@@ -85,6 +89,7 @@
       </script>
       <div class="civic-actions" aria-label="Índice de seções dos relatórios">
         <a href="#relatorioCidadao">Resumo cidadão</a>
+        <a href="#pontos-conferencia">Pontos para conferir</a>
         <a href="#prioridades-fiscalização">Prioridades</a>
         <a href="#processos-licitatorios">Licitações</a>
         <a href="#convenios-municipais">Convênios</a>
@@ -118,6 +123,21 @@
     <section id="relatorioCidadao" class="citizen-report" aria-label="Resumo para o cidadão"></section>
 
     <div id="relatorioResumo" class="stats"></div>
+
+    <section class="block verification-priorities" id="pontos-conferencia">
+      <div class="verification-priorities__head">
+        <div>
+          <span class="block__eyebrow">LEITURA RESPONSÁVEL</span>
+          <h3 class="block__title">Pontos que precisam de conferência</h3>
+          <p class="block__lead">
+            Sinais automáticos priorizados por impacto. Não são prova de irregularidade:
+            cada item informa o que foi localizado, a limitação do cruzamento e o próximo passo.
+          </p>
+        </div>
+        <a class="btn-link" href="cobrar.html">Abrir modelos de cobrança</a>
+      </div>
+      <div id="pontosConferencia" class="verification-list" aria-live="polite"></div>
+    </section>
 
     <div id="fragmentacaoBlock" class="block" hidden>
       <h3 class="block__title">Detector de fragmentação suspeita</h3>
@@ -358,8 +378,10 @@
         <a href="prefeitura.html">Prefeitura</a>
         <a href="fundacao.html">Fundação Cultural</a>
         <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="cobrar.html">Como cobrar</a>
       </nav>
@@ -389,9 +411,8 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260727-mobile2"></script>
+<script src="data-loader.js?v=20260730-relatorios2"></script>
 </body>
 </html>
-
 
 

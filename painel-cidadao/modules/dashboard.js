@@ -1,27 +1,27 @@
 /* Fiscaliza Varginha — modules/dashboard.js
  *
  * Placar do Dinheiro + Chips de Categoria das páginas Prefeitura e Câmara.
- * Lê window.ZELA_DATA diretamente. Cria os 4 cards de cada placar e os
+ * Lê window.FISCALIZA_DATA diretamente. Cria os 4 cards de cada placar e os
  * chips clicáveis que filtram a lista correspondente.
  *
- * Disponível em window.ZELA.dashboard.
+ * Disponível em window.FISCALIZA.dashboard.
  * Dependências:
- *   - window.ZELA.utils (fmtBRL, fmtNum, esc, cleanText)
- *   - window.ZELA.icon  (modules/icons.js)
- *   - window.ZELA.categorias + classificarItem  (modules/categorias.js)
- *   - window.ZELA.carimboColeta  (definido em app.js)
- *   - window.ZELA.filtrarContratosPorCategoria  (closure de renderContratos)
- *   - window.ZELA.filtrarEmendasPorCategoria    (closure de renderEmendas)
+ *   - window.FISCALIZA.utils (fmtBRL, fmtNum, esc, cleanText)
+ *   - window.FISCALIZA.icon  (modules/icons.js)
+ *   - window.FISCALIZA.categorias + classificarItem  (modules/categorias.js)
+ *   - window.FISCALIZA.carimboColeta  (definido em app.js)
+ *   - window.FISCALIZA.filtrarContratosPorCategoria  (closure de renderContratos)
+ *   - window.FISCALIZA.filtrarEmendasPorCategoria    (closure de renderEmendas)
  *
  * Carregado pelo data-loader.js (depois dos módulos base, antes de app.js).
  */
 (function () {
   "use strict";
-  window.ZELA = window.ZELA || {};
+  window.FISCALIZA = window.FISCALIZA || {};
 
-  const u = window.ZELA.utils;
+  const u = window.FISCALIZA.utils;
   if (!u) {
-    console.error("[dashboard] window.ZELA.utils ausente. Carregue modules/utils.js primeiro.");
+    console.error("[dashboard] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
   const { fmtBRL, fmtNum, esc, cleanText } = u;
@@ -29,20 +29,20 @@
   // População de Varginha-MG (Censo IBGE 2022). Usada para traduzir
   // totais em "quanto representa por morador" — número que o cidadão sente.
   const POP_VARGINHA = 135159;
-  window.ZELA.POP_VARGINHA = POP_VARGINHA;
+  window.FISCALIZA.POP_VARGINHA = POP_VARGINHA;
   function perCapita(total) {
     const v = Number(total) || 0;
     if (v <= 0) return "";
     return `≈ ${fmtBRL(v / POP_VARGINHA)} por morador de Varginha`;
   }
-  window.ZELA.perCapita = perCapita;
+  window.FISCALIZA.perCapita = perCapita;
 
   function $(id) { return document.getElementById(id); }
   function icon(nome, opts) {
-    return (window.ZELA.icon || function () { return ""; })(nome, opts);
+    return (window.FISCALIZA.icon || function () { return ""; })(nome, opts);
   }
   function carimboColeta() {
-    return (window.ZELA.carimboColeta || function () { return ""; })();
+    return (window.FISCALIZA.carimboColeta || function () { return ""; })();
   }
 
   // ============================================================
@@ -51,7 +51,7 @@
   function renderPlacarPrefeitura() {
     const el = $("placarPrefeitura");
     if (!el) return;
-    const pf = (window.ZELA_DATA || {}).prefeitura || {};
+    const pf = (window.FISCALIZA_DATA || {}).prefeitura || {};
     const contratos = pf.contratos || [];
     const anoAtual = String(pf.ano_atual || new Date().getFullYear());
     const contratosAno = contratos.filter(c => String(c.ano || "") === anoAtual);
@@ -103,16 +103,16 @@
   // MODAL DE CATEGORIA — popup focado com os contratos da categoria
   // ============================================================
   function abrirModalCategoria(catId) {
-    if (!window.ZELA.dossie || !window.ZELA.dossie.abrirComHtml) return;
-    const pf = (window.ZELA_DATA || {}).prefeitura || {};
+    if (!window.FISCALIZA.dossie || !window.FISCALIZA.dossie.abrirComHtml) return;
+    const pf = (window.FISCALIZA_DATA || {}).prefeitura || {};
     const contratos = pf.contratos || [];
-    const meta = (window.ZELA.categorias || []).find(c => c.id === catId);
+    const meta = (window.FISCALIZA.categorias || []).find(c => c.id === catId);
     const label = meta ? meta.label : catId;
 
-    // Mantém o índice original para abrir o dossiê completo (ZELA.abrirContrato)
+    // Mantém o índice original para abrir o dossiê completo (FISCALIZA.abrirContrato)
     const lista = contratos
       .map((c, idx) => ({ c, idx }))
-      .filter(o => window.ZELA.classificarItem(o.c) === catId)
+      .filter(o => window.FISCALIZA.classificarItem(o.c) === catId)
       .sort((a, b) => (Number(b.c.valor) || 0) - (Number(a.c.valor) || 0));
 
     const total = lista.reduce((s, o) => s + (Number(o.c.valor) || 0), 0);
@@ -135,7 +135,7 @@
             esc(objeto.length > 160 ? objeto.slice(0, 159) + "…" : objeto) +
             '<span style="color:var(--muted);">' + ano + mod + '</span>' +
           '</div>' +
-          '<button type="button" class="btn-small" onclick="ZELA.abrirContrato(' + o.idx + ')">Ver detalhes e fonte</button>' +
+          '<button type="button" class="btn-small" onclick="FISCALIZA.abrirContrato(' + o.idx + ')">Ver contrato e fonte oficial</button>' +
         '</li>'
       );
     }).join("");
@@ -160,7 +160,7 @@
           : '<p>Nenhum contrato encontrado nesta categoria.</p>') +
       '</div>';
 
-    window.ZELA.dossie.abrirComHtml(html);
+    window.FISCALIZA.dossie.abrirComHtml(html);
   }
 
   // ============================================================
@@ -169,15 +169,15 @@
   function renderCategoriasPrefeitura() {
     const el = $("catChipsPrefeitura");
     if (!el) return;
-    const pf = (window.ZELA_DATA || {}).prefeitura || {};
+    const pf = (window.FISCALIZA_DATA || {}).prefeitura || {};
     const contratos = pf.contratos || [];
 
     const contagem = {};
     contratos.forEach(c => {
-      const cat = window.ZELA.classificarItem(c);
+      const cat = window.FISCALIZA.classificarItem(c);
       if (cat) contagem[cat] = (contagem[cat] || 0) + 1;
     });
-    const cats = (window.ZELA.categorias || []).filter(c => (contagem[c.id] || 0) > 0);
+    const cats = (window.FISCALIZA.categorias || []).filter(c => (contagem[c.id] || 0) > 0);
     if (!cats.length) { el.style.display = "none"; return; }
 
     el.innerHTML =
@@ -195,8 +195,8 @@
         b.classList.toggle("is-active", b.dataset.cat === cat && cat !== "");
       });
       // Deixa a aba Contratos já filtrada por baixo (para quando fechar o popup)
-      if (window.ZELA.filtrarContratosPorCategoria) {
-        window.ZELA.filtrarContratosPorCategoria(cat);
+      if (window.FISCALIZA.filtrarContratosPorCategoria) {
+        window.FISCALIZA.filtrarContratosPorCategoria(cat);
       }
       // Abre o popup focado só com os contratos da categoria escolhida.
       // "Limpar filtro" (cat vazio) não abre popup.
@@ -207,7 +207,7 @@
     el.querySelectorAll(".cat-chip").forEach(btn => {
       btn.addEventListener("click", () => aplicarCat(btn.dataset.cat));
     });
-    window.ZELA.aplicarCategoriaPrefeitura = aplicarCat;
+    window.FISCALIZA.aplicarCategoriaPrefeitura = aplicarCat;
   }
 
   // ============================================================
@@ -216,7 +216,7 @@
   function renderPlacarCamara() {
     const el = $("placarCamara");
     if (!el) return;
-    const D = window.ZELA_DATA || {};
+    const D = window.FISCALIZA_DATA || {};
     const pf = D.prefeitura || {};
     const emendas = D.emendas || [];
     const total = emendas.reduce((s, e) => s + (Number(e.valor_brl) || 0), 0);
@@ -281,13 +281,13 @@
   // MODAL DE CATEGORIA — popup focado com as EMENDAS da categoria (Câmara)
   // ============================================================
   function abrirModalCategoriaEmendas(catId) {
-    if (!window.ZELA.dossie || !window.ZELA.dossie.abrirComHtml) return;
-    const emendas = (window.ZELA_DATA || {}).emendas || [];
-    const meta = (window.ZELA.categorias || []).find(c => c.id === catId);
+    if (!window.FISCALIZA.dossie || !window.FISCALIZA.dossie.abrirComHtml) return;
+    const emendas = (window.FISCALIZA_DATA || {}).emendas || [];
+    const meta = (window.FISCALIZA.categorias || []).find(c => c.id === catId);
     const label = meta ? meta.label : catId;
 
     const lista = emendas
-      .filter(e => window.ZELA.classificarItem({ objeto: e.objeto, beneficiario: e.beneficiario }) === catId)
+      .filter(e => window.FISCALIZA.classificarItem({ objeto: e.objeto, beneficiario: e.beneficiario }) === catId)
       .sort((a, b) => (Number(b.valor_brl) || 0) - (Number(a.valor_brl) || 0));
 
     const total = lista.reduce((s, e) => s + (Number(e.valor_brl) || 0), 0);
@@ -336,7 +336,7 @@
           : '<p>Nenhuma emenda encontrada nesta categoria.</p>') +
       '</div>';
 
-    window.ZELA.dossie.abrirComHtml(html);
+    window.FISCALIZA.dossie.abrirComHtml(html);
   }
 
   // ============================================================
@@ -345,14 +345,14 @@
   function renderCategoriasCamara() {
     const el = $("catChipsCamara");
     if (!el) return;
-    const emendas = (window.ZELA_DATA || {}).emendas || [];
+    const emendas = (window.FISCALIZA_DATA || {}).emendas || [];
 
     const contagem = {};
     emendas.forEach(e => {
-      const cat = window.ZELA.classificarItem({ objeto: e.objeto, beneficiario: e.beneficiario });
+      const cat = window.FISCALIZA.classificarItem({ objeto: e.objeto, beneficiario: e.beneficiario });
       if (cat) contagem[cat] = (contagem[cat] || 0) + 1;
     });
-    const cats = (window.ZELA.categorias || []).filter(c => (contagem[c.id] || 0) > 0);
+    const cats = (window.FISCALIZA.categorias || []).filter(c => (contagem[c.id] || 0) > 0);
     if (!cats.length) { el.style.display = "none"; return; }
 
     el.innerHTML =
@@ -370,8 +370,8 @@
         b.classList.toggle("is-active", b.dataset.cat === cat && cat !== "");
       });
       // Deixa a lista de emendas filtrada por baixo (para quando fechar o popup)
-      if (window.ZELA.filtrarEmendasPorCategoria) {
-        window.ZELA.filtrarEmendasPorCategoria(cat);
+      if (window.FISCALIZA.filtrarEmendasPorCategoria) {
+        window.FISCALIZA.filtrarEmendasPorCategoria(cat);
       }
       // Abre o popup focado só com as emendas da categoria. "Limpar" não abre.
       if (cat) {
@@ -381,13 +381,13 @@
     el.querySelectorAll(".cat-chip").forEach(btn => {
       btn.addEventListener("click", () => aplicarCat(btn.dataset.cat));
     });
-    window.ZELA.aplicarCategoriaCamara = aplicarCat;
+    window.FISCALIZA.aplicarCategoriaCamara = aplicarCat;
   }
 
   // ============================================================
   // API PÚBLICA
   // ============================================================
-  window.ZELA.dashboard = Object.freeze({
+  window.FISCALIZA.dashboard = Object.freeze({
     renderPlacarPrefeitura,
     renderCategoriasPrefeitura,
     renderPlacarCamara,

@@ -38,12 +38,19 @@ RewriteEngine On
 
 <IfModule mod_headers.c>
   Header set Connection keep-alive
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  # Mantém o login Google por janela funcionando sem abrir isolamento excessivo.
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
 </IfModule>
 
 AddDefaultCharset UTF-8
 
-# Scripts e arquivos locais nunca devem ser servidos.
-<FilesMatch "\.(log|py|pyc|bat|txt)$">
+# Scripts e arquivos locais nunca devem ser servidos. robots.txt é a única
+# exceção textual pública e necessária para os mecanismos de busca.
+<FilesMatch "^(?!robots\.txt$).*\.(log|py|pyc|bat|txt)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>

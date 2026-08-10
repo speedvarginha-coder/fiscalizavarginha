@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prefeitura · Fiscaliza Varginha</title>
-<meta name="description" content="O que a Prefeitura de Varginha está executando: contratos, licitações, fornecedores, Diário Oficial.">
+<title>Gastos e contratos da Prefeitura de Varginha</title>
+<meta name="description" content="Consulte contratos, licitações, pagamentos, fornecedores, diárias, obras e Diário Oficial da Prefeitura de Varginha-MG.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://fiscalizavarginha.com.br/prefeitura.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Prefeitura · Fiscaliza Varginha">
 <meta property="og:description" content="Contratos, licitações, diárias e fornecedores da Prefeitura de Varginha-MG.">
 <meta property="og:locale"      content="pt_BR">
+<meta property="og:url"         content="https://fiscalizavarginha.com.br/prefeitura.html">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Prefeitura · Fiscaliza Varginha">
 <meta name="twitter:description" content="Contratos, licitações, diárias e fornecedores da Prefeitura de Varginha-MG.">
-<link rel="stylesheet" href="style.css?v=20260627b">
+<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 </head>
 <body data-page="prefeitura">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -42,6 +45,7 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
+      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
@@ -73,9 +77,9 @@
         <button type="button" data-pref-tab="contratos">Maiores contratos</button>
         <button type="button" data-pref-tab="diarias">Diárias</button>
         <a href="relatorios.html">Relatórios de fiscalização</a>
-        <a href="#" id="btnBaixarPagina" class="btn-pdf">
+        <a href="#" id="btnBaixarPagina" class="btn-pdf" aria-label="Baixar relatório da Prefeitura em PDF">
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          Baixar página
+          Baixar relatório em PDF
         </a>
       </div>
       <details class="page-howto">
@@ -191,19 +195,19 @@
          <p id="healthSummary"></p>
       </div>
       <div id="contratosVencendoBlock"></div>
-      <button type="button" class="btn-filter-trigger" onclick="ZELA.toggleMobileFilters('contratosFilterbar')">🔍 Filtrar e Buscar Contratos</button>
+      <button type="button" class="btn-filter-trigger" onclick="FISCALIZA.toggleMobileFilters('contratosFilterbar')">🔍 Filtrar e Buscar Contratos</button>
       <div id="contratosFilterbar" class="filterbar">
-        <select id="filtroAnoContrato" aria-label="Filtrar por ano" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
+        <select id="filtroAnoContrato" aria-label="Filtrar por ano" onchange="FISCALIZA.filtrarContratos && FISCALIZA.filtrarContratos()">
           <option value="">Todos os anos</option>
           <option value="2026" selected>2026</option>
           <option value="2025">2025</option>
           <option value="2024">2024</option>
         </select>
-        <select id="filtroSecretaria" aria-label="Filtrar por secretaria/órgão" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
+        <select id="filtroSecretaria" aria-label="Filtrar por secretaria/órgão" onchange="FISCALIZA.filtrarContratos && FISCALIZA.filtrarContratos()">
           <option value="">Todas as secretarias</option>
         </select>
-        <input id="filtroContrato" type="search" placeholder="Buscar nº do contrato, empresa, CNPJ, objeto..." oninput="ZELA.filtrarContratos && ZELA.filtrarContratos()">
-        <select id="filtroValorContrato" aria-label="Filtrar por valor mínimo" onchange="ZELA.filtrarContratos && ZELA.filtrarContratos()">
+        <input id="filtroContrato" type="search" placeholder="Buscar nº do contrato, empresa, CNPJ, objeto..." oninput="FISCALIZA.filtrarContratos && FISCALIZA.filtrarContratos()">
+        <select id="filtroValorContrato" aria-label="Filtrar por valor mínimo" onchange="FISCALIZA.filtrarContratos && FISCALIZA.filtrarContratos()">
           <option value="">Qualquer valor</option>
           <option value="100000">Acima de R$ 100 mil</option>
           <option value="500000">Acima de R$ 500 mil</option>
@@ -211,11 +215,11 @@
           <option value="5000000">Acima de R$ 5 milhões</option>
         </select>
         <span id="contratosContador" class="filterbar__count"></span>
-        <button type="button" class="btn-filter-close" onclick="ZELA.toggleMobileFilters('contratosFilterbar')">Aplicar Filtros</button>
+        <button type="button" class="btn-filter-close" onclick="FISCALIZA.toggleMobileFilters('contratosFilterbar')">Aplicar Filtros</button>
       </div>
       <div id="contratos" class="contratos"></div>
       <div id="contratosMais" class="loadmore" hidden>
-        <button type="button" onclick="ZELA.maisContratos()">Mostrar mais 20</button>
+        <button type="button" onclick="FISCALIZA.maisContratos()">Mostrar mais 20</button>
       </div>
     </div>
 
@@ -244,16 +248,16 @@
         </div>
       </div>
 
-      <button type="button" class="btn-filter-trigger" onclick="ZELA.toggleMobileFilters('licitacoesFilterbar')">🔍 Filtrar e Buscar Licitações</button>
+      <button type="button" class="btn-filter-trigger" onclick="FISCALIZA.toggleMobileFilters('licitacoesFilterbar')">🔍 Filtrar e Buscar Licitações</button>
       <div id="licitacoesFilterbar" class="filterbar">
-        <select id="filtroAnoLicitacao" aria-label="Filtrar por ano" onchange="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
+        <select id="filtroAnoLicitacao" aria-label="Filtrar por ano" onchange="window.FISCALIZA && window.FISCALIZA.renderLicitacoes && window.FISCALIZA.renderLicitacoes(true)">
           <option value="" selected>Todos os anos</option>
           <option value="2026">2026</option>
           <option value="2025">2025</option>
           <option value="2024">2024</option>
         </select>
-        <input id="filtroLicitacao" type="search" placeholder="Buscar objeto ou modalidade…" oninput="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
-        <select id="filtroValorLicitacao" aria-label="Filtrar por valor mínimo" onchange="window.ZELA && window.ZELA.renderLicitacoes && window.ZELA.renderLicitacoes(true)">
+        <input id="filtroLicitacao" type="search" placeholder="Buscar objeto ou modalidade…" oninput="window.FISCALIZA && window.FISCALIZA.renderLicitacoes && window.FISCALIZA.renderLicitacoes(true)">
+        <select id="filtroValorLicitacao" aria-label="Filtrar por valor mínimo" onchange="window.FISCALIZA && window.FISCALIZA.renderLicitacoes && window.FISCALIZA.renderLicitacoes(true)">
           <option value="">Qualquer valor</option>
           <option value="50000">Acima de R$ 50 mil</option>
           <option value="100000">Acima de R$ 100 mil</option>
@@ -261,7 +265,7 @@
           <option value="1000000">Acima de R$ 1 milhão</option>
         </select>
         <span id="licitacoesContador" class="filterbar__count"></span>
-        <button type="button" class="btn-filter-close" onclick="ZELA.toggleMobileFilters('licitacoesFilterbar')">Aplicar Filtros</button>
+        <button type="button" class="btn-filter-close" onclick="FISCALIZA.toggleMobileFilters('licitacoesFilterbar')">Aplicar Filtros</button>
       </div>
       <div id="licitacoes" class="licitacoes"></div>
       <div id="licitacoesMais" class="loadmore" hidden>
@@ -293,7 +297,7 @@
         <input id="filtroBuscaEvento" type="search" placeholder="Buscar artista, empresa ou objeto…">
         <span id="eventosContador" class="filterbar__count"></span>
       </div>
-      <div id="eventosRanking" class="block block--alt" style="margin-top:20px; padding:20px; border-radius:12px; background: #fdfdfd; border: 1px solid #eee;">
+      <div id="eventosRanking" class="block block--alt" style="margin-top:20px; padding:20px; border-radius:12px; background: var(--surface); border: 1px solid var(--line);">
         <h4 class="subblock__title">Ranking de empresas e artistas</h4>
         <p class="muted small">As empresas que mais receberam recursos em eventos mapeados.</p>
         <div id="listaRankingEventos" class="forn"></div>
@@ -360,6 +364,10 @@
         <span id="contadorDiariasPrefeitura" class="filterbar__count"></span>
       </div>
       <div id="rankingDiariasPrefeitura" class="diarias-ranking"></div>
+      <div class="diarias-list-heading">
+        <h3>Lançamentos de diárias encontrados</h3>
+        <p>Cada cartão abaixo representa um registro ou empenho da fonte oficial. A mesma pessoa pode aparecer mais de uma vez quando possui lançamentos diferentes.</p>
+      </div>
       <div id="listaDiariasPrefeitura" class="diarias-list"></div>
     </div>
 
@@ -387,10 +395,11 @@
           <option value="licitacao">Licitações</option>
         </select>
         <select id="filtroOrdemAsfalto" aria-label="Ordenar por">
-          <option value="recente">Mais recente primeiro</option>
+          <option value="inicio" selected>Contratos/obras mais recentes</option>
+          <option value="movimentacao">Últimas medições primeiro</option>
           <option value="valor">Maior valor primeiro</option>
         </select>
-        <input id="filtroBuscaAsfalto" type="search" placeholder="Buscar por rua, bairro, empresa, objeto..." oninput="ZELA.renderAsfaltoPrefeitura && ZELA.renderAsfaltoPrefeitura()">
+        <input id="filtroBuscaAsfalto" type="search" placeholder="Buscar por rua, bairro, empresa, objeto..." oninput="FISCALIZA.renderAsfaltoPrefeitura && FISCALIZA.renderAsfaltoPrefeitura()">
         <span id="asfaltoContador" class="filterbar__count"></span>
       </div>
       <div id="asfaltoPainel"></div>
@@ -505,8 +514,10 @@
         <a href="prefeitura.html">Prefeitura</a>
         <a href="fundacao.html">Fundação Cultural</a>
         <a href="camara.html">Câmara</a>
+        <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
+        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="cobrar.html">Como cobrar</a>
       </nav>
@@ -536,6 +547,6 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260727-mobile2"></script>
+<script src="data-loader.js?v=20260730-relatorios2"></script>
 </body>
 </html>
