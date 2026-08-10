@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
+import { agruparSancoes, avaliarIncompatibilidade, CATEGORIAS } from "./lib/classificar-sancoes.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -210,6 +211,35 @@ const chunks = {
   remuneracaoVereadores: readJson("remuneracao_vereadores"),
 };
 
+function contractHealth(chunk) {
+  const exports = Object.fromEntries(
+    Object.entries(chunk?.dados_abertos_status || {})
+      .filter(([key]) => normalizeText(key).includes("CONTRATO")),
+  );
+  return {
+    contratos_status_coleta: chunk?.contratos_status_coleta,
+    exports,
+  };
+}
+
+function hasUnreliableCollectionStatus(value) {
+  return /preserv|parcial|partial|failed|falha|erro|vazia/.test(
+    JSON.stringify(value || {}).toLowerCase(),
+  );
+}
+
+const contratosAuditaveis = !hasUnreliableCollectionStatus({
+  prefeitura: contractHealth(chunks.prefeitura),
+  camara: contractHealth(chunks.camaraBetha),
+});
+const obrasAuditaveis = !hasUnreliableCollectionStatus({
+  status: chunks.prefeitura?.obras_status_coleta,
+  exports: Object.fromEntries(
+    Object.entries(chunks.prefeitura?.dados_abertos_status || {})
+      .filter(([key]) => normalizeText(key).includes("OBRA")),
+  ),
+});
+
 nameToCnpjRoot = buildNameToCnpjRoot(chunks.cnpjs);
 
 const domainConfig = [
@@ -250,6 +280,37 @@ function internalTimestamp(value) {
   return undefined;
 }
 
+function sourceHealthMetadata(name, value) {
+  if (!value || typeof value !== "object") return {};
+
+  // Nunca classificar a saude pela base inteira. Campos de negocio podem conter
+  // palavras como "PARCIAL" (tipo de empreitada) ou "preservado" (texto de uma
+  // materia legislativa) sem indicar qualquer falha de coleta.
+  const commonKeys = [
+    "status", "status_fontes", "observacao", "observacoes", "erros", "erro",
+    "resumo", "consultas", "fontes_verificadas", "cobertura", "metadados", "metadata",
+    "contratos_status_coleta", "obras_status_coleta", "frota_status_coleta",
+    "dados_abertos_status", "meta",
+  ];
+  const metadata = Object.fromEntries(
+    commonKeys
+      .filter((key) => Object.hasOwn(value, key))
+      .map((key) => [key, value[key]]),
+  );
+
+  // O indice declara a cobertura por ano fora dos campos comuns.
+  if (name === "indice_relevancia" && value.anos) {
+    metadata.anos = Object.fromEntries(
+      Object.entries(value.anos).map(([year, item]) => [year, {
+        status: item?.status,
+        cobertura_pct: item?.cobertura_pct,
+        confianca_dados_pct: item?.confianca_dados_pct,
+      }]),
+    );
+  }
+  return metadata;
+}
+
 function buildSourceStatus() {
   const domains = {};
   for (const [name, label, value, maxAgeDays] of domainConfig) {
@@ -257,8 +318,11 @@ function buildSourceStatus() {
       || value === null
       || (Array.isArray(value) && value.length === 0)
       || (!Array.isArray(value) && typeof value === "object" && Object.keys(value).length === 0);
-    const text = JSON.stringify(value || {}).toLowerCase();
-    const updatedAt = internalTimestamp(value);
+    const metadataText = JSON.stringify(sourceHealthMetadata(name, value)).toLowerCase();
+    // prefeitura.json e produzido pelo coletor principal, mas por compatibilidade
+    // ainda nao carrega timestamp proprio. Nesse caso, usa o carimbo do mesmo ciclo.
+    const updatedAt = internalTimestamp(value)
+      || (name === "prefeitura" ? internalTimestamp(chunks.atualizado) : undefined);
     const ageDays = daysSince(updatedAt);
     let status;
     let reason;
@@ -266,17 +330,17 @@ function buildSourceStatus() {
     if (empty) {
       status = "failed";
       reason = value === undefined ? "Chunk ausente." : "Chunk vazio; ausencia real de registros nao foi confirmada.";
-    } else if (/preservad[oa]|preservada_por_cobertura/.test(text)) {
+    } else if (/preservad[oa]|preservada_por_cobertura/.test(metadataText)) {
       status = "preserved";
       reason = "Metadados indicam preservacao da ultima base valida.";
-    } else if (/\"status\"\s*:\s*\"(?:erro|failed|falha)\"|erro de coleta|falha de coleta|http error|http \d{3}/.test(text)) {
+    } else if (/\"status\"\s*:\s*\"(?:erro|failed|falha)\"|erro de coleta|falha de coleta|http error|http \d{3}/.test(metadataText)) {
       const pncpSemDados = name === "pncp"
         && !(value?.compras?.length || value?.contratos?.length);
       status = pncpSemDados ? "failed" : "partial";
       reason = pncpSemDados
         ? "A fonte falhou e nao retornou registros; zero nao significa ausencia de contratacoes."
         : "Parte da coleta apresentou erro; os registros validos foram preservados.";
-    } else if (/parcial|cobertura baixa|escopo limitado/.test(text)) {
+    } else if (/parcial|cobertura baixa|escopo limitado/.test(metadataText)) {
       status = "partial";
       reason = "Metadados indicam cobertura parcial.";
     } else if (!updatedAt) {
@@ -610,7 +674,7 @@ const camaraContracts = [
   ...(chunks.camaraBetha?.contratos || []),
   ...(chunks.prefeitura?.contratos || []),
 ];
-if (camaraTop.length && camaraContracts.length) {
+if (contratosAuditaveis && camaraTop.length && camaraContracts.length) {
   const unmatched = camaraTop.filter((supplier) => !supplierHasContract(supplier, camaraContracts));
   const semContrato = unmatched.filter((f) => gapKind(f.nome) === "fornecedor");
   const tributos = unmatched.filter((f) => gapKind(f.nome) === "tributo");
@@ -653,7 +717,7 @@ const prefeituraContracts = [
   ...(chunks.camaraBetha?.contratos || []),
   ...(chunks.prefeitura?.obras_publicas || []),
 ];
-if (prefeituraTop.length && prefeituraContracts.length) {
+if (contratosAuditaveis && obrasAuditaveis && prefeituraTop.length && prefeituraContracts.length) {
   const unmatched = prefeituraTop.filter((supplier) => !supplierHasContract(supplier, prefeituraContracts));
   const semContrato = unmatched.filter((f) => gapKind(f.nome) === "fornecedor" && Number(f.valor_total || 0) > 1000000);
   if (semContrato.length) {
@@ -674,6 +738,35 @@ if (prefeituraTop.length && prefeituraContracts.length) {
     );
   }
 }
+const cnpjInvalidos = Array.isArray(chunks.cnpjs?.invalidos) ? chunks.cnpjs.invalidos : [];
+if (cnpjInvalidos.length) {
+  add(
+    "warning",
+    "cnpj-invalidos-na-fonte",
+    "CNPJ invalido na fonte de origem",
+    `${cnpjInvalidos.length} CNPJ(s) tem digitos verificadores invalidos e nao foi consultado nas bases auxiliares. O sistema preserva o valor informado, mas nao atribui cadastro a outra empresa por aproximacao.`,
+    "Conferir o documento da emenda ou pedir correcao do CNPJ ao orgao responsavel pela publicacao.",
+    "cnpjs.json",
+  );
+}
+
+if (!contratosAuditaveis || !obrasAuditaveis) {
+  add(
+    "warning",
+    "auditoria-vinculos-suspensa-por-frescor",
+    "Cruzamentos de fornecedores e contratos temporariamente suspensos",
+    "A ultima base valida permanece publicada, mas contratos ou obras nao foram coletados integralmente no ciclo atual. Por seguranca, o sistema nao gera novos alertas nominais de fornecedor sem contrato nem de incompatibilidade contratual enquanto a fonte estiver preservada ou parcial.",
+    "Restabelecer a coleta Betha, validar a cobertura e somente depois reativar os cruzamentos nominais.",
+    "prefeitura.json",
+    { verification: {
+      estado: "fonte_desatualizada",
+      metodo: "trava_de_frescor_por_dataset",
+      confianca: "alta",
+      evidencias: ["Metadados de contratos/obras indicam coleta preservada, parcial ou falha"],
+      limitacoes: ["A base anterior continua visivel, mas pode nao conter publicacoes recentes"],
+    } },
+  );
+}
 
 const prefeituraContratosTotal = (chunks.prefeitura?.contratos || []).reduce((sum, c) => sum + Number(c.valor || 0), 0);
 const prefeituraInexDispTotal = (chunks.prefeitura?.contratos || [])
@@ -683,7 +776,7 @@ const prefeituraInexDispTotal = (chunks.prefeitura?.contratos || [])
   })
   .reduce((sum, c) => sum + Number(c.valor || 0), 0);
 
-if (prefeituraContratosTotal > 0) {
+if (contratosAuditaveis && prefeituraContratosTotal > 0) {
   const pctInexDisp = (prefeituraInexDispTotal / prefeituraContratosTotal) * 100;
   if (pctInexDisp > 20) {
     add(
@@ -705,7 +798,7 @@ if (emendasSemPagamentoAlto.length) {
     "warning",
     "emendas-sem-repasses",
     "Emendas de alto valor sem repasse identificado",
-    `${emendasSemPagamentoAlto.length} emenda(s) de R$ 50k+ constam sem pagamento. Exemplos: ${emendasSemPagamentoAlto.slice(0, 3).map((e) => `${e.beneficiario} (R$ ${(Number(e.valor_brl || e.valor)/1000).toFixed(0)}k - ${e.autor})`).join("; ")}.`,
+    `${emendasSemPagamentoAlto.length} emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: ${emendasSemPagamentoAlto.slice(0, 3).map((e) => `${e.beneficiario} (R$ ${(Number(e.valor_brl || e.valor)/1000).toFixed(0)}k - ${e.autor})`).join("; ")}.`,
     "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
     "prefeitura.json",
     { verification: {
@@ -719,31 +812,98 @@ if (emendasSemPagamentoAlto.length) {
 }
 
 // --- Sanções CEIS/CNEP ---
-// Distinção jurídica (Lei 14.133, art. 156, §4º e §5º; jurisprudência STJ):
-// impedimento/suspensão valem perante o ENTE SANCIONADOR — empresa impedida
-// por outro município pode contratar legalmente com Varginha (aviso
-// informativo). Declaração de INIDONEIDADE vale contra toda a administração
-// pública (erro), assim como qualquer sanção aplicada pelo próprio município.
+// O alcance de cada sanção vem do campo oficial `abrangencia` do registro, NÃO
+// do nome do tipo. A base tem declaração de inidoneidade com abrangência
+// "Todas as Esferas em todos os Poderes" e outra com "Na Esfera e no Poder do
+// órgão sancionador" — deduzir alcance do rótulo publicou afirmação errada
+// sobre a segunda em 04/08/2026. A classificação mora em
+// scripts/lib/classificar-sancoes.mjs para ser testável com casos sintéticos.
 if (chunks.sancoes?.sancoes_vigentes > 0) {
   const vigentes = (chunks.sancoes.achados || []).filter((a) => a.sancao_vigente);
-  const graves = vigentes.filter((a) => /INIDON/i.test(a.tipo || "")
-    || /VARGINHA/i.test(a.orgao_sancionador || ""));
-  const informativas = vigentes.filter((a) => !graves.includes(a));
+  const grupos = agruparSancoes(vigentes);
+  const geral = grupos[CATEGORIAS.ALCANCE_GERAL];
+  const atingeVarginha = grupos[CATEGORIAS.ALCANCE_VARGINHA];
+  const informativas = grupos[CATEGORIAS.OUTRO_ENTE];
+  const revisaoManual = [
+    ...grupos[CATEGORIAS.MULTA],
+    ...grupos[CATEGORIAS.ALCANCE_DESCONHECIDO],
+    ...grupos[CATEGORIAS.CONFLITO_ENTRE_CAMPOS],
+  ];
+  // Nominar exige categoria com alcance sobre Varginha E dossiê completo.
+  const nominaveis = [...geral, ...atingeVarginha].filter((a) => a._pode_nominar);
+  const semDossie = [...geral, ...atingeVarginha].filter((a) => !a._pode_nominar);
 
-  if (graves.length) {
+  const descreve = (a) => `${a.fornecedor_local} (registro ${a.base.toUpperCase()} classificado pelo orgao informante como "${a.tipo}", abrangencia "${a.abrangencia}", aplicada por ${a.orgao_sancionador}, processo ${a.numero_processo}, vigencia ate ${a.data_fim || "sem prazo informado"}, verificacao humana em ${a.verificacao_manual?.data_verificacao || "data ausente"})`;
+
+  if (nominaveis.length) {
     add(
       "error",
-      "fornecedor-inidoneo",
-      "Fornecedor inidoneo ou sancionado pelo proprio municipio",
-      `${graves.length} sancao(oes) vigente(s) com alcance sobre Varginha: ${graves.slice(0, 3).map((a) => `${a.fornecedor_local} (${a.tipo} — ${a.orgao_sancionador})`).join("; ")}. Inidoneidade vale contra toda a administracao publica.`,
-      "Confirmar o CNPJ no Portal da Transparencia federal e questionar formalmente o orgao contratante sobre a regularidade de contratacoes ativas.",
+      "sancao-com-alcance-sobre-varginha",
+      "Registros de sancao com alcance que atinge Varginha",
+      `Foi localizado no cadastro federal ${nominaveis.length} registro(s) de sancao vigente vinculado(s) a fornecedor(es) do painel cuja abrangencia declarada alcanca a administracao de Varginha: ${nominaveis.slice(0, 3).map(descreve).join("; ")}. O conteudo do cadastro e de responsabilidade do orgao que o alimenta. O registro nao prova, por si so, contratacao irregular — para isso e preciso contrato local ativo com datas sobrepostas a vigencia da sancao.`,
+      "Abrir o registro individual no Portal da Transparencia, conferir categoria, fundamentacao, abrangencia, situacao e processo; so entao verificar contrato local com datas sobrepostas.",
       "sancoes.json",
       { blocksPipeline: false, verification: {
         estado: "requer_confirmacao_documental",
-        metodo: "fornecedor_local_x_ceis_cnep",
+        metodo: "abrangencia_oficial_do_registro",
         confianca: "media",
-        evidencias: [`${graves.length} sancao(oes) classificada(s) como de alcance relevante`],
-        limitacoes: ["Confirmar CNPJ, vigencia, tipo e alcance da sancao na fonte primaria"],
+        evidencias: nominaveis.slice(0, 3).map((a) => `${a.fornecedor_local}: ${a.abrangencia} (processo ${a.numero_processo})`),
+        limitacoes: [
+          "CNPJ do lado local vem mascarado pela fonte — casamento por raiz, nao exato",
+          "Raiz de CNPJ nao distingue matriz de filial",
+          "Registro de sancao nao prova contratacao irregular",
+        ],
+      } },
+    );
+  }
+  // Sanção + contrato local + datas sobrepostas + alcance aplicável. Só o
+  // conjunto completo levanta hipótese, e ainda assim como pergunta.
+  const contratosLocais = [
+    ...(chunks.prefeitura?.contratos || []),
+    ...(chunks.camaraBetha?.contratos || []),
+  ];
+  const casosEsclarecimento = contratosAuditaveis
+    ? nominaveis
+      .map((a) => ({ sancao: a, ...avaliarIncompatibilidade(a, contratosLocais) }))
+      .filter((r) => r.caso_para_esclarecimento)
+    : [];
+
+  if (casosEsclarecimento.length) {
+    add(
+      "error",
+      "possivel-incompatibilidade-contratual",
+      "Possivel incompatibilidade entre sancao vigente e contrato local",
+      `${casosEsclarecimento.length} caso(s) reunem simultaneamente: registro de sancao vigente com abrangencia que alcanca Varginha, contrato local com o mesmo CNPJ raiz e periodos sobrepostos. ${casosEsclarecimento.slice(0, 3).map((r) => `${r.sancao.fornecedor_local} (sancao de ${r.sancao.data_inicio} a ${r.sancao.data_fim || "sem prazo"}; ${r.contratos_sobrepostos.length} contrato(s) local(is) no periodo)`).join("; ")}. Isto e possivel incompatibilidade a esclarecer e NAO comprova ilegalidade na contratacao. A confirmacao depende de ler o ato sancionador, o contrato e a data efetiva de cada um.`,
+      "Solicitar esclarecimento formal ao orgao contratante sobre a compatibilidade entre a sancao registrada e o contrato vigente, anexando o registro individual do CEIS.",
+      "sancoes.json",
+      { blocksPipeline: false, verification: {
+        estado: "requer_confirmacao_documental",
+        metodo: "raiz_cnpj_x_periodo_x_abrangencia",
+        confianca: "media",
+        evidencias: casosEsclarecimento.slice(0, 3).map((r) => `${r.sancao.fornecedor_local}: processo ${r.sancao.numero_processo}, ${r.contratos_sobrepostos.length} contrato(s) sobreposto(s)`),
+        limitacoes: [
+          "Raiz de CNPJ nao distingue matriz de filial — o contrato pode ser de outro estabelecimento",
+          "Sobreposicao de datas nao prova execucao simultanea",
+          "Sancao registrada nao prova contratacao irregular",
+        ],
+      } },
+    );
+  }
+
+  if (semDossie.length) {
+    add(
+      "warning",
+      "sancao-sem-dossie-completo",
+      "Sancoes com alcance relevante mas evidencia incompleta",
+      `${semDossie.length} registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: ${[...new Set(semDossie.flatMap((a) => a._evidencias_faltantes))].join(", ")}. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.`,
+      "Completar a coleta dos campos faltantes ou conferir manualmente o registro individual antes de qualquer divulgacao nominal.",
+      "sancoes.json",
+      { verification: {
+        estado: "requer_revisao_humana",
+        metodo: "checagem_de_dossie_minimo",
+        confianca: "baixa",
+        evidencias: [`${semDossie.length} registro(s) sem dossie completo`],
+        limitacoes: ["Sem os campos minimos nao ha base para afirmar alcance"],
       } },
     );
   }
@@ -762,6 +922,32 @@ if (chunks.sancoes?.sancoes_vigentes > 0) {
         confianca: "media",
         evidencias: [`${informativas.length} sancao(oes) de outros entes`],
         limitacoes: ["Impedimento de outro ente nao impede por si so contratar com Varginha"],
+      } },
+    );
+  }
+  if (revisaoManual.length) {
+    // Sem nomes: sao exatamente os casos cujo alcance o sistema NAO conseguiu
+    // determinar. Publicar nome aqui e o caminho mais curto para acusar errado.
+    const porMotivo = revisaoManual.reduce((acc, a) => {
+      acc[a._motivo_classificacao] = (acc[a._motivo_classificacao] || 0) + 1;
+      return acc;
+    }, {});
+    add(
+      "warning",
+      "sancoes-sem-alcance-determinado",
+      "Sancoes vigentes sem alcance determinavel automaticamente",
+      `${revisaoManual.length} sancao(oes) vigente(s) ficam fora de qualquer alerta nominal porque o alcance nao pode ser afirmado com seguranca. Motivos: ${Object.entries(porMotivo).map(([m, n]) => `${n}x ${m}`).join("; ")}. O alcance e lido do campo oficial de abrangencia do registro, nunca deduzido do nome do tipo de sancao. Multa entra aqui de proposito: e sancao pecuniaria e nao restringe o direito de contratar.`,
+      "Ler o registro individual no CEIS (categoria, fundamentacao, abrangencia, situacao e processo) antes de qualquer divulgacao com nome de empresa.",
+      "sancoes.json",
+      { verification: {
+        estado: "requer_revisao_humana",
+        metodo: "classificacao_por_tipo_e_fundamentacao",
+        confianca: "baixa",
+        evidencias: [`${revisaoManual.length} registro(s) sem alcance determinado`],
+        limitacoes: [
+          "A abrangencia oficial nao e coletada hoje — o alcance e inferido de tipo e fundamentacao",
+          "Sem numero de processo e link individual, a conferencia depende de busca manual no CEIS",
+        ],
       } },
     );
   }

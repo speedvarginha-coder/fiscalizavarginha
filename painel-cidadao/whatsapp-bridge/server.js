@@ -3,7 +3,13 @@ const realFs = require('fs');
 gracefulFs.gracefulify(realFs);
 
 const express = require('express');
-const { default: makeWASocket, useMultiFileAuthState, DisconnectReason, fetchLatestBaileysVersion } = require('@whiskeysockets/baileys');
+const {
+    default: makeWASocket,
+    useMultiFileAuthState,
+    DisconnectReason,
+    fetchLatestWaWebVersion,
+    Browsers
+} = require('@whiskeysockets/baileys');
 const pino = require('pino');
 const QRCode = require('qrcode');
 const path = require('path');
@@ -78,6 +84,7 @@ const API_KEY = (() => {
     return key;
 })();
 const CSRF_TOKEN = crypto.randomBytes(32).toString('base64url');
+const LOCAL_DASHBOARD_NO_AUTH = process.env.LOCAL_DASHBOARD_NO_AUTH === '1';
 
 let sock = null;
 let qrCodeDataUrl = null;
@@ -128,18 +135,22 @@ async function connectToWhatsApp() {
     try {
         const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
         
-        // Busca a versão mais recente para evitar erro 405 Connection Failure
-        const { version, isLatest } = await fetchLatestBaileysVersion();
+        // A versão embutida no código-fonte do Baileys pode ficar atrás da
+        // revisão que o WhatsApp Web aceita e causar 405 antes de emitir o QR.
+        // O sw.js oficial informa a revisão realmente ativa no momento.
+        const { version, isLatest } = await fetchLatestWaWebVersion();
         console.log(`Conectando ao WhatsApp com a versão v${version.join('.')}, isLatest: ${isLatest}`);
         
         sock = makeWASocket({
             version,
             auth: state,
+            browser: Browsers.windows('Fiscaliza Varginha'),
             logger: pino({ level: 'silent' }),
             printQRInTerminal: false,
             connectTimeoutMs: 60000,
             defaultQueryTimeoutMs: 60000,
             keepAliveIntervalMs: 30000,
+            markOnlineOnConnect: false,
             syncFullHistory: false
         });
 
@@ -156,6 +167,16 @@ async function connectToWhatsApp() {
             if (connection === 'close') {
                 const statusCode = lastDisconnect?.error?.output?.statusCode;
                 const isLoggedOut = statusCode === DisconnectReason.loggedOut;
+                const disconnectData = lastDisconnect?.error?.data || {};
+                const disconnectMessage = String(lastDisconnect?.error?.message || '');
+                const isDeviceRemoved = disconnectData?.tag === 'conflict'
+                    && disconnectData?.attrs?.type === 'device_removed';
+                // DisconnectReason.badSession também vale 500, mas o WhatsApp
+                // usa 500 para falhas transitórias como "Stream Errored (ack)".
+                // Só apagamos a autenticação quando a mensagem confirma uma
+                // sessão realmente inválida; os demais 500 apenas reconectam.
+                const isConfirmedBadSession = statusCode === DisconnectReason.badSession
+                    && /bad session/i.test(disconnectMessage);
                 console.log('Conexão fechada. Código de status:', statusCode, 'Erro:', lastDisconnect?.error);
                 
                 qrCodeDataUrl = null;
@@ -171,7 +192,7 @@ async function connectToWhatsApp() {
                     sock = null;
                 }
 
-                if (isLoggedOut || statusCode === DisconnectReason.badSession) {
+                if (isLoggedOut || isDeviceRemoved || isConfirmedBadSession) {
                     console.log('Aparelho desconectado ou sessão corrompida. Limpando pasta de autenticação...');
                     try {
                         fs.rmSync(AUTH_DIR, { recursive: true, force: true });
@@ -221,6 +242,14 @@ function safeEqual(candidate, expected) {
 }
 
 function checkApiKey(req, res, next) {
+    const remoteAddress = req.socket.remoteAddress || '';
+    const isLoopback = remoteAddress === '127.0.0.1'
+        || remoteAddress === '::1'
+        || remoteAddress === '::ffff:127.0.0.1';
+    if (LOCAL_DASHBOARD_NO_AUTH && isLoopback && req.method === 'GET' && req.path === '/') {
+        return next();
+    }
+
     const authorization = req.headers.authorization || '';
     let candidate = req.headers.apikey;
     if (authorization.startsWith('Bearer ')) candidate = authorization.slice(7);

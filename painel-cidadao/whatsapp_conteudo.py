@@ -17,9 +17,45 @@ import re
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlencode
 
 
 STATE_VERSION = 1
+
+FONTES_PUBLICAS_CIDADAS = {
+    "atualizado_em.json": (
+        "Registro de atualização das bases públicas",
+        "",
+    ),
+    "fontes_emendas_2026.json": (
+        "Portais oficiais consultados sobre emendas de 2026",
+        "",
+    ),
+    "pncp.json": (
+        "Portal Nacional de Contratações Públicas (PNCP)",
+        "",
+    ),
+    "cnpjs.json": (
+        "Cadastro Nacional da Pessoa Jurídica — Receita Federal",
+        "",
+    ),
+    "camara_betha.json": (
+        "Portal da Transparência da Câmara Municipal de Varginha",
+        "",
+    ),
+    "prefeitura.json": (
+        "Portal da Transparência da Prefeitura de Varginha",
+        "",
+    ),
+    "sancoes.json": (
+        "Portal da Transparência do Governo Federal — CEIS e CNEP",
+        "",
+    ),
+    "licitacoes_resultados.json": (
+        "Portal Nacional de Contratações Públicas (PNCP)",
+        "",
+    ),
+}
 
 
 def carregar_json(path: Path, default: Any) -> Any:
@@ -56,6 +92,91 @@ def salvar_estado(path: Path, estado: dict) -> None:
 
 def _texto(valor: Any) -> str:
     return str(valor or "").strip()
+
+
+def fonte_publica_cidada(valor: Any) -> tuple[str, str]:
+    """Traduz nomes internos de arquivos para fonte compreensível ao cidadão."""
+    bruto = _texto(valor)
+    chave = Path(bruto).name.lower()
+    if chave in FONTES_PUBLICAS_CIDADAS:
+        return FONTES_PUBLICAS_CIDADAS[chave]
+
+    # Proteção para novas bases: nunca expõe extensão ou nome técnico cru.
+    nome = re.sub(r"\.json$", "", Path(bruto).name, flags=re.IGNORECASE)
+    nome = re.sub(r"[_-]+", " ", nome).strip()
+    if not nome:
+        return "Base pública consultada", ""
+    return nome[:1].upper() + nome[1:], ""
+
+
+def link_especifico_fonte(chave: Any, fonte: Any) -> tuple[str, str]:
+    """Retorna somente consulta que já abre filtrada para todo o achado citado."""
+    if Path(_texto(fonte)).name.lower() != "sancoes.json":
+        return "", ""
+
+    sancoes = carregar_json(
+        Path(__file__).resolve().parent / "data" / "chunks" / "sancoes.json",
+        {},
+    )
+    vigentes = [
+        item for item in sancoes.get("achados") or []
+        if item.get("sancao_vigente")
+    ]
+    chave_normalizada = _slug(chave)
+    if "FORNECEDOR-INIDONEO" in chave_normalizada:
+        relacionados = [
+            item for item in vigentes
+            if "INIDON" in _texto(item.get("tipo")).upper()
+            or "VARGINHA" in _texto(item.get("orgao_sancionador")).upper()
+        ]
+        rotulo = "Abrir no portal os registros citados"
+    elif "FORNECEDOR-SANCIONADO-OUTRO-ENTE" in chave_normalizada:
+        graves = {
+            id(item) for item in vigentes
+            if "INIDON" in _texto(item.get("tipo")).upper()
+            or "VARGINHA" in _texto(item.get("orgao_sancionador")).upper()
+        }
+        relacionados = [item for item in vigentes if id(item) not in graves]
+        rotulo = "Abrir no portal os registros citados"
+    else:
+        return "", ""
+
+    cnpjs = []
+    for item in relacionados:
+        cnpj = re.sub(r"\D", "", _texto(item.get("cnpj")))
+        if cnpj and cnpj not in cnpjs:
+            cnpjs.append(cnpj)
+
+    # O filtro oficial aceita no máximo dez documentos. Se o achado agrega
+    # mais que isso, não mostramos link parcial como se cobrisse o conjunto.
+    if not cnpjs or len(cnpjs) > 10:
+        return "", ""
+
+    parametros = urlencode({
+        "paginacaoSimples": "true",
+        "tamanhoPagina": "",
+        "offset": "",
+        "direcaoOrdenacao": "asc",
+        "cpfCnpj": ",".join(cnpjs),
+    })
+    return (
+        f"https://portaldatransparencia.gov.br/sancoes/consulta?{parametros}",
+        rotulo,
+    )
+
+
+def link_registro_especifico(valor: Any) -> str:
+    """Rejeita páginas gerais de consulta que ainda exigiriam nova pesquisa."""
+    link = _texto(valor)
+    if not link:
+        return ""
+    if "transparencia.betha.cloud" in link.lower() and re.search(
+        r"/consulta/\d+/?$",
+        link,
+        flags=re.IGNORECASE,
+    ):
+        return ""
+    return link
 
 
 def _numero(valor: Any) -> float:
@@ -275,7 +396,7 @@ def _mudancas_obra(antes: dict, agora: dict) -> list[str]:
 
 def _mensagem_obra(chave: str, atual: dict, mudancas: list[str], nova: bool) -> tuple[str, str]:
     titulo = _texto(atual.get("objeto")) or f"Obra pública {chave}"
-    link = _texto(atual.get("fonte_url"))
+    link = link_registro_especifico(atual.get("fonte_url"))
     prefixo = f"[{link}]\n\n" if link else ""
     cabecalho = "NOVA OBRA LOCALIZADA" if nova else "ATUALIZAÇÃO DE OBRA PÚBLICA"
     linhas = [
@@ -336,7 +457,11 @@ def gerar_alertas_transparencia(estado_anterior: dict, atual: dict[str, dict]) -
         if anteriores.get(chave) == item:
             continue
         titulo = _texto(item.get("title")) or "Ponto de transparência"
-        fonte = _texto(item.get("source")) or "Base pública consultada"
+        fonte, _ = fonte_publica_cidada(item.get("source"))
+        fonte_url, fonte_link_rotulo = link_especifico_fonte(
+            chave,
+            item.get("source"),
+        )
         linhas = [
             "📊 BOLETIM DE FISCALIZAÇÃO | TRANSPARÊNCIA",
             "════════════════════════════════════",
@@ -348,7 +473,8 @@ def gerar_alertas_transparencia(estado_anterior: dict, atual: dict[str, dict]) -
             "➡️ *Próximo passo sugerido*",
             _texto(item.get("action")) or "Conferir a documentação na fonte oficial.",
             "",
-            f"🔗 *Fonte analisada:* {fonte}",
+            f"🔗 *Fonte pública consultada:* {fonte}",
+            *([f"{fonte_link_rotulo}: {fonte_url}"] if fonte_url else []),
             "",
             "A ausência automática significa que o documento não foi localizado nas bases integradas; não prova que ele não exista.",
             "",

@@ -1,5 +1,5 @@
 """
-Zela Varginha — Coletor de Dados Públicos
+Fiscaliza Varginha — Coletor de Dados Públicos
 ==========================================
 Reúne dados públicos das três fontes oficiais e monta os JSONs que o
 painel cidadão (index.html) lê:
@@ -20,6 +20,7 @@ Uso:
   python coletor.py --so-sapl  # apenas reprocessa o CSV local
   python coletor.py --sem-pncp # pula consulta ao PNCP
   python coletor.py --sem-pessoal # pula remuneração/comissionados
+  python coletor.py --vigia-rapida # preserva historico pesado entre ciclos completos
 """
 from __future__ import annotations
 
@@ -30,6 +31,7 @@ import json
 import os
 import re
 import sys
+import time
 import unicodedata
 import urllib.request
 from pathlib import Path
@@ -72,11 +74,34 @@ _CHUNKS_CARIMBO = {"camara_betha.json", "pessoal.json"}
 def _write_json_atomic(path: Path, payload) -> None:
     """Escreve em arquivo temporario no MESMO diretorio e troca com os.replace,
     que e atomico no NTFS/POSIX: o arquivo final nunca fica truncado/parcial,
-    mesmo em queda de energia ou kill do processo no meio da escrita."""
+    mesmo em queda de energia ou kill do processo no meio da escrita.
+
+    No Windows, leitores como antivirus, indexadores e validadores podem abrir o
+    destino por alguns instantes sem FILE_SHARE_DELETE. Nesse intervalo,
+    os.replace levanta WinError 5/32/33. A escrita ja esta pronta no temporario,
+    entao retentamos apenas a troca em vez de derrubar toda a coleta.
+    """
     texto = json.dumps(payload, ensure_ascii=False, indent=2)
     tmp = path.with_name(f".{path.name}.tmp{os.getpid()}")
     tmp.write_text(texto, encoding="utf-8")
-    os.replace(tmp, path)
+    try:
+        for tentativa in range(12):
+            try:
+                os.replace(tmp, path)
+                return
+            except OSError as exc:
+                compartilhamento_windows = getattr(exc, "winerror", None) in (5, 32, 33)
+                arquivo_ocupado_posix = exc.errno in (13, 16)
+                if not (compartilhamento_windows or arquivo_ocupado_posix) or tentativa == 11:
+                    raise
+                time.sleep(min(0.25 * (tentativa + 1), 2.0))
+    finally:
+        # Se todas as tentativas falharem, nao deixa lixo .tmp no chunk.
+        if tmp.exists():
+            try:
+                tmp.unlink()
+            except OSError:
+                pass
 
 
 def _save(name: str, payload) -> None:
@@ -121,10 +146,54 @@ def _load_existing(name: str, default):
         return default
 
 
+def _load_last_nonempty_list(name: str, field: str) -> tuple[list, str | None]:
+    """Recupera a lista validada mais recente sem transformar falha de fonte em zero.
+
+    Primeiro consulta os arquivos publicados. Se eles ja tiverem sido gravados
+    vazios por uma coleta anterior, percorre os backups locais do mais novo para
+    o mais antigo. O caminho retornado deixa a origem da preservacao auditavel.
+    """
+    published = _load_existing(name, {})
+    published_value = published.get(field) if isinstance(published, dict) else None
+    if isinstance(published_value, list) and published_value:
+        return published_value, f"publicado:{name}"
+
+    candidates = []
+    backup_root = DATA.parent.parent / "private" / "backups"
+    if backup_root.exists():
+        backups = sorted(
+            (
+                path for path in backup_root.iterdir()
+                if path.is_dir() and not path.name.lower().startswith("rejeitada-")
+            ),
+            key=lambda path: path.stat().st_mtime,
+            reverse=True,
+        )
+        for backup in backups:
+            candidates.extend((
+                backup / "data" / "chunks" / name,
+                backup / "data" / name,
+            ))
+
+    seen: set[Path] = set()
+    for path in candidates:
+        if path in seen or not path.exists():
+            continue
+        seen.add(path)
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            value = payload.get(field) if isinstance(payload, dict) else None
+            if isinstance(value, list) and value:
+                return value, str(path)
+        except Exception:
+            continue
+    return [], None
+
+
 def _http_get_json(url: str, timeout: int = 30):
     req = urllib.request.Request(
         url,
-        headers={"User-Agent": "ZelaVarginha/1.0 (cidadao)"},
+        headers={"User-Agent": "FiscalizaVarginha/1.0 (cidadao)"},
     )
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.loads(r.read().decode("utf-8"))
@@ -1069,11 +1138,11 @@ def _processa_fontes_emendas_2026() -> dict:
 # --------------------------- main -------------------------------------- #
 
 def _save_data_js(payload: dict) -> None:
-    """Grava data.js com window.ZELA_DATA = {...} para o painel funcionar offline (file://)."""
+    """Grava data.js com window.FISCALIZA_DATA = {...} para o painel funcionar offline (file://)."""
     out = ROOT / "data.js"
     out.write_text(
         "/* Gerado por coletor.py — não editar à mão. */\n"
-        "window.ZELA_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
+        "window.FISCALIZA_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
         encoding="utf-8",
     )
     print(f"  ✓ data.js  ({out.stat().st_size // 1024} KB)")
@@ -1191,21 +1260,49 @@ def _processa_camara_betha() -> dict:
 
     contratos = []
     licitacoes = []
+    dados_abertos_status = {}
     try:
         res = cb.baixar_dados_abertos(token, CONSULTA_CAMARA_CONTRATOS, ano=ano_atual,
                                        portal_hash=PORTAL_HASH_CAMARA, ano_field="anoLicitacao")
+        dados_abertos_status["contratos"] = {
+            "status": res.get("coleta_status", "ok"),
+            "modo": res.get("coleta_modo", "desconhecido"),
+            "registros": len(res.get("main", [])),
+        }
         contratos = _normaliza_contratos(res.get("main", []))
         print(f"  ✓ Contratos Câmara: {len(contratos)} registros")
     except Exception as e:
+        dados_abertos_status["contratos"] = {"status": "failed", "erro": str(e)}
         print(f"  ✗ Contratos Câmara: {e}")
 
     try:
         res = cb.baixar_dados_abertos(token, CONSULTA_CAMARA_LICITACOES, ano=ano_atual,
                                        portal_hash=PORTAL_HASH_CAMARA, ano_field="anoLicitacao")
+        dados_abertos_status["licitacoes"] = {
+            "status": res.get("coleta_status", "ok"),
+            "modo": res.get("coleta_modo", "desconhecido"),
+            "registros": len(res.get("main", [])),
+        }
         licitacoes = _normaliza_licitacoes(res.get("main", []))
         print(f"  ✓ Licitações Câmara: {len(licitacoes)} registros")
     except Exception as e:
+        dados_abertos_status["licitacoes"] = {"status": "failed", "erro": str(e)}
         print(f"  ✗ Licitações Câmara: {e}")
+
+    contratos_status = "coleta_atual"
+    contratos_origem_preservada = None
+    if dados_abertos_status.get("contratos", {}).get("status") == "partial":
+        contratos_status = "coleta_atual_parcial_via_busca_textual"
+    if not contratos:
+        anteriores, origem = _load_last_nonempty_list("camara_betha.json", "contratos")
+        if anteriores:
+            contratos = anteriores
+            contratos_status = "preservada_por_resposta_betha_vazia"
+            contratos_origem_preservada = origem
+            print(
+                f"  ! Câmara: consulta de contratos vazia; preservando "
+                f"{len(contratos)} registros da última base válida."
+            )
 
     return {
         "ano_atual":              ano_atual,
@@ -1217,6 +1314,9 @@ def _processa_camara_betha() -> dict:
         "top_fornecedores_anterior": top_anterior,
         "contratos":   contratos,
         "licitacoes":  licitacoes,
+        "contratos_status_coleta": contratos_status,
+        "contratos_origem_preservada": contratos_origem_preservada,
+        "dados_abertos_status": dados_abertos_status,
     }
 
 
@@ -1552,7 +1652,7 @@ def _processa_fundacao_cultural() -> dict:
 
 # ----------------- 4) Prefeitura (Betha) -------------------------------- #
 
-def _processa_prefeitura(emendas: list[dict]) -> dict:
+def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dict:
     """Puxa dados ao vivo do Portal de Transparência Betha:
        - todos os credores (paginação completa)
        - top 30 fornecedores externos no ano corrente
@@ -1605,26 +1705,124 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
     # ex.: agência de publicidade (VERSAO BR, R$ 8,9 mi) assinada em 2024 e
     # vigente até 2026, que sem isto ficava de fora da base.
     hoje_iso        = dt.date.today().isoformat()
-    contratos       = _baixar_dados_abertos_safe(cb, token, "Contratos",               cb.CONSULTA_CONTRATOS,          ano_atual)
-    contratos      += _baixar_dados_abertos_safe(cb, token, "Contratos (ano anterior)", cb.CONSULTA_CONTRATOS,          ano_atual - 1)
+    dados_abertos_status = {}
+    contratos       = _baixar_dados_abertos_safe(cb, token, "Contratos",               cb.CONSULTA_CONTRATOS,          ano_atual, status_sink=dados_abertos_status)
+    contratos      += _baixar_dados_abertos_safe(cb, token, "Contratos (ano anterior)", cb.CONSULTA_CONTRATOS,          ano_atual - 1, status_sink=dados_abertos_status)
     # Janela longa (ate ano-8): plurianuais antigos renovados por aditivo —
     # ex.: ERP Betha e vale-refeicao Verocheque — apareciam como "fornecedor
     # sem contrato" na auditoria porque a licitacao original e anterior a
     # ano-3. So os AINDA vigentes entram, entao a base nao incha.
-    for ano_old in range(ano_atual - 2, ano_atual - 9, -1):
-        brutos   = _baixar_dados_abertos_safe(cb, token, f"Contratos vigentes ({ano_old})", cb.CONSULTA_CONTRATOS, ano_old)
-        vigentes = [r for r in brutos if _contrato_vigente(r, hoje_iso)]
-        print(f"    → {len(vigentes)}/{len(brutos)} ainda vigentes")
-        contratos += vigentes
-    licit_andamento = _baixar_dados_abertos_safe(cb, token, "Licitações em andamento", cb.CONSULTA_LICITACOES_ABERTAS, ano_atual)
-    licit_finaliz   = _baixar_dados_abertos_safe(cb, token, "Licitações finalizadas",  cb.CONSULTA_LICITACOES_FECHADAS, ano_atual)
-    compras_diretas = _baixar_dados_abertos_safe(cb, token, "Compras diretas",         cb.CONSULTA_COMPRAS_DIRETAS,    ano_atual - 1)
+    if vigia_rapida:
+        print("  vigia rapida: preservando contratos historicos do ultimo ciclo completo.")
+    else:
+        for ano_old in range(ano_atual - 2, ano_atual - 9, -1):
+            brutos   = _baixar_dados_abertos_safe(cb, token, f"Contratos vigentes ({ano_old})", cb.CONSULTA_CONTRATOS, ano_old, status_sink=dados_abertos_status)
+            vigentes = [r for r in brutos if _contrato_vigente(r, hoje_iso)]
+            print(f"    → {len(vigentes)}/{len(brutos)} ainda vigentes")
+            contratos += vigentes
+    licit_andamento = _baixar_dados_abertos_safe(cb, token, "Licitações em andamento", cb.CONSULTA_LICITACOES_ABERTAS, ano_atual, status_sink=dados_abertos_status)
+    licit_finaliz   = _baixar_dados_abertos_safe(cb, token, "Licitações finalizadas",  cb.CONSULTA_LICITACOES_FECHADAS, ano_atual, status_sink=dados_abertos_status)
+    compras_diretas = _baixar_dados_abertos_safe(cb, token, "Compras diretas",         cb.CONSULTA_COMPRAS_DIRETAS,    ano_atual, status_sink=dados_abertos_status)
     obras_rows, obras_linked, _ = _baixar_dados_abertos_full_safe(
-        cb, token, "Obras públicas", cb.CONSULTA_OBRAS_PUBLICAS, ano_atual
+        cb, token, "Obras públicas", cb.CONSULTA_OBRAS_PUBLICAS, ano_atual,
+        status_sink=dados_abertos_status,
     )
     frota_rows, frota_linked, frota_linked_rows = _baixar_dados_abertos_full_safe(
-        cb, token, "Veículos municipais", cb.CONSULTA_VEICULOS_MUNICIPAIS, ano_atual
+        cb, token, "Veículos municipais", cb.CONSULTA_VEICULOS_MUNICIPAIS, ano_atual,
+        status_sink=dados_abertos_status,
     )
+
+    contratos_normalizados = _normaliza_contratos(contratos)
+    obras_normalizadas = _normaliza_obras_publicas(obras_rows, obras_linked)
+    obras_status = "coleta_atual"
+    obras_origem_preservada = None
+    obras_diag = dados_abertos_status.get(f"Obras públicas ({ano_atual})", {})
+    obras_anteriores, origem_obras = _load_last_nonempty_list(
+        "prefeitura.json", "obras_publicas"
+    )
+    if obras_diag.get("status") == "partial":
+        # Sem os CSVs vinculados, a busca textual omite contrato, endereco,
+        # responsaveis e medicoes. Publicar essa versao por cima da ultima base
+        # completa apaga evidencias e pode alterar cruzamentos editoriais.
+        if obras_anteriores:
+            obras_normalizadas = obras_anteriores
+            obras_status = "preservada_por_resposta_betha_parcial"
+            obras_origem_preservada = origem_obras
+        else:
+            obras_status = "coleta_atual_parcial_via_busca_textual"
+    if not obras_normalizadas:
+        if obras_anteriores:
+            obras_normalizadas = obras_anteriores
+            obras_status = "preservada_por_resposta_betha_vazia"
+            obras_origem_preservada = origem_obras
+            print(
+                f"  ! Prefeitura: consulta de obras vazia; preservando "
+                f"{len(obras_normalizadas)} registros da última base válida."
+            )
+    contratos_status = "coleta_atual"
+    contratos_origem_preservada = None
+    contratos_diag = [
+        value for key, value in dados_abertos_status.items()
+        if key.startswith("Contratos")
+    ]
+    if contratos_diag and any(item.get("status") == "partial" for item in contratos_diag):
+        contratos_status = "coleta_atual_parcial_via_busca_textual"
+    contratos_anteriores, origem_anterior = _load_last_nonempty_list(
+        "prefeitura.json", "contratos"
+    )
+    coleta_contratos_parcial = (
+        len(contratos_normalizados) < 200 and len(contratos_anteriores) >= 200
+    )
+    if coleta_contratos_parcial and not vigia_rapida:
+        contratos_normalizados = contratos_anteriores
+        contratos_status = "preservada_por_resposta_betha_parcial"
+        contratos_origem_preservada = origem_anterior
+        print(
+            f"  ! Prefeitura: coleta de contratos trouxe apenas {len(contratos)} "
+            f"registro(s); preservando {len(contratos_anteriores)} da última base válida."
+        )
+    if vigia_rapida:
+        # A API Betha alterna 401/406 e pode devolver vazio para um ano inteiro.
+        # Na vigia, dados novos substituem os equivalentes e o restante da base
+        # validada e preservado. O ciclo completo diario continua removendo
+        # contratos expirados e reconciliando todo o historico.
+        anteriores = contratos_anteriores
+        if coleta_contratos_parcial:
+            contratos_status = "mesclada_com_base_preservada_por_resposta_betha_parcial"
+            contratos_origem_preservada = origem_anterior
+        chaves = {
+            (
+                str(item.get("numero") or ""),
+                str(item.get("ano") or ""),
+                str(item.get("cnpj") or ""),
+                str(item.get("contratado") or ""),
+            )
+            for item in contratos_normalizados
+        }
+        for item in anteriores if isinstance(anteriores, list) else []:
+            chave = (
+                str(item.get("numero") or ""),
+                str(item.get("ano") or ""),
+                str(item.get("cnpj") or ""),
+                str(item.get("contratado") or ""),
+            )
+            if chave not in chaves:
+                contratos_normalizados.append(item)
+                chaves.add(chave)
+        contratos_normalizados.sort(key=lambda x: -float(x.get("valor") or 0))
+
+    frota_normalizada = _normaliza_frota(frota_rows, frota_linked, frota_linked_rows)
+    frota_status = "coleta_atual"
+    frota_origem_preservada = None
+    frota_diag = dados_abertos_status.get(f"Veículos municipais ({ano_atual})", {})
+    if frota_diag.get("status") == "partial":
+        frota_anterior, origem_frota = _load_last_nonempty_list("prefeitura.json", "frota")
+        if frota_anterior:
+            frota_normalizada = frota_anterior
+            frota_status = "preservada_por_resposta_betha_parcial"
+            frota_origem_preservada = origem_frota
+        else:
+            frota_status = "coleta_atual_parcial_via_busca_textual"
 
     return {
         "ano_atual":     ano_atual,
@@ -1641,24 +1839,39 @@ def _processa_prefeitura(emendas: list[dict]) -> dict:
             "sem_cnpj":        sem_cnpj,
             "execucao_direta": execucao_direta,
         },
-        "contratos":        _normaliza_contratos(contratos),
+        "contratos":        contratos_normalizados,
+        "contratos_status_coleta": contratos_status,
+        "contratos_origem_preservada": contratos_origem_preservada,
         "licit_andamento":  _normaliza_licitacoes(licit_andamento),
         "licit_finalizadas": _normaliza_licitacoes(licit_finaliz),
         "compras_diretas":  _normaliza_compras(compras_diretas),
-        "obras_publicas":   _normaliza_obras_publicas(obras_rows, obras_linked),
-        "frota":            _normaliza_frota(frota_rows, frota_linked, frota_linked_rows),
+        "obras_publicas":   obras_normalizadas,
+        "obras_status_coleta": obras_status,
+        "obras_origem_preservada": obras_origem_preservada,
+        "frota":            frota_normalizada,
+        "frota_status_coleta": frota_status,
+        "frota_origem_preservada": frota_origem_preservada,
+        "dados_abertos_status": dados_abertos_status,
     }
 
 
 def _baixar_dados_abertos_safe(cb, token: str, label: str, consulta_id: int,
-                                ano: int) -> list[dict]:
+                                ano: int, status_sink: Optional[dict] = None) -> list[dict]:
     print(f"  baixando {label} ({ano})…")
     try:
         res = cb.baixar_dados_abertos(token, consulta_id, ano=ano)
         rows = res.get("main", [])
-        print(f"  ✓ {len(rows)} registros")
+        mode = res.get("coleta_modo", "desconhecido")
+        status = res.get("coleta_status", "ok")
+        if status_sink is not None:
+            status_sink[f"{label} ({ano})"] = {
+                "status": status, "modo": mode, "registros": len(rows),
+            }
+        print(f"  ✓ {len(rows)} registros [{mode}]")
         return rows
     except Exception as e:
+        if status_sink is not None:
+            status_sink[f"{label} ({ano})"] = {"status": "failed", "erro": str(e)}
         print(f"  ✗ {label}: {e}")
         return []
 
@@ -1679,16 +1892,24 @@ def _contrato_vigente(r: dict, hoje_iso: str) -> bool:
 
 
 def _baixar_dados_abertos_full_safe(cb, token: str, label: str, consulta_id: int,
-                                    ano: int) -> tuple[list[dict], dict, dict]:
+                                    ano: int, status_sink: Optional[dict] = None) -> tuple[list[dict], dict, dict]:
     print(f"  baixando {label} ({ano})…")
     try:
         res = cb.baixar_dados_abertos(token, consulta_id, ano=ano)
         rows = res.get("main", [])
         linked = res.get("linked", {})
         linked_rows = res.get("linked_rows", {})
-        print(f"  ✓ {len(rows)} registros ({res.get('files_in_zip', 0)} arquivos no ZIP)")
+        mode = res.get("coleta_modo", "desconhecido")
+        status = res.get("coleta_status", "ok")
+        if status_sink is not None:
+            status_sink[f"{label} ({ano})"] = {
+                "status": status, "modo": mode, "registros": len(rows),
+            }
+        print(f"  ✓ {len(rows)} registros ({res.get('files_in_zip', 0)} arquivos no ZIP) [{mode}]")
         return rows, linked, linked_rows
     except Exception as e:
+        if status_sink is not None:
+            status_sink[f"{label} ({ano})"] = {"status": "failed", "erro": str(e)}
         print(f"  ✗ {label}: {e}")
         return [], {}, {}
 
@@ -1715,6 +1936,25 @@ def _linked_rows(linked_rows: dict, ref: str) -> list[dict]:
         return []
     rows = linked_rows.get(key)
     return rows if isinstance(rows, list) else []
+
+
+def _t(s) -> str:
+    """Texto do CSV Betha. Campo vazio vem como " " (espaco), nao como string
+    vazia — sem o strip, todo `or` de fallback enxerga valor preenchido."""
+    if isinstance(s, dict):
+        # A busca-textual devolve colunas relacionais como objetos (por
+        # exemplo, credor={nomeCredor: "..."}); o CSV exportado usava uma
+        # referencia textual. Extraia apenas um valor legivel.
+        for key in (
+            "nomeCredor", "nome", "descricao", "razaoSocial", "label",
+            "valor", "id",
+        ):
+            if key in s and s.get(key) not in (None, ""):
+                return _t(s.get(key))
+        return ""
+    if isinstance(s, (list, tuple)):
+        return ", ".join(filter(None, (_t(item) for item in s)))
+    return str(s or "").strip()
 
 
 def _f(s) -> float:
@@ -1776,18 +2016,23 @@ def _normaliza_licitacoes(rows: list[dict]) -> list[dict]:
 
 
 def _normaliza_compras(rows: list[dict]) -> list[dict]:
+    # Nomes de campo conferidos contra a consulta 83045 em 04/08/2026. Os nomes
+    # antigos (dataAbertura, cnpjCpfFornecedor, valorTotal, tipoCompra) nao
+    # existem nessa consulta: todo registro saia com data, CNPJ e valor vazios.
+    # Os fallbacks ficam para o caso de a Betha alternar o esquema.
     out = []
     for r in rows:
         out.append({
-            "numero":      r.get("numero", ""),
-            "ano":         r.get("ano", ""),
-            "data":        r.get("dataAbertura", "") or r.get("dataAssinatura", ""),
-            "objeto":      (r.get("objeto", "") or r.get("descricao", "")).strip(),
-            "fornecedor":  r.get("nomeFornecedor", "") or r.get("nomeContratado", ""),
-            "cnpj":        r.get("cnpjCpfFornecedor", "") or r.get("cnpjCpfContratado", ""),
-            "valor":       _f(r.get("valorTotal", 0) or r.get("valorFinal", 0)),
-            "modalidade":  r.get("tipoCompra", "") or r.get("modalidadeLicitacao", ""),
-            "entidade":    r.get("nomeEntidade", ""),
+            "numero":      _t(r.get("protocolo")) or _t(r.get("id")),
+            "ano":         _t(r.get("ano")),
+            "data":        _t(r.get("dataCompra")) or _t(r.get("dataAbertura")),
+            "objeto":      _t(r.get("objeto")) or _t(r.get("descricao")),
+            "fornecedor":  _t(r.get("nomeFornecedor")) or _t(r.get("nomeContratado")),
+            "cnpj":        _t(r.get("cpfCnpjFornecedor")) or _t(r.get("cnpjCpfFornecedor")),
+            "valor":       _f(r.get("valor", 0) or r.get("valorTotal", 0)),
+            "modalidade":  _t(r.get("tipo")) or _t(r.get("tipoCompra")),
+            "fundamento":  _t(r.get("fundamentacaoLegal")),
+            "entidade":    _t(r.get("nomeEntidade")),
         })
     out.sort(key=lambda x: -x["valor"])
     return out
@@ -1877,6 +2122,45 @@ def _normaliza_obras_publicas(rows: list[dict], linked: dict) -> list[dict]:
             "licitacao_modalidade": _cell(licitacao.get("modalidade", "")),
             "fonte_url": fonte_url,
         })
+
+    # O Betha pode devolver duas fichas para a mesma obra/contrato, inclusive
+    # com situações diferentes. Só unimos quando contrato, fornecedor, objeto,
+    # endereço e valor coincidem; contratos com objetos distintos permanecem.
+    dedup: dict[tuple, dict] = {}
+    for obra in out:
+        contrato_numero = _norm_txt(obra.get("contrato_numero", ""))
+        contrato_ano = _norm_txt(obra.get("contrato_ano", ""))
+        chave = (
+            contrato_numero,
+            contrato_ano,
+            _norm_txt(obra.get("fornecedor", "")),
+            _norm_txt(obra.get("objeto", "")),
+            _norm_txt(obra.get("endereco", "")),
+            round(_f(obra.get("valor", 0)), 2),
+        )
+        if not contrato_numero or not contrato_ano:
+            chave = ("id", _norm_txt(obra.get("id_obra", "")))
+
+        atual = dedup.get(chave)
+        if atual is None:
+            dedup[chave] = obra
+            continue
+
+        def completude(item: dict) -> tuple:
+            situacao_txt = _norm_txt(item.get("situacao", ""))
+            return (
+                1 if item.get("data_efetiva_conclusao") else 0,
+                1 if "CONCLUID" in situacao_txt else 0,
+                1 if item.get("licitacao_numero") else 0,
+                1 if item.get("responsavel") else 0,
+                1 if _f(item.get("valor_previsto", 0)) > 0 else 0,
+                sum(1 for valor_item in item.values() if valor_item not in ("", None, 0, 0.0)),
+            )
+
+        if completude(obra) > completude(atual):
+            dedup[chave] = obra
+
+    out = list(dedup.values())
     out.sort(key=lambda x: -x["valor"])
     return out
 
@@ -2036,27 +2320,33 @@ def _normaliza_frota(rows: list[dict], linked: dict, linked_rows: dict) -> list[
 def _normaliza_diarias_prefeitura(rows: list[dict], linked: dict) -> list[dict]:
     out = []
     for r in rows:
-        credor_ref = (r.get("credor") or "").strip()
-        credor = linked.get(credor_ref, {}) if credor_ref else {}
+        credor_raw = r.get("credor")
+        if isinstance(credor_raw, dict):
+            credor = credor_raw
+            credor_ref = _t(credor_raw)
+        else:
+            credor_ref = _t(credor_raw)
+            credor = linked.get(credor_ref, {}) if credor_ref else {}
         valor = _f(r.get("valorPagoEmpenho") or r.get("valorEmpenho") or r.get("valorEmpenhado"))
+        data_empenho = _t(r.get("dataEmpenho"))
         out.append({
             "poder": "Prefeitura",
-            "ano": str(r.get("anoExercicio") or r.get("anoCadastro") or ""),
-            "entidade": r.get("nomeEntidade", ""),
-            "secretaria": r.get("descricaoOrgao", "") or r.get("descricaoUnidade", ""),
-            "unidade": r.get("descricaoUnidade", ""),
-            "funcionario": credor.get("nomeCredor", "") or credor_ref,
-            "cpf": credor.get("cnpjCpfCredor", ""),
-            "cargo": credor.get("naturezaJuridicaCredor", ""),
-            "numero": r.get("numeroEmpenho", ""),
-            "data_inicial": r.get("dataEmpenho", ""),
-            "data_final": r.get("dataEmpenho", ""),
+            "ano": _t(r.get("anoExercicio")) or _t(r.get("anoCadastro")) or data_empenho[:4],
+            "entidade": _t(r.get("nomeEntidade")),
+            "secretaria": _t(r.get("descricaoOrgao")) or _t(r.get("descricaoUnidade")),
+            "unidade": _t(r.get("descricaoUnidade")),
+            "funcionario": _t(credor.get("nomeCredor")) or credor_ref,
+            "cpf": _t(credor.get("cnpjCpfCredor")),
+            "cargo": _t(credor.get("naturezaJuridicaCredor")),
+            "numero": _t(r.get("numeroEmpenho")),
+            "data_inicial": data_empenho,
+            "data_final": data_empenho,
             "quantidade": 1,
             "valor_unitario": valor,
             "valor_total": valor,
             "destino": "",
-            "finalidade": r.get("finalidade", "").strip() or r.get("descricaoProjetoAtividade", "").strip() or r.get("descricaoPrograma", "").strip(),
-            "historico": r.get("descricaoElemento", "") or r.get("descricaoDetalhamentoElemento", ""),
+            "finalidade": _t(r.get("finalidade")) or _t(r.get("descricaoProjetoAtividade")) or _t(r.get("descricaoPrograma")),
+            "historico": _t(r.get("descricaoElemento")) or _t(r.get("descricaoDetalhamentoElemento")),
             "fonte": "Betha Prefeitura - Diarias",
         })
     out.sort(key=lambda x: -x["valor_total"])
@@ -2105,14 +2395,24 @@ def _processa_diarias_betha() -> dict:
     anos = [ano_atual - 1, ano_atual]
     prefeitura = []
     camara = []
+    coleta_status = {"prefeitura": {}, "camara": {}}
 
     try:
         tok_pref = cb.get_token()
         for ano in anos:
-            res = cb.baixar_dados_abertos(tok_pref, cb.CONSULTA_DIARIAS, ano=ano)
-            rows = _normaliza_diarias_prefeitura(res.get("main", []), res.get("linked", {}))
-            prefeitura.extend(rows)
-            print(f"  ✓ Prefeitura diárias {ano}: {len(rows)} registros")
+            try:
+                res = cb.baixar_dados_abertos(tok_pref, cb.CONSULTA_DIARIAS, ano=ano)
+                rows = _normaliza_diarias_prefeitura(res.get("main", []), res.get("linked", {}))
+                prefeitura.extend(rows)
+                coleta_status["prefeitura"][str(ano)] = {
+                    "status": res.get("coleta_status", "ok"),
+                    "modo": res.get("coleta_modo", "desconhecido"),
+                    "registros": len(rows),
+                }
+                print(f"  ✓ Prefeitura diárias {ano}: {len(rows)} registros")
+            except Exception as e:
+                coleta_status["prefeitura"][str(ano)] = {"status": "failed", "erro": str(e)}
+                print(f"  ✗ Prefeitura diárias {ano}: {e}")
     except Exception as e:
         print(f"  ✗ Prefeitura diárias: {e}")
 
@@ -2120,10 +2420,19 @@ def _processa_diarias_betha() -> dict:
         portal_camara = "-iAWLe1kr2VQcrW9k2AUBg=="
         tok_cam = cb.get_token(portal_hash=portal_camara)
         for ano in anos:
-            res = cb.baixar_dados_abertos(tok_cam, 324755, ano=ano, portal_hash=portal_camara, ano_field="ano")
-            rows = _normaliza_diarias_camara(res.get("main", []))
-            camara.extend(rows)
-            print(f"  ✓ Câmara diárias {ano}: {len(rows)} registros")
+            try:
+                res = cb.baixar_dados_abertos(tok_cam, 324755, ano=ano, portal_hash=portal_camara, ano_field="ano")
+                rows = _normaliza_diarias_camara(res.get("main", []))
+                camara.extend(rows)
+                coleta_status["camara"][str(ano)] = {
+                    "status": res.get("coleta_status", "ok"),
+                    "modo": res.get("coleta_modo", "desconhecido"),
+                    "registros": len(rows),
+                }
+                print(f"  ✓ Câmara diárias {ano}: {len(rows)} registros")
+            except Exception as e:
+                coleta_status["camara"][str(ano)] = {"status": "failed", "erro": str(e)}
+                print(f"  ✗ Câmara diárias {ano}: {e}")
     except Exception as e:
         print(f"  ✗ Câmara diárias: {e}")
 
@@ -2147,13 +2456,41 @@ def _processa_diarias_betha() -> dict:
             "prefeitura": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83059",
             "camara": "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324755",
         },
+        "coleta_status": coleta_status,
     }
 
 
 # ----------------- main ------------------------------------------------- #
 
+def _preserva_emendas_sapl_se_coleta_vazia(sapl: dict) -> dict:
+    """Impede que uma resposta parcial do SAPL apague uma base válida.
+
+    O SAPL pode responder a listagem de matérias e falhar nos metadados de tipo.
+    Nesse cenário a coleta parece não vazia, mas nenhuma emenda é reconhecida.
+    Zero registros novos não é evidência suficiente para apagar registros já
+    publicados; a saída anterior fica preservada até uma coleta conclusiva.
+    """
+    novas = sapl.get("emendas")
+    anteriores = _load_existing("emendas.json", [])
+    if isinstance(novas, list) and not novas and isinstance(anteriores, list) and anteriores:
+        sapl["emendas"] = anteriores
+        resumo = sapl.get("resumo")
+        if isinstance(resumo, dict):
+            resumo["emendas_qtd"] = len(anteriores)
+            resumo["emendas_valor_total_brl"] = round(
+                sum(float(item.get("valor_brl") or 0) for item in anteriores),
+                2,
+            )
+            resumo["emendas_status_coleta"] = "preservada_por_resposta_sapl_incompleta"
+        print(
+            "  ! SAPL retornou zero emendas; preservando base anterior "
+            f"({len(anteriores)} registros) para evitar regressao de cobertura."
+        )
+    return sapl
+
+
 def main() -> int:
-    print("\n=== Zela Varginha — Coletor ===\n")
+    print("\n=== Fiscaliza Varginha — Coletor ===\n")
     so_sapl   = "--so-sapl"   in sys.argv
     sem_betha = "--sem-betha" in sys.argv
     sem_pncp  = "--sem-pncp"  in sys.argv
@@ -2161,8 +2498,9 @@ def main() -> int:
     sem_cnpj  = "--sem-cnpj"  in sys.argv
     sem_pessoal = "--sem-pessoal" in sys.argv
     sem_fontes_emendas = "--sem-fontes-emendas" in sys.argv
+    vigia_rapida = "--vigia-rapida" in sys.argv
 
-    sapl = _processa_sapl()
+    sapl = _preserva_emendas_sapl_se_coleta_vazia(_processa_sapl())
     _enriquece_materias_cidadas(sapl.get("camara_anos", {}))
     _save("resumo.json", sapl["resumo"])
     _save("vereadores.json", sapl["vereadores"])
@@ -2223,6 +2561,15 @@ def main() -> int:
         agora_iso = dt.datetime.now().isoformat(timespec="seconds")
         # Sucesso da coleta de cada fonte NESTE ciclo (antes do preserve sobrescrever).
         coletou = {org: len(diarias.get(org, [])) > 0 for org in ("prefeitura", "camara")}
+        status_por_org = diarias.get("coleta_status") if isinstance(diarias, dict) else {}
+        status_por_org = status_por_org if isinstance(status_por_org, dict) else {}
+        integral = {}
+        for org in ("prefeitura", "camara"):
+            anos_status = status_por_org.get(org) if isinstance(status_por_org.get(org), dict) else {}
+            integral[org] = bool(anos_status) and all(
+                isinstance(item, dict) and item.get("status") == "ok"
+                for item in anos_status.values()
+            )
         for org in ("prefeitura", "camara"):
             novos = diarias.get(org, [])
             antigos = existente_diarias.get(org, []) if isinstance(existente_diarias, dict) else []
@@ -2239,13 +2586,15 @@ def main() -> int:
         meta = {}
         for org in ("prefeitura", "camara"):
             ant = meta_ant.get(org) if isinstance(meta_ant.get(org), dict) else {}
-            if coletou[org]:
+            if coletou[org] and integral[org]:
                 meta[org] = {"atualizado_em": agora_iso, "ok": True}
             else:
                 meta[org] = {
                     "atualizado_em": (ant or {}).get("atualizado_em"),
                     "ok": False,
                     "ultima_falha": agora_iso,
+                    "ultima_tentativa": agora_iso,
+                    "status": "partial" if coletou[org] else "failed",
                 }
         diarias["meta"] = meta
         if diarias.get("prefeitura") or diarias.get("camara"):
@@ -2271,7 +2620,10 @@ def main() -> int:
             emendas_para_cruzamento = _load_existing("emendas.json", [])
             if emendas_para_cruzamento:
                 print("  ℹ SAPL retornou emendas vazias — usando emendas.json do disco para cruzamento Betha.")
-        prefeitura = _processa_prefeitura(emendas_para_cruzamento)
+        prefeitura = _processa_prefeitura(
+            emendas_para_cruzamento,
+            vigia_rapida=vigia_rapida,
+        )
         if prefeitura:
             _save("prefeitura.json", prefeitura)
 

@@ -40,7 +40,30 @@ function readJson(filePath) {
 }
 
 function writeJson(filePath, data) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + "\n", "utf8");
+  const tmp = path.join(
+    path.dirname(filePath),
+    `.${path.basename(filePath)}.tmp${process.pid}`,
+  );
+  fs.writeFileSync(tmp, JSON.stringify(data, null, 2) + "\n", "utf8");
+  const waitBuffer = new Int32Array(new SharedArrayBuffer(4));
+  try {
+    for (let attempt = 0; attempt < 12; attempt += 1) {
+      try {
+        fs.renameSync(tmp, filePath);
+        return;
+      } catch (error) {
+        const transient = ["EACCES", "EPERM", "EBUSY", "UNKNOWN"].includes(error?.code);
+        if (!transient || attempt === 11) throw error;
+        Atomics.wait(waitBuffer, 0, 0, Math.min(250 * (attempt + 1), 2000));
+      }
+    }
+  } finally {
+    try {
+      if (fs.existsSync(tmp)) fs.unlinkSync(tmp);
+    } catch {
+      // Limpeza melhor-esforco; a proxima execucao usa outro PID.
+    }
+  }
 }
 
 function num(value) {

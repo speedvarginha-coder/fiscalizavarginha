@@ -49,6 +49,7 @@ PUBLICATION_CURSOR_PATH = ROOT.parent / "private" / "state" / "whatsapp_publicat
 _emendas_cache = None
 _prefeitura_cache = None
 _base_financeira_cache = None
+_tramitacao_camara_cache: dict[str, str] = {}
 
 
 def carregar_emendas() -> list[dict]:
@@ -297,6 +298,7 @@ def cruzar_valor_publicacao(pub: dict, escopo: str) -> dict | None:
     }
 
 TEMPLATE_CONFIG = {
+    "envio_habilitado": True,              # chave geral; False pausa qualquer disparo sem apagar fila/historico
     "api_type": "evolution",  # opções: "evolution", "z-api", "callmebot", "custom"
     "api_url": "http://localhost:8080",
     "instance_id": "fiscaliza",
@@ -563,6 +565,56 @@ def salvar_relatorio_revisao(
     temporario.replace(REVIEW_QUEUE_PATH)
 
 
+# Alerta que cita empresa por nome em contexto de sanção nunca sai sozinho.
+# O gatilho antigo era só o hash do item: bastava o texto mudar para um novo
+# boletim nominal ir ao grupo sem ninguém ler. Em 04/08/2026 isso publicou uma
+# classificação jurídica errada sobre uma empresa identificada — e o histórico
+# mostra 7 boletins de inidoneidade emitidos pela mesma regra.
+PADRAO_ALERTA_NOMINAL = re.compile(
+    r"INIDON|IMPEDIMENTO|PROIBI[ÇC][ÃA]O DE CONTRATAR|SUSPENS[ÃA]O TEMPOR|"
+    r"SANCIONAD|INID[ÔO]NEA|CEIS|CNEP",
+    re.IGNORECASE,
+)
+
+
+def exige_revisao_humana(mensagem: str) -> bool:
+    """Mensagem que trata de sanção e cita empresa identificável."""
+    if not PADRAO_ALERTA_NOMINAL.search(mensagem or ""):
+        return False
+    # Alerta agregado ("38 fornecedores constam com...") não nomeia ninguém e
+    # pode seguir automático. O que retém é a presença de razão social.
+    return bool(re.search(r"\b(LTDA|S\.?A\.?|EIRELI|ME|EPP|SOCIEDADE|COMERCIO|COMÉRCIO)\b", mensagem or ""))
+
+
+def separar_alertas_nominais(
+    mensagens: list[tuple[str, str]],
+    aprovado_nominais: bool,
+) -> tuple[list[tuple[str, str]], list[dict]]:
+    # Aprovacao de VOLUME (--aprovar-fila) e aprovacao de CONTEUDO NOMINAL sao
+    # decisoes diferentes e exigem flags diferentes. Liberar um lote grande de
+    # publicacoes do Diario nao pode, como efeito colateral, publicar acusacao
+    # com nome de empresa.
+    if aprovado_nominais:
+        return mensagens, []
+    liberadas, retidas = [], []
+    for pid, msg in mensagens:
+        if exige_revisao_humana(msg):
+            retidas.append({
+                "id": pid,
+                "ok": False,
+                "motivo": "alerta_nominal_de_sancao",
+                "erros": [
+                    "Cita empresa identificada em contexto de sancao juridica. "
+                    "Liberar apenas apos conferir categoria, fundamentacao, abrangencia, "
+                    "vigencia e processo no registro individual do CEIS."
+                ],
+                "titulo": _titulo_da_mensagem(msg),
+            })
+        else:
+            liberadas.append((pid, msg))
+    return liberadas, retidas
+
+
 def fila_exige_aprovacao(total: int, config: dict, aprovado_manualmente: bool) -> bool:
     if aprovado_manualmente:
         return False
@@ -826,6 +878,10 @@ def assunto_financeiro_diario(pub: dict) -> bool:
 
 
 def enviar_mensagem(config: dict, texto: str) -> bool:
+    if not bool(config.get("envio_habilitado", True)):
+        print("⏸️ Envio ao WhatsApp pausado em whatsapp_config.json.")
+        return False
+
     api_type = config.get("api_type", "evolution").lower()
     url = config.get("api_url", "")
     token = config.get("token", "")
@@ -893,6 +949,65 @@ def enviar_mensagem(config: dict, texto: str) -> bool:
         return False
 
 
+def obter_etapa_tramitacao(pub: dict, timeout: int = 10) -> str:
+    """Obtém no SAPL a etapa mais recente sem impedir o envio se a fonte cair."""
+    etapa_informada = str(pub.get("etapa_tramitacao") or "").strip()
+    if etapa_informada:
+        return etapa_informada
+
+    link = str((pub.get("links") or {}).get("consulta") or "")
+    match = re.search(r"/materia/(\d+)", link)
+    fallback = str(pub.get("situacao") or "Não informada").strip()
+    if not match:
+        return fallback
+
+    materia_id = match.group(1)
+    if materia_id in _tramitacao_camara_cache:
+        return _tramitacao_camara_cache[materia_id]
+
+    endpoint = (
+        "https://sapl.varginha.mg.leg.br/api/materia/tramitacao/"
+        f"?materia={materia_id}&page_size=100"
+    )
+    try:
+        req = urllib.request.Request(endpoint, headers={"User-Agent": "FiscalizaBot/1.0"})
+        with urllib.request.urlopen(req, timeout=timeout) as resposta:
+            payload = json.loads(resposta.read().decode("utf-8"))
+        registros = payload.get("results") or []
+        if not registros:
+            etapa = fallback
+        else:
+            recente = max(
+                registros,
+                key=lambda item: (
+                    str(item.get("timestamp") or item.get("data_tramitacao") or ""),
+                    int(item.get("id") or 0),
+                ),
+            )
+            descricao = str(recente.get("__str__") or "").strip()
+            partes = [parte.strip() for parte in descricao.split("|") if parte.strip()]
+            movimento = partes[1] if len(partes) >= 2 else descricao
+            data_movimento = formatar_data(recente.get("data_tramitacao"))
+            etapa = f"{movimento} — {data_movimento}" if movimento else fallback
+    except Exception:
+        etapa = fallback
+
+    _tramitacao_camara_cache[materia_id] = etapa
+    return etapa
+
+
+def impacto_cidadao_camara(pub: dict) -> str:
+    """Frase curta e condicional; não transforma proposta em efeito consumado."""
+    impacto = str(pub.get("impacto_cidadao") or "").strip()
+    if impacto:
+        return impacto
+    tema = str(pub.get("tema") or "interesse público").strip().lower()
+    return (
+        f"Se aprovado, o projeto poderá alterar regras ou serviços relacionados ao "
+        f"tema “{tema}”; o alcance dependerá do texto final e de sua aplicação."
+    )
+
+
 def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list[tuple[str, str]]:
     filtro_relevante = config.get("filtrar_relevantes_apenas", True)
     data_minima = config.get("data_minima_envio", "")
@@ -918,7 +1033,7 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
         data_original = pub.get("data", "")
         data_formatada = formatar_data(data_original)
         autor = pub.get("autor", "Não identificado")
-        situacao = pub.get("situacao", "Não informada")
+        situacao = obter_etapa_tramitacao(pub)
         interesse_publico = str(pub.get("interesse_publico") or "Não informado").lower()
         tema = pub.get("tema", "Não informado")
         resumo = pub.get("resumo", "").strip()
@@ -964,6 +1079,9 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
         if o_que_propoe:
             msg += f"📄 *PROPOSTA DO PROJETO*\n{o_que_propoe}\n\n"
 
+        if pub.get("tipo") == "projeto_lei":
+            msg += f"👥 *O QUE MUDA PARA O CIDADÃO*\n{impacto_cidadao_camara(pub)}\n\n"
+
         if assunto_financeiro:
             msg += f"💰 *VALOR E PROVENIÊNCIA*\n{bloco_valor_publicacao(pub, 'camara')}\n\n"
 
@@ -985,7 +1103,7 @@ def processar_camara(pubs: list[dict], config: dict, enviados: set[str]) -> list
         todos_pontos.extend(alertas_ia)
 
         if todos_pontos:
-            msg += f"⚠️ *APONTAMENTOS DE AUDITORIA*\n"
+            msg += f"🔎 *PONTOS PARA ACOMPANHAR*\n"
             msg += "\n".join(f"- {p}" for p in todos_pontos if p) + "\n\n"
 
         if link_consulta or link_anexo:
@@ -1260,10 +1378,18 @@ def checar_bridge(config: dict) -> tuple[bool, str]:
     return True, "conectado"
 
 
+def deve_forcar_resumo(argumentos: list[str]) -> bool:
+    """A previa deve espelhar a fila real; resumo fora do dia so com flag explicita."""
+    return "--resumo-semanal" in argumentos
+
+
 def main():
     print("🚀 Iniciando Bot de Alertas para o WhatsApp - Fiscaliza Varginha")
     preview = "--preview" in sys.argv
     aprovar_fila = "--aprovar-fila" in sys.argv
+    # Flag separada e deliberadamente mais dificil de digitar: libera
+    # alerta que cita empresa por nome em contexto de sancao.
+    aprovar_nominais = "--aprovar-alertas-nominais" in sys.argv
     preview_limit = 0
     definir_cursor = None
     for argumento in sys.argv[1:]:
@@ -1283,8 +1409,11 @@ def main():
             sys.exit(2)
         print(f"✅ Marco de publicação definido no fim de {definir_cursor}.")
         return
-    forcar_resumo = preview or "--resumo-semanal" in sys.argv
+    forcar_resumo = deve_forcar_resumo(sys.argv[1:])
     config = carregar_config()
+    if not preview and not bool(config.get("envio_habilitado", True)):
+        print("⏸️ Disparos do WhatsApp pausados por configuração; fila e histórico preservados.")
+        return
     enviados = carregar_enviados()
     cursor_publicacao = carregar_cursor_publicacao()
     bloqueios_pre_envio: list[dict] = []
@@ -1386,7 +1515,11 @@ def main():
             hoje,
             forcar_resumo=forcar_resumo,
         )
-        todas_mensagens += complementares
+        liberadas, retidas = separar_alertas_nominais(complementares, aprovar_nominais)
+        todas_mensagens += liberadas
+        bloqueios_pre_envio.extend(retidas)
+        for retida in retidas:
+            print(f"⛔ Alerta nominal retido para revisão humana: {retida['id']}")
     except Exception as e:
         print(f"❌ Erro ao preparar monitoramento complementar: {e}")
 
@@ -1524,8 +1657,14 @@ def main():
         if enviar_mensagem(config, msg):
             enviados.add(pid)
             salvar_enviados(enviados)  # Salva incrementalmente para garantir resiliência contra falhas
-            chave_ordem = ordem_por_id.get(pid, (_ordem_padrao[0], _ordem_padrao[1], "", pid))
-            salvar_cursor_publicacao(pid, chave_ordem)
+            # O cursor marca posicao na fila de PUBLICACOES (Camara e Diario).
+            # Complementares (obras, transparencia, resumo) nao tem data de
+            # publicacao: usavam a data de hoje com fonte 3, empurravam o cursor
+            # para o fim do dia e travavam Camara e Diario para sempre, porque a
+            # chave deles ((data, 1|2, ...)) nunca supera (hoje, 3, ...).
+            chave_ordem = ordem_por_id.get(pid)
+            if chave_ordem:
+                salvar_cursor_publicacao(pid, chave_ordem)
             sucessos += 1
             # Espaça os envios (pula a espera após a última mensagem)
             if intervalo > 0 and i < ultimo:

@@ -41,7 +41,7 @@ DIARIO_JSON = ROOT / "data" / "chunks" / "diario.json"
 SAIDA = ROOT / "data" / "chunks" / "publicacoes_diario.json"
 CACHE_PDF = ROOT / "data" / "cache_diario"   # texto extraído por edição
 BASE = "https://www.varginha.mg.gov.br"
-UA = {"User-Agent": "Mozilla/5.0 (ZelaVarginha)"}
+UA = {"User-Agent": "Mozilla/5.0 (FiscalizaVarginha)"}
 
 # Tipos de ato aceitos (todos os 4 grupos escolhidos pelo usuário).
 TIPOS_ACEITOS = {"contrato", "aditivo", "licitacao", "dispensa", "inexigibilidade",
@@ -451,6 +451,15 @@ def _extrai_envolvidos(trecho: str) -> list[dict]:
         ).strip()
         nome_baixo = nome.lower()
         parece_rodape = nome_baixo.startswith("varginha/mg") or "diario oficial" in nome_baixo
+        # Razao social nunca comeca com conectivo. Quando comeca, o inicio do
+        # nome ficou fora do trecho ou o PDF quebrou a linha antes: em 07/2026
+        # "COLOPLAST DO BRASIL LTDA" foi gravada como "DO BRASIL LTDA" e o
+        # relatorio atribuiria a compra a uma empresa inexistente. Descartar e
+        # mais seguro que publicar nome pela metade.
+        # Artigos ("A", "O") ficam de fora da lista: iniciais de razao social
+        # sao comuns — "A C Niemeyer LTDA" e nome inteiro, nao truncamento.
+        parece_truncado = bool(re.match(
+            r"(?i)^(?:d[aeo]s?|em|com|para|por|n[ao]s?)\s", nome))
         parece_pessoa_com_cargo = re.search(
             r"(?i)\b(?:corregedor(?:a)?|assistente\s+administrativ[oa]|diretor(?:a)?|"
             r"prefeito|secret[áa]ri[oa]|matr[íi]cula)\b",
@@ -459,6 +468,7 @@ def _extrai_envolvidos(trecho: str) -> list[dict]:
         if (
             6 <= len(nome) <= 80
             and not parece_rodape
+            and not parece_truncado
             and not parece_pessoa_com_cargo
             and all(nome != item[0] for item in nomes)
         ):

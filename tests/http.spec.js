@@ -25,7 +25,9 @@ test("home móvel reutiliza cache e não baixa módulos de páginas internas", a
   const loaderResponse = await request.get("/data-loader.js");
   const loader = await loaderResponse.text();
   expect(loader).not.toMatch(/const\s+\w+\s*=\s*Date\.now\(\)/);
-  expect(loader).toContain('const BUILD_VERSION = "20260727-mobile2"');
+  const versao = loader.match(/const BUILD_VERSION = "([^"]+)"/);
+  expect(versao, "o loader deve ter versão de deploy estável").not.toBeNull();
+  expect(versao[1]).toMatch(/^\d{8}-[a-z0-9-]+$/i);
 
   const modulos = [];
   page.on("request", (req) => {
@@ -33,7 +35,7 @@ test("home móvel reutiliza cache e não baixa módulos de páginas internas", a
   });
 
   await page.goto("/index.html", { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.ZELA && typeof window.ZELA.smartAudit === "function");
+  await page.waitForFunction(() => window.FISCALIZA && typeof window.FISCALIZA.smartAudit === "function");
 
   expect(modulos.some((url) => url.includes("/modules/utils.js"))).toBe(true);
   expect(modulos.some((url) => url.includes("/modules/home-cidadao.js"))).toBe(true);
@@ -41,7 +43,7 @@ test("home móvel reutiliza cache e não baixa módulos de páginas internas", a
   expect(modulos.some((url) => url.includes("/modules/relatorios.js"))).toBe(false);
   expect(modulos.some((url) => url.includes("/modules/atualizacoes.js"))).toBe(false);
   await expect(page.locator("#loading-overlay")).toHaveCount(0);
-  await page.waitForFunction(() => Boolean(window.ZELA_DATA?.home_resumo?.total_externo_atual));
+  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA?.home_resumo?.total_externo_atual));
   await expect(page.locator("#hnTotal")).not.toHaveText("—");
 });
 
@@ -55,7 +57,7 @@ test("páginas principais não requisitam chunks inexistentes", async ({ page })
     };
     page.on("response", observar);
     await page.goto(rota, { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => Boolean(window.ZELA_DATA));
+    await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA));
     await page.waitForTimeout(400);
     page.off("response", observar);
     expect(erros, `${rota} não deve buscar chunks ausentes`).toEqual([]);
@@ -95,20 +97,20 @@ test("Prefeitura carrega a base pesada de diárias somente ao abrir a seção", 
   });
 
   await page.goto("/prefeitura.html", { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.ZELA_DATA_LOADER && window.ZELA_DATA);
+  await page.waitForFunction(() => window.FISCALIZA_DATA_LOADER && window.FISCALIZA_DATA);
   await page.waitForFunction(() => document.querySelector("#diariasPrefeituraBlock .progressive-data"), null, { timeout: 20_000 });
 
   expect(requisicoesDiarias).toHaveLength(0);
-  expect(await page.evaluate(() => Boolean(window.ZELA_DATA.diarias))).toBe(false);
+  expect(await page.evaluate(() => Boolean(window.FISCALIZA_DATA.diarias))).toBe(false);
   await expect(page.locator("#diariasPrefeituraBlock .progressive-data")).toContainText("sob demanda");
 
   await page.locator('.pref-tab[data-pref-tab="diarias"]').click();
-  await page.waitForFunction(() => Boolean(window.ZELA_DATA.diarias));
+  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.diarias));
   await expect(page.locator("#listaDiariasPrefeitura .diaria-card").first()).toBeVisible();
 
   const fonte = await request.get("/data/chunks/diarias.json");
   const esperado = (await fonte.json()).prefeitura.length;
-  const carregado = await page.evaluate(() => window.ZELA_DATA.diarias.prefeitura.length);
+  const carregado = await page.evaluate(() => window.FISCALIZA_DATA.diarias.prefeitura.length);
   expect(carregado).toBe(esperado);
   expect(requisicoesDiarias).toHaveLength(1);
   expect(await page.locator("body").getAttribute("data-chunk-diarias")).toBe("ready");
@@ -121,13 +123,13 @@ test("carregador progressivo reutiliza a mesma requisição e preserva todos os 
   });
 
   await page.goto("/camara.html", { waitUntil: "domcontentloaded" });
-  await page.waitForFunction(() => window.ZELA_DATA_LOADER && window.ZELA_DATA);
+  await page.waitForFunction(() => window.FISCALIZA_DATA_LOADER && window.FISCALIZA_DATA);
   const totais = await page.evaluate(async () => {
     const [a, b] = await Promise.all([
-      window.ZELA_DATA_LOADER.load("diarias"),
-      window.ZELA_DATA_LOADER.load("diarias"),
+      window.FISCALIZA_DATA_LOADER.load("diarias"),
+      window.FISCALIZA_DATA_LOADER.load("diarias"),
     ]);
-    return [a.camara.length, b.camara.length, window.ZELA_DATA.diarias.camara.length];
+    return [a.camara.length, b.camara.length, window.FISCALIZA_DATA.diarias.camara.length];
   });
 
   expect(totais[0]).toBeGreaterThan(0);

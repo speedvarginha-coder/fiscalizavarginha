@@ -135,7 +135,7 @@ def enriquecer_arquivo(path: pathlib.Path) -> dict:
 
 
 def enriquecer_data_js(path: pathlib.Path) -> dict:
-    """Patch do bundle data.js (window.ZELA_DATA = {...};) usado no fallback file://."""
+    """Patch do bundle data.js (window.FISCALIZA_DATA = {...};) usado no fallback file://."""
     txt = path.read_text(encoding="utf-8")
     ini = txt.index("{")
     fim = txt.rindex("}")

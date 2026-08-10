@@ -1,13 +1,14 @@
-import json
-import os
+import re
+from pathlib import Path
 
-path = r'c:\Users\Desktop\Desktop\Ações Prefeitura Varginha\Zela Varginha\painel-cidadao\data.js'
-with open(path, 'r', encoding='utf-8') as f:
-    # Skip the "window.ZELA_DATA = " part
-    f.read(len('window.ZELA_DATA = '))
+DATA_JS = Path(__file__).resolve().parent / "data.js"
+PREFIX = "window.FISCALIZA_DATA = "
+
+with DATA_JS.open("r", encoding="utf-8") as f:
+    # Ignora o prefixo da variável global e inspeciona as chaves do conteúdo.
+    f.read(len(PREFIX))
     # Read some content
     content = f.read(1000000)
     # Find keys
-    import re
     keys = re.findall(r'\"([a-z_]+)\":', content)
     print(list(set(keys)))

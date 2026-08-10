@@ -76,9 +76,16 @@ test("comprovação financeira não é inferida de agregados", () => {
   expect(federaisAgregadas.length).toBeGreaterThan(0);
   expect(federaisAgregadas.every((record) => record.identificador_repasse_confirmado !== true)).toBeTruthy();
 
-  const estaduaisParciais = estadual.emendas.filter((record) => record.classificacaoComprovacao === "parcial");
-  expect(estaduaisParciais).toHaveLength(30);
-  expect(estaduaisParciais.every((record) => record.identificador_repasse_confirmado !== true)).toBeTruthy();
+  const estaduaisOficiais = estadual.emendas.filter((record) => record.classificacaoComprovacao === "confirmado");
+  expect(estaduaisOficiais).toHaveLength(estadual.metadata.totalRegistros);
+  expect(estaduaisOficiais.every((record) => record.granularidade === "indicacao_estadual_oficial")).toBeTruthy();
+  expect(estaduaisOficiais.every((record) => record.identificador_repasse_confirmado !== true)).toBeTruthy();
+
+  const estaduais2026 = estaduaisOficiais.filter((record) => record.anoEmenda === "2026");
+  expect(estaduais2026).toHaveLength(31);
+  expect(estaduais2026.reduce((sum, record) => sum + Number(record.valorIndicado || 0), 0)).toBeCloseTo(4_606_500, 2);
+  expect(estaduais2026.reduce((sum, record) => sum + Number(record.valorPago || 0), 0)).toBe(0);
+  expect(estaduais2026.filter((record) => Number(record.valorUtilizado || 0) > 0).every((record) => record.estagioAtual !== "pago")).toBeTruthy();
 });
 
 test("valores, CNPJs e estágios publicados permanecem auditáveis", () => {

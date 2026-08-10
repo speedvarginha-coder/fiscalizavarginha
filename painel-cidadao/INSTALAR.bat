@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================
-REM  Zela Varginha - INSTALADOR (rodar UMA vez, na primeira vez)
+REM  Fiscaliza Varginha - INSTALADOR (rodar UMA vez, na primeira vez)
 REM
 REM  Instala as dependencias necessarias para baixar os dados
 REM  da Prefeitura e da Camara automaticamente.
@@ -11,7 +11,7 @@ cd /d "%~dp0"
 cls
 echo.
 echo  ================================================
-echo   ZELA VARGINHA - Instalador
+echo   FISCALIZA VARGINHA - Instalador
 echo  ================================================
 echo.
 

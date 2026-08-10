@@ -11,7 +11,7 @@ test("cruzamento da Fundação usa cards legíveis no desktop e no celular", asy
   await expect(cards).toHaveCount(12, { timeout: 20_000 });
   // O cruzamento é refeito quando os dois chunks de 2ª fase chegam. Aguarda
   // ambos para não capturar o bloco enquanto um card está sendo substituído.
-  await page.waitForFunction(() => window.ZELA_DATA?.prefeitura && window.ZELA_DATA?.camara_betha);
+  await page.waitForFunction(() => window.FISCALIZA_DATA?.prefeitura && window.FISCALIZA_DATA?.camara_betha);
   await expect.poll(
     () => grade.evaluate((el) => getComputedStyle(el).gridTemplateColumns.split(" ").length),
     { timeout: 10_000 },

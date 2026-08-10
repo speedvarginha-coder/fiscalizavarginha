@@ -40,6 +40,10 @@ KEY_PATH = ROOT.parent / "private" / "cgu_api_key.txt"
 OUT_PATH = CHUNKS / "sancoes.json"
 
 API = "https://api.portaldatransparencia.gov.br/api-de-dados"
+# A API devolve 15 itens por pagina. Teto de paginas evita varrer um token
+# comum indefinidamente; quando batido, o token vira "coleta truncada".
+TAMANHO_PAGINA = 15
+MAX_PAGINAS = 20
 # Limite oficial diurno: 90 req/min. Ficamos folgados.
 PAUSA_SEGUNDOS = 0.8
 
@@ -159,18 +163,39 @@ def casa(sancionado: dict, fornecedor: dict) -> bool:
 
 
 def _resumo_sancao(s: dict, base: str) -> dict:
+    # A abrangencia e o campo que decide o alcance da sancao — e a API devolve
+    # pronta. Ate 04/08/2026 ela era descartada e o alcance era deduzido do NOME
+    # do tipo, o que produziu afirmacao errada: a inidoneidade da MASTERFER foi
+    # publicada como valida "em todos os entes federativos" quando o registro
+    # oficial diz "Na Esfera e no Poder do orgao sancionador".
     p = s.get("pessoa") or {}
     orgao = s.get("orgaoSancionador") or {}
+    fundamentos = s.get("fundamentacao") or []
+    primeiro = (fundamentos[0] or {}) if fundamentos else {}
+    sid = s.get("id")
     return {
         "base": base,
+        "id_sancao": sid,
         "sancionado": p.get("nome") or p.get("razaoSocialReceita") or "",
         "cnpj": p.get("cnpjFormatado") or "",
         "tipo": (s.get("tipoSancao") or {}).get("descricaoResumida") or "",
         "data_inicio": s.get("dataInicioSancao") or "",
         "data_fim": s.get("dataFimSancao") or "",
+        "data_publicacao": s.get("dataPublicacaoSancao") or "",
+        "data_transito_julgado": s.get("dataTransitadoJulgado") or "",
+        "data_referencia": s.get("dataReferencia") or "",
         "orgao_sancionador": orgao.get("nome") or "",
         "uf_orgao": orgao.get("siglaUf") or "",
-        "fundamentacao": ((s.get("fundamentacao") or [{}])[0] or {}).get("descricao", "")[:200],
+        "poder_orgao": orgao.get("poder") or "",
+        "esfera_orgao": orgao.get("esfera") or "",
+        "abrangencia": s.get("abrangenciaDefinidaDecisaoJudicial") or "",
+        "numero_processo": s.get("numeroProcesso") or "",
+        "fundamentacao": (primeiro.get("descricao") or "")[:200],
+        "fundamentacao_codigo": (primeiro.get("codigo") or "")[:200],
+        "fundamentacoes_qtd": len(fundamentos),
+        "link_publicacao": s.get("linkPublicacao") or "",
+        "link_registro": f"https://portaldatransparencia.gov.br/sancoes/{base}?ordenarPor=nome&direcao=asc&id={sid}" if sid else "",
+        "consultado_em": datetime.now().astimezone().isoformat(timespec="seconds"),
     }
 
 
@@ -198,6 +223,7 @@ def main() -> int:
     cache_consulta: dict[tuple[str, str], list] = {}
     achados: list[dict] = []
     erros: list[str] = []
+    tokens_truncados: set[str] = set()
     consultas = 0
 
     for forn in universo:
@@ -208,10 +234,28 @@ def main() -> int:
             chave_cache = (base, token)
             if chave_cache not in cache_consulta:
                 try:
-                    cache_consulta[chave_cache] = _api_get(
-                        caminho, {"nomeSancionado": token, "pagina": 1}, chave)
-                    consultas += 1
-                    time.sleep(PAUSA_SEGUNDOS)
+                    # A consulta e por TOKEN (uma palavra do nome), entao um
+                    # token comum como "GLOBAL" casa com centenas de empresas.
+                    # Buscar so a pagina 1 descartava silenciosamente sancoes
+                    # reais: a GLOBAL BRANDS tem 6 registros no CEIS e o chunk
+                    # guardava 2 — faltando justamente o impedimento aplicado
+                    # por Varginha. Pagina ate esgotar, com teto; batendo o
+                    # teto, o token e marcado como truncado e os fornecedores
+                    # dele ficam fora de alerta nominal.
+                    paginas, truncado = [], False
+                    for pagina in range(1, MAX_PAGINAS + 1):
+                        lote = _api_get(
+                            caminho, {"nomeSancionado": token, "pagina": pagina}, chave)
+                        consultas += 1
+                        time.sleep(PAUSA_SEGUNDOS)
+                        paginas.extend(lote)
+                        if len(lote) < TAMANHO_PAGINA:
+                            break
+                        if pagina == MAX_PAGINAS:
+                            truncado = True
+                    if truncado:
+                        tokens_truncados.add(token)
+                    cache_consulta[chave_cache] = paginas
                 except Exception as e:
                     erros.append(f"{base}/{token}: {e}")
                     cache_consulta[chave_cache] = []
@@ -262,6 +306,10 @@ def main() -> int:
         "sancoes_encontradas": len(achados),
         "sancoes_vigentes": len(vigentes),
         "achados": achados,
+        # Token cuja varredura bateu o teto de paginas: a lista de sancoes
+        # desses fornecedores pode estar incompleta, entao eles nao podem
+        # sustentar alerta nominal.
+        "tokens_truncados": sorted(tokens_truncados),
         "erros": erros[:20],
     }
     _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")

@@ -15,7 +15,10 @@ const { test, expect } = require("@playwright/test");
 const path = require("path");
 
 const PAINEL = path.resolve(__dirname, "..", "painel-cidadao");
-const fileUrl = (page) => "file:///" + path.join(PAINEL, page).replace(/\\/g, "/");
+// A aplicação publicada roda por HTTP e usa chunks sob demanda. Abrir por file://
+// força o fallback monolítico de 13 MB e pode deixar o teste na tela de loading,
+// além de não exercitar o caminho real de produção.
+const fileUrl = (page) => "http://127.0.0.1:4173/" + page;
 
 /** Coleta erros do console — ignora limitações de file:// (não-bugs do app). */
 const BENIGNOS = [
@@ -54,6 +57,7 @@ const PAGINAS = [
   { arquivo: "marcadores.html", titulo: /Marcadores/,              bloco: "#marcadoresArea" },
   { arquivo: "atualizacoes.html", titulo: /Atualiza..es/,           bloco: "#atualizacoesFeed" },
   { arquivo: "conformidade.html", titulo: /Conformidade/,          bloco: ".ift-panel" },
+  { arquivo: "monitoramento.html", titulo: /Monitoramento/,         bloco: "#summary" },
 ];
 
 for (const p of PAGINAS) {
@@ -254,7 +258,13 @@ test.describe("Como cobrar", () => {
     await page.waitForTimeout(3000);
     await page.locator("#filaCobrancaTipo").selectOption("frota");
     const lista = page.locator("#filaCobrancaLista");
-    await expect(lista.locator(".risk-queue-card").first()).toBeAttached();
+    const cards = lista.locator(".risk-queue-card");
+    if (await cards.count() === 0) {
+      await expect(lista).toContainText(/cobertura da frota est[aá] parcial ou preservada/i);
+      await expect(lista).toContainText(/alertas individuais por ve[ií]culo ficam suspensos/i);
+      return;
+    }
+    await expect(cards.first()).toBeAttached();
     await expect(lista).toContainText("Prioridade");
     await expect(lista).toContainText(/não é quantidade|nao e quantidade/i);
     await expect(lista).toContainText(/Este card representa 1 veículo específico|Este card representa 1 veiculo especifico/i);
@@ -269,7 +279,7 @@ test.describe("Filtros básicos", () => {
     await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     // Vai para aba contratos
-    await page.locator('[data-pref-tab="contratos"]').first().click();
+    await page.locator('.pref-tab[data-pref-tab="contratos"]').first().click();
     const busca = page.locator("#filtroContrato");
     await expect(busca).toBeAttached();
     await busca.fill("teste");
@@ -279,12 +289,12 @@ test.describe("Filtros básicos", () => {
   test("Prefeitura — busca por número abre detalhes e fonte", async ({ page }) => {
     await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
-    await page.locator('[data-pref-tab="contratos"]').first().click();
+    await page.locator('.pref-tab[data-pref-tab="contratos"]').first().click();
     const busca = page.locator("#filtroContrato");
     await busca.fill("2/2026");
     await expect(busca).toHaveValue("2/2026");
     await expect(page.locator("#contratos .contrato").first()).toBeAttached();
-    await page.locator("#contratos .btn-dossie", { hasText: "Ver detalhes e fonte" }).first().click();
+    await page.locator("#contratos .btn-dossie", { hasText: "Ver contrato e fonte oficial" }).first().click();
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();
     await expect(modal).toContainText(/CONFER.*NCIA DE PROCED.*NCIA/i);
@@ -312,7 +322,7 @@ test.describe("Filtros básicos", () => {
   test("Prefeitura — filtro de ano de contratos refina a lista", async ({ page }) => {
     await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
-    await page.locator('[data-pref-tab="contratos"]').first().click();
+    await page.locator('.pref-tab[data-pref-tab="contratos"]').first().click();
     const select = page.locator("#filtroAnoContrato");
     await expect(select).toBeAttached();
     await select.selectOption("2025");
@@ -386,6 +396,9 @@ test.describe("Filtros básicos", () => {
     await expect(page.locator("#gastosPalavraChaveCamara")).toContainText("Selo de confiança do dado");
     await expect(page.locator("#remuneracaoVereadores")).toContainText("Selo de confiança do dado");
     await expect(page.locator("#topFornecedoresCamara")).toContainText("Selo de confiança do dado");
+    // Diárias é um chunk sob demanda no site publicado: a aba precisa ser
+    // acionada para carregar os cartões antes de validar a procedência.
+    await page.locator('.csec-btn[data-go="diarias"]').click();
     await expect(page.locator(".diaria-card").first()).toContainText("Selo de confiança do dado");
   });
 
@@ -447,7 +460,7 @@ test.describe("Placar do dinheiro", () => {
     await expect(painel).toContainText(/obra\(s\) oficiais Betha|consulta Betha 83026|Obra p.blica Betha/i);
     await expect(painel).toContainText(/Situa..o:|.ltima medi..o|Respons.vel:/i);
     await expect(painel.locator(".asfalto-card").first()).toBeAttached();
-    await expect(painel).toContainText(/Copiar pergunta LAI|Abrir Betha/);
+    await expect(painel).toContainText(/Copiar pedido sobre esta obra|Abrir esta obra no Betha/);
   });
 
   test("Prefeitura mostra frota municipal com gastos e fonte Betha", async ({ page }) => {
@@ -675,16 +688,16 @@ test.describe("Banner de boas-vindas (onboarding)", () => {
 test.describe("Classificação cidadã de matérias", () => {
   test("dados têm grau/tema e materiaCard rendeza selo + por que acompanhar", async ({ page }) => {
     await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => Boolean(window.ZELA && window.ZELA.materiaCard && window.ZELA_DATA?.camara_anos), null, { timeout: 15_000 });
+    await page.waitForFunction(() => Boolean(window.FISCALIZA && window.FISCALIZA.materiaCard && window.FISCALIZA_DATA?.camara_anos), null, { timeout: 15_000 });
     const r = await page.evaluate(() => {
-      const anos = (window.ZELA_DATA && window.ZELA_DATA.camara_anos) || {};
+      const anos = (window.FISCALIZA_DATA && window.FISCALIZA_DATA.camara_anos) || {};
       const ano = Object.keys(anos)[0];
       const mats = (anos[ano] && anos[ano].materias) || [];
       const classificadas = mats.filter((m) => m.grau && m.tema).length;
       // Card de uma matéria de alto impacto, se houver
       const esc = (s) => String(s == null ? "" : s);
       const alta = mats.find((m) => m.grau === "alto") || mats[0];
-      const html = window.ZELA.materiaCard ? window.ZELA.materiaCard(alta, esc) : "";
+      const html = window.FISCALIZA.materiaCard ? window.FISCALIZA.materiaCard(alta, esc) : "";
       return { total: mats.length, classificadas, grau: alta && alta.grau, html };
     });
     expect(r.total).toBeGreaterThan(0);
@@ -738,7 +751,7 @@ test.describe("Resumo Semanal", () => {
 test.describe("Watchlist", () => {
   test("estado vazio aparece quando localStorage não tem nada", async ({ page }) => {
     await page.goto(fileUrl("marcadores.html"), { waitUntil: "domcontentloaded" });
-    await page.evaluate(() => localStorage.removeItem("zela.watchlist.v1"));
+    await page.evaluate(() => localStorage.removeItem("fiscaliza.watchlist.v1"));
     await page.reload();
     await page.waitForTimeout(2000);
     const vazio = page.locator(".marcadores-vazio");
@@ -757,7 +770,7 @@ test.describe("Siglas de secretaria (utils.siglaSecretaria)", () => {
     await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(1500);
     const r = await page.evaluate(() => {
-      const f = window.ZELA.utils.siglaSecretaria;
+      const f = window.FISCALIZA.utils.siglaSecretaria;
       return {
         saude: f("SECRETARIA MUNICIPAL DE SAUDE"),
         saudeAcento: f("Secretaria Municipal da Saúde"),
@@ -827,7 +840,7 @@ test.describe("Rodapé padronizado", () => {
       setupConsoleListener(page);
       await page.goto(fileUrl(p + ".html"), { waitUntil: "domcontentloaded" });
       await expect(page.locator(".footer__inner")).toHaveCount(1);
-      await expect(page.locator(".footer__nav a")).toHaveCount(10);
+      await expect(page.locator(".footer__nav a")).toHaveCount(12);
       await expect(page.locator(".footer__sources a")).toHaveCount(7);
       await expect(page.locator("#footerAtualizado")).not.toHaveText("—", { timeout: 15000 });
       await expect(page.locator("#footerAtualizado")).not.toHaveText("", { timeout: 15000 });
@@ -881,7 +894,7 @@ test.describe("Sinais de fiscalização — redes de sócios (CNPJ/QSA)", () => 
 
     setupConsoleListener(page);
     await page.goto(fileUrl("relatorios.html"), { waitUntil: "domcontentloaded" });
-    await page.locator("#sinaisAtencao .signals-group").first().waitFor({ timeout: 10000 });
+    await page.locator("#sinaisAtencao .sev").first().waitFor({ timeout: 10000 });
     // O bloco usa content-visibility para não pintar conteúdo fora da tela.
     // textContent valida os sinais já montados no DOM sem depender do scroll.
     const txt = ((await page.locator("#sinaisAtencao").textContent()) || "").toLowerCase();

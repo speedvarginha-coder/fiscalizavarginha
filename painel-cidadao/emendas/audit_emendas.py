@@ -65,21 +65,36 @@ for item in federais:
     if item.get("granularidade") == "emenda_favorecido_agregado" and item.get("identificador_repasse_confirmado") is True:
         problemas.append(f"Federal {ident}: agregado não pode ser marcado como repasse individual confirmado")
 
-# 3. A camada estadual não pode transformar evidência parcial em recebimento confirmado.
-if len(estaduais) != 30:
-    problemas.append(f"Estaduais normalizadas: {len(estaduais)} registros (esperado 30)")
-if sum(item.get("valorDeclarado") is None for item in estaduais) != 7:
-    problemas.append("Estaduais: esperado 7 valores desconhecidos")
+# 3. A camada estadual vem da planilha oficial e mantém os estágios sem inferência.
+meta_estadual = estadual.get("metadata", {})
+if meta_estadual.get("totalRegistros") != len(estaduais):
+    problemas.append("Estaduais: metadado totalRegistros diverge da lista publicada")
+if meta_estadual.get("codigoIbge") != "3170701":
+    problemas.append("Estaduais: filtro IBGE não identifica Varginha")
+if not str(meta_estadual.get("fonteArquivo") or "").startswith("http"):
+    problemas.append("Estaduais: arquivo oficial de origem ausente")
+if not re.fullmatch(r"[0-9a-f]{64}", str(meta_estadual.get("arquivoSha256") or "")):
+    problemas.append("Estaduais: SHA-256 do arquivo oficial ausente ou inválido")
+if not estaduais:
+    problemas.append("Estaduais: base oficial vazia")
 for item in estaduais:
     ident = item.get("emenda") or item.get("id")
-    if item.get("classificacaoComprovacao") not in ("confirmado", "parcial", "sem_comprovacao"):
-        problemas.append(f"Estadual {ident}: classificação inválida")
-    if item.get("classificacaoComprovacao") != "confirmado" and item.get("identificador_repasse_confirmado") is True:
-        problemas.append(f"Estadual {ident}: repasse confirmado sem classificação confirmada")
-    if item.get("valorDeclarado") is None and item.get("valor") is not None:
-        problemas.append(f"Estadual {ident}: valor desconhecido apresentado como zero")
-    if "esferaDocumento" not in item or "cargoAutor" not in item:
-        problemas.append(f"Estadual {ident}: esfera/cargo não separados")
+    if item.get("classificacaoComprovacao") != "confirmado":
+        problemas.append(f"Estadual {ident}: registro oficial sem classificação confirmada")
+    if item.get("identificador_repasse_confirmado") is True:
+        problemas.append(f"Estadual {ident}: pagamento oficial não comprova recebimento/executado pelo beneficiário")
+    if item.get("granularidade") != "indicacao_estadual_oficial":
+        problemas.append(f"Estadual {ident}: granularidade oficial ausente")
+    if item.get("codigoIbge") != "3170701":
+        problemas.append(f"Estadual {ident}: município diferente de Varginha")
+    if not item.get("fonteUrl") or not item.get("evidencias", {}).get("arquivoSha256"):
+        problemas.append(f"Estadual {ident}: evidência oficial incompleta")
+    if item.get("valorUtilizado") and not item.get("valorPago") and item.get("estagioAtual") == "pago":
+        problemas.append(f"Estadual {ident}: valor utilizado foi promovido indevidamente a pagamento")
+    for campo in ("valorIndicado", "valorUtilizado", "valorEmpenhado", "valorLiquidado", "valorPago", "valorExecutado"):
+        valor = item.get(campo)
+        if valor is not None and float(valor) < 0:
+            problemas.append(f"Estadual {ident}: {campo} negativo")
 
 # 4. União municipal: histórico Betha até 2024 + SAPL de 2025 em diante.
 meta_municipal = municipal.get("metadata", {})
@@ -120,13 +135,21 @@ if duplicados_id:
     problemas.append(f"IDs duplicados na composição publicada: {duplicados_id[:5]}")
 
 mojibake = re.compile(r"ÃƒÂ§|ÃƒÂ£|ÃƒÂ©|ÃƒÂ³|ÃƒÂª|ÃƒÂ¡|ÃƒÂ­|Ã‚Âº|Ã‚Â·|Ã¯Â¿Â½|ï¿½")
-for nome, dados in (("emendas.js", legada), ("emendas_federais.js", federal), ("emendas_municipais_unificadas.js", municipal)):
+for nome, dados in (
+    ("emendas.js", legada),
+    ("emendas_federais.js", federal),
+    ("emendas_estaduais_normalizadas.js", estadual),
+    ("emendas_municipais_unificadas.js", municipal),
+):
     if mojibake.search(json.dumps(dados, ensure_ascii=False)):
         problemas.append(f"{nome}: mojibake detectado")
 
 avisos.append(f"municipais: {origens.get('historico_betha', 0)} Betha + {origens.get('sapl_camara', 0)} SAPL")
 avisos.append(f"federais agregadas: {sum(item.get('granularidade') == 'emenda_favorecido_agregado' for item in federais)}")
-avisos.append(f"estaduais parciais: {sum(item.get('classificacaoComprovacao') == 'parcial' for item in estaduais)}")
+avisos.append(
+    "estaduais oficiais: "
+    f"{len(estaduais)} indicações | pago {float(meta_estadual.get('totalPago') or 0):.2f}"
+)
 
 print(f"Base publicada: {len(municipais)} municipal + {len(estaduais)} estadual + {len(federais)} federal")
 print("AVISOS: " + " | ".join(avisos))

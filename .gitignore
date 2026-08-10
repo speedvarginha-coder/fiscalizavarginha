@@ -1,5 +1,5 @@
 # ============================================================
-# Zela Varginha — .gitignore raiz
+# Fiscaliza Varginha — .gitignore raiz
 # Tudo aqui NUNCA deve ser commitado nem publicado.
 # ============================================================
 
@@ -148,3 +148,6 @@ docs/orcamento-varginha/**/*.pdf
 # ---- Material de trabalho de sessões (geradores e QA) ----
 # Os entregáveis finais ficam em docs/pntp/solicitacoes-portal/.
 tmp/
+
+# Registros brutos do Avalie: contem hash de IP, hash de conta e o sal
+avalie_dados/

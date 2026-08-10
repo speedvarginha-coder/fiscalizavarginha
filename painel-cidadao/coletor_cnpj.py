@@ -51,6 +51,14 @@ def _cnpj_de_raiz(raiz: str, filial: str = "0001") -> str:
     return _calc_digitos(r + filial.zfill(4))
 
 
+def _cnpj_valido(cnpj: str) -> bool:
+    """Valida tamanho, repetição e dígitos verificadores antes de consultar APIs."""
+    digitos = _digits(cnpj)
+    if len(digitos) != 14 or len(set(digitos)) == 1:
+        return False
+    return _calc_digitos(digitos[:12]) == digitos
+
+
 def _get_json(url: str, timeout: int = 30, tentativas: int = 3):
     """GET JSON com retry e backoff exponencial — sobrevive a timeout transitório."""
     erro = None
@@ -120,9 +128,21 @@ def _normaliza(cnpj: str, payload: dict, fonte: str = "cnpj.ws") -> dict:
 def coletar(emendas: list[dict], limite: int = 90) -> dict:
     valores: dict[str, float] = {}
     nomes: dict[str, set[str]] = {}
+    invalidos: dict[str, dict] = {}
     for e in emendas:
         cnpj = _digits(e.get("cnpj", ""))
         if len(cnpj) != 14:
+            continue
+        if not _cnpj_valido(cnpj):
+            item = invalidos.setdefault(cnpj, {
+                "cnpj": cnpj,
+                "motivo": "digitos verificadores invalidos na fonte de origem",
+                "valor_emendas": 0.0,
+                "beneficiarios": set(),
+            })
+            item["valor_emendas"] += float(e.get("valor_brl") or 0)
+            if e.get("beneficiario"):
+                item["beneficiarios"].add(e["beneficiario"])
             continue
         valores[cnpj] = valores.get(cnpj, 0.0) + float(e.get("valor_brl") or 0)
         nomes.setdefault(cnpj, set()).add(e.get("beneficiario") or "")
@@ -141,14 +161,22 @@ def coletar(emendas: list[dict], limite: int = 90) -> dict:
         except Exception as e:
             erros.append({"cnpj": cnpj, "erro": str(e), "valor_emendas": round(valores[cnpj], 2)})
 
+    invalidos_publicos = [{
+        **{k: v for k, v in item.items() if k != "beneficiarios"},
+        "valor_emendas": round(item["valor_emendas"], 2),
+        "beneficiarios": sorted(item["beneficiarios"]),
+    } for item in invalidos.values()]
+
     return {
         "fonte": "Dados públicos de CNPJ (apoio cadastral)",
         "empresas": empresas,
         "erros": erros,
+        "invalidos": invalidos_publicos,
         "resumo": {
             "consultados": len(empresas),
             "falhas": len(erros),
-            "cnpjs_candidatos": len(cnpjs),
+            "invalidos_na_fonte": len(invalidos_publicos),
+            "cnpjs_candidatos": len(cnpjs) + len(invalidos_publicos),
         },
         "observacao": "Uso auxiliar. Para documento oficial, conferir comprovante de inscrição no site da Receita Federal.",
     }

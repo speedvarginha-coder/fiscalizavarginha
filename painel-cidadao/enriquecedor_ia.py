@@ -121,6 +121,7 @@ _RESPONSE_SCHEMA = {
     "properties": {
         "resumo": {"type": "string"},
         "o_que_propoe": {"type": "string"},
+        "impacto_cidadao": {"type": "string"},
         "por_que_acompanhar": {"type": "array", "items": {"type": "string"}},
         "pontos_atencao": {"type": "array", "items": {"type": "string"}},
         "interesse_publico": {"type": "string", "enum": ["alto", "medio", "baixo"]},
@@ -150,6 +151,8 @@ def _prompt(item: dict) -> str:
         "Responda em JSON com:\n"
         "- resumo: 1-2 frases simples explicando o que é (linguagem acessível);\n"
         "- o_que_propoe: o que muda na prática, 1-2 frases (vazio se não souber);\n"
+        "- impacto_cidadao: uma frase curta sobre o efeito prático para o cidadão; "
+        "se ainda for proposta, use linguagem condicional e não apresente efeito como consumado;\n"
         "- por_que_acompanhar: 2 a 3 motivos cívicos objetivos para o cidadão acompanhar;\n"
         "- pontos_atencao: 1 a 3 pontos de atenção (impacto orçamentário, "
         "sem licitação, beneficiário, prazo etc.);\n"
@@ -240,6 +243,7 @@ def _fallback(item: dict, erro: str = "") -> dict:
     return _normaliza({
         "resumo": resumo or item.get("titulo", ""),
         "o_que_propoe": "",
+        "impacto_cidadao": "",
         "por_que_acompanhar": [],
         "pontos_atencao": [],
         "interesse_publico": interesse,
@@ -261,6 +265,7 @@ def _normaliza(d: dict, fonte: str) -> dict:
     return {
         "resumo": str(d.get("resumo", "")).strip(),
         "o_que_propoe": str(d.get("o_que_propoe", "")).strip(),
+        "impacto_cidadao": str(d.get("impacto_cidadao", "")).strip(),
         "por_que_acompanhar": _lista(d.get("por_que_acompanhar")),
         "pontos_atencao": _lista(d.get("pontos_atencao")),
         "interesse_publico": interesse,

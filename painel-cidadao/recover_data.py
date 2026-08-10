@@ -164,7 +164,7 @@ def rebuild():
         "indice_relevancia": indice_relevancia,
     }
     content = "/* Gerado por recover_data.py — não editar à mão. */\n"
-    content += "window.ZELA_DATA = " + json.dumps(js_payload, ensure_ascii=False, indent=2) + ";\n"
+    content += "window.FISCALIZA_DATA = " + json.dumps(js_payload, ensure_ascii=False, indent=2) + ";\n"
     out.write_text(content, encoding="utf-8")
     print(f"  ✓ data.js recreated ({out.stat().st_size // 1024} KB)")
 

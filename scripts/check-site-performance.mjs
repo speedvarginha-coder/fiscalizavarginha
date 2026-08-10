@@ -23,7 +23,7 @@ try {
   });
   const page = await context.newPage();
   await page.addInitScript(() => {
-    window.__fiscalizaVitals = { lcp: 0, cls: 0 };
+    window.__fiscalizaVitals = { lcp: 0, cls: 0, layout_shifts: [] };
     try {
       new PerformanceObserver((list) => {
         const entradas = list.getEntries();
@@ -32,7 +32,22 @@ try {
       }).observe({ type: "largest-contentful-paint", buffered: true });
       new PerformanceObserver((list) => {
         for (const entrada of list.getEntries()) {
-          if (!entrada.hadRecentInput) window.__fiscalizaVitals.cls += entrada.value;
+          if (!entrada.hadRecentInput) {
+            window.__fiscalizaVitals.cls += entrada.value;
+            window.__fiscalizaVitals.layout_shifts.push({
+              valor: Number(entrada.value.toFixed(4)),
+              instante_ms: Math.round(entrada.startTime),
+              fontes: Array.from(entrada.sources || []).slice(0, 5).map((fonte) => {
+                const no = fonte.node;
+                if (!no) return "elemento removido";
+                const id = no.id ? `#${no.id}` : "";
+                const classes = typeof no.className === "string"
+                  ? no.className.trim().split(/\s+/).filter(Boolean).slice(0, 3).map((nome) => `.${nome}`).join("")
+                  : "";
+                return `${String(no.tagName || "elemento").toLowerCase()}${id}${classes}`;
+              }),
+            });
+          }
         }
       }).observe({ type: "layout-shift", buffered: true });
     } catch {}
@@ -51,7 +66,10 @@ try {
       dom_interativo_ms: Math.round(nav?.domInteractive || 0),
       lcp_ms: Math.round(window.__fiscalizaVitals?.lcp || 0),
       cls: Number((window.__fiscalizaVitals?.cls || 0).toFixed(4)),
-      dados_prontos: Boolean(window.ZELA_DATA?.home_resumo?.total_externo_atual),
+      layout_shifts: (window.__fiscalizaVitals?.layout_shifts || [])
+        .sort((a, b) => b.valor - a.valor)
+        .slice(0, 10),
+      dados_prontos: Boolean(window.FISCALIZA_DATA?.home_resumo?.total_externo_atual),
     };
   });
   const falhas = [];

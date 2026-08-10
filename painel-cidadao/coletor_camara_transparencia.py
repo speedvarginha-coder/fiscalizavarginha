@@ -45,7 +45,7 @@ class LinkParser(HTMLParser):
 def _get_text(url: str, timeout: int = 30) -> str:
     req = urllib.request.Request(
         url,
-        headers={"User-Agent": "ZelaVarginha/1.0 (controle-social)"},
+        headers={"User-Agent": "FiscalizaVarginha/1.0 (controle-social)"},
     )
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read().decode("utf-8", errors="replace")

@@ -162,6 +162,6 @@ Lista única para conferir antes de cada deploy. Copie e cole no commit/PR.
 | Página em branco | JS quebrou | F12 Console → ver erro → rollback |
 | Dados sem aparecer | Chunks não carregaram | F12 Network → ver 404 → re-upload |
 | "Não é prova" não aparece | HTML truncou no upload | Re-upload completo |
-| SW serve versão antiga | Cache não invalidou | Bumpar `CACHE = "zela-vN"` e re-upload sw.js |
+| SW serve versão antiga | Cache não invalidou | Bumpar `CACHE = "fiscaliza-vN"` e re-upload sw.js |
 | HTTPS warning | Cert expirou | Renovar Let's Encrypt no cPanel |
 | Tudo lento | Chunks sem gzip | Habilitar no servidor |

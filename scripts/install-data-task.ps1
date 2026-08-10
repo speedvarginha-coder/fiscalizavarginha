@@ -23,7 +23,7 @@
 $ErrorActionPreference = "Stop"
 
 $root = Resolve-Path (Join-Path $PSScriptRoot "..")
-$updateScript = Join-Path $root "scripts\update-data.ps1"
+$updateScript = Join-Path $root "scripts\run-update-task.ps1"
 
 if ($Mode -eq "Watch" -and $SkipPackage -and -not $SkipDeploy) {
   throw "Modo Watch com -SkipPackage exige -SkipDeploy; deploy requer pacote validado no mesmo ciclo."
@@ -36,6 +36,7 @@ if (-not (Test-Path $updateScript)) {
 $argList = @(
   "-NoProfile",
   "-ExecutionPolicy", "Bypass",
+  "-WindowStyle", "Hidden",
   "-File", "`"$updateScript`""
 )
 
@@ -65,11 +66,18 @@ if ($Mode -eq "Daily") {
     -RepetitionDuration (New-TimeSpan -Days 3650)
 }
 
-$settings = New-ScheduledTaskSettingsSet `
-  -AllowStartIfOnBatteries `
-  -DontStopIfGoingOnBatteries `
-  -StartWhenAvailable `
-  -MultipleInstances IgnoreNew
+$settingsParams = @{
+  AllowStartIfOnBatteries = $true
+  DontStopIfGoingOnBatteries = $true
+  StartWhenAvailable = $true
+  WakeToRun = $true
+  MultipleInstances = "IgnoreNew"
+  Hidden = $true
+  ExecutionTimeLimit = if ($Mode -eq "Daily") { New-TimeSpan -Hours 4 } else { New-TimeSpan -Hours 2 }
+  RestartCount = if ($Mode -eq "Daily") { 1 } else { 2 }
+  RestartInterval = if ($Mode -eq "Daily") { New-TimeSpan -Minutes 20 } else { New-TimeSpan -Minutes 10 }
+}
+$settings = New-ScheduledTaskSettingsSet @settingsParams
 
 Register-ScheduledTask `
   -TaskName $TaskName `

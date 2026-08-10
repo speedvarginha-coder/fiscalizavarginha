@@ -2,7 +2,7 @@
 Coletor Betha — busca dados ao vivo do Portal de Transparência da Prefeitura.
 
 Fluxo:
-  1. Abre Betha em navegador headless (Playwright) e captura o token OAuth
+  1. Abre Betha em navegador isolado (Playwright) e captura o token OAuth
      (anonymous mode — sem login, apenas auto-grant)
   2. Cacheia o token em .betha-token.json (~30 min de validade)
   3. Faz requests à API REST com Bearer + header app-context
@@ -18,11 +18,15 @@ API descoberta:
 from __future__ import annotations
 
 import base64
+import binascii
+import csv as csvmod
+import io
 import json
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import zipfile
 from collections import defaultdict
 from pathlib import Path
 from typing import Optional
@@ -71,7 +75,7 @@ def _token_valid(payload: dict) -> bool:
 
 
 def _grab_token_via_browser(portal_hash: str = PORTAL_HASH) -> dict:
-    """Abre headless e captura o token gerado pelo OAuth implicit grant
+    """Abre um navegador isolado e captura o token gerado pelo OAuth implicit grant
     (anonymousMode = true)."""
     try:
         from playwright.sync_api import sync_playwright
@@ -100,17 +104,23 @@ def _grab_token_via_browser(portal_hash: str = PORTAL_HASH) -> dict:
     """
     consulta = f"https://transparencia.betha.cloud/#/{portal_hash}/consulta/{CONSULTA_CONTRATOS}"
     with sync_playwright() as p:
+        # A Betha nao conclui o grant anonimo em Chromium headless. A tarefa
+        # agendada e oculta, mas o browser precisa manter o modo headed.
         browser = p.chromium.launch(headless=False)
-        ctx = browser.new_context()
-        page = ctx.new_page()
-        page.goto(consulta, wait_until="networkidle", timeout=45000)
         tok = None
-        for _ in range(25):  # o grant pode levar alguns segundos
-            tok = page.evaluate(extrair)
-            if tok and tok.get("accessToken"):
-                break
-            page.wait_for_timeout(1000)
-        browser.close()
+        try:
+            ctx = browser.new_context()
+            page = ctx.new_page()
+            # A SPA mantem conexoes de telemetria abertas; esperar networkidle
+            # fazia uma renovacao simples consumir ate 45s sem necessidade.
+            page.goto(consulta, wait_until="domcontentloaded", timeout=45000)
+            for _ in range(25):  # o grant pode levar alguns segundos
+                tok = page.evaluate(extrair)
+                if tok and tok.get("accessToken"):
+                    break
+                page.wait_for_timeout(1000)
+        finally:
+            browser.close()
     if not tok or not tok.get("accessToken"):
         raise RuntimeError("Não foi possível capturar token Betha (sessionStorage vazio).")
     return tok
@@ -174,7 +184,7 @@ def _api(method: str, path: str, token: str,
         "Authorization": "Bearer " + token,
         "app-context": _app_context(portal_hash),
         "Accept": "application/json, text/plain, */*",
-        "User-Agent": "ZelaVarginha/1.0",
+        "User-Agent": "FiscalizaVarginha/1.0",
     }
     if body is not None:
         data = json.dumps(body).encode("utf-8")
@@ -203,6 +213,159 @@ ANO_FIELD = {
 }
 
 
+class BethaExportError(RuntimeError):
+    """Falha controlada na exportacao de dados abertos da Betha."""
+
+
+_EXPORT_HOSTS = {
+    "s3.sa-east-1.amazonaws.com",
+    "transparencia.betha.cloud",
+    "dados.transparencia.betha.cloud",
+}
+_EXPORT_RETRY_CODES = {404, 408, 425, 429, 500, 502, 503, 504}
+
+
+def _export_url(raw: str) -> Optional[str]:
+    """Reconhece a URL temporaria retornada pela versao nova da Betha."""
+    value = (raw or "").strip()
+    try:
+        decoded = json.loads(value)
+        if isinstance(decoded, str):
+            value = decoded.strip()
+    except (TypeError, ValueError):
+        pass
+    parsed = urllib.parse.urlparse(value)
+    if parsed.scheme.lower() not in {"http", "https"} or not parsed.hostname:
+        return None
+    host = parsed.hostname.lower()
+    if host not in _EXPORT_HOSTS:
+        raise BethaExportError(f"host de exportacao Betha nao permitido: {host}")
+    if host == "s3.sa-east-1.amazonaws.com" and not parsed.path.startswith(
+        "/transparencia.betha.cloud/dados-abertos/"
+    ):
+        raise BethaExportError("caminho S3 fora do bucket de dados abertos da Betha")
+    return value
+
+
+def _retry_after_seconds(headers, fallback: float) -> float:
+    try:
+        value = float(headers.get("Retry-After", ""))
+        return max(0.0, min(value, 30.0))
+    except (TypeError, ValueError, AttributeError):
+        return fallback
+
+
+def _download_export_url(url: str, attempts: int = 5) -> tuple[bytes, str]:
+    """Baixa URL assinada com espera para a geracao assincrona do arquivo."""
+    last_error: Optional[Exception] = None
+    for attempt in range(attempts):
+        try:
+            req = urllib.request.Request(
+                url,
+                headers={
+                    "Accept": "text/csv, application/zip, application/octet-stream, */*",
+                    "User-Agent": "FiscalizaVarginha/1.0",
+                },
+            )
+            with urllib.request.urlopen(req, timeout=180) as response:
+                payload = response.read()
+                if not payload:
+                    raise BethaExportError("arquivo de exportacao vazio")
+                return payload, response.headers.get("Content-Type", "")
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in _EXPORT_RETRY_CODES or attempt + 1 >= attempts:
+                break
+            delay = _retry_after_seconds(exc.headers, (1, 2, 5, 10, 20)[attempt])
+            time.sleep(delay)
+        except (TimeoutError, urllib.error.URLError, BethaExportError) as exc:
+            last_error = exc
+            if attempt + 1 >= attempts:
+                break
+            time.sleep((1, 2, 5, 10, 20)[attempt])
+    code = getattr(last_error, "code", None)
+    suffix = f" (HTTP {code})" if code else ""
+    raise BethaExportError(
+        f"Betha forneceu URL de exportacao, mas o arquivo nao ficou disponivel{suffix}"
+    ) from last_error
+
+
+def _decode_export_payload(raw: str) -> tuple[bytes, str, Optional[str]]:
+    """Aceita URL temporaria, ZIP base64 ou CSV direto."""
+    url = _export_url(raw)
+    if url:
+        payload, content_type = _download_export_url(url)
+        return payload, "url", urllib.parse.urlparse(url).path.rsplit("/", 1)[-1]
+
+    value = (raw or "").strip()
+    try:
+        decoded = json.loads(value)
+        if isinstance(decoded, str):
+            value = decoded
+    except (TypeError, ValueError):
+        pass
+    try:
+        payload = base64.b64decode(value, validate=True)
+        if payload:
+            return payload, "base64", None
+    except (binascii.Error, ValueError):
+        pass
+
+    direct = value.encode("utf-8")
+    if b"\n" in direct and (b"," in direct.splitlines()[0] or b";" in direct.splitlines()[0]):
+        return direct, "csv-direto", None
+    raise BethaExportError("formato de resposta de dados abertos nao reconhecido")
+
+
+def _parse_export(payload: bytes, consulta_id: int,
+                  suggested_name: Optional[str] = None) -> dict:
+    """Normaliza ZIP ou CSV para o contrato historico do coletor."""
+    if payload.startswith(b"PK"):
+        zf = zipfile.ZipFile(io.BytesIO(payload))
+        main_name = next((n for n in zf.namelist() if n.startswith("959_")), None)
+        if not main_name:
+            main_name = next((n for n in zf.namelist() if n.lower().endswith(".csv")), None)
+        if not main_name:
+            return {"main": [], "main_filename": None, "files_in_zip": len(zf.namelist()),
+                    "linked": {}, "linked_rows": {}}
+        csv_text = zf.read(main_name).decode("utf-8-sig", errors="replace")
+        rows = list(csvmod.DictReader(io.StringIO(csv_text)))
+        linked = {}
+        linked_rows = {}
+        for name in zf.namelist():
+            if name == main_name or not name.lower().endswith(".csv"):
+                continue
+            try:
+                sub = list(csvmod.DictReader(io.StringIO(
+                    zf.read(name).decode("utf-8-sig", errors="replace")
+                )))
+                if sub:
+                    linked[name] = sub[0]
+                    linked_rows[name] = sub
+            except Exception:
+                pass
+        return {"main": rows, "main_filename": main_name,
+                "files_in_zip": len(zf.namelist()), "linked": linked,
+                "linked_rows": linked_rows}
+
+    text = payload.decode("utf-8-sig", errors="replace")
+    sample = text[:4096]
+    try:
+        dialect = csvmod.Sniffer().sniff(sample, delimiters=",;")
+    except csvmod.Error:
+        dialect = csvmod.excel
+    rows = list(csvmod.DictReader(io.StringIO(text), dialect=dialect))
+    if not rows or not rows[0]:
+        raise BethaExportError("CSV de dados abertos vazio ou sem cabecalho")
+    return {
+        "main": rows,
+        "main_filename": suggested_name or f"consulta_{consulta_id}.csv",
+        "files_in_zip": 0,
+        "linked": {},
+        "linked_rows": {},
+    }
+
+
 def baixar_dados_abertos(token: str, consulta_id: int,
                          ano: Optional[str] = None,
                          portal_hash: str = PORTAL_HASH,
@@ -211,10 +374,6 @@ def baixar_dados_abertos(token: str, consulta_id: int,
     {main: [linhas], main_filename: str, files_in_zip: int}. O ZIP contém o
     CSV principal + arquivos linkados (publicações, aditivos, etc) — só o
     principal é processado."""
-    import csv as csvmod
-    import zipfile
-    import io
-
     url = f"{DADOS_ABERTOS_BASE}/consulta/{consulta_id}?formato=CSV"
 
     fld = ano_field if ano_field is not None else ANO_FIELD.get(consulta_id, "ano")
@@ -255,52 +414,79 @@ def baixar_dados_abertos(token: str, consulta_id: int,
         try:
             raw = _do_request(token)
         except urllib.error.HTTPError as e:
-            if e.code == 401:
-                print(f"  AVISO: 401 em dados-abertos/{consulta_id} - renovando token...")
+            if e.code != 401:
+                raise
+            print(f"  AVISO: 401 em dados-abertos/{consulta_id} - atualizando token...")
+            # O chamador conserva o token recebido no inicio do coletor. Depois
+            # da primeira renovacao ele fica obsoleto, mas o cache em disco ja
+            # contem o token novo. Consultar o cache antes de forcar Playwright
+            # evita abrir um navegador novamente para cada ano historico.
+            cached = get_token(force=False, portal_hash=portal_hash)
+            try:
+                raw = _do_request(cached)
+            except urllib.error.HTTPError as cached_error:
+                if cached_error.code != 401:
+                    raise
                 fresh = get_token(force=True, portal_hash=portal_hash)
                 raw = _do_request(fresh)
-            else:
-                raise
     except Exception:
         # Qualquer outro erro (timeout, SSL) — cai para o token
         try:
             raw = _do_request(token)
         except urllib.error.HTTPError as e:
-            if e.code == 401:
-                print(f"  AVISO: 401 em dados-abertos/{consulta_id} - renovando token...")
+            if e.code != 401:
+                raise
+            print(f"  AVISO: 401 em dados-abertos/{consulta_id} - atualizando token...")
+            cached = get_token(force=False, portal_hash=portal_hash)
+            try:
+                raw = _do_request(cached)
+            except urllib.error.HTTPError as cached_error:
+                if cached_error.code != 401:
+                    raise
                 fresh = get_token(force=True, portal_hash=portal_hash)
                 raw = _do_request(fresh)
-            else:
-                raise
-    if raw.startswith('"') and raw.endswith('"'):
-        raw = raw[1:-1]
-    zb = base64.b64decode(raw)
-    zf = zipfile.ZipFile(io.BytesIO(zb))
-
-    main_name = next((n for n in zf.namelist() if n.startswith("959_")), None)
-    if not main_name:
-        main_name = next((n for n in zf.namelist() if n.lower().endswith(".csv")), None)
-    if not main_name:
-        return {"main": [], "main_filename": None, "files_in_zip": len(zf.namelist()), "linked": {}}
-
-    csv_text = zf.read(main_name).decode("utf-8", errors="ignore")
-    rows = list(csvmod.DictReader(io.StringIO(csv_text)))
-    linked = {}
-    linked_rows = {}
-    for name in zf.namelist():
-        if name == main_name or not name.lower().endswith(".csv"):
-            continue
+    try:
+        payload, response_mode, suggested_name = _decode_export_payload(raw)
+        result = _parse_export(payload, consulta_id, suggested_name)
+        result["coleta_status"] = "ok"
+        result["coleta_modo"] = response_mode
+        return result
+    except BethaExportError as export_error:
+        # O endpoint de exportacao passou a devolver URLs S3 que podem ficar
+        # permanentemente em 404. A busca textual e a segunda rota oficial do
+        # mesmo portal e mantem o site atualizado, ainda que sem os CSVs
+        # auxiliares/linkados presentes no ZIP antigo.
+        print(
+            f"  AVISO: dados-abertos/{consulta_id} indisponivel ({export_error}); "
+            "tentando busca-textual."
+        )
         try:
-            txt = zf.read(name).decode("utf-8", errors="ignore")
-            sub = list(csvmod.DictReader(io.StringIO(txt)))
-            if sub:
-                linked[name] = sub[0]
-                linked_rows[name] = sub
-        except Exception:
-            pass
-    return {"main": rows, "main_filename": main_name,
-            "files_in_zip": len(zf.namelist()), "linked": linked,
-            "linked_rows": linked_rows}
+            fallback_token = get_token(force=False, portal_hash=portal_hash)
+            rows = baixar_busca_textual(
+                fallback_token,
+                consulta_id,
+                body=body,
+                portal_hash=portal_hash,
+            )
+        except Exception as fallback_error:
+            raise BethaExportError(
+                f"exportacao e busca textual falharam para a consulta {consulta_id}: "
+                f"{fallback_error}"
+            ) from fallback_error
+        if not rows:
+            raise BethaExportError(
+                f"busca textual retornou zero registros para a consulta {consulta_id}"
+            ) from export_error
+        return {
+            "main": rows,
+            "main_filename": None,
+            "files_in_zip": 0,
+            "linked": {},
+            "linked_rows": {},
+            "coleta_status": "partial",
+            "coleta_modo": "busca-textual-fallback",
+            "coleta_observacao": "Exportacao Betha indisponivel; anexos relacionados ausentes.",
+        }
 
 
 # ============================================================

@@ -71,7 +71,7 @@ Ver também: `docs/checklist-publicacao.md`.
 ### Primeira vez
 
 1. **Criar conta na Hostinger** (ou usar existente).
-2. **Comprar domínio** (sugestão: `zelavarginha.com.br` ou similar).
+2. **Comprar domínio** (sugestão: `fiscalizavarginha.com.br` ou similar).
 3. **Apontar DNS** para o servidor Hostinger.
 4. **Acessar painel cPanel** → File Manager → `public_html/`.
 
@@ -142,7 +142,7 @@ Se só os dados mudaram (coleta nova):
 3. **Upload só de `painel-cidadao/data/chunks/`** (resto não mudou).
 4. **Bumpar `sw.js`** versão do cache para força refresh:
    ```js
-   const CACHE = "zela-v9";  // ou próximo número
+   const CACHE = "fiscaliza-v9";  // ou próximo número
    ```
 5. **Upload `sw.js` atualizado.**
 
@@ -196,7 +196,7 @@ Mantenha o último ZIP validado. Para reverter, remova os arquivos da versão co
 
 Idealmente algo memorável e oficial-ish (sem parecer site oficial da prefeitura):
 
-- `zela.varginha.org`
+- `fiscaliza.varginha.org`
 - `fiscaliza.varginha.org`
 - `varginha.cidadania.org`
 - `transparencia.varginha.com.br`

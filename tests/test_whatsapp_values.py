@@ -1,7 +1,9 @@
 import sys
 import tempfile
 import unittest
+import json
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 from unittest.mock import patch
 
 
@@ -11,6 +13,7 @@ sys.path.insert(0, str(PAINEL))
 import alertar_whatsapp as whatsapp
 import coletor_diario
 import coletor_publicacoes
+import whatsapp_conteudo
 
 
 class WhatsappValueQualityTests(unittest.TestCase):
@@ -94,6 +97,38 @@ class WhatsappValueQualityTests(unittest.TestCase):
         self.assertEqual(len(messages), 1)
         self.assertIn("VALOR E PROVENIÊNCIA", messages[0][1])
         self.assertIn("não significa custo zero", messages[0][1])
+
+    def test_camara_project_uses_neutral_tracking_stage_and_citizen_impact(self):
+        pub = {
+            "id": "CAMARA-2026-PLOL-65",
+            "tipo": "projeto_lei",
+            "titulo": "Projeto de Lei Ordinária do Legislativo nº 65/2026",
+            "data": "2026-07-15",
+            "interesse_publico": "alto",
+            "tema": "consumidor",
+            "resumo": "Estabelece regras para o couvert artístico.",
+            "o_que_propoe": "Regulamenta a cobrança e a destinação dos valores.",
+            "impacto_cidadao": (
+                "Se aprovado, poderá alterar a forma como consumidores são "
+                "informados sobre a cobrança."
+            ),
+            "pontos_atencao": ["Conferir a redação final aprovada."],
+            "links": {"consulta": "https://sapl.example/materia/6090"},
+        }
+        config = {"filtrar_relevantes_apenas": True, "data_minima_envio": "2026-07-01"}
+        with patch.object(
+            whatsapp,
+            "obter_etapa_tramitacao",
+            return_value="Proposição distribuída às Comissões — 15/07/2026",
+        ):
+            message = whatsapp.processar_camara([pub], config, set())[0][1]
+        self.assertIn(
+            "*Situação:* Proposição distribuída às Comissões — 15/07/2026",
+            message,
+        )
+        self.assertIn("*O QUE MUDA PARA O CIDADÃO*", message)
+        self.assertIn("*PONTOS PARA ACOMPANHAR*", message)
+        self.assertNotIn("APONTAMENTOS DE AUDITORIA", message)
 
     def test_camara_collector_never_accepts_ai_value_absent_from_official_summary(self):
         values = coletor_publicacoes._valores_publicacao(
@@ -245,6 +280,12 @@ class WhatsappValueQualityTests(unittest.TestCase):
         self.assertTrue(whatsapp.fila_exige_aprovacao(16, config, False))
         self.assertFalse(whatsapp.fila_exige_aprovacao(40, config, True))
 
+    def test_preview_does_not_invent_weekly_summary_outside_schedule(self):
+        self.assertFalse(whatsapp.deve_forcar_resumo(["--preview"]))
+        self.assertTrue(
+            whatsapp.deve_forcar_resumo(["--preview", "--resumo-semanal"])
+        )
+
     def test_publication_cursor_excludes_cutoff_day_and_keeps_later_items(self):
         cursor = {"chave_ordem": ["2026-07-22", 99, "\uffff", "\uffff"]}
         self.assertFalse(
@@ -274,6 +315,84 @@ class WhatsappValueQualityTests(unittest.TestCase):
         self.assertNotRegex(limpa.lower(), r"\bia\b|intelig[êe]ncia artificial")
         self.assertIn("texto oficial do Diário", limpa)
         self.assertIn("dados oficiais", limpa)
+
+    def test_transparency_message_hides_internal_json_filename(self):
+        generated = whatsapp_conteudo.gerar_alertas_transparencia(
+            {"initialized": True, "transparencia": {}},
+            {
+                "fornecedor-sancionado": {
+                    "title": "Fornecedor com sanção vigente",
+                    "detail": "Registro localizado para conferência.",
+                    "action": "Consultar a fonte oficial.",
+                    "source": "sancoes.json",
+                }
+            },
+        )
+        self.assertEqual(len(generated), 1)
+        message = generated[0][1]
+        self.assertNotIn(".json", message.lower())
+        self.assertIn(
+            "Fonte pública consultada:* Portal da Transparência do Governo Federal",
+            message,
+        )
+        self.assertNotIn("https://portaldatransparencia.gov.br/sancoes/consulta", message)
+
+    def test_specific_sanctions_link_is_prefiltered_for_every_cited_cnpj(self):
+        url, label = whatsapp_conteudo.link_especifico_fonte(
+            "fornecedor-inidoneo",
+            "sancoes.json",
+        )
+        self.assertIn("portaldatransparencia.gov.br/sancoes/consulta?", url)
+        self.assertIn("cpfCnpj=", url)
+        sancoes = json.loads(
+            (PAINEL / "data" / "chunks" / "sancoes.json").read_text(encoding="utf-8")
+        )
+        esperados = {
+            "".join(ch for ch in str(item.get("cnpj", "")) if ch.isdigit())
+            for item in sancoes.get("achados", [])
+            if item.get("sancao_vigente")
+            and (
+                "INIDON" in str(item.get("tipo", "")).upper()
+                or "VARGINHA" in str(item.get("orgao_sancionador", "")).upper()
+            )
+        }
+        esperados.discard("")
+        publicados = set(
+            parse_qs(urlparse(url).query).get("cpfCnpj", [""])[0].split(",")
+        )
+        publicados.discard("")
+        self.assertEqual(publicados, esperados)
+        self.assertEqual(label, "Abrir no portal os registros citados")
+
+    def test_aggregate_sanctions_alert_does_not_publish_partial_generic_link(self):
+        url, label = whatsapp_conteudo.link_especifico_fonte(
+            "fornecedor-sancionado-outro-ente",
+            "sancoes.json",
+        )
+        self.assertEqual(url, "")
+        self.assertEqual(label, "")
+
+    def test_generic_betha_report_is_not_presented_as_item_specific_link(self):
+        generic = (
+            "https://transparencia.betha.cloud/#/municipio/consulta/83026"
+        )
+        self.assertEqual(
+            whatsapp_conteudo.link_registro_especifico(generic),
+            "",
+        )
+        specific = "https://sapl.varginha.mg.leg.br/materia/6090"
+        self.assertEqual(
+            whatsapp_conteudo.link_registro_especifico(specific),
+            specific,
+        )
+
+    def test_unknown_json_source_gets_readable_fallback(self):
+        label, url = whatsapp_conteudo.fonte_publica_cidada(
+            "dados_secretaria_exemplo.json"
+        )
+        self.assertEqual(label, "Dados secretaria exemplo")
+        self.assertEqual(url, "")
+        self.assertNotIn(".json", label.lower())
 
     def test_diario_separates_portaria_resultado_dispensa_and_classificacao(self):
         texto = (
@@ -546,3 +665,19 @@ class WhatsappValueQualityTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_cursor_nao_avanca_com_alerta_complementar():
+    """Alerta complementar (obras/transparencia/resumo) nao tem data de
+    publicacao. Se avancasse o cursor para (hoje, 3, ...), toda publicacao da
+    Camara (fonte 1) e do Diario (fonte 2) ficaria atras do cursor para sempre
+    — foi o que travou 297 publicacoes entre 28/07 e 04/08/2026."""
+    from alertar_whatsapp import depois_do_cursor
+
+    cursor_publicacao = {"chave_ordem": ["2026-07-28", 2, "PREFEITURA", "DIARIO-X"]}
+    cursor_complementar = {"chave_ordem": ["2026-08-04", 3, "", "TRANSPARENCIA-Y"]}
+    diario_novo = ("2026-08-03", 2, "PREFEITURA", "DIARIO-2026-1854-licitacao")
+
+    assert depois_do_cursor(diario_novo, cursor_publicacao) is True
+    # Regressao: com o cursor no complementar, o Diario nunca mais sai.
+    assert depois_do_cursor(diario_novo, cursor_complementar) is False

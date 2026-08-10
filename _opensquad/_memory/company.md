@@ -19,6 +19,18 @@ O projeto não é órgão oficial, não tem vínculo partidário e não apresent
 - Destacar sinais de atenção sem acusação automática.
 - Dar caminhos práticos para conferir fonte primária, cobrar resposta oficial e registrar pedido de informação.
 
+## Princípio Editorial Permanente
+
+O Fiscaliza Varginha existe para promover transparência e justiça na publicidade
+das informações públicas.
+
+- Publicar dados com equilíbrio, contexto e rastreabilidade.
+- Dar o mesmo rigor à divulgação de resultados positivos, negativos ou inconclusivos.
+- Distinguir claramente fato comprovado, dado parcial, interpretação e ausência de informação.
+- Não omitir informação relevante nem ampliar artificialmente um achado.
+- Corrigir erros de forma transparente e preservar o histórico das fontes.
+- Facilitar a conferência pelo cidadão, sempre que possível com acesso à fonte primária.
+
 ## Fontes e Dados
 
 As principais fontes usadas pelo projeto são portais oficiais e bases públicas:

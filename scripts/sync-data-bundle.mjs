@@ -113,7 +113,7 @@ for (const key of keys) {
 writeFileWithRetry(
   dataJsPath,
   "/* Gerado por coletor.py — não editar à mão. */\n"
-    + "window.ZELA_DATA = "
+    + "window.FISCALIZA_DATA = "
     + JSON.stringify(data, null, 2)
     + ";\n",
 );

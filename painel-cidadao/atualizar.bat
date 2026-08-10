@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================
-REM  Zela Varginha - Atualizar dados do painel
+REM  Fiscaliza Varginha - Atualizar dados do painel
 REM  Duplo clique para baixar os dados mais recentes da
 REM  Camara, do Diario Oficial e do Portal de Transparencia.
 REM ============================================================
@@ -10,7 +10,7 @@ cd /d "%~dp0"
 cls
 echo.
 echo  ================================================
-echo   ZELA VARGINHA - Atualizando dados...
+echo   FISCALIZA VARGINHA - Atualizando dados...
 echo  ================================================
 echo.
 

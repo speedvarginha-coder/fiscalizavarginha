@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 DATA.mkdir(exist_ok=True)
 
-USER_AGENT = "ZelaVarginha/1.0 (fiscalizacao cidada; contato: painel local)"
+USER_AGENT = "FiscalizaVarginha/1.0 (fiscalizacao cidada; contato: painel local)"
 
 FONTES = [
     {
@@ -446,7 +446,7 @@ Municipal de 2026, contendo obrigatoriamente, para cada emenda:
 
 Formato solicitado: planilha (XLSX ou CSV) ou PDF com dados estruturados.
 
-Prazo legal: 20 dias uteis (prorrogavel por mais 10, com justificativa).
+Prazo legal: 20 dias corridos (prorrogavel por mais 10, com justificativa).
 {emendas_listadas}
 
 Fundamento legal: art. 7., II, VI e VII, Lei 12.527/2011; art. 6., Decreto 7.724/2012.

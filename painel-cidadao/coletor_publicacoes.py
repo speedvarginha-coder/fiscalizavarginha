@@ -40,7 +40,7 @@ ROOT = Path(__file__).resolve().parent
 SAIDA = ROOT / "data" / "chunks" / "publicacoes_estruturadas.json"
 SAPL = "https://sapl.varginha.mg.leg.br/api"
 SAPL_PUB = "https://sapl.varginha.mg.leg.br"
-UA = "ZelaVarginha/1.0 (fiscalizacao cidada)"
+UA = "FiscalizaVarginha/1.0 (fiscalizacao cidada)"
 MONEY_RE = re.compile(r"R\s*\$\s*([\d.]+,\d{2})", re.IGNORECASE)
 CACHE_DOCUMENTOS = ROOT.parent / "private" / "cache" / "camara_documentos"
 
@@ -154,6 +154,7 @@ def _ia_da_publicacao(pub: dict) -> dict:
         "tema": pub.get("tema") or "",
         "resumo": pub.get("resumo") or "",
         "o_que_propoe": pub.get("o_que_propoe") or "",
+        "impacto_cidadao": pub.get("impacto_cidadao") or "",
         "por_que_acompanhar": pub.get("por_que_acompanhar") or [],
         "pontos_atencao": pub.get("pontos_atencao") or [],
         "valor_principal": valores.get("valor_principal_ia") or "",
@@ -349,6 +350,7 @@ def _monta_publicacao(
         "tema": ia["tema"],
         "resumo": ia["resumo"] or ementa[:240],
         "o_que_propoe": ia["o_que_propoe"],
+        "impacto_cidadao": ia.get("impacto_cidadao", ""),
         "por_que_acompanhar": ia["por_que_acompanhar"],
         "pontos_atencao": ia["pontos_atencao"],
         "valores": valores,

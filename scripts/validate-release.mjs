@@ -14,9 +14,12 @@ const zipPath = path.join(root, "dist", "fiscaliza-varginha-painel.zip");
 const expectedChunks = [
   "atualizado_em",
   "auditoria_dados",
+  "avalie_config",
   "camara_anos",
   "camara_betha",
   "camara_transparencia",
+  "loa_2026",
+  "chat_context",
   "cnpjs",
   "diarias",
   "diario",
@@ -51,6 +54,8 @@ const requiredPublicFiles = [
   "app-glossario.js",
   "app.js",
   "atualizacoes.html",
+  "avalie.html",
+  "avalie.php",
   "camara.html",
   "cobrar.html",
   "data-loader.js",
@@ -64,6 +69,8 @@ const requiredPublicFiles = [
   "pessoal.html",
   "prefeitura.html",
   "relatorios.html",
+  "robots.txt",
+  "sitemap.xml",
   "sobre.html",
   "style.css",
   "sw.js",
@@ -257,6 +264,29 @@ function validateDomainShapes(chunks) {
     assertArray(camaraBetha.contratos, "camara_betha.contratos", 1);
   }
 
+  const chatContext = chunks.get("chat_context");
+  assertObject(chatContext, "chat_context");
+  if (isObject(chatContext) && isObject(prefeitura) && isObject(camaraBetha)) {
+    assert(chatContext.schema_version === 1, "chat_context.schema_version deve ser 1");
+    assert(
+      chatContext.prefeitura?.total_pago_fornecedores_externos === prefeitura.total_externo_atual,
+      "chat_context diverge do total atual da Prefeitura",
+    );
+    assert(
+      chatContext.prefeitura?.obras_publicas === prefeitura.obras_publicas?.length,
+      "chat_context diverge da quantidade de obras",
+    );
+    assert(
+      chatContext.camara?.total_pago_fornecedores_externos === camaraBetha.total_externo_atual,
+      "chat_context diverge do total atual da Camara",
+    );
+    assert(chatContext.camara?.cadeiras === 15, "chat_context deve informar 15 cadeiras na Camara");
+    assert(
+      chatContext.fundeb_2026?.tipo === "previsao_oficial_de_receita",
+      "chat_context deve classificar corretamente o valor oficial do FUNDEB",
+    );
+  }
+
   const fundacao = chunks.get("fundacao_cultural");
   assertObject(fundacao, "fundacao_cultural");
   if (isObject(fundacao)) {
@@ -405,7 +435,7 @@ function validateDeploy() {
     const parts = rel.split("/");
     const ext = path.extname(file).toLowerCase();
 
-    if (forbiddenExtensions.has(ext)) fail(`Arquivo proibido no pacote: ${rel}`);
+    if (forbiddenExtensions.has(ext) && rel !== "robots.txt") fail(`Arquivo proibido no pacote: ${rel}`);
     if (parts.some((part) => forbiddenDirs.has(part))) fail(`Diretorio proibido no pacote: ${rel}`);
     if (rel.startsWith("docs/") && ext !== ".pdf") fail(`Arquivo nao-PDF proibido em docs/: ${rel}`);
     if (path.basename(file).startsWith(".betha-token")) fail(`Token Betha no pacote: ${rel}`);
@@ -422,6 +452,49 @@ function validateDeploy() {
     assert(htaccess.includes("RewriteRule ^data/"), ".htaccess deve bloquear JSONs intermediarios em data/");
     assert(htaccess.includes("chunks/[^/]+\\.json"), ".htaccess deve liberar chunks JSON publicos");
     assert(htaccess.includes("snapshots/[^/]+\\.json"), ".htaccess deve liberar snapshots JSON publicos");
+    assert(
+      htaccess.includes("(?!robots\\.txt$)"),
+      ".htaccess deve liberar robots.txt da regra que bloqueia arquivos TXT",
+    );
+    assert(
+      htaccess.includes('X-Content-Type-Options "nosniff"'),
+      ".htaccess deve impedir deteccao insegura de tipo de conteudo",
+    );
+    assert(
+      htaccess.includes('X-Frame-Options "DENY"'),
+      ".htaccess deve impedir enquadramento do site",
+    );
+    assert(
+      htaccess.includes('Referrer-Policy "strict-origin-when-cross-origin"'),
+      ".htaccess deve limitar dados enviados no cabecalho Referer",
+    );
+    assert(
+      htaccess.includes("Permissions-Policy"),
+      ".htaccess deve restringir recursos sensiveis do navegador",
+    );
+    assert(
+      htaccess.includes('Cross-Origin-Opener-Policy "same-origin-allow-popups"'),
+      ".htaccess deve preservar o login Google com isolamento compativel",
+    );
+  }
+
+  const robotsPath = path.join(stageDir, "robots.txt");
+  const sitemapPath = path.join(stageDir, "sitemap.xml");
+  if (exists(robotsPath)) {
+    const robots = fs.readFileSync(robotsPath, "utf8");
+    assert(
+      robots.includes("Sitemap: https://fiscalizavarginha.com.br/sitemap.xml"),
+      "robots.txt deve apontar para o sitemap do dominio de producao",
+    );
+    assert(!robots.includes("SEU-DOMINIO"), "robots.txt contem dominio ficticio");
+  }
+  if (exists(sitemapPath)) {
+    const sitemap = fs.readFileSync(sitemapPath, "utf8");
+    assert(!sitemap.includes("SEU-DOMINIO"), "sitemap.xml contem dominio ficticio");
+    assert(
+      sitemap.includes("<loc>https://fiscalizavarginha.com.br/</loc>"),
+      "sitemap.xml deve conter a pagina inicial canonica",
+    );
   }
 
   validateManifest(path.join(stageDir, "data", "manifest.json"), path.join(stageDir, "data", "chunks"));

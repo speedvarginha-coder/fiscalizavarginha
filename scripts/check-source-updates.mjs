@@ -174,20 +174,20 @@ const snapshot = {
 if (record) {
   writeJson(statePath, snapshot);
   console.log(`Fingerprints registrados em ${path.relative(root, statePath)}`);
-  process.exit(0);
+  process.exitCode = 0;
+} else {
+  const payload = {
+    checked_at: now.toISOString(),
+    needs_update: changes.length > 0 || errors.length > 0,
+    changes,
+    errors: errors.map((source) => ({ id: source.id, label: source.label, error: source.error })),
+    local: localSignals,
+  };
+
+  // Deixa o event loop encerrar naturalmente. process.exit() interrompia o
+  // teardown do fetch/Undici no Node 24 para Windows e disparava a assertion
+  // libuv async.c, apesar de o resultado ja estar pronto.
+  writeJson(path.join(stateDir, "probe-result.json"), payload);
+  console.log(JSON.stringify(payload, null, 2));
+  process.exitCode = payload.needs_update && !noExitCode ? 10 : 0;
 }
-
-const payload = {
-  checked_at: now.toISOString(),
-  needs_update: changes.length > 0 || errors.length > 0,
-  changes,
-  errors: errors.map((source) => ({ id: source.id, label: source.label, error: source.error })),
-  local: localSignals,
-};
-
-// Resultado tambem em arquivo: o node as vezes crasha NO TEARDOWN da saida
-// (assertion libuv async.c no Windows) depois do trabalho pronto, corrompendo
-// o exit code. O vigia le este arquivo e so usa o exit code como fallback.
-writeJson(path.join(stateDir, "probe-result.json"), payload);
-console.log(JSON.stringify(payload, null, 2));
-process.exit(payload.needs_update && !noExitCode ? 10 : 0);

@@ -30,7 +30,8 @@ function Copy-IfExists {
 
 Get-ChildItem -LiteralPath $source -File |
   Where-Object {
-    $_.Extension -in @(".html", ".css", ".js", ".svg") -or $_.Name -eq ".htaccess"
+    $_.Extension -in @(".html", ".css", ".js", ".svg", ".php") -or
+      $_.Name -in @(".htaccess", "robots.txt", "sitemap.xml")
   } |
   ForEach-Object {
     Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $stage $_.Name) -Force
@@ -79,6 +80,12 @@ if (Test-Path $emendasStage) {
     Remove-Item -Recurse -Force
 }
 Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
+# Gerado pelo avalie.php a partir dos votos privados do servidor.
+# Republica-lo apagaria temporariamente o agregado real a cada deploy.
+$avalieResumoStage = Join-Path $stage "data\chunks\avalie_resumo.json"
+if (Test-Path -LiteralPath $avalieResumoStage) {
+  Remove-Item -LiteralPath $avalieResumoStage -Force
+}
 Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snapshots")
 Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
 

@@ -12,7 +12,9 @@
 // funcionando?". Este script existe para que da próxima vez o alerta chegue
 // sozinho, sem precisar perguntar.
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
+import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 
@@ -64,6 +66,7 @@ function enviarAlertaEmail(assunto, corpo) {
 }
 
 const modo = process.argv.includes("--registrar") ? "registrar" : "checar";
+const semEmail = process.argv.includes("--no-email");
 const tarefa = (process.argv.find((a) => a.startsWith("--tarefa=")) || "").split("=")[1] || "desconhecida";
 
 // O watchdog roda por FORA do pipeline (node direto, sem passar pelo lock nem
@@ -96,6 +99,15 @@ function readJson(filePath, fallback = undefined) {
 function writeJson(filePath, payload) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, JSON.stringify(payload, null, 2) + "\n", "utf8");
+}
+
+function assinaturaProblemas(lista) {
+  const normalizado = lista.map((item) => String(item)
+    .replace(/\d+(?:[.,]\d+)?\s*(?:h|min|dias?|d)\b/gi, "#tempo")
+    .replace(/\d{4}-\d{2}-\d{2}T[\d:.+-]+Z?/g, "#data"))
+    .sort()
+    .join("\n");
+  return crypto.createHash("sha256").update(normalizado).digest("hex");
 }
 
 const agora = new Date();
@@ -151,6 +163,8 @@ const LIMITE_DIARIAS_DIAS = 4;
 const diariasStaleStatePath = path.join(stateDir, "diarias_stale_alerta.json");
 const diarias = readJson(path.join(chunksDir, "diarias.json"));
 const diariasPrefTs = diarias?.meta?.prefeitura?.atualizado_em || null;
+const diariasPrefTentativa = diarias?.meta?.prefeitura?.ultima_tentativa || null;
+const diariasPrefStatus = diarias?.meta?.prefeitura?.status || "desconhecido";
 const diasDesdeDiariasPref = diariasPrefTs
   ? (agora - new Date(diariasPrefTs)) / 86_400_000
   : null;
@@ -161,9 +175,10 @@ if (diasDesdeDiariasPref !== null && diasDesdeDiariasPref > LIMITE_DIARIAS_DIAS)
     : null;
   if (horasDesdeAlerta === null || horasDesdeAlerta >= 24) {
     problemas.push(
-      `Diarias da Prefeitura sem coleta bem-sucedida ha ${diasDesdeDiariasPref.toFixed(1)} dias ` +
-      `(limite ${LIMITE_DIARIAS_DIAS}). Ultima OK: ${diariasPrefTs}. A consulta Betha 83059 pode estar ` +
-      "recusando o export (HTTP 406) — os dados antigos seguem preservados, mas sem atualizar. Checar private/logs/."
+      `Diarias da Prefeitura sem coleta INTEGRAL bem-sucedida ha ${diasDesdeDiariasPref.toFixed(1)} dias ` +
+      `(limite ${LIMITE_DIARIAS_DIAS}). Ultima integral: ${diariasPrefTs}; ultima tentativa: ` +
+      `${diariasPrefTentativa || "ausente"}; estado atual: ${diariasPrefStatus}. A busca textual parcial ` +
+      "pode manter a base utilizavel, mas nao comprova cobertura completa; os dados anteriores seguem preservados."
     );
     writeJson(diariasStaleStatePath, { alertado_em: agora.toISOString(), dias: diasDesdeDiariasPref });
   } else {
@@ -186,7 +201,10 @@ if (diasDesdeDiariasPref !== null && diasDesdeDiariasPref > LIMITE_DIARIAS_DIAS)
 const whatsappFalhaStatePath = path.join(stateDir, "whatsapp_falha_alerta.json");
 const ultimoResultado = readJson(path.join(stateDir, "pipeline_last_result.json"));
 const whatsappStatus = ultimoResultado?.whatsapp || null;
-if (whatsappStatus === "FALHA") {
+const whatsappEnvioHabilitado = readJson(whatsappConfigPath)?.envio_habilitado === true;
+if (!whatsappEnvioHabilitado) {
+  if (fs.existsSync(whatsappFalhaStatePath)) fs.rmSync(whatsappFalhaStatePath, { force: true });
+} else if (whatsappStatus === "FALHA") {
   const dedupWa = readJson(whatsappFalhaStatePath);
   const horasDesdeAlertaWa = dedupWa?.alertado_em
     ? (agora - new Date(dedupWa.alertado_em)) / 3_600_000
@@ -208,6 +226,25 @@ if (whatsappStatus === "FALHA") {
   fs.rmSync(whatsappFalhaStatePath, { force: true });
 }
 
+// (C2b) Vigia dedicado da bridge: detecta porta/processo morto mesmo antes de
+// uma coleta tentar enviar mensagens. O vigia de 5 minutos tenta recuperar a
+// tarefa; este watchdog transforma falha persistente em alerta operacional.
+const bridgeWatchdog = readJson(path.join(stateDir, "whatsapp_bridge_watchdog.json"));
+const horasDesdeBridgeCheck = bridgeWatchdog?.checked_at
+  ? (agora - new Date(bridgeWatchdog.checked_at)) / 3_600_000
+  : null;
+if (whatsappEnvioHabilitado && (!bridgeWatchdog || (
+  bridgeWatchdog.status !== "ok"
+  || horasDesdeBridgeCheck === null
+  || horasDesdeBridgeCheck > 1
+))) {
+  problemas.push(
+    `Vigia da ponte WhatsApp em alerta. Estado: ${bridgeWatchdog.status || "desconhecido"}; ` +
+    `ultima verificacao: ${bridgeWatchdog.checked_at || "ausente"}. ` +
+    "A recuperacao automatica ja foi tentada; verificar QR Code e logs da bridge."
+  );
+}
+
 // (C3) Ciclo travado: um run pode pendurar segurando o coleta.lock e, com isso,
 // fazer TODOS os ciclos seguintes serem pulados. Aconteceu em 22/07/2026: a vigia
 // das 09:24 travou (0,4s de CPU em 3h, sem escrever no log) e parou o pipeline por
@@ -222,6 +259,26 @@ const LOG_PARADO_MIN = 30;
 const cicloTravadoStatePath = path.join(stateDir, "ciclo_travado_alerta.json");
 const lockColetaPath = path.join(root, "private", "logs", "coleta.lock");
 let cicloTravadoMin = null;
+if (fs.existsSync(lockColetaPath)) {
+  // Autocura imediata quando o lock pertence a esta maquina e o PID morreu.
+  // Locks de outra maquina ou ilegíveis permanecem para avaliacao conservadora
+  // do Acquire-Lock no PowerShell.
+  try {
+    const [pidText, host] = fs.readFileSync(lockColetaPath, "utf8").trim().split("|");
+    const pid = Number(pidText);
+    let donoVivo = true;
+    if (Number.isInteger(pid) && pid > 0 && (!host || host.toLowerCase() === os.hostname().toLowerCase())) {
+      try { process.kill(pid, 0); } catch { donoVivo = false; }
+      if (!donoVivo) {
+        fs.rmSync(lockColetaPath, { force: true });
+        if (fs.existsSync(cicloTravadoStatePath)) fs.rmSync(cicloTravadoStatePath, { force: true });
+        console.log(`Auto-heal: coleta.lock orfao removido (PID ${pid} nao existe).`);
+      }
+    }
+  } catch {
+    // Falha fechada: um lock de origem desconhecida nunca e removido aqui.
+  }
+}
 if (fs.existsSync(lockColetaPath)) {
   const idadeLockMin = (agora - fs.statSync(lockColetaPath).mtime) / 60_000;
   // Nome do log usa a data LOCAL (Get-Date no PowerShell), nao UTC.
@@ -292,11 +349,79 @@ if (performanceProblema) {
   fs.rmSync(performanceAlertPath, { force: true });
 }
 
+// (C5) Backup local: o rollback so e confiavel se houver snapshot recente e
+// completo. As coletas mantem os oito ultimos; aqui verificamos idade e volume.
+const backupsRoot = path.join(root, "private", "backups");
+let newestBackup = null;
+if (fs.existsSync(backupsRoot)) {
+  newestBackup = fs.readdirSync(backupsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory() && entry.name.startsWith("coleta-"))
+    .map((entry) => {
+      const fullPath = path.join(backupsRoot, entry.name);
+      return { name: entry.name, fullPath, mtime: fs.statSync(fullPath).mtime };
+    })
+    .sort((a, b) => b.mtime - a.mtime)[0] || null;
+}
+const horasDesdeBackup = newestBackup ? (agora - newestBackup.mtime) / 3_600_000 : null;
+const backupChunks = newestBackup
+  ? path.join(newestBackup.fullPath, "data", "chunks")
+  : null;
+const quantidadeChunksBackup = backupChunks && fs.existsSync(backupChunks)
+  ? fs.readdirSync(backupChunks).filter((name) => name.endsWith(".json")).length
+  : 0;
+if (!newestBackup || horasDesdeBackup > 48 || quantidadeChunksBackup < 20) {
+  problemas.push(
+    `Backup local ausente, antigo ou incompleto. Ultimo: ${newestBackup?.name || "nenhum"}; ` +
+    `idade: ${horasDesdeBackup === null ? "desconhecida" : horasDesdeBackup.toFixed(1) + "h"}; ` +
+    `chunks JSON: ${quantidadeChunksBackup}. Esperado: backup em ate 48h com pelo menos 20 chunks.`
+  );
+}
+
+// (C6) Copia fora do computador: o Google Drive recebe um ZIP por dia e o
+// proprio script confirma o SHA-256 depois da transferencia.
+const externalBackup = readJson(path.join(stateDir, "external_backup.json"));
+const horasDesdeExternalBackup = externalBackup?.checked_at
+  ? (agora - new Date(externalBackup.checked_at)) / 3_600_000
+  : null;
+if (!externalBackup || externalBackup.status !== "ok" || horasDesdeExternalBackup === null || horasDesdeExternalBackup > 48) {
+  problemas.push(
+    `Backup externo ausente, falho ou antigo. Estado: ${externalBackup?.status || "ausente"}; ` +
+    `ultima verificacao: ${externalBackup?.checked_at || "ausente"}.`
+  );
+}
+
+// (C7) Monitor externo independente do deploy. Confere pagina, release e hash
+// do manifest; uma pagina HTTP 200 com arquivos de versoes diferentes falha.
+const externalSite = readJson(path.join(stateDir, "external_site.json"));
+const horasDesdeExternalSite = externalSite?.checked_at
+  ? (agora - new Date(externalSite.checked_at)) / 3_600_000
+  : null;
+if (!externalSite || externalSite.status !== "ok" || horasDesdeExternalSite === null || horasDesdeExternalSite > 0.5) {
+  problemas.push(
+    `Monitor externo do site em alerta. Estado: ${externalSite?.status || "ausente"}; ` +
+    `ultima verificacao: ${externalSite?.checked_at || "ausente"}; detalhe: ${externalSite?.detail || "sem detalhe"}.`
+  );
+}
+
 if (problemas.length) {
+  const alertaAnterior = readJson(alertaPath, {});
+  const assinatura = assinaturaProblemas(problemas);
+  const assinaturaAnterior = alertaAnterior?.assinatura
+    || (Array.isArray(alertaAnterior?.problemas) ? assinaturaProblemas(alertaAnterior.problemas) : null);
+  const mesmaAssinatura = assinaturaAnterior === assinatura;
+  const ultimaNotificacao = mesmaAssinatura
+    ? (alertaAnterior.notificado_em || alertaAnterior.gerado_em)
+    : null;
+  const horasDesdeNotificacao = ultimaNotificacao
+    ? (agora - new Date(ultimaNotificacao)) / 3_600_000
+    : null;
+  const deveNotificar = !mesmaAssinatura || horasDesdeNotificacao === null || horasDesdeNotificacao >= 6;
   const alerta = {
     gerado_em: agora.toISOString(),
     nivel: "critico",
     problemas,
+    assinatura,
+    notificado_em: mesmaAssinatura ? (alertaAnterior.notificado_em || alertaAnterior.gerado_em || null) : null,
     horas_desde_heartbeat: horasDesdeHeartbeat,
     horas_desde_ultimo_sucesso: horasDesdeSucesso,
   };
@@ -314,8 +439,18 @@ if (problemas.length) {
   // e entregue de forma confiavel — ver enviarAlertaWhatsapp, mantido para uso
   // futuro caso um grupo privado dedicado seja configurado.)
   const texto = `🚨 Fiscaliza Varginha — alerta operacional (tarefa: ${tarefa})\n\n${problemas.join("\n\n")}`;
-  const enviadoEmail = enviarAlertaEmail("🚨 Fiscaliza Varginha — alerta operacional", texto);
-  console.log(enviadoEmail ? "Alerta enviado por e-mail." : "AVISO: falha ao enviar alerta por e-mail (ver config/senha SMTP).");
+  if (semEmail) {
+    console.log("Envio de e-mail suprimido por --no-email.");
+  } else if (!deveNotificar) {
+    console.log(`Alerta equivalente ja notificado ha ${horasDesdeNotificacao.toFixed(1)}h; e-mail suprimido (dedup 6h).`);
+  } else {
+    const enviadoEmail = enviarAlertaEmail("🚨 Fiscaliza Varginha — alerta operacional", texto);
+    if (enviadoEmail) {
+      alerta.notificado_em = agora.toISOString();
+      writeJson(alertaPath, alerta);
+    }
+    console.log(enviadoEmail ? "Alerta enviado por e-mail." : "AVISO: falha ao enviar alerta por e-mail (ver config/senha SMTP).");
+  }
 } else if (fs.existsSync(alertaPath)) {
   // Limpa alerta antigo assim que a saude normalizar, para nao confundir
   // quem checar o arquivo mais tarde com um problema ja resolvido.

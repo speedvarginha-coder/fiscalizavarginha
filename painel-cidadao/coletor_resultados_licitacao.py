@@ -19,6 +19,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -38,14 +39,16 @@ ORGAOS = {
     "18240119000105": "Prefeitura Municipal de Varginha",
     "04366790000184": "Câmara Municipal de Varginha",
 }
-# Modalidades relevantes (códigos PNCP): 6 pregão eletrônico, 7 pregão
-# presencial, 4 concorrência eletrônica, 5 concorrência presencial,
-# 8 dispensa, 9 inexigibilidade.
-MODALIDADES = (6, 7, 4, 5, 8, 9)
+# Todas as modalidades atualmente ativas no dominio oficial do PNCP. Isso
+# evita omitir chamadas publicas, credenciamentos e modalidades internacionais.
+MODALIDADES = tuple(range(1, 20))
 JANELA_MESES = 8
 MAX_ITENS_POR_COMPRA = 20
-PAUSA = 0.25
-TENTATIVAS = 3
+# O PNCP passa a responder com 429 quando a varredura sustentada se aproxima
+# de 30 requisicoes por minuto. Mantemos uma margem pequena para que a coleta
+# completa termine sem lacunas nem ciclos repetidos de backoff.
+PAUSA = 2.2
+TENTATIVAS = 4
 BACKOFF_SEGUNDOS = 2.0
 # Homologação simbólica: valor irrisório com estimativa relevante.
 LIMIAR_SIMBOLICO = 10.0
@@ -64,10 +67,20 @@ def _get(url: str, timeout: int = 30):
                 if r.status == 204:
                     return None
                 return json.loads(r.read().decode("utf-8", errors="replace"))
+        except urllib.error.HTTPError as exc:
+            ultimo_erro = exc
+            if tentativa < TENTATIVAS:
+                try:
+                    retry_after = float(exc.headers.get("Retry-After", ""))
+                except (TypeError, ValueError, AttributeError):
+                    retry_after = 0
+                espera = min(60.0, retry_after or BACKOFF_SEGUNDOS * (2 ** (tentativa - 1)))
+                print(f"    tentativa {tentativa}/{TENTATIVAS} falhou; nova tentativa em {espera:.0f}s")
+                time.sleep(espera)
         except Exception as exc:
             ultimo_erro = exc
             if tentativa < TENTATIVAS:
-                espera = BACKOFF_SEGUNDOS * tentativa
+                espera = BACKOFF_SEGUNDOS * (2 ** (tentativa - 1))
                 print(f"    tentativa {tentativa}/{TENTATIVAS} falhou; nova tentativa em {espera:.0f}s")
                 time.sleep(espera)
     raise ultimo_erro or RuntimeError("Falha desconhecida ao consultar PNCP")

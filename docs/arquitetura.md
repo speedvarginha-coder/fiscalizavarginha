@@ -136,22 +136,22 @@ const resultados = await Promise.all(
 // resultados → [prefeitura.json, emendas.json, diarias.json, ...]
 ```
 
-**Passo 4 — Monta `window.ZELA_DATA`:**
+**Passo 4 — Monta `window.FISCALIZA_DATA`:**
 ```js
 resultados.forEach(({ key, data }) => {
-  window.ZELA_DATA[key] = data;
+  window.FISCALIZA_DATA[key] = data;
 });
-// Agora window.ZELA_DATA.prefeitura.contratos existe
+// Agora window.FISCALIZA_DATA.prefeitura.contratos existe
 ```
 
 **Passo 5 — Carrega módulos em ordem:**
 ```js
 const MODULOS = [
-  "modules/utils.js",       // Define window.ZELA.utils
-  "modules/icons.js",       // Define window.ZELA.icon()
-  "modules/glossario.js",   // Define window.ZELA.simplificarTermo()
-  "modules/categorias.js",  // Define window.ZELA.categorias
-  "modules/watchlist.js",   // Define window.ZELA.watchlist
+  "modules/utils.js",       // Define window.FISCALIZA.utils
+  "modules/icons.js",       // Define window.FISCALIZA.icon()
+  "modules/glossario.js",   // Define window.FISCALIZA.simplificarTermo()
+  "modules/categorias.js",  // Define window.FISCALIZA.categorias
+  "modules/watchlist.js",   // Define window.FISCALIZA.watchlist
 ];
 for (const m of MODULOS) await loadScript(m);
 ```
@@ -161,16 +161,16 @@ for (const m of MODULOS) await loadScript(m);
 await loadScript("app.js");
 ```
 
-**Passo 7 — `app.js` lê `window.ZELA_DATA` e renderiza:**
+**Passo 7 — `app.js` lê `window.FISCALIZA_DATA` e renderiza:**
 ```js
-const D = window.ZELA_DATA;
+const D = window.FISCALIZA_DATA;
 const pf = D.prefeitura || {};
 // ...renderiza contratos, placar, gráficos, etc.
 ```
 
 **Passo 8 — Evento global de pronto:**
 ```js
-window.dispatchEvent(new CustomEvent("zela:ready", { detail: { chunks } }));
+window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { chunks } }));
 ```
 
 Páginas como `marcadores.html` escutam esse evento para renderizar conteúdo dependente de dados.
@@ -179,7 +179,7 @@ Páginas como `marcadores.html` escutam esse evento para renderizar conteúdo de
 
 ## 4. Os módulos (modules/)
 
-Cada módulo é uma IIFE auto-contida que **expõe API em `window.ZELA.*`**. Não usa `import/export` (sem build step).
+Cada módulo é uma IIFE auto-contida que **expõe API em `window.FISCALIZA.*`**. Não usa `import/export` (sem build step).
 
 ### `modules/utils.js` (11 funções, ~6.5KB)
 
@@ -200,7 +200,7 @@ Utilitários puros, sem efeito colateral.
 
 **Uso interno (em app.js):**
 ```js
-const { fmtBRL, esc, cleanText } = window.ZELA.utils;
+const { fmtBRL, esc, cleanText } = window.FISCALIZA.utils;
 ```
 
 ### `modules/icons.js` (23 ícones SVG)
@@ -209,9 +209,9 @@ Biblioteca de ícones inline estilo Heroicons (MIT). Substitui emojis em UI.
 
 **Uso:**
 ```js
-window.ZELA.icon("saude")            // <svg>...</svg> tamanho 20px
-window.ZELA.icon("trofeu", { size: 24 })
-window.ZELA.icon("alerta", { class: "icon-alert" })
+window.FISCALIZA.icon("saude")            // <svg>...</svg> tamanho 20px
+window.FISCALIZA.icon("trofeu", { size: 24 })
+window.FISCALIZA.icon("alerta", { class: "icon-alert" })
 ```
 
 **Catálogo:**
@@ -224,8 +224,8 @@ window.ZELA.icon("alerta", { class: "icon-alert" })
 Traduz jargão técnico em linguagem cidadã.
 
 ```js
-window.ZELA.simplificarTermo("Favorecido")    // → "Quem recebeu"
-window.ZELA.termoCidadao("modalidade")        // → <span title="...">Tipo de compra</span>
+window.FISCALIZA.simplificarTermo("Favorecido")    // → "Quem recebeu"
+window.FISCALIZA.termoCidadao("modalidade")        // → <span title="...">Tipo de compra</span>
 ```
 
 ### `modules/categorias.js`
@@ -234,8 +234,8 @@ Classifica contratos/emendas em 8 categorias.
 
 ```js
 const item = { objeto: "Aquisição de medicamentos..." };
-window.ZELA.classificarItem(item);  // → "saúde"
-window.ZELA.categorias              // → [{id, iconKey, label, kw}, ...]
+window.FISCALIZA.classificarItem(item);  // → "saúde"
+window.FISCALIZA.categorias              // → [{id, iconKey, label, kw}, ...]
 ```
 
 ### `modules/watchlist.js`
@@ -243,9 +243,9 @@ window.ZELA.categorias              // → [{id, iconKey, label, kw}, ...]
 Marcadores pessoais do cidadão (salvos em `localStorage`).
 
 ```js
-window.ZELA.watchlist.toggle("contratos", "123/2026")  // adiciona ou remove
-window.ZELA.watchlist.has("emendas", "55/2025")        // true | false
-window.ZELA.watchlist.botao("contratos", id)           // HTML do botão ⭐
+window.FISCALIZA.watchlist.toggle("contratos", "123/2026")  // adiciona ou remove
+window.FISCALIZA.watchlist.has("emendas", "55/2025")        // true | false
+window.FISCALIZA.watchlist.botao("contratos", id)           // HTML do botão ⭐
 ```
 
 ---
@@ -258,7 +258,7 @@ window.ZELA.watchlist.botao("contratos", id)           // HTML do botão ⭐
 <script src="data.js"></script>   <!-- 8.7 MB carregado em TODA página -->
 ```
 
-Variável global: `window.ZELA_DATA = { prefeitura, emendas, diarias, ... }`
+Variável global: `window.FISCALIZA_DATA = { prefeitura, emendas, diarias, ... }`
 
 ### Agora (chunks)
 
@@ -307,7 +307,7 @@ Quando o SW detecta que um chunk mudou em background, posta mensagem aos cliente
 
 O `app.js` escuta e mostra um toast no canto superior direito convidando o usuário a recarregar.
 
-**Versionamento:** `const CACHE = "zela-v8"` — bumpar quando há mudança quebradora; ativação remove caches antigos.
+**Versionamento:** `const CACHE = "fiscaliza-v8"` — bumpar quando há mudança quebradora; ativação remove caches antigos.
 
 ---
 
@@ -326,7 +326,7 @@ O `app.js` escuta e mostra um toast no canto superior direito convidando o usuá
    ```js
    const STATIC = [..., "./nova.html"];
    ```
-5. **Bumpar `CACHE = "zela-vN"`** para forçar refresh.
+5. **Bumpar `CACHE = "fiscaliza-vN"`** para forçar refresh.
 6. **Adicionar ao nav** das outras páginas:
    ```html
    <a href="nova.html" class="nav__link">Nova</a>
@@ -345,11 +345,11 @@ O `app.js` escuta e mostra um toast no canto superior direito convidando o usuá
 - Vanilla JS, sem webpack/vite/rollup.
 - Cada arquivo `.js` é executável direto pelo browser.
 - IIFE para encapsular escopo.
-- API exposta em `window.ZELA.*`.
+- API exposta em `window.FISCALIZA.*`.
 
 ### Retrocompatibilidade
 - `data.js` legado funciona como fallback.
-- `app.js` destrutura `window.ZELA.utils` mas tem shims defensivos.
+- `app.js` destrutura `window.FISCALIZA.utils` mas tem shims defensivos.
 - Se algum módulo falhar, app continua funcionando (sem ícones, sem categoria, mas sem crash).
 
 ### Sem framework

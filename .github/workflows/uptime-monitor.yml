@@ -1,0 +1,43 @@
+name: Monitor externo do site
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fiscaliza-uptime-monitor
+  cancel-in-progress: true
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Conferir site, release e manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://fiscalizavarginha.com.br"
+          tmp="$(mktemp -d)"
+          trap 'rm -rf "$tmp"' EXIT
+          curl --fail --silent --show-error --location --max-time 30 "$base/?github_health=${{ github.run_id }}" -o "$tmp/index.html"
+          curl --fail --silent --show-error --location --max-time 30 "$base/release.json?github_health=${{ github.run_id }}" -o "$tmp/release.json"
+          curl --fail --silent --show-error --location --max-time 30 "$base/data/manifest.json?github_health=${{ github.run_id }}" -o "$tmp/manifest.json"
+          grep -Eqi 'Fiscaliza[[:space:]]+Varginha' "$tmp/index.html"
+          python - "$tmp/release.json" "$tmp/manifest.json" <<'PY'
+          import hashlib, json, pathlib, sys
+          release_path, manifest_path = map(pathlib.Path, sys.argv[1:])
+          release = json.loads(release_path.read_text(encoding="utf-8-sig"))
+          manifest_bytes = manifest_path.read_bytes()
+          manifest = json.loads(manifest_bytes.decode("utf-8-sig"))
+          digest = hashlib.sha256(manifest_bytes).hexdigest()
+          if release.get("manifest_sha256") != digest:
+              raise SystemExit("release.json diverge do manifest publicado")
+          if len(manifest.get("chunks", {})) < 20:
+              raise SystemExit("manifest publicado tem menos de 20 chunks")
+          print(f"Site saudavel: {len(manifest['chunks'])} chunks; manifest {digest}")
+          PY

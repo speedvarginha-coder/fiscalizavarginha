@@ -111,6 +111,93 @@ function Invoke-AndLog {
   }
 }
 
+function Invoke-IsolatedAndLog {
+  param(
+    [string]$Label,
+    [string]$FilePath,
+    [string[]]$Arguments,
+    [string]$WorkingDirectory,
+    [int]$Retries = 0,
+    [int[]]$AcceptedExitCodes = @(0),
+    [int]$TimeoutSeconds = 1200
+  )
+
+  # Playwright encerra o webserver auxiliar com um evento de console. Quando
+  # npm/teste compartilha o mesmo console da tarefa agendada, esse evento pode
+  # atingir tambem o PowerShell pai (0xC000013A), matando o pipeline sem cair no
+  # catch/finally e deixando coleta.lock orfao. Start-Process com janela oculta
+  # cria um grupo isolado; stdout/stderr sao recolhidos ao final e entram no log.
+  $tentativa = 0
+  while ($true) {
+    $tentativa++
+    Write-Log $Label
+    $id = "{0}-{1}" -f $PID, ([guid]::NewGuid().ToString("N"))
+    $stdoutPath = Join-Path $logDir ("isolated-" + $id + ".out.log")
+    $stderrPath = Join-Path $logDir ("isolated-" + $id + ".err.log")
+    $code = -1
+    $proc = $null
+    try {
+      $proc = Start-Process `
+        -FilePath $FilePath `
+        -ArgumentList $Arguments `
+        -WorkingDirectory $WorkingDirectory `
+        -WindowStyle Hidden `
+        -RedirectStandardOutput $stdoutPath `
+        -RedirectStandardError $stderrPath `
+        -PassThru
+      # No Windows PowerShell 5.1, manter o handle nativo aberto antes da espera
+      # evita que ExitCode volte nulo depois que o processo ja foi coletado.
+      $processHandle = $proc.Handle
+      $completed = $proc.WaitForExit($TimeoutSeconds * 1000)
+      if (-not $completed) {
+        Write-Log "$Label excedeu o limite de ${TimeoutSeconds}s; encerrando somente a arvore do processo $($proc.Id)."
+        & taskkill.exe /PID $proc.Id /T /F 2>&1 | ForEach-Object { Write-Log "taskkill: $_" }
+        $code = 124
+      } else {
+        # Garante que os buffers redirecionados terminaram de descarregar.
+        $proc.WaitForExit()
+        $proc.Refresh()
+        if ($null -eq $proc.ExitCode) {
+          throw "$Label terminou, mas o Windows nao informou o codigo de saida."
+        }
+        $code = [int]$proc.ExitCode
+      }
+      if (Test-Path -LiteralPath $stdoutPath) {
+        Get-Content -LiteralPath $stdoutPath -ErrorAction SilentlyContinue |
+          ForEach-Object { Write-Log "$_" }
+      }
+      if (Test-Path -LiteralPath $stderrPath) {
+        Get-Content -LiteralPath $stderrPath -ErrorAction SilentlyContinue |
+          ForEach-Object { Write-Log "$_" }
+      }
+    } finally {
+      if ($proc) {
+        try {
+          if (-not $proc.HasExited) {
+            & taskkill.exe /PID $proc.Id /T /F 2>&1 | ForEach-Object { Write-Log "taskkill: $_" }
+          }
+        } catch {
+          Write-Log "Falha ao confirmar encerramento do processo isolado $($proc.Id): $($_.Exception.Message)"
+        }
+        $proc.Dispose()
+      }
+      Remove-Item -LiteralPath $stdoutPath -Force -ErrorAction SilentlyContinue
+      Remove-Item -LiteralPath $stderrPath -Force -ErrorAction SilentlyContinue
+    }
+
+    if ($AcceptedExitCodes -contains $code) {
+      if ($code -ne 0) { return $code }
+      return
+    }
+    if ($tentativa -le $Retries) {
+      Write-Log "$Label falhou com codigo $code; nova tentativa ($tentativa/$Retries) em 15s."
+      Start-Sleep -Seconds 15
+      continue
+    }
+    throw "$Label falhou com codigo $code"
+  }
+}
+
 function New-PublishedDataBackup {
   $stamp = Get-Date -Format "yyyyMMdd-HHmmss"
   $dest = Join-Path $backupRoot ("coleta-" + $stamp)
@@ -128,6 +215,114 @@ function New-PublishedDataBackup {
 
   Write-Log "Backup dos dados publicado em: $dest"
   return $dest
+}
+
+function Get-PathVerificationManifest {
+  param([string]$Path)
+
+  if (Test-Path -LiteralPath $Path -PathType Leaf) {
+    $item = Get-Item -LiteralPath $Path
+    return @("FILE|$($item.Length)|$((Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash)")
+  }
+
+  if (Test-Path -LiteralPath $Path -PathType Container) {
+    $rootPath = [System.IO.Path]::GetFullPath($Path).TrimEnd('\')
+    return @(
+      Get-ChildItem -LiteralPath $Path -Recurse -File |
+        ForEach-Object {
+          $relative = $_.FullName.Substring($rootPath.Length).TrimStart('\')
+          "$relative|$($_.Length)|$((Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash)"
+        } |
+        Sort-Object
+    )
+  }
+
+  throw "Caminho ausente para verificacao: $Path"
+}
+
+function Assert-PathsMatch {
+  param(
+    [string]$Expected,
+    [string]$Actual,
+    [string]$Label
+  )
+
+  $expectedManifest = @(Get-PathVerificationManifest -Path $Expected)
+  $actualManifest = @(Get-PathVerificationManifest -Path $Actual)
+  $difference = Compare-Object -ReferenceObject $expectedManifest -DifferenceObject $actualManifest
+  if ($difference) {
+    throw "Verificacao do rollback falhou para $Label`: backup e copia divergem."
+  }
+  Write-Log "Rollback verificado para $Label ($($expectedManifest.Count) arquivo[s])."
+}
+
+function Restore-PathAtomically {
+  param(
+    [string]$Source,
+    [string]$Target,
+    [string]$Label
+  )
+
+  if (-not (Test-Path -LiteralPath $Source)) {
+    return
+  }
+
+  $targetFull = [System.IO.Path]::GetFullPath($Target)
+  $targetParent = [System.IO.Path]::GetDirectoryName($targetFull)
+  $targetName = [System.IO.Path]::GetFileName($targetFull)
+  $token = [Guid]::NewGuid().ToString("N")
+  $stage = Join-Path $targetParent (".$targetName.rollback-novo-$token")
+  $old = Join-Path $targetParent (".$targetName.rollback-anterior-$token")
+  $targetMoved = $false
+
+  # Stage e copia antiga ficam obrigatoriamente ao lado do alvo. Isso garante
+  # que os renames abaixo ocorram no mesmo volume e evita remover caminho amplo.
+  foreach ($candidate in @($stage, $old)) {
+    $candidateFull = [System.IO.Path]::GetFullPath($candidate)
+    if ([System.IO.Path]::GetDirectoryName($candidateFull) -ne $targetParent) {
+      throw "Rollback recusado: caminho temporario fora do diretorio esperado."
+    }
+  }
+
+  try {
+    if (Test-Path -LiteralPath $Source -PathType Container) {
+      Copy-Item -LiteralPath $Source -Destination $stage -Recurse -Force
+    } else {
+      Copy-Item -LiteralPath $Source -Destination $stage -Force
+    }
+    Assert-PathsMatch -Expected $Source -Actual $stage -Label "$Label (preparacao)"
+
+    if (Test-Path -LiteralPath $Target) {
+      Move-Item -LiteralPath $Target -Destination $old
+      $targetMoved = $true
+    }
+
+    try {
+      Move-Item -LiteralPath $stage -Destination $Target
+      Assert-PathsMatch -Expected $Source -Actual $Target -Label $Label
+    } catch {
+      if (Test-Path -LiteralPath $Target) {
+        Remove-Item -LiteralPath $Target -Recurse -Force
+      }
+      if ($targetMoved -and (Test-Path -LiteralPath $old)) {
+        Move-Item -LiteralPath $old -Destination $Target
+        $targetMoved = $false
+      }
+      throw
+    }
+
+    if ($targetMoved -and (Test-Path -LiteralPath $old)) {
+      Remove-Item -LiteralPath $old -Recurse -Force
+      $targetMoved = $false
+    }
+  } finally {
+    if (Test-Path -LiteralPath $stage) {
+      Remove-Item -LiteralPath $stage -Recurse -Force
+    }
+    if (-not $targetMoved -and (Test-Path -LiteralPath $old)) {
+      Remove-Item -LiteralPath $old -Recurse -Force
+    }
+  }
 }
 
 function Restore-PublishedDataBackup {
@@ -163,31 +358,37 @@ function Restore-PublishedDataBackup {
   $backupDataJs = Join-Path $Backup "data.js"
   $backupEmendasData = Join-Path $Backup "emendas-data"
 
-  Write-Log "Restaurando dados anteriores a partir do backup."
-  if (Test-Path $backupData) {
-    if (Test-Path $dataDir) {
-      Remove-Item -LiteralPath $dataDir -Recurse -Force
-    }
-    Copy-Item -LiteralPath $backupData -Destination $dataDir -Recurse -Force
-  }
-  if (Test-Path $backupDataJs) {
-    Copy-Item -LiteralPath $backupDataJs -Destination $dataJs -Force
-  }
-  if (Test-Path $backupEmendasData) {
-    if (Test-Path $emendasDataDir) {
-      Remove-Item -LiteralPath $emendasDataDir -Recurse -Force
-    }
-    Copy-Item -LiteralPath $backupEmendasData -Destination $emendasDataDir -Recurse -Force
-  }
+  Write-Log "Restaurando dados anteriores por troca atomica verificada."
+  Restore-PathAtomically -Source $backupData -Target $dataDir -Label "data"
+  Restore-PathAtomically -Source $backupDataJs -Target $dataJs -Label "data.js"
+  Restore-PathAtomically -Source $backupEmendasData -Target $emendasDataDir -Label "emendas/data"
 }
 
+# A biblioteca e carregada depois das definicoes historicas acima para que o
+# pipeline e o teste isolado executem exatamente a mesma implementacao.
+. (Join-Path $PSScriptRoot "lib\atomic-restore.ps1")
+
 function Remove-OldBackups {
-  Get-ChildItem -LiteralPath $backupRoot -Directory -ErrorAction SilentlyContinue |
-    Sort-Object LastWriteTime -Descending |
-    Select-Object -Skip 8 |
-    ForEach-Object {
-      Remove-Item -LiteralPath $_.FullName -Recurse -Force
-    }
+  # Coletas validas e quarentenas possuem finalidades diferentes. Contar tudo
+  # no mesmo limite permitia que varias coletas rejeitadas expulsassem todos os
+  # backups bons. Mantemos oito restauraveis e quatro rejeitadas para diagnostico.
+  $groups = @(
+    @{ Pattern = "coleta-*"; Keep = 8 },
+    @{ Pattern = "rejeitada-*"; Keep = 4 }
+  )
+  $backupRootFull = [System.IO.Path]::GetFullPath($backupRoot).TrimEnd('\')
+  foreach ($group in $groups) {
+    Get-ChildItem -LiteralPath $backupRoot -Directory -Filter $group.Pattern -ErrorAction SilentlyContinue |
+      Sort-Object LastWriteTime -Descending |
+      Select-Object -Skip $group.Keep |
+      ForEach-Object {
+        $candidate = [System.IO.Path]::GetFullPath($_.FullName)
+        if (-not $candidate.StartsWith($backupRootFull + '\', [System.StringComparison]::OrdinalIgnoreCase)) {
+          throw "Retencao recusou caminho fora da pasta de backups: $candidate"
+        }
+        Remove-Item -LiteralPath $candidate -Recurse -Force
+      }
+  }
 }
 
 function Invoke-SourceProbe {
@@ -424,6 +625,14 @@ try {
     $collectorArgs += "--sem-pncp"
     $collectorArgs += "--sem-pessoal"
   }
+  if ($SkipSlowAudits) {
+    # A vigia roda de hora em hora. PNCP e folha possuem janelas de frescor
+    # maiores e nao devem ser recoletados so porque Diario/SAPL mudou.
+    # O modo rapido preserva o historico Betha do ultimo ciclo completo.
+    $collectorArgs += "--sem-pncp"
+    $collectorArgs += "--sem-pessoal"
+    $collectorArgs += "--vigia-rapida"
+  }
 
   Invoke-AndLog `
     -Label "Rodando coletor.py." `
@@ -461,10 +670,11 @@ try {
     -WorkingDirectory (Join-Path $painel "emendas")
 
   Invoke-AndLog `
-    -Label "Normalizando e auditando emendas estaduais." `
+    -Label "Atualizando emendas estaduais oficiais (SIGCON-MG / SIAFI-MG / SIAD-MG)." `
     -FilePath "python" `
-    -Arguments @("-u", "normalizar_emendas_estaduais.py") `
-    -WorkingDirectory (Join-Path $painel "emendas")
+    -Arguments @("-u", "coletor_emendas_estaduais.py") `
+    -WorkingDirectory (Join-Path $painel "emendas") `
+    -AcceptedExitCodes @(0, 2)
 
   if ($CollectorMode -eq "Full") {
     Invoke-AndLog `
@@ -521,13 +731,15 @@ try {
       -Label "Atualizando painel de monitoramento das coletas." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "data:monitor") `
-      -WorkingDirectory $root
+      -WorkingDirectory $root `
+      -Retries 2
 
     Invoke-AndLog `
       -Label "Gerando indice de relevancia parlamentar." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "data:indice") `
-      -WorkingDirectory $root
+      -WorkingDirectory $root `
+      -Retries 2
 
     $previousChunks = $null
     if ($backupPath) {
@@ -544,27 +756,36 @@ try {
       -FilePath "npm.cmd" `
       -Arguments @("run", "validate:data") `
       -WorkingDirectory $root `
-      -Retries 1
+      -Retries 2
 
     if ($previousChunks) {
       Remove-Item Env:\FISCALIZA_PREVIOUS_CHUNKS -ErrorAction SilentlyContinue
     }
 
+    Invoke-AndLog `
+      -Label "Gerando resumo factual atualizado para o chatbot." `
+      -FilePath "npm.cmd" `
+      -Arguments @("run", "data:chat") `
+      -WorkingDirectory $root `
+      -Retries 2
+
     # Gate rápido de integridade dos dados — roda SEMPRE, mesmo com -SkipTests,
     # para que o vigia (watch) nunca publique chunks com formato/cálculo quebrado.
-    Invoke-AndLog `
+    Invoke-IsolatedAndLog `
       -Label "Gate rápido de dados (sintaxe + cálculos)." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "test:data") `
       -WorkingDirectory $root `
-      -Retries 1
+      -Retries 1 `
+      -TimeoutSeconds 300
 
     if (-not $SkipTests) {
-      Invoke-AndLog `
+      Invoke-IsolatedAndLog `
         -Label "Rodando testes Playwright (suíte completa)." `
         -FilePath "npm.cmd" `
         -Arguments @("test") `
-        -WorkingDirectory $root
+        -WorkingDirectory $root `
+        -TimeoutSeconds 1200
     }
 
     # Neste ponto os dados e os testes passaram. Registra o sucesso validado
@@ -575,17 +796,20 @@ try {
       -Label "Registrando coleta validada e atualizando monitor publico." `
       -FilePath "node" `
       -Arguments @("scripts/record-pipeline-state.mjs", "--coleta=SUCESSO", "--deploy=PENDENTE", "--whatsapp=PENDENTE", "--fase=validada") `
-      -WorkingDirectory $root
+      -WorkingDirectory $root `
+      -Retries 2
     Invoke-AndLog `
       -Label "Atualizando monitor com o ultimo sucesso validado." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "data:monitor") `
-      -WorkingDirectory $root
+      -WorkingDirectory $root `
+      -Retries 2
     Invoke-AndLog `
       -Label "Sincronizando monitor e manifesto apos validacao." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "data:bundle") `
-      -WorkingDirectory $root
+      -WorkingDirectory $root `
+      -Retries 2
 
     if (-not $SkipPackage) {
       Invoke-AndLog `
@@ -636,8 +860,24 @@ try {
   }
 
   $collectionStatus = "SUCESSO"
-  if ($SkipWhatsApp) {
-    Write-Log "Disparo de WhatsApp pulado por -SkipWhatsApp."
+  $whatsAppConfigPath = Join-Path $root "private\whatsapp_config.json"
+  $whatsAppPausado = $false
+  if (Test-Path -LiteralPath $whatsAppConfigPath) {
+    try {
+      $whatsAppConfig = Get-Content -LiteralPath $whatsAppConfigPath -Raw | ConvertFrom-Json
+      $temChaveEnvio = $null -ne $whatsAppConfig.PSObject.Properties["envio_habilitado"]
+      $whatsAppPausado = $temChaveEnvio -and -not [bool]$whatsAppConfig.envio_habilitado
+    } catch {
+      Write-Log "Aviso: nao foi possivel ler a trava geral do WhatsApp: $_"
+    }
+  }
+
+  if ($SkipWhatsApp -or $whatsAppPausado) {
+    if ($whatsAppPausado) {
+      Write-Log "Disparo de WhatsApp pausado por private/whatsapp_config.json; fila e historico preservados."
+    } else {
+      Write-Log "Disparo de WhatsApp pulado por -SkipWhatsApp."
+    }
   } else {
     Write-Log "Disparando alertas automatizados para o WhatsApp."
     try {
@@ -663,7 +903,54 @@ try {
     -Label "Registrando resultado final do pipeline." `
     -FilePath "node" `
     -Arguments @("scripts/record-pipeline-state.mjs", "--coleta=$collectionStatus", "--deploy=$deployStatus", "--whatsapp=$whatsAppStatus", "--fase=final") `
-    -WorkingDirectory $root
+    -WorkingDirectory $root `
+    -Retries 2
+
+  # O primeiro pacote precisa existir antes de conhecermos o resultado do
+  # deploy e do WhatsApp. Sem esta etapa final, o site publicava para sempre o
+  # estado intermediario (deploy/WhatsApp PENDENTE), embora o arquivo privado
+  # ja registrasse o desfecho real. Regera o monitor, refaz o pacote coerente
+  # com o manifesto e publica release.json por ultimo novamente.
+  if (-not $SkipDeploy -and -not $SkipPackage -and $deployStatus -eq "SUCESSO") {
+    try {
+      Invoke-AndLog `
+        -Label "Atualizando monitor com o resultado final do pipeline." `
+        -FilePath "npm.cmd" `
+        -Arguments @("run", "data:monitor") `
+        -WorkingDirectory $root `
+        -Retries 2
+      Invoke-AndLog `
+        -Label "Sincronizando bundle com o resultado final." `
+        -FilePath "npm.cmd" `
+        -Arguments @("run", "data:bundle") `
+        -WorkingDirectory $root `
+        -Retries 2
+      Invoke-AndLog `
+        -Label "Gerando pacote final de monitoramento." `
+        -FilePath "npm.cmd" `
+        -Arguments @("run", "deploy:zip") `
+        -WorkingDirectory $root
+      Invoke-AndLog `
+        -Label "Validando pacote final de monitoramento." `
+        -FilePath "npm.cmd" `
+        -Arguments @("run", "validate:deploy") `
+        -WorkingDirectory $root
+      Invoke-AndLog `
+        -Label "Publicando estado final do monitoramento." `
+        -FilePath "python" `
+        -Arguments @((Join-Path $root "private\deploy_completo.py")) `
+        -WorkingDirectory $root
+    } catch {
+      $deployStatus = "FALHA"
+      Write-Log "ERRO ao publicar o estado final do monitoramento: $_"
+      Invoke-AndLog `
+        -Label "Registrando falha da publicacao final do monitoramento." `
+        -FilePath "node" `
+        -Arguments @("scripts/record-pipeline-state.mjs", "--coleta=$collectionStatus", "--deploy=FALHA", "--whatsapp=$whatsAppStatus", "--fase=final") `
+        -WorkingDirectory $root `
+        -Retries 2
+    }
+  }
 
   # Backup automatico no GitHub (so com -GitSync e coleta validada com sucesso).
   # Commita apenas os diretorios de dados; push nao-fatal (nao derruba o ciclo).

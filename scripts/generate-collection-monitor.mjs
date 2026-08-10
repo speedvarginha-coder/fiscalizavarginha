@@ -6,6 +6,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const chunksDir = path.join(root, "painel-cidadao", "data", "chunks");
 const logsDir = path.join(root, "private", "logs");
 const statePath = path.join(root, "private", "state", "pipeline_last_result.json");
+const externalSitePath = path.join(root, "private", "state", "external_site.json");
 const status = JSON.parse(fs.readFileSync(path.join(chunksDir, "status_fontes.json"), "utf8"));
 
 function latestCompletedRun() {
@@ -45,13 +46,30 @@ const sources = Object.entries(status.domains || {}).map(([id, source]) => ({
   max_age_days: source.max_age_days ?? null,
   reason: source.reason || "Sem observação.",
 }));
-const counts = Object.fromEntries(["ok", "partial", "manual", "preserved", "failed", "unknown"].map((name) => [
+const counts = Object.fromEntries(["ok", "partial", "manual", "preserved", "failed", "stale", "unknown"].map((name) => [
   name, sources.filter((source) => source.status === name).length,
 ]));
 const output = {
   schema_version: 1,
   generated_at: new Date().toISOString(),
   last_completed_run: latestCompletedRun(),
+  // Deploy manual e coleta sao fatos diferentes. O monitor externo confirma
+  // a versao realmente servida sem transformar isso em "coleta=SUCESSO".
+  last_verified_deployment: fs.existsSync(externalSitePath)
+    ? (() => {
+        try {
+          const state = JSON.parse(fs.readFileSync(externalSitePath, "utf8"));
+          return state?.status === "ok" ? {
+            status: "SUCESSO",
+            checked_at: state.checked_at || null,
+            manifest_sha256: state.manifest_sha256 || null,
+            url: state.url || null,
+          } : null;
+        } catch {
+          return null;
+        }
+      })()
+    : null,
   summary: { total_sources: sources.length, by_status: counts },
   sources,
 };
