@@ -1477,16 +1477,21 @@
       ]
     }
   ],
-  "erros": [
+  "erros": [],
+  "invalidos": [
     {
       "cnpj": "17220303000196",
-      "erro": "HTTP Error 400: Bad Request",
-      "valor_emendas": 50000.0
+      "motivo": "digitos verificadores invalidos na fonte de origem",
+      "valor_emendas": 50000.0,
+      "beneficiarios": [
+        "Centro Federal de Educação Tecnológica de Minas Gerais"
+      ]
     }
   ],
   "resumo": {
     "consultados": 81,
-    "falhas": 1,
+    "falhas": 0,
+    "invalidos_na_fonte": 1,
     "cnpjs_candidatos": 82
   },
   "observacao": "Uso auxiliar. Para documento oficial, conferir comprovante de inscrição no site da Receita Federal.",

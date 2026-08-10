@@ -31328,7 +31328,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-08-09T18:27:10-03:00"
+    "coletado_em": "2026-08-10T10:54:52-03:00"
   },
   "2026": {
     "resumo": {
@@ -48101,81 +48101,11 @@
                 "voto": "Não Votou"
               }
             ]
-          },
-          {
-            "id": 2896,
-            "materia_id": 6126,
-            "descricao": "Expediente: Ordem do Dia/Expediente: 7 - Requerimento nº 185 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
-            "resultado": "Aprovado por unanimidade",
-            "sim": 14,
-            "nao": 0,
-            "abstencoes": 0,
-            "votos": []
-          },
-          {
-            "id": 2890,
-            "materia_id": 6130,
-            "descricao": "Expediente: Ordem do Dia/Expediente: 13 - Requerimento nº 186 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
-            "resultado": "Aprovado por unanimidade",
-            "sim": 14,
-            "nao": 0,
-            "abstencoes": 0,
-            "votos": []
-          },
-          {
-            "id": 2891,
-            "materia_id": 6132,
-            "descricao": "Expediente: Ordem do Dia/Expediente: 14 - Requerimento nº 187 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
-            "resultado": "Aprovado por unanimidade",
-            "sim": 14,
-            "nao": 0,
-            "abstencoes": 0,
-            "votos": []
-          },
-          {
-            "id": 2894,
-            "materia_id": 6133,
-            "descricao": "Expediente: Ordem do Dia/Expediente: 15 - Requerimento nº 188 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
-            "resultado": "Aprovado por unanimidade",
-            "sim": 14,
-            "nao": 0,
-            "abstencoes": 0,
-            "votos": []
-          },
-          {
-            "id": 2895,
-            "materia_id": 6134,
-            "descricao": "Expediente: Ordem do Dia/Expediente: 16 - Requerimento nº 189 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
-            "resultado": "Aprovado por unanimidade",
-            "sim": 14,
-            "nao": 0,
-            "abstencoes": 0,
-            "votos": []
-          },
-          {
-            "id": 2892,
-            "materia_id": 6136,
-            "descricao": "Expediente: Ordem do Dia/Expediente: 19 - Requerimento nº 190 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
-            "resultado": "Aprovado por unanimidade",
-            "sim": 14,
-            "nao": 0,
-            "abstencoes": 0,
-            "votos": []
-          },
-          {
-            "id": 2893,
-            "materia_id": 6138,
-            "descricao": "Expediente: Ordem do Dia/Expediente: 20 - Requerimento nº 191 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
-            "resultado": "Aprovado por unanimidade",
-            "sim": 14,
-            "nao": 0,
-            "abstencoes": 0,
-            "votos": []
           }
         ],
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5128"
       }
     ],
-    "coletado_em": "2026-08-09T18:27:10-03:00"
+    "coletado_em": "2026-08-10T10:54:52-03:00"
   }
 }

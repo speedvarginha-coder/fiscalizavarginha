@@ -1,16 +1,16 @@
 {
-  "gerado_em": "2026-08-09T21:35:13.182Z",
+  "gerado_em": "2026-08-10T14:03:52.832Z",
   "level": "critical",
   "summary": {
     "errors": 1,
-    "warnings": 6,
+    "warnings": 7,
     "info": 1,
     "ok": 1,
-    "total": 9
+    "total": 10
   },
   "atualizado_base": {
-    "iso": "2026-08-09T18:34:03",
-    "data_humana": "09/08/2026 - 18:34"
+    "iso": "2026-08-10T11:02:03",
+    "data_humana": "10/08/2026 - 11:02"
   },
   "items": [
     {
@@ -39,10 +39,10 @@
     },
     {
       "severity": "warning",
-      "id": "cnpj-falhas",
-      "title": "Falhas de consulta CNPJ",
-      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
-      "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
+      "id": "cnpj-invalidos-na-fonte",
+      "title": "CNPJ invalido na fonte de origem",
+      "detail": "1 CNPJ(s) tem digitos verificadores invalidos e nao foi consultado nas bases auxiliares. O sistema preserva o valor informado, mas nao atribui cadastro a outra empresa por aproximacao.",
+      "action": "Conferir o documento da emenda ou pedir correcao do CNPJ ao orgao responsavel pela publicacao.",
       "source": "cnpjs.json"
     },
     {
@@ -88,7 +88,7 @@
       "severity": "error",
       "id": "sancao-com-alcance-sobre-varginha",
       "title": "Registros de sancao com alcance que atinge Varginha",
-      "detail": "Foi localizado no cadastro federal 8 registro(s) de sancao vigente vinculado(s) a fornecedor(es) do painel cuja abrangencia declarada alcanca a administracao de Varginha: NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA (registro CEIS classificado pelo orgao informante como \"Impedimento/proibição de contratar com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Conselho Administrativo de Defesa Econômica - CADE, processo 08012.010022/2008-16, vigencia ate 18/08/2026); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (registro CEIS classificado pelo orgao informante como \"Declaração de Inidoneidade com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Prefeitura Municipal de Itapetininga (SP), processo PROTOCOLO Nº 23779/1/2026, vigencia ate 22/05/2029); FRAGA EVENTOS (registro CEIS classificado pelo orgao informante como \"Declaração de Inidoneidade com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Prefeitura Municipal de Coronel Xavier Chaves (MG), processo 9530/2025, vigencia ate 13/11/2028). O conteudo do cadastro e de responsabilidade do orgao que o alimenta. O registro nao prova, por si so, contratacao irregular — para isso e preciso contrato local ativo com datas sobrepostas a vigencia da sancao.",
+      "detail": "Foi localizado no cadastro federal 1 registro(s) de sancao vigente vinculado(s) a fornecedor(es) do painel cuja abrangencia declarada alcanca a administracao de Varginha: WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (registro CEIS classificado pelo orgao informante como \"Impedimento/proibição de contratar com prazo determinado\", abrangencia \"Em todos os Poderes da Esfera do órgão sancionador\", aplicada por MMG-PREFEITURA MUNICIPAL DE VARGINHA, processo 13.887/2025, vigencia ate 04/03/2027, verificacao humana em 2026-07-20). O conteudo do cadastro e de responsabilidade do orgao que o alimenta. O registro nao prova, por si so, contratacao irregular — para isso e preciso contrato local ativo com datas sobrepostas a vigencia da sancao.",
       "action": "Abrir o registro individual no Portal da Transparencia, conferir categoria, fundamentacao, abrangencia, situacao e processo; so entao verificar contrato local com datas sobrepostas.",
       "source": "sancoes.json",
       "verification": {
@@ -96,9 +96,7 @@
         "metodo": "abrangencia_oficial_do_registro",
         "confianca": "media",
         "evidencias": [
-          "NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA: Todas as Esferas em todos os Poderes (processo 08012.010022/2008-16)",
-          "MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA: Todas as Esferas em todos os Poderes (processo PROTOCOLO Nº 23779/1/2026)",
-          "FRAGA EVENTOS: Todas as Esferas em todos os Poderes (processo 9530/2025)"
+          "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA: Em todos os Poderes da Esfera do órgão sancionador (processo 13.887/2025)"
         ],
         "limitacoes": [
           "CNPJ do lado local vem mascarado pela fonte — casamento por raiz, nao exato",
@@ -107,6 +105,25 @@
         ]
       },
       "blocksPipeline": false
+    },
+    {
+      "severity": "warning",
+      "id": "sancao-sem-dossie-completo",
+      "title": "Sancoes com alcance relevante mas evidencia incompleta",
+      "detail": "7 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
+      "action": "Completar a coleta dos campos faltantes ou conferir manualmente o registro individual antes de qualquer divulgacao nominal.",
+      "source": "sancoes.json",
+      "verification": {
+        "estado": "requer_revisao_humana",
+        "metodo": "checagem_de_dossie_minimo",
+        "confianca": "baixa",
+        "evidencias": [
+          "7 registro(s) sem dossie completo"
+        ],
+        "limitacoes": [
+          "Sem os campos minimos nao ha base para afirmar alcance"
+        ]
+      }
     },
     {
       "severity": "warning",
@@ -175,10 +192,10 @@
     },
     {
       "severity": "warning",
-      "id": "cnpj-falhas",
-      "title": "Falhas de consulta CNPJ",
-      "detail": "1 CNPJ(s) nao foram enriquecidos na base auxiliar.",
-      "action": "Reprocessar CNPJs antes de usar dados cadastrais em analise publica.",
+      "id": "cnpj-invalidos-na-fonte",
+      "title": "CNPJ invalido na fonte de origem",
+      "detail": "1 CNPJ(s) tem digitos verificadores invalidos e nao foi consultado nas bases auxiliares. O sistema preserva o valor informado, mas nao atribui cadastro a outra empresa por aproximacao.",
+      "action": "Conferir o documento da emenda ou pedir correcao do CNPJ ao orgao responsavel pela publicacao.",
       "source": "cnpjs.json"
     },
     {
@@ -224,7 +241,7 @@
       "severity": "error",
       "id": "sancao-com-alcance-sobre-varginha",
       "title": "Registros de sancao com alcance que atinge Varginha",
-      "detail": "Foi localizado no cadastro federal 8 registro(s) de sancao vigente vinculado(s) a fornecedor(es) do painel cuja abrangencia declarada alcanca a administracao de Varginha: NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA (registro CEIS classificado pelo orgao informante como \"Impedimento/proibição de contratar com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Conselho Administrativo de Defesa Econômica - CADE, processo 08012.010022/2008-16, vigencia ate 18/08/2026); MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA (registro CEIS classificado pelo orgao informante como \"Declaração de Inidoneidade com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Prefeitura Municipal de Itapetininga (SP), processo PROTOCOLO Nº 23779/1/2026, vigencia ate 22/05/2029); FRAGA EVENTOS (registro CEIS classificado pelo orgao informante como \"Declaração de Inidoneidade com prazo determinado\", abrangencia \"Todas as Esferas em todos os Poderes\", aplicada por Prefeitura Municipal de Coronel Xavier Chaves (MG), processo 9530/2025, vigencia ate 13/11/2028). O conteudo do cadastro e de responsabilidade do orgao que o alimenta. O registro nao prova, por si so, contratacao irregular — para isso e preciso contrato local ativo com datas sobrepostas a vigencia da sancao.",
+      "detail": "Foi localizado no cadastro federal 1 registro(s) de sancao vigente vinculado(s) a fornecedor(es) do painel cuja abrangencia declarada alcanca a administracao de Varginha: WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (registro CEIS classificado pelo orgao informante como \"Impedimento/proibição de contratar com prazo determinado\", abrangencia \"Em todos os Poderes da Esfera do órgão sancionador\", aplicada por MMG-PREFEITURA MUNICIPAL DE VARGINHA, processo 13.887/2025, vigencia ate 04/03/2027, verificacao humana em 2026-07-20). O conteudo do cadastro e de responsabilidade do orgao que o alimenta. O registro nao prova, por si so, contratacao irregular — para isso e preciso contrato local ativo com datas sobrepostas a vigencia da sancao.",
       "action": "Abrir o registro individual no Portal da Transparencia, conferir categoria, fundamentacao, abrangencia, situacao e processo; so entao verificar contrato local com datas sobrepostas.",
       "source": "sancoes.json",
       "verification": {
@@ -232,9 +249,7 @@
         "metodo": "abrangencia_oficial_do_registro",
         "confianca": "media",
         "evidencias": [
-          "NUTRIPLUS ALIMENTACAO E TECNOLOGIA LTDA: Todas as Esferas em todos os Poderes (processo 08012.010022/2008-16)",
-          "MORK TELECOM PRODUTOS E SERVICOS PARA TELECOMUNICACOES LTDA: Todas as Esferas em todos os Poderes (processo PROTOCOLO Nº 23779/1/2026)",
-          "FRAGA EVENTOS: Todas as Esferas em todos os Poderes (processo 9530/2025)"
+          "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA: Em todos os Poderes da Esfera do órgão sancionador (processo 13.887/2025)"
         ],
         "limitacoes": [
           "CNPJ do lado local vem mascarado pela fonte — casamento por raiz, nao exato",
@@ -243,6 +258,25 @@
         ]
       },
       "blocksPipeline": false
+    },
+    {
+      "severity": "warning",
+      "id": "sancao-sem-dossie-completo",
+      "title": "Sancoes com alcance relevante mas evidencia incompleta",
+      "detail": "7 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
+      "action": "Completar a coleta dos campos faltantes ou conferir manualmente o registro individual antes de qualquer divulgacao nominal.",
+      "source": "sancoes.json",
+      "verification": {
+        "estado": "requer_revisao_humana",
+        "metodo": "checagem_de_dossie_minimo",
+        "confianca": "baixa",
+        "evidencias": [
+          "7 registro(s) sem dossie completo"
+        ],
+        "limitacoes": [
+          "Sem os campos minimos nao ha base para afirmar alcance"
+        ]
+      }
     },
     {
       "severity": "warning",
