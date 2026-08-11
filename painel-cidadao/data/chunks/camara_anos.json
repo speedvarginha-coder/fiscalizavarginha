@@ -31328,12 +31328,12 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-08-10T18:37:11-03:00"
+    "coletado_em": "2026-08-11T10:37:19-03:00"
   },
   "2026": {
     "resumo": {
       "ano": 2026,
-      "total_materias": 800,
+      "total_materias": 799,
       "vereadores_ativos": 15,
       "emendas_qtd": 0,
       "emendas_valor_total_brl": 0.0,
@@ -31341,7 +31341,7 @@
       "desfechos": {
         "lei": 36,
         "arquivado": 504,
-        "tramitando": 245,
+        "tramitando": 244,
         "encerrado": 15,
         "sem_dado": 0
       },
@@ -31368,7 +31368,7 @@
         },
         {
           "tipo": "Emenda",
-          "qtd": 21
+          "qtd": 20
         },
         {
           "tipo": "Moção",
@@ -31426,7 +31426,7 @@
         },
         {
           "tema": "cultura",
-          "mencoes": 23
+          "mencoes": 22
         },
         {
           "tema": "transporte",
@@ -33724,7 +33724,7 @@
         "sigla": "PLOL",
         "autor": "Bruno Leandro Coletor",
         "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/bruno_minuta_projeto_de_decreto__logradouro_revisado.docx",
-        "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO A ATUAL RUA 13, LOCALIZADA NO BAIRRO RESIDENCIAL PENEDO, PASSARÁ A DENOMINAR-SE: RUA JOEL DE FARIAS REIS.",
+        "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO A ATUAL RUA 13, LOCALIZADA NO BAIRRO RESIDENCIAL PENEDO, PASSARÁ A DENOMINAR-SE: RUA JOEL DE FARIA REIS.",
         "data": "2026-07-15",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
@@ -45209,23 +45209,6 @@
         "grau": "baixo"
       },
       {
-        "id": "5696",
-        "ano": "2026",
-        "numero": "14",
-        "tipo": "Emenda",
-        "sigla": "EMEN",
-        "autor": "CSAEL - Comissão de Saúde, Assistência, Promoção Social, Educação, Cultura, Esporte, Turismo e Lazer",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5696/emenda_aditiva_n.01-2026_ao_projeto_de_lei_n.02-2026.pdf",
-        "ementa": "EMENDA ADITIVA AO PROJETO DE LEI N9  02/2026, DE AUTORIA DO PODER EXECUTIVO, QUE \"ALTERA DISPOSITIVOS DA LEI MUNICIPAL N° 7.134 DE 25 DE AGOSTO DE 2023 E ESTABELECE O NOVO REGIME JURÍDICO DE FOMENTO CULTURAL DO MUNICÍPIO DE VARGINHA, EM OBSERVÂNCIA À LEI FEDERAL N' 14.903 DE 27 DE JUNHO DE 2024\".",
-        "data": "2026-04-15",
-        "impacto_zero": false,
-        "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
-        "tema": "cultura",
-        "tema_label": "Cultura/Esporte/Lazer",
-        "grau": "baixo"
-      },
-      {
         "id": "5735",
         "ano": "2026",
         "numero": "15",
@@ -48214,8 +48197,8 @@
         "numero": 48,
         "tipo": "Sessão Ordinária",
         "data": "2026-08-10",
-        "finalizada": false,
-        "url_video": "",
+        "finalizada": true,
+        "url_video": "https://www.youtube.com/watch?v=zYWGwRKg-30&t=",
         "presentes_qtd": 15,
         "presentes": [
           "Afonso Monticeli",
@@ -48234,10 +48217,1715 @@
           "Zilda Silva",
           "Zé Morais"
         ],
-        "votacoes": [],
+        "votacoes": [
+          {
+            "id": 2901,
+            "materia_id": 6032,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 1 - Projeto de Lei Ordinária do Executivo nº 41 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2900,
+            "materia_id": 6032,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 2 - Projeto de Lei Ordinária do Executivo nº 41 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2902,
+            "materia_id": 6117,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 3 - Projeto de Lei Ordinária do Executivo nº 44 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
+          },
+          {
+            "id": 2903,
+            "materia_id": 6117,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 4 - Projeto de Lei Ordinária do Executivo nº 44 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
+          },
+          {
+            "id": 2908,
+            "materia_id": 6097,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 5 - Projeto de Lei Ordinária do Legislativo nº 66 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2907,
+            "materia_id": 6097,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 6 - Projeto de Lei Ordinária do Legislativo nº 66 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2909,
+            "materia_id": 6101,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 7 - Projeto de Lei Ordinária do Legislativo nº 67 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2910,
+            "materia_id": 6101,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 8 - Projeto de Lei Ordinária do Legislativo nº 67 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2912,
+            "materia_id": 6108,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 9 - Projeto de Lei Ordinária do Legislativo nº 68 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2911,
+            "materia_id": 6108,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 10 - Projeto de Lei Ordinária do Legislativo nº 68 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2913,
+            "materia_id": 6115,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 11 - Projeto de Lei Ordinária do Legislativo nº 69 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2914,
+            "materia_id": 6115,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 12 - Projeto de Lei Ordinária do Legislativo nº 69 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2904,
+            "materia_id": 6011,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 13 - Projeto de Decreto Legislativo nº 51 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2905,
+            "materia_id": 6011,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 14 - Projeto de Decreto Legislativo nº 51 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2916,
+            "materia_id": 6082,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 15 - Projeto de Decreto Legislativo nº 58 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 1,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Não"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2915,
+            "materia_id": 6082,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 16 - Projeto de Decreto Legislativo nº 58 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 1,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Não"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2917,
+            "materia_id": 6084,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 17 - Projeto de Decreto Legislativo nº 59 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2918,
+            "materia_id": 6084,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 18 - Projeto de Decreto Legislativo nº 59 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2919,
+            "materia_id": 6094,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 19 - Projeto de Decreto Legislativo nº 60 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 1,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Não"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2920,
+            "materia_id": 6094,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 20 - Projeto de Decreto Legislativo nº 60 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 1,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Não"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2921,
+            "materia_id": 6111,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 21 - Projeto de Decreto Legislativo nº 61 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2922,
+            "materia_id": 6111,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 22 - Projeto de Decreto Legislativo nº 61 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2906,
+            "materia_id": 6088,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 23 - Projeto de Lei Ordinária do Legislativo nº 64 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2899,
+            "materia_id": 6151,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 2 - Moção nº 15 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
+          }
+        ],
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5129"
       }
     ],
-    "coletado_em": "2026-08-10T18:37:11-03:00"
+    "coletado_em": "2026-08-11T10:37:19-03:00"
   }
 }

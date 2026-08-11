@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-10T21:49:38.483Z",
-  "atualizado_em": "2026-08-10T18:47:06",
+  "gerado_em": "2026-08-11T13:44:00.035Z",
+  "atualizado_em": "2026-08-11T10:42:48",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,7 +11,7 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 215236136.55,
+    "total_pago_fornecedores_externos": 219279056.21,
     "credores_mapeados": 10000,
     "contratos_total": 1244,
     "contratos_do_ano": 417,
@@ -20,7 +20,7 @@
     "top_fornecedores": [
       {
         "nome": "HOSPITAL REGIONAL DO SUL DE MINAS",
-        "valor": 50897221.94
+        "valor": 52389360.36
       },
       {
         "nome": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
@@ -28,7 +28,7 @@
       },
       {
         "nome": "VIAÇÃO REAL TRANSPORTE URBANO E RODOVIÁRIO LTDA",
-        "valor": 11964705.09
+        "valor": 13955758.75
       },
       {
         "nome": "VARIAN MEDICAL SYSTEMS INC",
@@ -56,7 +56,7 @@
       },
       {
         "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-        "valor": 3988460.71
+        "valor": 3992460.71
       }
     ]
   },
@@ -121,7 +121,7 @@
   "diarias": {
     "prefeitura": {
       "registros": 5749,
-      "valor_total": 2314041.21,
+      "valor_total": 2325798.15,
       "quantidade_total": 5749,
       "servidores": 298
     },

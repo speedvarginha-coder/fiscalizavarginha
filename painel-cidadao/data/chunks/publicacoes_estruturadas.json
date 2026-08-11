@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-08-10T21:47:26+00:00",
+ "gerado_em": "2026-08-11T13:43:03+00:00",
  "fonte": "camara",
  "total": 800,
  "publicacoes": [
@@ -2430,18 +2430,18 @@
    "categoria": "Legislativo",
    "interesse_publico": "baixo",
    "tema": "urbanismo",
-   "resumo": "Este projeto de lei propõe a alteração do nome de uma rua na cidade de Varginha. A Rua 13, localizada no Bairro Residencial Penedo, passará a se chamar Rua Joel de Farias Reis.",
-   "o_que_propoe": "A Rua 13, localizada no Bairro Residencial Penedo, passará a se chamar Rua Joel de Farias Reis.",
-   "impacto_cidadao": "",
+   "resumo": "Este projeto de lei propõe nomear uma rua no bairro Residencial Penedo, em Varginha-MG.",
+   "o_que_propoe": "A atual Rua 13, localizada no bairro Residencial Penedo, passará a ser denominada Rua Joel de Faria Reis, caso o projeto seja aprovado.",
+   "impacto_cidadao": "Caso aprovado, os moradores da Rua 13 precisarão atualizar seus endereços em documentos e cadastros.",
    "por_que_acompanhar": [
-    "Para garantir que os recursos públicos sejam utilizados de forma eficiente na mudança de sinalização.",
-    "Para que os moradores da rua possam se preparar para as alterações de endereço.",
-    "Para assegurar que a homenagem seja justa e representativa para a comunidade."
+    "Verificar se a homenagem é pertinente e alinhada aos valores da comunidade.",
+    "Acompanhar se o processo de nomeação segue as regras e critérios municipais.",
+    "Entender os possíveis custos administrativos para o município com a mudança de placas e registros."
    ],
    "pontos_atencao": [
-    "Custos para a prefeitura com a confecção e instalação de novas placas de sinalização.",
-    "Possíveis transtornos para moradores e comerciantes da rua com a atualização de documentos e cadastros.",
-    "Critérios para a escolha do nome \"Joel de Farias Reis\" e sua relevância para a comunidade."
+    "Possíveis custos para o município com a alteração de placas e atualização de cadastros.",
+    "A necessidade de comunicação clara aos moradores sobre a mudança e os procedimentos para atualização de endereço.",
+    "Os critérios utilizados para a escolha do nome 'Joel de Faria Reis' para a rua."
    ],
    "valores": {
     "total": null,
@@ -2457,7 +2457,7 @@
    },
    "autor": "Bruno Leandro Coletor",
    "situacao": "em tramitação",
-   "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO A ATUAL RUA 13, LOCALIZADA NO BAIRRO RESIDENCIAL PENEDO, PASSARÁ A DENOMINAR-SE: RUA JOEL DE FARIAS REIS.",
+   "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO A ATUAL RUA 13, LOCALIZADA NO BAIRRO RESIDENCIAL PENEDO, PASSARÁ A DENOMINAR-SE: RUA JOEL DE FARIA REIS.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6088",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/bruno_minuta_projeto_de_decreto__logradouro_revisado.docx"
@@ -2467,8 +2467,8 @@
     "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/bruno_minuta_projeto_de_decreto__logradouro_revisado.docx"
    },
    "origem_ia": "ia",
-   "fonte_hash": "20444d12576ea085696dc8f865de20baa51853cf",
-   "gerado_em": "2026-07-15T11:39:19+00:00"
+   "fonte_hash": "24c7cf844a87eb7285fc2dc5af1670a18f242c63",
+   "gerado_em": "2026-08-11T13:43:03+00:00"
   },
   {
    "id": "CAMARA-2026-PDL-61",

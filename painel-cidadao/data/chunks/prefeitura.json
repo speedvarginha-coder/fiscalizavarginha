@@ -1,14 +1,14 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 215236136.55,
+  "total_externo_atual": 219279056.21,
   "total_externo_anterior": 390216204.32,
   "credores_qtd": 10000,
   "top_fornecedores_atual": [
     {
       "nome": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "cnpj": "25.863.390/****-**",
-      "valor_total": 50897221.94,
+      "valor_total": 52389360.36,
       "registros": 1,
       "anos": [
         2026
@@ -26,7 +26,7 @@
     {
       "nome": "VIAÇÃO REAL TRANSPORTE URBANO E RODOVIÁRIO LTDA",
       "cnpj": "77.930.956/****-**",
-      "valor_total": 11964705.09,
+      "valor_total": 13955758.75,
       "registros": 1,
       "anos": [
         2026
@@ -89,7 +89,7 @@
     {
       "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
       "cnpj": "37.943.080/****-**",
-      "valor_total": 3988460.71,
+      "valor_total": 3992460.71,
       "registros": 1,
       "anos": [
         2026
@@ -233,7 +233,7 @@
     {
       "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
       "cnpj": "27.445.021/****-**",
-      "valor_total": 1589846.5,
+      "valor_total": 1637416.45,
       "registros": 1,
       "anos": [
         2026
@@ -685,10 +685,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -726,10 +726,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -767,10 +767,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -808,10 +808,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -849,10 +849,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -890,10 +890,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -931,10 +931,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -972,10 +972,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1013,10 +1013,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1054,10 +1054,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1095,10 +1095,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1136,10 +1136,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1177,10 +1177,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -1218,10 +1218,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "HOSPITAL REGIONAL DO SUL DE MINAS",
-          "valor": 50897221.94
+          "valor": 52389360.36
         }
       ],
-      "valor_pago_total": 129135222.96,
+      "valor_pago_total": 130627361.38,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12106,10 +12106,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12147,10 +12147,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12188,10 +12188,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12229,10 +12229,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12270,10 +12270,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12311,10 +12311,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12352,10 +12352,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12393,10 +12393,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12434,10 +12434,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12475,10 +12475,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12516,10 +12516,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA",
-          "valor": 50770228.95
+          "valor": 53344710.64
         }
       ],
-      "valor_pago_total": 118574893.18,
+      "valor_pago_total": 121149374.87,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
