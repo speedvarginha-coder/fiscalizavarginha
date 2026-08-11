@@ -262,7 +262,7 @@
   "execucao": {
     "resumo_atual": {
       "registros": 271,
-      "empenhado": 4745109.92,
+      "empenhado": 4790109.92,
       "liquidado": 3085657.72,
       "pago": 3083725.72
     },
@@ -379,6 +379,17 @@
       },
       {
         "data": "2026-08-05",
+        "numero": 262,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 332/2025 P.A: 2205/2026 - Execução Projeto cultural: \"200 ANOS DA FUNDAÇÃO DE VARGINHA\"",
+        "valor_empenhado": 105000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 105000.0
+      },
+      {
+        "data": "2026-08-05",
         "numero": 238,
         "orgao": "ADMINISTRACAO",
         "credor": "ASSOCIACAO CULTURAL NIKKEY DE VARGINHA",
@@ -453,17 +464,6 @@
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 70000.0
-      },
-      {
-        "data": "2026-08-05",
-        "numero": 256,
-        "orgao": "ADMINISTRACAO",
-        "credor": "GRUPO MARANATHA DE ART GLOBAL",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 326/2025 P.A: 1859/2026 - Projeto: 2 MOSTRA DE CINEMA E GASTRONOMIA RURAL MINEIRA",
-        "valor_empenhado": 60000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 60000.0
       },
       {
         "data": "2026-08-05",

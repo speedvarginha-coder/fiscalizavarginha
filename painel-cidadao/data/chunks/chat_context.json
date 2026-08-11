@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-11T13:44:00.035Z",
-  "atualizado_em": "2026-08-11T10:42:48",
+  "gerado_em": "2026-08-11T20:47:32.792Z",
+  "atualizado_em": "2026-08-11T17:44:31",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -13,9 +13,9 @@
     "ano": 2026,
     "total_pago_fornecedores_externos": 219279056.21,
     "credores_mapeados": 10000,
-    "contratos_total": 1244,
-    "contratos_do_ano": 417,
-    "contratos_em_execucao": 1190,
+    "contratos_total": 1248,
+    "contratos_do_ano": 421,
+    "contratos_em_execucao": 1194,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -121,7 +121,7 @@
   "diarias": {
     "prefeitura": {
       "registros": 5749,
-      "valor_total": 2325798.15,
+      "valor_total": 2328180.42,
       "quantidade_total": 5749,
       "servidores": 298
     },
@@ -162,7 +162,7 @@
         "pessoas_qtd": 246,
         "linhas_todas_competencias": 12486,
         "comissionados_qtd": 2959,
-        "folha_bruta_total": 56292174.62,
+        "folha_bruta_total": 56318885.84,
         "folha_bruta_comissionados": 11951454.5,
         "maior_vencimento_comissionado": 57157.75
       }

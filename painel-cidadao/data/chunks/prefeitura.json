@@ -13373,7 +13373,7 @@
       "contratado": "NOVA OPCAO LOCADORA DE VEICULOS LTDA",
       "cnpj": "30.083.123/****-**",
       "valor": 2699881.59,
-      "situacao": "ENCERRADO",
+      "situacao": "EXECUCAO",
       "entidade": ""
     },
     {
@@ -19439,6 +19439,20 @@
       "entidade": ""
     },
     {
+      "numero": "89",
+      "ano": "2026",
+      "data_assinatura": "2026-08-06",
+      "data_fim": "2027-08-12",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Serviços de controle e manejo de aves urbanas (pombos), mediante implantação de barreiras físicas e sistemas de repelência - SEMEL",
+      "contratado": "BASSI AMBIENTAL CONTROLE DE PRAGAS LTDA",
+      "cnpj": "33.953.312/****-**",
+      "valor": 49500.0,
+      "situacao": "AGUARDANDO_EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "113",
       "ano": "2025",
       "data_assinatura": "2025-12-03",
@@ -19687,6 +19701,20 @@
       "contratado": "VASCONCELOS INDUSTRIA FARMACEUTICA E COMERCIO LTDA",
       "cnpj": "05.155.425/****-**",
       "valor": 44134.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-10",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de papel sulfite A4 para impressão de provas",
+      "contratado": "CREATIVE LICITACOES LTDA",
+      "cnpj": "54.362.519/****-**",
+      "valor": 43800.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -21731,6 +21759,20 @@
       "contratado": "MAPDATA-TECNOLOGIA,INFORMATICA E COMERCIO LTDA",
       "cnpj": "66.582.784/****-**",
       "valor": 20989.98,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-10",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Serviços para remoção/relocação de poste em abertura de rua no bairro Nossa Senhora das Graças",
+      "contratado": "CEMIG DISTRIBUICAO S.A",
+      "cnpj": "06.981.180/****-**",
+      "valor": 20948.13,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -24223,6 +24265,20 @@
       "contratado": "CECILIA SALLES CENTRO AUDITIVO LTDA",
       "cnpj": "43.139.840/****-**",
       "valor": 8491.2,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-10",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Serviço de ligação de uma usina fotovoltaica localizada em Unidade Básica de Atendimento",
+      "contratado": "CEMIG DISTRIBUICAO S.A",
+      "cnpj": "06.981.180/****-**",
+      "valor": 8440.06,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -30257,16 +30313,6 @@
       "entidade": ""
     },
     {
-      "numero": 68,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
-      "data": "2026-04-29",
-      "valor": 3984955.2,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
       "numero": 152,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -30417,16 +30463,6 @@
       "entidade": ""
     },
     {
-      "numero": 195,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Registro de Preços para o fornecimento de Hortifrutigranjeiro para o Zoológico Municipal",
-      "data": "2026-07-23",
-      "valor": 222280.2,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
       "numero": 197,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -30477,6 +30513,16 @@
       "entidade": ""
     },
     {
+      "numero": 223,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de serviços de engenharia para execução da obra de reforço estrutural da edificação do Tiro de Guerra",
+      "data": "2026-08-10",
+      "valor": 133005.96,
+      "situacao": "AGUARDANDO ABERTURA",
+      "entidade": ""
+    },
+    {
       "numero": 145,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -30514,16 +30560,6 @@
       "data": "2026-07-06",
       "valor": 69829.56,
       "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
-      "numero": 210,
-      "ano": "",
-      "modalidade": "Inexigibilidade de licitação",
-      "objeto": "Serviços para remoção/relocação de poste em abertura de rua no bairro Nossa Senhora das Graças",
-      "data": "2026-08-10",
-      "valor": 20948.13,
-      "situacao": "AGUARDANDO ABERTURA",
       "entidade": ""
     }
   ],
@@ -30585,6 +30621,16 @@
       "objeto": "Adesão ao registro de preços para FORNECIMENTO DE PLAYGROUND E BRINQUEDOS PEDAGÓGICOS - ASSOCIAÇÃO DOS MUNICIPIOS DA MICRORREGIAO DO MÉDIO SAPUCAÍ - AMESP.",
       "data": "2026-06-19",
       "valor": 5062448.9,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 68,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "data": "2026-04-29",
+      "valor": 3984955.2,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -31025,6 +31071,16 @@
       "objeto": "Registro de Preços de EPI’s - tênis e botas de segurança, necessários para servidores da Secretaria Municipal de Meio Ambiente",
       "data": "2026-03-03",
       "valor": 239049.5,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 195,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de Preços para o fornecimento de Hortifrutigranjeiro para o Zoológico Municipal",
+      "data": "2026-07-23",
+      "valor": 222280.2,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -31475,6 +31531,16 @@
       "objeto": "Serviço de  revisão e manutenção e de veículo IVECO DAILY - placa PUK0222/MG",
       "data": "2026-02-06",
       "valor": 21402.6,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 210,
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "Serviços para remoção/relocação de poste em abertura de rua no bairro Nossa Senhora das Graças",
+      "data": "2026-08-10",
+      "valor": 20948.13,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -138636,7 +138702,7 @@
     "Contratos (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 220
+      "registros": 224
     },
     "Contratos (ano anterior) (2025)": {
       "status": "partial",
@@ -138646,12 +138712,12 @@
     "Licitações em andamento (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 36
+      "registros": 34
     },
     "Licitações finalizadas (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 125
+      "registros": 128
     },
     "Compras diretas (2026)": {
       "status": "partial",

@@ -31328,7 +31328,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-08-11T10:37:19-03:00"
+    "coletado_em": "2026-08-11T17:37:21-03:00"
   },
   "2026": {
     "resumo": {
@@ -31339,9 +31339,9 @@
       "emendas_valor_total_brl": 0.0,
       "impacto_zero_qtd": 223,
       "desfechos": {
-        "lei": 36,
+        "lei": 39,
         "arquivado": 504,
-        "tramitando": 244,
+        "tramitando": 241,
         "encerrado": 15,
         "sem_dado": 0
       },
@@ -32572,7 +32572,7 @@
         "data": "2026-07-03",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32623,7 +32623,7 @@
         "data": "2026-07-28",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "lei",
         "tema": "educacao",
         "tema_label": "Educação",
         "grau": "alto"
@@ -32640,7 +32640,7 @@
         "data": "2026-08-03",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -48645,7 +48645,7 @@
             ]
           },
           {
-            "id": 2909,
+            "id": 2910,
             "materia_id": 6101,
             "descricao": "Ordem: Ordem do Dia/Expediente: 7 - Projeto de Lei Ordinária do Legislativo nº 67 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -48654,23 +48654,7 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Dandan",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Cássio Chiodi",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Thulyo Paiva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Davi Martins",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zilda Silva",
+                "parlamentar": "Bruno Leandro Coletor",
                 "voto": "Sim"
               },
               {
@@ -48678,7 +48662,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Dudu Ottoni",
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
                 "voto": "Sim"
               },
               {
@@ -48686,7 +48674,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Rogério Bueno",
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
                 "voto": "Sim"
               },
               {
@@ -48694,7 +48686,15 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Alexandre Prado",
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
                 "voto": "Sim"
               },
               {
@@ -48702,21 +48702,21 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Bruno Leandro Coletor",
-                "voto": "Sim"
-              },
-              {
                 "parlamentar": "Joãozinho Enfermeiro",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Ana Rios Fontoura",
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
                 "voto": "Sim"
               }
             ]
           },
           {
-            "id": 2910,
+            "id": 2909,
             "materia_id": 6101,
             "descricao": "Ordem: Ordem do Dia/Expediente: 8 - Projeto de Lei Ordinária do Legislativo nº 67 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -48725,27 +48725,11 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Bruno Leandro Coletor",
+                "parlamentar": "Dandan",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Zé Morais",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Rogério Bueno",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Ana Rios Fontoura",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Pastor Faustinho",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Alexandre Prado",
+                "parlamentar": "Cássio Chiodi",
                 "voto": "Sim"
               },
               {
@@ -48753,7 +48737,7 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Miguel da Saúde",
+                "parlamentar": "Davi Martins",
                 "voto": "Sim"
               },
               {
@@ -48761,19 +48745,7 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Dandan",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Davi Martins",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Afonso Monticeli",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Joãozinho Enfermeiro",
+                "parlamentar": "Zé Morais",
                 "voto": "Sim"
               },
               {
@@ -48781,7 +48753,35 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Cássio Chiodi",
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
                 "voto": "Sim"
               }
             ]
@@ -48929,7 +48929,7 @@
             ]
           },
           {
-            "id": 2913,
+            "id": 2914,
             "materia_id": 6115,
             "descricao": "Ordem: Ordem do Dia/Expediente: 11 - Projeto de Lei Ordinária do Legislativo nº 69 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -48938,15 +48938,7 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Thulyo Paiva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Alexandre Prado",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Dandan",
+                "parlamentar": "Cássio Chiodi",
                 "voto": "Sim"
               },
               {
@@ -48954,7 +48946,15 @@
                 "voto": "Sim"
               },
               {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
                 "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
                 "voto": "Sim"
               },
               {
@@ -48962,15 +48962,7 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Davi Martins",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Afonso Monticeli",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Miguel da Saúde",
+                "parlamentar": "Dandan",
                 "voto": "Sim"
               },
               {
@@ -48978,15 +48970,19 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Dudu Ottoni",
+                "parlamentar": "Alexandre Prado",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Cássio Chiodi",
+                "parlamentar": "Afonso Monticeli",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Ana Rios Fontoura",
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
                 "voto": "Sim"
               },
               {
@@ -48994,13 +48990,17 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Joãozinho Enfermeiro",
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
                 "voto": "Sim"
               }
             ]
           },
           {
-            "id": 2914,
+            "id": 2913,
             "materia_id": 6115,
             "descricao": "Ordem: Ordem do Dia/Expediente: 12 - Projeto de Lei Ordinária do Legislativo nº 69 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -49009,35 +49009,7 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Cássio Chiodi",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zilda Silva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Dudu Ottoni",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zé Morais",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Joãozinho Enfermeiro",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Rogério Bueno",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Dandan",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Pastor Faustinho",
+                "parlamentar": "Thulyo Paiva",
                 "voto": "Sim"
               },
               {
@@ -49045,7 +49017,19 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Afonso Monticeli",
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
                 "voto": "Sim"
               },
               {
@@ -49053,11 +49037,23 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Thulyo Paiva",
+                "parlamentar": "Afonso Monticeli",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Bruno Leandro Coletor",
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
                 "voto": "Sim"
               },
               {
@@ -49065,7 +49061,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Miguel da Saúde",
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
                 "voto": "Sim"
               }
             ]
@@ -49355,7 +49355,7 @@
             ]
           },
           {
-            "id": 2917,
+            "id": 2918,
             "materia_id": 6084,
             "descricao": "Ordem: Ordem do Dia/Expediente: 17 - Projeto de Decreto Legislativo nº 59 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -49364,15 +49364,11 @@
             "abstencoes": 0,
             "votos": [
               {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
                 "parlamentar": "Alexandre Prado",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Cássio Chiodi",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Thulyo Paiva",
                 "voto": "Sim"
               },
               {
@@ -49380,15 +49376,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Rogério Bueno",
+                "parlamentar": "Miguel da Saúde",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Zilda Silva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zé Morais",
+                "parlamentar": "Cássio Chiodi",
                 "voto": "Sim"
               },
               {
@@ -49396,11 +49388,19 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Dandan",
+                "parlamentar": "Davi Martins",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Bruno Leandro Coletor",
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
                 "voto": "Sim"
               },
               {
@@ -49408,25 +49408,25 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Miguel da Saúde",
+                "parlamentar": "Rogério Bueno",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Afonso Monticeli",
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
                 "voto": "Sim"
               },
               {
                 "parlamentar": "Joãozinho Enfermeiro",
                 "voto": "Sim"
-              },
-              {
-                "parlamentar": "Davi Martins",
-                "voto": "Sim"
               }
             ]
           },
           {
-            "id": 2918,
+            "id": 2917,
             "materia_id": 6084,
             "descricao": "Ordem: Ordem do Dia/Expediente: 18 - Projeto de Decreto Legislativo nº 59 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -49435,19 +49435,7 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Afonso Monticeli",
-                "voto": "Sim"
-              },
-              {
                 "parlamentar": "Alexandre Prado",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Dudu Ottoni",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Miguel da Saúde",
                 "voto": "Sim"
               },
               {
@@ -49455,27 +49443,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Pastor Faustinho",
+                "parlamentar": "Thulyo Paiva",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Davi Martins",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zé Morais",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zilda Silva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Dandan",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Ana Rios Fontoura",
+                "parlamentar": "Dudu Ottoni",
                 "voto": "Sim"
               },
               {
@@ -49483,7 +49455,19 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Thulyo Paiva",
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
                 "voto": "Sim"
               },
               {
@@ -49491,13 +49475,29 @@
                 "voto": "Sim"
               },
               {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
                 "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
                 "voto": "Sim"
               }
             ]
           },
           {
-            "id": 2919,
+            "id": 2920,
             "materia_id": 6094,
             "descricao": "Ordem: Ordem do Dia/Expediente: 19 - Projeto de Decreto Legislativo nº 60 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -49506,55 +49506,15 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Dudu Ottoni",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Bruno Leandro Coletor",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Rogério Bueno",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zé Morais",
-                "voto": "Sim"
-              },
-              {
                 "parlamentar": "Cássio Chiodi",
                 "voto": "Não"
-              },
-              {
-                "parlamentar": "Zilda Silva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Dandan",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Afonso Monticeli",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Davi Martins",
-                "voto": "Sim"
               },
               {
                 "parlamentar": "Thulyo Paiva",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Joãozinho Enfermeiro",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Miguel da Saúde",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Alexandre Prado",
+                "parlamentar": "Dudu Ottoni",
                 "voto": "Sim"
               },
               {
@@ -49562,13 +49522,53 @@
                 "voto": "Sim"
               },
               {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
                 "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
                 "voto": "Sim"
               }
             ]
           },
           {
-            "id": 2920,
+            "id": 2919,
             "materia_id": 6094,
             "descricao": "Ordem: Ordem do Dia/Expediente: 20 - Projeto de Decreto Legislativo nº 60 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -49577,27 +49577,7 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Cássio Chiodi",
-                "voto": "Não"
-              },
-              {
-                "parlamentar": "Thulyo Paiva",
-                "voto": "Sim"
-              },
-              {
                 "parlamentar": "Dudu Ottoni",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Pastor Faustinho",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Rogério Bueno",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zilda Silva",
                 "voto": "Sim"
               },
               {
@@ -49605,15 +49585,7 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Ana Rios Fontoura",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Joãozinho Enfermeiro",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Alexandre Prado",
+                "parlamentar": "Rogério Bueno",
                 "voto": "Sim"
               },
               {
@@ -49621,7 +49593,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Davi Martins",
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Não"
+              },
+              {
+                "parlamentar": "Zilda Silva",
                 "voto": "Sim"
               },
               {
@@ -49629,17 +49605,41 @@
                 "voto": "Sim"
               },
               {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
                 "parlamentar": "Miguel da Saúde",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Afonso Monticeli",
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
                 "voto": "Sim"
               }
             ]
           },
           {
-            "id": 2921,
+            "id": 2922,
             "materia_id": 6111,
             "descricao": "Ordem: Ordem do Dia/Expediente: 21 - Projeto de Decreto Legislativo nº 61 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -49648,15 +49648,11 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Pastor Faustinho",
+                "parlamentar": "Davi Martins",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Dandan",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Dudu Ottoni",
+                "parlamentar": "Rogério Bueno",
                 "voto": "Sim"
               },
               {
@@ -49664,7 +49660,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Alexandre Prado",
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
                 "voto": "Sim"
               },
               {
@@ -49672,7 +49672,19 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Rogério Bueno",
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
                 "voto": "Sim"
               },
               {
@@ -49684,15 +49696,7 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Bruno Leandro Coletor",
-                "voto": "Sim"
-              },
-              {
                 "parlamentar": "Thulyo Paiva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Davi Martins",
                 "voto": "Sim"
               },
               {
@@ -49702,15 +49706,11 @@
               {
                 "parlamentar": "Joãozinho Enfermeiro",
                 "voto": "Sim"
-              },
-              {
-                "parlamentar": "Cássio Chiodi",
-                "voto": "Sim"
               }
             ]
           },
           {
-            "id": 2922,
+            "id": 2921,
             "materia_id": 6111,
             "descricao": "Ordem: Ordem do Dia/Expediente: 22 - Projeto de Decreto Legislativo nº 61 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
             "resultado": "Aprovado",
@@ -49719,15 +49719,7 @@
             "abstencoes": 0,
             "votos": [
               {
-                "parlamentar": "Davi Martins",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Rogério Bueno",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zilda Silva",
+                "parlamentar": "Pastor Faustinho",
                 "voto": "Sim"
               },
               {
@@ -49735,15 +49727,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Cássio Chiodi",
+                "parlamentar": "Dudu Ottoni",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Zé Morais",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Bruno Leandro Coletor",
+                "parlamentar": "Zilda Silva",
                 "voto": "Sim"
               },
               {
@@ -49751,11 +49739,11 @@
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Dudu Ottoni",
+                "parlamentar": "Zé Morais",
                 "voto": "Sim"
               },
               {
-                "parlamentar": "Pastor Faustinho",
+                "parlamentar": "Rogério Bueno",
                 "voto": "Sim"
               },
               {
@@ -49767,7 +49755,15 @@
                 "voto": "Sim"
               },
               {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
                 "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
                 "voto": "Sim"
               },
               {
@@ -49776,6 +49772,10 @@
               },
               {
                 "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
                 "voto": "Sim"
               }
             ]
@@ -49926,6 +49926,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5129"
       }
     ],
-    "coletado_em": "2026-08-11T10:37:19-03:00"
+    "coletado_em": "2026-08-11T17:37:21-03:00"
   }
 }
