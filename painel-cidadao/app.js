@@ -8174,6 +8174,11 @@ ${url}
     }
   });
 
+  // Sinal deterministico para testes e monitoramento local. Ele so aparece
+  // depois que a inicializacao sincrona do painel terminou sem excecao.
+  document.body.setAttribute("data-fiscaliza-ready", "true");
+  window.dispatchEvent(new CustomEvent("fiscaliza:app-ready", { detail: { page: PAGE } }));
+
   } catch (err) {
     const _ov = document.getElementById("loading-overlay");
     if (_ov) _ov.remove();

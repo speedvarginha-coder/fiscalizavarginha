@@ -28,15 +28,22 @@ const viewports = [
 
 for (const viewport of viewports) {
   test(`sem quebra horizontal visível em ${viewport.width}px`, async ({ page }) => {
-    test.setTimeout(60_000);
+    test.setTimeout(180_000);
     await page.setViewportSize(viewport);
     const problemas = [];
 
     for (const path of pages) {
       await page.goto(`${baseUrl}/${path}`, { waitUntil: "domcontentloaded" });
-      await page.waitForTimeout(path.includes("prefeitura") ? 1800 : 700);
+      const usaDataLoader = await page.locator('script[src*="data-loader.js"]').count();
+      if (usaDataLoader) {
+        await expect(page.locator("body"), `aplicacao nao concluiu a inicializacao em ${path}`)
+          .toHaveAttribute("data-fiscaliza-ready", "true", { timeout: 45_000 });
+      } else {
+        await page.waitForTimeout(700);
+      }
       if (["prefeitura.html", "camara.html", "relatorios.html"].includes(path)) {
-        await expect(page.locator(".source-coverage")).toBeVisible({ timeout: 15_000 });
+        await expect(page.locator(".source-coverage"), `cobertura nao renderizada em ${path}`)
+          .toBeVisible({ timeout: 5_000 });
         await expect(page.locator(".source-coverage summary")).toContainText("Cobertura dos dados");
       }
       if (path === "prefeitura.html") {

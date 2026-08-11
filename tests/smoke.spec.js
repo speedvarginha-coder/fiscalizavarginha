@@ -20,6 +20,17 @@ const PAINEL = path.resolve(__dirname, "..", "painel-cidadao");
 // além de não exercitar o caminho real de produção.
 const fileUrl = (page) => "http://127.0.0.1:4173/" + page;
 
+/** Navega e espera o sinal emitido ao fim da inicialização real do painel. */
+async function gotoReady(page, url, options) {
+  const response = await page.goto(url, options);
+  const usaDataLoader = await page.locator('script[src*="data-loader.js"]').count();
+  if (usaDataLoader) {
+    await expect(page.locator("body"), `aplicação não concluiu a inicialização em ${url}`)
+      .toHaveAttribute("data-fiscaliza-ready", "true", { timeout: 45_000 });
+  }
+  return response;
+}
+
 /** Coleta erros do console — ignora limitações de file:// (não-bugs do app). */
 const BENIGNOS = [
   /favicon/,
@@ -64,7 +75,7 @@ for (const p of PAGINAS) {
   test.describe(`Página: ${p.arquivo}`, () => {
     test("abre sem erro fatal no console", async ({ page }) => {
       const erros = setupConsoleListener(page);
-      await page.goto(fileUrl(p.arquivo), { waitUntil: "domcontentloaded" });
+      await gotoReady(page, fileUrl(p.arquivo), { waitUntil: "domcontentloaded" });
       // Espera app.js terminar de inicializar (overlay de loading some)
       await page.waitForFunction(
         () => !document.getElementById("loading-overlay") ||
@@ -77,12 +88,12 @@ for (const p of PAGINAS) {
     });
 
     test("tem o título correto", async ({ page }) => {
-      await page.goto(fileUrl(p.arquivo));
+      await gotoReady(page, fileUrl(p.arquivo));
       await expect(page).toHaveTitle(p.titulo);
     });
 
     test(`bloco principal aparece (${p.bloco})`, async ({ page }) => {
-      await page.goto(fileUrl(p.arquivo), { waitUntil: "domcontentloaded" });
+      await gotoReady(page, fileUrl(p.arquivo), { waitUntil: "domcontentloaded" });
       await page.waitForTimeout(1500); // dá tempo do app.js renderizar
       const el = page.locator(p.bloco).first();
       await expect(el, `Bloco ${p.bloco} não foi encontrado`).toBeAttached();
@@ -92,7 +103,7 @@ for (const p of PAGINAS) {
 
 test.describe("Navegação", () => {
   test("nav contém todos os links principais", async ({ page }) => {
-    await page.goto(fileUrl("index.html"));
+    await gotoReady(page, fileUrl("index.html"));
     const links = [
       "index.html", "prefeitura.html", "camara.html",
       "relatorios.html", "pessoal.html",
@@ -106,7 +117,7 @@ test.describe("Navegação", () => {
 
 test.describe("Legenda de leitura dos dados", () => {
   test("legenda fixa explica fato, cruzamento, inferência e pendência", async ({ page }) => {
-    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(1500);
     const legend = page.locator("#dataReadingLegend");
     await expect(legend).toBeAttached();
@@ -123,7 +134,7 @@ test.describe("Legenda de leitura dos dados", () => {
 
 test.describe("Avisos de qualidade dos dados", () => {
   test("paginas publicas exibem limitacoes quando a auditoria aponta alerta", async ({ page }) => {
-    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const aviso = page.locator(".data-health-strip").first();
     await expect(aviso).toBeVisible();
@@ -138,7 +149,7 @@ test.describe("Avisos de qualidade dos dados", () => {
 
 test.describe("Justiça e transparência dos dados", () => {
   test("conformidade separa alerta técnico de conclusão jurídica", async ({ page }) => {
-    await page.goto(fileUrl("conformidade.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("conformidade.html"), { waitUntil: "domcontentloaded" });
     const conteudo = page.locator("main");
     await expect(conteudo).toContainText("Mesma régua para todos");
     await expect(conteudo).toContainText("Ausência não é culpa");
@@ -151,7 +162,7 @@ test.describe("Justiça e transparência dos dados", () => {
 
 test.describe("Mapa cidadao do dinheiro", () => {
   test("home usa central de fiscalizacao compacta", async ({ page }) => {
-    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const layout = await page.evaluate(() => {
       const heights = (sel) => Array.from(document.querySelectorAll(sel)).map((el) =>
@@ -172,7 +183,7 @@ test.describe("Mapa cidadao do dinheiro", () => {
   });
 
   test("home mostra guia para quem não sabe por onde começar", async ({ page }) => {
-    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const guia = page.locator("#homeStartGuide");
     await expect(guia).toContainText("Não sei por onde começar");
@@ -185,7 +196,7 @@ test.describe("Mapa cidadao do dinheiro", () => {
   });
 
   test("home mostra destinos do dinheiro e abre explicacao", async ({ page }) => {
-    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await expect(page.locator("#homeMoneyMap .money-topic").first()).toBeAttached();
     await expect(page.locator("#homeMoneyMap")).toContainText("Para onde foi o dinheiro");
@@ -199,7 +210,7 @@ test.describe("Mapa cidadao do dinheiro", () => {
 
 test.describe("Tendencia cidada do dinheiro", () => {
   test("home compara anos e abre explicacao", async ({ page }) => {
-    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await expect(page.locator("#homeTrendWatch .trend-card").first()).toBeAttached();
     await expect(page.locator("#homeTrendWatch")).toContainText("Está melhorando ou piorando");
@@ -213,7 +224,7 @@ test.describe("Tendencia cidada do dinheiro", () => {
 
 test.describe("Auditor inteligente", () => {
   test("home sugere caminhos de busca enquanto o cidadão digita", async ({ page }) => {
-    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator("#buscaHome").fill("as");
     const sugestoes = page.locator("#homeSmartSuggest");
@@ -230,7 +241,7 @@ test.describe("Auditor inteligente", () => {
 
 test.describe("Como cobrar", () => {
   test("mostra caminhos guiados para o cidadao comum", async ({ page }) => {
-    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const guia = page.locator(".cobrar-quick");
     await expect(guia).toContainText("O que você quer entender agora?");
@@ -240,7 +251,7 @@ test.describe("Como cobrar", () => {
   });
 
   test("fila de cobranca renderiza fornecedores priorizados", async ({ page }) => {
-    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await expect(page.locator("#filaCobrancaLista .risk-queue-card").first()).toBeAttached();
     await expect(page.locator("#filaCobrancaStats")).toContainText(/vermelho|amarelo|fornecedores/i);
@@ -254,7 +265,7 @@ test.describe("Como cobrar", () => {
   });
 
   test("fila de cobranca explica que frota e veiculo individual, nao quantidade", async ({ page }) => {
-    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await page.locator("#filaCobrancaTipo").selectOption("frota");
     const lista = page.locator("#filaCobrancaLista");
@@ -276,7 +287,7 @@ test.describe("Como cobrar", () => {
 
 test.describe("Filtros básicos", () => {
   test("Prefeitura — filtro de busca aceita texto", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     // Vai para aba contratos
     await page.locator('.pref-tab[data-pref-tab="contratos"]').first().click();
@@ -287,7 +298,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Prefeitura — busca por número abre detalhes e fonte", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     await page.locator('.pref-tab[data-pref-tab="contratos"]').first().click();
     const busca = page.locator("#filtroContrato");
@@ -308,7 +319,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Prefeitura — maiores registros da visão geral abrem contrato", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const row = page.locator("#gastosPalavraChave .keyword-row--button").first();
     await expect(row).toBeVisible();
@@ -320,7 +331,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Prefeitura — filtro de ano de contratos refina a lista", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     await page.locator('.pref-tab[data-pref-tab="contratos"]').first().click();
     const select = page.locator("#filtroAnoContrato");
@@ -332,7 +343,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Prefeitura — filtro de ano de licitação e busca funcionam", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     await page.locator('.pref-tab[data-pref-tab="licitacoes"]').first().click();
     const select = page.locator("#filtroAnoLicitacao");
@@ -344,7 +355,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Pessoal — ranking de comissionados explica e exibe período", async ({ page }) => {
-    await page.goto(fileUrl("pessoal.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("pessoal.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const ranking = page.locator("#rankingComissionados");
     await expect(ranking).toBeAttached();
@@ -358,7 +369,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Câmara — filtro de emendas aceita texto", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     await page.locator('.csec-btn[data-go="emendas"]').click();
     const busca = page.locator("#filtroEm");
@@ -368,12 +379,14 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Câmara — chip de categoria abre popup de emendas com fonte SAPL", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.csec-btn[data-go="emendas"]').click();
     const chip = page.locator("#catChipsCamara .cat-chip:not(.cat-chip--clear)").first();
     await expect(chip).toBeVisible();
-    await chip.click();
+    // O cabeçalho fixo pode cobrir o chip quando o Playwright o centraliza na
+    // viewport. O clique pelo DOM exercita o mesmo handler sem depender do layout.
+    await chip.evaluate((elemento) => elemento.click());
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();
     await expect(modal).toContainText(/emendas/i);
@@ -381,7 +394,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Camara - busca por cafe nao relaciona emendas como despesa", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator("#categoriaCamaraSelect").selectOption("Cafe");
     await page.waitForTimeout(300);
@@ -391,7 +404,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Selo de confiança do dado aparece em blocos críticos", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await expect(page.locator("#gastosPalavraChaveCamara")).toContainText("Selo de confiança do dado");
     await expect(page.locator("#remuneracaoVereadores")).toContainText("Selo de confiança do dado");
@@ -399,11 +412,19 @@ test.describe("Filtros básicos", () => {
     // Diárias é um chunk sob demanda no site publicado: a aba precisa ser
     // acionada para carregar os cartões antes de validar a procedência.
     await page.locator('.csec-btn[data-go="diarias"]').click();
-    await expect(page.locator(".diaria-card").first()).toContainText("Selo de confiança do dado");
+    await expect(page.locator("#diariasCamaraBlock")).toHaveAttribute(
+      "data-progressive-state",
+      "ready",
+      { timeout: 45_000 }
+    );
+    await expect(page.locator(".diaria-card").first()).toContainText(
+      "Selo de confiança do dado",
+      { timeout: 15_000 }
+    );
   });
 
   test("Glossário contextual marca termos técnicos renderizados", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     const termos = page.locator(".glossario-termo[data-explica]");
     await expect(termos.first()).toBeAttached();
@@ -415,7 +436,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Câmara — top fornecedor explica busca de contrato", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const btn = page.locator("#topFornecedoresCamara .forn-row__btn--filtro").first();
     await expect(btn).toBeAttached({ timeout: 15_000 });
@@ -425,7 +446,7 @@ test.describe("Filtros básicos", () => {
   });
 
   test("Câmara — top fornecedor abre dossie consolidado", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const btn = page.locator("#topFornecedoresCamara .forn-row__btn--dossie").first();
     await expect(btn).toBeAttached({ timeout: 15_000 });
@@ -440,7 +461,7 @@ test.describe("Filtros básicos", () => {
 
 test.describe("Placar do dinheiro", () => {
   test("Prefeitura mostra 4 cards no placar", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const cards = page.locator("#placarPrefeitura .placar-card");
     await expect(cards.first()).toBeAttached({ timeout: 15_000 });
@@ -448,7 +469,7 @@ test.describe("Placar do dinheiro", () => {
   });
 
   test("Prefeitura mostra recorte de asfalto, tapa-buraco e custo unitário", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.pref-tab[data-pref-tab="asfalto"]').first().click();
     const painel = page.locator("#asfaltoPainel");
@@ -464,7 +485,7 @@ test.describe("Placar do dinheiro", () => {
   });
 
   test("Prefeitura mostra frota municipal com gastos e fonte Betha", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.pref-tab[data-pref-tab="frota"]').first().click();
     const painel = page.locator("#frotaBlock");
@@ -476,14 +497,14 @@ test.describe("Placar do dinheiro", () => {
   });
 
   test("Câmara mostra 4 cards no placar", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const cards = page.locator("#placarCamara .placar-card");
     await expect(cards).toHaveCount(4);
   });
 
   test("Câmara mostra indice de relevancia logo apos a apresentacao", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     const layout = await page.evaluate(() => {
       const header = document.querySelector(".bigheader");
@@ -506,7 +527,7 @@ test.describe("Placar do dinheiro", () => {
   });
 
   test("Câmara mostra índice de relevância auditável", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await expect(page.locator("#indiceRelevancia .indice-card").first()).toBeAttached();
     await expect(page.locator("#indiceRelevancia")).toContainText("confianca/cobertura");
@@ -514,7 +535,7 @@ test.describe("Placar do dinheiro", () => {
   });
 
   test("Câmara - clicar na nota abre modal explicando os pesos (a conta bate)", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.csec-btn[data-go="vereadores"]').click();
     const card = page.locator("#indiceRelevancia .indice-card").first();
@@ -535,7 +556,7 @@ test.describe("Placar do dinheiro", () => {
   });
 
   test("Câmara mostra remuneração dos vereadores com fonte", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.csec-btn[data-go="vereadores"]').click();
     await expect(page.locator("#remuneracaoVereadores")).toContainText("Subsidio bruto mensal");
@@ -559,7 +580,7 @@ test.describe("Placar do dinheiro", () => {
 
 test.describe("Atualizações diárias (feed)", () => {
   test("Feed renderiza contratos reais coletados do Betha", async ({ page }) => {
-    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const cards = page.locator("#atualizacoesFeed .tline-item");
     // Espera pelo menos 1 ato (contratos reais de Varginha vindos dos dados Betha)
@@ -567,14 +588,14 @@ test.describe("Atualizações diárias (feed)", () => {
   });
 
   test("Stats no topo mostram 4 cards", async ({ page }) => {
-    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const stats = page.locator("#atualizacoesStats .placar-card");
     await expect(stats).toHaveCount(4);
   });
 
   test("Mostra resumo do que mudou desde a última atualização", async ({ page }) => {
-    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const digest = page.locator("#mudancasRecentes");
     await expect(digest).toBeAttached();
@@ -586,7 +607,7 @@ test.describe("Atualizações diárias (feed)", () => {
   });
 
   test("Aba Diário Oficial mostra edições resumidas da fonte oficial", async ({ page }) => {
-    await page.goto(fileUrl("atualizacoes.html") + "?tab=diario", { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("atualizacoes.html") + "?tab=diario", { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     await expect(page.locator("#atualizacoesTabs .update-tab").filter({ hasText: /Di.rio Oficial/ })).toHaveClass(/is-active/);
     await expect(page.locator("#mudancasRecentes")).toContainText(/O que mudou no Di.rio Oficial/);
@@ -601,7 +622,7 @@ test.describe("Atualizações diárias (feed)", () => {
   });
 
   test("Filtro Câmara mostra contratos (regressão: chunk camara_betha)", async ({ page }) => {
-    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     // Clica no chip Câmara
     await page.locator('#atualizacoesFiltros .cat-chip').filter({ hasText: /C.mara/ }).click();
@@ -615,7 +636,7 @@ test.describe("Atualizações diárias (feed)", () => {
   });
 
   test("Filtro de busca responde", async ({ page }) => {
-    await page.goto(fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("atualizacoes.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const busca = page.locator("#filtroAtualizacoes");
     await busca.fill("inexistente_xyz_123");
@@ -627,7 +648,7 @@ test.describe("Atualizações diárias (feed)", () => {
 
 test.describe("Aba Diárias (regressão)", () => {
   test("Prefeitura — aba Diárias mostra bloco no DOM", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     await page.locator('.pref-tab[data-pref-tab="diarias"]').first().click();
     await page.waitForTimeout(500);
@@ -640,7 +661,7 @@ test.describe("Aba Diárias (regressão)", () => {
   });
 
   test("Câmara — aba Diárias mostra bloco no DOM", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     await page.locator('.csec-btn[data-go="diarias"]').click();
     await page.waitForTimeout(500);
@@ -654,7 +675,7 @@ test.describe("Aba Diárias (regressão)", () => {
 
 test.describe("Per-capita no placar", () => {
   test("Prefeitura mostra valor por morador no card de total", async ({ page }) => {
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2000);
     const pc = page.locator("#placarPrefeitura .placar-card__percapita").first();
     await expect(pc).toContainText("por morador");
@@ -663,7 +684,7 @@ test.describe("Per-capita no placar", () => {
 
 test.describe("Banner de boas-vindas (onboarding)", () => {
   test("aparece uma vez na página inicial e não ocupa páginas de consulta", async ({ page }) => {
-    await page.goto(fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.evaluate(() => localStorage.removeItem("fiscaliza.onboarding.v1"));
     await page.reload();
     await page.waitForTimeout(2000);
@@ -679,7 +700,7 @@ test.describe("Banner de boas-vindas (onboarding)", () => {
 
     // Mesmo sem depender da flag, páginas de consulta nunca recebem o banner.
     await page.evaluate(() => localStorage.removeItem("fiscaliza.onboarding.v1"));
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(1000);
     await expect(page.locator("#onboarding-banner")).toHaveCount(0);
   });
@@ -687,7 +708,7 @@ test.describe("Banner de boas-vindas (onboarding)", () => {
 
 test.describe("Classificação cidadã de matérias", () => {
   test("dados têm grau/tema e materiaCard rendeza selo + por que acompanhar", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForFunction(() => Boolean(window.FISCALIZA && window.FISCALIZA.materiaCard && window.FISCALIZA_DATA?.camara_anos), null, { timeout: 15_000 });
     const r = await page.evaluate(() => {
       const anos = (window.FISCALIZA_DATA && window.FISCALIZA_DATA.camara_anos) || {};
@@ -709,7 +730,7 @@ test.describe("Classificação cidadã de matérias", () => {
 
 test.describe("Resumo Semanal", () => {
   test("bloco renderiza e mostra matérias ou estado vazio", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.csec-btn[data-go="atividade"]').click();
     const block = page.locator("#resumoSemanalBlock");
@@ -723,7 +744,7 @@ test.describe("Resumo Semanal", () => {
   });
 
   test("filtro de período 'Este mês' retorna matérias", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.csec-btn[data-go="atividade"]').click();
     await page.locator('#resumoPeriodoChips .rs-chip[data-periodo="mes"]').click();
@@ -733,7 +754,7 @@ test.describe("Resumo Semanal", () => {
   });
 
   test("chips de grau filtram por impacto", async ({ page }) => {
-    await page.goto(fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.csec-btn[data-go="atividade"]').click();
     // Primeiro expande para 'Este mês' para ter dados
@@ -750,7 +771,7 @@ test.describe("Resumo Semanal", () => {
 
 test.describe("Watchlist", () => {
   test("estado vazio aparece quando localStorage não tem nada", async ({ page }) => {
-    await page.goto(fileUrl("marcadores.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("marcadores.html"), { waitUntil: "domcontentloaded" });
     await page.evaluate(() => localStorage.removeItem("fiscaliza.watchlist.v1"));
     await page.reload();
     await page.waitForTimeout(2000);
@@ -767,7 +788,7 @@ test.describe("Watchlist", () => {
 test.describe("Siglas de secretaria (utils.siglaSecretaria)", () => {
   test("mapeia nomes oficiais para a sigla certa e mantém desconhecidos", async ({ page }) => {
     setupConsoleListener(page);
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(1500);
     const r = await page.evaluate(() => {
       const f = window.FISCALIZA.utils.siglaSecretaria;
@@ -798,7 +819,7 @@ test.describe("Siglas de secretaria (utils.siglaSecretaria)", () => {
 test.describe("Como cobrar — LAIs (estrutura e filtro duplo)", () => {
   test("20 temas, chips por card, filtro nível+categoria e busca", async ({ page }) => {
     const erros = setupConsoleListener(page);
-    await page.goto(fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("cobrar.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(1800);
 
     const cards = page.locator(".template-card");
@@ -838,7 +859,7 @@ test.describe("Rodapé padronizado", () => {
   for (const p of PAGS) {
     test(`${p}: navegação, fontes e data dinâmica`, async ({ page }) => {
       setupConsoleListener(page);
-      await page.goto(fileUrl(p + ".html"), { waitUntil: "domcontentloaded" });
+      await gotoReady(page, fileUrl(p + ".html"), { waitUntil: "domcontentloaded" });
       await expect(page.locator(".footer__inner")).toHaveCount(1);
       await expect(page.locator(".footer__nav a")).toHaveCount(12);
       await expect(page.locator(".footer__sources a")).toHaveCount(7);
@@ -851,11 +872,13 @@ test.describe("Rodapé padronizado", () => {
 test.describe("Diárias — ranking não invade a coluna e usa sigla", () => {
   test("Prefeitura: valor dentro do painel e secretaria abreviada", async ({ page }) => {
     setupConsoleListener(page);
-    await page.goto(fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     const tab = page.locator('[data-pref-tab]').filter({ hasText: /Di.rias/ }).first();
     if (await tab.count()) await tab.click();
-    await page.locator(".diaria-rank-row__function").first().waitFor({ timeout: 8000 });
+    await expect(page.locator("#diariasPrefeituraBlock"))
+      .toHaveAttribute("data-progressive-state", "ready", { timeout: 45_000 });
+    await page.locator(".diaria-rank-row__function").first().waitFor({ timeout: 15_000 });
 
     const r = await page.evaluate(() => {
       const rows = Array.from(document.querySelectorAll(".diaria-rank-row--compact"));
@@ -893,7 +916,7 @@ test.describe("Sinais de fiscalização — redes de sócios (CNPJ/QSA)", () => 
     const comuns = Object.values(idx).filter((v) => v.length > 1).length;
 
     setupConsoleListener(page);
-    await page.goto(fileUrl("relatorios.html"), { waitUntil: "domcontentloaded" });
+    await gotoReady(page, fileUrl("relatorios.html"), { waitUntil: "domcontentloaded" });
     await page.locator("#sinaisAtencao .sev").first().waitFor({ timeout: 10000 });
     // O bloco usa content-visibility para não pintar conteúdo fora da tela.
     // textContent valida os sinais já montados no DOM sem depender do scroll.

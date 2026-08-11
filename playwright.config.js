@@ -11,7 +11,7 @@ module.exports = defineConfig({
   reporter: [["list"], ["html", { open: "never" }]],
 
   webServer: {
-    command: "python -m http.server 4173 --directory painel-cidadao",
+    command: "python scripts/serve-static-tests.py",
     url: "http://127.0.0.1:4173",
     reuseExistingServer: !process.env.CI,
     timeout: 15_000,
