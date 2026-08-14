@@ -118,6 +118,16 @@ def _listar_contratacoes(cnpj: str, data_ini: str, data_fim: str,
     return todas
 
 
+def _num(v):
+    """Converte para float preservando ausencia. None nao pode virar 0.0."""
+    if v is None or v == "":
+        return None
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
 def _resultados_da_compra(cnpj: str, ano: int, seq: int) -> list[dict]:
     base = f"{API}/pncp/v1/orgaos/{cnpj}/compras/{ano}/{seq}"
     try:
@@ -132,12 +142,26 @@ def _resultados_da_compra(cnpj: str, ano: int, seq: int) -> list[dict]:
         except Exception:
             continue
         for r in resultados:
+            # Ausencia e ausencia: `or 0` aqui transformaria item sem preco
+            # publicado em item de graca, e ele entraria em qualquer media.
+            qtd = _num(r.get("quantidadeHomologada"))
+            if qtd is None:
+                qtd = _num(item.get("quantidade"))
+            unitario = _num(r.get("valorUnitarioHomologado"))
+            unidade = (item.get("unidadeMedida") or "").strip()
             out.append({
                 "item": n,
                 "descricao_item": (item.get("descricao") or "")[:160],
                 "vencedor": r.get("nomeRazaoSocialFornecedor") or "",
                 "cnpj_vencedor": r.get("niFornecedor") or "",
                 "valor_homologado": r.get("valorTotalHomologado"),
+                "quantidade": qtd,
+                "unidade_medida": unidade or None,
+                "valor_unitario_homologado": unitario,
+                "valor_unitario_estimado": _num(item.get("valorUnitarioEstimado")),
+                # Preco unitario so compara com outro preco unitario da MESMA
+                # unidade: "caixa com 100" contra "unidade" produz denuncia falsa.
+                "preco_comparavel": bool(unidade) and unitario is not None and unitario > 0,
                 "data_resultado": (r.get("dataResultado") or "")[:10],
             })
         time.sleep(PAUSA)
