@@ -141,3 +141,47 @@ test("carregador progressivo reutiliza a mesma requisição e preserva todos os 
   expect(await page.locator("#listaDiariasCamara .diaria-card").count()).toBeGreaterThan(0);
   expect(await page.locator("#diariasCamaraBlock").getAttribute("data-progressive-state")).toBe("ready");
 });
+
+test("relatorios publica preco homologado x referencia sem atrasar o primeiro render", async ({ page, request }) => {
+  const pedidos = [];
+  page.on("request", (req) => {
+    if (req.url().includes("/data/chunks/licitacoes_resultados.json")) pedidos.push(req.url());
+  });
+
+  await page.goto("/relatorios.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#sinaisAtencao .sev").first().waitFor({ timeout: 20_000 });
+
+  // 687 KB: a base entra na fase 2 e os sinais sao refeitos quando ela chega.
+  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.licitacoes_resultados), null, { timeout: 20_000 });
+  expect(pedidos.length, "a base deve ser buscada uma vez").toBe(1);
+
+  const registros = (await (await request.get("/data/chunks/licitacoes_resultados.json")).json()).registros || [];
+  const razoes = registros
+    .map((r) => {
+      const est = Number(r.valor_estimado) || 0;
+      const hom = Number(r.valor_homologado_total) || 0;
+      return est > 0 && hom > 0 && hom / est > 0.01 ? hom / est : null;
+    })
+    .filter((x) => x !== null);
+  const acimaDaReferencia = razoes.filter((x) => x > 1).length;
+  const semDesconto = razoes.filter((x) => x >= 0.97).length;
+
+  await page.waitForFunction(
+    () => (document.querySelector("#sinaisAtencao")?.textContent || "").toLowerCase().includes("valor de referência"),
+    null,
+    { timeout: 20_000 },
+  );
+  const txt = ((await page.locator("#sinaisAtencao").textContent()) || "").toLowerCase();
+
+  if (razoes.length >= 20 && (semDesconto / razoes.length) * 100 >= 30) {
+    expect(txt).toContain("desconto abaixo de 3%");
+    // O agregado é sobre a disputa, não sobre um fornecedor: nao pode acusar.
+    expect(txt).toContain("não prova combinação");
+    expect(txt).toContain("pesquisa de preços");
+  }
+  if (acimaDaReferencia > 0) {
+    expect(txt).toContain("o valor estimado");
+    expect(txt).toContain("termo de homologação");
+    expect(txt).not.toContain("fraude");
+  }
+});

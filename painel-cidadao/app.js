@@ -1768,7 +1768,22 @@
       const diff = Math.ceil(Math.abs(d2 - d1) / (1000 * 60 * 60 * 24)) || 1;
       return { ...c, custo_diario: (Number(c.valor) || 0) / diff };
     });
-    const addSignal = (kind, level, title, body, meta, href) => {
+    // Um sinal só vai ao ar se a base que o sustenta souber do que está falando.
+    // Em 14/08/2026 o resumo de pessoal somou várias competências e o alerta
+    // "23,7% de comissionados na Câmara" só não foi publicado porque um `|| 0`
+    // zerou por acaso — sorte do operador, não decisão. Base marcada como
+    // indeterminada suprime o sinal; o painel diz quantos foram suspensos, em
+    // vez de esconder a lacuna. Detector que dispara sobre artefato de dado
+    // acusa empresa e servidor pelo nome.
+    const sinaisSuprimidos = [];
+    const baseIndeterminada = (base) => []
+      .concat(base || [])
+      .some(b => b && (b.competencia_indeterminada || b.dado_indeterminado));
+    const addSignal = (kind, level, title, body, meta, href, base) => {
+      if (base && baseIndeterminada(base)) {
+        sinaisSuprimidos.push({ kind, title });
+        return;
+      }
       sinais.push({ kind, level, title, body, meta, href });
     };
     const agruparRelatorio = (itens, chaveFn, valorFn = () => 1) => {
@@ -2073,7 +2088,8 @@
         `${camComQtd} comissionados em ${camServQtd} vínculos ativos da Câmara (${pctCam}%)`,
         `Proporção de cargos comissionados ou similares na Câmara Municipal é ${pctCam}% — contra ${pctPref}% na Prefeitura (${prefComQtd} em ${prefServQtd} vínculos). Câmara Municipal legislativa deveria ter quadro enxuto; proporção alta merece explicação pública.`,
         `Competência ${camResumoP.competencia_referencia || camPessoal.competencia || "não informada"} · Folha comissionados: ${fmtBRL(camResumoP.folha_bruta_comissionados || 0)} · Folha total: ${fmtBRL(camResumoP.folha_bruta_total || 0)}`,
-        "camara.html"
+        "camara.html",
+        [camResumoP, prefResumoP]
       );
     }
 
@@ -2086,7 +2102,8 @@
         `Maior vencimento comissionado da Câmara: ${fmtBRL(maiorCom)}/mês`,
         `O servidor comissionado mais bem remunerado da Câmara Municipal recebe ${fmtBRL(maiorCom)} por mês. O teto do funcionalismo federal é ~R$ 44.000. Cargo e função devem ser verificados na fonte oficial.`,
         "Fonte: Portal de Transparência da Câmara (Betha) · Pessoal",
-        "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767"
+        "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767",
+        camResumoP
       );
     }
 
@@ -2257,10 +2274,141 @@
             `${s.nome}: ${fmtBRL(s.vencimentos)}/mês + ${fmtBRL(totalDiarias)} em diárias`,
             `${s.nome} é comissionado na Câmara com vencimento de ${fmtBRL(s.vencimentos)}/mês. Além do salário, acumulou ${fmtBRL(totalDiarias)} em diárias. O custo total para os cofres públicos supera o vencimento aparente. Cargo: ${s.cargo || "não informado"}.`,
             `Salário ${fmtBRL(s.vencimentos)}/mês · Diárias ${fmtBRL(totalDiarias)} acumulado`,
-            "pessoal.html"
+            "pessoal.html",
+            ((D.pessoal || {}).camara || {}).resumo
           );
         }
       });
+
+    // ---- OBRAS: execucao acima do teto legal de acrescimo ----
+    // Lei 14.133/2021, art. 125: acrescimo limitado a 25% do valor inicial
+    // atualizado do contrato, e a 50% no caso de reforma de edificio.
+    // Reajuste contratual (correcao monetaria) NAO conta como acrescimo, e a
+    // base de obras nao separa um do outro — por isso o sinal cobra a
+    // justificativa do processo, e nao afirma ilegalidade.
+    const obrasPub = pf.obras_publicas || [];
+    const ehReforma = (o) => /reforma|recupera|adequa|melhoria|amplia|manuten/.test(
+      norm([o.tipo_obra, o.categoria, o.objeto].filter(Boolean).join(" ")));
+    obrasPub
+      .map(o => {
+        const base = Number(o.valor_contrato) || 0;
+        const exec = Number(o.valor_efetivo) || 0;
+        if (base <= 0 || exec <= 0) return null;
+        const teto = ehReforma(o) ? 0.5 : 0.25;
+        const acresc = exec / base - 1;
+        return acresc > teto ? { o, acresc, teto, base, exec } : null;
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.acresc - a.acresc)
+      .forEach(({ o, acresc, teto, base, exec }) => addSignal(
+        "Prefeitura · Obras",
+        acresc > teto * 2 ? "critico" : "alto",
+        `Obra executada ${(acresc * 100).toFixed(1)}% acima do contrato: ${o.objeto || o.tipo_obra || "obra sem objeto informado"}`,
+        `O contrato foi assinado em ${fmtBRL(base)} e a execução registrada é de ${fmtBRL(exec)} — diferença de ${fmtBRL(exec - base)}. `
+        + `Para ${ehReforma(o) ? "reforma de edifício" : "obra nova"}, o art. 125 da Lei 14.133/2021 limita o acréscimo a ${(teto * 100).toFixed(0)}% do valor inicial atualizado. `
+        + `Parte da diferença pode ser reajuste (correção monetária), que não entra nesse limite; a base pública não separa reajuste de aditivo. `
+        + `O que cabe pedir é a justificativa e os termos aditivos do processo${o.contrato_numero ? ` do contrato ${o.contrato_numero}` : ""}.`,
+        `Contratado: ${o.contratado || o.fornecedor || "não informado"} · Situação: ${o.situacao || "não informada"}${o.percentual_executado ? ` · ${o.percentual_executado}% executado` : ""}`,
+        o.fonte_url || "prefeitura.html"
+      ));
+
+    // ---- OBRAS: custo por m2 fora da curva do proprio grupo ----
+    // Comparar R$/m2 entre tipos diferentes nao diz nada: creche nao e
+    // recapeamento. O grupo e o tipo_obra normalizado (o codigo "01.02 - " da
+    // fonte e removido) e so vale com 5+ obras — abaixo disso a mediana e
+    // ruido, nao referencia.
+    const normTipoObra = (s) => norm(String(s || "").replace(/^\d+\.\d+\s*-\s*/, ""));
+    const gruposObra = new Map();
+    obrasPub.forEach(o => {
+      const area = Number(o.area_m2) || 0;
+      const valor = Number(o.valor_efetivo) || Number(o.valor_contrato) || 0;
+      if (area <= 0 || valor <= 0) return;
+      const g = normTipoObra(o.tipo_obra) || "nao classificado";
+      if (!gruposObra.has(g)) gruposObra.set(g, []);
+      gruposObra.get(g).push({ o, m2: valor / area, valor, area });
+    });
+    gruposObra.forEach((lista, grupo) => {
+      if (lista.length < 5) return;
+      const ordenado = [...lista].sort((a, b) => a.m2 - b.m2);
+      const mediana = ordenado[Math.floor(ordenado.length / 2)].m2;
+      if (!(mediana > 0)) return;
+      lista.filter(x => x.m2 >= 2 * mediana).forEach(x => {
+        const razao = x.m2 / mediana;
+        // Acima de 10x o mais provavel e area mal informada na fonte, nao preco.
+        // Tratar isso como superfaturamento acusaria empreiteira por erro de
+        // cadastro — o sinal muda de natureza, e nao fala de preco.
+        if (razao > 10) {
+          addSignal(
+            "Prefeitura · Obras · Base inconsistente",
+            "medio",
+            `Área informada não fecha com o valor: ${x.o.objeto || grupo}`,
+            `A obra registra ${fmtNum(x.area)} m² e ${fmtBRL(x.valor)}, o que dá ${fmtBRL(x.m2)} por m² — ${razao.toFixed(0)} vezes a mediana das ${lista.length} obras do grupo "${grupo}" (${fmtBRL(mediana)}/m²). `
+            + `Diferença dessa ordem quase sempre é a área preenchida na medida errada na fonte, não preço. Isto é apontamento de qualidade da base, não indício sobre a contratada: serve para pedir correção do cadastro.`,
+            `Grupo "${grupo}" · ${lista.length} obras comparadas`,
+            x.o.fonte_url || "prefeitura.html"
+          );
+          return;
+        }
+        addSignal(
+          "Prefeitura · Obras",
+          razao >= 4 ? "alto" : "medio",
+          `Custo por m² ${razao.toFixed(1)}x a mediana do grupo: ${x.o.objeto || grupo}`,
+          `A obra sai a ${fmtBRL(x.m2)} por m², contra mediana de ${fmtBRL(mediana)}/m² nas ${lista.length} obras do grupo "${grupo}". `
+          + `Custo por m² varia por padrão de acabamento, terreno e escopo — a diferença sozinha não indica sobrepreço. `
+          + `O que cabe pedir é a planilha orçamentária e a memória de cálculo da medição para comparar item a item.`,
+          `${fmtNum(x.area)} m² · ${fmtBRL(x.valor)} · Contratado: ${x.o.contratado || x.o.fornecedor || "não informado"}`,
+          x.o.fonte_url || "prefeitura.html"
+        );
+      });
+    });
+
+    // ---- LICITACAO: preco homologado contra o valor de referencia ----
+    // Pregao eletronico competitivo derruba preco. Quando a maioria das compras
+    // fecha colada no valor estimado, a pergunta e sobre a qualidade da disputa
+    // — nao sobre um fornecedor especifico. Por isso o padrao vai como UM sinal
+    // agregado; individual so quando o homologado supera a propria referencia.
+    const licRes = (D.licitacoes_resultados || {}).registros || [];
+    const razoes = licRes
+      .map(r => {
+        const est = Number(r.valor_estimado) || 0;
+        const hom = Number(r.valor_homologado_total) || 0;
+        // razao proxima de zero e homologacao simbolica/parcial, ja tratada em
+        // outro sinal: entra aqui so distorcendo a mediana.
+        return (est > 0 && hom > 0 && hom / est > 0.01) ? { r, razao: hom / est } : null;
+      })
+      .filter(Boolean);
+
+    if (razoes.length >= 20) {
+      const semDesconto = razoes.filter(x => x.razao >= 0.97);
+      const pct = (semDesconto.length / razoes.length) * 100;
+      if (pct >= 30) {
+        addSignal(
+          "Prefeitura · Licitacao",
+          pct >= 45 ? "alto" : "medio",
+          `${semDesconto.length} de ${razoes.length} compras fecharam com desconto abaixo de 3% sobre o valor de referência (${pct.toFixed(0)}%)`,
+          `Em disputa efetiva, o preço homologado costuma ficar sensivelmente abaixo do valor estimado pelo órgão. `
+          + `Aqui ${pct.toFixed(0)}% das compras com resultado publicado fecharam a 97% ou mais da própria referência. `
+          + `Isso não prova combinação: pode indicar estimativa feita com pesquisa de preço já defasada, item sem concorrente no mercado local ou disputa real que chegou perto do teto. `
+          + `O que cabe pedir é a pesquisa de preços que formou o valor de referência e a ata da sessão, para ver quantos concorrentes disputaram cada item.`,
+          `Base: ${razoes.length} compras com valor estimado e homologado no PNCP`,
+          "https://pncp.gov.br/app/editais?q=&orgaos=18240119000105"
+        );
+      }
+    }
+
+    razoes
+      .filter(x => x.razao > 1)
+      .sort((a, b) => b.razao - a.razao)
+      .forEach(({ r, razao }) => addSignal(
+        "Prefeitura · Licitacao",
+        razao >= 1.5 ? "critico" : "alto",
+        `Homologado ${razao.toFixed(2)}x o valor estimado: ${r.objeto || r.numero_compra || "compra sem objeto informado"}`,
+        `O órgão estimou ${fmtBRL(r.valor_estimado)} e homologou ${fmtBRL(r.valor_homologado_total)} — ${fmtBRL(r.valor_homologado_total - r.valor_estimado)} acima da própria referência. `
+        + `Fechar acima do valor estimado é possível e às vezes justificado (estimativa defasada, reequilíbrio, item sem oferta no teto), mas exige justificativa no processo. `
+        + `O que cabe pedir é o termo de homologação e o parecer que aceitou o preço acima do estimado.`,
+        `${r.modalidade || "modalidade não informada"} · compra ${r.numero_compra || "s/n"}/${r.ano || ""} · PNCP ${r.controle_pncp || "sem controle"}`,
+        "https://pncp.gov.br/app/editais?q=&orgaos=18240119000105"
+      ));
 
     renderResumoCidadao();
 
@@ -2798,9 +2946,20 @@
         </details>`;
       };
 
-      $("sinaisAtencao").innerHTML = sinais.length
+      // Sinal suspenso por base indeterminada é informação, não ausência:
+      // esconder a supressão faria a página parecer mais limpa do que está.
+      const notaSuprimidos = sinaisSuprimidos.length
+        ? `<div class="report-note" style="margin-bottom:12px;border-left:4px solid #b8860b;padding-left:12px">
+             <strong>${fmtNum(sinaisSuprimidos.length)} sinal(is) suspenso(s)</strong> porque a base que os sustenta
+             está incompleta nesta coleta — publicar acusação apoiada em dado indeterminado seria pior que não publicar.
+             Origem: ${esc([...new Set(sinaisSuprimidos.map(s => s.kind))].join(", "))}.
+             Detalhes em <a href="sobre.html#auditoriaDados">auditoria dos dados</a>.
+           </div>`
+        : "";
+
+      $("sinaisAtencao").innerHTML = notaSuprimidos + (sinais.length
         ? NIVEIS.map(faixa).join("")
-        : '<div class="empty">Nenhum sinal de atenção gerado com os dados atuais.</div>';
+        : '<div class="empty">Nenhum sinal de atenção gerado com os dados atuais.</div>');
 
       $("sinaisAtencao").querySelectorAll(".sev__mais").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -8183,6 +8342,10 @@ ${url}
       if ($("prefeituraLive") && pf_data.top_fornecedores_atual && pf_data.top_fornecedores_atual.length) {
         $("prefeituraLive").hidden = false;
       }
+    }
+    if (key === "licitacoes_resultados" && PAGE === "relatorios") {
+      // chegou a base de resultados: refaz os sinais para incluir preco x referencia
+      renderRelatorios();
     }
     if ((key === "prefeitura" || key === "camara_betha") && PAGE === "fundacao") {
       // chegaram os contratos das outras esferas: monta o cruzamento.

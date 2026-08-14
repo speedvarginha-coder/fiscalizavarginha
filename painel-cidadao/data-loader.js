@@ -21,7 +21,7 @@
     // "receitas" removido: o chunk mistura arrecadação acumulada de vários anos
     // (ISSQN R$ 2,1 bi vs orçado 379M) e nada na página o renderiza — não publicar
     // até a coleta filtrar o exercício corrente.
-    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "status_fontes", "pessoal"],
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "status_fontes", "pessoal", "licitacoes_resultados"],
     "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
@@ -34,6 +34,9 @@
   const CHUNKS_FASE2 = {
     "home": ["prefeitura"],  // 4.4 MB — home usa só resumo; prefeitura.json chega depois
     "fundacao": ["prefeitura", "camara_betha"],  // p/ cruzar fornecedores entre esferas (chegam após o render)
+    // 687 KB só para o sinal de preço homologado × estimado: não pode atrasar
+    // o primeiro render dos relatórios. app.js re-renderiza quando chega.
+    "relatorios": ["licitacoes_resultados"],
   };
 
   // Bases grandes carregadas somente quando a seção correspondente for usada.

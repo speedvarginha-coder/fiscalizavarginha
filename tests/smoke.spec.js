@@ -933,4 +933,55 @@ test.describe("Sinais de fiscalização — redes de sócios (CNPJ/QSA)", () => 
       test.skip(true, "Sem sócio em comum nos dados atuais — nada a afirmar.");
     }
   });
+
+  test("Obras — execução acima do teto do art. 125 vira sinal com o limite certo", async ({ page }) => {
+    const pf = require("../painel-cidadao/data/chunks/prefeitura.json");
+    const obras = pf.obras_publicas || [];
+    const ehReforma = (o) =>
+      /reforma|recupera|adequa|melhoria|amplia|manuten/i.test(
+        [o.tipo_obra, o.categoria, o.objeto].filter(Boolean).join(" ")
+      );
+    // O teto legal muda com o tipo: 25% em obra nova, 50% em reforma de
+    // edificio. Aplicar 25% em tudo acusaria reforma legalmente dentro do
+    // limite; aplicar 50% em tudo perderia obra nova estourada.
+    const acima = obras.filter((o) => {
+      const base = Number(o.valor_contrato) || 0;
+      const exec = Number(o.valor_efetivo) || 0;
+      return base > 0 && exec > 0 && exec / base - 1 > (ehReforma(o) ? 0.5 : 0.25);
+    });
+
+    await gotoReady(page, fileUrl("relatorios.html"), { waitUntil: "domcontentloaded" });
+    await page.locator("#sinaisAtencao .sev").first().waitFor({ timeout: 10000 });
+    const txt = ((await page.locator("#sinaisAtencao").textContent()) || "").toLowerCase();
+
+    if (!acima.length) {
+      test.skip(true, "Nenhuma obra acima do teto nos dados atuais.");
+      return;
+    }
+    expect(txt).toContain("acima do contrato");
+    expect(txt).toContain("14.133");
+    // Reajuste nao e acrescimo: o texto tem que dizer isso antes de cobrar.
+    expect(txt).toContain("reajuste");
+    // ponto de partida, nunca veredito
+    expect(txt).not.toContain("ilegal");
+    expect(txt).not.toContain("superfaturamento");
+  });
+
+  test("Obras — R$/m² fora da curva separa preço de área mal informada", async ({ page }) => {
+    await gotoReady(page, fileUrl("relatorios.html"), { waitUntil: "domcontentloaded" });
+    await page.locator("#sinaisAtencao .sev").first().waitFor({ timeout: 10000 });
+    const txt = ((await page.locator("#sinaisAtencao").textContent()) || "").toLowerCase();
+
+    // Razao absurda (>10x a mediana do grupo) quase sempre e area preenchida
+    // errada na fonte. Tratar isso como preco acusaria empreiteira por erro de
+    // cadastro, entao o sinal muda de natureza e nao fala de valor.
+    if (txt.includes("área informada não fecha")) {
+      expect(txt).toContain("qualidade da base");
+      expect(txt).toContain("pedir correção do cadastro");
+    }
+    if (txt.includes("custo por m2") || txt.includes("custo por m²")) {
+      expect(txt).toContain("mediana");
+      expect(txt).toContain("não indica sobrepreço");
+    }
+  });
 });
