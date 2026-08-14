@@ -2410,6 +2410,45 @@
         "https://pncp.gov.br/app/editais?q=&orgaos=18240119000105"
       ));
 
+    // ---- PCA: o orgao publicou o que pretende comprar? ----
+    // Lei 14.133/2021, art. 12, VII: o plano anual de contratacoes deve ser
+    // publicado no PNCP. Estes dois sinais sao sobre a transparencia do proprio
+    // orgao — nao envolvem nenhum fornecedor e nao insinuam irregularidade em
+    // contratacao. Sao os mais seguros de publicar e dos mais uteis: cobram de
+    // quem tem o dever legal de publicar.
+    const pcaBase = D.pca || {};
+    const planos = pcaBase.planos || [];
+    const anoPca = Math.min(...(pcaBase.anos_consultados || [new Date().getFullYear()]));
+
+    planos
+      .filter(p => p.ano === anoPca && p.status === "nao_publicado")
+      .forEach(p => addSignal(
+        "Planejamento · PCA",
+        "medio",
+        `${p.orgao} não publicou o Plano de Contratações de ${p.ano} no PNCP`,
+        `O art. 12, VII da Lei 14.133/2021 prevê a publicação do plano anual de contratações no Portal Nacional de Contratações Públicas. `
+        + `A consulta ao PNCP não retornou plano de ${p.ano} para o CNPJ ${p.cnpj}. `
+        + `Pode ser plano não publicado ou publicado sob outro CNPJ — a consulta feita está no link, para conferência. `
+        + `Sem o plano, não há como comparar o que o órgão disse que ia comprar com o que comprou.`,
+        `Consulta: PNCP · CNPJ ${p.cnpj} · ano ${p.ano}`,
+        p.fonte || "https://pncp.gov.br/app/pca"
+      ));
+
+    planos
+      .filter(p => (p.status === "ok" || p.status === "parcial") && (p.resumo || {}).itens_qtd > 50)
+      .filter(p => (p.resumo.itens_sem_codigo_catalogo || 0) === p.resumo.itens_qtd)
+      .forEach(p => addSignal(
+        "Planejamento · PCA",
+        "medio",
+        `Plano de ${p.ano} de ${p.orgao}: nenhum dos ${fmtNum(p.resumo.itens_qtd)} itens traz código de catálogo`,
+        `O plano declara ${fmtNum(p.resumo.itens_qtd)} itens somando ${fmtBRL(p.resumo.valor_total_declarado || 0)}, mas nenhum item informa o código de catálogo (CATMAT/CATSER). `
+        + `Sem esse código, o preço planejado não pode ser comparado automaticamente com o que outros órgãos pagam pelo mesmo item — a comparação passaria a depender de casar texto livre, que erra. `
+        + `Isso não indica irregularidade: é limitação de transparência que o próprio órgão pode corrigir preenchendo o campo. `
+        + `O que cabe pedir é a adoção do catálogo padronizado nas próximas publicações.`,
+        `${fmtNum(p.resumo.itens_com_preco_comparavel)} itens têm preço unitário com unidade de fornecimento · ${fmtBRL(p.resumo.valor_total_declarado || 0)} planejados`,
+        p.fonte || "https://pncp.gov.br/app/pca"
+      ));
+
     renderResumoCidadao();
 
     if ($("relatorioResumo")) {
@@ -8342,6 +8381,9 @@ ${url}
       if ($("prefeituraLive") && pf_data.top_fornecedores_atual && pf_data.top_fornecedores_atual.length) {
         $("prefeituraLive").hidden = false;
       }
+    }
+    if (key === "pca" && PAGE === "relatorios") {
+      renderRelatorios();
     }
     if (key === "licitacoes_resultados" && PAGE === "relatorios") {
       // chegou a base de resultados: refaz os sinais para incluir preco x referencia

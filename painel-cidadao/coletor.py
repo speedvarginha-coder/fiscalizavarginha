@@ -125,6 +125,7 @@ def _save(name: str, payload) -> None:
         "federal.json", "pessoal.json", "diario.json",
         "remuneracao_vereadores.json", "sancoes_fornecedores.json",
         "auditoria_dados.json", "atualizacoes.json", "indice_relevancia.json",
+        "pca.json",
     }
     if name in chunk_names:
         chunks_dir = DATA / "chunks"
@@ -1023,6 +1024,32 @@ def _processa_pncp() -> dict:
     except Exception as e:
         print(f"  ✗ PNCP: {e}")
         return {"fonte": "PNCP", "erro": str(e), "compras": [], "contratos": []}
+
+
+def _processa_pca() -> dict:
+    print("⇣ PNCP — Plano de Contratações Anual (PCA)…")
+    try:
+        import coletor_pca
+        payload = coletor_pca.coletar()
+        r = payload.get("resumo", {})
+        pub = r.get("planos_publicados", 0)
+        print(f"  ✓ {pub} plano(s) publicado(s) de "
+              f"{r.get('entidades_consultadas', 0)} entidade(s) consultada(s)")
+        for plano in payload.get("planos", []):
+            if plano.get("status") == "parcial":
+                print(f"  ! {plano['orgao']} {plano['ano']}: {plano.get('observacao')}")
+        return payload
+    except Exception as e:
+        # Falha de coleta nao pode virar "nenhum plano publicado": o payload de
+        # erro nao traz planos, e o schema exige o motivo explicito.
+        print(f"  ✗ PCA: {e}")
+        return {
+            "schema_version": 1,
+            "fonte": "PNCP — Plano de Contratações Anual",
+            "erro": str(e),
+            "planos": [],
+            "resumo": {"entidades_consultadas": 0, "planos_publicados": 0},
+        }
 
 
 def _processa_camara_transparencia() -> dict:
@@ -2524,6 +2551,7 @@ def main() -> int:
     if not so_sapl and not sem_pncp:
         pncp = _processa_pncp()
         _save("pncp.json", pncp)
+        _save("pca.json", _processa_pca())
 
     if not so_sapl and not sem_camara_transp:
         camara_transparencia = _processa_camara_transparencia()

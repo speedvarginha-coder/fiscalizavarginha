@@ -147,6 +147,31 @@ def validate_emendas() -> tuple[int, int, int]:
     for record in federal.emendas:
         if record.granularidade == "emenda_favorecido_agregado" and record.identificador_repasse_confirmado:
             raise ValueError(f"federal {record.emenda}: agregado marcado como repasse individual")
+    especiais = [
+        record for record in federal.emendas
+        if record.granularidade == "emenda_plano_acao_transferegov"
+    ]
+    if len(especiais) < 8:
+        raise ValueError(
+            f"federais: apenas {len(especiais)} transferências especiais vinculadas ao Transferegov (esperado >= 8)"
+        )
+    if len({record.emenda for record in especiais}) != len(especiais):
+        raise ValueError("federais: transferência especial duplicada após deduplicação de planos")
+    for record in especiais:
+        data = record.model_dump()
+        if data.get("documentoBeneficiario") != "18240119000105":
+            raise ValueError(f"federal {record.emenda}: plano especial não pertence ao CNPJ de Varginha")
+        if not data.get("planoAcaoId") or "Transferegov" not in str(data.get("fonteExecucao") or ""):
+            raise ValueError(f"federal {record.emenda}: evidência Transferegov incompleta")
+        if data.get("valorLiquidado") is not None:
+            raise ValueError(f"federal {record.emenda}: transferência especial não pode inferir liquidação")
+        if record.identificador_repasse_confirmado:
+            if data.get("valorRecebido") is None or not data.get("dataRecurso"):
+                raise ValueError(f"federal {record.emenda}: recebimento confirmado sem crédito identificado")
+            if not data.get("numeroOrdensBancarias"):
+                raise ValueError(f"federal {record.emenda}: recebimento confirmado sem ordem bancária")
+        if data.get("valorExecutado") is not None and not data.get("relatorioGestaoLocalizado"):
+            raise ValueError(f"federal {record.emenda}: execução publicada sem relatório de gestão")
     return len(municipal.emendas), len(estadual.emendas), len(federal.emendas)
 
 
@@ -209,6 +234,63 @@ def validate_regressoes() -> None:
     _checar_regressao_numero("tse_doacoes", "tse_doacoes.eleitos", 10, lambda p: (p or {}).get("eleitos"))
     _checar_regressao_numero("licitacoes_resultados", "licitacoes_resultados.compras", 50,
                               lambda p: (p or {}).get("compras"))
+    _checar_regressao_numero("pca", "pca.resumo.planos_publicados", 2,
+                              lambda p: ((p or {}).get("resumo") or {}).get("planos_publicados"))
+    _validar_pca_coerencia()
+
+
+def _validar_pca_coerencia() -> None:
+    """O total publicado do plano tem que bater com o cabecalho do PNCP.
+
+    O cabecalho do PCA declara quantos itens e quanto vale o plano; a lista de
+    itens vem por varredura de sequenciais. Se a varredura perder paginas, a
+    soma dos itens fica menor que o plano real — e publicar essa soma como
+    "planejado para o ano" e o mesmo erro da folha de pessoal: numero parcial
+    apresentado como total. Ou bate, ou o plano se declara parcial.
+    """
+    payload = read_json(CHUNKS / "pca.json")
+    for plano in (payload or {}).get("planos", []):
+        if plano.get("status") not in ("ok", "parcial"):
+            continue
+        rotulo = f"pca[{plano.get('entidade')}/{plano.get('ano')}]"
+        resumo = plano.get("resumo") or {}
+        itens = plano.get("itens") or []
+
+        if len(itens) != resumo.get("itens_qtd"):
+            raise ValueError(f"{rotulo}: resumo diz {resumo.get('itens_qtd')} itens e a lista tem {len(itens)}")
+
+        esperado = plano.get("itens_qtd_pncp")
+        if isinstance(esperado, (int, float)) and esperado:
+            if len(itens) < esperado and plano.get("status") != "parcial":
+                raise ValueError(
+                    f"{rotulo}: PNCP declara {int(esperado)} itens, a coleta trouxe {len(itens)} "
+                    f"e o plano nao se declara parcial"
+                )
+
+        total_pncp = plano.get("valor_total_pncp")
+        total_itens = resumo.get("valor_total_declarado")
+        if (isinstance(total_pncp, (int, float)) and isinstance(total_itens, (int, float))
+                and plano.get("status") == "ok" and total_pncp > 0):
+            desvio = abs(total_itens - total_pncp) / total_pncp
+            if desvio > 0.001:
+                raise ValueError(
+                    f"{rotulo}: soma dos itens R$ {total_itens:.2f} diverge do cabecalho "
+                    f"do PNCP R$ {total_pncp:.2f} ({desvio*100:.2f}%)"
+                )
+
+        # Preco unitario sem unidade de fornecimento nao pode ser contado como
+        # comparavel: e o que permitiria comparar tonelada com quilo.
+        comparaveis = sum(1 for i in itens if i.get("preco_comparavel"))
+        if comparaveis != resumo.get("itens_com_preco_comparavel"):
+            raise ValueError(
+                f"{rotulo}: resumo diz {resumo.get('itens_com_preco_comparavel')} itens comparaveis "
+                f"e a lista tem {comparaveis}"
+            )
+        for i in itens:
+            if i.get("preco_comparavel") and not i.get("unidade_fornecimento"):
+                raise ValueError(
+                    f"{rotulo}: item {i.get('numero_item')} marcado como comparavel sem unidade de fornecimento"
+                )
 
 
 def main() -> int:

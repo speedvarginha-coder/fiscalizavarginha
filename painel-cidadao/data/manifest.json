@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-14T19:05:27.194Z",
+  "gerado_em": "2026-08-14T20:39:40.846Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
@@ -9,7 +9,7 @@
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
       "bytes": 19316,
-      "sha256": "38de60837d1c32593343b3f28af21324bafca729a954a63f6f26730bb5775874"
+      "sha256": "ce67a67a07a3183e2d21170e5c51f3874473ab1db8d8b638444c55d800a3a937"
     },
     "avalie_config": {
       "arquivo": "data/chunks/avalie_config.json",
@@ -74,7 +74,7 @@
     "home_resumo": {
       "arquivo": "data/chunks/home_resumo.json",
       "bytes": 557,
-      "sha256": "eee56ac1347c39b3429e2092def1097d733905a9c63f410415b160194ccf29bc"
+      "sha256": "55085040f99db38491dcffbf7ea4310872ac1e4c779e0ccfbf01af0d18f3b23c"
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
@@ -100,6 +100,11 @@
       "arquivo": "data/chunks/mudancas_coleta.json",
       "bytes": 23938,
       "sha256": "bc34a35056ba46db37753bf09a2a9650918d173fb17c7f2cf9128e1b30d4bc27"
+    },
+    "pca": {
+      "arquivo": "data/chunks/pca.json",
+      "bytes": 3007464,
+      "sha256": "39ab499bffc361305d144f1103fd620998e93ef2fdb1abcb415d4aebac81cc2d"
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
@@ -153,8 +158,8 @@
     },
     "status_fontes": {
       "arquivo": "data/chunks/status_fontes.json",
-      "bytes": 3413,
-      "sha256": "7d68994eda5cc6683d6dae6d5f2283cfb67ad2098b55b4f01f2d86994776b2ad"
+      "bytes": 3431,
+      "sha256": "b202c376940518a6210d44773f5e1710bab7317bb5ccd8191f0571cd5eb33453"
     },
     "tse_doacoes": {
       "arquivo": "data/chunks/tse_doacoes.json",

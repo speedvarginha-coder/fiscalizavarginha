@@ -185,3 +185,53 @@ test("relatorios publica preco homologado x referencia sem atrasar o primeiro re
     expect(txt).not.toContain("fraude");
   }
 });
+
+test("relatorios cobra o plano anual sem transformar ausencia em zero", async ({ page, request }) => {
+  await page.goto("/relatorios.html", { waitUntil: "domcontentloaded" });
+  await page.locator("#sinaisAtencao .sev").first().waitFor({ timeout: 20_000 });
+  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.pca), null, { timeout: 30_000 });
+
+  const pca = await (await request.get("/data/chunks/pca.json")).json();
+  const planos = pca.planos || [];
+  const ano = Math.min(...(pca.anos_consultados || []));
+
+  // Coerencia da base antes de cobrar a tela: soma dos itens tem que bater com
+  // o cabecalho do PNCP, senao o painel publicaria plano parcial como total.
+  for (const p of planos.filter((x) => x.status === "ok")) {
+    const somaItens = (p.itens || []).reduce((a, i) => a + (Number(i.valor_total) || 0), 0);
+    expect(Math.abs(somaItens - p.valor_total_pncp) / p.valor_total_pncp,
+      `${p.entidade}/${p.ano}: soma dos itens diverge do cabecalho do PNCP`).toBeLessThan(0.001);
+    expect(p.itens.length).toBe(p.itens_qtd_pncp);
+  }
+
+  // Item marcado como comparavel sem unidade de fornecimento permitiria
+  // comparar tonelada com quilo.
+  for (const p of planos) {
+    for (const i of p.itens || []) {
+      if (i.preco_comparavel) expect(i.unidade_fornecimento, `${p.entidade} item ${i.numero_item}`).toBeTruthy();
+    }
+  }
+
+  await page.waitForFunction(
+    () => (document.querySelector("#sinaisAtencao")?.textContent || "").includes("PNCP"),
+    null,
+    { timeout: 20_000 },
+  );
+  const txt = ((await page.locator("#sinaisAtencao").textContent()) || "").toLowerCase();
+
+  const naoPublicaram = planos.filter((p) => p.ano === ano && p.status === "nao_publicado");
+  if (naoPublicaram.length) {
+    expect(txt).toContain("não publicou o plano de contratações");
+    expect(txt).toContain("14.133");
+    // ausencia declarada pela fonte nao pode virar acusacao fechada
+    expect(txt).toContain("ou publicado sob outro cnpj");
+  }
+
+  const semCatalogo = planos.filter(
+    (p) => (p.resumo || {}).itens_qtd > 50 && p.resumo.itens_sem_codigo_catalogo === p.resumo.itens_qtd,
+  );
+  if (semCatalogo.length) {
+    expect(txt).toContain("código de catálogo");
+    expect(txt).toContain("não indica irregularidade");
+  }
+});
