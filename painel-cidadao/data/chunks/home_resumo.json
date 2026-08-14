@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-11T20:58:12.946Z",
+  "gerado_em": "2026-08-14T19:05:22.726Z",
   "fonte": "data/chunks/prefeitura.json",
-  "fonte_sha256": "5997da2dac524014cbf97c226e3df9901a81c736a230380808af8950d75483c9",
+  "fonte_sha256": "97a717632cbbc7f359924c51b5e0c685229a1a874b4ddc8923554a5a05441a1f",
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 219279056.21,
+  "total_externo_atual": 221125956.44,
   "total_externo_anterior": 390216204.32,
   "credores_qtd": 10000,
-  "contratos_execucao_qtd": 1194,
-  "contratos_total_qtd": 1248,
-  "contratos_ano_atual_qtd": 421,
+  "contratos_execucao_qtd": 1202,
+  "contratos_total_qtd": 1257,
+  "contratos_ano_atual_qtd": 430,
   "contratos_ano_anterior_qtd": 562,
   "obras_qtd": 130,
   "sinais_emendas_qtd": 239,
-  "licitacoes_qtd": 34
+  "licitacoes_qtd": 42
 }

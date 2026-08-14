@@ -1,7 +1,7 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 219279056.21,
+  "total_externo_atual": 221125956.44,
   "total_externo_anterior": 390216204.32,
   "credores_qtd": 10000,
   "top_fornecedores_atual": [
@@ -107,7 +107,7 @@
     {
       "nome": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
       "cnpj": "09.182.496/****-**",
-      "valor_total": 3618666.67,
+      "valor_total": 3642666.67,
       "registros": 1,
       "anos": [
         2026
@@ -141,18 +141,18 @@
       ]
     },
     {
-      "nome": "SERVICOS CFC LTDA",
-      "cnpj": "05.165.851/****-**",
-      "valor_total": 3107465.51,
+      "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
+      "cnpj": "17.155.730/****-**",
+      "valor_total": 3201178.84,
       "registros": 1,
       "anos": [
         2026
       ]
     },
     {
-      "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
-      "cnpj": "17.155.730/****-**",
-      "valor_total": 2858192.26,
+      "nome": "SERVICOS CFC LTDA",
+      "cnpj": "05.165.851/****-**",
+      "valor_total": 3107465.51,
       "registros": 1,
       "anos": [
         2026
@@ -197,7 +197,7 @@
     {
       "nome": "CAIXA ECONOMICA FEDERAL",
       "cnpj": "00.360.305/****-**",
-      "valor_total": 1834673.51,
+      "valor_total": 1872751.88,
       "registros": 1,
       "anos": [
         2026
@@ -2154,10 +2154,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2195,10 +2195,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3549,10 +3549,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3631,10 +3631,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3672,10 +3672,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3713,10 +3713,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3754,10 +3754,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3830,10 +3830,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3912,10 +3912,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3994,10 +3994,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4076,10 +4076,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4117,10 +4117,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4158,10 +4158,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4234,10 +4234,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4310,10 +4310,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4351,10 +4351,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4433,10 +4433,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4641,10 +4641,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 1820054.42
+          "valor": 1937713.28
         }
       ],
-      "valor_pago_total": 5715781.26,
+      "valor_pago_total": 5833440.12,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -7725,10 +7725,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -7857,10 +7857,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -7933,10 +7933,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3618666.67
+          "valor": 3642666.67
         }
       ],
-      "valor_pago_total": 12826666.67,
+      "valor_pago_total": 12850666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -13209,6 +13209,20 @@
       "entidade": ""
     },
     {
+      "numero": "34",
+      "ano": "2026",
+      "data_assinatura": "2026-04-29",
+      "data_fim": "2026-10-30",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para Locação de Veículos para Atendimento das Demandas da Administração Direta",
+      "contratado": "NOVA OPCAO LOCADORA DE VEICULOS LTDA",
+      "cnpj": "30.083.123/****-**",
+      "valor": 3374851.59,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "299",
       "ano": "2025",
       "data_assinatura": "2025-11-26",
@@ -13359,20 +13373,6 @@
       "contratado": "TANIA GONTIJO CONSULTORIA LTDA",
       "cnpj": "28.558.400/****-**",
       "valor": 2700000.0,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
-      "numero": "34",
-      "ano": "2026",
-      "data_assinatura": "2026-04-29",
-      "data_fim": "2026-07-29",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "Registro de Preços para Locação de Veículos para Atendimento das Demandas da Administração Direta",
-      "contratado": "NOVA OPCAO LOCADORA DE VEICULOS LTDA",
-      "cnpj": "30.083.123/****-**",
-      "valor": 2699881.59,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -13559,20 +13559,6 @@
       "entidade": ""
     },
     {
-      "numero": "53",
-      "ano": "2025",
-      "data_assinatura": "2025-06-16",
-      "data_fim": "2027-12-03",
-      "modalidade": "",
-      "tipo": "Obras e Serviços de Engenharia",
-      "objeto": "O objeto do presente termo de referência é a contratação de empresa especializada de engenharia para a construção da Unidade Básica de Saúde (UBS), porte 1, município Varginha, com fornecimento de todos os materiais, mão de obra e equipamentos necessários, de acordo com o Memorial Descritivo e Projeto (anexos).  O imóvel, ficará localizado à Rua Samuel Eli de Araújo, Bairro Parque Rinaldo, e sediará as instalações da nova UBS Jardim Áurea de Varginha.",
-      "contratado": "GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
-      "cnpj": "32.385.538/****-**",
-      "valor": 1893101.1,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
       "numero": "62",
       "ano": "2023",
       "data_assinatura": "2023-05-26",
@@ -13611,6 +13597,20 @@
       "contratado": "D & A COMERCIO EXPORTACAO IMPORTACAO TRANSPORTE E LOCACAO DE SOM E LUZ LTDA",
       "cnpj": "12.160.377/****-**",
       "valor": 1800299.78,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "53",
+      "ano": "2025",
+      "data_assinatura": "2025-06-16",
+      "data_fim": "2026-12-15",
+      "modalidade": "",
+      "tipo": "Obras e Serviços de Engenharia",
+      "objeto": "O objeto do presente termo de referência é a contratação de empresa especializada de engenharia para a construção da Unidade Básica de Saúde (UBS), porte 1, município Varginha, com fornecimento de todos os materiais, mão de obra e equipamentos necessários, de acordo com o Memorial Descritivo e Projeto (anexos).  O imóvel, ficará localizado à Rua Samuel Eli de Araújo, Bairro Parque Rinaldo, e sediará as instalações da nova UBS Jardim Áurea de Varginha.",
+      "contratado": "GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
+      "cnpj": "32.385.538/****-**",
+      "valor": 1791550.55,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -15519,6 +15519,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "contratado": "CONDAFE COMERCIO DE ROUPAS LTDA",
+      "cnpj": "10.430.444/****-**",
+      "valor": 343495.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "357",
       "ano": "2026",
       "data_assinatura": "2026-01-02",
@@ -15712,6 +15726,20 @@
       "cnpj": "02.558.157/****-**",
       "valor": 308678.5,
       "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "90",
+      "ano": "2026",
+      "data_assinatura": "2026-08-07",
+      "data_fim": "2027-02-13",
+      "modalidade": "",
+      "tipo": "Obras e Serviços de Engenharia",
+      "objeto": "Serviços de engenharia para restauração da cobertura e recuperação do piso da quadra poliesportiva do Ginásio Minhocão",
+      "contratado": "DUARTTE CONSTRUCOES E REFORMAS LTDA",
+      "cnpj": "58.606.078/****-**",
+      "valor": 304000.0,
+      "situacao": "AGUARDANDO_EXECUCAO",
       "entidade": ""
     },
     {
@@ -15967,6 +15995,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "contratado": "GREGORIOS COMERCIO DE MOVEIS LTDA",
+      "cnpj": "14.700.761/****-**",
+      "valor": 249000.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "80",
       "ano": "2025",
       "data_assinatura": "2025-09-16",
@@ -16145,6 +16187,20 @@
       "contratado": "CIRURGICA UNIAO LTDA",
       "cnpj": "04.063.331/****-**",
       "valor": 224374.8,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-11",
+      "data_fim": "2027-08-11",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de Hortifrutigranjeiro para o Zoológico Municipal",
+      "contratado": "WELINGTON MOL DA SILVA",
+      "cnpj": "65.304.941/****-**",
+      "valor": 222280.2,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -19077,6 +19133,20 @@
     {
       "numero": "0",
       "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "contratado": "LOUSAS BRASIL COMERCIO DE QUADROS E ARTIGOS ESCOLARES LTDA",
+      "cnpj": "40.801.863/****-**",
+      "valor": 59900.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
       "data_assinatura": "2026-02-11",
       "data_fim": "",
       "modalidade": "",
@@ -19831,6 +19901,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "contratado": "MAROUN SLEIMAN MOVEIS E COLCHOES LTDA",
+      "cnpj": "62.415.013/****-**",
+      "valor": 41450.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "273",
       "ano": "2025",
       "data_assinatura": "2025-10-21",
@@ -20401,6 +20485,20 @@
       "contratado": "WTRADE INTERMEDIACAO DE NEGOCIOS LTDA",
       "cnpj": "21.856.981/****-**",
       "valor": 34316.37,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-11",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de medalhas para os alunos participantes do 1° Jogos Escolares Municipais de Varginha.",
+      "contratado": "FMG SOLUCOES E FORNECIMENTOS LTDA",
+      "cnpj": "48.159.432/****-**",
+      "valor": 34240.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -21773,6 +21871,20 @@
       "contratado": "CEMIG DISTRIBUICAO S.A",
       "cnpj": "06.981.180/****-**",
       "valor": 20948.13,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-12",
+      "data_fim": "2027-08-12",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE PRODUTOS DE HIGIENE, COM COMODATO DOS RESPECTIVOS DISPENSADORES",
+      "contratado": "COMERCIAL VENER LTDA",
+      "cnpj": "65.353.401/****-**",
+      "valor": 20740.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -25207,6 +25319,20 @@
       "entidade": ""
     },
     {
+      "numero": "79",
+      "ano": "2025",
+      "data_assinatura": "2025-09-05",
+      "data_fim": "2026-09-09",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para prestação de serviços profissionais especializados em Dosimetria para a Unidade de Pronto Atendimento - UPA Varginha/MG",
+      "contratado": "SAPRA LANDAUER SERVICO DE ASSESSORIA E PROTECAO RADIOLOGICA LTDA.",
+      "cnpj": "50.429.810/****-**",
+      "valor": 5722.2,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "0",
       "ano": "2023",
       "data_assinatura": "2023-12-29",
@@ -25987,20 +26113,6 @@
       "contratado": "LICITAPUAVA COMERCIO E REPRESENTACOES LTDA",
       "cnpj": "30.162.288/****-**",
       "valor": 4083.1,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
-      "numero": "79",
-      "ano": "2025",
-      "data_assinatura": "2025-09-05",
-      "data_fim": "2026-09-09",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "Contratação de empresa especializada para prestação de serviços profissionais especializados em Dosimetria para a Unidade de Pronto Atendimento - UPA Varginha/MG",
-      "contratado": "SAPRA LANDAUER SERVICO DE ASSESSORIA E PROTECAO RADIOLOGICA LTDA.",
-      "cnpj": "50.429.810/****-**",
-      "valor": 4039.2,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -27457,6 +27569,20 @@
       "contratado": "JORDAN VENDAS INTELIGENTES LTDA",
       "cnpj": "51.167.154/****-**",
       "valor": 2248.05,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-11",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de bebedouro industrial para o Terminal Rodoviário",
+      "contratado": "RR INFORMATICA LTDA",
+      "cnpj": "64.393.069/****-**",
+      "valor": 2247.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -30233,6 +30359,26 @@
       "entidade": ""
     },
     {
+      "numero": 227,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de tintas e materiais afins",
+      "data": "2026-08-12",
+      "valor": 18147769.06,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
+      "numero": 220,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de Preços para futura e eventual aquisição de kits de material escolar destinado aos alunos da Rede Municipal de Educação de Varginha-MG.",
+      "data": "2026-08-11",
+      "valor": 10763346.5,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
       "numero": 194,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -30353,6 +30499,16 @@
       "entidade": ""
     },
     {
+      "numero": 234,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de tubos de concreto",
+      "data": "2026-08-13",
+      "valor": 1875812.88,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
       "numero": 191,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -30423,12 +30579,42 @@
       "entidade": ""
     },
     {
+      "numero": 181,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para aquisição de reagentes, insumos e consumíveis para o laboratório da Unidade de Pronto Atendimento",
+      "data": "2026-07-20",
+      "valor": 737788.25,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
+      "numero": 226,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
+      "data": "2026-08-11",
+      "valor": 697883.03,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
       "numero": 121,
       "ano": "",
       "modalidade": "Pregão eletrônico",
       "objeto": "Serviços de instalação do sistema de aquecimento das piscinas públicas",
       "data": "2026-06-01",
       "valor": 589499.57,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
+      "numero": 225,
+      "ano": "",
+      "modalidade": "Concorrência eletrônica",
+      "objeto": "Serviços de engenharia para reforma da cobertura do Almoxarifado Central",
+      "data": "2026-08-14",
+      "valor": 537264.89,
       "situacao": "EM ANDAMENTO",
       "entidade": ""
     },
@@ -30503,6 +30689,16 @@
       "entidade": ""
     },
     {
+      "numero": 222,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "data": "2026-08-11",
+      "valor": 158398.26,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
       "numero": 90,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -30519,7 +30715,7 @@
       "objeto": "Contratação de serviços de engenharia para execução da obra de reforço estrutural da edificação do Tiro de Guerra",
       "data": "2026-08-10",
       "valor": 133005.96,
-      "situacao": "AGUARDANDO ABERTURA",
+      "situacao": "EM ANDAMENTO",
       "entidade": ""
     },
     {
@@ -30559,6 +30755,16 @@
       "objeto": "Licenciamento de software para sistema integrado online de gestão esportiva e gestão de banco de dados, para controle e registro de informações de usuários, atletas e atividades esportivas.",
       "data": "2026-07-06",
       "valor": 69829.56,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
+      "numero": 221,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Serviço de tecnologia da informação para locação de infraestrutura de rede de rádio wireless dual band 2,4 e 5 ghz e link de internet",
+      "data": "2026-08-12",
+      "valor": 26486.04,
       "situacao": "EM ANDAMENTO",
       "entidade": ""
     }
@@ -31335,6 +31541,16 @@
       "entidade": ""
     },
     {
+      "numero": 203,
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "Serviços técnicos profissionais para organização metodológica e execução da Feira de Ideias 2026.",
+      "data": "2026-08-13",
+      "valor": 63000.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 116,
       "ano": "",
       "modalidade": "Inexigibilidade de licitação",
@@ -31621,7 +31837,7 @@
       "objeto": "Serviços de lavanderia industrial",
       "data": "2026-06-26",
       "valor": 10718.4,
-      "situacao": "DESERTO",
+      "situacao": "FRACASSADO",
       "entidade": ""
     },
     {
@@ -138702,7 +138918,7 @@
     "Contratos (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 224
+      "registros": 233
     },
     "Contratos (ano anterior) (2025)": {
       "status": "partial",
@@ -138712,12 +138928,12 @@
     "Licitações em andamento (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 34
+      "registros": 42
     },
     "Licitações finalizadas (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 128
+      "registros": 129
     },
     "Compras diretas (2026)": {
       "status": "partial",

@@ -1711,7 +1711,7 @@
       "cnpj_raiz": "09182496",
       "cnpj_completo": "09182496000136",
       "cnpj_reconstruido": true,
-      "valor_total": 3618666.67,
+      "valor_total": 3642666.67,
       "razao_social": "CENTRO DE DESENVOLVIMENTO INTEGRADO - CDI",
       "nome_fantasia": "CDI",
       "situacao": "ATIVA",
@@ -1784,29 +1784,11 @@
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
     {
-      "nome": "SERVICOS CFC LTDA",
-      "cnpj_raiz": "05165851",
-      "cnpj_completo": "05165851000108",
-      "cnpj_reconstruido": true,
-      "valor_total": 3107465.51,
-      "razao_social": "SERVICOS CFC LTDA",
-      "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
-      "situacao": "ATIVA",
-      "abertura": "2002-07-02",
-      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "ROBERTO ANDERE"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal"
-    },
-    {
       "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "cnpj_raiz": "17155730",
       "cnpj_completo": "17155730000164",
       "cnpj_reconstruido": true,
-      "valor_total": 2858192.26,
+      "valor_total": 3201178.84,
       "razao_social": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "nome_fantasia": "",
       "situacao": "ATIVA",
@@ -1823,6 +1805,24 @@
         "MARCOS MONTES CORDEIRO",
         "SERGIO LOPES CABRAL",
         "SERGIO PESSOA DE PAULA CASTRO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal"
+    },
+    {
+      "nome": "SERVICOS CFC LTDA",
+      "cnpj_raiz": "05165851",
+      "cnpj_completo": "05165851000108",
+      "cnpj_reconstruido": true,
+      "valor_total": 3107465.51,
+      "razao_social": "SERVICOS CFC LTDA",
+      "nome_fantasia": "SERVICOS CFC CONSTRUTORA / FORNECEDORA / CONSERVADORA",
+      "situacao": "ATIVA",
+      "abertura": "2002-07-02",
+      "cnae": "Fornecimento e gestão de recursos humanos para terceiros",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ROBERTO ANDERE"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -1912,7 +1912,7 @@
       "cnpj_raiz": "00360305",
       "cnpj_completo": "00360305000104",
       "cnpj_reconstruido": true,
-      "valor_total": 1834673.51,
+      "valor_total": 1872751.88,
       "razao_social": "CAIXA ECONOMICA FEDERAL",
       "nome_fantasia": "CEF MATRIZ",
       "situacao": "ATIVA",

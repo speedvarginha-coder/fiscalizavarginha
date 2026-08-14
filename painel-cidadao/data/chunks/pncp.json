@@ -1,9 +1,9 @@
 {
   "fonte": "Portal Nacional de Contratações Públicas (PNCP)",
   "ano": 2026,
-  "gerado_em": "2026-08-11T16:39:14+00:00",
-  "ultima_tentativa_em": "2026-08-11T16:39:14+00:00",
-  "ultima_coleta_bem_sucedida_em": "2026-08-11T16:39:14+00:00",
+  "gerado_em": "2026-08-12T09:02:37+00:00",
+  "ultima_tentativa_em": "2026-08-12T09:02:37+00:00",
+  "ultima_coleta_bem_sucedida_em": "2026-08-12T09:02:37+00:00",
   "compras": [
     {
       "numero_controle_pncp": "18240119000105-1-000159/2026",
@@ -1626,21 +1626,6 @@
       "fonte": "PNCP"
     },
     {
-      "numero_controle_pncp": "18240119000105-1-000190/2026",
-      "orgao": "MUNICIPIO DE VARGINHA",
-      "cnpj_orgao": "18240119000105",
-      "ano": 2026,
-      "sequencial": 190,
-      "modalidade": "Pregão - Eletrônico",
-      "modo_disputa": "Aberto",
-      "objeto": "[Portal de Compras Públicas] - Contratação de serviços contínuos de Remoção Terrestre Inter-Hospitalar com Ambulâncias, com o devido acompanhamento de profissional da área de saúde, para atender remoções de urgências, emergências e outras situações que se fizerem necessárias, dentro do município de Varginha",
-      "situacao": "Divulgada no PNCP",
-      "valor_estimado": 753397.8,
-      "valor_homologado": 0,
-      "data_publicacao": "2026-07-28T08:20:56",
-      "fonte": "PNCP"
-    },
-    {
       "numero_controle_pncp": "18240119000105-1-000194/2026",
       "orgao": "MUNICIPIO DE VARGINHA",
       "cnpj_orgao": "18240119000105",
@@ -1803,6 +1788,66 @@
       "valor_estimado": 133005.96,
       "valor_homologado": 0,
       "data_publicacao": "2026-08-10T17:40:43",
+      "fonte": "PNCP"
+    },
+    {
+      "numero_controle_pncp": "18240119000105-1-000217/2026",
+      "orgao": "MUNICIPIO DE VARGINHA",
+      "cnpj_orgao": "18240119000105",
+      "ano": 2026,
+      "sequencial": 217,
+      "modalidade": "Pregão - Eletrônico",
+      "modo_disputa": "Aberto",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para futura e eventual aquisição de kits de material escolar destinado aos alunos da Rede Municipal de Educação de Varginha-MG.",
+      "situacao": "Divulgada no PNCP",
+      "valor_estimado": 10763346.5,
+      "valor_homologado": 0,
+      "data_publicacao": "2026-08-11T14:46:35",
+      "fonte": "PNCP"
+    },
+    {
+      "numero_controle_pncp": "18240119000105-1-000219/2026",
+      "orgao": "MUNICIPIO DE VARGINHA",
+      "cnpj_orgao": "18240119000105",
+      "ano": 2026,
+      "sequencial": 219,
+      "modalidade": "Pregão - Eletrônico",
+      "modo_disputa": "Aberto",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "situacao": "Divulgada no PNCP",
+      "valor_estimado": 158398.26,
+      "valor_homologado": 0,
+      "data_publicacao": "2026-08-11T15:49:51",
+      "fonte": "PNCP"
+    },
+    {
+      "numero_controle_pncp": "18240119000105-1-000220/2026",
+      "orgao": "MUNICIPIO DE VARGINHA",
+      "cnpj_orgao": "18240119000105",
+      "ano": 2026,
+      "sequencial": 220,
+      "modalidade": "Pregão - Eletrônico",
+      "modo_disputa": "Aberto",
+      "objeto": "[Portal de Compras Públicas] - Contratação de serviços contínuos de Remoção Terrestre Inter-Hospitalar com Ambulâncias, com o devido acompanhamento de profissional da área de saúde, para atender remoções de urgências, emergências e outras situações que se fizerem necessárias, dentro do município de Varginha",
+      "situacao": "Divulgada no PNCP",
+      "valor_estimado": 753397.8,
+      "valor_homologado": 0,
+      "data_publicacao": "2026-08-11T16:01:40",
+      "fonte": "PNCP"
+    },
+    {
+      "numero_controle_pncp": "18240119000105-1-000221/2026",
+      "orgao": "MUNICIPIO DE VARGINHA",
+      "cnpj_orgao": "18240119000105",
+      "ano": 2026,
+      "sequencial": 221,
+      "modalidade": "Pregão - Eletrônico",
+      "modo_disputa": "Aberto",
+      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
+      "situacao": "Divulgada no PNCP",
+      "valor_estimado": 697883.03,
+      "valor_homologado": 0,
+      "data_publicacao": "2026-08-11T16:04:41",
       "fonte": "PNCP"
     },
     {
@@ -3168,6 +3213,36 @@
       "valor_estimado": 25688.6,
       "valor_homologado": 0,
       "data_publicacao": "2026-08-10T16:10:47",
+      "fonte": "PNCP"
+    },
+    {
+      "numero_controle_pncp": "18240119000105-1-000218/2026",
+      "orgao": "MUNICIPIO DE VARGINHA",
+      "cnpj_orgao": "18240119000105",
+      "ano": 2026,
+      "sequencial": 218,
+      "modalidade": "Dispensa",
+      "modo_disputa": "Dispensa Com Disputa",
+      "objeto": "[Portal de Compras Públicas] - Aquisição de peças Pá Carregadeira New Holland 12 D pertencente à SEAGRI.",
+      "situacao": "Divulgada no PNCP",
+      "valor_estimado": 11582.89,
+      "valor_homologado": 0,
+      "data_publicacao": "2026-08-11T14:48:50",
+      "fonte": "PNCP"
+    },
+    {
+      "numero_controle_pncp": "18240119000105-1-000222/2026",
+      "orgao": "MUNICIPIO DE VARGINHA",
+      "cnpj_orgao": "18240119000105",
+      "ano": 2026,
+      "sequencial": 222,
+      "modalidade": "Dispensa",
+      "modo_disputa": "Dispensa Com Disputa",
+      "objeto": "Aquisição de papel sulfite A4 para impressão de provas",
+      "situacao": "Divulgada no PNCP",
+      "valor_estimado": 59980.0,
+      "valor_homologado": 43800.0,
+      "data_publicacao": "2026-08-11T16:10:44",
       "fonte": "PNCP"
     },
     {
@@ -4643,21 +4718,6 @@
       "fonte": "PNCP"
     },
     {
-      "numero_controle_pncp": "04366790000184-2-000001/2026",
-      "orgao": "CAMARA MUNICIPAL DE VARGINHA",
-      "cnpj_orgao": "04366790000184",
-      "numero": "1",
-      "ano": 2026,
-      "fornecedor": "PANIFICADORA PRINCESA LTDA",
-      "cnpj_fornecedor": "19310200000179",
-      "objeto": "Aquisição de lanches destinados ao Vereadores e Escola do Legislativo",
-      "valor": 63000.0,
-      "data_assinatura": "2026-02-11",
-      "data_vigencia_inicio": "2026-02-11",
-      "data_vigencia_fim": "2027-02-10",
-      "fonte": "PNCP"
-    },
-    {
       "numero_controle_pncp": "04366790000184-2-000002/2026",
       "orgao": "CAMARA MUNICIPAL DE VARGINHA",
       "cnpj_orgao": "04366790000184",
@@ -4667,21 +4727,6 @@
       "cnpj_fornecedor": "05877230000157",
       "objeto": "Contratação de serviço de lavagem automotiva completa (exceto motor).",
       "valor": 9000.0,
-      "data_assinatura": "2026-03-02",
-      "data_vigencia_inicio": "2026-03-02",
-      "data_vigencia_fim": "2027-03-01",
-      "fonte": "PNCP"
-    },
-    {
-      "numero_controle_pncp": "04366790000184-2-000003/2026",
-      "orgao": "CAMARA MUNICIPAL DE VARGINHA",
-      "cnpj_orgao": "04366790000184",
-      "numero": "3",
-      "ano": 2026,
-      "fornecedor": "PAULO SERGIO ROSA 66250080600",
-      "cnpj_fornecedor": "20408808000110",
-      "objeto": "Contratação de serviços elétricos prediais destinados à manutenção preventiva e corretiva das instalações elétrica da Câmara Municipal",
-      "valor": 7500.0,
       "data_assinatura": "2026-03-02",
       "data_vigencia_inicio": "2026-03-02",
       "data_vigencia_fim": "2027-03-01",
@@ -4748,6 +4793,36 @@
       "fonte": "PNCP"
     },
     {
+      "numero_controle_pncp": "04366790000184-2-000001/2026",
+      "orgao": "CAMARA MUNICIPAL DE VARGINHA",
+      "cnpj_orgao": "04366790000184",
+      "numero": "1",
+      "ano": 2026,
+      "fornecedor": "PANIFICADORA PRINCESA LTDA",
+      "cnpj_fornecedor": "19310200000179",
+      "objeto": "Aquisição de lanches destinados ao Vereadores e Escola do Legislativo",
+      "valor": 63000.0,
+      "data_assinatura": "2026-02-11",
+      "data_vigencia_inicio": "2026-02-11",
+      "data_vigencia_fim": "2027-02-10",
+      "fonte": "PNCP"
+    },
+    {
+      "numero_controle_pncp": "04366790000184-2-000003/2026",
+      "orgao": "CAMARA MUNICIPAL DE VARGINHA",
+      "cnpj_orgao": "04366790000184",
+      "numero": "3",
+      "ano": 2026,
+      "fornecedor": "PAULO SERGIO ROSA 66250080600",
+      "cnpj_fornecedor": "20408808000110",
+      "objeto": "Contratação de serviços elétricos prediais destinados à manutenção preventiva e corretiva das instalações elétrica da Câmara Municipal",
+      "valor": 7500.0,
+      "data_assinatura": "2026-03-02",
+      "data_vigencia_inicio": "2026-03-02",
+      "data_vigencia_fim": "2027-03-01",
+      "fonte": "PNCP"
+    },
+    {
       "numero_controle_pncp": "04366790000184-2-000008/2026",
       "orgao": "CAMARA MUNICIPAL DE VARGINHA",
       "cnpj_orgao": "04366790000184",
@@ -4779,9 +4854,9 @@
     }
   ],
   "resumo": {
-    "compras_qtd": 272,
+    "compras_qtd": 277,
     "contratos_qtd": 46,
-    "valor_compras_estimado": 266334654.51,
+    "valor_compras_estimado": 278025845.19,
     "valor_contratos": 17233005.27
   },
   "consultas": [
@@ -4857,7 +4932,7 @@
       "orgaos": {
         "prefeitura": {
           "status": "ok",
-          "registros": 236,
+          "registros": 241,
           "falhas": []
         },
         "camara": {

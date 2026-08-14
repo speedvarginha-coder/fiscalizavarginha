@@ -1,16 +1,16 @@
 {
-  "gerado_em": "2026-08-11T20:47:20.173Z",
+  "gerado_em": "2026-08-14T18:53:27.784Z",
   "level": "critical",
   "summary": {
     "errors": 1,
-    "warnings": 8,
+    "warnings": 9,
     "info": 1,
     "ok": 1,
-    "total": 11
+    "total": 12
   },
   "atualizado_base": {
-    "iso": "2026-08-11T17:44:31",
-    "data_humana": "11/08/2026 - 17:44"
+    "iso": "2026-08-14T15:45:21",
+    "data_humana": "14/08/2026 - 15:45"
   },
   "items": [
     {
@@ -28,6 +28,14 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
+    },
+    {
+      "severity": "warning",
+      "id": "pessoal-prefeitura-parcial",
+      "title": "Pessoal da Prefeitura com escopo parcial",
+      "detail": "A base indica coleta parcial de Educacao/FUNDEB, nao folha completa da Prefeitura.",
+      "action": "Exibir essa limitacao junto dos numeros e buscar consulta completa por competencia.",
+      "source": "pessoal.json"
     },
     {
       "severity": "info",
@@ -129,7 +137,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "85 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (208 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "90 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (214 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -137,7 +145,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "208 sancao(oes) de outros entes"
+          "214 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
@@ -191,6 +199,14 @@
       "source": "fontes_emendas_2026.json"
     },
     {
+      "severity": "warning",
+      "id": "pessoal-prefeitura-parcial",
+      "title": "Pessoal da Prefeitura com escopo parcial",
+      "detail": "A base indica coleta parcial de Educacao/FUNDEB, nao folha completa da Prefeitura.",
+      "action": "Exibir essa limitacao junto dos numeros e buscar consulta completa por competencia.",
+      "source": "pessoal.json"
+    },
+    {
       "severity": "info",
       "id": "pncp-apoio",
       "title": "PNCP usado como fonte auxiliar",
@@ -290,7 +306,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "85 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (208 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "90 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (214 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -298,7 +314,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "208 sancao(oes) de outros entes"
+          "214 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"

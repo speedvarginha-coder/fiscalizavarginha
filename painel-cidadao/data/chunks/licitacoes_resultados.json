@@ -1,13 +1,13 @@
 {
   "fonte": "PNCP - Portal Nacional de Contratacoes Publicas (resultados por item)",
-  "gerado_em": "2026-08-11T19:09:21+00:00",
+  "gerado_em": "2026-08-12T12:21:50+00:00",
   "metodo": "Contratacoes publicadas pelos orgaos de Varginha no PNCP na janela de 8 meses, com vencedor e valor homologado por item. Homologacao simbolica (<= R$ 10 com estimativa >= R$ 50 mil) e o modelo legal de exploracao comercial: o alerta pede as contrapartidas do edital, nao presume irregularidade.",
   "janela": {
-    "inicio": "20251214",
-    "fim": "20260811"
+    "inicio": "20251215",
+    "fim": "20260812"
   },
-  "compras": 296,
-  "compras_com_resultado": 171,
+  "compras": 300,
+  "compras_com_resultado": 172,
   "homologacoes_simbolicas": [
     {
       "orgao": "Prefeitura Municipal de Varginha",
@@ -15120,15 +15120,196 @@
       "situacao": "Divulgada no PNCP",
       "data_publicacao": "2026-08-10",
       "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "98",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000219/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "valor_estimado": 158398.26,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-11",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "75",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000220/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Contratação de serviços contínuos de Remoção Terrestre Inter-Hospitalar com Ambulâncias, com o devido acompanhamento de profissional da área de saúde, para atender remoções de urgências, em",
+      "valor_estimado": 753397.8,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-11",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "100",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000221/2026",
+      "modalidade": "Pregão - Eletrônico",
+      "objeto": "[Portal de Compras Públicas] - Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
+      "valor_estimado": 697883.03,
+      "valor_homologado_total": null,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-11",
+      "resultados": []
+    },
+    {
+      "orgao": "Prefeitura Municipal de Varginha",
+      "numero_compra": "DE 68",
+      "ano": 2026,
+      "controle_pncp": "18240119000105-1-000222/2026",
+      "modalidade": "Dispensa",
+      "objeto": "Aquisição de papel sulfite A4 para impressão de provas",
+      "valor_estimado": 59980.0,
+      "valor_homologado_total": 43800.0,
+      "situacao": "Divulgada no PNCP",
+      "data_publicacao": "2026-08-11",
+      "resultados": [
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "CREATIVE LICITACOES LTDA",
+          "cnpj_vencedor": "54362519000149",
+          "valor_homologado": 43800.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "PAPELARIA E COPIADORA COPYSUL LTDA.",
+          "cnpj_vencedor": "68533967000172",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "CLEAR INDUSTRIA DE PAPEIS LTDA",
+          "cnpj_vencedor": "03790761000182",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "RDF COMERCIO DE PAPEIS E ELETRONICOS LTDA.",
+          "cnpj_vencedor": "01704747000193",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "EMPORIO DAS LICITACOES",
+          "cnpj_vencedor": "41087715000100",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "KING INDUSTRIA E COMERCIO E IMPORTACAO E EXPORTACAO LTDA",
+          "cnpj_vencedor": "47326944000117",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "FRUTFICA COMERCIO LTDA",
+          "cnpj_vencedor": "50353688000161",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "56.422.537 ANTONIA CRISTINA DE SOUSA SILVA",
+          "cnpj_vencedor": "56422537000102",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "LE NEGOCIOS, LICITACOES E AFINS LTDA",
+          "cnpj_vencedor": "55940505000128",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "67.001.815 FLAVIO ANDRE SILVA",
+          "cnpj_vencedor": "67001815000166",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "MELO E SILVA COMERCIO LTDA",
+          "cnpj_vencedor": "60754273000153",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "55.960.990 NILDERLAN ROSA DA SILVA",
+          "cnpj_vencedor": "55960990000100",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "49.233.322 DOUGLAS DA SILVA LIMA",
+          "cnpj_vencedor": "49233322000170",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "LIVRARIA, PAPELARIA E BRINQUEDOS MONTES CLAROS LTDA",
+          "cnpj_vencedor": "24965026000132",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        },
+        {
+          "item": 1,
+          "descricao_item": "PAPEL SULFITE A4 C/500 FOLHAS - PAPEL SULFITE A4 C/500 FOLHAS",
+          "vencedor": "61.531.821 LUIZ ROBERTO CARDOSO",
+          "cnpj_vencedor": "61531821000149",
+          "valor_homologado": 0.0,
+          "data_resultado": "2026-08-07"
+        }
+      ]
     }
   ],
   "erros": [
-    "contratacoes 18240119000105 mod 1 pg 1: HTTP Error 503: Service Unavailable"
+    "contratacoes 04366790000184 mod 2 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 3 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 4 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 5 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 6 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 7 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 8 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 9 pg 1: The read operation timed out",
+    "contratacoes 04366790000184 mod 10 pg 1: HTTP Error 503: Service Unavailable"
   ],
   "status": "partial",
   "qualidade_coleta": {
     "tentativas_por_requisicao": 4,
-    "falhas": 1,
+    "falhas": 9,
     "base_anterior_preservada": true
   }
 }

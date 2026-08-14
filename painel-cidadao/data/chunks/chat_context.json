@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-11T20:47:32.792Z",
-  "atualizado_em": "2026-08-11T17:44:31",
+  "gerado_em": "2026-08-14T18:53:40.213Z",
+  "atualizado_em": "2026-08-14T15:45:21",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,11 +11,11 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 219279056.21,
+    "total_pago_fornecedores_externos": 221125956.44,
     "credores_mapeados": 10000,
-    "contratos_total": 1248,
-    "contratos_do_ano": 421,
-    "contratos_em_execucao": 1194,
+    "contratos_total": 1257,
+    "contratos_do_ano": 430,
+    "contratos_em_execucao": 1202,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -63,7 +63,7 @@
   "camara": {
     "ano": 2026,
     "cadeiras": 15,
-    "total_pago_fornecedores_externos": 6936648.11,
+    "total_pago_fornecedores_externos": 6937638.11,
     "contratos_total": 46,
     "top_fornecedores": [
       {
@@ -120,15 +120,15 @@
   },
   "diarias": {
     "prefeitura": {
-      "registros": 5749,
-      "valor_total": 2328180.42,
-      "quantidade_total": 5749,
-      "servidores": 298
+      "registros": 5767,
+      "valor_total": 2326988.19,
+      "quantidade_total": 5767,
+      "servidores": 300
     },
     "camara": {
-      "registros": 240,
-      "valor_total": 143765,
-      "quantidade_total": 234,
+      "registros": 242,
+      "valor_total": 144365,
+      "quantidade_total": 235,
       "servidores": 31
     },
     "anos_disponiveis": [
@@ -138,18 +138,19 @@
   },
   "pessoal": {
     "prefeitura": {
-      "competencia": "07/2026",
+      "competencia": null,
       "resumo": {
         "orgao": "Prefeitura",
         "competencia_referencia": null,
-        "servidores_qtd": 4074,
-        "vinculos_qtd": 4074,
-        "pessoas_qtd": 3893,
-        "linhas_todas_competencias": 4074,
-        "comissionados_qtd": 94,
-        "folha_bruta_total": 32223454.58,
-        "folha_bruta_comissionados": 775911.43,
-        "maior_vencimento_comissionado": 40509.01
+        "competencia_indeterminada": true,
+        "servidores_qtd": null,
+        "vinculos_qtd": null,
+        "pessoas_qtd": null,
+        "linhas_todas_competencias": 303818,
+        "comissionados_qtd": null,
+        "folha_bruta_total": null,
+        "folha_bruta_comissionados": null,
+        "maior_vencimento_comissionado": null
       }
     },
     "camara": {
@@ -157,14 +158,15 @@
       "resumo": {
         "orgao": "Camara",
         "competencia_referencia": null,
-        "servidores_qtd": 12486,
-        "vinculos_qtd": 12486,
-        "pessoas_qtd": 246,
+        "competencia_indeterminada": true,
+        "servidores_qtd": null,
+        "vinculos_qtd": null,
+        "pessoas_qtd": null,
         "linhas_todas_competencias": 12486,
-        "comissionados_qtd": 2959,
-        "folha_bruta_total": 56318885.84,
-        "folha_bruta_comissionados": 11951454.5,
-        "maior_vencimento_comissionado": 57157.75
+        "comissionados_qtd": null,
+        "folha_bruta_total": null,
+        "folha_bruta_comissionados": null,
+        "maior_vencimento_comissionado": null
       }
     }
   },

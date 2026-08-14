@@ -1,33 +1,55 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-11T20:47:24.188Z",
+  "gerado_em": "2026-08-14T18:53:29.165Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-08-11T17-44-31-0a8dcc42",
-    "coleta_iso": "2026-08-11T17:44:31",
-    "data_humana": "11/08/2026 - 17:44",
-    "arquivo": "data/snapshots/2026-08-11T17-44-31-0a8dcc42.json"
+    "snapshot_id": "2026-08-14T15-45-21-e6867b8a",
+    "coleta_iso": "2026-08-14T15:45:21",
+    "data_humana": "14/08/2026 - 15:45",
+    "arquivo": "data/snapshots/2026-08-14T15-45-21-e6867b8a.json"
   },
   "anterior": {
-    "snapshot_id": "2026-08-11T13-56-53-000485c0",
-    "coleta_iso": "2026-08-11T13:56:53",
-    "data_humana": "11/08/2026 - 13:56",
+    "snapshot_id": "2026-08-12T06-52-32-3ddd9335",
+    "coleta_iso": "2026-08-12T06:52:32",
+    "data_humana": "12/08/2026 - 06:52",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 0,
-    "contratos_valor_alterado": 48,
+    "novos_contratos": 9,
+    "contratos_valor_alterado": 51,
     "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 1,
+    "novas_edicoes_diario": 2,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 0,
-    "valor_delta_brl": -2395653.2100000004,
-    "total_mudancas": 49
+    "valor_novo_brl": 1277352.2,
+    "valor_delta_brl": -1820550.7600000002,
+    "total_mudancas": 62
   },
   "itens": [
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 34/2026",
+      "detalhe": "NOVA OPCAO LOCADORA DE VEICULOS LTDA: antes R$ 2.699.881,59, agora R$ 3.374.851,59.",
+      "orgao": "Prefeitura",
+      "data": "2026-04-29",
+      "valor_brl": 3374851.59,
+      "delta_brl": 674970,
+      "alvo_id": "PREFEITURA-2026-34"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 53/2025",
+      "detalhe": "GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA: antes R$ 1.893.101,10, agora R$ 1.791.550,55.",
+      "orgao": "Prefeitura",
+      "data": "2025-06-16",
+      "valor_brl": 1791550.55,
+      "delta_brl": -101550.55000000005,
+      "alvo_id": "PREFEITURA-2025-53"
+    },
     {
       "tipo": "valor_alterado",
       "prioridade": "alta",
@@ -62,6 +84,36 @@
       "alvo_id": "PREFEITURA-2023-0"
     },
     {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 0/2026 - CONDAFE COMERCIO DE ROUPAS LTDA",
+      "detalhe": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 343495,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 90/2026 - DUARTTE CONSTRUCOES E REFORMAS LTDA",
+      "detalhe": "Serviços de engenharia para restauração da cobertura e recuperação do piso da quadra poliesportiva do Ginásio Minhocão",
+      "orgao": "Prefeitura",
+      "data": "2026-08-07",
+      "valor_brl": 304000,
+      "alvo_id": "PREFEITURA-2026-90"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 0/2026 - GREGORIOS COMERCIO DE MOVEIS LTDA",
+      "detalhe": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 249000,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
       "tipo": "valor_alterado",
       "prioridade": "media",
       "titulo": "Valor alterado no contrato 0/2023",
@@ -71,6 +123,16 @@
       "valor_brl": 224800,
       "delta_brl": -47662.90000000002,
       "alvo_id": "PREFEITURA-2023-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 0/2026 - WELINGTON MOL DA SILVA",
+      "detalhe": "Registro de Preços para o fornecimento de Hortifrutigranjeiro para o Zoológico Municipal",
+      "orgao": "Prefeitura",
+      "data": "2026-08-11",
+      "valor_brl": 222280.2,
+      "alvo_id": "PREFEITURA-2026-0"
     },
     {
       "tipo": "valor_alterado",
@@ -372,6 +434,17 @@
     {
       "tipo": "valor_alterado",
       "prioridade": "media",
+      "titulo": "Valor alterado no contrato 79/2025",
+      "detalhe": "SAPRA LANDAUER SERVICO DE ASSESSORIA E PROTECAO RADIOLOGICA LTDA.: antes R$ 4.039,20, agora R$ 5.722,20.",
+      "orgao": "Prefeitura",
+      "data": "2025-09-05",
+      "valor_brl": 5722.2,
+      "delta_brl": 1683,
+      "alvo_id": "PREFEITURA-2025-79"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
       "titulo": "Valor alterado no contrato 0/2023",
       "detalhe": "ADS TRANSPORTES, CONSULTORIA E INFORMATICA LTDA: antes R$ 23.317,00, agora R$ 5.515,00.",
       "orgao": "Prefeitura",
@@ -559,10 +632,68 @@
     {
       "tipo": "nova_edicao_diario",
       "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1864",
+      "titulo": "Nova edicao do Diario Oficial 1866",
       "detalhe": "Edicao ordinaria publicada na fonte oficial.",
+      "data": "2026-08-13",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/273/"
+    },
+    {
+      "tipo": "nova_edicao_diario",
+      "prioridade": "media",
+      "titulo": "Nova edicao do Diario Oficial 1865",
+      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
+      "data": "2026-08-12",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/272/"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - LOUSAS BRASIL COMERCIO DE QUADROS E ARTIGOS ESCOLARES LTDA",
+      "detalhe": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 59900,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - MAROUN SLEIMAN MOVEIS E COLCHOES LTDA",
+      "detalhe": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 41450,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - FMG SOLUCOES E FORNECIMENTOS LTDA",
+      "detalhe": "Aquisição de medalhas para os alunos participantes do 1° Jogos Escolares Municipais de Varginha.",
+      "orgao": "Prefeitura",
       "data": "2026-08-11",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/271/"
+      "valor_brl": 34240,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - COMERCIAL VENER LTDA",
+      "detalhe": "AQUISIÇÃO DE PRODUTOS DE HIGIENE, COM COMODATO DOS RESPECTIVOS DISPENSADORES",
+      "orgao": "Prefeitura",
+      "data": "2026-08-12",
+      "valor_brl": 20740,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - RR INFORMATICA LTDA",
+      "detalhe": "Aquisição de bebedouro industrial para o Terminal Rodoviário",
+      "orgao": "Prefeitura",
+      "data": "2026-08-11",
+      "valor_brl": 2247,
+      "alvo_id": "PREFEITURA-2026-0"
     }
   ],
   "avisos": []
