@@ -2899,18 +2899,26 @@
       const pref = pessoal.prefeitura || {};
       const cardPessoal = (titulo, orgao) => {
         const r = orgao.resumo || {};
+        // Sem competência determinada o coletor devolve os campos mensais
+        // nulos. Cair para "0" aqui publicaria um número tão errado quanto o
+        // total inflado que a trava evita — melhor dizer que não se sabe.
+        const semMes = !!r.competencia_indeterminada;
+        const nd = "não disponível";
+        const num = (v) => (semMes || v == null) ? nd : fmtNum(v);
+        const brl = (v) => (semMes || v == null) ? nd : fmtBRL(v);
         return `
           <article class="personnel-card">
             <span class="personnel-card__label">${esc(titulo)}</span>
-            <div class="personnel-card__num">${fmtNum(r.comissionados_qtd || 0)}</div>
+            <div class="personnel-card__num">${num(r.comissionados_qtd)}</div>
             <p>comissionados ou similares</p>
             <dl>
-              <div><dt>Vínculos ativos</dt><dd>${fmtNum(r.vinculos_qtd || r.servidores_qtd || 0)}</dd></div>
-              ${r.pessoas_qtd ? `<div><dt>Pessoas distintas (por nome)</dt><dd>${fmtNum(r.pessoas_qtd)}</dd></div>` : ""}
+              <div><dt>Vínculos ativos</dt><dd>${num(r.vinculos_qtd != null ? r.vinculos_qtd : r.servidores_qtd)}</dd></div>
+              ${(!semMes && r.pessoas_qtd) ? `<div><dt>Pessoas distintas (por nome)</dt><dd>${fmtNum(r.pessoas_qtd)}</dd></div>` : ""}
               <div><dt>Competência</dt><dd>${esc(r.competencia_referencia || orgao.competencia || "não informada")}</dd></div>
-              <div><dt>Folha bruta comissionados</dt><dd>${fmtBRL(r.folha_bruta_comissionados || 0)}</dd></div>
-              <div><dt>Maior vencimento</dt><dd>${fmtBRL(r.maior_vencimento_comissionado || 0)}</dd></div>
+              <div><dt>Folha bruta comissionados</dt><dd>${brl(r.folha_bruta_comissionados)}</dd></div>
+              <div><dt>Maior vencimento</dt><dd>${brl(r.maior_vencimento_comissionado)}</dd></div>
             </dl>
+            ${semMes ? `<p class="personnel-card__status">A fonte não carimbou o mês nesta coleta: ${fmtNum(r.linhas_todas_competencias || 0)} linhas de competências misturadas. Somá-las daria uma folha de vários meses apresentada como mensal, então os totais ficam suspensos até a próxima coleta com competência.</p>` : ""}
             ${r.competencia_parcial ? `<p class="personnel-card__status">A competência ${esc(r.competencia_parcial.competencia)} já tem ${fmtNum(r.competencia_parcial.linhas)} lançamento(s), mas está incompleta e por isso não é usada como referência.</p>` : ""}
             <a href="${esc(orgao.fonte || "#")}" target="_blank" rel="noopener">Abrir fonte oficial</a>
             ${orgao.status ? `<p class="personnel-card__status">${esc(orgao.status)}</p>` : ""}
@@ -4635,8 +4643,13 @@ ${url}
     // Competência (mês) da folha: prefere o campo dedicado e cai no texto do
     // status como fallback. A folha pode ser de um mês fechado anterior, então
     // é importante deixar claro a qual mês os valores se referem.
-    let compPref = (pes.prefeitura && pes.prefeitura.competencia) || "";
-    let compCam = (pes.camara && pes.camara.competencia) || "";
+    // O coletor grava a competencia em resumo.competencia_referencia; a chave
+    // na raiz do orgao so aparece em alguns caminhos de coleta. Ler so a raiz
+    // deixava #rankingPeriodoInfo vazio e o ranking sem mes carimbado.
+    const resPref = (pes.prefeitura && pes.prefeitura.resumo) || {};
+    const resCam = (pes.camara && pes.camara.resumo) || {};
+    let compPref = (pes.prefeitura && pes.prefeitura.competencia) || resPref.competencia_referencia || "";
+    let compCam = (pes.camara && pes.camara.competencia) || resCam.competencia_referencia || "";
     const prefStatusText = (pes.prefeitura && pes.prefeitura.status) || "";
     const camStatusText = (pes.camara && pes.camara.status) || "";
     if (!compPref) { const m = prefStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i); if (m) compPref = m[1]; }
@@ -4952,10 +4965,13 @@ ${url}
           const partes = [];
           if (compPref) partes.push(`Prefeitura: ref. ${compPref}`);
           if (compCam) partes.push(`Câmara: ref. ${compCam}`);
-          if (partes.length) {
-            infoEl.textContent = `(Valores mensais de referência — ${partes.join(" | ")})`;
-            infoEl.style.display = "inline-block";
-          }
+          // Este span nunca pode ficar vazio: um ranking de salários sem mês
+          // carimbado é um número solto. Quando a fonte não publica a
+          // competência, dizer isso é a informação — não o silêncio.
+          infoEl.textContent = partes.length
+            ? `(Valores mensais de referência — ${partes.join(" | ")})`
+            : "(Competência não informada pela fonte nesta coleta — Prefeitura e Câmara sem mês de referência; confira no portal oficial)";
+          infoEl.style.display = "inline-block";
         }
       }
     }

@@ -124,9 +124,29 @@ test.describe("Integridade — Pessoal e Cargos", () => {
       // o array inteiro era o que fazia 388 linhas virarem "388 servidores" e
       // sete meses de folha virarem custo mensal.
       const ref = r.competencia_referencia;
-      const s = ref
-        ? o.servidores.filter((x) => x.competencia === ref)
-        : o.servidores;
+
+      // Sem competencia, o fallback "compara com o array inteiro" desarmava
+      // esta trava: o resumo concordava consigo mesmo e R$ 914 mi de varios
+      // meses passaram como folha mensal (14/08/2026). Agora o coletor marca
+      // competencia_indeterminada e zera os campos mensais — e o que se cobra.
+      if (r.competencia_indeterminada) {
+        expect(ref).toBeNull();
+        for (const campo of [
+          "servidores_qtd", "vinculos_qtd", "pessoas_qtd", "comissionados_qtd",
+          "folha_bruta_total", "folha_bruta_comissionados",
+          "maior_vencimento_comissionado",
+        ]) {
+          expect(r[campo], `${campo} nao pode ter valor sem competencia`).toBeNull();
+        }
+        expect(r.linhas_todas_competencias).toBe(o.servidores.length);
+        // e o orgao nao pode carimbar um mes que o resumo nao sustenta
+        expect(o.competencia == null || o.competencia === "").toBe(true);
+        return;
+      }
+
+      expect(ref, "resumo sem competencia_referencia e sem marcar indeterminada").toBeTruthy();
+      const s = o.servidores.filter((x) => x.competencia === ref);
+      expect(s.length, `nenhuma linha na competencia ${ref}`).toBeGreaterThan(0);
 
       const com = s.filter((x) => x.comissionado_ou_similar);
       const somaTotal = s.reduce((a, x) => a + (Number(x.vencimentos) || 0), 0);
@@ -148,7 +168,7 @@ test.describe("Integridade — Pessoal e Cargos", () => {
       // orgao tem que ser a mesma que o resumo somou.
       expect(r.pessoas_qtd).toBeLessThanOrEqual(r.vinculos_qtd);
       expect(r.linhas_todas_competencias).toBe(o.servidores.length);
-      if (ref) expect(o.competencia).toBe(ref);
+      expect(o.competencia).toBe(ref);
     });
   }
 

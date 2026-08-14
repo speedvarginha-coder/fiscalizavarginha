@@ -71,7 +71,7 @@ class TestResumo(unittest.TestCase):
             linha("MARIA", None, 500, matricula="2"),
             linha("JOAO", None, 800, matricula="3"),
         ]
-        r = _resumo("Prefeitura", servidores)
+        r = _resumo("Prefeitura", servidores, competencia_unica="06/2026")
         self.assertEqual(r["vinculos_qtd"], 3)
         self.assertEqual(r["pessoas_qtd"], 2)   # Maria + Joao
         self.assertEqual(r["folha_bruta_total"], 2300)
@@ -81,7 +81,7 @@ class TestResumo(unittest.TestCase):
             linha("MARIA", None, 1000, matricula="1"),
             linha("maria", None, 500, matricula="1"),
         ]
-        r = _resumo("Prefeitura", servidores)
+        r = _resumo("Prefeitura", servidores, competencia_unica="06/2026")
         self.assertEqual(r["vinculos_qtd"], 2)
         self.assertEqual(r["pessoas_qtd"], 1)
 
@@ -98,6 +98,40 @@ class TestResumo(unittest.TestCase):
         r = _resumo("Camara", servidores)
         self.assertEqual(r["comissionados_qtd"], 1)
         self.assertEqual(r["folha_bruta_comissionados"], 700)
+
+
+class TestCompetenciaIndeterminada(unittest.TestCase):
+    """Sem competencia e sem garantia do chamador, nada de total mensal.
+
+    Regressao real de 14/08/2026: a folha completa da Prefeitura falhou, o
+    fallback Educacao/FUNDEB (consulta por ANO) devolveu 303.818 linhas de
+    varios meses sem competencia, e o resumo somou tudo: R$ 914.884.645,14
+    publicados como folha mensal, com 303.818 "servidores" (sao 3.731 pessoas).
+    """
+
+    def test_sem_competencia_e_sem_garantia_nao_publica_total(self):
+        servidores = [linha(f"P{i}", None, 1000) for i in range(10)]
+        r = _resumo("Prefeitura", servidores)
+        self.assertTrue(r["competencia_indeterminada"])
+        self.assertIsNone(r["competencia_referencia"])
+        self.assertIsNone(r["folha_bruta_total"])
+        self.assertIsNone(r["servidores_qtd"])
+        self.assertIsNone(r["comissionados_qtd"])
+        # a contagem bruta de linhas continua, e o unico numero defensavel aqui
+        self.assertEqual(r["linhas_todas_competencias"], 10)
+
+    def test_garantia_do_chamador_soma_e_carimba_o_mes(self):
+        servidores = [linha(f"P{i}", None, 1000) for i in range(10)]
+        r = _resumo("Prefeitura", servidores, competencia_unica="06/2026")
+        self.assertEqual(r["competencia_referencia"], "06/2026")
+        self.assertNotIn("competencia_indeterminada", r)
+        self.assertEqual(r["folha_bruta_total"], 10000)
+        self.assertEqual(r["servidores_qtd"], 10)
+
+    def test_coleta_vazia_nao_vira_zero_servidores(self):
+        r = _resumo("Camara", [])
+        self.assertTrue(r["competencia_indeterminada"])
+        self.assertIsNone(r["folha_bruta_total"])
 
 
 if __name__ == "__main__":

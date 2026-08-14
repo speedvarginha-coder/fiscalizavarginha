@@ -362,7 +362,9 @@ test.describe("Filtros básicos", () => {
     await expect(ranking.locator("article").first()).toBeAttached();
     const period = page.locator("#rankingPeriodoInfo");
     await expect(period).toBeAttached();
-    await expect(period).toContainText(/Prefeitura|Câmara/i);
+    // Ou carimba a competencia, ou diz que a fonte nao publicou o mes. Vazio,
+    // nunca: ranking de salarios sem mes e numero solto (regressao 14/08/2026).
+    await expect(period).toContainText(/ref\.\s*\d{2}\/\d{4}|Compet[eê]ncia n[aã]o informada/i);
     const lead = page.locator(".block__lead").filter({ hasText: "Quem são os comissionados?" });
     await expect(lead).toContainText("Quem são os comissionados?");
     await expect(lead).toContainText("Salário Bruto Mensal");

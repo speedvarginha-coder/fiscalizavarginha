@@ -191,13 +191,43 @@ def _competencia_referencia(servidores: list[dict]):
     return ref, parcial
 
 
-def _resumo(nome: str, servidores: list[dict]) -> dict:
-    ref, parcial = _competencia_referencia(servidores)
+def _resumo(nome: str, servidores: list[dict], competencia_unica: str | None = None) -> dict:
+    """Resume UM mes de folha.
 
-    # Sem competencia na linha (Prefeitura) a folha ja vem de um mes so, e cada
-    # linha e um VINCULO, nao uma repeticao: a mesma pessoa pode ser estagiaria
-    # em duas lotacoes e efetiva numa terceira. Ali somar as linhas e o correto.
-    linhas = [s for s in servidores if s.get("competencia") == ref] if ref else list(servidores)
+    `competencia_unica` e a garantia do chamador de que as linhas ja vem de uma
+    unica competencia — a consulta da folha completa filtra o mes na origem.
+    So nesse caso cada linha e um VINCULO, e nao a repeticao do mesmo servidor
+    em outros meses: a mesma pessoa pode ser estagiaria em duas lotacoes e
+    efetiva numa terceira, e ali somar as linhas e o correto.
+
+    Sem essa garantia e sem competencia carimbada na linha nao da para saber
+    quantos meses estao no array. Antes daqui o resumo somava tudo assim mesmo,
+    e a folha da Prefeitura pelo escopo Educacao/FUNDEB (consulta por ANO, nao
+    por competencia) virou R$ 914 mi de "folha mensal" com 303.818 "servidores".
+    Agora os campos mensais saem nulos e o painel publica a limitacao em vez de
+    um numero que nao consegue defender.
+    """
+    if competencia_unica:
+        ref, parcial = competencia_unica, None
+        linhas = list(servidores)
+    else:
+        ref, parcial = _competencia_referencia(servidores)
+        linhas = [s for s in servidores if s.get("competencia") == ref] if ref else None
+
+    if linhas is None:
+        return {
+            "orgao": nome,
+            "competencia_referencia": None,
+            "competencia_indeterminada": True,
+            "servidores_qtd": None,
+            "vinculos_qtd": None,
+            "pessoas_qtd": None,
+            "linhas_todas_competencias": len(servidores),
+            "comissionados_qtd": None,
+            "folha_bruta_total": None,
+            "folha_bruta_comissionados": None,
+            "maior_vencimento_comissionado": None,
+        }
 
     # A fonte não publica CPF ou outro identificador civil. Para não chamar dois
     # vínculos da mesma pessoa de duas pessoas, a melhor aproximação disponível
@@ -359,7 +389,13 @@ def coletar() -> dict:
                 f"Coletado automaticamente via Betha (competencia {ref})"
             )
         else:
-            payload["camara"]["status"] = "Coletado automaticamente via Betha"
+            # Sem o CSV de processamentos nao da para dizer de que mes e a folha,
+            # e o resumo ja veio com os totais mensais nulos. O status precisa
+            # dizer isso, senao a pagina mostra numero vazio sem explicacao.
+            payload["camara"]["status"] = (
+                "Coletado automaticamente via Betha, mas a competencia de cada linha nao "
+                "veio na fonte: mes de referencia e totais mensais ficam indisponiveis."
+            )
     except Exception as e:
         try:
             servidores = _parse_camara_html(_get_text(CAMARA_REMUNERACAO_URL))
@@ -374,7 +410,7 @@ def coletar() -> dict:
     try:
         servidores, comp = _coletar_prefeitura_folha_completa()
         payload["prefeitura"]["servidores"] = servidores
-        payload["prefeitura"]["resumo"] = _resumo("Prefeitura", servidores)
+        payload["prefeitura"]["resumo"] = _resumo("Prefeitura", servidores, competencia_unica=comp)
         payload["prefeitura"]["fonte"] = PREFEITURA_FOLHA_COMPLETA_URL
         payload["prefeitura"]["competencia"] = comp
         payload["prefeitura"]["status"] = f"Coletado automaticamente via Betha (folha completa, competencia {comp})"
@@ -388,8 +424,20 @@ def coletar() -> dict:
         try:
             servidores = _coletar_prefeitura_educacao_betha(ano)
             payload["prefeitura"]["servidores"] = servidores
-            payload["prefeitura"]["resumo"] = _resumo("Prefeitura", servidores)
-            payload["prefeitura"]["status"] = "Coletado automaticamente via Betha (escopo Educacao/FUNDEB)"
+            resumo_pref = _resumo("Prefeitura", servidores)
+            payload["prefeitura"]["resumo"] = resumo_pref
+            if resumo_pref.get("competencia_indeterminada"):
+                payload["prefeitura"]["status"] = (
+                    "Coletado automaticamente via Betha (escopo Educacao/FUNDEB, consulta por ano): "
+                    "a fonte nao carimba a competencia na linha, entao o mes de referencia e os "
+                    "totais mensais ficam indisponiveis."
+                )
+            else:
+                payload["prefeitura"]["competencia"] = resumo_pref["competencia_referencia"]
+                payload["prefeitura"]["status"] = (
+                    "Coletado automaticamente via Betha (escopo Educacao/FUNDEB, competencia "
+                    f"{resumo_pref['competencia_referencia']})"
+                )
             payload["prefeitura"]["erro_folha_completa"] = str(e)
         except Exception as e2:
             payload["prefeitura"]["erro"] = f"folha completa: {e}; educacao: {e2}"
