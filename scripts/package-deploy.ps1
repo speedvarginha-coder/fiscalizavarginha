@@ -1,6 +1,9 @@
 ﻿param(
   [string]$OutputDir = "dist",
-  [string]$ZipName = "fiscaliza-varginha-painel.zip"
+  [string]$ZipName = "fiscaliza-varginha-painel.zip",
+  # Publica mesmo com codigo nao commitado. Existe para emergencia; o uso fica
+  # registrado no release.json, entao a excecao nao vira habito silencioso.
+  [switch]$AllowDirty
 )
 
 $ErrorActionPreference = "Stop"
@@ -94,10 +97,72 @@ if (-not (Test-Path -LiteralPath $manifestStage)) {
   throw "Manifest obrigatorio ausente no pacote: $manifestStage"
 }
 $manifestHash = (Get-FileHash -LiteralPath $manifestStage -Algorithm SHA256).Hash.ToLowerInvariant()
+
+# --- procedencia: que codigo exatamente esta neste pacote ---
+$commit = ""
+$branch = ""
+$sujos = @()
+try {
+  $commit = (& git -C $root rev-parse HEAD 2>$null | Select-Object -First 1)
+  $branch = (& git -C $root rev-parse --abbrev-ref HEAD 2>$null | Select-Object -First 1)
+  $porcelain = & git -C $root status --porcelain 2>$null
+  if ($porcelain) {
+    foreach ($linha in $porcelain) {
+      if ([string]::IsNullOrWhiteSpace($linha)) { continue }
+      # formato: XY <caminho>. Renomeacao vem como "orig -> novo".
+      $caminho = ($linha.Substring(2)).Trim().Trim('"')
+      if ($caminho -match '->') { $caminho = ($caminho -split '->')[-1].Trim().Trim('"') }
+      $sujos += $caminho
+    }
+  }
+} catch {
+  Write-Warning "Nao foi possivel ler o estado do git: $_"
+}
+
+# Os dados sao commitados DEPOIS do deploy no ciclo diario: sujeira em
+# painel-cidadao/data e esperada durante o empacotamento e nao pode barrar nada.
+# Arquivo nao rastreado tambem nao entra: ele nao altera o que ja existe.
+$dadosPendentes = @($sujos | Where-Object {
+  $_ -like 'painel-cidadao/data/*' -or $_ -like 'painel-cidadao/emendas/data/*'
+})
+$naoRastreados = @()
+if ($porcelain) {
+  # StartsWith, nao -like: em PowerShell '?' e curinga de um caractere, entao
+  # -like '??*' casa QUALQUER linha e classificaria todo arquivo como nao
+  # rastreado — desarmando a trava inteira.
+  $naoRastreados = @($porcelain | Where-Object { $_.StartsWith('??') } | ForEach-Object {
+    ($_.Substring(2)).Trim().Trim('"')
+  })
+}
+$codigoSujo = @($sujos | Where-Object {
+  $dadosPendentes -notcontains $_ -and $naoRastreados -notcontains $_
+})
+
+if ($codigoSujo.Count -gt 0 -and -not $AllowDirty) {
+  $lista = ($codigoSujo | Select-Object -First 20) -join "`n  - "
+  throw @"
+Empacotamento bloqueado: $($codigoSujo.Count) arquivo(s) de codigo com alteracao nao commitada.
+
+  - $lista
+
+O pacote e montado a partir da arvore de trabalho, entao esses arquivos iriam
+ao ar sem estar no historico — e depois nao haveria como saber o que foi
+publicado. Commite as alteracoes, ou reexecute com -AllowDirty se a publicacao
+for deliberada (o uso fica registrado no release.json).
+"@
+}
+
 $release = [ordered]@{
-  schema = 1
+  schema = 2
   gerado_em = (Get-Date).ToUniversalTime().ToString("o")
   manifest_sha256 = $manifestHash
+  commit = $commit
+  branch = $branch
+  # Sujeira de dados e rotina do ciclo diario; a de codigo so aparece aqui se
+  # -AllowDirty foi usado, e entao precisa ficar visivel no pacote publicado.
+  dados_pendentes = @($dadosPendentes)
+  codigo_nao_commitado = @($codigoSujo)
+  publicado_com_codigo_sujo = ($codigoSujo.Count -gt 0)
 }
 $releaseJson = $release | ConvertTo-Json
 [System.IO.File]::WriteAllText((Join-Path $stage "release.json"), $releaseJson, (New-Object System.Text.UTF8Encoding($false)))

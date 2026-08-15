@@ -423,9 +423,21 @@ function validateDeploy() {
     const release = readJson(releasePath);
     if (release) {
       const manifestHash = crypto.createHash("sha256").update(fs.readFileSync(stagedManifestPath)).digest("hex");
-      assert(release.schema === 1, "release.schema deve ser 1");
+      assert(release.schema === 2, "release.schema deve ser 2");
       assert(release.manifest_sha256 === manifestHash, "release.json nao corresponde ao manifest do pacote");
       assert(!Number.isNaN(new Date(release.gerado_em).getTime()), "release.gerado_em deve ser data valida");
+      // Sem o commit no pacote nao ha como responder "que codigo esta no ar?".
+      // O hash do manifest cobre so os dados.
+      assert(/^[0-9a-f]{40}$/.test(release.commit || ""),
+        "release.commit ausente ou invalido: o pacote precisa dizer de que commit saiu");
+      assert(typeof release.branch === "string" && release.branch.length > 0,
+        "release.branch ausente");
+      // Publicar com codigo nao commitado e possivel (-AllowDirty), mas nunca
+      // silencioso: quem validar o pacote tem que ver a lista.
+      if (release.publicado_com_codigo_sujo) {
+        warn(`Pacote inclui ${(release.codigo_nao_commitado || []).length} arquivo(s) de codigo `
+          + `nao commitado(s): ${(release.codigo_nao_commitado || []).join(", ")}`);
+      }
     }
   }
 
