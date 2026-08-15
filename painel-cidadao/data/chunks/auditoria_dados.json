@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-15T14:36:23.386Z",
+  "gerado_em": "2026-08-15T20:46:01.711Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,15 +9,15 @@
     "total": 11
   },
   "atualizado_base": {
-    "iso": "2026-08-15T04:43:29",
-    "data_humana": "15/08/2026 - 04:43"
+    "iso": "2026-08-15T17:45:06",
+    "data_humana": "15/08/2026 - 17:45"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.3 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -178,7 +178,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.3 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },

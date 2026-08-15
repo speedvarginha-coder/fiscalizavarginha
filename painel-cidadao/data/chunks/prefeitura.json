@@ -22576,6 +22576,20 @@
     },
     {
       "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-14",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Serviço de limpeza pesada em bloco do Terminal Rodoviário",
+      "contratado": "LOPES LIMPEZA E CONSERVACAO PATRIMONIAL LTDA",
+      "cnpj": "60.416.470/****-**",
+      "valor": 16000.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
       "ano": "2023",
       "data_assinatura": "2023-12-28",
       "data_fim": "",
@@ -31757,6 +31771,16 @@
       "objeto": "Serviços para remoção/relocação de poste em abertura de rua no bairro Nossa Senhora das Graças",
       "data": "2026-08-10",
       "valor": 20948.13,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 231,
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Serviço de limpeza pesada em bloco do Terminal Rodoviário",
+      "data": "2026-08-07",
+      "valor": 20050.0,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -138918,7 +138942,7 @@
     "Contratos (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 233
+      "registros": 234
     },
     "Contratos (ano anterior) (2025)": {
       "status": "partial",
@@ -138933,7 +138957,7 @@
     "Licitações finalizadas (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 129
+      "registros": 130
     },
     "Compras diretas (2026)": {
       "status": "partial",
