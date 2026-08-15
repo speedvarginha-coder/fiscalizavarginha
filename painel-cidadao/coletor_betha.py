@@ -235,6 +235,18 @@ _EXPORT_HOSTS = {
 }
 _EXPORT_RETRY_CODES = {404, 408, 425, 429, 500, 502, 503, 504}
 
+# Buckets S3 da Betha que servem exportacao de dados abertos. A Prefeitura usa
+# transparencia.betha.cloud; a Camara usa atendimento.transparencia.betha.cloud.
+# A lista existe para impedir que uma URL devolvida pela API leve a coleta a um
+# host arbitrario — por isso continua fechada, e o sufixo /dados-abertos/ segue
+# obrigatorio. Aceitar so o bucket da Prefeitura fazia TODA exportacao da Camara
+# ser rejeitada e cair para busca textual: folha sem competencia, contratos e
+# licitacoes com cobertura parcial.
+_EXPORT_S3_PREFIXOS = (
+    "/transparencia.betha.cloud/dados-abertos/",
+    "/atendimento.transparencia.betha.cloud/dados-abertos/",
+)
+
 
 def _export_url(raw: str) -> Optional[str]:
     """Reconhece a URL temporaria retornada pela versao nova da Betha."""
@@ -251,10 +263,10 @@ def _export_url(raw: str) -> Optional[str]:
     host = parsed.hostname.lower()
     if host not in _EXPORT_HOSTS:
         raise BethaExportError(f"host de exportacao Betha nao permitido: {host}")
-    if host == "s3.sa-east-1.amazonaws.com" and not parsed.path.startswith(
-        "/transparencia.betha.cloud/dados-abertos/"
-    ):
-        raise BethaExportError("caminho S3 fora do bucket de dados abertos da Betha")
+    if host == "s3.sa-east-1.amazonaws.com" and not parsed.path.startswith(_EXPORT_S3_PREFIXOS):
+        raise BethaExportError(
+            f"caminho S3 fora dos buckets de dados abertos da Betha: {parsed.path[:80]}"
+        )
     return value
 
 

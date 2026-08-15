@@ -265,35 +265,54 @@ def _resumo(nome: str, servidores: list[dict], competencia_unica: str | None = N
     return resumo
 
 
-def _coletar_camara_betha(ano: int) -> list[dict]:
+# Piso de linhas para considerar a competencia fechada. A Camara tem 15
+# vereadores mais assessoria: um mes normal fica na casa das 60 linhas, e o mes
+# corrente costuma vir com meia duzia enquanto a folha e processada.
+CAMARA_MINIMO_LINHAS_MES = 20
+
+
+def _coletar_camara_betha(ano: int) -> tuple[list[dict], str]:
+    """Folha nominal da Camara na competencia fechada mais recente.
+
+    Consultar por ANO devolvia 12.486 linhas — todos os meses e verbas de 2026
+    empilhados para ~60 pessoas. Sem competencia por linha, o resumo nao tinha
+    como representar UM mes, e a folha da Camara ficava indisponivel no painel.
+
+    A rota de exportacao (que trazia o CSV de processamentos com a competencia)
+    esta quebrada no portal da Camara: a Betha devolve URL assinada e o arquivo
+    fica em 404 permanente. Mas a consulta aceita filtro por competencia — a
+    mesma saida usada na folha completa da Prefeitura. O mes e escolhido na
+    origem, e cada linha sai carimbada com ele.
+
+    Retorna (servidores, competencia).
+    """
     token = betha.get_token(portal_hash=CAMARA_PORTAL_HASH)
-    res = betha.baixar_dados_abertos(
-        token,
-        CAMARA_REMUNERACOES_ID,
-        ano=ano,
-        portal_hash=CAMARA_PORTAL_HASH,
-        ano_field="ano",
-    )
-    rows = res.get("main", [])
-    servidores = _normaliza_betha(rows, "Camara", "Folha nominal da Camara")
-    # A consulta da Camara traz UMA linha por servidor/mes, mas a competencia
-    # mora no CSV linkado (processamentos_*.csv, campo 'competencia' AAAA-MM,
-    # com descricao Mensal/Ferias/13o). Sem ela o painel escolhia o "mes mais
-    # recente" pela ordem das linhas — chute — e nao exibia referencia.
-    linked_rows = res.get("linked_rows") or {}
-    for s, r in zip(servidores, rows):
-        ref = str(r.get("processamentos") or "").strip()
-        procs = linked_rows.get(ref) or []
-        comps = sorted({str(p.get("competencia") or "") for p in procs
-                        if str(p.get("competencia") or "").strip()})
-        if comps:
-            ult = comps[-1]  # 'AAAA-MM'
-            s["competencia"] = f"{ult[5:7]}/{ult[0:4]}"
-        tipos = sorted({str(p.get("descricao") or "").strip() for p in procs
-                        if str(p.get("descricao") or "").strip()})
-        if tipos:
-            s["tipos_folha"] = tipos[:4]
-    return servidores
+    comp = betha.filtro_max(token, CAMARA_REMUNERACOES_ID, "competencia",
+                            portal_hash=CAMARA_PORTAL_HASH)
+    if not comp:
+        raise RuntimeError("Nao foi possivel descobrir a competencia mais recente da folha da Camara.")
+
+    rows: list[dict] = []
+    for _ in range(4):
+        rows = betha.baixar_busca_textual(
+            token,
+            CAMARA_REMUNERACOES_ID,
+            body={"competencia": [comp]},
+            portal_hash=CAMARA_PORTAL_HASH,
+            sort_by="nomeServidor",
+        )
+        if len(rows) >= CAMARA_MINIMO_LINHAS_MES:
+            break
+        anterior = _competencia_anterior(comp)
+        if not anterior:
+            break
+        print(f"  ! Folha Camara {comp}: so {len(rows)} registro(s); tentando competencia anterior {anterior}…")
+        comp = anterior
+
+    servidores = _normaliza_betha(rows, "Camara", f"Folha nominal da Camara (competencia {comp})")
+    for s in servidores:
+        s["competencia"] = comp
+    return servidores, comp
 
 
 def _coletar_prefeitura_educacao_betha(ano: int) -> list[dict]:
@@ -381,9 +400,9 @@ def coletar() -> dict:
     }
 
     try:
-        servidores = _coletar_camara_betha(ano)
+        servidores, comp_cam = _coletar_camara_betha(ano)
         payload["camara"]["servidores"] = servidores
-        resumo_cam = _resumo("Camara", servidores)
+        resumo_cam = _resumo("Camara", servidores, competencia_unica=comp_cam)
         payload["camara"]["resumo"] = resumo_cam
         # A competencia do orgao tem que ser a MESMA que o resumo somou, senao o
         # painel carimba "julho" num valor de junho. Antes daqui saia o mes mais
