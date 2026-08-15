@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-14T18:53:27.784Z",
+  "gerado_em": "2026-08-15T07:45:45.335Z",
   "level": "critical",
   "summary": {
     "errors": 1,
@@ -9,8 +9,8 @@
     "total": 12
   },
   "atualizado_base": {
-    "iso": "2026-08-14T15:45:21",
-    "data_humana": "14/08/2026 - 15:45"
+    "iso": "2026-08-15T04:43:29",
+    "data_humana": "15/08/2026 - 04:43"
   },
   "items": [
     {
@@ -176,7 +176,7 @@
       "severity": "warning",
       "id": "homologacao-simbolica",
       "title": "Licitacao homologada por valor simbolico",
-      "detail": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: Contratação de empresa para a realização da tradicional FEIR → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
+      "detail": "4 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: Contratação de empresa para a realização da tradicional FEIR → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil); [Portal de Compras Públicas] - Registro de preços para o fut → OFICINA DO NENE LTDA por R$ 5.00 (estimado R$ 7058 mil); [Portal de Compras Públicas] - Registro de preços para o fut → OFICINA DO NENE LTDA por R$ 5.00 (estimado R$ 7058 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
       "action": "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
       "source": "licitacoes_resultados.json"
     }
@@ -345,7 +345,7 @@
       "severity": "warning",
       "id": "homologacao-simbolica",
       "title": "Licitacao homologada por valor simbolico",
-      "detail": "1 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: Contratação de empresa para a realização da tradicional FEIR → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
+      "detail": "4 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: Contratação de empresa para a realização da tradicional FEIR → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil); [Portal de Compras Públicas] - Registro de preços para o fut → OFICINA DO NENE LTDA por R$ 5.00 (estimado R$ 7058 mil); [Portal de Compras Públicas] - Registro de preços para o fut → OFICINA DO NENE LTDA por R$ 5.00 (estimado R$ 7058 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
       "action": "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
       "source": "licitacoes_resultados.json"
     }

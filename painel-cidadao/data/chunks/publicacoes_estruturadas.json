@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-08-14T18:49:09+00:00",
+ "gerado_em": "2026-08-15T07:43:43+00:00",
  "fonte": "camara",
  "total": 834,
  "publicacoes": [
@@ -4257,19 +4257,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6111/thulyo_comenda_do_merito_da_agricultura___antonio_ernesto___coopercafem.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6111/projeto_de_decreto_legislativo61-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Thulyo Paiva",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "CONCEDE COMENDA DO MÉRITO DA AGRICULTURA - ANTONIO ERNESTO À COOPERATIVA DOS PRODUTORES DE CAFÉ ESPECIAL DOS MARTINS - COOPERCAFEM",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6111",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6111/thulyo_comenda_do_merito_da_agricultura___antonio_ernesto___coopercafem.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6111/projeto_de_decreto_legislativo61-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6111/thulyo_comenda_do_merito_da_agricultura___antonio_ernesto___coopercafem.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6111/projeto_de_decreto_legislativo61-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "f94ed940876bbde2151bb1d4634bc3585bffd8fd",

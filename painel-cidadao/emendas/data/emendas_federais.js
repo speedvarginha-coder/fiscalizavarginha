@@ -2,7 +2,7 @@ window.EMENDAS_FEDERAIS = {
   "metadata": {
     "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
     "favorecido": "Favorecidos em Varginha-MG",
-    "extraidoEm": "2026-08-14",
+    "extraidoEm": "2026-08-15",
     "codigoIbge": "3170701",
     "totalFederal": 22595441.99,
     "totalFederalTexto": "22.595.441,99",
@@ -13,7 +13,7 @@ window.EMENDAS_FEDERAIS = {
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-08-14T18:53:17.126693+00:00",
+      "coletadoEm": "2026-08-15T07:45:34.399947+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,

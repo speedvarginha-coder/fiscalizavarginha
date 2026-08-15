@@ -1,10 +1,10 @@
 {
   "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
-  "atualizado_em": "2026-08-14T15:42:57.984689",
+  "atualizado_em": "2026-08-15T04:41:34.714744",
   "resumo": {
     "municipio": "Varginha-MG",
     "codigoIbge": "3170701",
-    "atualizadoEm": "14/08/2026 15:42",
+    "atualizadoEm": "15/08/2026 04:41",
     "emendas": {
       "qtd": 0,
       "totalEmpenhado": 0,
@@ -20,10 +20,10 @@
       "totalExecutadoComRelatorio": null
     },
     "convenios": {
-      "qtd": 165,
+      "qtd": 164,
       "qtdAtivos": 15,
-      "totalValor": 65977941.12,
-      "totalRecebido": 50858806.3
+      "totalValor": 65889196.64,
+      "totalRecebido": 50770061.82
     },
     "alertasCeis": {
       "qtd": 0,
@@ -2856,26 +2856,6 @@
       "cancelado_ou_anulado": false
     },
     {
-      "id": "362671529",
-      "numeroProcesso": "00004.001058/2004-72",
-      "orgaoConcedenteNome": "Fundo Nacional para a Criança e o Adolescente",
-      "convenente": "MUNICIPIO DE VARGINHA",
-      "situacao": "CONCLUÍDO",
-      "dataInicioVigencia": "2004-07-01",
-      "dataFinalVigencia": "2006-03-30",
-      "valor": 88744.48,
-      "valorLiberado": 88744.48,
-      "valorRecebido": 88744.48,
-      "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
-      "fonte": "API CGU /convenios",
-      "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=362671529",
-      "transferencia_modalidade": "convenio",
-      "destino_confirmado": true,
-      "nivel_confianca": "alto",
-      "granularidade": "convenio",
-      "cancelado_ou_anulado": false
-    },
-    {
       "id": "362676522",
       "numeroProcesso": "0096462016",
       "orgaoConcedenteNome": "Ministério das Cidades - Unidades com vínculo direto",
@@ -3848,7 +3828,7 @@
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-08-14T18:42:56.370482+00:00",
+      "coletadoEm": "2026-08-15T07:41:33.893755+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,
