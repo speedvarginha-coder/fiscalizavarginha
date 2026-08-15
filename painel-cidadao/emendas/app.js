@@ -272,9 +272,11 @@ function getAuthorMeta(record) {
 }
 
 function dateToNumber(value) {
-  const match = String(value || "").match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-  if (!match) return 0;
-  return Number(`${match[3]}${match[2]}${match[1]}`);
+  const text = String(value || "");
+  const br = text.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+  if (br) return Number(`${br[3]}${br[2]}${br[1]}`);
+  const iso = text.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  return iso ? Number(`${iso[1]}${iso[2]}${iso[3]}`) : 0;
 }
 
 function yearsForRecord(record) {
@@ -533,7 +535,7 @@ function renderEsferas() {
   const contaTipo = (t) => allRecords.filter((r) => r.tipo === t).length;
   const rotulo = { Federal: "agregado (CGU)", Estadual: "declarado", Municipal: "indicado" };
   const esferas = [
-    { tipo: "Federal", nome: "Federal", desc: "Dados abertos da CGU", cls: "is-federal",
+    { tipo: "Federal", nome: "Federal", desc: "CGU + Transferegov", cls: "is-federal",
       sub: ((window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.metadata && window.EMENDAS_FEDERAIS.metadata.emendasUnicas) || "") + " emendas (CGU)" },
     { tipo: "Estadual", nome: "Estadual", desc: "Documentos de execução estadual", cls: "is-estadual",
       sub: contaTipo("Estadual") + " emendas" },
@@ -575,12 +577,13 @@ function renderFederalPorTipo() {
   if (!box || !dados) return;
   const riscoLabel = { alto: "Vigie de perto", medio: "Acompanhe" };
   const metadata = window.EMENDAS_FEDERAIS.metadata;
+  const tg = metadata.transferegov || {};
   const sourceDate = (metadata.fonteAtualizadaEm || "").slice(0, 10).split("-").reverse().join("/") || "não informada";
   const collectedDate = (metadata.coletadoEm || metadata.extraidoEm || "").slice(0, 10).split("-").reverse().join("/") || "não informada";
   box.innerHTML = `
     <div class="fed-tipos__head">
       <h3>Federal em detalhe — por tipo de emenda</h3>
-      <p>Valor agregado de emendas destinadas a favorecidos de Varginha: <strong>${moneyFormatter.format(metadata.totalFederal)}</strong>. ${numberFormatter.format(metadata.emendasUnicas || 0)} emendas únicas e ${numberFormatter.format(metadata.registros || 0)} registros agregados por emenda e favorecido. Esse total não é comprovante de repasse individual. Fonte atualizada em ${escapeHtml(sourceDate)}; coleta realizada em ${escapeHtml(collectedDate)}.</p>
+      <p>Valor agregado de emendas destinadas a favorecidos de Varginha: <strong>${moneyFormatter.format(metadata.totalFederal)}</strong>. ${numberFormatter.format(metadata.emendasUnicas || 0)} emendas únicas e ${numberFormatter.format(metadata.registros || 0)} registros agregados por emenda e favorecido. Esse total não é comprovante de repasse individual. Nas Pix municipais, o recebimento só aparece quando plano, ordem bancária e crédito na conta vinculada coincidem no Transferegov${tg.registrosPublicadosVinculados !== undefined ? ` (${numberFormatter.format(tg.registrosPublicadosVinculados)} registros vinculados)` : ""}. Fonte atualizada em ${escapeHtml(sourceDate)}; coleta realizada em ${escapeHtml(collectedDate)}.</p>
     </div>
     <div class="fed-tipos__grid">
       ${dados.map((t) => `
@@ -1445,7 +1448,7 @@ function renderResults() {
               <span class="tag">${escapeHtml(record.statusFinanceiro || record.aprovado || "Situação não informada")}</span>
               <span class="tag">Individual: ${escapeHtml(record.emendaIndividual || "Não informado")}</span>
             </div>
-            ${record.execucao ? `<p class="exec-trail"><span>Execução (CGU):</span> ${escapeHtml(record.execucao)}${record.qtdDocumentos ? ` · ${record.qtdDocumentos} documentos` : ""}</p>` : ""}
+            ${record.execucao ? `<p class="exec-trail"><span>${record.fonteExecucao ? "Trilha federal vinculada (Transferegov):" : "Estágios informados pela fonte:"}</span> ${escapeHtml(record.execucao)}${record.qtdDocumentos ? ` · ${record.qtdDocumentos} documento${record.qtdDocumentos === 1 ? "" : "s"} vinculado${record.qtdDocumentos === 1 ? "" : "s"}` : ""}</p>` : ""}
           </div>
           <div class="value-box">
             ${valHtml}
@@ -1495,6 +1498,15 @@ function openDetails(id, updateUrl = true) {
       </div>
     `;
   }
+  if (record.impedimentosHistoricos?.length) {
+    const motivos = record.impedimentosHistoricos
+      .map((item) => `plano ${item.planoAcaoId}: ${item.motivo || item.situacao || "impedido"}`)
+      .join("; ");
+    warningBanner += `
+      <div class="warning-banner" style="background-color:#fff9db;border-left:4px solid #f59f00;padding:12px;margin-bottom:15px;border-radius:4px;color:#664d03;font-size:.95em;line-height:1.4;">
+        <strong>Histórico preservado:</strong> a mesma emenda teve registro anterior impedido, mas o painel usa como canônico o plano ativo/mais recente e não soma o valor duas vezes. ${escapeHtml(motivos)}
+      </div>`;
+  }
 
   let bethaSection = "";
   if (record.dadosBetha) {
@@ -1527,6 +1539,33 @@ function openDetails(id, updateUrl = true) {
         ` : ""}
       </div>
     `;
+  }
+
+  let transferegovSection = "";
+  if (record.fonteExecucao) {
+    const saldo = knownMoney(record.saldoContaInformativo);
+    const empenhos = (record.numeroEmpenhos || []).join(", ");
+    const ordens = (record.numeroOrdensBancarias || []).join(", ");
+    transferegovSection = `
+      <div class="betha-execution-section" style="margin-top:20px;padding-top:15px;border-top:2px dashed #e2e8f0;">
+        <h4 style="margin:0 0 12px;color:#17594a;font-size:1.05em;">Evidência federal vinculada — Transferegov</h4>
+        <div class="detail-grid" style="margin-bottom:12px;">
+          ${detailItem("Plano de ação", [record.codigoPlanoAcao, record.situacaoPlanoAcao].filter(Boolean).join(" · "))}
+          ${detailItem("Plano de trabalho", [record.planoTrabalhoId, record.situacaoPlanoTrabalho].filter(Boolean).join(" · "))}
+          ${detailItem("Executor", [record.executorTransferegov, record.cnpjExecutorTransferegov].filter(Boolean).join(" · "))}
+          ${detailItem("Período previsto", [record.inicioExecucaoPlano, record.fimExecucaoPlano].filter(Boolean).join(" a "))}
+          ${detailItem("Empenho(s) federal(is)", empenhos)}
+          ${detailItem("Ordem(ns) bancária(s)", ordens)}
+          ${detailItem("Conta vinculada", [record.banco, record.conta].filter(Boolean).join(" · "))}
+          ${detailItem("Relatório de gestão", record.situacaoRelatorioGestao)}
+          ${saldo === null ? "" : detailItem("Saldo informativo da conta", `${moneyFormatter.format(saldo)} em ${record.dataSaldoConta || "data não informada"}`)}
+        </div>
+        ${record.objetoTransferegov ? detailItem("Objeto detalhado no plano", record.objetoTransferegov) : ""}
+        ${record.metaTransferegov ? detailItem("Meta declarada", record.metaTransferegov) : ""}
+        ${record.finalidadeTransferegov ? detailItem("Finalidade", record.finalidadeTransferegov) : ""}
+        ${record.observacaoEvidencia ? `<p class="muted" style="margin-top:10px;">${escapeHtml(record.observacaoEvidencia)}</p>` : ""}
+        ${saldo === null ? "" : '<p class="muted">O saldo inclui movimentações e rendimentos; não deve ser lido como valor original da emenda nem como valor executado.</p>'}
+      </div>`;
   }
 
   const confiraValue = record.somenteNoBetha ? (record.dadosBetha?.valorBetha || 0) : record.valor;
@@ -1580,7 +1619,8 @@ function openDetails(id, updateUrl = true) {
     ${detailItem("Objeto", record.objeto)}
     ${detailItem("Descrição", record.descricao)}
     ${detailItem("Fonte", record.fonte || record.nomeFonte || record.tipo)}
-    ${detailItem("Estágios / observações", record.execucao || record.statusFinanceiro)}
+    ${detailItem(record.fonteExecucao ? "Trilha federal / observações" : "Estágios / observações", record.execucao || record.statusFinanceiro)}
+    ${transferegovSection}
     ${bethaSection}
     <p style="margin-top: 15px;"><a class="button primary" href="${pdfUrl}" target="_blank" rel="noreferrer">Abrir na fonte oficial</a></p>
     <p class="muted">Registro consolidado a partir de ${numberFormatter.format(sourceCount)} ocorrência${sourceCount === 1 ? "" : "s"} nos relatórios oficiais.</p>

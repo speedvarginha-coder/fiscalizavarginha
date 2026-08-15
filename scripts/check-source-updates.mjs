@@ -84,6 +84,24 @@ function fingerprintSapl(payload) {
   };
 }
 
+function fingerprintTransferegov(payload) {
+  const rows = Array.isArray(payload?.data) ? payload.data : [];
+  return {
+    total: Number(payload?.total_items || rows.length),
+    planos: rows
+      .map((item) => ({
+        id: item.id_plano_acao || "",
+        emenda: String(item.numero_emenda_parlamentar_plano_acao || ""),
+        situacao: item.situacao_plano_acao || "",
+        aceite: item.data_aceite_plano_acao || "",
+        conta: item.id_agencia_conta || "",
+        valorCusteio: Number(item.valor_custeio_plano_acao || 0),
+        valorInvestimento: Number(item.valor_investimento_plano_acao || 0),
+      }))
+      .sort((a, b) => Number(a.id) - Number(b.id)),
+  };
+}
+
 async function probeRemoteSources() {
   const sources = [];
 
@@ -111,6 +129,23 @@ async function probeRemoteSources() {
     sources.push({ id: `diario-${currentYear}`, label: `Diario Oficial ${currentYear}`, url: diarioUrl, error: error.message });
   }
 
+  const transferegovUrl = "https://api-publica.transferegov.gestao.gov.br/especiais/planos_acao_especiais?id_beneficiario=3277&tamanho_da_pagina=200";
+  try {
+    sources.push({
+      id: "transferegov-especiais-varginha",
+      label: "Transferegov - transferencias especiais de Varginha",
+      url: transferegovUrl,
+      fingerprint: fingerprintTransferegov(await fetchJson(transferegovUrl)),
+    });
+  } catch (error) {
+    sources.push({
+      id: "transferegov-especiais-varginha",
+      label: "Transferegov - transferencias especiais de Varginha",
+      url: transferegovUrl,
+      error: error.message,
+    });
+  }
+
   return sources;
 }
 
@@ -120,7 +155,7 @@ function localFreshnessSignals() {
     { id: "camara-betha-age", label: "Camara/Betha", chunk: "camara_betha", maxHours: 12 },
     { id: "diarias-age", label: "Diarias", chunk: "diarias", maxHours: 24 },
     { id: "pncp-age", label: "PNCP", chunk: "pncp", maxHours: 168 },
-    { id: "federal-age", label: "Recursos federais", chunk: "federal", maxHours: 168 },
+    { id: "federal-age", label: "Recursos federais", chunk: "federal", maxHours: 30 },
   ].map((item) => {
     const ageHours = chunkAgeHours(item.chunk);
     return {

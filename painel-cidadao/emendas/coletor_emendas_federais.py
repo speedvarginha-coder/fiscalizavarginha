@@ -5,44 +5,28 @@ Coletor de emendas federais de Varginha — Portal da Transparência (CGU).
 Fonte primária: download-de-dados/emendas-parlamentares/UNICO (dados abertos, sem token).
     - EmendasParlamentares.csv .............. objeto (função/ação) por emenda
     - EmendasParlamentares_PorFavorecido.csv  quem recebeu, por emenda, em Varginha
-Enriquecimento (opcional, precisa token em ../../private/tokens/.portal-transparencia.json):
-    - API /emendas/documentos/{codigo} ...... datas de empenho/liquidação/pagamento das Pix
+Enriquecimento:
+    - API pública do Transferegov ........... plano, empenho, OB, conta e prestação de contas das Pix
 
 Uso:  python coletor_emendas_federais.py
 Gera data/emendas_federais.js (itemizado: 1 registro por favorecido) + resumoTipos.
 """
-import json, io, os, csv, time, random, zipfile, tempfile, urllib.request, urllib.parse, urllib.error, unicodedata
+import json, io, os, csv, sys, time, zipfile, tempfile, urllib.request, urllib.parse, unicodedata
 from numbers import Real
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 FED_JS = os.path.join(AQUI, "data", "emendas_federais.js")
-TOK_PATH = os.path.join(AQUI, "..", "..", "private", "tokens", ".portal-transparencia.json")
 ZIP_URL = "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO"
-API = "https://api.portaldatransparencia.gov.br/api-de-dados/"
 IBGE_VARGINHA = "3170701"
+CNPJ_VARGINHA = "18240119000105"
+
+PAINEL_DIR = os.path.abspath(os.path.join(AQUI, ".."))
+if PAINEL_DIR not in sys.path:
+    sys.path.insert(0, PAINEL_DIR)
+
+from transferegov_especiais import coletar_transferencias_especiais  # noqa: E402
 
 CONSULTA = "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha"
-
-RETRYABLE_HTTP = {429, 500, 502, 503, 504}
-
-def cgu_json(req, context, attempts=4):
-    """GET com backoff exponencial para documentos da API CGU."""
-    last_error = None
-    for attempt in range(attempts):
-        try:
-            return json.loads(urllib.request.urlopen(req, timeout=45).read())
-        except urllib.error.HTTPError as exc:
-            last_error = exc
-            if exc.code not in RETRYABLE_HTTP or attempt == attempts - 1:
-                raise
-        except (urllib.error.URLError, TimeoutError, OSError) as exc:
-            last_error = exc
-            if attempt == attempts - 1:
-                raise
-        delay = min(20.0, 1.5 * (2 ** attempt)) + random.uniform(0, 0.5)
-        print(f"  {context}: nova tentativa CGU em {delay:.1f}s ({attempt + 1}/{attempts})")
-        time.sleep(delay)
-    raise last_error or RuntimeError("falha CGU sem detalhe")
 
 def money(s):
     if isinstance(s, Real) and not isinstance(s, bool): return float(s)
@@ -214,45 +198,133 @@ def registros_varginha(z, objetos, targets):
         regs.append(reg)
     return regs
 
-def token():
-    try: return json.load(io.open(TOK_PATH, encoding="utf-8"))["chave-api-dados"]
-    except Exception: return None
+TRANSFEREGOV_FIELDS = {
+    "valorIndicado", "valorEmpenhado", "valorLiquidado", "valorPago",
+    "valorRecebido", "valorExecutado", "dataEmpenho", "dataPagamento",
+    "dataRecurso", "execucao", "statusFinanceiro", "planoAcaoId",
+    "codigoPlanoAcao", "situacaoPlanoAcao", "planoTrabalhoId",
+    "situacaoPlanoTrabalho", "inicioExecucaoPlano", "fimExecucaoPlano",
+    "objetoTransferegov", "metaTransferegov", "finalidadeTransferegov",
+    "executorTransferegov", "cnpjExecutorTransferegov",
+    "banco", "conta", "saldoContaInformativo", "dataSaldoConta",
+    "numeroEmpenhos", "numeroOrdensBancarias", "qtdDocumentos",
+    "qtdOrdensBancarias", "relatorioGestaoLocalizado",
+    "situacaoRelatorioGestao", "planosRelacionados", "impedimentosHistoricos",
+    "fonteExecucao", "fonteEmpenhosUrl", "granularidade",
+    "identificador_repasse_confirmado", "contabilizado_como_repasse_individual",
+    "classificacaoComprovacao", "observacaoEvidencia",
+    "codigoEmendaTransferegov", "anoEmendaTransferegov",
+    "divergenciaValorTransferegov",
+}
 
-def enriquecer_pix(regs, tok):
-    """Datas de empenho/liquidação/pagamento nas Pix (via API)."""
-    if not tok:
-        print("  (sem token — pulando enriquecimento de execução)"); return
-    pix = [r for r in regs if "Pix" in r["categoria"]]
-    print(f"Enriquecendo {len(pix)} Pix com empenho/pagamento (API)...")
-    for e in pix:
-        try:
-            docs, pag = [], 1
-            while True:
-                u = API + f"emendas/documentos/{e['emenda']}?" + urllib.parse.urlencode({"pagina": pag})
-                req = urllib.request.Request(u, headers={"chave-api-dados": tok, "Accept": "application/json"})
-                lote = cgu_json(req, f"documentos da emenda {e['emenda']}")
-                if not lote: break
-                docs += lote
-                if len(lote) < 15: break
-                pag += 1; time.sleep(0.2)
-        except Exception as ex:
-            print(f"  {e['emenda']}: {ex}"); continue
-        def primeira(fase):
-            ds = sorted((d for d in docs if d.get("fase") == fase),
-                        key=lambda d: int("".join(reversed(str(d.get("data","")).split("/")))) if d.get("data") else 0)
-            return ds[0]["data"] if ds else ""
-        emp, liq, pg = primeira("Empenho"), primeira("Liquidação"), primeira("Pagamento")
-        def total_fase(fase):
-            return sum(money(d.get("valor")) for d in docs
-                       if d.get("fase") == fase and not any(x in remove_accents(str(d).upper()) for x in ("CANCELAD", "ANULAD")))
-        e["qtdDocumentos"] = len(docs)
-        e["valorEmpenhado"] = round(total_fase("Empenho"), 2)
-        e["valorLiquidado"] = round(total_fase("Liquidação"), 2)
-        e["valorPago"] = round(total_fase("Pagamento"), 2)
-        e["execucao"] = " · ".join(x for x in [
-            f"empenho {emp}" if emp else "", f"liquidação {liq}" if liq else "",
-            f"pagamento {pg}" if pg else ""] if x)
-        time.sleep(0.3)
+
+def _pix_municipio(registro):
+    return (
+        "Pix" in str(registro.get("categoria") or "")
+        and "".join(c for c in str(registro.get("documentoBeneficiario") or "") if c.isdigit()) == CNPJ_VARGINHA
+    )
+
+
+def _remover_execucao_nao_vinculada(registro):
+    """Apaga o enriquecimento antigo da CGU, que não validava o documento por plano."""
+    for campo in TRANSFEREGOV_FIELDS | {"fonteUrl"}:
+        if campo == "fonteUrl":
+            continue
+        registro.pop(campo, None)
+    registro.update({
+        "valorEmpenhado": None,
+        "valorLiquidado": None,
+        "valorPago": None,
+        "valorRecebido": None,
+        "valorExecutado": None,
+        "identificador_repasse_confirmado": False,
+        "contabilizado_como_repasse_individual": False,
+        "classificacaoComprovacao": "Parcial",
+        "statusFinanceiro": "Execução ainda não vinculada a um plano de ação específico",
+        "observacaoEvidencia": "O agregado da CGU comprova a destinação, mas não um repasse individual.",
+    })
+
+
+def _enriquecimentos_anteriores():
+    if not os.path.exists(FED_JS):
+        return {}
+    try:
+        text = io.open(FED_JS, encoding="utf-8").read()
+        atual = json.loads(text[text.index("{"):text.rindex("}") + 1])
+    except Exception:
+        return {}
+    out = {}
+    for item in atual.get("emendas", []):
+        if item.get("fonteExecucao") and item.get("codigoEmendaTransferegov"):
+            out[str(item["codigoEmendaTransferegov"])] = {
+                campo: item.get(campo) for campo in TRANSFEREGOV_FIELDS if campo in item
+            }
+            out[str(item["codigoEmendaTransferegov"])]["fonteUrl"] = item.get("fonteUrl")
+    return out
+
+
+def enriquecer_pix_transferegov(regs):
+    """Vincula Pix por CNPJ, plano, empenho, documento, OB e conta bancária."""
+    pix = [registro for registro in regs if _pix_municipio(registro)]
+    print(f"Enriquecendo {len(pix)} Pix municipais com a API do Transferegov...")
+    anteriores = _enriquecimentos_anteriores()
+    try:
+        payload = coletar_transferencias_especiais()
+        por_emenda = payload["por_emenda"]
+        status = {
+            "status": "ok",
+            "motivo": "",
+            **payload["metadata"],
+        }
+    except Exception as exc:
+        print(f"  Transferegov indisponível/inconsistente: {exc}")
+        por_emenda = anteriores
+        status = {
+            "status": "preservado" if anteriores else "partial",
+            "motivo": str(exc),
+            "emendasPreservadas": len(anteriores),
+        }
+
+    casados = 0
+    for registro in pix:
+        codigo = str(registro.get("emenda") or "")
+        fonte_agregada = registro.get("fonteUrl")
+        _remover_execucao_nao_vinculada(registro)
+        enriquecimento = por_emenda.get(codigo)
+        if not enriquecimento:
+            continue
+        registro["fonteAgregadoUrl"] = fonte_agregada
+        registro.update(enriquecimento)
+        ano_emenda_oficial = str(enriquecimento.get("anoEmendaTransferegov") or "")
+        if ano_emenda_oficial:
+            registro["anoEmenda"] = ano_emenda_oficial
+            registro["anosRelacionados"] = sorted(set(
+                [str(ano) for ano in (registro.get("anosRelacionados") or []) if ano]
+                + [ano_emenda_oficial]
+            ))
+        objeto = str(enriquecimento.get("objetoTransferegov") or "").strip()
+        if objeto:
+            registro["objeto"] = objeto
+        valor_agregado = money(registro.get("valor"))
+        valor_plano = money(enriquecimento.get("valorIndicado"))
+        if abs(valor_agregado - valor_plano) > 0.01:
+            registro["divergenciaValorTransferegov"] = {
+                "valorAgregadoCGU": valor_agregado,
+                "valorPlanoAcao": valor_plano,
+            }
+            registro["classificacaoComprovacao"] = "Parcial"
+        registro["textoBusca"] = " ".join(filter(None, [
+            registro.get("textoBusca", ""),
+            str(registro.get("objetoTransferegov") or "").lower(),
+            str(registro.get("metaTransferegov") or "").lower(),
+            str(registro.get("finalidadeTransferegov") or "").lower(),
+        ]))
+        casados += 1
+
+    print(f"  {casados}/{len(pix)} Pix vinculadas a plano de ação específico")
+    status["registrosPublicadosVinculados"] = casados
+    status["registrosPixMunicipio"] = len(pix)
+    return status
 
 def _norm_cod(raw):
     """Normaliza código p/ casar Betha ('50410002/2025') com CGU ('202550410002')."""
@@ -388,7 +460,7 @@ def main():
     print("Filtrando favorecidos em Varginha-MG com regras de destinação...")
     regs = registros_varginha(z, objetos, targets)
     print(f"  {len(regs)} registros federais itemizados ({len(set(r['emenda'] for r in regs))} emendas únicas)")
-    enriquecer_pix(regs, token())
+    transferegov_status = enriquecer_pix_transferegov(regs)
     print("Cruzando com execução municipal (Betha)...")
     regs = cruzar_betha(regs)
     resumo = gerar_resumo_tipos(regs)
@@ -403,7 +475,8 @@ def main():
             "codigoIbge": IBGE_VARGINHA,
             "totalFederal": round(total, 2), "totalFederalTexto": money_txt(total),
             "registros": len(regs), "emendasUnicas": len(set(r["emenda"] for r in regs)),
-            "observacao": "Cada registro é um agregado emenda/favorecido, não um repasse individual. Totais excluem valores não positivos (estornos/anulações). Datas de execução das Pix vêm da API CGU.",
+            "transferegov": transferegov_status,
+            "observacao": "Cada registro nasce como agregado emenda/favorecido. Nas transferências especiais ao Município, recebimento só é confirmado quando plano, empenho, ordem bancária e crédito na conta vinculada coincidem na API do Transferegov. Totais agregados excluem valores não positivos (estornos/anulações).",
         },
         "resumoTipos": resumo,
         "emendas": regs,

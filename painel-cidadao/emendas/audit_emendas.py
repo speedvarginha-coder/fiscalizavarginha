@@ -65,6 +65,31 @@ for item in federais:
     if item.get("granularidade") == "emenda_favorecido_agregado" and item.get("identificador_repasse_confirmado") is True:
         problemas.append(f"Federal {ident}: agregado não pode ser marcado como repasse individual confirmado")
 
+especiais = [
+    item for item in federais
+    if item.get("granularidade") == "emenda_plano_acao_transferegov"
+]
+if len(especiais) < 8:
+    problemas.append(f"Federais: apenas {len(especiais)} Pix vinculadas ao Transferegov (esperado >= 8)")
+codigos_especiais = [str(item.get("emenda") or "") for item in especiais]
+if len(codigos_especiais) != len(set(codigos_especiais)):
+    problemas.append("Federais: Pix duplicada após deduplicação de planos")
+for item in especiais:
+    ident = item.get("emenda", "?")
+    if item.get("documentoBeneficiario") != "18240119000105":
+        problemas.append(f"Federal {ident}: CNPJ beneficiário diverge do Município de Varginha")
+    if not item.get("planoAcaoId") or "Transferegov" not in str(item.get("fonteExecucao") or ""):
+        problemas.append(f"Federal {ident}: vínculo Transferegov incompleto")
+    if item.get("valorLiquidado") is not None:
+        problemas.append(f"Federal {ident}: liquidação inferida indevidamente na transferência especial")
+    if item.get("identificador_repasse_confirmado") is True:
+        if item.get("valorRecebido") is None or not item.get("dataRecurso"):
+            problemas.append(f"Federal {ident}: recebimento confirmado sem crédito na conta")
+        if not item.get("numeroOrdensBancarias"):
+            problemas.append(f"Federal {ident}: recebimento confirmado sem ordem bancária")
+    if item.get("valorExecutado") is not None and not item.get("relatorioGestaoLocalizado"):
+        problemas.append(f"Federal {ident}: execução publicada sem relatório de gestão")
+
 # 3. A camada estadual vem da planilha oficial e mantém os estágios sem inferência.
 meta_estadual = estadual.get("metadata", {})
 if meta_estadual.get("totalRegistros") != len(estaduais):
@@ -146,6 +171,10 @@ for nome, dados in (
 
 avisos.append(f"municipais: {origens.get('historico_betha', 0)} Betha + {origens.get('sapl_camara', 0)} SAPL")
 avisos.append(f"federais agregadas: {sum(item.get('granularidade') == 'emenda_favorecido_agregado' for item in federais)}")
+avisos.append(
+    f"Pix Transferegov: {len(especiais)} vinculadas | "
+    f"{sum(item.get('identificador_repasse_confirmado') is True for item in especiais)} com crédito confirmado"
+)
 avisos.append(
     "estaduais oficiais: "
     f"{len(estaduais)} indicações | pago {float(meta_estadual.get('totalPago') or 0):.2f}"

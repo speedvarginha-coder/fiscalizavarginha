@@ -52,3 +52,32 @@ npx playwright test ../../tests/emendas-audit.spec.js
 
 O arquivo publicado inclui URL oficial, data de coleta, planilha/linha original
 e SHA-256 do XLSX para permitir reprodução e conferência.
+
+## Emendas federais e transferências especiais
+
+A relação agregada de emendas/favorecidos continua vindo do conjunto aberto
+do Portal da Transparência (CGU). As transferências especiais destinadas ao
+Município usam adicionalmente a API pública do Transferegov, filtrada pelo CNPJ
+exato `18.240.119/0001-05`.
+
+O enriquecimento segue a cadeia de chaves oficiais:
+
+`beneficiário -> plano de ação -> empenho -> documento hábil -> ordem bancária -> conta vinculada`
+
+Regras bloqueantes:
+
+- parâmetros desconhecidos da API são rejeitados antes da consulta;
+- todo registro retornado deve repetir a chave de relacionamento solicitada;
+- a mesma emenda em plano impedido e posteriormente reprocessado é contada uma
+  vez, mantendo o plano impedido no histórico;
+- ordem bancária comprova a transferência federal, mas recebimento só é marcado
+  quando há crédito correspondente na conta vinculada;
+- saldo bancário é apenas informativo e nunca vira valor recebido ou executado;
+- valor executado permanece `N/D` enquanto não existir relatório de gestão
+  específico na API.
+
+Atualização:
+
+```powershell
+python coletor_emendas_federais.py
+```

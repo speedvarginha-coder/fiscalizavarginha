@@ -14,7 +14,8 @@ function loadPublishedData(file, globalName) {
 
 function money(record, names) {
   const key = names.find((name) => Object.hasOwn(record, name));
-  return key && Number.isFinite(Number(record[key])) ? Number(record[key]) : undefined;
+  if (!key || record[key] === null || record[key] === undefined || record[key] === "") return undefined;
+  return Number.isFinite(Number(record[key])) ? Number(record[key]) : undefined;
 }
 
 function validCnpj(value) {
@@ -88,6 +89,36 @@ test("comprovação financeira não é inferida de agregados", () => {
   expect(estaduais2026.filter((record) => Number(record.valorUtilizado || 0) > 0).every((record) => record.estagioAtual !== "pago")).toBeTruthy();
 });
 
+test("transferências especiais usam plano e conta exatos sem duplicar reprocessamento", () => {
+  const especiais = federal.emendas.filter((record) => record.granularidade === "emenda_plano_acao_transferegov");
+  expect(especiais).toHaveLength(8);
+  expect(new Set(especiais.map((record) => record.emenda)).size).toBe(8);
+  expect(especiais.reduce((sum, record) => sum + Number(record.valorIndicado || 0), 0)).toBeCloseTo(3_561_727, 2);
+  expect(especiais.every((record) => record.documentoBeneficiario === "18240119000105")).toBeTruthy();
+  expect(especiais.every((record) => record.planoAcaoId && record.fonteExecucao?.includes("Transferegov"))).toBeTruthy();
+  expect(especiais.every((record) => record.valorLiquidado === null)).toBeTruthy();
+
+  const reprocessada = especiais.find((record) => record.emenda === "202527540001");
+  expect(reprocessada.planosRelacionados).toHaveLength(2);
+  expect(reprocessada.planoAcaoId).toBe(86374);
+  expect(reprocessada.impedimentosHistoricos).toHaveLength(1);
+  expect(reprocessada.valorIndicado).toBe(247_500);
+
+  const atual = especiais.find((record) => record.emenda === "202627540001");
+  expect(atual.dataEmpenho).toBe("2026-06-19");
+  expect(atual.dataPagamento).toBe("2026-06-22");
+  expect(atual.dataRecurso).toBe("2026-06-23");
+  expect(atual.valorRecebido).toBe(1_194_000);
+  expect(atual.valorExecutado).toBeNull();
+  expect(atual.execucao).not.toContain("08/05/2026");
+  expect(atual.objetoTransferegov).toContain("Hospital Bom Pastor");
+
+  const patrimonio2022 = especiais.find((record) => record.emenda === "202214080012");
+  expect(patrimonio2022.anoEmenda).toBe("2022");
+  expect(patrimonio2022.anoRecurso).toBe("2023");
+  expect(patrimonio2022.anosRelacionados).toEqual(["2022", "2023"]);
+});
+
 test("valores, CNPJs e estágios publicados permanecem auditáveis", () => {
   const implausible = records.filter((record) => {
     const value = Number(record.valor);
@@ -134,11 +165,17 @@ test("interface carrega a união municipal e mostra N/D para recebimento não co
   await page.selectOption("#typeFilter", "Municipal");
   await expect(page.locator("#resultSummary")).toContainText("581 resultados");
 
-  for (const type of ["Federal", "Estadual"]) {
-    await page.selectOption("#typeFilter", type);
-    const cards = page.locator(".result-card");
-    await expect(cards.first()).toBeVisible();
-    const stageTexts = await cards.evaluateAll((nodes) => nodes.map((node) => node.textContent || ""));
-    expect(stageTexts.every((text) => /Recebido confirmado\s*N\/D/.test(text))).toBeTruthy();
-  }
+  await page.selectOption("#typeFilter", "Estadual");
+  let cards = page.locator(".result-card");
+  await expect(cards.first()).toBeVisible();
+  let stageTexts = await cards.evaluateAll((nodes) => nodes.map((node) => node.textContent || ""));
+  expect(stageTexts.every((text) => /Recebido confirmado\s*N\/D/.test(text))).toBeTruthy();
+
+  await page.selectOption("#typeFilter", "Federal");
+  await page.fill("#searchInput", "202627540001");
+  cards = page.locator(".result-card");
+  await expect(cards).toHaveCount(1);
+  await expect(cards.first()).toContainText("Recebido confirmado");
+  await expect(cards.first()).toContainText("R$ 1.194.000,00");
+  await expect(cards.first()).toContainText("Trilha federal vinculada (Transferegov)");
 });

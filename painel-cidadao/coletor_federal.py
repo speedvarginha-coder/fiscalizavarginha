@@ -9,6 +9,7 @@ Fontes:
   2. API CGU — /convenios?uf=MG (filtra por município)
   3. API CGU — /ceis (dataset sancionados, cruza com Betha)
   4. Dataset aberto — emendas-parlamentares/UNICO (sem token, redundante com /emendas)
+  5. API Transferegov — planos, empenhos, OBs e contas de transferências especiais
 
 Saída: painel-cidadao/data/federal.json
 """
@@ -25,13 +26,19 @@ import unicodedata
 from numbers import Real
 from pathlib import Path
 
+from transferegov_especiais import (
+    CNPJ_VARGINHA,
+    coletar_transferencias_especiais,
+)
+
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 DATA.mkdir(exist_ok=True)
 
 # Identificadores de Varginha
 IBGE = "3170701"
-CNPJ_PREFEITURA_RAIZ = "18240380"  # primeiros 8 dígitos
+CNPJ_PREFEITURA = CNPJ_VARGINHA
+CNPJ_PREFEITURA_RAIZ = CNPJ_PREFEITURA[:8]
 
 # Chave API CGU (gratuita, sem escopo restrito para emendas/convenios/ceis)
 _TOKEN_FILE = ROOT.parent / "private" / "tokens" / ".portal-transparencia.json"
@@ -382,7 +389,19 @@ def _load_cnpjs_betha() -> set[str]:
 
 # ── Resumo ─────────────────────────────────────────────────────────────────────
 
-def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]) -> dict:
+def _resumo(
+    emendas: list[dict],
+    convenios: list[dict],
+    alertas_ceis: list[dict],
+    especiais: list[dict] | None = None,
+) -> dict:
+    especiais = especiais or []
+    def total_especial_conhecido(campo: str):
+        valores = [
+            _to_float(item.get(campo)) for item in especiais
+            if item.get(campo) not in (None, "")
+        ]
+        return round(sum(valores), 2) if valores else None
     total_empenhado = sum(e["valorEmpenhado"] for e in emendas)
     total_liquidado = sum(e["valorLiquidado"] for e in emendas)
     total_pago = sum(e["valorPago"] for e in emendas)
@@ -401,6 +420,14 @@ def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]
             "totalLiquidado": round(total_liquidado, 2),
             "totalPago": round(total_pago, 2),
         },
+        "transferenciasEspeciais": {
+            "qtdEmendasUnicas": len(especiais),
+            "totalIndicado": total_especial_conhecido("valorIndicado"),
+            "totalEmpenhado": total_especial_conhecido("valorEmpenhado"),
+            "totalTransferido": total_especial_conhecido("valorPago"),
+            "totalRecebidoConfirmado": total_especial_conhecido("valorRecebido"),
+            "totalExecutadoComRelatorio": total_especial_conhecido("valorExecutado"),
+        },
         "convenios": {
             "qtd": len(convenios),
             "qtdAtivos": len(convenios_ativos),
@@ -413,11 +440,13 @@ def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]
         },
         "fontes": [
             "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
+            "Transferegov.br — API de Transferências Especiais",
             "CEIS — Cadastro de Empresas Inidôneas e Suspensas (CGU)",
         ],
         "nota": (
-            "Dados obtidos diretamente da API oficial do Portal da Transparência (CGU). "
+            "Dados obtidos diretamente das APIs oficiais do Portal da Transparência (CGU) e do Transferegov. "
             "Valores em Reais. Indicação, empenho, liquidação e pagamento são estágios distintos. "
+            "Nas transferências especiais, ordem bancária e crédito em conta são separados da execução do objeto. "
             "Convênio é acordo específico; valor pactuado e valor liberado são exibidos separadamente. "
             "CEIS = empresa sancionada que recebeu recursos municipais (alerta para conferência)."
         ),
@@ -441,6 +470,7 @@ def coletar() -> dict:
     existente = _fallback(silencioso=True)
     anteriores_emendas = existente.get("emendas_api") or []
     anteriores_convenios = existente.get("convenios") or []
+    anteriores_especiais = existente.get("transferencias_especiais") or []
     anteriores_emendas_validas = bool(anteriores_emendas) and all(
         item.get("destino_confirmado") is True for item in anteriores_emendas
     )
@@ -473,6 +503,22 @@ def coletar() -> dict:
             f"convenios={convenios_status} (erro={convenios_erro})"
         )
 
+    try:
+        especiais_payload = coletar_transferencias_especiais()
+        transferencias_especiais = especiais_payload["emendas"]
+        transferegov_status = {
+            "status": "ok",
+            "motivo": "",
+            **especiais_payload["metadata"],
+        }
+    except Exception as exc:
+        transferencias_especiais = anteriores_especiais
+        transferegov_status = {
+            "status": "preservado" if anteriores_especiais else "partial",
+            "motivo": str(exc),
+            "emendasPreservadas": len(anteriores_especiais),
+        }
+
     # Cruzamento CEIS apenas com CNPJs reais dos fornecedores Betha
     cnpjs_betha = _load_cnpjs_betha()
     alertas_ceis, ceis_ok, ceis_erro = _coletar_ceis(token, cnpjs_betha)
@@ -482,13 +528,15 @@ def coletar() -> dict:
     payload = {
         "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
         "atualizado_em": dt.datetime.now().isoformat(),
-        "resumo": _resumo(emendas, convenios, alertas_ceis),
+        "resumo": _resumo(emendas, convenios, alertas_ceis, transferencias_especiais),
         "emendas_api": emendas,
+        "transferencias_especiais": transferencias_especiais,
         "convenios": convenios,
         "alertas_ceis": alertas_ceis,
         "sancoes_fornecedores": alertas_ceis,
         "status_fontes": {
             "emendas": {"status": emendas_status, "motivo": emendas_erro},
+            "transferencias_especiais": transferegov_status,
             "convenios": {"status": convenios_status, "motivo": convenios_erro},
             "ceis": {"status": "ok" if ceis_ok else "preservado", "motivo": ceis_erro},
         },
@@ -510,8 +558,8 @@ def coletar() -> dict:
             },
             {
                 "titulo": "Emendas Pix (Transferências Especiais) para Varginha",
-                "url": f"https://portaldatransparencia.gov.br/transferencias-especiais?codigoMunicipio={IBGE}",
-                "desc": "Emendas sem destinação obrigatória — Pix direto para a Prefeitura.",
+                "url": f"https://api-publica.transferegov.gestao.gov.br/especiais/planos_acao_especiais?id_beneficiario={transferegov_status.get('idBeneficiario', 3277)}",
+                "desc": "Planos, empenhos, ordens bancárias, conta vinculada e prestação de contas das transferências especiais.",
             },
         ],
     }
