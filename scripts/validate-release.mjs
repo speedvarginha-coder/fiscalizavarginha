@@ -47,6 +47,9 @@ const expectedChunks = [
 const optionalChunks = [
   "atualizacoes", "convenios", "educacao", "licitacoes", "obras_educacao",
   "sancoes", "tse_doacoes", "licitacoes_resultados",
+  // Plano de Contratacoes Anual (PNCP). Opcional porque depende de o orgao
+  // publicar: entidade sem plano nao pode reprovar o release.
+  "pca",
 ];
 
 const requiredPublicFiles = [
