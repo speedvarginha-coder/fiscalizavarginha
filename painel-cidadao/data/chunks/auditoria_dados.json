@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-08-15T07:45:45.335Z",
+  "gerado_em": "2026-08-15T14:36:23.386Z",
   "level": "critical",
   "summary": {
     "errors": 1,
-    "warnings": 9,
+    "warnings": 8,
     "info": 1,
     "ok": 1,
-    "total": 12
+    "total": 11
   },
   "atualizado_base": {
     "iso": "2026-08-15T04:43:29",
@@ -17,7 +17,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.3 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -28,14 +28,6 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
-    },
-    {
-      "severity": "warning",
-      "id": "pessoal-prefeitura-parcial",
-      "title": "Pessoal da Prefeitura com escopo parcial",
-      "detail": "A base indica coleta parcial de Educacao/FUNDEB, nao folha completa da Prefeitura.",
-      "action": "Exibir essa limitacao junto dos numeros e buscar consulta completa por competencia.",
-      "source": "pessoal.json"
     },
     {
       "severity": "info",
@@ -186,7 +178,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.3 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -197,14 +189,6 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
-    },
-    {
-      "severity": "warning",
-      "id": "pessoal-prefeitura-parcial",
-      "title": "Pessoal da Prefeitura com escopo parcial",
-      "detail": "A base indica coleta parcial de Educacao/FUNDEB, nao folha completa da Prefeitura.",
-      "action": "Exibir essa limitacao junto dos numeros e buscar consulta completa por competencia.",
-      "source": "pessoal.json"
     },
     {
       "severity": "info",

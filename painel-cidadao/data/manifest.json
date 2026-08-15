@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-15T07:56:50.686Z",
+  "gerado_em": "2026-08-15T14:49:58.528Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
@@ -8,8 +8,8 @@
     },
     "auditoria_dados": {
       "arquivo": "data/chunks/auditoria_dados.json",
-      "bytes": 19812,
-      "sha256": "af5b2b6884b36cd8087174540641bc3ea92ace2b16e2d2267e2f0855680c7ffa"
+      "bytes": 19054,
+      "sha256": "2281c3c947380c5149a7367c9e1d58bedf02a7a5e161366a7d4ae9f8bf66151f"
     },
     "avalie_config": {
       "arquivo": "data/chunks/avalie_config.json",
@@ -34,7 +34,7 @@
     "chat_context": {
       "arquivo": "data/chunks/chat_context.json",
       "bytes": 6643,
-      "sha256": "24072c070288d263e8851ad2df93c3e9ef850064140aed8bf0e0f212307a0f50"
+      "sha256": "360249f6d3dd4dc3406d963b30a2946a7e42c469fcfe8e587541821bf95fa761"
     },
     "cnpjs": {
       "arquivo": "data/chunks/cnpjs.json",
@@ -74,12 +74,12 @@
     "home_resumo": {
       "arquivo": "data/chunks/home_resumo.json",
       "bytes": 557,
-      "sha256": "5efbad309f60aa3e2832cf83ed9c1165ddc3bd5a36bbe7d032a7f96279c4777a"
+      "sha256": "f7b90588f22c5f5eddf4597a8985a569f858aa055998c0e131918a76e09a5c8a"
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",
       "bytes": 102831,
-      "sha256": "d963c785f585272c2ae352b978151474adb11d84a0c229aab8e6e38d176b0967"
+      "sha256": "bf28d583d3153d33f7396a45119ea99ea706362953c08ba251e9da3e6d9fa229"
     },
     "licitacoes_resultados": {
       "arquivo": "data/chunks/licitacoes_resultados.json",
@@ -93,13 +93,13 @@
     },
     "monitoramento_coletas": {
       "arquivo": "data/chunks/monitoramento_coletas.json",
-      "bytes": 4267,
-      "sha256": "406aecaae75adac47af9f08ac1e0aed16482dc2433970a6a38f2e8b5307115ea"
+      "bytes": 4264,
+      "sha256": "4545a82a4a2096983e8c48f550acd139b76b254b44dfb7c5ac846f8193506b59"
     },
     "mudancas_coleta": {
       "arquivo": "data/chunks/mudancas_coleta.json",
-      "bytes": 1161,
-      "sha256": "5a0e48b12238daf4db98a96c18c03ab4099e11d0eb63da82d89c2de47a3c2b3a"
+      "bytes": 1198,
+      "sha256": "4ae27a99e147a7bb71f6a3191b589179ba45974518dddd445f45c2133b3fc13d"
     },
     "pca": {
       "arquivo": "data/chunks/pca.json",
@@ -108,8 +108,8 @@
     },
     "pessoal": {
       "arquivo": "data/chunks/pessoal.json",
-      "bytes": 151998973,
-      "sha256": "25990e96be81d4a414f433e7b9b36584c3e76dd00e74aed6039c05a3904af0b6"
+      "bytes": 2498395,
+      "sha256": "e8918a246344c3b5c20e13f6d219aa8311031257c424e0ca0166194bad817c61"
     },
     "pncp": {
       "arquivo": "data/chunks/pncp.json",
@@ -158,8 +158,8 @@
     },
     "status_fontes": {
       "arquivo": "data/chunks/status_fontes.json",
-      "bytes": 3415,
-      "sha256": "3eb3aa5fe6c19f3289ca270777fb951ea3ab1ef08d1311b293e7af68c336fb62"
+      "bytes": 3446,
+      "sha256": "da3d64b0a60554c9d63256a5910224036a01cc5335b66a9466ce2749cdabdad1"
     },
     "tse_doacoes": {
       "arquivo": "data/chunks/tse_doacoes.json",
@@ -295,7 +295,7 @@
       },
       "2026-08-15T04-43-29-ffbdaa7a.json": {
         "bytes": 747845,
-        "sha256": "f9f55e0f427a1f7ac8eccc8d81b94662e12b567db62f93248ab4a40e190d543a"
+        "sha256": "1c3ff5283c3d91ee40b617440dccfb246698eb2f703fe5b6ce5aeb85a758249a"
       }
     }
   }

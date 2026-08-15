@@ -1,19 +1,19 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-15T07:56:45.175Z",
+  "generated_at": "2026-08-15T12:45:32.357Z",
   "last_completed_run": {
     "schema_version": 1,
-    "updated_at": "2026-08-15T07:56:44.704Z",
-    "finished_at": "2026-08-15T07:56:44.704Z",
-    "coleta": "SUCESSO",
-    "deploy": "SUCESSO",
+    "updated_at": "2026-08-15T11:56:25.190Z",
+    "finished_at": "2026-08-15T11:56:25.190Z",
+    "coleta": "FALHA",
+    "deploy": "PULADO",
     "whatsapp": "PULADO",
     "fase": "final"
   },
   "last_verified_deployment": {
     "status": "SUCESSO",
-    "checked_at": "2026-08-15T07:54:38.986Z",
-    "manifest_sha256": "8b2cb9ba8ccac4d84775f8931528708d790ac1168f4f4aba901fc73ff75cf031",
+    "checked_at": "2026-08-15T12:44:38.708Z",
+    "manifest_sha256": "557a566c5727651ecfab6adea927d2e44af9954a054b466057a2786157570cfb",
     "url": "https://fiscalizavarginha.com.br/"
   },
   "summary": {
