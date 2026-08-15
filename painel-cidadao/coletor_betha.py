@@ -115,7 +115,18 @@ def _grab_token_via_browser(portal_hash: str = PORTAL_HASH) -> dict:
             # fazia uma renovacao simples consumir ate 45s sem necessidade.
             page.goto(consulta, wait_until="domcontentloaded", timeout=45000)
             for _ in range(25):  # o grant pode levar alguns segundos
-                tok = page.evaluate(extrair)
+                # O grant anonimo navega no meio da espera: a SPA redireciona
+                # para o endpoint de autorizacao e volta. Avaliar JS durante a
+                # navegacao destroi o contexto de execucao, e a excecao escapava
+                # deste laco — que existe justamente para tentar de novo. Uma
+                # condicao transitoria e esperada derrubava a coleta inteira.
+                # So o erro de navegacao e tolerado; qualquer outro sobe.
+                try:
+                    tok = page.evaluate(extrair)
+                except Exception as exc:
+                    if "context was destroyed" not in str(exc).lower():
+                        raise
+                    tok = None
                 if tok and tok.get("accessToken"):
                     break
                 page.wait_for_timeout(1000)

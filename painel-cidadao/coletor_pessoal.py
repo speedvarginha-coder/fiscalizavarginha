@@ -350,6 +350,12 @@ def _coletar_prefeitura_folha_completa() -> tuple[list[dict], str]:
     # campo extra: secretaria de origem (ajuda filtros futuros no painel)
     for s, r in zip(servidores, rows):
         s["orgao"] = r.get("orgao", "")
+        # A consulta filtra o mes na origem, entao a linha nao vem carimbada.
+        # Carimbar aqui e o que torna cada linha auto-explicativa: linha de
+        # salario sem mes foi exatamente o que deixou somar 28 meses e publicar
+        # R$ 914 mi como folha mensal. Quem reprocessar este chunk depois nao
+        # depende de saber que a consulta era de um mes so.
+        s["competencia"] = comp
     return servidores, comp
 
 
