@@ -1987,8 +1987,8 @@
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "DOMINGOS PINTO FERREIRA NETO",
-        "DOMINGOS PINTO FILHO"
+        "DN PARTICIPACOES LTDA",
+        "DOMINGOS PINTO FERREIRA NETO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"
     },
@@ -2025,6 +2025,7 @@
       "uf": "SP",
       "socios": [
         "GUSTAVO HENRIQUE TEIXEIRA DE CASTRO",
+        "JULIA NEVES TEIXEIRA DE CASTRO",
         "SUELI MERI NEVES TEIXEIRA DE CASTRO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal"

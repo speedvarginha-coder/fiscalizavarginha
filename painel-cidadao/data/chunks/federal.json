@@ -1,10 +1,10 @@
 {
   "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
-  "atualizado_em": "2026-08-15T17:42:13.782454",
+  "atualizado_em": "2026-08-16T08:42:30.662646",
   "resumo": {
     "municipio": "Varginha-MG",
     "codigoIbge": "3170701",
-    "atualizadoEm": "15/08/2026 17:42",
+    "atualizadoEm": "16/08/2026 08:42",
     "emendas": {
       "qtd": 0,
       "totalEmpenhado": 0,
@@ -65,7 +65,7 @@
       "conta": "32-88110",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 233278.09,
+      "saldoContaInformativo": 233370.42,
       "dataSaldoConta": "2025-12-29",
       "numeroEmpenhos": [
         "2020NE800471",
@@ -127,7 +127,7 @@
       "conta": "32-92683",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 94630.93,
+      "saldoContaInformativo": 94668.38,
       "dataSaldoConta": "2026-08-05",
       "numeroEmpenhos": [
         "2022NE008218"
@@ -187,7 +187,7 @@
       "conta": "32-98733",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 54052.82,
+      "saldoContaInformativo": 54074.21,
       "dataSaldoConta": "2026-05-20",
       "numeroEmpenhos": [
         "2024NE005673"
@@ -247,7 +247,7 @@
       "conta": "32-98732",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 59347.39,
+      "saldoContaInformativo": 59370.88,
       "dataSaldoConta": "2024-12-13",
       "numeroEmpenhos": [
         "2024NE005672"
@@ -307,7 +307,7 @@
       "conta": "32-98731",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 173310.88,
+      "saldoContaInformativo": 173379.47,
       "dataSaldoConta": "2024-12-17",
       "numeroEmpenhos": [
         "2024NE005609"
@@ -367,7 +367,7 @@
       "conta": "32-98734",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 237310.15,
+      "saldoContaInformativo": 237404.07,
       "dataSaldoConta": "2024-12-16",
       "numeroEmpenhos": [
         "2024NE005661"
@@ -500,7 +500,7 @@
       "conta": "32-106785",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 1212433.85,
+      "saldoContaInformativo": 1212913.72,
       "dataSaldoConta": "2026-06-23",
       "numeroEmpenhos": [
         "2026NE007169"
@@ -3379,7 +3379,7 @@
       "id": "366607221",
       "numeroProcesso": "01400.006763/2004-56",
       "orgaoConcedenteNome": "Fundo Nacional de Cultura",
-      "convenente": "GRUPO MARANATHA DE ART'GLOBAL",
+      "convenente": "GMAG - GRUPO MARANATHA DE ART' GLOBAL",
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "2004-08-23",
       "dataFinalVigencia": "2004-09-21",
@@ -3828,7 +3828,7 @@
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-08-15T20:42:13.046018+00:00",
+      "coletadoEm": "2026-08-16T11:42:29.518072+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,

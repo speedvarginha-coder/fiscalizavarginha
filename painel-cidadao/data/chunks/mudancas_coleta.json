@@ -1,43 +1,32 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-15T20:46:02.530Z",
+  "gerado_em": "2026-08-16T11:47:53.989Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-08-16T08-46-58-2972eb3b",
+    "coleta_iso": "2026-08-16T08:46:58",
+    "data_humana": "16/08/2026 - 08:46",
+    "arquivo": "data/snapshots/2026-08-16T08-46-58-2972eb3b.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-08-15T17-45-06-2972eb3b",
     "coleta_iso": "2026-08-15T17:45:06",
     "data_humana": "15/08/2026 - 17:45",
-    "arquivo": "data/snapshots/2026-08-15T17-45-06-2972eb3b.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-08-15T04-43-29-b6c90fb6",
-    "coleta_iso": "2026-08-15T04:43:29",
-    "data_humana": "15/08/2026 - 04:43",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 1,
+    "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 16000,
+    "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 1
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 0/2026 - LOPES LIMPEZA E CONSERVACAO PATRIMONIAL LTDA",
-      "detalhe": "Serviço de limpeza pesada em bloco do Terminal Rodoviário",
-      "orgao": "Prefeitura",
-      "data": "2026-08-14",
-      "valor_brl": 16000,
-      "alvo_id": "PREFEITURA-2026-0"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }
