@@ -1,8 +1,169 @@
 {
- "gerado_em": "2026-08-17T18:57:33+00:00",
+ "gerado_em": "2026-08-17T20:53:35+00:00",
  "fonte": "camara",
- "total": 834,
+ "total": 837,
  "publicacoes": [
+  {
+   "id": "CAMARA-2026-PLOM-1",
+   "fonte": "camara",
+   "tipo": "emenda_lom",
+   "tipo_label": "Proposta de Emenda à Lei Orgânica",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Proposta de Emenda à Lei Orgânica nº 1/2026",
+   "numero": "1/2026",
+   "data": "2026-08-17",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "orçamento",
+   "resumo": "Esta proposta de emenda à Lei Orgânica de Varginha busca mudar o limite de recursos que vereadores podem destinar a projetos específicos na cidade.",
+   "o_que_propoe": "A proposta altera os parágrafos 8º e 10 do artigo 125 da Lei Orgânica, aumentando o percentual máximo das emendas individuais impositivas para 1,55% da Receita Corrente Líquida do município.",
+   "impacto_cidadao": "Se aprovada, mais recursos do orçamento municipal poderão ser direcionados por vereadores para áreas e projetos específicos, conforme suas prioridades.",
+   "por_que_acompanhar": [
+    "Para entender como os recursos públicos serão distribuídos e quais áreas receberão mais investimentos.",
+    "Para fiscalizar a aplicação das emendas e garantir que atendam às necessidades da população.",
+    "Para acompanhar a autonomia dos vereadores na destinação de parte do orçamento municipal."
+   ],
+   "pontos_atencao": [
+    "O aumento do percentual pode alterar a forma como o orçamento é gerido, dando mais poder de alocação aos vereadores.",
+    "É importante observar se a destinação desses recursos será transparente e alinhada com as demandas da comunidade.",
+    "A Receita Corrente Líquida varia, então o valor exato das emendas também mudará anualmente."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6189/propostadeemenda_lei_organica01_-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Leonardo Vinhas Ciacci",
+   "situacao": "em tramitação",
+   "ementa": "ALTERA A REDAÇÃO DOS §§ 8° E 10 DO ARTIGO 125 DA LEI ORGÂNICA DO MUNICÍPIO DE VARGINHA, ADEQUANDO O PERCENTUAL LIMITE DAS EMENDAS INDIVIDUAIS IMPOSITIVAS PARA 1,55% DA RECEITA CORRENTE LÍQUIDA, E DÁ OUTRAS PROVIDÊNCIAS.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6189",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6189/propostadeemenda_lei_organica01_-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6189/propostadeemenda_lei_organica01_-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "e188aaf5d3be92295e5486a7f66252c94149d54e",
+   "gerado_em": "2026-08-17T20:53:19+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PLOE-50",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Executivo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Executivo nº 50/2026",
+   "numero": "50/2026",
+   "data": "2026-08-17",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "legislação",
+   "resumo": "Este projeto de lei propõe mudar partes de uma lei municipal de 1998, que já havia alterado outra lei anterior, também de 1998.",
+   "o_que_propoe": "A proposta altera a redação dos anexos I, II, IV e V da Lei Municipal nº 3.099/1998. O texto da ementa não detalha o conteúdo específico das mudanças.",
+   "impacto_cidadao": "O impacto direto para o cidadão não é claro apenas pela ementa, pois não especifica o que será alterado nos anexos da lei.",
+   "por_que_acompanhar": [
+    "Garantir a transparência sobre as mudanças na legislação municipal.",
+    "Entender como as leis existentes são atualizadas e modificadas ao longo do tempo.",
+    "Verificar se as alterações podem ter impactos indiretos em serviços ou regulamentações."
+   ],
+   "pontos_atencao": [
+    "A ementa não detalha o conteúdo das alterações nos anexos, dificultando a compreensão do que está sendo modificado.",
+    "A lei original é de 1998, o que sugere que as alterações podem ser atualizações administrativas ou técnicas."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6188/projetodelei50-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Leonardo Vinhas Ciacci",
+   "situacao": "em tramitação",
+   "ementa": "ALTERA A REDAÇÃO DOS ANEXOS I, II, IV E V DA LEI MUNICIPAL N° 3.099, DE 19 DE NOVEMBRO DE 1998, QUE ALTEROU A REDAÇÃO DOS ANEXOS I, II, III, IV, V E VI DA LEI MUNICIPAL N' 2.988, DE 02 DE FEVEREIRO DE 1998.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6188",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6188/projetodelei50-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6188/projetodelei50-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "6589ff6a4c3d70fc236aa874527b9c6f307c81a7",
+   "gerado_em": "2026-08-17T20:53:34+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PLOE-49",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Executivo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Executivo nº 49/2026",
+   "numero": "49/2026",
+   "data": "2026-08-17",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "orçamento",
+   "resumo": "Este é um projeto de lei que autoriza a prefeitura a conceder ajuda financeira, chamada subvenção econômica, a uma entidade específica.",
+   "o_que_propoe": "Se aprovado, o projeto permitirá que o Executivo municipal destine recursos econômicos a uma entidade, cujo nome e valor não são detalhados na ementa.",
+   "impacto_cidadao": "Se aprovado, recursos públicos poderão ser direcionados para uma entidade, impactando indiretamente o orçamento municipal.",
+   "por_que_acompanhar": [
+    "Para saber qual entidade será beneficiada e o valor da subvenção.",
+    "Para entender a finalidade e a justificativa para o uso de recursos públicos.",
+    "Para fiscalizar a aplicação dos fundos e a prestação de contas."
+   ],
+   "pontos_atencao": [
+    "A ementa não especifica a entidade que receberá a subvenção.",
+    "O valor da subvenção econômica não é informado na ementa.",
+    "A finalidade específica da subvenção não é detalhada."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [
+     15000.0,
+     30000.0,
+     4800.0,
+     1.0,
+     3000.0
+    ],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "documento original no SAPL",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6187/projetodelei49-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "Leonardo Vinhas Ciacci",
+   "situacao": "em tramitação",
+   "ementa": "AUTORIZA A CONCESSÃO DE SUBVENÇÃO ECONÔMICA À ENTIDADE QUE ESPECIFICA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6187",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6187/projetodelei49-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6187/projetodelei49-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "f611b0d49f8cf466077637e4fd3dbfc159d5d6c6",
+   "gerado_em": "2026-08-17T20:53:28+00:00"
+  },
   {
    "id": "CAMARA-2026-REQ-202",
    "fonte": "camara",
