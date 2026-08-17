@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-17T00:45:59.935Z",
+  "gerado_em": "2026-08-17T13:47:32.693Z",
   "fonte": {
     "principal": "camara_anos.json",
     "origem": "SAPL Camara Municipal de Varginha",
@@ -1735,72 +1735,72 @@
           {
             "nome": "Cássio Chiodi",
             "posicao": 1,
-            "valor": 77.4
+            "valor": 76.9
           },
           {
             "nome": "Zilda Silva",
             "posicao": 2,
-            "valor": 77.1
+            "valor": 76.6
           },
           {
             "nome": "Dandan",
             "posicao": 3,
-            "valor": 71.2
+            "valor": 70.8
           },
           {
             "nome": "Joãozinho Enfermeiro",
             "posicao": 4,
-            "valor": 66.2
+            "valor": 65.8
           },
           {
             "nome": "Bruno Leandro Coletor",
             "posicao": 5,
-            "valor": 64
+            "valor": 63.5
           },
           {
             "nome": "Dudu Ottoni",
             "posicao": 6,
-            "valor": 61.5
+            "valor": 61
           },
           {
             "nome": "Thulyo Paiva",
             "posicao": 7,
-            "valor": 60.5
+            "valor": 60
           },
           {
             "nome": "Miguel da Saúde",
             "posicao": 8,
-            "valor": 59.3
+            "valor": 58.8
           },
           {
             "nome": "Ana Rios Fontoura",
             "posicao": 9,
-            "valor": 56.5
+            "valor": 56
           },
           {
             "nome": "Davi Martins",
             "posicao": 10,
-            "valor": 56
+            "valor": 55.5
           },
           {
             "nome": "Alexandre Prado",
             "posicao": 11,
-            "valor": 55.2
+            "valor": 54.8
           },
           {
             "nome": "Zé Morais",
             "posicao": 12,
-            "valor": 50
+            "valor": 49.5
           },
           {
             "nome": "Afonso Monticeli",
             "posicao": 13,
-            "valor": 49.8
+            "valor": 49.2
           },
           {
             "nome": "Pastor Faustinho",
             "posicao": 14,
-            "valor": 45.3
+            "valor": 44.9
           },
           {
             "nome": "Marquinho da Cooperativa",
@@ -1810,7 +1810,7 @@
           {
             "nome": "Rogério Bueno",
             "posicao": 16,
-            "valor": 18.6
+            "valor": 18.5
           },
           {
             "nome": "Dr. Guedes",
@@ -2195,72 +2195,72 @@
           {
             "nome": "Zilda Silva",
             "posicao": 1,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Dandan",
             "posicao": 2,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Joãozinho Enfermeiro",
             "posicao": 3,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Bruno Leandro Coletor",
             "posicao": 4,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Thulyo Paiva",
             "posicao": 5,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Ana Rios Fontoura",
             "posicao": 6,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Davi Martins",
             "posicao": 7,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Alexandre Prado",
             "posicao": 8,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Zé Morais",
             "posicao": 9,
-            "valor": 98.2
+            "valor": 96.4
           },
           {
             "nome": "Afonso Monticeli",
             "posicao": 10,
-            "valor": 97.4
+            "valor": 94.9
           },
           {
             "nome": "Cássio Chiodi",
             "posicao": 11,
-            "valor": 96.4
+            "valor": 94.6
           },
           {
             "nome": "Dudu Ottoni",
             "posicao": 12,
-            "valor": 96.4
+            "valor": 94.6
           },
           {
             "nome": "Miguel da Saúde",
             "posicao": 13,
-            "valor": 96.4
+            "valor": 94.6
           },
           {
             "nome": "Pastor Faustinho",
             "posicao": 14,
-            "valor": 96.4
+            "valor": 94.6
           },
           {
             "nome": "Marquinho da Cooperativa",
@@ -2270,7 +2270,7 @@
           {
             "nome": "Rogério Bueno",
             "posicao": 16,
-            "valor": 23.6
+            "valor": 23.2
           },
           {
             "nome": "Dr. Guedes",
@@ -2379,27 +2379,27 @@
       "ranking": [
         {
           "nome": "Cássio Chiodi",
-          "indice": 77.4,
+          "indice": 76.9,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
+          "presenca_pct": 94.6,
           "presenca_presentes": 53,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 90.9,
             "fiscalizar": 45,
             "representar": 83.3,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "dimensoes_brutas": {
             "legislar": 30,
             "fiscalizar": 27,
             "representar": 12.5,
             "efetividade": 0,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "evidencias": {
             "projeto_autoria_propria": 10,
@@ -2441,27 +2441,27 @@
         },
         {
           "nome": "Zilda Silva",
-          "indice": 77.1,
+          "indice": 76.6,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 100,
             "fiscalizar": 25,
             "representar": 100,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 33,
             "fiscalizar": 15,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 11,
@@ -2503,27 +2503,27 @@
         },
         {
           "nome": "Dandan",
-          "indice": 71.2,
+          "indice": 70.8,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 45.5,
             "fiscalizar": 100,
             "representar": 20,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 15,
             "fiscalizar": 60,
             "representar": 3,
             "efetividade": 0,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 5,
@@ -2565,27 +2565,27 @@
         },
         {
           "nome": "Joãozinho Enfermeiro",
-          "indice": 66.2,
+          "indice": 65.8,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 36.4,
             "fiscalizar": 52.5,
             "representar": 100,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 12,
             "fiscalizar": 31.5,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 4,
@@ -2627,27 +2627,27 @@
         },
         {
           "nome": "Bruno Leandro Coletor",
-          "indice": 64,
+          "indice": 63.5,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 36.4,
             "fiscalizar": 45,
             "representar": 100,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 12,
             "fiscalizar": 27,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 4,
@@ -2689,27 +2689,27 @@
         },
         {
           "nome": "Dudu Ottoni",
-          "indice": 61.5,
+          "indice": 61,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
+          "presenca_pct": 94.6,
           "presenca_presentes": 53,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 54.5,
             "fiscalizar": 20,
             "representar": 100,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "dimensoes_brutas": {
             "legislar": 18,
             "fiscalizar": 12,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "evidencias": {
             "projeto_autoria_propria": 6,
@@ -2751,27 +2751,27 @@
         },
         {
           "nome": "Thulyo Paiva",
-          "indice": 60.5,
+          "indice": 60,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
             "fiscalizar": 42.5,
             "representar": 100,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 9,
             "fiscalizar": 25.5,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
@@ -2813,27 +2813,27 @@
         },
         {
           "nome": "Miguel da Saúde",
-          "indice": 59.3,
+          "indice": 58.8,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
+          "presenca_pct": 94.6,
           "presenca_presentes": 53,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
             "fiscalizar": 40,
             "representar": 100,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "dimensoes_brutas": {
             "legislar": 9,
             "fiscalizar": 24,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
@@ -2875,27 +2875,27 @@
         },
         {
           "nome": "Ana Rios Fontoura",
-          "indice": 56.5,
+          "indice": 56,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 36.4,
             "fiscalizar": 20,
             "representar": 100,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 12,
             "fiscalizar": 12,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 4,
@@ -2937,27 +2937,27 @@
         },
         {
           "nome": "Davi Martins",
-          "indice": 56,
+          "indice": 55.5,
           "efetividade": 100,
           "leis_aprovadas": 1,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
             "fiscalizar": 27.5,
             "representar": 100,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 9,
             "fiscalizar": 16.5,
             "representar": 15,
             "efetividade": 1,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
@@ -2999,27 +2999,27 @@
         },
         {
           "nome": "Alexandre Prado",
-          "indice": 55.2,
+          "indice": 54.8,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
             "fiscalizar": 25,
             "representar": 100,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 9,
             "fiscalizar": 15,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
@@ -3061,27 +3061,27 @@
         },
         {
           "nome": "Zé Morais",
-          "indice": 50,
+          "indice": 49.5,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 98.2,
+          "presenca_pct": 96.4,
           "presenca_presentes": 54,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
             "fiscalizar": 7.5,
             "representar": 100,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "dimensoes_brutas": {
             "legislar": 9,
             "fiscalizar": 4.5,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 98.2
+            "presenca": 96.4
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
@@ -3123,27 +3123,27 @@
         },
         {
           "nome": "Afonso Monticeli",
-          "indice": 49.8,
+          "indice": 49.2,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 97.4,
+          "presenca_pct": 94.9,
           "presenca_presentes": 37,
-          "presenca_elegiveis": 38,
+          "presenca_elegiveis": 39,
           "presenca_janela": "2026-03-27 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
             "fiscalizar": 7.5,
             "representar": 100,
-            "presenca": 97.4
+            "presenca": 94.9
           },
           "dimensoes_brutas": {
             "legislar": 9,
             "fiscalizar": 4.5,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 97.4
+            "presenca": 94.9
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
@@ -3185,27 +3185,27 @@
         },
         {
           "nome": "Pastor Faustinho",
-          "indice": 45.3,
+          "indice": 44.9,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
+          "presenca_pct": 94.6,
           "presenca_presentes": 53,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 18.2,
             "fiscalizar": 2.5,
             "representar": 100,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "dimensoes_brutas": {
             "legislar": 6,
             "fiscalizar": 1.5,
             "representar": 15,
             "efetividade": 0,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "evidencias": {
             "projeto_autoria_propria": 2,
@@ -3307,27 +3307,27 @@
         },
         {
           "nome": "Rogério Bueno",
-          "indice": 18.6,
+          "indice": 18.5,
           "efetividade": 100,
           "leis_aprovadas": 1,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 23.6,
+          "presenca_pct": 23.2,
           "presenca_presentes": 13,
-          "presenca_elegiveis": 55,
+          "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 18.2,
             "fiscalizar": 7.5,
             "representar": 33.3,
-            "presenca": 23.6
+            "presenca": 23.2
           },
           "dimensoes_brutas": {
             "legislar": 6,
             "fiscalizar": 4.5,
             "representar": 5,
             "efetividade": 1,
-            "presenca": 23.6
+            "presenca": 23.2
           },
           "evidencias": {
             "projeto_autoria_propria": 2,

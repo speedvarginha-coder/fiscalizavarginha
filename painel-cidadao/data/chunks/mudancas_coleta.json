@@ -1,32 +1,103 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-17T00:46:04.327Z",
+  "gerado_em": "2026-08-17T13:47:37.884Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-08-17T10-46-35-879bd3f2",
+    "coleta_iso": "2026-08-17T10:46:35",
+    "data_humana": "17/08/2026 - 10:46",
+    "arquivo": "data/snapshots/2026-08-17T10-46-35-879bd3f2.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-08-16T21-45-06-2972eb3b",
     "coleta_iso": "2026-08-16T21:45:06",
     "data_humana": "16/08/2026 - 21:45",
-    "arquivo": "data/snapshots/2026-08-16T21-45-06-2972eb3b.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-08-16T08-46-58-2972eb3b",
-    "coleta_iso": "2026-08-16T08:46:58",
-    "data_humana": "16/08/2026 - 08:46",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 0,
+    "novos_contratos": 7,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 0,
+    "valor_novo_brl": 991080.2,
     "valor_delta_brl": 0,
-    "total_mudancas": 0
+    "total_mudancas": 7
   },
-  "itens": [],
+  "itens": [
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 161/2026 - CONDAFE COMERCIO DE ROUPAS LTDA",
+      "detalhe": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 343495,
+      "alvo_id": "PREFEITURA-2026-161"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 160/2026 - GREGORIOS COMERCIO DE MOVEIS LTDA",
+      "detalhe": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 249000,
+      "alvo_id": "PREFEITURA-2026-160"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 164/2026 - WELINGTON MOL DA SILVA",
+      "detalhe": "Registro de Preços para o fornecimento de Hortifrutigranjeiro para o Zoológico Municipal",
+      "orgao": "Prefeitura",
+      "data": "2026-08-11",
+      "valor_brl": 222280.2,
+      "alvo_id": "PREFEITURA-2026-164"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 163/2026 - LOUSAS BRASIL COMERCIO DE QUADROS E ARTIGOS ESCOLARES LTDA",
+      "detalhe": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 59900,
+      "alvo_id": "PREFEITURA-2026-163"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 231/2026 - EMPREENDIMENTOS MIRANDA DISTRIBUIDORA LTDA",
+      "detalhe": "AQUISIÇÃO DE PRODUTOS DE HIGIENE, COM COMODATO DOS RESPECTIVOS DISPENSADORES",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 54215,
+      "alvo_id": "PREFEITURA-2026-231"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 162/2026 - MAROUN SLEIMAN MOVEIS E COLCHOES LTDA",
+      "detalhe": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "orgao": "Prefeitura",
+      "data": "2026-07-31",
+      "valor_brl": 41450,
+      "alvo_id": "PREFEITURA-2026-162"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 234/2026 - COMERCIAL VENER LTDA",
+      "detalhe": "AQUISIÇÃO DE PRODUTOS DE HIGIENE, COM COMODATO DOS RESPECTIVOS DISPENSADORES",
+      "orgao": "Prefeitura",
+      "data": "2026-08-12",
+      "valor_brl": 20740,
+      "alvo_id": "PREFEITURA-2026-234"
+    }
+  ],
   "avisos": []
 }

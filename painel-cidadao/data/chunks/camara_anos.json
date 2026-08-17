@@ -29,7 +29,7 @@
         },
         {
           "tipo": "Projeto de Lei Ordinária do Legislativo",
-          "qtd": 117
+          "qtd": 118
         },
         {
           "tipo": "Projeto de Lei Ordinária do Executivo",
@@ -37,7 +37,7 @@
         },
         {
           "tipo": "Projeto de Decreto Legislativo",
-          "qtd": 56
+          "qtd": 55
         },
         {
           "tipo": "Moção",
@@ -6830,6 +6830,23 @@
         "grau": "baixo"
       },
       {
+        "id": "4407",
+        "ano": "2025",
+        "numero": "57",
+        "tipo": "Projeto de Lei Ordinária do Legislativo",
+        "sigla": "PLOL",
+        "autor": "Dr. Guedes",
+        "pdf": "",
+        "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO - ROTATÓRIA JOSÉ FONTOURA DE ASSUNÇÃO.",
+        "data": "2025-07-09",
+        "impacto_zero": true,
+        "motivo_impacto_zero": "nome de rua/logradouro",
+        "desfecho": "arquivado",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "baixo"
+      },
+      {
         "id": "4408",
         "ano": "2025",
         "numero": "58",
@@ -8813,23 +8830,6 @@
         "data": "2025-12-17",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "arquivado",
-        "tema": "geral",
-        "tema_label": "Geral",
-        "grau": "baixo"
-      },
-      {
-        "id": "4407",
-        "ano": "2025",
-        "numero": "58",
-        "tipo": "Projeto de Decreto Legislativo",
-        "sigla": "PDL",
-        "autor": "Dr. Guedes",
-        "pdf": "",
-        "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO - ROTATÓRIA JOSÉ FONTOURA DE ASSUNÇÃO.",
-        "data": "2025-07-09",
-        "impacto_zero": true,
-        "motivo_impacto_zero": "nome de rua/logradouro",
         "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
@@ -31328,7 +31328,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-08-16T21:37:28-03:00"
+    "coletado_em": "2026-08-17T10:37:43-03:00"
   },
   "2026": {
     "resumo": {
@@ -31481,9 +31481,9 @@
         "nome_rua": 15,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31500,9 +31500,9 @@
         "nome_rua": 19,
         "homenagens_terceiros": 4,
         "outros": 5,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31519,9 +31519,9 @@
         "nome_rua": 14,
         "homenagens_terceiros": 8,
         "outros": 8,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31538,9 +31538,9 @@
         "nome_rua": 8,
         "homenagens_terceiros": 1,
         "outros": 3,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31557,9 +31557,9 @@
         "nome_rua": 14,
         "homenagens_terceiros": 2,
         "outros": 2,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31576,9 +31576,9 @@
         "nome_rua": 1,
         "homenagens_terceiros": 5,
         "outros": 6,
-        "presenca_pct": 96.4,
+        "presenca_pct": 94.6,
         "presenca_presentes": 53,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31595,9 +31595,9 @@
         "nome_rua": 7,
         "homenagens_terceiros": 5,
         "outros": 5,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31614,9 +31614,9 @@
         "nome_rua": 9,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 96.4,
+        "presenca_pct": 94.6,
         "presenca_presentes": 53,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31633,9 +31633,9 @@
         "nome_rua": 9,
         "homenagens_terceiros": 2,
         "outros": 3,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31652,9 +31652,9 @@
         "nome_rua": 8,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31671,9 +31671,9 @@
         "nome_rua": 17,
         "homenagens_terceiros": 5,
         "outros": 5,
-        "presenca_pct": 96.4,
+        "presenca_pct": 94.6,
         "presenca_presentes": 53,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31690,9 +31690,9 @@
         "nome_rua": 7,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 98.2,
+        "presenca_pct": 96.4,
         "presenca_presentes": 54,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31709,9 +31709,9 @@
         "nome_rua": 7,
         "homenagens_terceiros": 4,
         "outros": 4,
-        "presenca_pct": 96.4,
+        "presenca_pct": 94.6,
         "presenca_presentes": 53,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -31728,9 +31728,9 @@
         "nome_rua": 12,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 97.4,
+        "presenca_pct": 94.9,
         "presenca_presentes": 37,
-        "presenca_elegiveis": 38,
+        "presenca_elegiveis": 39,
         "presenca_janela": "2026-03-27 a 2026-12-31"
       },
       {
@@ -31747,9 +31747,9 @@
         "nome_rua": 6,
         "homenagens_terceiros": 2,
         "outros": 2,
-        "presenca_pct": 23.6,
+        "presenca_pct": 23.2,
         "presenca_presentes": 13,
-        "presenca_elegiveis": 55,
+        "presenca_elegiveis": 56,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
       {
@@ -49791,77 +49791,6 @@
             ]
           },
           {
-            "id": 2916,
-            "materia_id": 6082,
-            "descricao": "Ordem: Ordem do Dia/Expediente: 15 - Projeto de Decreto Legislativo nº 58 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
-            "resultado": "Aprovado",
-            "sim": 14,
-            "nao": 1,
-            "abstencoes": 0,
-            "votos": [
-              {
-                "parlamentar": "Davi Martins",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zilda Silva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Dudu Ottoni",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Pastor Faustinho",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Alexandre Prado",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Miguel da Saúde",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Rogério Bueno",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Joãozinho Enfermeiro",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Zé Morais",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Thulyo Paiva",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Cássio Chiodi",
-                "voto": "Não"
-              },
-              {
-                "parlamentar": "Dandan",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Bruno Leandro Coletor",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Afonso Monticeli",
-                "voto": "Sim"
-              },
-              {
-                "parlamentar": "Ana Rios Fontoura",
-                "voto": "Sim"
-              }
-            ]
-          },
-          {
             "id": 2915,
             "materia_id": 6082,
             "descricao": "Ordem: Ordem do Dia/Expediente: 16 - Projeto de Decreto Legislativo nº 58 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
@@ -50868,6 +50797,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5131"
       }
     ],
-    "coletado_em": "2026-08-16T21:37:28-03:00"
+    "coletado_em": "2026-08-17T10:37:43-03:00"
   }
 }

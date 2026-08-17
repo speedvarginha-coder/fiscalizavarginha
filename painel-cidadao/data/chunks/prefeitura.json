@@ -15519,6 +15519,20 @@
       "entidade": ""
     },
     {
+      "numero": "161",
+      "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "contratado": "CONDAFE COMERCIO DE ROUPAS LTDA",
+      "cnpj": "10.430.444/****-**",
+      "valor": 343495.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "0",
       "ano": "2026",
       "data_assinatura": "2026-07-31",
@@ -15995,6 +16009,20 @@
       "entidade": ""
     },
     {
+      "numero": "160",
+      "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "contratado": "GREGORIOS COMERCIO DE MOVEIS LTDA",
+      "cnpj": "14.700.761/****-**",
+      "valor": 249000.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "0",
       "ano": "2026",
       "data_assinatura": "2026-07-31",
@@ -16187,6 +16215,20 @@
       "contratado": "CIRURGICA UNIAO LTDA",
       "cnpj": "04.063.331/****-**",
       "valor": 224374.8,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "164",
+      "ano": "2026",
+      "data_assinatura": "2026-08-11",
+      "data_fim": "2027-08-11",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de Hortifrutigranjeiro para o Zoológico Municipal",
+      "contratado": "WELINGTON MOL DA SILVA",
+      "cnpj": "65.304.941/****-**",
+      "valor": 222280.2,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -19131,6 +19173,20 @@
       "entidade": ""
     },
     {
+      "numero": "163",
+      "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "contratado": "LOUSAS BRASIL COMERCIO DE QUADROS E ARTIGOS ESCOLARES LTDA",
+      "cnpj": "40.801.863/****-**",
+      "valor": 59900.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "0",
       "ano": "2026",
       "data_assinatura": "2026-07-31",
@@ -19379,6 +19435,20 @@
       "contratado": "M.H.M. DO COUTO - COMERCIAL LTDA",
       "cnpj": "97.533.241/****-**",
       "valor": 54810.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "231",
+      "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE PRODUTOS DE HIGIENE, COM COMODATO DOS RESPECTIVOS DISPENSADORES",
+      "contratado": "EMPREENDIMENTOS MIRANDA DISTRIBUIDORA LTDA",
+      "cnpj": "61.763.805/****-**",
+      "valor": 54215.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -19897,6 +19967,20 @@
       "contratado": "NATURIA INDUSTRIA E COMERCIO DE PAPEIS LTDA",
       "cnpj": "27.083.214/****-**",
       "valor": 41525.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "162",
+      "ano": "2026",
+      "data_assinatura": "2026-07-31",
+      "data_fim": "2027-07-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para aquisição de mobiliários pedagógicos",
+      "contratado": "MAROUN SLEIMAN MOVEIS E COLCHOES LTDA",
+      "cnpj": "62.415.013/****-**",
+      "valor": 41450.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -21871,6 +21955,20 @@
       "contratado": "CEMIG DISTRIBUICAO S.A",
       "cnpj": "06.981.180/****-**",
       "valor": 20948.13,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "234",
+      "ano": "2026",
+      "data_assinatura": "2026-08-12",
+      "data_fim": "2027-08-12",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE PRODUTOS DE HIGIENE, COM COMODATO DOS RESPECTIVOS DISPENSADORES",
+      "contratado": "COMERCIAL VENER LTDA",
+      "cnpj": "65.353.401/****-**",
+      "valor": 20740.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -30563,16 +30661,6 @@
       "entidade": ""
     },
     {
-      "numero": 142,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Aquisição de livros para a biblioteca do professor e gestor escolar da Educação Infantil",
-      "data": "2026-06-18",
-      "valor": 883213.07,
-      "situacao": "AGUARDANDO ABERTURA",
-      "entidade": ""
-    },
-    {
       "numero": 171,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -31021,6 +31109,16 @@
       "objeto": "Aquisição de caminhão com equipamento combinado de hidrojateamento e sucção à vácuo",
       "data": "2026-05-13",
       "valor": 939383.33,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 142,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de livros para a biblioteca do professor e gestor escolar da Educação Infantil",
+      "data": "2026-06-18",
+      "valor": 883213.07,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -138952,12 +139050,12 @@
     "Licitações em andamento (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 42
+      "registros": 41
     },
     "Licitações finalizadas (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 130
+      "registros": 131
     },
     "Compras diretas (2026)": {
       "status": "partial",
