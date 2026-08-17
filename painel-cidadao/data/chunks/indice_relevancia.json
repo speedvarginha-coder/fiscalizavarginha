@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-17T13:47:32.693Z",
+  "gerado_em": "2026-08-17T18:58:16.674Z",
   "fonte": {
     "principal": "camara_anos.json",
     "origem": "SAPL Camara Municipal de Varginha",
@@ -1733,74 +1733,74 @@
       "rankings_perfil": {
         "geral": [
           {
-            "nome": "Cássio Chiodi",
+            "nome": "Alexandre Prado",
             "posicao": 1,
-            "valor": 76.9
+            "valor": 61.8
           },
           {
             "nome": "Zilda Silva",
             "posicao": 2,
-            "valor": 76.6
+            "valor": 53.7
           },
           {
-            "nome": "Dandan",
+            "nome": "Cássio Chiodi",
             "posicao": 3,
-            "valor": 70.8
-          },
-          {
-            "nome": "Joãozinho Enfermeiro",
-            "posicao": 4,
-            "valor": 65.8
-          },
-          {
-            "nome": "Bruno Leandro Coletor",
-            "posicao": 5,
-            "valor": 63.5
+            "valor": 50.5
           },
           {
             "nome": "Dudu Ottoni",
-            "posicao": 6,
-            "valor": 61
+            "posicao": 4,
+            "valor": 39.6
           },
           {
-            "nome": "Thulyo Paiva",
-            "posicao": 7,
-            "valor": 60
-          },
-          {
-            "nome": "Miguel da Saúde",
-            "posicao": 8,
-            "valor": 58.8
+            "nome": "Dandan",
+            "posicao": 5,
+            "valor": 37.3
           },
           {
             "nome": "Ana Rios Fontoura",
-            "posicao": 9,
-            "valor": 56
+            "posicao": 6,
+            "valor": 34.6
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 7,
+            "valor": 34.6
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 8,
+            "valor": 34.6
           },
           {
             "nome": "Davi Martins",
-            "posicao": 10,
-            "valor": 55.5
+            "posicao": 9,
+            "valor": 31.8
           },
           {
-            "nome": "Alexandre Prado",
-            "posicao": 11,
-            "valor": 54.8
+            "nome": "Thulyo Paiva",
+            "posicao": 10,
+            "valor": 31.8
           },
           {
             "nome": "Zé Morais",
+            "posicao": 11,
+            "valor": 31.8
+          },
+          {
+            "nome": "Miguel da Saúde",
             "posicao": 12,
-            "valor": 49.5
+            "valor": 31.4
           },
           {
             "nome": "Afonso Monticeli",
             "posicao": 13,
-            "valor": 49.2
+            "valor": 31.3
           },
           {
             "nome": "Pastor Faustinho",
             "posicao": 14,
-            "valor": 44.9
+            "valor": 28.7
           },
           {
             "nome": "Marquinho da Cooperativa",
@@ -1810,7 +1810,7 @@
           {
             "nome": "Rogério Bueno",
             "posicao": 16,
-            "valor": 18.5
+            "valor": 11.3
           },
           {
             "nome": "Dr. Guedes",
@@ -1845,7 +1845,7 @@
             "valor": 45.5
           },
           {
-            "nome": "Joãozinho Enfermeiro",
+            "nome": "Ana Rios Fontoura",
             "posicao": 5,
             "valor": 36.4
           },
@@ -1855,32 +1855,32 @@
             "valor": 36.4
           },
           {
-            "nome": "Ana Rios Fontoura",
+            "nome": "Joãozinho Enfermeiro",
             "posicao": 7,
             "valor": 36.4
           },
           {
-            "nome": "Thulyo Paiva",
+            "nome": "Alexandre Prado",
             "posicao": 8,
             "valor": 27.3
           },
           {
-            "nome": "Miguel da Saúde",
+            "nome": "Davi Martins",
             "posicao": 9,
             "valor": 27.3
           },
           {
-            "nome": "Davi Martins",
+            "nome": "Thulyo Paiva",
             "posicao": 10,
             "valor": 27.3
           },
           {
-            "nome": "Alexandre Prado",
+            "nome": "Zé Morais",
             "posicao": 11,
             "valor": 27.3
           },
           {
-            "nome": "Zé Morais",
+            "nome": "Miguel da Saúde",
             "posicao": 12,
             "valor": 27.3
           },
@@ -1917,82 +1917,82 @@
         ],
         "fiscalizador": [
           {
-            "nome": "Dandan",
+            "nome": "Alexandre Prado",
             "posicao": 1,
             "valor": 100
           },
           {
-            "nome": "Joãozinho Enfermeiro",
+            "nome": "Zilda Silva",
             "posicao": 2,
-            "valor": 52.5
+            "valor": 0
           },
           {
             "nome": "Cássio Chiodi",
             "posicao": 3,
-            "valor": 45
-          },
-          {
-            "nome": "Bruno Leandro Coletor",
-            "posicao": 4,
-            "valor": 45
-          },
-          {
-            "nome": "Thulyo Paiva",
-            "posicao": 5,
-            "valor": 42.5
-          },
-          {
-            "nome": "Miguel da Saúde",
-            "posicao": 6,
-            "valor": 40
-          },
-          {
-            "nome": "Davi Martins",
-            "posicao": 7,
-            "valor": 27.5
-          },
-          {
-            "nome": "Zilda Silva",
-            "posicao": 8,
-            "valor": 25
-          },
-          {
-            "nome": "Alexandre Prado",
-            "posicao": 9,
-            "valor": 25
+            "valor": 0
           },
           {
             "nome": "Dudu Ottoni",
-            "posicao": 10,
-            "valor": 20
+            "posicao": 4,
+            "valor": 0
+          },
+          {
+            "nome": "Dandan",
+            "posicao": 5,
+            "valor": 0
           },
           {
             "nome": "Ana Rios Fontoura",
-            "posicao": 11,
-            "valor": 20
+            "posicao": 6,
+            "valor": 0
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 7,
+            "valor": 0
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 8,
+            "valor": 0
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 9,
+            "valor": 0
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 10,
+            "valor": 0
           },
           {
             "nome": "Zé Morais",
+            "posicao": 11,
+            "valor": 0
+          },
+          {
+            "nome": "Miguel da Saúde",
             "posicao": 12,
-            "valor": 7.5
+            "valor": 0
           },
           {
             "nome": "Afonso Monticeli",
             "posicao": 13,
-            "valor": 7.5
-          },
-          {
-            "nome": "Rogério Bueno",
-            "posicao": 14,
-            "valor": 7.5
+            "valor": 0
           },
           {
             "nome": "Pastor Faustinho",
-            "posicao": 15,
-            "valor": 2.5
+            "posicao": 14,
+            "valor": 0
           },
           {
             "nome": "Marquinho da Cooperativa",
+            "posicao": 15,
+            "valor": 0
+          },
+          {
+            "nome": "Rogério Bueno",
             "posicao": 16,
             "valor": 0
           },
@@ -2009,79 +2009,79 @@
         ],
         "simbolico": [
           {
-            "nome": "Rogério Bueno",
+            "nome": "Miguel da Saúde",
             "posicao": 1,
-            "valor": 66.7
-          },
-          {
-            "nome": "Pastor Faustinho",
-            "posicao": 2,
-            "valor": 45.8
-          },
-          {
-            "nome": "Zilda Silva",
-            "posicao": 3,
-            "valor": 42.1
-          },
-          {
-            "nome": "Joãozinho Enfermeiro",
-            "posicao": 4,
-            "valor": 42.1
-          },
-          {
-            "nome": "Ana Rios Fontoura",
-            "posicao": 5,
-            "valor": 42.1
+            "valor": 100
           },
           {
             "nome": "Afonso Monticeli",
-            "posicao": 6,
-            "valor": 38.2
+            "posicao": 2,
+            "valor": 100
           },
           {
-            "nome": "Dandan",
-            "posicao": 7,
-            "valor": 34.6
-          },
-          {
-            "nome": "Miguel da Saúde",
-            "posicao": 8,
-            "valor": 30
-          },
-          {
-            "nome": "Dudu Ottoni",
-            "posicao": 9,
-            "valor": 28.2
-          },
-          {
-            "nome": "Thulyo Paiva",
-            "posicao": 10,
-            "valor": 27.7
-          },
-          {
-            "nome": "Davi Martins",
-            "posicao": 11,
-            "valor": 25
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 3,
+            "valor": 91.7
           },
           {
             "nome": "Alexandre Prado",
-            "posicao": 12,
-            "valor": 24
+            "posicao": 4,
+            "valor": 88.9
           },
           {
-            "nome": "Bruno Leandro Coletor",
-            "posicao": 13,
-            "valor": 23.1
+            "nome": "Thulyo Paiva",
+            "posicao": 5,
+            "valor": 88.9
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 6,
+            "valor": 80
+          },
+          {
+            "nome": "Rogério Bueno",
+            "posicao": 7,
+            "valor": 75
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 8,
+            "valor": 73.3
+          },
+          {
+            "nome": "Dandan",
+            "posicao": 9,
+            "valor": 71.4
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 10,
+            "valor": 71.4
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 11,
+            "valor": 70
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 12,
+            "valor": 60
           },
           {
             "nome": "Zé Morais",
+            "posicao": 13,
+            "valor": 50
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
             "posicao": 14,
-            "valor": 18.8
+            "valor": 40
           },
           {
             "nome": "Cássio Chiodi",
             "posicao": 15,
-            "valor": 14
+            "valor": 33.3
           },
           {
             "nome": "Marquinho da Cooperativa",
@@ -2101,82 +2101,82 @@
         ],
         "representar": [
           {
-            "nome": "Zilda Silva",
+            "nome": "Alexandre Prado",
             "posicao": 1,
-            "valor": 100
+            "valor": 0
           },
           {
-            "nome": "Joãozinho Enfermeiro",
+            "nome": "Zilda Silva",
             "posicao": 2,
-            "valor": 100
+            "valor": 0
           },
           {
-            "nome": "Bruno Leandro Coletor",
+            "nome": "Cássio Chiodi",
             "posicao": 3,
-            "valor": 100
+            "valor": 0
           },
           {
             "nome": "Dudu Ottoni",
             "posicao": 4,
-            "valor": 100
-          },
-          {
-            "nome": "Thulyo Paiva",
-            "posicao": 5,
-            "valor": 100
-          },
-          {
-            "nome": "Miguel da Saúde",
-            "posicao": 6,
-            "valor": 100
-          },
-          {
-            "nome": "Ana Rios Fontoura",
-            "posicao": 7,
-            "valor": 100
-          },
-          {
-            "nome": "Davi Martins",
-            "posicao": 8,
-            "valor": 100
-          },
-          {
-            "nome": "Alexandre Prado",
-            "posicao": 9,
-            "valor": 100
-          },
-          {
-            "nome": "Zé Morais",
-            "posicao": 10,
-            "valor": 100
-          },
-          {
-            "nome": "Afonso Monticeli",
-            "posicao": 11,
-            "valor": 100
-          },
-          {
-            "nome": "Pastor Faustinho",
-            "posicao": 12,
-            "valor": 100
-          },
-          {
-            "nome": "Cássio Chiodi",
-            "posicao": 13,
-            "valor": 83.3
-          },
-          {
-            "nome": "Rogério Bueno",
-            "posicao": 14,
-            "valor": 33.3
+            "valor": 0
           },
           {
             "nome": "Dandan",
-            "posicao": 15,
-            "valor": 20
+            "posicao": 5,
+            "valor": 0
+          },
+          {
+            "nome": "Ana Rios Fontoura",
+            "posicao": 6,
+            "valor": 0
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 7,
+            "valor": 0
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
+            "posicao": 8,
+            "valor": 0
+          },
+          {
+            "nome": "Davi Martins",
+            "posicao": 9,
+            "valor": 0
+          },
+          {
+            "nome": "Thulyo Paiva",
+            "posicao": 10,
+            "valor": 0
+          },
+          {
+            "nome": "Zé Morais",
+            "posicao": 11,
+            "valor": 0
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 12,
+            "valor": 0
+          },
+          {
+            "nome": "Afonso Monticeli",
+            "posicao": 13,
+            "valor": 0
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 14,
+            "valor": 0
           },
           {
             "nome": "Marquinho da Cooperativa",
+            "posicao": 15,
+            "valor": 0
+          },
+          {
+            "nome": "Rogério Bueno",
             "posicao": 16,
             "valor": 0
           },
@@ -2193,79 +2193,79 @@
         ],
         "presenca": [
           {
-            "nome": "Zilda Silva",
+            "nome": "Alexandre Prado",
             "posicao": 1,
-            "valor": 96.4
+            "valor": 94.6
+          },
+          {
+            "nome": "Zilda Silva",
+            "posicao": 2,
+            "valor": 94.6
           },
           {
             "nome": "Dandan",
-            "posicao": 2,
-            "valor": 96.4
-          },
-          {
-            "nome": "Joãozinho Enfermeiro",
             "posicao": 3,
-            "valor": 96.4
-          },
-          {
-            "nome": "Bruno Leandro Coletor",
-            "posicao": 4,
-            "valor": 96.4
-          },
-          {
-            "nome": "Thulyo Paiva",
-            "posicao": 5,
-            "valor": 96.4
+            "valor": 94.6
           },
           {
             "nome": "Ana Rios Fontoura",
+            "posicao": 4,
+            "valor": 94.6
+          },
+          {
+            "nome": "Bruno Leandro Coletor",
+            "posicao": 5,
+            "valor": 94.6
+          },
+          {
+            "nome": "Joãozinho Enfermeiro",
             "posicao": 6,
-            "valor": 96.4
+            "valor": 94.6
           },
           {
             "nome": "Davi Martins",
             "posicao": 7,
-            "valor": 96.4
+            "valor": 94.6
           },
           {
-            "nome": "Alexandre Prado",
+            "nome": "Thulyo Paiva",
             "posicao": 8,
-            "valor": 96.4
+            "valor": 94.6
           },
           {
             "nome": "Zé Morais",
             "posicao": 9,
-            "valor": 96.4
-          },
-          {
-            "nome": "Afonso Monticeli",
-            "posicao": 10,
-            "valor": 94.9
-          },
-          {
-            "nome": "Cássio Chiodi",
-            "posicao": 11,
-            "valor": 94.6
-          },
-          {
-            "nome": "Dudu Ottoni",
-            "posicao": 12,
-            "valor": 94.6
-          },
-          {
-            "nome": "Miguel da Saúde",
-            "posicao": 13,
-            "valor": 94.6
-          },
-          {
-            "nome": "Pastor Faustinho",
-            "posicao": 14,
             "valor": 94.6
           },
           {
             "nome": "Marquinho da Cooperativa",
-            "posicao": 15,
+            "posicao": 10,
             "valor": 94.4
+          },
+          {
+            "nome": "Cássio Chiodi",
+            "posicao": 11,
+            "valor": 92.9
+          },
+          {
+            "nome": "Dudu Ottoni",
+            "posicao": 12,
+            "valor": 92.9
+          },
+          {
+            "nome": "Miguel da Saúde",
+            "posicao": 13,
+            "valor": 92.9
+          },
+          {
+            "nome": "Pastor Faustinho",
+            "posicao": 14,
+            "valor": 92.9
+          },
+          {
+            "nome": "Afonso Monticeli",
+            "posicao": 15,
+            "valor": 92.3
           },
           {
             "nome": "Rogério Bueno",
@@ -2285,67 +2285,67 @@
         ],
         "efetividade": [
           {
-            "nome": "Davi Martins",
+            "nome": "Rogério Bueno",
             "posicao": 1,
             "valor": 1
           },
           {
-            "nome": "Rogério Bueno",
+            "nome": "Alexandre Prado",
             "posicao": 2,
-            "valor": 1
-          },
-          {
-            "nome": "Cássio Chiodi",
-            "posicao": 3,
             "valor": 0
           },
           {
             "nome": "Zilda Silva",
+            "posicao": 3,
+            "valor": 0
+          },
+          {
+            "nome": "Cássio Chiodi",
             "posicao": 4,
             "valor": 0
           },
           {
-            "nome": "Dandan",
+            "nome": "Dudu Ottoni",
             "posicao": 5,
             "valor": 0
           },
           {
-            "nome": "Joãozinho Enfermeiro",
+            "nome": "Dandan",
             "posicao": 6,
             "valor": 0
           },
           {
-            "nome": "Bruno Leandro Coletor",
+            "nome": "Ana Rios Fontoura",
             "posicao": 7,
             "valor": 0
           },
           {
-            "nome": "Dudu Ottoni",
+            "nome": "Bruno Leandro Coletor",
             "posicao": 8,
             "valor": 0
           },
           {
-            "nome": "Thulyo Paiva",
+            "nome": "Joãozinho Enfermeiro",
             "posicao": 9,
             "valor": 0
           },
           {
-            "nome": "Miguel da Saúde",
+            "nome": "Davi Martins",
             "posicao": 10,
             "valor": 0
           },
           {
-            "nome": "Ana Rios Fontoura",
+            "nome": "Thulyo Paiva",
             "posicao": 11,
             "valor": 0
           },
           {
-            "nome": "Alexandre Prado",
+            "nome": "Zé Morais",
             "posicao": 12,
             "valor": 0
           },
           {
-            "nome": "Zé Morais",
+            "nome": "Miguel da Saúde",
             "posicao": 13,
             "valor": 0
           },
@@ -2378,8 +2378,8 @@
       },
       "ranking": [
         {
-          "nome": "Cássio Chiodi",
-          "indice": 76.9,
+          "nome": "Alexandre Prado",
+          "indice": 61.8,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
@@ -2389,165 +2389,41 @@
           "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
-            "legislar": 90.9,
-            "fiscalizar": 45,
-            "representar": 83.3,
-            "presenca": 94.6
-          },
-          "dimensoes_brutas": {
-            "legislar": 30,
-            "fiscalizar": 27,
-            "representar": 12.5,
-            "efetividade": 0,
-            "presenca": 94.6
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 10,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 7,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 18,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 15,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 12
-          },
-          "composicao": {
-            "substantivo": 43,
-            "cerimonial": 7,
-            "cerimonial_pct": 14,
-            "substantivo_pct": 86
-          },
-          "perfil": {
-            "simbolico_pct": 14
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "tambem aparece forte em producao legislativa de merito e emendas",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 1
-        },
-        {
-          "nome": "Zilda Silva",
-          "indice": 76.6,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
-          "presenca_elegiveis": 56,
-          "presenca_janela": "2026-01-01 a 2026-12-31",
-          "dimensoes": {
-            "legislar": 100,
-            "fiscalizar": 25,
-            "representar": 100,
-            "presenca": 96.4
-          },
-          "dimensoes_brutas": {
-            "legislar": 33,
-            "fiscalizar": 15,
-            "representar": 15,
-            "efetividade": 0,
-            "presenca": 96.4
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 11,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 24,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 10,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 30,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 28
-          },
-          "composicao": {
-            "substantivo": 51,
-            "cerimonial": 24,
-            "cerimonial_pct": 42.1,
-            "substantivo_pct": 89.5
-          },
-          "perfil": {
-            "simbolico_pct": 42.1
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "tambem aparece forte em producao legislativa de merito e emendas",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 2
-        },
-        {
-          "nome": "Dandan",
-          "indice": 70.8,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
-          "presenca_elegiveis": 56,
-          "presenca_janela": "2026-01-01 a 2026-12-31",
-          "dimensoes": {
-            "legislar": 45.5,
+            "legislar": 27.3,
             "fiscalizar": 100,
-            "representar": 20,
-            "presenca": 96.4
+            "representar": 0,
+            "presenca": 94.6
           },
           "dimensoes_brutas": {
-            "legislar": 15,
-            "fiscalizar": 60,
-            "representar": 3,
+            "legislar": 9,
+            "fiscalizar": 1.5,
+            "representar": 0,
             "efetividade": 0,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "evidencias": {
-            "projeto_autoria_propria": 5,
+            "projeto_autoria_propria": 3,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 18,
+            "proposicao_simbolica": 8,
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 40,
+            "requerimento_info": 1,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 3,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 20
+            "comenda_titulo": 13
           },
           "composicao": {
-            "substantivo": 48,
-            "cerimonial": 18,
-            "cerimonial_pct": 34.6,
-            "substantivo_pct": 92.3
+            "substantivo": 4,
+            "cerimonial": 8,
+            "cerimonial_pct": 88.9,
+            "substantivo_pct": 44.4
           },
           "perfil": {
-            "simbolico_pct": 34.6
+            "simbolico_pct": 88.9
           },
           "pendencias": [
             "relatoria_processante",
@@ -2559,137 +2435,13 @@
           "explicacao": [
             "puxou a nota por requerimentos de fiscalizacao acima da media da Casa",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
-          "posicao": 3
+          "posicao": 1
         },
         {
-          "nome": "Joãozinho Enfermeiro",
-          "indice": 65.8,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
-          "presenca_elegiveis": 56,
-          "presenca_janela": "2026-01-01 a 2026-12-31",
-          "dimensoes": {
-            "legislar": 36.4,
-            "fiscalizar": 52.5,
-            "representar": 100,
-            "presenca": 96.4
-          },
-          "dimensoes_brutas": {
-            "legislar": 12,
-            "fiscalizar": 31.5,
-            "representar": 15,
-            "efetividade": 0,
-            "presenca": 96.4
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 4,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 24,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 21,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 22,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 32
-          },
-          "composicao": {
-            "substantivo": 47,
-            "cerimonial": 24,
-            "cerimonial_pct": 42.1,
-            "substantivo_pct": 82.5
-          },
-          "perfil": {
-            "simbolico_pct": 42.1
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 4
-        },
-        {
-          "nome": "Bruno Leandro Coletor",
-          "indice": 63.5,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
-          "presenca_elegiveis": 56,
-          "presenca_janela": "2026-01-01 a 2026-12-31",
-          "dimensoes": {
-            "legislar": 36.4,
-            "fiscalizar": 45,
-            "representar": 100,
-            "presenca": 96.4
-          },
-          "dimensoes_brutas": {
-            "legislar": 12,
-            "fiscalizar": 27,
-            "representar": 15,
-            "efetividade": 0,
-            "presenca": 96.4
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 4,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 12,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 18,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 24,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 13
-          },
-          "composicao": {
-            "substantivo": 46,
-            "cerimonial": 12,
-            "cerimonial_pct": 23.1,
-            "substantivo_pct": 88.5
-          },
-          "perfil": {
-            "simbolico_pct": 23.1
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 5
-        },
-        {
-          "nome": "Dudu Ottoni",
-          "indice": 61,
+          "nome": "Zilda Silva",
+          "indice": 53.7,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
@@ -2699,41 +2451,41 @@
           "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
-            "legislar": 54.5,
-            "fiscalizar": 20,
-            "representar": 100,
+            "legislar": 100,
+            "fiscalizar": 0,
+            "representar": 0,
             "presenca": 94.6
           },
           "dimensoes_brutas": {
-            "legislar": 18,
-            "fiscalizar": 12,
-            "representar": 15,
+            "legislar": 33,
+            "fiscalizar": 0,
+            "representar": 0,
             "efetividade": 0,
             "presenca": 94.6
           },
           "evidencias": {
-            "projeto_autoria_propria": 6,
+            "projeto_autoria_propria": 11,
             "alteracao_relevante": 0,
             "proposicao_simbolica": 11,
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 8,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 21,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
             "comenda_titulo": 15
           },
           "composicao": {
-            "substantivo": 35,
+            "substantivo": 11,
             "cerimonial": 11,
-            "cerimonial_pct": 28.2,
-            "substantivo_pct": 89.7
+            "cerimonial_pct": 73.3,
+            "substantivo_pct": 73.3
           },
           "perfil": {
-            "simbolico_pct": 28.2
+            "simbolico_pct": 73.3
           },
           "pendencias": [
             "relatoria_processante",
@@ -2743,59 +2495,363 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "tambem aparece forte em producao legislativa de merito e emendas",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
-          "posicao": 6
+          "posicao": 2
         },
         {
-          "nome": "Thulyo Paiva",
-          "indice": 60,
+          "nome": "Cássio Chiodi",
+          "indice": 50.5,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
+          "presenca_pct": 92.9,
+          "presenca_presentes": 52,
           "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
-            "legislar": 27.3,
-            "fiscalizar": 42.5,
-            "representar": 100,
-            "presenca": 96.4
+            "legislar": 90.9,
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 92.9
           },
           "dimensoes_brutas": {
-            "legislar": 9,
-            "fiscalizar": 25.5,
-            "representar": 15,
+            "legislar": 30,
+            "fiscalizar": 0,
+            "representar": 0,
             "efetividade": 0,
-            "presenca": 96.4
+            "presenca": 92.9
           },
           "evidencias": {
-            "projeto_autoria_propria": 3,
+            "projeto_autoria_propria": 10,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 13,
+            "proposicao_simbolica": 5,
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 17,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 21,
+            "indicacao_protocolada_sem_confirmacao": 0,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 10
+          },
+          "composicao": {
+            "substantivo": 10,
+            "cerimonial": 5,
+            "cerimonial_pct": 33.3,
+            "substantivo_pct": 66.7
+          },
+          "perfil": {
+            "simbolico_pct": 33.3
+          },
+          "pendencias": [
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "audiencia_publica_diligencia",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "tambem aparece forte em producao legislativa de merito e emendas",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
+          ],
+          "posicao": 3
+        },
+        {
+          "nome": "Dudu Ottoni",
+          "indice": 39.6,
+          "efetividade": 0,
+          "leis_aprovadas": 0,
+          "cobertura_pct": 100,
+          "confianca_dados_pct": 100,
+          "presenca_pct": 92.9,
+          "presenca_presentes": 52,
+          "presenca_elegiveis": 56,
+          "presenca_janela": "2026-01-01 a 2026-12-31",
+          "dimensoes": {
+            "legislar": 54.5,
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 92.9
+          },
+          "dimensoes_brutas": {
+            "legislar": 18,
+            "fiscalizar": 0,
+            "representar": 0,
+            "efetividade": 0,
+            "presenca": 92.9
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 6,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 7,
+            "emenda_relevante": 0,
+            "leis_aprovadas": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 0,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 11
+          },
+          "composicao": {
+            "substantivo": 6,
+            "cerimonial": 7,
+            "cerimonial_pct": 70,
+            "substantivo_pct": 60
+          },
+          "perfil": {
+            "simbolico_pct": 70
+          },
+          "pendencias": [
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "audiencia_publica_diligencia",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
+          ],
+          "posicao": 4
+        },
+        {
+          "nome": "Dandan",
+          "indice": 37.3,
+          "efetividade": 0,
+          "leis_aprovadas": 0,
+          "cobertura_pct": 100,
+          "confianca_dados_pct": 100,
+          "presenca_pct": 94.6,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 56,
+          "presenca_janela": "2026-01-01 a 2026-12-31",
+          "dimensoes": {
+            "legislar": 45.5,
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 94.6
+          },
+          "dimensoes_brutas": {
+            "legislar": 15,
+            "fiscalizar": 0,
+            "representar": 0,
+            "efetividade": 0,
+            "presenca": 94.6
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 5,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 5,
+            "emenda_relevante": 0,
+            "leis_aprovadas": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 0,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 7
+          },
+          "composicao": {
+            "substantivo": 5,
+            "cerimonial": 5,
+            "cerimonial_pct": 71.4,
+            "substantivo_pct": 71.4
+          },
+          "perfil": {
+            "simbolico_pct": 71.4
+          },
+          "pendencias": [
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "audiencia_publica_diligencia",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
+          ],
+          "posicao": 5
+        },
+        {
+          "nome": "Ana Rios Fontoura",
+          "indice": 34.6,
+          "efetividade": 0,
+          "leis_aprovadas": 0,
+          "cobertura_pct": 100,
+          "confianca_dados_pct": 100,
+          "presenca_pct": 94.6,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 56,
+          "presenca_janela": "2026-01-01 a 2026-12-31",
+          "dimensoes": {
+            "legislar": 36.4,
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 94.6
+          },
+          "dimensoes_brutas": {
+            "legislar": 12,
+            "fiscalizar": 0,
+            "representar": 0,
+            "efetividade": 0,
+            "presenca": 94.6
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 4,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 8,
+            "emenda_relevante": 0,
+            "leis_aprovadas": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 0,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 14
+          },
+          "composicao": {
+            "substantivo": 4,
+            "cerimonial": 8,
+            "cerimonial_pct": 80,
+            "substantivo_pct": 40
+          },
+          "perfil": {
+            "simbolico_pct": 80
+          },
+          "pendencias": [
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "audiencia_publica_diligencia",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
+          ],
+          "posicao": 6
+        },
+        {
+          "nome": "Bruno Leandro Coletor",
+          "indice": 34.6,
+          "efetividade": 0,
+          "leis_aprovadas": 0,
+          "cobertura_pct": 100,
+          "confianca_dados_pct": 100,
+          "presenca_pct": 94.6,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 56,
+          "presenca_janela": "2026-01-01 a 2026-12-31",
+          "dimensoes": {
+            "legislar": 36.4,
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 94.6
+          },
+          "dimensoes_brutas": {
+            "legislar": 12,
+            "fiscalizar": 0,
+            "representar": 0,
+            "efetividade": 0,
+            "presenca": 94.6
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 4,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 2,
+            "emenda_relevante": 0,
+            "leis_aprovadas": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 0,
+            "indicacao_atendida": 0,
+            "audiencia_publica_diligencia": 0,
+            "comenda_titulo": 3
+          },
+          "composicao": {
+            "substantivo": 4,
+            "cerimonial": 2,
+            "cerimonial_pct": 40,
+            "substantivo_pct": 80
+          },
+          "perfil": {
+            "simbolico_pct": 40
+          },
+          "pendencias": [
+            "relatoria_processante",
+            "audiencia_contas",
+            "oficio_fiscalizacao",
+            "audiencia_publica_diligencia",
+            "presenca_comissoes"
+          ],
+          "explicacao": [
+            "teve producao legislativa, mas com menor peso relativo no ano",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
+          ],
+          "posicao": 7
+        },
+        {
+          "nome": "Joãozinho Enfermeiro",
+          "indice": 34.6,
+          "efetividade": 0,
+          "leis_aprovadas": 0,
+          "cobertura_pct": 100,
+          "confianca_dados_pct": 100,
+          "presenca_pct": 94.6,
+          "presenca_presentes": 53,
+          "presenca_elegiveis": 56,
+          "presenca_janela": "2026-01-01 a 2026-12-31",
+          "dimensoes": {
+            "legislar": 36.4,
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 94.6
+          },
+          "dimensoes_brutas": {
+            "legislar": 12,
+            "fiscalizar": 0,
+            "representar": 0,
+            "efetividade": 0,
+            "presenca": 94.6
+          },
+          "evidencias": {
+            "projeto_autoria_propria": 4,
+            "alteracao_relevante": 0,
+            "proposicao_simbolica": 11,
+            "emenda_relevante": 0,
+            "leis_aprovadas": 0,
+            "relatoria_processante": 0,
+            "requerimento_info": 0,
+            "audiencia_contas": 0,
+            "oficio_fiscalizacao": 0,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
             "comenda_titulo": 19
           },
           "composicao": {
-            "substantivo": 41,
-            "cerimonial": 13,
-            "cerimonial_pct": 27.7,
-            "substantivo_pct": 87.2
+            "substantivo": 4,
+            "cerimonial": 11,
+            "cerimonial_pct": 91.7,
+            "substantivo_pct": 33.3
           },
           "perfil": {
-            "simbolico_pct": 27.7
+            "simbolico_pct": 91.7
           },
           "pendencias": [
             "relatoria_processante",
@@ -2805,15 +2861,14 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
-          "posicao": 7
+          "posicao": 8
         },
         {
-          "nome": "Miguel da Saúde",
-          "indice": 58.8,
+          "nome": "Davi Martins",
+          "indice": 31.8,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
@@ -2824,40 +2879,40 @@
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
-            "fiscalizar": 40,
-            "representar": 100,
+            "fiscalizar": 0,
+            "representar": 0,
             "presenca": 94.6
           },
           "dimensoes_brutas": {
             "legislar": 9,
-            "fiscalizar": 24,
-            "representar": 15,
+            "fiscalizar": 0,
+            "representar": 0,
             "efetividade": 0,
             "presenca": 94.6
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 15,
+            "proposicao_simbolica": 3,
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 16,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 25,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 21
+            "comenda_titulo": 5
           },
           "composicao": {
-            "substantivo": 44,
-            "cerimonial": 15,
-            "cerimonial_pct": 30,
-            "substantivo_pct": 88
+            "substantivo": 3,
+            "cerimonial": 3,
+            "cerimonial_pct": 60,
+            "substantivo_pct": 60
           },
           "perfil": {
-            "simbolico_pct": 30
+            "simbolico_pct": 60
           },
           "pendencias": [
             "relatoria_processante",
@@ -2867,121 +2922,58 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
-          ],
-          "posicao": 8
-        },
-        {
-          "nome": "Ana Rios Fontoura",
-          "indice": 56,
-          "efetividade": 0,
-          "leis_aprovadas": 0,
-          "cobertura_pct": 100,
-          "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
-          "presenca_elegiveis": 56,
-          "presenca_janela": "2026-01-01 a 2026-12-31",
-          "dimensoes": {
-            "legislar": 36.4,
-            "fiscalizar": 20,
-            "representar": 100,
-            "presenca": 96.4
-          },
-          "dimensoes_brutas": {
-            "legislar": 12,
-            "fiscalizar": 12,
-            "representar": 15,
-            "efetividade": 0,
-            "presenca": 96.4
-          },
-          "evidencias": {
-            "projeto_autoria_propria": 4,
-            "alteracao_relevante": 0,
-            "proposicao_simbolica": 24,
-            "emenda_relevante": 0,
-            "leis_aprovadas": 0,
-            "relatoria_processante": 0,
-            "requerimento_info": 8,
-            "audiencia_contas": 0,
-            "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 36,
-            "indicacao_atendida": 0,
-            "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 30
-          },
-          "composicao": {
-            "substantivo": 48,
-            "cerimonial": 24,
-            "cerimonial_pct": 42.1,
-            "substantivo_pct": 84.2
-          },
-          "perfil": {
-            "simbolico_pct": 42.1
-          },
-          "pendencias": [
-            "relatoria_processante",
-            "audiencia_contas",
-            "oficio_fiscalizacao",
-            "audiencia_publica_diligencia",
-            "presenca_comissoes"
-          ],
-          "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
-            "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
           "posicao": 9
         },
         {
-          "nome": "Davi Martins",
-          "indice": 55.5,
-          "efetividade": 100,
-          "leis_aprovadas": 1,
+          "nome": "Thulyo Paiva",
+          "indice": 31.8,
+          "efetividade": 0,
+          "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
+          "presenca_pct": 94.6,
+          "presenca_presentes": 53,
           "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
-            "fiscalizar": 27.5,
-            "representar": 100,
-            "presenca": 96.4
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 94.6
           },
           "dimensoes_brutas": {
             "legislar": 9,
-            "fiscalizar": 16.5,
-            "representar": 15,
-            "efetividade": 1,
-            "presenca": 96.4
+            "fiscalizar": 0,
+            "representar": 0,
+            "efetividade": 0,
+            "presenca": 94.6
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 12,
+            "proposicao_simbolica": 8,
             "emenda_relevante": 0,
-            "leis_aprovadas": 1,
+            "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 11,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 30,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
             "comenda_titulo": 14
           },
           "composicao": {
-            "substantivo": 44,
-            "cerimonial": 12,
-            "cerimonial_pct": 25,
-            "substantivo_pct": 91.7
+            "substantivo": 3,
+            "cerimonial": 8,
+            "cerimonial_pct": 88.9,
+            "substantivo_pct": 33.3
           },
           "perfil": {
-            "simbolico_pct": 25
+            "simbolico_pct": 88.9
           },
           "pendencias": [
             "relatoria_processante",
@@ -2991,59 +2983,58 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
           "posicao": 10
         },
         {
-          "nome": "Alexandre Prado",
-          "indice": 54.8,
+          "nome": "Zé Morais",
+          "indice": 31.8,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
+          "presenca_pct": 94.6,
+          "presenca_presentes": 53,
           "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
-            "fiscalizar": 25,
-            "representar": 100,
-            "presenca": 96.4
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 94.6
           },
           "dimensoes_brutas": {
             "legislar": 9,
-            "fiscalizar": 15,
-            "representar": 15,
+            "fiscalizar": 0,
+            "representar": 0,
             "efetividade": 0,
-            "presenca": 96.4
+            "presenca": 94.6
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 12,
+            "proposicao_simbolica": 2,
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 10,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 32,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 17
+            "comenda_titulo": 3
           },
           "composicao": {
-            "substantivo": 45,
-            "cerimonial": 12,
-            "cerimonial_pct": 24,
-            "substantivo_pct": 90
+            "substantivo": 3,
+            "cerimonial": 2,
+            "cerimonial_pct": 50,
+            "substantivo_pct": 75
           },
           "perfil": {
-            "simbolico_pct": 24
+            "simbolico_pct": 50
           },
           "pendencias": [
             "relatoria_processante",
@@ -3053,35 +3044,34 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
           "posicao": 11
         },
         {
-          "nome": "Zé Morais",
-          "indice": 49.5,
+          "nome": "Miguel da Saúde",
+          "indice": 31.4,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 96.4,
-          "presenca_presentes": 54,
+          "presenca_pct": 92.9,
+          "presenca_presentes": 52,
           "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
-            "fiscalizar": 7.5,
-            "representar": 100,
-            "presenca": 96.4
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 92.9
           },
           "dimensoes_brutas": {
             "legislar": 9,
-            "fiscalizar": 4.5,
-            "representar": 15,
+            "fiscalizar": 0,
+            "representar": 0,
             "efetividade": 0,
-            "presenca": 96.4
+            "presenca": 92.9
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
@@ -3090,22 +3080,22 @@
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 3,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 41,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 10
+            "comenda_titulo": 15
           },
           "composicao": {
-            "substantivo": 47,
+            "substantivo": 3,
             "cerimonial": 9,
-            "cerimonial_pct": 18.8,
-            "substantivo_pct": 97.9
+            "cerimonial_pct": 100,
+            "substantivo_pct": 33.3
           },
           "perfil": {
-            "simbolico_pct": 18.8
+            "simbolico_pct": 100
           },
           "pendencias": [
             "relatoria_processante",
@@ -3115,59 +3105,58 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
           "posicao": 12
         },
         {
           "nome": "Afonso Monticeli",
-          "indice": 49.2,
+          "indice": 31.3,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 94.9,
-          "presenca_presentes": 37,
+          "presenca_pct": 92.3,
+          "presenca_presentes": 36,
           "presenca_elegiveis": 39,
           "presenca_janela": "2026-03-27 a 2026-12-31",
           "dimensoes": {
             "legislar": 27.3,
-            "fiscalizar": 7.5,
-            "representar": 100,
-            "presenca": 94.9
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 92.3
           },
           "dimensoes_brutas": {
             "legislar": 9,
-            "fiscalizar": 4.5,
-            "representar": 15,
+            "fiscalizar": 0,
+            "representar": 0,
             "efetividade": 0,
-            "presenca": 94.9
+            "presenca": 92.3
           },
           "evidencias": {
             "projeto_autoria_propria": 3,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 13,
+            "proposicao_simbolica": 4,
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 3,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 27,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 14
+            "comenda_titulo": 5
           },
           "composicao": {
-            "substantivo": 33,
-            "cerimonial": 13,
-            "cerimonial_pct": 38.2,
-            "substantivo_pct": 97.1
+            "substantivo": 3,
+            "cerimonial": 4,
+            "cerimonial_pct": 100,
+            "substantivo_pct": 75
           },
           "perfil": {
-            "simbolico_pct": 38.2
+            "simbolico_pct": 100
           },
           "pendencias": [
             "relatoria_processante",
@@ -3177,59 +3166,58 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
           "posicao": 13
         },
         {
           "nome": "Pastor Faustinho",
-          "indice": 44.9,
+          "indice": 28.7,
           "efetividade": 0,
           "leis_aprovadas": 0,
           "cobertura_pct": 100,
           "confianca_dados_pct": 100,
-          "presenca_pct": 94.6,
-          "presenca_presentes": 53,
+          "presenca_pct": 92.9,
+          "presenca_presentes": 52,
           "presenca_elegiveis": 56,
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 18.2,
-            "fiscalizar": 2.5,
-            "representar": 100,
-            "presenca": 94.6
+            "fiscalizar": 0,
+            "representar": 0,
+            "presenca": 92.9
           },
           "dimensoes_brutas": {
             "legislar": 6,
-            "fiscalizar": 1.5,
-            "representar": 15,
+            "fiscalizar": 0,
+            "representar": 0,
             "efetividade": 0,
-            "presenca": 94.6
+            "presenca": 92.9
           },
           "evidencias": {
             "projeto_autoria_propria": 2,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 22,
+            "proposicao_simbolica": 5,
             "emenda_relevante": 0,
             "leis_aprovadas": 0,
             "relatoria_processante": 0,
-            "requerimento_info": 1,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 40,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 27
+            "comenda_titulo": 10
           },
           "composicao": {
-            "substantivo": 43,
-            "cerimonial": 22,
-            "cerimonial_pct": 45.8,
-            "substantivo_pct": 89.6
+            "substantivo": 2,
+            "cerimonial": 5,
+            "cerimonial_pct": 71.4,
+            "substantivo_pct": 28.6
           },
           "perfil": {
-            "simbolico_pct": 45.8
+            "simbolico_pct": 71.4
           },
           "pendencias": [
             "relatoria_processante",
@@ -3239,9 +3227,8 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "indicacoes entram com teto progressivo (volume alto pesa menos) para nao inflar a nota"
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
           "posicao": 14
         },
@@ -3307,7 +3294,7 @@
         },
         {
           "nome": "Rogério Bueno",
-          "indice": 18.5,
+          "indice": 11.3,
           "efetividade": 100,
           "leis_aprovadas": 1,
           "cobertura_pct": 100,
@@ -3318,40 +3305,40 @@
           "presenca_janela": "2026-01-01 a 2026-12-31",
           "dimensoes": {
             "legislar": 18.2,
-            "fiscalizar": 7.5,
-            "representar": 33.3,
+            "fiscalizar": 0,
+            "representar": 0,
             "presenca": 23.2
           },
           "dimensoes_brutas": {
             "legislar": 6,
-            "fiscalizar": 4.5,
-            "representar": 5,
+            "fiscalizar": 0,
+            "representar": 0,
             "efetividade": 1,
             "presenca": 23.2
           },
           "evidencias": {
             "projeto_autoria_propria": 2,
             "alteracao_relevante": 0,
-            "proposicao_simbolica": 8,
+            "proposicao_simbolica": 3,
             "emenda_relevante": 0,
             "leis_aprovadas": 1,
             "relatoria_processante": 0,
-            "requerimento_info": 3,
+            "requerimento_info": 0,
             "audiencia_contas": 0,
             "oficio_fiscalizacao": 0,
-            "indicacao_protocolada_sem_confirmacao": 5,
+            "indicacao_protocolada_sem_confirmacao": 0,
             "indicacao_atendida": 0,
             "audiencia_publica_diligencia": 0,
-            "comenda_titulo": 10
+            "comenda_titulo": 5
           },
           "composicao": {
-            "substantivo": 10,
-            "cerimonial": 8,
-            "cerimonial_pct": 66.7,
-            "substantivo_pct": 83.3
+            "substantivo": 2,
+            "cerimonial": 3,
+            "cerimonial_pct": 75,
+            "substantivo_pct": 50
           },
           "perfil": {
-            "simbolico_pct": 66.7
+            "simbolico_pct": 75
           },
           "pendencias": [
             "relatoria_processante",
@@ -3361,9 +3348,9 @@
             "presenca_comissoes"
           ],
           "explicacao": [
-            "tem requerimentos de fiscalizacao, mas abaixo dos maiores volumes do ano",
             "teve producao legislativa, mas com menor peso relativo no ano",
-            "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial"
+            "teve 1 materia(s) que viraram lei — efetividade comprovada na fonte oficial",
+            "atos simbolicos ficam visiveis para transparencia e permanecem com peso zero"
           ],
           "posicao": 16
         },
