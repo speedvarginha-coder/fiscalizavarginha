@@ -2,7 +2,7 @@ window.EMENDAS_FEDERAIS = {
   "metadata": {
     "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
     "favorecido": "Favorecidos em Varginha-MG",
-    "extraidoEm": "2026-08-17",
+    "extraidoEm": "2026-08-19",
     "codigoIbge": "3170701",
     "totalFederal": 22595441.99,
     "totalFederalTexto": "22.595.441,99",
@@ -13,7 +13,7 @@ window.EMENDAS_FEDERAIS = {
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-08-17T20:56:22.907536+00:00",
+      "coletadoEm": "2026-08-19T18:30:04.408355+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,
@@ -267,7 +267,7 @@ window.EMENDAS_FEDERAIS = {
       "conta": "32-106785",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 1212913.72,
+      "saldoContaInformativo": 1213393.67,
       "dataSaldoConta": "2026-06-23",
       "numeroEmpenhos": [
         "2026NE007169"
@@ -1570,7 +1570,7 @@ window.EMENDAS_FEDERAIS = {
       "conta": "32-98733",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 54074.21,
+      "saldoContaInformativo": 54095.61,
       "dataSaldoConta": "2026-05-20",
       "numeroEmpenhos": [
         "2024NE005673"
@@ -1656,12 +1656,12 @@ window.EMENDAS_FEDERAIS = {
       "dataEmpenho": "2024-06-26",
       "dataPagamento": "2024-12-13",
       "dataRecurso": "2024-12-16",
-      "execucao": "plano de ação CIENTE · plano de trabalho Em Ajuste do Plano de Trabalho · empenho federal 26/06/2024 · ordem bancária 13/12/2024 · crédito na conta vinculada 16/12/2024 · execução/prestação de contas ainda não localizada na API",
+      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 13/12/2024 · crédito na conta vinculada 16/12/2024 · execução/prestação de contas ainda não localizada na API",
       "planoAcaoId": 75109,
       "codigoPlanoAcao": "09032024-075109",
       "situacaoPlanoAcao": "CIENTE",
       "planoTrabalhoId": 8763,
-      "situacaoPlanoTrabalho": "Em Ajuste do Plano de Trabalho",
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
       "inicioExecucaoPlano": "2025-01-01",
       "fimExecucaoPlano": "2026-01-01",
       "objetoTransferegov": "Aquisição de equipamentos e mobiliários para Centro Ambulatorial de Especialidades da Criança. Realizada Licitação Nº do Processo: 150/2025, disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-150-2025-2025-444145.",
@@ -1671,7 +1671,7 @@ window.EMENDAS_FEDERAIS = {
       "conta": "32-98734",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 237404.07,
+      "saldoContaInformativo": 237498.01,
       "dataSaldoConta": "2024-12-16",
       "numeroEmpenhos": [
         "2024NE005661"
@@ -1772,7 +1772,7 @@ window.EMENDAS_FEDERAIS = {
       "conta": "32-98732",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 59370.88,
+      "saldoContaInformativo": 59394.37,
       "dataSaldoConta": "2024-12-13",
       "numeroEmpenhos": [
         "2024NE005672"
@@ -2013,7 +2013,7 @@ window.EMENDAS_FEDERAIS = {
       "conta": "32-98731",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 173379.47,
+      "saldoContaInformativo": 173448.08,
       "dataSaldoConta": "2024-12-17",
       "numeroEmpenhos": [
         "2024NE005609"
@@ -2360,8 +2360,8 @@ window.EMENDAS_FEDERAIS = {
       "conta": "32-92683",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 94668.38,
-      "dataSaldoConta": "2026-08-05",
+      "saldoContaInformativo": 91534.59,
+      "dataSaldoConta": "2026-08-17",
       "numeroEmpenhos": [
         "2022NE008218"
       ],
@@ -3161,7 +3161,7 @@ window.EMENDAS_FEDERAIS = {
       "conta": "32-88110",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 233370.42,
+      "saldoContaInformativo": 233462.76,
       "dataSaldoConta": "2025-12-29",
       "numeroEmpenhos": [
         "2020NE800471",

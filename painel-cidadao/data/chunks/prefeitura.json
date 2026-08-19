@@ -18963,6 +18963,20 @@
       "entidade": ""
     },
     {
+      "numero": "91",
+      "ano": "2026",
+      "data_assinatura": "2026-08-13",
+      "data_fim": "2027-08-16",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Serviços técnicos profissionais para organização metodológica e execução da Feira de Ideias 2026.",
+      "contratado": "SERVICO DE APOIO AS MICRO E PEQUENAS EMPRESAS DE MINAS GERAIS - SEBRAE/MG",
+      "cnpj": "16.589.137/****-**",
+      "valor": 63000.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "41",
       "ano": "2025",
       "data_assinatura": "2025-05-09",
@@ -22562,6 +22576,20 @@
     },
     {
       "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-18",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de notebooks destinados a atender às necessidades operacionais da Corregedoria do Município de Varginha/MG.",
+      "contratado": "AZUL TEC LICITACOES EM INFORMATICA E SUPRIMENTOS LTDA",
+      "cnpj": "58.149.730/****-**",
+      "valor": 17400.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
       "ano": "2024",
       "data_assinatura": "2024-04-24",
       "data_fim": "",
@@ -24336,6 +24364,20 @@
       "cnpj": "11.371.179/****-**",
       "valor": 9179.55,
       "situacao": "ENCERRADO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-19",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de Agente Redutor Líquido",
+      "contratado": "TWM SOLUCOES EM SUPRIMENTOS LTDA",
+      "cnpj": "62.925.921/****-**",
+      "valor": 9100.0,
+      "situacao": "EXECUCAO",
       "entidade": ""
     },
     {
@@ -30661,16 +30703,6 @@
       "entidade": ""
     },
     {
-      "numero": 198,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
-      "data": "2026-07-27",
-      "valor": 7058500.0,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
       "numero": 199,
       "ano": "",
       "modalidade": "Concorrência eletrônica",
@@ -30781,6 +30813,16 @@
       "entidade": ""
     },
     {
+      "numero": 228,
+      "ano": "",
+      "modalidade": "Concorrência eletrônica",
+      "objeto": "Serviços de engenharia para construção de 14 moradias do Programa URIAP",
+      "data": "2026-08-17",
+      "valor": 1201469.15,
+      "situacao": "AGUARDANDO ABERTURA",
+      "entidade": ""
+    },
+    {
       "numero": 140,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -30841,22 +30883,22 @@
       "entidade": ""
     },
     {
-      "numero": 121,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Serviços de instalação do sistema de aquecimento das piscinas públicas",
-      "data": "2026-06-01",
-      "valor": 589499.57,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
       "numero": 225,
       "ano": "",
       "modalidade": "Concorrência eletrônica",
       "objeto": "Serviços de engenharia para reforma da cobertura do Almoxarifado Central",
       "data": "2026-08-14",
       "valor": 537264.89,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
+      "numero": 253,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de empresa especializada para prestação de serviços continuados de Central de Regulação de Saúde",
+      "data": "2026-08-17",
+      "valor": 517800.0,
       "situacao": "EM ANDAMENTO",
       "entidade": ""
     },
@@ -30891,32 +30933,22 @@
       "entidade": ""
     },
     {
+      "numero": 214,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de Preço para futura e eventual aquisição de materiais esportivos diversos, placar eletrônico e aparelho de som portátil",
+      "data": "2026-08-19",
+      "valor": 241537.05,
+      "situacao": "AGUARDANDO ABERTURA",
+      "entidade": ""
+    },
+    {
       "numero": 197,
       "ano": "",
       "modalidade": "Pregão eletrônico",
       "objeto": "Aquisição de materiais ambulatoriais",
       "data": "2026-07-27",
       "valor": 215890.15,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
-      "numero": 202,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Registro de preços para o futuro e eventual fornecimento de argamassa ACI",
-      "data": "2026-07-28",
-      "valor": 178110.32,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
-      "numero": 176,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Contratação de empresa para fornecimento de link de fibra óptica dedicado à internet fibra óptica com suporte ininterrupto 24x7x30",
-      "data": "2026-07-20",
-      "valor": 169475.68,
       "situacao": "EM ANDAMENTO",
       "entidade": ""
     },
@@ -31039,6 +31071,16 @@
       "objeto": "Registro de preços para fornecimento de combustíveis: gasolina comum e óleo diesel",
       "data": "2026-01-28",
       "valor": 9811761.8,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 198,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "data": "2026-07-27",
+      "valor": 7058500.0,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -31393,6 +31435,16 @@
       "entidade": ""
     },
     {
+      "numero": 121,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Serviços de instalação do sistema de aquecimento das piscinas públicas",
+      "data": "2026-06-01",
+      "valor": 589499.57,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 11,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -31513,6 +31565,16 @@
       "entidade": ""
     },
     {
+      "numero": 255,
+      "ano": "",
+      "modalidade": "Inexigibilidade de licitação",
+      "objeto": "CONTRATAÇÃO DE SERVIÇOS DE AVALIAÇÃO MÉDICA, EXAMES E FORNECIMENTO DE APARELHOS AUDITIVOS AOS USUÁRIOS",
+      "data": "2026-08-18",
+      "valor": 240000.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 43,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -31603,6 +31665,16 @@
       "entidade": ""
     },
     {
+      "numero": 202,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de argamassa ACI",
+      "data": "2026-07-28",
+      "valor": 178110.32,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 7,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -31619,6 +31691,16 @@
       "objeto": "Aquisição de conjunto de fixação de paciente em Radioterapia",
       "data": "2026-02-13",
       "valor": 170327.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 176,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de empresa para fornecimento de link de fibra óptica dedicado à internet fibra óptica com suporte ininterrupto 24x7x30",
+      "data": "2026-07-20",
+      "valor": 169475.68,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -139180,7 +139262,7 @@
     "Contratos (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 244
+      "registros": 247
     },
     "Contratos (ano anterior) (2025)": {
       "status": "partial",
@@ -139190,12 +139272,12 @@
     "Licitações em andamento (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 41
+      "registros": 40
     },
     "Licitações finalizadas (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 131
+      "registros": 136
     },
     "Compras diretas (2026)": {
       "status": "partial",
@@ -139210,7 +139292,7 @@
     "Veículos municipais (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 850
+      "registros": 852
     }
   }
 }

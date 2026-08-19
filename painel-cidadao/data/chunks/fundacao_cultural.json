@@ -262,7 +262,7 @@
   "execucao": {
     "resumo_atual": {
       "registros": 272,
-      "empenhado": 4746189.92,
+      "empenhado": 4836189.92,
       "liquidado": 3089661.41,
       "pago": 3083831.68
     },
@@ -379,6 +379,28 @@
       },
       {
         "data": "2026-08-05",
+        "numero": 262,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 332/2025 P.A: 2205/2026 - Execução Projeto cultural: \"200 ANOS DA FUNDAÇÃO DE VARGINHA\"",
+        "valor_empenhado": 105000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 105000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 262,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 332/2025 P.A: 2205/2026 - Execução Projeto cultural: \"200 ANOS DA FUNDAÇÃO DE VARGINHA\"",
+        "valor_empenhado": 105000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 105000.0
+      },
+      {
+        "data": "2026-08-05",
         "numero": 238,
         "orgao": "ADMINISTRACAO",
         "credor": "ASSOCIACAO CULTURAL NIKKEY DE VARGINHA",
@@ -453,28 +475,6 @@
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 70000.0
-      },
-      {
-        "data": "2026-08-05",
-        "numero": 256,
-        "orgao": "ADMINISTRACAO",
-        "credor": "GRUPO MARANATHA DE ART GLOBAL",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 326/2025 P.A: 1859/2026 - Projeto: 2 MOSTRA DE CINEMA E GASTRONOMIA RURAL MINEIRA",
-        "valor_empenhado": 60000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 60000.0
-      },
-      {
-        "data": "2026-08-05",
-        "numero": 256,
-        "orgao": "ADMINISTRACAO",
-        "credor": "GRUPO MARANATHA DE ART GLOBAL",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 326/2025 P.A: 1859/2026 - Projeto: 2 MOSTRA DE CINEMA E GASTRONOMIA RURAL MINEIRA",
-        "valor_empenhado": 60000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 60000.0
       },
       {
         "data": "2026-08-05",
@@ -610,10 +610,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 258,
+        "numero": 259,
         "orgao": "ADMINISTRACAO",
-        "credor": "GREMIO R.E. DE SAMBA IMPERIO DA SERRINHA",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 328/2025 P.A: 1865/2026 - aquisição de instrumentos musicais para o Grêmio Recreativo Escola de Samba Império da Serrinha - GRESIS",
+        "credor": "ASSOCIACAO ARTISTICA VIVA CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS -E.I: 329/2025 P.A: 27242026 - Projeto Cultural - Circuito de Férias no Zoológico - Atividades culturais, educativas e recreativas",
         "valor_empenhado": 30000.0,
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
@@ -621,10 +621,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 258,
+        "numero": 259,
         "orgao": "ADMINISTRACAO",
-        "credor": "GREMIO R.E. DE SAMBA IMPERIO DA SERRINHA",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 328/2025 P.A: 1865/2026 - aquisição de instrumentos musicais para o Grêmio Recreativo Escola de Samba Império da Serrinha - GRESIS",
+        "credor": "ASSOCIACAO ARTISTICA VIVA CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS -E.I: 329/2025 P.A: 27242026 - Projeto Cultural - Circuito de Férias no Zoológico - Atividades culturais, educativas e recreativas",
         "valor_empenhado": 30000.0,
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
@@ -753,10 +753,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 269,
+        "numero": 247,
         "orgao": "ADMINISTRACAO",
-        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 339/2025 P.A: 2207/2026 - Manutenção das Oficinas e Concertos da Filarmônica de Varginha",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 317/2025 P.A: 2737/2026 - Aquisição de materiais e contratação de prestação de serviço para Obra na Cozinha da Associação.",
         "valor_empenhado": 20000.0,
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
@@ -764,10 +764,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 247,
+        "numero": 269,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 317/2025 P.A: 2737/2026 - Aquisição de materiais e contratação de prestação de serviço para Obra na Cozinha da Associação.",
+        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 339/2025 P.A: 2207/2026 - Manutenção das Oficinas e Concertos da Filarmônica de Varginha",
         "valor_empenhado": 20000.0,
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
@@ -841,10 +841,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 248,
+        "numero": 251,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 318/2025 P.A: 2013/2026 - Aquisição de instrumentos musicais equipamentos e acessórios para apresentações e para eventos internos.",
+        "credor": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 321/2025 P.A: 2628/2026 - Aquisição de uniformes (calças, camisas e/ou camisetas) para as equipes de Folia de Reis, visando a padronização e valorização cultural dos grupos participantes",
         "valor_empenhado": 15000.0,
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
@@ -852,10 +852,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 251,
+        "numero": 248,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 321/2025 P.A: 2628/2026 - Aquisição de uniformes (calças, camisas e/ou camisetas) para as equipes de Folia de Reis, visando a padronização e valorização cultural dos grupos participantes",
+        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 318/2025 P.A: 2013/2026 - Aquisição de instrumentos musicais equipamentos e acessórios para apresentações e para eventos internos.",
         "valor_empenhado": 15000.0,
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
@@ -896,17 +896,6 @@
       },
       {
         "data": "2026-03-20",
-        "numero": 71,
-        "orgao": "ADMINISTRACAO",
-        "credor": "PANIFICADORA PRINCESA LTDA",
-        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
-        "valor_empenhado": 12673.6,
-        "valor_liquidado": 2851.56,
-        "valor_pago": 2851.56,
-        "saldo_a_pagar": 9822.04
-      },
-      {
-        "data": "2026-03-20",
         "numero": 70,
         "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
         "credor": "PANIFICADORA PRINCESA LTDA",
@@ -915,6 +904,17 @@
         "valor_liquidado": 2534.72,
         "valor_pago": 2534.72,
         "saldo_a_pagar": 10138.88
+      },
+      {
+        "data": "2026-03-20",
+        "numero": 71,
+        "orgao": "ADMINISTRACAO",
+        "credor": "PANIFICADORA PRINCESA LTDA",
+        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
+        "valor_empenhado": 12673.6,
+        "valor_liquidado": 2851.56,
+        "valor_pago": 2851.56,
+        "saldo_a_pagar": 9822.04
       },
       {
         "data": "2026-04-08",
@@ -38064,18 +38064,6 @@
         "situacao": "Trabalhando"
       },
       {
-        "nome": "HIAN ADLER GARCIA NOGUEIRA",
-        "cargo": "Oficial Administrativo",
-        "orgao": "FUNDACAO CULTURAL MUNICIPIO DE VARGINHA",
-        "data_admissao": "2014-10-10",
-        "tipo_matricula": "Funcionário",
-        "vinculo": "EFETIVO(PP/INPREV)",
-        "carga_horaria_mensal": "220.00",
-        "carga_horaria_semanal": "44",
-        "remuneracao_contratual": 2112.13,
-        "situacao": "Trabalhando"
-      },
-      {
         "nome": "HUMBERTO DE PAULA XAVIER",
         "cargo": "Motorista",
         "orgao": "FUNDACAO CULTURAL MUNICIPIO DE VARGINHA",
@@ -38533,9 +38521,9 @@
       }
     ],
     "resumo": {
-      "ativos_qtd": 59,
+      "ativos_qtd": 58,
       "comissionados_qtd": 11,
-      "efetivos_qtd": 43
+      "efetivos_qtd": 42
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80361"
   },

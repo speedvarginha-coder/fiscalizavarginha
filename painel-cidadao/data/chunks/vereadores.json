@@ -13,9 +13,9 @@
     "nome_rua": 22,
     "homenagens_terceiros": 9,
     "outros": 9,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 86,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 83.1,
+    "presenca_presentes": 64,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -32,9 +32,9 @@
     "nome_rua": 25,
     "homenagens_terceiros": 6,
     "outros": 6,
-    "presenca_pct": 95.3,
-    "presenca_presentes": 82,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 80.5,
+    "presenca_presentes": 62,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -51,9 +51,9 @@
     "nome_rua": 31,
     "homenagens_terceiros": 3,
     "outros": 5,
-    "presenca_pct": 98.8,
-    "presenca_presentes": 85,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 81.8,
+    "presenca_presentes": 63,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -70,9 +70,9 @@
     "nome_rua": 17,
     "homenagens_terceiros": 1,
     "outros": 4,
-    "presenca_pct": 96.5,
-    "presenca_presentes": 83,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 80.5,
+    "presenca_presentes": 62,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -89,9 +89,9 @@
     "nome_rua": 20,
     "homenagens_terceiros": 7,
     "outros": 8,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 86,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 83.1,
+    "presenca_presentes": 64,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -108,9 +108,9 @@
     "nome_rua": 11,
     "homenagens_terceiros": 1,
     "outros": 1,
-    "presenca_pct": 94.2,
-    "presenca_presentes": 81,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 81.8,
+    "presenca_presentes": 63,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -127,9 +127,9 @@
     "nome_rua": 19,
     "homenagens_terceiros": 3,
     "outros": 3,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 86,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 83.1,
+    "presenca_presentes": 64,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -146,9 +146,9 @@
     "nome_rua": 7,
     "homenagens_terceiros": 0,
     "outros": 0,
-    "presenca_pct": 95.3,
-    "presenca_presentes": 82,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 79.2,
+    "presenca_presentes": 61,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -165,9 +165,9 @@
     "nome_rua": 28,
     "homenagens_terceiros": 2,
     "outros": 3,
-    "presenca_pct": 94.2,
-    "presenca_presentes": 81,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 79.2,
+    "presenca_presentes": 61,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -184,9 +184,9 @@
     "nome_rua": 10,
     "homenagens_terceiros": 2,
     "outros": 2,
-    "presenca_pct": 95.3,
-    "presenca_presentes": 82,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 79.2,
+    "presenca_presentes": 61,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -203,9 +203,9 @@
     "nome_rua": 27,
     "homenagens_terceiros": 4,
     "outros": 5,
-    "presenca_pct": 97.7,
-    "presenca_presentes": 84,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 80.5,
+    "presenca_presentes": 62,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -222,9 +222,9 @@
     "nome_rua": 14,
     "homenagens_terceiros": 1,
     "outros": 2,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 86,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 83.1,
+    "presenca_presentes": 64,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -241,9 +241,9 @@
     "nome_rua": 5,
     "homenagens_terceiros": 6,
     "outros": 6,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 32,
-    "presenca_elegiveis": 32,
+    "presenca_pct": 73.9,
+    "presenca_presentes": 17,
+    "presenca_elegiveis": 23,
     "presenca_janela": "2025-08-25 a 2025-12-31"
   },
   {
@@ -260,9 +260,9 @@
     "nome_rua": 4,
     "homenagens_terceiros": 1,
     "outros": 2,
-    "presenca_pct": 96.9,
-    "presenca_presentes": 31,
-    "presenca_elegiveis": 32,
+    "presenca_pct": 73.9,
+    "presenca_presentes": 17,
+    "presenca_elegiveis": 23,
     "presenca_janela": "2025-08-25 a 2025-12-31"
   },
   {
@@ -279,9 +279,9 @@
     "nome_rua": 0,
     "homenagens_terceiros": 0,
     "outros": 0,
-    "presenca_pct": 97.7,
-    "presenca_presentes": 84,
-    "presenca_elegiveis": 86,
+    "presenca_pct": 80.5,
+    "presenca_presentes": 62,
+    "presenca_elegiveis": 77,
     "presenca_janela": "2025-01-01 a 2025-12-31"
   },
   {
@@ -298,8 +298,8 @@
     "nome_rua": 0,
     "homenagens_terceiros": 0,
     "outros": 0,
-    "presenca_pct": 96.3,
-    "presenca_presentes": 52,
+    "presenca_pct": 83.3,
+    "presenca_presentes": 45,
     "presenca_elegiveis": 54,
     "presenca_janela": "2025-01-01 a 2025-08-22"
   },
@@ -317,8 +317,8 @@
     "nome_rua": 0,
     "homenagens_terceiros": 0,
     "outros": 0,
-    "presenca_pct": 100.0,
-    "presenca_presentes": 54,
+    "presenca_pct": 87.0,
+    "presenca_presentes": 47,
     "presenca_elegiveis": 54,
     "presenca_janela": "2025-01-01 a 2025-08-22"
   }

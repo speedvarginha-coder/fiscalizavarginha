@@ -8,9 +8,9 @@
   "desfechos": {
     "lei": 25,
     "arquivado": 883,
-    "tramitando": 665,
+    "tramitando": 664,
     "encerrado": 11,
-    "sem_dado": 0
+    "sem_dado": 1
   },
   "tipos": [
     {

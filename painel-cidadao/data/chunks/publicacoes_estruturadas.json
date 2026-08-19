@@ -1,8 +1,780 @@
 {
- "gerado_em": "2026-08-17T20:53:35+00:00",
+ "gerado_em": "2026-08-19T18:27:16+00:00",
  "fonte": "camara",
- "total": 837,
+ "total": 852,
  "publicacoes": [
+  {
+   "id": "CAMARA-2026-REQ-210",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 210/2026",
+   "numero": "210/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "segurança pública",
+   "resumo": "Um vereador de Varginha solicitou informações sobre a instalação de uma guarita da Guarda Civil Municipal (GCM) na Praça São Charbel, localizada no bairro Jardim Andere.",
+   "o_que_propoe": "O requerimento busca esclarecimentos sobre os detalhes e a justificativa para a instalação da guarita.",
+   "impacto_cidadao": "A obtenção dessas informações pode aumentar a transparência sobre as ações de segurança pública e o uso de espaços comunitários.",
+   "por_que_acompanhar": [
+    "Para entender as decisões sobre segurança pública no bairro Jardim Andere.",
+    "Para fiscalizar o uso de recursos e espaços públicos pela GCM.",
+    "Para acompanhar a justificativa e o planejamento por trás da instalação de infraestrutura de segurança."
+   ],
+   "pontos_atencao": [
+    "O custo envolvido na instalação e manutenção da guarita.",
+    "A fundamentação para a escolha da Praça São Charbel como local.",
+    "O impacto da guarita na utilização e na percepção do espaço público pelos moradores."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6216/requerimento___sao_charbel___rogerio_bueno1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Rogério Bueno",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações sobre a instalação de uma guarita da Corporação da GCM na Praça São Charbel, no bairro Jardim Andere.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6216",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6216/requerimento___sao_charbel___rogerio_bueno1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6216/requerimento___sao_charbel___rogerio_bueno1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "98560e7eaa9f54d9a10bdfa97f57918e1e0e4cf8",
+   "gerado_em": "2026-08-19T18:27:10+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-209",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 209/2026",
+   "numero": "209/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "assistência social",
+   "resumo": "O vereador Rogério Bueno solicitou informações à prefeitura sobre a possibilidade de instalar um Restaurante Popular no novo Mercado do Produtor de Varginha.",
+   "o_que_propoe": "O requerimento busca obter dados e detalhes sobre a viabilidade e o planejamento para a implantação de um Restaurante Popular.",
+   "impacto_cidadao": "Caso seja implantado, o Restaurante Popular poderá oferecer refeições a preços acessíveis, beneficiando cidadãos de Varginha.",
+   "por_que_acompanhar": [
+    "Para entender o planejamento e a destinação de recursos públicos para projetos sociais.",
+    "Para acompanhar a possível criação de um serviço que visa oferecer alimentação a baixo custo.",
+    "Para verificar a transparência das ações do poder executivo em resposta às solicitações legislativas."
+   ],
+   "pontos_atencao": [
+    "O impacto financeiro da implantação e manutenção do Restaurante Popular no orçamento municipal.",
+    "Os critérios para a seleção do público-alvo e a gestão do serviço.",
+    "Os prazos e etapas para a concretização da proposta, caso ela seja considerada viável."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6215/requerimento___restaurante_popular___rogerio_bueno1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Rogério Bueno",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações sobre a implantação de um Restaurante Popular nas dependências do novo Mercado do Produtor de Varginha.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6215",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6215/requerimento___restaurante_popular___rogerio_bueno1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6215/requerimento___restaurante_popular___rogerio_bueno1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "69d97bb9ab71e76fed99b39c6d27185aaf583e90",
+   "gerado_em": "2026-08-19T18:27:04+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-208",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 208/2026",
+   "numero": "208/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "bem-estar animal",
+   "resumo": "O Requerimento nº 208/2026 solicita informações à Prefeitura de Varginha sobre os programas de castração gratuita de cães e gatos e a implantação de um Banco de Rações no município.",
+   "o_que_propoe": "O requerimento propõe que a Câmara Municipal obtenha dados detalhados da prefeitura sobre a situação atual e os planos para os serviços de castração animal e o Banco de Rações.",
+   "impacto_cidadao": "Se as informações levarem a melhorias ou à criação desses programas, os cidadãos poderão ter acesso a serviços de castração gratuita e apoio para alimentação de animais.",
+   "por_que_acompanhar": [
+    "Garantir a transparência sobre as ações da prefeitura em relação ao bem-estar animal.",
+    "Verificar a efetividade e o andamento de programas que podem beneficiar tutores de animais e a saúde pública.",
+    "Incentivar a responsabilidade do poder público na gestão de recursos para causas animais."
+   ],
+   "pontos_atencao": [
+    "A qualidade e a completude das informações que serão fornecidas pela prefeitura.",
+    "O impacto orçamentário para a implementação ou manutenção desses programas.",
+    "A existência de um cronograma claro para a implantação ou expansão dos serviços."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6209/requerimento___causa_animal__19_08_1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Joãozinho Enfermeiro",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações acerca da castração gratuita de cães e gatos e da implantação do Banco de Rações no Município de Varginha.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6209",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6209/requerimento___causa_animal__19_08_1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6209/requerimento___causa_animal__19_08_1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "c93253130c29fc350fb2437feafd4ecdcaa23fba",
+   "gerado_em": "2026-08-19T18:26:59+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-207",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 207/2026",
+   "numero": "207/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "saúde",
+   "resumo": "Este requerimento pede à Prefeitura de Varginha informações sobre as consultas médicas que foram agendadas e depois canceladas na rede municipal de saúde.",
+   "o_que_propoe": "O vereador Davi Martins propõe que a prefeitura detalhe os números e os motivos desses cancelamentos de consultas.",
+   "impacto_cidadao": "Se as informações forem fornecidas, elas poderão ajudar a identificar problemas e melhorar o agendamento de consultas, potencialmente reduzindo cancelamentos futuros para os cidadãos.",
+   "por_que_acompanhar": [
+    "Para garantir a transparência na gestão da saúde pública e entender a eficiência do sistema de agendamento.",
+    "Para que os cidadãos possam cobrar melhorias e soluções para a questão das consultas canceladas.",
+    "Para verificar se a prefeitura está respondendo adequadamente aos pedidos de informação dos vereadores."
+   ],
+   "pontos_atencao": [
+    "A qualidade e a clareza das informações que serão apresentadas pela prefeitura.",
+    "O prazo em que a prefeitura irá responder ao requerimento.",
+    "A necessidade de que os dados ajudem a identificar as causas reais dos cancelamentos."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6206/davi_martins_req_0171.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Davi Martins",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações sobre consultas agendadas e posteriormente canceladas pela rede municipal",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6206",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6206/davi_martins_req_0171.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6206/davi_martins_req_0171.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "e3f1c84c8a0e33f8d2cf16ad5e3bc39abe0fe84a",
+   "gerado_em": "2026-08-19T18:26:52+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-206",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 206/2026",
+   "numero": "206/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "zeladoria urbana",
+   "resumo": "Um vereador solicitou informações à prefeitura sobre os serviços de limpeza, capina, retirada de entulhos e manutenção de áreas públicas em ruas específicas do bairro Alto da Figueira IV.",
+   "o_que_propoe": "O requerimento busca esclarecer como estão sendo realizados os serviços de zeladoria urbana nas ruas Gumercindo Trolezi e Evanio Labre, no bairro Alto da Figueira IV.",
+   "impacto_cidadao": "Se as informações levarem a ações, os moradores das ruas mencionadas poderão ter melhorias na limpeza e manutenção das áreas públicas.",
+   "por_que_acompanhar": [
+    "Garante a transparência da gestão pública sobre serviços essenciais.",
+    "Permite que os cidadãos verifiquem a qualidade dos serviços de zeladoria em sua região.",
+    "Pode impulsionar a melhoria da infraestrutura e limpeza urbana local."
+   ],
+   "pontos_atencao": [
+    "A resposta da prefeitura determinará os próximos passos.",
+    "O requerimento não garante a execução imediata de novos serviços, mas a fiscalização dos existentes."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6204/requerimento_gumercindo_trolezi_e_evanio_labre1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Dandan",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações sobre os serviços de limpeza, capina, retirada de entulhos e manutenção das áreas de preservação ambiental e passeios públicos localizados nas Ruas Gumercindo Trolezi e Evanio Labre, no bairro Alto da Figueira IV.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6204",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6204/requerimento_gumercindo_trolezi_e_evanio_labre1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6204/requerimento_gumercindo_trolezi_e_evanio_labre1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "8c38705805d2d87cd2527cb1ed585438100f6a82",
+   "gerado_em": "2026-08-19T18:26:47+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-205",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 205/2026",
+   "numero": "205/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "infraestrutura",
+   "resumo": "O Requerimento nº 205/2026 solicita informações à Prefeitura de Varginha sobre a manutenção de uma área verde, o escoamento de água da chuva e as rachaduras em imóveis na Rua Orlando Fenoci, no bairro Parque Ileana.",
+   "o_que_propoe": "O requerimento propõe que a Prefeitura forneça dados e esclarecimentos sobre os problemas mencionados na Rua Orlando Fenoci.",
+   "impacto_cidadao": "Se as informações levarem a ações da prefeitura, os moradores da Rua Orlando Fenoci poderão ter melhorias na infraestrutura e na segurança de seus imóveis.",
+   "por_que_acompanhar": [
+    "Para verificar se a Prefeitura responderá às questões levantadas pelo vereador.",
+    "Para acompanhar se os problemas de infraestrutura e segurança na Rua Orlando Fenoci serão investigados e solucionados.",
+    "Para garantir a transparência na gestão pública e a atenção às demandas dos cidadãos."
+   ],
+   "pontos_atencao": [
+    "A efetividade da resposta da Prefeitura e o prazo para sua apresentação.",
+    "A necessidade de fiscalização para que as informações solicitadas resultem em ações concretas."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6202/requerimento_orlando_fenoci_parque_ileana.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Dandan",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações sobre a manutenção da área verde, sobre o escoamento das águas pluviais e sobre dos abalos e rachaduras constatados nos imóveis situados na Rua Orlando Fenoci, nas proximidades do imóvel de nº 227, no bairro Parque Ileana.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6202",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6202/requerimento_orlando_fenoci_parque_ileana.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6202/requerimento_orlando_fenoci_parque_ileana.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "1edacf7e594ec459fcdeb3854b327d9dca6b92f5",
+   "gerado_em": "2026-08-19T18:26:40+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-204",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 204/2026",
+   "numero": "204/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "segurança pública",
+   "resumo": "Um vereador solicitou informações detalhadas sobre as câmeras de videomonitoramento da empresa ONO Tecnologia instaladas em Varginha, incluindo como foram adquiridas, onde estão, como funcionam e como são mantidas.",
+   "o_que_propoe": "",
+   "impacto_cidadao": "Se as informações forem fornecidas, os cidadãos poderão ter mais clareza sobre o uso de recursos públicos na segurança da cidade.",
+   "por_que_acompanhar": [
+    "Garantir a transparência na gestão dos equipamentos de segurança pública.",
+    "Verificar a efetividade e o bom uso dos recursos públicos investidos em videomonitoramento.",
+    "Entender como a tecnologia de segurança está sendo aplicada para proteger a população."
+   ],
+   "pontos_atencao": [
+    "A forma de aquisição e os custos envolvidos na contratação da empresa ONO Tecnologia.",
+    "A manutenção e o controle patrimonial das câmeras, para evitar desperdícios ou mau uso.",
+    "A localização e o funcionamento das câmeras, para garantir que atendam às necessidades de segurança da população."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6197/bruno_minuta_requerimento190811.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Bruno Leandro Coletor",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações e esclarecimentos acerca das câmeras de videomonitoramento da empresa ONO Tecnologia existentes no Município de Varginha, abrangendo aquisição, instalação, manutenção, localização, funcionamento, controle patrimonial e utilização.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6197",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6197/bruno_minuta_requerimento190811.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6197/bruno_minuta_requerimento190811.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "7414afbf40b0c0a4f21a4639fca8a7c30c7bbb3d",
+   "gerado_em": "2026-08-19T18:26:34+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-203",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 203/2026",
+   "numero": "203/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "pessoal",
+   "resumo": "Um vereador solicitou informações sobre o processo de licitação para a contratação da empresa que fornece o cartão alimentação aos servidores públicos municipais.",
+   "o_que_propoe": "",
+   "impacto_cidadao": "Pode influenciar a transparência e a eficiência na gestão dos recursos públicos destinados aos benefícios dos servidores.",
+   "por_que_acompanhar": [
+    "Garantir a transparência na aplicação dos recursos públicos",
+    "Assegurar que o processo de licitação seja justo e competitivo",
+    "Verificar a eficiência na gestão dos benefícios dos servidores"
+   ],
+   "pontos_atencao": [
+    "Acompanhar a regularidade do processo de licitação",
+    "Observar a escolha da empresa contratada",
+    "Verificar a gestão dos benefícios oferecidos aos servidores"
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6192/requerimento_ticket31_1.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Afonso Monticeli",
+   "situacao": "em tramitação",
+   "ementa": "Requer informações sobre o processo de licitação para contratação de empresa destinada ao fornecimento do Ticket/Cartão Alimentação aos servidores públicos municipais.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6192",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6192/requerimento_ticket31_1.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6192/requerimento_ticket31_1.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "0ffc31156fee82652d923f4c675cc696eeb968ea",
+   "gerado_em": "2026-08-19T18:26:29+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PLOL-74",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Legislativo nº 74/2026",
+   "numero": "74/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "associações",
+   "resumo": "Este projeto de lei propõe que a Associação Mascatinho Esporte Clube seja reconhecida como de utilidade pública municipal.",
+   "o_que_propoe": "Se aprovado, a Associação Mascatinho Esporte Clube poderá ter acesso a benefícios como isenções fiscais e a possibilidade de receber recursos públicos.",
+   "impacto_cidadao": "Caso aprovado, recursos públicos poderão ser direcionados para apoiar as atividades da associação.",
+   "por_que_acompanhar": [
+    "Garantir a transparência na destinação de recursos públicos.",
+    "Verificar se a associação cumpre os requisitos para receber o título.",
+    "Entender como a medida pode beneficiar a comunidade local através das atividades do clube."
+   ],
+   "pontos_atencao": [
+    "Acompanhar a fiscalização do uso de eventuais recursos públicos pela associação.",
+    "Verificar os critérios que justificam a declaração de utilidade pública."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6210/joaozinho_utilidade_publica___mascatinho__19_08__revisado.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Joãozinho Enfermeiro",
+   "situacao": "em tramitação",
+   "ementa": "DECLARA DE UTILIDADE PÚBLICA MUNICIPAL A ASSOCIAÇÃO MASCATINHO ESPORTE CLUBE.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6210",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6210/joaozinho_utilidade_publica___mascatinho__19_08__revisado.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6210/joaozinho_utilidade_publica___mascatinho__19_08__revisado.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "76194b5558abca82aca9f97a705592b4a26acfae",
+   "gerado_em": "2026-08-19T18:26:00+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PLOL-73",
+   "fonte": "camara",
+   "tipo": "projeto_lei",
+   "tipo_label": "Projeto de Lei Ordinária do Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Lei Ordinária do Legislativo nº 73/2026",
+   "numero": "73/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "urbanismo",
+   "resumo": "Este projeto de lei propõe mudar o nome da Rua 09, localizada no Bairro Penedo, para Rua Laura Maria Ôngaro.",
+   "o_que_propoe": "Na prática, a Rua 09 no Bairro Penedo passaria a ser chamada de Rua Laura Maria Ôngaro.",
+   "impacto_cidadao": "Se aprovado, os moradores e visitantes da Rua 09 precisarão se adaptar ao novo nome.",
+   "por_que_acompanhar": [
+    "Para entender como as decisões sobre nomes de ruas são tomadas.",
+    "Para verificar se há custos envolvidos na mudança de placas e registros.",
+    "Para acompanhar a participação da comunidade na escolha de nomes de logradouros."
+   ],
+   "pontos_atencao": [
+    "Possíveis custos para a prefeitura com a troca de placas de identificação da rua.",
+    "Necessidade de moradores atualizarem seus endereços em documentos e cadastros.",
+    "A justificativa para a escolha do novo nome e a pessoa homenageada."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6203/dandan_projeto_de_lei_denominacao_de_logradouro___rua_laura_maria_de_jesus_ongaro1_revisado.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Dandan",
+   "situacao": "em tramitação",
+   "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A ATUAL RUA 09, LOCALIZADA NO BAIRRO PENEDO, PASSARÁ A DENOMINAR-SE RUA LAURA MARIA ÔNGARO.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6203",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6203/dandan_projeto_de_lei_denominacao_de_logradouro___rua_laura_maria_de_jesus_ongaro1_revisado.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6203/dandan_projeto_de_lei_denominacao_de_logradouro___rua_laura_maria_de_jesus_ongaro1_revisado.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "bf9b0be28c314b63aff62e32422931c855af5849",
+   "gerado_em": "2026-08-19T18:25:55+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PDL-72",
+   "fonte": "camara",
+   "tipo": "decreto_legislativo",
+   "tipo_label": "Projeto de Decreto Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Decreto Legislativo nº 72/2026",
+   "numero": "72/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "homenagens",
+   "resumo": "O Projeto de Decreto Legislativo nº 72/2026 propõe conceder o Diploma de Honra ao Mérito ao Senhor Ednelson da Silva.",
+   "o_que_propoe": "Se aprovado, o Senhor Ednelson da Silva receberá uma homenagem formal da Câmara Municipal de Varginha.",
+   "impacto_cidadao": "Este projeto não tem um impacto direto no dia a dia do cidadão comum.",
+   "por_que_acompanhar": [
+    "Acompanhar a concessão de honrarias permite ao cidadão verificar a aplicação de recursos públicos em eventos e materiais.",
+    "Permite observar os critérios e a justificativa para as homenagens concedidas pela Câmara Municipal."
+   ],
+   "pontos_atencao": [
+    "A concessão de honrarias, embora simbólica, pode gerar custos indiretos para o erário público (cerimônia, diploma).",
+    "É relevante que os critérios para a concessão de honrarias sejam transparentes e justificados para a população."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6219/thulyo_diploma_de_honra_ao_merito_sr_ednelson_da_silva1_revisado.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Thulyo Paiva",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE O DIPLOMA DE HONRA AO MÉRITO AO SENHOR EDNELSON DA SILVA",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6219",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6219/thulyo_diploma_de_honra_ao_merito_sr_ednelson_da_silva1_revisado.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6219/thulyo_diploma_de_honra_ao_merito_sr_ednelson_da_silva1_revisado.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "f9c0b9a1b31ce6a844808111d8ecaee5d2d5d1c4",
+   "gerado_em": "2026-08-19T18:26:21+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PDL-71",
+   "fonte": "camara",
+   "tipo": "decreto_legislativo",
+   "tipo_label": "Projeto de Decreto Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Decreto Legislativo nº 71/2026",
+   "numero": "71/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "medio",
+   "tema": "saúde",
+   "resumo": "Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito de Medicina e Saúde Municipal - Dr. Fernando Eugênio Pires do Prado, ao Hospital Unimed Varginha.",
+   "o_que_propoe": "Se aprovado, o Hospital Unimed Varginha receberá uma honraria municipal em reconhecimento aos seus serviços na área de medicina e saúde.",
+   "impacto_cidadao": "A homenagem, se concedida, pode reconhecer a contribuição do hospital para a saúde da comunidade.",
+   "por_que_acompanhar": [
+    "Acompanhar a concessão de honrarias públicas é importante para entender como os recursos simbólicos do município são utilizados.",
+    "Permite verificar se os critérios para a concessão de méritos estão sendo aplicados de forma justa e transparente.",
+    "Ajuda a reconhecer instituições que contribuem para o bem-estar da população na área da saúde."
+   ],
+   "pontos_atencao": [
+    "Verificar os critérios que justificam a concessão desta honraria específica ao Hospital Unimed Varginha.",
+    "Analisar se a homenagem reflete um consenso sobre a excelência dos serviços prestados pela instituição."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/rogerio_projeto_de_decreto___humanitas___rogerio_revisado.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Rogério Bueno",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL - DR. FERNANDO EUGÊNIO PIRES DO PRADO AO HOSPITAL UNIMED VARGINHA.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6217",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/rogerio_projeto_de_decreto___humanitas___rogerio_revisado.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/rogerio_projeto_de_decreto___humanitas___rogerio_revisado.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "a829b41d46a003c05c3bf961a29e91685de51dd6",
+   "gerado_em": "2026-08-19T18:26:17+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PDL-70",
+   "fonte": "camara",
+   "tipo": "decreto_legislativo",
+   "tipo_label": "Projeto de Decreto Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Decreto Legislativo nº 70/2026",
+   "numero": "70/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "pessoal",
+   "resumo": "Este é um projeto de lei que propõe conceder uma homenagem, a Comenda do Mérito Profissional da Segurança Pública – Comenda Alferes Tiradentes, ao Coronel Edirlei Viana da Silva. Ele é o Comandante do 6º Comando Operacional de Bombeiros.",
+   "o_que_propoe": "Se aprovado, o Coronel Edirlei Viana da Silva receberá oficialmente esta honraria da Câmara Municipal de Varginha-MG.",
+   "impacto_cidadao": "A proposta reconhece o trabalho de um profissional da segurança pública, mas não altera diretamente os serviços ou a vida cotidiana dos cidadãos.",
+   "por_que_acompanhar": [
+    "Para entender os critérios e processos de concessão de honrarias públicas.",
+    "Para acompanhar como o poder legislativo reconhece o trabalho de servidores públicos.",
+    "Para garantir a transparência na atribuição de títulos e méritos."
+   ],
+   "pontos_atencao": [
+    "O beneficiário da homenagem é o Coronel Edirlei Viana da Silva.",
+    "A concessão de honrarias públicas deve seguir critérios claros e transparentes."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_-_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes__edirlei_viana_da_silva.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Cássio Chiodi",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE A COMENDA DO MÉRITO PROFISSIONAL DA SEGURANÇA PÚBLICA – COMENDA ALFERES TIRADENTES AO CORONEL EDIRLEI VIANA DA SILVA, COMANDANTE DO 6º COMANDO OPERACIONAL DE BOMBEIROS.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6201",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_-_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes__edirlei_viana_da_silva.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_-_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes__edirlei_viana_da_silva.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "4f99e99bc36dc1ab8148eaa49b01c8f3a674cfa7",
+   "gerado_em": "2026-08-19T18:26:12+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PDL-69",
+   "fonte": "camara",
+   "tipo": "decreto_legislativo",
+   "tipo_label": "Projeto de Decreto Legislativo",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Decreto Legislativo nº 69/2026",
+   "numero": "69/2026",
+   "data": "2026-08-19",
+   "categoria": "Legislativo",
+   "interesse_publico": "baixo",
+   "tema": "saúde",
+   "resumo": "Este projeto de decreto legislativo propõe conceder uma homenagem, a Comenda do Mérito de Medicina e Saúde Municipal, ao Dr. Túlio Magno de Melo Caldonazo.",
+   "o_que_propoe": "O projeto propõe formalizar a concessão de uma honraria municipal a um profissional da área da saúde.",
+   "impacto_cidadao": "O impacto direto para o cidadão é a valorização pública de um profissional que atua na área da saúde do município.",
+   "por_que_acompanhar": [
+    "Entender como as homenagens públicas são concedidas e a quem.",
+    "Verificar se os critérios para a concessão da honraria são transparentes e justos.",
+    "Acompanhar o uso do tempo e recursos legislativos para este tipo de proposição."
+   ],
+   "pontos_atencao": [
+    "A proposição não envolve impacto orçamentário direto significativo, mas representa um ato de reconhecimento público.",
+    "É importante observar os critérios que justificam a escolha do homenageado."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/alexandre_comenda_dr_tulio_revisada.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Alexandre Prado",
+   "situacao": "em tramitação",
+   "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL – DR. FERNANDO EUGÊNIO PIRES DO PRADO – AO DR. TÚLIO MAGNO DE MELO CALDONAZO.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6194",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/alexandre_comenda_dr_tulio_revisada.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/alexandre_comenda_dr_tulio_revisada.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "d4a02530f3401e02f19f63af82e764394485eb85",
+   "gerado_em": "2026-08-19T18:26:06+00:00"
+  },
+  {
+   "id": "CAMARA-2026-PRES-8",
+   "fonte": "camara",
+   "tipo": "resolucao",
+   "tipo_label": "Projeto de Resolução",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Projeto de Resolução nº 8/2026",
+   "numero": "8/2026",
+   "data": "2026-08-18",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "pessoal",
+   "resumo": "Este projeto de resolução propõe mudanças na estrutura de cargos da Câmara Municipal de Varginha, incluindo a extinção e criação de cargos comissionados e alterações salariais.",
+   "o_que_propoe": "Na prática, a proposta visa reorganizar o quadro de funcionários da Câmara, extinguindo algumas posições de livre nomeação e funções gratificadas, enquanto cria novas e ajusta os níveis salariais de outras.",
+   "impacto_cidadao": "Se aprovado, o projeto poderá influenciar a forma como os recursos públicos são utilizados para a folha de pagamento e a gestão de pessoal na Câmara Municipal.",
+   "por_que_acompanhar": [
+    "Para verificar a gestão dos recursos públicos destinados à folha de pagamento da Câmara.",
+    "Para entender a organização da estrutura administrativa do Poder Legislativo municipal.",
+    "Para acompanhar a transparência e a eficiência na alocação de cargos públicos."
+   ],
+   "pontos_atencao": [
+    "O impacto orçamentário total resultante da extinção e criação de cargos, bem como das alterações salariais.",
+    "As justificativas apresentadas para a reorganização dos cargos comissionados e funções gratificadas.",
+    "A adequação da nova estrutura de pessoal às necessidades e demandas da Câmara Municipal."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6190/projeto_de_resolucao_8.2026.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Poder Legislativo",
+   "situacao": "tramitação encerrada",
+   "ementa": "DISPÕE SOBRE A EXTINÇÃO DE CARGOS DE PROVIMENTO EM COMISSÃO E DE FUNÇÃO GRATIFICADA, A ALTERAÇÃO DE NÍVEL SALARIAL E A CRIAÇÃO DE CARGOS DE PROVIMENTO EM COMISSÃO NA ESTRUTURA ADMINISTRATIVA DA CÂMARA MUNICIPAL DE VARGINHA E DÁ OUTRAS PROVIDÊNCIAS.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/6190",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6190/projeto_de_resolucao_8.2026.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6190/projeto_de_resolucao_8.2026.docx"
+   },
+   "origem_ia": "ia",
+   "fonte_hash": "8d9ac21918e72ae32c15de1cdae3500f259fc9b5",
+   "gerado_em": "2026-08-19T18:27:16+00:00"
+  },
   {
    "id": "CAMARA-2026-PLOM-1",
    "fonte": "camara",
@@ -918,7 +1690,7 @@
     "valor_principal_ia": ""
    },
    "autor": "Ana Rios Fontoura",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "CONCEDE A COMENDA DO MÉRITO JURÍDICO MUNICIPAL À DRA. VÂNIA MARIA TIBÚRCIO SALGADO MITIDIERI",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6159",
@@ -1904,7 +2676,7 @@
     "valor_principal_ia": ""
    },
    "autor": "Leonardo Vinhas Ciacci",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "DISPÕE SOBRE A PARTICIPAÇÃO DO MUNICÍPIO DE VARGINHA/MG NO PROGRAMA DE PRODUÇÃO DE UNIDADES HABITACIONAIS DE INTERESSE SOCIAL COM FINANCIAMENTO DIRETO AOS BENEFICIÁRIOS/DONATÁRIOS, DE ACORDO COM AS REGRAS DO PROGRAMA DEFINIDAS PELO GOVERNO FEDERAL E DÁ OUTRAS PROVIDÊNCIAS.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6170",
@@ -2562,7 +3334,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/miguel_comenda_de_medicina_e_saude_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/projeto_de_decreto_legislativo64-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Miguel da Saúde",
@@ -2570,11 +3342,11 @@
    "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL - DR. FERNANDO EUGÊNIO PIRES DO PRADO AO DR. JOÃO BAPTISTA MACUCO JANINI",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6140",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/miguel_comenda_de_medicina_e_saude_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/projeto_de_decreto_legislativo64-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/miguel_comenda_de_medicina_e_saude_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6140/projeto_de_decreto_legislativo64-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "3b5cc7e9443086bb1e3e5978a9abfa21bdc568a1",
@@ -4110,19 +4882,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6115/zilda_p.l.___denominacao_logradouro_denise_ciacci_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6115/projetodelei69-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Zilda Silva",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A RUA R, NO BAIRRO JARDIM VITÓRIA , PASSARÁ A DENOMINAR-SE RUA MARIA DENISE CIACCI.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6115",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6115/zilda_p.l.___denominacao_logradouro_denise_ciacci_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6115/projetodelei69-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6115/zilda_p.l.___denominacao_logradouro_denise_ciacci_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6115/projetodelei69-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "ca35b3f2cb40c55065a6a7d5032239302640d8e5",
@@ -4161,19 +4933,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6108/rogerio_projeto___rogerio_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6108/projetodelei68-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Rogério Bueno",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A ATUAL RUA \"E\", NO BAIRRO JARDIM VITÓRIA, PASSARÁ A DENOMINAR-SE: RUA PROFESSOR MAÇANEIRO.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6108",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6108/rogerio_projeto___rogerio_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6108/projetodelei68-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6108/rogerio_projeto___rogerio_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6108/projetodelei68-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "f833aeb50018afe35a8196de7bb6394d9e740cc8",
@@ -4367,7 +5139,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/bruno_minuta_projeto_de_decreto__logradouro_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/projetodelei64-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Bruno Leandro Coletor",
@@ -4375,11 +5147,11 @@
    "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO A ATUAL RUA 13, LOCALIZADA NO BAIRRO RESIDENCIAL PENEDO, PASSARÁ A DENOMINAR-SE: RUA JOEL DE FARIA REIS.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6088",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/bruno_minuta_projeto_de_decreto__logradouro_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/projetodelei64-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/bruno_minuta_projeto_de_decreto__logradouro_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6088/projetodelei64-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "24c7cf844a87eb7285fc2dc5af1670a18f242c63",
@@ -17611,7 +18383,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5836/logradouro___expedito_vicente__13_05__1_1.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5836/projetodelei46-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Joãozinho Enfermeiro",
@@ -17619,11 +18391,11 @@
    "ementa": "DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A ATUAL RUA \"N\", NO BAIRRO JARDIM VITÓRIA, PASSARÁ A DENOMINAR-SE: RUA EXPEDITO VICENTE.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/5836",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5836/logradouro___expedito_vicente__13_05__1_1.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5836/projetodelei46-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5836/logradouro___expedito_vicente__13_05__1_1.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5836/projetodelei46-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "fonte_hash": "11b4a04b0538e58fa776b158131723f01c37097e",
