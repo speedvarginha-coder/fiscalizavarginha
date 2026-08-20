@@ -13,7 +13,7 @@ window.EMENDAS_FEDERAIS = {
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-08-19T18:30:04.408355+00:00",
+      "coletadoEm": "2026-08-20T00:58:52.589207+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,

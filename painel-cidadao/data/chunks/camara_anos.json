@@ -10,9 +10,9 @@
       "desfechos": {
         "lei": 25,
         "arquivado": 883,
-        "tramitando": 664,
+        "tramitando": 665,
         "encerrado": 11,
-        "sem_dado": 1
+        "sem_dado": 0
       },
       "tipos": [
         {
@@ -158,9 +158,9 @@
         "nome_rua": 22,
         "homenagens_terceiros": 9,
         "outros": 9,
-        "presenca_pct": 83.1,
-        "presenca_presentes": 64,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 86,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -177,9 +177,9 @@
         "nome_rua": 25,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 80.5,
-        "presenca_presentes": 62,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 95.3,
+        "presenca_presentes": 82,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -196,9 +196,9 @@
         "nome_rua": 31,
         "homenagens_terceiros": 3,
         "outros": 5,
-        "presenca_pct": 81.8,
-        "presenca_presentes": 63,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 98.8,
+        "presenca_presentes": 85,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -215,9 +215,9 @@
         "nome_rua": 17,
         "homenagens_terceiros": 1,
         "outros": 4,
-        "presenca_pct": 80.5,
-        "presenca_presentes": 62,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 96.5,
+        "presenca_presentes": 83,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -234,9 +234,9 @@
         "nome_rua": 20,
         "homenagens_terceiros": 7,
         "outros": 8,
-        "presenca_pct": 83.1,
-        "presenca_presentes": 64,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 86,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -253,9 +253,9 @@
         "nome_rua": 11,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 81.8,
-        "presenca_presentes": 63,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 94.2,
+        "presenca_presentes": 81,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -272,9 +272,9 @@
         "nome_rua": 19,
         "homenagens_terceiros": 3,
         "outros": 3,
-        "presenca_pct": 83.1,
-        "presenca_presentes": 64,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 86,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -291,9 +291,9 @@
         "nome_rua": 7,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 79.2,
-        "presenca_presentes": 61,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 95.3,
+        "presenca_presentes": 82,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -310,9 +310,9 @@
         "nome_rua": 28,
         "homenagens_terceiros": 2,
         "outros": 3,
-        "presenca_pct": 79.2,
-        "presenca_presentes": 61,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 94.2,
+        "presenca_presentes": 81,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -329,9 +329,9 @@
         "nome_rua": 10,
         "homenagens_terceiros": 2,
         "outros": 2,
-        "presenca_pct": 79.2,
-        "presenca_presentes": 61,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 95.3,
+        "presenca_presentes": 82,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -348,9 +348,9 @@
         "nome_rua": 27,
         "homenagens_terceiros": 4,
         "outros": 5,
-        "presenca_pct": 80.5,
-        "presenca_presentes": 62,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 97.7,
+        "presenca_presentes": 84,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -367,9 +367,9 @@
         "nome_rua": 14,
         "homenagens_terceiros": 1,
         "outros": 2,
-        "presenca_pct": 83.1,
-        "presenca_presentes": 64,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 86,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -386,9 +386,9 @@
         "nome_rua": 5,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 73.9,
-        "presenca_presentes": 17,
-        "presenca_elegiveis": 23,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 32,
+        "presenca_elegiveis": 32,
         "presenca_janela": "2025-08-25 a 2025-12-31"
       },
       {
@@ -405,9 +405,9 @@
         "nome_rua": 4,
         "homenagens_terceiros": 1,
         "outros": 2,
-        "presenca_pct": 73.9,
-        "presenca_presentes": 17,
-        "presenca_elegiveis": 23,
+        "presenca_pct": 96.9,
+        "presenca_presentes": 31,
+        "presenca_elegiveis": 32,
         "presenca_janela": "2025-08-25 a 2025-12-31"
       },
       {
@@ -424,9 +424,9 @@
         "nome_rua": 0,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 80.5,
-        "presenca_presentes": 62,
-        "presenca_elegiveis": 77,
+        "presenca_pct": 97.7,
+        "presenca_presentes": 84,
+        "presenca_elegiveis": 86,
         "presenca_janela": "2025-01-01 a 2025-12-31"
       },
       {
@@ -443,8 +443,8 @@
         "nome_rua": 0,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 83.3,
-        "presenca_presentes": 45,
+        "presenca_pct": 96.3,
+        "presenca_presentes": 52,
         "presenca_elegiveis": 54,
         "presenca_janela": "2025-01-01 a 2025-08-22"
       },
@@ -462,8 +462,8 @@
         "nome_rua": 0,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 87.0,
-        "presenca_presentes": 47,
+        "presenca_pct": 100.0,
+        "presenca_presentes": 54,
         "presenca_elegiveis": 54,
         "presenca_janela": "2025-01-01 a 2025-08-22"
       }
@@ -31253,7 +31253,7 @@
         "data": "2025-12-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -31328,22 +31328,22 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-08-19T15:16:20-03:00"
+    "coletado_em": "2026-08-19T21:44:31-03:00"
   },
   "2026": {
     "resumo": {
       "ano": 2026,
-      "total_materias": 871,
+      "total_materias": 872,
       "vereadores_ativos": 15,
       "emendas_qtd": 0,
       "emendas_valor_total_brl": 0.0,
       "impacto_zero_qtd": 246,
       "desfechos": {
-        "lei": 42,
-        "arquivado": 518,
-        "tramitando": 282,
+        "lei": 45,
+        "arquivado": 528,
+        "tramitando": 284,
         "encerrado": 15,
-        "sem_dado": 14
+        "sem_dado": 0
       },
       "tipos": [
         {
@@ -31364,7 +31364,7 @@
         },
         {
           "tipo": "Projeto de Lei Ordinária do Executivo",
-          "qtd": 50
+          "qtd": 52
         },
         {
           "tipo": "Emenda",
@@ -31395,15 +31395,15 @@
           "qtd": 2
         },
         {
-          "tipo": "Pronunciamento",
-          "qtd": 2
-        },
-        {
           "tipo": "Proposta de Emenda à Lei Orgânica Municipal",
           "qtd": 1
         },
         {
           "tipo": "Recurso",
+          "qtd": 1
+        },
+        {
+          "tipo": "Pronunciamento",
           "qtd": 1
         }
       ],
@@ -31485,8 +31485,8 @@
         "nome_rua": 15,
         "homenagens_terceiros": 8,
         "outros": 8,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
+        "presenca_pct": 98.2,
+        "presenca_presentes": 56,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31504,8 +31504,8 @@
         "nome_rua": 16,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
+        "presenca_pct": 98.2,
+        "presenca_presentes": 56,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31523,8 +31523,8 @@
         "nome_rua": 20,
         "homenagens_terceiros": 4,
         "outros": 5,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
+        "presenca_pct": 98.2,
+        "presenca_presentes": 56,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31542,8 +31542,8 @@
         "nome_rua": 15,
         "homenagens_terceiros": 2,
         "outros": 2,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
+        "presenca_pct": 98.2,
+        "presenca_presentes": 56,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31561,8 +31561,8 @@
         "nome_rua": 8,
         "homenagens_terceiros": 1,
         "outros": 3,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
+        "presenca_pct": 98.2,
+        "presenca_presentes": 56,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31580,8 +31580,8 @@
         "nome_rua": 1,
         "homenagens_terceiros": 6,
         "outros": 7,
-        "presenca_pct": 93.0,
-        "presenca_presentes": 53,
+        "presenca_pct": 96.5,
+        "presenca_presentes": 55,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31599,8 +31599,8 @@
         "nome_rua": 7,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
+        "presenca_pct": 98.2,
+        "presenca_presentes": 56,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31618,8 +31618,8 @@
         "nome_rua": 9,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 93.0,
-        "presenca_presentes": 53,
+        "presenca_pct": 96.5,
+        "presenca_presentes": 55,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31637,27 +31637,8 @@
         "nome_rua": 8,
         "homenagens_terceiros": 7,
         "outros": 7,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
-        "presenca_elegiveis": 57,
-        "presenca_janela": "2026-01-01 a 2026-12-31"
-      },
-      {
-        "nome": "Davi Martins",
-        "total": 50,
-        "indicacoes": 30,
-        "requerimentos": 12,
-        "projetos_lei": 3,
-        "emendas": 0,
-        "leis_aprovadas": 1,
-        "mocoes": 1,
-        "pdl": 2,
-        "impacto_zero": 12,
-        "nome_rua": 9,
-        "homenagens_terceiros": 2,
-        "outros": 4,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
+        "presenca_pct": 96.5,
+        "presenca_presentes": 55,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31675,8 +31656,8 @@
         "nome_rua": 8,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 94.7,
-        "presenca_presentes": 54,
+        "presenca_pct": 98.2,
+        "presenca_presentes": 56,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31694,8 +31675,27 @@
         "nome_rua": 19,
         "homenagens_terceiros": 5,
         "outros": 5,
-        "presenca_pct": 93.0,
-        "presenca_presentes": 53,
+        "presenca_pct": 96.5,
+        "presenca_presentes": 55,
+        "presenca_elegiveis": 57,
+        "presenca_janela": "2026-01-01 a 2026-12-31"
+      },
+      {
+        "nome": "Davi Martins",
+        "total": 49,
+        "indicacoes": 30,
+        "requerimentos": 12,
+        "projetos_lei": 3,
+        "emendas": 0,
+        "leis_aprovadas": 1,
+        "mocoes": 1,
+        "pdl": 2,
+        "impacto_zero": 12,
+        "nome_rua": 9,
+        "homenagens_terceiros": 2,
+        "outros": 3,
+        "presenca_pct": 98.2,
+        "presenca_presentes": 56,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31713,8 +31713,8 @@
         "nome_rua": 8,
         "homenagens_terceiros": 4,
         "outros": 4,
-        "presenca_pct": 93.0,
-        "presenca_presentes": 53,
+        "presenca_pct": 96.5,
+        "presenca_presentes": 55,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -31732,8 +31732,8 @@
         "nome_rua": 12,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 92.5,
-        "presenca_presentes": 37,
+        "presenca_pct": 97.5,
+        "presenca_presentes": 39,
         "presenca_elegiveis": 40,
         "presenca_janela": "2026-03-27 a 2026-12-31"
       },
@@ -31751,8 +31751,8 @@
         "nome_rua": 7,
         "homenagens_terceiros": 3,
         "outros": 3,
-        "presenca_pct": 24.6,
-        "presenca_presentes": 14,
+        "presenca_pct": 26.3,
+        "presenca_presentes": 15,
         "presenca_elegiveis": 57,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -32695,7 +32695,7 @@
         "data": "2026-08-11",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -32744,6 +32744,40 @@
         "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6188/projetodelei50-2026.pdf",
         "ementa": "ALTERA A REDAÇÃO DOS ANEXOS I, II, IV E V DA LEI MUNICIPAL N°  3.099, DE 19 DE NOVEMBRO DE 1998, QUE ALTEROU A REDAÇÃO DOS ANEXOS I, II,  III,  IV, V E VI DA LEI MUNICIPAL N' 2.988, DE 02 DE FEVEREIRO DE 1998.",
         "data": "2026-08-17",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "medio"
+      },
+      {
+        "id": "6226",
+        "ano": "2026",
+        "numero": "51",
+        "tipo": "Projeto de Lei Ordinária do Executivo",
+        "sigla": "PLOE",
+        "autor": "Leonardo Vinhas Ciacci",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6226/projetodelei51-2026.pdf",
+        "ementa": "DISPÕE SOBRE A RETIRADA DO ENCARGO DE REVERSÃO INCIDENTE SOBRE IMÓVEL QUE ESPECIFICA, DOADO PELO MUNICÍPIO DE VARGINHA.",
+        "data": "2026-08-19",
+        "impacto_zero": false,
+        "motivo_impacto_zero": "",
+        "desfecho": "tramitando",
+        "tema": "geral",
+        "tema_label": "Geral",
+        "grau": "medio"
+      },
+      {
+        "id": "6225",
+        "ano": "2026",
+        "numero": "52",
+        "tipo": "Projeto de Lei Ordinária do Executivo",
+        "sigla": "PLOE",
+        "autor": "Leonardo Vinhas Ciacci",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6225/projetodelei52-2026.pdf",
+        "ementa": "DISPÕE SOBRE A DESAFETAÇÃO E AFETAÇÃO DE ÁREAS PÚBLICAS MUNICIPAIS E DÁ OUTRAS PROVIDÊNCIAS.",
+        "data": "2026-08-19",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
         "desfecho": "tramitando",
@@ -33846,7 +33880,7 @@
         "tipo": "Projeto de Lei Ordinária do Legislativo",
         "sigla": "PLOL",
         "autor": "Dudu Ottoni",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6097/dudu_den_logradouro_av_dr_joaquim_pereira_de_morais_revisado.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6097/projetodelei66-2026.pdf",
         "ementa": "DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A ATUAL AVENIDA 2, NO BAIRRO GRAO PAIVA, PASSARÁ A DENOMINAR-SE: AVENIDA DR. JOAQUIM PEREIRA DE MORAIS.",
         "data": "2026-07-15",
         "impacto_zero": true,
@@ -43558,7 +43592,7 @@
         "data": "2026-06-03",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "medio"
@@ -43915,7 +43949,7 @@
         "data": "2026-06-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -44408,7 +44442,7 @@
         "data": "2026-07-08",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "baixo"
@@ -44527,7 +44561,7 @@
         "data": "2026-07-08",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "medio"
@@ -44714,7 +44748,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "assistencia",
         "tema_label": "Assistência social",
         "grau": "medio"
@@ -44782,7 +44816,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "medio"
@@ -44816,7 +44850,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "assistencia",
         "tema_label": "Assistência social",
         "grau": "medio"
@@ -45207,7 +45241,7 @@
         "data": "2026-08-05",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "transito",
         "tema_label": "Trânsito/Mobilidade",
         "grau": "medio"
@@ -45224,7 +45258,7 @@
         "data": "2026-08-05",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "cultura",
         "tema_label": "Cultura/Esporte/Lazer",
         "grau": "baixo"
@@ -45797,7 +45831,7 @@
         "tipo": "Indicação",
         "sigla": "IND",
         "autor": "Pastor Faustinho",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6213/ind_040_-_nossa_sra_das_gracas.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6213/ind_042-_newton_papale.docx",
         "ementa": "Solicita a construção de uma área de convivência, com bancos, academia ao ar livre, parque infantil e quadra de esportes, no espaço localizado entre a Rua Newton Papale e a Avenida Osvaldo Valadão de Rezende, entre os bairros Damasco, Centenário e Nossa Senhora das Graças.",
         "data": "2026-08-19",
         "impacto_zero": true,
@@ -46465,7 +46499,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "arquivado",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -46499,7 +46533,7 @@
         "data": "2026-05-20",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "seguranca",
         "tema_label": "Segurança",
         "grau": "baixo"
@@ -46533,7 +46567,7 @@
         "data": "2026-07-15",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "lei",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -46548,23 +46582,6 @@
         "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5883/pronunciamento_-_polarizacao.docx",
         "ementa": "Quando o cidadão deixa de pensar e passa a servir à polarização.",
         "data": "2026-05-20",
-        "impacto_zero": false,
-        "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
-        "tema": "geral",
-        "tema_label": "Geral",
-        "grau": "baixo"
-      },
-      {
-        "id": "6205",
-        "ano": "2026",
-        "numero": "2",
-        "tipo": "Pronunciamento",
-        "sigla": "PRO",
-        "autor": "Davi Martins",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6205/pronunciamento.docx",
-        "ementa": "Manifestação sobre trabalhos legislativos relacionados ao exercício do mandato.",
-        "data": "2026-08-19",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
         "desfecho": "tramitando",
@@ -46618,7 +46635,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -46752,6 +46769,148 @@
         ],
         "votacoes": [
           {
+            "id": 2843,
+            "materia_id": 6026,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 1 - Projeto de Lei Ordinária do Executivo nº 37 de 2026 em 42ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
+          },
+          {
+            "id": 2844,
+            "materia_id": 6026,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 2 - Projeto de Lei Ordinária do Executivo nº 37 de 2026 em 42ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
             "id": 2842,
             "materia_id": 6033,
             "descricao": "Expediente: Ordem do Dia/Expediente: 2 - Moção nº 12 de 2026 em 42ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
@@ -46882,6 +47041,16 @@
             "votos": []
           },
           {
+            "id": 2848,
+            "materia_id": 6042,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 13 - Requerimento nº 170 de 2026 em 43ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
             "id": 2851,
             "materia_id": 6045,
             "descricao": "Expediente: Ordem do Dia/Expediente: 17 - Requerimento nº 171 de 2026 em 43ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
@@ -46915,6 +47084,16 @@
             "id": 2856,
             "materia_id": 6052,
             "descricao": "Expediente: Ordem do Dia/Expediente: 23 - Requerimento nº 174 de 2026 em 43ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2845,
+            "materia_id": 6057,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 32 - Requerimento nº 175 de 2026 em 43ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
             "resultado": "Aprovado por unanimidade",
             "sim": 14,
             "nao": 0,
@@ -47047,6 +47226,77 @@
               },
               {
                 "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2864,
+            "materia_id": 6065,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 2 - Projeto de Lei Ordinária do Legislativo nº 59 de 2026 em 44ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
                 "voto": "Sim"
               }
             ]
@@ -47791,6 +48041,77 @@
             ]
           },
           {
+            "id": 2874,
+            "materia_id": 6034,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 5 - Projeto de Lei Ordinária do Executivo nº 42 de 2026 em 45ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
+          },
+          {
             "id": 2873,
             "materia_id": 6034,
             "descricao": "Ordem: Ordem do Dia/Expediente: 6 - Projeto de Lei Ordinária do Executivo nº 42 de 2026 em 45ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
@@ -47798,7 +48119,68 @@
             "sim": 14,
             "nao": 0,
             "abstencoes": 0,
-            "votos": []
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
           },
           {
             "id": 2870,
@@ -48080,6 +48462,77 @@
               },
               {
                 "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2880,
+            "materia_id": 6072,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 11 - Projeto de Lei Ordinária do Legislativo nº 61 de 2026 em 45ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
                 "voto": "Sim"
               }
             ]
@@ -48369,6 +48822,77 @@
             ]
           },
           {
+            "id": 2885,
+            "materia_id": 6070,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 16 - Projeto de Decreto Legislativo nº 56 de 2026 em 45ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
             "id": 2886,
             "materia_id": 6070,
             "descricao": "Ordem: Ordem do Dia/Expediente: 17 - Projeto de Decreto Legislativo nº 56 de 2026 em 45ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
@@ -48630,6 +49154,16 @@
             "nao": 0,
             "abstencoes": 0,
             "votos": []
+          },
+          {
+            "id": 2868,
+            "materia_id": 6114,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 36 - Requerimento nº 184 de 2026 em 45ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
           }
         ],
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5125"
@@ -48696,7 +49230,68 @@
             "sim": 14,
             "nao": 0,
             "abstencoes": 0,
-            "votos": []
+            "votos": [
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
           },
           {
             "id": 2898,
@@ -48768,6 +49363,66 @@
                 "voto": "Não Votou"
               }
             ]
+          },
+          {
+            "id": 2896,
+            "materia_id": 6126,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 7 - Requerimento nº 185 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2890,
+            "materia_id": 6130,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 13 - Requerimento nº 186 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2891,
+            "materia_id": 6132,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 14 - Requerimento nº 187 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2895,
+            "materia_id": 6134,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 16 - Requerimento nº 189 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2892,
+            "materia_id": 6136,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 19 - Requerimento nº 190 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2893,
+            "materia_id": 6138,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 20 - Requerimento nº 191 de 2026 em 47ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
           }
         ],
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5128"
@@ -49019,7 +49674,68 @@
             "sim": 14,
             "nao": 0,
             "abstencoes": 0,
-            "votos": []
+            "votos": [
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
           },
           {
             "id": 2908,
@@ -49313,7 +50029,68 @@
             "sim": 15,
             "nao": 0,
             "abstencoes": 0,
-            "votos": []
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              }
+            ]
           },
           {
             "id": 2911,
@@ -49323,7 +50100,139 @@
             "sim": 15,
             "nao": 0,
             "abstencoes": 0,
-            "votos": []
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2914,
+            "materia_id": 6115,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 11 - Projeto de Lei Ordinária do Legislativo nº 69 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              }
+            ]
           },
           {
             "id": 2913,
@@ -49965,6 +50874,77 @@
             ]
           },
           {
+            "id": 2922,
+            "materia_id": 6111,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 21 - Projeto de Decreto Legislativo nº 61 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 15,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
             "id": 2921,
             "materia_id": 6111,
             "descricao": "Ordem: Ordem do Dia/Expediente: 22 - Projeto de Decreto Legislativo nº 61 de 2026 em 48ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
@@ -50480,6 +51460,16 @@
             "votos": []
           },
           {
+            "id": 2926,
+            "materia_id": 6171,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 20 - Requerimento nº 198 de 2026 em 49ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
             "id": 2927,
             "materia_id": 6175,
             "descricao": "Expediente: Ordem do Dia/Expediente: 23 - Requerimento nº 199 de 2026 em 49ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
@@ -50568,7 +51558,68 @@
             "sim": 14,
             "nao": 0,
             "abstencoes": 0,
-            "votos": []
+            "votos": [
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Thulyo Paiva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Não Votou"
+              }
+            ]
           },
           {
             "id": 2937,
@@ -51211,8 +52262,384 @@
           }
         ],
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5135"
+      },
+      {
+        "id": 5137,
+        "numero": 51,
+        "tipo": "Sessão Ordinária",
+        "data": "2026-08-19",
+        "finalizada": false,
+        "url_video": "",
+        "presentes_qtd": 14,
+        "presentes": [
+          "Afonso Monticeli",
+          "Alexandre Prado",
+          "Ana Rios Fontoura",
+          "Bruno Leandro Coletor",
+          "Cássio Chiodi",
+          "Dandan",
+          "Davi Martins",
+          "Dudu Ottoni",
+          "Joãozinho Enfermeiro",
+          "Miguel da Saúde",
+          "Pastor Faustinho",
+          "Rogério Bueno",
+          "Zilda Silva",
+          "Zé Morais"
+        ],
+        "votacoes": [
+          {
+            "id": 2957,
+            "materia_id": 6176,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 1 - Projeto de Decreto Legislativo nº 67 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2955,
+            "materia_id": 6182,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 2 - Projeto de Decreto Legislativo nº 68 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2956,
+            "materia_id": 6182,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 3 - Projeto de Decreto Legislativo nº 68 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2958,
+            "materia_id": 6176,
+            "descricao": "Ordem: Ordem do Dia/Expediente: 4 - Projeto de Decreto Legislativo nº 67 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado",
+            "resultado": "Aprovado",
+            "sim": 14,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": [
+              {
+                "parlamentar": "Bruno Leandro Coletor",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Joãozinho Enfermeiro",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Miguel da Saúde",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Cássio Chiodi",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Davi Martins",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Alexandre Prado",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dandan",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zilda Silva",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Dudu Ottoni",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Ana Rios Fontoura",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Afonso Monticeli",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Rogério Bueno",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Pastor Faustinho",
+                "voto": "Sim"
+              },
+              {
+                "parlamentar": "Zé Morais",
+                "voto": "Sim"
+              }
+            ]
+          },
+          {
+            "id": 2947,
+            "materia_id": 6192,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 3 - Requerimento nº 203 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2951,
+            "materia_id": 6197,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 9 - Requerimento nº 204 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2948,
+            "materia_id": 6202,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 15 - Requerimento nº 205 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2949,
+            "materia_id": 6204,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 16 - Requerimento nº 206 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2954,
+            "materia_id": 6206,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 18 - Requerimento nº 207 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2950,
+            "materia_id": 6209,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 21 - Requerimento nº 208 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2953,
+            "materia_id": 6215,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 28 - Requerimento nº 209 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          },
+          {
+            "id": 2952,
+            "materia_id": 6216,
+            "descricao": "Expediente: Ordem do Dia/Expediente: 29 - Requerimento nº 210 de 2026 em 51ª Sessão Ordinária da 2ª Sessão Legislativa da 20ª Legislatura - Votação: Aprovado por unanimidade",
+            "resultado": "Aprovado por unanimidade",
+            "sim": 13,
+            "nao": 0,
+            "abstencoes": 0,
+            "votos": []
+          }
+        ],
+        "fonte": "https://sapl.varginha.mg.leg.br/sessao/5137"
       }
     ],
-    "coletado_em": "2026-08-19T15:16:20-03:00"
+    "coletado_em": "2026-08-19T21:44:31-03:00"
   }
 }

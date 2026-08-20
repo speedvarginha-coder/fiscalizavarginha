@@ -1,77 +1,40 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-19T18:30:13.099Z",
+  "gerado_em": "2026-08-20T00:58:58.461Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-08-19T21-55-04-057126b1",
+    "coleta_iso": "2026-08-19T21:55:04",
+    "data_humana": "19/08/2026 - 21:55",
+    "arquivo": "data/snapshots/2026-08-19T21-55-04-057126b1.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-08-19T15-24-52-a58fee75",
     "coleta_iso": "2026-08-19T15:24:52",
     "data_humana": "19/08/2026 - 15:24",
-    "arquivo": "data/snapshots/2026-08-19T15-24-52-a58fee75.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-08-18T08-51-21-ae95ebe8",
-    "coleta_iso": "2026-08-18T08:51:21",
-    "data_humana": "18/08/2026 - 08:51",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 3,
+    "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 1,
     "pendencias_novas": 0,
-    "pendencias_resolvidas": 1,
+    "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 89500,
+    "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 5
+    "total_mudancas": 1
   },
   "itens": [
     {
       "tipo": "nova_edicao_diario",
       "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1869",
+      "titulo": "Nova edicao do Diario Oficial 1870",
       "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-08-18",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/276/"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 91/2026 - SERVICO DE APOIO AS MICRO E PEQUENAS EMPRESAS DE MINAS GERAIS - SEBRAE/MG",
-      "detalhe": "Serviços técnicos profissionais para organização metodológica e execução da Feira de Ideias 2026.",
-      "orgao": "Prefeitura",
-      "data": "2026-08-13",
-      "valor_brl": 63000,
-      "alvo_id": "PREFEITURA-2026-91"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 0/2026 - AZUL TEC LICITACOES EM INFORMATICA E SUPRIMENTOS LTDA",
-      "detalhe": "Aquisição de notebooks destinados a atender às necessidades operacionais da Corregedoria do Município de Varginha/MG.",
-      "orgao": "Prefeitura",
-      "data": "2026-08-18",
-      "valor_brl": 17400,
-      "alvo_id": "PREFEITURA-2026-0"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 0/2026 - TWM SOLUCOES EM SUPRIMENTOS LTDA",
-      "detalhe": "Aquisição de Agente Redutor Líquido",
-      "orgao": "Prefeitura",
       "data": "2026-08-19",
-      "valor_brl": 9100,
-      "alvo_id": "PREFEITURA-2026-0"
-    },
-    {
-      "tipo": "pendencia_resolvida",
-      "prioridade": "baixa",
-      "titulo": "Pendencia saiu da fila: Registros de sancao com alcance que atinge Varginha",
-      "detalhe": "Foi localizado no cadastro federal 1 registro(s) de sancao vigente vinculado(s) a fornecedor(es) do painel cuja abrangencia declarada alcanca a administracao de Varginha: WTRADE INTERMEDIACAO DE NEGOCIOS LTDA (registro CEIS classificado pelo orgao informante como \"Impedimento/proibição de contratar com prazo determinado\", abrangencia \"Em todos os Poderes da Esfera do órgão sancionador\", aplicada por MMG-PREFEITURA MUNICIPAL DE VARGINHA, processo 13.887/2025, vigencia ate 04/03/2027, verificacao humana em 2026-07-20). O conteudo do cadastro e de responsabilidade do orgao que o alimenta. O registro nao prova, por si so, contratacao irregular — para isso e preciso contrato local ativo com datas sobrepostas a vigencia da sancao.",
-      "fonte": "sancoes.json"
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/277/"
     }
   ],
   "avisos": []
