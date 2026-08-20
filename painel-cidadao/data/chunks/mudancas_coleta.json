@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-20T00:58:58.461Z",
+  "gerado_em": "2026-08-20T01:50:06.063Z",
   "modo": "comparacao",
   "atual": {
+    "snapshot_id": "2026-08-19T22-48-11-057126b1",
+    "coleta_iso": "2026-08-19T22:48:11",
+    "data_humana": "19/08/2026 - 22:48",
+    "arquivo": "data/snapshots/2026-08-19T22-48-11-057126b1.json"
+  },
+  "anterior": {
     "snapshot_id": "2026-08-19T21-55-04-057126b1",
     "coleta_iso": "2026-08-19T21:55:04",
     "data_humana": "19/08/2026 - 21:55",
-    "arquivo": "data/snapshots/2026-08-19T21-55-04-057126b1.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-08-19T15-24-52-a58fee75",
-    "coleta_iso": "2026-08-19T15:24:52",
-    "data_humana": "19/08/2026 - 15:24",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
@@ -19,23 +19,14 @@
     "novos_contratos": 0,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
-    "novas_edicoes_diario": 1,
+    "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
     "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
     "valor_novo_brl": 0,
     "valor_delta_brl": 0,
-    "total_mudancas": 1
+    "total_mudancas": 0
   },
-  "itens": [
-    {
-      "tipo": "nova_edicao_diario",
-      "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1870",
-      "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-08-19",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/277/"
-    }
-  ],
+  "itens": [],
   "avisos": []
 }

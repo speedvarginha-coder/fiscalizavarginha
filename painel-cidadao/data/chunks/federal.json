@@ -1,10 +1,10 @@
 {
   "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
-  "atualizado_em": "2026-08-19T21:50:21.981155",
+  "atualizado_em": "2026-08-19T22:43:31.501842",
   "resumo": {
     "municipio": "Varginha-MG",
     "codigoIbge": "3170701",
-    "atualizadoEm": "19/08/2026 21:50",
+    "atualizadoEm": "19/08/2026 22:43",
     "emendas": {
       "qtd": 0,
       "totalEmpenhado": 0,
@@ -3848,7 +3848,7 @@
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-08-20T00:50:21.066300+00:00",
+      "coletadoEm": "2026-08-20T01:43:30.705696+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,
