@@ -12,8 +12,16 @@
     return "R$ " + Number(v).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   }
   function num(v) { return Number(v).toLocaleString("pt-BR"); }
+  // Escapa TODO caractere com significado em HTML, inclusive as duas aspas: o
+  // valor tambem entra em atributo (href, data-q), onde " ou ' fecham o
+  // atributo e abrem espaco para onmouseover=.
   function esc(s) {
-    return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   }
 
   // ---- HTML do widget ----
@@ -167,17 +175,39 @@
     return { visivel, sugestoes };
   }
 
-  function renderMarkdown(txt) {
-    // Extract links before HTML escaping to preserve URLs
-    const links = [];
-    txt = txt.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (_, label, url) => {
-      const ph = `__LINK_${links.length}__`;
-      links.push(`<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`);
-      return ph;
-    });
+  // So http(s) viram link. javascript:, data: e vbscript: ficam como texto.
+  function urlSegura(url) {
+    try {
+      const u = new URL(String(url), window.location.href);
+      return u.protocol === "http:" || u.protocol === "https:" ? u.href : "";
+    } catch (e) {
+      return "";
+    }
+  }
 
-    txt = txt
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+  function renderMarkdown(txt) {
+    // A resposta da IA e conteudo NAO confiavel: quem escreve o texto e um
+    // modelo que o cidadao influencia pelo prompt. Antes os links eram montados
+    // como HTML ANTES do escape e reinjetados DEPOIS, entao rotulo e URL nunca
+    // passavam pelo escape — `[<img src=x onerror=...>](https://ok)` executava,
+    // e uma aspa na URL abria atributo novo. Agora escapa primeiro e o link e
+    // montado ja com as partes escapadas.
+    const links = [];
+    txt = String(txt == null ? "" : txt).replace(
+      /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
+      (inteiro, label, url) => {
+        const href = urlSegura(url);
+        if (!href) return inteiro;
+        const ph = `\u0000LINK${links.length}\u0000`;
+        links.push(
+          `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">` +
+          `${esc(label)}</a>`
+        );
+        return ph;
+      }
+    );
+
+    txt = esc(txt)
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/\*(.*?)\*/g, "<em>$1</em>")
       .replace(/^- (.+)$/gm, "<li>$1</li>")
@@ -185,7 +215,11 @@
       .replace(/\n{2,}/g, "<br><br>")
       .replace(/\n/g, "<br>");
 
-    links.forEach((a, i) => { txt = txt.replace(`__LINK_${i}__`, a); });
+    // Funcao no lugar de string: replacement literal ignora $&, $1 e afins, que
+    // senao seriam reinterpretados se aparecessem dentro do link.
+    links.forEach((a, i) => {
+      txt = txt.replace(`\u0000LINK${i}\u0000`, () => a);
+    });
     return txt;
   }
 
