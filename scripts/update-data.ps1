@@ -438,41 +438,72 @@ function Invoke-SourceProbe {
   }
 }
 
-function Test-LockOrfao {
-  # Decide se o lock ficou orfao — dono morreu sem liberar.
+function Test-PodeAssumirLock {
+  # A decisao, isolada do I/O para poder ser testada.
+  #
+  # A idade do lock SO autoriza a tomada quando nao se sabe quem e o dono. Dono
+  # vivo mantem o lock por quanto tempo levar: um ciclo completo passa de 5h
+  # (SAPL com retry + CEIS/CNEP + TSE + licitacoes), e o teto de 3h aplicado a
+  # ele fazia TODA coleta completa ser atropelada pela vigia horaria — dois
+  # processos escrevendo os mesmos chunks.
+  #
+  # Ciclo realmente travado nao se resolve por aqui: quem cobra e o alerta de
+  # saude ("nenhuma coleta com SUCESSO ha Xh"), que chama um humano em vez de
+  # por um segundo escritor no ar.
+  param([string]$Estado, [double]$IdadeHoras)
+
+  if ($Estado -eq "orfao") { return $true }
+  if ($Estado -eq "vivo")  { return $false }
+  return $IdadeHoras -ge 3   # indeterminado: rede de seguranca por idade
+}
+
+function Get-LockEstado {
+  # Classifica o dono do lock em TRES estados. A distincao importa: antes esta
+  # funcao devolvia $false tanto para "dono vivo" quanto para "nao sei", e a
+  # regra de idade tratava os dois igual — roubava o lock de um ciclo saudavel
+  # so por ele passar de 3h. Um ciclo completo leva ~5h30 (SAPL com retry +
+  # CEIS/CNEP + TSE + licitacoes), entao TODA coleta completa era atropelada:
+  # em 20/08/2026 a vigia das 22:34 assumiu o lock de um ciclo que rodava desde
+  # as 17:25 e os dois passaram a escrever os mesmos chunks. Foi assim que o
+  # publicacoes_diario.json salvo as 20:40 com a edicao 1871 sumiu.
+  #
   # Checar apenas "o PID existe" NAO basta: o Windows RECICLA numeros de PID.
   # Em 22/07/2026 o PID gravado no lock aparecia vivo, mas era um
   # "node ./mcp/server.mjs" iniciado 1h36 DEPOIS do lock — o dono real ja tinha
   # morrido. O teste confiavel compara o INICIO DO PROCESSO com o nascimento do
   # lock: quem criou o lock necessariamente comecou antes dele.
-  # Retorna $false em qualquer duvida (nao da para ler, outra maquina, sem
-  # permissao) — ai vale a regra de idade, que continua como rede de seguranca.
+  #
+  # Devolve:
+  #   "orfao"         dono morreu ou o PID foi reciclado -> pode assumir ja
+  #   "vivo"          dono confirmado trabalhando -> NUNCA assumir, so esperar
+  #   "indeterminado" nao deu para saber (outra maquina, sem permissao, lock
+  #                   ilegivel) -> vale a regra de idade como rede de seguranca
   param([string]$Caminho, [datetime]$Nascimento)
 
   try {
     $conteudo = (Get-Content -LiteralPath $Caminho -Raw -ErrorAction Stop).Trim()
   } catch {
-    return $false
+    return "indeterminado"
   }
   $partes = $conteudo -split '\|'
-  if ($partes.Count -lt 2) { return $false }
+  if ($partes.Count -lt 2) { return "indeterminado" }
 
   $donoPid = 0
-  if (-not [int]::TryParse($partes[0], [ref]$donoPid)) { return $false }
+  if (-not [int]::TryParse($partes[0], [ref]$donoPid)) { return "indeterminado" }
 
   # Lock de outra maquina: nao da para inspecionar o processo daqui.
-  if ($partes[1] -and $partes[1] -ne $env:COMPUTERNAME) { return $false }
+  if ($partes[1] -and $partes[1] -ne $env:COMPUTERNAME) { return "indeterminado" }
 
   $proc = Get-Process -Id $donoPid -ErrorAction SilentlyContinue
-  if (-not $proc) { return $true }   # dono morreu -> orfao
+  if (-not $proc) { return "orfao" }   # dono morreu
 
   try {
     # Margem de 5s cobre granularidade de relogio/arquivo.
-    if ($proc.StartTime -gt $Nascimento.AddSeconds(5)) { return $true }  # PID reciclado
+    if ($proc.StartTime -gt $Nascimento.AddSeconds(5)) { return "orfao" }  # PID reciclado
   } catch {
-    return $false   # sem permissao para ler StartTime
+    return "indeterminado"   # sem permissao para ler StartTime
   }
-  return $false   # dono vivo e legitimo: respeitar
+  return "vivo"   # dono vivo e legitimo: respeitar por quanto tempo durar
 }
 
 function Acquire-Lock {
@@ -496,19 +527,22 @@ function Acquire-Lock {
       # Duas portas para assumir o lock:
       #  1) IDENTIDADE (imediata): o dono morreu ou o PID foi reciclado. Resolve
       #     em segundos, sem esperar horas com o pipeline parado.
-      #  2) IDADE (rede de seguranca): quando a identidade e indeterminavel
+      #  2) IDADE (rede de seguranca): SO quando a identidade e indeterminavel
       #     (nao deu para ler o lock, outra maquina, sem permissao).
       # Em 22/07/2026 um ciclo morreu sem liberar o lock e, so pela regra de
       # idade, o pipeline ficaria travado por ate 4h — a vigia dispara no minuto
       # :24 e o lock vencia 15s depois, entao ela pulava mais uma vez.
-      $orfao = Test-LockOrfao -Caminho $lockPath -Nascimento $nascimento
-      if (-not $orfao -and $lockAge.TotalHours -lt 3) {
+      $estado = Get-LockEstado -Caminho $lockPath -Nascimento $nascimento
+      if (-not (Test-PodeAssumirLock -Estado $estado -IdadeHoras $lockAge.TotalHours)) {
+        if ($estado -eq "vivo") {
+          throw "Outra coleta em andamento (dono vivo ha $([int]$lockAge.TotalMinutes) min). Lock: $lockPath"
+        }
         throw "Outra coleta parece estar em andamento. Lock: $lockPath"
       }
-      if ($orfao) {
+      if ($estado -eq "orfao") {
         Write-Log "Lock orfao detectado (dono morto ou PID reciclado); assumindo."
       } else {
-        Write-Log "Lock antigo detectado (mais de 3h); tentando remover com seguranca."
+        Write-Log "Lock de dono indeterminado e com mais de 3h; tentando remover com seguranca."
       }
       $staleStream = New-Object System.IO.FileStream($lockPath, [System.IO.FileMode]::Open, [System.IO.FileAccess]::ReadWrite, [System.IO.FileShare]::None, 4096, [System.IO.FileOptions]::DeleteOnClose)
       $staleStream.Dispose()
