@@ -1,25 +1,33 @@
 {
-  "gerado_em": "2026-08-20T10:57:11.253Z",
+  "gerado_em": "2026-08-21T16:31:00.267Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 8,
+    "warnings": 9,
     "info": 1,
     "ok": 1,
-    "total": 10
+    "total": 11
   },
   "atualizado_base": {
-    "iso": "2026-08-20T07:55:22",
-    "data_humana": "20/08/2026 - 07:55"
+    "iso": "2026-08-21T08:17:26",
+    "data_humana": "21/08/2026 - 08:17"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.2 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
+    },
+    {
+      "severity": "warning",
+      "id": "fonte-emenda-2026-erro",
+      "title": "Fonte de emendas 2026 com erro",
+      "detail": "1 fonte(s) retornaram erro. Exemplo: SAPL - materias legislativas 2026 (API) - falha na API SAPL: <urlopen error timed out>.",
+      "action": "Revisar URL da Camara e, se necessario, substituir por fonte oficial vigente ou LAI.",
+      "source": "fontes_emendas_2026.json"
     },
     {
       "severity": "warning",
@@ -68,7 +76,7 @@
       "severity": "warning",
       "id": "emendas-sem-repasses",
       "title": "Emendas de alto valor sem repasse identificado",
-      "detail": "10 emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
+      "detail": "10 emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura (R$ 105k - Zilda Silva); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 93k - Cássio Chiodi); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 50k - Rogério Bueno).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
       "source": "prefeitura.json",
       "verification": {
@@ -88,7 +96,7 @@
       "severity": "warning",
       "id": "sancao-sem-dossie-completo",
       "title": "Sancoes com alcance relevante mas evidencia incompleta",
-      "detail": "8 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
+      "detail": "7 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
       "action": "Completar a coleta dos campos faltantes ou conferir manualmente o registro individual antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -96,7 +104,7 @@
         "metodo": "checagem_de_dossie_minimo",
         "confianca": "baixa",
         "evidencias": [
-          "8 registro(s) sem dossie completo"
+          "7 registro(s) sem dossie completo"
         ],
         "limitacoes": [
           "Sem os campos minimos nao ha base para afirmar alcance"
@@ -107,7 +115,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "90 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (214 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "93 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (225 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -115,7 +123,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "214 sancao(oes) de outros entes"
+          "225 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
@@ -156,9 +164,17 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.2 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
+    },
+    {
+      "severity": "warning",
+      "id": "fonte-emenda-2026-erro",
+      "title": "Fonte de emendas 2026 com erro",
+      "detail": "1 fonte(s) retornaram erro. Exemplo: SAPL - materias legislativas 2026 (API) - falha na API SAPL: <urlopen error timed out>.",
+      "action": "Revisar URL da Camara e, se necessario, substituir por fonte oficial vigente ou LAI.",
+      "source": "fontes_emendas_2026.json"
     },
     {
       "severity": "warning",
@@ -207,7 +223,7 @@
       "severity": "warning",
       "id": "emendas-sem-repasses",
       "title": "Emendas de alto valor sem repasse identificado",
-      "detail": "10 emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
+      "detail": "10 emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura (R$ 105k - Zilda Silva); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 93k - Cássio Chiodi); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 50k - Rogério Bueno).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
       "source": "prefeitura.json",
       "verification": {
@@ -227,7 +243,7 @@
       "severity": "warning",
       "id": "sancao-sem-dossie-completo",
       "title": "Sancoes com alcance relevante mas evidencia incompleta",
-      "detail": "8 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
+      "detail": "7 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
       "action": "Completar a coleta dos campos faltantes ou conferir manualmente o registro individual antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -235,7 +251,7 @@
         "metodo": "checagem_de_dossie_minimo",
         "confianca": "baixa",
         "evidencias": [
-          "8 registro(s) sem dossie completo"
+          "7 registro(s) sem dossie completo"
         ],
         "limitacoes": [
           "Sem os campos minimos nao ha base para afirmar alcance"
@@ -246,7 +262,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "90 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (214 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "93 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (225 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -254,7 +270,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "214 sancao(oes) de outros entes"
+          "225 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"

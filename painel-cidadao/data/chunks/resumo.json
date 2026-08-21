@@ -6,11 +6,11 @@
   "emendas_valor_total_brl": 17841369.18,
   "impacto_zero_qtd": 328,
   "desfechos": {
-    "lei": 25,
-    "arquivado": 883,
-    "tramitando": 665,
-    "encerrado": 11,
-    "sem_dado": 0
+    "lei": 15,
+    "arquivado": 254,
+    "tramitando": 129,
+    "encerrado": 0,
+    "sem_dado": 1186
   },
   "tipos": [
     {
@@ -27,7 +27,7 @@
     },
     {
       "tipo": "Projeto de Lei Ordinária do Legislativo",
-      "qtd": 118
+      "qtd": 117
     },
     {
       "tipo": "Projeto de Lei Ordinária do Executivo",
@@ -35,7 +35,7 @@
     },
     {
       "tipo": "Projeto de Decreto Legislativo",
-      "qtd": 55
+      "qtd": 56
     },
     {
       "tipo": "Moção",
@@ -50,11 +50,11 @@
       "qtd": 15
     },
     {
-      "tipo": "Mensagem de Veto",
+      "tipo": "Projeto de Lei Complementar",
       "qtd": 3
     },
     {
-      "tipo": "Projeto de Lei Complementar",
+      "tipo": "Mensagem de Veto",
       "qtd": 3
     },
     {
@@ -66,7 +66,7 @@
       "qtd": 2
     },
     {
-      "tipo": "Substitutivo",
+      "tipo": "Parecer",
       "qtd": 1
     },
     {
@@ -74,7 +74,7 @@
       "qtd": 1
     },
     {
-      "tipo": "Parecer",
+      "tipo": "Substitutivo",
       "qtd": 1
     }
   ],

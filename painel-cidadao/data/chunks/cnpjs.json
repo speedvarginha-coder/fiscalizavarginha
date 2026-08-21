@@ -347,24 +347,6 @@
       ]
     },
     {
-      "cnpj": "41884263000198",
-      "razao_social": "ASSOCIACAO OFICINA DO SER",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "1993-08-03",
-      "cnae": "Serviços de assistência social sem alojamento",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "MARCILENE TOVAR"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 180000.0,
-      "nomes_no_sapl": [
-        "ASSOCIAÇÃO OFICINA DO SER"
-      ]
-    },
-    {
       "cnpj": "19805681000193",
       "razao_social": "ASSOCIACAO DESPORTIVA RECREIO",
       "nome_fantasia": "R11 SPORTS",
@@ -381,6 +363,24 @@
       "nomes_no_sapl": [
         "AGÊNCIA ADVENTISTA DE DESENVOLVIMENTO E RECURSOS ASSISTENCIAIS",
         "ASSOCIAÇÃO DESPORTIVA RECREIO"
+      ]
+    },
+    {
+      "cnpj": "41884263000198",
+      "razao_social": "ASSOCIACAO OFICINA DO SER",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1993-08-03",
+      "cnae": "Serviços de assistência social sem alojamento",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "MARCILENE TOVAR"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 180000.0,
+      "nomes_no_sapl": [
+        "ASSOCIAÇÃO OFICINA DO SER"
       ]
     },
     {
@@ -529,24 +529,6 @@
       ]
     },
     {
-      "cnpj": "04812951000116",
-      "razao_social": "OASIS - ORGANIZACAO DE ASSISTENCIA E SERVICOS INTEGRADOS AOS SUJEITOS COM NECESSIDADES ESPECIAIS",
-      "nome_fantasia": "OASIS",
-      "situacao": "ATIVA",
-      "abertura": "2001-12-18",
-      "cnae": "Serviços de assistência social sem alojamento",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "CELMA FIGUEIREDO VILELA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 130000.0,
-      "nomes_no_sapl": [
-        "ORGANIZAÇÃO DE ASSISTENCIA E SERVIÇOS INTEGRADOS AOS SUJEITOS COM NECESSIDADES ESPECIAIS"
-      ]
-    },
-    {
       "cnpj": "25870296000122",
       "razao_social": "CENTRO ESPIRITA HUMILDADE E CARIDADE",
       "nome_fantasia": "",
@@ -565,39 +547,21 @@
       ]
     },
     {
-      "cnpj": "25866138000107",
-      "razao_social": "FUNDACAO EDUCACIONAL DE VARGINHA",
-      "nome_fantasia": "",
+      "cnpj": "04812951000116",
+      "razao_social": "OASIS - ORGANIZACAO DE ASSISTENCIA E SERVICOS INTEGRADOS AOS SUJEITOS COM NECESSIDADES ESPECIAIS",
+      "nome_fantasia": "OASIS",
       "situacao": "ATIVA",
-      "abertura": "1985-03-20",
-      "cnae": "Educação superior - graduação",
+      "abertura": "2001-12-18",
+      "cnae": "Serviços de assistência social sem alojamento",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "JUNIA BEMFICA GUIMARAES CORNELIO"
+        "CELMA FIGUEIREDO VILELA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 120000.0,
+      "valor_emendas": 130000.0,
       "nomes_no_sapl": [
-        "Fundação Educacional de Varginha"
-      ]
-    },
-    {
-      "cnpj": "18619148000174",
-      "razao_social": "ASSOCIACAO COMERCIAL, INDUSTRIAL,AGROPECUARIA E SERVICOS DE VARGINHA",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "1974-05-06",
-      "cnae": "Atividades de associações de defesa de direitos sociais",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "ANDRE YUKI YOSHIKAI"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 120000.0,
-      "nomes_no_sapl": [
-        "Associação Comercial, Industrial, Agropecuária e de Serviços de Varginha"
+        "ORGANIZAÇÃO DE ASSISTENCIA E SERVIÇOS INTEGRADOS AOS SUJEITOS COM NECESSIDADES ESPECIAIS"
       ]
     },
     {
@@ -619,6 +583,42 @@
       ]
     },
     {
+      "cnpj": "18619148000174",
+      "razao_social": "ASSOCIACAO COMERCIAL, INDUSTRIAL,AGROPECUARIA E SERVICOS DE VARGINHA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1974-05-06",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ANDRE YUKI YOSHIKAI"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 120000.0,
+      "nomes_no_sapl": [
+        "Associação Comercial, Industrial, Agropecuária e de Serviços de Varginha"
+      ]
+    },
+    {
+      "cnpj": "25866138000107",
+      "razao_social": "FUNDACAO EDUCACIONAL DE VARGINHA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1985-03-20",
+      "cnae": "Educação superior - graduação",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "JUNIA BEMFICA GUIMARAES CORNELIO"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 120000.0,
+      "nomes_no_sapl": [
+        "Fundação Educacional de Varginha"
+      ]
+    },
+    {
       "cnpj": "09451603000184",
       "razao_social": "ASSOCIACAO VARGINHENSE DOS AMIGOS DO BICICROSS",
       "nome_fantasia": "AVAB",
@@ -634,24 +634,6 @@
       "valor_emendas": 115000.0,
       "nomes_no_sapl": [
         "ASSOCIAÇÃO VARGINHENSE DOS AMIGOS DO BICICROSS"
-      ]
-    },
-    {
-      "cnpj": "40202736000167",
-      "razao_social": "ASSOCIACAO ALEGRIA DE ASSISTENCIA A CRIANCA DE VARGINHA E REGIAO",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2020-12-22",
-      "cnae": "Serviços de assistência social sem alojamento",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "FERNANDO CESAR FERNANDES"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 110000.0,
-      "nomes_no_sapl": [
-        "Associação Alegria de Assistência à Criança de Varginha e Região"
       ]
     },
     {
@@ -675,21 +657,21 @@
       ]
     },
     {
-      "cnpj": "21066186000151",
-      "razao_social": "ASSOCIACAO CULTURAL NIKKEY DE VARGINHA",
+      "cnpj": "40202736000167",
+      "razao_social": "ASSOCIACAO ALEGRIA DE ASSISTENCIA A CRIANCA DE VARGINHA E REGIAO",
       "nome_fantasia": "",
       "situacao": "ATIVA",
-      "abertura": "2014-07-22",
-      "cnae": "Atividades de organizações associativas ligadas à cultura e à arte",
+      "abertura": "2020-12-22",
+      "cnae": "Serviços de assistência social sem alojamento",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "FRIEDRICH AKIO NIEDHARDT NISHIKAWA"
+        "FERNANDO CESAR FERNANDES"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 100000.0,
+      "valor_emendas": 110000.0,
       "nomes_no_sapl": [
-        "Associação Cultural Nikkey de Varginha"
+        "Associação Alegria de Assistência à Criança de Varginha e Região"
       ]
     },
     {
@@ -706,6 +688,24 @@
       "valor_emendas": 100000.0,
       "nomes_no_sapl": [
         "GUARDA CIVIL MUNICIPAL"
+      ]
+    },
+    {
+      "cnpj": "21066186000151",
+      "razao_social": "ASSOCIACAO CULTURAL NIKKEY DE VARGINHA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2014-07-22",
+      "cnae": "Atividades de organizações associativas ligadas à cultura e à arte",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "FRIEDRICH AKIO NIEDHARDT NISHIKAWA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 100000.0,
+      "nomes_no_sapl": [
+        "Associação Cultural Nikkey de Varginha"
       ]
     },
     {
@@ -837,39 +837,39 @@
       ]
     },
     {
-      "cnpj": "41774894000154",
-      "razao_social": "CONSELHO METROPOLITANO DE POUSO ALEGRE DA SOCIEDADE DE SAO VICENTE DE PAULO",
-      "nome_fantasia": "CONSELHO METROPOLITANO",
+      "cnpj": "02277313000117",
+      "razao_social": "GMAG - GRUPO MARANATHA DE ART' GLOBAL",
+      "nome_fantasia": "ASSOCIACAO ARTISTICA E ASSISTENCIAL RUSSILVANIA GALO",
       "situacao": "ATIVA",
-      "abertura": "1992-10-29",
-      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "abertura": "1997-08-27",
+      "cnae": "Produção teatral",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "ROSELANGE DOS SANTOS GALDINO"
+        "RUSSILVANIA GALO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 60000.0,
       "nomes_no_sapl": [
-        "Conselho Metropolitano de Pouso Alegre"
+        "GRUPO MARANATHA DE ART' GLOBAL"
       ]
     },
     {
-      "cnpj": "07413141000185",
-      "razao_social": "CIRCULO ORQUIDOFILO DE VARGINHA - COV",
+      "cnpj": "20555901000157",
+      "razao_social": "ASSOCIACAO CULTURAL CASA DA CAPOEIRA",
       "nome_fantasia": "",
       "situacao": "ATIVA",
-      "abertura": "2005-04-27",
-      "cnae": "Atividades associativas não especificadas anteriormente",
+      "abertura": "2014-06-09",
+      "cnae": "Atividades de organizações associativas ligadas à cultura e à arte",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "SONIA MARIA REZENDE DOS SANTOS DE OLIVEIRA"
+        "LUIS GUSTAVO DE SOUZA ROSA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 60000.0,
       "nomes_no_sapl": [
-        "CÍRCULO ORQUIDÓFILO DE VARGINHA"
+        "Associação Cultural Casa da Capoeira"
       ]
     },
     {
@@ -894,39 +894,57 @@
       ]
     },
     {
-      "cnpj": "20555901000157",
-      "razao_social": "ASSOCIACAO CULTURAL CASA DA CAPOEIRA",
+      "cnpj": "07413141000185",
+      "razao_social": "CIRCULO ORQUIDOFILO DE VARGINHA - COV",
       "nome_fantasia": "",
       "situacao": "ATIVA",
-      "abertura": "2014-06-09",
-      "cnae": "Atividades de organizações associativas ligadas à cultura e à arte",
+      "abertura": "2005-04-27",
+      "cnae": "Atividades associativas não especificadas anteriormente",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "LUIS GUSTAVO DE SOUZA ROSA"
+        "SONIA MARIA REZENDE DOS SANTOS DE OLIVEIRA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 60000.0,
       "nomes_no_sapl": [
-        "Associação Cultural Casa da Capoeira"
+        "CÍRCULO ORQUIDÓFILO DE VARGINHA"
       ]
     },
     {
-      "cnpj": "02277313000117",
-      "razao_social": "GMAG - GRUPO MARANATHA DE ART' GLOBAL",
-      "nome_fantasia": "ASSOCIACAO ARTISTICA E ASSISTENCIAL RUSSILVANIA GALO",
+      "cnpj": "41774894000154",
+      "razao_social": "CONSELHO METROPOLITANO DE POUSO ALEGRE DA SOCIEDADE DE SAO VICENTE DE PAULO",
+      "nome_fantasia": "CONSELHO METROPOLITANO",
       "situacao": "ATIVA",
-      "abertura": "1997-08-27",
-      "cnae": "Produção teatral",
+      "abertura": "1992-10-29",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "RUSSILVANIA GALO"
+        "ROSELANGE DOS SANTOS GALDINO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 60000.0,
       "nomes_no_sapl": [
-        "GRUPO MARANATHA DE ART' GLOBAL"
+        "Conselho Metropolitano de Pouso Alegre"
+      ]
+    },
+    {
+      "cnpj": "23067736000182",
+      "razao_social": "ESPORTE CLUBE MINAS RUGBY - ECMR",
+      "nome_fantasia": "ESPORTE CLUBE MINAS RUGBY - ECMR",
+      "situacao": "ATIVA",
+      "abertura": "2015-07-06",
+      "cnae": "Clubes sociais, esportivos e similares",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ALEXANDRE PIMENTEL DE SOUZA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 55000.0,
+      "nomes_no_sapl": [
+        "ESPORTE CLUBE MINAS RUGBY"
       ]
     },
     {
@@ -950,21 +968,21 @@
       ]
     },
     {
-      "cnpj": "23067736000182",
-      "razao_social": "ESPORTE CLUBE MINAS RUGBY - ECMR",
-      "nome_fantasia": "ESPORTE CLUBE MINAS RUGBY - ECMR",
+      "cnpj": "25639790000180",
+      "razao_social": "CLUBE RECREATIVO MADRUGADA",
+      "nome_fantasia": "",
       "situacao": "ATIVA",
-      "abertura": "2015-07-06",
+      "abertura": "1991-08-07",
       "cnae": "Clubes sociais, esportivos e similares",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "ALEXANDRE PIMENTEL DE SOUZA"
+        "DANILO LAPROVITA CALDONAZZO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 55000.0,
+      "valor_emendas": 50000.0,
       "nomes_no_sapl": [
-        "ESPORTE CLUBE MINAS RUGBY"
+        "Clube Recreativo Madrugada"
       ]
     },
     {
@@ -983,24 +1001,6 @@
       "valor_emendas": 50000.0,
       "nomes_no_sapl": [
         "ASSOCIAÇÃO ESPORTIVA CLUBE CANÃA"
-      ]
-    },
-    {
-      "cnpj": "25639790000180",
-      "razao_social": "CLUBE RECREATIVO MADRUGADA",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "1991-08-07",
-      "cnae": "Clubes sociais, esportivos e similares",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "DANILO LAPROVITA CALDONAZZO"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 50000.0,
-      "nomes_no_sapl": [
-        "Clube Recreativo Madrugada"
       ]
     },
     {
@@ -1025,24 +1025,6 @@
       ]
     },
     {
-      "cnpj": "50678612000106",
-      "razao_social": "RPT - RAQUETINHAS PARA TODOS",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2023-05-15",
-      "cnae": "Ensino de esportes",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "RICARDO EDUARDO RYBERTT THENNET"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 45000.0,
-      "nomes_no_sapl": [
-        "Raquetinhas para Todos"
-      ]
-    },
-    {
       "cnpj": "43749486000178",
       "razao_social": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
       "nome_fantasia": "",
@@ -1058,6 +1040,24 @@
       "valor_emendas": 45000.0,
       "nomes_no_sapl": [
         "Associação Mineira das Folias de Santos Reis"
+      ]
+    },
+    {
+      "cnpj": "50678612000106",
+      "razao_social": "RPT - RAQUETINHAS PARA TODOS",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2023-05-15",
+      "cnae": "Ensino de esportes",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "RICARDO EDUARDO RYBERTT THENNET"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 45000.0,
+      "nomes_no_sapl": [
+        "Raquetinhas para Todos"
       ]
     },
     {
@@ -1097,24 +1097,6 @@
       ]
     },
     {
-      "cnpj": "27161385000125",
-      "razao_social": "ASSOCIACAO DE PROMOCAO SOCIAL E CULTURAL DOM E LUZ",
-      "nome_fantasia": "DOM E LUZ",
-      "situacao": "ATIVA",
-      "abertura": "2017-02-13",
-      "cnae": "Atividades associativas não especificadas anteriormente",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "MARCOS VINICIUS LEITE"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 40000.0,
-      "nomes_no_sapl": [
-        "ASSOCIAÇAO DE PROMOÇAO SOCIAL E CULTURAL DOM E LUZ"
-      ]
-    },
-    {
       "cnpj": "19035666000103",
       "razao_social": "ASSOCIACAO GREMIO RECREATIVO ESCOLA DE SAMBA INDEPENDENTES DO CENTENARIO - GRESIC",
       "nome_fantasia": "",
@@ -1130,6 +1112,24 @@
       "valor_emendas": 40000.0,
       "nomes_no_sapl": [
         "ASSOCIACAO GREMIO RECREATIVO ESCOLA DE SAMBA INDEPENDENTES"
+      ]
+    },
+    {
+      "cnpj": "27161385000125",
+      "razao_social": "ASSOCIACAO DE PROMOCAO SOCIAL E CULTURAL DOM E LUZ",
+      "nome_fantasia": "DOM E LUZ",
+      "situacao": "ATIVA",
+      "abertura": "2017-02-13",
+      "cnae": "Atividades associativas não especificadas anteriormente",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "MARCOS VINICIUS LEITE"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 40000.0,
+      "nomes_no_sapl": [
+        "ASSOCIAÇAO DE PROMOÇAO SOCIAL E CULTURAL DOM E LUZ"
       ]
     },
     {
@@ -1205,39 +1205,21 @@
       ]
     },
     {
-      "cnpj": "49001516000140",
-      "razao_social": "INSTITUTO DAVI DOWN",
-      "nome_fantasia": "INSTITUTO DAVI DOWN",
+      "cnpj": "18987776000102",
+      "razao_social": "GREMIO RECREATIVO ESCOLA DE SAMBA IMPERIO DA SERRINHA",
+      "nome_fantasia": "ESCOLA DE SAMBA IMPERIO DA SERRINHA",
       "situacao": "ATIVA",
-      "abertura": "2022-12-29",
+      "abertura": "1985-05-16",
       "cnae": "Atividades de associações de defesa de direitos sociais",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "JULIANA DE FATIMA DO NASCIMENTO DE PAULA"
+        "EVERTON WILSON RIBEIRO"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 30000.0,
       "nomes_no_sapl": [
-        "INSTITUTO DAVI DOWN"
-      ]
-    },
-    {
-      "cnpj": "50219089000150",
-      "razao_social": "ASSOCIACAO VILA ISABEL - AVI",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2023-04-05",
-      "cnae": "Clubes sociais, esportivos e similares",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "JOSE MARIA BERNARDES"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 30000.0,
-      "nomes_no_sapl": [
-        "ASSOCIAÇÃO VILA ISABEL"
+        "Grêmio Recreativo Escola de Samba Império da Serrinha"
       ]
     },
     {
@@ -1260,39 +1242,39 @@
       ]
     },
     {
-      "cnpj": "18987776000102",
-      "razao_social": "GREMIO RECREATIVO ESCOLA DE SAMBA IMPERIO DA SERRINHA",
-      "nome_fantasia": "ESCOLA DE SAMBA IMPERIO DA SERRINHA",
+      "cnpj": "50219089000150",
+      "razao_social": "ASSOCIACAO VILA ISABEL - AVI",
+      "nome_fantasia": "",
       "situacao": "ATIVA",
-      "abertura": "1985-05-16",
-      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "abertura": "2023-04-05",
+      "cnae": "Clubes sociais, esportivos e similares",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "EVERTON WILSON RIBEIRO"
+        "JOSE MARIA BERNARDES"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
       "valor_emendas": 30000.0,
       "nomes_no_sapl": [
-        "Grêmio Recreativo Escola de Samba Império da Serrinha"
+        "ASSOCIAÇÃO VILA ISABEL"
       ]
     },
     {
-      "cnpj": "06979305000173",
-      "razao_social": "ASSOCIACAO DE CAPOEIRA NOVA VISAO",
-      "nome_fantasia": "",
+      "cnpj": "49001516000140",
+      "razao_social": "INSTITUTO DAVI DOWN",
+      "nome_fantasia": "INSTITUTO DAVI DOWN",
       "situacao": "ATIVA",
-      "abertura": "2004-08-13",
+      "abertura": "2022-12-29",
       "cnae": "Atividades de associações de defesa de direitos sociais",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "DONIZETTI ADAO DE OLIVEIRA"
+        "JULIANA DE FATIMA DO NASCIMENTO DE PAULA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 25000.0,
+      "valor_emendas": 30000.0,
       "nomes_no_sapl": [
-        "ASSOCIAÇÃO DE CAPOEIRA NOVA VISÃO"
+        "INSTITUTO DAVI DOWN"
       ]
     },
     {
@@ -1314,39 +1296,21 @@
       ]
     },
     {
-      "cnpj": "08459595000150",
-      "razao_social": "FUNDACAO DOS ROTARIANOS DE VARGINHA",
+      "cnpj": "06979305000173",
+      "razao_social": "ASSOCIACAO DE CAPOEIRA NOVA VISAO",
       "nome_fantasia": "",
       "situacao": "ATIVA",
-      "abertura": "1961-03-21",
+      "abertura": "2004-08-13",
       "cnae": "Atividades de associações de defesa de direitos sociais",
       "municipio": "VARGINHA",
       "uf": "MG",
       "socios": [
-        "ANTONIO NOVAIS CAIAFA"
+        "DONIZETTI ADAO DE OLIVEIRA"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 20000.0,
+      "valor_emendas": 25000.0,
       "nomes_no_sapl": [
-        "Fundação dos Rotarianos de Varginha"
-      ]
-    },
-    {
-      "cnpj": "21541458000128",
-      "razao_social": "ASSOCIACAO INDEPENDENTE DE MORADORES RESPONSAVEIS",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2014-11-04",
-      "cnae": "Atividades de associações de defesa de direitos sociais",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "MARA CRISTINA SANTOS LOPES"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 20000.0,
-      "nomes_no_sapl": [
-        "ASSOCIAÇÃO INDEPENDENTE DE MORADORES RESPONSÁVEIS"
+        "ASSOCIAÇÃO DE CAPOEIRA NOVA VISÃO"
       ]
     },
     {
@@ -1368,6 +1332,42 @@
       ]
     },
     {
+      "cnpj": "21541458000128",
+      "razao_social": "ASSOCIACAO INDEPENDENTE DE MORADORES RESPONSAVEIS",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2014-11-04",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "MARA CRISTINA SANTOS LOPES"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 20000.0,
+      "nomes_no_sapl": [
+        "ASSOCIAÇÃO INDEPENDENTE DE MORADORES RESPONSÁVEIS"
+      ]
+    },
+    {
+      "cnpj": "08459595000150",
+      "razao_social": "FUNDACAO DOS ROTARIANOS DE VARGINHA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "1961-03-21",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "ANTONIO NOVAIS CAIAFA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 20000.0,
+      "nomes_no_sapl": [
+        "Fundação dos Rotarianos de Varginha"
+      ]
+    },
+    {
       "cnpj": "07923720000178",
       "razao_social": "CLUBE DE ORIENTACAO DE VARGINHA",
       "nome_fantasia": "COVAR",
@@ -1383,24 +1383,6 @@
       "valor_emendas": 19000.0,
       "nomes_no_sapl": [
         "CLUBE DE ORIENTAÇÃO DE VARGINHA"
-      ]
-    },
-    {
-      "cnpj": "20459707000178",
-      "razao_social": "ASSOCIACAO INTERNACIONAL DE LIONS CLUBE DISTRITO LC 12",
-      "nome_fantasia": "DISTRITO LC-12",
-      "situacao": "ATIVA",
-      "abertura": "1985-10-30",
-      "cnae": "Atividades associativas não especificadas anteriormente",
-      "municipio": "JUIZ DE FORA",
-      "uf": "MG",
-      "socios": [
-        "RICARDO CIRIBELI DE RESENDE"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 15000.0,
-      "nomes_no_sapl": [
-        "Lions Clube de Varginha"
       ]
     },
     {
@@ -1422,6 +1404,24 @@
       ]
     },
     {
+      "cnpj": "20459707000178",
+      "razao_social": "ASSOCIACAO INTERNACIONAL DE LIONS CLUBE DISTRITO LC 12",
+      "nome_fantasia": "DISTRITO LC-12",
+      "situacao": "ATIVA",
+      "abertura": "1985-10-30",
+      "cnae": "Atividades associativas não especificadas anteriormente",
+      "municipio": "JUIZ DE FORA",
+      "uf": "MG",
+      "socios": [
+        "RICARDO CIRIBELI DE RESENDE"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 15000.0,
+      "nomes_no_sapl": [
+        "Lions Clube de Varginha"
+      ]
+    },
+    {
       "cnpj": "34711027000104",
       "razao_social": "APESUL - ASSOCIACAO DE POETAS E ESCRITORES DO SUL DE MINAS",
       "nome_fantasia": "APESUL",
@@ -1437,6 +1437,24 @@
       "valor_emendas": 10405.1,
       "nomes_no_sapl": [
         "Associação de Poetas e Escritores do Sul de Minas"
+      ]
+    },
+    {
+      "cnpj": "41550995000141",
+      "razao_social": "ASSOCIACAO DOS AMIGOS ALIANCA FUTEBOL CLUBE",
+      "nome_fantasia": "ASSOCIACAO ALIANCA FUTEBOL CLUBE",
+      "situacao": "ATIVA",
+      "abertura": "2021-04-12",
+      "cnae": "Clubes sociais, esportivos e similares",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "LUIZ FERNANDO DA SILVA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 10000.0,
+      "nomes_no_sapl": [
+        "ASSOCIAÇÃO DOS AMIGOS ALIANÇA FUTEBOL CLUBE"
       ]
     },
     {
@@ -1456,24 +1474,6 @@
       "valor_emendas": 10000.0,
       "nomes_no_sapl": [
         "Instituto Shaneihu Yawanawa"
-      ]
-    },
-    {
-      "cnpj": "41550995000141",
-      "razao_social": "ASSOCIACAO DOS AMIGOS ALIANCA FUTEBOL CLUBE",
-      "nome_fantasia": "ASSOCIACAO ALIANCA FUTEBOL CLUBE",
-      "situacao": "ATIVA",
-      "abertura": "2021-04-12",
-      "cnae": "Clubes sociais, esportivos e similares",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "LUIZ FERNANDO DA SILVA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 10000.0,
-      "nomes_no_sapl": [
-        "ASSOCIAÇÃO DOS AMIGOS ALIANÇA FUTEBOL CLUBE"
       ]
     }
   ],

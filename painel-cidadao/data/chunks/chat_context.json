@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-20T10:57:15.687Z",
-  "atualizado_em": "2026-08-20T07:55:22",
+  "gerado_em": "2026-08-21T14:38:18.911Z",
+  "atualizado_em": "2026-08-21T08:17:26",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -13,9 +13,9 @@
     "ano": 2026,
     "total_pago_fornecedores_externos": 221125956.44,
     "credores_mapeados": 10000,
-    "contratos_total": 1278,
-    "contratos_do_ano": 451,
-    "contratos_em_execucao": 1223,
+    "contratos_total": 1384,
+    "contratos_do_ano": 449,
+    "contratos_em_execucao": 1329,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -138,18 +138,19 @@
   },
   "pessoal": {
     "prefeitura": {
-      "competencia": "07/2026",
+      "competencia": null,
       "resumo": {
         "orgao": "Prefeitura",
-        "competencia_referencia": "07/2026",
-        "servidores_qtd": 4074,
-        "vinculos_qtd": 4074,
-        "pessoas_qtd": 3893,
-        "linhas_todas_competencias": 4074,
-        "comissionados_qtd": 94,
-        "folha_bruta_total": 32223454.58,
-        "folha_bruta_comissionados": 775911.43,
-        "maior_vencimento_comissionado": 40509.01
+        "competencia_referencia": null,
+        "competencia_indeterminada": true,
+        "servidores_qtd": null,
+        "vinculos_qtd": null,
+        "pessoas_qtd": null,
+        "linhas_todas_competencias": 303818,
+        "comissionados_qtd": null,
+        "folha_bruta_total": null,
+        "folha_bruta_comissionados": null,
+        "maior_vencimento_comissionado": null
       }
     },
     "camara": {
