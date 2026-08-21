@@ -29,10 +29,12 @@ import datetime as dt
 import hashlib
 import json
 import os
+import random
 import re
 import sys
 import time
 import unicodedata
+import urllib.error
 import urllib.request
 from pathlib import Path
 from collections import Counter, defaultdict
@@ -47,12 +49,13 @@ ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
 DATA.mkdir(exist_ok=True)
 
-CSV_SAPL = Path(
-    r"C:/Users/Desktop/Desktop/Ações Prefeitura Varginha/Camara De Varginha/Ano 2025/sapl_pesquisar_materia (2).csv"
-)
-JSON_SAPL_2026 = Path(
-    r"C:/Users/Desktop/Desktop/Ações Prefeitura Varginha/Camara De Varginha/Ano 2026/sapl_pesquisar_materia.json"
-)
+# Exportações manuais do SAPL, usadas como fallback quando a API cai no meio da
+# varredura. Derivadas de ROOT (painel-cidadao/ → 3_Fiscaliza Varginha/ → raiz):
+# apontavam para C:/Users/Desktop/Desktop e ficaram órfãs quando o projeto mudou
+# para D:. Caminho relativo sobrevive à próxima mudança de disco.
+ACOES = ROOT.parent.parent
+CSV_SAPL = ACOES / "Camara De Varginha" / "Ano 2025" / "sapl_pesquisar_materia (2).csv"
+JSON_SAPL_2026 = ACOES / "Camara De Varginha" / "Ano 2026" / "sapl_pesquisar_materia.json"
 
 DIARIO_URLS = {
     2025: "https://www.varginha.mg.gov.br/portal/dados-abertos/diario-oficial/2025",
@@ -191,13 +194,39 @@ def _load_last_nonempty_list(name: str, field: str) -> tuple[list, str | None]:
     return [], None
 
 
-def _http_get_json(url: str, timeout: int = 30):
-    req = urllib.request.Request(
-        url,
-        headers={"User-Agent": "FiscalizaVarginha/1.0 (cidadao)"},
-    )
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8"))
+RETRYABLE_HTTP = {429, 500, 502, 503, 504}
+
+
+def _http_get_json(url: str, timeout: int = 30, attempts: int = 4):
+    """GET JSON com backoff exponencial para falhas transitórias.
+
+    O SAPL responde 200 mas oscila entre 0.6s e 15s+ na mesma rota. Sem retry,
+    uma lentidão no meio da paginação virava coleta truncada (20/08/2026:
+    500 matérias no lugar de 1584). Use attempts=1 em laços grandes onde a
+    falha por item já é tolerada e o custo do backoff não compensa.
+    """
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "FiscalizaVarginha/1.0 (cidadao)"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in RETRYABLE_HTTP or attempt == attempts - 1:
+                raise
+        except (urllib.error.URLError, TimeoutError, OSError, ValueError) as exc:
+            last_error = exc
+            if attempt == attempts - 1:
+                raise
+        delay = min(20.0, 1.5 * (2 ** attempt)) + random.uniform(0, 0.5)
+        print(f"  ! fonte instável ({url.split('?')[0]}); nova tentativa em "
+              f"{delay:.1f}s ({attempt + 1}/{attempts})")
+        time.sleep(delay)
+    raise last_error or RuntimeError(f"falha sem detalhe em {url}")
 
 
 # --------------------------- 1) SAPL CSV ------------------------------- #
@@ -381,7 +410,9 @@ def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 150) -> dict[str
             desfechos.setdefault(iid, "")
             continue
         try:
-            t = _http_get_json(f"{SAPL_API}/tramitacao/?materia={iid}", timeout=3)
+            # attempts=1: laço por matéria com orçamento de consultas; a falha
+            # de um item já degrada sem quebrar e backoff aqui custaria horas.
+            t = _http_get_json(f"{SAPL_API}/tramitacao/?materia={iid}", timeout=3, attempts=1)
             consultas += 1
             tl = t.get("results", []) or []
             tl.sort(key=lambda x: x.get("data_tramitacao") or "", reverse=True)
@@ -399,8 +430,20 @@ def _fetch_desfechos_sapl(anos: list[int], max_consultas: int = 150) -> dict[str
 
 
 
-def _sapl_paginate(url: str, timeout: int = 20) -> list[dict]:
-    """Segue pagination.links.next do SAPL e devolve todos os results. Tolerante a falha."""
+class SaplTruncado(RuntimeError):
+    """Varredura do SAPL morreu no meio: o que temos é parte, não o todo."""
+
+
+def _sapl_paginate(url: str, timeout: int = 20, strict: bool = False) -> list[dict]:
+    """Segue pagination.links.next do SAPL e devolve todos os results. Tolerante a falha.
+
+    strict=True levanta SaplTruncado quando a varredura falha DEPOIS de já ter
+    trazido páginas. Lista parcial devolvida como se fosse completa foi o que
+    publicou resumo com 500 matérias no lugar de 1584 em 20/08/2026 — o teste
+    de integridade pegou e o ciclo inteiro foi revertido, de hora em hora.
+    Falha na primeira página continua devolvendo [] para o chamador cair no
+    fallback offline que ele já tem.
+    """
     out: list[dict] = []
     nxt: str | None = url
     while nxt:
@@ -408,6 +451,10 @@ def _sapl_paginate(url: str, timeout: int = 20) -> list[dict]:
             d = _http_get_json(nxt, timeout=timeout)
         except Exception as e:
             print(f"  ! SAPL paginate: {e}")
+            if strict and out:
+                raise SaplTruncado(
+                    f"varredura truncada em {len(out)} registros ({url}): {e}"
+                ) from e
             break
         out += d.get("results", [])
         nxt = d.get("pagination", {}).get("links", {}).get("next")
@@ -855,11 +902,17 @@ def _processa_sapl() -> dict:
     # ── 2. Coleta matérias por ano ──────────────────────────────────────────
     rows_2025 = []
     rows_2026 = []
+    anos_truncados: list[int] = []
 
     if "--offline-sapl" not in sys.argv:
         # Coleta 2025 via API
         url_2025 = "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2025&page_size=200"
-        tentativa_2025 = _sapl_paginate(url_2025, timeout=20)
+        try:
+            tentativa_2025 = _sapl_paginate(url_2025, timeout=20, strict=True)
+        except SaplTruncado as e:
+            print(f"  ! SAPL API 2025: {e}; descartando parcial e usando fallback offline")
+            tentativa_2025 = []
+            anos_truncados.append(2025)
         if tentativa_2025:
             print(f"  ✓ SAPL API 2025: {len(tentativa_2025)} matérias")
             rows_2025 = [_linha_padrao_sapl(r, tipo_map, autor_map) for r in tentativa_2025]
@@ -868,7 +921,12 @@ def _processa_sapl() -> dict:
 
         # Coleta 2026 via API
         url_2026 = "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&page_size=200"
-        tentativa_2026 = _sapl_paginate(url_2026, timeout=20)
+        try:
+            tentativa_2026 = _sapl_paginate(url_2026, timeout=20, strict=True)
+        except SaplTruncado as e:
+            print(f"  ! SAPL API 2026: {e}; descartando parcial e usando fallback offline")
+            tentativa_2026 = []
+            anos_truncados.append(2026)
         if tentativa_2026:
             print(f"  ✓ SAPL API 2026: {len(tentativa_2026)} matérias")
             rows_2026 = [_linha_padrao_sapl(r, tipo_map, autor_map) for r in tentativa_2026]
@@ -897,8 +955,19 @@ def _processa_sapl() -> dict:
         else:
             print(f"  ! JSON do SAPL 2026 ausente ({JSON_SAPL_2026})")
 
-    if not rows_2025 and not rows_2026:
-        print("  ! Sem dados do SAPL carregados; preservando dados existentes.")
+    # Ano truncado que também ficou sem fallback publicaria um ano inteiro a
+    # menos — silenciosamente, porque o outro ano ainda traz linhas. Isso é uma
+    # base parcial se passando por completa: preserva o que já está publicado.
+    sem_recuperacao = [
+        ano for ano in anos_truncados
+        if (ano == 2025 and not rows_2025) or (ano == 2026 and not rows_2026)
+    ]
+    if sem_recuperacao or (not rows_2025 and not rows_2026):
+        motivo = (
+            f"varredura truncada em {sem_recuperacao} sem fallback local"
+            if sem_recuperacao else "Sem dados do SAPL carregados"
+        )
+        print(f"  ! {motivo}; preservando dados existentes.")
         return {
             "resumo": _load_existing("resumo.json", {}),
             "vereadores": _load_existing("vereadores.json", []),
@@ -1100,15 +1169,43 @@ def _processa_pessoal() -> dict:
         ):
             payload["prefeitura"] = existente.get("prefeitura", {})
             payload["prefeitura"]["status_cobertura"] = "preservada_por_cobertura"
+
+            # O bloco preservado vem com o resumo de quando foi salvo, e esse
+            # resumo escapa da regra de competencia do coletor_pessoal — ele
+            # nunca passa por _resumo(). Era assim que voltava ao ar um resumo
+            # com competencia_referencia null E os campos mensais preenchidos:
+            # 303.818 linhas de uma consulta ANUAL (Educacao/FUNDEB, sem
+            # competencia na linha) publicadas como R$ 914,9 mi de folha
+            # mensal. Recalcular pelo mesmo caminho da coleta viva faz a base
+            # preservada declarar a limitacao em vez de um numero indefensavel.
+            preservados = payload["prefeitura"].get("servidores") or []
+            resumo_preservado = coletor_pessoal._resumo("Prefeitura", preservados)
+            payload["prefeitura"]["resumo"] = resumo_preservado
+            if resumo_preservado.get("competencia_indeterminada"):
+                # Sem competencia apurada, o orgao nao pode carimbar um mes que
+                # o resumo nao sustenta.
+                payload["prefeitura"]["competencia"] = None
+            else:
+                payload["prefeitura"]["competencia"] = resumo_preservado["competencia_referencia"]
+
+            limitacao = (
+                " A base preservada nao tem competencia apurada, entao os numeros"
+                " mensais (servidores, folha bruta, comissionados) saem em branco:"
+                " as linhas cobrem varios meses e soma-las viraria custo mensal falso."
+                if resumo_preservado.get("competencia_indeterminada") else ""
+            )
             payload["observacao"] = (
                 f"{payload.get('observacao', '')} "
                 f"Prefeitura: a nova coleta trouxe apenas {len(novos_pref)} registro(s); "
                 f"foi preservada a ultima base completa com {len(antigos_pref)} servidores para evitar regressao de cobertura."
+                f"{limitacao}"
             ).strip()
             print(
                 f"  ! Prefeitura: coleta parcial ({len(novos_pref)} registro[s]); "
                 f"preservando base completa anterior ({len(antigos_pref)} servidores)"
             )
+            if resumo_preservado.get("competencia_indeterminada"):
+                print("    competencia indeterminada na base preservada; campos mensais zerados")
         cr = payload.get("camara", {}).get("resumo", {})
         pr = payload.get("prefeitura", {}).get("resumo", {})
         print(f"  ✓ Câmara: {cr.get('comissionados_qtd', 0)} comissionados/similares")

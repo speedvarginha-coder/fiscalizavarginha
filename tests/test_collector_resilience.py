@@ -227,6 +227,168 @@ class SaplCoverageTests(unittest.TestCase):
         self.assertEqual(result["emendas"], current)
 
 
+def sapl_page(results, next_url=None):
+    return {"results": results, "pagination": {"links": {"next": next_url}}}
+
+
+class SaplPaginationTruncationTests(unittest.TestCase):
+    """Varredura que morre no meio nao pode voltar como se fosse completa.
+
+    Em 20/08/2026 o SAPL oscilou, a paginacao parou na metade e o resumo saiu
+    com 500 materias no lugar de 1584 — sem 'Emenda Impositiva'. O teste de
+    integridade pegou e o ciclo inteiro foi revertido, de hora em hora.
+    """
+
+    def test_failure_after_first_page_raises_instead_of_returning_partial(self):
+        pages = [sapl_page([{"id": 1}], "https://sapl.invalid/?page=2"), TimeoutError("timed out")]
+
+        def fake_get(_url, timeout=20, attempts=4):
+            item = pages.pop(0)
+            if isinstance(item, Exception):
+                raise item
+            return item
+
+        with patch.object(coletor, "_http_get_json", side_effect=fake_get):
+            with self.assertRaises(coletor.SaplTruncado):
+                coletor._sapl_paginate("https://sapl.invalid/?page=1", strict=True)
+
+    def test_failure_on_first_page_returns_empty_so_caller_uses_fallback(self):
+        with patch.object(coletor, "_http_get_json", side_effect=TimeoutError("timed out")):
+            out = coletor._sapl_paginate("https://sapl.invalid/?page=1", strict=True)
+
+        self.assertEqual(out, [])
+
+    def test_non_strict_callers_keep_tolerant_behaviour(self):
+        pages = [sapl_page([{"id": 1}], "https://sapl.invalid/?page=2"), TimeoutError("timed out")]
+
+        def fake_get(_url, timeout=20, attempts=4):
+            item = pages.pop(0)
+            if isinstance(item, Exception):
+                raise item
+            return item
+
+        with patch.object(coletor, "_http_get_json", side_effect=fake_get):
+            out = coletor._sapl_paginate("https://sapl.invalid/?page=1")
+
+        self.assertEqual(out, [{"id": 1}])
+
+    def test_complete_crawl_returns_every_page(self):
+        pages = [
+            sapl_page([{"id": 1}], "https://sapl.invalid/?page=2"),
+            sapl_page([{"id": 2}], None),
+        ]
+
+        with patch.object(coletor, "_http_get_json", side_effect=lambda *a, **k: pages.pop(0)):
+            out = coletor._sapl_paginate("https://sapl.invalid/?page=1", strict=True)
+
+        self.assertEqual(out, [{"id": 1}, {"id": 2}])
+
+
+class HttpRetryTests(unittest.TestCase):
+    def test_transient_timeout_is_retried_before_giving_up(self):
+        responses = [TimeoutError("timed out"), FakeResponse(json.dumps({"ok": True}))]
+
+        def fake_urlopen(_req, timeout=None):
+            item = responses.pop(0)
+            if isinstance(item, Exception):
+                raise item
+            return item
+
+        with patch.object(coletor.urllib.request, "urlopen", side_effect=fake_urlopen), \
+                patch.object(coletor.time, "sleep"):
+            data = coletor._http_get_json("https://sapl.invalid/api", timeout=5)
+
+        self.assertEqual(data, {"ok": True})
+        self.assertEqual(responses, [])
+
+    def test_attempts_one_keeps_fast_fail_for_per_item_loops(self):
+        with patch.object(coletor.urllib.request, "urlopen", side_effect=TimeoutError("x")) as opened, \
+                patch.object(coletor.time, "sleep"):
+            with self.assertRaises(TimeoutError):
+                coletor._http_get_json("https://sapl.invalid/api", timeout=3, attempts=1)
+
+        self.assertEqual(opened.call_count, 1)
+
+
+class FolhaPreservadaTests(unittest.TestCase):
+    """Base de folha preservada nao pode reviver resumo fora do contrato.
+
+    Quando a coleta da Betha vem parcial, o coletor troca o bloco da Prefeitura
+    pelo anterior — inclusive o resumo salvo naquela epoca, que nunca passa por
+    _resumo(). Era assim que 303.818 linhas de uma consulta ANUAL (sem
+    competencia na linha) voltavam ao ar como R$ 914,9 mi de folha MENSAL, com
+    competencia_referencia null e sem marcar competencia_indeterminada.
+    """
+
+    def _coleta_parcial(self, servidores_antigos):
+        parcial = {
+            "camara": {"servidores": [], "resumo": {}},
+            "prefeitura": {"servidores": [{"nome": "UNICO"}], "resumo": {}},
+        }
+        anterior = {
+            "prefeitura": {
+                "servidores": servidores_antigos,
+                # resumo fora do contrato, como o que estava publicado
+                "resumo": {
+                    "competencia_referencia": None,
+                    "servidores_qtd": len(servidores_antigos),
+                    "folha_bruta_total": 914884645.14,
+                },
+                "competencia": "13/2026",
+            }
+        }
+        with patch.object(coletor, "_load_existing", return_value=anterior), \
+                patch("coletor_pessoal.coletar", return_value=parcial):
+            return coletor._processa_pessoal()
+
+    def test_base_sem_competencia_marca_indeterminada_e_zera_campos_mensais(self):
+        antigos = [{"nome": f"SERVIDOR {i}", "vencimentos": 1000.0} for i in range(1500)]
+
+        resultado = self._coleta_parcial(antigos)
+        resumo = resultado["prefeitura"]["resumo"]
+
+        self.assertEqual(resultado["prefeitura"]["status_cobertura"], "preservada_por_cobertura")
+        self.assertTrue(resumo["competencia_indeterminada"])
+        self.assertIsNone(resumo["competencia_referencia"])
+        for campo in (
+            "servidores_qtd", "vinculos_qtd", "pessoas_qtd", "comissionados_qtd",
+            "folha_bruta_total", "folha_bruta_comissionados",
+            "maior_vencimento_comissionado",
+        ):
+            self.assertIsNone(resumo[campo], f"{campo} nao pode ter valor sem competencia")
+        # linhas preservadas continuam contadas, e o orgao nao carimba mes algum
+        self.assertEqual(resumo["linhas_todas_competencias"], len(antigos))
+        self.assertIsNone(resultado["prefeitura"]["competencia"])
+        self.assertIn("competencia", resultado["observacao"].lower())
+
+    def test_base_com_competencia_mantem_numeros_do_mes(self):
+        # 1500 linhas em 06/2026 e 1400 em 07/2026: a regra de 80% aceita as
+        # duas e fica com a mais recente.
+        antigos = (
+            [{"nome": f"A{i}", "competencia": "06/2026", "vencimentos": 100.0} for i in range(1500)]
+            + [{"nome": f"B{i}", "competencia": "07/2026", "vencimentos": 200.0} for i in range(1400)]
+        )
+
+        resultado = self._coleta_parcial(antigos)
+        resumo = resultado["prefeitura"]["resumo"]
+
+        self.assertFalse(resumo.get("competencia_indeterminada"))
+        self.assertEqual(resumo["competencia_referencia"], "07/2026")
+        self.assertEqual(resumo["servidores_qtd"], 1400)
+        self.assertAlmostEqual(resumo["folha_bruta_total"], 1400 * 200.0, places=2)
+        self.assertEqual(resumo["linhas_todas_competencias"], len(antigos))
+        self.assertEqual(resultado["prefeitura"]["competencia"], "07/2026")
+
+
+class SaplOfflineFallbackPathTests(unittest.TestCase):
+    """Os fallbacks apontavam para C:/Users/Desktop/Desktop e ficaram orfaos
+    quando o projeto mudou para D:. Fallback que nao existe nao salva ninguem."""
+
+    def test_manual_export_paths_resolve_on_disk(self):
+        self.assertTrue(coletor.CSV_SAPL.exists(), f"ausente: {coletor.CSV_SAPL}")
+        self.assertTrue(coletor.JSON_SAPL_2026.exists(), f"ausente: {coletor.JSON_SAPL_2026}")
+
+
 class BethaTokenRefreshTests(unittest.TestCase):
     def test_stale_caller_token_reuses_fresh_cached_token(self):
         response = FakeResponse(csv_zip_base64())
