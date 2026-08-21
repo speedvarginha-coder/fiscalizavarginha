@@ -151,3 +151,6 @@ tmp/
 
 # Registros brutos do Avalie: contem hash de IP, hash de conta e o sal
 avalie_dados/
+
+# Artefato incremental do TypeScript: gerado a cada build, nunca revisado.
+*.tsbuildinfo

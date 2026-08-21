@@ -403,9 +403,9 @@ npm run test:report      # vê relatório HTML do último run
 
 ## 10. Limites conhecidos
 
-- **`app.js` ainda monolítico** (5677 linhas). Refactor incremental em curso (fases 3-5 pendentes: dossiê, renderizações de Prefeitura/Câmara/Relatórios/Pessoal).
-- **`style.css` único** (5000+ linhas). Plano: dividir em `css/base.css`, `css/components.css`, `css/pages/*.css`.
-- **Sem schemas dos JSONs.** Coletor pode produzir JSON inválido que quebra o painel silenciosamente. Plano: validação Pydantic no coletor.
+- **`app.js` ainda monolítico** (8412 linhas, ~468 KB). Refactor incremental em curso (fases 3-5 pendentes: dossiê, renderizações de Prefeitura/Câmara/Relatórios/Pessoal).
+- **`style.css` único** (~13,2 mil linhas, ~324 KB). Plano: dividir em `css/base.css`, `css/components.css`, `css/pages/*.css`.
+- **`pessoal.json` de 139,5 MB carregado na fase 1** das páginas Câmara, Relatórios e Cobrança. As três só precisam dos dois `resumo` e das 59 linhas da Câmara; as 303.818 linhas da Prefeitura servem apenas à página Pessoal, que já busca o arquivo sob demanda. Plano: publicar um chunk enxuto e manter a base completa em arquivo separado.
 - **Coleta automatizável.** `scripts/update-data.ps1` executa coleta, validação, testes e pacote limpo; `scripts/install-data-task.ps1` registra a rotina diária ou em modo vigia no Windows Task Scheduler.
 
 Veja `docs/como-atualizar.md` para o processo atual de coleta.

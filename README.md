@@ -56,7 +56,7 @@ py coletor.py
 3_Fiscaliza Varginha/
 ├── painel-cidadao/   Pasta pública (vai para servidor)
 ├── private/          Tokens e logs (NUNCA publica)
-├── tests/            142 testes automatizados
+├── tests/            198 testes Playwright + 123 testes Python
 ├── docs/             Documentação interna
 └── .gitignore        Proteção contra commit de segredos
 ```
