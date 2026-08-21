@@ -19,8 +19,55 @@ function sse($obj) {
     @flush();
 }
 
+// ---- Origem permitida -------------------------------------------------------
+// Antes era Access-Control-Allow-Origin: *, o que deixava qualquer site chamar
+// este proxy e gastar a cota do Gemini em nome do projeto.
+$ORIGENS_PERMITIDAS = [
+    'https://fiscalizavarginha.com.br',
+    'https://www.fiscalizavarginha.com.br',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+];
+
+$origem = $_SERVER['HTTP_ORIGIN'] ?? '';
+if ($origem === '' && !empty($_SERVER['HTTP_REFERER'])) {
+    $partes = parse_url($_SERVER['HTTP_REFERER']);
+    if (!empty($partes['scheme']) && !empty($partes['host'])) {
+        $origem = $partes['scheme'] . '://' . $partes['host']
+            . (empty($partes['port']) ? '' : ':' . $partes['port']);
+    }
+}
+
+// Sem Origin e sem Referer e o caso normal do fetch same-origin em alguns
+// navegadores: segue. Com origem declarada, ela precisa estar na lista.
+$origemPermitida = ($origem === '') || in_array($origem, $ORIGENS_PERMITIDAS, true);
+
+if ($origem !== '' && $origemPermitida) {
+    header('Access-Control-Allow-Origin: ' . $origem);
+    header('Vary: Origin');
+}
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: application/json');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { exit; }
+
+if (!$origemPermitida) {
+    http_response_code(403);
+    header('Content-Type: text/event-stream; charset=utf-8');
+    sse(['erro' => 'Origem não autorizada.']);
+    sse(['fim' => true]);
+    exit;
+}
+
+// ---- Limites de uso ---------------------------------------------------------
+// A sessao sozinha nao limita nada: apagar o cookie zera o contador. Sessao
+// continua valendo como limite por aba, mas quem paga a conta e o limite por
+// IP e o teto diario global, ambos em disco.
 $JANELA = 15 * 60; // 15 minutos
-$MAX    = 10;      // máx 10 perguntas por janela
+$MAX    = 10;      // máx 10 perguntas por janela, por sessão
+$MAX_IP = 40;      // máx 40 perguntas por janela, por IP
+$MAX_DIA_GLOBAL = 1500; // teto de chamadas por dia no projeto inteiro
 
 $agora = time();
 if (!isset($_SESSION['rl_inicio']) || ($agora - $_SESSION['rl_inicio']) > $JANELA) {
@@ -36,13 +83,52 @@ if ($_SESSION['rl_count'] > $MAX) {
     exit;
 }
 
-// CORS — ajuste para seu domínio se necessário
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
-header('Content-Type: application/json');
+/**
+ * Contador em arquivo com trava exclusiva. Devolve o total apos incrementar.
+ * Falha de disco nao pode derrubar o chat: sem contador, devolve 0 e o pedido
+ * segue amparado apenas pelo limite de sessao.
+ */
+function contarUso($chave, $janelaSegundos) {
+    $dir = sys_get_temp_dir() . '/fiscaliza_rl';
+    if (!is_dir($dir)) { @mkdir($dir, 0700, true); }
+    $arquivo = $dir . '/' . preg_replace('/[^a-z0-9_]/i', '_', $chave) . '.json';
+    $fp = @fopen($arquivo, 'c+');
+    if (!$fp) { return 0; }
+    if (!flock($fp, LOCK_EX)) { fclose($fp); return 0; }
+    $bruto = stream_get_contents($fp);
+    $dados = json_decode($bruto ?: '[]', true);
+    $inicio = isset($dados['inicio']) ? (int) $dados['inicio'] : 0;
+    $total  = isset($dados['total']) ? (int) $dados['total'] : 0;
+    if ($inicio === 0 || (time() - $inicio) > $janelaSegundos) {
+        $inicio = time();
+        $total  = 0;
+    }
+    $total++;
+    ftruncate($fp, 0);
+    rewind($fp);
+    fwrite($fp, json_encode(['inicio' => $inicio, 'total' => $total]));
+    fflush($fp);
+    flock($fp, LOCK_UN);
+    fclose($fp);
+    return $total;
+}
 
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { exit; }
+$ip = $_SERVER['REMOTE_ADDR'] ?? 'desconhecido';
+if (contarUso('ip_' . $ip, $JANELA) > $MAX_IP) {
+    http_response_code(429);
+    header('Content-Type: text/event-stream; charset=utf-8');
+    sse(['erro' => 'Muitas perguntas deste endereço. Aguarde alguns minutos.', 'rate' => true]);
+    sse(['fim' => true]);
+    exit;
+}
+
+if (contarUso('global_' . gmdate('Y_m_d'), 86400) > $MAX_DIA_GLOBAL) {
+    http_response_code(429);
+    header('Content-Type: text/event-stream; charset=utf-8');
+    sse(['erro' => 'O assistente atingiu o limite de uso de hoje. Os dados seguem disponíveis nas páginas do painel.', 'rate' => true]);
+    sse(['fim' => true]);
+    exit;
+}
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['erro' => 'Método não permitido']);
