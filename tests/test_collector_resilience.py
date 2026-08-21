@@ -341,25 +341,68 @@ class FolhaPreservadaTests(unittest.TestCase):
                 patch("coletor_pessoal.coletar", return_value=parcial):
             return coletor._processa_pessoal()
 
-    def test_base_sem_competencia_marca_indeterminada_e_zera_campos_mensais(self):
-        antigos = [{"nome": f"SERVIDOR {i}", "vencimentos": 1000.0} for i in range(1500)]
+    def test_resumo_preservado_e_recalculado_e_nao_o_salvo(self):
+        """O resumo que volta ao ar descreve as linhas preservadas, nao outra coleta.
 
-        resultado = self._coleta_parcial(antigos)
+        O bloco preservado carrega o resumo de quando foi salvo, que nunca passa
+        por _resumo(). Um resumo salvo com competencia null e campos mensais
+        preenchidos publicava R$ 914,9 mi como folha MENSAL.
+        """
+        antigos = [
+            {"nome": f"A{i}", "competencia": "07/2026", "vencimentos": 250.0}
+            for i in range(1500)
+        ]
+        parcial = {
+            "camara": {"servidores": [], "resumo": {}},
+            "prefeitura": {"servidores": [{"nome": "UNICO"}], "resumo": {}},
+        }
+        anterior = {
+            "prefeitura": {
+                "servidores": antigos,
+                # resumo fora do contrato, como o que estava publicado
+                "resumo": {
+                    "competencia_referencia": None,
+                    "servidores_qtd": 303818,
+                    "folha_bruta_total": 914884645.14,
+                },
+                "competencia": "13/2026",
+            }
+        }
+        with patch.object(coletor, "_load_existing", return_value=anterior),                 patch("coletor_pessoal.coletar", return_value=parcial):
+            resultado = coletor._processa_pessoal()
+
         resumo = resultado["prefeitura"]["resumo"]
-
         self.assertEqual(resultado["prefeitura"]["status_cobertura"], "preservada_por_cobertura")
-        self.assertTrue(resumo["competencia_indeterminada"])
-        self.assertIsNone(resumo["competencia_referencia"])
-        for campo in (
-            "servidores_qtd", "vinculos_qtd", "pessoas_qtd", "comissionados_qtd",
-            "folha_bruta_total", "folha_bruta_comissionados",
-            "maior_vencimento_comissionado",
-        ):
-            self.assertIsNone(resumo[campo], f"{campo} nao pode ter valor sem competencia")
-        # linhas preservadas continuam contadas, e o orgao nao carimba mes algum
-        self.assertEqual(resumo["linhas_todas_competencias"], len(antigos))
-        self.assertIsNone(resultado["prefeitura"]["competencia"])
-        self.assertIn("competencia", resultado["observacao"].lower())
+        self.assertEqual(resumo["competencia_referencia"], "07/2026")
+        self.assertEqual(resumo["servidores_qtd"], 1500)
+        self.assertAlmostEqual(resumo["folha_bruta_total"], 1500 * 250.0, places=2)
+        self.assertEqual(resultado["prefeitura"]["competencia"], "07/2026")
+
+    def test_base_sem_competencia_nao_vence_coleta_menor_com_competencia(self):
+        """Um mes legivel vale mais que um amontoado maior e indecifravel.
+
+        Em 21/08/2026 uma base de 303.818 linhas sem competencia (consulta ANUAL,
+        escopo Educacao/FUNDEB) substituiu a de 4.074 linhas de 07/2026 so por ser
+        maior. Como a regra comparava tamanho de array, ela passou a defender a
+        base ruim contra TODA coleta seguinte: a base errada se perpetuava.
+        """
+        antigos_sem_mes = [{"nome": f"X{i}", "vencimentos": 10.0} for i in range(303818)]
+        novos_com_mes = [
+            {"nome": f"N{i}", "competencia": "08/2026", "vencimentos": 300.0}
+            for i in range(4074)
+        ]
+        parcial = {
+            "camara": {"servidores": [], "resumo": {}},
+            "prefeitura": {"servidores": novos_com_mes, "resumo": {}},
+        }
+        anterior = {"prefeitura": {"servidores": antigos_sem_mes, "resumo": {}}}
+
+        with patch.object(coletor, "_load_existing", return_value=anterior), \
+                patch("coletor_pessoal.coletar", return_value=parcial):
+            resultado = coletor._processa_pessoal()
+
+        self.assertNotIn("status_cobertura", resultado["prefeitura"])
+        self.assertEqual(resultado["prefeitura"]["servidores"], novos_com_mes)
 
     def test_base_com_competencia_mantem_numeros_do_mes(self):
         # 1500 linhas em 06/2026 e 1400 em 07/2026: a regra de 80% aceita as
