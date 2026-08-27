@@ -226,7 +226,7 @@ def main() -> int:
         )
         preservado["erros_ultima_tentativa"] = erros[:20]
         _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
-        _tmp.write_text(json.dumps(preservado, ensure_ascii=False, indent=2), encoding="utf-8")
+        _tmp.write_text(json.dumps(preservado, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
         os.replace(_tmp, OUT_PATH)
         print(f"⚠️ Coleta parcial ({len(compras_out)}/{total_anterior}); base anterior preservada.")
         return 0
@@ -270,7 +270,7 @@ def main() -> int:
         },
     }
     _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
-    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     os.replace(_tmp, OUT_PATH)
     print(f"✓ {len(compras_out)} compras, {len(com_resultado)} com resultado, "
           f"{len(simbolicas)} homologação(ões) simbólica(s) → licitacoes_resultados.json")

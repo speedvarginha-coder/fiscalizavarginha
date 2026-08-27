@@ -208,9 +208,9 @@ def _documento_oficial(url: str) -> tuple[str, list[str]]:
             return "", []
         texto = re.sub(r"\s+", " ", texto).strip()
         CACHE_DOCUMENTOS.mkdir(parents=True, exist_ok=True)
-        cache.write_text(texto, encoding="utf-8")
+        cache.write_text(texto, encoding="utf-8", newline="\n")
         if paginas:
-            cache_paginas.write_text(json.dumps(paginas, ensure_ascii=False), encoding="utf-8")
+            cache_paginas.write_text(json.dumps(paginas, ensure_ascii=False), encoding="utf-8", newline="\n")
         return texto, paginas
     except Exception as exc:
         print(f"  ! documento oficial nao lido ({url}): {exc}")
@@ -469,7 +469,7 @@ def main() -> None:
         "publicacoes": pubs,
     }
     temporario = SAIDA.with_suffix(".json.tmp")
-    temporario.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    temporario.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     os.replace(temporario, SAIDA)
     print(f"✓ Salvo: {SAIDA}  ({len(pubs)} publicações)")
 

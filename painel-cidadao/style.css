@@ -4679,6 +4679,12 @@ mark.hl {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255,255,255,.72);
+  /* As linhas do ranking precisam reagir à largura DESTE painel, não à da
+     janela: em telas largas os dois painéis ficam lado a lado e cada um recebe
+     metade do espaço, o que espremia as cinco colunas até o cargo quebrar no
+     meio da palavra ("TNS/TECNI CO DESPORTI VO"). */
+  container-type: inline-size;
+  container-name: rankdiaria;
 }
 .diarias-ranking__panel-head {
   display: grid;
@@ -4774,19 +4780,97 @@ mark.hl {
   color: var(--ink);
   font-size: .86rem;
 }
+/* Base = empilhado. É o layout que cabe em qualquer largura; as cinco colunas
+   só entram quando o painel provar que tem espaço (container query abaixo). */
 .diaria-rank-row--compact {
-  grid-template-columns: 30px minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, .95fr) max-content;
+  grid-template-columns: 30px minmax(0, 1fr);
   gap: 8px;
+  row-gap: 5px;
   padding: 9px 10px;
+  align-items: start;
 }
+.diaria-rank-row--compact > *:not(.diaria-rank-row__pos) { grid-column: 2; }
 /* Permite que as colunas encolham e o texto quebre, em vez de empurrar o valor. */
 .diaria-rank-row--compact > * { min-width: 0; }
+/* `anywhere` partia palavra no meio assim que a coluna apertava. `break-word`
+   só quebra quando UMA palavra sozinha não cabe — nome de cargo continua
+   legível, e o que não couber quebra com hífen em vez de rachar. */
 .diaria-rank-row--compact .diaria-rank-row__person strong,
-.diaria-rank-row--compact .diaria-rank-row__function { overflow-wrap: anywhere; }
+.diaria-rank-row--compact .diaria-rank-row__person small,
+.diaria-rank-row--compact .diaria-rank-row__function,
+.diaria-rank-row--compact .diaria-rank-row__period {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
 .diaria-rank-row--compact b {
   color: var(--navy);
-  text-align: right;
+  text-align: left;
   white-space: nowrap;
+}
+/* Empilhado, as duas caixinhas ficam lado a lado e ocupam a linha inteira. */
+.diaria-rank-row--compact .diaria-rank-row__valores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: none;
+  min-width: 0;
+  text-align: left;
+}
+.diaria-rank-row--compact .dr-val { flex: 1 1 auto; }
+
+/* Faixa intermediária — é onde o painel vive no desktop: com o container em
+   1180px e dois painéis lado a lado, cada um fica em ~556px. Cinco colunas
+   nessa largura dão ~100px por coluna e foi o que quebrou o cargo no meio da
+   palavra. Duas colunas de conteúdo cabem com folga: identidade à esquerda,
+   números à direita. */
+@container rankdiaria (min-width: 500px) {
+  .diaria-rank-row--compact {
+    grid-template-columns: 30px minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-areas:
+      "pos person valores"
+      "pos function period";
+    column-gap: 10px;
+    row-gap: 6px;
+  }
+  .diaria-rank-row--compact > *:not(.diaria-rank-row__pos) { grid-column: auto; }
+  .diaria-rank-row--compact .diaria-rank-row__pos      { grid-area: pos; }
+  .diaria-rank-row--compact .diaria-rank-row__person   { grid-area: person; }
+  .diaria-rank-row--compact .diaria-rank-row__function { grid-area: function; }
+  .diaria-rank-row--compact .diaria-rank-row__period   { grid-area: period; align-self: center; }
+  .diaria-rank-row--compact .diaria-rank-row__valores  { grid-area: valores; }
+  .diaria-rank-row--compact b { text-align: right; }
+  .diaria-rank-row--compact .diaria-rank-row__valores {
+    display: grid;
+    gap: 4px;
+    max-width: none;
+    text-align: right;
+  }
+}
+
+/* Painel ocupando a largura inteira (tablet/celular, onde os dois painéis
+   empilham): aí sim há espaço para a leitura em tabela, uma linha por pessoa.
+   O container query mede a caixa de CONTEÚDO do painel — 24px de padding a
+   menos que a largura visível. */
+@container rankdiaria (min-width: 720px) {
+  .diaria-rank-row--compact {
+    grid-template-columns: 30px minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, .95fr) minmax(150px, max-content);
+    grid-template-areas: none;
+    align-items: center;
+    row-gap: 0;
+  }
+  /* Reset por classe, e não por `> *`: o seletor universal não soma
+     especificidade, então `> *` perdia para os `.linha .filho { grid-area }`
+     do tier anterior e sobravam nomes de área órfãos — o navegador então
+     criava colunas implícitas (30px 49 35 33 150 0 396). */
+  .diaria-rank-row--compact .diaria-rank-row__pos,
+  .diaria-rank-row--compact .diaria-rank-row__person,
+  .diaria-rank-row--compact .diaria-rank-row__function,
+  .diaria-rank-row--compact .diaria-rank-row__period,
+  .diaria-rank-row--compact .diaria-rank-row__valores {
+    grid-area: auto;
+  }
+  .diaria-rank-row--compact .diaria-rank-row__period { align-self: center; }
+  .diaria-rank-row--compact .diaria-rank-row__valores { max-width: 185px; }
 }
 /* Coluna de valores: duas caixinhas rotuladas — diárias (viagens) e salário
    mensal — em cores diferentes para o leitor leigo não somar nem confundir. */
@@ -4937,10 +5021,10 @@ mark.hl {
   .updates-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .diarias-ranking__summary,
   .diarias-ranking__grid { grid-template-columns: 1fr; }
-  .diaria-rank-row { grid-template-columns: 34px 1fr; }
-  .diaria-rank-row--compact { grid-template-columns: 30px 1fr; row-gap: 4px; }
-  .diaria-rank-row--compact > *:not(.diaria-rank-row__pos) { grid-column: 2; }
-  .diaria-rank-row--compact b { text-align: left; }
+  /* :not(--compact) porque a linha compacta é governada pelos container
+     queries acima (largura do painel, não da janela). Sem o :not, esta regra
+     vinha depois no arquivo e reescrevia as colunas por cima deles. */
+  .diaria-rank-row:not(.diaria-rank-row--compact) { grid-template-columns: 34px 1fr; }
   .diaria-card { grid-template-columns: 1fr; }
 }
 

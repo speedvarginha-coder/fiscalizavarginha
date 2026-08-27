@@ -2064,6 +2064,23 @@
     const camServQtd = camResumoP.servidores_qtd      || 1;
     const prefComQtd  = prefResumoP.comissionados_qtd  || 0;
     const prefServQtd = prefResumoP.servidores_qtd     || 1;
+
+    // Sem competência, os campos mensais vêm nulos e os sinais abaixo caem
+    // pelo `> 0`. Sumir em silêncio faz o cidadão achar que não há nada a
+    // apontar; o certo é dizer que a análise está suspensa e por quê.
+    [["CÂMARA", camPessoal, camResumoP], ["PREFEITURA", prefPessoal, prefResumoP]]
+      .forEach(([orgaoLabel, orgao, resumo]) => {
+        if (!resumo.competencia_indeterminada) return;
+        addSignal(
+          `${orgaoLabel} · Pessoal`,
+          "medio",
+          `Análise da folha suspensa: a fonte não informou o mês desta coleta`,
+          `A última coleta trouxe ${fmtNum(resumo.linhas_todas_competencias || 0)} linhas de folha sem carimbo de competência. Somá-las publicaria vários meses como se fossem o custo de um só, então os totais mensais, a contagem de comissionados e o maior vencimento ficam suspensos até a próxima coleta com o mês identificado. Isto é um limite do dado, não um indício de irregularidade.`,
+          orgao.status || "Fonte: Portal de Transparência (Betha) · Pessoal",
+          "pessoal.html"
+        );
+      });
+
     if (camComQtd > 0) {
       const pctCam  = ((camComQtd  / camServQtd)  * 100).toFixed(1);
       const pctPref = ((prefComQtd / prefServQtd) * 100).toFixed(1);

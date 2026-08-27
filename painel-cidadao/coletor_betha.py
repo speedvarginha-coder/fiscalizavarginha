@@ -139,7 +139,7 @@ def get_token(force: bool = False, portal_hash: str = PORTAL_HASH) -> str:
 
     print("  -> Capturando token Betha (Playwright)...")
     tok = _grab_token_via_browser(portal_hash)
-    cache.write_text(json.dumps(tok, indent=2), encoding="utf-8")
+    cache.write_text(json.dumps(tok, indent=2), encoding="utf-8", newline="\n")
     return tok["accessToken"]
 
 

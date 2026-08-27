@@ -60,7 +60,7 @@ def fix():
             print(f"  Sem CNPJ: {sem_cnpj}")
             print(f"  Execucao direta: {exec_dir}")
 
-            file_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+            file_path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
             print(f"Arquivo {file_path} salvo com sucesso!\n")
         else:
             print(f"Nenhuma emenda precisou ser reclassificada em {file_path.name}.\n")

@@ -130,7 +130,7 @@ def enriquecer_arquivo(path: pathlib.Path) -> dict:
             contagem_key = c["grau"]
             contagem[contagem_key] = contagem.get(contagem_key, 0) + 1
             total += 1
-    path.write_text(json.dumps(dados, ensure_ascii=False, indent=2), encoding="utf-8")
+    path.write_text(json.dumps(dados, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     return {"arquivo": str(path), "materias": total, **contagem}
 
 
@@ -153,7 +153,7 @@ def enriquecer_data_js(path: pathlib.Path) -> dict:
             contagem[c["grau"]] = contagem.get(c["grau"], 0) + 1
             total += 1
     novo = cabecalho + json.dumps(dados, ensure_ascii=False, indent=2) + rodape
-    path.write_text(novo, encoding="utf-8")
+    path.write_text(novo, encoding="utf-8", newline="\n")
     return {"arquivo": str(path), "materias": total, **contagem}
 
 

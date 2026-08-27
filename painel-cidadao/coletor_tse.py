@@ -222,7 +222,7 @@ def main() -> int:
         "erros": erros,
     }
     _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
-    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     os.replace(_tmp, OUT_PATH)
     print(f"✓ {len(resultado)} eleitos, {total_cruzamentos} cruzamento(s) → tse_doacoes.json")
     return 0

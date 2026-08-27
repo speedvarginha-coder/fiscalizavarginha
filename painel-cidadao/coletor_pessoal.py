@@ -350,6 +350,12 @@ def _coletar_prefeitura_folha_completa() -> tuple[list[dict], str]:
     # campo extra: secretaria de origem (ajuda filtros futuros no painel)
     for s, r in zip(servidores, rows):
         s["orgao"] = r.get("orgao", "")
+        # A consulta filtrou a competencia na origem, entao toda linha e deste
+        # mes — mas isso ficava so no resumo. Sem o carimbo na linha, quem le o
+        # chunk (painel, testes, auditoria) nao consegue conferir se o total
+        # mensal corresponde ao mes anunciado, que e justamente a trava contra
+        # publicar varios meses como custo de um.
+        s["competencia"] = comp
     return servidores, comp
 
 

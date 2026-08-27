@@ -324,7 +324,7 @@ TEMPLATE_CONFIG = {
 def carregar_config() -> dict:
     if not CONFIG_PATH.exists():
         CONFIG_PATH.parent.mkdir(parents=True, exist_ok=True)
-        CONFIG_PATH.write_text(json.dumps(TEMPLATE_CONFIG, indent=2, ensure_ascii=False), encoding="utf-8")
+        CONFIG_PATH.write_text(json.dumps(TEMPLATE_CONFIG, indent=2, ensure_ascii=False), encoding="utf-8", newline="\n")
         print(f"⚠️ Arquivo de configuração criado em: {CONFIG_PATH}")
         print("Configure seus tokens e URL do WhatsApp antes de rodar o script.")
         sys.exit(0)
@@ -348,7 +348,7 @@ def salvar_enviados(enviados: set[str]):
     # O monitor agora cobre diversas fontes. Manter todos os IDs evita que um
     # registro antigo volte ao grupo quando o histórico ultrapassar 1.000 itens.
     enviados_lista = sorted(enviados)
-    with open(SENT_PATH, "w", encoding="utf-8") as f:
+    with open(SENT_PATH, "w", encoding="utf-8", newline="\n") as f:
         json.dump(enviados_lista, f, indent=2, ensure_ascii=False)
 
 
@@ -374,7 +374,7 @@ def salvar_cursor_publicacao(pid: str, chave_ordem: tuple, origem: str = "envio_
         "origem": origem,
     }
     temporario = PUBLICATION_CURSOR_PATH.with_suffix(".tmp")
-    with open(temporario, "w", encoding="utf-8") as f:
+    with open(temporario, "w", encoding="utf-8", newline="\n") as f:
         json.dump(conteudo, f, indent=2, ensure_ascii=False)
     temporario.replace(PUBLICATION_CURSOR_PATH)
 
@@ -560,7 +560,7 @@ def salvar_relatorio_revisao(
     temporario = REVIEW_QUEUE_PATH.with_suffix(".tmp")
     temporario.write_text(
         json.dumps(payload, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
     temporario.replace(REVIEW_QUEUE_PATH)
 

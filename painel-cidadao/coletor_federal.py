@@ -382,7 +382,62 @@ def _load_cnpjs_betha() -> set[str]:
 
 # ── Resumo ─────────────────────────────────────────────────────────────────────
 
-def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]) -> dict:
+def _resumo_transferencias_especiais(especiais: list[dict] | None) -> dict:
+    """Agrega as transferencias especiais sem transformar desconhecido em zero.
+
+    Recebimento e execucao sao estagios diferentes: o municipio pode ter
+    recebido o dinheiro na conta e ainda nao ter prestado contas. Somar os dois
+    no mesmo campo, ou publicar zero onde a fonte nao informou, faria o painel
+    afirmar que nada foi executado — que e coisa diferente de nao saber.
+    """
+    if especiais is None:
+        return {
+            "coletado": False,
+            "qtd": 0,
+            "totalIndicado": None,
+            "totalEmpenhado": None,
+            "totalPago": None,
+            "totalRecebidoConfirmado": None,
+            "totalExecutadoComRelatorio": None,
+            "comRelatorioDeExecucao": 0,
+            "semRelatorioDeExecucao": 0,
+            "descricao": "Transferencias especiais (Transferegov) nao coletadas neste ciclo.",
+        }
+
+    def soma(chave: str) -> float:
+        return round(sum(float(item.get(chave) or 0) for item in especiais), 2)
+
+    com_relatorio = [item for item in especiais if item.get("valorExecutado") is not None]
+    sem_relatorio = [item for item in especiais if item.get("valorExecutado") is None]
+
+    return {
+        "coletado": True,
+        "qtd": len(especiais),
+        "totalIndicado": soma("valorIndicado"),
+        "totalEmpenhado": soma("valorEmpenhado"),
+        "totalPago": soma("valorPago"),
+        "totalRecebidoConfirmado": soma("valorRecebido"),
+        # Nenhum registro com execucao informada => o total e desconhecido, nao
+        # zero. Com cobertura parcial, o valor sai acompanhado da contagem.
+        "totalExecutadoComRelatorio": (
+            round(sum(float(item["valorExecutado"]) for item in com_relatorio), 2)
+            if com_relatorio else None
+        ),
+        "comRelatorioDeExecucao": len(com_relatorio),
+        "semRelatorioDeExecucao": len(sem_relatorio),
+        "descricao": (
+            "Emenda paga direto na conta do municipio (Transferegov). Recebido e o que "
+            "entrou; executado so aparece quando ha relatorio de gestao publicado."
+        ),
+    }
+
+
+def _resumo(
+    emendas: list[dict],
+    convenios: list[dict],
+    alertas_ceis: list[dict],
+    especiais: list[dict] | None = None,
+) -> dict:
     total_empenhado = sum(e["valorEmpenhado"] for e in emendas)
     total_liquidado = sum(e["valorLiquidado"] for e in emendas)
     total_pago = sum(e["valorPago"] for e in emendas)
@@ -411,6 +466,7 @@ def _resumo(emendas: list[dict], convenios: list[dict], alertas_ceis: list[dict]
             "qtd": len(alertas_ceis),
             "descricao": "Fornecedores de Varginha com sanção federal (CEIS/CGU)",
         },
+        "transferenciasEspeciais": _resumo_transferencias_especiais(especiais),
         "fontes": [
             "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
             "CEIS — Cadastro de Empresas Inidôneas e Suspensas (CGU)",
@@ -479,18 +535,27 @@ def coletar() -> dict:
     if not ceis_ok and existente.get("alertas_ceis"):
         alertas_ceis = existente["alertas_ceis"]
 
+    # Transferencias especiais (Transferegov): emenda paga direto na conta do
+    # municipio, fora do Portal da Transparencia. O coletor e estrito e levanta
+    # FonteInconsistenteError em vez de devolver numero duvidoso — aqui isso
+    # degrada para o dado da ultima coleta, nunca para zero.
+    especiais_payload, especiais_status, especiais_erro = _coletar_especiais(existente)
+    especiais_itens = especiais_payload.get("emendas") if especiais_payload else None
+
     payload = {
         "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
         "atualizado_em": dt.datetime.now().isoformat(),
-        "resumo": _resumo(emendas, convenios, alertas_ceis),
+        "resumo": _resumo(emendas, convenios, alertas_ceis, especiais_itens),
         "emendas_api": emendas,
         "convenios": convenios,
         "alertas_ceis": alertas_ceis,
         "sancoes_fornecedores": alertas_ceis,
+        "transferencias_especiais": especiais_payload,
         "status_fontes": {
             "emendas": {"status": emendas_status, "motivo": emendas_erro},
             "convenios": {"status": convenios_status, "motivo": convenios_erro},
             "ceis": {"status": "ok" if ceis_ok else "preservado", "motivo": ceis_erro},
+            "transferencias_especiais": {"status": especiais_status, "motivo": especiais_erro},
         },
         "links_auditoria": [
             {
@@ -516,6 +581,33 @@ def coletar() -> dict:
         ],
     }
     return payload
+
+
+def _coletar_especiais(existente: dict) -> tuple[dict | None, str, str]:
+    """Coleta as transferencias especiais, preservando a base anterior na falha.
+
+    Devolve (payload, status, motivo). Status segue o vocabulario das outras
+    fontes: ok | preservado | erro — para a pagina de monitoramento dizer ao
+    cidadao por que o bloco esta como esta.
+    """
+    anterior = (existente or {}).get("transferencias_especiais")
+    try:
+        import transferegov_especiais as tge
+    except Exception as e:  # modulo ausente nao pode derrubar a coleta federal
+        return anterior, ("preservado" if anterior else "erro"), f"modulo indisponivel: {e}"
+
+    try:
+        payload = tge.coletar_transferencias_especiais()
+        qtd = payload.get("metadata", {}).get("emendasUnicas", 0)
+        print(f"  ✓ Transferencias especiais: {qtd} emenda(s) unica(s).")
+        return payload, "ok", ""
+    except Exception as e:
+        motivo = f"{type(e).__name__}: {e}"
+        if anterior:
+            print(f"  ! Transferencias especiais falharam ({motivo}); preservando base anterior.")
+            return anterior, "preservado", motivo
+        print(f"  ! Transferencias especiais indisponiveis ({motivo}).")
+        return None, "erro", motivo
 
 
 def _fallback(silencioso: bool = False) -> dict:
@@ -547,10 +639,10 @@ def _fallback(silencioso: bool = False) -> dict:
 def salvar(payload: dict | None = None) -> dict:
     payload = payload or coletar()
     out = DATA / "federal.json"
-    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     chunks_dir = DATA / "chunks"
     chunks_dir.mkdir(exist_ok=True)
-    (chunks_dir / "federal.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    (chunks_dir / "federal.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     print("  OK: federal.json salvo.")
     return payload
 

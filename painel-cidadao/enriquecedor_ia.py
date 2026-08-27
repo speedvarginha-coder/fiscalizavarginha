@@ -108,7 +108,7 @@ def _cache_set(chave: str, valor: dict) -> None:
         CACHE_DIR.mkdir(parents=True, exist_ok=True)
         (CACHE_DIR / f"{chave}.json").write_text(
             json.dumps(valor, ensure_ascii=False), encoding="utf-8"
-        )
+        , newline="\n")
     except Exception:
         pass
 

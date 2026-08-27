@@ -89,11 +89,13 @@ function gerarResumoHome(prefeitura) {
   };
 }
 
-if (!fs.existsSync(dataJsPath)) {
-  throw new Error(`data.js nao encontrado: ${dataJsPath}`);
-}
-
-const data = parseDataJs(fs.readFileSync(dataJsPath, "utf8"));
+// data.js e o fallback do modo file://: gitignorado e regenerado pelo coletor.
+// Num clone limpo ele nao existe, e exigir sua presenca aqui travava tambem a
+// regeneracao do manifesto — ou seja, `validate:data` e `release` nao rodavam
+// em nenhuma maquina que nao fosse a de coleta. A sincronia do bundle e
+// opcional; o manifesto, que e o que o portao de schema confere, nao e.
+const temDataJs = fs.existsSync(dataJsPath);
+const data = temDataJs ? parseDataJs(fs.readFileSync(dataJsPath, "utf8")) : null;
 const synced = [];
 
 if (fs.existsSync(prefeituraPath)) {
@@ -103,20 +105,24 @@ if (fs.existsSync(prefeituraPath)) {
   );
 }
 
-for (const key of keys) {
-  const chunkPath = path.join(chunksDir, `${key}.json`);
-  if (!fs.existsSync(chunkPath)) continue;
-  data[key] = readJson(chunkPath);
-  synced.push(key);
+if (data) {
+  for (const key of keys) {
+    const chunkPath = path.join(chunksDir, `${key}.json`);
+    if (!fs.existsSync(chunkPath)) continue;
+    data[key] = readJson(chunkPath);
+    synced.push(key);
+  }
 }
 
-writeFileWithRetry(
-  dataJsPath,
-  "/* Gerado por coletor.py — não editar à mão. */\n"
-    + "window.FISCALIZA_DATA = "
-    + JSON.stringify(data, null, 2)
-    + ";\n",
-);
+if (data) {
+  writeFileWithRetry(
+    dataJsPath,
+    "/* Gerado por coletor.py — não editar à mão. */\n"
+      + "window.FISCALIZA_DATA = "
+      + JSON.stringify(data, null, 2)
+      + ";\n",
+  );
+}
 
 const manifest = fs.existsSync(manifestPath) ? readJson(manifestPath) : {};
 manifest.gerado_em = new Date().toISOString();
@@ -147,4 +153,9 @@ manifest.snapshots = {
 };
 writeFileWithRetry(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 
-console.log(`data.js sincronizado: ${synced.join(", ") || "nenhum chunk auxiliar"}`);
+console.log(
+  data
+    ? `data.js sincronizado: ${synced.join(", ") || "nenhum chunk auxiliar"}`
+    : "data.js ausente (gitignorado, gerado pelo coletor) — sincronia do bundle pulada.",
+);
+console.log(`manifest.json regenerado: ${Object.keys(manifest.chunks).length} chunks.`);
