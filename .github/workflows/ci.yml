@@ -77,6 +77,15 @@ jobs:
         if: always()
         run: npx playwright test tests/calculos.spec.js tests/cruzamentos-externos.spec.js --workers=1
 
+      # Precisa de navegador: renderiza as páginas e reprova quando um dado
+      # ausente vira "R$ 0,00" ou vaza NaN/undefined para o cidadão.
+      - name: Zeros enganosos nas páginas publicadas
+        id: zeros
+        if: always()
+        run: |
+          npx playwright install --with-deps chromium
+          npx playwright test tests/zeros-enganosos.spec.js --workers=1
+
       - name: Resiliência dos coletores e explicabilidade dos cruzamentos
         id: pipeline
         if: always()
@@ -97,6 +106,7 @@ jobs:
             numeros=${{ steps.numeros.outcome }}
             editorial=${{ steps.editorial.outcome }}
             calculos=${{ steps.calculos.outcome }}
+            zeros=${{ steps.zeros.outcome }}
             pipeline=${{ steps.pipeline.outcome }}
         shell: bash
         run: |

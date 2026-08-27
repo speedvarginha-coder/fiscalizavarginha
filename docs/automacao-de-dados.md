@@ -118,6 +118,29 @@ Sai com codigo 1 quando o dado esta defasado. Site inacessivel nao reprova
 sozinho — isso e assunto do `uptime-monitor.yml`, que agora tambem registra a
 idade do dado servido em cada execucao.
 
+### Antes de publicar: o repositorio esta atras do site?
+
+Em 26/08/2026 uma sessao do Codex trabalhou direto na maquina local e publicou
+por FTPS na Hostinger **sem commitar no GitHub**. O site ficou a frente do
+repositorio, e um `npm run release` a partir do repositorio teria sobrescrito o
+site, apagando trabalho que so existia naquela maquina.
+
+Sintomas de que isso aconteceu de novo:
+
+- arquivos novos aparecem em `git status` que voce nao reconhece do ultimo ciclo;
+- `npm run data:frescor` diz que o repositorio esta velho, mas o site esta novo;
+- o total de uma base (federal, estadual) difere entre o site e o chunk local.
+
+Regra: **commitar e empurrar antes de empacotar**. O pacote de deploy sai do
+`painel-cidadao/` do disco, nao do que esta versionado — entao o git e a unica
+prova de que o que foi ao ar tambem foi guardado.
+
+```bash
+git status              # nada pendente antes de empacotar
+npm run data:frescor    # repositorio e site na mesma idade
+npm run release
+```
+
 ### Roteiro quando a issue abrir
 
 1. A tarefa ainda existe e esta habilitada?

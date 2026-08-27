@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-08-27T15:41:31.018Z",
+  "gerado_em": "2026-08-27T16:20:25.062Z",
   "chunks": {
     "atualizado_em": {
       "arquivo": "data/chunks/atualizado_em.json",
@@ -73,8 +73,8 @@
     },
     "home_resumo": {
       "arquivo": "data/chunks/home_resumo.json",
-      "bytes": 557,
-      "sha256": "b31cd952876f9d5eac51eef296b55786da3884bfe32077c3ea930ae36e55a423"
+      "bytes": 611,
+      "sha256": "68280b0b9db26dacd551df09d60248e0004e434e3c2bef8c18228531e6d58427"
     },
     "indice_relevancia": {
       "arquivo": "data/chunks/indice_relevancia.json",

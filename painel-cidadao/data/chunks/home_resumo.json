@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-27T15:41:31.013Z",
+  "gerado_em": "2026-08-27T16:20:25.009Z",
   "fonte": "data/chunks/prefeitura.json",
   "fonte_sha256": "68af619e43bf12ec41d90c5cea5c5e5bbb53dcc65d848ef7dbb41be0c25d33a6",
   "ano_atual": 2026,
@@ -14,5 +14,7 @@
   "contratos_ano_anterior_qtd": 562,
   "obras_qtd": 130,
   "sinais_emendas_qtd": 239,
-  "licitacoes_qtd": 34
+  "licitacoes_qtd": 34,
+  "diarias_qtd": 5749,
+  "diarias_total": 2328180.42
 }

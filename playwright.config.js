@@ -29,12 +29,12 @@ module.exports = defineConfig({
   projects: [
     {
       name: "chromium",
-      testIgnore: /(?:http|emendas-audit)\.spec\.js/,
+      testIgnore: /(?:http|emendas-audit|zeros-enganosos)\.spec\.js/,
       use: { ...devices["Desktop Chrome"] },
     },
     {
       name: "http",
-      testMatch: /(?:http|emendas-audit)\.spec\.js/,
+      testMatch: /(?:http|emendas-audit|zeros-enganosos)\.spec\.js/,
       use: { baseURL: "http://127.0.0.1:4173" },
     },
   ],

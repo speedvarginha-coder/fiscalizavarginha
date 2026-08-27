@@ -442,6 +442,19 @@
         return s + (v ? Number(v.valor || 0) : 0);
       }, 0);
 
+    // Nem todo ato publica valor extraível. Quando NENHUM dos atos da janela
+    // traz valor, a soma é 0 por ausência de dado, não porque nada se moveu —
+    // e "R$ 0,00 movimentado" ao lado de "33 atos na semana" afirma o oposto.
+    const atosComValor = atos.filter(a => a.data >= seteDias).filter(a =>
+      (a.valores || []).some(v => /valor.*total|estimad|original/i.test(v.rotulo || "") && Number(v.valor) > 0),
+    ).length;
+    const valorSemanaTexto = (atosSemana > 0 && atosComValor === 0)
+      ? "não identificado"
+      : fmtBRL(valorSemana);
+    const valorSemanaNota = (atosSemana > 0 && atosComValor === 0)
+      ? `<strong>${fmtNum(atosSemana)}</strong> ato${atosSemana !== 1 ? "s" : ""} na semana, nenhum com valor publicado`
+      : `<strong>${fmtNum(atosSemana)}</strong> ato${atosSemana !== 1 ? "s" : ""} na semana`;
+
     el.innerHTML = `
       <div class="placar-card placar-card--count">
         <span class="placar-card__icon">${icon("relogio", { size: 24 })}</span>
@@ -451,9 +464,9 @@
       </div>
       <div class="placar-card placar-card--money">
         <span class="placar-card__icon">${icon("cifrao", { size: 24 })}</span>
-        <span class="placar-card__valor">${fmtBRL(valorSemana)}</span>
+        <span class="placar-card__valor">${valorSemanaTexto}</span>
         <span class="placar-card__label">Valor movimentado (7 dias)</span>
-        <span class="placar-card__sub"><strong>${fmtNum(atosSemana)}</strong> ato${atosSemana !== 1 ? "s" : ""} na semana</span>
+        <span class="placar-card__sub">${valorSemanaNota}</span>
       </div>
       <div class="placar-card placar-card--warn">
         <span class="placar-card__icon">${icon("alerta", { size: 24 })}</span>

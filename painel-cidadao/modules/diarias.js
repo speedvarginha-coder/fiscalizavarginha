@@ -446,7 +446,16 @@
             <article>
               <span>Período mais recente na base</span>
               <strong>${periodoMaisRecente ? esc(mesRotulo(periodoMaisRecente)) : "Não identificado"}</strong>
-              <small>${periodoMaisRecente ? `${fmtNum(registrosMaisRecentes.length)} registro(s) · ${fmtBRL(totalMaisRecente)}` : "Sem registros no recorte anual"}</small>
+              <small>${periodoMaisRecente
+                ? `${fmtNum(registrosMaisRecentes.length)} registro(s) · ${
+                    // Diária recém-autorizada entra na fonte sem valor. Publicar
+                    // "R$ 0,00" para um lote inteiro assim diz que o mês não
+                    // custou nada, quando a fonte apenas ainda não informou.
+                    registrosMaisRecentes.length && registrosMaisRecentes.every(d => !Number(d.valor_total))
+                      ? "valor ainda não informado na fonte"
+                      : fmtBRL(totalMaisRecente)
+                  }`
+                : "Sem registros no recorte anual"}</small>
             </article>
           </div>
           <div class="diarias-ranking__grid">

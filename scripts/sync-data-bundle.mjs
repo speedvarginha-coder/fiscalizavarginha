@@ -57,6 +57,26 @@ function parseDataJs(text) {
   return JSON.parse(text.slice(start, end + 1));
 }
 
+/** A home não carrega diarias.json (3,2 MB) — só o resumo. Sem estes campos,
+ *  `(D.diarias || {}).prefeitura || []` dava array vazio e a home publicava
+ *  "0 registros · R$ 0,00 em diárias" para uma base com milhares de registros:
+ *  desconhecido virando zero na porta de entrada do painel. */
+function resumoDiarias() {
+  const caminho = path.join(chunksDir, "diarias.json");
+  if (!fs.existsSync(caminho)) return null;
+  try {
+    const base = readJson(caminho);
+    const lista = Array.isArray(base?.prefeitura) ? base.prefeitura : [];
+    if (!lista.length) return null;
+    return {
+      qtd: lista.length,
+      total: Number(lista.reduce((s, d) => s + (Number(d?.valor_total) || 0), 0).toFixed(2)),
+    };
+  } catch {
+    return null;
+  }
+}
+
 function gerarResumoHome(prefeitura) {
   const contratos = Array.isArray(prefeitura.contratos) ? prefeitura.contratos : [];
   const obras = Array.isArray(prefeitura.obras_publicas) ? prefeitura.obras_publicas : [];
@@ -86,6 +106,10 @@ function gerarResumoHome(prefeitura) {
     licitacoes_qtd: Array.isArray(prefeitura.licit_andamento)
       ? prefeitura.licit_andamento.length
       : 0,
+    // null (e não 0) quando a base não pôde ser lida: a home distingue
+    // "nenhuma diária" de "não sei".
+    diarias_qtd: resumoDiarias()?.qtd ?? null,
+    diarias_total: resumoDiarias()?.total ?? null,
   };
 }
 
