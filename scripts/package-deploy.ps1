@@ -61,12 +61,45 @@ New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Nul
 # Cache-busting do service worker: sem bump da constante CACHE, visitantes
 # antigos ficam com app.js/style.css velhos indefinidamente (o SW serve do
 # cache). Cada pacote recebe uma versao unica por timestamp.
+$carimbo = Get-Date -Format "yyyyMMddHHmm"
 $swStage = Join-Path $stage "sw.js"
 if (Test-Path -LiteralPath $swStage) {
-  $swVersion = "fiscaliza-" + (Get-Date -Format "yyyyMMddHHmm")
+  $swVersion = "fiscaliza-" + $carimbo
   (Get-Content -LiteralPath $swStage -Raw) -replace 'const CACHE = "[^"]+";', ('const CACHE = "' + $swVersion + '";') |
     Set-Content -LiteralPath $swStage -Encoding utf8
   Write-Host "sw.js: CACHE -> $swVersion"
+}
+
+# Cache-busting do CSS e do JS. Bumpar so o service worker nao basta: o
+# .htaccess manda o navegador guardar CSS e JS por 7 dias, e as URLs sao fixas
+# no HTML (style.css?v=..., data-loader.js?v=...) e no proprio data-loader
+# (BUILD_VERSION, que versiona app.js e todos os modules/). Ate 27/08/2026 esses
+# tres valores estavam parados em "20260730" — publicar entregava arquivo novo
+# em URL velha, e quem ja tinha visitado o site continuava vendo a versao
+# anterior por ate uma semana. Agora cada pacote carimba os tres.
+# Recursivo e generico de proposito: pega style.css e data-loader.js da raiz e
+# tambem os do portal /emendas (styles.css, app.js, data/*.js), sem precisar
+# listar asset por asset — asset novo com ?v= entra sozinho.
+$assetVersion = $carimbo
+$htmlAlterados = 0
+$refsAlteradas = 0
+Get-ChildItem -LiteralPath $stage -Filter "*.html" -File -Recurse | ForEach-Object {
+  $original = Get-Content -LiteralPath $_.FullName -Raw
+  $refsAlteradas += ([regex]::Matches($original, '\.(?:css|js)\?v=[^"'']+')).Count
+  $novo = $original -replace '(\.(?:css|js))\?v=[^"'']+', ('$1?v=' + $assetVersion)
+  if ($novo -ne $original) {
+    Set-Content -LiteralPath $_.FullName -Value $novo -Encoding utf8
+    $htmlAlterados++
+  }
+}
+Write-Host "cache-bust: $refsAlteradas referencia(s) em $htmlAlterados HTML -> ?v=$assetVersion"
+
+$loaderStage = Join-Path $stage "data-loader.js"
+if (Test-Path -LiteralPath $loaderStage) {
+  (Get-Content -LiteralPath $loaderStage -Raw) `
+    -replace 'const BUILD_VERSION = "[^"]+";', ('const BUILD_VERSION = "' + $assetVersion + '";') |
+    Set-Content -LiteralPath $loaderStage -Encoding utf8
+  Write-Host "data-loader.js: BUILD_VERSION -> $assetVersion"
 }
 
 Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
