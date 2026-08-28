@@ -83,7 +83,7 @@ def _write_json_atomic(path: Path, payload) -> None:
     """
     texto = json.dumps(payload, ensure_ascii=False, indent=2)
     tmp = path.with_name(f".{path.name}.tmp{os.getpid()}")
-    tmp.write_text(texto, encoding="utf-8")
+    tmp.write_text(texto, encoding="utf-8", newline="\n")
     try:
         for tentativa in range(12):
             try:
@@ -1143,7 +1143,7 @@ def _save_data_js(payload: dict) -> None:
     out.write_text(
         "/* Gerado por coletor.py — não editar à mão. */\n"
         "window.FISCALIZA_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
     print(f"  ✓ data.js  ({out.stat().st_size // 1024} KB)")
 
@@ -2742,7 +2742,7 @@ def main() -> int:
             "sha256": hashlib.sha256(content).hexdigest(),
         }
     manifest_out = DATA / "manifest.json"
-    manifest_out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    manifest_out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     print(f"  ✓ manifest.json  ({manifest_out.stat().st_size} bytes)")
 
     print("\n✓ Pronto. Abra index.html no navegador.\n")

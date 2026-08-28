@@ -57,6 +57,26 @@ function parseDataJs(text) {
   return JSON.parse(text.slice(start, end + 1));
 }
 
+/** A home não carrega diarias.json (3,2 MB) — só o resumo. Sem estes campos,
+ *  `(D.diarias || {}).prefeitura || []` dava array vazio e a home publicava
+ *  "0 registros · R$ 0,00 em diárias" para uma base com milhares de registros:
+ *  desconhecido virando zero na porta de entrada do painel. */
+function resumoDiarias() {
+  const caminho = path.join(chunksDir, "diarias.json");
+  if (!fs.existsSync(caminho)) return null;
+  try {
+    const base = readJson(caminho);
+    const lista = Array.isArray(base?.prefeitura) ? base.prefeitura : [];
+    if (!lista.length) return null;
+    return {
+      qtd: lista.length,
+      total: Number(lista.reduce((s, d) => s + (Number(d?.valor_total) || 0), 0).toFixed(2)),
+    };
+  } catch {
+    return null;
+  }
+}
+
 function gerarResumoHome(prefeitura) {
   const contratos = Array.isArray(prefeitura.contratos) ? prefeitura.contratos : [];
   const obras = Array.isArray(prefeitura.obras_publicas) ? prefeitura.obras_publicas : [];
@@ -86,14 +106,20 @@ function gerarResumoHome(prefeitura) {
     licitacoes_qtd: Array.isArray(prefeitura.licit_andamento)
       ? prefeitura.licit_andamento.length
       : 0,
+    // null (e não 0) quando a base não pôde ser lida: a home distingue
+    // "nenhuma diária" de "não sei".
+    diarias_qtd: resumoDiarias()?.qtd ?? null,
+    diarias_total: resumoDiarias()?.total ?? null,
   };
 }
 
-if (!fs.existsSync(dataJsPath)) {
-  throw new Error(`data.js nao encontrado: ${dataJsPath}`);
-}
-
-const data = parseDataJs(fs.readFileSync(dataJsPath, "utf8"));
+// data.js e o fallback do modo file://: gitignorado e regenerado pelo coletor.
+// Num clone limpo ele nao existe, e exigir sua presenca aqui travava tambem a
+// regeneracao do manifesto — ou seja, `validate:data` e `release` nao rodavam
+// em nenhuma maquina que nao fosse a de coleta. A sincronia do bundle e
+// opcional; o manifesto, que e o que o portao de schema confere, nao e.
+const temDataJs = fs.existsSync(dataJsPath);
+const data = temDataJs ? parseDataJs(fs.readFileSync(dataJsPath, "utf8")) : null;
 const synced = [];
 
 if (fs.existsSync(prefeituraPath)) {
@@ -103,20 +129,24 @@ if (fs.existsSync(prefeituraPath)) {
   );
 }
 
-for (const key of keys) {
-  const chunkPath = path.join(chunksDir, `${key}.json`);
-  if (!fs.existsSync(chunkPath)) continue;
-  data[key] = readJson(chunkPath);
-  synced.push(key);
+if (data) {
+  for (const key of keys) {
+    const chunkPath = path.join(chunksDir, `${key}.json`);
+    if (!fs.existsSync(chunkPath)) continue;
+    data[key] = readJson(chunkPath);
+    synced.push(key);
+  }
 }
 
-writeFileWithRetry(
-  dataJsPath,
-  "/* Gerado por coletor.py — não editar à mão. */\n"
-    + "window.FISCALIZA_DATA = "
-    + JSON.stringify(data, null, 2)
-    + ";\n",
-);
+if (data) {
+  writeFileWithRetry(
+    dataJsPath,
+    "/* Gerado por coletor.py — não editar à mão. */\n"
+      + "window.FISCALIZA_DATA = "
+      + JSON.stringify(data, null, 2)
+      + ";\n",
+  );
+}
 
 const manifest = fs.existsSync(manifestPath) ? readJson(manifestPath) : {};
 manifest.gerado_em = new Date().toISOString();
@@ -147,4 +177,9 @@ manifest.snapshots = {
 };
 writeFileWithRetry(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 
-console.log(`data.js sincronizado: ${synced.join(", ") || "nenhum chunk auxiliar"}`);
+console.log(
+  data
+    ? `data.js sincronizado: ${synced.join(", ") || "nenhum chunk auxiliar"}`
+    : "data.js ausente (gitignorado, gerado pelo coletor) — sincronia do bundle pulada.",
+);
+console.log(`manifest.json regenerado: ${Object.keys(manifest.chunks).length} chunks.`);

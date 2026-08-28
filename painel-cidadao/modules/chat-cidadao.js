@@ -168,11 +168,25 @@
   }
 
   function renderMarkdown(txt) {
-    // Extract links before HTML escaping to preserve URLs
+    // Os links saem do texto ANTES do escape (para o URL sobreviver) e voltam
+    // DEPOIS — então precisam ser escapados aqui, um por um. Sem isso, rótulo e
+    // URL entravam crus no innerHTML: como `[^)]+` aceita aspas, um link
+    // forjado escapava do atributo href. A resposta vem da IA, mas o histórico
+    // enviado no pedido é controlado por quem chama o endpoint.
     const links = [];
-    txt = txt.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, (_, label, url) => {
+    txt = txt.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s"'<>]+)\)/g, (inteiro, label, url) => {
+      let href;
+      try {
+        const u = new URL(url);
+        if (u.protocol !== "http:" && u.protocol !== "https:") return inteiro;
+        href = u.href;
+      } catch {
+        return inteiro; // não é URL válida: fica como texto e será escapado
+      }
       const ph = `__LINK_${links.length}__`;
-      links.push(`<a href="${url}" target="_blank" rel="noopener noreferrer">${label}</a>`);
+      links.push(
+        `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`,
+      );
       return ph;
     });
 

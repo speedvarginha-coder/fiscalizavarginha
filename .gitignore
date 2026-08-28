@@ -151,3 +151,7 @@ tmp/
 
 # Registros brutos do Avalie: contem hash de IP, hash de conta e o sal
 avalie_dados/
+
+# ---- Config de maquina e artefatos de build (nao sao codigo do produto) ----
+.claude/settings.local.json
+dashboard/tsconfig.tsbuildinfo

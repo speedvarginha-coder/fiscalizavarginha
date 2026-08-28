@@ -84,3 +84,76 @@ detectar mudanca quando a fonte permite e, quando nao permite, atualizar por jan
 - Assinaturas das fontes: `private/state/source-fingerprints.json`
 
 Os backups mantem as ultimas 8 coletas bem-sucedidas ou tentadas.
+
+---
+
+## Quando a propria automacao para
+
+Toda a rotina acima roda no Agendador de Tarefas do Windows, na maquina do
+mantenedor. O alerta de falha (`check-pipeline-health.mjs`) sai por SMTP
+configurado na **mesma maquina**. Se ela desliga, trava ou perde a tarefa
+agendada, a coleta para e o alerta para junto.
+
+Foi o que aconteceu entre 11/08 e 27/08/2026: dezesseis dias sem coleta, com o
+site respondendo normalmente e servindo dado velho. O monitor externo nao pegou
+porque ele confere se o site esta no ar e se o manifesto bate com o release —
+um site congelado passa nos dois.
+
+### Vigia da coleta (nuvem, independente da maquina local)
+
+O workflow `.github/workflows/vigia-coleta.yml` roda a cada 6 horas no GitHub,
+sem segredo nenhum, e compara a idade do carimbo de coleta com um limite
+(padrao: 36 horas). Quando passa do limite, ele **abre uma issue** com a
+etiqueta `coleta-parada` — canal que sobrevive a queda do computador local,
+porque o GitHub notifica por e-mail e push. Quando a coleta volta, a issue e
+fechada sozinha.
+
+Rodar a mesma checagem na mao:
+
+```bash
+npm run data:frescor
+```
+
+Sai com codigo 1 quando o dado esta defasado. Site inacessivel nao reprova
+sozinho — isso e assunto do `uptime-monitor.yml`, que agora tambem registra a
+idade do dado servido em cada execucao.
+
+### Antes de publicar: o repositorio esta atras do site?
+
+Em 26/08/2026 uma sessao do Codex trabalhou direto na maquina local e publicou
+por FTPS na Hostinger **sem commitar no GitHub**. O site ficou a frente do
+repositorio, e um `npm run release` a partir do repositorio teria sobrescrito o
+site, apagando trabalho que so existia naquela maquina.
+
+Sintomas de que isso aconteceu de novo:
+
+- arquivos novos aparecem em `git status` que voce nao reconhece do ultimo ciclo;
+- `npm run data:frescor` diz que o repositorio esta velho, mas o site esta novo;
+- o total de uma base (federal, estadual) difere entre o site e o chunk local.
+
+Regra: **commitar e empurrar antes de empacotar**. O pacote de deploy sai do
+`painel-cidadao/` do disco, nao do que esta versionado — entao o git e a unica
+prova de que o que foi ao ar tambem foi guardado.
+
+```bash
+git status              # nada pendente antes de empacotar
+npm run data:frescor    # repositorio e site na mesma idade
+npm run release
+```
+
+### Roteiro quando a issue abrir
+
+1. A tarefa ainda existe e esta habilitada?
+   `Get-ScheduledTask -TaskName "Fiscaliza Varginha*" | Select TaskName,State`
+2. O ultimo arquivo em `private/logs/` diz onde o pipeline parou.
+3. Coleta manual: `npm run data:update`.
+4. Se a fonte estiver fora do ar e a recoleta nao for possivel agora:
+
+   ```bash
+   npm run data:reparar:folha   # reaplica a regra atual ao dado ja publicado
+   npm run data:bundle          # regenera o manifesto
+   ```
+
+   Isso nao inventa dado novo: apenas impede que totais sem competencia
+   carimbada continuem publicados como custo mensal. O passo 3 continua sendo
+   a correcao de verdade.

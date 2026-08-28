@@ -83,7 +83,7 @@ diarias["resumo"]["camara"] = {
     "quantidade_total": round(sum(d["quantidade"] for d in camara), 2),
     "servidores": len({d["funcionario"] for d in camara if d["funcionario"]}),
 }
-diarias_path.write_text(json.dumps(diarias, ensure_ascii=False, indent=2), encoding="utf-8")
+diarias_path.write_text(json.dumps(diarias, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
 print(f"  diarias.json atualizado ({diarias_path.stat().st_size // 1024} KB)")
 
 # 4. Reconstroi data.js via coletor.py --so-sapl (carrega JSONs existentes + grava data.js)

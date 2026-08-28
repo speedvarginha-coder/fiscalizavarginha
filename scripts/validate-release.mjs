@@ -401,6 +401,63 @@ function validateData() {
   validateDomainShapes(chunks);
 }
 
+/**
+ * O .htaccess manda o navegador guardar CSS e JS por 7 dias, e as URLs desses
+ * arquivos carregam a versao no proprio endereco (style.css?v=..., e o
+ * BUILD_VERSION que versiona app.js e os modules/). Se o empacotador nao
+ * carimbar uma versao nova, o pacote entrega arquivo novo em URL velha: quem ja
+ * visitou o site continua vendo a versao anterior por ate uma semana.
+ *
+ * Foi o que aconteceu entre 30/07 e 28/08/2026 — os tres valores ficaram
+ * parados em "20260730" enquanto CSS e JS mudavam. Aqui o release passa a
+ * reprovar em vez de publicar um pacote que o visitante nao vai receber.
+ */
+function validateCacheBusting() {
+  const versoes = new Map();
+  for (const file of walk(stageDir)) {
+    if (path.extname(file).toLowerCase() !== ".html") continue;
+    const rel = path.relative(stageDir, file).replace(/\\/g, "/");
+    const html = fs.readFileSync(file, "utf8");
+    for (const [, versao] of html.matchAll(/\.(?:css|js)\?v=([^"']+)/g)) {
+      if (!versoes.has(versao)) versoes.set(versao, []);
+      versoes.get(versao).push(rel);
+    }
+  }
+
+  if (versoes.size === 0) return; // nenhum asset versionado: nada a conferir
+
+  // Todas as referencias tem que sair com a MESMA versao: duas versoes no mesmo
+  // pacote significam que alguma escapou do carimbo.
+  assert(
+    versoes.size === 1,
+    `Pacote com ${versoes.size} versoes de asset diferentes (o carimbo nao pegou todas): `
+    + [...versoes.entries()].map(([v, arqs]) => `${v} em ${arqs.length} HTML`).join(" | "),
+  );
+
+  const [versao] = versoes.keys();
+  // O carimbo do empacotador e um timestamp yyyyMMddHHmm. Qualquer coisa fora
+  // desse formato e a versao escrita a mao no fonte, que nao muda entre pacotes.
+  assert(
+    /^\d{12}$/.test(versao),
+    `Versao de asset "${versao}" nao foi carimbada no empacotamento `
+    + "(esperado timestamp yyyyMMddHHmm). Sem carimbo novo, o visitante recorrente "
+    + "recebe o CSS/JS anterior por ate 7 dias.",
+  );
+
+  const loader = path.join(stageDir, "data-loader.js");
+  if (exists(loader)) {
+    const build = fs.readFileSync(loader, "utf8").match(/const BUILD_VERSION = "([^"]+)";/);
+    assert(build, "data-loader.js sem BUILD_VERSION: app.js e os modules/ ficariam sem cache-busting");
+    if (build) {
+      assert(
+        build[1] === versao,
+        `BUILD_VERSION (${build[1]}) diferente da versao dos assets (${versao}): `
+        + "app.js e os modules/ seriam servidos com versao propria, fora de sincronia com o CSS",
+      );
+    }
+  }
+}
+
 function validateDeploy() {
   assert(exists(stageDir), `Pasta de deploy nao encontrada: ${relative(stageDir)}`);
   assert(exists(zipPath), `Zip de deploy nao encontrado: ${relative(zipPath)}`);
@@ -425,6 +482,8 @@ function validateDeploy() {
       assert(!Number.isNaN(new Date(release.gerado_em).getTime()), "release.gerado_em deve ser data valida");
     }
   }
+
+  validateCacheBusting();
 
   const files = walk(stageDir);
   const forbiddenExtensions = new Set([".py", ".pyc", ".bat", ".txt", ".log", ".bak", ".backup", ".tmp"]);

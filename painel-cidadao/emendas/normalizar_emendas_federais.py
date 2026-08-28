@@ -42,7 +42,7 @@ def main() -> int:
                 changed += 1
     ARQUIVO.write_text(
         "window.EMENDAS_FEDERAIS = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
     print(f"OK: taxonomia federal normalizada ({changed} campos incluídos)")
     return 0

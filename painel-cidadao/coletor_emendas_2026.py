@@ -456,7 +456,7 @@ Fundamento legal: art. 7., II, VI e VII, Lei 12.527/2011; art. 6., Decreto 7.724
 def salvar(payload: dict | None = None) -> dict:
     payload = payload or coletar()
     out = DATA / "fontes_emendas_2026.json"
-    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
 
     # Gera rascunho de pedido LAI sempre que nao ha candidatos com CNPJ+valor confirmados
     # (emendas SAPL listam numero/autor mas nao tem CNPJ/valor — LAI continua necessario)
@@ -464,7 +464,7 @@ def salvar(payload: dict | None = None) -> dict:
         sapl_emendas = [a for a in payload.get("achados", []) if a.get("tipo") == "emenda_sapl"]
         lai_txt = _gerar_lai_txt(sapl_emendas)
         lai_out = DATA / "lai_emendas_2026.txt"
-        lai_out.write_text(lai_txt, encoding="utf-8")
+        lai_out.write_text(lai_txt, encoding="utf-8", newline="\n")
         print(f"  ! Rascunho LAI gerado: {lai_out} ({lai_out.stat().st_size} bytes)")
 
     return payload

@@ -313,7 +313,7 @@ def main() -> int:
         "erros": erros[:20],
     }
     _tmp = OUT_PATH.with_name(f".{OUT_PATH.name}.tmp{os.getpid()}")
-    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    _tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     os.replace(_tmp, OUT_PATH)
 
     # sancoes_fornecedores.json e o chunk que o painel le para exibir o estado da
@@ -341,7 +341,7 @@ def main() -> int:
                        "consultavel — ausencia aqui nao prova ausencia de sancao."),
     }
     _tmp_f = forn_path.with_name(f".{forn_path.name}.tmp{os.getpid()}")
-    _tmp_f.write_text(json.dumps(forn_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    _tmp_f.write_text(json.dumps(forn_payload, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     os.replace(_tmp_f, forn_path)
     print(f"✓ {len(universo)} verificados em {consultas} consultas — "
           f"{len(achados)} sanção(ões), {len(vigentes)} vigente(s). → sancoes.json")

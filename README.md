@@ -42,6 +42,9 @@ npm run data:schedule:daily
 # instalar modo vigia: checa fontes a cada 180 minutos e coleta se mudou
 npm run data:schedule:watch
 
+# há quanto tempo a coleta não roda (repositório e site) — não precisa de tokens
+npm run data:frescor
+
 # atualizar dados (precisa de Python + tokens Betha)
 cd painel-cidadao
 py coletor.py
@@ -74,6 +77,7 @@ O diretório `dashboard/`, quando existir, deve ser tratado como laboratório/mi
 | [docs/fontes-de-dados.md](docs/fontes-de-dados.md) | De onde vem cada número |
 | [docs/como-atualizar.md](docs/como-atualizar.md) | Rodar o coletor e gerar novos dados |
 | [docs/automacao-de-dados.md](docs/automacao-de-dados.md) | Atualizacao automatica, vigia, logs e rollback |
+| [CLAUDE.md](CLAUDE.md) | Regras editoriais e armadilhas conhecidas do codigo |
 | [docs/como-publicar.md](docs/como-publicar.md) | Deploy do pacote validado em Hostinger/Apache |
 | [docs/checklist-publicacao.md](docs/checklist-publicacao.md) | Conferir antes de cada deploy |
 

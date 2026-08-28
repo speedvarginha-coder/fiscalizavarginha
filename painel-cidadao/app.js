@@ -287,20 +287,41 @@
     const pf_data = D.prefeitura || {};
     const contratos = pf_data.contratos || [];
     const licitacoes = pf_data.licit_andamento || [];
+    // A home não carrega diarias.json (3,2 MB): usa o resumo pré-calculado.
+    // Antes daqui o array vazio virava "0 registros · R$ 0,00 em diárias" —
+    // o painel afirmando que a Prefeitura não gastou nada com viagens quando
+    // a base tem milhares de registros. Sem o resumo, diz que não sabe.
     const diariasPref = (D.diarias || {}).prefeitura || [];
+    const homeResumo = D.home_resumo || {};
+    const diariasQtd = diariasPref.length
+      ? diariasPref.length
+      : (typeof homeResumo.diarias_qtd === "number" ? homeResumo.diarias_qtd : null);
+    const diariasTotal = diariasPref.length
+      ? diariasPref.reduce((s, d) => s + Number(d.valor_total || 0), 0)
+      : (typeof homeResumo.diarias_total === "number" ? homeResumo.diarias_total : null);
     const resumoCam = D.resumo || {};
     const emendas = D.emendas || [];
-    const emendasPendentes = emendas.filter(e => e.status === "sem_pagamento" || e.status === "sem_cnpj").length;
+    // O chunk de emendas nem sempre traz a classificação de pendência: nesta
+    // coleta os 357 registros vêm sem o campo `status`, e o filtro devolvia 0 —
+    // a home afirmando "0 para conferir" quando o cruzamento sequer foi feito.
+    // Sem classificação, cai para o que dá para afirmar: emenda sem CNPJ.
+    const emendasClassificadas = emendas.some(e => e.status);
+    const emendasPendentes = emendasClassificadas
+      ? emendas.filter(e => e.status === "sem_pagamento" || e.status === "sem_cnpj").length
+      : null;
+    const emendasSemCnpj = emendas.filter(e => !e.cnpj).length;
+    const emendasRotulo = emendasPendentes != null
+      ? `${fmtNum(emendasPendentes)} para conferir`
+      : (emendasSemCnpj ? `${fmtNum(emendasSemCnpj)} sem CNPJ para conferir` : "confira CNPJ, objeto e pagamento");
     const contratosMilhao = contratos.filter(c => Number(c.valor || 0) >= 1_000_000).length;
     const totalContratos = contratos.reduce((s, c) => s + Number(c.valor || 0), 0);
-    const totalDiarias = diariasPref.reduce((s, d) => s + Number(d.valor_total || 0), 0);
 
     $("homeOpsStats").innerHTML = [
       { href: "prefeitura.html", value: fmtMi(pf_data.total_externo_atual || totalContratos), label: `pagos em ${pf_data.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
       { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos", cidada: "Quem recebeu mais? Por qual serviço?" },
-      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasPref.length), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
+      { href: "prefeitura.html?tab=diarias", value: diariasQtd == null ? "—" : fmtNum(diariasQtd), label: diariasTotal == null ? "base não carregada nesta página" : `${fmtBRL(diariasTotal)} em diárias`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
       { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)} vereadores monitorados`, title: "Câmara", cidada: "O que cada vereador propôs e votou?" },
-      { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} para conferir`, title: "Emendas", cidada: "O dinheiro chegou ao beneficiário?" },
+      { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: emendasRotulo, title: "Emendas", cidada: "O dinheiro chegou ao beneficiário?" },
       { href: "prefeitura.html?tab=licitacoes", value: fmtNum(licitacoes.length), label: "acompanhar antes do gasto", title: "Licitações", cidada: "Qual empresa vai ganhar este contrato?" },
     ].map(item => `
       <a href="${item.href}" class="home-stat">
@@ -313,7 +334,7 @@
 
     $("homeOpsPriorities").innerHTML = [
       { href: "prefeitura.html?tab=contratos", n: "1", title: "Contratos de alto valor", text: `${fmtNum(contratosMilhao)} contratos acima de R$ 1 milhão para ler primeiro.` },
-      { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasPref.length)} registros com pessoa, finalidade e valor.` },
+      { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: diariasQtd == null ? "Abra a aba Diárias para ver pessoa, finalidade e valor." : `${fmtNum(diariasQtd)} registros com pessoa, finalidade e valor.` },
       { href: "camara.html", n: "3", title: "Emendas parlamentares", text: `${fmtNum(resumoCam.emendas_qtd || 0)} emendas; confira CNPJ, objeto e pagamento.` },
     ].map(item => `
       <a href="${item.href}" class="priority-row">
@@ -2064,6 +2085,23 @@
     const camServQtd = camResumoP.servidores_qtd      || 1;
     const prefComQtd  = prefResumoP.comissionados_qtd  || 0;
     const prefServQtd = prefResumoP.servidores_qtd     || 1;
+
+    // Sem competência, os campos mensais vêm nulos e os sinais abaixo caem
+    // pelo `> 0`. Sumir em silêncio faz o cidadão achar que não há nada a
+    // apontar; o certo é dizer que a análise está suspensa e por quê.
+    [["CÂMARA", camPessoal, camResumoP], ["PREFEITURA", prefPessoal, prefResumoP]]
+      .forEach(([orgaoLabel, orgao, resumo]) => {
+        if (!resumo.competencia_indeterminada) return;
+        addSignal(
+          `${orgaoLabel} · Pessoal`,
+          "medio",
+          `Análise da folha suspensa: a fonte não informou o mês desta coleta`,
+          `A última coleta trouxe ${fmtNum(resumo.linhas_todas_competencias || 0)} linhas de folha sem carimbo de competência. Somá-las publicaria vários meses como se fossem o custo de um só, então os totais mensais, a contagem de comissionados e o maior vencimento ficam suspensos até a próxima coleta com o mês identificado. Isto é um limite do dado, não um indício de irregularidade.`,
+          orgao.status || "Fonte: Portal de Transparência (Betha) · Pessoal",
+          "pessoal.html"
+        );
+      });
+
     if (camComQtd > 0) {
       const pctCam  = ((camComQtd  / camServQtd)  * 100).toFixed(1);
       const pctPref = ((prefComQtd / prefServQtd) * 100).toFixed(1);

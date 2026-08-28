@@ -1,0 +1,134 @@
+name: Vigia da coleta
+
+# Por que este workflow existe
+# ----------------------------
+# A coleta roda no Agendador de Tarefas do Windows, na maquina do mantenedor, e
+# o alerta de falha sai por SMTP configurado na mesma maquina. Quando ela para,
+# o alerta para junto — foi o que aconteceu entre 11/08 e 27/08/2026: dezesseis
+# dias sem coleta, com o painel publicando dado velho e nenhum aviso.
+#
+# Este vigia roda na nuvem, nao depende daquela maquina, nao precisa de segredo
+# nenhum e avisa pelo unico canal que sobrevive a queda do computador local: uma
+# issue no proprio repositorio (que o GitHub notifica por e-mail e push).
+
+on:
+  schedule:
+    # A cada 6 horas. A coleta esperada e diaria; este intervalo detecta uma
+    # parada em menos de um dia sem encher a caixa de entrada.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      limite_horas:
+        description: "Horas sem coleta que caracterizam defasagem"
+        required: false
+        default: "36"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: fiscaliza-vigia-coleta
+  cancel-in-progress: true
+
+jobs:
+  frescor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Conferir idade da coleta (repositorio e site)
+        id: vigia
+        continue-on-error: true
+        run: >
+          node scripts/check-collection-freshness.mjs
+          --limite-horas ${{ github.event.inputs.limite_horas || '36' }}
+
+      - name: Abrir, atualizar ou fechar a issue de coleta parada
+        uses: actions/github-script@v7
+        env:
+          SAUDAVEL: ${{ steps.vigia.outputs.saudavel }}
+          DIAS_REPO: ${{ steps.vigia.outputs.dias_repositorio }}
+          DIAS_SITE: ${{ steps.vigia.outputs.dias_site }}
+          RESUMO: ${{ steps.vigia.outputs.resumo }}
+        with:
+          script: |
+            const MARCADOR = '<!-- vigia-coleta -->';
+            const saudavel = process.env.SAUDAVEL === 'true';
+            const { owner, repo } = context.repo;
+
+            const abertas = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'open', labels: 'coleta-parada', per_page: 50,
+            });
+            const existente = abertas.find((i) => (i.body || '').includes(MARCADOR));
+
+            if (saudavel) {
+              if (existente) {
+                await github.rest.issues.createComment({
+                  owner, repo, issue_number: existente.number,
+                  body: `${MARCADOR}\nColeta voltou a rodar dentro da janela esperada em ${new Date().toISOString()}. Fechando automaticamente.`,
+                });
+                await github.rest.issues.update({
+                  owner, repo, issue_number: existente.number,
+                  state: 'closed', state_reason: 'completed',
+                });
+                core.info(`Issue #${existente.number} fechada: coleta normalizada.`);
+              } else {
+                core.info('Coleta em dia; nada a fazer.');
+              }
+              return;
+            }
+
+            const corpo = [
+              MARCADOR,
+              '## A coleta automatica parou',
+              '',
+              process.env.RESUMO || 'Coleta defasada.',
+              '',
+              '| Onde | Dias sem atualizar |',
+              '| --- | --- |',
+              `| Repositorio (chunks versionados) | ${process.env.DIAS_REPO || 'desconhecido'} |`,
+              `| Site publicado | ${process.env.DIAS_SITE || 'nao verificado deste runner'} |`,
+              '',
+              '### O que conferir, nesta ordem',
+              '',
+              '1. A tarefa agendada do Windows ainda existe e esta habilitada?',
+              '   `Get-ScheduledTask -TaskName "Fiscaliza Varginha*" | Select TaskName,State`',
+              '2. O ultimo log em `private/logs/` diz onde o pipeline parou.',
+              '3. Rodar uma coleta manual: `npm run data:update`.',
+              '4. Se o dado nao puder ser recoletado agora, `python scripts/reparar-folha-publicada.py`',
+              '   pelo menos impede que numeros sem competencia sejam publicados como mensais.',
+              '',
+              '### Por que isso importa',
+              '',
+              'Um painel de transparencia com dado velho e pior que um painel fora do ar:',
+              'o cidadao nao tem como saber que o numero na tela nao vale mais.',
+              'A pagina `monitoramento.html` publica a defasagem, mas ninguem entra nela',
+              'para descobrir que os outros numeros envelheceram.',
+              '',
+              `_Verificado automaticamente em ${new Date().toISOString()} pelo workflow \`vigia-coleta\`._`,
+            ].join('\n');
+
+            const titulo = `Coleta parada ha ${process.env.DIAS_REPO || '?'} dia(s)`;
+
+            if (existente) {
+              await github.rest.issues.update({
+                owner, repo, issue_number: existente.number, title: titulo, body: corpo,
+              });
+              core.warning(`Issue #${existente.number} atualizada: ${titulo}`);
+            } else {
+              const criada = await github.rest.issues.create({
+                owner, repo, title: titulo, body: corpo, labels: ['coleta-parada'],
+              });
+              core.warning(`Issue #${criada.data.number} aberta: ${titulo}`);
+            }
+
+      - name: Reprovar o job quando a coleta estiver parada
+        if: steps.vigia.outcome != 'success'
+        run: |
+          echo "::error::A coleta esta defasada — ver a issue com a etiqueta coleta-parada."
+          exit 1

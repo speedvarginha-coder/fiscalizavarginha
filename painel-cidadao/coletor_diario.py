@@ -123,9 +123,9 @@ def _baixar_texto(publicacao_id: int) -> tuple[str, str, str]:
     paginas = [(p.extract_text() or "") for p in reader.pages]
     texto = "\n\f\n".join(paginas)
     CACHE_PDF.mkdir(parents=True, exist_ok=True)
-    cache.write_text(texto, encoding="utf-8")
-    cache_paginas.write_text(json.dumps(paginas, ensure_ascii=False), encoding="utf-8")
-    cache_url.write_text(url_pdf, encoding="utf-8")
+    cache.write_text(texto, encoding="utf-8", newline="\n")
+    cache_paginas.write_text(json.dumps(paginas, ensure_ascii=False), encoding="utf-8", newline="\n")
+    cache_url.write_text(url_pdf, encoding="utf-8", newline="\n")
     return texto, url_pdf, leitor
 
 
@@ -185,7 +185,11 @@ def _segmentar(texto: str) -> list[tuple[str, str, str, str, int]]:
             restante = texto[fim_linha + 1:]
             proxima = next((item.strip() for item in restante.splitlines() if item.strip()), "")
             if proxima and re.search(r"(?i)\b(?:aditivo|contrato|processo|termo|fomento)\b", proxima):
-                linha = f"{linha} — {re.sub(r'\s+', ' ', proxima)}"
+                # A substituicao sai do f-string: barra invertida dentro da
+                # expressao so compila no Python 3.12+ (PEP 701), e o coletor
+                # precisa importar em qualquer versao suportada.
+                proxima_limpa = re.sub(r"\s+", " ", proxima)
+                linha = f"{linha} — {proxima_limpa}"
         tipo, _ = _classifica(linha)
         cabecalho = m.group(1).strip()
         letras = re.sub(r"[^A-Za-zÀ-ÖØ-öø-ÿ]", "", cabecalho)
@@ -219,7 +223,8 @@ def _segmentar(texto: str) -> list[tuple[str, str, str, str, int]]:
         if CABECALHO_SEM_NUMERO.match(trecho):
             proxima = next((item.strip() for item in trecho.splitlines()[1:] if item.strip()), "")
             if proxima and re.search(r"(?i)\b(?:aditivo|contrato|processo|termo|fomento)\b", proxima):
-                titulo = f"{primeira_linha} — {re.sub(r'\s+', ' ', proxima)}"
+                proxima_limpa = re.sub(r"\s+", " ", proxima)
+                titulo = f"{primeira_linha} — {proxima_limpa}"
         titulo = titulo[:120]
         tipo, rotulo = _classifica(titulo)
         # O ^\s* do CABECALHO pode consumir a quebra de pagina; o grupo 1
@@ -793,7 +798,7 @@ def main() -> None:
         "publicacoes": pubs,
     }
     temporario = SAIDA.with_suffix(".json.tmp")
-    temporario.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    temporario.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     os.replace(temporario, SAIDA)
     print(f"✓ Salvo: {SAIDA}  ({len(pubs)} publicações)")
 

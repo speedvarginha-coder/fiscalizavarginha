@@ -27,10 +27,16 @@ jobs:
           curl --fail --silent --show-error --location --max-time 30 "$base/?github_health=${{ github.run_id }}" -o "$tmp/index.html"
           curl --fail --silent --show-error --location --max-time 30 "$base/release.json?github_health=${{ github.run_id }}" -o "$tmp/release.json"
           curl --fail --silent --show-error --location --max-time 30 "$base/data/manifest.json?github_health=${{ github.run_id }}" -o "$tmp/manifest.json"
+          # Idade do dado servido: um site congelado responde 200 e passa em
+          # todos os testes acima. Aqui e so relatorio — quem abre issue por
+          # defasagem e o workflow vigia-coleta, para nao alertar a cada 15min.
+          curl --fail --silent --show-error --location --max-time 30 \
+            "$base/data/chunks/atualizado_em.json?github_health=${{ github.run_id }}" \
+            -o "$tmp/atualizado_em.json" || true
           grep -Eqi 'Fiscaliza[[:space:]]+Varginha' "$tmp/index.html"
-          python - "$tmp/release.json" "$tmp/manifest.json" <<'PY'
-          import hashlib, json, pathlib, sys
-          release_path, manifest_path = map(pathlib.Path, sys.argv[1:])
+          python - "$tmp/release.json" "$tmp/manifest.json" "$tmp/atualizado_em.json" <<'PY'
+          import datetime as dt, hashlib, json, pathlib, sys
+          release_path, manifest_path, atualizado_path = map(pathlib.Path, sys.argv[1:])
           release = json.loads(release_path.read_text(encoding="utf-8-sig"))
           manifest_bytes = manifest_path.read_bytes()
           manifest = json.loads(manifest_bytes.decode("utf-8-sig"))
@@ -39,5 +45,18 @@ jobs:
               raise SystemExit("release.json diverge do manifest publicado")
           if len(manifest.get("chunks", {})) < 20:
               raise SystemExit("manifest publicado tem menos de 20 chunks")
-          print(f"Site saudavel: {len(manifest['chunks'])} chunks; manifest {digest}")
+          idade = "nao informada"
+          if atualizado_path.exists():
+              try:
+                  iso = json.loads(atualizado_path.read_text(encoding="utf-8-sig")).get("iso") or ""
+                  carimbo = dt.datetime.fromisoformat(iso)
+                  if carimbo.tzinfo is None:
+                      carimbo = carimbo.replace(tzinfo=dt.timezone.utc)
+                  horas = (dt.datetime.now(dt.timezone.utc) - carimbo).total_seconds() / 3600
+                  idade = f"{horas / 24:.1f} dia(s) (carimbo {iso})"
+                  if horas > 36:
+                      print(f"::warning::Site no ar, mas o dado tem {idade}. Ver o workflow vigia-coleta.")
+              except Exception as e:
+                  idade = f"ilegivel ({e})"
+          print(f"Site saudavel: {len(manifest['chunks'])} chunks; manifest {digest}; idade do dado: {idade}")
           PY

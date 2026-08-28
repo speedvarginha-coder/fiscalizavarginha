@@ -1,0 +1,51 @@
+# ============================================================
+# Fiscaliza Varginha — .gitattributes
+#
+# O manifesto de dados guarda tamanho em bytes e SHA-256 de cada chunk.
+# Se o git reescrever a quebra de linha ao commitar (autocrlf no Windows),
+# o arquivo versionado deixa de bater com o hash que foi calculado na
+# maquina de coleta — e o portao de schema reprova em qualquer checkout
+# Linux, como aconteceu entre 13/07 e 27/08/2026 (75 execucoes de CI).
+#
+# Dados: byte a byte, sem conversao. Codigo: LF normalizado.
+# ============================================================
+
+# ---- Dados publicados: os bytes sao hasheados, nao mexer ----
+*.json          -text
+*.csv           -text
+
+# ---- Bases de dados servidas como JS (portal de emendas) ----
+painel-cidadao/emendas/data/*.js  -text
+
+# ---- Codigo-fonte: LF no repositorio, sempre ----
+*.py            text eol=lf
+*.js            text eol=lf
+*.mjs           text eol=lf
+*.ts            text eol=lf
+*.tsx           text eol=lf
+*.html          text eol=lf
+*.css           text eol=lf
+*.php           text eol=lf
+*.md            text eol=lf
+*.yml           text eol=lf
+*.yaml          text eol=lf
+*.txt           text eol=lf
+.gitignore      text eol=lf
+.gitattributes  text eol=lf
+
+# ---- Scripts que so rodam no Windows precisam de CRLF ----
+*.ps1           text eol=crlf
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+
+# ---- Binarios ----
+*.pdf           binary
+*.zip           binary
+*.woff          binary
+*.woff2         binary
+*.png           binary
+*.jpg           binary
+*.jpeg          binary
+*.gif           binary
+*.ico           binary
+*.xlsx          binary

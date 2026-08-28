@@ -86,7 +86,7 @@ def carregar_estado(path: Path) -> dict:
 
 def salvar_estado(path: Path, estado: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as arquivo:
+    with path.open("w", encoding="utf-8", newline="\n") as arquivo:
         json.dump(estado, arquivo, indent=2, ensure_ascii=False, sort_keys=True)
 
 

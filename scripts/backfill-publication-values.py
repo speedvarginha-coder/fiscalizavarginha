@@ -48,7 +48,7 @@ def main() -> None:
             enriquecidos += 1
 
     temporario = CHUNK.with_suffix(".json.tmp")
-    temporario.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+    temporario.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     os.replace(temporario, CHUNK)
     print(f"Documentos oficiais consultados: {consultados}")
     print(f"Materias com valor principal comprovavel: {enriquecidos}")

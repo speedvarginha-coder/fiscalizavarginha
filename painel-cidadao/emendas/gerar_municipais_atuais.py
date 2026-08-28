@@ -251,7 +251,7 @@ def main() -> int:
     }
     SAIDA.write_text(
         "window.EMENDAS_MUNICIPAIS_UNIFICADAS = " + json.dumps(payload, ensure_ascii=False, indent=1) + ";\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
     print(f"OK: {len(historico)} históricas + {len(sapl)} SAPL = {len(emendas)} municipais")
     print(f"Deduplicação: {duplicatas_legado_sapl} legadas de 2025 já cobertas pelo SAPL")

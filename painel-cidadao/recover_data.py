@@ -101,7 +101,7 @@ def rebuild():
     
     for filename, payload in chunk_mapping.items():
         chunk_out = chunks_dir / filename
-        chunk_out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        chunk_out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     
     print("  ✓ All data chunks written to data/chunks/")
 
@@ -116,7 +116,7 @@ def rebuild():
             "bytes": chunk_file.stat().st_size
         }
     manifest_out = DATA_DIR / "manifest.json"
-    manifest_out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    manifest_out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     print(f"  ✓ manifest.json updated ({manifest_out.stat().st_size} bytes)")
 
     # 3. Create pessoal_slim for fallback data.js
@@ -165,7 +165,7 @@ def rebuild():
     }
     content = "/* Gerado por recover_data.py — não editar à mão. */\n"
     content += "window.FISCALIZA_DATA = " + json.dumps(js_payload, ensure_ascii=False, indent=2) + ";\n"
-    out.write_text(content, encoding="utf-8")
+    out.write_text(content, encoding="utf-8", newline="\n")
     print(f"  ✓ data.js recreated ({out.stat().st_size // 1024} KB)")
 
 if __name__ == "__main__":

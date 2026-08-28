@@ -408,7 +408,7 @@ def main():
         "resumoTipos": resumo,
         "emendas": regs,
     }
-    io.open(FED_JS, "w", encoding="utf-8").write(
+    io.open(FED_JS, "w", encoding="utf-8", newline="\n").write(
         "window.EMENDAS_FEDERAIS = " + json.dumps(out, ensure_ascii=False, indent=2) + ";\n")
     print(f"OK — {len(regs)} emendas federais | total R$ {money_txt(total)} | {FED_JS}")
 

@@ -27,7 +27,7 @@ def carregar_config() -> dict:
 
 
 def salvar_config(config: dict):
-    with open(CONFIG_PATH, "w", encoding="utf-8") as f:
+    with open(CONFIG_PATH, "w", encoding="utf-8", newline="\n") as f:
         json.dump(config, f, indent=2, ensure_ascii=False)
     print(f"💾 Configurações salvas e atualizadas em: {CONFIG_PATH}")
 
