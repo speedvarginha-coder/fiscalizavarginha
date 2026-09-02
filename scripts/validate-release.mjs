@@ -50,6 +50,11 @@ const optionalChunks = [
   // Plano de Contratacoes Anual (PNCP). Opcional porque depende de o orgao
   // publicar: entidade sem plano nao pode reprovar o release.
   "pca",
+  // Versao enxuta da folha: mesmo resumo, sem as ~4 mil linhas nominais da
+  // Prefeitura. Camara, Relatorios e Cobranca carregam este no lugar do
+  // pessoal.json completo. Opcional porque so existe a partir da coleta que
+  // passou a grava-lo; release anterior a isso nao pode reprovar.
+  "pessoal_resumo",
 ];
 
 const requiredPublicFiles = [
