@@ -39,29 +39,34 @@ DESTINO = BASE / "data" / "emendas_estaduais_normalizadas.js"
 ROOT = BASE.parents[1]
 CACHE_DIR = ROOT / "private" / "cache" / "emendas-estaduais"
 CACHE_XLSX = CACHE_DIR / "dados-oficiais-latest.xlsx"
+CACHE_ALMG_XLSX = CACHE_DIR / "dados-almg-latest.xlsx"
 CACHE_META = CACHE_DIR / "metadados-latest.json"
 HISTORY_META = CACHE_DIR / "historico-coletas.json"
 
 FONTE_PAGINA = "https://www.emendas.mg.gov.br/transparencia/"
+ALMG_PAGINA = "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/"
+ALMG_XLSX = "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx"
 IBGE_VARGINHA = "3170701"
 USER_AGENT = "FiscalizaVarginha/1.0 (+https://fiscalizavarginha.com.br)"
 RETRYABLE_HTTP = {429, 500, 502, 503, 504}
 
-COLUNAS_OBRIGATORIAS = {
+COLUNAS_OBRIGATORIAS_COMUNS = {
     "ano da indicacao",
     "numero da indicacao",
     "status da indicacao",
     "autor",
-    "codigo ibge do municipio",
     "municipio",
     "nome beneficiario",
     "valor indicado",
     "valor utilizado",
     "valor empenhado no ano",
-    "valor liquidado atualizado",
     "valor pago atualizado",
-    "valor executado",
     "status",
+}
+COLUNAS_OBRIGATORIAS_PORTAL = COLUNAS_OBRIGATORIAS_COMUNS | {
+    "codigo ibge do municipio",
+    "valor liquidado atualizado",
+    "valor executado",
 }
 
 
@@ -183,11 +188,14 @@ def descobrir_planilha(page_html: str) -> str:
     return max(candidatos)[2]
 
 
-def cabecalhos(worksheet) -> tuple[list[str], dict[str, int]]:
+def cabecalhos(
+    worksheet,
+    required_columns: set[str] | None = None,
+) -> tuple[list[str], dict[str, int]]:
     values = [cell.value for cell in next(worksheet.iter_rows(min_row=1, max_row=1))]
     normalized = [normalizar_chave(value) for value in values]
     index = {name: position for position, name in enumerate(normalized)}
-    missing = sorted(COLUNAS_OBRIGATORIAS - set(index))
+    missing = sorted((required_columns or COLUNAS_OBRIGATORIAS_PORTAL) - set(index))
     if missing:
         raise ValueError("Colunas oficiais ausentes: " + ", ".join(missing))
     return [str(value or "") for value in values], index
@@ -228,9 +236,18 @@ def normalizar_linha(
     collected_at: str,
     sheet_name: str,
     excel_row: int,
+    source_name: str = "Portal de Emendas de Minas Gerais",
+    source_page: str = FONTE_PAGINA,
+    location_mode: str = "ibge",
 ) -> dict[str, Any] | None:
     ibge = numero_inteiro_texto(valor_linha(values, index, "Código IBGE do Município"))
-    if ibge != IBGE_VARGINHA:
+    municipality = texto(valor_linha(values, index, "Município"))
+    matches_location = (
+        ibge == IBGE_VARGINHA
+        if location_mode == "ibge"
+        else normalizar_chave(municipality) == "varginha"
+    )
+    if not matches_location:
         return None
 
     year = numero_inteiro_texto(valor_linha(values, index, "Ano da Indicação"))
@@ -258,6 +275,12 @@ def normalizar_linha(
     impositiva = normalizar_chave(valor_linha(values, index, "Indicador de Impositividade")) == "s"
     beneficiary = texto(valor_linha(values, index, "Nome Beneficiário"))
     source_record_url = f"{source_url}#planilha={urllib.parse.quote(sheet_name)}&linha={excel_row}"
+    source_system = "ALMG" if source_name == "ALMG" else "Portal Emendas MG"
+    destination_scope = (
+        "Unidade ou beneficiário localizado em Varginha"
+        if source_system == "ALMG"
+        else "Município identificado pelo código IBGE 3170701"
+    )
 
     return {
         "id": f"estadual-sigcon-{year}-{indication}",
@@ -280,7 +303,10 @@ def normalizar_linha(
         "beneficiario": beneficiary or "",
         "documentoBeneficiario": cnpj_texto(valor_linha(values, index, "Número do CNPJ do Beneficiário")),
         "codigoIbge": IBGE_VARGINHA,
-        "localidade": texto(valor_linha(values, index, "Município")) or "VARGINHA",
+        "localidade": municipality or "VARGINHA",
+        "fonteSistema": source_system,
+        "escopoDestino": destination_scope,
+        "conciliacaoFontes": "fonte_unica",
         "orgao": texto(valor_linha(values, index, "Unidade Orçamentária Descrição")),
         "orgaoSigla": texto(valor_linha(values, index, "Unidade Orçamentária Sigla")),
         "funcao": texto(valor_linha(values, index, "Função Descrição")),
@@ -315,12 +341,16 @@ def normalizar_linha(
         "dataPublicacaoInstrumento": data_texto(valor_linha(values, index, "Data de Publicação do Instrumento")),
         "dataValidadeInstrumento": data_texto(valor_linha(values, index, "Data de Validade do Instrumento")),
         "classificacaoComprovacao": "confirmado",
-        "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
+        "fonte": (
+            "Assembleia Legislativa de Minas Gerais — dados de emendas"
+            if source_system == "ALMG"
+            else "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG"
+        ),
         "fonteUrl": source_url,
         "fonteRegistroUrl": source_record_url,
         "evidencias": {
             "urlOficial": source_url,
-            "paginaOficial": FONTE_PAGINA,
+            "paginaOficial": source_page,
             "arquivoSha256": source_hash,
             "planilha": sheet_name,
             "linha": excel_row,
@@ -328,7 +358,11 @@ def normalizar_linha(
             "estagiosSemInferencia": True,
         },
         "fontes": [{
-            "nome": "Relatório de Execução Geral — Portal de Emendas MG",
+            "nome": (
+                "Base de emendas parlamentares — ALMG"
+                if source_system == "ALMG"
+                else "Relatório de Execução Geral — Portal de Emendas MG"
+            ),
             "url": source_url,
             "sha256": source_hash,
             "planilha": sheet_name,
@@ -344,17 +378,23 @@ def ler_planilha(
     source_url: str,
     source_hash: str,
     collected_at: str,
+    *,
+    source_name: str = "Portal de Emendas de Minas Gerais",
+    source_page: str = FONTE_PAGINA,
+    location_mode: str = "ibge",
+    required_columns: set[str] | None = None,
 ) -> tuple[list[dict[str, Any]], str, list[str]]:
     workbook = load_workbook(path, read_only=True, data_only=True)
     if not workbook.sheetnames:
         raise ValueError("XLSX oficial sem planilhas")
     sheet_name = workbook.sheetnames[0]
     worksheet = workbook[sheet_name]
-    headers, index = cabecalhos(worksheet)
+    headers, index = cabecalhos(worksheet, required_columns)
     records: list[dict[str, Any]] = []
     for excel_row, values in enumerate(worksheet.iter_rows(min_row=2, values_only=True), start=2):
         record = normalizar_linha(
             values, index, source_url, source_hash, collected_at, sheet_name, excel_row,
+            source_name, source_page, location_mode,
         )
         if record:
             records.append(record)
@@ -369,6 +409,72 @@ def ler_planilha(
     return records, sheet_name, headers
 
 
+FINANCIAL_FIELDS = (
+    "valorIndicado", "valorUtilizado", "valorEmpenhado", "valorLiquidado",
+    "valorPago", "valorExecutado",
+)
+RECONCILIATION_FIELDS = (
+    "valorIndicado", "valorUtilizado", "valorEmpenhado", "valorPago",
+)
+
+
+def cents(value: Any) -> int:
+    return int(round(float(value or 0) * 100))
+
+
+def conciliar_fontes(
+    portal_records: list[dict[str, Any]],
+    almg_records: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    """Une fontes por ano+número sem somar o mesmo registro duas vezes."""
+    merged = {record["id"]: record for record in portal_records}
+    stats = {
+        "portalEmendasMg": len(portal_records),
+        "almg": len(almg_records),
+        "conferidosDuasFontes": 0,
+        "somentePortalEmendasMg": len(portal_records),
+        "somenteAlmg": 0,
+        "divergentes": 0,
+    }
+    for almg_record in almg_records:
+        record_id = almg_record["id"]
+        portal_record = merged.get(record_id)
+        if portal_record is None:
+            almg_record["conciliacaoFontes"] = "somente_almg"
+            almg_record["pendencias"] = list(almg_record.get("pendencias") or []) + [
+                "ausente_na_planilha_portal_emendas_mg"
+            ]
+            merged[record_id] = almg_record
+            stats["somenteAlmg"] += 1
+            continue
+
+        stats["somentePortalEmendasMg"] -= 1
+        differences = {
+            field: {
+                "portalEmendasMg": portal_record.get(field),
+                "almg": almg_record.get(field),
+            }
+            for field in RECONCILIATION_FIELDS
+            if cents(portal_record.get(field)) != cents(almg_record.get(field))
+        }
+        portal_record["fontes"] = list(portal_record.get("fontes") or []) + list(almg_record.get("fontes") or [])
+        portal_record["fontesConferidas"] = ["Portal Emendas MG", "ALMG"]
+        if differences:
+            portal_record["conciliacaoFontes"] = "divergencia_entre_fontes"
+            portal_record["divergenciasFontes"] = differences
+            portal_record["pendencias"] = list(portal_record.get("pendencias") or []) + [
+                "divergencia_almg_portal_emendas_mg"
+            ]
+            stats["divergentes"] += 1
+        else:
+            portal_record["conciliacaoFontes"] = "conferido_em_duas_fontes"
+            stats["conferidosDuasFontes"] += 1
+
+    records = list(merged.values())
+    records.sort(key=lambda item: (-int(item["ano"]), -int(item["numeroIndicacao"])))
+    return records, stats
+
+
 def somar(records: Iterable[dict[str, Any]], field: str) -> float:
     return round(sum(float(record.get(field) or 0) for record in records), 2)
 
@@ -381,6 +487,7 @@ def construir_payload(
     sheet_name: str,
     headers: list[str],
     http_headers: dict[str, str],
+    additional_metadata: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     by_year: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for record in records:
@@ -397,8 +504,7 @@ def construir_payload(
             "valorExecutado": somar(items, "valorExecutado"),
         }
     statuses = Counter(record["statusIndicacao"] or "Não informado" for record in records)
-    return {
-        "metadata": {
+    metadata = {
             "criterio": "Registros oficiais por indicação; cada estágio financeiro é mantido sem inferência.",
             "fonte": "Portal de Emendas de Minas Gerais — SIGCON-MG / SIAFI-MG / SIAD-MG",
             "fontePagina": FONTE_PAGINA,
@@ -423,9 +529,14 @@ def construir_payload(
             "registrosSemPagamento": sum((record.get("valorPago") or 0) == 0 for record in records),
             "observacao": (
                 "Valor utilizado representa recurso reservado/associado à indicação e não comprova pagamento. "
-                "Pagamento e execução usam exclusivamente as colunas oficiais correspondentes."
+                "Pagamento e execução usam exclusivamente as colunas publicadas por cada fonte. "
+                "Registros presentes nas duas fontes são unidos por ano e número da indicação, sem dupla contagem."
             ),
-        },
+        }
+    if additional_metadata:
+        metadata.update(additional_metadata)
+    return {
+        "metadata": metadata,
         "emendas": records,
     }
 
@@ -467,8 +578,19 @@ def atualizar_historico(metadata: dict[str, Any]) -> None:
         "totalIndicado": metadata["totalIndicado"],
         "totalPago": metadata["totalPago"],
         "anos": metadata["anos"],
+        "fontesComplementares": metadata.get("fontesComplementares") or [],
+        "conciliacaoFontes": metadata.get("conciliacaoFontes") or {},
     }
-    if not history or history[-1].get("arquivoSha256") != event["arquivoSha256"]:
+    current_signature = (
+        event["arquivoSha256"],
+        tuple(source.get("arquivoSha256") for source in event["fontesComplementares"]),
+    )
+    previous_sources = (history[-1].get("fontesComplementares") or []) if history else []
+    previous_signature = (
+        history[-1].get("arquivoSha256") if history else None,
+        tuple(source.get("arquivoSha256") for source in previous_sources),
+    )
+    if not history or previous_signature != current_signature:
         history.append(event)
     history = history[-90:]
     escrever_atomico(HISTORY_META, json.dumps(history, ensure_ascii=False, indent=2) + "\n")
@@ -479,6 +601,8 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
     http_headers: dict[str, str] = {}
     source_url = ""
     temp_path: Path | None = None
+    almg_temp_path: Path | None = None
+    almg_bytes: bytes | None = None
     try:
         if input_path:
             source_url = input_path.resolve().as_uri()
@@ -499,8 +623,60 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
         records, sheet_name, headers = ler_planilha(
             xlsx_path, source_url, source_hash, collected_at,
         )
+        reconciliation = {
+            "portalEmendasMg": len(records),
+            "almg": 0,
+            "conferidosDuasFontes": 0,
+            "somentePortalEmendasMg": len(records),
+            "somenteAlmg": 0,
+            "divergentes": 0,
+        }
+        almg_metadata: dict[str, Any] | None = None
+        if not input_path:
+            almg_bytes, almg_http_headers = obter(ALMG_XLSX)
+            fd, almg_temp_name = tempfile.mkstemp(prefix="emendas-almg-", suffix=".xlsx")
+            os.close(fd)
+            almg_temp_path = Path(almg_temp_name)
+            almg_temp_path.write_bytes(almg_bytes)
+            almg_hash = hashlib.sha256(almg_bytes).hexdigest()
+            almg_records, almg_sheet, almg_headers = ler_planilha(
+                almg_temp_path,
+                ALMG_XLSX,
+                almg_hash,
+                collected_at,
+                source_name="ALMG",
+                source_page=ALMG_PAGINA,
+                location_mode="municipio",
+                required_columns=COLUNAS_OBRIGATORIAS_COMUNS,
+            )
+            records, reconciliation = conciliar_fontes(records, almg_records)
+            almg_metadata = {
+                "nome": "Assembleia Legislativa de Minas Gerais",
+                "pagina": ALMG_PAGINA,
+                "arquivo": ALMG_XLSX,
+                "arquivoSha256": almg_hash,
+                "arquivoEtag": almg_http_headers.get("etag") or None,
+                "arquivoUltimaModificacao": almg_http_headers.get("last_modified") or None,
+                "planilha": almg_sheet,
+                "colunasOriginais": almg_headers,
+                "registrosVarginha": len(almg_records),
+            }
         payload = construir_payload(
-            records, source_url, source_hash, collected_at, sheet_name, headers, http_headers,
+            records,
+            source_url,
+            source_hash,
+            collected_at,
+            sheet_name,
+            headers,
+            http_headers,
+            {
+                "fontesComplementares": [almg_metadata] if almg_metadata else [],
+                "conciliacaoFontes": reconciliation,
+                "criterioLocalizacao": (
+                    "Código IBGE 3170701 na planilha do Portal Emendas MG; "
+                    "município Varginha na base complementar da ALMG."
+                ),
+            },
         )
 
         escrever_atomico(DESTINO, serializar(payload))
@@ -509,12 +685,16 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
             shutil.copyfile(input_path, CACHE_XLSX)
         else:
             CACHE_XLSX.write_bytes(source_bytes)
+            if almg_bytes is not None:
+                CACHE_ALMG_XLSX.write_bytes(almg_bytes)
         escrever_atomico(CACHE_META, json.dumps(payload["metadata"], ensure_ascii=False, indent=2) + "\n")
         atualizar_historico(payload["metadata"])
         return payload
     finally:
         if temp_path and temp_path.exists():
             temp_path.unlink()
+        if almg_temp_path and almg_temp_path.exists():
+            almg_temp_path.unlink()
 
 
 def main() -> int:

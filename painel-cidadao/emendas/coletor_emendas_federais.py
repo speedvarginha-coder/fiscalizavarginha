@@ -11,7 +11,7 @@ Enriquecimento:
 Uso:  python coletor_emendas_federais.py
 Gera data/emendas_federais.js (itemizado: 1 registro por favorecido) + resumoTipos.
 """
-import json, io, os, csv, sys, time, zipfile, tempfile, urllib.request, urllib.parse, unicodedata
+import json, io, os, csv, sys, time, zipfile, tempfile, urllib.request, urllib.parse, unicodedata, shutil
 from numbers import Real
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -19,6 +19,14 @@ FED_JS = os.path.join(AQUI, "data", "emendas_federais.js")
 ZIP_URL = "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO"
 IBGE_VARGINHA = "3170701"
 CNPJ_VARGINHA = "18240119000105"
+ROOT = os.path.abspath(os.path.join(AQUI, "..", ".."))
+CACHE_DIR = os.path.join(ROOT, "private", "cache", "emendas-federais")
+CACHE_ZIP = os.path.join(CACHE_DIR, "emendas-parlamentares-latest.zip")
+CACHE_META = os.path.join(CACHE_DIR, "metadados-latest.json")
+ARQUIVOS_OBRIGATORIOS = {
+    "EmendasParlamentares.csv",
+    "EmendasParlamentares_PorFavorecido.csv",
+}
 
 PAINEL_DIR = os.path.abspath(os.path.join(AQUI, ".."))
 if PAINEL_DIR not in sys.path:
@@ -58,25 +66,82 @@ def modalidade(tipo):
     if "CONVENIO" in t: return "convenio"
     return "desconhecida"
 
-def baixar_zip():
-    # 1. Tenta usar o arquivo baixado localmente pelo usuário no Google Drive (prioridade/cache)
-    paths_possiveis = [
-        r"L:\Meu Drive\Rotina Diaria\Recebimento de Arquivos\EmendasParlamentares (1).zip",
-        r"L:\Meu Drive\Rotina Diaria\Recebimento de Arquivos\EmendasParlamentares.zip"
-    ]
-    for p in paths_possiveis:
-        if os.path.exists(p):
-            print(f"Usando arquivo local encontrado em: {p}")
-            return p
+def _validar_zip(path):
+    if not os.path.exists(path) or os.path.getsize(path) == 0:
+        raise ValueError("arquivo ZIP ausente ou vazio")
+    with zipfile.ZipFile(path) as arquivo:
+        nomes = set(arquivo.namelist())
+        faltantes = sorted(ARQUIVOS_OBRIGATORIOS - nomes)
+        if faltantes:
+            raise ValueError("arquivos obrigatorios ausentes: " + ", ".join(faltantes))
 
-    # 2. Se não achar, tenta baixar da URL
-    dest = os.path.join(tempfile.gettempdir(), "emendas_cgu_varginha.zip")
-    print("Baixando dataset CGU (UNICO)...")
-    req = urllib.request.Request(ZIP_URL, headers={"User-Agent": "FiscalizaVarginha/1.0"})
-    with urllib.request.urlopen(req, timeout=180) as r, open(dest, "wb") as f:
-        f.write(r.read())
-    print(f"  {os.path.getsize(dest)//1024//1024} MB baixados")
-    return dest
+
+def _escrever_json_atomico(path, payload):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix=os.path.basename(path) + ".", suffix=".tmp", dir=os.path.dirname(path))
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temp_name, path)
+    finally:
+        if os.path.exists(temp_name):
+            os.unlink(temp_name)
+
+
+def baixar_zip():
+    """Baixa a fonte oficial; cache privado serve apenas como preservacao."""
+    os.makedirs(CACHE_DIR, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix="emendas-cgu-", suffix=".zip", dir=CACHE_DIR)
+    os.close(fd)
+    try:
+        print("Baixando dataset CGU (UNICO)...")
+        req = urllib.request.Request(ZIP_URL, headers={"User-Agent": "FiscalizaVarginha/2.0"})
+        with urllib.request.urlopen(req, timeout=300) as response, open(temp_name, "wb") as handle:
+            shutil.copyfileobj(response, handle, length=1024 * 1024)
+        _validar_zip(temp_name)
+        os.replace(temp_name, CACHE_ZIP)
+        metadata = {
+            "status": "ok",
+            "fonte": ZIP_URL,
+            "baixadoEm": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+            "bytes": os.path.getsize(CACHE_ZIP),
+        }
+        _escrever_json_atomico(CACHE_META, metadata)
+        print(f"  {metadata['bytes']//1024//1024} MB baixados e validados")
+        return CACHE_ZIP, metadata
+    except Exception as exc:
+        if os.path.exists(temp_name):
+            os.unlink(temp_name)
+        if os.path.exists(CACHE_ZIP):
+            try:
+                _validar_zip(CACHE_ZIP)
+                print(f"AVISO: fonte CGU indisponivel ({exc}); cache valido preservado.")
+                return CACHE_ZIP, {
+                    "status": "preservado",
+                    "fonte": ZIP_URL,
+                    "motivo": str(exc),
+                    "cache": CACHE_ZIP,
+                }
+            except Exception:
+                pass
+        paths_possiveis = [
+            r"L:\Meu Drive\Rotina Diaria\Recebimento de Arquivos\EmendasParlamentares (1).zip",
+            r"L:\Meu Drive\Rotina Diaria\Recebimento de Arquivos\EmendasParlamentares.zip",
+        ]
+        for path in paths_possiveis:
+            if os.path.exists(path):
+                _validar_zip(path)
+                print(f"AVISO: usando copia local preservada: {path}")
+                return path, {
+                    "status": "preservado",
+                    "fonte": ZIP_URL,
+                    "motivo": str(exc),
+                    "cache": path,
+                }
+        raise
 
 def objeto_por_codigo(z):
     """Mapa código -> texto do objeto (Função · Subfunção · Ação), do CSV principal."""
@@ -450,8 +515,33 @@ def gerar_resumo_tipos(regs):
         })
     return out
 
+def _escrever_saida_atomica(payload):
+    os.makedirs(os.path.dirname(FED_JS), exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix=os.path.basename(FED_JS) + ".", suffix=".tmp", dir=os.path.dirname(FED_JS))
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write("window.EMENDAS_FEDERAIS = ")
+            json.dump(payload, handle, ensure_ascii=False, indent=2)
+            handle.write(";\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temp_name, FED_JS)
+    finally:
+        if os.path.exists(temp_name):
+            os.unlink(temp_name)
+
+
 def main():
-    zpath = baixar_zip()
+    try:
+        zpath, coleta_fonte = baixar_zip()
+    except Exception as exc:
+        if os.path.exists(FED_JS):
+            print(f"AVISO: coleta federal falhou ({exc}); base anterior preservada.", file=sys.stderr)
+            return 2
+        raise
+    if coleta_fonte.get("status") != "ok" and os.path.exists(FED_JS):
+        print("AVISO: fonte federal sem nova copia valida; base publicada anterior preservada.")
+        return 2
     z = zipfile.ZipFile(zpath)
     print("Lendo objetos (função/ação)...")
     objetos = objeto_por_codigo(z)
@@ -476,14 +566,15 @@ def main():
             "totalFederal": round(total, 2), "totalFederalTexto": money_txt(total),
             "registros": len(regs), "emendasUnicas": len(set(r["emenda"] for r in regs)),
             "transferegov": transferegov_status,
+            "coletaFonte": coleta_fonte,
             "observacao": "Cada registro nasce como agregado emenda/favorecido. Nas transferências especiais ao Município, recebimento só é confirmado quando plano, empenho, ordem bancária e crédito na conta vinculada coincidem na API do Transferegov. Totais agregados excluem valores não positivos (estornos/anulações).",
         },
         "resumoTipos": resumo,
         "emendas": regs,
     }
-    io.open(FED_JS, "w", encoding="utf-8").write(
-        "window.EMENDAS_FEDERAIS = " + json.dumps(out, ensure_ascii=False, indent=2) + ";\n")
+    _escrever_saida_atomica(out)
     print(f"OK — {len(regs)} emendas federais | total R$ {money_txt(total)} | {FED_JS}")
+    return 0
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

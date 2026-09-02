@@ -5,10 +5,10 @@ Coletor Federal — Fiscaliza Varginha
 Coleta dados reais de fontes federais oficiais sobre Varginha-MG (IBGE 3170701).
 
 Fontes:
-  1. API CGU — /emendas?codigoMunicipio=3170701  (chave ativa)
+  1. Dados abertos CGU — emendas-parlamentares/UNICO, por favorecido
   2. API CGU — /convenios?uf=MG (filtra por município)
   3. API CGU — /ceis (dataset sancionados, cruza com Betha)
-  4. Dataset aberto — emendas-parlamentares/UNICO (sem token, redundante com /emendas)
+  4. API CGU — chave usada apenas nos endpoints com filtros suportados
   5. API Transferegov — planos, empenhos, OBs e contas de transferências especiais
 
 Saída: painel-cidadao/data/federal.json
@@ -215,47 +215,57 @@ def _api_get(path: str, params: dict, token: str, timeout: int = 30, max_pages: 
 
 # ── 1) Emendas federais via API CGU ──────────────────────────────────────────
 
-def _coletar_emendas_api(token: str) -> tuple[list[dict], bool, str]:
-    """Busca emendas parlamentares federais destinadas a Varginha via API CGU.
-    Retorna campos: codigoEmenda, tipoEmenda, nomeAutor, funcao, subfuncao,
-    valorEmpenhado, valorLiquidado, valorPago."""
-    print("  -> API CGU /emendas (Varginha)...")
-    rows, ok, erro = _api_get("/emendas", {"codigoMunicipio": IBGE}, token)
-    print(f"     {len(rows)} registros obtidos")
-    out = []
-    for r in rows:
-        if not _localidade_confirmada(r):
-            continue
-        tipo = str(r.get("tipoEmenda", ""))
-        item = {
-            "codigo": str(r.get("codigoEmenda", "")),
-            "ano": str(r.get("ano", "")),
-            "tipo": tipo,
-            "autor": str(r.get("nomeAutor", "") or r.get("autor", "")),
-            "funcao": str(r.get("funcao", "")),
-            "subfuncao": str(r.get("subfuncao", "")),
-            "localidade": MUNICIPIO_LABEL,
-            "valorEmpenhado": _to_float(r.get("valorEmpenhado")),
-            "valorLiquidado": _to_float(r.get("valorLiquidado")),
-            "valorPago": _to_float(r.get("valorPago")),
-            "autoria_tipo": _autoria_tipo(tipo),
-            "transferencia_modalidade": _modalidade(r),
-            "destino_confirmado": True,
-            "nivel_confianca": "alto",
-            "granularidade": "emenda_localidade",
-            "fonte": "API CGU /emendas",
-            "linkFonte": f"https://portaldatransparencia.gov.br/emendas/consulta?codigoEmenda={r.get('codigoEmenda', '')}",
-        }
-        cargo = _campo_confirmado(r, "cargoAutor", "cargo")
-        uf_autor = _campo_confirmado(r, "ufAutor", "siglaUfAutor")
-        if cargo:
-            item["cargo"] = cargo
-        if uf_autor:
-            item["uf"] = uf_autor
-        out.append(item)
-    if rows and not out:
-        return [], False, "filtro local rejeitou todos os registros sem destino Varginha/MG confirmado (partial)"
-    return out, ok, erro
+def _coletar_emendas_api(_token: str) -> tuple[list[dict], bool, str]:
+    """Lê a base CGU PorFavorecido filtrada pelo coletor autoritativo.
+
+    /emendas não aceita codigoMunicipio: o servidor ignora esse parâmetro e
+    devolve resultados nacionais. A seleção municipal usa o download UNICO.
+    """
+    path = ROOT / "emendas" / "data" / "emendas_federais.js"
+    print("  -> Dados abertos CGU PorFavorecido (Varginha)...")
+    if not path.exists():
+        return [], False, "base autoritativa emendas_federais.js ausente"
+    try:
+        text = path.read_text(encoding="utf-8")
+        payload = json.loads(text[text.index("{"):text.rindex("}") + 1])
+        metadata = payload.get("metadata") or {}
+        if str(metadata.get("codigoIbge") or "") != IBGE:
+            return [], False, "base federal rejeitada: codigo IBGE diferente de Varginha"
+        rows = payload.get("emendas") or []
+        if not isinstance(rows, list) or not rows:
+            return [], False, "base federal PorFavorecido vazia"
+        out = []
+        for row in rows:
+            if row.get("destino_confirmado") is not True and not row.get("somenteNoBetha"):
+                continue
+            tipo = str(row.get("categoria") or row.get("tipo") or "")
+            out.append({
+                "codigo": str(row.get("emenda") or ""),
+                "ano": str(row.get("anoEmenda") or row.get("ano") or ""),
+                "tipo": tipo,
+                "autor": str(row.get("autor") or ""),
+                "funcao": str(row.get("funcao") or ""),
+                "subfuncao": str(row.get("subfuncao") or ""),
+                "localidade": MUNICIPIO_LABEL,
+                "beneficiario": str(row.get("beneficiario") or ""),
+                "valorAgregado": _to_float(row.get("valor")),
+                "valorEmpenhado": None if row.get("valorEmpenhado") in (None, "") else _to_float(row.get("valorEmpenhado")),
+                "valorLiquidado": None if row.get("valorLiquidado") in (None, "") else _to_float(row.get("valorLiquidado")),
+                "valorPago": None if row.get("valorPago") in (None, "") else _to_float(row.get("valorPago")),
+                "autoria_tipo": row.get("autoria_tipo") or _autoria_tipo(tipo),
+                "transferencia_modalidade": row.get("transferencia_modalidade") or _modalidade(row),
+                "destino_confirmado": True,
+                "nivel_confianca": row.get("nivel_confianca") or "medio",
+                "granularidade": row.get("granularidade") or "emenda_favorecido_agregado",
+                "fonte": "CGU dados abertos PorFavorecido",
+                "linkFonte": row.get("fonteUrl"),
+            })
+        if not out:
+            return [], False, "base federal sem registros locais confirmados"
+        print(f"     {len(out)} registros locais confirmados")
+        return out, True, ""
+    except Exception as exc:
+        return [], False, f"falha ao ler dados abertos federais: {exc}"
 
 
 # ── 2) Convênios via API CGU ──────────────────────────────────────────────────
@@ -402,9 +412,13 @@ def _resumo(
             if item.get(campo) not in (None, "")
         ]
         return round(sum(valores), 2) if valores else None
-    total_empenhado = sum(e["valorEmpenhado"] for e in emendas)
-    total_liquidado = sum(e["valorLiquidado"] for e in emendas)
-    total_pago = sum(e["valorPago"] for e in emendas)
+    def total_emenda_conhecido(campo: str):
+        valores = [
+            _to_float(item.get(campo)) for item in emendas
+            if item.get(campo) not in (None, "")
+        ]
+        return round(sum(valores), 2) if valores else None
+    total_agregado = round(sum(_to_float(e.get("valorAgregado")) for e in emendas), 2)
     validos = [c for c in convenios if not c.get("cancelado_ou_anulado")]
     total_convenios = sum(c["valor"] for c in validos)
     total_recebido = sum(c["valorRecebido"] for c in validos)
@@ -416,9 +430,11 @@ def _resumo(
         "atualizadoEm": dt.datetime.now().strftime("%d/%m/%Y %H:%M"),
         "emendas": {
             "qtd": len(emendas),
-            "totalEmpenhado": round(total_empenhado, 2),
-            "totalLiquidado": round(total_liquidado, 2),
-            "totalPago": round(total_pago, 2),
+            "totalAgregadoFavorecidos": total_agregado,
+            "totalEmpenhado": total_emenda_conhecido("valorEmpenhado"),
+            "totalLiquidado": total_emenda_conhecido("valorLiquidado"),
+            "totalPago": total_emenda_conhecido("valorPago"),
+            "nota": "Valor agregado por emenda e favorecido não comprova, sozinho, pagamento ou recebimento individual.",
         },
         "transferenciasEspeciais": {
             "qtdEmendasUnicas": len(especiais),
@@ -526,7 +542,7 @@ def coletar() -> dict:
         alertas_ceis = existente["alertas_ceis"]
 
     payload = {
-        "fonte": "Portal da Transparência Federal (CGU) — api.portaldatransparencia.gov.br",
+        "fonte": "Portal da Transparência Federal (CGU) — dados abertos e APIs oficiais",
         "atualizado_em": dt.datetime.now().isoformat(),
         "resumo": _resumo(emendas, convenios, alertas_ceis, transferencias_especiais),
         "emendas_api": emendas,

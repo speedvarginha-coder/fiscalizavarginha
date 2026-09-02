@@ -4,6 +4,8 @@ const municipaisUnificadas = (window.EMENDAS_MUNICIPAIS_UNIFICADAS && window.EME
 // Emendas federais do Portal da Transparência (CGU), carregadas de data/emendas_federais.js
 const federais = (window.EMENDAS_FEDERAIS && window.EMENDAS_FEDERAIS.emendas) || [];
 const estaduaisNormalizadas = (window.EMENDAS_ESTADUAIS_NORMALIZADAS && window.EMENDAS_ESTADUAIS_NORMALIZADAS.emendas) || [];
+const tesouroPayload = window.EMENDAS_TESOURO || { metadata: {}, pagamentos: [] };
+const pagamentosTesouro = tesouroPayload.pagamentos || [];
 // Municipais e estaduais da base legada são apenas fontes de transformação; não entram
 // diretamente na tela para não somar registros duplicados ou esquemas antigos.
 const baseSemMunicipaisOuEstaduais = (payload.emendas || []).filter((record) => !["Municipal", "Estadual"].includes(record.tipo));
@@ -23,6 +25,40 @@ function firstMoney(record, keys) {
     if (value !== null) return value;
   }
   return null;
+}
+
+function sourceLabelsForRecord(record) {
+  const labels = new Set(record.fontesConferidas || []);
+  if (record.fonteSistema) labels.add(record.fonteSistema);
+  if (record.tipo === "Federal") {
+    if (!record.somenteNoBetha) labels.add("CGU");
+    if (record.somenteNoBetha || record.dadosBetha) labels.add("Betha");
+    if (record.fonteExecucao || record.planoAcaoId) labels.add("Transferegov");
+  }
+  if (record.tipo === "Municipal") {
+    labels.add(record.origemMunicipal === "sapl_camara" ? "SAPL / Câmara" : "Betha histórico");
+  }
+  if (record.tipo === "Estadual" && !labels.size) labels.add("Portal Emendas MG");
+  return [...labels].filter(Boolean).sort((a, b) => a.localeCompare(b, "pt-BR"));
+}
+
+function scopeLabelForRecord(record) {
+  if (record.escopoDestino) return record.escopoDestino;
+  if (record.tipo === "Municipal") return "Indicação municipal de Varginha";
+  if (record.tipo === "Federal") return "Favorecido localizado em Varginha";
+  return "Destino relacionado a Varginha";
+}
+
+function reconciliationLabelForRecord(record, sourceLabels) {
+  const labels = {
+    "conferido_em_duas_fontes": "Conferido em duas fontes",
+    "somente_almg": "Somente ALMG (cobertura complementar)",
+    "divergencia_entre_fontes": "Divergência entre fontes",
+    "fonte_unica": "Fonte única",
+  };
+  if (labels[record.conciliacaoFontes]) return labels[record.conciliacaoFontes];
+  if (sourceLabels.length > 1) return `Conferido em ${sourceLabels.length} fontes`;
+  return "Fonte única";
 }
 
 function normalizeRecord(record) {
@@ -83,7 +119,28 @@ function normalizeRecord(record) {
     else comprovacao = "Sem comprovação";
   }
 
-  return { ...record, autoriaTipo, modalidade, comprovacao, stages, valorAgregado };
+  const sourceLabels = sourceLabelsForRecord(record);
+  const scopeLabel = scopeLabelForRecord(record);
+  const reconciliationLabel = reconciliationLabelForRecord(record, sourceLabels);
+  const textoBusca = normalize([
+    record.textoBusca,
+    ...sourceLabels,
+    scopeLabel,
+    reconciliationLabel,
+  ].filter(Boolean).join(" "));
+
+  return {
+    ...record,
+    autoriaTipo,
+    modalidade,
+    comprovacao,
+    stages,
+    valorAgregado,
+    sourceLabels,
+    scopeLabel,
+    reconciliationLabel,
+    textoBusca,
+  };
 }
 
 // Os PDFs não são hospedados aqui (versão leve). Os links levam à fonte oficial
@@ -122,6 +179,9 @@ const elements = {
   metricExecuted: document.querySelector("#metricExecuted"),
   searchInput: document.querySelector("#searchInput"),
   typeFilter: document.querySelector("#typeFilter"),
+  sourceFilter: document.querySelector("#sourceFilter"),
+  scopeFilter: document.querySelector("#scopeFilter"),
+  reconciliationFilter: document.querySelector("#reconciliationFilter"),
   yearFilter: document.querySelector("#yearFilter"),
   resourceYearFilter: document.querySelector("#resourceYearFilter"),
   orgFilter: document.querySelector("#orgFilter"),
@@ -173,6 +233,14 @@ const elements = {
   detailBody: document.querySelector("#detailBody"),
   shareDetail: document.querySelector("#shareDetail"),
   closeDialog: document.querySelector("#closeDialog"),
+  treasuryYearFilter: document.querySelector("#treasuryYearFilter"),
+  treasuryBeneficiaryFilter: document.querySelector("#treasuryBeneficiaryFilter"),
+  treasurySpecialFilter: document.querySelector("#treasurySpecialFilter"),
+  treasuryClear: document.querySelector("#treasuryClear"),
+  treasuryTotal: document.querySelector("#treasuryTotal"),
+  treasuryCount: document.querySelector("#treasuryCount"),
+  treasurySummary: document.querySelector("#treasurySummary"),
+  treasuryResults: document.querySelector("#treasuryResults"),
 };
 
 const moneyFormatter = new Intl.NumberFormat("pt-BR", {
@@ -618,6 +686,9 @@ function setupFilters() {
     "Estadual": "Fonte estadual",
     "Municipal": "Fonte municipal"
   });
+  fillSelect(elements.sourceFilter, [...new Set(allRecords.flatMap((record) => record.sourceLabels))].sort((a, b) => a.localeCompare(b, "pt-BR")));
+  fillSelect(elements.scopeFilter, [...new Set(allRecords.map((record) => record.scopeLabel))].sort((a, b) => a.localeCompare(b, "pt-BR")));
+  fillSelect(elements.reconciliationFilter, [...new Set(allRecords.map((record) => record.reconciliationLabel))].sort((a, b) => a.localeCompare(b, "pt-BR")));
   fillSelect(elements.yearFilter, allYears());
   fillSelect(elements.resourceYearFilter, allResourceYears());
   // Anos também nos seletores dos rankings
@@ -646,6 +717,9 @@ function setupFilters() {
   fillDatalist(elements.beneficiaryOptions, uniqueSorted("beneficiario"));
   fillSelect(elements.approvalFilter, uniqueSorted("aprovado"));
   fillSelect(elements.individualFilter, uniqueSorted("emendaIndividual"));
+  fillSelect(elements.treasuryYearFilter, [...new Set(pagamentosTesouro.map((row) => row.ano).filter(Boolean))].sort((a, b) => Number(b) - Number(a)));
+  fillSelect(elements.treasuryBeneficiaryFilter, [...new Set(pagamentosTesouro.map((row) => row.favorecido).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR")));
+  fillSelect(elements.treasurySpecialFilter, [...new Set(pagamentosTesouro.map((row) => row.transferenciaEspecial).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR")));
 
   // Usa a data mais recente entre o payload federal e o municipal
   const federalDate = window.EMENDAS_FEDERAIS?.metadata?.extraidoEm || "";
@@ -676,6 +750,8 @@ function quickMatch(record) {
   if (state.quick === "valor-zero") return rankingValue(record) === 0;
   if (state.quick === "sem-ano-emenda") return amendmentYearsForRecord(record).length === 0;
   if (state.quick === "sem-ano-recurso") return resourceYearsForRecord(record).length === 0;
+  if (state.quick === "duas-fontes") return record.conciliacaoFontes === "conferido_em_duas_fontes";
+  if (state.quick === "almg-complementar") return record.conciliacaoFontes === "somente_almg";
   return true;
 }
 
@@ -687,6 +763,9 @@ function applyFilters() {
   state.filtered = allRecords.filter((record) => {
     const matchesSearch = !search || (record.textoBusca || "").includes(search);
     const matchesType = !elements.typeFilter.value || record.tipo === elements.typeFilter.value;
+    const matchesSource = !elements.sourceFilter.value || record.sourceLabels.includes(elements.sourceFilter.value);
+    const matchesScope = !elements.scopeFilter.value || record.scopeLabel === elements.scopeFilter.value;
+    const matchesReconciliation = !elements.reconciliationFilter.value || record.reconciliationLabel === elements.reconciliationFilter.value;
     const matchesYear = !elements.yearFilter.value || amendmentYearsForRecord(record).includes(elements.yearFilter.value);
     const matchesResourceYear =
       !elements.resourceYearFilter.value || resourceYearsForRecord(record).includes(elements.resourceYearFilter.value);
@@ -717,6 +796,9 @@ function applyFilters() {
     return (
       matchesSearch &&
       matchesType &&
+      matchesSource &&
+      matchesScope &&
+      matchesReconciliation &&
       matchesYear &&
       matchesResourceYear &&
       matchesOrg &&
@@ -919,7 +1001,7 @@ const FEDERAL_MG_PARLIAMENTARIANS = new Set([
 ]);
 
 // Soma reativa exibida abaixo do filtro de ano: total R$ + quantidade dos itens filtrados
-function renderRankSum(el, groups) {
+function renderRankSum(el, groups, label = rankingStageLabel()) {
   if (!el) return;
   if (!groups.length) {
     el.style.display = "none";
@@ -929,7 +1011,7 @@ function renderRankSum(el, groups) {
   const somaQtd = groups.reduce((s, g) => s + Number(g.count || 0), 0);
   el.style.display = "flex";
   el.innerHTML =
-    `<strong>Soma filtrada (${rankingStageLabel()}):</strong> ${moneyFormatter.format(somaValor)}` +
+    `<strong>Soma filtrada (${escapeHtml(label)}):</strong> ${moneyFormatter.format(somaValor)}` +
     ` · ${numberFormatter.format(somaQtd)} emenda${somaQtd === 1 ? "" : "s"}` +
     ` · ${numberFormatter.format(groups.length)} parlamentar${groups.length === 1 ? "" : "es"}`;
 }
@@ -1034,7 +1116,10 @@ function renderAuthorRanking() {
   renderRankSum(elements.authorSum, allGroups);
 
   if (!groups.length) {
-    elements.authorRanking.innerHTML = `<div class="empty compact-empty">Nenhum parlamentar encontrado com os filtros atuais.</div>`;
+    const yearHint = rankYear
+      ? ` Não há emendas municipais publicadas para ${escapeHtml(rankYear)} na base atual; os registros municipais disponíveis são de 2024 e 2025.`
+      : " Verifique os filtros de situação e estágio financeiro.";
+    elements.authorRanking.innerHTML = `<div class="empty compact-empty">Nenhum vereador encontrado com os filtros atuais.${yearHint}</div>`;
     return;
   }
 
@@ -1075,7 +1160,10 @@ function renderDeputyRanking() {
   const map = new Map();
   state.filtered.forEach((record) => {
     if (record.tipo !== "Federal" && record.tipo !== "Estadual") return;
-    if (rankingValue(record) === null) return;
+    // O CGU publica muitas emendas federais como valor agregado por emenda/favorecido,
+    // sem preencher o estágio "indicado". Para não ocultar parlamentares válidos,
+    // este painel usa o agregado declarado somente como fallback explícito.
+    if (deputyRankingValue(record) === null) return;
 
     // Filtro de cargo do painel (chips Dep. Federal / Dep. Estadual / Senador)
     if (state.deputyRole && authorRole(record) !== state.deputyRole) return;
@@ -1107,7 +1195,7 @@ function renderDeputyRanking() {
         : normalize(record.beneficiario).includes(beneficiaryTerm) || canonicalBeneficiaryKey(record).includes(beneficiaryTerm));
     const matchesApproval = !approvalFilterVal || record.aprovado === approvalFilterVal;
     const matchesIndividual = !individualFilterVal || record.emendaIndividual === individualFilterVal;
-    const filterValue = rankingValue(record);
+    const filterValue = deputyRankingValue(record);
     const matchesMin = !minValue || (filterValue !== null && filterValue >= minValue);
     const matchesMax = !maxValue || (filterValue !== null && filterValue <= maxValue);
     const roleMatches = !state.rankRole || authorRole(record) === state.rankRole;
@@ -1138,7 +1226,7 @@ function renderDeputyRanking() {
       const entry =
         map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), role: authorRole(record) };
       entry.count += 1;
-      const value = rankingValue(record);
+      const value = deputyRankingValue(record);
       if (value !== null) entry.total += value;
       entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
       if (authorMeta.party) entry.partidos.add(authorMeta.party);
@@ -1155,7 +1243,7 @@ function renderDeputyRanking() {
   const singular = state.deputyRole === "Senador(a)" ? "senador" : (state.deputyRole ? "deputado" : "parlamentar");
   const plural = singular.endsWith("r") ? singular + "es" : singular + "s";
   elements.deputyTotal.textContent = `${numberFormatter.format(map.size)} ${map.size === 1 ? singular : plural}`;
-  renderRankSum(elements.deputySum, allGroups);
+  renderRankSum(elements.deputySum, allGroups, deputyRankingStageLabel());
 
   if (!groups.length) {
     elements.deputyRanking.innerHTML = `<div class="empty compact-empty">Nenhum deputado federal ou estadual encontrado com os filtros atuais.</div>`;
@@ -1181,6 +1269,21 @@ function renderDeputyRanking() {
 
 function rankingValue(record) {
   return record.stages[state.rankingStage] ?? null;
+}
+
+function deputyRankingValue(record) {
+  const value = rankingValue(record);
+  if (value !== null) return value;
+  if ((record.tipo === "Federal" || record.tipo === "Estadual") && state.rankingStage === "indicado") {
+    return record.valorAgregado ?? null;
+  }
+  return null;
+}
+
+function deputyRankingStageLabel() {
+  return state.rankingStage === "indicado"
+    ? "Indicado; agregado declarado quando o indicado não é informado"
+    : rankingStageLabel();
 }
 
 function rankingStageLabel() {
@@ -1439,6 +1542,9 @@ function renderResults() {
             <p>${escapeHtml(object)}</p>
             <div class="tags">
               <span class="tag ${typeClass(record.tipo)}">Fonte ${escapeHtml(record.tipo)}</span>
+              <span class="tag">Portal: ${escapeHtml(record.sourceLabels.join(" + ") || "Não informado")}</span>
+              <span class="tag">${escapeHtml(record.reconciliationLabel)}</span>
+              <span class="tag">Escopo: ${escapeHtml(record.scopeLabel)}</span>
               <span class="tag">Autoria: ${escapeHtml(record.autoriaTipo)}</span>
               <span class="tag">Modalidade: ${escapeHtml(record.modalidade)}</span>
               <span class="tag evidence-${typeClass(record.comprovacao)}">${escapeHtml(record.comprovacao)}</span>
@@ -1619,6 +1725,9 @@ function openDetails(id, updateUrl = true) {
     ${detailItem("Objeto", record.objeto)}
     ${detailItem("Descrição", record.descricao)}
     ${detailItem("Fonte", record.fonte || record.nomeFonte || record.tipo)}
+    ${detailItem("Portais consultados", record.sourceLabels.join(" + "))}
+    ${detailItem("Conciliação", record.reconciliationLabel)}
+    ${detailItem("Escopo do destino", record.scopeLabel)}
     ${detailItem(record.fonteExecucao ? "Trilha federal / observações" : "Estágios / observações", record.execucao || record.statusFinanceiro)}
     ${transferegovSection}
     ${bethaSection}
@@ -1653,16 +1762,56 @@ async function shareCurrentDetail() {
   }, 1800);
 }
 
+function formatTreasuryDate(value) {
+  const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  return match ? `${match[3]}/${match[2]}/${match[1]}` : (value || "N/D");
+}
+
+function filteredTreasuryPayments() {
+  return pagamentosTesouro.filter((row) =>
+    (!elements.treasuryYearFilter.value || row.ano === elements.treasuryYearFilter.value) &&
+    (!elements.treasuryBeneficiaryFilter.value || row.favorecido === elements.treasuryBeneficiaryFilter.value) &&
+    (!elements.treasurySpecialFilter.value || row.transferenciaEspecial === elements.treasurySpecialFilter.value)
+  );
+}
+
+function renderTreasuryPayments() {
+  if (!elements.treasuryResults) return;
+  const records = filteredTreasuryPayments();
+  const total = records.reduce((sum, row) => sum + Number(row.valorPago || 0), 0);
+  elements.treasuryTotal.textContent = records.length ? moneyFormatter.format(total) : "N/D";
+  elements.treasuryCount.textContent = `${numberFormatter.format(records.length)} ordem${records.length === 1 ? "" : "ns"} bancária${records.length === 1 ? "" : "s"}`;
+  const updated = String(tesouroPayload.metadata?.arquivoUltimaModificacao || tesouroPayload.metadata?.extraidoEm || "").slice(0, 10);
+  elements.treasurySummary.textContent = records.length
+    ? `Pagamento registrado pelo Tesouro nos filtros selecionados. Base: ${numberFormatter.format(pagamentosTesouro.length)} ordens para o código IBGE 3170701${updated ? `; referência da fonte: ${formatTreasuryDate(updated)}` : ""}.`
+    : "Nenhuma ordem bancária encontrada com esses filtros.";
+  elements.treasuryResults.innerHTML = records.length
+    ? records.map((row) => `
+      <tr>
+        <td>${escapeHtml(formatTreasuryDate(row.data))}</td>
+        <td><strong>${escapeHtml(row.favorecido || "N/D")}</strong><br><small>${escapeHtml(row.cnpjFavorecido || "CNPJ não informado")}</small></td>
+        <td>${escapeHtml(row.tipoEmenda || "N/D")}${normalize(row.transferenciaEspecial) === "sim" ? "<br><small>Transferência especial (Pix)</small>" : ""}</td>
+        <td>${escapeHtml(row.categoriaEconomica || "N/D")}</td>
+        <td><code>${escapeHtml(row.ordemBancaria || "N/D")}</code></td>
+        <td><strong>${moneyFormatter.format(Number(row.valorPago || 0))}</strong></td>
+      </tr>`).join("")
+    : '<tr><td colspan="6" class="muted">Nenhum pagamento encontrado.</td></tr>';
+}
+
 function render() {
   renderMetrics();
   renderInsights();
   renderResults();
+  renderTreasuryPayments();
 }
 
 function clearFilters() {
   [
     elements.searchInput,
     elements.typeFilter,
+    elements.sourceFilter,
+    elements.scopeFilter,
+    elements.reconciliationFilter,
     elements.categoryFilter,
     elements.authorshipFilter,
     elements.modalityFilter,
@@ -1723,6 +1872,9 @@ function exportCsv() {
     "anoDaEmenda",
     "anoDoRecurso",
     "tipo",
+    "portais",
+    "escopoDestino",
+    "conciliacao",
     "ano",
     "emenda",
     "autor",
@@ -1743,6 +1895,9 @@ function exportCsv() {
         if (key === "anosRelacionados") return csvValue(yearsForRecord(record).join(", "));
         if (key === "anoDaEmenda") return csvValue(amendmentYearsForRecord(record).join(", "));
         if (key === "anoDoRecurso") return csvValue(resourceYearsForRecord(record).join(", "));
+        if (key === "portais") return csvValue(record.sourceLabels.join(" + "));
+        if (key === "escopoDestino") return csvValue(record.scopeLabel);
+        if (key === "conciliacao") return csvValue(record.reconciliationLabel);
         return csvValue(record[key]);
       })
       .join(";")
@@ -1774,6 +1929,9 @@ function setupEvents() {
   [
     elements.searchInput,
     elements.typeFilter,
+    elements.sourceFilter,
+    elements.scopeFilter,
+    elements.reconciliationFilter,
     elements.categoryFilter,
     elements.authorshipFilter,
     elements.modalityFilter,
@@ -1799,6 +1957,15 @@ function setupEvents() {
       state.page = 1;
       applyFilters();
     });
+  });
+
+  [elements.treasuryYearFilter, elements.treasuryBeneficiaryFilter, elements.treasurySpecialFilter]
+    .forEach((element) => element.addEventListener("input", renderTreasuryPayments));
+  elements.treasuryClear.addEventListener("click", () => {
+    elements.treasuryYearFilter.value = "";
+    elements.treasuryBeneficiaryFilter.value = "";
+    elements.treasurySpecialFilter.value = "";
+    renderTreasuryPayments();
   });
 
   elements.clearFilters.addEventListener("click", clearFilters);

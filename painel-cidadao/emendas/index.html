@@ -91,6 +91,35 @@
         <div id="federalPorTipo" class="fed-tipos"></div>
       </section>
 
+      <section class="treasury-audit" aria-labelledby="treasuryTitle">
+        <div class="treasury-audit__head">
+          <div>
+            <p class="eyebrow-dark">Conferência federal independente</p>
+            <h2 id="treasuryTitle">Ordens bancárias registradas pelo Tesouro</h2>
+            <p>Esta trilha mostra pagamentos federais associados ao código IBGE de Varginha. Os valores ficam separados da lista principal para evitar somar duas vezes o mesmo recurso da CGU ou do Transferegov.</p>
+          </div>
+          <div class="treasury-audit__metric">
+            <span>Total nos filtros</span>
+            <strong id="treasuryTotal">N/D</strong>
+            <small id="treasuryCount">0 ordens bancárias</small>
+          </div>
+        </div>
+        <div class="treasury-audit__filters">
+          <label class="field"><span>Ano do pagamento</span><select id="treasuryYearFilter"><option value="">Todos</option></select></label>
+          <label class="field"><span>Favorecido</span><select id="treasuryBeneficiaryFilter"><option value="">Todos</option></select></label>
+          <label class="field"><span>Transferência especial (Pix)</span><select id="treasurySpecialFilter"><option value="">Todas</option></select></label>
+          <button id="treasuryClear" class="button secondary" type="button">Limpar filtros do Tesouro</button>
+        </div>
+        <p id="treasurySummary" class="muted"></p>
+        <div class="treasury-table-wrap">
+          <table class="treasury-table">
+            <thead><tr><th>Data</th><th>Favorecido</th><th>Tipo</th><th>Categoria</th><th>Ordem bancária</th><th>Valor pago</th></tr></thead>
+            <tbody id="treasuryResults"></tbody>
+          </table>
+        </div>
+        <p class="treasury-audit__note"><strong>Como interpretar:</strong> ordem bancária é evidência de pagamento registrado pelo Tesouro. Não demonstra, isoladamente, a execução do objeto da emenda.</p>
+      </section>
+
       <section class="filters" aria-label="Filtros de consulta">
         <div class="citizen-guide">
           <strong>Para conferir uma emenda, olhe nesta ordem:</strong>
@@ -114,6 +143,18 @@
             <select id="typeFilter">
               <option value="">Todos</option>
             </select>
+          </label>
+          <label class="field">
+            <span>Portal de origem</span>
+            <select id="sourceFilter"><option value="">Todos</option></select>
+          </label>
+          <label class="field">
+            <span>Escopo do destino</span>
+            <select id="scopeFilter"><option value="">Todos</option></select>
+          </label>
+          <label class="field">
+            <span>Conciliação entre fontes</span>
+            <select id="reconciliationFilter"><option value="">Todas</option></select>
           </label>
           <label class="field">
             <span>Tipo de emenda</span>
@@ -229,6 +270,8 @@
           <button class="chip" data-quick="sem-ano-emenda" type="button">Sem ano da emenda</button>
           <button class="chip" data-quick="sem-ano-recurso" type="button">Sem ano do recurso</button>
           <button class="chip" data-quick="valor-zero" type="button">Valor zerado</button>
+          <button class="chip" data-quick="duas-fontes" type="button">Conferidas em duas fontes</button>
+          <button class="chip" data-quick="almg-complementar" type="button">Cobertura complementar ALMG</button>
         </div>
       </section>
 
@@ -245,7 +288,7 @@
               <option value="executado">Executado</option>
             </select>
           </label>
-          <span class="muted" style="font-size: .88em;">Registros sem valor no estágio escolhido ficam fora das somas.</span>
+          <span class="muted" style="font-size: .88em;">Registros sem valor no estágio escolhido ficam fora das somas. No ranking de deputados, o valor agregado declarado é usado somente quando o indicado não é informado.</span>
         </div>
         <article class="panel">
           <div class="panel-title">
@@ -268,7 +311,7 @@
           </div>
           <div id="recipientRanking" class="ranking-list"></div>
         </article>
-        <article class="panel">
+        <article class="panel ranking-panel ranking-panel--local">
           <div class="panel-title">
             <h2>Associações por beneficiário</h2>
             <span id="associationTotal">por estágio</span>
@@ -293,7 +336,7 @@
           <div id="authorSum" class="rank-sum" style="font-size: 0.9em; margin-bottom: 12px; color: #4b5563; background: #f3f4f6; padding: 6px 10px; border-radius: 6px; display: none; align-items: center; gap: 6px;"></div>
           <div id="authorRanking" class="ranking-list"></div>
         </article>
-        <article class="panel">
+        <article class="panel ranking-panel ranking-panel--parlamentar">
           <div class="panel-title">
             <h2>Deputados e Senadores (Estadual/Federal)</h2>
             <span id="deputyTotal">por valor total</span>
@@ -487,6 +530,7 @@
     <script src="data/emendas_estaduais_normalizadas.js?v=20260729a"></script>
     <script src="data/emendas_municipais_unificadas.js?v=20260729a"></script>
     <script src="data/emendas_federais.js?v=20260729a"></script>
+    <script src="data/emendas_tesouro.js?v=20260826a"></script>
     <script src="app.js?v=20260729a"></script>
   <script>
 (function () {

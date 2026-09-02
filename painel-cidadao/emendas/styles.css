@@ -169,6 +169,106 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   color: var(--muted);
 }
 
+.treasury-audit {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.treasury-audit__head {
+  align-items: start;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(210px, 280px);
+}
+
+.treasury-audit__head h2,
+.treasury-audit__head p {
+  margin: 0;
+}
+
+.treasury-audit__head h2 {
+  margin-bottom: 6px;
+}
+
+.eyebrow-dark {
+  color: var(--amber);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.treasury-audit__metric {
+  background: #FFF9E8;
+  border: 1px solid #E9D79E;
+  border-radius: 8px;
+  display: grid;
+  padding: 14px 16px;
+}
+
+.treasury-audit__metric span,
+.treasury-audit__metric small {
+  color: var(--muted);
+}
+
+.treasury-audit__metric strong {
+  font-size: 1.35rem;
+}
+
+.treasury-audit__filters {
+  align-items: end;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  margin-top: 18px;
+}
+
+.treasury-table-wrap {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 12px;
+  max-height: 440px;
+  overflow: auto;
+}
+
+.treasury-table {
+  border-collapse: collapse;
+  font-size: .88rem;
+  width: 100%;
+}
+
+.treasury-table th,
+.treasury-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.treasury-table th {
+  background: #F4F8FC;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.treasury-table td:last-child,
+.treasury-table th:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.treasury-audit__note {
+  background: #F4F8FC;
+  border-radius: 6px;
+  color: var(--muted);
+  margin: 12px 0 0;
+  padding: 10px 12px;
+}
+
 .search-row,
 .filter-grid {
   display: grid;
@@ -264,6 +364,33 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 .panel {
   padding: 18px;
+}
+
+/* Rankings: painéis compactos, com hierarquia própria e sem alturas artificiais. */
+.ranking-panel {
+  align-self: start;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+.ranking-panel::before {
+  background: var(--civic-blue);
+  content: "";
+  height: 4px;
+  inset: 0 0 auto;
+  position: absolute;
+}
+.ranking-panel--local::before { background: var(--civic-green); }
+.ranking-panel--parlamentar::before { background: var(--civic-gold); }
+.ranking-panel .panel-title { padding-top: 2px; }
+.ranking-panel .panel-title h2 { line-height: 1.25; }
+.ranking-panel .panel-title span {
+  background: #f4f8fc;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: .78rem;
+  padding: 4px 8px;
+  white-space: nowrap;
 }
 
 .wide-panel {
@@ -986,6 +1113,10 @@ button.flag-card:hover {
   margin-bottom: 12px;
   border-bottom: 1px dashed var(--line);
   padding-bottom: 10px;
+  background: rgba(244, 248, 252, .62);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
 }
 .rank-chip {
   background: #F4F8FC;
@@ -1132,8 +1263,19 @@ body {
 
 /* Seletor de ano nos painéis de ranking */
 .rank-year {
-  margin-left: auto; padding: 5px 8px; font-size: .78rem; font-weight: 700;
-  border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--green);
+  margin-left: auto; padding: 7px 10px; font-size: .8rem; font-weight: 700;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--green);
+}
+
+@media (max-width: 900px) {
+  .ranking-panel .panel-title { align-items: center; flex-direction: row; }
+}
+
+@media (max-width: 620px) {
+  .ranking-panel .panel-title { align-items: flex-start; flex-direction: column; gap: 8px; }
+  .ranking-panel .panel-title span { align-self: flex-start; }
+  .panel-filters { padding: 8px; }
+  .rank-year { margin-left: 0; width: 100%; }
 }
 
 /* ================== RODAPE PADRAO DO PAINEL ==================
@@ -1176,3 +1318,10 @@ body {
 }
 @media (max-width: 900px) { .footer__inner { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .footer__inner { grid-template-columns: 1fr; } }
+
+@media (max-width: 760px) {
+  .treasury-audit__head,
+  .treasury-audit__filters { grid-template-columns: 1fr; }
+  .treasury-table { min-width: 760px; }
+  .treasury-audit { padding: 16px; }
+}

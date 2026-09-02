@@ -39,6 +39,23 @@ npm run data:schedule:watch
 
 Nome da tarefa criada: `Fiscaliza Varginha - Vigia de dados`.
 
+Instalar o ciclo financeiro independente, diariamente às 05:15:
+
+```powershell
+npm run data:schedule:financial
+```
+
+Nome da tarefa criada: `Fiscaliza Varginha - Emendas e diarias`.
+Esse ciclo atualiza somente emendas federais, emendas estaduais e diárias. Ele
+não depende do SAPL, não envia WhatsApp e preserva a última base íntegra quando
+CGU, Transferegov, Portal de Emendas MG ou Betha estiverem indisponíveis.
+
+Executar o ciclo financeiro manualmente:
+
+```powershell
+npm run data:update:financial
+```
+
 ## Rotina recomendada
 
 Para manter o painel com qualidade de dados, use as duas rotinas juntas:
@@ -84,3 +101,15 @@ detectar mudanca quando a fonte permite e, quando nao permite, atualizar por jan
 - Assinaturas das fontes: `private/state/source-fingerprints.json`
 
 Os backups mantem as ultimas 8 coletas bem-sucedidas ou tentadas.
+
+## Sincronizacao segura com o GitHub
+
+Quando a tarefa roda com `-GitSync`, o pipeline so cria o commit de dados e faz
+`push` se estiver no branch `master` e não houver commits locais anteriores ainda
+não enviados a `origin/master`. Isso evita que uma coleta automática publique,
+sem revisão, mudanças de código acumuladas na máquina.
+
+Se houver commits pendentes, a coleta e o deploy continuam normalmente, mas o
+log registra `GitSync pulado`. Revise e envie os commits manualmente. O parâmetro
+`-AllowPushWithPendingCommits` existe apenas para uma liberação deliberada após
+essa revisão.
