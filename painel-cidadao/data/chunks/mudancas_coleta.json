@@ -1,49 +1,450 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-24T16:20:37.351Z",
+  "gerado_em": "2026-09-02T14:52:45.757Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-08-24T13-17-38-efca0545",
-    "coleta_iso": "2026-08-24T13:17:38",
-    "data_humana": "24/08/2026 - 13:17",
-    "arquivo": "data/snapshots/2026-08-24T13-17-38-efca0545.json"
+    "snapshot_id": "2026-09-02T11-48-48-c464cf62",
+    "coleta_iso": "2026-09-02T11:48:48",
+    "data_humana": "02/09/2026 - 11:48",
+    "arquivo": "data/snapshots/2026-09-02T11-48-48-c464cf62.json"
   },
   "anterior": {
-    "snapshot_id": "2026-08-24T08-50-45-421d8698",
-    "coleta_iso": "2026-08-24T08:50:45",
-    "data_humana": "24/08/2026 - 08:50",
+    "snapshot_id": "2026-09-02T06-29-54-dbbb83e5",
+    "coleta_iso": "2026-09-02T06:29:54",
+    "data_humana": "02/09/2026 - 06:29",
     "arquivo": "",
     "origem": "backup_pre_coleta"
   },
   "resumo": {
-    "novos_contratos": 1,
-    "contratos_valor_alterado": 0,
-    "novos_fornecedores_relevantes": 0,
+    "novos_contratos": 30,
+    "contratos_valor_alterado": 10,
+    "novos_fornecedores_relevantes": 1,
     "novas_edicoes_diario": 0,
     "pendencias_novas": 0,
-    "pendencias_resolvidas": 1,
+    "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 583200,
-    "valor_delta_brl": 0,
-    "total_mudancas": 2
+    "valor_novo_brl": 9843969.07,
+    "valor_delta_brl": 9812412.44,
+    "total_mudancas": 41
   },
   "itens": [
     {
-      "tipo": "novo_contrato",
-      "prioridade": "media",
-      "titulo": "Novo contrato 94/2026 - ACQUAMANIA COMERCIO E SERVICOS LTDA",
-      "detalhe": "Serviços de instalação do sistema de aquecimento das piscinas públicas",
+      "tipo": "valor_alterado",
+      "prioridade": "alta",
+      "titulo": "Valor alterado no contrato 36/2025",
+      "detalhe": "ZEUS SERVICOS DE SAUDE LTDA: antes R$ 9.763.876,80, agora R$ 19.527.753,60.",
       "orgao": "Prefeitura",
-      "data": "2026-08-20",
-      "valor_brl": 583200,
-      "alvo_id": "PREFEITURA-2026-94"
+      "data": "2025-05-16",
+      "valor_brl": 19527753.6,
+      "delta_brl": 9763876.8,
+      "alvo_id": "PREFEITURA-2025-36"
     },
     {
-      "tipo": "pendencia_resolvida",
+      "tipo": "novo_contrato",
+      "prioridade": "alta",
+      "titulo": "Novo contrato 175/2026 - RICARDO PEREIRA LTDA",
+      "detalhe": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "orgao": "Prefeitura",
+      "data": "2026-08-17",
+      "valor_brl": 3383626.78,
+      "alvo_id": "PREFEITURA-2026-175"
+    },
+    {
+      "tipo": "novo_fornecedor_relevante",
+      "prioridade": "alta",
+      "titulo": "Fornecedor entrou no ranking: TRIBUNAL DE JUSTIÇA DO ESTADO DE MINAS GERAIS",
+      "detalhe": "Prefeitura - rank 17, R$ 3.267.225,64 no recorte atual.",
+      "orgao": "Prefeitura",
+      "valor_brl": 3267225.64
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "alta",
+      "titulo": "Novo contrato 100/2026 - PAPELARIA E COPIADORA COPYSUL LTDA.",
+      "detalhe": "Contratação de empresa especializada para locação de equipamentos de informática (computadores desktop, notebooks), incluindo licenças de softwares e afins",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 2220972,
+      "alvo_id": "PREFEITURA-2026-100"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "alta",
+      "titulo": "Novo contrato 178/2026 - JF DIESEL AUTO PECAS E MECANICA LTDA",
+      "detalhe": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "orgao": "Prefeitura",
+      "data": "2026-08-17",
+      "valor_brl": 2134242.42,
+      "alvo_id": "PREFEITURA-2026-178"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 232/2025",
+      "detalhe": "D E F COSTA TRANSPORTE E CONSTRUTORA LTDA: antes R$ 6.420.364,00, agora R$ 6.420.935,34.",
+      "orgao": "Prefeitura",
+      "data": "2025-08-29",
+      "valor_brl": 6420935.34,
+      "delta_brl": 571.339999999851,
+      "alvo_id": "PREFEITURA-2025-232"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 34/2026",
+      "detalhe": "NOVA OPCAO LOCADORA DE VEICULOS LTDA: antes R$ 3.121.146,59, agora R$ 3.133.466,59.",
+      "orgao": "Prefeitura",
+      "data": "2026-04-29",
+      "valor_brl": 3133466.59,
+      "delta_brl": 12320,
+      "alvo_id": "PREFEITURA-2026-34"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 176/2026 - OFICINA DO NENE LTDA",
+      "detalhe": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "orgao": "Prefeitura",
+      "data": "2026-08-17",
+      "valor_brl": 670416.67,
+      "alvo_id": "PREFEITURA-2026-176"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 179/2026 - ACR COMERCIAL E PECAS LTDA",
+      "detalhe": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "orgao": "Prefeitura",
+      "data": "2026-08-17",
+      "valor_brl": 440533.33,
+      "alvo_id": "PREFEITURA-2026-179"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 96/2026 - 61.802.219 ALEXANDRE DIAS KIMURA",
+      "detalhe": "Contratação de empresa especializada para a prestação de serviços de manutenção preventiva e corretiva, com fornecimento de peças, suprimentos e mão de obra, para os equipamentos de impressão e reprografia utilizados pela Secretaria Municipal de Educação - SEDUC",
+      "orgao": "Prefeitura",
+      "data": "2026-08-24",
+      "valor_brl": 181900.96,
+      "alvo_id": "PREFEITURA-2026-96"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "media",
+      "titulo": "Novo contrato 186/2026 - THANAPE EMPREENDIMENTOS COMERCIAIS LTDA",
+      "detalhe": "Registro de Preços para o fornecimento de impressos",
+      "orgao": "Prefeitura",
+      "data": "2026-08-25",
+      "valor_brl": 172726.94,
+      "alvo_id": "PREFEITURA-2026-186"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 44/2026",
+      "detalhe": "CONSTRUTORA FERREIRA LTDA: antes R$ 77.500,00, agora R$ 84.656,33.",
+      "orgao": "Prefeitura",
+      "data": "2026-05-13",
+      "valor_brl": 84656.33,
+      "delta_brl": 7156.330000000002,
+      "alvo_id": "PREFEITURA-2026-44"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 61/2026",
+      "detalhe": "VETTOR ENGENHARIA E CONSTRUCAO LTDA: antes R$ 38.900,00, agora R$ 46.800,00.",
+      "orgao": "Prefeitura",
+      "data": "2026-06-17",
+      "valor_brl": 46800,
+      "delta_brl": 7900,
+      "alvo_id": "PREFEITURA-2026-61"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2026",
+      "detalhe": "MEDICINA SEGURA DISTRIBUICAO E PROMOCAO EM VENDAS LTDA: antes R$ 32.953,90, agora R$ 42.766,00.",
+      "orgao": "Prefeitura",
+      "data": "2026-01-09",
+      "valor_brl": 42766,
+      "delta_brl": 9812.099999999999,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 39/2026",
+      "detalhe": "NTI Brasil Soluções Digitais Ltda: antes R$ 19.350,00, agora R$ 23.650,00.",
+      "orgao": "Prefeitura",
+      "data": "2026-04-30",
+      "valor_brl": 23650,
+      "delta_brl": 4300,
+      "alvo_id": "PREFEITURA-2026-39"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2026",
+      "detalhe": "DIMEBRAS COMERCIAL HOSPITALAR LTDA: antes R$ 15.300,60, agora R$ 17.702,47.",
+      "orgao": "Prefeitura",
+      "data": "2026-01-09",
+      "valor_brl": 17702.47,
+      "delta_brl": 2401.870000000001,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2026",
+      "detalhe": "ACACIA COMERCIO DE MEDICAMENTOS LTDA: antes R$ 10.678,00, agora R$ 11.602,00.",
+      "orgao": "Prefeitura",
+      "data": "2026-04-15",
+      "valor_brl": 11602,
+      "delta_brl": 924,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "valor_alterado",
+      "prioridade": "media",
+      "titulo": "Valor alterado no contrato 0/2026",
+      "detalhe": "POLAR FIX INDUSTRIA E COMERCIO DE PRODUTOS HOSPITALARES LTDA: antes R$ 1.530,00, agora R$ 4.680,00.",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 4680,
+      "delta_brl": 3150,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
       "prioridade": "baixa",
-      "titulo": "Pendencia saiu da fila: Fonte de emendas 2026 com erro",
-      "detalhe": "1 fonte(s) retornaram erro. Exemplo: SAPL - materias legislativas 2026 (API) - falha na API SAPL: <urlopen error timed out>.",
-      "fonte": "fontes_emendas_2026.json"
+      "titulo": "Novo contrato 98/2026 - MICROMINAS LTDA",
+      "detalhe": "Aquisição de Kits Completos para Exames de Gasometria - Laboratório UPA",
+      "orgao": "Prefeitura",
+      "data": "2026-08-25",
+      "valor_brl": 89999.88,
+      "alvo_id": "PREFEITURA-2026-98"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - BEAGA HOSPITALAR LTDA",
+      "detalhe": "Aquisição de materiais ambulatoriais",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 78146.05,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 181/2026 - CITSO COMERCIO E SERVICO IMPORTADOR DE INFORMATICA LTDA",
+      "detalhe": "Registro de Preços para o fornecimento de impressos",
+      "orgao": "Prefeitura",
+      "data": "2026-08-25",
+      "valor_brl": 67500,
+      "alvo_id": "PREFEITURA-2026-181"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 183/2026 - GRAWANDO COMERCIAL LTDA",
+      "detalhe": "Registro de Preços para o fornecimento de impressos",
+      "orgao": "Prefeitura",
+      "data": "2026-08-25",
+      "valor_brl": 67273,
+      "alvo_id": "PREFEITURA-2026-183"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 177/2026 - BELORIZONTINA PECAS E MANUTENCAO LTDA",
+      "detalhe": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "orgao": "Prefeitura",
+      "data": "2026-08-17",
+      "valor_brl": 50000,
+      "alvo_id": "PREFEITURA-2026-177"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 92/2026 - ZIP INTERNET LTDA",
+      "detalhe": "Contratação de empresa para fornecimento de link de fibra óptica dedicado à internet fibra óptica com suporte ininterrupto 24x7x30",
+      "orgao": "Prefeitura",
+      "data": "2026-08-18",
+      "valor_brl": 48960,
+      "alvo_id": "PREFEITURA-2026-92"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 185/2026 - MV2 SERVICOS E NEGOCIOS LTDA",
+      "detalhe": "Registro de Preços para o fornecimento de impressos",
+      "orgao": "Prefeitura",
+      "data": "2026-08-25",
+      "valor_brl": 38447.5,
+      "alvo_id": "PREFEITURA-2026-185"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - TECZAP COMERCIO E DISTRIBUICAO LTDA",
+      "detalhe": "AQUISIÇÃO DE EQUIPAMENTOS DE ARMAZENAMENTO DO TIPO NAS E COMPONENTES DE CONECTIVIDADE PARA DATACENTER",
+      "orgao": "Camara",
+      "data": "2026-08-18",
+      "valor_brl": 34200,
+      "alvo_id": "CAMARA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 169/2026 - ELERA MEDICAL COMERCIO DE PRODUTOS E EQUIPAMENTOS LTDA",
+      "detalhe": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "orgao": "Prefeitura",
+      "data": "2026-08-11",
+      "valor_brl": 26749,
+      "alvo_id": "PREFEITURA-2026-169"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 182/2026 - EMBACOM LTDA",
+      "detalhe": "Registro de Preços para o fornecimento de impressos",
+      "orgao": "Prefeitura",
+      "data": "2026-08-25",
+      "valor_brl": 25468.1,
+      "alvo_id": "PREFEITURA-2026-182"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - EASY CLEAN DISTRIBUIDORA LTDA",
+      "detalhe": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "orgao": "Prefeitura",
+      "data": "2026-08-28",
+      "valor_brl": 22248,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 97/2026 - DEDETIZADORA RIBEIRO E SOUZA LTDA",
+      "detalhe": "Serviços de controle de pragas urbanas (dedetização, desratização, descupinização e afins) e lavagem das caixas d’água - Secretaria Municipal de Saúde",
+      "orgao": "Prefeitura",
+      "data": "2026-08-25",
+      "valor_brl": 19650,
+      "alvo_id": "PREFEITURA-2026-97"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 99/2026 - FABRICA DE LADRILHOS MATERIAIS E SERVICOS NOSSA SENHORA DE FATIMA LTDA",
+      "detalhe": "Contratação de empresa para pintura de 01 (uma) caixa d’água do CEMEI Professora Santusa Maria Rabelo de Rezende",
+      "orgao": "Prefeitura",
+      "data": "2026-08-28",
+      "valor_brl": 12950,
+      "alvo_id": "PREFEITURA-2026-99"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - NEVALLI ARTIGOS MEDICOS E ORTOPEDICOS LTDA",
+      "detalhe": "Aquisição de materiais ambulatoriais",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 12527.75,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - CLESIO MENES BERNARDES LTDA",
+      "detalhe": "Registro de Preços para fornecimento de capas para Diário de Classe.",
+      "orgao": "Prefeitura",
+      "data": "2026-08-25",
+      "valor_brl": 12150,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - ORLA DISTRIBUIDORA DE PRODUTOS LTDA",
+      "detalhe": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "orgao": "Prefeitura",
+      "data": "2026-08-28",
+      "valor_brl": 10746,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - GTMED IMPORTADORA E DISTRIBUIDORA HOSPITALAR LTDA",
+      "detalhe": "Aquisição de materiais ambulatoriais",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 6537.5,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - MARIA TERESA PEREIRA COELHO & CIA LTDA",
+      "detalhe": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "orgao": "Prefeitura",
+      "data": "2026-08-28",
+      "valor_brl": 5638.12,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 95/2026 - DEDETIZADORA RIBEIRO E SOUZA LTDA",
+      "detalhe": "Contratação de empresa especializada para controle de pragas, incluindo o fornecimento de mão de obra, materiais e equipamentos necessários",
+      "orgao": "Prefeitura",
+      "data": "2026-08-26",
+      "valor_brl": 3200,
+      "alvo_id": "PREFEITURA-2026-95"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - YNEMED PRODUTOS MEDICOS E HOSPITALARES LTDA",
+      "detalhe": "Aquisição de materiais ambulatoriais",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 2485.07,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - MAT MED HOSPITALAR LTDA",
+      "detalhe": "Aquisição de materiais ambulatoriais",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 2089,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - AGMASHI COMERCIO DE MATERIAL MEDICO E SERVICOS DE COBRANCAS LTDA",
+      "detalhe": "Aquisição de materiais ambulatoriais",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 1771,
+      "alvo_id": "PREFEITURA-2026-0"
+    },
+    {
+      "tipo": "novo_contrato",
+      "prioridade": "baixa",
+      "titulo": "Novo contrato 0/2026 - BIO LOGICA DISTRIBUIDORA LTDA",
+      "detalhe": "Aquisição de materiais ambulatoriais",
+      "orgao": "Prefeitura",
+      "data": "2026-08-31",
+      "valor_brl": 814,
+      "alvo_id": "PREFEITURA-2026-0"
     }
   ],
   "avisos": []

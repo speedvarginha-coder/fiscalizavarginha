@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-09-02T08:16:22.152Z",
-  "atualizado_em": "2026-08-27T09:31:00",
+  "gerado_em": "2026-09-02T14:52:49.130Z",
+  "atualizado_em": "2026-09-02T11:48:48",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,11 +11,11 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 253256790.43,
+    "total_pago_fornecedores_externos": 261505636.79,
     "credores_mapeados": 10000,
-    "contratos_total": 1295,
-    "contratos_do_ano": 468,
-    "contratos_em_execucao": 1238,
+    "contratos_total": 1329,
+    "contratos_do_ano": 501,
+    "contratos_em_execucao": 1266,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -32,7 +32,7 @@
       },
       {
         "nome": "RECEITA FEDERAL",
-        "valor": 8531400.36
+        "valor": 8579001.83
       },
       {
         "nome": "VARIAN MEDICAL SYSTEMS INC",
@@ -51,12 +51,12 @@
         "valor": 5268560.56
       },
       {
-        "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
-        "valor": 4681657.09
+        "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
+        "valor": 5130935.68
       },
       {
-        "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
-        "valor": 4623269.51
+        "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
+        "valor": 4681657.09
       }
     ]
   },
@@ -64,7 +64,7 @@
     "ano": 2026,
     "cadeiras": 15,
     "total_pago_fornecedores_externos": 7056791.02,
-    "contratos_total": 46,
+    "contratos_total": 47,
     "top_fornecedores": [
       {
         "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -120,10 +120,10 @@
   },
   "diarias": {
     "prefeitura": {
-      "registros": 5916,
-      "valor_total": 2416019.58,
-      "quantidade_total": 5916,
-      "servidores": 302
+      "registros": 6023,
+      "valor_total": 2448047.69,
+      "quantidade_total": 6023,
+      "servidores": 303
     },
     "camara": {
       "registros": 244,

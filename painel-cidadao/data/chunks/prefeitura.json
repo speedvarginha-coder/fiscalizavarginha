@@ -1,7 +1,7 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 253256790.43,
+  "total_externo_atual": 261505636.79,
   "total_externo_anterior": 390216204.32,
   "credores_qtd": 10000,
   "top_fornecedores_atual": [
@@ -35,7 +35,7 @@
     {
       "nome": "RECEITA FEDERAL",
       "cnpj": "00.394.460/****-**",
-      "valor_total": 8531400.36,
+      "valor_total": 8579001.83,
       "registros": 1,
       "anos": [
         2026
@@ -78,6 +78,15 @@
       ]
     },
     {
+      "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
+      "cnpj": "17.281.106/****-**",
+      "valor_total": 5130935.68,
+      "registros": 1,
+      "anos": [
+        2026
+      ]
+    },
+    {
       "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
       "cnpj": "00.874.813/****-**",
       "valor_total": 4681657.09,
@@ -87,9 +96,18 @@
       ]
     },
     {
-      "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
-      "cnpj": "17.281.106/****-**",
-      "valor_total": 4623269.51,
+      "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+      "cnpj": "37.943.080/****-**",
+      "valor_total": 4580060.24,
+      "registros": 1,
+      "anos": [
+        2026
+      ]
+    },
+    {
+      "nome": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
+      "cnpj": "09.182.496/****-**",
+      "valor_total": 4495666.67,
       "registros": 1,
       "anos": [
         2026
@@ -98,7 +116,16 @@
     {
       "nome": "CENTRO DE DESENV.DA CRIANCA E DO ADOLECENTE=CDC",
       "cnpj": "19.127.760/****-**",
-      "valor_total": 4198750.0,
+      "valor_total": 4425750.0,
+      "registros": 1,
+      "anos": [
+        2026
+      ]
+    },
+    {
+      "nome": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
+      "cnpj": "26.001.891/****-**",
+      "valor_total": 4205567.65,
       "registros": 1,
       "anos": [
         2026
@@ -114,36 +141,18 @@
       ]
     },
     {
-      "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-      "cnpj": "37.943.080/****-**",
-      "valor_total": 4181099.02,
-      "registros": 1,
-      "anos": [
-        2026
-      ]
-    },
-    {
       "nome": "SERVICOS CFC LTDA",
       "cnpj": "05.165.851/****-**",
-      "valor_total": 3816175.04,
+      "valor_total": 3943398.04,
       "registros": 1,
       "anos": [
         2026
       ]
     },
     {
-      "nome": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-      "cnpj": "09.182.496/****-**",
-      "valor_total": 3795666.67,
-      "registros": 1,
-      "anos": [
-        2026
-      ]
-    },
-    {
-      "nome": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
-      "cnpj": "26.001.891/****-**",
-      "valor_total": 3573049.8,
+      "nome": "TRIBUNAL DE JUSTIÇA DO ESTADO DE MINAS GERAIS",
+      "cnpj": "21.154.554/****-**",
+      "valor_total": 3267225.64,
       "registros": 1,
       "anos": [
         2026
@@ -195,6 +204,15 @@
       ]
     },
     {
+      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
+      "cnpj": "23.593.720/****-**",
+      "valor_total": 2094330.13,
+      "registros": 1,
+      "anos": [
+        2026
+      ]
+    },
+    {
       "nome": "D E F COSTA TRANSPORTE E CONSTRUTORA LTDA",
       "cnpj": "00.744.610/****-**",
       "valor_total": 1984620.62,
@@ -204,9 +222,9 @@
       ]
     },
     {
-      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
-      "cnpj": "23.593.720/****-**",
-      "valor_total": 1882848.08,
+      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "cnpj": "27.445.021/****-**",
+      "valor_total": 1957186.49,
       "registros": 1,
       "anos": [
         2026
@@ -225,15 +243,6 @@
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
       "cnpj": "04.491.116/****-**",
       "valor_total": 1839815.31,
-      "registros": 1,
-      "anos": [
-        2026
-      ]
-    },
-    {
-      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "cnpj": "27.445.021/****-**",
-      "valor_total": 1828017.6,
       "registros": 1,
       "anos": [
         2026
@@ -261,15 +270,6 @@
       "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
       "cnpj": "42.317.980/****-**",
       "valor_total": 1706430.4,
-      "registros": 1,
-      "anos": [
-        2026
-      ]
-    },
-    {
-      "nome": "BETHA SISTEMAS LTDA",
-      "cnpj": "00.456.865/****-**",
-      "valor_total": 1685517.36,
       "registros": 1,
       "anos": [
         2026
@@ -2154,10 +2154,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2195,10 +2195,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2266,9 +2266,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
           "valor": 680654.13
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
+          "valor": 23356.4
         }
       ],
-      "valor_pago_total": 680654.13,
+      "valor_pago_total": 704010.53,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2276,7 +2282,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 34509195",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -2301,9 +2307,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
           "valor": 680654.13
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
+          "valor": 23356.4
         }
       ],
-      "valor_pago_total": 680654.13,
+      "valor_pago_total": 704010.53,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2311,7 +2323,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 34509195",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -2336,9 +2348,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
           "valor": 680654.13
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
+          "valor": 23356.4
         }
       ],
-      "valor_pago_total": 680654.13,
+      "valor_pago_total": 704010.53,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2346,7 +2364,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 34509195",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -2371,9 +2389,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
           "valor": 680654.13
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
+          "valor": 23356.4
         }
       ],
-      "valor_pago_total": 680654.13,
+      "valor_pago_total": 704010.53,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2381,7 +2405,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 34509195",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -2452,10 +2476,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2493,10 +2517,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2534,10 +2558,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -2651,10 +2675,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3029,10 +3053,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3070,10 +3094,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3111,10 +3135,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3152,10 +3176,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3193,10 +3217,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3229,9 +3253,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
           "valor": 680654.13
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
+          "valor": 23356.4
         }
       ],
-      "valor_pago_total": 680654.13,
+      "valor_pago_total": 704010.53,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3239,7 +3269,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 34509195",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -3310,10 +3340,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3456,10 +3486,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3520,10 +3550,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3561,10 +3591,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3602,10 +3632,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3643,10 +3673,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3684,10 +3714,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3725,10 +3755,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3766,10 +3796,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3848,10 +3878,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3889,10 +3919,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3930,10 +3960,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -3971,10 +4001,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4012,10 +4042,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4053,10 +4083,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4094,10 +4124,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4135,10 +4165,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4176,10 +4206,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4258,10 +4288,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4334,10 +4364,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4375,10 +4405,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4416,10 +4446,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO EU ESCOLHI AMAR",
-          "valor": 485508.32
+          "valor": 1044508.32
         }
       ],
-      "valor_pago_total": 2339440.84,
+      "valor_pago_total": 2898440.84,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4457,10 +4487,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4549,9 +4579,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
           "valor": 680654.13
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOCIAÇAO ANJOS DE BRANCO",
+          "valor": 23356.4
         }
       ],
-      "valor_pago_total": 680654.13,
+      "valor_pago_total": 704010.53,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -4559,7 +4595,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 34509195",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -4665,10 +4701,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUNDAÇÃO VARGINHA DE ASSISTÊNCIA AOS EXCEPCIONAIS",
-          "valor": 2183013.28
+          "valor": 2193211.93
         }
       ],
-      "valor_pago_total": 6078740.12,
+      "valor_pago_total": 6088938.77,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -5794,9 +5830,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUND. APRENDER P/ EDUC.,CULT., CIENCIA E TEC.",
           "valor": 55000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "FUND. APRENDER P/ EDUC.,CULT., CIENCIA E TEC.",
+          "valor": 45832
         }
       ],
-      "valor_pago_total": 55000,
+      "valor_pago_total": 100832,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -5804,7 +5846,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 05390320",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -5829,9 +5871,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUND. APRENDER P/ EDUC.,CULT., CIENCIA E TEC.",
           "valor": 55000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "FUND. APRENDER P/ EDUC.,CULT., CIENCIA E TEC.",
+          "valor": 45832
         }
       ],
-      "valor_pago_total": 55000,
+      "valor_pago_total": 100832,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -5839,7 +5887,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 05390320",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -5864,9 +5912,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "FUND. APRENDER P/ EDUC.,CULT., CIENCIA E TEC.",
           "valor": 55000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "FUND. APRENDER P/ EDUC.,CULT., CIENCIA E TEC.",
+          "valor": 45832
         }
       ],
-      "valor_pago_total": 55000,
+      "valor_pago_total": 100832,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -5874,7 +5928,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 05390320",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6256,9 +6310,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6266,7 +6326,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6291,9 +6351,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6301,7 +6367,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6443,9 +6509,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6453,7 +6525,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6478,9 +6550,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6488,7 +6566,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6513,9 +6591,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6523,7 +6607,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6548,9 +6632,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6558,7 +6648,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6583,9 +6673,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6593,7 +6689,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6618,9 +6714,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6628,7 +6730,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6653,9 +6755,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6663,7 +6771,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6688,9 +6796,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6698,7 +6812,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6723,9 +6837,15 @@
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
           "valor": 243000
+        },
+        {
+          "ano": 2026,
+          "entidade": "PREFEITURA MUNICIPAL VARGINHA",
+          "credor": "ASSOC. PROMOCAO ASSISTENCIA N S DE GUADALUPE",
+          "valor": 24000
         }
       ],
-      "valor_pago_total": 243000,
+      "valor_pago_total": 267000,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6733,7 +6853,7 @@
         "confianca": "media",
         "evidencias": [
           "CNPJ raiz 08035444",
-          "1 registro(s) de pagamento do ano da emenda em diante"
+          "2 registro(s) de pagamento do ano da emenda em diante"
         ],
         "limitacoes": [
           "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",
@@ -6875,10 +6995,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "OASIS-ORG.DE ASSIST.E SERV.INTEG.SUJ.COM.ESP.",
-          "valor": 3297.18
+          "valor": 27297.18
         }
       ],
-      "valor_pago_total": 796263.82,
+      "valor_pago_total": 820263.82,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -6916,10 +7036,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "OASIS-ORG.DE ASSIST.E SERV.INTEG.SUJ.COM.ESP.",
-          "valor": 3297.18
+          "valor": 27297.18
         }
       ],
-      "valor_pago_total": 796263.82,
+      "valor_pago_total": 820263.82,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -7749,10 +7869,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -7881,10 +8001,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -7957,10 +8077,10 @@
           "ano": 2026,
           "entidade": "PREFEITURA MUNICIPAL VARGINHA",
           "credor": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
-          "valor": 3795666.67
+          "valor": 4495666.67
         }
       ],
-      "valor_pago_total": 13003666.67,
+      "valor_pago_total": 13703666.67,
       "status": "encontrado",
       "cruzamento": {
         "estado": "correspondencia_localizada",
@@ -12979,6 +13099,20 @@
       "modalidade": "",
       "tipo": "Compras e Serviços",
       "objeto": "Contratação emergencial de empresa especializada para prestação de serviços com utilização de mão de obra em um único lote de Médicos Plantonistas Pediátricos e/ou Médicos Plantonistas Clínicos Gerais, inscritos no Programa de Residência Médica em pediatria - PRM e/ou Médicos Plantonista Clínicos Gerais que atendem Pediatria, Médicos Plantonistas Clínicos Gerais e Médicos Plantonistas Cirurgiões Gerais em plantões de 12 horas presenciais, aos pacientes assistidos pelo Sistema Único de Saúde - SU",
+      "contratado": "ZEUS SERVICOS DE SAUDE LTDA",
+      "cnpj": "13.776.453/****-**",
+      "valor": 9763876.8,
+      "situacao": "ENCERRADO",
+      "entidade": ""
+    },
+    {
+      "numero": "36",
+      "ano": "2025",
+      "data_assinatura": "2025-05-16",
+      "data_fim": "2026-05-20",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação emergencial de empresa especializada para prestação de serviços com utilização de mão de obra em um único lote de Médicos Plantonistas Pediátricos e/ou Médicos Plantonistas Clínicos Gerais, inscritos no Programa de Residência Médica em pediatria - PRM e/ou Médicos Plantonista Clínicos Gerais que atendem Pediatria, Médicos Plantonistas Clínicos Gerais e Médicos Plantonistas Cirurgiões Gerais em plantões de 12 horas presenciais, aos pacientes assistidos pelo Sistema Único de Saúde - SU",
       "contratado": "ZEUS SERVICO SAUDE LTDA",
       "cnpj": "13.776.453/****-**",
       "valor": 9763876.8,
@@ -13065,8 +13199,8 @@
       "objeto": "Registro de Preços para eventual aquisição de massa asfáltica, tipo concreto betuminoso usinado – CBUQ",
       "contratado": "D E F COSTA TRANSPORTE E CONSTRUTORA LTDA",
       "cnpj": "00.744.610/****-**",
-      "valor": 6420364.0,
-      "situacao": "EXECUCAO",
+      "valor": 6420935.34,
+      "situacao": "ENCERRADO",
       "entidade": ""
     },
     {
@@ -13280,6 +13414,20 @@
       "entidade": ""
     },
     {
+      "numero": "175",
+      "ano": "2026",
+      "data_assinatura": "2026-08-17",
+      "data_fim": "2027-08-17",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "contratado": "RICARDO PEREIRA LTDA",
+      "cnpj": "08.545.404/****-**",
+      "valor": 3383626.78,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "299",
       "ano": "2025",
       "data_assinatura": "2025-11-26",
@@ -13317,7 +13465,7 @@
       "objeto": "Registro de Preços para Locação de Veículos para Atendimento das Demandas da Administração Direta",
       "contratado": "NOVA OPCAO LOCADORA DE VEICULOS LTDA",
       "cnpj": "30.083.123/****-**",
-      "valor": 3121146.59,
+      "valor": 3133466.59,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -13518,6 +13666,20 @@
       "entidade": ""
     },
     {
+      "numero": "100",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "2027-09-02",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para locação de equipamentos de informática (computadores desktop, notebooks), incluindo licenças de softwares e afins",
+      "contratado": "PAPELARIA E COPIADORA COPYSUL LTDA.",
+      "cnpj": "68.533.967/****-**",
+      "valor": 2220972.0,
+      "situacao": "AGUARDANDO_EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "137",
       "ano": "2026",
       "data_assinatura": "2026-06-09",
@@ -13556,6 +13718,20 @@
       "contratado": "SERVICOS CFC LTDA",
       "cnpj": "05.165.851/****-**",
       "valor": 2138215.53,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "178",
+      "ano": "2026",
+      "data_assinatura": "2026-08-17",
+      "data_fim": "2027-08-17",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "contratado": "JF DIESEL AUTO PECAS E MECANICA LTDA",
+      "cnpj": "51.444.892/****-**",
+      "valor": 2134242.42,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -14361,7 +14537,7 @@
       "numero": "222",
       "ano": "2025",
       "data_assinatura": "2025-07-24",
-      "data_fim": "2026-07-24",
+      "data_fim": "2027-07-23",
       "modalidade": "",
       "tipo": "Compras e Serviços",
       "objeto": "Registro de preços para o futuro e eventual fornecimento de carnes",
@@ -14606,6 +14782,20 @@
       "contratado": "DIMASTER - COMERCIO DE PRODUTOS HOSPITALARES LTDA.",
       "cnpj": "02.520.829/****-**",
       "valor": 674885.6,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "176",
+      "ano": "2026",
+      "data_assinatura": "2026-08-17",
+      "data_fim": "2027-08-17",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "contratado": "OFICINA DO NENE LTDA",
+      "cnpj": "26.822.928/****-**",
+      "valor": 670416.67,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -15250,6 +15440,20 @@
       "contratado": "BIOENG - VENDAS E ASSISTENCIA TECNICA DE EQUIPAMENTOS MEDICOS E AUTOMACAO HOSPITALAR LTDA.",
       "cnpj": "40.256.910/****-**",
       "valor": 447972.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "179",
+      "ano": "2026",
+      "data_assinatura": "2026-08-17",
+      "data_fim": "2027-08-17",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "contratado": "ACR COMERCIAL E PECAS LTDA",
+      "cnpj": "51.005.744/****-**",
+      "valor": 440533.33,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -16696,6 +16900,20 @@
       "entidade": ""
     },
     {
+      "numero": "96",
+      "ano": "2026",
+      "data_assinatura": "2026-08-24",
+      "data_fim": "2027-09-30",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para a prestação de serviços de manutenção preventiva e corretiva, com fornecimento de peças, suprimentos e mão de obra, para os equipamentos de impressão e reprografia utilizados pela Secretaria Municipal de Educação - SEDUC",
+      "contratado": "61.802.219 ALEXANDRE DIAS KIMURA",
+      "cnpj": "61.802.219/****-**",
+      "valor": 181900.96,
+      "situacao": "AGUARDANDO_EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "39",
       "ano": "2026",
       "data_assinatura": "2026-01-28",
@@ -16818,6 +17036,20 @@
       "contratado": "SULMEDIC COMERCIO DE MEDICAMENTOS LTDA",
       "cnpj": "09.944.371/****-**",
       "valor": 173814.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "186",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "THANAPE EMPREENDIMENTOS COMERCIAIS LTDA",
+      "cnpj": "07.168.075/****-**",
+      "valor": 172726.94,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -18222,6 +18454,20 @@
       "entidade": ""
     },
     {
+      "numero": "98",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de Kits Completos para Exames de Gasometria - Laboratório UPA",
+      "contratado": "MICROMINAS LTDA",
+      "cnpj": "22.307.771/****-**",
+      "valor": 89999.88,
+      "situacao": "AGUARDANDO_EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "60",
       "ano": "2025",
       "data_assinatura": "2025-07-10",
@@ -18260,6 +18506,20 @@
       "contratado": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
       "cnpj": "65.289.613/****-**",
       "valor": 88304.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "44",
+      "ano": "2026",
+      "data_assinatura": "2026-05-13",
+      "data_fim": "2027-02-19",
+      "modalidade": "",
+      "tipo": "Obras e Serviços de Engenharia",
+      "objeto": "Contratação de serviços comuns de engenharia, incluindo fornecimento de materiais, mão de obra e equipamentos necessários para remoção e instalação de calhas, rufos e condutores, para atendimento das necessidades da UPA",
+      "contratado": "CONSTRUTORA FERREIRA LTDA",
+      "cnpj": "51.482.170/****-**",
+      "valor": 84656.33,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -18461,6 +18721,20 @@
     },
     {
       "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "BEAGA HOSPITALAR LTDA",
+      "cnpj": "10.478.755/****-**",
+      "valor": 78146.05,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
       "ano": "2024",
       "data_assinatura": "2024-04-24",
       "data_fim": "",
@@ -18470,20 +18744,6 @@
       "contratado": "CWBCARE",
       "cnpj": "37.778.759/****-**",
       "valor": 77600.0,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
-      "numero": "44",
-      "ano": "2026",
-      "data_assinatura": "2026-05-13",
-      "data_fim": "2027-02-19",
-      "modalidade": "",
-      "tipo": "Obras e Serviços de Engenharia",
-      "objeto": "Contratação de serviços comuns de engenharia, incluindo fornecimento de materiais, mão de obra e equipamentos necessários para remoção e instalação de calhas, rufos e condutores, para atendimento das necessidades da UPA",
-      "contratado": "CONSTRUTORA FERREIRA LTDA",
-      "cnpj": "51.482.170/****-**",
-      "valor": 77500.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -18932,6 +19192,34 @@
       "contratado": "MEDSET SOLUCOES PARA SAUDE LTDA",
       "cnpj": "52.165.681/****-**",
       "valor": 68743.8,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "181",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "CITSO COMERCIO E SERVICO IMPORTADOR DE INFORMATICA LTDA",
+      "cnpj": "12.449.629/****-**",
+      "valor": 67500.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "183",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "GRAWANDO COMERCIAL LTDA",
+      "cnpj": "25.698.473/****-**",
+      "valor": 67273.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -19790,6 +20078,20 @@
       "entidade": ""
     },
     {
+      "numero": "177",
+      "ano": "2026",
+      "data_assinatura": "2026-08-17",
+      "data_fim": "2027-08-17",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "contratado": "BELORIZONTINA PECAS E MANUTENCAO LTDA",
+      "cnpj": "65.635.204/****-**",
+      "valor": 50000.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "245",
       "ano": "2025",
       "data_assinatura": "2025-09-16",
@@ -19828,6 +20130,20 @@
       "contratado": "ENGHEALTH SOLUCOES LTDA",
       "cnpj": "33.845.564/****-**",
       "valor": 48999.96,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "92",
+      "ano": "2026",
+      "data_assinatura": "2026-08-18",
+      "data_fim": "2027-08-23",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa para fornecimento de link de fibra óptica dedicado à internet fibra óptica com suporte ininterrupto 24x7x30",
+      "contratado": "ZIP INTERNET LTDA",
+      "cnpj": "53.748.710/****-**",
+      "valor": 48960.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -19926,6 +20242,20 @@
       "contratado": "VIDA FARMA LTDA",
       "cnpj": "49.117.036/****-**",
       "valor": 47394.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "61",
+      "ano": "2026",
+      "data_assinatura": "2026-06-17",
+      "data_fim": "2027-06-23",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para pintura de 04 (quatro) caixas d’água das Escolas CAIC I - Dr. Jacy de Figueiredo (Avenida Manoel Vida, 1150 – Bairro Imaculada, Varginha/MG) e CAIC II Professora Helena Reis (Alameda das Garças, 150 – Jardim Cidade Nova, Varginha/MG), incluso mão de obra e fornecimento de materiais",
+      "contratado": "VETTOR ENGENHARIA E CONSTRUCAO LTDA",
+      "cnpj": "39.240.491/****-**",
+      "valor": 46800.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -20434,20 +20764,6 @@
       "entidade": ""
     },
     {
-      "numero": "61",
-      "ano": "2026",
-      "data_assinatura": "2026-06-17",
-      "data_fim": "2027-06-23",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "Contratação de empresa especializada para pintura de 04 (quatro) caixas d’água das Escolas CAIC I - Dr. Jacy de Figueiredo (Avenida Manoel Vida, 1150 – Bairro Imaculada, Varginha/MG) e CAIC II Professora Helena Reis (Alameda das Garças, 150 – Jardim Cidade Nova, Varginha/MG), incluso mão de obra e fornecimento de materiais",
-      "contratado": "VETTOR ENGENHARIA E CONSTRUCAO LTDA",
-      "cnpj": "39.240.491/****-**",
-      "valor": 38900.0,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
       "numero": "0",
       "ano": "2023",
       "data_assinatura": "2023-11-27",
@@ -20486,6 +20802,20 @@
       "contratado": "ADRIANA CONSTRUCOES E SERVICOS LTDA",
       "cnpj": "41.253.754/****-**",
       "valor": 38454.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "185",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "MV2 SERVICOS E NEGOCIOS LTDA",
+      "cnpj": "45.847.352/****-**",
+      "valor": 38447.5,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -21470,6 +21800,20 @@
       "entidade": ""
     },
     {
+      "numero": "169",
+      "ano": "2026",
+      "data_assinatura": "2026-08-11",
+      "data_fim": "2027-08-11",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "contratado": "ELERA MEDICAL COMERCIO DE PRODUTOS E EQUIPAMENTOS LTDA",
+      "cnpj": "33.742.700/****-**",
+      "valor": 26749.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "0",
       "ano": "2025",
       "data_assinatura": "2025-04-23",
@@ -21634,6 +21978,20 @@
       "contratado": "HAAS COMERCIO DE EQUIPAMENTOS LTDA",
       "cnpj": "58.039.627/****-**",
       "valor": 25536.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "182",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "EMBACOM LTDA",
+      "cnpj": "47.156.456/****-**",
+      "valor": 25468.1,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -21830,6 +22188,20 @@
       "contratado": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
       "cnpj": "65.289.613/****-**",
       "valor": 23699.67,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "39",
+      "ano": "2026",
+      "data_assinatura": "2026-04-30",
+      "data_fim": "2027-05-04",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa para renovação de licenças de uso anual de softwares da Autodesk, o AutoCAD LT, conforme especificações constantes neste Termo de Referência.",
+      "contratado": "NTI Brasil Soluções Digitais Ltda",
+      "cnpj": "66.582.784/****-**",
+      "valor": 23650.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -22082,6 +22454,20 @@
       "contratado": "DNA MED BRASIL LTDA",
       "cnpj": "41.665.545/****-**",
       "valor": 22263.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-28",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "contratado": "EASY CLEAN DISTRIBUIDORA LTDA",
+      "cnpj": "49.039.321/****-**",
+      "valor": 22248.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -22422,6 +22808,20 @@
       "entidade": ""
     },
     {
+      "numero": "97",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-31",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Serviços de controle de pragas urbanas (dedetização, desratização, descupinização e afins) e lavagem das caixas d’água - Secretaria Municipal de Saúde",
+      "contratado": "DEDETIZADORA RIBEIRO E SOUZA LTDA",
+      "cnpj": "13.201.350/****-**",
+      "valor": 19650.0,
+      "situacao": "AGUARDANDO_EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "76",
       "ano": "2026",
       "data_assinatura": "2026-06-18",
@@ -22432,20 +22832,6 @@
       "contratado": "INSTAR TECNOLOGIA LTDA",
       "cnpj": "08.225.893/****-**",
       "valor": 19560.0,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
-      "numero": "39",
-      "ano": "2026",
-      "data_assinatura": "2026-04-30",
-      "data_fim": "2027-05-03",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "Contratação de empresa para renovação de licenças de uso anual de softwares da Autodesk, o AutoCAD LT, conforme especificações constantes neste Termo de Referência",
-      "contratado": "NTI Brasil Soluções Digitais Ltda",
-      "cnpj": "66.582.784/****-**",
-      "valor": 19350.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -23710,6 +24096,20 @@
       "entidade": ""
     },
     {
+      "numero": "99",
+      "ano": "2026",
+      "data_assinatura": "2026-08-28",
+      "data_fim": "2026-12-07",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa para pintura de 01 (uma) caixa d’água do CEMEI Professora Santusa Maria Rabelo de Rezende",
+      "contratado": "FABRICA DE LADRILHOS MATERIAIS E SERVICOS NOSSA SENHORA DE FATIMA LTDA",
+      "cnpj": "55.796.672/****-**",
+      "valor": 12950.0,
+      "situacao": "AGUARDANDO_EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "0",
       "ano": "2025",
       "data_assinatura": "2025-05-22",
@@ -23822,6 +24222,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "NEVALLI ARTIGOS MEDICOS E ORTOPEDICOS LTDA",
+      "cnpj": "20.344.116/****-**",
+      "valor": 12527.75,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "231",
       "ano": "2025",
       "data_assinatura": "2025-06-27",
@@ -23902,6 +24316,20 @@
       "contratado": "RIPERS COMERCIO DE MATERIAIS HIDRAULICOS LTDA",
       "cnpj": "11.412.110/****-**",
       "valor": 12158.86,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para fornecimento de capas para Diário de Classe.",
+      "contratado": "CLESIO MENES BERNARDES LTDA",
+      "cnpj": "09.447.062/****-**",
+      "valor": 12150.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -24215,6 +24643,20 @@
     },
     {
       "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-28",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "contratado": "ORLA DISTRIBUIDORA DE PRODUTOS LTDA",
+      "cnpj": "04.013.164/****-**",
+      "valor": 10746.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
       "ano": "2025",
       "data_assinatura": "2025-09-25",
       "data_fim": "",
@@ -24434,6 +24876,20 @@
       "contratado": "COMERCIAL CIRURGICA RIOCLARENSE LTDA",
       "cnpj": "67.729.178/****-**",
       "valor": 9879.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "MEDICINA SEGURA DISTRIBUICAO E PROMOCAO EM VENDAS LTDA",
+      "cnpj": "40.968.252/****-**",
+      "valor": 9812.1,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -25461,6 +25917,20 @@
     },
     {
       "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "GTMED IMPORTADORA E DISTRIBUIDORA HOSPITALAR LTDA",
+      "cnpj": "39.707.683/****-**",
+      "valor": 6537.5,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
       "ano": "2023",
       "data_assinatura": "2023-10-06",
       "data_fim": "",
@@ -25834,6 +26304,20 @@
       "contratado": "HERICON FELIPE TRISTAO NASCIMENTO",
       "cnpj": "39.327.884/****-**",
       "valor": 5663.52,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-28",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "contratado": "MARIA TERESA PEREIRA COELHO & CIA LTDA",
+      "cnpj": "00.697.364/****-**",
+      "valor": 5638.12,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -27350,6 +27834,20 @@
       "entidade": ""
     },
     {
+      "numero": "95",
+      "ano": "2026",
+      "data_assinatura": "2026-08-26",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para controle de pragas, incluindo o fornecimento de mão de obra, materiais e equipamentos necessários",
+      "contratado": "DEDETIZADORA RIBEIRO E SOUZA LTDA",
+      "cnpj": "13.201.350/****-**",
+      "valor": 3200.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "0",
       "ano": "2026",
       "data_assinatura": "2026-08-03",
@@ -27388,6 +27886,20 @@
       "contratado": "HERICON FELIPE TRISTAO NASCIMENTO",
       "cnpj": "39.327.884/****-**",
       "valor": 3170.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "POLAR FIX INDUSTRIA E COMERCIO DE PRODUTOS HOSPITALARES LTDA",
+      "cnpj": "02.881.877/****-**",
+      "valor": 3150.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -27996,6 +28508,20 @@
     {
       "numero": "0",
       "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "YNEMED PRODUTOS MEDICOS E HOSPITALARES LTDA",
+      "cnpj": "51.740.794/****-**",
+      "valor": 2485.07,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-28",
       "data_fim": "",
       "modalidade": "",
@@ -28032,6 +28558,20 @@
       "contratado": "RJ TINTAS E MATERIAIS PARA CONSTRUCAO LTDA ME",
       "cnpj": "19.872.311/****-**",
       "valor": 2446.7,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "DIMEBRAS COMERCIAL HOSPITALAR LTDA",
+      "cnpj": "56.081.482/****-**",
+      "valor": 2401.87,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -28242,6 +28782,20 @@
       "contratado": "MIDAS COMERCIO ATACADISTA DE PRODUTOS HOSPITALARES LTDA",
       "cnpj": "09.012.033/****-**",
       "valor": 2097.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "MAT MED HOSPITALAR LTDA",
+      "cnpj": "02.305.767/****-**",
+      "valor": 2089.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -28694,6 +29248,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "AGMASHI COMERCIO DE MATERIAL MEDICO E SERVICOS DE COBRANCAS LTDA",
+      "cnpj": "08.234.423/****-**",
+      "valor": 1771.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "338",
       "ano": "2025",
       "data_assinatura": "2025-12-31",
@@ -28858,7 +29426,7 @@
       "contratado": "DEDETIZADORA RIBEIRO E SOUZA LTDA",
       "cnpj": "13.201.350/****-**",
       "valor": 1600.0,
-      "situacao": "AGUARDANDO_EXECUCAO",
+      "situacao": "EXECUCAO",
       "entidade": ""
     },
     {
@@ -29802,6 +30370,20 @@
     {
       "numero": "0",
       "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "ACACIA COMERCIO DE MEDICAMENTOS LTDA",
+      "cnpj": "03.945.035/****-**",
+      "valor": 924.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
       "data_assinatura": "2026-07-09",
       "data_fim": "",
       "modalidade": "",
@@ -29922,6 +30504,20 @@
       "contratado": "D & D EMPREENDIMENTOS COMERCIAIS LTDA",
       "cnpj": "07.994.516/****-**",
       "valor": 816.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-31",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "contratado": "BIO LOGICA DISTRIBUIDORA LTDA",
+      "cnpj": "06.175.908/****-**",
+      "valor": 814.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -31024,16 +31620,6 @@
       "entidade": ""
     },
     {
-      "numero": 152,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Contratação de empresa especializada para locação de equipamentos de informática (computadores desktop, notebooks), incluindo licenças de softwares e afins",
-      "data": "2026-07-14",
-      "valor": 3632270.59,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
       "numero": 238,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -31084,16 +31670,6 @@
       "entidade": ""
     },
     {
-      "numero": 234,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Registro de Preços para o futuro e eventual fornecimento de tubos de concreto",
-      "data": "2026-08-13",
-      "valor": 1875812.88,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
       "numero": 191,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -31127,9 +31703,19 @@
       "numero": 250,
       "ano": "",
       "modalidade": "Inexigibilidade por credenciamento/chamada pública",
-      "objeto": "Credenciamento para serviços médicos veterinários para castração cirúrgica em cães e gatos",
+      "objeto": "Credenciamento de pessoas jurídicas prestadores de serviços médicos veterinários para a realização de procedimentos de castração cirúrgica em cães e gatos, machos e fêmeas, destinados exclusivamente ao atendimento de animais encaminhados por protetores independentes e associações de proteção animal devidamente autorizados pelo Município de Varginha, bem como para o atendimento de animais de pessoas de baixa renda inscritas no Castro Único (CadÚnico), por meio do Setor de Bem Estar Animal",
       "data": "2026-08-21",
       "valor": 1054368.0,
+      "situacao": "EM ANDAMENTO",
+      "entidade": ""
+    },
+    {
+      "numero": 215,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Serviços de manutenção preventiva e corretiva em equipamentos médico-hospitalares e de apoio",
+      "data": "2026-08-28",
+      "valor": 987160.0,
       "situacao": "EM ANDAMENTO",
       "entidade": ""
     },
@@ -31164,23 +31750,13 @@
       "entidade": ""
     },
     {
-      "numero": 226,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
-      "data": "2026-08-11",
-      "valor": 697883.03,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
       "numero": 229,
       "ano": "",
       "modalidade": "Pregão eletrônico",
       "objeto": "Aquisição de materiais pedagógicos, Material Dourado, Alfabeto Móvel e Silabário Individual",
       "data": "2026-08-26",
       "valor": 689866.67,
-      "situacao": "AGUARDANDO ABERTURA",
+      "situacao": "EM ANDAMENTO",
       "entidade": ""
     },
     {
@@ -31244,32 +31820,22 @@
       "entidade": ""
     },
     {
-      "numero": 197,
+      "numero": 241,
       "ano": "",
       "modalidade": "Pregão eletrônico",
-      "objeto": "Aquisição de materiais ambulatoriais",
-      "data": "2026-07-27",
-      "valor": 215890.15,
-      "situacao": "EM ANDAMENTO",
+      "objeto": "Registro de Preços para exames complementares para os candidatos a cargos na Administração Pública e servidores do Município de Varginha",
+      "data": "2026-08-27",
+      "valor": 234803.0,
+      "situacao": "AGUARDANDO ABERTURA",
       "entidade": ""
     },
     {
-      "numero": 222,
+      "numero": 249,
       "ano": "",
       "modalidade": "Pregão eletrônico",
-      "objeto": "Registro de Preços para o futuro e eventual fornecimento de carimbos",
-      "data": "2026-08-11",
-      "valor": 158398.26,
-      "situacao": "EM ANDAMENTO",
-      "entidade": ""
-    },
-    {
-      "numero": 223,
-      "ano": "",
-      "modalidade": "Pregão eletrônico",
-      "objeto": "Contratação de serviços de engenharia para execução da obra de reforço estrutural da edificação do Tiro de Guerra",
-      "data": "2026-08-10",
-      "valor": 133005.96,
+      "objeto": "Aquisição de tela de alambrado",
+      "data": "2026-08-28",
+      "valor": 116660.0,
       "situacao": "EM ANDAMENTO",
       "entidade": ""
     },
@@ -31396,6 +31962,16 @@
       "entidade": ""
     },
     {
+      "numero": 152,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de empresa especializada para locação de equipamentos de informática (computadores desktop, notebooks), incluindo licenças de softwares e afins",
+      "data": "2026-07-14",
+      "valor": 3632270.59,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 30,
       "ano": "",
       "modalidade": "Concorrência",
@@ -31422,6 +31998,16 @@
       "objeto": "ADESÃO À ATA DE REGISTRO DE PREÇOS N° 003/2025 MOBILIÁRIOS ESCOLARES, DO CONSÓRCIO INTEGRADO MULTIFINALITÁRIO DO VALE DO JEQUITINHONHA (CIM JEQUITINHONHA)",
       "data": "2026-06-30",
       "valor": 2781200.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 234,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de tubos de concreto",
+      "data": "2026-08-13",
+      "valor": 1875812.88,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -31632,6 +32218,16 @@
       "objeto": "Adesão à Ata de Registro de Preços n° 039/2025 do Consórcio Interfederativo Minas Gerais (CIMINAS), Aquisição de Veículos Pesados e Afins",
       "data": "2026-05-07",
       "valor": 720000.0,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 226,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
+      "data": "2026-08-11",
+      "valor": 697883.03,
       "situacao": "HOMOLOGADO",
       "entidade": ""
     },
@@ -31906,6 +32502,16 @@
       "entidade": ""
     },
     {
+      "numero": 197,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "data": "2026-07-27",
+      "valor": 215890.15,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 69,
       "ano": "",
       "modalidade": "Inexigibilidade de licitação",
@@ -32006,6 +32612,16 @@
       "entidade": ""
     },
     {
+      "numero": 222,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "data": "2026-08-11",
+      "valor": 158398.26,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 66,
       "ano": "",
       "modalidade": "Pregão eletrônico",
@@ -32063,6 +32679,16 @@
       "data": "2026-06-11",
       "valor": 133005.96,
       "situacao": "FRACASSADO",
+      "entidade": ""
+    },
+    {
+      "numero": 223,
+      "ano": "",
+      "modalidade": "Pregão eletrônico",
+      "objeto": "Contratação de serviços de engenharia para execução da obra de reforço estrutural da edificação do Tiro de Guerra",
+      "data": "2026-08-10",
+      "valor": 133005.96,
+      "situacao": "HOMOLOGADO",
       "entidade": ""
     },
     {
@@ -32419,7 +33045,7 @@
       "numero": 210,
       "ano": "",
       "modalidade": "Inexigibilidade de licitação",
-      "objeto": "Serviços para remoção/relocação de poste em abertura de rua no bairro Nossa Senhora das Graças",
+      "objeto": "Serviços para remoção/relocação de poste em abertura de rua no bairro Nossa Senhora das Graças - CEMIG",
       "data": "2026-08-10",
       "valor": 20948.13,
       "situacao": "HOMOLOGADO",
@@ -32539,7 +33165,7 @@
       "numero": 209,
       "ano": "",
       "modalidade": "Inexigibilidade de licitação",
-      "objeto": "Serviços de ligação de usina fotovoltaica localizada na Policlínica Central",
+      "objeto": "Serviços de ligação de usina fotovoltaica localizada na Policlínica Central - CEMIG",
       "data": "2026-08-10",
       "valor": 9941.92,
       "situacao": "HOMOLOGADO",
@@ -32559,7 +33185,7 @@
       "numero": 211,
       "ano": "",
       "modalidade": "Inexigibilidade de licitação",
-      "objeto": "Serviço de ligação de uma usina fotovoltaica localizada em Unidade Básica de Atendimento Imaculada",
+      "objeto": "Serviço de ligação de uma usina fotovoltaica localizada em Unidade Básica de Atendimento Imaculada - CEMIG",
       "data": "2026-08-10",
       "valor": 8440.06,
       "situacao": "HOMOLOGADO",
@@ -139598,12 +140224,12 @@
     }
   ],
   "frota_status_coleta": "preservada_por_resposta_betha_parcial",
-  "frota_origem_preservada": "D:\\Ações Prefeitura Varginha\\3_Fiscaliza Varginha\\private\\backups\\coleta-20260827-013457\\data\\chunks\\prefeitura.json",
+  "frota_origem_preservada": "publicado:prefeitura.json",
   "dados_abertos_status": {
     "Contratos (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 271
+      "registros": 303
     },
     "Contratos (ano anterior) (2025)": {
       "status": "partial",
@@ -139613,12 +140239,12 @@
     "Licitações em andamento (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 38
+      "registros": 35
     },
     "Licitações finalizadas (2026)": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 144
+      "registros": 150
     },
     "Compras diretas (2026)": {
       "status": "partial",

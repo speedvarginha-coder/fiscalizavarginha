@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-09-02T13:02:57.067Z",
+  "gerado_em": "2026-09-02T14:52:44.611Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -9,15 +9,15 @@
     "total": 13
   },
   "atualizado_base": {
-    "iso": "2026-09-02T06:29:54",
-    "data_humana": "02/09/2026 - 06:29"
+    "iso": "2026-09-02T11:48:48",
+    "data_humana": "02/09/2026 - 11:48"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -76,7 +76,7 @@
       "severity": "warning",
       "id": "contratos-PREFEITURA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Prefeitura",
-      "detail": "1295 de 1295 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "1329 de 1329 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "prefeitura.json"
     },
@@ -84,7 +84,7 @@
       "severity": "warning",
       "id": "contratos-CAMARA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Camara",
-      "detail": "46 de 46 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "47 de 47 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "camara_betha.json"
     },
@@ -180,7 +180,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 0.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -239,7 +239,7 @@
       "severity": "warning",
       "id": "contratos-PREFEITURA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Prefeitura",
-      "detail": "1295 de 1295 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "1329 de 1329 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "prefeitura.json"
     },
@@ -247,7 +247,7 @@
       "severity": "warning",
       "id": "contratos-CAMARA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Camara",
-      "detail": "46 de 46 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "47 de 47 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "camara_betha.json"
     },

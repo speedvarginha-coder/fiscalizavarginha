@@ -268,6 +268,20 @@
     {
       "numero": "0",
       "ano": "2026",
+      "data_assinatura": "2026-08-18",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "AQUISIÇÃO DE EQUIPAMENTOS DE ARMAZENAMENTO DO TIPO NAS E COMPONENTES DE CONECTIVIDADE PARA DATACENTER",
+      "contratado": "TECZAP COMERCIO E DISTRIBUICAO LTDA",
+      "cnpj": "08.619.872/****-**",
+      "valor": 34200.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
       "data_assinatura": "2026-01-15",
       "data_fim": "",
       "modalidade": "",
@@ -780,7 +794,7 @@
       "contratado": "NATAL DE SOUZA PAZOTI - ME",
       "cnpj": "21.701.655/****-**",
       "valor": 660.0,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": ""
     },
     {
@@ -886,6 +900,16 @@
       "entidade": ""
     },
     {
+      "numero": 58,
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "AQUISIÇÃO DE EQUIPAMENTOS DE ARMAZENAMENTO DO TIPO NAS E COMPONENTES DE CONECTIVIDADE PARA DATACENTER",
+      "data": "",
+      "valor": 36863.96,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 26,
       "ano": "",
       "modalidade": "Dispensa eletrônica",
@@ -943,6 +967,16 @@
       "data": "",
       "valor": 18000.0,
       "situacao": "RATIFICADO",
+      "entidade": ""
+    },
+    {
+      "numero": 55,
+      "ano": "",
+      "modalidade": "Dispensa de licitação",
+      "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA PRESTAÇÃO DE SERVIÇOS DE TRANSPORTE MEDIANTE LOCAÇÃO/FRETAMENTO DE VEÍCULOS TIPO ÔNIBUS E VAN PARA TRANSPORTE DE ALUNOS MATRICULADOS NA ESCOLA DO LEGISALTIVO PROF. MÁRIO VANI BEMFICA DA CÂMARA MUNICIPAL DE VARGINHA/MG.",
+      "data": "",
+      "valor": 17242.9,
+      "situacao": "HOMOLOGADO",
       "entidade": ""
     },
     {
@@ -1202,13 +1236,13 @@
     "contratos": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 46
+      "registros": 47
     },
     "licitacoes": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 34
+      "registros": 36
     }
   },
-  "coletado_em": "2026-08-27T09:29:52-03:00"
+  "coletado_em": "2026-09-02T11:47:47-03:00"
 }

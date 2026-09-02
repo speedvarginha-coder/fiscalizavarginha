@@ -7,11 +7,11 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 4185289.42,
+    "total_atual": 4374914.46,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 1314239.34,
+    "total_externo_atual": 1470891.35,
     "total_externo_anterior": 3071916.67,
-    "credores_atual_qtd": 130,
+    "credores_atual_qtd": 132,
     "credores_anterior_qtd": 196,
     "top_fornecedores_atual": [
       {
@@ -63,6 +63,12 @@
         "registros": 1
       },
       {
+        "nome": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
+        "cnpj": "43.749.486/****-**",
+        "valor_total": 45000.0,
+        "registros": 1
+      },
+      {
         "nome": "INSTITUTO DE DESENVOLVIMENTO PUBLICO PLENUM BRASIL LTDA",
         "cnpj": "21.650.715/****-**",
         "valor_total": 42510.0,
@@ -72,6 +78,18 @@
         "nome": "AUAD CORREA EQUIPAMENTOS ELETRONICOS LTDA",
         "cnpj": "01.377.889/****-**",
         "valor_total": 41000.0,
+        "registros": 1
+      },
+      {
+        "nome": "GREMIO RECREAT.ESC.SAMBA INDEP.CENTENARIO",
+        "cnpj": "19.035.666/****-**",
+        "valor_total": 40000.0,
+        "registros": 1
+      },
+      {
+        "nome": "ASSOCIACAO ARTISTICA VIVA CULTURA",
+        "cnpj": "36.140.160/****-**",
+        "valor_total": 35000.0,
         "registros": 1
       },
       {
@@ -87,51 +105,33 @@
         "registros": 1
       },
       {
+        "nome": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
+        "cnpj": "54.145.832/****-**",
+        "valor_total": 25000.0,
+        "registros": 1
+      },
+      {
         "nome": "DISTRIBUIDORA RIO BRANCO DE PETROLEO LTDA",
         "cnpj": "01.256.137/****-**",
         "valor_total": 23010.4,
         "registros": 1
       },
       {
+        "nome": "M&E ALUGUEL DE CARROS LTDA",
+        "cnpj": "17.328.595/****-**",
+        "valor_total": 19783.76,
+        "registros": 1
+      },
+      {
         "nome": "EDER JERONIMO DA SILVA",
         "cnpj": "051.299.***-**",
-        "valor_total": 16539.18,
+        "valor_total": 16464.36,
         "registros": 1
       },
       {
         "nome": "BETHA SISTEMAS LTDA",
         "cnpj": "00.456.865/****-**",
         "valor_total": 15069.7,
-        "registros": 1
-      },
-      {
-        "nome": "M&E ALUGUEL DE CARROS LTDA",
-        "cnpj": "17.328.595/****-**",
-        "valor_total": 13708.22,
-        "registros": 1
-      },
-      {
-        "nome": "MP ASSESSORIA E TECNOLOGIA LTDA",
-        "cnpj": "64.265.470/****-**",
-        "valor_total": 12300.0,
-        "registros": 1
-      },
-      {
-        "nome": "FW ALIMENTACAO LTDA",
-        "cnpj": "09.165.058/****-**",
-        "valor_total": 10256.4,
-        "registros": 1
-      },
-      {
-        "nome": "INSTITUTO NACIONAL DE EDUCACAO CULTURA E ATIVIDADES PSICOPEDAGOGICAS",
-        "cnpj": "05.852.571/****-**",
-        "valor_total": 10000.0,
-        "registros": 1
-      },
-      {
-        "nome": "BLOCO VIUVAS VIRGENS",
-        "cnpj": "55.862.497/****-**",
-        "valor_total": 10000.0,
         "registros": 1
       }
     ],
@@ -261,10 +261,10 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 288,
-      "empenhado": 5100575.05,
-      "liquidado": 4284939.82,
-      "pago": 4235289.42
+      "registros": 297,
+      "empenhado": 5271865.4,
+      "liquidado": 4335516.29,
+      "pago": 4324914.46
     },
     "maiores_empenhos_atual": [
       {
@@ -390,6 +390,28 @@
       },
       {
         "data": "2026-08-05",
+        "numero": 262,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 332/2025 P.A: 2205/2026 - Execução Projeto cultural: \"200 ANOS DA FUNDAÇÃO DE VARGINHA\"",
+        "valor_empenhado": 105000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 105000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 262,
+        "orgao": "ADMINISTRACAO",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 332/2025 P.A: 2205/2026 - Execução Projeto cultural: \"200 ANOS DA FUNDAÇÃO DE VARGINHA\"",
+        "valor_empenhado": 105000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 105000.0
+      },
+      {
+        "data": "2026-08-05",
         "numero": 238,
         "orgao": "ADMINISTRACAO",
         "credor": "ASSOCIACAO CULTURAL NIKKEY DE VARGINHA",
@@ -451,8 +473,8 @@
         "historico": "LOCACAO DE VEICULOS. Aditivo n 005/2026 - 3 Termo Aditivo ao Contrato n 009/2023.",
         "valor_empenhado": 76582.32,
         "valor_liquidado": 19783.76,
-        "valor_pago": 13708.22,
-        "saldo_a_pagar": 62874.1
+        "valor_pago": 19783.76,
+        "saldo_a_pagar": 56798.56
       },
       {
         "data": "2026-08-05",
@@ -510,28 +532,6 @@
         "saldo_a_pagar": 0.0
       },
       {
-        "data": "2026-08-05",
-        "numero": 242,
-        "orgao": "ADMINISTRACAO",
-        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 312/2025 P.A: 2556/2026 - PARA MANUTENÇÃO DAS OFICINAS E CONCERTOS DA FILARMÔNICA DE VARGINHA",
-        "valor_empenhado": 50000.0,
-        "valor_liquidado": 50000.0,
-        "valor_pago": 50000.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-08-05",
-        "numero": 242,
-        "orgao": "ADMINISTRACAO",
-        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 312/2025 P.A: 2556/2026 - PARA MANUTENÇÃO DAS OFICINAS E CONCERTOS DA FILARMÔNICA DE VARGINHA",
-        "valor_empenhado": 50000.0,
-        "valor_liquidado": 50000.0,
-        "valor_pago": 50000.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
         "data": "2026-07-24",
         "numero": 230,
         "orgao": "ADMINISTRACAO",
@@ -566,21 +566,21 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 257,
-        "orgao": "ADMINISTRACAO",
-        "credor": "GREMIO RECREAT.ESC.SAMBA INDEP.CENTENARIO",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 327/2025 P.A: 2782/2026 - REFORMA ESTRUTURAL E REVITALIZAÇÃO DA SEDE DA GRESIC",
-        "valor_empenhado": 40000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 40000.0
-      },
-      {
-        "data": "2026-08-05",
         "numero": 243,
         "orgao": "ADMINISTRACAO",
         "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
         "historico": "SUBVENÇÕES SOCIAIS - E.I: 313/2025 P.A: 1912/2026-  PARA MANUTENÇÃO DAS OFICINAS E CONCERTOS DA FILARMÔNICA DE VARGINHA",
+        "valor_empenhado": 40000.0,
+        "valor_liquidado": 40000.0,
+        "valor_pago": 40000.0,
+        "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 257,
+        "orgao": "ADMINISTRACAO",
+        "credor": "GREMIO RECREAT.ESC.SAMBA INDEP.CENTENARIO",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 327/2025 P.A: 2782/2026 - REFORMA ESTRUTURAL E REVITALIZAÇÃO DA SEDE DA GRESIC",
         "valor_empenhado": 40000.0,
         "valor_liquidado": 40000.0,
         "valor_pago": 40000.0,
@@ -640,6 +640,17 @@
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
         "saldo_a_pagar": 30000.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 259,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO ARTISTICA VIVA CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS -E.I: 329/2025 P.A: 27242026 - Projeto Cultural - Circuito de Férias no Zoológico - Atividades culturais, educativas e recreativas",
+        "valor_empenhado": 30000.0,
+        "valor_liquidado": 30000.0,
+        "valor_pago": 30000.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-05-14",
@@ -704,8 +715,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 08/2026",
         "valor_empenhado": 21143.54,
         "valor_liquidado": 21143.54,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 21143.54
+        "valor_pago": 21143.54,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-06-22",
@@ -764,17 +775,6 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 247,
-        "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 317/2025 P.A: 2737/2026 - Aquisição de materiais e contratação de prestação de serviço para Obra na Cozinha da Associação.",
-        "valor_empenhado": 20000.0,
-        "valor_liquidado": 20000.0,
-        "valor_pago": 20000.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-08-05",
         "numero": 270,
         "orgao": "ADMINISTRACAO",
         "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
@@ -790,6 +790,17 @@
         "orgao": "ADMINISTRACAO",
         "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
         "historico": "SUBVENÇÕES SOCIAIS - E.I: 339/2025 P.A: 2207/2026 - Manutenção das Oficinas e Concertos da Filarmônica de Varginha",
+        "valor_empenhado": 20000.0,
+        "valor_liquidado": 20000.0,
+        "valor_pago": 20000.0,
+        "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 247,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 317/2025 P.A: 2737/2026 - Aquisição de materiais e contratação de prestação de serviço para Obra na Cozinha da Associação.",
         "valor_empenhado": 20000.0,
         "valor_liquidado": 20000.0,
         "valor_pago": 20000.0,
@@ -863,10 +874,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 248,
+        "numero": 261,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 318/2025 P.A: 2013/2026 - Aquisição de instrumentos musicais equipamentos e acessórios para apresentações e para eventos internos.",
+        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 331/2025 P.A: 2751/2026 - Execução Projeto Cultural - 220 ANOS DA FUNDAÇÃO DE VARGINHA",
         "valor_empenhado": 15000.0,
         "valor_liquidado": 0.0,
         "valor_pago": 0.0,
@@ -879,9 +890,9 @@
         "credor": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
         "historico": "SUBVENÇÕES SOCIAIS - E.I: 321/2025 P.A: 2628/2026 - Aquisição de uniformes (calças, camisas e/ou camisetas) para as equipes de Folia de Reis, visando a padronização e valorização cultural dos grupos participantes",
         "valor_empenhado": 15000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 15000.0
+        "valor_liquidado": 15000.0,
+        "valor_pago": 15000.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-08-05",
@@ -890,9 +901,20 @@
         "credor": "ASSOCIACAO DE CAPOEIRA NOVA VISAO",
         "historico": "SUBVENÇÕES SOCIAIS -E.I: 266/2025 P.A: 2120/2026 -PROJETO VIVA CULTURA  OFICINAS DE TRADIÇÕES POPULARES AFRO-BRASILEIRAS  AQUISIÇÃO DE INSTRUMENTOS MUSICAIS; AQUISIÇÃO DE EQUIPAMENTOS DE ÁUDIO-VIDEO E ACESSÓRIOS.",
         "valor_empenhado": 15000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 15000.0
+        "valor_liquidado": 15000.0,
+        "valor_pago": 15000.0,
+        "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 248,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 318/2025 P.A: 2013/2026 - Aquisição de instrumentos musicais equipamentos e acessórios para apresentações e para eventos internos.",
+        "valor_empenhado": 15000.0,
+        "valor_liquidado": 15000.0,
+        "valor_pago": 15000.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-03-27",
@@ -918,17 +940,6 @@
       },
       {
         "data": "2026-03-20",
-        "numero": 71,
-        "orgao": "ADMINISTRACAO",
-        "credor": "PANIFICADORA PRINCESA LTDA",
-        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
-        "valor_empenhado": 12673.6,
-        "valor_liquidado": 3168.4,
-        "valor_pago": 3168.4,
-        "saldo_a_pagar": 9505.2
-      },
-      {
-        "data": "2026-03-20",
         "numero": 70,
         "orgao": "COORDENADORIA DO PATRIMONIO CULTURAL",
         "credor": "PANIFICADORA PRINCESA LTDA",
@@ -937,6 +948,17 @@
         "valor_liquidado": 2534.72,
         "valor_pago": 2534.72,
         "saldo_a_pagar": 10138.88
+      },
+      {
+        "data": "2026-03-20",
+        "numero": 71,
+        "orgao": "ADMINISTRACAO",
+        "credor": "PANIFICADORA PRINCESA LTDA",
+        "historico": "Fornecimento de lanches, visando atender às demandas da Fundação Cultural de Varginha, incluindo a entrega em endereço, quantitativo e horário a combinar. Aditivo n 002/2026 - 1 Termo Aditivo ao Contrato n 002/2025.",
+        "valor_empenhado": 12673.6,
+        "valor_liquidado": 3485.24,
+        "valor_pago": 3485.24,
+        "saldo_a_pagar": 9188.36
       },
       {
         "data": "2026-04-08",
@@ -957,8 +979,8 @@
         "historico": "DESPESA FOLHA DE PAGAMENTO REFERENTE 08/2026",
         "valor_empenhado": 11829.49,
         "valor_liquidado": 11829.49,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 11829.49
+        "valor_pago": 11829.49,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-08-18",
@@ -1120,28 +1142,6 @@
         "orgao": "ADMINISTRACAO",
         "credor": "GRUPO MARANATHA DE ART GLOBAL",
         "historico": "CONCEDER AUXILIO FINANCEIRO AO  GRUPO MARANATHA ART GLOBAL NOS TERMOS DA LEI 7.520 DE 04 DE FEVEREIRO DE 2026",
-        "valor_empenhado": 10000.0,
-        "valor_liquidado": 10000.0,
-        "valor_pago": 10000.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-02-04",
-        "numero": 25,
-        "orgao": "ADMINISTRACAO",
-        "credor": "GREMIO R.E. DE SAMBA IMPERIO DA SERRINHA",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO  GREMIO RECREATIVO ESCOLA DE SAMBA IMPERIO DA SERRINHA  NOS TERMOS DA LEI 7.523 DE 04 DE FEVEREIRO DE 2026",
-        "valor_empenhado": 10000.0,
-        "valor_liquidado": 10000.0,
-        "valor_pago": 10000.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
-        "data": "2026-02-04",
-        "numero": 21,
-        "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
-        "historico": "CONCEDER AUXILIO FINANCEIRO AO TOMBATUKE MUSICA EM MOVIMENTACAO NOS TERMOS DA LEI 7.519 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -1442,6 +1442,20 @@
       "contratado": "ADRIANA CONSTRUCOES E SERVICOS LTDA",
       "cnpj": "41.253.754/****-**",
       "valor": 89999.9,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "EMBACOM LTDA",
+      "cnpj": "47.156.456/****-**",
+      "valor": 88253.5,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -2087,6 +2101,20 @@
       "cnpj": "01.256.137/****-**",
       "valor": 23080.0,
       "situacao": "ENCERRADO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "MV2 SERVICOS E NEGOCIOS LTDA",
+      "cnpj": "45.847.352/****-**",
+      "valor": 22512.5,
+      "situacao": "EXECUCAO",
       "entidade": ""
     },
     {
@@ -2737,7 +2765,7 @@
       "numero": "56",
       "ano": "2025",
       "data_assinatura": "2025-06-24",
-      "data_fim": "2026-06-24",
+      "data_fim": "2027-06-24",
       "modalidade": "",
       "tipo": "Compras e Serviços",
       "objeto": "Contratação de empresa especializada para prestação de serviços de chaveiro",
@@ -3249,6 +3277,20 @@
       "cnpj": "19.769.219/****-**",
       "valor": 6504.44,
       "situacao": "ENCERRADO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "GRAWANDO COMERCIAL LTDA",
+      "cnpj": "25.698.473/****-**",
+      "valor": 6340.0,
+      "situacao": "EXECUCAO",
       "entidade": ""
     },
     {
@@ -4187,6 +4229,20 @@
       "cnpj": "16.741.432/****-**",
       "valor": 4250.0,
       "situacao": "ENCERRADO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "JCC COMUNICACAO VISUAL LTDA",
+      "cnpj": "04.010.668/****-**",
+      "valor": 4242.0,
+      "situacao": "EXECUCAO",
       "entidade": ""
     },
     {
@@ -13908,6 +13964,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "EMBACOM LTDA",
+      "cnpj": "47.156.456/****-**",
+      "valor": 88253.5,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "11",
       "ano": "2024",
       "data_assinatura": "2024-09-09",
@@ -14132,6 +14202,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "MV2 SERVICOS E NEGOCIOS LTDA",
+      "cnpj": "45.847.352/****-**",
+      "valor": 22512.5,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "16",
       "ano": "2023",
       "data_assinatura": "2023-11-28",
@@ -14177,7 +14261,7 @@
       "numero": "56",
       "ano": "2025",
       "data_assinatura": "2025-06-24",
-      "data_fim": "2026-06-24",
+      "data_fim": "2027-06-24",
       "modalidade": "",
       "tipo": "Compras e Serviços",
       "objeto": "Contratação de empresa especializada para prestação de serviços de chaveiro",
@@ -14254,6 +14338,20 @@
       "contratado": "RLUX ILUMINACAO LTDA",
       "cnpj": "23.535.805/****-**",
       "valor": 7131.3,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "GRAWANDO COMERCIAL LTDA",
+      "cnpj": "25.698.473/****-**",
+      "valor": 6340.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -14366,6 +14464,20 @@
       "contratado": "HERICON FELIPE TRISTÃO NASCIMENTO",
       "cnpj": "39.327.884/****-**",
       "valor": 4358.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "JCC COMUNICACAO VISUAL LTDA",
+      "cnpj": "04.010.668/****-**",
+      "valor": 4242.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -15366,6 +15478,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "EMBACOM LTDA",
+      "cnpj": "47.156.456/****-**",
+      "valor": 88253.5,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "2",
       "ano": "2025",
       "data_assinatura": "2025-03-20",
@@ -15465,6 +15591,20 @@
     },
     {
       "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "MV2 SERVICOS E NEGOCIOS LTDA",
+      "cnpj": "45.847.352/****-**",
+      "valor": 22512.5,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
       "ano": "2024",
       "data_assinatura": "2024-11-19",
       "data_fim": "2026-11-19",
@@ -15474,6 +15614,20 @@
       "contratado": "L&C LOCACAO DE EQUIPAMENTOS PARA FESTAS LTDA",
       "cnpj": "06.916.429/****-**",
       "valor": 10320.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "56",
+      "ano": "2025",
+      "data_assinatura": "2025-06-24",
+      "data_fim": "2027-06-24",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Contratação de empresa especializada para prestação de serviços de chaveiro",
+      "contratado": "RC MATERIAIS E SERVICOS LTDA",
+      "cnpj": "37.623.309/****-**",
+      "valor": 10094.1,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -15488,6 +15642,20 @@
       "contratado": "RLUX ILUMINACAO LTDA",
       "cnpj": "23.535.805/****-**",
       "valor": 7131.3,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "GRAWANDO COMERCIAL LTDA",
+      "cnpj": "25.698.473/****-**",
+      "valor": 6340.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -15586,6 +15754,20 @@
       "contratado": "HERICON FELIPE TRISTÃO NASCIMENTO",
       "cnpj": "39.327.884/****-**",
       "valor": 4358.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-25",
+      "data_fim": "2027-08-25",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "contratado": "JCC COMUNICACAO VISUAL LTDA",
+      "cnpj": "04.010.668/****-**",
+      "valor": 4242.0,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -16053,12 +16235,12 @@
     }
   ],
   "contratos_resumo": {
-    "qtd_total": 901,
-    "valor_total": 10692427.08,
-    "qtd_vigentes": 110,
-    "valor_vigentes": 3967424.48,
-    "qtd_vigencia_futura": 53,
-    "valor_vigencia_futura": 1044903.08,
+    "qtd_total": 905,
+    "valor_total": 10813775.08,
+    "qtd_vigentes": 114,
+    "valor_vigentes": 4088772.48,
+    "qtd_vigencia_futura": 58,
+    "valor_vigencia_futura": 1176345.18,
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80579"
   },
   "licitacoes": [
@@ -16570,6 +16752,16 @@
       "data": "",
       "valor": 35393.34,
       "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": 8,
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de itens personalizados institucionais para a Fundação Cultural de Varginha, com as especificações exigidas no Termo de Referência.",
+      "data": "",
+      "valor": 34004.5,
+      "situacao": "AGUARDANDO ABERTURA",
       "entidade": ""
     },
     {
@@ -25245,6 +25437,16 @@
       "entidade": ""
     },
     {
+      "numero": 8,
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "Aquisição de itens personalizados institucionais para a Fundação Cultural de Varginha, com as especificações exigidas no Termo de Referência.",
+      "data": "2026-08-31",
+      "valor": 34004.5,
+      "situacao": "AGUARDANDO ABERTURA",
+      "entidade": ""
+    },
+    {
       "numero": 4,
       "ano": "",
       "modalidade": "Dispensa de licitação",
@@ -25434,6 +25636,16 @@
       "data": "2025-10-03",
       "valor": 39165.1,
       "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
+      "numero": "",
+      "ano": "",
+      "modalidade": "",
+      "objeto": "Aquisição de itens personalizados institucionais para a Fundação Cultural de Varginha, com as especificações exigidas no Termo de Referência.",
+      "data": "2026-08-31",
+      "valor": 34004.5,
+      "situacao": "AGUARDANDO ABERTURA",
       "entidade": ""
     },
     {
@@ -34080,11 +34292,11 @@
     }
   ],
   "licitacoes_resumo": {
-    "processos_qtd": 917,
-    "processos_valor": 13455864.78,
-    "dispensas_qtd": 869,
+    "processos_qtd": 918,
+    "processos_valor": 13489869.28,
+    "dispensas_qtd": 870,
     "inexigibilidades_qtd": 8,
-    "abertas_qtd": 7,
+    "abertas_qtd": 8,
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80466"
   },
   "diarias": {
@@ -34786,6 +34998,18 @@
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
+        "ano": "2026",
+        "funcionario": "ALBERISSA DE OLIVEIRA SAMUEL",
+        "cargo": "Oficial Administrativo",
+        "numero": 15125,
+        "quantidade": 1.0,
+        "valor_total": 120.5,
+        "periodo": "01-09-2026 a 01-09-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 500% X R$ 180 = R$120,50\nCOMPLEMENTO DIARIA N15114",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
         "ano": "2025",
         "funcionario": "EDER JERONIMO DA SILVA",
         "cargo": "Contador",
@@ -34799,6 +35023,18 @@
       },
       {
         "ano": "2026",
+        "funcionario": "PAULA REZENDE REIS",
+        "cargo": "Oficial Administrativo",
+        "numero": 15127,
+        "quantidade": 1.0,
+        "valor_total": 111.98,
+        "periodo": "01-09-2026 a 01-09-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 500% X R$ 180 = R$ 111,98\nCOMPLEMENTO DIARIA N 15117",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
         "funcionario": "MONICA REIS DE ALMEIDA CARDOSO",
         "cargo": "ASSISTENTE ADMINISTRATIVO",
         "numero": 15089,
@@ -34807,6 +35043,30 @@
         "periodo": "12-04-2026 a 14-04-2026",
         "destino": "São Paulo",
         "finalidade": "Destino: São Paulo/SP\nMotivo da viagem: Participação no curso Masterclass de Implantação do E-SOCIAL na Administração Pública - INFOCO RH \nCOMPLEMENTO VALOR DIARIAS = R$104,50",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "FRANCINE MAGANHA TERRA GOULART",
+        "cargo": "Oficial Administrativo",
+        "numero": 15126,
+        "quantidade": 1.0,
+        "valor_total": 101.97,
+        "periodo": "01-09-2026 a 01-09-2026",
+        "destino": "Belo Horizonte",
+        "finalidade": "Destino: Belo Horizonte/MG\nMotivo da viagem: Participação no curso de Compras Diretas Avançado e Contratos Administrativos na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 500% X R$ 180 = R$ 101,97\nCOMPLEMENTO DIARIA N 15116",
+        "fonte": "Betha Fundação Cultural - Diárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "Contador",
+        "numero": 15124,
+        "quantidade": 1.0,
+        "valor_total": 91.6,
+        "periodo": "01-09-2026 a 01-09-2026",
+        "destino": "Brasília",
+        "finalidade": "Destino: Brasilia/DF\nMotivo da viagem: Participação no curso de Curso Emendas Parlamentares Federal 2026: Capacitação, Execução e Transparência (Pós-Mudanças do STF) na sede da PLENUM BRASIL\nPrevisão de gastos: QUANTIDADE DE DIÁRIAS: 500% X R$ 216,00 = R$ 91,60\nCOMPLEMENTO DIARIA 15113",
         "fonte": "Betha Fundação Cultural - Diárias"
       },
       {
@@ -35031,9 +35291,9 @@
         "ano": "2026",
         "funcionario": "EDER JERONIMO DA SILVA",
         "cargo": "",
-        "numero": 214,
+        "numero": 165,
         "quantidade": 1,
-        "valor_total": 2723.2,
+        "valor_total": 2604.2,
         "periodo": "",
         "destino": "",
         "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
@@ -35043,9 +35303,9 @@
         "ano": "2026",
         "funcionario": "EDER JERONIMO DA SILVA",
         "cargo": "",
-        "numero": 165,
+        "numero": 214,
         "quantidade": 1,
-        "valor_total": 2604.2,
+        "valor_total": 2556.78,
         "periodo": "",
         "destino": "",
         "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
@@ -36648,6 +36908,18 @@
         "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
       },
       {
+        "ano": "2026",
+        "funcionario": "ALBERISSA DE OLIVEIRA SAMUEL",
+        "cargo": "",
+        "numero": 295,
+        "quantidade": 1,
+        "valor_total": 120.5,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
         "ano": "2025",
         "funcionario": "EDER JERONIMO DA SILVA",
         "cargo": "",
@@ -36889,11 +37161,35 @@
       },
       {
         "ano": "2026",
+        "funcionario": "PAULA REZENDE REIS",
+        "cargo": "",
+        "numero": 297,
+        "quantidade": 1,
+        "valor_total": 111.98,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
+        "ano": "2026",
         "funcionario": "MONICA REIS DE ALMEIDA CARDOSO",
         "cargo": "",
         "numero": 133,
         "quantidade": 1,
         "valor_total": 104.5,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "FRANCINE MAGANHA TERRA GOULART",
+        "cargo": "",
+        "numero": 296,
+        "quantidade": 1,
+        "valor_total": 101.97,
         "periodo": "",
         "destino": "",
         "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
@@ -37077,6 +37373,18 @@
         "periodo": "",
         "destino": "",
         "finalidade": "MANUTENCAO DOS SERVICOS ADMINISTRATIVOS",
+        "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
+      },
+      {
+        "ano": "2026",
+        "funcionario": "EDER JERONIMO DA SILVA",
+        "cargo": "",
+        "numero": 294,
+        "quantidade": 1,
+        "valor_total": 91.6,
+        "periodo": "",
+        "destino": "",
+        "finalidade": "GESTÃO DOS SERVICOS ADMINISTRATIVOS",
         "fonte": "Betha Fundação Cultural - Diárias orçamentárias"
       },
       {
@@ -37909,11 +38217,11 @@
       }
     ],
     "resumo": {
-      "detalhadas_qtd": 73,
-      "detalhadas_valor_total": 63429.09,
-      "atual_qtd": 51,
-      "atual_valor": 51749.95,
-      "orcamentarias_atual_valor": 51196.74
+      "detalhadas_qtd": 77,
+      "detalhadas_valor_total": 63855.14,
+      "atual_qtd": 55,
+      "atual_valor": 52176.0,
+      "orcamentarias_atual_valor": 51456.37
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/211697"
   },
@@ -38666,6 +38974,24 @@
         "fonte_recurso": "RECURSOS NAO VINCULADOS DE IMPOSTOS",
         "finalidade": "REPASSE SUBVENÇÃO MENSAL FOLHA PAGMENTO",
         "valor": 270000.0
+      },
+      {
+        "numero": "",
+        "data": "2026-08-21",
+        "ano": "2026",
+        "orgao_concedente": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
+        "fonte_recurso": "RECURSOS NAO VINCULADOS DE IMPOSTOS",
+        "finalidade": "REPASSE SUBVENÇÃO MENSAL",
+        "valor": 373208.22
+      },
+      {
+        "numero": "",
+        "data": "2026-08-21",
+        "ano": "2026",
+        "orgao_concedente": "FUNDACAO CULTURAL DO MUNICIPIO DE VARGINHA",
+        "fonte_recurso": "RECURSO NÃO VINCULADO - EMENDAS IMPOSITIVAS",
+        "finalidade": "REPASSE SUBVENÇÃO MENSAL",
+        "valor": 110000.0
       },
       {
         "numero": "",
@@ -39488,9 +39814,9 @@
       }
     ],
     "resumo": {
-      "qtd": 93,
-      "valor_total": 27063351.42,
-      "valor_atual": 6578873.98,
+      "qtd": 95,
+      "valor_total": 27546559.64,
+      "valor_atual": 7062082.2,
       "valor_anterior": 8531504.0
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80403"
