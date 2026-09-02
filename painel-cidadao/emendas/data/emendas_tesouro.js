@@ -9,7 +9,7 @@ window.EMENDAS_TESOURO = {
     "arquivoEtag": "\"1787930066.25-70372255\"",
     "arquivoUltimaModificacao": "Fri, 28 Aug 2026 15:14:26 GMT",
     "metadataAtualizadaEm": "2026-08-28T15:14:26.267132",
-    "extraidoEm": "2026-09-01T09:00:36-03:00",
+    "extraidoEm": "2026-09-02T05:15:36-03:00",
     "codigoIbge": "3170701",
     "totalRegistros": 148,
     "totalPago": 44179111.92,
