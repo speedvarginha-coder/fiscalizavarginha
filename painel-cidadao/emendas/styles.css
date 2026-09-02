@@ -102,6 +102,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 .layout {
   display: grid;
+  /* minmax(0, 1fr): sem isto a coluna do grid cresce ate o min-content
+     do filho mais largo (ex.: a tabela do Tesouro) e arrasta todas as
+     secoes junto, quebrando a pagina na horizontal no celular. */
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px;
   margin: 0 auto;
   max-width: 1180px;

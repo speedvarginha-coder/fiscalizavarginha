@@ -153,7 +153,9 @@
   .coverage-status--ok { color: var(--success-dk); background: var(--success-bg); border-color: var(--success-bd); }
   .coverage-status--partial, .coverage-status--preserved, .coverage-status--manual { color: var(--warn-ink-2); background: var(--warn-bg); border-color: #f9a825; }
   .coverage-status--failed, .coverage-status--stale { color: var(--danger-dk); background: var(--danger-bg); border-color: var(--danger-bd); }
-  .purchase-cycle { display: grid; grid-template-columns: repeat(5, minmax(170px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+  /* auto-fit: no celular as 5 etapas empilham em vez de exigir rolagem
+     horizontal para ler o ciclo inteiro. */
+  .purchase-cycle { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 8px; }
   .purchase-stage { position: relative; border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 10px; padding: 18px 14px 14px; background: var(--surface); }
   .purchase-stage__index { position: absolute; top: -13px; right: 12px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: white; font-weight: 800; }
   .purchase-stage h3 { margin: 0 0 7px; color: var(--navy); font-size: 1rem; }

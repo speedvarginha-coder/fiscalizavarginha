@@ -1229,72 +1229,98 @@ def _processa_cnpj(emendas: list[dict]) -> dict:
         return {"fonte": "CNPJ", "erro": str(e), "empresas": [], "erros": []}
 
 
+def _preserva_folha_por_cobertura(payload, existente, orgao, rotulo, piso_base, piso_minimo):
+    """Impede que uma coleta degradada da folha derrube a base publicada.
+
+    Cobertura comparavel e o numero de linhas NA COMPETENCIA DE REFERENCIA,
+    nunca o tamanho do array. Uma consulta ANUAL traz o mesmo servidor em
+    varios meses: em 21/08/2026 uma base de 303.818 linhas sem competencia
+    (Educacao/FUNDEB por ano) venceu a de 4.074 linhas de 07/2026 so por ser
+    maior, e a regra passou a defende-la contra toda coleta seguinte.
+
+    Base sem competencia apurada nunca vence uma com competencia: um mes
+    legivel vale mais que um amontoado maior e indecifravel.
+
+    Vale para os DOIS orgaos. A Camara caia no mesmo buraco por outro caminho:
+    quando o Betha falha, o fallback HTML devolve ~45 linhas sem competencia e
+    com a lotacao noutro formato, e a folha nominal dos vereadores sumia da
+    pagina sem que nada no painel dissesse por que.
+
+    Devolve o texto do aviso quando preserva, ou None quando a coleta nova vale.
+    """
+    import coletor_pessoal
+
+    def _cobertura_mes(servidores):
+        if not isinstance(servidores, list) or not servidores:
+            return None
+        resumo = coletor_pessoal._resumo("cobertura", servidores)
+        if resumo.get("competencia_indeterminada"):
+            return None
+        return resumo.get("servidores_qtd")
+
+    if not isinstance(existente, dict):
+        return None
+    novos = (payload.get(orgao) or {}).get("servidores") or []
+    antigos = (existente.get(orgao) or {}).get("servidores") or []
+    cobertura_nova = _cobertura_mes(novos)
+    cobertura_antiga = _cobertura_mes(antigos)
+
+    if cobertura_antiga is None or cobertura_antiga < piso_base:
+        return None
+    if cobertura_nova is not None and cobertura_nova >= max(piso_minimo, int(cobertura_antiga * 0.5)):
+        return None
+
+    payload[orgao] = existente.get(orgao, {})
+    payload[orgao]["status_cobertura"] = "preservada_por_cobertura"
+
+    # O bloco preservado vem com o resumo de quando foi salvo, e esse resumo
+    # escapa da regra de competencia do coletor_pessoal — ele nunca passa por
+    # _resumo(). Era assim que voltava ao ar um resumo com
+    # competencia_referencia null E os campos mensais preenchidos: 303.818
+    # linhas de uma consulta ANUAL publicadas como R$ 914,9 mi de folha mensal.
+    # Recalcular pelo mesmo caminho da coleta viva garante que o numero
+    # publicado descreve as linhas que estao ali, e nao outra coleta.
+    preservados = payload[orgao].get("servidores") or []
+    resumo_preservado = coletor_pessoal._resumo(rotulo, preservados)
+    payload[orgao]["resumo"] = resumo_preservado
+    payload[orgao]["competencia"] = resumo_preservado["competencia_referencia"]
+
+    cobertura_texto = (
+        "sem competencia apurada" if cobertura_nova is None
+        else f"{cobertura_nova} vinculo(s) no mes"
+    )
+    ref = resumo_preservado["competencia_referencia"]
+    payload[orgao]["status"] = (
+        f"Base anterior preservada (competencia {ref}): a coleta atual veio "
+        f"{cobertura_texto} e publicaria menos do que ja esta no ar."
+    )
+    print(
+        f"  ! {rotulo}: coleta parcial ({cobertura_texto}); "
+        f"preservando base anterior ({cobertura_antiga} vinculos em {ref})"
+    )
+    return (
+        f"{rotulo}: a nova coleta veio {cobertura_texto}; foi preservada a ultima "
+        f"base completa ({cobertura_antiga} vinculos na competencia {ref}) para "
+        f"evitar regressao de cobertura."
+    )
+
+
 def _processa_pessoal() -> dict:
     print("⇣ Pessoal — comissionados e remuneração…")
     try:
         import coletor_pessoal
         payload = coletor_pessoal.coletar()
         existente = _load_existing("pessoal.json", {})
-        novos_pref = payload.get("prefeitura", {}).get("servidores", [])
-        antigos_pref = existente.get("prefeitura", {}).get("servidores", []) if isinstance(existente, dict) else []
-
-        # Cobertura comparavel e o numero de linhas NA COMPETENCIA DE REFERENCIA,
-        # nao o tamanho do array. Uma consulta ANUAL traz o mesmo servidor em
-        # varios meses: em 21/08/2026 uma base de 303.818 linhas sem competencia
-        # (escopo Educacao/FUNDEB por ano) venceu a de 4.074 linhas de 07/2026 so
-        # por ser maior, e a regra de preservacao passou a defende-la contra toda
-        # coleta seguinte — a base ruim se perpetuava sozinha.
-        #
-        # Base sem competencia apurada nunca vence uma com competencia: um mes
-        # legivel vale mais que um amontoado maior e indecifravel.
-        def _cobertura_mes(servidores) -> int | None:
-            if not isinstance(servidores, list) or not servidores:
-                return None
-            resumo = coletor_pessoal._resumo("cobertura", servidores)
-            if resumo.get("competencia_indeterminada"):
-                return None
-            return resumo.get("servidores_qtd")
-
-        cobertura_nova = _cobertura_mes(novos_pref)
-        cobertura_antiga = _cobertura_mes(antigos_pref)
-
-        if (
-            cobertura_antiga is not None
-            and cobertura_antiga >= 1000
-            and (cobertura_nova is None
-                 or cobertura_nova < max(100, int(cobertura_antiga * 0.5)))
+        for orgao, rotulo, piso_base, piso_minimo in (
+            ("prefeitura", "Prefeitura", 1000, 100),
+            ("camara", "Camara", 20, 10),
         ):
-            payload["prefeitura"] = existente.get("prefeitura", {})
-            payload["prefeitura"]["status_cobertura"] = "preservada_por_cobertura"
-
-            # O bloco preservado vem com o resumo de quando foi salvo, e esse
-            # resumo escapa da regra de competencia do coletor_pessoal — ele
-            # nunca passa por _resumo(). Era assim que voltava ao ar um resumo
-            # com competencia_referencia null E os campos mensais preenchidos:
-            # 303.818 linhas de uma consulta ANUAL (Educacao/FUNDEB, sem
-            # competencia na linha) publicadas como R$ 914,9 mi de folha mensal.
-            # Recalcular pelo mesmo caminho da coleta viva garante que o numero
-            # publicado descreve as linhas que estao ali, e nao outra coleta.
-            preservados = payload["prefeitura"].get("servidores") or []
-            resumo_preservado = coletor_pessoal._resumo("Prefeitura", preservados)
-            payload["prefeitura"]["resumo"] = resumo_preservado
-            payload["prefeitura"]["competencia"] = resumo_preservado["competencia_referencia"]
-
-            cobertura_texto = (
-                "sem competencia apurada" if cobertura_nova is None
-                else f"{cobertura_nova} vinculo(s) no mes"
+            aviso = _preserva_folha_por_cobertura(
+                payload, existente, orgao, rotulo, piso_base, piso_minimo
             )
-            payload["observacao"] = (
-                f"{payload.get('observacao', '')} "
-                f"Prefeitura: a nova coleta veio {cobertura_texto}; "
-                f"foi preservada a ultima base completa ({cobertura_antiga} vinculos na competencia "
-                f"{resumo_preservado['competencia_referencia']}) para evitar regressao de cobertura."
-            ).strip()
-            print(
-                f"  ! Prefeitura: coleta parcial ({cobertura_texto}); "
-                f"preservando base anterior ({cobertura_antiga} vinculos em "
-                f"{resumo_preservado['competencia_referencia']})"
-            )
+            if aviso:
+                payload["observacao"] = f"{payload.get('observacao', '')} {aviso}".strip()
+
         cr = payload.get("camara", {}).get("resumo", {})
         pr = payload.get("prefeitura", {}).get("resumo", {})
         print(f"  ✓ Câmara: {cr.get('comissionados_qtd', 0)} comissionados/similares")
