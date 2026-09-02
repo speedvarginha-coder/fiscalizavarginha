@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-02T15:02:25.513Z",
+  "generated_at": "2026-09-02T16:05:56.218Z",
   "last_completed_run": {
     "schema_version": 1,
-    "updated_at": "2026-09-02T15:02:25.032Z",
-    "finished_at": "2026-09-02T15:02:25.032Z",
+    "updated_at": "2026-09-02T16:05:55.695Z",
+    "finished_at": "2026-09-02T16:05:55.695Z",
     "coleta": "SUCESSO",
     "deploy": "SUCESSO",
     "whatsapp": "PULADO",
@@ -12,8 +12,8 @@
   },
   "last_verified_deployment": {
     "status": "SUCESSO",
-    "checked_at": "2026-09-02T14:54:39.314Z",
-    "manifest_sha256": "afb1fbc7ab48596ae89f576f23ab93fe3cace710db5f3725afcc5064250e43d0",
+    "checked_at": "2026-09-02T16:04:39.412Z",
+    "manifest_sha256": "10a6b8f06d464ca8f0ebbd235e168238f4829913084d57a8b60dd237d32b0be1",
     "url": "https://fiscalizavarginha.com.br/"
   },
   "summary": {
@@ -33,7 +33,7 @@
       "id": "atualizado_em",
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-09-02T14:48:48.000Z",
+      "source_updated_at": "2026-09-02T15:55:08.000Z",
       "age_days": 0,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -42,7 +42,7 @@
       "id": "prefeitura",
       "label": "Prefeitura/Betha",
       "status": "preserved",
-      "source_updated_at": "2026-09-02T14:48:48.000Z",
+      "source_updated_at": "2026-09-02T15:55:08.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam preservacao da ultima base valida."
@@ -51,7 +51,7 @@
       "id": "camara_betha",
       "label": "Camara/Betha",
       "status": "partial",
-      "source_updated_at": "2026-09-02T14:47:47.000Z",
+      "source_updated_at": "2026-09-02T15:54:17.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."
@@ -61,7 +61,7 @@
       "label": "Pessoal",
       "status": "preserved",
       "source_updated_at": "2026-09-02T09:29:39.000Z",
-      "age_days": 0.2,
+      "age_days": 0.3,
       "max_age_days": 31,
       "reason": "Metadados indicam preservacao da ultima base valida."
     },
@@ -70,7 +70,7 @@
       "label": "PNCP",
       "status": "partial",
       "source_updated_at": "2026-09-02T09:04:20.000Z",
-      "age_days": 0.2,
+      "age_days": 0.3,
       "max_age_days": 15,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -78,7 +78,7 @@
       "id": "federal",
       "label": "Recursos federais / Transferegov",
       "status": "preserved",
-      "source_updated_at": "2026-09-02T14:46:36.748Z",
+      "source_updated_at": "2026-09-02T15:50:38.085Z",
       "age_days": 0,
       "max_age_days": 2,
       "reason": "Metadados indicam preservacao da ultima base valida."
@@ -97,7 +97,7 @@
       "label": "Fontes de emendas 2026",
       "status": "partial",
       "source_updated_at": "2026-09-02T09:29:45.000Z",
-      "age_days": 0.2,
+      "age_days": 0.3,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
@@ -105,7 +105,7 @@
       "id": "indice_relevancia",
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-09-02T14:52:41.731Z",
+      "source_updated_at": "2026-09-02T15:56:21.527Z",
       "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
@@ -123,7 +123,7 @@
       "id": "camara_anos",
       "label": "Camara/SAPL",
       "status": "ok",
-      "source_updated_at": "2026-09-02T14:44:01.000Z",
+      "source_updated_at": "2026-09-02T15:47:24.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -132,7 +132,7 @@
       "id": "publicacoes_estruturadas",
       "label": "Publicacoes da Camara",
       "status": "ok",
-      "source_updated_at": "2026-09-02T14:51:41.000Z",
+      "source_updated_at": "2026-09-02T15:55:21.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
@@ -141,7 +141,7 @@
       "id": "publicacoes_diario",
       "label": "Publicacoes do Diario",
       "status": "ok",
-      "source_updated_at": "2026-09-02T14:51:43.000Z",
+      "source_updated_at": "2026-09-02T15:55:22.000Z",
       "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."

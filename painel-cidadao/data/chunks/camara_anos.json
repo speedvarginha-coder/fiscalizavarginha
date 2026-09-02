@@ -10,9 +10,9 @@
       "desfechos": {
         "lei": 25,
         "arquivado": 883,
-        "tramitando": 663,
+        "tramitando": 662,
         "encerrado": 11,
-        "sem_dado": 2
+        "sem_dado": 3
       },
       "tipos": [
         {
@@ -9391,7 +9391,7 @@
         "data": "2025-02-12",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "tramitando",
+        "desfecho": "",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -31328,7 +31328,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-09-02T11:44:01-03:00"
+    "coletado_em": "2026-09-02T12:47:24-03:00"
   },
   "2026": {
     "resumo": {
@@ -47672,7 +47672,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "tramitando",
+        "desfecho": "",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -47723,7 +47723,7 @@
         "data": "2026-08-31",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -54845,6 +54845,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5143"
       }
     ],
-    "coletado_em": "2026-09-02T11:44:01-03:00"
+    "coletado_em": "2026-09-02T12:47:24-03:00"
   }
 }

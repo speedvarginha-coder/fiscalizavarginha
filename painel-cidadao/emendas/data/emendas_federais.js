@@ -18,7 +18,7 @@ window.EMENDAS_FEDERAIS = {
     "coletaFonte": {
       "status": "ok",
       "fonte": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO",
-      "baixadoEm": "2026-09-02T11:52:32-0300",
+      "baixadoEm": "2026-09-02T12:56:11-0300",
       "bytes": 32328954
     },
     "observacao": "Cada registro nasce como agregado emenda/favorecido. Nas transferências especiais ao Município, recebimento só é confirmado quando plano, empenho, ordem bancária e crédito na conta vinculada coincidem na API do Transferegov. Totais agregados excluem valores não positivos (estornos/anulações)."
@@ -284,21 +284,33 @@ window.EMENDAS_FEDERAIS = {
       "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
       "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "fonteAgregadoUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202627540001",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "situacaoPlanoAcao": "CIENTE",
-      "dataRecurso": "2026-06-23",
-      "planoAcaoId": 92535,
-      "situacaoRelatorioGestao": "Não localizado na API",
+      "situacaoPlanoTrabalho": "Aprovado",
+      "relatorioGestaoLocalizado": false,
+      "codigoEmendaTransferegov": "202627540001",
       "dataEmpenho": "2026-06-19",
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "numeroEmpenhos": [
-        "2026NE007169"
-      ],
       "fimExecucaoPlano": "2028-06-22",
+      "planoAcaoId": 92535,
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "numeroOrdensBancarias": [
+        "2026OB004145"
+      ],
+      "planoTrabalhoId": 48124,
       "inicioExecucaoPlano": "2026-06-22",
-      "conta": "32-106785",
-      "banco": "Banco do Brasil",
       "execucao": "plano de ação CIENTE · plano de trabalho Aprovado · empenho federal 19/06/2026 · ordem bancária 22/06/2026 · crédito na conta vinculada 23/06/2026 · execução/prestação de contas ainda não localizada na API",
+      "codigoPlanoAcao": "09032026-092535",
+      "situacaoPlanoAcao": "CIENTE",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "impedimentosHistoricos": [],
+      "anoEmendaTransferegov": "2026",
+      "conta": "32-106785",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=92535",
+      "dataPagamento": "2026-06-22",
+      "dataRecurso": "2026-06-23",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "dataSaldoConta": "2026-06-23",
+      "qtdOrdensBancarias": 1,
       "planosRelacionados": [
         {
           "planoAcaoId": 92535,
@@ -308,28 +320,16 @@ window.EMENDAS_FEDERAIS = {
           "motivoImpedimento": null
         }
       ],
-      "valorIndicado": 1194000.0,
-      "dataPagamento": "2026-06-22",
-      "qtdOrdensBancarias": 1,
-      "metaTransferegov": "Aquisição de mamógrafo digital para atendimento da rede de atenção especializada à  saúde do município e região, ampliando a oferta de exames de diagnóstico por imagem no SUS.",
-      "saldoContaInformativo": 1215799.24,
-      "planoTrabalhoId": 48124,
       "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
-      "codigoEmendaTransferegov": "202627540001",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=92535",
-      "impedimentosHistoricos": [],
-      "anoEmendaTransferegov": "2026",
-      "numeroOrdensBancarias": [
-        "2026OB004145"
+      "saldoContaInformativo": 1215799.24,
+      "numeroEmpenhos": [
+        "2026NE007169"
       ],
       "qtdDocumentos": 1,
+      "banco": "Banco do Brasil",
+      "metaTransferegov": "Aquisição de mamógrafo digital para atendimento da rede de atenção especializada à  saúde do município e região, ampliando a oferta de exames de diagnóstico por imagem no SUS.",
       "objetoTransferegov": "O estabelecimento de saúde a ser beneficiado é o Hospital Bom Pastor, CNES nº 2761092, instituído como Fundação Hospitalar do Município de Varginha – FHOMUV, referência na assistência hospitalar e ambulatorial especializada no âmbito do Sistema Único de Saúde (SUS) para Varginha e região.A presente proposta tem por finalidade a aquisição de um sistema avançado de mamografia digital, integrado a tecnologia de biópsia guiada por imagem, dotado de detector digital de alta resolução, gerador de raios X de alta frequência, tubo dedicado, dispositivo de compressão motorizado e estação de trabalho com softwares especializados e monitores de grau médico.O equipamento permitirá não apenas a ampliação e qualificação da oferta de exames de mamografia para rastreamento e diagnóstico precoce do câncer de mama, em conformidade com as diretrizes do Ministério da Saúde, como também a realização de procedimentos minimamente invasivos de biópsia guiada por imagem, aumentando a resolutividade do serviço e reduzindo o tempo entre detecção e confirmação diagnóstica.A incorporação dessa tecnologia proporcionará melhoria significativa na qualidade das imagens, maior precisão diagnóstica, maior segurança nos procedimentos intervencionistas, eficiência operacional e otimização do fluxo assistencial. Ademais, contribuirá para o fortalecimento da capacidade instalada da unidade, promovendo a integralidade do cuidado e a qualificação do atendimento às usuárias do SUS em Varginha e região.",
-      "situacaoPlanoTrabalho": "Aprovado",
-      "codigoPlanoAcao": "09032026-092535",
-      "relatorioGestaoLocalizado": false,
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "dataSaldoConta": "2026-06-23"
+      "valorIndicado": 1194000.0
     },
     {
       "tipo": "Federal",
@@ -840,21 +840,39 @@ window.EMENDAS_FEDERAIS = {
       "statusFinanceiro": "Transferência ainda não confirmada na conta vinculada",
       "observacaoEvidencia": "Plano localizado, mas sem crédito bancário confirmado na conta vinculada.",
       "fonteAgregadoUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202527540001",
-      "cnpjExecutorTransferegov": "11234223000130",
-      "situacaoPlanoAcao": "CIENTE",
-      "dataRecurso": "",
-      "planoAcaoId": 86374,
-      "situacaoRelatorioGestao": "Não localizado na API",
+      "situacaoPlanoTrabalho": "Aprovado",
+      "relatorioGestaoLocalizado": false,
+      "codigoEmendaTransferegov": "202527540001",
       "dataEmpenho": "2025-12-15",
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "numeroEmpenhos": [
-        "2025NE009718"
-      ],
       "fimExecucaoPlano": "2026-12-18",
+      "planoAcaoId": 86374,
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "numeroOrdensBancarias": [
+        "2025OB009760"
+      ],
+      "planoTrabalhoId": 46517,
       "inicioExecucaoPlano": "2025-12-18",
-      "conta": "163-573063039",
-      "banco": "Caixa Econômica Federal",
       "execucao": "plano de ação CIENTE · plano de trabalho Aprovado · empenho federal 15/12/2025 · ordem bancária 18/12/2025 · execução/prestação de contas ainda não localizada na API",
+      "codigoPlanoAcao": "09032025-2-086374",
+      "situacaoPlanoAcao": "CIENTE",
+      "executorTransferegov": "FUNDO MUNICIPAL DE SAUDE",
+      "impedimentosHistoricos": [
+        {
+          "planoAcaoId": 77116,
+          "situacao": "IMPEDIDO",
+          "motivo": "Impedido por falta de análise conclusiva no prazo estabelecido."
+        }
+      ],
+      "anoEmendaTransferegov": "2025",
+      "conta": "163-573063039",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=86374",
+      "dataPagamento": "2025-12-18",
+      "dataRecurso": "",
+      "cnpjExecutorTransferegov": "11234223000130",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "dataSaldoConta": "",
+      "qtdOrdensBancarias": 1,
       "planosRelacionados": [
         {
           "planoAcaoId": 77116,
@@ -871,34 +889,16 @@ window.EMENDAS_FEDERAIS = {
           "motivoImpedimento": null
         }
       ],
-      "valorIndicado": 247500.0,
-      "dataPagamento": "2025-12-18",
-      "qtdOrdensBancarias": 1,
-      "metaTransferegov": "Pagamento a prestadores de serviços",
-      "saldoContaInformativo": null,
-      "planoTrabalhoId": 46517,
       "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
-      "codigoEmendaTransferegov": "202527540001",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=86374",
-      "impedimentosHistoricos": [
-        {
-          "planoAcaoId": 77116,
-          "situacao": "IMPEDIDO",
-          "motivo": "Impedido por falta de análise conclusiva no prazo estabelecido."
-        }
-      ],
-      "anoEmendaTransferegov": "2025",
-      "numeroOrdensBancarias": [
-        "2025OB009760"
+      "saldoContaInformativo": null,
+      "numeroEmpenhos": [
+        "2025NE009718"
       ],
       "qtdDocumentos": 1,
+      "banco": "Caixa Econômica Federal",
+      "metaTransferegov": "Pagamento a prestadores de serviços",
       "objetoTransferegov": "O Município de Varginha solicita o recebimento de Emenda Parlamentar de Transferência Especializada destinada ao custeio de exames de Ressonância Magnética, considerados de alto custo e atualmente com demanda represada de aproximadamente 350 pacientes em fila de espera.Como o município não possui estrutura própria para realizar esse tipo de exame, sua execução ocorre por meio de prestadores terceirizados devidamente credenciados, que realizam os procedimentos diretamente em seus estabelecimentos.O recurso solicitado será utilizado exclusivamente para ampliar a oferta desses exames, reduzir a fila de espera e garantir maior resolutividade na assistência especializada prestada à população de Varginha.",
-      "situacaoPlanoTrabalho": "Aprovado",
-      "codigoPlanoAcao": "09032025-2-086374",
-      "relatorioGestaoLocalizado": false,
-      "executorTransferegov": "FUNDO MUNICIPAL DE SAUDE",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "dataSaldoConta": "",
+      "valorIndicado": 247500.0,
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -1622,21 +1622,33 @@ window.EMENDAS_FEDERAIS = {
       "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
       "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "fonteAgregadoUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202444540004",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "situacaoPlanoAcao": "CIENTE",
-      "dataRecurso": "2024-12-16",
-      "planoAcaoId": 75109,
-      "situacaoRelatorioGestao": "Não localizado na API",
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "relatorioGestaoLocalizado": false,
+      "codigoEmendaTransferegov": "202444540004",
       "dataEmpenho": "2024-06-26",
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "numeroEmpenhos": [
-        "2024NE005661"
-      ],
       "fimExecucaoPlano": "2026-01-01",
+      "planoAcaoId": 75109,
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "numeroOrdensBancarias": [
+        "2024OB012048"
+      ],
+      "planoTrabalhoId": 8763,
       "inicioExecucaoPlano": "2025-01-01",
-      "conta": "32-98734",
-      "banco": "Banco do Brasil",
       "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 13/12/2024 · crédito na conta vinculada 16/12/2024 · execução/prestação de contas ainda não localizada na API",
+      "codigoPlanoAcao": "09032024-075109",
+      "situacaoPlanoAcao": "CIENTE",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "impedimentosHistoricos": [],
+      "anoEmendaTransferegov": "2024",
+      "conta": "32-98734",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=75109",
+      "dataPagamento": "2024-12-13",
+      "dataRecurso": "2024-12-16",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "dataSaldoConta": "2024-12-16",
+      "qtdOrdensBancarias": 1,
       "planosRelacionados": [
         {
           "planoAcaoId": 75109,
@@ -1646,28 +1658,16 @@ window.EMENDAS_FEDERAIS = {
           "motivoImpedimento": null
         }
       ],
-      "valorIndicado": 200000.0,
-      "dataPagamento": "2024-12-13",
-      "qtdOrdensBancarias": 1,
-      "metaTransferegov": "Aquisição de equipamentos e mobiliários.",
-      "saldoContaInformativo": 237968.86,
-      "planoTrabalhoId": 8763,
       "finalidadeTransferegov": "Saúde / Atenção Básica; Saúde / Assistência Hospitalar e Ambulatorial; Saúde / Alimentação e Nutrição",
-      "codigoEmendaTransferegov": "202444540004",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=75109",
-      "impedimentosHistoricos": [],
-      "anoEmendaTransferegov": "2024",
-      "numeroOrdensBancarias": [
-        "2024OB012048"
+      "saldoContaInformativo": 237968.86,
+      "numeroEmpenhos": [
+        "2024NE005661"
       ],
       "qtdDocumentos": 1,
+      "banco": "Banco do Brasil",
+      "metaTransferegov": "Aquisição de equipamentos e mobiliários.",
       "objetoTransferegov": "Aquisição de equipamentos e mobiliários para Centro Ambulatorial de Especialidades da Criança. Realizada Licitação Nº do Processo: 150/2025, disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-150-2025-2025-444145.",
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "codigoPlanoAcao": "09032024-075109",
-      "relatorioGestaoLocalizado": false,
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "dataSaldoConta": "2024-12-16",
+      "valorIndicado": 200000.0,
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -1723,21 +1723,33 @@ window.EMENDAS_FEDERAIS = {
       "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
       "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "fonteAgregadoUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202414110024",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "situacaoPlanoAcao": "CIENTE",
-      "dataRecurso": "2024-12-13",
-      "planoAcaoId": 69606,
-      "situacaoRelatorioGestao": "Não localizado na API",
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "relatorioGestaoLocalizado": false,
+      "codigoEmendaTransferegov": "202414110024",
       "dataEmpenho": "2024-06-26",
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "numeroEmpenhos": [
-        "2024NE005673"
-      ],
       "fimExecucaoPlano": "2027-01-01",
+      "planoAcaoId": 69606,
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "numeroOrdensBancarias": [
+        "2024OB006237"
+      ],
+      "planoTrabalhoId": 15151,
       "inicioExecucaoPlano": "2025-01-01",
-      "conta": "32-98733",
-      "banco": "Banco do Brasil",
       "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 12/12/2024 · crédito na conta vinculada 13/12/2024 · execução/prestação de contas ainda não localizada na API",
+      "codigoPlanoAcao": "09032024-069606",
+      "situacaoPlanoAcao": "CIENTE",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "impedimentosHistoricos": [],
+      "anoEmendaTransferegov": "2024",
+      "conta": "32-98733",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=69606",
+      "dataPagamento": "2024-12-12",
+      "dataRecurso": "2024-12-13",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "dataSaldoConta": "2026-05-20",
+      "qtdOrdensBancarias": 1,
       "planosRelacionados": [
         {
           "planoAcaoId": 69606,
@@ -1747,28 +1759,16 @@ window.EMENDAS_FEDERAIS = {
           "motivoImpedimento": null
         }
       ],
-      "valorIndicado": 100000.0,
-      "dataPagamento": "2024-12-12",
-      "qtdOrdensBancarias": 1,
-      "metaTransferegov": "Aquisição de equipamentos e mobiliários.",
-      "saldoContaInformativo": 54202.86,
-      "planoTrabalhoId": 15151,
       "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
-      "codigoEmendaTransferegov": "202414110024",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=69606",
-      "impedimentosHistoricos": [],
-      "anoEmendaTransferegov": "2024",
-      "numeroOrdensBancarias": [
-        "2024OB006237"
+      "saldoContaInformativo": 54202.86,
+      "numeroEmpenhos": [
+        "2024NE005673"
       ],
       "qtdDocumentos": 1,
+      "banco": "Banco do Brasil",
+      "metaTransferegov": "Aquisição de equipamentos e mobiliários.",
       "objetoTransferegov": "Aquisição de equipamentos e mobiliário para Centro Ambulatorial de Especialidades da Criança. Processo Licitatório Nº do Processo: 137/2025. Aquisição de Mobiliários e Equipamentos para o atendimento do Centro Ambulatorial de Especialidades Pediátricas pertencente à Secretaria Municipal da Saúde (Emenda Parlamentar de Transferência Especial nº 202414110024, Disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-137-2025-2025-441977.",
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "codigoPlanoAcao": "09032024-069606",
-      "relatorioGestaoLocalizado": false,
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "dataSaldoConta": "2026-05-20",
+      "valorIndicado": 100000.0,
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -1824,21 +1824,33 @@ window.EMENDAS_FEDERAIS = {
       "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
       "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "fonteAgregadoUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202427640015",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "situacaoPlanoAcao": "CIENTE",
-      "dataRecurso": "2024-12-13",
-      "planoAcaoId": 70376,
-      "situacaoRelatorioGestao": "Não localizado na API",
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "relatorioGestaoLocalizado": false,
+      "codigoEmendaTransferegov": "202427640015",
       "dataEmpenho": "2024-06-26",
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "numeroEmpenhos": [
-        "2024NE005672"
-      ],
       "fimExecucaoPlano": "2027-01-01",
+      "planoAcaoId": 70376,
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "numeroOrdensBancarias": [
+        "2024OB006920"
+      ],
+      "planoTrabalhoId": 15153,
       "inicioExecucaoPlano": "2025-01-01",
-      "conta": "32-98732",
-      "banco": "Banco do Brasil",
       "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 12/12/2024 · crédito na conta vinculada 13/12/2024 · execução/prestação de contas ainda não localizada na API",
+      "codigoPlanoAcao": "09032024-070376",
+      "situacaoPlanoAcao": "CIENTE",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "impedimentosHistoricos": [],
+      "anoEmendaTransferegov": "2024",
+      "conta": "32-98732",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=70376",
+      "dataPagamento": "2024-12-12",
+      "dataRecurso": "2024-12-13",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "dataSaldoConta": "2024-12-13",
+      "qtdOrdensBancarias": 1,
       "planosRelacionados": [
         {
           "planoAcaoId": 70376,
@@ -1848,28 +1860,16 @@ window.EMENDAS_FEDERAIS = {
           "motivoImpedimento": null
         }
       ],
-      "valorIndicado": 50000.0,
-      "dataPagamento": "2024-12-12",
-      "qtdOrdensBancarias": 1,
-      "metaTransferegov": "Aquisição de equipamentos e mobiliários.; Aquisição de equipamentos e mobiliários para assistência Hospitalar e Ambulatorial (302); Aquisição de equipamentos e mobiliários para Alimentação e Nutrição (306)",
-      "saldoContaInformativo": 59512.12,
-      "planoTrabalhoId": 15153,
       "finalidadeTransferegov": "Saúde / Atenção Básica; Saúde / Assistência Hospitalar e Ambulatorial; Saúde / Alimentação e Nutrição",
-      "codigoEmendaTransferegov": "202427640015",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=70376",
-      "impedimentosHistoricos": [],
-      "anoEmendaTransferegov": "2024",
-      "numeroOrdensBancarias": [
-        "2024OB006920"
+      "saldoContaInformativo": 59512.12,
+      "numeroEmpenhos": [
+        "2024NE005672"
       ],
       "qtdDocumentos": 1,
+      "banco": "Banco do Brasil",
+      "metaTransferegov": "Aquisição de equipamentos e mobiliários.; Aquisição de equipamentos e mobiliários para assistência Hospitalar e Ambulatorial (302); Aquisição de equipamentos e mobiliários para Alimentação e Nutrição (306)",
       "objetoTransferegov": "Aquisição de equipamentos e mobiliários para Centro Ambulatorial de Especialidades da Criança. Realizado Licitação Nº do Processo: 125/2025.  Aquisição de Mobiliários e Equipamentos para o atendimento do Centro Ambulatorial de Especialidades Pediátricas pertencente à Secretaria Municipal da Saúde (Emenda Parlamentar de Transferência Especial nº 202427640015, disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-125-2025-2025-438348.",
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "codigoPlanoAcao": "09032024-070376",
-      "relatorioGestaoLocalizado": false,
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "dataSaldoConta": "2024-12-13",
+      "valorIndicado": 50000.0,
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -2030,21 +2030,33 @@ window.EMENDAS_FEDERAIS = {
       "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
       "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "fonteAgregadoUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202437130005",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "situacaoPlanoAcao": "CIENTE",
-      "dataRecurso": "2024-07-04",
-      "planoAcaoId": 72397,
-      "situacaoRelatorioGestao": "Não localizado na API",
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "relatorioGestaoLocalizado": false,
+      "codigoEmendaTransferegov": "202437130005",
       "dataEmpenho": "2024-06-26",
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "numeroEmpenhos": [
-        "2024NE005609"
-      ],
       "fimExecucaoPlano": "2026-01-01",
+      "planoAcaoId": 72397,
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "numeroOrdensBancarias": [
+        "2024OB001938"
+      ],
+      "planoTrabalhoId": 6958,
       "inicioExecucaoPlano": "2025-01-01",
-      "conta": "32-98731",
-      "banco": "Banco do Brasil",
       "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 03/07/2024 · crédito na conta vinculada 04/07/2024 · execução/prestação de contas ainda não localizada na API",
+      "codigoPlanoAcao": "09032024-072397",
+      "situacaoPlanoAcao": "CIENTE",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "impedimentosHistoricos": [],
+      "anoEmendaTransferegov": "2024",
+      "conta": "32-98731",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=72397",
+      "dataPagamento": "2024-07-03",
+      "dataRecurso": "2024-07-04",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "dataSaldoConta": "2024-12-17",
+      "qtdOrdensBancarias": 1,
       "planosRelacionados": [
         {
           "planoAcaoId": 72397,
@@ -2054,28 +2066,16 @@ window.EMENDAS_FEDERAIS = {
           "motivoImpedimento": null
         }
       ],
-      "valorIndicado": 1000000.0,
-      "dataPagamento": "2024-07-03",
-      "qtdOrdensBancarias": 1,
-      "metaTransferegov": "Construção de unidades escolares.; Aquisição de Maquinários.",
-      "saldoContaInformativo": 173791.94,
-      "planoTrabalhoId": 6958,
       "finalidadeTransferegov": "Educação / Educação Básica; Urbanismo / Infraestrutura Urbana",
-      "codigoEmendaTransferegov": "202437130005",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=72397",
-      "impedimentosHistoricos": [],
-      "anoEmendaTransferegov": "2024",
-      "numeroOrdensBancarias": [
-        "2024OB001938"
+      "saldoContaInformativo": 173791.94,
+      "numeroEmpenhos": [
+        "2024NE005609"
       ],
       "qtdDocumentos": 1,
+      "banco": "Banco do Brasil",
+      "metaTransferegov": "Construção de unidades escolares.; Aquisição de Maquinários.",
       "objetoTransferegov": "Construção de unidades escolares e aquisição de máquinários.",
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "codigoPlanoAcao": "09032024-072397",
-      "relatorioGestaoLocalizado": false,
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "dataSaldoConta": "2024-12-17",
+      "valorIndicado": 1000000.0,
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -2377,21 +2377,33 @@ window.EMENDAS_FEDERAIS = {
       "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
       "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "fonteAgregadoUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202214080012",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "situacaoPlanoAcao": "CIENTE",
-      "dataRecurso": "2023-03-30",
-      "planoAcaoId": 15703,
-      "situacaoRelatorioGestao": "Não localizado na API",
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "relatorioGestaoLocalizado": false,
+      "codigoEmendaTransferegov": "202214080012",
       "dataEmpenho": "2022-06-10",
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "numeroEmpenhos": [
-        "2022NE008218"
-      ],
       "fimExecucaoPlano": "2028-01-01",
+      "planoAcaoId": 15703,
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "numeroOrdensBancarias": [
+        "2023OB803559"
+      ],
+      "planoTrabalhoId": 26208,
       "inicioExecucaoPlano": "2025-01-01",
-      "conta": "32-92683",
-      "banco": "Banco do Brasil",
       "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 10/06/2022 · ordem bancária 29/03/2023 · crédito na conta vinculada 30/03/2023 · execução/prestação de contas ainda não localizada na API",
+      "codigoPlanoAcao": "09032022-015703",
+      "situacaoPlanoAcao": "CIENTE",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "impedimentosHistoricos": [],
+      "anoEmendaTransferegov": "2022",
+      "conta": "32-92683",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=15703",
+      "dataPagamento": "2023-03-29",
+      "dataRecurso": "2023-03-30",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "dataSaldoConta": "2026-08-21",
+      "qtdOrdensBancarias": 1,
       "planosRelacionados": [
         {
           "planoAcaoId": 15703,
@@ -2401,28 +2413,16 @@ window.EMENDAS_FEDERAIS = {
           "motivoImpedimento": null
         }
       ],
-      "valorIndicado": 100000.0,
-      "dataPagamento": "2023-03-29",
-      "qtdOrdensBancarias": 1,
-      "metaTransferegov": "Construção de Canil",
-      "saldoContaInformativo": 87234.59,
-      "planoTrabalhoId": 26208,
       "finalidadeTransferegov": "Gestão Ambiental / Controle Ambiental",
-      "codigoEmendaTransferegov": "202214080012",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=15703",
-      "impedimentosHistoricos": [],
-      "anoEmendaTransferegov": "2022",
-      "numeroOrdensBancarias": [
-        "2023OB803559"
+      "saldoContaInformativo": 87234.59,
+      "numeroEmpenhos": [
+        "2022NE008218"
       ],
       "qtdDocumentos": 1,
+      "banco": "Banco do Brasil",
+      "metaTransferegov": "Construção de Canil",
       "objetoTransferegov": "Construção de Canil Municipal",
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "codigoPlanoAcao": "09032022-015703",
-      "relatorioGestaoLocalizado": false,
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "dataSaldoConta": "2026-08-21",
+      "valorIndicado": 100000.0,
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
@@ -3178,22 +3178,34 @@ window.EMENDAS_FEDERAIS = {
       "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
       "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "fonteAgregadoUrl": "https://portaldatransparencia.gov.br/emendas/consulta?de=&ate=&nomeMunicipio=Varginha&codigoEmenda=202027550010",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "situacaoPlanoAcao": "CIENTE",
-      "dataRecurso": "2020-06-29",
-      "planoAcaoId": 3938,
-      "situacaoRelatorioGestao": "Não localizado na API",
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "relatorioGestaoLocalizado": false,
+      "codigoEmendaTransferegov": "202027550010",
       "dataEmpenho": "2020-05-18",
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "numeroEmpenhos": [
-        "2020NE800471",
-        "2020NE800494"
-      ],
       "fimExecucaoPlano": "2028-01-01",
+      "planoAcaoId": 3938,
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "numeroOrdensBancarias": [
+        "2020OB800657",
+        "2020OB800659"
+      ],
+      "planoTrabalhoId": 26205,
       "inicioExecucaoPlano": "2025-01-01",
-      "conta": "32-88110",
-      "banco": "Banco do Brasil",
       "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 18/05/2020 · ordem bancária 26/06/2020 · crédito na conta vinculada 29/06/2020 · execução/prestação de contas ainda não localizada na API",
+      "codigoPlanoAcao": "0903-003938",
+      "situacaoPlanoAcao": "CIENTE",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "impedimentosHistoricos": [],
+      "anoEmendaTransferegov": "2020",
+      "conta": "32-88110",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=3938",
+      "dataPagamento": "2020-06-26",
+      "dataRecurso": "2020-06-29",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "dataSaldoConta": "2025-12-29",
+      "qtdOrdensBancarias": 2,
       "planosRelacionados": [
         {
           "planoAcaoId": 3938,
@@ -3203,29 +3215,17 @@ window.EMENDAS_FEDERAIS = {
           "motivoImpedimento": null
         }
       ],
-      "valorIndicado": 670227.0,
-      "dataPagamento": "2020-06-26",
-      "qtdOrdensBancarias": 2,
-      "metaTransferegov": "Construção de unidade escolar no Bairro Santa Luzia no Município de Varginha/MG.; Reforma e ampliação do Setor de Bem Estar Animal- Município de Varginha/MG.",
-      "saldoContaInformativo": 233925.6,
-      "planoTrabalhoId": 26205,
       "finalidadeTransferegov": "Educação / Ensino Fundamental; Gestão Ambiental / Preservação e Conservação Ambiental",
-      "codigoEmendaTransferegov": "202027550010",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos_especiais?id_plano_acao=3938",
-      "impedimentosHistoricos": [],
-      "anoEmendaTransferegov": "2020",
-      "numeroOrdensBancarias": [
-        "2020OB800657",
-        "2020OB800659"
+      "saldoContaInformativo": 233925.6,
+      "numeroEmpenhos": [
+        "2020NE800471",
+        "2020NE800494"
       ],
       "qtdDocumentos": 2,
+      "banco": "Banco do Brasil",
+      "metaTransferegov": "Construção de unidade escolar no Bairro Santa Luzia no Município de Varginha/MG.; Reforma e ampliação do Setor de Bem Estar Animal- Município de Varginha/MG.",
       "objetoTransferegov": "Execução de intervenções em infraestrutura pública municipal, contemplando construção de unidade escolar no Bairro Santa Luzia e reforma/ampliação do Setor de Bem-Estar Animal do Município de Varginha/MG, conforme documentação comprobatória.",
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "codigoPlanoAcao": "0903-003938",
-      "relatorioGestaoLocalizado": false,
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "dataSaldoConta": "2025-12-29",
+      "valorIndicado": 670227.0,
       "dadosBetha": {
         "valorBetha": 0.0,
         "objeto": "",
