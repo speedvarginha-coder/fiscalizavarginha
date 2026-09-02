@@ -38,6 +38,7 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parent
 SAIDA = ROOT / "data" / "chunks" / "publicacoes_estruturadas.json"
+CAMARA_ANOS = ROOT / "data" / "chunks" / "camara_anos.json"
 SAPL = "https://sapl.varginha.mg.leg.br/api"
 SAPL_PUB = "https://sapl.varginha.mg.leg.br"
 UA = "FiscalizaVarginha/1.0 (fiscalizacao cidada)"
@@ -64,6 +65,7 @@ TIPO_INFO = {
     11: ("PRO",   "Pronunciamento",                            "pronunciamento"),
     28: ("PAR",   "Parecer",                                   "parecer"),
 }
+TIPO_POR_SIGLA = {info[0]: tipo_id for tipo_id, info in TIPO_INFO.items()}
 
 
 def _get(url: str, timeout: int = 25) -> dict:
@@ -108,6 +110,9 @@ def _mapa_autores() -> dict:
 
 
 def _autor_legivel(materia: dict, autores_map: dict, sigla: str) -> str:
+    autor_fallback = re.sub(r"\s+", " ", str(materia.get("autor_nome_fallback") or "")).strip()
+    if autor_fallback:
+        return autor_fallback
     ids = materia.get("autores") or []
     nomes = [autores_map.get(i) for i in ids if autores_map.get(i)]
     nomes = [n for n in nomes if n]
@@ -119,6 +124,38 @@ def _autor_legivel(materia: dict, autores_map: dict, sigla: str) -> str:
     if sigla in ("PLOL", "REQ", "IND", "MOC", "PRES", "PDL"):
         return "Poder Legislativo"
     return "Autoria não identificada"
+
+
+def _materias_do_consolidado(ano: int) -> list[dict]:
+    """Reutiliza matérias oficiais do SAPL já consolidadas no mesmo ciclo."""
+    if not CAMARA_ANOS.exists():
+        return []
+    try:
+        payload = json.loads(CAMARA_ANOS.read_text(encoding="utf-8"))
+        rows = (payload.get(str(ano)) or {}).get("materias") or []
+    except Exception as exc:
+        print(f"  ! fallback SAPL consolidado não pôde ser lido: {exc}")
+        return []
+    materias: list[dict] = []
+    for row in rows:
+        sigla = str(row.get("sigla") or "").strip().upper()
+        tipo_id = TIPO_POR_SIGLA.get(sigla)
+        if not tipo_id or not row.get("numero"):
+            continue
+        materias.append({
+            "id": row.get("id"),
+            "tipo": tipo_id,
+            "numero": row.get("numero"),
+            "ano": int(row.get("ano") or ano),
+            "ementa": row.get("ementa") or "",
+            "data_apresentacao": row.get("data") or "",
+            "resultado": row.get("desfecho") or "",
+            "em_tramitacao": str(row.get("desfecho") or "").lower() == "tramitando",
+            "texto_original": row.get("pdf") or "",
+            "autor_nome_fallback": row.get("autor") or "",
+            "coleta_origem": "SAPL consolidado (camara_anos.json)",
+        })
+    return materias
 
 
 def _situacao(materia: dict) -> str:
@@ -370,6 +407,7 @@ def _monta_publicacao(
             ),
         },
         "origem_ia": ia.get("_origem_ia", ""),
+        "coleta_origem": materia.get("coleta_origem") or "API oficial do SAPL",
         "fonte_hash": hash_atual,
         "gerado_em": (
             publicacao_existente.get("gerado_em")
@@ -381,7 +419,15 @@ def _monta_publicacao(
 
 def coletar_camara(ano: int, limite: int = 0, full: bool = False) -> list[dict]:
     print(f"→ Coletando matérias SAPL {ano} (IA: {'ON' if enriquecedor_ia.tem_ia() else 'OFF (fallback)'})")
-    materias = _paginate(f"{SAPL}/materia/materialegislativa/?ano={ano}&page=1&page_size=100")
+    materias_api = _paginate(f"{SAPL}/materia/materialegislativa/?ano={ano}&page=1&page_size=100")
+    materias_fallback = _materias_do_consolidado(ano)
+    # A API vence quando ambas trazem a mesma matéria. O consolidado cobre
+    # somente itens ausentes quando a paginação falha no início ou no meio.
+    por_id = {str(m.get("id")): m for m in materias_fallback if m.get("id")}
+    por_id.update({str(m.get("id")): m for m in materias_api if m.get("id")})
+    materias = list(por_id.values())
+    if len(materias) > len(materias_api):
+        print(f"  ! contingência SAPL: {len(materias) - len(materias_api)} matéria(s) recuperada(s) do consolidado oficial")
     # mais recentes primeiro
     materias.sort(key=lambda m: (m.get("data_apresentacao") or ""), reverse=True)
     if limite > 0:

@@ -392,7 +392,8 @@ def _parse_export(payload: bytes, consulta_id: int,
 def baixar_dados_abertos(token: str, consulta_id: int,
                          ano: Optional[str] = None,
                          portal_hash: str = PORTAL_HASH,
-                         ano_field: Optional[str] = None) -> dict:
+                         ano_field: Optional[str] = None,
+                         text_fallback_is_complete: bool = False) -> dict:
     """Baixa o ZIP da consulta no endpoint dados-abertos e retorna um dict
     {main: [linhas], main_filename: str, files_in_zip: int}. O ZIP contém o
     CSV principal + arquivos linkados (publicações, aditivos, etc) — só o
@@ -500,15 +501,27 @@ def baixar_dados_abertos(token: str, consulta_id: int,
             raise BethaExportError(
                 f"busca textual retornou zero registros para a consulta {consulta_id}"
             ) from export_error
+        fallback_status = "ok" if text_fallback_is_complete else "partial"
+        fallback_mode = (
+            "busca-textual-completa"
+            if text_fallback_is_complete
+            else "busca-textual-fallback"
+        )
         return {
             "main": rows,
             "main_filename": None,
             "files_in_zip": 0,
             "linked": {},
             "linked_rows": {},
-            "coleta_status": "partial",
-            "coleta_modo": "busca-textual-fallback",
-            "coleta_observacao": "Exportacao Betha indisponivel; anexos relacionados ausentes.",
+            "coleta_status": fallback_status,
+            "coleta_modo": fallback_mode,
+            "coleta_observacao": (
+                "Busca textual oficial paginada ate totalHits; conjunto principal completo. "
+                "Arquivos auxiliares da exportacao permanecem indisponiveis."
+                if text_fallback_is_complete
+                else "Exportacao Betha indisponivel; anexos relacionados ausentes."
+            ),
+            "detalhamento_status": "partial",
         }
 
 

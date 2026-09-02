@@ -795,6 +795,75 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
     }
     return {"resumo": resumo, "vereadores": vereadores, "emendas": emendas, "materias": materias}
 
+
+def _preserva_enriquecimento_sapl_parcial(atual: dict, anterior: dict) -> dict:
+    """Preserva presenca/sessoes validas quando o enriquecimento SAPL falha.
+
+    Materias e contagens continuam sempre vindas da coleta atual. So campos de
+    enriquecimento ausentes sao recuperados, por vereador ou sessao, para uma
+    oscilacao da API nao transformar dado conhecido em ``null`` ou lista vazia.
+    """
+    if not isinstance(atual, dict) or not isinstance(anterior, dict):
+        return atual
+
+    campos_presenca = (
+        "presenca_pct", "presenca_presentes",
+        "presenca_elegiveis", "presenca_janela",
+    )
+    anteriores_por_nome = {
+        _norm_txt(v.get("nome", "")): v
+        for v in anterior.get("vereadores", [])
+        if isinstance(v, dict) and v.get("nome")
+    }
+    for vereador in atual.get("vereadores", []):
+        if not isinstance(vereador, dict) or vereador.get("presenca_pct") is not None:
+            continue
+        velho = anteriores_por_nome.get(_norm_txt(vereador.get("nome", "")))
+        if not velho or velho.get("presenca_pct") is None:
+            continue
+        for campo in campos_presenca:
+            vereador[campo] = velho.get(campo)
+
+    sessoes_anteriores = {
+        s.get("id"): s
+        for s in anterior.get("sessoes", [])
+        if isinstance(s, dict) and s.get("id") is not None
+    }
+    sessoes_atuais = atual.get("sessoes")
+    if not isinstance(sessoes_atuais, list) or not sessoes_atuais:
+        if sessoes_anteriores:
+            atual["sessoes"] = list(sessoes_anteriores.values())
+        return atual
+
+    ids_atuais = set()
+    for sessao in sessoes_atuais:
+        if not isinstance(sessao, dict):
+            continue
+        sid = sessao.get("id")
+        ids_atuais.add(sid)
+        velha = sessoes_anteriores.get(sid)
+        if not velha:
+            continue
+        if not sessao.get("presentes") and velha.get("presentes"):
+            sessao["presentes"] = velha["presentes"]
+            sessao["presentes_qtd"] = velha.get(
+                "presentes_qtd", len(velha["presentes"])
+            )
+        if not sessao.get("votacoes") and velha.get("votacoes"):
+            sessao["votacoes"] = velha["votacoes"]
+        if not sessao.get("url_video") and velha.get("url_video"):
+            sessao["url_video"] = velha["url_video"]
+
+    sessoes_atuais.extend(
+        sessao for sid, sessao in sessoes_anteriores.items()
+        if sid not in ids_atuais
+    )
+    sessoes_atuais.sort(key=lambda s: (
+        s.get("data", "") if isinstance(s, dict) else "",
+        s.get("numero", 0) if isinstance(s, dict) else 0,
+    ))
+    return atual
+
 EXCLUI_AUTOR = {
     "Mesa Diretora - MDIR",
     "Tribunal de Contas de MG - TCEMG",
@@ -1025,6 +1094,13 @@ def _processa_sapl() -> dict:
         bloco = camara_anos.get(str(ano))
         if bloco is not None:
             bloco["sessoes"] = sessoes
+
+    camara_anos_anterior = _load_existing("camara_anos.json", {})
+    if isinstance(camara_anos_anterior, dict):
+        for ano, bloco in camara_anos.items():
+            _preserva_enriquecimento_sapl_parcial(
+                bloco, camara_anos_anterior.get(ano, {})
+            )
 
     main_year_data = ano_2025 if rows_2025 else camara_anos.get("2026", {
         "resumo": {}, "vereadores": [], "emendas": []
@@ -2538,7 +2614,12 @@ def _processa_diarias_betha() -> dict:
         tok_pref = cb.get_token()
         for ano in anos:
             try:
-                res = cb.baixar_dados_abertos(tok_pref, cb.CONSULTA_DIARIAS, ano=ano)
+                res = cb.baixar_dados_abertos(
+                    tok_pref,
+                    cb.CONSULTA_DIARIAS,
+                    ano=ano,
+                    text_fallback_is_complete=True,
+                )
                 rows = _normaliza_diarias_prefeitura(res.get("main", []), res.get("linked", {}))
                 prefeitura.extend(rows)
                 coleta_status["prefeitura"][str(ano)] = {
@@ -2558,7 +2639,14 @@ def _processa_diarias_betha() -> dict:
         tok_cam = cb.get_token(portal_hash=portal_camara)
         for ano in anos:
             try:
-                res = cb.baixar_dados_abertos(tok_cam, 324755, ano=ano, portal_hash=portal_camara, ano_field="ano")
+                res = cb.baixar_dados_abertos(
+                    tok_cam,
+                    324755,
+                    ano=ano,
+                    portal_hash=portal_camara,
+                    ano_field="ano",
+                    text_fallback_is_complete=True,
+                )
                 rows = _normaliza_diarias_camara(res.get("main", []))
                 camara.extend(rows)
                 coleta_status["camara"][str(ano)] = {
@@ -2595,6 +2683,58 @@ def _processa_diarias_betha() -> dict:
         },
         "coleta_status": coleta_status,
     }
+
+
+def _coletar_e_salvar_diarias() -> dict:
+    """Atualiza diarias sem permitir regressao de cobertura por fonte."""
+    diarias = _processa_diarias_betha()
+    existente_diarias = _load_existing("diarias.json", {})
+    meta_ant = existente_diarias.get("meta") if isinstance(existente_diarias, dict) else {}
+    meta_ant = meta_ant if isinstance(meta_ant, dict) else {}
+    agora_iso = dt.datetime.now().isoformat(timespec="seconds")
+    coletou = {org: len(diarias.get(org, [])) > 0 for org in ("prefeitura", "camara")}
+    status_por_org = diarias.get("coleta_status") if isinstance(diarias, dict) else {}
+    status_por_org = status_por_org if isinstance(status_por_org, dict) else {}
+    integral = {}
+    for org in ("prefeitura", "camara"):
+        anos_status = status_por_org.get(org) if isinstance(status_por_org.get(org), dict) else {}
+        integral[org] = bool(anos_status) and all(
+            isinstance(item, dict) and item.get("status") == "ok"
+            for item in anos_status.values()
+        )
+    for org in ("prefeitura", "camara"):
+        novos = diarias.get(org, [])
+        antigos = existente_diarias.get(org, []) if isinstance(existente_diarias, dict) else []
+        if isinstance(antigos, list) and len(antigos) >= 50 and len(novos) == 0:
+            diarias[org] = antigos
+            antigo_resumo = (existente_diarias.get("resumo") or {}).get(org)
+            if antigo_resumo:
+                diarias.setdefault("resumo", {})[org] = antigo_resumo
+            print(f"  ! Diarias {org}: coleta vazia; preservando base anterior ({len(antigos)} registros)")
+    meta = {}
+    for org in ("prefeitura", "camara"):
+        ant = meta_ant.get(org) if isinstance(meta_ant.get(org), dict) else {}
+        if coletou[org] and integral[org]:
+            meta[org] = {
+                "atualizado_em": agora_iso,
+                "ultima_tentativa": agora_iso,
+                "ok": True,
+                "status": "ok",
+            }
+        else:
+            meta[org] = {
+                "atualizado_em": (ant or {}).get("atualizado_em"),
+                "ok": False,
+                "ultima_falha": agora_iso,
+                "ultima_tentativa": agora_iso,
+                "status": "partial" if coletou[org] else "failed",
+            }
+    diarias["meta"] = meta
+    if diarias.get("prefeitura") or diarias.get("camara"):
+        _save("diarias.json", diarias)
+    else:
+        print("  ✗ Diarias: nada coletado e nada preservado — mantendo diarias.json existente intacto")
+    return diarias
 
 
 # ----------------- main ------------------------------------------------- #
@@ -2636,6 +2776,11 @@ def main() -> int:
     sem_pessoal = "--sem-pessoal" in sys.argv
     sem_fontes_emendas = "--sem-fontes-emendas" in sys.argv
     vigia_rapida = "--vigia-rapida" in sys.argv
+
+    if "--so-diarias" in sys.argv:
+        _coletar_e_salvar_diarias()
+        print("\n✓ Diarias atualizadas sem executar SAPL ou demais fontes.\n")
+        return 0
 
     sapl = _preserva_emendas_sapl_se_coleta_vazia(_processa_sapl())
     _enriquece_materias_cidadas(sapl.get("camara_anos", {}))
@@ -2687,58 +2832,7 @@ def main() -> int:
 
     diarias = {}
     if not so_sapl and not sem_betha:
-        diarias = _processa_diarias_betha()
-        # Guarda-chuva: se a coleta falhar por completo (ex.: navegador do
-        # Playwright ausente, token Betha inacessivel), _processa_diarias_betha
-        # devolve listas vazias sem levantar excecao — sem esta checagem o
-        # _save gravava um diarias.json vazio por cima de milhares de
-        # registros bons (ja aconteceu: 5709 registros -> 0 em producao).
-        existente_diarias = _load_existing("diarias.json", {})
-        meta_ant = existente_diarias.get("meta") if isinstance(existente_diarias, dict) else {}
-        meta_ant = meta_ant if isinstance(meta_ant, dict) else {}
-        agora_iso = dt.datetime.now().isoformat(timespec="seconds")
-        # Sucesso da coleta de cada fonte NESTE ciclo (antes do preserve sobrescrever).
-        coletou = {org: len(diarias.get(org, [])) > 0 for org in ("prefeitura", "camara")}
-        status_por_org = diarias.get("coleta_status") if isinstance(diarias, dict) else {}
-        status_por_org = status_por_org if isinstance(status_por_org, dict) else {}
-        integral = {}
-        for org in ("prefeitura", "camara"):
-            anos_status = status_por_org.get(org) if isinstance(status_por_org.get(org), dict) else {}
-            integral[org] = bool(anos_status) and all(
-                isinstance(item, dict) and item.get("status") == "ok"
-                for item in anos_status.values()
-            )
-        for org in ("prefeitura", "camara"):
-            novos = diarias.get(org, [])
-            antigos = existente_diarias.get(org, []) if isinstance(existente_diarias, dict) else []
-            if isinstance(antigos, list) and len(antigos) >= 50 and len(novos) == 0:
-                diarias[org] = antigos
-                antigo_resumo = (existente_diarias.get("resumo") or {}).get(org)
-                if antigo_resumo:
-                    diarias.setdefault("resumo", {})[org] = antigo_resumo
-                print(f"  ! Diarias {org}: coleta vazia; preservando base anterior ({len(antigos)} registros)")
-        # Carimbo de frescor por fonte: 'atualizado_em' avanca SO quando a fonte foi
-        # coletada com sucesso neste ciclo; caso contrario herda o anterior e registra
-        # 'ultima_falha'. Permite alerta de defasagem por fonte (ex.: 406 nas diarias da
-        # Prefeitura enquanto a Camara segue ok). Consumido por check-pipeline-health.mjs.
-        meta = {}
-        for org in ("prefeitura", "camara"):
-            ant = meta_ant.get(org) if isinstance(meta_ant.get(org), dict) else {}
-            if coletou[org] and integral[org]:
-                meta[org] = {"atualizado_em": agora_iso, "ok": True}
-            else:
-                meta[org] = {
-                    "atualizado_em": (ant or {}).get("atualizado_em"),
-                    "ok": False,
-                    "ultima_falha": agora_iso,
-                    "ultima_tentativa": agora_iso,
-                    "status": "partial" if coletou[org] else "failed",
-                }
-        diarias["meta"] = meta
-        if diarias.get("prefeitura") or diarias.get("camara"):
-            _save("diarias.json", diarias)
-        else:
-            print("  ✗ Diarias: nada coletado e nada preservado — mantendo diarias.json existente intacto")
+        diarias = _coletar_e_salvar_diarias()
 
     federal = {}
     if not so_sapl:

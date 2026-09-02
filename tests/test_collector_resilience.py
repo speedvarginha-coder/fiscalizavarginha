@@ -284,6 +284,59 @@ class SaplPaginationTruncationTests(unittest.TestCase):
         self.assertEqual(out, [{"id": 1}, {"id": 2}])
 
 
+class SaplPartialEnrichmentPreservationTests(unittest.TestCase):
+    def test_missing_attendance_preserves_previous_without_overwriting_fresh_data(self):
+        atual = {
+            "vereadores": [
+                {"nome": "Ana Rios", "presenca_pct": None},
+                {"nome": "Dandan", "presenca_pct": 92.0,
+                 "presenca_presentes": 46, "presenca_elegiveis": 50},
+            ],
+        }
+        anterior = {
+            "vereadores": [
+                {"nome": "Ana Rios", "presenca_pct": 88.0,
+                 "presenca_presentes": 44, "presenca_elegiveis": 50,
+                 "presenca_janela": "2026-01-01 a 2026-12-31"},
+                {"nome": "Dandan", "presenca_pct": 70.0,
+                 "presenca_presentes": 35, "presenca_elegiveis": 50},
+            ],
+        }
+
+        coletor._preserva_enriquecimento_sapl_parcial(atual, anterior)
+
+        self.assertEqual(atual["vereadores"][0]["presenca_pct"], 88.0)
+        self.assertEqual(atual["vereadores"][0]["presenca_presentes"], 44)
+        self.assertEqual(atual["vereadores"][1]["presenca_pct"], 92.0)
+
+    def test_partial_sessions_merge_previous_valid_details_and_missing_session(self):
+        atual = {
+            "sessoes": [{
+                "id": 20, "numero": 2, "data": "2026-08-02",
+                "presentes": [], "presentes_qtd": 0, "votacoes": [],
+                "url_video": "",
+            }],
+        }
+        anterior = {
+            "sessoes": [
+                {"id": 10, "numero": 1, "data": "2026-08-01",
+                 "presentes": ["Ana"], "presentes_qtd": 1,
+                 "votacoes": [{"materia": 1}], "url_video": "video-1"},
+                {"id": 20, "numero": 2, "data": "2026-08-02",
+                 "presentes": ["Dandan"], "presentes_qtd": 1,
+                 "votacoes": [{"materia": 2}], "url_video": "video-2"},
+            ],
+        }
+
+        coletor._preserva_enriquecimento_sapl_parcial(atual, anterior)
+
+        self.assertEqual([s["id"] for s in atual["sessoes"]], [10, 20])
+        sessao = next(s for s in atual["sessoes"] if s["id"] == 20)
+        self.assertEqual(sessao["presentes"], ["Dandan"])
+        self.assertEqual(sessao["votacoes"], [{"materia": 2}])
+        self.assertEqual(sessao["url_video"], "video-2")
+
+
 class HttpRetryTests(unittest.TestCase):
     def test_transient_timeout_is_retried_before_giving_up(self):
         responses = [TimeoutError("timed out"), FakeResponse(json.dumps({"ok": True}))]
@@ -553,6 +606,39 @@ class BethaExportFormatTests(unittest.TestCase):
         self.assertEqual(result["coleta_status"], "partial")
         self.assertEqual(result["coleta_modo"], "busca-textual-fallback")
         self.assertEqual(result["main"][0]["numero"], "3")
+
+    def test_paginated_text_search_can_be_complete_for_main_only_dataset(self):
+        signed_url = (
+            "https://s3.sa-east-1.amazonaws.com/transparencia.betha.cloud/"
+            "dados-abertos/83059_diarias.csv?X-Amz-Signature=teste"
+        )
+        with patch.object(
+            coletor_betha,
+            "_dados_abertos_sem_token",
+            return_value=signed_url,
+        ), patch.object(
+            coletor_betha,
+            "_download_export_url",
+            side_effect=coletor_betha.BethaExportError("HTTP 404"),
+        ), patch.object(
+            coletor_betha,
+            "get_token",
+            return_value="fresh-token",
+        ), patch.object(
+            coletor_betha,
+            "baixar_busca_textual",
+            return_value=[{"numeroEmpenho": "4", "anoExercicio": "2026"}],
+        ):
+            result = coletor_betha.baixar_dados_abertos(
+                "token",
+                coletor_betha.CONSULTA_DIARIAS,
+                ano="2026",
+                text_fallback_is_complete=True,
+            )
+
+        self.assertEqual(result["coleta_status"], "ok")
+        self.assertEqual(result["coleta_modo"], "busca-textual-completa")
+        self.assertEqual(result["detalhamento_status"], "partial")
 
 
 class FastWatchTests(unittest.TestCase):
