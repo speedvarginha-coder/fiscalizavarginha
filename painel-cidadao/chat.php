@@ -60,6 +60,12 @@ if (!$origemPermitida) {
     exit;
 }
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['erro' => 'Método não permitido']);
+    exit;
+}
+
 // ---- Limites de uso ---------------------------------------------------------
 // A sessao sozinha nao limita nada: apagar o cookie zera o contador. Sessao
 // continua valendo como limite por aba, mas quem paga a conta e o limite por
@@ -129,12 +135,6 @@ if (contarUso('global_' . gmdate('Y_m_d'), 86400) > $MAX_DIA_GLOBAL) {
     sse(['fim' => true]);
     exit;
 }
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    http_response_code(405);
-    echo json_encode(['erro' => 'Método não permitido']);
-    exit;
-}
-
 // Chave da API — fica em gemini_key.php FORA do public_html.
 // Procura em vários níveis acima para funcionar independente de onde o
 // chat.php esteja (raiz do public_html ou em subpasta).

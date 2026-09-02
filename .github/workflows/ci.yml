@@ -29,6 +29,8 @@ jobs:
         run: node scripts/check-syntax.mjs
       - name: Integridade de acentos/encoding (check-accents)
         run: node scripts/check-accents.mjs
+      - name: Segurança do proxy e da renderização do chat
+        run: npm run test:security
       - name: Schemas dos dados publicados
         run: python painel-cidadao/validar_schemas_dados.py
       - name: Auditoria bloqueante das emendas

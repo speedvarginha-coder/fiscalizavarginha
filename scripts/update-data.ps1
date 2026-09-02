@@ -4,6 +4,7 @@
   [switch]$SkipDeploy,
   [switch]$SkipWhatsApp,
   [switch]$GitSync,
+  [switch]$AllowPushWithPendingCommits,
   [switch]$OnlyIfChanged,
   # Pula as 3 varreduras externas lentas (CEIS/CNEP, TSE, PNCP-licitacoes) —
   # dados de sancao/doacao/licitacao nao mudam de hora em hora, e cada uma
@@ -68,6 +69,17 @@ function Write-Log {
     }
   }
   Write-Host $line
+}
+
+function Test-PodeSincronizarGit {
+  param(
+    [string]$Branch,
+    [Nullable[int]]$CommitsPendentes,
+    [bool]$PermitirPendentes
+  )
+  if ($Branch -ne "master") { return $false }
+  if ($null -eq $CommitsPendentes) { return $false }
+  return $PermitirPendentes -or $CommitsPendentes -eq 0
 }
 
 function Invoke-AndLog {
@@ -677,18 +689,20 @@ try {
   # Os chunks estruturados alimentam o feed cidadão e o WhatsApp, mas são
   # gerados por coletores próprios. Ambos operam de forma incremental: itens
   # antigos enriquecidos são reutilizados e apenas novidades usam IA.
-  Invoke-AndLog `
+  Invoke-IsolatedAndLog `
     -Label "Atualizando publicacoes estruturadas da Camara (incremental)." `
     -FilePath "python" `
     -Arguments @("-u", "coletor_publicacoes.py") `
-    -WorkingDirectory $painel
+    -WorkingDirectory $painel `
+    -TimeoutSeconds 300
 
   if ($CollectorMode -ne "Sapl") {
-    Invoke-AndLog `
+    Invoke-IsolatedAndLog `
       -Label "Atualizando publicacoes estruturadas do Diario Oficial (incremental)." `
       -FilePath "python" `
-      -Arguments @("-u", "coletor_diario.py", "--edicoes", "3") `
-      -WorkingDirectory $painel
+      -Arguments @("-u", "coletor_diario.py", "--edicoes", "6") `
+      -WorkingDirectory $painel `
+      -TimeoutSeconds 1200
   }
 
   Invoke-AndLog `
@@ -715,7 +729,8 @@ try {
       -Label "Atualizando emendas federais destinadas a Varginha." `
       -FilePath "python" `
       -Arguments @("-u", "coletor_emendas_federais.py") `
-      -WorkingDirectory (Join-Path $painel "emendas")
+      -WorkingDirectory (Join-Path $painel "emendas") `
+      -AcceptedExitCodes @(0, 2)
   }
 
   Invoke-AndLog `
@@ -999,17 +1014,37 @@ try {
     $prevEAP = $ErrorActionPreference
     $ErrorActionPreference = "Continue"
     try {
-      Write-Log "Sincronizando dados com o GitHub (commit + push)."
-      & git -C $root add -- painel-cidadao/data painel-cidadao/emendas/data 2>&1 | Out-Null
-      $pendentes = & git -C $root status --porcelain -- painel-cidadao/data painel-cidadao/emendas/data
-      if ($pendentes) {
-        $carimbo = Get-Date -Format "dd/MM/yyyy HH:mm"
-        & git -C $root commit -q -m "chore(dados): coleta diaria automatica $carimbo" 2>&1 | Out-Null
-        & git -C $root push origin master 2>&1 | Out-Null
-        if ($LASTEXITCODE -eq 0) { Write-Log "GitHub sincronizado (dados commitados e enviados)." }
-        else { Write-Log "AVISO: push para o GitHub falhou (commit local feito; nao bloqueia)." }
+      $branch = (& git -C $root branch --show-current 2>$null | Select-Object -First 1)
+      $branchOk = $LASTEXITCODE -eq 0
+      $aheadRaw = (& git -C $root rev-list --count origin/master..HEAD 2>$null | Select-Object -First 1)
+      $aheadOk = $LASTEXITCODE -eq 0 -and "$aheadRaw" -match '^\d+$'
+      $ahead = if ($aheadOk) { [int]$aheadRaw } else { $null }
+
+      if (-not $branchOk -or -not (Test-PodeSincronizarGit `
+          -Branch "$branch" `
+          -CommitsPendentes $ahead `
+          -PermitirPendentes ([bool]$AllowPushWithPendingCommits))) {
+        $motivo = if (-not $branchOk -or $null -eq $ahead) {
+          "nao foi possivel verificar branch e commits pendentes"
+        } elseif ($branch -ne "master") {
+          "branch atual e '$branch', nao 'master'"
+        } else {
+          "master tem $ahead commit(s) ainda nao enviados"
+        }
+        Write-Log "AVISO: GitSync pulado: $motivo. Revise e envie manualmente, ou use -AllowPushWithPendingCommits de forma deliberada."
       } else {
-        Write-Log "Sem mudancas de dados para commitar."
+        Write-Log "Sincronizando dados com o GitHub (commit + push)."
+        & git -C $root add -- painel-cidadao/data painel-cidadao/emendas/data 2>&1 | Out-Null
+        $pendentes = & git -C $root status --porcelain -- painel-cidadao/data painel-cidadao/emendas/data
+        if ($pendentes) {
+          $carimbo = Get-Date -Format "dd/MM/yyyy HH:mm"
+          & git -C $root commit -q -m "chore(dados): coleta diaria automatica $carimbo" 2>&1 | Out-Null
+          & git -C $root push origin master 2>&1 | Out-Null
+          if ($LASTEXITCODE -eq 0) { Write-Log "GitHub sincronizado (dados commitados e enviados)." }
+          else { Write-Log "AVISO: push para o GitHub falhou (commit local feito; nao bloqueia)." }
+        } else {
+          Write-Log "Sem mudancas de dados para commitar."
+        }
       }
     } catch {
       Write-Log "AVISO: sync com GitHub falhou (nao bloqueia o ciclo): $_"

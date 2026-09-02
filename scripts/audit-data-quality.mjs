@@ -770,6 +770,43 @@ if (!contratosAuditaveis || !obrasAuditaveis) {
   );
 }
 
+for (const [orgao, registros, source] of [
+  ["Prefeitura", chunks.prefeitura?.contratos || [], "prefeitura.json"],
+  ["Camara", chunks.camaraBetha?.contratos || [], "camara_betha.json"],
+]) {
+  const semModalidade = registros.filter((c) => !String(c.modalidade || "").trim()).length;
+  if (registros.length && semModalidade) {
+    add(
+      "warning",
+      `contratos-${normalizeText(orgao)}-sem-modalidade`,
+      `Modalidade de compra ausente em contratos da ${orgao}`,
+      `${semModalidade} de ${registros.length} contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.`,
+      "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
+      source,
+    );
+  }
+}
+
+const anoDiarias = Number(chunks.prefeitura?.ano_atual || new Date().getFullYear());
+for (const [orgao, registros] of [
+  ["Prefeitura", chunks.diarias?.prefeitura || []],
+  ["Camara", chunks.diarias?.camara || []],
+]) {
+  const atuais = registros.filter((d) => Number(d.ano) === anoDiarias);
+  const semDestino = atuais.filter((d) => !String(d.destino || "").trim()).length;
+  const semFinalidade = atuais.filter((d) => !String(d.finalidade || "").trim()).length;
+  if (atuais.length && (semDestino || semFinalidade)) {
+    add(
+      "warning",
+      `diarias-${normalizeText(orgao)}-sem-detalhamento`,
+      `Diarias da ${orgao} com detalhamento incompleto`,
+      `Em ${anoDiarias}, a base tem ${atuais.length} registro(s): ${semDestino} sem destino e ${semFinalidade} sem finalidade. Valor, beneficiario e periodo continuam auditaveis quando preenchidos, mas a motivacao da viagem nao pode ser inferida.`,
+      "Conferir o ato original e solicitar destino, finalidade, relatorio de viagem e comprovantes antes de avaliar necessidade ou resultado da despesa.",
+      "diarias.json",
+    );
+  }
+}
+
 const prefeituraContratosTotal = (chunks.prefeitura?.contratos || []).reduce((sum, c) => sum + Number(c.valor || 0), 0);
 const prefeituraInexDispTotal = (chunks.prefeitura?.contratos || [])
   .filter((c) => {
@@ -784,9 +821,9 @@ if (contratosAuditaveis && prefeituraContratosTotal > 0) {
     add(
       "warning",
       "prefeitura-contratos-sem-competicao",
-      "Alto indice de contratacao sem competicao licitatoria",
+      "Participacao relevante de contratacoes diretas",
       `Contratos por Inexigibilidade ou Dispensa somam ${pctInexDisp.toFixed(1)}% (R$ ${(prefeituraInexDispTotal / 1000000).toFixed(1)}M de R$ ${(prefeituraContratosTotal / 1000000).toFixed(1)}M).`,
-      "Auditar as maiores inexigibilidades (ex. IPD, Viacao Real, CNEC) e verificar a regularidade das justificativas de preco.",
+      "Conferir nas maiores inexigibilidades e dispensas o fundamento legal, a justificativa de preco, a publicidade e a documentacao do processo.",
       "prefeitura.json",
     );
   }
@@ -799,7 +836,7 @@ if (emendasSemPagamentoAlto.length) {
   add(
     "warning",
     "emendas-sem-repasses",
-    "Emendas de alto valor sem repasse identificado",
+    "Emendas de alto valor sem pagamento localizado no cruzamento",
     `${emendasSemPagamentoAlto.length} emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: ${emendasSemPagamentoAlto.slice(0, 3).map((e) => `${e.beneficiario} (R$ ${(Number(e.valor_brl || e.valor)/1000).toFixed(0)}k - ${e.autor})`).join("; ")}.`,
     "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
     "prefeitura.json",
@@ -973,8 +1010,8 @@ if (simbolicas.length) {
   add(
     "warning",
     "homologacao-simbolica",
-    "Licitacao homologada por valor simbolico",
-    `${simbolicas.length} licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: ${simbolicas.slice(0, 3).map((s) => `${s.objeto.slice(0, 60)} → ${s.vencedor} por R$ ${Number(s.valor_homologado).toFixed(2)} (estimado R$ ${(Number(s.valor_estimado) / 1000).toFixed(0)} mil)`).join("; ")}. No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.`,
+    "Valor homologado muito abaixo da estimativa",
+    `${simbolicas.length} licitacao(oes) apresentam valor homologado muito abaixo da estimativa. Exemplos: ${simbolicas.slice(0, 3).map((s) => `${s.objeto.slice(0, 60)} → ${s.vencedor} por R$ ${Number(s.valor_homologado).toFixed(2)} (estimado R$ ${(Number(s.valor_estimado) / 1000).toFixed(0)} mil)`).join("; ")}. Isso pode decorrer do modelo de exploracao comercial, em que as contrapartidas do edital representam o valor economico principal; o numero isolado nao mede sozinho o negocio.`,
     "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
     "licitacoes_resultados.json",
   );

@@ -34,6 +34,13 @@ Type `/opensquad` to open the main menu, or use any of these commands:
 - Squad YAML files can be edited manually if needed, but prefer using `/opensquad edit`
 - Company context in `_opensquad/_memory/company.md` is loaded for every squad run
 
+## Codex Project Preservation
+
+- On 2026-08-21, the user manually restored the local projects and placed the related conversations in their correct projects after a Codex app update.
+- Treat the current project-to-conversation associations as authoritative. Do not recreate, remap, migrate, or batch-edit them automatically.
+- Before any future repair of Codex project metadata, create a backup of the current state, require exact folder-path matches, verify that ChatGPT/Codex is fully closed, and obtain the user's explicit approval.
+- Never leave a delayed or background repair process waiting to modify Codex metadata.
+
 ## Browser Sessions
 
 Opensquad uses a persistent Playwright browser profile to keep you logged into social media platforms.

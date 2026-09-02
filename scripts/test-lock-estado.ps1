@@ -26,6 +26,7 @@ function Get-TextoFuncao {
   return $Fonte.Substring($inicio, $fim - $inicio)
 }
 $puras = @(
+  (Get-TextoFuncao -Assinatura "function Test-PodeSincronizarGit {" -Fonte $fonte),
   (Get-TextoFuncao -Assinatura "function Test-PodeAssumirLock {" -Fonte $fonte),
   (Get-TextoFuncao -Assinatura "function Get-LockEstado {" -Fonte $fonte)
 ) -join "`n"
@@ -91,6 +92,26 @@ try {
       $falhas++
     } else {
       Write-Output "ok  $($d.Caso)"
+    }
+  }
+
+  $syncs = @(
+    @{ Branch = "master"; Ahead = 0;     Allow = $false; Esperado = $true;  Caso = "master sincronizada pode enviar dados" },
+    @{ Branch = "master"; Ahead = 30;    Allow = $false; Esperado = $false; Caso = "commits pendentes bloqueiam push automatico" },
+    @{ Branch = "master"; Ahead = 30;    Allow = $true;  Esperado = $true;  Caso = "override deliberado libera commits pendentes" },
+    @{ Branch = "feature"; Ahead = 0;    Allow = $true;  Esperado = $false; Caso = "branch diferente nunca empurra master" },
+    @{ Branch = "master"; Ahead = $null; Allow = $false; Esperado = $false; Caso = "estado remoto desconhecido falha fechado" }
+  )
+  foreach ($s in $syncs) {
+    $obtido = Test-PodeSincronizarGit `
+      -Branch $s.Branch `
+      -CommitsPendentes $s.Ahead `
+      -PermitirPendentes $s.Allow
+    if ($obtido -ne $s.Esperado) {
+      Write-Output "FALHOU $($s.Caso) : esperado $($s.Esperado), obtido $obtido"
+      $falhas++
+    } else {
+      Write-Output "ok  $($s.Caso)"
     }
   }
 
