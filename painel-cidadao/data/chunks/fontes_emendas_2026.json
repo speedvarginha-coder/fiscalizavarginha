@@ -1,9 +1,9 @@
 {
   "fonte": "Investigacao de fontes abertas sobre emendas impositivas 2026",
-  "atualizado_em": "2026-08-21T08:07:25",
+  "atualizado_em": "2026-09-02T06:29:45",
   "resumo": {
     "fontes_verificadas": 9,
-    "fontes_ok": 7,
+    "fontes_ok": 8,
     "achados_qtd": 7,
     "lista_estruturada_encontrada": false,
     "emendas_sapl_2026": 0,
@@ -118,7 +118,7 @@
       "nome": "Camara - emendas impositivas 2026 (URL anterior)",
       "url": "https://www.varginha.mg.leg.br/atividade-legislativa/emendas/emendas-impositivas/2026",
       "status": "aviso",
-      "resultado": "HTTP Error 404: Artigo nÃ£o encontrado"
+      "resultado": "HTTP Error 500: Internal Server Error"
     },
     {
       "nome": "Camara - emendas impositivas 2025 (referencia)",
@@ -141,8 +141,8 @@
     {
       "nome": "SAPL - materias legislativas 2026 (API)",
       "url": "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&tipo=26&page_size=100",
-      "status": "erro",
-      "resultado": "falha na API SAPL: <urlopen error timed out>"
+      "status": "ok",
+      "resultado": "0 achado(s) relevante(s)"
     }
   ],
   "proximos_passos": [

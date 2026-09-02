@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 6937638.11,
+  "total_externo_atual": 7056791.02,
   "total_externo_anterior": 8404647.51,
-  "empenhos_qtd": 3124,
+  "empenhos_qtd": 3143,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -27,8 +27,8 @@
     },
     {
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-      "valor_total": 385467.77,
-      "qtd": 30
+      "valor_total": 437073.72,
+      "qtd": 32
     },
     {
       "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
@@ -51,14 +51,14 @@
       "qtd": 2
     },
     {
+      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+      "valor_total": 178321.01,
+      "qtd": 19
+    },
+    {
       "nome": "FUNDACAO JOAO PINHEIRO",
       "valor_total": 165256.57,
       "qtd": 1
-    },
-    {
-      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "valor_total": 156138.49,
-      "qtd": 17
     },
     {
       "nome": "COMERCIO DE COMBUSTIVEIS NOVA ALIANCA VARGINHA LTDA",
@@ -1210,5 +1210,5 @@
       "registros": 34
     }
   },
-  "coletado_em": "2026-08-21T08:16:14-03:00"
+  "coletado_em": "2026-08-27T09:29:52-03:00"
 }

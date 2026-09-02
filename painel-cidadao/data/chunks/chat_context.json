@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-08-21T14:38:18.911Z",
-  "atualizado_em": "2026-08-21T08:17:26",
+  "gerado_em": "2026-09-02T08:16:22.152Z",
+  "atualizado_em": "2026-08-27T09:31:00",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,59 +11,59 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 221125956.44,
+    "total_pago_fornecedores_externos": 253256790.43,
     "credores_mapeados": 10000,
-    "contratos_total": 1384,
-    "contratos_do_ano": 449,
-    "contratos_em_execucao": 1329,
+    "contratos_total": 1295,
+    "contratos_do_ano": 468,
+    "contratos_em_execucao": 1238,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
         "nome": "HOSPITAL REGIONAL DO SUL DE MINAS",
-        "valor": 52389360.36
+        "valor": 59837384.12
       },
       {
         "nome": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
-        "valor": 17096002.68
+        "valor": 21285334.18
       },
       {
         "nome": "VIAÇÃO REAL TRANSPORTE URBANO E RODOVIÁRIO LTDA",
-        "valor": 13955758.75
+        "valor": 13991103.75
+      },
+      {
+        "nome": "RECEITA FEDERAL",
+        "valor": 8531400.36
       },
       {
         "nome": "VARIAN MEDICAL SYSTEMS INC",
         "valor": 7819347.76
       },
       {
-        "nome": "RECEITA FEDERAL",
-        "valor": 7694656.32
-      },
-      {
         "nome": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
-        "valor": 5870389.95
+        "valor": 6729930.79
       },
       {
         "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-        "valor": 5383293.36
+        "valor": 6343813.24
+      },
+      {
+        "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
+        "valor": 5268560.56
+      },
+      {
+        "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
+        "valor": 4681657.09
       },
       {
         "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
         "valor": 4623269.51
-      },
-      {
-        "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
-        "valor": 4518151.88
-      },
-      {
-        "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-        "valor": 3992460.71
       }
     ]
   },
   "camara": {
     "ano": 2026,
     "cadeiras": 15,
-    "total_pago_fornecedores_externos": 6937638.11,
+    "total_pago_fornecedores_externos": 7056791.02,
     "contratos_total": 46,
     "top_fornecedores": [
       {
@@ -84,7 +84,7 @@
       },
       {
         "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
-        "valor": 385467.77
+        "valor": 437073.72
       },
       {
         "nome": "IPHOSTING ASSESSORIA EM TECNOLOGIA LTDA",
@@ -103,8 +103,8 @@
         "valor": 214999.2
       },
       {
-        "nome": "FUNDACAO JOAO PINHEIRO",
-        "valor": 165256.57
+        "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+        "valor": 178321.01
       }
     ],
     "subsidio_vereador": {
@@ -120,15 +120,15 @@
   },
   "diarias": {
     "prefeitura": {
-      "registros": 5767,
-      "valor_total": 2326988.19,
-      "quantidade_total": 5767,
-      "servidores": 300
+      "registros": 5916,
+      "valor_total": 2416019.58,
+      "quantidade_total": 5916,
+      "servidores": 302
     },
     "camara": {
-      "registros": 242,
-      "valor_total": 144365,
-      "quantidade_total": 235,
+      "registros": 244,
+      "valor_total": 146765,
+      "quantidade_total": 239,
       "servidores": 31
     },
     "anos_disponiveis": [
@@ -138,19 +138,18 @@
   },
   "pessoal": {
     "prefeitura": {
-      "competencia": null,
+      "competencia": "07/2026",
       "resumo": {
         "orgao": "Prefeitura",
-        "competencia_referencia": null,
-        "competencia_indeterminada": true,
-        "servidores_qtd": null,
-        "vinculos_qtd": null,
-        "pessoas_qtd": null,
-        "linhas_todas_competencias": 303818,
-        "comissionados_qtd": null,
-        "folha_bruta_total": null,
-        "folha_bruta_comissionados": null,
-        "maior_vencimento_comissionado": null
+        "competencia_referencia": "07/2026",
+        "servidores_qtd": 4074,
+        "vinculos_qtd": 4074,
+        "pessoas_qtd": 3893,
+        "linhas_todas_competencias": 4074,
+        "comissionados_qtd": 94,
+        "folha_bruta_total": 32225075.08,
+        "folha_bruta_comissionados": 775911.43,
+        "maior_vencimento_comissionado": 40509.01
       }
     },
     "camara": {

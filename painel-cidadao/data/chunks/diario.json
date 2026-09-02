@@ -1,6 +1,94 @@
 {
-  "total": 275,
+  "total": 283,
   "ultimas": [
+    {
+      "ano": 2026,
+      "edicao": "1879",
+      "data": "2026-09-01 11:52:00",
+      "data_atualizacao": "2026-09-01 12:02:49",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 286,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/286/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/286/"
+    },
+    {
+      "ano": 2026,
+      "edicao": "1878",
+      "data": "2026-08-31 11:34:00",
+      "data_atualizacao": "2026-08-31 14:16:24",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 285,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/285/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/285/"
+    },
+    {
+      "ano": 2026,
+      "edicao": "1877",
+      "data": "2026-08-28 14:02:00",
+      "data_atualizacao": "2026-08-28 14:33:32",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 284,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/284/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/284/"
+    },
+    {
+      "ano": 2026,
+      "edicao": "1876",
+      "data": "2026-08-27 14:12:00",
+      "data_atualizacao": "2026-08-27 14:57:58",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 283,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/283/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/283/"
+    },
+    {
+      "ano": 2026,
+      "edicao": "1875",
+      "data": "2026-08-26 12:07:00",
+      "data_atualizacao": "2026-08-26 13:44:22",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 282,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/282/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/282/"
+    },
+    {
+      "ano": 2026,
+      "edicao": "1874",
+      "data": "2026-08-25 15:15:00",
+      "data_atualizacao": "2026-08-25 15:36:44",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 281,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/281/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/281/"
+    },
+    {
+      "ano": 2026,
+      "edicao": "1873",
+      "data": "2026-08-24 15:19:00",
+      "data_atualizacao": "2026-08-24 15:47:14",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 280,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/280/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/280/"
+    },
+    {
+      "ano": 2026,
+      "edicao": "1872",
+      "data": "2026-08-21 15:27:00",
+      "data_atualizacao": "2026-08-21 15:31:18",
+      "descricao": "",
+      "extra": false,
+      "publicacao_id": 279,
+      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/279/",
+      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/279/"
+    },
     {
       "ano": 2026,
       "edicao": "1871",
@@ -572,94 +660,6 @@
       "publicacao_id": 227,
       "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/227/",
       "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/227/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1819",
-      "data": "2026-06-10 15:24:00",
-      "data_atualizacao": "2026-06-10 16:33:11",
-      "descricao": "",
-      "extra": false,
-      "publicacao_id": 226,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/226/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/226/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1818",
-      "data": "2026-06-09 12:19:00",
-      "data_atualizacao": "2026-06-09 14:25:24",
-      "descricao": "",
-      "extra": false,
-      "publicacao_id": 225,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/225/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/225/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1817",
-      "data": "2026-06-08 15:00:00",
-      "data_atualizacao": "2026-06-08 15:36:40",
-      "descricao": "",
-      "extra": false,
-      "publicacao_id": 224,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/224/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/224/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1816",
-      "data": "2026-06-03 11:53:00",
-      "data_atualizacao": "2026-06-03 13:59:52",
-      "descricao": "",
-      "extra": false,
-      "publicacao_id": 223,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/223/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/223/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1815",
-      "data": "2026-06-02 15:56:00",
-      "data_atualizacao": "2026-06-02 16:07:51",
-      "descricao": "",
-      "extra": false,
-      "publicacao_id": 222,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/222/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/222/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1814",
-      "data": "2026-06-01 15:00:00",
-      "data_atualizacao": "2026-06-01 15:33:53",
-      "descricao": "",
-      "extra": false,
-      "publicacao_id": 221,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/221/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/221/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1813",
-      "data": "2026-05-29 15:57:00",
-      "data_atualizacao": "2026-05-29 16:51:51",
-      "descricao": "",
-      "extra": true,
-      "publicacao_id": 220,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/220/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/220/"
-    },
-    {
-      "ano": 2026,
-      "edicao": "1812",
-      "data": "2026-05-29 12:01:00",
-      "data_atualizacao": "2026-05-29 15:00:47",
-      "descricao": "",
-      "extra": false,
-      "publicacao_id": 219,
-      "url_pdf": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/219/",
-      "url_leitor": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/219/"
     }
   ]
 }
