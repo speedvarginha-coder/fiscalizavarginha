@@ -749,24 +749,37 @@ try {
   # Pulados na vigia rapida (-SkipSlowAudits): sancao/doacao/licitacao nao
   # mudam de hora em hora, e juntas essas 3 chamadas levam ~1h so de API
   # externa — o motivo real das colisoes de ciclo em 20/07/2026.
+  # Cada uma tem orcamento de tempo proprio e o estouro NAO derruba o ciclo
+  # (124 aceito): sao best effort e preservam o chunk anterior. Sem esse teto,
+  # uma API externa lenta consumia a janela inteira da tarefa. Em 02/09/2026 o
+  # PNCP de resultados ficou 2h+ em retry e o ciclo das 06:00 foi morto pelo
+  # limite de 4h antes de validar ou publicar qualquer coisa. Melhor publicar
+  # tudo com um cruzamento defasado (e marcado como defasado na pagina de
+  # conformidade) do que nao publicar nada.
   if (-not $SkipSlowAudits) {
-    Invoke-AndLog `
+    Invoke-IsolatedAndLog `
       -Label "Cruzando fornecedores com CEIS/CNEP (empresas sancionadas)." `
       -FilePath "python" `
       -Arguments @("-u", "coletor_sancoes.py") `
-      -WorkingDirectory $painel
+      -WorkingDirectory $painel `
+      -TimeoutSeconds 3600 `
+      -AcceptedExitCodes @(0, 124)
 
-    Invoke-AndLog `
+    Invoke-IsolatedAndLog `
       -Label "Cruzando doadores de campanha (TSE) com fornecedores e QSA." `
       -FilePath "python" `
       -Arguments @("-u", "coletor_tse.py") `
-      -WorkingDirectory $painel
+      -WorkingDirectory $painel `
+      -TimeoutSeconds 900 `
+      -AcceptedExitCodes @(0, 124)
 
-    Invoke-AndLog `
+    Invoke-IsolatedAndLog `
       -Label "Coletando resultados de licitacao (vencedores) no PNCP." `
       -FilePath "python" `
       -Arguments @("-u", "coletor_resultados_licitacao.py") `
-      -WorkingDirectory $painel
+      -WorkingDirectory $painel `
+      -TimeoutSeconds 1800 `
+      -AcceptedExitCodes @(0, 124)
   } else {
     Write-Log "Vigia rapida: pulando CEIS/CNEP, TSE e licitacoes-resultados (rodam so no ciclo diario)."
   }
