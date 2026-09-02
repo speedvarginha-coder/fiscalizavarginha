@@ -650,6 +650,36 @@ try {
   Restore-DeletedTrackedData
 
   Write-Log "Projeto: $root"
+
+  # Garante que os browsers do Playwright batem com a versao instalada, DENTRO
+  # do ambiente desta tarefa. Um bump de dependencia troca o build exigido
+  # (1.59 pede chromium-1217, 1.60 pede 1223) e, sem o download novo, TODO teste
+  # que abre navegador falha com "Executable doesn't exist" — foi o que derrubou
+  # 9 dias de coleta a partir de 27/08/2026, e a coleta de diarias do Betha
+  # (Playwright do Python) junto. Instalar aqui, e nao so na maquina do
+  # desenvolvedor, e o que faz o ciclo se curar sozinho: o comando resolve o
+  # diretorio de browsers com o MESMO ambiente que depois vai procura-lo.
+  # Idempotente e rapido quando ja esta tudo baixado.
+  try {
+    Invoke-IsolatedAndLog `
+      -Label "Conferindo browsers do Playwright (Node)." `
+      -FilePath "npx.cmd" `
+      -Arguments @("--no-install", "playwright", "install", "chromium") `
+      -WorkingDirectory $root `
+      -TimeoutSeconds 900
+  } catch {
+    Write-Log "Aviso: nao foi possivel conferir os browsers do Node: $($_.Exception.Message)"
+  }
+  try {
+    Invoke-IsolatedAndLog `
+      -Label "Conferindo browsers do Playwright (Python, diarias Betha)." `
+      -FilePath "python" `
+      -Arguments @("-m", "playwright", "install", "chromium") `
+      -WorkingDirectory $root `
+      -TimeoutSeconds 900
+  } catch {
+    Write-Log "Aviso: nao foi possivel conferir os browsers do Python: $($_.Exception.Message)"
+  }
   Write-Log "Modo do coletor: $CollectorMode$(if ($SkipSlowAudits) { ' (vigia rapida — sem CEIS/CNEP/TSE/licitacoes)' })"
 
   if ($OnlyIfChanged) {
