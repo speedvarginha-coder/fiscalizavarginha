@@ -1,23 +1,23 @@
 {
-  "gerado_em": "2026-09-02T15:56:25.062Z",
+  "gerado_em": "2026-09-02T18:25:53.418Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 11,
+    "warnings": 10,
     "info": 1,
     "ok": 1,
-    "total": 13
+    "total": 12
   },
   "atualizado_base": {
-    "iso": "2026-09-02T12:55:08",
-    "data_humana": "02/09/2026 - 12:55"
+    "iso": "2026-09-02T13:55:04",
+    "data_humana": "02/09/2026 - 13:55"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.1 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -28,14 +28,6 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
-    },
-    {
-      "severity": "warning",
-      "id": "pessoal-prefeitura-preservada",
-      "title": "Pessoal da Prefeitura preservado da ultima base completa",
-      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (4074 servidores) para nao reduzir a cobertura.",
-      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
-      "source": "pessoal.json"
     },
     {
       "severity": "info",
@@ -76,7 +68,7 @@
       "severity": "warning",
       "id": "contratos-PREFEITURA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Prefeitura",
-      "detail": "1329 de 1329 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "1435 de 1435 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "prefeitura.json"
     },
@@ -112,7 +104,7 @@
       "severity": "warning",
       "id": "sancao-sem-dossie-completo",
       "title": "Sancoes com alcance relevante mas evidencia incompleta",
-      "detail": "8 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
+      "detail": "7 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
       "action": "Completar a coleta dos campos faltantes ou conferir manualmente o registro individual antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -120,7 +112,7 @@
         "metodo": "checagem_de_dossie_minimo",
         "confianca": "baixa",
         "evidencias": [
-          "8 registro(s) sem dossie completo"
+          "7 registro(s) sem dossie completo"
         ],
         "limitacoes": [
           "Sem os campos minimos nao ha base para afirmar alcance"
@@ -131,7 +123,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "91 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (235 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "101 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (246 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -139,7 +131,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "235 sancao(oes) de outros entes"
+          "246 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
@@ -180,7 +172,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 0.1 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -191,14 +183,6 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
-    },
-    {
-      "severity": "warning",
-      "id": "pessoal-prefeitura-preservada",
-      "title": "Pessoal da Prefeitura preservado da ultima base completa",
-      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (4074 servidores) para nao reduzir a cobertura.",
-      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
-      "source": "pessoal.json"
     },
     {
       "severity": "info",
@@ -239,7 +223,7 @@
       "severity": "warning",
       "id": "contratos-PREFEITURA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Prefeitura",
-      "detail": "1329 de 1329 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "1435 de 1435 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "prefeitura.json"
     },
@@ -275,7 +259,7 @@
       "severity": "warning",
       "id": "sancao-sem-dossie-completo",
       "title": "Sancoes com alcance relevante mas evidencia incompleta",
-      "detail": "8 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
+      "detail": "7 registro(s) tem abrangencia que alcancaria Varginha, mas estao sem os campos minimos para divulgacao nominal. Faltas apuradas: verificacao_manual_valida. Enquanto faltar qualquer campo obrigatorio, o nome do fornecedor nao e publicado.",
       "action": "Completar a coleta dos campos faltantes ou conferir manualmente o registro individual antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -283,7 +267,7 @@
         "metodo": "checagem_de_dossie_minimo",
         "confianca": "baixa",
         "evidencias": [
-          "8 registro(s) sem dossie completo"
+          "7 registro(s) sem dossie completo"
         ],
         "limitacoes": [
           "Sem os campos minimos nao ha base para afirmar alcance"
@@ -294,7 +278,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "91 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (235 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "101 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (246 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -302,7 +286,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "235 sancao(oes) de outros entes"
+          "246 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"

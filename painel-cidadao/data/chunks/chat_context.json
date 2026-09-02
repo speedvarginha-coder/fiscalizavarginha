@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-09-02T15:56:29.384Z",
-  "atualizado_em": "2026-09-02T12:55:08",
+  "gerado_em": "2026-09-02T18:25:58.337Z",
+  "atualizado_em": "2026-09-02T13:55:04",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -13,9 +13,9 @@
     "ano": 2026,
     "total_pago_fornecedores_externos": 261505636.79,
     "credores_mapeados": 10000,
-    "contratos_total": 1329,
-    "contratos_do_ano": 501,
-    "contratos_em_execucao": 1266,
+    "contratos_total": 1435,
+    "contratos_do_ano": 500,
+    "contratos_em_execucao": 1373,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -121,7 +121,7 @@
   "diarias": {
     "prefeitura": {
       "registros": 6023,
-      "valor_total": 2448047.69,
+      "valor_total": 2447670.09,
       "quantidade_total": 6023,
       "servidores": 303
     },
@@ -138,32 +138,32 @@
   },
   "pessoal": {
     "prefeitura": {
-      "competencia": "07/2026",
+      "competencia": "08/2026",
       "resumo": {
         "orgao": "Prefeitura",
-        "competencia_referencia": "07/2026",
-        "servidores_qtd": 4074,
-        "vinculos_qtd": 4074,
-        "pessoas_qtd": 3893,
-        "linhas_todas_competencias": 4074,
-        "comissionados_qtd": 94,
-        "folha_bruta_total": 32225075.08,
-        "folha_bruta_comissionados": 775911.43,
-        "maior_vencimento_comissionado": 40509.01
+        "competencia_referencia": "08/2026",
+        "servidores_qtd": 4061,
+        "vinculos_qtd": 4061,
+        "pessoas_qtd": 3891,
+        "linhas_todas_competencias": 4061,
+        "comissionados_qtd": 93,
+        "folha_bruta_total": 22658081.46,
+        "folha_bruta_comissionados": 548708.28,
+        "maior_vencimento_comissionado": 33558.94
       }
     },
     "camara": {
-      "competencia": "07/2026",
+      "competencia": "08/2026",
       "resumo": {
         "orgao": "Camara",
-        "competencia_referencia": "07/2026",
+        "competencia_referencia": "08/2026",
         "servidores_qtd": 59,
         "vinculos_qtd": 59,
         "pessoas_qtd": 59,
         "linhas_todas_competencias": 59,
         "comissionados_qtd": 27,
-        "folha_bruta_total": 467175.21,
-        "folha_bruta_comissionados": 137903.5,
+        "folha_bruta_total": 435144.27,
+        "folha_bruta_comissionados": 133641.69,
         "maior_vencimento_comissionado": 10131.25
       }
     }

@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-02T15:55:21+00:00",
+ "gerado_em": "2026-09-02T16:55:55+00:00",
  "fonte": "camara",
  "total": 940,
  "publicacoes": [
@@ -489,18 +489,18 @@
    "categoria": "Legislativo",
    "interesse_publico": "alto",
    "tema": "saneamento",
-   "resumo": "Este é um pedido de informações da vereadora Ana Rios Fontoura à Câmara Municipal de Varginha sobre a falta constante de água nos bairros San Marino, São Francisco e Parque São José.",
-   "o_que_propoe": "O requerimento propõe que a Câmara solicite dados e explicações sobre as causas e soluções para a interrupção do abastecimento de água nessas regiões.",
-   "impacto_cidadao": "Se o requerimento for aprovado e as informações levarem a ações, poderá haver melhorias no fornecimento de água para os moradores dos bairros afetados.",
+   "resumo": "A vereadora Ana Rios Fontoura solicitou informações sobre a constante falta de água nos bairros San Marino, São Francisco e Parque São José em Varginha-MG.",
+   "o_que_propoe": "O requerimento busca obter dados e explicações da prefeitura ou órgão responsável sobre as causas e possíveis soluções para a falta de água.",
+   "impacto_cidadao": "Se as informações levarem a ações efetivas, os moradores dos bairros afetados poderão ter o abastecimento de água normalizado.",
    "por_que_acompanhar": [
-    "Garantir que a questão da falta de água seja devidamente investigada e tratada pelas autoridades.",
-    "Verificar a transparência e a responsabilidade da gestão pública na prestação de serviços essenciais.",
-    "Assegurar que os moradores dos bairros afetados tenham acesso a um serviço de abastecimento de água regular."
+    "Verificar a transparência da gestão pública na resposta a problemas essenciais.",
+    "Garantir que a questão da falta de água seja devidamente investigada e resolvida.",
+    "Acompanhar a qualidade dos serviços públicos básicos oferecidos à população."
    ],
    "pontos_atencao": [
-    "A qualidade e a clareza das informações que serão fornecidas em resposta ao requerimento.",
+    "A efetividade da resposta do órgão público ao requerimento.",
     "O prazo para a apresentação das informações solicitadas.",
-    "As medidas concretas que serão tomadas após a análise das respostas."
+    "A abrangência das soluções propostas para resolver o problema da falta de água."
    ],
    "valores": {
     "total": null,
@@ -516,7 +516,7 @@
    },
    "autor": "Ana Rios Fontoura",
    "situacao": "em tramitação",
-   "ementa": "Requer informações acerca da constante falta de água nos bairros San Marino, São Francisco e Parque São José:",
+   "ementa": "Requer informações acerca da constante falta de água nos bairros San Marino, São Francisco e Parque São José.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6270",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6270/req_copasa_26_081_revisada_26-08.docx"
@@ -527,8 +527,8 @@
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
-   "fonte_hash": "f76e64d6a609bdf8f9fba7001a4e852c6343fdf7",
-   "gerado_em": "2026-09-02T14:49:31+00:00"
+   "fonte_hash": "01c2924b2d03ebd0e3b5326582984690d32a91a3",
+   "gerado_em": "2026-09-02T16:55:39+00:00"
   },
   {
    "id": "CAMARA-2026-PLOL-81",
@@ -645,18 +645,18 @@
    "data": "2026-09-02",
    "categoria": "Legislativo",
    "interesse_publico": "baixo",
-   "tema": "homenagens",
-   "resumo": "Este é um Projeto de Decreto Legislativo que propõe conceder o título de \"Esportista Destaque Varginhense\" a Bruno de Souza Oliveira Júnior.",
-   "o_que_propoe": "A proposta visa formalizar o reconhecimento de Bruno de Souza Oliveira Júnior como um atleta de destaque em Varginha.",
-   "impacto_cidadao": "Se aprovado, o cidadão verá o reconhecimento público de um esportista local pela Câmara Municipal.",
+   "tema": "homenagem",
+   "resumo": "O Projeto de Decreto Legislativo nº 76/2026, de autoria do vereador Dandan, propõe conceder o Título de Esportista Destaque a Bruno de Souza Oliveira Júnior.",
+   "o_que_propoe": "Se aprovado, Bruno de Souza Oliveira Júnior receberá o Título de Esportista Destaque.",
+   "impacto_cidadao": "Este projeto reconhece publicamente um cidadão por seus méritos esportivos.",
    "por_que_acompanhar": [
-    "Para entender como a Câmara Municipal valoriza e reconhece personalidades locais.",
-    "Para observar os critérios utilizados na concessão de títulos honoríficos.",
-    "Para acompanhar o uso do tempo legislativo em propostas de caráter simbólico."
+    "Acompanhar a concessão de títulos honoríficos permite ao cidadão verificar como os recursos públicos e o tempo legislativo são utilizados.",
+    "Permite entender os critérios e a justificativa para o reconhecimento de personalidades locais.",
+    "Incentiva a participação cívica e o debate sobre o reconhecimento de méritos na comunidade."
    ],
    "pontos_atencao": [
-    "O beneficiário da homenagem é Bruno de Souza Oliveira Júnior.",
-    "A autoria da proposta é do vereador Dandan."
+    "A concessão de títulos honoríficos, embora simbólica, envolve o uso de tempo e recursos da Câmara Municipal.",
+    "É importante que os critérios para a concessão sejam claros e transparentes para a população."
    ],
    "valores": {
     "total": null,
@@ -672,7 +672,7 @@
    },
    "autor": "Dandan",
    "situacao": "em tramitação",
-   "ementa": "CONCEDE TÍTULO DE ESPORTISTA DESTAQUE VARGINHENSE à BRUNO DE SOUZA OLIVEIRA JÚNIOR",
+   "ementa": "CONCEDE TÍTULO DE ESPORTISTA DESTAQUE à BRUNO DE SOUZA OLIVEIRA JÚNIOR.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6280",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6280/dandan_projeto_de_decreto_esportista_destaque___bruno_bmx_revisado.docx"
@@ -683,8 +683,8 @@
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
-   "fonte_hash": "6c297d1c551bdd2e5c92c5adc918b6dad59155a6",
-   "gerado_em": "2026-09-02T14:49:26+00:00"
+   "fonte_hash": "351f480e5a697abf0e7e862b16152850e19ace49",
+   "gerado_em": "2026-09-02T16:55:34+00:00"
   },
   {
    "id": "CAMARA-2026-PDL-75",
@@ -698,17 +698,17 @@
    "categoria": "Legislativo",
    "interesse_publico": "baixo",
    "tema": "homenagens",
-   "resumo": "Este projeto de decreto legislativo propõe conceder o título de \"Esportista Destaque\" a Wesley Gonçalves.",
-   "o_que_propoe": "A proposta visa reconhecer oficialmente Wesley Gonçalves com uma honraria municipal por seus méritos esportivos.",
-   "impacto_cidadao": "O impacto direto para o cidadão comum é limitado, mas pode promover o reconhecimento de talentos locais.",
+   "resumo": "Este projeto de decreto legislativo propõe conceder o título de Esportista Destaque ao senhor Wesley Gonçalves.",
+   "o_que_propoe": "Se aprovado, o senhor Wesley Gonçalves receberá oficialmente o reconhecimento como Esportista Destaque da cidade.",
+   "impacto_cidadao": "Este projeto não tem um impacto direto no dia a dia do cidadão comum, mas reconhece um indivíduo da comunidade.",
    "por_que_acompanhar": [
-    "Acompanhar a forma como a Câmara Municipal utiliza as honrarias públicas.",
-    "Verificar a transparência nos critérios de escolha para homenagens.",
-    "Entender o uso de recursos públicos para cerimônias e reconhecimentos."
+    "Acompanhar a concessão de honrarias públicas garante a transparência nos critérios de escolha.",
+    "Verificar se os recursos públicos (ainda que mínimos para cerimônias) são utilizados de forma adequada.",
+    "Entender como a Câmara Municipal reconhece e valoriza personalidades locais."
    ],
    "pontos_atencao": [
-    "Os critérios utilizados para a seleção do homenageado.",
-    "Possíveis custos envolvidos na cerimônia de entrega do título."
+    "Acompanhar os critérios utilizados para a escolha do homenageado.",
+    "Verificar se há custos associados à cerimônia de entrega do título."
    ],
    "valores": {
     "total": null,
@@ -724,7 +724,7 @@
    },
    "autor": "Bruno Leandro Coletor",
    "situacao": "em tramitação",
-   "ementa": "CONCEDE TÍTULO DE \"ESPORTISTA DESTAQUE\" À WESLEY GONÇALVES.",
+   "ementa": "CONCEDE TÍTULO DE ESPORTISTA DESTAQUE À WESLEY GONÇALVES.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6274",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6274/bruno_minuta_projeto_de_decreto_2026_revisado.docx"
@@ -735,8 +735,8 @@
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
-   "fonte_hash": "eb2aa8ddae867bbd45f30df115c7ad5c1fff84f9",
-   "gerado_em": "2026-09-02T14:49:21+00:00"
+   "fonte_hash": "ecc535ebd57a536a89f54544599187ffd5ed555e",
+   "gerado_em": "2026-09-02T16:55:30+00:00"
   },
   {
    "id": "CAMARA-2026-IND-456",
@@ -1118,18 +1118,18 @@
    "categoria": "Legislativo",
    "interesse_publico": "alto",
    "tema": "saúde",
-   "resumo": "A Indicação nº 449/2026 é uma sugestão do vereador Miguel da Saúde para construir uma Unidade Básica de Saúde (UBS) no Bairro Bouganville, em Varginha-MG. O objetivo é oferecer um local adequado para o atendimento da equipe de Saúde da Família.",
-   "o_que_propoe": "A proposta visa criar uma nova estrutura física para a saúde no Bairro Bouganville, garantindo um espaço próprio e adequado para os serviços de saúde da família.",
-   "impacto_cidadao": "Se a sugestão for acatada e implementada, os moradores do Bairro Bouganville e região poderão ter acesso mais fácil e em uma estrutura própria aos serviços de saúde.",
+   "resumo": "A Indicação nº 449/2026 solicita a construção de uma Unidade Básica de Saúde (UBS) no Bairro Bouganville, em Varginha-MG. O objetivo é oferecer uma estrutura adequada para a equipe de Saúde da Família (PSF) atender a população local.",
+   "o_que_propoe": "Se a solicitação for atendida, uma nova UBS seria construída no Bairro Bouganville, proporcionando um local próprio para os serviços de saúde.",
+   "impacto_cidadao": "Os moradores do Bairro Bouganville poderiam ter acesso facilitado e em uma estrutura própria aos serviços de saúde da família.",
    "por_que_acompanhar": [
-    "Acompanhar a melhoria no acesso à saúde pública para a comunidade local.",
-    "Verificar o uso de recursos públicos para infraestrutura de saúde.",
-    "Monitorar o desenvolvimento e a infraestrutura do Bairro Bouganville."
+    "Garantir que a demanda por infraestrutura de saúde seja considerada e, se aprovada, executada.",
+    "Monitorar o uso de recursos públicos para a construção de novas unidades de saúde.",
+    "Verificar a efetividade da resposta do poder executivo às necessidades da comunidade."
    ],
    "pontos_atencao": [
-    "Necessidade de alocação orçamentária para a construção da UBS.",
-    "Definição do local exato para a construção da unidade.",
-    "Prazos para a execução da obra, caso a indicação seja acatada pelo Executivo."
+    "O impacto orçamentário da construção da nova UBS.",
+    "A definição do local exato para a construção da unidade.",
+    "O prazo para a possível execução da obra, caso a indicação seja acatada."
    ],
    "valores": {
     "total": null,
@@ -1145,7 +1145,7 @@
    },
    "autor": "Miguel da Saúde",
    "situacao": "em tramitação",
-   "ementa": "Construção de uma Unidade Básica de Saúde (UBS), destinada ao atendimento da população do Bairro Bouganville, garantindo uma estrutura própria e adequada para o funcionamento da equipe de Saúde da Família (PSF).",
+   "ementa": "Solicita construção de uma Unidade Básica de Saúde (UBS), destinada ao atendimento da população do Bairro Bouganville, garantindo uma estrutura própria e adequada para o funcionamento da equipe de Saúde da Família (PSF).",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6286",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6286/miguel_psfboug_revisada.docx"
@@ -1156,8 +1156,8 @@
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
-   "fonte_hash": "f42be635b448661a0d3f73e777fb4efd805a3f93",
-   "gerado_em": "2026-09-02T14:51:05+00:00"
+   "fonte_hash": "6b5187b7f5bed46f5e4698fec6652032f4709786",
+   "gerado_em": "2026-09-02T16:55:53+00:00"
   },
   {
    "id": "CAMARA-2026-IND-448",
@@ -1170,19 +1170,19 @@
    "data": "2026-09-02",
    "categoria": "Legislativo",
    "interesse_publico": "alto",
-   "tema": "assistencia social",
-   "resumo": "O vereador Miguel da Saúde sugeriu à prefeitura a criação de uma nova unidade do Centro de Desenvolvimento da Criança e do Adolescente (CDCA).",
-   "o_que_propoe": "A proposta visa expandir os serviços de apoio e desenvolvimento para crianças e adolescentes na região do Bairro Jardim Estrela.",
-   "impacto_cidadao": "Se implementada, a medida poderá oferecer mais oportunidades de desenvolvimento e apoio para crianças e adolescentes do Bairro Jardim Estrela.",
+   "tema": "desenvolvimento social",
+   "resumo": "A Indicação nº 448/2026 solicita a implantação de uma nova unidade do Centro de Desenvolvimento da Criança e do Adolescente (CDCA) no bairro Jardim Estrela.",
+   "o_que_propoe": "A proposta é expandir os serviços do CDCA, oferecendo mais apoio e atividades para crianças e adolescentes na região do Jardim Estrela.",
+   "impacto_cidadao": "Se aprovada e implementada, crianças e adolescentes do Jardim Estrela e bairros próximos poderiam ter acesso a novos programas de desenvolvimento e assistência.",
    "por_que_acompanhar": [
-    "Verificar se a sugestão será acolhida e transformada em projeto pela prefeitura.",
-    "Acompanhar a destinação de recursos públicos para a área de desenvolvimento infantil e adolescente.",
-    "Garantir que os serviços propostos atendam às necessidades da comunidade local."
+    "Verificar a resposta da prefeitura à solicitação de expansão de serviços sociais.",
+    "Acompanhar a possível ampliação de programas de apoio para jovens na cidade.",
+    "Monitorar a destinação de recursos para o desenvolvimento social na região."
    ],
    "pontos_atencao": [
-    "A indicação é uma sugestão e não tem força de lei, dependendo da decisão do Executivo para ser implementada.",
-    "É importante acompanhar a disponibilidade orçamentária para a criação e manutenção de uma nova unidade.",
-    "Verificar a localização exata e a estrutura que seria oferecida para atender à demanda da região."
+    "A necessidade de recursos financeiros para a construção e manutenção da nova unidade.",
+    "A avaliação da demanda real por esses serviços na região do Jardim Estrela.",
+    "A priorização desta proposta em relação a outras necessidades da cidade."
    ],
    "valores": {
     "total": null,
@@ -1198,7 +1198,7 @@
    },
    "autor": "Miguel da Saúde",
    "situacao": "em tramitação",
-   "ementa": "A implantação de uma nova unidade do Centro de Desenvolvimento da Criança e do Adolescente – CDCA, na região do Bairro Jardim Estrela.",
+   "ementa": "Solicita a implantação de uma nova unidade do Centro de Desenvolvimento da Criança e do Adolescente – CDCA, na região do Bairro Jardim Estrela.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6285",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6285/miguel_psfboug_revisada.docx"
@@ -1209,8 +1209,8 @@
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
-   "fonte_hash": "3f857cd768ef9de713815c3812eee60d6450acc0",
-   "gerado_em": "2026-09-02T14:51:00+00:00"
+   "fonte_hash": "d911e85fe6362387f9142191513f44f83f17a98d",
+   "gerado_em": "2026-09-02T16:55:49+00:00"
   },
   {
    "id": "CAMARA-2026-IND-447",
@@ -1487,18 +1487,18 @@
    "categoria": "Legislativo",
    "interesse_publico": "alto",
    "tema": "educação",
-   "resumo": "O vereador Alexandre Prado sugere que a prefeitura estude a criação de um programa de educação em Inteligência Artificial para alunos do ensino fundamental no contraturno escolar.",
-   "o_que_propoe": "A proposta é criar um programa extracurricular focado em IA para estudantes do 6º ao 9º ano, ensinando competências digitais, pensamento computacional e ética da IA.",
-   "impacto_cidadao": "Se implementado, os estudantes da rede pública municipal poderiam ter acesso a uma formação complementar em Inteligência Artificial, preparando-os para o futuro digital.",
+   "resumo": "Esta indicação solicita que a prefeitura de Varginha-MG estude a criação e implementação de um programa de educação em Inteligência Artificial para alunos do 6º ao 9º ano do ensino fundamental da rede pública, no período contrário ao das aulas.",
+   "o_que_propoe": "A indicação propõe a realização de estudos para criar um programa de educação e formação em Inteligência Artificial no contraturno escolar para estudantes do ensino fundamental.",
+   "impacto_cidadao": "Se a proposta for implementada, estudantes da rede pública municipal poderiam ter acesso a formação em Inteligência Artificial.",
    "por_que_acompanhar": [
-    "Garantir que a educação pública se modernize e prepare os alunos para o mercado de trabalho futuro.",
-    "Verificar como os recursos públicos seriam utilizados para a implementação de novas tecnologias na educação.",
-    "Acompanhar a inclusão digital e o desenvolvimento de habilidades tecnológicas para jovens."
+    "Para acompanhar o desenvolvimento de novas oportunidades educacionais e tecnológicas para os jovens da cidade.",
+    "Para verificar como os recursos públicos serão utilizados na implementação de programas inovadores.",
+    "Para entender a integração de temas de alta tecnologia no currículo da rede pública de ensino."
    ],
    "pontos_atencao": [
-    "Potencial impacto orçamentário para a criação e manutenção do programa.",
-    "Necessidade de capacitação de professores ou contratação de novos profissionais.",
-    "Definição clara dos critérios de participação e acesso dos estudantes."
+    "O impacto orçamentário para a criação e manutenção de um novo programa educacional.",
+    "A necessidade de infraestrutura adequada e capacitação de professores para o ensino de Inteligência Artificial.",
+    "A definição dos critérios para a preferência de estudantes do 6º ao 9º ano."
    ],
    "valores": {
     "total": null,
@@ -1514,7 +1514,7 @@
    },
    "autor": "Alexandre Prado",
    "situacao": "em tramitação",
-   "ementa": "Sugere a realização de estudos para a criação e implementação de programa de educação e formação em Inteligência Artificial no contraturno da rede pública municipal de ensino, destinado preferencialmente aos estudantes do 6º ao 9º ano do Ensino Fundamental, contemplando o desenvolvimento de competências digitais, pensamento computacional, compreensão dos fundamentos e aplicações da Inteligência Artificial, reflexão sobre seus impactos éticos e sociais e realização de atividades e projetos práticos voltados ao uso criativo, crítico e responsável dessas tecnologias.",
+   "ementa": "Solicita a realização de estudos para a criação e implementação de programa de educação e formação em Inteligência Artificial no contraturno da rede pública municipal de ensino, destinado preferencialmente aos estudantes do 6º ao 9º ano do Ensino Fundamental.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6267",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6267/alexandre_ind._ia_nas_escolas_revisada.docx"
@@ -1525,8 +1525,8 @@
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
-   "fonte_hash": "92893f8d9ced472ebcd9d3fd5aeaedda87abd404",
-   "gerado_em": "2026-09-02T14:50:34+00:00"
+   "fonte_hash": "77611953c593494a16d207a4ec5d6623edce0b59",
+   "gerado_em": "2026-09-02T16:55:43+00:00"
   },
   {
    "id": "CAMARA-2026-IND-441",

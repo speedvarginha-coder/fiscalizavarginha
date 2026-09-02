@@ -10,9 +10,9 @@
       "desfechos": {
         "lei": 25,
         "arquivado": 883,
-        "tramitando": 662,
+        "tramitando": 665,
         "encerrado": 11,
-        "sem_dado": 3
+        "sem_dado": 0
       },
       "tipos": [
         {
@@ -9391,7 +9391,7 @@
         "data": "2025-02-12",
         "impacto_zero": true,
         "motivo_impacto_zero": "nome de rua/logradouro",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "infraestrutura",
         "tema_label": "Infraestrutura",
         "grau": "baixo"
@@ -13318,7 +13318,7 @@
         "data": "2025-11-12",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "saude",
         "tema_label": "Saúde",
         "grau": "medio"
@@ -31202,7 +31202,7 @@
         "data": "2025-12-10",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -31328,7 +31328,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-09-02T12:47:24-03:00"
+    "coletado_em": "2026-09-02T13:35:20-03:00"
   },
   "2026": {
     "resumo": {
@@ -31341,9 +31341,9 @@
       "desfechos": {
         "lei": 35,
         "arquivado": 588,
-        "tramitando": 297,
+        "tramitando": 298,
         "encerrado": 15,
-        "sem_dado": 1
+        "sem_dado": 0
       },
       "tipos": [
         {
@@ -47672,7 +47672,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -54845,6 +54845,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5143"
       }
     ],
-    "coletado_em": "2026-09-02T12:47:24-03:00"
+    "coletado_em": "2026-09-02T13:35:20-03:00"
   }
 }
