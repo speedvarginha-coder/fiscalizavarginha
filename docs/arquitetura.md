@@ -56,8 +56,8 @@ PIPELINE DE DADOS (offline, roda no servidor de quem mantém o painel):
 │   ├── sobre.html              Metodologia + glossário
 │   ├── cobrar.html             Canais oficiais (LAI, e-SIC)
 │   │
-│   ├── style.css               CSS único (5000+ linhas — a refatorar)
-│   ├── app.js                  Lógica principal (~5700 linhas)
+│   ├── style.css               CSS único (~13,2 mil linhas — a refatorar)
+│   ├── app.js                  Orquestrador (~8,4 mil linhas)
 │   ├── app-glossario.js        Glossário standalone p/ sobre.html
 │   ├── data-loader.js          Carregador async de dados+módulos
 │   ├── sw.js                   Service Worker (cache offline)
@@ -405,7 +405,7 @@ npm run test:report      # vê relatório HTML do último run
 
 - **`app.js` ainda monolítico** (8412 linhas, ~468 KB). Refactor incremental em curso (fases 3-5 pendentes: dossiê, renderizações de Prefeitura/Câmara/Relatórios/Pessoal).
 - **`style.css` único** (~13,2 mil linhas, ~324 KB). Plano: dividir em `css/base.css`, `css/components.css`, `css/pages/*.css`.
-- **`pessoal.json` de 139,5 MB carregado na fase 1** das páginas Câmara, Relatórios e Cobrança. As três só precisam dos dois `resumo` e das 59 linhas da Câmara; as 303.818 linhas da Prefeitura servem apenas à página Pessoal, que já busca o arquivo sob demanda. Plano: publicar um chunk enxuto e manter a base completa em arquivo separado.
+- **`pessoal.json`** voltou à folha mensal (~2,4 MB; a base anual de 303.818 linhas desalojava a mensal — corrigido em `8eff069`). Câmara, Relatórios e Cobrança ainda o carregam na fase 1 só para os `resumo`; publicar um chunk enxuto continua no plano.
 - **Coleta automatizável.** `scripts/update-data.ps1` executa coleta, validação, testes e pacote limpo; `scripts/install-data-task.ps1` registra a rotina diária ou em modo vigia no Windows Task Scheduler.
 
 Veja `docs/como-atualizar.md` para o processo atual de coleta.
