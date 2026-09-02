@@ -121,7 +121,7 @@
 
   // Versão estável: Date.now() obrigava o celular a baixar novamente todos os
   // scripts e chunks em cada visita. A versão muda apenas quando há deploy.
-  const BUILD_VERSION = "20260826-transparencia1";
+  const BUILD_VERSION = "20260902-pessoal-enxuto";
   const body = document.body;
   const page = (body && body.dataset.page) || "home";
   const modulosPagina = MODULOS_POR_PAGINA[page] || MODULOS;
@@ -167,14 +167,28 @@
   // Chunks opcionais (novos): falha silenciosa, não derruba toda a página
   const CHUNKS_OPCIONAIS = new Set(["atualizacoes", "receitas", "publicacoes_estruturadas", "publicacoes_diario"]);
 
+  // Chunks com versao enxuta: a pagina pede a chave normal e recebe o
+  // arquivo leve, entao nenhum consumidor de FISCALIZA_DATA muda. A pagina
+  // Pessoal nao passa por aqui — ela busca pessoal.json inteiro sob demanda.
+  const ARQUIVO_ENXUTO = { pessoal: "pessoal_resumo" };
+
   function fetchChunk(key) {
     // URL estável permite ao service worker devolver o cache imediatamente e
     // revalidar em segundo plano. "no-cache" ainda consulta a versão nova
     // quando não há service worker, usando ETag/Last-Modified.
-    return fetch("data/chunks/" + key + ".json", { cache: "no-cache" })
+    const arquivo = ARQUIVO_ENXUTO[key] || key;
+    const buscar = (nome) => fetch("data/chunks/" + nome + ".json", { cache: "no-cache" })
       .then((r) => {
         if (!r.ok) throw new Error("HTTP " + r.status);
         return r.json();
+      });
+    return buscar(arquivo)
+      .catch((err) => {
+        // Coleta anterior a este formato ainda nao gerou o arquivo enxuto:
+        // cai no completo em vez de deixar a pagina sem o dado.
+        if (arquivo === key) throw err;
+        console.info("[data-loader] versao enxuta ausente:", arquivo, err.message);
+        return buscar(key);
       })
       .then((data) => ({ key, data }))
       .catch((err) => {

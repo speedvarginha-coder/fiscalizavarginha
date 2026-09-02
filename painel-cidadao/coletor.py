@@ -135,6 +135,20 @@ def _save(name: str, payload) -> None:
         chunks_dir.mkdir(exist_ok=True)
         chunk_out = chunks_dir / name
         _write_json_atomic(chunk_out, payload)
+        # Camara, Relatorios e Cobranca so leem os resumos e as ~59 linhas
+        # da Camara, mas baixavam junto as ~4 mil linhas da folha da
+        # Prefeitura: 2,4 MB por pagina, tres paginas. A versao enxuta
+        # atende essas paginas; a pagina Pessoal continua buscando
+        # pessoal.json inteiro sob demanda e as auditorias seguem lendo o
+        # arquivo completo, entao nenhuma checagem perde visao dos dados.
+        if name == "pessoal.json" and isinstance(payload, dict):
+            enxuto = dict(payload)
+            pref = dict(payload.get("prefeitura") or {})
+            removidas = len(pref.pop("servidores", []) or [])
+            pref["servidores_arquivo"] = "data/chunks/pessoal.json"
+            pref["servidores_linhas"] = removidas
+            enxuto["prefeitura"] = pref
+            _write_json_atomic(chunks_dir / "pessoal_resumo.json", enxuto)
 
 
 

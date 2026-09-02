@@ -1,5 +1,5 @@
-/* Fiscaliza Varginha — Service Worker v92 (cache móvel reutilizável) */
-const CACHE = "fiscaliza-v92";
+/* Fiscaliza Varginha — Service Worker v93 (cache móvel reutilizável) */
+const CACHE = "fiscaliza-v93";
 const STATIC = [
   "./",
   "./index.html",
