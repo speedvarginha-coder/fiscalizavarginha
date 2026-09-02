@@ -398,6 +398,8 @@
       const totalMaisRecente = registrosMaisRecentes
         .reduce((s, d) => s + Number(d.valor_total || 0), 0);
       const periodoLabel = f.mes && f.ano ? `${MESES[Number(f.mes) - 1]} de ${f.ano}` : (f.ano ? `ano ${f.ano}` : "todos os anos");
+      const semDestino = view.filter(d => !String(d.destino || "").trim()).length;
+      const semFinalidade = view.filter(d => !String(d.finalidade || d.historico || "").trim()).length;
 
       if (contadorEl) contadorEl.textContent = `${fmtNum(view.length)} registro(s) · ${fmtBRL(total)}`;
       if (statsEl) {
@@ -418,6 +420,15 @@
 
       if (listaEl) {
         const parent = listaEl.parentElement;
+        let cobertura = parent && parent.querySelector(".diarias-coverage-note");
+        if (parent && !cobertura) {
+          cobertura = document.createElement("div");
+          cobertura.className = "report-note diarias-coverage-note";
+          parent.insertBefore(cobertura, listaEl);
+        }
+        if (cobertura) {
+          cobertura.innerHTML = `<strong>Cobertura do recorte:</strong> ${fmtNum(view.length)} registro(s); ${fmtNum(semDestino)} sem destino e ${fmtNum(semFinalidade)} sem finalidade na fonte carregada. Campos ausentes não são completados por suposição. Confira autorização, relatório de viagem e prestação de contas no órgão.`;
+        }
         if (parent && !parent.querySelector(".diarias-note")) {
           const note = document.createElement("div");
           note.className = "report-note diarias-note";
@@ -514,6 +525,11 @@
               ${d.data_inicial ? `<span>${dataBR(d.data_inicial)}${d.data_final && d.data_final !== d.data_inicial ? " a " + dataBR(d.data_final) : ""}</span>` : ""}
             </div>
             ${seloConfianca}
+            ${window.FISCALIZA.provenienciaRegistro ? window.FISCALIZA.provenienciaRegistro(
+              isPrefeitura ? "prefeitura" : "camara_betha",
+              d.fonte || (isPrefeitura ? "Betha/Prefeitura" : "Câmara/Betha"),
+              fonteOficialDiaria,
+            ) : ""}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-share" onclick="FISCALIZA.compartilharZap('${jsSafe(d.funcionario)}', '${jsSafe(d.finalidade || d.historico)}', '${fmtBRL(d.valor_total)} (${fmtNum(d.quantidade)} dias)')" style="padding: 4px 8px; background: #0b5f3a; color: white; border: none; border-radius: 4px; font-size: 0.75em; cursor: pointer;">Compartilhar</button>
               <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/diarias" target="_blank" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 4px 8px; background: #eee; border-radius: 4px; color: #333; font-size: 0.75em; font-weight: 500; border: 1px solid #ccc; display: inline-block;">Abrir esta diária na fonte oficial</a>

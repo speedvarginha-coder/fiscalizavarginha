@@ -26,9 +26,42 @@ assert.match(chatPhp, /chat_context\.json/);
 assert.match(chatPhp, /Use exclusivamente o JSON abaixo/);
 
 const app = read("painel-cidadao/app.js");
+const relatoriosHtml = read("painel-cidadao/relatorios.html");
+const relatoriosJs = read("painel-cidadao/modules/relatorios.js");
+const atualizacoesJs = read("painel-cidadao/modules/atualizacoes.js");
+const conformidade = read("painel-cidadao/conformidade.html");
+const transparenciaJs = read("painel-cidadao/modules/transparencia.js");
+const diariasJs = read("painel-cidadao/modules/diarias.js");
+const dataLoader = read("painel-cidadao/data-loader.js");
 assert.doesNotMatch(app, /Custo diário elevado/);
 assert.match(app, /não representa gasto ou pagamento diário efetivo/);
 assert.doesNotMatch(app, />Sem pagamento detectado</);
+assert.doesNotMatch(app, /podem configurar irregularidade/);
+assert.doesNotMatch(app, /podem indicar fracionamento/);
+assert.doesNotMatch(chatFallback, /CNPJ com irregularidade|CNPJ irregular|não necessariamente crime/);
+assert.doesNotMatch(chatFallback, /Cada registro mostra beneficiário, destino, finalidade/);
+assert.match(chatFallback, /semDestinoFinalidade/);
+assert.match(app, /não informado na fonte contratual/);
+assert.doesNotMatch(app, /sem contrato formal|sem processo licitatório visível/);
+for (const source of [relatoriosHtml, relatoriosJs, atualizacoesJs]) {
+  assert.doesNotMatch(source, /R\$ 17\.600|17600|fragmentação suspeita/);
+}
+assert.doesNotMatch(atualizacoesJs, /sem contrato formal|ausência de contrato formal/);
+assert.match(atualizacoesJs, /auditoria-vinculos-suspensa-por-frescor/);
+assert.match(atualizacoesJs, /comprasDiretasPref/);
+assert.match(relatoriosHtml, /R\$ 65\.492,11/);
+assert.match(relatoriosHtml, /R\$ 130\.984,20/);
+assert.match(relatoriosHtml, /Decreto 12\.807\/2025/);
+assert.match(relatoriosJs, /não prova fracionamento/);
+assert.doesNotMatch(relatoriosJs, /Contrato vago|CNPJ oculto|Emenda sem execução|prometidos a/);
+assert.match(app, /Proveniência:/);
+assert.match(conformidade, /Cobertura pública por assunto e órgão/);
+assert.match(conformidade, /Ciclo completo das compras públicas/);
+assert.match(conformidade, /Correções, histórico e direito de resposta/);
+assert.match(diariasJs, /Campos ausentes não são completados por suposição/);
+assert.match(transparenciaJs, /ausência de vínculo não prova ausência de processo/);
+assert.match(dataLoader, /"conformidade".*"status_fontes".*"chat_context".*"home_resumo"/);
+assert.doesNotMatch(dataLoader, /"conformidade".*"diarias".*"pca"/);
 
 const contexto = json("painel-cidadao/data/chunks/chat_context.json");
 const prefeitura = json("painel-cidadao/data/chunks/prefeitura.json");

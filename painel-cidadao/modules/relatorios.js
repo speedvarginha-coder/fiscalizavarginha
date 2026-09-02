@@ -2,7 +2,7 @@
  *
  * Blocos auto-contidos da página de Relatórios:
  *   - Timeline de sinais (eventos cronológicos)
- *   - Detector de fragmentação (contratos suspeitos)
+ *   - Triagem de concentração de dispensas por valor
  *   - Comparativo entre anos por categoria
  *
  * Cada função lê window.FISCALIZA_DATA diretamente. Só renderiza se o
@@ -54,9 +54,9 @@
         eventos.push({
           data: c.data_assinatura,
           tipo: "red",
-          tag: "Contrato vago",
+          tag: "Descrição curta",
           titulo: `${fmtBRL(valor)} — ${cleanText(c.contratado || "—")}`,
-          desc: `Contrato de alto valor com objeto curto (${obj.length} caracteres): "${esc(obj || "sem descrição")}". Pedir Termo de Referência por LAI.`,
+          desc: `O resumo do objeto tem ${obj.length} caracteres: "${esc(obj || "sem descrição")}". Isso não mede a qualidade do processo; abra o contrato e peça o Termo de Referência se o documento não estiver acessível.`,
           link: "prefeitura.html?q=" + encodeURIComponent(c.contratado || ""),
         });
       }
@@ -70,7 +70,7 @@
         eventos.push({
           data: c.data_assinatura,
           tipo: "orange",
-          tag: "CNPJ oculto",
+          tag: "CNPJ não identificável",
           titulo: `Contrato de ${fmtBRL(valor)} sem CNPJ identificável`,
           desc: `${cleanText(c.contratado || "—")} — modalidade ${esc(cleanText(c.modalidade || "n/i"))}. Pedir cópia integral do contrato.`,
           link: "prefeitura.html?q=" + encodeURIComponent(c.contratado || ""),
@@ -90,9 +90,9 @@
         eventos.push({
           data: dataRef,
           tipo: "gold",
-          tag: "Emenda sem execução",
-          titulo: `${fmtBRL(valor)} prometidos a ${esc(cleanText(e.beneficiario || "—"))}`,
-          desc: `Emenda de ${esc(e.autor || "vereador não identificado")} (Câmara) sem pagamento localizado pela Prefeitura.`,
+          tag: "Pagamento não localizado",
+          titulo: `${fmtBRL(valor)} destinados a ${esc(cleanText(e.beneficiario || "—"))}`,
+          desc: `Emenda de ${esc(e.autor || "vereador não identificado")} (Câmara) sem pagamento vinculado automaticamente na base da Prefeitura. Isso não comprova ausência de execução.`,
           link: "camara.html?q=" + encodeURIComponent(e.beneficiario || ""),
         });
       }
@@ -121,7 +121,8 @@
   }
 
   // ============================================================
-  // Detector de fragmentação suspeita (Lei 14.133/2021)
+  // Triagem conservadora de concentração de dispensas por valor.
+  // Valores vigentes em 2026: Decreto federal 12.807/2025, art. 75, I e II.
   // ============================================================
   function detectarFragmentacao() {
     const lista = $("fragmentacaoLista");
@@ -129,35 +130,57 @@
     if (!lista || !block) return;
 
     const pf = (window.FISCALIZA_DATA || {}).prefeitura || {};
-    const LIMITE_DISPENSA = 17600;
-    const contratosFrag = (pf.contratos || []).filter(c =>
-      c.data_assinatura && c.contratado &&
-      (Number(c.valor) || 0) > 0 && (Number(c.valor) || 0) < LIMITE_DISPENSA
+    const LIMITES_DISPENSA_2026 = Object.freeze({
+      comprasServicos: 65492.11,
+      obrasEngenharia: 130984.20,
+    });
+    const tipoLimite = (c) => /obra|engenharia|manuten[cç][aã]o de ve[ií]culo/i.test(c.objeto || "")
+      ? "obrasEngenharia"
+      : "comprasServicos";
+    const dispensasEmContratos = (pf.contratos || []).filter(c =>
+      /dispensa/i.test(`${c.modalidade || ""} ${c.tipo || ""}`)
     );
+    const dispensasEmComprasDiretas = (pf.compras_diretas || [])
+      .filter(c => /dispensa/i.test(`${c.modalidade || ""} ${c.fundamento || ""}`))
+      .map(c => ({
+        ...c,
+        contratado: c.contratado || c.fornecedor,
+        data_assinatura: c.data_assinatura || c.data,
+      }));
+    const contratosFrag = [...dispensasEmContratos, ...dispensasEmComprasDiretas].filter(c =>
+      c.data_assinatura && c.contratado &&
+      String(c.data_assinatura).startsWith("2026-") &&
+      (Number(c.valor) || 0) > 0 &&
+      (Number(c.valor) || 0) < LIMITES_DISPENSA_2026[tipoLimite(c)]
+    ).map(c => ({ ...c, tipoLimite: tipoLimite(c) }));
 
     // Agrupa por contratado + ano-mês
     const grupos = new Map();
     contratosFrag.forEach(c => {
       const ym = (c.data_assinatura || "").slice(0, 7); // YYYY-MM
-      const k = `${(c.contratado || "").trim()}|${ym}`;
-      const cur = grupos.get(k) || { contratado: c.contratado, mes: ym, itens: [] };
+      const k = `${(c.contratado || "").trim()}|${ym}|${c.tipoLimite}`;
+      const cur = grupos.get(k) || { contratado: c.contratado, mes: ym, tipoLimite: c.tipoLimite, itens: [] };
       cur.itens.push(c);
       grupos.set(k, cur);
     });
 
-    // Filtra grupos suspeitos: 3+ contratos cuja soma ultrapassa o limite
-    const suspeitos = [...grupos.values()]
+    // Seleciona grupos para conferência. Mesmo fornecedor e mês não bastam para
+    // afirmar fracionamento: ainda é necessário confirmar unidade gestora e
+    // objetos de mesma natureza, conforme o art. 75, § 1º.
+    const gruposConferencia = [...grupos.values()]
       .filter(g => g.itens.length >= 3)
       .map(g => ({ ...g, total: g.itens.reduce((s, c) => s + (Number(c.valor) || 0), 0) }))
-      .filter(g => g.total >= LIMITE_DISPENSA)
+      .filter(g => g.total >= LIMITES_DISPENSA_2026[g.tipoLimite])
       .sort((a, b) => b.total - a.total)
       .slice(0, 15);
 
-    if (!suspeitos.length) return;
+    if (!gruposConferencia.length) return;
 
-    lista.innerHTML = suspeitos.map(g => {
+    lista.innerHTML = gruposConferencia.map(g => {
       const ym = g.mes.split("-");
       const mesBr = ym.length === 2 ? `${ym[1]}/${ym[0]}` : g.mes;
+      const limite = LIMITES_DISPENSA_2026[g.tipoLimite];
+      const natureza = g.tipoLimite === "obrasEngenharia" ? "obras/engenharia" : "compras/serviços";
       const itensHtml = g.itens
         .sort((a, b) => (Number(b.valor) || 0) - (Number(a.valor) || 0))
         .map(c => `<li>
@@ -171,9 +194,11 @@
         </div>
         <ul class="frag-lista" style="list-style:none; padding:0; margin:0;">${itensHtml}</ul>
         <div class="frag-explica">
-          <strong>Por que isto chama atenção:</strong> ${g.itens.length} contratos do mesmo fornecedor
-          no mesmo mês, cada um abaixo de R$ 17.600 (limite de dispensa), mas somando ${fmtBRL(g.total)}.
-          Pedir por LAI: termo de referência único, justificativa para fracionamento e plano anual de contratações.
+          <strong>Por que conferir:</strong> ${g.itens.length} dispensas do mesmo fornecedor
+          no mesmo mês, classificadas automaticamente como ${natureza}, somam ${fmtBRL(g.total)}.
+          O limite de referência de 2026 para esta categoria é ${fmtBRL(limite)} (Decreto 12.807/2025).
+          Este agrupamento não prova fracionamento: o painel não confirma unidade gestora nem objetos de mesma natureza.
+          Pedir por LAI: fundamentos das dispensas, termos de referência, unidade gestora e plano anual de contratações.
         </div>
       </div>`;
     }).join("");

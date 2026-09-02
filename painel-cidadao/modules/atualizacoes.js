@@ -233,7 +233,13 @@
     const pontos = [];
     if (obj.length < 25) pontos.push("Objeto muito curto (" + obj.length + " caracteres): pedir Termo de Referência por LAI.");
     if (valor >= 1000000 && (!c.cnpj || c.cnpj.includes("*"))) pontos.push("Contrato de alto valor com CNPJ mascarado por LGPD — pedir cópia integral.");
-    if (tipo === "dispensa" && valor > 17600) pontos.push("Dispensa de licitação acima de R$ 17.600 (limite Lei 14.133/2021) pede justificativa formal.");
+    if (tipo === "dispensa") {
+      const obraEngenharia = /obra|engenharia|manuten[cç][aã]o de ve[ií]culo/i.test(obj);
+      const limite2026 = obraEngenharia ? 130984.20 : 65492.11;
+      if (String(data).startsWith("2026-") && valor >= limite2026) {
+        pontos.push(`O valor alcança ${brl(limite2026)}, referência de 2026 para dispensa por valor nesta categoria. Isso não torna a contratação irregular: confira o fundamento legal informado no processo.`);
+      }
+    }
     if (!c.data_fim) pontos.push("Sem data de fim/vigência registrada.");
 
     // Links contextuais — múltiplos caminhos pro cidadão chegar na publicação
@@ -335,6 +341,13 @@
     const contratosPref = (pf.contratos || [])
       .map(c => contratoParaAto(c, "Prefeitura"))
       .filter(Boolean);
+    const comprasDiretasPref = (pf.compras_diretas || [])
+      .map(c => contratoParaAto({
+        ...c,
+        contratado: c.contratado || c.fornecedor,
+        data_assinatura: c.data_assinatura || c.data,
+      }, "Prefeitura"))
+      .filter(Boolean);
 
     // Câmara: contratos vêm do chunk camara_betha (coletado pelo coletor_betha.py)
     const cb = D.camara_betha || {};
@@ -343,11 +356,11 @@
       .filter(Boolean);
 
     // ============================================================
-    // Top fornecedores sem contrato formal — gerar ato sintético
+    // Top fornecedores sem vínculo automático — gerar ato sintético
     // ============================================================
     // Empresas que aparecem em Top Fornecedores (= recebem pagamentos)
     // mas NÃO têm contrato vigente no portal. Útil para o cidadão saber
-    // que existe relação financeira, mesmo sem contrato formal.
+    // que existe relação financeira, mesmo sem vínculo automático localizado.
     function fornecedorParaAto(f, orgao, contratosExistentes) {
       const nome = cleanText(f.nome || "");
       if (!nome) return null;
@@ -386,13 +399,13 @@
         tipo: "despesa",
         categoria: "Administração",
         relevancia: valor >= 500000 ? "alta" : valor >= 100000 ? "media" : "baixa",
-        titulo: `Pagamentos a ${nome} (sem contrato formal)`,
-        resumo: `Empresa recebeu ${fmtBRL(valor)} em pagamentos da ${orgao} de Varginha em ${ano || "ano atual"}, mas não há contrato vigente registrado no portal. Pode ser compra direta, dispensa, ou pagamento via emenda.`,
+        titulo: `Pagamentos a ${nome} sem vínculo automático localizado`,
+        resumo: `A base registra ${fmtBRL(valor)} em pagamentos da ${orgao} de Varginha em ${ano || "ano atual"}, mas o cruzamento automático não localizou contrato correspondente nos dados carregados. Isso não prova ausência de instrumento: pode haver contrato de outro período, compra direta, dispensa, repasse, tributo ou outra classificação.`,
         envolvidos: [{ nome, cnpj: f.cnpj || "", papel: "fornecedora" }],
         valores: [{ rotulo: "Total pago no ano", valor }],
         pontos_atencao: [
-          "Empresa recebe da " + orgao + " mas não consta na tabela de contratos vigentes.",
-          "Pedir LAI: detalhamento dos pagamentos, número dos empenhos e motivo da ausência de contrato formal.",
+          "O cruzamento atual não vinculou o pagamento a um contrato da base carregada.",
+          "Pedir LAI: detalhamento dos pagamentos, empenhos e instrumento ou fundamento correspondente.",
         ],
         publicacao_url: urlBetha(orgao, "despesa"),
         links_contexto: [
@@ -412,14 +425,16 @@
       };
     }
 
-    const fornPref = (pf.top_fornecedores_atual || [])
+    const vinculosSuspensos = (D.auditoria_dados?.items || [])
+      .some(item => item.id === "auditoria-vinculos-suspensa-por-frescor");
+    const fornPref = vinculosSuspensos ? [] : (pf.top_fornecedores_atual || [])
       .map(f => fornecedorParaAto(f, "Prefeitura", contratosPref))
       .filter(Boolean);
-    const fornCam = (cb.top_fornecedores_atual || [])
+    const fornCam = vinculosSuspensos ? [] : (cb.top_fornecedores_atual || [])
       .map(f => fornecedorParaAto(f, "Câmara", contratosCam))
       .filter(Boolean);
 
-    return [...mocks, ...contratosPref, ...contratosCam, ...fornPref, ...fornCam];
+    return [...mocks, ...contratosPref, ...comprasDiretasPref, ...contratosCam, ...fornPref, ...fornCam];
   }
 
   // ============================================================
@@ -1184,7 +1199,7 @@
   function renderCard(ato) {
     const t = TIPOS[ato.tipo] || TIPOS.contrato;
     const dataBr = (ato.data || "").split("-").reverse().join("/");
-    // Atos agregados (ex.: "sem contrato formal") trazem data_rotulo —
+    // Atos agregados (ex.: "sem vínculo automático") trazem data_rotulo —
     // exibição amigável que não confunde o cidadão com uma data de evento.
     let dataDisplay = ato.data_rotulo || dataBr;
     const coletaData = (window.FISCALIZA_DATA || {}).atualizado_em?.data_humana || "";

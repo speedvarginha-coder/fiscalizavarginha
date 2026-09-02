@@ -146,6 +146,25 @@
   .fonte-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: .88rem; }
   .fonte-table th { background: var(--cream); color: var(--ink); padding: 9px 14px; text-align: left; border-bottom: 2px solid var(--line); }
   .fonte-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  .coverage-table th[scope="row"] { min-width: 150px; color: var(--navy); }
+  .coverage-table td { min-width: 190px; }
+  .coverage-table td p { margin: 7px 0; font-size: .86rem; line-height: 1.45; text-align: left; }
+  .coverage-status { display: inline-block; border-radius: 999px; padding: 3px 9px; font-size: .75rem; font-weight: 800; background: var(--cream); border: 1px solid var(--line); }
+  .coverage-status--ok { color: var(--success-dk); background: var(--success-bg); border-color: var(--success-bd); }
+  .coverage-status--partial, .coverage-status--preserved, .coverage-status--manual { color: var(--warn-ink-2); background: var(--warn-bg); border-color: #f9a825; }
+  .coverage-status--failed, .coverage-status--stale { color: var(--danger-dk); background: var(--danger-bg); border-color: var(--danger-bd); }
+  .purchase-cycle { display: grid; grid-template-columns: repeat(5, minmax(170px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+  .purchase-stage { position: relative; border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 10px; padding: 18px 14px 14px; background: var(--surface); }
+  .purchase-stage__index { position: absolute; top: -13px; right: 12px; width: 26px; height: 26px; display: grid; place-items: center; border-radius: 50%; background: var(--navy); color: white; font-weight: 800; }
+  .purchase-stage h3 { margin: 0 0 7px; color: var(--navy); font-size: 1rem; }
+  .purchase-stage p { margin: 0 0 12px; font-size: .82rem; line-height: 1.45; text-align: left; }
+  .purchase-stage dl { margin: 0; }
+  .purchase-stage dl div { display: flex; justify-content: space-between; gap: 8px; border-top: 1px solid var(--line); padding: 7px 0; font-size: .78rem; }
+  .purchase-stage dt { color: var(--muted); } .purchase-stage dd { margin: 0; font-weight: 800; text-align: right; }
+  .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .method-card { border: 1px solid var(--line); border-radius: 9px; padding: 18px; background: var(--surface); }
+  .method-card h3 { margin: 0 0 8px; color: var(--navy); } .method-card p { margin: 0; text-align: left; line-height: 1.55; }
+  @media (max-width: 760px) { .method-grid { grid-template-columns: 1fr; } }
   
   .disclaimer-box {
     background: var(--warn-bg);
@@ -261,6 +280,39 @@
           prorrogáveis por mais 10 mediante justificativa expressa.
         </p>
       </div>
+    </div>
+
+    <div class="block" id="cobertura-dados" style="margin:40px 0;">
+      <h2 class="block__title">Cobertura pública por assunto e órgão</h2>
+      <p class="muted">A tabela distingue dado disponível, cobertura parcial e campo não informado. Quantidade coletada não é apresentada como certificação de totalidade.</p>
+      <p id="provenienciaAtualizacao" class="muted small">Carregando a referência das fontes…</p>
+      <div class="fonte-table-wrap">
+        <table class="fonte-table coverage-table">
+          <thead><tr><th>Assunto</th><th>Prefeitura</th><th>Câmara</th><th>Limitação conhecida</th></tr></thead>
+          <tbody id="matrizCoberturaDados"><tr><td colspan="4">Carregando cobertura técnica…</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block" id="ciclo-compras" style="margin:40px 0;">
+      <h2 class="block__title">Ciclo completo das compras públicas</h2>
+      <p class="muted">O painel mostra quais etapas possuem dados estruturados. Os números de uma etapa não devem ser somados aos de outra: um processo pode gerar vários contratos, empenhos e pagamentos.</p>
+      <div id="cicloComprasDados" class="purchase-cycle" aria-live="polite"></div>
+    </div>
+
+    <div class="block" id="metodologia-sinais" style="margin:40px 0;">
+      <h2 class="block__title">Como os sinais técnicos são publicados</h2>
+      <div class="method-grid">
+        <article class="method-card"><h3>1. Fato documentado</h3><p>Valor, data, pessoa, fornecedor ou número reproduzido da fonte, acompanhado de origem e período quando disponíveis.</p></article>
+        <article class="method-card"><h3>2. Sinal para conferência</h3><p>Regra objetiva, como concentração, ausência de vínculo automático, prazo ou campo incompleto. O motivo da seleção é mostrado ao cidadão.</p></article>
+        <article class="method-card"><h3>3. Sem conclusão jurídica</h3><p>O painel não conclui fraude, corrupção, culpa ou ilegalidade. Uma conclusão exige documentos completos, contraditório e autoridade competente.</p></article>
+      </div>
+    </div>
+
+    <div class="block" id="correcoes-e-historico" style="margin:40px 0;">
+      <h2 class="block__title">Correções, histórico e direito de resposta</h2>
+      <p>Pedidos de correção devem indicar o link do registro e anexar documento verificável. A revisão registra fonte, data e motivo, sem apagar silenciosamente o contexto anterior.</p>
+      <p><a href="mailto:speed.varginha@gmail.com?subject=Corre%C3%A7%C3%A3o%20ou%20direito%20de%20resposta%20-%20Fiscaliza%20Varginha&body=Link%20do%20registro%3A%0A%0AInforma%C3%A7%C3%A3o%20contestada%3A%0A%0ADocumento%20comprobat%C3%B3rio%3A%0A%0ACorre%C3%A7%C3%A3o%20solicitada%3A">Solicitar correção ou apresentar documento</a> · <a href="atualizacoes.html">Consultar mudanças recentes</a> · <a href="monitoramento.html">Ver estado das fontes</a></p>
     </div>
 
     <div class="block" style="margin:40px 0;">
@@ -640,5 +692,6 @@
       });
   })();
 </script>
+<script src="data-loader.js?v=20260826-transparencia1"></script>
 </body>
 </html>

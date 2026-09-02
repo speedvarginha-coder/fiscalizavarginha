@@ -416,7 +416,7 @@
           '<ul style="margin:8px 0 8px 16px;padding:0;font-size:.85rem">' + (linhas || "<li>Dados não disponíveis</li>") + '</ul>' +
           '<a href="prefeitura.html?tab=contratos">Ver todos os contratos &rarr;</a>',
         chips: [
-          { label: "CNPJ com irregularidade",  q: "cnpj irregular"       },
+          { label: "Situação cadastral do CNPJ", q: "situacao cadastral cnpj" },
           { label: "Pedir notas fiscais",       q: "cobrar nota fiscal"   },
         ],
       };
@@ -427,11 +427,15 @@
       const anoAtual = String(pf.ano_atual || 2026);
       const dpf = (di.prefeitura || []).filter((d) => String(d.ano) === anoAtual);
       const totalD = dpf.reduce((s, d) => s + (Number(d.valor_total) || Number(d.valor) || 0), 0);
+      const semDestinoFinalidade = dpf.filter((d) => !String(d.destino || "").trim() || !String(d.finalidade || "").trim()).length;
+      const detalheDiarias = semDestinoFinalidade
+        ? 'A fonte atual da Prefeitura não trouxe destino ou finalidade em <strong>' + num(semDestinoFinalidade) + '</strong> registro(s); confira o ato original ou solicite o detalhamento.'
+        : 'Os registros trazem beneficiário, período, destino, finalidade e valor.';
       return {
         msg:
           'Em 2026 a Prefeitura pagou <strong>' + num(dpf.length) + ' diárias</strong>' +
           (totalD ? ', somando <strong>' + brl(totalD) + '</strong>' : '') + '.<br>' +
-          'Cada registro mostra beneficiário, destino, finalidade e valor diário.<br><br>' +
+          detalheDiarias + '<br><br>' +
           '<a href="prefeitura.html?tab=diarias">Ver diárias da Prefeitura &rarr;</a>',
         chips: [
           { label: "Diárias da Câmara",           q: "diarias camara"     },
@@ -474,11 +478,11 @@
     if (/sinal|irregular|problema|denuncia|suspeito|risco|atencao|alerta/.test(t)) {
       return {
         msg:
-          'O painel gera <strong>sinais automáticos</strong> quando encontra situações que merecem atenção — CNPJ com situação irregular, sócio em mais de uma empresa beneficiária, objeto de contrato vago.<br>' +
+          'O painel gera <strong>sinais automáticos</strong> quando encontra situações que merecem atenção — situação cadastral não ativa, sócio em mais de uma empresa beneficiária ou objeto de contrato pouco detalhado.<br>' +
           '<strong>Sinais são pistas, não provas.</strong> Sempre confira na fonte oficial antes de qualquer conclusão.<br><br>' +
           '<a href="relatorios.html">Ver relatório de sinais &rarr;</a>',
         chips: [
-          { label: "CNPJ irregular",    q: "cnpj irregular"   },
+          { label: "Situação cadastral", q: "situacao cadastral cnpj" },
           { label: "Redes de sócios",   q: "redes socios"     },
         ],
       };
@@ -489,7 +493,7 @@
       return {
         msg:
           'O painel cruza fornecedores da Prefeitura com a Receita Federal e verifica a <strong>situação cadastral do CNPJ</strong>.<br>' +
-          'Empresa com CNPJ suspenso, inapto ou baixado que recebe dinheiro público é um sinal de atenção — não necessariamente crime, mas merece conferência.<br><br>' +
+          'Quando a base relaciona pagamento ou contrato a CNPJ suspenso, inapto ou baixado, o caso merece conferência de datas e documentos. O status atual não prova que estava igual na data da contratação nem demonstra ilegalidade.<br><br>' +
           '<a href="relatorios.html">Ver sinais de CNPJ &rarr;</a>',
       };
     }

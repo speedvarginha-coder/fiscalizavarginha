@@ -158,6 +158,19 @@ test.describe("Justiça e transparência dos dados", () => {
     await expect(conteudo).toContainText(/não certifica a legalidade/i);
     await expect(conteudo).toContainText(/não representam julgamento de legalidade/i);
   });
+
+  test("conformidade mostra cobertura e ciclo das compras com limitações", async ({ page }) => {
+    await gotoReady(page, fileUrl("conformidade.html"), { waitUntil: "domcontentloaded" });
+    const cobertura = page.locator("#cobertura-dados");
+    await expect(cobertura).toContainText("Licitações");
+    await expect(cobertura).toContainText("Dispensas e inexigibilidades");
+    await expect(cobertura).toContainText("Diárias");
+    await expect(cobertura).toContainText(/Parcial|Base preservada|Atualizada/);
+    const ciclo = page.locator("#ciclo-compras");
+    await expect(ciclo).toContainText("Planejamento");
+    await expect(ciclo).toContainText("Execução financeira");
+    await expect(ciclo).toContainText("Aditivos e entrega");
+  });
 });
 
 test.describe("Mapa cidadao do dinheiro", () => {
@@ -660,6 +673,8 @@ test.describe("Aba Diárias (regressão)", () => {
     await expect(page.locator("#filtroMesDiariasPrefeitura")).toBeAttached();
     await expect(page.locator("#rankingDiariasPrefeitura")).toContainText("Ranking acumulado anual");
     await expect(page.locator("#rankingDiariasPrefeitura")).toContainText("Ranking mensal");
+    await expect(page.locator(".diarias-coverage-note")).toContainText("sem destino");
+    await expect(page.locator("#listaDiariasPrefeitura .record-provenance").first()).toContainText("Proveniência");
   });
 
   test("Câmara — aba Diárias mostra bloco no DOM", async ({ page }) => {
@@ -672,6 +687,17 @@ test.describe("Aba Diárias (regressão)", () => {
     await expect(page.locator("#filtroMesDiariasCamara")).toBeAttached();
     await expect(page.locator("#rankingDiariasCamara")).toContainText("Ranking acumulado anual");
     await expect(page.locator("#rankingDiariasCamara")).toContainText("Ranking mensal");
+    await expect(page.locator(".diarias-coverage-note")).toContainText("sem finalidade");
+    await expect(page.locator("#listaDiariasCamara .record-provenance").first()).toContainText("Proveniência");
+  });
+});
+
+test.describe("Proveniência dos contratos", () => {
+  test("Prefeitura e Câmara identificam fonte, situação e origem", async ({ page }) => {
+    await gotoReady(page, fileUrl("prefeitura.html?tab=contratos"), { waitUntil: "domcontentloaded" });
+    await expect(page.locator("#contratos .record-provenance").first()).toContainText("Betha/Portal da Prefeitura");
+    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+    await expect(page.locator("#contratosCamara .record-provenance").first()).toContainText("Betha/Portal da Câmara");
   });
 });
 

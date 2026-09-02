@@ -95,6 +95,17 @@
   // Aliases locais para retrocompatibilidade. Definições reais em window.FISCALIZA.utils.
   const { fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, exportCSV } = window.FISCALIZA.utils;
 
+  const provenienciaRegistro = (fonteId, rotulo, url) => {
+    const fonte = ((D.status_fontes || {}).domains || {})[fonteId] || {};
+    const status = ({ ok: "atualizada", partial: "parcial", preserved: "base anterior preservada", manual: "verificação manual", stale: "defasada", failed: "falha" })[fonte.status] || "situação não medida";
+    const data = fonte.source_updated_at
+      ? new Date(fonte.source_updated_at).toLocaleString("pt-BR")
+      : "data da fonte não informada";
+    const link = url ? ` · <a href="${esc(url)}" target="_blank" rel="noopener">abrir origem</a>` : "";
+    return `<p class="record-provenance"><strong>Proveniência:</strong> ${esc(rotulo)} · ${esc(status)} · ${esc(data)}${link}. O documento original prevalece sobre este resumo.</p>`;
+  };
+  window.FISCALIZA.provenienciaRegistro = provenienciaRegistro;
+
 
 
 
@@ -2131,7 +2142,7 @@
         "CÂMARA · Fornecedor",
         "alto",
         `${f.nome}: ${fmtBRL(f.valor_total)} em empenho único`,
-        `Este fornecedor recebeu ${fmtBRL(f.valor_total)} da Câmara em um único empenho em ${cb2.ano_atual || ""}. Empenhos únicos de valor alto sem processo licitatório visível merecem verificação do contrato e do objeto da despesa.`,
+        `Este fornecedor recebeu ${fmtBRL(f.valor_total)} da Câmara em um único empenho em ${cb2.ano_atual || ""}. O cruzamento automático não localizou processo de contratação no mesmo registro; confira contrato, modalidade e objeto na fonte.`,
         `1 empenho · Câmara ${cb2.ano_atual || ""}`,
         "camara.html"
       ));
@@ -2163,8 +2174,8 @@
       addSignal(
         "Prefeitura · Contrato",
         (c.valor || 0) >= 1_000_000 ? "critico" : "alto",
-        `Contrato vencido em execução: ${cleanText(c.contratado || "Empresa não informada")}`,
-        `Contrato com ${cleanText(c.contratado || "empresa")} (${fmtBRL(c.valor || 0)}) tinha encerramento previsto para ${c.data_fim} mas ainda aparece como "em execução" há ${diasVencido} dia(s). Contratos vencidos sem aditivo publicado podem configurar irregularidade. Verifique se houve prorrogação no Diário Oficial.`,
+        `Data final ultrapassada e status em execução: ${cleanText(c.contratado || "Empresa não informada")}`,
+        `Contrato com ${cleanText(c.contratado || "empresa")} (${fmtBRL(c.valor || 0)}) tinha encerramento previsto para ${c.data_fim} mas ainda aparece como "em execução" há ${diasVencido} dia(s). O painel pode não ter localizado aditivo ou atualização posterior. Confira a vigência e eventual prorrogação no contrato e no Diário Oficial.`,
         `${fmtBRL(c.valor || 0)} · Venceu ${c.data_fim} (${diasVencido}d atrás) · ${cleanText(c.objeto || "").slice(0, 80)}`,
         "prefeitura.html"
       );
@@ -2190,7 +2201,7 @@
         "Prefeitura · Dispensa",
         f.qtd >= 7 ? "alto" : "medio",
         `${f.nome}: ${f.qtd} dispensas eletrônicas (R$ ${fmtBRL(f.total)})`,
-        `O fornecedor ${f.nome} recebeu ${f.qtd} contratos por dispensa eletrônica totalizando ${fmtBRL(f.total)}. Múltiplas dispensas ao mesmo fornecedor em objetos distintos podem indicar fracionamento de compras para evitar licitação. Objetos: ${f.objetos.join("; ")}.`,
+        `O fornecedor ${f.nome} aparece em ${f.qtd} contratos por dispensa eletrônica, totalizando ${fmtBRL(f.total)}. A concentração serve para priorizar a conferência, mas não permite concluir fracionamento: é preciso verificar natureza dos objetos, unidade gestora, período e fundamento de cada processo. Objetos: ${f.objetos.join("; ")}.`,
         `${f.qtd} dispensas · ${fmtBRL(f.total)} total · CNPJ ${f.cnpj}`,
         "prefeitura.html"
       ));
@@ -2206,7 +2217,7 @@
         "Prefeitura · Eventos",
         totalShows >= 1_000_000 ? "alto" : "medio",
         `${showContratos.length} contrato(s) de shows/artistas por inexigibilidade: ${fmtBRL(totalShows)}`,
-        `A Prefeitura contratou ${showContratos.length} show(s) ou apresentação(ões) artística(s) por inexigibilidade de licitação, totalizando ${fmtBRL(totalShows)}. Inexigibilidade exige exclusividade comprovada do artista. Verifique publicidade, justificativas e se os valores foram compatíveis com o mercado. Destaques: ${showContratos.slice(0, 3).map(c => cleanText(c.contratado || "")).join("; ")}.`,
+        `A Prefeitura contratou ${showContratos.length} show(s) ou apresentação(ões) artística(s) por inexigibilidade de licitação, totalizando ${fmtBRL(totalShows)}. Confira a hipótese legal informada, a contratação direta ou por empresário exclusivo quando aplicável, a justificativa de preço e a publicidade do processo. Destaques: ${showContratos.slice(0, 3).map(c => cleanText(c.contratado || "")).join("; ")}.`,
         `${showContratos.length} shows · ${fmtBRL(totalShows)} total · Inexigibilidade de licitação`,
         "prefeitura.html"
       );
@@ -3384,7 +3395,7 @@
           aviso.hidden = false;
           aviso.innerHTML = rel.length
             ? `<strong>Contrato vigente localizado</strong> (${fmtNum(rel.length)}) para ${esc(nome)} — a lista de contratos abaixo já está filtrada.`
-            : `<strong>Nenhum contrato vigente</strong> localizado para ${esc(nome)} — o pagamento pode ser por empenho direto, sem contrato formal. Vale pedir os empenhos pela LAI.`;
+            : `<strong>Nenhum contrato vigente</strong> localizado automaticamente para ${esc(nome)}. O vínculo pode estar em outro instrumento, período ou identificação; vale pedir os empenhos e o fundamento da contratação pela LAI.`;
           scrollToEl(aviso);
         }
       });
@@ -3396,7 +3407,7 @@
         if (!f || !window.FISCALIZA.dossie || !window.FISCALIZA.dossie.abrirComHtml) return;
         const rel = contratosDoFornecedor(f);
         const nome = cleanText(f.nome || "");
-        const pergunta = `Solicito, com fundamento na Lei de Acesso à Informação (Lei 12.527/2011), os empenhos, liquidações, notas fiscais e comprovantes de pagamento da Câmara Municipal de Varginha ao fornecedor ${nome}${f.cnpj ? ", CNPJ " + f.cnpj : ""}, no exercício ${cb.ano_atual || ""}, bem como os contratos correspondentes ou a justificativa de contratação sem contrato formal.`;
+        const pergunta = `Solicito, com fundamento na Lei de Acesso à Informação (Lei 12.527/2011), os empenhos, liquidações, notas fiscais e comprovantes de pagamento da Câmara Municipal de Varginha ao fornecedor ${nome}${f.cnpj ? ", CNPJ " + f.cnpj : ""}, no exercício ${cb.ano_atual || ""}, bem como o contrato, instrumento equivalente ou fundamento legal correspondente.`;
         window.FISCALIZA.dossie.abrirComHtml(
           '<div class="cat-modal">' +
             '<p style="margin:0;font-size:.72rem;font-weight:800;letter-spacing:.06em;color:var(--gold-dk);">DOSSIÊ DO FORNECEDOR</p>' +
@@ -3410,7 +3421,7 @@
                     '<strong>' + fmtBRL(Number(c.valor) || 0) + '</strong> · ' + esc(cleanText(String(c.objeto || "Objeto não informado")).slice(0, 140)) +
                     '<span class="muted small"> · ' + esc(c.data_assinatura || "") + (c.data_fim ? " → " + esc(c.data_fim) : "") + '</span>' +
                   '</li>').join("") + '</ul>'
-              : '<p class="muted">Nenhum contrato vigente localizado por CNPJ/nome — o pagamento pode ser por empenho direto. É exatamente o caso de pedir os documentos.</p>') +
+              : '<p class="muted">Nenhum contrato vigente foi vinculado automaticamente por CNPJ ou nome. Isso não demonstra ausência de processo; é o caso de pedir o instrumento e o fundamento da contratação.</p>') +
             '<h4 style="margin:14px 0 6px;">Pergunta LAI pronta</h4>' +
             '<textarea readonly aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)" style="width:100%;min-height:110px;font-size:.85rem;padding:10px;border:1px solid var(--line);border-radius:8px;">' + esc(pergunta) + '</textarea>' +
             '<p style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">' +
@@ -3458,6 +3469,7 @@
             <p class="contrato__nome">${esc(c.contratado || "—")} <span class="muted">${esc(c.cnpj || "")}</span></p>
             <p class="contrato__obj">${esc(c.objeto || "—")}</p>
             <p class="muted small">${esc(c.modalidade || "")} · ${esc(c.data_assinatura || "")} → ${esc(c.data_fim || "")}${c.numero ? ` · Nº ${esc(c.numero)}` : ""}</p>
+            ${provenienciaRegistro("camara_betha", "Betha/Portal da Câmara", BETHA_CONTRATOS_CAMARA)}
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
               ${c.numero ? `<button type="button" class="btn-copiar-num" onclick="(function(b){var t=b.closest('.contrato').querySelector('.muted.small');var m=t&&t.textContent.match(/N[°º]\s*([\w\/\-]+)/);var n=m?m[1]:'${jsSafe(String(c.numero || ""))}';navigator.clipboard&&navigator.clipboard.writeText(n).then(function(){var o=b.textContent;b.textContent='✓ Copiado';setTimeout(function(){b.textContent=o;},1400);}).catch(function(){});b.title=n;})(this)" title="Copiar número do contrato">📋 Copiar nº</button>` : ""}
               <button type="button" class="btn-dossie" onclick="FISCALIZA.abrirContratoCamara(${contratosCam.indexOf(c)})">Ver contrato e fonte oficial</button>
@@ -3946,10 +3958,11 @@
                 <strong>Contrato nº</strong> ${c.numero}/${c.ano}
                 ${c.numero ? `<button class="btn-copiar-num" title="Copiar número para buscar no portal" onclick="(function(b){var t='${jsSafe(c.numero + '/' + c.ano)}';navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=o},1500)}).catch(function(){});b.blur();})(this)">${window.FISCALIZA.icon ? window.FISCALIZA.icon("copiar", { size: 13 }) : ""} Copiar nº</button>` : ""}
               </span>
-              <span><span class="glossario-termo" tabindex="0" data-explica="Como a Prefeitura comprou (pregão, dispensa, concorrência…).">Tipo de compra:</span> ${esc(cleanText(c.modalidade))}</span>
+              <span><span class="glossario-termo" tabindex="0" data-explica="Como a Prefeitura comprou (pregão, dispensa, concorrência…).">Tipo de compra:</span> ${esc(cleanText(c.modalidade || "não informado na fonte contratual"))}</span>
               ${dataIni ? `<span><span class="glossario-termo" tabindex="0" data-explica="Período em que o contrato está em vigor.">Período:</span> ${dataIni} ${dataFim ? "até " + dataFim : ""}</span>` : ""}
               ${custoDiario ? `<span style="color:#2c3e50; font-weight:bold;">Valor contratado por dia de vigência: ${fmtBRL(custoDiario)} <small>(divisão simples; não é gasto diário efetivo)</small></span>` : ""}
             </div>
+            ${provenienciaRegistro("prefeitura", "Betha/Portal da Prefeitura", BETHA_CONTRATOS_PREFEITURA)}
             ${audit.achados.length ? `
               <div class="contrato-legal">
                 ${audit.achados.slice(0, 3).map(a => `

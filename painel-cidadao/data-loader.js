@@ -26,6 +26,7 @@
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
     "sobre":        ["atualizado_em", "auditoria_dados"],
+    "conformidade": ["status_fontes", "auditoria_dados", "chat_context", "home_resumo", "camara_betha", "atualizado_em"],
     "cobrar":       ["prefeitura", "camara_betha", "emendas", "pncp", "sancoes_fornecedores", "diario", "pessoal", "remuneracao_vereadores", "atualizado_em", "auditoria_dados"],
   };
 
@@ -107,6 +108,7 @@
     "marcadores": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/watchlist.js", "modules/dossie.js"],
     "cobrar": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/dossie.js"],
     "sobre": ["modules/utils.js", "modules/icons.js", "modules/glossario.js"],
+    "conformidade": ["modules/utils.js", "modules/transparencia.js"],
   };
   const MODULOS_ADIADOS_POR_PAGINA = {
     "home": ["modules/chat-cidadao.js"],
@@ -119,7 +121,7 @@
 
   // Versão estável: Date.now() obrigava o celular a baixar novamente todos os
   // scripts e chunks em cada visita. A versão muda apenas quando há deploy.
-  const BUILD_VERSION = "20260730-pipeline1";
+  const BUILD_VERSION = "20260826-transparencia1";
   const body = document.body;
   const page = (body && body.dataset.page) || "home";
   const modulosPagina = MODULOS_POR_PAGINA[page] || MODULOS;
@@ -133,6 +135,19 @@
 
   const chunksSobDemanda = new Set(CHUNKS_SOB_DEMANDA[page] || []);
   const cargasEmAndamento = new Map();
+  let appPronto = false;
+  let resolverAppPronto;
+  const appProntoPromise = new Promise((resolve) => { resolverAppPronto = resolve; });
+
+  function sinalizarAppPronto(detail) {
+    appPronto = true;
+    window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail }));
+    resolverAppPronto();
+  }
+
+  function aguardarAppPronto(data) {
+    return appPronto ? Promise.resolve(data) : appProntoPromise.then(() => data);
+  }
 
   // ============ HELPERS ============
   function loadScript(src) {
@@ -174,7 +189,7 @@
   function carregarChunkSobDemanda(key) {
     if (!chunksSobDemanda.has(key)) return Promise.resolve(window.FISCALIZA_DATA?.[key]);
     if (window.FISCALIZA_DATA && window.FISCALIZA_DATA[key] != null) {
-      return Promise.resolve(window.FISCALIZA_DATA[key]);
+      return aguardarAppPronto(window.FISCALIZA_DATA[key]);
     }
     if (cargasEmAndamento.has(key)) return cargasEmAndamento.get(key);
 
@@ -187,7 +202,7 @@
         document.body?.removeAttribute("data-chunk-loading");
         document.body?.setAttribute(`data-chunk-${key}`, "ready");
         window.dispatchEvent(new CustomEvent("fiscaliza:chunk", { detail: { key, page, demand: true } }));
-        return data;
+        return aguardarAppPronto(data);
       })
       .catch((error) => {
         document.body?.removeAttribute("data-chunk-loading");
@@ -273,7 +288,7 @@
         await carregarModulos();
         await loadScript("app.js");
       } catch (e) { /* sobre.html tem seu próprio script */ }
-      window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { chunks: [] } }));
+      sinalizarAppPronto({ chunks: [] });
       return;
     }
 
@@ -283,7 +298,7 @@
         await loadScript("data.js");
         await carregarModulos();
         await loadScript("app.js");
-        window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { fallback: true } }));
+        sinalizarAppPronto({ fallback: true });
       } catch (e) {
         console.error("[data-loader] falha em fallback file://:", e);
       }
@@ -302,7 +317,7 @@
 
       await carregarModulos();
       await loadScript("app.js");
-      window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { chunks } }));
+      sinalizarAppPronto({ chunks });
       carregarModulosAdiados();
 
       // Fase 2: chunks pesados carregam em background sem bloquear o render inicial
@@ -322,7 +337,7 @@
         await loadScript("data.js");
         await carregarModulos();
         await loadScript("app.js");
-        window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { fallback: true } }));
+        sinalizarAppPronto({ fallback: true });
       } catch (err2) {
         console.error("[data-loader] falha total ao carregar dados:", err2);
         removerOverlay();
