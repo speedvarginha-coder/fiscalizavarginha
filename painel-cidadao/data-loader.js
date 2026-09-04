@@ -40,6 +40,7 @@
     // 3 MB: o plano completo, item a item, e o que torna o numero conferivel.
     // Fica na fase 2 junto com os resultados de licitacao.
     "relatorios": ["licitacoes_resultados", "pca"],
+    "atualizacoes": ["publicacoes_estruturadas", "publicacoes_diario"],
   };
 
   // Bases grandes carregadas somente quando a seção correspondente for usada.
@@ -68,6 +69,7 @@
     "modules/onboarding.js",
     "modules/chat-cidadao.js",
     "modules/publicacoes.js",
+    "modules/pessoal.js",
   ];
 
   // A home é a principal porta de entrada no celular. Antes ela baixava todos
@@ -103,7 +105,7 @@
       "modules/utils.js", "modules/icons.js", "modules/glossario.js",
       "modules/atualizacoes.js", "modules/publicacoes.js",
     ],
-    "pessoal": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/dossie.js", "modules/onboarding.js"],
+    "pessoal": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/dossie.js", "modules/onboarding.js", "modules/pessoal.js"],
     "fundacao": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/categorias.js", "modules/dossie.js", "modules/dashboard.js", "modules/onboarding.js"],
     "marcadores": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/watchlist.js", "modules/dossie.js"],
     "cobrar": ["modules/utils.js", "modules/icons.js", "modules/glossario.js", "modules/dossie.js"],
@@ -121,7 +123,7 @@
 
   // Versão estável: Date.now() obrigava o celular a baixar novamente todos os
   // scripts e chunks em cada visita. A versão muda apenas quando há deploy.
-  const BUILD_VERSION = "20260902-pessoal-enxuto";
+  const BUILD_VERSION = "20260903-pntp2025";
   const body = document.body;
   const page = (body && body.dataset.page) || "home";
   const modulosPagina = MODULOS_POR_PAGINA[page] || MODULOS;
@@ -171,12 +173,22 @@
   // arquivo leve, entao nenhum consumidor de FISCALIZA_DATA muda. A pagina
   // Pessoal nao passa por aqui — ela busca pessoal.json inteiro sob demanda.
   const ARQUIVO_ENXUTO = { pessoal: "pessoal_resumo" };
+  // Estas páginas não exibem nem auditam a frota. Os demais campos,
+  // inclusive todos os contratos e cruzamentos, permanecem completos.
+  const ARQUIVOS_POR_PAGINA = {
+    home: { prefeitura: "prefeitura_painel" },
+    camara: { prefeitura: "prefeitura_painel" },
+    relatorios: { prefeitura: "prefeitura_painel" },
+    atualizacoes: { prefeitura: "prefeitura_painel" },
+    marcadores: { prefeitura: "prefeitura_painel" },
+    fundacao: { prefeitura: "prefeitura_painel" },
+  };
 
   function fetchChunk(key) {
     // URL estável permite ao service worker devolver o cache imediatamente e
     // revalidar em segundo plano. "no-cache" ainda consulta a versão nova
     // quando não há service worker, usando ETag/Last-Modified.
-    const arquivo = ARQUIVO_ENXUTO[key] || key;
+    const arquivo = ARQUIVOS_POR_PAGINA[page]?.[key] || ARQUIVO_ENXUTO[key] || key;
     const buscar = (nome) => fetch("data/chunks/" + nome + ".json", { cache: "no-cache" })
       .then((r) => {
         if (!r.ok) throw new Error("HTTP " + r.status);
@@ -338,9 +350,13 @@
       if (chunksFase2.length > 0) {
         Promise.allSettled(chunksFase2.map(fetchChunk)).then(results => {
           results.forEach(r => {
-            if (r.status === "fulfilled" && r.value && r.value.data !== null) {
+            if (r.status === "fulfilled" && r.value) {
               window.FISCALIZA_DATA[r.value.key] = r.value.data;
               window.dispatchEvent(new CustomEvent("fiscaliza:chunk", { detail: { key: r.value.key } }));
+            } else if (r.status === "rejected") {
+              const key = chunksFase2[results.indexOf(r)];
+              window.FISCALIZA_DATA[key] = null;
+              window.dispatchEvent(new CustomEvent("fiscaliza:chunk:error", { detail: { key } }));
             }
           });
         });
