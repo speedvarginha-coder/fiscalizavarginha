@@ -1347,3 +1347,42 @@ body {
 .document-trail__stage small { display: block; color: #4b596a; }
 .document-trail a { color: #004b87; text-decoration: underline; }
 @media (max-width: 480px) { .document-trail { padding: 12px; } }
+
+/* Confronto entre o registro da Prefeitura e as bases de origem. */
+.reconciliacao {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--amber);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+.reconciliacao__head {
+  align-items: start;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 260px);
+}
+.reconciliacao__head h2 { margin: 0 0 6px; }
+.reconciliacao__head p { margin: 0; }
+.reconciliacao__metric {
+  background: #FFF9E8;
+  border: 1px solid #E9D79E;
+  border-radius: 8px;
+  display: grid;
+  padding: 14px 16px;
+}
+.reconciliacao__metric span, .reconciliacao__metric small { color: var(--muted); }
+.reconciliacao__metric strong { font-size: 1.35rem; }
+.reconciliacao__lista { display: grid; gap: 16px; margin-top: 18px; }
+.reconc-grupo h3 { margin: 0 0 4px; font-size: 1rem; }
+.reconc-tabela-wrap { border: 1px solid var(--line); border-radius: 8px; margin-top: 10px; overflow: auto; }
+.reconc-tabela { border-collapse: collapse; font-size: .88rem; width: 100%; }
+.reconc-tabela th, .reconc-tabela td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; }
+.reconc-tabela th { background: var(--cream, #faf7f0); font-weight: 700; }
+.reconc-tabela .num { text-align: right; white-space: nowrap; }
+.reconciliacao__nota { margin-top: 14px; font-size: .86rem; line-height: 1.5; }
+.reconciliacao__cobertura { margin-top: 8px; }
+@media (max-width: 760px) {
+  .reconciliacao__head { grid-template-columns: minmax(0, 1fr); }
+}

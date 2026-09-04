@@ -124,6 +124,24 @@
         <p class="treasury-audit__note"><strong>Como interpretar:</strong> ordem bancária é evidência de pagamento registrado pelo Tesouro. Não demonstra, isoladamente, a execução do objeto da emenda.</p>
       </section>
 
+      <section class="reconciliacao" id="reconciliacao" aria-labelledby="reconciliacaoTitulo" hidden>
+        <div class="reconciliacao__head">
+          <div>
+            <p class="eyebrow-dark">Confronto entre registros oficiais</p>
+            <h2 id="reconciliacaoTitulo">O que a Prefeitura registra e as bases de origem não mostram</h2>
+            <p>As emendas deste painel vêm de quem as indica: ALMG e Portal de Emendas de Minas, CGU e Transferegov, SAPL. A Prefeitura publica os próprios relatórios contábeis, e os dois lados nem sempre batem. Aqui ficam os casos em que o município registra uma emenda que a base de origem não traz.</p>
+          </div>
+          <div class="reconciliacao__metric">
+            <span>Sem correspondência</span>
+            <strong id="reconcValor">N/D</strong>
+            <small id="reconcQtd">0 emendas</small>
+          </div>
+        </div>
+        <div id="reconcLista" class="reconciliacao__lista"></div>
+        <p class="reconciliacao__nota"><strong>Como interpretar:</strong> ausência aqui <strong>não</strong> prova irregularidade. Pode ser numeração interna da Prefeitura, emenda ainda não publicada pela origem ou instrumento que não transita pelo registro municipal. É ponto de partida para conferir na fonte primária, não conclusão.</p>
+        <p id="reconcCobertura" class="reconciliacao__cobertura muted small"></p>
+      </section>
+
       <section class="filters" aria-label="Filtros de consulta">
         <div class="citizen-guide">
           <strong>Para conferir uma emenda, olhe nesta ordem:</strong>
@@ -543,6 +561,7 @@
     <script src="data/emendas_municipais_unificadas.js?v=20260729a"></script>
     <script src="data/emendas_federais.js?v=20260729a"></script>
     <script src="data/emendas_tesouro.js?v=20260826a"></script>
+    <script src="reconciliacao.js?v=20260904a" defer></script>
     <script src="app.js?v=20260729a"></script>
   <script>
 (function () {

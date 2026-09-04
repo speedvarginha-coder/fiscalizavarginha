@@ -142,6 +142,11 @@ try {
     $sourceStatus.estadual = if ($code -eq 0) { "ok" } else { "preservado" }
   }
 
+  # Reconciliacao com o registro contabil da propria Prefeitura. Roda depois das
+  # tres bases porque compara com elas. Codigo 2 = coletou com ressalva; nao
+  # derruba o ciclo, porque a divergencia registrada ja e o produto util.
+  Invoke-FinancialStep "Reconciliando com o registro da Prefeitura (Betha)." "python" @("-u", "coletor_emendas_prefeitura.py") $emendas @(0, 2) | Out-Null
+
   Invoke-FinancialStep "Auditando emendas federais e estaduais." "python" @("-u", "audit_emendas.py") $emendas | Out-Null
   Invoke-FinancialStep "Regenerando contexto factual do site." "npm.cmd" @("run", "data:chat") $root | Out-Null
   Invoke-FinancialStep "Sincronizando bundle e manifesto." "npm.cmd" @("run", "data:bundle") $root | Out-Null
