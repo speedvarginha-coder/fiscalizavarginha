@@ -7,9 +7,9 @@
   "ano_atual": 2026,
   "ano_anterior": 2025,
   "despesas": {
-    "total_atual": 4374914.46,
+    "total_atual": 4499940.81,
     "total_anterior": 7137822.19,
-    "total_externo_atual": 1470891.35,
+    "total_externo_atual": 1595917.7,
     "total_externo_anterior": 3071916.67,
     "credores_atual_qtd": 132,
     "credores_anterior_qtd": 196,
@@ -24,6 +24,12 @@
         "nome": "ASSOCIACAO OFICINA DO SER",
         "cnpj": "41.884.263/****-**",
         "valor_total": 140000.0,
+        "registros": 1
+      },
+      {
+        "nome": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
+        "cnpj": "37.576.537/****-**",
+        "valor_total": 125000.0,
         "registros": 1
       },
       {
@@ -126,12 +132,6 @@
         "nome": "EDER JERONIMO DA SILVA",
         "cnpj": "051.299.***-**",
         "valor_total": 16464.36,
-        "registros": 1
-      },
-      {
-        "nome": "BETHA SISTEMAS LTDA",
-        "cnpj": "00.456.865/****-**",
-        "valor_total": 15069.7,
         "registros": 1
       }
     ],
@@ -261,10 +261,10 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 297,
-      "empenhado": 5271865.4,
-      "liquidado": 4335516.29,
-      "pago": 4324914.46
+      "registros": 300,
+      "empenhado": 5200094.86,
+      "liquidado": 4430542.64,
+      "pago": 4419940.81
     },
     "maiores_empenhos_atual": [
       {
@@ -395,20 +395,9 @@
         "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
         "historico": "SUBVENÇÕES SOCIAIS - E.I: 332/2025 P.A: 2205/2026 - Execução Projeto cultural: \"200 ANOS DA FUNDAÇÃO DE VARGINHA\"",
         "valor_empenhado": 105000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 105000.0
-      },
-      {
-        "data": "2026-08-05",
-        "numero": 262,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 332/2025 P.A: 2205/2026 - Execução Projeto cultural: \"200 ANOS DA FUNDAÇÃO DE VARGINHA\"",
-        "valor_empenhado": 105000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 105000.0
+        "valor_liquidado": 105000.0,
+        "valor_pago": 105000.0,
+        "saldo_a_pagar": 0.0
       },
       {
         "data": "2026-08-05",
@@ -489,14 +478,14 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 250,
+        "numero": 239,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 320/2025 P.A: 1861/2026 - para Aquisição de instrumentos musicais, equipamentos e acessórios; Aquisição de materiais para Reforma do Muro da Sede; Aquisição de Materiais para o escritório.",
-        "valor_empenhado": 60000.0,
-        "valor_liquidado": 60000.0,
-        "valor_pago": 60000.0,
-        "saldo_a_pagar": 0.0
+        "credor": "MAZ  ASSOCIACAO ARTISTICA MARINA AZZE",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 309/2025 P.A: 1819/2026-  AQUISIÇÃO KIT DE AR CONDICIONADOS COM INSTALAÇÃO; MANUTENÇÃO E AMPLIAÇÃO DE PLACAS SOLARES; AQUISIÇÃO UNIFORMES AULAS DE DANÇA; AQUISIÇÃO DE ESPELHO; AQUISIÇÃO DE BARRAS MÓVEL DANÇA; AQUISIÇÃO SUPORTE GIRATÓRIO SENSORIAL REDE TECIDO ACROBÁTICO; AQUISIÇÃO COLCHÕES GINASTICA ARTÍSTICA; AQUISIÇÃO DE TELA DE PROJEÇÃO ILHÓS MATTE WHITE E; AQUISIÇÃO DE BRINDES.",
+        "valor_empenhado": 70000.0,
+        "valor_liquidado": 0.0,
+        "valor_pago": 0.0,
+        "saldo_a_pagar": 70000.0
       },
       {
         "data": "2026-08-05",
@@ -529,6 +518,17 @@
         "valor_empenhado": 50870.0,
         "valor_liquidado": 50870.0,
         "valor_pago": 50870.0,
+        "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-08-05",
+        "numero": 242,
+        "orgao": "ADMINISTRACAO",
+        "credor": "NPOSUL - ASSOCIACAO DE NUCLEOS PEDAGOGICOS DE ORQUESTRA DO SUL DE MINAS",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 312/2025 P.A: 2556/2026 - PARA MANUTENÇÃO DAS OFICINAS E CONCERTOS DA FILARMÔNICA DE VARGINHA",
+        "valor_empenhado": 50000.0,
+        "valor_liquidado": 50000.0,
+        "valor_pago": 50000.0,
         "saldo_a_pagar": 0.0
       },
       {
@@ -796,17 +796,6 @@
         "saldo_a_pagar": 0.0
       },
       {
-        "data": "2026-08-05",
-        "numero": 247,
-        "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 317/2025 P.A: 2737/2026 - Aquisição de materiais e contratação de prestação de serviço para Obra na Cozinha da Associação.",
-        "valor_empenhado": 20000.0,
-        "valor_liquidado": 20000.0,
-        "valor_pago": 20000.0,
-        "saldo_a_pagar": 0.0
-      },
-      {
         "data": "2026-01-27",
         "numero": 13,
         "orgao": "ADMINISTRACAO",
@@ -874,17 +863,6 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 261,
-        "orgao": "ADMINISTRACAO",
-        "credor": "INSTITUTO LUSO  ITALO BRASILEIRO DE HISTORIA   ECOL E CULTURA",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 331/2025 P.A: 2751/2026 - Execução Projeto Cultural - 220 ANOS DA FUNDAÇÃO DE VARGINHA",
-        "valor_empenhado": 15000.0,
-        "valor_liquidado": 0.0,
-        "valor_pago": 0.0,
-        "saldo_a_pagar": 15000.0
-      },
-      {
-        "data": "2026-08-05",
         "numero": 251,
         "orgao": "ADMINISTRACAO",
         "credor": "ASSOCIACAO MINEIRA DAS FOLIAS DE SANTOS REIS",
@@ -896,10 +874,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 237,
+        "numero": 248,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIACAO DE CAPOEIRA NOVA VISAO",
-        "historico": "SUBVENÇÕES SOCIAIS -E.I: 266/2025 P.A: 2120/2026 -PROJETO VIVA CULTURA  OFICINAS DE TRADIÇÕES POPULARES AFRO-BRASILEIRAS  AQUISIÇÃO DE INSTRUMENTOS MUSICAIS; AQUISIÇÃO DE EQUIPAMENTOS DE ÁUDIO-VIDEO E ACESSÓRIOS.",
+        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
+        "historico": "SUBVENÇÕES SOCIAIS - E.I: 318/2025 P.A: 2013/2026 - Aquisição de instrumentos musicais equipamentos e acessórios para apresentações e para eventos internos.",
         "valor_empenhado": 15000.0,
         "valor_liquidado": 15000.0,
         "valor_pago": 15000.0,
@@ -907,10 +885,10 @@
       },
       {
         "data": "2026-08-05",
-        "numero": 248,
+        "numero": 237,
         "orgao": "ADMINISTRACAO",
-        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
-        "historico": "SUBVENÇÕES SOCIAIS - E.I: 318/2025 P.A: 2013/2026 - Aquisição de instrumentos musicais equipamentos e acessórios para apresentações e para eventos internos.",
+        "credor": "ASSOCIACAO DE CAPOEIRA NOVA VISAO",
+        "historico": "SUBVENÇÕES SOCIAIS -E.I: 266/2025 P.A: 2120/2026 -PROJETO VIVA CULTURA  OFICINAS DE TRADIÇÕES POPULARES AFRO-BRASILEIRAS  AQUISIÇÃO DE INSTRUMENTOS MUSICAIS; AQUISIÇÃO DE EQUIPAMENTOS DE ÁUDIO-VIDEO E ACESSÓRIOS.",
         "valor_empenhado": 15000.0,
         "valor_liquidado": 15000.0,
         "valor_pago": 15000.0,
@@ -1142,6 +1120,28 @@
         "orgao": "ADMINISTRACAO",
         "credor": "GRUPO MARANATHA DE ART GLOBAL",
         "historico": "CONCEDER AUXILIO FINANCEIRO AO  GRUPO MARANATHA ART GLOBAL NOS TERMOS DA LEI 7.520 DE 04 DE FEVEREIRO DE 2026",
+        "valor_empenhado": 10000.0,
+        "valor_liquidado": 10000.0,
+        "valor_pago": 10000.0,
+        "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-02-04",
+        "numero": 25,
+        "orgao": "ADMINISTRACAO",
+        "credor": "GREMIO R.E. DE SAMBA IMPERIO DA SERRINHA",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO  GREMIO RECREATIVO ESCOLA DE SAMBA IMPERIO DA SERRINHA  NOS TERMOS DA LEI 7.523 DE 04 DE FEVEREIRO DE 2026",
+        "valor_empenhado": 10000.0,
+        "valor_liquidado": 10000.0,
+        "valor_pago": 10000.0,
+        "saldo_a_pagar": 0.0
+      },
+      {
+        "data": "2026-02-04",
+        "numero": 21,
+        "orgao": "ADMINISTRACAO",
+        "credor": "ASSOCIAÇÃO TOMBATUKE MÚSICA EM MOVIMENTAÇÃO",
+        "historico": "CONCEDER AUXILIO FINANCEIRO AO TOMBATUKE MUSICA EM MOVIMENTACAO NOS TERMOS DA LEI 7.519 DE 04 DE FEVEREIRO DE 2026",
         "valor_empenhado": 10000.0,
         "valor_liquidado": 10000.0,
         "valor_pago": 10000.0,
@@ -9203,6 +9203,20 @@
     },
     {
       "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-28",
+      "data_fim": "2027-08-28",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "contratado": "STAMP PRODUTOS E SERVICOS LTDA",
+      "cnpj": "47.305.688/****-**",
+      "valor": 486.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
       "ano": "2020",
       "data_assinatura": "2020-03-12",
       "data_fim": "",
@@ -14972,6 +14986,20 @@
       "entidade": ""
     },
     {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-28",
+      "data_fim": "2027-08-28",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "contratado": "STAMP PRODUTOS E SERVICOS LTDA",
+      "cnpj": "47.305.688/****-**",
+      "valor": 486.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
       "numero": "42",
       "ano": "2025",
       "data_assinatura": "2025-05-07",
@@ -16053,6 +16081,20 @@
     },
     {
       "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-08-28",
+      "data_fim": "2027-08-28",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "contratado": "STAMP PRODUTOS E SERVICOS LTDA",
+      "cnpj": "47.305.688/****-**",
+      "valor": 486.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
       "ano": "2025",
       "data_assinatura": "2025-10-16",
       "data_fim": "2026-10-16",
@@ -16235,12 +16277,12 @@
     }
   ],
   "contratos_resumo": {
-    "qtd_total": 905,
-    "valor_total": 10813775.08,
-    "qtd_vigentes": 114,
-    "valor_vigentes": 4088772.48,
-    "qtd_vigencia_futura": 58,
-    "valor_vigencia_futura": 1176345.18,
+    "qtd_total": 906,
+    "valor_total": 10814261.08,
+    "qtd_vigentes": 115,
+    "valor_vigentes": 4089258.48,
+    "qtd_vigencia_futura": 59,
+    "valor_vigencia_futura": 1176831.18,
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80579"
   },
   "licitacoes": [

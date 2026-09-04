@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-09-02T16:55:55+00:00",
+ "gerado_em": "2026-09-03T19:46:04+00:00",
  "fonte": "camara",
- "total": 940,
+ "total": 941,
  "publicacoes": [
   {
    "id": "CAMARA-2026-REQ-225",
@@ -37,7 +37,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6290/rogerio_requerimento___capoeira1_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6290/rogeriobueno_-_requerimento225-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Rogério Bueno",
@@ -45,11 +45,11 @@
    "ementa": "Requer informações sobre a doação de uma área para construção de uma sede própria para a Associação de Capoeira Nova Visão.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6290",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6290/rogerio_requerimento___capoeira1_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6290/rogeriobueno_-_requerimento225-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6290/rogerio_requerimento___capoeira1_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6290/rogeriobueno_-_requerimento225-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -89,7 +89,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6289/rogerio_requerimento___pmaa_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6289/rogeriobueno_-_requerimento224-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Rogério Bueno",
@@ -97,11 +97,11 @@
    "ementa": "Requer informações acerca da implantação do Programa Municipal de Aquisição de Alimentos – PMAA no Município de Varginha.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6289",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6289/rogerio_requerimento___pmaa_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6289/rogeriobueno_-_requerimento224-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6289/rogerio_requerimento___pmaa_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6289/rogeriobueno_-_requerimento224-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -141,7 +141,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6283/joaozinho_requerimento___clinicas_veterinarias__02_09_revisado_1.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6283/joaomartins_-_requerimento223-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Joãozinho Enfermeiro",
@@ -149,11 +149,11 @@
    "ementa": "Requer informações acerca dos critérios, requisitos e procedimentos adotados para a concessão e fiscalização de alvarás e licenças sanitárias às clínicas e estabelecimentos veterinários no Município de Varginha.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6283",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6283/joaozinho_requerimento___clinicas_veterinarias__02_09_revisado_1.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6283/joaomartins_-_requerimento223-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6283/joaozinho_requerimento___clinicas_veterinarias__02_09_revisado_1.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6283/joaomartins_-_requerimento223-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -194,7 +194,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6279/dandan_requerimento_via_rodoviaria_varginha_monsenhor_paulo_e_carmo_da_cachoeira_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6279/danielrodrigues_-_requerimento222-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Dandan",
@@ -202,11 +202,11 @@
    "ementa": "Requer informações acerca da possibilidade de implantação de uma ligação rodoviária entre Varginha e os municípios de Monsenhor Paulo e Carmo da Cachoeira.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6279",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6279/dandan_requerimento_via_rodoviaria_varginha_monsenhor_paulo_e_carmo_da_cachoeira_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6279/danielrodrigues_-_requerimento222-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6279/dandan_requerimento_via_rodoviaria_varginha_monsenhor_paulo_e_carmo_da_cachoeira_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6279/danielrodrigues_-_requerimento222-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -247,7 +247,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6278/dandan_requerimento_praca_prefeito_jose_braga_jordao_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6278/danielrodrigues_-_requerimento221-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Dandan",
@@ -255,11 +255,11 @@
    "ementa": "Requer informações sobre a situação das árvores localizadas na Praça Prefeito José Braga Jordão, no bairro Vila Barcelona, na interseção das ruas Buenos Aires e João Marcelino Bernardes, especialmente quanto à necessidade de poda e aos riscos existentes para os moradores do entorno.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6278",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6278/dandan_requerimento_praca_prefeito_jose_braga_jordao_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6278/danielrodrigues_-_requerimento221-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6278/dandan_requerimento_praca_prefeito_jose_braga_jordao_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6278/danielrodrigues_-_requerimento221-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -300,7 +300,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6277/cassio_req___estrutura_da_quadra_esportiva___san_marino_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6277/cassiochiodi_-_requerimento220-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Cássio Chiodi",
@@ -308,11 +308,11 @@
    "ementa": "Requer informações acerca da fiscalização, acompanhamento e execução da estrutura da quadra esportiva localizada na Avenida Professor João Augusto de Carvalho, no Bairro San Marino.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6277",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6277/cassio_req___estrutura_da_quadra_esportiva___san_marino_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6277/cassiochiodi_-_requerimento220-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6277/cassio_req___estrutura_da_quadra_esportiva___san_marino_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6277/cassiochiodi_-_requerimento220-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -352,7 +352,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6275/cassio_req__quantitativo_de_alunos_do_6o_ao_9o_ano_nas_proximidades_do_bairro_vila_floresta_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6275/cassiochiodi_-_requerimento219-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Cássio Chiodi",
@@ -360,11 +360,11 @@
    "ementa": "Requer informações acerca do quantitativo de alunos do 6º ao 9º ano nas proximidades do Bairro Vila Floresta e da capacidade de atendimento das Escolas Municipais São José e Domingos Ribeiro de Resende.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6275",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6275/cassio_req__quantitativo_de_alunos_do_6o_ao_9o_ano_nas_proximidades_do_bairro_vila_floresta_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6275/cassiochiodi_-_requerimento219-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6275/cassio_req__quantitativo_de_alunos_do_6o_ao_9o_ano_nas_proximidades_do_bairro_vila_floresta_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6275/cassiochiodi_-_requerimento219-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -405,7 +405,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6273/bruno_minuta_requerimentoparquecentenario_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6273/brunoleandro_-_requerimento218-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Bruno Leandro Coletor",
@@ -413,11 +413,11 @@
    "ementa": "Requer informações sobre a possibilidade de retomada do serviço de pedalinhos no Parque Centenário.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6273",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6273/bruno_minuta_requerimentoparquecentenario_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6273/brunoleandro_-_requerimento218-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6273/bruno_minuta_requerimentoparquecentenario_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6273/brunoleandro_-_requerimento218-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -458,7 +458,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6272/bruno_minuta_requerimentocreches1.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6272/brunoleandro_-_requerimento217-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Bruno Leandro Coletor",
@@ -466,11 +466,11 @@
    "ementa": "Requer Informações sobre a existência, implantação e expansão de sistemas de videomonitoramento nas escolas e creches da rede municipal de ensino.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6272",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6272/bruno_minuta_requerimentocreches1.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6272/brunoleandro_-_requerimento217-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6272/bruno_minuta_requerimentocreches1.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6272/brunoleandro_-_requerimento217-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -511,7 +511,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6270/req_copasa_26_081_revisada_26-08.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6270/anarios_-_requerimento216-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Ana Rios Fontoura",
@@ -519,11 +519,11 @@
    "ementa": "Requer informações acerca da constante falta de água nos bairros San Marino, São Francisco e Parque São José.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6270",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6270/req_copasa_26_081_revisada_26-08.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6270/anarios_-_requerimento216-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6270/req_copasa_26_081_revisada_26-08.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6270/anarios_-_requerimento216-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -594,17 +594,18 @@
    "categoria": "Legislativo",
    "interesse_publico": "baixo",
    "tema": "urbanismo",
-   "resumo": "Este projeto de lei propõe nomear uma rua em Varginha-MG, especificamente a atual Rua Projetada 12 no bairro Porto Príncipe.",
-   "o_que_propoe": "A proposta é que a Rua Projetada 12, localizada no bairro Porto Príncipe, passe a ser oficialmente denominada Rua Roosevelt Carvalho.",
-   "impacto_cidadao": "Caso seja aprovado, os moradores e serviços que utilizam a Rua Projetada 12 precisarão atualizar seus endereços para o novo nome.",
+   "resumo": "Este projeto de lei propõe alterar o nome de uma rua em Varginha-MG. A Rua Projetada 12, localizada no bairro Porto Príncipe, passaria a se chamar Rua Roosewelt Carvalho.",
+   "o_que_propoe": "O projeto propõe que a atual Rua Projetada 12, no bairro Porto Príncipe, seja oficialmente denominada Rua Roosewelt Carvalho.",
+   "impacto_cidadao": "Se aprovado, os moradores e comerciantes da Rua Projetada 12 teriam que se adaptar ao novo nome para correspondências e localização.",
    "por_que_acompanhar": [
-    "Para entender como são definidos os nomes dos espaços públicos da cidade.",
-    "Para acompanhar as mudanças de endereço que podem afetar a correspondência e serviços.",
-    "Para conhecer o processo legislativo de projetos de lei de denominação de logradouros."
+    "Para entender como são feitas as homenagens e se há critérios claros para a escolha dos nomes de logradouros.",
+    "Para verificar se a mudança de nome atende a um interesse coletivo ou a um grupo específico da comunidade.",
+    "Para acompanhar a destinação de recursos públicos e a prioridade dos vereadores em relação a este tipo de matéria."
    ],
    "pontos_atencao": [
-    "Acompanhar os custos administrativos para a prefeitura com a confecção de novas placas e atualização de cadastros.",
-    "Verificar se há outras ruas com nomes semelhantes que possam causar confusão."
+    "Possíveis custos administrativos para a mudança de placas e atualização de cadastros públicos.",
+    "O impacto na rotina dos moradores e comerciantes da rua afetada pela mudança de nome.",
+    "Os critérios e motivos para a escolha do nome 'Roosewelt Carvalho' para a homenagem."
    ],
    "valores": {
     "total": null,
@@ -620,7 +621,7 @@
    },
    "autor": "Ana Rios Fontoura",
    "situacao": "em tramitação",
-   "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO A ATUAL RUA PROJETADA 12, LOCALIZADA NO BAIRRO PORTO PRÍNCIPE, PASSARÁ A DENOMINAR-SE RUA ROOSEWELT CARVALHO",
+   "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A ATUAL RUA PROJETADA 12, LOCALIZADA NO BAIRRO PORTO PRÍNCIPE, PASSARÁ A DENOMINAR-SE RUA ROOSEWELT CARVALHO.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6269",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6269/ana_rios_pl_denominacao_de_logradouro_roosewelt_carvalho_revisado_02-09.docx"
@@ -631,8 +632,8 @@
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
-   "fonte_hash": "e8a17d2b4f2d4324504cdee8c865f786bcbac80a",
-   "gerado_em": "2026-09-02T14:49:12+00:00"
+   "fonte_hash": "2a0b2d99fcc3abc43dc20f3d99117b9a8bd2c330",
+   "gerado_em": "2026-09-02T19:50:06+00:00"
   },
   {
    "id": "CAMARA-2026-PDL-76",
@@ -645,18 +646,17 @@
    "data": "2026-09-02",
    "categoria": "Legislativo",
    "interesse_publico": "baixo",
-   "tema": "homenagem",
-   "resumo": "O Projeto de Decreto Legislativo nº 76/2026, de autoria do vereador Dandan, propõe conceder o Título de Esportista Destaque a Bruno de Souza Oliveira Júnior.",
-   "o_que_propoe": "Se aprovado, Bruno de Souza Oliveira Júnior receberá o Título de Esportista Destaque.",
-   "impacto_cidadao": "Este projeto reconhece publicamente um cidadão por seus méritos esportivos.",
+   "tema": "homenagens",
+   "resumo": "Este é um projeto de lei que propõe conceder o título de \"Esportista Destaque\" a Bruno de Souza Oliveira Júnior.",
+   "o_que_propoe": "Se aprovado, Bruno de Souza Oliveira Júnior receberá um reconhecimento público da Câmara Municipal pelo seu desempenho esportivo.",
+   "impacto_cidadao": "A proposta visa reconhecer publicamente um cidadão por suas conquistas no esporte, o que pode servir de inspiração para a comunidade.",
    "por_que_acompanhar": [
-    "Acompanhar a concessão de títulos honoríficos permite ao cidadão verificar como os recursos públicos e o tempo legislativo são utilizados.",
-    "Permite entender os critérios e a justificativa para o reconhecimento de personalidades locais.",
-    "Incentiva a participação cívica e o debate sobre o reconhecimento de méritos na comunidade."
+    "Para observar como a Câmara Municipal valoriza e reconhece os atletas locais.",
+    "Para entender os critérios e processos de concessão de títulos honoríficos."
    ],
    "pontos_atencao": [
-    "A concessão de títulos honoríficos, embora simbólica, envolve o uso de tempo e recursos da Câmara Municipal.",
-    "É importante que os critérios para a concessão sejam claros e transparentes para a população."
+    "Acompanhar a votação do projeto pelos vereadores.",
+    "Verificar se há critérios claros para a escolha dos homenageados."
    ],
    "valores": {
     "total": null,
@@ -672,7 +672,7 @@
    },
    "autor": "Dandan",
    "situacao": "em tramitação",
-   "ementa": "CONCEDE TÍTULO DE ESPORTISTA DESTAQUE à BRUNO DE SOUZA OLIVEIRA JÚNIOR.",
+   "ementa": "CONCEDE TÍTULO DE ESPORTISTA DESTAQUE À BRUNO DE SOUZA OLIVEIRA JÚNIOR.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6280",
     "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6280/dandan_projeto_de_decreto_esportista_destaque___bruno_bmx_revisado.docx"
@@ -683,8 +683,8 @@
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
-   "fonte_hash": "351f480e5a697abf0e7e862b16152850e19ace49",
-   "gerado_em": "2026-09-02T16:55:34+00:00"
+   "fonte_hash": "14eebdde9ea3c14c62bb11e1b9f085652b263b17",
+   "gerado_em": "2026-09-02T19:50:11+00:00"
   },
   {
    "id": "CAMARA-2026-PDL-75",
@@ -771,19 +771,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6295/zilda_ind_terreno_damasco_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6295/zilda_-_indicacao456-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Zilda Silva",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita limpeza e capina do terreno atrás da igreja localizada no endereço Rua Joel Gonçalves Valim nº 809, no bairro Damasco.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6295",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6295/zilda_ind_terreno_damasco_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6295/zilda_-_indicacao456-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6295/zilda_ind_terreno_damasco_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6295/zilda_-_indicacao456-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -824,19 +824,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6294/zilda_ind_eventos_capoeira_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6294/zilda_-_indicacao455-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Zilda Silva",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita realização de estudo de viabilidade para disponibilização ou concessão de espaço público coberto destinado à realização de eventos, apresentações, rodas e demais atividades culturais relacionadas à capoeira no Município de Varginha.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6294",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6294/zilda_ind_eventos_capoeira_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6294/zilda_-_indicacao455-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6294/zilda_ind_eventos_capoeira_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6294/zilda_-_indicacao455-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -877,19 +877,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6293/ze_morais_indicacao___pavimentacao___quadra_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6293/josemorais_-_indicacao454-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Zé Morais",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita a pavimentação e demais melhorias necessárias no acesso que liga as Ruas Professora Eliza Fonseca e Santa Maria à quadra localizada no bairro Três Bicas, incluindo, conforme a necessidade do local, a regularização e nivelamento do solo, drenagem e demais serviços de infraestrutura.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6293",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6293/ze_morais_indicacao___pavimentacao___quadra_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6293/josemorais_-_indicacao454-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6293/ze_morais_indicacao___pavimentacao___quadra_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6293/josemorais_-_indicacao454-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -929,19 +929,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6292/thulyo_desentupimento_de_bueiro_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6292/thulyo_-_indicacao453-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Thulyo Paiva",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita o desentupimento dos bueiros ao longo de toda a extensão da Alameda Otávio Marquês de Paiva e da Rua Sargento Rodrigo Vieira Pichelli, via paralela à primeira, bem como a reforma da escadaria localizada nesta última rua, em frente ao imóvel nº 160.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6292",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6292/thulyo_desentupimento_de_bueiro_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6292/thulyo_-_indicacao453-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6292/thulyo_desentupimento_de_bueiro_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6292/thulyo_-_indicacao453-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -982,19 +982,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6291/thulyo_construcao_de_avenida_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6291/thulyo_-_indicacao452-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Thulyo Paiva",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita a construção de uma avenida interligando a Avenida Projetada, próximo a Proluminas à Avenida Princesa do Sul, nas proximidades do nº 96, próximo ao Parque de Exposições.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6291",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6291/thulyo_construcao_de_avenida_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6291/thulyo_-_indicacao452-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6291/thulyo_construcao_de_avenida_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6291/thulyo_-_indicacao452-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1034,19 +1034,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6288/pator_ind_043__almirante_barroso_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6288/pastorfasutinho_-_indicacao451-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Pastor Faustinho",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita a revitalização da calçada localizada no lado direito da Avenida Almirante Barroso, no sentido de subida, no trecho compreendido entre a rotatória localizada na interseção com a Avenida dos Viajantes e a saída para a MG-167, nas proximidades do Posto Geraldo Lima, até a Rotatória José Fontoura de Assunção.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6288",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6288/pator_ind_043__almirante_barroso_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6288/pastorfasutinho_-_indicacao451-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6288/pator_ind_043__almirante_barroso_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6288/pastorfasutinho_-_indicacao451-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1087,19 +1087,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6287/pastor_ind_044__bairro_minas_gerais_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6287/pastorfaustinho_-_indicacao450-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Pastor Faustinho",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita recapeamento asfáltico em toda a extensão da Rua Aurélia Rubião, no bairro Minas Gerais.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6287",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6287/pastor_ind_044__bairro_minas_gerais_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6287/pastorfaustinho_-_indicacao450-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6287/pastor_ind_044__bairro_minas_gerais_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6287/pastorfaustinho_-_indicacao450-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1140,19 +1140,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6286/miguel_psfboug_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6286/miguellima_-_indicacao449-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Miguel da Saúde",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita construção de uma Unidade Básica de Saúde (UBS), destinada ao atendimento da população do Bairro Bouganville, garantindo uma estrutura própria e adequada para o funcionamento da equipe de Saúde da Família (PSF).",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6286",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6286/miguel_psfboug_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6286/miguellima_-_indicacao449-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6286/miguel_psfboug_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6286/miguellima_-_indicacao449-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1193,19 +1193,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6285/miguel_psfboug_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6285/miguellima_-_indicacao448-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Miguel da Saúde",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita a implantação de uma nova unidade do Centro de Desenvolvimento da Criança e do Adolescente – CDCA, na região do Bairro Jardim Estrela.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6285",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6285/miguel_psfboug_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6285/miguellima_-_indicacao448-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6285/miguel_psfboug_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6285/miguellima_-_indicacao448-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1245,19 +1245,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6284/indicacao___joao_cainelli__02_09_.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6284/joaomartins_-_indicacao447-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Joãozinho Enfermeiro",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita implantação de sinalização viária e de faixa elevada na Rua João Cainelli, nas proximidades do nº 345, no Bairro Santa Luzia.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6284",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6284/indicacao___joao_cainelli__02_09_.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6284/joaomartins_-_indicacao447-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6284/indicacao___joao_cainelli__02_09_.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6284/joaomartins_-_indicacao447-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1297,19 +1297,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6282/davi_martins_ind_0228_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6282/carlosdavi_-_indicacao446-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Davi Martins",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita a implantação de área de lazer e recreação infantil com playground na Rua Adolfo Ferreira de Oliveira, ao lado da Escola Municipal Professor Wanderley Bueno de Oliveira, no Bairro Carvalhos.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6282",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6282/davi_martins_ind_0228_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6282/carlosdavi_-_indicacao446-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6282/davi_martins_ind_0228_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6282/carlosdavi_-_indicacao446-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1350,19 +1350,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6281/davi_martins_ind_02.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6281/carlosdavi_-_indicacao445-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Davi Martins",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita a implantação gradativa de fraldários acessíveis a mães, pais e responsáveis nos prédios públicos municipais de grande circulação.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6281",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6281/davi_martins_ind_02.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6281/carlosdavi_-_indicacao445-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6281/davi_martins_ind_02.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6281/carlosdavi_-_indicacao445-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1403,19 +1403,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6271/ana_rios_ind_de_camera_de_monitoramento_nas_pracas2_revisada_02-09.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6271/anarios_-_indicacao444-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Ana Rios Fontoura",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita a instalação de câmeras de videomonitoramento na praça do bairro Novo Tempo e na praça Dom Pedro II – Jardim do Sapo.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6271",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6271/ana_rios_ind_de_camera_de_monitoramento_nas_pracas2_revisada_02-09.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6271/anarios_-_indicacao444-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6271/ana_rios_ind_de_camera_de_monitoramento_nas_pracas2_revisada_02-09.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6271/anarios_-_indicacao444-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1456,19 +1456,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6268/alexandre_ind._programa_de_conciliacao_escolar_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6268/alexandreprado_-_indicacao443-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Alexandre Prado",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita estudos para a criação de programa de conciliação e mediação escolar, destinado à prevenção e ao enfrentamento de situações de violência, conflitos e evasão escolar, mediante a utilização de métodos consensuais de resolução de conflitos envolvendo estudantes, pais ou responsáveis e profissionais da educação, abrangendo, quando tecnicamente cabível, situações relacionadas ao percurso entre a residência e a escola.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6268",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6268/alexandre_ind._programa_de_conciliacao_escolar_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6268/alexandreprado_-_indicacao443-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6268/alexandre_ind._programa_de_conciliacao_escolar_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6268/alexandreprado_-_indicacao443-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1509,19 +1509,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6267/alexandre_ind._ia_nas_escolas_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6267/alexandreprado_-_indicacao442-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Alexandre Prado",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita a realização de estudos para a criação e implementação de programa de educação e formação em Inteligência Artificial no contraturno da rede pública municipal de ensino, destinado preferencialmente aos estudantes do 6º ao 9º ano do Ensino Fundamental.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6267",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6267/alexandre_ind._ia_nas_escolas_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6267/alexandreprado_-_indicacao442-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6267/alexandre_ind._ia_nas_escolas_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6267/alexandreprado_-_indicacao442-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -1562,19 +1562,19 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6266/indicacao_psf_bom_pastor1.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6266/afonsomonrticeli_-_indicacao441-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Afonso Monticeli",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Solicita que sejam realizados estudos e providências para a mudança de endereço do PSF – Programa de Saúde da Família, atualmente localizado na Rua Santa Luzia, nº 75, Bom Pastor, para o imóvel situado na Avenida Plínio Salgado, nº 275, Bom Pastor, onde atualmente funciona o Setor da Vigilância Sanitária.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6266",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6266/indicacao_psf_bom_pastor1.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6266/afonsomonrticeli_-_indicacao441-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6266/indicacao_psf_bom_pastor1.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6266/afonsomonrticeli_-_indicacao441-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -4083,7 +4083,7 @@
     "valor_principal_ia": ""
    },
    "autor": "Dandan",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "DISPÕE SOBRE A DENOMINAÇÃO DE LOGRADOURO PÚBLICO. A ATUAL RUA 09, LOCALIZADA NO BAIRRO PENEDO, PASSARÁ A DENOMINAR-SE RUA LAURA MARIA ÔNGARO.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6203",
@@ -23580,7 +23580,7 @@
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
    "fonte_hash": "a5b4df680195ec54ec2c5cdef43e25eddf9f2c17",
-   "gerado_em": "2026-08-24T16:19:01+00:00"
+   "gerado_em": "2026-09-03T16:47:40+00:00"
   },
   {
    "id": "CAMARA-2026-IND-234",
@@ -32618,58 +32618,6 @@
    "coleta_origem": "API oficial do SAPL",
    "fonte_hash": "407ed8e14e132141aef5733d73426e78a5c1163c",
    "gerado_em": "2026-06-22T23:29:30+00:00"
-  },
-  {
-   "id": "CAMARA-2026-EMEN-14",
-   "fonte": "camara",
-   "tipo": "emenda",
-   "tipo_label": "Emenda",
-   "orgao": "Câmara de Varginha",
-   "titulo": "Emenda nº 14/2026",
-   "numero": "14/2026",
-   "data": "2026-04-15",
-   "categoria": "Legislativo",
-   "interesse_publico": "alto",
-   "tema": "cultura",
-   "resumo": "Esta é uma emenda que propõe mudanças em um projeto de lei que estabelece novas regras para o apoio à cultura em Varginha, seguindo uma lei federal.",
-   "o_que_propoe": "",
-   "impacto_cidadao": "",
-   "por_que_acompanhar": [
-    "Para entender como os recursos públicos serão usados para apoiar a cultura na cidade.",
-    "Para garantir que as novas regras beneficiem a diversidade cultural e os artistas locais.",
-    "Para acompanhar a transparência na aplicação da Lei Federal de fomento cultural."
-   ],
-   "pontos_atencao": [
-    "A emenda pode alterar a forma como os recursos destinados à cultura são distribuídos.",
-    "As novas regras podem definir quem e como terá acesso aos recursos de fomento cultural.",
-    "Verificar se as alterações propostas estão alinhadas com a Lei Federal nº 14.903/2024."
-   ],
-   "valores": {
-    "total": null,
-    "encontrados": [],
-    "natureza": "valor citado na matéria legislativa",
-    "fonte_total": "",
-    "confianca": "indisponivel",
-    "metodo": "",
-    "documento_consultado": "",
-    "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5696/emenda_aditiva_n.01-2026_ao_projeto_de_lei_n.02-2026.pdf",
-    "valor_principal_ia": ""
-   },
-   "autor": "CSAEL - Comissão de Saúde, Assistência, Promoção Social, Educação, Cultura, Esporte, Turismo e Lazer",
-   "situacao": "tramitação encerrada",
-   "ementa": "EMENDA ADITIVA AO PROJETO DE LEI N9 02/2026, DE AUTORIA DO PODER EXECUTIVO, QUE \"ALTERA DISPOSITIVOS DA LEI MUNICIPAL N° 7.134 DE 25 DE AGOSTO DE 2023 E ESTABELECE O NOVO REGIME JURÍDICO DE FOMENTO CULTURAL DO MUNICÍPIO DE VARGINHA, EM OBSERVÂNCIA À LEI FEDERAL N' 14.903 DE 27 DE JUNHO DE 2024\".",
-   "links": {
-    "consulta": "https://sapl.varginha.mg.leg.br/materia/5696",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5696/emenda_aditiva_n.01-2026_ao_projeto_de_lei_n.02-2026.pdf"
-   },
-   "localizacao": {
-    "pagina_inicial": 1,
-    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5696/emenda_aditiva_n.01-2026_ao_projeto_de_lei_n.02-2026.pdf#page=1"
-   },
-   "origem_ia": "ia",
-   "fonte_hash": "6dda468b3f3fa600828fbf9ba15cb2e091a829a6",
-   "gerado_em": "2026-06-22T23:29:43+00:00"
   },
   {
    "id": "CAMARA-2026-EMEN-13",
@@ -49369,6 +49317,111 @@
    "coleta_origem": "API oficial do SAPL",
    "fonte_hash": "4aea433d6c2f8d792116511753d31d3bb8cfb2ed",
    "gerado_em": "2026-08-24T16:19:13+00:00"
+  },
+  {
+   "id": "CAMARA-2026-REQ-45",
+   "fonte": "camara",
+   "tipo": "requerimento",
+   "tipo_label": "Requerimento",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Requerimento nº 45/2026",
+   "numero": "45/2026",
+   "data": "",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "pessoal",
+   "resumo": "Este requerimento solicita à Procuradoria do Município de Varginha informações sobre o motivo pelo qual o salário mínimo está sendo usado como base para calcular vantagens de servidores públicos ou empregados.",
+   "o_que_propoe": "",
+   "impacto_cidadao": "A resposta a este requerimento poderá esclarecer a legalidade e a forma como os recursos públicos são utilizados para o pagamento de benefícios a servidores.",
+   "por_que_acompanhar": [
+    "Garantir a legalidade na administração dos recursos públicos destinados ao pagamento de pessoal.",
+    "Entender como os salários e benefícios dos servidores são calculados e se estão em conformidade com a legislação.",
+    "Verificar a transparência e a correta aplicação das normas que regem o uso do salário mínimo como indexador."
+   ],
+   "pontos_atencao": [
+    "A utilização do salário mínimo como indexador pode ser questionada legalmente, conforme entendimento de tribunais superiores.",
+    "Potencial impacto orçamentário caso haja necessidade de ajustes nos cálculos de vantagens de servidores."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5506/cassio_req_calculo_de_vantagem_de_servidor_publico_ou_empregado_revisado.docx",
+    "valor_principal_ia": ""
+   },
+   "autor": "Cássio Chiodi",
+   "situacao": "tramitação encerrada",
+   "ementa": "Requer informações relativas ao parecer da Procuradoria do Município acerca do motivo pelo qual o salário mínimo está sendo utilizado como indexador da base de cálculo de vantagem de servidor público ou empregado.",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/5506",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5506/cassio_req_calculo_de_vantagem_de_servidor_publico_ou_empregado_revisado.docx"
+   },
+   "localizacao": {
+    "pagina_inicial": null,
+    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5506/cassio_req_calculo_de_vantagem_de_servidor_publico_ou_empregado_revisado.docx"
+   },
+   "origem_ia": "ia",
+   "coleta_origem": "SAPL consolidado (camara_anos.json)",
+   "fonte_hash": "144a7ac89780bcf344aaebf9e55df2ad96f04835",
+   "gerado_em": "2026-09-03T16:09:02+00:00"
+  },
+  {
+   "id": "CAMARA-2026-EMEN-14",
+   "fonte": "camara",
+   "tipo": "emenda",
+   "tipo_label": "Emenda",
+   "orgao": "Câmara de Varginha",
+   "titulo": "Emenda nº 14/2026",
+   "numero": "14/2026",
+   "data": "",
+   "categoria": "Legislativo",
+   "interesse_publico": "alto",
+   "tema": "cultura",
+   "resumo": "Esta emenda propõe adicionar conteúdo ao Projeto de Lei nº 02/2026, que busca alterar uma lei municipal e criar um novo conjunto de regras para o apoio à cultura em Varginha, seguindo uma lei federal.",
+   "o_que_propoe": "A emenda busca incluir novas disposições ao projeto de lei que estabelece o novo regime de fomento cultural do município.",
+   "impacto_cidadao": "Se aprovada, esta emenda poderá influenciar a forma como os recursos para a cultura são distribuídos e utilizados na cidade, afetando eventos e projetos culturais.",
+   "por_que_acompanhar": [
+    "Para entender como os recursos públicos destinados à cultura serão geridos e aplicados.",
+    "Para verificar se as novas regras de fomento cultural beneficiarão a comunidade artística e os cidadãos.",
+    "Para acompanhar a adequação da legislação municipal à lei federal sobre o tema."
+   ],
+   "pontos_atencao": [
+    "O texto da emenda não detalha o conteúdo específico que será adicionado ao projeto de lei.",
+    "A emenda faz parte de uma mudança maior na legislação cultural do município.",
+    "Pode haver impacto na distribuição de recursos ou nos critérios para projetos culturais."
+   ],
+   "valores": {
+    "total": null,
+    "encontrados": [],
+    "natureza": "valor citado na matéria legislativa",
+    "fonte_total": "",
+    "confianca": "indisponivel",
+    "metodo": "",
+    "documento_consultado": "",
+    "pagina": null,
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5696/emenda_aditiva_n.01-2026_ao_projeto_de_lei_n.02-2026.pdf",
+    "valor_principal_ia": ""
+   },
+   "autor": "CSAEL - Comissão de Saúde, Assistência, Promoção Social, Educação, Cultura, Esporte, Turismo e Lazer",
+   "situacao": "tramitação encerrada",
+   "ementa": "EMENDA ADITIVA AO PROJETO DE LEI N9 02/2026, DE AUTORIA DO PODER EXECUTIVO, QUE \"ALTERA DISPOSITIVOS DA LEI MUNICIPAL N° 7.134 DE 25 DE AGOSTO DE 2023 E ESTABELECE O NOVO REGIME JURÍDICO DE FOMENTO CULTURAL DO MUNICÍPIO DE VARGINHA, EM OBSERVÂNCIA À LEI FEDERAL N' 14.903 DE 27 DE JUNHO DE 2024\".",
+   "links": {
+    "consulta": "https://sapl.varginha.mg.leg.br/materia/5696",
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5696/emenda_aditiva_n.01-2026_ao_projeto_de_lei_n.02-2026.pdf"
+   },
+   "localizacao": {
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/5696/emenda_aditiva_n.01-2026_ao_projeto_de_lei_n.02-2026.pdf#page=1"
+   },
+   "origem_ia": "ia",
+   "coleta_origem": "SAPL consolidado (camara_anos.json)",
+   "fonte_hash": "fa7446334f1a12e2b7c90e4b4571eecc8629905c",
+   "gerado_em": "2026-09-03T16:08:56+00:00"
   }
  ]
 }

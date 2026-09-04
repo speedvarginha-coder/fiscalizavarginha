@@ -1,5 +1,5 @@
 {
-  "gerado_em": "2026-09-02T18:25:53.418Z",
+  "gerado_em": "2026-09-04T14:09:52.029Z",
   "level": "attention",
   "summary": {
     "errors": 0,
@@ -9,15 +9,15 @@
     "total": 12
   },
   "atualizado_base": {
-    "iso": "2026-09-02T13:55:04",
-    "data_humana": "02/09/2026 - 13:55"
+    "iso": "2026-09-03T16:45:53",
+    "data_humana": "03/09/2026 - 16:45"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 0.8 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -68,7 +68,7 @@
       "severity": "warning",
       "id": "contratos-PREFEITURA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Prefeitura",
-      "detail": "1435 de 1435 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "1334 de 1334 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "prefeitura.json"
     },
@@ -76,7 +76,7 @@
       "severity": "warning",
       "id": "contratos-CAMARA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Camara",
-      "detail": "47 de 47 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "48 de 48 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "camara_betha.json"
     },
@@ -123,7 +123,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "101 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (246 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "92 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (231 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -131,7 +131,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "246 sancao(oes) de outros entes"
+          "231 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
@@ -153,7 +153,7 @@
           "7 registro(s) sem alcance determinado"
         ],
         "limitacoes": [
-          "A abrangencia oficial nao e coletada hoje — o alcance e inferido de tipo e fundamentacao",
+          "O campo oficial de abrangência não permite determinar o alcance destes registros com segurança",
           "Sem numero de processo e link individual, a conferencia depende de busca manual no CEIS"
         ]
       }
@@ -172,7 +172,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.1 dias.",
+      "detail": "Ultima coleta principal ha 0.8 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -223,7 +223,7 @@
       "severity": "warning",
       "id": "contratos-PREFEITURA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Prefeitura",
-      "detail": "1435 de 1435 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "1334 de 1334 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "prefeitura.json"
     },
@@ -231,7 +231,7 @@
       "severity": "warning",
       "id": "contratos-CAMARA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Camara",
-      "detail": "47 de 47 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "48 de 48 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "camara_betha.json"
     },
@@ -278,7 +278,7 @@
       "severity": "warning",
       "id": "fornecedor-sancionado-outro-ente",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "101 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (246 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "92 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (231 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json",
       "verification": {
@@ -286,7 +286,7 @@
         "metodo": "fornecedor_local_x_ceis_cnep",
         "confianca": "media",
         "evidencias": [
-          "246 sancao(oes) de outros entes"
+          "231 sancao(oes) de outros entes"
         ],
         "limitacoes": [
           "Impedimento de outro ente nao impede por si so contratar com Varginha"
@@ -308,7 +308,7 @@
           "7 registro(s) sem alcance determinado"
         ],
         "limitacoes": [
-          "A abrangencia oficial nao e coletada hoje — o alcance e inferido de tipo e fundamentacao",
+          "O campo oficial de abrangência não permite determinar o alcance destes registros com segurança",
           "Sem numero de processo e link individual, a conferencia depende de busca manual no CEIS"
         ]
       }

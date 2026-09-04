@@ -1,9 +1,9 @@
 {
   "ano_atual": 2026,
   "ano_anterior": 2025,
-  "total_externo_atual": 7056791.02,
+  "total_externo_atual": 7060759.56,
   "total_externo_anterior": 8404647.51,
-  "empenhos_qtd": 3143,
+  "empenhos_qtd": 3151,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -486,6 +486,20 @@
       "contratado": "TECNO TERMICA COMERCIO E SERVICOS LTDA",
       "cnpj": "33.015.917/****-**",
       "valor": 4560.0,
+      "situacao": "EXECUCAO",
+      "entidade": ""
+    },
+    {
+      "numero": "0",
+      "ano": "2026",
+      "data_assinatura": "2026-09-02",
+      "data_fim": "",
+      "modalidade": "",
+      "tipo": "Compras e Serviços",
+      "objeto": "FRAGMENTADORA DE PAPEL AUTOMÁTICA",
+      "contratado": "VIA LUMEN'S AUDIO, VIDEO E INFORMATICA LTDA",
+      "cnpj": "08.335.448/****-**",
+      "valor": 3968.54,
       "situacao": "EXECUCAO",
       "entidade": ""
     },
@@ -1236,7 +1250,7 @@
     "contratos": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 47
+      "registros": 48
     },
     "licitacoes": {
       "status": "partial",
@@ -1244,5 +1258,5 @@
       "registros": 36
     }
   },
-  "coletado_em": "2026-09-02T13:54:09-03:00"
+  "coletado_em": "2026-09-03T16:44:59-03:00"
 }
