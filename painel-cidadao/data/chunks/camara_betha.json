@@ -3,7 +3,7 @@
   "ano_anterior": 2025,
   "total_externo_atual": 7060759.56,
   "total_externo_anterior": 8404647.51,
-  "empenhos_qtd": 3151,
+  "empenhos_qtd": 3153,
   "top_fornecedores_atual": [
     {
       "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
@@ -514,7 +514,7 @@
       "contratado": "FABRICA DE LADRILHOS MATERIAIS E SERVICOS NOSSA SENHORA DE FATIMA LTDA",
       "cnpj": "55.796.672/****-**",
       "valor": 3418.0,
-      "situacao": "EXECUCAO",
+      "situacao": "ENCERRADO",
       "entidade": ""
     },
     {
@@ -1074,6 +1074,16 @@
       "entidade": ""
     },
     {
+      "numero": 57,
+      "ano": "",
+      "modalidade": "Dispensa eletrônica",
+      "objeto": "FRAGMENTADORA DE PAPEL AUTOMÁTICA",
+      "data": "",
+      "valor": 7474.96,
+      "situacao": "HOMOLOGADO",
+      "entidade": ""
+    },
+    {
       "numero": 34,
       "ano": "",
       "modalidade": "Dispensa de licitação",
@@ -1255,8 +1265,8 @@
     "licitacoes": {
       "status": "partial",
       "modo": "busca-textual-fallback",
-      "registros": 36
+      "registros": 37
     }
   },
-  "coletado_em": "2026-09-03T16:44:59-03:00"
+  "coletado_em": "2026-09-04T17:47:38-03:00"
 }

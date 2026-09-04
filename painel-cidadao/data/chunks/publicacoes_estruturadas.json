@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-03T19:46:04+00:00",
+ "gerado_em": "2026-09-04T20:48:58+00:00",
  "fonte": "camara",
  "total": 941,
  "publicacoes": [
@@ -198,7 +198,7 @@
     "valor_principal_ia": ""
    },
    "autor": "Dandan",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Requer informações acerca da possibilidade de implantação de uma ligação rodoviária entre Varginha e os municípios de Monsenhor Paulo e Carmo da Cachoeira.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6279",
@@ -251,7 +251,7 @@
     "valor_principal_ia": ""
    },
    "autor": "Dandan",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Requer informações sobre a situação das árvores localizadas na Praça Prefeito José Braga Jordão, no bairro Vila Barcelona, na interseção das ruas Buenos Aires e João Marcelino Bernardes, especialmente quanto à necessidade de poda e aos riscos existentes para os moradores do entorno.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6278",
@@ -515,7 +515,7 @@
     "valor_principal_ia": ""
    },
    "autor": "Ana Rios Fontoura",
-   "situacao": "em tramitação",
+   "situacao": "tramitação encerrada",
    "ementa": "Requer informações acerca da constante falta de água nos bairros San Marino, São Francisco e Parque São José.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6270",
@@ -4288,7 +4288,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/rogerio_projeto_de_decreto___humanitas___rogerio_revisado.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/projeto_de_decreto_legislativo71-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Rogério Bueno",
@@ -4296,11 +4296,11 @@
    "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL - DR. FERNANDO EUGÊNIO PIRES DO PRADO AO HOSPITAL UNIMED VARGINHA.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6217",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/rogerio_projeto_de_decreto___humanitas___rogerio_revisado.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/projeto_de_decreto_legislativo71-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/rogerio_projeto_de_decreto___humanitas___rogerio_revisado.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/projeto_de_decreto_legislativo71-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -4340,7 +4340,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_-_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes__edirlei_viana_da_silva.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_legislativo70-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Cássio Chiodi",
@@ -4348,11 +4348,11 @@
    "ementa": "CONCEDE A COMENDA DO MÉRITO PROFISSIONAL DA SEGURANÇA PÚBLICA – COMENDA ALFERES TIRADENTES AO CORONEL EDIRLEI VIANA DA SILVA, COMANDANTE DO 6º COMANDO OPERACIONAL DE BOMBEIROS.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6201",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_-_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes__edirlei_viana_da_silva.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_legislativo70-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_-_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes__edirlei_viana_da_silva.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_legislativo70-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",
@@ -4392,7 +4392,7 @@
     "metodo": "",
     "documento_consultado": "",
     "pagina": null,
-    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/alexandre_comenda_dr_tulio_revisada.docx",
+    "link_verificacao": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/projeto_de_decreto_legislativo69-2026.pdf",
     "valor_principal_ia": ""
    },
    "autor": "Alexandre Prado",
@@ -4400,11 +4400,11 @@
    "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL – DR. FERNANDO EUGÊNIO PIRES DO PRADO – AO DR. TÚLIO MAGNO DE MELO CALDONAZO.",
    "links": {
     "consulta": "https://sapl.varginha.mg.leg.br/materia/6194",
-    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/alexandre_comenda_dr_tulio_revisada.docx"
+    "inteiro_teor": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/projeto_de_decreto_legislativo69-2026.pdf"
    },
    "localizacao": {
-    "pagina_inicial": null,
-    "link_direto": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/alexandre_comenda_dr_tulio_revisada.docx"
+    "pagina_inicial": 1,
+    "link_direto": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/projeto_de_decreto_legislativo69-2026.pdf#page=1"
    },
    "origem_ia": "ia",
    "coleta_origem": "API oficial do SAPL",

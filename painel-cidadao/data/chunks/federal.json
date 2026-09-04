@@ -1,10 +1,10 @@
 {
   "fonte": "Portal da Transparência Federal (CGU) — dados abertos e APIs oficiais",
-  "atualizado_em": "2026-09-04T05:17:00.705735",
+  "atualizado_em": "2026-09-04T17:44:38.359859",
   "resumo": {
     "municipio": "Varginha-MG",
     "codigoIbge": "3170701",
-    "atualizadoEm": "04/09/2026 05:17",
+    "atualizadoEm": "04/09/2026 17:44",
     "emendas": {
       "qtd": 104,
       "totalAgregadoFavorecidos": 23370041.99,
@@ -2538,666 +2538,7 @@
   ],
   "transferencias_especiais": [
     {
-      "emenda": "202627540001",
-      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=92535",
-      "valorEmpenhado": 1194000.0,
-      "valorLiquidado": null,
-      "valorPago": 1194000.0,
-      "valorRecebido": 1194000.0,
-      "valorExecutado": null,
-      "identificador_repasse_confirmado": true,
-      "contabilizado_como_repasse_individual": true,
-      "classificacaoComprovacao": "Confirmado",
-      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
-      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
-      "valorIndicado": 1194000.0,
-      "documentosVinculados": [
-        {
-          "etapa": "empenho",
-          "numero": "2026NE007169",
-          "data": "2026-06-19",
-          "valor": 1194000.0,
-          "situacao": "Empenho Original",
-          "vinculo": "Plano 92535; empenho 63000",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=92535"
-        },
-        {
-          "etapa": "transferencia",
-          "numero": "2026OB004145",
-          "data": "2026-06-22",
-          "valor": null,
-          "situacao": "OB Enviada à instituição bancária para pagamento",
-          "vinculo": "Documento hábil 77659, vinculado ao empenho federal",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=77659"
-        },
-        {
-          "etapa": "recebimento",
-          "numero": "001-4553148",
-          "data": "2026-06-23",
-          "valor": 1194000.0,
-          "situacao": "Ordem Bancária",
-          "vinculo": "Conta 32-106785 do executor do plano 92535",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-106785"
-        }
-      ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:43.463224+00:00",
-      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=92535",
-      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=92535",
-      "dataEmpenho": "2026-06-19",
-      "dataPagamento": "2026-06-22",
-      "dataRecurso": "2026-06-23",
-      "execucao": "plano de ação CIENTE · plano de trabalho Aprovado · empenho federal 19/06/2026 · ordem bancária 22/06/2026 · crédito na conta vinculada 23/06/2026 · execução/prestação de contas ainda não localizada na API",
-      "planoAcaoId": 92535,
-      "codigoPlanoAcao": "09032026-092535",
-      "situacaoPlanoAcao": "CIENTE",
-      "planoTrabalhoId": 48124,
-      "situacaoPlanoTrabalho": "Aprovado",
-      "inicioExecucaoPlano": "2026-06-22",
-      "fimExecucaoPlano": "2028-06-22",
-      "objetoTransferegov": "O estabelecimento de saúde a ser beneficiado é o Hospital Bom Pastor, CNES nº 2761092, instituído como Fundação Hospitalar do Município de Varginha – FHOMUV, referência na assistência hospitalar e ambulatorial especializada no âmbito do Sistema Único de Saúde (SUS) para Varginha e região.A presente proposta tem por finalidade a aquisição de um sistema avançado de mamografia digital, integrado a tecnologia de biópsia guiada por imagem, dotado de detector digital de alta resolução, gerador de raios X de alta frequência, tubo dedicado, dispositivo de compressão motorizado e estação de trabalho com softwares especializados e monitores de grau médico.O equipamento permitirá não apenas a ampliação e qualificação da oferta de exames de mamografia para rastreamento e diagnóstico precoce do câncer de mama, em conformidade com as diretrizes do Ministério da Saúde, como também a realização de procedimentos minimamente invasivos de biópsia guiada por imagem, aumentando a resolutividade do serviço e reduzindo o tempo entre detecção e confirmação diagnóstica.A incorporação dessa tecnologia proporcionará melhoria significativa na qualidade das imagens, maior precisão diagnóstica, maior segurança nos procedimentos intervencionistas, eficiência operacional e otimização do fluxo assistencial. Ademais, contribuirá para o fortalecimento da capacidade instalada da unidade, promovendo a integralidade do cuidado e a qualificação do atendimento às usuárias do SUS em Varginha e região.",
-      "metaTransferegov": "Aquisição de mamógrafo digital para atendimento da rede de atenção especializada à  saúde do município e região, ampliando a oferta de exames de diagnóstico por imagem no SUS.",
-      "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
-      "banco": "Banco do Brasil",
-      "conta": "32-106785",
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 1219165.29,
-      "dataSaldoConta": "2026-06-23",
-      "numeroEmpenhos": [
-        "2026NE007169"
-      ],
-      "numeroOrdensBancarias": [
-        "2026OB004145"
-      ],
-      "qtdDocumentos": 1,
-      "qtdOrdensBancarias": 1,
-      "relatorioGestaoLocalizado": false,
-      "situacaoRelatorioGestao": "Não localizado na API",
-      "planosRelacionados": [
-        {
-          "planoAcaoId": 92535,
-          "codigoPlanoAcao": "09032026-092535",
-          "situacao": "CIENTE",
-          "valor": 1194000.0,
-          "motivoImpedimento": null
-        }
-      ],
-      "impedimentosHistoricos": [],
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=92535",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "codigoEmendaTransferegov": "202627540001",
-      "anoEmendaTransferegov": "2026"
-    },
-    {
-      "emenda": "202527540001",
-      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=86374",
-      "valorEmpenhado": 247500.0,
-      "valorLiquidado": null,
-      "valorPago": 247500.0,
-      "valorRecebido": null,
-      "valorExecutado": null,
-      "identificador_repasse_confirmado": false,
-      "contabilizado_como_repasse_individual": false,
-      "classificacaoComprovacao": "Parcial",
-      "statusFinanceiro": "Transferência ainda não confirmada na conta vinculada",
-      "observacaoEvidencia": "Plano localizado, mas sem crédito bancário confirmado na conta vinculada.",
-      "valorIndicado": 247500.0,
-      "documentosVinculados": [
-        {
-          "etapa": "empenho",
-          "numero": "2025NE009718",
-          "data": "2025-12-15",
-          "valor": 247500.0,
-          "situacao": "Empenho Original",
-          "vinculo": "Plano 86374; empenho 56258",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=86374"
-        },
-        {
-          "etapa": "transferencia",
-          "numero": "2025OB009760",
-          "data": "2025-12-18",
-          "valor": null,
-          "situacao": "OB Enviada à instituição bancária para pagamento",
-          "vinculo": "Documento hábil 70207, vinculado ao empenho federal",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=70207"
-        }
-      ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:42.479912+00:00",
-      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=86374",
-      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=86374",
-      "dataEmpenho": "2025-12-15",
-      "dataPagamento": "2025-12-18",
-      "dataRecurso": "",
-      "execucao": "plano de ação CIENTE · plano de trabalho Aprovado · empenho federal 15/12/2025 · ordem bancária 18/12/2025 · execução/prestação de contas ainda não localizada na API",
-      "planoAcaoId": 86374,
-      "codigoPlanoAcao": "09032025-2-086374",
-      "situacaoPlanoAcao": "CIENTE",
-      "planoTrabalhoId": 46517,
-      "situacaoPlanoTrabalho": "Aprovado",
-      "inicioExecucaoPlano": "2025-12-18",
-      "fimExecucaoPlano": "2026-12-18",
-      "objetoTransferegov": "O Município de Varginha solicita o recebimento de Emenda Parlamentar de Transferência Especializada destinada ao custeio de exames de Ressonância Magnética, considerados de alto custo e atualmente com demanda represada de aproximadamente 350 pacientes em fila de espera.Como o município não possui estrutura própria para realizar esse tipo de exame, sua execução ocorre por meio de prestadores terceirizados devidamente credenciados, que realizam os procedimentos diretamente em seus estabelecimentos.O recurso solicitado será utilizado exclusivamente para ampliar a oferta desses exames, reduzir a fila de espera e garantir maior resolutividade na assistência especializada prestada à população de Varginha.",
-      "metaTransferegov": "Pagamento a prestadores de serviços",
-      "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
-      "banco": "Caixa Econômica Federal",
-      "conta": "163-573063039",
-      "executorTransferegov": "FUNDO MUNICIPAL DE SAUDE",
-      "cnpjExecutorTransferegov": "11234223000130",
-      "saldoContaInformativo": null,
-      "dataSaldoConta": "",
-      "numeroEmpenhos": [
-        "2025NE009718"
-      ],
-      "numeroOrdensBancarias": [
-        "2025OB009760"
-      ],
-      "qtdDocumentos": 1,
-      "qtdOrdensBancarias": 1,
-      "relatorioGestaoLocalizado": false,
-      "situacaoRelatorioGestao": "Não localizado na API",
-      "planosRelacionados": [
-        {
-          "planoAcaoId": 77116,
-          "codigoPlanoAcao": "09032025-077116",
-          "situacao": "IMPEDIDO",
-          "valor": 247500.0,
-          "motivoImpedimento": "Impedido por falta de análise conclusiva no prazo estabelecido."
-        },
-        {
-          "planoAcaoId": 86374,
-          "codigoPlanoAcao": "09032025-2-086374",
-          "situacao": "CIENTE",
-          "valor": 247500.0,
-          "motivoImpedimento": null
-        }
-      ],
-      "impedimentosHistoricos": [
-        {
-          "planoAcaoId": 77116,
-          "situacao": "IMPEDIDO",
-          "motivo": "Impedido por falta de análise conclusiva no prazo estabelecido."
-        }
-      ],
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=86374",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "codigoEmendaTransferegov": "202527540001",
-      "anoEmendaTransferegov": "2025"
-    },
-    {
-      "emenda": "202444540004",
-      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=75109",
-      "valorEmpenhado": 200000.0,
-      "valorLiquidado": null,
-      "valorPago": 200000.0,
-      "valorRecebido": 200000.0,
-      "valorExecutado": null,
-      "identificador_repasse_confirmado": true,
-      "contabilizado_como_repasse_individual": true,
-      "classificacaoComprovacao": "Confirmado",
-      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
-      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
-      "valorIndicado": 200000.0,
-      "documentosVinculados": [
-        {
-          "etapa": "empenho",
-          "numero": "2024NE005661",
-          "data": "2024-06-26",
-          "valor": 200000.0,
-          "situacao": "Empenho Original",
-          "vinculo": "Plano 75109; empenho 45349",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=75109"
-        },
-        {
-          "etapa": "transferencia",
-          "numero": "2024OB012048",
-          "data": "2024-12-13",
-          "valor": null,
-          "situacao": "OB Enviada à instituição bancária para pagamento",
-          "vinculo": "Documento hábil 53631, vinculado ao empenho federal",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=53631"
-        },
-        {
-          "etapa": "recebimento",
-          "numero": "001-2314241",
-          "data": "2024-12-16",
-          "valor": 200000.0,
-          "situacao": "Ordem Bancria",
-          "vinculo": "Conta 32-98734 do executor do plano 75109",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98734"
-        }
-      ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:41.557985+00:00",
-      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=75109",
-      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=75109",
-      "dataEmpenho": "2024-06-26",
-      "dataPagamento": "2024-12-13",
-      "dataRecurso": "2024-12-16",
-      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 13/12/2024 · crédito na conta vinculada 16/12/2024 · execução/prestação de contas ainda não localizada na API",
-      "planoAcaoId": 75109,
-      "codigoPlanoAcao": "09032024-075109",
-      "situacaoPlanoAcao": "CIENTE",
-      "planoTrabalhoId": 8763,
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "inicioExecucaoPlano": "2025-01-01",
-      "fimExecucaoPlano": "2026-01-01",
-      "objetoTransferegov": "Aquisição de equipamentos e mobiliários para Centro Ambulatorial de Especialidades da Criança. Realizada Licitação Nº do Processo: 150/2025, disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-150-2025-2025-444145.",
-      "metaTransferegov": "Aquisição de equipamentos e mobiliários.",
-      "finalidadeTransferegov": "Saúde / Atenção Básica; Saúde / Assistência Hospitalar e Ambulatorial; Saúde / Alimentação e Nutrição",
-      "banco": "Banco do Brasil",
-      "conta": "32-98734",
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 238627.69,
-      "dataSaldoConta": "2024-12-16",
-      "numeroEmpenhos": [
-        "2024NE005661"
-      ],
-      "numeroOrdensBancarias": [
-        "2024OB012048"
-      ],
-      "qtdDocumentos": 1,
-      "qtdOrdensBancarias": 1,
-      "relatorioGestaoLocalizado": false,
-      "situacaoRelatorioGestao": "Não localizado na API",
-      "planosRelacionados": [
-        {
-          "planoAcaoId": 75109,
-          "codigoPlanoAcao": "09032024-075109",
-          "situacao": "CIENTE",
-          "valor": 200000.0,
-          "motivoImpedimento": null
-        }
-      ],
-      "impedimentosHistoricos": [],
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=75109",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "codigoEmendaTransferegov": "202444540004",
-      "anoEmendaTransferegov": "2024"
-    },
-    {
-      "emenda": "202427640015",
-      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=70376",
-      "valorEmpenhado": 50000.0,
-      "valorLiquidado": null,
-      "valorPago": 50000.0,
-      "valorRecebido": 50000.0,
-      "valorExecutado": null,
-      "identificador_repasse_confirmado": true,
-      "contabilizado_como_repasse_individual": true,
-      "classificacaoComprovacao": "Confirmado",
-      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
-      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
-      "valorIndicado": 50000.0,
-      "documentosVinculados": [
-        {
-          "etapa": "empenho",
-          "numero": "2024NE005672",
-          "data": "2024-06-26",
-          "valor": 50000.0,
-          "situacao": "Empenho Original",
-          "vinculo": "Plano 70376; empenho 40640",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=70376"
-        },
-        {
-          "etapa": "transferencia",
-          "numero": "2024OB006920",
-          "data": "2024-12-12",
-          "valor": null,
-          "situacao": "OB Enviada à instituição bancária para pagamento",
-          "vinculo": "Documento hábil 53642, vinculado ao empenho federal",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=53642"
-        },
-        {
-          "etapa": "recebimento",
-          "numero": "001-2239646",
-          "data": "2024-12-13",
-          "valor": 50000.0,
-          "situacao": "Ordem Bancria",
-          "vinculo": "Conta 32-98732 do executor do plano 70376",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98732"
-        }
-      ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:39.671408+00:00",
-      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=70376",
-      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=70376",
-      "dataEmpenho": "2024-06-26",
-      "dataPagamento": "2024-12-12",
-      "dataRecurso": "2024-12-13",
-      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 12/12/2024 · crédito na conta vinculada 13/12/2024 · execução/prestação de contas ainda não localizada na API",
-      "planoAcaoId": 70376,
-      "codigoPlanoAcao": "09032024-070376",
-      "situacaoPlanoAcao": "CIENTE",
-      "planoTrabalhoId": 15153,
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "inicioExecucaoPlano": "2025-01-01",
-      "fimExecucaoPlano": "2027-01-01",
-      "objetoTransferegov": "Aquisição de equipamentos e mobiliários para Centro Ambulatorial de Especialidades da Criança. Realizado Licitação Nº do Processo: 125/2025.  Aquisição de Mobiliários e Equipamentos para o atendimento do Centro Ambulatorial de Especialidades Pediátricas pertencente à Secretaria Municipal da Saúde (Emenda Parlamentar de Transferência Especial nº 202427640015, disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-125-2025-2025-438348.",
-      "metaTransferegov": "Aquisição de equipamentos e mobiliários.; Aquisição de equipamentos e mobiliários para assistência Hospitalar e Ambulatorial (302); Aquisição de equipamentos e mobiliários para Alimentação e Nutrição (306)",
-      "finalidadeTransferegov": "Saúde / Atenção Básica; Saúde / Assistência Hospitalar e Ambulatorial; Saúde / Alimentação e Nutrição",
-      "banco": "Banco do Brasil",
-      "conta": "32-98732",
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 59676.89,
-      "dataSaldoConta": "2024-12-13",
-      "numeroEmpenhos": [
-        "2024NE005672"
-      ],
-      "numeroOrdensBancarias": [
-        "2024OB006920"
-      ],
-      "qtdDocumentos": 1,
-      "qtdOrdensBancarias": 1,
-      "relatorioGestaoLocalizado": false,
-      "situacaoRelatorioGestao": "Não localizado na API",
-      "planosRelacionados": [
-        {
-          "planoAcaoId": 70376,
-          "codigoPlanoAcao": "09032024-070376",
-          "situacao": "CIENTE",
-          "valor": 50000.0,
-          "motivoImpedimento": null
-        }
-      ],
-      "impedimentosHistoricos": [],
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=70376",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "codigoEmendaTransferegov": "202427640015",
-      "anoEmendaTransferegov": "2024"
-    },
-    {
-      "emenda": "202414110024",
-      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=69606",
-      "valorEmpenhado": 100000.0,
-      "valorLiquidado": null,
-      "valorPago": 100000.0,
-      "valorRecebido": 100000.0,
-      "valorExecutado": null,
-      "identificador_repasse_confirmado": true,
-      "contabilizado_como_repasse_individual": true,
-      "classificacaoComprovacao": "Confirmado",
-      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
-      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
-      "valorIndicado": 100000.0,
-      "documentosVinculados": [
-        {
-          "etapa": "empenho",
-          "numero": "2024NE005673",
-          "data": "2024-06-26",
-          "valor": 100000.0,
-          "situacao": "Empenho Original",
-          "vinculo": "Plano 69606; empenho 39939",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=69606"
-        },
-        {
-          "etapa": "transferencia",
-          "numero": "2024OB006237",
-          "data": "2024-12-12",
-          "valor": null,
-          "situacao": "OB Enviada à instituição bancária para pagamento",
-          "vinculo": "Documento hábil 53643, vinculado ao empenho federal",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=53643"
-        },
-        {
-          "etapa": "recebimento",
-          "numero": "001-2239655",
-          "data": "2024-12-13",
-          "valor": 100000.0,
-          "situacao": "Ordem Bancria",
-          "vinculo": "Conta 32-98733 do executor do plano 69606",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98733"
-        }
-      ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:38.745577+00:00",
-      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=69606",
-      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=69606",
-      "dataEmpenho": "2024-06-26",
-      "dataPagamento": "2024-12-12",
-      "dataRecurso": "2024-12-13",
-      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 12/12/2024 · crédito na conta vinculada 13/12/2024 · execução/prestação de contas ainda não localizada na API",
-      "planoAcaoId": 69606,
-      "codigoPlanoAcao": "09032024-069606",
-      "situacaoPlanoAcao": "CIENTE",
-      "planoTrabalhoId": 15151,
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "inicioExecucaoPlano": "2025-01-01",
-      "fimExecucaoPlano": "2027-01-01",
-      "objetoTransferegov": "Aquisição de equipamentos e mobiliário para Centro Ambulatorial de Especialidades da Criança. Processo Licitatório Nº do Processo: 137/2025. Aquisição de Mobiliários e Equipamentos para o atendimento do Centro Ambulatorial de Especialidades Pediátricas pertencente à Secretaria Municipal da Saúde (Emenda Parlamentar de Transferência Especial nº 202414110024, Disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-137-2025-2025-441977.",
-      "metaTransferegov": "Aquisição de equipamentos e mobiliários.",
-      "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
-      "banco": "Banco do Brasil",
-      "conta": "32-98733",
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 54352.92,
-      "dataSaldoConta": "2026-05-20",
-      "numeroEmpenhos": [
-        "2024NE005673"
-      ],
-      "numeroOrdensBancarias": [
-        "2024OB006237"
-      ],
-      "qtdDocumentos": 1,
-      "qtdOrdensBancarias": 1,
-      "relatorioGestaoLocalizado": false,
-      "situacaoRelatorioGestao": "Não localizado na API",
-      "planosRelacionados": [
-        {
-          "planoAcaoId": 69606,
-          "codigoPlanoAcao": "09032024-069606",
-          "situacao": "CIENTE",
-          "valor": 100000.0,
-          "motivoImpedimento": null
-        }
-      ],
-      "impedimentosHistoricos": [],
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=69606",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "codigoEmendaTransferegov": "202414110024",
-      "anoEmendaTransferegov": "2024"
-    },
-    {
-      "emenda": "202437130005",
-      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=72397",
-      "valorEmpenhado": 1000000.0,
-      "valorLiquidado": null,
-      "valorPago": 1000000.0,
-      "valorRecebido": 1000000.0,
-      "valorExecutado": null,
-      "identificador_repasse_confirmado": true,
-      "contabilizado_como_repasse_individual": true,
-      "classificacaoComprovacao": "Confirmado",
-      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
-      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
-      "valorIndicado": 1000000.0,
-      "documentosVinculados": [
-        {
-          "etapa": "empenho",
-          "numero": "2024NE005609",
-          "data": "2024-06-26",
-          "valor": 1000000.0,
-          "situacao": "Empenho Original",
-          "vinculo": "Plano 72397; empenho 42637",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=72397"
-        },
-        {
-          "etapa": "transferencia",
-          "numero": "2024OB001938",
-          "data": "2024-07-03",
-          "valor": null,
-          "situacao": "OB Enviada à instituição bancária para pagamento",
-          "vinculo": "Documento hábil 53579, vinculado ao empenho federal",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=53579"
-        },
-        {
-          "etapa": "recebimento",
-          "numero": "001-1537352",
-          "data": "2024-07-04",
-          "valor": 1000000.0,
-          "situacao": "Ordem Bancria",
-          "vinculo": "Conta 32-98731 do executor do plano 72397",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98731"
-        }
-      ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:40.563934+00:00",
-      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=72397",
-      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=72397",
-      "dataEmpenho": "2024-06-26",
-      "dataPagamento": "2024-07-03",
-      "dataRecurso": "2024-07-04",
-      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 03/07/2024 · crédito na conta vinculada 04/07/2024 · execução/prestação de contas ainda não localizada na API",
-      "planoAcaoId": 72397,
-      "codigoPlanoAcao": "09032024-072397",
-      "situacaoPlanoAcao": "CIENTE",
-      "planoTrabalhoId": 6958,
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "inicioExecucaoPlano": "2025-01-01",
-      "fimExecucaoPlano": "2026-01-01",
-      "objetoTransferegov": "Construção de unidades escolares e aquisição de máquinários.",
-      "metaTransferegov": "Construção de unidades escolares.; Aquisição de Maquinários.",
-      "finalidadeTransferegov": "Educação / Educação Básica; Urbanismo / Infraestrutura Urbana",
-      "banco": "Banco do Brasil",
-      "conta": "32-98731",
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 174273.1,
-      "dataSaldoConta": "2024-12-17",
-      "numeroEmpenhos": [
-        "2024NE005609"
-      ],
-      "numeroOrdensBancarias": [
-        "2024OB001938"
-      ],
-      "qtdDocumentos": 1,
-      "qtdOrdensBancarias": 1,
-      "relatorioGestaoLocalizado": false,
-      "situacaoRelatorioGestao": "Não localizado na API",
-      "planosRelacionados": [
-        {
-          "planoAcaoId": 72397,
-          "codigoPlanoAcao": "09032024-072397",
-          "situacao": "CIENTE",
-          "valor": 1000000.0,
-          "motivoImpedimento": null
-        }
-      ],
-      "impedimentosHistoricos": [],
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=72397",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "codigoEmendaTransferegov": "202437130005",
-      "anoEmendaTransferegov": "2024"
-    },
-    {
-      "emenda": "202214080012",
-      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=15703",
-      "valorEmpenhado": 100000.0,
-      "valorLiquidado": null,
-      "valorPago": 100000.0,
-      "valorRecebido": 100000.0,
-      "valorExecutado": null,
-      "identificador_repasse_confirmado": true,
-      "contabilizado_como_repasse_individual": true,
-      "classificacaoComprovacao": "Confirmado",
-      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
-      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
-      "valorIndicado": 100000.0,
-      "documentosVinculados": [
-        {
-          "etapa": "empenho",
-          "numero": "2022NE008218",
-          "data": "2022-06-10",
-          "valor": 100000.0,
-          "situacao": "Empenho Original",
-          "vinculo": "Plano 15703; empenho 17236",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=15703"
-        },
-        {
-          "etapa": "transferencia",
-          "numero": "2023OB803559",
-          "data": "2023-03-29",
-          "valor": null,
-          "situacao": "OB Enviada à instituição bancária para pagamento",
-          "vinculo": "Documento hábil 36218, vinculado ao empenho federal",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=36218"
-        },
-        {
-          "etapa": "recebimento",
-          "numero": "001-861333",
-          "data": "2023-03-30",
-          "valor": 100000.0,
-          "situacao": "Ordem Bancria",
-          "vinculo": "Conta 32-92683 do executor do plano 15703",
-          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-92683"
-        }
-      ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:37.807193+00:00",
-      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=15703",
-      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=15703",
-      "dataEmpenho": "2022-06-10",
-      "dataPagamento": "2023-03-29",
-      "dataRecurso": "2023-03-30",
-      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 10/06/2022 · ordem bancária 29/03/2023 · crédito na conta vinculada 30/03/2023 · execução/prestação de contas ainda não localizada na API",
-      "planoAcaoId": 15703,
-      "codigoPlanoAcao": "09032022-015703",
-      "situacaoPlanoAcao": "CIENTE",
-      "planoTrabalhoId": 26208,
-      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
-      "inicioExecucaoPlano": "2025-01-01",
-      "fimExecucaoPlano": "2028-01-01",
-      "objetoTransferegov": "Construção de Canil Municipal",
-      "metaTransferegov": "Construção de Canil",
-      "finalidadeTransferegov": "Gestão Ambiental / Controle Ambiental",
-      "banco": "Banco do Brasil",
-      "conta": "32-92683",
-      "executorTransferegov": "MUNICIPIO DE VARGINHA",
-      "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 87476.11,
-      "dataSaldoConta": "2026-08-21",
-      "numeroEmpenhos": [
-        "2022NE008218"
-      ],
-      "numeroOrdensBancarias": [
-        "2023OB803559"
-      ],
-      "qtdDocumentos": 1,
-      "qtdOrdensBancarias": 1,
-      "relatorioGestaoLocalizado": false,
-      "situacaoRelatorioGestao": "Não localizado na API",
-      "planosRelacionados": [
-        {
-          "planoAcaoId": 15703,
-          "codigoPlanoAcao": "09032022-015703",
-          "situacao": "CIENTE",
-          "valor": 100000.0,
-          "motivoImpedimento": null
-        }
-      ],
-      "impedimentosHistoricos": [],
-      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
-      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=15703",
-      "granularidade": "emenda_plano_acao_transferegov",
-      "codigoEmendaTransferegov": "202214080012",
-      "anoEmendaTransferegov": "2022"
-    },
-    {
       "emenda": "202027550010",
-      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=3938",
-      "valorEmpenhado": 670227.0,
-      "valorLiquidado": null,
-      "valorPago": 670227.0,
-      "valorRecebido": 670227.0,
-      "valorExecutado": null,
-      "identificador_repasse_confirmado": true,
-      "contabilizado_como_repasse_individual": true,
-      "classificacaoComprovacao": "Confirmado",
-      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
-      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "valorIndicado": 670227.0,
       "documentosVinculados": [
         {
@@ -3255,13 +2596,19 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-88110"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:36.814454+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:44:30.652619+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=3938",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=3938",
+      "valorEmpenhado": 670227.0,
+      "valorLiquidado": null,
+      "valorPago": 670227.0,
+      "valorRecebido": 670227.0,
+      "valorExecutado": null,
       "dataEmpenho": "2020-05-18",
       "dataPagamento": "2020-06-26",
       "dataRecurso": "2020-06-29",
       "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 18/05/2020 · ordem bancária 26/06/2020 · crédito na conta vinculada 29/06/2020 · execução/prestação de contas ainda não localizada na API",
+      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
       "planoAcaoId": 3938,
       "codigoPlanoAcao": "0903-003938",
       "situacaoPlanoAcao": "CIENTE",
@@ -3301,10 +2648,663 @@
       ],
       "impedimentosHistoricos": [],
       "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=3938",
       "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=3938",
       "granularidade": "emenda_plano_acao_transferegov",
+      "identificador_repasse_confirmado": true,
+      "contabilizado_como_repasse_individual": true,
+      "classificacaoComprovacao": "Confirmado",
+      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
       "codigoEmendaTransferegov": "202027550010",
       "anoEmendaTransferegov": "2020"
+    },
+    {
+      "emenda": "202214080012",
+      "valorIndicado": 100000.0,
+      "documentosVinculados": [
+        {
+          "etapa": "empenho",
+          "numero": "2022NE008218",
+          "data": "2022-06-10",
+          "valor": 100000.0,
+          "situacao": "Empenho Original",
+          "vinculo": "Plano 15703; empenho 17236",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=15703"
+        },
+        {
+          "etapa": "transferencia",
+          "numero": "2023OB803559",
+          "data": "2023-03-29",
+          "valor": null,
+          "situacao": "OB Enviada à instituição bancária para pagamento",
+          "vinculo": "Documento hábil 36218, vinculado ao empenho federal",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=36218"
+        },
+        {
+          "etapa": "recebimento",
+          "numero": "001-861333",
+          "data": "2023-03-30",
+          "valor": 100000.0,
+          "situacao": "Ordem Bancria",
+          "vinculo": "Conta 32-92683 do executor do plano 15703",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-92683"
+        }
+      ],
+      "evidenciasConsultadasEm": "2026-09-04T20:44:31.656844+00:00",
+      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=15703",
+      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=15703",
+      "valorEmpenhado": 100000.0,
+      "valorLiquidado": null,
+      "valorPago": 100000.0,
+      "valorRecebido": 100000.0,
+      "valorExecutado": null,
+      "dataEmpenho": "2022-06-10",
+      "dataPagamento": "2023-03-29",
+      "dataRecurso": "2023-03-30",
+      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 10/06/2022 · ordem bancária 29/03/2023 · crédito na conta vinculada 30/03/2023 · execução/prestação de contas ainda não localizada na API",
+      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
+      "planoAcaoId": 15703,
+      "codigoPlanoAcao": "09032022-015703",
+      "situacaoPlanoAcao": "CIENTE",
+      "planoTrabalhoId": 26208,
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "inicioExecucaoPlano": "2025-01-01",
+      "fimExecucaoPlano": "2028-01-01",
+      "objetoTransferegov": "Construção de Canil Municipal",
+      "metaTransferegov": "Construção de Canil",
+      "finalidadeTransferegov": "Gestão Ambiental / Controle Ambiental",
+      "banco": "Banco do Brasil",
+      "conta": "32-92683",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "saldoContaInformativo": 87476.11,
+      "dataSaldoConta": "2026-08-21",
+      "numeroEmpenhos": [
+        "2022NE008218"
+      ],
+      "numeroOrdensBancarias": [
+        "2023OB803559"
+      ],
+      "qtdDocumentos": 1,
+      "qtdOrdensBancarias": 1,
+      "relatorioGestaoLocalizado": false,
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "planosRelacionados": [
+        {
+          "planoAcaoId": 15703,
+          "codigoPlanoAcao": "09032022-015703",
+          "situacao": "CIENTE",
+          "valor": 100000.0,
+          "motivoImpedimento": null
+        }
+      ],
+      "impedimentosHistoricos": [],
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=15703",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=15703",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "identificador_repasse_confirmado": true,
+      "contabilizado_como_repasse_individual": true,
+      "classificacaoComprovacao": "Confirmado",
+      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
+      "codigoEmendaTransferegov": "202214080012",
+      "anoEmendaTransferegov": "2022"
+    },
+    {
+      "emenda": "202414110024",
+      "valorIndicado": 100000.0,
+      "documentosVinculados": [
+        {
+          "etapa": "empenho",
+          "numero": "2024NE005673",
+          "data": "2024-06-26",
+          "valor": 100000.0,
+          "situacao": "Empenho Original",
+          "vinculo": "Plano 69606; empenho 39939",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=69606"
+        },
+        {
+          "etapa": "transferencia",
+          "numero": "2024OB006237",
+          "data": "2024-12-12",
+          "valor": null,
+          "situacao": "OB Enviada à instituição bancária para pagamento",
+          "vinculo": "Documento hábil 53643, vinculado ao empenho federal",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=53643"
+        },
+        {
+          "etapa": "recebimento",
+          "numero": "001-2239655",
+          "data": "2024-12-13",
+          "valor": 100000.0,
+          "situacao": "Ordem Bancria",
+          "vinculo": "Conta 32-98733 do executor do plano 69606",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98733"
+        }
+      ],
+      "evidenciasConsultadasEm": "2026-09-04T20:44:32.610808+00:00",
+      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=69606",
+      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=69606",
+      "valorEmpenhado": 100000.0,
+      "valorLiquidado": null,
+      "valorPago": 100000.0,
+      "valorRecebido": 100000.0,
+      "valorExecutado": null,
+      "dataEmpenho": "2024-06-26",
+      "dataPagamento": "2024-12-12",
+      "dataRecurso": "2024-12-13",
+      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 12/12/2024 · crédito na conta vinculada 13/12/2024 · execução/prestação de contas ainda não localizada na API",
+      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
+      "planoAcaoId": 69606,
+      "codigoPlanoAcao": "09032024-069606",
+      "situacaoPlanoAcao": "CIENTE",
+      "planoTrabalhoId": 15151,
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "inicioExecucaoPlano": "2025-01-01",
+      "fimExecucaoPlano": "2027-01-01",
+      "objetoTransferegov": "Aquisição de equipamentos e mobiliário para Centro Ambulatorial de Especialidades da Criança. Processo Licitatório Nº do Processo: 137/2025. Aquisição de Mobiliários e Equipamentos para o atendimento do Centro Ambulatorial de Especialidades Pediátricas pertencente à Secretaria Municipal da Saúde (Emenda Parlamentar de Transferência Especial nº 202414110024, Disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-137-2025-2025-441977.",
+      "metaTransferegov": "Aquisição de equipamentos e mobiliários.",
+      "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
+      "banco": "Banco do Brasil",
+      "conta": "32-98733",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "saldoContaInformativo": 54352.92,
+      "dataSaldoConta": "2026-05-20",
+      "numeroEmpenhos": [
+        "2024NE005673"
+      ],
+      "numeroOrdensBancarias": [
+        "2024OB006237"
+      ],
+      "qtdDocumentos": 1,
+      "qtdOrdensBancarias": 1,
+      "relatorioGestaoLocalizado": false,
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "planosRelacionados": [
+        {
+          "planoAcaoId": 69606,
+          "codigoPlanoAcao": "09032024-069606",
+          "situacao": "CIENTE",
+          "valor": 100000.0,
+          "motivoImpedimento": null
+        }
+      ],
+      "impedimentosHistoricos": [],
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=69606",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=69606",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "identificador_repasse_confirmado": true,
+      "contabilizado_como_repasse_individual": true,
+      "classificacaoComprovacao": "Confirmado",
+      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
+      "codigoEmendaTransferegov": "202414110024",
+      "anoEmendaTransferegov": "2024"
+    },
+    {
+      "emenda": "202427640015",
+      "valorIndicado": 50000.0,
+      "documentosVinculados": [
+        {
+          "etapa": "empenho",
+          "numero": "2024NE005672",
+          "data": "2024-06-26",
+          "valor": 50000.0,
+          "situacao": "Empenho Original",
+          "vinculo": "Plano 70376; empenho 40640",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=70376"
+        },
+        {
+          "etapa": "transferencia",
+          "numero": "2024OB006920",
+          "data": "2024-12-12",
+          "valor": null,
+          "situacao": "OB Enviada à instituição bancária para pagamento",
+          "vinculo": "Documento hábil 53642, vinculado ao empenho federal",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=53642"
+        },
+        {
+          "etapa": "recebimento",
+          "numero": "001-2239646",
+          "data": "2024-12-13",
+          "valor": 50000.0,
+          "situacao": "Ordem Bancria",
+          "vinculo": "Conta 32-98732 do executor do plano 70376",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98732"
+        }
+      ],
+      "evidenciasConsultadasEm": "2026-09-04T20:44:33.588162+00:00",
+      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=70376",
+      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=70376",
+      "valorEmpenhado": 50000.0,
+      "valorLiquidado": null,
+      "valorPago": 50000.0,
+      "valorRecebido": 50000.0,
+      "valorExecutado": null,
+      "dataEmpenho": "2024-06-26",
+      "dataPagamento": "2024-12-12",
+      "dataRecurso": "2024-12-13",
+      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 12/12/2024 · crédito na conta vinculada 13/12/2024 · execução/prestação de contas ainda não localizada na API",
+      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
+      "planoAcaoId": 70376,
+      "codigoPlanoAcao": "09032024-070376",
+      "situacaoPlanoAcao": "CIENTE",
+      "planoTrabalhoId": 15153,
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "inicioExecucaoPlano": "2025-01-01",
+      "fimExecucaoPlano": "2027-01-01",
+      "objetoTransferegov": "Aquisição de equipamentos e mobiliários para Centro Ambulatorial de Especialidades da Criança. Realizado Licitação Nº do Processo: 125/2025.  Aquisição de Mobiliários e Equipamentos para o atendimento do Centro Ambulatorial de Especialidades Pediátricas pertencente à Secretaria Municipal da Saúde (Emenda Parlamentar de Transferência Especial nº 202427640015, disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-125-2025-2025-438348.",
+      "metaTransferegov": "Aquisição de equipamentos e mobiliários.; Aquisição de equipamentos e mobiliários para assistência Hospitalar e Ambulatorial (302); Aquisição de equipamentos e mobiliários para Alimentação e Nutrição (306)",
+      "finalidadeTransferegov": "Saúde / Atenção Básica; Saúde / Assistência Hospitalar e Ambulatorial; Saúde / Alimentação e Nutrição",
+      "banco": "Banco do Brasil",
+      "conta": "32-98732",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "saldoContaInformativo": 59676.89,
+      "dataSaldoConta": "2024-12-13",
+      "numeroEmpenhos": [
+        "2024NE005672"
+      ],
+      "numeroOrdensBancarias": [
+        "2024OB006920"
+      ],
+      "qtdDocumentos": 1,
+      "qtdOrdensBancarias": 1,
+      "relatorioGestaoLocalizado": false,
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "planosRelacionados": [
+        {
+          "planoAcaoId": 70376,
+          "codigoPlanoAcao": "09032024-070376",
+          "situacao": "CIENTE",
+          "valor": 50000.0,
+          "motivoImpedimento": null
+        }
+      ],
+      "impedimentosHistoricos": [],
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=70376",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=70376",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "identificador_repasse_confirmado": true,
+      "contabilizado_como_repasse_individual": true,
+      "classificacaoComprovacao": "Confirmado",
+      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
+      "codigoEmendaTransferegov": "202427640015",
+      "anoEmendaTransferegov": "2024"
+    },
+    {
+      "emenda": "202437130005",
+      "valorIndicado": 1000000.0,
+      "documentosVinculados": [
+        {
+          "etapa": "empenho",
+          "numero": "2024NE005609",
+          "data": "2024-06-26",
+          "valor": 1000000.0,
+          "situacao": "Empenho Original",
+          "vinculo": "Plano 72397; empenho 42637",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=72397"
+        },
+        {
+          "etapa": "transferencia",
+          "numero": "2024OB001938",
+          "data": "2024-07-03",
+          "valor": null,
+          "situacao": "OB Enviada à instituição bancária para pagamento",
+          "vinculo": "Documento hábil 53579, vinculado ao empenho federal",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=53579"
+        },
+        {
+          "etapa": "recebimento",
+          "numero": "001-1537352",
+          "data": "2024-07-04",
+          "valor": 1000000.0,
+          "situacao": "Ordem Bancria",
+          "vinculo": "Conta 32-98731 do executor do plano 72397",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98731"
+        }
+      ],
+      "evidenciasConsultadasEm": "2026-09-04T20:44:34.676334+00:00",
+      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=72397",
+      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=72397",
+      "valorEmpenhado": 1000000.0,
+      "valorLiquidado": null,
+      "valorPago": 1000000.0,
+      "valorRecebido": 1000000.0,
+      "valorExecutado": null,
+      "dataEmpenho": "2024-06-26",
+      "dataPagamento": "2024-07-03",
+      "dataRecurso": "2024-07-04",
+      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 03/07/2024 · crédito na conta vinculada 04/07/2024 · execução/prestação de contas ainda não localizada na API",
+      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
+      "planoAcaoId": 72397,
+      "codigoPlanoAcao": "09032024-072397",
+      "situacaoPlanoAcao": "CIENTE",
+      "planoTrabalhoId": 6958,
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "inicioExecucaoPlano": "2025-01-01",
+      "fimExecucaoPlano": "2026-01-01",
+      "objetoTransferegov": "Construção de unidades escolares e aquisição de máquinários.",
+      "metaTransferegov": "Construção de unidades escolares.; Aquisição de Maquinários.",
+      "finalidadeTransferegov": "Educação / Educação Básica; Urbanismo / Infraestrutura Urbana",
+      "banco": "Banco do Brasil",
+      "conta": "32-98731",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "saldoContaInformativo": 174273.1,
+      "dataSaldoConta": "2024-12-17",
+      "numeroEmpenhos": [
+        "2024NE005609"
+      ],
+      "numeroOrdensBancarias": [
+        "2024OB001938"
+      ],
+      "qtdDocumentos": 1,
+      "qtdOrdensBancarias": 1,
+      "relatorioGestaoLocalizado": false,
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "planosRelacionados": [
+        {
+          "planoAcaoId": 72397,
+          "codigoPlanoAcao": "09032024-072397",
+          "situacao": "CIENTE",
+          "valor": 1000000.0,
+          "motivoImpedimento": null
+        }
+      ],
+      "impedimentosHistoricos": [],
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=72397",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=72397",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "identificador_repasse_confirmado": true,
+      "contabilizado_como_repasse_individual": true,
+      "classificacaoComprovacao": "Confirmado",
+      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
+      "codigoEmendaTransferegov": "202437130005",
+      "anoEmendaTransferegov": "2024"
+    },
+    {
+      "emenda": "202444540004",
+      "valorIndicado": 200000.0,
+      "documentosVinculados": [
+        {
+          "etapa": "empenho",
+          "numero": "2024NE005661",
+          "data": "2024-06-26",
+          "valor": 200000.0,
+          "situacao": "Empenho Original",
+          "vinculo": "Plano 75109; empenho 45349",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=75109"
+        },
+        {
+          "etapa": "transferencia",
+          "numero": "2024OB012048",
+          "data": "2024-12-13",
+          "valor": null,
+          "situacao": "OB Enviada à instituição bancária para pagamento",
+          "vinculo": "Documento hábil 53631, vinculado ao empenho federal",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=53631"
+        },
+        {
+          "etapa": "recebimento",
+          "numero": "001-2314241",
+          "data": "2024-12-16",
+          "valor": 200000.0,
+          "situacao": "Ordem Bancria",
+          "vinculo": "Conta 32-98734 do executor do plano 75109",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98734"
+        }
+      ],
+      "evidenciasConsultadasEm": "2026-09-04T20:44:35.599324+00:00",
+      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=75109",
+      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=75109",
+      "valorEmpenhado": 200000.0,
+      "valorLiquidado": null,
+      "valorPago": 200000.0,
+      "valorRecebido": 200000.0,
+      "valorExecutado": null,
+      "dataEmpenho": "2024-06-26",
+      "dataPagamento": "2024-12-13",
+      "dataRecurso": "2024-12-16",
+      "execucao": "plano de ação CIENTE · plano de trabalho Legado ADPF 854 STF / NT - TCU · empenho federal 26/06/2024 · ordem bancária 13/12/2024 · crédito na conta vinculada 16/12/2024 · execução/prestação de contas ainda não localizada na API",
+      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
+      "planoAcaoId": 75109,
+      "codigoPlanoAcao": "09032024-075109",
+      "situacaoPlanoAcao": "CIENTE",
+      "planoTrabalhoId": 8763,
+      "situacaoPlanoTrabalho": "Legado ADPF 854 STF / NT - TCU",
+      "inicioExecucaoPlano": "2025-01-01",
+      "fimExecucaoPlano": "2026-01-01",
+      "objetoTransferegov": "Aquisição de equipamentos e mobiliários para Centro Ambulatorial de Especialidades da Criança. Realizada Licitação Nº do Processo: 150/2025, disponível em https://www.portaldecompraspublicas.com.br/processos/mg/prefeitura-do-municipio-de-varginha-1970/pe-150-2025-2025-444145.",
+      "metaTransferegov": "Aquisição de equipamentos e mobiliários.",
+      "finalidadeTransferegov": "Saúde / Atenção Básica; Saúde / Assistência Hospitalar e Ambulatorial; Saúde / Alimentação e Nutrição",
+      "banco": "Banco do Brasil",
+      "conta": "32-98734",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "saldoContaInformativo": 238627.69,
+      "dataSaldoConta": "2024-12-16",
+      "numeroEmpenhos": [
+        "2024NE005661"
+      ],
+      "numeroOrdensBancarias": [
+        "2024OB012048"
+      ],
+      "qtdDocumentos": 1,
+      "qtdOrdensBancarias": 1,
+      "relatorioGestaoLocalizado": false,
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "planosRelacionados": [
+        {
+          "planoAcaoId": 75109,
+          "codigoPlanoAcao": "09032024-075109",
+          "situacao": "CIENTE",
+          "valor": 200000.0,
+          "motivoImpedimento": null
+        }
+      ],
+      "impedimentosHistoricos": [],
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=75109",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=75109",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "identificador_repasse_confirmado": true,
+      "contabilizado_como_repasse_individual": true,
+      "classificacaoComprovacao": "Confirmado",
+      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
+      "codigoEmendaTransferegov": "202444540004",
+      "anoEmendaTransferegov": "2024"
+    },
+    {
+      "emenda": "202527540001",
+      "valorIndicado": 247500.0,
+      "documentosVinculados": [
+        {
+          "etapa": "empenho",
+          "numero": "2025NE009718",
+          "data": "2025-12-15",
+          "valor": 247500.0,
+          "situacao": "Empenho Original",
+          "vinculo": "Plano 86374; empenho 56258",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=86374"
+        },
+        {
+          "etapa": "transferencia",
+          "numero": "2025OB009760",
+          "data": "2025-12-18",
+          "valor": null,
+          "situacao": "OB Enviada à instituição bancária para pagamento",
+          "vinculo": "Documento hábil 70207, vinculado ao empenho federal",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=70207"
+        }
+      ],
+      "evidenciasConsultadasEm": "2026-09-04T20:44:36.670031+00:00",
+      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=86374",
+      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=86374",
+      "valorEmpenhado": 247500.0,
+      "valorLiquidado": null,
+      "valorPago": 247500.0,
+      "valorRecebido": null,
+      "valorExecutado": null,
+      "dataEmpenho": "2025-12-15",
+      "dataPagamento": "2025-12-18",
+      "dataRecurso": "",
+      "execucao": "plano de ação CIENTE · plano de trabalho Aprovado · empenho federal 15/12/2025 · ordem bancária 18/12/2025 · execução/prestação de contas ainda não localizada na API",
+      "statusFinanceiro": "Transferência ainda não confirmada na conta vinculada",
+      "planoAcaoId": 86374,
+      "codigoPlanoAcao": "09032025-2-086374",
+      "situacaoPlanoAcao": "CIENTE",
+      "planoTrabalhoId": 46517,
+      "situacaoPlanoTrabalho": "Aprovado",
+      "inicioExecucaoPlano": "2025-12-18",
+      "fimExecucaoPlano": "2026-12-18",
+      "objetoTransferegov": "O Município de Varginha solicita o recebimento de Emenda Parlamentar de Transferência Especializada destinada ao custeio de exames de Ressonância Magnética, considerados de alto custo e atualmente com demanda represada de aproximadamente 350 pacientes em fila de espera.Como o município não possui estrutura própria para realizar esse tipo de exame, sua execução ocorre por meio de prestadores terceirizados devidamente credenciados, que realizam os procedimentos diretamente em seus estabelecimentos.O recurso solicitado será utilizado exclusivamente para ampliar a oferta desses exames, reduzir a fila de espera e garantir maior resolutividade na assistência especializada prestada à população de Varginha.",
+      "metaTransferegov": "Pagamento a prestadores de serviços",
+      "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
+      "banco": "Caixa Econômica Federal",
+      "conta": "163-573063039",
+      "executorTransferegov": "FUNDO MUNICIPAL DE SAUDE",
+      "cnpjExecutorTransferegov": "11234223000130",
+      "saldoContaInformativo": null,
+      "dataSaldoConta": "",
+      "numeroEmpenhos": [
+        "2025NE009718"
+      ],
+      "numeroOrdensBancarias": [
+        "2025OB009760"
+      ],
+      "qtdDocumentos": 1,
+      "qtdOrdensBancarias": 1,
+      "relatorioGestaoLocalizado": false,
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "planosRelacionados": [
+        {
+          "planoAcaoId": 77116,
+          "codigoPlanoAcao": "09032025-077116",
+          "situacao": "IMPEDIDO",
+          "valor": 247500.0,
+          "motivoImpedimento": "Impedido por falta de análise conclusiva no prazo estabelecido."
+        },
+        {
+          "planoAcaoId": 86374,
+          "codigoPlanoAcao": "09032025-2-086374",
+          "situacao": "CIENTE",
+          "valor": 247500.0,
+          "motivoImpedimento": null
+        }
+      ],
+      "impedimentosHistoricos": [
+        {
+          "planoAcaoId": 77116,
+          "situacao": "IMPEDIDO",
+          "motivo": "Impedido por falta de análise conclusiva no prazo estabelecido."
+        }
+      ],
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=86374",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=86374",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "identificador_repasse_confirmado": false,
+      "contabilizado_como_repasse_individual": false,
+      "classificacaoComprovacao": "Parcial",
+      "observacaoEvidencia": "Plano localizado, mas sem crédito bancário confirmado na conta vinculada.",
+      "codigoEmendaTransferegov": "202527540001",
+      "anoEmendaTransferegov": "2025"
+    },
+    {
+      "emenda": "202627540001",
+      "valorIndicado": 1194000.0,
+      "documentosVinculados": [
+        {
+          "etapa": "empenho",
+          "numero": "2026NE007169",
+          "data": "2026-06-19",
+          "valor": 1194000.0,
+          "situacao": "Empenho Original",
+          "vinculo": "Plano 92535; empenho 63000",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=92535"
+        },
+        {
+          "etapa": "transferencia",
+          "numero": "2026OB004145",
+          "data": "2026-06-22",
+          "valor": null,
+          "situacao": "OB Enviada à instituição bancária para pagamento",
+          "vinculo": "Documento hábil 77659, vinculado ao empenho federal",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=77659"
+        },
+        {
+          "etapa": "recebimento",
+          "numero": "001-4553148",
+          "data": "2026-06-23",
+          "valor": 1194000.0,
+          "situacao": "Ordem Bancária",
+          "vinculo": "Conta 32-106785 do executor do plano 92535",
+          "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-106785"
+        }
+      ],
+      "evidenciasConsultadasEm": "2026-09-04T20:44:37.704280+00:00",
+      "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=92535",
+      "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=92535",
+      "valorEmpenhado": 1194000.0,
+      "valorLiquidado": null,
+      "valorPago": 1194000.0,
+      "valorRecebido": 1194000.0,
+      "valorExecutado": null,
+      "dataEmpenho": "2026-06-19",
+      "dataPagamento": "2026-06-22",
+      "dataRecurso": "2026-06-23",
+      "execucao": "plano de ação CIENTE · plano de trabalho Aprovado · empenho federal 19/06/2026 · ordem bancária 22/06/2026 · crédito na conta vinculada 23/06/2026 · execução/prestação de contas ainda não localizada na API",
+      "statusFinanceiro": "Transferência federal confirmada na conta vinculada",
+      "planoAcaoId": 92535,
+      "codigoPlanoAcao": "09032026-092535",
+      "situacaoPlanoAcao": "CIENTE",
+      "planoTrabalhoId": 48124,
+      "situacaoPlanoTrabalho": "Aprovado",
+      "inicioExecucaoPlano": "2026-06-22",
+      "fimExecucaoPlano": "2028-06-22",
+      "objetoTransferegov": "O estabelecimento de saúde a ser beneficiado é o Hospital Bom Pastor, CNES nº 2761092, instituído como Fundação Hospitalar do Município de Varginha – FHOMUV, referência na assistência hospitalar e ambulatorial especializada no âmbito do Sistema Único de Saúde (SUS) para Varginha e região.A presente proposta tem por finalidade a aquisição de um sistema avançado de mamografia digital, integrado a tecnologia de biópsia guiada por imagem, dotado de detector digital de alta resolução, gerador de raios X de alta frequência, tubo dedicado, dispositivo de compressão motorizado e estação de trabalho com softwares especializados e monitores de grau médico.O equipamento permitirá não apenas a ampliação e qualificação da oferta de exames de mamografia para rastreamento e diagnóstico precoce do câncer de mama, em conformidade com as diretrizes do Ministério da Saúde, como também a realização de procedimentos minimamente invasivos de biópsia guiada por imagem, aumentando a resolutividade do serviço e reduzindo o tempo entre detecção e confirmação diagnóstica.A incorporação dessa tecnologia proporcionará melhoria significativa na qualidade das imagens, maior precisão diagnóstica, maior segurança nos procedimentos intervencionistas, eficiência operacional e otimização do fluxo assistencial. Ademais, contribuirá para o fortalecimento da capacidade instalada da unidade, promovendo a integralidade do cuidado e a qualificação do atendimento às usuárias do SUS em Varginha e região.",
+      "metaTransferegov": "Aquisição de mamógrafo digital para atendimento da rede de atenção especializada à  saúde do município e região, ampliando a oferta de exames de diagnóstico por imagem no SUS.",
+      "finalidadeTransferegov": "Saúde / Assistência Hospitalar e Ambulatorial",
+      "banco": "Banco do Brasil",
+      "conta": "32-106785",
+      "executorTransferegov": "MUNICIPIO DE VARGINHA",
+      "cnpjExecutorTransferegov": "18240119000105",
+      "saldoContaInformativo": 1219165.29,
+      "dataSaldoConta": "2026-06-23",
+      "numeroEmpenhos": [
+        "2026NE007169"
+      ],
+      "numeroOrdensBancarias": [
+        "2026OB004145"
+      ],
+      "qtdDocumentos": 1,
+      "qtdOrdensBancarias": 1,
+      "relatorioGestaoLocalizado": false,
+      "situacaoRelatorioGestao": "Não localizado na API",
+      "planosRelacionados": [
+        {
+          "planoAcaoId": 92535,
+          "codigoPlanoAcao": "09032026-092535",
+          "situacao": "CIENTE",
+          "valor": 1194000.0,
+          "motivoImpedimento": null
+        }
+      ],
+      "impedimentosHistoricos": [],
+      "fonteExecucao": "Transferegov.br — API de Transferências Especiais",
+      "fonteUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_plano_acao=92535",
+      "fonteEmpenhosUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/empenhos-especiais?id_plano_acao=92535",
+      "granularidade": "emenda_plano_acao_transferegov",
+      "identificador_repasse_confirmado": true,
+      "contabilizado_como_repasse_individual": true,
+      "classificacaoComprovacao": "Confirmado",
+      "observacaoEvidencia": "Crédito confirmado por plano de ação, conta vinculada e lançamento bancário do Transferegov. Isso comprova o recebimento federal, não a execução final do objeto.",
+      "codigoEmendaTransferegov": "202627540001",
+      "anoEmendaTransferegov": "2026"
     }
   ],
   "convenios": [
@@ -6621,16 +6621,14 @@
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-09-04T13:38:43.463324+00:00",
+      "coletadoEm": "2026-09-04T20:44:37.704361+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,
       "emendasUnicas": 8,
       "totalIndicadoSemDuplicidade": 3561727.0,
       "totalRecebidoConfirmado": 3314227.0,
-      "criterioDeduplicacao": "código da emenda + beneficiário; plano ativo/mais recente é canônico e os demais ficam no histórico",
-      "registrosPublicadosVinculados": 8,
-      "registrosPixMunicipio": 8
+      "criterioDeduplicacao": "código da emenda + beneficiário; plano ativo/mais recente é canônico e os demais ficam no histórico"
     },
     "convenios": {
       "status": "ok",
@@ -6662,6 +6660,5 @@
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_beneficiario=3277",
       "desc": "Planos, empenhos, ordens bancárias, conta vinculada e prestação de contas das transferências especiais."
     }
-  ],
-  "emendas_reprocessadas_em": "2026-09-04"
+  ]
 }

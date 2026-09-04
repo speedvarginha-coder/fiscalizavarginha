@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-09-04T20:07:18.531Z",
+  "gerado_em": "2026-09-04T20:54:35.378Z",
   "domains": {
     "atualizado_em": {
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-09-03T19:45:53.000Z",
-      "checked_at": "2026-09-03T19:45:53.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-04T20:48:38.000Z",
+      "checked_at": "2026-09-04T20:48:38.000Z",
+      "age_days": 0,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -15,7 +15,7 @@
       "label": "Prefeitura/Betha",
       "status": "preserved",
       "source_updated_at": null,
-      "checked_at": "2026-09-03T19:45:53.000Z",
+      "checked_at": "2026-09-04T20:48:38.000Z",
       "age_days": null,
       "max_age_days": 7,
       "reason": "Base anterior preservada. A tentativa recente não comprova a atualização integral; a data da última base completa não foi informada."
@@ -23,9 +23,9 @@
     "camara_betha": {
       "label": "Camara/Betha",
       "status": "partial",
-      "source_updated_at": "2026-09-03T19:44:59.000Z",
-      "checked_at": "2026-09-03T19:44:59.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-04T20:47:38.000Z",
+      "checked_at": "2026-09-04T20:47:38.000Z",
+      "age_days": 0,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -34,7 +34,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T09:26:00.000Z",
       "checked_at": "2026-09-03T09:26:00.000Z",
-      "age_days": 1.4,
+      "age_days": 1.5,
       "max_age_days": 31,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -51,7 +51,7 @@
       "label": "Recursos federais / Transferegov",
       "status": "preserved",
       "source_updated_at": null,
-      "checked_at": "2026-09-04T08:17:00.705Z",
+      "checked_at": "2026-09-04T20:44:38.359Z",
       "age_days": null,
       "max_age_days": 2,
       "reason": "Base anterior preservada. A tentativa recente não comprova a atualização integral; a data da última base completa não foi informada."
@@ -70,16 +70,16 @@
       "status": "partial",
       "source_updated_at": "2026-09-03T09:26:06.000Z",
       "checked_at": "2026-09-03T09:26:06.000Z",
-      "age_days": 1.4,
+      "age_days": 1.5,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
     "indice_relevancia": {
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-09-03T19:48:48.193Z",
-      "checked_at": "2026-09-03T19:48:48.193Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-04T20:54:31.755Z",
+      "checked_at": "2026-09-04T20:54:31.755Z",
+      "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -95,27 +95,27 @@
     "camara_anos": {
       "label": "Camara/SAPL",
       "status": "ok",
-      "source_updated_at": "2026-09-03T19:39:38.000Z",
-      "checked_at": "2026-09-03T19:39:38.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-04T20:41:17.000Z",
+      "checked_at": "2026-09-04T20:41:17.000Z",
+      "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     },
     "publicacoes_estruturadas": {
       "label": "Publicacoes da Camara",
       "status": "ok",
-      "source_updated_at": "2026-09-03T19:46:04.000Z",
-      "checked_at": "2026-09-03T19:46:04.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-04T20:48:58.000Z",
+      "checked_at": "2026-09-04T20:48:58.000Z",
+      "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     },
     "publicacoes_diario": {
       "label": "Publicacoes do Diario",
       "status": "ok",
-      "source_updated_at": "2026-09-03T19:47:54.000Z",
-      "checked_at": "2026-09-03T19:47:54.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-04T20:52:34.000Z",
+      "checked_at": "2026-09-04T20:52:34.000Z",
+      "age_days": 0,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     }

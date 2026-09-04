@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
-  "snapshot_id": "2026-08-21T08-17-26-372b0512",
+  "snapshot_id": "2026-09-04T17-48-38-00b7fd8a",
   "source": "chunks",
-  "gerado_em": "2026-08-21T14:38:16.969Z",
-  "coleta_iso": "2026-08-21T08:17:26",
-  "data_humana": "21/08/2026 - 08:17",
+  "gerado_em": "2026-09-04T20:54:36.317Z",
+  "coleta_iso": "2026-09-04T17:48:38",
+  "data_humana": "04/09/2026 - 17:48",
   "totais": {
-    "contratos_qtd": 1216,
-    "contratos_valor_brl": 848724985.1,
+    "contratos_qtd": 1274,
+    "contratos_valor_brl": 862778314.5300001,
     "obras_publicas_qtd": 130,
     "obras_publicas_valor_brl": 250341487.45,
     "fornecedores_qtd": 50,
     "diario_edicoes_qtd": 60,
     "pendencias_qtd": 11,
     "asfalto_qtd": 61,
-    "asfalto_valor_brl": 165782517.26000002
+    "asfalto_valor_brl": 165783088.60000002
   },
   "contratos": [
     {
@@ -191,7 +191,7 @@
       "orgao": "Prefeitura",
       "numero": "36",
       "ano": "2025",
-      "fornecedor": "ZEUS SERVICO SAUDE LTDA",
+      "fornecedor": "ZEUS SERVICOS DE SAUDE LTDA",
       "cnpj_raiz": "13776453",
       "data": "2025-05-16",
       "valor_brl": 9763876.8,
@@ -272,7 +272,7 @@
       "fornecedor": "D E F COSTA TRANSPORTE E CONSTRUTORA LTDA",
       "cnpj_raiz": "00744610",
       "data": "2025-08-29",
-      "valor_brl": 6420364,
+      "valor_brl": 6420935.34,
       "modalidade": "",
       "objeto": "Registro de Preços para eventual aquisição de massa asfáltica, tipo concreto betuminoso usinado – CBUQ",
       "objeto_hash": "fcfc3e9daad6"
@@ -382,6 +382,32 @@
       "objeto_hash": "ce05512345f8"
     },
     {
+      "id": "Prefeitura:2025:56:37943080",
+      "orgao": "Prefeitura",
+      "numero": "56",
+      "ano": "2025",
+      "fornecedor": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+      "cnpj_raiz": "37943080",
+      "data": "2025-06-27",
+      "valor_brl": 4609792.8,
+      "modalidade": "",
+      "objeto": "Contratação de Empresa Especializada na Prestação de Serviços Contínuos de Auxiliares de Serventes Escolares",
+      "objeto_hash": "fb85be6b9b8d"
+    },
+    {
+      "id": "Prefeitura:2024:22:29029829",
+      "orgao": "Prefeitura",
+      "numero": "22",
+      "ano": "2024",
+      "fornecedor": "WIZZER INCORPORADORA E CONSTRUTORA LTDA",
+      "cnpj_raiz": "29029829",
+      "data": "2024-03-20",
+      "valor_brl": 4596959.93,
+      "modalidade": "",
+      "objeto": "CONTRATAÇÃO DE EXECUÇÃO DAS OBRAS DE CONSTRUÇÃO DO NOVO VELÓRIO MUNICIPAL",
+      "objeto_hash": "c0f913b66e7c"
+    },
+    {
       "id": "Prefeitura:2026:355:26401571",
       "orgao": "Prefeitura",
       "numero": "355",
@@ -395,17 +421,17 @@
       "objeto_hash": "5d33bc0b7f97"
     },
     {
-      "id": "Prefeitura:2025:56:37943080",
+      "id": "Prefeitura:2023:170:05165851",
       "orgao": "Prefeitura",
-      "numero": "56",
-      "ano": "2025",
-      "fornecedor": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-      "cnpj_raiz": "37943080",
-      "data": "2025-06-27",
-      "valor_brl": 3933804,
+      "numero": "170",
+      "ano": "2023",
+      "fornecedor": "SERVICOS CFC LTDA",
+      "cnpj_raiz": "05165851",
+      "data": "2023-12-01",
+      "valor_brl": 4202213.17,
       "modalidade": "",
-      "objeto": "Contratação de Empresa Especializada na Prestação de Serviços Contínuos de Auxiliares de Serventes Escolares",
-      "objeto_hash": "fb85be6b9b8d"
+      "objeto": "CONT. DE SERV. DE LIMPEZA E CONSERVACAO",
+      "objeto_hash": "bd00d59b93f8"
     },
     {
       "id": "Prefeitura:2022:45:05165851",
@@ -460,17 +486,30 @@
       "objeto_hash": "9a6840868cf8"
     },
     {
-      "id": "Prefeitura:2026:34:30083123",
+      "id": "Prefeitura:2026:46:32385538",
       "orgao": "Prefeitura",
-      "numero": "34",
+      "numero": "46",
       "ano": "2026",
-      "fornecedor": "NOVA OPCAO LOCADORA DE VEICULOS LTDA",
-      "cnpj_raiz": "30083123",
-      "data": "2026-04-29",
-      "valor_brl": 3374851.59,
+      "fornecedor": "GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
+      "cnpj_raiz": "32385538",
+      "data": "2026-05-13",
+      "valor_brl": 3396521.47,
       "modalidade": "",
-      "objeto": "Registro de Preços para Locação de Veículos para Atendimento das Demandas da Administração Direta",
-      "objeto_hash": "dc72c3cfadbf"
+      "objeto": "Construção de uma unidade escolar CEMEI DO BAIRRO GREVILEAS",
+      "objeto_hash": "0d283066fe26"
+    },
+    {
+      "id": "Prefeitura:2026:175:08545404",
+      "orgao": "Prefeitura",
+      "numero": "175",
+      "ano": "2026",
+      "fornecedor": "RICARDO PEREIRA LTDA",
+      "cnpj_raiz": "08545404",
+      "data": "2026-08-17",
+      "valor_brl": 3383626.78,
+      "modalidade": "",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "objeto_hash": "947616ad6477"
     },
     {
       "id": "Prefeitura:2025:299:29013780",
@@ -486,43 +525,17 @@
       "objeto_hash": "c5a1ff7bb6f0"
     },
     {
-      "id": "Prefeitura:2026:46:32385538",
+      "id": "Prefeitura:2026:34:30083123",
       "orgao": "Prefeitura",
-      "numero": "46",
+      "numero": "34",
       "ano": "2026",
-      "fornecedor": "GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
-      "cnpj_raiz": "32385538",
-      "data": "2026-05-13",
-      "valor_brl": 3298422.44,
+      "fornecedor": "NOVA OPCAO LOCADORA DE VEICULOS LTDA",
+      "cnpj_raiz": "30083123",
+      "data": "2026-04-29",
+      "valor_brl": 3133466.59,
       "modalidade": "",
-      "objeto": "Construção de uma unidade escolar CEMEI DO BAIRRO GREVILEAS",
-      "objeto_hash": "0d283066fe26"
-    },
-    {
-      "id": "Prefeitura:2024:56:26409103",
-      "orgao": "Prefeitura",
-      "numero": "56",
-      "ano": "2024",
-      "fornecedor": "W.S. MONTAGENS E PINTURA INDUSTRIAL E PREDIAL",
-      "cnpj_raiz": "26409103",
-      "data": "2024-08-28",
-      "valor_brl": 3255842.19,
-      "modalidade": "",
-      "objeto": "DESP. COM OBRAS DE ENGENHARIA, INCLUINDO MÃO DE OBRA, MATERIAIS E DISPONIBILIZAÇÃO DE EQUIPAMENTOS NECESSÁRIOS PARA A EXECUÇÃO DAS OBRAS DE REFORMA E AMPLIAÇÃO DAS INSTALAÇÕES DO SETOR DE BEM ESTAR ANIMAL",
-      "objeto_hash": "a73b25349b58"
-    },
-    {
-      "id": "Prefeitura:2023:170:05165851",
-      "orgao": "Prefeitura",
-      "numero": "170",
-      "ano": "2023",
-      "fornecedor": "SERVICOS CFC LTDA",
-      "cnpj_raiz": "05165851",
-      "data": "2023-12-01",
-      "valor_brl": 3078015.97,
-      "modalidade": "",
-      "objeto": "CONT. DE SERV. DE LIMPEZA E CONSERVACAO",
-      "objeto_hash": "bd00d59b93f8"
+      "objeto": "Registro de Preços para Locação de Veículos para Atendimento das Demandas da Administração Direta",
+      "objeto_hash": "dc72c3cfadbf"
     },
     {
       "id": "Prefeitura:2025:87:15555941",
@@ -616,19 +629,6 @@
       "objeto_hash": "621112224fdd"
     },
     {
-      "id": "Prefeitura:2023:124:27445021",
-      "orgao": "Prefeitura",
-      "numero": "124",
-      "ano": "2023",
-      "fornecedor": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "cnpj_raiz": "27445021",
-      "data": "2023-08-21",
-      "valor_brl": 2590315.52,
-      "modalidade": "",
-      "objeto": "PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO PREVENTIVA E CORRETIVA, INCLUINDO MÃO DE OBRA, EQUIPAMENTOS E FERRAMENTAL NECESSÁRIO PARA ATENDER ÀS NECESSIDADES DOS CONSELHOS COMUNITÁRIOS",
-      "objeto_hash": "25d06ed944f5"
-    },
-    {
       "id": "Prefeitura:2026:301:03945035",
       "orgao": "Prefeitura",
       "numero": "301",
@@ -694,6 +694,19 @@
       "objeto_hash": "32b40bc26c86"
     },
     {
+      "id": "Prefeitura:2026:100:68533967",
+      "orgao": "Prefeitura",
+      "numero": "100",
+      "ano": "2026",
+      "fornecedor": "PAPELARIA E COPIADORA COPYSUL LTDA.",
+      "cnpj_raiz": "68533967",
+      "data": "2026-08-31",
+      "valor_brl": 2220972,
+      "modalidade": "",
+      "objeto": "Contratação de empresa especializada para locação de equipamentos de informática (computadores desktop, notebooks), incluindo licenças de softwares e afins",
+      "objeto_hash": "fffe5380ada6"
+    },
+    {
       "id": "Prefeitura:2026:137:12889035",
       "orgao": "Prefeitura",
       "numero": "137",
@@ -731,6 +744,19 @@
       "modalidade": "",
       "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA PARA FORNECIMENTO DE MÃO DE OBRA DE AUXILIAR DE SERVIÇOS PÚBLICOS/SERVENTE PARA O CANIL MUNICIPAL",
       "objeto_hash": "678338269dd0"
+    },
+    {
+      "id": "Prefeitura:2026:178:51444892",
+      "orgao": "Prefeitura",
+      "numero": "178",
+      "ano": "2026",
+      "fornecedor": "JF DIESEL AUTO PECAS E MECANICA LTDA",
+      "cnpj_raiz": "51444892",
+      "data": "2026-08-17",
+      "valor_brl": 2134242.42,
+      "modalidade": "",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "objeto_hash": "947616ad6477"
     },
     {
       "id": "Prefeitura:2025:226:42317980",
@@ -785,6 +811,19 @@
       "objeto_hash": "8d6992efce05"
     },
     {
+      "id": "Prefeitura:2025:53:32385538",
+      "orgao": "Prefeitura",
+      "numero": "53",
+      "ano": "2025",
+      "fornecedor": "GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
+      "cnpj_raiz": "32385538",
+      "data": "2025-06-16",
+      "valor_brl": 1932162.35,
+      "modalidade": "",
+      "objeto": "O objeto do presente termo de referência é a contratação de empresa especializada de engenharia para a construção da Unidade Básica de Saúde (UBS), porte 1, município Varginha, com fornecimento de todos os materiais, mão de obra e equipamentos necessários, de acordo com o Memorial Descritivo e Projeto (anexos). O imóvel, ficará localizado à Rua Samuel Eli de Araújo, Bairro Parque Rinaldo, e sediará as instalações da nova UBS Jardim Áurea de Varginha.",
+      "objeto_hash": "01053984f177"
+    },
+    {
       "id": "Prefeitura:2023:62:23131342",
       "orgao": "Prefeitura",
       "numero": "62",
@@ -822,19 +861,6 @@
       "modalidade": "",
       "objeto": "Contratação de empresa especializada para prestação de serviços de locação, manutenção, montagem e desmontagem e transporte de Decorações Natalinas, incluindo o fornecimento de mão de obra especializada, materiais e disponibilização de equipamentos necessários para execução da Decoração Urbana do Natal da cidade de Varginha 2025",
       "objeto_hash": "418dcd314f65"
-    },
-    {
-      "id": "Prefeitura:2025:53:32385538",
-      "orgao": "Prefeitura",
-      "numero": "53",
-      "ano": "2025",
-      "fornecedor": "GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
-      "cnpj_raiz": "32385538",
-      "data": "2025-06-16",
-      "valor_brl": 1791550.55,
-      "modalidade": "",
-      "objeto": "O objeto do presente termo de referência é a contratação de empresa especializada de engenharia para a construção da Unidade Básica de Saúde (UBS), porte 1, município Varginha, com fornecimento de todos os materiais, mão de obra e equipamentos necessários, de acordo com o Memorial Descritivo e Projeto (anexos). O imóvel, ficará localizado à Rua Samuel Eli de Araújo, Bairro Parque Rinaldo, e sediará as instalações da nova UBS Jardim Áurea de Varginha.",
-      "objeto_hash": "01053984f177"
     },
     {
       "id": "Prefeitura:2026:303:05194502",
@@ -928,19 +954,6 @@
       "objeto_hash": "5d33bc0b7f97"
     },
     {
-      "id": "Prefeitura:2025:14:10372200",
-      "orgao": "Prefeitura",
-      "numero": "14",
-      "ano": "2025",
-      "fornecedor": "SUL MINEIRA URGENCIA E EMERGENCIA MEDICA LTDA",
-      "cnpj_raiz": "10372200",
-      "data": "2025-02-21",
-      "valor_brl": 1537499.7,
-      "modalidade": "",
-      "objeto": "Contratação de serviços contínuos de Remoção Terrestre Inter-Hospitalar com Ambulâncias, com o devido acompanhamento de profissional da área de saúde, para atender urgências, emergências e outras situações que se fizerem necessárias, nos termos do que estabelece a Portaria do Ministério da Saúde n° 2.048/2002, conforme descrito no Termo de Referência.",
-      "objeto_hash": "659bce91931b"
-    },
-    {
       "id": "Prefeitura:2026:150:41253754",
       "orgao": "Prefeitura",
       "numero": "150",
@@ -965,6 +978,19 @@
       "modalidade": "",
       "objeto": "Registro de Preços para Futura e Eventual Aquisição de Material Ambulatorial",
       "objeto_hash": "0fdff5451276"
+    },
+    {
+      "id": "Prefeitura:2021:146:35820448",
+      "orgao": "Prefeitura",
+      "numero": "146",
+      "ano": "2021",
+      "fornecedor": "WHITE MARTINS GASES INDUSTRIAIS LTDA",
+      "cnpj_raiz": "35820448",
+      "data": "2021-10-01",
+      "valor_brl": 1512006,
+      "modalidade": "",
+      "objeto": "FORNEC. OXIGENIO GASOSO MEDICIAIS",
+      "objeto_hash": "fe241fef30d1"
     },
     {
       "id": "Prefeitura:2026:314:44734671",
@@ -1043,6 +1069,19 @@
       "modalidade": "",
       "objeto": "Registro de Preços para Fornecimento de Medicamentos para manutenção dos Serviços de Saúde do Município e cumprimento aos processos judicializados.",
       "objeto_hash": "5d33bc0b7f97"
+    },
+    {
+      "id": "Prefeitura:2026:9:27445021",
+      "orgao": "Prefeitura",
+      "numero": "9",
+      "ano": "2026",
+      "fornecedor": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "cnpj_raiz": "27445021",
+      "data": "2026-02-10",
+      "valor_brl": 1305476.42,
+      "modalidade": "",
+      "objeto": "Contratação de empresa para prestação de serviços de Portaria, Jardinagem, Recepcionistas, Auxiliares de Serviços gerais.",
+      "objeto_hash": "a5296f4a4cce"
     },
     {
       "id": "Prefeitura:2022:140:32439205",
@@ -1156,10 +1195,10 @@
       "fornecedor": "LUIZ FORTE ILUMINACAO E SERVICOS EIRELI ME",
       "cnpj_raiz": "19280448",
       "data": "2020-01-28",
-      "valor_brl": 2077343.92,
+      "valor_brl": 1104642.16,
       "modalidade": "",
       "objeto": "MANUTENCAO EM ILUMINACAO PUBLICA",
-      "objeto_hash": "5ba048315c39"
+      "objeto_hash": "430b5e6719b7"
     },
     {
       "id": "Prefeitura:2026:55:09571822",
@@ -1370,6 +1409,19 @@
       "objeto_hash": "135ac73fe11c"
     },
     {
+      "id": "Prefeitura:2020:129:06101609",
+      "orgao": "Prefeitura",
+      "numero": "129",
+      "ano": "2020",
+      "fornecedor": "PRINTEC TECNOLOGIA DA IMPRESSA0 LTDA",
+      "cnpj_raiz": "06101609",
+      "data": "2020-12-30",
+      "valor_brl": 870420.96,
+      "modalidade": "",
+      "objeto": "PRESTAÇÃO DE SERVIÇOS DE MANUTENÇÃO CORRETIVA E PREVENTIVA EM EQUIPAMENTOS DE IMPRESSÃO E REPROGRAFIA NAS ESCOLAS DA REDE PÚBLICA DE VARGINHA",
+      "objeto_hash": "fa943b642bdb"
+    },
+    {
       "id": "Prefeitura:2026:51:23762552",
       "orgao": "Prefeitura",
       "numero": "51",
@@ -1524,6 +1576,19 @@
       "modalidade": "",
       "objeto": "Registro de preços para o futuro e eventual fornecimento de cimento, argamassa e cal.",
       "objeto_hash": "ecd4f71ee6d1"
+    },
+    {
+      "id": "Prefeitura:2023:125:19810139",
+      "orgao": "Prefeitura",
+      "numero": "125",
+      "ano": "2023",
+      "fornecedor": "FIND SOLUCOES CORPORATIVAS LTDA",
+      "cnpj_raiz": "19810139",
+      "data": "2023-08-25",
+      "valor_brl": 753200,
+      "modalidade": "",
+      "objeto": "NÃO INFORMADO",
+      "objeto_hash": "621112224fdd"
     },
     {
       "id": "Prefeitura:2025:47:50598837",
@@ -1708,6 +1773,19 @@
       "objeto_hash": "5d33bc0b7f97"
     },
     {
+      "id": "Prefeitura:2026:176:26822928",
+      "orgao": "Prefeitura",
+      "numero": "176",
+      "ano": "2026",
+      "fornecedor": "OFICINA DO NENE LTDA",
+      "cnpj_raiz": "26822928",
+      "data": "2026-08-17",
+      "valor_brl": 670416.67,
+      "modalidade": "",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "objeto_hash": "947616ad6477"
+    },
+    {
       "id": "Prefeitura:2025:124:18495289",
       "orgao": "Prefeitura",
       "numero": "124",
@@ -1812,6 +1890,19 @@
       "objeto_hash": "467da28ea150"
     },
     {
+      "id": "Prefeitura:2026:166:60718874",
+      "orgao": "Prefeitura",
+      "numero": "166",
+      "ano": "2026",
+      "fornecedor": "BICHO WEB SAUDE ANIMAL LTDA",
+      "cnpj_raiz": "60718874",
+      "data": "2026-08-11",
+      "valor_brl": 624092.6,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
+    },
+    {
       "id": "Prefeitura:2025:sem-numero:65304941",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -1864,17 +1955,43 @@
       "objeto_hash": "e18259f3802a"
     },
     {
-      "id": "Prefeitura:2023:125:19810139",
+      "id": "Prefeitura:2026:94:28723527",
       "orgao": "Prefeitura",
-      "numero": "125",
-      "ano": "2023",
-      "fornecedor": "FIND SOLUCOES CORPORATIVAS LTDA",
-      "cnpj_raiz": "19810139",
-      "data": "2023-08-25",
-      "valor_brl": 564900,
+      "numero": "94",
+      "ano": "2026",
+      "fornecedor": "ACQUAMANIA COMERCIO E SERVICOS LTDA",
+      "cnpj_raiz": "28723527",
+      "data": "2026-08-20",
+      "valor_brl": 583200,
       "modalidade": "",
-      "objeto": "NÃO INFORMADO",
-      "objeto_hash": "621112224fdd"
+      "objeto": "Serviços de instalação do sistema de aquecimento das piscinas públicas",
+      "objeto_hash": "0dbeef261268"
+    },
+    {
+      "id": "Prefeitura:2026:171:37054879",
+      "orgao": "Prefeitura",
+      "numero": "171",
+      "ano": "2026",
+      "fornecedor": "FAROVET PRODUTOS VETERINARIOS LTDA",
+      "cnpj_raiz": "37054879",
+      "data": "2026-08-11",
+      "valor_brl": 572810,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
+    },
+    {
+      "id": "Prefeitura:2026:173:11262969",
+      "orgao": "Prefeitura",
+      "numero": "173",
+      "ano": "2026",
+      "fornecedor": "SUPRAMIL COMERCIAL LTDA",
+      "cnpj_raiz": "11262969",
+      "data": "2026-08-11",
+      "valor_brl": 563837,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
     },
     {
       "id": "Prefeitura:2026:148:57012146",
@@ -2111,6 +2228,19 @@
       "objeto_hash": "221bf25cc255"
     },
     {
+      "id": "Prefeitura:2023:138:05165851",
+      "orgao": "Prefeitura",
+      "numero": "138",
+      "ano": "2023",
+      "fornecedor": "SERVICOS CFC LTDA",
+      "cnpj_raiz": "05165851",
+      "data": "2023-09-20",
+      "valor_brl": 489031.68,
+      "modalidade": "",
+      "objeto": "NÃO INFORMADO",
+      "objeto_hash": "621112224fdd"
+    },
+    {
       "id": "Prefeitura:2025:241:17592525",
       "orgao": "Prefeitura",
       "numero": "241",
@@ -2174,19 +2304,6 @@
       "modalidade": "",
       "objeto": "Contratação Emergencial de empresa especializada para a realização de Exames de Diagnóstico por Imagem com emissão de laudo: Ultrassonografia para os pacientes Adultos e Crianças atendidos na Unidade de Pronto Atendimento - UPA, caracterizados como Urgências e Emergências, onde a empresa deverá ter sede em Varginha-MG, com espaço físico adequado para a realização dos exames, com disponibilidade dos materiais, equipamentos e recursos humanos.",
       "objeto_hash": "7990da96e2d2"
-    },
-    {
-      "id": "Prefeitura:2026:9:27445021",
-      "orgao": "Prefeitura",
-      "numero": "9",
-      "ano": "2026",
-      "fornecedor": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "cnpj_raiz": "27445021",
-      "data": "2026-02-10",
-      "valor_brl": 467477.34,
-      "modalidade": "",
-      "objeto": "Contratação de empresa para prestação de serviços de Portaria, Jardinagem, Recepcionistas, Auxiliares de Serviços gerais.",
-      "objeto_hash": "a5296f4a4cce"
     },
     {
       "id": "Prefeitura:2025:225:25239617",
@@ -2254,6 +2371,19 @@
       "objeto_hash": "d616805f864b"
     },
     {
+      "id": "Prefeitura:2026:179:51005744",
+      "orgao": "Prefeitura",
+      "numero": "179",
+      "ano": "2026",
+      "fornecedor": "ACR COMERCIAL E PECAS LTDA",
+      "cnpj_raiz": "51005744",
+      "data": "2026-08-17",
+      "valor_brl": 440533.33,
+      "modalidade": "",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "objeto_hash": "947616ad6477"
+    },
+    {
       "id": "Prefeitura:2025:19:18210168",
       "orgao": "Prefeitura",
       "numero": "19",
@@ -2300,10 +2430,10 @@
       "fornecedor": "CARDIOCENTER ESPECIALIDADES MEDICAS LTDA.",
       "cnpj_raiz": "18836259",
       "data": "2021-05-03",
-      "valor_brl": 1196268.52,
+      "valor_brl": 430992,
       "modalidade": "",
       "objeto": "SERV. REMOCAO TERRESTRE AMBULANCIA",
-      "objeto_hash": "e91b020b989c"
+      "objeto_hash": "29557322c1df"
     },
     {
       "id": "Prefeitura:2026:151:30519470",
@@ -2787,19 +2917,6 @@
       "objeto_hash": "26353b86edd2"
     },
     {
-      "id": "Prefeitura:2023:138:05165851",
-      "orgao": "Prefeitura",
-      "numero": "138",
-      "ano": "2023",
-      "fornecedor": "SERVICOS CFC LTDA",
-      "cnpj_raiz": "05165851",
-      "data": "2023-09-20",
-      "valor_brl": 309007.68,
-      "modalidade": "",
-      "objeto": "NÃO INFORMADO",
-      "objeto_hash": "621112224fdd"
-    },
-    {
       "id": "Prefeitura:2023:sem-numero:02558157",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -2917,6 +3034,19 @@
       "objeto_hash": "3cf5d3a17aa0"
     },
     {
+      "id": "Prefeitura:2022:99:04481478",
+      "orgao": "Prefeitura",
+      "numero": "99",
+      "ano": "2022",
+      "fornecedor": "REZENDE & FROTA CONTROLE DE PRAGAS LTDA",
+      "cnpj_raiz": "04481478",
+      "data": "2022-10-04",
+      "valor_brl": 267540.21,
+      "modalidade": "",
+      "objeto": "SERVICO DE DESRATIZAÇÃO, DEDETIZAÇÃO E DESINSETIZAÇÃO DO CANIL MUNICIPAL",
+      "objeto_hash": "924b0a4c8e65"
+    },
+    {
       "id": "Prefeitura:2025:296:58914097",
       "orgao": "Prefeitura",
       "numero": "296",
@@ -2941,6 +3071,19 @@
       "modalidade": "",
       "objeto": "Contratação de empresa especializada para fornecimento de materiais para manutenção geral e construção civil.",
       "objeto_hash": "bbbf8dd257df"
+    },
+    {
+      "id": "Prefeitura:2026:85:60720082",
+      "orgao": "Prefeitura",
+      "numero": "85",
+      "ano": "2026",
+      "fornecedor": "GTL COMERCIO DE VEICULOS",
+      "cnpj_raiz": "60720082",
+      "data": "2026-08-05",
+      "valor_brl": 265000,
+      "modalidade": "",
+      "objeto": "Aquisição de veículo utilitário tipo furgão (Van Cargo), zero quilômetro, ano de fabricação 2026 ou superior",
+      "objeto_hash": "254788e7641b"
     },
     {
       "id": "Prefeitura:2024:11:18599346",
@@ -3112,6 +3255,19 @@
       "objeto_hash": "0fdff5451276"
     },
     {
+      "id": "Prefeitura:2026:93:17961194",
+      "orgao": "Prefeitura",
+      "numero": "93",
+      "ano": "2026",
+      "fornecedor": "ASSOCIACAO DE PAIS E AMIGOS DOS EXCEPCIONAIS",
+      "cnpj_raiz": "17961194",
+      "data": "2026-08-19",
+      "valor_brl": 240000,
+      "modalidade": "",
+      "objeto": "CONTRATAÇÃO DE SERVIÇOS DE AVALIAÇÃO MÉDICA, EXAMES E FORNECIMENTO DE APARELHOS AUDITIVOS AOS USUÁRIOS",
+      "objeto_hash": "9013a5f572ce"
+    },
+    {
       "id": "Prefeitura:2025:360:25860537",
       "orgao": "Prefeitura",
       "numero": "360",
@@ -3203,6 +3359,19 @@
       "objeto_hash": "dbb0051072e3"
     },
     {
+      "id": "Prefeitura:2024:65:10249131",
+      "orgao": "Prefeitura",
+      "numero": "65",
+      "ano": "2024",
+      "fornecedor": "L.C.C. PRESTADORA DE SERVICOS E ADMINISTRADORA LTDA",
+      "cnpj_raiz": "10249131",
+      "data": "2024-09-16",
+      "valor_brl": 226870.04,
+      "modalidade": "",
+      "objeto": "Prestação de serviços de limpeza, conservação e serviço de copa, a ser executado no anexo do Gabinete do Prefeito, sito à Rua Júlio Paulo Marcelini, 50 - Vila Paiva",
+      "objeto_hash": "42d807cbe594"
+    },
+    {
       "id": "Prefeitura:2026:sem-numero:05194502",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -3223,10 +3392,10 @@
       "fornecedor": "NUTRIFENIX COMERCIO VAREJISTA E SERVICOS LTDA",
       "cnpj_raiz": "28894097",
       "data": "2023-10-20",
-      "valor_brl": 272462.9,
+      "valor_brl": 224800,
       "modalidade": "",
       "objeto": "CONTRAT. DE SERV. DE SERRALHERIA",
-      "objeto_hash": "46b8e28cde99"
+      "objeto_hash": "dad420dae2fc"
     },
     {
       "id": "Prefeitura:2025:204:04063331",
@@ -3268,17 +3437,17 @@
       "objeto_hash": "04b0dd48e875"
     },
     {
-      "id": "Prefeitura:2022:99:04481478",
+      "id": "Prefeitura:2024:96:05266324",
       "orgao": "Prefeitura",
-      "numero": "99",
-      "ano": "2022",
-      "fornecedor": "REZENDE & FROTA CONTROLE DE PRAGAS LTDA",
-      "cnpj_raiz": "04481478",
-      "data": "2022-10-04",
-      "valor_brl": 216580.17,
+      "numero": "96",
+      "ano": "2024",
+      "fornecedor": "SERQUIP - TRATAMENTO DE RESIDUOS MG LTDA",
+      "cnpj_raiz": "05266324",
+      "data": "2024-12-20",
+      "valor_brl": 219600,
       "modalidade": "",
-      "objeto": "SERVICO DE DESRATIZAÇÃO, DEDETIZAÇÃO E DESINSETIZAÇÃO DO CANIL MUNICIPAL",
-      "objeto_hash": "924b0a4c8e65"
+      "objeto": "Contratação de empresa especializada para prestação de serviços contínuos com o fornecimento de mão-de-obra e disponibilização de equipamentos necessários para execução da coleta, transporte, tratamento por tecnologia autorizada na legislação vigente e destinação final dos resíduos dos serviços de saúde, classificados no Grupo A (infectante), B (químico) e E (perfuro cortante), gerados na Unidade de Pronto Atendimento – UPA,",
+      "objeto_hash": "b621150b7b73"
     },
     {
       "id": "Prefeitura:2026:sem-numero:34216708",
@@ -3567,6 +3736,19 @@
       "objeto_hash": "bbbf8dd257df"
     },
     {
+      "id": "Prefeitura:2026:96:61802219",
+      "orgao": "Prefeitura",
+      "numero": "96",
+      "ano": "2026",
+      "fornecedor": "61.802.219 ALEXANDRE DIAS KIMURA",
+      "cnpj_raiz": "61802219",
+      "data": "2026-08-24",
+      "valor_brl": 181900.96,
+      "modalidade": "",
+      "objeto": "Contratação de empresa especializada para a prestação de serviços de manutenção preventiva e corretiva, com fornecimento de peças, suprimentos e mão de obra, para os equipamentos de impressão e reprografia utilizados pela Secretaria Municipal de Educação - SEDUC",
+      "objeto_hash": "d66a5542a1c6"
+    },
+    {
       "id": "Prefeitura:2026:39:30888187",
       "orgao": "Prefeitura",
       "numero": "39",
@@ -3684,17 +3866,17 @@
       "objeto_hash": "5d33bc0b7f97"
     },
     {
-      "id": "Prefeitura:2024:65:10249131",
+      "id": "Prefeitura:2026:186:07168075",
       "orgao": "Prefeitura",
-      "numero": "65",
-      "ano": "2024",
-      "fornecedor": "L.C.C. PRESTADORA DE SERVICOS E ADMINISTRADORA LTDA",
-      "cnpj_raiz": "10249131",
-      "data": "2024-09-16",
-      "valor_brl": 171614.84,
+      "numero": "186",
+      "ano": "2026",
+      "fornecedor": "THANAPE EMPREENDIMENTOS COMERCIAIS LTDA",
+      "cnpj_raiz": "07168075",
+      "data": "2026-08-25",
+      "valor_brl": 172726.94,
       "modalidade": "",
-      "objeto": "Prestação de serviços de limpeza, conservação e serviço de copa, a ser executado no anexo do Gabinete do Prefeito, sito à Rua Júlio Paulo Marcelini, 50 - Vila Paiva",
-      "objeto_hash": "42d807cbe594"
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "objeto_hash": "9767e7a046ea"
     },
     {
       "id": "Prefeitura:2026:2:12613794",
@@ -3812,6 +3994,19 @@
       "modalidade": "",
       "objeto": "LOCAÇÃO DE IMÓVEL PARA ATENDIMENTO AOS ALUNOS DO CEMEI HORTÊNCIA CORINA FERREIRA",
       "objeto_hash": "16deae4ebdc3"
+    },
+    {
+      "id": "Prefeitura:2026:235:57025960",
+      "orgao": "Prefeitura",
+      "numero": "235",
+      "ano": "2026",
+      "fornecedor": "GLOBAL TECH LTDA",
+      "cnpj_raiz": "57025960",
+      "data": "2026-08-25",
+      "valor_brl": 165004.98,
+      "modalidade": "",
+      "objeto": "CONTRATAÇÃO DE EMPRESA ESPECIALIZADA EM DESINSTALAÇÃO E INSTALAÇÃO DE AR CONDICIONADO, COM FORNECIMENTO DE MATERIAIS E RECOLHIMENTO DE GÁS REFRIGERANTE",
+      "objeto_hash": "c9fc17f02ba8"
     },
     {
       "id": "Prefeitura:2025:48:20908217",
@@ -4269,6 +4464,19 @@
       "objeto_hash": "dbb0051072e3"
     },
     {
+      "id": "Prefeitura:2026:180:14718491",
+      "orgao": "Prefeitura",
+      "numero": "180",
+      "ano": "2026",
+      "fornecedor": "COMPRE BEM DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "14718491",
+      "data": "2026-08-18",
+      "valor_brl": 126284.9,
+      "modalidade": "",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de argamassa ACI",
+      "objeto_hash": "8a16b2e8958a"
+    },
+    {
       "id": "Prefeitura:2026:28:29739737",
       "orgao": "Prefeitura",
       "numero": "28",
@@ -4412,6 +4620,19 @@
       "objeto_hash": "b06064c5326c"
     },
     {
+      "id": "Prefeitura:2026:101:32385538",
+      "orgao": "Prefeitura",
+      "numero": "101",
+      "ano": "2026",
+      "fornecedor": "GW ENGENHARIA PROJETOS E EXECUCAO DE OBRAS LTDA",
+      "cnpj_raiz": "32385538",
+      "data": "2026-09-01",
+      "valor_brl": 120000,
+      "modalidade": "",
+      "objeto": "Contratação de serviços de engenharia para execução da obra de reforço estrutural da edificação do Tiro de Guerra",
+      "objeto_hash": "7f94ba1e2341"
+    },
+    {
       "id": "Prefeitura:2025:2:02316711",
       "orgao": "Prefeitura",
       "numero": "2",
@@ -4514,19 +4735,6 @@
       "modalidade": "",
       "objeto": "fornecimento de revestimento cerâmico (piso/parede)",
       "objeto_hash": "37d60b6a04f8"
-    },
-    {
-      "id": "Prefeitura:2024:7:263504",
-      "orgao": "Prefeitura",
-      "numero": "7",
-      "ano": "2024",
-      "fornecedor": "LEILA APARECIDA MAIA",
-      "cnpj_raiz": "263504",
-      "data": "2024-08-28",
-      "valor_brl": 112554,
-      "modalidade": "",
-      "objeto": "LOCAÇÃO DE IMÓVEL PARA RESIDÊNCIA DE INSTRUTOR DO TIRO DE GUERRA",
-      "objeto_hash": "537fd2f5a9ad"
     },
     {
       "id": "Prefeitura:2025:32:32385538",
@@ -4913,10 +5121,10 @@
       "fornecedor": "META MOVEIS DE METAIS INDUSTRIA E COMERCIO LTDA",
       "cnpj_raiz": "01866388",
       "data": "2023-11-21",
-      "valor_brl": 161950,
+      "valor_brl": 92000,
       "modalidade": "",
       "objeto": "FORNEC. CAMA HOSPITALAR",
-      "objeto_hash": "992ed454f57a"
+      "objeto_hash": "edfb420a979c"
     },
     {
       "id": "Prefeitura:2026:327:51892897",
@@ -4958,6 +5166,19 @@
       "objeto_hash": "3183477e5cf0"
     },
     {
+      "id": "Prefeitura:2026:98:22307771",
+      "orgao": "Prefeitura",
+      "numero": "98",
+      "ano": "2026",
+      "fornecedor": "MICROMINAS LTDA",
+      "cnpj_raiz": "22307771",
+      "data": "2026-08-25",
+      "valor_brl": 89999.88,
+      "modalidade": "",
+      "objeto": "Aquisição de Kits Completos para Exames de Gasometria - Laboratório UPA",
+      "objeto_hash": "5d68f1497652"
+    },
+    {
       "id": "Prefeitura:2025:60:23786437",
       "orgao": "Prefeitura",
       "numero": "60",
@@ -4991,10 +5212,23 @@
       "fornecedor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
       "cnpj_raiz": "65289613",
       "data": "2023-12-28",
-      "valor_brl": 208875,
+      "valor_brl": 88304,
       "modalidade": "",
       "objeto": "FORNEC. MOBILIARIO",
-      "objeto_hash": "47fe1dfbae98"
+      "objeto_hash": "01dbbb598ab5"
+    },
+    {
+      "id": "Prefeitura:2026:44:51482170",
+      "orgao": "Prefeitura",
+      "numero": "44",
+      "ano": "2026",
+      "fornecedor": "CONSTRUTORA FERREIRA LTDA",
+      "cnpj_raiz": "51482170",
+      "data": "2026-05-13",
+      "valor_brl": 84656.33,
+      "modalidade": "",
+      "objeto": "Contratação de serviços comuns de engenharia, incluindo fornecimento de materiais, mão de obra e equipamentos necessários para remoção e instalação de calhas, rufos e condutores, para atendimento das necessidades da UPA",
+      "objeto_hash": "c56c55642e2d"
     },
     {
       "id": "Prefeitura:2024:sem-numero:34412925",
@@ -5082,10 +5316,10 @@
       "fornecedor": "ALVES EMPREENDIMENTOS LTDA",
       "cnpj_raiz": "46755923",
       "data": "2023-10-06",
-      "valor_brl": 114042.62,
+      "valor_brl": 82990,
       "modalidade": "",
       "objeto": "CONTRAT. DE SERV. DE SERRALHERIA",
-      "objeto_hash": "a386cab2ceab"
+      "objeto_hash": "dad420dae2fc"
     },
     {
       "id": "Prefeitura:2025:231:57844938",
@@ -5166,6 +5400,19 @@
       "objeto_hash": "7adb98b5e091"
     },
     {
+      "id": "Prefeitura:2026:sem-numero:10478755",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "BEAGA HOSPITALAR LTDA",
+      "cnpj_raiz": "10478755",
+      "data": "2026-08-31",
+      "valor_brl": 78146.05,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "objeto_hash": "e91b2fc4a3ce"
+    },
+    {
       "id": "Prefeitura:2024:sem-numero:37778759",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -5177,19 +5424,6 @@
       "modalidade": "",
       "objeto": "Jelcos e Equipo Macrogotas",
       "objeto_hash": "95410a3b3c3b"
-    },
-    {
-      "id": "Prefeitura:2026:44:51482170",
-      "orgao": "Prefeitura",
-      "numero": "44",
-      "ano": "2026",
-      "fornecedor": "CONSTRUTORA FERREIRA LTDA",
-      "cnpj_raiz": "51482170",
-      "data": "2026-05-13",
-      "valor_brl": 77500,
-      "modalidade": "",
-      "objeto": "Contratação de serviços comuns de engenharia, incluindo fornecimento de materiais, mão de obra e equipamentos necessários para remoção e instalação de calhas, rufos e condutores, para atendimento das necessidades da UPA",
-      "objeto_hash": "c56c55642e2d"
     },
     {
       "id": "Prefeitura:2026:58:04013164",
@@ -5255,6 +5489,19 @@
       "modalidade": "",
       "objeto": "Aquisição de livros para a biblioteca do professor e gestor escolar da Educação Infantil",
       "objeto_hash": "dcfbdf35d656"
+    },
+    {
+      "id": "Prefeitura:2026:174:09049833",
+      "orgao": "Prefeitura",
+      "numero": "174",
+      "ano": "2026",
+      "fornecedor": "VETMAX PRODUTOS AGROPECUARIOS LTDA",
+      "cnpj_raiz": "09049833",
+      "data": "2026-08-11",
+      "valor_brl": 75799,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
     },
     {
       "id": "Prefeitura:2025:sem-numero:16554750",
@@ -5543,6 +5790,19 @@
       "objeto_hash": "8665269183c4"
     },
     {
+      "id": "Prefeitura:2026:88:03548170",
+      "orgao": "Prefeitura",
+      "numero": "88",
+      "ano": "2026",
+      "fornecedor": "HOBECO SUDAMERICANA LTDA",
+      "cnpj_raiz": "03548170",
+      "data": "2026-08-05",
+      "valor_brl": 68857.6,
+      "modalidade": "",
+      "objeto": "Aquisição e demais serviços em sensor anemométrico (anemômetro aeronáutico) para o Aeroporto",
+      "objeto_hash": "29f54b2c06ea"
+    },
+    {
       "id": "Prefeitura:2024:110:24552460",
       "orgao": "Prefeitura",
       "numero": "110",
@@ -5580,6 +5840,32 @@
       "modalidade": "",
       "objeto": "Registro de Preços para Futura e Eventual Aquisição de Material Ambulatorial",
       "objeto_hash": "0fdff5451276"
+    },
+    {
+      "id": "Prefeitura:2026:181:12449629",
+      "orgao": "Prefeitura",
+      "numero": "181",
+      "ano": "2026",
+      "fornecedor": "CITSO COMERCIO E SERVICO IMPORTADOR DE INFORMATICA LTDA",
+      "cnpj_raiz": "12449629",
+      "data": "2026-08-25",
+      "valor_brl": 67500,
+      "modalidade": "",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "objeto_hash": "9767e7a046ea"
+    },
+    {
+      "id": "Prefeitura:2026:183:25698473",
+      "orgao": "Prefeitura",
+      "numero": "183",
+      "ano": "2026",
+      "fornecedor": "GRAWANDO COMERCIAL LTDA",
+      "cnpj_raiz": "25698473",
+      "data": "2026-08-25",
+      "valor_brl": 67273,
+      "modalidade": "",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "objeto_hash": "9767e7a046ea"
     },
     {
       "id": "Prefeitura:2026:131:34771531",
@@ -5684,6 +5970,19 @@
       "modalidade": "",
       "objeto": "Registro de preços para aquisição de EPI's, materiais de apoio, vestuário e itens de uso operacional para atender às necessidades dos Agentes de Combate às Endemias no desempenho de suas atividades de campo, no âmbito do Programa Nacional de Controle da Dengue (PNCD). Os materiais serão utilizados na rotina de inspeção, tratamento e controle vetorial, garantindo segurança, eficiência, conforto e proteção aos profissionais durante a execução de ações de prevenção e controle de arboviroses, especi",
       "objeto_hash": "0c1d00db3842"
+    },
+    {
+      "id": "Prefeitura:2026:165:18432445",
+      "orgao": "Prefeitura",
+      "numero": "165",
+      "ano": "2026",
+      "fornecedor": "ANIMALLTAG SISTEMAS DE INDENTIFICACAO ANIMAL",
+      "cnpj_raiz": "18432445",
+      "data": "2026-08-11",
+      "valor_brl": 64900,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
     },
     {
       "id": "Prefeitura:2021:sem-numero:23131342",
@@ -5803,6 +6102,19 @@
       "objeto_hash": "19ce857ce841"
     },
     {
+      "id": "Prefeitura:2026:167:04795218",
+      "orgao": "Prefeitura",
+      "numero": "167",
+      "ano": "2026",
+      "fornecedor": "COMERCIAL MARITAN YANO LTDA",
+      "cnpj_raiz": "04795218",
+      "data": "2026-08-11",
+      "valor_brl": 62340,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
+    },
+    {
       "id": "Prefeitura:2026:30:12889035",
       "orgao": "Prefeitura",
       "numero": "30",
@@ -5901,10 +6213,10 @@
       "fornecedor": "TELEFONICA BRASIL SA",
       "cnpj_raiz": "02558157",
       "data": "2020-10-19",
-      "valor_brl": 118004.4,
+      "valor_brl": 60903.6,
       "modalidade": "",
       "objeto": "DESP. SERVICOS TELEFONIA",
-      "objeto_hash": "62aa4e455204"
+      "objeto_hash": "6b3784081ceb"
     },
     {
       "id": "Prefeitura:2024:8:040271",
@@ -6343,10 +6655,23 @@
       "fornecedor": "MARKOLUKA - MOVEIS E EQUIPAMENTOS LTDA",
       "cnpj_raiz": "65289613",
       "data": "2025-09-25",
-      "valor_brl": 158029.99000000002,
+      "valor_brl": 112379.99,
       "modalidade": "",
       "objeto": "Constitui objeto o fornecimento de mobiliário e material de escritório para atender às necessidades dos setores (CAPS, NAMI, FISOTERAPIA, PACE) e departamentos da Secretaria Municipal de Saúde (ATENÇÃO PRIMÁRIA – REGULAÇÃO – VIGILÂNCIA SANITÁRIA – VIGILÂNCIA EPIDEMIOLÓGICA – CENTRO DE ABASTECIMENTO FARMACÊUTICO (FARMÁCIA) – SAÚDE BUCAL).",
-      "objeto_hash": "ac908fefed2f"
+      "objeto_hash": "f7066d0e6002"
+    },
+    {
+      "id": "Prefeitura:2026:177:65635204",
+      "orgao": "Prefeitura",
+      "numero": "177",
+      "ano": "2026",
+      "fornecedor": "BELORIZONTINA PECAS E MANUTENCAO LTDA",
+      "cnpj_raiz": "65635204",
+      "data": "2026-08-17",
+      "valor_brl": 50000,
+      "modalidade": "",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de peças automotivas e acessórios",
+      "objeto_hash": "947616ad6477"
     },
     {
       "id": "Prefeitura:2025:245:57325351",
@@ -6375,6 +6700,19 @@
       "objeto_hash": "309fa9d71310"
     },
     {
+      "id": "Prefeitura:2026:190:47305688",
+      "orgao": "Prefeitura",
+      "numero": "190",
+      "ano": "2026",
+      "fornecedor": "STAMP PRODUTOS E SERVICOS LTDA",
+      "cnpj_raiz": "47305688",
+      "data": "2026-08-28",
+      "valor_brl": 49116.9,
+      "modalidade": "",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "objeto_hash": "d6e04acaa60a"
+    },
+    {
       "id": "Prefeitura:2025:113:33845564",
       "orgao": "Prefeitura",
       "numero": "113",
@@ -6386,6 +6724,19 @@
       "modalidade": "",
       "objeto": "Contratação de serviços de empresa especializada na realização de serviços técnicos em dois lotes, sendo o primeiro para diagnóstico, manutenção corretiva e adaptações em equipamentos médicos hospitalares, industriais e equipamentos de uso geral e o segundo lote de manutenção preventiva periódica, diagnóstico, manutenção corretiva e adaptações em equipamentos médicos hospitalares, industriais e equipamentos de uso geral.",
       "objeto_hash": "325a9ce19879"
+    },
+    {
+      "id": "Prefeitura:2026:92:53748710",
+      "orgao": "Prefeitura",
+      "numero": "92",
+      "ano": "2026",
+      "fornecedor": "ZIP INTERNET LTDA",
+      "cnpj_raiz": "53748710",
+      "data": "2026-08-18",
+      "valor_brl": 48960,
+      "modalidade": "",
+      "objeto": "Contratação de empresa para fornecimento de link de fibra óptica dedicado à internet fibra óptica com suporte ininterrupto 24x7x30",
+      "objeto_hash": "d1e35a9de20c"
     },
     {
       "id": "Prefeitura:2026:sem-numero:53448772",
@@ -6477,6 +6828,32 @@
       "modalidade": "",
       "objeto": "Aquisição emergencial de medicamentos, destinados a atender a ausência temporária de estoque na Secretaria Municipal de Saúde de Varginha/MG e nas emergências da Unidade de Pronto Atendimento - UPA",
       "objeto_hash": "fd040b03c8b8"
+    },
+    {
+      "id": "Prefeitura:2026:61:39240491",
+      "orgao": "Prefeitura",
+      "numero": "61",
+      "ano": "2026",
+      "fornecedor": "VETTOR ENGENHARIA E CONSTRUCAO LTDA",
+      "cnpj_raiz": "39240491",
+      "data": "2026-06-17",
+      "valor_brl": 46800,
+      "modalidade": "",
+      "objeto": "Contratação de empresa especializada para pintura de 04 (quatro) caixas d’água das Escolas CAIC I - Dr. Jacy de Figueiredo (Avenida Manoel Vida, 1150 – Bairro Imaculada, Varginha/MG) e CAIC II Professora Helena Reis (Alameda das Garças, 150 – Jardim Cidade Nova, Varginha/MG), incluso mão de obra e fornecimento de materiais",
+      "objeto_hash": "48043e8564ca"
+    },
+    {
+      "id": "Prefeitura:2025:71:35820448",
+      "orgao": "Prefeitura",
+      "numero": "71",
+      "ano": "2025",
+      "fornecedor": "WHITE MARTINS GASES INDUSTRIAIS LTDA",
+      "cnpj_raiz": "35820448",
+      "data": "2025-08-08",
+      "valor_brl": 46764,
+      "modalidade": "",
+      "objeto": "Contratação de empresa especializada para fornecimento contínuo de oxigênio gasoso medicinal em cilindros (comodato) - Aspecto Físico: incolor, inodoro, grau de pureza mínima 99,5%, para atender os setores da Unidade de Pronto Atendimento - UPA",
+      "objeto_hash": "1b0bfdc4c195"
     },
     {
       "id": "Prefeitura:2025:265:31486195",
@@ -6921,19 +7298,6 @@
       "objeto_hash": "40edfc67d6ba"
     },
     {
-      "id": "Prefeitura:2026:61:39240491",
-      "orgao": "Prefeitura",
-      "numero": "61",
-      "ano": "2026",
-      "fornecedor": "VETTOR ENGENHARIA E CONSTRUCAO LTDA",
-      "cnpj_raiz": "39240491",
-      "data": "2026-06-17",
-      "valor_brl": 38900,
-      "modalidade": "",
-      "objeto": "Contratação de empresa especializada para pintura de 04 (quatro) caixas d’água das Escolas CAIC I - Dr. Jacy de Figueiredo (Avenida Manoel Vida, 1150 – Bairro Imaculada, Varginha/MG) e CAIC II Professora Helena Reis (Alameda das Garças, 150 – Jardim Cidade Nova, Varginha/MG), incluso mão de obra e fornecimento de materiais",
-      "objeto_hash": "48043e8564ca"
-    },
-    {
       "id": "Prefeitura:2023:sem-numero:17592525",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -6971,6 +7335,19 @@
       "modalidade": "",
       "objeto": "Serviço de revitalização e reforma do abrigo de usuários de ônibus localizado na Praça Getúlio Vargas, Centro de Varginha/MG",
       "objeto_hash": "f6d59c91ea41"
+    },
+    {
+      "id": "Prefeitura:2026:185:45847352",
+      "orgao": "Prefeitura",
+      "numero": "185",
+      "ano": "2026",
+      "fornecedor": "MV2 SERVICOS E NEGOCIOS LTDA",
+      "cnpj_raiz": "45847352",
+      "data": "2026-08-25",
+      "valor_brl": 38447.5,
+      "modalidade": "",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "objeto_hash": "9767e7a046ea"
     },
     {
       "id": "Prefeitura:2025:21:62173620",
@@ -7123,10 +7500,10 @@
       "fornecedor": "MED CENTER COMERCIAL LTDA.",
       "cnpj_raiz": "00874929",
       "data": "2023-10-06",
-      "valor_brl": 78275,
+      "valor_brl": 35728,
       "modalidade": "",
       "objeto": "FORNEC. DE MEDICAMENTOS (ORDEM JUDICIAL)",
-      "objeto_hash": "3d9fda8eff58"
+      "objeto_hash": "da27becd427f"
     },
     {
       "id": "Prefeitura:2026:88:07827565",
@@ -7253,10 +7630,10 @@
       "fornecedor": "VALE COMERCIAL EIRELI",
       "cnpj_raiz": "71336101",
       "data": "2023-12-29",
-      "valor_brl": 41004.45,
+      "valor_brl": 34365.6,
       "modalidade": "",
       "objeto": "Compra do medicamento referente a mandado judicial, não obtemos exito na licitação no qual foi solicitado",
-      "objeto_hash": "f6bd0df11882"
+      "objeto_hash": "d16e5eb27a22"
     },
     {
       "id": "Prefeitura:2026:61:21856981",
@@ -7344,10 +7721,10 @@
       "fornecedor": "COMERCIAL JHS LTDA",
       "cnpj_raiz": "48485303",
       "data": "2023-11-16",
-      "valor_brl": 42848.14,
+      "valor_brl": 33157.44,
       "modalidade": "",
       "objeto": "AQUISIÇÃO DE ENXOVAL HOSPITALAR PARA UNIDADE DE PRONTO ATENDIMENTO - UPA",
-      "objeto_hash": "30903b9aede7"
+      "objeto_hash": "b1f704a675ff"
     },
     {
       "id": "Prefeitura:2026:82:53767074",
@@ -7370,10 +7747,10 @@
       "fornecedor": "MEDICINA SEGURA DISTRIBUICAO E PROMOCAO EM VENDAS LTDA",
       "cnpj_raiz": "40968252",
       "data": "2026-01-09",
-      "valor_brl": 32953.9,
+      "valor_brl": 42766,
       "modalidade": "",
       "objeto": "O objeto desta Solicitação de Compra é a aquisição por demanda de materiais ambulatoriais para manutenção dos Serviços de Saúde da Unidade de Pronto Atendimento do Município.",
-      "objeto_hash": "291a51ac608a"
+      "objeto_hash": "a9c5608391b5"
     },
     {
       "id": "Prefeitura:2026:69:10650156",
@@ -7569,19 +7946,6 @@
       "modalidade": "",
       "objeto": "Registro de Preços para futura e eventual aquisição de Materiais e Insumos Odontológicos, destinados à manutenção das atividades de saúde bucal do município de Varginha/MG",
       "objeto_hash": "19ce857ce841"
-    },
-    {
-      "id": "Prefeitura:2025:sem-numero:51972983",
-      "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "2025",
-      "fornecedor": "LICITA MED LTDA",
-      "cnpj_raiz": "51972983",
-      "data": "2025-03-21",
-      "valor_brl": 43744,
-      "modalidade": "",
-      "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Zona Rural– Ribeirão Santana / Cachoeria / Pinhal / Martins / Vista Alegre - pertencente à Secretaria Municipal de Saúde. Emenda impositiva nº 142/2023, autor Thulyo Paiva Machado.",
-      "objeto_hash": "aebfd48f613f"
     },
     {
       "id": "Prefeitura:2025:sem-numero:18236448",
@@ -7883,6 +8247,19 @@
       "objeto_hash": "5d33bc0b7f97"
     },
     {
+      "id": "Prefeitura:2026:169:33742700",
+      "orgao": "Prefeitura",
+      "numero": "169",
+      "ano": "2026",
+      "fornecedor": "ELERA MEDICAL COMERCIO DE PRODUTOS E EQUIPAMENTOS LTDA",
+      "cnpj_raiz": "33742700",
+      "data": "2026-08-11",
+      "valor_brl": 26749,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
+    },
+    {
       "id": "Prefeitura:2025:sem-numero:57742317",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -7974,6 +8351,19 @@
       "objeto_hash": "f806571aac0c"
     },
     {
+      "id": "Prefeitura:2026:170:32830196",
+      "orgao": "Prefeitura",
+      "numero": "170",
+      "ano": "2026",
+      "fornecedor": "EVOLUCAO VET EQUIPAMENTOS VETERINARIOS LTDA",
+      "cnpj_raiz": "32830196",
+      "data": "2026-08-11",
+      "valor_brl": 25921,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
+    },
+    {
       "id": "Prefeitura:2023:sem-numero:51005744",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -8026,6 +8416,19 @@
       "objeto_hash": "5be5e88e2be4"
     },
     {
+      "id": "Prefeitura:2026:182:47156456",
+      "orgao": "Prefeitura",
+      "numero": "182",
+      "ano": "2026",
+      "fornecedor": "EMBACOM LTDA",
+      "cnpj_raiz": "47156456",
+      "data": "2026-08-25",
+      "valor_brl": 25468.1,
+      "modalidade": "",
+      "objeto": "Registro de Preços para o fornecimento de impressos",
+      "objeto_hash": "9767e7a046ea"
+    },
+    {
       "id": "Prefeitura:2023:sem-numero:39327884",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -8033,10 +8436,10 @@
       "fornecedor": "HERICON FELIPE TRISTAO NASCIMENTO",
       "cnpj_raiz": "39327884",
       "data": "2023-10-05",
-      "valor_brl": 27672.6,
+      "valor_brl": 25410,
       "modalidade": "",
       "objeto": "AQUISICAO DE MATERIAIS DE USO NA CONSTRUCAO CIVIL E AFINS",
-      "objeto_hash": "b047e76bd685"
+      "objeto_hash": "5c357a6281b9"
     },
     {
       "id": "Prefeitura:2026:28:04654861",
@@ -8104,6 +8507,19 @@
       "objeto_hash": "4329b2c9d5d8"
     },
     {
+      "id": "Prefeitura:2026:172:47028448",
+      "orgao": "Prefeitura",
+      "numero": "172",
+      "ano": "2026",
+      "fornecedor": "SP & SP SAUDE PUBLICA SAO PAULO DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "47028448",
+      "data": "2026-08-11",
+      "valor_brl": 24945,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
+    },
+    {
       "id": "Prefeitura:2025:52:12927876",
       "orgao": "Prefeitura",
       "numero": "52",
@@ -8117,6 +8533,19 @@
       "objeto_hash": "c12d65a8b2e0"
     },
     {
+      "id": "Prefeitura:2026:191:45843353",
+      "orgao": "Prefeitura",
+      "numero": "191",
+      "ano": "2026",
+      "fornecedor": "45.843.353 GABRIELE PEREIRA CAVALHEIRO",
+      "cnpj_raiz": "45843353",
+      "data": "2026-08-28",
+      "valor_brl": 24233.36,
+      "modalidade": "",
+      "objeto": "Registro de Preços para o futuro e eventual fornecimento de carimbos",
+      "objeto_hash": "d6e04acaa60a"
+    },
+    {
       "id": "Prefeitura:2023:sem-numero:06981180",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -8124,10 +8553,10 @@
       "fornecedor": "CEMIG DISTRIBUICAO S.A",
       "cnpj_raiz": "06981180",
       "data": "2023-10-31",
-      "valor_brl": 46338.71,
+      "valor_brl": 24188.44,
       "modalidade": "",
       "objeto": "SERVICOS DE ELETRICIDADE E ILUMINACAO",
-      "objeto_hash": "5df9382c500e"
+      "objeto_hash": "2f80cd68f183"
     },
     {
       "id": "Prefeitura:2026:sem-numero:29312896",
@@ -8167,6 +8596,19 @@
       "modalidade": "",
       "objeto": "Registro de Preços para futura e eventual aquisição de Materiais e Insumos Odontológicos, destinados à manutenção das atividades de saúde bucal do município de Varginha/MG",
       "objeto_hash": "19ce857ce841"
+    },
+    {
+      "id": "Prefeitura:2026:39:66582784",
+      "orgao": "Prefeitura",
+      "numero": "39",
+      "ano": "2026",
+      "fornecedor": "NTI Brasil Soluções Digitais Ltda",
+      "cnpj_raiz": "66582784",
+      "data": "2026-04-30",
+      "valor_brl": 23650,
+      "modalidade": "",
+      "objeto": "Contratação de empresa para renovação de licenças de uso anual de softwares da Autodesk, o AutoCAD LT, conforme especificações constantes neste Termo de Referência.",
+      "objeto_hash": "f4ce5679b8eb"
     },
     {
       "id": "Prefeitura:2025:sem-numero:29013780",
@@ -8260,6 +8702,19 @@
       "objeto_hash": "1f410c9f65eb"
     },
     {
+      "id": "Prefeitura:2026:sem-numero:42311203",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "VALOR DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "42311203",
+      "data": "2026-08-21",
+      "valor_brl": 22960,
+      "modalidade": "",
+      "objeto": "Aquisição de adubo 20-5-20 NPK para gramados da SEMEL",
+      "objeto_hash": "c6bf8b727586"
+    },
+    {
       "id": "Prefeitura:2025:sem-numero:55268986",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -8284,19 +8739,6 @@
       "modalidade": "",
       "objeto": "Aquisição de eletrodomésticos e eletroeletrônicos em atendimento à Secretaria Municipal de Habitação e Desenvolvimento Social",
       "objeto_hash": "73ad53852bce"
-    },
-    {
-      "id": "Prefeitura:2025:71:35820448",
-      "orgao": "Prefeitura",
-      "numero": "71",
-      "ano": "2025",
-      "fornecedor": "WHITE MARTINS GASES INDUSTRIAIS LTDA",
-      "cnpj_raiz": "35820448",
-      "data": "2025-08-08",
-      "valor_brl": 22842,
-      "modalidade": "",
-      "objeto": "Contratação de empresa especializada para fornecimento contínuo de oxigênio gasoso medicinal em cilindros (comodato) - Aspecto Físico: incolor, inodoro, grau de pureza mínima 99,5%, para atender os setores da Unidade de Pronto Atendimento - UPA",
-      "objeto_hash": "1b0bfdc4c195"
     },
     {
       "id": "Prefeitura:2025:112:45720496",
@@ -8401,6 +8843,19 @@
       "modalidade": "",
       "objeto": "compra de teste para detecção do antigeno SARS COV 2",
       "objeto_hash": "66e7dde648de"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:49039321",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "EASY CLEAN DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "49039321",
+      "data": "2026-08-28",
+      "valor_brl": 22248,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "objeto_hash": "64eabdf4b427"
     },
     {
       "id": "Prefeitura:2025:286:59095876",
@@ -8702,6 +9157,19 @@
       "objeto_hash": "4de4f7f635af"
     },
     {
+      "id": "Prefeitura:2026:97:13201350",
+      "orgao": "Prefeitura",
+      "numero": "97",
+      "ano": "2026",
+      "fornecedor": "DEDETIZADORA RIBEIRO E SOUZA LTDA",
+      "cnpj_raiz": "13201350",
+      "data": "2026-08-25",
+      "valor_brl": 19650,
+      "modalidade": "",
+      "objeto": "Serviços de controle de pragas urbanas (dedetização, desratização, descupinização e afins) e lavagem das caixas d’água - Secretaria Municipal de Saúde",
+      "objeto_hash": "52db64781960"
+    },
+    {
       "id": "Prefeitura:2026:76:08225893",
       "orgao": "Prefeitura",
       "numero": "76",
@@ -8713,19 +9181,6 @@
       "modalidade": "",
       "objeto": "Contratação de empresa especializada para fornecimento de licença de uso de conjunto integrado de aplicações online para a Prefeitura de Varginha – MG, com acesso via web, com adequação à Lei Geral De Proteção De Dados Das Pessoas – LGPD (Lei Federal 13.709/2018)",
       "objeto_hash": "8faa352cd874"
-    },
-    {
-      "id": "Prefeitura:2026:39:66582784",
-      "orgao": "Prefeitura",
-      "numero": "39",
-      "ano": "2026",
-      "fornecedor": "NTI Brasil Soluções Digitais Ltda",
-      "cnpj_raiz": "66582784",
-      "data": "2026-04-30",
-      "valor_brl": 19350,
-      "modalidade": "",
-      "objeto": "Contratação de empresa para renovação de licenças de uso anual de softwares da Autodesk, o AutoCAD LT, conforme especificações constantes neste Termo de Referência",
-      "objeto_hash": "451c9216d42b"
     },
     {
       "id": "Prefeitura:2025:156:13656820",
@@ -8787,10 +9242,10 @@
       "fornecedor": "FARAH LICITACOES E COMERCIO LTDA",
       "cnpj_raiz": "14363920",
       "data": "2023-12-18",
-      "valor_brl": 54344,
+      "valor_brl": 18894,
       "modalidade": "",
       "objeto": "AQUISICAO DE SUPRIMENTOS DE INFORMATICA, MOBILIARIOS E AFINS",
-      "objeto_hash": "f1219ec055be"
+      "objeto_hash": "b6057a620bba"
     },
     {
       "id": "Prefeitura:2026:53:12889035",
@@ -8943,10 +9398,10 @@
       "fornecedor": "W BRANDAO EVENTOS LTDA",
       "cnpj_raiz": "07757167",
       "data": "2023-10-06",
-      "valor_brl": 24400,
+      "valor_brl": 17500,
       "modalidade": "",
       "objeto": "DESP. CONTRATACAO BUFFET",
-      "objeto_hash": "b829e608c2b5"
+      "objeto_hash": "8ddf787185a0"
     },
     {
       "id": "Prefeitura:2023:sem-numero:20352354",
@@ -9333,10 +9788,10 @@
       "fornecedor": "A A Z SAUDE COMERCIO DE PRODUTOS MEDICOS E HOSPITALARES LTDA",
       "cnpj_raiz": "17238455",
       "data": "2025-12-23",
-      "valor_brl": 25569.78,
+      "valor_brl": 14940,
       "modalidade": "",
       "objeto": "Aquisição de cadeiras de rodas e equipamentos de fisioterapia para o Centro Municipal de Fisioterapia de Varginha – Pertencente à Secretaria Municipal de Saúde.",
-      "objeto_hash": "7697f65f17ae"
+      "objeto_hash": "3dcb63e2dddb"
     },
     {
       "id": "Prefeitura:2025:115:19460296",
@@ -9580,10 +10035,23 @@
       "fornecedor": "FABRICIO RODRIGUES PEREIRA",
       "cnpj_raiz": "49005307",
       "data": "2023-10-20",
-      "valor_brl": 24566,
+      "valor_brl": 14030,
       "modalidade": "",
       "objeto": "FORNEC. DE ELETRODOMESTICOS",
-      "objeto_hash": "2237c5cdd911"
+      "objeto_hash": "59bf4805bab9"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:20594700",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "VIU MIDIAS",
+      "cnpj_raiz": "20594700",
+      "data": "2026-09-03",
+      "valor_brl": 14000,
+      "modalidade": "",
+      "objeto": "Aquisição e Instalação de Placas e Adesivos Internos e Externos para UPA",
+      "objeto_hash": "ef8326fade5c"
     },
     {
       "id": "Prefeitura:2026:59:37623309",
@@ -9658,10 +10126,10 @@
       "fornecedor": "DIMEBRAS COMERCIAL HOSPITALAR LTDA",
       "cnpj_raiz": "56081482",
       "data": "2026-01-09",
-      "valor_brl": 15300.6,
+      "valor_brl": 17702.47,
       "modalidade": "",
       "objeto": "O objeto desta Solicitação de Compra é a aquisição por demanda de materiais ambulatoriais para manutenção dos Serviços de Saúde da Unidade de Pronto Atendimento do Município.",
-      "objeto_hash": "e0e952afea2b"
+      "objeto_hash": "8c3bd88171ee"
     },
     {
       "id": "Prefeitura:2025:sem-numero:29551995",
@@ -9762,10 +10230,23 @@
       "fornecedor": "JARBAS HONORIO PEREIRA",
       "cnpj_raiz": "09571658",
       "data": "2023-10-16",
-      "valor_brl": 16084.7,
+      "valor_brl": 13155,
       "modalidade": "",
       "objeto": "FORNEC. RACAO ANIMAIAS",
-      "objeto_hash": "166bf8aed23a"
+      "objeto_hash": "7a82a6cf2921"
+    },
+    {
+      "id": "Prefeitura:2026:99:55796672",
+      "orgao": "Prefeitura",
+      "numero": "99",
+      "ano": "2026",
+      "fornecedor": "FABRICA DE LADRILHOS MATERIAIS E SERVICOS NOSSA SENHORA DE FATIMA LTDA",
+      "cnpj_raiz": "55796672",
+      "data": "2026-08-28",
+      "valor_brl": 12950,
+      "modalidade": "",
+      "objeto": "Contratação de empresa para pintura de 01 (uma) caixa d’água do CEMEI Professora Santusa Maria Rabelo de Rezende",
+      "objeto_hash": "c23d621e0e53"
     },
     {
       "id": "Prefeitura:2025:sem-numero:41682046",
@@ -9801,10 +10282,10 @@
       "fornecedor": "ASTEM MOVEIS PARA ESCRITORIO LTDA",
       "cnpj_raiz": "07422644",
       "data": "2023-11-21",
-      "valor_brl": 21908,
+      "valor_brl": 12820,
       "modalidade": "",
       "objeto": "FORNEC. MOBILIARIO",
-      "objeto_hash": "df3642e73204"
+      "objeto_hash": "01dbbb598ab5"
     },
     {
       "id": "Prefeitura:2025:sem-numero:12927876",
@@ -9827,10 +10308,10 @@
       "fornecedor": "COMPASSE PAPELARIA E REPRESENTACOES LTDA",
       "cnpj_raiz": "36420003",
       "data": "2023-11-28",
-      "valor_brl": 23400.16,
+      "valor_brl": 12770.16,
       "modalidade": "",
       "objeto": "AQUISICAO DE MATERIAIS DE USO NA CONSTRUCAO CIVIL E AFINS",
-      "objeto_hash": "44203295d45e"
+      "objeto_hash": "5c357a6281b9"
     },
     {
       "id": "Prefeitura:2025:202:33127318",
@@ -9870,6 +10351,19 @@
       "modalidade": "",
       "objeto": "O objeto do presente documento refere-se a aquisição de Enxovais, de acordo com o descritivo e quantitativo abaixo indicado, visando atender as necessidades da Secretaria Municipal de Habitação e Desenvolvimento Social – SEHAD e setores pertencentes à esta Secretaria.",
       "objeto_hash": "ffe07dbe703e"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:20344116",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "NEVALLI ARTIGOS MEDICOS E ORTOPEDICOS LTDA",
+      "cnpj_raiz": "20344116",
+      "data": "2026-08-31",
+      "valor_brl": 12527.75,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "objeto_hash": "e91b2fc4a3ce"
     },
     {
       "id": "Prefeitura:2025:231:12927876",
@@ -9948,6 +10442,32 @@
       "modalidade": "",
       "objeto": "Registro de preços para o futuro e eventual fornecimento de carimbos",
       "objeto_hash": "5fa03877def4"
+    },
+    {
+      "id": "Prefeitura:2026:187:09447062",
+      "orgao": "Prefeitura",
+      "numero": "187",
+      "ano": "2026",
+      "fornecedor": "CLESIO MENES BERNARDES LTDA",
+      "cnpj_raiz": "09447062",
+      "data": "2026-08-25",
+      "valor_brl": 12150,
+      "modalidade": "",
+      "objeto": "Registro de Preços para fornecimento de capas para Diário de Classe.",
+      "objeto_hash": "b00b30b98b54"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:09447062",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "CLESIO MENES BERNARDES LTDA",
+      "cnpj_raiz": "09447062",
+      "data": "2026-08-25",
+      "valor_brl": 12150,
+      "modalidade": "",
+      "objeto": "Registro de Preços para fornecimento de capas para Diário de Classe.",
+      "objeto_hash": "b00b30b98b54"
     },
     {
       "id": "Prefeitura:2023:sem-numero:46923465",
@@ -10126,10 +10646,10 @@
       "fornecedor": "JM COSTA INFORMATICA LTDA",
       "cnpj_raiz": "50676270",
       "data": "2023-10-11",
-      "valor_brl": 12530,
+      "valor_brl": 11540,
       "modalidade": "",
       "objeto": "FORNEC. DE SUPRIMENTOS DE INFORMATICA",
-      "objeto_hash": "116aa7ae7d02"
+      "objeto_hash": "d138effaae49"
     },
     {
       "id": "Prefeitura:2025:sem-numero:21151275",
@@ -10210,6 +10730,19 @@
       "objeto_hash": "ffe07dbe703e"
     },
     {
+      "id": "Prefeitura:2026:sem-numero:04013164",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "ORLA DISTRIBUIDORA DE PRODUTOS LTDA",
+      "cnpj_raiz": "04013164",
+      "data": "2026-08-28",
+      "valor_brl": 10746,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "objeto_hash": "64eabdf4b427"
+    },
+    {
       "id": "Prefeitura:2025:sem-numero:43029546",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -10221,6 +10754,19 @@
       "modalidade": "",
       "objeto": "Constitui objeto o fornecimento de mobiliário e material de escritório para atender às necessidades dos setores (CAPS, NAMI, FISOTERAPIA, PACE) e departamentos da Secretaria Municipal de Saúde (ATENÇÃO PRIMÁRIA – REGULAÇÃO – VIGILÂNCIA SANITÁRIA – VIGILÂNCIA EPIDEMIOLÓGICA – CENTRO DE ABASTECIMENTO FARMACÊUTICO (FARMÁCIA) – SAÚDE BUCAL).",
       "objeto_hash": "1f7fbde2e727"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:34133591",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "P.F MEOTTI LICITACOES LTDA",
+      "cnpj_raiz": "34133591",
+      "data": "2026-08-24",
+      "valor_brl": 10656,
+      "modalidade": "",
+      "objeto": "Aquisição de Placa Vibratória Compactadora",
+      "objeto_hash": "3d3772160a23"
     },
     {
       "id": "Prefeitura:2026:sem-numero:42799540",
@@ -10425,10 +10971,10 @@
       "fornecedor": "E A R FERREIRA REFRIGERACAO",
       "cnpj_raiz": "21915599",
       "data": "2023-10-31",
-      "valor_brl": 20878,
+      "valor_brl": 9458,
       "modalidade": "",
       "objeto": "DESP. COM INSTALACAO AR CONDICIONADOR",
-      "objeto_hash": "5ed7fc560b04"
+      "objeto_hash": "a49358ac0a41"
     },
     {
       "id": "Prefeitura:2025:155:37844479",
@@ -10568,10 +11114,10 @@
       "fornecedor": "RENATO ISIDORO",
       "cnpj_raiz": "10650156",
       "data": "2023-12-28",
-      "valor_brl": 24289.6,
+      "valor_brl": 8818,
       "modalidade": "",
       "objeto": "FORNEC. UNIFORMES PROFISSIONAIS",
-      "objeto_hash": "d78cfd4219da"
+      "objeto_hash": "dc0edd8fa36b"
     },
     {
       "id": "Prefeitura:2025:sem-numero:14633154",
@@ -10776,10 +11322,10 @@
       "fornecedor": "PAPELARIA E COPIADORA COPYSUL LTDA.",
       "cnpj_raiz": "68533967",
       "data": "2023-12-18",
-      "valor_brl": 11224.5,
+      "valor_brl": 8322,
       "modalidade": "",
       "objeto": "AQUISICAO DE SUPRIMENTOS DE INFORMATICA, MOBILIARIOS E AFINS",
-      "objeto_hash": "3956dbc4e842"
+      "objeto_hash": "b6057a620bba"
     },
     {
       "id": "Prefeitura:2026:43:65141046",
@@ -10815,10 +11361,10 @@
       "fornecedor": "VALTER JACOMELI",
       "cnpj_raiz": "22602437",
       "data": "2023-10-23",
-      "valor_brl": 8510,
+      "valor_brl": 8160,
       "modalidade": "",
       "objeto": "FORNEC. DE MATERIAIS DE VIDRACARIA",
-      "objeto_hash": "14849fd8d9aa"
+      "objeto_hash": "23a4197bf00e"
     },
     {
       "id": "Prefeitura:2025:sem-numero:32876614",
@@ -10971,10 +11517,10 @@
       "fornecedor": "PROMEDICA MEDSERVICE LTDA",
       "cnpj_raiz": "65308835",
       "data": "2023-10-25",
-      "valor_brl": 10085,
+      "valor_brl": 7695,
       "modalidade": "",
       "objeto": "FORNEC. COLCHAO HOSPITALAR",
-      "objeto_hash": "805123726534"
+      "objeto_hash": "b1d9b723cc5c"
     },
     {
       "id": "Prefeitura:2025:sem-numero:28844636",
@@ -11010,10 +11556,10 @@
       "fornecedor": "OXI QUIMICA LTDA",
       "cnpj_raiz": "65271868",
       "data": "2023-10-20",
-      "valor_brl": 10677.8,
+      "valor_brl": 7595.3,
       "modalidade": "",
       "objeto": "FORNEC. MATERIAIS DE LIMPEZA, HIGIENE EUTENSILIOS DE COZINHA, DE LAR E AFINS",
-      "objeto_hash": "02ef63fd1853"
+      "objeto_hash": "0080f0b7df36"
     },
     {
       "id": "Prefeitura:2026:sem-numero:24344495",
@@ -11101,10 +11647,10 @@
       "fornecedor": "TELEFONICA BRASIL SA",
       "cnpj_raiz": "02558157",
       "data": "2021-08-30",
-      "valor_brl": 15806.400000000001,
+      "valor_brl": 7164,
       "modalidade": "",
       "objeto": "DESP. SERVICOS TELEFONIA",
-      "objeto_hash": "2355f71fe880"
+      "objeto_hash": "6b3784081ceb"
     },
     {
       "id": "Prefeitura:2026:31:25204559",
@@ -11248,6 +11794,19 @@
       "modalidade": "",
       "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
       "objeto_hash": "2d482437ac2d"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:39707683",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "GTMED IMPORTADORA E DISTRIBUIDORA HOSPITALAR LTDA",
+      "cnpj_raiz": "39707683",
+      "data": "2026-08-31",
+      "valor_brl": 6537.5,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "objeto_hash": "e91b2fc4a3ce"
     },
     {
       "id": "Prefeitura:2023:sem-numero:07112529",
@@ -11419,6 +11978,19 @@
       "objeto_hash": "b6f5e7b6e06d"
     },
     {
+      "id": "Prefeitura:2025:sem-numero:51972983",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2025",
+      "fornecedor": "LICITA MED LTDA",
+      "cnpj_raiz": "51972983",
+      "data": "2025-12-29",
+      "valor_brl": 13349,
+      "modalidade": "",
+      "objeto": "Aquisição de Mobiliários e Equipamentos para o atendimento do Centro Ambulatorial de Especialidades Pediátricas – pertencente à Secretaria Municipal da Saúde (Emenda Parlamentar de Transferência Especial nº 202427640015 de autoria do Deputado Federal Padre João)",
+      "objeto_hash": "964045092930"
+    },
+    {
       "id": "Prefeitura:2026:sem-numero:07215045",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -11439,10 +12011,10 @@
       "fornecedor": "NIPONICA COMERCIO DE VEICULOS LTDA.",
       "cnpj_raiz": "07215045",
       "data": "2023-12-29",
-      "valor_brl": 6803.78,
+      "valor_brl": 5929.28,
       "modalidade": "",
       "objeto": "AQUISIÇÃO DE PEÇAS PARA REVISÃO DE 40.000 KM NO VEÍCULO RTJ5D87 ( GABINETE DO PREFEITO)",
-      "objeto_hash": "82848c9d9f25"
+      "objeto_hash": "1fb9f2148f92"
     },
     {
       "id": "Prefeitura:2025:sem-numero:17915708",
@@ -11549,6 +12121,19 @@
       "objeto_hash": "2ee58f668a69"
     },
     {
+      "id": "Prefeitura:2026:sem-numero:00697364",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "MARIA TERESA PEREIRA COELHO & CIA LTDA",
+      "cnpj_raiz": "00697364",
+      "data": "2026-08-28",
+      "valor_brl": 5638.12,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais de higiene e limpeza, visando o funcionamento adequado da Unidade de Pronto Atendimento (UPA) de Varginha/MG",
+      "objeto_hash": "64eabdf4b427"
+    },
+    {
       "id": "Prefeitura:2026:sem-numero:03945035",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -11556,10 +12141,10 @@
       "fornecedor": "ACACIA COMERCIO DE MEDICAMENTOS LTDA",
       "cnpj_raiz": "03945035",
       "data": "2026-04-15",
-      "valor_brl": 10678,
+      "valor_brl": 11602,
       "modalidade": "",
       "objeto": "Aquisição emergencial de medicamentos, destinados a atender a um processo judicial da Secretaria Municipal de Saúde do Município de Varginha/MG e as emergências da Unidade de Pronto Atendimento - UPA visando garantir a continuidade do tratamento dos pacientes atendidos pela rede pública municipal.",
-      "objeto_hash": "7ec92179fa11"
+      "objeto_hash": "11d7c7ac163d"
     },
     {
       "id": "Prefeitura:2025:sem-numero:21286632",
@@ -11634,10 +12219,10 @@
       "fornecedor": "ADS TRANSPORTES, CONSULTORIA E INFORMATICA LTDA",
       "cnpj_raiz": "37154313",
       "data": "2023-10-05",
-      "valor_brl": 23317,
+      "valor_brl": 5515,
       "modalidade": "",
       "objeto": "FORNEC. DE EQUIPAMENTOS DE AUDIO/VIDEO,ELETRONICOS E SEMELHANTES",
-      "objeto_hash": "ea4c44b60dbd"
+      "objeto_hash": "e9317d7d10d7"
     },
     {
       "id": "Prefeitura:2025:sem-numero:23940290",
@@ -11783,6 +12368,19 @@
       "objeto_hash": "0fdff5451276"
     },
     {
+      "id": "Prefeitura:2026:168:44734671",
+      "orgao": "Prefeitura",
+      "numero": "168",
+      "ano": "2026",
+      "fornecedor": "CRISTALIA PRODUTOS QUIMICOS FARMACEUTICOS LTDA",
+      "cnpj_raiz": "44734671",
+      "data": "2026-08-11",
+      "valor_brl": 5196,
+      "modalidade": "",
+      "objeto": "Registro de Preço de medicamentos veterinários e materiais afins",
+      "objeto_hash": "5427f3cf2c0d"
+    },
+    {
       "id": "Prefeitura:2025:sem-numero:46339373",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -11920,10 +12518,10 @@
       "fornecedor": "FERRASUL COMERCIO VAREJISTA E ATACADISTA DE FERRAMENTAS E EQUIPAMENTOS DE SEGURANCA LTDA",
       "cnpj_raiz": "08517373",
       "data": "2023-12-13",
-      "valor_brl": 8483.2,
+      "valor_brl": 6895.2,
       "modalidade": "",
       "objeto": "FORNEC. DE EPIS",
-      "objeto_hash": "757cef77b0be"
+      "objeto_hash": "ca8fe67aa1b7"
     },
     {
       "id": "Prefeitura:2023:sem-numero:22023899",
@@ -11933,10 +12531,10 @@
       "fornecedor": "HAMA PRESENTES E PAPELARIA I LTDA",
       "cnpj_raiz": "22023899",
       "data": "2023-12-28",
-      "valor_brl": 5535.8,
+      "valor_brl": 5253,
       "modalidade": "",
       "objeto": "Jogos, brinquedos de materiais didáticos",
-      "objeto_hash": "a5826e7521af"
+      "objeto_hash": "753652e7572d"
     },
     {
       "id": "Prefeitura:2025:sem-numero:23762552",
@@ -11985,10 +12583,10 @@
       "fornecedor": "FABIANO COSTA AZEVEDO",
       "cnpj_raiz": "29551995",
       "data": "2023-10-30",
-      "valor_brl": 6894.8,
+      "valor_brl": 4700,
       "modalidade": "",
       "objeto": "FORNEC. IMPRESSOS DIVERSOS",
-      "objeto_hash": "b02724eb97bf"
+      "objeto_hash": "04849123529e"
     },
     {
       "id": "Prefeitura:2026:81:11021593",
@@ -12206,10 +12804,10 @@
       "fornecedor": "AURELIO FLAVIO SIQUEIRA LIMA",
       "cnpj_raiz": "00346281",
       "data": "2023-10-31",
-      "valor_brl": 5625.9,
+      "valor_brl": 3910,
       "modalidade": "",
       "objeto": "AQUISICAO DE SUPRIMENTOS DE INFORMATICAE MATERIAIS AFINS",
-      "objeto_hash": "3b8950a1516c"
+      "objeto_hash": "9a9f3b8e97e6"
     },
     {
       "id": "Prefeitura:2026:108:04964379",
@@ -12323,10 +12921,10 @@
       "fornecedor": "LIFE REMOCOES LTDA",
       "cnpj_raiz": "51272571",
       "data": "2023-10-31",
-      "valor_brl": 6680,
+      "valor_brl": 3800,
       "modalidade": "",
       "objeto": "CONTRATACAO DE AMBULANCIA PARA EVENTOS,COM CONDUTOR,MEDICO,SOCORRISTA E ENFERM,",
-      "objeto_hash": "e9ffd9919eeb"
+      "objeto_hash": "c5353dc5ef03"
     },
     {
       "id": "Prefeitura:2026:sem-numero:52891153",
@@ -12667,13 +13265,13 @@
       "objeto_hash": "2365c20cbb09"
     },
     {
-      "id": "Prefeitura:2026:sem-numero:13201350",
+      "id": "Prefeitura:2026:95:13201350",
       "orgao": "Prefeitura",
-      "numero": "0",
+      "numero": "95",
       "ano": "2026",
       "fornecedor": "DEDETIZADORA RIBEIRO E SOUZA LTDA",
       "cnpj_raiz": "13201350",
-      "data": "2026-08-03",
+      "data": "2026-08-26",
       "valor_brl": 3200,
       "modalidade": "",
       "objeto": "Contratação de empresa especializada para controle de pragas, incluindo o fornecimento de mão de obra, materiais e equipamentos necessários",
@@ -12704,6 +13302,19 @@
       "modalidade": "",
       "objeto": "Aquisição de Materiais de Construção",
       "objeto_hash": "25dadecca90a"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:02881877",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "POLAR FIX INDUSTRIA E COMERCIO DE PRODUTOS HOSPITALARES LTDA",
+      "cnpj_raiz": "02881877",
+      "data": "2026-08-31",
+      "valor_brl": 4680,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "objeto_hash": "fa8d74302043"
     },
     {
       "id": "Prefeitura:2026:107:63236363",
@@ -12882,10 +13493,10 @@
       "fornecedor": "ALICE LARA SERAFIM 11088930662",
       "cnpj_raiz": "44819592",
       "data": "2023-11-24",
-      "valor_brl": 4277,
+      "valor_brl": 2949,
       "modalidade": "",
       "objeto": "AQUIS. DE MATERIAIS, ACESSORIOS E EQUIP.PARA O SERVICO DE VERIFICACAO DE OBITOS",
-      "objeto_hash": "a5febd69df6b"
+      "objeto_hash": "ae38139cd380"
     },
     {
       "id": "Prefeitura:2026:sem-numero:03119282",
@@ -12921,10 +13532,10 @@
       "fornecedor": "GRAFICA EDITORA SUL MINEIRA LTDA",
       "cnpj_raiz": "22246060",
       "data": "2023-10-04",
-      "valor_brl": 5380.4400000000005,
+      "valor_brl": 2900,
       "modalidade": "",
       "objeto": "FORNEC. DE MAT. GRAFICO",
-      "objeto_hash": "aaeac91870e8"
+      "objeto_hash": "6e5ca153ff35"
     },
     {
       "id": "Prefeitura:2025:248:52203880",
@@ -12986,10 +13597,23 @@
       "fornecedor": "JOCELMA PEREIRA MARINHO DOS SANTOS",
       "cnpj_raiz": "49591369",
       "data": "2023-10-10",
-      "valor_brl": 4850,
+      "valor_brl": 2810,
       "modalidade": "",
       "objeto": "FORNEC. DE MATERIAIS DE VIDRACARIA",
-      "objeto_hash": "c7d8cd1ed700"
+      "objeto_hash": "23a4197bf00e"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:11371179",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "LINCETRACTOR COMERCIO, IMPORTACAO E EXPORTACAO LTDA",
+      "cnpj_raiz": "11371179",
+      "data": "2026-09-03",
+      "valor_brl": 2806,
+      "modalidade": "",
+      "objeto": "Aquisição de peças Pá Carregadeira New Holland 12 D pertencente à SEAGRI.",
+      "objeto_hash": "9f6e72e1b4df"
     },
     {
       "id": "Prefeitura:2026:sem-numero:60278718",
@@ -13174,6 +13798,45 @@
       "objeto_hash": "92756f3b0130"
     },
     {
+      "id": "Prefeitura:2026:sem-numero:28523774",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "L & J DOMINGUES DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "28523774",
+      "data": "2026-09-03",
+      "valor_brl": 2517,
+      "modalidade": "",
+      "objeto": "Aquisição de peças Pá Carregadeira New Holland 12 D pertencente à SEAGRI.",
+      "objeto_hash": "9f6e72e1b4df"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:44307153",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "RRA COMERCIO ELETRO-FONIA LTDA",
+      "cnpj_raiz": "44307153",
+      "data": "2026-08-21",
+      "valor_brl": 2500,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais de emergência e incêndio",
+      "objeto_hash": "355af74e1998"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:51740794",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "YNEMED PRODUTOS MEDICOS E HOSPITALARES LTDA",
+      "cnpj_raiz": "51740794",
+      "data": "2026-08-31",
+      "valor_brl": 2485.07,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "objeto_hash": "e91b2fc4a3ce"
+    },
+    {
       "id": "Prefeitura:2026:sem-numero:46935751",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -13317,6 +13980,19 @@
       "objeto_hash": "8665269183c4"
     },
     {
+      "id": "Prefeitura:2026:sem-numero:39988022",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "FGS COMERCIAL LTDA",
+      "cnpj_raiz": "39988022",
+      "data": "2026-08-21",
+      "valor_brl": 2154.42,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais de emergência e incêndio",
+      "objeto_hash": "355af74e1998"
+    },
+    {
       "id": "Prefeitura:2026:sem-numero:48192048",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -13367,6 +14043,19 @@
       "modalidade": "",
       "objeto": "Aquisição de Mobiliários e equipamentos para o Atendimento da UBS Martins - Zona Rural – pertencente a Secretaria Municipal de Saúde. Emenda Impositiva 16/2024 - Vereador Rodrigo Naves.",
       "objeto_hash": "2d482437ac2d"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:02305767",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "MAT MED HOSPITALAR LTDA",
+      "cnpj_raiz": "02305767",
+      "data": "2026-08-31",
+      "valor_brl": 2089,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "objeto_hash": "e91b2fc4a3ce"
     },
     {
       "id": "Prefeitura:2025:sem-numero:53158335",
@@ -13428,10 +14117,10 @@
       "fornecedor": "52.422.365 MAURICIO ALVES DA SILVA",
       "cnpj_raiz": "52422365",
       "data": "2023-10-31",
-      "valor_brl": 2098.99,
+      "valor_brl": 1999.99,
       "modalidade": "",
       "objeto": "AQUISICAO DE FILTRO PARA PISCINA",
-      "objeto_hash": "95697cae29d2"
+      "objeto_hash": "f82a492278ef"
     },
     {
       "id": "Prefeitura:2026:sem-numero:56689187",
@@ -13610,10 +14299,10 @@
       "fornecedor": "DONIZETTI ALVARENGA SILVA",
       "cnpj_raiz": "22023899",
       "data": "2022-10-17",
-      "valor_brl": 4193.92,
+      "valor_brl": 1844.92,
       "modalidade": "",
       "objeto": "FORNEC. DE PRODUTOS EDUCATIVOS/INFANTIS",
-      "objeto_hash": "41969916e138"
+      "objeto_hash": "a33ca07acf0e"
     },
     {
       "id": "Prefeitura:2023:sem-numero:26244768",
@@ -13679,6 +14368,19 @@
       "modalidade": "",
       "objeto": "FORNEC. DE MEDALHA",
       "objeto_hash": "7262c863508a"
+    },
+    {
+      "id": "Prefeitura:2026:sem-numero:08234423",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "AGMASHI COMERCIO DE MATERIAL MEDICO E SERVICOS DE COBRANCAS LTDA",
+      "cnpj_raiz": "08234423",
+      "data": "2026-08-31",
+      "valor_brl": 1771,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "objeto_hash": "e91b2fc4a3ce"
     },
     {
       "id": "Prefeitura:2025:338:16755344",
@@ -13876,19 +14578,6 @@
       "objeto_hash": "6e5217d1b5f1"
     },
     {
-      "id": "Prefeitura:2026:sem-numero:02881877",
-      "orgao": "Prefeitura",
-      "numero": "0",
-      "ano": "2026",
-      "fornecedor": "POLAR FIX INDUSTRIA E COMERCIO DE PRODUTOS HOSPITALARES LTDA",
-      "cnpj_raiz": "02881877",
-      "data": "2026-01-09",
-      "valor_brl": 1530,
-      "modalidade": "",
-      "objeto": "O objeto desta Solicitação de Compra é a aquisição por demanda de materiais ambulatoriais para manutenção dos Serviços de Saúde da Unidade de Pronto Atendimento do Município.",
-      "objeto_hash": "291a51ac608a"
-    },
-    {
       "id": "Prefeitura:2023:sem-numero:00970770",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -13961,10 +14650,10 @@
       "fornecedor": "ENCASA - COMER. PROD. E SERV. DE LIMP. EIRELI",
       "cnpj_raiz": "30173665",
       "data": "2023-10-05",
-      "valor_brl": 1998.7,
+      "valor_brl": 1459.98,
       "modalidade": "",
       "objeto": "FORNEC. MATERIAIS DE LIMPEZA",
-      "objeto_hash": "488681e6e90c"
+      "objeto_hash": "67216bd44945"
     },
     {
       "id": "Prefeitura:2025:sem-numero:28523774",
@@ -14117,10 +14806,10 @@
       "fornecedor": "DISTRIBUIDORA PLANETA LTDA",
       "cnpj_raiz": "49684751",
       "data": "2023-10-10",
-      "valor_brl": 1800.8,
+      "valor_brl": 1260,
       "modalidade": "",
       "objeto": "FORNEC. DE ELETRODOMESTICOS",
-      "objeto_hash": "e202cb6aaade"
+      "objeto_hash": "59bf4805bab9"
     },
     {
       "id": "Prefeitura:2026:sem-numero:65912505",
@@ -14260,10 +14949,10 @@
       "fornecedor": "DONIZETTI ALVARENGA SILVA",
       "cnpj_raiz": "22023899",
       "data": "2021-05-31",
-      "valor_brl": 3123,
+      "valor_brl": 1128.5,
       "modalidade": "",
       "objeto": "FORNEC. DE ARTIGOS DE PAPELARIA EM GERAL",
-      "objeto_hash": "1baad614dd1e"
+      "objeto_hash": "b18758d45fab"
     },
     {
       "id": "Prefeitura:2025:222:16743543",
@@ -14325,10 +15014,10 @@
       "fornecedor": "ANGELICA APARECIDA COMUNIAN ROQUIM",
       "cnpj_raiz": "17431452",
       "data": "2023-10-20",
-      "valor_brl": 1960.9,
+      "valor_brl": 1075.9,
       "modalidade": "",
       "objeto": "FORNEC. DE PILHAS, BATERIAS, ETC",
-      "objeto_hash": "7c7ba9bcbb47"
+      "objeto_hash": "a88e4a52202f"
     },
     {
       "id": "Prefeitura:2026:18:57228459",
@@ -14578,6 +15267,19 @@
       "objeto_hash": "f32c13a9c5b3"
     },
     {
+      "id": "Prefeitura:2026:sem-numero:06175908",
+      "orgao": "Prefeitura",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "BIO LOGICA DISTRIBUIDORA LTDA",
+      "cnpj_raiz": "06175908",
+      "data": "2026-08-31",
+      "valor_brl": 814,
+      "modalidade": "",
+      "objeto": "Aquisição de materiais ambulatoriais",
+      "objeto_hash": "e91b2fc4a3ce"
+    },
+    {
       "id": "Prefeitura:2025:sem-numero:15318347",
       "orgao": "Prefeitura",
       "numero": "0",
@@ -14702,10 +15404,10 @@
       "fornecedor": "MARIA TERESA PEREIRA COELHO & CIA LTDA",
       "cnpj_raiz": "00697364",
       "data": "2023-10-31",
-      "valor_brl": 1251.25,
+      "valor_brl": 650,
       "modalidade": "",
       "objeto": "AQUISICAO DE ARMADILHA GIGANTE GATOEIRA",
-      "objeto_hash": "e7d82b6acb7a"
+      "objeto_hash": "41c1a1d0798e"
     },
     {
       "id": "Prefeitura:2023:sem-numero:43773774",
@@ -14715,10 +15417,10 @@
       "fornecedor": "BARAO DO PAPEL ATACADISTA LTDA",
       "cnpj_raiz": "43773774",
       "data": "2023-10-20",
-      "valor_brl": 935.9,
+      "valor_brl": 639.9,
       "modalidade": "",
       "objeto": "FORNEC. CALCULADORA",
-      "objeto_hash": "f5e33796688c"
+      "objeto_hash": "e20fbfc4fdd2"
     },
     {
       "id": "Prefeitura:2025:sem-numero:35345061",
@@ -14975,10 +15677,10 @@
       "fornecedor": "AQUA NOVA COMERCIO DE FILTROS E REFRIG. LTDA",
       "cnpj_raiz": "44455850",
       "data": "2023-10-31",
-      "valor_brl": 420,
+      "valor_brl": 320,
       "modalidade": "",
       "objeto": "FORNEC. DE FILTRO DE AGUA",
-      "objeto_hash": "0f410dce4dec"
+      "objeto_hash": "8ce739270336"
     },
     {
       "id": "Prefeitura:2025:sem-numero:33529762",
@@ -15293,6 +15995,32 @@
       "objeto_hash": "17a7252342e1"
     },
     {
+      "id": "Prefeitura:2026:188:19994997",
+      "orgao": "Prefeitura",
+      "numero": "188",
+      "ano": "2026",
+      "fornecedor": "CRIATIVA SOLUCOES PARA CONSTRUCAO LTDA",
+      "cnpj_raiz": "19994997",
+      "data": "2026-08-28",
+      "valor_brl": 0,
+      "modalidade": "",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
+      "objeto_hash": "7e62a8fdb6bf"
+    },
+    {
+      "id": "Prefeitura:2026:189:04184646",
+      "orgao": "Prefeitura",
+      "numero": "189",
+      "ano": "2026",
+      "fornecedor": "GABRIELA MATERIAIS PARA CONSTRUCAO LTDA",
+      "cnpj_raiz": "04184646",
+      "data": "2026-08-28",
+      "valor_brl": 0,
+      "modalidade": "",
+      "objeto": "Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
+      "objeto_hash": "7e62a8fdb6bf"
+    },
+    {
       "id": "Prefeitura:2025:207:65308835",
       "orgao": "Prefeitura",
       "numero": "207",
@@ -15356,6 +16084,19 @@
       "modalidade": "",
       "objeto": "Aquisição de lanches destinados ao Vereadores e Escola do Legislativo",
       "objeto_hash": "19269381cc9b"
+    },
+    {
+      "id": "Camara:2026:sem-numero:08619872",
+      "orgao": "Camara",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "TECZAP COMERCIO E DISTRIBUICAO LTDA",
+      "cnpj_raiz": "08619872",
+      "data": "2026-08-18",
+      "valor_brl": 34200,
+      "modalidade": "",
+      "objeto": "AQUISIÇÃO DE EQUIPAMENTOS DE ARMAZENAMENTO DO TIPO NAS E COMPONENTES DE CONECTIVIDADE PARA DATACENTER",
+      "objeto_hash": "2c55f4485808"
     },
     {
       "id": "Camara:2026:sem-numero:34028316",
@@ -15551,6 +16292,19 @@
       "modalidade": "",
       "objeto": "Contratação de empresa especializada para prestação de serviços de manutenção preventiva e corretiva em 02 (dois) condicionadores de ar.",
       "objeto_hash": "8e2d29015551"
+    },
+    {
+      "id": "Camara:2026:sem-numero:08335448",
+      "orgao": "Camara",
+      "numero": "0",
+      "ano": "2026",
+      "fornecedor": "VIA LUMEN'S AUDIO, VIDEO E INFORMATICA LTDA",
+      "cnpj_raiz": "08335448",
+      "data": "2026-09-02",
+      "valor_brl": 3968.54,
+      "modalidade": "",
+      "objeto": "FRAGMENTADORA DE PAPEL AUTOMÁTICA",
+      "objeto_hash": "ca5e6f2d8769"
     },
     {
       "id": "Camara:2026:sem-numero:55796672",
@@ -18045,7 +18799,7 @@
       "rank": 1,
       "nome": "HOSPITAL REGIONAL DO SUL DE MINAS",
       "cnpj_raiz": "25863390",
-      "valor_brl": 52389360.36
+      "valor_brl": 59837384.12
     },
     {
       "id": "Prefeitura:03091412",
@@ -18053,7 +18807,7 @@
       "rank": 2,
       "nome": "PAVICAN PAVIMENTACAO E TERRAPLENAGEM LTDA",
       "cnpj_raiz": "03091412",
-      "valor_brl": 17096002.68
+      "valor_brl": 21285334.18
     },
     {
       "id": "Prefeitura:77930956",
@@ -18061,23 +18815,23 @@
       "rank": 3,
       "nome": "VIAÇÃO REAL TRANSPORTE URBANO E RODOVIÁRIO LTDA",
       "cnpj_raiz": "77930956",
-      "valor_brl": 13955758.75
-    },
-    {
-      "id": "Prefeitura:05712722",
-      "orgao": "Prefeitura",
-      "rank": 4,
-      "nome": "VARIAN MEDICAL SYSTEMS INC",
-      "cnpj_raiz": "05712722",
-      "valor_brl": 7819347.76
+      "valor_brl": 13991103.75
     },
     {
       "id": "Prefeitura:00394460",
       "orgao": "Prefeitura",
-      "rank": 5,
+      "rank": 4,
       "nome": "RECEITA FEDERAL",
       "cnpj_raiz": "00394460",
-      "valor_brl": 7694656.32
+      "valor_brl": 8579082.94
+    },
+    {
+      "id": "Prefeitura:05712722",
+      "orgao": "Prefeitura",
+      "rank": 5,
+      "nome": "VARIAN MEDICAL SYSTEMS INC",
+      "cnpj_raiz": "05712722",
+      "valor_brl": 7819347.76
     },
     {
       "id": "Prefeitura:57437279",
@@ -18085,7 +18839,7 @@
       "rank": 6,
       "nome": "TRANSPORTO TRANSPORTES COLETIVOS PORTO FERREIRA LTDA",
       "cnpj_raiz": "57437279",
-      "valor_brl": 5870389.95
+      "valor_brl": 6729930.79
     },
     {
       "id": "Prefeitura:29979036",
@@ -18093,39 +18847,39 @@
       "rank": 7,
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
       "cnpj_raiz": "29979036",
-      "valor_brl": 5383293.36
-    },
-    {
-      "id": "Prefeitura:17281106",
-      "orgao": "Prefeitura",
-      "rank": 8,
-      "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
-      "cnpj_raiz": "17281106",
-      "valor_brl": 4623269.51
+      "valor_brl": 6343813.24
     },
     {
       "id": "Prefeitura:16565111",
       "orgao": "Prefeitura",
-      "rank": 9,
+      "rank": 8,
       "nome": "SUMA BRASIL - SERVICOS URBANOS E MEIO AMBIENTE S.A.",
       "cnpj_raiz": "16565111",
-      "valor_brl": 4518151.88
+      "valor_brl": 5268560.56
     },
     {
-      "id": "Prefeitura:37943080",
+      "id": "Prefeitura:17281106",
       "orgao": "Prefeitura",
-      "rank": 10,
-      "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
-      "cnpj_raiz": "37943080",
-      "valor_brl": 3992460.71
+      "rank": 9,
+      "nome": "COMPANHIA DE SANEAMENTO DE MINAS GERAIS - COPASA - MG",
+      "cnpj_raiz": "17281106",
+      "valor_brl": 5268356.35
     },
     {
       "id": "Prefeitura:00874813",
       "orgao": "Prefeitura",
-      "rank": 11,
+      "rank": 10,
       "nome": "SEFE SISTEMA EDUCACIONAL FAMILIA ESCOLA LTDA",
       "cnpj_raiz": "00874813",
-      "valor_brl": 3766863.16
+      "valor_brl": 4681657.09
+    },
+    {
+      "id": "Prefeitura:37943080",
+      "orgao": "Prefeitura",
+      "rank": 11,
+      "nome": "DOMINO SERVICOS TECNICOS ESPECIALIZADOS LTDA",
+      "cnpj_raiz": "37943080",
+      "valor_brl": 4580060.24
     },
     {
       "id": "Prefeitura:09182496",
@@ -18133,7 +18887,7 @@
       "rank": 12,
       "nome": "CENTRO DE DESENVOLVIMENTO INTEGRADO",
       "cnpj_raiz": "09182496",
-      "valor_brl": 3642666.67
+      "valor_brl": 4495666.67
     },
     {
       "id": "Prefeitura:19127760",
@@ -18141,7 +18895,7 @@
       "rank": 13,
       "nome": "CENTRO DE DESENV.DA CRIANCA E DO ADOLECENTE=CDC",
       "cnpj_raiz": "19127760",
-      "valor_brl": 3606500
+      "valor_brl": 4425750
     },
     {
       "id": "Prefeitura:26001891",
@@ -18149,7 +18903,7 @@
       "rank": 14,
       "nome": "ASSOCIACAO INSTITUTO DE PRESERVACAO E DESENVOLVIMENTO - IPD",
       "cnpj_raiz": "26001891",
-      "valor_brl": 3573049.8
+      "valor_brl": 4205567.65
     },
     {
       "id": "Prefeitura:61980272",
@@ -18157,31 +18911,31 @@
       "rank": 15,
       "nome": "SHA COMERCIO DE ALIMENTOS LTDA",
       "cnpj_raiz": "61980272",
-      "valor_brl": 3351903.77
-    },
-    {
-      "id": "Prefeitura:17155730",
-      "orgao": "Prefeitura",
-      "rank": 16,
-      "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
-      "cnpj_raiz": "17155730",
-      "valor_brl": 3201178.84
+      "valor_brl": 4185194.64
     },
     {
       "id": "Prefeitura:05165851",
       "orgao": "Prefeitura",
-      "rank": 17,
+      "rank": 16,
       "nome": "SERVICOS CFC LTDA",
       "cnpj_raiz": "05165851",
-      "valor_brl": 3107465.51
+      "valor_brl": 3987971.79
     },
     {
-      "id": "Prefeitura:02999757",
+      "id": "Prefeitura:21154554",
+      "orgao": "Prefeitura",
+      "rank": 17,
+      "nome": "TRIBUNAL DE JUSTIÇA DO ESTADO DE MINAS GERAIS",
+      "cnpj_raiz": "21154554",
+      "valor_brl": 3267225.64
+    },
+    {
+      "id": "Prefeitura:17155730",
       "orgao": "Prefeitura",
       "rank": 18,
-      "nome": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
-      "cnpj_raiz": "02999757",
-      "valor_brl": 2088371.11
+      "nome": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
+      "cnpj_raiz": "17155730",
+      "valor_brl": 3216637.94
     },
     {
       "id": "Prefeitura:58499094",
@@ -18189,23 +18943,23 @@
       "rank": 19,
       "nome": "BRAVO LOCACOES E SERVICOS LTDA",
       "cnpj_raiz": "58499094",
-      "valor_brl": 2084080.51
+      "valor_brl": 2627984.93
     },
     {
-      "id": "Prefeitura:23593720",
+      "id": "Prefeitura:02999757",
       "orgao": "Prefeitura",
       "rank": 20,
-      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
-      "cnpj_raiz": "23593720",
-      "valor_brl": 1882848.08
+      "nome": "NEFROSUL CLINICA DE DOENCAS RENAIS LTDA.",
+      "cnpj_raiz": "02999757",
+      "valor_brl": 2557512.28
     },
     {
-      "id": "Prefeitura:18209965",
+      "id": "Prefeitura:14733870",
       "orgao": "Prefeitura",
       "rank": 21,
-      "nome": "BAMAQ S/A BANDEIRANTES MAQUINAS E EQUIPAMENTOS",
-      "cnpj_raiz": "18209965",
-      "valor_brl": 1880837.17
+      "nome": "VALE COMERCIO DE PRODUTOS PARA EDUCACAO LTDA",
+      "cnpj_raiz": "14733870",
+      "valor_brl": 2457369.71
     },
     {
       "id": "Prefeitura:00360305",
@@ -18213,71 +18967,71 @@
       "rank": 22,
       "nome": "CAIXA ECONOMICA FEDERAL",
       "cnpj_raiz": "00360305",
-      "valor_brl": 1872751.88
+      "valor_brl": 2142560.09
+    },
+    {
+      "id": "Prefeitura:23593720",
+      "orgao": "Prefeitura",
+      "rank": 23,
+      "nome": "EXXCELÊNCIA SERVIÇOS TERCEIRIZADOS LTDA",
+      "cnpj_raiz": "23593720",
+      "valor_brl": 2094330.13
+    },
+    {
+      "id": "Prefeitura:00744610",
+      "orgao": "Prefeitura",
+      "rank": 24,
+      "nome": "D E F COSTA TRANSPORTE E CONSTRUTORA LTDA",
+      "cnpj_raiz": "00744610",
+      "valor_brl": 1984620.62
+    },
+    {
+      "id": "Prefeitura:27445021",
+      "orgao": "Prefeitura",
+      "rank": 25,
+      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
+      "cnpj_raiz": "27445021",
+      "valor_brl": 1957186.49
+    },
+    {
+      "id": "Prefeitura:00730595",
+      "orgao": "Prefeitura",
+      "rank": 26,
+      "nome": "CISSUL - CONSÓRCIO INTERMUNICIPAL DE SAÚDE SUL MINEIRO",
+      "cnpj_raiz": "00730595",
+      "valor_brl": 1926474.97
+    },
+    {
+      "id": "Prefeitura:18209965",
+      "orgao": "Prefeitura",
+      "rank": 27,
+      "nome": "BAMAQ S/A BANDEIRANTES MAQUINAS E EQUIPAMENTOS",
+      "cnpj_raiz": "18209965",
+      "valor_brl": 1880837.17
+    },
+    {
+      "id": "Prefeitura:04491116",
+      "orgao": "Prefeitura",
+      "rank": 28,
+      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
+      "cnpj_raiz": "04491116",
+      "valor_brl": 1839815.31
     },
     {
       "id": "Prefeitura:07146352",
       "orgao": "Prefeitura",
-      "rank": 23,
+      "rank": 29,
       "nome": "SUCAFINA BRASIL IND.COM.E EXP.LTDA",
       "cnpj_raiz": "07146352",
       "valor_brl": 1789133.01
     },
     {
-      "id": "Prefeitura:00730595",
-      "orgao": "Prefeitura",
-      "rank": 24,
-      "nome": "CISSUL - CONSÓRCIO INTERMUNICIPAL DE SAÚDE SUL MINEIRO",
-      "cnpj_raiz": "00730595",
-      "valor_brl": 1656980.99
-    },
-    {
-      "id": "Prefeitura:42317980",
-      "orgao": "Prefeitura",
-      "rank": 25,
-      "nome": "SAO DOMINGOS CONSTRUTORA LTDA",
-      "cnpj_raiz": "42317980",
-      "valor_brl": 1655656
-    },
-    {
-      "id": "Prefeitura:27445021",
-      "orgao": "Prefeitura",
-      "rank": 26,
-      "nome": "COLMEIA RH TECNOLOGIA SERVICOS LTDA",
-      "cnpj_raiz": "27445021",
-      "valor_brl": 1637416.45
-    },
-    {
-      "id": "Prefeitura:04491116",
-      "orgao": "Prefeitura",
-      "rank": 27,
-      "nome": "VERSÃO BR COMUNICAÇÃO E MARKETING LTDA",
-      "cnpj_raiz": "04491116",
-      "valor_brl": 1540388.64
-    },
-    {
       "id": "Prefeitura:16524054",
       "orgao": "Prefeitura",
-      "rank": 28,
+      "rank": 30,
       "nome": "AGENCIA ADVENTISTA DESENV.E REC.ASSIST. ADRA",
       "cnpj_raiz": "16524054",
-      "valor_brl": 1515300
-    },
-    {
-      "id": "Prefeitura:00456865",
-      "orgao": "Prefeitura",
-      "rank": 29,
-      "nome": "BETHA SISTEMAS LTDA",
-      "cnpj_raiz": "00456865",
-      "valor_brl": 1450990.76
-    },
-    {
-      "id": "Prefeitura:00874929",
-      "orgao": "Prefeitura",
-      "rank": 30,
-      "nome": "MED CENTER COMERCIAL LTDA",
-      "cnpj_raiz": "00874929",
-      "valor_brl": 1415839.04
+      "valor_brl": 1767850
     },
     {
       "id": "Camara:versao br comunicacao e marketing ltda",
@@ -18317,7 +19071,7 @@
       "rank": 5,
       "nome": "INSS - INST.NACIONAL SEGURO SOCIAL",
       "cnpj_raiz": "",
-      "valor_brl": 385467.77
+      "valor_brl": 437073.72
     },
     {
       "id": "Camara:iphosting assessoria em tecnologia ltda",
@@ -18352,20 +19106,20 @@
       "valor_brl": 214999.2
     },
     {
-      "id": "Camara:fundacao joao pinheiro",
+      "id": "Camara:inprev-inst.de prev.dos serv.publ.mun.varginh",
       "orgao": "Camara",
       "rank": 10,
+      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
+      "cnpj_raiz": "",
+      "valor_brl": 178321.01
+    },
+    {
+      "id": "Camara:fundacao joao pinheiro",
+      "orgao": "Camara",
+      "rank": 11,
       "nome": "FUNDACAO JOAO PINHEIRO",
       "cnpj_raiz": "",
       "valor_brl": 165256.57
-    },
-    {
-      "id": "Camara:inprev-inst.de prev.dos serv.publ.mun.varginh",
-      "orgao": "Camara",
-      "rank": 11,
-      "nome": "INPREV-INST.DE PREV.DOS SERV.PUBL.MUN.VARGINH",
-      "cnpj_raiz": "",
-      "valor_brl": 156138.49
     },
     {
       "id": "Camara:comercio de combustiveis nova alianca varginha l",
@@ -18441,6 +19195,105 @@
     }
   ],
   "diario": [
+    {
+      "id": "diario:2026:1882",
+      "edicao": "1882",
+      "ano": "2026",
+      "data": "2026-09-04",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1882",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/289/"
+    },
+    {
+      "id": "diario:2026:1881",
+      "edicao": "1881",
+      "ano": "2026",
+      "data": "2026-09-03",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1881",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/288/"
+    },
+    {
+      "id": "diario:2026:1880",
+      "edicao": "1880",
+      "ano": "2026",
+      "data": "2026-09-02",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1880",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/287/"
+    },
+    {
+      "id": "diario:2026:1879",
+      "edicao": "1879",
+      "ano": "2026",
+      "data": "2026-09-01",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1879",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/286/"
+    },
+    {
+      "id": "diario:2026:1878",
+      "edicao": "1878",
+      "ano": "2026",
+      "data": "2026-08-31",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1878",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/285/"
+    },
+    {
+      "id": "diario:2026:1877",
+      "edicao": "1877",
+      "ano": "2026",
+      "data": "2026-08-28",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1877",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/284/"
+    },
+    {
+      "id": "diario:2026:1876",
+      "edicao": "1876",
+      "ano": "2026",
+      "data": "2026-08-27",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1876",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/283/"
+    },
+    {
+      "id": "diario:2026:1875",
+      "edicao": "1875",
+      "ano": "2026",
+      "data": "2026-08-26",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1875",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/282/"
+    },
+    {
+      "id": "diario:2026:1874",
+      "edicao": "1874",
+      "ano": "2026",
+      "data": "2026-08-25",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1874",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/281/"
+    },
+    {
+      "id": "diario:2026:1873",
+      "edicao": "1873",
+      "ano": "2026",
+      "data": "2026-08-24",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1873",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/280/"
+    },
+    {
+      "id": "diario:2026:1872",
+      "edicao": "1872",
+      "ano": "2026",
+      "data": "2026-08-21",
+      "extra": false,
+      "titulo": "Diario Oficial - Edicao 1872",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/279/"
+    },
     {
       "id": "diario:2026:1871",
       "edicao": "1871",
@@ -18881,116 +19734,9 @@
       "extra": false,
       "titulo": "Diario Oficial - Edicao 1823",
       "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/230/"
-    },
-    {
-      "id": "diario:2026:1822",
-      "edicao": "1822",
-      "ano": "2026",
-      "data": "2026-06-15",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1822",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/229/"
-    },
-    {
-      "id": "diario:2026:1821",
-      "edicao": "1821",
-      "ano": "2026",
-      "data": "2026-06-12",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1821",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/228/"
-    },
-    {
-      "id": "diario:2026:1820",
-      "edicao": "1820",
-      "ano": "2026",
-      "data": "2026-06-11",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1820",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/227/"
-    },
-    {
-      "id": "diario:2026:1819",
-      "edicao": "1819",
-      "ano": "2026",
-      "data": "2026-06-10",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1819",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/226/"
-    },
-    {
-      "id": "diario:2026:1818",
-      "edicao": "1818",
-      "ano": "2026",
-      "data": "2026-06-09",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1818",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/225/"
-    },
-    {
-      "id": "diario:2026:1817",
-      "edicao": "1817",
-      "ano": "2026",
-      "data": "2026-06-08",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1817",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/224/"
-    },
-    {
-      "id": "diario:2026:1816",
-      "edicao": "1816",
-      "ano": "2026",
-      "data": "2026-06-03",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1816",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/223/"
-    },
-    {
-      "id": "diario:2026:1815",
-      "edicao": "1815",
-      "ano": "2026",
-      "data": "2026-06-02",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1815",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/222/"
-    },
-    {
-      "id": "diario:2026:1814",
-      "edicao": "1814",
-      "ano": "2026",
-      "data": "2026-06-01",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1814",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/221/"
-    },
-    {
-      "id": "diario:2026:1813",
-      "edicao": "1813",
-      "ano": "2026",
-      "data": "2026-05-29",
-      "extra": true,
-      "titulo": "Diario Oficial - Edicao 1813",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/220/"
-    },
-    {
-      "id": "diario:2026:1812",
-      "edicao": "1812",
-      "ano": "2026",
-      "data": "2026-05-29",
-      "extra": false,
-      "titulo": "Diario Oficial - Edicao 1812",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/219/"
     }
   ],
   "pendencias": [
-    {
-      "id": "fonte-emenda-2026-erro",
-      "severity": "warning",
-      "title": "Fonte de emendas 2026 com erro",
-      "detail": "1 fonte(s) retornaram erro. Exemplo: SAPL - materias legislativas 2026 (API) - falha na API SAPL: <urlopen error timed out>.",
-      "action": "Revisar URL da Camara e, se necessario, substituir por fonte oficial vigente ou LAI.",
-      "source": "fontes_emendas_2026.json"
-    },
     {
       "id": "emendas-2026-sem-lista",
       "severity": "warning",
@@ -18998,14 +19744,6 @@
       "detail": "A investigacao nao localizou lista oficial com numero, vereador, entidade, CNPJ, valor e execucao.",
       "action": "Manter emendas 2026 como dado nao confirmado ate obter planilha oficial ou resposta LAI.",
       "source": "fontes_emendas_2026.json"
-    },
-    {
-      "id": "pessoal-prefeitura-preservada",
-      "severity": "warning",
-      "title": "Pessoal da Prefeitura preservado da ultima base completa",
-      "detail": "A coleta mais recente veio parcial, entao o painel preservou a ultima base completa (303818 servidores) para nao reduzir a cobertura.",
-      "action": "Conferir a competencia na fonte oficial e tentar nova coleta antes de publicar recorte sobre folha.",
-      "source": "pessoal.json"
     },
     {
       "id": "pncp-apoio",
@@ -19016,14 +19754,6 @@
       "source": "pncp.json"
     },
     {
-      "id": "cnpj-invalidos-na-fonte",
-      "severity": "warning",
-      "title": "CNPJ invalido na fonte de origem",
-      "detail": "1 CNPJ(s) tem digitos verificadores invalidos e nao foi consultado nas bases auxiliares. O sistema preserva o valor informado, mas nao atribui cadastro a outra empresa por aproximacao.",
-      "action": "Conferir o documento da emenda ou pedir correcao do CNPJ ao orgao responsavel pela publicacao.",
-      "source": "cnpjs.json"
-    },
-    {
       "id": "auditoria-vinculos-suspensa-por-frescor",
       "severity": "warning",
       "title": "Cruzamentos de fornecedores e contratos temporariamente suspensos",
@@ -19032,10 +19762,34 @@
       "source": "prefeitura.json"
     },
     {
+      "id": "contratos-PREFEITURA-sem-modalidade",
+      "severity": "warning",
+      "title": "Modalidade de compra ausente em contratos da Prefeitura",
+      "detail": "1336 de 1336 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
+      "source": "prefeitura.json"
+    },
+    {
+      "id": "contratos-CAMARA-sem-modalidade",
+      "severity": "warning",
+      "title": "Modalidade de compra ausente em contratos da Camara",
+      "detail": "48 de 48 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
+      "source": "camara_betha.json"
+    },
+    {
+      "id": "fonte-congelada-emendas-estaduais-normalizadas",
+      "severity": "warning",
+      "title": "Fonte das emendas estaduais sem republicacao ha 114 dias",
+      "detail": "O arquivo oficial usado como origem (https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx) nao e republicado desde 2026-05-13. A coleta roda todo dia e continua integra, mas baixar de novo um arquivo que nao mudou nao torna o dado atual: o que esta publicado aqui reflete a ultima vez que o orgao de origem publicou, nao a situacao de hoje.",
+      "action": "Cobrar do orgao de origem a republicacao do arquivo e conferir na fonte primaria antes de usar estes numeros como atuais.",
+      "source": "emendas_estaduais_normalizadas.js"
+    },
+    {
       "id": "emendas-sem-repasses",
       "severity": "warning",
-      "title": "Emendas de alto valor sem repasse identificado",
-      "detail": "10 emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura (R$ 105k - Zilda Silva); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 93k - Cássio Chiodi); Nucleos Pedagógicos de Orquestra do Sul de Minas (R$ 50k - Rogério Bueno).",
+      "title": "Emendas de alto valor sem pagamento localizado no cruzamento",
+      "detail": "10 emenda(s) de R$ 50k+ aparecem sem pagamento localizado no cruzamento automático. Exemplos: Centro Federal de Educação Tecnológica de Minas Gerais (R$ 50k - Cássio Chiodi); Fundação Educacional de Varginha (R$ 50k - Davi Martins); Fundação Educacional de Varginha (R$ 50k - Bruno Leandro Coletor).",
       "action": "Consultar secretaria responsavel se o plano de trabalho foi aprovado ou se ha atraso/impedimento tecnico.",
       "source": "prefeitura.json"
     },
@@ -19051,7 +19805,7 @@
       "id": "fornecedor-sancionado-outro-ente",
       "severity": "warning",
       "title": "Fornecedores com sancao vigente aplicada por outros entes",
-      "detail": "93 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (225 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
+      "detail": "92 fornecedor(es)/contratado(s) constam com impedimento, suspensao ou multa vigente aplicada por OUTROS entes publicos (231 sancoes). Pela Lei 14.133 essas sancoes valem perante o ente sancionador — nao impedem, por si, contratar com Varginha. Registro informativo de historico.",
       "action": "Usar como criterio de atencao em novas licitacoes; conferir caso a caso antes de qualquer divulgacao nominal.",
       "source": "sancoes.json"
     },
@@ -19059,15 +19813,15 @@
       "id": "sancoes-sem-alcance-determinado",
       "severity": "warning",
       "title": "Sancoes vigentes sem alcance determinavel automaticamente",
-      "detail": "8 sancao(oes) vigente(s) ficam fora de qualquer alerta nominal porque o alcance nao pode ser afirmado com seguranca. Motivos: 4x sancao pecuniaria, sem efeito restritivo sobre contratar; 4x campo de abrangencia ausente ou 'Sem Informacao' no registro oficial. O alcance e lido do campo oficial de abrangencia do registro, nunca deduzido do nome do tipo de sancao. Multa entra aqui de proposito: e sancao pecuniaria e nao restringe o direito de contratar.",
+      "detail": "7 sancao(oes) vigente(s) ficam fora de qualquer alerta nominal porque o alcance nao pode ser afirmado com seguranca. Motivos: 4x sancao pecuniaria, sem efeito restritivo sobre contratar; 3x campo de abrangencia ausente ou 'Sem Informacao' no registro oficial. O alcance e lido do campo oficial de abrangencia do registro, nunca deduzido do nome do tipo de sancao. Multa entra aqui de proposito: e sancao pecuniaria e nao restringe o direito de contratar.",
       "action": "Ler o registro individual no CEIS (categoria, fundamentacao, abrangencia, situacao e processo) antes de qualquer divulgacao com nome de empresa.",
       "source": "sancoes.json"
     },
     {
       "id": "homologacao-simbolica",
       "severity": "warning",
-      "title": "Licitacao homologada por valor simbolico",
-      "detail": "4 licitacao(oes) homologada(s) por valor irrisorio com estimativa relevante. Exemplos: Contratação de empresa para a realização da tradicional FEIR → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil); [Portal de Compras Públicas] - Registro de preços para o fut → OFICINA DO NENE LTDA por R$ 5.00 (estimado R$ 7058 mil); [Portal de Compras Públicas] - Registro de preços para o fut → OFICINA DO NENE LTDA por R$ 5.00 (estimado R$ 7058 mil). No modelo de exploracao comercial o valor real do negocio esta nas contrapartidas do edital.",
+      "title": "Valor homologado muito abaixo da estimativa",
+      "detail": "4 licitacao(oes) apresentam valor homologado muito abaixo da estimativa. Exemplos: Contratação de empresa para a realização da tradicional FEIR → CLX PRODUCOES LTDA por R$ 0.01 (estimado R$ 478 mil); [Portal de Compras Públicas] - Registro de preços para o fut → OFICINA DO NENE LTDA por R$ 5.00 (estimado R$ 7058 mil); [Portal de Compras Públicas] - Registro de preços para o fut → OFICINA DO NENE LTDA por R$ 5.00 (estimado R$ 7058 mil). Isso pode decorrer do modelo de exploracao comercial, em que as contrapartidas do edital representam o valor economico principal; o numero isolado nao mede sozinho o negocio.",
       "action": "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
       "source": "licitacoes_resultados.json"
     }
@@ -19080,7 +19834,7 @@
       "ano": "2025",
       "fornecedor": "D E F COSTA TRANSPORTE E CONSTRUTORA LTDA",
       "data": "2025-08-29",
-      "valor_brl": 6420364,
+      "valor_brl": 6420935.34,
       "objeto": "Registro de Preços para eventual aquisição de massa asfáltica, tipo concreto betuminoso usinado – CBUQ",
       "source": "Contrato/Licitacao"
     },

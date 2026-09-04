@@ -3,7 +3,7 @@ window.EMENDAS_FEDERAIS = {
     "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
     "favorecido": "Favorecidos em Varginha-MG",
     "extraidoEm": "2026-09-04",
-    "coletadoEm": "2026-09-04T08:53:59-0300",
+    "coletadoEm": "2026-09-04T17:54:08-0300",
     "codigoIbge": "3170701",
     "totalFederal": 23370041.99,
     "totalFederalTexto": "23.370.041,99",
@@ -16,7 +16,7 @@ window.EMENDAS_FEDERAIS = {
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-09-04T13:38:43.463324+00:00",
+      "coletadoEm": "2026-09-04T20:54:29.945604+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,
@@ -30,9 +30,8 @@ window.EMENDAS_FEDERAIS = {
     "coletaFonte": {
       "status": "ok",
       "fonte": "https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares/UNICO",
-      "baixadoEm": "2026-09-04T08:53:59-0300",
-      "bytes": 32367178,
-      "reprocessado": true
+      "baixadoEm": "2026-09-04T17:54:08-0300",
+      "bytes": 32367178
     },
     "observacao": "Cada registro nasce como agregado emenda/favorecido. Nas transferências especiais ao Município, recebimento só é confirmado quando plano, empenho, ordem bancária e crédito na conta vinculada coincidem na API do Transferegov. Totais agregados excluem valores não positivos (estornos/anulações)."
   },
@@ -345,7 +344,7 @@ window.EMENDAS_FEDERAIS = {
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-106785"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:43.463224+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:54:29.945301+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=92535",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=92535",
       "dataEmpenho": "2026-06-19",
@@ -952,7 +951,7 @@ window.EMENDAS_FEDERAIS = {
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=70207"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:42.479912+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:54:28.921649+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=86374",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=86374",
       "dataEmpenho": "2025-12-15",
@@ -1761,7 +1760,7 @@ window.EMENDAS_FEDERAIS = {
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98734"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:41.557985+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:54:27.966371+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=75109",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=75109",
       "dataEmpenho": "2024-06-26",
@@ -1896,7 +1895,7 @@ window.EMENDAS_FEDERAIS = {
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98732"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:39.671408+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:54:26.019634+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=70376",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=70376",
       "dataEmpenho": "2024-06-26",
@@ -2031,7 +2030,7 @@ window.EMENDAS_FEDERAIS = {
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98733"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:38.745577+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:54:24.656435+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=69606",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=69606",
       "dataEmpenho": "2024-06-26",
@@ -2316,7 +2315,7 @@ window.EMENDAS_FEDERAIS = {
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98731"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:40.563934+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:54:26.938793+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=72397",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=72397",
       "dataEmpenho": "2024-06-26",
@@ -2756,7 +2755,7 @@ window.EMENDAS_FEDERAIS = {
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-92683"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:37.807193+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:54:23.158807+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=15703",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=15703",
       "dataEmpenho": "2022-06-10",
@@ -3672,7 +3671,7 @@ window.EMENDAS_FEDERAIS = {
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-88110"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-04T13:38:36.814454+00:00",
+      "evidenciasConsultadasEm": "2026-09-04T20:54:21.744012+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=3938",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=3938",
       "dataEmpenho": "2020-05-18",

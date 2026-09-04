@@ -7,7 +7,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
     "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
     "arquivoEtag": "\"91bf96-651b6f71c7900\"",
     "arquivoUltimaModificacao": "Wed, 13 May 2026 18:15:32 GMT",
-    "extraidoEm": "2026-09-04T05:17:26-03:00",
+    "extraidoEm": "2026-09-04T17:52:39-03:00",
     "codigoIbge": "3170701",
     "planilha": "12-05",
     "colunasOriginais": [
@@ -155,10 +155,11 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "nome": "Assembleia Legislativa de Minas Gerais",
         "pagina": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
         "arquivo": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "arquivoEtag": "\"ec3345-652587f25d108\"",
-        "arquivoUltimaModificacao": "Thu, 21 May 2026 18:58:24 GMT",
-        "planilha": "12-05-2026",
+        "arquivoOrigemUrl": "descoberta-na-pagina",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "arquivoEtag": "\"f45079-65aad0dbc4f19\"",
+        "arquivoUltimaModificacao": "Fri, 04 Sep 2026 19:12:46 GMT",
+        "planilha": "15-07-2026",
         "colunasOriginais": [
           "Ano da Indicação",
           "Número da Indicação",
@@ -207,16 +208,16 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
           "Conta Dígito",
           "Tipo de autoria"
         ],
-        "registrosVarginha": 210
+        "registrosVarginha": 209
       }
     ],
     "conciliacaoFontes": {
       "portalEmendasMg": 99,
-      "almg": 210,
-      "conferidosDuasFontes": 98,
-      "somentePortalEmendasMg": 0,
+      "almg": 209,
+      "conferidosDuasFontes": 76,
+      "somentePortalEmendasMg": 1,
       "somenteAlmg": 111,
-      "divergentes": 1
+      "divergentes": 22
     },
     "criterioLocalizacao": "Código IBGE 3170701 na planilha do Portal Emendas MG; município Varginha na base complementar da ALMG."
   },
@@ -245,7 +246,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "CORPO DE BOMBEIROS MILITAR DO ESTADO DE MINAS GERAIS",
       "orgaoSigla": "CBMMG",
       "funcao": "SAÚDE",
@@ -289,7 +290,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 30434,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -303,16 +304,24 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60863
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 56940
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 179956.8
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-205473",
@@ -338,7 +347,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "CORPO DE BOMBEIROS MILITAR DO ESTADO DE MINAS GERAIS",
       "orgaoSigla": "CBMMG",
       "funcao": "SAÚDE",
@@ -382,7 +391,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29903,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -396,16 +405,24 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60332
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 60125
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 59985.6
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-204706",
@@ -431,7 +448,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "SECRETARIA DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA",
       "orgaoSigla": "SEJUSP",
       "funcao": "SEGURANÇA PÚBLICA",
@@ -475,7 +492,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29831,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -489,16 +506,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60260
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 60578
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-204462",
@@ -568,7 +601,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 27658,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -582,9 +615,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 58087
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 62798
         }
       ],
       "pendencias": [],
@@ -617,7 +650,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "fonte_unica",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -661,7 +694,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29988,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -671,20 +704,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
           "sha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
           "planilha": "12-05",
           "linha": 29988
-        },
-        {
-          "nome": "Base de emendas parlamentares — ALMG",
-          "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60417
         }
       ],
-      "pendencias": [],
-      "fontesConferidas": [
-        "Portal Emendas MG",
-        "ALMG"
-      ]
+      "pendencias": []
     },
     {
       "id": "estadual-sigcon-2026-203694",
@@ -710,7 +732,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -754,7 +776,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29989,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -768,16 +790,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60418
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 59779
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 2581.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 2581.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-203693",
@@ -803,7 +837,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -847,7 +881,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29987,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -861,16 +895,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60416
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 58154
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 92581.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 92581.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-203544",
@@ -896,7 +942,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -940,7 +986,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 26728,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -954,16 +1000,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 57157
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 57609
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-202880",
@@ -989,7 +1047,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -1033,7 +1091,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 34409,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1047,16 +1105,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 64838
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 61076
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-202701",
@@ -1082,7 +1152,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -1126,7 +1196,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 30522,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1140,16 +1210,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60951
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 66001
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 600000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 600000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-200969",
@@ -1175,7 +1257,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
       "orgaoSigla": "SEDESE",
       "funcao": "DESPORTO E LAZER",
@@ -1219,7 +1301,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29839,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1233,16 +1315,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60268
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 59143
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 150000.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 150000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 150000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-200965",
@@ -1268,7 +1366,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
       "orgaoSigla": "SEDESE",
       "funcao": "DESPORTO E LAZER",
@@ -1312,7 +1410,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29838,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1326,16 +1424,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60267
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 57873
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-200843",
@@ -1361,7 +1475,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "SECRETARIA DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA",
       "orgaoSigla": "SEJUSP",
       "funcao": "SEGURANÇA PÚBLICA",
@@ -1405,7 +1519,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29832,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1419,16 +1533,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60261
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 58821
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 150000.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 150000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 150000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-200831",
@@ -1454,7 +1584,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "SECRETARIA DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA",
       "orgaoSigla": "SEJUSP",
       "funcao": "SEGURANÇA PÚBLICA",
@@ -1498,7 +1628,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29830,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1512,16 +1642,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60259
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 62558
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-200825",
@@ -1547,7 +1693,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "SECRETARIA DE ESTADO DE JUSTIÇA E SEGURANÇA PÚBLICA",
       "orgaoSigla": "SEJUSP",
       "funcao": "SEGURANÇA PÚBLICA",
@@ -1591,7 +1737,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29829,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1605,16 +1751,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60258
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 57166
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-200814",
@@ -1640,7 +1802,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -1684,7 +1846,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29828,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1698,16 +1860,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60257
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 61589
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-200808",
@@ -1733,7 +1907,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -1777,7 +1951,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29827,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1791,16 +1965,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 60256
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 63030
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 360000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 360000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-200334",
@@ -1870,7 +2056,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 34393,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1884,9 +2070,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 64822
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 64483
         }
       ],
       "pendencias": [],
@@ -1919,7 +2105,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "SECRETARIA DE ESTADO DE DESENVOLVIMENTO SOCIAL",
       "orgaoSigla": "SEDESE",
       "funcao": "DESPORTO E LAZER",
@@ -1963,7 +2149,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 35303,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1977,16 +2163,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 65732
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 65569
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 100000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-197898",
@@ -2012,7 +2214,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "SECRETARIA DE ESTADO DE GOVERNO",
       "orgaoSigla": "SEGOV",
       "funcao": "ADMINISTRAÇÃO",
@@ -2056,7 +2258,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 28869,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2070,16 +2272,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 59298
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 57626
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 86500.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 86500.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 86500.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-196843",
@@ -2149,7 +2367,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29169,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2163,9 +2381,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 59598
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 59179
         }
       ],
       "pendencias": [],
@@ -2242,7 +2460,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29168,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2256,9 +2474,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 59597
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 64985
         }
       ],
       "pendencias": [],
@@ -2335,7 +2553,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29167,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2349,9 +2567,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 59596
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 59720
         }
       ],
       "pendencias": [],
@@ -2428,7 +2646,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29166,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2442,9 +2660,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 59595
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 65310
         }
       ],
       "pendencias": [],
@@ -2521,7 +2739,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29165,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2535,9 +2753,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 59594
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 64943
         }
       ],
       "pendencias": [],
@@ -2614,7 +2832,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29164,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2628,9 +2846,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 59593
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 59689
         }
       ],
       "pendencias": [],
@@ -2707,7 +2925,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29163,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2721,9 +2939,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 59592
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 62388
         }
       ],
       "pendencias": [],
@@ -2756,7 +2974,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -2800,7 +3018,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 34791,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2814,16 +3032,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 65220
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 57842
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-195448",
@@ -2849,7 +3079,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -2893,7 +3123,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 26866,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2907,16 +3137,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 57295
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 65579
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-194227",
@@ -2942,7 +3184,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -2986,7 +3228,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 36011,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3000,16 +3242,28 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 66440
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 63079
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 300000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 300000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2026-193883",
@@ -3035,7 +3289,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "localidade": "VARGINHA",
       "fonteSistema": "Portal Emendas MG",
       "escopoDestino": "Município identificado pelo código IBGE 3170701",
-      "conciliacaoFontes": "conferido_em_duas_fontes",
+      "conciliacaoFontes": "divergencia_entre_fontes",
       "orgao": "FUNDO ESTADUAL DE SAÚDE",
       "orgaoSigla": "FES",
       "funcao": "SAÚDE",
@@ -3079,7 +3333,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 32940,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3093,16 +3347,32 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 63369
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 62063
         }
       ],
-      "pendencias": [],
+      "pendencias": [
+        "divergencia_almg_portal_emendas_mg"
+      ],
       "fontesConferidas": [
         "Portal Emendas MG",
         "ALMG"
-      ]
+      ],
+      "divergenciasFontes": {
+        "valorUtilizado": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        },
+        "valorEmpenhado": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        },
+        "valorPago": {
+          "portalEmendasMg": 0.0,
+          "almg": 180000.0
+        }
+      }
     },
     {
       "id": "estadual-sigcon-2025-179673",
@@ -3165,23 +3435,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=56541",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=41169",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 56541,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 41169,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 56541
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 41169
         }
       ],
       "pendencias": [
@@ -3249,23 +3519,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=56467",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=41095",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 56467,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 41095,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 56467
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 41095
         }
       ],
       "pendencias": [
@@ -3333,23 +3603,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=56210",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=40838",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 56210,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 40838,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 56210
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 40838
         }
       ],
       "pendencias": [
@@ -3417,23 +3687,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=56198",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=40826",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 56198,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 40826,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 56198
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 40826
         }
       ],
       "pendencias": [
@@ -3508,7 +3778,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 25297,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3522,9 +3792,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 55877
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 40505
         }
       ],
       "pendencias": [],
@@ -3601,7 +3871,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 25267,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3615,9 +3885,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 55858
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 40486
         }
       ],
       "pendencias": [],
@@ -3694,7 +3964,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 24829,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3708,9 +3978,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 55476
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 40104
         }
       ],
       "pendencias": [],
@@ -3787,7 +4057,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 24825,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3801,9 +4071,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 55472
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 40100
         }
       ],
       "pendencias": [],
@@ -3880,7 +4150,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 24756,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3894,9 +4164,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 54561
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 39189
         }
       ],
       "pendencias": [],
@@ -3973,7 +4243,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 23140,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3987,9 +4257,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 53864
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 38492
         }
       ],
       "pendencias": [],
@@ -4066,7 +4336,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 22848,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4080,9 +4350,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 53592
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 38220
         }
       ],
       "pendencias": [],
@@ -4159,7 +4429,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 22381,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4173,9 +4443,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 53139
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 37767
         }
       ],
       "pendencias": [],
@@ -4252,7 +4522,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 21206,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4266,9 +4536,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 51972
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 36600
         }
       ],
       "pendencias": [],
@@ -4345,7 +4615,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 21155,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4359,9 +4629,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 51937
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 36565
         }
       ],
       "pendencias": [],
@@ -4438,7 +4708,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 20275,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4452,9 +4722,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 53186
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 37814
         }
       ],
       "pendencias": [],
@@ -4531,7 +4801,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 20274,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4545,9 +4815,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 53184
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 37812
         }
       ],
       "pendencias": [],
@@ -4624,7 +4894,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 20060,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4638,9 +4908,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 51086
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 35714
         }
       ],
       "pendencias": [],
@@ -4717,7 +4987,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 19787,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4731,9 +5001,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 50823
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 35451
         }
       ],
       "pendencias": [],
@@ -4810,7 +5080,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 19345,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4824,9 +5094,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 50383
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 35011
         }
       ],
       "pendencias": [],
@@ -4896,23 +5166,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=50368",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=34996",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 50368,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 34996,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 50368
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 34996
         }
       ],
       "pendencias": [
@@ -4987,7 +5257,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 19099,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5001,9 +5271,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 50220
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 34848
         }
       ],
       "pendencias": [],
@@ -5080,7 +5350,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 19078,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5094,9 +5364,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 50203
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 34831
         }
       ],
       "pendencias": [],
@@ -5173,7 +5443,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17837,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5187,9 +5457,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 45901
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 30529
         }
       ],
       "pendencias": [],
@@ -5266,7 +5536,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17736,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5280,9 +5550,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48913
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 33541
         }
       ],
       "pendencias": [],
@@ -5359,7 +5629,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17618,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5373,9 +5643,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48798
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 33426
         }
       ],
       "pendencias": [],
@@ -5452,7 +5722,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17613,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5466,9 +5736,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48793
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 33421
         }
       ],
       "pendencias": [],
@@ -5545,7 +5815,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17611,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5559,9 +5829,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48791
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 33419
         }
       ],
       "pendencias": [],
@@ -5638,7 +5908,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17459,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5652,9 +5922,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 45878
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 30506
         }
       ],
       "pendencias": [],
@@ -5731,7 +6001,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17099,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5745,9 +6015,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 45844
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 30472
         }
       ],
       "pendencias": [],
@@ -5817,23 +6087,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=48368",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=32996",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 48368,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 32996,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48368
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 32996
         }
       ],
       "pendencias": [
@@ -5901,23 +6171,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=48367",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=32995",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 48367,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 32995,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48367
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 32995
         }
       ],
       "pendencias": [
@@ -5992,7 +6262,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 16835,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6006,9 +6276,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48147
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 32775
         }
       ],
       "pendencias": [
@@ -6086,23 +6356,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=48089",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=32717",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 48089,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 32717,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48089
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 32717
         }
       ],
       "pendencias": [
@@ -6170,23 +6440,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=48088",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=32716",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 48088,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 32716,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48088
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 32716
         }
       ],
       "pendencias": [
@@ -6254,23 +6524,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=48087",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=32715",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 48087,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 32715,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48087
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 32715
         }
       ],
       "pendencias": [
@@ -6338,23 +6608,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=48086",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=32714",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 48086,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 32714,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 48086
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 32714
         }
       ],
       "pendencias": [
@@ -6429,7 +6699,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 16042,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6443,9 +6713,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 47360
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 31988
         }
       ],
       "pendencias": [],
@@ -6522,7 +6792,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 16024,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6536,9 +6806,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 47342
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 31970
         }
       ],
       "pendencias": [],
@@ -6615,7 +6885,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 15748,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6629,9 +6899,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 47078
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 31706
         }
       ],
       "pendencias": [],
@@ -6708,7 +6978,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 15718,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6722,9 +6992,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 47049
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 31677
         }
       ],
       "pendencias": [],
@@ -6801,7 +7071,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 15643,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6815,9 +7085,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 46974
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 31602
         }
       ],
       "pendencias": [],
@@ -6894,7 +7164,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 15586,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6908,9 +7178,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 46929
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 31557
         }
       ],
       "pendencias": [],
@@ -6987,7 +7257,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 14943,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7001,9 +7271,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 45014
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 48778
         }
       ],
       "pendencias": [],
@@ -7080,7 +7350,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 14356,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7094,9 +7364,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 44427
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 48191
         }
       ],
       "pendencias": [],
@@ -7166,23 +7436,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=44207",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=47971",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 44207,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 47971,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 44207
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 47971
         }
       ],
       "pendencias": [
@@ -7257,7 +7527,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 14008,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7271,9 +7541,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 44109
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 47873
         }
       ],
       "pendencias": [],
@@ -7350,7 +7620,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 13688,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7364,9 +7634,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 43817
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 47581
         }
       ],
       "pendencias": [],
@@ -7443,7 +7713,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 13686,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7457,9 +7727,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 43815
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 47579
         }
       ],
       "pendencias": [],
@@ -7536,7 +7806,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 12284,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7550,9 +7820,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 42467
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 46231
         }
       ],
       "pendencias": [],
@@ -7629,7 +7899,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 12123,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7643,9 +7913,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 42316
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 46080
         }
       ],
       "pendencias": [],
@@ -7715,23 +7985,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=41862",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=45626",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 41862,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 45626,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 41862
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 45626
         }
       ],
       "pendencias": [
@@ -7799,23 +8069,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=41850",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=45614",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 41850,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 45614,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 41850
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 45614
         }
       ],
       "pendencias": [
@@ -7890,7 +8160,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 10987,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7904,9 +8174,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 41376
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 45140
         }
       ],
       "pendencias": [],
@@ -7976,23 +8246,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=40266",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=44030",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 40266,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 44030,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 40266
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 44030
         }
       ],
       "pendencias": [
@@ -8067,7 +8337,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 9447,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8081,9 +8351,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 40137
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 43901
         }
       ],
       "pendencias": [],
@@ -8160,7 +8430,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 9189,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8174,9 +8444,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 39889
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 43653
         }
       ],
       "pendencias": [],
@@ -8253,7 +8523,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 8876,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8267,9 +8537,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 39606
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 43370
         }
       ],
       "pendencias": [],
@@ -8346,7 +8616,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 8436,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8360,9 +8630,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 45683
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 49447
         }
       ],
       "pendencias": [],
@@ -8432,23 +8702,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=39082",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=42846",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 39082,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 42846,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 39082
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 42846
         }
       ],
       "pendencias": [
@@ -8516,23 +8786,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=39081",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=42845",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 39081,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 42845,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 39081
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 42845
         }
       ],
       "pendencias": [
@@ -8600,23 +8870,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=39080",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=42844",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 39080,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 42844,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 39080
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 42844
         }
       ],
       "pendencias": [
@@ -8691,7 +8961,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 8171,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8705,9 +8975,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 45664
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 49428
         }
       ],
       "pendencias": [],
@@ -8784,7 +9054,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 6767,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8798,9 +9068,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 36356
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 55492
         }
       ],
       "pendencias": [],
@@ -8877,7 +9147,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 4838,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8891,9 +9161,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 37365
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 56501
         }
       ],
       "pendencias": [],
@@ -8970,7 +9240,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3677,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8984,9 +9254,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 33690
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 52826
         }
       ],
       "pendencias": [],
@@ -9063,7 +9333,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3413,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9077,9 +9347,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 37303
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 56439
         }
       ],
       "pendencias": [],
@@ -9156,7 +9426,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3149,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9170,9 +9440,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 33259
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 52395
         }
       ],
       "pendencias": [],
@@ -9249,7 +9519,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3103,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9263,9 +9533,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 33223
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 52359
         }
       ],
       "pendencias": [],
@@ -9342,7 +9612,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3097,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9356,9 +9626,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 33217
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 52353
         }
       ],
       "pendencias": [],
@@ -9435,7 +9705,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3079,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9449,9 +9719,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 33200
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 52336
         }
       ],
       "pendencias": [],
@@ -9528,7 +9798,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3067,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9542,9 +9812,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 37293
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 56429
         }
       ],
       "pendencias": [],
@@ -9621,7 +9891,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3066,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9635,9 +9905,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 37292
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 56428
         }
       ],
       "pendencias": [],
@@ -9714,7 +9984,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 2499,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9728,9 +9998,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 32726
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 51862
         }
       ],
       "pendencias": [],
@@ -9807,7 +10077,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 2498,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9821,9 +10091,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 32725
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 51861
         }
       ],
       "pendencias": [],
@@ -9900,7 +10170,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 2382,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9914,9 +10184,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 32631
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 51767
         }
       ],
       "pendencias": [],
@@ -9993,7 +10263,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 1087,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10007,9 +10277,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 31516
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 50652
         }
       ],
       "pendencias": [],
@@ -10086,7 +10356,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 1068,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10100,9 +10370,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 31497
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 50633
         }
       ],
       "pendencias": [],
@@ -10179,7 +10449,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 1003,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10193,9 +10463,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 31432
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 50568
         }
       ],
       "pendencias": [],
@@ -10265,23 +10535,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=31070",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=50206",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 31070,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 50206,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 31070
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 50206
         }
       ],
       "pendencias": [
@@ -10349,23 +10619,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=31069",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=50205",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 31069,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 50205,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 31069
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 50205
         }
       ],
       "pendencias": [
@@ -10433,23 +10703,23 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=31065",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=50201",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
-        "linha": 31065,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
+        "linha": 50201,
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 31065
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 50201
         }
       ],
       "pendencias": [
@@ -10524,7 +10794,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 528,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10538,9 +10808,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 30957
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 50093
         }
       ],
       "pendencias": [],
@@ -10617,7 +10887,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 476,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10631,9 +10901,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 30905
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 50041
         }
       ],
       "pendencias": [],
@@ -10710,7 +10980,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 407,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10724,9 +10994,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 30836
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 49972
         }
       ],
       "pendencias": [],
@@ -10803,7 +11073,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 243,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10817,9 +11087,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 30672
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 49808
         }
       ],
       "pendencias": [],
@@ -10896,7 +11166,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 234,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10910,9 +11180,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 30663
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 49799
         }
       ],
       "pendencias": [],
@@ -10989,7 +11259,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 164,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11003,9 +11273,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 30593
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 49729
         }
       ],
       "pendencias": [],
@@ -11082,7 +11352,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 163,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11096,9 +11366,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 30592
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 49728
         }
       ],
       "pendencias": [],
@@ -11175,7 +11445,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 8,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11189,9 +11459,9 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
-          "linha": 30437
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
+          "linha": 49573
         }
       ],
       "pendencias": [],
@@ -11261,22 +11531,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=30318",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=30318",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 30318,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 30318
         }
       ],
@@ -11345,22 +11615,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=29279",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=29279",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 29279,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 29279
         }
       ],
@@ -11429,22 +11699,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=29119",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=29119",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 29119,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 29119
         }
       ],
@@ -11513,22 +11783,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=28174",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=28174",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 28174,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 28174
         }
       ],
@@ -11597,22 +11867,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=27408",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=27408",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 27408,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 27408
         }
       ],
@@ -11681,22 +11951,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=26836",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=26836",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 26836,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 26836
         }
       ],
@@ -11765,22 +12035,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=26333",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=26333",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 26333,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 26333
         }
       ],
@@ -11849,22 +12119,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=26273",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=26273",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 26273,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 26273
         }
       ],
@@ -11933,22 +12203,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=26271",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=26271",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 26271,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 26271
         }
       ],
@@ -12017,22 +12287,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=26270",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=26270",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 26270,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 26270
         }
       ],
@@ -12101,22 +12371,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=26267",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=26267",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 26267,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 26267
         }
       ],
@@ -12185,22 +12455,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=25837",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=25837",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 25837,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 25837
         }
       ],
@@ -12269,22 +12539,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=25741",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=25741",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 25741,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 25741
         }
       ],
@@ -12353,22 +12623,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=25695",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=25695",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 25695,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 25695
         }
       ],
@@ -12437,22 +12707,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=25532",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=25532",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 25532,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 25532
         }
       ],
@@ -12521,22 +12791,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=25335",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=25335",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 25335,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 25335
         }
       ],
@@ -12605,22 +12875,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=25278",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=25278",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 25278,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 25278
         }
       ],
@@ -12689,22 +12959,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=25084",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=25084",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 25084,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 25084
         }
       ],
@@ -12773,22 +13043,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=24615",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=24615",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 24615,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 24615
         }
       ],
@@ -12857,22 +13127,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=24606",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=24606",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 24606,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 24606
         }
       ],
@@ -12941,22 +13211,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=23640",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=23640",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 23640,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 23640
         }
       ],
@@ -13025,22 +13295,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=23533",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=23533",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 23533,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 23533
         }
       ],
@@ -13109,22 +13379,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=20955",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=20955",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 20955,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 20955
         }
       ],
@@ -13193,22 +13463,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=19036",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=19036",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 19036,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 19036
         }
       ],
@@ -13277,22 +13547,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=18990",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=18990",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 18990,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 18990
         }
       ],
@@ -13361,22 +13631,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=18797",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=18797",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 18797,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 18797
         }
       ],
@@ -13445,22 +13715,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=18347",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=18347",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 18347,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 18347
         }
       ],
@@ -13529,22 +13799,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=17858",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=17858",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 17858,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 17858
         }
       ],
@@ -13613,22 +13883,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=17310",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=17310",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 17310,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 17310
         }
       ],
@@ -13697,22 +13967,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=17104",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=17104",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 17104,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 17104
         }
       ],
@@ -13781,22 +14051,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=17057",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=17057",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 17057,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 17057
         }
       ],
@@ -13865,22 +14135,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=17029",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=17029",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 17029,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 17029
         }
       ],
@@ -13949,22 +14219,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=16918",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=16918",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 16918,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 16918
         }
       ],
@@ -14033,22 +14303,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=16586",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=16586",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 16586,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 16586
         }
       ],
@@ -14117,22 +14387,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=16307",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=16307",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 16307,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 16307
         }
       ],
@@ -14201,22 +14471,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=16205",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=16205",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 16205,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 16205
         }
       ],
@@ -14285,22 +14555,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=14543",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=14543",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 14543,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 14543
         }
       ],
@@ -14369,22 +14639,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=14269",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=14269",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 14269,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 14269
         }
       ],
@@ -14453,22 +14723,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=14260",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=14260",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 14260,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 14260
         }
       ],
@@ -14537,22 +14807,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=14243",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=14243",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 14243,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 14243
         }
       ],
@@ -14621,22 +14891,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=16013",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=16013",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 16013,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 16013
         }
       ],
@@ -14705,22 +14975,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=14113",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=14113",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 14113,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 14113
         }
       ],
@@ -14789,22 +15059,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=14038",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=14038",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 14038,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 14038
         }
       ],
@@ -14873,22 +15143,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=15628",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=15628",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 15628,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 15628
         }
       ],
@@ -14957,22 +15227,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=15544",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=15544",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 15544,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 15544
         }
       ],
@@ -15041,22 +15311,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=15472",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=15472",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 15472,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 15472
         }
       ],
@@ -15125,22 +15395,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=15464",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=15464",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 15464,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 15464
         }
       ],
@@ -15209,22 +15479,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=13421",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=13421",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 13421,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 13421
         }
       ],
@@ -15293,22 +15563,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=13250",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=13250",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 13250,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 13250
         }
       ],
@@ -15377,22 +15647,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=9863",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=9863",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 9863,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 9863
         }
       ],
@@ -15461,22 +15731,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=9644",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=9644",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 9644,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 9644
         }
       ],
@@ -15545,22 +15815,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=6284",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=6284",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 6284,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 6284
         }
       ],
@@ -15629,22 +15899,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=8408",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=8408",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 8408,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 8408
         }
       ],
@@ -15713,22 +15983,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7970",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7970",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7970,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7970
         }
       ],
@@ -15797,22 +16067,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7826",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7826",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7826,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7826
         }
       ],
@@ -15881,22 +16151,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=6591",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=6591",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 6591,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 6591
         }
       ],
@@ -15965,22 +16235,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=6569",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=6569",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 6569,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 6569
         }
       ],
@@ -16049,22 +16319,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7147",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7147",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7147,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7147
         }
       ],
@@ -16133,22 +16403,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7144",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7144",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7144,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7144
         }
       ],
@@ -16217,22 +16487,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7093",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7093",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7093,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7093
         }
       ],
@@ -16301,22 +16571,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7092",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7092",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7092,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7092
         }
       ],
@@ -16385,22 +16655,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7091",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7091",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7091,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7091
         }
       ],
@@ -16469,22 +16739,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7089",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7089",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7089,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7089
         }
       ],
@@ -16553,22 +16823,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7088",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7088",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7088,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7088
         }
       ],
@@ -16637,22 +16907,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7087",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7087",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7087,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7087
         }
       ],
@@ -16721,22 +16991,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7056",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7056",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7056,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7056
         }
       ],
@@ -16805,22 +17075,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=7055",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=7055",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 7055,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 7055
         }
       ],
@@ -16889,22 +17159,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4972",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4972",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4972,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4972
         }
       ],
@@ -16973,22 +17243,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4971",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4971",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4971,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4971
         }
       ],
@@ -17057,22 +17327,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4970",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4970",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4970,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4970
         }
       ],
@@ -17141,22 +17411,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=3827",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=3827",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 3827,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 3827
         }
       ],
@@ -17225,22 +17495,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4968",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4968",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4968,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4968
         }
       ],
@@ -17309,22 +17579,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4931",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4931",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4931,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4931
         }
       ],
@@ -17393,22 +17663,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=2202",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=2202",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 2202,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 2202
         }
       ],
@@ -17477,22 +17747,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4955",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4955",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4955,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4955
         }
       ],
@@ -17561,22 +17831,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=1734",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=1734",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 1734,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 1734
         }
       ],
@@ -17645,22 +17915,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4953",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4953",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4953,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4953
         }
       ],
@@ -17729,22 +17999,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4951",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4951",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4951,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4951
         }
       ],
@@ -17813,22 +18083,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=1475",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=1475",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 1475,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 1475
         }
       ],
@@ -17897,22 +18167,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4949",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4949",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4949,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4949
         }
       ],
@@ -17981,22 +18251,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4503",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4503",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4503,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4503
         }
       ],
@@ -18065,22 +18335,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4502",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4502",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4502,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4502
         }
       ],
@@ -18149,22 +18419,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4500",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4500",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4500,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4500
         }
       ],
@@ -18233,22 +18503,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4944",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4944",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4944,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4944
         }
       ],
@@ -18317,22 +18587,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4493",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4493",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4493,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4493
         }
       ],
@@ -18401,22 +18671,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4479",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4479",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4479,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4479
         }
       ],
@@ -18485,22 +18755,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4473",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4473",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4473,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4473
         }
       ],
@@ -18569,22 +18839,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4940",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4940",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4940,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4940
         }
       ],
@@ -18653,22 +18923,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4939",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4939",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4939,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4939
         }
       ],
@@ -18737,22 +19007,22 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
       "classificacaoComprovacao": "confirmado",
       "fonte": "Assembleia Legislativa de Minas Gerais — dados de emendas",
       "fonteUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=12-05-2026&linha=4938",
+      "fonteRegistroUrl": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx#planilha=15-07-2026&linha=4938",
       "evidencias": {
         "urlOficial": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
         "paginaOficial": "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/",
-        "arquivoSha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-        "planilha": "12-05-2026",
+        "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+        "planilha": "15-07-2026",
         "linha": 4938,
-        "coletadoEm": "2026-09-04T05:17:26-03:00",
+        "coletadoEm": "2026-09-04T17:52:39-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
         {
           "nome": "Base de emendas parlamentares — ALMG",
           "url": "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx",
-          "sha256": "bf64a2ca2129d2fcfef756b34a0aae02ba24ed9c6d020a82289a431c2549bca1",
-          "planilha": "12-05-2026",
+          "sha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
+          "planilha": "15-07-2026",
           "linha": 4938
         }
       ],

@@ -11,7 +11,7 @@
     "total_anterior": 7137822.19,
     "total_externo_atual": 1595917.7,
     "total_externo_anterior": 3071916.67,
-    "credores_atual_qtd": 132,
+    "credores_atual_qtd": 133,
     "credores_anterior_qtd": 196,
     "top_fornecedores_atual": [
       {
@@ -261,8 +261,8 @@
   },
   "execucao": {
     "resumo_atual": {
-      "registros": 300,
-      "empenhado": 5200094.86,
+      "registros": 301,
+      "empenhado": 5203094.86,
       "liquidado": 4430542.64,
       "pago": 4419940.81
     },
@@ -15548,20 +15548,6 @@
       "entidade": ""
     },
     {
-      "numero": "8",
-      "ano": "2025",
-      "data_assinatura": "2025-09-03",
-      "data_fim": "2026-09-03",
-      "modalidade": "",
-      "tipo": "Compras e Serviços",
-      "objeto": "Contratação de empresa especializada para fornecimento e instalação de portas de enrolar, em aço galvanizado, sistema automático, incluindo mão de obra e materiais, nas dependências da Antiga Estação Ferroviária, localizada na Praça Matheus Tavares, 121, Centro, Varginha-MG,  conforme especificações e condições estabelecidas no Termo de Referência.",
-      "contratado": "ALEX MUNIZ DOS REIS",
-      "cnpj": "31.086.956/****-**",
-      "valor": 47238.96,
-      "situacao": "EXECUCAO",
-      "entidade": ""
-    },
-    {
       "numero": "0",
       "ano": "2025",
       "data_assinatura": "2025-12-23",
@@ -16281,8 +16267,8 @@
     "valor_total": 10814261.08,
     "qtd_vigentes": 115,
     "valor_vigentes": 4089258.48,
-    "qtd_vigencia_futura": 59,
-    "valor_vigencia_futura": 1176831.18,
+    "qtd_vigencia_futura": 58,
+    "valor_vigencia_futura": 1129592.22,
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80579"
   },
   "licitacoes": [
@@ -38438,18 +38424,6 @@
         "situacao": "Trabalhando"
       },
       {
-        "nome": "ELIANA CRISTINA COSTA",
-        "cargo": "TNS/BIBLIOTECARIO",
-        "orgao": "FUNDACAO CULTURAL MUNICIPIO DE VARGINHA",
-        "data_admissao": "2000-05-19",
-        "tipo_matricula": "Funcionário",
-        "vinculo": "EFETIVO(PF/INPREV)",
-        "carga_horaria_mensal": "220.00",
-        "carga_horaria_semanal": "44",
-        "remuneracao_contratual": 6715.06,
-        "situacao": "Trabalhando"
-      },
-      {
         "nome": "ERIKA APARECIDA IRENO TOBIAS",
         "cargo": "PRODUTOR DE EVENTOS - CFC 3",
         "orgao": "FUNDACAO CULTURAL MUNICIPIO DE VARGINHA",
@@ -38991,9 +38965,9 @@
       }
     ],
     "resumo": {
-      "ativos_qtd": 60,
+      "ativos_qtd": 59,
       "comissionados_qtd": 11,
-      "efetivos_qtd": 44
+      "efetivos_qtd": 43
     },
     "fonte_url": "https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==/consulta/80361"
   },
