@@ -57,9 +57,20 @@ for item in resumo:
 # 2. Agregados federais jamais podem se declarar um repasse individual.
 for item in federais:
     ident = item.get("emenda", "?")
-    for campo in ("autor", "ano", "emenda", "beneficiario", "objeto", "fonteUrl", "categoria"):
+    for campo in ("autor", "emenda", "beneficiario", "objeto", "fonteUrl", "categoria"):
         if not item.get(campo):
             problemas.append(f"Federal {ident}: campo '{campo}' vazio")
+    ano = str(item.get("anoEmenda") or "")
+    if ano and not re.fullmatch(r"20\d{2}", ano):
+        problemas.append(f"Federal {ident}: ano da emenda inválido")
+    if not item.get("somenteNoBetha"):
+        if not item.get("fonteAnoEmenda") or not item.get("periodoRecebimentoCGU"):
+            problemas.append(f"Federal {ident}: procedência temporal incompleta")
+        if re.fullmatch(r"20\d{10}", str(ident)) and not ano:
+            problemas.append(f"Federal {ident}: ano oficial ausente")
+        periodo = str(item.get("periodoRecebimentoCGU") or "")
+        if re.fullmatch(r"20\d{4}", periodo) and str(item.get("anoRecurso")) != periodo[:4]:
+            problemas.append(f"Federal {ident}: ano do recurso diverge do período CGU")
     if "valor" not in item:
         problemas.append(f"Federal {ident}: valor agregado ausente")
     if item.get("granularidade") == "emenda_favorecido_agregado" and item.get("identificador_repasse_confirmado") is True:
@@ -148,6 +159,10 @@ for item in municipais:
         problemas.append(f"Municipal {ident}: indicação deve permanecer Inferido, não recebimento confirmado")
     if item.get("valorRecebido") not in (None, ""):
         problemas.append(f"Municipal {ident}: valorRecebido não comprovado foi publicado")
+    if item.get("exercicioOrcamentario") and (item.get("documentoStatus") != "conferido" or not item.get("documentoConferidoEm")):
+        problemas.append(f"Municipal {ident}: exercício sem conferência documental")
+    if item.get("cnpjCorrecao") and (not item.get("cnpjOriginal") or not item["cnpjCorrecao"].get("fonte")):
+        problemas.append(f"Municipal {ident}: correção cadastral sem origem preservada")
 
 # 5. Só IDs presentes na composição efetivamente exibida entram na auditoria global.
 legada_nao_municipal_ou_estadual = [

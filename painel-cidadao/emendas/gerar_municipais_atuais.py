@@ -25,6 +25,8 @@ CHUNK = HERE.parent / "data" / "chunks" / "emendas.json"
 BASE_LEGADA = HERE / "data" / "emendas.js"
 SAIDA = HERE / "data" / "emendas_municipais_unificadas.js"
 ANO_INICIO_SAPL = 2025
+sys.path.insert(0, str(HERE.parent))
+from emendas_documentos import enriquecer_emendas
 
 try:
     sys.stdout.reconfigure(encoding="utf-8")
@@ -111,6 +113,8 @@ def transformar_historico(registro: dict) -> dict:
         "tipo": "Municipal",
         "ano": str(ano),
         "anoEmenda": str(ano),
+        "anoProposicao": str(ano),
+        "exercicioOrcamentario": None,
         "anosRelacionados": [str(ano)],
         "emenda": emenda_canonica,
         "emendaOriginal": str(registro.get("emendaOriginal") or registro.get("emenda") or emenda_canonica),
@@ -156,6 +160,11 @@ def transformar_sapl(registro: dict) -> dict:
         "tipo": "Municipal",
         "ano": ano,
         "anoEmenda": ano,
+        "anoProposicao": ano,
+        "exercicioOrcamentario": registro.get("exercicioOrcamentario"),
+        "documentoStatus": registro.get("documentoStatus", "nao_conferido"),
+        "documentoConferidoEm": registro.get("documentoConferidoEm"),
+        "numeroNoDocumento": registro.get("numeroNoDocumento"),
         "anosRelacionados": [ano],
         "emenda": emenda,
         "emendaOriginal": emenda,
@@ -165,6 +174,8 @@ def transformar_sapl(registro: dict) -> dict:
         "valorIndicado": valor,
         "valorTexto": valor_texto(valor),
         "beneficiario": beneficiario,
+        "valorReferenciaDocumento": registro.get("valorReferenciaDocumento"),
+        "participacoesDocumento": registro.get("participacoesDocumento"),
         "documentoBeneficiario": cnpj,
         "orgao": beneficiario,
         "objeto": objeto,
@@ -176,6 +187,8 @@ def transformar_sapl(registro: dict) -> dict:
         "autoria": {"tipo": "individual" if len(autores) == 1 else "coautoria", "autores": autores},
         "emendaIndividual": "Sim" if len(autores) == 1 else "Não",
         "cnpjStatus": cnpj_status,
+        "cnpjOriginal": registro.get("cnpjOriginal"),
+        "cnpjCorrecao": registro.get("cnpjCorrecao"),
         "pdfStatus": "disponivel" if pdf else "ausente",
         "confianca": confianca,
         "origemMunicipal": "sapl_camara",
@@ -207,7 +220,7 @@ def main() -> int:
         print("ERRO: coleta SAPL vazia ou em formato inesperado; saída preservada")
         return 1
 
-    sapl = [transformar_sapl(registro) for registro in sapl_bruto]
+    sapl = [transformar_sapl(registro) for registro in enriquecer_emendas(sapl_bruto)]
     chaves_sapl = [chave_emenda(registro) for registro in sapl]
     if len(chaves_sapl) != len(set(chaves_sapl)):
         print("ERRO: há duplicatas por número/ano na coleta SAPL; saída preservada")
@@ -245,6 +258,10 @@ def main() -> int:
                 "cnpjInvalido": sum(registro.get("cnpjStatus") == "invalido" for registro in sapl),
                 "cnpjAusente": sum(registro.get("cnpjStatus") == "ausente" for registro in sapl),
                 "pdfAusente": sum(registro.get("pdfStatus") == "ausente" for registro in sapl),
+                "pdfDivergente": sum(registro.get("documentoStatus") == "numero_divergente" for registro in sapl),
+                "exercicioConferido": sum(bool(registro.get("exercicioOrcamentario")) for registro in sapl),
+                "cnpjCorrigido": sum(bool(registro.get("cnpjCorrecao")) for registro in sapl),
+                "valorDivergenteFontes": sum(bool(registro.get("valorReferenciaDocumento", {}).get("divergencia_fontes")) for registro in sapl if registro.get("valorReferenciaDocumento")),
             },
         },
         "emendas": emendas,

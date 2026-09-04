@@ -242,6 +242,9 @@ def _coletar_emendas_api(_token: str) -> tuple[list[dict], bool, str]:
             out.append({
                 "codigo": str(row.get("emenda") or ""),
                 "ano": str(row.get("anoEmenda") or row.get("ano") or ""),
+                "anoEmenda": str(row.get("anoEmenda") or ""),
+                "anoRecurso": str(row.get("anoRecurso") or ""),
+                "periodoRecebimentoCGU": str(row.get("periodoRecebimentoCGU") or ""),
                 "tipo": tipo,
                 "autor": str(row.get("autor") or ""),
                 "funcao": str(row.get("funcao") or ""),
@@ -257,7 +260,7 @@ def _coletar_emendas_api(_token: str) -> tuple[list[dict], bool, str]:
                 "destino_confirmado": True,
                 "nivel_confianca": row.get("nivel_confianca") or "medio",
                 "granularidade": row.get("granularidade") or "emenda_favorecido_agregado",
-                "fonte": "CGU dados abertos PorFavorecido",
+                "fonte": "Betha: referência municipal" if row.get("somenteNoBetha") else "CGU dados abertos PorFavorecido",
                 "linkFonte": row.get("fonteUrl"),
             })
         if not out:
@@ -574,7 +577,7 @@ def coletar() -> dict:
             },
             {
                 "titulo": "Emendas Pix (Transferências Especiais) para Varginha",
-                "url": f"https://api-publica.transferegov.gestao.gov.br/especiais/planos_acao_especiais?id_beneficiario={transferegov_status.get('idBeneficiario', 3277)}",
+                "url": f"https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_beneficiario={transferegov_status.get('idBeneficiario', 3277)}",
                 "desc": "Planos, empenhos, ordens bancárias, conta vinculada e prestação de contas das transferências especiais.",
             },
         ],

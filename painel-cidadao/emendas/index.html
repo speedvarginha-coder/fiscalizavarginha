@@ -49,12 +49,16 @@
         <p class="lead">Consulte indicações e transferências relacionadas a Varginha. O portal separa proposta, empenho, pagamento, recebimento e execução; um registro agregado por emenda e favorecido não é tratado como repasse individual. Confira sempre o estágio e a fonte exibidos.</p>
       </div>
       <div class="source-note">
-        <span>Atualizado em</span>
+        <span>Coleta das fontes</span>
         <strong id="lastUpdate">carregando...</strong>
       </div>
     </header>
 
     <main id="conteudo" class="layout">
+      <details class="source-quality" id="emendasSourceNotes">
+        <summary>Datas das fontes e limites da conferência</summary>
+        <div id="emendasSourceNotesContent">Carregando a procedência das bases.</div>
+      </details>
       <section class="summary-grid" aria-label="Resumo por estágio financeiro" aria-live="polite">
         <article class="metric">
           <span>Registros encontrados</span>
@@ -189,9 +193,16 @@
             </select>
           </label>
           <label class="field">
-            <span>Ano da emenda</span>
+            <span>Ano da emenda / proposição</span>
             <select id="yearFilter">
               <option value="">Todos</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Orçamento municipal (exercício)</span>
+            <select id="budgetYearFilter">
+              <option value="">Todos</option>
+              <option value="nao-informado">Não confirmado no documento</option>
             </select>
           </label>
           <label class="field">
@@ -323,6 +334,7 @@
             <h2>Vereadores de Varginha</h2>
             <span id="authorTotal">parlamentares</span>
           </div>
+          <p class="muted">Emendas conjuntas usam as participações documentadas quando disponíveis. Nos demais casos, o rateio entre coautores é estimado e igualitário.</p>
           <div class="panel-filters" id="authorCargoFilters">
             <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
               <span class="muted" style="font-size: 0.85em;">Ordenar por:</span>

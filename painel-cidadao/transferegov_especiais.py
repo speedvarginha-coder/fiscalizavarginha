@@ -159,7 +159,9 @@ class TransferegovClient:
                     f"{endpoint}: paginação excedeu o limite seguro de {max_pages}"
                 )
             params = {**filtros, "pagina": pagina, "tamanho_da_pagina": page_size}
-            url = f"{self.base_url}/{endpoint}?{urllib.parse.urlencode(params)}"
+            # A API publicada em /especiais usa hífens nas rotas e mantém
+            # sublinhados nos campos/filtros (contrato OpenAPI vigente).
+            url = f"{self.base_url}/{endpoint.replace('_', '-')}?{urllib.parse.urlencode(params)}"
             payload = self._request(url)
             if not isinstance(payload, dict) or not isinstance(payload.get("data"), list):
                 raise FonteInconsistenteError(f"{endpoint}: resposta fora do esquema esperado")
@@ -250,7 +252,7 @@ def _ultimo_relatorio(relatorios: list[dict]) -> dict | None:
 
 
 def _url(endpoint: str, **params) -> str:
-    return f"{BASE_URL}/{endpoint}?{urllib.parse.urlencode(params)}"
+    return f"{BASE_URL}/{endpoint.replace('_', '-')}?{urllib.parse.urlencode(params)}"
 
 
 def _coletar_plano(client: TransferegovClient, plano: dict, relacionados: list[dict]) -> dict:
@@ -388,11 +390,13 @@ def _coletar_plano(client: TransferegovClient, plano: dict, relacionados: list[d
     relatorio = _ultimo_relatorio(relatorios)
     valor_executado = None
     if relatorio is not None:
-        valor_executado = _money(
+        valor_declarado = (
             relatorio.get("valor_executado_relatorio_gestao_novo")
             if "valor_executado_relatorio_gestao_novo" in relatorio
             else relatorio.get("valor_executado_relatorio_gestao")
         )
+        if valor_declarado is not None and str(valor_declarado).strip():
+            valor_executado = _money(valor_declarado)
 
     datas_empenho = sorted(
         [item.get("data_emissao_empenho") for item in empenhos if item.get("data_emissao_empenho")],
@@ -455,8 +459,42 @@ def _coletar_plano(client: TransferegovClient, plano: dict, relacionados: list[d
         if "IMPED" in _norm(item.get("situacao_plano_acao"))
     ]
 
+    # Documentos ligados por identificadores oficiais. Nenhum vínculo é
+    # deduzido apenas de CNPJ, nome, valor ou proximidade de datas.
+    documentos_vinculados = []
+    for item in empenhos:
+        documentos_vinculados.append({
+            "etapa": "empenho", "numero": item.get("numero_empenho"),
+            "data": item.get("data_emissao_empenho"),
+            "valor": _money(item["valor_empenho"]) if item.get("valor_empenho") not in (None, "") else None,
+            "situacao": item.get("descricao_tipo_documento_empenho"),
+            "vinculo": f"Plano {plano_id}; empenho {item['id_empenho']}",
+            "url": _url("empenhos_especiais", id_plano_acao=plano_id),
+        })
+    for item in ordens:
+        documentos_vinculados.append({
+            "etapa": "transferencia", "numero": item.get("numero_ordem_bancaria"),
+            "data": item.get("data_emissao_ob"), "valor": None,
+            "situacao": item.get("descricao_situacao_op"),
+            "vinculo": f"Documento hábil {item['id_dh']}, vinculado ao empenho federal",
+            "url": _url("ordens_pagamentos_ordens_bancarias_especiais", id_dh=item['id_dh']),
+        })
+    for item in creditos_ob:
+        documentos_vinculados.append({
+            "etapa": "recebimento", "numero": item.get("id_lancamento_gestao_financeira"),
+            "data": item.get("data_lancamento_gestao_financeira"),
+            "valor": _money(item["valor_gestao_financeira"]) if item.get("valor_gestao_financeira") not in (None, "") else None,
+            "situacao": item.get("descricao_gestao_financeira"),
+            "vinculo": f"Conta {item['id_agencia_conta']} do executor do plano {plano_id}",
+            "url": _url("gestao_financeira_lancamentos_especiais", id_agencia_conta=item['id_agencia_conta']),
+        })
+
     return {
         "valorIndicado": valor_plano,
+        "documentosVinculados": documentos_vinculados,
+        "evidenciasConsultadasEm": dt.datetime.now(dt.timezone.utc).isoformat(),
+        "fonteRelatorioGestaoUrl": _url("relatorios_gestao_novos_especiais", id_plano_acao=plano_id),
+        "fonteRelatorioGestaoLegadoUrl": _url("relatorios_gestao_especiais", id_plano_acao=plano_id),
         "valorEmpenhado": valor_empenhado,
         "valorLiquidado": None,
         "valorPago": valor_pago,

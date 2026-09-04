@@ -11,7 +11,7 @@ Enriquecimento:
 Uso:  python coletor_emendas_federais.py
 Gera data/emendas_federais.js (itemizado: 1 registro por favorecido) + resumoTipos.
 """
-import json, io, os, csv, sys, time, zipfile, tempfile, urllib.request, urllib.parse, unicodedata, shutil
+import json, io, os, csv, sys, time, zipfile, tempfile, urllib.request, urllib.parse, unicodedata, shutil, re, argparse
 from numbers import Real
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -143,34 +143,37 @@ def baixar_zip():
                 }
         raise
 
-def objeto_por_codigo(z):
-    """Mapa código -> texto do objeto (Função · Subfunção · Ação), do CSV principal."""
-    txt = io.TextIOWrapper(z.open("EmendasParlamentares.csv"), encoding="latin-1")
-    r = csv.reader(txt, delimiter=";"); next(r)
-    mp = {}
-    for row in r:
-        if len(row) < 20: continue
-        cod = row[0].strip()
-        # Código de emenda não é documento de pagamento, mas é o identificador
-        # mínimo para que a linha possa ser exibida como alocação federal.
-        if not cod: continue
-        if cod in mp: continue
-        partes = [row[13].strip(), row[15].strip(), row[19].strip()]  # Função, Subfunção, Ação
-        mp[cod] = " · ".join(p for p in partes if p and p != "Sem informação")
-    return mp
+def linhas_csv(z, name, required):
+    """Usa nomes de colunas: inserções de colunas da CGU não podem mudar o significado."""
+    with io.TextIOWrapper(z.open(name), encoding="latin-1") as text:
+        reader = csv.DictReader(text, delimiter=";")
+        if not set(required).issubset(reader.fieldnames or []):
+            raise ValueError(f"Colunas obrigatórias ausentes em {name}")
+        for row in reader:
+            yield {key.strip(): str(value or "").strip() for key, value in row.items() if key}
 
-def targets_por_codigo(z):
-    """Mapa código -> (Target Município, Target UF) do CSV principal."""
-    txt = io.TextIOWrapper(z.open("EmendasParlamentares.csv"), encoding="latin-1")
-    r = csv.reader(txt, delimiter=";"); next(r)
-    mp = {}
-    for row in r:
-        if len(row) < 11: continue
-        cod = row[0].strip()
-        target_mun = row[8].strip()
-        target_uf = row[10].strip()
-        mp[cod] = (target_mun, target_uf)
-    return mp
+
+def referencias_por_codigo(z):
+    """Ano oficial, objetos e todos os destinos do código, sem escolher a última linha."""
+    references = {}
+    fields = ["Código da Emenda", "Ano da Emenda", "Nome Função", "Nome Subfunção", "Nome Ação", "Município", "UF", "Código Município IBGE"]
+    for row in linhas_csv(z, "EmendasParlamentares.csv", fields):
+        code = row["Código da Emenda"]
+        if not re.fullmatch(r"20\d{10}", code):
+            continue  # 'Sem informação' não identifica uma emenda única.
+        year = row["Ano da Emenda"]
+        if not re.fullmatch(r"20\d{2}", year):
+            raise ValueError(f"Ano da Emenda inválido para {code}")
+        item = references.setdefault(code, {"ano": year, "objetos": [], "destinos": []})
+        if item["ano"] != year:
+            raise ValueError(f"Anos conflitantes na fonte para {code}")
+        obj = " · ".join(row[k] for k in ["Nome Função", "Nome Subfunção", "Nome Ação"] if row[k] and row[k] != "Sem informação")
+        if obj and obj not in item["objetos"]:
+            item["objetos"].append(obj)
+        target = (row["Município"], row["UF"], row["Código Município IBGE"])
+        if target not in item["destinos"]:
+            item["destinos"].append(target)
+    return references
 
 VALID_NATURE_SUBSTRINGS = [
     "MUNICIPIO",
@@ -180,34 +183,31 @@ VALID_NATURE_SUBSTRINGS = [
     "FUNDACAO PRIVADA"
 ]
 
-def registros_varginha(z, objetos, targets):
+def registros_varginha(z, referencias):
     """Filtra favorecidos em Varginha-MG garantindo destinação local legítima (pública/social)."""
-    txt = io.TextIOWrapper(z.open("EmendasParlamentares_PorFavorecido.csv"), encoding="latin-1")
-    r = csv.reader(txt, delimiter=";"); next(r)
+    fields = ["Código da Emenda", "Tipo de Emenda", "Ano/Mês", "Nome do Autor da Emenda", "Código do Favorecido", "Favorecido", "Natureza Jurídica", "UF Favorecido", "Município Favorecido", "Valor Recebido"]
+    r = linhas_csv(z, "EmendasParlamentares_PorFavorecido.csv", fields)
     regs = []
     for row in r:
-        if len(row) < 13: continue
-        
-        mun_fav = remove_accents(row[11].strip().upper())
-        uf_fav = remove_accents(row[10].strip().upper())
+        mun_fav = remove_accents(row["Município Favorecido"].upper())
+        uf_fav = remove_accents(row["UF Favorecido"].upper())
         if mun_fav != "VARGINHA" or uf_fav != "MG": continue
         
-        cod = row[0].strip()
+        cod = row["Código da Emenda"]
         if not cod: continue
         
         # Cross-reference destination from EmendasParlamentares.csv
-        target = targets.get(cod, ("", ""))
-        t_mun, t_uf = target
-        t_mun_norm = remove_accents(t_mun.upper())
+        reference = referencias.get(cod, {})
+        targets = reference.get("destinos") or [("", "", "")]
         
         # Rule 1: Target municipality is explicitly Varginha
-        is_varginha_target = "VARGINHA" in t_mun_norm and remove_accents(t_uf.upper()) == "MG"
+        is_varginha_target = any(ibge == IBGE_VARGINHA or (remove_accents(mun.upper()) == "VARGINHA" and uf.upper() == "MG") for mun, uf, ibge in targets)
         
         # Rule 2: Multi-municipal, national, or unspecified target
-        is_multi_or_national = any(x in t_mun_norm for x in ["MULTIPLO", "NACIONAL", "SEM INFORMACAO"]) or t_mun_norm == ""
+        is_multi_or_national = any(not mun or any(x in remove_accents(mun.upper()) for x in ["MULTIPLO", "NACIONAL", "SEM INFORMACAO"]) for mun, _, _ in targets)
         
         # Rule 3: Legal nature must be a local public or social/non-profit organization (excluding vendors)
-        nat_jur = row[8].strip()
+        nat_jur = row["Natureza Jurídica"]
         nat_jur_norm = remove_accents(nat_jur.upper())
         is_valid_nature = any(vn in nat_jur_norm for vn in VALID_NATURE_SUBSTRINGS)
         
@@ -215,12 +215,15 @@ def registros_varginha(z, objetos, targets):
         if not (is_varginha_target or (is_multi_or_national and is_valid_nature)):
             continue
             
-        tipo_emenda = row[4].strip()
-        ano = (row[5] or "")[:4]
-        autor = row[2].strip()
-        favorecido = row[7].strip()
-        doc_fav = row[6].strip()
-        valor = money(row[12])
+        tipo_emenda = row["Tipo de Emenda"]
+        periodo = row["Ano/Mês"]
+        match_periodo = re.fullmatch(r"(20\d{2})(?:[-/]?(0[1-9]|1[0-2]))?", periodo)
+        ano_recurso = match_periodo.group(1) if match_periodo else ""
+        ano = reference.get("ano", "")
+        autor = row["Nome do Autor da Emenda"]
+        favorecido = row["Favorecido"]
+        doc_fav = row["Código do Favorecido"]
+        valor = money(row["Valor Recebido"])
         catmap = {
             "Emenda Individual - Transferências Especiais": "Transferência Especial (Pix)",
             "Emenda Individual - Transferências com Finalidade Definida": "Individual com Finalidade Definida",
@@ -229,12 +232,14 @@ def registros_varginha(z, objetos, targets):
             "Emenda de Relator": "Relator",
         }
         categoria = catmap.get(tipo_emenda, tipo_emenda)
-        objeto = objetos.get(cod, "") or ("Transferência Especial (Pix) — recurso sem finalidade definida; o município decide a aplicação." if "Especiais" in tipo_emenda else "Emenda federal — ver objeto na fonte oficial.")
+        objeto = " / ".join(reference.get("objetos", [])) or "Objeto não individualizado nesta base; consulte a fonte oficial."
         individual = "Sim" if "Individual" in tipo_emenda else "Não"
         reg = {
             "tipo": "Federal",
             "categoria": categoria,
-            "ano": ano, "anoEmenda": ano, "anoRecurso": ano,
+            "ano": ano, "anoEmenda": ano, "anoRecurso": ano_recurso,
+            "periodoRecebimentoCGU": periodo,
+            "fonteAnoEmenda": "EmendasParlamentares.csv — Ano da Emenda" if ano else "Não informado: código sem correspondência individual na tabela principal",
             "emenda": cod, "emendaOriginal": cod,
             "autor": autor, "partido": "",
             "valor": valor, "valorTexto": money_txt(valor),
@@ -256,7 +261,7 @@ def registros_varginha(z, objetos, targets):
             "descricao": f"{tipo_emenda}. Autor: {autor}. Código {cod}. Favorecido: {favorecido}.",
             "textoBusca": " ".join(str(x).lower() for x in [
                 "federal", categoria, cod, ano, autor, favorecido, objeto]),
-            "anosRelacionados": [ano] if ano else [],
+            "anosRelacionados": sorted({a for a in [ano, ano_recurso] if a}),
             "fonteUrl": CONSULTA + "&codigoEmenda=" + urllib.parse.quote(cod),
             "id": f"fed_{cod}_{len(regs)}",
         }
@@ -280,6 +285,8 @@ TRANSFEREGOV_FIELDS = {
     "classificacaoComprovacao", "observacaoEvidencia",
     "codigoEmendaTransferegov", "anoEmendaTransferegov",
     "divergenciaValorTransferegov",
+    "documentosVinculados", "evidenciasConsultadasEm",
+    "fonteRelatorioGestaoUrl", "fonteRelatorioGestaoLegadoUrl",
 }
 
 
@@ -405,6 +412,14 @@ def _norm_cod(raw):
     return {c for c in cands if c}
 
 
+def ano_referencia_betha(code):
+    text = str(code or "").strip()
+    match = re.search(r"/(20\d{2})$", text)
+    if match:
+        return match.group(1)
+    return text[:4] if re.fullmatch(r"20\d{10}", text) else ""
+
+
 def cruzar_betha(regs):
     """Cruza repasses CGU com execução municipal (Betha) por código de emenda.
     Fonte bruta: '../../Publicidade Emendas/data/emendas.js' (gitignored). Se ausente,
@@ -422,6 +437,8 @@ def cruzar_betha(regs):
                 for c in _norm_cod(e.get("emenda")):
                     db_por_cod[c] = e["dadosBetha"]
             if e.get("somenteNoBetha"):
+                ano = ano_referencia_betha(e.get("emenda"))
+                e.update({"ano": ano, "anoEmenda": ano, "anosRelacionados": [ano] if ano else []})
                 somente.append(e)
         casados = 0
         for r in regs:
@@ -456,12 +473,12 @@ def cruzar_betha(regs):
         if alvo is not None:
             alvo["dadosBetha"] = db; casados += 1
         else:
-            ano = (b.get("emenda", "").split("/")[-1] or "")[:4]
+            ano = ano_referencia_betha(b.get("emenda"))
             benef = (b.get("beneficiario", "") or "").strip() or "Não informado (ver plano de trabalho)"
-            obj = (b.get("objeto", "") or "").strip() or "Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago — conferir plano de trabalho."
+            obj = (b.get("objeto", "") or "").strip() or "Referência da Prefeitura (Betha) sem correspondência neste recorte da CGU; conferir plano de trabalho."
             somente.append({
                 "tipo": "Federal", "categoria": "Individual com Finalidade Definida",
-                "ano": ano, "emenda": b.get("emenda", ""),
+                "ano": ano, "anoEmenda": ano, "emenda": b.get("emenda", ""),
                 "autor": b.get("autor", "") or "Não informado", "partido": "",
                 "valor": 0.0, "valorTexto": "0,00",
                 "beneficiario": benef,
@@ -473,7 +490,7 @@ def cruzar_betha(regs):
                 "identificador_repasse_confirmado": False,
                 "contabilizado_como_repasse_individual": False,
                 "classificacaoComprovacao": "Parcial",
-                "descricao": f"Emenda cadastrada na Prefeitura (Betha) sem repasse federal pago na CGU. Favorecido: {b.get('beneficiario','')}.",
+                "descricao": f"Referência da Prefeitura (Betha) sem correspondência neste recorte da CGU. Favorecido: {b.get('beneficiario','')}.",
                 "textoBusca": " ".join(str(x).lower() for x in ["federal betha pendente", b.get("emenda",""), b.get("beneficiario",""), b.get("objeto","")]),
                 "anosRelacionados": [ano] if ano else [],
                 "fonteUrl": CONSULTA,
@@ -499,6 +516,12 @@ def gerar_resumo_tipos(regs):
         a = agg[r["categoria"]]
         valor = r["valor"] if r["valor"] > 0 else 0.0
         a["total"] += valor; a["n"] += 1
+        a.setdefault("codigos", set())
+        a.setdefault("cgu", 0)
+        if not r.get("somenteNoBetha"):
+            a["cgu"] += 1
+            if re.fullmatch(r"20\d{10}", r["emenda"]):
+                a["codigos"].add(r["emenda"])
         a["ben"][r["beneficiario"]] += valor
     ordem = ["Transferência Especial (Pix)", "Individual com Finalidade Definida", "Bancada", "Comissão", "Relator"]
     out = []
@@ -509,6 +532,7 @@ def gerar_resumo_tipos(regs):
         out.append({
             "categoria": cat, "total": round(a["total"], 2), "totalTexto": money_txt(a["total"]),
             "itemizado": True, "qtd": a["n"], "risco": risco.get(cat, "medio"),
+            "qtdEmendas": len(a["codigos"]), "qtdRepasses": a["cgu"],
             "explicacao": expl.get(cat, ""),
             "topBeneficiarios": [{"nome": n, "valor": round(v, 2)} for n, v in top],
             "fonteUrl": CONSULTA,
@@ -532,8 +556,18 @@ def _escrever_saida_atomica(payload):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--reprocessar-cache", action="store_true", help="Reprocessa o ZIP oficial preservado, mantendo a data de download original")
+    args = parser.parse_args()
     try:
-        zpath, coleta_fonte = baixar_zip()
+        if args.reprocessar_cache:
+            _validar_zip(CACHE_ZIP)
+            with open(CACHE_META, encoding="utf-8") as handle:
+                coleta_fonte = json.load(handle)
+            coleta_fonte["reprocessado"] = True
+            zpath = CACHE_ZIP
+        else:
+            zpath, coleta_fonte = baixar_zip()
     except Exception as exc:
         if os.path.exists(FED_JS):
             print(f"AVISO: coleta federal falhou ({exc}); base anterior preservada.", file=sys.stderr)
@@ -543,12 +577,12 @@ def main():
         print("AVISO: fonte federal sem nova copia valida; base publicada anterior preservada.")
         return 2
     z = zipfile.ZipFile(zpath)
-    print("Lendo objetos (função/ação)...")
-    objetos = objeto_por_codigo(z)
-    print("Lendo destinos das emendas...")
-    targets = targets_por_codigo(z)
+    print("Lendo anos, objetos e destinos por nome de coluna...")
+    referencias = referencias_por_codigo(z)
     print("Filtrando favorecidos em Varginha-MG com regras de destinação...")
-    regs = registros_varginha(z, objetos, targets)
+    regs = registros_varginha(z, referencias)
+    if not regs:
+        raise ValueError("Recorte federal vazio; publicação anterior preservada")
     print(f"  {len(regs)} registros federais itemizados ({len(set(r['emenda'] for r in regs))} emendas únicas)")
     transferegov_status = enriquecer_pix_transferegov(regs)
     print("Cruzando com execução municipal (Betha)...")
@@ -562,9 +596,13 @@ def main():
             "fonte": "Portal da Transparência (CGU) — dados abertos emendas-parlamentares (PorFavorecido)",
             "favorecido": "Favorecidos em Varginha-MG",
             "extraidoEm": time.strftime("%Y-%m-%d"),
+            "coletadoEm": coleta_fonte.get("baixadoEm"),
             "codigoIbge": IBGE_VARGINHA,
             "totalFederal": round(total, 2), "totalFederalTexto": money_txt(total),
-            "registros": len(regs), "emendasUnicas": len(set(r["emenda"] for r in regs)),
+            "registros": len(regs),
+            "registrosCGU": sum(not r.get("somenteNoBetha") for r in regs),
+            "emendasUnicas": len({r["emenda"] for r in regs if not r.get("somenteNoBetha") and re.fullmatch(r"20\d{10}", r["emenda"])}),
+            "registrosSemCodigoIndividual": sum(not r.get("somenteNoBetha") and not re.fullmatch(r"20\d{10}", r["emenda"]) for r in regs),
             "transferegov": transferegov_status,
             "coletaFonte": coleta_fonte,
             "observacao": "Cada registro nasce como agregado emenda/favorecido. Nas transferências especiais ao Município, recebimento só é confirmado quando plano, empenho, ordem bancária e crédito na conta vinculada coincidem na API do Transferegov. Totais agregados excluem valores não positivos (estornos/anulações).",

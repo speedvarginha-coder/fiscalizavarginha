@@ -21,6 +21,14 @@ from coletor_federal import _resumo  # noqa: E402
 
 
 class ClienteEstritoTests(unittest.TestCase):
+    def test_rota_atual_preserva_nomes_dos_filtros(self):
+        def fetch(url):
+            self.assertIn('/beneficiarios-especiais?', url)
+            self.assertIn('cnpj_beneficiario=18240119000105', url)
+            return {'data': [{'cnpj_beneficiario': CNPJ_VARGINHA}], 'total_pages': 1, 'total_items': 1}
+        client = TransferegovClient(fetch_json=fetch)
+        self.assertEqual(len(client.get('beneficiarios_especiais', {'cnpj_beneficiario': CNPJ_VARGINHA}, esperado={'cnpj_beneficiario': CNPJ_VARGINHA})), 1)
+
     def test_rejeita_filtro_desconhecido_antes_de_consultar(self):
         client = TransferegovClient(fetch_json=lambda _url: self.fail("não deveria consultar"))
         with self.assertRaisesRegex(FonteInconsistenteError, "filtro.*desconhecido"):
@@ -195,6 +203,26 @@ class ColetaSemanticaTests(unittest.TestCase):
         especiais = resumo["transferenciasEspeciais"]
         self.assertEqual(especiais["totalRecebidoConfirmado"], 100.0)
         self.assertIsNone(especiais["totalExecutadoComRelatorio"])
+
+    def test_documentos_preservam_vinculos_e_nao_inventam_valor_da_ob(self):
+        item = coletar_transferencias_especiais(FakeClient())["por_emenda"]["202527540001"]
+        docs = item["documentosVinculados"]
+        self.assertEqual([d["etapa"] for d in docs], ["empenho", "transferencia", "recebimento"])
+        self.assertIn("id_plano_acao=86374", docs[0]["url"])
+        self.assertIn("id_dh=20", docs[1]["url"])
+        self.assertIsNone(docs[1]["valor"])
+        self.assertIn("id_agencia_conta=163-123", docs[2]["url"])
+        self.assertTrue(item["evidenciasConsultadasEm"])
+
+    def test_relatorio_sem_valor_nao_comprova_execucao_zero(self):
+        class ReportWithoutValue(FakeClient):
+            def get(self, endpoint, filtros, **kwargs):
+                if endpoint == "relatorios_gestao_novos_especiais":
+                    return [{"id_plano_acao": 86374, "valor_executado_relatorio_gestao_novo": None}]
+                return super().get(endpoint, filtros, **kwargs)
+        item = coletar_transferencias_especiais(ReportWithoutValue())["por_emenda"]["202527540001"]
+        self.assertTrue(item["relatorioGestaoLocalizado"])
+        self.assertIsNone(item["valorExecutado"])
 
 
 if __name__ == "__main__":

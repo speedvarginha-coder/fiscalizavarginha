@@ -183,6 +183,7 @@ const elements = {
   scopeFilter: document.querySelector("#scopeFilter"),
   reconciliationFilter: document.querySelector("#reconciliationFilter"),
   yearFilter: document.querySelector("#yearFilter"),
+  budgetYearFilter: document.querySelector("#budgetYearFilter"),
   resourceYearFilter: document.querySelector("#resourceYearFilter"),
   orgFilter: document.querySelector("#orgFilter"),
   categoryFilter: document.querySelector("#categoryFilter"),
@@ -364,7 +365,8 @@ function yearsForRecord(record) {
 }
 
 function amendmentYearsForRecord(record) {
-  if (record.anoEmenda) return [record.anoEmenda];
+  // Campo explícito vazio significa ano não comprovado, sem dedução pelo código.
+  if (Object.hasOwn(record, "anoEmenda")) return /^20\d{2}$/.test(String(record.anoEmenda)) ? [String(record.anoEmenda)] : [];
 
   const emenda = String(record.emenda || "");
   const directMatch = emenda.match(/(?:^|[/\.\s-])((?:19|20)\d{2})(?:$|\D)/);
@@ -384,7 +386,7 @@ function amendmentYearsForRecord(record) {
 }
 
 function resourceYearsForRecord(record) {
-  if (record.anoRecurso) return [record.anoRecurso];
+  if (Object.hasOwn(record, "anoRecurso")) return /^20\d{2}$/.test(String(record.anoRecurso)) ? [String(record.anoRecurso)] : [];
 
   const match = String(record.dataRecurso || "").match(/\b(?:19|20)\d{2}\b/);
   return match ? [match[0]] : [];
@@ -651,7 +653,7 @@ function renderFederalPorTipo() {
   box.innerHTML = `
     <div class="fed-tipos__head">
       <h3>Federal em detalhe — por tipo de emenda</h3>
-      <p>Valor agregado de emendas destinadas a favorecidos de Varginha: <strong>${moneyFormatter.format(metadata.totalFederal)}</strong>. ${numberFormatter.format(metadata.emendasUnicas || 0)} emendas únicas e ${numberFormatter.format(metadata.registros || 0)} registros agregados por emenda e favorecido. Esse total não é comprovante de repasse individual. Nas Pix municipais, o recebimento só aparece quando plano, ordem bancária e crédito na conta vinculada coincidem no Transferegov${tg.registrosPublicadosVinculados !== undefined ? ` (${numberFormatter.format(tg.registrosPublicadosVinculados)} registros vinculados)` : ""}. Fonte atualizada em ${escapeHtml(sourceDate)}; coleta realizada em ${escapeHtml(collectedDate)}.</p>
+      <p>Valor agregado de emendas destinadas a favorecidos de Varginha: <strong>${moneyFormatter.format(metadata.totalFederal)}</strong>. ${numberFormatter.format(metadata.emendasUnicas || 0)} emendas únicas e ${numberFormatter.format(metadata.registrosCGU ?? federais.filter(r => !r.somenteNoBetha).length)} registros agregados por emenda e favorecido. Esse total não é comprovante de repasse individual. Nas Pix municipais, o recebimento só aparece quando plano, ordem bancária e crédito na conta vinculada coincidem no Transferegov${tg.registrosPublicadosVinculados !== undefined ? ` (${numberFormatter.format(tg.registrosPublicadosVinculados)} registros vinculados)` : ""}. Fonte atualizada em ${escapeHtml(sourceDate)}; coleta realizada em ${escapeHtml(collectedDate)}.</p>
     </div>
     <div class="fed-tipos__grid">
       ${dados.map((t) => `
@@ -661,7 +663,7 @@ function renderFederalPorTipo() {
             <span class="fed-tipo__risco">${riscoLabel[t.risco] || ""}</span>
           </div>
           <strong class="fed-tipo__valor">${moneyFormatter.format(t.total)}</strong>
-          <span class="fed-tipo__flag">${t.itemizado ? `✓ ${numberFormatter.format(t.qtdEmendas || t.qtd)} emendas · ${numberFormatter.format(t.qtdRepasses || t.qtd)} registros agregados` : "resumo — itemização na fonte"}</span>
+          <span class="fed-tipo__flag">${t.itemizado ? `✓ ${numberFormatter.format(t.qtdEmendas ?? t.qtd)} emendas · ${numberFormatter.format(t.qtdRepasses ?? t.qtd)} registros agregados` : "resumo — itemização na fonte"}</span>
           <p class="fed-tipo__exp">${escapeHtml(t.explicacao)}</p>
           ${(t.topBeneficiarios && t.topBeneficiarios.length) ? `
             <div class="fed-tipo__ben">
@@ -690,6 +692,7 @@ function setupFilters() {
   fillSelect(elements.scopeFilter, [...new Set(allRecords.map((record) => record.scopeLabel))].sort((a, b) => a.localeCompare(b, "pt-BR")));
   fillSelect(elements.reconciliationFilter, [...new Set(allRecords.map((record) => record.reconciliationLabel))].sort((a, b) => a.localeCompare(b, "pt-BR")));
   fillSelect(elements.yearFilter, allYears());
+  fillSelect(elements.budgetYearFilter, [...new Set(municipaisUnificadas.map(r => r.exercicioOrcamentario).filter(Boolean))].sort().reverse());
   fillSelect(elements.resourceYearFilter, allResourceYears());
   // Anos também nos seletores dos rankings
   ["rankYearAuthor", "rankYearDeputy"].forEach((id) => {
@@ -721,14 +724,32 @@ function setupFilters() {
   fillSelect(elements.treasuryBeneficiaryFilter, [...new Set(pagamentosTesouro.map((row) => row.favorecido).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR")));
   fillSelect(elements.treasurySpecialFilter, [...new Set(pagamentosTesouro.map((row) => row.transferenciaEspecial).filter(Boolean))].sort((a, b) => a.localeCompare(b, "pt-BR")));
 
-  // Usa a data mais recente entre o payload federal e o municipal
-  const federalDate = window.EMENDAS_FEDERAIS?.metadata?.extraidoEm || "";
-  const municipalDate = payload.metadata?.geradoEm || "";
-  const lastDateStr = [federalDate, municipalDate].filter(Boolean).sort().at(-1) || "";
-  const generatedAt = lastDateStr ? new Date(lastDateStr) : null;
-  elements.lastUpdate.textContent = generatedAt
-    ? generatedAt.toLocaleString("pt-BR", { dateStyle: "short", timeStyle: "short" })
-    : "base carregada";
+  elements.lastUpdate.textContent = "Consulte as datas por fonte abaixo";
+  renderSourceNotes();
+}
+
+function sourceDateLabel(value) {
+  if (!value) return "não informada";
+  // Data sem horário é uma data civil, não meia-noite UTC.
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return value.split("-").reverse().join("/");
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "não informada" : date.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo", dateStyle: "short", timeStyle: "short" });
+}
+
+function renderSourceNotes() {
+  const federal = window.EMENDAS_FEDERAIS?.metadata || {};
+  const estadual = window.EMENDAS_ESTADUAIS_NORMALIZADAS?.metadata || {};
+  const municipal = window.EMENDAS_MUNICIPAIS_UNIFICADAS?.metadata || {};
+  const quality = municipal.qualidade || {};
+  const tg = federal.transferegov || {};
+  const almg = (estadual.fontesComplementares || []).find(s => String(s.fonte || s.nome || s.fonteSistema || "").includes("ALMG")) || (estadual.fontesComplementares || [])[0];
+  document.getElementById("emendasSourceNotesContent").innerHTML = `<ul>
+    <li><strong>Municipais:</strong> o ano da proposição e o exercício do orçamento são campos separados. ${quality.exercicioConferido || 0} registros do SAPL têm exercício conferido no PDF; os demais permanecem sem exercício confirmado. ${quality.pdfDivergente || 0} PDFs têm número diferente da matéria e ${quality.pdfAusente || 0} não têm link informado. ${quality.cnpjCorrigido || 0} CNPJs foram corrigidos com fonte oficial e valor original preservado. A conferência documental foi feita em ${escapeHtml(sourceDateLabel(municipaisUnificadas.find(r => r.documentoConferidoEm)?.documentoConferidoEm))}; isso não comprova pagamento.</li>
+    <li><strong>Valores municipais:</strong> ${quality.valorDivergenteFontes || 0} registros apresentam divergência entre o cadastro SAPL e o formulário assinado. Nesses casos, o total do formulário é a referência documental do painel; os dois valores estão nos detalhes e precisam de esclarecimento pelo órgão. Parcelas de coautores só são individualizadas quando documentadas.</li>
+    <li><strong>Federais (CGU):</strong> coleta em ${escapeHtml(sourceDateLabel(federal.coletadoEm || federal.coletaFonte?.baixadoEm || federal.extraidoEm))}. Ano da emenda vem da tabela principal; o período de recebimento vem da tabela por favorecido. ${federal.registrosSemCodigoIndividual || 0} registros não possuem código individual informado e ficam sem ano da emenda confirmado.</li>
+    <li><strong>Transferegov:</strong> ${tg.status === "preservado" ? "evidências históricas preservadas após falha de consulta. Os recebimentos vinculados não foram revalidados na consulta mais recente." : `consulta em ${escapeHtml(sourceDateLabel(tg.coletadoEm))}. Abra “Ver detalhes” para consultar os empenhos, as ordens bancárias e os créditos vinculados; recebimento não comprova entrega.`}</li>
+    <li><strong>Estaduais:</strong> coleta em ${escapeHtml(sourceDateLabel(estadual.extraidoEm))}. Arquivo do Portal Emendas MG modificado em ${escapeHtml(sourceDateLabel(estadual.arquivoUltimaModificacao))}${almg ? `; arquivo ALMG modificado em ${escapeHtml(sourceDateLabel(almg.arquivoUltimaModificacao))}, planilha ${escapeHtml(almg.planilha || "não informada")}` : ""}. Coleta recente não significa execução atualizada até essa data. Valor utilizado permanece separado de valor pago.</li>
+  </ul><p><a href="../data/referencias/emendas-municipais-documentos.json" download>Baixar evidências da conferência municipal</a>. CNPJ ausente ou inconsistente não comprova irregularidade; valores sem comprovação são exibidos como N/D.</p>`;
 }
 
 function quickMatch(record) {
@@ -767,6 +788,8 @@ function applyFilters() {
     const matchesScope = !elements.scopeFilter.value || record.scopeLabel === elements.scopeFilter.value;
     const matchesReconciliation = !elements.reconciliationFilter.value || record.reconciliationLabel === elements.reconciliationFilter.value;
     const matchesYear = !elements.yearFilter.value || amendmentYearsForRecord(record).includes(elements.yearFilter.value);
+    const budget = elements.budgetYearFilter.value;
+    const matchesBudget = !budget || (record.tipo === "Municipal" && (budget === "nao-informado" ? !record.exercicioOrcamentario : record.exercicioOrcamentario === budget));
     const matchesResourceYear =
       !elements.resourceYearFilter.value || resourceYearsForRecord(record).includes(elements.resourceYearFilter.value);
     const authorMeta = getAuthorMeta(record);
@@ -800,6 +823,7 @@ function applyFilters() {
       matchesScope &&
       matchesReconciliation &&
       matchesYear &&
+      matchesBudget &&
       matchesResourceYear &&
       matchesOrg &&
       matchesParty &&
@@ -1098,7 +1122,8 @@ function renderAuthorRanking() {
           map.get(key) || { key, label, count: 0, total: 0, tipos: new Map(), partidos: new Set(), active: meta.active, role: authorRole(record) };
         entry.count += 1;
          const value = rankingValue(record);
-         if (value !== null) entry.total += value / partes;
+         const documented = record.participacoesDocumento?.find(p => normalize(getAuthorMeta({ ...record, autor: p.autor }).name) === key);
+         if (value !== null) entry.total += state.rankingStage === "indicado" && documented ? Number(documented.valor) : value / partes;
         entry.tipos.set(record.tipo, (entry.tipos.get(record.tipo) || 0) + 1);
         if (meta.party) entry.partidos.add(meta.party);
         map.set(key, entry);
@@ -1117,7 +1142,7 @@ function renderAuthorRanking() {
 
   if (!groups.length) {
     const yearHint = rankYear
-      ? ` Não há emendas municipais publicadas para ${escapeHtml(rankYear)} na base atual; os registros municipais disponíveis são de 2024 e 2025.`
+      ? ` Nenhuma proposição encontrada com este ano e estes filtros. Ano da proposição não é o exercício do orçamento; confira o filtro de orçamento municipal.`
       : " Verifique os filtros de situação e estágio financeiro.";
     elements.authorRanking.innerHTML = `<div class="empty compact-empty">Nenhum vereador encontrado com os filtros atuais.${yearHint}</div>`;
     return;
@@ -1549,11 +1574,16 @@ function renderResults() {
               <span class="tag">Modalidade: ${escapeHtml(record.modalidade)}</span>
               <span class="tag evidence-${typeClass(record.comprovacao)}">${escapeHtml(record.comprovacao)}</span>
               ${record.categoria ? `<span class="tag tag-federal">${escapeHtml(record.categoria)}</span>` : ""}
-              <span class="tag">Ano da emenda: ${escapeHtml(amendmentYearsForRecord(record).join(", ") || "Não informado")}</span>
+              <span class="tag">${record.tipo === "Municipal" ? "Ano da proposição" : "Ano da emenda"}: ${escapeHtml(amendmentYearsForRecord(record).join(", ") || "Não informado")}</span>
+              ${record.tipo === "Municipal" ? `<span class="tag">Orçamento: ${escapeHtml(record.exercicioOrcamentario || "exercício não confirmado")}</span>` : ""}
               <span class="tag">Emenda ${escapeHtml(record.emenda)}</span>
               <span class="tag">${escapeHtml(record.statusFinanceiro || record.aprovado || "Situação não informada")}</span>
               <span class="tag">Individual: ${escapeHtml(record.emendaIndividual || "Não informado")}</span>
             </div>
+            ${record.documentoStatus === "numero_divergente" ? `<p class="record-quality-warning">PDF divergente: a matéria é ${escapeHtml(record.emenda)}, mas o documento indica a emenda ${escapeHtml(record.numeroNoDocumento)}. Exercício não confirmado para este registro.</p>` : ""}
+            ${record.documentoStatus === "pdf_ausente" ? '<p class="record-quality-warning">PDF não informado pela fonte. Exercício orçamentário não confirmado.</p>' : ""}
+            ${record.valorReferenciaDocumento ? `<p class="record-quality-warning">${record.valorReferenciaDocumento.divergencia_fontes ? `Valores divergentes: cadastro SAPL ${moneyFormatter.format(record.valorReferenciaDocumento.cadastro_sapl)}; formulário assinado ${moneyFormatter.format(record.valorReferenciaDocumento.documento)}. O total documental é a referência exibida; confirme a divergência com o órgão.` : "Valor total da emenda conjunta conferido no cadastro e no PDF; as parcelas dos coautores não substituem o total."}</p>` : ""}
+            ${record.tipo === "Municipal" && ["ausente", "invalido"].includes(record.cnpjStatus) ? `<p class="record-quality-warning">CNPJ ${record.cnpjStatus === "ausente" ? "não informado" : "inconsistente"} na fonte. Identificação do beneficiário requer conferência.</p>` : ""}
             ${record.execucao ? `<p class="exec-trail"><span>${record.fonteExecucao ? "Trilha federal vinculada (Transferegov):" : "Estágios informados pela fonte:"}</span> ${escapeHtml(record.execucao)}${record.qtdDocumentos ? ` · ${record.qtdDocumentos} documento${record.qtdDocumentos === 1 ? "" : "s"} vinculado${record.qtdDocumentos === 1 ? "" : "s"}` : ""}</p>` : ""}
           </div>
           <div class="value-box">
@@ -1600,7 +1630,7 @@ function openDetails(id, updateUrl = true) {
   if (record.somenteNoBetha) {
     warningBanner = `
       <div class="warning-banner" style="background-color: #fff9db; border-left: 4px solid #fcc419; padding: 12px; margin-bottom: 15px; border-radius: 4px; color: #664d03; font-size: 0.95em; line-height: 1.4;">
-        <strong>Pendente na CGU:</strong> Esta emenda foi cadastrada nos sistemas da Prefeitura de Varginha (Betha), mas ainda não possui registro de repasse financeiro pago na base de dados federal (CGU). O valor da CGU é exibido como R$ 0,00 até que o repasse seja oficializado.
+        <strong>Referência sem correspondência na CGU:</strong> Este registro consta da Prefeitura (Betha), mas não foi vinculado a um registro individual neste recorte da CGU. Isso não comprova ausência de pagamento. Valores sem evidência aparecem como N/D e a referência não acrescenta valor ao total agregado federal.
       </div>
     `;
   }
@@ -1678,6 +1708,7 @@ function openDetails(id, updateUrl = true) {
 
   elements.detailBody.innerHTML = `
     ${warningBanner}
+    ${renderDocumentTrail(record)}
     <div class="pdf-guide detail-guide">
       <strong>Como conferir na fonte oficial:</strong>
       abra o portal de transparência da fonte e pesquise pelo número da emenda ${escapeHtml(record.emenda)} ou pelo beneficiário informado (${escapeHtml(record.beneficiario || "—")}) para conferir o documento e os estágios financeiros.
@@ -1694,13 +1725,20 @@ function openDetails(id, updateUrl = true) {
       ${detailItem("Comprovação", record.comprovacao)}
       ${detailItem("Tipo de autoria", record.autoriaTipo)}
       ${detailItem("Modalidade", record.modalidade)}
-      ${detailItem("Ano da emenda", amendmentYearsForRecord(record).join(", "))}
+      ${detailItem(record.tipo === "Municipal" ? "Ano da proposição" : "Ano da emenda", amendmentYearsForRecord(record).join(", "))}
+      ${record.tipo === "Municipal" ? detailItem("Exercício do orçamento", record.exercicioOrcamentario || "Não confirmado documentalmente") : ""}
+      ${record.periodoRecebimentoCGU ? detailItem("Período de recebimento (CGU)", record.periodoRecebimentoCGU.replace(/^(\d{4})(\d{2})$/, "$2/$1")) : ""}
       ${detailItem("Ano do recurso", resourceYearsForRecord(record).join(", "))}
       ${detailItem("Anos relacionados", yearsForRecord(record).join(", ") || record.ano)}
       ${detailItem("Órgão", record.orgao)}
       ${detailItem("Autor", [authorMeta.name, authorMeta.role, authorMeta.party, record.tipo === "Municipal" ? (authorMeta.active ? "Ativo(a)" : "Inativo(a) / Ex-vereador(a)") : ""].filter(Boolean).join(" · "))}
       ${detailItem("Beneficiário informado", record.beneficiario)}
       ${detailItem("CNPJ / documento", record.cnpj || record.documentoBeneficiario)}
+      ${record.cnpjOriginal ? detailItem("CNPJ original informado no SAPL", record.cnpjOriginal) : ""}
+      ${record.valorReferenciaDocumento ? detailItem("Valor do cadastro SAPL", moneyFormatter.format(record.valorReferenciaDocumento.cadastro_sapl)) + detailItem("Valor do formulário assinado", moneyFormatter.format(record.valorReferenciaDocumento.documento)) + `<div class="detail-item"><span>Referência adotada</span><p>${escapeHtml(record.valorReferenciaDocumento.criterio)} <a href="${escapeHtml(record.valorReferenciaDocumento.fonte)}" target="_blank" rel="noopener noreferrer">Conferir o valor no PDF</a>.</p></div>` : ""}
+      ${record.participacoesDocumento?.length ? detailItem("Participações declaradas no documento", record.participacoesDocumento.map(p => `${p.autor}: ${moneyFormatter.format(p.valor)}`).join("; ")) : ""}
+      ${record.cnpjCorrecao ? `<div class="detail-item"><span>Conferência cadastral</span><p>${escapeHtml(record.cnpjCorrecao.criterio)} <a href="${escapeHtml(record.cnpjCorrecao.fonte)}" target="_blank" rel="noopener noreferrer">Consultar fonte do CNPJ</a>.</p></div>` : ""}
+      ${record.documentoStatus === "numero_divergente" ? detailItem("Divergência documental", `O PDF informa emenda ${record.numeroNoDocumento}; a matéria consultada informa ${record.emenda}.`) : ""}
       ${detailItem("Função", record.funcao)}
       ${detailItem("Data do recurso", record.dataRecurso)}
       ${detailItem("Data do plano", record.dataPlano)}
@@ -1736,6 +1774,42 @@ function openDetails(id, updateUrl = true) {
   `;
 
   if (!elements.detailDialog.open) elements.detailDialog.showModal();
+}
+
+function renderDocumentTrail(record) {
+  const docs = record.documentosVinculados || [];
+  const evidence = record.evidencias || {};
+  const sourceLink = (url, label) => {
+    if (!/^https?:\/\//i.test(String(url || ""))) return "";
+    return `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+  };
+  const docList = (stage) => docs.filter(d => d.etapa === stage).map(d =>
+    `<li>${sourceLink(d.url, d.numero || "Consultar registro")} · ${escapeHtml(d.data || "data não informada")}${knownMoney(d.valor) === null ? "" : ` · ${moneyFormatter.format(d.valor)}`}<small>${escapeHtml([d.situacao, d.vinculo].filter(Boolean).join(". "))}</small></li>`
+  ).join("");
+  const stageItem = (title, status, description, links = "") =>
+    `<li class="document-trail__stage"><div><strong>${title}</strong><span>${status}</span></div><p>${escapeHtml(description)}</p>${links ? `<ul>${links}</ul>` : ""}</li>`;
+  const hasDocs = stage => docs.some(d => d.etapa === stage);
+  const estadual = record.tipo === "Estadual";
+  const municipal = record.tipo === "Municipal";
+  const sheet = [evidence.planilha && `aba ${evidence.planilha}`, evidence.linha && `linha ${evidence.linha}`].filter(Boolean).join(", ");
+  const source = sourceLink(evidence.urlOficial || record.fonteUrl || (record.documentoStatus === "conferido" ? record.arquivoUrl : ""), estadual ? "Abrir planilha oficial" : "Consultar fonte da indicação");
+  const sheetValue = (value, label) => value === null ? `${label} não informado na base consultada.` : `${label} informado: ${moneyFormatter.format(value)}. A planilha não substitui o documento individual.`;
+  const items = [stageItem("1. Destinação do recurso", record.documentoStatus === "conferido" ? "Documento conferido" : "Referência publicada",
+    estadual ? `Indicação ${record.emenda}. ${sheet ? `Localização na planilha: ${sheet}.` : ""} ${record.numeroInstrumento ? `Instrumento ${record.numeroInstrumento}.` : "Instrumento não informado."}` :
+      municipal ? `Proposição ${record.emenda}. ${record.documentoStatus === "numero_divergente" ? "O PDF vinculado apresenta número divergente; consulte a pendência documental." : "A indicação não comprova transferência ou entrega."}` :
+      record.planoAcaoId ? `Plano ${record.codigoPlanoAcao || record.planoAcaoId}, relacionado ao código da emenda no Transferegov.` : "Referência da destinação; o agregado por favorecido não identifica cada repasse.", source ? `<li>${source}</li>` : ""),
+    stageItem("2. Empenho", hasDocs("empenho") ? "Documento vinculado" : estadual && record.stages.empenhado !== null ? "Valor informado" : "Documento não vinculado",
+      hasDocs("empenho") ? "Empenho da União associado ao plano pelo identificador oficial. A execução municipal exige documentos próprios." : estadual ? sheetValue(record.stages.empenhado, "Empenhado") : "Não foi vinculado um empenho específico a esta emenda na base do painel.", docList("empenho")),
+    stageItem("3. Transferência e recebimento", hasDocs("recebimento") ? "Crédito em conta localizado" : hasDocs("transferencia") ? "Ordem bancária localizada" : estadual && record.stages.pago !== null ? "Valor informado" : "Documento não vinculado",
+      hasDocs("recebimento") ? "A conta pertence ao executor do plano. O crédito comprova recebimento; não comprova entrega nem pagamento ao fornecedor final." : hasDocs("transferencia") ? "A ordem bancária está vinculada ao documento hábil federal. O crédito na conta ainda não foi localizado." : estadual ? sheetValue(record.stages.pago, "Pago/transferido") : "O painel ainda não tem documento individual de transferência ou crédito vinculado a esta emenda.", docList("transferencia") + docList("recebimento")),
+    stageItem("4. Execução pelo beneficiário", record.relatorioGestaoLocalizado ? "Relatório localizado" : "Comprovação pendente",
+      record.relatorioGestaoLocalizado ? "Há relatório no Transferegov. Sua existência não equivale à aprovação das contas nem à comprovação de cada entrega." : "Faltam vínculos documentais com contratação, liquidação e pagamento ao fornecedor. Movimentação de conta ou pagamento ao mesmo CNPJ, isoladamente, não comprova esse vínculo.",
+      record.fonteRelatorioGestaoUrl ? `<li>${sourceLink(record.fonteRelatorioGestaoUrl, "Consultar relatórios de gestão")}</li><li>${sourceLink(record.fonteRelatorioGestaoLegadoUrl, "Consultar relatórios do modelo anterior")}</li>` : ""),
+    stageItem("5. Obra, produto ou serviço entregue", "Comprovação pendente", "Não há documento de entrega vinculado no painel. É necessário conferir medição, termo de recebimento ou relatório de atendimento que identifique o objeto e esta emenda.")];
+  const checkedAt = record.evidenciasConsultadasEm || evidence.coletadoEm || record.documentoConferidoEm;
+  const checkedDate = checkedAt ? new Date(checkedAt.length === 10 ? `${checkedAt}T12:00:00` : checkedAt) : null;
+  const checked = checkedDate && !Number.isNaN(checkedDate.getTime()) ? checkedDate.toLocaleDateString("pt-BR") : "não informada";
+  return `<section class="document-trail" aria-label="Do recurso à entrega"><h3>Do recurso à entrega</h3><p>Veja o que a fonte comprova e quais documentos ainda faltam. Última conferência desta evidência: ${escapeHtml(checked)}. A data de consulta não altera o período dos dados.</p><ol>${items.join("")}</ol><p class="muted">“Documento não vinculado” significa ausência de vínculo no painel, não ausência de pagamento ou irregularidade. Para completar a conferência, solicite ao órgão os documentos com o número ${escapeHtml(record.emenda)}, o beneficiário e o exercício correspondente.</p></section>`;
 }
 
 function closeDetails() {
@@ -1820,6 +1894,7 @@ function clearFilters() {
     elements.rankingStage,
     elements.activeFilter,
     elements.yearFilter,
+    elements.budgetYearFilter,
     elements.resourceYearFilter,
     elements.orgFilter,
     elements.partyFilter,
@@ -1939,6 +2014,7 @@ function setupEvents() {
     elements.stageFilter,
     elements.activeFilter,
     elements.yearFilter,
+    elements.budgetYearFilter,
     elements.resourceYearFilter,
     elements.orgFilter,
     elements.partyFilter,
