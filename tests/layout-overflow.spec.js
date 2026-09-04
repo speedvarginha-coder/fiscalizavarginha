@@ -1,5 +1,5 @@
 const { test, expect } = require("@playwright/test");
-const baseUrl = process.env.LAYOUT_BASE_URL || "http://127.0.0.1:4173";
+const baseUrl = process.env.LAYOUT_BASE_URL || `http://127.0.0.1:${process.env.FISCALIZA_TEST_PORT || "4173"}`;
 
 const pages = [
   "index.html",

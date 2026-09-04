@@ -46,6 +46,69 @@ const records = [
   ...federal.emendas,
 ];
 
+test("trilha documental diferencia valores informados, repasses e entrega", async ({ page }) => {
+  const pix = federal.emendas.find(r => r.documentosVinculados?.some(d => d.etapa === "recebimento"));
+  expect(pix).toBeTruthy();
+  await page.goto(`/emendas/#emenda=${encodeURIComponent(pix.id)}`);
+  const trail = page.getByRole("region", { name: "Do recurso à entrega" });
+  await expect(trail).toContainText("Crédito em conta localizado");
+  await expect(trail).toContainText("não comprova entrega");
+  await expect(trail.locator('a[href*="id_dh="]')).not.toHaveCount(0);
+  await expect(trail.locator('a[href*="id_agencia_conta="]')).not.toHaveCount(0);
+  await page.goto(`/emendas/#emenda=${encodeURIComponent(estadual.emendas.find(r => r.valorPago > 0).id)}`);
+  await expect(trail).toContainText("Valor informado");
+  await expect(trail).toContainText("A planilha não substitui o documento individual");
+  await expect(trail).not.toContainText("Crédito em conta localizado");
+  await page.goto("/emendas/#emenda=MUN-SAPL-2025-225");
+  await expect(trail).toContainText("Documento conferido");
+  await expect(trail).toContainText("Documento não vinculado");
+  await expect(trail).toContainText("Comprovação pendente");
+  await page.setViewportSize({ width: 375, height: 812 });
+  expect(await page.locator("#detailDialog").evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBe(true);
+});
+
+test("conferência documental separa exercício, valores e identificação", async ({ page }) => {
+  await page.goto("/emendas/");
+  await page.selectOption("#typeFilter", "Municipal");
+  await page.selectOption("#budgetYearFilter", "2026");
+  await expect(page.locator("#resultSummary")).toContainText("354 resultados");
+  await page.selectOption("#budgetYearFilter", "");
+  await page.goto("/emendas/#emenda=MUN-SAPL-2025-225");
+  await expect(page.locator("#detailDialog")).toBeVisible();
+  await expect(page.locator("#detailBody")).toContainText("R$ 35.000,00");
+  await expect(page.locator("#detailBody")).toContainText("Dudu Ottoni: R$ 5.000,00");
+  await page.goto("/emendas/#emenda=MUN-SAPL-2025-268");
+  await expect(page.locator("#detailBody")).toContainText("R$ 30.000,00");
+  await expect(page.locator("#detailBody")).toContainText("R$ 22.000,00");
+  await expect(page.locator("#detailBody")).toContainText("Divergência com o cadastro exige conferência");
+  await page.goto("/emendas/#emenda=MUN-SAPL-2025-004");
+  await expect(page.locator("#detailBody")).toContainText("18.715.532/0001-70");
+  await expect(page.locator("#detailBody")).toContainText("18.15.532/0001-70");
+  await page.goto("/emendas/#emenda=MUN-SAPL-2025-317");
+  await expect(page.locator("#detailBody")).toContainText("Não confirmado documentalmente");
+  await expect(page.locator("#detailBody")).toContainText("O PDF informa emenda 318");
+});
+
+test("ano federal usa a emenda e preserva o período do recurso", async ({ page }) => {
+  await page.goto("/emendas/");
+  await page.selectOption("#typeFilter", "Federal");
+  await page.fill("#searchInput", "202314110006");
+  await page.selectOption("#yearFilter", "2023");
+  await page.selectOption("#resourceYearFilter", "2024");
+  await expect(page.locator(".result-card")).toHaveCount(1);
+  await page.selectOption("#yearFilter", "2024");
+  await expect(page.locator(".result-card")).toHaveCount(0);
+});
+
+test("emendas e detalhes documentais cabem no celular", async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 812 });
+  await page.goto("/emendas/#emenda=MUN-SAPL-2025-225");
+  await expect(page.locator("#detailDialog")).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+  expect(await page.locator("#detailDialog").evaluate(e => e.scrollWidth <= e.clientWidth + 1)).toBe(true);
+  await page.screenshot({ path: "tmp/emendas-detalhe-mobile.png" });
+});
+
 test("totais federais contam agregados sem converter desconhecido em zero", () => {
   const allocated = federal.emendas.filter((record) => !record.somenteNoBetha);
   const indicated = federal.emendas.filter((record) => record.somenteNoBetha);

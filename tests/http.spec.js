@@ -1,5 +1,53 @@
 // @ts-check
 const { test, expect } = require("@playwright/test");
+// As falhas de rede são simuladas nas requisições da página. O service worker
+// é testado separadamente no pacote, pois pode responder fora dessas rotas.
+test.use({ serviceWorkers: "block" });
+
+test("publicações pesadas aguardam a página pronta e preservam as duas fontes", async ({ page, request }) => {
+  let release;
+  const held = new Promise(resolve => { release = resolve; });
+  await page.route("**/data/chunks/publicacoes*.json", async route => { await held; await route.continue(); });
+  try {
+    await page.goto("/atualizacoes.html", { waitUntil: "domcontentloaded" });
+    await expect(page.locator("body")).toHaveAttribute("data-fiscaliza-ready", "true", { timeout: 30000 });
+    await expect(page.locator("#publicacoesStatus")).toContainText("Carregando");
+    expect(await page.evaluate(() => Boolean(window.FISCALIZA_DATA.publicacoes_diario))).toBe(false);
+  } finally { release(); }
+  const camara = await (await request.get("/data/chunks/publicacoes_estruturadas.json")).json();
+  const diario = await (await request.get("/data/chunks/publicacoes_diario.json")).json();
+  await expect(page.locator("#publicacoesFeed")).toHaveAttribute("aria-busy", "false");
+  await expect(page.locator("#publicacoesContador")).toHaveText(`${(camara.publicacoes.length + diario.publicacoes.length).toLocaleString("pt-BR")} publicação(ões)`);
+});
+
+test("falha de uma fonte de publicações mantém a outra e informa cobertura parcial", async ({ page, request }) => {
+  await page.route("**/data/chunks/publicacoes_diario.json", route => route.fulfill({ status: 503, body: "indisponível" }));
+  await page.goto("/atualizacoes.html", { waitUntil: "domcontentloaded" });
+  const camara = await (await request.get("/data/chunks/publicacoes_estruturadas.json")).json();
+  await expect(page.locator("#publicacoesFeed")).toHaveAttribute("aria-busy", "false", { timeout: 30000 });
+  await expect(page.locator("#publicacoesStatus")).toContainText("Uma fonte está indisponível");
+  await expect(page.locator("#publicacoesContador")).toHaveText(`${camara.publicacoes.length.toLocaleString("pt-BR")} publicação(ões)`);
+});
+
+test("Câmara usa contratos completos sem carregar detalhes da frota", async ({ page, request }) => {
+  const pedidos = [];
+  page.on("request", req => pedidos.push(new URL(req.url()).pathname));
+  await page.goto("/camara.html", { waitUntil: "domcontentloaded" });
+  await expect(page.locator("body")).toHaveAttribute("data-fiscaliza-ready", "true", { timeout: 30000 });
+  const original = await (await request.get("/data/chunks/prefeitura.json")).json();
+  expect(await page.evaluate(() => window.FISCALIZA_DATA.prefeitura.contratos.length)).toBe(original.contratos.length);
+  expect(pedidos).toContain("/data/chunks/prefeitura_painel.json");
+  expect(pedidos).not.toContain("/data/chunks/prefeitura.json");
+});
+
+test("Pessoal permite tentar novamente após indisponibilidade da folha", async ({ page }) => {
+  let calls = 0;
+  await page.route("**/data/chunks/pessoal.json", route => ++calls === 1
+    ? route.fulfill({ status: 503, body: "indisponível" }) : route.continue());
+  await page.goto("/pessoal.html", { waitUntil: "domcontentloaded" });
+  await page.getByRole("button", { name: "Tentar novamente", exact: true }).click();
+  await expect(page.locator("#listaPessoal article").first()).toBeVisible({ timeout: 30000 });
+});
 
 test("pacote publico serve loader, chunk e modulo sem data.js", async ({ request }) => {
   const index = await request.get("/index.html");

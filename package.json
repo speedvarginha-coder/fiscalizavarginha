@@ -33,17 +33,19 @@
     "lint:seo": "node scripts/check-seo.mjs",
     "performance:budget": "node scripts/check-performance-budget.mjs",
     "performance:site": "node scripts/check-site-performance.mjs",
-    "release": "npm run test:lock && npm run test:security && npm run data:indice && npm run data:monitor && npm run data:chat && npm run data:bundle && npm run lint:syntax && npm run lint:accents && npm run lint:seo && npm run performance:budget && npm run validate:data && npm test && npm run deploy:zip && npm run validate:deploy",
-    "test": "playwright test",
-    "test:data": "node scripts/check-syntax.mjs && npm run test:security && node tests/test_editorial_assertions.mjs && playwright test tests/calculos.spec.js",
+    "release": "npm run test:lock && npm run test:security && npm run data:indice && npm run data:monitor && npm run data:chat && npm run data:bundle && npm run lint:syntax && npm run lint:accents && npm run lint:seo && npm run performance:budget && npm run validate:data && npm run test:contracts && npm test && npm run deploy:zip && npm run validate:deploy",
+    "test": "node scripts/run-browser-tests.mjs",
+    "test:data": "node scripts/check-syntax.mjs && npm run test:security && node tests/test_editorial_assertions.mjs && node scripts/run-browser-tests.mjs tests/calculos.spec.js",
     "test:pipeline": "python -m unittest discover -s tests -p \"test_*.py\"",
     "test:security": "node tests/test_chat_xss.mjs && node tests/test_chat_proxy_contract.mjs",
-    "test:headed": "playwright test --headed",
+    "test:headed": "node scripts/run-browser-tests.mjs --headed",
     "test:ui": "playwright test --ui",
     "test:report": "playwright show-report",
     "validate:data": "npm run data:schema && npm run data:audit && npm run data:snapshot && npm run data:chat && npm run data:bundle && npm run test:numeros && node scripts/validate-release.mjs data",
-    "validate:deploy": "node scripts/validate-release.mjs deploy",
-    "test:numeros": "node tests/test_numeros_publicados.mjs"
+    "validate:deploy": "node scripts/validate-release.mjs deploy && npm run test:deploy",
+    "test:numeros": "node tests/test_numeros_publicados.mjs",
+    "test:deploy": "node scripts/run-browser-tests.mjs --deploy",
+    "test:contracts": "node --test tests/test_public_assets.mjs tests/test_data_views.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0"

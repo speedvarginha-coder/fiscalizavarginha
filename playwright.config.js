@@ -1,5 +1,7 @@
 // @ts-check
 const { defineConfig, devices } = require("@playwright/test");
+const testPort = process.env.FISCALIZA_TEST_PORT || "4173";
+const baseURL = `http://127.0.0.1:${testPort}`;
 module.exports = defineConfig({
   testDir: "./tests",
   fullyParallel: true,
@@ -10,15 +12,15 @@ module.exports = defineConfig({
   workers: 1,
   reporter: [["list"], ["html", { open: "never" }]],
 
-  webServer: {
+  webServer: process.env.FISCALIZA_MANAGED_TEST_SERVER === "1" ? undefined : {
     command: "python scripts/serve-static-tests.py",
-    url: "http://127.0.0.1:4173",
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 15_000,
   },
 
   use: {
-    // Servidos via file:// — o caminho absoluto é construído nos próprios testes.
+    baseURL,
     actionTimeout: 10_000,
     navigationTimeout: 15_000,
     trace: "on-first-retry",
@@ -29,13 +31,13 @@ module.exports = defineConfig({
   projects: [
     {
       name: "chromium",
-      testIgnore: /(?:http|emendas-audit)\.spec\.js/,
+      testIgnore: /(?:http|emendas-audit|deploy)\.spec\.js/,
       use: { ...devices["Desktop Chrome"] },
     },
     {
       name: "http",
       testMatch: /(?:http|emendas-audit)\.spec\.js/,
-      use: { baseURL: "http://127.0.0.1:4173" },
+      use: { baseURL },
     },
   ],
 });

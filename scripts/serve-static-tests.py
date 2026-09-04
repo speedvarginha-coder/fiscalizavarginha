@@ -5,11 +5,12 @@ from __future__ import annotations
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+import os
 
 
-ROOT = Path(__file__).resolve().parents[1] / "painel-cidadao"
+ROOT = Path(os.environ.get("FISCALIZA_TEST_ROOT", Path(__file__).resolve().parents[1] / "painel-cidadao")).resolve()
 HOST = "127.0.0.1"
-PORT = 4173
+PORT = int(os.environ.get("FISCALIZA_TEST_PORT", "4173"))
 
 
 class QuietStaticHandler(SimpleHTTPRequestHandler):
@@ -17,6 +18,10 @@ class QuietStaticHandler(SimpleHTTPRequestHandler):
 
     def log_message(self, _format: str, *args: object) -> None:
         return
+
+    def end_headers(self) -> None:
+        self.send_header("X-Fiscaliza-Test-Process", str(os.getpid()))
+        super().end_headers()
 
     def copyfile(self, source, outputfile) -> None:  # type: ignore[no-untyped-def]
         try:

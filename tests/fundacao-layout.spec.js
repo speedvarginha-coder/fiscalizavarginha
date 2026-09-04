@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test("cruzamento da Fundação usa cards legíveis no desktop e no celular", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto("http://127.0.0.1:4173/fundacao.html");
+  await page.goto("/fundacao.html");
 
   const bloco = page.locator("#fundacaoCruzamento");
   const grade = bloco.locator(".cross-supplier-grid");

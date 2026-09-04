@@ -18,7 +18,7 @@ const PAINEL = path.resolve(__dirname, "..", "painel-cidadao");
 // A aplicação publicada roda por HTTP e usa chunks sob demanda. Abrir por file://
 // força o fallback monolítico de 13 MB e pode deixar o teste na tela de loading,
 // além de não exercitar o caminho real de produção.
-const fileUrl = (page) => "http://127.0.0.1:4173/" + page;
+const fileUrl = (page) => `http://127.0.0.1:${process.env.FISCALIZA_TEST_PORT || "4173"}/` + page;
 
 /** Navega e espera o sinal emitido ao fim da inicialização real do painel. */
 async function gotoReady(page, url, options) {

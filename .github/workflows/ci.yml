@@ -33,6 +33,12 @@ jobs:
         run: npm run test:security
       - name: Schemas dos dados publicados
         run: python painel-cidadao/validar_schemas_dados.py
+      - name: Projeções de dados e dependências do pacote
+        run: |
+          npm run data:bundle
+          npm run test:contracts
+      - name: Orçamento de carregamento inicial
+        run: npm run performance:budget
       - name: Auditoria bloqueante das emendas
         run: python painel-cidadao/emendas/audit_emendas.py
       - name: Integridade dos cálculos e cruzamentos externos
