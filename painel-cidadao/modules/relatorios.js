@@ -25,7 +25,7 @@
     console.error("[relatorios] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
-  const { fmtBRL, esc, cleanText } = u;
+  const { fmtBRL, fmtNum, esc, cleanText } = u;
 
   function $(id) { return document.getElementById(id); }
   function icon(nome, opts) {
@@ -62,21 +62,17 @@
       }
     });
 
-    // 2) Contratos acima de R$ 1 mi sem CNPJ válido
-    contratos.forEach(c => {
-      const valor = Number(c.valor) || 0;
-      if (valor >= 1000000 && (!c.cnpj || c.cnpj.includes("*"))) {
-        if (!c.data_assinatura) return;
-        eventos.push({
-          data: c.data_assinatura,
-          tipo: "orange",
-          tag: "CNPJ não identificável",
-          titulo: `Contrato de ${fmtBRL(valor)} sem CNPJ identificável`,
-          desc: `${cleanText(c.contratado || "—")} — modalidade ${esc(cleanText(c.modalidade || "n/i"))}. Pedir cópia integral do contrato.`,
-          link: "prefeitura.html?q=" + encodeURIComponent(c.contratado || ""),
-        });
-      }
-    });
+    // 2) NAO existe mais sinal por contrato para CNPJ mascarado.
+    //
+    // O detector antigo acusava todo contrato acima de R$ 1 mi cujo CNPJ viesse
+    // com asterisco. So que a fonte mascara o CNPJ em 100% dos contratos: em
+    // 04/09/2026 eram 1.334 de 1.334. Um rotulo que vale para todos nao
+    // distingue ninguem, e ele ocupava 24 das 25 vagas da linha do tempo,
+    // nomeando empresas por uma condicao universal. Em 29 dos casos acusados o
+    // proprio painel ja tinha identificado a empresa por reconstrucao de raiz.
+    //
+    // Cada afirmacao isolada era verdadeira e o conjunto era falso. Limitacao
+    // de fonte vira nota unica (abaixo), nao suspeita com nome na tela.
 
     // 3) Emendas sem pagamento de alto valor
     const cruzMap = {};
@@ -102,6 +98,21 @@
     eventos.sort((a, b) => (b.data || "").localeCompare(a.data || ""));
     const top = eventos.slice(0, 25);
     if (!top.length) return;
+
+    // Limitacao de fonte declarada uma vez, com o tamanho real do problema.
+    const mascarados = contratos.filter(c => String(c.cnpj || "").includes("*")).length;
+    const reconstruidos = ((D.cnpjs || {}).empresas || []).length;
+    let nota = block.querySelector(".tline-fonte-nota");
+    if (mascarados && !nota) {
+      nota = document.createElement("p");
+      nota.className = "report-note tline-fonte-nota";
+      el.parentNode.insertBefore(nota, el);
+    }
+    if (nota) {
+      nota.innerHTML = mascarados === contratos.length
+        ? `<strong>Sobre o CNPJ dos contratados:</strong> o portal de origem publica o CNPJ mascarado em <strong>todos</strong> os ${fmtNum(contratos.length)} contratos, mostrando apenas a raiz. O painel reconstrói ${fmtNum(reconstruidos)} deles cruzando raiz e razão social, o que é inferência e não vale como documento. Isso não distingue um contrato do outro: é limitação da fonte, não sinal sobre nenhuma empresa. Para obter o CNPJ completo, peça a íntegra do contrato por LAI.`
+        : `<strong>Sobre o CNPJ dos contratados:</strong> ${fmtNum(mascarados)} de ${fmtNum(contratos.length)} contratos vêm com o CNPJ mascarado na fonte.`;
+    }
 
     el.innerHTML = top.map(ev => {
       const dt = ev.data.split("-");
