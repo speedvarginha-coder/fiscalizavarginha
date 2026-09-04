@@ -1,0 +1,4169 @@
+{
+  "schema_version": 1,
+  "ciclo": 2025,
+  "fonte": {
+    "url": "https://radardatransparencia.atricon.org.br/dados/dados_pntp_2025.zip",
+    "pagina": "https://radardatransparencia.atricon.org.br/downloads.html",
+    "publicada_em": "2026-02-10",
+    "consultada_em": "2026-09-03",
+    "arquivos": {
+      "avaliacoes_pntp_2025.xlsx": "9081ba2b302e5bc031b2f89415ddddf24a403a48d61a597e1ec21c00dd00c50f",
+      "respostas_pntp_2025_MG.xlsx": "7fc3083b81bf0ee90d4baa00bb1d2991d80d28be76fd6abafb3bef8ed8dd3a22"
+    }
+  },
+  "orgaos": {
+    "prefeitura": {
+      "nome": "Prefeitura Municipal de Varginha",
+      "ibge": "3170701",
+      "id_avaliacao": "32438",
+      "id_entidade": "5440",
+      "enviada_em": "2025-05-27",
+      "indice": 81.8,
+      "essenciais": 81.82,
+      "nivel": "Elevado",
+      "autoavaliacao": true,
+      "validada": false,
+      "revisada": false,
+      "certificavel": false,
+      "criterios": [
+        {
+          "id": "652",
+          "dimensao": "Informações Prioritárias",
+          "texto": "1.1 Possui sítio oficial próprio na internet?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "653",
+          "dimensao": "Informações Prioritárias",
+          "texto": "1.2 Possui portal da transparência próprio ou compartilhado na internet?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA=="
+              ]
+            }
+          ]
+        },
+        {
+          "id": "654",
+          "dimensao": "Informações Prioritárias",
+          "texto": "1.3 O acesso ao portal transparência está visível na capa do site?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "655",
+          "dimensao": "Informações Prioritárias",
+          "texto": "1.4 O site e o  portal tranparência contêm ferramenta de pesquisa de conteúdo que permita o acesso à informação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "656",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.1 Divulga a sua estrutura organizacional?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "657",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.2 Divulga competências e/ou atribuições?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "658",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.3 Identifica o nome dos atuais responsáveis pela gestão do Poder/Órgão?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "659",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.4 Divulga os endereços e telefones atuais do Poder ou órgão e e-mails institucionais?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "660",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.5 Divulga o horário de atendimento?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "661",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.6 Divulga os atos normativos próprios?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/leis_decretos"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "662",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.7 Divulga as perguntas e respostas mais frequentes relacionadas às atividades desenvolvidas pelo Poder/Órgão?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/perguntas-frequentes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "663",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.8 Participa em redes sociais e apresenta, no seu sítio institucional, link de acesso ao seu perfil?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.facebook.com/prefeituravarginha/?locale=pt_BR",
+                "https://www.instagram.com/prefeituradevarginha/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "664",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.9 Inclui botão do Radar da Transparência Pública no site institucional ou portal transparência?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA=="
+              ]
+            }
+          ]
+        },
+        {
+          "id": "665",
+          "dimensao": "Receita",
+          "texto": "3.1 Divulga as receitas do Poder ou órgão, evidenciando sua previsão e realização?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA=="
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "666",
+          "dimensao": "Receita",
+          "texto": "3.2 Divulga a classificação orçamentária por natureza da receita (categoria econômica, origem, espécie)?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA=="
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "667",
+          "dimensao": "Receita",
+          "texto": "3.3 Divulga a lista dos inscritos em dívida ativa, contendo, no mínimo, dados referentes ao nome do inscrito e o valor total da dívida?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82960"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "668",
+          "dimensao": "Despesa",
+          "texto": "4.1 Divulga o total das despesas empenhadas, liquidadas e pagas?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83034"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "669",
+          "dimensao": "Despesa",
+          "texto": "4.2 Divulga as despesas por classificação orçamentária?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83034"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "670",
+          "dimensao": "Despesa",
+          "texto": "4.3 Possibilita a consulta de empenhos com os detalhes do beneficiário do pagamento ou credor, o bem fornecido ou serviço prestado e a identificação do procedimento licitatório originário da despesa?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83034"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "674",
+          "dimensao": "Convênios e Transferências",
+          "texto": "5.1 Identifica as transferências recebidas a partir da celebração de convênios/acordos com indicação, no mínimo, do valor total previsto dos recursos envolvidos, do valor recebido, do objeto e da origem (órgão repassador/concedente)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82970"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "675",
+          "dimensao": "Convênios e Transferências",
+          "texto": "5.2 Identifica as transferências realizadas a partir da celebração de convênios/acordos/ajustes, com indicação, no mínimo, do beneficiário, do objeto, do valor total previsto para repasse e do valor concedido?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82970"
+              ]
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "676",
+          "dimensao": "Convênios e Transferências",
+          "texto": "5.3 Identifica os acordos firmados que não envolvam transferência de recursos financeiros, identificando as partes, o objeto e as obrigações ajustadas?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82970"
+              ]
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "677",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.1 Divulga a relação nominal dos servidores/autoridades/membros, seus cargos/funções, as respectivas lotações, as suas datas de admissão/exoneração/inativação e a carga horária do cargo/função ocupada/desempenhada?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82959"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "678",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.2 Identifica a remuneração nominal de cada servidor/autoridade/Membro e a tabela com o padrão remuneratório dos cargos e funções?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82959"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "679",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.3 Divulga a lista de seus estagiários?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83056"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "680",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.4 Publica lista dos terceirizados que prestam serviços para o Poder ou órgão/ entidades, contendo, em relação a cada um deles: nome completo, função ou atividade exercida e nome da empresa empregadora?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "681",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.5 Divulga a íntegra dos editais de concursos e seleções públicas realizados pelo Poder ou órgão para provimento de cargos e empregos públicos?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/editais/3"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "682",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.6 Divulga informações sobre os demais atos dos concursos públicos e processos seletivos do Poder ou órgão, contendo no mínimo a lista de aprovados com as classificações e as nomeações?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/editais/3"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "683",
+          "dimensao": "Diárias",
+          "texto": "7.1 Divulga o nome e o cargo/função do beneficiário, além do valor total recebido, número de diárias usufruídas por afastamento, período de afastamento, motivo do afastamento e local de destino?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83059"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "684",
+          "dimensao": "Diárias",
+          "texto": "7.2 Divulga tabela ou relação que explicite os valores das diárias dentro do Estado, fora do Estado e fora do país, conforme legislação local?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83059"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "685",
+          "dimensao": "Licitações",
+          "texto": "8.1 Divulga a relação das licitações em ordem sequencial, informando o número e modalidade licitatória, o objeto, a data, o valor estimado/homologado e a situação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83021"
+              ]
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "686",
+          "dimensao": "Licitações",
+          "texto": "8.2 Divulga a íntegra dos editais de licitação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/editais/1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "687",
+          "dimensao": "Licitações",
+          "texto": "8.3 Divulga a íntegra dos demais documentos das fases interna e externa das licitações?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/editais/1"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "688",
+          "dimensao": "Licitações",
+          "texto": "8.4 Divulga a íntegra dos principais documentos dos processos de dispensa e inexigibilidade de licitação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "689",
+          "dimensao": "Licitações",
+          "texto": "8.5 Divulga a íntegra das Atas de Adesão - SRP?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "690",
+          "dimensao": "Licitações",
+          "texto": "8.6 Divulga o plano de contratações anual  (art. 12,VII, da Lei n. 14.133)?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "691",
+          "dimensao": "Licitações",
+          "texto": "8.7 Divulga a relação dos licitantes e/ou contratados sancionados administrativamente pelo Poder/órgão?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83021"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "693",
+          "dimensao": "Contratos",
+          "texto": "9.1 Divulga a relação dos contratos celebrados em ordem sequencial, com o seu respectivo resumo, contendo, no mínimo, indicação do contratado(a), do valor, do objeto e da vigência, bem como dos aditivos deles decorrentes?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "694",
+          "dimensao": "Contratos",
+          "texto": "9.2 Divulga o inteiro teor dos contratos e dos respectivos termos aditivos?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "695",
+          "dimensao": "Contratos",
+          "texto": "9.3 Divulga a relação/lista dos fiscais de cada contrato vigente e encerrado?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "696",
+          "dimensao": "Contratos",
+          "texto": "9.4 Divulga a ordem cronológica de seus pagamentos, bem como as justificativas que fundamentaram a eventual alteração dessa ordem?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82995"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "697",
+          "dimensao": "Obras",
+          "texto": "10.1 Divulga informações sobre as obras contendo o objeto, a situação atual, as datas de início e conclusão de obra, empresa contratada e o percentual concluído?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "698",
+          "dimensao": "Obras",
+          "texto": "10.2 Divulga os quantitativos e os preços unitários e totais contratados?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "699",
+          "dimensao": "Obras",
+          "texto": "10.3 Divulga os quantitativos executados e os preços efetivamente pagos?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026"
+              ]
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "700",
+          "dimensao": "Obras",
+          "texto": "10.4 Divulga relação das obras paralisadas contendo o motivo,  o responsável pela inexecução temporária do objeto do contrato e a data prevista para o reinício da sua execução?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "701",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.1 Publica a Prestação de Contas do Ano Anterior (Balanço Geral)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83004"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "702",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.2 Divulga o Relatório de Gestão ou Atividades?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83004"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "703",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.3 Divulga a íntegra da decisão da apreciação ou julgamento das contas pelo Tribunal de Contas?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "704",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.4 Divulga o resultado do julgamento das Contas do Chefe do Poder Executivo pelo Poder Legislativo?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "705",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.5 Divulga o Relatório de Gestão Fiscal (RGF)?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83004"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "706",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.6 Divulga o Relatório Resumido da Execução Orçamentária (RREO)?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "707",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.7 Divulga o plano estratégico institucional ?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "708",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.8 Divulga a Lei do Plano Plurianual (PPA) e seus anexos?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/leis_decretos"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "709",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.9 Divulga a Lei do Diretrizes Orçamentárias (LDO) e seus anexos?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/leis_decretos"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "710",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.10 Divulga a Lei Orçamentária (LOA) e seus anexos?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/leis_decretos"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "720",
+          "dimensao": "SIC",
+          "texto": "12.1 Existe o SIC no site e Indica a unidade/setor responsável?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "721",
+          "dimensao": "SIC",
+          "texto": "12.2 Indica o endereço físico, o telefone e o e-mail da unidade responsável pelo  SIC, além do horário de funcionamento?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "722",
+          "dimensao": "SIC",
+          "texto": "12.3 Há possibilidade de envio de pedidos de informação de forma eletrônica (e­SIC)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "723",
+          "dimensao": "SIC",
+          "texto": "12.4  A solicitação por meio de eSic é simples, ou seja, sem a exigência de itens de identificação do requerente que dificultem ou impossibilitem o acesso à informação, tais como: envio de documentos, assinatura reconhecida, declaração de responsabilidade, maioridade?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "724",
+          "dimensao": "SIC",
+          "texto": "12.5  Divulga nesta seção, instrumento normativo local que regulamente a Lei nº 12.527/2011 - LAI?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "725",
+          "dimensao": "SIC",
+          "texto": "12.6 Divulga, na seção relativa ao e-SIC, os prazos de resposta ao cidadão, incluindo o recursal, e as autoridades competentes para o exame dos pedidos, além do procedimento referente à realização do pedido e de eventual recurso?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "726",
+          "dimensao": "SIC",
+          "texto": "12.7 Divulga relatório anual estatístico contendo a quantidade de pedidos de acesso recebidos, atendidos, indeferidos, bem como informações genéricas sobre os solicitantes?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "727",
+          "dimensao": "SIC",
+          "texto": "12.8 Divulga lista de documentos classificados em cada grau de sigilo, contendo pelo menos o assunto sobre o qual versa a informação, a categoria na qual ela se encontra, o dispositivo legal que fundamenta a classificação e o respectivo prazo?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "728",
+          "dimensao": "SIC",
+          "texto": "12.9 Divulga lista das informações que tenham sido desclassificadas nos últimos 12 (doze) meses?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "729",
+          "dimensao": "Acessibilidade",
+          "texto": "13.1 O site oficial e o portal de transparência contêm símbolo de acessibilidade em destaque?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/acessibilidade"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "730",
+          "dimensao": "Acessibilidade",
+          "texto": "13.2 O site e o portal de transparência contêm exibição do “caminho” de páginas percorridas pelo usuário?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/acessibilidade"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "731",
+          "dimensao": "Acessibilidade",
+          "texto": "13.3 O site e o portal de transparência contêm opção de alto contraste?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/acessibilidade"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "732",
+          "dimensao": "Acessibilidade",
+          "texto": "13.4 O site e o portal de transparência contêm ferramenta de redimensionamento de texto?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/acessibilidade"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "733",
+          "dimensao": "Acessibilidade",
+          "texto": "13.5 Contém mapa do site institucional?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/acessibilidade"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "734",
+          "dimensao": "Ouvidoria",
+          "texto": "14.1 Há informações sobre o atendimento presencial pela Ouvidoria (Indicação de endereço físico e telefone, além do horário de funcionamento)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/ouvidoria"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "735",
+          "dimensao": "Ouvidoria",
+          "texto": "14.2 Há canal eletrônico de acesso/interação com a Ouvidoria?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/ouvidoria"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "736",
+          "dimensao": "Ouvidoria",
+          "texto": "14.3 Divulga Carta de Serviços ao Usuário?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/ouvidoria"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "737",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.1 Identifica o encarregado/responsável pelo tratamento de dados pessoais e disponibiliza Canal de Comunicação (telefone e/ou e-mail)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/ouvidoria"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "738",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.2 Publica a sua Política de Privacidade e Proteção de Dados?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/lgpd"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "739",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.3 Possibilita a demanda e o acesso a serviços públicos por meio digital, sem necessidade de solicitação presencial?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "740",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.4 Possibilita o acesso automatizado por sistemas externos em dados abertos (estruturados e legíveis por máquina), e a página contém as regras de utilização?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "741",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.5 Regulamenta a Lei Federal nº 14.129/2021 (Governo Digital) e divulga a normativa em seu portal?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "742",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.6 Realiza e divulga resultados de pesquisas de satisfação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "743",
+          "dimensao": "Renúncia de Receita",
+          "texto": "16.1 Divulga as desonerações tributárias concedidas e a fundamentação legal individualizada?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "744",
+          "dimensao": "Renúncia de Receita",
+          "texto": "16.2 Divulga os valores da renúncia fiscal prevista e realizada, por tipo ou espécie de benefício ou incentivo fiscal?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "745",
+          "dimensao": "Renúncia de Receita",
+          "texto": "16.3 Identifica os beneficiários das desonerações tributárias (benefícios ou incentivos fiscais)?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83030"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "746",
+          "dimensao": "Renúncia de Receita",
+          "texto": "16.4 Divulga informações sobre projetos de incentivo à cultura (incluindo esportivos), identificando os projetos aprovados, o respectivo beneficiário e o valor aprovado?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "747",
+          "dimensao": "Emendas Parlamentares",
+          "texto": "17.1 Identifica as emendas parlamentares recebidas, contendo informações sobre a origem, a forma de repasse, o tipo de emenda, o número da emenda, a autoria, o valor previsto e realizado, o objeto e função de governo?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82970"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "748",
+          "dimensao": "Emendas Parlamentares",
+          "texto": "17.2 Demonstra a execução orçamentária e financeira  oriundas \"emendas pix\"?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "749",
+          "dimensao": "Saúde",
+          "texto": "18.1 Divulga o plano de saúde, a programação anual e o relatório de gestão?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "750",
+          "dimensao": "Saúde",
+          "texto": "18.2 Divulga informações relacionadas aos serviços de saúde, indicando os horários, os profissionais prestadores de serviços, as especialidades e local?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/portal/servicos/1040/saude-e-educacao/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "751",
+          "dimensao": "Saúde",
+          "texto": "18.3 Divulga a lista de espera de regulação para acesso às consultas, exames e serviços médicos ?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "752",
+          "dimensao": "Saúde",
+          "texto": "18.4 Divulga lista dos medicamentos a serem fornecidos pelo SUS e informações de como obter medicamentos, incluindo os de alto custo?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "753",
+          "dimensao": "Saúde",
+          "texto": "18.5 Divulga os estoques de medicamentos das farmácias públicas?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "754",
+          "dimensao": "Educação",
+          "texto": "19.1 Divulga o plano de educação e o respectivo relatório de resultados?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://sites.google.com/seduc.varginha.mg.gov.br/portaleducacaovarginha/in%C3%ADcio"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "755",
+          "dimensao": "Educação",
+          "texto": "19.2 Divulga a lista de espera em creches públicas e os critérios de priorização de acesso a elas?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.gov.br/lista-de-espera-e-contemplados"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        }
+      ],
+      "registros_originais": 266,
+      "itens_atendidos": 188,
+      "itens_pendentes": 77
+    },
+    "camara": {
+      "nome": "Câmara Municipal de Varginha",
+      "ibge": "3170701",
+      "id_avaliacao": "30346",
+      "id_entidade": "11009",
+      "enviada_em": "2025-05-19",
+      "indice": 63.28,
+      "essenciais": 85.71,
+      "nivel": "Intermediário",
+      "autoavaliacao": true,
+      "validada": false,
+      "revisada": false,
+      "certificavel": false,
+      "criterios": [
+        {
+          "id": "652",
+          "dimensao": "Informações Prioritárias",
+          "texto": "1.1 Possui sítio oficial próprio na internet?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "653",
+          "dimensao": "Informações Prioritárias",
+          "texto": "1.2 Possui portal da transparência próprio ou compartilhado na internet?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg=="
+              ]
+            }
+          ]
+        },
+        {
+          "id": "654",
+          "dimensao": "Informações Prioritárias",
+          "texto": "1.3 O acesso ao portal transparência está visível na capa do site?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "655",
+          "dimensao": "Informações Prioritárias",
+          "texto": "1.4 O site e o  portal tranparência contêm ferramenta de pesquisa de conteúdo que permita o acesso à informação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg=="
+              ]
+            }
+          ]
+        },
+        {
+          "id": "656",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.1 Divulga a sua estrutura organizacional?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "657",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.2 Divulga competências e/ou atribuições?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "658",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.3 Identifica o nome dos atuais responsáveis pela gestão do Poder/Órgão?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/institucional/mesa-diretora"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "659",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.4 Divulga os endereços e telefones atuais do Poder ou órgão e e-mails institucionais?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "660",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.5 Divulga o horário de atendimento?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "661",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.6 Divulga os atos normativos próprios?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "662",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.7 Divulga as perguntas e respostas mais frequentes relacionadas às atividades desenvolvidas pelo Poder/Órgão?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/acesso-a-informacao/perguntas-frequentes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "663",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.8 Participa em redes sociais e apresenta, no seu sítio institucional, link de acesso ao seu perfil?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "664",
+          "dimensao": "Informações Institucionais",
+          "texto": "2.9 Inclui botão do Radar da Transparência Pública no site institucional ou portal transparência?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "665",
+          "dimensao": "Receita",
+          "texto": "3.1 Divulga as receitas do Poder ou órgão, evidenciando sua previsão e realização?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80931"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "668",
+          "dimensao": "Despesa",
+          "texto": "4.1 Divulga o total das despesas empenhadas, liquidadas e pagas?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consultas/40103"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "669",
+          "dimensao": "Despesa",
+          "texto": "4.2 Divulga as despesas por classificação orçamentária?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80895"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "670",
+          "dimensao": "Despesa",
+          "texto": "4.3 Possibilita a consulta de empenhos com os detalhes do beneficiário do pagamento ou credor, o bem fornecido ou serviço prestado e a identificação do procedimento licitatório originário da despesa?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80922"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "674",
+          "dimensao": "Convênios e Transferências",
+          "texto": "5.1 Identifica as transferências recebidas a partir da celebração de convênios/acordos com indicação, no mínimo, do valor total previsto dos recursos envolvidos, do valor recebido, do objeto e da origem (órgão repassador/concedente)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/convenios"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "675",
+          "dimensao": "Convênios e Transferências",
+          "texto": "5.2 Identifica as transferências realizadas a partir da celebração de convênios/acordos/ajustes, com indicação, no mínimo, do beneficiário, do objeto, do valor total previsto para repasse e do valor concedido?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/convenios"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "676",
+          "dimensao": "Convênios e Transferências",
+          "texto": "5.3 Identifica os acordos firmados que não envolvam transferência de recursos financeiros, identificando as partes, o objeto e as obrigações ajustadas?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "677",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.1 Divulga a relação nominal dos servidores/autoridades/membros, seus cargos/funções, as respectivas lotações, as suas datas de admissão/exoneração/inativação e a carga horária do cargo/função ocupada/desempenhada?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80933"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "678",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.2 Identifica a remuneração nominal de cada servidor/autoridade/Membro e a tabela com o padrão remuneratório dos cargos e funções?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80892"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "679",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.3 Divulga a lista de seus estagiários?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80973"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "680",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.4 Publica lista dos terceirizados que prestam serviços para o Poder ou órgão/ entidades, contendo, em relação a cada um deles: nome completo, função ou atividade exercida e nome da empresa empregadora?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "681",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.5 Divulga a íntegra dos editais de concursos e seleções públicas realizados pelo Poder ou órgão para provimento de cargos e empregos públicos?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/acesso-a-informacao/concursos-publicos"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "682",
+          "dimensao": "Recursos Humanos",
+          "texto": "6.6 Divulga informações sobre os demais atos dos concursos públicos e processos seletivos do Poder ou órgão, contendo no mínimo a lista de aprovados com as classificações e as nomeações?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/acesso-a-informacao/concursos-publicos"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "683",
+          "dimensao": "Diárias",
+          "texto": "7.1 Divulga o nome e o cargo/função do beneficiário, além do valor total recebido, número de diárias usufruídas por afastamento, período de afastamento, motivo do afastamento e local de destino?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/diarias-de-viagem"
+              ]
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "684",
+          "dimensao": "Diárias",
+          "texto": "7.2 Divulga tabela ou relação que explicite os valores das diárias dentro do Estado, fora do Estado e fora do país, conforme legislação local?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/diarias-de-viagem"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "685",
+          "dimensao": "Licitações",
+          "texto": "8.1 Divulga a relação das licitações em ordem sequencial, informando o número e modalidade licitatória, o objeto, a data, o valor estimado/homologado e a situação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80899"
+              ]
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "686",
+          "dimensao": "Licitações",
+          "texto": "8.2 Divulga a íntegra dos editais de licitação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/licitacoes/publicacoes"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "687",
+          "dimensao": "Licitações",
+          "texto": "8.3 Divulga a íntegra dos demais documentos das fases interna e externa das licitações?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/licitacoes/publicacoes"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "688",
+          "dimensao": "Licitações",
+          "texto": "8.4 Divulga a íntegra dos principais documentos dos processos de dispensa e inexigibilidade de licitação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/licitacoes/publicacoes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "689",
+          "dimensao": "Licitações",
+          "texto": "8.5 Divulga a íntegra das Atas de Adesão - SRP?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "690",
+          "dimensao": "Licitações",
+          "texto": "8.6 Divulga o plano de contratações anual  (art. 12,VII, da Lei n. 14.133)?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "691",
+          "dimensao": "Licitações",
+          "texto": "8.7 Divulga a relação dos licitantes e/ou contratados sancionados administrativamente pelo Poder/órgão?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "693",
+          "dimensao": "Contratos",
+          "texto": "9.1 Divulga a relação dos contratos celebrados em ordem sequencial, com o seu respectivo resumo, contendo, no mínimo, indicação do contratado(a), do valor, do objeto e da vigência, bem como dos aditivos deles decorrentes?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80985"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "694",
+          "dimensao": "Contratos",
+          "texto": "9.2 Divulga o inteiro teor dos contratos e dos respectivos termos aditivos?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/licitacoes/publicacoes"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "695",
+          "dimensao": "Contratos",
+          "texto": "9.3 Divulga a relação/lista dos fiscais de cada contrato vigente e encerrado?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "696",
+          "dimensao": "Contratos",
+          "texto": "9.4 Divulga a ordem cronológica de seus pagamentos, bem como as justificativas que fundamentaram a eventual alteração dessa ordem?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/agrupador/80902"
+              ]
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "697",
+          "dimensao": "Obras",
+          "texto": "10.1 Divulga informações sobre as obras contendo o objeto, a situação atual, as datas de início e conclusão de obra, empresa contratada e o percentual concluído?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "698",
+          "dimensao": "Obras",
+          "texto": "10.2 Divulga os quantitativos e os preços unitários e totais contratados?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "699",
+          "dimensao": "Obras",
+          "texto": "10.3 Divulga os quantitativos executados e os preços efetivamente pagos?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "700",
+          "dimensao": "Obras",
+          "texto": "10.4 Divulga relação das obras paralisadas contendo o motivo,  o responsável pela inexecução temporária do objeto do contrato e a data prevista para o reinício da sua execução?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "701",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.1 Publica a Prestação de Contas do Ano Anterior (Balanço Geral)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80895"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "702",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.2 Divulga o Relatório de Gestão ou Atividades?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "703",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.3 Divulga a íntegra da decisão da apreciação ou julgamento das contas pelo Tribunal de Contas?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "705",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.5 Divulga o Relatório de Gestão Fiscal (RGF)?",
+          "exigibilidade": "Essencial",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/80935"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "707",
+          "dimensao": "Planejamento e Prestação de Contas",
+          "texto": "11.7 Divulga o plano estratégico institucional ?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "720",
+          "dimensao": "SIC",
+          "texto": "12.1 Existe o SIC no site e Indica a unidade/setor responsável?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "721",
+          "dimensao": "SIC",
+          "texto": "12.2 Indica o endereço físico, o telefone e o e-mail da unidade responsável pelo  SIC, além do horário de funcionamento?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "722",
+          "dimensao": "SIC",
+          "texto": "12.3 Há possibilidade de envio de pedidos de informação de forma eletrônica (e­SIC)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/acesso-informacao/solicitacao-acesso-informacao"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "723",
+          "dimensao": "SIC",
+          "texto": "12.4  A solicitação por meio de eSic é simples, ou seja, sem a exigência de itens de identificação do requerente que dificultem ou impossibilitem o acesso à informação, tais como: envio de documentos, assinatura reconhecida, declaração de responsabilidade, maioridade?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "724",
+          "dimensao": "SIC",
+          "texto": "12.5  Divulga nesta seção, instrumento normativo local que regulamente a Lei nº 12.527/2011 - LAI?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "725",
+          "dimensao": "SIC",
+          "texto": "12.6 Divulga, na seção relativa ao e-SIC, os prazos de resposta ao cidadão, incluindo o recursal, e as autoridades competentes para o exame dos pedidos, além do procedimento referente à realização do pedido e de eventual recurso?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/acesso-informacao"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "726",
+          "dimensao": "SIC",
+          "texto": "12.7 Divulga relatório anual estatístico contendo a quantidade de pedidos de acesso recebidos, atendidos, indeferidos, bem como informações genéricas sobre os solicitantes?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/acesso-informacao/estatistica-acesso-informacao"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "727",
+          "dimensao": "SIC",
+          "texto": "12.8 Divulga lista de documentos classificados em cada grau de sigilo, contendo pelo menos o assunto sobre o qual versa a informação, a categoria na qual ela se encontra, o dispositivo legal que fundamenta a classificação e o respectivo prazo?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "728",
+          "dimensao": "SIC",
+          "texto": "12.9 Divulga lista das informações que tenham sido desclassificadas nos últimos 12 (doze) meses?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "729",
+          "dimensao": "Acessibilidade",
+          "texto": "13.1 O site oficial e o portal de transparência contêm símbolo de acessibilidade em destaque?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/",
+                "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg=="
+              ]
+            }
+          ]
+        },
+        {
+          "id": "730",
+          "dimensao": "Acessibilidade",
+          "texto": "13.2 O site e o portal de transparência contêm exibição do “caminho” de páginas percorridas pelo usuário?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/transparencia/licitacoes/publicacoes"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "731",
+          "dimensao": "Acessibilidade",
+          "texto": "13.3 O site e o portal de transparência contêm opção de alto contraste?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "732",
+          "dimensao": "Acessibilidade",
+          "texto": "13.4 O site e o portal de transparência contêm ferramenta de redimensionamento de texto?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.varginha.mg.leg.br/"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "733",
+          "dimensao": "Acessibilidade",
+          "texto": "13.5 Contém mapa do site institucional?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/index.php?option=com_content&view=article&id=1600"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "734",
+          "dimensao": "Ouvidoria",
+          "texto": "14.1 Há informações sobre o atendimento presencial pela Ouvidoria (Indicação de endereço físico e telefone, além do horário de funcionamento)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "735",
+          "dimensao": "Ouvidoria",
+          "texto": "14.2 Há canal eletrônico de acesso/interação com a Ouvidoria?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "736",
+          "dimensao": "Ouvidoria",
+          "texto": "14.3 Divulga Carta de Serviços ao Usuário?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "737",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.1 Identifica o encarregado/responsável pelo tratamento de dados pessoais e disponibiliza Canal de Comunicação (telefone e/ou e-mail)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "738",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.2 Publica a sua Política de Privacidade e Proteção de Dados?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/transparencia/acesso-a-informacao/politica-de-privacidade"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "739",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.3 Possibilita a demanda e o acesso a serviços públicos por meio digital, sem necessidade de solicitação presencial?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "740",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.4 Possibilita o acesso automatizado por sistemas externos em dados abertos (estruturados e legíveis por máquina), e a página contém as regras de utilização?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "741",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.5 Regulamenta a Lei Federal nº 14.129/2021 (Governo Digital) e divulga a normativa em seu portal?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "742",
+          "dimensao": "LGPD e Governo Digital",
+          "texto": "15.6 Realiza e divulga resultados de pesquisas de satisfação?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "756",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.1 Divulga a composição da Casa, com a biografia dos parlamentares?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/vereadores"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "757",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.2 Divulga as leis e atos infralegais (resoluções, decretos, etc.) produzidos?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "758",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.3 Divulga projetos de leis e de atos infralegais, bem como as respectivas tramitações (contemplando ementa, documentos anexos, situação atual, autor, relator)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/"
+              ]
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "759",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.4 Divulga a pauta das sessões do Plenário?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/atividade-legislativa/pauta-das-sessoes"
+              ]
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "760",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.5 Divulga a pauta das Comissões?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "761",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.6 Divulga as atas das sessões, incluindo a lista de presença dos parlamentares em cada sessão?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/atividade-legislativa/ata-das-sessoes"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "762",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.7 Divulga lista sobre as votações nominais?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "763",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.8 Divulga o ato que aprecia as Contas do Chefe do Poder Executivo (Decreto) e o teor do julgamento (Ata ou Resumo da Sessão que aprovou ou rejeitou as contas)?",
+          "exigibilidade": "Obrigatória",
+          "itens": [
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "764",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.9 Há transmissão de sessões, audiências públicas, consultas públicas ou outras formas de participação popular via meios de comunicação como rádio, TV, internet, entre outros?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://www.youtube.com/user/CamaradeVarginha/streams"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "765",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.10 Divulga a regulamentação e os valores relativos às cotas para exercício da atividade parlamentar/verba indenizatória?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": false,
+              "evidencias": []
+            },
+            {
+              "nome": "Gravação de Relatórios",
+              "atendido": false,
+              "evidencias": []
+            }
+          ]
+        },
+        {
+          "id": "766",
+          "dimensao": "Atividade Finalísticas",
+          "texto": "20.11 Divulga dados sobre as atividades legislativas dos parlamentares?",
+          "exigibilidade": "Recomendada",
+          "itens": [
+            {
+              "nome": "Filtros de Pesquisa",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Disponibilidade",
+              "atendido": true,
+              "evidencias": [
+                "https://varginha.mg.leg.br/"
+              ]
+            },
+            {
+              "nome": "Atualidade",
+              "atendido": true,
+              "evidencias": []
+            },
+            {
+              "nome": "Série Histórica",
+              "atendido": true,
+              "evidencias": []
+            }
+          ]
+        }
+      ],
+      "registros_originais": 243,
+      "itens_atendidos": 128,
+      "itens_pendentes": 112
+    }
+  }
+}

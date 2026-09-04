@@ -1,0 +1,3718 @@
+{
+  "schema_version": 1,
+  "conferido_em": "2026-09-03",
+  "valores_conferidos_em": "2026-09-04",
+  "criterio": "Exercício extraído do cabeçalho do PDF e número conferido com a matéria. Número divergente ou documento ausente não recebe exercício presumido. Correções cadastrais mantêm o valor original.",
+  "emendas": [
+    {
+      "numero": "1",
+      "ano": "2025",
+      "beneficiario": "SERVIÇO DE TREINAMENTO E VALORIZAÇÃO DO SERVIDOR/DRHU/SEMAD",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4942/segmento_001_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "fd66b4874a0c4d6decc906cdfd53b64b07dd9f7142ef8807a272cabb10519b62",
+      "numero_documento": "001",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "2",
+      "ano": "2025",
+      "beneficiario": "SERVIÇO DE TREINAMENTO E VALORIZAÇÃO DO SERVIDOR/DRHU/SEMAD",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4943/segmento_002_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0aa124b817209ff6a3e1726af9e9414008cd3ca8e792bed1c4ff9318f58b3647",
+      "numero_documento": "002",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "3",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DOS PROFISSIONAIS DE SEGURANÇA PÚBLICA DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4944/segmento_003_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "4220b1f8e661819b3d2d3eec9fa5b7b7371f94256f24976af22790f7c2727f82",
+      "numero_documento": "003",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "4",
+      "ano": "2025",
+      "beneficiario": "POLICIA CIVIL DE MINAS GERAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4945/segmento_005_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2c7ed378a2f29425681d7437bfabaedcbb99bb860e6e9e876eaba76888e05783",
+      "numero_documento": "004",
+      "exercicio": "2026",
+      "status": "conferido",
+      "correcao_cnpj": {
+        "original": "18.15.532/0001-70",
+        "corrigido": "18.715.532/0001-70",
+        "fonte": "https://www.fazenda.mg.gov.br/tesouro-estadual/contadoria-geral/contadoria_geral/relacao_orgaos_entidades_cnpj/"
+      }
+    },
+    {
+      "numero": "5",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4947/segmento_006_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2d0abf8bd58ba55aa23230a28fff60d5ae20c139e306b3bbc88258004cf7aba6",
+      "numero_documento": "005",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "6",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4948/segmento_007_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "7e5141b17b57d07eefda4833d53b4fb71912de2954d3e723c042903e8bff10a8",
+      "numero_documento": "006",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "7",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4949/segmento_008_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6c1315e46b29fb2ede4c2410cfae32c661978a4addf06ec8b6c4220016d4a596",
+      "numero_documento": "007",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "8",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4950/segmento_009_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "50db3ea6cf55568567c3bc898930f2e8a38d05bab7c0ada84174214c25876d40",
+      "numero_documento": "008",
+      "exercicio": "2026",
+      "status": "conferido",
+      "correcao_cnpj": {
+        "original": "25.863.39/0001-54",
+        "corrigido": "25.863.390/0001-54",
+        "fonte": "https://www.varginha.mg.gov.br/portal/leis_decretos/44866/"
+      }
+    },
+    {
+      "numero": "9",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4951/segmento_010_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "63f81724740610cc50d49fac8bbc8ed7063deb303767f31789d1d0a5b58303a9",
+      "numero_documento": "009",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "10",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4952/segmento_011_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "75f261eb13ba6b4e31bddbcf3236ea3d7a565adfb950b5fe5bed1c183fb6675c",
+      "numero_documento": "010",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "11",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4953/segmento_012_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d4577c4603cc7f626b0fdfadd50e37a9511877dd0da6d857eb75134d04723c6e",
+      "numero_documento": "011",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "12",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4954/segmento_013_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "12c12612c01022a9b0892301e44e0f232d13a514acd26d0824dd51c471470137",
+      "numero_documento": "012",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "13",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4955/segmento_014_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3c9905e4cbc25015eb8b95f4eef761460d938b5929ae2d75feab22296c5755ef",
+      "numero_documento": "013",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "14",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4956/segmento_015_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "52f24664aaa326ea5ec645bb79de4a4121eb226ae08ddf28561b73c2cbbfe605",
+      "numero_documento": "014",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "15",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4957/segmento_016_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "36b6911f2c7556091407f703eb3659d393b606824ecd591ca9d28253ec077a82",
+      "numero_documento": "015",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "16",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4958/segmento_017_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8ad6f7c626bead6111fa53d0c0a88f8220ceb169a31e3073bdc39c2f7a1c8f51",
+      "numero_documento": "016",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "17",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4959/segmento_018_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "abb43b9209e4ced86796d5909db195d79335e7a587750a781700d1cc1c7adf96",
+      "numero_documento": "017",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "18",
+      "ano": "2025",
+      "beneficiario": "HOSPITAL REGIONAL DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4960/segmento_019_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d62f00330f01e56dcf3e89bcac175a40aea49ffb1984aef868a7209c70335d15",
+      "numero_documento": "018",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "19",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DE RENAIS CRÔNICOS E TRANSPLANTADOS RENAIS DE VARGINHA E REGIÃO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4961/segmento_020_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e63dcb5d46abacc881d5d6c706e4fdc3e1370ca5bea674bee9c8127f2e4cb153",
+      "numero_documento": "019",
+      "exercicio": "2026",
+      "status": "conferido",
+      "conferencia_valor": {
+        "anterior_painel": 81416.21,
+        "cadastro_sapl": 81416.21,
+        "documento": 131416.21,
+        "divergencia_fontes": true,
+        "fonte": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4961/segmento_020_de_projetodelei57-2025_-_emendas.pdf",
+        "conferido_em": "2026-09-04",
+        "criterio": "Valor total do formulário assinado adotado como referência documental. Não comprova pagamento. Divergência com o cadastro exige conferência junto ao órgão."
+      },
+      "participacoes": [
+        {
+          "autor": "Dudu Ottoni",
+          "valor": 81416.21
+        },
+        {
+          "autor": "Rogério Bueno",
+          "valor": 50000
+        }
+      ]
+    },
+    {
+      "numero": "20",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DE RENAIS CRÔNICOS E TRANSPLANTADOS RENAIS DE VARGINHA E REGIÃO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4962/segmento_021_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a99e0c94a0127b55973723e0b96b468b0d4fff605766a67d945a931dc9b78189",
+      "numero_documento": "020",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "21",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO VARGINHENSE RESGATANDO VIDAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4963/segmento_022_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "34ff8171e541f14241c6d03e8cf37fef29326a8766eaa9f6db4dfb016d8a3b45",
+      "numero_documento": "021",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "22",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO VARGINHENSE RESGATANDO VIDAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4964/segmento_023_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d577954a19d90eebdf9c33a03660138409472c1090ff6aa1f87b19eb0d866f7d",
+      "numero_documento": "022",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "23",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO VARGINHENSE RESGATANDO VIDAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4965/segmento_024_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9669c23c5078332639aff5311f08d48048e98a1aec5b06a9e44b1f16075148a1",
+      "numero_documento": "023",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "24",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO VARGINHENSE RESGATANDO VIDAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4966/segmento_025_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3b0631f12839fdb88e030cff736c5fa2636ac51106258b8516899964c614fc74",
+      "numero_documento": "024",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "25",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO VARGINHENSE RESGATANDO VIDAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4967/segmento_026_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2cdd0e1b90469678ac8c01d009e0d10372bdaf8ffbebb6f5aa13b0b73a775a63",
+      "numero_documento": "025",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "26",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO VARGINHENSE RESGATANDO VIDAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4968/segmento_027_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e13006f9d71eb31c011b15c5bf4f49a8fd42d44b33a1b14aa5e60ced22c15fcd",
+      "numero_documento": "026",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "27",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO COMUNIDADE TERAPEUTICA DE VARGINHA CTV - CASA DE APOIO DR GILSON BELTRAO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4969/segmento_028_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "96cdde4e33d02dbbab812ce0f7ea8469f74b14229b35588cd08f6d30b740728e",
+      "numero_documento": "027",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "28",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO COMUNIDADE TERAPEUTICA DE VARGINHA CTV - CASA DE APOIO DR GILSON BELTRAO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4970/segmento_029_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "13975d49a7b8dc3461a84127c286198e2a99a5953e59205a5a36d3f3efe07427",
+      "numero_documento": "028",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "29",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4971/segmento_030_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "aa9212b6c68d4e783cf3d1bd574df590ad763983a7da549571c7d6ed369ef5da",
+      "numero_documento": "029",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "30",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4972/segmento_031_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3275e0ed49913aa06eb1036e8ac6e28181f007fbee8c4c10e16c8842bf5aa260",
+      "numero_documento": "030",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "31",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4973/segmento_032_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ffc6754f288c32eec320741031c89d16cdebb00079bfe7866a5ac0c9036537d5",
+      "numero_documento": "031",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "32",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4974/segmento_033_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e1825a97324665ec7e3315bbced5bc0ec9b28a9b12dbac363c00bcb8672a4bba",
+      "numero_documento": "032",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "33",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4975/segmento_034_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a96cf216dca52232021e68e4f1b7925bb6df68227a7d4706fefd6e1f7219b6a5",
+      "numero_documento": "033",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "34",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4976/segmento_035_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6896dc92acb8b0ed039033a6a182001ffd9d3c067d983fcb1fbaf654a09e8336",
+      "numero_documento": "034",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "35",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4977/segmento_036_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d75afce9f3e8a7729e22785ad4657f1aa54218b78eb4ef903df550b82c527f67",
+      "numero_documento": "035",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "36",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4978/segmento_037_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "b79b2e2bf1c3da17a7b5b9b2c10df6a35c5e30550805f13fb0d4959ba4063ab7",
+      "numero_documento": "036",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "37",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4979/segmento_038_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "4ff633574f1063f42af103e5f48cf31e336091ebccebf067010b090b81dd1f33",
+      "numero_documento": "037",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "38",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4980/segmento_039_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "7558a68c3f6eea0a0d3099f0e0b2bfc9f0a4ed198d4f37c3f5bccfb12f05c89a",
+      "numero_documento": "038",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "39",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4981/segmento_040_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ccb9c1e2f56a8916ddf8f50d610dee5f11987b0558c49bbf532d51018a41829c",
+      "numero_documento": "039",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "40",
+      "ano": "2025",
+      "beneficiario": "Centro de Referência em Pesquisas, Projetos de Intervenção e Tratamento para Crianças, Adolescentes e Adultos em Situação de Sofrimento Psíquico Severo e Persistente",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4982/segmento_041_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f4a156b39c337667efec49776aab79b96da082fbc941c8a8d981e110ca74cc70",
+      "numero_documento": "040",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "41",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DE RENAIS CRÔNICOS E TRANSPLANTADOS RENAIS DE VARGINHA E REGIÃO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4983/segmento_042_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f62210862353cb5e31e8cd1419704856c5aaf79b9fce40900bf11ed1fda233a4",
+      "numero_documento": "041",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "42",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4984/segmento_043_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "714697abf93702cefc117ec22e617b0f12707787d2f8fea5cadb1cefbadbfc04",
+      "numero_documento": "042",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "43",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4985/segmento_044_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "cfd2c2f7f546f5938d72f04cb15746fe8ee64fca0ea595bb3be22c719ff2b19e",
+      "numero_documento": "043",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "44",
+      "ano": "2025",
+      "beneficiario": "Associação Arca da Vida",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4986/segmento_045_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f5363a90279831dd1c9d871ad6ac148979df099b166a35b58b22caaca7a36800",
+      "numero_documento": "044",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "45",
+      "ano": "2025",
+      "beneficiario": "Associação Anjos de Branco",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4987/segmento_046_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3b3195da6ba25620b69ba000eb4d0ed93d794b19753674c8525fdf962125982c",
+      "numero_documento": "045",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "46",
+      "ano": "2025",
+      "beneficiario": "Associação Anjos de Branco",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4988/segmento_047_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f6148d15db25deb17f65100d7fdb9cc7e2296630c50006cee689c1fdb9486626",
+      "numero_documento": "046",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "47",
+      "ano": "2025",
+      "beneficiario": "Associação Anjos de Branco",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4989/segmento_048_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "181c733030d4213978151c6db039668183c1f88d4ff96d0ef6320c53942010ce",
+      "numero_documento": "047",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "48",
+      "ano": "2025",
+      "beneficiario": "Associação Anjos de Branco",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4990/segmento_049_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "4dd5d533c5ada26d14f1c3cd1774fc9a942a4f6e5385274926c4990552f49157",
+      "numero_documento": "048",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "49",
+      "ano": "2025",
+      "beneficiario": "Centro de Referência em Pesquisas, Projetos de Intervenção e Tratamento para Crianças, Adolescentes e Adultos em Situação de Sofrimento Psíquico Severo e Persistente",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4991/segmento_050_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8208fd0181e0b005f8286269020460dad203839ad51701882c3190c4651d256f",
+      "numero_documento": "049",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "50",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4992/segmento_051_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9ec5efe6f0685fe170a4f8a2d54332af0c9e1699b3a23be77cbe9509a666c038",
+      "numero_documento": "050",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "51",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4993/segmento_052_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "b842fa16f29246e9d64908ef8560fe64f4e48cb02c31560c9f3cf72a3bff5923",
+      "numero_documento": "051",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "52",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4994/segmento_053_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2ee95447d4e812a175d9e0074c8b7ec631b6da863560219d1b6c234a3bb16883",
+      "numero_documento": "052",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "53",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO VARGINHENSE RESGATANDO VIDAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4995/segmento_054_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a594cd3a6bd9a0a39ad1876f540e5df64a70be4f460f441bfecb392d71d44cbb",
+      "numero_documento": "053",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "54",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO BENEFICENTE KERYGMA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4996/segmento_055_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "510770e598fe8c5ceb2dca7de215cb433160cf0e6fdece1061acda890a34bfd8",
+      "numero_documento": "054",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "55",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4997/segmento_056_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "be7fa9de3b477068f167ab5cc2f58a390804a0cbf5aa9395f3927e72d02addeb",
+      "numero_documento": "055",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "56",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4998/segmento_057_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ce623d10df7f8a0d618af0c8931158de2ffc4b239f1185c1b3216cfb1afd6b68",
+      "numero_documento": "056",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "57",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/4999/segmento_058_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5128d9f12b64e20c456ecc5b8505a59125778f89acbc7963e8370dcde6ae13a7",
+      "numero_documento": "057",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "58",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5000/segmento_059_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9750f26f07297f60c99ee5254e395d6cac501902659302020d8ec814d0a49d87",
+      "numero_documento": "058",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "59",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5001/segmento_060_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6e8da448f3e49ab490d5870b927a388e090adf16e44655d7665784337091bcc3",
+      "numero_documento": "059",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "60",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5002/segmento_061_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3754a6364d9bc1cf6bc1e1f732acb2c3b384dba3cb9d672b9921e002813469aa",
+      "numero_documento": "060",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "61",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO BOAZ",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5003/segmento_062_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "30b5b57c0b039fe8e1cae807139a46224f6821aa150a5c4fa88f0ea4adba44ca",
+      "numero_documento": "061",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "62",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO VARGINHENSE RESGATANDO VIDAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5004/segmento_063_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e0ec241375e05ae36e0139d1c0133a2613b27849b82c0c37c677f49b904e9383",
+      "numero_documento": "062",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "63",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO OFICINA DO SER",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5005/segmento_064_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c543b42c291a38540a896bcf0a05e80feeb2b95f5857e5eff24a1edbc58e12f4",
+      "numero_documento": "063",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "64",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO COMUNIDADE TERAPEUTICA DE VARGINHA CTV - CASA DE APOIO DR GILSON BELTRAO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5006/segmento_065_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9f6de6a72e0df063eaacb245fc7cef67a3608ef7b21c939991f7b762173ad9e7",
+      "numero_documento": "064",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "65",
+      "ano": "2025",
+      "beneficiario": "INSTITUTO DAVI DOWN",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5007/segmento_066_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1af9eb04fa21b6f68e7130afa2fd4f5070b0afafa65819edd32509beac4875d2",
+      "numero_documento": "065",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "66",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5008/segmento_067_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f20dafff9a448d309c50a51d10708ed1ff56bea9d08c5ecdbaa013869448294a",
+      "numero_documento": "066",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "67",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5009/segmento_068_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0b0d285019bad0a076fc8694a95d8f43572f935c89ed4df7d923f65f2ee2cea8",
+      "numero_documento": "067",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "68",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5010/segmento_069_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d672c6564f10c73f6dfb0db145f9f678dd703252a91c98aeaef94dcb5371c339",
+      "numero_documento": "068",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "69",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5011/segmento_070_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ba50bf9401201ca67a95d9308e84da4f298fc5d75125fcf9f0cbfb3ca91310d4",
+      "numero_documento": "069",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "70",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5012/segmento_071_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8861b468d76053f2440c22e5058e3fb1ce42e9ffe56935cb7b714a42c11b16aa",
+      "numero_documento": "070",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "71",
+      "ano": "2025",
+      "beneficiario": "Associação Anjos de Branco",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5013/segmento_072_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "aada94f3a017e2b93db430da0ea0a6b53bed7566a7e2608ef176e179c9ef1a8b",
+      "numero_documento": "071",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "72",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO OFICINA DO SER",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5014/segmento_073_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6f1a3fe456f633f8fdf131113e1bb63590d26ae1676ae0e552fc13f1fba38cd8",
+      "numero_documento": "072",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "73",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5015/segmento_074_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f923f0bcbe19d35a846ea50086b9d0bee302c8f893b0fb23927cf6708e1eb833",
+      "numero_documento": "073",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "74",
+      "ano": "2025",
+      "beneficiario": "Associação de Amigos dos Animais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5016/segmento_075_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f0435f71e9f9e2e71e715eef5024f4db9b245b081539f570de368cdac796e727",
+      "numero_documento": "074",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "75",
+      "ano": "2025",
+      "beneficiario": "Associação de Amigos dos Animais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5017/segmento_076_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "454ddd7cc4070b9ab7db7aaa9427f08564784a7b81b1aec136a58ddc8b0916c5",
+      "numero_documento": "075",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "76",
+      "ano": "2025",
+      "beneficiario": "Associação de Amigos dos Animais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5018/segmento_077_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d27dfeff6a83a09c58624d28946aee2a3d9b064d430359853d53ca7f81c403a4",
+      "numero_documento": "076",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "77",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5019/segmento_078_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3564710045f0d6d960608a3f7c717bdd4538d384bb688d8a556463d49ceb7968",
+      "numero_documento": "077",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "78",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5020/segmento_079_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c3f8642b1d8c8f0c4982a79fe1fe33e0161d8ce2cb73a09d168fff6867fe501d",
+      "numero_documento": "078",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "79",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5021/segmento_080_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9fbc4a0c4a988c1c9b5ad2a3ead8dca8c8ecea1b64e82e0574869887a7c657f4",
+      "numero_documento": "079",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "80",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5022/segmento_081_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0e70a4d6f78b69b26d56ab2f8647f38aee74ade49aeb006f80f7f1d2afe51008",
+      "numero_documento": "080",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "81",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5023/segmento_082_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "557168f4d791fe19489bc0d16951b0a506665be61acacdad1b643d00f043e91e",
+      "numero_documento": "081",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "82",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5024/segmento_083_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "7b8922e4c225e54a6ced9183f21f8c0c61af6e28967a5c89bef6bf78216215f4",
+      "numero_documento": "082",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "83",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5025/segmento_084_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "119505365591c5c62d22240e566c21094c19ce3e4ac2ac51221c9e4655dc6bc6",
+      "numero_documento": "083",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "84",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5026/segmento_085_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "51e5e89d51cb65f6dd011d0bc9e502e225521a952fcf3338649598a3888e807e",
+      "numero_documento": "084",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "85",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5027/segmento_086_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "abcc275bf4707d53f5339ff04739f3d7e2e56e9844dedbacdab907b36e9d13f4",
+      "numero_documento": "085",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "86",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO OFICINA DO SER",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5028/segmento_087_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d6036f45637473126c84691b47fb6b453b86a0508527672a37d9b3f4457dc140",
+      "numero_documento": "086",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "87",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5029/segmento_088_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "35f7b910914a25291a0ab617957d21d8a4691a3804e7bedc43c0763ca512eb09",
+      "numero_documento": "087",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "88",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5030/segmento_089_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a090b40ffe5feac25ef3cd11b310e97f516efe368865b14c65d255f4fbf96b67",
+      "numero_documento": "088",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "89",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5031/segmento_090_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a080bd3fdb307435ecc487856f70becdcda521c7d81aa352cd40677712c2eeab",
+      "numero_documento": "089",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "90",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5032/segmento_091_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0b5a03cfe4883cbcc6b7ec2b4787d6aee1c38b2a06b56d628ec3bbdd65f575bc",
+      "numero_documento": "090",
+      "exercicio": "2026",
+      "conferencia": "Leitura visual do PDF; OCR incorreto no cabeçalho.",
+      "status": "conferido"
+    },
+    {
+      "numero": "91",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5033/segmento_092_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "b8ebd3f2b0eb0878a350aa8cb87f9b2a79737a01e599aad761b50aa252bcab03",
+      "numero_documento": "091",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "92",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5034/segmento_093_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c6db807057b6f215dd3891132c828ca9e5a7c3fb78377ca0a9b66ebdb4464a42",
+      "numero_documento": "092",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "93",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5035/segmento_094_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a7396915998370380c90c16de3b2a85b997f4827b8de8567bfa48568b306eb11",
+      "numero_documento": "093",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "94",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5036/segmento_095_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "373aab208339fca13cc87c38906682f5f7bdb2deb275d6c28dc81f04c9b3646c",
+      "numero_documento": "094",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "95",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5037/segmento_096_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "7dd749d4200b8034ea5817429a98218c43bc1ccfe8a0f994ec84cfbd5ace6480",
+      "numero_documento": "095",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "96",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO OFICINA DO SER",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5038/segmento_097_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "237d5f483f57fce75f63ed3900953dc5b8b5cf91e24067a7a947807f2c14ec7d",
+      "numero_documento": "096",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "97",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5039/segmento_098_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d3563af3b37b6d083e2b0580d918982da7a9446b2ff34d619cd4f1eb158a9af2",
+      "numero_documento": "097",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "98",
+      "ano": "2025",
+      "beneficiario": "Associação AFETO de Amparo a Gestante - Rael e os pequenos Guerreiros",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5040/segmento_099_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d47ec70100665b3a513780412a5df57163f6887770ab7225582eb2a57227318c",
+      "numero_documento": "098",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "99",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5041/segmento_100_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a33002857aa134d44f18b0ba28dafb4ca96b0e268c59f80ef80a12615d6f7896",
+      "numero_documento": "099",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "100",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5042/segmento_101_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2b1d67235e25ec9b19f33b2d70660e15bc3d531b5227ebf283772d8086f55864",
+      "numero_documento": "100",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "101",
+      "ano": "2025",
+      "beneficiario": "Associação Eu Escolhi Amar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5043/segmento_102_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6e2b33749431c2dd9a5301fb900490d0419846cf6b492d83a14128bf37bf98be",
+      "numero_documento": "101",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "102",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5044/segmento_103_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5c528aa235e05ba6da22a685bb392052cd2ae20cf707e34ffc687295a38aa620",
+      "numero_documento": "102",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "103",
+      "ano": "2025",
+      "beneficiario": "INSTITUTO DAVI DOWN",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5045/segmento_104_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6130212abdb6ce6c8839568beefb1291a5744dbf8c3cceb1c2909f5e11a898f7",
+      "numero_documento": "103",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "104",
+      "ano": "2025",
+      "beneficiario": "Fundação dos Rotarianos de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5046/segmento_105_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "eb1e37e2e1e757490dbae4803690ad11363dcb59dd1c8935e5148e97d5a1f1f4",
+      "numero_documento": "104",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "105",
+      "ano": "2025",
+      "beneficiario": "Associação Anjos de Branco",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5047/segmento_106_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e071fd5170deb47355004e13e1892a537d69690769e944aa532efa9739fc2804",
+      "numero_documento": "105",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "106",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5048/segmento_107_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c3c724482d06412573cfea38c6e155a8531ed3587d6dc0e47f3b16555635ab00",
+      "numero_documento": "106",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "107",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5049/segmento_108_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "89f19ad02781a77ff70064a55ae4e3ed908369d2d8d3ab8d48b5b4728abb77a4",
+      "numero_documento": "107",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "108",
+      "ano": "2025",
+      "beneficiario": "FUNDAÇÃO VARGINHENSE DE ASSISTÊNCIAS AOS EXCEPCIONAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5050/segmento_109_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5c9357d44e231747100335c0d0ee0bc93619501aa7a4658a62ca9480499de8a0",
+      "numero_documento": "108",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "109",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5051/segmento_110_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "fe1afd72db7fcf798b9101c71b965c82a69f84c176378d720bf00ab6e4c461d9",
+      "numero_documento": "109",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "110",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - PSF Padre Vitor",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5052/segmento_111_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "73e3854aa65e5ad8e5cd9dc72188d172d890cbf850ff65357e0eda5238411741",
+      "numero_documento": "110",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "111",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS Santana",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5053/segmento_112_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "02a28055b40ba493310318dacef13a741b61f6db7040d3af578600915d5f408c",
+      "numero_documento": "111",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "112",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS Santana",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5054/segmento_113_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e71a573f78bf129573ef939de515e523612ff6c56a208a005d56d48a707813e1",
+      "numero_documento": "112",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "113",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS Sion",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5055/segmento_114_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0b5c343841bad541be157ee4dc705b324b68c65b03008822cc04f70412ae9f40",
+      "numero_documento": "113",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "114",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS Rio Verde",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5056/segmento_115_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a85f46f8bdb43c696c5ff153a07b5f7c13212a1dd82b3adbfb2916e71519ae9d",
+      "numero_documento": "114",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "115",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS Centenário",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5057/segmento_116_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "eec8393661b805c3f23c5bba0ac7e6d3315d51a52a8d23ed2d41e726b7d41c70",
+      "numero_documento": "115",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "116",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - POLICLÍNICA CENTRAL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5058/segmento_117_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2cc43ebca458ff27447eebd3b4e21f93eb9c1993af6ef81f999a63fb1edb97ab",
+      "numero_documento": "116",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "117",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - POLICLÍNICA CENTRAL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5059/segmento_118_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d4266d672d7c2f5a4a4f81724ef7cf9ffe14af8a9f16dd8c6fd17bb3de0724b8",
+      "numero_documento": "117",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "118",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS CANAÃ",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5060/segmento_119_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6f3a1e2cf3758fb89ce43c96e1d172745f3d014261587f2bd434c0975a5283a0",
+      "numero_documento": "118",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "119",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS Padre Vitor",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5061/segmento_120_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8631775b0140840f50f571a24a12520a51d202d2824139370b742a0e3a779177",
+      "numero_documento": "119",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "120",
+      "ano": "2025",
+      "beneficiario": "Fundação Salvar do Corpo de Bombeiros Militar de Minas Gerais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5062/segmento_121_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a1f17bb1ff17fa935c054940da89d2da3786e4b3781be32c0b29d7cce5578bd3",
+      "numero_documento": "120",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "121",
+      "ano": "2025",
+      "beneficiario": "Fundação Salvar do Corpo de Bombeiros Militar de Minas Gerais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5063/segmento_122_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2cd911625200c57ad59ae3b9b1944ab6d97fc082cef9482a1094be85b1b12be6",
+      "numero_documento": "121",
+      "exercicio": "2026",
+      "status": "conferido",
+      "correcao_cnpj": {
+        "original": "34.641.336/001-55",
+        "corrigido": "34.641.336/0001-55",
+        "fonte": "https://www.bombeiros.mg.gov.br/storage/files/shares/Ecobom/Portfolio_ECOBOM_2024_Extremos_Climaticos.pdf"
+      }
+    },
+    {
+      "numero": "122",
+      "ano": "2025",
+      "beneficiario": "Fundação Salvar do Corpo de Bombeiros Militar de Minas Gerais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5064/segmento_123_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "514057349d45f9842d0500a9d9d479735d555afd1350f58888893607f1a15015",
+      "numero_documento": "122",
+      "exercicio": "2026",
+      "status": "conferido",
+      "correcao_cnpj": {
+        "original": "34.641.336/001-55",
+        "corrigido": "34.641.336/0001-55",
+        "fonte": "https://www.bombeiros.mg.gov.br/storage/files/shares/Ecobom/Portfolio_ECOBOM_2024_Extremos_Climaticos.pdf"
+      }
+    },
+    {
+      "numero": "123",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS BOM PASTOR",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5065/segmento_124_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ca4fbeecfe41d2691719a0b00cc94b3c57a681550052884add96af805f84b3fa",
+      "numero_documento": "123",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "124",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS Rio Verde",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5066/segmento_125_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1aee7feff2a637e8b694b9eb4bdcd13c010c335379c9b89f432ac916a5931901",
+      "numero_documento": "124",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "125",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - UBS Novo Tempo",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5067/segmento_126_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "48d271f7a10ffc51c1735ffe55aa53d9c91f441b42579e383cc524c962e93048",
+      "numero_documento": "125",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "126",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5068/segmento_127_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d76b53eb9b9118a0b638571fd15ab55fc2ec40aa2db98c46c21a1db0cff9619b",
+      "numero_documento": "126",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "127",
+      "ano": "2025",
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5069/segmento_128_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5715835324d69454c4df857b947bc0c0cec17701209a8efe52093481c010b273",
+      "numero_documento": "127",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "128",
+      "ano": "2025",
+      "beneficiario": "MUNICIPIO DE VARGINHA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5070/segmento_129_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "b09e8f3449d99edfe57fe91de747bacf8feca7f01ec6f06f95a8f33ba23fdb63",
+      "numero_documento": "128",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "129",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - POLICLÍNICA CENTRAL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5071/segmento_130_de_projetodelei57-2025_-_emendas_129_ft_130.pdf",
+      "sha256": "2b2b67ab7a7d61c1282ace268be4603a8ba2fd51a577bde6dad0a30ffd6c72b9",
+      "numero_documento": "129",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "130",
+      "ano": "2025",
+      "beneficiario": "Fundação Salvar do Corpo de Bombeiros Militar de Minas Gerais",
+      "pdf": "",
+      "sha256": null,
+      "numero_documento": null,
+      "exercicio": null,
+      "status": "pdf_ausente"
+    },
+    {
+      "numero": "131",
+      "ano": "2025",
+      "beneficiario": "Prefeitura de Varginha - SEMUS - Damasco",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5073/segmento_131_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8a4578a669c4c265b591cff357af2f834e0d2f3dec554c2e78c494ade4c1e728",
+      "numero_documento": "131",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "132",
+      "ano": "2025",
+      "beneficiario": "UPA Francisco Corrêa de Carvalho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5074/segmento_132_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "dcad05685eca5b1e61debbdd30a369a600bd149f12baa090d5d8c857f4da7dce",
+      "numero_documento": "132",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "133",
+      "ano": "2025",
+      "beneficiario": "UPA Francisco Corrêa de Carvalho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5075/segmento_133_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c56b0eeb9be13296a227001b330bfeda46027cf4b344e083a62665192f1b297f",
+      "numero_documento": "133",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "134",
+      "ano": "2025",
+      "beneficiario": "UPA Francisco Corrêa de Carvalho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5076/segmento_134_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1bf262c57b30afd03a20f3e7298f7d1e9d8e8c84947ec399dc61a619dcfaea92",
+      "numero_documento": "134",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "135",
+      "ano": "2025",
+      "beneficiario": "UPA Francisco Corrêa de Carvalho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5077/segmento_135_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "72d3eb4a85c333c5bb5154e48bba8d65b2f714e80d77b3cf559031bccad60445",
+      "numero_documento": "135",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "136",
+      "ano": "2025",
+      "beneficiario": "UPA Francisco Corrêa de Carvalho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5078/segmento_136_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "07a31cd9b91f37ec1cf34b171e10215cfae1de7449bd3f73ae6d9965e00b3167",
+      "numero_documento": "136",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "137",
+      "ano": "2025",
+      "beneficiario": "UPA Francisco Corrêa de Carvalho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5079/segmento_137_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a153e47e0250c0768650a238eec3fad45a5f6da0098740576c78fcbbc4cf7325",
+      "numero_documento": "137",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "138",
+      "ano": "2025",
+      "beneficiario": "UPA Francisco Corrêa de Carvalho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5080/segmento_138_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8530ff50379330e5f0d828a78b9b58132f425842be5f113502be3468e4390b57",
+      "numero_documento": "138",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "139",
+      "ano": "2025",
+      "beneficiario": "UPA Francisco Corrêa de Carvalho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5081/segmento_139_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "91e213e2d492e7c6a8e20462a0b0be60762ca5a0a83cb58861a6e4184204261d",
+      "numero_documento": "139",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "140",
+      "ano": "2025",
+      "beneficiario": "Associação Comunitária de Recuperação Novo Caminho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5082/segmento_140_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "eb7bb56258d69b44034bbb0742fffeac2f4bdae4c9dadb87c4636f8ba985dc7c",
+      "numero_documento": "140",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "141",
+      "ano": "2025",
+      "beneficiario": "Cemei Pequeno Polegar",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5083/segmento_141_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a57f41e14f90d8eaea0c8fcfd3b333c0360b97f3f7df53021bb5211e99630d72",
+      "numero_documento": "141",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "142",
+      "ano": "2025",
+      "beneficiario": "Escola Municipal Dr Jacy de Figueiredo - Caic I",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5084/segmento_142_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "642e3a94887947c6e8470f4f2b4e41597803237d566b9632c3536042185967b6",
+      "numero_documento": "142",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "143",
+      "ano": "2025",
+      "beneficiario": "Escola Municipal Domingos Ribeiro de Rezende",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5085/segmento_143_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "64b9fd35265184817264f361c27391486c21aa264cbbc48f51a8f97ab74d7337",
+      "numero_documento": "143",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "144",
+      "ano": "2025",
+      "beneficiario": "Escola Municipal São José",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5086/segmento_144_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "bac92109d5cbba1660f280c447e6912209a58fb02ce76f511e09646005dc7f74",
+      "numero_documento": "144",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "145",
+      "ano": "2025",
+      "beneficiario": "Escola Municipal São José",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5087/segmento_145_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "dc55051ccb4b22470e7db1c6feaadbe2f2a0083395d95396e68d5955fce33d20",
+      "numero_documento": "145",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "146",
+      "ano": "2025",
+      "beneficiario": "Escola Municipal Matheus Tavares",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5088/segmento_146_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "51d049c1fa883767fa89dc227971a4eac9030bfe6a5cf2bc0a4e208d6e7890ec",
+      "numero_documento": "146",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "147",
+      "ano": "2025",
+      "beneficiario": "Escola Municipal São José",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5089/segmento_147_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5c2bea61140973ef6d7040dfbaece4683a088c0f3da9aa4075134b7b05db4691",
+      "numero_documento": "147",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "148",
+      "ano": "2025",
+      "beneficiario": "Centro Federal de Educação Tecnológica de Minas Gerais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5090/segmento_148_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "933f8f47c978822d06a394e58c74f2547a17e865cd461956afffc299a91b0c21",
+      "numero_documento": "148",
+      "exercicio": "2026",
+      "status": "conferido",
+      "correcao_cnpj": {
+        "original": "17.220.303/0001-96",
+        "corrigido": "17.220.203/0001-96",
+        "fonte": "https://www.dgdi.cefetmg.br/desenv-inst/gestao-estrategica/estrategia-instit/"
+      }
+    },
+    {
+      "numero": "149",
+      "ano": "2025",
+      "beneficiario": "Fundação Aprender para Educação, Cultura, Ciência e Tecnologia",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5091/segmento_149_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5c6038747e2510b4485e8efe4a624c808a6a52f402a5ca116e818dd9beda7913",
+      "numero_documento": "149",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "150",
+      "ano": "2025",
+      "beneficiario": "Fundação Aprender para Educação, Cultura, Ciência e Tecnologia",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5092/segmento_150_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "aa7f16dfe56554585b303ac490e68a22a1e697308baabd4327669bf594fe54ed",
+      "numero_documento": "150",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "151",
+      "ano": "2025",
+      "beneficiario": "Fundação Aprender para Educação, Cultura, Ciência e Tecnologia",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5093/segmento_151_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2d610fa74001cbe2b3025cec433818612631d36ccd55e346075143505eb71165",
+      "numero_documento": "151",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "152",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DOS PROFISSIONAIS DE SEGURANÇA PÚBLICA DO SUL DE MINAS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5094/segmento_152_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "55fce24aa23ebc37ea663abdd17dd65589f4b2dd115e26d103fbf5fa70765479",
+      "numero_documento": "152",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "153",
+      "ano": "2025",
+      "beneficiario": "Associação Arca da Vida",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5095/segmento_153_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a0234295de3bf444861121761721811dd4662d3f9c134a32a52eae5230275094",
+      "numero_documento": "153",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "154",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5096/segmento_154_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "62a1f0d2c168edfc25c7649c7e1574fe8ad2cc985b5989f8ebc515befcdc3779",
+      "numero_documento": "154",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "155",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5097/segmento_155_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0e9fee655b17d36d1606d5430cc4f9316b7b753737a8c933a1fd8499a185f30c",
+      "numero_documento": "155",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "156",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5098/segmento_156_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "64361ceee3b5079f62de7e80e6b34e4671b00a2a1b194d4b02ede678fc5fe9db",
+      "numero_documento": "156",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "157",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5099/segmento_157_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "65017c982661dd614c9cec1a24f77f61817dc3f8cf880cb598ba935eb8c2a9b4",
+      "numero_documento": "157",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "158",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5100/segmento_158_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e5555733d56b851b9fdb292900a4f10878e56c4493a22fc0bdf49f0d90e676d6",
+      "numero_documento": "158",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "159",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5101/segmento_159_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "7dd08f2b525255d4520f41e54644ed4bfc068cc3c551f40ba28b4ecbd6cf621b",
+      "numero_documento": "159",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "160",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5102/segmento_160_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5e652aa59ea5e81b659e1a1dbc5a0af04ee39685fe014efdbb70b6b486a4a4d1",
+      "numero_documento": "160",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "161",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5103/segmento_161_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "542198f69e3521afbc084f1c62d0387f2bee6a8a0d31837bb0d1edc93e796b71",
+      "numero_documento": "161",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "162",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5104/segmento_162_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3603ab17033cdab6450d44d1b54c7ab89969750ca56c764ae9a94eebee931368",
+      "numero_documento": "162",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "163",
+      "ano": "2025",
+      "beneficiario": "Associação Arca da Vida",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5105/segmento_163_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "acba6012bbe6e07d5abadf0f6be2f385907668b9930246f09bd6050f0d667c61",
+      "numero_documento": "163",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "164",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5106/segmento_164_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "de4ae11d35f24c2636f8836a9024115f255de221436e46e9aa20e0646529027d",
+      "numero_documento": "164",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "165",
+      "ano": "2025",
+      "beneficiario": "LAR SÃO VICENTE DE PAULO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5107/segmento_165_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "fe717b4f40be5a14b5dd303a1dfa1d5d3c86843cb0bcc9b6326a25a39d3aa47c",
+      "numero_documento": "165",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "166",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5108/segmento_166_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8b54797e9e3084409127c2f2b79d61a96ca31d275d5b647bb88938be944c3259",
+      "numero_documento": "166",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "167",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5109/segmento_167_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "01b407254c1fee4123e4779a86bfc39018dc560aa67e1e71022470039cc82275",
+      "numero_documento": "167",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "168",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5110/segmento_168_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "72d25a2375220fbe32dfb7853f631f0d6b9721c313250ae701921c543a2a203f",
+      "numero_documento": "168",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "169",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5111/segmento_169_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f2782b25c8377ec3b24776d82934a6edfdae89412f9c6d334b62b150fc286b2f",
+      "numero_documento": "169",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "170",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5112/segmento_170_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d0837c4c44d72301c3d17fa176444a982a0be99ebdd33a510765fb71bd057663",
+      "numero_documento": "170",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "171",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5113/segmento_171_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3a6fbbf6e116affbe978169a2c8ebe4281bda8b3b12bd01a900b60957ea63fae",
+      "numero_documento": "171",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "172",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5114/segmento_172_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0b59e85fb9b31380bcbdf9818aafd01d119f6c53cd4718f0c19a26c79d14cf72",
+      "numero_documento": "172",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "173",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5115/segmento_173_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e40be86f12d959cd9957b9653b1460fb346b69b112520cc99e8c56d0ab7b1577",
+      "numero_documento": "173",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "174",
+      "ano": "2025",
+      "beneficiario": "Associação de Promoção e Assistência Nossa Senhora de Guadalupe",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5116/segmento_174_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3a96c120d28439a12b405ced4115a05bd8f0df5e7c76bbacdc54e6a2b9a90b10",
+      "numero_documento": "174",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "175",
+      "ano": "2025",
+      "beneficiario": "Fundação Educacional de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5117/segmento_175_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d8137c21b6d0422a19433fb6a55f26564c1fe144c982a0f63ece4b1f0448e21f",
+      "numero_documento": "175",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "176",
+      "ano": "2025",
+      "beneficiario": "Fundação Educacional de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5118/segmento_176_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "105a1a5c4c8cea2931b2634c0fec503ca541adbf9a6db45bd62df584f368c9ce",
+      "numero_documento": "176",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "177",
+      "ano": "2025",
+      "beneficiario": "Associaçao de Voluntarios Cafe com as Poderosas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5119/segmento_177_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "06e521384ee8a005b62c0d3da1f2f99c3846d706f0ba5affc58fcf23df54858b",
+      "numero_documento": "177",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "178",
+      "ano": "2025",
+      "beneficiario": "Fundação Educacional de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5120/segmento_178_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "19e7dde1c3fc38e903e7cba5198bfbb41c10d1f35adad8288b1a762ee11f6112",
+      "numero_documento": "178",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "179",
+      "ano": "2025",
+      "beneficiario": "ORGANIZAÇÃO DE ASSISTENCIA E SERVIÇOS INTEGRADOS AOS SUJEITOS COM NECESSIDADES ESPECIAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5121/segmento_179_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e553f015c39871053cd8e68eb26fe0866fed39f7ed9cd3f5fa67aa031cf76a69",
+      "numero_documento": "179",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "180",
+      "ano": "2025",
+      "beneficiario": "ORGANIZAÇÃO DE ASSISTENCIA E SERVIÇOS INTEGRADOS AOS SUJEITOS COM NECESSIDADES ESPECIAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5122/segmento_180_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2a5d62137d7418f417686b64a459b24d0146dbaa5f11ad52e9952c369aaa8ece",
+      "numero_documento": "180",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "181",
+      "ano": "2025",
+      "beneficiario": "Instituto Shaneihu Yawanawa",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5123/segmento_181_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f65b79ec408eb202572265d82a58a2cf40c93c3100a4058dacbe80b70fc19001",
+      "numero_documento": "181",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "182",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇAO DE PROMOÇAO SOCIAL E CULTURAL DOM E LUZ",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5124/segmento_182_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "16da604c6650fb913112bb7520c69c351523955b37964e37a1ff0d134a0f37c5",
+      "numero_documento": "182",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "183",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇAO DE PROMOÇAO SOCIAL E CULTURAL DOM E LUZ",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5125/segmento_183_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "782a45c6040b8240f1169b7f0591ffd9c5faf0c8401af257fadc3651a46bb8eb",
+      "numero_documento": "183",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "184",
+      "ano": "2025",
+      "beneficiario": "CENTRO ESPIRITA AMOR E CARIDADE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5126/segmento_184_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ab28f24c2f314affbdb8c202b35eefe37a00b65cc4805e53af8c0fced1fd5030",
+      "numero_documento": "184",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "185",
+      "ano": "2025",
+      "beneficiario": "CENTRO ESPIRITA AMOR E CARIDADE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5127/segmento_185_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2ceddfacccf7a67e543c92d3b30f3fbf7cf698de33487b9095e45e84ac1f525a",
+      "numero_documento": "185",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "186",
+      "ano": "2025",
+      "beneficiario": "CENTRO ESPIRITA AMOR E CARIDADE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5128/segmento_186_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0e710628b8d4b1cc150fb08855e38d03e824a52e14a582e35f9de8c3eb0d69b8",
+      "numero_documento": "186",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "187",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO INCLUSIVA SEMENTE VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5129/segmento_187_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d6658257e88089f7d01bf0bde91dfbf01d516432918114fc74cf5a8d64b117cb",
+      "numero_documento": "187",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "188",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO BENEFICENTE KERYGMA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5130/segmento_188_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "39cfcf07a50e6f02bc0176501a54f060be1f1cf96513249e1faabcda8d689ffd",
+      "numero_documento": "188",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "189",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO BENEFICENTE KERYGMA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5131/segmento_189_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a6ab2c482d0d49f1106916726e799900ffbf7534f9c0b017274fa4394ed14ddf",
+      "numero_documento": "189",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "190",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO BENEFICENTE KERYGMA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5132/segmento_190_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "fc4063f93bca103084cb8de44c49ac495baa846ee50f44b099e696a9a710d7cd",
+      "numero_documento": "190",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "191",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DE RENAIS CRÔNICOS E TRANSPLANTADOS RENAIS DE VARGINHA E REGIÃO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5133/segmento_191_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d930f6b3285553a9d2edec29d14cf7f12754903dc220a6c1cef1b190e426fbe7",
+      "numero_documento": "191",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "192",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO INCLUSIVA SEMENTE VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5134/segmento_192_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2fd6e7dd22f1323461b111cda7829b68fa930573944a4b58c9bd0c34d5bdd6e8",
+      "numero_documento": "192",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "193",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO INCLUSIVA SEMENTE VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5135/segmento_193_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1522fb301c7d679a7e5e31f82dbd6340ca125e9d0ec3cadc8e89e9c08b9bc4f7",
+      "numero_documento": "193",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "194",
+      "ano": "2025",
+      "beneficiario": "Centro de Referência em Pesquisas, Projetos de Intervenção e Tratamento para Crianças, Adolescentes e Adultos em Situação de Sofrimento Psíquico Severo e Persistente",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5136/segmento_194_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2ff035a78c24056874c987cad435f010c783a3a93877af855c26544a5b9013e6",
+      "numero_documento": "194",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "195",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO INCLUSIVA SEMENTE VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5137/segmento_195_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9c7bd9e58b0ba700a8f3a736d9ce9505f788d67fd555f68d743688bd7e1b68e9",
+      "numero_documento": "195",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "196",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO INCLUSIVA SEMENTE VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5138/segmento_196_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "72e7881552a88912fb6f0171eaa9074a566463a06da6e11b126738cf578891f5",
+      "numero_documento": "196",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "197",
+      "ano": "2025",
+      "beneficiario": "Associaçao de Voluntarios Cafe com as Poderosas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5139/segmento_197_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "757f5fc744abe0a79b552dff3b78b07cb3ce1ed3541236c6db61c97dd80b1aa2",
+      "numero_documento": "197",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "198",
+      "ano": "2025",
+      "beneficiario": "Associaçao de Voluntarios Cafe com as Poderosas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5140/segmento_198_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9bd5eb16f74ec77da3b4e0c473fc6e3d4645b46fe0944f1468f20a8fe3733fe3",
+      "numero_documento": "198",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "199",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO BENEFICENTE KERYGMA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5141/segmento_199_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "19c2ce1a96539347de90eda95c57a8fe099df584181b669624f4e59f478ccf7e",
+      "numero_documento": "199",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "200",
+      "ano": "2025",
+      "beneficiario": "CENTRO ESPIRITA HUMILDADE E CARIDADE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5142/segmento_200_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ce61e542dedc4f1a3a827f764ea3a9982356c7e9bbb774aa13ac0739f3060f3e",
+      "numero_documento": "200",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "201",
+      "ano": "2025",
+      "beneficiario": "Lions Clube de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5143/segmento_201_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "24f62cc2b28cc39e7db2d0f6fd4b8ff6546fbdc76f77b8437f18abfb61e61966",
+      "numero_documento": "201",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "202",
+      "ano": "2025",
+      "beneficiario": "Associação AFETO de Amparo a Gestante - Rael e os pequenos Guerreiros",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5144/segmento_202_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e2c02e6ac520e2561bf0e740205251977eabb57e175115a924e40133d30a1d92",
+      "numero_documento": "202",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "203",
+      "ano": "2025",
+      "beneficiario": "Associação AFETO de Amparo a Gestante - Rael e os pequenos Guerreiros",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5145/segmento_203_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f899fb493455377b952135755c5b016e765107f7a171dc9c2d2151fcad66bed7",
+      "numero_documento": "203",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "204",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5146/segmento_204_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "dcb46fc30ded27cc23c41ddae04dc5604d2f04873d0508fdeeaba1a317372258",
+      "numero_documento": "204",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "205",
+      "ano": "2025",
+      "beneficiario": "CENTRO ESPIRITA HUMILDADE E CARIDADE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5147/segmento_205_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "14e13459459c6716e61daee75929a213e70bf9c91b5ae14c34ddfc655c22320f",
+      "numero_documento": "205",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "206",
+      "ano": "2025",
+      "beneficiario": "Associaçao de Voluntarios Cafe com as Poderosas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5148/segmento_206_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f97485b02c5816be1665d7a0f968487fb8deacc55bff92cfce1a522dfc03148a",
+      "numero_documento": "206",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "207",
+      "ano": "2025",
+      "beneficiario": "Associação Alegria de Assistência à Criança de Varginha e Região",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5149/segmento_207_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "05f25bfb3423480ab523a552e156fc5577fbe5f4acdf03b2d12ec6a4732b243d",
+      "numero_documento": "207",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "208",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5150/segmento_208_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "12836f5a6c2aa0a4d9af9c719f2725159aced6119a44db739e4a4535b70a30aa",
+      "numero_documento": "208",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "209",
+      "ano": "2025",
+      "beneficiario": "Associação AFETO de Amparo a Gestante - Rael e os pequenos Guerreiros",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5151/segmento_209_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d0f861c858807aef078dea2aab5e14c34e2aabf0ae647da74d788a1ac71b930a",
+      "numero_documento": "209",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "210",
+      "ano": "2025",
+      "beneficiario": "Centro de Desenvolvimento Integrado",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5152/segmento_210_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d32f67ffba1000786e74a58ab5dd650235467efb0144623d49d1fc8b8bd1c3c3",
+      "numero_documento": "210",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "211",
+      "ano": "2025",
+      "beneficiario": "Associação AFETO de Amparo a Gestante - Rael e os pequenos Guerreiros",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5153/segmento_211_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ec4f8b01566c27e519544cada20059de92c14878ed0fa510b28a81adb8c3b68b",
+      "numero_documento": "211",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "212",
+      "ano": "2025",
+      "beneficiario": "CENTRO ESPIRITA HUMILDADE E CARIDADE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5154/segmento_212_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "cec087c5f9981a2acb40ea4d7e413b0109d3f69afb18ccc8d958162deca3f9e2",
+      "numero_documento": "212",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "213",
+      "ano": "2025",
+      "beneficiario": "Associação Alegria de Assistência à Criança de Varginha e Região",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5155/segmento_213_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1837676c672e7620dac6c3022a954760f7011073bb4643389f077a3ce6c6c822",
+      "numero_documento": "213",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "214",
+      "ano": "2025",
+      "beneficiario": "Associaçao de Voluntarios Cafe com as Poderosas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5156/segmento_214_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "4f37f274dcc74074a6086780a08a7100119253e316866b6c7d3d87e740f2646c",
+      "numero_documento": "214",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "215",
+      "ano": "2025",
+      "beneficiario": "Associação Alegria de Assistência à Criança de Varginha e Região",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5157/segmento_215_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0b9776085658618848cb0a2c7b251e82c0dbd1702165a9f03101e11d2977f5b8",
+      "numero_documento": "215",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "216",
+      "ano": "2025",
+      "beneficiario": "Associação AFETO de Amparo a Gestante - Rael e os pequenos Guerreiros",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5158/segmento_216_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e2dafc5d3982c9cab677037a88e50c7af64ce0968662f6997fa12bfaa45c12c8",
+      "numero_documento": "216",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "217",
+      "ano": "2025",
+      "beneficiario": "AGÊNCIA ADVENTISTA DE DESENVOLVIMENTO E RECURSOS ASSISTENCIAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5159/segmento_217_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "10aef187413c620ae50e9276def805081c9e37799c9e157ac43382e65120b12e",
+      "numero_documento": "217",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "218",
+      "ano": "2025",
+      "beneficiario": "AGÊNCIA ADVENTISTA DE DESENVOLVIMENTO E RECURSOS ASSISTENCIAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5160/segmento_218_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a26824702afb7fd0831a3d02013fb7db4e0210a7335704482f13015f2c8d9066",
+      "numero_documento": "218",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "219",
+      "ano": "2025",
+      "beneficiario": "AGÊNCIA ADVENTISTA DE DESENVOLVIMENTO E RECURSOS ASSISTENCIAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5161/segmento_219_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "481280678e03b1b30cf55ccb62839316683a7a9d589b4b0a790e7002301c933f",
+      "numero_documento": "219",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "220",
+      "ano": "2025",
+      "beneficiario": "AGÊNCIA ADVENTISTA DE DESENVOLVIMENTO E RECURSOS ASSISTENCIAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5162/segmento_220_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5ee7e2fed3a58881758736696650a18561f6a7d88c2ed4c428d2a5af7c71b680",
+      "numero_documento": "220",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "221",
+      "ano": "2025",
+      "beneficiario": "AGÊNCIA ADVENTISTA DE DESENVOLVIMENTO E RECURSOS ASSISTENCIAIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5163/segmento_221_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "db266491af3c89333dba1fb027cda0bcb5c091c3069abb1e943ad40c5516233c",
+      "numero_documento": "221",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "222",
+      "ano": "2025",
+      "beneficiario": "Associação Comunitária de Recuperação Novo Caminho",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5164/segmento_222_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e2c99c86b28963e9a0e8346fa1ff0bb48235db9e9886edef6d0bc21d89584a86",
+      "numero_documento": "222",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "223",
+      "ano": "2025",
+      "beneficiario": "Associaçao de Voluntarios Cafe com as Poderosas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5165/segmento_223_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1d508e1f347646a56758c94101b84d21fd8d472b76c99194d063cd162356dd79",
+      "numero_documento": "223",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "224",
+      "ano": "2025",
+      "beneficiario": "Associaçao de Voluntarios Cafe com as Poderosas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5166/segmento_224_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2c8861b3678fca7d8dbe2edff2e4eb7a5b5e332e7344d09a1a06a474be2e2a61",
+      "numero_documento": "224",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "225",
+      "ano": "2025",
+      "beneficiario": "Banco de Alimentos de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5167/segmento_225_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "b7f86154a5bf8ceb564125bd22d19b295090cbbd263be0f0d5a5457e35bb418a",
+      "numero_documento": "225",
+      "exercicio": "2026",
+      "status": "conferido",
+      "conferencia_valor": {
+        "anterior_painel": 15000,
+        "cadastro_sapl": 35000,
+        "documento": 35000,
+        "divergencia_fontes": false,
+        "fonte": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5167/segmento_225_de_projetodelei57-2025_-_emendas.pdf",
+        "conferido_em": "2026-09-04",
+        "criterio": "Total confirmado no cadastro SAPL e no formulário assinado; corrigida captura indevida da parcela de um coautor."
+      },
+      "participacoes": [
+        {
+          "autor": "Ana Rios Fontoura",
+          "valor": 15000
+        },
+        {
+          "autor": "Dandan",
+          "valor": 15000
+        },
+        {
+          "autor": "Dudu Ottoni",
+          "valor": 5000
+        }
+      ]
+    },
+    {
+      "numero": "226",
+      "ano": "2025",
+      "beneficiario": "Associação Refazer Santa Rita de Cássia",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5168/segmento_226_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e04e69b91f09c7a5d4471ed341463b7efebb3438fe12ed9a3afdd58bcd920d32",
+      "numero_documento": "226",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "227",
+      "ano": "2025",
+      "beneficiario": "Associação Refazer Santa Rita de Cássia",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5169/segmento_227_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1f9b1a88828db53b1208aed1c1d3dd74a77f3f0e45e54f4e12e446837b78bb93",
+      "numero_documento": "227",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "228",
+      "ano": "2025",
+      "beneficiario": "Conselho Metropolitano de Pouso Alegre",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5170/segmento_228_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a571cd26bb430f9e178ba411d77ee3895f2edf164c802eb422a15464c623e98e",
+      "numero_documento": "228",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "229",
+      "ano": "2025",
+      "beneficiario": "Conselho Metropolitano de Pouso Alegre",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5171/segmento_229_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e5f8f4b90771e3f1bfd719a89370c877ffaaad013ba2f5227dd8b851eb686945",
+      "numero_documento": "229",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "230",
+      "ano": "2025",
+      "beneficiario": "Associação Levanta-te e Anda",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5172/segmento_230_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a9877690d0f0413d1c672873d562cdb89be425247d578648a24dc2345655a751",
+      "numero_documento": "230",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "231",
+      "ano": "2025",
+      "beneficiario": "Associação Levanta-te e Anda",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5173/segmento_231_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "cf15931af303f081954c0e61e711f2b0cb1e838d9951e36a16b11205f7ec99e4",
+      "numero_documento": "231",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "232",
+      "ano": "2025",
+      "beneficiario": "Associação Levanta-te e Anda",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5174/segmento_232_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "51d3d6dc106ba1ad0d4f5a6fb7bfa247a27a62c47d5b6b1930bbdb86bbf8a299",
+      "numero_documento": "232",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "233",
+      "ano": "2025",
+      "beneficiario": "Associação Levanta-te e Anda",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5175/segmento_233_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "662ef7371402f11b8a154f3fb3f4475b1790b265c5f4acd2301ecdcd1af522e9",
+      "numero_documento": "233",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "234",
+      "ano": "2025",
+      "beneficiario": "Associação Levanta-te e Anda",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5176/segmento_234_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6072a54dccb26c57d457f68190020d2ab46786ea83a0fe4ee609782a3cf0182e",
+      "numero_documento": "234",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "235",
+      "ano": "2025",
+      "beneficiario": "Associação Levanta-te e Anda",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5177/segmento_235_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "691134408911440adaa781276ba78ff3550bf0b0a4aa2067de74c1b59606eb9d",
+      "numero_documento": "235",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "236",
+      "ano": "2025",
+      "beneficiario": "Associação Levanta-te e Anda",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5178/segmento_236_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d3a2feda8edc9a1474d746591f01dbe33828510398362e85eb2db37062bf3ced",
+      "numero_documento": "236",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "237",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO INDEPENDENTE DE MORADORES RESPONSÁVEIS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5179/segmento_237_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "463967d2abce59d05e07cfc305a4d204132c1040f51fce0b690784a5078422c4",
+      "numero_documento": "237",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "238",
+      "ano": "2025",
+      "beneficiario": "Associação Mãos Estendidas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5180/segmento_238_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "00b67d88917e3c5e3e1e2d790b9b458d461ac49bcf1dcb53abde491c6fdbef3e",
+      "numero_documento": "238",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "239",
+      "ano": "2025",
+      "beneficiario": "Associação Levanta-te e Anda",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5181/segmento_239_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "cc1b6e4bbe086ecbbfc9bb9abfcaf1fcbe07c57bb8621efc76a0b42156c428e9",
+      "numero_documento": "239",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "240",
+      "ano": "2025",
+      "beneficiario": "Associação dos Produtores da Agricultura Familiar de Varginha-MG e Região",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5182/segmento_240_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "94ea2c847319afe5b0179103b17b03d8de571b90573d956cdf78fba9bef0546a",
+      "numero_documento": "240",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "241",
+      "ano": "2025",
+      "beneficiario": "Prefeitura Municipal de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5183/segmento_241_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "afee6a0c8a9191d81c10ef4f135691a84a786f002d0ae8899a81053b03154717",
+      "numero_documento": "241",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "242",
+      "ano": "2025",
+      "beneficiario": "Associação Comercial, Industrial, Agropecuária e de Serviços de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5184/segmento_242_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "60b8ace7333fe9a6115619ace62ca3d3d99b776a82d27780e135de4a30068c42",
+      "numero_documento": "242",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "243",
+      "ano": "2025",
+      "beneficiario": "CÍRCULO ORQUIDÓFILO DE VARGINHA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5185/segmento_243_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8f57f3e635cb019e2fdb00c003ae73fc1a942bcdbbd737137ac6c15388a33998",
+      "numero_documento": "243",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "244",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DE PASTORES EVANGÉLICOS DE VARGINHA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5186/segmento_244_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ec606d1d3116dd0492792fbc5bebd614f0693a2797b17fca6f9d72ff6027bf27",
+      "numero_documento": "244",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "245",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DE PASTORES EVANGÉLICOS DE VARGINHA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5187/segmento_245_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "b5954dd09adb579bbf69937a30d21cfa77f1885debe219f81e9ee82ab636750d",
+      "numero_documento": "245",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "246",
+      "ano": "2025",
+      "beneficiario": "Centro Esportivo Varginhense",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5188/segmento_246_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "4eb5bb3e415c2c78fd36e7f74e79b9924a87f3a2dea54164385ca74d0370ddd9",
+      "numero_documento": "246",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "247",
+      "ano": "2025",
+      "beneficiario": "Centro Esportivo Varginhense",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5189/segmento_247_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6113a163706ab4c1ed92c107e744986b61abc2edb2ac03c51070870d9128c3d9",
+      "numero_documento": "247",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "248",
+      "ano": "2025",
+      "beneficiario": "Centro Esportivo Varginhense",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5190/segmento_248_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3b4590686c87119a7ba7ceed75739eee6f29765df91bc3fa2fa18ab93183a0b6",
+      "numero_documento": "248",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "249",
+      "ano": "2025",
+      "beneficiario": "Centro Esportivo Varginhense",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5191/segmento_249_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c209bf0de02b1a7a4bb38a37abe679e97784b58263b5e29cbdafcfae8d9b9818",
+      "numero_documento": "249",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "250",
+      "ano": "2025",
+      "beneficiario": "Centro Esportivo Varginhense",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5192/segmento_250_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d1487402aa1f53e29142b7c6b6c69a0deff5ee7ea0f60a0ed321dcdf1138acce",
+      "numero_documento": "250",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "251",
+      "ano": "2025",
+      "beneficiario": "Centro Esportivo Varginhense",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5193/segmento_251_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d780cbcc5b10fdc85a7917db66d20736876e61f5280f47165a4148c78a69845d",
+      "numero_documento": "251",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "252",
+      "ano": "2025",
+      "beneficiario": "Prefeitura Municipal de Varginha - SEMEL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5194/segmento_252_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "8011f6fb1ec7b2acc9754fd35fac9d23dcb27479836991021b2755e17178d8ce",
+      "numero_documento": "252",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "253",
+      "ano": "2025",
+      "beneficiario": "Associação Organização de Promoção ao Esporte - Vôlei do Futuro",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5195/segmento_254_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c23f1afdc78d23a258e8b8ddbf0ab42452d7ab26b471481adc13ed6a143a99dd",
+      "numero_documento": "253",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "254",
+      "ano": "2025",
+      "beneficiario": "Associação Organização de Promoção ao Esporte - Vôlei do Futuro",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5196/segmento_255_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5a4a4aff14aaae9a1779e14fd34adea4486c853bc9a674486e85269020f8353c",
+      "numero_documento": "254",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "255",
+      "ano": "2025",
+      "beneficiario": "Associação Organização de Promoção ao Esporte - Vôlei do Futuro",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5197/segmento_256_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9c89f81a6147a3f785b7788d3bf3f285dc8b572985e1ee7c7f9e16ea2313f325",
+      "numero_documento": "255",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "256",
+      "ano": "2025",
+      "beneficiario": "Associação Organização de Promoção ao Esporte - Vôlei do Futuro",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5198/segmento_257_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "3f78917c77f555a799023212cc49de7284347ec7a8e99ce44867b77bf714b66e",
+      "numero_documento": "256",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "257",
+      "ano": "2025",
+      "beneficiario": "Associação Organização de Promoção ao Esporte - Vôlei do Futuro",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5199/segmento_258_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "64c6ac2e5681674489fddabfdd99107a6f2b14bbb20566ec61601ea4f4be8433",
+      "numero_documento": "257",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "258",
+      "ano": "2025",
+      "beneficiario": "Prefeitura Municipal de Varginha - SEMEL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5200/segmento_259_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ad4db13c6fbf1479638ca388bffa62a0ad007cea53b9ab54466f4c2a95a2b320",
+      "numero_documento": "258",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "259",
+      "ano": "2025",
+      "beneficiario": "Prefeitura Municipal de Varginha - SEMEL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5201/segmento_260_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ea8ca66614afbef5b85379a9e9a0175f82a2de429598d1e0b4a3abecf726d830",
+      "numero_documento": "259",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "260",
+      "ano": "2025",
+      "beneficiario": "Prefeitura Municipal de Varginha - SEMEL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5202/segmento_261_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e6419caff14ba1492accc0235d8176cb9f5541cfbaa44bb986bcd2a3d24cd75a",
+      "numero_documento": "260",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "261",
+      "ano": "2025",
+      "beneficiario": "Prefeitura Municipal de Varginha - SEMEL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5203/segmento_262_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "47a7721e8a88069ea08e5d01db489b80fca97aa2999d80fabeddd3fd5583b778",
+      "numero_documento": "261",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "262",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO VILA ISABEL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5204/segmento_263_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "15694a8db803ad78b12fe0c9e79fbd9b996cfa111169c1ea95709fc0fe33f44d",
+      "numero_documento": "262",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "263",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO KYOKUSHIN OYAMA DE VARGINHA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5205/segmento_264_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2f2f418dace87304724a1a2011718921b033f1d076e9e605a580c885248a84ee",
+      "numero_documento": "263",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "264",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO KYOKUSHIN OYAMA DE VARGINHA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5206/segmento_265_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9631515260db19f88ba586ff44e3bfa37114a9272835c02333b39fc9729b9587",
+      "numero_documento": "264",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "265",
+      "ano": "2025",
+      "beneficiario": "Associação MEC Esporte Clube de Varginha MG",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5207/segmento_266_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2bb897fead98863ab41031b6c7382eb58b26dd1422fdd7e354d4bc01f44c352b",
+      "numero_documento": "265",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "266",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DE CAPOEIRA NOVA VISÃO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5208/segmento_267_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "69fd24c35a72f6d1ca0a7378538ac873fb948f39b95f56d463c80d5e5f6504df",
+      "numero_documento": "266",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "267",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO ESPORTIVA CLUBE CANÃA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5209/segmento_268_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "9453fa4858ba5faf3db6f6ff5c034105647ee9042a87afeeeecdbdc3141bb4c8",
+      "numero_documento": "267",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "268",
+      "ano": "2025",
+      "beneficiario": "Associação Esportiva e Eventos de Minas Gerais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5210/segmento_269_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0c56f18bd320d67690d864976bfba9162c0b60c02950584d45e58eecbd332516",
+      "numero_documento": "268",
+      "exercicio": "2026",
+      "status": "conferido",
+      "conferencia_valor": {
+        "anterior_painel": 30000,
+        "cadastro_sapl": 30000,
+        "documento": 22000,
+        "divergencia_fontes": true,
+        "fonte": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5210/segmento_269_de_projetodelei57-2025_-_emendas.pdf",
+        "conferido_em": "2026-09-04",
+        "criterio": "Valor total do formulário assinado adotado como referência documental. Não comprova pagamento. Divergência com o cadastro exige conferência junto ao órgão."
+      }
+    },
+    {
+      "numero": "269",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DE CAPOEIRA NOVA VISÃO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5211/segmento_270_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ccac7194f84249fd2dfb78edf1130aba39fb378ea92dd7c4a06a6a55bf4bfcc1",
+      "numero_documento": "269",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "270",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DOS AMIGOS ALIANÇA FUTEBOL CLUBE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5212/segmento_271_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "42ec2a91f1b64f6daf512f08224d53316f4c8a85687db2d4ca677bf8ee46507f",
+      "numero_documento": "270",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "271",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇAO VILA FLAMENGO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5213/segmento_272_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "96af1d02d6c43a786c0806d63211164318aab6d881d3047debf4f9932a818212",
+      "numero_documento": "271",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "272",
+      "ano": "2025",
+      "beneficiario": "Raquetinhas para Todos",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5214/segmento_273_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "fa6fdeb8b25cf0b3ddc31815d900d8548a59a469f498e6d4fe537998745408c6",
+      "numero_documento": "272",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "273",
+      "ano": "2025",
+      "beneficiario": "Associação Veterana de Basquete",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5215/segmento_274_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "41b2a12d51ac3f564210fc01c9875c4417798e5c84ac0018e7c0850a57084ed0",
+      "numero_documento": "273",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "274",
+      "ano": "2025",
+      "beneficiario": "Associação Veterana de Basquete",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5216/segmento_275_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f0ff15b76e42b73f242760d55915d5f919af0e33b4c0862073845e822e6d82c4",
+      "numero_documento": "274",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "275",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5217/segmento_276_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "23b0578c913c0487c9af6fd456c967a1e5a885cdc3251d03305e45ae734f62b7",
+      "numero_documento": "275",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "276",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5218/segmento_277_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "fa094f610e19affd82419fd8eab69491534a5ef6deb860fde87514a4db08b4f5",
+      "numero_documento": "276",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "277",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DESPORTIVA RECREIO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5219/segmento_278_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6827b640889a3ed2671410059519146b5099f0c610a971bb79b9bdbef7e38ccf",
+      "numero_documento": "277",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "278",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO VARGINHENSE DOS AMIGOS DO BICICROSS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5220/segmento_279_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "625db5b71f2395bee4305d863a1d142929970f503f77ccb9a55bd4da2be82914",
+      "numero_documento": "278",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "279",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO VARGINHENSE DOS AMIGOS DO BICICROSS",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5221/segmento_280_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "274a6eb36eb42c59367a851ae82a01797639a1bb831bfbfb6f640e5fa9b4392e",
+      "numero_documento": "279",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "280",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO ALVORADA FUTEBOL CLUBE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5222/segmento_281_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "24b7e6c5b99355907d6c3fa4fd44ec488670ab4e28076d53d83b5d94eaacbae8",
+      "numero_documento": "280",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "281",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DESPORTIVA RECREIO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5223/segmento_282_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6c165bee2e0f993c5ffeff90f4977f190bd63ad82b54751e8e6d74ddaea9bbd9",
+      "numero_documento": "281",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "282",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DESPORTIVA RECREIO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5224/segmento_283_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "97d78f06913289f80408feee0952a4535f634f9fbb23bcbc08589fcbcd4f47b1",
+      "numero_documento": "282",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "283",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DESPORTIVA RECREIO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5225/segmento_284_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "123d8cc926ef459fad7828eb3cdcfa53db6bc16347ead5e3f7bbbd47c544e5d6",
+      "numero_documento": "283",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "284",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DESPORTIVA RECREIO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5226/segmento_285_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e9bf53b5ac5080465018567d845c84e15329cb24a4b8b471f67666b66ca652e1",
+      "numero_documento": "284",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "285",
+      "ano": "2025",
+      "beneficiario": "ESPORTE CLUBE MINAS RUGBY",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5227/segmento_286_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c5947e65a6ebd9cf0da05a1c1d80f8664124bf2ab216ffa7511e2e6fd7417425",
+      "numero_documento": "285",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "286",
+      "ano": "2025",
+      "beneficiario": "ESPORTE CLUBE MINAS RUGBY",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5228/segmento_287_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e547c0d49def44666baebdd3866ca1a749a6df1d3e5b610b502bcc587279b509",
+      "numero_documento": "286",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "287",
+      "ano": "2025",
+      "beneficiario": "Clube Recreativo Madrugada",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5229/segmento_288_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0f8ccca78007522206fce09446bad922fc65028e78ee01fbc4f9ee1d7780c8a3",
+      "numero_documento": "287",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "288",
+      "ano": "2025",
+      "beneficiario": "Clube Recreativo Madrugada",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5230/segmento_289_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ed6c71e7d74c9a4b4125bbf36450a6af2162e88805169186a034189e2d5b71e8",
+      "numero_documento": "288",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "289",
+      "ano": "2025",
+      "beneficiario": "Raquetinhas para Todos",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5231/segmento_290_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "55e4ef5e4238c54854af6e85eed56c00371866372699f23e2c6c262e53cc9a76",
+      "numero_documento": "289",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "290",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO VARGEANA FUTEBOL CLUBE",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5232/segmento_291_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e13ef9d34034ad035762f29a96102b755928d0e2f20f1559d2fe5f8dc0ec40ca",
+      "numero_documento": "290",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "291",
+      "ano": "2025",
+      "beneficiario": "CLUBE DE ORIENTAÇÃO DE VARGINHA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5233/segmento_292_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "51cbf378a47a7303c70e9f6e05e52190bbec9ef11679321ac6ebd71327e0ee69",
+      "numero_documento": "291",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "292",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5234/segmento_293_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "dea8d1e464b6cad831b97f25a77d1f67fa80b53978ae18fe48139c183668bdd9",
+      "numero_documento": "292",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "293",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5235/segmento_294_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6933dac9c92986529345e1a193b265f9add57b0f16e04416d9cacc01cfdbc131",
+      "numero_documento": "293",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "294",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5236/segmento_295_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "fe9ca0f6972034e7662365efa52454054878b5e7f22871d92281655dd082d0c1",
+      "numero_documento": "294",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "295",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5237/segmento_296_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5d4f5b27f478485b765b2d7ae832e20af3d95c8324922d030b69b3f1ab9b123a",
+      "numero_documento": "295",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "296",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5238/segmento_297_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "f906a2941bc0c256b8e9c2f78ccfca4e363ae7903ffdca1587353c60f7b47cfd",
+      "numero_documento": "296",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "297",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5239/segmento_298_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d92b8888685093a810497b2d7951f171173e1bc08d18bb4765ba47e1d7ae3665",
+      "numero_documento": "297",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "298",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5240/segmento_299_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "04fa79de1ffe91f063e8b4bd2c52467dd189b61c2ac6bd41e743063106abad12",
+      "numero_documento": "298",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "299",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5241/segmento_300_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "780fdcf5bde73f570ef617bd9e51250a0f9429486f90fba11469bbedd7376ffd",
+      "numero_documento": "299",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "300",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5242/segmento_301_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5f36b86c93fb0e2d20be353c2a038894baec7f6594caa2ef6ca6a7bd8d31e7e7",
+      "numero_documento": "300",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "301",
+      "ano": "2025",
+      "beneficiario": "Associação Varginhense de Esporte",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5243/segmento_302_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "86f6c00972c313e16be5aac96b2d229044c9e9147ad748535fae412a01659018",
+      "numero_documento": "301",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "302",
+      "ano": "2025",
+      "beneficiario": "INSTITUTO DE SAUDE, EDUCAÇAO,ESPORTES,CULTURA E TURISMO DO SUL DE MINAS - SEECTUR",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5244/segmento_303_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c6f0e05e36d67b3fde406c99a3e9fd40cb20b855816fa53ed812fd3d8680a27f",
+      "numero_documento": "302",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "303",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇAO VILA FLAMENGO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5245/segmento_304_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a5c512306cc88623179025a9ff10a37c5812392349ff5dacf2fed74e2d2a7ad8",
+      "numero_documento": "303",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "304",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇAO VILA FLAMENGO",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5246/segmento_305_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ca0fc266e8b23648d9d092372bd9ef8d9d0c81ed0546a7cc5f2cf5155aef0c35",
+      "numero_documento": "304",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "305",
+      "ano": "2025",
+      "beneficiario": "Associação Alvorada Futebol Clube",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5247/segmento_306_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c18fc75b420f3ca10abb5cee4f02ca80f0a06e252914f0927080eb3b1d127198",
+      "numero_documento": "305",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "306",
+      "ano": "2025",
+      "beneficiario": "Esporte Clube Recreativo Rio Verde",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5248/segmento_307_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a90605d66ee59fe94f4e7e9927c302188e028915ede3958029bcf728e0175ab6",
+      "numero_documento": "306",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "307",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO ESPORTIVA SANTA CRUZ",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5249/segmento_308_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "785c7849c7190d4f1a852e9328391b1829b292499de86e066613ea0d99206c6f",
+      "numero_documento": "307",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "308",
+      "ano": "2025",
+      "beneficiario": "Associação Cultural Nikkey de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5250/segmento_309_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "85118fd6bc746e7247ed3733e76d937a9f4531c04c04bc2a82636dbc9492c188",
+      "numero_documento": "308",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "309",
+      "ano": "2025",
+      "beneficiario": "MAZ ASSOCIAÇÃO ARTISTICA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5251/segmento_310_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e848f52ea160cd29bacabedc45f5190c34855c5d58330973eaea61506eec2cb9",
+      "numero_documento": "309",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "310",
+      "ano": "2025",
+      "beneficiario": "MAZ ASSOCIAÇÃO ARTISTICA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5252/segmento_311_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e1467b64bf27d140701e0b67f2bad7e9c77b6ee6a883eb349f30aab92abd96df",
+      "numero_documento": "310",
+      "exercicio": "2026",
+      "conferencia": "Leitura visual do PDF; OCR incorreto no cabeçalho.",
+      "status": "conferido"
+    },
+    {
+      "numero": "311",
+      "ano": "2025",
+      "beneficiario": "Associação Cultural Casa da Capoeira",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5253/segmento_312_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6c7ba0cf6635c692883be66a6eedc5efbc8679a5e9eb980c8cd08138a1616a9e",
+      "numero_documento": "311",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "312",
+      "ano": "2025",
+      "beneficiario": "Nucleos Pedagógicos de Orquestra do Sul de Minas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5254/segmento_313_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "b890a7041cde318ebbd6034b4cac17bba9e83e51375b9a3ba7cb61606ebad259",
+      "numero_documento": "312",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "313",
+      "ano": "2025",
+      "beneficiario": "Nucleos Pedagógicos de Orquestra do Sul de Minas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5255/segmento_314_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "699c6f0d4d35b5cb6cc66a5dc195838dd5cc5c307d112d587a7a657e54fc3374",
+      "numero_documento": "313",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "314",
+      "ano": "2025",
+      "beneficiario": "Nucleos Pedagógicos de Orquestra do Sul de Minas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5256/segmento_315_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "836c328783665f4220f99606c60413dfdd04d6ae6a47617b832ba96478ed7697",
+      "numero_documento": "314",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "315",
+      "ano": "2025",
+      "beneficiario": "Associação Cultural Casa da Capoeira",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5257/segmento_316_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e7bc40daffd42578ce5f12af466afac4feb0d794319953fb19ed3b1360140692",
+      "numero_documento": "315",
+      "exercicio": "2026",
+      "status": "conferido",
+      "conferencia_valor": {
+        "anterior_painel": 50000,
+        "cadastro_sapl": 81011.11,
+        "documento": 81011.11,
+        "divergencia_fontes": false,
+        "fonte": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5257/segmento_316_de_projetodelei57-2025_-_emendas.pdf",
+        "conferido_em": "2026-09-04",
+        "criterio": "Total confirmado no cadastro SAPL e no formulário assinado; corrigida captura indevida da parcela de um coautor."
+      },
+      "participacoes": [
+        {
+          "autor": "Bruno Leandro Coletor",
+          "valor": 50000
+        },
+        {
+          "autor": "Rogério Bueno",
+          "valor": 31011.11
+        }
+      ]
+    },
+    {
+      "numero": "316",
+      "ano": "2025",
+      "beneficiario": "Associação de Poetas e Escritores do Sul de Minas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5258/segmento_317_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c93b3701bfffd81e0a3f14f7f1576f24aa6e9703ee84e34c5f345f6f6d2c0d8d",
+      "numero_documento": "316",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "317",
+      "ano": "2025",
+      "beneficiario": "Associação Cultural Bateria Nota Dez",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5259/segmento_319_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ae78913a6ccd73231ad20388a44e5132b1d8ec03e5f6b9bc372bb12fe6dde94a",
+      "numero_documento": "318",
+      "exercicio": null,
+      "status": "numero_divergente"
+    },
+    {
+      "numero": "318",
+      "ano": "2025",
+      "beneficiario": "Tombatuke Musica em Movimentação",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5260/segmento_319_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ae78913a6ccd73231ad20388a44e5132b1d8ec03e5f6b9bc372bb12fe6dde94a",
+      "numero_documento": "318",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "319",
+      "ano": "2025",
+      "beneficiario": "Nucleos Pedagógicos de Orquestra do Sul de Minas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5261/segmento_320_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "5293d2a5c47c076aee1f3aa26e39df92f282a14043f21071f277341df2124331",
+      "numero_documento": "319",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "320",
+      "ano": "2025",
+      "beneficiario": "Associação Cultural Bateria Nota Dez",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5262/segmento_321_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "7cc9c6ab09b1989572ec89340b574f3b708a34e525c8c5b046fd4a1b59423858",
+      "numero_documento": "320",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "321",
+      "ano": "2025",
+      "beneficiario": "Associação Mineira das Folias de Santos Reis",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5263/segmento_322_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "61fdf62d832e4b68aee78d3e61b1dfbf6921744bca7feb6c97bbf7fa848f9521",
+      "numero_documento": "321",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "322",
+      "ano": "2025",
+      "beneficiario": "Associação Mineira das Folias de Santos Reis",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5264/segmento_323_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0cd658df845a1b9633908b7f173a2af9e3316b2ab1db34e08e2ac76e0e1d0727",
+      "numero_documento": "322",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "323",
+      "ano": "2025",
+      "beneficiario": "Associação Mineira das Folias de Santos Reis",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5265/segmento_325_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "72753ad8d66cbc1d06ae9e6ad486429aad55e5757faf55fc45a85cda9ec09bce",
+      "numero_documento": "324",
+      "exercicio": null,
+      "status": "numero_divergente"
+    },
+    {
+      "numero": "324",
+      "ano": "2025",
+      "beneficiario": "Associação Mineira das Folias de Santos Reis",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5266/segmento_325_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "72753ad8d66cbc1d06ae9e6ad486429aad55e5757faf55fc45a85cda9ec09bce",
+      "numero_documento": "324",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "325",
+      "ano": "2025",
+      "beneficiario": "Associação Mineira das Folias de Santos Reis",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5267/segmento_326_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "01059c8e4a381ca78af18cfe411deaff3c56902dc226360969cde4ac3bc38907",
+      "numero_documento": "325",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "326",
+      "ano": "2025",
+      "beneficiario": "GRUPO MARANATHA DE ART' GLOBAL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5268/segmento_327_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "23c8353fa56ed1d70fbb261add0388235e4ae0df7b8efc8e89c4f5b45436d1b5",
+      "numero_documento": "326",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "327",
+      "ano": "2025",
+      "beneficiario": "ASSOCIACAO GREMIO RECREATIVO ESCOLA DE SAMBA INDEPENDENTES",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5269/segmento_329_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "142fd8feb125d8a89a6ffbf529610910e185c10137045f4ccdbd79debba4e9e0",
+      "numero_documento": "327",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "328",
+      "ano": "2025",
+      "beneficiario": "Grêmio Recreativo Escola de Samba Império da Serrinha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5270/segmento_330_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ae5409ac8ee3d69017ef5c9cefb3af3f6b32ee8c5191946fb589b46a0c671a9e",
+      "numero_documento": "328",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "329",
+      "ano": "2025",
+      "beneficiario": "Associação Artística Viva Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5271/segmento_331_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a6af2dcecc613bf96cc740c0e6898bd19e2efb7d39fe9b0f2cdc5e44a80db547",
+      "numero_documento": "329",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "330",
+      "ano": "2025",
+      "beneficiario": "Associação Artística Viva Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5272/segmento_332_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "013d949d6744ccf3f5b410636500f97cf5ef54b88bcf14d4e06d32ddb53b768d",
+      "numero_documento": "330",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "331",
+      "ano": "2025",
+      "beneficiario": "Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5273/segmento_333_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "33b7f6425a9d4741f6d4d6b32a4922bdac392c22457778be37de99ae4ce543d2",
+      "numero_documento": "331",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "332",
+      "ano": "2025",
+      "beneficiario": "Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5274/segmento_334_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "dca101bdfc8126b7b7b306125c695aff87168349ac6e7961baeaa129ca69651a",
+      "numero_documento": "332",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "333",
+      "ano": "2025",
+      "beneficiario": "Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5275/segmento_335_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d31ad84881ee4f9e6b733cd74201cfa5033771f68191bd37899351a3788d8bd0",
+      "numero_documento": "333",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "334",
+      "ano": "2025",
+      "beneficiario": "Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5276/segmento_336_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "237a1f65f3205dad0312fc7b5522f7814694847d7c7a386247e197a22294e399",
+      "numero_documento": "334",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "335",
+      "ano": "2025",
+      "beneficiario": "Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5277/segmento_337_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "a361b212c6140d5f18fce882c5f3b93de0e4846af34d74f31607defe43efeb5d",
+      "numero_documento": "335",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "336",
+      "ano": "2025",
+      "beneficiario": "Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5278/segmento_338_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "db13ecce5348c709271cabf8f1cd1c137929d1d844f0b6f6ba20f3ad0ef1e6a2",
+      "numero_documento": "336",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "337",
+      "ano": "2025",
+      "beneficiario": "Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5279/segmento_339_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "6ec93fa33b78e66db94cf585f20542f2d10638a9752b8989b9fe83e74d9e58b8",
+      "numero_documento": "337",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "338",
+      "ano": "2025",
+      "beneficiario": "Instituto Luso – Ítalo – Brasileiro de História, Ecologia e Cultura",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5280/segmento_340_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "18bf48522dd3444c96f07970ef2038c0b0ae44a299b194cc2b210a601558e40c",
+      "numero_documento": "338",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "339",
+      "ano": "2025",
+      "beneficiario": "Nucleos Pedagógicos de Orquestra do Sul de Minas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5281/segmento_341_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "4c3dd122fef3a89742d18cf5faa2fd8ab25605530e381a79313bb21197d6d0a7",
+      "numero_documento": "339",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "340",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5282/segmento_342_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "07e21a2260beb36fe94c65918cc17d106b736e5a0952314b06754c2d7e4949d5",
+      "numero_documento": "340",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "341",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5283/segmento_343_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "00bf642055d4d14e478389b7df4fe3991dcd3d41314166d30ea5b4d69b966366",
+      "numero_documento": "341",
+      "exercicio": "2026",
+      "status": "conferido",
+      "conferencia_valor": {
+        "anterior_painel": 100000,
+        "cadastro_sapl": 100000,
+        "documento": 200000,
+        "divergencia_fontes": true,
+        "fonte": "https://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5283/segmento_343_de_projetodelei57-2025_-_emendas.pdf",
+        "conferido_em": "2026-09-04",
+        "criterio": "Valor total do formulário assinado adotado como referência documental. Não comprova pagamento. Divergência com o cadastro exige conferência junto ao órgão."
+      },
+      "participacoes": [
+        {
+          "autor": "Ana Rios Fontoura",
+          "valor": 100000
+        },
+        {
+          "autor": "Bruno Leandro Coletor",
+          "valor": 100000
+        }
+      ]
+    },
+    {
+      "numero": "342",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5284/segmento_344_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "56b82c41bf85be8909836f6b61d76481836c013105a4da61ca3c73116e74838b",
+      "numero_documento": "342",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "343",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5285/segmento_345_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "93cc8fd321055e1d22f23197810821f777cc0ec388412eec6dbb169725863ac4",
+      "numero_documento": "343",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "344",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5286/segmento_346_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "ace1d0a49a10ce40bc5cca8ef1d6b83068fe2971a1a27603f890beda08735110",
+      "numero_documento": "344",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "345",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5287/segmento_347_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1dcaee15487b6376bced6ecb165cb2f01e550399ebd48cebd33c504af78f466f",
+      "numero_documento": "345",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "346",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5288/segmento_348_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "7b4b69d5322d6f7190740ea6d41f1c78bbd7fc6ae966b7187eb69a04cddffa0e",
+      "numero_documento": "346",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "347",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5289/segmento_349_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "4c3ab915e5df18a3c8b039b097918e28865e11dc96103867940bf5ab63d7ba40",
+      "numero_documento": "347",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "348",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5290/segmento_350_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0f0fb6d67d1bad80f68478f5d4ea6aac264a1340492efd4c358297e31957358e",
+      "numero_documento": "348",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "349",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5291/segmento_351_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "1adf5cc19ccb19595d4d4fc05c993824d064dba73d7c1149d160214e0a608113",
+      "numero_documento": "349",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "350",
+      "ano": "2025",
+      "beneficiario": "Fundação Hospitalar do Município de Varginha",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5292/segmento_352_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "d29375a7fbc91032883b22a805bfb9687d2b5a252c5ec0cd40122fc5a1ddd516",
+      "numero_documento": "350",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "351",
+      "ano": "2025",
+      "beneficiario": "GUARDA CIVIL MUNICIPAL",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5293/segmento_353_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "95a048307c58a5279a3c2f815855f9e8ffca5c8873d15fd994affaf8563627dc",
+      "numero_documento": "351",
+      "exercicio": "2026",
+      "conferencia": "Leitura visual do PDF; OCR incorreto no cabeçalho.",
+      "status": "conferido",
+      "participacoes": [
+        {
+          "autor": "Alexandre Prado",
+          "valor": 15000
+        },
+        {
+          "autor": "Ana Rios Fontoura",
+          "valor": 30000
+        },
+        {
+          "autor": "Davi Martins",
+          "valor": 25000
+        },
+        {
+          "autor": "Pastor Faustinho",
+          "valor": 25000
+        },
+        {
+          "autor": "Dudu Ottoni",
+          "valor": 5000
+        }
+      ]
+    },
+    {
+      "numero": "352",
+      "ano": "2025",
+      "beneficiario": "Centro Esportivo Varginhense",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5294/segmento_354_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "0368d3705eea5cda2c0eff33c1cbb6d28f5e5ff0ae45647c7006e06cba89c867",
+      "numero_documento": "352",
+      "exercicio": "2026",
+      "conferencia": "Leitura visual do PDF; OCR incorreto no cabeçalho.",
+      "status": "conferido"
+    },
+    {
+      "numero": "353",
+      "ano": "2025",
+      "beneficiario": "Nucleos Pedagógicos de Orquestra do Sul de Minas",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5295/segmento_355_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "c4c15b0d074cc9dd3a5fd775f2359ced8bfdad7d36da5082d178af6a7df275ce",
+      "numero_documento": "353",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "354",
+      "ano": "2025",
+      "beneficiario": "INSTITUTO DE SAUDE, EDUCAÇAO,ESPORTES,CULTURA E TURISMO DO SUL DE MINAS - SEECTUR",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5296/segmento_356_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "e3a35f566b3a5eef0867c594e173fa5b63488c46c6a86b1c5c36c1761b8fee46",
+      "numero_documento": "354",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "355",
+      "ano": "2025",
+      "beneficiario": "Associação Organização de Promoção ao Esporte - Vôlei do Futuro",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5297/segmento_357_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "2b2bf9b7fc96b095fcb3f62abe200bd9b6c39b3371e19494b095cd96f5a3ba47",
+      "numero_documento": "355",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "356",
+      "ano": "2025",
+      "beneficiario": "Fundação Salvar do Corpo de Bombeiros Militar de Minas Gerais",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5498/segmento_358_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "413a5cf97f861952bc060d54560647b61a1c90f82faedbc570c3a34d06f3ae71",
+      "numero_documento": "356",
+      "exercicio": "2026",
+      "status": "conferido"
+    },
+    {
+      "numero": "357",
+      "ano": "2025",
+      "beneficiario": "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
+      "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2025/5499/segmento_359_de_projetodelei57-2025_-_emendas.pdf",
+      "sha256": "7b2fb11d1786ea3715fbf05c95f4023cbe632a697f15d67652912b076963bc14",
+      "numero_documento": "357",
+      "exercicio": "2026",
+      "status": "conferido"
+    }
+  ]
+}
