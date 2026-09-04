@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "fonte": "Relatorios de emendas da Prefeitura de Varginha (Betha, consulta 295943)",
+  "fontePagina": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/295943",
+  "geradoEm": "2026-09-04T17:14:28.059535+00:00",
+  "criterio": "Compara o codigo de cada emenda do relatorio da Prefeitura com as bases de origem do painel. Divergencia e registrada, nunca corrigida por inferencia.",
+  "limitacao": "Ausencia aqui nao prova irregularidade: pode ser numeracao interna da Prefeitura, emenda ainda nao publicada pela origem ou instrumento que nao transita pelo registro municipal. Serve como ponto de partida para conferir na fonte primaria.",
+  "resumo": {
+    "relatorios": 6,
+    "emendasSemCorrespondencia": 7,
+    "valorSemCorrespondencia": 3452788.0,
+    "relatoriosLidosPorInteiro": 3,
+    "emendasNaoLidas": 14
+  },
+  "porRelatorio": [
+    {
+      "esfera": "Estaduais",
+      "ano": 2025,
+      "publicadoEm": null,
+      "emendasNoRelatorio": 30,
+      "emendasLidas": 30,
+      "leituraCompleta": true,
+      "totalNoRelatorio": 6507741.0,
+      "semCorrespondenciaNoPainel": [
+        {
+          "codigo": "10662",
+          "valor": 2570000.0,
+          "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA -",
+          "chave": "10662"
+        },
+        {
+          "codigo": "134171",
+          "valor": 167871.0,
+          "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA -",
+          "chave": "134171"
+        },
+        {
+          "codigo": "134607",
+          "valor": 177236.0,
+          "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA -",
+          "chave": "134607"
+        },
+        {
+          "codigo": "175698",
+          "valor": 163904.0,
+          "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA -",
+          "chave": "175698"
+        },
+        {
+          "codigo": "175699",
+          "valor": 111802.0,
+          "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA -",
+          "chave": "175699"
+        },
+        {
+          "codigo": "175700",
+          "valor": 110375.0,
+          "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA -",
+          "chave": "175700"
+        },
+        {
+          "codigo": "175707",
+          "valor": 151600.0,
+          "beneficiario": "FUNDAÇÃO HOSPITALAR DO MUNICÍPIO DE VARGINHA -",
+          "chave": "175707"
+        }
+      ],
+      "valorSemCorrespondencia": 3452788.0,
+      "codigoIlegivel": 0
+    },
+    {
+      "esfera": "Federais",
+      "ano": 2025,
+      "publicadoEm": null,
+      "emendasNoRelatorio": 28,
+      "emendasLidas": 23,
+      "leituraCompleta": false,
+      "totalNoRelatorio": 5149052.0,
+      "semCorrespondenciaNoPainel": [],
+      "valorSemCorrespondencia": 0,
+      "codigoIlegivel": 16
+    },
+    {
+      "esfera": "Municipal",
+      "ano": 2025,
+      "publicadoEm": null,
+      "emendasNoRelatorio": 237,
+      "emendasLidas": 236,
+      "leituraCompleta": false,
+      "totalNoRelatorio": 14737748.21,
+      "semCorrespondenciaNoPainel": [],
+      "valorSemCorrespondencia": 0,
+      "codigoIlegivel": 0
+    },
+    {
+      "esfera": "Estaduais",
+      "ano": 2026,
+      "publicadoEm": null,
+      "emendasNoRelatorio": 20,
+      "emendasLidas": 12,
+      "leituraCompleta": false,
+      "totalNoRelatorio": 2500000.0,
+      "semCorrespondenciaNoPainel": [],
+      "valorSemCorrespondencia": 0,
+      "codigoIlegivel": 0
+    },
+    {
+      "esfera": "Federais",
+      "ano": 2026,
+      "publicadoEm": null,
+      "emendasNoRelatorio": 1,
+      "emendasLidas": 1,
+      "leituraCompleta": true,
+      "totalNoRelatorio": 0.0,
+      "semCorrespondenciaNoPainel": [],
+      "valorSemCorrespondencia": 0,
+      "codigoIlegivel": 0
+    },
+    {
+      "esfera": "Municipal",
+      "ano": 2026,
+      "publicadoEm": null,
+      "emendasNoRelatorio": 45,
+      "emendasLidas": 45,
+      "leituraCompleta": true,
+      "totalNoRelatorio": 1842864.84,
+      "semCorrespondenciaNoPainel": [],
+      "valorSemCorrespondencia": 0,
+      "codigoIlegivel": 0
+    }
+  ]
+}

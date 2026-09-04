@@ -1,0 +1,67 @@
+"""Reconciliacao entre o registro da Prefeitura e as bases de origem.
+
+O risco desta checagem nao e deixar de achar divergencia: e INVENTAR divergencia
+por comparar formatos diferentes. Cada esfera numera de um jeito, e uma chave mal
+normalizada acusa dezenas de emendas legitimas como ausentes -- com nome de
+entidade beneficiaria na tela.
+
+Ja aconteceu duas vezes durante o desenvolvimento: casar so pelos digitos
+iniciais acusou 27 emendas, e colar o ano do relatorio no codigo municipal
+acusou as 45 de 2026. As duas eram falso positivo.
+"""
+import sys
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "painel-cidadao" / "emendas"))
+
+import coletor_emendas_prefeitura as col  # noqa: E402
+
+
+class ChaveTests(unittest.TestCase):
+    def test_federal_usa_o_codigo_de_doze_digitos(self):
+        self.assertEqual(col.chave("Federais", "202627540001"), "202627540001")
+
+    def test_federal_encontra_o_codigo_dentro_de_texto(self):
+        self.assertEqual(col.chave("Federais", "emenda 202627540001 - PSD"), "202627540001")
+
+    def test_federal_ignora_numero_curto(self):
+        """Numero de duas casas nao e codigo federal; casar com ele inventa par."""
+        self.assertIsNone(col.chave("Federais", "63"))
+
+    def test_municipal_com_ano_preserva_o_ano_da_emenda(self):
+        self.assertEqual(col.chave("Municipal", "01/2024"), "1/2024")
+        self.assertEqual(col.chave("Municipal", "037/2024"), "37/2024")
+
+    def test_municipal_sem_ano_nao_recebe_o_ano_do_relatorio(self):
+        """O relatorio de 2026 lista emendas numeradas em 2024 e 2025.
+
+        Colar o ano do relatorio marcaria as 45 como ausentes do painel.
+        """
+        self.assertEqual(col.chave("Municipal", "63", ano_relatorio=2026), "63")
+
+    def test_estadual_aceita_os_dois_formatos_do_mesmo_dado(self):
+        """2025 publica '10662/2025'; 2026 publica '193883'."""
+        self.assertEqual(col.chave("Estaduais", "10662/2025"), "10662")
+        self.assertEqual(col.chave("Estaduais", "193883"), "193883")
+
+    def test_vazio_devolve_none_em_vez_de_chave_falsa(self):
+        for esfera in ("Federais", "Municipal", "Estaduais"):
+            self.assertIsNone(col.chave(esfera, ""))
+            self.assertIsNone(col.chave(esfera, None))
+
+
+class ConciliacaoTests(unittest.TestCase):
+    def test_emenda_conhecida_nao_e_acusada(self):
+        painel = {"Estaduais": {"193883"}, "Municipal": set(), "Federais": set()}
+        chave = col.chave("Estaduais", "193883")
+        self.assertIn(chave, painel["Estaduais"])
+
+    def test_codigo_ilegivel_fica_fora_da_acusacao(self):
+        """Sem chave nao da para afirmar ausencia — nem presenca."""
+        self.assertIsNone(col.chave("Municipal", "sem numero"))
+
+
+if __name__ == "__main__":
+    unittest.main()
