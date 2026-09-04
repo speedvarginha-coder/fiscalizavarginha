@@ -45,7 +45,7 @@
     "validate:deploy": "node scripts/validate-release.mjs deploy && npm run test:deploy",
     "test:numeros": "node tests/test_numeros_publicados.mjs",
     "test:deploy": "node scripts/run-browser-tests.mjs --deploy",
-    "test:contracts": "node --test tests/test_public_assets.mjs tests/test_data_views.mjs"
+    "test:contracts": "node --test tests/test_public_assets.mjs tests/test_data_views.mjs tests/test_radar_pntp.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0"

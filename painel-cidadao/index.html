@@ -261,73 +261,32 @@ try {
   </div>
 </section>
 
-<!-- ===== AUDITÔMETRO DE TRANSPARÊNCIA · PNTP/ATRICON ===== -->
-<section class="section transp-radar" aria-labelledby="auditometro">
+<!-- ===== ÍNDICE DE TRANSPARÊNCIA (Radar da Transparência · ATRICON/PNTP) ===== -->
+<section class="section transp-radar" id="radar-transparencia" aria-label="Índice de transparência de Varginha no Radar da Transparência">
   <div class="container">
-    <header class="transp-radar__head">
+    <div class="transp-radar__head">
       <span class="transp-radar__kicker">RADAR DA TRANSPARÊNCIA · PNTP/ATRICON 2025</span>
-      <h2 class="transp-radar__title" id="auditometro">Auditômetro de Transparência</h2>
-      <p class="transp-radar__lead">Veja a avaliação nacional de transparência de Varginha e confira, separadamente, a qualidade dos dados disponíveis neste painel.</p>
-    </header>
-
-    <div class="pntp" id="pntpPanel">
-      <p class="pntp__notice"><strong>Autoavaliações, sem validação registrada.</strong> A base oficial informa que as duas avaliações não foram validadas nem revisadas e não são certificáveis. Os resultados retratam o ciclo de 2025; não medem a situação atual de 2026.</p>
-      <div class="pntp__cards">
-        <article class="pntp-card" id="scorePrefeitura" aria-labelledby="pntpPrefTitle">
-          <h3 id="pntpPrefTitle">Prefeitura de Varginha</h3>
-          <div class="pntp-card__result"><strong class="pntp-card__score transp-card__indice">81,80<span>%</span></strong><span class="pntp-card__level">Elevado</span></div>
-          <div class="pntp-card__bar" aria-hidden="true"><span style="width:81.8%"></span></div>
-          <p>Índice de transparência publicado no PNTP</p>
-          <dl><div><dt>Atendimento dos essenciais</dt><dd>81,82%</dd></div><div><dt>Autoavaliação enviada</dt><dd>27/05/2025</dd></div></dl>
-          <div class="pntp-card__actions">
-            <button type="button" data-pntp-orgao="prefeitura" data-pntp-filtro="pendentes" aria-controls="pntpDetails" aria-expanded="false" disabled>Ver pendências</button>
-            <button type="button" data-pntp-orgao="prefeitura" data-pntp-filtro="atendidos" aria-controls="pntpDetails" aria-expanded="false" disabled>Ver critérios atendidos</button>
-            <a href="https://radartransparente.com.br/avaliacao/59f001b0-a3d0-42cb-953b-0d02db067387" target="_blank" rel="noopener noreferrer">Consultar no Radar Transparente ↗</a>
-          </div>
-        </article>
-        <article class="pntp-card pntp-card--intermediario" id="scoreCamara" aria-labelledby="pntpCamTitle">
-          <h3 id="pntpCamTitle">Câmara Municipal de Varginha</h3>
-          <div class="pntp-card__result"><strong class="pntp-card__score transp-card__indice">63,28<span>%</span></strong><span class="pntp-card__level">Intermediário</span></div>
-          <div class="pntp-card__bar" aria-hidden="true"><span style="width:63.28%"></span></div>
-          <p>Índice de transparência publicado no PNTP</p>
-          <dl><div><dt>Atendimento dos essenciais</dt><dd>85,71%</dd></div><div><dt>Autoavaliação enviada</dt><dd>19/05/2025</dd></div></dl>
-          <div class="pntp-card__actions">
-            <button type="button" data-pntp-orgao="camara" data-pntp-filtro="pendentes" aria-controls="pntpDetails" aria-expanded="false" disabled>Ver pendências</button>
-            <button type="button" data-pntp-orgao="camara" data-pntp-filtro="atendidos" aria-controls="pntpDetails" aria-expanded="false" disabled>Ver critérios atendidos</button>
-            <a href="https://radartransparente.com.br/avaliacao/5518baf1-b161-4f79-b364-94c64e2af7bb" target="_blank" rel="noopener noreferrer">Consultar no Radar Transparente ↗</a>
-          </div>
-        </article>
-      </div>
-      <p class="pntp__source">Fonte: <a href="https://radardatransparencia.atricon.org.br/downloads.html" target="_blank" rel="noopener noreferrer">dados abertos oficiais do PNTP 2025</a>, base publicada em 10/02/2026 e consultada em 03/09/2026. <a href="sobre.html#metodologiaAuditometro">Como interpretar</a> · <a href="data/referencias/pntp-2025.json" download>Baixar recorte de Varginha (JSON)</a>.</p>
-      <noscript><p>Ative o JavaScript para filtrar os critérios ou baixe o recorte de Varginha pelo link acima.</p></noscript>
-      <section class="pntp-details" id="pntpDetails" aria-labelledby="pntpDetailsTitle" hidden>
-        <div class="pntp__heading"><h4 id="pntpDetailsTitle" tabindex="-1">Critérios do ciclo 2025</h4><button type="button" id="pntpClose">Fechar critérios</button></div>
-        <p>Respostas declaradas pelo órgão em 2025. Uma pendência daquele ciclo precisa ser conferida novamente para representar a situação atual. Os links são as evidências indicadas na autoavaliação.</p>
-        <div class="pntp-details__filters">
-          <label>Respostas<select id="pntpFilter"><option value="pendentes">Pendências de 2025</option><option value="atendidos">Itens atendidos em 2025</option><option value="todos">Todas as respostas</option></select></label>
-          <label>Buscar critério<input id="pntpSearch" type="search" placeholder="Ex.: emendas, contratos, RGF"></label>
-        </div>
-        <p id="pntpResultsStatus" role="status" aria-live="polite"></p>
-        <button type="button" id="pntpRetry" hidden>Tentar carregar novamente</button>
-        <div id="pntpCriteria"></div>
-        <p class="pntp__source">A contagem considera itens de verificação únicos por critério. Itens repetidos na planilha foram agrupados e seus links preservados. Essa contagem não é o cálculo da nota PNTP, que usa pesos e regras próprios do ciclo.</p>
-      </section>
-      <section class="pntp-local" aria-labelledby="pntpLocalTitle">
-        <h3 id="pntpLocalTitle">Qualidade dos dados deste painel</h3>
-        <p>Verificações automáticas do Fiscaliza Varginha sobre os registros carregados. Elas não alteram a nota nacional e não comprovam regularidade, pagamento ou transparência integral.</p>
-        <div class="pntp-local__grid">
-          <article><h4>Descrições dos contratos</h4><div id="pntpLocalPref" role="status">Aguardando dados dos contratos.</div></article>
-          <article><h4>CNPJs nas emendas do SAPL</h4><div id="pntpLocalCam" role="status">Aguardando dados das emendas.</div></article>
-        </div>
-      </section>
+      <h2 class="transp-radar__title">Varginha ainda não está entre as mais transparentes</h2>
+      <p class="transp-radar__lead">Na autoavaliação do Programa Nacional de Transparência Pública (PNTP/ATRICON) de 2025, nem a Prefeitura nem a Câmara de Varginha alcançaram os requisitos para certificação nos níveis <strong>Diamante, Ouro ou Prata</strong>. Os resultados abaixo não constam como validados ou revisados pelo Tribunal de Contas.</p>
     </div>
-
-    <!-- D: CTA Auditômetro -->
-    <div class="audit-cta animate-on-scroll">
-      <a href="cobrar.html" class="audit-cta__btn">⚡ Viu algo preocupante? Saiba como cobrar</a>
-      <span class="audit-cta__sub">Canais oficiais, LAI, ouvidoria e como protocolar uma denúncia.</span>
+    <div class="transp-radar__grid">
+      <article class="transp-card">
+        <span class="transp-card__orgao">Prefeitura de Varginha</span>
+        <span class="transp-card__nivel transp-nivel--elevado">Nível Elevado</span>
+        <strong class="transp-card__indice">81,8<small>%</small></strong>
+        <span class="transp-card__det">Itens essenciais: 82% · Executivo Municipal</span>
+      </article>
+      <article class="transp-card">
+        <span class="transp-card__orgao">Câmara de Varginha</span>
+        <span class="transp-card__nivel transp-nivel--inter">Nível Intermediário</span>
+        <strong class="transp-card__indice">63,3<small>%</small></strong>
+        <span class="transp-card__det">Itens essenciais: 86% · Legislativo Municipal</span>
+      </article>
     </div>
-
+    <div class="transp-radar__foot">
+      <p class="muted small">Escala oficial, do maior para o menor: <strong>Diamante › Ouro › Prata › Elevado › Intermediário</strong>. A Câmara está no nível mais baixo da escala. Fonte: Radar da Transparência Pública (PNTP/ATRICON), exercício 2025 — confira e cobre melhorias.</p>
+      <a href="https://radardatransparencia.atricon.org.br/" target="_blank" rel="noopener" class="transp-radar__btn">Ver o Radar oficial da ATRICON ↗</a>
+    </div>
   </div>
 </section>
 
@@ -683,7 +642,6 @@ try {
   </div>
 </footer>
 
-<script src="modules/auditometro.js?v=20260903-pntp2025" defer></script>
 <script src="data-loader.js?v=20260730-relatorios2"></script>
 <script>
 /* ── A: Widget "Esta semana na Câmara" ─────────────────────────── */
