@@ -812,6 +812,53 @@ if (contratosAuditaveis && prefeituraContratosTotal > 0) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Fonte congelada: a origem parou de republicar.
+//
+// Coletar todo dia um arquivo que nao muda ha meses NAO e dado fresco, mas o
+// painel mostrava as duas situacoes do mesmo jeito. Em 04/09/2026 a planilha
+// estadual (DADOS_EMENDAS) estava sem republicacao desde 13/05/2026, o ciclo
+// fechava verde e nada dizia ao cidadao que a fonte tinha parado. O coletor ja
+// guarda arquivoUltimaModificacao; faltava usar.
+// ---------------------------------------------------------------------------
+const DIAS_FONTE_CONGELADA = 60;
+
+function metadataEmendas(nome) {
+  const caminho = path.join(root, "painel-cidadao", "emendas", "data", `${nome}.js`);
+  if (!fs.existsSync(caminho)) return null;
+  const bruto = fs.readFileSync(caminho, "utf8");
+  const corpo = bruto.match(/=\s*(\{[\s\S]*\})\s*;?\s*$/);
+  if (!corpo) return null;
+  try {
+    return JSON.parse(corpo[1]).metadata || null;
+  } catch {
+    return null;
+  }
+}
+
+for (const [nome, rotulo] of [
+  ["emendas_estaduais_normalizadas", "emendas estaduais"],
+  ["emendas_federais", "emendas federais"],
+  ["emendas_municipais_unificadas", "emendas municipais"],
+]) {
+  const meta = metadataEmendas(nome);
+  const publicado = meta?.arquivoUltimaModificacao;
+  if (!publicado) continue;
+  const quando = new Date(publicado);
+  if (Number.isNaN(quando.getTime())) continue;
+  const dias = Math.floor((Date.now() - quando.getTime()) / 86400000);
+  if (dias < DIAS_FONTE_CONGELADA) continue;
+  add(
+    "warning",
+    `fonte-congelada-${nome.replace(/_/g, "-")}`,
+    `Fonte das ${rotulo} sem republicacao ha ${dias} dias`,
+    `O arquivo oficial usado como origem (${meta.fonteArquivo || "arquivo da fonte"}) nao e republicado desde ${quando.toISOString().slice(0, 10)}. A coleta roda todo dia e continua integra, mas baixar de novo um arquivo que nao mudou nao torna o dado atual: o que esta publicado aqui reflete a ultima vez que o orgao de origem publicou, nao a situacao de hoje.`,
+    "Cobrar do orgao de origem a republicacao do arquivo e conferir na fonte primaria antes de usar estes numeros como atuais.",
+    `${nome}.js`,
+    { blocksPipeline: false },
+  );
+}
+
 const emendasSemPagamentoAlto = (chunks.prefeitura?.emendas_cruzadas || [])
   .filter((e) => e.status === "sem_pagamento" && Number(e.valor_brl || e.valor || 0) >= 50000);
 

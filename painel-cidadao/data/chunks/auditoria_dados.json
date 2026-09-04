@@ -1,12 +1,12 @@
 {
-  "gerado_em": "2026-09-04T14:09:52.029Z",
+  "gerado_em": "2026-09-04T20:07:18.528Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 10,
+    "warnings": 11,
     "info": 1,
     "ok": 1,
-    "total": 12
+    "total": 13
   },
   "atualizado_base": {
     "iso": "2026-09-03T16:45:53",
@@ -17,7 +17,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.8 dias.",
+      "detail": "Ultima coleta principal ha 1.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -79,6 +79,14 @@
       "detail": "48 de 48 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "camara_betha.json"
+    },
+    {
+      "severity": "warning",
+      "id": "fonte-congelada-emendas-estaduais-normalizadas",
+      "title": "Fonte das emendas estaduais sem republicacao ha 114 dias",
+      "detail": "O arquivo oficial usado como origem (https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx) nao e republicado desde 2026-05-13. A coleta roda todo dia e continua integra, mas baixar de novo um arquivo que nao mudou nao torna o dado atual: o que esta publicado aqui reflete a ultima vez que o orgao de origem publicou, nao a situacao de hoje.",
+      "action": "Cobrar do orgao de origem a republicacao do arquivo e conferir na fonte primaria antes de usar estes numeros como atuais.",
+      "source": "emendas_estaduais_normalizadas.js"
     },
     {
       "severity": "warning",
@@ -172,7 +180,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.8 dias.",
+      "detail": "Ultima coleta principal ha 1.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -234,6 +242,14 @@
       "detail": "48 de 48 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "camara_betha.json"
+    },
+    {
+      "severity": "warning",
+      "id": "fonte-congelada-emendas-estaduais-normalizadas",
+      "title": "Fonte das emendas estaduais sem republicacao ha 114 dias",
+      "detail": "O arquivo oficial usado como origem (https://www.emendas.mg.gov.br/wp-content/dados-emendas/2026_Marcel/DADOS_EMENDAS_2023_2024_2025_2026.xlsx) nao e republicado desde 2026-05-13. A coleta roda todo dia e continua integra, mas baixar de novo um arquivo que nao mudou nao torna o dado atual: o que esta publicado aqui reflete a ultima vez que o orgao de origem publicou, nao a situacao de hoje.",
+      "action": "Cobrar do orgao de origem a republicacao do arquivo e conferir na fonte primaria antes de usar estes numeros como atuais.",
+      "source": "emendas_estaduais_normalizadas.js"
     },
     {
       "severity": "warning",

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-09-04T14:09:52.072Z",
+  "gerado_em": "2026-09-04T20:07:18.531Z",
   "domains": {
     "atualizado_em": {
       "label": "Coleta principal",
       "status": "ok",
       "source_updated_at": "2026-09-03T19:45:53.000Z",
       "checked_at": "2026-09-03T19:45:53.000Z",
-      "age_days": 0.8,
+      "age_days": 1,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -25,7 +25,7 @@
       "status": "partial",
       "source_updated_at": "2026-09-03T19:44:59.000Z",
       "checked_at": "2026-09-03T19:44:59.000Z",
-      "age_days": 0.8,
+      "age_days": 1,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -34,7 +34,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T09:26:00.000Z",
       "checked_at": "2026-09-03T09:26:00.000Z",
-      "age_days": 1.2,
+      "age_days": 1.4,
       "max_age_days": 31,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -43,7 +43,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T09:06:31.000Z",
       "checked_at": "2026-09-03T09:06:31.000Z",
-      "age_days": 1.2,
+      "age_days": 1.5,
       "max_age_days": 15,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -70,7 +70,7 @@
       "status": "partial",
       "source_updated_at": "2026-09-03T09:26:06.000Z",
       "checked_at": "2026-09-03T09:26:06.000Z",
-      "age_days": 1.2,
+      "age_days": 1.4,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
@@ -79,7 +79,7 @@
       "status": "partial",
       "source_updated_at": "2026-09-03T19:48:48.193Z",
       "checked_at": "2026-09-03T19:48:48.193Z",
-      "age_days": 0.8,
+      "age_days": 1,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -97,7 +97,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T19:39:38.000Z",
       "checked_at": "2026-09-03T19:39:38.000Z",
-      "age_days": 0.8,
+      "age_days": 1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -106,7 +106,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T19:46:04.000Z",
       "checked_at": "2026-09-03T19:46:04.000Z",
-      "age_days": 0.8,
+      "age_days": 1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -115,7 +115,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T19:47:54.000Z",
       "checked_at": "2026-09-03T19:47:54.000Z",
-      "age_days": 0.8,
+      "age_days": 1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     }
