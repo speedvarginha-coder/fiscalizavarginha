@@ -3788,6 +3788,40 @@
 
     renderBaseLegalContratos();
 
+    // Cobertura dos campos que a fonte nao entrega.
+    //
+    // Modalidade ausente em 100% dos contratos e data de fim em metade nao sao
+    // dados que o painel possa preencher, mas sao dados cuja falta o leitor
+    // precisa ver. Sem modalidade nao da para dizer se houve pregao, dispensa
+    // ou inexigibilidade, que e a primeira pergunta de qualquer fiscalizacao;
+    // sem data de fim nao da para checar vigencia nem aditivo. Declarar a
+    // lacuna e o que separa "o painel nao tem" de "nao existe".
+    const renderCoberturaContratos = () => {
+      const el = $("contratosLegalContext");
+      const lista = pf.contratos || [];
+      if (!el || !lista.length) return;
+      const vazio = (v) => !String(v == null ? "" : v).trim();
+      const semModalidade = lista.filter(c => vazio(c.modalidade)).length;
+      const semFim = lista.filter(c => vazio(c.data_fim)).length;
+      const pct = (n) => Math.round((n / lista.length) * 100);
+      const faltas = [];
+      if (semModalidade) {
+        faltas.push(`<strong>modalidade de contratação</strong> em ${fmtNum(semModalidade)} de ${fmtNum(lista.length)} (${pct(semModalidade)}%), o que impede dizer se houve pregão, dispensa ou inexigibilidade`);
+      }
+      if (semFim) {
+        faltas.push(`<strong>data de término</strong> em ${fmtNum(semFim)} de ${fmtNum(lista.length)} (${pct(semFim)}%), o que impede conferir vigência e aditivos`);
+      }
+      if (!faltas.length) return;
+      let nota = el.parentNode.querySelector(".contratos-coverage-note");
+      if (!nota) {
+        nota = document.createElement("p");
+        nota.className = "report-note contratos-coverage-note";
+        el.parentNode.insertBefore(nota, el.nextSibling);
+      }
+      nota.innerHTML = `<strong>O que a fonte não entrega:</strong> o retorno contratual do portal vem sem ${faltas.join("; e sem ")}. O painel publica o que recebe e não completa campo por suposição. Para obter esses dados, peça a íntegra do contrato por LAI.`;
+    };
+    renderCoberturaContratos();
+
     // Delega geração e download do TXT para modules/dossie.js
     window.FISCALIZA.gerarDossie = (idx) => {
       const c = pf.contratos[idx];

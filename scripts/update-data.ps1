@@ -1073,16 +1073,37 @@ try {
         Write-Log "AVISO: GitSync pulado: $motivo. Revise e envie manualmente, ou use -AllowPushWithPendingCommits de forma deliberada."
       } else {
         Write-Log "Sincronizando dados com o GitHub (commit + push)."
-        & git -C $root add -- painel-cidadao/data painel-cidadao/emendas/data 2>&1 | Out-Null
-        $pendentes = & git -C $root status --porcelain -- painel-cidadao/data painel-cidadao/emendas/data
-        if ($pendentes) {
-          $carimbo = Get-Date -Format "dd/MM/yyyy HH:mm"
-          & git -C $root commit -q -m "chore(dados): coleta diaria automatica $carimbo" 2>&1 | Out-Null
-          & git -C $root push origin master 2>&1 | Out-Null
-          if ($LASTEXITCODE -eq 0) { Write-Log "GitHub sincronizado (dados commitados e enviados)." }
-          else { Write-Log "AVISO: push para o GitHub falhou (commit local feito; nao bloqueia)." }
+        # Trava de tamanho antes de versionar dados.
+        #
+        # O GitHub recusa arquivo acima de 100 MB. Em 14/08/2026 o pessoal.json
+        # foi commitado com 141 MB (a base anual ruim de 303.818 linhas) e o
+        # push ficou bloqueado por 19 dias, acumulando 44 commits, sem que nada
+        # avisasse: o ciclo so registrava "GitSync pulado". Desfazer exigiu
+        # reescrever o historico. Barrar na entrada custa uma linha.
+        $limiteBytes = 95MB
+        $pastasDados = @(
+          (Join-Path $root "painel-cidadao\data"),
+          (Join-Path $root "painel-cidadao\emendas\data")
+        )
+        $gigantes = Get-ChildItem -Path $pastasDados -Recurse -File -ErrorAction SilentlyContinue |
+          Where-Object { $_.Length -gt $limiteBytes }
+        if ($gigantes) {
+          foreach ($g in $gigantes) {
+            Write-Log ("AVISO: {0} tem {1:N0} MB, acima do limite de 100 MB do GitHub." -f $g.Name, ($g.Length / 1MB))
+          }
+          Write-Log "Sincronizacao com o GitHub pulada: dado grande demais para versionar. Gere a versao enxuta antes."
         } else {
-          Write-Log "Sem mudancas de dados para commitar."
+          & git -C $root add -- painel-cidadao/data painel-cidadao/emendas/data 2>&1 | Out-Null
+          $pendentes = & git -C $root status --porcelain -- painel-cidadao/data painel-cidadao/emendas/data
+          if ($pendentes) {
+            $carimbo = Get-Date -Format "dd/MM/yyyy HH:mm"
+            & git -C $root commit -q -m "chore(dados): coleta diaria automatica $carimbo" 2>&1 | Out-Null
+            & git -C $root push origin master 2>&1 | Out-Null
+            if ($LASTEXITCODE -eq 0) { Write-Log "GitHub sincronizado (dados commitados e enviados)." }
+            else { Write-Log "AVISO: push para o GitHub falhou (commit local feito; nao bloqueia)." }
+          } else {
+            Write-Log "Sem mudancas de dados para commitar."
+          }
         }
       }
     } catch {
