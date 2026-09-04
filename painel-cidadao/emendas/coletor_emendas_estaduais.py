@@ -188,6 +188,25 @@ def descobrir_planilha(page_html: str) -> str:
     return max(candidatos)[2]
 
 
+def descobrir_planilha_almg(page_html: str) -> str | None:
+    """Encontra o xlsx do acervo na propria pagina da ALMG.
+
+    O endereco vinha fixo (acervo/497/507/2497507.xlsx). O acervo numera cada
+    arquivo, entao uma republicacao troca o ID e a URL antiga passa a responder
+    404 -- a coleta cairia em silencio, preservando a base anterior sem ninguem
+    notar que a fonte mudou de lugar.
+
+    Devolve None quando nao acha, e o chamador usa a URL conhecida. Assim a
+    descoberta so melhora: se a pagina mudar de formato, nada piora.
+    """
+    hrefs = re.findall(r"""href=["']([^"']+\.xlsx(?:\?[^"']*)?)["']""", page_html, re.I)
+    for href in hrefs:
+        url = urllib.parse.urljoin(ALMG_PAGINA, html.unescape(href))
+        if "mediaserver.almg.gov.br" in urllib.parse.urlparse(url).netloc:
+            return url
+    return None
+
+
 def cabecalhos(
     worksheet,
     required_columns: set[str] | None = None,
@@ -633,7 +652,22 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
         }
         almg_metadata: dict[str, Any] | None = None
         if not input_path:
-            almg_bytes, almg_http_headers = obter(ALMG_XLSX)
+            # Descobre o arquivo na pagina oficial; a URL fixa fica so como
+            # ultimo recurso. Registrar qual das duas valeu deixa auditavel se
+            # a coleta usou o endereco publicado hoje ou o conhecido de antes.
+            almg_url = ALMG_XLSX
+            almg_url_origem = "url-conhecida"
+            try:
+                almg_page, _ = obter(ALMG_PAGINA)
+                descoberta = descobrir_planilha_almg(almg_page.decode("utf-8", "replace"))
+                if descoberta:
+                    almg_url = descoberta
+                    almg_url_origem = "descoberta-na-pagina"
+                    if descoberta != ALMG_XLSX:
+                        print(f"ALMG publicou novo arquivo: {descoberta}")
+            except Exception as exc:  # pagina fora do ar nao derruba a coleta
+                print(f"Pagina da ALMG indisponivel ({exc}); usando a URL conhecida.")
+            almg_bytes, almg_http_headers = obter(almg_url)
             fd, almg_temp_name = tempfile.mkstemp(prefix="emendas-almg-", suffix=".xlsx")
             os.close(fd)
             almg_temp_path = Path(almg_temp_name)
@@ -641,7 +675,7 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
             almg_hash = hashlib.sha256(almg_bytes).hexdigest()
             almg_records, almg_sheet, almg_headers = ler_planilha(
                 almg_temp_path,
-                ALMG_XLSX,
+                almg_url,
                 almg_hash,
                 collected_at,
                 source_name="ALMG",
@@ -653,7 +687,8 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
             almg_metadata = {
                 "nome": "Assembleia Legislativa de Minas Gerais",
                 "pagina": ALMG_PAGINA,
-                "arquivo": ALMG_XLSX,
+                "arquivo": almg_url,
+                "arquivoOrigemUrl": almg_url_origem,
                 "arquivoSha256": almg_hash,
                 "arquivoEtag": almg_http_headers.get("etag") or None,
                 "arquivoUltimaModificacao": almg_http_headers.get("last_modified") or None,
