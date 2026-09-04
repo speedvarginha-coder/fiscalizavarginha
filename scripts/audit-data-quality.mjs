@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
 import { agruparSancoes, avaliarIncompatibilidade, CATEGORIAS } from "./lib/classificar-sancoes.mjs";
+import { internalTimestamp } from "./lib/source-freshness.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -259,29 +260,6 @@ const domainConfig = [
   ["publicacoes_diario", "Publicacoes do Diario", chunks.publicacoesDiario, 7],
 ];
 
-function internalTimestamp(value) {
-  if (!value || typeof value !== "object") return undefined;
-  const timestampKeys = new Set([
-    "iso", "atualizado_em", "ultima_atualizacao", "data_atualizacao",
-    "coleta_iso", "coletado_em", "data_coleta", "gerado_em",
-  ]);
-  const pending = [value];
-  const seen = new Set();
-  while (pending.length) {
-    const current = pending.shift();
-    if (!current || typeof current !== "object" || seen.has(current)) continue;
-    seen.add(current);
-    for (const [key, item] of Object.entries(current)) {
-      if (timestampKeys.has(key)) {
-        const parsed = parseDate(item);
-        if (parsed) return parsed;
-      }
-      if (item && typeof item === "object") pending.push(item);
-    }
-  }
-  return undefined;
-}
-
 function sourceHealthMetadata(name, value) {
   if (!value || typeof value !== "object") return {};
 
@@ -323,8 +301,12 @@ function buildSourceStatus() {
     const metadataText = JSON.stringify(sourceHealthMetadata(name, value)).toLowerCase();
     // prefeitura.json e produzido pelo coletor principal, mas por compatibilidade
     // ainda nao carrega timestamp proprio. Nesse caso, usa o carimbo do mesmo ciclo.
-    const updatedAt = internalTimestamp(value)
+    const checkedAt = internalTimestamp(value)
       || (name === "prefeitura" ? internalTimestamp(chunks.atualizado) : undefined);
+    const preserved = /preservad[oa]|preservada_por_cobertura/.test(metadataText);
+    // O carimbo do ciclo atual não rejuvenesce registros preservados. Sem
+    // referência à última coleta completa, a idade dessa base é desconhecida.
+    const updatedAt = preserved ? undefined : checkedAt;
     const ageDays = daysSince(updatedAt);
     let status;
     let reason;
@@ -332,9 +314,9 @@ function buildSourceStatus() {
     if (empty) {
       status = "failed";
       reason = value === undefined ? "Chunk ausente." : "Chunk vazio; ausencia real de registros nao foi confirmada.";
-    } else if (/preservad[oa]|preservada_por_cobertura/.test(metadataText)) {
+    } else if (preserved) {
       status = "preserved";
-      reason = "Metadados indicam preservacao da ultima base valida.";
+      reason = "Base anterior preservada. A tentativa recente não comprova a atualização integral; a data da última base completa não foi informada.";
     } else if (/\"status\"\s*:\s*\"(?:erro|failed|falha)\"|erro de coleta|falha de coleta|http error|http \d{3}/.test(metadataText)) {
       const pncpSemDados = name === "pncp"
         && !(value?.compras?.length || value?.contratos?.length);
@@ -360,6 +342,7 @@ function buildSourceStatus() {
       label,
       status,
       source_updated_at: updatedAt?.toISOString() || null,
+      checked_at: checkedAt?.toISOString() || null,
       age_days: Number.isFinite(ageDays) ? Number(ageDays.toFixed(1)) : null,
       max_age_days: maxAgeDays,
       reason,
@@ -984,7 +967,7 @@ if (chunks.sancoes?.sancoes_vigentes > 0) {
         confianca: "baixa",
         evidencias: [`${revisaoManual.length} registro(s) sem alcance determinado`],
         limitacoes: [
-          "A abrangencia oficial nao e coletada hoje — o alcance e inferido de tipo e fundamentacao",
+          "O campo oficial de abrangência não permite determinar o alcance destes registros com segurança",
           "Sem numero de processo e link individual, a conferencia depende de busca manual no CEIS",
         ],
       } },

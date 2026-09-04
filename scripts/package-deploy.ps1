@@ -14,6 +14,17 @@ $dist = Join-Path $root $OutputDir
 $stage = Join-Path $dist "painel-cidadao"
 $zipPath = Join-Path $dist $ZipName
 
+# Os destinos podem ser personalizados para validar uma versão candidata.
+# Resolva-os antes de qualquer remoção e mantenha-os dentro do workspace.
+$rootPath = [IO.Path]::GetFullPath([string]$root).TrimEnd('\', '/')
+foreach ($target in @($dist, $stage, $zipPath)) {
+  $resolvedTarget = [IO.Path]::GetFullPath([string]$target)
+  if (-not $resolvedTarget.StartsWith($rootPath + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase) -or
+      $resolvedTarget.StartsWith([IO.Path]::GetFullPath([string]$source), [StringComparison]::OrdinalIgnoreCase)) {
+    throw "Destino de empacotamento fora da área permitida: $resolvedTarget"
+  }
+}
+
 if (-not (Test-Path $source)) {
   throw "Pasta painel-cidadao nao encontrada: $source"
 }
@@ -57,7 +68,10 @@ New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Nul
   "indice-relevancia.js",
   "onboarding.js",
   "chat-cidadao.js",
-  "publicacoes.js"
+  "publicacoes.js",
+  "transparencia.js",
+  "pessoal.js",
+  "auditometro.js"
 ) | ForEach-Object {
   Copy-IfExists (Join-Path $source "modules\$_") (Join-Path $stage "modules\$_")
 }
@@ -66,13 +80,14 @@ New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Nul
 # cache). Cada pacote recebe uma versao unica por timestamp.
 $swStage = Join-Path $stage "sw.js"
 if (Test-Path -LiteralPath $swStage) {
-  $swVersion = "fiscaliza-" + (Get-Date -Format "yyyyMMddHHmm")
+  $swVersion = "fiscaliza-" + (Get-Date -Format "yyyyMMddHHmmss")
   (Get-Content -LiteralPath $swStage -Raw) -replace 'const CACHE = "[^"]+";', ('const CACHE = "' + $swVersion + '";') |
     Set-Content -LiteralPath $swStage -Encoding utf8
   Write-Host "sw.js: CACHE -> $swVersion"
 }
 
 Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
+Copy-IfExists (Join-Path $source "fonts") (Join-Path $stage "fonts")
 Copy-IfExists (Join-Path $source "docs") (Join-Path $stage "docs")
 Copy-IfExists (Join-Path $source "emendas") (Join-Path $stage "emendas")
 $emendasStage = Join-Path $stage "emendas"
@@ -83,6 +98,7 @@ if (Test-Path $emendasStage) {
     Remove-Item -Recurse -Force
 }
 Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
+Copy-IfExists (Join-Path $source "data\referencias") (Join-Path $stage "data\referencias")
 # Gerado pelo avalie.php a partir dos votos privados do servidor.
 # Republica-lo apagaria temporariamente o agregado real a cada deploy.
 $avalieResumoStage = Join-Path $stage "data\chunks\avalie_resumo.json"
@@ -93,6 +109,20 @@ Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snaps
 Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
 
 $manifestStage = Join-Path $stage "data\manifest.json"
+# Versiona também os recursos HTTP: trocar só o cache do service worker não
+# invalida os sete dias de cache dos scripts e estilos no navegador.
+$assetPattern = '((?:src|href)=["''])(?!https?:|//|data:)([^"''?#]+\.(?:js|css))(?:\?[^"''#]*)?(["''])'
+foreach ($htmlFile in (Get-ChildItem -LiteralPath $stage -Filter '*.html' -File -Recurse)) {
+  $html = [System.IO.File]::ReadAllText($htmlFile.FullName)
+  $versioned = [regex]::Replace($html, $assetPattern, [System.Text.RegularExpressions.MatchEvaluator]{
+    param($match)
+    return $match.Groups[1].Value + $match.Groups[2].Value + '?v=' + $swVersion + $match.Groups[3].Value
+  })
+  [System.IO.File]::WriteAllText($htmlFile.FullName, $versioned, [System.Text.UTF8Encoding]::new($false))
+}
+$loaderStage = Join-Path $stage 'data-loader.js'
+$loaderContent = [System.IO.File]::ReadAllText($loaderStage) -replace 'const BUILD_VERSION = "[^"]+";', ('const BUILD_VERSION = "' + $swVersion + '";')
+[System.IO.File]::WriteAllText($loaderStage, $loaderContent, [System.Text.UTF8Encoding]::new($false))
 if (-not (Test-Path -LiteralPath $manifestStage)) {
   throw "Manifest obrigatorio ausente no pacote: $manifestStage"
 }
@@ -102,10 +132,19 @@ $manifestHash = (Get-FileHash -LiteralPath $manifestStage -Algorithm SHA256).Has
 $commit = ""
 $branch = ""
 $sujos = @()
+function Read-Git {
+  param([string[]]$GitArguments)
+  # No Windows PowerShell, um aviso em stderr é ErrorRecord. Ele não deve
+  # interromper uma leitura com exit code zero nem apagar a lista de mudanças.
+  $ErrorActionPreference = "Continue"
+  $result = & git -C $root @GitArguments 2>$null
+  if ($LASTEXITCODE -ne 0) { throw "Falha ao ler Git: $($GitArguments -join ' ')" }
+  return $result
+}
 try {
-  $commit = (& git -C $root rev-parse HEAD 2>$null | Select-Object -First 1)
-  $branch = (& git -C $root rev-parse --abbrev-ref HEAD 2>$null | Select-Object -First 1)
-  $porcelain = & git -C $root status --porcelain 2>$null
+  $commit = (Read-Git @("rev-parse", "HEAD") | Select-Object -First 1)
+  $branch = (Read-Git @("rev-parse", "--abbrev-ref", "HEAD") | Select-Object -First 1)
+  $porcelain = Read-Git @("status", "--porcelain")
   if ($porcelain) {
     foreach ($linha in $porcelain) {
       if ([string]::IsNullOrWhiteSpace($linha)) { continue }
@@ -116,7 +155,7 @@ try {
     }
   }
 } catch {
-  Write-Warning "Nao foi possivel ler o estado do git: $_"
+  throw "Nao foi possivel comprovar o estado do git para este pacote: $_"
 }
 
 # Os dados sao commitados DEPOIS do deploy no ciclo diario: sujeira em

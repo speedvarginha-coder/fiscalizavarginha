@@ -42,6 +42,7 @@ const sources = Object.entries(status.domains || {}).map(([id, source]) => ({
   label: source.label || id,
   status: source.status || "unknown",
   source_updated_at: source.source_updated_at || null,
+  checked_at: source.checked_at || null,
   age_days: source.age_days ?? null,
   max_age_days: source.max_age_days ?? null,
   reason: source.reason || "Sem observação.",

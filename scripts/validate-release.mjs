@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
+import { missingPublicAssets } from "./lib/public-assets.mjs";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -8,8 +10,9 @@ const root = path.resolve(__dirname, "..");
 const painelDir = path.join(root, "painel-cidadao");
 const chunksDir = path.join(painelDir, "data", "chunks");
 const manifestPath = path.join(painelDir, "data", "manifest.json");
-const stageDir = path.join(root, "dist", "painel-cidadao");
-const zipPath = path.join(root, "dist", "fiscaliza-varginha-painel.zip");
+const deployDir = path.resolve(root, process.env.FISCALIZA_DEPLOY_DIR || "dist");
+const stageDir = path.join(deployDir, "painel-cidadao");
+const zipPath = path.join(deployDir, "fiscaliza-varginha-painel.zip");
 
 const expectedChunks = [
   "atualizado_em",
@@ -55,6 +58,7 @@ const optionalChunks = [
   // pessoal.json completo. Opcional porque so existe a partir da coleta que
   // passou a grava-lo; release anterior a isso nao pode reprovar.
   "pessoal_resumo",
+  "prefeitura_painel",
 ];
 
 const requiredPublicFiles = [
@@ -98,6 +102,12 @@ const requiredPublicFiles = [
   "modules/onboarding.js",
   "modules/chat-cidadao.js",
   "modules/publicacoes.js",
+  "modules/transparencia.js",
+  "modules/pessoal.js",
+  "modules/auditometro.js",
+  "data/referencias/pntp-2025.json",
+  "data/referencias/emendas-municipais-documentos.json",
+  "fonts/Inter-Variable.woff2",
   "data/manifest.json",
   "release.json",
   "docs/ldo-2026-lei-7417-2025.pdf",
@@ -421,6 +431,14 @@ function validateDeploy() {
   for (const file of requiredPublicFiles) {
     assert(exists(path.join(stageDir, file)), `Arquivo publico ausente no pacote: ${file}`);
   }
+  for (const reference of missingPublicAssets(stageDir)) fail(`Dependencia publica ausente: ${reference}`);
+  if (exists(zipPath)) {
+    try {
+      execFileSync("python", [path.join(root, "scripts", "validate-zip.py"), zipPath, stageDir], { stdio: "pipe" });
+    } catch (error) {
+      fail(`ZIP inconsistente: ${String(error.stderr || error.stdout || error.message).trim()}`);
+    }
+  }
 
   const releasePath = path.join(stageDir, "release.json");
   const stagedManifestPath = path.join(stageDir, "data", "manifest.json");
@@ -461,7 +479,8 @@ function validateDeploy() {
     if (path.basename(file).startsWith(".betha-token")) fail(`Token Betha no pacote: ${rel}`);
 
     if (rel.startsWith("data/") && ext === ".json") {
-      const allowed = rel === "data/manifest.json" || /^data\/chunks\/[^/]+\.json$/.test(rel) || /^data\/snapshots\/[^/]+\.json$/.test(rel);
+      const allowed = rel === "data/manifest.json" || /^data\/chunks\/[^/]+\.json$/.test(rel) || /^data\/snapshots\/[^/]+\.json$/.test(rel)
+        || /^data\/referencias\/(pntp-2025|emendas-municipais-documentos)\.json$/.test(rel);
       if (!allowed) fail(`JSON intermediario no pacote: ${rel}`);
     }
   }

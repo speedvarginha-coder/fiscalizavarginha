@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
+import { prefeituraPainel } from "./lib/dados-painel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -13,25 +14,7 @@ const manifestPath = path.join(painelDir, "data", "manifest.json");
 const prefeituraPath = path.join(chunksDir, "prefeitura.json");
 const homeResumoPath = path.join(chunksDir, "home_resumo.json");
 
-const keys = [
-  "auditoria_dados",
-  "indice_relevancia",
-  "remuneracao_vereadores",
-  "resumo",
-  "sancoes_fornecedores",
-  "atualizacoes",
-  "atualizado_em",
-  "camara_betha",
-  "diario",
-  "fundacao_cultural",
-  "mudancas_coleta",
-  "monitoramento_coletas",
-  "cnpjs",
-  "status_fontes",
-  // sem isto o fallback data.js (file:// ou fetch falhando) servia a folha
-  // antiga, com 388 "servidores" e o custo de sete meses somado
-  "pessoal",
-];
+
 
 function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -89,11 +72,9 @@ function gerarResumoHome(prefeitura) {
   };
 }
 
-if (!fs.existsSync(dataJsPath)) {
-  throw new Error(`data.js nao encontrado: ${dataJsPath}`);
-}
-
-const data = parseDataJs(fs.readFileSync(dataJsPath, "utf8"));
+// Um checkout novo não contém data.js (arquivo gerado e ignorado pelo Git).
+// Os chunks versionados bastam para reconstruir o fallback.
+const data = fs.existsSync(dataJsPath) ? parseDataJs(fs.readFileSync(dataJsPath, "utf8")) : {};
 const synced = [];
 
 if (fs.existsSync(prefeituraPath)) {
@@ -103,6 +84,18 @@ if (fs.existsSync(prefeituraPath)) {
   );
 }
 
+if (fs.existsSync(prefeituraPath)) {
+  writeFileWithRetry(
+    path.join(chunksDir, "prefeitura_painel.json"),
+    JSON.stringify(prefeituraPainel(readJson(prefeituraPath))) + "\n",
+  );
+}
+
+// Chunks são a fonte canônica: o fallback também precisa refletir PNCP,
+// publicações, contratos e qualquer base adicionada depois da coleta inicial.
+const keys = fs.readdirSync(chunksDir)
+  .filter((name) => name.endsWith(".json"))
+  .map((name) => path.basename(name, ".json"));
 for (const key of keys) {
   const chunkPath = path.join(chunksDir, `${key}.json`);
   if (!fs.existsSync(chunkPath)) continue;
@@ -114,7 +107,7 @@ writeFileWithRetry(
   dataJsPath,
   "/* Gerado por coletor.py — não editar à mão. */\n"
     + "window.FISCALIZA_DATA = "
-    + JSON.stringify(data, null, 2)
+    + JSON.stringify(data)
     + ";\n",
 );
 

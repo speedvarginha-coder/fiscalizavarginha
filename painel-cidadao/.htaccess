@@ -80,4 +80,5 @@ RewriteRule ^(old_|temp_).*\.html$ - [F,L]
 # - /data/manifest.json
 # - /data/chunks/*.json
 # - /data/snapshots/*.json
-RewriteRule ^data/(?!manifest\.json$|chunks/[^/]+\.json$|snapshots/[^/]+\.json$) - [F,L]
+# - as duas referências documentais públicas revisadas
+RewriteRule ^data/(?!manifest\.json$|chunks/[^/]+\.json$|snapshots/[^/]+\.json$|referencias/(pntp-2025|emendas-municipais-documentos)\.json$) - [F,L]

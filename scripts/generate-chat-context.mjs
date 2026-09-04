@@ -130,5 +130,12 @@ const contexto = {
 };
 
 const destino = path.join(chunks, "chat_context.json");
-fs.writeFileSync(destino, `${JSON.stringify(contexto, null, 2)}\n`, "utf8");
+// A troca atômica evita truncar o JSON publicado enquanto outro leitor o mantém aberto.
+const temporario = `${destino}.${process.pid}.tmp`;
+try {
+  fs.writeFileSync(temporario, `${JSON.stringify(contexto, null, 2)}\n`, "utf8");
+  fs.renameSync(temporario, destino);
+} finally {
+  if (fs.existsSync(temporario)) fs.unlinkSync(temporario);
+}
 console.log(`OK — contexto do chatbot gerado em ${path.relative(root, destino)}.`);

@@ -36,7 +36,7 @@ class Manifest(ModeloAberto):
 
 class SourceDomain(ModeloAberto):
     label: str = Field(min_length=1)
-    status: Literal["ok", "partial", "manual", "preserved", "failed", "unknown"]
+    status: Literal["ok", "partial", "manual", "preserved", "failed", "stale", "unknown"]
     max_age_days: int = Field(ge=0)
 
 
@@ -49,7 +49,7 @@ class SourceStatus(ModeloAberto):
 class MonitorSource(ModeloAberto):
     id: str = Field(min_length=1)
     label: str = Field(min_length=1)
-    status: Literal["ok", "partial", "manual", "preserved", "failed", "unknown"]
+    status: Literal["ok", "partial", "manual", "preserved", "failed", "stale", "unknown"]
     reason: str = Field(min_length=1)
 
 

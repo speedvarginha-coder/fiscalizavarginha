@@ -38,6 +38,7 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 from collections import Counter, defaultdict
+from emendas_documentos import enriquecer_emendas
 
 # Garante que o stdout aceite UTF-8 no Windows (cp1252 é o padrão).
 try:
@@ -807,6 +808,8 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
         "tipos": [{"tipo": k, "qtd": v} for k, v in tipos.most_common()],
         "temas_top": temas,
     }
+    emendas = enriquecer_emendas(emendas)
+    resumo["emendas_valor_total_brl"] = round(sum(e["valor_brl"] for e in emendas), 2)
     return {"resumo": resumo, "vereadores": vereadores, "emendas": emendas, "materias": materias}
 
 
@@ -915,7 +918,8 @@ def _parse_emenda(ementa: str) -> dict:
 
     valor_raw = grab("Valor")
     valor_num = 0.0
-    m = re.search(r"R\$\s*([\d\.]+,\d{2})", valor_raw)
+    # Um símbolo duplicado no total não pode fazer a leitura pular para uma parcela.
+    m = re.search(r"^\s*(?:R\s*\$\s*)?\$*\s*([\d\.]+,\d{2})", valor_raw)
     if m:
         valor_num = float(m.group(1).replace(".", "").replace(",", "."))
 

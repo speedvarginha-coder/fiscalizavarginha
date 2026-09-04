@@ -854,12 +854,8 @@ try {
       Remove-Item Env:\FISCALIZA_PREVIOUS_CHUNKS -ErrorAction SilentlyContinue
     }
 
-    Invoke-AndLog `
-      -Label "Gerando resumo factual atualizado para o chatbot." `
-      -FilePath "npm.cmd" `
-      -Arguments @("run", "data:chat") `
-      -WorkingDirectory $root `
-      -Retries 2
+    # validate:data já gerou o contexto e selou o manifesto. Não regravar
+    # chat_context aqui: isso invalidava seu hash durante toda a suíte.
 
     # Gate rápido de integridade dos dados — roda SEMPRE, mesmo com -SkipTests,
     # para que o vigia (watch) nunca publique chunks com formato/cálculo quebrado.

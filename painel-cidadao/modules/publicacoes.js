@@ -123,16 +123,36 @@
 
   function init() {
     var feed = document.getElementById("publicacoesFeed");
-    if (!feed || feed.dataset.ready) return;
+    if (!feed) return;
     var D = window.FISCALIZA_DATA || {};
+    var fontes = ["publicacoes_estruturadas", "publicacoes_diario"];
+    var pendentes = fontes.some(function (key) { return !Object.prototype.hasOwnProperty.call(D, key); });
+    var indisponiveis = fontes.some(function (key) { return Object.prototype.hasOwnProperty.call(D, key) && !D[key]; });
     var camara = (D.publicacoes_estruturadas && D.publicacoes_estruturadas.publicacoes) || [];
     var diario = (D.publicacoes_diario && D.publicacoes_diario.publicacoes) || [];
-    if (!camara.length && !diario.length) return;  // dados ainda não chegaram
-    feed.dataset.ready = "1";
+    feed.setAttribute("aria-busy", String(pendentes));
+    var aviso = document.getElementById("publicacoesStatus");
+    if (!aviso) {
+      aviso = document.createElement("p");
+      aviso.id = "publicacoesStatus";
+      aviso.className = "muted";
+      aviso.setAttribute("role", "status");
+      feed.before(aviso);
+    }
+    aviso.textContent = pendentes
+      ? "Carregando publicações da Câmara e do Diário Oficial…"
+      : indisponiveis ? "Uma fonte está indisponível. Exibindo as publicações que puderam ser carregadas. Recarregue a página para tentar novamente." : "";
+    aviso.hidden = !aviso.textContent;
+    if (pendentes && !camara.length && !diario.length) return;
 
     state.todas = camara.concat(diario).sort(function (a, b) {
       return String(b.data || "").localeCompare(String(a.data || ""));
     });
+
+    // Uma segunda fonte pode chegar depois da primeira. Atualiza o conteúdo
+    // sem reinstalar listeners nem perder busca, filtro ou paginação.
+    if (feed.dataset.ready) { render(); return; }
+    feed.dataset.ready = "1";
 
     var busca = document.getElementById("publicacoesBusca");
     if (busca) busca.addEventListener("input", function () { state.q = busca.value; state.offset = POR_PAGINA; render(); });
@@ -155,16 +175,13 @@
   }
 
   function tryInit() {
-    var D = window.FISCALIZA_DATA || {};
-    if (!D.publicacoes_estruturadas && !D.publicacoes_diario) return false;
     init();
-    return true;
   }
 
-  if (!tryInit()) {
-    window.addEventListener("fiscaliza:chunk", tryInit);
-    document.addEventListener("DOMContentLoaded", tryInit);
-  }
+  tryInit();
+  window.addEventListener("fiscaliza:chunk", tryInit);
+  window.addEventListener("fiscaliza:chunk:error", tryInit);
+  document.addEventListener("DOMContentLoaded", tryInit);
   window.FISCALIZA = window.FISCALIZA || {};
   window.FISCALIZA.initPublicacoes = init;
 })();

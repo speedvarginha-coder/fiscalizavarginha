@@ -9,11 +9,13 @@ const stateDir = path.join(root, "private", "state");
 const reportsDir = path.join(root, "private", "reports");
 const chunksDir = path.join(root, "painel-cidadao", "data", "chunks");
 const read = (file, fallback = null) => {
-  try { return JSON.parse(fs.readFileSync(file, "utf8")); } catch { return fallback; }
+  try { return JSON.parse(fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "")); } catch { return fallback; }
 };
 const state = (name) => read(path.join(stateDir, name));
 
-const pipeline = state("pipeline_last_success.json");
+const pipeline = state("pipeline_last_result.json");
+const lastSuccess = state("pipeline_last_success.json");
+const whatsappEnabled = read(path.join(root, "private", "whatsapp_config.json"), {})?.envio_habilitado === true;
 const whatsapp = state("whatsapp_bridge_watchdog.json");
 const externalBackup = state("external_backup.json");
 const externalSite = state("external_site.json");
@@ -29,7 +31,8 @@ const report = {
   generated_at: now.toISOString(),
   overall: "ok",
   pipeline: pipeline || { status: "ausente" },
-  whatsapp: whatsapp || { status: "ausente" },
+  last_success: lastSuccess,
+  whatsapp: whatsappEnabled ? (whatsapp || { status: "ausente" }) : { status: "desativado" },
   external_backup: externalBackup || { status: "ausente" },
   external_site: externalSite || { status: "ausente" },
   sources: sourceSummary,
@@ -37,8 +40,8 @@ const report = {
 };
 
 const problems = [];
-if (pipeline?.coleta !== "SUCESSO" || pipeline?.deploy !== "SUCESSO") problems.push("ultima coleta/publicacao bem-sucedida nao confirmada");
-if (whatsapp?.status !== "ok") problems.push("ponte WhatsApp sem confirmacao");
+if (pipeline?.coleta !== "SUCESSO" || pipeline?.deploy !== "SUCESSO") problems.push("ultimo ciclo sem coleta/publicacao bem-sucedida confirmada");
+if (whatsappEnabled && whatsapp?.status !== "ok") problems.push("ponte WhatsApp sem confirmacao");
 if (externalBackup?.status !== "ok") problems.push("backup externo sem confirmacao");
 if (externalSite?.status !== "ok") problems.push("site externo sem confirmacao");
 if (Number(sourceSummary.failed || 0) > 0 || Number(sourceSummary.stale || 0) > 0) problems.push("fonte falha ou desatualizada");
@@ -49,8 +52,9 @@ const lines = [
   `Fiscaliza Varginha - relatorio operacional ${date}`,
   "",
   `Estado geral: ${report.overall.toUpperCase()}`,
-  `Ultimo sucesso: coleta=${pipeline?.coleta || "ausente"}, deploy=${pipeline?.deploy || "ausente"}, WhatsApp=${pipeline?.whatsapp || "ausente"}`,
-  `Ponte WhatsApp: ${whatsapp?.status || "ausente"} (${whatsapp?.checked_at || "sem horario"})`,
+  `Ultimo ciclo: coleta=${pipeline?.coleta || "ausente"}, deploy=${pipeline?.deploy || "ausente"}, WhatsApp=${pipeline?.whatsapp || "ausente"}`,
+  `Ultimo sucesso: ${lastSuccess?.finished_at || "não confirmado"}`,
+  `Ponte WhatsApp: ${report.whatsapp.status} (${report.whatsapp.checked_at || "sem verificação ativa"})`,
   `Site externo: ${externalSite?.status || "ausente"} (${externalSite?.checked_at || "sem horario"})`,
   `Backup externo: ${externalBackup?.status || "ausente"} - ${externalBackup?.file || "sem arquivo"}`,
   `Fontes: ok=${sourceSummary.ok || 0}, parciais=${sourceSummary.partial || 0}, preservadas=${sourceSummary.preserved || 0}, falhas=${sourceSummary.failed || 0}, antigas=${sourceSummary.stale || 0}`,
