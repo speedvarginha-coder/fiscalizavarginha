@@ -1374,7 +1374,11 @@ body {
 }
 .reconciliacao__metric span, .reconciliacao__metric small { color: var(--muted); }
 .reconciliacao__metric strong { font-size: 1.35rem; }
-.reconciliacao__lista { display: grid; gap: 16px; margin-top: 18px; }
+/* min-width: 0 nos dois niveis: sem isso a coluna implicita do grid cresce ate
+   o min-content do conteudo e a secao vaza 2px da tela no celular. Mesmo
+   padrao ja aplicado em .layout nesta pagina. */
+.reconciliacao__lista { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 18px; }
+.reconc-grupo { min-width: 0; }
 .reconc-grupo h3 { margin: 0 0 4px; font-size: 1rem; }
 .reconc-tabela-wrap { border: 1px solid var(--line); border-radius: 8px; margin-top: 10px; overflow: auto; }
 .reconc-tabela { border-collapse: collapse; font-size: .88rem; width: 100%; }
