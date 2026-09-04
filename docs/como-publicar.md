@@ -1,204 +1,51 @@
 # Como publicar — Fiscaliza Varginha
 
-Processo suportado para publicar o pacote validado em Hostinger com Apache.
+O destino suportado é Hostinger/Apache. Publique o ZIP gerado e validado, mantendo juntos código, dados, manifesto e `release.json`.
 
----
+## Release oficial
 
-## O que publicar (e o que NÃO publicar)
+Com o código revisado e commitado, execute:
 
-### ✅ Publicar — Pasta `painel-cidadao/` inteira
-
-```
-painel-cidadao/
-├── *.html          ✓ Páginas
-├── *.css           ✓ Estilos
-├── *.js            ✓ Lógica
-├── *.svg           ✓ Favicon
-├── modules/        ✓ Módulos JS
-├── data/chunks/    ✓ JSONs públicos
-└── .htaccess       ✓ Regras Apache
-```
-
-### ❌ NUNCA publicar
-
-```
-private/            ❌ Tokens, logs, segredos
-.git/               ❌ Histórico do repo
-node_modules/       ❌ Dependências de teste
-tests/              ❌ Suite de testes (não precisa em prod)
-docs/               ❌ Documentação interna
-coletor*.py         ❌ Scripts de coleta (rodam só local/CI)
-_*.py               ❌ Scripts temporários
-*.bak               ❌ Backups
-*.log               ❌ Logs
-data/*.json         ❌ Intermediários (só os de `chunks/`)
-```
-
----
-
-## Pré-deploy — checklist
-
-Antes de subir qualquer coisa, rodar:
-
-```bash
-# 1. Release local verde
+```powershell
 npm run release
-# → valida dados, roda 75+ testes, gera zip e valida pacote
-
-# 2. Verificar que tokens NÃO estão na pasta
-ls painel-cidadao/.betha* 2>/dev/null
-# → vazio (correto)
-
-# 3. Verificar tamanho total
-du -sh painel-cidadao/
-# → ~12 MB esperado
-
-# 4. Verificar que data/ tem só o necessário
-ls painel-cidadao/data/
-# → manifest.json + chunks/ (sem intermediários grandes)
-
-# 5. Última coleta recente
-cat painel-cidadao/data/chunks/atualizado_em.json
-# → não mais que 30 dias atrás
 ```
 
-Ver também: `docs/checklist-publicacao.md`.
+O comando verifica segurança, contratos de dados, schemas, números, desempenho e interface; depois gera `dist/fiscaliza-varginha-painel.zip` e valida os arquivos, os bytes do ZIP e o funcionamento do pacote por HTTP.
 
----
+O pacote inclui páginas, estilos, JavaScript, módulos, `fonts/`, `assets/`, PDFs públicos em `docs/`, chunks, snapshots, manifesto e regras Apache. Credenciais, logs, coletores, sessões e documentação interna não são publicados. Não copie a pasta de desenvolvimento inteira para o servidor.
 
-## Hostinger / Apache (FTP)
+## Candidato para revisão local
 
-### Primeira vez
+É possível testar alterações ainda não commitadas sem substituir o pacote oficial:
 
-1. **Criar conta na Hostinger** (ou usar existente).
-2. **Comprar domínio** (sugestão: `fiscalizavarginha.com.br` ou similar).
-3. **Apontar DNS** para o servidor Hostinger.
-4. **Acessar painel cPanel** → File Manager → `public_html/`.
-
-### A cada publicação
-
-1. **Gerar e validar o pacote:**
-   ```powershell
-   npm run release
-   ```
-
-   O pacote aprovado fica em `dist/fiscaliza-varginha-painel.zip` e contém apenas arquivos públicos. Não publique uma cópia manual de `painel-cidadao/`: use somente esse ZIP após o `release` concluir sem erros.
-
-2. **Upload via FTP** (FileZilla):
-   - Host: `ftp.seudominio.com.br`
-   - User: do cPanel
-   - Pasta destino: `public_html/`
-
-3. **Descompactar via File Manager** da Hostinger.
-
-4. **Confirmar `.htaccess`** está no `public_html/`.
-
-5. **Limpar cache do navegador** e testar.
-
-### Configurar HTTPS (obrigatório para Service Worker)
-
-No cPanel → SSL/TLS → ativar Let's Encrypt grátis. Sem HTTPS o SW não funciona.
-
----
-
-## Verificar deploy
-
-Após publicar, testar:
-
-### 1. Páginas carregam
-- [ ] `https://seudominio/` (index)
-- [ ] `https://seudominio/prefeitura.html`
-- [ ] `https://seudominio/camara.html`
-- [ ] `https://seudominio/relatorios.html`
-- [ ] `https://seudominio/pessoal.html`
-- [ ] `https://seudominio/marcadores.html`
-- [ ] `https://seudominio/atualizacoes.html`
-- [ ] `https://seudominio/sobre.html`
-- [ ] `https://seudominio/cobrar.html`
-
-### 2. Console sem erros
-F12 → Console → não deve ter erro vermelho (só warnings amarelos).
-
-### 3. Service Worker registra
-F12 → Application → Service Workers → deve mostrar "activated and is running".
-
-### 4. Chunks carregam
-F12 → Network → recarregar → deve ver `data/chunks/*.json` com status 200.
-
-### 5. Mobile
-Testar em celular ou modo responsivo do DevTools. Placar deve ficar 2×2 ou 1 coluna.
-
-### 6. Compartilhar URL no WhatsApp
-Cole `https://seudominio/relatorios.html` no WhatsApp — deve aparecer preview com título e descrição (OG tags).
-
----
-
-## Atualização incremental
-
-Se só os dados mudaram (coleta nova):
-
-1. **Rodar coleta local**: `npm run data:update` (ver `como-atualizar.md`).
-2. **Conferir logs em `private/logs/`**.
-3. **Upload só de `painel-cidadao/data/chunks/`** (resto não mudou).
-4. **Bumpar `sw.js`** versão do cache para força refresh:
-   ```js
-   const CACHE = "fiscaliza-v9";  // ou próximo número
-   ```
-5. **Upload `sw.js` atualizado.**
-
-Usuários verão o toast "📡 Dados atualizados — recarregar" automaticamente.
-
----
-
-## Bloquear conteúdo sensível (`.htaccess`)
-
-O arquivo `painel-cidadao/.htaccess` já bloqueia:
-
-```apache
-Options -Indexes
-RewriteEngine On
-
-# Bloqueia scripts e arquivos locais
-<FilesMatch "\.(log|py|pyc|bat|txt)$">
-  <IfModule mod_authz_core.c>
-    Require all denied
-  </IfModule>
-  <IfModule !mod_authz_core.c>
-    Order allow,deny
-    Deny from all
-  </IfModule>
-</FilesMatch>
-
-# Bloqueia JSONs intermediários em /data/, mas libera:
-# - /data/manifest.json
-# - /data/chunks/*.json
-RewriteRule ^data/(?!manifest\.json$|chunks/[^/]+\.json$) - [F,L]
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/package-deploy.ps1 -OutputDir dist/revisao -AllowDirty
+$env:FISCALIZA_DEPLOY_DIR = "dist/revisao"
+npm run validate:deploy
+Remove-Item Env:FISCALIZA_DEPLOY_DIR
 ```
 
-**Conferir após publicar** se o `.htaccess` está ativo. Testar:
+`-AllowDirty` registra as alterações no `release.json`; não envia arquivos ao servidor. Antes de uma publicação rastreável pelo commit, registre o código e gere novamente o pacote oficial.
 
-```bash
-curl https://seudominio/coletor.py
-# → deve retornar 403 Forbidden
-```
+## Upload
 
----
+1. Guarde a versão validada anterior para rollback.
+2. Envie o conteúdo do ZIP aprovado à raiz pública do site pela rotina de publicação existente ou pelo gerenciador de arquivos da hospedagem.
+3. Preserve credenciais e dados privados do servidor. O agregado de votos do Avalie é mantido pelo PHP e fica fora do pacote.
+4. Confirme HTTPS, regras de `.htaccess`, versão do `release.json` e hash do manifesto publicado.
+5. Confira Início, Conformidade, Pessoal, Câmara e Atualizações. Não deve haver 404 em módulos/fontes nem tabela presa no carregamento.
+
+Mesmo em uma atualização apenas de dados, o manifesto deve corresponder aos arquivos enviados. O ciclo automático refaz o pacote e publica `release.json` por último. Evite enviar somente alguns chunks avulsos.
+
+## Validação e limites
+
+- `npm run validate:data`: valida e gera os derivados dos dados; modifica arquivos gerados.
+- `npm run deploy:zip`: gera o pacote, sem realizar upload.
+- `npm run validate:deploy`: confere conteúdo e executa testes contra o pacote.
+- `npm run test:deploy`: repete somente os testes HTTP do pacote existente.
+
+O servidor dos testes é Python e não executa PHP nem regras Apache. Chat, votação e configuração efetiva da hospedagem precisam ser conferidos no ambiente apropriado. Testes locais não comprovam que a nova versão já está no ar.
 
 ## Rollback
 
-Se algo quebrar em produção:
-
-Mantenha o último ZIP validado. Para reverter, remova os arquivos da versão com problema no `public_html/`, envie o ZIP anterior e descompacte-o novamente.
-
----
-
-## Domínio sugerido
-
-Idealmente algo memorável e oficial-ish (sem parecer site oficial da prefeitura):
-
-- `fiscaliza.varginha.org`
-- `fiscaliza.varginha.org`
-- `varginha.cidadania.org`
-- `transparencia.varginha.com.br`
-
-**Evitar:** nomes que possam ser confundidos com sites oficiais da prefeitura ou que sugiram afiliação partidária.
+Use o procedimento de [rollback-manual.md](rollback-manual.md) e o último pacote validado. Mantenha código, dados, manifesto e release da mesma versão; preserve os arquivos privados e votos existentes no servidor.

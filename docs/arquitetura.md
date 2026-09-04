@@ -1,411 +1,74 @@
 # Arquitetura — Fiscaliza Varginha
 
-Este documento descreve **como o painel funciona** por dentro: onde os dados vivem, como são carregados, quais módulos existem, e como tudo se conecta.
-
-Leia isto antes de mexer no código.
-
----
-
-## 1. Visão de 30 segundos
-
-```
-                 ┌─────────────────────────────────────────────────┐
-                 │           NAVEGADOR DO CIDADÃO                  │
-                 │                                                 │
-   ┌───────────► │  1. Abre prefeitura.html                        │
-   │             │  2. <body data-page="prefeitura">               │
-   │             │  3. data-loader.js descobre quais chunks precisa│
-   │             │  4. fetch() paralelo em data/chunks/*.json      │
-   │             │  5. Carrega modules/*.js (utils, icons, ...)    │
-   │             │  6. Carrega app.js (orquestrador único)         │
-   │             │  7. app.js renderiza a página                   │
-   │             └─────────────────────────────────────────────────┘
-   │
-   │             ┌──────────────────────────────────┐
-   └─────────────│ Service Worker (sw.js)           │
-                 │ cache offline + atualização bg   │
-                 └──────────────────────────────────┘
-
-PIPELINE DE DADOS (offline, roda no servidor de quem mantém o painel):
-
-  Portal Betha API ──► coletor*.py ──► data/*.json ──► data.js ──► chunks/*.json
-                                       (intermediário)              (servidos ao browser)
-```
-
----
-
-## 2. Estrutura de pastas
-
-```
-3_Fiscaliza Varginha/
-├── .gitignore                  Protege tokens, logs, caches
-├── package.json                npm scripts (npm test)
-├── playwright.config.js        Config dos testes
-│
-├── private/                    [GITIGNORED — nunca publica]
-│   ├── tokens/                 Tokens OAuth do Betha
-│   └── logs/                   debug.log do coletor
-│
-├── painel-cidadao/             [Pasta pública — vai para Hostinger]
-│   ├── index.html              Página inicial
-│   ├── prefeitura.html         Contratos, diárias, eventos, etc.
-│   ├── camara.html             Vereadores, emendas
-│   ├── relatorios.html         Sinais de atenção, comparativos
-│   ├── pessoal.html            Folha de pagamento
-│   ├── marcadores.html         Watchlist pessoal do cidadão
-│   ├── sobre.html              Metodologia + glossário
-│   ├── cobrar.html             Canais oficiais (LAI, e-SIC)
-│   │
-│   ├── style.css               CSS único (~13,2 mil linhas — a refatorar)
-│   ├── app.js                  Orquestrador (~8,4 mil linhas)
-│   ├── app-glossario.js        Glossário standalone p/ sobre.html
-│   ├── data-loader.js          Carregador async de dados+módulos
-│   ├── sw.js                   Service Worker (cache offline)
-│   ├── favicon.svg
-│   │
-│   ├── modules/                Módulos JS extraídos do app.js
-│   │   ├── utils.js            Formatadores, esc, cleanText, norm
-│   │   ├── icons.js            Ícones SVG (Heroicons)
-│   │   ├── glossario.js        Termos cidadãos
-│   │   ├── categorias.js       Saúde, Educação, Obras, ...
-│   │   └── watchlist.js        Marcadores em localStorage
-│   │
-│   ├── data/
-│   │   ├── chunks/             29 JSONs servidos por domínio
-│   │   │   ├── prefeitura.json
-│   │   │   ├── emendas.json
-│   │   │   ├── diarias.json
-│   │   │   └── ...
-│   │   └── manifest.json       Tamanhos dos chunks
-│   │
-│   ├── data.js                 [LEGADO] Bundle único 8.7MB (fallback)
-│   │
-│   └── coletor*.py             Scripts Python que populam o data/
-│
-├── tests/
-│   ├── smoke.spec.js           testes Playwright de UI e regressão
-│   ├── calculos.spec.js        ~14 testes (integridade de cálculos)
-│   ├── emendas-audit.spec.js   ~5 testes (auditoria de emendas)
-│   ├── http.spec.js            1 teste (smoke HTTP)
-│   └── README.md
-│
-└── docs/                       Esta pasta
-    ├── arquitetura.md          [VOCÊ ESTÁ AQUI]
-    ├── fontes-de-dados.md
-    ├── como-atualizar.md
-    ├── como-publicar.md
-    └── checklist-publicacao.md
-```
-
-### Produto publicado
-
-O produto oficial e a pasta `painel-cidadao/`. O pacote de publicacao deve ser gerado por `npm run deploy:zip`, que copia apenas arquivos publicos permitidos, chunks de dados, snapshots e modulos autorizados.
-
-Se houver um `dashboard/` React/Vite no repositorio, ele deve ser considerado laboratorio ou futura migracao. Ele nao deve ser publicado junto com o painel estatico sem uma decisao explicita de migracao, checklist proprio e testes equivalentes.
-
----
-
-## 3. O ciclo de vida de um carregamento
-
-### Quando o usuário abre `prefeitura.html`:
-
-**Passo 1 — HTML carrega o data-loader:**
-```html
-<body data-page="prefeitura">
-  ...
-  <script src="data-loader.js?v=20260520"></script>
-</body>
-```
-
-**Passo 2 — `data-loader.js` descobre o que precisa:**
-```js
-const CHUNKS_POR_PAGINA = {
-  "prefeitura": ["prefeitura", "emendas", "diarias", "cnpjs", "pncp",
-                 "vereadores", "atualizado_em"],
-  ...
-};
-const page = body.dataset.page;       // "prefeitura"
-const chunks = CHUNKS_POR_PAGINA[page]; // ["prefeitura", ...]
-```
-
-**Passo 3 — Fetch paralelo:**
-```js
-const resultados = await Promise.all(
-  chunks.map(key => fetch(`data/chunks/${key}.json`))
-);
-// resultados → [prefeitura.json, emendas.json, diarias.json, ...]
-```
-
-**Passo 4 — Monta `window.FISCALIZA_DATA`:**
-```js
-resultados.forEach(({ key, data }) => {
-  window.FISCALIZA_DATA[key] = data;
-});
-// Agora window.FISCALIZA_DATA.prefeitura.contratos existe
-```
-
-**Passo 5 — Carrega módulos em ordem:**
-```js
-const MODULOS = [
-  "modules/utils.js",       // Define window.FISCALIZA.utils
-  "modules/icons.js",       // Define window.FISCALIZA.icon()
-  "modules/glossario.js",   // Define window.FISCALIZA.simplificarTermo()
-  "modules/categorias.js",  // Define window.FISCALIZA.categorias
-  "modules/watchlist.js",   // Define window.FISCALIZA.watchlist
-];
-for (const m of MODULOS) await loadScript(m);
-```
-
-**Passo 6 — Carrega `app.js`:**
-```js
-await loadScript("app.js");
-```
-
-**Passo 7 — `app.js` lê `window.FISCALIZA_DATA` e renderiza:**
-```js
-const D = window.FISCALIZA_DATA;
-const pf = D.prefeitura || {};
-// ...renderiza contratos, placar, gráficos, etc.
-```
-
-**Passo 8 — Evento global de pronto:**
-```js
-window.dispatchEvent(new CustomEvent("fiscaliza:ready", { detail: { chunks } }));
-```
-
-Páginas como `marcadores.html` escutam esse evento para renderizar conteúdo dependente de dados.
-
----
-
-## 4. Os módulos (modules/)
-
-Cada módulo é uma IIFE auto-contida que **expõe API em `window.FISCALIZA.*`**. Não usa `import/export` (sem build step).
-
-### `modules/utils.js` (11 funções, ~6.5KB)
-
-Utilitários puros, sem efeito colateral.
-
-| Função | O que faz |
-|--------|-----------|
-| `fmtBRL(n)` | Formata número como "R$ 1.234,56" |
-| `fmtMi(n)` | "R$ 1,2 mi" |
-| `fmtNum(n)` | Localiza número pt-BR |
-| `cleanText(s)` | Corrige mojibake e caracteres corrompidos |
-| `esc(s)` | Escape HTML (`<` → `&lt;`) |
-| `jsSafe(s)` | Escape para uso em `onclick="...'$s'..."` |
-| `norm(s)` | Lowercase sem acentos (para busca) |
-| `highlight(text, q)` | Envolve match com `<mark>` |
-| `scrollToEl(el)` | Scroll suave respeitando prefers-reduced-motion |
-| `exportCSV(rows, cols, filename)` | Gera CSV e baixa |
-
-**Uso interno (em app.js):**
-```js
-const { fmtBRL, esc, cleanText } = window.FISCALIZA.utils;
-```
+Referência atualizada em 03/09/2026. O produto oficial é o painel estático de `painel-cidadao/`, publicado pelo pacote validado para Hostinger/Apache. `dashboard/` e `painel-v2/` não participam dessa publicação.
 
-### `modules/icons.js` (23 ícones SVG)
+## Componentes
 
-Biblioteca de ícones inline estilo Heroicons (MIT). Substitui emojis em UI.
+| Camada | Responsabilidade |
+| --- | --- |
+| `coletor*.py` | Consultar fontes oficiais e preservar a última base válida quando a coleta falhar ou regredir |
+| `scripts/update-data.ps1` | Coordenar coleta, backup, validação, testes, pacote e publicação |
+| `data/chunks/` | Bases públicas canônicas por domínio |
+| `scripts/sync-data-bundle.mjs` | Gerar resumos, sincronizar o fallback e calcular o manifesto |
+| `data-loader.js` | Selecionar dados e módulos por página; controlar carregamento progressivo |
+| `modules/` | Utilitários, dossiês, publicações, pessoal, diárias, indicadores e componentes |
+| `app.js` | Inicialização comum e renderizações ainda não extraídas |
+| `style.css` | Estilos compartilhados e regras de páginas |
+| `chat.php` / `avalie.php` | Funcionalidades de servidor, com estado e credenciais fora do pacote público |
+| `sw.js` | Cache offline e aviso de atualização |
 
-**Uso:**
-```js
-window.FISCALIZA.icon("saude")            // <svg>...</svg> tamanho 20px
-window.FISCALIZA.icon("trofeu", { size: 24 })
-window.FISCALIZA.icon("alerta", { class: "icon-alert" })
-```
+Os módulos usam IIFEs e expõem suas funções em `window.FISCALIZA`. Os dados ficam em `window.FISCALIZA_DATA`. Não há compilação de frontend nem dependência de React no produto oficial.
 
-**Catálogo:**
-- Categorias: `saude`, `educacao`, `obras`, `transporte`, `cultura`, `assistencia`, `administracao`, `seguranca`
-- Placar: `cifrao`, `trofeu`, `documentos`, `alerta`, `cheque`
-- Ações: `copiar`, `lupa`, `predio`, `relogio`, `grafico`, `sinal`, `fechar`, `estrela`, `estrelaCheia`, `seta`, `setaCima`, `limpar`
+## Carregamento de uma página
 
-### `modules/glossario.js`
+1. O HTML declara `body[data-page]` e inclui `data-loader.js`.
+2. O loader resolve o plano da página e busca os dados iniciais em paralelo.
+3. Os módulos são baixados em paralelo e executados na ordem declarada.
+4. `app.js` inicializa os blocos presentes no DOM e emite `fiscaliza:app-ready`.
+5. O loader emite `fiscaliza:ready`; os dados de segunda fase chegam por `fiscaliza:chunk`.
+6. Diárias da Prefeitura/Câmara são buscadas ao abrir a seção. Pessoal busca a folha nominal somente na página correspondente.
 
-Traduz jargão técnico em linguagem cidadã.
+Falha de uma projeção leve tenta o arquivo completo. Abertura por `file://` ou falha de dados críticos usa `data.js`. O fallback é sincronizado com todos os chunks existentes; ele continua maior que a carga normal por HTTP.
 
-```js
-window.FISCALIZA.simplificarTermo("Favorecido")    // → "Quem recebeu"
-window.FISCALIZA.termoCidadao("modalidade")        // → <span title="...">Tipo de compra</span>
-```
-
-### `modules/categorias.js`
-
-Classifica contratos/emendas em 8 categorias.
-
-```js
-const item = { objeto: "Aquisição de medicamentos..." };
-window.FISCALIZA.classificarItem(item);  // → "saúde"
-window.FISCALIZA.categorias              // → [{id, iconKey, label, kw}, ...]
-```
-
-### `modules/watchlist.js`
-
-Marcadores pessoais do cidadão (salvos em `localStorage`).
-
-```js
-window.FISCALIZA.watchlist.toggle("contratos", "123/2026")  // adiciona ou remove
-window.FISCALIZA.watchlist.has("emendas", "55/2025")        // true | false
-window.FISCALIZA.watchlist.botao("contratos", id)           // HTML do botão ⭐
-```
-
----
-
-## 5. Dados — chunks vs data.js
-
-### Antes (legado)
-
-```html
-<script src="data.js"></script>   <!-- 8.7 MB carregado em TODA página -->
-```
-
-Variável global: `window.FISCALIZA_DATA = { prefeitura, emendas, diarias, ... }`
-
-### Agora (chunks)
-
-```html
-<script src="data-loader.js"></script>
-<!-- Carrega só os chunks que a página precisa -->
-```
-
-**Economia por página:**
-
-| Página | data.js (antes) | chunks (agora) | Economia |
-|--------|-----------------|----------------|----------|
-| index.html | 8.74 MB | 0.82 MB | **90.6%** |
-| marcadores.html | 8.74 MB | 0.79 MB | **91.0%** |
-| pessoal.html | 8.74 MB | 1.73 MB | **80.2%** |
-| relatorios.html | 8.74 MB | 1.95 MB | **77.6%** |
-| prefeitura.html | 8.74 MB | 3.36 MB | **61.6%** |
-| camara.html | 8.74 MB | 4.44 MB | **49.2%** |
-| sobre.html, cobrar.html | 8.74 MB | 0 MB | **100%** |
-
-### `data.js` ainda existe — é o **fallback**
-
-Quando o painel é aberto direto do disco (`file://`), o `fetch()` não funciona. O loader detecta e carrega `data.js` monolítico.
-
----
-
-## 6. Service Worker (`sw.js`)
-
-Cache offline + atualização em background.
-
-**Estratégia por tipo de recurso:**
-
-| Recurso | Estratégia |
-|---------|------------|
-| HTML, CSS, JS estáticos | Cache-first |
-| `data/chunks/*.json` | Stale-while-revalidate |
-| `data.js` (legado) | Stale-while-revalidate |
-| Outros | Cache-first com fallback network |
-
-**Notificação de atualização:**
-
-Quando o SW detecta que um chunk mudou em background, posta mensagem aos clientes:
-```js
-{ type: "DATA_UPDATED", chunk: "/data/chunks/prefeitura.json" }
-```
-
-O `app.js` escuta e mostra um toast no canto superior direito convidando o usuário a recarregar.
-
-**Versionamento:** `const CACHE = "fiscaliza-v8"` — bumpar quando há mudança quebradora; ativação remove caches antigos.
-
----
-
-## 7. Como adicionar uma página nova
-
-1. **Criar `nova.html`** copiando layout de uma existente.
-2. **Adicionar `<body data-page="nova">`**.
-3. **Mapear chunks em `data-loader.js`:**
-   ```js
-   const CHUNKS_POR_PAGINA = {
-     ...,
-     "nova": ["prefeitura", "atualizado_em"],
-   };
-   ```
-4. **Adicionar ao SW (`sw.js`):**
-   ```js
-   const STATIC = [..., "./nova.html"];
-   ```
-5. **Bumpar `CACHE = "fiscaliza-vN"`** para forçar refresh.
-6. **Adicionar ao nav** das outras páginas:
-   ```html
-   <a href="nova.html" class="nav__link">Nova</a>
-   ```
-7. **Adicionar smoke test** em `tests/smoke.spec.js`:
-   ```js
-   { arquivo: "nova.html", titulo: /Nova/, bloco: "#novoBloco" },
-   ```
-8. **Rodar testes:** `npm test`.
-
----
-
-## 8. Princípios de design
-
-### Sem build step
-- Vanilla JS, sem webpack/vite/rollup.
-- Cada arquivo `.js` é executável direto pelo browser.
-- IIFE para encapsular escopo.
-- API exposta em `window.FISCALIZA.*`.
-
-### Retrocompatibilidade
-- `data.js` legado funciona como fallback.
-- `app.js` destrutura `window.FISCALIZA.utils` mas tem shims defensivos.
-- Se algum módulo falhar, app continua funcionando (sem ícones, sem categoria, mas sem crash).
-
-### Sem framework
-- Não há React, Vue, jQuery.
-- DOM direto via `document.getElementById`.
-- Templates como string literals.
-
-### Acessibilidade
-- ARIA labels em botões dinâmicos.
-- `prefers-reduced-motion` respeitado.
-- Tap targets mínimos 40px em mobile.
-- Atalhos de teclado (`/` foca busca, `g+letra` navega).
-
-### Privacidade
-- Sem analytics.
-- Sem cookies de tracking.
-- Watchlist em `localStorage` apenas.
-- Tokens da API em `private/tokens/` (fora do deploy).
-
----
-
-## 9. Testes
-
-```bash
-npm install              # primeira vez
-npx playwright install   # primeira vez (baixa Chromium)
-
-npm run validate:data    # valida manifest, chunks e sanidade dos dados
-npm test                 # roda 75+ testes em ~1min
-npm run release          # valida dados + testes + zip limpo + valida pacote
-npm run test:headed      # vê o browser executando
-npm run test:ui          # modo interativo Playwright UI
-npm run test:report      # vê relatório HTML do último run
-```
-
-**Cobertura:**
-- páginas públicas × verificações de abertura, título e bloco principal
-- Navegação completa
-- Filtros básicos (contratos, emendas)
-- Busca de contrato por número com modal de fonte oficial
-- Placar do dinheiro
-- Aba Diárias (regressão)
-- Watchlist vazio
-
-**O que NÃO cobre:**
-- Validação de valores específicos dos dados (mudam a cada coleta).
-- Snapshot visual.
-- Performance.
-
----
-
-## 10. Limites conhecidos
-
-- **`app.js` ainda monolítico** (8412 linhas, ~468 KB). Refactor incremental em curso (fases 3-5 pendentes: dossiê, renderizações de Prefeitura/Câmara/Relatórios/Pessoal).
-- **`style.css` único** (~13,2 mil linhas, ~324 KB). Plano: dividir em `css/base.css`, `css/components.css`, `css/pages/*.css`.
-- **`pessoal.json`** voltou à folha mensal (~2,4 MB; a base anual de 303.818 linhas desalojava a mensal — corrigido em `8eff069`). Câmara, Relatórios e Cobrança ainda o carregam na fase 1 só para os `resumo`; publicar um chunk enxuto continua no plano.
-- **Coleta automatizável.** `scripts/update-data.ps1` executa coleta, validação, testes e pacote limpo; `scripts/install-data-task.ps1` registra a rotina diária ou em modo vigia no Windows Task Scheduler.
-
-Veja `docs/como-atualizar.md` para o processo atual de coleta.
+## Projeções e carregamento progressivo
+
+- `home_resumo.json`: indicadores e referência SHA-256 à base da Prefeitura.
+- `pessoal_resumo.json`: resumo mensal para páginas que não precisam da lista nominal.
+- `prefeitura_painel.json`: todos os campos da Prefeitura, exceto os detalhes de `frota`. Mantém todos os contratos, fornecedores, obras e cruzamentos. É usado em Início, Câmara, Relatórios, Atualizações, Marcadores e Fundação.
+- Prefeitura e Cobrança continuam recebendo a frota completa, pois a utilizam.
+- Resultados de licitações e PCA entram na segunda fase de Relatórios.
+- Publicações da Câmara e do Diário entram na segunda fase de Atualizações. O feed informa carregamento ou cobertura parcial e mantém a fonte disponível quando outra falha.
+
+Referência medida em 03/09/2026, somente JSON inicial e sem compressão HTTP:
+
+| Página | Antes | Após a revisão | Limite automático |
+| --- | ---: | ---: | ---: |
+| Início | 0,91 MB | 0,91 MB | 1,20 MB |
+| Prefeitura | 5,80 MB | 5,80 MB | 6,50 MB |
+| Câmara | 8,32 MB | 4,64 MB | 5,00 MB |
+| Relatórios | 8,52 MB | 4,84 MB | 5,20 MB |
+| Atualizações | 9,34 MB | 1,45 MB | 2,00 MB |
+
+`npm run performance:budget` recalcula esses valores pelo plano de carregamento e pelo manifesto. Os números mudam com a coleta; o limite deve ser revisado com justificativa quando a cobertura crescer.
+
+## Integridade e cobertura
+
+O manifesto registra tamanho e SHA-256 dos chunks e snapshots. Os geradores terminam antes de `data:bundle`, que sela o manifesto. Não se deve regravar um chunk após a validação sem sincronizar e validar novamente.
+
+`status_fontes.json` distingue `ok`, `partial`, `preserved`, `manual`, `failed`, `stale` e `unknown`. A data de uma tentativa recente não comprova a atualização de registros preservados: nesse caso `source_updated_at` e `age_days` permanecem desconhecidos, e `checked_at` informa a tentativa conhecida. Datas de contratos ou matérias não servem como carimbo da coleta.
+
+A auditoria mantém limitações, ausência de modalidade, cruzamentos suspensos e falta de confirmação documental visíveis. As projeções não completam campos ausentes na fonte e não convertem ausência de informação em zero confirmado.
+
+## Publicação e cache
+
+`package-deploy.ps1` copia somente arquivos públicos para um diretório de preparação e cria o ZIP. Inclui módulos autorizados, fontes locais, dados, snapshots e PDFs públicos. Os destinos são conferidos antes das remoções. O pacote registra commit, manifesto e eventuais alterações não commitadas em `release.json`.
+
+`validate-release.mjs` verifica a lista obrigatória e as dependências referenciadas no HTML, CSS, loader e service worker. `validate-zip.py` compara cada arquivo do ZIP com os bytes do diretório validado. `npm run validate:deploy` também executa testes HTTP sobre o pacote, incluindo Conformidade, Pessoal, fonte Inter e ativação do service worker.
+
+O cache estático usa cache-first; chunks usam stale-while-revalidate. O empacotamento atribui uma versão de cache ao pacote. Ao adicionar módulos ou fontes, atualizar também o inventário do service worker.
+
+## Testes e manutenção
+
+Ver [tests/README.md](../tests/README.md) para comandos e isolamento. As verificações combinam schemas, hashes, testes de coletores, contratos de dados, cálculos, segurança e navegação HTTP. Não substituem revisão manual da fonte oficial nem teste de PHP/Apache no ambiente publicado.
+
+A renderização de Pessoal foi extraída para `modules/pessoal.js`. `app.js` ainda concentra outras páginas; `style.css` continua compartilhado. Futuras extrações devem preservar a ordem dos estilos, interfaces públicas e resultados dos testes. A operação depende do computador Windows e das condições descritas em [OPERACAO_LOCAL.md](OPERACAO_LOCAL.md).

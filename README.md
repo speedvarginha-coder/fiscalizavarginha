@@ -27,8 +27,11 @@ python -m http.server 8000
 npm install
 npx playwright install chromium
 
-# rodar testes
+# reconstruir arquivos gerados e rodar testes
+npm run data:bundle
 npm test
+npm run test:pipeline
+npm run test:contracts
 
 # validar dados + testes + gerar pacote limpo de publicação
 npm run release
@@ -56,12 +59,12 @@ py coletor.py
 3_Fiscaliza Varginha/
 ├── painel-cidadao/   Pasta pública (vai para servidor)
 ├── private/          Tokens e logs (NUNCA publica)
-├── tests/            198 testes Playwright + 123 testes Python
+├── tests/            Testes Playwright, Python e contratos de dados
 ├── docs/             Documentação interna
 └── .gitignore        Proteção contra commit de segredos
 ```
 
-**Produto oficial:** a versão publicada é sempre o pacote `dist/fiscaliza-varginha-painel.zip`, gerado por `npm run deploy:zip` e aprovado por `npm run validate:deploy` (ambos executados por `npm run release`). O destino suportado é Hostinger/Apache.
+**Produto oficial:** a versão publicada é sempre o pacote `dist/fiscaliza-varginha-painel.zip`, gerado por `npm run deploy:zip` e aprovado por `npm run validate:deploy` (ambos executados por `npm run release`). O destino suportado é Hostinger/Apache. A validação também compara o ZIP com os arquivos preparados e executa testes HTTP sobre o pacote real, incluindo fontes e cache offline.
 O diretório `dashboard/`, quando existir, deve ser tratado como laboratório/migração futura e não entra no pacote oficial enquanto não houver plano de migração documentado.
 
 ---
