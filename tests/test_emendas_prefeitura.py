@@ -46,6 +46,21 @@ class ChaveTests(unittest.TestCase):
         self.assertEqual(col.chave("Estaduais", "10662/2025"), "10662")
         self.assertEqual(col.chave("Estaduais", "193883"), "193883")
 
+    def test_federal_aceita_numero_com_ponto_de_milhar(self):
+        """O relatorio publica "6.916/2025"; o painel guarda o mesmo formato."""
+        self.assertEqual(col.chave("Federais", "6.916/2025"), "6916/2025")
+
+    def test_estadual_aceita_codigo_alfanumerico_do_plano(self):
+        """Parte dos registros de 2026 usa "S256-162/2026" em vez do numero."""
+        self.assertEqual(col.chave("Estaduais", "S256-162/2026"), "S256-162")
+        self.assertEqual(col.chave("Estaduais", "R2936-70/2026"), "R2936-70")
+
+    def test_regex_de_codigo_cobre_os_seis_formatos_reais(self):
+        """Formato nao previsto some do confronto em silencio, sem erro."""
+        for bruto in ("193883", "10662/2025", "S256-162/2026",
+                      "6.916/2025", "202627540001", "01/2024"):
+            self.assertIsNotNone(col.RE_CODIGO.match(bruto), bruto)
+
     def test_vazio_devolve_none_em_vez_de_chave_falsa(self):
         for esfera in ("Federais", "Municipal", "Estaduais"):
             self.assertIsNone(col.chave(esfera, ""))

@@ -44,7 +44,16 @@ PORTAL = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/
 # O codigo da emenda muda de formato entre exercicios: "10662/2025" com barra em
 # 2025 e "193883" sem barra em 2026. Aceitar so um formato zera a leitura do
 # outro ano inteiro, em silencio.
-RE_CODIGO = re.compile(r"^0*(\d{2,12})(?:/(\d{4}))?$")
+# Formatos reais nos relatorios, um por esfera/exercicio:
+#   "193883"          estadual 2026, numero puro
+#   "10662/2025"      estadual 2025, numero com o ano colado
+#   "S256-162/2026"   estadual 2026, codigo alfanumerico do plano de acao
+#   "6.916/2025"      federal 2025, numero com ponto de milhar
+#   "202627540001"    federal, codigo de 12 digitos
+#   "01/2024"         municipal, numero/ano
+# Aceitar so um formato zera a leitura do outro em silencio: era assim que
+# 14 emendas ficavam invisiveis para o confronto.
+RE_CODIGO = re.compile(r"^0*([A-Z]?[\d.]{1,14}(?:-\d+)?)(?:/(\d{4}))?$")
 RE_VALOR = re.compile(r"^[\d.]+,\d{2}$")
 
 
@@ -141,7 +150,13 @@ def chave(esfera: str, bruto: str, ano_relatorio=None) -> str | None:
         return None
     if esfera == "Federais":
         achado = re.search(r"\b(20\d{10})\b", bruto)
-        return achado.group(1) if achado else None
+        if achado:
+            return achado.group(1)
+        # O relatorio tambem publica "6.916/2025", que o painel guarda igual.
+        achado = re.match(r"^([\d.]+)/(\d{4})$", bruto)
+        if not achado:
+            return None
+        return achado.group(1).replace(".", "") + "/" + achado.group(2)
     if esfera == "Municipal":
         achado = re.match(r"^0*(\d{1,4})\s*/\s*(\d{4})$", bruto)
         if achado:
@@ -152,7 +167,12 @@ def chave(esfera: str, bruto: str, ano_relatorio=None) -> str | None:
         # ano do relatorio acusaria como ausentes 45 emendas que o painel tem.
         # Na duvida, o painel nao acusa.
         return achado.group(1) if achado else None
+    # Estadual: numero da indicacao, com ou sem o ano colado.
     achado = re.match(r"^0*(\d{2,7})(?:/\d{4})?$", bruto)
+    if achado:
+        return achado.group(1)
+    # Alguns registros de 2026 usam codigo alfanumerico do plano de acao.
+    achado = re.match(r"^([A-Z]\d+-\d+)(?:/\d{4})?$", bruto)
     return achado.group(1) if achado else None
 
 
