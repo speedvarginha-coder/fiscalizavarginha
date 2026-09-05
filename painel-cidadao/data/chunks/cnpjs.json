@@ -12,7 +12,7 @@
       "uf": "MG",
       "socios": [],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 3025329.68,
+      "valor_emendas": 3005329.68,
       "nomes_no_sapl": [
         "Associação Organização de Promoção ao Esporte - Vôlei do Futuro",
         "Banco de Alimentos de Varginha",
@@ -34,7 +34,7 @@
         "JOAO CARLOS OTTONI ADELL"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 1576416.21,
+      "valor_emendas": 1546416.21,
       "nomes_no_sapl": [
         "HOSPITAL REGIONAL DO SUL DE MINAS"
       ]
@@ -50,7 +50,7 @@
       "uf": "MG",
       "socios": [],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 1481926.6,
+      "valor_emendas": 1381926.6,
       "nomes_no_sapl": [
         "Fundação Hospitalar do Município de Varginha"
       ]
@@ -129,26 +129,6 @@
       ]
     },
     {
-      "cnpj": "34641336000155",
-      "razao_social": "FUNDACAO SALVAR DO CORPO DE BOMBEIROS MILITAR DE MINAS GERAIS",
-      "nome_fantasia": "FUNDACAO SALVAR",
-      "situacao": "ATIVA",
-      "abertura": "2019-08-23",
-      "cnae": "Outras atividades associativas profissionais",
-      "municipio": "BELO HORIZONTE",
-      "uf": "MG",
-      "socios": [
-        "FELLIPE AUGUSTO MACIEL DE FARIA MOTA OLIVEIRA",
-        "GLAUBER MIGUEL GONCALVES",
-        "SANDRO ALOISIO MATILDE JUNIOR"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 375000.0,
-      "nomes_no_sapl": [
-        "Fundação Salvar do Corpo de Bombeiros Militar de Minas Gerais"
-      ]
-    },
-    {
       "cnpj": "01355795000113",
       "razao_social": "ASSOCIACAO DO VOLUNTARIADO DE VARGINHA VIDA VIVA",
       "nome_fantasia": "",
@@ -164,6 +144,26 @@
       "valor_emendas": 370000.0,
       "nomes_no_sapl": [
         "ASSOCIAÇÃO DO VOLUNTARIADO DE VARGINHA VIDA VIVA"
+      ]
+    },
+    {
+      "cnpj": "34641336000155",
+      "razao_social": "FUNDACAO SALVAR DO CORPO DE BOMBEIROS MILITAR DE MINAS GERAIS",
+      "nome_fantasia": "FUNDACAO SALVAR",
+      "situacao": "ATIVA",
+      "abertura": "2019-08-23",
+      "cnae": "Outras atividades associativas profissionais",
+      "municipio": "BELO HORIZONTE",
+      "uf": "MG",
+      "socios": [
+        "FELLIPE AUGUSTO MACIEL DE FARIA MOTA OLIVEIRA",
+        "GLAUBER MIGUEL GONCALVES",
+        "SANDRO ALOISIO MATILDE JUNIOR"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 335000.0,
+      "nomes_no_sapl": [
+        "Fundação Salvar do Corpo de Bombeiros Militar de Minas Gerais"
       ]
     },
     {
@@ -347,24 +347,6 @@
       ]
     },
     {
-      "cnpj": "06222758000150",
-      "razao_social": "PRO-RIM VARGINHA-ASSOCIACAO DE RENAIS CRONICOS E TRANSPLANTADOS RENAIS DE VARGINHA E REGIAO",
-      "nome_fantasia": "PRO-RIM VARGINHA",
-      "situacao": "ATIVA",
-      "abertura": "2004-03-01",
-      "cnae": "Atividades de associações de defesa de direitos sociais",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "DANIELA BRITO CANDIDO TOSI"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 216882.42,
-      "nomes_no_sapl": [
-        "ASSOCIAÇÃO DE RENAIS CRÔNICOS E TRANSPLANTADOS RENAIS DE VARGINHA E REGIÃO"
-      ]
-    },
-    {
       "cnpj": "41884263000198",
       "razao_social": "ASSOCIACAO OFICINA DO SER",
       "nome_fantasia": "",
@@ -438,6 +420,24 @@
       ]
     },
     {
+      "cnpj": "06222758000150",
+      "razao_social": "PRO-RIM VARGINHA-ASSOCIACAO DE RENAIS CRONICOS E TRANSPLANTADOS RENAIS DE VARGINHA E REGIAO",
+      "nome_fantasia": "PRO-RIM VARGINHA",
+      "situacao": "ATIVA",
+      "abertura": "2004-03-01",
+      "cnae": "Atividades de associações de defesa de direitos sociais",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "DANIELA BRITO CANDIDO TOSI"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 166882.42,
+      "nomes_no_sapl": [
+        "ASSOCIAÇÃO DE RENAIS CRÔNICOS E TRANSPLANTADOS RENAIS DE VARGINHA E REGIÃO"
+      ]
+    },
+    {
       "cnpj": "30910100000116",
       "razao_social": "ASSOCIACAO VETERANA DE BASQUETEBOL",
       "nome_fantasia": "",
@@ -450,7 +450,7 @@
         "ADELGICIO MONTEIRO FERREIRA JUNIOR"
       ],
       "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 152000.0,
+      "valor_emendas": 160000.0,
       "nomes_no_sapl": [
         "Associação Esportiva e Eventos de Minas Gerais",
         "Associação Veterana de Basquete"
@@ -709,24 +709,6 @@
       ]
     },
     {
-      "cnpj": "20555901000157",
-      "razao_social": "ASSOCIACAO CULTURAL CASA DA CAPOEIRA",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "2014-06-09",
-      "cnae": "Atividades de organizações associativas ligadas à cultura e à arte",
-      "municipio": "VARGINHA",
-      "uf": "MG",
-      "socios": [
-        "LUIS GUSTAVO DE SOUZA ROSA"
-      ],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 91011.11,
-      "nomes_no_sapl": [
-        "Associação Cultural Casa da Capoeira"
-      ]
-    },
-    {
       "cnpj": "14137358000175",
       "razao_social": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
       "nome_fantasia": "ASSOCIACAO CULTURAL BATERIA NOTA DEZ",
@@ -912,6 +894,24 @@
       ]
     },
     {
+      "cnpj": "20555901000157",
+      "razao_social": "ASSOCIACAO CULTURAL CASA DA CAPOEIRA",
+      "nome_fantasia": "",
+      "situacao": "ATIVA",
+      "abertura": "2014-06-09",
+      "cnae": "Atividades de organizações associativas ligadas à cultura e à arte",
+      "municipio": "VARGINHA",
+      "uf": "MG",
+      "socios": [
+        "LUIS GUSTAVO DE SOUZA ROSA"
+      ],
+      "fonte": "BrasilAPI / base pública da Receita Federal",
+      "valor_emendas": 60000.0,
+      "nomes_no_sapl": [
+        "Associação Cultural Casa da Capoeira"
+      ]
+    },
+    {
       "cnpj": "02277313000117",
       "razao_social": "GMAG - GRUPO MARANATHA DE ART' GLOBAL",
       "nome_fantasia": "ASSOCIACAO ARTISTICA E ASSISTENCIAL RUSSILVANIA GALO",
@@ -965,22 +965,6 @@
       "valor_emendas": 55000.0,
       "nomes_no_sapl": [
         "ESPORTE CLUBE MINAS RUGBY"
-      ]
-    },
-    {
-      "cnpj": "17220203000196",
-      "razao_social": "CENTRO FEDERAL DE EDUCACAO TECNOLOGICA DE MINAS GERAIS",
-      "nome_fantasia": "",
-      "situacao": "ATIVA",
-      "abertura": "1973-11-12",
-      "cnae": "Educação profissional de nível técnico",
-      "municipio": "BELO HORIZONTE",
-      "uf": "MG",
-      "socios": [],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 50000.0,
-      "nomes_no_sapl": [
-        "Centro Federal de Educação Tecnológica de Minas Gerais"
       ]
     },
     {
@@ -1218,22 +1202,6 @@
       "valor_emendas": 30416.42,
       "nomes_no_sapl": [
         "Associação Mãos Estendidas"
-      ]
-    },
-    {
-      "cnpj": "18715532000170",
-      "razao_social": "POLICIA CIVIL DO ESTADO DE MINAS GERAIS",
-      "nome_fantasia": "POLICIA CIVIL DO ESTADO DE MINAS GERAIS",
-      "situacao": "ATIVA",
-      "abertura": "1974-12-31",
-      "cnae": "Defesa",
-      "municipio": "BELO HORIZONTE",
-      "uf": "MG",
-      "socios": [],
-      "fonte": "BrasilAPI / base pública da Receita Federal",
-      "valor_emendas": 30000.0,
-      "nomes_no_sapl": [
-        "POLICIA CIVIL DE MINAS GERAIS"
       ]
     },
     {
@@ -1510,12 +1478,21 @@
     }
   ],
   "erros": [],
-  "invalidos": [],
+  "invalidos": [
+    {
+      "cnpj": "17220303000196",
+      "motivo": "digitos verificadores invalidos na fonte de origem",
+      "valor_emendas": 50000.0,
+      "beneficiarios": [
+        "Centro Federal de Educação Tecnológica de Minas Gerais"
+      ]
+    }
+  ],
   "resumo": {
-    "consultados": 83,
+    "consultados": 81,
     "falhas": 0,
-    "invalidos_na_fonte": 0,
-    "cnpjs_candidatos": 83
+    "invalidos_na_fonte": 1,
+    "cnpjs_candidatos": 82
   },
   "observacao": "Uso auxiliar. Para documento oficial, conferir comprovante de inscrição no site da Receita Federal.",
   "fornecedores": [
@@ -1845,7 +1822,7 @@
       "cnpj_raiz": "17155730",
       "cnpj_completo": "17155730000164",
       "cnpj_reconstruido": true,
-      "valor_total": 3216637.94,
+      "valor_total": 3206047.18,
       "razao_social": "COMPANHIA ENERGETICA DE MINAS GERAIS-CEMIG",
       "nome_fantasia": "",
       "situacao": "ATIVA",

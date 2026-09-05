@@ -7,7 +7,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
     "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
     "arquivoEtag": "\"91bf96-651b6f71c7900\"",
     "arquivoUltimaModificacao": "Wed, 13 May 2026 18:15:32 GMT",
-    "extraidoEm": "2026-09-04T17:52:39-03:00",
+    "extraidoEm": "2026-09-05T08:52:06-03:00",
     "codigoIbge": "3170701",
     "planilha": "12-05",
     "colunasOriginais": [
@@ -290,7 +290,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 30434,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -391,7 +391,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29903,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -492,7 +492,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29831,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -601,7 +601,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 27658,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -694,7 +694,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29988,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -776,7 +776,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29989,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -881,7 +881,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29987,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -986,7 +986,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 26728,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1091,7 +1091,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 34409,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1196,7 +1196,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 30522,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1301,7 +1301,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29839,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1410,7 +1410,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29838,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1519,7 +1519,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29832,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1628,7 +1628,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29830,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1737,7 +1737,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29829,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1846,7 +1846,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29828,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -1951,7 +1951,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29827,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2056,7 +2056,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 34393,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2149,7 +2149,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 35303,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2258,7 +2258,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 28869,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2367,7 +2367,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29169,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2460,7 +2460,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29168,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2553,7 +2553,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29167,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2646,7 +2646,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29166,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2739,7 +2739,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29165,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2832,7 +2832,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29164,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -2925,7 +2925,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 29163,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3018,7 +3018,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 34791,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3123,7 +3123,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 26866,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3228,7 +3228,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 36011,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3333,7 +3333,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 32940,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3442,7 +3442,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 41169,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3526,7 +3526,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 41095,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3610,7 +3610,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 40838,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3694,7 +3694,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 40826,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3778,7 +3778,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 25297,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3871,7 +3871,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 25267,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -3964,7 +3964,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 24829,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4057,7 +4057,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 24825,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4150,7 +4150,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 24756,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4243,7 +4243,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 23140,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4336,7 +4336,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 22848,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4429,7 +4429,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 22381,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4522,7 +4522,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 21206,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4615,7 +4615,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 21155,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4708,7 +4708,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 20275,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4801,7 +4801,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 20274,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4894,7 +4894,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 20060,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -4987,7 +4987,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 19787,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5080,7 +5080,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 19345,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5173,7 +5173,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 34996,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5257,7 +5257,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 19099,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5350,7 +5350,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 19078,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5443,7 +5443,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17837,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5536,7 +5536,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17736,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5629,7 +5629,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17618,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5722,7 +5722,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17613,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5815,7 +5815,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17611,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -5908,7 +5908,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17459,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6001,7 +6001,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 17099,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6094,7 +6094,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 32996,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6178,7 +6178,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 32995,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6262,7 +6262,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 16835,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6363,7 +6363,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 32717,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6447,7 +6447,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 32716,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6531,7 +6531,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 32715,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6615,7 +6615,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 32714,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6699,7 +6699,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 16042,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6792,7 +6792,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 16024,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6885,7 +6885,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 15748,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -6978,7 +6978,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 15718,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7071,7 +7071,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 15643,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7164,7 +7164,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 15586,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7257,7 +7257,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 14943,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7350,7 +7350,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 14356,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7443,7 +7443,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 47971,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7527,7 +7527,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 14008,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7620,7 +7620,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 13688,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7713,7 +7713,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 13686,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7806,7 +7806,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 12284,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7899,7 +7899,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 12123,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -7992,7 +7992,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 45626,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8076,7 +8076,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 45614,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8160,7 +8160,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 10987,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8253,7 +8253,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 44030,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8337,7 +8337,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 9447,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8430,7 +8430,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 9189,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8523,7 +8523,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 8876,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8616,7 +8616,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 8436,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8709,7 +8709,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 42846,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8793,7 +8793,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 42845,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8877,7 +8877,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 42844,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -8961,7 +8961,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 8171,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9054,7 +9054,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 6767,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9147,7 +9147,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 4838,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9240,7 +9240,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3677,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9333,7 +9333,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3413,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9426,7 +9426,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3149,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9519,7 +9519,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3103,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9612,7 +9612,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3097,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9705,7 +9705,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3079,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9798,7 +9798,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3067,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9891,7 +9891,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 3066,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -9984,7 +9984,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 2499,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10077,7 +10077,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 2498,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10170,7 +10170,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 2382,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10263,7 +10263,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 1087,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10356,7 +10356,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 1068,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10449,7 +10449,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 1003,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10542,7 +10542,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 50206,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10626,7 +10626,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 50205,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10710,7 +10710,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 50201,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10794,7 +10794,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 528,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10887,7 +10887,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 476,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -10980,7 +10980,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 407,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11073,7 +11073,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 243,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11166,7 +11166,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 234,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11259,7 +11259,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 164,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11352,7 +11352,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 163,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11445,7 +11445,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "8b4cd2e8c0cdddd52fa6e0949092f7020fb9805335592ab74605c013f799863d",
         "planilha": "12-05",
         "linha": 8,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11538,7 +11538,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 30318,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11622,7 +11622,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 29279,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11706,7 +11706,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 29119,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11790,7 +11790,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 28174,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11874,7 +11874,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 27408,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -11958,7 +11958,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 26836,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12042,7 +12042,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 26333,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12126,7 +12126,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 26273,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12210,7 +12210,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 26271,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12294,7 +12294,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 26270,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12378,7 +12378,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 26267,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12462,7 +12462,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 25837,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12546,7 +12546,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 25741,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12630,7 +12630,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 25695,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12714,7 +12714,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 25532,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12798,7 +12798,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 25335,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12882,7 +12882,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 25278,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -12966,7 +12966,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 25084,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13050,7 +13050,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 24615,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13134,7 +13134,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 24606,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13218,7 +13218,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 23640,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13302,7 +13302,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 23533,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13386,7 +13386,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 20955,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13470,7 +13470,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 19036,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13554,7 +13554,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 18990,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13638,7 +13638,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 18797,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13722,7 +13722,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 18347,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13806,7 +13806,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 17858,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13890,7 +13890,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 17310,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -13974,7 +13974,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 17104,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14058,7 +14058,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 17057,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14142,7 +14142,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 17029,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14226,7 +14226,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 16918,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14310,7 +14310,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 16586,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14394,7 +14394,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 16307,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14478,7 +14478,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 16205,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14562,7 +14562,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 14543,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14646,7 +14646,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 14269,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14730,7 +14730,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 14260,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14814,7 +14814,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 14243,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14898,7 +14898,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 16013,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -14982,7 +14982,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 14113,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15066,7 +15066,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 14038,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15150,7 +15150,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 15628,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15234,7 +15234,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 15544,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15318,7 +15318,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 15472,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15402,7 +15402,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 15464,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15486,7 +15486,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 13421,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15570,7 +15570,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 13250,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15654,7 +15654,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 9863,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15738,7 +15738,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 9644,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15822,7 +15822,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 6284,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15906,7 +15906,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 8408,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -15990,7 +15990,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7970,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16074,7 +16074,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7826,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16158,7 +16158,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 6591,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16242,7 +16242,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 6569,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16326,7 +16326,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7147,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16410,7 +16410,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7144,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16494,7 +16494,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7093,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16578,7 +16578,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7092,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16662,7 +16662,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7091,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16746,7 +16746,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7089,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16830,7 +16830,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7088,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16914,7 +16914,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7087,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -16998,7 +16998,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7056,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17082,7 +17082,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 7055,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17166,7 +17166,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4972,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17250,7 +17250,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4971,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17334,7 +17334,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4970,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17418,7 +17418,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 3827,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17502,7 +17502,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4968,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17586,7 +17586,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4931,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17670,7 +17670,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 2202,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17754,7 +17754,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4955,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17838,7 +17838,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 1734,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -17922,7 +17922,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4953,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18006,7 +18006,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4951,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18090,7 +18090,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 1475,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18174,7 +18174,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4949,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18258,7 +18258,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4503,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18342,7 +18342,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4502,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18426,7 +18426,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4500,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18510,7 +18510,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4944,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18594,7 +18594,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4493,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18678,7 +18678,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4479,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18762,7 +18762,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4473,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18846,7 +18846,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4940,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -18930,7 +18930,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4939,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [
@@ -19014,7 +19014,7 @@ window.EMENDAS_ESTADUAIS_NORMALIZADAS = {
         "arquivoSha256": "d58a3611cb0885739d53a35b6ad2f7908ef0ea6a5e7726280413719ac45a10e4",
         "planilha": "15-07-2026",
         "linha": 4938,
-        "coletadoEm": "2026-09-04T17:52:39-03:00",
+        "coletadoEm": "2026-09-05T08:52:06-03:00",
         "estagiosSemInferencia": true
       },
       "fontes": [

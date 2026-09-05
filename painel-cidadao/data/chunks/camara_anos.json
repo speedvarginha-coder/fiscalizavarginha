@@ -33253,7 +33253,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-09-04T17:41:17-03:00"
+    "coletado_em": "2026-09-03T16:39:38-03:00"
   },
   "2026": {
     "resumo": {
@@ -33261,14 +33261,14 @@
       "total_materias": 936,
       "vereadores_ativos": 15,
       "emendas_qtd": 0,
-      "emendas_valor_total_brl": 0,
+      "emendas_valor_total_brl": 0.0,
       "impacto_zero_qtd": 266,
       "desfechos": {
         "lei": 37,
         "arquivado": 604,
-        "tramitando": 279,
+        "tramitando": 280,
         "encerrado": 15,
-        "sem_dado": 1
+        "sem_dado": 0
       },
       "tipos": [
         {
@@ -37267,7 +37267,7 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Alexandre Prado",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/projeto_de_decreto_legislativo69-2026.pdf",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/alexandre_comenda_dr_tulio_revisada.docx",
         "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL – DR. FERNANDO EUGÊNIO PIRES DO PRADO – AO DR. TÚLIO MAGNO DE MELO CALDONAZO.",
         "data": "2026-08-19",
         "impacto_zero": true,
@@ -37284,7 +37284,7 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Cássio Chiodi",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_legislativo70-2026.pdf",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_-_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes__edirlei_viana_da_silva.docx",
         "ementa": "CONCEDE A COMENDA DO MÉRITO PROFISSIONAL DA SEGURANÇA PÚBLICA – COMENDA ALFERES TIRADENTES AO CORONEL EDIRLEI VIANA DA SILVA, COMANDANTE DO 6º COMANDO OPERACIONAL DE BOMBEIROS.",
         "data": "2026-08-19",
         "impacto_zero": true,
@@ -37301,7 +37301,7 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Rogério Bueno",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/projeto_de_decreto_legislativo71-2026.pdf",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/rogerio_projeto_de_decreto___humanitas___rogerio_revisado.docx",
         "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL - DR. FERNANDO EUGÊNIO PIRES DO PRADO AO HOSPITAL UNIMED VARGINHA.",
         "data": "2026-08-19",
         "impacto_zero": true,
@@ -49597,7 +49597,7 @@
         "data": "2026-04-24",
         "impacto_zero": false,
         "motivo_impacto_zero": "",
-        "desfecho": "",
+        "desfecho": "tramitando",
         "tema": "geral",
         "tema_label": "Geral",
         "grau": "baixo"
@@ -57112,6 +57112,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5144"
       }
     ],
-    "coletado_em": "2026-09-04T17:41:17-03:00"
+    "coletado_em": "2026-09-03T16:39:38-03:00"
   }
 }

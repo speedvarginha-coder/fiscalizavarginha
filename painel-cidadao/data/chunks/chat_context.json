@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-09-04T20:54:38.395Z",
-  "atualizado_em": "2026-09-04T17:48:38",
+  "gerado_em": "2026-09-04T13:42:17.287Z",
+  "atualizado_em": "2026-09-03T16:45:53",
   "regras_editoriais": [
     "Valores de períodos diferentes não devem ser somados nem comparados sem explicação.",
     "Ausência em cruzamento automático não prova ausência de pagamento ou irregularidade.",
@@ -11,11 +11,11 @@
   ],
   "prefeitura": {
     "ano": 2026,
-    "total_pago_fornecedores_externos": 262215998.78,
+    "total_pago_fornecedores_externos": 262053176.45,
     "credores_mapeados": 10000,
-    "contratos_total": 1336,
-    "contratos_do_ano": 509,
-    "contratos_em_execucao": 1275,
+    "contratos_total": 1334,
+    "contratos_do_ano": 507,
+    "contratos_em_execucao": 1273,
     "obras_publicas": 130,
     "top_fornecedores": [
       {
@@ -120,10 +120,10 @@
   },
   "diarias": {
     "prefeitura": {
-      "registros": 6047,
-      "valor_total": 2456110.84,
-      "quantidade_total": 6047,
-      "servidores": 305
+      "registros": 6025,
+      "valor_total": 2454318.45,
+      "quantidade_total": 6025,
+      "servidores": 303
     },
     "camara": {
       "registros": 244,

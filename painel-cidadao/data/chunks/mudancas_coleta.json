@@ -1,67 +1,50 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-09-04T20:54:36.764Z",
+  "gerado_em": "2026-09-04T13:42:16.496Z",
   "modo": "comparacao",
   "atual": {
-    "snapshot_id": "2026-09-04T17-48-38-00b7fd8a",
-    "coleta_iso": "2026-09-04T17:48:38",
-    "data_humana": "04/09/2026 - 17:48",
-    "arquivo": "data/snapshots/2026-09-04T17-48-38-00b7fd8a.json"
-  },
-  "anterior": {
-    "snapshot_id": "2026-09-03T16-45-53-b666b284",
+    "snapshot_id": "2026-09-03T16-45-53-789edf1f",
     "coleta_iso": "2026-09-03T16:45:53",
     "data_humana": "03/09/2026 - 16:45",
-    "arquivo": "",
-    "origem": "backup_pre_coleta"
+    "arquivo": "data/snapshots/2026-09-03T16-45-53-789edf1f.json"
+  },
+  "anterior": {
+    "snapshot_id": "2026-09-03T15-46-54-14525cfb",
+    "coleta_iso": "2026-09-03T15:46:54",
+    "data_humana": "03/09/2026 - 15:46",
+    "arquivo": "data/snapshots/2026-09-03T15-46-54-14525cfb.json",
+    "origem": "chunks"
   },
   "resumo": {
-    "novos_contratos": 2,
+    "novos_contratos": 1,
     "contratos_valor_alterado": 0,
     "novos_fornecedores_relevantes": 0,
     "novas_edicoes_diario": 1,
     "pendencias_novas": 0,
-    "pendencias_resolvidas": 1,
+    "pendencias_resolvidas": 0,
     "asfalto_novos": 0,
-    "valor_novo_brl": 0,
+    "valor_novo_brl": 14000,
     "valor_delta_brl": 0,
-    "total_mudancas": 4
+    "total_mudancas": 2
   },
   "itens": [
     {
       "tipo": "nova_edicao_diario",
       "prioridade": "media",
-      "titulo": "Nova edicao do Diario Oficial 1882",
+      "titulo": "Nova edicao do Diario Oficial 1881",
       "detalhe": "Edicao ordinaria publicada na fonte oficial.",
-      "data": "2026-09-04",
-      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/289/"
+      "data": "2026-09-03",
+      "url": "https://www.varginha.mg.gov.br/portal/diario-oficial/ver/288/"
     },
     {
       "tipo": "novo_contrato",
       "prioridade": "baixa",
-      "titulo": "Novo contrato 188/2026 - CRIATIVA SOLUCOES PARA CONSTRUCAO LTDA",
-      "detalhe": "Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
+      "titulo": "Novo contrato 0/2026 - VIU MIDIAS",
+      "detalhe": "Aquisição e Instalação de Placas e Adesivos Internos e Externos para UPA",
       "orgao": "Prefeitura",
-      "data": "2026-08-28",
-      "valor_brl": 0,
-      "alvo_id": "PREFEITURA-2026-188"
-    },
-    {
-      "tipo": "novo_contrato",
-      "prioridade": "baixa",
-      "titulo": "Novo contrato 189/2026 - GABRIELA MATERIAIS PARA CONSTRUCAO LTDA",
-      "detalhe": "Registro de preços para o futuro e eventual fornecimento de revestimento cerâmico",
-      "orgao": "Prefeitura",
-      "data": "2026-08-28",
-      "valor_brl": 0,
-      "alvo_id": "PREFEITURA-2026-189"
-    },
-    {
-      "tipo": "pendencia_resolvida",
-      "prioridade": "baixa",
-      "titulo": "Pendencia saiu da fila: CNPJ invalido na fonte de origem",
-      "detalhe": "1 CNPJ(s) tem digitos verificadores invalidos e nao foi consultado nas bases auxiliares. O sistema preserva o valor informado, mas nao atribui cadastro a outra empresa por aproximacao.",
-      "fonte": "cnpjs.json"
+      "data": "2026-09-03",
+      "valor_brl": 14000,
+      "alvo_id": "PREFEITURA-2026-0"
     }
   ],
   "avisos": []

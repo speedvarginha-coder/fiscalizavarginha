@@ -1,23 +1,23 @@
 {
-  "gerado_em": "2026-09-04T20:54:35.234Z",
+  "gerado_em": "2026-09-04T20:07:18.528Z",
   "level": "attention",
   "summary": {
     "errors": 0,
-    "warnings": 10,
+    "warnings": 11,
     "info": 1,
     "ok": 1,
-    "total": 12
+    "total": 13
   },
   "atualizado_base": {
-    "iso": "2026-09-04T17:48:38",
-    "data_humana": "04/09/2026 - 17:48"
+    "iso": "2026-09-03T16:45:53",
+    "data_humana": "03/09/2026 - 16:45"
   },
   "items": [
     {
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 1.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -36,6 +36,14 @@
       "detail": "A base PNCP serve para cruzamento e pode nao retornar todos os registros do municipio.",
       "action": "Conferir manualmente no PNCP quando o contrato for sensivel.",
       "source": "pncp.json"
+    },
+    {
+      "severity": "warning",
+      "id": "cnpj-invalidos-na-fonte",
+      "title": "CNPJ invalido na fonte de origem",
+      "detail": "1 CNPJ(s) tem digitos verificadores invalidos e nao foi consultado nas bases auxiliares. O sistema preserva o valor informado, mas nao atribui cadastro a outra empresa por aproximacao.",
+      "action": "Conferir o documento da emenda ou pedir correcao do CNPJ ao orgao responsavel pela publicacao.",
+      "source": "cnpjs.json"
     },
     {
       "severity": "warning",
@@ -60,7 +68,7 @@
       "severity": "warning",
       "id": "contratos-PREFEITURA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Prefeitura",
-      "detail": "1336 de 1336 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "1334 de 1334 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "prefeitura.json"
     },
@@ -172,7 +180,7 @@
       "severity": "ok",
       "id": "base-recente",
       "title": "Base principal recente",
-      "detail": "Ultima coleta principal ha 0.0 dias.",
+      "detail": "Ultima coleta principal ha 1.0 dias.",
       "action": "Manter rotina automatica ativa.",
       "source": "atualizado_em.json"
     },
@@ -191,6 +199,14 @@
       "detail": "A base PNCP serve para cruzamento e pode nao retornar todos os registros do municipio.",
       "action": "Conferir manualmente no PNCP quando o contrato for sensivel.",
       "source": "pncp.json"
+    },
+    {
+      "severity": "warning",
+      "id": "cnpj-invalidos-na-fonte",
+      "title": "CNPJ invalido na fonte de origem",
+      "detail": "1 CNPJ(s) tem digitos verificadores invalidos e nao foi consultado nas bases auxiliares. O sistema preserva o valor informado, mas nao atribui cadastro a outra empresa por aproximacao.",
+      "action": "Conferir o documento da emenda ou pedir correcao do CNPJ ao orgao responsavel pela publicacao.",
+      "source": "cnpjs.json"
     },
     {
       "severity": "warning",
@@ -215,7 +231,7 @@
       "severity": "warning",
       "id": "contratos-PREFEITURA-sem-modalidade",
       "title": "Modalidade de compra ausente em contratos da Prefeitura",
-      "detail": "1336 de 1336 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
+      "detail": "1334 de 1334 contrato(s) nao informam modalidade no retorno contratual da fonte. Numero, objeto, contratado, valor e datas permanecem publicados quando disponiveis, mas o contrato isolado nao permite classificar a origem como licitacao, dispensa ou inexigibilidade.",
       "action": "Cruzar o contrato com a consulta de licitacoes/compras diretas ou solicitar o processo antes de classificar a forma de contratacao.",
       "source": "prefeitura.json"
     },

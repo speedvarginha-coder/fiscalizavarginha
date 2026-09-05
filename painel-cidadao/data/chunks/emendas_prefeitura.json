@@ -2,15 +2,15 @@
   "schema_version": 1,
   "fonte": "Relatorios de emendas da Prefeitura de Varginha (Betha, consulta 295943)",
   "fontePagina": "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/295943",
-  "geradoEm": "2026-09-04T20:41:05.063262+00:00",
+  "geradoEm": "2026-09-04T17:14:28.059535+00:00",
   "criterio": "Compara o codigo de cada emenda do relatorio da Prefeitura com as bases de origem do painel. Divergencia e registrada, nunca corrigida por inferencia.",
   "limitacao": "Ausencia aqui nao prova irregularidade: pode ser numeracao interna da Prefeitura, emenda ainda nao publicada pela origem ou instrumento que nao transita pelo registro municipal. Serve como ponto de partida para conferir na fonte primaria.",
   "resumo": {
     "relatorios": 6,
-    "emendasSemCorrespondencia": 15,
-    "valorSemCorrespondencia": 3802788.0,
-    "relatoriosLidosPorInteiro": 4,
-    "emendasNaoLidas": 4
+    "emendasSemCorrespondencia": 7,
+    "valorSemCorrespondencia": 3452788.0,
+    "relatoriosLidosPorInteiro": 3,
+    "emendasNaoLidas": 14
   },
   "porRelatorio": [
     {
@@ -73,12 +73,12 @@
       "ano": 2025,
       "publicadoEm": null,
       "emendasNoRelatorio": 28,
-      "emendasLidas": 25,
+      "emendasLidas": 23,
       "leituraCompleta": false,
-      "totalNoRelatorio": 5549052.0,
+      "totalNoRelatorio": 5149052.0,
       "semCorrespondenciaNoPainel": [],
       "valorSemCorrespondencia": 0,
-      "codigoIlegivel": 18
+      "codigoIlegivel": 16
     },
     {
       "esfera": "Municipal",
@@ -97,60 +97,11 @@
       "ano": 2026,
       "publicadoEm": null,
       "emendasNoRelatorio": 20,
-      "emendasLidas": 20,
-      "leituraCompleta": true,
-      "totalNoRelatorio": 2850000.0,
-      "semCorrespondenciaNoPainel": [
-        {
-          "codigo": "S256-162",
-          "valor": 0.0,
-          "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA - 18.240.119/0001-05",
-          "chave": "S256-162"
-        },
-        {
-          "codigo": "R2936-70",
-          "valor": 0.0,
-          "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA - 18.240.119/0001-05",
-          "chave": "R2936-70"
-        },
-        {
-          "codigo": "R2941-70",
-          "valor": 0.0,
-          "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA - 18.240.119/0001-05",
-          "chave": "R2941-70"
-        },
-        {
-          "codigo": "R2943-70",
-          "valor": 100000.0,
-          "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA - 18.240.119/0001-05",
-          "chave": "R2943-70"
-        },
-        {
-          "codigo": "R2947-70",
-          "valor": 0.0,
-          "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA - 18.240.119/0001-05",
-          "chave": "R2947-70"
-        },
-        {
-          "codigo": "R3009-68",
-          "valor": 100000.0,
-          "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA - 18.240.119/0001-05",
-          "chave": "R3009-68"
-        },
-        {
-          "codigo": "R3014-68",
-          "valor": 150000.0,
-          "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA - 18.240.119/0001-05",
-          "chave": "R3014-68"
-        },
-        {
-          "codigo": "R2129-606",
-          "valor": 0.0,
-          "beneficiario": "PREFEITURA DO MUNICIPIO DE VARGINHA - 18.240.119/0001-05",
-          "chave": "R2129-606"
-        }
-      ],
-      "valorSemCorrespondencia": 350000.0,
+      "emendasLidas": 12,
+      "leituraCompleta": false,
+      "totalNoRelatorio": 2500000.0,
+      "semCorrespondenciaNoPainel": [],
+      "valorSemCorrespondencia": 0,
       "codigoIlegivel": 0
     },
     {

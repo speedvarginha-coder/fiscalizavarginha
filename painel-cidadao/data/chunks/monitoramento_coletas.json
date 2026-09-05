@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-04T20:54:31.130Z",
+  "generated_at": "2026-09-03T21:13:21.763Z",
   "last_completed_run": {
     "schema_version": 1,
-    "updated_at": "2026-09-04T20:02:43.227Z",
-    "finished_at": "2026-09-04T20:02:43.227Z",
+    "updated_at": "2026-09-03T21:00:40.642Z",
+    "finished_at": "2026-09-03T21:00:40.642Z",
     "coleta": "FALHA",
     "deploy": "PULADO",
     "whatsapp": "PULADO",
@@ -12,8 +12,8 @@
   },
   "last_verified_deployment": {
     "status": "SUCESSO",
-    "checked_at": "2026-09-04T20:44:39.121Z",
-    "manifest_sha256": "171ca27456501e13b6622a1fc7c566645c2deec84048a33c2fb02060b367032f",
+    "checked_at": "2026-09-03T21:04:38.948Z",
+    "manifest_sha256": "c7655d5048b909c0e67913dbf19fe42963ba5c4465a9d16ec28cd0c4be9260e4",
     "url": "https://fiscalizavarginha.com.br/"
   },
   "summary": {
@@ -35,7 +35,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T19:45:53.000Z",
       "checked_at": "2026-09-03T19:45:53.000Z",
-      "age_days": 1,
+      "age_days": 0.1,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -55,7 +55,7 @@
       "status": "partial",
       "source_updated_at": "2026-09-03T19:44:59.000Z",
       "checked_at": "2026-09-03T19:44:59.000Z",
-      "age_days": 1,
+      "age_days": 0.1,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -65,7 +65,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T09:26:00.000Z",
       "checked_at": "2026-09-03T09:26:00.000Z",
-      "age_days": 1.4,
+      "age_days": 0.5,
       "max_age_days": 31,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -75,7 +75,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T09:06:31.000Z",
       "checked_at": "2026-09-03T09:06:31.000Z",
-      "age_days": 1.5,
+      "age_days": 0.5,
       "max_age_days": 15,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -84,7 +84,7 @@
       "label": "Recursos federais / Transferegov",
       "status": "preserved",
       "source_updated_at": null,
-      "checked_at": "2026-09-04T08:17:00.705Z",
+      "checked_at": "2026-09-03T19:42:41.720Z",
       "age_days": null,
       "max_age_days": 2,
       "reason": "Base anterior preservada. A tentativa recente não comprova a atualização integral; a data da última base completa não foi informada."
@@ -105,7 +105,7 @@
       "status": "partial",
       "source_updated_at": "2026-09-03T09:26:06.000Z",
       "checked_at": "2026-09-03T09:26:06.000Z",
-      "age_days": 1.4,
+      "age_days": 0.5,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
@@ -115,7 +115,7 @@
       "status": "partial",
       "source_updated_at": "2026-09-03T19:48:48.193Z",
       "checked_at": "2026-09-03T19:48:48.193Z",
-      "age_days": 1,
+      "age_days": 0.1,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -135,7 +135,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T19:39:38.000Z",
       "checked_at": "2026-09-03T19:39:38.000Z",
-      "age_days": 1,
+      "age_days": 0.1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -145,7 +145,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T19:46:04.000Z",
       "checked_at": "2026-09-03T19:46:04.000Z",
-      "age_days": 1,
+      "age_days": 0.1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -155,7 +155,7 @@
       "status": "ok",
       "source_updated_at": "2026-09-03T19:47:54.000Z",
       "checked_at": "2026-09-03T19:47:54.000Z",
-      "age_days": 1,
+      "age_days": 0.1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     }
