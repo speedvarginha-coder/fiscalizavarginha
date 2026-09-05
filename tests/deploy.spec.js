@@ -16,17 +16,27 @@ test("pacote entrega emendas corrigidas e a referência documental", async ({ pa
   await expect(page.locator("#detailBody")).toContainText("Dudu Ottoni: R$ 5.000,00");
 });
 
-test("pacote inclui referência PNTP e abre os critérios de Varginha", async ({ page }) => {
-  await page.goto("/index.html#auditometro");
-  await expect(page.getByRole("heading", { name: "Auditômetro de Transparência", exact: true })).toHaveCount(1);
-  await expect(page.locator(".transp-radar #pntpPanel")).toHaveCount(1);
-  await expect(page.locator(".pntp-card__score")).toHaveCount(2);
-  await expect(page.locator("#scorePrefeitura .pntp-card__score")).toHaveText("81,80%");
-  await page.locator('[data-pntp-orgao="camara"][data-pntp-filtro="pendentes"]').click();
-  await expect(page.locator("#pntpCriteria li")).toHaveCount(112);
-  await page.getByRole("button", { name: "Fechar critérios" }).click();
-  await page.locator("#auditometro").scrollIntoViewIfNeeded();
-  await page.screenshot({ path: "tmp/auditometro-azul-desktop.png" });
+test("pacote publica o Radar da Transparencia com os numeros da base oficial", async ({ page, request }) => {
+  // O bloco voltou a ser o Radar, por decisao editorial: o painel do
+  // Auditometro saiu da pagina inicial. O que este teste garante e o que
+  // importa nos dois casos — o pacote publicado carrega a referencia oficial e
+  // exibe indice e nivel iguais aos dela, sem chamar de validado o que a fonte
+  // diz nao ser.
+  const fonte = await (await request.get("/data/referencias/pntp-2025.json")).json();
+  await page.goto("/index.html#radar-transparencia");
+  const bloco = page.locator("#radar-transparencia");
+  await expect(bloco).toHaveCount(1);
+  await expect(bloco.locator(".transp-card")).toHaveCount(2);
+  for (const [chave, rotulo] of [["prefeitura", "Prefeitura de Varginha"], ["camara", "Câmara de Varginha"]]) {
+    const cartao = bloco.locator(".transp-card", { has: page.locator(`.transp-card__orgao:text-is("${rotulo}")`) });
+    await expect(cartao.locator(".transp-card__indice")).toContainText(
+      fonte.orgaos[chave].indice.toLocaleString("pt-BR", { maximumFractionDigits: 1 }),
+    );
+    await expect(cartao).toContainText(`Nível ${fonte.orgaos[chave].nivel}`);
+  }
+  await expect(bloco).toContainText("não constam como validados ou revisados");
+  await bloco.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: "tmp/radar-transparencia-desktop.png" });
 });
 
 test("pacote abre Conformidade, carrega a fonte e instala cache offline", async ({ page, request }) => {
