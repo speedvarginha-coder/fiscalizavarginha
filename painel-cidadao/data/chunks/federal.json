@@ -1,10 +1,10 @@
 {
   "fonte": "Portal da Transparência Federal (CGU) — dados abertos e APIs oficiais",
-  "atualizado_em": "2026-09-05T05:17:12.113589",
+  "atualizado_em": "2026-09-05T11:25:22.497271",
   "resumo": {
     "municipio": "Varginha-MG",
     "codigoIbge": "3170701",
-    "atualizadoEm": "05/09/2026 05:17",
+    "atualizadoEm": "05/09/2026 11:25",
     "emendas": {
       "qtd": 104,
       "totalAgregadoFavorecidos": 23370041.99,
@@ -24,8 +24,8 @@
     "convenios": {
       "qtd": 165,
       "qtdAtivos": 13,
-      "totalValor": 65977941.12,
-      "totalRecebido": 50858806.3
+      "totalValor": 63298209.12,
+      "totalRecebido": 48359056.3
     },
     "alertasCeis": {
       "qtd": 0,
@@ -2596,7 +2596,7 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-88110"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-05T08:17:04.652911+00:00",
+      "evidenciasConsultadasEm": "2026-09-05T14:25:14.867061+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=3938",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=3938",
       "valorEmpenhado": 670227.0,
@@ -2623,7 +2623,7 @@
       "conta": "32-88110",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 234573.25,
+      "saldoContaInformativo": 234665.87,
       "dataSaldoConta": "2025-12-29",
       "numeroEmpenhos": [
         "2020NE800471",
@@ -2690,7 +2690,7 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-92683"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-05T08:17:05.611443+00:00",
+      "evidenciasConsultadasEm": "2026-09-05T14:25:15.817422+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=15703",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=15703",
       "valorEmpenhado": 100000.0,
@@ -2717,7 +2717,7 @@
       "conta": "32-92683",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 87476.11,
+      "saldoContaInformativo": 87510.65,
       "dataSaldoConta": "2026-08-21",
       "numeroEmpenhos": [
         "2022NE008218"
@@ -2782,7 +2782,7 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98733"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-05T08:17:06.534280+00:00",
+      "evidenciasConsultadasEm": "2026-09-05T14:25:16.725534+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=69606",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=69606",
       "valorEmpenhado": 100000.0,
@@ -2809,7 +2809,7 @@
       "conta": "32-98733",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 54352.92,
+      "saldoContaInformativo": 54374.38,
       "dataSaldoConta": "2026-05-20",
       "numeroEmpenhos": [
         "2024NE005673"
@@ -2874,7 +2874,7 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98732"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-05T08:17:07.720252+00:00",
+      "evidenciasConsultadasEm": "2026-09-05T14:25:17.747682+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=70376",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=70376",
       "valorEmpenhado": 50000.0,
@@ -2901,7 +2901,7 @@
       "conta": "32-98732",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 59676.89,
+      "saldoContaInformativo": 59700.45,
       "dataSaldoConta": "2024-12-13",
       "numeroEmpenhos": [
         "2024NE005672"
@@ -2966,7 +2966,7 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98731"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-05T08:17:08.668519+00:00",
+      "evidenciasConsultadasEm": "2026-09-05T14:25:18.737976+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=72397",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=72397",
       "valorEmpenhado": 1000000.0,
@@ -2993,7 +2993,7 @@
       "conta": "32-98731",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 174273.1,
+      "saldoContaInformativo": 174341.91,
       "dataSaldoConta": "2024-12-17",
       "numeroEmpenhos": [
         "2024NE005609"
@@ -3058,7 +3058,7 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-98734"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-05T08:17:09.554551+00:00",
+      "evidenciasConsultadasEm": "2026-09-05T14:25:19.705178+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=75109",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=75109",
       "valorEmpenhado": 200000.0,
@@ -3085,7 +3085,7 @@
       "conta": "32-98734",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 238627.69,
+      "saldoContaInformativo": 238721.91,
       "dataSaldoConta": "2024-12-16",
       "numeroEmpenhos": [
         "2024NE005661"
@@ -3141,7 +3141,7 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/ordens-pagamentos-ordens-bancarias-especiais?id_dh=70207"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-05T08:17:10.497263+00:00",
+      "evidenciasConsultadasEm": "2026-09-05T14:25:20.706839+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=86374",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=86374",
       "valorEmpenhado": 247500.0,
@@ -3246,7 +3246,7 @@
           "url": "https://api-publica.transferegov.gestao.gov.br/especiais/gestao-financeira-lancamentos-especiais?id_agencia_conta=32-106785"
         }
       ],
-      "evidenciasConsultadasEm": "2026-09-05T08:17:11.440915+00:00",
+      "evidenciasConsultadasEm": "2026-09-05T14:25:21.656679+00:00",
       "fonteRelatorioGestaoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-novos-especiais?id_plano_acao=92535",
       "fonteRelatorioGestaoLegadoUrl": "https://api-publica.transferegov.gestao.gov.br/especiais/relatorios-gestao-especiais?id_plano_acao=92535",
       "valorEmpenhado": 1194000.0,
@@ -3273,7 +3273,7 @@
       "conta": "32-106785",
       "executorTransferegov": "MUNICIPIO DE VARGINHA",
       "cnpjExecutorTransferegov": "18240119000105",
-      "saldoContaInformativo": 1219165.29,
+      "saldoContaInformativo": 1219646.65,
       "dataSaldoConta": "2026-06-23",
       "numeroEmpenhos": [
         "2026NE007169"
@@ -3936,9 +3936,9 @@
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "2004-11-04",
       "dataFinalVigencia": "2005-07-06",
-      "valor": 30000.0,
-      "valorLiberado": 30000.0,
-      "valorRecebido": 30000.0,
+      "valor": 3.0,
+      "valorLiberado": 3.0,
+      "valorRecebido": 3.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=353956441",
@@ -3956,7 +3956,7 @@
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "2005-12-29",
       "dataFinalVigencia": "2011-12-28",
-      "valor": 50000.0,
+      "valor": 5.0,
       "valorLiberado": 0.0,
       "valorRecebido": 0.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
@@ -3996,9 +3996,9 @@
       "situacao": "ADIMPLENTE",
       "dataInicioVigencia": "1998-07-01",
       "dataFinalVigencia": "1999-12-28",
-      "valor": 70000.0,
-      "valorLiberado": 140000.0,
-      "valorRecebido": 140000.0,
+      "valor": 7.0,
+      "valorLiberado": 14.0,
+      "valorRecebido": 14.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=354568655",
@@ -4056,9 +4056,9 @@
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "2008-12-31",
       "dataFinalVigencia": "2014-11-27",
-      "valor": 150000.0,
-      "valorLiberado": 150000.0,
-      "valorRecebido": 150000.0,
+      "valor": 15.0,
+      "valorLiberado": 15.0,
+      "valorRecebido": 15.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=354568847",
@@ -4076,9 +4076,9 @@
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "1998-07-03",
       "dataFinalVigencia": "1999-02-28",
-      "valor": 50000.0,
-      "valorLiberado": 50000.0,
-      "valorRecebido": 50000.0,
+      "valor": 5.0,
+      "valorLiberado": 5.0,
+      "valorRecebido": 5.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=356081166",
@@ -4096,9 +4096,9 @@
       "situacao": "NORMAL",
       "dataInicioVigencia": "2014-12-01",
       "dataFinalVigencia": "2020-04-01",
-      "valor": 1500000.0,
-      "valorLiberado": 1500000.0,
-      "valorRecebido": 1500000.0,
+      "valor": 150.0,
+      "valorLiberado": 150.0,
+      "valorRecebido": 150.0,
       "subfuncao": "{'codigoSubfuncao': '302', 'descricaoSubfuncap': 'Assistência hospitalar e ambulatorial', 'funcao': {'codigoFuncao': '10', 'descricaoFuncao': 'Saúde'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=356245067",
@@ -5416,9 +5416,9 @@
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "2008-04-30",
       "dataFinalVigencia": "2020-01-31",
-      "valor": 590000.0,
-      "valorLiberado": 590000.0,
-      "valorRecebido": 590000.0,
+      "valor": 59.0,
+      "valorLiberado": 59.0,
+      "valorRecebido": 59.0,
       "subfuncao": "{'codigoSubfuncao': '365', 'descricaoSubfuncap': 'Educação infantil', 'funcao': {'codigoFuncao': '15', 'descricaoFuncao': 'URBANISMO'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=363528445",
@@ -5436,9 +5436,9 @@
       "situacao": "CONCLUÍDO",
       "dataInicioVigencia": "2001-12-31",
       "dataFinalVigencia": "2004-12-30",
-      "valor": 40000.0,
-      "valorLiberado": 40000.0,
-      "valorRecebido": 40000.0,
+      "valor": 4.0,
+      "valorLiberado": 4.0,
+      "valorRecebido": 4.0,
       "subfuncao": "{'codigoSubfuncao': '-1', 'descricaoSubfuncap': 'Sem informação', 'funcao': {'codigoFuncao': '-1', 'descricaoFuncao': 'Sem informação'}}",
       "fonte": "API CGU /convenios",
       "linkFonte": "https://portaldatransparencia.gov.br/convenios/consulta?codigoMunicipio=3170701&numeroConvenio=363528509",
@@ -5516,7 +5516,7 @@
       "situacao": "NORMAL",
       "dataInicioVigencia": "2017-12-29",
       "dataFinalVigencia": "2021-03-31",
-      "valor": 200000.0,
+      "valor": 20.0,
       "valorLiberado": 151339.5,
       "valorRecebido": 151339.5,
       "subfuncao": "{'codigoSubfuncao': '302', 'descricaoSubfuncap': 'Assistência hospitalar e ambulatorial', 'funcao': {'codigoFuncao': '10', 'descricaoFuncao': 'Saúde'}}",
@@ -6621,7 +6621,7 @@
       "motivo": "",
       "fonte": "Transferegov.br — API de Transferências Especiais",
       "url": "https://api-publica.transferegov.gestao.gov.br/especiais",
-      "coletadoEm": "2026-09-05T08:17:11.441091+00:00",
+      "coletadoEm": "2026-09-05T14:25:21.656762+00:00",
       "cnpjBeneficiario": "18240119000105",
       "idBeneficiario": 3277,
       "planosAcao": 9,

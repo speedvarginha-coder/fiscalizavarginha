@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "gerado_em": "2026-09-04T20:07:18.531Z",
+  "gerado_em": "2026-09-05T16:05:26.837Z",
   "domains": {
     "atualizado_em": {
       "label": "Coleta principal",
       "status": "ok",
-      "source_updated_at": "2026-09-03T19:45:53.000Z",
-      "checked_at": "2026-09-03T19:45:53.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-05T14:30:18.000Z",
+      "checked_at": "2026-09-05T14:30:18.000Z",
+      "age_days": 0.1,
       "max_age_days": 3,
       "reason": "Timestamp interno dentro da janela esperada."
     },
@@ -15,7 +15,7 @@
       "label": "Prefeitura/Betha",
       "status": "preserved",
       "source_updated_at": null,
-      "checked_at": "2026-09-03T19:45:53.000Z",
+      "checked_at": "2026-09-05T14:30:18.000Z",
       "age_days": null,
       "max_age_days": 7,
       "reason": "Base anterior preservada. A tentativa recente não comprova a atualização integral; a data da última base completa não foi informada."
@@ -23,35 +23,35 @@
     "camara_betha": {
       "label": "Camara/Betha",
       "status": "partial",
-      "source_updated_at": "2026-09-03T19:44:59.000Z",
-      "checked_at": "2026-09-03T19:44:59.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-05T14:29:33.000Z",
+      "checked_at": "2026-09-05T14:29:33.000Z",
+      "age_days": 0.1,
       "max_age_days": 7,
       "reason": "Metadados indicam cobertura parcial."
     },
     "pessoal": {
       "label": "Pessoal",
       "status": "ok",
-      "source_updated_at": "2026-09-03T09:26:00.000Z",
-      "checked_at": "2026-09-03T09:26:00.000Z",
-      "age_days": 1.4,
+      "source_updated_at": "2026-09-05T14:23:34.000Z",
+      "checked_at": "2026-09-05T14:23:34.000Z",
+      "age_days": 0.1,
       "max_age_days": 31,
       "reason": "Timestamp interno dentro da janela esperada."
     },
     "pncp": {
       "label": "PNCP",
-      "status": "ok",
-      "source_updated_at": "2026-09-03T09:06:31.000Z",
-      "checked_at": "2026-09-03T09:06:31.000Z",
-      "age_days": 1.5,
+      "status": "partial",
+      "source_updated_at": "2026-09-05T14:10:08.000Z",
+      "checked_at": "2026-09-05T14:10:08.000Z",
+      "age_days": 0.1,
       "max_age_days": 15,
-      "reason": "Timestamp interno dentro da janela esperada."
+      "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
     "federal": {
       "label": "Recursos federais / Transferegov",
       "status": "preserved",
       "source_updated_at": null,
-      "checked_at": "2026-09-04T08:17:00.705Z",
+      "checked_at": "2026-09-05T14:25:22.497Z",
       "age_days": null,
       "max_age_days": 2,
       "reason": "Base anterior preservada. A tentativa recente não comprova a atualização integral; a data da última base completa não foi informada."
@@ -68,18 +68,18 @@
     "fontes_emendas_2026": {
       "label": "Fontes de emendas 2026",
       "status": "partial",
-      "source_updated_at": "2026-09-03T09:26:06.000Z",
-      "checked_at": "2026-09-03T09:26:06.000Z",
-      "age_days": 1.4,
+      "source_updated_at": "2026-09-05T14:23:40.000Z",
+      "checked_at": "2026-09-05T14:23:40.000Z",
+      "age_days": 0.1,
       "max_age_days": 31,
       "reason": "Parte da coleta apresentou erro; os registros validos foram preservados."
     },
     "indice_relevancia": {
       "label": "Indice de relevancia",
       "status": "partial",
-      "source_updated_at": "2026-09-03T19:48:48.193Z",
-      "checked_at": "2026-09-03T19:48:48.193Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-05T16:05:23.197Z",
+      "checked_at": "2026-09-05T16:05:23.197Z",
+      "age_days": 0,
       "max_age_days": 31,
       "reason": "Metadados indicam cobertura parcial."
     },
@@ -95,27 +95,27 @@
     "camara_anos": {
       "label": "Camara/SAPL",
       "status": "ok",
-      "source_updated_at": "2026-09-03T19:39:38.000Z",
-      "checked_at": "2026-09-03T19:39:38.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-05T14:10:07.000Z",
+      "checked_at": "2026-09-05T14:10:07.000Z",
+      "age_days": 0.1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     },
     "publicacoes_estruturadas": {
       "label": "Publicacoes da Camara",
       "status": "ok",
-      "source_updated_at": "2026-09-03T19:46:04.000Z",
-      "checked_at": "2026-09-03T19:46:04.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-05T14:30:37.000Z",
+      "checked_at": "2026-09-05T14:30:37.000Z",
+      "age_days": 0.1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     },
     "publicacoes_diario": {
       "label": "Publicacoes do Diario",
       "status": "ok",
-      "source_updated_at": "2026-09-03T19:47:54.000Z",
-      "checked_at": "2026-09-03T19:47:54.000Z",
-      "age_days": 1,
+      "source_updated_at": "2026-09-05T14:34:04.000Z",
+      "checked_at": "2026-09-05T14:34:04.000Z",
+      "age_days": 0.1,
       "max_age_days": 7,
       "reason": "Timestamp interno dentro da janela esperada."
     }

@@ -33253,7 +33253,7 @@
       }
     ],
     "sessoes": [],
-    "coletado_em": "2026-09-03T16:39:38-03:00"
+    "coletado_em": "2026-09-05T11:10:07-03:00"
   },
   "2026": {
     "resumo": {
@@ -33261,7 +33261,7 @@
       "total_materias": 936,
       "vereadores_ativos": 15,
       "emendas_qtd": 0,
-      "emendas_valor_total_brl": 0.0,
+      "emendas_valor_total_brl": 0,
       "impacto_zero_qtd": 266,
       "desfechos": {
         "lei": 37,
@@ -33410,8 +33410,8 @@
         "nome_rua": 19,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 96.7,
-        "presenca_presentes": 59,
+        "presenca_pct": 95.1,
+        "presenca_presentes": 58,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33429,8 +33429,8 @@
         "nome_rua": 21,
         "homenagens_terceiros": 4,
         "outros": 5,
-        "presenca_pct": 98.4,
-        "presenca_presentes": 60,
+        "presenca_pct": 96.7,
+        "presenca_presentes": 59,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33448,8 +33448,8 @@
         "nome_rua": 15,
         "homenagens_terceiros": 8,
         "outros": 8,
-        "presenca_pct": 98.4,
-        "presenca_presentes": 60,
+        "presenca_pct": 96.7,
+        "presenca_presentes": 59,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33467,8 +33467,8 @@
         "nome_rua": 11,
         "homenagens_terceiros": 2,
         "outros": 4,
-        "presenca_pct": 98.4,
-        "presenca_presentes": 60,
+        "presenca_pct": 96.7,
+        "presenca_presentes": 59,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33486,8 +33486,8 @@
         "nome_rua": 3,
         "homenagens_terceiros": 6,
         "outros": 8,
-        "presenca_pct": 96.7,
-        "presenca_presentes": 59,
+        "presenca_pct": 95.1,
+        "presenca_presentes": 58,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33505,8 +33505,8 @@
         "nome_rua": 16,
         "homenagens_terceiros": 3,
         "outros": 3,
-        "presenca_pct": 95.1,
-        "presenca_presentes": 58,
+        "presenca_pct": 93.4,
+        "presenca_presentes": 57,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33524,8 +33524,8 @@
         "nome_rua": 9,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 98.4,
-        "presenca_presentes": 60,
+        "presenca_pct": 96.7,
+        "presenca_presentes": 59,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33543,8 +33543,8 @@
         "nome_rua": 9,
         "homenagens_terceiros": 6,
         "outros": 6,
-        "presenca_pct": 96.7,
-        "presenca_presentes": 59,
+        "presenca_pct": 95.1,
+        "presenca_presentes": 58,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33562,8 +33562,8 @@
         "nome_rua": 9,
         "homenagens_terceiros": 2,
         "outros": 3,
-        "presenca_pct": 98.4,
-        "presenca_presentes": 60,
+        "presenca_pct": 96.7,
+        "presenca_presentes": 59,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33581,8 +33581,8 @@
         "nome_rua": 8,
         "homenagens_terceiros": 1,
         "outros": 1,
-        "presenca_pct": 98.4,
-        "presenca_presentes": 60,
+        "presenca_pct": 96.7,
+        "presenca_presentes": 59,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33600,8 +33600,8 @@
         "nome_rua": 9,
         "homenagens_terceiros": 7,
         "outros": 7,
-        "presenca_pct": 96.7,
-        "presenca_presentes": 59,
+        "presenca_pct": 95.1,
+        "presenca_presentes": 58,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33619,8 +33619,8 @@
         "nome_rua": 20,
         "homenagens_terceiros": 5,
         "outros": 5,
-        "presenca_pct": 95.1,
-        "presenca_presentes": 58,
+        "presenca_pct": 93.4,
+        "presenca_presentes": 57,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33638,8 +33638,8 @@
         "nome_rua": 9,
         "homenagens_terceiros": 4,
         "outros": 4,
-        "presenca_pct": 96.7,
-        "presenca_presentes": 59,
+        "presenca_pct": 95.1,
+        "presenca_presentes": 58,
         "presenca_elegiveis": 61,
         "presenca_janela": "2026-01-01 a 2026-12-31"
       },
@@ -33695,8 +33695,8 @@
         "nome_rua": 0,
         "homenagens_terceiros": 0,
         "outros": 0,
-        "presenca_pct": 94.4,
-        "presenca_presentes": 17,
+        "presenca_pct": 88.9,
+        "presenca_presentes": 16,
         "presenca_elegiveis": 18,
         "presenca_janela": "2026-01-01 a 2026-03-27"
       },
@@ -37267,7 +37267,7 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Alexandre Prado",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/alexandre_comenda_dr_tulio_revisada.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6194/projeto_de_decreto_legislativo69-2026.pdf",
         "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL – DR. FERNANDO EUGÊNIO PIRES DO PRADO – AO DR. TÚLIO MAGNO DE MELO CALDONAZO.",
         "data": "2026-08-19",
         "impacto_zero": true,
@@ -37284,7 +37284,7 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Cássio Chiodi",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_-_comenda_do_merito_profissional_da_seguranca_publica__alferes_tiradentes__edirlei_viana_da_silva.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6201/projeto_de_decreto_legislativo70-2026.pdf",
         "ementa": "CONCEDE A COMENDA DO MÉRITO PROFISSIONAL DA SEGURANÇA PÚBLICA – COMENDA ALFERES TIRADENTES AO CORONEL EDIRLEI VIANA DA SILVA, COMANDANTE DO 6º COMANDO OPERACIONAL DE BOMBEIROS.",
         "data": "2026-08-19",
         "impacto_zero": true,
@@ -37301,7 +37301,7 @@
         "tipo": "Projeto de Decreto Legislativo",
         "sigla": "PDL",
         "autor": "Rogério Bueno",
-        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/rogerio_projeto_de_decreto___humanitas___rogerio_revisado.docx",
+        "pdf": "http://sapl.varginha.mg.leg.br/media/sapl/public/materialegislativa/2026/6217/projeto_de_decreto_legislativo71-2026.pdf",
         "ementa": "CONCEDE COMENDA DO MÉRITO DE MEDICINA E SAÚDE MUNICIPAL - DR. FERNANDO EUGÊNIO PIRES DO PRADO AO HOSPITAL UNIMED VARGINHA.",
         "data": "2026-08-19",
         "impacto_zero": true,
@@ -57112,6 +57112,6 @@
         "fonte": "https://sapl.varginha.mg.leg.br/sessao/5144"
       }
     ],
-    "coletado_em": "2026-09-03T16:39:38-03:00"
+    "coletado_em": "2026-09-05T11:10:07-03:00"
   }
 }
