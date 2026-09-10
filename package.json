@@ -22,6 +22,7 @@
     "backup:external": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/backup-external.ps1",
     "test:lock": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-lock-estado.ps1",
     "test:restore": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-atomic-restore.ps1",
+    "test:restore:financeiro": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-financial-restore.ps1",
     "test:backup": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-external-backup.ps1",
     "health:external": "node scripts/check-external-site.mjs",
     "report:daily": "node scripts/generate-daily-operational-report.mjs",

@@ -21,7 +21,7 @@
     console.error("[atualizacoes] window.FISCALIZA.utils ausente.");
     return;
   }
-  const { esc, cleanText, fmtBRL, fmtNum, norm } = u;
+  const { esc, cleanText, fmtBRL, fmtNum, norm, casaBusca } = u;
 
   function $(id) { return document.getElementById(id); }
   function icon(nome, opts) {
@@ -661,8 +661,8 @@
           <span>mudanças detectadas</span>
         </article>
         <article>
-          <strong>${fmtBRL(r.valor_novo_brl || 0)}</strong>
-          <span>novos contratos</span>
+          <strong>${Number(r.valor_novo_brl || 0) > 0 ? fmtBRL(r.valor_novo_brl) : fmtBRL(r.valor_delta_brl || 0)}</strong>
+          <span>${Number(r.valor_novo_brl || 0) > 0 ? "novos contratos" : "valor revisado em contratos já existentes"}</span>
         </article>
         <article>
           <strong>${fmtNum((r.pendencias_novas || 0) + (r.pendencias_resolvidas || 0))}</strong>
@@ -1073,8 +1073,8 @@
       if (filtros.ano && !(e.data || "").startsWith(filtros.ano)) return false;
       if (filtros.mes && (e.data || "").slice(5, 7) !== filtros.mes) return false;
       if (q) {
-        const hay = norm([e.titulo, e.resumo, e.edicao, e.ano, e.extra ? "extra" : "ordinaria"].filter(Boolean).join(" "));
-        if (!hay.includes(q)) return false;
+        const hay = [e.titulo, e.resumo, e.edicao, e.ano, e.extra ? "extra" : "ordinaria"].filter(Boolean).join(" ");
+        if (!casaBusca(hay, q)) return false;
       }
       return true;
     });
@@ -1434,13 +1434,12 @@
       if (filtros.ano && !(a.data || "").startsWith(filtros.ano)) return false;
       if (filtros.mes && (a.data || "").slice(5, 7) !== filtros.mes) return false;
       if (q) {
-        const hay = norm(
+        const hay =
           [a.titulo, a.resumo, a.categoria, a.tipo, a.orgao,
            ...(a.envolvidos || []).map(e => (e.nome || "") + " " + (e.cnpj || "")),
            ...(a.pontos_atencao || [])
-          ].filter(Boolean).join(" ")
-        );
-        if (!hay.includes(q)) return false;
+          ].filter(Boolean).join(" ");
+        if (!casaBusca(hay, q)) return false;
       }
       return true;
     });

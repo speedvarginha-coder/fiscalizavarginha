@@ -218,98 +218,24 @@
   }
 
   // ============================================================
-  // Comparativo entre anos por categoria
-  // ============================================================
-  function renderComparativoAnos() {
-    const el = $("comparativoAnosTabela");
-    const block = $("comparativoAnosBlock");
-    if (!el || !block) return;
-
-    const pf = (window.FISCALIZA_DATA || {}).prefeitura || {};
-    const contratosComp = pf.contratos || [];
-    if (!contratosComp.length) return;
-
-    const anos = [...new Set(contratosComp.map(c => String(c.ano || "")).filter(Boolean))]
-      .sort((a, b) => Number(a) - Number(b));
-    if (anos.length < 2) return;
-
-    const mapa = {};
-    const totaisAno = {};
-    contratosComp.forEach(c => {
-      const ano = String(c.ano || "");
-      if (!ano) return;
-      const cat = (window.FISCALIZA.classificarItem || (() => null))(c) || "outros";
-      mapa[cat] = mapa[cat] || {};
-      mapa[cat][ano] = (mapa[cat][ano] || 0) + (Number(c.valor) || 0);
-      totaisAno[ano] = (totaisAno[ano] || 0) + (Number(c.valor) || 0);
-    });
-
-    const catLabel = (id) => {
-      const cat = (window.FISCALIZA.categorias || []).find(c => c.id === id);
-      if (cat) return `${icon(cat.iconKey, { size: 14 })} ${cat.label}`;
-      return "Outros";
-    };
-
-    const anoFinal = anos[anos.length - 1];
-    const cats = Object.keys(mapa).sort((a, b) =>
-      (mapa[b][anoFinal] || 0) - (mapa[a][anoFinal] || 0)
-    );
-
-    const fmtVar = (atual, anterior) => {
-      if (!anterior || anterior === 0) return atual > 0 ? `<span class="comp-var--up">novo</span>` : `<span class="comp-var--flat">—</span>`;
-      const pct = ((atual - anterior) / anterior * 100);
-      if (Math.abs(pct) < 5) return `<span class="comp-var--flat">${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%</span>`;
-      const cls = pct > 0 ? "comp-var--up" : "comp-var--down";
-      return `<span class="${cls}">${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%</span>`;
-    };
-
-    let html = `<div style="overflow-x:auto;"><table class="comp-anos-table"><thead><tr>
-      <th scope="col">Categoria</th>`;
-    anos.forEach((ano, i) => {
-      html += `<th scope="col">${ano}</th>`;
-      if (i > 0) html += `<th scope="col">Variação</th>`;
-    });
-    html += `</tr></thead><tbody>`;
-
-    cats.forEach(cat => {
-      html += `<tr><td>${catLabel(cat)}</td>`;
-      anos.forEach((ano, i) => {
-        const v = mapa[cat][ano] || 0;
-        html += `<td>${v > 0 ? fmtBRL(v) : "—"}</td>`;
-        if (i > 0) {
-          const ant = mapa[cat][anos[i - 1]] || 0;
-          html += `<td>${fmtVar(v, ant)}</td>`;
-        }
-      });
-      html += `</tr>`;
-    });
-
-    html += `</tbody><tfoot><tr><td><strong>Total</strong></td>`;
-    anos.forEach((ano, i) => {
-      html += `<td>${fmtBRL(totaisAno[ano] || 0)}</td>`;
-      if (i > 0) {
-        html += `<td>${fmtVar(totaisAno[ano] || 0, totaisAno[anos[i - 1]] || 0)}</td>`;
-      }
-    });
-    html += `</tr></tfoot></table></div>`;
-
-    el.innerHTML = html;
-    block.hidden = false;
-  }
-
-  // ============================================================
   // Inicia todos os blocos auto-contidos da página de Relatórios
   // ============================================================
+  // O comparativo de gastos entre anos foi removido em 08/09/2026. A lista de
+  // contratos vem de busca textual com cobertura declarada como parcial
+  // (contratos_status_coleta = "coleta_atual_parcial_via_busca_textual") e
+  // encontrava 1 contrato em 2018, 1 em 2019 e 55 em 2024 contra 159 em 2023.
+  // As variacoes exibidas mediam o alcance da coleta por ano, nao decisao de
+  // gasto, e o texto do bloco pedia explicacao ao poder publico por elas.
+  // Comparar exercicios exige execucao orcamentaria (empenhado, liquidado e
+  // pago), que e outra fonte.
   function renderTodos() {
     renderTimelineSinais();
     detectarFragmentacao();
-    renderComparativoAnos();
   }
 
   window.FISCALIZA.relatorios = Object.freeze({
     renderTimelineSinais,
     detectarFragmentacao,
-    renderComparativoAnos,
     renderTodos,
   });
 })();

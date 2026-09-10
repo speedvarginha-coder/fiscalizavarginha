@@ -1,5 +1,5 @@
 /* Fiscaliza Varginha — Service Worker v95 (referência PNTP 2025) */
-const CACHE = "fiscaliza-v95";
+const CACHE = "fiscaliza-v96";
 const STATIC = [
   "./",
   "./index.html",

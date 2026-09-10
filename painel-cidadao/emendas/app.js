@@ -251,6 +251,12 @@ const moneyFormatter = new Intl.NumberFormat("pt-BR", {
 
 const numberFormatter = new Intl.NumberFormat("pt-BR");
 
+// Busca compartilhada com o painel (painel-cidadao/modules/utils.js). O fallback
+// mantem o portal funcionando caso o utils nao carregue, com o comportamento
+// antigo de trecho literal.
+const casaBusca = (window.FISCALIZA && window.FISCALIZA.utils && window.FISCALIZA.utils.casaBusca)
+  || ((texto, consulta) => String(texto || "").includes(consulta));
+
 function normalize(value) {
   return String(value || "")
     .normalize("NFD")
@@ -782,7 +788,7 @@ function applyFilters() {
   const maxValue = Number(elements.maxValue.value || 0);
 
   state.filtered = allRecords.filter((record) => {
-    const matchesSearch = !search || (record.textoBusca || "").includes(search);
+    const matchesSearch = !search || casaBusca(record.textoBusca || "", search);
     const matchesType = !elements.typeFilter.value || record.tipo === elements.typeFilter.value;
     const matchesSource = !elements.sourceFilter.value || record.sourceLabels.includes(elements.sourceFilter.value);
     const matchesScope = !elements.scopeFilter.value || record.scopeLabel === elements.scopeFilter.value;
@@ -1064,7 +1070,7 @@ function renderAuthorRanking() {
     // Só vereadores da legislatura atual (ativos no cadastro oficial da Câmara).
     // Ex-vereadores que autoraram emendas no passado não aparecem neste painel.
     if (!getAuthorMeta(record).active) return;
-    const matchesSearch = !search || (record.textoBusca || "").includes(search);
+    const matchesSearch = !search || casaBusca(record.textoBusca || "", search);
     const matchesType = !typeFilterVal || record.tipo === typeFilterVal;
     const matchesYear = !rankYear || amendmentYearsForRecord(record).includes(rankYear);
     const matchesResourceYear = !resourceYearFilterVal || resourceYearsForRecord(record).includes(resourceYearFilterVal);
@@ -1201,7 +1207,7 @@ function renderDeputyRanking() {
       }
     }
 
-    const matchesSearch = !search || (record.textoBusca || "").includes(search);
+    const matchesSearch = !search || casaBusca(record.textoBusca || "", search);
     const matchesType = !typeFilterVal || record.tipo === typeFilterVal;
     const matchesYear = !rankYear || amendmentYearsForRecord(record).includes(rankYear);
     const matchesResourceYear = !resourceYearFilterVal || resourceYearsForRecord(record).includes(resourceYearFilterVal);
@@ -1554,6 +1560,7 @@ function renderResults() {
     .map((record) => {
       const title = record.beneficiario || "Beneficiário não informado";
       const object = record.objeto || record.descricao || "Objeto não informado";
+      const objectHtml = resumoObjetoHtml(object);
       const pdfUrl = fonteOficialUrl(record);
       
       const pdfHint = `Confira na fonte oficial a emenda ${record.emenda}, o beneficiário e cada estágio financeiro antes de concluir que houve pagamento ou recebimento.`;
@@ -1564,7 +1571,7 @@ function renderResults() {
         <article class="result-card">
           <div>
             <h3>${escapeHtml(title)}</h3>
-            <p>${escapeHtml(object)}</p>
+            ${objectHtml}
             <div class="tags">
               <span class="tag ${typeClass(record.tipo)}">Fonte ${escapeHtml(record.tipo)}</span>
               <span class="tag">Portal: ${escapeHtml(record.sourceLabels.join(" + ") || "Não informado")}</span>
@@ -1998,6 +2005,31 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+// Algumas fontes trazem o objeto como texto corrido de varios paragrafos: a
+// mediana e 90 caracteres, mas ha registros de ate 1.485 que empurram os
+// valores e as tags para fora da primeira tela. Acima do limite o card mostra
+// o inicio e guarda o resto num <details> nativo, sem JS e sem esconder nada:
+// o texto integral continua no DOM, e portanto na busca do navegador e no
+// leitor de tela, alem de seguir disponivel em "Ver detalhes" e na fonte
+// oficial.
+const OBJETO_RESUMO_LIMITE = 320;
+
+function resumoObjetoHtml(objeto) {
+  const texto = String(objeto ?? "").trim();
+  if (texto.length <= OBJETO_RESUMO_LIMITE) return `<p>${escapeHtml(texto)}</p>`;
+
+  // Corta no ultimo espaco antes do limite para nao partir palavra ao meio.
+  const bruto = texto.slice(0, OBJETO_RESUMO_LIMITE);
+  const ultimoEspaco = bruto.lastIndexOf(" ");
+  const inicio = (ultimoEspaco > OBJETO_RESUMO_LIMITE * 0.6 ? bruto.slice(0, ultimoEspaco) : bruto).trimEnd();
+  const restante = texto.length - inicio.length;
+
+  return `<details class="objeto-resumo">
+    <summary><span class="objeto-resumo__inicio">${escapeHtml(inicio)}…</span> <span class="objeto-resumo__acao">ver descrição completa (mais ${restante.toLocaleString("pt-BR")} caracteres)</span></summary>
+    <p class="objeto-resumo__completo">${escapeHtml(texto)}</p>
+  </details>`;
 }
 
 function setupEvents() {

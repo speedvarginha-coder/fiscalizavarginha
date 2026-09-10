@@ -95,6 +95,29 @@ class ObrasDeduplicationTests(unittest.TestCase):
         self.assertEqual(len(obras), 2)
 
 
+class LicitacaoAnoTests(unittest.TestCase):
+    """A consulta de licitacao em andamento devolve "ano" vazio e so a data.
+
+    Regressao real (10/09/2026): o pregao da decoracao natalina, aberto em
+    20/08/2026 e com R$ 3.528.268,00 estimados, aparecia no painel como
+    "Sem ano informado" porque o campo cru vinha vazio.
+    """
+
+    def test_ano_vazio_cai_para_a_data_de_abertura(self):
+        linhas = [
+            {"numero": 238, "ano": "", "objeto": "decoracao natalina",
+             "dataAbertura": "2026-08-20", "valorEstimado": 3528268},
+            {"numero": 12, "ano": "2025", "objeto": "outra",
+             "dataPublicacao": "2025-03-01", "valorTotal": 1000},
+            {"numero": 99, "ano": "", "objeto": "sem data nenhuma",
+             "valorEstimado": 5},
+        ]
+        saida = {r["objeto"]: r for r in coletor._normaliza_licitacoes(linhas)}
+        self.assertEqual(saida["decoracao natalina"]["ano"], "2026")
+        self.assertEqual(saida["outra"]["ano"], "2025", "ano informado nao pode ser sobrescrito")
+        self.assertEqual(saida["sem data nenhuma"]["ano"], "", "sem data, o ano fica vazio mesmo")
+
+
 class BethaTextSearchNormalizationTests(unittest.TestCase):
     def test_prefeitura_daily_accepts_nested_creditor_and_infers_year(self):
         rows = [{
@@ -164,6 +187,49 @@ class AtomicWriteTests(unittest.TestCase):
             self.assertEqual(json.loads(target.read_text(encoding="utf-8")), {"new": True})
             self.assertEqual(attempts, 3)
             self.assertEqual(sleep.call_count, 2)
+            self.assertEqual(list(Path(tmp_dir).glob(".*.tmp*")), [])
+
+    def test_every_output_write_goes_through_the_atomic_helper(self):
+        # Em 08/09/2026 o manifesto era gravado com write_text direto e um
+        # OSError [Errno 22] na abertura do destino derrubou um ciclo que ja
+        # tinha concluido toda a coleta. Os 37 chunks nao caem nisso porque
+        # passam pelo helper. Este teste impede que uma gravacao nova volte a
+        # ficar de fora dele.
+        fonte = (ROOT / "painel-cidadao" / "coletor.py").read_text(encoding="utf-8").splitlines()
+        diretas = [
+            f"{numero}: {linha.strip()}"
+            for numero, linha in enumerate(fonte, start=1)
+            if ".write_text(" in linha and "tmp.write_text(" not in linha
+        ]
+        self.assertEqual(
+            diretas,
+            [],
+            "Gravacao fora de _write_text_atomic/_write_json_atomic: " + "; ".join(diretas),
+        )
+
+    def test_atomic_text_write_retries_and_preserves_content(self):
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            target = Path(tmp_dir) / "data.js"
+            target.write_text("window.FISCALIZA_DATA = {};\n", encoding="utf-8")
+            real_replace = coletor.os.replace
+            attempts = 0
+
+            def flaky_replace(source, destination):
+                nonlocal attempts
+                attempts += 1
+                if attempts < 2:
+                    error = PermissionError("arquivo ocupado")
+                    error.winerror = 32
+                    raise error
+                return real_replace(source, destination)
+
+            novo = "window.FISCALIZA_DATA = {\"ok\": true};\n"
+            with patch.object(coletor.os, "replace", side_effect=flaky_replace), \
+                    patch.object(coletor.time, "sleep"):
+                coletor._write_text_atomic(target, novo)
+
+            self.assertEqual(target.read_text(encoding="utf-8"), novo)
+            self.assertEqual(attempts, 2)
             self.assertEqual(list(Path(tmp_dir).glob(".*.tmp*")), [])
 
     def test_rejected_quarantine_is_never_used_as_valid_preservation_source(self):

@@ -75,7 +75,7 @@ DIARIO_EDICAO_OFFSET = 1593
 _CHUNKS_CARIMBO = {"camara_betha.json", "pessoal.json"}
 
 
-def _write_json_atomic(path: Path, payload) -> None:
+def _write_text_atomic(path: Path, texto: str) -> None:
     """Escreve em arquivo temporario no MESMO diretorio e troca com os.replace,
     que e atomico no NTFS/POSIX: o arquivo final nunca fica truncado/parcial,
     mesmo em queda de energia ou kill do processo no meio da escrita.
@@ -84,8 +84,13 @@ def _write_json_atomic(path: Path, payload) -> None:
     destino por alguns instantes sem FILE_SHARE_DELETE. Nesse intervalo,
     os.replace levanta WinError 5/32/33. A escrita ja esta pronta no temporario,
     entao retentamos apenas a troca em vez de derrubar toda a coleta.
+
+    TODA gravacao de saida do coletor passa por aqui. Escrever direto no destino
+    com write_text deixa o arquivo exposto a essa mesma interferencia sem
+    retentativa: em 08/09/2026 o manifesto era o unico ponto assim e derrubou um
+    ciclo inteiro, ja com a coleta pronta, com OSError [Errno 22] na abertura do
+    destino.
     """
-    texto = json.dumps(payload, ensure_ascii=False, indent=2)
     tmp = path.with_name(f".{path.name}.tmp{os.getpid()}")
     tmp.write_text(texto, encoding="utf-8")
     try:
@@ -106,6 +111,10 @@ def _write_json_atomic(path: Path, payload) -> None:
                 tmp.unlink()
             except OSError:
                 pass
+
+
+def _write_json_atomic(path: Path, payload) -> None:
+    _write_text_atomic(path, json.dumps(payload, ensure_ascii=False, indent=2))
 
 
 def _save(name: str, payload) -> None:
@@ -1397,10 +1406,10 @@ def _processa_fontes_emendas_2026() -> dict:
 def _save_data_js(payload: dict) -> None:
     """Grava data.js com window.FISCALIZA_DATA = {...} para o painel funcionar offline (file://)."""
     out = ROOT / "data.js"
-    out.write_text(
+    _write_text_atomic(
+        out,
         "/* Gerado por coletor.py — não editar à mão. */\n"
         "window.FISCALIZA_DATA = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
-        encoding="utf-8",
     )
     print(f"  ✓ data.js  ({out.stat().st_size // 1024} KB)")
 
@@ -2255,12 +2264,23 @@ def _normaliza_contratos(rows: list[dict]) -> list[dict]:
     return out
 
 
+def _ano_de_data(valor) -> str:
+    """Primeiro ano com 4 digitos de uma data ISO ou dd/mm/aaaa. "" se nao houver."""
+    achado = re.search(r"\d{4}", str(valor or ""))
+    return achado.group(0) if achado else ""
+
+
 def _normaliza_licitacoes(rows: list[dict]) -> list[dict]:
     out = []
     for r in rows:
+        # A consulta de licitacao em andamento devolve "ano" vazio e so a data
+        # de abertura. Quem consumia o campo cru mostrava "sem ano" para um
+        # pregao com data conhecida (ex.: decoracao natalina, 20/08/2026).
+        data = r.get("dataAbertura", "") or r.get("dataPublicacao", "")
+        ano = _t(r.get("ano")) or _ano_de_data(data)
         out.append({
             "numero":      r.get("numero", "") or r.get("numeroProcesso", ""),
-            "ano":         r.get("ano", ""),
+            "ano":         ano,
             "modalidade":  r.get("modalidade", "") or r.get("modalidadeLicitacao", ""),
             "objeto":      (r.get("objeto", "") or r.get("descricao", "")).strip(),
             "data":        r.get("dataAbertura", "") or r.get("dataPublicacao", ""),
@@ -3018,7 +3038,7 @@ def main() -> int:
             "sha256": hashlib.sha256(content).hexdigest(),
         }
     manifest_out = DATA / "manifest.json"
-    manifest_out.write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8")
+    _write_json_atomic(manifest_out, manifest)
     print(f"  ✓ manifest.json  ({manifest_out.stat().st_size} bytes)")
 
     print("\n✓ Pronto. Abra index.html no navegador.\n")

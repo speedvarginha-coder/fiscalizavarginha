@@ -4,7 +4,7 @@
   window.FISCALIZA = window.FISCALIZA || {};
   const D = window.FISCALIZA_DATA || {};
   const $ = (id) => document.getElementById(id);
-  const { fmtBRL, fmtNum, cleanText, esc, norm, highlight, exportCSV } = window.FISCALIZA.utils;
+  const { fmtBRL, fmtNum, cleanText, esc, norm, highlight, exportCSV, casaBusca } = window.FISCALIZA.utils;
 
   function initPessoal() {
     const pesSlim = D.pessoal || {};
@@ -222,7 +222,7 @@
 
       _pessoalQ = q;
       _pessoalView = todos.filter(s => {
-        const matchesQ = !q || norm([s.nome, s.lotacao].join(" ")).includes(q);
+        const matchesQ = !q || casaBusca([s.nome, s.lotacao].join(" "), q);
         const matchesOrgao = !orgao || norm(s.orgao).includes(orgao);
         const isCom = s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "");
         const matchesTipo = !tipo || (tipo === "comissionado" ? isCom : !isCom);
@@ -232,10 +232,21 @@
       const com = _pessoalView.filter(s => s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || ""));
       const folhaCom = com.reduce((sum, s) => sum + (Number(s.vencimentos) || 0), 0);
 
-      if ($("totServidores")) $("totServidores").textContent = todos.length;
+      // Os cartoes contam a VISAO FILTRADA. Sem dizer isso na tela, uma busca
+      // que nao acha nada faz o painel anunciar "Cargos Comissionados 0" e
+      // "R$ 0,00" com cara de numero oficial do municipio.
+      const filtrando = Boolean(q || orgao || tipo);
+      const sufixo = filtrando ? " no filtro atual" : "";
+
+      if ($("totServidores")) $("totServidores").textContent = filtrando ? _pessoalView.length : todos.length;
       if ($("totComissionados")) $("totComissionados").textContent = com.length;
-      if ($("pctComissionados")) $("pctComissionados").textContent = todos.length ? ((com.length / todos.length) * 100).toFixed(1) + "%" : "0%";
+      if ($("pctComissionados")) {
+        const base = filtrando ? _pessoalView.length : todos.length;
+        $("pctComissionados").textContent =
+          (base ? ((com.length / base) * 100).toFixed(1) + "%" : "0%") + " do total" + sufixo;
+      }
       if ($("custoFolha")) $("custoFolha").textContent = fmtBRL(folhaCom);
+      if ($("custoFolhaSub")) $("custoFolhaSub").textContent = "Apenas comissionados" + sufixo;
 
       contadorEl.textContent = `${_pessoalView.length} registro(s) encontrado(s)`;
 

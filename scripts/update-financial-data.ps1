@@ -18,6 +18,41 @@ $lockToken = $null
 $backupPath = $null
 $sourceStatus = [ordered]@{ federal = "pulado"; tesouro = "pulado"; estadual = "pulado"; diarias = "pulado" }
 
+. (Join-Path $PSScriptRoot "lib\financial-backup.ps1")
+
+# Inventario do que o ciclo financeiro pode reescrever. Arquivo fora daqui nao
+# volta no rollback, entao cada entrada esta amarrada a quem grava:
+#
+#   coletor.py --so-diarias .................. chunks\diarias.json, data\diarias.json
+#   coletor_federal.py ....................... chunks\federal.json, data\federal.json
+#   coletor_emendas_federais.py + normalizar . emendas_federais.js
+#   coletor_emendas_tesouro.py ............... emendas_tesouro.js
+#   coletor_emendas_estaduais.py ............. emendas_estaduais_normalizadas.js
+#   coletor_emendas_prefeitura.py ............ chunks\emendas_prefeitura.json
+#   npm run data:chat ........................ chunks\chat_context.json
+#   npm run data:bundle ...................... chunks\home_resumo.json,
+#                                              chunks\prefeitura_painel.json,
+#                                              data.js, data\manifest.json
+#
+# Os espelhos em data\ sao legado (o painel le de data\chunks\), mas os
+# coletores continuam gravando os dois caminhos; sem eles no inventario, uma
+# falha deixa os pares divergentes.
+$financialBackupFiles = @(
+  "painel-cidadao\data\chunks\diarias.json",
+  "painel-cidadao\data\chunks\federal.json",
+  "painel-cidadao\data\chunks\chat_context.json",
+  "painel-cidadao\data\chunks\emendas_prefeitura.json",
+  "painel-cidadao\data\chunks\home_resumo.json",
+  "painel-cidadao\data\chunks\prefeitura_painel.json",
+  "painel-cidadao\data\diarias.json",
+  "painel-cidadao\data\federal.json",
+  "painel-cidadao\data\manifest.json",
+  "painel-cidadao\data.js",
+  "painel-cidadao\emendas\data\emendas_federais.js",
+  "painel-cidadao\emendas\data\emendas_tesouro.js",
+  "painel-cidadao\emendas\data\emendas_estaduais_normalizadas.js"
+)
+
 New-Item -ItemType Directory -Force -Path $logDir,$backupRoot,$stateDir | Out-Null
 
 function Write-FinancialLog {
@@ -79,43 +114,14 @@ function Invoke-FinancialStep {
 
 function New-FinancialBackup {
   $destination = Join-Path $backupRoot ("financeiro-" + (Get-Date -Format "yyyyMMdd-HHmmss"))
-  New-Item -ItemType Directory -Force -Path $destination | Out-Null
-  $files = @(
-    "painel-cidadao\data\chunks\diarias.json",
-    "painel-cidadao\data\chunks\federal.json",
-    "painel-cidadao\data\chunks\chat_context.json",
-    "painel-cidadao\data\manifest.json",
-    "painel-cidadao\data.js",
-    "painel-cidadao\emendas\data\emendas_federais.js",
-    "painel-cidadao\emendas\data\emendas_tesouro.js",
-    "painel-cidadao\emendas\data\emendas_estaduais_normalizadas.js"
-  )
-  $manifest = @()
-  foreach ($relative in $files) {
-    $source = Join-Path $root $relative
-    if (Test-Path -LiteralPath $source) {
-      $safeName = $relative.Replace("\", "__")
-      Copy-Item -LiteralPath $source -Destination (Join-Path $destination $safeName) -Force
-      $manifest += [pscustomobject]@{ relative = $relative; backup = $safeName }
-    }
-  }
-  $manifest | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $destination "manifest.json") -Encoding UTF8
-  return $destination
+  return (New-FinancialBackupSet -Root $root -Destination $destination -Files $financialBackupFiles)
 }
 
 function Restore-FinancialBackup {
   param([string]$Backup)
-  $manifestPath = Join-Path $Backup "manifest.json"
-  if (-not (Test-Path -LiteralPath $manifestPath)) { return }
-  $manifest = @(Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json)
-  foreach ($item in $manifest) {
-    $source = Join-Path $Backup $item.backup
-    $target = Join-Path $root $item.relative
-    if (Test-Path -LiteralPath $source) {
-      Copy-Item -LiteralPath $source -Destination $target -Force
-    }
-  }
-  Write-FinancialLog "Dados financeiros restaurados do backup $Backup."
+  $restaurados = @(Restore-FinancialBackupSet -Root $root -Backup $Backup)
+  Write-FinancialLog ("Dados financeiros restaurados do backup " + $Backup + " (" + $restaurados.Count + " arquivos).")
+  return $restaurados
 }
 
 try {
@@ -163,12 +169,31 @@ try {
   Write-FinancialLog ("Ciclo financeiro concluido: " + (($sourceStatus.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join ", "))
   exit 0
 } catch {
-  Write-FinancialLog ("ERRO: " + $_.Exception.Message)
-  if ($backupPath) { Restore-FinancialBackup -Backup $backupPath }
+  # O $_ do catch interno sobrescreve o externo; guardar a mensagem do ciclo
+  # antes de tentar restaurar, senao o estado registra o erro errado.
+  $erroCiclo = $_.Exception.Message
+  Write-FinancialLog ("ERRO: " + $erroCiclo)
+
+  $restauracao = "sem backup"
+  if ($backupPath) {
+    # Uma falha aqui nao pode impedir o registro do estado: era isso que fazia
+    # o financial-update.json continuar marcando "sucesso" depois de um ciclo
+    # que falhou.
+    try {
+      Restore-FinancialBackup -Backup $backupPath | Out-Null
+      $restauracao = "restaurado"
+    } catch {
+      $restauracao = "falhou: " + $_.Exception.Message
+      Write-FinancialLog ("ERRO: restauracao do backup financeiro falhou: " + $_.Exception.Message)
+    }
+  }
+
   $state = [ordered]@{
     executado_em = (Get-Date).ToString("o")
     status = "falha"
-    erro = $_.Exception.Message
+    erro = $erroCiclo
+    restauracao = $restauracao
+    backup = $backupPath
     fontes = $sourceStatus
   }
   $state | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $stateDir "financial-update.json") -Encoding UTF8

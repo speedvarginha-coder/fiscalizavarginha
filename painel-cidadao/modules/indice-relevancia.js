@@ -13,6 +13,7 @@
   };
   const cleanText = utils.cleanText || function (s) { return String(s == null ? "" : s); };
   const fmtNum = utils.fmtNum || function (n) { return Number(n || 0).toLocaleString("pt-BR"); };
+  const casaBusca = utils.casaBusca || function (texto, q) { return String(texto || "").toLowerCase().includes(q); };
 
   let perfilAtual = "geral";
   const PERFIS = {
@@ -511,7 +512,7 @@
 
     const q = norm(($("filtroVer") && $("filtroVer").value) || "");
     const ranking = anoData.ranking.filter(function (item) {
-      return !q || norm(cleanText(item.nome)).includes(q);
+      return !q || casaBusca(cleanText(item.nome), q);
     });
     renderResumo(el, anoData, ranking);
 

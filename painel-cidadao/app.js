@@ -48,7 +48,6 @@
     window.FISCALIZA.relatorios = {
       renderTimelineSinais:  function () {},
       detectarFragmentacao:  function () {},
-      renderComparativoAnos: function () {},
       renderTodos:           function () {},
     };
   }
@@ -89,11 +88,19 @@
   const D    = window.FISCALIZA_DATA;
   const pf   = D.prefeitura || D.home_resumo || {};
   const PAGE = document.body.dataset.page || "hub";
+
+  // Parametros da URL como o visitante chegou. Os filtros reescrevem a barra de
+  // endereco a cada render (URL state sync) e o primeiro render roda com o campo
+  // de busca vazio, o que apagava o ?q= ANTES de alguem ler. Resultado: os
+  // proprios atalhos da home (?q=saude, ?q=educacao) e os links de WhatsApp
+  // caiam numa pagina sem filtro. Este retrato e tirado antes de qualquer render.
+  const PARAMS_URL = new URLSearchParams(window.location.search);
+  window.FISCALIZA.paramsUrl = PARAMS_URL;
   const $    = (id) => document.getElementById(id);
 
   // ============= UTILS (extraídos para modules/utils.js) =============
   // Aliases locais para retrocompatibilidade. Definições reais em window.FISCALIZA.utils.
-  const { fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, exportCSV } = window.FISCALIZA.utils;
+  const { fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, exportCSV, radical, casaBusca } = window.FISCALIZA.utils;
 
   const provenienciaRegistro = (fonteId, rotulo, url) => {
     const fonte = ((D.status_fontes || {}).domains || {})[fonteId] || {};
@@ -129,6 +136,21 @@
 
   const cnpjRoot = (s) => ((s || "").match(/\d/g) || []).join("").slice(0, 8);
   const hasAny   = (text, terms) => terms.some(t => norm(text).includes(norm(t)));
+
+  // Casa termo de roteamento como PALAVRA INTEIRA (tolerando plural), nunca
+  // como pedaco de palavra. Com includes() cru, "leite" casava "lei" e jogava
+  // o cidadao na Camara; "encargos sociais" casava "cargo" e jogava em Pessoal.
+  const palavrasDe = (textoNorm) => textoNorm.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+  const casaTermoRota = (radicaisQ, termo) => {
+    const rt = palavrasDe(norm(termo)).map(radical);
+    if (!rt.length) return false;
+    for (let i = 0; i + rt.length <= radicaisQ.length; i++) {
+      let ok = true;
+      for (let j = 0; j < rt.length; j++) if (radicaisQ[i + j] !== rt[j]) { ok = false; break; }
+      if (ok) return true;
+    }
+    return false;
+  };
   const pageTitle = () => (document.title || "Fiscaliza Varginha").replace(/\s+[·-]\s+.*/, "").trim();
   const baseHref = () => location.href.replace(/[#].*$/, "").replace(/[^/\\]+$/, "");
   const anoCamara = () => $("filtroAnoCamara")?.value || "2025";
@@ -236,9 +258,16 @@
   window.FISCALIZA.carimboColeta = function () {
     if (!upd.iso) return "";
     const dias = Math.floor((Date.now() - new Date(upd.iso).getTime()) / 86_400_000);
+    // O limite de "recente" e o mesmo que o painel cobra da fonte em
+    // status_fontes (max_age_days da coleta principal, hoje 3 dias). Enquanto
+    // o selo ficava verde ate 7 dias, o site exibia "Há 5d" em verde enquanto o
+    // pipeline estava parado havia tres ciclos.
+    const limiteRecente = Number(
+      ((D.status_fontes || {}).domains || {}).atualizado_em?.max_age_days
+    ) || 3;
     let texto, cls;
-    if (dias <= 7)       { texto = dias === 0 ? "Coletado hoje" : `Há ${dias}d`;          cls = "fresh"; }
-    else if (dias <= 21) { texto = `Há ${dias} dias`;                                    cls = "okay";  }
+    if (dias <= limiteRecente) { texto = dias === 0 ? "Coletado hoje" : `Há ${dias}d`;   cls = "fresh"; }
+    else if (dias <= 21) { texto = `Há ${dias} dias · fora da janela de atualização`;    cls = "okay";  }
     else                 { texto = `Há ${dias}d · pode estar desatualizado`;             cls = "stale"; }
     return `<span class="carimbo-coleta carimbo-coleta--${cls}" title="Última coleta: ${esc(cleanText(upd.data_humana || ""))}">${window.FISCALIZA.icon ? window.FISCALIZA.icon("sinal", { size: 13 }) : ""} ${texto}</span>`;
   };
@@ -298,18 +327,25 @@
     const pf_data = D.prefeitura || {};
     const contratos = pf_data.contratos || [];
     const licitacoes = pf_data.licit_andamento || [];
+    // A home nao carrega o chunk de diarias; o numero vem pronto de home_resumo.
+    // Ler so D.diarias fazia a home dizer "0 registros" enquanto a pagina da
+    // Prefeitura, com o chunk carregado, mostrava 6.053 na mesma visita.
     const diariasPref = (D.diarias || {}).prefeitura || [];
+    const hr = D.home_resumo || {};
+    const diariasQtd = diariasPref.length || Number(hr.diarias_prefeitura_qtd) || 0;
     const resumoCam = D.resumo || {};
     const emendas = D.emendas || [];
     const emendasPendentes = emendas.filter(e => e.status === "sem_pagamento" || e.status === "sem_cnpj").length;
     const contratosMilhao = contratos.filter(c => Number(c.valor || 0) >= 1_000_000).length;
     const totalContratos = contratos.reduce((s, c) => s + Number(c.valor || 0), 0);
-    const totalDiarias = diariasPref.reduce((s, d) => s + Number(d.valor_total || 0), 0);
+    const totalDiarias = diariasPref.length
+      ? diariasPref.reduce((s, d) => s + Number(d.valor_total || 0), 0)
+      : Number(hr.diarias_prefeitura_valor) || 0;
 
     $("homeOpsStats").innerHTML = [
       { href: "prefeitura.html", value: fmtMi(pf_data.total_externo_atual || totalContratos), label: `pagos em ${pf_data.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
       { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos", cidada: "Quem recebeu mais? Por qual serviço?" },
-      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasPref.length), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
+      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasQtd), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
       { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)} vereadores monitorados`, title: "Câmara", cidada: "O que cada vereador propôs e votou?" },
       { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} para conferir`, title: "Emendas", cidada: "O dinheiro chegou ao beneficiário?" },
       { href: "prefeitura.html?tab=licitacoes", value: fmtNum(licitacoes.length), label: "acompanhar antes do gasto", title: "Licitações", cidada: "Qual empresa vai ganhar este contrato?" },
@@ -324,7 +360,7 @@
 
     $("homeOpsPriorities").innerHTML = [
       { href: "prefeitura.html?tab=contratos", n: "1", title: "Contratos de alto valor", text: `${fmtNum(contratosMilhao)} contratos acima de R$ 1 milhão para ler primeiro.` },
-      { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasPref.length)} registros com pessoa, finalidade e valor.` },
+      { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasQtd)} registros com pessoa, finalidade e valor.` },
       { href: "camara.html", n: "3", title: "Emendas parlamentares", text: `${fmtNum(resumoCam.emendas_qtd || 0)} emendas; confira CNPJ, objeto e pagamento.` },
     ].map(item => `
       <a href="${item.href}" class="priority-row">
@@ -445,6 +481,13 @@
       { nome: "Alimentacao", termos: ["alimentacao", "refeicao", "marmitex", "marmita", "almoco", "jantar", "generos alimenticios"] },
       { nome: "Lanche", termos: ["lanche", "salgado", "salgados", "bolo", "biscoito", "suco", "refrigerante", "kit lanche"] },
       { nome: "Combustivel", termos: ["combustivel", "gasolina", "etanol", "diesel", "oleo diesel", "posto"] },
+      { nome: "Decoracao natalina", termos: [
+        "decoracao natalina", "decoracao de natal", "de natal", "natalina", "natalino",
+        "natalinas", "natalinos", "papai noel", "arvore de natal", "presepio",
+        "pisca pisca", "pisca-pisca", "luzes de natal", "iluminacao natalina",
+        "enfeite de natal", "enfeites de natal", "guirlanda", "natal iluminado",
+        "cantata natalina", "auto de natal", "vila do natal", "cidade do natal", "natal luz"
+      ] },
       { nome: "Diárias", termos: ["diaria", "diarias", "viagem", "deslocamento"] },
       { nome: "Cotas/verba indenizatória", termos: ["cota", "verba indenizatória", "ressarcimento", "indenizatoria"] },
       { nome: "Passagens e hospedagem", termos: ["passagem", "passagens", "hospedagem", "hotel", "aereo", "rodoviario"] },
@@ -761,7 +804,7 @@
       const sortBy = ordenarVer.value;
       const vereadores = camVereadores();
       const ano = anoCamara();
-      const lista = vereadores.filter(v => !q || norm(v.nome).includes(q));
+      const lista = vereadores.filter(v => !q || casaBusca(v.nome, q));
       lista.sort((a, b) => (b[sortBy] || 0) - (a[sortBy] || 0));
 
       if (!lista.length) {
@@ -1443,9 +1486,7 @@
         }
         if (entidadeAtiva && entidadeKey(e) !== entidadeAtiva) return false;
         if (!vereadorAtivo && !entidadeAtiva && q && !(
-            norm(e.beneficiario).includes(q) ||
-            norm(e.autor).includes(q) ||
-            norm(e.objeto).includes(q) ||
+            casaBusca([e.beneficiario, e.autor, e.objeto].filter(Boolean).join(" "), q) ||
             (e.cnpj || "").replace(/[^\d]/g, "").includes(q.replace(/[^\d]/g, ""))
           )) return false;
         if (fStatus) {
@@ -2912,7 +2953,7 @@
           return { ...e, valor, qtd: itens.length, autores, pago, pagamentoLocalizado, semPagamento };
         }).filter(e => e.qtd > 0).filter(e => {
           const autores = Array.from(e.autores).join(" ");
-          return !q || norm([e.nome, e.cnpj, autores].join(" ")).includes(q) ||
+          return !q || casaBusca([e.nome, e.cnpj, autores].join(" "), q) ||
             (e.cnpj || "").replace(/\D/g, "").includes(q.replace(/\D/g, ""));
         });
         ranking.sort((a, b) => {
@@ -3457,7 +3498,7 @@
       if (reset) contratosCamaraShown = 20;
       const q = norm(filtroEl ? filtroEl.value : "");
       const filtrados = contratosCam.filter(c =>
-        !q || norm([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.modalidade].filter(Boolean).join(" ")).includes(q)
+        !q || casaBusca([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.modalidade].filter(Boolean).join(" "), q)
       );
       if (contEl) contEl.textContent = `${filtrados.length} contratos`;
       listaEl.innerHTML = filtrados.slice(0, contratosCamaraShown).map(c => `
@@ -3865,13 +3906,16 @@
         (!secFiltro || (c.entidade || "").trim() === secFiltro) &&
         (!categoriaAtivaContratos || window.FISCALIZA.classificarItem(c) === categoriaAtivaContratos) &&
         (!q ||
-          norm(contratoSearchText(c)).includes(q) ||
+          casaBusca(contratoSearchText(c), q) ||
           (q.replace(/[^\d]/g, "").length >= 3 && (c.cnpj || "").replace(/[^\d]/g, "").includes(q.replace(/[^\d]/g, "")))
         )
       );
       const total = view.reduce((s, c) => s + (Number(c.valor) || 0), 0);
+      // O selo da aba conta a base inteira e a lista abre filtrada no ano
+      // corrente. Sem dizer o recorte, a aba prometia 1.336 contratos e a
+      // pagina entregava 866 sem explicar a diferenca.
       contratosContador.textContent =
-        `${view.length} contrato${view.length === 1 ? "" : "s"} · ${fmtBRL(total)}`;
+        `${view.length} contrato${view.length === 1 ? "" : "s"}${anoFiltro ? ` em ${anoFiltro}` : " (todos os anos)"} · ${fmtBRL(total)}`;
 
       // Ranking de Fornecedores Filtrados
       const gruposFornecedores = new Map();
@@ -4091,7 +4135,7 @@
         const view = contratos.filter(c =>
           estaContratoAtivoNoAno(c, ano) &&
           (!vmin || (Number(c.valor) || 0) >= vmin) &&
-          (!q || norm(c.contratado).includes(q) || norm(c.objeto).includes(q) || norm(c.modalidade).includes(q))
+          (!q || casaBusca([c.contratado, c.objeto, c.modalidade].filter(Boolean).join(" "), q))
         );
         exportCSV(view.map(c => ({
           contrato: `${c.numero}/${c.ano}`,
@@ -4138,7 +4182,7 @@
         const anoLicitacao = l.ano || (l.data ? l.data.substring(0, 4) : "");
         return (!anoFiltro || String(anoLicitacao) === anoFiltro) &&
           (!vmin || (Number(l.valor) || 0) >= vmin) &&
-          (!q    || norm((l.objeto || "") + (l.modalidade || "") + (l.numero || "")).includes(q));
+          (!q    || casaBusca([l.objeto, l.modalidade, l.numero].filter(Boolean).join(" "), q));
       });
       if (licContador) licContador.textContent = `${filtrados.length} licitações`;
       if (!filtrados.length) {
@@ -4224,7 +4268,7 @@
           const anoLicitacao = l.ano || (l.data ? l.data.substring(0, 4) : "");
           return (!anoFiltro || String(anoLicitacao) === anoFiltro) &&
             (!vmin || (Number(l.valor) || 0) >= vmin) &&
-            (!q    || norm((l.objeto || "") + (l.modalidade || "") + (l.numero || "")).includes(q));
+            (!q    || casaBusca([l.objeto, l.modalidade, l.numero].filter(Boolean).join(" "), q));
         });
         exportCSV(view.map(l => ({
           numero:      `${l.numero || ""}/${l.ano || ""}`,
@@ -4422,7 +4466,7 @@
         const view = filtrados.filter(f => 
           (!anoFiltro || String(f.ano || String(f.data || f.data_assinatura || "").split("-")[0] || "") === anoFiltro) &&
           (!evFiltro || f.evento === evFiltro) &&
-          (!q || norm([f.objeto, f.contratado, f.evento].join(" ")).includes(q))
+          (!q || casaBusca([f.objeto, f.contratado, f.evento].join(" "), q))
         );
 
         const total = view.reduce((s, f) => s + f.valor_analise, 0);
@@ -4442,7 +4486,9 @@
             <div class="stat__sub">${s.s}</div>
           </div>`).join("");
 
-        contadorEl.textContent = `${fmtNum(view.length)} itens encontrados`;
+        const anoEventoAtivo = $("filtroAnoEvento") ? $("filtroAnoEvento").value : "";
+        contadorEl.textContent =
+          `${fmtNum(view.length)} itens encontrados${anoEventoAtivo ? ` em ${anoEventoAtivo}` : " (todos os anos)"}`;
 
         // Ranking de Fornecedores
         const fornecedoresMap = {};
@@ -4803,6 +4849,14 @@ ${url}
     if (!q) return;
     const qN = norm(q);
     const cleanDigits = q.replace(/[^\d]/g, "");
+    // A Prefeitura e conferida ANTES da Camara. Enquanto era o contrario, um
+    // tema de politica publica ia parar no perfil de um vereador: "saude"
+    // casava o apelido do vereador Miguel da Saude e escondia os 262 contratos
+    // de saude da Prefeitura.
+    const prefeituraHit = ((D.prefeitura || {}).contratos || []).some(c =>
+      casaBusca([c.contratado, c.objeto, c.entidade].filter(Boolean).join(" "), qN) ||
+      ((c.cnpj || "").replace(/[^\d]/g, "").includes(cleanDigits) && cleanDigits.length >= 4)
+    );
     const camaraHit =
       (D.vereadores || []).some(v => norm(v.nome).includes(qN)) ||
       (D.emendas || []).some(e =>
@@ -4811,7 +4865,7 @@ ${url}
         norm(e.objeto).includes(qN) ||
         ((e.cnpj || "").replace(/[^\d]/g, "").includes(cleanDigits) && cleanDigits.length >= 4)
       );
-    const url = camaraHit
+    const url = (!prefeituraHit && camaraHit)
       ? "camara.html?q=" + encodeURIComponent(q)
       : "prefeitura.html?q=" + encodeURIComponent(q);
     window.location.href = url;
@@ -4819,7 +4873,7 @@ ${url}
 
   // Aplica q=... vindo do hub: pré-preenche os filtros e rola.
   (function applyQueryQ() {
-    const params = new URLSearchParams(window.location.search);
+    const params = PARAMS_URL;
     const q = params.get("q");
     if (!q) return;
     if (PAGE === "camara") {
@@ -4844,7 +4898,10 @@ ${url}
         $("filtroContrato").value = q;
         const ano = params.get("ano");
         const valor = params.get("valor");
-        if (ano && $("filtroAnoContrato")) $("filtroAnoContrato").value = ano;
+        // Busca que chega da home vale para TODOS os anos. Enquanto o filtro
+        // caia no ano corrente por padrao, procurar um fornecedor de 2024
+        // devolvia "Nenhum contrato encontrado" com o dado ali na base.
+        if ($("filtroAnoContrato")) $("filtroAnoContrato").value = ano || "";
         if (valor && $("filtroValorContrato")) $("filtroValorContrato").value = valor;
         const sec = params.get("sec");
         if (sec && $("filtroSecretaria")) $("filtroSecretaria").value = sec;
@@ -5012,8 +5069,8 @@ ${url}
     if (tipoFiltro === "licitacao") basesFiltradas = basesFiltradas.filter(i => (i.origem || "").includes("Licita"));
     if (buscaTexto) {
       basesFiltradas = basesFiltradas.filter(i => {
-        const txt = norm(`${i.origem} ${i.contratado || i.fornecedor || ""} ${i.objeto || i.descricao || ""} ${i.local_asfalto || ""} ${i.tipo_asfalto || ""}`);
-        return txt.includes(buscaTexto);
+        const txt = `${i.origem} ${i.contratado || i.fornecedor || ""} ${i.objeto || i.descricao || ""} ${i.local_asfalto || ""} ${i.tipo_asfalto || ""}`;
+        return casaBusca(txt, buscaTexto);
       });
     }
 
@@ -5148,12 +5205,12 @@ ${url}
       if (state.aquisicao && v.tipo_aquisicao !== state.aquisicao) return false;
       if (state.centro && v.centro_custo !== state.centro) return false;
       if (!state.q) return true;
-      const texto = norm([
+      const texto = [
         v.placa, v.tipo, v.descricao, v.centro_custo, v.situacao, v.tipo_aquisicao,
         ...(v.fornecedores_gastos || []).map(f => f.nome),
         ...(v.gastos_recentes || []).map(g => `${g.tipo} ${g.fornecedor} ${g.descricao}`),
-      ].join(" "));
-      return texto.includes(state.q);
+      ].join(" ");
+      return casaBusca(texto, state.q);
     });
 
     const sorter = {
@@ -6007,6 +6064,18 @@ ${url}
     window.FISCALIZA.diarias.abrirFiscalizacaoDiaria(prefix, idx);
   }
 
+  // Enter dispara a busca da home. O campo e <input type="search"> sem <form>,
+  // entao sem este listener a tecla nao fazia nada e so o botao funcionava.
+  (function ligarEnterNaBuscaHome() {
+    const inp = $("buscaHome");
+    if (!inp) return;
+    inp.addEventListener("keydown", (ev) => {
+      if (ev.key !== "Enter") return;
+      ev.preventDefault();
+      window.FISCALIZA.smartAudit();
+    });
+  })();
+
   window.FISCALIZA = {
     buscaHome: buscaHome,
     smartAudit: (providedQ) => {
@@ -6015,57 +6084,77 @@ ${url}
       if (!q) return;
 
       const qN = norm(q);
+      const radicaisQ = palavrasDe(qN).map(radical);
+      const casaRegra = (termos) => termos.some(t => casaTermoRota(radicaisQ, t));
+
+      // Nome proprio vence tema. O fornecedor "Oficina do Nene" caia na regra
+      // de frota por causa da palavra "oficina" e o cidadao perdia os dois
+      // contratos da empresa. So vale para consulta de 2+ palavras, para nao
+      // roubar buscas de tema de uma palavra so ("asfalto", "diarias").
+      if (radicaisQ.length >= 2) {
+        const ehFornecedor = ((D.prefeitura || {}).contratos || [])
+          .some(c => norm(c.contratado || "").includes(qN));
+        if (ehFornecedor) {
+          window.location.href = "prefeitura.html?tab=contratos&q=" + encodeURIComponent(q);
+          return;
+        }
+        const ehVereador = (D.vereadores || []).some(v => norm(v.nome || "").includes(qN));
+        if (ehVereador) {
+          window.location.href = "camara.html?q=" + encodeURIComponent(q);
+          return;
+        }
+      }
 
       // Regras de inteligência do Auditor
-      if (hasAny(qN, ["fornecedor", "empresas", "recebe", "maiores"])) {
+      if (casaRegra(["fornecedor", "empresas", "recebe", "maiores"])) {
         window.location.href = "prefeitura.html?tab=visao#prefeituraLive";
         return;
       }
-      if (hasAny(qN, ["diaria", "viagem", "hospedagem"])) {
+      if (casaRegra(["diaria", "viagem", "hospedagem"])) {
         window.location.href = "prefeitura.html?tab=diarias";
         return;
       }
-      if (hasAny(qN, ["frota", "veiculo", "veiculos", "placa", "combustivel", "gasolina", "diesel", "pneu", "manutencao de veiculo", "oficina"])) {
+      if (casaRegra(["frota", "veiculo", "veiculos", "placa", "combustivel", "gasolina", "diesel", "pneu", "manutencao de veiculo", "oficina"])) {
         window.location.href = "prefeitura.html?tab=frota";
         return;
       }
-      if (hasAny(qN, ["emenda", "vereador", "destinou", "promessa"])) {
-        if (hasAny(qN, ["pendente", "não paga", "não localizada", "atencao"])) {
+      if (casaRegra(["emenda", "vereador", "destinou", "promessa"])) {
+        if (casaRegra(["pendente", "não paga", "não localizada", "atencao"])) {
            window.location.href = "relatorios.html";
         } else {
            window.location.href = "camara.html";
         }
         return;
       }
-      if (hasAny(qN, ["asfalto", "obra", "reforma", "pavimentacao", "buraco"])) {
+      if (casaRegra(["asfalto", "obra", "reforma", "pavimentacao", "buraco"])) {
         window.location.href = "prefeitura.html?tab=asfalto&q=" + encodeURIComponent(q);
         return;
       }
-      if (hasAny(qN, ["comissionado", "cargo comissionado", "cargos de confianca"])) {
+      if (casaRegra(["comissionado", "cargo comissionado", "cargos de confianca"])) {
         window.location.href = "pessoal.html?tipo=comissionado";
         return;
       }
-      if (hasAny(qN, ["salario", "ganha", "folha", "pessoal", "cargo", "servidor", "funcionario"])) {
+      if (casaRegra(["salario", "ganha", "folha", "pessoal", "cargo", "servidor", "funcionario"])) {
         window.location.href = "pessoal.html";
         return;
       }
-      if (hasAny(qN, ["aluguel", "imovel", "predio", "locacao", "aluga"])) {
+      if (casaRegra(["aluguel", "imovel", "predio", "locacao", "aluga"])) {
         window.location.href = "prefeitura.html?tab=alugueis";
         return;
       }
-      if (hasAny(qN, ["show", "evento", "festa", "artista", "cantor", "musica", "cachê", "cache"])) {
+      if (casaRegra(["show", "evento", "festa", "artista", "cantor", "musica", "cachê", "cache"])) {
         window.location.href = "prefeitura.html?tab=eventos";
         return;
       }
-      if (hasAny(qN, ["licitacao", "pregao", "dispensa", "inexigibilidade", "edital"])) {
+      if (casaRegra(["licitacao", "pregao", "dispensa", "inexigibilidade", "edital"])) {
         window.location.href = "prefeitura.html?tab=licitacoes";
         return;
       }
-      if (hasAny(qN, ["relatorio", "sinal", "irregularidade", "suspeita", "atencao", "risco", "cnpj inativo"])) {
+      if (casaRegra(["relatorio", "sinal", "irregularidade", "suspeita", "atencao", "risco", "cnpj inativo"])) {
         window.location.href = "relatorios.html";
         return;
       }
-      if (hasAny(qN, ["camara", "vereador", "legislativo", "sessao", "lei", "projeto"])) {
+      if (casaRegra(["camara", "vereador", "legislativo", "sessao", "lei", "projeto"])) {
         window.location.href = "camara.html";
         return;
       }
@@ -6151,7 +6240,7 @@ ${url}
 
     const render = () => {
       const q = norm(buscaEl.value.trim());
-      const view = filtrados.filter(c => !q || norm(c.objeto + c.contratado).includes(q));
+      const view = filtrados.filter(c => !q || casaBusca(c.objeto + " " + c.contratado, q));
 
       const total = view.reduce((s, c) => s + (c.valor || 0), 0);
       statsEl.innerHTML = `
@@ -6262,7 +6351,7 @@ ${url}
 
     const render = () => {
       const q = norm(buscaEl.value.trim());
-      const view = filtrados.filter(c => !q || norm(c.objeto + c.contratado).includes(q));
+      const view = filtrados.filter(c => !q || casaBusca(c.objeto + " " + c.contratado, q));
       const total = view.reduce((s, c) => s + (c.valor || 0), 0);
       const mesesSomados = view.reduce((s, c) => s + mesesContrato(c), 0);
       const custoMensal = view.reduce((s, c) => s + custoMensalEstimado(c), 0);
@@ -6521,6 +6610,13 @@ ${url}
       { nome: "Aluguel de veiculos", termos: ["locacao de veiculo", "locacao de veiculos", "aluguel de veiculo", "aluguel de veiculos", "veiculo locado", "frota locada"] },
       { nome: "Show/eventos festivos", termos: ["show", "evento festivo", "festa", "carnaval", "reveillon", "revelion", "aniversario da cidade", "artista", "cache"] },
       { nome: "Palco, som e iluminacao", termos: ["palco", "sonorizacao", "iluminacao", "estrutura de evento", "tenda", "gerador", "banheiro quimico"] },
+      { nome: "Decoracao natalina", termos: [
+        "decoracao natalina", "decoracao de natal", "de natal", "natalina", "natalino",
+        "natalinas", "natalinos", "papai noel", "arvore de natal", "presepio",
+        "pisca pisca", "pisca-pisca", "luzes de natal", "iluminacao natalina",
+        "enfeite de natal", "enfeites de natal", "guirlanda", "natal iluminado",
+        "cantata natalina", "auto de natal", "vila do natal", "cidade do natal", "natal luz"
+      ] },
       { nome: "Diárias", termos: ["diaria", "diarias", "viagem", "deslocamento"] },
       { nome: "Passagens e hospedagem", termos: ["passagem", "passagens", "hospedagem", "hotel", "diária hotel", "aereo", "rodoviario"] },
       { nome: "Publicidade e propaganda", termos: ["publicidade", "propaganda", "marketing", "campanha publicitaria", "divulgacao", "midia"] },
@@ -6556,6 +6652,14 @@ ${url}
       { nome: "Moveis e equipamentos", termos: ["mobiliario", "moveis", "cadeira", "mesa", "armario", "equipamento permanente"] },
     ];
 
+    // A fonte deixa "ano" vazio em licitacao em andamento e manda so a data.
+    // A aba Licitacoes ja compensava isso; o painel por palavra-chave nao, e o
+    // pregao da decoracao natalina de 20/08/2026 aparecia como "Sem ano".
+    const anoDoRegistro = (r) => String(
+      r.ano || r.ano_publicacao ||
+      ((r.data || r.data_abertura || r.data_assinatura || "").match(/\d{4}/) || [""])[0]
+    ).trim();
+
     const baseGastos = [
       ...contratos.map((c, idx) => ({
         origem: "Contrato",
@@ -6563,7 +6667,7 @@ ${url}
         cnpj: c.cnpj || "",
         objeto: c.objeto || "",
         valor: Number(c.valor || 0),
-        ano: c.ano || c.ano_publicacao || "",
+        ano: anoDoRegistro(c),
         link: "contratos",
         contratoIdx: idx,
       })),
@@ -6573,7 +6677,7 @@ ${url}
         cnpj: l.cnpj || "",
         objeto: l.objeto || l.descricao || "",
         valor: Number(l.valor || 0),
-        ano: l.ano || "",
+        ano: anoDoRegistro(l),
         link: "licitacoes",
       })),
       ...compras.map(c => ({
@@ -6582,7 +6686,7 @@ ${url}
         cnpj: c.cnpj || "",
         objeto: c.objeto || c.descricao || "",
         valor: Number(c.valor || 0),
-        ano: c.ano || "",
+        ano: anoDoRegistro(c),
         link: "contratos",
       })),
       ...diarias.map(d => ({
@@ -6591,7 +6695,7 @@ ${url}
         cnpj: "",
         objeto: `${d.destino || ""} ${d.finalidade || ""} ${d.historico || ""}`,
         valor: Number(d.valor_total || 0),
-        ano: d.ano || "",
+        ano: anoDoRegistro(d),
         link: "diarias",
       })),
     ];
@@ -6632,6 +6736,27 @@ ${url}
         .sort((a, b) => (b.valor - a.valor));
       const total = encontrados.reduce((s, item) => s + (item.valor || 0), 0);
       const fornecedores = agrupaFornecedor(encontrados).slice(0, 5);
+      // Quebra por exercicio: um total agregado esconde se o gasto e recorrente
+      // ou se estourou num ano so. Vale para qualquer categoria.
+      const mapaAnos = new Map();
+      encontrados.forEach(item => {
+        const ano = String(item.ano || "").trim() || "Sem ano informado";
+        const cur = mapaAnos.get(ano) || { ano, valor: 0, qtd: 0 };
+        cur.valor += item.valor || 0;
+        cur.qtd += 1;
+        mapaAnos.set(ano, cur);
+      });
+      // Licitacao em andamento entra pelo valor ESTIMADO no edital, nao por
+      // valor pago. Somar os dois num "total localizado" sem dizer isso publica
+      // estimativa com cara de gasto — no Natal, R$ 3,5 mi dos R$ 5,4 mi sao
+      // de um pregao ainda aberto.
+      const estimados = encontrados.filter(item => item.origem === "Licitacao");
+      const totalEstimado = estimados.reduce((s, item) => s + (item.valor || 0), 0);
+      const porAno = [...mapaAnos.values()].sort((a, b) => {
+        if (a.ano === "Sem ano informado") return 1;
+        if (b.ano === "Sem ano informado") return -1;
+        return String(b.ano).localeCompare(String(a.ano));
+      });
       const categoriasComQtd = categoriasGasto.map(cat => ({
         ...cat,
         qtd: baseGastos.filter(item => gastoCombina(item, cat.termos)).length,
@@ -6658,6 +6783,7 @@ ${url}
           <article>
             <strong>${fmtBRL(total)}</strong>
             <span>total localizado</span>
+            ${totalEstimado ? `<small class="keyword-estimado">Inclui ${fmtBRL(totalEstimado)} de licitacao em andamento (valor estimado no edital, ainda nao contratado).</small>` : ""}
           </article>
           <article>
             <strong>${fmtNum(encontrados.length)}</strong>
@@ -6668,6 +6794,16 @@ ${url}
             <span>principais fornecedores</span>
           </article>
         </div>
+        ${porAno.length ? `
+        <div class="keyword-year">
+          <h4>Valor por ano</h4>
+          ${porAno.map(a => `
+            <div class="keyword-row">
+              <span>${esc(String(a.ano))}</span>
+              <strong>${fmtBRL(a.valor)}</strong>
+              <small>${fmtNum(a.qtd)} registro(s)</small>
+            </div>`).join("")}
+        </div>` : ""}
         <div class="keyword-audit__grid">
           <div>
             <h4>Principais fornecedores</h4>
@@ -6922,7 +7058,7 @@ ${url}
     }
 
     const hash = (location.hash || "").replace("#", "");
-    const params = new URLSearchParams(window.location.search);
+    const params = PARAMS_URL;
     const tabParam = params.get("tab") || params.get("area");
     activate(hashMap[hash] || hash || tabParam || "visao");
   }
@@ -7103,12 +7239,15 @@ ${url}
       acc[key] = (acc[key] || 0) + 1;
       return acc;
     }, {});
+    // Cada rotulo traz singular e plural escritos por extenso. Montar o plural
+    // colando sufixo produzia "3 parcialis" na tela de Relatorios.
+    const contaCom = (n, singular, plural) => (n ? `${fmtNum(n)} ${n > 1 ? plural : singular}` : "");
     const summaryParts = [
-      counts.ok ? `${fmtNum(counts.ok)} completa${counts.ok > 1 ? "s" : ""}` : "",
-      counts.partial ? `${fmtNum(counts.partial)} parcial${counts.partial > 1 ? "is" : ""}` : "",
-      counts.preserved ? `${fmtNum(counts.preserved)} preservada${counts.preserved > 1 ? "s" : ""}` : "",
+      contaCom(counts.ok, "completa", "completas"),
+      contaCom(counts.partial, "parcial", "parciais"),
+      contaCom(counts.preserved, "preservada", "preservadas"),
       counts.failed ? `${fmtNum(counts.failed)} com falha` : "",
-      counts.stale ? `${fmtNum(counts.stale)} desatualizada${counts.stale > 1 ? "s" : ""}` : "",
+      contaCom(counts.stale, "desatualizada", "desatualizadas"),
     ].filter(Boolean).join(" · ");
 
     const formatDate = (iso) => {
@@ -7362,7 +7501,7 @@ ${url}
       const base = (tipo === "historico") ? contratos : contratosVig;
       const view = base.filter(c =>
         contratoPassaTipo(c, tipo) &&
-        (!q || norm([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.situacao].join(" ")).includes(q))
+        (!q || casaBusca([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.situacao].join(" "), q))
       );
       if (contadorContratos) contadorContratos.textContent = `${fmtNum(view.length)} contrato(s)`;
       listaContratos.innerHTML = view.length ? view.slice(0, contratosShownFundacao).map((c, idx) => `
@@ -7404,7 +7543,7 @@ ${url}
     };
     if (filtroContrato) filtroContrato.addEventListener("input", () => renderContratosFundacao(true));
     if (filtroTipo) filtroTipo.addEventListener("change", () => renderContratosFundacao(true));
-    const qInicial = new URLSearchParams(location.search).get("q");
+    const qInicial = PARAMS_URL.get("q");
     if (qInicial && filtroContrato) filtroContrato.value = qInicial;
     renderContratosFundacao(true);
 
@@ -7662,16 +7801,19 @@ ${url}
       }));
 
       function aplicarFiltro() {
-        const term = (searchInput ? searchInput.value : "").toLowerCase().trim();
+        // Usa o mesmo motor do resto do painel. Com includes cru, "contratos"
+        // achava 12 modelos e "contrato" achava 14; o placeholder do campo
+        // sugere "diária" e o acento tambem precisava casar.
+        const term = norm((searchInput ? searchInput.value : "").trim());
         let visibleCount = 0;
 
         cards.forEach(card => {
-          const title = (card.querySelector("h4")?.textContent || "").toLowerCase();
-          const desc = (card.querySelector("textarea")?.value || "").toLowerCase();
+          const title = card.querySelector("h4")?.textContent || "";
+          const desc = card.querySelector("textarea")?.value || "";
           const cardCat = card.getAttribute("data-cat");
           const cardNiv = card.getAttribute("data-nivel");
 
-          const matchTerm = !term || title.includes(term) || desc.includes(term);
+          const matchTerm = !term || casaBusca(title + " " + desc, term);
           const matchCat = activeCat === "all" || cardCat === activeCat;
           const matchNiv = activeNivel === "all" || cardNiv === activeNivel;
 

@@ -8186,34 +8186,6 @@ body[data-page="cobrar"] .section__title {
   color: var(--warn-ink);
 }
 
-/* ================== Comparativo entre anos ================== */
-.comp-anos-table {
-  width: 100%; border-collapse: collapse;
-  background: var(--surface); border-radius: var(--radius); overflow: hidden;
-  box-shadow: var(--shadow);
-  font-size: .88rem;
-}
-.comp-anos-table th, .comp-anos-table td {
-  padding: 11px 14px; text-align: right;
-  border-bottom: 1px solid var(--line);
-}
-.comp-anos-table th { background: var(--navy); color: var(--on-accent); font-weight: 700; }
-.comp-anos-table th:first-child, .comp-anos-table td:first-child { text-align: left; }
-.comp-anos-table td:first-child { font-weight: 600; color: var(--ink); }
-.comp-anos-table tr:nth-child(even) td { background: var(--cream); }
-.comp-anos-table tr:hover td { background: var(--surface-2); }
-.comp-anos-table tfoot td {
-  font-weight: 700; color: var(--navy);
-  border-top: 2px solid var(--navy); background: var(--cream) !important;
-}
-.comp-var--up   { color: var(--red); font-weight: 700; }
-.comp-var--down { color: var(--teal); font-weight: 700; }
-.comp-var--flat { color: var(--muted); }
-@media (max-width: 700px) {
-  .comp-anos-table { font-size: .78rem; }
-  .comp-anos-table th, .comp-anos-table td { padding: 8px 6px; }
-}
-
 /* ================== A11y + Mobile polish ================== */
 :focus-visible {
   outline: 3px solid var(--teal);

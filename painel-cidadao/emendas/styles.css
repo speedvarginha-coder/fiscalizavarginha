@@ -767,6 +767,33 @@ button.flag-card:hover {
   margin: 4px 0 0;
 }
 
+/* Objeto longo: resumo no card, texto integral a um clique. */
+.objeto-resumo {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+.objeto-resumo > summary {
+  cursor: pointer;
+  list-style: none;
+}
+.objeto-resumo > summary::-webkit-details-marker { display: none; }
+.objeto-resumo__acao {
+  color: var(--green);
+  font-weight: 800;
+}
+.objeto-resumo > summary:hover .objeto-resumo__acao,
+.objeto-resumo[open] > summary .objeto-resumo__acao {
+  text-decoration: underline;
+}
+.objeto-resumo > summary:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* Aberto, o resumo sai de cena e fica só o texto completo, sem duplicar o começo. */
+.objeto-resumo[open] > summary .objeto-resumo__inicio { display: none; }
+.objeto-resumo__completo { margin: 4px 0 0; }
+
 .tags {
   display: flex;
   flex-wrap: wrap;

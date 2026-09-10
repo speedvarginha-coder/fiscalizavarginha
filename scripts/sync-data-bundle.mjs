@@ -13,6 +13,7 @@ const chunksDir = path.join(painelDir, "data", "chunks");
 const manifestPath = path.join(painelDir, "data", "manifest.json");
 const prefeituraPath = path.join(chunksDir, "prefeitura.json");
 const homeResumoPath = path.join(chunksDir, "home_resumo.json");
+const diariasPath = path.join(chunksDir, "diarias.json");
 
 
 
@@ -38,6 +39,23 @@ function parseDataJs(text) {
   const end = text.lastIndexOf("}");
   if (start < 0 || end < start) throw new Error("data.js sem objeto JSON reconhecivel");
   return JSON.parse(text.slice(start, end + 1));
+}
+
+function lerResumoDiarias() {
+  // A home nao carrega o chunk de diarias (6 mil registros pesam no celular),
+  // entao o numero precisa vir pronto no resumo. Sem isto, o cartao "Diarias e
+  // viagens" anunciava "0 registros" enquanto a pagina da Prefeitura mostrava
+  // 6.053 — a mesma base, dois numeros na mesma visita.
+  try {
+    const bruto = JSON.parse(fs.readFileSync(diariasPath, "utf8"));
+    const pref = (bruto && bruto.resumo && bruto.resumo.prefeitura) || {};
+    return {
+      diarias_prefeitura_qtd: Number(pref.registros) || 0,
+      diarias_prefeitura_valor: Number(pref.valor_total) || 0,
+    };
+  } catch {
+    return { diarias_prefeitura_qtd: 0, diarias_prefeitura_valor: 0 };
+  }
 }
 
 function gerarResumoHome(prefeitura) {
@@ -69,6 +87,7 @@ function gerarResumoHome(prefeitura) {
     licitacoes_qtd: Array.isArray(prefeitura.licit_andamento)
       ? prefeitura.licit_andamento.length
       : 0,
+    ...lerResumoDiarias(),
   };
 }
 

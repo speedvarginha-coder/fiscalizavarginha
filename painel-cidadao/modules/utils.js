@@ -131,6 +131,83 @@
   const norm   = (s) => (s || "").toString().toLowerCase()
                                   .normalize("NFD").replace(/\p{Diacritic}/gu, "");
 
+  // Radical de busca: alem de acento e caixa, tira as flexoes mais comuns do
+  // portugues para que "escolas" ache "escola" e "professora" ache PROFESSOR.
+  // A base publica grava cargo e objeto no masculino singular; sem isto o
+  // cidadao que digita o plural recebe zero resultado.
+  const radical = (palavra) => {
+    let p = palavra;
+    if (p.length <= 3) return p;
+    p = p.replace(/(?:coes|oes)$/, "cao")   // licitacoes -> licitacao
+         .replace(/aes$/, "ao")             // paes -> pao
+         .replace(/eis$/, "el")             // papeis -> papel
+         .replace(/ais$/, "al")             // hospitais -> hospital
+         .replace(/ns$/, "m")               // bens -> bem
+         .replace(/res$/, "r")              // mulheres -> mulher
+         .replace(/s$/, "");                // escolas -> escola
+    if (p.length > 4) p = p.replace(/[ao]$/, ""); // escola/escolo -> escol
+    return p;
+  };
+
+  // Distancia de edicao menor ou igual a 1 (troca, sobra ou falta de UMA letra).
+  // Serve so para salvar erro de digitacao; nao e busca aproximada geral.
+  const ateUmErro = (a, b) => {
+    if (a === b) return true;
+    if (Math.abs(a.length - b.length) > 1) return false;
+    const [curto, longo] = a.length <= b.length ? [a, b] : [b, a];
+    let i = 0, j = 0, erros = 0;
+    while (i < curto.length && j < longo.length) {
+      if (curto[i] === longo[j]) { i++; j++; continue; }
+      if (++erros > 1) return false;
+      if (curto.length === longo.length) i++;
+      j++;
+    }
+    return erros + (longo.length - j) + (curto.length - i) <= 1;
+  };
+
+  // Casamento de busca usado por todos os filtros de texto do painel.
+  // A consulta ja chega normalizada (norm). Cada termo digitado precisa casar,
+  // em qualquer ordem, por uma destas vias:
+  //   1. inicio de palavra — cobre digitacao parcial ("limp" acha "limpeza")
+  //   2. radical         — cobre plural e feminino
+  //   3. um erro de digitacao — so para termos de 7 letras ou mais
+  const casaBusca = (texto, consultaNormalizada) => {
+    const q = (consultaNormalizada || "").trim();
+    if (q.length < 2) return true;          // 1 caractere nao filtra nada
+    const alvo = norm(texto);
+    if (!alvo) return false;
+    const termos = q.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+    if (!termos.length) return true;
+    // Frase ou codigo (tem separador): vale o trecho literal, que e o que
+    // preserva "0/2020" e "oficina do nene". Palavra unica NAO usa trecho
+    // literal, senao "licitacao" casa dentro de "solicitacao".
+    if (termos.length > 1 && alvo.includes(q)) return true;
+    // Numero de contrato ("0/2020") e busca exata. Sem esta saida, os termos
+    // "0" e "2020" eram cobrados em separado e qualquer contrato de 2020
+    // entrava no resultado.
+    if (/^\d+\s*\/\s*\d+$/.test(q)) return false;
+    const palavras = alvo.split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+    const radicais = palavras.map(radical);
+    return termos.every(termo => {
+      // Ancorado no INICIO da palavra, nao em qualquer pedaco dela. Solto,
+      // "licitacao" casava "solicitacao" e a pagina Como cobrar mostrava 21 dos
+      // 22 modelos como se todos falassem de licitacao — eram 4.
+      if (palavras.some(pal => pal.startsWith(termo))) return true;
+      const rt = radical(termo);
+      // O prefixo so vale numa direcao: a palavra do DADO pode continuar o que
+      // foi digitado ("limp" acha "limpeza"). A direcao contraria, aceitar que
+      // o que foi digitado continue uma palavra menor do dado, fazia "clx"
+      // casar a palavra solta "c" e "medico" casar a lotacao "MEDIA/ALTA".
+      if (radicais.some(r => r === rt || (rt.length >= 4 && r.startsWith(rt)))) return true;
+      // Tolerancia a erro de digitacao so a partir de 7 letras. Em palavra
+      // curta ela confunde palavras diferentes de verdade: com o piso em 5,
+      // "medica" casava a lotacao "MEDIA/ALTA" e a busca por cargo de medico
+      // devolvia 399 servidores em vez de 40.
+      if (termo.length < 7) return false;
+      return palavras.some(pal => ateUmErro(pal, termo));
+    });
+  };
+
   // Wrap matching substring with <mark> for search highlighting.
   // Falls back to plain escaped text when no query or no match.
   const highlight = (text, q) => {
@@ -186,5 +263,6 @@
 
   window.FISCALIZA.utils = Object.freeze({
     fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, siglaSecretaria, exportCSV,
+    radical, casaBusca,
   });
 })();

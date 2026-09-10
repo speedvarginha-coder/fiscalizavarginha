@@ -20,7 +20,7 @@
     console.error("[diarias] window.FISCALIZA.utils ausente. Carregue modules/utils.js primeiro.");
     return;
   }
-  const { norm, esc, cleanText, fmtBRL, fmtNum, jsSafe, exportCSV, siglaSecretaria } = u;
+  const { norm, esc, cleanText, fmtBRL, fmtNum, jsSafe, exportCSV, siglaSecretaria, casaBusca } = u;
 
   const MESES = [
     "janeiro", "fevereiro", "março", "abril", "maio", "junho",
@@ -245,15 +245,11 @@
         (f.faixa === "500-999" && Number(d.valor_total || 0) >= 500 && Number(d.valor_total || 0) < 1000) ||
         (f.faixa === "0-499" && Number(d.valor_total || 0) < 500)
       ) &&
-      (!f.q ||
-        norm(d.funcionario).includes(f.q) ||
-        norm(d.destino).includes(f.q) ||
-        norm(d.origem).includes(f.q) ||
-        norm(d.finalidade).includes(f.q) ||
-        norm(d.historico).includes(f.q) ||
-        norm(d.secretaria).includes(f.q) ||
-        norm(d.cargo).includes(f.q)
-      )
+      (!f.q || casaBusca(
+        [d.funcionario, d.destino, d.origem, d.finalidade, d.historico, d.secretaria, d.cargo]
+          .filter(Boolean).join(" "),
+        f.q
+      ))
     );
 
     const sorters = {
@@ -401,7 +397,11 @@
       const semDestino = view.filter(d => !String(d.destino || "").trim()).length;
       const semFinalidade = view.filter(d => !String(d.finalidade || d.historico || "").trim()).length;
 
-      if (contadorEl) contadorEl.textContent = `${fmtNum(view.length)} registro(s) · ${fmtBRL(total)}`;
+      if (contadorEl) {
+        const recorte = [f.ano && `em ${f.ano}`, f.mes && `mes ${f.mes}`].filter(Boolean).join(", ");
+        contadorEl.textContent =
+          `${fmtNum(view.length)} registro(s)${recorte ? ` ${recorte}` : " (todos os anos)"} · ${fmtBRL(total)}`;
+      }
       if (statsEl) {
         statsEl.innerHTML = [
           { cls: "stat--navy", v: fmtBRL(total), l: isPrefeitura ? "Total em despesas de diárias" : "Total pago em diárias", s: `Soma do recorte: ${periodoLabel}` },
