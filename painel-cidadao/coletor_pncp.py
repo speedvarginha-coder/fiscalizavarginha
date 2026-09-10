@@ -128,6 +128,11 @@ def _periodo(ano: int) -> tuple[str, str]:
     return f"{ano}0101", f"{ano}1231"
 
 
+def _txt(v) -> str:
+    """Texto limpo; None e 0 viram string vazia, nunca "None"."""
+    return "" if v is None else str(v).strip()
+
+
 def _normaliza_compra(x: dict) -> dict:
     return {
         "numero_controle_pncp": x.get("numeroControlePNCP", ""),
@@ -141,6 +146,18 @@ def _normaliza_compra(x: dict) -> dict:
         ),
         "ano": x.get("anoCompra") or x.get("ano") or "",
         "sequencial": x.get("sequencialCompra") or x.get("sequencial") or "",
+        # Tres numeros diferentes convivem no mesmo pregao e ate hoje o painel
+        # so guardava o sequencial do PNCP. Conferido no registro 241/2026 da
+        # decoracao natalina em 10/09/2026:
+        #   numeroCompra "104"      -> numero do edital, o que a Prefeitura divulga
+        #   processo     "238/2026" -> numero do processo, o que a Betha devolve
+        #   sequencial   241        -> ordem interna do PNCP
+        # Sem numeroCompra, quem procurava pelo edital 104/2026 nao achava nada.
+        "numero_edital": _txt(x.get("numeroCompra")),
+        "processo": _txt(x.get("processo")),
+        "link_origem": _txt(x.get("linkSistemaOrigem")),
+        "data_encerramento_proposta": _txt(x.get("dataEncerramentoProposta")),
+        "existe_resultado": bool(x.get("existeResultado")),
         "modalidade": x.get("modalidadeNome") or x.get("modalidade") or "",
         "modo_disputa": x.get("modoDisputaNome") or "",
         "objeto": x.get("objetoCompra") or x.get("objeto") or "",

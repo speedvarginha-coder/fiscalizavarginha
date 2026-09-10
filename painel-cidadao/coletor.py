@@ -804,6 +804,10 @@ def _processa_sapl_rows(ano: int, rows: list[dict],
         "ano": ano,
         "total_materias": len(rows),
         "vereadores_ativos": sum(1 for v in vereadores if _norm_txt(v["nome"]) in PARLAMENTARES_MONITORADOS),
+        # Quantos parlamentares o painel acompanha, para o site nunca apresentar
+        # "vereadores ativos" como se fosse o tamanho da Camara. Sao coisas
+        # diferentes: 14 tinham materias em 2025, mas as cadeiras sao 15.
+        "vereadores_monitorados": len(PARLAMENTARES_MONITORADOS),
         "emendas_qtd": len(emendas),
         "emendas_valor_total_brl": round(valor_total, 2),
         "impacto_zero_qtd": sum(1 for m in materias if m["impacto_zero"]),

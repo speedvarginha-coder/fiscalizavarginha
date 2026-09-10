@@ -346,7 +346,7 @@
       { href: "prefeitura.html", value: fmtMi(pf_data.total_externo_atual || totalContratos), label: `pagos em ${pf_data.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
       { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos", cidada: "Quem recebeu mais? Por qual serviço?" },
       { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasQtd), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
-      { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)} vereadores monitorados`, title: "Câmara", cidada: "O que cada vereador propôs e votou?" },
+      { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)}${resumoCam.vereadores_monitorados ? " de " + fmtNum(resumoCam.vereadores_monitorados) : ""} vereadores com matérias`, title: "Câmara", cidada: "O que cada vereador propôs e votou?" },
       { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} para conferir`, title: "Emendas", cidada: "O dinheiro chegou ao beneficiário?" },
       { href: "prefeitura.html?tab=licitacoes", value: fmtNum(licitacoes.length), label: "acompanhar antes do gasto", title: "Licitações", cidada: "Qual empresa vai ganhar este contrato?" },
     ].map(item => `
@@ -4168,6 +4168,58 @@
     const filtroLic     = $("filtroLicitacao");
     const filtroValLic  = $("filtroValorLicitacao");
     const filtroAnoLic  = $("filtroAnoLicitacao");
+
+    // Cruzamento com o PNCP. A base da Betha e a do PNCP descrevem a mesma
+    // compra com numeros diferentes; o PNCP e quem publica o numero do edital
+    // e a pagina oficial do processo. O casamento e conservador de proposito:
+    // so aceita quando o processo bate exatamente, ou quando valor estimado e
+    // objeto coincidem. Sem casamento, o link antigo de busca continua valendo.
+    const comprasPncp = ((D.pncp || {}).compras) || [];
+    const casaPncp = (l) => {
+      if (!comprasPncp.length) return null;
+      const numero = String(l.numero || "").trim();
+      const ano = String(l.ano || (l.data || "").slice(0, 4)).trim();
+      if (numero && ano) {
+        const porProcesso = comprasPncp.find(c => String(c.processo || "") === `${numero}/${ano}`);
+        if (porProcesso) return porProcesso;
+      }
+      const valor = Number(l.valor || 0);
+      const objeto = norm(l.objeto || "");
+      if (!valor || objeto.length < 20) return null;
+      return comprasPncp.find(c => {
+        if (Number(c.valor_estimado || 0) !== valor) return false;
+        const alvoObjeto = norm(c.objeto || "");
+        return alvoObjeto.includes(objeto) || objeto.includes(alvoObjeto);
+      }) || null;
+    };
+
+    // numeroControlePNCP tem o formato "<cnpj>-1-<sequencial>/<ano>"; a pagina
+    // publica do edital e /app/editais/<cnpj>/<ano>/<sequencial sem zeros>.
+    // Conferido no edital 104/2026 de Varginha em 10/09/2026.
+    const pncpUrl = (c) => {
+      const busca = "https://pncp.gov.br/app/editais?q=varginha";
+      if (!c) return busca;
+      const cnpj = String(c.cnpj_orgao || "").replace(/\D/g, "");
+      const ano = String(c.ano || "").trim();
+      const seq = String(c.sequencial || "").replace(/^0+/, "");
+      if (!cnpj || !ano || !seq) return busca;
+      return `https://pncp.gov.br/app/editais/${cnpj}/${ano}/${seq}`;
+    };
+    // Texto pesquisavel da licitacao. Inclui os numeros do PNCP para que quem
+    // digita o numero do edital divulgado pela Prefeitura ("104/2026") encontre
+    // o registro, que na base da Betha esta guardado pelo numero do processo.
+    const textoBuscaLicitacao = (l) => {
+      const c = casaPncp(l);
+      return [
+        l.objeto, l.modalidade, l.numero,
+        l.numero && l.ano ? `${l.numero}/${l.ano}` : "",
+        c && c.numero_edital ? c.numero_edital : "",
+        c && c.numero_edital ? `${c.numero_edital}/${c.ano || l.ano || ""}` : "",
+        c && c.processo ? c.processo : "",
+        c && c.numero_controle_pncp ? c.numero_controle_pncp : "",
+      ].filter(Boolean).join(" ");
+    };
+
     const licContador   = $("licitacoesContador");
     const licMaisBtn    = $("btnLicitacoesMais");
     const licMaisWrap   = $("licitacoesMais");
@@ -4182,7 +4234,7 @@
         const anoLicitacao = l.ano || (l.data ? l.data.substring(0, 4) : "");
         return (!anoFiltro || String(anoLicitacao) === anoFiltro) &&
           (!vmin || (Number(l.valor) || 0) >= vmin) &&
-          (!q    || casaBusca([l.objeto, l.modalidade, l.numero].filter(Boolean).join(" "), q));
+          (!q    || casaBusca(textoBuscaLicitacao(l), q));
       });
       if (licContador) licContador.textContent = `${filtrados.length} licitações`;
       if (!filtrados.length) {
@@ -4204,9 +4256,19 @@
       }
       $("licitacoes").innerHTML = filtrados.slice(0, licShown).map(l => {
         const data = (l.data || "").split("-").reverse().join("/");
+        const pncp = casaPncp(l);
+        const editalPncp = pncp && pncp.numero_edital
+          ? `${pncp.numero_edital}/${pncp.ano || l.ano || ""}`
+          : "";
+        // A Betha devolve o numero do PROCESSO; a Prefeitura divulga o numero do
+        // EDITAL. Sao diferentes (processo 238/2026 = edital 104/2026) e o
+        // painel chamava o processo de "Licitação nº", o que fazia quem
+        // procurava pelo edital nao encontrar nada.
+        const ehProcesso = Boolean(pncp && pncp.processo &&
+          String(pncp.processo).split("/")[0] === String(l.numero || ""));
         return `
           <article class="lic">
-            <div class="lic__num">Licitação nº ${l.numero || "—"}${l.ano ? "/" + l.ano : ""}</div>
+            <div class="lic__num">${ehProcesso ? "Processo" : "Licitação"} nº ${l.numero || "—"}${l.ano ? "/" + l.ano : ""}${editalPncp ? ` · Edital nº ${esc(editalPncp)}` : ""}</div>
             <p class="lic__obj">${esc(l.objeto)}</p>
             <div class="lic__meta">
               ${l.modalidade ? `<span><strong>${esc(l.modalidade)}</strong></span>` : ""}
@@ -4216,7 +4278,7 @@
             </div>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
               <a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/82967" target="_blank" rel="noopener" title="Ver licitações no Portal Betha" style="text-decoration:none; padding: 3px 9px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.78em; font-weight: 500; border: 1px solid #90caf9;">${window.FISCALIZA.icon("lupa", { size: 14 })} Betha</a>
-              <a class="btn-link" href="https://pncp.gov.br/app/editais?q=varginha" target="_blank" rel="noopener" title="Buscar no Portal Nacional de Contratações Públicas" style="text-decoration:none; padding: 3px 9px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">${window.FISCALIZA.icon ? window.FISCALIZA.icon("documentos", { size: 12 }) : ""} PNCP</a>
+              <a class="btn-link" href="${pncpUrl(pncp)}" target="_blank" rel="noopener" title="${pncp ? "Abrir este edital no Portal Nacional de Contratações Públicas" : "Buscar no Portal Nacional de Contratações Públicas"}" style="text-decoration:none; padding: 3px 9px; background: #f3e5f5; border-radius: 4px; color: #6a1b9a; font-size: 0.78em; font-weight: 500; border: 1px solid #ce93d8;">${window.FISCALIZA.icon ? window.FISCALIZA.icon("documentos", { size: 12 }) : ""} PNCP</a>
             </div>
           </article>`;
       }).join("");
@@ -4268,7 +4330,7 @@
           const anoLicitacao = l.ano || (l.data ? l.data.substring(0, 4) : "");
           return (!anoFiltro || String(anoLicitacao) === anoFiltro) &&
             (!vmin || (Number(l.valor) || 0) >= vmin) &&
-            (!q    || casaBusca([l.objeto, l.modalidade, l.numero].filter(Boolean).join(" "), q));
+            (!q    || casaBusca(textoBuscaLicitacao(l), q));
         });
         exportCSV(view.map(l => ({
           numero:      `${l.numero || ""}/${l.ano || ""}`,

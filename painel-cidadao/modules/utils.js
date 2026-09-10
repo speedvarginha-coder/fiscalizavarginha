@@ -16,10 +16,18 @@
   window.FISCALIZA = window.FISCALIZA || {};
 
   // ============= FORMATTERS =============
-  const fmtBRL = (n) =>
-    "R$ " + (n || 0).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  // O sinal vem antes do simbolo, como se escreve em portugues: -R$ 2.395.653,21.
+  // Concatenar "R$ " com o numero ja formatado produzia "R$ -2.395.653,21".
+  const fmtBRL = (n) => {
+    const v = Number(n) || 0;
+    const corpo = Math.abs(v).toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    return (v < 0 ? "-R$ " : "R$ ") + corpo;
+  };
   const fmtBRLnb = fmtBRL;
-  const fmtMi  = (n) => "R$ " + (n / 1_000_000).toFixed(1).replace(".", ",") + " mi";
+  const fmtMi  = (n) => {
+    const v = Number(n) || 0;
+    return (v < 0 ? "-R$ " : "R$ ") + (Math.abs(v) / 1_000_000).toFixed(1).replace(".", ",") + " mi";
+  };
   const fmtNum = (n) => (n || 0).toLocaleString("pt-BR");
   const cleanText = (v) => {
     let text = (v ?? "").toString()
@@ -170,7 +178,8 @@
   // em qualquer ordem, por uma destas vias:
   //   1. inicio de palavra — cobre digitacao parcial ("limp" acha "limpeza")
   //   2. radical         — cobre plural e feminino
-  //   3. um erro de digitacao — so para termos de 7 letras ou mais
+  //   3. um erro de digitacao — so para termos de 7 letras ou mais, e nunca
+  //      para termo com digito, porque numero e identidade e nao palavra
   const casaBusca = (texto, consultaNormalizada) => {
     const q = (consultaNormalizada || "").trim();
     if (q.length < 2) return true;          // 1 caractere nao filtra nada
@@ -204,6 +213,11 @@
       // "medica" casava a lotacao "MEDIA/ALTA" e a busca por cargo de medico
       // devolvia 399 servidores em vez de 40.
       if (termo.length < 7) return false;
+      // Numero e identidade, nao palavra: um digito diferente e outro registro,
+      // nunca um erro de digitacao. Sem esta saida, buscar o plano de acao
+      // "202627540001" no portal de emendas trazia tres registros diferentes
+      // que so diferiam de um digito.
+      if (/\d/.test(termo)) return false;
       return palavras.some(pal => ateUmErro(pal, termo));
     });
   };

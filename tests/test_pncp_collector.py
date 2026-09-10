@@ -71,6 +71,46 @@ class PncpQueryContractTests(unittest.TestCase):
         self.assertTrue(all("codigoMunicipioIbge" not in item for item in seen))
 
 
+class PncpNumerosDaCompraTests(unittest.TestCase):
+    """Tres numeros diferentes descrevem o mesmo pregao.
+
+    Conferido na API publica do PNCP em 10/09/2026, registro 241/2026 de
+    Varginha (decoracao natalina, R$ 3.528.268,00):
+        numeroCompra "104"      -> numero do edital, o que a Prefeitura divulga
+        processo     "238/2026" -> numero do processo, o que a Betha devolve
+        sequencialCompra 241    -> ordem interna do PNCP
+    O painel guardava so o sequencial, entao quem procurava pelo edital
+    104/2026 nao encontrava a licitacao.
+    """
+
+    def test_guarda_edital_processo_e_sequencial_separados(self):
+        bruto = {
+            "numeroControlePNCP": "18240119000105-1-000241/2026",
+            "orgaoEntidade": {"cnpj": "18240119000105", "razaoSocial": "MUNICIPIO DE VARGINHA"},
+            "anoCompra": 2026,
+            "sequencialCompra": 241,
+            "numeroCompra": "104",
+            "processo": "238/2026",
+            "objetoCompra": "Contratação de empresa especializada para a prestação de serviços de decoração natalina",
+            "valorTotalEstimado": 3528268,
+            "valorTotalHomologado": None,
+            "linkSistemaOrigem": "https://www.portaldecompraspublicas.com.br/processos/MG/x",
+            "dataEncerramentoProposta": "2026-09-08T08:30:00",
+            "existeResultado": False,
+        }
+        r = coletor_pncp._normaliza_compra(bruto)
+        self.assertEqual(r["numero_edital"], "104")
+        self.assertEqual(r["processo"], "238/2026")
+        self.assertEqual(r["sequencial"], 241)
+        self.assertEqual(r["data_encerramento_proposta"], "2026-09-08T08:30:00")
+        self.assertFalse(r["existe_resultado"])
+
+    def test_campo_ausente_vira_string_vazia_e_nunca_o_texto_None(self):
+        r = coletor_pncp._normaliza_compra({"numeroControlePNCP": "x", "anoCompra": 2026})
+        for campo in ("numero_edital", "processo", "link_origem", "data_encerramento_proposta"):
+            self.assertEqual(r[campo], "", f"{campo} deveria ser vazio")
+
+
 class PncpPreservationTests(unittest.TestCase):
     def test_partial_merge_updates_current_rows_without_losing_previous(self):
         previous = [

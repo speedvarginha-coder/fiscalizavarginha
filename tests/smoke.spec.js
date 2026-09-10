@@ -883,13 +883,27 @@ test.describe("Como cobrar — LAIs (estrutura e filtro duplo)", () => {
 });
 
 test.describe("Rodapé padronizado", () => {
-  const PAGS = ["index","atualizacoes","prefeitura","camara","relatorios","sobre","cobrar","marcadores","pessoal"];
+  // Conferir a LISTA, nao a contagem. Enquanto o teste so contava links, o
+  // rodape podia divergir sem ninguem notar: Conformidade estava no menu do
+  // topo de todas as paginas e em nenhum rodape, e a contagem continuava 12.
+  const RODAPE = [
+    "index.html", "atualizacoes.html", "monitoramento.html", "prefeitura.html",
+    "fundacao.html", "camara.html", "emendas/index.html", "relatorios.html",
+    "pessoal.html", "avalie.html", "sobre.html", "conformidade.html", "cobrar.html",
+  ];
+  const PAGS = [
+    "index", "atualizacoes", "monitoramento", "prefeitura", "fundacao", "camara",
+    "relatorios", "pessoal", "avalie", "sobre", "conformidade", "cobrar", "marcadores",
+  ];
   for (const p of PAGS) {
     test(`${p}: navegação, fontes e data dinâmica`, async ({ page }) => {
       setupConsoleListener(page);
       await gotoReady(page, fileUrl(p + ".html"), { waitUntil: "domcontentloaded" });
       await expect(page.locator(".footer__inner")).toHaveCount(1);
-      await expect(page.locator(".footer__nav a")).toHaveCount(12);
+      const hrefs = await page.locator(".footer__nav a").evaluateAll(
+        (as) => as.map((a) => a.getAttribute("href")),
+      );
+      expect(hrefs, `rodapé de ${p}.html fora do padrão`).toEqual(RODAPE);
       await expect(page.locator(".footer__sources a")).toHaveCount(7);
       await expect(page.locator("#footerAtualizado")).not.toHaveText("—", { timeout: 15000 });
       await expect(page.locator("#footerAtualizado")).not.toHaveText("", { timeout: 15000 });

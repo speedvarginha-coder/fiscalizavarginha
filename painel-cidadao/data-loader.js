@@ -123,7 +123,7 @@
 
   // Versão estável: Date.now() obrigava o celular a baixar novamente todos os
   // scripts e chunks em cada visita. A versão muda apenas quando há deploy.
-  const BUILD_VERSION = "20260910-busca";
+  const BUILD_VERSION = "20260910-busca2";
   const body = document.body;
   const page = (body && body.dataset.page) || "home";
   const modulosPagina = MODULOS_POR_PAGINA[page] || MODULOS;

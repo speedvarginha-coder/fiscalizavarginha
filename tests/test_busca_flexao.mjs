@@ -63,6 +63,10 @@ checa("OFICINA DO NENE LTDA", "nene oficina", true, "termos fora de ordem");
 // 3. Erro de digitacao de uma letra so, a partir de 7 caracteres.
 checa("SERVICO DE LIMPEZA URBANA", "limpesa", true, "troca de letra");
 checa("PAVIMENTACAO ASFALTICA", "pavimentaao", true, "letra faltando");
+// Numero nunca entra na tolerancia: um digito diferente e outro registro.
+checa("PLANO DE ACAO 202627540002", "202627540001", false, "codigo com um digito diferente e outro registro");
+checa("PLANO DE ACAO 202627540001", "202627540001", true, "o codigo exato continua achando");
+checa("CONTRATO 12345678901234", "1234567890", true, "prefixo de codigo ainda acha");
 
 // 4. O filtro ainda filtra — sem isto a busca vira enfeite.
 checa("MERENDA ESCOLAR", "hospital", false, "termo ausente");
