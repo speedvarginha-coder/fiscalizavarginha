@@ -145,6 +145,31 @@ checa(
   duplicadas.length ? `${duplicadas.length} duplicada(s)` : ""
 );
 
+// Obras por bairro no contexto do chat: soma fecha e o recorte é declarado como OBRAS.
+const obrasBairro = ctx.prefeitura?.obras_por_bairro;
+checa(
+  "chat: obras por bairro presentes",
+  !!obrasBairro && Array.isArray(obrasBairro.bairros) && obrasBairro.bairros.length > 0
+);
+if (obrasBairro) {
+  const somaBairros = obrasBairro.bairros.reduce((s, b) => s + Number(b.valor || 0), 0) + Number(obrasBairro.valor_sem_bairro || 0);
+  const somaObras = Math.round(obras.reduce((s, o) => s + Number(o.valor || 0), 0) * 100) / 100;
+  checa(
+    "chat: soma por bairro + sem bairro = total das obras",
+    Math.abs(somaBairros - somaObras) < 1,
+    `${somaBairros.toFixed(2)} x ${somaObras.toFixed(2)}`
+  );
+  checa(
+    "chat: total de obras por bairro = obras coletadas",
+    Number(obrasBairro.obras_total) === obras.length,
+    `${obrasBairro.obras_total} x ${obras.length}`
+  );
+  checa(
+    "chat: criterio deixa claro que cobre apenas obras",
+    /obras/i.test(obrasBairro.criterio || "") && /n[ãa]o .*or[çc]amento/i.test(obrasBairro.criterio || "")
+  );
+}
+
 // -------------------------------------------------- 1b. LOA como fonte real
 
 // Lidos aqui porque as secoes seguintes tambem usam.

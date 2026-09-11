@@ -16,6 +16,33 @@ function topFornecedores(lista, limite = 10) {
   }));
 }
 
+// Só as obras públicas trazem bairro na fonte. Contratos, licitações e compras
+// não têm esse campo; por isso o recorte é declarado como OBRAS, nunca como
+// orçamento municipal por bairro. Usa o mesmo campo de valor exibido nas obras.
+function obrasPorBairro(obras) {
+  const mapa = new Map();
+  let semBairro = 0;
+  let valorSemBairro = 0;
+  (obras || []).forEach((o) => {
+    const bairro = String(o.bairro || "").replace(/\s+/g, " ").trim();
+    const valor = Number(o.valor) || 0;
+    if (!bairro) { semBairro += 1; valorSemBairro += valor; return; }
+    const cur = mapa.get(bairro) || { bairro, obras: 0, valor: 0 };
+    cur.obras += 1;
+    cur.valor += valor;
+    mapa.set(bairro, cur);
+  });
+  return {
+    criterio: "Soma do valor informado das OBRAS públicas com bairro declarado na fonte. Não é o orçamento municipal por bairro.",
+    obras_total: (obras || []).length,
+    sem_bairro: semBairro,
+    valor_sem_bairro: Math.round(valorSemBairro * 100) / 100,
+    bairros: [...mapa.values()]
+      .map((b) => ({ bairro: b.bairro, obras: b.obras, valor: Math.round(b.valor * 100) / 100 }))
+      .sort((a, b) => b.valor - a.valor),
+  };
+}
+
 const prefeitura = readJson("prefeitura.json");
 const camara = readJson("camara_betha.json");
 const diarias = readJson("diarias.json");
@@ -38,6 +65,7 @@ const contexto = {
     "Valor de contrato não é igual a valor pago.",
     "Valor total dividido pela vigência não representa gasto diário efetivo.",
     "A lista histórica de parlamentares pode conter titulares e suplentes; a Câmara possui 15 cadeiras.",
+    "O valor por bairro cobre apenas obras públicas com bairro declarado; não representa o orçamento municipal por bairro.",
   ],
   prefeitura: {
     ano: prefeitura.ano_atual,
@@ -49,6 +77,7 @@ const contexto = {
       (c) => String(c.situacao || "").toUpperCase() === "EXECUCAO",
     ).length,
     obras_publicas: obras.length,
+    obras_por_bairro: obrasPorBairro(obras),
     top_fornecedores: topFornecedores(prefeitura.top_fornecedores_atual),
   },
   camara: {
