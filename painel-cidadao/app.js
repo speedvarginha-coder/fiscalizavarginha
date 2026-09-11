@@ -4090,6 +4090,11 @@
       // URL state sync — permite compartilhar filtros aplicados
       (function () {
         const p = new URLSearchParams(window.location.search);
+        const tabAtiva = p.get("tab") || "";
+        // q/ano pertencem também à aba Asfalto (busca por bairro). Rodando no
+        // load com outra aba ativa, este sync apagava o "q" e a URL virava
+        // ?tab=asfalto&ano=2026, perdendo a busca compartilhada.
+        if (tabAtiva && tabAtiva !== "contratos") return;
         const qVal = filtroContrato.value.trim();
         if (qVal) p.set("q", qVal); else p.delete("q");
         if (anoFiltro) p.set("ano", anoFiltro); else p.delete("ano");

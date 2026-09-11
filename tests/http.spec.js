@@ -330,3 +330,10 @@ test("busca global abre pelo menu e roteia em página interna", async ({ page })
   await overlay.locator('button[type="submit"]').click();
   await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=Vila%20Floresta/);
 });
+
+test("busca da aba Asfalto mantem o q na URL (nao vira so tab+ano)", async ({ page }) => {
+  await page.goto("/prefeitura.html?tab=asfalto&q=Vila%20Floresta", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });
+  await expect(page.locator("#filtroBuscaAsfalto")).toHaveValue("Vila Floresta");
+  expect(new URL(page.url()).searchParams.get("q")).toBe("Vila Floresta");
+});
