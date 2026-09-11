@@ -14,14 +14,14 @@
   // ============ CHUNKS POR PÁGINA ============
   // Mapeia data-page → chunks necessários. Body também pode sobrescrever via data-chunks.
   const CHUNKS_POR_PAGINA = {
-    "home":         ["home_resumo", "resumo", "atualizado_em", "auditoria_dados", "status_fontes", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
-    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "status_fontes", "prefeitura_frota"],
+    "home":         ["home_resumo", "resumo", "atualizado_em", "auditoria_dados", "status_fontes", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "diario"],
+    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "vereadores", "atualizado_em", "diario", "auditoria_dados", "status_fontes", "prefeitura_frota"],
     "fundacao":     ["fundacao_cultural", "atualizado_em", "auditoria_dados", "status_fontes", "diario", "prefeitura", "camara_betha"],
-    "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados", "status_fontes"],
+    "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "atualizado_em", "auditoria_dados", "status_fontes"],
     // "receitas" removido: o chunk mistura arrecadação acumulada de vários anos
     // (ISSQN R$ 2,1 bi vs orçado 379M) e nada na página o renderiza — não publicar
     // até a coleta filtrar o exercício corrente.
-    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "sancoes_fornecedores", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "status_fontes", "pessoal", "licitacoes_resultados", "pca"],
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "status_fontes", "pessoal", "licitacoes_resultados", "pca"],
     "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],

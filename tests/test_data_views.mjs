@@ -33,6 +33,16 @@ test("painel enxuto + chunk de frota reconstroem a base da Prefeitura sem perda"
   assert.deepEqual({ ...slim, frota: frota.frota }, original);
 });
 
+test("sancoes_fornecedores so e carregado onde e usado (Como cobrar)", () => {
+  const loader = fs.readFileSync(new URL("../painel-cidadao/data-loader.js", import.meta.url), "utf8");
+  const cfg = loader.match(/const CHUNKS_POR_PAGINA = (\{[\s\S]*?\});/)[1];
+  assert.match(cfg, /"cobrar":\s*\[[^\]]*"sancoes_fornecedores"/);
+  for (const page of ["home", "prefeitura", "camara", "relatorios", "fundacao", "atualizacoes", "marcadores"]) {
+    const lista = cfg.match(new RegExp(`"${page}":\\s*\\[([^\\]]*)\\]`))[1];
+    assert.doesNotMatch(lista, /sancoes_fornecedores/, page);
+  }
+});
+
 test("fallback offline contém a mesma versão de cada chunk público", () => {
   const panel = new URL("../painel-cidadao/", import.meta.url);
   const text = fs.readFileSync(new URL("data.js", panel), "utf8");
