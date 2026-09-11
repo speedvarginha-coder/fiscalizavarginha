@@ -238,6 +238,9 @@ function loadChunksFrom(dir) {
     camaraBetha: readJson(path.join(dir, "camara_betha.json"), {}),
     diario: readJson(path.join(dir, "diario.json"), {}),
     auditoria: readJson(path.join(dir, "auditoria_dados.json"), {}),
+    camaraAnos: readJson(path.join(dir, "camara_anos.json"), {}),
+    diarias: readJson(path.join(dir, "diarias.json"), {}),
+    pessoal: readJson(path.join(dir, "pessoal.json"), {}),
   };
 }
 
@@ -272,6 +275,16 @@ function buildSnapshotFromChunks(dir, source = "chunks") {
   }));
   const id = `${snapshotIdFromIso(coletaIso)}-${snapshotFingerprint({ contratos, fornecedores, diario, issues, asfalto, obras })}`;
 
+  // Totais de bases estáveis publicadas. Servem de guarda contra encolhimento
+  // silencioso: uma coleta parcial que devolva muito menos registros que o
+  // snapshot anterior acusa erro antes de publicar.
+  const camaraMaterias = Object.values(chunks.camaraAnos || {})
+    .reduce((sum, ano) => sum + ((ano && ano.materias) || []).length, 0);
+  const diariasPrefeitura = (chunks.diarias?.prefeitura || []).length;
+  const diariasCamara = (chunks.diarias?.camara || []).length;
+  const servidoresPrefeitura = (chunks.pessoal?.prefeitura?.servidores || []).length;
+  const servidoresCamara = (chunks.pessoal?.camara?.servidores || []).length;
+
   return {
     schema_version: 1,
     snapshot_id: id,
@@ -289,6 +302,10 @@ function buildSnapshotFromChunks(dir, source = "chunks") {
       pendencias_qtd: issues.length,
       asfalto_qtd: asfalto.length,
       asfalto_valor_brl: asfalto.reduce((sum, item) => sum + item.valor_brl, 0),
+      camara_materias_qtd: camaraMaterias,
+      diarias_prefeitura_qtd: diariasPrefeitura,
+      diarias_camara_qtd: diariasCamara,
+      pessoal_servidores_qtd: servidoresPrefeitura + servidoresCamara,
     },
     contratos,
     obras_publicas: obras,

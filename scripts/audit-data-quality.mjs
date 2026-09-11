@@ -6,6 +6,7 @@ import crypto from "node:crypto";
 import { agruparSancoes, avaliarIncompatibilidade, CATEGORIAS } from "./lib/classificar-sancoes.mjs";
 import { internalTimestamp } from "./lib/source-freshness.mjs";
 import { avaliarDetalhamentoDiarias } from "./lib/audit-diarias.mjs";
+import { avaliarQuedaAnormal } from "./lib/data-drop.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -1117,12 +1118,11 @@ function latestSnapshot() {
 }
 
 function checkUnexpectedDrop(id, label, current, previous, source) {
-  if (!Number.isFinite(previous) || previous < 10 || !Number.isFinite(current)) return;
-  const ratio = current / previous;
-  if (ratio > 0.2) return;
-  const zeroDetail = current === 0
+  const queda = avaliarQuedaAnormal(current, previous);
+  if (!queda) return;
+  const zeroDetail = queda.zero
     ? "A coleta retornou zero; trate como possivel erro ate confirmacao da fonte, nao como ausencia real."
-    : `A quantidade caiu ${(100 * (1 - ratio)).toFixed(1)}%.`;
+    : `A quantidade caiu ${queda.percentual.toFixed(1)}%.`;
   add("error", id, `Queda anormal em ${label}`, `${zeroDetail} Atual: ${current}; snapshot anterior: ${previous}.`, "Interromper a publicacao e comparar os logs/metadados da etapa com a fonte oficial.", source);
 }
 
@@ -1132,6 +1132,19 @@ if (previousSnapshot?.totais) {
   const currentSuppliers = (chunks.prefeitura?.top_fornecedores_atual?.length || 0) + (chunks.camaraBetha?.top_fornecedores_atual?.length || 0);
   checkUnexpectedDrop("contratos-queda-anormal", "contratos", currentContracts, Number(previousSnapshot.totais.contratos_qtd), "prefeitura.json + camara_betha.json");
   checkUnexpectedDrop("fornecedores-queda-anormal", "fornecedores", currentSuppliers, Number(previousSnapshot.totais.fornecedores_qtd), "prefeitura.json + camara_betha.json");
+  // Outras bases estaveis: uma coleta parcial nao pode encolher a base publicada
+  // em silencio. Campos ausentes em snapshots antigos viram NaN e nao disparam.
+  const currentObras = chunks.prefeitura?.obras_publicas?.length || 0;
+  const currentMaterias = Object.values(chunks.camaraAnos || {})
+    .reduce((sum, ano) => sum + (((ano && ano.materias) || []).length), 0);
+  const currentDiariasPref = chunks.diarias?.prefeitura?.length || 0;
+  const currentDiariasCam = chunks.diarias?.camara?.length || 0;
+  const currentServidores = (chunks.pessoal?.prefeitura?.servidores?.length || 0) + (chunks.pessoal?.camara?.servidores?.length || 0);
+  checkUnexpectedDrop("obras-queda-anormal", "obras publicas", currentObras, Number(previousSnapshot.totais.obras_publicas_qtd), "prefeitura.json");
+  checkUnexpectedDrop("materias-queda-anormal", "materias da Camara", currentMaterias, Number(previousSnapshot.totais.camara_materias_qtd), "camara_anos.json");
+  checkUnexpectedDrop("diarias-prefeitura-queda-anormal", "diarias da Prefeitura", currentDiariasPref, Number(previousSnapshot.totais.diarias_prefeitura_qtd), "diarias.json");
+  checkUnexpectedDrop("diarias-camara-queda-anormal", "diarias da Camara", currentDiariasCam, Number(previousSnapshot.totais.diarias_camara_qtd), "diarias.json");
+  checkUnexpectedDrop("pessoal-queda-anormal", "servidores", currentServidores, Number(previousSnapshot.totais.pessoal_servidores_qtd), "pessoal.json");
 }
 
 function latestDateFrom(items, field = "data") {
