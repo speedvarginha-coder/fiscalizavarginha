@@ -13286,3 +13286,47 @@ body[data-page="home"] .hub-grid-18 .hub-item--avalie .hub-item__icon svg {
 }
 .busca-global__fab:hover { background: var(--teal, #0d7f7a); }
 @media (max-width: 480px) { .busca-global__fab { bottom: 72px; right: 12px; } }
+
+/* ===== Obras por bairro (aba Asfalto) ===== */
+.obras-bairro {
+  background: var(--surface-2, #f6f8fb);
+  border: 1px solid var(--line, #d5dbe4);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 18px 0;
+}
+.obras-bairro__title { margin: 0 0 4px; font-size: 1.05rem; color: var(--ink, #1c2430); }
+.obras-bairro__lead { margin: 0 0 12px; font-size: .88rem; color: var(--muted, #5b6675); }
+.obras-bairro__list { display: flex; flex-direction: column; gap: 4px; max-height: 360px; overflow: auto; }
+.obras-bairro__row {
+  display: grid; grid-template-columns: minmax(120px, 1.3fr) 1fr auto;
+  align-items: center; gap: 10px;
+  background: none; border: 0; cursor: pointer; text-align: left;
+  padding: 6px 8px; border-radius: 8px; color: inherit; font: inherit;
+}
+.obras-bairro__row:hover { background: rgba(0, 75, 141, .08); }
+.obras-bairro__nome { font-weight: 700; font-size: .9rem; }
+.obras-bairro__bar { display: block; height: 8px; background: rgba(0, 75, 141, .12); border-radius: 999px; overflow: hidden; }
+.obras-bairro__bar > span { display: block; height: 100%; background: var(--gold, #c8a24a); }
+.obras-bairro__val { font-size: .85rem; color: var(--ink, #1c2430); white-space: nowrap; }
+.obras-bairro__nota { margin: 10px 0 0; font-size: .8rem; color: var(--muted, #5b6675); }
+@media (max-width: 560px) {
+  .obras-bairro__row { grid-template-columns: 1fr auto; }
+  .obras-bairro__bar { display: none; }
+}
+.obras-bairro__detalhe { margin-top: 12px; border-top: 1px solid var(--line, #d5dbe4); padding-top: 12px; display: flex; flex-direction: column; gap: 8px; }
+.obras-bairro__detalhe-titulo { margin: 0; font-size: .92rem; color: var(--ink, #1c2430); }
+.obras-bairro__obra {
+  display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: start;
+  background: var(--surface, #fff); border: 1px solid var(--line, #d5dbe4);
+  border-radius: 8px; padding: 8px 10px;
+}
+.obras-bairro__obra-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.obras-bairro__obra-info strong { font-size: .86rem; color: var(--ink, #1c2430); }
+.obras-bairro__obra-info span { font-size: .78rem; color: var(--muted, #5b6675); }
+.obras-bairro__obra-val { font-weight: 700; font-size: .86rem; white-space: nowrap; }
+.obras-bairro__obra-fonte { font-size: .78rem; white-space: nowrap; }
+@media (max-width: 560px) {
+  .obras-bairro__obra { grid-template-columns: 1fr auto; }
+  .obras-bairro__obra-fonte { grid-column: 1 / -1; }
+}

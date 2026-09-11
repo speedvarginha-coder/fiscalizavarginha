@@ -337,3 +337,23 @@ test("busca da aba Asfalto mantem o q na URL (nao vira so tab+ano)", async ({ pa
   await expect(page.locator("#filtroBuscaAsfalto")).toHaveValue("Vila Floresta");
   expect(new URL(page.url()).searchParams.get("q")).toBe("Vila Floresta");
 });
+
+test("Obras por bairro mostra valores corretos e detalha as obras", async ({ page }) => {
+  await page.goto("/prefeitura.html?tab=asfalto", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });
+  const painel = page.locator("#obrasPorBairro");
+  await expect(painel).toBeVisible();
+  await expect(painel).toContainText("Obras por bairro");
+  await expect(painel).toContainText("não publica o orçamento inteiro por bairro");
+  const primeira = await painel.locator(".obras-bairro__row").first().innerText();
+  expect(primeira).toMatch(/Centro/);
+  expect(primeira).toMatch(/R\$/);
+  // 130 obras com 1 sem bairro → aparece o aviso de cobertura
+  await expect(painel).toContainText(/1 sem bairro informado/);
+  // Clicar num bairro revela as obras dele
+  await painel.locator(".obras-bairro__row").filter({ hasText: "Vila Floresta" }).click();
+  const detalhe = page.locator("#obrasBairroDetalhe");
+  await expect(detalhe).toBeVisible();
+  await expect(detalhe).toContainText("Vila Floresta");
+  expect(await detalhe.locator(".obras-bairro__obra").count()).toBeGreaterThan(0);
+});

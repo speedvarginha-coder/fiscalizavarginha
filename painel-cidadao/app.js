@@ -5257,6 +5257,80 @@ ${url}
     ].join("\n\n");
   }
 
+  // ============= OBRAS POR BAIRRO (prefeitura.html, aba Asfalto) =============
+  // Só as obras públicas têm bairro/endereço na fonte. Contratos, licitações e
+  // compras não trazem esse campo, então este painel cobre OBRAS — nunca é o
+  // orçamento municipal por bairro. Usa o mesmo "valor" já exibido nos cartões
+  // de obra, para não haver dois números para o mesmo dado.
+  function renderObrasPorBairro() {
+    const alvo = $("obrasPorBairro");
+    if (!alvo) return;
+    const obras = pf.obras_publicas || [];
+    if (!obras.length) { alvo.hidden = true; return; }
+
+    const grupos = new Map();
+    let semBairro = 0;
+    let valorSemBairro = 0;
+    obras.forEach((o) => {
+      const bairro = cleanText(o.bairro);
+      const valor = Number(o.valor) || 0;
+      if (!bairro) { semBairro += 1; valorSemBairro += valor; return; }
+      const cur = grupos.get(bairro) || { bairro, qtd: 0, valor: 0 };
+      cur.qtd += 1;
+      cur.valor += valor;
+      grupos.set(bairro, cur);
+    });
+    const ranking = [...grupos.values()].sort((a, b) => b.valor - a.valor);
+    const maior = ranking.length ? ranking[0].valor : 0;
+
+    alvo.hidden = false;
+    alvo.innerHTML =
+      '<h4 class="obras-bairro__title">Obras por bairro</h4>' +
+      '<p class="obras-bairro__lead">Valor informado das obras públicas com bairro declarado na fonte oficial (consulta de obras do portal). Toque num bairro para ver as obras dele. Este painel cobre <strong>obras</strong>: a Prefeitura não publica o orçamento inteiro por bairro.</p>' +
+      '<div class="obras-bairro__list">' +
+        ranking.map((g) => {
+          const pct = maior ? Math.max(2, Math.round((g.valor / maior) * 100)) : 0;
+          const label = g.qtd === 1 ? "1 obra" : fmtNum(g.qtd) + " obras";
+          return '<button type="button" class="obras-bairro__row" data-bairro="' + esc(g.bairro) + '" aria-expanded="false">' +
+            '<span class="obras-bairro__nome">' + esc(g.bairro) + '</span>' +
+            '<span class="obras-bairro__bar" aria-hidden="true"><span style="width:' + pct + '%"></span></span>' +
+            '<span class="obras-bairro__val">' + fmtBRL(g.valor) + ' · ' + label + '</span>' +
+          '</button>';
+        }).join("") +
+      '</div>' +
+      '<div id="obrasBairroDetalhe" class="obras-bairro__detalhe" hidden></div>' +
+      '<p class="obras-bairro__nota">' + fmtNum(obras.length) + ' obras · ' + fmtNum(ranking.length) + ' bairros' +
+        (semBairro ? ' · ' + fmtNum(semBairro) + ' sem bairro informado (' + fmtBRL(valorSemBairro) + ')' : '') +
+      '</p>';
+
+    const detalhe = alvo.querySelector("#obrasBairroDetalhe");
+    alvo.querySelectorAll("[data-bairro]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const bairro = btn.dataset.bairro;
+        const jaAberto = !detalhe.hidden && detalhe.dataset.bairro === bairro;
+        alvo.querySelectorAll("[data-bairro]").forEach((b) => b.setAttribute("aria-expanded", "false"));
+        if (jaAberto) { detalhe.hidden = true; return; }
+        const obrasBairro = obras
+          .filter((o) => cleanText(o.bairro) === bairro)
+          .sort((a, b) => (Number(b.valor) || 0) - (Number(a.valor) || 0));
+        detalhe.dataset.bairro = bairro;
+        detalhe.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
+        detalhe.innerHTML =
+          '<h5 class="obras-bairro__detalhe-titulo">' + fmtNum(obrasBairro.length) + ' obra(s) em ' + esc(bairro) + '</h5>' +
+          obrasBairro.map((o) =>
+            '<article class="obras-bairro__obra">' +
+              '<div class="obras-bairro__obra-info">' +
+                '<strong>' + esc(cleanText(o.objeto) || "Obra sem descrição na fonte") + '</strong>' +
+                '<span>' + esc([cleanText(o.situacao), cleanText(o.fornecedor)].filter(Boolean).join(" · ") || "Sem situação/fornecedor informados") + '</span>' +
+              '</div>' +
+              '<div class="obras-bairro__obra-val">' + fmtBRL(Number(o.valor) || 0) + '</div>' +
+              (o.fonte_url ? '<a class="obras-bairro__obra-fonte" href="' + esc(o.fonte_url) + '" target="_blank" rel="noopener">Abrir fonte</a>' : '') +
+            '</article>').join("");
+      });
+    });
+  }
+
   function renderFrotaPrefeitura() {
     const block = $("frotaBlock");
     if (!block) return;
@@ -7861,6 +7935,7 @@ ${url}
   if (PAGE === "prefeitura") initSecretariasChart();
   if (PAGE === "prefeitura") initPrefeituraTabs();
   if (PAGE === "prefeitura") renderAsfaltoPrefeitura();
+  if (PAGE === "prefeitura") renderObrasPorBairro();
   if (PAGE === "prefeitura") renderFrotaPrefeitura();
   if (PAGE === "camara") renderPlacarCamara();
   if (PAGE === "camara") renderRemuneracaoVereadores();
