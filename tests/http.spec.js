@@ -338,6 +338,24 @@ test("busca da aba Asfalto mantem o q na URL (nao vira so tab+ano)", async ({ pa
   expect(new URL(page.url()).searchParams.get("q")).toBe("Vila Floresta");
 });
 
+test("blocos mostram a proveniência do dado (fonte, situação, data e link)", async ({ page }) => {
+  await page.goto("/prefeitura.html?tab=asfalto", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });
+  const prov = page.locator("#asfaltoBlock .record-provenance").first();
+  await expect(prov).toContainText("Proveniência:");
+  await expect(prov).toContainText("Betha/Portal da Prefeitura");
+  await expect(prov).toContainText(/atualizada|parcial|base anterior preservada|verificação manual|defasada/);
+  await expect(prov.locator("a", { hasText: "abrir origem" })).toBeVisible();
+
+  await page.goto("/camara.html", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });
+  await expect(page.locator(".record-provenance").first()).toContainText("Proveniência:");
+
+  await page.goto("/fundacao.html", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });
+  await expect(page.locator(".record-provenance").first()).toContainText("Fundação Cultural");
+});
+
 test("Obras por bairro mostra valores corretos e detalha as obras", async ({ page }) => {
   await page.goto("/prefeitura.html?tab=asfalto", { waitUntil: "domcontentloaded" });
   await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });

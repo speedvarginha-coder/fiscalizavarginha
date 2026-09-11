@@ -113,6 +113,27 @@
   };
   window.FISCALIZA.provenienciaRegistro = provenienciaRegistro;
 
+  // Preenche, de uma vez, os blocos declarados no HTML com
+  // data-provenance="<id da fonte>" (label e url opcionais). Assim a origem do
+  // dado aparece de forma padronizada sem espalhar HTML em cada tela.
+  function preencherProveniencias() {
+    const domains = (D.status_fontes || {}).domains || {};
+    document.querySelectorAll("[data-provenance]").forEach((el) => {
+      if (el.dataset.provenanceReady === "1") return;
+      const fonteId = el.getAttribute("data-provenance");
+      const rotulo = el.getAttribute("data-provenance-label") || fonteId;
+      const url = el.getAttribute("data-provenance-url") || "";
+      if (domains[fonteId]) {
+        el.innerHTML = provenienciaRegistro(fonteId, rotulo, url);
+      } else {
+        const link = url ? ` · <a href="${esc(url)}" target="_blank" rel="noopener">abrir origem</a>` : "";
+        el.innerHTML = `<strong>Proveniência:</strong> ${esc(rotulo)} · situação conferida na auditoria${link}.`;
+      }
+      el.dataset.provenanceReady = "1";
+    });
+  }
+  window.FISCALIZA.preencherProveniencias = preencherProveniencias;
+
 
 
 
@@ -8410,6 +8431,8 @@ ${url}
       if (e.key === "Escape" && !overlay.hidden) fechar();
     });
   })();
+
+  preencherProveniencias();
 
   // Sinal deterministico para testes e monitoramento local. Ele so aparece
   // depois que a inicializacao sincrona do painel terminou sem excecao.
