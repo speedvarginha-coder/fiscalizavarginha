@@ -213,6 +213,9 @@ const chunks = {
   tseDoacoes: readJson("tse_doacoes"),
   licitacoesResultados: readJson("licitacoes_resultados"),
   remuneracaoVereadores: readJson("remuneracao_vereadores"),
+  fundacaoCultural: readJson("fundacao_cultural"),
+  sancoesFornecedores: readJson("sancoes_fornecedores"),
+  pca: readJson("pca"),
 };
 
 function contractHealth(chunk) {
@@ -260,6 +263,13 @@ const domainConfig = [
   ["camara_anos", "Camara/SAPL", chunks.camaraAnos, 7],
   ["publicacoes_estruturadas", "Publicacoes da Camara", chunks.publicacoesCamara, 7],
   ["publicacoes_diario", "Publicacoes do Diario", chunks.publicacoesDiario, 7],
+  // Fontes independentes que antes nao declaravam idade nenhuma no painel.
+  ["diarias", "Diarias", chunks.diarias, 7],
+  ["fundacao_cultural", "Fundacao Cultural", chunks.fundacaoCultural, 30],
+  ["licitacoes_resultados", "Resultados de licitacoes", chunks.licitacoesResultados, 45],
+  ["sancoes_fornecedores", "Sancoes de fornecedores", chunks.sancoesFornecedores, 30],
+  ["tse_doacoes", "Doacoes eleitorais (TSE)", chunks.tseDoacoes, 90],
+  ["pca", "Plano anual de contratacoes", chunks.pca, 30],
 ];
 
 function sourceHealthMetadata(name, value) {

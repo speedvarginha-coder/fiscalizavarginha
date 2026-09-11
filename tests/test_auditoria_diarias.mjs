@@ -16,6 +16,12 @@ test("chunk ausente vira erro de entrada, nao sucesso silencioso", () => {
   assert.match(AUDIT, /if\s*\(!chunks\.diarias\)/);
 });
 
+test("monitor de atualidade cobre fontes independentes antes omitidas", () => {
+  for (const id of ["diarias", "fundacao_cultural", "licitacoes_resultados", "sancoes_fornecedores", "tse_doacoes", "pca"]) {
+    assert.match(AUDIT, new RegExp(`\\["${id}"`), id);
+  }
+});
+
 test("aponta diarias sem destino e sem finalidade no exercicio", () => {
   const registros = [
     { ano: "2026", destino: "", finalidade: "" },
