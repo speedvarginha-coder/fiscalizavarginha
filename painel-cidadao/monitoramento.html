@@ -40,6 +40,7 @@
     <div id="summary" class="monitor-grid" aria-live="polite"></div>
     <h2>Fontes monitoradas</h2>
     <div style="overflow:auto"><table class="monitor-table"><thead><tr><th>Fonte</th><th>Situação</th><th>Atualização</th><th>Observação</th></tr></thead><tbody id="sources"></tbody></table></div>
+    <p class="muted small">A <strong>idade</strong> conta desde a última coleta bem-sucedida da fonte. Cada base tem um prazo esperado: passar dele marca “Defasada”. Ausência de dado nunca é tratada como zero.</p>
   </main>
   <script>
     const text = (value) => String(value ?? "Não informado");
@@ -49,6 +50,27 @@
     const EXEC = { SUCESSO: "Sucesso", FALHA: "Falha", PULADO: "Pulado", PENDENTE: "Pendente", ERRO: "Erro" };
     const rotuloStatus = (status) => STATUS[status] || text(status);
     const rotuloExec = (status) => EXEC[String(status || "").toUpperCase()] || text(status);
+    const idadeHumana = (dias) => {
+      if (dias === null || dias === undefined || Number.isNaN(Number(dias))) return "";
+      const d = Number(dias);
+      if (d < 1) return "hoje";
+      if (d < 2) return "há 1 dia";
+      return "há " + Math.round(d) + " dias";
+    };
+    const atualizacaoFonte = (source) => {
+      const idade = idadeHumana(source.age_days);
+      if (source.source_updated_at) {
+        return safe(formatDate(source.source_updated_at)) + (idade ? ' <small class="muted">· ' + safe(idade) + "</small>" : "");
+      }
+      const nota = {
+        manual: "sem data de coleta — conferir no portal",
+        preserved: "coleta recente não conclusiva; base anterior mantida",
+        failed: "coleta falhou",
+        stale: "sem atualização recente",
+        unknown: "situação não medida",
+      }[source.status] || "sem data de coleta";
+      return '<small class="muted">' + safe(nota) + "</small>";
+    };
     fetch("data/chunks/monitoramento_coletas.json", { cache: "no-store" }).then((response) => response.json()).then((data) => {
       const run = data.last_completed_run;
       const deployment = data.last_verified_deployment;
@@ -57,7 +79,7 @@
         ["Publicação verificada", deployment ? `${rotuloExec(deployment.status)} · ${formatDate(deployment.checked_at)}` : "Sem registro"],
         ["Fontes em alerta", (data.summary.by_status.partial || 0) + (data.summary.by_status.failed || 0)],
       ].map(([title, value]) => `<article class="monitor-card"><h2>${safe(title)}</h2><p>${safe(value)}</p></article>`).join("");
-      document.querySelector("#sources").innerHTML = data.sources.map((source) => `<tr><td>${safe(source.label)}</td><td><span class="status status-${safe(source.status)}">${safe(rotuloStatus(source.status))}</span></td><td>${safe(formatDate(source.source_updated_at))}</td><td>${safe(source.reason)}</td></tr>`).join("");
+      document.querySelector("#sources").innerHTML = data.sources.map((source) => `<tr><td>${safe(source.label)}</td><td><span class="status status-${safe(source.status)}">${safe(rotuloStatus(source.status))}</span></td><td>${atualizacaoFonte(source)}</td><td>${safe(source.reason)}</td></tr>`).join("");
     }).catch(() => { document.querySelector("#summary").textContent = "Não foi possível carregar o monitoramento."; });
   </script>
 <footer class="footer">

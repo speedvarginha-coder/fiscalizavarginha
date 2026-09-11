@@ -306,3 +306,15 @@ test("relatorios cobra o plano anual sem transformar ausencia em zero", async ({
     expect(txt).toContain("não indica irregularidade");
   }
 });
+
+test("Monitoramento mostra situação e idade das fontes em linguagem simples", async ({ page }) => {
+  await page.goto("/monitoramento.html", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => document.querySelectorAll("#sources tr").length > 0, null, { timeout: 15_000 });
+  const linhas = await page.locator("#sources tr").count();
+  expect(linhas).toBeGreaterThanOrEqual(13);
+  const texto = await page.locator("#sources").innerText();
+  // Situação traduzida, não o código cru em inglês.
+  expect(texto).toMatch(/Atualizada|Parcial|Base anterior preservada|Conferência manual/);
+  // Idade em linguagem comum, não só data ISO.
+  expect(texto).toMatch(/hoje|há \d+ dias?|sem data de coleta/);
+});
