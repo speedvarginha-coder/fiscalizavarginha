@@ -5261,7 +5261,18 @@ ${url}
     const listaEl = $("frotaLista");
     const countEl = $("frotaContador");
     if (!frota.length) {
-      if (listaEl) listaEl.innerHTML = `<div class="empty"><strong>Frota não carregada</strong><p>Rode a coleta Betha para baixar a consulta 83061 - Veículos Municipais.</p></div>`;
+      // Na página da Prefeitura a frota chega em segundo plano (chunk próprio).
+      // Diferenciar "ainda carregando" de "falhou" evita dizer que não há
+      // coleta quando o dado só está a caminho.
+      if (listaEl) {
+        if (PAGE === "prefeitura" && D.prefeitura_frota === undefined) {
+          listaEl.innerHTML = `<div class="empty"><strong>Carregando a frota…</strong><p>A lista de veículos chega em segundo plano para não atrasar o restante da página.</p></div>`;
+        } else if (PAGE === "prefeitura" && D.prefeitura_frota === null) {
+          listaEl.innerHTML = `<div class="empty"><strong>Frota indisponível nesta coleta</strong><p>Confira a consulta de veículos no portal oficial antes de concluir.</p></div>`;
+        } else {
+          listaEl.innerHTML = `<div class="empty"><strong>Frota não carregada</strong><p>Rode a coleta Betha para baixar a consulta 83061 - Veículos Municipais.</p></div>`;
+        }
+      }
       return;
     }
 
@@ -8247,6 +8258,13 @@ ${url}
     if (key === "diarias" && PAGE === "camara") {
       $("diariasCamaraBlock")?.setAttribute("data-progressive-state", "ready");
       initDiarias("Camara", (D.diarias || {}).camara || []);
+    }
+    if (key === "prefeitura_frota" && PAGE === "prefeitura") {
+      // A frota chega em segundo plano e é colada no painel da Prefeitura.
+      const frotaData = D.prefeitura_frota || {};
+      if (Array.isArray(frotaData.frota) && D.prefeitura) D.prefeitura.frota = frotaData.frota;
+      renderFrotaPrefeitura();
+      renderPrefeituraOverview();
     }
     if (key === "prefeitura" && PAGE === "home") {
       // prefeitura.json chegou: re-renderiza a seção ao vivo

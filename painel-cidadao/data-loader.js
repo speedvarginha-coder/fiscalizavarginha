@@ -15,7 +15,7 @@
   // Mapeia data-page → chunks necessários. Body também pode sobrescrever via data-chunks.
   const CHUNKS_POR_PAGINA = {
     "home":         ["home_resumo", "resumo", "atualizado_em", "auditoria_dados", "status_fontes", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "sancoes_fornecedores", "diario"],
-    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "status_fontes"],
+    "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "sancoes_fornecedores", "vereadores", "atualizado_em", "diario", "auditoria_dados", "status_fontes", "prefeitura_frota"],
     "fundacao":     ["fundacao_cultural", "atualizado_em", "auditoria_dados", "status_fontes", "diario", "prefeitura", "camara_betha"],
     "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "sancoes_fornecedores", "atualizado_em", "auditoria_dados", "status_fontes"],
     // "receitas" removido: o chunk mistura arrecadação acumulada de vários anos
@@ -34,6 +34,7 @@
   // app.js escuta "fiscaliza:chunk" e re-renderiza as seções afetadas
   const CHUNKS_FASE2 = {
     "home": ["prefeitura"],  // 4.4 MB — home usa só resumo; prefeitura.json chega depois
+    "prefeitura": ["prefeitura_frota"],  // frota (~2 MB) não atrasa o primeiro render
     "fundacao": ["prefeitura", "camara_betha"],  // p/ cruzar fornecedores entre esferas (chegam após o render)
     // 687 KB só para o sinal de preço homologado × estimado: não pode atrasar
     // o primeiro render dos relatórios. app.js re-renderiza quando chega.
@@ -176,6 +177,7 @@
   // Estas páginas não exibem nem auditam a frota. Os demais campos,
   // inclusive todos os contratos e cruzamentos, permanecem completos.
   const ARQUIVOS_POR_PAGINA = {
+    prefeitura: { prefeitura: "prefeitura_painel" },
     home: { prefeitura: "prefeitura_painel" },
     camara: { prefeitura: "prefeitura_painel" },
     relatorios: { prefeitura: "prefeitura_painel" },

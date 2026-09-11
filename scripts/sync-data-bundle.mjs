@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
-import { prefeituraPainel } from "./lib/dados-painel.mjs";
+import { prefeituraPainel, prefeituraFrota } from "./lib/dados-painel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -107,6 +107,11 @@ if (fs.existsSync(prefeituraPath)) {
   writeFileWithRetry(
     path.join(chunksDir, "prefeitura_painel.json"),
     JSON.stringify(prefeituraPainel(readJson(prefeituraPath))) + "\n",
+  );
+  // Frota separada: a página da Prefeitura carrega sob demanda e junta ao painel.
+  writeFileWithRetry(
+    path.join(chunksDir, "prefeitura_frota.json"),
+    JSON.stringify(prefeituraFrota(readJson(prefeituraPath))) + "\n",
   );
 }
 

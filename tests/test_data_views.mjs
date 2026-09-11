@@ -23,6 +23,16 @@ test("arquivo leve publicado corresponde à base canônica fora dos detalhes da 
   assert.equal(Object.hasOwn(slim, "frota"), false);
 });
 
+test("painel enxuto + chunk de frota reconstroem a base da Prefeitura sem perda", () => {
+  const read = name => JSON.parse(fs.readFileSync(new URL(`../painel-cidadao/data/chunks/${name}.json`, import.meta.url), "utf8"));
+  const original = read("prefeitura");
+  const slim = read("prefeitura_painel");
+  const frota = read("prefeitura_frota");
+  assert.ok(Array.isArray(original.frota) && original.frota.length > 0);
+  assert.equal(frota.frota.length, original.frota.length);
+  assert.deepEqual({ ...slim, frota: frota.frota }, original);
+});
+
 test("fallback offline contém a mesma versão de cada chunk público", () => {
   const panel = new URL("../painel-cidadao/", import.meta.url);
   const text = fs.readFileSync(new URL("data.js", panel), "utf8");

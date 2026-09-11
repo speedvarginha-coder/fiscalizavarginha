@@ -164,6 +164,29 @@ test("Prefeitura carrega a base pesada de diárias somente ao abrir a seção", 
   expect(await page.locator("body").getAttribute("data-chunk-diarias")).toBe("ready");
 });
 
+test("Prefeitura carrega a frota em segundo plano, sem baixar a base completa", async ({ page, request }) => {
+  const reqs = [];
+  page.on("request", (req) => {
+    if (/\/data\/chunks\/prefeitura(_painel|_frota)?\.json/.test(req.url())) reqs.push(req.url());
+  });
+
+  await page.goto("/prefeitura.html", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => window.FISCALIZA_DATA_LOADER && window.FISCALIZA_DATA);
+
+  // Fase 1 usa o painel enxuto; o prefeitura.json completo (com a frota) nunca desce.
+  expect(reqs.some((u) => u.includes("prefeitura_painel.json"))).toBe(true);
+  expect(reqs.some((u) => u.includes("/prefeitura.json"))).toBe(false);
+
+  // Fase 2: a frota chega em segundo plano e é colada no painel, sem perda.
+  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.prefeitura_frota), null, { timeout: 20_000 });
+  expect(reqs.some((u) => u.includes("prefeitura_frota.json"))).toBe(true);
+  const fonte = await request.get("/data/chunks/prefeitura_frota.json");
+  const esperado = (await fonte.json()).frota.length;
+  const carregado = await page.evaluate(() => (window.FISCALIZA_DATA.prefeitura.frota || []).length);
+  expect(carregado).toBe(esperado);
+  expect(carregado).toBeGreaterThan(0);
+});
+
 test("carregador progressivo reutiliza a mesma requisição e preserva todos os registros", async ({ page }) => {
   let requisicoes = 0;
   page.on("request", (req) => {
