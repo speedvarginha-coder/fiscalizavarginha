@@ -71,8 +71,9 @@ AddDefaultCharset UTF-8
   </IfModule>
 </FilesMatch>
 
-# Bloqueia dotfiles e cache Python.
+# Bloqueia dotfiles e cache Python (em qualquer nivel de pasta).
 RewriteRule ^\. - [F,L]
+RewriteRule (^|/)\. - [F,L]
 RewriteRule ^__pycache__/ - [F,L]
 RewriteRule ^(old_|temp_).*\.html$ - [F,L]
 

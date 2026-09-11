@@ -108,6 +108,16 @@ if (Test-Path -LiteralPath $avalieResumoStage) {
 Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snapshots")
 Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
 
+# Artefatos internos nunca devem ir ao ar: diretorios/arquivos ocultos
+# (ex.: emendas/.data.rollback-anterior-*), __pycache__ e afins. O .htaccess
+# raiz e a unica excecao.
+Get-ChildItem -LiteralPath $stage -Recurse -Force -Directory -ErrorAction SilentlyContinue |
+  Where-Object { $_.Name -like ".*" -or $_.Name -eq "__pycache__" } |
+  Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+Get-ChildItem -LiteralPath $stage -Recurse -Force -File -ErrorAction SilentlyContinue |
+  Where-Object { $_.Name -like ".*" -and $_.Name -ne ".htaccess" } |
+  Remove-Item -Force -ErrorAction SilentlyContinue
+
 $manifestStage = Join-Path $stage "data\manifest.json"
 # Versiona também os recursos HTTP: trocar só o cache do service worker não
 # invalida os sete dias de cache dos scripts e estilos no navegador.
