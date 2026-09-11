@@ -385,3 +385,14 @@ test("Obras por bairro mostra valores corretos e detalha as obras", async ({ pag
   await expect(detalhe).toContainText("Vila Floresta");
   expect(await detalhe.locator(".obras-bairro__obra").count()).toBeGreaterThan(0);
 });
+
+test("Pessoal e Diário também exibem a proveniência do dado", async ({ page }) => {
+  await page.goto("/pessoal.html", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });
+  await expect(page.locator("#pessoalFonteNota + .record-provenance")).toContainText("Proveniência:");
+  await expect(page.locator("#pessoalFonteNota + .record-provenance")).toContainText("folha de pagamento");
+
+  await page.goto("/prefeitura.html?tab=fontes", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });
+  await expect(page.locator("#diarioLista + .record-provenance")).toContainText("Diário Oficial");
+});

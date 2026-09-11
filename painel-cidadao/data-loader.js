@@ -22,7 +22,7 @@
     // (ISSQN R$ 2,1 bi vs orçado 379M) e nada na página o renderiza — não publicar
     // até a coleta filtrar o exercício corrente.
     "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "status_fontes", "pessoal", "licitacoes_resultados", "pca"],
-    "pessoal":      ["atualizado_em", "auditoria_dados"],  // pessoal.json auto-carregado por initPessoal()
+    "pessoal":      ["atualizado_em", "auditoria_dados", "status_fontes"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
     "sobre":        ["atualizado_em", "auditoria_dados"],
