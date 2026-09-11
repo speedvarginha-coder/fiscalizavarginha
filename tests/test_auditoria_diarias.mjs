@@ -22,6 +22,10 @@ test("monitor de atualidade cobre fontes independentes antes omitidas", () => {
   }
 });
 
+test("auditoria de modalidade cobre tambem a Fundacao Cultural", () => {
+  assert.match(AUDIT, /\["Fundacao Cultural",\s*chunks\.fundacaoCultural\?\.contratos/);
+});
+
 test("aponta diarias sem destino e sem finalidade no exercicio", () => {
   const registros = [
     { ano: "2026", destino: "", finalidade: "" },

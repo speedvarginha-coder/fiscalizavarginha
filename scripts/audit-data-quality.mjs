@@ -769,6 +769,7 @@ if (!contratosAuditaveis || !obrasAuditaveis) {
 for (const [orgao, registros, source] of [
   ["Prefeitura", chunks.prefeitura?.contratos || [], "prefeitura.json"],
   ["Camara", chunks.camaraBetha?.contratos || [], "camara_betha.json"],
+  ["Fundacao Cultural", chunks.fundacaoCultural?.contratos || [], "fundacao_cultural.json"],
 ]) {
   const semModalidade = registros.filter((c) => !String(c.modalidade || "").trim()).length;
   if (registros.length && semModalidade) {
