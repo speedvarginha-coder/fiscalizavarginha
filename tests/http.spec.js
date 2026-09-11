@@ -356,6 +356,16 @@ test("blocos mostram a proveniência do dado (fonte, situação, data e link)", 
   await expect(page.locator(".record-provenance").first()).toContainText("Fundação Cultural");
 });
 
+test("Sobre traz o dicionário de campos com a origem de cada um", async ({ page }) => {
+  await page.goto("/sobre.html", { waitUntil: "domcontentloaded" });
+  const dic = page.locator("#dicionarioCampos");
+  await expect(dic).toBeVisible();
+  await expect(dic).toContainText("De onde vem");
+  await expect(dic).toContainText("valor contratado");
+  await expect(dic).toContainText("Não é o valor pago");
+  await expect(dic).toContainText("Ausente no retorno dos contratos");
+});
+
 test("Obras por bairro mostra valores corretos e detalha as obras", async ({ page }) => {
   await page.goto("/prefeitura.html?tab=asfalto", { waitUntil: "domcontentloaded" });
   await page.waitForFunction(() => document.body.getAttribute("data-fiscaliza-ready") === "true", null, { timeout: 45_000 });

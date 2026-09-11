@@ -420,6 +420,42 @@
       </p>
     </div>
 
+    <div class="block" style="margin-top:24px;" id="dicionarioCampos">
+      <h3 class="block__title">Dicionário de campos — o que cada número quer dizer</h3>
+      <p style="font-size:.9rem; line-height:1.6; margin-bottom:8px;">
+        Vários campos parecidos medem coisas diferentes. Aqui está o significado de cada um
+        e de onde ele vem. Em contrato, o <strong>valor contratado não é o valor pago</strong>;
+        em obra, o <strong>valor efetivo não é o que já foi medido</strong>.
+      </p>
+      <div style="overflow-x:auto;">
+        <table class="glossario-tabela">
+          <thead><tr>
+            <th>Campo</th>
+            <th>O que significa</th>
+            <th>De onde vem</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>valor contratado</td><td>Valor do contrato assinado (o compromisso). Não é o valor pago.</td><td>Contratos (Betha)</td></tr>
+            <tr><td>valor efetivo</td><td>Valor efetivado/executado informado pela fonte.</td><td>Obras públicas (Betha)</td></tr>
+            <tr><td>valor de medição</td><td>Valor da última medição registrada — o que já foi medido/prestado.</td><td>Obras públicas (Betha)</td></tr>
+            <tr><td>empenhado · liquidado · pago</td><td>Etapas do dinheiro: <strong>reservado</strong> (empenho), <strong>conferido</strong> (liquidação) e <strong>pago</strong>. Nenhuma delas é igual ao valor contratado.</td><td>Despesas (Betha / Transferegov)</td></tr>
+            <tr><td>modalidade</td><td>Tipo de compra: pregão, dispensa, concorrência, inexigibilidade. <strong>Ausente no retorno dos contratos</strong> — o painel não infere.</td><td>Contratos (Betha)</td></tr>
+            <tr><td>situação</td><td>Status atual: <em>EXECUCAO</em>, <em>ENCERRADO</em>, <em>RESCINDIDO</em>; na obra, em andamento/concluída.</td><td>Contratos e obras (Betha)</td></tr>
+            <tr><td>CNPJ (mascarado)</td><td>A fonte oculta parte do número. O painel usa a raiz (8 dígitos) quando disponível e <strong>não completa</strong> o restante.</td><td>Fornecedores (Betha / PNCP)</td></tr>
+            <tr><td>data de assinatura · vigência</td><td>Início e fim do contrato. A data final aparece como não informada quando a fonte não a traz.</td><td>Contratos (Betha)</td></tr>
+            <tr><td>bairro (obras)</td><td>Endereço da obra. Só a consulta de <strong>obras</strong> tem esse campo; contratos e compras não.</td><td>Obras públicas (Betha)</td></tr>
+            <tr><td>“base anterior preservada”</td><td>A coleta recente não comprovou atualização integral; o painel manteve a base anterior em vez de encolher o dado.</td><td>Auditoria automática</td></tr>
+            <tr><td>“cobertura parcial”</td><td>A fonte devolveu apenas parte dos registros; o que veio foi preservado.</td><td>Auditoria automática</td></tr>
+            <tr><td>“verificação manual”</td><td>A base não tem carimbo de coleta; a idade é conferida manualmente.</td><td>Auditoria automática</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.82rem; color:var(--muted); margin-top:4px;">
+        Em cada bloco do painel, a linha <strong>“Proveniência:”</strong> mostra a fonte,
+        a situação e a data — com link para conferir na origem.
+      </p>
+    </div>
+
     <div class="block" style="margin-top:24px;">
       <h3 class="block__title">Atalhos de teclado</h3>
       <p style="font-size:.9rem; line-height:1.6;">
