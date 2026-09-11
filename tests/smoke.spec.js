@@ -278,6 +278,15 @@ test.describe("Auditor inteligente", () => {
     await page.locator('#homeSmartSuggest [data-smart-q^="bairro:"]').click();
     await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=Vila%20Floresta/);
   });
+
+  test("sugere temas comuns do cidadão (iluminação, transporte)", async ({ page }) => {
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(2500);
+    await page.locator("#buscaHome").fill("ilumin");
+    await expect(page.locator("#homeSmartSuggest")).toContainText("Iluminação pública");
+    await page.locator("#buscaHome").fill("transporte");
+    await expect(page.locator("#homeSmartSuggest")).toContainText("Transporte e ônibus");
+  });
 });
 
 test.describe("Como cobrar", () => {

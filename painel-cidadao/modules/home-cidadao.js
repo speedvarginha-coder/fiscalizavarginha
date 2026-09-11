@@ -177,6 +177,22 @@
       termos: ["obra", "reforma", "construcao", "calcamento", "drenagem", "ponte"],
       href: "prefeitura.html?tab=asfalto", abre: "a aba de Obras/Asfalto da Prefeitura, com as obras municipais e medições oficiais",
       pergunta: "Solicito a relação de todas as obras de engenharia civil, reformas e edificações contratadas em andamento, detalhando o valor total, empresa contratada, cronograma físico-financeiro e medição acumulada." },
+    { id: "transporte", rotulo: "Transporte e ônibus", dica: "Ver contratos de transporte e mobilidade",
+      termos: ["transporte", "onibus", "passagem", "mobilidade", "tarifa", "linha"],
+      href: "prefeitura.html?tab=contratos&q=transporte", abre: "os contratos da Prefeitura filtrados em transporte, com fornecedor, objeto e valor",
+      pergunta: "Solicito os contratos de transporte público e municipal, com empresa contratada, linhas, valor, forma de remuneração e fiscalização." },
+    { id: "iluminacao", rotulo: "Iluminação pública", dica: "Ver gastos com postes e lâmpadas",
+      termos: ["iluminacao", "lampada", "lampadas", "poste", "led", "praca"],
+      href: "prefeitura.html?tab=contratos&q=iluminacao", abre: "os contratos da Prefeitura filtrados em iluminação pública, com fornecedor e valor",
+      pergunta: "Solicito os contratos de iluminação pública, com empresa responsável, valor, quantidade e localização dos pontos, além do plano de manutenção." },
+    { id: "educacao", rotulo: "Educação e escolas", dica: "Ver gastos com escolas e creches",
+      termos: ["educacao", "escola", "escolas", "creche", "creches", "material escolar", "uniforme"],
+      href: "prefeitura.html?tab=contratos&q=educacao", abre: "os contratos da Prefeitura filtrados em educação, com fornecedor, objeto e valor",
+      pergunta: "Solicito os contratos da área de educação, com fornecedor, objeto, valor, unidade atendida e comprovação de entrega dos materiais ou serviços." },
+    { id: "saneamento", rotulo: "Água, esgoto e limpeza", dica: "Ver saneamento e coleta de lixo",
+      termos: ["saneamento", "agua", "esgoto", "copasa", "lixo", "coleta", "limpeza urbana"],
+      href: "prefeitura.html?tab=contratos&q=saneamento", abre: "os contratos da Prefeitura filtrados em saneamento e limpeza, com fornecedor e valor",
+      pergunta: "Solicito os contratos de saneamento, abastecimento de água, esgotamento e coleta de resíduos, com empresa, valor, área atendida e cronograma." },
   ];
 
   function renderSmartSuggest() {
