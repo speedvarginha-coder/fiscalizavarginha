@@ -27,6 +27,13 @@ $dataJs = Join-Path $painel "data.js"
 $emendasDataDir = Join-Path $painel "emendas\data"
 $logDir = Join-Path $root "private\logs"
 $backupRoot = Join-Path $root "private\backups"
+$stateDir = Join-Path $root "private\state"
+# Marcador de ciclo em andamento: se a execucao for morta pelo
+# ExecutionTimeLimit do Agendador, o `finally` NAO roda e este arquivo fica para
+# tras. O health check do proximo ciclo o interpreta como "morreu sem concluir" —
+# antes essa morte era invisivel (sem excecao, sem log, sem estado).
+$progressPath = Join-Path $stateDir "pipeline_in_progress.json"
+$progressIniciado = $null
 $lockPath = Join-Path $logDir "coleta.lock"
 $logPath = Join-Path $logDir ("coleta-" + (Get-Date -Format "yyyy-MM-dd") + ".log")
 $backupPath = $null
@@ -381,12 +388,17 @@ function Restore-PublishedDataBackup {
 . (Join-Path $PSScriptRoot "lib\atomic-restore.ps1")
 
 function Remove-OldBackups {
-  # Coletas validas e quarentenas possuem finalidades diferentes. Contar tudo
-  # no mesmo limite permitia que varias coletas rejeitadas expulsassem todos os
-  # backups bons. Mantemos oito restauraveis e quatro rejeitadas para diagnostico.
+  # Coletas validas, quarentenas e ciclos financeiros possuem finalidades
+  # diferentes. Contar tudo no mesmo limite permitia que varias coletas
+  # rejeitadas expulsassem todos os backups bons. Mantemos oito restauraveis por
+  # familia, quatro rejeitadas para diagnostico e quatro ciclos interrompidos. A
+  # retencao de financeiro-*/publicacao-* evita que a pasta cresca sem limite.
   $groups = @(
     @{ Pattern = "coleta-*"; Keep = 8 },
-    @{ Pattern = "rejeitada-*"; Keep = 4 }
+    @{ Pattern = "rejeitada-*"; Keep = 4 },
+    @{ Pattern = "financeiro-*"; Keep = 8 },
+    @{ Pattern = "publicacao-*"; Keep = 8 },
+    @{ Pattern = "interrompida-*"; Keep = 4 }
   )
   $backupRootFull = [System.IO.Path]::GetFullPath($backupRoot).TrimEnd('\')
   foreach ($group in $groups) {
@@ -400,6 +412,25 @@ function Remove-OldBackups {
         }
         Remove-Item -LiteralPath $candidate -Recurse -Force
       }
+  }
+}
+
+function Set-FaseProgresso {
+  param([string]$Fase)
+  if (-not $progressPath -or -not $progressIniciado) { return }
+  try {
+    $json = [ordered]@{
+      iniciado_em   = $progressIniciado
+      atualizado_em = (Get-Date).ToUniversalTime().ToString("o")
+      pid           = $PID
+      tarefa        = $tagTarefa
+      fase          = $Fase
+    } | ConvertTo-Json
+    # Set-Content -Encoding UTF8 no PS 5.1 grava BOM, e o health check le JSON
+    # puro; gravar sem BOM evita que o marcador vire "ausente".
+    [System.IO.File]::WriteAllText($progressPath, $json, (New-Object System.Text.UTF8Encoding($false)))
+  } catch {
+    Write-Log "Aviso: nao foi possivel gravar o marcador de progresso: $($_.Exception.Message)"
   }
 }
 
@@ -640,6 +671,8 @@ try {
 
 try {
   $collectionStatus = "EM_ANDAMENTO"
+  $progressIniciado = (Get-Date).ToUniversalTime().ToString("o")
+  Set-FaseProgresso "coleta"
   Write-Log "Iniciando coleta automatica."
 
   # Auto-cura de sujeira deixada por um ciclo anterior que crashou (sob lock
@@ -857,6 +890,7 @@ try {
     # validate:data já gerou o contexto e selou o manifesto. Não regravar
     # chat_context aqui: isso invalidava seu hash durante toda a suíte.
 
+    Set-FaseProgresso "validacao"
     # Gate rápido de integridade dos dados — roda SEMPRE, mesmo com -SkipTests,
     # para que o vigia (watch) nunca publique chunks com formato/cálculo quebrado.
     Invoke-IsolatedAndLog `
@@ -900,6 +934,7 @@ try {
       -Retries 2
 
     if (-not $SkipPackage) {
+      Set-FaseProgresso "publicacao"
       Invoke-AndLog `
         -Label "Gerando pacote limpo." `
         -FilePath "npm.cmd" `
@@ -1142,6 +1177,11 @@ try {
   Write-Log "RESUMO: coleta=$collectionStatus deploy=$deployStatus whatsapp=$whatsAppStatus"
   exit 1
 } finally {
+  # Conclusao normal (ou excecao tratada) apaga o marcador; uma morte por
+  # limite de tempo do Agendador nao passa por aqui e deixa o rastro.
+  if ($progressPath -and (Test-Path -LiteralPath $progressPath)) {
+    Remove-Item -LiteralPath $progressPath -Force -ErrorAction SilentlyContinue
+  }
   if ($lockToken -and (Test-Path -LiteralPath $lockPath)) {
     $currentToken = [System.IO.File]::ReadAllText($lockPath, [System.Text.Encoding]::UTF8)
     if ($currentToken -eq $lockToken) {

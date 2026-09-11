@@ -2265,21 +2265,33 @@
       );
     }
 
-    // ---- DIÁRIAS: acumulado por servidor (excluindo TFD/saude) ----
+    // ---- DIÁRIAS: acumulado por servidor ----
+    // Só entra no acumulado nominal a diária com destino/finalidade/histórico
+    // declarados na fonte. Sem esses campos o painel não sabe a motivação da
+    // viagem; somar e acusar por nome seria imputação sobre artefato de dado.
     const diariasCamAll  = (D.diarias || {}).camara     || [];
     const diariasPrefAll = (D.diarias || {}).prefeitura || [];
-    const isTFD = (d) => /tratamento fora do domic|TFD/i.test(d.finalidade || "");
+    const documentada = (d) => Boolean(String(d.finalidade || d.historico || d.destino || "").trim());
+    const isTFD = (d) => /tratamento fora do domic|TFD/i.test(String(d.finalidade || d.historico || ""));
+
+    const acumularDiarias = (registros, comExclusaoTFD) => {
+      const mapa = new Map();
+      let semDetalhamento = 0;
+      registros.forEach(d => {
+        if (!documentada(d)) { semDetalhamento += 1; return; }
+        if (comExclusaoTFD && isTFD(d)) return;
+        const k = (d.funcionario || "Desconhecido").trim();
+        const cur = mapa.get(k) || { nome: k, total: 0, qtd: 0, secretaria: d.secretaria || "" };
+        cur.total += Number(d.valor_total || 0);
+        cur.qtd   += 1;
+        mapa.set(k, cur);
+      });
+      return { mapa, semDetalhamento };
+    };
 
     // Câmara — acumular por pessoa
-    const acumCam = new Map();
-    diariasCamAll.forEach(d => {
-      const k = (d.funcionario || "Desconhecido").trim();
-      const cur = acumCam.get(k) || { nome: k, total: 0, qtd: 0 };
-      cur.total += Number(d.valor_total || 0);
-      cur.qtd   += 1;
-      acumCam.set(k, cur);
-    });
-    [...acumCam.values()]
+    const camDiarias = acumularDiarias(diariasCamAll, true);
+    [...camDiarias.mapa.values()]
       .filter(p => p.total >= 15_000)
       .sort((a, b) => b.total - a.total)
       .slice(0, 5)
@@ -2287,21 +2299,14 @@
         "CÂMARA · Diárias",
         p.total >= 25_000 ? "alto" : "medio",
         `${p.nome}: ${fmtBRL(p.total)} acumulado em diárias`,
-        `Este servidor ou vereador acumulou ${fmtBRL(p.total)} em ${p.qtd} registro(s) de diárias na Câmara. Diárias de alto valor acumulado merecem conferência de destinos, finalidades e comprovantes no portal de transparência.`,
+        `Este servidor ou vereador acumulou ${fmtBRL(p.total)} em ${p.qtd} registro(s) de diárias na Câmara, com destino/finalidade declarados na fonte. Diárias de alto valor acumulado merecem conferência de destinos, finalidades e comprovantes no portal de transparência.`,
         `${p.qtd} diária(s) · Câmara Municipal`,
         "camara.html"
       ));
 
-    // Prefeitura — acumular por pessoa, excluindo TFD (saude legítima)
-    const acumPref = new Map();
-    diariasPrefAll.filter(d => !isTFD(d)).forEach(d => {
-      const k = (d.funcionario || "Desconhecido").trim();
-      const cur = acumPref.get(k) || { nome: k, total: 0, qtd: 0, secretaria: d.secretaria || "" };
-      cur.total += Number(d.valor_total || 0);
-      cur.qtd   += 1;
-      acumPref.set(k, cur);
-    });
-    [...acumPref.values()]
+    // Prefeitura — acumular por pessoa
+    const prefDiarias = acumularDiarias(diariasPrefAll, true);
+    [...prefDiarias.mapa.values()]
       .filter(p => p.total >= 30_000)
       .sort((a, b) => b.total - a.total)
       .slice(0, 5)
@@ -2309,23 +2314,39 @@
         "Prefeitura · Diárias",
         p.total >= 70_000 ? "alto" : "medio",
         `${p.nome}: ${fmtBRL(p.total)} acumulado em diárias`,
-        `Este servidor acumulou ${fmtBRL(p.total)} em diárias na Prefeitura (${p.qtd} registro(s)). Valores altos acumulados por servidor individual merecem conferência de finalidade, destinos, liquidações e comprovantes publicados. Total exclui despesas de Tratamento Fora do Domicílio (TFD/saúde).`,
-        `${p.qtd} registro(s) · ${p.secretaria || "Prefeitura"} · Exclui TFD`,
+        `Este servidor acumulou ${fmtBRL(p.total)} em diárias na Prefeitura (${p.qtd} registro(s)), com destino/finalidade declarados na fonte. Valores altos acumulados por servidor individual merecem conferência de finalidade, destinos, liquidações e comprovantes publicados.`,
+        `${p.qtd} registro(s) · ${p.secretaria || "Prefeitura"}`,
         "prefeitura.html"
       ));
+
+    // Lacuna de detalhamento: informa o volume sem nomear ninguém.
+    const diariasSemDetalhe = camDiarias.semDetalhamento + prefDiarias.semDetalhamento;
+    if (diariasSemDetalhe > 0) {
+      const porOrgao = [];
+      if (prefDiarias.semDetalhamento) porOrgao.push(`${fmtNum(prefDiarias.semDetalhamento)} na Prefeitura`);
+      if (camDiarias.semDetalhamento) porOrgao.push(`${fmtNum(camDiarias.semDetalhamento)} na Câmara`);
+      addSignal(
+        "Dados · Diárias",
+        "medio",
+        `Diárias sem destino ou finalidade na fonte: ${fmtNum(diariasSemDetalhe)}`,
+        `A base tem ${porOrgao.join(" e ")} sem destino/finalidade declarados. Esses registros continuam com valor, beneficiário e período, mas não permitem avaliar a motivação da viagem — por isso não entram em nenhum acumulado por pessoa daqui. Confira o ato original e peça destino, finalidade e prestação de contas.`,
+        "Cobertura da fonte, não irregularidade",
+        "prefeitura.html?tab=diarias"
+      );
+    }
 
     // Cross-ref: comissionado com alto salario E alto acúmulo de diarias
     const camServidores = ((D.pessoal || {}).camara || {}).servidores || [];
     camServidores
       .filter(s => s.comissionado_ou_similar && (s.vencimentos || 0) > 20_000)
       .forEach(s => {
-        const totalDiarias = acumCam.get((s.nome || "").trim())?.total || 0;
+        const totalDiarias = camDiarias.mapa.get((s.nome || "").trim())?.total || 0;
         if (totalDiarias > 5_000) {
           addSignal(
             "CÂMARA · Custo Real",
             "alto",
             `${s.nome}: ${fmtBRL(s.vencimentos)}/mês + ${fmtBRL(totalDiarias)} em diárias`,
-            `${s.nome} é comissionado na Câmara com vencimento de ${fmtBRL(s.vencimentos)}/mês. Além do salário, acumulou ${fmtBRL(totalDiarias)} em diárias. O custo total para os cofres públicos supera o vencimento aparente. Cargo: ${s.cargo || "não informado"}.`,
+            `${s.nome} é comissionado na Câmara com vencimento de ${fmtBRL(s.vencimentos)}/mês. Além do salário, acumulou ${fmtBRL(totalDiarias)} em diárias com finalidade declarada. O custo total para os cofres públicos supera o vencimento aparente. Cargo: ${s.cargo || "não informado"}.`,
             `Salário ${fmtBRL(s.vencimentos)}/mês · Diárias ${fmtBRL(totalDiarias)} acumulado`,
             "pessoal.html",
             ((D.pessoal || {}).camara || {}).resumo
@@ -4956,7 +4977,12 @@ ${url}
         if (targetCam) scrollToEl(targetCam);
       }, 100);
     } else if (PAGE === "prefeitura") {
-      if (renderContratos && $("filtroContrato")) {
+      const tabQ = params.get("tab") || "";
+      if (tabQ === "asfalto" && $("filtroBuscaAsfalto")) {
+        // Busca por bairro vinda da home: a aba Asfalto já é ativada por
+        // initPrefeituraTabs(tab=...) e o render do painel lê este campo.
+        $("filtroBuscaAsfalto").value = q;
+      } else if (renderContratos && $("filtroContrato")) {
         $("filtroContrato").value = q;
         const ano = params.get("ano");
         const valor = params.get("valor");
@@ -6148,6 +6174,16 @@ ${url}
       const qN = norm(q);
       const radicaisQ = palavrasDe(qN).map(radical);
       const casaRegra = (termos) => termos.some(t => casaTermoRota(radicaisQ, t));
+      const bairros = ((D.prefeitura || {}).obras_publicas || [])
+        .map(o => norm(o.bairro || "")).filter(Boolean);
+
+      // Bairro exato vence trecho de nome de empresa. "Vila Floresta" é bairro,
+      // e "Casa de Carnes Vila Floresta" casaria por trecho; a intenção do
+      // cidadão que digita o bairro é ver o que foi feito no local.
+      if (bairros.includes(qN)) {
+        window.location.href = "prefeitura.html?tab=asfalto&q=" + encodeURIComponent(q);
+        return;
+      }
 
       // Nome proprio vence tema. O fornecedor "Oficina do Nene" caia na regra
       // de frota por causa da palavra "oficina" e o cidadao perdia os dois
@@ -6165,6 +6201,14 @@ ${url}
           window.location.href = "camara.html?q=" + encodeURIComponent(q);
           return;
         }
+      }
+
+      // Bairro por trecho (ex.: "floresta"): só depois do nome próprio, para não
+      // roubar a busca de um fornecedor.
+      const ehBairro = bairros.some(b => qN.length >= 5 && b.includes(qN));
+      if (ehBairro) {
+        window.location.href = "prefeitura.html?tab=asfalto&q=" + encodeURIComponent(q);
+        return;
       }
 
       // Regras de inteligência do Auditor
@@ -7100,6 +7144,7 @@ ${url}
         const active = t.dataset.prefTab === chosen;
         t.classList.toggle("is-active", active);
         t.setAttribute("aria-selected", active ? "true" : "false");
+        t.tabIndex = active ? 0 : -1;
       });
       panels.forEach(p => p.classList.toggle("is-active", p.dataset.prefPanel === chosen));
       if (updateHash) history.replaceState(null, "", `#${chosen}`);
@@ -7118,6 +7163,26 @@ ${url}
         activate(trigger.dataset.prefTab, true);
       });
     }
+
+    // Navegação por teclado no tablist (WAI-ARIA): setas, Home e End.
+    tabs.forEach((tab, index) => {
+      if (tab.dataset.tabKeysBound === "1") return;
+      tab.dataset.tabKeysBound = "1";
+      tab.addEventListener("keydown", (event) => {
+        const key = event.key;
+        if (key !== "ArrowRight" && key !== "ArrowLeft" && key !== "Home" && key !== "End") return;
+        event.preventDefault();
+        const last = tabs.length - 1;
+        let next = index;
+        if (key === "ArrowRight") next = index === last ? 0 : index + 1;
+        else if (key === "ArrowLeft") next = index === 0 ? last : index - 1;
+        else if (key === "Home") next = 0;
+        else next = last;
+        const alvo = tabs[next];
+        alvo.focus();
+        activate(alvo.dataset.prefTab, true);
+      });
+    });
 
     const hash = (location.hash || "").replace("#", "");
     const params = PARAMS_URL;
@@ -7991,7 +8056,7 @@ ${url}
   // ============= ATALHO DE TECLADO: / = focar busca, Esc = limpar =============
   (function () {
     const BUSCA_IDS = [
-      "filtroContrato", "filtroEm", "filtroVer", "buscaServidor",
+      "buscaHome", "filtroContrato", "filtroEm", "filtroVer", "buscaServidor",
       "filtroLicitacao", "filtroEvento", "filtroAluguel", "filtroDiaria",
       "filtroFrota",
     ];

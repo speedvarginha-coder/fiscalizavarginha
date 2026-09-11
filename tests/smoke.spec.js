@@ -250,6 +250,34 @@ test.describe("Auditor inteligente", () => {
     await page.locator('#homeSmartSuggest [data-smart-q="asfalto"]').click();
     await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=asfalto/);
   });
+
+  test("busca por bairro abre a aba Asfalto já filtrada", async ({ page }) => {
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    await page.locator("#buscaHome").fill("Vila Floresta");
+    await page.locator("#buscaHome").press("Enter");
+    await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=Vila%20Floresta/);
+    await page
+      .waitForFunction(
+        () => !document.getElementById("loading-overlay") ||
+              document.getElementById("loading-overlay").classList.contains("fadeout"),
+        { timeout: 15_000 }
+      )
+      .catch(() => {});
+    await expect(page.locator("#filtroBuscaAsfalto")).toHaveValue("Vila Floresta");
+  });
+
+  test("sugere obras do bairro enquanto o cidadão digita", async ({ page }) => {
+    await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(3000);
+    await page.locator("#buscaHome").fill("Vila Floresta");
+    const sugestoes = page.locator("#homeSmartSuggest");
+    await expect(sugestoes).toContainText("Obras em Vila Floresta");
+    await page.locator('#homeSmartSuggest [data-smart-pick^="bairro:"]').click();
+    await expect(sugestoes).toContainText("filtrada no bairro Vila Floresta");
+    await page.locator('#homeSmartSuggest [data-smart-q^="bairro:"]').click();
+    await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=Vila%20Floresta/);
+  });
 });
 
 test.describe("Como cobrar", () => {
@@ -448,6 +476,22 @@ test.describe("Filtros básicos", () => {
         .some((el) => /di[aá]ria|empenho|liquida|dispensa|modalidade/i.test(el.textContent || ""))
     );
     expect(achouTermoTecnico).toBeTruthy();
+
+    // Toque/clique abre a explicação — no celular não existe :hover e o foco
+    // em span não é confiável; sem isso o cidadão ficava sem o significado.
+    // Dispara o clique nativo (que borbulha até o handler) de forma estável.
+    const aberto = await page.evaluate(() => {
+      const el = document.querySelector(".glossario-termo[data-explica]");
+      el.click();
+      return { isOpen: el.classList.contains("is-open"), expanded: el.getAttribute("aria-expanded") };
+    });
+    expect(aberto).toEqual({ isOpen: true, expanded: "true" });
+
+    const fechado = await page.evaluate(() => {
+      document.body.click();
+      return document.querySelector(".glossario-termo[data-explica]").classList.contains("is-open");
+    });
+    expect(fechado).toBe(false);
   });
 
   test("Câmara — top fornecedor explica busca de contrato", async ({ page }) => {

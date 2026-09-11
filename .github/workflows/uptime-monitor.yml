@@ -16,6 +16,8 @@ jobs:
   health-check:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      FISCALIZA_MAX_DATA_AGE_HOURS: "30"
     steps:
       - name: Conferir site, release e manifest
         shell: bash
@@ -40,4 +42,27 @@ jobs:
           if len(manifest.get("chunks", {})) < 20:
               raise SystemExit("manifest publicado tem menos de 20 chunks")
           print(f"Site saudavel: {len(manifest['chunks'])} chunks; manifest {digest}")
+          PY
+      - name: Conferir idade da ultima coleta (detecta maquina parada)
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://fiscalizavarginha.com.br"
+          tmp="$(mktemp -d)"
+          trap 'rm -rf "$tmp"' EXIT
+          curl --fail --silent --show-error --location --max-time 30 "$base/data/chunks/atualizado_em.json?github_health=${{ github.run_id }}" -o "$tmp/atualizado_em.json"
+          python - "$tmp/atualizado_em.json" <<'PY'
+          import datetime as dt, json, os, pathlib, sys
+          data = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8-sig"))
+          iso = str(data.get("iso") or "")
+          if not iso:
+              raise SystemExit("atualizado_em.json sem campo iso")
+          momento = dt.datetime.fromisoformat(iso)
+          if momento.tzinfo is None:
+              momento = momento.replace(tzinfo=dt.timezone(dt.timedelta(hours=-3)))
+          horas = (dt.datetime.now(dt.timezone.utc) - momento).total_seconds() / 3600
+          limite = float(os.environ.get("FISCALIZA_MAX_DATA_AGE_HOURS", "30"))
+          print(f"Ultima coleta ha {horas:.1f} h (limite {limite:.0f} h)")
+          if horas > limite:
+              raise SystemExit(f"coleta parada: {horas:.1f} h sem atualizacao (limite {limite:.0f} h)")
           PY

@@ -27,7 +27,7 @@
     "atualizacoes": ["prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
     "sobre":        ["atualizado_em", "auditoria_dados"],
     "conformidade": ["status_fontes", "auditoria_dados", "chat_context", "home_resumo", "camara_betha", "atualizado_em"],
-    "cobrar":       ["prefeitura", "camara_betha", "emendas", "pncp", "sancoes_fornecedores", "diario", "pessoal", "remuneracao_vereadores", "atualizado_em", "auditoria_dados"],
+    "cobrar":       ["prefeitura", "camara_betha", "emendas", "pncp", "sancoes_fornecedores", "diario", "pessoal", "remuneracao_vereadores", "fontes_emendas_2026", "atualizado_em", "auditoria_dados"],
   };
 
   // Chunks pesados adiados para 2ª fase por página: carregam APÓS app.js renderizar
@@ -372,14 +372,17 @@
         console.error("[data-loader] falha total ao carregar dados:", err2);
         removerOverlay();
         if (body) {
+          const modoArquivo = location.protocol === "file:";
           const aviso = document.createElement("div");
-          aviso.style.cssText = "padding:40px;text-align:center;color:#c62828;font-family:sans-serif;background:#fff3e0;border-radius:8px;margin:24px;border:2px solid #f57f17";
-          aviso.innerHTML = `<h3>Não foi possível carregar os dados</h3>
-            <p>Se você está abrindo o painel diretamente com clique duplo (file://),
-            o navegador bloqueia o carregamento dos dados.</p>
-            <p><strong>Solução:</strong> rode um servidor local —
-            <code style="background:#fff;padding:2px 6px;border-radius:3px">python -m http.server 8000</code>
-            — e abra <code>http://localhost:8000</code></p>`;
+          aviso.style.cssText = "padding:40px;text-align:center;color:#7a2e2e;font-family:sans-serif;background:#fff3e0;border-radius:8px;margin:24px auto;border:2px solid #f57f17;max-width:640px";
+          aviso.innerHTML = modoArquivo
+            ? `<h3>Abra o painel por um servidor local</h3>
+               <p>Você abriu o arquivo diretamente (file://) e o navegador bloqueou o carregamento dos dados.</p>
+               <p>No computador do projeto, rode <code style="background:#fff;padding:2px 6px;border-radius:3px">python -m http.server 8000</code> e abra <code>http://localhost:8000</code>.</p>`
+            : `<h3>Não foi possível carregar os dados agora</h3>
+               <p>Houve um problema ao buscar os arquivos do painel. Nenhum dado antigo é exibido no lugar: preferimos avisar a mostrar número possivelmente desatualizado.</p>
+               <p>Tente novamente em instantes. Se persistir, confirme a informação na fonte oficial (Betha, SAPL ou PNCP).</p>
+               <p><button type="button" onclick="location.reload()" style="padding:8px 16px;border-radius:999px;border:0;background:#1f3a5f;color:#fff;cursor:pointer">Tentar novamente</button></p>`;
           body.appendChild(aviso);
         }
       }

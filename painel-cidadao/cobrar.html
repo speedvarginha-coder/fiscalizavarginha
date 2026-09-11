@@ -681,12 +681,33 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
 
-        <!-- Rascunho Dinâmico da LAI de Emendas Impositivas 2026 -->
-        <article id="lai2026Card" class="template-card" data-cat="gestao" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #009688; display: none;">
-          <h4>LAI 13-B · Prefeitura/Câmara: Emendas Impositivas 2026 (Rascunho Automatizado)</h4>
-          <textarea id="lai2026Textarea" readonly style="height: 320px;" aria-label="LAI 13-B">Carregando rascunho forense personalizado...</textarea>
-          <div style="background: #e0f2f1; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #00796b;">
-            <strong>Rascunho Forense Personalizado:</strong> Este rascunho foi gerado automaticamente cruzando as emendas do SAPL que ainda carecem de CNPJ ou valor confirmado nos portais de transparência de Varginha.
+        <!-- Rascunho da LAI de Emendas Impositivas 2026 (gerado no navegador a partir da investigação publicada) -->
+        <article id="lai2026Card" class="template-card" data-cat="gestao" data-nivel="2" style="grid-column: 1 / -1; border-left: 4px solid #009688;">
+          <h4>LAI 13-B · Prefeitura/Câmara: Emendas Impositivas 2026</h4>
+          <textarea id="lai2026Textarea" readonly style="height: 380px;" aria-label="LAI 13-B">PEDIDO DE ACESSO À INFORMAÇÃO (LAI)
+Data: [DATA]
+Órgão destinatário: Câmara Municipal de Varginha-MG / Prefeitura Municipal de Varginha-MG
+Canal: e-SIC ou protocolo presencial
+
+REFERÊNCIA: Emendas Impositivas Municipais — Exercício 2026
+
+Solicito, com base na Lei Federal nº 12.527/2011 (Lei de Acesso à Informação), art. 10, a relação completa e atualizada das emendas impositivas destinadas ao Orçamento Municipal de 2026, contendo, para cada emenda:
+  1. Número e data de apresentação
+  2. Nome do vereador autor
+  3. Razão social e CNPJ da entidade beneficiária
+  4. Valor total destinado
+  5. Valor empenhado, liquidado e pago até a data da resposta
+  6. Objeto / finalidade da emenda
+  7. Secretaria municipal responsável pela execução
+  8. Número do empenho vinculado (quando houver)
+  9. Link para o plano de trabalho ou termo de fomento/parceria
+
+Formato solicitado: planilha (XLSX ou CSV) ou PDF com dados estruturados.
+Prazo legal: 20 dias corridos (prorrogável por mais 10, com justificativa).
+
+Fundamento legal: art. 7º, II, VI e VII, Lei 12.527/2011; art. 6º, Decreto 7.724/2012.</textarea>
+          <div id="lai2026Nota" style="background: #e0f2f1; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #00796b;">
+            <strong>Modelo base.</strong> Este pedido é um modelo pronto para copiar. Quando a investigação de fontes abertas do painel encontra emendas no SAPL 2026, este texto é enriquecido automaticamente no seu navegador e a lista aparece abaixo do pedido.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
         </article>
@@ -1132,26 +1153,54 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
     });
   });
 
-  // Carrega dinamicamente o rascunho de emendas 2026 se disponível
-  if (location.protocol !== "file:") {
-    fetch("data/lai_emendas_2026.txt?v=" + Date.now())
-      .then(function (r) {
-        if (r.ok) return r.text();
-        throw new Error("indisponível");
-      })
-      .then(function (text) {
-        if (!text || !text.trim()) return;
-        var card = document.getElementById("lai2026Card");
-        var ta = document.getElementById("lai2026Textarea");
-        if (card && ta) {
-          ta.value = text;
-          card.style.display = "";
-        }
-      })
-      .catch(function (e) {
-        console.info("Rascunho LAI 2026 não disponível para exibição.");
-      });
-  }
+  // Rascunho da LAI 2026: o .txt gerado pelo coletor não é publicado (bloqueio
+  // de .txt e exclusão do pacote). Em vez de sumir, o pedido é montado aqui, no
+  // navegador, a partir do chunk público fontes_emendas_2026.json. O modelo base
+  // já fica no textarea; quando a investigação traz emendas do SAPL, ele é
+  // enriquecido com a lista. Nada é inventado: sem dado, fica o modelo base.
+  (function () {
+    var card = document.getElementById("lai2026Card");
+    var ta = document.getElementById("lai2026Textarea");
+    var nota = document.getElementById("lai2026Nota");
+    if (!card || !ta) return;
+    var base = ta.value;
+
+    function montar(ff) {
+      var hoje = new Date().toLocaleDateString("pt-BR");
+      var texto = base.replace("[DATA]", hoje);
+      var sapl = ((ff && ff.achados) || []).filter(function (a) { return a.tipo === "emenda_sapl"; });
+      if (sapl.length) {
+        texto += "\n\nEmendas impositivas localizadas no SAPL 2026 (sem CNPJ/valor confirmado):\n" +
+          sapl.map(function (e) {
+            var linha = "  - Emenda " + (e.numero || "?") + "/2026 — Autor: " + (e.autor || "não identificado");
+            if (e.ementa) {
+              var ementa = String(e.ementa);
+              linha += "\n    Ementa: " + (ementa.length > 200 ? ementa.slice(0, 200) + "..." : ementa);
+            }
+            return linha;
+          }).join("\n");
+      }
+      return texto;
+    }
+
+    function aplicar() {
+      var ff = (window.FISCALIZA_DATA || {}).fontes_emendas_2026;
+      ta.value = montar(ff);
+      if (!nota) return;
+      var r = (ff && ff.resumo) || {};
+      if (ff) {
+        nota.innerHTML = "<strong>Rascunho gerado no seu navegador</strong> a partir da investigação de fontes abertas publicada pelo painel: " +
+          (r.achados_qtd || 0) + " achado(s) e " + (r.emendas_sapl_2026 || 0) + " emenda(s) no SAPL 2026. " +
+          "Conclusão da investigação: " + (r.conclusao || "não informada");
+      } else {
+        nota.innerHTML = "<strong>Modelo base.</strong> O painel não localizou lista consolidada de emendas 2026 nas fontes abertas; este pedido serve para solicitá-la por LAI. Se a investigação encontrar emendas no SAPL, a lista aparece abaixo do pedido.";
+      }
+    }
+
+    aplicar();
+    window.addEventListener("fiscaliza:ready", aplicar);
+    window.addEventListener("fiscaliza:chunk", aplicar);
+  })();
 })();
 </script>
 <script src="data-loader.js?v=20260730-relatorios2"></script>

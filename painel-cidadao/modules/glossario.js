@@ -79,7 +79,7 @@
     const dic = buscarTermo(termo);
     if (!dic) return esc(termo);
     const txt = opts.usarTecnico ? termo : dic.simples;
-    return `<span class="glossario-termo" tabindex="0" data-explica="${esc(dic.explica)}" aria-label="${esc(txt + ": " + dic.explica)}">${esc(txt)}</span>`;
+    return `<span class="glossario-termo" tabindex="0" data-explica="${esc(dic.explica)}" aria-expanded="false" aria-label="${esc(txt + ": " + dic.explica)}">${esc(txt)}</span>`;
   };
 
   const termosContextuais = [];
@@ -110,6 +110,7 @@
     span.className = "glossario-termo";
     span.tabIndex = 0;
     span.dataset.explica = item.explica;
+    span.setAttribute("aria-expanded", "false");
     span.setAttribute("aria-label", texto + ": " + item.explica);
     span.textContent = texto;
     return span;
@@ -180,6 +181,28 @@
   });
   document.addEventListener("DOMContentLoaded", function () {
     if (document.body) observer.observe(document.body, { childList: true, subtree: true });
+  });
+
+  // Toque/clique: no celular não existe :hover e muitos navegadores não dão
+  // foco a um span, então o cidadão ficava sem a explicação. O clique alterna
+  // .is-open (mesma aparência do :focus) e aria-expanded; tocar fora fecha.
+  const fecharTermos = function (exceto) {
+    document.querySelectorAll(".glossario-termo.is-open").forEach(function (el) {
+      if (el === exceto) return;
+      el.classList.remove("is-open");
+      el.setAttribute("aria-expanded", "false");
+    });
+  };
+  document.addEventListener("click", function (ev) {
+    const alvo = ev.target && ev.target.closest ? ev.target.closest(".glossario-termo") : null;
+    if (!alvo) { fecharTermos(null); return; }
+    ev.preventDefault();
+    const aberto = alvo.classList.toggle("is-open");
+    alvo.setAttribute("aria-expanded", aberto ? "true" : "false");
+    fecharTermos(alvo);
+  });
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape") fecharTermos(null);
   });
 
 })();

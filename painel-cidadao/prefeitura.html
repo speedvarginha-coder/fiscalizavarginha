@@ -104,20 +104,20 @@
     <!-- FILTROS RÁPIDOS POR CATEGORIA -->
     <div id="catChipsPrefeitura" class="cat-chips" aria-label="Filtrar contratos por categoria"></div>
 
-    <nav class="pref-tabs" aria-label="Areas de fiscalizacao da Prefeitura">
-      <button type="button" class="pref-tab is-active" data-pref-tab="visao">Visão geral <span id="badgeVisao"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="contratos">Contratos <span id="badgeContratos"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="diarias">Diárias <span id="badgeDiarias"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="frota">Frota <span id="badgeFrota"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="asfalto">Asfalto e buracos <span id="badgeAsfalto"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="alugueis">Aluguéis <span id="badgeAlugueis"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="eventos">Eventos <span id="badgeEventos"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="licitacoes">Licitações <span id="badgeLicitacoes"></span></button>
-      <button type="button" class="pref-tab" data-pref-tab="fontes">Diário Oficial</button>
-    </nav>
+    <div class="pref-tabs" role="tablist" aria-label="Áreas de fiscalização da Prefeitura">
+      <button type="button" role="tab" id="tab-visao" aria-controls="panel-visao" aria-selected="true" tabindex="0" class="pref-tab is-active" data-pref-tab="visao">Visão geral <span id="badgeVisao"></span></button>
+      <button type="button" role="tab" id="tab-contratos" aria-controls="panel-contratos" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="contratos">Contratos <span id="badgeContratos"></span></button>
+      <button type="button" role="tab" id="tab-diarias" aria-controls="panel-diarias" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="diarias">Diárias <span id="badgeDiarias"></span></button>
+      <button type="button" role="tab" id="tab-frota" aria-controls="panel-frota" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="frota">Frota <span id="badgeFrota"></span></button>
+      <button type="button" role="tab" id="tab-asfalto" aria-controls="panel-asfalto" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="asfalto">Asfalto e buracos <span id="badgeAsfalto"></span></button>
+      <button type="button" role="tab" id="tab-alugueis" aria-controls="panel-alugueis" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="alugueis">Aluguéis <span id="badgeAlugueis"></span></button>
+      <button type="button" role="tab" id="tab-eventos" aria-controls="panel-eventos" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="eventos">Eventos <span id="badgeEventos"></span></button>
+      <button type="button" role="tab" id="tab-licitacoes" aria-controls="panel-licitacoes" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="licitacoes">Licitações <span id="badgeLicitacoes"></span></button>
+      <button type="button" role="tab" id="tab-fontes" aria-controls="panel-fontes" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="fontes">Diário Oficial</button>
+    </div>
 
     <div class="pref-panels">
-    <section class="pref-panel is-active" data-pref-panel="visao">
+    <section class="pref-panel is-active" data-pref-panel="visao" role="tabpanel" id="panel-visao" aria-labelledby="tab-visao" tabindex="0">
 
     <div id="prefeituraOverview" class="audit-overview"></div>
     <div id="prefeituraResumoBase" class="reader-summary reader-summary--wide"></div>
@@ -177,7 +177,7 @@
     </div>
     </section>
 
-    <section class="pref-panel" data-pref-panel="contratos">
+    <section class="pref-panel" data-pref-panel="contratos" role="tabpanel" id="panel-contratos" aria-labelledby="tab-contratos" tabindex="0">
 
     <!-- Live: Contratos vigentes -->
     <div id="contratosBlock" class="block" hidden>
@@ -226,7 +226,7 @@
     <!-- Live: Licitações em andamento -->
     </section>
 
-    <section class="pref-panel" data-pref-panel="licitacoes">
+    <section class="pref-panel" data-pref-panel="licitacoes" role="tabpanel" id="panel-licitacoes" aria-labelledby="tab-licitacoes" tabindex="0">
     <div id="licitacoesBlock" class="block" hidden>
       <h3 class="block__title">Licitações em andamento</h3>
       <p class="block__lead">
@@ -276,7 +276,7 @@
     <!-- Shows e Eventos -->
     </section>
 
-    <section class="pref-panel" data-pref-panel="eventos">
+    <section class="pref-panel" data-pref-panel="eventos" role="tabpanel" id="panel-eventos" aria-labelledby="tab-eventos" tabindex="0">
     <div id="eventosBlock" class="block" hidden>
       <h3 class="block__title">Shows, eventos e cachês</h3>
       <p class="block__lead">
@@ -309,7 +309,7 @@
     <!-- Aluguéis e Locações -->
     </section>
 
-    <section class="pref-panel" data-pref-panel="alugueis">
+    <section class="pref-panel" data-pref-panel="alugueis" role="tabpanel" id="panel-alugueis" aria-labelledby="tab-alugueis" tabindex="0">
     <div id="alugueisBlock" class="block" hidden>
       <h3 class="block__title">Imóveis alugados</h3>
       <p class="block__lead">
@@ -326,7 +326,7 @@
 
     </section>
 
-    <section class="pref-panel" data-pref-panel="diarias">
+    <section class="pref-panel" data-pref-panel="diarias" role="tabpanel" id="panel-diarias" aria-labelledby="tab-diarias" tabindex="0">
     <div id="diariasPrefeituraBlock" class="block">
       <h3 class="block__title">Diárias de viagem — Prefeitura</h3>
       <p class="block__lead">
@@ -374,7 +374,7 @@
     <!-- Diário Oficial -->
     </section>
 
-    <section class="pref-panel" data-pref-panel="asfalto">
+    <section class="pref-panel" data-pref-panel="asfalto" role="tabpanel" id="panel-asfalto" aria-labelledby="tab-asfalto" tabindex="0">
     <div id="asfaltoBlock" class="block">
       <h3 class="block__title">Asfalto, tapa-buraco e pavimentação</h3>
       <p class="block__lead">
@@ -406,7 +406,7 @@
     </div>
     </section>
 
-    <section class="pref-panel" data-pref-panel="frota">
+    <section class="pref-panel" data-pref-panel="frota" role="tabpanel" id="panel-frota" aria-labelledby="tab-frota" tabindex="0">
     <div id="frotaBlock" class="block">
       <h3 class="block__title">Frota municipal</h3>
       <p class="block__lead">
@@ -439,7 +439,7 @@
     </div>
     </section>
 
-    <section class="pref-panel" data-pref-panel="fontes">
+    <section class="pref-panel" data-pref-panel="fontes" role="tabpanel" id="panel-fontes" aria-labelledby="tab-fontes" tabindex="0">
     <div class="block">
       <h3 class="block__title">Diário Oficial — últimas edições</h3>
       <p class="block__lead">

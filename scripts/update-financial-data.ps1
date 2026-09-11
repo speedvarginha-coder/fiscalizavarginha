@@ -16,7 +16,7 @@ $lockPath = Join-Path $logDir "coleta.lock"
 $logPath = Join-Path $logDir ("financeiro-" + (Get-Date -Format "yyyy-MM-dd") + ".log")
 $lockToken = $null
 $backupPath = $null
-$sourceStatus = [ordered]@{ federal = "pulado"; tesouro = "pulado"; estadual = "pulado"; diarias = "pulado" }
+$sourceStatus = [ordered]@{ federal = "pulado"; tesouro = "pulado"; estadual = "pulado"; diarias = "pulado"; reconciliacao = "pulado" }
 
 . (Join-Path $PSScriptRoot "lib\financial-backup.ps1")
 
@@ -130,8 +130,10 @@ try {
   $backupPath = New-FinancialBackup
 
   if (-not $SkipDiarias) {
-    Invoke-FinancialStep "Atualizando diarias da Prefeitura e da Camara." "python" @("-u", "coletor.py", "--so-diarias") $painel | Out-Null
-    $sourceStatus.diarias = "ok"
+    # Codigo 2 = a fonte nao respondeu (ou veio vazia); a base anterior foi
+    # preservada e o ciclo NAO deve desfazer as demais fontes por isso.
+    $code = Invoke-FinancialStep "Atualizando diarias da Prefeitura e da Camara." "python" @("-u", "coletor.py", "--so-diarias") $painel @(0, 2)
+    $sourceStatus.diarias = if ($code -eq 0) { "ok" } else { "preservado" }
   }
   if (-not $SkipFederal) {
     $code = Invoke-FinancialStep "Atualizando emendas federais CGU e Transferegov." "python" @("-u", "coletor_emendas_federais.py") $emendas @(0, 2)
@@ -149,9 +151,12 @@ try {
   }
 
   # Reconciliacao com o registro contabil da propria Prefeitura. Roda depois das
-  # tres bases porque compara com elas. Codigo 2 = coletou com ressalva; nao
-  # derruba o ciclo, porque a divergencia registrada ja e o produto util.
-  Invoke-FinancialStep "Reconciliando com o registro da Prefeitura (Betha)." "python" @("-u", "coletor_emendas_prefeitura.py") $emendas @(0, 2) | Out-Null
+  # tres bases porque compara com elas. Codigo 2 = fonte indisponivel ou sem
+  # relatorio: preserva a base anterior e NAO derruba o ciclo, porque as outras
+  # bases ja foram coletadas e nao podem ser descartadas por isso. Divergencia
+  # registrada (codigo 0) continua sendo o produto util.
+  $code = Invoke-FinancialStep "Reconciliando com o registro da Prefeitura (Betha)." "python" @("-u", "coletor_emendas_prefeitura.py") $emendas @(0, 2)
+  $sourceStatus.reconciliacao = if ($code -eq 0) { "ok" } else { "preservado" }
 
   Invoke-FinancialStep "Auditando emendas federais e estaduais." "python" @("-u", "audit_emendas.py") $emendas | Out-Null
   Invoke-FinancialStep "Regenerando contexto factual do site." "npm.cmd" @("run", "data:chat") $root | Out-Null

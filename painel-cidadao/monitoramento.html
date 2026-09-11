@@ -29,10 +29,14 @@
   </style>
 </head>
 <body>
-  <main class="monitor-wrap">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <main class="monitor-wrap" id="conteudo">
     <p><a href="index.html">← Voltar ao painel</a></p>
     <h1>Monitoramento das coletas</h1>
-    <p class="muted">Este painel mostra a situação declarada pelas fontes e a última execução concluída. “Parcial” ou “manual” não é falha silenciosa: indica que a fonte precisa de conferência antes de conclusões públicas.</p>
+    <nav aria-label="Navegação do painel" class="muted" style="margin:6px 0 14px">
+      <a href="index.html">Início</a> · <a href="prefeitura.html">Prefeitura</a> · <a href="camara.html">Câmara</a> · <a href="relatorios.html">Relatórios</a> · <a href="sobre.html">Sobre</a> · <a href="conformidade.html">Conformidade</a>
+    </nav>
+    <p class="muted">Este painel mostra a situação declarada pelas fontes e a última execução concluída. “Parcial” ou “conferência manual” não é falha silenciosa: indica que a fonte precisa de conferência antes de conclusões públicas.</p>
     <div id="summary" class="monitor-grid" aria-live="polite"></div>
     <h2>Fontes monitoradas</h2>
     <div style="overflow:auto"><table class="monitor-table"><thead><tr><th>Fonte</th><th>Situação</th><th>Atualização</th><th>Observação</th></tr></thead><tbody id="sources"></tbody></table></div>
@@ -41,15 +45,19 @@
     const text = (value) => String(value ?? "Não informado");
     const safe = (value) => text(value).replace(/[&<>"]|'/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[char]);
     const formatDate = (value) => value ? new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" }).format(new Date(value)) : "Não informada";
+    const STATUS = { ok: "Atualizada", partial: "Parcial", preserved: "Base anterior preservada", manual: "Conferência manual", failed: "Falha na coleta", stale: "Defasada", unknown: "Não informado" };
+    const EXEC = { SUCESSO: "Sucesso", FALHA: "Falha", PULADO: "Pulado", PENDENTE: "Pendente", ERRO: "Erro" };
+    const rotuloStatus = (status) => STATUS[status] || text(status);
+    const rotuloExec = (status) => EXEC[String(status || "").toUpperCase()] || text(status);
     fetch("data/chunks/monitoramento_coletas.json", { cache: "no-store" }).then((response) => response.json()).then((data) => {
       const run = data.last_completed_run;
       const deployment = data.last_verified_deployment;
       document.querySelector("#summary").innerHTML = [
-        ["Última coleta concluída", run ? `${text(run.coleta)} · ${formatDate(run.finished_at)}` : "Sem registro"],
-        ["Publicação verificada", deployment ? `${text(deployment.status)} · ${formatDate(deployment.checked_at)}` : "Sem registro"],
+        ["Última coleta concluída", run ? `${rotuloExec(run.coleta)} · ${formatDate(run.finished_at)}` : "Sem registro"],
+        ["Publicação verificada", deployment ? `${rotuloExec(deployment.status)} · ${formatDate(deployment.checked_at)}` : "Sem registro"],
         ["Fontes em alerta", (data.summary.by_status.partial || 0) + (data.summary.by_status.failed || 0)],
       ].map(([title, value]) => `<article class="monitor-card"><h2>${safe(title)}</h2><p>${safe(value)}</p></article>`).join("");
-      document.querySelector("#sources").innerHTML = data.sources.map((source) => `<tr><td>${safe(source.label)}</td><td><span class="status status-${safe(source.status)}">${safe(source.status)}</span></td><td>${safe(formatDate(source.source_updated_at))}</td><td>${safe(source.reason)}</td></tr>`).join("");
+      document.querySelector("#sources").innerHTML = data.sources.map((source) => `<tr><td>${safe(source.label)}</td><td><span class="status status-${safe(source.status)}">${safe(rotuloStatus(source.status))}</span></td><td>${safe(formatDate(source.source_updated_at))}</td><td>${safe(source.reason)}</td></tr>`).join("");
     }).catch(() => { document.querySelector("#summary").textContent = "Não foi possível carregar o monitoramento."; });
   </script>
 <footer class="footer">

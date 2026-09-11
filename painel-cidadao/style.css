@@ -9168,9 +9168,13 @@ body[data-page="home"] .hub-grid-18 .hub-item { position: relative; }
   outline: 2px solid var(--info-bd);
   background: var(--info-bg);
 }
+.glossario-termo.is-open {
+  background: var(--info-bg);
+}
 .glossario-termo:hover::after,
 .glossario-termo:focus-visible::after,
-.glossario-termo:focus::after {
+.glossario-termo:focus::after,
+.glossario-termo.is-open::after {
   content: attr(data-explica);
   position: absolute;
   bottom: calc(100% + 6px);

@@ -17,6 +17,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
+import { avaliarCicloInterrompido } from "./lib/pipeline-progress.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -90,7 +91,11 @@ const LIMITE_SUCESSO_HORAS = 14;
 function readJson(filePath, fallback = undefined) {
   try {
     if (!fs.existsSync(filePath)) return fallback;
-    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+    // Set-Content -Encoding UTF8 no PowerShell 5.1 grava BOM; sem remover, o
+    // JSON.parse falha silenciosamente e o estado vira "ausente" (foi o que
+    // quase escondeu o marcador de ciclo interrompido).
+    const texto = fs.readFileSync(filePath, "utf8").replace(/^\uFEFF/, "");
+    return JSON.parse(texto);
   } catch {
     return fallback;
   }
@@ -150,6 +155,22 @@ if (horasDesdeSucesso !== null && horasDesdeSucesso > LIMITE_SUCESSO_HORAS) {
   problemas.push(
     `Nenhuma coleta terminou com SUCESSO ha ${horasDesdeSucesso.toFixed(1)}h (limite ${LIMITE_SUCESSO_HORAS}h). ` +
     "A automacao pode estar disparando mas falhando repetidamente — checar private/logs/."
+  );
+}
+
+// (B2) Ciclo iniciado e nao concluido. O Agendador mata a execucao no
+// ExecutionTimeLimit sem excecao, sem log e sem estado — ate agora essa morte
+// era invisivel. O marcador pipeline_in_progress.json so sobrevive quando o
+// processo e morto; se persistir alem do orcamento do ciclo, e morte.
+const progresso = readJson(path.join(stateDir, "pipeline_in_progress.json"));
+const LIMITE_CICLO_HORAS = 5;
+const cicloInterrompido = avaliarCicloInterrompido(progresso, agora.getTime(), LIMITE_CICLO_HORAS);
+if (cicloInterrompido) {
+  problemas.push(
+    `Um ciclo iniciou ha ${cicloInterrompido.horas.toFixed(1)}h ` +
+    `(fase "${cicloInterrompido.fase}", pid ${cicloInterrompido.pid}, tarefa ${cicloInterrompido.tarefa}) ` +
+    "e nao registrou conclusao. Provavel morte por limite de tempo do Agendador. " +
+    "Conferir ExecutionTimeLimit das tarefas e reduzir o orcamento do ciclo."
   );
 }
 

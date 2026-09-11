@@ -127,7 +127,7 @@ try {
       
       <div class="search-box">
         <div class="search">
-          <input type="search" id="buscaHome" placeholder="Digite um tema, obra, contrato ou vereador" aria-label="Buscar no painel">
+          <input type="search" id="buscaHome" placeholder="Digite um tema, obra, bairro, contrato ou vereador" aria-label="Buscar no painel">
           <button type="button" onclick="FISCALIZA.smartAudit()">Investigar agora</button>
         </div>
         <div id="homeSmartSuggest" class="smart-suggest" aria-live="polite"></div>
@@ -491,36 +491,6 @@ try {
           <a href="camara.html">3. Compare emenda, CNPJ e pagamento</a>
         </div>
         <div id="homeOpsFreshness" class="home-ops__freshness">Dados locais carregados no navegador</div>
-        <div id="homeDataHealthInline" class="home-data-health" hidden></div>
-        <script>
-        (function () {
-          var box = document.getElementById("homeDataHealth");
-          if (!box || !window.fetch || location.protocol === "file:") return;
-          function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
-          fetch("data/chunks/auditoria_dados.json?v=" + Date.now(), { cache: "no-store" })
-            .then(function (r) { return r.ok ? r.json() : null; })
-            .then(function (a) {
-              if (!a) return;
-              var s = a.summary || {};
-              var level = a.level || "ok";
-              var rotulo = level === "critical" ? "Crítico" : level === "attention" ? "Atenção" : "OK";
-              var w = s.warnings || 0, e = s.errors || 0;
-              var resumo = e ? (e + " erro(s) e " + w + " aviso(s) de qualidade")
-                            : w ? (w + " aviso(s) de qualidade nos dados — confira os limites antes de concluir")
-                                : "Sem alertas ativos na auditoria automática";
-              box.className = "home-data-health home-data-health--" + esc(level);
-              box.hidden = false;
-              box.innerHTML =
-                '<div>' +
-                  '<span>SAÚDE DOS DADOS</span>' +
-                  '<strong>' + esc(rotulo) + '</strong>' +
-                  '<small>' + esc(resumo) + '</small>' +
-                '</div>' +
-                '<a href="sobre.html#auditoriaDados">Ver auditoria</a>';
-            })
-            .catch(function () {});
-        })();
-        </script>
       </div>
 
       <div class="home-ops__side">

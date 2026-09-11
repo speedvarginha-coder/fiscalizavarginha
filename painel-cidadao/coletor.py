@@ -2753,11 +2753,69 @@ def _processa_diarias_betha() -> dict:
     }
 
 
+def _reconciliar_diarias_por_exercicio(novos, antigos, status_por_ano):
+    """Reconcilia diarias por (orgao, exercicio).
+
+    Uma falha de um ano nao pode apagar um ano inteiro ja publicado. Para cada
+    ano presente na coleta nova ou na base anterior: usa a coleta nova somente
+    quando o ano veio com status "ok" E trouxe registros; caso contrario mantem
+    os registros anteriores daquele ano. Devolve (lista reconciliada, anos em
+    que a base anterior foi preservada).
+    """
+    def por_ano(lista):
+        mapa = {}
+        for item in lista or []:
+            if not isinstance(item, dict):
+                continue
+            mapa.setdefault(str(item.get("ano") or ""), []).append(item)
+        return mapa
+
+    novos_ano = por_ano(novos)
+    antigos_ano = por_ano(antigos)
+    status = status_por_ano if isinstance(status_por_ano, dict) else {}
+    universo = sorted(set(list(novos_ano) + list(antigos_ano)))
+    reconciliado = []
+    preservados = []
+    for ano in universo:
+        coleta = novos_ano.get(ano) or []
+        anterior = antigos_ano.get(ano) or []
+        ano_ok = (status.get(ano) or {}).get("status") == "ok"
+        if ano_ok and coleta:
+            reconciliado.extend(coleta)
+        elif anterior:
+            reconciliado.extend(anterior)
+            if coleta or ano in status:
+                preservados.append(ano)
+        elif coleta:
+            reconciliado.extend(coleta)
+    return reconciliado, preservados
+
+
+def _resumo_diarias(lista: list[dict]) -> dict:
+    return {
+        "registros": len(lista),
+        "valor_total": round(sum(float(d.get("valor_total") or 0) for d in lista), 2),
+        "quantidade_total": round(sum(float(d.get("quantidade") or 0) for d in lista), 2),
+        "servidores": len({(d.get("funcionario") or "").upper() for d in lista if d.get("funcionario")}),
+    }
+
+
+def _codigo_saida_diarias(diarias: dict, meta: dict) -> int:
+    """0 = todos os orgaos integrais; 2 = base preservada; 3 = nada sobrou."""
+    meta = meta if isinstance(meta, dict) else {}
+    if all((meta.get(org) or {}).get("ok") for org in ("prefeitura", "camara")):
+        return 0
+    if isinstance(diarias, dict) and (diarias.get("prefeitura") or diarias.get("camara")):
+        return 2
+    return 3
+
+
 def _coletar_e_salvar_diarias() -> dict:
-    """Atualiza diarias sem permitir regressao de cobertura por fonte."""
+    """Atualiza diarias sem permitir regressao de cobertura por orgao/exercicio."""
     diarias = _processa_diarias_betha()
     existente_diarias = _load_existing("diarias.json", {})
-    meta_ant = existente_diarias.get("meta") if isinstance(existente_diarias, dict) else {}
+    existente_diarias = existente_diarias if isinstance(existente_diarias, dict) else {}
+    meta_ant = existente_diarias.get("meta")
     meta_ant = meta_ant if isinstance(meta_ant, dict) else {}
     agora_iso = dt.datetime.now().isoformat(timespec="seconds")
     coletou = {org: len(diarias.get(org, [])) > 0 for org in ("prefeitura", "camara")}
@@ -2770,15 +2828,29 @@ def _coletar_e_salvar_diarias() -> dict:
             isinstance(item, dict) and item.get("status") == "ok"
             for item in anos_status.values()
         )
+
     for org in ("prefeitura", "camara"):
-        novos = diarias.get(org, [])
-        antigos = existente_diarias.get(org, []) if isinstance(existente_diarias, dict) else []
-        if isinstance(antigos, list) and len(antigos) >= 50 and len(novos) == 0:
-            diarias[org] = antigos
-            antigo_resumo = (existente_diarias.get("resumo") or {}).get(org)
-            if antigo_resumo:
-                diarias.setdefault("resumo", {})[org] = antigo_resumo
-            print(f"  ! Diarias {org}: coleta vazia; preservando base anterior ({len(antigos)} registros)")
+        novos = diarias.get(org, []) or []
+        antigos = existente_diarias.get(org, [])
+        antigos = antigos if isinstance(antigos, list) else []
+        reconciliado, preservados = _reconciliar_diarias_por_exercicio(
+            novos, antigos, status_por_org.get(org)
+        )
+        diarias[org] = reconciliado
+        for ano in preservados:
+            anteriores_ano = [d for d in antigos if str(d.get("ano") or "") == ano]
+            print(
+                f"  ! Diarias {org} {ano}: coleta incompleta; preservando base anterior "
+                f"({len(anteriores_ano)} registros)"
+            )
+        if reconciliado and not novos:
+            print(f"  ! Diarias {org}: coleta vazia; preservando base anterior ({len(reconciliado)} registros)")
+
+    diarias["resumo"] = {
+        "prefeitura": _resumo_diarias(diarias.get("prefeitura", [])),
+        "camara": _resumo_diarias(diarias.get("camara", [])),
+    }
+
     meta = {}
     for org in ("prefeitura", "camara"):
         ant = meta_ant.get(org) if isinstance(meta_ant.get(org), dict) else {}
@@ -2846,9 +2918,15 @@ def main() -> int:
     vigia_rapida = "--vigia-rapida" in sys.argv
 
     if "--so-diarias" in sys.argv:
-        _coletar_e_salvar_diarias()
-        print("\n✓ Diarias atualizadas sem executar SAPL ou demais fontes.\n")
-        return 0
+        diarias = _coletar_e_salvar_diarias()
+        codigo = _codigo_saida_diarias(diarias, diarias.get("meta") if isinstance(diarias, dict) else {})
+        if codigo == 0:
+            print("\n✓ Diarias atualizadas sem executar SAPL ou demais fontes.\n")
+        elif codigo == 2:
+            print("\n! Diarias com cobertura parcial; base anterior preservada — codigo 2.\n")
+        else:
+            print("\n✗ Diarias: nada coletado e nada preservado — codigo 3.\n")
+        return codigo
 
     sapl = _preserva_emendas_sapl_se_coleta_vazia(_processa_sapl())
     _enriquece_materias_cidadas(sapl.get("camara_anos", {}))

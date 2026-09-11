@@ -78,5 +78,36 @@ class ConciliacaoTests(unittest.TestCase):
         self.assertIsNone(col.chave("Municipal", "sem numero"))
 
 
+class ExitCodeTests(unittest.TestCase):
+    """O ciclo financeiro trata o codigo 2 como 'preservado'.
+
+    Se esta reconciliacao devolvesse 1 num momento de indisponibilidade, o
+    orquestrador desfaria TUDO — inclusive as emendas federais, estaduais e as
+    diarias ja coletadas com sucesso — por causa de uma fonte instavel.
+    """
+
+    def test_sem_relatorio_preserva_e_devolve_2(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as pasta:
+            argv = sys.argv
+            sys.argv = ["coletor_emendas_prefeitura.py", "--pdf-dir", pasta]
+            try:
+                self.assertEqual(col.main(), 2)
+            finally:
+                sys.argv = argv
+
+    def test_fonte_indisponivel_preserva_e_devolve_2(self):
+        from unittest import mock
+
+        argv = sys.argv
+        sys.argv = ["coletor_emendas_prefeitura.py"]
+        try:
+            with mock.patch.object(col, "baixar_relatorios", side_effect=RuntimeError("HTTP Error 500")):
+                self.assertEqual(col.main(), 2)
+        finally:
+            sys.argv = argv
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { deveRegistrarSucesso } from "./lib/pipeline-state.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const statePath = path.join(root, "private", "state", "pipeline_last_result.json");
@@ -26,9 +27,9 @@ fs.mkdirSync(path.dirname(statePath), { recursive: true });
 const tmp = `${statePath}.tmp-${process.pid}`;
 fs.writeFileSync(tmp, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
 fs.renameSync(tmp, statePath);
-if (payload.coleta === "SUCESSO") {
+if (deveRegistrarSucesso(payload)) {
   const successTmp = `${successPath}.tmp-${process.pid}`;
   fs.writeFileSync(successTmp, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
   fs.renameSync(successTmp, successPath);
 }
-console.log(`Estado do pipeline registrado: coleta=${payload.coleta} fase=${payload.fase}`);
+console.log(`Estado do pipeline registrado: coleta=${payload.coleta} fase=${payload.fase} deploy=${payload.deploy}`);

@@ -60,10 +60,13 @@ const output = {
     ? (() => {
         try {
           const state = JSON.parse(fs.readFileSync(externalSitePath, "utf8"));
-          return state?.status === "ok" ? {
+          // "defasado" continua sendo versao publicada e integra; o que falta e
+          // atualidade, exposta em collection_age_hours e no alerta de saude.
+          return (state?.status === "ok" || state?.status === "defasado") ? {
             status: "SUCESSO",
             checked_at: state.checked_at || null,
             manifest_sha256: state.manifest_sha256 || null,
+            collection_age_hours: state.collection_age_hours ?? null,
             url: state.url || null,
           } : null;
         } catch {

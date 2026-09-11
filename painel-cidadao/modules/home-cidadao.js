@@ -184,10 +184,33 @@
     const input = $("buscaHome");
     if (!box || !input) return;
 
+    // Sugestão dinâmica por bairro: "quanto foi gasto no meu bairro?" é uma
+    // pergunta comum do cidadão e a base de obras tem o bairro. Só aparece
+    // quando o texto casa um bairro real, para não poluir as trilhas fixas.
+    let dinamicos = [];
+    function bairroTopicos(q) {
+      const obras = ((window.FISCALIZA_DATA || {}).prefeitura || {}).obras_publicas || [];
+      const bairros = [...new Set(obras.map((o) => (o.bairro || "").trim()).filter(Boolean))];
+      const bairro = bairros.find((nome) => {
+        const n = norm(nome);
+        return n === q || n.startsWith(q) || (q.length >= 5 && n.includes(q));
+      });
+      if (!bairro) return [];
+      return [{
+        id: "bairro:" + bairro,
+        rotulo: "Obras em " + bairro,
+        dica: "Ver obras, asfalto e valores no bairro",
+        href: "prefeitura.html?tab=asfalto&q=" + encodeURIComponent(bairro),
+        abre: "a aba Asfalto da Prefeitura filtrada no bairro " + bairro + ", com obra, empresa, valor e medição",
+        pergunta: "Solicito a relação de obras e serviços de pavimentação no bairro " + bairro + ", com contrato, empresa, valor, período, fiscal responsável e medições.",
+      }];
+    }
+
     function listar(q) {
-      const matches = TOPICOS.filter((t) =>
+      dinamicos = bairroTopicos(q);
+      const matches = [...dinamicos, ...TOPICOS.filter((t) =>
         t.termos.some((termo) => termo.startsWith(q) || termo.includes(q) || q.includes(termo))
-      ).slice(0, 4);
+      )].slice(0, 4);
       if (!matches.length) { box.innerHTML = ""; return; }
       box.innerHTML =
         '<div class="smart-suggest__head"><strong>Auditor inteligente</strong><span>caminhos prontos para o que você procura</span></div>' +
@@ -202,7 +225,7 @@
     }
 
     function guiar(id) {
-      const t = TOPICOS.find((x) => x.id === id);
+      const t = dinamicos.find((x) => x.id === id) || TOPICOS.find((x) => x.id === id);
       if (!t) return;
       box.innerHTML =
         '<div class="smart-suggest__head"><strong>Resultado guiado</strong><span>' + esc(t.rotulo) + '</span></div>' +

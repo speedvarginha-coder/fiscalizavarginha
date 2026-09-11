@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
 import { agruparSancoes, avaliarIncompatibilidade, CATEGORIAS } from "./lib/classificar-sancoes.mjs";
 import { internalTimestamp } from "./lib/source-freshness.mjs";
+import { avaliarDetalhamentoDiarias } from "./lib/audit-diarias.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -204,6 +205,7 @@ const chunks = {
   fontesEmendas2026: readJson("fontes_emendas_2026"),
   indice: readJson("indice_relevancia"),
   diario: readJson("diario"),
+  diarias: readJson("diarias"),
   camaraAnos: readJson("camara_anos"),
   publicacoesCamara: readJson("publicacoes_estruturadas"),
   publicacoesDiario: readJson("publicacoes_diario"),
@@ -771,22 +773,26 @@ for (const [orgao, registros, source] of [
 }
 
 const anoDiarias = Number(chunks.prefeitura?.ano_atual || new Date().getFullYear());
-for (const [orgao, registros] of [
-  ["Prefeitura", chunks.diarias?.prefeitura || []],
-  ["Camara", chunks.diarias?.camara || []],
-]) {
-  const atuais = registros.filter((d) => Number(d.ano) === anoDiarias);
-  const semDestino = atuais.filter((d) => !String(d.destino || "").trim()).length;
-  const semFinalidade = atuais.filter((d) => !String(d.finalidade || "").trim()).length;
-  if (atuais.length && (semDestino || semFinalidade)) {
-    add(
-      "warning",
-      `diarias-${normalizeText(orgao)}-sem-detalhamento`,
-      `Diarias da ${orgao} com detalhamento incompleto`,
-      `Em ${anoDiarias}, a base tem ${atuais.length} registro(s): ${semDestino} sem destino e ${semFinalidade} sem finalidade. Valor, beneficiario e periodo continuam auditaveis quando preenchidos, mas a motivacao da viagem nao pode ser inferida.`,
-      "Conferir o ato original e solicitar destino, finalidade, relatorio de viagem e comprovantes antes de avaliar necessidade ou resultado da despesa.",
-      "diarias.json",
-    );
+if (!chunks.diarias) {
+  // Chunk obrigatorio: sem ele a regra nao pode ser avaliada. Recusar alto e
+  // melhor que devolver lista vazia e declarar a base auditada.
+  add(
+    "error",
+    "diarias-ausente",
+    "Chunk de diarias ausente na auditoria",
+    "O chunk diarias.json nao foi carregado; a auditoria de destino e finalidade nao pode ser executada.",
+    "Restaurar ou recoletar diarias.json antes de publicar.",
+    "diarias.json",
+  );
+} else {
+  for (const [orgao, registros] of [
+    ["Prefeitura", chunks.diarias.prefeitura || []],
+    ["Camara", chunks.diarias.camara || []],
+  ]) {
+    const lacuna = avaliarDetalhamentoDiarias(orgao, registros, anoDiarias);
+    if (lacuna) {
+      add("warning", lacuna.id, lacuna.titulo, lacuna.descricao, lacuna.acao, "diarias.json");
+    }
   }
 }
 

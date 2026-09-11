@@ -133,6 +133,26 @@ self.addEventListener("fetch", function (e) {
     return;
   }
 
+  // Navegação (HTML) — network first para nunca servir página antiga após um
+  // deploy; se a rede falhar, cai no cache (offline continua funcionando).
+  const ehNavegacao = req.mode === "navigate" || url.pathname.endsWith(".html") || url.pathname.endsWith("/");
+  if (ehNavegacao) {
+    e.respondWith(
+      fetch(req).then(function (res) {
+        if (res && res.ok && url.origin === self.location.origin) {
+          const copia = res.clone();
+          caches.open(CACHE).then(function (c) { c.put(req, copia); });
+        }
+        return res;
+      }).catch(function () {
+        return caches.match(req).then(function (cached) {
+          return cached || caches.match("./index.html");
+        });
+      })
+    );
+    return;
+  }
+
   // Demais recursos — cache first, fallback network
   e.respondWith(
     caches.match(req).then(function (cached) {

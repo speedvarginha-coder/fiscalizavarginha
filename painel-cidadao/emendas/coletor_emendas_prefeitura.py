@@ -294,11 +294,19 @@ def main() -> int:
                 }
             )
     else:
-        relatorios = baixar_relatorios(CACHE_PDF)
+        try:
+            relatorios = baixar_relatorios(CACHE_PDF)
+        except Exception as exc:  # noqa: BLE001
+            # Fonte indisponivel (HTTP 500, timeout, etc.) nao e motivo para
+            # reescrever a base: preserva o chunk anterior e devolve codigo 2,
+            # que o ciclo financeiro trata como "preservado" sem desfazer as
+            # outras fontes ja coletadas.
+            print(f"AVISO: nao foi possivel baixar os relatorios da Prefeitura ({exc}); base anterior preservada.")
+            return 2
 
     if not relatorios:
-        print("Nenhum relatorio de emendas da Prefeitura encontrado.")
-        return 1
+        print("Nenhum relatorio de emendas da Prefeitura encontrado; base anterior preservada.")
+        return 2
 
     payload = conciliar(relatorios)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
