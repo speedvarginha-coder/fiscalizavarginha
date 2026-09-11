@@ -318,3 +318,15 @@ test("Monitoramento mostra situação e idade das fontes em linguagem simples", 
   // Idade em linguagem comum, não só data ISO.
   expect(texto).toMatch(/hoje|há \d+ dias?|sem data de coleta/);
 });
+
+test("busca global abre pelo menu e roteia em página interna", async ({ page }) => {
+  await page.goto("/prefeitura.html", { waitUntil: "domcontentloaded" });
+  await page.waitForFunction(() => window.FISCALIZA && typeof window.FISCALIZA.smartAudit === "function");
+  await page.waitForFunction(() => Boolean((window.FISCALIZA_DATA || {}).prefeitura));
+  await page.locator(".busca-global__fab").first().click();
+  const overlay = page.locator(".busca-global");
+  await expect(overlay).toBeVisible();
+  await overlay.locator("#buscaGlobal").fill("Vila Floresta");
+  await overlay.locator('button[type="submit"]').click();
+  await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=Vila%20Floresta/);
+});

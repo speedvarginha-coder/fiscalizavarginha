@@ -13251,3 +13251,38 @@ body[data-page="home"] .hub-grid-18 .hub-item--avalie .hub-item__icon svg {
     color: var(--success-dk);
   }
 }
+
+/* ===== Busca global nas páginas internas ===== */
+.busca-global {
+  position: fixed; inset: 0; z-index: 3000;
+  background: rgba(15, 30, 50, .5);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 12vh 16px;
+}
+.busca-global[hidden] { display: none; }
+.busca-global__box {
+  background: var(--surface, #fff); color: var(--ink, #1c2430);
+  border-radius: 12px; padding: 12px; width: min(680px, 100%);
+  display: flex; gap: 8px; box-shadow: 0 12px 40px rgba(0, 0, 0, .3);
+}
+.busca-global__box input {
+  flex: 1; padding: 12px; border: 1px solid var(--line, #d5dbe4);
+  border-radius: 8px; font-size: 1rem; min-width: 0;
+}
+.busca-global__box button[type="submit"] {
+  background: var(--navy, #1f3a5f); color: #fff; border: 0; border-radius: 8px;
+  padding: 0 16px; font-weight: 700; cursor: pointer;
+}
+.busca-global__close {
+  background: none; border: 0; font-size: 1.5rem; line-height: 1;
+  cursor: pointer; color: var(--muted, #5b6675); padding: 0 6px;
+}
+.busca-global__fab {
+  position: fixed; right: 20px; bottom: 80px; z-index: 950;
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--navy, #1f3a5f); color: #fff; border: none;
+  cursor: pointer; box-shadow: 0 3px 12px rgba(0, 0, 0, .25);
+}
+.busca-global__fab:hover { background: var(--teal, #0d7f7a); }
+@media (max-width: 480px) { .busca-global__fab { bottom: 72px; right: 12px; } }

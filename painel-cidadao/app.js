@@ -6664,7 +6664,9 @@ ${url}
     setBadge("badgeEventos", eventosBase.length);
     setBadge("badgeLicitacoes", licitacoes.length);
     setBadge("badgeFrota", frota.length);
-    setBadge("badgeAsfalto", "…");
+    // badgeAsfalto pertence a renderAsfaltoPrefeitura(); não resetar aqui. Um
+    // overview re-renderizado (ex.: quando a frota chega na fase 2) apagava o
+    // número e deixava o selo preso no placeholder "…".
 
     const pctVariacao = pf.total_externo_anterior ? (((pf.total_externo_atual / pf.total_externo_anterior) - 1) * 100).toFixed(1) : 0;
     const trendLabel = pctVariacao > 0 ? `+${pctVariacao}% em relacao a ${pf.ano_anterior}` : `${pctVariacao}% em relacao a ${pf.ano_anterior}`;
@@ -8286,6 +8288,48 @@ ${url}
       renderCruzamentoFundacao();
     }
   });
+
+  // ============= BUSCA GLOBAL NAS PÁGINAS INTERNAS =============
+  // A busca da home não existe fora dela. Aqui entra um caminho: um botão
+  // flutuante (posição fixa, sem mexer no layout do cabeçalho) abre uma
+  // sobreposição e o Enter reaproveita o roteamento do smartAudit.
+  (function initBuscaGlobal() {
+    if (PAGE === "home") return;
+    if (document.querySelector(".busca-global__fab")) return;
+
+    const abrir = document.createElement("button");
+    abrir.type = "button";
+    abrir.className = "busca-global__fab";
+    abrir.setAttribute("aria-label", "Buscar no painel");
+    abrir.title = "Buscar no painel";
+    abrir.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="16.5" y1="16.5" x2="21" y2="21"></line></svg>';
+    document.body.appendChild(abrir);
+
+    const overlay = document.createElement("div");
+    overlay.className = "busca-global";
+    overlay.hidden = true;
+    overlay.innerHTML =
+      '<form class="busca-global__box" role="search">' +
+        '<input type="search" id="buscaGlobal" placeholder="Buscar tema, obra, bairro, empresa ou vereador" aria-label="Buscar no painel">' +
+        '<button type="submit">Buscar</button>' +
+        '<button type="button" class="busca-global__close" aria-label="Fechar busca">×</button>' +
+      '</form>';
+    document.body.appendChild(overlay);
+
+    const input = overlay.querySelector("#buscaGlobal");
+    const fechar = () => { overlay.hidden = true; };
+    abrir.addEventListener("click", () => { overlay.hidden = false; input.focus(); });
+    overlay.querySelector(".busca-global__close").addEventListener("click", fechar);
+    overlay.addEventListener("click", (e) => { if (e.target === overlay) fechar(); });
+    overlay.querySelector("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (q && window.FISCALIZA.smartAudit) window.FISCALIZA.smartAudit(q);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !overlay.hidden) fechar();
+    });
+  })();
 
   // Sinal deterministico para testes e monitoramento local. Ele so aparece
   // depois que a inicializacao sincrona do painel terminou sem excecao.
