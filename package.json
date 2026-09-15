@@ -46,7 +46,7 @@
     "validate:deploy": "node scripts/validate-release.mjs deploy && npm run test:deploy",
     "test:numeros": "node tests/test_numeros_publicados.mjs",
     "test:deploy": "node scripts/run-browser-tests.mjs --deploy",
-    "test:contracts": "node --test tests/test_public_assets.mjs tests/test_data_views.mjs tests/test_radar_pntp.mjs tests/test_auditoria_diarias.mjs tests/test_pipeline_state.mjs tests/test_pipeline_progress.mjs tests/test_data_drop.mjs",
+    "test:contracts": "node --test tests/test_public_assets.mjs tests/test_data_views.mjs tests/test_radar_pntp.mjs tests/test_auditoria_diarias.mjs tests/test_pipeline_state.mjs tests/test_pipeline_progress.mjs tests/test_data_drop.mjs tests/test_publish_files.mjs",
     "test:unit": "node tests/test_cleantext_acentos.mjs && node tests/test_busca_flexao.mjs && node tests/test_moeda_negativa.mjs"
   },
   "devDependencies": {

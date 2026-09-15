@@ -367,6 +367,14 @@ function Restore-PublishedDataBackup {
     if (Test-Path $emendasDataDir) {
       Copy-Item -LiteralPath $emendasDataDir -Destination (Join-Path $quarentena "emendas-data") -Recurse -Force
     }
+    # A próxima execução sobrescreve os relatórios. Guardá-los com a base
+    # rejeitada permite diagnosticar timeouts e erros de carregamento depois.
+    foreach ($reportName in @("test-results", "playwright-report")) {
+      $reportPath = Join-Path $root $reportName
+      if (Test-Path -LiteralPath $reportPath) {
+        Copy-Item -LiteralPath $reportPath -Destination (Join-Path $quarentena $reportName) -Recurse -Force
+      }
+    }
     Write-Log "Coleta rejeitada preservada em quarentena: $quarentena"
   } catch {
     # Quarentena e melhor-esforco: se falhar, o rollback abaixo continua valendo.

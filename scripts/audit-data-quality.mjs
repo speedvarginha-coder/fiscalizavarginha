@@ -4,9 +4,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
 import { agruparSancoes, avaliarIncompatibilidade, CATEGORIAS } from "./lib/classificar-sancoes.mjs";
-import { internalTimestamp } from "./lib/source-freshness.mjs";
+import { internalTimestamp, lastCompleteTimestamp } from "./lib/source-freshness.mjs";
 import { avaliarDetalhamentoDiarias } from "./lib/audit-diarias.mjs";
 import { avaliarQuedaAnormal } from "./lib/data-drop.mjs";
+import { publishFiles } from "./lib/publish-files.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -24,28 +25,25 @@ function readJson(name) {
   return JSON.parse(fs.readFileSync(filePath, "utf8"));
 }
 
-function writeJson(filePath, data) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + "\n", "utf8");
-}
-
-function updateManifest() {
+function buildManifest(replacements) {
   const manifest = fs.existsSync(manifestPath)
     ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
     : { gerado_em: new Date().toISOString(), chunks: {} };
 
   manifest.gerado_em = new Date().toISOString();
   manifest.chunks = {};
-  const names = fs.readdirSync(chunksDir)
+  const names = [...new Set([...fs.readdirSync(chunksDir), ...[...replacements.keys()].map(file => path.basename(file))])]
     .filter((name) => name.endsWith(".json"))
     .map((name) => path.basename(name, ".json"))
     .sort();
 
   for (const name of names) {
     const filePath = path.join(chunksDir, `${name}.json`);
+    const content = replacements.get(filePath) || fs.readFileSync(filePath);
     manifest.chunks[name] = {
       arquivo: `data/chunks/${name}.json`,
-      bytes: fs.statSync(filePath).size,
-      sha256: crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex"),
+      bytes: content.length,
+      sha256: crypto.createHash("sha256").update(content).digest("hex"),
     };
   }
 
@@ -66,7 +64,7 @@ function updateManifest() {
     })),
   };
 
-  writeJson(manifestPath, manifest);
+  return manifest;
 }
 
 function parseDate(value) {
@@ -283,7 +281,7 @@ function sourceHealthMetadata(name, value) {
     "status", "status_fontes", "observacao", "observacoes", "erros", "erro",
     "resumo", "consultas", "fontes_verificadas", "cobertura", "metadados", "metadata",
     "contratos_status_coleta", "obras_status_coleta", "frota_status_coleta",
-    "dados_abertos_status", "meta",
+    "dados_abertos_status", "meta", "coleta_frescor",
   ];
   const metadata = Object.fromEntries(
     commonKeys
@@ -314,12 +312,12 @@ function buildSourceStatus() {
     const metadataText = JSON.stringify(sourceHealthMetadata(name, value)).toLowerCase();
     // prefeitura.json e produzido pelo coletor principal, mas por compatibilidade
     // ainda nao carrega timestamp proprio. Nesse caso, usa o carimbo do mesmo ciclo.
-    const checkedAt = internalTimestamp(value)
+    const checkedAt = internalTimestamp({ iso: value?.coleta_frescor?.checked_at }) || internalTimestamp(value)
       || (name === "prefeitura" ? internalTimestamp(chunks.atualizado) : undefined);
-    const preserved = /preservad[oa]|preservada_por_cobertura/.test(metadataText);
+    const preserved = value?._preservado === true || /preservad[oa]|preservada_por_cobertura/.test(metadataText);
     // O carimbo do ciclo atual não rejuvenesce registros preservados. Sem
     // referência à última coleta completa, a idade dessa base é desconhecida.
-    const updatedAt = preserved ? undefined : checkedAt;
+    const updatedAt = value?.coleta_frescor ? lastCompleteTimestamp(value) : preserved ? undefined : checkedAt;
     const ageDays = daysSince(updatedAt);
     let status;
     let reason;
@@ -329,7 +327,9 @@ function buildSourceStatus() {
       reason = value === undefined ? "Chunk ausente." : "Chunk vazio; ausencia real de registros nao foi confirmada.";
     } else if (preserved) {
       status = "preserved";
-      reason = "Base anterior preservada. A tentativa recente não comprova a atualização integral; a data da última base completa não foi informada.";
+      reason = updatedAt
+        ? "Base anterior preservada. A idade considera a última coleta completa comprovada de todos os conjuntos; a tentativa recente não rejuvenesce os dados."
+        : "Base anterior preservada. A tentativa recente não comprova a atualização integral; a data da última base completa não foi informada.";
     } else if (/\"status\"\s*:\s*\"(?:erro|failed|falha)\"|erro de coleta|falha de coleta|http error|http \d{3}/.test(metadataText)) {
       const pncpSemDados = name === "pncp"
         && !(value?.compras?.length || value?.contratos?.length);
@@ -340,6 +340,9 @@ function buildSourceStatus() {
     } else if (/parcial|cobertura baixa|escopo limitado/.test(metadataText)) {
       status = "partial";
       reason = "Metadados indicam cobertura parcial.";
+    } else if (/"status"\s*:\s*"unknown"/.test(metadataText)) {
+      status = "unknown";
+      reason = "A tentativa não informou o estado de completude de todos os conjuntos; uma data anterior conhecida não comprova sucesso neste ciclo.";
     } else if (!updatedAt) {
       status = "manual";
       reason = "Sem timestamp interno verificavel; mtime local nao foi usado como freshness.";
@@ -1213,9 +1216,10 @@ const payload = {
   issues: items,
 };
 
-writeJson(outPath, payload);
-writeJson(statusPath, buildSourceStatus());
-updateManifest();
+const serialize = value => Buffer.from(JSON.stringify(value, null, 2) + "\n", "utf8");
+const outputs = new Map([[outPath, serialize(payload)], [statusPath, serialize(buildSourceStatus())]]);
+const manifestBytes = serialize(buildManifest(outputs));
+publishFiles([...outputs, [manifestPath, manifestBytes]]);
 
 const label = level === "critical" ? "CRITICO" : level === "attention" ? "ATENCAO" : "OK";
 console.log(`Auditoria de dados: ${label} (${payload.summary.errors} erro(s), ${payload.summary.warnings} aviso(s), ${payload.summary.info} info)`);

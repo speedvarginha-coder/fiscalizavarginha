@@ -1,4 +1,14 @@
 // Datas de registros de negócio não comprovam quando uma base foi coletada.
+// A data integral é a mais antiga entre os conjuntos comprovados. Uma
+// partição sem histórico impede atribuir idade conhecida à base inteira.
+export function lastCompleteTimestamp(value) {
+  const datasets = value?.coleta_frescor?.datasets;
+  if (!datasets || !Object.keys(datasets).length) return undefined;
+  const dates = Object.values(datasets).map(item => item?.last_complete_at ? new Date(item.last_complete_at) : undefined);
+  if (dates.some(date => !date || Number.isNaN(date.getTime()))) return undefined;
+  return new Date(Math.min(...dates.map(date => date.getTime())));
+}
+
 // Percorre somente recipientes de metadados presentes nos coletores.
 export function internalTimestamp(value) {
   const keys = new Set(["iso", "atualizado_em", "ultima_atualizacao", "data_atualizacao", "coleta_iso", "coletado_em", "data_coleta", "gerado_em"]);

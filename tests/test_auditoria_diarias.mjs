@@ -1,9 +1,34 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import vm from "node:vm";
 import { avaliarDetalhamentoDiarias } from "../scripts/lib/audit-diarias.mjs";
+import { internalTimestamp, lastCompleteTimestamp } from "../scripts/lib/source-freshness.mjs";
 
 const AUDIT = fs.readFileSync(new URL("../scripts/audit-data-quality.mjs", import.meta.url), "utf8");
+
+test("auditoria distingue fallback federal da última coleta completa comprovada", () => {
+  const code = AUDIT.slice(AUDIT.indexOf("function sourceHealthMetadata("), AUDIT.indexOf("const items = [];"));
+  const federal = { _preservado: true, atualizado_em: "2026-09-14T00:00:00Z", status_fontes: { emendas: { status: "ok" } } };
+  const run = () => vm.runInNewContext(`${code}; buildSourceStatus()`, {
+    domainConfig: [["federal", "Federal", federal, 2]], chunks: {},
+    internalTimestamp, lastCompleteTimestamp,
+    daysSince: date => date ? (Date.parse("2026-09-14T00:00:00Z") - date.getTime()) / 86400000 : NaN,
+  }).domains.federal;
+  assert.equal(run().status, "preserved");
+  assert.equal(run().source_updated_at, null);
+  federal.coleta_frescor = { checked_at: "2026-09-14T00:00:00Z", datasets: {
+    emendas: { last_complete_at: "2026-09-01T00:00:00Z" },
+    convenios: { last_complete_at: "2026-09-10T00:00:00Z" },
+  } };
+  assert.equal(run().status, "preserved");
+  assert.equal(run().age_days, 13);
+  assert.equal(run().checked_at, "2026-09-14T00:00:00.000Z");
+  assert.match(run().reason, /última coleta completa comprovada/);
+  federal._preservado = false;
+  federal.coleta_frescor.datasets.emendas.status = "unknown";
+  assert.equal(run().status, "unknown");
+});
 
 test("auditoria carrega o chunk de diarias (nao silencia como lista vazia)", () => {
   assert.match(AUDIT, /diarias:\s*readJson\("diarias"\)/);

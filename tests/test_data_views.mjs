@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { prefeituraPainel } from "../scripts/lib/dados-painel.mjs";
-import { internalTimestamp } from "../scripts/lib/source-freshness.mjs";
+import { internalTimestamp, lastCompleteTimestamp } from "../scripts/lib/source-freshness.mjs";
 
 test("base leve preserva todos os contratos, cruzamentos e campos futuros", () => {
   const original = { contratos: [{ numero: "001", valor: 12 }], emendas_cruzadas: [{ valor_pago_total: 6 }], novo_campo: { registros: [1, 2] }, frota: [{ placa: "ABC" }] };
@@ -62,6 +62,19 @@ test("data de negócio não rejuvenesce fonte sem carimbo de coleta", () => {
 
 test("metadados anuais usam a coleta mais recente independentemente da ordem", () => {
   assert.equal(internalTimestamp({ 2025: { coletado_em: "2026-08-01" }, 2026: { coletado_em: "2026-09-01" } }).toISOString(), "2026-09-01T00:00:00.000Z");
+});
+
+test("fonte preservada mantém a idade do conjunto completo mais antigo", () => {
+  const payload = { atualizado_em: "2026-09-14", coleta_frescor: { datasets: {
+    contratos: { last_complete_at: "2026-09-01T00:00:00Z" },
+    frota: { last_complete_at: "2026-09-10T00:00:00Z" },
+  } } };
+  assert.equal(lastCompleteTimestamp(payload).toISOString(), "2026-09-01T00:00:00.000Z");
+  payload.coleta_frescor.datasets.frota.last_complete_at = null;
+  assert.equal(lastCompleteTimestamp(payload), undefined);
+  payload.coleta_frescor.datasets.frota.last_complete_at = "invalida";
+  assert.equal(lastCompleteTimestamp(payload), undefined);
+  assert.equal(lastCompleteTimestamp({ atualizado_em: "2026-09-14" }), undefined);
 });
 
 test("checkout novo reconstrói fallback e incorpora atualizações de chunks", () => {

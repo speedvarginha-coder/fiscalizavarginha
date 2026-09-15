@@ -613,6 +613,9 @@ def _fallback(silencioso: bool = False) -> dict:
 
 def salvar(payload: dict | None = None) -> dict:
     payload = payload or coletar()
+    from coleta_frescor import registrar_frescor_federal
+    anterior = _fallback(silencioso=True)
+    registrar_frescor_federal(payload, anterior)
     out = DATA / "federal.json"
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     chunks_dir = DATA / "chunks"

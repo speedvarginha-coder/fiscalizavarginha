@@ -149,6 +149,9 @@ docs/orcamento-varginha/**/*.pdf
 # Os entregáveis finais ficam em docs/pntp/solicitacoes-portal/.
 tmp/
 
+# Restos de troca atômica: privados, regeneráveis e excluídos do pacote.
+painel-cidadao/emendas/.data.rollback-anterior-*/
+
 # Registros brutos do Avalie: contem hash de IP, hash de conta e o sal
 avalie_dados/
 

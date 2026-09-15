@@ -39,6 +39,7 @@ import urllib.request
 from pathlib import Path
 from collections import Counter, defaultdict
 from emendas_documentos import enriquecer_emendas
+from coleta_frescor import registrar_frescor, registrar_frescor_federal
 
 # Garante que o stdout aceite UTF-8 no Windows (cp1252 é o padrão).
 try:
@@ -119,6 +120,13 @@ def _write_json_atomic(path: Path, payload) -> None:
 
 def _save(name: str, payload) -> None:
     agora = dt.datetime.now().astimezone().isoformat(timespec="seconds")
+    if name == "federal.json" and isinstance(payload, dict) and payload:
+        registrar_frescor_federal(payload, _load_existing(name, {}), agora)
+    if name in ("prefeitura.json", "camara_betha.json") and isinstance(payload, dict) and payload:
+        campos = ("contratos", "obras", "frota") if name == "prefeitura.json" else ("contratos",)
+        registrar_frescor(payload, _load_existing(name, {}), {
+            campo: payload.get(f"{campo}_status_coleta", "unknown") for campo in campos
+        }, agora)
     if name in _CHUNKS_CARIMBO and isinstance(payload, dict) and payload:
         payload.setdefault("coletado_em", agora)
     elif name == "camara_anos.json" and isinstance(payload, dict):

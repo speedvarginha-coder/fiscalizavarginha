@@ -59,6 +59,7 @@ const optionalChunks = [
   // passou a grava-lo; release anterior a isso nao pode reprovar.
   "pessoal_resumo",
   "prefeitura_painel",
+  "prefeitura_frota",
   // Reconciliacao entre o registro contabil da Prefeitura e as bases de
   // origem. Opcional porque depende de a Prefeitura publicar os relatorios
   // no portal; a ausencia deles nao pode reprovar um release.

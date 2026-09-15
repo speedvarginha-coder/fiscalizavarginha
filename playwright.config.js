@@ -10,6 +10,9 @@ module.exports = defineConfig({
   // 1 worker sempre: a suite carrega bases pesadas via file:// e 2 workers
   // disputando CPU geravam falhas intermitentes (timeouts falsos).
   workers: 1,
+  // A inicialização aguarda até 45s; o teste também precisa concluir as ações
+  // e encerrar o contexto, sem ser cancelado pelo padrão de 30s.
+  timeout: 90_000,
   reporter: [["list"], ["html", { open: "never" }]],
 
   webServer: process.env.FISCALIZA_MANAGED_TEST_SERVER === "1" ? undefined : {
@@ -23,7 +26,7 @@ module.exports = defineConfig({
     baseURL,
     actionTimeout: 10_000,
     navigationTimeout: 15_000,
-    trace: "on-first-retry",
+    trace: "retain-on-failure",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
   },

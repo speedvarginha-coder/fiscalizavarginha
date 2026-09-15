@@ -44,6 +44,7 @@ $financialBackupFiles = @(
   "painel-cidadao\data\chunks\emendas_prefeitura.json",
   "painel-cidadao\data\chunks\home_resumo.json",
   "painel-cidadao\data\chunks\prefeitura_painel.json",
+  "painel-cidadao\data\chunks\prefeitura_frota.json",
   "painel-cidadao\data\diarias.json",
   "painel-cidadao\data\federal.json",
   "painel-cidadao\data\manifest.json",

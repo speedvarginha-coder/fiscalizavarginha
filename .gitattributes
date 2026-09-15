@@ -1,0 +1,2 @@
+# Mantém o CSS legível, sem o byte CR adicional em cada linha no pacote.
+painel-cidadao/style.css text eol=lf
