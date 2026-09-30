@@ -1,0 +1,13 @@
+#!/bin/sh
+# Bloqueia blobs grandes (um push com blob >100 MB ja travou o projeto 19 dias).
+LIMITE=$((20 * 1024 * 1024))
+ruim=0
+for f in $(git diff --cached --name-only --diff-filter=AM); do
+  [ -f "$f" ] || continue
+  t=$(wc -c < "$f")
+  if [ "$t" -gt "$LIMITE" ]; then
+    echo "BLOQUEADO: $f tem $((t / 1048576)) MB (limite 20 MB). Tire do staging: git reset HEAD -- \"$f\""
+    ruim=1
+  fi
+done
+exit $ruim
