@@ -237,7 +237,7 @@
       const obraEngenharia = /obra|engenharia|manuten[cç][aã]o de ve[ií]culo/i.test(obj);
       const limite2026 = obraEngenharia ? 130984.20 : 65492.11;
       if (String(data).startsWith("2026-") && valor >= limite2026) {
-        pontos.push(`O valor alcança ${brl(limite2026)}, referência de 2026 para dispensa por valor nesta categoria. Isso não torna a contratação irregular: confira o fundamento legal informado no processo.`);
+        pontos.push(`O valor alcança ${fmtBRL(limite2026)}, referência de 2026 para dispensa por valor nesta categoria. Isso não torna a contratação irregular: confira o fundamento legal informado no processo.`);
       }
     }
     if (!c.data_fim) pontos.push("Sem data de fim/vigência registrada.");

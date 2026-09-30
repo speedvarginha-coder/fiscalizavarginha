@@ -157,3 +157,4 @@ avalie_dados/
 
 # Artefato incremental do TypeScript: gerado a cada build, nunca revisado.
 *.tsbuildinfo
+painel-cidadao/.fiscaliza_rl/

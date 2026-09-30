@@ -45,6 +45,8 @@ $financialBackupFiles = @(
   "painel-cidadao\data\chunks\home_resumo.json",
   "painel-cidadao\data\chunks\prefeitura_painel.json",
   "painel-cidadao\data\chunks\prefeitura_frota.json",
+  "painel-cidadao\data\chunks\auditoria_dados.json",
+  "painel-cidadao\data\chunks\status_fontes.json",
   "painel-cidadao\data\diarias.json",
   "painel-cidadao\data\federal.json",
   "painel-cidadao\data\manifest.json",
@@ -160,6 +162,7 @@ try {
   $sourceStatus.reconciliacao = if ($code -eq 0) { "ok" } else { "preservado" }
 
   Invoke-FinancialStep "Auditando emendas federais e estaduais." "python" @("-u", "audit_emendas.py") $emendas | Out-Null
+  Invoke-FinancialStep "Atualizando cobertura e datas reais das fontes." "npm.cmd" @("run", "data:audit") $root | Out-Null
   Invoke-FinancialStep "Regenerando contexto factual do site." "npm.cmd" @("run", "data:chat") $root | Out-Null
   Invoke-FinancialStep "Sincronizando bundle e manifesto." "npm.cmd" @("run", "data:bundle") $root | Out-Null
   Invoke-FinancialStep "Validando schemas financeiros." "npm.cmd" @("run", "data:schema") $root | Out-Null
@@ -167,7 +170,7 @@ try {
 
   $state = [ordered]@{
     executado_em = (Get-Date).ToString("o")
-    status = "sucesso"
+    status = if ($sourceStatus.Values -contains "preservado") { "parcial" } else { "sucesso" }
     fontes = $sourceStatus
     whatsapp = "fora_do_escopo"
   }

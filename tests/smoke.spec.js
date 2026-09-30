@@ -556,6 +556,8 @@ test.describe("Placar do dinheiro", () => {
     await gotoReady(page, fileUrl("prefeitura.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
     await page.locator('.pref-tab[data-pref-tab="frota"]').first().click();
+    await page.getByRole("button", { name: "Carregar veículos e despesas da frota" }).click();
+    await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.prefeitura_frota), null, { timeout: 90000 });
     const painel = page.locator("#frotaBlock");
     await expect(painel).toContainText(/Frota municipal/i);
     await expect(painel).toContainText(/gastos vinculados auditáveis|gastos vinculados/i);
@@ -569,58 +571,11 @@ test.describe("Placar do dinheiro", () => {
     await page.waitForTimeout(2000);
     const cards = page.locator("#placarCamara .placar-card");
     await expect(cards).toHaveCount(4);
-  });
-
-  test("Câmara mostra indice de relevancia logo apos a apresentacao", async ({ page }) => {
-    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(3000);
-    const layout = await page.evaluate(() => {
-      const header = document.querySelector(".bigheader");
-      const spotlight = document.querySelector(".camara-index-spotlight");
-      const indice = document.querySelector("#indiceRelevancia");
-      const placar = document.querySelector("#placarCamara");
-      return {
-        hasSpotlight: Boolean(spotlight),
-        indiceInsideSpotlight: Boolean(indice?.closest(".camara-index-spotlight")),
-        indiceDataSection: indice?.closest("[data-csec]")?.getAttribute("data-csec") || "",
-        afterHeader: Boolean(header && spotlight && (header.compareDocumentPosition(spotlight) & Node.DOCUMENT_POSITION_FOLLOWING)),
-        beforePlacar: Boolean(spotlight && placar && (spotlight.compareDocumentPosition(placar) & Node.DOCUMENT_POSITION_FOLLOWING)),
-      };
-    });
-    expect(layout.hasSpotlight).toBeTruthy();
-    expect(layout.indiceInsideSpotlight).toBeTruthy();
-    expect(layout.indiceDataSection).toBe("");
-    expect(layout.afterHeader).toBeTruthy();
-    expect(layout.beforePlacar).toBeTruthy();
-  });
-
-  test("Câmara mostra índice de relevância auditável", async ({ page }) => {
-    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2500);
-    await expect(page.locator("#indiceRelevancia .indice-card").first()).toBeAttached();
-    await expect(page.locator("#indiceRelevancia")).toContainText("confianca/cobertura");
-    await expect(page.locator('#indiceRelevancia [data-indice-perfil="fiscalizador"]')).toBeAttached();
-  });
-
-  test("Câmara - clicar na nota abre modal explicando os pesos (a conta bate)", async ({ page }) => {
-    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2500);
-    await page.locator('.csec-btn[data-go="vereadores"]').click();
-    const card = page.locator("#indiceRelevancia .indice-card").first();
-    const nome = (await card.locator("h4").innerText()).trim();
-    const scoreBtn = card.locator(".indice-score-open");
-    const score = (await scoreBtn.locator("strong").innerText()).trim();
-    await scoreBtn.click();
-    const nm = page.locator("#modalFiscaliza .nota-modal");
-    await expect(nm).toBeVisible();
-    await expect(nm.locator(".nota-modal__nome")).toContainText(nome);
-    // a nota grande do modal == a nota do card (a conta dos pesos fecha no mesmo valor)
-    await expect(nm.locator(".nota-modal__big strong").first()).toHaveText(score);
-    await expect(nm).toContainText("Como cada dimensao foi medida");
-    await expect(nm).toContainText("= Nota de Atividade");
-    await expect(nm).toContainText("pesam zero");
-    await page.locator("#modalFiscaliza .modal__close").click();
-    await expect(page.locator("#modalFiscaliza")).toBeHidden();
+    await expect(page.locator("#indiceRelevancia, #vereadores, #resumoSemanalBlock")).toHaveCount(0);
+    await expect(page.locator('.csec-btn[data-go="atividade"]')).toHaveCount(0);
+    await expect(page.locator("#stats")).toContainText("Valor das emendas");
+    await expect(page.locator("#stats")).not.toContainText("Matérias legislativas");
+    await expect(page.locator("#destaque")).not.toContainText("ranking");
   });
 
   test("Câmara mostra remuneração dos vereadores com fonte", async ({ page }) => {
@@ -787,67 +742,12 @@ test.describe("Banner de boas-vindas (onboarding)", () => {
   });
 });
 
-test.describe("Classificação cidadã de matérias", () => {
-  test("dados têm grau/tema e materiaCard rendeza selo + por que acompanhar", async ({ page }) => {
-    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForFunction(() => Boolean(window.FISCALIZA && window.FISCALIZA.materiaCard && window.FISCALIZA_DATA?.camara_anos), null, { timeout: 15_000 });
-    const r = await page.evaluate(() => {
-      const anos = (window.FISCALIZA_DATA && window.FISCALIZA_DATA.camara_anos) || {};
-      const ano = Object.keys(anos)[0];
-      const mats = (anos[ano] && anos[ano].materias) || [];
-      const classificadas = mats.filter((m) => m.grau && m.tema).length;
-      // Card de uma matéria de alto impacto, se houver
-      const esc = (s) => String(s == null ? "" : s);
-      const alta = mats.find((m) => m.grau === "alto") || mats[0];
-      const html = window.FISCALIZA.materiaCard ? window.FISCALIZA.materiaCard(alta, esc) : "";
-      return { total: mats.length, classificadas, grau: alta && alta.grau, html };
-    });
-    expect(r.total).toBeGreaterThan(0);
-    expect(r.classificadas).toBe(r.total); // todas classificadas
-    expect(r.html).toContain("mat-selo");
-    expect(r.html).toMatch(/Por que acompanhar|Classificada como simbólica/);
-  });
-});
-
-test.describe("Resumo Semanal", () => {
-  test("bloco renderiza e mostra matérias ou estado vazio", async ({ page }) => {
-    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2500);
-    await page.locator('.csec-btn[data-go="atividade"]').click();
-    const block = page.locator("#resumoSemanalBlock");
-    await expect(block).toBeAttached();
-    // Feed ou empty-state — um dos dois está visível
-    const feed = page.locator("#resumoSemanalFeed");
-    const empty = page.locator("#resumoSemanalEmpty");
-    const feedVisible  = await feed.isVisible().catch(() => false);
-    const emptyVisible = await empty.isVisible().catch(() => false);
-    expect(feedVisible || emptyVisible).toBeTruthy();
-  });
-
-  test("filtro de período 'Este mês' retorna matérias", async ({ page }) => {
-    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2500);
-    await page.locator('.csec-btn[data-go="atividade"]').click();
-    await page.locator('#resumoPeriodoChips .rs-chip[data-periodo="mes"]').click();
-    await page.waitForTimeout(300);
-    const counter = page.locator("#resumoContador");
-    await expect(counter).toBeAttached();
-  });
-
-  test("chips de grau filtram por impacto", async ({ page }) => {
-    await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
-    await page.waitForTimeout(2500);
-    await page.locator('.csec-btn[data-go="atividade"]').click();
-    // Primeiro expande para 'Este mês' para ter dados
-    await page.locator('#resumoPeriodoChips .rs-chip[data-periodo="mes"]').click();
-    await page.waitForTimeout(300);
-    // Filtra só ALTO
-    await page.locator('#resumoGrauChips .rs-chip[data-grau="alto"]').click();
-    await page.waitForTimeout(300);
-    // Não deve haver erro no console (já coberto por smoke geral)
-    const counter = page.locator("#resumoContador");
-    await expect(counter).toBeAttached();
-  });
+test("Câmara financeira não carrega matérias legislativas ou ranking", async ({ page }) => {
+  const requests = [];
+  page.on("request", req => requests.push(req.url()));
+  await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
+  await expect(page.locator("#indiceRelevancia, #vereadores")).toHaveCount(0);
+  expect(requests.some(url => url.includes("camara_anos.json"))).toBe(false);
 });
 
 test.describe("Watchlist", () => {
@@ -942,11 +842,11 @@ test.describe("Rodapé padronizado", () => {
   const RODAPE = [
     "index.html", "atualizacoes.html", "monitoramento.html", "prefeitura.html",
     "fundacao.html", "camara.html", "emendas/index.html", "relatorios.html",
-    "pessoal.html", "avalie.html", "sobre.html", "conformidade.html", "cobrar.html",
+    "pessoal.html", "sobre.html", "conformidade.html", "cobrar.html",
   ];
   const PAGS = [
     "index", "atualizacoes", "monitoramento", "prefeitura", "fundacao", "camara",
-    "relatorios", "pessoal", "avalie", "sobre", "conformidade", "cobrar", "marcadores",
+    "relatorios", "pessoal", "sobre", "conformidade", "cobrar", "marcadores",
   ];
   for (const p of PAGS) {
     test(`${p}: navegação, fontes e data dinâmica`, async ({ page }) => {

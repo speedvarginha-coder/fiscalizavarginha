@@ -202,7 +202,6 @@ const chunks = {
   federal: readJson("federal"),
   cnpjs: readJson("cnpjs"),
   fontesEmendas2026: readJson("fontes_emendas_2026"),
-  indice: readJson("indice_relevancia"),
   diario: readJson("diario"),
   diarias: readJson("diarias"),
   camaraAnos: readJson("camara_anos"),
@@ -257,7 +256,6 @@ const domainConfig = [
   ["federal", "Recursos federais / Transferegov", chunks.federal, 2],
   ["cnpjs", "CNPJs", chunks.cnpjs, 31],
   ["fontes_emendas_2026", "Fontes de emendas 2026", chunks.fontesEmendas2026, 31],
-  ["indice_relevancia", "Indice de relevancia", chunks.indice, 31],
   ["diario", "Diario Oficial", chunks.diario, 5],
   ["camara_anos", "Camara/SAPL", chunks.camaraAnos, 7],
   ["publicacoes_estruturadas", "Publicacoes da Camara", chunks.publicacoesCamara, 7],
@@ -289,16 +287,6 @@ function sourceHealthMetadata(name, value) {
       .map((key) => [key, value[key]]),
   );
 
-  // O indice declara a cobertura por ano fora dos campos comuns.
-  if (name === "indice_relevancia" && value.anos) {
-    metadata.anos = Object.fromEntries(
-      Object.entries(value.anos).map(([year, item]) => [year, {
-        status: item?.status,
-        cobertura_pct: item?.cobertura_pct,
-        confianca_dados_pct: item?.confianca_dados_pct,
-      }]),
-    );
-  }
   return metadata;
 }
 
@@ -584,23 +572,6 @@ if (pessoalStatusCobertura === "preservada_por_cobertura") {
   );
 }
 
-if (chunks.indice?.anos) {
-  const coverages = Object.values(chunks.indice.anos)
-    .map((year) => Number(year?.cobertura_pct))
-    .filter((n) => Number.isFinite(n));
-  const minCoverage = Math.min(...coverages);
-  if (Number.isFinite(minCoverage) && minCoverage < 100) {
-    add(
-      "warning",
-      "indice-parcial",
-      "Indice parlamentar parcial",
-      `A menor cobertura automatica do indice e ${minCoverage}%. Presenca, comissoes e efetividade ainda dependem de fonte confiavel.`,
-      "Nao tratar o ranking como definitivo; publicar sempre a cobertura junto da nota.",
-      "indice_relevancia.json",
-    );
-  }
-}
-
 if (chunks.pncp?.observacao) {
   add(
     "info",
@@ -869,11 +840,17 @@ for (const [nome, rotulo] of [
   if (Number.isNaN(quando.getTime())) continue;
   const dias = Math.floor((Date.now() - quando.getTime()) / 86400000);
   if (dias < DIAS_FONTE_CONGELADA) continue;
+  const relatorio2026 = nome === "emendas_estaduais_normalizadas"
+    ? (meta.fontesComplementares || []).find(fonte => fonte?.nome?.includes("2026"))
+    : null;
+  const detalhe2026 = relatorio2026
+    ? ` Para as indicacoes aptas de 2026, a execucao financeira usa o relatorio complementar de ${relatorio2026.referencia || "data nao informada"}.`
+    : "";
   add(
     "warning",
     `fonte-congelada-${nome.replace(/_/g, "-")}`,
     `Fonte das ${rotulo} sem republicacao ha ${dias} dias`,
-    `O arquivo oficial usado como origem (${meta.fonteArquivo || "arquivo da fonte"}) nao e republicado desde ${quando.toISOString().slice(0, 10)}. A coleta roda todo dia e continua integra, mas baixar de novo um arquivo que nao mudou nao torna o dado atual: o que esta publicado aqui reflete a ultima vez que o orgao de origem publicou, nao a situacao de hoje.`,
+    `O arquivo consolidado (${meta.fonteArquivo || "arquivo da fonte"}) nao e republicado desde ${quando.toISOString().slice(0, 10)}.${detalhe2026} A coleta diaria nao altera a data dos arquivos da fonte oficial.`,
     "Cobrar do orgao de origem a republicacao do arquivo e conferir na fonte primaria antes de usar estes numeros como atuais.",
     `${nome}.js`,
     { blocksPipeline: false },

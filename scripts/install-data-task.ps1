@@ -14,7 +14,7 @@
   [switch]$GitSync,
   [switch]$SkipSlowAudits,
 
-  [ValidateSet("Full", "Sapl", "NoHeavy")]
+  [ValidateSet("Full", "Sapl", "NoHeavy", "Financeiro")]
   [string]$CollectorMode = "Full",
 
   [string]$TaskName = "Fiscaliza Varginha - Atualizar dados"

@@ -3,9 +3,28 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import vm from "node:vm";
 import { execFileSync } from "node:child_process";
 import { prefeituraPainel } from "../scripts/lib/dados-painel.mjs";
-import { internalTimestamp, lastCompleteTimestamp } from "../scripts/lib/source-freshness.mjs";
+import { collectionAgeHours, internalTimestamp, lastCompleteTimestamp } from "../scripts/lib/source-freshness.mjs";
+
+test("vigia usa a coleta comprovada e rejeita data ausente, inválida ou futura", () => {
+  const now = new Date("2026-09-30T12:00:00Z");
+  assert.equal(collectionAgeHours({ source_updated_at: "2026-09-29T12:00:00Z" }, now), 24);
+  for (const timestamp of [null, "inválida", "2026-10-01T12:00:00Z"]) {
+    assert.equal(collectionAgeHours({ source_updated_at: timestamp }, now), Infinity);
+  }
+});
+
+test("interface recalcula a idade e preserva estados de falha e parcialidade", () => {
+  const context = { window: { FISCALIZA: {} } };
+  vm.runInNewContext(fs.readFileSync(new URL('../painel-cidadao/modules/utils.js', import.meta.url), 'utf8'), context);
+  const status = context.window.FISCALIZA.utils.statusFonteAtual;
+  const now = Date.parse('2026-09-30T12:00:00Z');
+  assert.equal(status({ status: 'ok', source_updated_at: '2026-09-01T12:00:00Z', max_age_days: 15 }, now).status, 'stale');
+  assert.equal(status({ status: 'ok', source_updated_at: null }, now).status, 'unknown');
+  for (const value of ['preserved', 'partial', 'failed']) assert.equal(status({ status: value }, now).status, value);
+});
 
 test("base leve preserva todos os contratos, cruzamentos e campos futuros", () => {
   const original = { contratos: [{ numero: "001", valor: 12 }], emendas_cruzadas: [{ valor_pago_total: 6 }], novo_campo: { registros: [1, 2] }, frota: [{ placa: "ABC" }] };

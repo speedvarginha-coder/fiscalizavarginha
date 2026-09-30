@@ -54,7 +54,6 @@ def rebuild():
     obras_educacao = load_json("obras_educacao.json")
     receitas = load_json("receitas.json")
     sancoes_fornecedores = load_json("sancoes_fornecedores.json")
-    indice_relevancia = load_json("indice_relevancia.json")
     # mudancas_coleta é gerado pelo pipeline JS (generate-data-snapshots.mjs);
     # não existe em data/ — ler de data/chunks/ para preservar caso já exista.
     _mudancas_chunk = DATA_DIR / "chunks" / "mudancas_coleta.json"
@@ -96,7 +95,6 @@ def rebuild():
         "receitas.json": receitas,
         "sancoes_fornecedores.json": sancoes_fornecedores,
         "mudancas_coleta.json": mudancas_coleta,
-        "indice_relevancia.json": indice_relevancia,
     }
     
     for filename, payload in chunk_mapping.items():
@@ -161,7 +159,6 @@ def rebuild():
         "receitas": receitas,
         "sancoes_fornecedores": sancoes_fornecedores,
         "mudancas_coleta": mudancas_coleta,
-        "indice_relevancia": indice_relevancia,
     }
     content = "/* Gerado por recover_data.py — não editar à mão. */\n"
     content += "window.FISCALIZA_DATA = " + json.dumps(js_payload, ensure_ascii=False, indent=2) + ";\n"

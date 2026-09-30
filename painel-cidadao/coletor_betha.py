@@ -27,6 +27,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import zipfile
+import unicodedata
 from collections import defaultdict
 from pathlib import Path
 from typing import Optional
@@ -340,28 +341,71 @@ def _decode_export_payload(raw: str) -> tuple[bytes, str, Optional[str]]:
     raise BethaExportError("formato de resposta de dados abertos nao reconhecido")
 
 
+def _csv_rows(payload: bytes) -> list[dict]:
+    try:
+        text = payload.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        text = payload.decode("cp1252")
+    try:
+        dialect = csvmod.Sniffer().sniff(text.splitlines()[0], delimiters=",;")
+    except csvmod.Error:
+        dialect = csvmod.excel
+    # Cabeçalhos conferidos na exportação oficial de contratos da Betha.
+    aliases = {
+        "entidade": "nomeEntidade", "ano": "ano", "ano do processo": "anoLicitacao",
+        "data de assinatura": "dataAssinatura", "numero do contrato": "numero",
+        "n processo": "numeroProcesso", "modalidade da licitacao": "modalidadeLicitacao",
+        "tipo de contrato": "tipo", "objeto do contrato": "objeto", "contratado": "nomeContratado",
+        "cnpj/cpf contratado": "cnpjCpfContratado", "vigencia inicial": "dataVigenciaInicial",
+        "vigencia final": "dataVigenciaFinal", "situacao": "situacao", "valor final r$": "valorFinal",
+        "nmero do contrato": "numero", "modalidade da licitao": "modalidadeLicitacao",
+        "vigncia inicial": "dataVigenciaInicial", "vigncia final": "dataVigenciaFinal", "situao": "situacao",
+        "objeto": "objeto", "modalidade": "modalidade", "valor estimado": "valorEstimado",
+        "data da abertura": "dataAbertura", "data de publicao": "dataPublicacao",
+    }
+    def key(value):
+        normal = "".join(c for c in unicodedata.normalize("NFKD", value.strip().lower()) if not unicodedata.combining(c)).replace("\ufffd", "")
+        return aliases.get(normal, value)
+    reader = csvmod.reader(io.StringIO(text), delimiter=dialect.delimiter)
+    header = next(reader, [])
+    rows = []
+    active = True
+    for cells in reader:
+        if cells == header:
+            active = True
+            continue
+        if cells == ["- - - - -"]:
+            active = False
+            continue
+        if not active or not cells:
+            continue
+        if len(cells) != len(header):
+            raise BethaExportError("Linha CSV incompleta ou incompatível com o cabeçalho principal")
+        rows.append({key(k): v for k, v in zip(header, cells)})
+    return rows
+
+
 def _parse_export(payload: bytes, consulta_id: int,
                   suggested_name: Optional[str] = None) -> dict:
     """Normaliza ZIP ou CSV para o contrato historico do coletor."""
     if payload.startswith(b"PK"):
         zf = zipfile.ZipFile(io.BytesIO(payload))
-        main_name = next((n for n in zf.namelist() if n.startswith("959_")), None)
+        main_name = next((n for n in zf.namelist() if n.startswith(f"{consulta_id}_")), None)
+        if not main_name:
+            main_name = next((n for n in zf.namelist() if n.startswith("959_")), None)
         if not main_name:
             main_name = next((n for n in zf.namelist() if n.lower().endswith(".csv")), None)
         if not main_name:
             return {"main": [], "main_filename": None, "files_in_zip": len(zf.namelist()),
                     "linked": {}, "linked_rows": {}}
-        csv_text = zf.read(main_name).decode("utf-8-sig", errors="replace")
-        rows = list(csvmod.DictReader(io.StringIO(csv_text)))
+        rows = _csv_rows(zf.read(main_name))
         linked = {}
         linked_rows = {}
         for name in zf.namelist():
             if name == main_name or not name.lower().endswith(".csv"):
                 continue
             try:
-                sub = list(csvmod.DictReader(io.StringIO(
-                    zf.read(name).decode("utf-8-sig", errors="replace")
-                )))
+                sub = _csv_rows(zf.read(name))
                 if sub:
                     linked[name] = sub[0]
                     linked_rows[name] = sub
@@ -371,13 +415,7 @@ def _parse_export(payload: bytes, consulta_id: int,
                 "files_in_zip": len(zf.namelist()), "linked": linked,
                 "linked_rows": linked_rows}
 
-    text = payload.decode("utf-8-sig", errors="replace")
-    sample = text[:4096]
-    try:
-        dialect = csvmod.Sniffer().sniff(sample, delimiters=",;")
-    except csvmod.Error:
-        dialect = csvmod.excel
-    rows = list(csvmod.DictReader(io.StringIO(text), dialect=dialect))
+    rows = _csv_rows(payload)
     if not rows or not rows[0]:
         raise BethaExportError("CSV de dados abertos vazio ou sem cabecalho")
     return {
@@ -609,26 +647,30 @@ def todos_credores_generico(token: str, consulta_id: int,
                              portal_hash: str = PORTAL_HASH,
                              batch: int = 200) -> list[dict]:
     """Baixa TODOS os credores de qualquer consulta/portal (Prefeitura ou Câmara)."""
+    if batch <= 0:
+        raise ValueError("batch deve ser positivo")
     out: list[dict] = []
     offset = 0
     total: Optional[int] = None
+    renewed_offset: Optional[int] = None
     while True:
-        res = _api(
-            "POST",
-            f"/busca-textual/{consulta_id}",
-            token,
-            body={},
-            params={
-                "sortBy": "valorPagamentoAno",
-                "sortDirection": "DESC",
-                "offset": offset,
-                "limit": batch,
-                "hiperlink": "false",
-            },
-            portal_hash=portal_hash,
-        )
+        try:
+            res = _api(
+                "POST", f"/busca-textual/{consulta_id}", token, body={},
+                params={"sortBy": "valorPagamentoAno", "sortDirection": "DESC",
+                        "offset": offset, "limit": batch, "hiperlink": "false"},
+                portal_hash=portal_hash,
+            )
+        except urllib.error.HTTPError as error:
+            if error.code != 401 or renewed_offset == offset:
+                raise
+            renewed_offset = offset
+            token = get_token(force=True, portal_hash=portal_hash)
+            continue
         if total is None:
-            total = res.get("totalHits", 0)
+            total = res.get("totalHits")
+            if not isinstance(total, int) or total < 0:
+                raise BethaExportError("totalHits ausente ou invalido na paginacao de credores")
             print(f"  -> Total de registros: {total:,}")
         hits = res.get("hits", [])
         if not hits:
@@ -639,6 +681,8 @@ def todos_credores_generico(token: str, consulta_id: int,
             break
         if offset % 1000 == 0:
             print(f"  baixado {offset}/{total}…")
+    if len(out) != total:
+        raise BethaExportError(f"Paginacao incompleta de credores: {len(out)}/{total}")
     return out
 
 
@@ -646,45 +690,7 @@ def todos_credores(token: str, batch: int = 200) -> list[dict]:
     """Baixa TODOS os credores paginando até o fim. Retorna lista plana.
     Cada item = (ano × entidade × credor) — credor pode aparecer múltiplas vezes
     (um registro por ano e por entidade pagadora)."""
-    out: list[dict] = []
-    offset = 0
-    total: Optional[int] = None
-    while True:
-        try:
-            res = _api(
-                "POST",
-                f"/busca-textual/{CONSULTA_DESPESAS_POR_CREDOR}",
-                token,
-                body={},
-                params={
-                    "sortBy": "valorPagamentoAno",
-                    "sortDirection": "DESC",
-                    "offset": offset,
-                    "limit": batch,
-                    "hiperlink": "false",
-                },
-            )
-        except urllib.error.HTTPError as e:
-            # O token expira durante o download longo (10k+ registros). Renova
-            # e retenta o mesmo offset em vez de abortar a coleta inteira.
-            if e.code == 401:
-                print("  AVISO: 401 na paginacao de credores - renovando token Betha…")
-                token = get_token(force=True)
-                continue
-            raise
-        if total is None:
-            total = res.get("totalHits", 0)
-            print(f"  -> Total de registros: {total:,}")
-        hits = res.get("hits", [])
-        if not hits:
-            break
-        out.extend(h["sourceAsMap"] for h in hits)
-        offset += batch
-        if offset >= total:
-            break
-        if offset % 1000 == 0:
-            print(f"  baixado {offset}/{total}…")
-    return out
+    return todos_credores_generico(token, CONSULTA_DESPESAS_POR_CREDOR, batch=batch)
 
 
 # ============================================================

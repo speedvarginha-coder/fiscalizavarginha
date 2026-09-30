@@ -18,6 +18,9 @@ import coletor_betha  # noqa: E402
 
 
 class ObrasDeduplicationTests(unittest.TestCase):
+    def test_betha_placeholder_is_not_a_public_work(self):
+        self.assertEqual(coletor._normaliza_obras_publicas([{}], {}), [])
+
     def test_same_work_is_deduplicated_and_most_complete_record_wins(self):
         linked = {
             "endereco.csv": {
@@ -773,6 +776,10 @@ class BethaEmptyContractsTests(unittest.TestCase):
         def previous_list(_name, field):
             if field == "obras_publicas":
                 return previous_work, "backup.json"
+            if field == "frota":
+                return [{"placa": "ABC1234", "gastos_total": 123}], "backup.json"
+            if field == "licit_andamento":
+                return [{"numero": "7", "valor": 456}], "backup.json"
             return [], None
 
         with patch.object(coletor_betha, "get_token", return_value="token"), \
@@ -786,10 +793,71 @@ class BethaEmptyContractsTests(unittest.TestCase):
             result = coletor._processa_prefeitura([], vigia_rapida=True)
 
         self.assertEqual(result["obras_publicas"], previous_work)
+        self.assertEqual(result["frota"][0]["gastos_total"], 123)
+        self.assertEqual(result["licit_andamento"][0]["valor"], 456)
         self.assertEqual(
             result["obras_status_coleta"],
             "preservada_por_resposta_betha_vazia",
         )
+
+
+class FinancialSourceTests(unittest.TestCase):
+    def test_nested_csv_sections_are_not_contracts_and_escaped_quotes_work(self):
+        csv = ('numero,objeto,valorFinal\n1,"Serviço ""A"", público",10\n'
+               '- - - - -\nItens do contrato\nnumero,objeto\n9,Item\n'
+               '- - - - -\nnumero,objeto,valorFinal\n2,Outro,20\n').encode('utf8')
+        result = coletor_betha._parse_export(csv, 83043)['main']
+        self.assertEqual([r['numero'] for r in result], ['1', '2'])
+        self.assertEqual(result[0]['objeto'], 'Serviço "A", público')
+
+    def test_official_portuguese_csv_preserves_identifier_name_date_and_money(self):
+        csv = ('Número do contrato;Ano;Data de assinatura;Contratado;CNPJ/CPF contratado;Objeto do contrato;Valor final R$\n'
+               '12;2026;30/09/2026;Empresa Árvore;12.345.678/0001-90;Serviço;1.234,56\n').encode('cp1252')
+        rows = coletor_betha._parse_export(csv, 83043)['main']
+        result = coletor._normaliza_contratos(rows)
+        self.assertEqual(result[0]['numero'], '12')
+        self.assertEqual(result[0]['contratado'], 'Empresa Árvore')
+        self.assertEqual(result[0]['data_assinatura'], '2026-09-30')
+        self.assertEqual(result[0]['valor'], 1234.56)
+        self.assertEqual(coletor._normaliza_contratos([{}]), [])
+        self.assertEqual(coletor._normaliza_licitacoes([{}]), [])
+
+    def test_financial_sapl_only_queries_amendments_and_preserves_on_failure(self):
+        previous = [{'numero': '1', 'ano': '2025', 'autor': 'Autora', 'valor_brl': 10}]
+        def existing(name, default):
+            return previous if name == 'emendas.json' else default
+        with patch.object(coletor, '_load_existing', side_effect=existing), \
+                patch.object(coletor, '_sapl_paginate', side_effect=RuntimeError('offline')) as paginate:
+            self.assertEqual(coletor._processa_sapl_financeiro()['emendas'], previous)
+            self.assertEqual(paginate.call_count, 2)
+            for call in paginate.call_args_list:
+                self.assertIn('tipo=26', call.args[0])
+
+
+class CredoresPaginationTests(unittest.TestCase):
+    def test_both_portals_reject_truncated_pages_and_accept_complete_pages(self):
+        for collect in (coletor_betha.todos_credores,
+                        lambda token, batch: coletor_betha.todos_credores_generico(token, 123, batch=batch)):
+            for pages, complete in [
+                ([{"totalHits": 2, "hits": [{"sourceAsMap": {"id": 1}}]}, {"hits": []}], False),
+                ([{"totalHits": 2, "hits": [{"sourceAsMap": {"id": 1}}, {"sourceAsMap": {"id": 2}}]}], True),
+                ([{"totalHits": 0, "hits": []}], True),
+            ]:
+                with patch.object(coletor_betha, "_api", side_effect=pages):
+                    if complete:
+                        self.assertEqual(len(collect("token", batch=2)), pages[0]["totalHits"])
+                    else:
+                        with self.assertRaises(coletor_betha.BethaExportError):
+                            collect("token", batch=2)
+
+    def test_persistent_401_renews_once_and_propagates_error(self):
+        error = urllib.error.HTTPError("https://example.com", 401, "Unauthorized", {}, None)
+        with patch.object(coletor_betha, "_api", side_effect=error) as api, \
+                patch.object(coletor_betha, "get_token", return_value="novo") as renew:
+            with self.assertRaises(urllib.error.HTTPError):
+                coletor_betha.todos_credores("token")
+            self.assertEqual(api.call_count, 2)
+            self.assertEqual(renew.call_count, 1)
 
 
 if __name__ == "__main__":

@@ -31,7 +31,6 @@ const expectedChunks = [
   "fontes_emendas_2026",
   "fundacao_cultural",
   "home_resumo",
-  "indice_relevancia",
   "mudancas_coleta",
   "monitoramento_coletas",
   "pessoal",
@@ -103,7 +102,6 @@ const requiredPublicFiles = [
   "modules/diarias.js",
   "modules/atualizacoes.js",
   "modules/materia-cidada.js",
-  "modules/indice-relevancia.js",
   "modules/onboarding.js",
   "modules/chat-cidadao.js",
   "modules/publicacoes.js",
@@ -360,22 +358,6 @@ function validateDomainShapes(chunks) {
     assertNumber(remuneracao.impacto_anual_estimado_brl, "remuneracao_vereadores.impacto_anual_estimado_brl", 1);
     if (isObject(remuneracao.lei)) {
       assert(typeof remuneracao.lei.url === "string" && /^https?:\/\//.test(remuneracao.lei.url), "remuneracao_vereadores.lei.url deve ser URL oficial");
-    }
-  }
-
-  const indice = chunks.get("indice_relevancia");
-  assertObject(indice, "indice_relevancia");
-  if (isObject(indice)) {
-    assertObject(indice.metodologia, "indice_relevancia.metodologia");
-    assertObject(indice.anos, "indice_relevancia.anos");
-    if (isObject(indice.anos)) {
-      for (const [ano, bloco] of Object.entries(indice.anos)) {
-        assertObject(bloco, `indice_relevancia.anos.${ano}`);
-        if (isObject(bloco)) {
-          assertArray(bloco.ranking, `indice_relevancia.anos.${ano}.ranking`, 1);
-          assertNumber(bloco.cobertura_pct, `indice_relevancia.anos.${ano}.cobertura_pct`, 0);
-        }
-      }
     }
   }
 

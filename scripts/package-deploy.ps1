@@ -65,7 +65,6 @@ New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Nul
   "diarias.js",
   "atualizacoes.js",
   "materia-cidada.js",
-  "indice-relevancia.js",
   "onboarding.js",
   "chat-cidadao.js",
   "publicacoes.js",
@@ -89,14 +88,12 @@ if (Test-Path -LiteralPath $swStage) {
 Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
 Copy-IfExists (Join-Path $source "fonts") (Join-Path $stage "fonts")
 Copy-IfExists (Join-Path $source "docs") (Join-Path $stage "docs")
-Copy-IfExists (Join-Path $source "emendas") (Join-Path $stage "emendas")
 $emendasStage = Join-Path $stage "emendas"
-if (Test-Path $emendasStage) {
-  Get-ChildItem -LiteralPath $emendasStage -Recurse -File -Filter "*.py" |
-    Remove-Item -Force
-  Get-ChildItem -LiteralPath $emendasStage -Recurse -Directory -Filter "__pycache__" |
-    Remove-Item -Recurse -Force
-}
+New-Item -ItemType Directory -Force -Path $emendasStage | Out-Null
+Get-ChildItem -LiteralPath (Join-Path $source "emendas") -File |
+  Where-Object { $_.Extension -in @(".html", ".css", ".js") } |
+  ForEach-Object { Copy-Item -LiteralPath $_.FullName -Destination $emendasStage -Force }
+Copy-IfExists (Join-Path $source "emendas\data") (Join-Path $emendasStage "data")
 Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
 Copy-IfExists (Join-Path $source "data\referencias") (Join-Path $stage "data\referencias")
 # Gerado pelo avalie.php a partir dos votos privados do servidor.
@@ -130,6 +127,12 @@ foreach ($htmlFile in (Get-ChildItem -LiteralPath $stage -Filter '*.html' -File 
   })
   [System.IO.File]::WriteAllText($htmlFile.FullName, $versioned, [System.Text.UTF8Encoding]::new($false))
 }
+$indiceStage = Join-Path $stage "data\chunks\indice_relevancia.json"
+if (Test-Path -LiteralPath $indiceStage) {
+  Remove-Item -LiteralPath $indiceStage -Force
+}
+& node (Join-Path $root "scripts\sanitize-fiscaliza-index.mjs") $stage
+if ($LASTEXITCODE -ne 0) { throw "Falha ao remover o índice legislativo do pacote Fiscaliza." }
 $loaderStage = Join-Path $stage 'data-loader.js'
 $loaderContent = [System.IO.File]::ReadAllText($loaderStage) -replace 'const BUILD_VERSION = "[^"]+";', ('const BUILD_VERSION = "' + $swVersion + '";')
 [System.IO.File]::WriteAllText($loaderStage, $loaderContent, [System.Text.UTF8Encoding]::new($false))
@@ -187,7 +190,12 @@ $codigoSujo = @($sujos | Where-Object {
   $dadosPendentes -notcontains $_ -and $naoRastreados -notcontains $_
 })
 
+$baselineValidada = $false
 if ($codigoSujo.Count -gt 0 -and -not $AllowDirty) {
+  & node (Join-Path $root "scripts\check-code-baseline.mjs")
+  $baselineValidada = $LASTEXITCODE -eq 0
+}
+if ($codigoSujo.Count -gt 0 -and -not $AllowDirty -and -not $baselineValidada) {
   $lista = ($codigoSujo | Select-Object -First 20) -join "`n  - "
   throw @"
 Empacotamento bloqueado: $($codigoSujo.Count) arquivo(s) de codigo com alteracao nao commitada.
@@ -212,7 +220,15 @@ $release = [ordered]@{
   dados_pendentes = @($dadosPendentes)
   codigo_nao_commitado = @($codigoSujo)
   publicado_com_codigo_sujo = ($codigoSujo.Count -gt 0)
+  codigo_corresponde_baseline_validada = $baselineValidada
+  exclusoes_online = @("data.js")
 }
+$hashesOnline = [ordered]@{}
+Get-ChildItem -LiteralPath $stage -Recurse -File | Where-Object { $_.FullName -ne (Join-Path $stage "data.js") } | ForEach-Object {
+  $relative = $_.FullName.Substring(([string]$stage).Length + 1).Replace('\', '/')
+  $hashesOnline[$relative] = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+}
+$release["file_hashes"] = $hashesOnline
 $releaseJson = $release | ConvertTo-Json
 [System.IO.File]::WriteAllText((Join-Path $stage "release.json"), $releaseJson, (New-Object System.Text.UTF8Encoding($false)))
 

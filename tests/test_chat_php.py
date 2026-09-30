@@ -10,6 +10,7 @@ import urllib.error
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+NL = chr(10)
 PHP = shutil.which('php') or ('C:/xampp/php/php.exe' if Path('C:/xampp/php/php.exe').exists() else None)
 
 
@@ -67,6 +68,27 @@ echo json_encode([$a, $b, $c]);
                               "echo json_encode(contarUso('test', 900));", encoding='utf8')
             result = subprocess.run([PHP, str(script)], capture_output=True, text=True, check=True)
             self.assertIsNone(json.loads(result.stdout))
+
+    def test_counter_uses_private_dir_and_falls_back_to_system_temp(self):
+        source = (ROOT / 'painel-cidadao/chat.php').read_text(encoding='utf8')
+        function = source[source.index('function contarUso('):source.index('function verificarContador(')]
+        with tempfile.TemporaryDirectory() as directory:
+            tmp, privado, bloqueado = (Path(directory) / n for n in ('tmp', 'privado', 'bloqueado'))
+            tmp.mkdir()
+            bloqueado.write_text('arquivo, nao diretorio', encoding='utf8')
+            codigo = '<?php' + NL + function.replace('sys_get_temp_dir()', json.dumps(tmp.as_posix())) + f'''
+$GLOBALS['FISCALIZA_RL_DIR'] = {json.dumps(privado.as_posix())};
+$a = contarUso('x', 900);
+$GLOBALS['FISCALIZA_RL_DIR'] = {json.dumps(bloqueado.as_posix())};
+$b = contarUso('y', 900);
+echo json_encode([$a, $b]);
+'''
+            script = Path(directory) / 'fallback.php'
+            script.write_text(codigo, encoding='utf8')
+            saida = subprocess.run([PHP, str(script)], capture_output=True, text=True, check=True).stdout
+            self.assertEqual(json.loads(saida), [1, 1])
+            self.assertTrue((privado / 'fiscaliza_rl' / 'x.json').exists())
+            self.assertTrue((tmp / 'fiscaliza_rl' / 'y.json').exists())
 
 
 if __name__ == '__main__':

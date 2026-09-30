@@ -25,7 +25,14 @@ function writeFileWithRetry(filePath, content) {
   const retryableCodes = new Set(["EBUSY", "EPERM", "EACCES", "UNKNOWN"]);
   for (let attempt = 0; attempt < 8; attempt += 1) {
     try {
-      fs.writeFileSync(filePath, content, "utf8");
+      const tmp = `${filePath}.tmp${process.pid}`;
+      fs.writeFileSync(tmp, content, "utf8");
+      try {
+        fs.renameSync(tmp, filePath);
+      } catch {
+        fs.copyFileSync(tmp, filePath);
+        try { fs.unlinkSync(tmp); } catch {}
+      }
       return;
     } catch (error) {
       if (!retryableCodes.has(error?.code) || attempt === 7) throw error;
@@ -94,6 +101,9 @@ function gerarResumoHome(prefeitura) {
 // Um checkout novo não contém data.js (arquivo gerado e ignorado pelo Git).
 // Os chunks versionados bastam para reconstruir o fallback.
 const data = fs.existsSync(dataJsPath) ? parseDataJs(fs.readFileSync(dataJsPath, "utf8")) : {};
+// O índice legislativo pertence ao Avalie Varginha e não entra no fallback
+// financeiro, mesmo quando um data.js antigo ainda contém essa chave.
+delete data.indice_relevancia;
 const synced = [];
 
 if (fs.existsSync(prefeituraPath)) {

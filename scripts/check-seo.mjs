@@ -16,13 +16,13 @@ const indexablePages = new Map([
   ["/emendas/", "emendas/index.html"],
   ["/relatorios.html", "relatorios.html"],
   ["/pessoal.html", "pessoal.html"],
-  ["/avalie.html", "avalie.html"],
   ["/sobre.html", "sobre.html"],
   ["/conformidade.html", "conformidade.html"],
   ["/cobrar.html", "cobrar.html"],
 ]);
 
 const privatePages = new Map([
+  ["/avalie.html", "avalie.html"],
   ["/marcadores.html", "marcadores.html"],
   ["/monitoramento.html", "monitoramento.html"],
 ]);

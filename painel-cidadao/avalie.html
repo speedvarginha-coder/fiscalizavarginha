@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avaliação dos serviços públicos de Varginha</title>
 <meta name="description" content="Percepção dos moradores sobre os serviços públicos e os representantes de Varginha-MG.">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://fiscalizavarginha.com.br/avalie.html">
+<meta http-equiv="refresh" content="3; url=https://avalievarginha.com.br/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
@@ -258,7 +259,6 @@ body[data-page="avalie"] .aval-ficha {
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
-      <a href="avalie.html"     class="nav__link nav__link--active">Avalie</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
@@ -267,6 +267,36 @@ body[data-page="avalie"] .aval-ficha {
 </header>
 
 <main id="conteudo" class="container section">
+  <div class="report-note" style="margin: 0 0 28px; background: #f0fdf4; border: 1px solid #86efac; border-left: 6px solid #16a34a; padding: 22px 24px; border-radius: 8px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+      <div style="flex: 1; min-width: 280px;">
+        <span style="display: inline-block; font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #15803d; margin-bottom: 4px;">Migração Concluída &middot; Portal Cívico Independente</span>
+        <h2 style="color: #14532d; font-size: 1.3rem; font-weight: 800; margin: 0 0 6px 0;">Avalie Varginha — Novo Endereço Oficial</h2>
+        <p style="margin: 0 0 8px 0; color: #334155; font-size: 0.95rem; line-height: 1.5;">
+          A avaliação cidadã, o Raio-X das 22 Secretarias, os Dossiês dos 14 Vereadores e a Voz do Cidadão agora contam com plataforma própria em <strong>avalievarginha.com.br</strong>.
+        </p>
+        <span id="countdownRedirect" style="font-size: 0.85rem; color: #16a34a; font-weight: 700;">Redirecionando automaticamente para o novo portal em <span id="segundosRedir">3</span> segundos...</span>
+      </div>
+      <a href="https://avalievarginha.com.br" style="display: inline-flex; align-items: center; gap: 8px; background: #15803d; color: #ffffff; padding: 13px 24px; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 1rem; white-space: nowrap; box-shadow: 0 3px 8px rgba(21,128,61,0.25);">
+        <span>Acessar avalievarginha.com.br</span> ↗
+      </a>
+    </div>
+    <script>
+      (function(){
+        var seg = 3;
+        var el = document.getElementById('segundosRedir');
+        var timer = setInterval(function(){
+          seg--;
+          if (el) el.textContent = seg;
+          if (seg <= 0) {
+            clearInterval(timer);
+            window.location.href = 'https://avalievarginha.com.br';
+          }
+        }, 1000);
+      })();
+    </script>
+  </div>
+
   <div class="bigheader">
     <span class="bigheader__kicker">Participação</span>
     <h1 class="bigheader__title">Avalie</h1>
@@ -463,7 +493,6 @@ body[data-page="avalie"] .aval-ficha {
         <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
-        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="conformidade.html">Conformidade</a>
         <a href="cobrar.html">Como cobrar</a>

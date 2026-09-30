@@ -40,10 +40,12 @@ ROOT = BASE.parents[1]
 CACHE_DIR = ROOT / "private" / "cache" / "emendas-estaduais"
 CACHE_XLSX = CACHE_DIR / "dados-oficiais-latest.xlsx"
 CACHE_ALMG_XLSX = CACHE_DIR / "dados-almg-latest.xlsx"
+CACHE_2026_XLSX = CACHE_DIR / "impositivas-2026-latest.xlsx"
 CACHE_META = CACHE_DIR / "metadados-latest.json"
 HISTORY_META = CACHE_DIR / "historico-coletas.json"
 
 FONTE_PAGINA = "https://www.emendas.mg.gov.br/transparencia/"
+FONTE_2026_PAGINA = "https://www.emendas.mg.gov.br/2026-2/"
 ALMG_PAGINA = "https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/"
 ALMG_XLSX = "https://mediaserver.almg.gov.br/acervo/497/507/2497507.xlsx"
 IBGE_VARGINHA = "3170701"
@@ -186,6 +188,17 @@ def descobrir_planilha(page_html: str) -> str:
     if not candidatos:
         raise ValueError("Planilha consolidada de emendas não encontrada na página oficial")
     return max(candidatos)[2]
+
+
+def descobrir_relatorio_2026(page_html: str) -> str:
+    hrefs = re.findall(r"""href=["']([^"']+\.xlsx(?:\?[^"']*)?)["']""", page_html, re.I)
+    for href in hrefs:
+        url = urllib.parse.urljoin(FONTE_2026_PAGINA, html.unescape(href))
+        parsed = urllib.parse.urlparse(url)
+        name = urllib.parse.unquote(parsed.path.rsplit("/", 1)[-1])
+        if parsed.hostname == "www.emendas.mg.gov.br" and name.lower() == "planilha impositivas 2026.xlsx":
+            return url
+    raise ValueError("Relatório oficial de indicações aptas de 2026 não encontrado")
 
 
 def descobrir_planilha_almg(page_html: str) -> str | None:
@@ -494,6 +507,111 @@ def conciliar_fontes(
     return records, stats
 
 
+def ler_relatorio_2026(path: Path) -> tuple[dict[str, dict[str, Any]], str, list[str]]:
+    workbook = load_workbook(path, read_only=True, data_only=True)
+    try:
+        sheet_name = workbook.sheetnames[0]
+        worksheet = workbook[sheet_name]
+        headers = [str(value or "") for value in next(worksheet.values)]
+        index = {normalizar_chave(value): position for position, value in enumerate(headers)}
+        required = {
+            "no indicacao", "municipio", "valor indicado", "valor utilizado",
+            "valor empenhado", "valor liquidado", "valor pago", "data pagamento",
+        }
+        missing = sorted(required - set(index))
+        if missing:
+            raise ValueError("Colunas ausentes no relatório estadual de 2026: " + ", ".join(missing))
+        rows: dict[str, dict[str, Any]] = {}
+        for excel_row, values in enumerate(worksheet.iter_rows(min_row=2, values_only=True), start=2):
+            if normalizar_chave(valor_linha(values, index, "Município")) != "varginha":
+                continue
+            indication = numero_inteiro_texto(valor_linha(values, index, "Nº Indicação"))
+            if not indication:
+                raise ValueError(f"Relatório estadual de 2026, linha {excel_row}: indicação ausente")
+            record_id = f"estadual-sigcon-2026-{indication}"
+            if record_id in rows:
+                raise ValueError(f"Indicação duplicada no relatório estadual de 2026: {indication}")
+            rows[record_id] = {
+                "linha": excel_row,
+                "valorIndicado": dinheiro(valor_linha(values, index, "Valor Indicado")),
+                "valorUtilizado": dinheiro(valor_linha(values, index, "Valor Utilizado")),
+                "valorEmpenhado": dinheiro(valor_linha(values, index, "Valor Empenhado")),
+                "valorLiquidado": dinheiro(valor_linha(values, index, "Valor Liquidado")),
+                "valorPago": dinheiro(valor_linha(values, index, "Valor Pago")),
+                "dataPagamento": data_texto(valor_linha(values, index, "Data Pagamento")),
+            }
+        if not rows:
+            raise ValueError("Relatório estadual de 2026 sem indicações de Varginha")
+        return rows, sheet_name, headers
+    finally:
+        workbook.close()
+
+
+def incorporar_relatorio_2026(
+    records: list[dict[str, Any]],
+    rows: dict[str, dict[str, Any]],
+    source_url: str,
+    source_hash: str,
+    sheet_name: str,
+    collected_at: str,
+) -> dict[str, int]:
+    by_id = {record["id"]: record for record in records}
+    missing = sorted(set(rows) - set(by_id))
+    if missing:
+        raise ValueError(f"Indicações de 2026 ausentes na planilha consolidada: {missing[:5]}")
+    paid = 0
+    for record_id, row in rows.items():
+        record = by_id[record_id]
+        old_indicated = record.get("valorIndicado")
+        new_indicated = row["valorIndicado"]
+        if new_indicated is None:
+            raise ValueError(f"Indicação {record_id} sem valor indicado no relatório de 2026")
+        if cents(old_indicated) != cents(new_indicated):
+            record["valorIndicadoAnterior"] = old_indicated
+        record["valorIndicado"] = new_indicated
+        record["valorDeclarado"] = new_indicated
+        record["valor"] = new_indicated
+        record["valorTexto"] = dinheiro_texto(new_indicated)
+        for field in ("valorUtilizado", "valorEmpenhado", "valorLiquidado", "valorPago"):
+            record[field] = row[field]
+        record["valorLiquidadoAno"] = row["valorLiquidado"]
+        record["valorPagoAno"] = row["valorPago"]
+        record["dataPagamento"] = row["dataPagamento"]
+        record["anoRecurso"] = "2026" if (row["valorPago"] or 0) > 0 else None
+        record["estagioAtual"] = estagio_atual(record.get("statusIndicacao"), {
+            "utilizado": row["valorUtilizado"],
+            "empenhado": row["valorEmpenhado"],
+            "liquidado": row["valorLiquidado"],
+            "pago": row["valorPago"],
+            "executado": record.get("valorExecutado"),
+        })
+        record["fonteUrl"] = source_url
+        record["fonteRegistroUrl"] = (
+            f"{source_url}#planilha={urllib.parse.quote(sheet_name)}&linha={row['linha']}"
+        )
+        record["evidencias"]["indicacaoConsolidada"] = {
+            key: record["evidencias"].get(key)
+            for key in ("urlOficial", "paginaOficial", "arquivoSha256", "planilha", "linha")
+        }
+        record["evidencias"].update({
+            "urlOficial": source_url,
+            "paginaOficial": FONTE_2026_PAGINA,
+            "arquivoSha256": source_hash,
+            "planilha": sheet_name,
+            "linha": row["linha"],
+            "coletadoEm": collected_at,
+        })
+        record["fontes"].append({
+            "nome": "Indicações aptas 2026 — Portal de Emendas MG",
+            "url": source_url,
+            "sha256": source_hash,
+            "planilha": sheet_name,
+            "linha": row["linha"],
+        })
+        paid += (row["valorPago"] or 0) > 0
+    return {"indicacoesAtualizadas": len(rows), "indicacoesComPagamento": paid}
+
+
 def somar(records: Iterable[dict[str, Any]], field: str) -> float:
     return round(sum(float(record.get(field) or 0) for record in records), 2)
 
@@ -622,6 +740,8 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
     temp_path: Path | None = None
     almg_temp_path: Path | None = None
     almg_bytes: bytes | None = None
+    report_temp_path: Path | None = None
+    report_bytes: bytes | None = None
     try:
         if input_path:
             source_url = input_path.resolve().as_uri()
@@ -696,6 +816,32 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
                 "colunasOriginais": almg_headers,
                 "registrosVarginha": len(almg_records),
             }
+        report_metadata: dict[str, Any] | None = None
+        if not input_path:
+            report_page, _ = obter(FONTE_2026_PAGINA, timeout=60)
+            report_url = descobrir_relatorio_2026(report_page.decode("utf-8", "replace"))
+            report_bytes, report_headers = obter(report_url)
+            fd, report_temp_name = tempfile.mkstemp(prefix="emendas-mg-2026-", suffix=".xlsx")
+            os.close(fd)
+            report_temp_path = Path(report_temp_name)
+            report_temp_path.write_bytes(report_bytes)
+            report_hash = hashlib.sha256(report_bytes).hexdigest()
+            report_rows, report_sheet, report_columns = ler_relatorio_2026(report_temp_path)
+            report_stats = incorporar_relatorio_2026(
+                records, report_rows, report_url, report_hash, report_sheet, collected_at,
+            )
+            report_metadata = {
+                "nome": "Indicações aptas 2026 — Portal de Emendas MG",
+                "pagina": FONTE_2026_PAGINA,
+                "arquivo": report_url,
+                "arquivoSha256": report_hash,
+                "arquivoEtag": report_headers.get("etag") or None,
+                "arquivoUltimaModificacao": report_headers.get("last_modified") or None,
+                "planilha": report_sheet,
+                "colunasOriginais": report_columns,
+                "referencia": "30/06/2026",
+                **report_stats,
+            }
         payload = construir_payload(
             records,
             source_url,
@@ -705,7 +851,7 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
             headers,
             http_headers,
             {
-                "fontesComplementares": [almg_metadata] if almg_metadata else [],
+                "fontesComplementares": [source for source in (almg_metadata, report_metadata) if source],
                 "conciliacaoFontes": reconciliation,
                 "criterioLocalizacao": (
                     "Código IBGE 3170701 na planilha do Portal Emendas MG; "
@@ -722,6 +868,8 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
             CACHE_XLSX.write_bytes(source_bytes)
             if almg_bytes is not None:
                 CACHE_ALMG_XLSX.write_bytes(almg_bytes)
+            if report_bytes is not None:
+                CACHE_2026_XLSX.write_bytes(report_bytes)
         escrever_atomico(CACHE_META, json.dumps(payload["metadata"], ensure_ascii=False, indent=2) + "\n")
         atualizar_historico(payload["metadata"])
         return payload
@@ -730,6 +878,8 @@ def coletar(input_path: Path | None = None) -> dict[str, Any]:
             temp_path.unlink()
         if almg_temp_path and almg_temp_path.exists():
             almg_temp_path.unlink()
+        if report_temp_path and report_temp_path.exists():
+            report_temp_path.unlink()
 
 
 def main() -> int:

@@ -28,3 +28,9 @@ export function internalTimestamp(value) {
   visit(value);
   return dates.sort((a, b) => b - a)[0];
 }
+export function collectionAgeHours(source, now = new Date()) {
+  const timestamp = source?.source_updated_at;
+  const date = timestamp ? new Date(timestamp) : undefined;
+  const age = date ? (now - date) / 3_600_000 : NaN;
+  return Number.isFinite(age) && age >= 0 ? age : Infinity;
+}

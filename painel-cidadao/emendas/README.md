@@ -9,8 +9,9 @@ execução.
 Fonte primária:
 
 - Página oficial: https://www.emendas.mg.gov.br/transparencia/
+- Relatório complementar de 2026: https://www.emendas.mg.gov.br/2026-2/
 - Sistemas declarados pelo Estado: SIGCON-MG, SIAFI-MG e SIAD-MG.
-- Recorte municipal: código IBGE `3170701` (Varginha).
+- Recorte municipal: código IBGE `3170701` na base consolidada e nome Varginha no relatório de 2026.
 
 Atualização:
 
@@ -18,9 +19,12 @@ Atualização:
 python coletor_emendas_estaduais.py
 ```
 
-O coletor descobre o XLSX consolidado mais recente, valida as colunas, calcula
-o SHA-256, preserva uma cópia em `private/cache/emendas-estaduais/` e gera
-`data/emendas_estaduais_normalizadas.js`.
+O coletor descobre o XLSX consolidado e o relatório de indicações aptas de
+2026. Para as mesmas indicações, os valores financeiros mais recentes do
+relatório de 2026 substituem os da base consolidada sem somar registros duas
+vezes. A indicação rejeitada, ausente da lista de aptas, permanece identificada.
+Ambos os arquivos têm SHA-256 e cópia em `private/cache/emendas-estaduais/`.
+A saída é `data/emendas_estaduais_normalizadas.js`.
 
 Os seguintes valores permanecem separados:
 

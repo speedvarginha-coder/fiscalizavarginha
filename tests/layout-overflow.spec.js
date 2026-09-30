@@ -13,7 +13,6 @@ const pages = [
   "emendas/index.html",
   "relatorios.html",
   "pessoal.html",
-  "avalie.html",
   "sobre.html",
   "conformidade.html",
   "cobrar.html",
@@ -57,6 +56,7 @@ for (const viewport of viewports) {
           await page.locator("#pontos-conferencia").screenshot({
             path: "test-results/layout-pontos-conferencia-1280.png",
             animations: "disabled",
+            timeout: 30_000,
           });
         }
       }
@@ -64,6 +64,7 @@ for (const viewport of viewports) {
         await page.locator("#prefeituraResumoTopo").screenshot({
           path: "test-results/layout-prefeitura-resumo-1280.png",
           animations: "disabled",
+            timeout: 30_000,
         });
       }
       if (path.includes("tab=asfalto")) {
@@ -84,14 +85,17 @@ for (const viewport of viewports) {
         await page.locator("#statsDiariasPrefeitura").screenshot({
           path: "test-results/layout-prefeitura-valores-1280.png",
           animations: "disabled",
+            timeout: 30_000,
         });
         await page.locator(".pref-tabs").screenshot({
           path: "test-results/layout-prefeitura-tabs-1280.png",
           animations: "disabled",
+            timeout: 30_000,
         });
         await page.locator("#diariasPrefeituraBlock .filterbar").screenshot({
           path: "test-results/layout-prefeitura-filtros-1280.png",
           animations: "disabled",
+            timeout: 30_000,
         });
       }
 

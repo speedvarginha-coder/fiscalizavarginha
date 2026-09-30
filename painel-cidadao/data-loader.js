@@ -1,12 +1,12 @@
 /* Fiscaliza Varginha — Data Loader
  *
- * Substitui o data.js monolítico (~9 MB) por chunks JSON carregados sob demanda.
+ * Substitui o data.js monolítico por chunks JSON carregados sob demanda.
  * Cada HTML especifica os chunks que precisa via <body data-chunks="a,b,c">.
  * Os chunks são fetchados em paralelo, montados em window.FISCALIZA_DATA e o app.js
  * é carregado depois — mantendo retrocompatibilidade total.
  *
- * Fallback: se algum chunk falha (ou rodando em file:// sem servidor),
- * carrega data.js completo como antes.
+ * Fallback: apenas em file:// (sem servidor) carrega data.js completo.
+ * Na web, falha de chunk exibe aviso e nunca baixa o monólito.
  */
 (function () {
   "use strict";
@@ -17,11 +17,11 @@
     "home":         ["home_resumo", "resumo", "atualizado_em", "auditoria_dados", "status_fontes", "prefeitura", "camara_betha", "emendas", "vereadores", "pncp", "diario"],
     "prefeitura":   ["prefeitura", "emendas", "diarias", "cnpjs", "pncp", "vereadores", "atualizado_em", "diario", "auditoria_dados", "status_fontes", "prefeitura_frota"],
     "fundacao":     ["fundacao_cultural", "atualizado_em", "auditoria_dados", "status_fontes", "diario", "prefeitura", "camara_betha"],
-    "camara":       ["prefeitura", "emendas", "vereadores", "camara_anos", "indice_relevancia", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "atualizado_em", "auditoria_dados", "status_fontes"],
+    "camara":       ["prefeitura", "emendas", "vereadores", "camara_betha", "camara_transparencia", "remuneracao_vereadores", "pessoal", "diarias", "pncp", "atualizado_em", "auditoria_dados", "status_fontes"],
     // "receitas" removido: o chunk mistura arrecadação acumulada de vários anos
     // (ISSQN R$ 2,1 bi vs orçado 379M) e nada na página o renderiza — não publicar
     // até a coleta filtrar o exercício corrente.
-    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "camara_anos", "auditoria_dados", "status_fontes", "pessoal", "licitacoes_resultados", "pca"],
+    "relatorios":   ["prefeitura", "emendas", "vereadores", "resumo", "pncp", "cnpjs", "fontes_emendas_2026", "federal", "atualizado_em", "auditoria_dados", "status_fontes", "pessoal", "licitacoes_resultados", "pca"],
     "pessoal":      ["atualizado_em", "auditoria_dados", "status_fontes"],  // pessoal.json auto-carregado por initPessoal()
     "marcadores":   ["prefeitura", "emendas", "atualizado_em", "auditoria_dados"],
     "atualizacoes": ["prefeitura", "camara_betha", "emendas", "diario", "mudancas_coleta", "atualizado_em", "auditoria_dados", "publicacoes_estruturadas", "publicacoes_diario"],
@@ -33,21 +33,20 @@
   // Chunks pesados adiados para 2ª fase por página: carregam APÓS app.js renderizar
   // app.js escuta "fiscaliza:chunk" e re-renderiza as seções afetadas
   const CHUNKS_FASE2 = {
-    "home": ["prefeitura"],  // 4.4 MB — home usa só resumo; prefeitura.json chega depois
-    "prefeitura": ["prefeitura_frota"],  // frota (~2 MB) não atrasa o primeiro render
+    "home": ["prefeitura", "pncp"],
     "fundacao": ["prefeitura", "camara_betha"],  // p/ cruzar fornecedores entre esferas (chegam após o render)
     // 687 KB só para o sinal de preço homologado × estimado: não pode atrasar
     // o primeiro render dos relatórios. app.js re-renderiza quando chega.
     // 3 MB: o plano completo, item a item, e o que torna o numero conferivel.
     // Fica na fase 2 junto com os resultados de licitacao.
     "relatorios": ["licitacoes_resultados", "pca"],
-    "atualizacoes": ["publicacoes_estruturadas", "publicacoes_diario"],
+    "atualizacoes": ["camara_betha", "publicacoes_estruturadas", "publicacoes_diario"],
   };
 
   // Bases grandes carregadas somente quando a seção correspondente for usada.
   // Diferente da fase 2, elas não iniciam automaticamente após o primeiro render.
   const CHUNKS_SOB_DEMANDA = {
-    "prefeitura": ["diarias"],
+    "prefeitura": ["diarias", "prefeitura_frota"],
     "camara": ["diarias"],
   };
 
@@ -66,7 +65,6 @@
     "modules/diarias.js",
     "modules/atualizacoes.js",
     "modules/materia-cidada.js",
-    "modules/indice-relevancia.js",
     "modules/onboarding.js",
     "modules/chat-cidadao.js",
     "modules/publicacoes.js",
@@ -95,7 +93,7 @@
       "modules/utils.js", "modules/icons.js", "modules/glossario.js",
       "modules/categorias.js", "modules/watchlist.js", "modules/dossie.js",
       "modules/dashboard.js", "modules/diarias.js", "modules/materia-cidada.js",
-      "modules/indice-relevancia.js", "modules/onboarding.js",
+      "modules/onboarding.js",
     ],
     "relatorios": [
       "modules/utils.js", "modules/icons.js", "modules/glossario.js",
@@ -184,6 +182,7 @@
     atualizacoes: { prefeitura: "prefeitura_painel" },
     marcadores: { prefeitura: "prefeitura_painel" },
     fundacao: { prefeitura: "prefeitura_painel" },
+    cobrar: { prefeitura: "prefeitura_painel" },
   };
 
   function fetchChunk(key) {
@@ -225,6 +224,7 @@
     document.body?.setAttribute("data-chunk-loading", key);
     const carga = fetchChunk(key)
       .then(({ data }) => {
+        if (data == null) throw new Error(`Base ${key} indisponível`);
         window.FISCALIZA_DATA = window.FISCALIZA_DATA || {};
         window.FISCALIZA_DATA[key] = data;
         document.body?.removeAttribute("data-chunk-loading");
@@ -364,8 +364,11 @@
         });
       }
     } catch (err) {
-      console.warn("[data-loader] fallback para data.js completo. Motivo:", err.message);
+      console.warn("[data-loader] falha ao carregar chunks:", err.message);
       try {
+        // O monólito data.js (centenas de MB) é exclusivo da cópia offline.
+        // Na web, falha de chunk mostra o aviso em vez de baixá-lo.
+        if (location.protocol !== "file:") throw err;
         await loadScript("data.js");
         await carregarModulos();
         await loadScript("app.js");

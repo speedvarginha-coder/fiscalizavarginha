@@ -14,7 +14,7 @@
   # espera ver atualizado ao longo do dia).
   [switch]$SkipSlowAudits,
 
-  [ValidateSet("Full", "Sapl", "NoHeavy")]
+  [ValidateSet("Full", "Sapl", "NoHeavy", "Financeiro")]
   [string]$CollectorMode = "Full"
 )
 
@@ -653,11 +653,13 @@ if ($SkipPackage -and -not $SkipDeploy) {
 # sem nenhum alerta, porque os ciclos seguintes morriam antes do health check).
 # Falha aqui nunca bloqueia a coleta — e diagnostico, nao pre-requisito.
 $tagTarefa = if ($SkipSlowAudits) { "vigia" } elseif ($OnlyIfChanged) { "hourly-legado" } else { "diaria" }
+$healthArguments = @("run", "data:saude", "--", "--tarefa=$tagTarefa")
+if ($SkipWhatsApp) { $healthArguments += "--no-email" }
 try {
   Invoke-AndLog `
     -Label "Verificando saude operacional do pipeline (alerta privado)." `
     -FilePath "npm.cmd" `
-    -Arguments @("run", "data:saude", "--", "--tarefa=$tagTarefa") `
+    -Arguments $healthArguments `
     -WorkingDirectory $root
 } catch {
   Write-Log "Aviso: health check falhou e nao bloqueia o ciclo: $($_.Exception.Message)"
@@ -733,10 +735,14 @@ try {
     Write-Log "Mudanca, defasagem ou falha de verificacao detectada; seguindo com coleta."
   }
 
+  # A retenção deve liberar espaço antes da cópia, inclusive após ciclos falhos.
+  Remove-OldBackups
   $backupPath = New-PublishedDataBackup
 
   $collectorArgs = @("-u", "coletor.py")
-  if ($CollectorMode -eq "Sapl") {
+  if ($CollectorMode -eq "Financeiro") {
+    $collectorArgs += "--financeiro"
+  } elseif ($CollectorMode -eq "Sapl") {
     $collectorArgs += "--so-sapl"
   } elseif ($CollectorMode -eq "NoHeavy") {
     $collectorArgs += "--sem-pncp"
@@ -760,12 +766,14 @@ try {
   # Os chunks estruturados alimentam o feed cidadão e o WhatsApp, mas são
   # gerados por coletores próprios. Ambos operam de forma incremental: itens
   # antigos enriquecidos são reutilizados e apenas novidades usam IA.
+  if ($CollectorMode -ne "Financeiro") {
   Invoke-IsolatedAndLog `
     -Label "Atualizando publicacoes estruturadas da Camara (incremental)." `
     -FilePath "python" `
     -Arguments @("-u", "coletor_publicacoes.py") `
     -WorkingDirectory $painel `
     -TimeoutSeconds 300
+  }
 
   if ($CollectorMode -ne "Sapl") {
     Invoke-IsolatedAndLog `
@@ -776,11 +784,13 @@ try {
       -TimeoutSeconds 1200
   }
 
+  if ($CollectorMode -ne "Financeiro") {
   Invoke-AndLog `
     -Label "Enriquecendo valores de materias financeiras com anexos oficiais do SAPL." `
     -FilePath "python" `
     -Arguments @("-u", "scripts/backfill-publication-values.py") `
     -WorkingDirectory $root
+  }
 
   Invoke-AndLog `
     -Label "Regenerando emendas municipais com proveniencia SAPL." `
@@ -795,7 +805,7 @@ try {
     -WorkingDirectory (Join-Path $painel "emendas") `
     -AcceptedExitCodes @(0, 2)
 
-  if ($CollectorMode -eq "Full") {
+  if ($CollectorMode -in @("Full", "Financeiro")) {
     Invoke-AndLog `
       -Label "Atualizando emendas federais destinadas a Varginha." `
       -FilePath "python" `
@@ -857,20 +867,12 @@ try {
 
   Push-Location $root
   try {
-    # Monitor primeiro: gera monitoramento_coletas.json. O indice roda por ultimo
-    # porque ele reescreve o manifest com sha256 — precisa capturar TODOS os chunks
-    # ja finalizados (senao o hash do monitoramento_coletas fica divergente).
+    # O monitor pertence ao portal financeiro. O índice legislativo é mantido
+    # e publicado pelo projeto Avalie Varginha.
     Invoke-AndLog `
       -Label "Atualizando painel de monitoramento das coletas." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "data:monitor") `
-      -WorkingDirectory $root `
-      -Retries 2
-
-    Invoke-AndLog `
-      -Label "Gerando indice de relevancia parlamentar." `
-      -FilePath "npm.cmd" `
-      -Arguments @("run", "data:indice") `
       -WorkingDirectory $root `
       -Retries 2
 

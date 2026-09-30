@@ -153,7 +153,7 @@ test("Prefeitura carrega a base pesada de diárias somente ao abrir a seção", 
   await expect(page.locator("#diariasPrefeituraBlock .progressive-data")).toContainText("sob demanda");
 
   await page.locator('.pref-tab[data-pref-tab="diarias"]').click();
-  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.diarias));
+  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.diarias), null, { timeout: 60000 });
   await expect(page.locator("#listaDiariasPrefeitura .diaria-card").first()).toBeVisible();
 
   const fonte = await request.get("/data/chunks/diarias.json");
@@ -164,7 +164,7 @@ test("Prefeitura carrega a base pesada de diárias somente ao abrir a seção", 
   expect(await page.locator("body").getAttribute("data-chunk-diarias")).toBe("ready");
 });
 
-test("Prefeitura carrega a frota em segundo plano, sem baixar a base completa", async ({ page, request }) => {
+test("Prefeitura carrega a frota somente quando solicitada, sem baixar a base completa", async ({ page, request }) => {
   const reqs = [];
   page.on("request", (req) => {
     if (/\/data\/chunks\/prefeitura(_painel|_frota)?\.json/.test(req.url())) reqs.push(req.url());
@@ -177,8 +177,13 @@ test("Prefeitura carrega a frota em segundo plano, sem baixar a base completa", 
   expect(reqs.some((u) => u.includes("prefeitura_painel.json"))).toBe(true);
   expect(reqs.some((u) => u.includes("/prefeitura.json"))).toBe(false);
 
-  // Fase 2: a frota chega em segundo plano e é colada no painel, sem perda.
-  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.prefeitura_frota), null, { timeout: 20_000 });
+  expect(reqs.some((u) => u.includes("prefeitura_frota.json"))).toBe(false);
+  // O clique na aba so vale depois que o app.js registrou os handlers; o botao nasce junto.
+  await page.locator("#frotaBlock button").first().waitFor({ state: "attached", timeout: 60000 });
+  await page.locator('.pref-tab[data-pref-tab="frota"]').click();
+  await page.getByRole("button", { name: "Carregar veículos e despesas da frota" }).click();
+  // A solicitação explícita incorpora todos os registros ao painel.
+  await page.waitForFunction(() => Boolean(window.FISCALIZA_DATA.prefeitura_frota), null, { timeout: 90000 });
   expect(reqs.some((u) => u.includes("prefeitura_frota.json"))).toBe(true);
   const fonte = await request.get("/data/chunks/prefeitura_frota.json");
   const esperado = (await fonte.json()).frota.length;

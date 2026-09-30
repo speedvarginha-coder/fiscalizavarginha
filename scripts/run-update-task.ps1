@@ -6,7 +6,7 @@ param(
   [switch]$GitSync,
   [switch]$OnlyIfChanged,
   [switch]$SkipSlowAudits,
-  [ValidateSet("Full", "Sapl", "NoHeavy")]
+  [ValidateSet("Full", "Sapl", "NoHeavy", "Financeiro")]
   [string]$CollectorMode = "Full"
 )
 

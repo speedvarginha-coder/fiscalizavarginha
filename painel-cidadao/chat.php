@@ -66,6 +66,30 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+// Valide a entrada antes de consumir cotas ou acessar a API paga.
+$entrada = file_get_contents('php://input', false, null, 0, 65537);
+$body = is_string($entrada) && strlen($entrada) <= 65536 ? json_decode($entrada, true) : null;
+$entradaValida = is_array($body) && isset($body['pergunta']) && is_string($body['pergunta']);
+$historico = is_array($body) ? ($body['historico'] ?? []) : [];
+$entradaValida = $entradaValida && is_array($historico);
+if ($entradaValida) {
+    foreach ($historico as $msg) {
+        if (!is_array($msg) || !isset($msg['texto']) || !is_string($msg['texto']) ||
+            (isset($msg['papel']) && !is_string($msg['papel']))) {
+            $entradaValida = false;
+            break;
+        }
+    }
+}
+$pergunta = $entradaValida ? trim(substr($body['pergunta'], 0, 500)) : '';
+if (!$entradaValida || $pergunta === '') {
+    http_response_code(400);
+    header('Content-Type: text/event-stream; charset=utf-8');
+    sse(['erro' => 'Informe uma pergunta e um histórico válidos.']);
+    sse(['fim' => true]);
+    exit;
+}
+
 // ---- Limites de uso ---------------------------------------------------------
 // A sessao sozinha nao limita nada: apagar o cookie zera o contador. Sessao
 // continua valendo como limite por aba, mas quem paga a conta e o limite por
@@ -74,6 +98,8 @@ $JANELA = 15 * 60; // 15 minutos
 $MAX    = 10;      // máx 10 perguntas por janela, por sessão
 $MAX_IP = 40;      // máx 40 perguntas por janela, por IP
 $MAX_DIA_GLOBAL = 1500; // teto de chamadas por dia no projeto inteiro
+// Pasta oculta ao lado do script; o .htaccess do site nega acesso a dotfiles.
+$GLOBALS['FISCALIZA_RL_DIR'] = __DIR__ . '/.fiscaliza_rl';
 
 $agora = time();
 if (!isset($_SESSION['rl_inicio']) || ($agora - $_SESSION['rl_inicio']) > $JANELA) {
@@ -91,18 +117,32 @@ if ($_SESSION['rl_count'] > $MAX) {
 
 /**
  * Contador em arquivo com trava exclusiva. Devolve o total apos incrementar.
- * Falha de disco nao pode derrubar o chat: sem contador, devolve 0 e o pedido
- * segue amparado apenas pelo limite de sessao.
+ * Falha de persistência devolve null e impede chamadas pagas sem controle.
  */
 function contarUso($chave, $janelaSegundos) {
-    $dir = sys_get_temp_dir() . '/fiscaliza_rl';
-    if (!is_dir($dir)) { @mkdir($dir, 0700, true); }
-    $arquivo = $dir . '/' . preg_replace('/[^a-z0-9_]/i', '_', $chave) . '.json';
-    $fp = @fopen($arquivo, 'c+');
-    if (!$fp) { return 0; }
-    if (!flock($fp, LOCK_EX)) { fclose($fp); return 0; }
+    // Hospedagem compartilhada costuma bloquear o tmp do sistema. Tenta antes a
+    // pasta privada configurada ($GLOBALS['FISCALIZA_RL_DIR']) e cai no tmp.
+    $bases = array_filter([$GLOBALS['FISCALIZA_RL_DIR'] ?? null, sys_get_temp_dir()]);
+    $fp = false;
+    foreach ($bases as $base) {
+        $dir = $base . '/fiscaliza_rl';
+        if (!is_dir($dir)) { @mkdir($dir, 0700, true); }
+        if (!is_dir($dir)) { continue; }
+        $arquivo = $dir . '/' . preg_replace('/[^a-z0-9_]/i', '_', $chave) . '.json';
+        $fp = @fopen($arquivo, 'c+');
+        if ($fp) { break; }
+    }
+    if (!$fp) { return null; }
+    if (!flock($fp, LOCK_EX)) { fclose($fp); return null; }
     $bruto = stream_get_contents($fp);
     $dados = json_decode($bruto ?: '[]', true);
+    if ($bruto === false || ($bruto !== '' && (!is_array($dados) ||
+        !isset($dados['inicio'], $dados['total']) || !is_int($dados['inicio']) ||
+        !is_int($dados['total']) || $dados['total'] < 0))) {
+        flock($fp, LOCK_UN);
+        fclose($fp);
+        return null;
+    }
     $inicio = isset($dados['inicio']) ? (int) $dados['inicio'] : 0;
     $total  = isset($dados['total']) ? (int) $dados['total'] : 0;
     if ($inicio === 0 || (time() - $inicio) > $janelaSegundos) {
@@ -110,17 +150,26 @@ function contarUso($chave, $janelaSegundos) {
         $total  = 0;
     }
     $total++;
-    ftruncate($fp, 0);
-    rewind($fp);
-    fwrite($fp, json_encode(['inicio' => $inicio, 'total' => $total]));
-    fflush($fp);
+    $json = json_encode(['inicio' => $inicio, 'total' => $total]);
+    $persistido = rewind($fp) && ftruncate($fp, 0) &&
+        fwrite($fp, $json) === strlen($json) && fflush($fp);
     flock($fp, LOCK_UN);
     fclose($fp);
-    return $total;
+    return $persistido ? $total : null;
+}
+
+function verificarContador($total) {
+    if ($total !== null) { return $total; }
+    error_log('Fiscaliza: controle de cotas indisponivel; chamada paga bloqueada.');
+    http_response_code(503);
+    header('Content-Type: text/event-stream; charset=utf-8');
+    sse(['erro' => 'Assistente temporariamente indisponível. Tente novamente mais tarde.']);
+    sse(['fim' => true]);
+    exit;
 }
 
 $ip = $_SERVER['REMOTE_ADDR'] ?? 'desconhecido';
-if (contarUso('ip_' . $ip, $JANELA) > $MAX_IP) {
+if (verificarContador(contarUso('ip_' . $ip, $JANELA)) > $MAX_IP) {
     http_response_code(429);
     header('Content-Type: text/event-stream; charset=utf-8');
     sse(['erro' => 'Muitas perguntas deste endereço. Aguarde alguns minutos.', 'rate' => true]);
@@ -128,7 +177,7 @@ if (contarUso('ip_' . $ip, $JANELA) > $MAX_IP) {
     exit;
 }
 
-if (contarUso('global_' . gmdate('Y_m_d'), 86400) > $MAX_DIA_GLOBAL) {
+if (verificarContador(contarUso('global_' . gmdate('Y_m_d'), 86400)) > $MAX_DIA_GLOBAL) {
     http_response_code(429);
     header('Content-Type: text/event-stream; charset=utf-8');
     sse(['erro' => 'O assistente atingiu o limite de uso de hoje. Os dados seguem disponíveis nas páginas do painel.', 'rate' => true]);
@@ -157,17 +206,6 @@ if (empty($apiKey)) {
     http_response_code(500);
     header('Content-Type: text/event-stream; charset=utf-8');
     sse(['erro' => 'Chave não configurada']);
-    sse(['fim' => true]);
-    exit;
-}
-
-// Ler pergunta
-$body    = json_decode(file_get_contents('php://input'), true);
-$pergunta = trim(substr($body['pergunta'] ?? '', 0, 500));
-if (!$pergunta) {
-    http_response_code(400);
-    header('Content-Type: text/event-stream; charset=utf-8');
-    sse(['erro' => 'Pergunta vazia']);
     sse(['fim' => true]);
     exit;
 }

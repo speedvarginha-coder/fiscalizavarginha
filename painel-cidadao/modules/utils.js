@@ -275,8 +275,16 @@
     URL.revokeObjectURL(url);
   };
 
+  const statusFonteAtual = (fonte, agora = Date.now()) => {
+    if (fonte?.status !== "ok") return fonte;
+    const data = fonte.source_updated_at ? new Date(fonte.source_updated_at).getTime() : NaN;
+    const idade = (agora - data) / 86400000;
+    if (!Number.isFinite(idade) || idade < 0) return { ...fonte, status: "unknown", age_days: null };
+    return { ...fonte, age_days: idade, status: idade > Number(fonte.max_age_days) ? "stale" : "ok" };
+  };
+
   window.FISCALIZA.utils = Object.freeze({
     fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, siglaSecretaria, exportCSV,
-    radical, casaBusca,
+    radical, casaBusca, statusFonteAtual,
   });
 })();

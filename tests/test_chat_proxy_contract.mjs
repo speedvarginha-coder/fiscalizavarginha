@@ -10,6 +10,10 @@ const options = fonte.indexOf("if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS')");
 const origem = fonte.indexOf("if (!$origemPermitida)");
 const metodo = fonte.indexOf("if ($_SERVER['REQUEST_METHOD'] !== 'POST')");
 const sessao = fonte.indexOf("$_SESSION['rl_count']++");
+const entrada = fonte.indexOf("$entrada = file_get_contents('php://input'");
+assert.ok(entrada > metodo && entrada < sessao, "entrada precisa ser validada antes de consumir cotas");
+assert.ok(fonte.includes("http_response_code(503)"));
+assert.ok(fonte.includes("return $persistido ? $total : null;"));
 const ip = fonte.indexOf("contarUso('ip_'");
 const global = fonte.indexOf("contarUso('global_'");
 

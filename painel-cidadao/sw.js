@@ -28,7 +28,6 @@ const STATIC = [
   "./modules/diarias.js",
   "./modules/atualizacoes.js",
   "./modules/materia-cidada.js",
-  "./modules/indice-relevancia.js",
   "./modules/onboarding.js",
   "./modules/chat-cidadao.js",
   "./modules/publicacoes.js",

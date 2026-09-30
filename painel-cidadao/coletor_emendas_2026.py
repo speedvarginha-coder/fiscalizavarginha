@@ -66,8 +66,8 @@ FONTES = [
         "tipo": "html",
     },
     {
-        "nome": "SAPL - materias legislativas 2026 (API)",
-        "url": "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2026&tipo=26&page_size=100",
+        "nome": "SAPL - emendas apresentadas em 2025 para a LOA 2026 (API)",
+        "url": "https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=2025&tipo=26&page_size=100",
         "tipo": "json_sapl",  # tratamento especial
     },
 ]
@@ -273,7 +273,7 @@ def _dedupe(achados: list[dict]) -> list[dict]:
 
 def _scan_sapl_api(origem: str, url: str) -> list[dict]:
     """Consulta a API SAPL para listar matérias do tipo Emenda Impositiva (tipo=26)
-    do ano 2026. Retorna achados com tipo='emenda_sapl'."""
+    apresentadas em 2025 para o projeto orçamentário de 2026."""
     achados = []
     nxt: str | None = url
     while nxt:
@@ -283,15 +283,17 @@ def _scan_sapl_api(origem: str, url: str) -> list[dict]:
         except Exception as e:
             raise RuntimeError(f"falha na API SAPL: {e}") from e
         for item in payload.get("results", []):
+            pdf = item.get("texto_original") or ""
+            if "projetodelei57-2025" not in pdf.lower():
+                continue
             ementa = _fix_mojibake(item.get("ementa") or "")
             numero = str(item.get("numero") or "")
-            ano = str(item.get("ano") or "2026")
+            ano = str(item.get("ano") or "2025")
             autor_list = item.get("autores", []) or []
             autor = ", ".join(
                 a.get("nome") or a.get("parlamentar_nome") or ""
                 for a in autor_list if isinstance(a, dict)
             ) if autor_list else ""
-            pdf = item.get("texto_original") or ""
             achados.append({
                 "origem": origem,
                 "titulo": f"Emenda Impositiva {numero}/{ano} — {autor or 'autor nao identificado'}",
@@ -299,7 +301,7 @@ def _scan_sapl_api(origem: str, url: str) -> list[dict]:
                 "url": pdf or url,
                 "termo": "emenda impositiva",
                 "trecho": ementa[:300] if ementa else "Ementa nao disponivel",
-                "sinal": "Emenda impositiva registrada no SAPL 2026 com numero e autor. CNPJ e valor dependem de consulta LAI.",
+                "sinal": "Emenda apresentada em 2025 para o orçamento de 2026. A indicação não comprova pagamento.",
                 "tem_cnpj": bool(CNPJ_RE.search(ementa)),
                 "tem_valor": bool(MONEY_RE.search(ementa)),
                 "numero": numero,
@@ -310,13 +312,15 @@ def _scan_sapl_api(origem: str, url: str) -> list[dict]:
         # paginar
         pag = payload.get("pagination", {})
         nxt = pag.get("links", {}).get("next") if isinstance(pag, dict) else None
+        if nxt and urllib.parse.urlparse(nxt).hostname == "sapl.varginha.mg.leg.br":
+            nxt = urllib.parse.urlparse(nxt)._replace(scheme="https").geturl()
     return achados
 
 
 def coletar() -> dict:
     fontes_verificadas = []
     achados: list[dict] = []
-
+    sapl_emendas: list[dict] = []
 
     for fonte in FONTES:
         nome = fonte["nome"]
@@ -326,7 +330,8 @@ def coletar() -> dict:
         try:
             if tipo == "json_sapl":
                 local_achados = _scan_sapl_api(nome, url)
-                achados.extend(local_achados)
+                sapl_emendas = local_achados
+                achados.extend(local_achados[:10])
                 fontes_verificadas.append({
                     "nome": nome,
                     "url": url,
@@ -378,15 +383,15 @@ def coletar() -> dict:
         a for a in achados
         if a.get("tipo") == "lista estruturada possivel" and a.get("tem_cnpj") and a.get("tem_valor")
     ]
-    sapl_emendas = [a for a in achados if a.get("tipo") == "emenda_sapl"]
+    sapl_com_cnpj_valor = sum(a["tem_cnpj"] and a["tem_valor"] for a in sapl_emendas)
     lista_encontrada = bool(estruturados or sapl_emendas)
 
     conclusao = (
-        "Foi localizada ao menos uma pista com emenda impositiva, CNPJ e valor. Conferir o documento antes de importar como dado oficial."
-        if estruturados else
-        f"SAPL lista {len(sapl_emendas)} emenda(s) impositiva(s) de 2026 com numero e autor — sem CNPJ/valor confirmado nas fontes abertas."
+        f"O SAPL publica {len(sapl_emendas)} emendas apresentadas em 2025 para o projeto orçamentário de 2026; "
+        f"{sapl_com_cnpj_valor} têm CNPJ e valor na ementa. A indicação é pública, mas a execução "
+        "financeira por emenda ainda exige conciliação com empenhos, liquidações e pagamentos."
         if sapl_emendas else
-        "Nao foi localizada, nas fontes abertas verificadas, uma lista consolidada de emendas impositivas 2026 com numero, vereador, entidade, CNPJ, valor e estagio de execucao."
+        "A consulta ao SAPL não confirmou emendas do projeto orçamentário de 2026 nesta coleta."
     )
 
     return {
@@ -398,14 +403,13 @@ def coletar() -> dict:
             "achados_qtd": len(achados),
             "lista_estruturada_encontrada": lista_encontrada,
             "emendas_sapl_2026": len(sapl_emendas),
-            "candidatos_com_valor_cnpj": len(estruturados),
+            "candidatos_com_valor_cnpj": len(estruturados) + sapl_com_cnpj_valor,
             "conclusao": conclusao,
         },
         "achados": achados,
         "fontes_verificadas": fontes_verificadas,
         "proximos_passos": [
-            "Pedir por LAI a relacao completa das emendas impositivas municipais destinadas ao orcamento de 2026.",
-            "Solicitar anexos da LOA 2026 com numero da emenda, vereador, beneficiario, CNPJ, valor, objeto e secretaria responsavel.",
+            "Conferir o vínculo de cada indicação do SAPL com a LOA 2026 e completar os CNPJs ausentes.",
             "Solicitar plano de trabalho, empenhos, liquidacoes, pagamentos e estagio atual de execucao por emenda.",
             "Cruzar os CNPJs informados com Portal da Transparencia, Diario Oficial, PNCP e termos de fomento/parceria.",
         ],
@@ -419,10 +423,10 @@ def _gerar_lai_txt(sapl_emendas: list[dict]) -> str:
     if sapl_emendas:
         linhas = []
         for e in sapl_emendas:
-            linhas.append(f"  - Emenda {e.get('numero','?')}/2026 — Autor: {e.get('autor','nao identificado')}")
+            linhas.append(f"  - Emenda {e.get('numero','?')}/{e.get('ano','2025')} — Autor: {e.get('autor','nao identificado')}")
             if e.get("ementa"):
                 linhas.append(f"    Ementa: {e['ementa'][:200]}..." if len(e.get('ementa','')) > 200 else f"    Ementa: {e.get('ementa','')}")
-        emendas_listadas = "\n\nEmendas impositivas localizadas no SAPL (sem CNPJ/valor confirmado):\n" + "\n".join(linhas)
+        emendas_listadas = "\n\nAmostra de emendas localizadas no SAPL para o orçamento de 2026:\n" + "\n".join(linhas)
     return f"""PEDIDO DE ACESSO A INFORMACAO (LAI)
 Data: {hoje}
 Orgao destinatario: Camara Municipal de Varginha-MG / Prefeitura Municipal de Varginha-MG
@@ -458,9 +462,8 @@ def salvar(payload: dict | None = None) -> dict:
     out = DATA / "fontes_emendas_2026.json"
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # Gera rascunho de pedido LAI sempre que nao ha candidatos com CNPJ+valor confirmados
-    # (emendas SAPL listam numero/autor mas nao tem CNPJ/valor — LAI continua necessario)
-    if not payload.get("resumo", {}).get("candidatos_com_valor_cnpj"):
+    # A lista de indicações não comprova a execução financeira; LAI continua útil.
+    if payload.get("resumo", {}).get("emendas_sapl_2026"):
         sapl_emendas = [a for a in payload.get("achados", []) if a.get("tipo") == "emenda_sapl"]
         lai_txt = _gerar_lai_txt(sapl_emendas)
         lai_out = DATA / "lai_emendas_2026.txt"

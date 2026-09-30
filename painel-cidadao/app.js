@@ -86,6 +86,11 @@
   }
 
   const D    = window.FISCALIZA_DATA;
+  if (D.status_fontes?.domains) {
+    for (const [id, fonte] of Object.entries(D.status_fontes.domains)) {
+      D.status_fontes.domains[id] = window.FISCALIZA.utils.statusFonteAtual(fonte);
+    }
+  }
   const pf   = D.prefeitura || D.home_resumo || {};
   const PAGE = document.body.dataset.page || "hub";
 
@@ -438,18 +443,10 @@
     const ano = anoCamara();
     const tipos = r.tipos || [];
     $("stats").innerHTML = [
-      { cls: "stat--navy", v: fmtNum(r.total_materias),
-        l: "Matérias legislativas", s: `Total protocolado em ${ano}` },
-      { cls: "stat--teal", v: fmtNum((tipos.find(t => norm(t.tipo) === "indicacao") || {}).qtd || 0),
-        l: "Indicações ao Executivo", s: "Demandas vindas dos bairros" },
       { cls: "stat--gold", v: fmtMi(r.emendas_valor_total_brl || 0),
-        l: "Emendas impositivas", s: `${fmtNum(r.emendas_qtd || 0)} emendas em ${ano}` },
-      { cls: "stat--teal", v: fmtNum((tipos.find(t => norm(t.tipo) === "mocao") || {}).qtd || 0),
-        l: "Moções e homenagens", s: "Aplausos, pesar e reconhecimento" },
-      { cls: "stat--gold", v: fmtNum(r.impacto_zero_qtd || 0),
-        l: "Impacto zero no ranking", s: "Moção, homenagem e nome de rua" },
-      { cls: "stat--navy", v: r.vereadores_ativos,
-        l: "Vereadores em atividade", s: "Câmara Municipal" },
+        l: "Valor das emendas", s: `Exercício ${ano}` },
+      { cls: "stat--navy", v: fmtNum(r.emendas_qtd || 0),
+        l: "Emendas impositivas", s: "Destinações com dados estruturados" },
     ].map(s => `
       <div class="stat ${s.cls}">
         <div class="stat__value">${s.v}</div>
@@ -466,7 +463,7 @@
     if (r.emendas_qtd) {
       $("destaque").innerHTML =
         `Em ${ano}, as ${fmtNum(r.emendas_qtd)} emendas impositivas estruturadas movimentaram <strong>${fmtBRLnb(r.emendas_valor_total_brl || 0)}</strong> ` +
-        `- média de ${fmtBRLnb(media)} por emenda. No ranking, moções, homenagens e nomes de rua ficam separados com peso zero.`;
+        `- média de ${fmtBRLnb(media)} por emenda. Confira a execução e os pagamentos aos beneficiários abaixo.`;
     } else {
       $("destaque").innerHTML =
         `Em ${ano}, o painel encontrou <strong>${fmtNum(r.total_materias || 0)} matérias legislativas</strong>, mas ainda não encontrou uma base estruturada de emendas impositivas com entidade, CNPJ, valor e objeto. ` +
@@ -563,13 +560,6 @@
       url: l.url || "",
     }));
     const baseCamara = [
-      ...camMaterias().map(m => ({
-        origem: m.tipo || "Materia legislativa",
-        responsavel: m.autor || "Autor não informado",
-        objeto: `${m.tipo || ""} ${m.numero || ""}/${m.ano || ""} ${m.ementa || ""}`,
-        valor: 0,
-        url: m.pdf || "",
-      })),
       ...camEmendas().map(e => ({
         origem: "Emenda impositiva",
         responsavel: e.autor || "Autor não informado",
@@ -624,8 +614,8 @@
         <div class="keyword-audit__head">
           <div>
             <span class="reader-summary__label">Pergunte aos dados da Camara</span>
-            <h3>Acoes e gastos por palavra-chave</h3>
-            <p>Escolha um tema para procurar em materias legislativas, emendas, diárias e links oficiais da transparência da Camara. Valores aparecem quando a base tem valor estruturado.</p>
+            <h3>Gastos por palavra-chave</h3>
+            <p>Escolha um tema para procurar em emendas, diárias e links oficiais da transparência da Câmara. Valores aparecem quando a base tem valor estruturado.</p>
           </div>
         </div>
         <div class="keyword-audit__controls">
@@ -2645,10 +2635,10 @@
       const conclusao = r.conclusao || "Rode o coletor para verificar as fontes abertas sobre emendas impositivas 2026.";
       if ($("fontesEmendas2026Resumo")) {
         $("fontesEmendas2026Resumo").innerHTML = [
-          { cls: listaEstruturada ? "stat--teal" : "stat--gold", v: listaEstruturada ? "Sim" : "Não", l: "Lista estruturada encontrada", s: "Entidade + CNPJ + valor + execução" },
+          { cls: listaEstruturada ? "stat--teal" : "stat--gold", v: listaEstruturada ? "Sim" : "Não", l: "Indicações disponíveis", s: "Indicação não comprova pagamento ou execução" },
           { cls: "stat--navy", v: fmtNum(r.fontes_ok || 0), l: "Fontes abertas consultadas", s: `${fmtNum(r.fontes_verificadas || fontes2026.length || 0)} mapeadas` },
           { cls: "stat--gold", v: fmtNum(r.achados_qtd || achados2026.length || 0), l: "Pistas documentais", s: "Leis, decretos, editais ou paginas" },
-          { cls: "stat--teal", v: fmtNum(r.candidatos_com_valor_cnpj || 0), l: "Candidatos com CNPJ e valor", s: "Precisam de conferência manual" },
+          { cls: "stat--teal", v: fmtNum(r.candidatos_com_valor_cnpj || 0), l: "Emendas com CNPJ e valor", s: "Informados na ementa do SAPL" },
         ].map(s => `
           <div class="stat ${s.cls}">
             <div class="stat__value">${s.v}</div>
@@ -2683,9 +2673,9 @@
           <article class="signal signal--${listaEstruturada ? "medio" : "alto"} signal--wide">
             <div class="signal__top">
               <span class="signal__kind">Conclusao da busca</span>
-              <span class="signal__level">${listaEstruturada ? "Importar com conferência" : "Pedir por LAI"}</span>
+              <span class="signal__level">${listaEstruturada ? "Conferir execução" : "Consultar fontes"}</span>
             </div>
-            <h4>${listaEstruturada ? "Há candidato de lista estruturada" : "Lista aberta consolidada ainda não localizada"}</h4>
+            <h4>${listaEstruturada ? "Indicações no SAPL localizadas" : "Indicações no SAPL não confirmadas nesta coleta"}</h4>
             <p>${esc(conclusao)}</p>
             <div class="signal__meta">Pergunta pronta: ${esc(perguntaEmendas2026)}</div>
           </article>
@@ -5366,7 +5356,7 @@ ${url}
       // coleta quando o dado só está a caminho.
       if (listaEl) {
         if (PAGE === "prefeitura" && D.prefeitura_frota === undefined) {
-          listaEl.innerHTML = `<div class="empty"><strong>Carregando a frota…</strong><p>A lista de veículos chega em segundo plano para não atrasar o restante da página.</p></div>`;
+          listaEl.innerHTML = `<div class="empty"><strong>Frota disponível sob demanda</strong><p>Use o botão acima para consultar os veículos e suas despesas.</p></div>`;
         } else if (PAGE === "prefeitura" && D.prefeitura_frota === null) {
           listaEl.innerHTML = `<div class="empty"><strong>Frota indisponível nesta coleta</strong><p>Confira a consulta de veículos no portal oficial antes de concluir.</p></div>`;
         } else {
@@ -7440,7 +7430,7 @@ ${url}
           <p>Base principal: ${esc(base)}. Use estes números como trilha de fiscalização e confirme a fonte oficial antes de divulgar conclusão.</p>
           <ul>
             ${sorted.map((item) => {
-              const srcMap = { "fontes_emendas_2026.json": "Emendas 2026", "pessoal.json": "Folha de pessoal", "indice_relevancia.json": "Índice de relevância", "cnpjs.json": "CNPJs", "camara_betha.json": "Câmara/Betha", "pncp.json": "PNCP", "atualizado_em.json": "Atualização" };
+              const srcMap = { "fontes_emendas_2026.json": "Emendas 2026", "pessoal.json": "Folha de pessoal", "cnpjs.json": "CNPJs", "camara_betha.json": "Câmara/Betha", "pncp.json": "PNCP", "atualizado_em.json": "Atualização" };
               const title = item.title || srcMap[item.source] || (item.source || "").replace(/\.json$/, "");
               return `<li><b>${esc(title)}:</b> ${esc(item.detail)} <em>${esc(item.action || "")}</em></li>`;
             }).join("")}
@@ -7457,7 +7447,7 @@ ${url}
 
     const pageSources = {
       prefeitura: ["prefeitura", "pncp", "cnpjs", "diario"],
-      camara: ["camara_betha", "camara_anos", "indice_relevancia", "publicacoes_estruturadas"],
+      camara: ["camara_betha", "camara_anos", "publicacoes_estruturadas"],
       relatorios: ["prefeitura", "camara_betha", "camara_anos", "pncp", "cnpjs", "fontes_emendas_2026"],
     };
     const sources = (pageSources[PAGE] || [])
@@ -8353,6 +8343,8 @@ ${url}
 
   window.addEventListener("fiscaliza:chunk", function (e) {
     var key = (e.detail || {}).key;
+    if (key === "pncp" && PAGE === "home") renderHomeOps();
+    if (key === "camara_betha" && PAGE === "atualizacoes") window.FISCALIZA.atualizacoes.render();
     if (key === "diarias" && PAGE === "prefeitura") {
       $("diariasPrefeituraBlock")?.setAttribute("data-progressive-state", "ready");
       initDiarias("Prefeitura", (D.diarias || {}).prefeitura || []);
@@ -8389,6 +8381,25 @@ ${url}
       renderCruzamentoFundacao();
     }
   });
+
+  if (PAGE === "prefeitura" && $("frotaBlock")) {
+    const botaoFrota = document.createElement("button");
+    botaoFrota.type = "button";
+    botaoFrota.className = "btn-csv";
+    botaoFrota.textContent = "Carregar veículos e despesas da frota";
+    botaoFrota.addEventListener("click", async () => {
+      botaoFrota.disabled = true;
+      botaoFrota.textContent = "Carregando frota…";
+      try {
+        await window.FISCALIZA_DATA_LOADER.load("prefeitura_frota");
+        botaoFrota.remove();
+      } catch {
+        botaoFrota.disabled = false;
+        botaoFrota.textContent = "Tentar carregar a frota novamente";
+      }
+    });
+    $("frotaBlock").prepend(botaoFrota);
+  }
 
   // ============= BUSCA GLOBAL NAS PÁGINAS INTERNAS =============
   // A busca da home não existe fora dela. Aqui entra um caminho: um botão

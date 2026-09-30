@@ -2,6 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { collectionAgeHours } from "./lib/source-freshness.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -52,11 +53,7 @@ async function fetchJson(url, timeoutMs = 30_000) {
   }
 }
 
-function chunkAgeHours(name) {
-  const filePath = path.join(chunksDir, `${name}.json`);
-  if (!fs.existsSync(filePath)) return Infinity;
-  return (Date.now() - fs.statSync(filePath).mtimeMs) / 3_600_000;
-}
+const sourceStatus = readJson(path.join(chunksDir, "status_fontes.json"), {}).domains || {};
 
 function fingerprintDiario(payload) {
   const rows = Array.isArray(payload?.dados) ? payload.dados : [];
@@ -105,7 +102,7 @@ function fingerprintTransferegov(payload) {
 async function probeRemoteSources() {
   const sources = [];
 
-  const saplUrl = `http://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=${currentYear}&page=1`;
+  const saplUrl = `https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano=${currentYear}&tipo=26&page=1`;
   try {
     sources.push({
       id: `sapl-${currentYear}`,
@@ -129,7 +126,7 @@ async function probeRemoteSources() {
     sources.push({ id: `diario-${currentYear}`, label: `Diario Oficial ${currentYear}`, url: diarioUrl, error: error.message });
   }
 
-  const transferegovUrl = "https://api-publica.transferegov.gestao.gov.br/especiais/planos_acao_especiais?id_beneficiario=3277&tamanho_da_pagina=200";
+  const transferegovUrl = "https://api-publica.transferegov.gestao.gov.br/especiais/planos-acao-especiais?id_beneficiario=3277&tamanho_da_pagina=200";
   try {
     sources.push({
       id: "transferegov-especiais-varginha",
@@ -157,9 +154,10 @@ function localFreshnessSignals() {
     { id: "pncp-age", label: "PNCP", chunk: "pncp", maxHours: 168 },
     { id: "federal-age", label: "Recursos federais", chunk: "federal", maxHours: 30 },
   ].map((item) => {
-    const ageHours = chunkAgeHours(item.chunk);
+    const ageHours = collectionAgeHours(sourceStatus[item.chunk], now);
     return {
       ...item,
+      source_updated_at: sourceStatus[item.chunk]?.source_updated_at || null,
       ageHours: Number.isFinite(ageHours) ? Number(ageHours.toFixed(2)) : null,
       stale: ageHours > item.maxHours,
     };
@@ -207,6 +205,10 @@ const snapshot = {
 };
 
 if (record) {
+  // Uma falha de consulta não apaga a última assinatura conhecida da fonte.
+  for (const source of remoteSources.filter(item => item.error)) {
+    if (previous.sources?.[source.id]) snapshot.sources[source.id] = previous.sources[source.id];
+  }
   writeJson(statePath, snapshot);
   console.log(`Fingerprints registrados em ${path.relative(root, statePath)}`);
   process.exitCode = 0;

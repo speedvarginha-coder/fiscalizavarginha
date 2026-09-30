@@ -145,7 +145,7 @@ def _save(name: str, payload) -> None:
         "fundacao_cultural.json",
         "federal.json", "pessoal.json", "diario.json",
         "remuneracao_vereadores.json", "sancoes_fornecedores.json",
-        "auditoria_dados.json", "atualizacoes.json", "indice_relevancia.json",
+        "auditoria_dados.json", "atualizacoes.json",
         "pca.json",
     }
     if name in chunk_names:
@@ -2028,6 +2028,10 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
             obras_origem_preservada = origem_obras
         else:
             obras_status = "coleta_atual_parcial_via_busca_textual"
+    if obras_anteriores and len(obras_anteriores) >= 20 and len(obras_normalizadas) < len(obras_anteriores) / 2:
+        obras_normalizadas = obras_anteriores
+        obras_status = "preservada_por_queda_anormal_betha"
+        obras_origem_preservada = origem_obras
     if not obras_normalizadas:
         if obras_anteriores:
             obras_normalizadas = obras_anteriores
@@ -2093,7 +2097,9 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
     frota_status = "coleta_atual"
     frota_origem_preservada = None
     frota_diag = dados_abertos_status.get(f"Veículos municipais ({ano_atual})", {})
-    if frota_diag.get("status") == "partial":
+    if (frota_diag.get("status") != "ok" or not frota_normalizada
+            or any(not r.get("placa") for r in frota_normalizada)
+            or (frota_rows and not any("gastos" in r for r in frota_rows))):
         frota_anterior, origem_frota = _load_last_nonempty_list("prefeitura.json", "frota")
         if frota_anterior:
             frota_normalizada = frota_anterior
@@ -2101,6 +2107,22 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
             frota_origem_preservada = origem_frota
         else:
             frota_status = "coleta_atual_parcial_via_busca_textual"
+
+    listas_financeiras = {}
+    for campo, brutos, normalizar, label in (
+        ("licit_andamento", licit_andamento, _normaliza_licitacoes, "Licitações em andamento"),
+        ("licit_finalizadas", licit_finaliz, _normaliza_licitacoes, "Licitações finalizadas"),
+        ("compras_diretas", compras_diretas, _normaliza_compras, "Compras diretas"),
+    ):
+        normalizados = normalizar(brutos)
+        diagnostico = dados_abertos_status.get(f"{label} ({ano_atual})", {})
+        if diagnostico.get("status") != "ok" or (brutos and not normalizados):
+            anteriores, _ = _load_last_nonempty_list("prefeitura.json", campo)
+            if anteriores:
+                normalizados = anteriores
+                diagnostico["status"] = "partial"
+                diagnostico["preservada"] = True
+        listas_financeiras[campo] = normalizados
 
     return {
         "ano_atual":     ano_atual,
@@ -2120,9 +2142,9 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
         "contratos":        contratos_normalizados,
         "contratos_status_coleta": contratos_status,
         "contratos_origem_preservada": contratos_origem_preservada,
-        "licit_andamento":  _normaliza_licitacoes(licit_andamento),
-        "licit_finalizadas": _normaliza_licitacoes(licit_finaliz),
-        "compras_diretas":  _normaliza_compras(compras_diretas),
+        "licit_andamento":  listas_financeiras["licit_andamento"],
+        "licit_finalizadas": listas_financeiras["licit_finalizadas"],
+        "compras_diretas":  listas_financeiras["compras_diretas"],
         "obras_publicas":   obras_normalizadas,
         "obras_status_coleta": obras_status,
         "obras_origem_preservada": obras_origem_preservada,
@@ -2243,7 +2265,7 @@ def _f(s) -> float:
     if not s:
         return 0.0
     try:
-        return float(s.replace(",", "."))
+        return float(s.replace(".", "").replace(",", ".") if "," in s else s)
     except (ValueError, TypeError):
         return 0.0
 
@@ -2251,12 +2273,16 @@ def _f(s) -> float:
 def _normaliza_contratos(rows: list[dict]) -> list[dict]:
     out = []
     for r in rows:
+        if not any(r.get(k) for k in ("numero", "objeto", "nomeContratado", "cnpjCpfContratado", "valorFinal")):
+            continue
         # A Betha devolve ano="0" em mais da metade dos contratos, mas a
         # dataAssinatura vem correta. Sem este fallback a serie historica fica
         # falsamente vazia (77 contratos somando 2020-2024 contra 696 sem ano) e
         # qualquer filtro ou grafico por ano mostra o quadro errado.
         ano_bruto = str(r.get("ano") or "").strip()
         assinatura = r.get("dataAssinatura", "") or ""
+        if re.match(r"^\d{2}/\d{2}/\d{4}$", assinatura):
+            assinatura = dt.datetime.strptime(assinatura, "%d/%m/%Y").date().isoformat()
         ano = ano_bruto if ano_bruto not in ("", "0") else assinatura[:4]
         out.append({
             "numero":        r.get("numero", ""),
@@ -2265,7 +2291,7 @@ def _normaliza_contratos(rows: list[dict]) -> list[dict]:
             "data_fim":      r.get("dataVigenciaFinal", ""),
             "modalidade":    r.get("modalidadeLicitacao", ""),
             "tipo":          r.get("tipo", ""),
-            "objeto":        r.get("objeto", "").strip(),
+            "objeto":        (r.get("objeto") or "").strip(),
             "contratado":    r.get("nomeContratado", ""),
             "cnpj":          r.get("cnpjCpfContratado", ""),
             "valor":         _f(r.get("valorFinal", 0)),
@@ -2285,11 +2311,13 @@ def _ano_de_data(valor) -> str:
 def _normaliza_licitacoes(rows: list[dict]) -> list[dict]:
     out = []
     for r in rows:
+        if not any(r.get(k) for k in ("numero", "numeroProcesso", "objeto", "descricao", "valorEstimado", "valorTotal")):
+            continue
         # A consulta de licitacao em andamento devolve "ano" vazio e so a data
         # de abertura. Quem consumia o campo cru mostrava "sem ano" para um
         # pregao com data conhecida (ex.: decoracao natalina, 20/08/2026).
         data = r.get("dataAbertura", "") or r.get("dataPublicacao", "")
-        ano = _t(r.get("ano")) or _ano_de_data(data)
+        ano = _t(r.get("ano")) or _t(r.get("anoLicitacao")) or _ano_de_data(data)
         out.append({
             "numero":      r.get("numero", "") or r.get("numeroProcesso", ""),
             "ano":         ano,
@@ -2331,6 +2359,10 @@ def _normaliza_obras_publicas(rows: list[dict], linked: dict) -> list[dict]:
     out = []
     fonte_url = "https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83026"
     for r in rows:
+        # A consulta Betha pode responder 200 com uma linha inteiramente vazia.
+        # Esse marcador não representa uma obra e não pode substituir a base válida.
+        if not any(_cell(r.get(key, "")) for key in ("idObra", "matriculaObra", "descricaoObra")):
+            continue
         endereco = _linked(linked, r.get("endereco", ""))
         geo = _linked(linked, r.get("geolocalizacao", ""))
         medicao = _linked(linked, r.get("medicoes", ""))
@@ -2914,6 +2946,35 @@ def _preserva_emendas_sapl_se_coleta_vazia(sapl: dict) -> dict:
     return sapl
 
 
+def _processa_sapl_financeiro() -> dict:
+    """Consulta somente emendas; preserva o ano anterior se a fonte falhar."""
+    anteriores = _load_existing("emendas.json", [])
+    emendas = list(anteriores)
+    tipo = {26: {"sigla": "EI", "descricao": "Emenda Impositiva ao Orçamento"}}
+    for ano in (dt.datetime.now().year - 1, dt.datetime.now().year):
+        url = f"https://sapl.varginha.mg.leg.br/api/materia/materialegislativa/?ano={ano}&tipo=26&page_size=100"
+        try:
+            rows = _sapl_paginate(url, timeout=20, strict=True)
+            if not rows:
+                continue
+            novas = _processa_sapl_rows(ano, [_linha_padrao_sapl(r, tipo) for r in rows])["emendas"]
+            antigas_ano = {str(e.get("numero")): e for e in anteriores if str(e.get("ano")) == str(ano)}
+            for item in novas:
+                anterior = antigas_ano.get(str(item.get("numero")), {})
+                if not item.get("autor") and anterior.get("autor"):
+                    item["autor"] = anterior["autor"]
+            if novas:
+                emendas = [e for e in emendas if str(e.get("ano")) != str(ano)] + novas
+        except Exception as error:
+            print(f"  ! Emendas SAPL {ano}: base anterior preservada ({error})")
+    resumo = _load_existing("resumo.json", {})
+    resumo["emendas_qtd"] = len(emendas)
+    resumo["emendas_valor_total_brl"] = round(sum(float(e.get("valor_brl") or 0) for e in emendas), 2)
+    return {"emendas": emendas, "resumo": resumo,
+            "vereadores": _load_existing("vereadores.json", []),
+            "camara_anos": _load_existing("camara_anos.json", {})}
+
+
 def main() -> int:
     print("\n=== Fiscaliza Varginha — Coletor ===\n")
     so_sapl   = "--so-sapl"   in sys.argv
@@ -2924,6 +2985,7 @@ def main() -> int:
     sem_pessoal = "--sem-pessoal" in sys.argv
     sem_fontes_emendas = "--sem-fontes-emendas" in sys.argv
     vigia_rapida = "--vigia-rapida" in sys.argv
+    financeiro = "--financeiro" in sys.argv
 
     if "--so-diarias" in sys.argv:
         diarias = _coletar_e_salvar_diarias()
@@ -2936,12 +2998,14 @@ def main() -> int:
             print("\n✗ Diarias: nada coletado e nada preservado — codigo 3.\n")
         return codigo
 
-    sapl = _preserva_emendas_sapl_se_coleta_vazia(_processa_sapl())
-    _enriquece_materias_cidadas(sapl.get("camara_anos", {}))
+    sapl = _processa_sapl_financeiro() if financeiro else _preserva_emendas_sapl_se_coleta_vazia(_processa_sapl())
+    if not financeiro:
+        _enriquece_materias_cidadas(sapl.get("camara_anos", {}))
+        _save("vereadores.json", sapl["vereadores"])
     _save("resumo.json", sapl["resumo"])
-    _save("vereadores.json", sapl["vereadores"])
     _save("emendas.json", sapl["emendas"])
-    _save("camara_anos.json", sapl.get("camara_anos", {}))
+    if not financeiro:
+        _save("camara_anos.json", sapl.get("camara_anos", {}))
 
     diario = {"total": 0, "ultimas": []}
     if not so_sapl:
@@ -2956,7 +3020,6 @@ def main() -> int:
     auditoria_dados = _load_existing("auditoria_dados.json", {})
     atualizacoes = _load_existing("atualizacoes.json", {})
     fontes_emendas_2026 = _load_existing("fontes_emendas_2026.json", {})
-    indice_relevancia = _load_existing("indice_relevancia.json", {})
     if not so_sapl and not sem_pncp:
         pncp = _processa_pncp()
         _save("pncp.json", pncp)
@@ -3062,7 +3125,6 @@ def main() -> int:
         sancoes_fornecedores = _load_existing("sancoes_fornecedores.json", {})
         auditoria_dados = _load_existing("auditoria_dados.json", {})
         atualizacoes = _load_existing("atualizacoes.json", {})
-        indice_relevancia = _load_existing("indice_relevancia.json", {})
         print("  bases existentes preservadas no data.js")
 
     atualizado = {
@@ -3109,7 +3171,6 @@ def main() -> int:
         "sancoes_fornecedores": sancoes_fornecedores,
         "auditoria_dados": auditoria_dados,
         "atualizacoes": atualizacoes,
-        "indice_relevancia": indice_relevancia,
         "atualizado_em": atualizado,
     })
 

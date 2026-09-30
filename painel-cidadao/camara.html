@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vereadores e projetos da Câmara de Varginha</title>
-<meta name="description" content="Consulte vereadores, projetos de lei, indicações, votações, presença e emendas impositivas da Câmara Municipal de Varginha-MG.">
+<title>Gastos e contratos da Câmara de Varginha</title>
+<meta name="description" content="Consulte gastos, contratos, licitações, dispensas, emendas, remuneração e diárias da Câmara Municipal de Varginha-MG.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://fiscalizavarginha.com.br/camara.html">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta property="og:type"        content="website">
 <meta property="og:site_name"   content="Fiscaliza Varginha">
 <meta property="og:title"       content="Câmara Municipal · Fiscaliza Varginha">
-<meta property="og:description" content="Vereadores, emendas impositivas e produção legislativa da Câmara de Varginha-MG.">
+<meta property="og:description" content="Gastos, contratos, licitações e emendas impositivas da Câmara de Varginha-MG.">
 <meta property="og:locale"      content="pt_BR">
 <meta property="og:url"         content="https://fiscalizavarginha.com.br/camara.html">
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Câmara Municipal · Fiscaliza Varginha">
-<meta name="twitter:description" content="Vereadores, emendas e produção legislativa de Varginha-MG.">
+<meta name="twitter:description" content="Gastos, contratos, emendas e diárias da Câmara de Varginha-MG.">
 <link rel="stylesheet" href="style.css?v=20260730-relatorios2">
 </head>
 <body data-page="camara">
@@ -45,7 +45,6 @@
       <a href="emendas/index.html" class="nav__link">Emendas</a>
       <a href="relatorios.html" class="nav__link">Relatórios</a>
       <a href="pessoal.html"    class="nav__link">Pessoal</a>
-      <a href="avalie.html"     class="nav__link">Avalie</a>
       <a href="sobre.html"      class="nav__link">Sobre</a>
       <a href="conformidade.html" class="nav__link">Conformidade</a>
       <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
@@ -64,10 +63,9 @@
       <span class="bigheader__kicker">PODER LEGISLATIVO</span>
       <h1 class="bigheader__title">Câmara Municipal</h1>
       <p class="bigheader__lead">
-        15 vereadores que você elegeu decidem as leis, votam o orçamento e deveriam
-        cobrar o Prefeito. Veja o que cada um produziu — presença, matérias e para onde
-        foram as emendas. Os dados abaixo cobrem <strong>2025 e 2026</strong>, extraídos
-        do SAPL (sistema oficial da Câmara).
+        Acompanhe o dinheiro público da Câmara: pagamentos, contratos, licitações,
+        dispensas, remuneração, diárias e a execução das emendas impositivas.
+        Confira valores e documentos nos portais oficiais.
       </p>
       <p id="atualizado" class="muted small" style="margin-top:8px"></p>
       <div id="dataHealthStrip" class="data-health-strip" hidden></div>
@@ -75,7 +73,7 @@
       (function () {
         var box = document.getElementById("dataHealthStrip");
         if (!box || !window.fetch || location.protocol === "file:") return;
-        var RE = /camara|emenda|indice/i;
+        var RE = /camara|emenda/i;
         function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
         fetch("data/chunks/auditoria_dados.json?v=" + Date.now(), { cache: "no-store" })
           .then(function (r) { return r.ok ? r.json() : null; })
@@ -93,53 +91,21 @@
       </script>
       <div class="civic-actions" aria-label="Ações rápidas da Câmara">
         <a href="#gastosPalavraChaveCamara">Perguntar aos dados</a>
-        <a href="#indiceRelevancia">Índice de relevância</a>
-        <a href="#vereadores">Ver vereadores</a>
         <a href="#emendas">Emendas e CNPJs</a>
         <a href="#diariasCamaraBlock">Diárias</a>
       </div>
       <details class="page-howto">
         <summary>Como ler esta página</summary>
         <div class="page-howto__body">
-          <p>Dados do <strong>SAPL</strong> (processos legislativos) e do <strong>Portal Betha da Câmara</strong>. O índice de relevância mede produção documentada nas fontes disponíveis — não é julgamento de honestidade, competência ou popularidade.</p>
-          <p>Presença, emendas e matérias são cruzados automaticamente. Um vereador pode ter alta produção e baixo impacto real — e vice-versa.</p>
+          <p>Dados financeiros do <strong>Portal Betha da Câmara</strong> e registros oficiais usados para conferir emendas, pagamentos, contratos, remuneração e diárias.</p>
           <div class="page-howto__chips">
             <span class="ok">✓ Fontes: SAPL + Betha</span>
-            <span class="warn">⚠ Índice é estimativa automática</span>
-            <span class="warn">⚠ Não mede impacto real</span>
-            <span class="info">ℹ Confirme o mandato antes de comparar anos</span>
+            <span class="info">ℹ Valores e documentos devem ser conferidos na fonte oficial</span>
           </div>
         </div>
       </details>
     </header>
 
-    <section class="block camara-index-spotlight" aria-label="Índice de relevância dos vereadores">
-      <h3 class="block__title">Índice de relevância dos vereadores</h3>
-      <p class="block__lead">
-        Este bloco aparece primeiro porque ajuda o cidadão a entender, de forma rápida,
-        quem produziu, fiscalizou e gerou atos com maior efeito público. A nota é
-        comparativa e auditável: não mede popularidade, partido ou opinião.
-      </p>
-      <div class="method-card">
-        <div>
-          <span class="method-card__tag">Observatório Público de Varginha</span>
-          <h4>Como o painel deve medir o trabalho parlamentar</h4>
-          <p>
-            O objetivo não é contar volume por volume. O painel diferencia pedido,
-            fiscalização, projeto, emenda com dinheiro público e homenagem. Quanto
-            mais dados forem coletados, o ranking deve considerar resposta do Executivo,
-            prazo, execução, resolução e impacto real na cidade.
-          </p>
-        </div>
-        <ul>
-          <li><strong>Quantidade</strong><span>matérias, indicações, requerimentos e emendas.</span></li>
-          <li><strong>Qualidade</strong><span>tema, tipo, impacto estimado e relevância.</span></li>
-          <li><strong>Resultado</strong><span>resposta, prazo, pagamento, entrega e comprovação.</span></li>
-        </ul>
-      </div>
-
-      <div id="indiceRelevancia" class="indice-relevancia" aria-live="polite"></div>
-    </section>
 
     <!-- PLACAR DO DINHEIRO -->
     <div id="placarCamara" class="placar" aria-label="Placar do dinheiro da Câmara"></div>
@@ -147,13 +113,14 @@
     <!-- SUB-NAVEGAÇÃO POR SEÇÃO (reduz o scroll: mostra uma seção por vez) -->
     <nav class="camara-subnav" aria-label="Seções da Câmara">
       <button type="button" class="csec-btn csec-btn--active" data-go="geral">Visão geral</button>
-      <button type="button" class="csec-btn" data-go="vereadores">Vereadores</button>
+      <button type="button" class="csec-btn" data-go="vereadores">Remuneração</button>
       <button type="button" class="csec-btn" data-go="emendas">Emendas</button>
-      <button type="button" class="csec-btn" data-go="atividade">Atividade</button>
       <button type="button" class="csec-btn" data-go="diarias">Diárias</button>
     </nav>
 
     <section id="remuneracaoVereadores" class="salary-transparency" aria-label="Subsídio e remuneração dos vereadores" data-csec="vereadores"></section>
+
+    <select id="filtroAnoCamara" hidden aria-label="Ano das emendas"><option value="2025">2025</option><option value="2026">2026</option></select>
 
     <!-- FILTROS RÁPIDOS POR CATEGORIA -->
     <div id="catChipsCamara" class="cat-chips" aria-label="Filtrar emendas por categoria" data-csec="emendas"></div>
@@ -203,96 +170,7 @@
       <div id="gastosPalavraChaveCamara" class="keyword-audit"></div>
     </div>
 
-    <div class="block" data-csec="vereadores">
-      <h3 class="block__title">Os vereadores</h3>
-      <p class="block__lead">
-        Veja o que cada um produziu em 2025: quanto pediu para o bairro (indicações),
-        quanto fiscalizou a Prefeitura (requerimentos), quantos projetos de lei
-        e quantas emendas direcionou ao orçamento.
-      </p>
 
-      <div class="filterbar">
-        <select id="filtroAnoCamara" aria-label="Escolher ano da avaliação da Câmara">
-          <option value="2025">Ano 2025</option>
-          <option value="2026">Ano 2026</option>
-        </select>
-        <input id="filtroVer" type="search" placeholder="Filtrar por nome…">
-        <select id="ordenarVer" aria-label="Ordenar vereadores">
-          <option value="requerimentos" selected>Mais requerimentos</option>
-          <option value="total">Mais ativos</option>
-          <option value="emendas">Mais emendas</option>
-          <option value="indicacoes">Mais indicações</option>
-          <option value="projetos_lei">Mais projetos de lei</option>
-          <option value="mocoes">Mais moções/homenagens</option>
-        </select>
-      </div>
-
-      <div id="vereadores" class="grid grid--vereadores"></div>
-    </div>
-
-    <!-- ===== RESUMO SEMANAL ===== -->
-    <div class="block" id="resumoSemanalBlock" data-csec="atividade">
-      <h3 class="block__title">Resumo Semanal — O que a Câmara fez</h3>
-      <p class="block__lead">
-        O cidadão vota a cada 4 anos, mas deve fiscalizar toda semana.
-        Veja as matérias apresentadas no período escolhido, classificadas por grau de impacto.
-      </p>
-
-      <div class="rs-filtros">
-        <!-- Linha 1: Ano + Período -->
-        <div class="rs-filtros__row rs-filtros__row--top">
-          <div class="rs-grupo">
-            <span class="rs-grupo__label">Ano</span>
-            <div id="resumoAnoChips" class="rs-chips" role="group" aria-label="Filtrar por ano">
-              <button type="button" class="rs-chip" data-rsano="2025">2025</button>
-              <button type="button" class="rs-chip" data-rsano="2026">2026</button>
-              <button type="button" class="rs-chip rs-chip--active" data-rsano="">Todos</button>
-            </div>
-          </div>
-          <div class="rs-grupo rs-grupo--grow">
-            <span class="rs-grupo__label">Período</span>
-            <div id="resumoPeriodoChips" class="rs-chips" role="group" aria-label="Filtrar por período">
-              <button type="button" class="rs-chip rs-chip--active" data-periodo="semana">Esta semana</button>
-              <button type="button" class="rs-chip" data-periodo="2semanas">Últimas 2 semanas</button>
-              <button type="button" class="rs-chip" data-periodo="mes">Este mês</button>
-              <button type="button" class="rs-chip" data-periodo="custom">Período livre</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Linha 1b: Date range (oculto por padrão) -->
-        <div id="resumoCustomRange" class="resumo-custom-range" hidden>
-          <label>De <input type="date" id="resumoDataInicio" aria-label="Data início"></label>
-          <label>até <input type="date" id="resumoDataFim" aria-label="Data fim"></label>
-          <button type="button" id="resumoAplicarCustom" class="btn-small">Filtrar</button>
-        </div>
-
-        <!-- Linha 2: Grau + Vereador + Contador -->
-        <div class="rs-filtros__row rs-filtros__row--bottom">
-          <div class="rs-grupo">
-            <span class="rs-grupo__label">Impacto</span>
-            <div id="resumoGrauChips" class="rs-chips" role="group" aria-label="Filtrar por grau">
-              <button type="button" class="rs-chip rs-chip--alto" data-grau="alto">● Alto</button>
-              <button type="button" class="rs-chip rs-chip--medio" data-grau="medio">● Médio</button>
-              <button type="button" class="rs-chip rs-chip--baixo" data-grau="baixo">● Simbólico</button>
-            </div>
-          </div>
-          <div class="rs-grupo rs-grupo--grow">
-            <span class="rs-grupo__label">Vereador</span>
-            <select id="resumoFiltroVer" class="rs-select" aria-label="Filtrar por vereador">
-              <option value="">Todos</option>
-            </select>
-          </div>
-          <span id="resumoContador" class="rs-contador"></span>
-        </div>
-      </div>
-
-      <div id="resumoSemanalFeed" class="resumo-semanal-feed"></div>
-      <div id="resumoSemanalEmpty" class="empty-state" hidden>
-        <p>Nenhuma matéria encontrada. Tente ampliar o período ou escolher "Período livre".</p>
-      </div>
-    </div>
-    <!-- ===== FIM RESUMO SEMANAL ===== -->
 
     <div class="block" data-csec="emendas">
       <h3 class="block__title">Emendas Impositivas — promessa × pagamento</h3>
@@ -450,7 +328,6 @@
         <a href="emendas/index.html">Emendas</a>
         <a href="relatorios.html">Relatórios</a>
         <a href="pessoal.html">Pessoal</a>
-        <a href="avalie.html">Avalie</a>
         <a href="sobre.html">Sobre</a>
         <a href="conformidade.html">Conformidade</a>
         <a href="cobrar.html">Como cobrar</a>
@@ -525,17 +402,11 @@
   });
 
   // Seção inicial: hash da URL (se válido) ou "geral"
-  var valido = ["geral", "vereadores", "emendas", "atividade", "diarias"];
+  var valido = ["geral", "vereadores", "emendas", "diarias"];
   
   function verificarHash(hash) {
     var h = (hash || "").replace("#", "");
-    if (h === "indiceRelevancia") {
-      mostrar("geral");
-      requestAnimationFrame(function () {
-        var alvo = document.getElementById("indiceRelevancia");
-        if (alvo) alvo.scrollIntoView({ block: "start", behavior: "smooth" });
-      });
-    } else if (valido.indexOf(h) >= 0) {
+    if (valido.indexOf(h) >= 0) {
       mostrar(h);
     } else {
       mostrar("geral");

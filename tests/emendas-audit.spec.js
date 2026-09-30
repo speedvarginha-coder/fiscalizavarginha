@@ -148,8 +148,12 @@ test("comprovação financeira não é inferida de agregados", () => {
   const estaduais2026 = estaduaisOficiais.filter((record) => record.anoEmenda === "2026");
   expect(estaduais2026).toHaveLength(31);
   expect(estaduais2026.reduce((sum, record) => sum + Number(record.valorIndicado || 0), 0)).toBeCloseTo(4_606_500, 2);
-  expect(estaduais2026.reduce((sum, record) => sum + Number(record.valorPago || 0), 0)).toBe(0);
-  expect(estaduais2026.filter((record) => Number(record.valorUtilizado || 0) > 0).every((record) => record.estagioAtual !== "pago")).toBeTruthy();
+  expect(estaduais2026.reduce((sum, record) => sum + Number(record.valorPago || 0), 0)).toBeCloseTo(2_686_500, 2);
+  expect(estaduais2026.filter((record) => Number(record.valorPago || 0) > 0)).toHaveLength(14);
+  expect(estaduais2026.every((record) => record.valorRecebido == null)).toBeTruthy();
+  expect(estaduais2026.filter((record) => Number(record.valorPago || 0) > 0).every((record) =>
+    record.evidencias.urlOficial.includes("Planilha%20Impositivas%202026.xlsx") && record.estagioAtual === "pago"
+  )).toBeTruthy();
 });
 
 test("transferências especiais usam plano e conta exatos sem duplicar reprocessamento", () => {
