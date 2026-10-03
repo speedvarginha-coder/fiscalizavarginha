@@ -148,6 +148,8 @@ Conferido no site real logo depois:
 | Home, cartões | "6.361 registros de diárias (2025 e 2026)", "57 sem pagamento ou sem CNPJ", "249 emendas com pagamento localizado" |
 | Cruzamento diárias × salário | funcionou em 3 de 3 recargas (2 "não localizado", 28 salários; à tarde eram 110 "não localizado") |
 
-Duas levas ficaram para a vigia das 04:06: o bloco de reclamação em "Como cobrar" com a borda removida no ranking (`c3ff387`, 01:32) e a correção da busca (`a920702`, 01:54). As duas passaram pela suíte completa (216 aprovados).
+**Segunda publicação às 04:26** pela vigia das 04:06 ("coleta=SUCESSO deploy=SUCESSO"), com as duas últimas levas: o bloco de reclamação em "Como cobrar" com a borda removida no ranking (`c3ff387`) e a correção da busca (`a920702`). Conferido no site real: `cobrar.html#reclamar` no ar; `prefeitura.html?q=palestra` abre a aba Contratos com os 4 contratos, mantém o termo na URL e mostra "2 pontos para conferir".
+
+Todo o trabalho desta noite está publicado. Nada ficou pendente na pasta de trabalho além dos dados, que seguem o pipeline.
 
 A cópia de trabalho em `tmp/layout/` (cerca de 470 MB, ignorada pelo git) pode ser apagada.
