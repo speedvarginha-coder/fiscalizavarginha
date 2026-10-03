@@ -33,9 +33,9 @@
     "lint:seo": "node scripts/check-seo.mjs",
     "performance:budget": "node scripts/check-performance-budget.mjs",
     "performance:site": "node scripts/check-site-performance.mjs",
-    "release": "npm run test:lock && npm run test:security && npm run data:monitor && npm run data:chat && npm run data:bundle && npm run lint:syntax && npm run test:unit && npm run lint:accents && npm run lint:seo && npm run performance:budget && npm run validate:data && npm run test:contracts && npm test && npm run deploy:zip && npm run validate:deploy",
+    "release": "npm run test:lock && npm run test:security && npm run data:monitor && npm run data:chat && npm run data:bundle && npm run lint:syntax && npm run test:unit && npm run lint:accents && npm run lint:seo && npm run performance:budget && npm run validate:data && npm run test:critical && npm test && npm run deploy:zip && npm run validate:deploy",
     "test": "node scripts/run-browser-tests.mjs",
-    "test:data": "node scripts/check-syntax.mjs && npm run test:unit && npm run test:security && node tests/test_editorial_assertions.mjs && node scripts/run-browser-tests.mjs tests/calculos.spec.js",
+    "test:data": "npm run test:critical && node scripts/check-syntax.mjs && npm run test:unit && npm run test:security && node tests/test_editorial_assertions.mjs && node scripts/run-browser-tests.mjs tests/calculos.spec.js",
     "test:pipeline": "python -m unittest discover -s tests -p \"test_*.py\"",
     "test:security": "node tests/test_chat_xss.mjs && node tests/test_chat_proxy_contract.mjs",
     "test:headed": "node scripts/run-browser-tests.mjs --headed",
@@ -46,7 +46,8 @@
     "test:numeros": "node tests/test_numeros_publicados.mjs",
     "test:deploy": "node scripts/run-browser-tests.mjs --deploy",
     "test:contracts": "node --test tests/test_public_assets.mjs tests/test_data_views.mjs tests/test_radar_pntp.mjs tests/test_auditoria_diarias.mjs tests/test_pipeline_state.mjs tests/test_pipeline_progress.mjs tests/test_data_drop.mjs tests/test_publish_files.mjs tests/test_contratos_vigentes.mjs",
-    "test:unit": "node tests/test_cleantext_acentos.mjs && node tests/test_busca_flexao.mjs && node tests/test_moeda_negativa.mjs"
+    "test:unit": "node tests/test_cleantext_acentos.mjs && node tests/test_busca_flexao.mjs && node tests/test_moeda_negativa.mjs",
+    "test:critical": "npm run test:pipeline && npm run test:contracts && node --test tests/test_external_health.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0"

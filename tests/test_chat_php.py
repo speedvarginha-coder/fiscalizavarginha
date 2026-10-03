@@ -16,6 +16,15 @@ PHP = shutil.which('php') or ('C:/xampp/php/php.exe' if Path('C:/xampp/php/php.e
 
 @unittest.skipUnless(PHP, 'Runtime PHP indisponível')
 class ChatPersistenceTests(unittest.TestCase):
+    def test_utf8_limits_preserve_accents_emoji_and_valid_json(self):
+        source = (ROOT / 'painel-cidadao/chat.php').read_text(encoding='utf8')
+        function = source[source.index('function limitarTextoUtf8('):source.index('// Valide a entrada')]
+        with tempfile.TemporaryDirectory() as directory:
+            script = Path(directory) / 'utf8.php'
+            script.write_text('<?php\n' + function + "echo json_encode([limitarTextoUtf8(str_repeat('a', 499) . 'á😀', 500), limitarTextoUtf8(str_repeat('b', 1199) . '😀á', 1200)]);", encoding='utf8')
+            result = subprocess.run([PHP, str(script)], capture_output=True, text=True, encoding='utf8', check=True)
+            self.assertEqual(json.loads(result.stdout), ['a' * 499 + 'á', 'b' * 1199 + '😀'])
+
     def test_invalid_http_payloads_return_400_before_consuming_quota(self):
         with tempfile.TemporaryDirectory() as directory, socket.socket() as sock:
             sock.bind(('127.0.0.1', 0))

@@ -350,6 +350,10 @@
 
   function renderHomeOps() {
     if (!$("homeOpsStats")) return;
+    if (!D.prefeitura) {
+      $("homeOpsStats").textContent = "Aguardando a base da Prefeitura. Os valores ainda não estão disponíveis nesta consulta.";
+      return;
+    }
     const pf_data = D.prefeitura || {};
     const contratos = pf_data.contratos || [];
     const licitacoes = pf_data.licit_andamento || [];
@@ -369,13 +373,12 @@
     const emendasPendentes = (pf_data.emendas_cruzadas || [])
       .filter(e => e.status === "sem_pagamento" || e.status === "sem_cnpj").length;
     const contratosMilhao = contratos.filter(c => Number(c.valor || 0) >= 1_000_000).length;
-    const totalContratos = contratos.reduce((s, c) => s + Number(c.valor || 0), 0);
     const totalDiarias = diariasPref.length
       ? diariasPref.reduce((s, d) => s + Number(d.valor_total || 0), 0)
       : Number(hr.diarias_prefeitura_valor) || 0;
 
     $("homeOpsStats").innerHTML = [
-      { href: "prefeitura.html", value: fmtMi(pf_data.total_externo_atual || totalContratos), label: `pagos em ${pf_data.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
+      { href: "prefeitura.html", value: pf_data.total_externo_atual == null ? "Não informado" : fmtMi(pf_data.total_externo_atual), label: `pagos em ${pf_data.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
       { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos", cidada: "Quem recebeu mais? Por qual serviço?" },
       { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasQtd), label: `${fmtBRL(totalDiarias)} em diárias (${anosDiarias})`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
       // A produção de cada vereador saiu do painel junto com o Avalie; o cartão
@@ -6386,7 +6389,7 @@ ${url}
       const LIGACAO = new Set(["do", "da", "de", "dos", "das", "o", "a", "os", "as", "e", "em", "no", "na", "um", "uma", "quanto", "qual", "quem", "ganha", "recebe", "paga"]);
       const termoResidual = (regra) => q.split(/\s+/).filter(w => {
         const n = norm(w);
-        return n.length > 2 && !LIGACAO.has(n) && !regra.some(t => n.startsWith(norm(t).slice(0, 5)));
+        return n.length > 2 && !LIGACAO.has(n) && !regra.flatMap(t => norm(t).split(/\s+/)).some(t => t.length > 2 && n.startsWith(t.slice(0, 5)));
       }).join(" ");
       const REGRA_COMISSIONADO = ["comissionado", "cargo comissionado", "cargos de confianca"];
       if (casaRegra(REGRA_COMISSIONADO)) {
@@ -7712,6 +7715,20 @@ ${url}
           <div class="placar-card__sub">${sub || ""}</div>
         </div>
       </article>`;
+
+    let avisoColeta = $("fundacaoColetaAviso");
+    if (!avisoColeta) {
+      avisoColeta = document.createElement("p");
+      avisoColeta.id = "fundacaoColetaAviso";
+      avisoColeta.setAttribute("role", "status");
+      $("fundacaoResumo").before(avisoColeta);
+    }
+    const nomesConjuntos = { despesas: "Despesas", execucao: "Execução", contratos: "Contratos", licitacoes: "Licitações", diarias: "Diárias", pessoal: "Pessoal", transferencias: "Transferências" };
+    avisoColeta.textContent = Object.entries(fc.coleta_frescor?.datasets || {})
+      .filter(([, meta]) => /preservad/.test(meta.status || ""))
+      .map(([nome, meta]) => `${nomesConjuntos[nome] || nome}: coleta indisponível; base anterior preservada (${meta.last_complete_at ? "última coleta completa: " + new Date(meta.last_complete_at).toLocaleDateString("pt-BR") : "data da última coleta completa não informada"}).`)
+      .join(" ");
+    avisoColeta.hidden = !avisoColeta.textContent;
 
     $("fundacaoResumo").innerHTML = [
       card("placar-card--money", window.FISCALIZA.icon("cifrao", { size: 20 }), fmtMi(despesas.total_atual || 0), `Pago em ${ano}`, "Despesas por credor no Betha"),

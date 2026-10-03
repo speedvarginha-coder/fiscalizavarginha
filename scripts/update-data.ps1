@@ -904,7 +904,7 @@ try {
     # Gate rápido de integridade dos dados — roda SEMPRE, mesmo com -SkipTests,
     # para que o vigia (watch) nunca publique chunks com formato/cálculo quebrado.
     Invoke-IsolatedAndLog `
-      -Label "Gate rápido de dados (sintaxe + cálculos)." `
+      -Label "Gate obrigatório de preservação, contratos, sintaxe e cálculos." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "test:data") `
       -WorkingDirectory $root `
@@ -973,6 +973,11 @@ try {
         -Label "Publicando exclusivamente dist/painel-cidadao e executando health check." `
         -FilePath "python" `
         -Arguments @((Join-Path $root "private\deploy_completo.py")) `
+        -WorkingDirectory $root
+      Invoke-AndLog `
+        -Label "Conferindo páginas, dados e serviços PHP após a publicação." `
+        -FilePath "npm.cmd" `
+        -Arguments @("run", "health:external") `
         -WorkingDirectory $root
       $deployStatus = "SUCESSO"
     } catch {
@@ -1072,6 +1077,11 @@ try {
         -Label "Publicando estado final do monitoramento." `
         -FilePath "python" `
         -Arguments @((Join-Path $root "private\deploy_completo.py")) `
+        -WorkingDirectory $root
+      Invoke-AndLog `
+        -Label "Conferindo páginas, dados e serviços PHP após a publicação." `
+        -FilePath "npm.cmd" `
+        -Arguments @("run", "health:external") `
         -WorkingDirectory $root
     } catch {
       $deployStatus = "FALHA"

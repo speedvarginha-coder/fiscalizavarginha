@@ -154,18 +154,110 @@ class FundacaoFalhaDeDownloadTests(unittest.TestCase):
                 raise TimeoutError("The read operation timed out")
             return []
 
-        def anterior(_name, field, **_kwargs):
-            return (anteriores, "backup.json") if field == "contratos" else ([], None)
-
         with patch.object(coletor_betha, "get_token", return_value="token"), \
                 patch.object(coletor_betha, "baixar_busca_textual", side_effect=busca), \
-                patch.object(coletor, "_load_last_nonempty_list", side_effect=anterior):
+                patch.object(coletor, "_load_existing", return_value={
+                    "contratos": anteriores, "contratos_vigentes": anteriores,
+                    "contratos_futuros": [], "contratos_resumo": {"qtd_total": 1}}):
             result = coletor._processa_fundacao_cultural()
 
         self.assertEqual(result["contratos"], anteriores)
         self.assertEqual(result["contratos_vigentes"], anteriores)
         # Consulta que respondeu vazia de verdade continua vazia.
         self.assertEqual(result["dispensas"], [])
+
+
+class PreservacaoRegressaoTests(unittest.TestCase):
+    def fundacao(self, anterior, falhar):
+        def busca(_token, consulta, **kwargs):
+            if consulta in falhar:
+                raise TimeoutError("simulado")
+            return []
+        with patch.object(coletor_betha, "get_token", return_value="token"), \
+             patch.object(coletor_betha, "baixar_busca_textual", side_effect=busca), \
+             patch.object(coletor, "_load_existing", return_value=anterior):
+            return coletor._processa_fundacao_cultural()
+
+    def test_fundacao_preserva_cada_conjunto_sem_rejuvenescer(self):
+        grupos = {
+            "despesas": coletor.CONSULTA_FUNDACAO_DESPESAS_CREDOR,
+            "execucao": coletor.CONSULTA_FUNDACAO_EXEC_DETALHADA,
+            "diarias": coletor.CONSULTA_FUNDACAO_DIARIAS_DET,
+            "pessoal": coletor.CONSULTA_FUNDACAO_SERVIDORES_ATIVOS,
+            "transferencias": coletor.CONSULTA_FUNDACAO_TRANSFERENCIAS,
+        }
+        for campo, consulta in grupos.items():
+            with self.subTest(campo=campo):
+                anterior = {campo: {"valor": 123}, "coleta_frescor": {"datasets": {
+                    campo: {"last_complete_at": "2026-09-01T00:00:00Z"}}}}
+                result = self.fundacao(anterior, {consulta})
+                self.assertEqual(result[campo], anterior[campo])
+                meta = result["coleta_frescor"]["datasets"][campo]
+                self.assertEqual(meta["last_complete_at"], "2026-09-01T00:00:00Z")
+                self.assertEqual(meta["status"], "preservado_por_falha")
+                self.assertEqual(result["coleta_status"], "partial")
+                self.assertEqual(result["contratos"], [])  # consulta bem-sucedida vazia
+
+    def test_fundacao_falha_sem_base_nao_publica_zero(self):
+        with self.assertRaisesRegex(ValueError, "gravação bloqueada"):
+            self.fundacao({}, {coletor.CONSULTA_FUNDACAO_DIARIAS_DET})
+
+    def test_fundacao_zero_confirmado_substitui_base(self):
+        result = self.fundacao({"pessoal": {"servidores": [{"nome": "Anterior"}]}}, set())
+        self.assertEqual(result["pessoal"]["servidores"], [])
+        self.assertEqual(result["coleta_status"], "ok")
+
+    def test_fundacao_nao_reclassifica_base_de_outro_exercicio(self):
+        with self.assertRaisesRegex(ValueError, "mudança de exercício"):
+            self.fundacao({"ano_atual": 2000}, {coletor.CONSULTA_FUNDACAO_DIARIAS_DET})
+
+    def test_contratos_parciais_acima_do_piso_antigo(self):
+        novos = [{"numero": str(i), "ano": "2026"} for i in range(300)]
+        anteriores = novos + [{"numero": "perdido", "ano": "2025", "entidade": "Prefeitura"}]
+        ok = [{"status": "ok"}] * 9
+        self.assertTrue(coletor._contratos_incompletos(novos, anteriores, ok, 9, "2026-10-03"))
+        self.assertTrue(coletor._contratos_incompletos(novos, novos, ok[:8], 9, "2026-10-03"))
+        self.assertTrue(coletor._contratos_incompletos(novos, novos, ok[:8] + [{"status": "partial"}], 9, "2026-10-03"))
+        self.assertFalse(coletor._contratos_incompletos(novos, novos, ok, 9, "2026-10-03"))
+
+    def test_contratos_identidade_e_expiracao(self):
+        base = {"numero": "1", "ano": "2022", "cnpj": "123", "entidade": "A", "data_fim": "2030-01-01"}
+        outro = dict(base, entidade="B")
+        self.assertTrue(coletor._contratos_incompletos([outro], [base], [{"status": "ok"}], 1, "2026-10-03"))
+        vencido = dict(base, data_fim="2024-01-01", situacao="EXECUCAO")
+        self.assertFalse(coletor._contratos_incompletos([], [vencido], [{"status": "ok"}], 1, "2026-10-03"))
+
+    def test_camara_preserva_resposta_parcial_nao_vazia(self):
+        anterior = [{"numero": "anterior", "ano": "2026", "valor": 123}]
+        with patch.object(coletor_betha, "get_token", return_value="token"), \
+             patch.object(coletor_betha, "todos_credores_generico", return_value=[]), \
+             patch.object(coletor_betha, "baixar_dados_abertos", return_value={"main": [{"numero": "novo"}], "coleta_status": "partial"}), \
+             patch.object(coletor, "_load_last_nonempty_list", return_value=(anterior, "backup.json")), \
+             patch.object(coletor, "_load_existing", return_value={"licitacoes": []}):
+            result = coletor._processa_camara_betha()
+        self.assertEqual(result["contratos"], anterior)
+        self.assertEqual(result["contratos_status_coleta"], "preservada_por_resposta_betha_parcial")
+        self.assertEqual(result["licitacoes_status_coleta"], "preservada_por_falha")
+
+    def test_datas_invalidas_e_brasileiras(self):
+        for data in [None, "-", "31/02/2026"]:
+            self.assertTrue(coletor._contrato_vigente({"dataVigenciaFinal": data, "situacao": "EM EXECUÇÃO"}, "2026-10-03"))
+        self.assertFalse(coletor._contrato_vigente({"dataVigenciaFinal": "01/01/2020", "situacao": "EXECUCAO"}, "2026-10-03"))
+        r = coletor._normaliza_contratos([{"numero": "1", "dataAssinatura": "31/02/2026", "dataVigenciaFinal": "12/12/2037"}])[0]
+        self.assertEqual(r["data_assinatura"], "")
+        self.assertEqual(r["data_fim"], "2037-12-12")
+
+    def test_paginacao_interrompida_ou_repetida_nao_passa(self):
+        for respostas in [
+            [{"totalHits": 3, "hits": [{"sourceAsMap": {"id": 1}}]}, {"totalHits": 3, "hits": []}],
+            [{"totalHits": 2, "hits": [{"sourceAsMap": {"id": 1}}]}] * 2,
+            [{"hits": []}],
+        ]:
+            with patch.object(coletor_betha, "_api", side_effect=respostas):
+                with self.assertRaises(coletor_betha.BethaExportError):
+                    coletor_betha.baixar_busca_textual("token", 1, batch=1)
+        with patch.object(coletor_betha, "_api", return_value={"totalHits": 0, "hits": []}):
+            self.assertEqual(coletor_betha.baixar_busca_textual("token", 1), [])
 
 
 if __name__ == "__main__":

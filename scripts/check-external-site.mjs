@@ -5,7 +5,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const statePath = path.join(root, "private", "state", "external_site.json");
+const statePath = process.env.FISCALIZA_HEALTH_STATE_PATH || path.join(root, "private", "state", "external_site.json");
 const base = (process.env.FISCALIZA_HEALTH_URL || "https://fiscalizavarginha.com.br/").replace(/\/?$/, "/");
 
 async function get(relative, type = "text") {
@@ -49,6 +49,23 @@ try {
     get("data/manifest.json", "bytes"),
     get("data/chunks/atualizado_em.json"),
   ]);
+  // GET do chat para antes das cotas e da API paga; saúde do Avalie não grava avaliação.
+  const chatResponse = await fetch(new URL("chat.php", base), { signal: AbortSignal.timeout(15_000), cache: "no-store" });
+  if (chatResponse.status !== 405) throw new Error(`chat.php: HTTP ${chatResponse.status}; esperado 405`);
+  const chat = await chatResponse.json();
+  if (!chat.erro) throw new Error("chat.php não respondeu com o contrato JSON esperado.");
+  const avalie = JSON.parse(await get("avalie.php?acao=saude"));
+  if (avalie.ok !== true) throw new Error("Armazenamento do Avalie indisponível.");
+  for (const page of ["prefeitura.html", "pessoal.html", "cobrar.html"]) {
+    if (!/<main[\s>]/i.test(await get(page))) throw new Error(`${page}: conteúdo principal ausente`);
+  }
+  const manifestForChecks = JSON.parse(manifestBytes.toString("utf8"));
+  for (const key of ["prefeitura_painel", "diarias", "pessoal_resumo"]) {
+    const item = manifestForChecks.chunks?.[key];
+    if (!item || item.arquivo !== `data/chunks/${key}.json`) throw new Error(`Manifest sem caminho válido para ${key}`);
+    const bytes = await get(item.arquivo, "bytes");
+    if (crypto.createHash("sha256").update(bytes).digest("hex") !== item.sha256) throw new Error(`Chunk remoto divergente: ${key}`);
+  }
   if (!/Fiscaliza\s+Varginha/i.test(home)) throw new Error("A pagina inicial nao contem a identidade do projeto.");
   const release = JSON.parse(releaseText);
   const manifest = JSON.parse(manifestBytes.toString("utf8"));
@@ -77,7 +94,7 @@ try {
     console.error(`FALHA - coleta parada: ${idadeHoras.toFixed(1)} h sem atualizacao (limite ${limiteHoras} h).`);
     process.exitCode = 1;
   } else {
-    write("ok", "Site, release, manifest e idade da coleta conferidos.", extra);
+    write("ok", "Site, dados essenciais, serviços PHP, release e idade da coleta conferidos.", extra);
     console.log(`OK - site externo saudavel (${chunkCount} chunks; coleta ha ${idadeHoras.toFixed(1)} h).`);
   }
 } catch (error) {

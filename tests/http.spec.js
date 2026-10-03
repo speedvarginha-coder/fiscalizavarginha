@@ -324,6 +324,30 @@ test("Monitoramento mostra situação e idade das fontes em linguagem simples", 
   expect(texto).toMatch(/hoje|há \d+ dias?|sem data de coleta/);
 });
 
+test("busca por cargos de confiança remove a expressão e preserva o nome adicional", async ({ page }) => {
+  for (const [consulta, filtro] of [["cargos de confiança", ""], ["cargos de confiança Maria", "Maria"], ["salário do prefeito", "prefeito"]]) {
+    await page.goto("/index.html", { waitUntil: "domcontentloaded" });
+    await page.waitForFunction(() => typeof window.FISCALIZA?.smartAudit === "function");
+    await page.evaluate(q => window.FISCALIZA.smartAudit(q), consulta);
+    await page.waitForURL(/pessoal\.html/);
+    expect(new URL(page.url()).searchParams.get("q") || "").toBe(filtro);
+    if (consulta.startsWith("cargos")) expect(new URL(page.url()).searchParams.get("tipo")).toBe("comissionado");
+  }
+});
+
+test("Fundação identifica base preservada e mantém a data original", async ({ page }) => {
+  await page.route("**/data/chunks/fundacao_cultural.json*", async route => {
+    const response = await route.fetch();
+    const data = await response.json();
+    data.coleta_frescor = { datasets: { despesas: { status: "preservado_por_falha", last_complete_at: "2026-09-05T15:00:00Z" } } };
+    await route.fulfill({ response, json: data });
+  });
+  await page.goto("/fundacao.html", { waitUntil: "domcontentloaded" });
+  const aviso = page.locator("#fundacaoColetaAviso");
+  await expect(aviso).toContainText("Despesas: coleta indisponível; base anterior preservada");
+  await expect(aviso).toContainText("05/09/2026");
+});
+
 test("busca global abre pelo menu e roteia em página interna", async ({ page }) => {
   await page.goto("/prefeitura.html", { waitUntil: "domcontentloaded" });
   await page.waitForFunction(() => window.FISCALIZA && typeof window.FISCALIZA.smartAudit === "function");

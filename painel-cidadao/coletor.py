@@ -120,10 +120,16 @@ def _write_json_atomic(path: Path, payload) -> None:
 
 def _save(name: str, payload) -> None:
     agora = dt.datetime.now().astimezone().isoformat(timespec="seconds")
+    if name == "cnpjs.json" and isinstance(payload, dict):
+        anterior = _load_existing(name, {})
+        if "fornecedores" not in payload and "fornecedores" in anterior:
+            payload["fornecedores"] = anterior["fornecedores"]
+            payload["fornecedores_status"] = "preservado_aguardando_coleta"
+            payload["fornecedores_coletado_em"] = anterior.get("fornecedores_coletado_em")
     if name == "federal.json" and isinstance(payload, dict) and payload:
         registrar_frescor_federal(payload, _load_existing(name, {}), agora)
     if name in ("prefeitura.json", "camara_betha.json") and isinstance(payload, dict) and payload:
-        campos = ("contratos", "obras", "frota") if name == "prefeitura.json" else ("contratos",)
+        campos = ("contratos", "obras", "frota") if name == "prefeitura.json" else ("contratos", "licitacoes")
         registrar_frescor(payload, _load_existing(name, {}), {
             campo: payload.get(f"{campo}_status_coleta", "unknown") for campo in campos
         }, agora)
@@ -1531,7 +1537,7 @@ def _processa_camara_betha() -> dict:
         )
     except Exception as e:
         print(f"  ✗ falha empenhos Câmara: {e}")
-        empenhos = []
+        raise ValueError("Despesas da Câmara indisponíveis; gravação bloqueada") from e
 
     ano_atual = dt.datetime.now().year
     total_atual, top_atual       = _agrega_empenhos_camara(empenhos, ano_atual,     n=20)
@@ -1572,18 +1578,20 @@ def _processa_camara_betha() -> dict:
 
     contratos_status = "coleta_atual"
     contratos_origem_preservada = None
-    if dados_abertos_status.get("contratos", {}).get("status") == "partial":
-        contratos_status = "coleta_atual_parcial_via_busca_textual"
-    if not contratos:
-        anteriores, origem = _load_last_nonempty_list("camara_betha.json", "contratos")
-        if anteriores:
-            contratos = anteriores
-            contratos_status = "preservada_por_resposta_betha_vazia"
-            contratos_origem_preservada = origem
-            print(
-                f"  ! Câmara: consulta de contratos vazia; preservando "
-                f"{len(contratos)} registros da última base válida."
-            )
+    anteriores, origem = _load_last_nonempty_list("camara_betha.json", "contratos")
+    incompletos = _contratos_incompletos(contratos, anteriores,
+        [dados_abertos_status.get("contratos", {})], 1, dt.date.today().isoformat())
+    if incompletos or (not contratos and anteriores):
+        if not anteriores:
+            raise ValueError("Contratos da Câmara incompletos e sem base anterior; gravação bloqueada")
+        contratos_status = "preservada_por_resposta_betha_parcial" if contratos else "preservada_por_resposta_betha_vazia"
+        contratos, contratos_origem_preservada = anteriores, origem
+    if dados_abertos_status.get("licitacoes", {}).get("status") != "ok":
+        anterior = _load_existing("camara_betha.json", {})
+        if "licitacoes" not in anterior:
+            raise ValueError("Licitações da Câmara indisponíveis e sem base anterior; gravação bloqueada")
+        licitacoes = anterior["licitacoes"]
+        dados_abertos_status["licitacoes"]["preservada"] = True
 
     return {
         "ano_atual":              ano_atual,
@@ -1597,6 +1605,7 @@ def _processa_camara_betha() -> dict:
         "licitacoes":  licitacoes,
         "contratos_status_coleta": contratos_status,
         "contratos_origem_preservada": contratos_origem_preservada,
+        "licitacoes_status_coleta": "preservada_por_falha" if dados_abertos_status.get("licitacoes", {}).get("preservada") else "coleta_atual",
         "dados_abertos_status": dados_abertos_status,
     }
 
@@ -1785,17 +1794,6 @@ def _processa_fundacao_cultural() -> dict:
             falhas.add(label)
             return []
 
-    def preservar(label: str, campo: str, valor: list) -> list:
-        # Download que falhou nao e ausencia de registros: um timeout da Betha
-        # gravava 0 contratos por cima de 906 (out/2026).
-        if label not in falhas:
-            return valor
-        anteriores, origem = _load_last_nonempty_list("fundacao_cultural.json", campo)
-        if not anteriores:
-            return valor
-        print(f"  ! {label}: download falhou; preservando {len(anteriores)} de {origem}")
-        return anteriores
-
     despesas_atual = baixar_busca(
         f"Despesas por credor ({ano_atual})",
         CONSULTA_FUNDACAO_DESPESAS_CREDOR,
@@ -1826,7 +1824,7 @@ def _processa_fundacao_cultural() -> dict:
     }
 
     contratos_raw = baixar_busca("Contratos", CONSULTA_FUNDACAO_CONTRATOS)
-    contratos = preservar("Contratos", "contratos", _normaliza_contratos(contratos_raw))
+    contratos = _normaliza_contratos(contratos_raw)
     hoje_iso = dt.date.today().isoformat()
     contratos_vigentes = [
         c for c in contratos
@@ -1838,14 +1836,14 @@ def _processa_fundacao_cultural() -> dict:
         if c.get("data_fim") and c["data_fim"] >= hoje_iso
     ]
 
-    licitacoes = preservar("Processos licitatórios", "licitacoes", _normaliza_licitacoes(
-        baixar_busca("Processos licitatórios", CONSULTA_FUNDACAO_PROCESSOS)))
-    licit_abertas = preservar("Licitações abertas/em andamento", "licit_abertas", _normaliza_licitacoes(
-        baixar_busca("Licitações abertas/em andamento", CONSULTA_FUNDACAO_LICIT_ABERTAS)))
-    dispensas = preservar("Dispensas", "dispensas", _normaliza_licitacoes(
-        baixar_busca("Dispensas", CONSULTA_FUNDACAO_DISPENSAS)))
-    inexigibilidades = preservar("Inexigibilidades", "inexigibilidades", _normaliza_licitacoes(
-        baixar_busca("Inexigibilidades", CONSULTA_FUNDACAO_INEXIGIBILIDADES)))
+    licitacoes = _normaliza_licitacoes(
+        baixar_busca("Processos licitatórios", CONSULTA_FUNDACAO_PROCESSOS))
+    licit_abertas = _normaliza_licitacoes(
+        baixar_busca("Licitações abertas/em andamento", CONSULTA_FUNDACAO_LICIT_ABERTAS))
+    dispensas = _normaliza_licitacoes(
+        baixar_busca("Dispensas", CONSULTA_FUNDACAO_DISPENSAS))
+    inexigibilidades = _normaliza_licitacoes(
+        baixar_busca("Inexigibilidades", CONSULTA_FUNDACAO_INEXIGIBILIDADES))
 
     diarias_detalhe = _normaliza_diarias_fundacao(
         baixar_busca("Diárias detalhadas", CONSULTA_FUNDACAO_DIARIAS_DET),
@@ -1866,7 +1864,7 @@ def _processa_fundacao_cultural() -> dict:
         return round(sum(_f(i.get(campo, 0)) for i in lista if str(i.get("ano", "")) == str(ano)), 2)
 
     print(f"  ✓ Fundação Cultural: {len(contratos)} contratos, {len(servidores)} servidores ativos")
-    return {
+    resultado = {
         "fonte": "Portal Betha da Fundação Cultural de Varginha",
         "portal_hash": PORTAL_HASH_FUNDACAO,
         "portal_url": portal_url,
@@ -1946,6 +1944,35 @@ def _processa_fundacao_cultural() -> dict:
             "fonte_url": f"{portal_url}/consulta/{CONSULTA_FUNDACAO_TRANSFERENCIAS}",
         },
     }
+
+
+    anterior = _load_existing("fundacao_cultural.json", {})
+    if falhas and anterior.get("ano_atual", ano_atual) != ano_atual:
+        raise ValueError("Fundação: falha na mudança de exercício; gravação bloqueada para não reclassificar valores antigos")
+    grupos = {
+        "despesas": (["despesas"], [f"Despesas por credor ({ano_atual})", f"Despesas por credor ({ano_anterior})"]),
+        "execucao": (["execucao"], [f"Execução detalhada ({ano_atual})"]),
+        "contratos": (["contratos", "contratos_vigentes", "contratos_futuros", "contratos_resumo"], ["Contratos"]),
+        "licitacoes": (["licitacoes", "licit_abertas", "dispensas", "inexigibilidades", "licitacoes_resumo"],
+                       ["Processos licitatórios", "Licitações abertas/em andamento", "Dispensas", "Inexigibilidades"]),
+        "diarias": (["diarias"], ["Diárias detalhadas", f"Diárias orçamentárias ({ano_atual})"]),
+        "pessoal": (["pessoal"], ["Servidores públicos ativos"]),
+        "transferencias": (["transferencias"], ["Transferências financeiras recebidas"]),
+    }
+    estados = {}
+    for conjunto, (campos, consultas) in grupos.items():
+        if falhas.intersection(consultas):
+            if any(campo not in anterior for campo in campos):
+                raise ValueError(f"Fundação: {conjunto} falhou e não há base anterior completa; gravação bloqueada")
+            for campo in campos:
+                resultado[campo] = anterior[campo]
+            estados[conjunto] = "preservado_por_falha"
+        else:
+            estados[conjunto] = "ok"
+    resultado["coleta_status"] = "partial" if falhas else "ok"
+    resultado["coleta_falhas"] = sorted(falhas)
+    registrar_frescor(resultado, anterior, estados)
+    return resultado
 
 
 # ----------------- 4) Prefeitura (Betha) -------------------------------- #
@@ -2073,8 +2100,11 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
         "prefeitura.json", "contratos"
     )
     coleta_contratos_parcial = (
-        len(contratos_normalizados) < 200 and len(contratos_anteriores) >= 200
+        _contratos_incompletos(contratos_normalizados, contratos_anteriores, contratos_diag,
+                                2 if vigia_rapida else 9, hoje_iso)
     )
+    if coleta_contratos_parcial and not contratos_anteriores:
+        raise ValueError("Contratos da Prefeitura incompletos e sem base anterior; gravação bloqueada")
     if coleta_contratos_parcial and not vigia_rapida:
         contratos_normalizados = contratos_anteriores
         contratos_status = "preservada_por_resposta_betha_parcial"
@@ -2199,19 +2229,45 @@ def _baixar_dados_abertos_safe(cb, token: str, label: str, consulta_id: int,
         return []
 
 
+def _data_contrato(valor) -> str:
+    texto = str(valor or "").strip()
+    for formato, trecho in (("%Y-%m-%d", texto[:10]), ("%d/%m/%Y", texto)):
+        try:
+            return dt.datetime.strptime(trecho, formato).date().isoformat()
+        except ValueError:
+            pass
+    return ""
+
+
+def _contratos_incompletos(novos, anteriores, diagnosticos, consultas_esperadas, hoje_iso):
+    if len(diagnosticos) != consultas_esperadas or any(d.get("status") != "ok" for d in diagnosticos):
+        return True
+    def identidade(c):
+        chave = tuple(str(c.get(k) or "").strip() for k in ("numero", "ano", "cnpj", "contratado", "entidade"))
+        return chave + (str(c.get("objeto") or "") if chave[0] in ("", "0", "-") else "",)
+    chaves = {identidade(c) for c in novos}
+    for c in anteriores:
+        recente = str(c.get("ano") or "").isdigit() and int(c["ano"]) >= int(hoje_iso[:4]) - 1
+        vigente = _contrato_vigente({"dataVigenciaFinal": c.get("data_fim"), "situacao": c.get("situacao")}, hoje_iso)
+        if (recente or vigente) and identidade(c) not in chaves:
+            # Remoção na fonte exige reconciliação; uma resposta "ok" não prova exclusão legítima.
+            return True
+    return False
+
+
 def _contrato_vigente(r: dict, hoje_iso: str) -> bool:
     """Contrato de ano anterior que ainda vale: em execução ou com vigência
     final no futuro. Resgata plurianuais ativos (ex.: agência de publicidade
     assinada em 2024 e vigente até 2026). dataVigenciaFinal vem em ISO
     (YYYY-MM-DD), então a comparação lexicográfica equivale à cronológica."""
-    fim = str(r.get("dataVigenciaFinal", "")).strip()[:10]
+    fim = _data_contrato(r.get("dataVigenciaFinal"))
     if fim:
         # Data explícita decide: o campo situacao do Betha fica desatualizado
         # ("EM EXECUÇÃO" em contrato com vigência encerrada ha anos) e, com a
         # janela longa de resgate, confiar nele traria contratos mortos.
         return fim >= hoje_iso
     sit = str(r.get("situacao", "")).strip().upper()
-    return sit in ("EXECUCAO", "EXECUÇÃO", "EM EXECUCAO", "VIGENTE", "ATIVO")
+    return sit in ("EXECUCAO", "EXECUÇÃO", "EM EXECUCAO", "EM EXECUÇÃO", "VIGENTE", "ATIVO")
 
 
 def _baixar_dados_abertos_full_safe(cb, token: str, label: str, consulta_id: int,
@@ -2303,15 +2359,13 @@ def _normaliza_contratos(rows: list[dict]) -> list[dict]:
         # falsamente vazia (77 contratos somando 2020-2024 contra 696 sem ano) e
         # qualquer filtro ou grafico por ano mostra o quadro errado.
         ano_bruto = str(r.get("ano") or "").strip()
-        assinatura = r.get("dataAssinatura", "") or ""
-        if re.match(r"^\d{2}/\d{2}/\d{4}$", assinatura):
-            assinatura = dt.datetime.strptime(assinatura, "%d/%m/%Y").date().isoformat()
+        assinatura = _data_contrato(r.get("dataAssinatura"))
         ano = ano_bruto if ano_bruto not in ("", "0") else assinatura[:4]
         out.append({
             "numero":        r.get("numero", ""),
             "ano":           ano,
             "data_assinatura": assinatura,
-            "data_fim":      r.get("dataVigenciaFinal", ""),
+            "data_fim":      _data_contrato(r.get("dataVigenciaFinal")),
             "modalidade":    r.get("modalidadeLicitacao", ""),
             "tipo":          r.get("tipo", ""),
             "objeto":        (r.get("objeto") or "").strip(),
@@ -3154,7 +3208,11 @@ def main() -> int:
                     fornecedores = coletor_cnpj.coletar_fornecedores(top)
                     ok = sum(1 for f in fornecedores if "razao_social" in f)
                     print(f"  ✓ {ok}/{len(fornecedores)} fornecedores enriquecidos")
+                    if not fornecedores or any(f.get("erro") for f in fornecedores):
+                        raise ValueError("Enriquecimento incompleto; mantendo a base anterior")
                     cnpjs["fornecedores"] = fornecedores
+                    cnpjs["fornecedores_status"] = "ok"
+                    cnpjs["fornecedores_coletado_em"] = dt.datetime.now().astimezone().isoformat(timespec="seconds")
                     _save("cnpjs.json", cnpjs)
                 except Exception as _e:
                     print(f"  ✗ enriquecimento fornecedores: {_e}")

@@ -186,7 +186,7 @@
 
     <!-- Live: Contratos vigentes -->
     <div id="contratosBlock" class="block" hidden>
-      <h3 class="block__title">Contratos vigentes</h3>
+      <h3 class="block__title">Contratos da Prefeitura</h3>
       <p class="block__lead">
         Cada contrato é um compromisso assinado entre a Prefeitura e uma empresa
         (obras, serviços, fornecimentos). 
@@ -202,7 +202,8 @@
       <div id="contratosVencendoBlock"></div>
       <button type="button" class="btn-filter-trigger" onclick="FISCALIZA.toggleMobileFilters('contratosFilterbar')">🔍 Filtrar e Buscar Contratos</button>
       <div id="contratosFilterbar" class="filterbar">
-        <select id="filtroAnoContrato" aria-label="Filtrar por ano" onchange="FISCALIZA.filtrarContratos && FISCALIZA.filtrarContratos()">
+        <p id="contratosPeriodoAjuda" class="muted small">O ano considera o período informado do contrato, inclusive contratos assinados antes. A lista pode incluir contratos encerrados ou rescindidos; confira a situação em cada cartão. O total soma valores contratuais, não pagamentos realizados no ano.</p>
+        <select id="filtroAnoContrato" aria-label="Filtrar por ano" aria-describedby="contratosPeriodoAjuda" onchange="FISCALIZA.filtrarContratos && FISCALIZA.filtrarContratos()">
           <option value="">Todos os anos</option>
           <option value="2026" selected>2026</option>
           <option value="2025">2025</option>

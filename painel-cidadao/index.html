@@ -316,8 +316,14 @@ try {
 
       <section id="homeDataHealth" class="home-data-health home-data-health--home" hidden></section>
 
-      <section id="homeMoneyMap" class="home-money-map" aria-label="Para onde foi o dinheiro público"></section>
-      <section id="homeTrendWatch" class="home-trend-watch" aria-label="Comparativo de tendência do dinheiro público"></section>
+      <details class="home-fold" open>
+        <summary class="home-fold__summary"><strong>Contratos por tema</strong><span>Consulte saúde, educação, transporte e outras áreas</span></summary>
+        <section id="homeMoneyMap" class="home-money-map" aria-label="Para onde foi o dinheiro público"></section>
+      </details>
+      <details class="home-fold" open>
+        <summary class="home-fold__summary"><strong>Comparação entre períodos</strong><span>Entenda os limites da comparação com o ano em curso</span></summary>
+        <section id="homeTrendWatch" class="home-trend-watch" aria-label="Comparação entre períodos do dinheiro público"></section>
+      </details>
       <section id="dataReadingLegend" class="data-legend" aria-label="Como ler os dados deste painel" hidden></section>
 
       <div id="homeDataBacklog" class="home-data-backlog" hidden></div>

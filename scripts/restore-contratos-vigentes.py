@@ -13,28 +13,40 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'painel-cidadao'))
+from coletor import _contrato_vigente
+
 CHUNK = ROOT / 'painel-cidadao/data/chunks/prefeitura.json'
 
 
 def chave(r):
-    return (str(r.get('numero', '')).strip(), str(r.get('ano', '')).strip())
+    return tuple(str(r.get(k) or '').strip() for k in ('numero', 'ano', 'cnpj', 'contratado', 'entidade')) + (str(r.get('objeto') or '') if str(r.get('numero') or '') in ('', '0', '-') else '',)
 
 
 def vigente(r, hoje):
-    fim = str(r.get('data_fim') or '').strip()[:10]
-    return fim >= hoje if fim else str(r.get('situacao', '')).strip().upper() in ('EXECUCAO', 'EXECUÇÃO', 'VIGENTE', 'ATIVO')
+    return _contrato_vigente({'dataVigenciaFinal': r.get('data_fim'), 'situacao': r.get('situacao')}, hoje)
+
+
+def candidatos(antigos, atuais, hoje):
+    existentes = {chave(r) for r in atuais}
+    faltam = []
+    for r in antigos:
+        k = chave(r)
+        if k not in existentes and (r.get('numero') or r.get('objeto') or r.get('cnpj')) and vigente(r, hoje):
+            faltam.append(r)
+            existentes.add(k)
+    return faltam
 
 
 def main():
     rev = sys.argv[sys.argv.index('--rev') + 1] if '--rev' in sys.argv else 'HEAD'
+    rev = subprocess.run(['git', 'rev-parse', '--verify', rev + '^{commit}'], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
     hoje = dt.date.today().isoformat()
     bruto = subprocess.run(['git', 'show', f'{rev}:painel-cidadao/data/chunks/prefeitura.json'],
                            cwd=ROOT, capture_output=True, check=True).stdout
     antigo = json.loads(bruto.decode('utf8'))
     atual = json.loads(CHUNK.read_text(encoding='utf8'))
-    existentes = {chave(r) for r in atual.get('contratos', [])}
-    faltam = [r for r in antigo.get('contratos', [])
-              if chave(r) not in existentes and (r.get('numero') or r.get('objeto') or r.get('cnpj')) and vigente(r, hoje)]
+    faltam = candidatos(antigo.get('contratos', []), atual.get('contratos', []), hoje)
     valor = sum(r.get('valor') or 0 for r in faltam)
     print(f'atual={len(atual["contratos"])} faltam_vigentes={len(faltam)} valor=R$ {valor:,.0f}')
     if '--aplicar' not in sys.argv:
@@ -50,4 +62,5 @@ def main():
     print('gravado:', len(atual['contratos']), 'contratos')
 
 
-main()
+if __name__ == '__main__':
+    main()

@@ -66,6 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+function limitarTextoUtf8(string $texto, int $limite): string {
+    preg_match('/^.{0,' . max(0, $limite) . '}/us', $texto, $partes);
+    return $partes[0] ?? '';
+}
+
 // Valide a entrada antes de consumir cotas ou acessar a API paga.
 $entrada = file_get_contents('php://input', false, null, 0, 65537);
 $body = is_string($entrada) && strlen($entrada) <= 65536 ? json_decode($entrada, true) : null;
@@ -81,7 +86,7 @@ if ($entradaValida) {
         }
     }
 }
-$pergunta = $entradaValida ? trim(substr($body['pergunta'], 0, 500)) : '';
+$pergunta = $entradaValida ? trim(limitarTextoUtf8($body['pergunta'], 500)) : '';
 if (!$entradaValida || $pergunta === '') {
     http_response_code(400);
     header('Content-Type: text/event-stream; charset=utf-8');
@@ -678,7 +683,7 @@ $contents  = [];
 if (is_array($historico)) {
     foreach (array_slice($historico, -8) as $msg) {
         $papel = (($msg['papel'] ?? '') === 'model') ? 'model' : 'user';
-        $txt   = trim(substr($msg['texto'] ?? '', 0, 1200));
+        $txt   = trim(limitarTextoUtf8($msg['texto'] ?? '', 1200));
         if ($txt === '') continue;
         $contents[] = ['role' => $papel, 'parts' => [['text' => $txt]]];
     }
@@ -701,6 +706,13 @@ $payload = json_encode([
         ['category' => 'HARM_CATEGORY_DANGEROUS_CONTENT', 'threshold' => 'BLOCK_MEDIUM_AND_ABOVE'],
     ],
 ]);
+
+if ($payload === false) {
+    http_response_code(500);
+    sse(['erro' => 'Não foi possível preparar a resposta.']);
+    sse(['fim' => true]);
+    exit;
+}
 
 $model = 'gemini-2.5-flash';
 $apiHost = 'generativelanguage.googleapis.com';

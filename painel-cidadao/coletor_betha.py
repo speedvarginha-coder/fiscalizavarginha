@@ -654,6 +654,8 @@ def baixar_busca_textual(token: str, consulta_id: int,
                          batch: int = 200) -> list[dict]:
     """Baixa todas as páginas de uma consulta via busca-textual, com filtro
     opcional no body (formato Betha: {"campo": ["valor", ...]})."""
+    if batch <= 0:
+        raise ValueError("batch deve ser positivo")
     out: list[dict] = []
     offset = 0
     total: Optional[int] = None
@@ -673,8 +675,12 @@ def baixar_busca_textual(token: str, consulta_id: int,
             portal_hash=portal_hash,
         )
         if total is None:
-            total = res.get("totalHits", 0)
+            total = res.get("totalHits")
+            if not isinstance(total, int) or total < 0:
+                raise BethaExportError("totalHits ausente ou inválido na busca textual")
             print(f"  -> Total de registros: {total:,}")
+        if res.get("totalHits", total) != total:
+            raise BethaExportError("totalHits mudou durante a paginação")
         hits = res.get("hits", [])
         if not hits:
             break
@@ -682,6 +688,11 @@ def baixar_busca_textual(token: str, consulta_id: int,
         offset += batch
         if offset >= total:
             break
+    if len(out) != total:
+        raise BethaExportError(f"Paginação incompleta: {len(out)}/{total}")
+    identidades = [json.dumps(r, sort_keys=True, ensure_ascii=False) for r in out]
+    if len(set(identidades)) != len(out):
+        raise BethaExportError("Paginação repetiu registros; completude não comprovada")
     return out
 
 

@@ -774,6 +774,8 @@ class BethaEmptyContractsTests(unittest.TestCase):
         previous_work = [{"id_obra": "82", "descricao": "Obra preservada"}]
 
         def previous_list(_name, field, **_kwargs):
+            if field == "contratos":
+                return [{"numero": "1", "ano": "2026", "valor": 100}], "backup.json"
             if field == "obras_publicas":
                 return previous_work, "backup.json"
             if field == "frota":

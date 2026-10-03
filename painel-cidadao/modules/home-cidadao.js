@@ -304,7 +304,7 @@
             '<p>' + fmtNum(t.qtd) + ' contrato' + (t.qtd === 1 ? "" : "s") + ' classificado' + (t.qtd === 1 ? "" : "s") + ' automaticamente.</p>' +
             '<div class="money-topic__actions">' +
               '<button type="button" data-money-cat="' + t.id + '">Explicação cidadã</button>' +
-              '<a href="prefeitura.html?tab=contratos">Ver contratos</a>' +
+              '<a href="prefeitura.html?tab=contratos">Ver todos os contratos</a>' +
             '</div>' +
           '</article>'
         ).join("") +
@@ -369,7 +369,7 @@
     el.innerHTML =
       '<div class="home-trend-watch__head">' +
         '<span>TENDÊNCIA CIDADÃ</span>' +
-        '<strong>Está melhorando ou piorando?</strong>' +
+        '<strong>Comparação entre períodos</strong>' +
         '<small>Comparação entre ' + esc(anoAnt) + ' (fechado) e ' + esc(anoAtu) + ' (em curso). Ano incompleto compara menor — leia com cautela.</small>' +
       '</div>' +
       '<div class="home-trend-watch__grid">' +
