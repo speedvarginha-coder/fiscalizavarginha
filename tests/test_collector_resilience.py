@@ -773,7 +773,7 @@ class BethaEmptyContractsTests(unittest.TestCase):
     def test_prefeitura_preserves_works_when_betha_returns_empty(self):
         previous_work = [{"id_obra": "82", "descricao": "Obra preservada"}]
 
-        def previous_list(_name, field):
+        def previous_list(_name, field, **_kwargs):
             if field == "obras_publicas":
                 return previous_work, "backup.json"
             if field == "frota":

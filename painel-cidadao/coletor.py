@@ -182,16 +182,19 @@ def _load_existing(name: str, default):
         return default
 
 
-def _load_last_nonempty_list(name: str, field: str) -> tuple[list, str | None]:
+def _load_last_nonempty_list(name: str, field: str, valido=None) -> tuple[list, str | None]:
     """Recupera a lista validada mais recente sem transformar falha de fonte em zero.
 
     Primeiro consulta os arquivos publicados. Se eles ja tiverem sido gravados
     vazios por uma coleta anterior, percorre os backups locais do mais novo para
     o mais antigo. O caminho retornado deixa a origem da preservacao auditavel.
+    `valido(lista)` rejeita bases nao vazias porem sem conteudo utilizavel
+    (ex.: frota sem nenhuma placa).
     """
+    aceita = valido or (lambda lista: True)
     published = _load_existing(name, {})
     published_value = published.get(field) if isinstance(published, dict) else None
-    if isinstance(published_value, list) and published_value:
+    if isinstance(published_value, list) and published_value and aceita(published_value):
         return published_value, f"publicado:{name}"
 
     candidates = []
@@ -219,7 +222,7 @@ def _load_last_nonempty_list(name: str, field: str) -> tuple[list, str | None]:
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
             value = payload.get(field) if isinstance(payload, dict) else None
-            if isinstance(value, list) and value:
+            if isinstance(value, list) and value and aceita(value):
                 return value, str(path)
         except Exception:
             continue
@@ -1765,6 +1768,7 @@ def _processa_fundacao_cultural() -> dict:
     ano_atual = dt.datetime.now().year
     ano_anterior = ano_atual - 1
     portal_url = f"https://transparencia.betha.cloud/#/{PORTAL_HASH_FUNDACAO}"
+    falhas: set[str] = set()
 
     def baixar_busca(label: str, consulta_id: int, body: dict | None = None,
                      sort_by: str = "id", batch: int = 500) -> list[dict]:
@@ -1778,7 +1782,19 @@ def _processa_fundacao_cultural() -> dict:
             return rows
         except Exception as e:
             print(f"  ✗ {label}: {e}")
+            falhas.add(label)
             return []
+
+    def preservar(label: str, campo: str, valor: list) -> list:
+        # Download que falhou nao e ausencia de registros: um timeout da Betha
+        # gravava 0 contratos por cima de 906 (out/2026).
+        if label not in falhas:
+            return valor
+        anteriores, origem = _load_last_nonempty_list("fundacao_cultural.json", campo)
+        if not anteriores:
+            return valor
+        print(f"  ! {label}: download falhou; preservando {len(anteriores)} de {origem}")
+        return anteriores
 
     despesas_atual = baixar_busca(
         f"Despesas por credor ({ano_atual})",
@@ -1810,7 +1826,7 @@ def _processa_fundacao_cultural() -> dict:
     }
 
     contratos_raw = baixar_busca("Contratos", CONSULTA_FUNDACAO_CONTRATOS)
-    contratos = _normaliza_contratos(contratos_raw)
+    contratos = preservar("Contratos", "contratos", _normaliza_contratos(contratos_raw))
     hoje_iso = dt.date.today().isoformat()
     contratos_vigentes = [
         c for c in contratos
@@ -1822,10 +1838,14 @@ def _processa_fundacao_cultural() -> dict:
         if c.get("data_fim") and c["data_fim"] >= hoje_iso
     ]
 
-    licitacoes = _normaliza_licitacoes(baixar_busca("Processos licitatórios", CONSULTA_FUNDACAO_PROCESSOS))
-    licit_abertas = _normaliza_licitacoes(baixar_busca("Licitações abertas/em andamento", CONSULTA_FUNDACAO_LICIT_ABERTAS))
-    dispensas = _normaliza_licitacoes(baixar_busca("Dispensas", CONSULTA_FUNDACAO_DISPENSAS))
-    inexigibilidades = _normaliza_licitacoes(baixar_busca("Inexigibilidades", CONSULTA_FUNDACAO_INEXIGIBILIDADES))
+    licitacoes = preservar("Processos licitatórios", "licitacoes", _normaliza_licitacoes(
+        baixar_busca("Processos licitatórios", CONSULTA_FUNDACAO_PROCESSOS)))
+    licit_abertas = preservar("Licitações abertas/em andamento", "licit_abertas", _normaliza_licitacoes(
+        baixar_busca("Licitações abertas/em andamento", CONSULTA_FUNDACAO_LICIT_ABERTAS)))
+    dispensas = preservar("Dispensas", "dispensas", _normaliza_licitacoes(
+        baixar_busca("Dispensas", CONSULTA_FUNDACAO_DISPENSAS)))
+    inexigibilidades = preservar("Inexigibilidades", "inexigibilidades", _normaliza_licitacoes(
+        baixar_busca("Inexigibilidades", CONSULTA_FUNDACAO_INEXIGIBILIDADES)))
 
     diarias_detalhe = _normaliza_diarias_fundacao(
         baixar_busca("Diárias detalhadas", CONSULTA_FUNDACAO_DIARIAS_DET),
@@ -2100,7 +2120,10 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
     if (frota_diag.get("status") != "ok" or not frota_normalizada
             or any(not r.get("placa") for r in frota_normalizada)
             or (frota_rows and not any("gastos" in r for r in frota_rows))):
-        frota_anterior, origem_frota = _load_last_nonempty_list("prefeitura.json", "frota")
+        frota_anterior, origem_frota = _load_last_nonempty_list(
+            "prefeitura.json", "frota",
+            valido=lambda lista: any(v.get("placa") for v in lista if isinstance(v, dict)),
+        )
         if frota_anterior:
             frota_normalizada = frota_anterior
             frota_status = "preservada_por_resposta_betha_parcial"
@@ -2499,6 +2522,9 @@ def _normaliza_frota(rows: list[dict], linked: dict, linked_rows: dict) -> list[
         return any(k in t for k in ["manutencao", "peca", "pecas", "servico", "revisao", "oficina", "lubrificante", "oleo"])
 
     for r in rows:
+        if not any(_cell(r.get(k, "")) for k in ("placa", "renavam", "chassi")):
+            # Sem placa, Renavam ou chassi nao ha veiculo identificavel.
+            continue
         hist_cc = _linked(linked, r.get("historicoCentroDeCustos", ""))
         gastos_raw = _linked_rows(linked_rows, r.get("gastos", ""))
         if not gastos_raw:
@@ -2648,7 +2674,18 @@ def _normaliza_diarias_prefeitura(rows: list[dict], linked: dict) -> list[dict]:
         else:
             credor_ref = _t(credor_raw)
             credor = linked.get(credor_ref, {}) if credor_ref else {}
-        valor = _f(r.get("valorPagoEmpenho") or r.get("valorEmpenho") or r.get("valorEmpenhado"))
+        funcionario = _t(credor.get("nomeCredor")) or credor_ref
+        if not funcionario:
+            # Sem beneficiario a linha nao e uma diaria auditavel; publicada,
+            # inflava contagem e total (out/2026).
+            continue
+        # Primeiro campo presente vence: pago zero explicito nao vira empenhado.
+        bruto = next(
+            (r.get(k) for k in ("valorPagoEmpenho", "valorEmpenho", "valorEmpenhado")
+             if r.get(k) not in (None, "")),
+            0,
+        )
+        valor = _f(bruto)
         data_empenho = _t(r.get("dataEmpenho"))
         out.append({
             "poder": "Prefeitura",
@@ -2656,7 +2693,7 @@ def _normaliza_diarias_prefeitura(rows: list[dict], linked: dict) -> list[dict]:
             "entidade": _t(r.get("nomeEntidade")),
             "secretaria": _t(r.get("descricaoOrgao")) or _t(r.get("descricaoUnidade")),
             "unidade": _t(r.get("descricaoUnidade")),
-            "funcionario": _t(credor.get("nomeCredor")) or credor_ref,
+            "funcionario": funcionario,
             "cpf": _t(credor.get("cnpjCpfCredor")),
             "cargo": _t(credor.get("naturezaJuridicaCredor")),
             "numero": _t(r.get("numeroEmpenho")),
@@ -2677,6 +2714,8 @@ def _normaliza_diarias_prefeitura(rows: list[dict], linked: dict) -> list[dict]:
 def _normaliza_diarias_camara(rows: list[dict]) -> list[dict]:
     out = []
     for r in rows:
+        if not str(r.get("credor") or "").strip():
+            continue
         valor = _f(r.get("valorTotal"))
         qtd = _f(r.get("quantidade")) or 1
         out.append({
@@ -2704,6 +2743,20 @@ def _normaliza_diarias_camara(rows: list[dict]) -> list[dict]:
     return out
 
 
+def _exigir_identificaveis(brutos, normalizados) -> None:
+    """Falha o exercicio quando a fonte respondeu mas quase nada e identificavel.
+
+    Formato novo de resposta (ex.: CSV com rotulos em portugues) nao pode
+    passar como coleta "ok" so porque trouxe linhas.
+    """
+    brutos = brutos or []
+    if brutos and len(normalizados) < len(brutos) * 0.5:
+        raise ValueError(
+            f"formato de resposta nao reconhecido: {len(normalizados)} de "
+            f"{len(brutos)} linhas identificaveis"
+        )
+
+
 def _processa_diarias_betha() -> dict:
     print("⇣ Diárias — Prefeitura e Câmara (Betha)…")
     try:
@@ -2729,6 +2782,7 @@ def _processa_diarias_betha() -> dict:
                     text_fallback_is_complete=True,
                 )
                 rows = _normaliza_diarias_prefeitura(res.get("main", []), res.get("linked", {}))
+                _exigir_identificaveis(res.get("main"), rows)
                 prefeitura.extend(rows)
                 coleta_status["prefeitura"][str(ano)] = {
                     "status": res.get("coleta_status", "ok"),
@@ -2756,6 +2810,7 @@ def _processa_diarias_betha() -> dict:
                     text_fallback_is_complete=True,
                 )
                 rows = _normaliza_diarias_camara(res.get("main", []))
+                _exigir_identificaveis(res.get("main"), rows)
                 camara.extend(rows)
                 coleta_status["camara"][str(ano)] = {
                     "status": res.get("coleta_status", "ok"),
@@ -2799,13 +2854,14 @@ def _reconciliar_diarias_por_exercicio(novos, antigos, status_por_ano):
     Uma falha de um ano nao pode apagar um ano inteiro ja publicado. Para cada
     ano presente na coleta nova ou na base anterior: usa a coleta nova somente
     quando o ano veio com status "ok" E trouxe registros; caso contrario mantem
-    os registros anteriores daquele ano. Devolve (lista reconciliada, anos em
-    que a base anterior foi preservada).
+    os registros anteriores daquele ano. Registros sem exercicio ou sem
+    beneficiario sao descartados. Devolve (lista reconciliada, anos em que a base anterior foi
+    preservada).
     """
     def por_ano(lista):
         mapa = {}
         for item in lista or []:
-            if not isinstance(item, dict):
+            if not isinstance(item, dict) or not str(item.get("funcionario") or "").strip():
                 continue
             mapa.setdefault(str(item.get("ano") or ""), []).append(item)
         return mapa
@@ -2817,6 +2873,10 @@ def _reconciliar_diarias_por_exercicio(novos, antigos, status_por_ano):
     reconciliado = []
     preservados = []
     for ano in universo:
+        if not ano:
+            # Registro sem exercicio nunca recebe status "ok" e por isso era
+            # preservado para sempre: 129 mil linhas vazias acumuladas.
+            continue
         coleta = novos_ano.get(ano) or []
         anterior = antigos_ano.get(ano) or []
         ano_ok = (status.get(ano) or {}).get("status") == "ok"

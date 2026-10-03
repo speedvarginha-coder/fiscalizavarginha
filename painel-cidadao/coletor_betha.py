@@ -48,6 +48,41 @@ CONSULTA_VEICULOS_MUNICIPAIS  = 83061
 CONSULTA_DIARIAS              = 83059
 CONSULTA_INEXIGIBILIDADE      = 83022
 CONSULTA_DISPENSADA           = 83062
+CONSULTA_DIARIAS_CAMARA       = 324755
+
+# Cabecalhos do CSV de exportacao, por consulta, ja normalizados (minusculas,
+# sem acento). O CSV traz rotulos em portugues; os normalizadores leem as
+# chaves camelCase da busca textual. Sem este mapa cada linha virava um
+# registro vazio marcado como coleta "ok" (out/2026: 129 mil diarias e 271 mil
+# veiculos sem identidade publicados).
+ALIASES_POR_CONSULTA = {
+    CONSULTA_DIARIAS_CAMARA: {
+        "nome da entidade": "nomeEntidade", "credor": "credor",
+        "cnpj/cpf credor": "cnpjCpfCredor", "cargo do credor": "cargoCredor",
+        "numero": "numeroDiaria", "quantidade": "quantidade",
+        "valor unitario r$": "valorUnitario", "valor r$": "valorTotal",
+        "data inicial": "dataInicial", "data final": "dataFinal",
+        "finalidade": "finalidade", "local de origem": "localOrigem",
+        "local de destino": "localDestino", "historico": "historico",
+    },
+    CONSULTA_VEICULOS_MUNICIPAIS: {
+        "placa do veiculo": "placa", "tipo de veiculo": "tipo",
+        "descricao do veiculo": "descricao", "ano de fabricacao": "anoFabricacao",
+        "ano do modelo": "anoModelo", "data de aquisicao": "dataAquisicao",
+        "tipo de aquisicao": "tipoAquisicao", "valor de aquisicao r$": "valorAquisicao",
+        "centro de custos do veiculo": "centroCusto", "situacao atual": "situacao",
+        "renavam": "renavam", "chassi": "chassi",
+    },
+}
+
+# Colunas sem as quais a exportacao nao identifica o registro. Se faltarem,
+# a exportacao e tratada como indisponivel e a busca textual assume. O CSV de
+# diarias da Prefeitura (83059) nao traz o credor: so a busca textual traz.
+COLUNAS_OBRIGATORIAS = {
+    CONSULTA_DIARIAS: ("credor",),
+    CONSULTA_DIARIAS_CAMARA: ("credor", "valorTotal"),
+    CONSULTA_VEICULOS_MUNICIPAIS: ("placa",),
+}
 
 ROOT = Path(__file__).resolve().parent
 # Tokens ficam em ../private/tokens/ — FORA da pasta pública do painel.
@@ -341,7 +376,7 @@ def _decode_export_payload(raw: str) -> tuple[bytes, str, Optional[str]]:
     raise BethaExportError("formato de resposta de dados abertos nao reconhecido")
 
 
-def _csv_rows(payload: bytes) -> list[dict]:
+def _csv_rows(payload: bytes, extra_aliases: Optional[dict] = None) -> list[dict]:
     try:
         text = payload.decode("utf-8-sig")
     except UnicodeDecodeError:
@@ -362,6 +397,7 @@ def _csv_rows(payload: bytes) -> list[dict]:
         "vigncia inicial": "dataVigenciaInicial", "vigncia final": "dataVigenciaFinal", "situao": "situacao",
         "objeto": "objeto", "modalidade": "modalidade", "valor estimado": "valorEstimado",
         "data da abertura": "dataAbertura", "data de publicao": "dataPublicacao",
+        **(extra_aliases or {}),
     }
     def key(value):
         normal = "".join(c for c in unicodedata.normalize("NFKD", value.strip().lower()) if not unicodedata.combining(c)).replace("\ufffd", "")
@@ -398,7 +434,7 @@ def _parse_export(payload: bytes, consulta_id: int,
         if not main_name:
             return {"main": [], "main_filename": None, "files_in_zip": len(zf.namelist()),
                     "linked": {}, "linked_rows": {}}
-        rows = _csv_rows(zf.read(main_name))
+        rows = _csv_rows(zf.read(main_name), ALIASES_POR_CONSULTA.get(consulta_id))
         linked = {}
         linked_rows = {}
         for name in zf.namelist():
@@ -415,7 +451,7 @@ def _parse_export(payload: bytes, consulta_id: int,
                 "files_in_zip": len(zf.namelist()), "linked": linked,
                 "linked_rows": linked_rows}
 
-    rows = _csv_rows(payload)
+    rows = _csv_rows(payload, ALIASES_POR_CONSULTA.get(consulta_id))
     if not rows or not rows[0]:
         raise BethaExportError("CSV de dados abertos vazio ou sem cabecalho")
     return {
@@ -510,6 +546,12 @@ def baixar_dados_abertos(token: str, consulta_id: int,
     try:
         payload, response_mode, suggested_name = _decode_export_payload(raw)
         result = _parse_export(payload, consulta_id, suggested_name)
+        main = result.get("main") or []
+        faltando = [c for c in COLUNAS_OBRIGATORIAS.get(consulta_id, ()) if main and c not in main[0]]
+        if faltando:
+            raise BethaExportError(
+                f"exportacao sem coluna obrigatoria {', '.join(faltando)}"
+            )
         result["coleta_status"] = "ok"
         result["coleta_modo"] = response_mode
         return result
