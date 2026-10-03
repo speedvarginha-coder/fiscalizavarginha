@@ -4006,7 +4006,29 @@
         healthEl.innerHTML = (healthEl.innerHTML.includes("Top 5 fornecedores") ? healthEl.innerHTML.split("</div>")[1] : healthEl.innerHTML) + rankingHtml;
       }
 
+      // URL state sync — permite compartilhar filtros aplicados. Roda também
+      // quando a busca não acha nada: antes o retorno antecipado da lista vazia
+      // deixava a URL sem o ?q=, e o link da busca não podia ser compartilhado.
+      const sincronizarUrlContratos = () => {
+        const p = new URLSearchParams(window.location.search);
+        const tabAtiva = p.get("tab") || "";
+        // q/ano pertencem também à aba Asfalto (busca por bairro). Rodando no
+        // load com outra aba ativa, este sync apagava o "q" e a URL virava
+        // ?tab=asfalto&ano=2026, perdendo a busca compartilhada.
+        if (tabAtiva && tabAtiva !== "contratos") return;
+        const qVal = filtroContrato.value.trim();
+        if (qVal) p.set("q", qVal); else p.delete("q");
+        if (anoFiltro) p.set("ano", anoFiltro); else p.delete("ano");
+        const vm = filtroValorContrato ? filtroValorContrato.value : "";
+        if (vm) p.set("valor", vm); else p.delete("valor");
+        const sv = filtroSecretaria ? filtroSecretaria.value : "";
+        if (sv) p.set("sec", sv); else p.delete("sec");
+        const str = p.toString();
+        history.replaceState(null, "", str ? "?" + str + window.location.hash : window.location.pathname + window.location.hash);
+      };
+
       if (!view.length) {
+        sincronizarUrlContratos();
         if ($("transparenciaHealth")) $("transparenciaHealth").style.display = "none";
         contratosEl.innerHTML = `<div class="empty">
           <strong>Nenhum contrato encontrado</strong>
@@ -4125,24 +4147,7 @@
 
       contratosMaisEl.hidden = view.length <= contratosShown;
 
-      // URL state sync — permite compartilhar filtros aplicados
-      (function () {
-        const p = new URLSearchParams(window.location.search);
-        const tabAtiva = p.get("tab") || "";
-        // q/ano pertencem também à aba Asfalto (busca por bairro). Rodando no
-        // load com outra aba ativa, este sync apagava o "q" e a URL virava
-        // ?tab=asfalto&ano=2026, perdendo a busca compartilhada.
-        if (tabAtiva && tabAtiva !== "contratos") return;
-        const qVal = filtroContrato.value.trim();
-        if (qVal) p.set("q", qVal); else p.delete("q");
-        if (anoFiltro) p.set("ano", anoFiltro); else p.delete("ano");
-        const vm = filtroValorContrato ? filtroValorContrato.value : "";
-        if (vm) p.set("valor", vm); else p.delete("valor");
-        const sv = filtroSecretaria ? filtroSecretaria.value : "";
-        if (sv) p.set("sec", sv); else p.delete("sec");
-        const str = p.toString();
-        history.replaceState(null, "", str ? "?" + str + window.location.hash : window.location.pathname + window.location.hash);
-      })();
+      sincronizarUrlContratos();
     };
 
     if (contratos.length) {
@@ -7340,7 +7345,9 @@ ${url}
     const hash = (location.hash || "").replace("#", "");
     const params = PARAMS_URL;
     const tabParam = params.get("tab") || params.get("area");
-    activate(hashMap[hash] || hash || tabParam || "visao");
+    // Busca sem aba indicada abre Contratos, onde o filtro é aplicado; antes
+    // abria a Visão geral e o "Nenhum contrato encontrado" ficava escondido.
+    activate(hashMap[hash] || hash || tabParam || (params.get("q") ? "contratos" : "visao"));
   }
 
   function initCollapsibleBlocks() {
