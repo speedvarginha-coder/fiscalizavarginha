@@ -13410,3 +13410,7 @@ body[data-page="home"] .hub-grid-18 .hub-item--avalie .hub-item__icon svg {
   .escalao-item { grid-template-columns: 1fr; }
   .escalao-item__valor { text-align: left; }
 }
+
+/* Como cobrar: reclamar de um problema (out/2026) */
+.cobrar-reclamar__canais { margin: 12px 0; padding-left: 20px; display: grid; gap: 6px; }
+.cobrar-reclamar > .bigheader__kicker { display: block; margin-bottom: 6px; }

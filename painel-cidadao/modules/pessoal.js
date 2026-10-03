@@ -368,7 +368,7 @@
             ? `<div class="tag-periodo-alerta tag-periodo-alerta--warning" style="display:inline-block;margin-top:6px;font-size:0.85em;padding:4px 8px;border-radius:4px;background:#fff3cd;color:#856404;border:1px solid #ffeeba" title="Este valor bruto inclui benefícios adicionais como 13º salário, férias ou gratificação natalina. O salário base normal estimado é de ${fmtBRL(s.vencimentoNormal)}.">⚠️ ${s.tiposFolhaExtra ? (/rescis/i.test(s.tiposFolhaExtra) ? `${esc(s.tiposFolhaExtra)} — desligamento do órgão; valor inclui verbas indenizatórias, não é salário` : `Inclui ${esc(s.tiposFolhaExtra)} (fonte Betha)`) : "Contém 13º/Férias"}${s.vencimentoNormal ? ` — base mensal: ${fmtBRL(s.vencimentoNormal)}` : ""}</div>`
             : "";
           return `
-          <article class="contrato" style="border-left:4px solid ${s.orgao === "Câmara" ? "#c0392b" : "#2980b9"}">
+          <article class="contrato">
             <div class="contrato__valor" style="min-width: 140px;">
               <span class="vencimento-titulo">Salário Bruto (Sem Descontos)</span>
               <strong class="vencimento-valor">${fmtBRL(s.vencimentos || 0)}</strong>
