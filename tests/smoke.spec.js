@@ -469,10 +469,10 @@ test.describe("Filtros básicos", () => {
       "ready",
       { timeout: 45_000 }
     );
-    await expect(page.locator(".diaria-card").first()).toContainText(
-      "Selo de confiança do dado",
-      { timeout: 15_000 }
-    );
+    // O selo vale para a lista inteira e aparece uma vez no topo dela, não
+    // repetido em cada cartão (cada repetição somava ~150px no celular).
+    await expect(page.locator(".diaria-card").first()).toBeVisible({ timeout: 15_000 });
+    await expect(page.locator("#listaDiariasCamara")).toContainText("Selo de confiança do dado");
   });
 
   test("Glossário contextual marca termos técnicos renderizados", async ({ page }) => {

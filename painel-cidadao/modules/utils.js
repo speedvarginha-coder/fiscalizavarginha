@@ -114,7 +114,21 @@
       [/V\uFFFDlei/gi, "V\u00f4lei"],
     ];
     pairs.forEach(([from, to]) => { text = text.replace(from, to); });
-    return text.replace(/\uFFFD+/g, "").replace(/ï¿½/g, "");
+    // MEI publica a razão social com o CPF do titular ("FULANO 66250080600").
+    // Só mascara 11 dígitos isolados que passam no dígito verificador do CPF,
+    // para não esconder processo, Renavam ou telefone. Fica dentro da função
+    // porque o teste de acentos avalia o corpo de cleanText isolado.
+    const cpfValido = (d) => {
+      if (/^(\d)\1{10}$/.test(d)) return false;
+      const dv = (n) => {
+        let s = 0;
+        for (let i = 0; i < n; i++) s += Number(d[i]) * (n + 1 - i);
+        return ((s * 10) % 11) % 10;
+      };
+      return dv(9) === Number(d[9]) && dv(10) === Number(d[10]);
+    };
+    return text.replace(/\uFFFD+/g, "").replace(/ï¿½/g, "")
+      .replace(/(?<![\d./-])\d{11}(?![\d./-])/g, (d) => (cpfValido(d) ? "***.***.***-**" : d));
   };
   const esc = (v) => cleanText(v).replace(/[&<>"']/g, (ch) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",

@@ -609,6 +609,16 @@ function renderEsferas() {
     .reduce((s, value) => s + value, 0);
   const confirmados = (t) => allRecords.filter((r) => r.tipo === t && r.stages.recebido !== null).length;
   const contaTipo = (t) => allRecords.filter((r) => r.tipo === t).length;
+  // Cada esfera cobre anos diferentes (a municipal soma 2024 e 2025, a Câmara
+  // mostra só 2025): sem o período, os totais pareciam contraditórios.
+  const periodoTipo = (t) => {
+    const anos = [...new Set(allRecords.filter((r) => r.tipo === t).flatMap((r) => amendmentYearsForRecord(r)))].sort();
+    if (!anos.length) return "";
+    if (anos.length === 1) return anos[0];
+    const seguidos = anos.every((ano, i) => i === 0 || Number(ano) === Number(anos[i - 1]) + 1);
+    if (seguidos && anos.length > 2) return `${anos[0]} a ${anos[anos.length - 1]}`;
+    return `${anos.slice(0, -1).join(", ")} e ${anos[anos.length - 1]}`;
+  };
   const rotulo = { Federal: "agregado (CGU)", Estadual: "declarado", Municipal: "indicado" };
   const esferas = [
     { tipo: "Federal", nome: "Federal", desc: "CGU + Transferegov", cls: "is-federal",
@@ -630,7 +640,7 @@ function renderEsferas() {
     <button type="button" class="esfera-card ${e.cls}" data-tipo="${e.tipo}">
       <span class="esfera-card__tag">${e.nome}</span>
        <strong class="esfera-card__valor">${agregado > 0 ? moneyFormatter.format(agregado) : "N/D"}</strong>
-      <span class="esfera-card__sub">Valor ${rotulo[e.tipo]} · ${e.sub}</span>
+      <span class="esfera-card__sub">Valor ${rotulo[e.tipo]} · ${e.sub}${periodoTipo(e.tipo) ? ` · ${periodoTipo(e.tipo)}` : ""}</span>
       <span class="esfera-card__desc">${confLinha}</span>
     </button>`;
   }).join("");

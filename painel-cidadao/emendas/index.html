@@ -30,15 +30,21 @@
       <label for="navToggle" class="site-nav__toggle" aria-label="Abrir menu">☰</label>
       <nav class="site-nav__menu" aria-label="Seções">
         <a href="../index.html">Início</a>
-        <a href="../atualizacoes.html">Atualizações</a>
         <a href="../prefeitura.html">Prefeitura</a>
-        <a href="../fundacao.html">Fundação</a>
         <a href="../camara.html">Câmara</a>
-        <a href="index.html" class="is-active">Emendas</a>
-        <a href="../relatorios.html">Relatórios</a>
-        <a href="../pessoal.html">Pessoal</a>
-        <a href="../sobre.html">Sobre</a>
-        <a href="../conformidade.html">Conformidade</a>
+        <a href="../pessoal.html">Salários</a>
+        <a href="index.html" class="is-active" aria-current="page">Emendas</a>
+        <details class="site-nav__more">
+          <summary>Mais</summary>
+          <div class="site-nav__more-list">
+            <a href="../fundacao.html">Fundação Cultural</a>
+            <a href="../atualizacoes.html">Atualizações</a>
+            <a href="../relatorios.html">Relatórios</a>
+            <a href="../marcadores.html">Meus marcadores</a>
+            <a href="../conformidade.html">Qualidade dos dados</a>
+            <a href="../sobre.html">Sobre o painel</a>
+          </div>
+        </details>
         <a href="../cobrar.html" class="site-nav__cta">Como cobrar</a>
       </nav>
     </header>
@@ -89,7 +95,7 @@
       <section class="esferas" aria-label="De onde vem o dinheiro">
         <div class="esferas__head">
           <h2>De onde vem o dinheiro das emendas?</h2>
-           <p>Emendas são indicações orçamentárias, não pagamentos. Clique numa esfera para filtrar. O valor só aparece quando há <strong>recebimento confirmado</strong>; na ausência dessa comprovação, aparece N/D.</p>
+           <p>Emendas são indicações orçamentárias, não pagamentos. Clique numa esfera para filtrar. O valor só aparece quando há <strong>recebimento confirmado</strong>; na ausência dessa comprovação, aparece N/D. Cada esfera mostra a medida que a fonte dela publica (agregado, declarado ou indicado) e cobre anos diferentes; por isso a soma dos três cartões não é igual ao total “Indicado” acima.</p>
         </div>
         <div id="esferasCards" class="esferas__cards"></div>
         <div id="federalPorTipo" class="fed-tipos"></div>

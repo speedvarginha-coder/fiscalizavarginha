@@ -393,6 +393,12 @@
 
     render();
 
+    // Quem chega da busca da home com um termo quer o resultado, não os painéis
+    // do topo: rola até a lista filtrada.
+    if (buscaEl && new URLSearchParams(window.location.search).get("q")) {
+      setTimeout(() => buscaEl.scrollIntoView({ block: "start", behavior: "auto" }), 300);
+    }
+
     // CSV export button for servidores
     if (todos.length && contadorEl) {
       const csvBtnP = document.createElement("button");

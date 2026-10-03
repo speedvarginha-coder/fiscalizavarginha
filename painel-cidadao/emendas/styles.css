@@ -1417,3 +1417,21 @@ body {
 @media (max-width: 760px) {
   .reconciliacao__head { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Menu enxuto: 5 itens + "Mais" (mesma estrutura do painel principal) */
+.site-nav__more { position: relative; }
+.site-nav__more > summary { list-style: none; cursor: pointer; color: #152131; font-weight: 600; font-size: .92rem; padding: 8px 12px; border-radius: 8px; }
+.site-nav__more > summary::-webkit-details-marker { display: none; }
+.site-nav__more > summary::after { content: " \25BE"; font-size: .8em; }
+.site-nav__more > summary:hover { background: var(--bg); }
+.site-nav__more-list { display: flex; flex-direction: column; gap: 2px; }
+@media (min-width: 761px) {
+  .site-nav__more-list {
+    position: absolute; right: 0; top: calc(100% + 6px); z-index: 60; min-width: 220px; padding: 8px;
+    background: #fff; border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 14px 28px rgba(0,75,141,.14);
+  }
+  .site-nav__more-list a { white-space: nowrap; }
+}
+@media (max-width: 760px) {
+  .site-nav__more-list { padding-left: 12px; }
+}

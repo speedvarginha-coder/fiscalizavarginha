@@ -321,7 +321,7 @@
       if (!ranking.length) {
         return '<div class="empty empty--small">Sem registros suficientes para este ranking.</div>';
       }
-      return ranking.slice(0, 15).map((g, i) => {
+      const linhas = ranking.slice(0, 15).map((g, i) => {
         const divisor = isPrefeitura ? g.registros : g.qtd;
         const media = g.valor / (divisor || 1);
         const unidade = isPrefeitura ? "registro" : "diária";
@@ -366,8 +366,23 @@
               ${g.desligado ? `<small class="dr-val__nota" title="A última folha desta pessoa neste órgão foi de rescisão: ela se desligou. As diárias listadas são do período em que trabalhava aqui.">⚠️ já saiu do órgão</small>` : ""}
             </span>
           </div>`;
-      }).join("");
+      });
+      // Cinco primeiros à vista; os demais recolhidos. Cada linha tem ~280px no
+      // celular, e os dois rankings de 15 somavam ~8 mil px antes da lista.
+      const VISIVEIS = 5;
+      if (linhas.length <= VISIVEIS) return linhas.join("");
+      return linhas.slice(0, VISIVEIS).join("") + `
+        <details class="diarias-ranking__mais">
+          <summary>Ver posições ${VISIVEIS + 1} a ${linhas.length}</summary>
+          ${linhas.slice(VISIVEIS).join("")}
+        </details>`;
     };
+
+    // Lista em lotes de 20: com 80 cartões de ~850px a aba passava de 80 mil px
+    // no celular. A contagem volta a 20 sempre que um filtro muda.
+    const LOTE_LISTA = 20;
+    let limiteLista = LOTE_LISTA;
+    let chaveLista = "";
 
     const render = () => {
       const f = filtrosAtuais();
@@ -492,17 +507,27 @@
       }
 
       const fonteOficialDiaria = ((D.diarias || {}).fontes || {})[prefix.toLowerCase()] || "https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/diarias";
-      listaEl.innerHTML = view.slice(0, 80).map(d => {
+      const chave = JSON.stringify(f);
+      if (chave !== chaveLista) { chaveLista = chave; limiteLista = LOTE_LISTA; }
+      // Selo e proveniência valem para a lista inteira: uma vez no topo, e não
+      // repetidos em cada cartão.
+      const seloConfianca = window.FISCALIZA.dataTrustSeal
+        ? window.FISCALIZA.dataTrustSeal("diaria", {
+            fonte: isPrefeitura ? "despesas/diarias da Prefeitura" : "diarias da Camara",
+            escopo: isPrefeitura ? "registro contabil classificado" : "diaria individual estruturada",
+            risco: isPrefeitura ? "pode nao ser uma viagem individual" : "nao comprova resultado publico da viagem",
+            acao: "conferir autorizacao, finalidade e prestacao de contas",
+          })
+        : "";
+      const proveniencia = window.FISCALIZA.provenienciaRegistro ? window.FISCALIZA.provenienciaRegistro(
+        isPrefeitura ? "prefeitura" : "camara_betha",
+        isPrefeitura ? "Betha/Prefeitura" : "Câmara/Betha",
+        fonteOficialDiaria,
+      ) : "";
+      const restantes = view.length - limiteLista;
+      listaEl.innerHTML = `<div class="diarias-list__fonte">${seloConfianca}${proveniencia}</div>` + view.slice(0, limiteLista).map(d => {
         const funcao = funcaoDiaria(d);
         const vinculo = vinculoDiaria(d);
-        const seloConfianca = window.FISCALIZA.dataTrustSeal
-          ? window.FISCALIZA.dataTrustSeal("diaria", {
-              fonte: isPrefeitura ? "despesas/diarias da Prefeitura" : "diarias da Camara",
-              escopo: isPrefeitura ? "registro contabil classificado" : "diaria individual estruturada",
-              risco: isPrefeitura ? "pode nao ser uma viagem individual" : "nao comprova resultado publico da viagem",
-              acao: "conferir autorizacao, finalidade e prestacao de contas",
-            })
-          : "";
         return `
         <article class="diaria-card">
           <div class="diaria-card__value">
@@ -524,12 +549,6 @@
               ${d.numero ? `<span>Nº ${esc(d.numero)}</span>` : ""}
               ${d.data_inicial ? `<span>${dataBR(d.data_inicial)}${d.data_final && d.data_final !== d.data_inicial ? " a " + dataBR(d.data_final) : ""}</span>` : ""}
             </div>
-            ${seloConfianca}
-            ${window.FISCALIZA.provenienciaRegistro ? window.FISCALIZA.provenienciaRegistro(
-              isPrefeitura ? "prefeitura" : "camara_betha",
-              d.fonte || (isPrefeitura ? "Betha/Prefeitura" : "Câmara/Betha"),
-              fonteOficialDiaria,
-            ) : ""}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap;">
               <button class="btn-share" onclick="FISCALIZA.compartilharZap('${jsSafe(d.funcionario)}', '${jsSafe(d.finalidade || d.historico)}', '${fmtBRL(d.valor_total)} (${fmtNum(d.quantidade)} dias)')" style="padding: 4px 8px; background: #0b5f3a; color: white; border: none; border-radius: 4px; font-size: 0.75em; cursor: pointer;">Compartilhar</button>
               <a class="btn-link" href="https://transparencia.varginha.mg.gov.br/portal-transparencia/consultas/diarias" target="_blank" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 4px 8px; background: #eee; border-radius: 4px; color: #333; font-size: 0.75em; font-weight: 500; border: 1px solid #ccc; display: inline-block;">Abrir esta diária na fonte oficial</a>
@@ -537,7 +556,11 @@
             </div>
           </div>
         </article>`;
-      }).join("");
+      }).join("") + (restantes > 0
+        ? `<button type="button" class="btn-load-more diarias-list__mais">Mostrar mais ${fmtNum(Math.min(LOTE_LISTA, restantes))} (faltam ${fmtNum(restantes)} de ${fmtNum(view.length)})</button>`
+        : "");
+      const maisBtn = listaEl.querySelector(".diarias-list__mais");
+      if (maisBtn) maisBtn.addEventListener("click", () => { limiteLista += LOTE_LISTA; render(); });
       listaEl.querySelectorAll(".diaria-card").forEach((card, i) => {
         const actions = card.querySelector(".diaria-card__body > div:last-child");
         const item = view[i];

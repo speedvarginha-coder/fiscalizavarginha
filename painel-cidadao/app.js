@@ -359,9 +359,15 @@
     const diariasPref = (D.diarias || {}).prefeitura || [];
     const hr = D.home_resumo || {};
     const diariasQtd = diariasPref.length || Number(hr.diarias_prefeitura_qtd) || 0;
+    // Total da base (igual ao selo da aba), com os exercícios declarados.
+    const anosDiarias = (hr.diarias_prefeitura_anos || []).join(" e ") || "todos os anos";
     const resumoCam = D.resumo || {};
+    const camBetha = D.camara_betha || {};
     const emendas = D.emendas || [];
-    const emendasPendentes = emendas.filter(e => e.status === "sem_pagamento" || e.status === "sem_cnpj").length;
+    // O status vem do cruzamento com os pagamentos (prefeitura.emendas_cruzadas),
+    // não do chunk de emendas, que não tem esse campo: a home mostrava sempre 0.
+    const emendasPendentes = (pf_data.emendas_cruzadas || [])
+      .filter(e => e.status === "sem_pagamento" || e.status === "sem_cnpj").length;
     const contratosMilhao = contratos.filter(c => Number(c.valor || 0) >= 1_000_000).length;
     const totalContratos = contratos.reduce((s, c) => s + Number(c.valor || 0), 0);
     const totalDiarias = diariasPref.length
@@ -371,9 +377,11 @@
     $("homeOpsStats").innerHTML = [
       { href: "prefeitura.html", value: fmtMi(pf_data.total_externo_atual || totalContratos), label: `pagos em ${pf_data.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
       { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos", cidada: "Quem recebeu mais? Por qual serviço?" },
-      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasQtd), label: `${fmtBRL(totalDiarias)} em diárias`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
-      { href: "camara.html", value: fmtNum(resumoCam.total_materias || 0), label: `${fmtNum(resumoCam.vereadores_ativos || 0)}${resumoCam.vereadores_monitorados ? " de " + fmtNum(resumoCam.vereadores_monitorados) : ""} vereadores com matérias`, title: "Câmara", cidada: "O que cada vereador propôs e votou?" },
-      { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} para conferir`, title: "Emendas", cidada: "O dinheiro chegou ao beneficiário?" },
+      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasQtd), label: `${fmtBRL(totalDiarias)} em diárias (${anosDiarias})`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
+      // A produção de cada vereador saiu do painel junto com o Avalie; o cartão
+      // não pode prometer "o que cada vereador propôs e votou".
+      { href: "camara.html", value: fmtMi(camBetha.total_externo_atual || 0), label: `pagos a fornecedores em ${camBetha.ano_atual || "ano atual"}`, title: "Câmara", cidada: "Quanto a Câmara gasta e com quem?" },
+      { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} sem pagamento ou sem CNPJ`, title: "Emendas", cidada: "O dinheiro chegou ao beneficiário?" },
       { href: "prefeitura.html?tab=licitacoes", value: fmtNum(licitacoes.length), label: "acompanhar antes do gasto", title: "Licitações", cidada: "Qual empresa vai ganhar este contrato?" },
     ].map(item => `
       <a href="${item.href}" class="home-stat">
@@ -386,7 +394,7 @@
 
     $("homeOpsPriorities").innerHTML = [
       { href: "prefeitura.html?tab=contratos", n: "1", title: "Contratos de alto valor", text: `${fmtNum(contratosMilhao)} contratos acima de R$ 1 milhão para ler primeiro.` },
-      { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasQtd)} registros com pessoa, finalidade e valor.` },
+      { href: "prefeitura.html?tab=diarias", n: "2", title: "Diárias e viagens", text: `${fmtNum(diariasQtd)} registros de diárias em ${anosDiarias}, com pessoa, secretaria e valor.` },
       { href: "camara.html", n: "3", title: "Emendas parlamentares", text: `${fmtNum(resumoCam.emendas_qtd || 0)} emendas; confira CNPJ, objeto e pagamento.` },
     ].map(item => `
       <a href="${item.href}" class="priority-row">
@@ -3526,6 +3534,12 @@
       { lei: "Lei 12.527/2011, art. 8", uso: "transparência ativa de despesas e contratos" },
     ];
 
+    // A Betha publica 0 quando o contrato não tem número; exibido, virava "Nº 0".
+    const numeroCam = (c) => {
+      const n = String(c.numero ?? "").trim();
+      return /^0*$|^-$/.test(n) ? "" : n;
+    };
+
     renderContratosCamara = function (reset) {
       if (reset) contratosCamaraShown = 20;
       const q = norm(filtroEl ? filtroEl.value : "");
@@ -3533,7 +3547,7 @@
         !q || casaBusca([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.modalidade].filter(Boolean).join(" "), q)
       );
       if (contEl) contEl.textContent = `${filtrados.length} contratos`;
-      listaEl.innerHTML = filtrados.slice(0, contratosCamaraShown).map(c => `
+      listaEl.innerHTML = provenienciaRegistro("camara_betha", "Betha/Portal da Câmara", BETHA_CONTRATOS_CAMARA) + filtrados.slice(0, contratosCamaraShown).map(c => `
         <article class="contrato">
           <div class="contrato__valor">
             ${fmtBRL(c.valor)}
@@ -3542,10 +3556,9 @@
           <div class="contrato__body">
             <p class="contrato__nome">${esc(c.contratado || "—")} <span class="muted">${esc(c.cnpj || "")}</span></p>
             <p class="contrato__obj">${esc(c.objeto || "—")}</p>
-            <p class="muted small">${esc(c.modalidade || "")} · ${esc(c.data_assinatura || "")} → ${esc(c.data_fim || "")}${c.numero ? ` · Nº ${esc(c.numero)}` : ""}</p>
-            ${provenienciaRegistro("camara_betha", "Betha/Portal da Câmara", BETHA_CONTRATOS_CAMARA)}
+            <p class="muted small">${esc(c.modalidade || "")} · ${esc(dataCurtaBR(c.data_assinatura))} → ${c.data_fim ? esc(dataCurtaBR(c.data_fim)) : "sem prazo informado"}${numeroCam(c) ? ` · Nº ${esc(numeroCam(c))}` : " · número não informado na fonte"}</p>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
-              ${c.numero ? `<button type="button" class="btn-copiar-num" onclick="(function(b){var t=b.closest('.contrato').querySelector('.muted.small');var m=t&&t.textContent.match(/N[°º]\s*([\w\/\-]+)/);var n=m?m[1]:'${jsSafe(String(c.numero || ""))}';navigator.clipboard&&navigator.clipboard.writeText(n).then(function(){var o=b.textContent;b.textContent='✓ Copiado';setTimeout(function(){b.textContent=o;},1400);}).catch(function(){});b.title=n;})(this)" title="Copiar número do contrato">📋 Copiar nº</button>` : ""}
+              ${numeroCam(c) ? `<button type="button" class="btn-copiar-num" onclick="(function(b){var t=b.closest('.contrato').querySelector('.muted.small');var m=t&&t.textContent.match(/N[°º]\s*([\w\/\-]+)/);var n=m?m[1]:'${jsSafe(String(c.numero || ""))}';navigator.clipboard&&navigator.clipboard.writeText(n).then(function(){var o=b.textContent;b.textContent='✓ Copiado';setTimeout(function(){b.textContent=o;},1400);}).catch(function(){});b.title=n;})(this)" title="Copiar número do contrato">📋 Copiar nº</button>` : ""}
               <button type="button" class="btn-dossie" onclick="FISCALIZA.abrirContratoCamara(${contratosCam.indexOf(c)})">Ver contrato e fonte oficial</button>
               <a class="btn-link" href="${BETHA_CONTRATOS_CAMARA}" target="_blank" rel="noopener" title="Ver todos os contratos da Câmara no Portal Betha" style="text-decoration:none; padding: 4px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">Portal Betha (Câmara)</a>
               <a class="btn-link" href="${PORTAL_CONTRATOS_CAMARA}" target="_blank" rel="noopener" title="Portal de Transparência oficial da Câmara Municipal" style="text-decoration:none; padding: 4px 10px; background: #eee; border-radius: 4px; color: #333; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Site da Câmara</a>
@@ -3761,12 +3774,25 @@
       return { evento, exploracaoPrivada, barry002 };
     };
 
+    // A Betha publica 0 quando o contrato não tem número. Exibido, virava "0/2026".
+    const numeroInformado = (c) => {
+      const n = String(c.numero ?? "").trim();
+      return /^0*$|^-$/.test(n) ? "" : n;
+    };
+
     const diagnosticarContrato = (c) => {
       const problemas = [];
       const achados = [];
       const obj = (c.objeto || "").trim();
       const cls = classificarContrato(c);
 
+      if (!numeroInformado(c)) {
+        problemas.push("Sem número de contrato");
+        addAchado(achados, "atencao", "Número do contrato ausente",
+          "Sem o número não é possível localizar o contrato no portal oficial nem pedir cópia dele.",
+          "Lei 14.133/2021, art. 92; LAI, art. 8",
+          "Solicitar o número e a cópia integral do contrato.");
+      }
       if (!obj || obj.length < 25) {
         problemas.push("Objeto muito curto ou vago");
         addAchado(achados, "relevante", "Objeto insuficiente",
@@ -3966,9 +3992,9 @@
           <h5 style="margin-top:0; color:#2c3e50;">Top 5 fornecedores no filtro atual</h5>
           <div style="display:grid; gap:8px;">
             ${rankingFornecedores.map((f, i) => `
-              <div style="display:flex; justify-content:space-between; font-size:0.9em;">
-                <span>${i + 1}. ${esc(f.nome)}</span>
-                <strong>${fmtBRL(f.valor)}</strong>
+              <div style="display:flex; justify-content:space-between; gap:12px; font-size:0.9em;">
+                <span style="min-width:0; overflow-wrap:anywhere;">${i + 1}. ${esc(f.nome)}</span>
+                <strong style="white-space:nowrap; flex-shrink:0;">${fmtBRL(f.valor)}</strong>
               </div>
             `).join("")}
           </div>
@@ -4016,7 +4042,9 @@
           </div>
           ${rankingHtml}`;
       }
-      contratosEl.innerHTML = slice.map((c, i) => {
+      // A proveniência vale para a lista inteira: uma vez no topo, e não em cada
+      // um dos 20 cartões (cerca de 90px por cartão no celular).
+      contratosEl.innerHTML = provenienciaRegistro("prefeitura", "Betha/Portal da Prefeitura", BETHA_CONTRATOS_PREFEITURA) + slice.map((c, i) => {
         const audit = diagnosticarContrato(c);
         const sitClass = /encerrad|finaliz/i.test(c.situacao) ? " contrato__sit--encerrado" : "";
         const dataIniStr = c.data_assinatura || "";
@@ -4026,11 +4054,11 @@
         
         let custoDiario = null;
         if (dataIniStr && dataFimStr) {
-          const d1 = new Date(dataIniStr);
-          const d2 = new Date(dataFimStr);
-          const diff = Math.ceil(Math.abs(d2 - d1) / (1000 * 60 * 60 * 24)) || 1;
-          custoDiario = (Number(c.valor) || 0) / diff;
+          const diff = Math.ceil((new Date(dataFimStr) - new Date(dataIniStr)) / (1000 * 60 * 60 * 24));
+          // Vigência inválida ou invertida não vira "1 dia": sem prazo, sem divisão.
+          if (diff > 0) custoDiario = (Number(c.valor) || 0) / diff;
         }
+        const numero = numeroInformado(c);
         
         // Cruzamento CNPJ: verifica se empresa tem emenda na Câmara
         const cnpjRaiz = (c.cnpj || "").replace(/[^\d]/g, "").slice(0, 8);
@@ -4054,26 +4082,25 @@
             ${fmtBRL(c.valor)}
             ${Number(c.valor) >= 1000 ? `<div class="percapita-mini" style="font-size: 0.78em; color: var(--muted); margin-top: 4px;" title="Este valor dividido por cada morador de Varginha">≈ ${fmtBRL(Number(c.valor) / 135159)} por morador</div>` : ''}
             <div class="score-mini score-mini--${audit.nivel}" title="${audit.nivel === "ok" ? "Registro completo: objeto, valores e datas preenchidos." : "Faltam informações no registro (objeto vago, valor ou data ausente). Veja os motivos abaixo e confira a fonte oficial."} Índice documental: ${audit.score}/100">
-              ${audit.nivel === "ok" ? "Registro completo" : "Confira"}: ${audit.score}%
+              ${audit.nivel === "ok" ? "Registro completo" : `${audit.achados.length} ${audit.achados.length === 1 ? "ponto" : "pontos"} para conferir`}
             </div>
           </div>
           <div>
             <p class="contrato__nome" style="display:flex; align-items:flex-start; gap:8px;">
-              <span style="flex:1;">${cleanText(c.contratado || "—")}
+              <span style="flex:1;">${esc(cleanText(c.contratado || "—"))}
               ${c.situacao ? `<span class="contrato__sit${sitClass}">${esc(c.situacao)}</span>` : ""}</span>
               ${window.FISCALIZA.watchlist.botao("contratos", idContrato)}
             </p>
             <p class="contrato__obj">${esc(cleanText(c.objeto))}</p>
             <div class="contrato__meta">
               <span>
-                <strong>Contrato nº</strong> ${c.numero}/${c.ano}
-                ${c.numero ? `<button class="btn-copiar-num" title="Copiar número para buscar no portal" onclick="(function(b){var t='${jsSafe(c.numero + '/' + c.ano)}';navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=o},1500)}).catch(function(){});b.blur();})(this)">${window.FISCALIZA.icon ? window.FISCALIZA.icon("copiar", { size: 13 }) : ""} Copiar nº</button>` : ""}
+                <strong>Contrato nº</strong> ${numero ? `${esc(numero)}/${esc(c.ano)}` : `não informado na fonte (${esc(c.ano)})`}
+                ${numero ? `<button class="btn-copiar-num" title="Copiar número para buscar no portal" onclick="(function(b){var t='${jsSafe(numero + '/' + c.ano)}';navigator.clipboard&&navigator.clipboard.writeText(t).then(function(){var o=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=o},1500)}).catch(function(){});b.blur();})(this)">${window.FISCALIZA.icon ? window.FISCALIZA.icon("copiar", { size: 13 }) : ""} Copiar nº</button>` : ""}
               </span>
               <span><span class="glossario-termo" tabindex="0" data-explica="Como a Prefeitura comprou (pregão, dispensa, concorrência…).">Tipo de compra:</span> ${esc(cleanText(c.modalidade || "não informado na fonte contratual"))}</span>
               ${dataIni ? `<span><span class="glossario-termo" tabindex="0" data-explica="Período em que o contrato está em vigor.">Período:</span> ${dataIni} ${dataFim ? "até " + dataFim : ""}</span>` : ""}
               ${custoDiario ? `<span style="color:#2c3e50; font-weight:bold;">Valor contratado por dia de vigência: ${fmtBRL(custoDiario)} <small>(divisão simples; não é gasto diário efetivo)</small></span>` : ""}
             </div>
-            ${provenienciaRegistro("prefeitura", "Betha/Portal da Prefeitura", BETHA_CONTRATOS_PREFEITURA)}
             ${audit.achados.length ? `
               <div class="contrato-legal">
                 ${audit.achados.slice(0, 3).map(a => `
@@ -4986,6 +5013,17 @@ ${url}
       }
       if (renderEmendas && $("filtroEm")) {
         $("filtroEm").value = q; renderEmendas(true);
+      }
+      // Nome de vereador: o painel dele fica na aba Emendas, que estava
+      // escondida atrás da Visão geral; a busca terminava numa tela sem o nome.
+      const qVer = norm(q);
+      if (qVer.length >= 3 && (D.vereadores || []).some(v => norm(v.nome || "").includes(qVer))) {
+        document.querySelector('.csec-btn[data-go="emendas"]')?.click();
+        setTimeout(() => {
+          const alvo = $("perfilVereador") || $("emendas");
+          if (alvo) scrollToEl(alvo);
+        }, 150);
+        return;
       }
       // Rola para o bloco de contratos primeiro (mais relevante p/ "Ver contratos")
       setTimeout(() => {
@@ -6337,12 +6375,24 @@ ${url}
         window.location.href = "prefeitura.html?tab=asfalto&q=" + encodeURIComponent(q);
         return;
       }
-      if (casaRegra(["comissionado", "cargo comissionado", "cargos de confianca"])) {
-        window.location.href = "pessoal.html?tipo=comissionado";
+      // O que sobra da busca depois de tirar as palavras da regra e as de
+      // ligação vira filtro na página de destino: "salário do prefeito"
+      // abre Pessoal já filtrada em "prefeito", sem o cidadão buscar duas vezes.
+      const LIGACAO = new Set(["do", "da", "de", "dos", "das", "o", "a", "os", "as", "e", "em", "no", "na", "um", "uma", "quanto", "qual", "quem", "ganha", "recebe", "paga"]);
+      const termoResidual = (regra) => q.split(/\s+/).filter(w => {
+        const n = norm(w);
+        return n.length > 2 && !LIGACAO.has(n) && !regra.some(t => n.startsWith(norm(t).slice(0, 5)));
+      }).join(" ");
+      const REGRA_COMISSIONADO = ["comissionado", "cargo comissionado", "cargos de confianca"];
+      if (casaRegra(REGRA_COMISSIONADO)) {
+        const resto = termoResidual(REGRA_COMISSIONADO);
+        window.location.href = "pessoal.html?tipo=comissionado" + (resto ? "&q=" + encodeURIComponent(resto) : "");
         return;
       }
-      if (casaRegra(["salario", "ganha", "folha", "pessoal", "cargo", "servidor", "funcionario"])) {
-        window.location.href = "pessoal.html";
+      const REGRA_SALARIO = ["salario", "ganha", "folha", "pessoal", "cargo", "servidor", "funcionario"];
+      if (casaRegra(REGRA_SALARIO)) {
+        const resto = termoResidual(REGRA_SALARIO);
+        window.location.href = "pessoal.html" + (resto ? "?q=" + encodeURIComponent(resto) : "");
         return;
       }
       if (casaRegra(["aluguel", "imovel", "predio", "locacao", "aluga"])) {
@@ -8242,6 +8292,16 @@ ${url}
       toggle.setAttribute("title", open ? "Fechar menu" : "Abrir menu");
       toggle.innerHTML = open ? '<span aria-hidden="true">✕</span>' : '<span aria-hidden="true">☰</span>';
     });
+    // "Mais" é um <details>: fecha ao clicar fora ou apertar Esc.
+    const mais = nav.querySelector(".nav__more");
+    if (mais) {
+      document.addEventListener("click", function(e) {
+        if (mais.open && !mais.contains(e.target)) mais.open = false;
+      });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape" && mais.open) { mais.open = false; mais.querySelector("summary")?.focus(); }
+      });
+    }
     nav.querySelectorAll("a").forEach(function(a) {
       a.addEventListener("click", function() {
         nav.classList.remove("nav--open");

@@ -248,12 +248,17 @@
       (cruzMapLocal[e.numero + "/" + e.ano] || {}).status === "sem_pagamento"
     ).length;
 
+    // O portal de Emendas soma 2024 e 2025; aqui entram só as emendas desta
+    // base. Sem o ano, 357 aqui e 581 lá pareciam contradição.
+    const anosEmendas = [...new Set(emendas.map(e => String(e.ano || "")).filter(Boolean))].sort();
+    const emAnos = anosEmendas.length ? ` em ${anosEmendas.join(" e ")}` : "";
+
     el.innerHTML = `
       <div class="placar-card placar-card--money">
         <span class="placar-card__icon">${icon("cifrao", { size: 24 })}</span>
         <span class="placar-card__valor">${fmtBRL(total)}</span>
         <span class="placar-card__label">Total em emendas ${carimboColeta()}</span>
-        <span class="placar-card__sub">Destinado por <strong>vereadores</strong></span>
+        <span class="placar-card__sub">Destinado por <strong>vereadores</strong>${emAnos}</span>
         <span class="placar-card__percapita">${perCapita(total)}</span>
       </div>
       <div class="placar-card placar-card--top">
@@ -266,7 +271,7 @@
         <span class="placar-card__icon">${icon("cheque", { size: 24 })}</span>
         <span class="placar-card__valor">${pctLocalizado}%</span>
         <span class="placar-card__label">Beneficiário com pagamento localizado</span>
-        <span class="placar-card__sub"><strong>${fmtNum(localizadas)}</strong> de ${fmtNum(emendas.length)} emendas no portal</span>
+        <span class="placar-card__sub"><strong>${fmtNum(localizadas)}</strong> de ${fmtNum(emendas.length)} emendas${emAnos}</span>
       </div>
       <div class="placar-card placar-card--warn">
         <span class="placar-card__icon">${icon("alerta", { size: 24 })}</span>

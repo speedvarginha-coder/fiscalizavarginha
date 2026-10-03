@@ -723,11 +723,17 @@ if (cnpjInvalidos.length) {
 }
 
 if (!contratosAuditaveis || !obrasAuditaveis) {
+  // O aviso diz exatamente o que foi suspenso. Antes ele afirmava que todos os
+  // alertas de "fornecedor sem contrato" estavam suspensos enquanto o da Camara,
+  // que nao depende de obras, continuava publicado.
+  const detalhe = !contratosAuditaveis
+    ? "A ultima base valida permanece publicada, mas os contratos nao foram coletados integralmente no ciclo atual. Por seguranca, o sistema nao gera alertas nominais de fornecedor sem contrato (Prefeitura e Camara) nem de incompatibilidade contratual enquanto a fonte estiver preservada ou parcial."
+    : "A ultima base valida de obras publicas permanece publicada, mas as obras nao foram coletadas integralmente no ciclo atual. Por seguranca, fica suspenso o alerta de fornecedor da Prefeitura sem contrato nem obra vinculada. Os cruzamentos que dependem so de contratos, coletados integralmente, seguem ativos.";
   add(
     "warning",
     "auditoria-vinculos-suspensa-por-frescor",
     "Cruzamentos de fornecedores e contratos temporariamente suspensos",
-    "A ultima base valida permanece publicada, mas contratos ou obras nao foram coletados integralmente no ciclo atual. Por seguranca, o sistema nao gera novos alertas nominais de fornecedor sem contrato nem de incompatibilidade contratual enquanto a fonte estiver preservada ou parcial.",
+    detalhe,
     "Restabelecer a coleta Betha, validar a cobertura e somente depois reativar os cruzamentos nominais.",
     "prefeitura.json",
     { verification: {

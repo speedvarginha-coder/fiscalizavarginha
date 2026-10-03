@@ -185,6 +185,20 @@
     cobrar: { prefeitura: "prefeitura_painel" },
   };
 
+  // A Betha publica "-" como data ausente. Tratado como data, gerava periodo
+  // "ate /", valor por dia com vigencia de 1 dia e selo de registro completo
+  // em 483 contratos. Limpo aqui, onde todas as telas recebem os dados.
+  const DATA_ISO = /^\d{4}-\d{2}-\d{2}/;
+  function limparDatasContratos(key, data) {
+    if ((key !== "prefeitura" && key !== "camara_betha") || !Array.isArray(data?.contratos)) return data;
+    for (const c of data.contratos) {
+      for (const campo of ["data_assinatura", "data_fim"]) {
+        if (c && c[campo] && !DATA_ISO.test(String(c[campo]))) c[campo] = "";
+      }
+    }
+    return data;
+  }
+
   function fetchChunk(key) {
     // URL estável permite ao service worker devolver o cache imediatamente e
     // revalidar em segundo plano. "no-cache" ainda consulta a versão nova
@@ -203,7 +217,7 @@
         console.info("[data-loader] versao enxuta ausente:", arquivo, err.message);
         return buscar(key);
       })
-      .then((data) => ({ key, data }))
+      .then((data) => ({ key, data: limparDatasContratos(key, data) }))
       .catch((err) => {
         if (CHUNKS_OPCIONAIS.has(key)) {
           console.info("[data-loader] chunk opcional ausente:", key, err.message);

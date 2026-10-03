@@ -93,10 +93,10 @@
       href: "pessoal.html",
     },
     camara: {
-      titulo: "O que os vereadores estão fazendo?",
-      voce: "a produção de cada vereador, as emendas destinadas e para qual CNPJ foi o dinheiro.",
-      rotulo: "Abrir Câmara",
-      href: "camara.html",
+      titulo: "O que cada vereador fez e quanto custa?",
+      voce: "o que cada vereador apresentou (indicações, requerimentos, projetos de lei), as emendas que destinou, para qual CNPJ foi o dinheiro e o salário. Escolha o vereador na aba Emendas.",
+      rotulo: "Escolher um vereador",
+      href: "camara.html#emendas",
     },
     cobrar: {
       titulo: "Quero cobrar uma resposta oficial",

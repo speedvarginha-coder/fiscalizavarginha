@@ -85,17 +85,23 @@ try {
     </a>
     <button class="nav__toggle" type="button" title="Abrir menu" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav"><span aria-hidden="true">☰</span></button>
     <nav id="mainNav" class="nav" aria-label="Seções">
-      <a href="index.html"      class="nav__link nav__link--active">Início</a>
-      <a href="atualizacoes.html" class="nav__link">Atualizações</a>
+      <a href="index.html" class="nav__link nav__link--active" aria-current="page">Início</a>
       <a href="prefeitura.html" class="nav__link">Prefeitura</a>
-      <a href="fundacao.html" class="nav__link">Fundação</a>
-      <a href="camara.html"     class="nav__link">Câmara</a>
+      <a href="camara.html" class="nav__link">Câmara</a>
+      <a href="pessoal.html" class="nav__link">Salários</a>
       <a href="emendas/index.html" class="nav__link">Emendas</a>
-      <a href="relatorios.html" class="nav__link">Relatórios</a>
-      <a href="pessoal.html"    class="nav__link">Pessoal</a>
-      <a href="sobre.html"      class="nav__link">Sobre</a>
-      <a href="conformidade.html" class="nav__link">Conformidade</a>
-      <a href="cobrar.html"     class="nav__link nav__link--cta">Como cobrar</a>
+      <details class="nav__more">
+        <summary class="nav__link nav__more-btn">Mais</summary>
+        <div class="nav__more-list">
+          <a href="fundacao.html" class="nav__link">Fundação Cultural</a>
+          <a href="atualizacoes.html" class="nav__link">Atualizações</a>
+          <a href="relatorios.html" class="nav__link">Relatórios</a>
+          <a href="marcadores.html" class="nav__link">Meus marcadores</a>
+          <a href="conformidade.html" class="nav__link">Qualidade dos dados</a>
+          <a href="sobre.html" class="nav__link">Sobre o painel</a>
+        </div>
+      </details>
+      <a href="cobrar.html" class="nav__link nav__link--cta">Como cobrar</a>
     </nav>
   </div>
 </header>
@@ -104,7 +110,7 @@ try {
 <aside id="onboarding-banner" class="onboarding" role="note">
   <div class="onboarding__body">
     <strong class="onboarding__title">Bem-vindo ao Fiscaliza Varginha</strong>
-    <p class="onboarding__text">Este painel mostra <strong>contratos e gastos reais</strong> da Prefeitura e da Câmara de Varginha-MG, em linguagem simples. Clique em qualquer valor para conferir a <strong>fonte oficial</strong>. Não é prova de irregularidade — é um ponto de partida.</p>
+    <p class="onboarding__text">Gastos reais da Prefeitura e da Câmara, cada um com link para a <strong>fonte oficial</strong>. Um dado aqui é ponto de partida para perguntar, não prova de irregularidade.</p>
   </div>
   <button type="button" class="onboarding__close" aria-label="Entendi, fechar aviso">Entendi</button>
 </aside>
@@ -114,15 +120,6 @@ try {
       <span class="hero__kicker">Transparência pública em linguagem simples</span>
       <p id="atualizado" class="muted small" style="margin-top:4px;margin-bottom:0"></p>
       <h1 class="hero__title">Fiscalize Varginha sem se perder nos portais.</h1>
-      <p class="hero__lead">
-        Em 2026, Varginha tem orçamento de R$ 1,22 bilhão — quase tudo na Prefeitura (contratos, folha, obras, diárias) e R$ 19,8 milhões na Câmara. Veja para onde vai cada real e como cobrar resposta — sem juridiquês, sem login.
-        <a href="docs/loa-2026-lei-7510-2025.pdf" target="_blank" rel="noopener" class="muted small" style="display:inline-block;margin-top:4px">Fonte: LOA 2026 — Lei nº 7.510/2025 (PDF oficial, 18 MB) ↗</a>
-      </p>
-      <div class="hero__proof" aria-label="Destaques do painel">
-        <a href="docs/loa-2026-lei-7510-2025.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none"><span>LOA 2026 (PDF)</span></a>
-        <span>Prefeitura + Câmara</span>
-        <span>Dados públicos</span>
-      </div>
       
       <div class="search-box">
         <div class="search">
@@ -147,6 +144,16 @@ try {
         </div>
         <div id="homeStartGuideDetail" class="start-guide__detail" aria-live="polite"></div>
       </section>
+
+      <p class="hero__lead">
+        Em 2026, Varginha tem orçamento de R$ 1,22 bilhão — quase tudo na Prefeitura (contratos, folha, obras, diárias) e R$ 19,8 milhões na Câmara. Veja para onde vai cada real e como cobrar resposta — sem juridiquês, sem login.
+        <a href="docs/loa-2026-lei-7510-2025.pdf" target="_blank" rel="noopener" class="muted small" style="display:inline-block;margin-top:4px">Fonte: LOA 2026 — Lei nº 7.510/2025 (PDF oficial, 18 MB) ↗</a>
+      </p>
+      <div class="hero__proof" aria-label="Destaques do painel">
+        <a href="docs/loa-2026-lei-7510-2025.pdf" target="_blank" rel="noopener" style="color:inherit;text-decoration:none"><span>LOA 2026 (PDF)</span></a>
+        <span>Prefeitura + Câmara</span>
+        <span>Dados públicos</span>
+      </div>
 
       <!-- B: alerta investimentos -->
       <div class="hero-alert">
@@ -217,9 +224,9 @@ try {
         <a href="camara.html#vereadores" class="hub-item">
           <div class="hub-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <span>Vereadores</span>
-          <small class="hub-item__cue">quem produz? →</small>
+          <small class="hub-item__cue">quanto recebem? →</small>
         </a>
-        <a href="camara.html#emendas" class="hub-item">
+        <a href="emendas/index.html" class="hub-item">
           <div class="hub-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></div>
           <span>Emendas</span>
           <small class="hub-item__cue">pra onde foram? →</small>
@@ -245,7 +252,7 @@ try {
           </div>
           <div class="hub-numeros__item">
             <strong id="hnSinais">—</strong>
-            <span>sinais de atenção</span>
+            <span>emendas com pagamento localizado</span>
           </div>
         </div>
         <a href="relatorios.html" class="hub-numeros__link">Ver relatório completo →</a>
@@ -255,81 +262,89 @@ try {
   </div>
 </section>
 
-<!-- ===== ÍNDICE DE TRANSPARÊNCIA (Radar da Transparência · ATRICON/PNTP) ===== -->
-<section class="section transp-radar" id="radar-transparencia" aria-label="Índice de transparência de Varginha no Radar da Transparência">
+<section class="section section--alt">
   <div class="container">
-    <div class="transp-radar__head">
-      <span class="transp-radar__kicker">RADAR DA TRANSPARÊNCIA · PNTP/ATRICON 2025</span>
-      <h2 class="transp-radar__title">Varginha ainda não está entre as mais transparentes</h2>
-      <p class="transp-radar__lead">Na autoavaliação do Programa Nacional de Transparência Pública (PNTP/ATRICON) de 2025, nem a Prefeitura nem a Câmara de Varginha alcançaram os requisitos para certificação nos níveis <strong>Diamante, Ouro ou Prata</strong>. Os resultados abaixo não constam como validados ou revisados pelo Tribunal de Contas.</p>
-    </div>
-    <div class="transp-radar__grid">
-      <article class="transp-card">
-        <span class="transp-card__orgao">Prefeitura de Varginha</span>
-        <span class="transp-card__nivel transp-nivel--elevado">Nível Elevado</span>
-        <strong class="transp-card__indice">81,8<small>%</small></strong>
-        <span class="transp-card__det">Itens essenciais: 82% · Executivo Municipal</span>
-      </article>
-      <article class="transp-card">
-        <span class="transp-card__orgao">Câmara de Varginha</span>
-        <span class="transp-card__nivel transp-nivel--inter">Nível Intermediário</span>
-        <strong class="transp-card__indice">63,3<small>%</small></strong>
-        <span class="transp-card__det">Itens essenciais: 86% · Legislativo Municipal</span>
-      </article>
-    </div>
-    <div class="transp-radar__foot">
-      <p class="muted small">Escala oficial, do maior para o menor: <strong>Diamante › Ouro › Prata › Elevado › Intermediário</strong>. A Câmara está no nível mais baixo da escala. Fonte: Radar da Transparência Pública (PNTP/ATRICON), exercício 2025 — confira e cobre melhorias.</p>
-      <a href="https://radardatransparencia.atricon.org.br/" target="_blank" rel="noopener" class="transp-radar__btn">Ver o Radar oficial da ATRICON ↗</a>
-    </div>
+    <section class="home-ops animate-on-scroll" aria-label="Painel rapido de fiscalizacao">
+      <div class="home-ops__head">
+        <span>Central de fiscalização</span>
+        <h2>Comece pelos sinais que mais importam.</h2>
+        <p>Resumo direto de dinheiro público: contratos, emendas, canais oficiais e diárias para conferir tudo na fonte.</p>
+        <div class="home-ops__brief" aria-label="Roteiro rapido">
+          <strong>Roteiro rápido</strong>
+          <a href="prefeitura.html?tab=contratos">1. Abra contratos acima de R$ 1 mi</a>
+          <a href="prefeitura.html?tab=diarias">2. Confira diárias por pessoa e finalidade</a>
+          <a href="camara.html">3. Compare emenda, CNPJ e pagamento</a>
+        </div>
+        <div id="homeOpsFreshness" class="home-ops__freshness">Dados locais carregados no navegador</div>
+      </div>
+
+      <div class="home-ops__side">
+      <div id="homeOpsStats" class="home-ops__stats">
+        <a href="prefeitura.html" class="home-stat">
+          <strong>Prefeitura</strong>
+          <span>Contratos, pagamentos, licitações e diárias</span>
+        </a>
+        <a href="camara.html" class="home-stat">
+          <strong>Câmara</strong>
+          <span>Vereadores, matérias e emendas</span>
+        </a>
+        <a href="relatorios.html" class="home-stat">
+          <strong>Relatórios</strong>
+          <span>Sinais de atenção para investigar</span>
+        </a>
+      </div>
+
+      <div id="homeOpsPriorities" class="home-ops__priorities">
+        <a href="prefeitura.html?tab=contratos" class="priority-row">
+          <span>1</span>
+          <strong>Contratos de alto valor</strong>
+          <small>Leia objeto, vigência, modalidade e fornecedor.</small>
+        </a>
+        <a href="prefeitura.html?tab=diarias" class="priority-row">
+          <span>2</span>
+          <strong>Diárias e viagens</strong>
+          <small>Confira pessoa, destino, valor e finalidade.</small>
+        </a>
+        <a href="camara.html" class="priority-row">
+          <span>3</span>
+          <strong>Emendas parlamentares</strong>
+          <small>Compare promessa, CNPJ beneficiado e pagamento.</small>
+        </a>
+      </div>
+
+      </div>
+
+      <section id="homeDataHealth" class="home-data-health home-data-health--home" hidden></section>
+
+      <section id="homeMoneyMap" class="home-money-map" aria-label="Para onde foi o dinheiro público"></section>
+      <section id="homeTrendWatch" class="home-trend-watch" aria-label="Comparativo de tendência do dinheiro público"></section>
+      <section id="dataReadingLegend" class="data-legend" aria-label="Como ler os dados deste painel" hidden></section>
+
+      <div id="homeDataBacklog" class="home-data-backlog" hidden></div>
+
+      <div class="home-ops__actions">
+        <a href="prefeitura.html" class="home-action home-action--primary">
+          <span>Executivo</span>
+          <strong>Fiscalizar Prefeitura</strong>
+          <small>Dinheiro gasto, contratos, licitações, diárias e fontes oficiais.</small>
+        </a>
+        <a href="camara.html" class="home-action">
+          <span>Legislativo</span>
+          <strong>Acompanhar Câmara</strong>
+          <small>Produção dos vereadores, emendas, matérias e transparência.</small>
+        </a>
+        <a href="cobrar.html" class="home-action home-action--gold">
+          <span>Ação cidadã</span>
+          <strong>Como cobrar</strong>
+          <small>Canais oficiais para pedir informação, protocolar e denunciar.</small>
+        </a>
+      </div>
+    </section>
   </div>
 </section>
 
-<!-- ===== LINHA DO TEMPO EDUCATIVA: O CICLO DO DINHEIRO PÚBLICO ===== -->
-<section class="section section--timeline" style="background: var(--white); padding: 40px 0; border-bottom: 1px solid var(--line);">
-  <div class="container">
-    <div class="section-header" style="text-align: center; margin-bottom: 35px;">
-      <h2 class="section__title" style="margin-bottom: 8px;">Ciclo de Fiscalização Cidadã</h2>
-      <p class="muted">Entenda as etapas do dinheiro público em Varginha e aprenda a agir no momento certo.</p>
-    </div>
-    
-    <div class="money-timeline" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; position: relative;">
-      
-      <div class="timeline-card" style="background: var(--bg); border: 1.5px solid var(--line); padding: 20px; border-radius: var(--radius); transition: all 0.3s; position: relative; overflow: hidden;">
-        <div class="timeline-card__step" style="position: absolute; top: -10px; right: -10px; font-size: 70px; font-weight: 900; color: rgba(0,75,141,0.06); line-height: 1;">1</div>
-        <div style="font-size: 1.5em; margin-bottom: 10px;">📋</div>
-        <h3 style="font-size: 1.1em; margin: 0 0 6px 0; color: var(--navy);">Orçamento (LOA)</h3>
-        <p class="muted small" style="margin: 0;">Aprovado no ano anterior. Define o limite de quanto a Prefeitura e a Câmara podem gastar em cada área.</p>
-        <span class="small" style="display: block; margin-top: 12px; color: var(--gold-dk); font-weight: 700;">Momento de propor emendas</span>
-      </div>
-
-      <div class="timeline-card" style="background: var(--bg); border: 1.5px solid var(--line); padding: 20px; border-radius: var(--radius); transition: all 0.3s; position: relative; overflow: hidden;">
-        <div class="timeline-card__step" style="position: absolute; top: -10px; right: -10px; font-size: 70px; font-weight: 900; color: rgba(7,138,75,0.06); line-height: 1;">2</div>
-        <div style="font-size: 1.5em; margin-bottom: 10px;">🔍</div>
-        <h3 style="font-size: 1.1em; margin: 0 0 6px 0; color: var(--teal);">Licitação</h3>
-        <p class="muted small" style="margin: 0;">A prefeitura abre concorrência para comprar produtos ou contratar obras. Qualquer empresa pode participar.</p>
-        <span class="small" style="display: block; margin-top: 12px; color: var(--teal); font-weight: 700;">Acompanhe na aba Licitações</span>
-      </div>
-
-      <div class="timeline-card" style="background: var(--bg); border: 1.5px solid var(--line); padding: 20px; border-radius: var(--radius); transition: all 0.3s; position: relative; overflow: hidden;">
-        <div class="timeline-card__step" style="position: absolute; top: -10px; right: -10px; font-size: 70px; font-weight: 900; color: rgba(242,194,48,0.06); line-height: 1;">3</div>
-        <div style="font-size: 1.5em; margin-bottom: 10px;">✍</div>
-        <h3 style="font-size: 1.1em; margin: 0 0 6px 0; color: var(--gold-dk);">Contrato</h3>
-        <p class="muted small" style="margin: 0;">Assinado com a empresa vencedora. Define regras, prazos, obrigações e o valor global a ser empenhado.</p>
-        <span class="small" style="display: block; margin-top: 12px; color: var(--navy); font-weight: 700;">Audite na aba Contratos</span>
-      </div>
-
-      <div class="timeline-card" style="background: var(--bg); border: 1.5px solid var(--line); padding: 20px; border-radius: var(--radius); transition: all 0.3s; position: relative; overflow: hidden;">
-        <div class="timeline-card__step" style="position: absolute; top: -10px; right: -10px; font-size: 70px; font-weight: 900; color: rgba(201,54,50,0.06); line-height: 1;">4</div>
-        <div style="font-size: 1.5em; margin-bottom: 10px;">💸</div>
-        <h3 style="font-size: 1.1em; margin: 0 0 6px 0; color: var(--red);">Execução e Pagamento</h3>
-        <p class="muted small" style="margin: 0;">A prefeitura mede o serviço entregue, liquida a nota e efetua o pagamento final. O dinheiro de fato sai.</p>
-        <span class="small" style="display: block; margin-top: 12px; color: var(--red); font-weight: 700;">Fiscalize com o "Como Cobrar"</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+<details class="home-fold" open>
+  <summary class="home-fold__summary"><strong>Orçamento 2026: para onde vai R$ 1,22 bilhão</strong><span>Por área, por secretaria e por morador</span></summary>
 <!-- ===== LOA 2026 — Dobra Orçamentária Rica ===== -->
 <section class="loa-strip" id="loa-strip">
 
@@ -470,87 +485,111 @@ try {
   </div>
 
 </section>
+</details>
 
-<section class="section section--alt">
+<details class="home-fold" open>
+  <summary class="home-fold__summary"><strong>Como o dinheiro público anda</strong><span>Do orçamento ao pagamento, e o momento certo de agir</span></summary>
+<!-- ===== LINHA DO TEMPO EDUCATIVA: O CICLO DO DINHEIRO PÚBLICO ===== -->
+<section class="section section--timeline" style="background: var(--white); padding: 40px 0; border-bottom: 1px solid var(--line);">
   <div class="container">
-    <section class="home-ops animate-on-scroll" aria-label="Painel rapido de fiscalizacao">
-      <div class="home-ops__head">
-        <span>Central de fiscalização</span>
-        <h2>Comece pelos sinais que mais importam.</h2>
-        <p>Resumo direto de dinheiro público: contratos, emendas, canais oficiais e diárias para conferir tudo na fonte.</p>
-        <div class="home-ops__brief" aria-label="Roteiro rapido">
-          <strong>Roteiro rápido</strong>
-          <a href="prefeitura.html?tab=contratos">1. Abra contratos acima de R$ 1 mi</a>
-          <a href="prefeitura.html?tab=diarias">2. Confira diárias por pessoa e finalidade</a>
-          <a href="camara.html">3. Compare emenda, CNPJ e pagamento</a>
-        </div>
-        <div id="homeOpsFreshness" class="home-ops__freshness">Dados locais carregados no navegador</div>
+    <div class="section-header" style="text-align: center; margin-bottom: 35px;">
+      <h2 class="section__title" style="margin-bottom: 8px;">Ciclo de Fiscalização Cidadã</h2>
+      <p class="muted">Entenda as etapas do dinheiro público em Varginha e aprenda a agir no momento certo.</p>
+    </div>
+    
+    <div class="money-timeline" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; position: relative;">
+      
+      <div class="timeline-card" style="background: var(--bg); border: 1.5px solid var(--line); padding: 20px; border-radius: var(--radius); transition: all 0.3s; position: relative; overflow: hidden;">
+        <div class="timeline-card__step" style="position: absolute; top: -10px; right: -10px; font-size: 70px; font-weight: 900; color: rgba(0,75,141,0.06); line-height: 1;">1</div>
+        <div style="font-size: 1.5em; margin-bottom: 10px;">📋</div>
+        <h3 style="font-size: 1.1em; margin: 0 0 6px 0; color: var(--navy);">Orçamento (LOA)</h3>
+        <p class="muted small" style="margin: 0;">Aprovado no ano anterior. Define o limite de quanto a Prefeitura e a Câmara podem gastar em cada área.</p>
+        <span class="small" style="display: block; margin-top: 12px; color: var(--gold-dk); font-weight: 700;">Momento de propor emendas</span>
       </div>
 
-      <div class="home-ops__side">
-      <div id="homeOpsStats" class="home-ops__stats">
-        <a href="prefeitura.html" class="home-stat">
-          <strong>Prefeitura</strong>
-          <span>Contratos, pagamentos, licitações e diárias</span>
-        </a>
-        <a href="camara.html" class="home-stat">
-          <strong>Câmara</strong>
-          <span>Vereadores, matérias e emendas</span>
-        </a>
-        <a href="relatorios.html" class="home-stat">
-          <strong>Relatórios</strong>
-          <span>Sinais de atenção para investigar</span>
-        </a>
+      <div class="timeline-card" style="background: var(--bg); border: 1.5px solid var(--line); padding: 20px; border-radius: var(--radius); transition: all 0.3s; position: relative; overflow: hidden;">
+        <div class="timeline-card__step" style="position: absolute; top: -10px; right: -10px; font-size: 70px; font-weight: 900; color: rgba(7,138,75,0.06); line-height: 1;">2</div>
+        <div style="font-size: 1.5em; margin-bottom: 10px;">🔍</div>
+        <h3 style="font-size: 1.1em; margin: 0 0 6px 0; color: var(--teal);">Licitação</h3>
+        <p class="muted small" style="margin: 0;">A prefeitura abre concorrência para comprar produtos ou contratar obras. Qualquer empresa pode participar.</p>
+        <span class="small" style="display: block; margin-top: 12px; color: var(--teal); font-weight: 700;">Acompanhe na aba Licitações</span>
       </div>
 
-      <div id="homeOpsPriorities" class="home-ops__priorities">
-        <a href="prefeitura.html?tab=contratos" class="priority-row">
-          <span>1</span>
-          <strong>Contratos de alto valor</strong>
-          <small>Leia objeto, vigência, modalidade e fornecedor.</small>
-        </a>
-        <a href="prefeitura.html?tab=diarias" class="priority-row">
-          <span>2</span>
-          <strong>Diárias e viagens</strong>
-          <small>Confira pessoa, destino, valor e finalidade.</small>
-        </a>
-        <a href="camara.html" class="priority-row">
-          <span>3</span>
-          <strong>Emendas parlamentares</strong>
-          <small>Compare promessa, CNPJ beneficiado e pagamento.</small>
-        </a>
+      <div class="timeline-card" style="background: var(--bg); border: 1.5px solid var(--line); padding: 20px; border-radius: var(--radius); transition: all 0.3s; position: relative; overflow: hidden;">
+        <div class="timeline-card__step" style="position: absolute; top: -10px; right: -10px; font-size: 70px; font-weight: 900; color: rgba(242,194,48,0.06); line-height: 1;">3</div>
+        <div style="font-size: 1.5em; margin-bottom: 10px;">✍</div>
+        <h3 style="font-size: 1.1em; margin: 0 0 6px 0; color: var(--gold-dk);">Contrato</h3>
+        <p class="muted small" style="margin: 0;">Assinado com a empresa vencedora. Define regras, prazos, obrigações e o valor global a ser empenhado.</p>
+        <span class="small" style="display: block; margin-top: 12px; color: var(--navy); font-weight: 700;">Audite na aba Contratos</span>
       </div>
 
+      <div class="timeline-card" style="background: var(--bg); border: 1.5px solid var(--line); padding: 20px; border-radius: var(--radius); transition: all 0.3s; position: relative; overflow: hidden;">
+        <div class="timeline-card__step" style="position: absolute; top: -10px; right: -10px; font-size: 70px; font-weight: 900; color: rgba(201,54,50,0.06); line-height: 1;">4</div>
+        <div style="font-size: 1.5em; margin-bottom: 10px;">💸</div>
+        <h3 style="font-size: 1.1em; margin: 0 0 6px 0; color: var(--red);">Execução e Pagamento</h3>
+        <p class="muted small" style="margin: 0;">A prefeitura mede o serviço entregue, liquida a nota e efetua o pagamento final. O dinheiro de fato sai.</p>
+        <span class="small" style="display: block; margin-top: 12px; color: var(--red); font-weight: 700;">Fiscalize com o "Como Cobrar"</span>
       </div>
 
-      <section id="homeDataHealth" class="home-data-health home-data-health--home" hidden></section>
-
-      <section id="homeMoneyMap" class="home-money-map" aria-label="Para onde foi o dinheiro público"></section>
-      <section id="homeTrendWatch" class="home-trend-watch" aria-label="Comparativo de tendência do dinheiro público"></section>
-      <section id="dataReadingLegend" class="data-legend" aria-label="Como ler os dados deste painel" hidden></section>
-
-      <div id="homeDataBacklog" class="home-data-backlog" hidden></div>
-
-      <div class="home-ops__actions">
-        <a href="prefeitura.html" class="home-action home-action--primary">
-          <span>Executivo</span>
-          <strong>Fiscalizar Prefeitura</strong>
-          <small>Dinheiro gasto, contratos, licitações, diárias e fontes oficiais.</small>
-        </a>
-        <a href="camara.html" class="home-action">
-          <span>Legislativo</span>
-          <strong>Acompanhar Câmara</strong>
-          <small>Produção dos vereadores, emendas, matérias e transparência.</small>
-        </a>
-        <a href="cobrar.html" class="home-action home-action--gold">
-          <span>Ação cidadã</span>
-          <strong>Como cobrar</strong>
-          <small>Canais oficiais para pedir informação, protocolar e denunciar.</small>
-        </a>
-      </div>
-    </section>
+    </div>
   </div>
 </section>
+</details>
+
+<details class="home-fold" open>
+  <summary class="home-fold__summary"><strong>Varginha no Radar da Transparência</strong><span>Avaliação PNTP/ATRICON 2025 da Prefeitura e da Câmara</span></summary>
+<!-- ===== ÍNDICE DE TRANSPARÊNCIA (Radar da Transparência · ATRICON/PNTP) ===== -->
+<section class="section transp-radar" id="radar-transparencia" aria-label="Índice de transparência de Varginha no Radar da Transparência">
+  <div class="container">
+    <div class="transp-radar__head">
+      <span class="transp-radar__kicker">RADAR DA TRANSPARÊNCIA · PNTP/ATRICON 2025</span>
+      <h2 class="transp-radar__title">Varginha ainda não está entre as mais transparentes</h2>
+      <p class="transp-radar__lead">Na autoavaliação do Programa Nacional de Transparência Pública (PNTP/ATRICON) de 2025, nem a Prefeitura nem a Câmara de Varginha alcançaram os requisitos para certificação nos níveis <strong>Diamante, Ouro ou Prata</strong>. Os resultados abaixo não constam como validados ou revisados pelo Tribunal de Contas.</p>
+    </div>
+    <div class="transp-radar__grid">
+      <article class="transp-card">
+        <span class="transp-card__orgao">Prefeitura de Varginha</span>
+        <span class="transp-card__nivel transp-nivel--elevado">Nível Elevado</span>
+        <strong class="transp-card__indice">81,8<small>%</small></strong>
+        <span class="transp-card__det">Itens essenciais: 82% · Executivo Municipal</span>
+      </article>
+      <article class="transp-card">
+        <span class="transp-card__orgao">Câmara de Varginha</span>
+        <span class="transp-card__nivel transp-nivel--inter">Nível Intermediário</span>
+        <strong class="transp-card__indice">63,3<small>%</small></strong>
+        <span class="transp-card__det">Itens essenciais: 86% · Legislativo Municipal</span>
+      </article>
+    </div>
+    <div class="transp-radar__foot">
+      <p class="muted small">Escala oficial, do maior para o menor: <strong>Diamante › Ouro › Prata › Elevado › Intermediário › Básico › Inicial › Inexistente</strong>. Diamante, Ouro e Prata exigem 100% dos itens essenciais; nenhum dos dois órgãos chegou lá. Fonte: Radar da Transparência Pública (PNTP/ATRICON), exercício 2025 — confira e cobre melhorias.</p>
+      <a href="https://radardatransparencia.atricon.org.br/" target="_blank" rel="noopener" class="transp-radar__btn">Ver o Radar oficial da ATRICON ↗</a>
+    </div>
+  </div>
+</section>
+</details>
+
+<script>
+/* Dobras da home: abertas no computador, recolhidas no celular. Um link para
+   dentro de uma dobra (ex.: "Entender orçamento") abre a dobra antes de rolar. */
+(function () {
+  var dobras = Array.prototype.slice.call(document.querySelectorAll(".home-fold"));
+  if (!dobras.length || !window.matchMedia) return;
+  var celular = window.matchMedia("(max-width: 767px)");
+  function abrirAlvo() {
+    var id = decodeURIComponent((location.hash || "").slice(1));
+    var alvo = id && document.getElementById(id);
+    var dobra = alvo && alvo.closest && alvo.closest(".home-fold");
+    if (dobra && !dobra.open) { dobra.open = true; alvo.scrollIntoView(); }
+  }
+  function ajustar() {
+    dobras.forEach(function (d) { d.open = !celular.matches; });
+    abrirAlvo();
+  }
+  ajustar();
+  if (celular.addEventListener) celular.addEventListener("change", ajustar);
+  window.addEventListener("hashchange", abrirAlvo);
+})();
+</script>
 </main>
 
 <footer class="footer">

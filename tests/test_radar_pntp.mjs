@@ -14,7 +14,10 @@ import assert from "node:assert/strict";
 const html = readFileSync("painel-cidadao/index.html", "utf8");
 const fonte = JSON.parse(readFileSync("painel-cidadao/data/referencias/pntp-2025.json", "utf8"));
 
-const bloco = html.slice(html.indexOf('id="radar-transparencia"'), html.indexOf("LINHA DO TEMPO EDUCATIVA"));
+// Do inicio ao fim da propria secao: a ordem dos blocos na home pode mudar.
+const inicioRadar = html.indexOf('id="radar-transparencia"');
+const bloco = html.slice(inicioRadar, html.indexOf("</section>", inicioRadar));
+assert.ok(inicioRadar > 0 && bloco.length > 500, "bloco do Radar nao encontrado no index.html");
 
 const cartoes = {
   prefeitura: { rotulo: 'transp-card__orgao">Prefeitura de Varginha' },

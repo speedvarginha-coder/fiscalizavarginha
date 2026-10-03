@@ -53,15 +53,19 @@ function lerResumoDiarias() {
   // entao o numero precisa vir pronto no resumo. Sem isto, o cartao "Diarias e
   // viagens" anunciava "0 registros" enquanto a pagina da Prefeitura mostrava
   // 6.053 — a mesma base, dois numeros na mesma visita.
+  // A home mostra o total da base (o mesmo do selo da aba) e declara os
+  // exercicios que ele soma: sem isso 2025 + 2026 pareciam um ano so.
   try {
     const bruto = JSON.parse(fs.readFileSync(diariasPath, "utf8"));
     const pref = (bruto && bruto.resumo && bruto.resumo.prefeitura) || {};
+    const anos = [...new Set(((bruto && bruto.prefeitura) || []).map((d) => Number(d?.ano)).filter(Boolean))].sort();
     return {
+      diarias_prefeitura_anos: anos,
       diarias_prefeitura_qtd: Number(pref.registros) || 0,
       diarias_prefeitura_valor: Number(pref.valor_total) || 0,
     };
   } catch {
-    return { diarias_prefeitura_qtd: 0, diarias_prefeitura_valor: 0 };
+    return { diarias_prefeitura_anos: [], diarias_prefeitura_qtd: 0, diarias_prefeitura_valor: 0 };
   }
 }
 

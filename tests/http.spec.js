@@ -333,7 +333,10 @@ test("busca global abre pelo menu e roteia em página interna", async ({ page })
   await expect(overlay).toBeVisible();
   await overlay.locator("#buscaGlobal").fill("Vila Floresta");
   await overlay.locator('button[type="submit"]').click();
-  await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=Vila%20Floresta/);
+  // O espaço pode vir como %20 (da busca) ou + (quando a aba Asfalto sincroniza
+  // os filtros na URL). As duas formas são o mesmo endereço; com a página
+  // carregando mais rápido, a sincronização às vezes chega antes da conferência.
+  await expect(page).toHaveURL(/prefeitura\.html\?tab=asfalto&q=Vila(%20|\+)Floresta/);
 });
 
 test("busca da aba Asfalto mantem o q na URL (nao vira so tab+ano)", async ({ page }) => {

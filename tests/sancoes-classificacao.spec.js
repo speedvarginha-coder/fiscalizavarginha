@@ -71,16 +71,32 @@ test.describe("Alertas de sancao no artefato publicado", () => {
     expect(achados[0]).toHaveProperty("link_registro");
   });
 
-  test("fonte contratual parcial ou preservada suspende cruzamentos nominais", () => {
-    const domains = JSON.parse(fs.readFileSync(STATUS_FONTES, "utf8")).domains || {};
-    const statuses = [domains.prefeitura?.status, domains.camara_betha?.status];
-    const fonteNaoIntegral = statuses.some((status) => ["partial", "preserved", "stale", "error"].includes(status));
-    if (!fonteNaoIntegral) test.skip(true, "fontes contratuais integrais na base atual");
+  test("fonte parcial ou preservada suspende os cruzamentos que dependem dela", () => {
+    // Por base, nao pelo status geral do dominio: a Prefeitura fica "preserved"
+    // quando so a frota ou as obras falham, e isso nao invalida contratos.
+    const chunk = (nome) => JSON.parse(fs.readFileSync(path.resolve(`painel-cidadao/data/chunks/${nome}.json`), "utf8"));
+    const instavel = (valor) => /preserv|parcial|partial|failed|falha|erro|vazia/i.test(JSON.stringify(valor || {}));
+    const exportsDe = (c, termo) => Object.fromEntries(
+      Object.entries(c.dados_abertos_status || {}).filter(([k]) => k.toUpperCase().includes(termo)),
+    );
+    const pref = chunk("prefeitura");
+    const cam = chunk("camara_betha");
+    const contratosInstaveis = instavel({
+      p: [pref.contratos_status_coleta, exportsDe(pref, "CONTRATO")],
+      c: [cam.contratos_status_coleta, exportsDe(cam, "CONTRATO")],
+    });
+    const obrasInstaveis = instavel([pref.obras_status_coleta, exportsDe(pref, "OBRA")]);
+    if (!contratosInstaveis && !obrasInstaveis) test.skip(true, "contratos e obras integrais na base atual");
 
     const ids = new Set(itens().map((item) => item.id));
     expect(ids).toContain("auditoria-vinculos-suspensa-por-frescor");
     expect(ids).not.toContain("prefeitura-despesa-sem-contrato");
-    expect(ids).not.toContain("camara-despesa-sem-contrato");
-    expect(ids).not.toContain("possivel-incompatibilidade-contratual");
+    if (contratosInstaveis) {
+      expect(ids).not.toContain("camara-despesa-sem-contrato");
+      expect(ids).not.toContain("possivel-incompatibilidade-contratual");
+    }
+    // O aviso publico precisa dizer o que de fato foi suspenso.
+    const aviso = acha("auditoria-vinculos-suspensa-por-frescor").detail;
+    if (!contratosInstaveis) expect(aviso).toMatch(/obras/i);
   });
 });
