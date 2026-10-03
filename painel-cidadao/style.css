@@ -13398,3 +13398,15 @@ body[data-page="home"] .hub-grid-18 .hub-item--avalie .hub-item__icon svg {
 .diarias-list__fonte { margin-bottom: 12px; }
 .diarias-list__mais { display: block; margin: 16px auto 4px; }
 .diarias-ranking__mais > summary { cursor: pointer; padding: 10px 4px; font-weight: 600; color: var(--navy); min-height: 44px; display: flex; align-items: center; }
+
+/* Pessoal: primeiro escalao (out/2026) */
+.escalao-lista { display: grid; gap: 8px; }
+.escalao-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.escalao-item__quem, .escalao-item__valor { display: grid; gap: 2px; min-width: 0; }
+.escalao-item__quem small, .escalao-item__valor small { color: var(--muted); font-size: 13px; }
+.escalao-item__valor { text-align: right; }
+.escalao-item__nota { color: var(--gold-dk); }
+@media (max-width: 560px) {
+  .escalao-item { grid-template-columns: 1fr; }
+  .escalao-item__valor { text-align: left; }
+}

@@ -323,6 +323,35 @@
       // o bruto do mês com a tag explicando a verba extra.
       const salarioComparavel = (s) => (s.isAtipico && s.vencimentoNormal)
         ? Number(s.vencimentoNormal) : Number(s.vencimentos || 0);
+      // Primeiro escalão: prefeito, vice e secretários ficam fora da contagem de
+      // comissionados (vínculo próprio na Betha), e "quanto ganha o prefeito?"
+      // ficava sem resposta na página. O cargo traz o código e a sigla da pasta.
+      const escalaoEl = $("primeiroEscalao");
+      if (escalaoEl) {
+        const ehEscalao = (s) => s.orgao === "Prefeitura" &&
+          /-\s*(VICE-)?PREFEITO\s*$|-\s*SECRETARIO\s+S[A-Z]+\s*$/i.test(String(s.cargo || ""));
+        const escalao = todos.filter(s => ehEscalao(s) && !desligou(s))
+          .sort((a, b) => salarioComparavel(b) - salarioComparavel(a));
+        const linhaEscalao = (s) => {
+          const cargo = String(s.cargo || "").replace(/^\d+\s*-\s*/, "");
+          const comp = s.competencia || compPref || "mês não informado";
+          const extra = s.isAtipico && s.tiposFolhaExtra
+            ? `<small class="escalao-item__nota">Inclui ${esc(s.tiposFolhaExtra)} neste mês${s.vencimentoNormal ? ` — base mensal ${fmtBRL(s.vencimentoNormal)}` : ""}</small>`
+            : "";
+          return `
+          <div class="escalao-item">
+            <span class="escalao-item__quem"><strong>${esc(s.nome || "Sem nome")}</strong><small>${esc(cargo)} · vínculo: ${esc(s.vinculo || "não informado")}</small>${extra}</span>
+            <span class="escalao-item__valor"><strong>${fmtBRL(s.vencimentos || 0)}</strong><small>bruto · líquido ${fmtBRL(s.liquido || 0)} · ${esc(comp)}</small></span>
+          </div>`;
+        };
+        const VISIVEIS = 5;
+        escalaoEl.innerHTML = !escalao.length
+          ? '<div class="empty">Prefeito e secretários não localizados na folha carregada.</div>'
+          : escalao.slice(0, VISIVEIS).map(linhaEscalao).join("") + (escalao.length > VISIVEIS
+            ? `<details class="diarias-ranking__mais"><summary>Ver todos os ${escalao.length}</summary><div class="escalao-lista">${escalao.slice(VISIVEIS).map(linhaEscalao).join("")}</div></details>`
+            : "");
+      }
+
       const todosComissionados = todos
         .filter(s => (s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "")) && !desligou(s))
         .sort((a, b) => salarioComparavel(b) - salarioComparavel(a))
