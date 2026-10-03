@@ -4,7 +4,7 @@ Relatório para revisão na manhã de 03/10. Tudo foi feito com a autorização 
 
 ## Commits e publicação
 
-Quatro commits locais no `master`, nada enviado ao GitHub:
+Cinco commits de código locais no `master`, mais o deste relatório, nada enviado ao GitHub:
 
 | Commit | Conteúdo |
 |---|---|
@@ -12,12 +12,13 @@ Quatro commits locais no `master`, nada enviado ao GitHub:
 | `f63f669` feat(painel) | menu, home, diárias, contratos, busca, Radar, emendas, auditoria |
 | `98e4c0b` feat(pessoal) | bloco do primeiro escalão |
 | `c3ff387` feat(cobrar) | caminho para reclamar de um problema; borda redundante removida |
+| `a920702` fix(busca) | busca na Prefeitura abre Contratos e mantém o termo na URL (achado A09) |
 
 Os dados não foram commitados; seguem o fluxo normal do pipeline. O `f63f669` inclui a alteração local anterior do `app.js` (quebra dos valores do ranking, feita pelo Codex), que estava pendente.
 
 **Por que commitei:** a vigia das 22:06 coletou e validou os dados, mas o empacotamento recusou publicar. `package-deploy.ps1` bloqueia código não commitado, para que sempre se saiba o que foi ao ar. O pipeline então restaurou os dados ao estado anterior e não publicou nada. Com o código commitado, o empacotamento e a validação do pacote passaram localmente (`deploy:zip` e `validate:deploy`, 4 de 4 testes). A publicação fica com a vigia da 01:06; o resultado está na seção 8.
 
-O `master` local tinha 44 commits não enviados ao GitHub antes desta noite, e agora tem 48. Por isso o pipeline não sincroniza com o GitHub; isso não afeta a publicação no site.
+O `master` local tinha 44 commits não enviados ao GitHub antes desta noite, e agora tem 50. Por isso o pipeline não sincroniza com o GitHub; isso não afeta a publicação no site.
 
 ## Como as mudanças chegam ao site
 
@@ -77,6 +78,7 @@ A mesma vigia não conseguiu gravar o feed estruturado do Diário (o arquivo est
 - **Busca:**
   - "Salário do prefeito" abre a página Pessoal já filtrada em "prefeito" e rola até o resultado.
   - O nome de um vereador abre a aba Emendas com o painel completo dele.
+  - Na Prefeitura, uma busca sem aba indicada abre Contratos, onde o resultado aparece. Antes abria a Visão geral, e o "Nenhum contrato encontrado" ficava escondido. O termo agora continua na URL mesmo sem resultado (achado A09).
 - **Textos de vereadores:** os cartões e atalhos da home deixaram de prometer o que não mostram. O atalho "Vereadores" leva à aba de remuneração ("quanto recebem?"), e a pergunta pronta leva à escolha do vereador.
 - **Rankings de diárias:** 5 posições à vista e "Ver posições 6 a 15" (cada linha tem cerca de 280 px no celular).
 - **Contratos:** proveniência uma vez por lista (cartão de 814 px para 719 px no celular). Na Câmara: datas no formato brasileiro, "sem prazo informado" e "número não informado na fonte" em vez de "Nº 0".
@@ -146,6 +148,6 @@ Conferido no site real logo depois:
 | Home, cartões | "6.361 registros de diárias (2025 e 2026)", "57 sem pagamento ou sem CNPJ", "249 emendas com pagamento localizado" |
 | Cruzamento diárias × salário | funcionou em 3 de 3 recargas (2 "não localizado", 28 salários; à tarde eram 110 "não localizado") |
 
-A última leva (bloco de reclamação em "Como cobrar" e a borda removida no ranking da página Pessoal) foi commitada às 01:32 (`c3ff387`) e entra na vigia das 04:06.
+Duas levas ficaram para a vigia das 04:06: o bloco de reclamação em "Como cobrar" com a borda removida no ranking (`c3ff387`, 01:32) e a correção da busca (`a920702`, 01:54). As duas passaram pela suíte completa (216 aprovados).
 
 A cópia de trabalho em `tmp/layout/` (cerca de 470 MB, ignorada pelo git) pode ser apagada.
