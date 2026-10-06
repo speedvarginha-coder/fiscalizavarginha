@@ -697,7 +697,7 @@ $payload = json_encode([
     'generationConfig' => [
         'maxOutputTokens' => 1000,
         'temperature'     => 0.3,
-        'thinkingConfig'  => ['thinkingBudget' => 0],
+        'thinkingConfig'  => ['thinkingLevel' => 'minimal'],
     ],
     'safetySettings' => [
         ['category' => 'HARM_CATEGORY_HARASSMENT',        'threshold' => 'BLOCK_MEDIUM_AND_ABOVE'],
@@ -714,9 +714,9 @@ if ($payload === false) {
     exit;
 }
 
-$model = 'gemini-2.5-flash';
+$model = 'gemini-3.5-flash-lite';
 $apiHost = 'generativelanguage.googleapis.com';
-$url   = "https://{$apiHost}/v1beta/models/{$model}:streamGenerateContent?alt=sse&key={$apiKey}";
+$url   = "https://{$apiHost}/v1beta/models/{$model}:streamGenerateContent?alt=sse";
 
 // Resolve o IP no PHP (síncrono). A hospedagem compartilhada bloqueia o
 // resolver assíncrono do cURL ("getaddrinfo() thread failed to start"),
@@ -737,7 +737,7 @@ $ch = curl_init($url);
 curl_setopt_array($ch, [
     CURLOPT_POST          => true,
     CURLOPT_POSTFIELDS    => $payload,
-    CURLOPT_HTTPHEADER    => ['Content-Type: application/json'],
+    CURLOPT_HTTPHEADER    => ['Content-Type: application/json', 'x-goog-api-key: ' . $apiKey],
     CURLOPT_TIMEOUT       => 60,
     CURLOPT_RESOLVE       => $curlResolve,
     // Repassa cada trecho de texto da Gemini ao navegador assim que chega
