@@ -226,7 +226,7 @@ test.describe("Tendencia cidada do dinheiro", () => {
     await gotoReady(page, fileUrl("index.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(3000);
     await expect(page.locator("#homeTrendWatch .trend-card").first()).toBeAttached();
-    await expect(page.locator("#homeTrendWatch")).toContainText("Está melhorando ou piorando");
+    await expect(page.locator("#homeTrendWatch")).toContainText("Comparação entre períodos");
     await page.locator("#homeTrendWatch .money-topic__actions button").first().click();
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();

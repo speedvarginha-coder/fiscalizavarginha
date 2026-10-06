@@ -65,7 +65,7 @@ try {
   ]
 }
 </script>
-<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
+<link rel="stylesheet" href="style.css?v=20261005-updates-preview">
 </head>
 <body data-page="home">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -90,11 +90,11 @@ try {
       <a href="camara.html" class="nav__link">Câmara</a>
       <a href="pessoal.html" class="nav__link">Salários</a>
       <a href="emendas/index.html" class="nav__link">Emendas</a>
+      <a href="atualizacoes.html" class="nav__link nav__link--updates">Atualizações</a>
       <details class="nav__more">
         <summary class="nav__link nav__more-btn">Mais</summary>
         <div class="nav__more-list">
           <a href="fundacao.html" class="nav__link">Fundação Cultural</a>
-          <a href="atualizacoes.html" class="nav__link">Atualizações</a>
           <a href="relatorios.html" class="nav__link">Relatórios</a>
           <a href="marcadores.html" class="nav__link">Meus marcadores</a>
           <a href="conformidade.html" class="nav__link">Qualidade dos dados</a>
@@ -118,8 +118,18 @@ try {
   <div class="container">
     <div class="hero__content animate-in">
       <span class="hero__kicker">Transparência pública em linguagem simples</span>
-      <p id="atualizado" class="muted small" style="margin-top:4px;margin-bottom:0"></p>
       <h1 class="hero__title">Fiscalize Varginha sem se perder nos portais.</h1>
+      <section class="home-updates" aria-labelledby="homeUpdatesTitle">
+        <div class="home-updates__body">
+          <h2 id="homeUpdatesTitle">Atualizações em destaque</h2>
+          <p>Veja as publicações recentes da Prefeitura e da Câmara e o que mudou nos dados.</p>
+          <p id="atualizado" class="home-updates__date"></p>
+        </div>
+        <div class="home-updates__actions">
+          <a class="home-updates__button" href="atualizacoes.html">Ver atualizações <span aria-hidden="true">→</span></a>
+          <a class="home-updates__sources" href="conformidade.html">Consultar qualidade das fontes</a>
+        </div>
+      </section>
       
       <div class="search-box">
         <div class="search">

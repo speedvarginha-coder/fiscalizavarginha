@@ -11402,6 +11402,15 @@ body[data-page="home"] .semana-hero--pending {
   visibility: hidden;
 }
 
+/* No computador, aproxima a central do conteúdo inicial e evita reservar
+   altura para um resumo semanal que pode não estar disponível. */
+@media (min-width: 768px) {
+  body[data-page="home"] .semana-hero--pending { display: none; }
+  body[data-page="home"] .hero--modern { padding-bottom: 24px; }
+  body[data-page="home"] .hero--modern + .section { padding-top: 24px; }
+  body[data-page="home"] .hero--modern + .section .home-ops { margin-top: 0; }
+}
+
 html.onboarding-seen #onboarding-banner {
   display: none;
 }
@@ -13414,3 +13423,30 @@ body[data-page="home"] .hub-grid-18 .hub-item--avalie .hub-item__icon svg {
 /* Como cobrar: reclamar de um problema (out/2026) */
 .cobrar-reclamar__canais { margin: 12px 0; padding-left: 20px; display: grid; gap: 6px; }
 .cobrar-reclamar > .bigheader__kicker { display: block; margin-bottom: 6px; }
+
+/* Destaque de atualizações na prévia da página inicial. */
+.nav .nav__link--updates { background: #fff3c4; color: #004b8d; box-shadow: inset 0 0 0 1px #e0ad28; }
+.nav .nav__link--updates:hover,
+.nav .nav__link--updates[aria-current="page"] { background: #ffcb32; color: #17324b; }
+.home-updates { display: flex; align-items: center; gap: 18px; margin: 18px 0 22px; padding: 20px; border: 1px solid #e3bd54; border-left: 5px solid #e0ad28; border-radius: 12px; background: #fff9e6; color: #17324b; }
+.home-updates__body { flex: 1; min-width: 0; }
+.home-updates h2 { margin: 0 0 6px; font-size: 22px; line-height: 1.25; color: #004b8d; }
+.home-updates p { margin: 0; font-size: 14px; line-height: 1.5; }
+body[data-page="home"] .home-updates #atualizado { margin-top: 8px; color: #4b5563; font-size: 12px; }
+.home-updates__actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.home-updates__button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 10px 14px; border-radius: 8px; background: #ffcb32; color: #17324b; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.home-updates__button:hover { background: #f1b900; color: #17324b; }
+.home-updates__sources { color: #004b8d; font-size: 12px; text-decoration: underline; }
+@media (max-width: 1180px) {
+  .home-updates { flex-direction: column; align-items: stretch; }
+}
+@media (min-width: 961px) and (max-width: 1180px) {
+  .nav .nav__link { padding-left: 6px; padding-right: 6px; font-size: 13px; }
+  .nav { gap: 2px; }
+}
+@media (max-width: 600px) {
+  .home-updates { padding: 16px; gap: 14px; }
+  .home-updates h2 { font-size: 20px; }
+  .home-updates__button { width: 100%; box-sizing: border-box; }
+  .home-updates__actions { align-items: stretch; }
+}
