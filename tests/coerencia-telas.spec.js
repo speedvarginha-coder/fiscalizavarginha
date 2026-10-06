@@ -50,7 +50,12 @@ test.describe("Coerência entre telas", () => {
     expect(esperado, "chunk de diárias sem resumo").toBeGreaterThan(0);
 
     await abrir(page, "index.html");
-    const cardHome = await page.locator(".priority-row", { hasText: "Diárias" }).first().innerText();
+    const prioridadeDiarias = page.locator(".priority-row", { hasText: "Diárias" }).first();
+    // O sinal geral de inicialização antecede o preenchimento dos cartões.
+    await expect(prioridadeDiarias).toContainText(
+      `${esperado.toLocaleString("pt-BR")} registros de diárias`, { timeout: 30_000 }
+    );
+    const cardHome = await prioridadeDiarias.innerText();
     expect(
       primeiroInteiro(cardHome.replace(/^\s*\d+\s/, "")),
       `home diz "${cardHome.replace(/\s+/g, " ").trim()}" e a base tem ${esperado}`
