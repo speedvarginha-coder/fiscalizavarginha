@@ -11,7 +11,7 @@ function visit(relative) {
   if (fs.statSync(absolute).isDirectory()) {
     for (const name of fs.readdirSync(absolute).sort()) {
       if (name.startsWith(".") && name !== ".htaccess") continue;
-      if (["data", "data.js", "__pycache__", "node_modules", "auth_info", "relatorios"].includes(name)) continue;
+      if (["data", "data.js", "operacao.json", "__pycache__", "node_modules", "auth_info", "relatorios"].includes(name)) continue;
       visit(`${relative}/${name}`);
     }
   } else if (/\.(?:js|mjs|html|css|php|py|ps1|json)$|\/\.htaccess$/.test(relative)) {

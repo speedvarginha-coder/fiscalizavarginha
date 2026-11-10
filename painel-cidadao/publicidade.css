@@ -1,0 +1,58 @@
+/* Publicidade institucional: valores, cobertura e meios de divulgação. */
+.publicidade-filtros { display:flex; flex-wrap:wrap; align-items:end; gap:14px; margin:20px 0; }
+.publicidade-filtros label { display:grid; gap:5px; color:#52667d; font-size:.8rem; font-weight:700; }
+.publicidade-filtros select { min-width:145px; min-height:42px; padding:8px 32px 8px 12px; border:1px solid #bdd0e2; border-radius:9px; background:#fff; color:#133a61; font:inherit; font-size:.95rem; }
+.publicidade-filtros select:focus-visible, .publicidade-cadastros summary:focus-visible { outline:3px solid #13864a; outline-offset:2px; }
+.publicidade-resumo { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.publicidade-cartao { display:flex; min-width:0; flex-direction:column; gap:7px; padding:20px 22px; border:1px solid #d4e3ef; border-radius:13px; background:#fff; color:#38526c; }
+.publicidade-cartao--mes { border-color:#085a9f; background:#075394; color:#e6f3ff; }
+.publicidade-cartao--ano { border-left:5px solid #18814b; }
+.publicidade-cartao__rotulo { font-size:.73rem; font-weight:800; letter-spacing:.055em; text-transform:uppercase; }
+.publicidade-cartao strong { color:#074d89; font-size:clamp(1.35rem,2.5vw,2rem); font-variant-numeric:tabular-nums; line-height:1.12; overflow-wrap:anywhere; }
+.publicidade-cartao--mes strong { color:#fff; }
+.publicidade-cartao > span:last-child { font-size:.83rem; }
+.publicidade-cobertura { margin:16px 0 20px; padding:17px 20px; border:1px solid #d8e4ec; border-radius:11px; background:#f7fafc; color:#38526c; }
+.publicidade-cobertura__cabecalho, .publicidade-detalhe__cabecalho { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:6px 16px; }
+.publicidade-cobertura__cabecalho strong, .publicidade-detalhe h4, .publicidade-cadastros h4 { color:#073f70; }
+.publicidade-cobertura__cabecalho span, .publicidade-cobertura p, .publicidade-detalhe__cabecalho span, .publicidade-detalhe__cabecalho p { font-size:.82rem; }
+.publicidade-cobertura p { margin:10px 0 0; }
+.publicidade-meses { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:5px; margin-top:12px; }
+.publicidade-meses span { padding:5px 2px; border-radius:5px; text-align:center; font-size:.72rem; font-weight:700; }
+.publicidade-mes--disponivel { background:#dbeee4; color:#145c39; }
+.publicidade-mes--ausente { border:1px dashed #a56719; background:#fff8e9; color:#744a15; }
+.publicidade-mes--futuro { background:#e9eef2; color:#607283; }
+.publicidade-aviso { padding:11px 14px; border-left:4px solid #a56719; background:#fff8e9; color:#61410e; }
+.publicidade-detalhe { padding:19px 20px 8px; border:1px solid #d8e4ec; border-radius:11px; background:#fff; }
+.publicidade-detalhe h4, .publicidade-cadastros h4 { margin:0; font-size:1rem; }
+.publicidade-detalhe__cabecalho p { margin:4px 0 0; color:#52667d; }
+.publicidade-detalhe__cabecalho span { color:#52667d; }
+.publicidade-tabela { width:100%; margin:14px 0 0; border-collapse:collapse; font-size:.9rem; }
+.publicidade-tabela th, .publicidade-tabela td { padding:11px 0; border-bottom:1px solid #e4edf4; text-align:left; vertical-align:middle; }
+.publicidade-tabela th:first-child { width:64%; font-weight:600; }
+.publicidade-tabela td, .publicidade-tabela th:last-child { text-align:right; font-variant-numeric:tabular-nums; }
+.publicidade-tabela tfoot th, .publicidade-tabela tfoot td { border:0; color:#074d89; font-weight:800; }
+.publicidade-meio { display:block; overflow-wrap:anywhere; }
+.publicidade-barra { display:block; width:min(92%,420px); height:4px; margin-top:7px; overflow:hidden; border-radius:4px; background:#e8f0f6; }
+.publicidade-barra span { display:block; height:100%; border-radius:4px; background:#1477b7; }
+.publicidade-fonte { margin:16px 0 20px; font-size:.88rem; }
+.publicidade-cadastros { margin-top:20px; }
+.publicidade-cadastros h4 { margin-bottom:10px; }
+.publicidade-cadastros details { border-top:1px solid #dce7ef; }
+.publicidade-cadastros details:last-child { border-bottom:1px solid #dce7ef; }
+.publicidade-cadastros summary { padding:13px 4px; color:#074d89; font-weight:700; cursor:pointer; }
+.publicidade-cadastros summary span { margin-left:6px; color:#52667d; font-size:.8rem; font-weight:500; }
+.publicidade-cadastros p, .publicidade-cadastros li { overflow-wrap:anywhere; }
+.publicidade-sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+@media (max-width:600px) {
+  .publicidade-resumo { grid-template-columns:1fr; gap:10px; }
+  .publicidade-cartao { padding:17px; }
+  .publicidade-meses { grid-template-columns:repeat(6,minmax(0,1fr)); }
+  .publicidade-cobertura, .publicidade-detalhe { padding-left:14px; padding-right:14px; }
+  .publicidade-tabela th:first-child { width:57%; }
+}
+body.dark-theme .publicidade-cartao--ano, body.dark-theme .publicidade-detalhe { background:#202a33; border-color:#53687a; color:#e7eef5; }
+body.dark-theme .publicidade-cartao--ano strong, body.dark-theme .publicidade-detalhe h4, body.dark-theme .publicidade-cadastros h4, body.dark-theme .publicidade-tabela tfoot th, body.dark-theme .publicidade-tabela tfoot td { color:#a5d7ff; }
+body.dark-theme .publicidade-cobertura { background:#202a33; border-color:#53687a; color:#e7eef5; }
+body.dark-theme .publicidade-cobertura__cabecalho strong { color:#a5d7ff; }
+body.dark-theme .publicidade-detalhe__cabecalho p, body.dark-theme .publicidade-detalhe__cabecalho span, body.dark-theme .publicidade-cadastros summary span { color:#d1dfeb; }
+body.dark-theme .publicidade-cadastros summary { color:#a5d7ff; }

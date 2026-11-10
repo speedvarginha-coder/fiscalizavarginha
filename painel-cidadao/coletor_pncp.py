@@ -185,7 +185,9 @@ def _normaliza_contrato(x: dict) -> dict:
         "fornecedor": x.get("nomeRazaoSocialFornecedor") or x.get("fornecedor") or "",
         "cnpj_fornecedor": x.get("niFornecedor") or x.get("cnpjFornecedor") or "",
         "objeto": x.get("objetoContrato") or x.get("objeto") or "",
-        "valor": x.get("valorInicial") or x.get("valorGlobal") or 0,
+        "valor": x.get("valorGlobal"),
+        "valor_inicial": x.get("valorInicial"),
+        "valor_global": x.get("valorGlobal"),
         "data_assinatura": x.get("dataAssinatura") or "",
         "data_vigencia_inicio": x.get("dataVigenciaInicio") or "",
         "data_vigencia_fim": x.get("dataVigenciaFim") or "",
@@ -324,6 +326,12 @@ def coletar(ano: int | None = None) -> dict:
         status["contratos"]["motivo"] = (
             "queda anormal de cobertura" if contratos_drop else "falha parcial na API PNCP"
         )
+    # Registros preservados do coletor antigo podem conter o valor inicial
+    # como se fosse global. Guardar para revisão, sem somar como valor global.
+    for contrato in contratos:
+        if "valor_global" not in contrato:
+            contrato.setdefault("valor_anterior_nao_verificado", contrato.get("valor"))
+            contrato["valor"] = None
     all_current = status["compras"]["status"] == "ok" and status["contratos"]["status"] == "ok"
     return {
         "fonte": "Portal Nacional de Contratações Públicas (PNCP)",
@@ -341,6 +349,7 @@ def coletar(ano: int | None = None) -> dict:
             "contratos_qtd": len(contratos),
             "valor_compras_estimado": round(sum(float(x.get("valor_estimado") or 0) for x in compras), 2),
             "valor_contratos": round(sum(float(x.get("valor") or 0) for x in contratos), 2),
+            "contratos_sem_valor_global": sum(x.get("valor") is None for x in contratos),
         },
         "consultas": compras_meta + contratos_meta,
         "status_fontes": status,

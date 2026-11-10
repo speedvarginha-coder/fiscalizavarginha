@@ -13,6 +13,16 @@ import coletor_publicacoes  # noqa: E402
 
 
 class PublicacoesSaplFallbackTests(unittest.TestCase):
+    def test_feed_basico_nao_depende_de_ia_ou_pdf(self):
+        materia = {"id": 1, "tipo": 17, "numero": 1, "ano": 2026,
+                   "ementa": "Crédito de R$ 1.000,00", "data_apresentacao": "2026-10-20"}
+        with patch.object(coletor_publicacoes.enriquecedor_ia, "enriquecer", side_effect=AssertionError("IA não deve ser chamada")), \
+             patch.object(coletor_publicacoes, "_documento_oficial", side_effect=AssertionError("PDF não deve ser chamado")):
+            result = coletor_publicacoes._monta_publicacao(materia, {}, basico=True)
+        self.assertEqual(result["data"], "2026-10-20")
+        self.assertEqual(result["origem_ia"], "fallback")
+        self.assertEqual(result["valores"]["total"], 1000)
+
     def test_consolidado_sapl_vira_materia_com_proveniencia(self):
         payload = {
             "2026": {

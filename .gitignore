@@ -15,6 +15,7 @@ gemini_key.txt
 gemini_key.local
 *.local
 private/
+painel-cidadao/operacao.json
 secrets/
 
 # ---- Cache da IA (Gemini) e do Diário — regeneráveis ----

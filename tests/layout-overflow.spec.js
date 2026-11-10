@@ -43,7 +43,7 @@ for (const viewport of viewports) {
       if (["prefeitura.html", "camara.html", "relatorios.html"].includes(path)) {
         await expect(page.locator(".source-coverage"), `cobertura nao renderizada em ${path}`)
           .toBeVisible({ timeout: 5_000 });
-        await expect(page.locator(".source-coverage summary")).toContainText("Cobertura dos dados");
+        await expect(page.locator(".source-coverage summary")).toContainText(/Cobertura.*(dados|períodos)/);
       }
       if (path === "prefeitura.html") {
         await expect(page.getByText("Baixar relatório em PDF", { exact: true })).toHaveCount(1);

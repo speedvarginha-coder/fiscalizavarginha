@@ -1,5 +1,5 @@
 /* Fiscaliza Varginha — Service Worker v95 (referência PNTP 2025) */
-const CACHE = "fiscaliza-v96";
+const CACHE = "fiscaliza-v101";
 const STATIC = [
   "./",
   "./index.html",
@@ -22,6 +22,8 @@ const STATIC = [
   "./modules/categorias.js",
   "./modules/watchlist.js",
   "./modules/dossie.js",
+  "./modules/cidadao.js",
+  "./cidadao.css",
   "./modules/dashboard.js",
   "./modules/home-cidadao.js",
   "./modules/relatorios.js",
@@ -63,6 +65,11 @@ self.addEventListener("fetch", function (e) {
   if (req.method !== "GET") return;
 
   const url = new URL(req.url);
+  // Telemetria independente deve refletir falhas mesmo sem novo pacote.
+  if (url.origin === self.location.origin && url.pathname.endsWith("/operacao.json")) {
+    e.respondWith(fetch(req, { cache: "no-store" }));
+    return;
+  }
 
   // Chunks JSON em data/chunks/ — mesma estratégia stale-while-revalidate
   // Quando o conteúdo do chunk muda, notifica os clientes para recarregar

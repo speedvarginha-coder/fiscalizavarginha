@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field, ValidationError, field_validator
+from pydantic import BaseModel, ConfigDict, Field, FiniteFloat, ValidationError, field_validator
 
 ROOT = Path(__file__).resolve().parent
 CHUNKS = ROOT / "data" / "chunks"
@@ -57,6 +57,49 @@ class Monitoring(ModeloAberto):
     schema_version: int = Field(ge=1)
     generated_at: str = Field(min_length=16)
     sources: list[MonitorSource] = Field(min_length=1)
+
+
+class CitizenPoint(ModeloAberto):
+    periodo: str
+    valor: FiniteFloat
+    registros: int | None = Field(ge=0)
+
+
+class CitizenSeries(ModeloAberto):
+    id: str = Field(min_length=1)
+    frequencia: Literal['mensal', 'anual']
+    fonte: str = Field(min_length=1)
+    limite: str = Field(min_length=1)
+    excluidos: int = Field(ge=0)
+    pontos: list[CitizenPoint]
+
+
+def validate_citizen_data():
+    import re
+    path = CHUNKS / 'fiscalizacao_cidada.json'
+    if not path.exists():
+        return
+    payload = read_json(path)
+    if payload.get('schema_version') != 1:
+        raise ValueError('Versão de fiscalização cidadã inválida')
+    sources = payload.get('fontes', [])
+    for source in sources:
+        SourceDomain.model_validate(source)
+        if not source.get('periodo') or not source.get('id'):
+            raise ValueError('Cobertura sem identificação ou período declarado')
+    ids = {s['id'] for s in sources}
+    series_ids = set()
+    for raw in payload.get('series', []):
+        serie = CitizenSeries.model_validate(raw)
+        if serie.id in series_ids or serie.fonte not in ids:
+            raise ValueError('Série duplicada ou sem fonte monitorada')
+        series_ids.add(serie.id)
+        periods = [p.periodo for p in serie.pontos]
+        pattern = r'20\d{2}-(0[1-9]|1[0-2])' if serie.frequencia == 'mensal' else r'20\d{2}'
+        if periods != sorted(set(periods)) or any(not re.fullmatch(pattern, p) for p in periods):
+            raise ValueError('Períodos da série inválidos ou duplicados')
+    if len(series_ids) != 7:
+        raise ValueError('Conjunto de séries de fiscalização incompleto')
 
 
 class MunicipalChunkRecord(ModeloAberto):
@@ -293,6 +336,64 @@ def _validar_pca_coerencia() -> None:
                 )
 
 
+def validate_pessoal_historico():
+    path = CHUNKS / "pessoal_historico.json"
+    if not path.exists():
+        return
+    import re
+    vistas = set()
+    for entrada in read_json(path).get("competencias", []):
+        comp = entrada.get("competencia", "")
+        if not re.fullmatch(r"(0[1-9]|1[0-2])/20\d{2}", comp) or comp in vistas:
+            raise ValueError("Histórico de pessoal com competência inválida ou repetida")
+        vistas.add(comp)
+        chave = f"pessoal_folha_{comp[3:]}_{comp[:2]}"
+        if entrada.get("chunk") != chave:
+            raise ValueError("Histórico aponta arquivo de outra competência")
+        folha = read_json(CHUNKS / f"{chave}.json")
+        if folha.get("competencia") != comp:
+            raise ValueError("Folha mensal diverge do índice")
+        for orgao in ("prefeitura", "camara"):
+            dados = folha.get(orgao, {})
+            linhas = dados.get("servidores", [])
+            if len(linhas) != entrada.get("orgaos", {}).get(orgao, {}).get("registros"):
+                raise ValueError("Cobertura mensal diverge do índice")
+            if any(s.get("competencia") != comp for s in linhas):
+                raise ValueError("Folha mensal mistura competências")
+            ids = [s["id_registro"] for s in linhas if s.get("id_registro")]
+            if len(ids) != len(set(ids)):
+                raise ValueError("Folha mensal repete identificadores oficiais")
+            total = sum(float(s.get("vencimentos") or 0) for s in linhas)
+            publicado = dados.get("resumo", {}).get("folha_bruta_total")
+            if linhas and (publicado is None or abs(total - publicado) > 0.011):
+                raise ValueError("Soma mensal da folha diverge do resumo")
+
+
+def validate_publicidade():
+    import re
+    from datetime import datetime
+    for orgao in ("prefeitura", "camara"):
+        file = CHUNKS / f"publicidade_{orgao}.json"
+        if not file.exists():
+            continue  # Bases anteriores à integração continuam legíveis.
+        value = read_json(file)
+        if value.get("orgao") != orgao or value.get("status") not in ("ok", "partial", "failed"):
+            raise ValueError(f"Publicidade/{orgao}: órgão ou status inválido")
+        seen = set()
+        for month in value.get("investimentos", []):
+            period = month.get("periodo", "")
+            if not re.fullmatch(r"20\d{2}-(0[1-9]|1[0-2])", period) or period in seen:
+                raise ValueError(f"Publicidade/{orgao}: período inválido ou repetido")
+            seen.add(period)
+            if not isinstance(month.get("consultado_em"), str):
+                raise ValueError(f"Publicidade/{orgao}/{period}: data de consulta ausente")
+            datetime.fromisoformat(month["consultado_em"])
+            cents = [row.get("valor_centavos") for row in month.get("meios", [])]
+            total = month.get("total_centavos")
+            if any(type(n) is not int for n in [*cents, total]) or sum(cents) != total:
+                raise ValueError(f"Publicidade/{orgao}/{period}: total não confere")
+
+
 def main() -> int:
     try:
         chunks = validate_manifest()
@@ -300,6 +401,9 @@ def main() -> int:
         monitor = Monitoring.model_validate(read_json(CHUNKS / "monitoramento_coletas.json"))
         municipal, estadual, federal = validate_emendas()
         validate_regressoes()
+        validate_pessoal_historico()
+        validate_citizen_data()
+        validate_publicidade()
     except (OSError, ValueError, ValidationError, json.JSONDecodeError) as exc:
         print(f"ERRO DE SCHEMA: {exc}", file=sys.stderr)
         return 1

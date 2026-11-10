@@ -17,7 +17,9 @@
 <meta name="twitter:card"       content="summary">
 <meta name="twitter:title"      content="Relatórios · Fiscaliza Varginha">
 <meta name="twitter:description" content="Sinais de atenção nos dados públicos de Varginha-MG.">
-<link rel="stylesheet" href="style.css?v=20260730-relatorios2">
+<link rel="stylesheet" href="style.css?v=20261006-relatorios-compactos">
+<link rel="stylesheet" href="cidadao.css?v=20261020">
+<link rel="stylesheet" href="publicidade.css?v=20261105">
 </head>
 <body data-page="relatorios">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -94,6 +96,7 @@
       </script>
       <div class="civic-actions" aria-label="Índice de seções dos relatórios">
         <a href="#relatorioCidadao">Resumo cidadão</a>
+        <a href="#publicidade">Publicidade</a>
         <a href="#pontos-conferencia">Pontos para conferir</a>
         <a href="#prioridades-fiscalização">Prioridades</a>
         <a href="#processos-licitatorios">Licitações</a>
@@ -118,6 +121,19 @@
         </div>
       </details>
     </header>
+
+    <section id="publicidade" class="block" aria-labelledby="publicidadeTitulo">
+      <h2 id="publicidadeTitulo" class="block__title">Publicidade institucional</h2>
+      <p>Investimentos mensais declarados no portal Publicidade Transparente. Não comprovam pagamento ou entrega e não devem ser somados aos valores da Betha ou do PNCP. O mês corrente pode estar incompleto.</p>
+      <div class="publicidade-filtros">
+        <label>Órgão <select id="publicidadeOrgao" aria-label="Órgão da publicidade"><option value="prefeitura">Prefeitura</option><option value="camara">Câmara</option></select></label>
+        <label>Período <select id="publicidadePeriodo" aria-label="Período da publicidade"></select></label>
+      </div>
+      <div id="publicidadeDados" aria-live="polite"><p>Carregando fontes de publicidade…</p></div>
+    </section>
+
+    <section id="evolucao" class="report-note" data-evolucao-cidada aria-label="Histórico de despesas, diárias, contratos e emendas"></section>
+
 
     <section id="relatorioCidadao" class="citizen-report" aria-label="Resumo para o cidadão"></section>
 
@@ -378,6 +394,8 @@
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -401,7 +419,8 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260730-relatorios2"></script>
+<script src="data-loader.js?v=20261105-publicidade-ano"></script>
+  <script src="modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>
 

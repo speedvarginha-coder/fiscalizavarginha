@@ -96,6 +96,18 @@
     const contadorEl = $(`contadorDiarias${prefix}`);
     window.FISCALIZA_DIARIAS = window.FISCALIZA_DIARIAS || {};
     window.FISCALIZA_DIARIAS[prefix] = lista;
+    // Clicar no nome no ranking preenche a busca com essa pessoa: a lista abaixo
+    // mostra só as diárias dela. A delegação sobrevive às re-renderizações.
+    if (rankingEl && !rankingEl.dataset.nomeClique) {
+      rankingEl.dataset.nomeClique = "1";
+      rankingEl.addEventListener("click", (e) => {
+        const alvo = e.target.closest(".diaria-rank-row__nome");
+        if (!alvo || !buscaEl) return;
+        buscaEl.value = alvo.dataset.nome || "";
+        buscaEl.dispatchEvent(new Event("input", { bubbles: true }));
+        buscaEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
 
     const D = window.FISCALIZA_DATA || {};
     const orgPessoal = prefix === "Camara" ? (D.pessoal || {}).camara : (D.pessoal || {}).prefeitura;
@@ -338,7 +350,7 @@
           <div class="diaria-rank-row diaria-rank-row--compact">
             <span class="diaria-rank-row__pos">${i + 1}</span>
             <span class="diaria-rank-row__person">
-              <strong>${esc(cleanText(g.nome))}</strong>
+              <button type="button" class="diaria-rank-row__nome" data-nome="${esc(cleanText(g.nome))}" title="Ver todas as diárias desta pessoa"><strong>${esc(cleanText(g.nome))}</strong></button>
               <small>${esc(cleanText(g.funcao))}</small>
               <span class="diaria-person-tags">
                 <em class="diaria-person-tag diaria-person-tag--${esc(g.vinculoClasse)}">${esc(cleanText(g.vinculo))}</em>
@@ -353,8 +365,8 @@
               <small>${esc(detalhe)}</small>
             </span>
             <span class="diaria-rank-row__valores">
-              <span class="dr-val dr-val--diarias" title="Dinheiro pago pelas viagens a serviço (hospedagem, alimentação). É reembolso/ajuda de custo — NÃO é aumento de salário.">
-                <small>✈️ recebeu de diárias</small>
+              <span class="dr-val dr-val--diarias" title="${isPrefeitura ? 'Soma de registros contábeis classificados como diárias; não comprova pagamento nem viagem individual.' : 'Valor de diárias informado na fonte da Câmara.'}">
+                <small>✈️ ${isPrefeitura ? 'registros de diárias' : 'recebeu de diárias'}</small>
                 <b>${fmtBRL(g.valor)}</b>
               </span>
               ${g.salario > 0
@@ -394,11 +406,14 @@
       const qtd = view.reduce((s, d) => s + Number(d.quantidade || 0), 0);
       const pessoas = new Set(view.map(d => norm(d.funcionario)).filter(Boolean)).size;
       const media = qtd ? total / qtd : 0;
+      const comValor = view.filter(d => Number(d.valor_total || 0) > 0).length;
+      const semValor = view.length - comValor;
       const rankingAnual = rankingPorPessoa(baseAnual);
       const rankingMensal = rankingPorPessoaMes(f.mes ? view : baseAnual);
       const topAnual = rankingAnual[0];
       const topMensal = rankingMensal[0];
       const periodoMaisRecente = baseAnual
+        .filter(d => Number(d.valor_total || 0) > 0)
         .map(mesAnoKey)
         .filter(Boolean)
         .sort()
@@ -418,10 +433,11 @@
           `${fmtNum(view.length)} registro(s)${recorte ? ` ${recorte}` : " (todos os anos)"} · ${fmtBRL(total)}`;
       }
       if (statsEl) {
+        statsEl.classList.add("diarias-stats");
         statsEl.innerHTML = [
           { cls: "stat--navy", v: fmtBRL(total), l: isPrefeitura ? "Total em despesas de diárias" : "Total pago em diárias", s: `Soma do recorte: ${periodoLabel}` },
           { cls: "stat--gold", v: fmtNum(isPrefeitura ? view.length : qtd), l: isPrefeitura ? "Registros/empenhos" : "Quantidade de diárias", s: isPrefeitura ? "Consulta contábil da Prefeitura" : "Total informado na fonte" },
-          { cls: "stat--teal", v: fmtBRL(isPrefeitura ? (total / (view.length || 1)) : media), l: isPrefeitura ? "Valor médio por registro" : "Valor médio por diária", s: isPrefeitura ? "Total dividido por registros" : "Total dividido pela quantidade" },
+          { cls: "stat--teal", v: fmtBRL(isPrefeitura ? (total / (comValor || 1)) : media), l: isPrefeitura ? "Valor médio por registro com valor positivo" : "Valor médio por diária", s: isPrefeitura ? "Total dividido pelos registros com valor positivo" : "Total dividido pela quantidade" },
           { cls: "stat--navy", v: fmtNum(pessoas), l: "Pessoas no recorte", s: "Funcionários, comissionados ou vereadores distintos" },
           { cls: "stat--teal", v: topAnual ? fmtBRL(topAnual.valor) : fmtBRL(0), l: "Maior acumulado anual", s: topAnual ? cleanText(topAnual.nome) : "Sem registros no ano" },
           { cls: "stat--gold", v: topMensal ? fmtBRL(topMensal.valor) : fmtBRL(0), l: f.mes ? "Maior valor no mês" : "Maior valor mensal", s: topMensal ? `${cleanText(topMensal.nome)} · ${topMensal.periodoRotulo}` : "Sem registros mensais" },
@@ -431,6 +447,21 @@
             <div class="stat__label">${esc(s.l)}</div>
             <div class="stat__sub">${esc(s.s)}</div>
           </div>`).join("");
+      }
+
+      if (statsEl && statsEl.parentElement) {
+        let resumoEl = statsEl.parentElement.querySelector(".diarias-resumo");
+        if (!resumoEl) {
+          resumoEl = document.createElement("div");
+          resumoEl.className = "report-note diarias-resumo";
+          statsEl.parentElement.insertBefore(resumoEl, statsEl);
+        }
+        const quem = f.sec ? esc(cleanText(f.sec)) : (isPrefeitura ? "a Prefeitura" : "a Câmara");
+        const inicio = f.mes ? `Em ${esc(periodoLabel)}` : (f.ano ? `Em ${esc(f.ano)}` : "No total");
+        resumoEl.innerHTML = (isPrefeitura
+          ? `${inicio}, ${quem} tem <strong>${fmtBRL(total)}</strong> em despesas classificadas como diárias, em <strong>${fmtNum(comValor)} registros com valor positivo</strong> associados a <strong>${fmtNum(pessoas)} pessoas</strong>. Registros contábeis não comprovam, sozinhos, pagamento ou viagem individual.`
+          : `${inicio}, ${quem} pagou <strong>${fmtBRL(total)}</strong> em diárias, em <strong>${fmtNum(comValor)} registros com valor positivo</strong> a <strong>${fmtNum(pessoas)} pessoas</strong>.`) +
+          (semValor ? ` <span style="color:var(--warn-ink);">${fmtNum(semValor)} com valor zero ou não informado, fora da média; confira a fonte.</span>` : "");
       }
 
       if (listaEl) {
@@ -449,9 +480,9 @@
           note.className = "report-note diarias-note";
           note.innerHTML = `
             <strong>Como ler este ranking (bem simples):</strong> cada pessoa tem DOIS valores, que são dinheiros diferentes.<br>
-            <span style="display:inline-block;margin-top:4px">✈️ <strong>Diárias</strong> = o que ela recebeu pelas viagens a serviço no período (paga hotel, comida). É ajuda de custo — <strong>não é aumento de salário</strong>.</span><br>
+            <span style="display:inline-block;margin-top:4px">✈️ <strong>Diárias</strong> = ${isPrefeitura ? 'soma de registros contábeis associados à pessoa; o pagamento e a viagem individual precisam ser confirmados.' : 'valor informado para viagens a serviço; é ajuda de custo e não é aumento de salário.'}</span><br>
             <span>💼 <strong>Salário por mês</strong> = o que ela ganha num mês comum de trabalho, sem 13º, férias ou rescisão.</span><br>
-            <span class="small muted">Um valor não entra no outro. Diária alta não significa erro — significa muitas viagens: o certo é conferir destino, motivo e comprovantes na fonte oficial.</span>`;
+            <span class="small muted">Um valor não entra no outro. Valor alto não prova erro nem quantidade de viagens: confira destino, motivo e comprovantes na fonte oficial.</span>`;
           parent.insertBefore(note, rankingEl || listaEl);
         }
       }
@@ -478,14 +509,14 @@
           <div class="diarias-ranking__grid">
             <section class="diarias-ranking__panel">
               <div class="diarias-ranking__panel-head">
-                <h4>Ranking acumulado anual</h4>
+                <h4>Maiores totais por pessoa</h4>
                 <p>Total por pessoa no ano selecionado. Se houver busca, secretaria ou faixa de valor, o ranking respeita esses filtros.</p>
               </div>
               ${renderRankingRows(rankingAnual, "anual")}
             </section>
             <section class="diarias-ranking__panel">
               <div class="diarias-ranking__panel-head">
-                <h4>${f.mes ? "Ranking do mês selecionado" : "Ranking mensal"}</h4>
+                <h4>${f.mes ? "Maiores valores no mês selecionado" : "Maiores valores em um mês"}</h4>
                 <p>${f.mes ? "Compara apenas o mês escolhido no filtro." : "Mostra os maiores totais de uma mesma pessoa dentro de um mês."}</p>
               </div>
               ${renderRankingRows(rankingMensal, "mensal")}

@@ -26,9 +26,8 @@
         <span class="site-nav__mark">FV</span>
         <span class="site-nav__name"><strong>Fiscaliza Varginha</strong><small>Painel Cidadão</small></span>
       </a>
-      <input type="checkbox" id="navToggle" class="site-nav__toggle-cb">
-      <label for="navToggle" class="site-nav__toggle" aria-label="Abrir menu">☰</label>
-      <nav class="site-nav__menu" aria-label="Seções">
+      <button type="button" id="navToggle" class="site-nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="emendasNav">☰</button>
+      <nav id="emendasNav" class="site-nav__menu" aria-label="Seções">
         <a href="../index.html">Início</a>
         <a href="../prefeitura.html">Prefeitura</a>
         <a href="../camara.html">Câmara</a>
@@ -48,6 +47,7 @@
         <a href="../cobrar.html" class="site-nav__cta">Como cobrar</a>
       </nav>
     </header>
+<p class="container"><a href="../relatorios.html#evolucao">Consultar evolução por exercício e limites dos dados</a> · <a href="../cobrar.html#acompanhamento">Acompanhar uma cobrança</a></p>
     <header class="topbar">
       <div>
         <p class="eyebrow">Publicidade e transparência · emendas para Varginha</p>
@@ -63,6 +63,8 @@
     <main id="conteudo" class="layout">
       <details class="source-quality" id="emendasSourceNotes">
         <summary>Datas das fontes e limites da conferência</summary>
+        <p id="tentativasFinanceiras" class="muted small" aria-live="polite">Última rotina financeira: consultando…</p>
+        <p id="coberturaMunicipal" class="muted small" aria-live="polite">Cobertura municipal: consultando…</p>
         <div id="emendasSourceNotesContent">Carregando a procedência das bases.</div>
       </details>
       <section class="summary-grid" aria-label="Resumo por estágio financeiro" aria-live="polite">
@@ -89,6 +91,7 @@
         <article class="metric">
           <span>Executado</span>
           <strong id="metricExecuted">N/D</strong>
+          <small id="metricExecutedCoverage">Cobertura em verificação</small>
         </article>
       </section>
 
@@ -121,7 +124,7 @@
           <button id="treasuryClear" class="button secondary" type="button">Limpar filtros do Tesouro</button>
         </div>
         <p id="treasurySummary" class="muted"></p>
-        <div class="treasury-table-wrap">
+          <div class="treasury-table-wrap" tabindex="0" role="region" aria-label="Transferências do Tesouro; tabela com rolagem horizontal">
           <table class="treasury-table">
             <thead><tr><th>Data</th><th>Favorecido</th><th>Tipo</th><th>Categoria</th><th>Ordem bancária</th><th>Valor pago</th></tr></thead>
             <tbody id="treasuryResults"></tbody>
@@ -436,8 +439,8 @@
       <section class="results-section" aria-label="Resultados">
         <div class="results-header">
           <div>
-            <dt>Indicação não é pagamento</dt>
-            <dd>Indicar reserva a finalidade no orçamento. O dinheiro só chega após os estágios financeiros correspondentes.</dd>
+            <strong>Indicação não é pagamento</strong>
+            <p>Indicar reserva a finalidade no orçamento. O dinheiro só chega após os estágios financeiros correspondentes.</p>
           </div>
           <div>
             <h2>Emendas</h2>
@@ -538,6 +541,8 @@
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="../sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -568,6 +573,7 @@
     <script src="data/emendas_estaduais_normalizadas.js?v=20260729a"></script>
     <script src="data/emendas_municipais_unificadas.js?v=20260729a"></script>
     <script src="data/emendas_federais.js?v=20260729a"></script>
+    <script src="documentos-cgu.js?v=20261028a"></script>
     <script src="data/emendas_tesouro.js?v=20260826a"></script>
     <script src="reconciliacao.js?v=20260904a" defer></script>
     <script src="app.js?v=20260729a"></script>
@@ -575,11 +581,34 @@
 (function () {
   var el = document.getElementById("footerAtualizado");
   if (!el || !window.fetch || location.protocol === "file:") return;
+  fetch("../data/chunks/fiscalizacao_cidada.json", { cache: "no-store" })
+    .then(r => r.ok ? r.json() : null).then(data => {
+      const node=document.getElementById("coberturaMunicipal");
+      const source=data?.fontes?.find(s => s.id === 'fontes_emendas_2026');
+      if (!node) return;
+      if (!source) { node.textContent='Cobertura municipal: indisponível nesta consulta.'; return; }
+      const detail=(source.detalhes || []).find(d => d.conjunto === 'Relatórios da Prefeitura para conciliação de emendas');
+      const formatDate=value => value && Number.isFinite(Date.parse(value)) ? new Date(value).toLocaleString('pt-BR') : 'não informada';
+      const audit=source.amostra ? ` Amostra em ${formatDate(source.amostra.executado_em)}: ${source.amostra.status}, ${source.amostra.registros} registro(s) e ${source.amostra.divergencias} com divergência. ${source.amostra.limite}` : ' Conferência amostral ainda não registrada.';
+      node.textContent=`${source.periodo || 'Período não informado.'} ${detail ? `${detail.conjunto}: ${detail.situacao}; última tentativa ${formatDate(detail.tentativa)}; última leitura completa ${formatDate(detail.ultima_completa)}.` : ''} ${(source.lacunas || []).join(' ')}${audit}`;
+    }).catch(() => { const node=document.getElementById('coberturaMunicipal'); if(node) node.textContent='Cobertura municipal: não foi possível consultar.'; });
+  fetch("../operacao.json", { cache: "no-store" })
+    .then(r => r.ok ? r.json() : null).then(op => {
+      const el = document.getElementById("tentativasFinanceiras"), tentativa = op?.financial_attempt;
+      if (!el) return;
+      if (!tentativa?.concluido_em || !Number.isFinite(Date.parse(tentativa.concluido_em))) { el.textContent = "Última rotina financeira: data não informada."; return; }
+      const rotulos = {ok:"consulta executada",preservado:"base anterior preservada",pulado:"não consultada"};
+      const campos = [['federal','Federal'],['tesouro','Tesouro'],['estadual','Estadual'],['reconciliacao','Reconciliação municipal']];
+      const descricao = campos.map(([k,n]) => n + ': ' + (rotulos[tentativa.fontes?.[k]] || 'situação não informada')).join(' · ');
+      el.textContent = 'Última rotina financeira concluída em ' + new Date(tentativa.concluido_em).toLocaleString('pt-BR') + (tentativa.ciclo === 'falha' ? ' (ciclo falhou; confira a base preservada)' : '') + '. ' + descricao + '. As fontes preservadas mantêm suas datas anteriores.';
+    }).catch(() => { const el=document.getElementById("tentativasFinanceiras"); if(el) el.textContent="Última rotina financeira: não foi possível consultar."; });
+
   fetch("../data/chunks/atualizado_em.json", { cache: "no-store" })
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) { if (d && d.data_humana) el.textContent = d.data_humana; })
     .catch(function () {});
 })();
 </script>
+  <script src="../modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>

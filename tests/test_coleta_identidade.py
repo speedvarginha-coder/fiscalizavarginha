@@ -232,6 +232,7 @@ class PreservacaoRegressaoTests(unittest.TestCase):
         with patch.object(coletor_betha, "get_token", return_value="token"), \
              patch.object(coletor_betha, "todos_credores_generico", return_value=[]), \
              patch.object(coletor_betha, "baixar_dados_abertos", return_value={"main": [{"numero": "novo"}], "coleta_status": "partial"}), \
+             patch.object(coletor_betha, "baixar_busca_textual", return_value=[]), \
              patch.object(coletor, "_load_last_nonempty_list", return_value=(anterior, "backup.json")), \
              patch.object(coletor, "_load_existing", return_value={"licitacoes": []}):
             result = coletor._processa_camara_betha()
@@ -248,16 +249,36 @@ class PreservacaoRegressaoTests(unittest.TestCase):
         self.assertEqual(r["data_fim"], "2037-12-12")
 
     def test_paginacao_interrompida_ou_repetida_nao_passa(self):
-        for respostas in [
-            [{"totalHits": 3, "hits": [{"sourceAsMap": {"id": 1}}]}, {"totalHits": 3, "hits": []}],
-            [{"totalHits": 2, "hits": [{"sourceAsMap": {"id": 1}}]}] * 2,
-            [{"hits": []}],
-        ]:
-            with patch.object(coletor_betha, "_api", side_effect=respostas):
-                with self.assertRaises(coletor_betha.BethaExportError):
-                    coletor_betha.baixar_busca_textual("token", 1, batch=1)
-        with patch.object(coletor_betha, "_api", return_value={"totalHits": 0, "hits": []}):
-            self.assertEqual(coletor_betha.baixar_busca_textual("token", 1), [])
+        # Caminho de paginacao isolado: a requisicao unica e testada abaixo.
+        with patch.object(coletor_betha, "_busca_textual_uma_requisicao", return_value=None):
+            for respostas in [
+                [{"totalHits": 3, "hits": [{"sourceAsMap": {"id": 1}}]}, {"totalHits": 3, "hits": []}],
+                [{"totalHits": 2, "hits": [{"sourceAsMap": {"id": 1}}]}] * 2,
+                [{"hits": []}],
+            ]:
+                with patch.object(coletor_betha, "_api", side_effect=respostas):
+                    with self.assertRaises(coletor_betha.BethaExportError):
+                        coletor_betha.baixar_busca_textual("token", 1, batch=1)
+            with patch.object(coletor_betha, "_api", return_value={"totalHits": 0, "hits": []}):
+                self.assertEqual(coletor_betha.baixar_busca_textual("token", 1), [])
+
+    def test_requisicao_unica_so_vale_com_ids_e_conteudo_unicos(self):
+        hits = [{"id": "a", "sourceAsMap": {"n": 1}}, {"id": "b", "sourceAsMap": {"n": 2}}]
+        probe = {"totalHits": 2, "hits": hits[:1]}
+        completo = {"totalHits": 2, "hits": hits}
+        with patch.object(coletor_betha, "_api", side_effect=[probe, completo]) as api:
+            self.assertEqual([r["n"] for r in coletor_betha.baixar_busca_textual("token", 1)], [1, 2])
+            self.assertEqual(api.call_count, 2)
+        # Requisicao unica incompleta cai para paginacao (aqui, sem mais respostas: erro explicito).
+        parcial = {"totalHits": 2, "hits": hits[:1]}
+        with patch.object(coletor_betha, "_api", side_effect=[probe, parcial, RuntimeError("fim")]):
+            with self.assertRaises(RuntimeError):
+                coletor_betha.baixar_busca_textual("token", 1)
+        # Ids repetidos na requisicao unica nao passam.
+        repetido = {"totalHits": 2, "hits": [hits[0], hits[0]]}
+        with patch.object(coletor_betha, "_api", side_effect=[probe, repetido, RuntimeError("fim")]):
+            with self.assertRaises(RuntimeError):
+                coletor_betha.baixar_busca_textual("token", 1)
 
 
 if __name__ == "__main__":

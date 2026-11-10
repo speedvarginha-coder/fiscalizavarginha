@@ -138,6 +138,7 @@
   }
   .timeline__txt strong { display: block; color: var(--ink); margin-bottom: 2px; }
   .timeline__txt span { color: var(--muted); }
+  #fontes-dados { scroll-margin-top: 90px; }
 </style>
 </head>
 <body data-page="sobre">
@@ -301,8 +302,9 @@
       </div>
     </div>
 
-    <div class="block" style="margin-top:28px;">
-      <h3 class="block__title">Fontes de dados</h3>
+    <div class="block" id="fontes-dados" style="margin-top:28px;">
+      <h2 class="block__title">De onde vêm os dados</h2>
+      <p>Consulte abaixo as fontes usadas pelo painel. Uma mesma fonte pode ter períodos ou campos incompletos: confira a <a href="conformidade.html">cobertura, a última tentativa e as limitações por conjunto</a>. Uma consulta recente não significa que todos os dados foram atualizados.</p>
       <div class="fonte-table-wrap"><table class="fonte-table">
         <thead>
           <tr>
@@ -333,9 +335,19 @@
             <td><a href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812" target="_blank" rel="noopener">Acessar</a></td>
           </tr>
           <tr>
+            <td>Despesas, pessoal e contratos da Fundação Cultural</td>
+            <td>Portal Betha — Fundação Cultural de Varginha</td>
+            <td><a href="https://transparencia.betha.cloud/#/Y3P0PCFbAxmzg0qvgnMnYw==" target="_blank" rel="noopener">Fundação Cultural</a></td>
+          </tr>
+          <tr>
+            <td>Publicações municipais</td>
+            <td>Diário Oficial de Varginha</td>
+            <td><a href="https://www.varginha.mg.gov.br/portal/dados-abertos/diario-oficial/2025" target="_blank" rel="noopener">2025</a> · <a href="https://www.varginha.mg.gov.br/portal/dados-abertos/diario-oficial/2026" target="_blank" rel="noopener">2026</a></td>
+          </tr>
+          <tr>
             <td>Folha de pagamento / pessoal</td>
             <td>Portal Betha (Prefeitura e Câmara)</td>
-            <td><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/servidor" target="_blank" rel="noopener">Acessar</a></td>
+            <td><a href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/servidor" target="_blank" rel="noopener">Prefeitura</a> · <a href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==" target="_blank" rel="noopener">Câmara</a></td>
           </tr>
           <tr>
             <td>Licitações, Contratos e Diretas (Nacional)</td>
@@ -345,15 +357,46 @@
           <tr>
             <td>Recursos Federais e Emendas PIX</td>
             <td>Portal da Transparência da União (Varginha)</td>
-            <td><a href="https://portaldatransparencia.gov.br/localidades/3170701-varginha" target="_blank" rel="noopener">União</a> · <a href="https://portaldatransparencia.gov.br/transferencias-especiais" target="_blank" rel="noopener">Emendas PIX</a></td>
+            <td><a href="https://portaldatransparencia.gov.br/localidades/3170701-varginha" target="_blank" rel="noopener">União</a> · <a href="https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares" target="_blank" rel="noopener">Emendas</a> · <a href="https://portaldatransparencia.gov.br/download-de-dados/emendas-parlamentares-documentos" target="_blank" rel="noopener">Documentos de despesa</a></td>
           </tr>
           <tr>
-            <td>Balanço e Obras Municipais</td>
-            <td>Fiscalizando com TCE-MG / Painel de Obras</td>
-            <td><a href="https://fiscalizandocomtce.tce.mg.gov.br/" target="_blank" rel="noopener">TCE-MG</a> · <a href="https://www.tce.mg.gov.br/radarcompras" target="_blank" rel="noopener">Radar Compras</a></td>
+            <td>Planos e execução de transferências especiais federais</td>
+            <td>Transferegov.br — API pública de transferências especiais</td>
+            <td><a href="https://api-publica.transferegov.gestao.gov.br/especiais" target="_blank" rel="noopener">Consultar API</a></td>
+          </tr>
+          <tr>
+            <td>Emendas individuais e de bancada — ordens bancárias</td>
+            <td>Tesouro Transparente</td>
+            <td><a href="https://www.tesourotransparente.gov.br/consultas/painel-das-emendas-parlamentares-individuais-e-de-bancada" target="_blank" rel="noopener">Painel e dados</a></td>
+          </tr>
+          <tr>
+            <td>Emendas estaduais</td>
+            <td>Portal de Emendas de Minas Gerais e Assembleia Legislativa de Minas Gerais</td>
+            <td><a href="https://www.emendas.mg.gov.br/transparencia/" target="_blank" rel="noopener">Portal de Emendas</a> · <a href="https://www.almg.gov.br/atividade-parlamentar/emendas-parlamentares/inicial/" target="_blank" rel="noopener">ALMG</a></td>
+          </tr>
+          <tr>
+            <td>Doações e prestações de contas eleitorais</td>
+            <td>DivulgaCandContas — Tribunal Superior Eleitoral</td>
+            <td><a href="https://divulgacandcontas.tse.jus.br/" target="_blank" rel="noopener">Consultar TSE</a></td>
+          </tr>
+          <tr>
+            <td>Sanções de fornecedores</td>
+            <td>Portal da Transparência federal — cadastros CEIS e CNEP</td>
+            <td><a href="https://portaldatransparencia.gov.br/download-de-dados/ceis" target="_blank" rel="noopener">CEIS</a> · <a href="https://portaldatransparencia.gov.br/download-de-dados/cnep" target="_blank" rel="noopener">CNEP</a></td>
+          </tr>
+          <tr>
+            <td>Publicidade institucional</td>
+            <td>Publicidade Transparente: investimentos mensais declarados, veículos, fornecedores e sessões públicas. Não comprova pagamento nem contratação dos cadastrados.</td>
+            <td><a href="https://new.publicidadetransparente.com.br/view/municipio-de-varginha/" target="_blank" rel="noopener">Publicidade da Prefeitura</a> · <a href="https://new.publicidadetransparente.com.br/view/camara-municipal-de-varginha-mg/" target="_blank" rel="noopener">Publicidade da Câmara</a> · <a href="relatorios.html#publicidade">Consultar dados coletados</a></td>
+          </tr>
+          <tr>
+            <td>Consulta cadastral de empresas</td>
+            <td>BrasilAPI e CNPJ.ws: serviços de terceiros que consultam dados cadastrais públicos</td>
+            <td><a href="https://brasilapi.com.br/" target="_blank" rel="noopener">BrasilAPI</a> · <a href="https://www.cnpj.ws/" target="_blank" rel="noopener">CNPJ.ws</a> · <a href="https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj" target="_blank" rel="noopener">Base pública de CNPJ</a></td>
           </tr>
         </tbody>
       </table></div>
+      <p style="margin-top:12px;">Para conferência complementar: <a href="https://sites.tcu.gov.br/painel-de-acompanhamento-da-execucao-de-emendas/" target="_blank" rel="noopener">painel de emendas do TCU</a> e <a href="https://dadosabertos.tce.mg.gov.br/" target="_blank" rel="noopener">dados abertos do TCE-MG</a>. Esses portais são referências para consulta e não significam que todos os seus dados estejam integrados ao Fiscaliza Varginha.</p>
     </div>
 
     <div class="block" style="margin-top:24px;">
@@ -362,29 +405,29 @@
         <li>
           <span class="timeline__step">1</span>
           <div class="timeline__txt">
-            <strong>Coleta automática</strong>
-            <span>Script Python consulta APIs REST do Portal Betha e SAPL. Salva os dados em arquivos JSON locais.</span>
+            <strong>Consulta às fontes</strong>
+            <span>Rotinas consultam portais e bases oficiais; alguns conjuntos também dependem de arquivos ou conferência manual.</span>
           </div>
         </li>
         <li>
           <span class="timeline__step">2</span>
           <div class="timeline__txt">
-            <strong>Geração do bundle</strong>
-            <span>Um segundo script compila os JSONs num único arquivo <code>data.js</code> (variável global <code>FISCALIZA_DATA</code>).</span>
+            <strong>Organização e verificações</strong>
+            <span>Os registros são organizados para consulta, com testes e avisos quando a coleta é parcial ou preserva uma base anterior.</span>
           </div>
         </li>
         <li>
           <span class="timeline__step">3</span>
           <div class="timeline__txt">
-            <strong>Renderização no browser</strong>
-            <span><code>app.js</code> lê <code>FISCALIZA_DATA</code>, aplica os filtros, alertas e formatações e preenche as páginas HTML com JavaScript puro — sem servidor.</span>
+            <strong>Apresentação no site</strong>
+            <span>As páginas exibem filtros, datas, fontes e limites para ajudar o cidadão a conferir os registros.</span>
           </div>
         </li>
         <li>
           <span class="timeline__step">4</span>
           <div class="timeline__txt">
-            <strong>Cache local (Service Worker)</strong>
-            <span>Na segunda visita, o browser usa a versão em cache. O painel funciona offline com os dados da última coleta.</span>
+            <strong>Dados guardados no navegador</strong>
+            <span>Alguns arquivos podem ser guardados para acesso posterior; a disponibilidade fora da internet depende do que foi carregado antes.</span>
           </div>
         </li>
       </ol>
@@ -393,7 +436,7 @@
     <div class="block" style="margin-top:24px;">
       <h3 class="block__title">Limitações conhecidas</h3>
       <ul style="font-size:.9rem; line-height:1.7; color:var(--ink); padding-left:20px;">
-        <li><strong>CNPJ mascarado:</strong> o portal oculta os últimos 4 dígitos por LGPD. O cruzamento usa apenas os 8 primeiros.</li>
+        <li><strong>Identificação de empresas:</strong> algumas fontes não informam o CNPJ completo. Identificações reconstruídas exigem conferência e não comprovam vínculo de um gasto com uma emenda.</li>
         <li><strong>Dados históricos:</strong> a API Betha retorna dados a partir do ano configurado. Anos anteriores podem estar incompletos.</li>
         <li><strong>Folha de pagamento:</strong> nomes e cargos refletem a competência mais recente disponível.</li>
         <li><strong>Defasagem:</strong> pode haver lag de alguns dias entre o ato oficial e a publicação no portal.</li>
@@ -421,7 +464,7 @@
       </div>
       <p style="font-size:.82rem; color:var(--muted); margin-top:4px;">
         Faltou algum termo? Mande um e-mail para
-        <a href="mailto:speed.varginha@gmail.com">speed.varginha@gmail.com</a> com a sugestão.
+        <a href="mailto:contato@fiscalizavarginha.com.br">contato@fiscalizavarginha.com.br</a> com a sugestão.
       </p>
     </div>
 
@@ -487,7 +530,7 @@
       <h3 class="block__title">Contato e contribuição</h3>
       <p style="font-size:.9rem; line-height:1.6;">
         Encontrou dado incorreto, link quebrado ou quer contribuir com a ferramenta?<br>
-        E-mail: <a href="mailto:speed.varginha@gmail.com">speed.varginha@gmail.com</a>
+        E-mail: <a href="mailto:contato@fiscalizavarginha.com.br">contato@fiscalizavarginha.com.br</a>
       </p>
       <p style="font-size:.9rem; line-height:1.6;">
         Para solicitar dados adicionais ou reportar irregularidade, use os
@@ -530,6 +573,8 @@
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -666,5 +711,6 @@ if ("serviceWorker" in navigator) navigator.serviceWorker.register("./sw.js");
 })();
 </script>
 <script src="data-loader.js?v=20260730-relatorios2"></script>
+  <script src="modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>

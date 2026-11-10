@@ -91,6 +91,23 @@ class PrecoUnitarioTests(unittest.TestCase):
         self.assertEqual(r["valor_homologado"], 62970.0)
         self.assertEqual(r["cnpj_vencedor"], "60239413000155")
 
+    def test_documento_pessoal_do_vencedor_e_mascarado(self):
+        r = self._coleta(resultado={"niFornecedor": "12345678901"})
+        self.assertEqual(r["cnpj_vencedor"], "***.456.789-**")
+        self.assertEqual(r["valor_homologado"], 62970.0)
+
+    def test_documento_formatado_e_mascara_existente(self):
+        self.assertEqual(col._documento_publico("123.456.789-01"), "***.456.789-**")
+        self.assertEqual(col._documento_publico("***.456.789-**"), "***.456.789-**")
+        self.assertEqual(col._documento_publico("60.239.413/0001-55"), "60.239.413/0001-55")
+
+    def test_base_preservada_e_alertas_tambem_protegem_documento(self):
+        payload = {"registros": [{"resultados": [{"cnpj_vencedor": "12345678901", "valor": 10}]}],
+                   "homologacoes_simbolicas": [{"cnpj_vencedor": "12345678901"}]}
+        self.assertEqual(col._proteger_documentos(payload), 2)
+        self.assertEqual(payload["registros"][0]["resultados"][0]["valor"], 10)
+        self.assertEqual(col._proteger_documentos(payload), 0)
+
 
 class NumTests(unittest.TestCase):
     def test_none_e_vazio_nao_viram_zero(self):
@@ -101,6 +118,47 @@ class NumTests(unittest.TestCase):
     def test_zero_legitimo_continua_zero(self):
         self.assertEqual(col._num(0), 0.0)
         self.assertEqual(col._num("0,00".replace(",", ".")), 0.0)
+
+
+class ComparacaoHomologacaoTests(unittest.TestCase):
+    def test_coleta_com_sinal_unitario_conclui_e_publica_metodo_correto(self):
+        import contextlib, io, json, tempfile
+        with tempfile.TemporaryDirectory() as temp:
+            path=Path(temp)/'licitacoes.json'
+            compra={'numeroControlePNCP':'18240119000105-1-000001/2026','anoCompra':2026,'sequencialCompra':1,'objetoCompra':'Objeto de teste'}
+            resultado={'item':1,'vencedor':'Fornecedor teste','valor_unitario_homologado':5,'valor_unitario_estimado':5000,'unidade_medida':'unidade'}
+            with patch.object(col,'OUT_PATH',path), patch.object(col,'CACHE_PATH',Path(temp)/'cache.json'), \
+                 patch.object(col,'ORGAOS',{'18240119000105':'Prefeitura'}), \
+                 patch.object(col,'_listar_contratacoes',return_value=[compra]), \
+                 patch.object(col,'_compra_com_retomada',return_value=([resultado],'2026-10-30')), \
+                 contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(col.main(),0)
+            base=json.loads(path.read_text(encoding='utf8'))
+            self.assertEqual(len(base['homologacoes_simbolicas']),1)
+            self.assertIn('preco unitario',base['metodo'])
+            self.assertIn('estimativa unitária',output.getvalue())
+
+    def test_compara_mesmo_item_e_unidade_sem_usar_estimativa_global(self):
+        compra = {'controle_pncp':'compra-1','valor_estimado':7000000,'resultados':[
+          {'item':1,'valor_homologado':5,'valor_unitario_homologado':5,'valor_unitario_estimado':5000,'unidade_medida':'unidade'},
+          {'item':2,'valor_homologado':5,'valor_unitario_homologado':5,'valor_unitario_estimado':None,'unidade_medida':'unidade'},
+          {'item':3,'valor_homologado':5,'valor_unitario_homologado':5,'valor_unitario_estimado':5000,'unidade_medida':None},
+          {'item':4,'valor_homologado':5,'valor_unitario_homologado':5,'valor_unitario_estimado':10,'unidade_medida':'unidade'}]}
+        sinais=col._sinais_comparaveis([compra])
+        self.assertEqual([s['item'] for s in sinais],[1])
+        self.assertEqual(sinais[0]['metodo'],'preco_unitario_mesmo_item')
+        self.assertEqual(sinais[0]['valor_unitario_estimado'],5000)
+
+    def test_recalcula_alerta_legado_sem_reduzir_registros(self):
+        import tempfile, json
+        with tempfile.TemporaryDirectory() as temp:
+            path=Path(temp)/'licitacoes.json'
+            base={'registros':[{'controle_pncp':'x','valor_estimado':7000000,'resultados':[{'valor_homologado':5}]}], 'homologacoes_simbolicas':[{'valor_homologado':5,'valor_estimado':7000000}]}
+            path.write_text(json.dumps(base),encoding='utf-8')
+            with patch.object(col,'OUT_PATH',path):col.sanitizar_local()
+            result=json.loads(path.read_text(encoding='utf-8'))
+            self.assertEqual(result['homologacoes_simbolicas'],[])
+            self.assertEqual(result['registros'],base['registros'])
 
 
 if __name__ == "__main__":

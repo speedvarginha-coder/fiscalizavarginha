@@ -28,7 +28,7 @@ Os módulos usam IIFEs e expõem suas funções em `window.FISCALIZA`. Os dados 
 5. O loader emite `fiscaliza:ready`; os dados de segunda fase chegam por `fiscaliza:chunk`.
 6. Diárias da Prefeitura/Câmara são buscadas ao abrir a seção. Pessoal busca a folha nominal somente na página correspondente.
 
-Falha de uma projeção leve tenta o arquivo completo. Abertura por `file://` ou falha de dados críticos usa `data.js`. O fallback é sincronizado com todos os chunks existentes; ele continua maior que a carga normal por HTTP.
+Falha de uma projeção leve tenta o arquivo completo. Abertura por `file://` usa `data.js`. Por HTTP, uma falha de carga exibe aviso e opção de nova tentativa, sem baixar o monólito. O fallback é sincronizado com os chunks existentes; ele continua maior que a carga normal por HTTP.
 
 ## Projeções e carregamento progressivo
 

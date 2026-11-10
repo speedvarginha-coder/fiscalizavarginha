@@ -57,12 +57,13 @@ test.describe("Integridade dos cálculos (miolo)", () => {
     const semPag = Number(cs.sem_pagamento) || 0;
     const semCnpj = Number(cs.sem_cnpj) || 0;
     const direta = Number(cs.execucao_direta) || 0;
+    const semPeriodo = Number(cs.sem_periodo) || 0;
     // nenhuma contagem negativa
     [com, semPag, semCnpj, direta].forEach((n) => expect(n).toBeGreaterThanOrEqual(0));
     // o resumo do cruzamento DEVE incluir execução direta (órgão público)
     expect(cs).toHaveProperty("execucao_direta");
     // soma dos status == total de emendas: nenhuma fica fora do placar do cidadão
-    expect(com + semPag + semCnpj + direta).toBe(emendas.length);
+    expect(com + semPag + semCnpj + direta + semPeriodo).toBe(emendas.length);
   });
 
   test("LOA 2026: per-capita publicado bate com orçamento / população", () => {

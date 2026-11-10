@@ -1,5 +1,9 @@
 # Opensquad — Project Instructions
 
+## Fiscalização de contratos: regras permanentes
+
+Ao coletar, conferir ou apresentar contratos, siga [a memória de fontes e critérios](docs/fontes-de-dados.md) e [a auditoria de 29/10/2026](docs/auditorias/2026-10-29-auditoria-contratos-fontes.md). Uma memória documental não substitui código, testes e monitoramento das rotinas automáticas.
+
 This project uses **Opensquad**, a multi-agent orchestration framework.
 
 ## Quick Start

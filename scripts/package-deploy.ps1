@@ -1,4 +1,4 @@
-﻿param(
+param(
   [string]$OutputDir = "dist",
   [string]$ZipName = "fiscaliza-varginha-painel.zip",
   # Publica mesmo com codigo nao commitado. Existe para emergencia; o uso fica
@@ -7,6 +7,7 @@
 )
 
 $ErrorActionPreference = "Stop"
+Import-Module Microsoft.PowerShell.Utility -ErrorAction Stop
 
 $root = Resolve-Path (Join-Path $PSScriptRoot "..")
 $source = Join-Path $root "painel-cidadao"
@@ -28,118 +29,6 @@ foreach ($target in @($dist, $stage, $zipPath)) {
 if (-not (Test-Path $source)) {
   throw "Pasta painel-cidadao nao encontrada: $source"
 }
-
-if (Test-Path $stage) {
-  Remove-Item -LiteralPath $stage -Recurse -Force
-}
-New-Item -ItemType Directory -Force -Path $stage | Out-Null
-New-Item -ItemType Directory -Force -Path (Join-Path $stage "data") | Out-Null
-
-function Copy-IfExists {
-  param([string]$From, [string]$To)
-  if (Test-Path $From) {
-    Copy-Item -LiteralPath $From -Destination $To -Recurse -Force
-  }
-}
-
-Get-ChildItem -LiteralPath $source -File |
-  Where-Object {
-    $_.Extension -in @(".html", ".css", ".js", ".svg", ".php") -or
-      $_.Name -in @(".htaccess", "robots.txt", "sitemap.xml")
-  } |
-  ForEach-Object {
-    Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $stage $_.Name) -Force
-  }
-
-New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Null
-@(
-  "utils.js",
-  "icons.js",
-  "glossario.js",
-  "categorias.js",
-  "watchlist.js",
-  "dossie.js",
-  "dashboard.js",
-  "home-cidadao.js",
-  "relatorios.js",
-  "diarias.js",
-  "atualizacoes.js",
-  "materia-cidada.js",
-  "onboarding.js",
-  "chat-cidadao.js",
-  "publicacoes.js",
-  "transparencia.js",
-  "pessoal.js",
-  "auditometro.js"
-) | ForEach-Object {
-  Copy-IfExists (Join-Path $source "modules\$_") (Join-Path $stage "modules\$_")
-}
-# Cache-busting do service worker: sem bump da constante CACHE, visitantes
-# antigos ficam com app.js/style.css velhos indefinidamente (o SW serve do
-# cache). Cada pacote recebe uma versao unica por timestamp.
-$swStage = Join-Path $stage "sw.js"
-if (Test-Path -LiteralPath $swStage) {
-  $swVersion = "fiscaliza-" + (Get-Date -Format "yyyyMMddHHmmss")
-  (Get-Content -LiteralPath $swStage -Raw) -replace 'const CACHE = "[^"]+";', ('const CACHE = "' + $swVersion + '";') |
-    Set-Content -LiteralPath $swStage -Encoding utf8
-  Write-Host "sw.js: CACHE -> $swVersion"
-}
-
-Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
-Copy-IfExists (Join-Path $source "fonts") (Join-Path $stage "fonts")
-Copy-IfExists (Join-Path $source "docs") (Join-Path $stage "docs")
-$emendasStage = Join-Path $stage "emendas"
-New-Item -ItemType Directory -Force -Path $emendasStage | Out-Null
-Get-ChildItem -LiteralPath (Join-Path $source "emendas") -File |
-  Where-Object { $_.Extension -in @(".html", ".css", ".js") } |
-  ForEach-Object { Copy-Item -LiteralPath $_.FullName -Destination $emendasStage -Force }
-Copy-IfExists (Join-Path $source "emendas\data") (Join-Path $emendasStage "data")
-Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
-Copy-IfExists (Join-Path $source "data\referencias") (Join-Path $stage "data\referencias")
-# Gerado pelo avalie.php a partir dos votos privados do servidor.
-# Republica-lo apagaria temporariamente o agregado real a cada deploy.
-$avalieResumoStage = Join-Path $stage "data\chunks\avalie_resumo.json"
-if (Test-Path -LiteralPath $avalieResumoStage) {
-  Remove-Item -LiteralPath $avalieResumoStage -Force
-}
-Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snapshots")
-Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
-
-# Artefatos internos nunca devem ir ao ar: diretorios/arquivos ocultos
-# (ex.: emendas/.data.rollback-anterior-*), __pycache__ e afins. O .htaccess
-# raiz e a unica excecao.
-Get-ChildItem -LiteralPath $stage -Recurse -Force -Directory -ErrorAction SilentlyContinue |
-  Where-Object { $_.Name -like ".*" -or $_.Name -eq "__pycache__" } |
-  Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
-Get-ChildItem -LiteralPath $stage -Recurse -Force -File -ErrorAction SilentlyContinue |
-  Where-Object { $_.Name -like ".*" -and $_.Name -ne ".htaccess" } |
-  Remove-Item -Force -ErrorAction SilentlyContinue
-
-$manifestStage = Join-Path $stage "data\manifest.json"
-# Versiona também os recursos HTTP: trocar só o cache do service worker não
-# invalida os sete dias de cache dos scripts e estilos no navegador.
-$assetPattern = '((?:src|href)=["''])(?!https?:|//|data:)([^"''?#]+\.(?:js|css))(?:\?[^"''#]*)?(["''])'
-foreach ($htmlFile in (Get-ChildItem -LiteralPath $stage -Filter '*.html' -File -Recurse)) {
-  $html = [System.IO.File]::ReadAllText($htmlFile.FullName)
-  $versioned = [regex]::Replace($html, $assetPattern, [System.Text.RegularExpressions.MatchEvaluator]{
-    param($match)
-    return $match.Groups[1].Value + $match.Groups[2].Value + '?v=' + $swVersion + $match.Groups[3].Value
-  })
-  [System.IO.File]::WriteAllText($htmlFile.FullName, $versioned, [System.Text.UTF8Encoding]::new($false))
-}
-$indiceStage = Join-Path $stage "data\chunks\indice_relevancia.json"
-if (Test-Path -LiteralPath $indiceStage) {
-  Remove-Item -LiteralPath $indiceStage -Force
-}
-& node (Join-Path $root "scripts\sanitize-fiscaliza-index.mjs") $stage
-if ($LASTEXITCODE -ne 0) { throw "Falha ao remover o índice legislativo do pacote Fiscaliza." }
-$loaderStage = Join-Path $stage 'data-loader.js'
-$loaderContent = [System.IO.File]::ReadAllText($loaderStage) -replace 'const BUILD_VERSION = "[^"]+";', ('const BUILD_VERSION = "' + $swVersion + '";')
-[System.IO.File]::WriteAllText($loaderStage, $loaderContent, [System.Text.UTF8Encoding]::new($false))
-if (-not (Test-Path -LiteralPath $manifestStage)) {
-  throw "Manifest obrigatorio ausente no pacote: $manifestStage"
-}
-$manifestHash = (Get-FileHash -LiteralPath $manifestStage -Algorithm SHA256).Hash.ToLowerInvariant()
 
 # --- procedencia: que codigo exatamente esta neste pacote ---
 $commit = ""
@@ -208,6 +97,121 @@ publicado. Commite as alteracoes, ou reexecute com -AllowDirty se a publicacao
 for deliberada (o uso fica registrado no release.json).
 "@
 }
+
+
+if (Test-Path $stage) {
+  Remove-Item -LiteralPath $stage -Recurse -Force
+}
+New-Item -ItemType Directory -Force -Path $stage | Out-Null
+New-Item -ItemType Directory -Force -Path (Join-Path $stage "data") | Out-Null
+
+function Copy-IfExists {
+  param([string]$From, [string]$To)
+  if (Test-Path $From) {
+    Copy-Item -LiteralPath $From -Destination $To -Recurse -Force
+  }
+}
+
+Get-ChildItem -LiteralPath $source -File |
+  Where-Object {
+    $_.Extension -in @(".html", ".css", ".js", ".svg", ".php") -or
+      $_.Name -in @(".htaccess", "robots.txt", "sitemap.xml")
+  } |
+  ForEach-Object {
+    Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $stage $_.Name) -Force
+  }
+
+New-Item -ItemType Directory -Force -Path (Join-Path $stage "modules") | Out-Null
+@(
+  "utils.js",
+  "icons.js",
+  "glossario.js",
+  "categorias.js",
+  "watchlist.js",
+  "dossie.js",
+  "cidadao.js",
+  "sugestoes.js",
+  "dashboard.js",
+  "home-cidadao.js",
+  "relatorios.js",
+  "diarias.js",
+  "atualizacoes.js",
+  "materia-cidada.js",
+  "onboarding.js",
+  "chat-cidadao.js",
+  "publicacoes.js",
+  "transparencia.js",
+  "pessoal.js",
+  "auditometro.js"
+) | ForEach-Object {
+  Copy-IfExists (Join-Path $source "modules\$_") (Join-Path $stage "modules\$_")
+}
+# Cache-busting do service worker: sem bump da constante CACHE, visitantes
+# antigos ficam com app.js/style.css velhos indefinidamente (o SW serve do
+# cache). Cada pacote recebe uma versao unica por timestamp.
+$swStage = Join-Path $stage "sw.js"
+if (Test-Path -LiteralPath $swStage) {
+  $swVersion = "fiscaliza-" + (Get-Date -Format "yyyyMMddHHmmss")
+  (Get-Content -LiteralPath $swStage -Raw) -replace 'const CACHE = "[^"]+";', ('const CACHE = "' + $swVersion + '";') |
+    Set-Content -LiteralPath $swStage -Encoding utf8
+  Write-Host "sw.js: CACHE -> $swVersion"
+}
+
+Copy-IfExists (Join-Path $source "assets") (Join-Path $stage "assets")
+Copy-IfExists (Join-Path $source "fonts") (Join-Path $stage "fonts")
+Copy-IfExists (Join-Path $source "docs") (Join-Path $stage "docs")
+$emendasStage = Join-Path $stage "emendas"
+New-Item -ItemType Directory -Force -Path $emendasStage | Out-Null
+Get-ChildItem -LiteralPath (Join-Path $source "emendas") -File |
+  Where-Object { $_.Extension -in @(".html", ".css", ".js") } |
+  ForEach-Object { Copy-Item -LiteralPath $_.FullName -Destination $emendasStage -Force }
+Copy-IfExists (Join-Path $source "emendas\data") (Join-Path $emendasStage "data")
+Copy-IfExists (Join-Path $source "data\chunks") (Join-Path $stage "data\chunks")
+Copy-IfExists (Join-Path $source "data\referencias") (Join-Path $stage "data\referencias")
+# Gerado pelo avalie.php a partir dos votos privados do servidor.
+# Republica-lo apagaria temporariamente o agregado real a cada deploy.
+$avalieResumoStage = Join-Path $stage "data\chunks\avalie_resumo.json"
+if (Test-Path -LiteralPath $avalieResumoStage) {
+  Remove-Item -LiteralPath $avalieResumoStage -Force
+}
+Copy-IfExists (Join-Path $source "data\snapshots") (Join-Path $stage "data\snapshots")
+Copy-IfExists (Join-Path $source "data\manifest.json") (Join-Path $stage "data\manifest.json")
+
+# Artefatos internos nunca devem ir ao ar: diretorios/arquivos ocultos
+# (ex.: emendas/.data.rollback-anterior-*), __pycache__ e afins. O .htaccess
+# raiz e a unica excecao.
+Get-ChildItem -LiteralPath $stage -Recurse -Force -Directory -ErrorAction SilentlyContinue |
+  Where-Object { $_.Name -like ".*" -or $_.Name -eq "__pycache__" } |
+  Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+Get-ChildItem -LiteralPath $stage -Recurse -Force -File -ErrorAction SilentlyContinue |
+  Where-Object { ($_.Name -like ".*" -and $_.Name -ne ".htaccess") -or $_.Extension -ieq ".tmp" } |
+  Remove-Item -Force -ErrorAction SilentlyContinue
+
+$manifestStage = Join-Path $stage "data\manifest.json"
+# Versiona também os recursos HTTP: trocar só o cache do service worker não
+# invalida os sete dias de cache dos scripts e estilos no navegador.
+$assetPattern = '((?:src|href)=["''])(?!https?:|//|data:)([^"''?#]+\.(?:js|css))(?:\?[^"''#]*)?(["''])'
+foreach ($htmlFile in (Get-ChildItem -LiteralPath $stage -Filter '*.html' -File -Recurse)) {
+  $html = [System.IO.File]::ReadAllText($htmlFile.FullName)
+  $versioned = [regex]::Replace($html, $assetPattern, [System.Text.RegularExpressions.MatchEvaluator]{
+    param($match)
+    return $match.Groups[1].Value + $match.Groups[2].Value + '?v=' + $swVersion + $match.Groups[3].Value
+  })
+  [System.IO.File]::WriteAllText($htmlFile.FullName, $versioned, [System.Text.UTF8Encoding]::new($false))
+}
+$indiceStage = Join-Path $stage "data\chunks\indice_relevancia.json"
+if (Test-Path -LiteralPath $indiceStage) {
+  Remove-Item -LiteralPath $indiceStage -Force
+}
+& node (Join-Path $root "scripts\sanitize-fiscaliza-index.mjs") $stage
+if ($LASTEXITCODE -ne 0) { throw "Falha ao remover o índice legislativo do pacote Fiscaliza." }
+$loaderStage = Join-Path $stage 'data-loader.js'
+$loaderContent = [System.IO.File]::ReadAllText($loaderStage) -replace 'const BUILD_VERSION = "[^"]+";', ('const BUILD_VERSION = "' + $swVersion + '";')
+[System.IO.File]::WriteAllText($loaderStage, $loaderContent, [System.Text.UTF8Encoding]::new($false))
+if (-not (Test-Path -LiteralPath $manifestStage)) {
+  throw "Manifest obrigatorio ausente no pacote: $manifestStage"
+}
+$manifestHash = (Get-FileHash -LiteralPath $manifestStage -Algorithm SHA256).Hash.ToLowerInvariant()
 
 $release = [ordered]@{
   schema = 2

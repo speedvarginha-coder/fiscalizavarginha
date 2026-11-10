@@ -327,6 +327,7 @@ def _monta_publicacao(
     materia: dict,
     autores_map: dict,
     publicacao_existente: dict | None = None,
+    basico: bool = False,
 ) -> dict | None:
     tipo_id = materia.get("tipo")
     info = TIPO_INFO.get(tipo_id)
@@ -349,8 +350,13 @@ def _monta_publicacao(
         publicacao_existente
         and _hash_publicacao_existente(publicacao_existente) == hash_atual
     )
+    # O feed oficial não pode depender do tempo ou da cota do enriquecimento.
+    if basico and pode_reusar:
+        return {**publicacao_existente, "situacao": _situacao(materia)}
     if pode_reusar:
         ia = _ia_da_publicacao(publicacao_existente)
+    elif basico:
+        ia = enriquecedor_ia._fallback({"texto": ementa, "titulo": titulo, "tipo": rotulo})
     else:
         # Camada de IA — somente itens novos, alterados ou antes degradados.
         ia = enriquecedor_ia.enriquecer({
@@ -363,7 +369,7 @@ def _monta_publicacao(
         })
 
     documento_url = str(materia.get("texto_original") or "")
-    texto_documento, paginas_documento = _documento_oficial(documento_url) if _documento_financeiro(sigla, ementa) else ("", [])
+    texto_documento, paginas_documento = _documento_oficial(documento_url) if not basico and _documento_financeiro(sigla, ementa) else ("", [])
     valores = _valores_publicacao(
         ementa,
         ia,
@@ -417,9 +423,9 @@ def _monta_publicacao(
     }
 
 
-def coletar_camara(ano: int, limite: int = 0, full: bool = False) -> list[dict]:
+def coletar_camara(ano: int, limite: int = 0, full: bool = False, basico: bool = False, consolidado_local: bool = False) -> list[dict]:
     print(f"→ Coletando matérias SAPL {ano} (IA: {'ON' if enriquecedor_ia.tem_ia() else 'OFF (fallback)'})")
-    materias_api = _paginate(f"{SAPL}/materia/materialegislativa/?ano={ano}&page=1&page_size=100")
+    materias_api = [] if consolidado_local else _paginate(f"{SAPL}/materia/materialegislativa/?ano={ano}&page=1&page_size=100")
     materias_fallback = _materias_do_consolidado(ano)
     # A API vence quando ambas trazem a mesma matéria. O consolidado cobre
     # somente itens ausentes quando a paginação falha no início ou no meio.
@@ -434,7 +440,9 @@ def coletar_camara(ano: int, limite: int = 0, full: bool = False) -> list[dict]:
         materias = materias[:limite]
     print(f"  {len(materias)} matéria(s) para processar")
 
-    autores_map = _mapa_autores()
+    if consolidado_local and not materias:
+        raise ValueError("Consolidado SAPL vazio; feed anterior preservado")
+    autores_map = {} if consolidado_local else _mapa_autores()
     print(f"  autores resolvidos: {len(autores_map)}")
 
     existentes: list[dict] = []
@@ -464,7 +472,7 @@ def coletar_camara(ano: int, limite: int = 0, full: bool = False) -> list[dict]:
         if info and m.get("numero") and m.get("ano"):
             pid = f"CAMARA-{m.get('ano')}-{info[0]}-{m.get('numero')}"
             existente = existentes_por_id.get(pid)
-        pub = _monta_publicacao(m, autores_map, existente)
+        pub = _monta_publicacao(m, autores_map, existente, basico=basico)
         with trava:
             if pub and existente and pub.get("gerado_em") == existente.get("gerado_em"):
                 estatisticas["reusadas"] += 1
@@ -504,9 +512,11 @@ def main() -> None:
     ap.add_argument("--ano", type=int, default=datetime.now().year)
     ap.add_argument("--limite", type=int, default=0, help="0 = todas")
     ap.add_argument("--full", action="store_true", help="reenriquece todas as matérias")
+    ap.add_argument("--basico", action="store_true", help="metadados oficiais sem chamadas à IA ou documentos")
+    ap.add_argument("--consolidado-local", action="store_true", help="utiliza apenas o SAPL consolidado no ciclo")
     args = ap.parse_args()
 
-    pubs = coletar_camara(args.ano, args.limite, full=args.full)
+    pubs = coletar_camara(args.ano, args.limite, full=args.full, basico=args.basico, consolidado_local=args.consolidado_local)
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "gerado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),

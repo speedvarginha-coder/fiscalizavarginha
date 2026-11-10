@@ -1,0 +1,76 @@
+/* Leitura de diárias e frota: indicadores, filtros e registros. */
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .fiscalizacao-filtros {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); align-items:end;
+  gap:12px; margin:20px 0; padding:18px; border:1px solid #d7e5ef;
+  border-radius:13px; background:#f5f9fc;
+}
+.fiscalizacao-filtros__titulo { grid-column:1/-1; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; color:#123e64; }
+.fiscalizacao-filtros__titulo strong { font-size:.98rem; }
+.fiscalizacao-filtros__titulo span { color:#536b81; font-size:.82rem; }
+.fiscalizacao-filtros .fiscalizacao-campo { display:grid; min-width:0; gap:5px; color:#405b73; font-size:.78rem; font-weight:700; }
+.fiscalizacao-filtros .fiscalizacao-campo--busca { grid-column:span 2; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .fiscalizacao-filtros :is(input, select) {
+  width:100%; min-width:0; min-height:44px; margin:0; padding:9px 11px;
+  border:1px solid #b9cfdf; border-radius:8px; background:#fff; color:#173d5e;
+  font:inherit; font-size:.91rem; font-weight:500;
+}
+.fiscalizacao-filtros :is(input, select):focus-visible { outline:3px solid #13844f; outline-offset:2px; }
+.fiscalizacao-filtros .filterbar__count { grid-column:1/-1; width:auto; color:#3d5b72; font-size:.84rem; font-weight:700; }
+.fiscalizacao-filtros .btn-csv { grid-column:1/-1; justify-self:start; width:auto; margin-left:0 !important; }
+.fiscalizacao-fonte { margin:14px 0; padding:13px 16px; border:1px solid #e7cf9c; border-left:4px solid #ad741d; border-radius:8px; background:#fff8e9; color:#604418; font-size:.88rem; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:18px 0;
+}
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat {
+  min-width:0; padding:18px; border:1px solid #d7e5ef; border-top:4px solid #77b8cf;
+  border-radius:12px; background:#fff; color:#36536b; box-shadow:0 3px 12px rgba(12,59,95,.05);
+}
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat:first-child { border-color:#075394; background:#075394; color:#e6f3ff; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat__value { color:#074d89; font-size:clamp(1.3rem,2vw,1.72rem); font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat:first-child .stat__value { color:#fff; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat__label { color:inherit; font-size:.78rem; font-weight:800; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats :is(.stat__sub, .stat p) { margin:5px 0 0; color:inherit; font-size:.8rem; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock) :is(.diarias-resumo, .diarias-coverage-note, .diarias-note) { border-radius:10px; line-height:1.55; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diarias-coverage-note { border-left:4px solid #ad741d; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diarias-ranking__panel { border:1px solid #d7e5ef; border-radius:12px; background:#fff; overflow:hidden; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card, #frotaBlock .frota-card {
+  min-width:0; margin:0 0 12px; border:1px solid #d7e5ef; border-radius:12px; background:#fff;
+  box-shadow:0 3px 12px rgba(12,59,95,.05); overflow:hidden;
+}
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card__value { background:#edf6fc; color:#074d89; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card__value strong { color:#074d89; font-variant-numeric:tabular-nums; }
+:is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card__body h4 { color:#103e64; }
+#frotaBlock .frota-card__placa { color:#074d89; font-weight:800; }
+#frotaBlock .frota-card__head strong { color:#103e64; }
+#frotaBlock .frota-card__body { min-width:0; }
+#frotaBlock .frota-card__grid span, :is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card__meta span { overflow-wrap:anywhere; }
+#frotaBlock .frota-audit article { border-radius:9px; }
+@media (max-width:800px) {
+  :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .fiscalizacao-filtros { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media screen and (max-width:768px) {
+  :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .fiscalizacao-filtros {
+    display:grid !important; position:static; box-shadow:none; animation:none; align-items:end !important;
+  }
+  .fiscalizacao-filtros .filterbar__count { order:initial; text-align:left; }
+}
+@media (max-width:520px) {
+  :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .fiscalizacao-filtros { grid-template-columns:1fr; padding:14px; }
+  .fiscalizacao-filtros .fiscalizacao-campo--busca { grid-column:auto; }
+  :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat { padding:14px; }
+  :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat__value { font-size:1rem; }
+}
+body.dark-theme :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .fiscalizacao-filtros,
+body.dark-theme :is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diarias-ranking__panel,
+body.dark-theme :is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card,
+body.dark-theme #frotaBlock .frota-card,
+body.dark-theme :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat:not(:first-child) { background:#202a33; border-color:#53687a; color:#e7eef5; }
+body.dark-theme .fiscalizacao-filtros__titulo, body.dark-theme .fiscalizacao-filtros .fiscalizacao-campo { color:#d8e8f5; }
+body.dark-theme .fiscalizacao-filtros__titulo span, body.dark-theme .fiscalizacao-filtros .filterbar__count { color:#c1d2e0; }
+body.dark-theme :is(#diariasPrefeituraBlock, #diariasCamaraBlock, #frotaBlock) .stats .stat:not(:first-child) .stat__value,
+body.dark-theme :is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card__body h4,
+body.dark-theme #frotaBlock :is(.frota-card__placa, .frota-card__head strong) { color:#a5d7ff; }
+body.dark-theme :is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card__value { background:#173f5a; color:#e6f3ff; }
+body.dark-theme :is(#diariasPrefeituraBlock, #diariasCamaraBlock) .diaria-card__value strong { color:#fff; }

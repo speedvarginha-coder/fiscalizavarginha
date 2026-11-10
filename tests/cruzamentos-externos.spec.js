@@ -137,12 +137,13 @@ test.describe("Integridade — Resultados de licitação PNCP", () => {
     }
   });
 
-  test("toda homologação simbólica referencia um vencedor e valores coerentes", () => {
+  test("sinais comparam preços unitários do mesmo item e unidade", () => {
     const l = load("licitacoes_resultados");
     for (const h of l.homologacoes_simbolicas || []) {
-      expect(h.vencedor, "homologacao simbolica sem vencedor").toBeTruthy();
-      expect(Number(h.valor_homologado)).toBeGreaterThan(0);
-      expect(Number(h.valor_estimado)).toBeGreaterThan(Number(h.valor_homologado));
+      expect(h.metodo).toBe("preco_unitario_mesmo_item");
+      expect(h.unidade_medida).toBeTruthy();
+      expect(Number(h.valor_unitario_homologado)).toBeGreaterThan(0);
+      expect(Number(h.valor_unitario_estimado)).toBeGreaterThan(Number(h.valor_unitario_homologado));
     }
   });
 });

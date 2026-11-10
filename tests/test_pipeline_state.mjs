@@ -38,6 +38,7 @@ test("publicação automática aceita dados novos, mas bloqueia código alterado
     assert.equal(run('--record'), 0);
     fs.writeFileSync(path.join(dir, 'painel-cidadao/data/coleta.json'), 'nova coleta');
     fs.writeFileSync(path.join(dir, 'painel-cidadao/data.js'), 'novo bundle');
+    fs.writeFileSync(path.join(dir, 'painel-cidadao/operacao.json'), 'novo estado operacional');
     fs.mkdirSync(path.join(dir, 'painel-cidadao/.data.rollback-anterior'));
     fs.writeFileSync(path.join(dir, 'painel-cidadao/.data.rollback-anterior/backup.json'), 'backup');
     assert.equal(run(), 0);

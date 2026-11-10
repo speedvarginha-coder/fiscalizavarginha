@@ -50,7 +50,7 @@
     "data_fim":          { simples: "Fim do contrato",     explica: "Dia em que o contrato termina." },
     "emenda impositiva": { simples: "Emenda impositiva",   explica: "Verba indicada pelo vereador com execução orçamentária obrigatória, ressalvados impedimentos técnicos ou legais." },
     "cnpj":              { simples: "CNPJ",                explica: "Número de identificação da empresa na Receita Federal." },
-    "situação":          { simples: "Situação",            explica: "Status atual do contrato: ativo, encerrado, suspenso." },
+    "situação":          { simples: "Situação",            explica: "Estado informado para este registro. Confira as opções e o contexto da seção." },
     "diária":            { simples: "Diária",              explica: "Valor para custear viagem oficial. Não é salário extra; precisa de finalidade pública e prestação de contas.", aliases: ["diarias", "diárias"] },
     "verba indenizatória": { simples: "Verba indenizatória", explica: "Ressarcimento de despesa ligada ao mandato ou serviço público. Deve ter regra, comprovante e publicidade.", aliases: ["verba indenizatoria"] },
     "subsidio":          { simples: "Subsídio",            explica: "Remuneração bruta fixada em lei para agentes políticos, como vereadores.", aliases: ["subsídio"] },
@@ -79,7 +79,7 @@
     const dic = buscarTermo(termo);
     if (!dic) return esc(termo);
     const txt = opts.usarTecnico ? termo : dic.simples;
-    return `<span class="glossario-termo" tabindex="0" data-explica="${esc(dic.explica)}" aria-expanded="false" aria-label="${esc(txt + ": " + dic.explica)}">${esc(txt)}</span>`;
+    return `<span class="glossario-termo" role="button" tabindex="0" data-explica="${esc(dic.explica)}" aria-expanded="false" aria-label="${esc(txt + ": " + dic.explica)}">${esc(txt)}</span>`;
   };
 
   const termosContextuais = [];
@@ -103,11 +103,12 @@
   });
   const deveIgnorar = function (node) {
     const el = node.parentElement;
-    return !el || !!el.closest("script,style,textarea,input,select,option,a,button,.glossario-termo,.no-glossario");
+    return !el || !!el.closest("script,style,textarea,input,select,option,a,button,summary,.glossario-termo,.no-glossario");
   };
   const criarSpan = function (texto, item) {
     const span = document.createElement("span");
     span.className = "glossario-termo";
+    span.setAttribute("role", "button");
     span.tabIndex = 0;
     span.dataset.explica = item.explica;
     span.setAttribute("aria-expanded", "false");
@@ -203,6 +204,10 @@
   });
   document.addEventListener("keydown", function (ev) {
     if (ev.key === "Escape") fecharTermos(null);
+    if ((ev.key === "Enter" || ev.key === " ") && ev.target.matches(".glossario-termo")) {
+      ev.preventDefault();
+      ev.target.click();
+    }
   });
 
 })();

@@ -27,8 +27,9 @@
       .monitor-table{min-width:720px}
     }
   </style>
+<link rel="stylesheet" href="cidadao.css?v=20261020">
 </head>
-<body>
+<body data-page="monitoramento">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <main class="monitor-wrap" id="conteudo">
     <p><a href="index.html">← Voltar ao painel</a></p>
@@ -38,14 +39,17 @@
     </nav>
     <p class="muted">Este painel mostra a situação declarada pelas fontes e a última execução concluída. “Parcial” ou “conferência manual” não é falha silenciosa: indica que a fonte precisa de conferência antes de conclusões públicas.</p>
     <div id="summary" class="monitor-grid" aria-live="polite"></div>
+    <p id="telemetryAge" class="muted" role="status"></p>
+    <section data-cobertura-cidada></section>
+    <section aria-labelledby="documentos-titulo"><h2 id="documentos-titulo">Contratos: cobertura e conferências</h2><div id="document-monitor" class="monitor-grid" aria-live="polite">Consultando indicadores documentais...</div></section>
     <h2>Fontes monitoradas</h2>
-    <div style="overflow:auto"><table class="monitor-table"><thead><tr><th>Fonte</th><th>Situação</th><th>Atualização</th><th>Observação</th></tr></thead><tbody id="sources"></tbody></table></div>
+    <div style="overflow:auto" role="region" tabindex="0" aria-label="Situação das fontes monitoradas"><table class="monitor-table"><thead><tr><th>Fonte</th><th>Situação</th><th>Atualização</th><th>Observação</th></tr></thead><tbody id="sources"></tbody></table></div>
     <p class="muted small">A <strong>idade</strong> conta desde a última coleta bem-sucedida da fonte. Cada base tem um prazo esperado: passar dele marca “Defasada”. Ausência de dado nunca é tratada como zero.</p>
   </main>
   <script>
     const text = (value) => String(value ?? "Não informado");
     const safe = (value) => text(value).replace(/[&<>"]|'/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" })[char]);
-    const formatDate = (value) => value ? new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" }).format(new Date(value)) : "Não informada";
+    const formatDate = (value) => value && Number.isFinite(Date.parse(value)) ? new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" }).format(new Date(value)) : "Não informada";
     const STATUS = { ok: "Atualizada", partial: "Parcial", preserved: "Base anterior preservada", manual: "Conferência manual", failed: "Falha na coleta", stale: "Defasada", unknown: "Não informado" };
     const EXEC = { SUCESSO: "Sucesso", FALHA: "Falha", PULADO: "Pulado", PENDENTE: "Pendente", ERRO: "Erro" };
     const rotuloStatus = (status) => STATUS[status] || text(status);
@@ -53,7 +57,7 @@
     const idadeHumana = (dias) => {
       if (dias === null || dias === undefined || Number.isNaN(Number(dias))) return "";
       const d = Number(dias);
-      if (d < 1) return "hoje";
+      if (d < 1) return "há menos de 24 horas";
       if (d < 2) return "há 1 dia";
       return "há " + Math.round(d) + " dias";
     };
@@ -71,13 +75,50 @@
       }[source.status] || "sem data de coleta";
       return '<small class="muted">' + safe(nota) + "</small>";
     };
-    fetch("data/chunks/monitoramento_coletas.json", { cache: "no-store" }).then((response) => response.json()).then((data) => {
+    fetch("data/chunks/cobertura_documental.json", {cache:"no-store"}).then(r => { if (!r.ok) throw new Error("indisponível"); return r.json(); }).then(info => {
+      const p=info.pncp || {}, a=info.amostras || {}, rodada=p.ultima_rodada || {};
+      const amostras=Object.entries(a.conjuntos || {}).map(([nome,valor]) => `${safe(nome)}: ${safe(valor.status)}, ${safe(valor.registros)} registro(s), ${safe(valor.divergencias)} com divergência.`).join('<br>');
+      document.querySelector('#document-monitor').innerHTML = `<article class="monitor-card"><h2>PNCP · ${safe(p.ano || 'período não informado')}</h2><p>${safe(p.registros ?? 'Não informado')} registros na base; ${safe(p.correspondencias_candidatas ?? 'não informado')} associações candidatas; ${safe(p.sem_correspondencia_automatica ?? 'não informado')} sem correspondência automática.</p><p>${safe(p.fichas_com_arquivos ?? 'Não informado')} fichas com arquivo listado no PNCP. O vínculo precisa de conferência.</p><p>Última tentativa: ${safe(formatDate(p.ultima_tentativa))}<br>Última consulta concluída: ${safe(formatDate(p.ultima_consulta_concluida))}<br>Última rodada: ${safe(rodada.status || 'não registrada')} (${safe(rodada.inconclusivas ?? 'não informado')} inconclusivas).</p></article><article class="monitor-card"><h2>Diário Oficial</h2><p>${safe(info.diario?.fichas_com_extratos ?? 'Não informado')} fichas com referência a extrato. Um extrato não substitui o documento integral.</p></article><article class="monitor-card"><h2>Conferências amostrais</h2><p>Última execução: ${safe(formatDate(a.executado_em))}</p><p>${amostras || 'Nenhuma amostra registrada.'}</p><p>São amostras limitadas e não certificam toda a base.</p></article><p class="muted">Indicadores gerados em ${safe(formatDate(info.gerado_em))}. A ausência de correspondência ou arquivo não prova que não exista contratação ou documento.</p>`;
+      const detalhes=Array.isArray(a.conjuntos?.contratos?.detalhes_divergencias) ? a.conjuntos.contratos.detalhes_divergencias : [];
+      const valid=/^https:\/\/transparencia\.betha\.cloud\/#\/y7mn01LGqd_HCvGtj6VPwA==\/consulta\/83043\/detalhe\/[\w:%-]+$/;
+      if(detalhes.length){const box=document.createElement('article');box.className='monitor-card';const brl=x=>Number.isFinite(Number(x)) ? Number(x).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}) : 'Não informado';box.innerHTML=`<h2>Diferenças encontradas na amostra</h2>${detalhes.filter(d=>valid.test(d.ficha || '')).map(d=>`<p><a href="${safe(d.ficha)}" target="_blank" rel="noopener">Contrato ${safe(d.numero)}/${safe(d.ano)} ↗</a><br>Na amostra: painel ${safe(brl(d.valor_painel_na_amostra))}; ficha ${safe(brl(d.valor_fonte_na_amostra))}.<br>${d.situacao==='corrigido_apos_amostra' ? 'Corrigido após a amostra em '+safe(formatDate(d.corrigido_em)) : 'Pendente de conferência.'}</p>`).join('')}<p>Os valores são contratuais, não pagamentos; a situação pode mudar na fonte.</p>`;document.querySelector('#document-monitor').append(box);}
+      if(Array.isArray(p.anos_anteriores) && p.anos_anteriores.length){const box=document.createElement('article');box.className='monitor-card';box.innerHTML=`<h2>PNCP em anos anteriores</h2>${p.anos_anteriores.map(y=>`<p>${safe(y.ano)}: ${safe(y.registros)} registros · ${safe(y.status)}${y.orgaos?.prefeitura || y.orgaos?.camara ? `<br>Prefeitura: ${safe(y.orgaos?.prefeitura?.registros ?? 'não informado')} (${safe(y.orgaos?.prefeitura?.status || 'não informado')}); Câmara: ${safe(y.orgaos?.camara?.registros ?? 'não informado')} (${safe(y.orgaos?.camara?.status || 'não informado')})` : ''}<br>Última tentativa: ${safe(formatDate(y.ultima_tentativa))}<br>Última coleta bem-sucedida: ${safe(formatDate(y.ultima_coleta_bem_sucedida))}</p>`).join('')}<p>Consulta por data de publicação no PNCP. Resultado vazio não comprova ausência de contratação.</p>`;document.querySelector('#document-monitor').append(box);}
+      {const box=document.createElement('article');box.className='monitor-card';const d=info.diario || {};box.innerHTML=`<h2>Leitura de documentos</h2><p>PNCP: ${safe(p.pdfs_lidos ?? 'não informado')} arquivos lidos por extração de texto; ${safe(p.pdfs_revisao ?? 'não informado')} exigem revisão. A leitura automática não certifica o vínculo nem a legalidade.</p><p>Diário: ${safe(d.edicoes_concluidas ?? 'não informado')} edições lidas e ${safe(d.edicoes_inconclusivas ?? 'não informado')} inconclusivas na base acompanhada.${d.edicoes_acima_limite ? ` ${safe(d.edicoes_acima_limite)} ultrapassou(aram) o limite de ${safe(d.limite_mb || 'não informado')} MB para leitura automática.` : ''}</p>`;document.querySelector('#document-monitor').append(box);}
+      {const box=document.createElement('article');box.className='monitor-card';const t=info.trilha_betha || {}, rodada=t.ultima_rodada || {};box.innerHTML=`<h2>Execução nas fichas</h2><p>${safe(t.fichas_com_lista_empenhos ?? 'Não informado')} fichas retornaram lista de empenhos, das quais ${safe(t.fichas_com_empenhos ?? 'não informado')} continham registros.</p><p>${safe(t.empenhos_execucao_confirmada ?? 'Não informado')} empenhos têm ficha contábil vinculada; ${safe(t.ultima_tentativa_inconclusiva ?? 'não informado')} última(s) tentativa(s) foram inconclusivas.<br>Última tentativa: ${safe(formatDate(rodada.executado_em || t.ultima_tentativa))} · ${safe(rodada.status || 'situação não registrada')}<br>Última consulta concluída: ${safe(formatDate(t.ultima_concluida))}</p><p>Os números mostram apenas as fichas consultadas. Informações contábeis não substituem os comprovantes nem comprovam entrega.</p>`;document.querySelector('#document-monitor').append(box);}
+      if(Array.isArray(info.historico_correcoes) && info.historico_correcoes.length){const box=document.createElement('article');box.className='monitor-card';const brl=x=>Number.isFinite(Number(x))?Number(x).toLocaleString('pt-BR',{style:'currency',currency:'BRL'}):'Não informado';box.innerHTML=`<h2>Correções acompanhadas</h2>${info.historico_correcoes.filter(d=>valid.test(d.ficha || '')).map(d=>`<p><a href="${safe(d.ficha)}" target="_blank" rel="noopener">Contrato ${safe(d.numero)}/${safe(d.ano)} ↗</a><br>Anterior: ${safe(brl(d.valor_anterior))}; conferido: ${safe(brl(d.valor_fonte))}.<br>${d.situacao==='mantido' ? 'Valor conferido continua na base.' : 'O valor na base mudou; conferir novamente.'}</p>`).join('')}`;document.querySelector('#document-monitor').append(box);}
+      if(Array.isArray(info.divergencias_data) && info.divergencias_data.length){const box=document.createElement('article');box.className='monitor-card';box.innerHTML=`<h2>Datas pendentes de esclarecimento</h2>${info.divergencias_data.filter(d=>valid.test(d.ficha || '')).map(d=>`<p><a href="${safe(d.ficha)}" target="_blank" rel="noopener">Contrato ${safe(d.numero)}/${safe(d.ano)} ↗</a><br>Na conferência de ${safe(d.conferido_em)}: ficha ${safe(d.data_ficha)}; PDF ${safe(d.data_pdf)}. Solicite esclarecimento ao órgão.</p>`).join('')}`;document.querySelector('#document-monitor').append(box);}
+    }).catch(() => { document.querySelector('#document-monitor').textContent = 'Cobertura documental indisponível; os resultados não foram confirmados.'; });
+    Promise.all([
+      fetch("data/chunks/monitoramento_coletas.json", { cache: "no-store" }).then(response => {
+        if (!response.ok) throw new Error("Monitor indisponível");
+        return response.json();
+      }),
+      fetch("operacao.json", { cache: "no-store" }).then(response => response.ok ? response.json() : null).catch(() => null),
+      fetch("data/chunks/status_fontes.json", { cache: "no-store" }).then(response => response.ok ? response.json() : null).catch(() => null),
+      fetch("release.json", { cache: "no-store" }).then(response => response.ok ? response.json() : null).catch(() => null),
+    ]).then(([data, live, statusFontes, release]) => {
+      const dataFontes = statusFontes?.gerado_em || data.generated_at;
+      if (statusFontes?.domains && typeof statusFontes.domains === "object") {
+        data.sources = Object.entries(statusFontes.domains).map(([id, source]) => ({id, ...source}));
+      }
+      if (live?.schema_version === 1 && Date.parse(live.generated_at) > Date.parse(data.generated_at)) {
+        data = { ...data, ...live };
+      }
+      const telemetryHours = (Date.now() - Date.parse(data.generated_at)) / 3600000;
+      document.querySelector("#telemetryAge").textContent = Number.isFinite(telemetryHours)
+        ? `${telemetryHours > 24 ? "Monitoramento defasado. " : ""}Situação registrada em ${formatDate(data.generated_at)}. ${telemetryHours > 24 ? "O resultado abaixo é histórico e não comprova o funcionamento atual." : ""}`
+        : "Data do monitoramento não informada; o funcionamento atual não foi confirmado.";
+      document.querySelector("#telemetryAge").textContent += ` Cobertura das fontes gerada em ${formatDate(dataFontes)}.`;
+      data.sources = data.sources.map(source => {
+        const age = source.source_updated_at ? (Date.now() - Date.parse(source.source_updated_at)) / 86400000 : null;
+        return { ...source, age_days: age, status: source.status === "ok" && age !== null && age > source.max_age_days ? "stale" : source.status };
+      });
       const run = data.last_completed_run;
       const deployment = data.last_verified_deployment;
       document.querySelector("#summary").innerHTML = [
-        ["Última coleta concluída", run ? `${rotuloExec(run.coleta)} · ${formatDate(run.finished_at)}` : "Sem registro"],
-        ["Publicação verificada", deployment ? `${rotuloExec(deployment.status)} · ${formatDate(deployment.checked_at)}` : "Sem registro"],
-        ["Fontes em alerta", (data.summary.by_status.partial || 0) + (data.summary.by_status.failed || 0)],
+        ["Última coleta concluída", run ? `${rotuloExec(run.coleta)} · ${formatDate(run.finished_at)}${run.fase === "restaurada" ? " · base anterior restaurada; tentativa preservada em quarentena quando disponível" : ""}` : "Sem registro"],
+        ["Publicação verificada", deployment ? `${!release?.manifest_sha256 || !deployment.manifest_sha256 ? "Versão não confirmada" : deployment.manifest_sha256 === release.manifest_sha256 ? rotuloExec(deployment.status) : "Verificação anterior ao release atual"} · ${formatDate(deployment.checked_at)}` : "Sem registro"],
+        ["Fontes em alerta", data.sources.filter(source => source.status !== "ok").length],
       ].map(([title, value]) => `<article class="monitor-card"><h2>${safe(title)}</h2><p>${safe(value)}</p></article>`).join("");
       document.querySelector("#sources").innerHTML = data.sources.map((source) => `<tr><td>${safe(source.label)}</td><td><span class="status status-${safe(source.status)}">${safe(rotuloStatus(source.status))}</span></td><td>${atualizacaoFonte(source)}</td><td>${safe(source.reason)}</td></tr>`).join("");
     }).catch(() => { document.querySelector("#summary").textContent = "Não foi possível carregar o monitoramento."; });
@@ -112,6 +153,8 @@
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -144,5 +187,8 @@
     .catch(function () {});
 })();
 </script>
+<script src="modules/utils.js"></script>
+<script src="modules/cidadao.js"></script>
+  <script src="modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>

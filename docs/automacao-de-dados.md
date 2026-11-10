@@ -5,6 +5,16 @@ se a coleta ou a validacao falhar, os dados publicados voltam para o backup ante
 
 ## Comandos principais
 
+Publicidade Transparente da Prefeitura e da Câmara integra `update-data.ps1` em todos os modos de coleta. A primeira carga traz todo o histórico mensal oferecido; depois consulta os três meses mais recentes, novos períodos e um mês histórico por rodada. Cadastros são consultados em cada ciclo. A vigia considera essas fontes vencidas após 24 horas. Falhas preservam os registros anteriores e ficam visíveis no monitor.
+
+Para diagnosticar somente essas fontes, fora de um ciclo ativo:
+
+```powershell
+python painel-cidadao/coletor_publicidade.py
+```
+
+Esse comando coleta, mas não publica. Validação, bundle, testes e publicação seguem o fluxo normal do projeto.
+
 Rodar coleta completa agora:
 
 ```powershell

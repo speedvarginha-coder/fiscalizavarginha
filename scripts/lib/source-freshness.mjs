@@ -34,3 +34,15 @@ export function collectionAgeHours(source, now = new Date()) {
   const age = date ? (now - date) / 3_600_000 : NaN;
   return Number.isFinite(age) && age >= 0 ? age : Infinity;
 }
+
+// A tentativa parcial não torna atuais os registros anteriores preservados.
+export function procurementResultTimestamps(value) {
+  const valid = raw => {
+    const d = raw ? new Date(raw) : undefined;
+    return d && Number.isFinite(d.getTime()) ? d : undefined;
+  };
+  return {
+    checkedAt: valid(value?.ultima_tentativa_em) || valid(value?.gerado_em),
+    updatedAt: valid(value?.ultima_coleta_completa_em) || (value?.status === 'ok' ? valid(value?.gerado_em) : undefined),
+  };
+}

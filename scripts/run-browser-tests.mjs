@@ -7,7 +7,8 @@ import { setTimeout as delay } from "node:timers/promises";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
 const deploy = args.includes("--deploy");
-const port = Number(deploy ? process.env.FISCALIZA_DEPLOY_TEST_PORT || 4184 : process.env.FISCALIZA_TEST_PORT || 4173);
+// A prévia do usuário ocupa 4173; os testes criam seu próprio servidor isolado.
+const port = Number(deploy ? process.env.FISCALIZA_DEPLOY_TEST_PORT || 4184 : process.env.FISCALIZA_TEST_PORT || 4193);
 const testRoot = deploy
   ? path.resolve(root, process.env.FISCALIZA_DEPLOY_DIR || "dist", "painel-cidadao")
   : path.resolve(root, process.env.FISCALIZA_TEST_ROOT || "painel-cidadao");

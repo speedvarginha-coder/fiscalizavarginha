@@ -74,6 +74,8 @@ const PAGINAS = [
 for (const p of PAGINAS) {
   test.describe(`Página: ${p.arquivo}`, () => {
     test("abre sem erro fatal no console", async ({ page }) => {
+      // release.json é criado no pacote de publicação, não na prévia dos fontes.
+      if (p.arquivo === "monitoramento.html") await page.route("**/release.json", route => route.fulfill({ json: {} }));
       const erros = setupConsoleListener(page);
       await gotoReady(page, fileUrl(p.arquivo), { waitUntil: "domcontentloaded" });
       // Espera app.js terminar de inicializar (overlay de loading some)
@@ -355,7 +357,7 @@ test.describe("Filtros básicos", () => {
     await busca.fill("2/2026");
     await expect(busca).toHaveValue("2/2026");
     await expect(page.locator("#contratos .contrato").first()).toBeAttached();
-    await page.locator("#contratos .btn-dossie", { hasText: "Ver contrato e fonte oficial" }).first().click();
+    await page.locator("#contratos .btn-dossie", { hasText: "Resumo e como cobrar" }).first().click();
     const modal = page.locator("#modalFiscaliza");
     await expect(modal).toBeAttached();
     await expect(modal).toContainText(/CONFER.*NCIA DE PROCED.*NCIA/i);
@@ -503,14 +505,32 @@ test.describe("Filtros básicos", () => {
     expect(fechado).toBe(false);
   });
 
-  test("Câmara — top fornecedor explica busca de contrato", async ({ page }) => {
+  test("Câmara — top fornecedor abre a ficha oficial correspondente", async ({ page }) => {
     await gotoReady(page, fileUrl("camara.html"), { waitUntil: "domcontentloaded" });
     await page.waitForTimeout(2500);
-    const btn = page.locator("#topFornecedoresCamara .forn-row__btn--filtro").first();
-    await expect(btn).toBeAttached({ timeout: 15_000 });
-    await btn.click();
-    await expect(page.locator("#contratosCamaraAviso")).toBeVisible();
-    await expect(page.locator("#contratosCamaraAviso")).toContainText(/contrato vigente|Nenhum contrato vigente/);
+    await expect(page.locator("#topFornecedoresCamara .forn-row__btn--filtro").first()).toBeAttached({ timeout: 15_000 });
+    const alvo = await page.evaluate(() => {
+      const cb = window.FISCALIZA_DATA.camara_betha;
+      const raiz = value => String(value || "").replace(/\D/g, "").slice(0, 8);
+      const nome = value => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\b(?:me|epp)\b/g, "").replace(/[^a-z0-9]/g, "");
+      const contratos = cb.contratos_fontes?.length ? cb.contratos_fontes : cb.contratos;
+      for (const [indice, fornecedor] of cb.top_fornecedores_atual.slice(0, 20).entries()) {
+        const encontrados = contratos.filter(c => raiz(fornecedor.cnpj).length === 8
+          ? raiz(c.cnpj) === raiz(fornecedor.cnpj)
+          : nome(fornecedor.nome).length > 4 && nome(c.contratado) === nome(fornecedor.nome));
+        // Navegação direta só quando o fornecedor tem um único contrato;
+        // com histórico, o painel abre a lista para não esconder o encerrado.
+        if (encontrados.length === 1 && encontrados[0].fonte_url) {
+          return { indice, ficha: encontrados[0].fonte_url };
+        }
+      }
+      return null;
+    });
+    expect(alvo).not.toBeNull();
+    expect(alvo.ficha).toMatch(/^https:\/\/transparencia\.betha\.cloud\/#\//);
+    await page.route('https://transparencia.betha.cloud/**', route => route.fulfill({body:'Ficha oficial',contentType:'text/html'}));
+    await page.locator(`[data-forn-filtro="${alvo.indice}"]`).click();
+    await expect(page).toHaveURL(alvo.ficha);
   });
 
   test("Câmara — top fornecedor abre dossie consolidado", async ({ page }) => {
@@ -679,8 +699,8 @@ test.describe("Aba Diárias (regressão)", () => {
     const block = page.locator("#diariasPrefeituraBlock");
     await expect(block).toBeAttached();
     await expect(page.locator("#filtroMesDiariasPrefeitura")).toBeAttached();
-    await expect(page.locator("#rankingDiariasPrefeitura")).toContainText("Ranking acumulado anual");
-    await expect(page.locator("#rankingDiariasPrefeitura")).toContainText("Ranking mensal");
+    await expect(page.locator("#rankingDiariasPrefeitura")).toContainText("Maiores totais por pessoa");
+    await expect(page.locator("#rankingDiariasPrefeitura")).toContainText("Maiores valores em um mês");
     await expect(page.locator(".diarias-coverage-note")).toContainText("sem destino");
     await expect(page.locator("#listaDiariasPrefeitura .record-provenance").first()).toContainText("Proveniência");
   });
@@ -693,8 +713,8 @@ test.describe("Aba Diárias (regressão)", () => {
     const block = page.locator("#diariasCamaraBlock");
     await expect(block).toBeAttached();
     await expect(page.locator("#filtroMesDiariasCamara")).toBeAttached();
-    await expect(page.locator("#rankingDiariasCamara")).toContainText("Ranking acumulado anual");
-    await expect(page.locator("#rankingDiariasCamara")).toContainText("Ranking mensal");
+    await expect(page.locator("#rankingDiariasCamara")).toContainText("Maiores totais por pessoa");
+    await expect(page.locator("#rankingDiariasCamara")).toContainText("Maiores valores em um mês");
     await expect(page.locator(".diarias-coverage-note")).toContainText("sem finalidade");
     await expect(page.locator("#listaDiariasCamara .record-provenance").first()).toContainText("Proveniência");
   });
@@ -857,7 +877,8 @@ test.describe("Rodapé padronizado", () => {
         (as) => as.map((a) => a.getAttribute("href")),
       );
       expect(hrefs, `rodapé de ${p}.html fora do padrão`).toEqual(RODAPE);
-      await expect(page.locator(".footer__sources a")).toHaveCount(7);
+      // Contar a lista de fontes, sem incluir os atalhos de sugestões e catálogo.
+      await expect(page.locator(".footer__sources ul a")).toHaveCount(7);
       await expect(page.locator("#footerAtualizado")).not.toHaveText("—", { timeout: 15000 });
       await expect(page.locator("#footerAtualizado")).not.toHaveText("", { timeout: 15000 });
     });

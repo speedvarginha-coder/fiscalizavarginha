@@ -67,7 +67,19 @@ function Restore-FinancialBackupSet {
 
     $source = Join-Path $Backup $item.backup
     if (Test-Path -LiteralPath $source) {
-      Copy-Item -LiteralPath $source -Destination $target -Force
+      # Copiar por cima falha quando um leitor tem o JSON mapeado em memoria.
+      # Prepare um arquivo independente e troque o nome atomicamente.
+      $staged = $target + '.restore-' + [guid]::NewGuid().ToString('N') + '.tmp'
+      try {
+        Copy-Item -LiteralPath $source -Destination $staged -Force -ErrorAction Stop
+        if (Test-Path -LiteralPath $target) {
+          [IO.File]::Replace($staged, $target, [NullString]::Value)
+        } else {
+          Move-Item -LiteralPath $staged -Destination $target -ErrorAction Stop
+        }
+      } finally {
+        if (Test-Path -LiteralPath $staged) { Remove-Item -LiteralPath $staged -Force -ErrorAction SilentlyContinue }
+      }
       $restaurados += $item.relative
     }
   }

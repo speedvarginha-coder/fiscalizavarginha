@@ -5,6 +5,13 @@ import os from "node:os";
 import path from "node:path";
 import { missingPublicAssets } from "../scripts/lib/public-assets.mjs";
 
+test("fallback offline antigo não é servido por HTTP", () => {
+  const htaccess = fs.readFileSync(new URL("../painel-cidadao/.htaccess", import.meta.url), "utf8");
+  assert.match(htaccess, /^RewriteRule \^data\\\.js\$ - \[F,L\]$/m);
+  const loader = fs.readFileSync(new URL("../painel-cidadao/data-loader.js", import.meta.url), "utf8");
+  assert.ok(loader.includes('location.protocol === "file:"'));
+});
+
 test("servidor libera somente as referências documentais públicas revisadas", () => {
   const htaccess = fs.readFileSync(new URL("../painel-cidadao/.htaccess", import.meta.url), "utf8");
   const pattern = htaccess.match(/^RewriteRule (\^data\/\S+) - \[F,L\]$/m)?.[1];

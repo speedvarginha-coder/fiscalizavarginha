@@ -159,6 +159,25 @@ def http_401():
     return urllib.error.HTTPError("https://betha.invalid", 401, "Unauthorized", None, None)
 
 
+class DiariasTokenTests(unittest.TestCase):
+    def test_renova_token_uma_vez_depois_de_401(self):
+        from unittest.mock import Mock
+        fonte = Mock(CONSULTA_DIARIAS_DETALHADA=211668)
+        fonte.baixar_busca_textual.side_effect = [http_401(), [{'id': '123'}]]
+        fonte.get_token.return_value = 'renovado'
+        self.assertEqual(coletor._baixar_diarias_detalhadas_betha(fonte, 'anterior'), [{'id': '123'}])
+        fonte.get_token.assert_called_once_with(force=True)
+        self.assertEqual(fonte.baixar_busca_textual.call_args_list, [call('anterior', 211668), call('renovado', 211668)])
+
+    def test_outras_falhas_nao_viram_sucesso_nem_forcam_renovacao(self):
+        from unittest.mock import Mock
+        fonte = Mock(CONSULTA_DIARIAS_DETALHADA=211668)
+        fonte.baixar_busca_textual.side_effect = urllib.error.HTTPError('https://betha.invalid', 500, 'erro', None, None)
+        with self.assertRaises(urllib.error.HTTPError):
+            coletor._baixar_diarias_detalhadas_betha(fonte, 'anterior')
+        fonte.get_token.assert_not_called()
+
+
 def csv_zip_base64() -> str:
     output = io.BytesIO()
     with zipfile.ZipFile(output, "w") as archive:
@@ -740,6 +759,7 @@ class BethaEmptyContractsTests(unittest.TestCase):
         with patch.object(coletor_betha, "get_token", return_value="token"), \
                 patch.object(coletor_betha, "todos_credores_generico", return_value=[]), \
                 patch.object(coletor_betha, "baixar_dados_abertos", return_value={"main": []}), \
+                patch.object(coletor_betha, "baixar_busca_textual", return_value=[]), \
                 patch.object(coletor, "_load_last_nonempty_list", return_value=(previous, "backup.json")):
             result = coletor._processa_camara_betha()
 

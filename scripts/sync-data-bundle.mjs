@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
+import { generateCitizenData } from "./generate-citizen-data.mjs";
 import { prefeituraPainel, prefeituraFrota } from "./lib/dados-painel.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -101,6 +102,8 @@ function gerarResumoHome(prefeitura) {
     ...lerResumoDiarias(),
   };
 }
+
+generateCitizenData(chunksDir);
 
 // Um checkout novo não contém data.js (arquivo gerado e ignorado pelo Git).
 // Os chunks versionados bastam para reconstruir o fallback.

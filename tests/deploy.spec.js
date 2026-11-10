@@ -41,7 +41,8 @@ test("pacote publica o Radar da Transparencia com os numeros da base oficial", a
 
 test("pacote abre Conformidade, carrega a fonte e instala cache offline", async ({ page, request }) => {
   const failures = [];
-  page.on("response", response => { if (response.status() >= 400) failures.push(response.url()); });
+  // A telemetria é publicada separadamente e pode não existir no pacote isolado.
+  page.on("response", response => { if (response.status() >= 400 && !(response.status() === 404 && new URL(response.url()).pathname === '/operacao.json')) failures.push(response.url()); });
   page.on("pageerror", error => failures.push(error.message));
   await page.goto("/conformidade.html", { waitUntil: "domcontentloaded" });
   await expect(page.locator("body")).toHaveAttribute("data-fiscaliza-ready", "true", { timeout: 30000 });

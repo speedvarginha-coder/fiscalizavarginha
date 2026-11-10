@@ -75,7 +75,21 @@ try {
   Remove-Item -LiteralPath $localZip -Force
   Write-State -Status "ok" -Detail "$chunkCount chunks copiados e verificados." -File $fileName -Hash $localHash
   Write-Host "OK - backup externo verificado: $remoteZip"
+
 } catch {
   Write-State -Status "falha" -Detail $_.Exception.Message
   throw
+} finally {
+  # O código fica local até haver autorização para outro destino.
+  $sourceDestination = Join-Path $backupRoot "codigo-local"
+  New-Item -ItemType Directory -Force -Path $sourceDestination | Out-Null
+  try {
+    & python (Join-Path $root "scripts\backup-source-code.py") --destino $sourceDestination
+    if ($LASTEXITCODE -ne 0) { throw "Backup local de código retornou $LASTEXITCODE" }
+  } catch {
+    $warning = [ordered]@{schema=1;checked_at=(Get-Date).ToUniversalTime().ToString("o");status="falha";detail=$_.Exception.Message}
+    [System.IO.File]::WriteAllText((Join-Path $root "private\state\source_backup.json"), ($warning | ConvertTo-Json) + "`n", (New-Object System.Text.UTF8Encoding($false)))
+    Write-Warning "Backup de dados íntegro; backup local de código falhou: $_"
+  }
+
 }

@@ -22,6 +22,7 @@ import binascii
 import csv as csvmod
 import io
 import json
+import re
 import time
 import urllib.error
 import urllib.parse
@@ -45,7 +46,8 @@ CONSULTA_LICITACOES_FECHADAS  = 82965  # Finalizadas
 CONSULTA_COMPRAS_DIRETAS      = 83045
 CONSULTA_OBRAS_PUBLICAS       = 83026
 CONSULTA_VEICULOS_MUNICIPAIS  = 83061
-CONSULTA_DIARIAS              = 83059
+CONSULTA_DIARIAS              = 83059   # empenhos classificados como diárias (traz órgão)
+CONSULTA_DIARIAS_DETALHADA    = 211668  # diárias como documentos (destino, motivo, cargo)
 CONSULTA_INEXIGIBILIDADE      = 83022
 CONSULTA_DISPENSADA           = 83062
 CONSULTA_DIARIAS_CAMARA       = 324755
@@ -647,6 +649,52 @@ def filtro_max(token: str, consulta_id: int, campo: str,
     return buckets[0].get("id") if buckets else None
 
 
+def _identidade_linha(row: dict) -> str:
+    return json.dumps({k: v for k, v in row.items() if k != "fonte_url"},
+                      sort_keys=True, ensure_ascii=False)
+
+
+def _linha_busca_textual(hit: dict, consulta_id: int, portal_hash: str) -> dict:
+    row = dict(hit["sourceAsMap"])
+    # Identificador oficial da ficha; nunca inferir pelo número do contrato.
+    if consulta_id in (CONSULTA_CONTRATOS, 324812) and hit.get("id"):
+        row["fonte_url"] = (
+            f"https://transparencia.betha.cloud/#/{portal_hash}/consulta/{consulta_id}/detalhe/"
+            + urllib.parse.quote(str(hit["id"]), safe=":_")
+        )
+    return row
+
+
+def _busca_textual_uma_requisicao(token: str, consulta_id: int, body: Optional[dict],
+                                  sort_by: str, portal_hash: str) -> Optional[list[dict]]:
+    """Traz o conjunto inteiro numa requisicao so (limit = totalHits). A paginacao
+    por offset da Betha nao e estavel: repete e pula registros entre paginas.
+    Devolve None quando nao comprova completude, para o chamador paginar."""
+    params = {"sortBy": sort_by, "sortDirection": "ASC", "offset": 0, "hiperlink": "false"}
+    try:
+        probe = _api("POST", f"/busca-textual/{consulta_id}", token, body=body or {},
+                     params={**params, "limit": 1}, portal_hash=portal_hash)
+        total = probe.get("totalHits")
+        if not isinstance(total, int) or total < 0:
+            return None
+        if total == 0:
+            return []
+        res = _api("POST", f"/busca-textual/{consulta_id}", token, body=body or {},
+                   params={**params, "limit": total}, portal_hash=portal_hash)
+    except Exception as e:
+        print(f"  AVISO: busca textual em requisicao unica falhou ({e}); paginando.")
+        return None
+    hits = res.get("hits", [])
+    ids = [h.get("id") for h in hits]
+    out = [_linha_busca_textual(h, consulta_id, portal_hash) for h in hits]
+    identidades = {_identidade_linha(r) for r in out}
+    if len(hits) != total or None in ids or len(set(ids)) != total or len(identidades) != total:
+        print(f"  AVISO: requisicao unica trouxe {len(hits)}/{total} registros "
+              f"({len(set(ids))} ids unicos, {len(identidades)} conteudos unicos); paginando.")
+        return None
+    return out
+
+
 def baixar_busca_textual(token: str, consulta_id: int,
                          body: Optional[dict] = None,
                          sort_by: str = "id",
@@ -656,6 +704,10 @@ def baixar_busca_textual(token: str, consulta_id: int,
     opcional no body (formato Betha: {"campo": ["valor", ...]})."""
     if batch <= 0:
         raise ValueError("batch deve ser positivo")
+    completo = _busca_textual_uma_requisicao(token, consulta_id, body, sort_by, portal_hash)
+    if completo is not None:
+        print(f"  -> Total de registros: {len(completo):,} (requisicao unica, ids conferidos)")
+        return completo
     out: list[dict] = []
     offset = 0
     total: Optional[int] = None
@@ -684,13 +736,13 @@ def baixar_busca_textual(token: str, consulta_id: int,
         hits = res.get("hits", [])
         if not hits:
             break
-        out.extend(h["sourceAsMap"] for h in hits)
+        out.extend(_linha_busca_textual(hit, consulta_id, portal_hash) for hit in hits)
         offset += batch
         if offset >= total:
             break
     if len(out) != total:
         raise BethaExportError(f"Paginação incompleta: {len(out)}/{total}")
-    identidades = [json.dumps(r, sort_keys=True, ensure_ascii=False) for r in out]
+    identidades = [_identidade_linha(r) for r in out]
     if len(set(identidades)) != len(out):
         raise BethaExportError("Paginação repetiu registros; completude não comprovada")
     return out
@@ -829,6 +881,7 @@ def cruzar_emendas(emendas: list[dict], credores: list[dict]) -> list[dict]:
             idx[raiz].append(c)
 
     out = []
+    anos_disponiveis = {str(m.get("ano")) for m in credores}
     for e in emendas:
         raiz = _cnpj_raiz(e.get("cnpj") or "")
         if not raiz:
@@ -869,9 +922,20 @@ def cruzar_emendas(emendas: list[dict], credores: list[dict]) -> list[dict]:
             continue
 
         matches = idx.get(raiz, [])
-        # Considera pagamentos do ano da emenda em diante
-        ano_e = int(e.get("ano") or 0)
-        relevantes = [m for m in matches if int(m.get("ano") or 0) >= ano_e]
+        # Ano de proposição não é exercício de execução. Não inferir um
+        # orçamento pelo número/ano da emenda nem incluir anos posteriores.
+        exercicio = str(e.get("exercicioOrcamentario") or "")
+        if not re.fullmatch(r"20\d{2}", exercicio) or exercicio not in anos_disponiveis:
+            out.append({**e, "status": "sem_periodo", "pagamentos": [],
+                        "valor_pago_total": None,
+                        "cruzamento": {
+                            "estado": "indisponivel", "metodo": "exercicio_documental_indisponivel",
+                            "confianca": "indisponivel", "evidencias": [],
+                            "exercicioOrcamentario": exercicio or None,
+                            "limitacoes": ["Exercício não confirmado documentalmente ou não coberto pela base de credores. Não é ausência de pagamento."],
+                        }})
+            continue
+        relevantes = [m for m in matches if str(m.get("ano")) == exercicio]
         total = sum((m.get("valorPagamentoAno") or 0) for m in relevantes)
 
         # amostra: até 5 registros (ano + entidade + valor)
@@ -890,11 +954,13 @@ def cruzar_emendas(emendas: list[dict], credores: list[dict]) -> list[dict]:
             "status": "encontrado" if total > 0 else "sem_pagamento",
             "cruzamento": {
                 "estado": "correspondencia_localizada" if total > 0 else "nao_localizado",
-                "metodo": "raiz_cnpj_e_periodo",
+                "metodo": "raiz_cnpj_e_exercicio_documental",
+                "exercicioOrcamentario": exercicio,
+                "vinculo_emenda_confirmado": False,
                 "confianca": "media" if total > 0 else "baixa",
                 "evidencias": [
                     f"CNPJ raiz {raiz}",
-                    f"{len(relevantes)} registro(s) de pagamento do ano da emenda em diante",
+                    f"{len(relevantes)} registro(s) de pagamento ao beneficiário no exercício {exercicio}",
                 ],
                 "limitacoes": [
                     "Mesmo CNPJ e periodo nao comprovam que o pagamento veio desta emenda.",

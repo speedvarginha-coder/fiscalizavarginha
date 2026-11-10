@@ -18,6 +18,7 @@
 <meta name="twitter:title"      content="Como cobrar · Fiscaliza Varginha">
 <meta name="twitter:description" content="Canais oficiais para pedir documentos e cobrar respostas da Prefeitura e da Câmara em Varginha-MG.">
 <link rel="stylesheet" href="style.css?v=20260730-relatorios2">
+<link rel="stylesheet" href="cidadao.css?v=20261020">
 </head>
 <body data-page="cobrar">
 <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -78,6 +79,8 @@
       </div>
     </section>
 
+    <section id="acompanhamento" class="report-note" data-acompanhamento-cidada aria-label="Acompanhamento das minhas cobranças"></section>
+
     <div id="dataHealthStrip" class="data-health-strip" hidden></div>
 
     <section class="cobrar-quick" aria-labelledby="caminhoCidadao">
@@ -131,7 +134,7 @@
         <li><strong>Presencial:</strong> Praça Santa Cruz, nº 22, Centro, de segunda a sexta, das 7h30 às 11h e das 14h30 às 17h</li>
         <li><strong>Pela internet:</strong> <a href="https://www.varginha.mg.gov.br/portal/ouvidoria" target="_blank" rel="noopener">página da Ouvidoria no site da Prefeitura</a></li>
       </ul>
-      <p class="muted small">Prazo de resposta informado pela Prefeitura: 30 dias. Para saúde há uma <a href="https://www.varginha.mg.gov.br/portal/servicos/1067/saude---ouvidoria/" target="_blank" rel="noopener">ouvidoria própria</a>. Canais conferidos no site da Prefeitura em 02/10/2026; confirme lá antes de usar.</p>
+      <p class="muted small">Prazo de resposta informado pela Prefeitura: 30 dias. Para saúde há uma <a href="https://www.varginha.mg.gov.br/portal/servicos/1067/saude---ouvidoria/" target="_blank" rel="noopener" style="text-decoration: underline;">ouvidoria própria</a>. Canais conferidos no site da Prefeitura em 02/10/2026; confirme lá antes de usar.</p>
     </section>
 
     <!-- Seção 1 -->
@@ -183,7 +186,7 @@
         <div>
           <span class="bigheader__kicker">2</span>
           <h3 class="cobrar-block__title">Como protocolar um pedido LAI</h3>
-          <p>Sem advogado, sem taxa, sem obrigação de dar justificativa. Apenas o seu CPF e o pedido por escrito.</p>
+          <p>Sem advogado, sem taxa, sem obrigação de dar justificativa. Identifique-se conforme o canal oficial e descreva a informação desejada.</p>
         </div>
       </div>
       <div style="background: var(--white); padding: 30px; border-radius: 12px; border: 1px solid var(--line);">
@@ -194,7 +197,7 @@
           <span style="display: inline-block; background: var(--soft-blue); padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-top: 4px;">💡 Use os modelos prontos na seção 5 desta página</span></li>
           <li style="margin-bottom: 12px;"><strong>Protocole e guarde o comprovante:</strong> Prefira protocolo presencial com cópia carimbada, ou e-mail com confirmação de recebimento. Isso inicia a contagem dos 20 dias legais.</li>
           <li style="margin-bottom: 12px;"><strong>Aguarde até 20 dias corridos:</strong> Prorrogável por mais 10 com justificativa. Sem resposta após esse prazo, o cidadão pode recorrer e pedir providência ao órgão de controle.</li>
-          <li style="margin-bottom: 12px;"><strong>Se a resposta for negada ou incompleta, recorra:</strong> Recurso à autoridade superior do mesmo órgão em até 10 dias. Se ainda insuficiente, denúncia ao MP-MG ou à CGU.<br>
+          <li style="margin-bottom: 12px;"><strong>Se a resposta for negada ou incompleta, recorra:</strong> Apresente recurso à autoridade hierarquicamente superior em até 10 dias da ciência da decisão (art. 15 da LAI). Para as etapas seguintes, consulte o procedimento do e-SIC do órgão municipal e peça indicação da autoridade competente. Denúncia a órgão de controle é outro procedimento e exige fatos e documentos; não substitui o recurso LAI. A CGU não julga recursos contra negativas municipais.<br>
           <span style="display: inline-block; background: #fff0f0; color: #c62828; padding: 4px 8px; border-radius: 4px; font-size: 0.85em; margin-top: 4px;">⚠️ Guarde todos os protocolos e respostas recebidas</span></li>
           <li><strong>Analise os dados e publique com responsabilidade:</strong> Transforme em gráficos, rankings e comparações. Dados brutos não comunicam — interpretação com linguagem certa é o que gera impacto.</li>
         </ol>
@@ -254,6 +257,14 @@
         </div>
       </div>
 
+      <fieldset class="citizen-form" id="laiPeriodo">
+        <legend>Período dos modelos gerais</legend>
+        <label>Data inicial<input type="date" id="laiPeriodoInicio" required></label>
+        <label>Data final<input type="date" id="laiPeriodoFim" required></label>
+        <p id="laiPeriodoStatus" role="status">Escolha o período antes de copiar. Pedidos sobre uma emenda ou contrato específico mantêm seu próprio contexto.</p>
+      </fieldset>
+      <p class="muted small">Revise os campos entre colchetes antes de protocolar. Solicite registros administrativos com dados pessoais sensíveis ocultados. Referências: <a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm" target="_blank" rel="noopener" style="text-decoration: underline;">LAI, arts. 7º, 15 e 31</a>; <a href="https://www.gov.br/acessoainformacao/pt-br/assuntos/recursos/cgu-recursos/" target="_blank" rel="noopener" style="text-decoration: underline;">competência recursal da CGU</a>.</p>
+
       <p style="margin: 0 0 8px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted);">Filtrar por nível de prioridade</p>
       <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
         <button type="button" class="lai-filter-nivel active" data-nivel="all" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--navy); background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; letter-spacing: 0.02em;">Todos os níveis</button>
@@ -287,9 +298,9 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
 1. FREQUÊNCIA EM SESSÕES
-   a) Planilha contendo a lista nominal de todos os vereadores, indicando por sessão ordinária e extraordinária (período de 2023 a 2025): data da sessão, presença (confirmada via painel eletrônico/assinatura), ausência e tipo de justificativa apresentada.
+   a) Planilha contendo a lista nominal de todos os vereadores, indicando por sessão ordinária e extraordinária (período de [PERÍODO]): data da sessão, presença (confirmada via painel eletrônico/assinatura), ausência e tipo de justificativa apresentada.
    b) Cópia digital integral das folhas de presença (livro físico de ponto) e dos logs do sistema de votação eletrônica (biometria/painel).
-   c) Cópias dos atestados médicos ou documentos oficiais que fundamentaram o abono de faltas de cada parlamentar.
+   c) Registros administrativos dos afastamentos e decisões de abono de faltas: período, autoridade responsável e fundamento legal, com ocultação de diagnósticos, CID e demais informações de saúde ou de intimidade. Não solicito atestados médicos nem prontuários.
 
 2. IMPACTO FINANCEIRO E DESCONTOS
    a) Relação detalhada de descontos efetuados no subsídio de cada vereador em virtude de ausências não justificadas às sessões plenárias, informando mês a mês, valor descontado e nome do parlamentar. Caso não tenha havido descontos, requer-se certidão declarando o fato e a fundamentação legal para o não desconto.
@@ -315,13 +326,13 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. DISPENSAS E INEXIGIBILIDADES (2023–2025)
+1. DISPENSAS E INEXIGIBILIDADES ([PERÍODO])
    a) Relação em formato de planilha contendo todas as contratações diretas realizadas com base nos arts. 74 e 75 da Lei nº 14.133/2021 (ou correlatos da Lei 8.666/93), indicando: número do processo administrativo, razão social e CNPJ/CPF do contratado, objeto, valor total contratado, valor total pago, secretaria demandante e nome do ordenador da despesa.
    b) Cópias das pesquisas de preços de mercado que balizaram os valores das contratações diretas superiores a R$ 20.000,00 (mínimo de 3 orçamentos idôneos por processo, com respectivas datas e CNPJs cotantes).
    c) Cópia do parecer da Assessoria Jurídica e da justificativa técnica da secretaria que aprovaram a contratação direta.
 
 2. CRUZAMENTO E FRACIONAMENTO DE COMPRAS
-   a) Relação de notas fiscais emitidas e liquidadas para fornecedores cujos pagamentos acumulados no mesmo exercício fiscal, para serviços/bens da mesma natureza, ultrapassaram os limites legais de dispensa licitatória (R$ 50.000,00 e R$ 100.000,00).
+   a) Relação de notas fiscais emitidas e liquidadas para fornecedores cujos pagamentos acumulados no mesmo exercício fiscal, para serviços/bens da mesma natureza, superaram os limites de dispensa por valor aplicáveis a cada exercício e regime legal. Informar o fundamento, o limite vigente e o critério de agregação utilizado, sem presumir irregularidade apenas pelo total pago.
 
 DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/2011):
 1. Os dados devem ser entregues em formato digital aberto, estruturado e editável (como arquivos .CSV, .XLS ou planilhas abertas), sendo vedado o fornecimento em PDF de imagem digitalizada ou outros formatos que impeçam a extração e tratamento dos dados.
@@ -344,7 +355,7 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. ADITIVOS DE VALOR E PRAZO (2022–2025)
+1. ADITIVOS DE VALOR E PRAZO ([PERÍODO])
    a) Relação de todos os termos aditivos contratuais firmados, indicando: número do contrato de origem, objeto contratual, CNPJ da contratada, valor inicial, valor de cada aditivo de acréscimo ou supressão (em reais e em %), justificativa técnica apresentada pelo fiscal da obra/serviço e parecer da assessoria jurídica.
    b) Cotações e planilhas de composição de custos unitários de insumos e serviços acrescidos via aditivo (para checagem do jogo de planilhas).
    c) Relação de contratos de prestação de serviços continuados que sofreram aditivos de prazo que excederam o limite geral de 60 meses.
@@ -374,7 +385,7 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
 1. EXECUÇÃO TÉCNICA E FISCALIZAÇÃO DE OBRAS
-   a) Cópias das Anotações de Responsabilidade Técnica (ART) do projeto e da execução de todas as obras iniciadas de 2023 a 2025.
+   a) Cópias das Anotações de Responsabilidade Técnica (ART) do projeto e da execução de todas as obras iniciadas de [PERÍODO].
    b) Diários de Obra completos (com preenchimento diário das condições climáticas, efetivo de pessoal e maquinário utilizado) de contratos de pavimentação e construções civis.
    c) Registro fotográfico completo, datado e georreferenciado anexado a cada boletim de medição que embasou as medições liquidadas e pagas.
 
@@ -389,7 +400,7 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
-          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #a83b00;">
             <strong>O que este pedido ajuda a conferir:</strong> Se a obra foi executada no local informado, se a medição bate com fotos, diário de obra, metragem, notas fiscais e referência de preço.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
@@ -418,7 +429,7 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
-          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #a83b00;">
             <strong>O que este pedido ajuda a conferir:</strong> Compatibilidade entre litros, odômetro, rota, diário de bordo, manutenção, notas fiscais e contrato de locação ou aquisição do veículo.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
@@ -432,7 +443,7 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. EVENTOS E SHOWS (2023–2025)
+1. EVENTOS E SHOWS ([PERÍODO])
    a) Lista de todos os eventos realizados com recurso público: nome, data, local, valor total
    b) Para cada evento: empresa contratada (CNPJ), data de abertura do CNPJ, modalidade de contratação (licitação, dispensa, inexigibilidade), número do processo
    c) Nota fiscal da produtora com discriminação de serviços
@@ -496,7 +507,7 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. DIÁRIAS (2023–2025)
+1. DIÁRIAS ([PERÍODO])
    a) Para cada diária paga: nome do beneficiário, destino, data de saída e retorno, valor diário, valor total, finalidade declarada
    b) Comprovante de participação no evento ou reunião que justificou a viagem
    c) Prestação de contas com documento comprobatório (passagem, hospedagem, relatório)
@@ -531,7 +542,7 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. GASTOS COM PUBLICIDADE (2023–2025)
+1. GASTOS COM PUBLICIDADE ([PERÍODO])
    a) Valor total gasto com publicidade institucional por ano
    b) Relação de todos os veículos de comunicação contratados: nome, CNPJ, valor pago, período, tipo de mídia (TV, rádio, jornal, internet, outdoor)
    c) Critérios técnicos utilizados para distribuição da verba entre os veículos
@@ -565,7 +576,7 @@ REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.52
 
 Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos:
 
-1. IMÓVEIS LOCADOS PELA ADMINISTRAÇÃO (2023–2025)
+1. IMÓVEIS LOCADOS PELA ADMINISTRAÇÃO ([PERÍODO])
    a) Relação de todos os imóveis alugados: endereço, proprietário (nome e CPF/CNPJ), valor mensal, finalidade do uso público, prazo do contrato
    b) Laudo de avaliação ou justificativa do preço de cada locação
    c) Pesquisa de mercado que fundamentou o valor
@@ -597,7 +608,7 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2023, 2024 e 2025:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a [PERÍODO]:
 
 1. CONTRATOS MÉDICOS, ORGANIZAÇÕES SOCIAIS (OS) E TERCEIRIZAÇÕES
    a) Relação de todos os contratos, convênios e contratos de gestão vigentes com empresas médicas, cooperativas, clínicas, laboratórios, hospitais privados e Organizações Sociais (OS/OSCIP), com: CNPJ, objeto, valor mensal, vigência, modalidade de contratação (pregão, dispensa, inexigibilidade ou chamamento) e número do processo
@@ -635,7 +646,7 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2023, 2024 e 2025:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a [PERÍODO]:
 
 1. MERENDA ESCOLAR (PNAE)
    a) Contratos e notas fiscais de compra de gêneros alimentícios, por fornecedor (CNPJ), item, quantidade e preço unitário, confrontados com os preços de referência da chamada pública
@@ -662,7 +673,7 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
-          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #a83b00;">
             <strong>Documentos que podem esclarecer:</strong> Rotas executadas, quilometragem, lista de escolas atendidas, notas fiscais, comprovantes de entrega da merenda, uniformes e kits.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
@@ -674,7 +685,7 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2021 a 2025:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a [PERÍODO]:
 
 1. RECEBIMENTO E DESTINAÇÃO
    a) Relação de todas as emendas parlamentares (federais e estaduais) e transferências especiais/voluntárias recebidas, com: parlamentar autor, nº da proposta/transferência (Transferegov/SICONV ou SIGCON-MG), valor, data do repasse, fonte e objeto/finalidade legal
@@ -699,7 +710,7 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
-          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #a83b00;">
             <strong>Documentos que podem esclarecer:</strong> Plano de trabalho, empenho, pagamento, execução física, saldo em conta e compatibilidade entre objeto aprovado e entrega realizada.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
@@ -742,7 +753,7 @@ Fundamento legal: art. 7º, II, VI e VII, Lei 12.527/2011; art. 6º, Decreto 7.7
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a 2021 a 2025:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a [PERÍODO]:
 
 1. PARCERIAS COM O TERCEIRO SETOR (Lei 13.019/2014)
    a) Relação de todos os termos de colaboração, termos de fomento e acordos de cooperação com OSCs/ONGs/associações, com: entidade, CNPJ, objeto, valor total, vigência e secretaria responsável
@@ -767,7 +778,7 @@ DIRETRIZES DE ENTREGA E FORMATAÇÃO (Art. 8º, §3º, III da Lei nº 12.527/201
 4. Prazo legal para resposta de 20 (vinte) dias (Art. 11, §1º da LAI), sob pena de responsabilidade.
 
 Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
-          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #e65100;">
+          <div style="background: #fff3e0; padding: 12px; margin-bottom: 12px; border-radius: 8px; font-size: 0.9rem; color: #a83b00;">
             <strong>Documentos que podem esclarecer:</strong> Plano de trabalho, metas, diretoria da entidade, prestações de contas, parecer técnico e comprovação das entregas ao público atendido.
           </div>
           <button type="button" class="copy-template">Copiar modelo</button>
@@ -779,7 +790,7 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, na posição atual e a evolução desde 2023:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, na posição final e a evolução no período [PERÍODO]:
 
 1. CONTRATAÇÕES TEMPORÁRIAS (art. 37, IX, CF)
    a) Relação de servidores temporários por secretaria e função, com data de admissão, prazo do contrato e nº de prorrogações
@@ -814,7 +825,7 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a jan/2023 até a presente data:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes a [PERÍODO]:
 
 1. BENEFÍCIOS EVENTUAIS (critérios e volume)
    a) Quantitativo mensal de cestas básicas, cobertores, auxílio-natalidade, auxílio-funeral e demais benefícios eventuais concedidos (apenas números e critérios, sem dados pessoais)
@@ -848,7 +859,7 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
 
 REQUERIMENTO DE ACESSO À INFORMAÇÃO – Fundamentado na Lei Federal nº 12.527/2011 e no art. 37, caput da Constituição Federal
 
-Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes aos contratos vigentes e a 2023–2025:
+Eu, [NOME COMPLETO], CPF [CPF], residente em Varginha/MG, com base nos princípios constitucionais da transparência e da publicidade, solicito o envio das seguintes informações/documentos públicos, referentes aos contratos vigentes e a [PERÍODO]:
 
 1. SOFTWARES E LICENCIAMENTO
    a) Relação de todos os sistemas e softwares em uso (contábil, folha, saúde, educação, protocolo etc.), com: fornecedor (CNPJ), módulos, secretarias usuárias, valor mensal/anual, vigência e nº do processo
@@ -1116,6 +1127,8 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -1140,6 +1153,30 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
 </footer>
 <script>
 (function () {
+  var inicio = document.getElementById("laiPeriodoInicio");
+  var fim = document.getElementById("laiPeriodoFim");
+  var statusPeriodo = document.getElementById("laiPeriodoStatus");
+  var hoje = new Date();
+  var dataLocal = function (d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+  inicio.value = (hoje.getFullYear() - 3) + "-01-01";
+  fim.value = dataLocal(hoje);
+  var modelos = Array.from(document.querySelectorAll(".template-card textarea")).filter(function (ta) { return ta.value.includes("[PERÍODO]"); });
+  modelos.forEach(function (ta) { ta.dataset.modeloPeriodo = ta.value; });
+  function aplicarPeriodo() {
+    var valido = inicio.validity.valid && fim.validity.valid && inicio.value <= fim.value;
+    inicio.setAttribute("aria-invalid", String(!valido));
+    fim.setAttribute("aria-invalid", String(!valido));
+    var formatar = function (s) { return s.split("-").reverse().join("/"); };
+    modelos.forEach(function (ta) {
+      ta.closest(".template-card").querySelectorAll(".copy-template").forEach(function (b) { b.disabled = !valido; });
+      if (valido) ta.value = ta.dataset.modeloPeriodo.replaceAll("[PERÍODO]", formatar(inicio.value) + " a " + formatar(fim.value));
+    });
+    statusPeriodo.textContent = valido ? "Período aplicado aos modelos gerais. Pedidos específicos mantêm o exercício ou contrato indicado." : "Informe as duas datas; a data inicial deve ser anterior ou igual à final. A cópia dos modelos gerais está desativada.";
+  }
+  inicio.addEventListener("input", aplicarPeriodo);
+  fim.addEventListener("input", aplicarPeriodo);
+  aplicarPeriodo();
+
   function copyText(text, button) {
     var done = function () {
       var old = button.textContent;
@@ -1227,5 +1264,6 @@ Data: [DATA] | Nome: [NOME] | CPF: [CPF] | E-mail: [E-MAIL]</textarea>
 })();
 </script>
 <script src="data-loader.js?v=20260730-relatorios2"></script>
+  <script src="modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>

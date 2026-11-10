@@ -6,7 +6,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { execFileSync } from "node:child_process";
 import { prefeituraPainel } from "../scripts/lib/dados-painel.mjs";
-import { collectionAgeHours, internalTimestamp, lastCompleteTimestamp } from "../scripts/lib/source-freshness.mjs";
+import { collectionAgeHours, internalTimestamp, lastCompleteTimestamp, procurementResultTimestamps } from "../scripts/lib/source-freshness.mjs";
 
 test("vigia usa a coleta comprovada e rejeita data ausente, inválida ou futura", () => {
   const now = new Date("2026-09-30T12:00:00Z");
@@ -101,10 +101,13 @@ test("checkout novo reconstrói fallback e incorpora atualizações de chunks", 
   try {
     fs.mkdirSync(path.join(root, "scripts/lib"), { recursive: true });
     fs.mkdirSync(path.join(root, "painel-cidadao/data/chunks"), { recursive: true });
-    for (const file of ["sync-data-bundle.mjs", "lib/dados-painel.mjs"]) {
+    for (const file of ["sync-data-bundle.mjs", "generate-citizen-data.mjs", "lib/dados-painel.mjs"]) {
       fs.copyFileSync(new URL(`../scripts/${file}`, import.meta.url), path.join(root, "scripts", file));
     }
     const chunk = path.join(root, "painel-cidadao/data/chunks/pncp.json");
+    for (const name of ['status_fontes','prefeitura','camara_betha','fundacao_cultural','diarias','emendas']) {
+      fs.writeFileSync(path.join(root, `painel-cidadao/data/chunks/${name}.json`), name === 'emendas' ? '[]' : '{}');
+    }
     const script = path.join(root, "scripts/sync-data-bundle.mjs");
     for (const value of [10, 25]) {
       fs.writeFileSync(chunk, JSON.stringify({ contratos: [{ valor: value }] }));
@@ -114,4 +117,13 @@ test("checkout novo reconstrói fallback e incorpora atualizações de chunks", 
       assert.equal(bundle.pncp.contratos[0].valor, value);
     }
   } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('resultados parciais do PNCP distinguem tentativa e última base completa', () => {
+ const old='2026-08-15T00:00:00Z', attempt='2026-10-26T00:00:00Z';
+ let result=procurementResultTimestamps({status:'partial',gerado_em:attempt,ultima_coleta_completa_em:old});
+ assert.equal(result.checkedAt.toISOString(),'2026-10-26T00:00:00.000Z');assert.equal(result.updatedAt.toISOString(),'2026-08-15T00:00:00.000Z');
+ result=procurementResultTimestamps({status:'partial',gerado_em:attempt});assert.equal(result.updatedAt,undefined);
+ result=procurementResultTimestamps({status:'preserved',gerado_em:old,ultima_tentativa_em:attempt});assert.equal(result.checkedAt.toISOString(),'2026-10-26T00:00:00.000Z');assert.equal(result.updatedAt,undefined);
+ result=procurementResultTimestamps({status:'ok',gerado_em:attempt});assert.equal(result.updatedAt.toISOString(),'2026-10-26T00:00:00.000Z');
 });

@@ -8,12 +8,39 @@ Estes testes fixam a regra por exercicio.
 """
 import sys
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "painel-cidadao"))
 
 import coletor  # noqa: E402
+import coletor_betha  # noqa: E402
+
+
+class DiariasDetalhadasTests(unittest.TestCase):
+    def test_preserva_fracao_e_periodo_com_barras(self):
+        rows, _ = coletor._diarias_detalhadas_prefeitura([{
+            "ano": 2026, "credor": "Pessoa", "quantidade": 0.5,
+            "valorTotal": 100, "periodoDiarias": "01/02/2026 a 02/02/2026",
+        }], [], [2026])
+        self.assertEqual(rows[0]["quantidade"], 0.5)
+        self.assertEqual(rows[0]["valor_unitario"], 200)
+        self.assertEqual(rows[0]["data_inicial"], "2026-02-01")
+        self.assertEqual(rows[0]["data_final"], "2026-02-02")
+
+    def test_detalhe_previsto_nao_substitui_empenhos(self):
+        empenho = {"ano": "2026", "funcionario": "Pessoa", "valor_total": 50, "quantidade": 1}
+        detalhes = [{"ano": 2026, "credor": "Pessoa", "valorTotal": 100, "quantidade": 1}]
+        with patch.object(coletor_betha, "get_token", return_value="token"), \
+             patch.object(coletor_betha, "baixar_dados_abertos", return_value={"main": [{}]}), \
+             patch.object(coletor, "_normaliza_diarias_prefeitura", return_value=[empenho]), \
+             patch.object(coletor, "_normaliza_diarias_camara", return_value=[empenho]), \
+             patch.object(coletor, "_baixar_diarias_detalhadas_betha", return_value=detalhes):
+            resultado = coletor._processa_diarias_betha()
+        self.assertTrue(all(r["valor_total"] == 50 for r in resultado["prefeitura"]))
+        self.assertEqual(resultado["coleta_status"]["prefeitura_detalhe"]["status"], "partial")
+        self.assertTrue(resultado["fontes"]["prefeitura"].endswith("/83059"))
 
 
 def registros(ano, n, prefixo="r"):

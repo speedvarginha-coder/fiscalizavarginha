@@ -380,11 +380,11 @@
     $("homeOpsStats").innerHTML = [
       { href: "prefeitura.html", value: pf_data.total_externo_atual == null ? "Não informado" : fmtMi(pf_data.total_externo_atual), label: `pagos em ${pf_data.ano_atual || "ano atual"}`, title: "Prefeitura", cidada: "Quais contratos concentram esse valor?" },
       { href: "prefeitura.html?tab=contratos", value: fmtNum(contratos.length), label: `${fmtNum(contratosMilhao)} acima de R$ 1 mi`, title: "Contratos", cidada: "Quem recebeu mais? Por qual serviço?" },
-      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasQtd), label: `${fmtBRL(totalDiarias)} em diárias (${anosDiarias})`, title: "Diárias", cidada: "Quem mais viajou, para onde e por quê?" },
+      { href: "prefeitura.html?tab=diarias", value: fmtNum(diariasQtd), label: `${fmtBRL(totalDiarias)} em diárias (${anosDiarias})`, title: "Diárias", cidada: "Confira registros e documentos de viagem" },
       // A produção de cada vereador saiu do painel junto com o Avalie; o cartão
       // não pode prometer "o que cada vereador propôs e votou".
       { href: "camara.html", value: fmtMi(camBetha.total_externo_atual || 0), label: `pagos a fornecedores em ${camBetha.ano_atual || "ano atual"}`, title: "Câmara", cidada: "Quanto a Câmara gasta e com quem?" },
-      { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} sem pagamento ou sem CNPJ`, title: "Emendas", cidada: "O dinheiro chegou ao beneficiário?" },
+      { href: "camara.html", value: fmtNum(resumoCam.emendas_qtd || 0), label: `${fmtNum(emendasPendentes)} sem correspondência de pagamento ou sem CNPJ`, title: "Emendas", cidada: "Confira o beneficiário e a fonte" },
       { href: "prefeitura.html?tab=licitacoes", value: fmtNum(licitacoes.length), label: "acompanhar antes do gasto", title: "Licitações", cidada: "Qual empresa vai ganhar este contrato?" },
     ].map(item => `
       <a href="${item.href}" class="home-stat">
@@ -1143,9 +1143,10 @@
     atualizarFiltroVereadores();
 
     const badge = (status) =>
-        status === "encontrado" ? confidenceBadge("forte")
+        status === "encontrado" ? confidenceBadge("pista")
       : status === "execucao_direta" ? '<span class="em__status em__status--direct" style="background:#e0f2f1; color:#00695c; border:1px solid #b2dfdb; padding:2px 6px; border-radius:4px; font-size:0.75rem; font-weight:500;">Execução direta</span>'
       : status === "sem_pagamento" ? '<span class="em__status em__status--no">Sem pagamento localizado no cruzamento automático</span>'
+      : status === "sem_periodo" ? '<span class="em__status em__status--unknown">Exercício ou consulta indisponível</span>'
       : status === "sem_cnpj" ? '<span class="em__status em__status--unknown">Sem CNPJ para cruzar</span>'
       : confidenceBadge("neutro");
 
@@ -1197,14 +1198,17 @@
       return [...map.values()].sort((a, b) => (b.valor - a.valor) || (b.qtd - a.qtd));
     };
 
+    const somarBeneficiarios = (lista, mapa, anoPagamento = "") => {
+      const valores = new Map();
+      lista.forEach(e => {const c=mapa[e.numero + "/" + e.ano];if(c?.status!=="encontrado" || (anoPagamento && String(c.exercicioOrcamentario)!==String(anoPagamento)))return;const key=`${cnpjRoot(e.cnpj)}|${c.exercicioOrcamentario || ""}`;valores.set(key,Math.max(valores.get(key)||0,Number(c.valor_pago_total)||0));});
+      return [...valores.values()].reduce((a,b)=>a+b,0);
+    };
     const pct = (n, d) => d ? Math.round((n / d) * 100) : 0;
     const entidadeKey = (e) => cnpjRoot(e.cnpj) || norm(e.beneficiario || "sem beneficiario");
     const valorPagoCruzamento = (cruz, anoPagamento) => {
       if (!cruz) return 0;
-      if (!anoPagamento) return cruz.valor_pago_total || 0;
-      return (cruz.pagamentos || [])
-        .filter(p => String(p.ano) === String(anoPagamento))
-        .reduce((s, p) => s + (p.valor || 0), 0);
+      if (!anoPagamento || String(cruz.exercicioOrcamentario) === String(anoPagamento)) return cruz.valor_pago_total || 0;
+      return 0;
     };
 
     const emendasPorAnoSelecionado = () => {
@@ -1275,7 +1279,7 @@
       const total = lista.reduce((s, e) => s + (e.valor_brl || 0), 0);
       const pagos = lista.filter(e => (cruzMap[e.numero + "/" + e.ano] || {}).status === "encontrado").length;
       const semPagamento = lista.filter(e => (cruzMap[e.numero + "/" + e.ano] || {}).status === "sem_pagamento").length;
-      const valorPagoLocalizado = lista.reduce((s, e) => s + ((cruzMap[e.numero + "/" + e.ano] || {}).valor_pago_total || 0), 0);
+      const valorPagoLocalizado = somarBeneficiarios(lista, cruzMap);
       const temas = agrupar(lista, temaEmenda, e => e.valor_brl || 0).slice(0, 6);
       const beneficiarios = agrupar(lista, e => e.beneficiario || "Beneficiario não identificado", e => e.valor_brl || 0).slice(0, 8);
       const contratosRel = contratosRelacionadosVereador(lista);
@@ -1417,9 +1421,9 @@
       const pagamentos = grupo.itens.filter(e => valorPagoCruzamento(cruzMap[e.numero + "/" + e.ano] || {}, anoPagamento) > 0);
       const semPagamento = grupo.itens.filter(e => {
         const cruz = cruzMap[e.numero + "/" + e.ano] || {};
-        return anoPagamento ? valorPagoCruzamento(cruz, anoPagamento) <= 0 : cruz.status === "sem_pagamento";
+        return cruz.status !== "sem_periodo" && (!anoPagamento || String(cruz.exercicioOrcamentario) === String(anoPagamento)) && (anoPagamento ? valorPagoCruzamento(cruz, anoPagamento) <= 0 : cruz.status === "sem_pagamento");
       });
-      const pagoTotal = grupo.itens.reduce((s, e) => s + valorPagoCruzamento(cruzMap[e.numero + "/" + e.ano] || {}, anoPagamento), 0);
+      const pagoTotal = somarBeneficiarios(grupo.itens, cruzMap, anoPagamento);
       entidadeResumoEl.hidden = false;
       entidadeResumoEl.innerHTML = `
         <div class="entity-profile__head">
@@ -1437,7 +1441,7 @@
           <div><strong>${fmtNum(semPagamento.length)}</strong><span>${anoPagamento ? "sem pagamento no ano" : "sem pagamento localizado"}</span></div>
           <div><strong>${fmtBRL(pagoTotal)}</strong><span>total pago pela Prefeitura ao CNPJ${anoPagamento ? " em " + anoPagamento : ""}</span></div>
         </div>
-        <p class="entity-profile__note"><strong>Como ler:</strong> o valor de emendas é somente o que vereadores destinaram para esta entidade. O total pago pela Prefeitura ao mesmo CNPJ ${anoPagamento ? `está filtrado em ${anoPagamento}` : "soma todos os anos carregados"} e pode incluir convênios, contratos, termos de fomento, repasses recorrentes e outras verbas que não são necessariamente emendas. Use essa diferença como pista para conferir empenhos, liquidações, notas fiscais, plano de trabalho e execução.</p>
+        <p class="entity-profile__note"><strong>Como ler:</strong> o valor de emendas é somente o que vereadores destinaram para esta entidade. O total pago pela Prefeitura ao mesmo CNPJ ${anoPagamento ? `está filtrado em ${anoPagamento}` : "considera os exercícios documentais cobertos, sem repetir beneficiário e exercício"} e pode incluir convênios, contratos, termos de fomento, repasses recorrentes e outras verbas que não são necessariamente emendas. Use essa diferença como pista para conferir empenhos, liquidações, notas fiscais, plano de trabalho e execução.</p>
         <div class="entity-profile__list">
           ${grupo.itens
             .sort((a, b) => (b.valor_brl || 0) - (a.valor_brl || 0))
@@ -1446,7 +1450,7 @@
               const valorPagoAno = valorPagoCruzamento(c, anoPagamento);
               const statusPagamento = valorPagoAno > 0
                 ? `pagamento localizado${anoPagamento ? " em " + anoPagamento : ""}: ${fmtBRL(valorPagoAno)}`
-                : anoPagamento ? `sem pagamento localizado em ${anoPagamento}` : c.status === "sem_pagamento" ? "sem pagamento localizado" : "sem conferência automática";
+                : c.status === "sem_periodo" ? "exercício ou consulta indisponível; pagamento não verificado" : anoPagamento && String(c.exercicioOrcamentario) !== String(anoPagamento) ? "ano selecionado fora do exercício coberto; pagamento não verificado" : anoPagamento ? `sem pagamento localizado em ${anoPagamento}` : c.status === "sem_pagamento" ? "sem pagamento localizado" : "sem conferência automática";
               return `<article>
                 <strong>${fmtBRL(e.valor_brl || 0)} · Emenda nº ${esc(e.numero)}/${esc(e.ano)}</strong>
                 <span>Autor(a): ${esc(e.autor || "não informado")} · ${esc(statusPagamento)}</span>
@@ -1562,15 +1566,9 @@
         const c = cruzMap[e.numero + "/" + e.ano];
         let pagoBlock = "";
         if (c && c.status === "encontrado") {
-          const ratio = e.valor_brl ? (c.valor_pago_total / e.valor_brl) : 0;
-          const ratioTxt = ratio >= 1
-            ? `${ratio.toFixed(1)}x a emenda (entidade recebe outras verbas também)`
-            : `${Math.round(ratio * 100)}% da emenda`;
-          pagoBlock = `
-            <p class="em__pago">
-              Prefeitura pagou ao CNPJ: <strong>${fmtBRL(c.valor_pago_total)}</strong>
-              <span class="hint">· ${ratioTxt}</span>
-            </p>`;
+          pagoBlock = `<p class="em__pago">Pagamentos ao beneficiário no exercício ${esc(c.exercicioOrcamentario || c.cruzamento?.exercicioOrcamentario || "não informado")}: <strong>${fmtBRL(c.valor_pago_total)}</strong>. <span class="hint">Vínculo com a emenda não comprovado; não representa percentual de execução.</span></p>`;
+        } else if (c && c.status === "sem_periodo") {
+          pagoBlock = '<p class="em__pago">Exercício ou consulta indisponível: pagamento não verificado.</p>';
         } else if (c && c.status === "sem_pagamento") {
           pagoBlock = `<p class="em__pago"><span class="hint">Não localizamos pagamentos da Prefeitura ao CNPJ ${e.cnpj || ""} - pode ainda não ter sido executado.</span></p>`;
         }
@@ -1753,57 +1751,32 @@
       }
     }
 
-    // ============= % EXECUÇÃO POR VEREADOR (camara.html) =============
+    // Quantidade de correspondências é cobertura, nunca execução financeira.
     if ($("execucaoVereador")) {
-      const todasEm = D.emendas || [];
-      if (todasEm.length) {
-        const porVer = new Map();
-        todasEm.forEach(e => {
-          const nome = cleanText(e.autor || e.vereador || "Desconhecido").trim();
-          const cur = porVer.get(nome) || { nome, destinado: 0, pago: 0, qtd: 0 };
-          cur.destinado += Number(e.valor_brl) || 0;
-          cur.pago += Number((cruzMap[e.numero + "/" + e.ano] || {}).valor_pago_total || 0);
-          cur.qtd += 1;
-          porVer.set(nome, cur);
-        });
-        const ranking = [...porVer.values()]
-          .filter(v => v.destinado > 0)
-          .map(v => ({ ...v, pct: v.destinado > 0 ? (v.pago / v.destinado) * 100 : 0 }))
-          .sort((a, b) => b.destinado - a.destinado)
-          .slice(0, 18);
-        if (ranking.length) {
-          $("execucaoVereadorBlock").hidden = false;
-          $("execucaoVereador").innerHTML = ranking.map(v => {
-            const pctClamp = Math.min(100, Math.round(v.pct));
-            const cls = v.pct >= 70 ? "ok" : v.pct >= 30 ? "med" : "low";
-            return `<div class="exec-card" title="${esc(v.nome)} — ${v.qtd} emenda(s)">
-              <div class="exec-card__name">${esc(v.nome.split(" ").slice(0,3).join(" "))}</div>
-              <div class="exec-card__pct exec-card__pct--${cls}">${pctClamp}%</div>
-              <div class="exec-card__bar">
-                <div class="exec-card__fill exec-card__fill--${cls}" style="width:${pctClamp}%"></div>
-              </div>
-              <div class="exec-card__nums">
-                <span>Pago ${fmtBRL(v.pago)}</span>
-                <span>de ${fmtBRL(v.destinado)}</span>
-              </div>
-            </div>`;
-          }).join("");
-        }
-      }
+      const grupos = new Map();
+      (D.emendas || []).forEach(e => {
+        const nome = cleanText(e.autor || "Autoria não informada").trim();
+        const row = grupos.get(nome) || {nome, qtd:0, correspondencias:0, destinado:0};
+        row.qtd++; row.destinado += Number(e.valor_brl) || 0;
+        if (cruzMap[e.numero + "/" + e.ano]?.status === "encontrado") row.correspondencias++;
+        grupos.set(nome,row);
+      });
+      $("execucaoVereadorBlock").hidden = !grupos.size;
+      $("execucaoVereador").innerHTML = [...grupos.values()].sort((a,b)=>b.destinado-a.destinado).slice(0,18).map(v => `<div class="exec-card"><div class="exec-card__name">${esc(v.nome)}</div><p>${v.correspondencias} de ${v.qtd} emendas com pagamento localizado ao beneficiário no exercício.</p><p>${fmtBRL(v.destinado)} destinados. Vínculo do pagamento com a emenda não comprovado.</p></div>`).join("");
     }
   }
 
   // ============= STATS DO CRUZAMENTO (camara.html) =============
   if ($("cruzamentoStats") && pf.stats_cruzamento) {
     const cs = pf.stats_cruzamento;
-    const total = cs.com_pagamento + (cs.execucao_direta || 0) + cs.sem_pagamento + cs.sem_cnpj;
+    const total = cs.com_pagamento + (cs.execucao_direta || 0) + cs.sem_pagamento + cs.sem_cnpj + (cs.sem_periodo || 0);
     const pct = (n) => total ? Math.round((n / total) * 100) + "%" : "—";
     $("cruzamentoStats").hidden = false;
     $("cruzamentoStats").innerHTML = `
       <div class="cruz-cell">
         <div class="cruz-cell__num" style="color:#1F6B3A">${cs.com_pagamento}</div>
         <div class="cruz-cell__pct">${pct(cs.com_pagamento)}</div>
-        <div class="cruz-cell__lbl">CNPJ recebeu pagamento<br>${confidenceBadge("forte")}</div>
+        <div class="cruz-cell__lbl">CNPJ/raiz recebeu no exercício<br>${confidenceBadge("pista")}</div>
       </div>
       <div class="cruz-cell">
         <div class="cruz-cell__num" style="color:#004d40">${cs.execucao_direta || 0}</div>
@@ -1819,7 +1792,7 @@
         <div class="cruz-cell__num" style="color:#666">${cs.sem_cnpj}</div>
         <div class="cruz-cell__pct">${pct(cs.sem_cnpj)}</div>
         <div class="cruz-cell__lbl">Sem CNPJ identificado<br>${confidenceBadge("nao_cruzar")}</div>
-      </div>`;
+      </div><div class="cruz-cell"><div class="cruz-cell__num">${cs.sem_periodo || 0}</div><div class="cruz-cell__lbl">Exercício ou consulta indisponível; pagamento não verificado</div></div>`;
   }
 
   // ============= RELATÓRIOS / SINAIS DE ATENÇÃO (relatorios.html) =============
@@ -2934,10 +2907,8 @@
       const entidadeKeyRelatorio = (e) => cnpjRoot(e.cnpj) || norm(e.beneficiario || e.nome || "sem beneficiario");
       const valorPagoCruzamentoRelatorio = (cruz, anoPagamento) => {
         if (!cruz) return 0;
-        if (!anoPagamento) return cruz.valor_pago_total || 0;
-        return (cruz.pagamentos || [])
-          .filter(p => String(p.ano) === String(anoPagamento))
-          .reduce((s, p) => s + (p.valor || 0), 0);
+        if (!anoPagamento || String(cruz.exercicioOrcamentario) === String(anoPagamento)) return cruz.valor_pago_total || 0;
+        return 0;
       };
       emendas.forEach(e => {
         const key = entidadeKeyRelatorio(e);
@@ -2960,7 +2931,7 @@
         const cruz = cruzMap[e.numero + "/" + e.ano] || {};
         if (cruz.status === "encontrado") {
           entidades[key].pago += 1;
-          entidades[key].pagamentoLocalizado += cruz.valor_pago_total || 0;
+          // O total é recalculado sem duplicidade na seleção por exercício.
         }
         if (cruz.status === "sem_pagamento") entidades[key].semPagamento += 1;
       });
@@ -2985,13 +2956,14 @@
           );
           const autores = new Set();
           let valor = 0, pago = 0, pagamentoLocalizado = 0, semPagamento = 0;
+          const pagamentosVistos = new Set();
           itens.forEach(em => {
             valor += em.valor_brl || 0;
             if (em.autor) em.autor.split(",").map(x => x.trim()).filter(Boolean).forEach(a => autores.add(a));
             const cruz = cruzMap[em.numero + "/" + em.ano] || {};
             const pagoAno = valorPagoCruzamentoRelatorio(cruz, anoPagamento);
-            if (pagoAno > 0) { pago += 1; pagamentoLocalizado += pagoAno; }
-            if (anoPagamento ? pagoAno <= 0 : cruz.status === "sem_pagamento") semPagamento += 1;
+            if (pagoAno > 0) { pago += 1; const key = `${entidadeKeyRelatorio(em)}|${cruz.exercicioOrcamentario || ""}`; if (!pagamentosVistos.has(key)) { pagamentoLocalizado += pagoAno; pagamentosVistos.add(key); } }
+            if (cruz.status !== "sem_periodo" && (!anoPagamento || String(cruz.exercicioOrcamentario) === String(anoPagamento)) && (anoPagamento ? pagoAno <= 0 : cruz.status === "sem_pagamento")) semPagamento += 1;
           });
           return { ...e, valor, qtd: itens.length, autores, pago, pagamentoLocalizado, semPagamento };
         }).filter(e => e.qtd > 0).filter(e => {
@@ -3243,11 +3215,13 @@
       const addFornecedor = (nome, cnpj, valor, origem, objeto) => {
         const key = cnpjRoot(cnpj) || norm(nome).replace(/[^a-z0-9]+/g, " ").trim();
         if (!key) return;
-        grupos[key] ||= { nome: nome || "Fornecedor não informado", cnpj, valor: 0, qtd: 0, origens: new Set(), objetos: [] };
-        grupos[key].valor += Number(valor || 0);
-        grupos[key].qtd += 1;
-        grupos[key].origens.add(origem);
-        if (objeto) grupos[key].objetos.push(objeto);
+        const grupo = `${origem}|${key}`;
+        grupos[grupo] ||= { nome: nome || "Fornecedor não informado", cnpj, valor: 0, qtd: 0, semValor: 0, origens: new Set(), objetos: [] };
+        grupos[grupo].valor += Number(valor || 0);
+        grupos[grupo].qtd += 1;
+        if (valor === null || valor === undefined) grupos[grupo].semValor += 1;
+        grupos[grupo].origens.add(origem);
+        if (objeto) grupos[grupo].objetos.push(objeto);
       };
       contratos.forEach(c => addFornecedor(c.contratado, c.cnpj, c.valor, "Contratos Prefeitura", c.objeto));
       ((pncp.contratos) || []).forEach(c => addFornecedor(c.fornecedor, c.cnpj_fornecedor, c.valor, "PNCP", c.objeto));
@@ -3264,8 +3238,8 @@
             <span class="signal__level">${g.qtd} registro${g.qtd === 1 ? "" : "s"}</span>
           </div>
           <h4>${esc(cleanText(g.nome))}</h4>
-          <p>Mesmo fornecedor/CNPJ raiz aparece em mais de um registro ou soma valor relevante. Isso pode ser normal, mas merece olhar contrato por contrato.</p>
-          <div class="signal__meta">${fmtBRL(g.valor)} · CNPJ/raiz ${esc(g.cnpj || "não informado")} · ${esc(Array.from(g.origens).join(", "))}</div>
+          <p>Valores somados somente nesta fonte; registros podem representar o mesmo contrato. A soma não indica pagamentos. Confira cada registro.</p>
+          <div class="signal__meta">${fmtBRL(g.valor)}${g.semValor ? ` · ${g.semValor} sem valor global informado` : ""} · CNPJ/raiz ${esc(g.cnpj || "não informado")} · ${esc(Array.from(g.origens).join(", "))}</div>
         </article>`).join("") : '<div class="empty">Nenhum fornecedor recorrente identificado com os dados atuais.</div>';
     }
 
@@ -3391,7 +3365,7 @@
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / max) * 100}%"></span></div>
           <div class="forn-row__actions">
             <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83034" target="_blank" rel="noopener" title="Despesas da Prefeitura no Portal Betha — onde estes pagamentos estão registrados">${window.FISCALIZA.icon("lupa", { size: 14 })} Despesas Betha</a>
-            <a class="forn-row__btn forn-row__btn--filtro" href="prefeitura.html?q=${nomeBusca}" title="Ver contratos vigentes desta empresa (pode não existir se for pagamento sem contrato)">${window.FISCALIZA.icon("documentos", { size: 14 })} Ver contratos</a>
+            <button type="button" class="forn-row__btn forn-row__btn--filtro" data-pref-contratos="${i}" title="Localizar contratos deste fornecedor">${window.FISCALIZA.icon("documentos", { size: 14 })} Ver contratos</button>
             ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.FISCALIZA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
         </div>
@@ -3399,6 +3373,16 @@
         <div class="forn-row__valor">${fmtBRL(f.valor_total)}</div>
       </div>`;
     }).join("");
+    $("topFornecedores").querySelectorAll('[data-pref-contratos]').forEach(btn => btn.addEventListener("click", () => {
+      const f = top[Number(btn.dataset.prefContratos)];
+      const canon = nome => norm(cleanText(nome || "")).replace(/\b(me|epp)\b/g, "").replace(/[^a-z0-9]/g, "");
+      const raiz = valor => String(valor || "").replace(/\D/g, "").slice(0, 8);
+      const r = raiz(f.cnpj);
+      const rel = (pf.contratos || []).filter(c => r.length === 8 ? raiz(c.cnpj) === r : canon(f.nome).length > 4 && canon(c.contratado) === canon(f.nome));
+      const validos = rel.filter(c => /^https:\/\/transparencia\.betha\.cloud\/#\/y7mn01LGqd_HCvGtj6VPwA==\/consulta\/83043\/detalhe\/[\w:%-]+$/.test(c.fonte_url || ""));
+      if (rel.length === 1 && validos.length === 1) { window.location.assign(validos[0].fonte_url); return; }
+      window.FISCALIZA.dossie.abrirComHtml(`<h3>Contratos de ${esc(f.nome)}</h3>` + (rel.length ? `<p>Contratos encontrados na base consultada. Escolha a ficha para conferir contrato e aditivos.</p>${rel.map(c => `<article class="report-note"><strong>Contrato ${esc(c.numero || "não informado")}/${esc(c.ano || "")}</strong><p>${esc(c.objeto || "")} · ${fmtBRL(c.valor)}</p>${validos.includes(c) ? `<a class="btn-link" href="${esc(c.fonte_url)}">Abrir contrato na Betha ↗</a>` : `<p>Link individual não localizado. Pesquise pelo número ou CNPJ na tabela oficial.</p>`}${window.FISCALIZA.dossie.templateDocumentos(c, "Prefeitura")}</article>`).join("")}` : `<p><strong>Nenhum contrato localizado na base consultada.</strong> Isso não confirma que o contrato não exista. O pagamento pode estar vinculado a outro instrumento, período ou identificação. Solicite à Prefeitura o contrato ou instrumento que fundamentou a despesa.</p><a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener">Consultar contratos na Betha ↗</a>`));
+    }));
   }
 
   // ============= CÂMARA AO VIVO (camara.html) =============
@@ -3437,7 +3421,7 @@
           <div class="forn-row__bar"><span class="forn-row__bar-fill" style="width:${(f.valor_total / maxCam) * 100}%"></span></div>
           <div class="forn-row__actions">
             <a class="forn-row__btn forn-row__btn--betha" href="https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324767" target="_blank" rel="noopener" title="Despesas da Câmara no Portal Betha — onde estes pagamentos estão registrados">${window.FISCALIZA.icon("lupa", { size: 14 })} Despesas Betha</a>
-            <button type="button" class="forn-row__btn forn-row__btn--filtro" data-forn-filtro="${i}" title="Ver contratos vigentes desta empresa na Câmara (pode não existir se for pagamento sem contrato)">${window.FISCALIZA.icon("documentos", { size: 14 })} Ver contratos</button>
+            <button type="button" class="forn-row__btn forn-row__btn--filtro" data-forn-filtro="${i}" title="Abrir o contrato oficial ou escolher entre os contratos deste fornecedor">${window.FISCALIZA.icon("documentos", { size: 14 })} Ver contratos</button>
             <button type="button" class="forn-row__btn forn-row__btn--dossie" data-forn-dossie="${i}" title="Dossiê consolidado: pagamentos, contratos e pergunta LAI pronta">${window.FISCALIZA.icon("lupa", { size: 14 })} Dossiê</button>
             ${cnpjValido ? `<a class="forn-row__btn forn-row__btn--cnpj" href="https://casadosdados.com.br/solucao/cnpj/${cnpjLimpo}" target="_blank" rel="noopener" title="Consultar CNPJ na Casa dos Dados (Receita Federal)">${window.FISCALIZA.icon("predio", { size: 14 })} Consultar CNPJ</a>` : ""}
           </div>
@@ -3455,12 +3439,13 @@
 
     // Interações dos fornecedores: filtro de contratos + dossiê consolidado
     const raizCnpj = (c) => String(c || "").replace(/[^\d]/g, "").slice(0, 8);
+    const nomeFornecedor = nome => norm(cleanText(nome || "")).replace(/\b(?:me|epp)\b/g, "").replace(/[^a-z0-9]/g, "");
     const contratosDoFornecedor = (f) => {
       const r = raizCnpj(f.cnpj);
-      const nomeChave = norm(cleanText(f.nome || "")).split(" ").slice(0, 2).join(" ");
-      return (cb.contratos || []).filter((c) =>
-        (r.length === 8 && raizCnpj(c.cnpj) === r) ||
-        (nomeChave.length > 4 && norm(c.contratado || "").includes(nomeChave))
+      const nomeChave = nomeFornecedor(f.nome);
+      return (cb.contratos_fontes?.length ? cb.contratos_fontes : cb.contratos || []).filter((c) =>
+        r.length === 8 ? raizCnpj(c.cnpj) === r :
+        (nomeChave.length > 4 && nomeFornecedor(c.contratado) === nomeChave)
       );
     };
     const BETHA_CONTRATOS_CAM = "https://transparencia.betha.cloud/#/-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812";
@@ -3469,18 +3454,37 @@
       btn.addEventListener("click", () => {
         const f = topCam[Number(btn.dataset.fornFiltro)];
         if (!f) return;
-        const rel = contratosDoFornecedor(f);
+        const encontrados = contratosDoFornecedor(f);
+        const emExecucao = encontrados.filter(c => c.situacao === "EXECUCAO");
+        // Em execução primeiro, mas o histórico continua visível: esconder o
+        // contrato encerrado fazia o cidadão não saber que ele existiu.
+        const rel = [...emExecucao, ...encontrados.filter(c => c.situacao !== "EXECUCAO")];
+        const dataBr = d => /^\d{4}-\d{2}-\d{2}/.test(d || "") ? d.slice(0, 10).split("-").reverse().join("/") : "";
+        const situacaoTxt = c => c.situacao === "EXECUCAO" ? "Em execução"
+          : (c.situacao === "CANCELADO" ? "Cancelado" : "Encerrado") + (dataBr(c.data_fim) ? " em " + dataBr(c.data_fim) : "");
         const nome = cleanText(f.nome || "");
+        const fichaValida = c => /^https:\/\/transparencia\.betha\.cloud\/#\/-iAWLe1kr2VQcrW9k2AUBg==\/consulta\/324812\/detalhe\/[\w:%-]+$/.test(c.fonte_url || "");
+        if (rel.length === 1 && fichaValida(rel[0])) {
+          window.location.assign(rel[0].fonte_url);
+          return;
+        }
+        if (rel.length > 1 && rel.every(fichaValida)) {
+          window.FISCALIZA.dossie.abrirComHtml(
+            `<h3>Contratos de ${esc(nome)}</h3><p>${emExecucao.length ? "Em execução e históricos, segundo a fonte oficial." : "Registros históricos encontrados na fonte oficial."} Escolha o contrato para abrir sua ficha.</p>` +
+            rel.map(c => `<article class="report-note"><strong>Contrato ${esc(c.numero || "não informado")}/${esc(c.ano || "")} · ${situacaoTxt(c)}</strong><p>${esc(c.objeto || "")} · ${fmtBRL(c.valor)}</p><a class="btn-link" href="${esc(c.fonte_url)}">Abrir contrato na Betha ↗</a>${window.FISCALIZA.dossie.templateDocumentos(c, "Câmara")}</article>`).join("")
+          );
+          return;
+        }
         if ($("filtroContratoCamara")) {
-          $("filtroContratoCamara").value = rel.length ? nome.split(" ").slice(0, 2).join(" ") : "";
+          $("filtroContratoCamara").value = nome;
         }
         if (typeof renderContratosCamara === "function") renderContratosCamara(true);
         const aviso = $("contratosCamaraAviso");
         if (aviso) {
           aviso.hidden = false;
           aviso.innerHTML = rel.length
-            ? `<strong>Contrato vigente localizado</strong> (${fmtNum(rel.length)}) para ${esc(nome)} — a lista de contratos abaixo já está filtrada.`
-            : `<strong>Nenhum contrato vigente</strong> localizado automaticamente para ${esc(nome)}. O vínculo pode estar em outro instrumento, período ou identificação; vale pedir os empenhos e o fundamento da contratação pela LAI.`;
+            ? `<strong>Contrato localizado</strong> (${fmtNum(rel.length)}) para ${esc(nome)} — a lista abaixo está filtrada.`
+            : `<strong>Nenhum contrato localizado na base consultada</strong> para ${esc(nome)}. O vínculo pode estar em outro instrumento, período ou identificação; confira os empenhos e o fundamento da contratação.`;
           scrollToEl(aviso);
         }
       });
@@ -3499,14 +3503,14 @@
             '<h3 style="margin:4px 0 2px;">' + esc(nome) + '</h3>' +
             (f.cnpj ? '<p class="muted small" style="margin:0 0 10px;">CNPJ ' + esc(f.cnpj) + '</p>' : '') +
             '<p>Recebeu <strong>' + fmtBRL(f.valor_total) + '</strong> da Câmara em ' + esc(String(cb.ano_atual || "")) + ' (despesas por credor — fato oficial).</p>' +
-            '<h4 style="margin:14px 0 6px;">Contratos vigentes relacionados</h4>' +
+            '<h4 style="margin:14px 0 6px;">Contratos relacionados encontrados</h4><p class="muted small">A relação pode incluir contratos históricos. Confira vigência e eventuais prorrogações na fonte oficial; o vínculo com cada pagamento não está comprovado.</p>' +
             (rel.length
               ? '<ul style="list-style:none;padding:0;margin:0;">' + rel.slice(0, 5).map((c) =>
                   '<li style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:6px;">' +
-                    '<strong>' + fmtBRL(Number(c.valor) || 0) + '</strong> · ' + esc(cleanText(String(c.objeto || "Objeto não informado")).slice(0, 140)) +
+                    '<strong>' + (c.valor === null || c.valor === undefined || c.valor === "" || !Number.isFinite(Number(c.valor)) ? "Valor não informado" : fmtBRL(Number(c.valor))) + '</strong> · ' + esc(cleanText(String(c.objeto || "Objeto não informado")).slice(0, 140)) +
                     '<span class="muted small"> · ' + esc(c.data_assinatura || "") + (c.data_fim ? " → " + esc(c.data_fim) : "") + '</span>' +
                   '</li>').join("") + '</ul>'
-              : '<p class="muted">Nenhum contrato vigente foi vinculado automaticamente por CNPJ ou nome. Isso não demonstra ausência de processo; é o caso de pedir o instrumento e o fundamento da contratação.</p>') +
+              : '<p class="muted">Nenhum contrato foi localizado automaticamente por CNPJ ou nome. Isso não demonstra ausência de processo; é o caso de pedir o instrumento e o fundamento da contratação.</p>') +
             '<h4 style="margin:14px 0 6px;">Pergunta LAI pronta</h4>' +
             '<textarea readonly aria-label="Pergunta pronta para pedido via Lei de Acesso à Informação (LAI)" style="width:100%;min-height:110px;font-size:.85rem;padding:10px;border:1px solid var(--line);border-radius:8px;">' + esc(pergunta) + '</textarea>' +
             '<p style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">' +
@@ -3526,6 +3530,7 @@
   if ($("contratosCamaraBlock") && (cb.contratos || []).length) {
     const contratosCam = cb.contratos || [];
     const filtroEl = $("filtroContratoCamara");
+    const filtroDocEl = $("filtroDocumentosContratoCamara");
     const listaEl  = $("contratosCamara");
     const maisEl   = $("contratosCamaraMais");
     const contEl   = $("contratosContadorCamara");
@@ -3547,7 +3552,8 @@
       if (reset) contratosCamaraShown = 20;
       const q = norm(filtroEl ? filtroEl.value : "");
       const filtrados = contratosCam.filter(c =>
-        !q || casaBusca([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.modalidade].filter(Boolean).join(" "), q)
+        (!filtroDocEl || filtroDocEl.value !== "com" || window.FISCALIZA.dossie.temDocumentos(c)) &&
+        (!q || casaBusca([c.numero, c.ano, c.objeto, c.contratado, c.cnpj, c.modalidade].filter(Boolean).join(" "), q))
       );
       if (contEl) contEl.textContent = `${filtrados.length} contratos`;
       listaEl.innerHTML = provenienciaRegistro("camara_betha", "Betha/Portal da Câmara", BETHA_CONTRATOS_CAMARA) + filtrados.slice(0, contratosCamaraShown).map(c => `
@@ -3562,12 +3568,15 @@
             <p class="muted small">${esc(c.modalidade || "")} · ${esc(dataCurtaBR(c.data_assinatura))} → ${c.data_fim ? esc(dataCurtaBR(c.data_fim)) : "sem prazo informado"}${numeroCam(c) ? ` · Nº ${esc(numeroCam(c))}` : " · número não informado na fonte"}</p>
             <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; align-items:center;">
               ${numeroCam(c) ? `<button type="button" class="btn-copiar-num" onclick="(function(b){var t=b.closest('.contrato').querySelector('.muted.small');var m=t&&t.textContent.match(/N[°º]\s*([\w\/\-]+)/);var n=m?m[1]:'${jsSafe(String(c.numero || ""))}';navigator.clipboard&&navigator.clipboard.writeText(n).then(function(){var o=b.textContent;b.textContent='✓ Copiado';setTimeout(function(){b.textContent=o;},1400);}).catch(function(){});b.title=n;})(this)" title="Copiar número do contrato">📋 Copiar nº</button>` : ""}
-              <button type="button" class="btn-dossie" onclick="FISCALIZA.abrirContratoCamara(${contratosCam.indexOf(c)})">Ver contrato e fonte oficial</button>
+              <button type="button" class="btn-dossie" onclick="FISCALIZA.abrirContratoCamara(${contratosCam.indexOf(c)})">Resumo e como cobrar</button>
+              ${/^https:\/\/transparencia\.betha\.cloud\/#\/-iAWLe1kr2VQcrW9k2AUBg==\/consulta\/324812\/detalhe\/[\w:%-]+$/.test(c.fonte_url || "") ? `<a class="btn-link" href="${esc(c.fonte_url)}" target="_blank" rel="noopener">Abrir ficha na Betha ↗</a>` : ""}
+              ${window.FISCALIZA.dossie.templateDocumentos(c, "Câmara") }
               <a class="btn-link" href="${BETHA_CONTRATOS_CAMARA}" target="_blank" rel="noopener" title="Ver todos os contratos da Câmara no Portal Betha" style="text-decoration:none; padding: 4px 10px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.8em; font-weight: 500; border: 1px solid #90caf9;">Portal Betha (Câmara)</a>
               <a class="btn-link" href="${PORTAL_CONTRATOS_CAMARA}" target="_blank" rel="noopener" title="Portal de Transparência oficial da Câmara Municipal" style="text-decoration:none; padding: 4px 10px; background: #eee; border-radius: 4px; color: #333; font-size: 0.8em; font-weight: 500; border: 1px solid #ccc;">Site da Câmara</a>
             </div>
           </div>
         </article>`).join("");
+      if (!filtrados.length && filtroDocEl?.value === "com") listaEl.innerHTML += '<p class="empty">Nenhum contrato com arquivo identificado neste recorte. Limpe o filtro para consultar os demais contratos; disponibilidade não confirmada não significa ausência de documentos.</p>';
       if (maisEl) maisEl.hidden = filtrados.length <= contratosCamaraShown;
     };
     window.FISCALIZA.abrirContratoCamara = (idx) => {
@@ -3583,6 +3592,17 @@
     };
     if (filtroEl) filtroEl.addEventListener("input", () => renderContratosCamara(true));
     renderContratosCamara(true);
+    if (filtroDocEl) {
+      filtroDocEl.addEventListener("change", () => renderContratosCamara(true));
+      window.FISCALIZA.dossie.carregarDocumentos().then(base => {
+        if (!base) { $("documentosFiltroAjudaCamara").textContent = "Catálogo documental indisponível. O filtro está desativado; isso não confirma ausência de arquivos."; return; }
+        filtroDocEl.disabled = false;
+        $("documentosFiltroAjudaCamara").textContent = "Com documentos considera apenas os contratos desta lista com arquivos identificados na última conferência. Disponibilidade não confirmada não significa ausência.";
+        // A lista já recebe os dados documentais no próprio cartão. Recriar
+        // todos os elementos aqui fecharia pedidos abertos pelo cidadão.
+        if (filtroDocEl.value === "com") renderContratosCamara(false);
+      });
+    }
   }
 
   // ============= CONTRATOS (prefeitura.html) =============
@@ -3651,6 +3671,7 @@
     const filtroContrato     = $("filtroContrato");
     const filtroAnoContrato  = $("filtroAnoContrato");
     const filtroValorContrato = $("filtroValorContrato");
+    const filtroDocumentosContrato = $("filtroDocumentosContrato");
     const filtroSecretaria   = $("filtroSecretaria");
     const contratosEl        = $("contratos");
     const contratosMaisEl    = $("contratosMais");
@@ -3962,6 +3983,7 @@
       const valorMin = filtroValorContrato ? Number(filtroValorContrato.value || 0) : 0;
       const secFiltro = filtroSecretaria ? filtroSecretaria.value : "";
       const view = contratos.filter(c =>
+        (!filtroDocumentosContrato || filtroDocumentosContrato.value !== "com" || window.FISCALIZA.dossie.temDocumentos(c)) &&
         estaContratoAtivoNoAno(c, anoFiltro) &&
         (!valorMin || (Number(c.valor) || 0) >= valorMin) &&
         (!secFiltro || (c.entidade || "").trim() === secFiltro) &&
@@ -4039,6 +4061,7 @@
           <button class="btn-limpar" onclick="
             document.getElementById('filtroContrato').value='';
             document.getElementById('filtroAnoContrato').value='';
+            if(document.getElementById('filtroDocumentosContrato')) document.getElementById('filtroDocumentosContrato').value='';
             if(document.getElementById('filtroValorContrato')) document.getElementById('filtroValorContrato').value='';
             FISCALIZA.filtrarContratos && FISCALIZA.filtrarContratos();
           ">Limpar filtros</button>
@@ -4136,9 +4159,11 @@
             ` : ""}
             ${cruzadoHtml}
             <div style="margin-top:10px; display: flex; gap: 8px; flex-wrap: wrap; align-items:center;">
-              <button class="btn-dossie" onclick="FISCALIZA.abrirContrato(${contratos.indexOf(c)})">Ver contrato e fonte oficial</button>
+              <button class="btn-dossie" onclick="FISCALIZA.abrirContrato(${contratos.indexOf(c)})">Resumo e como cobrar</button>
+              ${/^https:\/\/transparencia\.betha\.cloud\/#\/y7mn01LGqd_HCvGtj6VPwA==\/consulta\/83043\/detalhe\/[\w:%-]+$/.test(c.fonte_url || "") ? `<a class="btn-link" href="${esc(c.fonte_url)}" target="_blank" rel="noopener">Abrir ficha na Betha ↗</a>` : ""}
               <button class="btn-dossie" onclick="FISCALIZA.gerarDossie(${contratos.indexOf(c)})">Baixar relatório</button>
               <button class="btn-share" onclick="FISCALIZA.compartilharZap('${jsSafe(c.contratado)}', '${jsSafe(c.objeto)}', '${fmtBRL(c.valor)}${custoDiario ? " (valor total dividido pelos dias de vigência: " + fmtBRL(custoDiario) + "; não é gasto diário efetivo)" : ""}')">Compartilhar</button>
+              ${window.FISCALIZA.dossie.templateDocumentos(c, "Prefeitura") }
               <a class="btn-link" href="${BETHA_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Cole o nº do contrato no campo de busca do Betha para localizar este contrato" style="text-decoration:none; padding: 6px 12px; background: #e8f4fd; border-radius: 4px; color: #1565c0; font-size: 0.85em; font-weight: 500; border: 1px solid #90caf9;">${window.FISCALIZA.icon ? window.FISCALIZA.icon("lupa", { size: 13 }) : ""} Betha</a>
               <a class="btn-link" href="${PORTAL_CONTRATOS_PREFEITURA}" target="_blank" rel="noopener" title="Portal oficial da Prefeitura (pode estar temporariamente indisponível)" style="text-decoration:none; padding: 6px 12px; background: #eee; border-radius: 4px; color: #555; font-size: 0.85em; font-weight: 500; border: 1px solid #ccc;">Portal oficial</a>
               <a class="btn-link" href="${contratoPncpUrl(c)}" target="_blank" rel="noopener" title="Buscar este fornecedor/contrato no PNCP" style="text-decoration:none; padding: 6px 12px; background: #fff8e1; border-radius: 4px; color: #6d4c00; font-size: 0.85em; font-weight: 500; border: 1px solid #ffd54f;">PNCP</a>
@@ -4192,6 +4217,15 @@
       if (filtroValorContrato) filtroValorContrato.addEventListener("change", () => renderContratos(true));
       if (filtroSecretaria)   filtroSecretaria.addEventListener("change", () => renderContratos(true));
       renderContratos(true);
+      if (filtroDocumentosContrato) {
+        filtroDocumentosContrato.addEventListener("change", () => renderContratos(true));
+        window.FISCALIZA.dossie.carregarDocumentos().then(base => {
+          if (!base) { $("documentosFiltroAjuda").textContent = "Catálogo documental indisponível. O filtro está desativado; isso não confirma ausência de arquivos."; return; }
+          filtroDocumentosContrato.disabled = false;
+          $("documentosFiltroAjuda").textContent = "Combine Com documentos com ano, empresa e valor. Disponibilidade não confirmada não significa ausência. A quantidade de arquivos e a data aparecem em cada cartão.";
+          if (filtroDocumentosContrato.value === "com") renderContratos(false);
+        });
+      }
 
       // CSV export button
       const csvBtnC = document.createElement("button");
@@ -4205,6 +4239,7 @@
         const ano = filtroAnoContrato.value || "";
         const vmin = filtroValorContrato ? Number(filtroValorContrato.value || 0) : 0;
         const view = contratos.filter(c =>
+          (!filtroDocumentosContrato || filtroDocumentosContrato.value !== "com" || window.FISCALIZA.dossie.temDocumentos(c)) &&
           estaContratoAtivoNoAno(c, ano) &&
           (!vmin || (Number(c.valor) || 0) >= vmin) &&
           (!q || casaBusca([c.contratado, c.objeto, c.modalidade].filter(Boolean).join(" "), q))
@@ -5391,6 +5426,16 @@ ${url}
   function renderFrotaPrefeitura() {
     const block = $("frotaBlock");
     if (!block) return;
+    const coberturaFrota = $("frotaCobertura");
+    const frescorFrota = pf.coleta_frescor?.datasets?.frota;
+    if (coberturaFrota && frescorFrota) {
+      const estado = norm(frescorFrota.status || "");
+      const incompleta = /preserv|parcial|falha/.test(estado);
+      const ultima = /^\d{4}-\d{2}-\d{2}/.test(frescorFrota.last_complete_at || "")
+        ? dataCurtaBR(frescorFrota.last_complete_at) : "não informada";
+      coberturaFrota.textContent = `${incompleta ? "Base anterior preservada ou coleta parcial." : "Situação da base de veículos."} Última coleta completa: ${ultima}. A situação atual e os valores de locação devem ser conferidos na fonte.`;
+      coberturaFrota.hidden = false;
+    }
     const frota = pf.frota || [];
     const statsEl = $("frotaStats");
     const auditEl = $("frotaAudit");
@@ -6728,6 +6773,8 @@ ${url}
     const diariasCarregadas = Boolean(D.diarias && Array.isArray(D.diarias.prefeitura));
     const compras = pf.compras_diretas || [];
     const frota = pf.frota || [];
+    const frotaCarregada = Array.isArray(pf.frota);
+    const quantidadeFrota = frotaCarregada ? fmtNum(frota.length) : "Sob demanda";
 
     if (!contratos.length && !licitacoes.length && !diarias.length && !pf.total_externo_atual) {
       const emptyState = `
@@ -6794,7 +6841,7 @@ ${url}
         <span><strong>${fmtNum(contratos.length)}</strong><small>contratos</small></span>
         <span><strong>${fmtNum(licitacoes.length)}</strong><small>licitacoes abertas</small></span>
         <span><strong>${diariasCarregadas ? fmtNum(diarias.length) : "Sob demanda"}</strong><small>diárias</small></span>
-        <span><strong>${fmtNum(frota.length)}</strong><small>veículos na frota</small></span>
+        <span><strong>${quantidadeFrota}</strong><small>veículos na frota</small></span>
       </div>`;
 
     if ($("prefeituraResumoTopo")) {
@@ -6811,7 +6858,7 @@ ${url}
     setBadge("badgeAlugueis", alugueis.length);
     setBadge("badgeEventos", eventosBase.length);
     setBadge("badgeLicitacoes", licitacoes.length);
-    setBadge("badgeFrota", frota.length);
+    setBadge("badgeFrota", frotaCarregada ? frota.length : "…");
     // badgeAsfalto pertence a renderAsfaltoPrefeitura(); não resetar aqui. Um
     // overview re-renderizado (ex.: quando a frota chega na fase 2) apagava o
     // número e deixava o selo preso no placeholder "…".
@@ -6824,7 +6871,7 @@ ${url}
       { cls: "", v: fmtNum(contratos.length), l: "Contratos", s: `${fmtBRL(totalContratos)} em registros carregados`, tab: "contratos" },
       { cls: "audit-metric--red", v: fmtNum(contratosMilhao.length), l: "Acima de R$ 1 mi", s: "Primeira fila para conferir objeto e prazo", tab: "contratos" },
       { cls: "audit-metric--gold", v: diariasCarregadas ? fmtNum(diarias.length) : "Abrir", l: "Diárias", s: diariasCarregadas ? `${fmtBRL(totalDiarias)} em registros contábeis` : "Base detalhada carregada sob demanda", tab: "diarias" },
-      { cls: "", v: fmtNum(frota.length), l: "Frota municipal", s: `${fmtBRL(totalFrota)} em gastos vinculados`, tab: "frota" },
+      { cls: "", v: quantidadeFrota, l: "Frota municipal", s: frotaCarregada ? `${fmtBRL(totalFrota)} em gastos vinculados` : "Carregue os dados na aba Frota", tab: "frota" },
       { cls: "", v: fmtNum(alugueis.length), l: "Imoveis alugados", s: `${fmtBRL(totalAlugueis)} classificados por palavra-chave`, tab: "alugueis" },
       { cls: "audit-metric--gold", v: fmtNum(eventosBase.length), l: "Eventos e shows", s: `${fmtBRL(totalEventos)} em itens localizados`, tab: "eventos" },
       { cls: "", v: fmtNum(licitacoes.length), l: "Licitacoes abertas", s: "Fiscalizar antes do pagamento", tab: "licitacoes" },
@@ -6839,7 +6886,7 @@ ${url}
       $("prefeituraAtalhos").innerHTML = [
         { tab: "contratos", value: fmtNum(contratosMilhao.length), title: "Contratos caros", text: "Compromissos acima de R$ 1 mi, objetos fracos e prazos." },
         { tab: "diarias", value: diariasCarregadas ? fmtNum(diariasAltas.length) : "Abrir", title: "Diárias altas", text: diariasCarregadas ? "Registros com valor diário estimado acima de R$ 1.000." : "Carregue a base detalhada somente quando precisar." },
-        { tab: "frota", value: fmtNum(frota.length), title: "Frota municipal", text: "Veiculos, lotacao e gastos de combustivel/manutencao." },
+        { tab: "frota", value: quantidadeFrota, title: "Frota municipal", text: "Veiculos, lotacao e gastos de combustivel/manutencao." },
         { tab: "alugueis", value: fmtNum(alugueis.length), title: "Imoveis alugados", text: `${fmtBRL(totalAlugueis)} somados em contratos classificados.` },
         { tab: "eventos", value: fmtNum(eventosBase.length), title: "Eventos e shows", text: "Empresas, artistas e estruturas contratadas." },
       ].map(a => `
@@ -6857,7 +6904,7 @@ ${url}
           A primeira leitura mostra que a base tem ${fmtNum(contratos.length)} contratos somando
           ${fmtBRL(totalContratos)}, ${fmtNum(licitacoes.length)} licitacoes para acompanhar antes
           do pagamento, ${diariasCarregadas ? `${fmtNum(diarias.length)} diárias pagas a ${fmtNum(servidoresDiarias)} pessoas/servidores identificados` : "uma base detalhada de diárias disponível ao abrir a seção"},
-          ${fmtNum(frota.length)} veículos municipais,
+          ${frotaCarregada ? `${fmtNum(frota.length)} veículos municipais` : "frota municipal disponível sob demanda"},
           ${fmtNum(alugueis.length)} contratos classificados
           como aluguel de imovel e ${fmtNum(eventosBase.length)} itens ligados a eventos ou shows.
         </p>
@@ -7378,7 +7425,7 @@ ${url}
       const pdf = document.createElement("button");
       pdf.type = "button";
       pdf.className = "pdf-action";
-      pdf.innerHTML = `<span aria-hidden="true">PDF</span><span>Baixar</span>`;
+      pdf.innerHTML = window.FISCALIZA.icon("documentos", { size: 14 }) + `<span>Baixar PDF</span>`;
       pdf.setAttribute("aria-label", `Baixar PDF da secao ${titleText}`);
       pdf.addEventListener("click", () => baixarPdfSecao(block, titleText));
       actions.appendChild(pdf);
@@ -7438,8 +7485,8 @@ ${url}
     const button = document.createElement("button");
     button.type = "button";
     button.className = "pdf-action pdf-action--page";
-    button.innerHTML = `<span aria-hidden="true">PDF</span><span>Baixar relatório em PDF</span>`;
-    button.setAttribute("aria-label", "Baixar relatório da página atual em PDF");
+    button.innerHTML = window.FISCALIZA.icon("documentos", { size: 14 }) + `<span>Baixar relatório em PDF</span>`;
+    button.setAttribute("aria-label", "Baixar relatório em PDF da página atual");
     button.addEventListener("click", () => baixarPdfSecao(document.querySelector("#conteudo") || document.body, pageTitle()));
     actions.appendChild(button);
   }
@@ -7501,90 +7548,7 @@ ${url}
   }
 
   function renderSourceCoverage() {
-    if (!["prefeitura", "camara", "relatorios"].includes(PAGE)) return;
-    const domains = D.status_fontes?.domains || {};
-    if (!Object.keys(domains).length) return;
-
-    const pageSources = {
-      prefeitura: ["prefeitura", "pncp", "cnpjs", "diario"],
-      camara: ["camara_betha", "camara_anos", "publicacoes_estruturadas"],
-      relatorios: ["prefeitura", "camara_betha", "camara_anos", "pncp", "cnpjs", "fontes_emendas_2026"],
-    };
-    const sources = (pageSources[PAGE] || [])
-      .map((id) => ({ id, ...(domains[id] || {}) }))
-      .filter((source) => source.label);
-    if (!sources.length) return;
-
-    const statusMeta = {
-      ok: { label: "Completa", cls: "ok" },
-      partial: { label: "Parcial", cls: "partial" },
-      preserved: { label: "Base anterior preservada", cls: "preserved" },
-      stale: { label: "Desatualizada", cls: "stale" },
-      failed: { label: "Falhou", cls: "failed" },
-      manual: { label: "Atualização manual", cls: "manual" },
-      unknown: { label: "Situação não informada", cls: "unknown" },
-    };
-    const counts = sources.reduce((acc, source) => {
-      const key = source.status || "unknown";
-      acc[key] = (acc[key] || 0) + 1;
-      return acc;
-    }, {});
-    // Cada rotulo traz singular e plural escritos por extenso. Montar o plural
-    // colando sufixo produzia "3 parcialis" na tela de Relatorios.
-    const contaCom = (n, singular, plural) => (n ? `${fmtNum(n)} ${n > 1 ? plural : singular}` : "");
-    const summaryParts = [
-      contaCom(counts.ok, "completa", "completas"),
-      contaCom(counts.partial, "parcial", "parciais"),
-      contaCom(counts.preserved, "preservada", "preservadas"),
-      counts.failed ? `${fmtNum(counts.failed)} com falha` : "",
-      contaCom(counts.stale, "desatualizada", "desatualizadas"),
-    ].filter(Boolean).join(" · ");
-
-    const formatDate = (iso) => {
-      if (!iso) return "data não informada";
-      const date = new Date(iso);
-      if (Number.isNaN(date.getTime())) return "data não informada";
-      return new Intl.DateTimeFormat("pt-BR", {
-        day: "2-digit", month: "2-digit", year: "numeric",
-        hour: "2-digit", minute: "2-digit",
-      }).format(date);
-    };
-
-    const box = document.createElement("section");
-    box.className = "source-coverage";
-    box.setAttribute("aria-label", "Cobertura e atualização das fontes desta página");
-    box.innerHTML = `
-      <details>
-        <summary>
-          <span>
-            <b>Cobertura dos dados desta página</b>
-            <small>${esc(summaryParts || "situação das fontes disponível")}</small>
-          </span>
-          <em>Ver fontes e datas</em>
-        </summary>
-        <div class="source-coverage__grid">
-          ${sources.map((source) => {
-            const meta = statusMeta[source.status] || statusMeta.unknown;
-            return `<article class="source-coverage__item source-coverage__item--${meta.cls}">
-              <div>
-                <strong>${esc(cleanText(source.label))}</strong>
-                <span>${esc(meta.label)}</span>
-              </div>
-              <small>Último dado: ${esc(formatDate(source.source_updated_at))}</small>
-              <p>${esc(cleanText(source.reason || "Sem observação adicional."))}</p>
-            </article>`;
-          }).join("")}
-        </div>
-        <p class="source-coverage__note">
-          “Parcial” indica que parte da informação não foi localizada ou validada.
-          “Preservada” significa que o painel manteve a última base válida para não apagar o histórico.
-        </p>
-      </details>`;
-
-    const header = document.querySelector(".bigheader");
-    const updated = header?.querySelector("#atualizado");
-    if (updated) updated.insertAdjacentElement("afterend", box);
-    else if (header) header.prepend(box);
+    window.FISCALIZA.cidadao?.initCoverage();
   }
 
   function renderVerificationPriorities() {
@@ -7625,7 +7589,7 @@ ${url}
       "prefeitura-despesa-sem-contrato": "Pagamentos elevados sem contrato ou obra vinculada automaticamente",
       "emendas-sem-repasses": "Emendas de alto valor sem repasse localizado no cruzamento",
       "fornecedor-sancionado-outro-ente": "Sanções aplicadas por outros órgãos: histórico para conferência",
-      "homologacao-simbolica": "Licitação com valor homologado simbólico",
+      "homologacao-simbolica": "Preço unitário para conferência",
     };
     const humanize = (value) => {
       let text = cleanText(value || "");
@@ -8043,7 +8007,7 @@ ${url}
       // Rótulo/cor de cada categoria e nível — usados nos chips e (implicitamente) nos filtros.
       const CATS = {
         licitacao:  { rotulo: "Contratos & Compras",         cor: "#c62828", bg: "#fdeaea" },
-        obras:      { rotulo: "Obras & Asfalto",             cor: "#e65100", bg: "#fff3e0" },
+        obras:      { rotulo: "Obras & Asfalto",             cor: "#a83b00", bg: "#fff3e0" },
         servicos:   { rotulo: "Saúde, Educação & Social",    cor: "#2e7d32", bg: "#e8f5e9" },
         pessoal:    { rotulo: "Pessoal & Câmara",            cor: "#1f3a5f", bg: "#eef3f8" },
         patrimonio: { rotulo: "Patrimônio, Frota & Imóveis", cor: "#6a1b9a", bg: "#f3e5f5" },
@@ -8051,7 +8015,7 @@ ${url}
       };
       const NIVEIS = {
         "1": { rotulo: "Nível 1 · Alto impacto",     cor: "#c62828" },
-        "2": { rotulo: "Nível 2 · Muito relevante",  cor: "#e65100" },
+        "2": { rotulo: "Nível 2 · Muito relevante",  cor: "#a83b00" },
         "3": { rotulo: "Nível 3 · Onde poucos olham", cor: "#1565c0" },
         "4": { rotulo: "Nível 4 · Avançada",         cor: "#6a1b9a" }
       };

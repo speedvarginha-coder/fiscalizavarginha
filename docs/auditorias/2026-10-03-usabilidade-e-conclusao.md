@@ -44,3 +44,7 @@ O plugin Sites solicitado oferece recursos de criação/hospedagem; a inspeção
 - Suíte completa de navegador e coleta ainda estavam em execução no momento deste registro. Commit, pacote e publicação devem ser registrados somente após sua conclusão efetiva.
 
 As mudanças deste relatório são locais até comprovação de publicação. Não se deve apresentar o erro PHP como resolvido nem a coleta como completa antes dos resultados finais.
+
+### Diagnóstico adicional da hospedagem
+
+Um arquivo PHP mínimo, contendo apenas cabeçalho `text/plain` e resposta fixa `runtime-ok`, foi enviado por FTPS para o mesmo diretório público. Tanto ele quanto `chat.php` e `avalie.php?acao=saude` responderam HTTP 503 com HTML. O arquivo temporário foi removido por FTPS em seguida. Isso demonstra que a falha ocorre também sem o código de aplicação; ainda não distingue problema de execução PHP, roteamento ou configuração do servidor. É necessário acesso funcional à hospedagem ou aos logs para concluir o reparo. Nenhuma chave ou credencial foi exposta pelo teste.

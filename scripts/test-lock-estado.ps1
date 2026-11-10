@@ -33,6 +33,9 @@ $puras = @(
 Invoke-Expression $puras
 
 $dir = Join-Path $root ("private\lock-tests\" + [Guid]::NewGuid().ToString("N"))
+$dir = [IO.Path]::GetFullPath($dir)
+$testParent = [IO.Path]::GetFullPath((Join-Path $root "private\lock-tests")).TrimEnd('\')
+if (-not $dir.StartsWith($testParent + '\', [StringComparison]::OrdinalIgnoreCase)) { throw "Destino de teste fora da área permitida" }
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
 $lock = Join-Path $dir "coleta.lock"
 $falhas = 0

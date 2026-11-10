@@ -44,6 +44,8 @@ RewriteEngine On
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
   # Mantém o login Google por janela funcionando sem abrir isolamento excessivo.
   Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://accounts.google.com; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/style; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://accounts.google.com https://oauth2.googleapis.com; frame-src https://accounts.google.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests"
 </IfModule>
 
 AddDefaultCharset UTF-8
@@ -76,6 +78,10 @@ RewriteRule ^\. - [F,L]
 RewriteRule (^|/)\. - [F,L]
 RewriteRule ^__pycache__/ - [F,L]
 RewriteRule ^(old_|temp_).*\.html$ - [F,L]
+
+# O monólito é exclusivo da cópia offline. Uma cópia antiga no servidor
+# não pode expor registros que já foram corrigidos nos chunks públicos.
+RewriteRule ^data\.js$ - [F,L]
 
 # Bloqueia JSONs intermediários em /data/, mas libera:
 # - /data/manifest.json

@@ -18,6 +18,7 @@
 <meta name="twitter:title"      content="Pessoal e Cargos · Fiscaliza Varginha">
 <meta name="twitter:description" content="Servidores e comissionados de Varginha-MG.">
 <link rel="stylesheet" href="style.css?v=20260730-relatorios2">
+<link rel="stylesheet" href="cidadao.css?v=20261020">
 </head>
 <body data-page="pessoal">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -92,9 +93,9 @@
   <!-- Dashboard de Pessoal -->
   <div class="stats" id="statsPessoal">
     <div class="signal">
-      <span class="signal__lbl">Total de Servidores</span>
+      <span class="signal__lbl">Registros da folha</span>
       <span class="signal__val" id="totServidores">...</span>
-      <span class="signal__sub">Pessoas distintas na folha · Prefeitura + Câmara</span>
+      <span class="signal__sub">Registros no recorte · Prefeitura + Câmara</span>
     </div>
     <div class="signal">
       <span class="signal__lbl">Cargos Comissionados</span>
@@ -116,8 +117,8 @@
       muito alta pode indicar uso político da estrutura de pessoal.
     </p>
     <div id="comparativoComissionados"></div>
-    <p class="report-note" style="margin-top:12px">
-      Fonte: Portal de Transparência (Betha). Competência mais recente disponível.
+    <p class="report-note" id="comparativoPeriodoInfo" style="margin-top:12px">
+      Fonte: Portal de Transparência (Betha). Competência selecionada no filtro.
       Verifique sempre a fonte oficial antes de tirar conclusões.
     </p>
   </div>
@@ -148,14 +149,15 @@
   <div class="block">
     <h3 class="block__title">Auditoria de cargos</h3>
     <p class="block__lead">
-      Use os filtros para identificar funcionários por nome, órgão ou tipo de vínculo.
+      Use os filtros para identificar funcionários por nome, órgão, tipo de vínculo ou mês da folha.
     </p>
 
     <div class="report-note" style="margin:0 0 14px; background:var(--warn-bg); border-left:5px solid var(--gold);">
       <strong>ℹ Sobre o cargo "Vereador" nesta lista</strong>
-      <p style="margin:4px 0 0">O sistema Betha pode registrar servidores do quadro da Câmara com o cargo ou lotação <em>"Vereador"</em> — isso inclui assistentes e funcionários de gabinete, não apenas os parlamentares. A Câmara possui <strong>15 cadeiras</strong>; a lista histórica pode conter titulares e suplentes que exerceram o mandato em períodos diferentes. O subsídio vigente é de <strong id="subsidioVereador">R$ 10.826,42/mês</strong> <span id="subsidioVereadorFonte" class="muted small">(Lei 7.527/2026, revisão geral de 4,26% sobre a fixação da Lei 7.285/2024)</span>. Veja a remuneração oficial na aba <a href="camara.html">Câmara</a>.</p>
+      <p style="margin:4px 0 0">O sistema Betha pode registrar servidores do quadro da Câmara com o cargo ou lotação <em>"Vereador"</em> — isso inclui assistentes e funcionários de gabinete, não apenas os parlamentares. A Câmara possui <strong>15 cadeiras</strong>; a lista histórica pode conter titulares e suplentes que exerceram o mandato em períodos diferentes. O subsídio vigente é de <strong id="subsidioVereador">R$ 10.826,42/mês</strong> <span id="subsidioVereadorFonte" class="muted small">(Lei 7.527/2026, revisão geral de 4,26% sobre a fixação da Lei 7.285/2024)</span>. Veja a remuneração oficial na aba <a href="camara.html" style="text-decoration:underline">Câmara</a>.</p>
     </div>
-    <div class="filterbar">
+    <button type="button" class="btn-filter-trigger" aria-controls="pessoalFilterbar" onclick="FISCALIZA.toggleMobileFilters('pessoalFilterbar')">Filtrar salários por mês, nome ou órgão</button>
+    <div class="filterbar" id="pessoalFilterbar">
       <select id="filtroOrgao" aria-label="Filtrar por órgão">
         <option value="">Todos os Órgãos</option>
         <option value="prefeitura">Prefeitura</option>
@@ -166,17 +168,31 @@
         <option value="comissionado">Apenas Comissionados</option>
         <option value="concursado">Apenas Concursados/Outros</option>
       </select>
+      <select id="filtroMesPessoal" aria-label="Filtrar por mês da folha" aria-describedby="pessoalMesNota">
+        <option value="">Último registro de cada vínculo</option>
+      </select>
       <input id="buscaServidor" type="search" aria-label="Buscar servidor por nome ou cargo" placeholder="Buscar por nome ou cargo…">
       <span id="pessoalContador" class="filterbar__count"></span>
+      <button type="button" class="btn-filter-close" onclick="FISCALIZA.toggleMobileFilters('pessoalFilterbar')">Ver resultados</button>
     </div>
+
+    <p id="pessoalMesNota" class="small muted">Ranking e comparativo acompanham o mês escolhido. Nome, órgão e vínculo filtram a lista e a comparação entre meses abaixo.</p>
+
+    <section class="report-note pessoal-comparacao" aria-labelledby="pessoalComparacaoTitulo">
+      <h4 id="pessoalComparacaoTitulo">Comparar valores entre meses</h4>
+      <label for="compararMesPessoal">Comparar o mês da lista com:</label>
+      <select id="compararMesPessoal"><option value="">Não comparar</option></select>
+      <p class="small muted">Compara os totais brutos e líquidos dos registros que atendem aos filtros. Variações podem refletir entrada ou saída de servidores, férias e outras verbas; não indicam, por si, reajuste individual ou irregularidade.</p>
+      <div id="pessoalComparacao" aria-live="polite"></div>
+    </section>
 
     <div id="listaPessoal" class="contratos">
       <!-- Lista de servidores via JS -->
     </div>
     
     <div id="pessoalEmpty" class="block--warn" style="display:none;">
-      <strong>Coleta em andamento</strong>
-      <p>Os dados da folha de pagamento são extraídos periodicamente. Se a lista estiver vazia, tente atualizar os dados via coletor.</p>
+      <strong>Nenhum registro encontrado</strong>
+      <p>Não há registros na base coletada para esta combinação de filtros. Altere o mês, órgão, vínculo ou busca; ausência na lista não comprova ausência de pagamento.</p>
     </div>
   </div>
 </main>
@@ -212,6 +228,8 @@
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -258,5 +276,6 @@
     .catch(function () {});
 })();
 </script>
+  <script src="modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>

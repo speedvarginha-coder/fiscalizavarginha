@@ -277,7 +277,7 @@
         <span class="placar-card__icon">${icon("alerta", { size: 24 })}</span>
         <span class="placar-card__valor">${fmtNum(semPag)}</span>
         <span class="placar-card__label">Sem pagamento localizado</span>
-        <span class="placar-card__sub">Promessas que ainda não viraram dinheiro</span>
+        <span class="placar-card__sub">A ausência de correspondência não comprova falta de pagamento ou execução</span>
       </div>
     `;
   }

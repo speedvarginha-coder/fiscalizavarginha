@@ -138,6 +138,22 @@ test("conformidade publica origem, arquivo e canal de verificacao dos achados", 
   await expect(achados).toContainText("Limitação:");
 });
 
+test("achados da auditoria mantêm leitura e controles no celular e no computador", async ({ page }) => {
+  for (const width of [375, 1366]) {
+    await page.setViewportSize({ width, height: 800 });
+    await page.goto("/conformidade.html", { waitUntil: "domcontentloaded" });
+    const card = page.locator("#iftAchados .ift-finding").first();
+    await expect(card).toBeVisible();
+    await expect(card.locator("h4")).not.toBeEmpty();
+    await expect(card.locator(".ift-lai-btn")).toBeVisible();
+    await expect(page.locator(".ift-findings__intro")).toContainText("não comprova irregularidade");
+    await expect(card.locator("p")).toHaveCSS("color", "rgb(50, 78, 99)");
+    await page.locator("#iftMetodologia summary").click();
+    await expect(page.locator("#iftMetodologia p")).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+  }
+});
+
 test("Prefeitura carrega a base pesada de diárias somente ao abrir a seção", async ({ page, request }) => {
   const requisicoesDiarias = [];
   page.on("request", (req) => {
@@ -180,6 +196,11 @@ test("Prefeitura carrega a frota somente quando solicitada, sem baixar a base co
   expect(reqs.some((u) => u.includes("prefeitura_frota.json"))).toBe(false);
   // O clique na aba so vale depois que o app.js registrou os handlers; o botao nasce junto.
   await page.locator("#frotaBlock button").first().waitFor({ state: "attached", timeout: 60000 });
+  const resumoFrota = page.locator('#prefeituraResumoTopo .reader-summary__chips > span').filter({hasText:'veículos na frota'});
+  await expect(resumoFrota).toContainText('Sob demanda');
+  await expect(page.locator('#badgeFrota')).toHaveText('…');
+  await expect(page.locator('#prefeituraOverview [data-pref-tab="frota"]')).toContainText('Sob demanda');
+  await expect(page.locator('#prefeituraResumoBase')).toContainText('frota municipal disponível sob demanda');
   await page.locator('.pref-tab[data-pref-tab="frota"]').click();
   await page.getByRole("button", { name: "Carregar veículos e despesas da frota" }).click();
   // A solicitação explícita incorpora todos os registros ao painel.
@@ -190,6 +211,7 @@ test("Prefeitura carrega a frota somente quando solicitada, sem baixar a base co
   const carregado = await page.evaluate(() => (window.FISCALIZA_DATA.prefeitura.frota || []).length);
   expect(carregado).toBe(esperado);
   expect(carregado).toBeGreaterThan(0);
+  await expect(resumoFrota).toContainText(esperado.toLocaleString('pt-BR'));
 });
 
 test("carregador progressivo reutiliza a mesma requisição e preserva todos os registros", async ({ page }) => {

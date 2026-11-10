@@ -18,6 +18,9 @@
 <meta name="twitter:title"      content="Prefeitura · Fiscaliza Varginha">
 <meta name="twitter:description" content="Contratos, licitações, diárias e fornecedores da Prefeitura de Varginha-MG.">
 <link rel="stylesheet" href="style.css?v=20260730-relatorios2">
+<link rel="stylesheet" href="cidadao.css?v=20261020">
+<link rel="stylesheet" href="publicidade.css?v=20261105">
+<link rel="stylesheet" href="fiscalizacao.css?v=20261105">
 </head>
 <body data-page="prefeitura">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -73,7 +76,7 @@
         Aqui é onde o dinheiro vira contrato, folha, licitação e obra. Comece por um
         contrato de alto valor — ele costuma puxar uma diária, um aluguel, um aditivo.
         O painel oficial completo é o <strong>Portal de Transparência Betha</strong>
-        (sem login, atualizado diariamente).
+        (sem login; períodos e disponibilidade variam por conjunto).
       </p>
       <p id="atualizado" class="muted small" style="margin-top:8px"></p>
       <div id="prefeituraResumoTopo" class="reader-summary"></div>
@@ -82,7 +85,7 @@
         <button type="button" data-pref-tab="contratos">Maiores contratos</button>
         <button type="button" data-pref-tab="diarias">Diárias</button>
         <a href="relatorios.html">Relatórios de fiscalização</a>
-        <a href="#" id="btnBaixarPagina" class="btn-pdf" aria-label="Baixar relatório da Prefeitura em PDF">
+        <a href="#" id="btnBaixarPagina" class="btn-pdf" aria-label="Baixar relatório em PDF da Prefeitura">
           <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
           Baixar relatório em PDF
         </a>
@@ -90,11 +93,11 @@
       <details class="page-howto">
         <summary>Como ler esta página</summary>
         <div class="page-howto__body">
-          <p>Contratos e pagamentos vêm do <strong>Portal de Transparência Betha</strong>, atualizado diariamente. A classificação por categoria é automática — confirme sempre no documento original antes de concluir.</p>
+          <p>Contratos e pagamentos vêm do <strong>Portal de Transparência Betha</strong>. Consulte abaixo os períodos, a última coleta completa e as tentativas de cada conjunto. A classificação por categoria é automática — confirme sempre no documento original antes de concluir.</p>
           <p>Número contratado <strong>não é</strong> número pago: confira empenho, liquidação e nota fiscal para verificar a execução.</p>
           <div class="page-howto__chips">
             <span class="ok">✓ Fonte oficial (Betha)</span>
-            <span class="ok">✓ Atualização diária</span>
+            <span class="ok">Coletas periódicas · cobertura por fonte</span>
             <span class="warn">⚠ Categoria automática</span>
             <span class="warn">⚠ Contrato ≠ entrega</span>
             <span class="info">ℹ Peça nota fiscal e medição para confirmar</span>
@@ -118,6 +121,7 @@
       <button type="button" role="tab" id="tab-alugueis" aria-controls="panel-alugueis" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="alugueis">Aluguéis <span id="badgeAlugueis"></span></button>
       <button type="button" role="tab" id="tab-eventos" aria-controls="panel-eventos" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="eventos">Eventos <span id="badgeEventos"></span></button>
       <button type="button" role="tab" id="tab-licitacoes" aria-controls="panel-licitacoes" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="licitacoes">Licitações <span id="badgeLicitacoes"></span></button>
+      <button type="button" role="tab" id="tab-publicidade" aria-controls="panel-publicidade" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="publicidade">Publicidade</button>
       <button type="button" role="tab" id="tab-fontes" aria-controls="panel-fontes" aria-selected="false" tabindex="-1" class="pref-tab" data-pref-tab="fontes">Diário Oficial</button>
     </div>
 
@@ -132,7 +136,7 @@
     <div id="graficoMensalBlock" class="block" hidden>
       <h3 class="block__title">Evolução mensal de contratos assinados</h3>
       <p class="block__lead">Valor total dos contratos assinados por mês — identifica picos de gasto e sazonalidade.</p>
-      <div id="graficoMensal" class="chart-bars" aria-label="Gráfico de barras mensais"></div>
+      <div id="graficoMensal" class="chart-bars" role="region" tabindex="0" aria-label="Gráfico de barras mensais"></div>
     </div>
 
     <div id="secretariasBlock" class="block" hidden>
@@ -165,7 +169,7 @@
 
     <!-- Live: Total executado e Top fornecedores -->
     <div id="prefeituraLive" class="block" hidden>
-      <h3 class="block__title">Para onde vai o dinheiro — dados ao vivo</h3>
+      <h3 class="block__title">Para onde vai o dinheiro — dados coletados</h3>
       <p class="block__lead">
         Pagamentos extraídos do Portal de Transparência. Excluímos transferências
         internas (para fundos, autarquias e a própria Prefeitura) — o que está
@@ -220,10 +224,16 @@
           <option value="1000000">Acima de R$ 1 milhão</option>
           <option value="5000000">Acima de R$ 5 milhões</option>
         </select>
+        <select id="filtroDocumentosContrato" aria-label="Filtrar por disponibilidade de documentos" aria-describedby="documentosFiltroAjuda" disabled>
+          <option value="">Todos os contratos</option>
+          <option value="com">Com documentos identificados</option>
+        </select>
+        <p id="documentosFiltroAjuda" class="muted small" role="status">Conferindo catálogo documental. O filtro considera arquivos identificados na última verificação, sem confirmar seu conteúdo.</p>
         <span id="contratosContador" class="filterbar__count"></span>
         <button type="button" class="btn-filter-close" onclick="FISCALIZA.toggleMobileFilters('contratosFilterbar')">Aplicar Filtros</button>
       </div>
       <div id="contratos" class="contratos"></div>
+      <details class="block contratos-historico" data-contratos-historico="prefeitura"><summary><strong>Buscar no histórico oficial completo</strong></summary><p class="muted small">Consulta separada dos totais e indicadores do painel. Pesquise contratos antigos por fornecedor, número, CNPJ ou objeto.</p><div data-historico-conteudo></div></details>
       <div id="contratosMais" class="loadmore" hidden>
         <button type="button" onclick="FISCALIZA.maisContratos()">Mostrar mais 20</button>
       </div>
@@ -342,32 +352,33 @@
         Ranking por pessoa com acumulado anual e maior valor mensal registrado.
       </p>
       <div class="stats" id="statsDiariasPrefeitura"></div>
-      <div class="filterbar">
-        <select id="filtroAnoDiariasPrefeitura" aria-label="Filtrar diarias por ano">
+      <div class="filterbar fiscalizacao-filtros" role="group" aria-label="Filtros de diárias da Prefeitura">
+        <div class="fiscalizacao-filtros__titulo"><strong>Filtrar lançamentos</strong><span>Combine os campos para refinar o recorte.</span></div>
+        <label class="fiscalizacao-campo">Ano<select id="filtroAnoDiariasPrefeitura" aria-label="Filtrar diarias por ano">
           <option value="">Todos os anos</option>
           <option value="2026" selected>Ano 2026</option>
           <option value="2025">Ano 2025</option>
-        </select>
-        <select id="filtroMesDiariasPrefeitura" aria-label="Filtrar diarias por mês">
+        </select></label>
+        <label class="fiscalizacao-campo">Mês<select id="filtroMesDiariasPrefeitura" aria-label="Filtrar diarias por mês">
           <option value="">Todos os meses</option>
-        </select>
-        <select id="filtroSecretariaDiariasPrefeitura" aria-label="Filtrar por secretaria">
+        </select></label>
+        <label class="fiscalizacao-campo">Secretaria<select id="filtroSecretariaDiariasPrefeitura" aria-label="Filtrar por secretaria">
           <option value="">Todas as secretarias</option>
-        </select>
-        <input id="filtroFuncionarioDiariasPrefeitura" type="search" placeholder="Buscar funcionário, destino ou finalidade...">
-        <select id="filtroValorDiariasPrefeitura" aria-label="Filtrar por faixa de valor">
+        </select></label>
+        <label class="fiscalizacao-campo fiscalizacao-campo--busca">Buscar<input id="filtroFuncionarioDiariasPrefeitura" type="search" placeholder="Funcionário, destino ou finalidade"></label>
+        <label class="fiscalizacao-campo">Faixa de valor<select id="filtroValorDiariasPrefeitura" aria-label="Filtrar por faixa de valor">
           <option value="">Todos os valores</option>
           <option value="1000">Acima de R$ 1.000</option>
           <option value="500-999">De R$ 500 a R$ 999</option>
           <option value="0-499">Até R$ 499</option>
-        </select>
-        <select id="ordenarDiariasPrefeitura" aria-label="Ordenar diarias">
+        </select></label>
+        <label class="fiscalizacao-campo">Ordenar por<select id="ordenarDiariasPrefeitura" aria-label="Ordenar diarias">
           <option value="valor_desc">Maior valor total</option>
           <option value="qtd_desc">Maior quantidade</option>
           <option value="valor_unit_desc">Maior valor por diária</option>
           <option value="data_desc">Mais recentes</option>
           <option value="secretaria">Por secretaria</option>
-        </select>
+        </select></label>
         <span id="contadorDiariasPrefeitura" class="filterbar__count"></span>
       </div>
       <div id="rankingDiariasPrefeitura" class="diarias-ranking"></div>
@@ -423,30 +434,42 @@
         situação e gastos vinculados de combustível, manutenção, peças e serviços.
       </p>
       <p class="record-provenance" data-provenance="prefeitura" data-provenance-label="Betha/Portal da Prefeitura (veículos municipais)" data-provenance-url="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83061"></p>
+      <p id="frotaCobertura" class="fiscalizacao-fonte" hidden></p>
       <div id="frotaStats" class="stats"></div>
-      <div class="filterbar">
-        <input id="filtroFrota" type="search" placeholder="Buscar placa, modelo, secretaria, fornecedor ou tipo de gasto...">
-        <select id="filtroSituacaoFrota" aria-label="Filtrar frota por situação">
+      <div class="filterbar fiscalizacao-filtros" role="group" aria-label="Filtros da frota municipal">
+        <div class="fiscalizacao-filtros__titulo"><strong>Filtrar veículos</strong><span>Combine os campos para refinar o recorte.</span></div>
+        <label class="fiscalizacao-campo fiscalizacao-campo--busca">Buscar<input id="filtroFrota" type="search" placeholder="Placa, modelo, secretaria ou fornecedor"></label>
+        <label class="fiscalizacao-campo">Situação<select id="filtroSituacaoFrota" aria-label="Filtrar frota por situação">
           <option value="">Todas as situações</option>
-        </select>
-        <select id="filtroAquisicaoFrota" aria-label="Filtrar por tipo de aquisição">
+        </select></label>
+        <label class="fiscalizacao-campo">Tipo de aquisição<select id="filtroAquisicaoFrota" aria-label="Filtrar por tipo de aquisição">
           <option value="">Próprios, locados e cedidos</option>
-        </select>
-        <select id="filtroCentroFrota" aria-label="Filtrar por centro de custo">
+        </select></label>
+        <label class="fiscalizacao-campo">Centro de custo<select id="filtroCentroFrota" aria-label="Filtrar por centro de custo">
           <option value="">Todos os centros de custo</option>
-        </select>
-        <select id="ordenarFrota" aria-label="Ordenar frota">
+        </select></label>
+        <label class="fiscalizacao-campo">Ordenar por<select id="ordenarFrota" aria-label="Ordenar frota">
           <option value="gasto_desc">Maior gasto vinculado</option>
           <option value="combustivel_desc">Maior gasto com combustível</option>
           <option value="manutencao_desc">Maior gasto com manutenção</option>
           <option value="modelo">Modelo/descrição</option>
           <option value="centro">Centro de custo</option>
-        </select>
+        </select></label>
         <span id="frotaContador" class="filterbar__count"></span>
       </div>
       <div id="frotaAudit" class="frota-audit"></div>
       <div id="frotaLista" class="frota-list"></div>
     </div>
+    </section>
+
+    <section class="pref-panel" data-pref-panel="publicidade" role="tabpanel" id="panel-publicidade" aria-labelledby="tab-publicidade" tabindex="0">
+      <div class="block">
+        <h3 class="block__title">Publicidade institucional da Prefeitura</h3>
+        <p>Investimentos declarados no portal Publicidade Transparente. Não comprovam pagamento ou entrega e não devem ser somados aos valores da Betha ou do PNCP. O mês corrente pode estar incompleto.</p>
+        <select id="publicidadeOrgao" hidden aria-label="Órgão da publicidade"><option value="prefeitura">Prefeitura</option></select>
+        <div class="publicidade-filtros"><label>Período <select id="publicidadePeriodo" aria-label="Período da publicidade"></select></label></div>
+        <div id="publicidadeDados" aria-live="polite"><p>Carregando publicidade da Prefeitura…</p></div>
+      </div>
     </section>
 
     <section class="pref-panel" data-pref-panel="fontes" role="tabpanel" id="panel-fontes" aria-labelledby="tab-fontes" tabindex="0">
@@ -532,6 +555,8 @@
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -555,6 +580,7 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260730-relatorios2"></script>
+<script src="data-loader.js?v=20261105-fiscalizacao"></script>
+  <script src="modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>

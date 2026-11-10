@@ -30,6 +30,7 @@ class CrossingQualityTests(unittest.TestCase):
         emendas = [{
             "numero": 1,
             "ano": 2025,
+            "exercicioOrcamentario": "2025",
             "cnpj": "12.345.678/0001-90",
             "beneficiario": "Entidade Exemplo",
         }]
@@ -43,7 +44,7 @@ class CrossingQualityTests(unittest.TestCase):
 
         item = coletor_betha.cruzar_emendas(emendas, credores)[0]
         self.assertEqual(item["status"], "encontrado")
-        self.assertEqual(item["cruzamento"]["metodo"], "raiz_cnpj_e_periodo")
+        self.assertEqual(item["cruzamento"]["metodo"], "raiz_cnpj_e_exercicio_documental")
         self.assertEqual(item["cruzamento"]["confianca"], "media")
         self.assertTrue(item["cruzamento"]["evidencias"])
         self.assertTrue(item["cruzamento"]["limitacoes"])

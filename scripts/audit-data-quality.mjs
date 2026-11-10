@@ -4,10 +4,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
 import { agruparSancoes, avaliarIncompatibilidade, CATEGORIAS } from "./lib/classificar-sancoes.mjs";
-import { internalTimestamp, lastCompleteTimestamp } from "./lib/source-freshness.mjs";
+import { internalTimestamp, lastCompleteTimestamp, procurementResultTimestamps } from "./lib/source-freshness.mjs";
 import { avaliarDetalhamentoDiarias } from "./lib/audit-diarias.mjs";
 import { avaliarQuedaAnormal } from "./lib/data-drop.mjs";
 import { publishFiles } from "./lib/publish-files.mjs";
+import { blocksAuditScope } from "./lib/audit-scope.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, "..");
@@ -18,6 +19,8 @@ const outPath = path.join(chunksDir, "auditoria_dados.json");
 const statusPath = path.join(chunksDir, "status_fontes.json");
 const strict = process.argv.includes("--strict");
 const noExitCode = process.argv.includes("--no-exit-code");
+const auditScope = process.argv.find(arg => arg.startsWith("--scope="))?.slice(8) || "all";
+blocksAuditScope({ severity: "info" }, auditScope);
 
 function readJson(name) {
   const filePath = path.join(chunksDir, `${name}.json`);
@@ -248,6 +251,8 @@ const obrasAuditaveis = !hasUnreliableCollectionStatus({
 nameToCnpjRoot = buildNameToCnpjRoot(chunks.cnpjs);
 
 const domainConfig = [
+  ["publicidade_prefeitura", "Publicidade / Prefeitura", readJson("publicidade_prefeitura"), 7],
+  ["publicidade_camara", "Publicidade / Câmara", readJson("publicidade_camara"), 7],
   ["atualizado_em", "Coleta principal", chunks.atualizado, 3],
   ["prefeitura", "Prefeitura/Betha", chunks.prefeitura, 7],
   ["camara_betha", "Camara/Betha", chunks.camaraBetha, 7],
@@ -279,7 +284,7 @@ function sourceHealthMetadata(name, value) {
     "status", "status_fontes", "observacao", "observacoes", "erros", "erro",
     "resumo", "consultas", "fontes_verificadas", "cobertura", "metadados", "metadata",
     "contratos_status_coleta", "obras_status_coleta", "frota_status_coleta",
-    "dados_abertos_status", "meta", "coleta_frescor",
+    "dados_abertos_status", "meta", "coleta_frescor", "coleta_status",
   ];
   const metadata = Object.fromEntries(
     commonKeys
@@ -300,12 +305,13 @@ function buildSourceStatus() {
     const metadataText = JSON.stringify(sourceHealthMetadata(name, value)).toLowerCase();
     // prefeitura.json e produzido pelo coletor principal, mas por compatibilidade
     // ainda nao carrega timestamp proprio. Nesse caso, usa o carimbo do mesmo ciclo.
-    const checkedAt = internalTimestamp({ iso: value?.coleta_frescor?.checked_at }) || internalTimestamp(value)
+    const procurementTimes = name === "licitacoes_resultados" ? procurementResultTimestamps(value) : null;
+    const checkedAt = procurementTimes ? procurementTimes.checkedAt : internalTimestamp({ iso: value?.coleta_frescor?.checked_at }) || internalTimestamp(value)
       || (name === "prefeitura" ? internalTimestamp(chunks.atualizado) : undefined);
     const preserved = value?._preservado === true || /preservad[oa]|preservada_por_cobertura/.test(metadataText);
     // O carimbo do ciclo atual não rejuvenesce registros preservados. Sem
     // referência à última coleta completa, a idade dessa base é desconhecida.
-    const updatedAt = value?.coleta_frescor ? lastCompleteTimestamp(value) : preserved ? undefined : checkedAt;
+    const updatedAt = procurementTimes ? procurementTimes.updatedAt : value?.coleta_frescor ? lastCompleteTimestamp(value) : preserved ? undefined : checkedAt;
     const ageDays = daysSince(updatedAt);
     let status;
     let reason;
@@ -313,6 +319,9 @@ function buildSourceStatus() {
     if (empty) {
       status = "failed";
       reason = value === undefined ? "Chunk ausente." : "Chunk vazio; ausencia real de registros nao foi confirmada.";
+    } else if (name.startsWith("publicidade_") && value?.status === "failed") {
+      status = "failed";
+      reason = "Consulta indisponível, sem base anterior verificável. Isso não comprova ausência de investimentos.";
     } else if (preserved) {
       status = "preserved";
       reason = updatedAt
@@ -325,7 +334,7 @@ function buildSourceStatus() {
       reason = pncpSemDados
         ? "A fonte falhou e nao retornou registros; zero nao significa ausencia de contratacoes."
         : "Parte da coleta apresentou erro; os registros validos foram preservados.";
-    } else if (/parcial|cobertura baixa|escopo limitado/.test(metadataText)) {
+    } else if (value?.status === "partial" || /parcial|cobertura baixa|escopo limitado/.test(metadataText)) {
       status = "partial";
       reason = "Metadados indicam cobertura parcial.";
     } else if (/"status"\s*:\s*"unknown"/.test(metadataText)) {
@@ -866,6 +875,15 @@ for (const [nome, rotulo] of [
 const emendasSemPagamentoAlto = (chunks.prefeitura?.emendas_cruzadas || [])
   .filter((e) => e.status === "sem_pagamento" && Number(e.valor_brl || e.valor || 0) >= 50000);
 
+const cruzamentosForaDoExercicio = (chunks.prefeitura?.emendas_cruzadas || []).filter(e =>
+  e.status === 'encontrado' && (!/^20\d{2}$/.test(String(e.exercicioOrcamentario || '')) ||
+    (e.pagamentos || []).some(p => String(p.ano) !== String(e.exercicioOrcamentario))));
+if (cruzamentosForaDoExercicio.length) {
+  add('error', 'emendas-cruzamento-exercicio', 'Cruzamento de emendas fora do exercício documental',
+    `${cruzamentosForaDoExercicio.length} correspondência(s) incluem exercício não confirmado ou pagamento de outro ano.`,
+    'Recalcular o cruzamento pelo exercício confirmado. Pagamentos ao beneficiário não comprovam execução da emenda.', 'prefeitura.json');
+}
+
 if (emendasSemPagamentoAlto.length) {
   add(
     "warning",
@@ -876,7 +894,7 @@ if (emendasSemPagamentoAlto.length) {
     "prefeitura.json",
     { verification: {
       estado: "nao_localizado",
-      metodo: "raiz_cnpj_e_periodo",
+      metodo: "raiz_cnpj_e_exercicio_documental",
       confianca: "baixa",
       evidencias: [`${emendasSemPagamentoAlto.length} emenda(s) sem pagamento localizado`],
       limitacoes: ["Ausencia no cruzamento nao prova falta de execucao", "Pagamento ao mesmo CNPJ nao comprova origem na emenda"],
@@ -1035,20 +1053,16 @@ if (chunks.sancoes?.sancoes_vigentes > 0) {
   );
 }
 
-// --- Homologações simbólicas (R$ 0,01 etc.) ---
-// Modelo de exploração comercial é legal; o alerta existe porque o valor
-// real do negócio (receita de bar/camarote/patrocínio) fica nos anexos do
-// edital, invisível ao cidadão que só vê o preço homologado.
-const simbolicas = chunks.licitacoesResultados?.homologacoes_simbolicas || [];
+// O sinal compara somente preços unitários do mesmo item, na mesma unidade.
+const simbolicas = (chunks.licitacoesResultados?.homologacoes_simbolicas || [])
+  .filter(s => s.metodo === "preco_unitario_mesmo_item" && s.unidade_medida &&
+    Number(s.valor_unitario_estimado) > 0 && Number(s.valor_unitario_homologado) > 0 &&
+    Number(s.valor_unitario_homologado) <= 10 && Number(s.valor_unitario_homologado) / Number(s.valor_unitario_estimado) <= 0.01);
 if (simbolicas.length) {
-  add(
-    "warning",
-    "homologacao-simbolica",
-    "Valor homologado muito abaixo da estimativa",
-    `${simbolicas.length} licitacao(oes) apresentam valor homologado muito abaixo da estimativa. Exemplos: ${simbolicas.slice(0, 3).map((s) => `${s.objeto.slice(0, 60)} → ${s.vencedor} por R$ ${Number(s.valor_homologado).toFixed(2)} (estimado R$ ${(Number(s.valor_estimado) / 1000).toFixed(0)} mil)`).join("; ")}. Isso pode decorrer do modelo de exploracao comercial, em que as contrapartidas do edital representam o valor economico principal; o numero isolado nao mede sozinho o negocio.`,
-    "Solicitar a integra do edital e anexos (contrapartidas, receitas de exploracao comercial) e o contrato assinado via LAI.",
-    "licitacoes_resultados.json",
-  );
+  const compras = new Set(simbolicas.map(s => s.controle_pncp).filter(Boolean));
+  add("warning", "homologacao-simbolica", "Preços unitários que precisam de conferência",
+    `${simbolicas.length} item(ns) em ${compras.size} compra(s) têm preço unitário homologado muito inferior à estimativa do mesmo item e unidade. Confira quantidade, edital e condições. O sinal não comprova irregularidade.`,
+    "Solicitar edital, proposta e homologação do item e conferir a mesma unidade e quantidade.", "licitacoes_resultados.json");
 }
 
 // --- TSE: doador de campanha que é fornecedor/sócio ---
@@ -1186,6 +1200,7 @@ const counts = items.reduce((acc, item) => {
 const level = counts.error ? "critical" : counts.warning ? "attention" : "ok";
 const payload = {
   gerado_em: new Date().toISOString(),
+  validation_scope: auditScope,
   level,
   summary: {
     errors: counts.error || 0,
@@ -1215,5 +1230,5 @@ for (const item of items.filter((item) => item.severity !== "ok")) {
 // contando como erro na tela/IFT, mas nao impede o ciclo diario de rodar —
 // sem isso, todo achado grave (que pode durar meses) travava o site para
 // sempre no ultimo backup bom, como ocorreu apos a descoberta da MASTERFER.
-const errosQueBloqueiam = items.filter((i) => i.severity === "error" && i.blocksPipeline !== false).length;
+const errosQueBloqueiam = items.filter((i) => blocksAuditScope(i, auditScope)).length;
 if ((strict || !noExitCode) && errosQueBloqueiam > 0) process.exit(1);

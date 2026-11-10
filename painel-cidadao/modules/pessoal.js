@@ -44,10 +44,13 @@
     if (!compPref) { const m = prefStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i); if (m) compPref = m[1]; }
     if (!compCam) { const m = camStatusText.match(/compet[eê]ncia\s*(\d{2}\/\d{4})/i); if (m) compCam = m[1]; }
 
-    const processarEConsolidar = (servidores, orgao) => {
+    const competenciaValida = (c) => /^(0[1-9]|1[0-2])\/\d{4}$/.test(String(c || ""));
+    const competenciaLinha = (s, orgao) => competenciaValida(s.competencia)
+      ? s.competencia : (orgao === "Câmara" ? compCam : compPref);
+    const processarEConsolidar = (servidores, orgao, mes = "") => {
       const grupos = {};
       servidores.forEach(s => {
-        const chave = s.matricula ? `${s.matricula}` : `${s.nome}-${s.cargo}`;
+        const chave = s.matricula ? `${s.matricula}` : (s.id_registro || `${s.nome}-${s.cargo}`);
         if (!grupos[chave]) {
           grupos[chave] = [];
         }
@@ -60,13 +63,16 @@
       // Antes o "mais recente" era o último da lista — dependia da ordem em
       // que a API devolvia as linhas.
       const chaveComp = (s) => {
-        const m = String(s.competencia || "").match(/^(\d{2})\/(\d{4})$/);
+        const m = String(competenciaLinha(s, orgao) || "").match(/^(\d{2})\/(\d{4})$/);
         return m ? m[2] + m[1] : "";
       };
       Object.keys(grupos).forEach(chave => {
-        const historico = grupos[chave].slice()
+        const limite = mes ? mes.slice(3) + mes.slice(0, 2) : "";
+        const historico = grupos[chave].filter(s => !mes || (chaveComp(s) && chaveComp(s) <= limite))
           .sort((a, b) => chaveComp(a).localeCompare(chaveComp(b)));
+        if (!historico.length || (mes && competenciaLinha(historico[historico.length - 1], orgao) !== mes)) return;
         const maisRecente = { ...historico[historico.length - 1], orgao };
+        maisRecente.competencia = competenciaLinha(maisRecente, orgao);
         
         const vencimentosValidos = historico
           .map(h => Number(h.vencimentos) || 0)
@@ -122,6 +128,7 @@
     const buscaEl    = $("buscaServidor");
     const orgaoEl    = $("filtroOrgao");
     const tipoEl     = $("filtroTipo");
+    const mesEl      = $("filtroMesPessoal");
     const listaEl    = $("listaPessoal");
     const contadorEl = $("pessoalContador");
 
@@ -132,20 +139,72 @@
       const m = /^(\d{2})\/(\d{4})$/.exec(c || "");
       return m ? `${_mesesPt[+m[1] - 1] || m[1]}/${m[2]}` : (c || "");
     };
+    const historicoPorMes = new Map();
+    const folhasPorMes = new Map();
+    const pedidosFolha = new Map();
+    const compararEl = $("compararMesPessoal");
+    const mesesDisponiveis = () => [...new Set([
+      ...prefServ.map(s => competenciaLinha(s, "Prefeitura")),
+      ...camaraServ.map(s => competenciaLinha(s, "Câmara")),
+      ...historicoPorMes.keys(),
+    ].filter(competenciaValida))].sort((a, b) => (b.slice(3) + b.slice(0, 2)).localeCompare(a.slice(3) + a.slice(0, 2)));
+    const obterFolha = async (mes) => {
+      if (folhasPorMes.has(mes)) return folhasPorMes.get(mes);
+      if (!historicoPorMes.has(mes)) return pes;
+      if (!pedidosFolha.has(mes)) {
+        const chave = historicoPorMes.get(mes);
+        const pedido = (async () => {
+          const folha = location.protocol === "file:" ? D[chave] : await fetch(`data/chunks/${chave}.json`).then(r => {
+            if (!r.ok) throw new Error("Folha histórica indisponível");
+            return r.json();
+          });
+          if (!folha || folha.competencia !== mes || !["prefeitura", "camara"].some(org => Array.isArray(folha[org]?.servidores))) throw new Error("Competência inválida");
+          for (const org of ["prefeitura", "camara"]) {
+            if ((folha[org]?.servidores || []).some(s => s.competencia !== mes)) throw new Error("Registro fora do mês");
+          }
+          folhasPorMes.set(mes, folha);
+          return folha;
+        })().finally(() => pedidosFolha.delete(mes));
+        pedidosFolha.set(mes, pedido);
+      }
+      return pedidosFolha.get(mes);
+    };
+    const registrosDaFolha = (folha, mes) => [
+      ...processarEConsolidar(folha.camara?.servidores || [], "Câmara", mes),
+      ...processarEConsolidar(folha.prefeitura?.servidores || [], "Prefeitura", mes),
+    ];
+    const metadadosFonte = (s) => {
+      const mes = competenciaLinha(s, s.orgao);
+      const folha = folhasPorMes.get(mes) || pes;
+      const dados = folha[s.orgao === "Câmara" ? "camara" : "prefeitura"] || {};
+      const fonte = /^https:\/\//.test(dados.fonte || "") ? dados.fonte : "";
+      return { fonte, coletado: dados.coletado_em || folha.coletado_em || (mes === compPref || mes === compCam ? pes.coletado_em : "") || "Não informada",
+        situacao: dados.status_cobertura || dados.status || "Não informada" };
+    };
+    let filtroMesAlterado = false;
+    const atualizarMeses = () => {
+      if (!mesEl) return;
+      const selecionado = mesEl.value;
+      const meses = mesesDisponiveis();
+      mesEl.replaceChildren(new Option("Último registro de cada vínculo", ""),
+        ...meses.map(mes => new Option(fmtComp(mes), mes)));
+      mesEl.value = meses.includes(selecionado) ? selecionado : "";
+      if (compararEl) {
+        const anterior = compararEl.value;
+        compararEl.replaceChildren(new Option("Não comparar", ""), ...meses.map(mes => new Option(fmtComp(mes), mes)));
+        compararEl.value = meses.includes(anterior) ? anterior : "";
+      }
+    };
+    atualizarMeses();
+    let refEl;
     if (listaEl) {
-      let refEl = document.getElementById("pessoalCompetencia");
+      refEl = document.getElementById("pessoalCompetencia");
       if (!refEl) {
         refEl = document.createElement("p");
         refEl.id = "pessoalCompetencia";
         refEl.style.cssText = "margin:0 0 14px;padding:9px 13px;background:#eef4fb;border-left:3px solid #1565c0;border-radius:4px;font-size:0.92em;color:#23405c;line-height:1.45;";
         listaEl.before(refEl);
       }
-      const partes = [];
-      if (compPref) partes.push(`Prefeitura: <strong>${fmtComp(compPref)}</strong>`);
-      if (compCam) partes.push(`Câmara: <strong>${fmtComp(compCam)}</strong>`);
-      refEl.innerHTML = partes.length
-        ? `📅 <strong>Folha de referência</strong> — ${partes.join(" · ")}. Os valores são do mês indicado (último fechado disponível), não necessariamente o mês corrente. Confira no portal oficial.`
-        : "📅 Confira a competência (mês) da folha no portal oficial — os valores podem se referir a um mês fechado anterior.";
     }
 
     if ($("pessoalFonteNota")) {
@@ -162,10 +221,12 @@
     let _pessoalOffset = 0;
     let _pessoalView = [];
     let _pessoalQ = "";
+    let csvBtnP = null;
+    let renderVersion = 0;
 
-    const _renderServCard = (s) => {
+    const _renderServCard = (s, indice) => {
       const isCom = s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "");
-      const comp = s.orgao === "Câmara" ? compCam : compPref;
+      const comp = competenciaLinha(s, s.orgao);
       const tagOutroOrgao = s.outroOrgao
         ? `<div class="tag-periodo-alerta" style="display:inline-block;margin-top:6px;font-size:0.82em;padding:3px 8px;border-radius:4px;background:#e8f0fe;color:#1a4d8f;border:1px solid #b6d0f5" title="O mesmo nome completo consta na folha dos dois órgãos no ano — em geral indica mudança de órgão (exoneração + nova nomeação). Nome idêntico ainda pode ser homônimo: confira a matrícula na fonte oficial antes de concluir.">↔ Consta também na folha da ${esc(s.outroOrgao)} (mudança de órgão ou homônimo)</div>`
         : "";
@@ -190,6 +251,7 @@
             ${s.matricula ? `<span><strong>Matrícula:</strong> ${s.matricula}</span>` : ""}
           </div>
           ${tagAtipico}${tagOutroOrgao}
+          <button type="button" class="btn-link" data-pessoal-historico="${indice}" aria-label="Ver histórico de ${esc(s.nome || "servidor")}">Ver histórico</button>
         </div>
       </article>`;
     };
@@ -197,6 +259,7 @@
     const _doRenderServidores = () => {
       const slice = _pessoalView.slice(0, _pessoalOffset + PESSOAL_PAGE);
       listaEl.innerHTML = slice.map(_renderServCard).join("");
+      listaEl.querySelectorAll("[data-pessoal-historico]").forEach(button => button.addEventListener("click", () => abrirHistoricoServidor(_pessoalView[Number(button.dataset.pessoalHistorico)])));
       const maisId = "pessoalLoadMore";
       let maisEl = document.getElementById(maisId);
       const rest = _pessoalView.length - slice.length;
@@ -214,19 +277,61 @@
       }
     };
 
-    const render = () => {
+    const render = async () => {
+      const version = ++renderVersion;
       _pessoalOffset = 0;
       const q = norm(buscaEl.value.trim());
       const orgao = orgaoEl.value;
       const tipo = tipoEl.value;
+      const mes = mesEl?.value || "";
+      if (mes && historicoPorMes.has(mes) && (mes !== compPref || mes !== compCam) && !folhasPorMes.has(mes)) {
+        _pessoalView = [];
+        if (csvBtnP) csvBtnP.disabled = true;
+        $("pessoalLoadMore")?.remove();
+        $("pessoalEmpty").style.display = "none";
+        contadorEl.textContent = "Carregando mês selecionado…";
+        listaEl.innerHTML = '<p role="status">Carregando a folha do mês selecionado…</p>';
+        statusPaineis(`Carregando ${fmtComp(mes)}…`);
+        if (refEl) refEl.textContent = `Consultando ${fmtComp(mes)}…`;
+        try {
+          await obterFolha(mes);
+        } catch (_) {
+          if (mesEl.value !== mes || version !== renderVersion) return;
+          contadorEl.textContent = "Mês não carregado";
+          statusPaineis("Não foi possível carregar o mês selecionado.");
+          listaEl.innerHTML = '<p role="status">Não foi possível carregar esta folha. Nenhum valor de outro mês foi substituído.</p><button type="button" class="btn">Tentar novamente</button>';
+          listaEl.querySelector("button").addEventListener("click", render, { once: true });
+          return;
+        }
+        if (mesEl.value !== mes || version !== renderVersion) return;
+      }
+      if (csvBtnP) csvBtnP.disabled = false;
+      const folhaMes = folhasPorMes.get(mes);
+      const registrosDoMes = mes ? [
+        ...processarEConsolidar(folhaMes ? folhaMes.camara?.servidores || [] : camaraServ, "Câmara", mes),
+        ...processarEConsolidar(folhaMes ? folhaMes.prefeitura?.servidores || [] : prefServ, "Prefeitura", mes),
+      ] : todos;
+      renderPaineis(registrosDoMes, mes || compPref, mes || compCam);
+      if (mes && refEl) {
+        const cobertura = ["Prefeitura", "Câmara"].map(orgaoNome =>
+          `${orgaoNome}: ${registrosDoMes.some(s => s.orgao === orgaoNome) ? "com registros" : "sem registros coletados neste mês"}`);
+        refEl.innerHTML = `<strong>Mês selecionado: ${esc(fmtComp(mes))}</strong> — ${cobertura.join(" · ")}. Confira os valores no portal oficial.`;
+      } else if (refEl) {
+        const partes = [];
+        if (compPref) partes.push(`Prefeitura: <strong>${esc(fmtComp(compPref))}</strong>`);
+        if (compCam) partes.push(`Câmara: <strong>${esc(fmtComp(compCam))}</strong>`);
+        refEl.innerHTML = partes.length
+          ? `<strong>Folha de referência</strong> — ${partes.join(" · ")}. Exibido o último registro disponível de cada vínculo; confira o mês de cada valor no portal oficial.`
+          : "Confira a competência (mês) da folha no portal oficial — os valores podem se referir a um mês fechado anterior.";
+      }
 
       _pessoalQ = q;
-      _pessoalView = todos.filter(s => {
-        const matchesQ = !q || casaBusca([s.nome, s.lotacao].join(" "), q);
-        const matchesOrgao = !orgao || norm(s.orgao).includes(orgao);
-        const isCom = s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "");
-        const matchesTipo = !tipo || (tipo === "comissionado" ? isCom : !isCom);
-        return matchesQ && matchesOrgao && matchesTipo;
+      _pessoalView = registrosDoMes.filter(s => {
+        if (mes) {
+          if (s.orgao === "Câmara" && nomesPref.has(nomeKey(s))) s.outroOrgao = "Prefeitura";
+          if (s.orgao === "Prefeitura" && nomesCamara.has(nomeKey(s))) s.outroOrgao = "Câmara";
+        }
+        return passaFiltro(s, { q, orgao, tipo });
       });
 
       const com = _pessoalView.filter(s => s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || ""));
@@ -235,7 +340,7 @@
       // Os cartoes contam a VISAO FILTRADA. Sem dizer isso na tela, uma busca
       // que nao acha nada faz o painel anunciar "Cargos Comissionados 0" e
       // "R$ 0,00" com cara de numero oficial do municipio.
-      const filtrando = Boolean(q || orgao || tipo);
+      const filtrando = Boolean(q || orgao || tipo || mes);
       const sufixo = filtrando ? " no filtro atual" : "";
 
       if ($("totServidores")) $("totServidores").textContent = filtrando ? _pessoalView.length : todos.length;
@@ -249,6 +354,7 @@
       if ($("custoFolhaSub")) $("custoFolhaSub").textContent = "Apenas comissionados" + sufixo;
 
       contadorEl.textContent = `${_pessoalView.length} registro(s) encontrado(s)`;
+      compararPeriodos(registrosDoMes, mes, { q, orgao, tipo });
 
       if (!_pessoalView.length) {
         listaEl.innerHTML = "";
@@ -261,15 +367,119 @@
       _doRenderServidores();
     };
 
+    function passaFiltro(s, { q, orgao, tipo }) {
+      const isCom = s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "");
+      return (!q || casaBusca([s.nome, s.lotacao].join(" "), q)) &&
+        (!orgao || norm(s.orgao).includes(orgao)) && (!tipo || (tipo === "comissionado" ? isCom : !isCom));
+    }
+
+    function tabelaPessoal(titulo, colunas, linhas) {
+      return `<div role="region" tabindex="0" aria-label="${esc(titulo)}" style="overflow:auto"><table class="pessoal-tabela"><caption>${esc(titulo)}</caption><thead><tr>${colunas.map(c => `<th scope="col">${esc(c)}</th>`).join("")}</tr></thead><tbody>${linhas.join("")}</tbody></table></div>`;
+    }
+
+    function variacao(atual, anterior) {
+      const diferenca = Math.round((atual - anterior) * 100) / 100;
+      const percentual = anterior <= 0 ? "percentual não calculável com base zero ou negativa" :
+        `${diferenca > 0 ? "+" : ""}${new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 }).format(diferenca / anterior * 100)}%`;
+      return `${diferenca > 0 ? "+" : ""}${fmtBRL(diferenca)} (${percentual})`;
+    }
+
+    async function compararPeriodos(registros, mes, filtros) {
+      const alvo = $("pessoalComparacao");
+      if (!alvo || !compararEl) return;
+      const anterior = compararEl.value;
+      if (!anterior) { alvo.textContent = "Escolha um mês de comparação para consultar a diferença dos valores."; return; }
+      const atual = mes || (compPref === compCam ? compPref : "");
+      if (!atual) { alvo.textContent = "Escolha um único mês da folha para comparar."; return; }
+      if (anterior === atual) { alvo.textContent = "Escolha meses diferentes para comparar."; return; }
+      const version = renderVersion;
+      alvo.textContent = `Carregando ${fmtComp(anterior)} para comparação…`;
+      try {
+        const folha = await obterFolha(anterior);
+        if (version !== renderVersion || compararEl.value !== anterior) return;
+        const antes = registrosDaFolha(folha, anterior).filter(s => passaFiltro(s, filtros));
+        const agora = registros.filter(s => passaFiltro(s, filtros));
+        const linhas = ["Prefeitura", "Câmara"].filter(o => !filtros.orgao || norm(o).includes(filtros.orgao)).map(orgao => {
+          const a = agora.filter(s => s.orgao === orgao), b = antes.filter(s => s.orgao === orgao);
+          if (!a.length || !b.length) return `<tr><th scope="row">${esc(orgao)}</th><td colspan="5">Sem registros no recorte de ${esc(!a.length ? atual : anterior)}; comparação indisponível.</td></tr>`;
+          const soma = (rows, campo) => Math.round(rows.reduce((s, r) => s + (Number(r[campo]) || 0), 0) * 100) / 100;
+          const brutoA = soma(a, "vencimentos"), brutoB = soma(b, "vencimentos");
+          return `<tr><th scope="row">${esc(orgao)}</th><td>${b.length} → ${a.length}</td><td>${fmtBRL(brutoB)}</td><td>${fmtBRL(brutoA)}</td><td>${variacao(brutoA, brutoB)}</td><td>${variacao(soma(a, "liquido"), soma(b, "liquido"))}</td></tr>`;
+        });
+        alvo.innerHTML = tabelaPessoal(`${fmtComp(atual)} em comparação com ${fmtComp(anterior)} — filtros da lista`, ["Órgão", "Registros antes → agora", `Bruto ${anterior}`, `Bruto ${atual}`, "Diferença bruta", "Diferença líquida"], linhas);
+      } catch (_) {
+        if (version === renderVersion) {
+          alvo.innerHTML = '<p>Não foi possível carregar o mês de comparação. A lista atual foi mantida.</p><button type="button" class="btn">Tentar comparação novamente</button>';
+          alvo.querySelector("button").addEventListener("click", () => compararPeriodos(registros, mes, filtros), { once: true });
+        }
+      }
+    }
+
+    let historyVersion = 0;
+    async function abrirHistoricoServidor(servidor) {
+      if (!servidor || !window.FISCALIZA.dossie?.abrirComHtml) return;
+      const version = ++historyVersion;
+      window.FISCALIZA.dossie.abrirComHtml(`<section data-pessoal-historia="${version}"><h2>Histórico de ${esc(servidor.nome)}</h2><p>${esc(servidor.orgao)}. Correspondências por nome podem incluir homônimos ou outros vínculos; confira cargo e matrícula na fonte.</p><p role="status">Carregando competências disponíveis…</p><div class="pessoal-historia-tabela"></div></section>`);
+      const dialog = $("modalFiscaliza");
+      dialog.setAttribute("aria-label", `Histórico de ${servidor.nome}`);
+      dialog.addEventListener("close", () => dialog.removeAttribute("aria-label"), { once: true });
+      const ativo = () => $("modalFiscaliza")?.open && $("modalFiscalizaContent")?.querySelector(`[data-pessoal-historia="${version}"]`);
+      const linhas = [];
+      let falhas = 0;
+      const meses = mesesDisponiveis().reverse();
+      for (const [indice, mes] of meses.entries()) {
+        if (!ativo()) return;
+        try {
+          const folha = await obterFolha(mes);
+          if (!ativo()) return;
+          const dados = folha[servidor.orgao === "Câmara" ? "camara" : "prefeitura"] || {};
+          const nomes = (dados.servidores || []).filter(s => nomeKey(s) === nomeKey(servidor) && competenciaLinha(s, servidor.orgao) === mes);
+          const confirmados = servidor.matricula ? nomes.filter(s => s.matricula && String(s.matricula) === String(servidor.matricula)) : [];
+          const candidatos = confirmados.length ? confirmados : (servidor.matricula ? nomes.filter(s => !s.matricula) : nomes);
+          if (!candidatos.length) linhas.push(`<tr><th scope="row">${esc(mes)}</th><td colspan="6">Sem registro localizado para essa identificação; não equivale a pagamento zero.</td></tr>`);
+          for (const s of candidatos) {
+            const meta = metadadosFonte({ ...s, orgao: servidor.orgao });
+            linhas.push(`<tr><th scope="row">${esc(mes)}</th><td>${fmtBRL(s.vencimentos || 0)}</td><td>${fmtBRL(s.liquido || 0)}</td><td>${esc(s.cargo || s.lotacao || "Não informado")}<br>${esc(s.vinculo || "Vínculo não informado")}</td><td>${esc(s.matricula || "Não informada")}</td><td>${confirmados.length ? "Matrícula correspondente no mesmo órgão" : "Por nome; vínculo não confirmado"}${candidatos.length > 1 ? " · múltiplos registros" : ""}</td><td>${meta.fonte ? `<a href="${esc(meta.fonte)}" target="_blank" rel="noopener">Conferir fonte oficial</a>` : "Fonte não informada"}<br>Coleta registrada: ${esc(meta.coletado)}</td></tr>`);
+          }
+        } catch (_) {
+          if (!ativo()) return;
+          falhas += 1;
+          linhas.push(`<tr><th scope="row">${esc(mes)}</th><td colspan="6">Falha no carregamento; nenhum valor foi inferido.</td></tr>`);
+        }
+        ativo().querySelector('[role="status"]').textContent = `Consultadas ${indice + 1} de ${meses.length} competências; aguarde a conclusão.`;
+      }
+      if (!ativo()) return;
+      ativo().querySelector('[role="status"]').textContent = `${falhas ? `Consulta concluída com ${falhas} competência(s) indisponível(is).` : "Consulta concluída."} Registros do mesmo nome permanecem separados; não some possíveis homônimos.`;
+      ativo().querySelector(".pessoal-historia-tabela").innerHTML = tabelaPessoal(`Histórico disponível — ${servidor.orgao}`, ["Mês", "Bruto", "Líquido", "Cargo e vínculo", "Matrícula", "Correspondência", "Fonte e coleta"], linhas);
+    }
+
+    function statusPaineis(texto) {
+      for (const id of ["comparativoComissionados", "primeiroEscalao", "rankingComissionados", "pessoalComparacao"]) {
+        if ($(id)) $(id).innerHTML = `<p role="status">${esc(texto)}</p>`;
+      }
+      for (const id of ["totServidores", "totComissionados", "custoFolha", "pctComissionados"]) if ($(id)) $(id).textContent = "—";
+      if ($("rankingPeriodoInfo")) $("rankingPeriodoInfo").textContent = texto;
+    }
+
+    function renderPaineis(todos, compPref, compCam) {
     // Comparativo comissionados Câmara × Prefeitura
     const blocoComp = $("bloco-comparativo-comissionados");
     const divComp   = $("comparativoComissionados");
-    const camRes  = (pes.camara   || {}).resumo || {};
-    const prefRes = (pes.prefeitura || {}).resumo || {};
+    const resumoPeriodo = (orgao) => {
+      const registros = todos.filter(s => s.orgao === orgao);
+      const com = registros.filter(s => s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || ""));
+      return { servidores_qtd: registros.length, comissionados_qtd: com.length,
+        folha_bruta_comissionados: com.reduce((s, r) => s + (Number(r.vencimentos) || 0), 0) };
+    };
+    const camRes  = resumoPeriodo("Câmara");
+    const prefRes = resumoPeriodo("Prefeitura");
     const camQtd  = camRes.comissionados_qtd  || 0;
     const camTot  = camRes.servidores_qtd     || 0;
     const prefQtd = prefRes.comissionados_qtd  || 0;
     const prefTot = prefRes.servidores_qtd     || 0;
+    if (blocoComp) blocoComp.hidden = false;
+    if (divComp && !(camTot || prefTot)) divComp.textContent = "Sem registros para o mês selecionado.";
+    if ($("comparativoPeriodoInfo")) $("comparativoPeriodoInfo").textContent = `Fonte: Betha. Prefeitura: ${compPref || "mês não informado"} · Câmara: ${compCam || "mês não informado"}. Confira o vínculo na fonte oficial.`;
     if (blocoComp && divComp && (camTot > 0 || prefTot > 0)) {
       blocoComp.hidden = false;
       const pctCam  = camTot  ? (camQtd  / camTot  * 100) : 0;
@@ -285,15 +495,15 @@
             <div style="width:${Math.min(pct/barMax*100,100).toFixed(1)}%;height:100%;background:${cor};border-radius:4px;transition:width .5s"></div>
           </div>
           <div class="small muted" style="margin-top:4px">
-            ${fmtNum(com)} comissionados de ${fmtNum(tot)} vínculos ativos
+            ${fmtNum(com)} comissionados de ${fmtNum(tot)} registros da folha
             ${folhaCom ? ` · Folha comissionados: <strong>${fmtBRL(folhaCom)}</strong> na competência ${esc(comp || "não informada")}` : ""}
           </div>
         </div>`;
       // A folha vem com uma linha por servidor POR MÊS: o resumo já soma só a
       // competência de referência. Rotular "/mês" sem dizer qual mês foi o que
       // publicou R$ 1,1 mi como custo mensal quando o mês custava R$ 218 mil.
-      const camComp  = camRes.competencia_referencia  || (pes.camara     || {}).competencia;
-      const prefComp = prefRes.competencia_referencia || (pes.prefeitura || {}).competencia;
+      const camComp  = compCam;
+      const prefComp = compPref;
       divComp.innerHTML =
         mkBar("Câmara Municipal",  camQtd,  camTot,  pctCam,
               camRes.folha_bruta_comissionados  || 0, "#c0392b", camComp) +
@@ -302,8 +512,7 @@
         (camTot > 0 && prefTot > 0 ? `
         <div class="report-note" style="margin-top:8px;border-left:4px solid #c0392b;padding-left:12px">
           A Câmara tem <strong>${pctCam.toFixed(1)}% de comissionados</strong> —
-          ${pctPref > 0 ? `${(pctCam/pctPref).toFixed(0)}× mais que a Prefeitura (${pctPref.toFixed(1)}%).` : "contra proporção mínima na Prefeitura."}
-          Uma Câmara Municipal com quadro legislativo enxuto deveria ter proporção próxima de zero.
+          a Prefeitura tem <strong>${pctPref.toFixed(1)}%</strong> no período indicado. As proporções descrevem os registros coletados e não demonstram irregularidade.
         </div>` : "");
     }
 
@@ -389,6 +598,9 @@
           </article>`;
         }).join("");
 
+      } else {
+        rankingEl.innerHTML = '<p>Sem comissionados localizados no mês selecionado.</p>';
+      }
         const infoEl = $("rankingPeriodoInfo");
         if (infoEl) {
           const partes = [];
@@ -402,25 +614,52 @@
             : "(Competência não informada pela fonte nesta coleta — Prefeitura e Câmara sem mês de referência; confira no portal oficial)";
           infoEl.style.display = "inline-block";
         }
-      }
+    }
     }
 
     buscaEl.addEventListener("input", render);
     orgaoEl.addEventListener("change", render);
     tipoEl.addEventListener("change", render);
+    compararEl?.addEventListener("change", render);
+    mesEl?.addEventListener("change", () => { filtroMesAlterado = true; render(); });
 
-    // Aplica parâmetros de URL: ?tipo=comissionado, ?orgao=camara, ?q=nome
+    // Aplica parâmetros de URL: ?tipo=comissionado, ?orgao=camara, ?q=nome, ?mes=09/2026
     (function applyPessoalParams() {
       const p = new URLSearchParams(window.location.search);
       const tipo  = p.get("tipo");
       const orgao = p.get("orgao");
       const q     = p.get("q");
+      const mes   = p.get("mes");
       if (tipo  && tipoEl)  tipoEl.value  = tipo;
       if (orgao && orgaoEl) orgaoEl.value = orgao;
       if (q     && buscaEl) buscaEl.value = q;
+      if (mesEl && [...mesEl.options].some(option => option.value === mes)) mesEl.value = mes;
     })();
 
     render();
+
+    // Apenas o índice pequeno é carregado inicialmente; cada folha mensal
+    // nominal só é solicitada depois de escolher sua competência.
+    (async () => {
+      try {
+        const indice = location.protocol === "file:" ? D.pessoal_historico : await fetch("data/chunks/pessoal_historico.json").then(r => {
+          if (!r.ok) throw new Error("Histórico indisponível");
+          return r.json();
+        });
+        for (const entrada of indice?.competencias || []) {
+          const mes = entrada.competencia;
+          if (!competenciaValida(mes)) continue;
+          const chave = `pessoal_folha_${mes.slice(3)}_${mes.slice(0, 2)}`;
+          if (entrada.chunk === chave && Object.values(entrada.orgaos || {}).some(o => o.registros > 0)) historicoPorMes.set(mes, chave);
+        }
+        atualizarMeses();
+        const solicitado = new URLSearchParams(location.search).get("mes");
+        if (!filtroMesAlterado && historicoPorMes.has(solicitado)) { mesEl.value = solicitado; render(); }
+      } catch (_) {
+        const nota = $("pessoalMesNota");
+        if (nota) nota.textContent = "Histórico indisponível no momento. O filtro mantém os meses da folha já carregada; tente atualizar a página.";
+      }
+    })();
 
     // Quem chega da busca da home com um termo quer o resultado, não os painéis
     // do topo: rola até a lista filtrada.
@@ -430,7 +669,7 @@
 
     // CSV export button for servidores
     if (todos.length && contadorEl) {
-      const csvBtnP = document.createElement("button");
+      csvBtnP = document.createElement("button");
       csvBtnP.className = "btn-csv"; csvBtnP.textContent = "↓ CSV";
       csvBtnP.title = "Baixar servidores filtrados como CSV";
       csvBtnP.style.marginLeft = "8px";
@@ -442,14 +681,24 @@
           orgao: cleanText(s.orgao || ""),
           vinculo: (s.comissionado_ou_similar || /COMISSION/i.test(s.lotacao || "")) ? "Comissionado" : "Concursado/Outro",
           matricula: s.matricula || "",
+          competencia: competenciaLinha(s, s.orgao) || "Não informada",
+          fonte: metadadosFonte(s).fonte || "Não informada",
+          coletado_em: metadadosFonte(s).coletado,
+          situacao_base: metadadosFonte(s).situacao,
           vencimentos: s.vencimentos || 0,
+          liquido: s.liquido || 0,
         })), [
           { key: "nome",       label: "Nome" },
           { key: "cargo",      label: "Cargo/Lotação" },
           { key: "orgao",      label: "Órgão" },
           { key: "vinculo",    label: "Vínculo" },
           { key: "matricula",  label: "Matrícula" },
+          { key: "competencia",label: "Competência" },
+          { key: "fonte", label: "Fonte oficial" },
+          { key: "coletado_em", label: "Data da coleta registrada" },
+          { key: "situacao_base", label: "Situação da base" },
           { key: "vencimentos",label: "Vencimentos (R$)" },
+          { key: "liquido", label: "Líquido (R$)" },
         ], `servidores-varginha-${new Date().toISOString().slice(0,10)}.csv`);
       });
     }

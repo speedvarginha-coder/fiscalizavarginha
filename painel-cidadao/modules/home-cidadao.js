@@ -137,7 +137,7 @@
       termos: ["asfalto", "buraco", "pavimentacao", "obra", "recape", "tapa buraco", "rua"],
       href: "prefeitura.html?tab=asfalto&q=asfalto", abre: "a aba Asfalto da Prefeitura, com as obras oficiais, metragem e custo por m²",
       pergunta: "Solicito a relação de obras de pavimentação e tapa-buraco em execução, com contrato, empresa, metragem, custo por m², fiscal responsável e medições." },
-    { id: "diarias", rotulo: "Diárias e viagens", dica: "Ver quem viajou com dinheiro público",
+    { id: "diarias", rotulo: "Diárias e viagens", dica: "Consultar registros e conferir viagens na fonte",
       termos: ["diaria", "viagem", "hospedagem", "deslocamento"],
       href: "prefeitura.html?tab=diarias&q=diarias", abre: "a aba Diárias da Prefeitura, com pessoa, destino, valor e finalidade",
       pergunta: "Solicito a relação de diárias pagas no período, com beneficiário, cargo, destino, finalidade, valor unitário e relatório de atividades." },

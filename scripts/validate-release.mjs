@@ -38,6 +38,8 @@ const expectedChunks = [
   "prefeitura",
   "publicacoes_diario",
   "publicacoes_estruturadas",
+  "publicidade_prefeitura",
+  "publicidade_camara",
   "receitas",
   "remuneracao_vereadores",
   "resumo",
@@ -47,6 +49,8 @@ const expectedChunks = [
 ];
 
 const optionalChunks = [
+  "fiscalizacao_cidada",
+  "contratos_documentos", "contratos_historico_prefeitura", "contratos_historico_camara", "cobertura_documental", "pncp_contratos_historicos",
   "atualizacoes", "convenios", "educacao", "licitacoes", "obras_educacao",
   "sancoes", "tse_doacoes", "licitacoes_resultados",
   // Plano de Contratacoes Anual (PNCP). Opcional porque depende de o orgao
@@ -57,6 +61,7 @@ const optionalChunks = [
   // pessoal.json completo. Opcional porque so existe a partir da coleta que
   // passou a grava-lo; release anterior a isso nao pode reprovar.
   "pessoal_resumo",
+  "pessoal_historico",
   "prefeitura_painel",
   "prefeitura_frota",
   // Reconciliacao entre o registro contabil da Prefeitura e as bases de
@@ -96,6 +101,8 @@ const requiredPublicFiles = [
   "modules/categorias.js",
   "modules/watchlist.js",
   "modules/dossie.js",
+  "modules/cidadao.js",
+  "cidadao.css",
   "modules/dashboard.js",
   "modules/home-cidadao.js",
   "modules/relatorios.js",
@@ -206,7 +213,7 @@ function validateManifest(baseManifestPath = manifestPath, baseChunksDir = chunk
   }
 
   for (const name of manifestNames) {
-    if (!expectedChunks.includes(name) && !optionalChunks.includes(name)) {
+    if (!expectedChunks.includes(name) && !optionalChunks.includes(name) && !/^pessoal_folha_20\d{2}_(0[1-9]|1[0-2])$/.test(name)) {
       warn(`Manifest lista chunk nao esperado: ${name}`);
     }
   }

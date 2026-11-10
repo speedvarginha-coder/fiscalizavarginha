@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { publishFiles } from "./lib/publish-files.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const chunksDir = path.join(root, "painel-cidadao", "data", "chunks");
@@ -77,5 +78,5 @@ const output = {
   summary: { total_sources: sources.length, by_status: counts },
   sources,
 };
-fs.writeFileSync(path.join(chunksDir, "monitoramento_coletas.json"), `${JSON.stringify(output, null, 2)}\n`, "utf8");
+publishFiles([[path.join(chunksDir, "monitoramento_coletas.json"), Buffer.from(`${JSON.stringify(output, null, 2)}\n`, "utf8")]]);
 console.log(`OK: monitoramento gerado para ${sources.length} fontes`);

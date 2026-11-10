@@ -7,6 +7,8 @@ classificação e nunca converte referência Betha em repasse confirmado.
 from __future__ import annotations
 
 import json
+import os
+import tempfile
 from pathlib import Path
 
 ARQUIVO = Path(__file__).resolve().parent / "data" / "emendas_federais.js"
@@ -40,10 +42,17 @@ def main() -> int:
             if key not in item:
                 item[key] = value
                 changed += 1
-    ARQUIVO.write_text(
-        "window.EMENDAS_FEDERAIS = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
-        encoding="utf-8",
-    )
+    conteudo = "window.EMENDAS_FEDERAIS = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n"
+    temporario = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=ARQUIVO.parent,
+                                         prefix=".emendas-federais-", suffix=".tmp", delete=False) as arquivo:
+            temporario = Path(arquivo.name)
+            arquivo.write(conteudo)
+        os.replace(temporario, ARQUIVO)
+    finally:
+        if temporario is not None:
+            temporario.unlink(missing_ok=True)
     print(f"OK: taxonomia federal normalizada ({changed} campos incluídos)")
     return 0
 

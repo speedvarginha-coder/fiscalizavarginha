@@ -148,6 +148,8 @@ async function probeRemoteSources() {
 
 function localFreshnessSignals() {
   return [
+    { id: "publicidade-prefeitura-age", label: "Publicidade / Prefeitura", chunk: "publicidade_prefeitura", maxHours: 24 },
+    { id: "publicidade-camara-age", label: "Publicidade / Câmara", chunk: "publicidade_camara", maxHours: 24 },
     { id: "prefeitura-betha-age", label: "Prefeitura/Betha", chunk: "prefeitura", maxHours: 24 },
     { id: "camara-betha-age", label: "Camara/Betha", chunk: "camara_betha", maxHours: 12 },
     { id: "diarias-age", label: "Diarias", chunk: "diarias", maxHours: 24 },

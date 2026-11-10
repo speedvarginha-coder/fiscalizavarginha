@@ -170,7 +170,12 @@ function Invoke-IsolatedAndLog {
       $completed = $proc.WaitForExit($TimeoutSeconds * 1000)
       if (-not $completed) {
         Write-Log "$Label excedeu o limite de ${TimeoutSeconds}s; encerrando somente a arvore do processo $($proc.Id)."
-        & taskkill.exe /PID $proc.Id /T /F 2>&1 | ForEach-Object { Write-Log "taskkill: $_" }
+        $previousPreference = $ErrorActionPreference
+        $ErrorActionPreference = 'Continue'
+        try { & taskkill.exe /PID $proc.Id /T /F 2>&1 | ForEach-Object { Write-Log "taskkill: $_" } }
+        finally { $ErrorActionPreference = $previousPreference }
+        if (-not $proc.HasExited) { $proc.Kill() }
+        if (-not $proc.WaitForExit(5000)) { throw "$Label não encerrou após timeout; ciclo interrompido." }
         $code = 124
       } else {
         # Garante que os buffers redirecionados terminaram de descarregar.
@@ -557,6 +562,14 @@ function Get-LockEstado {
   return "vivo"   # dono vivo e legitimo: respeitar por quanto tempo durar
 }
 
+function Get-LockWaitAction {
+  param([string]$Message, [bool]$IsWatch, [bool]$Expired)
+  if ($Message -notlike "Outra coleta em andamento*" -and $Message -notlike "Outra coleta parece estar em andamento*") { return "erro" }
+  if ($IsWatch) { return "pular" }
+  if ($Expired) { return "expirou" }
+  return "aguardar"
+}
+
 function Acquire-Lock {
   for ($attempt = 0; $attempt -lt 2; $attempt++) {
     $token = "{0}|{1}|{2}|{3}" -f $PID, $env:COMPUTERNAME, (Get-Date).ToUniversalTime().ToString("o"), ([guid]::NewGuid())
@@ -665,18 +678,19 @@ try {
   Write-Log "Aviso: health check falhou e nao bloqueia o ciclo: $($_.Exception.Message)"
 }
 
-try {
-  $lockToken = Acquire-Lock
-} catch {
-  Write-Log $_.Exception.Message
-  # Sobreposicao esperada entre vigia e coleta diaria: o lock protege os
-  # dados e a proxima execucao retomara o trabalho. Nao marca a tarefa como
-  # falha operacional quando outro ciclo legitimo ja esta cuidando da base.
-  if ($_.Exception.Message -like "Outra coleta parece estar em andamento*") {
-    Write-Log "Ciclo pulado com seguranca por sobreposicao; nenhuma base foi alterada."
-    exit 0
+# A diária aguarda a coleta financeira terminar; a vigia seguinte pode ser pulada.
+$lockDeadline = (Get-Date).AddHours(2)
+while (-not $lockToken) {
+  try { $lockToken = Acquire-Lock }
+  catch {
+    $msg = $_.Exception.Message
+    $action = Get-LockWaitAction -Message $msg -IsWatch ([bool]$SkipSlowAudits) -Expired ((Get-Date) -ge $lockDeadline)
+    if ($action -eq "erro") { Write-Log $msg; exit 2 }
+    if ($action -eq "pular") { Write-Log "Vigia adiada por coleta ativa; nenhuma base alterada."; exit 0 }
+    if ($action -eq "expirou") { Write-Log "Diária não iniciada: espera de duas horas pela coleta ativa esgotada."; exit 2 }
+    Write-Log "Diária aguardando coleta ativa; tentará novamente em 30 segundos."
+    Start-Sleep -Seconds 30
   }
-  exit 2
 }
 
 try {
@@ -704,22 +718,28 @@ try {
   # diretorio de browsers com o MESMO ambiente que depois vai procura-lo.
   # Idempotente e rapido quando ja esta tudo baixado.
   try {
+    & node -e "const fs=require('node:fs');process.exit(fs.existsSync(require('playwright').chromium.executablePath())?0:1)"
+    if ($LASTEXITCODE -ne 0) {
     Invoke-IsolatedAndLog `
       -Label "Conferindo browsers do Playwright (Node)." `
-      -FilePath "npx.cmd" `
-      -Arguments @("--no-install", "playwright", "install", "chromium") `
+      -FilePath "node" `
+      -Arguments @("node_modules/playwright/cli.js", "install", "chromium") `
       -WorkingDirectory $root `
       -TimeoutSeconds 900
+    } else { Write-Log "Chromium do Node disponivel; instalacao dispensada." }
   } catch {
     Write-Log "Aviso: nao foi possivel conferir os browsers do Node: $($_.Exception.Message)"
   }
   try {
+    & python -c "import sys; from pathlib import Path; from playwright.sync_api import sync_playwright; p=sync_playwright().start(); exists=Path(p.chromium.executable_path).is_file(); p.stop(); sys.exit(0 if exists else 1)"
+    if ($LASTEXITCODE -ne 0) {
     Invoke-IsolatedAndLog `
       -Label "Conferindo browsers do Playwright (Python, diarias Betha)." `
       -FilePath "python" `
       -Arguments @("-m", "playwright", "install", "chromium") `
       -WorkingDirectory $root `
       -TimeoutSeconds 900
+    } else { Write-Log "Chromium do Python disponivel; instalacao dispensada." }
   } catch {
     Write-Log "Aviso: nao foi possivel conferir os browsers do Python: $($_.Exception.Message)"
   }
@@ -766,14 +786,13 @@ try {
   # Os chunks estruturados alimentam o feed cidadão e o WhatsApp, mas são
   # gerados por coletores próprios. Ambos operam de forma incremental: itens
   # antigos enriquecidos são reutilizados e apenas novidades usam IA.
-  if ($CollectorMode -ne "Financeiro") {
+  # O feed básico usa o consolidado do ciclo e não depende de IA, PDFs ou cota.
   Invoke-IsolatedAndLog `
     -Label "Atualizando publicacoes estruturadas da Camara (incremental)." `
     -FilePath "python" `
-    -Arguments @("-u", "coletor_publicacoes.py") `
+    -Arguments @("-u", "coletor_publicacoes.py", "--basico", "--consolidado-local") `
     -WorkingDirectory $painel `
     -TimeoutSeconds 300
-  }
 
   if ($CollectorMode -ne "Sapl") {
     Invoke-IsolatedAndLog `
@@ -798,27 +817,30 @@ try {
     -Arguments @("-u", "gerar_municipais_atuais.py") `
     -WorkingDirectory (Join-Path $painel "emendas")
 
-  Invoke-AndLog `
+  Invoke-IsolatedAndLog `
     -Label "Atualizando emendas estaduais oficiais (SIGCON-MG / SIAFI-MG / SIAD-MG)." `
     -FilePath "python" `
     -Arguments @("-u", "coletor_emendas_estaduais.py") `
     -WorkingDirectory (Join-Path $painel "emendas") `
-    -AcceptedExitCodes @(0, 2)
+    -TimeoutSeconds 900 `
+    -AcceptedExitCodes @(0, 2, 124)
 
   if ($CollectorMode -in @("Full", "Financeiro")) {
-    Invoke-AndLog `
+    Invoke-IsolatedAndLog `
       -Label "Atualizando emendas federais destinadas a Varginha." `
       -FilePath "python" `
       -Arguments @("-u", "coletor_emendas_federais.py") `
       -WorkingDirectory (Join-Path $painel "emendas") `
-      -AcceptedExitCodes @(0, 2)
+      -TimeoutSeconds 900 `
+      -AcceptedExitCodes @(0, 2, 124)
   }
 
   Invoke-AndLog `
     -Label "Normalizando taxonomia e evidências das emendas federais." `
     -FilePath "python" `
     -Arguments @("-u", "normalizar_emendas_federais.py") `
-    -WorkingDirectory (Join-Path $painel "emendas")
+    -WorkingDirectory (Join-Path $painel "emendas") `
+    -Retries 1
 
   Invoke-AndLog `
     -Label "Auditando consistencia das emendas parlamentares." `
@@ -870,6 +892,12 @@ try {
     # O monitor pertence ao portal financeiro. O índice legislativo é mantido
     # e publicado pelo projeto Avalie Varginha.
     Invoke-AndLog `
+      -Label "Atualizando Publicidade Transparente da Prefeitura e Câmara." `
+      -FilePath "python" `
+      -Arguments @("-u", "painel-cidadao/coletor_publicidade.py") `
+      -WorkingDirectory $root
+
+    Invoke-AndLog `
       -Label "Atualizando painel de monitoramento das coletas." `
       -FilePath "npm.cmd" `
       -Arguments @("run", "data:monitor") `
@@ -887,9 +915,83 @@ try {
     }
 
     Invoke-AndLog `
+      -Label "Preservando a competência atual no histórico mensal da folha." `
+      -FilePath "python" `
+      -Arguments @("painel-cidadao/coletor_pessoal_historico.py", "--somente-arquivar-atual") `
+      -WorkingDirectory $root
+
+    # Conferência documental rotativa: preserva dados quando a Betha falha.
+    Invoke-AndLog `
+      -Label "Atualizando histórico e conferência documental de contratos." `
+      -FilePath "python" `
+      -Arguments @("-u", "scripts/auditar-documentos-contratos.py", "--historico", "--limit", "500", "--pdf-limit", "50") `
+      -WorkingDirectory $root `
+      -TimeoutSeconds 900
+
+    Invoke-AndLog `
+      -Label "Reconciliando fichas oficiais por identidade contratual." `
+      -FilePath "python" `
+      -Arguments @("scripts/reconcile-contract-sources.py") `
+      -WorkingDirectory $root
+
+    Invoke-AndLog `
+      -Label "Conferindo execução contábil dos empenhos vinculados." `
+      -FilePath "python" `
+      -Arguments @("scripts/conferir-execucao-contratos.py", "--limit", "10") `
+      -WorkingDirectory $root `
+      -TimeoutSeconds 300
+
+    Invoke-AndLog `
+      -Label "Atualizando histórico de contratos PNCP preservando falhas." `
+      -FilePath "python" `
+      -Arguments @("scripts/coletar-pncp-historico.py", "--rodizio") `
+      -WorkingDirectory $root `
+      -TimeoutSeconds 900
+
+    Invoke-AndLog `
+      -Label "Consultando arquivos e termos do PNCP para contratos identificados." `
+      -FilePath "python" `
+      -Arguments @("-u", "scripts/coletar-documentos-pncp.py", "--limit", "15") `
+      -WorkingDirectory $root `
+      -TimeoutSeconds 900
+
+    Invoke-AndLog `
+      -Label "Conferindo amostra dos arquivos PNCP." `
+      -FilePath "python" `
+      -Arguments @("scripts/conferir-documentos-pncp.py", "--limit", "5", "--ocr") `
+      -WorkingDirectory $root `
+      -TimeoutSeconds 300
+
+    Invoke-AndLog `
+      -Label "Identificando extratos candidatos no Diário Oficial." `
+      -FilePath "python" `
+      -Arguments @("scripts/reconciliar-diario-contratos.py") `
+      -WorkingDirectory $root
+
+    Invoke-AndLog `
+      -Label "Conferindo texto integral de edições do Diário Oficial." `
+      -FilePath "python" `
+      -Arguments @("scripts/extrair-diario-contratos.py", "--limit", "5") `
+      -WorkingDirectory $root `
+      -TimeoutSeconds 300
+
+    Invoke-AndLog `
+      -Label "Atualizando cobertura documental e amostras." `
+      -FilePath "python" `
+      -Arguments @("scripts/gerar-cobertura-documental.py") `
+      -WorkingDirectory $root
+
+    Invoke-AndLog `
+      -Label "Protegendo documentos pessoais nos resultados de licitação." `
+      -FilePath "python" `
+      -Arguments @("painel-cidadao/coletor_resultados_licitacao.py", "--sanitizar-local") `
+      -WorkingDirectory $root
+
+    $validationTask = if ($CollectorMode -eq "Financeiro") { "validate:data:financial" } else { "validate:data" }
+    Invoke-AndLog `
       -Label "Validando dados e sincronizando bundle offline." `
       -FilePath "npm.cmd" `
-      -Arguments @("run", "validate:data") `
+      -Arguments @("run", $validationTask) `
       -WorkingDirectory $root `
       -Retries 2
 
@@ -909,7 +1011,7 @@ try {
       -Arguments @("run", "test:data") `
       -WorkingDirectory $root `
       -Retries 1 `
-      -TimeoutSeconds 300
+      -TimeoutSeconds 600
 
     if (-not $SkipTests) {
       Invoke-IsolatedAndLog `
@@ -920,6 +1022,7 @@ try {
         -TimeoutSeconds 1200
     }
 
+    $collectionStatus = "SUCESSO"
     # Neste ponto os dados e os testes passaram. Registra o sucesso validado
     # antes de empacotar para que o monitor publico nao fique preso na falha
     # anterior. Deploy/WhatsApp continuam pendentes e serao registrados no
@@ -1186,17 +1289,33 @@ try {
   }
   exit 0
 } catch {
-  $collectionStatus = "FALHA"
+  if ($collectionStatus -ne "SUCESSO") { $collectionStatus = "FALHA" }
+  elseif (-not $SkipDeploy -and $deployStatus -eq "PULADO") { $deployStatus = "FALHA" }
   Write-Log ("ERRO: " + $_.Exception.Message)
-  Restore-PublishedDataBackup -Backup $backupPath
+  $faseFalha = "final"
   try {
-    & node (Join-Path $root "scripts\record-pipeline-state.mjs") "--coleta=FALHA" "--deploy=$deployStatus" "--whatsapp=$whatsAppStatus" "--fase=final" 2>&1 | ForEach-Object { Write-Log "$_" }
+    Restore-PublishedDataBackup -Backup $backupPath
+    if ($backupPath) { $faseFalha = "restaurada" }
+  } catch {
+    Write-Log ("ERRO: restauracao dos dados nao foi concluida: " + $_.Exception.Message)
+  }
+  try {
+    & node (Join-Path $root "scripts\record-pipeline-state.mjs") "--coleta=$collectionStatus" "--deploy=$deployStatus" "--whatsapp=$whatsAppStatus" "--fase=$faseFalha" 2>&1 | ForEach-Object { Write-Log "$_" }
   } catch {
     Write-Log "Aviso: nao foi possivel registrar o estado final de falha: $_"
   }
   Write-Log "RESUMO: coleta=$collectionStatus deploy=$deployStatus whatsapp=$whatsAppStatus"
   exit 1
 } finally {
+  # A telemetria não depende de um pacote novo e não expõe logs privados.
+  if ($lockToken) {
+    try {
+      $telemetryArguments = @((Join-Path $root "scripts\publish-operational-status.py"))
+      if (-not $SkipDeploy) { $telemetryArguments += "--publish" }
+      & python @telemetryArguments 2>&1 | ForEach-Object { Write-Log "$_" }
+      if ($LASTEXITCODE -ne 0) { Write-Log "Aviso: telemetria independente nao publicada; resultado do ciclo preservado." }
+    } catch { Write-Log "Aviso: falha na telemetria independente: $($_.Exception.Message)" }
+  }
   # Conclusao normal (ou excecao tratada) apaga o marcador; uma morte por
   # limite de tempo do Agendador nao passa por aqui e deixa o rastro.
   if ($progressPath -and (Test-Path -LiteralPath $progressPath)) {

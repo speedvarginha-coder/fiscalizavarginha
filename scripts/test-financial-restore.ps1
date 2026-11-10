@@ -14,6 +14,9 @@ $root = Resolve-Path (Join-Path $PSScriptRoot "..")
 . (Join-Path $PSScriptRoot "lib\financial-backup.ps1")
 
 $testRoot = Join-Path $root ("private\restore-tests\financeiro-" + [Guid]::NewGuid().ToString("N"))
+$testRoot = [IO.Path]::GetFullPath($testRoot)
+$testParent = [IO.Path]::GetFullPath((Join-Path $root "private\restore-tests")).TrimEnd('\')
+if (-not $testRoot.StartsWith($testParent + '\', [StringComparison]::OrdinalIgnoreCase)) { throw "Destino de teste fora da área permitida" }
 $arvore = Join-Path $testRoot "arvore"
 $backups = Join-Path $testRoot "backups"
 

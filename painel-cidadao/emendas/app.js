@@ -1,3 +1,13 @@
+const menuToggle = document.getElementById("navToggle");
+if (menuToggle) {
+  const setMenu = open => {
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    menuToggle.textContent = open ? "✕" : "☰";
+  };
+  menuToggle.addEventListener("click", () => setMenu(menuToggle.getAttribute("aria-expanded") !== "true"));
+  menuToggle.addEventListener("keydown", event => { if (event.key === "Escape") setMenu(false); });
+}
 const payload = window.EMENDAS_DATA || { metadata: {}, emendas: [] };
 // Base municipal única: Betha histórico (até 2024) + SAPL/Câmara (2025 em diante).
 const municipaisUnificadas = (window.EMENDAS_MUNICIPAIS_UNIFICADAS && window.EMENDAS_MUNICIPAIS_UNIFICADAS.emendas) || [];
@@ -905,7 +915,7 @@ function getPageCount() {
 function summarize(records) {
   const sumStage = (stage) => {
     const values = records.map((record) => record.stages[stage]).filter((value) => value !== null);
-    return { value: values.reduce((sum, value) => sum + value, 0), known: values.length > 0 };
+    return { value: values.reduce((sum, value) => sum + value, 0), known: values.length > 0, count: values.length };
   };
   return { count: records.length, indicado: sumStage("indicado"), empenhado: sumStage("empenhado"), pago: sumStage("pago"), recebido: sumStage("recebido"), executado: sumStage("executado") };
 }
@@ -933,6 +943,8 @@ function renderMetrics() {
   elements.metricPaid.textContent = show(summary.pago);
   elements.metricReceived.textContent = show(summary.recebido);
   elements.metricExecuted.textContent = show(summary.executado);
+  const coverage = document.querySelector("#metricExecutedCoverage");
+  if (coverage) coverage.textContent = `${numberFormatter.format(summary.executado.count)} de ${numberFormatter.format(summary.count)} registros com valor informado; ausência de informação não comprova execução zero.`;
   elements.resultSummary.textContent = `${numberFormatter.format(summary.count)} resultado${summary.count === 1 ? "" : "s"} filtrado${summary.count === 1 ? "" : "s"}`;
 }
 
@@ -1726,6 +1738,7 @@ function openDetails(id, updateUrl = true) {
   elements.detailBody.innerHTML = `
     ${warningBanner}
     ${renderDocumentTrail(record)}
+    ${record.tipo === "Federal" ? '<div data-documentos-cgu aria-live="polite">Consultando documentos federais da CGU...</div>' : ""}
     <div class="pdf-guide detail-guide">
       <strong>Como conferir na fonte oficial:</strong>
       abra o portal de transparência da fonte e pesquise pelo número da emenda ${escapeHtml(record.emenda)} ou pelo beneficiário informado (${escapeHtml(record.beneficiario || "—")}) para conferir o documento e os estágios financeiros.
@@ -1790,6 +1803,16 @@ function openDetails(id, updateUrl = true) {
     <p class="muted">Registro consolidado a partir de ${numberFormatter.format(sourceCount)} ocorrência${sourceCount === 1 ? "" : "s"} nos relatórios oficiais.</p>
   `;
 
+  if (record.tipo === "Federal") {
+    const container = elements.detailBody.querySelector("[data-documentos-cgu]");
+    const readJson = url => fetch(url, { cache: "no-store" }).then(response => response.ok ? response.json() : null).catch(() => null);
+    Promise.all([readJson("data/documentos_cgu.json"), readJson("data/documentos_cgu_status.json")]).then(([data, status]) => {
+      if (!container?.isConnected || state.currentDetailId !== id) return;
+      container.innerHTML = window.DocumentosEmendasCGU
+        ? window.DocumentosEmendasCGU.renderizar(record, data, escapeHtml, status)
+        : '<p>Documentos federais da CGU indisponíveis nesta consulta.</p>';
+    });
+  }
   if (!elements.detailDialog.open) elements.detailDialog.showModal();
 }
 
@@ -1826,7 +1849,10 @@ function renderDocumentTrail(record) {
   const checkedAt = record.evidenciasConsultadasEm || evidence.coletadoEm || record.documentoConferidoEm;
   const checkedDate = checkedAt ? new Date(checkedAt.length === 10 ? `${checkedAt}T12:00:00` : checkedAt) : null;
   const checked = checkedDate && !Number.isNaN(checkedDate.getTime()) ? checkedDate.toLocaleDateString("pt-BR") : "não informada";
-  return `<section class="document-trail" aria-label="Do recurso à entrega"><h3>Do recurso à entrega</h3><p>Veja o que a fonte comprova e quais documentos ainda faltam. Última conferência desta evidência: ${escapeHtml(checked)}. A data de consulta não altera o período dos dados.</p><ol>${items.join("")}</ol><p class="muted">“Documento não vinculado” significa ausência de vínculo no painel, não ausência de pagamento ou irregularidade. Para completar a conferência, solicite ao órgão os documentos com o número ${escapeHtml(record.emenda)}, o beneficiário e o exercício correspondente.</p></section>`;
+  const official = evidence.urlOficial || record.fonteUrl || (record.documentoStatus === "conferido" ? record.arquivoUrl : "");
+  const question = `Solicito os documentos que comprovem a destinação e execução da emenda ${record.emenda || 'não informada'}, beneficiário ${record.beneficiario || 'não informado'}, exercício ${record.exercicioOrcamentario || record.ano || 'não confirmado'}: plano de trabalho, processo de contratação e aditivos, empenhos, liquidações, pagamentos, fiscalização, medição, recebimento e prestação de contas. Informar os vínculos documentais com a emenda e justificar documentos indisponíveis.`;
+  const params = new URLSearchParams({assunto:`Emenda ${record.emenda || ''} · ${record.beneficiario || ''}`.slice(0,240),orgao:'Prefeitura',fonte:/^https?:\/\//i.test(String(official)) ? official : '',pedido:question});
+  return `<section class="document-trail" aria-label="Do recurso à entrega"><h3>Do recurso à entrega</h3><p>Veja o que a fonte comprova e quais documentos ainda faltam. Última conferência desta evidência: ${escapeHtml(checked)}. A data de consulta não altera o período dos dados.</p><ol>${items.join("")}</ol><p class="muted">“Documento não vinculado” significa ausência de vínculo no painel, não ausência de pagamento ou irregularidade. Para completar a conferência, solicite ao órgão os documentos com o número ${escapeHtml(record.emenda)}, o beneficiário e o exercício correspondente.</p><a href="../cobrar.html?${escapeHtml(params.toString())}#acompanhamento">Preparar pedido e acompanhar cobrança</a><p class="muted">Confira o órgão responsável por cada documento antes de protocolar. O formulário não envia o pedido automaticamente.</p></section>`;
 }
 
 function closeDetails() {

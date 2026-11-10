@@ -30,6 +30,13 @@
       (r) => (r.semCorrespondenciaNoPainel || []).length > 0,
     );
     const resumo = dados.resumo || {};
+    const stamp = document.createElement('p');
+    stamp.className = 'muted';
+    const last = Date.parse(dados.geradoEm);
+    stamp.textContent = Number.isFinite(last)
+      ? `Conciliação registrada em ${new Date(last).toLocaleDateString('pt-BR')}. ${(Date.now()-last)>30*86400000 ? 'Base sem conciliação recente confirmada. Os resultados abaixo são históricos.' : 'Confira a cobertura dos documentos lidos abaixo.'}`
+      : 'Data da conciliação não informada; atualidade não confirmada.';
+    secao.prepend(stamp);
 
     // A cobertura da leitura vai para a tela mesmo quando nada diverge: "zero
     // divergencias" pode significar "nada diverge" ou "nao li metade do
@@ -42,11 +49,13 @@
         ? `Cobertura da leitura: ${naoLidas} emenda(s) dos relatórios não puderam ser lidas automaticamente` +
           ` (${parciais.map((r) => `${r.esfera} ${r.ano}: ${r.emendasLidas} de ${r.emendasNoRelatorio}`).join("; ")}).` +
           ` Sobre elas este confronto não afirma nada.`
-        : `Cobertura da leitura: todas as emendas dos ${relatorios.length} relatórios foram lidas.`;
+        : relatorios.length ? `Cobertura da leitura: todas as emendas dos ${relatorios.length} relatórios foram lidas.` : 'Nenhum relatório disponível para confirmar a cobertura.';
     }
 
     if (!comDivergencia.length) {
-      secao.hidden = true;
+      secao.hidden = false;
+      const alvo = document.getElementById('reconcLista');
+      if (alvo) alvo.textContent = 'Nenhuma divergência localizada nos documentos lidos. Isso não confirma completude ou execução das emendas.';
       return;
     }
 
@@ -69,7 +78,7 @@
           return `<article class="reconc-grupo">
             <h3>${esc(r.esfera)} · exercício ${esc(r.ano)}</h3>
             <p class="muted small">${num(itens.length)} emenda(s) no relatório da Prefeitura sem correspondência na base de origem, somando ${brl(r.valorSemCorrespondencia)}.</p>
-            <div class="reconc-tabela-wrap">
+            <div class="reconc-tabela-wrap" tabindex="0" role="region" aria-label="Reconciliação de emendas; tabela com rolagem horizontal">
               <table class="reconc-tabela">
                 <thead><tr><th>Indicação</th><th class="num">Valor</th><th>Beneficiário</th></tr></thead>
                 <tbody>${linhas}</tbody>
@@ -91,10 +100,16 @@
   }
 
   fetch(CHUNK, { cache: "no-cache" })
-    .then((r) => (r.ok ? r.json() : null))
+    .then((r) => { if (!r.ok) throw new Error('Conciliação indisponível'); return r.json(); })
     .then(render)
     .catch(() => {
-      // Chunk ausente e situacao legitima: a Prefeitura pode nao ter publicado
-      // os relatorios ainda. A secao fica fora em vez de mostrar erro.
+      const secao = document.getElementById('reconciliacao');
+      if (secao) {
+        secao.hidden = false;
+        const aviso = document.createElement('p');
+        aviso.setAttribute('role', 'status');
+        aviso.textContent = 'Não foi possível carregar a conciliação com a Prefeitura. Não interpretar como ausência de divergências ou como execução confirmada.';
+        secao.prepend(aviso);
+      }
     });
 })();

@@ -1557,6 +1557,7 @@ def _processa_camara_betha() -> dict:
             "registros": len(res.get("main", [])),
         }
         contratos = _normaliza_contratos(res.get("main", []))
+        _vincula_fichas_contratos(contratos, "camara")
         print(f"  ✓ Contratos Câmara: {len(contratos)} registros")
     except Exception as e:
         dados_abertos_status["contratos"] = {"status": "failed", "erro": str(e)}
@@ -1593,6 +1594,22 @@ def _processa_camara_betha() -> dict:
         licitacoes = anterior["licitacoes"]
         dados_abertos_status["licitacoes"]["preservada"] = True
 
+    # Histórico oficial para localizar fichas de contratos ainda em execução,
+    # mesmo quando foram assinados antes do exercício coletado acima.
+    anterior_fontes = _load_existing("camara_betha.json", {})
+    contratos_fontes = anterior_fontes.get("contratos_fontes", [])
+    fontes_verificado_em = anterior_fontes.get("contratos_fontes_verificado_em")
+    fontes_status = "preservado" if contratos_fontes else "indisponivel"
+    try:
+        fontes_rows = cb.baixar_busca_textual(token, CONSULTA_CAMARA_CONTRATOS,
+            portal_hash=PORTAL_HASH_CAMARA, sort_by="dataAssinatura", batch=500)
+        if fontes_rows:
+            contratos_fontes = _normaliza_contratos(fontes_rows)
+            fontes_verificado_em = dt.datetime.now().isoformat(timespec="seconds")
+            fontes_status = "consulta_oficial_completa"
+    except Exception as e:
+        print(f"  AVISO: fichas históricas da Câmara preservadas: {type(e).__name__}")
+
     return {
         "ano_atual":              ano_atual,
         "ano_anterior":           ano_atual - 1,
@@ -1602,6 +1619,9 @@ def _processa_camara_betha() -> dict:
         "top_fornecedores_atual":    top_atual,
         "top_fornecedores_anterior": top_anterior,
         "contratos":   contratos,
+        "contratos_fontes": contratos_fontes,
+        "contratos_fontes_verificado_em": fontes_verificado_em,
+        "contratos_fontes_status": fontes_status,
         "licitacoes":  licitacoes,
         "contratos_status_coleta": contratos_status,
         "contratos_origem_preservada": contratos_origem_preservada,
@@ -2006,6 +2026,9 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
         return {}
 
     print(f"  ✓ {len(credores):,} registros (ano × entidade × credor)")
+    # A consulta de credores já terminou. Contratos/obras podem levar minutos
+    # ou ser preservados: o carimbo do cruzamento não deve depender deles.
+    cruzamento_consultado_em = dt.datetime.now(dt.timezone.utc).isoformat()
 
     ano_atual = dt.datetime.now().year
     top_atual    = cb.top_fornecedores(credores, ano=ano_atual,    n=30)
@@ -2058,6 +2081,7 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
     )
 
     contratos_normalizados = _normaliza_contratos(contratos)
+    _vincula_fichas_contratos(contratos_normalizados, "prefeitura")
     obras_normalizadas = _normaliza_obras_publicas(obras_rows, obras_linked)
     obras_status = "coleta_atual"
     obras_origem_preservada = None
@@ -2186,11 +2210,18 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
         "top_fornecedores_atual":    top_atual,
         "top_fornecedores_anterior": top_anterior,
         "emendas_cruzadas": cruzadas,
+        "emendas_cruzamento_meta": {
+            "consultado_em": cruzamento_consultado_em,
+            "metodo": "raiz_cnpj_e_exercicio_documental",
+            "registros_credores": len(credores),
+            "limite": "Pagamentos ao beneficiário no exercício, sem vínculo comprovado com a emenda. Não representam execução nem percentual pago da emenda.",
+        },
         "stats_cruzamento": {
             "com_pagamento":   com_pagamento,
             "sem_pagamento":   sem_pagamento,
             "sem_cnpj":        sem_cnpj,
             "execucao_direta": execucao_direta,
+            "sem_periodo": sum(1 for e in cruzadas if e["status"] == "sem_periodo"),
         },
         "contratos":        contratos_normalizados,
         "contratos_status_coleta": contratos_status,
@@ -2241,17 +2272,28 @@ def _data_contrato(valor) -> str:
 
 def _contratos_incompletos(novos, anteriores, diagnosticos, consultas_esperadas, hoje_iso):
     if len(diagnosticos) != consultas_esperadas or any(d.get("status") != "ok" for d in diagnosticos):
+        print(f"  ! Contratos: {len(diagnosticos)}/{consultas_esperadas} consultas, "
+              f"{sum(d.get('status') != 'ok' for d in diagnosticos)} sem status ok; coleta tratada como incompleta.")
         return True
     def identidade(c):
         chave = tuple(str(c.get(k) or "").strip() for k in ("numero", "ano", "cnpj", "contratado", "entidade"))
         return chave + (str(c.get("objeto") or "") if chave[0] in ("", "0", "-") else "",)
     chaves = {identidade(c) for c in novos}
+    ausentes = []
     for c in anteriores:
         recente = str(c.get("ano") or "").isdigit() and int(c["ano"]) >= int(hoje_iso[:4]) - 1
         vigente = _contrato_vigente({"dataVigenciaFinal": c.get("data_fim"), "situacao": c.get("situacao")}, hoje_iso)
         if (recente or vigente) and identidade(c) not in chaves:
-            # Remoção na fonte exige reconciliação; uma resposta "ok" não prova exclusão legítima.
-            return True
+            ausentes.append(c)
+    if ausentes:
+        # Remoção na fonte exige reconciliação; uma resposta "ok" não prova exclusão legítima.
+        # Sem dizer QUAIS sumiram, a base fica presa na versão antiga sem ninguém saber por quê.
+        print(f"  ! Contratos: {len(ausentes)} registro(s) recentes ou vigentes da base anterior "
+              f"não vieram na coleta de {len(novos)}. Exemplos:")
+        for c in ausentes[:10]:
+            print(f"      - {c.get('numero')}/{c.get('ano')} | {c.get('cnpj')} | "
+                  f"{str(c.get('contratado') or '')[:50]} | fim {c.get('data_fim')} | {c.get('situacao')}")
+        return True
     return False
 
 
@@ -2349,6 +2391,34 @@ def _f(s) -> float:
         return 0.0
 
 
+def _vincula_fichas_contratos(contratos, orgao):
+    """Exportações CSV não incluem IDs: use somente correspondência oficial única."""
+    import unicodedata
+    historico = _load_existing(f"contratos_historico_{orgao}.json", {}) or {}
+    portal = ("-iAWLe1kr2VQcrW9k2AUBg==/consulta/324812" if orgao == "camara"
+              else "y7mn01LGqd_HCvGtj6VPwA==/consulta/83043")
+    prefixo = "https://transparencia.betha.cloud/#/" + portal + "/detalhe/"
+    def chave(c):
+        def texto(v):
+            return " ".join(unicodedata.normalize("NFKD", str(v or "")).encode("ascii", "ignore").decode().upper().split())
+        return (texto(c.get("contratado")), str(c.get("data_assinatura") or ""), texto(c.get("objeto")))
+    indices = {}
+    for ficha in historico.get("contratos", []):
+        url = ficha.get("fonte_url") or ""
+        k = chave(ficha)
+        if url.startswith(prefixo) and all(k):
+            indices.setdefault(k, []).append(ficha)
+    for contrato in contratos:
+        if contrato.get("fonte_url"):
+            continue
+        candidatos = indices.get(chave(contrato), [])
+        exatos = [c for c in candidatos if str(c.get("numero")) == str(contrato.get("numero")) and str(c.get("ano")) == str(contrato.get("ano"))]
+        urls = {c["fonte_url"] for c in (exatos or candidatos)}
+        if len(urls) == 1:
+            contrato["fonte_url"] = urls.pop()
+    return contratos
+
+
 def _normaliza_contratos(rows: list[dict]) -> list[dict]:
     out = []
     for r in rows:
@@ -2374,6 +2444,7 @@ def _normaliza_contratos(rows: list[dict]) -> list[dict]:
             "valor":         _f(r.get("valorFinal", 0)),
             "situacao":      r.get("situacao", ""),
             "entidade":      r.get("nomeEntidade", ""),
+            **({"fonte_url": r["fonte_url"]} if r.get("fonte_url") else {}),
         })
     out.sort(key=lambda x: -x["valor"])
     return out
@@ -2765,6 +2836,63 @@ def _normaliza_diarias_prefeitura(rows: list[dict], linked: dict) -> list[dict]:
     return out
 
 
+def _corrige_texto(s) -> str:
+    # A Betha entrega alguns textos em UTF-8 lido como Latin-1 ("SÃ£o" no lugar de "São").
+    s = _t(s)
+    try:
+        return s.encode("latin-1").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return s
+
+
+def _diarias_detalhadas_prefeitura(detalhadas: list[dict], empenhos: list[dict], anos: list[int]) -> tuple[list[dict], dict]:
+    """Diárias como documentos (consulta 211668): destino, motivo, local e cargo.
+    A consulta não traz o órgão; ele vem do empenho (consulta 83059) com o mesmo
+    nome e valor. Sem par, o órgão fica como 'Órgão não identificado'."""
+    orgaos: dict = {}
+    for e in empenhos:
+        chave = (" ".join(e.get("funcionario", "").split()).upper(), round(float(e.get("valor_total", 0)), 2))
+        orgaos.setdefault(chave, []).append(e.get("secretaria", ""))
+    out = []
+    sem_orgao = 0
+    for r in detalhadas:
+        ano = int(r.get("ano") or 0)
+        nome = " ".join(_corrige_texto(r.get("credor")).split()).upper()
+        if ano not in anos or not nome:
+            continue
+        valor = _f(r.get("valorTotal"))
+        datas = re.findall(r"(\d{2})[-/](\d{2})[-/](\d{4})", _t(r.get("periodoDiarias")))
+        iso = [f"{a}-{m}-{d}" for d, m, a in datas]
+        fila = orgaos.get((nome, round(valor, 2)), [])
+        secretaria = fila.pop(0) if fila else ""
+        if not secretaria:
+            sem_orgao += 1
+            secretaria = "Órgão não identificado"
+        qtd = _f(r.get("quantidade")) or 1
+        out.append({
+            "poder": "Prefeitura",
+            "ano": str(ano),
+            "entidade": "",
+            "secretaria": secretaria,
+            "unidade": "",
+            "funcionario": nome,
+            "cpf": "",
+            "cargo": _corrige_texto(r.get("cargoCredor")),
+            "numero": _t(r.get("numeroDiaria")),
+            "data_inicial": iso[0] if iso else "",
+            "data_final": iso[-1] if iso else "",
+            "quantidade": qtd,
+            "valor_unitario": round(valor / qtd, 2) if qtd else valor,
+            "valor_total": valor,
+            "destino": _corrige_texto(r.get("localDestino")),
+            "finalidade": _corrige_texto(r.get("finalidade")),
+            "historico": "",
+            "fonte": "Betha Prefeitura - Diárias (consulta 211668)",
+        })
+    out.sort(key=lambda x: -x["valor_total"])
+    return out, {"registros": len(out), "sem_orgao": sem_orgao}
+
+
 def _normaliza_diarias_camara(rows: list[dict]) -> list[dict]:
     out = []
     for r in rows:
@@ -2811,6 +2939,17 @@ def _exigir_identificaveis(brutos, normalizados) -> None:
         )
 
 
+def _baixar_diarias_detalhadas_betha(cb, token):
+    """Renova uma vez após 401; outras falhas continuam inconclusivas."""
+    try:
+        return cb.baixar_busca_textual(token, cb.CONSULTA_DIARIAS_DETALHADA)
+    except urllib.error.HTTPError as erro:
+        if erro.code != 401:
+            raise
+        print("  AVISO: token das diárias detalhadas expirou; renovando uma vez.")
+        return cb.baixar_busca_textual(cb.get_token(force=True), cb.CONSULTA_DIARIAS_DETALHADA)
+
+
 def _processa_diarias_betha() -> dict:
     print("⇣ Diárias — Prefeitura e Câmara (Betha)…")
     try:
@@ -2849,6 +2988,21 @@ def _processa_diarias_betha() -> dict:
                 print(f"  ✗ Prefeitura diárias {ano}: {e}")
     except Exception as e:
         print(f"  ✗ Prefeitura diárias: {e}")
+
+    # A consulta 211668 informa valor previsto; 83059 apresenta empenhos.
+    # Não substituir uma série pela outra sem conciliação documental segura.
+    try:
+        det_rows = _baixar_diarias_detalhadas_betha(cb, tok_pref)
+        _, stat_det = _diarias_detalhadas_prefeitura(det_rows, prefeitura, anos)
+        coleta_status["prefeitura_detalhe"] = {
+            "status": "partial", "modo": "diarias-detalhadas-211668-nao-conciliadas",
+            "observacao": "Valores previstos não substituem empenhos sem conciliação documental.",
+            **stat_det,
+        }
+        print(f"  ! Prefeitura diárias detalhadas (211668): {stat_det['registros']} registros consultados; valores previstos não conciliados com empenhos")
+    except Exception as e:
+        coleta_status["prefeitura_detalhe"] = {"status": "failed", "erro": str(e)}
+        print(f"  ✗ Prefeitura diárias detalhadas (211668): {e}; mantendo os empenhos")
 
     try:
         portal_camara = "-iAWLe1kr2VQcrW9k2AUBg=="

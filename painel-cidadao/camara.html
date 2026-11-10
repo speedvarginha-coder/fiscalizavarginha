@@ -18,6 +18,9 @@
 <meta name="twitter:title"      content="Câmara Municipal · Fiscaliza Varginha">
 <meta name="twitter:description" content="Gastos, contratos, emendas e diárias da Câmara de Varginha-MG.">
 <link rel="stylesheet" href="style.css?v=20260730-relatorios2">
+<link rel="stylesheet" href="cidadao.css?v=20261020">
+<link rel="stylesheet" href="publicidade.css?v=20261105">
+<link rel="stylesheet" href="fiscalizacao.css?v=20261105">
 </head>
 <body data-page="camara">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -122,7 +125,16 @@
       <button type="button" class="csec-btn" data-go="vereadores">Remuneração</button>
       <button type="button" class="csec-btn" data-go="emendas">Emendas</button>
       <button type="button" class="csec-btn" data-go="diarias">Diárias</button>
+      <button type="button" class="csec-btn" data-go="publicidade">Publicidade</button>
     </nav>
+
+    <section class="block" data-csec="publicidade" aria-labelledby="publicidadeTitulo">
+      <h3 id="publicidadeTitulo" class="block__title">Publicidade institucional da Câmara</h3>
+      <p>Investimentos declarados no portal Publicidade Transparente. Não comprovam pagamento ou entrega e não devem ser somados aos valores da Betha ou do PNCP. O mês corrente pode estar incompleto.</p>
+      <select id="publicidadeOrgao" hidden aria-label="Órgão da publicidade"><option value="camara">Câmara</option></select>
+      <div class="publicidade-filtros"><label>Período <select id="publicidadePeriodo" aria-label="Período da publicidade"></select></label></div>
+      <div id="publicidadeDados" aria-live="polite"><p>Carregando publicidade da Câmara…</p></div>
+    </section>
 
     <section id="remuneracaoVereadores" class="salary-transparency" aria-label="Subsídio e remuneração dos vereadores" data-csec="vereadores"></section>
 
@@ -147,11 +159,19 @@
       <div id="contratosCamaraBlock" class="block" style="margin-top:24px">
         <h4>Contratos vigentes</h4>
         <p class="muted small">Busque pelo número, empresa, CNPJ ou objeto e use <strong>Ver detalhes e fonte</strong> para conferir a procedência no Betha e no site da Câmara.</p>
-        <div class="filterbar">
+        <button type="button" class="btn-filter-trigger" onclick="FISCALIZA.toggleMobileFilters('contratosCamaraFilterbar')">Filtrar e buscar contratos</button>
+        <div id="contratosCamaraFilterbar" class="filterbar">
           <input id="filtroContratoCamara" type="search" placeholder="Buscar nº do contrato, empresa, CNPJ, objeto...">
-          <span id="contratosContadorCamara" class="filterbar__count"></span>
+          <select id="filtroDocumentosContratoCamara" aria-label="Filtrar por disponibilidade de documentos" aria-describedby="documentosFiltroAjudaCamara" disabled>
+          <option value="">Todos os contratos</option>
+          <option value="com">Com documentos identificados</option>
+        </select>
+        <p id="documentosFiltroAjudaCamara" class="muted small" role="status">Conferindo catálogo documental. O filtro considera arquivos identificados na última verificação, sem confirmar seu conteúdo.</p>
+        <span id="contratosContadorCamara" class="filterbar__count"></span>
+        <button type="button" class="btn-filter-close" onclick="FISCALIZA.toggleMobileFilters('contratosCamaraFilterbar')">Aplicar filtros</button>
         </div>
         <div id="contratosCamara" class="contratos-list"></div>
+      <details class="block contratos-historico" data-contratos-historico="camara"><summary><strong>Buscar no histórico oficial completo</strong></summary><p class="muted small">Consulta separada dos totais e indicadores do painel. Pesquise contratos antigos por fornecedor, número, CNPJ ou objeto.</p><div data-historico-conteudo></div></details>
         <div id="contratosCamaraMais" class="loadmore" hidden>
           <button type="button" onclick="FISCALIZA.maisContratosCamara()">Mostrar mais</button>
         </div>
@@ -193,10 +213,9 @@
       <div id="emendasAtencaoBlock" hidden></div>
 
       <div id="execucaoVereadorBlock" class="block" hidden style="margin-bottom:18px;">
-        <h4 class="block__title" style="font-size:1rem;">% de execução por vereador — pago ÷ destinado</h4>
+        <h4 class="block__title" style="font-size:1rem;">Correspondências por autoria das emendas</h4>
         <p class="block__lead" style="font-size:.85rem;">
-          O vereador destinou R$ X em emendas. Quanto disso a Prefeitura realmente pagou ao beneficiário?
-          Verde ≥ 70% executado, amarelo 30–70%, vermelho &lt; 30%.
+          Mostra pagamentos localizados ao beneficiário no exercício confirmado. Não comprova o vínculo com a emenda nem permite calcular percentual de execução.
         </p>
         <div id="execucaoVereador" class="exec-grid"></div>
       </div>
@@ -214,7 +233,7 @@
           <option value="2026">Ano 2026</option>
         </select>
         <select id="filtroAnoPagamentosCnpj" aria-label="Filtrar pagamentos ao CNPJ por ano">
-          <option value="">Pagamentos: todos os anos</option>
+          <option value="">Pagamentos: exercícios cobertos</option>
           <option value="2025">Pagamentos: 2025</option>
           <option value="2026">Pagamentos: 2026</option>
         </select>
@@ -230,13 +249,14 @@
           <option value="valor_asc">Menor valor</option>
           <option value="autor">Por vereador</option>
           <option value="numero">Mais recentes</option>
-          <option value="pago">Maior pago pela Prefeitura</option>
+          <option value="pago">Maior pagamento ao beneficiário</option>
         </select>
         <select id="filtroStatus" aria-label="Filtrar emendas por status de pagamento">
           <option value="">Todos os status</option>
-          <option value="encontrado">Com pagamento</option>
-          <option value="execucao_direta">Execução direta</option>
-          <option value="sem_pagamento">Sem pagamento</option>
+          <option value="encontrado">Pagamento ao beneficiário localizado</option>
+          <option value="execucao_direta">Destinação a órgão público</option>
+          <option value="sem_pagamento">Pagamento ao beneficiário não localizado</option>
+          <option value="sem_periodo">Exercício ou consulta indisponível</option>
           <option value="sem_cnpj">Sem CNPJ</option>
         </select>
         <span id="emendasContador" class="filterbar__count"></span>
@@ -257,32 +277,33 @@
         Câmara: funcionário, cargo, destino, quantidade, valor unitário, acumulado anual e ranking mensal.
       </p>
       <div class="stats" id="statsDiariasCamara"></div>
-      <div class="filterbar">
-        <select id="filtroAnoDiariasCamara" aria-label="Filtrar diarias por ano">
+      <div class="filterbar fiscalizacao-filtros" role="group" aria-label="Filtros de diárias da Câmara">
+        <div class="fiscalizacao-filtros__titulo"><strong>Filtrar lançamentos</strong><span>Combine os campos para refinar o recorte.</span></div>
+        <label class="fiscalizacao-campo">Ano<select id="filtroAnoDiariasCamara" aria-label="Filtrar diarias por ano">
           <option value="">Todos os anos</option>
           <option value="2026" selected>Ano 2026</option>
           <option value="2025">Ano 2025</option>
-        </select>
-        <select id="filtroMesDiariasCamara" aria-label="Filtrar diarias por mês">
+        </select></label>
+        <label class="fiscalizacao-campo">Mês<select id="filtroMesDiariasCamara" aria-label="Filtrar diarias por mês">
           <option value="">Todos os meses</option>
-        </select>
-        <select id="filtroSecretariaDiariasCamara" aria-label="Filtrar por setor ou cargo">
+        </select></label>
+        <label class="fiscalizacao-campo">Cargo ou setor<select id="filtroSecretariaDiariasCamara" aria-label="Filtrar por setor ou cargo">
           <option value="">Todos os cargos/setores</option>
-        </select>
-        <input id="filtroFuncionarioDiariasCamara" type="search" placeholder="Buscar vereador, servidor, destino ou finalidade...">
-        <select id="filtroValorDiariasCamara" aria-label="Filtrar por faixa de valor">
+        </select></label>
+        <label class="fiscalizacao-campo fiscalizacao-campo--busca">Buscar<input id="filtroFuncionarioDiariasCamara" type="search" placeholder="Vereador, servidor, destino ou finalidade"></label>
+        <label class="fiscalizacao-campo">Faixa de valor<select id="filtroValorDiariasCamara" aria-label="Filtrar por faixa de valor">
           <option value="">Todos os valores</option>
           <option value="1000">Acima de R$ 1.000</option>
           <option value="500-999">De R$ 500 a R$ 999</option>
           <option value="0-499">Ate R$ 499</option>
-        </select>
-        <select id="ordenarDiariasCamara" aria-label="Ordenar diarias">
+        </select></label>
+        <label class="fiscalizacao-campo">Ordenar por<select id="ordenarDiariasCamara" aria-label="Ordenar diarias">
           <option value="valor_desc">Maior valor total</option>
           <option value="qtd_desc">Maior quantidade</option>
           <option value="valor_unit_desc">Maior valor por diária</option>
           <option value="data_desc">Mais recentes</option>
           <option value="secretaria">Por cargo/setor</option>
-        </select>
+        </select></label>
         <span id="contadorDiariasCamara" class="filterbar__count"></span>
       </div>
       <div id="rankingDiariasCamara" class="diarias-ranking"></div>
@@ -341,6 +362,8 @@
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -364,7 +387,7 @@
   </div>
 </footer>
 
-<script src="data-loader.js?v=20260730-relatorios2"></script>
+<script src="data-loader.js?v=20261105-fiscalizacao"></script>
 <script>
 /* Sub-navegação da Câmara: mostra uma seção por vez (reduz scroll gigante).
    Não interfere na renderização async — só alterna a classe csec-hidden. */
@@ -408,7 +431,7 @@
   });
 
   // Seção inicial: hash da URL (se válido) ou "geral"
-  var valido = ["geral", "vereadores", "emendas", "diarias"];
+  var valido = ["geral", "vereadores", "emendas", "diarias", "publicidade"];
   
   function verificarHash(hash) {
     var h = (hash || "").replace("#", "");
@@ -426,6 +449,7 @@
   });
 })();
 </script>
+  <script src="modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>
 

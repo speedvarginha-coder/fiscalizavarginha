@@ -65,7 +65,7 @@ try {
   ]
 }
 </script>
-<link rel="stylesheet" href="style.css?v=20261005-updates-preview">
+<link rel="stylesheet" href="style.css?v=20261006-texto-guia">
 </head>
 <body data-page="home">
 <div id="loading-overlay" aria-live="polite" aria-label="Carregando dados">
@@ -98,6 +98,7 @@ try {
           <a href="relatorios.html" class="nav__link">Relatórios</a>
           <a href="marcadores.html" class="nav__link">Meus marcadores</a>
           <a href="conformidade.html" class="nav__link">Qualidade dos dados</a>
+          <a href="sobre.html#fontes-dados" class="nav__link">Fontes dos dados</a>
           <a href="sobre.html" class="nav__link">Sobre o painel</a>
         </div>
       </details>
@@ -209,7 +210,7 @@ try {
         <a href="prefeitura.html?tab=diarias" class="hub-item">
           <div class="hub-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
           <span>Diárias</span>
-          <small class="hub-item__cue">quem viajou? →</small>
+          <small class="hub-item__cue">consultar registros →</small>
         </a>
         <a href="prefeitura.html?tab=alugueis" class="hub-item">
           <div class="hub-item__icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 21v-4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4"/></svg></div>
@@ -262,7 +263,7 @@ try {
           </div>
           <div class="hub-numeros__item">
             <strong id="hnSinais">—</strong>
-            <span>emendas com pagamento localizado</span>
+            <span>emendas com pagamento localizado ao beneficiário (vínculo não comprovado)</span>
           </div>
         </div>
         <a href="relatorios.html" class="hub-numeros__link">Ver relatório completo →</a>
@@ -638,6 +639,8 @@ try {
     </div>
     <div class="footer__col footer__sources">
       <strong>Fontes &amp; dados abertos</strong>
+      <p><a href="mailto:contato@fiscalizavarginha.com.br?subject=Sugest%C3%A3o%20para%20o%20Fiscaliza%20Varginha" data-abrir-sugestao>Enviar sugestão</a></p>
+      <p><a href="sobre.html#fontes-dados">Ver todas as fontes e suas limitações</a></p>
       <ul>
         <li><a href="https://www.varginha.mg.gov.br/" target="_blank" rel="noopener">Prefeitura de Varginha</a></li>
         <li><a href="https://www.varginha.mg.leg.br/" target="_blank" rel="noopener">Câmara Municipal</a></li>
@@ -911,5 +914,6 @@ document.addEventListener('fiscaliza:ready', function () {
   render();
 })();
 </script>
+  <script src="modules/sugestoes.js?v=20261028a" defer></script>
 </body>
 </html>

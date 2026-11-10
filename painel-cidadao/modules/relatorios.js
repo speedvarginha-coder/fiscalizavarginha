@@ -228,7 +228,76 @@
   // gasto, e o texto do bloco pedia explicacao ao poder publico por elas.
   // Comparar exercicios exige execucao orcamentaria (empenhado, liquidado e
   // pago), que e outra fonte.
+  function renderPublicidade() {
+    const target = $("publicidadeDados"), orgao = $("publicidadeOrgao"), periodo = $("publicidadePeriodo");
+    if (!target || !orgao || !periodo) return;
+    const data = (window.FISCALIZA_DATA || {})[`publicidade_${orgao.value}`];
+    if (!orgao.dataset.bound) {
+      orgao.addEventListener("change", renderPublicidade);
+      periodo.addEventListener("change", renderPublicidade);
+      orgao.dataset.bound = "true";
+    }
+    if (!data) {
+      periodo.innerHTML = "";
+      target.innerHTML = '<p>Dados desta fonte ainda não estão disponíveis. Consulte os portais da <a href="https://new.publicidadetransparente.com.br/view/municipio-de-varginha/" target="_blank" rel="noopener">Prefeitura</a> e da <a href="https://new.publicidadetransparente.com.br/view/camara-municipal-de-varginha-mg/" target="_blank" rel="noopener">Câmara</a>.</p>';
+      return;
+    }
+    const meses = data.investimentos || [], selected = periodo.value;
+    periodo.innerHTML = meses.map(item => `<option value="${esc(item.periodo)}">${esc(item.periodo.split("-").reverse().join("/"))}</option>`).join("");
+    if (meses.some(item => item.periodo === selected)) periodo.value = selected;
+    const item = meses.find(record => record.periodo === periodo.value);
+    const source = orgao.value === "camara" ? "camara-municipal-de-varginha-mg" : "municipio-de-varginha";
+    const base = `https://new.publicidadetransparente.com.br/view/${source}/`;
+    const date = value => value ? new Date(value).toLocaleString("pt-BR") : "não informada";
+    const money = cents => fmtBRL(cents / 100);
+    let html = '';
+    if (data.status !== "ok") html += '<p class="publicidade-aviso">Coleta parcial ou indisponível. Registros anteriores podem estar mantidos; confira a data de consulta de cada conjunto.</p>';
+    if (item) {
+      const nomesMeses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+      const ano = Number(item.periodo.slice(0, 4));
+      const agora = new Date();
+      const limite = ano === agora.getFullYear() ? agora.getMonth() + 1 : ano < agora.getFullYear() ? 12 : 0;
+      const registros = meses.filter(m => /^\d{4}-(0[1-9]|1[0-2])$/.test(m.periodo) && Number(m.periodo.slice(0, 4)) === ano && Number(m.periodo.slice(5)) <= limite && Number.isSafeInteger(m.total_centavos));
+      const mapa = new Map(registros.map(m => [Number(m.periodo.slice(5)), m]));
+      const acumulado = [...mapa.values()].reduce((total, mes) => total + mes.total_centavos, 0);
+      const ausentes = Array.from({ length: limite }, (_, i) => i + 1).filter(mes => !mapa.has(mes));
+      const mesSelecionado = nomesMeses[Number(item.periodo.slice(5)) - 1];
+      const cobertura = limite ? `jan a ${nomesMeses[limite - 1]} · ${mapa.size} de ${limite} meses com dados` : 'Ano ainda não iniciado';
+      const maior = Math.max(0, ...item.meios.map(meio => meio.valor_centavos));
+      const linhas = [...item.meios].sort((a, b) => b.valor_centavos - a.valor_centavos).map(meio => {
+        const largura = maior > 0 ? Math.max(0, Math.min(100, (meio.valor_centavos / maior) * 100)) : 0;
+        return `<tr><th scope="row"><span class="publicidade-meio">${esc(meio.meio)}</span><span class="publicidade-barra" aria-hidden="true"><span style="width:${largura.toFixed(2)}%"></span></span></th><td>${money(meio.valor_centavos)}</td></tr>`;
+      }).join("");
+      html += `<div class="publicidade-resumo"><article class="publicidade-cartao publicidade-cartao--mes"><span class="publicidade-cartao__rotulo">No mês · ${esc(mesSelecionado)}/${ano}</span><strong>${money(item.total_centavos)}</strong><span>Investimento declarado</span></article><article class="publicidade-cartao publicidade-cartao--ano" data-publicidade-acumulado><span class="publicidade-cartao__rotulo">Acumulado do ano · ${ano}</span><strong>${mapa.size ? money(acumulado) : 'Não disponível'}</strong><span>${esc(cobertura)}</span></article></div>`;
+      const notaCobertura = !limite ? 'Ainda não há meses deste ano a acumular.' : ausentes.length
+        ? `Sem dados confirmados para ${ausentes.map(mes => nomesMeses[mes - 1]).join(', ')}; esses meses não foram tratados como zero.`
+        : ano === agora.getFullYear() ? 'O acumulado inclui o mês atual quando informado, que pode estar incompleto.' : 'O acumulado soma os meses do ano com dados confirmados.';
+      html += `<div class="publicidade-cobertura"><div class="publicidade-cobertura__cabecalho"><strong>Meses incluídos em ${ano}</strong><span>${esc(cobertura)}</span></div><div class="publicidade-meses" aria-hidden="true">${nomesMeses.map((nome, i) => `<span class="${i + 1 > limite ? 'publicidade-mes--futuro' : mapa.has(i + 1) ? 'publicidade-mes--disponivel' : 'publicidade-mes--ausente'}">${nome}</span>`).join("")}</div><p>${esc(notaCobertura)}</p></div>`;
+      html += `<div class="publicidade-detalhe"><div class="publicidade-detalhe__cabecalho"><div><h4>Distribuição por meio</h4><p>Valores declarados em ${esc(mesSelecionado)}/${ano}</p></div><span>Consulta: ${esc(date(item.consultado_em))}</span></div><div class="table-wrap"><table class="publicidade-tabela"><caption class="publicidade-sr-only">Investimentos declarados por meio · ${esc(periodo.value)}</caption><thead><tr><th scope="col">Meio</th><th scope="col">Valor declarado</th></tr></thead><tbody>${linhas}</tbody><tfoot><tr><th scope="row">Total do mês</th><td>${money(item.total_centavos)}</td></tr></tfoot></table></div></div>`;
+    } else html += '<p>Nenhum período com valores conferidos está disponível. Isso não significa ausência de investimento.</p>';
+    html += `<p class="publicidade-fonte"><a href="${base}investimentos/" target="_blank" rel="noopener">Conferir investimentos na fonte</a> · Selecione o mesmo mês no portal.</p>`;
+    html += '<div class="publicidade-cadastros"><h4>Mais informações na fonte</h4>';
+    for (const [key, label] of [["veiculos", "Veículos de comunicação"], ["fornecedores", "Fornecedores de serviços complementares"], ["sessao-publica", "Sessões públicas"]]) {
+      const cadastro = data.cadastros?.[key];
+      if (!cadastro) {
+        html += `<p>${label}: consulta indisponível; ausência de registros não confirmada. <a href="${base}${key}/" target="_blank" rel="noopener">Consultar na fonte</a>.</p>`;
+        continue;
+      }
+      const registros = cadastro?.registros || [];
+      html += `<details><summary>${label} <span>${registros.length} registros</span></summary><p><a href="${base}${key}/" target="_blank" rel="noopener">Abrir cadastro na fonte</a> · Consulta: ${esc(date(cadastro?.consultado_em))}. Cadastro não comprova contratação.</p><ul>${registros.map(row => `<li>${key === "sessao-publica" ? `${esc(row.data_hora)} · ${esc(row.objeto)} · ${esc(row.situacao)}` : `${esc(row.nome)}${row.razao_social ? ` · ${esc(row.razao_social)}` : ""}${row.cnpj ? ` · ${esc(row.cnpj)}` : ""} · ${esc(row.categoria)} · ${esc(row.situacao)}`}</li>`).join("")}</ul></details>`;
+    }
+    html += '</div>';
+    target.innerHTML = html;
+  }
+  window.addEventListener("fiscaliza:chunk", event => {
+    if (event.detail?.key?.startsWith("publicidade_")) renderPublicidade();
+  });
+  window.addEventListener("fiscaliza:chunk:error", event => {
+    if (event.detail?.key?.startsWith("publicidade_")) renderPublicidade();
+  });
+
   function renderTodos() {
+    renderPublicidade();
     renderTimelineSinais();
     detectarFragmentacao();
   }

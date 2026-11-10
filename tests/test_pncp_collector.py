@@ -28,6 +28,14 @@ def contrato(cnpj: str, controle: str) -> dict:
 
 
 class PncpQueryContractTests(unittest.TestCase):
+    def test_contract_amount_is_global_and_keeps_initial_separately(self):
+        row = coletor_pncp._normaliza_contrato({"valorInicial": 675, "valorGlobal": 164025})
+        self.assertEqual((row["valor"], row["valor_inicial"], row["valor_global"]), (164025, 675, 164025))
+
+    def test_missing_or_zero_global_is_not_replaced_with_initial(self):
+        self.assertIsNone(coletor_pncp._normaliza_contrato({"valorInicial": 5})["valor"])
+        self.assertEqual(coletor_pncp._normaliza_contrato({"valorInicial": 5, "valorGlobal": 0})["valor"], 0)
+
     def test_procurements_use_required_modality_and_cnpj_parameter(self):
         calls = []
 
@@ -112,6 +120,17 @@ class PncpNumerosDaCompraTests(unittest.TestCase):
 
 
 class PncpPreservationTests(unittest.TestCase):
+    def test_old_preserved_amount_is_not_treated_as_global(self):
+        old = {"ano": 2026, "contratos": [{"numero_controle_pncp": "old", "valor": 675}], "compras": []}
+        details = {"orgaos": {"camara": {"registros": 0}, "prefeitura": {"registros": 0}}}
+        with patch.object(coletor_pncp, "_coleta_compras", return_value=([], [], True, details)), \
+             patch.object(coletor_pncp, "_coleta_contratos", return_value=([], [], False, details)), \
+             patch.object(coletor_pncp, "_existente", return_value=old):
+            result = coletor_pncp.coletar(2026)
+        self.assertIsNone(result["contratos"][0]["valor"])
+        self.assertEqual(result["contratos"][0]["valor_anterior_nao_verificado"], 675)
+        self.assertEqual(result["resumo"]["contratos_sem_valor_global"], 1)
+
     def test_partial_merge_updates_current_rows_without_losing_previous(self):
         previous = [
             {"numero_controle_pncp": "A", "valor": 10},
