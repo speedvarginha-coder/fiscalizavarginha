@@ -473,7 +473,11 @@
           parent.insertBefore(cobertura, listaEl);
         }
         if (cobertura) {
-          cobertura.innerHTML = `<strong>Cobertura do recorte:</strong> ${fmtNum(view.length)} registro(s); ${fmtNum(semDestino)} sem destino e ${fmtNum(semFinalidade)} sem finalidade na fonte carregada. Campos ausentes não são completados por suposição. Confira autorização, relatório de viagem e prestação de contas no órgão.`;
+          cobertura.innerHTML = `<strong>Cobertura do recorte:</strong> ${fmtNum(view.length)} registro(s); ${fmtNum(semDestino)} sem destino e ${fmtNum(semFinalidade)} sem finalidade na fonte carregada. Campos ausentes não são completados por suposição. Confira autorização, relatório de viagem e prestação de contas no órgão.` +
+            // Quando quase nada tem motivo, dizer isso sem rodeio e dar o caminho de pedir.
+            (view.length && semFinalidade / view.length >= 0.9
+              ? ` <strong>Neste recorte a fonte não informa para onde nem por que foi a viagem.</strong> <a href="cobrar.html">Peça destino e finalidade pela Lei de Acesso à Informação</a>.`
+              : "");
         }
         if (parent && !parent.querySelector(".diarias-note")) {
           const note = document.createElement("div");

@@ -297,8 +297,16 @@
     return { ...fonte, age_days: idade, status: idade > Number(fonte.max_age_days) ? "stale" : "ok" };
   };
 
+  // Número de contrato para exibição e pedidos. Na Betha, "0" é ausência de número,
+  // e mostrar "Contrato 0/2026" faz o cidadão pedir um contrato que não existe.
+  const numeroContrato = (c) => {
+    const n = String(c?.numero ?? "").trim();
+    const ano = String(c?.ano ?? "").trim();
+    return n && n !== "0" && n !== "-" ? n + (ano ? "/" + ano : "") : "sem número publicado" + (ano ? " (" + ano + ")" : "");
+  };
+
   window.FISCALIZA.utils = Object.freeze({
     fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, siglaSecretaria, exportCSV,
-    radical, casaBusca, statusFonteAtual,
+    radical, casaBusca, statusFonteAtual, numeroContrato,
   });
 })();

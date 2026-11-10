@@ -310,7 +310,7 @@
       tipo,
       categoria,
       relevancia,
-      titulo: `Contrato ${numAno} — ${empresa || "—"}`,
+      titulo: `Contrato ${u.numeroContrato(c)} — ${empresa || "—"}`,
       resumo: cleanText(obj || "Objeto não informado"),
       envolvidos: c.contratado ? [{
         nome: empresa,

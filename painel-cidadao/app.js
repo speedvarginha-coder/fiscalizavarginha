@@ -105,7 +105,7 @@
 
   // ============= UTILS (extraídos para modules/utils.js) =============
   // Aliases locais para retrocompatibilidade. Definições reais em window.FISCALIZA.utils.
-  const { fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, exportCSV, radical, casaBusca } = window.FISCALIZA.utils;
+  const { fmtBRL, fmtBRLnb, fmtMi, fmtNum, cleanText, esc, jsSafe, scrollToEl, norm, highlight, exportCSV, radical, casaBusca, numeroContrato } = window.FISCALIZA.utils;
 
   const provenienciaRegistro = (fonteId, rotulo, url) => {
     const fonte = ((D.status_fontes || {}).domains || {})[fonteId] || {};
@@ -1993,7 +1993,7 @@
         /dispensa/i.test(c.modalidade || "") ? "alto" : "medio",
         `Contrato de alto valor: ${c.contratado || "contratado não informado"}`,
         `${c.modalidade || "Modalidade não informada"}. Confira objeto, vigência, aditivos e pagamentos relacionados.`,
-        `${fmtBRL(c.valor)} · Contrato ${c.numero || "s/n"}/${c.ano || ""}`,
+        `${fmtBRL(c.valor)} · Contrato ${numeroContrato(c)}`,
         "prefeitura.html"
       ));
 
@@ -3381,7 +3381,7 @@
       const rel = (pf.contratos || []).filter(c => r.length === 8 ? raiz(c.cnpj) === r : canon(f.nome).length > 4 && canon(c.contratado) === canon(f.nome));
       const validos = rel.filter(c => /^https:\/\/transparencia\.betha\.cloud\/#\/y7mn01LGqd_HCvGtj6VPwA==\/consulta\/83043\/detalhe\/[\w:%-]+$/.test(c.fonte_url || ""));
       if (rel.length === 1 && validos.length === 1) { window.location.assign(validos[0].fonte_url); return; }
-      window.FISCALIZA.dossie.abrirComHtml(`<h3>Contratos de ${esc(f.nome)}</h3>` + (rel.length ? `<p>Contratos encontrados na base consultada. Escolha a ficha para conferir contrato e aditivos.</p>${rel.map(c => `<article class="report-note"><strong>Contrato ${esc(c.numero || "não informado")}/${esc(c.ano || "")}</strong><p>${esc(c.objeto || "")} · ${fmtBRL(c.valor)}</p>${validos.includes(c) ? `<a class="btn-link" href="${esc(c.fonte_url)}">Abrir contrato na Betha ↗</a>` : `<p>Link individual não localizado. Pesquise pelo número ou CNPJ na tabela oficial.</p>`}${window.FISCALIZA.dossie.templateDocumentos(c, "Prefeitura")}</article>`).join("")}` : `<p><strong>Nenhum contrato localizado na base consultada.</strong> Isso não confirma que o contrato não exista. O pagamento pode estar vinculado a outro instrumento, período ou identificação. Solicite à Prefeitura o contrato ou instrumento que fundamentou a despesa.</p><a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener">Consultar contratos na Betha ↗</a>`));
+      window.FISCALIZA.dossie.abrirComHtml(`<h3>Contratos de ${esc(f.nome)}</h3>` + (rel.length ? `<p>Contratos encontrados na base consultada. Escolha a ficha para conferir contrato e aditivos.</p>${rel.map(c => `<article class="report-note"><strong>Contrato ${esc(numeroContrato(c))}</strong><p>${esc(c.objeto || "")} · ${fmtBRL(c.valor)}</p>${validos.includes(c) ? `<a class="btn-link" href="${esc(c.fonte_url)}">Abrir contrato na Betha ↗</a>` : `<p>Link individual não localizado. Pesquise pelo número ou CNPJ na tabela oficial.</p>`}${window.FISCALIZA.dossie.templateDocumentos(c, "Prefeitura")}</article>`).join("")}` : `<p><strong>Nenhum contrato localizado na base consultada.</strong> Isso não confirma que o contrato não exista. O pagamento pode estar vinculado a outro instrumento, período ou identificação. Solicite à Prefeitura o contrato ou instrumento que fundamentou a despesa.</p><a class="btn-link" href="https://transparencia.betha.cloud/#/y7mn01LGqd_HCvGtj6VPwA==/consulta/83043" target="_blank" rel="noopener">Consultar contratos na Betha ↗</a>`));
     }));
   }
 
@@ -3471,7 +3471,7 @@
         if (rel.length > 1 && rel.every(fichaValida)) {
           window.FISCALIZA.dossie.abrirComHtml(
             `<h3>Contratos de ${esc(nome)}</h3><p>${emExecucao.length ? "Em execução e históricos, segundo a fonte oficial." : "Registros históricos encontrados na fonte oficial."} Escolha o contrato para abrir sua ficha.</p>` +
-            rel.map(c => `<article class="report-note"><strong>Contrato ${esc(c.numero || "não informado")}/${esc(c.ano || "")} · ${situacaoTxt(c)}</strong><p>${esc(c.objeto || "")} · ${fmtBRL(c.valor)}</p><a class="btn-link" href="${esc(c.fonte_url)}">Abrir contrato na Betha ↗</a>${window.FISCALIZA.dossie.templateDocumentos(c, "Câmara")}</article>`).join("")
+            rel.map(c => `<article class="report-note"><strong>Contrato ${esc(numeroContrato(c))} · ${situacaoTxt(c)}</strong><p>${esc(c.objeto || "")} · ${fmtBRL(c.valor)}</p><a class="btn-link" href="${esc(c.fonte_url)}">Abrir contrato na Betha ↗</a>${window.FISCALIZA.dossie.templateDocumentos(c, "Câmara")}</article>`).join("")
           );
           return;
         }
@@ -3621,6 +3621,7 @@
 
   if ($("contratosBlock")) {
     const contratos          = pf.contratos || [];
+    avisoColetaCompleta("contratosCobertura", pf.coleta_frescor?.datasets?.contratos, "contratos");
 
     const extrairAnoSimplesContratos = (dataStr) => {
       if (!dataStr) return null;
@@ -5325,6 +5326,17 @@ ${url}
   };
 
   // ============= FROTA MUNICIPAL (prefeitura.html) =============
+  // Idade real de cada base. O carimbo do ciclo diz "hoje" mesmo quando a lista
+  // exibida foi preservada de uma coleta de semanas atrás; o visitante precisa ver isso.
+  function avisoColetaCompleta(elId, dataset, nome) {
+    const el = $(elId);
+    if (!el || !dataset || !/preserv|parcial|falha|mescla/.test(norm(dataset.status || ""))) return;
+    const ultima = /^\d{4}-\d{2}-\d{2}/.test(dataset.last_complete_at || "")
+      ? `é da coleta completa de ${dataCurtaBR(dataset.last_complete_at)}` : "é de uma coleta anterior, sem data registrada";
+    el.textContent = `Esta lista de ${nome} ${ultima}. As tentativas mais recentes vieram incompletas e a base anterior foi mantida; registros novos podem não aparecer. Confira a situação atual na fonte oficial.`;
+    el.hidden = false;
+  }
+
   function dataCurtaBR(raw) {
     const s = cleanText(raw || "");
     const m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
@@ -5357,6 +5369,7 @@ ${url}
   function renderObrasPorBairro() {
     const alvo = $("obrasPorBairro");
     if (!alvo) return;
+    avisoColetaCompleta("obrasCobertura", pf.coleta_frescor?.datasets?.obras, "obras");
     const obras = pf.obras_publicas || [];
     if (!obras.length) { alvo.hidden = true; return; }
 
@@ -5945,10 +5958,10 @@ ${url}
           tipo: "contrato",
           tipoLabel: "Contrato",
           orgao: "prefeitura",
-          titulo: c.contratado || `Contrato ${c.numero || ""}/${c.ano || ""}`,
+          titulo: c.contratado || `Contrato ${numeroContrato(c)}`,
           valor,
           data: dataCurtaBR(c.data_assinatura || ""),
-          resumo: obj || `Contrato ${c.numero || ""}/${c.ano || ""}`,
+          resumo: obj || `Contrato ${numeroContrato(c)}`,
           pendencias: pend.length ? pend : ["valor alto pede conferencia documental"],
           score: Math.min(96, 35 + Math.log10(Math.max(valor, 1)) * 7 + pend.length * 12),
           fonte: "Betha contratos Prefeitura",

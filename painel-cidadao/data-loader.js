@@ -127,6 +127,11 @@
   const BUILD_VERSION = "20261105-fiscalizacao";
   const body = document.body;
   const page = (body && body.dataset.page) || "home";
+  // Conta a visita à página (contagem.php): só o nome da página, sem cookie
+  // nem identificação. Restrito ao domínio público para não contar testes.
+  if (/(^|\.)fiscalizavarginha\.com\.br$/.test(location.hostname) && navigator.sendBeacon) {
+    try { navigator.sendBeacon("contagem.php", new Blob([JSON.stringify({ p: page })], { type: "application/json" })); } catch (_) {}
+  }
   const modulosPagina = [...(MODULOS_POR_PAGINA[page] || MODULOS)];
   if (["prefeitura", "camara", "relatorios", "cobrar", "fundacao", "pessoal", "conformidade"].includes(page)) modulosPagina.push("modules/cidadao.js");
   const modulosAdiados = MODULOS_ADIADOS_POR_PAGINA[page] || [];

@@ -195,7 +195,7 @@
       const itensHtml = g.itens
         .sort((a, b) => (Number(b.valor) || 0) - (Number(a.valor) || 0))
         .map(c => `<li>
-          <span>Contrato ${esc(c.numero || "s/n")}/${esc(c.ano || "")} — ${esc(cleanText((c.objeto || "").slice(0, 80)))}${(c.objeto || "").length > 80 ? "…" : ""}</span>
+          <span>Contrato ${esc(window.FISCALIZA.utils.numeroContrato(c))} — ${esc(cleanText((c.objeto || "").slice(0, 80)))}${(c.objeto || "").length > 80 ? "…" : ""}</span>
           <span>${fmtBRL(c.valor)}</span>
         </li>`).join("");
       return `<div class="frag-grupo">

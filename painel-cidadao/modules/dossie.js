@@ -82,7 +82,7 @@
   }
   function templateDocumentos(c, orgao) {
     const url = /^https:\/\/transparencia\.betha\.cloud\/#\/(?:-iAWLe1kr2VQcrW9k2AUBg==\/consulta\/324812|y7mn01LGqd_HCvGtj6VPwA==\/consulta\/83043)\/detalhe\/[\w:%-]+$/.test(c.fonte_url || "") ? c.fonte_url : "";
-    const numero = c.numero && String(c.numero) !== "0" ? `${c.numero}${c.ano ? "/" + c.ano : ""}` : "número não informado no painel";
+    const numero = u.numeroContrato(c);
     const pedido = `À ${orgao} de Varginha. Solicito cópia integral do contrato ${numero}, firmado com ${c.contratado || "fornecedor não informado"}${c.cnpj ? " (CNPJ/CPF informado na fonte: " + c.cnpj + ")" : ""}, assinatura ${c.data_assinatura || "não informada"}, objeto: ${c.objeto || "não informado"}. Solicito contrato assinado, anexos e todos os aditivos, edital ou ato de contratação direta, termo de referência, processo administrativo, empenhos, liquidações, notas fiscais, comprovantes de pagamento e relatórios de execução, com indicação de onde estão publicados. Caso não haja documentos publicados, solicito o fornecimento das cópias e esclarecimento sobre a disponibilidade pública.${url ? " Ficha consultada: " + url : ""}`;
     return `<div class="contrato-documentos muted small" data-documentos-ficha="${esc(url)}" data-documentos-orgao="${esc(orgao)}">
       <p class="contrato-documentos-selo" data-documentos-selo>Disponibilidade não confirmada</p>
@@ -310,7 +310,7 @@
 
   function contratoBuscaTexto(c) {
     return [
-      c.numero && c.ano ? `Contrato ${c.numero}/${c.ano}` : "",
+      c.numero && String(c.numero) !== "0" && c.ano ? `Contrato ${c.numero}/${c.ano}` : "",
       c.contratado || "",
       c.cnpj || "",
     ].filter(Boolean).join(" | ");
@@ -326,7 +326,7 @@
     const baseLegal = params.baseLegal || [];
     const orgao = params.orgao || "Prefeitura";
     const busca = contratoBuscaTexto(c);
-    const numero = c.numero && c.ano ? `${c.numero}/${c.ano}` : (c.numero || "não informado");
+    const numero = u.numeroContrato(c);
     const cnpj = c.cnpj || "não informado";
     const dataIni = c.data_assinatura ? String(c.data_assinatura).split("-").reverse().join("/") : "não informada";
     const dataFim = c.data_fim ? String(c.data_fim).split("-").reverse().join("/") : "não informada";
@@ -725,7 +725,7 @@ ${baseLegalTxt}
             const digits = busca.value.replace(/\D/g, "");
             const rows = contratos.filter(c => (!ano.value || String(c.data_assinatura).startsWith(ano.value)) && (!q || norm([`${c.numero}/${c.ano}`, c.cnpj, c.contratado, c.objeto].join(" ")).includes(q) || (digits.length >= 8 && String(c.cnpj || "").replace(/\D/g, "").includes(digits))));
             area.querySelector("[data-historico-contador]").textContent = `${rows.length} ficha(s) encontrada(s)`;
-            lista.innerHTML = rows.slice(0,shown).map(c => `<article class="report-note"><strong>Contrato ${esc(c.numero && String(c.numero) !== "0" ? c.numero : "número não informado")}/${esc(c.ano || "")} · ${esc(c.contratado || "Fornecedor não informado")}</strong><p>${esc(c.objeto || "Objeto não informado")} · situação ${esc(c.situacao || "não informada")} · assinatura ${esc(c.data_assinatura || "não informada")}</p>${templateDocumentos(c, orgao === "camara" ? "Câmara" : "Prefeitura")}</article>`).join("") || '<p>Nenhuma ficha localizada neste recorte. Isso não comprova inexistência do contrato. Amplie a busca ou solicite o instrumento de contratação ao órgão.</p>';
+            lista.innerHTML = rows.slice(0,shown).map(c => `<article class="report-note"><strong>Contrato ${esc(u.numeroContrato(c))} · ${esc(c.contratado || "Fornecedor não informado")}</strong><p>${esc(c.objeto || "Objeto não informado")} · situação ${esc(c.situacao || "não informada")} · assinatura ${esc(c.data_assinatura || "não informada")}</p>${templateDocumentos(c, orgao === "camara" ? "Câmara" : "Prefeitura")}</article>`).join("") || '<p>Nenhuma ficha localizada neste recorte. Isso não comprova inexistência do contrato. Amplie a busca ou solicite o instrumento de contratação ao órgão.</p>';
             mais.hidden = rows.length <= shown;
           };
           busca.addEventListener("input", () => render(true)); ano.addEventListener("change", () => render(true)); mais.addEventListener("click", () => {shown += 20; render(false);});
