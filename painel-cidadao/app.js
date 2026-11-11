@@ -4137,7 +4137,8 @@
           <div>
             <p class="contrato__nome" style="display:flex; align-items:flex-start; gap:8px;">
               <span style="flex:1;">${esc(cleanText(c.contratado || "—"))}
-              ${c.situacao ? `<span class="contrato__sit${sitClass}">${esc(c.situacao)}</span>` : ""}</span>
+              ${c.situacao ? `<span class="contrato__sit${sitClass}">${esc(c.situacao)}</span>` : ""}
+              ${/^\d{4}-\d{2}-\d{2}/.test(c.ausente_na_fonte_desde || "") ? `<span class="contrato__sit contrato__sit--encerrado" title="O portal oficial deixou de listar este contrato. O registro é mantido até o fim da vigência informada; confira a situação na fonte.">não reapareceu na fonte desde ${dataCurtaBR(c.ausente_na_fonte_desde)}</span>` : ""}</span>
               ${window.FISCALIZA.watchlist.botao("contratos", idContrato)}
             </p>
             <p class="contrato__obj">${esc(cleanText(c.objeto))}</p>

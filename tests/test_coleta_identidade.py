@@ -215,7 +215,20 @@ class PreservacaoRegressaoTests(unittest.TestCase):
         novos = [{"numero": str(i), "ano": "2026"} for i in range(300)]
         anteriores = novos + [{"numero": "perdido", "ano": "2025", "entidade": "Prefeitura"}]
         ok = [{"status": "ok"}] * 9
-        self.assertTrue(coletor._contratos_incompletos(novos, anteriores, ok, 9, "2026-10-03"))
+        # Um sumiço em 301 cabe na tolerância de 1% e não derruba a coleta;
+        # o registro é mantido e marcado em vez de segurar os outros 300.
+        self.assertFalse(coletor._contratos_incompletos(novos, anteriores, ok, 9, "2026-10-03"))
+        coletados = list(novos)
+        mantidos = coletor._mantem_contratos_ausentes(coletados, anteriores, "2026-10-03")
+        self.assertEqual([c["numero"] for c in mantidos], ["perdido"])
+        self.assertEqual(coletados[-1]["ausente_na_fonte_desde"], "2026-10-03")
+        # No ciclo seguinte a data original do sumiço é preservada.
+        de_novo = list(novos)
+        coletor._mantem_contratos_ausentes(de_novo, coletados, "2026-10-09")
+        self.assertEqual(de_novo[-1]["ausente_na_fonte_desde"], "2026-10-03")
+        # Acima de 1% continua sendo resposta parcial da fonte.
+        muitos = novos + [{"numero": f"perdido{i}", "ano": "2025", "entidade": "Prefeitura"} for i in range(4)]
+        self.assertTrue(coletor._contratos_incompletos(novos, muitos, ok, 9, "2026-10-03"))
         self.assertTrue(coletor._contratos_incompletos(novos, novos, ok[:8], 9, "2026-10-03"))
         self.assertTrue(coletor._contratos_incompletos(novos, novos, ok[:8] + [{"status": "partial"}], 9, "2026-10-03"))
         self.assertFalse(coletor._contratos_incompletos(novos, novos, ok, 9, "2026-10-03"))
@@ -224,6 +237,9 @@ class PreservacaoRegressaoTests(unittest.TestCase):
         base = {"numero": "1", "ano": "2022", "cnpj": "123", "entidade": "A", "data_fim": "2030-01-01"}
         outro = dict(base, entidade="B")
         self.assertTrue(coletor._contratos_incompletos([outro], [base], [{"status": "ok"}], 1, "2026-10-03"))
+        # Razão social corrigida na fonte não é contrato novo nem contrato sumido.
+        renomeado = dict(base, contratado="NOME NOVO LTDA", objeto="x")
+        self.assertEqual(coletor._contratos_ausentes([renomeado], [dict(base, contratado="NOME VELHO", objeto="x")], "2026-10-03"), [])
         vencido = dict(base, data_fim="2024-01-01", situacao="EXECUCAO")
         self.assertFalse(coletor._contratos_incompletos([], [vencido], [{"status": "ok"}], 1, "2026-10-03"))
 

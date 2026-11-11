@@ -1587,6 +1587,8 @@ def _processa_camara_betha() -> dict:
             raise ValueError("Contratos da Câmara incompletos e sem base anterior; gravação bloqueada")
         contratos_status = "preservada_por_resposta_betha_parcial" if contratos else "preservada_por_resposta_betha_vazia"
         contratos, contratos_origem_preservada = anteriores, origem
+    else:
+        _mantem_contratos_ausentes(contratos, anteriores, dt.date.today().isoformat())
     if dados_abertos_status.get("licitacoes", {}).get("status") != "ok":
         anterior = _load_existing("camara_betha.json", {})
         if "licitacoes" not in anterior:
@@ -2137,6 +2139,8 @@ def _processa_prefeitura(emendas: list[dict], vigia_rapida: bool = False) -> dic
             f"  ! Prefeitura: coleta de contratos trouxe apenas {len(contratos)} "
             f"registro(s); preservando {len(contratos_anteriores)} da última base válida."
         )
+    if not coleta_contratos_parcial and not vigia_rapida:
+        _mantem_contratos_ausentes(contratos_normalizados, contratos_anteriores, hoje_iso)
     if vigia_rapida:
         # A API Betha alterna 401/406 e pode devolver vazio para um ano inteiro.
         # Na vigia, dados novos substituem os equivalentes e o restante da base
@@ -2270,31 +2274,61 @@ def _data_contrato(valor) -> str:
     return ""
 
 
+def _contratos_ausentes(novos, anteriores, hoje_iso):
+    """Contratos recentes ou vigentes da base anterior que não vieram na coleta."""
+    def campos(c, nomes):
+        return tuple(str(c.get(k) or "").strip() for k in nomes)
+    def identidade(c):
+        chave = campos(c, ("numero", "ano", "cnpj", "contratado", "entidade"))
+        return chave + (str(c.get("objeto") or "") if chave[0] in ("", "0", "-") else "",)
+    # A fonte corrige a razão social sem trocar o contrato: mesmo número, ano,
+    # CNPJ, entidade e objeto é o mesmo registro com o nome atualizado.
+    sem_nome = ("numero", "ano", "cnpj", "entidade", "objeto")
+    chaves = {identidade(c) for c in novos}
+    renomeados = {campos(c, sem_nome) for c in novos}
+    ausentes = []
+    for c in anteriores:
+        recente = str(c.get("ano") or "").isdigit() and int(c["ano"]) >= int(hoje_iso[:4]) - 1
+        vigente = _contrato_vigente({"dataVigenciaFinal": c.get("data_fim"), "situacao": c.get("situacao")}, hoje_iso)
+        if (recente or vigente) and identidade(c) not in chaves and campos(c, sem_nome) not in renomeados:
+            ausentes.append(c)
+    return ausentes
+
+
 def _contratos_incompletos(novos, anteriores, diagnosticos, consultas_esperadas, hoje_iso):
     if len(diagnosticos) != consultas_esperadas or any(d.get("status") != "ok" for d in diagnosticos):
         print(f"  ! Contratos: {len(diagnosticos)}/{consultas_esperadas} consultas, "
               f"{sum(d.get('status') != 'ok' for d in diagnosticos)} sem status ok; coleta tratada como incompleta.")
         return True
-    def identidade(c):
-        chave = tuple(str(c.get(k) or "").strip() for k in ("numero", "ano", "cnpj", "contratado", "entidade"))
-        return chave + (str(c.get("objeto") or "") if chave[0] in ("", "0", "-") else "",)
-    chaves = {identidade(c) for c in novos}
-    ausentes = []
-    for c in anteriores:
-        recente = str(c.get("ano") or "").isdigit() and int(c["ano"]) >= int(hoje_iso[:4]) - 1
-        vigente = _contrato_vigente({"dataVigenciaFinal": c.get("data_fim"), "situacao": c.get("situacao")}, hoje_iso)
-        if (recente or vigente) and identidade(c) not in chaves:
-            ausentes.append(c)
-    if ausentes:
-        # Remoção na fonte exige reconciliação; uma resposta "ok" não prova exclusão legítima.
-        # Sem dizer QUAIS sumiram, a base fica presa na versão antiga sem ninguém saber por quê.
+    ausentes = _contratos_ausentes(novos, anteriores, hoje_iso)
+    # Até 1% da base pode sumir sem derrubar a coleta inteira: em 11/2026 dois
+    # registros (um renomeado, um retirado da consulta) seguraram 1.555 contratos
+    # por cinco semanas. Acima disso continua sendo resposta parcial da fonte.
+    # Os tolerados não são apagados: _mantem_contratos_ausentes os republica marcados.
+    if len(ausentes) > len(anteriores) // 100:
         print(f"  ! Contratos: {len(ausentes)} registro(s) recentes ou vigentes da base anterior "
-              f"não vieram na coleta de {len(novos)}. Exemplos:")
+              f"não vieram na coleta de {len(novos)} (tolerância {len(anteriores) // 100}). Exemplos:")
         for c in ausentes[:10]:
             print(f"      - {c.get('numero')}/{c.get('ano')} | {c.get('cnpj')} | "
                   f"{str(c.get('contratado') or '')[:50]} | fim {c.get('data_fim')} | {c.get('situacao')}")
         return True
     return False
+
+
+def _mantem_contratos_ausentes(novos, anteriores, hoje_iso):
+    """Republica, marcados, os poucos contratos que a fonte deixou de listar.
+
+    Sumiço na consulta não prova que o contrato acabou. O registro fica com a
+    data em que deixou de aparecer e sai sozinho quando não for mais recente
+    nem vigente."""
+    ausentes = _contratos_ausentes(novos, anteriores, hoje_iso)
+    for c in ausentes:
+        print(f"  ! Contrato mantido sem reaparecer na fonte: {c.get('numero')}/{c.get('ano')} | "
+              f"{str(c.get('contratado') or '')[:50]} | fim {c.get('data_fim')}")
+        novos.append({**c, "ausente_na_fonte_desde": c.get("ausente_na_fonte_desde") or hoje_iso})
+    if ausentes:
+        novos.sort(key=lambda x: -float(x.get("valor") or 0))
+    return ausentes
 
 
 def _contrato_vigente(r: dict, hoje_iso: str) -> bool:
