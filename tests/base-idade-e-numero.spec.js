@@ -27,3 +27,20 @@ test('contratos e obras avisam a data da base quando ela foi preservada', async 
     await expect(aviso).toContainText(data ? `${data[3]}/${data[2]}/${data[1]}` : 'sem data registrada');
   }
 });
+
+test.describe('contrato que deixou de aparecer na fonte', () => {
+  // O service worker responderia por conta própria e ignoraria a resposta simulada.
+  test.use({ serviceWorkers: 'block' });
+  test('cartão avisa desde quando o contrato não reaparece', async ({ page }) => {
+    // A página da Prefeitura lê a projeção prefeitura_painel, que mantém todos os campos do contrato.
+    await page.route('**/data/chunks/prefeitura_painel.json*', async route => {
+      const resposta = await route.fetch();
+      const dados = await resposta.json();
+      dados.contratos.forEach(c => { c.ausente_na_fonte_desde = '2026-11-11'; });
+      await route.fulfill({ response: resposta, json: dados });
+    });
+    await page.goto('/prefeitura.html?tab=contratos');
+    await pronto(page);
+    await expect(page.locator('#contratosBlock .contrato__sit', { hasText: 'não reapareceu na fonte desde 11/11/2026' }).first()).toBeVisible();
+  });
+});
